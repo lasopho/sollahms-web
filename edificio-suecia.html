@@ -84,18 +84,58 @@
 <body class="text-on-surface antialiased overflow-x-hidden">
 <!-- TopNavBar -->
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-<nav class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20">
 <div class="text-2xl font-black tracking-tighter text-emerald-950">Sollahms</div>
 <div class="hidden md:flex items-center space-x-8">
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/#expertise">Expertise</a>
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/#portfolio">Asset Portfolio</a>
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/contacto.html">Contacto</a>
 </div>
-<div class="flex items-center gap-6">
-<a class="bg-tertiary-fixed text-on-tertiary-fixed px-6 py-2 hover:bg-tertiary-fixed-dim transition-all font-bold tracking-tight rounded-lg flex items-center justify-center gap-2" href="/agenda-asesoria.html">Agendar Asesoría <span class="material-symbols-outlined">calendar_today</span></a>
+<div class="flex items-center gap-2 md:gap-6">
+<a class="bg-tertiary-fixed text-on-tertiary-fixed px-2 md:px-6 py-2 hover:bg-tertiary-fixed-dim transition-all font-bold tracking-tight text-xs md:text-base whitespace-nowrap rounded-lg flex items-center justify-center gap-2" href="/agenda-asesoria.html">Agendar Asesoría <span class="material-symbols-outlined hidden md:inline" aria-hidden="true">calendar_today</span></a>
+<button type="button" class="md:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-emerald-950 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" aria-label="Abrir menú de navegación" aria-controls="mobile-menu" aria-expanded="false">
+<svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
 </div>
 </nav>
+<div id="mobile-menu" class="hidden md:hidden absolute top-full inset-x-0 bg-white shadow-lg border-t border-slate-200">
+<nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col" aria-label="Navegación móvil">
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#portfolio">Asset Portfolio</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/contacto.html">Contacto</a>
+</nav>
+</div>
 </header>
+<script>
+(() => {
+    const button = document.querySelector('[aria-controls="mobile-menu"]');
+    const menu = document.getElementById('mobile-menu');
+    const closeMenu = () => {
+        menu.classList.add('hidden');
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Abrir menú de navegación');
+    };
+
+    button.addEventListener('click', () => {
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+        menu.classList.toggle('hidden', isOpen);
+        button.setAttribute('aria-expanded', String(!isOpen));
+        button.setAttribute('aria-label', isOpen ? 'Abrir menú de navegación' : 'Cerrar menú de navegación');
+    });
+    menu.addEventListener('click', event => {
+        if (event.target.closest('a')) closeMenu();
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            closeMenu();
+            button.focus();
+        }
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) closeMenu();
+    });
+})();
+</script>
 <main class="pt-20">
 <section class="relative h-[620px] w-full overflow-hidden">
 <img class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-700 hover:grayscale-0" alt="Vista principal de Edificio Suecia en Providencia" src="/assets/propiedades/suecia-principal.webp">
