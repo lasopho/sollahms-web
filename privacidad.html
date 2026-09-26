@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Conoce cómo Sollahms trata y protege los datos personales asociados a sus canales digitales y servicios inmobiliarios.">
+<title>Política de Privacidad | Sollahms</title>
+<link rel="canonical" href="https://sollahms.cl/privacidad.html">
+<link rel="icon" type="image/svg+xml" href="/assets/branding/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sollahms">
+<meta property="og:title" content="Política de Privacidad | Sollahms">
+<meta property="og:description" content="Conoce cómo Sollahms trata y protege los datos personales asociados a sus canales digitales y servicios inmobiliarios.">
+<meta property="og:url" content="https://sollahms.cl/privacidad.html">
+<meta property="og:image" content="https://sollahms.cl/assets/branding/og-sollahms.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Política de Privacidad | Sollahms">
+<meta name="twitter:description" content="Conoce cómo Sollahms trata y protege los datos personales asociados a sus canales digitales y servicios inmobiliarios.">
+<meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms.png">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/privacidad.tailwind.css">
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2 { font-family: 'Manrope', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
+  Saltar al contenido
+</a>
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+<nav class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between gap-2 md:gap-x-6" aria-label="Navegación principal">
+<a class="text-2xl font-black tracking-tighter text-emerald-950" href="/">Sollahms</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#expertise">Expertise</a>
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#portfolio">Asset Portfolio</a>
+<a class="text-emerald-950 font-headline font-bold tracking-tight" href="/contacto.html">Contacto</a>
+</div>
+<div class="flex items-center gap-2 md:gap-0">
+<a class="bg-tertiary-fixed text-on-tertiary-fixed px-2 md:px-6 py-2 hover:bg-tertiary-fixed-dim transition-colors font-bold tracking-tight rounded-lg flex items-center gap-2 text-xs md:text-base whitespace-nowrap" href="/agenda-asesoria.html">Agendar Asesoría <span class="material-symbols-outlined hidden sm:inline" aria-hidden="true">calendar_today</span></a>
+<button type="button" class="md:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-emerald-950 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" aria-label="Abrir menú de navegación" aria-controls="mobile-menu" aria-expanded="false">
+<svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</nav>
+<div id="mobile-menu" class="hidden md:hidden absolute top-full inset-x-0 bg-white shadow-lg border-t border-slate-200">
+<nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col" aria-label="Navegación móvil">
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#portfolio">Asset Portfolio</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/contacto.html">Contacto</a>
+</nav>
+</div>
+</header>
+<script>
+(() => {
+    const button = document.querySelector('[aria-controls="mobile-menu"]');
+    const menu = document.getElementById('mobile-menu');
+    const closeMenu = () => {
+        menu.classList.add('hidden');
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Abrir menú de navegación');
+    };
+
+    button.addEventListener('click', () => {
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+        menu.classList.toggle('hidden', isOpen);
+        button.setAttribute('aria-expanded', String(!isOpen));
+        button.setAttribute('aria-label', isOpen ? 'Abrir menú de navegación' : 'Cerrar menú de navegación');
+    });
+    menu.addEventListener('click', event => {
+        if (event.target.closest('a')) closeMenu();
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            closeMenu();
+            button.focus();
+        }
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) closeMenu();
+    });
+})();
+</script>
+<main id="contenido-principal">
+<section class="bg-[#00201a] text-white">
+<div class="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
+<p class="text-sm font-bold tracking-[0.25em] uppercase text-primary-fixed mb-7">Sollahms</p>
+<h1 class="font-headline text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight tracking-[-0.04em] max-w-4xl">Política de Privacidad</h1>
+<p class="mt-8 text-slate-200 text-base md:text-lg leading-relaxed max-w-3xl">Esta Política de Privacidad explica cómo Sollahms trata los datos personales que las personas entregan voluntariamente a través de sus canales digitales en relación con consultas y servicios inmobiliarios.</p>
+<p class="mt-6 text-sm text-primary-fixed">Última actualización: 26 de septiembre de 2026.</p>
+</div>
+</section>
+<div class="max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-20">
+<section class="py-8 border-b border-slate-200" aria-labelledby="datos">
+<h2 id="datos" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">1. Datos que podemos solicitar</h2>
+<div class="space-y-5 text-slate-700 leading-relaxed">
+<p>Cuando nuestros formularios de contacto estén habilitados, podremos solicitar datos como nombre, apellido, correo electrónico, número de teléfono y la información que la persona decida incluir en su mensaje.</p>
+<p>Sollahms busca limitar la recopilación a los datos necesarios para atender cada solicitud.</p>
+</div>
+</section>
+<section class="py-8 border-b border-slate-200" aria-labelledby="finalidades">
+<h2 id="finalidades" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">2. Finalidades</h2>
+<div class="space-y-5 text-slate-700 leading-relaxed">
+<p>Los datos entregados a través de nuestros canales podrán utilizarse para responder consultas, coordinar llamadas o visitas, comprender la solicitud del interesado y gestionar la asesoría inmobiliaria solicitada.</p>
+<p>No utilizaremos los datos enviados para comunicaciones publicitarias o campañas de marketing sin una autorización separada cuando corresponda.</p>
+</div>
+</section>
+<section class="py-8 border-b border-slate-200" aria-labelledby="uso">
+<h2 id="uso" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">3. Uso y comunicación de los datos</h2>
+<div class="space-y-5 text-slate-700 leading-relaxed">
+<p>Sollahms no vende ni arrienda los datos personales de quienes utilizan sus canales digitales.</p>
+<p>Cuando sea necesario para operar el sitio o prestar un servicio solicitado, podrán intervenir proveedores tecnológicos o de infraestructura que participen en la prestación del servicio correspondiente.</p>
+</div>
+</section>
+<section class="py-8 border-b border-slate-200" aria-labelledby="conservacion">
+<h2 id="conservacion" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">4. Conservación</h2>
+<p class="text-slate-700 leading-relaxed">Los datos personales se conservarán únicamente durante el tiempo necesario para atender la finalidad para la cual fueron entregados y, cuando corresponda, durante los períodos necesarios para gestionar una relación comercial o cumplir obligaciones legales. Posteriormente deberán eliminarse o anonimizarse cuando resulte procedente.</p>
+</section>
+<section class="py-8 border-b border-slate-200" aria-labelledby="cookies">
+<h2 id="cookies" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">5. Cookies, analítica y tecnologías de seguimiento</h2>
+<div class="space-y-5 text-slate-700 leading-relaxed">
+<p>Actualmente, Sollahms no ha incorporado en estas páginas herramientas propias de analítica de audiencia, píxeles publicitarios ni tecnologías de seguimiento destinadas a elaborar perfiles de marketing.</p>
+<p>Los proveedores de infraestructura necesarios para entregar el sitio pueden procesar información técnica asociada al funcionamiento y seguridad de sus servicios conforme a sus propias condiciones y obligaciones legales.</p>
+</div>
+</section>
+<section class="py-8 border-b border-slate-200" aria-labelledby="seguridad">
+<h2 id="seguridad" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">6. Seguridad</h2>
+<p class="text-slate-700 leading-relaxed">Sollahms procurará aplicar medidas técnicas y organizativas razonables para proteger los datos personales de acuerdo con la naturaleza del tratamiento y los riesgos asociados. Ningún sistema de transmisión o almacenamiento electrónico puede considerarse absolutamente seguro.</p>
+</section>
+<section class="py-8 border-b border-slate-200" aria-labelledby="derechos">
+<h2 id="derechos" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">7. Derechos de las personas</h2>
+<div class="space-y-5 text-slate-700 leading-relaxed">
+<p>Las personas pueden ejercer los derechos que les reconozca la legislación chilena vigente respecto de sus datos personales.</p>
+<p>Hasta el 30 de noviembre de 2026 se aplican los derechos establecidos en la Ley N.º 19.628 actualmente vigente. Desde el 1 de diciembre de 2026 entra en vigencia la reforma introducida por la Ley N.º 21.719, que contempla, entre otros, derechos de acceso, rectificación, supresión, oposición, portabilidad y bloqueo en los casos previstos por la ley.</p>
+</div>
+</section>
+<section class="py-8 border-b border-slate-200" aria-labelledby="contacto-privacidad">
+<h2 id="contacto-privacidad" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">8. Canal de contacto y ejercicio de derechos</h2>
+<p class="text-slate-700 leading-relaxed">El canal específico para consultas de privacidad y ejercicio de derechos será publicado antes de habilitar el envío de datos mediante los formularios del sitio.</p>
+<a class="inline-flex items-center justify-center mt-6 px-7 py-3 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors" href="/contacto.html">Ver página de contacto</a>
+</section>
+<section class="py-8" aria-labelledby="cambios">
+<h2 id="cambios" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">9. Cambios a esta política</h2>
+<p class="text-slate-700 leading-relaxed">Esta política podrá actualizarse cuando cambien los servicios, las tecnologías utilizadas o las obligaciones legales aplicables. La versión vigente se mantendrá publicada en esta página junto con su fecha de actualización.</p>
+</section>
+</div>
+</main>
+<footer class="bg-slate-100 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-6 md:px-8 py-10 flex flex-col sm:flex-row justify-between gap-5">
+<a class="text-lg font-bold text-emerald-950" href="/">Sollahms</a>
+<div class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
+<a class="hover:text-emerald-900" href="/#expertise">Expertise</a>
+<a class="hover:text-emerald-900" href="/#portfolio">Asset Portfolio</a>
+<a class="hover:text-emerald-900" href="/contacto.html">Contacto</a>
+<a class="hover:text-emerald-900" href="/privacidad.html" aria-current="page">Privacidad</a>
+</div>
+<p class="text-sm text-slate-600">© 2026 Sollahms. Todos los derechos reservados.</p>
+</div>
+</footer>
+</body>
+</html>
