@@ -112,12 +112,180 @@
 <p class="font-body text-lg leading-relaxed text-secondary mb-6">Una conversación de 30 minutos para revisar tu situación, tus objetivos y las alternativas inmobiliarias que podrían ajustarse a ellos.</p>
 <div class="bg-surface-container-low border-l-4 border-primary p-8 mb-6">
 <p class="font-headline text-lg font-bold text-primary mb-4">Llamada telefónica · 30 minutos</p>
-<p class="font-body text-sm text-secondary leading-relaxed">Elige la fecha y hora que más te acomode en Google Calendar. Durante la reserva se te solicitará un número de teléfono para la llamada.</p>
+<p class="font-body text-sm text-secondary leading-relaxed">Elige una fecha y hora para comprobar si podemos llamarte en ese momento.</p>
 </div>
-<a class="inline-flex w-full md:w-auto items-center justify-center bg-primary text-on-primary font-headline font-bold tracking-institutional uppercase text-[12px] px-12 py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" href="https://calendar.app.google/mCzsnsNPPiQCXnbC6">Ver horarios y reservar</a>
-<p class="font-body text-sm text-secondary leading-relaxed mt-6">La reserva se gestiona mediante Google Calendar. Consulta nuestra <a class="text-primary underline" href="/privacidad.html">política de privacidad</a>.</p>
+<form id="booking-form">
+<div id="booking-selector">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label class="font-label text-[9px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-date">Fecha</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="date" id="booking-date" name="date" aria-describedby="booking-hours-note" required>
+</div>
+<div>
+<label class="font-label text-[9px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-time">Hora</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="time" id="booking-time" name="time" min="09:00" max="21:30" step="1800" aria-describedby="booking-hours-note" required>
+</div>
+</div>
+<p id="booking-hours-note" class="font-body text-sm text-secondary leading-relaxed mb-6">Lunes a viernes, de 09:00 a 21:30, en intervalos de 30 minutos. Horarios correspondientes a Chile continental.</p>
+<button id="booking-check" class="w-full md:w-auto bg-primary text-on-primary font-headline font-bold tracking-institutional uppercase text-[12px] px-12 py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" type="button" aria-controls="booking-details" aria-expanded="false">Comprobar disponibilidad</button>
+</div>
+<p id="booking-status" class="font-body text-sm text-primary leading-relaxed mt-6" role="status" aria-live="polite" tabindex="-1"></p>
+<div id="booking-details" hidden>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+<div>
+<label class="font-label text-[9px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-nombre">Nombre</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="text" id="booking-nombre" name="nombre" autocomplete="given-name" maxlength="100" required>
+</div>
+<div>
+<label class="font-label text-[9px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-apellido">Apellido</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="text" id="booking-apellido" name="apellido" autocomplete="family-name" maxlength="100" required>
+</div>
+<div>
+<label class="font-label text-[9px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-correo">Correo electrónico</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="email" id="booking-correo" name="correo" autocomplete="email" maxlength="254" required>
+</div>
+<div>
+<label class="font-label text-[9px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-telefono">Número de teléfono</label>
+<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="tel" id="booking-telefono" name="telefono" autocomplete="tel" maxlength="30" required>
+</div>
+</div>
+<div class="sr-only" aria-hidden="true">
+<label for="booking-website">Deja este campo vacío</label>
+<input type="text" id="booking-website" name="website" tabindex="-1" autocomplete="off" maxlength="200">
+</div>
+<button id="booking-submit" class="w-full md:w-auto bg-primary text-on-primary font-headline font-bold tracking-institutional uppercase text-[12px] px-12 py-5 mt-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" type="submit">Reservar llamada</button>
+</div>
+</form>
+<p class="font-body text-sm text-secondary leading-relaxed mt-6">Tus datos se utilizarán para coordinar la llamada y enviar la invitación. Consulta nuestra <a class="text-primary underline" href="/privacidad.html">política de privacidad</a>.</p>
 </section>
 </div>
+<script>
+(() => {
+    const form = document.getElementById('booking-form');
+    const selector = document.getElementById('booking-selector');
+    const details = document.getElementById('booking-details');
+    const status = document.getElementById('booking-status');
+    const dateInput = document.getElementById('booking-date');
+    const timeInput = document.getElementById('booking-time');
+    const checkButton = document.getElementById('booking-check');
+    const submitButton = document.getElementById('booking-submit');
+    const personalInputs = ['nombre', 'apellido', 'correo', 'telefono', 'website'];
+    let checkedSlot = null;
+    let availabilityRequest = 0;
+    let bookingBusy = false;
+    let availabilityController = null;
+
+    const chileDate = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'America/Santiago', year: 'numeric', month: '2-digit', day: '2-digit',
+    }).formatToParts(new Date()).map(part => [part.type, part.value]));
+    dateInput.min = `${chileDate.year}-${chileDate.month}-${chileDate.day}`;
+    personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
+
+    function setBusy(button, busy) {
+        button.disabled = busy;
+        button.classList.toggle('opacity-50', busy);
+        button.classList.toggle('cursor-not-allowed', busy);
+    }
+
+    function invalidateSlot() {
+        availabilityRequest += 1;
+        availabilityController?.abort();
+        availabilityController = null;
+        checkedSlot = null;
+        details.hidden = true;
+        checkButton.setAttribute('aria-expanded', 'false');
+        personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
+        status.textContent = '';
+        setBusy(checkButton, false);
+    }
+
+    dateInput.addEventListener('input', invalidateSlot);
+    timeInput.addEventListener('input', invalidateSlot);
+
+    checkButton.addEventListener('click', async () => {
+        if (bookingBusy || !dateInput.reportValidity() || !timeInput.reportValidity()) return;
+        invalidateSlot();
+        const requestId = availabilityRequest;
+        const slot = { date: dateInput.value, time: timeInput.value };
+        availabilityController = new AbortController();
+        setBusy(checkButton, true);
+        status.textContent = 'Comprobando disponibilidad…';
+        try {
+            const response = await fetch('/api/booking-availability', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(slot),
+                signal: availabilityController.signal,
+            });
+            const result = await response.json();
+            if (requestId !== availabilityRequest) return;
+            if (!response.ok || result.ok !== true || typeof result.available !== 'boolean') {
+                status.textContent = result.error || 'No pudimos comprobar la disponibilidad. Inténtalo nuevamente.';
+            } else if (!result.available) {
+                status.textContent = 'Ese horario ya no está disponible. Elige otra fecha u hora.';
+            } else {
+                checkedSlot = slot;
+                status.textContent = 'Este horario está disponible.';
+                details.hidden = false;
+                checkButton.setAttribute('aria-expanded', 'true');
+                personalInputs.forEach(name => { form.elements.namedItem(name).disabled = false; });
+            }
+        } catch {
+            if (requestId === availabilityRequest) status.textContent = 'No pudimos comprobar la disponibilidad. Inténtalo nuevamente.';
+        } finally {
+            if (requestId === availabilityRequest) {
+                availabilityController = null;
+                setBusy(checkButton, false);
+            }
+        }
+    });
+
+    form.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (bookingBusy || !checkedSlot || dateInput.value !== checkedSlot.date || timeInput.value !== checkedSlot.time) {
+            invalidateSlot();
+            status.textContent = 'Comprueba nuevamente la disponibilidad del horario.';
+            return;
+        }
+        bookingBusy = true;
+        setBusy(submitButton, true);
+        setBusy(checkButton, true);
+        dateInput.disabled = true;
+        timeInput.disabled = true;
+        status.textContent = 'Reservando tu llamada…';
+        const fields = Object.fromEntries(personalInputs.map(name => [name, form.elements.namedItem(name).value]));
+        try {
+            const response = await fetch('/api/booking-create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...checkedSlot, ...fields }),
+            });
+            const result = await response.json();
+            if (response.status === 409 && result.code === 'slot_unavailable') {
+                invalidateSlot();
+                status.textContent = 'Ese horario ya no está disponible. Elige otra fecha u hora.';
+                dateInput.focus();
+            } else if (response.ok && result.ok === true && result.booked === true) {
+                selector.hidden = true;
+                details.hidden = true;
+                personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
+                status.textContent = 'Tu asesoría quedó reservada. Recibirás una invitación de Google Calendar en tu correo.';
+                status.focus();
+            } else {
+                status.textContent = result.error || 'No pudimos completar la reserva. Inténtalo nuevamente.';
+            }
+        } catch {
+            status.textContent = 'No pudimos completar la reserva. Inténtalo nuevamente.';
+        } finally {
+            bookingBusy = false;
+            dateInput.disabled = false;
+            timeInput.disabled = false;
+            setBusy(submitButton, false);
+            if (!selector.hidden) setBusy(checkButton, false);
+        }
+    });
+})();
+</script>
 <!-- Section: Cómo Invertir -->
 <section class="mt-24 py-16 border-y border-outline-variant/30">
 <div class="max-w-4xl mx-auto text-center">
