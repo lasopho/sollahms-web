@@ -189,6 +189,16 @@
 </div>
 <script>
 (() => {
+    const projectNames = {
+        'inn-puerto-chico': 'INN Puerto Chico',
+        'edificio-suecia': 'Edificio Suecia',
+        'plaza-las-condes': 'Plaza Las Condes',
+    };
+    const project = new URLSearchParams(window.location.search).get('proyecto');
+    if (Object.prototype.hasOwnProperty.call(projectNames, project)) {
+        document.getElementById('agenda-reserva-titulo').textContent = `Asesoría sobre ${projectNames[project]}`;
+    }
+
     const form = document.getElementById('booking-form');
     const selector = document.getElementById('booking-selector');
     const details = document.getElementById('booking-details');
