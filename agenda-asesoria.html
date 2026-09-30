@@ -113,6 +113,9 @@
 <section class="lg:col-span-7 bg-surface-container-lowest p-8 md:p-16 shadow-sm" aria-labelledby="agenda-reserva-titulo">
 <span class="font-label text-[9px] tracking-[0.4em] uppercase text-secondary font-semibold mb-4 block">Reserva tu llamada</span>
 <h2 id="agenda-reserva-titulo" class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-primary mb-6">Asesoría inmobiliaria Sollahms</h2>
+<p id="agenda-project-back" class="font-body text-sm text-secondary leading-relaxed mb-6" hidden>
+<a id="agenda-project-back-link" class="text-primary underline" href="/">Volver a la propiedad</a>
+</p>
 <p class="font-body text-lg leading-relaxed text-secondary mb-6">Una conversación de 30 minutos para revisar tu situación, tus objetivos y las alternativas inmobiliarias que podrían ajustarse a ellos.</p>
 <div class="bg-surface-container-low border-l-4 border-primary p-8 mb-6">
 <p class="font-headline text-lg font-bold text-primary mb-4">Llamada telefónica</p>
@@ -193,14 +196,27 @@
 </div>
 <script>
 (() => {
-    const projectNames = {
-        'inn-puerto-chico': 'INN Puerto Chico',
-        'edificio-suecia': 'Edificio Suecia',
-        'plaza-las-condes': 'Plaza Las Condes',
+    const projects = {
+        'inn-puerto-chico': {
+            name: 'INN Puerto Chico',
+            url: '/inn-puerto-chico.html',
+        },
+        'edificio-suecia': {
+            name: 'Edificio Suecia',
+            url: '/edificio-suecia.html',
+        },
+        'plaza-las-condes': {
+            name: 'Plaza Las Condes',
+            url: '/plaza-las-condes.html',
+        },
     };
     const project = new URLSearchParams(window.location.search).get('proyecto');
-    if (Object.prototype.hasOwnProperty.call(projectNames, project)) {
-        document.getElementById('agenda-reserva-titulo').textContent = `Asesoría sobre ${projectNames[project]}`;
+    if (Object.prototype.hasOwnProperty.call(projects, project)) {
+        document.getElementById('agenda-reserva-titulo').textContent = `Asesoría sobre ${projects[project].name}`;
+        const backLink = document.getElementById('agenda-project-back-link');
+        backLink.href = projects[project].url;
+        backLink.textContent = `Volver a ${projects[project].name}`;
+        document.getElementById('agenda-project-back').hidden = false;
     }
 
     const form = document.getElementById('booking-form');
