@@ -227,6 +227,19 @@
         setBusy(checkButton, false);
     }
 
+    dateInput.addEventListener('input', () => {
+        if (!dateInput.value) {
+            dateInput.setCustomValidity('');
+            return;
+        }
+        const [year, month, day] = dateInput.value.split('-').map(Number);
+        const weekday = new Date(Date.UTC(year, month - 1, day)).getUTCDay();
+        if (weekday === 0 || weekday === 6) {
+            dateInput.setCustomValidity('Selecciona un día de lunes a viernes.');
+        } else {
+            dateInput.setCustomValidity('');
+        }
+    });
     dateInput.addEventListener('input', invalidateSlot);
     timeInput.addEventListener('input', invalidateSlot);
 
