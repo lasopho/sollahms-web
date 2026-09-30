@@ -26,6 +26,11 @@
         h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .label-blue-print { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; }
+        @media (hover: none) {
+            .property-hero-image {
+                filter: none;
+            }
+        }
     </style>
 </head>
 <body class="text-on-surface antialiased overflow-x-hidden">
@@ -88,7 +93,7 @@
 </script>
 <main id="contenido-principal" class="pt-20">
 <section class="relative h-[620px] w-full overflow-hidden">
-<img class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-700 hover:grayscale-0" alt="Vista principal de Edificio Suecia en Providencia" src="/assets/propiedades/suecia-principal.webp" width="1600" height="1000" fetchpriority="high">
+<img class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-700 hover:grayscale-0 property-hero-image" alt="Vista principal de Edificio Suecia en Providencia" src="/assets/propiedades/suecia-principal.webp" width="1600" height="1000" fetchpriority="high">
 <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
 <div class="absolute bottom-12 left-6 md:left-12 max-w-4xl">
 <div class="label-blue-print text-tertiary-fixed mb-4">Leben</div>
