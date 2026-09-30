@@ -225,6 +225,14 @@
         button.classList.toggle('cursor-not-allowed', busy);
     }
 
+    function formatBookingDate(date) {
+        const [year, month, day] = date.split('-').map(Number);
+        const value = new Date(Date.UTC(year, month - 1, day));
+        return new Intl.DateTimeFormat('es-CL', {
+            weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
+        }).format(value).replace(',', '');
+    }
+
     function invalidateSlot() {
         availabilityRequest += 1;
         availabilityController?.abort();
@@ -343,7 +351,7 @@
                 selector.hidden = true;
                 details.hidden = true;
                 personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
-                status.textContent = 'Tu asesoría quedó reservada. Recibirás una invitación de Google Calendar en tu correo.';
+                status.textContent = `Tu asesoría quedó reservada para el ${formatBookingDate(checkedSlot.date)} a las ${checkedSlot.time}. Recibirás una invitación de Google Calendar en tu correo.`;
                 status.focus();
             } else {
                 status.textContent = result.error || 'No pudimos completar la reserva. Inténtalo nuevamente.';
