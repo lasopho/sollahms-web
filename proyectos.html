@@ -38,7 +38,6 @@
         .catalog-grid article { min-width: 0; overflow-wrap: anywhere; }
         @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (min-width: 1024px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; } }
-        @media (min-width: 1280px) { .catalog-filters { grid-template-columns: minmax(0, 1.5fr) repeat(4, minmax(0, 1fr)) auto; } }
     </style>
 </head>
 <body class="text-on-background pt-20">
@@ -117,6 +116,7 @@
 <div><label class="block font-bold text-primary mb-3" for="commune">Comuna</label><select class="catalog-control" id="commune" disabled><option value="">Todas las comunas</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="state">Estado</label><select class="catalog-control" id="state" disabled><option value="">Todos los estados</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="max-price">Precio máximo UF</label><input class="catalog-control" id="max-price" type="number" min="0" step="1" inputmode="numeric" placeholder="Sin máximo" disabled></div>
+<div><label class="block font-bold text-primary mb-3" for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option></select></div>
 <button id="clear-filters" class="catalog-control font-bold hover:bg-slate-100" type="button" disabled>Limpiar filtros</button>
 </form>
 <p id="project-count" class="font-bold text-primary mb-6" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
@@ -160,6 +160,7 @@
     const commune = document.getElementById('commune');
     const state = document.getElementById('state');
     const maxPriceInput = document.getElementById('max-price');
+    const sortOrder = document.getElementById('sort-order');
     const clear = document.getElementById('clear-filters');
     const grid = document.getElementById('project-grid');
     const count = document.getElementById('project-count');
@@ -233,7 +234,18 @@
             (!hasMaxPrice || project.precioDesdeUF <= maxPrice) &&
             (!query || ['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion'].some(key => normalize(project[key]).includes(query)))
         );
-        grid.replaceChildren(...filtered.map(card));
+        const sorted = [...filtered];
+        if (sortOrder.value === 'price-asc' || sortOrder.value === 'price-desc') {
+            const direction = sortOrder.value === 'price-asc' ? 1 : -1;
+            // Stable sorting preserves JSON order for ties; unknown prices go last.
+            sorted.sort((a, b) => {
+                const aValid = typeof a.precioDesdeUF === 'number' && Number.isFinite(a.precioDesdeUF);
+                const bValid = typeof b.precioDesdeUF === 'number' && Number.isFinite(b.precioDesdeUF);
+                if (!aValid || !bValid) return aValid ? -1 : bValid ? 1 : 0;
+                return direction * (a.precioDesdeUF - b.precioDesdeUF);
+            });
+        }
+        grid.replaceChildren(...sorted.map(card));
         count.textContent = filtered.length + (filtered.length === 1 ? ' proyecto' : ' proyectos');
         message.textContent = filtered.length ? '' : 'No encontramos proyectos que coincidan con tus filtros.';
     };
@@ -246,6 +258,7 @@
     });
     commune.addEventListener('change', render);
     state.addEventListener('change', render);
+    sortOrder.addEventListener('change', render);
     clear.addEventListener('click', () => {
         form.reset();
         updateCommunes();
@@ -262,7 +275,7 @@
             options(state, 'estado');
             updateCommunes();
             render();
-            [search, region, commune, state, maxPriceInput, clear].forEach(control => { control.disabled = false; });
+            [search, region, commune, state, maxPriceInput, sortOrder, clear].forEach(control => { control.disabled = false; });
         } catch (error) {
             grid.replaceChildren();
             count.textContent = '';
