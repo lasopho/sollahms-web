@@ -231,7 +231,7 @@
             (!region.value || project.region === region.value) &&
             (!commune.value || project.comuna === commune.value) &&
             (!state.value || project.estado === state.value) &&
-            (!hasMaxPrice || project.precioDesdeUF <= maxPrice) &&
+            (!hasMaxPrice || (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF) && project.precioDesdeUF <= maxPrice)) &&
             (!query || ['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion'].some(key => normalize(project[key]).includes(query)))
         );
         const sorted = [...filtered];
