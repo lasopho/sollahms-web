@@ -31,13 +31,14 @@
         }
         body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; }
-            .catalog-filters { display: grid; gap: 1rem; }
+            .catalog-filters { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
         .catalog-control { width: 100%; min-height: 44px; border: 1px solid #bcc9c3; border-radius: .5rem; padding: .75rem; background: white; color: #00201a; }
         .catalog-control:focus-visible { outline: 2px solid #005144; outline-offset: 3px; }
         .catalog-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
         .catalog-grid article { min-width: 0; overflow-wrap: anywhere; }
         @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (min-width: 1024px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)) auto; align-items: end; } }
+        @media (min-width: 1024px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; } }
+        @media (min-width: 1280px) { .catalog-filters { grid-template-columns: minmax(0, 1.5fr) repeat(4, minmax(0, 1fr)) auto; } }
     </style>
 </head>
 <body class="text-on-background pt-20">
@@ -115,6 +116,7 @@
 <div><label class="block font-bold text-primary mb-3" for="region">Región</label><select class="catalog-control" id="region" disabled><option value="">Todas las regiones</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="commune">Comuna</label><select class="catalog-control" id="commune" disabled><option value="">Todas las comunas</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="state">Estado</label><select class="catalog-control" id="state" disabled><option value="">Todos los estados</option></select></div>
+<div><label class="block font-bold text-primary mb-3" for="max-price">Precio máximo UF</label><input class="catalog-control" id="max-price" type="number" min="0" step="1" inputmode="numeric" placeholder="Sin máximo" disabled></div>
 <button id="clear-filters" class="catalog-control font-bold hover:bg-slate-100" type="button" disabled>Limpiar filtros</button>
 </form>
 <p id="project-count" class="font-bold text-primary mb-6" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
@@ -157,6 +159,7 @@
     const region = document.getElementById('region');
     const commune = document.getElementById('commune');
     const state = document.getElementById('state');
+    const maxPriceInput = document.getElementById('max-price');
     const clear = document.getElementById('clear-filters');
     const grid = document.getElementById('project-grid');
     const count = document.getElementById('project-count');
@@ -221,10 +224,13 @@
     };
     const render = () => {
         const query = normalize(search.value.trim());
+        const maxPrice = maxPriceInput.valueAsNumber;
+        const hasMaxPrice = Number.isFinite(maxPrice) && maxPrice >= 0;
         const filtered = projects.filter(project =>
             (!region.value || project.region === region.value) &&
             (!commune.value || project.comuna === commune.value) &&
             (!state.value || project.estado === state.value) &&
+            (!hasMaxPrice || project.precioDesdeUF <= maxPrice) &&
             (!query || ['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion'].some(key => normalize(project[key]).includes(query)))
         );
         grid.replaceChildren(...filtered.map(card));
@@ -233,6 +239,7 @@
     };
     form.addEventListener('submit', event => event.preventDefault());
     search.addEventListener('input', render);
+    maxPriceInput.addEventListener('input', render);
     region.addEventListener('change', () => {
         updateCommunes();
         render();
@@ -255,7 +262,7 @@
             options(state, 'estado');
             updateCommunes();
             render();
-            [search, region, commune, state, clear].forEach(control => { control.disabled = false; });
+            [search, region, commune, state, maxPriceInput, clear].forEach(control => { control.disabled = false; });
         } catch (error) {
             grid.replaceChildren();
             count.textContent = '';
