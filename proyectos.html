@@ -203,6 +203,12 @@
         if (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF)) {
             article.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
         }
+        if (typeof project.slug === 'string' && project.slug.trim().length) {
+            const contact = element('a', 'Consultar proyecto', 'inline-flex items-center justify-center mt-4 px-4 py-3 bg-primary text-white text-sm font-bold rounded-lg transition-colors');
+            contact.href = '/contacto.html?proyecto=' + encodeURIComponent(project.slug);
+            contact.setAttribute('aria-label', 'Consultar proyecto ' + project.nombre);
+            article.append(contact);
+        }
         return article;
     };
     const render = () => {
