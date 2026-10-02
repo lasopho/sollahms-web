@@ -171,14 +171,17 @@
     const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
     const numberFormat = new Intl.NumberFormat('es-CL');
     let projects = [];
+    const stages = project => Array.isArray(project.etapas) ? project.etapas : [];
+    const projectStates = project => [project.estado, ...stages(project).map(stage => stage.estado)]
+        .filter(value => typeof value === 'string' && value.length);
     const element = (tag, text, classes) => {
         const node = document.createElement(tag);
         if (text !== undefined) node.textContent = text;
         if (classes) node.className = classes;
         return node;
     };
-    const options = (select, key, source = projects) => {
-        [...new Set(source.map(project => project[key]).filter(value => typeof value === 'string' && value.length))]
+    const appendOptions = (select, values) => {
+        [...new Set(values.filter(value => typeof value === 'string' && value.length))]
             .sort((a, b) => a.localeCompare(b, 'es-CL'))
             .forEach(value => {
                 const option = element('option', value);
@@ -186,6 +189,7 @@
                 select.append(option);
             });
     };
+    const options = (select, key, source = projects) => appendOptions(select, source.map(project => project[key]));
     const updateCommunes = () => {
         const selected = commune.value;
         commune.replaceChildren(new Option('Todas las comunas', ''));
@@ -204,6 +208,21 @@
             details.append(element('dd', value, 'text-sm text-secondary'));
         };
         if (project.estado != null) detail('Estado', project.estado);
+        const projectStages = stages(project);
+        if (projectStages.length) {
+            details.append(element('dt', 'Etapas', 'text-sm font-bold text-primary mt-4'));
+            const values = element('dd');
+            const list = element('ul');
+            projectStages.forEach(stage => {
+                let summary = stage.nombre + ' — ' + stage.estado;
+                if (stage.entrega != null && !normalize(stage.estado).includes(normalize(stage.entrega))) {
+                    summary += ' · Entrega ' + stage.entrega;
+                }
+                list.append(element('li', summary, 'text-sm text-secondary'));
+            });
+            values.append(list);
+            details.append(values);
+        }
         if (project.entrega != null) detail('Entrega', project.entrega);
         if (Array.isArray(project.tipologias) && project.tipologias.length) {
             details.append(element('dt', 'Tipologías', 'text-sm font-bold text-primary mt-4'));
@@ -233,9 +252,12 @@
             (!assetType.value || (project.tipoActivo ?? 'Residencial') === assetType.value) &&
             (!region.value || project.region === region.value) &&
             (!commune.value || project.comuna === commune.value) &&
-            (!state.value || project.estado === state.value) &&
+            (!state.value || projectStates(project).includes(state.value)) &&
             (!hasMaxPrice || (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF) && project.precioDesdeUF <= maxPrice)) &&
-            (!query || ['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion'].some(key => normalize(project[key]).includes(query)))
+            (!query || [
+                ...['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion'].map(key => project[key]),
+                ...stages(project).map(stage => stage.nombre)
+            ].some(value => normalize(value).includes(query)))
         );
         const sorted = [...filtered];
         if (sortOrder.value === 'price-asc' || sortOrder.value === 'price-desc') {
@@ -274,9 +296,17 @@
             if (!response.ok) throw new Error('HTTP ' + response.status);
             const data = await response.json();
             if (!Array.isArray(data)) throw new Error('El catálogo debe ser un array');
+            data.forEach((project, index) => {
+                if (project.etapas === undefined) return;
+                if (!Array.isArray(project.etapas) || project.etapas.some(stage =>
+                    !stage || typeof stage.nombre !== 'string' || !stage.nombre.length ||
+                    typeof stage.estado !== 'string' || !stage.estado.length ||
+                    (stage.entrega !== null && typeof stage.entrega !== 'string')
+                )) throw new Error('Etapas inválidas en el proyecto ' + index);
+            });
             projects = data;
             options(region, 'region');
-            options(state, 'estado');
+            appendOptions(state, projects.flatMap(projectStates));
             updateCommunes();
             render();
             [search, assetType, region, commune, state, maxPriceInput, sortOrder, clear].forEach(control => { control.disabled = false; });
