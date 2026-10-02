@@ -112,7 +112,7 @@
 <div class="max-w-7xl mx-auto px-8">
 <form id="catalog-filters" class="catalog-filters mb-8" role="search" aria-label="Filtros del catálogo">
 <div><label class="block font-bold text-primary mb-3" for="search">Buscar proyecto</label><input class="catalog-control" id="search" type="search" disabled></div>
-<div><label class="block font-bold text-primary mb-3" for="asset-type">Tipo de activo</label><select class="catalog-control" id="asset-type" disabled><option value="">Todos</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option></select></div>
+<div><label class="block font-bold text-primary mb-3" for="asset-type">Tipo de activo</label><select class="catalog-control" id="asset-type" disabled><option value="">Todos</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option><option value="Terreno">Terreno</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="region">Región</label><select class="catalog-control" id="region" disabled><option value="">Todas las regiones</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="commune">Comuna</label><select class="catalog-control" id="commune" disabled><option value="">Todas las comunas</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="state">Estado</label><select class="catalog-control" id="state" disabled><option value="">Todos los estados</option></select></div>
@@ -230,7 +230,7 @@
         const maxPrice = maxPriceInput.valueAsNumber;
         const hasMaxPrice = Number.isFinite(maxPrice) && maxPrice >= 0;
         const filtered = projects.filter(project =>
-            (!assetType.value || (project.tipoActivo === 'Comercial' ? 'Comercial' : 'Residencial') === assetType.value) &&
+            (!assetType.value || (project.tipoActivo ?? 'Residencial') === assetType.value) &&
             (!region.value || project.region === region.value) &&
             (!commune.value || project.comuna === commune.value) &&
             (!state.value || project.estado === state.value) &&
