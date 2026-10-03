@@ -252,10 +252,18 @@
             article.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
         }
         if (typeof project.slug === 'string' && project.slug.trim().length) {
-            const contact = element('a', 'Consultar proyecto', 'inline-flex items-center justify-center mt-4 px-4 py-3 bg-primary text-white text-sm font-bold rounded-lg transition-colors');
+            const actions = element('div', undefined, 'mt-4 flex flex-col sm:flex-row gap-3');
+            if (typeof project.detalleUrl === 'string' && project.detalleUrl.trim().length) {
+                const details = element('a', 'Ver detalles', 'inline-flex min-w-0 items-center justify-center px-4 py-3 bg-primary text-white text-sm font-bold rounded-lg transition-colors');
+                details.href = project.detalleUrl;
+                details.setAttribute('aria-label', 'Ver detalles de ' + project.nombre);
+                actions.append(details);
+            }
+            const contact = element('a', 'Consultar proyecto', 'inline-flex min-w-0 items-center justify-center px-4 py-3 bg-primary text-white text-sm font-bold rounded-lg transition-colors');
             contact.href = '/contacto.html?proyecto=' + encodeURIComponent(project.slug);
             contact.setAttribute('aria-label', 'Consultar proyecto ' + project.nombre);
-            article.append(contact);
+            actions.append(contact);
+            article.append(actions);
         }
         return article;
     };
