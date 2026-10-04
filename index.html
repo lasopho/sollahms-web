@@ -31,74 +31,100 @@
         }
         body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; }
-        .home-fluid-b {
+        .home-fluid-b2 {
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
-        .home-fluid-b header {
+        .home-fluid-b2 header {
             box-shadow: 0 18px 54px rgba(0, 32, 26, 0.08);
         }
-        .home-fluid-b main > section:not(:first-child) {
+        .home-fluid-b2 main > section:not(:first-child) {
             position: relative;
         }
-        .home-fluid-b #expertise {
+        .home-fluid-b2 #expertise {
             background:
                 radial-gradient(circle at 22% 42%, rgba(0, 32, 26, 0.06), transparent 24rem),
                 #eef3ee;
         }
-        .home-fluid-b #expertise [class*="w-80"][class*="h-80"] {
+        .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] {
             filter: drop-shadow(0 28px 54px rgba(0, 32, 26, 0.12));
             animation: b-diagram-breathe 7s ease-in-out infinite;
             transform-origin: center;
         }
-        .home-fluid-b #expertise svg path {
+        .home-fluid-b2 #expertise svg path {
             transform-origin: center;
             animation: b-sector-enter 900ms ease both;
         }
-        .home-fluid-b #expertise svg path:nth-of-type(2) { animation-delay: 120ms; }
-        .home-fluid-b #expertise svg path:nth-of-type(3) { animation-delay: 240ms; }
-        .home-fluid-b #expertise svg path:nth-of-type(4) { animation-delay: 360ms; }
-        .home-fluid-b #expertise [class*="w-80"][class*="h-80"] > div.absolute {
+        .home-fluid-b2 #expertise svg path:nth-of-type(2) { animation-delay: 120ms; }
+        .home-fluid-b2 #expertise svg path:nth-of-type(3) { animation-delay: 240ms; }
+        .home-fluid-b2 #expertise svg path:nth-of-type(4) { animation-delay: 360ms; }
+        .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] > div.absolute {
             box-shadow: 0 18px 42px rgba(0, 32, 26, 0.13);
             transition: transform 520ms ease, box-shadow 520ms ease;
         }
-        .home-fluid-b #expertise [class*="w-80"][class*="h-80"] > div.absolute:hover {
+        .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:hover {
             transform: translate(-50%, -50%) scale(1.08);
             box-shadow: 0 24px 62px rgba(0, 32, 26, 0.18);
         }
-        .home-fluid-b #expertise [class*="gap-y-16"] > div {
+        .home-fluid-b2 #expertise [class*="gap-y-16"] > div {
             transition: transform 420ms ease;
         }
-        .home-fluid-b #expertise [class*="gap-y-16"] > div:hover {
+        .home-fluid-b2 #expertise [class*="gap-y-16"] > div:hover {
             transform: translateY(-3px);
         }
-        .home-fluid-b #portfolio .grid > div {
+        .home-fluid-b2 #portfolio .grid > div {
             border-radius: 8px;
             box-shadow: 0 18px 58px rgba(0, 32, 26, 0.08);
             transition: transform 520ms cubic-bezier(.2,.8,.2,1), box-shadow 520ms ease;
         }
-        .home-fluid-b #portfolio .grid > div:hover {
+        .home-fluid-b2 #portfolio .grid > div:hover {
             transform: translateY(-8px) scale(1.01);
             box-shadow: 0 34px 92px rgba(0, 32, 26, 0.15);
         }
-        .home-fluid-b #portfolio img {
+        .home-fluid-b2 #portfolio img {
             transition-duration: 1100ms;
         }
-        .home-fluid-b #portfolio .grid > div:hover img {
+        .home-fluid-b2 #portfolio .grid > div:hover img {
             filter: saturate(1.05) contrast(1.03);
         }
         @supports (animation-timeline: view()) {
-            .home-fluid-b main > section:not(:first-child),
-            .home-fluid-b #expertise [class*="gap-y-16"] > div,
-            .home-fluid-b #portfolio .grid > div {
-                animation: b-premium-enter both;
+            .home-fluid-b2 main > section:first-child > div,
+            .home-fluid-b2 main > section:nth-of-type(2) > div,
+            .home-fluid-b2 #expertise > div > .flex,
+            .home-fluid-b2 #expertise [class*="gap-y-16"] > div,
+            .home-fluid-b2 #portfolio .grid > div,
+            .home-fluid-b2 #portfolio > div > .text-center,
+            .home-fluid-b2 #portfolio > div > .flex,
+            .home-fluid-b2 main > section:last-of-type > div,
+            .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] {
+                animation: b2-scroll-presence both;
                 animation-timeline: view();
-                animation-range: entry 5% cover 30%;
+                animation-range: entry 0% exit 100%;
+            }
+            .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] {
+                animation-name: b2-scroll-presence, b-diagram-breathe;
+                animation-timeline: view(), auto;
+                animation-range: entry 0% exit 100%, normal;
+                animation-duration: auto, 7s;
+                animation-timing-function: linear, ease-in-out;
+                animation-iteration-count: 1, infinite;
+            }
+            .home-fluid-b2 main > section:first-child > div,
+            .home-fluid-b2 main > section:nth-of-type(2) > div,
+            .home-fluid-b2 #expertise > div > .flex,
+            .home-fluid-b2 #expertise [class*="gap-y-16"] > div,
+            .home-fluid-b2 #portfolio .grid > div,
+            .home-fluid-b2 #portfolio > div > .text-center,
+            .home-fluid-b2 #portfolio > div > .flex,
+            .home-fluid-b2 main > section:last-of-type > div {
+                animation-timing-function: linear;
             }
         }
-        @keyframes b-premium-enter {
-            from { opacity: 0.62; transform: translateY(34px) scale(0.985); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes b2-scroll-presence {
+            0% { opacity: 0.34; transform: translateY(42px) scale(0.985); }
+            24% { opacity: 1; transform: translateY(0) scale(1); }
+            68% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0.08; transform: translateY(-40px) scale(0.985); }
         }
         @keyframes b-sector-enter {
             from { opacity: 0; transform: scale(0.92); }
@@ -109,9 +135,9 @@
             50% { transform: translateY(-8px) scale(1.015); }
         }
         @media (prefers-reduced-motion: reduce) {
-            .home-fluid-b *,
-            .home-fluid-b *::before,
-            .home-fluid-b *::after {
+            .home-fluid-b2 *,
+            .home-fluid-b2 *::before,
+            .home-fluid-b2 *::after {
                 animation: none !important;
                 transition: none !important;
                 transform: none !important;
@@ -142,7 +168,7 @@
 }
 </script>
 </head>
-<body class="home-fluid-b text-on-background pt-20">
+<body class="home-fluid-b2 text-on-background pt-20">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
@@ -200,6 +226,85 @@
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) closeMenu();
     });
+})();
+</script>
+<script>
+(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const selectors = [
+        'main > section:first-child > div',
+        'main > section:nth-of-type(2) > div',
+        '#expertise > div > .flex',
+        '#expertise [class*="w-80"][class*="h-80"]',
+        '#expertise [class*="gap-y-16"] > div',
+        '#portfolio > div > .text-center',
+        '#portfolio .grid > div',
+        '#portfolio > div > .flex',
+        'main > section:last-of-type > div'
+    ];
+    const clamp = value => Math.min(1, Math.max(0, value));
+    let items = [];
+    let ticking = false;
+
+    const collect = () => {
+        items = selectors.flatMap(selector => Array.from(document.querySelectorAll(selector)));
+    };
+
+    const reset = () => {
+        items.forEach(element => {
+            element.style.opacity = '';
+            element.style.willChange = '';
+        });
+    };
+
+    const update = () => {
+        ticking = false;
+        if (reduceMotion.matches) {
+            reset();
+            return;
+        }
+
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const entryDistance = viewportHeight * 0.28;
+        const exitDistance = viewportHeight * 0.26;
+        const entryStart = viewportHeight * 0.98;
+        const entryEnd = viewportHeight * 0.70;
+        const exitStart = viewportHeight * 0.34;
+        const exitEnd = viewportHeight * 0.08;
+
+        items.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const entering = clamp((entryStart - rect.top) / entryDistance);
+            const leaving = clamp((rect.bottom - exitEnd) / exitDistance);
+            const presence = Math.max(0.08, Math.min(entering, leaving));
+            element.style.setProperty('opacity', presence.toFixed(3), 'important');
+            element.style.willChange = 'opacity';
+        });
+    };
+
+    const schedule = () => {
+        if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(update);
+        }
+    };
+
+    const init = () => {
+        collect();
+        update();
+        window.addEventListener('scroll', schedule, { passive: true });
+        window.addEventListener('resize', () => {
+            collect();
+            schedule();
+        });
+        reduceMotion.addEventListener('change', schedule);
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+        init();
+    }
 })();
 </script>
 <main id="contenido-principal">
