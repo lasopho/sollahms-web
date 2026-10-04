@@ -278,7 +278,7 @@
             (!state.value || projectStates(project).includes(state.value)) &&
             (!hasMaxPrice || (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF) && project.precioDesdeUF <= maxPrice)) &&
             (!query || [
-                ...['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion'].map(key => project[key]),
+                ...['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion', 'slug'].map(key => project[key]),
                 ...stages(project).map(stage => stage.nombre)
             ].some(value => normalize(value).includes(query)))
         );
