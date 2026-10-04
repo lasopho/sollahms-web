@@ -121,10 +121,10 @@
             }
         }
         @keyframes b2-scroll-presence {
-            0% { opacity: 0.34; transform: translateY(42px) scale(0.985); }
-            24% { opacity: 1; transform: translateY(0) scale(1); }
-            68% { opacity: 1; transform: translateY(0) scale(1); }
-            100% { opacity: 0.08; transform: translateY(-40px) scale(0.985); }
+            0% { opacity: 0.02; transform: translateY(42px) scale(0.985); }
+            30% { opacity: 1; transform: translateY(0) scale(1); }
+            60% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0.015; transform: translateY(-40px) scale(0.985); }
         }
         @keyframes b-sector-enter {
             from { opacity: 0; transform: scale(0.92); }
@@ -265,18 +265,20 @@
         }
 
         const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        const entryDistance = viewportHeight * 0.28;
-        const exitDistance = viewportHeight * 0.26;
-        const entryStart = viewportHeight * 0.98;
-        const entryEnd = viewportHeight * 0.70;
-        const exitStart = viewportHeight * 0.34;
-        const exitEnd = viewportHeight * 0.08;
+        const entryDistance = viewportHeight * 0.31;
+        const exitDistance = viewportHeight * 0.42;
+        const entryStart = viewportHeight * 0.99;
+        const entryEnd = viewportHeight * 0.68;
+        const exitStart = viewportHeight * 0.46;
+        const exitEnd = viewportHeight * 0.04;
 
         items.forEach(element => {
             const rect = element.getBoundingClientRect();
             const entering = clamp((entryStart - rect.top) / entryDistance);
             const leaving = clamp((rect.bottom - exitEnd) / exitDistance);
-            const presence = Math.max(0.08, Math.min(entering, leaving));
+            const rawPresence = Math.min(entering, leaving);
+            const shapedPresence = rawPresence >= 0.995 ? 1 : Math.pow(rawPresence, 1.45);
+            const presence = Math.max(0.015, shapedPresence);
             element.style.setProperty('opacity', presence.toFixed(3), 'important');
             element.style.willChange = 'opacity';
         });
