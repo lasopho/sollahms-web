@@ -193,10 +193,27 @@
         }
         .agenda-curtain-warm {
             --agenda-curtain-color: #E9C176;
+            --agenda-curtain-bg-color: #003229;
+        }
+        .agenda-curtain-link {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
         }
         .agenda-curtain-link:hover,
         .agenda-curtain-link:focus-visible {
             background-color: #FFDEA5 !important;
+        }
+        .agenda-curtain-link::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-color: var(--agenda-curtain-bg-color);
+            clip-path: inset(0 100% 0 0);
+            pointer-events: none;
+            transition: clip-path 500ms cubic-bezier(0.22, 0.61, 0.36, 1);
+            will-change: clip-path;
         }
         .agenda-curtain-link:focus-visible {
             outline: 2px solid #003229;
@@ -207,6 +224,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            z-index: 1;
             gap: 0.5rem;
             line-height: inherit;
             white-space: nowrap;
@@ -232,10 +250,16 @@
         .agenda-curtain-link:focus-visible .agenda-curtain__fill {
             clip-path: inset(0 0 0 0);
         }
+        .agenda-curtain-link:hover::before,
+        .agenda-curtain-link:focus-visible::before {
+            clip-path: inset(0 0 0 0);
+        }
+        .agenda-curtain-link:not(:hover):not(:focus-visible)::before,
         .agenda-curtain-link:not(:hover):not(:focus-visible) .agenda-curtain__fill {
             transition-timing-function: cubic-bezier(0.64, 0, 0.36, 1);
         }
         @media (prefers-reduced-motion: reduce) {
+            .agenda-curtain-link::before,
             .agenda-curtain__fill {
                 transition: none;
             }
