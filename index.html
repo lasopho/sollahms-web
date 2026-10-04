@@ -31,6 +31,125 @@
         }
         body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .home-fluid-c {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .home-fluid-c header {
+            box-shadow: 0 18px 52px rgba(0, 32, 26, 0.08);
+        }
+        .home-fluid-c main > section:first-child {
+            min-height: calc(100svh - 5rem);
+        }
+        .home-fluid-c main > section:first-child h1 {
+            max-width: 13ch;
+            margin-left: auto;
+            margin-right: auto;
+            text-wrap: balance;
+        }
+        .home-fluid-c main > section:not(:first-child) {
+            padding-top: clamp(7rem, 11vw, 10rem);
+            padding-bottom: clamp(7rem, 11vw, 10rem);
+        }
+        .home-fluid-c main > section:nth-of-type(2) h2 {
+            max-width: 12ch;
+            text-wrap: balance;
+        }
+        .home-fluid-c #expertise {
+            background: #eef3ee;
+        }
+        .home-fluid-c #expertise [class*="order-2"][class*="lg:order-1"] {
+            align-self: start;
+        }
+        .home-fluid-c #expertise [class*="w-80"][class*="h-80"] {
+            filter: drop-shadow(0 30px 70px rgba(0, 32, 26, 0.14));
+            transform-origin: center;
+        }
+        .home-fluid-c #expertise [class*="w-80"][class*="h-80"] > div.absolute {
+            box-shadow: 0 18px 48px rgba(0, 32, 26, 0.16);
+        }
+        .home-fluid-c #expertise [class*="gap-y-16"] {
+            gap: clamp(2.5rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem);
+        }
+        .home-fluid-c #portfolio .text-center {
+            margin-bottom: clamp(4rem, 8vw, 7rem);
+        }
+        .home-fluid-c #portfolio .grid {
+            align-items: start;
+        }
+        .home-fluid-c #portfolio .grid > div {
+            border-radius: 8px;
+            box-shadow: 0 20px 70px rgba(0, 32, 26, 0.08);
+            transition: transform 620ms cubic-bezier(.2,.8,.2,1), box-shadow 620ms ease;
+        }
+        .home-fluid-c #portfolio .grid > div:nth-child(2) {
+            margin-top: 3rem;
+        }
+        .home-fluid-c #portfolio .grid > div:nth-child(3) {
+            margin-top: 6rem;
+        }
+        .home-fluid-c #portfolio .grid > div:hover {
+            transform: translateY(-10px) scale(1.012);
+            box-shadow: 0 38px 110px rgba(0, 32, 26, 0.15);
+        }
+        .home-fluid-c #portfolio img {
+            transition-duration: 1200ms;
+        }
+        .home-fluid-c #portfolio .grid > div:hover img {
+            filter: saturate(1.05) contrast(1.04);
+        }
+        @media (min-width: 1024px) {
+            .home-fluid-c #expertise [class*="order-2"][class*="lg:order-1"] {
+                position: sticky;
+                top: 7rem;
+            }
+            .home-fluid-c #portfolio .text-center {
+                position: sticky;
+                top: 6.5rem;
+                z-index: 2;
+                padding-block: 1.5rem;
+                background: linear-gradient(180deg, rgba(248, 249, 255, 0.94), rgba(248, 249, 255, 0.74));
+                backdrop-filter: blur(14px);
+            }
+        }
+        @supports (animation-timeline: view()) {
+            .home-fluid-c main > section:not(:first-child),
+            .home-fluid-c #expertise [class*="w-80"][class*="h-80"],
+            .home-fluid-c #expertise [class*="gap-y-16"] > div,
+            .home-fluid-c #portfolio .grid > div {
+                animation: c-cinematic-enter both;
+                animation-timeline: view();
+                animation-range: entry 4% cover 36%;
+            }
+            .home-fluid-c main > section:first-child h1 {
+                animation: c-hero-focus both;
+                animation-timeline: scroll(root);
+                animation-range: 0 44rem;
+            }
+        }
+        @keyframes c-cinematic-enter {
+            from { opacity: 0.42; transform: translateY(52px) scale(0.975); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes c-hero-focus {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(0.94); opacity: 0.82; }
+        }
+        @media (max-width: 767px) {
+            .home-fluid-c #portfolio .grid > div:nth-child(2),
+            .home-fluid-c #portfolio .grid > div:nth-child(3) {
+                margin-top: 0;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .home-fluid-c *,
+            .home-fluid-c *::before,
+            .home-fluid-c *::after {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+        }
     </style>
 <script type="application/ld+json">
 {
@@ -56,7 +175,7 @@
 }
 </script>
 </head>
-<body class="text-on-background pt-20">
+<body class="home-fluid-c text-on-background pt-20">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
