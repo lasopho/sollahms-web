@@ -266,6 +266,7 @@
         }
         .cta-drawn-frame-link {
             --cta-button-frame-color: #E9C176;
+            --cta-button-green: #003229;
             background-color: transparent !important;
             color: var(--cta-button-frame-color) !important;
             border-radius: 6px;
@@ -276,9 +277,27 @@
             background-color: transparent !important;
             color: var(--cta-button-frame-color) !important;
         }
-        .cta-drawn-frame-link::before,
+        .cta-drawn-frame-link::before {
+            display: block;
+            background-color: var(--cta-button-frame-color);
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
         .cta-drawn-frame-link .agenda-curtain__fill {
-            display: none;
+            display: inline-flex;
+            color: var(--cta-button-green);
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        .cta-drawn-frame-link:hover::before,
+        .cta-drawn-frame-link:focus-visible::before,
+        .cta-drawn-frame-link:hover .agenda-curtain__fill,
+        .cta-drawn-frame-link:focus-visible .agenda-curtain__fill {
+            clip-path: inset(0 0 0 0);
+        }
+        .cta-drawn-frame-link:not(:hover):not(:focus-visible)::before,
+        .cta-drawn-frame-link:not(:hover):not(:focus-visible) .agenda-curtain__fill {
+            transition-timing-function: cubic-bezier(0.64, 0, 0.36, 1);
         }
         .cta-drawn-frame-link:focus-visible {
             outline-color: var(--cta-button-frame-color);
@@ -299,58 +318,36 @@
             left: 0;
             width: 100%;
             height: 1.5px;
-            transform: scaleX(0);
+            transform: scaleX(1);
             transform-origin: left center;
-            transition-delay: 390ms;
         }
         .cta-drawn-frame-line--right {
             top: 0;
             right: 0;
             width: 1.5px;
             height: 100%;
-            transform: scaleY(0);
+            transform: scaleY(1);
             transform-origin: center top;
-            transition-delay: 260ms;
         }
         .cta-drawn-frame-line--bottom {
             right: 0;
             bottom: 0;
             width: 100%;
             height: 1.5px;
-            transform: scaleX(0);
+            transform: scaleX(1);
             transform-origin: right center;
-            transition-delay: 130ms;
         }
         .cta-drawn-frame-line--left {
             left: 0;
             bottom: 0;
             width: 1.5px;
             height: 100%;
-            transform: scaleY(0);
+            transform: scaleY(1);
             transform-origin: center bottom;
-            transition-delay: 0ms;
-        }
-        .cta-drawn-frame-link:hover .cta-drawn-frame-line,
-        .cta-drawn-frame-link:focus-visible .cta-drawn-frame-line {
-            transform: scale(1);
-        }
-        .cta-drawn-frame-link:hover .cta-drawn-frame-line--top,
-        .cta-drawn-frame-link:focus-visible .cta-drawn-frame-line--top {
-            transition-delay: 0ms;
-        }
-        .cta-drawn-frame-link:hover .cta-drawn-frame-line--right,
-        .cta-drawn-frame-link:focus-visible .cta-drawn-frame-line--right {
-            transition-delay: 130ms;
-        }
-        .cta-drawn-frame-link:hover .cta-drawn-frame-line--bottom,
-        .cta-drawn-frame-link:focus-visible .cta-drawn-frame-line--bottom {
-            transition-delay: 260ms;
-        }
-        .cta-drawn-frame-link:hover .cta-drawn-frame-line--left,
-        .cta-drawn-frame-link:focus-visible .cta-drawn-frame-line--left {
-            transition-delay: 390ms;
         }
         @media (prefers-reduced-motion: reduce) {
+            .cta-drawn-frame-link::before,
+            .cta-drawn-frame-link .agenda-curtain__fill,
             .cta-drawn-frame-line {
                 transition: none;
             }
