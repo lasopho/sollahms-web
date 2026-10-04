@@ -148,8 +148,7 @@
             .home-fluid-b2 #expertise [class*="gap-y-16"] > div,
             .home-fluid-b2 #portfolio .grid > div,
             .home-fluid-b2 #portfolio > div > .text-center,
-            .home-fluid-b2 #portfolio > div > .flex,
-            .home-fluid-b2 main > section:last-of-type > div {
+            .home-fluid-b2 #portfolio > div > .flex {
                 animation: b2-scroll-presence both;
                 animation-timeline: view();
                 animation-range: entry 0% exit 100%;
@@ -163,8 +162,7 @@
             .home-fluid-b2 #expertise [class*="gap-y-16"] > div,
             .home-fluid-b2 #portfolio .grid > div,
             .home-fluid-b2 #portfolio > div > .text-center,
-            .home-fluid-b2 #portfolio > div > .flex,
-            .home-fluid-b2 main > section:last-of-type > div {
+            .home-fluid-b2 #portfolio > div > .flex {
                 animation-timing-function: linear;
             }
         }
@@ -264,6 +262,63 @@
                 transition: none;
             }
         }
+        .cta-frame-block {
+            --cta-frame-progress: 0;
+            --cta-frame-color: #E9C176;
+            position: relative;
+            padding: clamp(2rem, 4vw, 3.5rem);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .cta-frame-line {
+            position: absolute;
+            z-index: 0;
+            background-color: var(--cta-frame-color);
+            opacity: 0.9;
+            pointer-events: none;
+            will-change: transform;
+        }
+        .cta-frame-line--top {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            transform: scaleX(clamp(0, calc(var(--cta-frame-progress) * 4), 1));
+            transform-origin: left center;
+        }
+        .cta-frame-line--right {
+            top: 0;
+            right: 0;
+            width: 1.5px;
+            height: 100%;
+            transform: scaleY(clamp(0, calc((var(--cta-frame-progress) * 4) - 1), 1));
+            transform-origin: center top;
+        }
+        .cta-frame-line--bottom {
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1.5px;
+            transform: scaleX(clamp(0, calc((var(--cta-frame-progress) * 4) - 2), 1));
+            transform-origin: right center;
+        }
+        .cta-frame-line--left {
+            left: 0;
+            bottom: 0;
+            width: 1.5px;
+            height: 100%;
+            transform: scaleY(clamp(0, calc((var(--cta-frame-progress) * 4) - 3), 1));
+            transform-origin: center bottom;
+        }
+        .cta-frame-content {
+            position: relative;
+            z-index: 1;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cta-frame-block {
+                --cta-frame-progress: 1;
+            }
+        }
     </style>
 <script type="application/ld+json">
 {
@@ -359,8 +414,7 @@
         '#expertise [class*="gap-y-16"] > div',
         '#portfolio > div > .text-center',
         '#portfolio .grid > div',
-        '#portfolio > div > .flex',
-        'main > section:last-of-type > div'
+        '#portfolio > div > .flex'
     ];
     const clamp = value => Math.min(1, Math.max(0, value));
     const smooth = value => {
@@ -369,11 +423,13 @@
     };
     let items = [];
     let diagram;
+    let ctaFrame;
     let ticking = false;
 
     const collect = () => {
         items = selectors.flatMap(selector => Array.from(document.querySelectorAll(selector)));
         diagram = document.querySelector('#expertise [class*="w-80"][class*="h-80"]');
+        ctaFrame = document.querySelector('.cta-frame-block');
     };
 
     const reset = () => {
@@ -387,6 +443,10 @@
             ['--pillar-1', '--pillar-2', '--pillar-3', '--pillar-4', '--pillar-center'].forEach(property => {
                 diagram.style.removeProperty(property);
             });
+        }
+        if (ctaFrame) {
+            ctaFrame.style.removeProperty('--cta-frame-progress');
+            ctaFrame.style.willChange = '';
         }
     };
 
@@ -433,6 +493,16 @@
             diagram.style.setProperty('--pillar-3', values[2].toFixed(3));
             diagram.style.setProperty('--pillar-4', values[3].toFixed(3));
             diagram.style.setProperty('--pillar-center', center.toFixed(3));
+        }
+
+        if (ctaFrame) {
+            const rect = ctaFrame.getBoundingClientRect();
+            const frameStart = viewportHeight * 0.96;
+            const frameEnd = viewportHeight * 0.34;
+            const frameProgress = smooth((frameStart - rect.top) / (frameStart - frameEnd));
+
+            ctaFrame.style.setProperty('--cta-frame-progress', frameProgress.toFixed(3));
+            ctaFrame.style.willChange = 'auto';
         }
     };
 
@@ -624,10 +694,16 @@
 </section>
 <!-- CTA Section -->
 <section class="py-32 bg-primary relative overflow-hidden">
-<div class="max-w-4xl mx-auto px-8 relative z-10 text-center">
+<div class="cta-frame-block max-w-4xl mx-auto px-8 relative z-10 text-center">
+<span class="cta-frame-line cta-frame-line--top" aria-hidden="true"></span>
+<span class="cta-frame-line cta-frame-line--right" aria-hidden="true"></span>
+<span class="cta-frame-line cta-frame-line--bottom" aria-hidden="true"></span>
+<span class="cta-frame-line cta-frame-line--left" aria-hidden="true"></span>
+<div class="cta-frame-content">
 <h2 class="font-medium leading-[0.95] mb-8 tracking-[-0.04em] font-headline text-5xl md:text-7xl text-white">Facilitamos decisiones sólidas con análisis riguroso. Hablemos.</h2>
 <div class="flex flex-col md:flex-row gap-6 justify-center">
 <a class="agenda-curtain-link bg-tertiary-fixed text-on-tertiary-fixed px-10 py-5 font-bold hover:bg-tertiary-fixed-dim transition-all rounded-lg flex items-center justify-center gap-2" href="/agenda-asesoria.html"><span class="agenda-curtain"><span class="agenda-curtain__base">Agendar Asesoría <span class="material-symbols-outlined" aria-hidden="true">calendar_today</span></span><span class="agenda-curtain__fill" aria-hidden="true">Agendar Asesoría <span class="material-symbols-outlined" aria-hidden="true">calendar_today</span></span></span></a>
+</div>
 </div>
 </div>
 </section>
