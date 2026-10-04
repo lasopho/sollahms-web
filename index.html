@@ -31,6 +31,92 @@
         }
         body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .home-fluid-b {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .home-fluid-b header {
+            box-shadow: 0 18px 54px rgba(0, 32, 26, 0.08);
+        }
+        .home-fluid-b main > section:not(:first-child) {
+            position: relative;
+        }
+        .home-fluid-b #expertise {
+            background:
+                radial-gradient(circle at 22% 42%, rgba(0, 32, 26, 0.06), transparent 24rem),
+                #eef3ee;
+        }
+        .home-fluid-b #expertise [class*="w-80"][class*="h-80"] {
+            filter: drop-shadow(0 28px 54px rgba(0, 32, 26, 0.12));
+            animation: b-diagram-breathe 7s ease-in-out infinite;
+            transform-origin: center;
+        }
+        .home-fluid-b #expertise svg path {
+            transform-origin: center;
+            animation: b-sector-enter 900ms ease both;
+        }
+        .home-fluid-b #expertise svg path:nth-of-type(2) { animation-delay: 120ms; }
+        .home-fluid-b #expertise svg path:nth-of-type(3) { animation-delay: 240ms; }
+        .home-fluid-b #expertise svg path:nth-of-type(4) { animation-delay: 360ms; }
+        .home-fluid-b #expertise [class*="w-80"][class*="h-80"] > div.absolute {
+            box-shadow: 0 18px 42px rgba(0, 32, 26, 0.13);
+            transition: transform 520ms ease, box-shadow 520ms ease;
+        }
+        .home-fluid-b #expertise [class*="w-80"][class*="h-80"] > div.absolute:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            box-shadow: 0 24px 62px rgba(0, 32, 26, 0.18);
+        }
+        .home-fluid-b #expertise [class*="gap-y-16"] > div {
+            transition: transform 420ms ease;
+        }
+        .home-fluid-b #expertise [class*="gap-y-16"] > div:hover {
+            transform: translateY(-3px);
+        }
+        .home-fluid-b #portfolio .grid > div {
+            border-radius: 8px;
+            box-shadow: 0 18px 58px rgba(0, 32, 26, 0.08);
+            transition: transform 520ms cubic-bezier(.2,.8,.2,1), box-shadow 520ms ease;
+        }
+        .home-fluid-b #portfolio .grid > div:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 34px 92px rgba(0, 32, 26, 0.15);
+        }
+        .home-fluid-b #portfolio img {
+            transition-duration: 1100ms;
+        }
+        .home-fluid-b #portfolio .grid > div:hover img {
+            filter: saturate(1.05) contrast(1.03);
+        }
+        @supports (animation-timeline: view()) {
+            .home-fluid-b main > section:not(:first-child),
+            .home-fluid-b #expertise [class*="gap-y-16"] > div,
+            .home-fluid-b #portfolio .grid > div {
+                animation: b-premium-enter both;
+                animation-timeline: view();
+                animation-range: entry 5% cover 30%;
+            }
+        }
+        @keyframes b-premium-enter {
+            from { opacity: 0.62; transform: translateY(34px) scale(0.985); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes b-sector-enter {
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes b-diagram-breathe {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.015); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .home-fluid-b *,
+            .home-fluid-b *::before,
+            .home-fluid-b *::after {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+        }
     </style>
 <script type="application/ld+json">
 {
@@ -56,7 +142,7 @@
 }
 </script>
 </head>
-<body class="text-on-background pt-20">
+<body class="home-fluid-b text-on-background pt-20">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
