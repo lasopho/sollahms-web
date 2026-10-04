@@ -58,11 +58,11 @@
         .home-fluid-b2 #expertise svg path:nth-of-type(2) { animation-delay: 120ms; }
         .home-fluid-b2 #expertise svg path:nth-of-type(3) { animation-delay: 240ms; }
         .home-fluid-b2 #expertise svg path:nth-of-type(4) { animation-delay: 360ms; }
-        .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] > div.absolute {
+        .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:not(.inset-0) {
             box-shadow: 0 18px 42px rgba(0, 32, 26, 0.13);
             transition: transform 520ms ease, box-shadow 520ms ease;
         }
-        .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:hover {
+        .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:not(.inset-0):hover {
             transform: translate(-50%, -50%) scale(1.08);
             box-shadow: 0 24px 62px rgba(0, 32, 26, 0.18);
         }
@@ -87,6 +87,60 @@
         .home-fluid-b2 #portfolio .grid > div:hover img {
             filter: saturate(1.05) contrast(1.03);
         }
+        .home-pillars-v2 #expertise [class*="w-80"][class*="h-80"] {
+            --pillar-1: 1;
+            --pillar-2: 1;
+            --pillar-3: 1;
+            --pillar-4: 1;
+            --pillar-center: 1;
+            --pillar-1-x: 0px;
+            --pillar-1-y: 0px;
+            --pillar-2-x: 0px;
+            --pillar-2-y: 0px;
+            --pillar-3-x: 0px;
+            --pillar-3-y: 0px;
+            --pillar-4-x: 0px;
+            --pillar-4-y: 0px;
+        }
+        .home-pillars-v2 #expertise svg path {
+            animation: none;
+        }
+        .home-pillars-v2 #expertise svg path:nth-of-type(1) {
+            opacity: var(--pillar-1) !important;
+            transform: scale(calc(0.9 + (var(--pillar-1) * 0.1)));
+        }
+        .home-pillars-v2 #expertise svg path:nth-of-type(2) {
+            opacity: var(--pillar-2) !important;
+            transform: scale(calc(0.9 + (var(--pillar-2) * 0.1)));
+        }
+        .home-pillars-v2 #expertise svg path:nth-of-type(3) {
+            opacity: var(--pillar-3) !important;
+            transform: scale(calc(0.9 + (var(--pillar-3) * 0.1)));
+        }
+        .home-pillars-v2 #expertise svg path:nth-of-type(4) {
+            opacity: var(--pillar-4) !important;
+            transform: scale(calc(0.9 + (var(--pillar-4) * 0.1)));
+        }
+        .home-pillars-v2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:nth-of-type(1) {
+            opacity: var(--pillar-1) !important;
+            transform: translate(calc(-50% + var(--pillar-1-x)), calc(-50% + var(--pillar-1-y))) scale(calc(0.84 + (var(--pillar-1) * 0.16))) !important;
+        }
+        .home-pillars-v2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:nth-of-type(2) {
+            opacity: var(--pillar-2) !important;
+            transform: translate(calc(-50% + var(--pillar-2-x)), calc(-50% + var(--pillar-2-y))) scale(calc(0.84 + (var(--pillar-2) * 0.16))) !important;
+        }
+        .home-pillars-v2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:nth-of-type(3) {
+            opacity: var(--pillar-3) !important;
+            transform: translate(calc(-50% + var(--pillar-3-x)), calc(-50% + var(--pillar-3-y))) scale(calc(0.84 + (var(--pillar-3) * 0.16))) !important;
+        }
+        .home-pillars-v2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:nth-of-type(4) {
+            opacity: var(--pillar-4) !important;
+            transform: translate(calc(-50% + var(--pillar-4-x)), calc(-50% + var(--pillar-4-y))) scale(calc(0.84 + (var(--pillar-4) * 0.16))) !important;
+        }
+        .home-pillars-v2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:nth-of-type(5),
+        .home-pillars-v2 #expertise svg circle {
+            opacity: var(--pillar-center) !important;
+        }
         @supports (animation-timeline: view()) {
             .home-fluid-b2 main > section:first-child > div,
             .home-fluid-b2 main > section:nth-of-type(2) > div,
@@ -95,19 +149,13 @@
             .home-fluid-b2 #portfolio .grid > div,
             .home-fluid-b2 #portfolio > div > .text-center,
             .home-fluid-b2 #portfolio > div > .flex,
-            .home-fluid-b2 main > section:last-of-type > div,
-            .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] {
+            .home-fluid-b2 main > section:last-of-type > div {
                 animation: b2-scroll-presence both;
                 animation-timeline: view();
                 animation-range: entry 0% exit 100%;
             }
             .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] {
-                animation-name: b2-scroll-presence, b-diagram-breathe;
-                animation-timeline: view(), auto;
-                animation-range: entry 0% exit 100%, normal;
-                animation-duration: auto, 7s;
-                animation-timing-function: linear, ease-in-out;
-                animation-iteration-count: 1, infinite;
+                animation: b-diagram-breathe 7s ease-in-out infinite;
             }
             .home-fluid-b2 main > section:first-child > div,
             .home-fluid-b2 main > section:nth-of-type(2) > div,
@@ -168,7 +216,7 @@
 }
 </script>
 </head>
-<body class="home-fluid-b2 text-on-background pt-20">
+<body class="home-fluid-b2 home-pillars-v2 text-on-background pt-20">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
@@ -235,7 +283,6 @@
         'main > section:first-child > div',
         'main > section:nth-of-type(2) > div',
         '#expertise > div > .flex',
-        '#expertise [class*="w-80"][class*="h-80"]',
         '#expertise [class*="gap-y-16"] > div',
         '#portfolio > div > .text-center',
         '#portfolio .grid > div',
@@ -243,11 +290,17 @@
         'main > section:last-of-type > div'
     ];
     const clamp = value => Math.min(1, Math.max(0, value));
+    const smooth = value => {
+        const progress = clamp(value);
+        return progress * progress * (3 - 2 * progress);
+    };
     let items = [];
+    let diagram;
     let ticking = false;
 
     const collect = () => {
         items = selectors.flatMap(selector => Array.from(document.querySelectorAll(selector)));
+        diagram = document.querySelector('#expertise [class*="w-80"][class*="h-80"]');
     };
 
     const reset = () => {
@@ -255,6 +308,13 @@
             element.style.opacity = '';
             element.style.willChange = '';
         });
+        if (diagram) {
+            diagram.style.opacity = '';
+            diagram.style.willChange = '';
+            ['--pillar-1', '--pillar-2', '--pillar-3', '--pillar-4', '--pillar-center', '--pillar-1-x', '--pillar-1-y', '--pillar-2-x', '--pillar-2-y', '--pillar-3-x', '--pillar-3-y', '--pillar-4-x', '--pillar-4-y'].forEach(property => {
+                diagram.style.removeProperty(property);
+            });
+        }
     };
 
     const update = () => {
@@ -282,6 +342,35 @@
             element.style.setProperty('opacity', presence.toFixed(3), 'important');
             element.style.willChange = 'opacity';
         });
+
+        if (diagram) {
+            const rect = diagram.getBoundingClientRect();
+            const buildStart = viewportHeight * 0.95;
+            const buildEnd = viewportHeight * 0.35;
+            const buildProgress = clamp((buildStart - rect.top) / (buildStart - buildEnd));
+            const center = smooth(buildProgress / 0.28);
+            const values = [0.18, 0.28, 0.38, 0.48].map(offset => smooth((buildProgress - offset) / 0.32));
+            const leaving = clamp((rect.bottom - exitEnd) / (viewportHeight * 0.52));
+            const presence = buildProgress < 0.98 ? 1 : Math.max(0.015, Math.pow(leaving, 1.45));
+            const offsets = [
+                [22, 22],
+                [-22, 22],
+                [-22, -22],
+                [22, -22]
+            ];
+
+            diagram.style.setProperty('opacity', presence.toFixed(3), 'important');
+            diagram.style.willChange = 'opacity';
+            diagram.style.setProperty('--pillar-center', center.toFixed(3));
+            values.forEach((value, index) => {
+                const progress = value.toFixed(3);
+                const driftX = ((1 - value) * offsets[index][0]).toFixed(1);
+                const driftY = ((1 - value) * offsets[index][1]).toFixed(1);
+                diagram.style.setProperty(`--pillar-${index + 1}`, progress);
+                diagram.style.setProperty(`--pillar-${index + 1}-x`, `${driftX}px`);
+                diagram.style.setProperty(`--pillar-${index + 1}-y`, `${driftY}px`);
+            });
+        }
     };
 
     const schedule = () => {
