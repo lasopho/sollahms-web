@@ -33,7 +33,7 @@
             font-family: 'Inter', sans-serif;
             background:
                 radial-gradient(circle at 50% -10%, rgba(181, 140, 64, 0.18), transparent 34rem),
-                linear-gradient(180deg, #00201a 0, #00201a 34rem, #f7f5ee 49rem, #fbfcfb 72rem, #eef3ee 100%);
+                linear-gradient(180deg, #00201a 0%, #062f27 16%, #f4f1e7 31%, #fbfcfb 52%, #f3f5ef 72%, #eef3ee 100%);
             overflow-x: hidden;
         }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; }
@@ -65,6 +65,7 @@
         .flow-hero {
             position: relative;
             min-height: 560px;
+            z-index: 0;
             background:
                 radial-gradient(circle at 50% 20%, rgba(181, 140, 64, 0.24), transparent 20rem),
                 radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.10), transparent 22rem),
@@ -73,29 +74,54 @@
         .flow-intro,
         .flow-expertise,
         .flow-portfolio {
+            position: relative;
             padding-top: 6rem;
             padding-bottom: 6rem;
+        }
+        .flow-intro > *,
+        .flow-expertise > *,
+        .flow-portfolio > *,
+        .flow-cta > * {
+            position: relative;
+            z-index: 1;
         }
         .flow-hero::after {
             content: "";
             position: absolute;
             inset: auto 0 -1px;
-            height: 12rem;
-            background: linear-gradient(180deg, rgba(0, 32, 26, 0), #f7f5ee 82%);
+            height: 18rem;
+            background: linear-gradient(180deg, rgba(0, 32, 26, 0), rgba(247, 245, 238, 0.62) 58%, rgba(247, 245, 238, 0));
             pointer-events: none;
         }
-        .flow-intro {
-            background:
-                linear-gradient(180deg, rgba(247, 245, 238, 0.98), rgba(251, 252, 251, 0.86));
-        }
-        .flow-expertise {
-            background:
-                radial-gradient(circle at 18% 38%, rgba(181, 140, 64, 0.16), transparent 24rem),
-                linear-gradient(180deg, rgba(251, 252, 251, 0.92), rgba(239, 244, 239, 0.86) 48%, rgba(251, 252, 251, 0.92));
-        }
+        .flow-intro,
+        .flow-expertise,
         .flow-portfolio {
+            background: transparent;
+        }
+        .flow-intro::before,
+        .flow-expertise::before,
+        .flow-portfolio::before {
+            content: "";
+            position: absolute;
+            inset: -9rem 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .flow-intro::before {
             background:
-                linear-gradient(180deg, rgba(251, 252, 251, 0.94), rgba(247, 245, 238, 0.92) 55%, rgba(0, 32, 26, 0.08));
+                radial-gradient(circle at 78% 34%, rgba(181, 140, 64, 0.10), transparent 28rem),
+                linear-gradient(180deg, rgba(247, 245, 238, 0), rgba(247, 245, 238, 0.76) 22%, rgba(251, 252, 251, 0.72) 68%, rgba(251, 252, 251, 0));
+        }
+        .flow-expertise::before {
+            background:
+                radial-gradient(circle at 18% 42%, rgba(181, 140, 64, 0.14), transparent 30rem),
+                radial-gradient(circle at 86% 64%, rgba(0, 32, 26, 0.06), transparent 32rem),
+                linear-gradient(180deg, rgba(251, 252, 251, 0), rgba(239, 244, 239, 0.58) 44%, rgba(251, 252, 251, 0));
+        }
+        .flow-portfolio::before {
+            background:
+                radial-gradient(circle at 70% 20%, rgba(181, 140, 64, 0.10), transparent 26rem),
+                linear-gradient(180deg, rgba(251, 252, 251, 0), rgba(247, 245, 238, 0.62) 52%, rgba(0, 32, 26, 0.06) 84%, rgba(0, 32, 26, 0));
         }
         .flow-cta {
             padding-top: 7rem;
@@ -149,9 +175,14 @@
         @media (max-width: 767px) {
             body {
                 background:
-                    linear-gradient(180deg, #00201a 0, #00201a 30rem, #f7f5ee 43rem, #fbfcfb 68rem, #eef3ee 100%);
+                    linear-gradient(180deg, #00201a 0%, #062f27 18%, #f4f1e7 34%, #fbfcfb 58%, #eef3ee 100%);
             }
-            .flow-hero::after { height: 8rem; }
+            .flow-hero::after { height: 12rem; }
+            .flow-intro::before,
+            .flow-expertise::before,
+            .flow-portfolio::before {
+                inset: -6rem 0;
+            }
         }
         @media (min-width: 768px) {
             .flow-hero { min-height: 640px; }
