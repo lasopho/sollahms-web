@@ -1,0 +1,266 @@
+:root {
+  --sollahms-green: #003229;
+  --sollahms-green-deep: #00261e;
+  --sollahms-green-dark: #001f19;
+  --sollahms-gold: #E9C176;
+  --sollahms-cream: #FFDEA5;
+  --sollahms-soft: #f8f9ff;
+  --sollahms-line: rgba(0, 50, 41, 0.14);
+  --sollahms-shadow: 0 26px 80px rgba(0, 32, 26, 0.11);
+  --sollahms-shadow-soft: 0 18px 52px rgba(0, 32, 26, 0.08);
+  --sollahms-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --sollahms-green-v2:
+    radial-gradient(1200px circle at 18% 16%, rgba(20, 88, 73, 0.42), transparent 58%),
+    radial-gradient(980px circle at 86% 18%, rgba(233, 193, 118, 0.08), transparent 54%),
+    linear-gradient(155deg, var(--sollahms-green) 0%, var(--sollahms-green-deep) 100%);
+  --sollahms-green-v2-deep:
+    radial-gradient(1100px circle at 22% 12%, rgba(31, 101, 84, 0.24), transparent 55%),
+    radial-gradient(1000px circle at 82% 78%, rgba(0, 25, 20, 0.48), transparent 62%),
+    linear-gradient(160deg, var(--sollahms-green) 0%, var(--sollahms-green-deep) 55%, var(--sollahms-green-dark) 100%);
+}
+
+.sollahms-system {
+  background:
+    radial-gradient(900px circle at 8% 0%, rgba(0, 50, 41, 0.045), transparent 58%),
+    var(--sollahms-soft);
+  overflow-x: hidden;
+}
+
+.sollahms-system header {
+  box-shadow: 0 18px 54px rgba(0, 32, 26, 0.08) !important;
+}
+
+.sollahms-system header a,
+.sollahms-system header button {
+  transform: translateZ(0);
+}
+
+.sollahms-system header nav > div:last-child > a[href*="agenda-asesoria"] {
+  background: var(--sollahms-cream) !important;
+  color: #261900 !important;
+  border: 1px solid rgba(233, 193, 118, 0.52);
+  box-shadow: 0 12px 30px rgba(0, 32, 26, 0.08);
+  transition:
+    background-color 420ms var(--sollahms-ease),
+    color 420ms var(--sollahms-ease),
+    border-color 420ms var(--sollahms-ease),
+    box-shadow 420ms var(--sollahms-ease);
+}
+
+.sollahms-system header nav > div:last-child > a[href*="agenda-asesoria"]:hover,
+.sollahms-system header nav > div:last-child > a[href*="agenda-asesoria"]:focus-visible {
+  background: var(--sollahms-gold) !important;
+  border-color: var(--sollahms-gold);
+  box-shadow: 0 16px 38px rgba(0, 32, 26, 0.12);
+}
+
+.sollahms-contact main > section:first-child,
+.sollahms-legal main > section:first-child,
+.sollahms-error main > section:first-child {
+  background: var(--sollahms-green-v2) !important;
+}
+
+.sollahms-contact main > section:nth-of-type(2),
+.sollahms-agenda main,
+.sollahms-legal main > div {
+  background:
+    radial-gradient(960px circle at 0% 18%, rgba(0, 50, 41, 0.045), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 249, 255, 0));
+}
+
+.sollahms-system footer {
+  background:
+    linear-gradient(180deg, rgba(248, 249, 255, 0.86), rgba(241, 245, 249, 0.94)) !important;
+  border-color: rgba(0, 50, 41, 0.10) !important;
+}
+
+.sollahms-system a,
+.sollahms-system button,
+.sollahms-system input,
+.sollahms-system select,
+.sollahms-system textarea {
+  transition:
+    background-color 360ms var(--sollahms-ease),
+    border-color 360ms var(--sollahms-ease),
+    color 360ms var(--sollahms-ease),
+    box-shadow 360ms var(--sollahms-ease),
+    opacity 360ms var(--sollahms-ease);
+}
+
+.sollahms-system a[href*="agenda-asesoria"].bg-primary,
+.sollahms-system button.bg-primary,
+.sollahms-system a.bg-primary {
+  background: var(--sollahms-green) !important;
+  box-shadow: 0 14px 34px rgba(0, 32, 26, 0.12);
+}
+
+.sollahms-system a[href*="agenda-asesoria"].bg-primary:hover,
+.sollahms-system button.bg-primary:hover,
+.sollahms-system a.bg-primary:hover {
+  background: var(--sollahms-gold) !important;
+  color: var(--sollahms-green) !important;
+  box-shadow: 0 18px 44px rgba(0, 32, 26, 0.14);
+}
+
+.sollahms-system input:not([type="hidden"]),
+.sollahms-system select,
+.sollahms-system textarea {
+  border: 1px solid rgba(0, 50, 41, 0.14) !important;
+  border-radius: 8px !important;
+  background-color: rgba(255, 255, 255, 0.78) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.sollahms-system input:not([type="hidden"]):focus,
+.sollahms-system select:focus,
+.sollahms-system textarea:focus,
+.sollahms-system input:not([type="hidden"]):focus-visible,
+.sollahms-system select:focus-visible,
+.sollahms-system textarea:focus-visible {
+  border-color: var(--sollahms-gold) !important;
+  outline: 2px solid rgba(233, 193, 118, 0.34) !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(233, 193, 118, 0.10) !important;
+}
+
+.sollahms-agenda main > div > .grid > div:first-child {
+  background: var(--sollahms-green-v2) !important;
+  border-radius: 8px;
+  box-shadow: var(--sollahms-shadow-soft);
+}
+
+.sollahms-agenda main > div > .grid > div:first-child > .absolute:first-child {
+  background:
+    radial-gradient(820px circle at 24% 18%, rgba(233, 193, 118, 0.13), transparent 58%),
+    linear-gradient(155deg, rgba(0, 50, 41, 0.86), rgba(0, 38, 30, 0.98)) !important;
+}
+
+.sollahms-agenda section[aria-labelledby="agenda-reserva-titulo"],
+.sollahms-contact main > section:nth-of-type(2) > div:last-child {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid var(--sollahms-line) !important;
+  border-top: 1px solid var(--sollahms-line) !important;
+  border-radius: 8px;
+  box-shadow: var(--sollahms-shadow-soft) !important;
+  backdrop-filter: blur(14px);
+}
+
+.sollahms-agenda [class*="border-l-4"],
+.sollahms-agenda [class*="border-y"] {
+  border-left-width: 1px !important;
+  border-color: var(--sollahms-line) !important;
+}
+
+.sollahms-agenda [class*="bg-surface-container-lowest"][class*="border"],
+.sollahms-agenda [class*="bg-surface-container-low"],
+.sollahms-contact [class*="bg-white"] {
+  border-color: var(--sollahms-line) !important;
+}
+
+.sollahms-agenda main section .grid > div[class*="bg-surface-container-lowest"][class*="border"],
+.sollahms-agenda main section .grid > div[class*="bg-surface-container-low"] {
+  border-radius: 8px;
+  box-shadow: none !important;
+}
+
+.sollahms-contact button[type="submit"],
+.sollahms-contact a[href*="agenda-asesoria"],
+.sollahms-error a[href="/"] {
+  background: var(--sollahms-gold) !important;
+  color: #261900 !important;
+  border-color: var(--sollahms-gold) !important;
+  box-shadow: 0 14px 34px rgba(0, 32, 26, 0.10);
+}
+
+.sollahms-contact button[type="submit"]:hover,
+.sollahms-contact a[href*="agenda-asesoria"]:hover,
+.sollahms-error a[href="/"]:hover {
+  background: var(--sollahms-green) !important;
+  color: #fff !important;
+  border-color: var(--sollahms-green) !important;
+}
+
+.sollahms-detail {
+  background:
+    radial-gradient(900px circle at 8% 0%, rgba(0, 50, 41, 0.06), transparent 58%),
+    var(--sollahms-soft);
+}
+
+.sollahms-detail main > section:first-child > div.absolute.inset-0 {
+  background:
+    radial-gradient(1000px circle at 20% 18%, rgba(233, 193, 118, 0.12), transparent 52%),
+    linear-gradient(0deg, rgba(0, 50, 41, 0.84), rgba(0, 50, 41, 0.18) 54%, rgba(0, 25, 20, 0.08)) !important;
+}
+
+.sollahms-detail .property-hero-image {
+  filter: saturate(0.94) contrast(1.02) brightness(0.96) !important;
+  transform: scale(1.001);
+  transition: filter 900ms var(--sollahms-ease), transform 900ms var(--sollahms-ease);
+}
+
+.sollahms-detail main > section:first-child:hover .property-hero-image {
+  filter: saturate(1.02) contrast(1.04) brightness(0.98) !important;
+  transform: scale(1.018);
+}
+
+.sollahms-detail main > section:nth-of-type(2) {
+  background:
+    radial-gradient(900px circle at 0% 16%, rgba(0, 50, 41, 0.045), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 249, 255, 0));
+}
+
+.sollahms-detail [class*="bg-surface-container-low"],
+.sollahms-detail [class*="bg-surface-container-lowest"] {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 50, 41, 0.08);
+  box-shadow: none !important;
+}
+
+.sollahms-detail .space-y-8 .grid > div[class*="bg-surface-container-lowest"] {
+  background: rgba(255, 255, 255, 0.70) !important;
+  border-color: rgba(0, 50, 41, 0.10);
+}
+
+.sollahms-detail aside > div {
+  border-top-width: 1px !important;
+  border-color: rgba(233, 193, 118, 0.72) !important;
+  border-radius: 8px;
+  box-shadow: var(--sollahms-shadow) !important;
+}
+
+.sollahms-detail aside a {
+  border-radius: 6px;
+}
+
+.sollahms-detail aside a[href*="agenda-asesoria"] {
+  background: var(--sollahms-gold) !important;
+  color: #261900 !important;
+}
+
+.sollahms-detail aside a[href*="agenda-asesoria"]:hover {
+  background: var(--sollahms-cream) !important;
+}
+
+.sollahms-detail aside a[href*="contacto"] {
+  background: var(--sollahms-green) !important;
+  color: #fff !important;
+}
+
+.sollahms-detail aside a[href*="contacto"]:hover {
+  background: var(--sollahms-green-deep) !important;
+}
+
+.sollahms-detail iframe {
+  border-radius: 8px;
+  box-shadow: var(--sollahms-shadow-soft) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sollahms-system *,
+  .sollahms-system *::before,
+  .sollahms-system *::after {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
