@@ -29,8 +29,143 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at 50% -10%, rgba(181, 140, 64, 0.18), transparent 34rem),
+                linear-gradient(180deg, #00201a 0, #00201a 34rem, #f7f5ee 49rem, #fbfcfb 72rem, #eef3ee 100%);
+            overflow-x: hidden;
+        }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .site-shell {
+            position: relative;
+            isolation: isolate;
+        }
+        .site-shell::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.16), transparent 20rem),
+                radial-gradient(circle at 9% 44%, rgba(181, 140, 64, 0.10), transparent 22rem),
+                radial-gradient(circle at 70% 78%, rgba(0, 32, 26, 0.08), transparent 28rem);
+        }
+        .flow-nav {
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+            background: rgba(255, 255, 255, 0.76);
+            box-shadow: 0 18px 42px rgba(0, 32, 26, 0.06);
+        }
+        .flow-mobile-menu {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 28px 70px rgba(0, 32, 26, 0.12);
+        }
+        .flow-hero {
+            position: relative;
+            min-height: 560px;
+            background:
+                radial-gradient(circle at 50% 20%, rgba(181, 140, 64, 0.24), transparent 20rem),
+                radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.10), transparent 22rem),
+                linear-gradient(145deg, #00201a 0%, #062f27 50%, #001713 100%);
+        }
+        .flow-intro,
+        .flow-expertise,
+        .flow-portfolio {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .flow-hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 -1px;
+            height: 12rem;
+            background: linear-gradient(180deg, rgba(0, 32, 26, 0), #f7f5ee 82%);
+            pointer-events: none;
+        }
+        .flow-intro {
+            background:
+                linear-gradient(180deg, rgba(247, 245, 238, 0.98), rgba(251, 252, 251, 0.86));
+        }
+        .flow-expertise {
+            background:
+                radial-gradient(circle at 18% 38%, rgba(181, 140, 64, 0.16), transparent 24rem),
+                linear-gradient(180deg, rgba(251, 252, 251, 0.92), rgba(239, 244, 239, 0.86) 48%, rgba(251, 252, 251, 0.92));
+        }
+        .flow-portfolio {
+            background:
+                linear-gradient(180deg, rgba(251, 252, 251, 0.94), rgba(247, 245, 238, 0.92) 55%, rgba(0, 32, 26, 0.08));
+        }
+        .flow-cta {
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(181, 140, 64, 0.20), transparent 26rem),
+                linear-gradient(150deg, #00201a 0%, #063229 54%, #001713 100%);
+        }
+        .flow-cta::before,
+        .flow-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), transparent 38%);
+        }
+        .flow-footer {
+            position: relative;
+            background: linear-gradient(180deg, rgba(247, 245, 238, 0.96), #eef2ef);
+        }
+        .soft-node {
+            box-shadow: 0 18px 42px rgba(0, 32, 26, 0.10);
+            border-color: rgba(255, 255, 255, 0.72);
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(16px);
+        }
+        .property-card {
+            border: 1px solid rgba(255, 255, 255, 0.68);
+            background: rgba(255, 255, 255, 0.64);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 22px 70px rgba(0, 32, 26, 0.08);
+        }
+        .property-card:hover {
+            box-shadow: 0 32px 90px rgba(0, 32, 26, 0.14);
+            transform: translateY(-6px);
+        }
+        .flow-reveal {
+            animation: flow-reveal both;
+            animation-timeline: view();
+            animation-range: entry 8% cover 32%;
+        }
+        @keyframes flow-reveal {
+            from { opacity: 0.72; transform: translateY(28px) scale(0.992); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .flow-reveal { animation: none; }
+            .property-card,
+            .property-card:hover { transform: none; }
+        }
+        @media (max-width: 767px) {
+            body {
+                background:
+                    linear-gradient(180deg, #00201a 0, #00201a 30rem, #f7f5ee 43rem, #fbfcfb 68rem, #eef3ee 100%);
+            }
+            .flow-hero::after { height: 8rem; }
+        }
+        @media (min-width: 768px) {
+            .flow-hero { min-height: 640px; }
+            .flow-intro,
+            .flow-expertise,
+            .flow-portfolio {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+            .flow-cta {
+                padding-top: 9rem;
+                padding-bottom: 9rem;
+            }
+        }
     </style>
 <script type="application/ld+json">
 {
@@ -56,12 +191,12 @@
 }
 </script>
 </head>
-<body class="text-on-background pt-20">
+<body class="text-on-background pt-20 antialiased">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
 <!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+<header class="flow-nav fixed top-0 w-full z-50 backdrop-blur-xl">
 <nav class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20" aria-label="Navegación principal">
 <a class="text-2xl font-black tracking-tighter text-emerald-950" href="/">Sollahms</a>
 <div class="hidden md:flex items-center space-x-8">
@@ -77,7 +212,7 @@
 </button>
 </div>
 </nav>
-<div id="mobile-menu" class="hidden md:hidden absolute top-full inset-x-0 bg-white shadow-lg border-t border-slate-200">
+<div id="mobile-menu" class="flow-mobile-menu hidden md:hidden absolute top-full inset-x-0 border-t border-white/60">
 <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col" aria-label="Navegación móvil">
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="#expertise">Expertise</a>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="#portfolio">Asset Portfolio</a>
@@ -116,11 +251,11 @@
     });
 })();
 </script>
-<main id="contenido-principal">
+<main id="contenido-principal" class="site-shell">
 <!-- Hero Section (formerly Banner) -->
-<section class="bg-[#00201a] min-h-[500px] flex flex-col overflow-hidden items-center">
+<section class="flow-hero min-h-[560px] md:min-h-[640px] flex flex-col overflow-hidden items-center">
 <!-- Left Content -->
-<div class="flex-1 flex flex-col justify-center px-8 md:px-16 py-16 md:py-24 text-white text-center">
+<div class="relative z-10 flex-1 flex flex-col justify-center px-8 md:px-16 py-20 md:py-28 text-white text-center">
 <div class="max-w-xl mx-auto">
 <span class="text-sm font-bold tracking-[0.2em] uppercase text-primary-fixed mb-6 block">INVIERTE EN BIENES RAÍCES</span>
 <h1 class="text-6xl md:text-8xl font-medium leading-[0.95] mb-8 tracking-[-0.04em] font-headline">Sollahms <span class="block text-4xl md:text-6xl mt-4 opacity-90 font-normal">Inversión Inmobiliaria Estratégica</span></h1>
@@ -129,7 +264,7 @@
 <!-- Right Image -->
 </section>
 <!-- About Intro Section -->
-<section class="py-24 bg-surface">
+<section class="flow-intro flow-reveal py-24 md:py-32">
 <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
 <div class="md:col-span-8">
 <h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">Especialistas en servicios inmobiliarios con foco estratégico y visión integral del negocio.</h2>
@@ -140,7 +275,7 @@
 </div>
 </section>
 <!-- Services Process Diagram Section -->
-<section id="expertise" class="py-24 bg-surface-container-low overflow-hidden">
+<section id="expertise" class="flow-expertise flow-reveal py-24 md:py-32 overflow-hidden">
 <div class="max-w-7xl mx-auto px-8">
 <div class="flex justify-between items-end mb-20">
 <div>
@@ -167,16 +302,16 @@
 <circle class="fill-none stroke-outline-variant/20" cx="100" cy="100" r="42" stroke-dasharray="2 4"></circle>
 </svg>
 <!-- Floating Icon Nodes -->
-<div class="absolute top-[15%] left-[15%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center">
+<div class="soft-node absolute top-[15%] left-[15%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border flex items-center justify-center">
 <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">corporate_fare</span>
 </div>
-<div class="absolute top-[15%] left-[85%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center">
+<div class="soft-node absolute top-[15%] left-[85%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border flex items-center justify-center">
 <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">chat_bubble</span>
 </div>
-<div class="absolute top-[85%] left-[85%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center">
+<div class="soft-node absolute top-[85%] left-[85%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border flex items-center justify-center">
 <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">query_stats</span>
 </div>
-<div class="absolute top-[85%] left-[15%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-lg border border-slate-100 flex items-center justify-center">
+<div class="soft-node absolute top-[85%] left-[15%] -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border flex items-center justify-center">
 <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">handshake</span>
 </div>
 <!-- Center Logo/Text -->
@@ -220,7 +355,7 @@
 </div>
 </section>
 <!-- Featured Assets Section -->
-<section class="py-24 bg-surface" id="portfolio">
+<section class="flow-portfolio flow-reveal py-24 md:py-32" id="portfolio">
 <div class="max-w-7xl mx-auto px-8">
 <div class="text-center mb-16">
 <span class="text-tertiary-container font-bold text-[11px] uppercase tracking-[0.25em] mb-3 block">Asset Portfolio</span>
@@ -228,7 +363,7 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Property Card 1 -->
-<div class="group bg-surface-container-lowest overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+<div class="property-card group overflow-hidden rounded-lg transition-all duration-500">
 <div class="relative h-64 overflow-hidden"><a class="block w-full h-full" href="/edificio-suecia.html"><img alt="Vista principal de Edificio Suecia en Providencia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="/assets/propiedades/suecia-principal.webp" width="1600" height="1000" loading="lazy" decoding="async"></a><div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-tighter">Leben</div></div>
 <div class="p-8">
 <span class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1 block">Providencia, Santiago</span>
@@ -240,7 +375,7 @@
 <a class="block w-full py-3 text-center text-xs font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all" href="/edificio-suecia.html">VER DETALLES</a>
 </div></div>
 <!-- Property Card 2 -->
-<div class="group bg-surface-container-lowest overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+<div class="property-card group overflow-hidden rounded-lg transition-all duration-500">
 <div class="relative h-64 overflow-hidden">
 <a class="block w-full h-full" href="/inn-puerto-chico.html"><img alt="Vista principal de INN Puerto Chico en Puerto Varas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="/assets/propiedades/inn-puerto-chico-principal.webp" width="1600" height="1000" loading="lazy" decoding="async"></a>
 <div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-tighter">Leben</div>
@@ -256,7 +391,7 @@
 </div>
 </div>
 <!-- Property Card 3 -->
-<div class="group bg-surface-container-lowest overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+<div class="property-card group overflow-hidden rounded-lg transition-all duration-500">
 <div class="relative h-64 overflow-hidden">
 <a class="block w-full h-full" href="/plaza-las-condes.html"><img alt="Vista principal de Plaza Las Condes en Avenida Las Condes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="/assets/propiedades/plaza-las-condes-principal.webp" width="1600" height="1000" loading="lazy" decoding="async"></a>
 <div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-tighter">Sento</div>
@@ -278,7 +413,7 @@
 </div>
 </section>
 <!-- CTA Section -->
-<section class="py-32 bg-primary relative overflow-hidden">
+<section class="flow-cta flow-reveal py-28 md:py-36 relative overflow-hidden">
 <div class="max-w-4xl mx-auto px-8 relative z-10 text-center">
 <h2 class="font-medium leading-[0.95] mb-8 tracking-[-0.04em] font-headline text-5xl md:text-7xl text-white">Facilitamos decisiones sólidas con análisis riguroso. Hablemos.</h2>
 <div class="flex flex-col md:flex-row gap-6 justify-center">
@@ -288,7 +423,7 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-slate-100 w-full pt-16 pb-8">
+<footer class="flow-footer w-full pt-16 pb-8">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8">
 <div class="col-span-1">
 <a class="text-xl font-bold text-emerald-950 mb-4 block" href="/">Sollahms</a>
