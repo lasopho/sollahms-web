@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FIELDS = {'nombre', 'inmobiliaria', 'comuna', 'region', 'direccion', 'estado', 'entrega', 'tipologias', 'precioDesdeUF', 'amenities', 'descripcionLarga', 'superficieDesdeM2', 'mapQuery', 'etapas', 'tipoActivo'}
-COMMERCIAL = {'direccion', 'estado', 'entrega', 'tipologias', 'precioDesdeUF', 'amenities', 'descripcionLarga', 'superficieDesdeM2', 'mapQuery', 'etapas'}
+COMMERCIAL = {'comuna', 'region', 'direccion', 'estado', 'entrega', 'tipologias', 'precioDesdeUF', 'amenities', 'descripcionLarga', 'superficieDesdeM2', 'mapQuery', 'etapas'}
 
 def main():
     parser = argparse.ArgumentParser()
@@ -46,11 +46,10 @@ def main():
                 source = args.image_cache / cached['file']
                 if not source.is_file():
                     continue
-                assert hashlib.sha256(source.read_bytes()).hexdigest()
                 shutil.copyfile(source, destination / cached['file'])
                 local = dict(img, localPath='/assets/propiedades/catalogo/' + cached['file'], width=cached['width'], height=cached['height'])
                 usable.append(local)
-                provenance[img['url']] = dict(cached, localPath=local['localPath'], sourceUrl=img['sourceUrl'], checkedAt='2026-10-09')
+                provenance[img['url']] = dict(cached, localSha256=hashlib.sha256(source.read_bytes()).hexdigest(), localPath=local['localPath'], sourceUrl=img['sourceUrl'], checkedAt='2026-10-09')
             research['images'] = usable
             if not usable and research['originalImages']:
                 research['pendingFields'] = list(dict.fromkeys(research.get('pendingFields', []) + ['Disponibilidad de fotografías oficiales descargables']))

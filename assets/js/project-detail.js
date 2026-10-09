@@ -21,10 +21,11 @@
     });
     window.addEventListener('resize', () => { if (window.innerWidth > 900 && button) close(); });
     // Only load third-party content when the visitor chooses to open it.
+    const permittedHosts = new Set(JSON.parse(document.getElementById('project-embed-hosts')?.textContent || '[]'));
     document.querySelectorAll('[data-embed-src]').forEach(loader => {
         loader.addEventListener('click', () => {
             const url = new URL(loader.dataset.embedSrc);
-            if (url.protocol !== 'https:' || !['my.matterport.com', 'mpembed.com', 'www.google.com', 'www.youtube.com', 'player.vimeo.com'].includes(url.hostname)) return;
+            if (url.protocol !== 'https:' || !permittedHosts.has(url.hostname)) return;
             const frame = document.createElement('iframe');
             frame.src = url.href;
             frame.title = loader.dataset.embedTitle;
