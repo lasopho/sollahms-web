@@ -217,27 +217,21 @@
 </div>
 <script>
 (() => {
-    const projects = {
-        'inn-puerto-chico': {
-            name: 'INN Puerto Chico',
-            url: '/inn-puerto-chico.html',
-        },
-        'edificio-suecia': {
-            name: 'Edificio Suecia',
-            url: '/edificio-suecia.html',
-        },
-        'plaza-las-condes': {
-            name: 'Plaza Las Condes',
-            url: '/plaza-las-condes.html',
-        },
-    };
-    const project = new URLSearchParams(window.location.search).get('proyecto');
-    if (Object.prototype.hasOwnProperty.call(projects, project)) {
-        document.getElementById('agenda-reserva-titulo').textContent = `Asesoría sobre ${projects[project].name}`;
-        const backLink = document.getElementById('agenda-project-back-link');
-        backLink.href = projects[project].url;
-        backLink.textContent = `Volver a ${projects[project].name}`;
-        document.getElementById('agenda-project-back').hidden = false;
+    const projectSlug = new URLSearchParams(window.location.search).get('proyecto');
+    if (projectSlug) {
+        fetch('/data/proyectos.json')
+            .then(response => response.ok ? response.json() : [])
+            .then(projects => {
+                if (!Array.isArray(projects)) return;
+                const project = projects.find(item => item.slug === projectSlug);
+                if (!project || typeof project.nombre !== 'string') return;
+                document.getElementById('agenda-reserva-titulo').textContent = 'Asesoría sobre ' + project.nombre;
+                const backLink = document.getElementById('agenda-project-back-link');
+                backLink.href = project.detalleUrl || '/proyectos.html';
+                backLink.textContent = 'Volver a ' + project.nombre;
+                document.getElementById('agenda-project-back').hidden = false;
+            })
+            .catch(() => { /* Optional context must not interrupt booking. */ });
     }
 
     const form = document.getElementById('booking-form');
