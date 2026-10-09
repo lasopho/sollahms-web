@@ -2,13 +2,15 @@
 
 Rama `codex/fichas-proyectos-completas`, creada desde `origin/main` en un worktree independiente. El checkout compartido `codex/site-visual-system-v1` permanece limpio. Los cambios no se fusionan ni se despliegan a producción.
 
+La revisión adicional de Preview, formularios e identidades está en [revision-preview.md](revision-preview.md). Las pruebas del desarrollo inicial se conservan abajo como evidencia histórica.
+
 ## Cobertura y fuentes
 
 - 148 proyectos reales; 148 fichas desarrolladas: 144 nuevas y 4 destacadas revisadas conservando su estructura.
-- 13 inmobiliarias investigadas; 143 fuentes de proyecto identificadas y 5 identidades de etapa aún pendientes.
+- 13 inmobiliarias investigadas; 144 fuentes de proyecto identificadas y 4 identidades de etapa aún pendientes. Plaza Cervantes Torre A se confirmó en la promoción oficial vigente de Maestra; su dirección y stock siguen pendientes.
 - 18 proyectos con Matterport, 23 modelos o URLs Matterport/MPEmbed.
 - 137 mapas, basados en direcciones oficiales: 133 fichas nuevas y 4 destacadas. Google determina el marcador; no se publican coordenadas estimadas.
-- 139 proyectos con fotografías oficiales descargadas; 491 WebP locales con URL, origen, dimensiones y hashes en `data/fuentes-imagenes.json`.
+- 140 proyectos con fotografías oficiales descargadas; 492 WebP locales con URL, origen, dimensiones y hashes en `data/fuentes-imagenes.json`.
 - 62 proyectos con experiencias oficiales enlazadas, 100 instancias y 98 integraciones habilitadas. Las instancias repetidas corresponden a enlaces que la inmobiliaria publica explícitamente para ambas etapas.
 - 10 fichas sin campos pendientes; 138 fichas mantienen algún dato pendiente. Este estado describe la evidencia comercial disponible, no la existencia de la página.
 
@@ -16,7 +18,6 @@ El inventario por proyecto y sus fuentes está en [registro-fichas-proyectos.md]
 
 Etapas sin identidad oficial exacta confirmada:
 
-- Plaza Cervantes - Torre A (`plaza-cervantes`)
 - Mapocho 3521 - Edificio A (`mapocho-3521-edificio-a`)
 - Froilán Roa 5731 - Torre Norte (`froilan-roa-5731-torre-norte`)
 - Froilán Roa 5731 - Torre Sur (`froilan-roa-5731-torre-sur`)
@@ -24,7 +25,7 @@ Etapas sin identidad oficial exacta confirmada:
 
 Las seis fichas Domeyko, Jofré, Curicó, San Ignacio, Angamos y Mirador La Florida publican rangos de superficies incompatibles entre encabezado y plantas. Se retiraron sus rangos globales útil/total y mínimos de superficie; `surfaceEvidence` conserva 41 plantas individuales. No se consolida un stock que la fuente no acredita. También se corrigieron dirección, precio, entrega y equipamiento de las destacadas cuando la fuente actual difiere del catálogo anterior.
 
-## Pruebas completadas
+## Pruebas del desarrollo inicial (registro histórico)
 
 - `python3 tests/validate-project-details.py`: 148 páginas, 3.284 enlaces internos, 137 mapas, 153 URLs únicas de sitemap. Comprueba fuentes de los embeds, hosts HTTPS permitidos, identidad de modelos, enlaces originales, ubicación verificada, precios pendientes, IDs, contactos y reservas contextuales. Incluye las cuatro destacadas.
 - `node --test tests/booking-project-context.mjs`: 6 pruebas aprobadas. Comprueba contexto de proyectos conocidos, payload previo sin proyecto, rechazo de slugs desconocidos/tipos inválidos/claves adicionales y errores del proveedor. Usa un backend simulado; no envía reservas ni correos reales.
@@ -49,7 +50,7 @@ Una portada con Play acredita que la experiencia original cargó dentro de la fi
 
 ## Datos y ubicaciones pendientes
 
-Hay 34 precios, 52 fechas/condiciones de entrega y 9 direcciones pendientes. También quedan 89 superficies útiles y 53 totales sin corroboración, 7 distribuciones de dormitorios y 14 de baños residenciales. La parcela tiene superficie de terreno verificada. Los campos no aplicables a parcelas/comerciales no se presentan como pendientes residenciales.
+Hay 33 precios, 52 fechas/condiciones de entrega y 9 direcciones pendientes. También quedan 89 superficies útiles y 53 totales sin corroboración, 7 distribuciones de dormitorios y 14 de baños residenciales. La parcela tiene superficie de terreno verificada. Los campos no aplicables a parcelas/comerciales no se presentan como pendientes residenciales.
 
 11 proyectos mantienen el apartado de ubicación sin mapa, porque falta dirección exacta, comuna o una referencia de acceso inequívoca:
 

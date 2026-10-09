@@ -187,6 +187,7 @@
     const button = form.querySelector('button[type="submit"]');
     const status = document.getElementById('form-status');
     let sending = false;
+    let projectSubject = "";
 
     const contextualizeProject = async () => {
         const slug = new URLSearchParams(window.location.search).get('proyecto');
@@ -204,7 +205,11 @@
             context.textContent = 'Estás consultando por ' + project.nombre + '.';
             context.hidden = false;
             const subject = document.getElementById('asunto');
-            if (subject.value === '') subject.value = 'Consulta sobre ' + project.nombre;
+            projectSubject = 'Consulta sobre ' + project.nombre;
+            if (subject.value === '') subject.value = projectSubject;
+            document.querySelectorAll('a[href="/agenda-asesoria.html"]').forEach(link => {
+                link.href = '/agenda-asesoria.html?proyecto=' + encodeURIComponent(slug);
+            });
         } catch {
             // La contextualización es opcional y no debe impedir el envío.
         }
@@ -237,6 +242,7 @@
             }
 
             form.reset();
+            if (projectSubject) form.elements.asunto.value = projectSubject;
             status.textContent = 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.';
         } catch {
             status.textContent = 'No pudimos enviar el mensaje. Inténtalo de nuevo más tarde.';
