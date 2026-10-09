@@ -47,11 +47,13 @@ El proyecto confirmado es `project-wrapp`, repositorio `lasopho/sollahms-web`. A
 
 La vista previa tiene protección Vercel SSO. El acceso normal en el navegador integrado llegó a la pantalla de login. La revisión automática rechazó la herramienta que crearía o reutilizaría un enlace temporal de autenticación por ampliar acceso a una vista protegida sin autorización específica. No se desactivó la protección ni se ejecutó un método indirecto para saltar ese rechazo.
 
-**Pendiente:** verificar navegación y función de contacto en el despliegue remoto tras disponer de una sesión Vercel autorizada o permiso específico para el acceso temporal. El estado READY comprueba el despliegue, no el envío remoto ni la recepción de correo.
+**Pendiente:** verificar navegación y función de contacto en el despliegue remoto tras disponer de una sesión Vercel autorizada. El usuario confirmó que debe mantenerse la protección y no autoriza un enlace temporal de acceso sin autenticación. El estado READY comprueba el despliegue, no el envío remoto ni la recepción de correo.
 
 Se comprobó únicamente la metadata de entorno, sin descifrar ni mostrar valores: `RESEND_API_KEY` está configurada en preview, production y development. En el checkout local no hay una clave disponible y el servidor de prueba la desactivó expresamente. No hace falta crear una credencial nueva para la vista previa; falta el acceso autorizado para probarla.
 
 **Correo:** las pruebas simuladas y el error local están comprobados. No se envió ningún correo real durante esta ejecución y no se confirmó llegada a `contacto@sollahms.cl`. Esa recepción debe verificarse mediante una prueba técnica identificada y comprobación del destino una vez autorizado el acceso remoto. Nunca debe confundirse un éxito simulado o aceptación del proveedor con entrega efectiva a la bandeja.
+
+La [prueba controlada preparada](prueba-correo-hipotecario.md) conserva campos ficticios, un identificador único, un único envío al destino autorizado y pasos exactos para verificar aplicación, aceptación Resend, entrega al servidor y recepción en el buzón. La autorización de ejecución ya consta; faltan las sesiones normales. Las comprobaciones de acceso realizadas en esta continuación llegaron a login de Vercel y Resend. No hay envío externo ni un resultado de aceptación/recepción que pueda declararse exitoso.
 
 La integración GitHub devolvió `403 Resource not accessible by integration` al intentar crear un PR borrador. La rama está publicada y es revisable; no existe un PR creado por esta ejecución. Enlace de rama:
 
