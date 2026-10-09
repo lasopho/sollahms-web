@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comparador hipotecario en UF | Sollahms</title>
+  <meta name="description" content="Simula tu crédito hipotecario en UF, revisa alternativas con fuentes verificadas y solicita asesoría personalizada a Sollahms.">
+  <link rel="canonical" href="https://sollahms.cl/comparador-hipotecario.html">
+  <link rel="icon" type="image/svg+xml" href="/assets/branding/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sollahms">
+  <meta property="og:title" content="Tu próximo hogar, con las cuentas claras | Sollahms">
+  <meta property="og:description" content="Simula, compara y conversa con un asesor sobre tu financiamiento hipotecario.">
+  <meta property="og:url" content="https://sollahms.cl/comparador-hipotecario.html">
+  <meta property="og:image" content="https://sollahms.cl/assets/branding/og-sollahms.png">
+  <meta property="og:image:alt" content="Sollahms">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/hipotecario.css">
+  <script type="module" src="/assets/js/hipotecario.mjs"></script>
+</head>
+<body>
+<a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
+<header class="site-header">
+  <nav class="container header-inner" aria-label="Navegación principal">
+    <a class="brand" href="/">Sollahms<span class="brand-dot">.</span></a>
+    <div class="desktop-nav">
+      <a href="/#expertise">Expertise</a><a href="/proyectos.html">Proyectos</a>
+      <a href="/comparador-hipotecario.html" aria-current="page">Hipotecario</a><a href="/contacto.html">Contacto</a>
+    </div>
+    <div class="header-actions"><a class="button button-gold small" href="/agenda-asesoria.html">Agendar asesoría</a>
+    <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Abrir menú de navegación" aria-controls="mobile-menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+  </nav>
+  <nav id="mobile-menu" class="mobile-nav" aria-label="Navegación móvil" hidden><a href="/#expertise">Expertise</a><a href="/proyectos.html">Proyectos</a><a href="/comparador-hipotecario.html" aria-current="page">Hipotecario</a><a href="/contacto.html">Contacto</a></nav>
+</header>
+<main id="contenido-principal">
+  <section class="hero">
+    <div class="container hero-inner">
+      <div><p class="eyebrow gold">FINANCIAMIENTO CON PERSPECTIVA</p><h1>Tu próximo hogar,<br>con las cuentas claras.</h1><p class="hero-copy">Explora cuánto necesitas y cómo cambia tu dividendo.<br class="desktop-break"> Decide tu próximo paso con información y acompañamiento.</p></div>
+      <ol class="journey" aria-label="Tu recorrido"><li><span>01</span> Simula</li><li><span>02</span> Compara</li><li><span>03</span> Conversemos</li></ol>
+    </div>
+  </section>
+  <div class="container workspace">
+    <div id="data-status" class="notice data-status" role="status">Consultando la información financiera…</div>
+    <section class="simulation-grid" aria-labelledby="simulation-title">
+      <div class="panel input-panel">
+        <div class="section-label"><span class="step-number">01</span><p class="eyebrow">TU PUNTO DE PARTIDA</p></div>
+        <h2 id="simulation-title">Diseña tu financiamiento</h2><p class="muted">Simula libremente, sin entregar datos personales.</p>
+        <form id="simulation-form">
+          <div class="field"><label for="property">Valor de la propiedad <span>UF</span></label><input id="property" name="propertyUf" type="number" min="100" max="1000000" step="0.01" value="4000" inputmode="decimal" required aria-describedby="property-help"><p id="property-help" class="field-help">Entre 100 y 1.000.000 UF.</p></div>
+          <fieldset class="field"><legend>Pie de la propiedad</legend><div class="choice-row" id="down-presets"><button type="button" data-down="10" aria-pressed="false">10%</button><button type="button" data-down="15" aria-pressed="false">15%</button><button type="button" data-down="20" aria-pressed="true">20%</button><button type="button" data-down="custom" aria-pressed="false">Otro</button></div><div class="inline-field"><label for="down">Pie personalizado (%)</label><input id="down" name="downPaymentPercent" type="number" min="5" max="90" step="0.01" value="20" required inputmode="decimal"></div><p class="field-help">Las condiciones de cada banco determinan el pie mínimo.</p></fieldset>
+          <div class="field"><label for="years">Plazo del crédito</label><select id="years" name="years"><option value="15">15 años</option><option value="20">20 años</option><option value="25" selected>25 años</option><option value="30">30 años</option><option value="custom">Otro plazo</option></select><div id="custom-years-field" class="inline-field" hidden><label for="custom-years">Años (5 a 40)</label><input id="custom-years" type="number" min="5" max="40" step="1" value="10" inputmode="numeric"></div></div>
+          <div class="field"><label for="rate">Tasa de interés anual <span>%</span></label><input id="rate" name="annualRatePercent" type="number" min="0" max="25" step="0.001" placeholder="Ingresa una tasa para simular" inputmode="decimal" aria-describedby="rate-help"><p id="rate-help" class="field-help">Usa la tasa de tu cotización o elige una alternativa verificada abajo. Una tasa ingresada por ti es referencial.</p></div>
+          <details class="advanced"><summary>Convención de tasa y ubicación</summary><div class="field"><label for="convention">Cómo está expresada la tasa</label><select id="convention" name="rateConvention"><option value="effective">Anual efectiva (equivalencia compuesta)</option><option value="nominal">Nominal anual convertible mensualmente (anual / 12)</option></select><p class="field-help">Si tu cotización no lo indica, confirma la convención con la institución.</p></div><div class="field"><label for="location">Ubicación de la propiedad</label><select id="location" name="location"><option value="unknown">Por confirmar</option><option value="santiago-metropolitana">Área metropolitana de Santiago</option><option value="other">Otra ubicación de Chile</option></select><p class="field-help">La comparación CMF aplica a su escenario de Santiago y 75% de financiamiento.</p></div></details>
+          <button type="submit" class="button button-green full">Calcular dividendo <span aria-hidden="true">↗</span></button>
+          <p id="simulation-error" class="error" role="alert" hidden></p>
+        </form>
+      </div>
+      <div class="result-panel" id="result-panel">
+        <div class="section-label"><span class="step-number">UF</span><p class="eyebrow gold">TU ESCENARIO</p></div>
+        <h2>Una mirada a tus números</h2><p id="result-kind" class="result-kicker">Completa una tasa o selecciona una alternativa para calcular.</p>
+        <div class="payment-main"><p>Dividendo financiero mensual</p><strong id="monthly-uf">— <span>UF</span></strong><p id="monthly-clp" class="payment-clp">El equivalente en pesos aparecerá aquí.</p><p class="result-small">Capital e intereses. Seguros y gastos se muestran por separado.</p></div>
+        <dl class="result-facts"><div><dt>Valor de la propiedad</dt><dd id="result-property">4.000 UF</dd></div><div><dt>Tu pie</dt><dd id="result-down">800 UF · 20%</dd></div><div><dt>Crédito a financiar</dt><dd id="result-principal">3.200 UF · 80%</dd></div><div><dt>Plazo y tasa anual</dt><dd id="result-rate">25 años · tasa por ingresar</dd></div><div><dt>Intereses en todo el plazo</dt><dd id="result-interest">—</dd></div><div><dt>Suma de dividendos financieros</dt><dd id="result-total">—</dd></div><div><dt>Seguros mensuales</dt><dd id="result-insurance">Sin datos verificables</dd></div><div><dt>Otros gastos y costo total</dt><dd id="result-cost">No disponible</dd></div></dl>
+        <div id="financing-bar" class="financing-bar" aria-hidden="true"><span style="width:20%"></span></div><p class="result-small split-legend"><span>● Tu pie</span><span>● Financiamiento</span></p>
+        <button type="button" class="button button-gold full" id="lead-open" disabled>Quiero que me contacten <span aria-hidden="true">↗</span></button>
+        <p class="result-small">Estimación orientativa, sujeta a evaluación. Los montos futuros en pesos varían con la UF.</p>
+      </div>
+    </section>
+    <section class="comparison-section" aria-labelledby="comparison-title">
+      <div class="section-heading"><div><div class="section-label"><span class="step-number">02</span><p class="eyebrow">EXPLORA LAS ALTERNATIVAS</p></div><h2 id="comparison-title">Compara con contexto.</h2><p class="muted">Cada tasa tiene condiciones. Aquí verás su fuente, vigencia y alcance.</p></div><div class="sort-field"><label for="sort">Ordenar alternativas</label><select id="sort"><option value="dividend">Menor dividendo financiero</option><option value="rate">Menor tasa anual</option><option value="cae">Menor CAE comparable</option><option value="totalCost">Menor costo total comparable</option></select></div></div>
+      <p id="comparison-status" class="notice" role="status">Cargando alternativas verificadas…</p>
+      <button type="button" id="verified-scenario" class="text-button" hidden>Explorar el escenario verificado de la CMF ↗</button>
+      <div id="comparison-cards" class="bank-grid"></div>
+      <div id="selected-detail" class="panel selected-detail" hidden aria-labelledby="detail-title"><h3 id="detail-title">Detalle de la alternativa</h3><div id="detail-content"></div><button type="button" class="button button-green" id="detail-contact">Quiero que me contacten</button></div>
+      <details class="institutions"><summary>Instituciones y fuentes oficiales consultadas</summary><p class="muted">Un enlace oficial no implica que exista una oferta comparable publicada. Las campañas y cotizaciones personales requieren revisar sus condiciones.</p><div id="institution-cards" class="institution-grid"></div></details>
+    </section>
+    <section id="lead-section" class="panel lead-section" hidden aria-labelledby="lead-title">
+      <div class="lead-intro"><div class="section-label"><span class="step-number">03</span><p class="eyebrow">TU SIGUIENTE PASO</p></div><h2 id="lead-title" tabindex="-1">Conversemos sobre tu financiamiento.</h2><p class="muted">Un asesor de Sollahms recibirá estos números junto con tus datos para ayudarte a evaluar el próximo paso.</p><div id="lead-context" class="lead-context"></div><p class="field-help">No necesitas compartir información bancaria ni credenciales.</p></div>
+      <form id="lead-form" aria-describedby="lead-status">
+        <div class="honeypot" aria-hidden="true"><label for="website">Sitio web</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="lead-fields"><div class="field"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required></div><div class="field"><label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" autocomplete="email" maxlength="254" required></div></div>
+        <div class="field"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="30" placeholder="+56 9 1234 5678" required aria-describedby="phone-help"><p class="field-help" id="phone-help">Incluye el código de país si corresponde.</p></div>
+        <div class="field"><label for="comentario">Comentario <span>opcional</span></label><textarea id="comentario" name="comentario" rows="3" maxlength="3000" placeholder="Cuéntanos qué estás evaluando"></textarea></div>
+        <label class="consent" for="consent"><input id="consent" name="consent" type="checkbox" required><span>Autorizo a Sollahms a tratar mis datos y esta simulación para responder mi solicitud de asesoría, según su <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+        <button type="submit" class="button button-green full" id="lead-submit">Solicitar asesoría</button><p id="lead-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></p><p class="field-help">También puedes escribir a <a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a>.</p>
+      </form>
+    </section>
+    <section class="methodology" aria-labelledby="method-title"><p class="eyebrow">INFORMACIÓN PARA DECIDIR</p><h2 id="method-title">Lo que considera tu simulación</h2><div class="method-grid"><details><summary>¿Cómo calculamos el dividendo?</summary><p>Usamos amortización de cuotas constantes en UF: dividendo = capital × i / (1 − (1 + i)<sup>−n</sup>), donde i es la tasa mensual y n el número de meses. Con tasa cero, capital / n. Una tasa nominal anual convertible mensualmente se divide por 12; una tasa anual efectiva se convierte con (1 + tasa anual)<sup>1/12</sup> − 1.</p></details><details><summary>¿Qué gastos están incluidos?</summary><p>El dividendo financiero contiene capital e intereses. Los seguros, gastos operacionales, impuestos e inscripciones sólo se agregan cuando la fuente los verifica para el mismo escenario. La suma de dividendos financieros no equivale al costo total con todos los gastos. El pie se informa por separado.</p></details><details><summary>¿Por qué puede no aparecer un banco?</summary><p>La información puede estar vencida, pendiente de verificación o no aplicar a tu monto, pie, plazo o ubicación. No extrapolamos CAE ni campañas a otros perfiles. Puedes simular con una tasa de tu cotización y solicitar asesoría igualmente.</p></details><details><summary>¿Cómo se convierte a pesos?</summary><p id="uf-method">Se utiliza una UF con fecha y fuente identificadas. El equivalente es una referencia para esa fecha, no una proyección de pagos futuros en pesos.</p><p><a href="https://www.sii.cl/valores_y_fechas/uf/uf2026.htm" target="_blank" rel="noopener">Consultar UF en SII ↗</a> · <a href="https://servicios.cmfchile.cl/simuladorhipotecario" target="_blank" rel="noopener">Consultar simulador CMF ↗</a></p></details></div></section>
+  </div>
+  <noscript><p class="container notice">Activa JavaScript para realizar cálculos. Puedes solicitar asesoría en <a href="/contacto.html">Contacto</a> o consultar el <a href="https://servicios.cmfchile.cl/simuladorhipotecario">simulador de la CMF</a>.</p></noscript>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><a class="brand" href="/">Sollahms.</a><div><a href="/proyectos.html">Proyectos</a><a href="/contacto.html">Contacto</a><a href="/privacidad.html">Privacidad</a></div><p>© 2026 Sollahms</p></div></footer>
+</body>
+</html>

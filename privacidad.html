@@ -32,18 +32,20 @@
     h1, h2 { font-family: 'Manrope', sans-serif; }
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
 </style>
+<link rel="stylesheet" href="/assets/css/hipotecario-nav.css">
 </head>
 <body class="bg-surface text-on-surface antialiased">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
-<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+<header class="mortgage-entry-nav sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
 <nav class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between gap-2 md:gap-x-6" aria-label="Navegación principal">
 <a class="text-2xl font-black tracking-tighter text-emerald-950" href="/">Sollahms</a>
 <div class="hidden md:flex items-center gap-8">
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#expertise">Expertise</a>
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#portfolio">Asset Portfolio</a>
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/proyectos.html">Proyectos</a>
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/comparador-hipotecario.html">Hipotecario</a>
 <a class="text-emerald-950 font-headline font-bold tracking-tight" href="/contacto.html">Contacto</a>
 </div>
 <div class="flex items-center gap-2 md:gap-0">
@@ -58,6 +60,7 @@
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#portfolio">Asset Portfolio</a>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html">Proyectos</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/comparador-hipotecario.html">Hipotecario</a>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/contacto.html">Contacto</a>
 </nav>
 </div>
@@ -98,7 +101,7 @@
 <p class="text-sm font-bold tracking-[0.25em] uppercase text-primary-fixed mb-7">Sollahms</p>
 <h1 class="font-headline text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight tracking-[-0.04em] max-w-4xl">Política de Privacidad</h1>
 <p class="mt-8 text-slate-200 text-base md:text-lg leading-relaxed max-w-3xl">Esta Política de Privacidad explica cómo Sollahms trata los datos personales que las personas entregan voluntariamente a través de sus canales digitales en relación con consultas y servicios inmobiliarios.</p>
-<p class="mt-6 text-sm text-primary-fixed">Última actualización: 30 de septiembre de 2026.</p>
+<p class="mt-6 text-sm text-primary-fixed">Última actualización: 9 de octubre de 2026.</p>
 </div>
 </section>
 <div class="max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-20">
@@ -107,6 +110,7 @@
 <div class="space-y-5 text-slate-700 leading-relaxed">
 <p>El formulario de Contacto solicita nombre, correo electrónico y mensaje. El teléfono y el asunto son opcionales.</p>
 <p>El formulario para agendar una asesoría solicita la fecha y hora de la llamada, nombre, apellido, correo electrónico y número de teléfono.</p>
+<p>La solicitud de asesoría del comparador hipotecario solicita nombre, correo, teléfono y consentimiento. El comentario es opcional. Incluye el valor de la propiedad, pie, monto del crédito, plazo, tasa y convención utilizada, ubicación declarada, alternativa seleccionada si corresponde, dividendos estimados y fecha de simulación, para contextualizar la asesoría. La simulación no exige datos personales.</p>
 <p>Sollahms busca limitar la recopilación a los datos necesarios para atender cada solicitud.</p>
 </div>
 </section>
@@ -121,7 +125,7 @@
 <h2 id="uso" class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-5">3. Uso y comunicación de los datos</h2>
 <div class="space-y-5 text-slate-700 leading-relaxed">
 <p>Sollahms no vende ni arrienda los datos personales de quienes utilizan sus canales digitales.</p>
-<p>Para operar sus formularios y reservas, Sollahms utiliza servicios tecnológicos de terceros. El formulario de contacto utiliza Resend para gestionar el envío del mensaje y la infraestructura de Vercel para procesar la solicitud.</p>
+<p>Para operar sus formularios y reservas, Sollahms utiliza servicios tecnológicos de terceros. Los formularios de contacto y asesoría hipotecaria utilizan Resend para gestionar el envío del mensaje y la infraestructura de Vercel para procesar la solicitud.</p>
 <p>La reserva de asesoría utiliza infraestructura de Vercel para procesar la solicitud y servicios de Google, mediante Apps Script y Google Calendar, para comprobar disponibilidad y gestionar la reserva en el calendario. Estos proveedores pueden procesar los datos necesarios para prestar esos servicios conforme a sus propias condiciones y obligaciones aplicables.</p>
 <p>Las fichas de propiedades incorporan mapas de Google Maps y el sitio utiliza Google Fonts para cargar tipografías. Al cargar estos recursos, el navegador del usuario puede establecer conexiones con servicios de Google y transmitir información técnica necesaria para entregar dichos contenidos, conforme a las condiciones y políticas aplicables de ese proveedor.</p>
 <p>Las fichas de INN Puerto Chico y Edificio Suecia incorporan recorridos virtuales alojados por Matterport. Al cargar estos contenidos, el navegador del usuario puede establecer conexiones con servicios de Matterport y transmitir información técnica necesaria para entregar los recorridos, conforme a las condiciones y políticas aplicables de ese proveedor.</p>
