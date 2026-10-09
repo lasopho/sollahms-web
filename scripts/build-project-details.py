@@ -67,7 +67,7 @@ def pending_fields(project, research):
 
 def source_content(project, research):
     url = secure_url(research.get('sourceUrl'))
-    date = esc(research.get('checkedAt', 'Pendiente'))
+    date = esc(research.get('checkedAt') or 'Pendiente')
     source = f'<p><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar la fuente oficial de {esc(project["inmobiliaria"])}</a></p>' if url else '<p>Fuente oficial específica pendiente de identificación.</p>'
     source += f'<p>Última revisión: <time datetime="{date}">{date}</time>. Los precios y la disponibilidad pueden cambiar; confirma las condiciones al consultar.</p>'
     if research.get('sourceNotes'):
@@ -97,6 +97,9 @@ def render(project, research, template):
         overview_html = f'<p class="lead">Conoce {esc(name)}, registrado en el catálogo Sollahms por {esc(builder)}.</p><div class="pending-panel"><p>Las características detalladas de este proyecto están pendientes de verificación con la inmobiliaria.</p></div>'
     cells = [('Inmobiliaria', esc(builder)), ('Tipo de activo', esc(project.get('tipoActivo', 'Residencial')))]
     cells += [(LABELS[key], text_value(field(project, research, key))) for key in ['comuna', 'region', 'direccion', 'estado', 'entrega', 'tipologias']]
+    published_area = field(project, research, 'superficieDesdeM2')
+    if published_area and not research.get('specs', {}).get('utilM2') and not research.get('specs', {}).get('totalM2'):
+        cells.append(('Superficie desde (tipo por verificar)', esc(str(published_area).replace('.', ',')) + ' m²'))
     for key in ['utilM2', 'totalM2', 'terrenoM2', 'dormitorios', 'banos']:
         if project.get('tipoActivo') != 'Terreno' and key == 'terrenoM2' and not research.get('specs', {}).get(key):
             continue
@@ -122,7 +125,7 @@ def render(project, research, template):
             continue
         title = tour.get('title') or f'Recorrido de {name}'
         parsed = urlparse(url)
-        can_embed = parsed.hostname in ['my.matterport.com', 'www.youtube.com', 'player.vimeo.com']
+        can_embed = tour.get('embedStatus') == 'allowed' or parsed.hostname in ['my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com']
         embed = f'<div class="embed-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(url)}" data-embed-title="{esc(title)}">Iniciar recorrido interactivo</button></div>' if can_embed else f'<p><a class="button button-outline" href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir experiencia virtual oficial ↗</a></p>'
         tours.append(f'<article class="tour-card"><h3>{esc(title)}</h3>{embed}<div class="embed-caption"><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></div></article>')
     tours_html = ''.join(tours) or '<div class="pending-panel"><p>No se ha verificado un recorrido virtual oficial para este proyecto. Su disponibilidad está pendiente de confirmación.</p></div>'
@@ -134,7 +137,10 @@ def render(project, research, template):
         embed_link = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
         map_html = f'<p class="lead">{esc(query)}</p><div class="embed-shell map-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(embed_link)}" data-embed-title="Mapa de {esc(query)}">Mostrar mapa interactivo</button></div><a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a><p class="map-note">El mapa busca la dirección publicada por la inmobiliaria. La ubicación del marcador la determina Google Maps; confirma el acceso exacto en la fuente oficial.</p><noscript><p>El enlace a Google Maps permite consultar la ubicación sin JavaScript.</p></noscript>'
     else:
-        map_html = '<div class="pending-panel"><p>Dirección exacta pendiente de verificación. Incorporaremos el mapa cuando la ubicación del proyecto se confirme en una fuente oficial.</p></div>'
+        if address:
+            map_html = f'<p class="lead">{esc(address)}</p><div class="pending-panel"><p>La dirección está publicada en la fuente oficial. Falta confirmar la comuna administrativa para incorporar un mapa sin ambigüedad.</p></div>'
+        else:
+            map_html = '<div class="pending-panel"><p>Dirección exacta pendiente de verificación. Incorporaremos el mapa cuando la ubicación del proyecto se confirme en una fuente oficial.</p></div>'
     source_url = secure_url(research.get('sourceUrl'))
     official_link = f'<a class="official-link" href="{esc(source_url)}" target="_blank" rel="noopener noreferrer">Ver fuente oficial ↗</a>' if source_url else ''
     badges = f'<span>{esc(project.get("tipoActivo", "Residencial"))}</span>'
@@ -176,7 +182,7 @@ def main():
             (ROOT / (slug + '.html')).write_text(page)
         project['detalleUrl'] = '/' + slug + '.html'
         actual = (ROOT / (slug + '.html')).read_text() if (ROOT / (slug + '.html')).exists() else ''
-        matterport = bool('my.matterport.com' in actual)
+        matterport = any(t.get('provider') == 'Matterport' for t in research.get('virtualTours', [])) if slug not in FEATURED else bool('my.matterport.com' in actual or 'mpembed.com' in actual)
         if slug in FEATURED:
             mapped = 'www.google.com/maps' in actual
         pending = pending_fields(project, research)

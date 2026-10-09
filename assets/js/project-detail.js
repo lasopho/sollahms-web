@@ -24,7 +24,7 @@
     document.querySelectorAll('[data-embed-src]').forEach(loader => {
         loader.addEventListener('click', () => {
             const url = new URL(loader.dataset.embedSrc);
-            if (url.protocol !== 'https:' || !['my.matterport.com', 'www.google.com', 'www.youtube.com', 'player.vimeo.com'].includes(url.hostname)) return;
+            if (url.protocol !== 'https:' || !['my.matterport.com', 'mpembed.com', 'www.google.com', 'www.youtube.com', 'player.vimeo.com'].includes(url.hostname)) return;
             const frame = document.createElement('iframe');
             frame.src = url.href;
             frame.title = loader.dataset.embedTitle;

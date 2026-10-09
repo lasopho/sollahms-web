@@ -79,7 +79,9 @@ for project in projects:
         assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'recorrido', 'ubicacion', 'fuentes'])
         for embed in page.embeds:
             url = urlparse(embed['data-embed-src'])
-            assert url.scheme == 'https' and url.hostname in ['my.matterport.com', 'www.google.com', 'www.youtube.com', 'player.vimeo.com']
+            approved = ['my.matterport.com', 'mpembed.com', 'www.google.com', 'www.youtube.com', 'player.vimeo.com']
+            approved += [urlparse(t['url']).hostname for t in record.get('virtualTours', []) if t.get('embedStatus') == 'allowed']
+            assert url.scheme == 'https' and url.hostname in approved
             if url.hostname == 'www.google.com':
                 maps += 1
                 assert 'direccion' in record['verifiedFields'] and 'comuna' in record['verifiedFields'], f'{slug}: map without verified address and commune'
