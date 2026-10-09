@@ -18,6 +18,9 @@ export default {
     const slot = validateSlot(body.date, body.time);
     const person = validatePerson(body);
     if (!slot || !person) return json({ ok: false, error: 'Revisa los datos y selecciona un horario válido.' }, 400);
+    if (process.env.VERCEL_ENV === 'preview') {
+      return json({ ok: false, code: 'preview_read_only', error: 'La vista previa no envía reservas reales. Puedes revisar el formulario sin confirmar una asesoría.' }, 503);
+    }
     if (body.website.trim()) return json({ ok: true, booked: true });
 
     const projectContext = hasProject ? { proyecto: body.proyecto, nombreProyecto: projects[body.proyecto].name } : {};

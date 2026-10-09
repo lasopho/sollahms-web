@@ -145,6 +145,9 @@ def render(project, research, template):
         else:
             map_html = '<div class="pending-panel"><p>Dirección exacta pendiente de verificación. Incorporaremos el mapa cuando la ubicación del proyecto se confirme en una fuente oficial.</p></div>'
     source_url = secure_url(research.get('sourceUrl'))
+    price_note = f'<p class="price-note">Precio publicado en la fuente oficial, revisado el {esc(research.get("checkedAt", ""))}. Sujeto a disponibilidad y condiciones de la inmobiliaria.</p>' if price != PENDING else ''
+    if price != PENDING and research.get('priceNote'):
+        price_note += f'<p class="price-note">{esc(research["priceNote"])}</p>'
     official_link = f'<a class="official-link" href="{esc(source_url)}" target="_blank" rel="noopener noreferrer">Ver fuente oficial ↗</a>' if source_url else ''
     badges = f'<span>{esc(project.get("tipoActivo", "Residencial"))}</span>'
     if field(project, research, 'estado'):
@@ -162,7 +165,7 @@ def render(project, research, template):
     if 'etapas' in research.get('verifiedFields', []) and project.get('etapas'):
         stages = '<h3>Etapas del proyecto</h3><ul>' + ''.join('<li>' + esc(s.get('nombre', '')) + ': ' + esc(s.get('estado', 'Pendiente')) + '</li>' for s in project['etapas']) + '</ul>'
     embed_hosts = sorted({'www.google.com', 'my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com'} | {urlparse(t['url']).hostname for t in research.get('virtualTours', []) if secure_url(t.get('url')) and t.get('embedStatus') == 'allowed'})
-    page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts), overview=overview_html, specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tours=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=f'<p class="price-note">Precio publicado en la fuente oficial, revisado el {esc(research.get("checkedAt", ""))}. Sujeto a disponibilidad y condiciones de la inmobiliaria.</p>' if price != PENDING else '', official_link=official_link)
+    page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts), overview=overview_html, specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tours=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
     return page, mapped, len(tours)
 
 def main():

@@ -103,6 +103,10 @@ export default {
     const fields = validate(body);
     if (!fields) return json({ error: 'Revisa los datos del formulario.' }, 400);
 
+    if (process.env.VERCEL_ENV === 'preview') {
+      return json({ ok: false, code: 'preview_read_only', error: 'La vista previa no envía mensajes reales. Puedes revisar el formulario sin contactar al equipo.' }, 503);
+    }
+
     const key = process.env.RESEND_API_KEY;
     if (!key) return json({ error: 'No pudimos enviar el mensaje. Inténtalo más tarde.' }, 503);
 

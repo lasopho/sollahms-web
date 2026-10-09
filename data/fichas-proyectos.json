@@ -4196,13 +4196,40 @@
   },
   {
     "slug": "plaza-cervantes",
-    "sourceUrl": "https://maestra.cl/brochures-de-proyectos/",
+    "sourceUrl": "https://maestra.cl/promocion-gastos-operacionales/",
     "checkedAt": "2026-10-09",
-    "sourceStatus": "not_found",
-    "sourceNotes": "El sitio oficial menciona Plaza Cervantes I y II en brochures, pero el catálogo actual sólo muestra Torre B. /proyectos/plaza-cervantes/ contiene Torre B y /plaza-cervantes-torre-a/ responde 404. No se transfieren datos ni imágenes de B a A.",
-    "sourceEvidence": [],
-    "verifiedFields": [],
-    "updates": {},
+    "sourceStatus": "verified",
+    "sourceNotes": "La promoción oficial de gastos operacionales, anunciada del 01/10/2026 al 31/10/2026, presenta la tarjeta exacta «Privado: Plaza Cervantes torre A» (post 24783), en La Cisterna, con entrega inmediata y dos valores desde UF 2.327 y UF 2.527. Se registra el mínimo anunciado; la fuente no vincula cada importe a una tipología ni confirma stock. La ficha privada responde 404. La fotografía está identificada para Torre A; no se toman dirección, fotografías ni recorridos de Torre B o de brochures I/II sin correspondencia de etapa.",
+    "sourceEvidence": [
+      {
+        "url": "https://maestra.cl/promocion-gastos-operacionales/",
+        "excerpt": "Privado: Plaza Cervantes torre A · La Cisterna · Entrega Inmediata · Desde 2.327 UF · Desde 2.527 UF",
+        "checkedAt": "2026-10-09"
+      },
+      {
+        "url": "https://maestra.cl/usa-tu-subsidio/",
+        "excerpt": "Tarjeta pública exacta del post 24783 y fotografía propia Torre A",
+        "checkedAt": "2026-10-09"
+      }
+    ],
+    "verifiedFields": [
+      "nombre",
+      "inmobiliaria",
+      "comuna",
+      "region",
+      "estado",
+      "precioDesdeUF",
+      "descripcionLarga"
+    ],
+    "updates": {
+      "nombre": "Plaza Cervantes - Torre A",
+      "inmobiliaria": "Maestra",
+      "comuna": "La Cisterna",
+      "region": "Región Metropolitana",
+      "estado": "Entrega inmediata",
+      "precioDesdeUF": 2327,
+      "descripcionLarga": "La página oficial de Maestra identifica Plaza Cervantes Torre A en La Cisterna y lo anuncia con entrega inmediata. La dirección, las tipologías, las superficies y la disponibilidad de unidades deben confirmarse directamente con la inmobiliaria."
+    },
     "specs": {
       "utilM2": null,
       "totalM2": null,
@@ -4210,37 +4237,57 @@
       "dormitorios": null,
       "banos": null
     },
-    "images": [],
+    "images": [
+      {
+        "url": "https://maestra.cl/wp-content/uploads/2022/10/Pza-Cervantes-Torre-A-miniatura.webp",
+        "alt": "Fotografía oficial de Plaza Cervantes Torre A",
+        "sourceUrl": "https://maestra.cl/promocion-gastos-operacionales/",
+        "localPath": "/assets/propiedades/catalogo/9410756934b0767c1bfa3e4f.webp",
+        "width": 532,
+        "height": 399
+      }
+    ],
     "virtualTours": [],
     "pendingFields": [
-      "Oferta vigente de Torre A",
-      "Ubicación y características específicas de Torre A",
-      "Superficie útil",
-      "Superficie total",
-      "Superficie de terreno",
+      "Disponibilidad y condiciones comerciales específicas de Torre A",
+      "Dirección y acceso específicos de Torre A",
+      "Tipologías y superficies de Torre A",
       "Dormitorios",
       "Baños",
-      "Fotografías oficiales propias del proyecto",
       "Recorrido virtual oficial específico no localizado",
-      "Dirección exacta",
-      "Precio vigente y disponibilidad",
-      "Fecha de entrega",
+      "Condiciones efectivas de entrega",
       "Equipamiento y áreas comunes"
     ],
     "reviewedOriginal": {
-      "comuna": "La Cisterna",
-      "nombre": "Plaza Cervantes - Torre A",
       "tipologias": [
         "2 dormitorios"
       ],
-      "inmobiliaria": "Maestra",
-      "precioDesdeUF": 2483,
-      "region": "Región Metropolitana",
-      "entrega": "Inmediata",
       "direccion": null,
-      "estado": "Entrega inmediata"
+      "region": "Región Metropolitana",
+      "nombre": "Plaza Cervantes - Torre A",
+      "precioDesdeUF": 2483,
+      "entrega": "Inmediata",
+      "inmobiliaria": "Maestra",
+      "estado": "Entrega inmediata",
+      "comuna": "La Cisterna"
     },
-    "originalImages": []
+    "originalImages": [
+      {
+        "url": "https://maestra.cl/wp-content/uploads/2022/10/Pza-Cervantes-Torre-A-miniatura.webp",
+        "alt": "Fotografía oficial de Plaza Cervantes Torre A",
+        "sourceUrl": "https://maestra.cl/promocion-gastos-operacionales/",
+        "localPath": "/assets/propiedades/catalogo/9410756934b0767c1bfa3e4f.webp",
+        "width": 532,
+        "height": 399
+      }
+    ],
+    "priceNote": "Mínimo anunciado en la tarjeta oficial de Torre A: UF 2.327. También publica UF 2.527 sin identificar las tipologías correspondientes. Confirma stock y condiciones específicas con Maestra; la ficha detallada de la torre no está disponible.",
+    "identityReview": {
+      "checkedAt": "2026-10-09",
+      "result": "Identidad exacta confirmada en tarjeta pública oficial; ficha de detalle privada no disponible",
+      "originalDetailUrl": "https://maestra.cl/?post_type=proyectos&p=24783",
+      "detailHttpStatus": 404
+    }
   },
   {
     "slug": "vista-costanera",
@@ -5243,7 +5290,7 @@
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/mapocho-3521",
     "checkedAt": "2026-10-09",
     "sourceStatus": "not_found",
-    "sourceNotes": "La ficha oficial actual describe Mapocho 3521 de forma general. No identifica la subdivisión Mapocho 3521 - Edificio A; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio.",
+    "sourceNotes": "La landing oficial histórica Euro–Santander menciona Torre A y unidad 508 A de Mapocho 3521. La promoción venció el 29/08/2025 y presenta una dirección diferente de la ficha vigente. No acredita la equivalencia comercial actual con «Edificio A» del catálogo ni sus datos vigentes. Se mantienen pendientes precio, dirección/acceso, entrega, fotos, recorridos y características propios de la etapa.",
     "verifiedFields": [
       "inmobiliaria",
       "comuna",
@@ -5277,21 +5324,31 @@
       "excerpt": "Mapocho 3521"
     },
     "reviewedOriginal": {
-      "comuna": "Quinta Normal",
-      "precioDesdeUF": 2375,
-      "direccion": null,
-      "inmobiliaria": "Euro",
-      "nombre": "Mapocho 3521 - Edificio A",
-      "region": "Región Metropolitana",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios",
         "3 dormitorios"
       ],
+      "direccion": null,
+      "region": "Región Metropolitana",
+      "nombre": "Mapocho 3521 - Edificio A",
+      "precioDesdeUF": 2375,
       "entrega": "Inmediata",
-      "estado": "Entrega inmediata"
+      "inmobiliaria": "Euro",
+      "estado": "Entrega inmediata",
+      "comuna": "Quinta Normal"
     },
-    "originalImages": []
+    "originalImages": [],
+    "identityReview": {
+      "checkedAt": "2026-10-09",
+      "result": "Mención histórica Torre A localizada; equivalencia Edificio A y oferta vigente pendientes",
+      "sources": [
+        "https://www.euroinmobiliaria.cl/proyectos/mapocho-3521",
+        "https://landing.euroinmobiliaria.cl/bancasantander",
+        "https://euroinmobiliaria.cl/storage/232/Brochure-Mapocho-35211.pdf"
+      ],
+      "historicalPromotionExpires": "2025-08-29"
+    }
   },
   {
     "slug": "edificio-lira-622",
@@ -6059,7 +6116,7 @@
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
     "checkedAt": "2026-10-09",
     "sourceStatus": "not_found",
-    "sourceNotes": "La ficha oficial actual describe Froilán Roa 5731 de forma general. No identifica la subdivisión Froilán Roa 5731 - Torre Norte; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio.",
+    "sourceNotes": "La ficha oficial actual describe Froilán Roa 5731 de forma general. No identifica la subdivisión Froilán Roa 5731 - Torre Norte; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio. Reauditoría del 09/10/2026: el brochure oficial muestra dos torres sin identificar Norte/Sur; el avance de obras y la documentación oficial tampoco distinguen etapas. No se publican datos generales como propios de una torre.",
     "verifiedFields": [
       "inmobiliaria",
       "comuna",
@@ -6093,20 +6150,30 @@
       "excerpt": "Froilán Roa 5731"
     },
     "reviewedOriginal": {
-      "comuna": "La Florida",
-      "precioDesdeUF": 3245,
-      "direccion": null,
-      "inmobiliaria": "Euro",
-      "nombre": "Froilán Roa 5731 - Torre Norte",
-      "region": "Región Metropolitana",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
+      "direccion": null,
+      "region": "Región Metropolitana",
+      "nombre": "Froilán Roa 5731 - Torre Norte",
+      "precioDesdeUF": 3245,
       "entrega": "Primer semestre 2027",
-      "estado": "Entrega futura"
+      "inmobiliaria": "Euro",
+      "estado": "Entrega futura",
+      "comuna": "La Florida"
     },
-    "originalImages": []
+    "originalImages": [],
+    "identityReview": {
+      "checkedAt": "2026-10-09",
+      "result": "Norte/Sur no identificadas en fuentes oficiales",
+      "sources": [
+        "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
+        "https://euroinmobiliaria.cl/storage/219/Brochure-Froilan-Roa.pdf",
+        "https://landing.euroinmobiliaria.cl/avancedeobras",
+        "https://www.euroinmobiliaria.cl/documentacion-de-proyectos"
+      ]
+    }
   },
   {
     "slug": "rosas-1444",
@@ -6425,7 +6492,7 @@
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
     "checkedAt": "2026-10-09",
     "sourceStatus": "not_found",
-    "sourceNotes": "La ficha oficial actual describe Froilán Roa 5731 de forma general. No identifica la subdivisión Froilán Roa 5731 - Torre Sur; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio.",
+    "sourceNotes": "La ficha oficial actual describe Froilán Roa 5731 de forma general. No identifica la subdivisión Froilán Roa 5731 - Torre Sur; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio. Reauditoría del 09/10/2026: el brochure oficial muestra dos torres sin identificar Norte/Sur; el avance de obras y la documentación oficial tampoco distinguen etapas. No se publican datos generales como propios de una torre.",
     "verifiedFields": [
       "inmobiliaria",
       "comuna",
@@ -6459,20 +6526,30 @@
       "excerpt": "Froilán Roa 5731"
     },
     "reviewedOriginal": {
-      "comuna": "La Florida",
-      "precioDesdeUF": 3216,
-      "direccion": null,
-      "inmobiliaria": "Euro",
-      "nombre": "Froilán Roa 5731 - Torre Sur",
-      "region": "Región Metropolitana",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
+      "direccion": null,
+      "region": "Región Metropolitana",
+      "nombre": "Froilán Roa 5731 - Torre Sur",
+      "precioDesdeUF": 3216,
       "entrega": "Primer semestre 2027",
-      "estado": "Entrega futura"
+      "inmobiliaria": "Euro",
+      "estado": "Entrega futura",
+      "comuna": "La Florida"
     },
-    "originalImages": []
+    "originalImages": [],
+    "identityReview": {
+      "checkedAt": "2026-10-09",
+      "result": "Norte/Sur no identificadas en fuentes oficiales",
+      "sources": [
+        "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
+        "https://euroinmobiliaria.cl/storage/219/Brochure-Froilan-Roa.pdf",
+        "https://landing.euroinmobiliaria.cl/avancedeobras",
+        "https://www.euroinmobiliaria.cl/documentacion-de-proyectos"
+      ]
+    }
   },
   {
     "slug": "edificio-san-francisco-1204",
@@ -12119,7 +12196,7 @@
     "sourceUrl": "https://ecasa.cl/proyectos",
     "checkedAt": "2026-10-09",
     "sourceStatus": "not_found",
-    "sourceNotes": "El catálogo oficial actual incluye Lomas de Puyai y Lomas de Puyai 2, pero no identifica etapa 3. La URL ensayada /proyecto/lomas-de-puyai-3 retorna la portada, no una ficha específica. No se transfieren datos de otras etapas.",
+    "sourceNotes": "El catálogo oficial actual incluye Lomas de Puyai y Lomas de Puyai 2, pero no identifica etapa 3. La URL ensayada /proyecto/lomas-de-puyai-3 retorna la portada, no una ficha específica. No se transfieren datos de otras etapas. Reauditoría del 09/10/2026: el catálogo público conserva Lomas de Puyai y Lomas de Puyai 2; las referencias a etapa 3 encontradas corresponden a intermediarios, sin respaldo oficial propio. No se actualizan datos comerciales.",
     "sourceEvidence": [],
     "verifiedFields": [],
     "updates": {},
@@ -12148,20 +12225,28 @@
       "Equipamiento y áreas comunes"
     ],
     "reviewedOriginal": {
-      "comuna": "Papudo",
-      "nombre": "Lomas de Puyai 3",
       "tipologias": [
         "2 dormitorios",
         "3 dormitorios"
       ],
-      "inmobiliaria": "Ecasa",
-      "precioDesdeUF": 4220,
-      "region": "Valparaíso",
-      "entrega": null,
       "direccion": null,
-      "estado": "Entrega futura"
+      "region": "Valparaíso",
+      "nombre": "Lomas de Puyai 3",
+      "precioDesdeUF": 4220,
+      "entrega": null,
+      "inmobiliaria": "Ecasa",
+      "estado": "Entrega futura",
+      "comuna": "Papudo"
     },
-    "originalImages": []
+    "originalImages": [],
+    "identityReview": {
+      "checkedAt": "2026-10-09",
+      "result": "Etapa 3 no identificada en catálogo oficial actual",
+      "sources": [
+        "https://ecasa.cl/proyectos",
+        "https://ecasa.cl/proyecto/lomas-de-puyai-3"
+      ]
+    }
   },
   {
     "slug": "pintor-cicarelli-iii",

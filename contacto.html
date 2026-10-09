@@ -227,7 +227,14 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
-            if (!response.ok) throw new Error('Contact request failed');
+            if (!response.ok) {
+                const result = await response.json().catch(() => ({}));
+                if (result.code === 'preview_read_only') {
+                    status.textContent = result.error;
+                    return;
+                }
+                throw new Error('Contact request failed');
+            }
 
             form.reset();
             status.textContent = 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.';

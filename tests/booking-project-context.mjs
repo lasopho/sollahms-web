@@ -29,7 +29,9 @@ function mockBackend(t, status = 200, reply = { ok: true, booked: true, availabl
   const previousFetch = globalThis.fetch;
   const previousUrl = process.env.BOOKING_BACKEND_URL;
   const previousSecret = process.env.BOOKING_SECRET;
+  const previousVercelEnv = process.env.VERCEL_ENV;
   const calls = [];
+  delete process.env.VERCEL_ENV;
   process.env.BOOKING_BACKEND_URL = 'https://booking.test.invalid';
   process.env.BOOKING_SECRET = 'dummy';
   globalThis.fetch = async (url, options) => {
@@ -45,6 +47,8 @@ function mockBackend(t, status = 200, reply = { ok: true, booked: true, availabl
     globalThis.fetch = previousFetch;
     if (previousUrl === undefined) delete process.env.BOOKING_BACKEND_URL;
     else process.env.BOOKING_BACKEND_URL = previousUrl;
+    if (previousVercelEnv === undefined) delete process.env.VERCEL_ENV;
+    else process.env.VERCEL_ENV = previousVercelEnv;
     if (previousSecret === undefined) delete process.env.BOOKING_SECRET;
     else process.env.BOOKING_SECRET = previousSecret;
   });
