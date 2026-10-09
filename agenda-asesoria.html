@@ -217,6 +217,7 @@
 </div>
 <script>
 (() => {
+    let bookingProject = null;
     const projectSlug = new URLSearchParams(window.location.search).get('proyecto');
     if (projectSlug) {
         fetch('/data/proyectos.json')
@@ -225,6 +226,7 @@
                 if (!Array.isArray(projects)) return;
                 const project = projects.find(item => item.slug === projectSlug);
                 if (!project || typeof project.nombre !== 'string') return;
+                bookingProject = project.slug;
                 document.getElementById('agenda-reserva-titulo').textContent = 'Asesoría sobre ' + project.nombre;
                 const backLink = document.getElementById('agenda-project-back-link');
                 backLink.href = project.detalleUrl || '/proyectos.html';
@@ -375,7 +377,7 @@
             const response = await fetch('/api/booking-create', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...checkedSlot, ...fields }),
+                body: JSON.stringify({ ...checkedSlot, ...fields, ...(bookingProject ? { proyecto: bookingProject } : {}) }),
             });
             const result = await response.json();
             if (response.status === 409 && result.code === 'slot_unavailable') {

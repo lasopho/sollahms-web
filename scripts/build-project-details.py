@@ -131,14 +131,15 @@ def render(project, research, template):
     tours_html = ''.join(tours) or '<div class="pending-panel"><p>No se ha verificado un recorrido virtual oficial para este proyecto. Su disponibilidad está pendiente de confirmación.</p></div>'
     query = ', '.join(str(x) for x in [address, field(project, research, 'comuna'), field(project, research, 'region'), 'Chile'] if x)
     # An address requires both official address and official commune. No approximate coordinates.
-    mapped = bool(address and field(project, research, 'comuna'))
+    mapped = bool(address and field(project, research, 'comuna') and field(project, research, 'mapQuery'))
     if mapped:
         maps_link = 'https://www.google.com/maps/search/?' + urlencode({'api': 1, 'query': query})
         embed_link = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
         map_html = f'<p class="lead">{esc(query)}</p><div class="embed-shell map-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(embed_link)}" data-embed-title="Mapa de {esc(query)}">Mostrar mapa interactivo</button></div><a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a><p class="map-note">El mapa busca la dirección publicada por la inmobiliaria. La ubicación del marcador la determina Google Maps; confirma el acceso exacto en la fuente oficial.</p><noscript><p>El enlace a Google Maps permite consultar la ubicación sin JavaScript.</p></noscript>'
     else:
         if address:
-            map_html = f'<p class="lead">{esc(address)}</p><div class="pending-panel"><p>La dirección está publicada en la fuente oficial. Falta confirmar la comuna administrativa para incorporar un mapa sin ambigüedad.</p></div>'
+            reason = 'Falta confirmar la comuna administrativa para incorporar un mapa sin ambigüedad.' if not field(project, research, 'comuna') else 'La ubicación exacta o el acceso presenta referencias pendientes de aclaración. Confirma el punto de acceso con la inmobiliaria.'
+            map_html = f'<p class="lead">{esc(address)}</p><div class="pending-panel"><p>La dirección está publicada en la fuente oficial. {reason}</p></div>'
         else:
             map_html = '<div class="pending-panel"><p>Dirección exacta pendiente de verificación. Incorporaremos el mapa cuando la ubicación del proyecto se confirme en una fuente oficial.</p></div>'
     source_url = secure_url(research.get('sourceUrl'))
@@ -190,6 +191,8 @@ def main():
         ledger.append({'slug': slug, 'nombre': project['nombre'], 'inmobiliaria': project['inmobiliaria'], 'detalleUrl': project['detalleUrl'], 'fichaDesarrollada': bool(actual), 'destacadaExistente': slug in FEATURED, 'estadoFuente': research.get('sourceStatus', 'research_pending'), 'fuente': research.get('sourceUrl'), 'fechaRevision': research.get('checkedAt'), 'mapa': mapped, 'matterport': matterport, 'recorridosOficiales': tours, 'pendientes': pending, 'controlCalidad': 'pendiente' if pending else 'datos_verificados'})
     (ROOT / 'data/proyectos.json').write_text(json.dumps(projects, ensure_ascii=False, indent=2) + '\n')
     (ROOT / 'data/registro-fichas.json').write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + '\n')
+    contexts = {p['slug']: {'name': p['nombre'], 'url': p['detalleUrl']} for p in projects}
+    (ROOT / 'lib/project-context.mjs').write_text('// Generated from data/proyectos.json by build-project-details.py.\nexport const projects = Object.freeze(' + json.dumps(contexts, ensure_ascii=False, indent=2).replace('<', '\\u003c') + ');\n')
     # Keep the existing global destinations and append all details exactly once.
     urls = ['/', '/proyectos.html', '/agenda-asesoria.html', '/contacto.html', '/privacidad.html'] + [p['detalleUrl'] for p in projects]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('  <url><loc>https://sollahms.cl' + esc(url) + '</loc></url>\n' for url in dict.fromkeys(urls)) + '</urlset>\n'
