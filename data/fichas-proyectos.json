@@ -339,6 +339,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://luftimages.space/maestra/VistaLlacolen/Piloto%202DG1B/luft_virtual_tour.html",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de cocina/comedor renderizada, hotspot hacia living, menú inferior de ambientes y mapa de planta. Ya no aparece CARGANDO TOUR.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "ae15a230989f671444a2e72afcfa6157df9a5c4e32e6c198e3f92bf87a67be6f",
+          "screenshot": "docs/qa/recorridos/023.jpg"
         }
       },
       {
@@ -357,6 +366,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://luftimages.space/maestra/VistaLlacolen/Piloto%202D2BM/luft_virtual_tour.html",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de acceso/living renderizada, tres hotspots de navegación a dormitorios/living y menú de ambientes. Ya no aparece CARGANDO TOUR.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "fa70c5baa18fc535a799c31dd1ff078fdc1a908567f40d07d075bcbfc4454ae7",
+          "screenshot": "docs/qa/recorridos/024.jpg"
         }
       }
     ],
@@ -364,8 +382,7 @@
       "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
       "Superficie útil",
       "Superficie total",
-      "Fecha de entrega",
-      "Verificación visual completa del recorrido Piloto 2D2B · Vista Llacolén B"
+      "Fecha de entrega"
     ],
     "reviewedOriginal": {
       "comuna": "Concepción",
@@ -483,7 +500,16 @@
           "finalUrl": "https://proyectos.rito3d.cl/proyectos/ileon/paicavi/depto-305/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de living/comedor y cocina con logo León, hotspots sobre piso y barra de navegación/zoom/pantalla completa.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "9cd1fb8b2f251f648111877552e64c5d155e76b4a32663f3f9bd034f75f24a22",
+          "screenshot": "docs/qa/recorridos/025.jpg"
+        }
       },
       {
         "url": "https://proyectos.rito3d.cl/proyectos/ileon/paicavi/depto-311/",
@@ -499,7 +525,16 @@
           "finalUrl": "https://proyectos.rito3d.cl/proyectos/ileon/paicavi/depto-311/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de cocina/pasillo del departamento311, logo León, hotspot de avance y barra de navegación/zoom.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "565a61a3e61bfdc82a6985e63ccb14508be647f3aa7757cbea876e76c523538b",
+          "screenshot": "docs/qa/recorridos/026.jpg"
+        }
       },
       {
         "url": "https://proyectos.rito3d.cl/proyectos/ileon/paicavi/depto-313/",
@@ -515,7 +550,16 @@
           "finalUrl": "https://proyectos.rito3d.cl/proyectos/ileon/paicavi/depto-313/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de cocina/comedor del departamento313, logo León, múltiples hotspots y barra de navegación/zoom.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "1da69fbf76a3b997fcacbeb7122023da9cbc00c9fc19f937dd3a722d33e24904",
+          "screenshot": "docs/qa/recorridos/027.jpg"
+        }
       },
       {
         "url": "https://proyectos.rito3d.cl/proyectos/ileon/paicavi/tour-360/",
@@ -531,7 +575,16 @@
           "finalUrl": "https://proyectos.rito3d.cl/proyectos/ileon/paicavi/tour-360/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena aérea del proyecto y entorno de Concepción, logo León, puntos interactivos azules y menú.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "0aaad9c79243aa8065f14cb7350adea7310fced75d54ee3ff35a3b40326992ef",
+          "screenshot": "docs/qa/recorridos/028.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -542,19 +595,19 @@
     "additionalSources": [],
     "sourceEvidence": "B.COME; Concepción; Paicaví 1485; Venta en verde",
     "reviewedOriginal": {
-      "precioDesdeUF": 2490,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "León",
-      "comuna": "Concepción",
       "estado": "Venta en verde",
       "entrega": null,
-      "direccion": "Paicaví 1485",
       "region": "Biobío",
-      "nombre": "B.COME"
+      "comuna": "Concepción",
+      "nombre": "B.COME",
+      "precioDesdeUF": 2490,
+      "direccion": "Paicaví 1485"
     },
     "originalImages": [
       {
@@ -665,6 +718,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://luftimages.space/maestra/VistaLlacolen/Piloto%20Estudio/luft_virtual_tour.html",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de cocina renderizada, menú Living-Dormitorio/Acceso-Cocina/Baño principal y mapa. Ya no aparece CARGANDO TOUR.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "990bbbad024f90ac13c31bddf1912b5a383b1aba4055b875432474de8259ca68",
+          "screenshot": "docs/qa/recorridos/029.jpg"
         }
       },
       {
@@ -683,6 +745,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://luftimages.space/maestra/VistaLlacolen/Piloto%201D1B/luft_virtual_tour.html",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de cocina/living renderizada, menú de ambientes y mapa. Ya no aparece CARGANDO TOUR.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "0edaa1e7c8c2a7f4bb4fef5e07ad3650a0db5b8dd78a4a7968b9b6f4f3e46f00",
+          "screenshot": "docs/qa/recorridos/030.jpg"
         }
       },
       {
@@ -702,6 +773,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://luftimages.space/maestra/VistaLlacolen/Piloto%202DG1B/luft_virtual_tour.html",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de cocina/comedor renderizada, hotspot hacia living, menú inferior de ambientes y mapa de planta. Ya no aparece CARGANDO TOUR.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "ae15a230989f671444a2e72afcfa6157df9a5c4e32e6c198e3f92bf87a67be6f",
+          "screenshot": "docs/qa/recorridos/023.jpg"
         }
       },
       {
@@ -720,6 +800,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://luftimages.space/maestra/VistaLlacolen/Piloto%202D2BM/luft_virtual_tour.html",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de acceso/living renderizada, tres hotspots de navegación a dormitorios/living y menú de ambientes. Ya no aparece CARGANDO TOUR.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "fa70c5baa18fc535a799c31dd1ff078fdc1a908567f40d07d075bcbfc4454ae7",
+          "screenshot": "docs/qa/recorridos/024.jpg"
         }
       }
     ],
@@ -727,10 +816,7 @@
       "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
       "Superficie útil",
       "Superficie total",
-      "Fecha de entrega",
-      "Verificación visual completa del recorrido Piloto estudio · Vista Llacolén A",
-      "Verificación visual completa del recorrido Piloto 1D1B · Vista Llacolén A",
-      "Verificación visual completa del recorrido Piloto 2D2B · Vista Llacolén A"
+      "Fecha de entrega"
     ],
     "reviewedOriginal": {
       "comuna": "Concepción",
@@ -1012,14 +1098,22 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://tourvirtuales360.cl/pano/ecasa_/nucleo_pilotos/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada Cam360 oficial con nombre del proyecto, botón Tour Virtual, marca Ecasa, información comercial y fondo aéreo; sin pantalla de error.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "40866a4e5a8fe812fd53501d8f3d000af0b775b376c00b88daf4f2ca1372cb18",
+          "screenshot": "docs/qa/recorridos/031.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
       "Precio vigente y disponibilidad",
-      "Fecha de entrega",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Núcleo Costanera"
+      "Fecha de entrega"
     ],
     "reviewedOriginal": {
       "comuna": "Arica",
@@ -1166,13 +1260,21 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://tourvirtuales360.cl/pano/ecasa_/wayra_pilotos360/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada Cam360 oficial con nombre del proyecto, botón Tour Virtual, marca Ecasa, información comercial y fondo aéreo; sin pantalla de error.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "8b4944c00353d6d2d5ff0b78acd0da8534539dcdb1c10aa872a0f9cb13aa3579",
+          "screenshot": "docs/qa/recorridos/032.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
-      "Precio vigente y disponibilidad",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Wayra"
+      "Precio vigente y disponibilidad"
     ],
     "reviewedOriginal": {
       "comuna": "Arica",
@@ -1319,6 +1421,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://www.plangoservidor.com/360_Ecasa/Lamara/Depto2D2B/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena de cocina y portada Plango/ECASA con botón Explora el Real Tour; interfaz original visible.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "3f3636cce72eae176cc4ca4b779b68dc85e1f4b58e855b0d94b13664094805e3",
+          "screenshot": "docs/qa/recorridos/033.jpg"
         }
       }
     ],
@@ -1603,7 +1714,16 @@
           "finalUrl": "https://my.matterport.com/show/?m=vmeZJ423idk",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "9572c6bb14de99b7ce815eba4a33df41fa6d2de15a630597de41e991e62e5d9b",
+          "screenshot": "docs/qa/recorridos/000.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -1910,7 +2030,16 @@
           "finalUrl": "https://www.plangoservidor.com/360_Nollagam/CostaneraCoquimbo/App360/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada Nollagam y texto Haz clic aquí para empezar el tour virtual; no muestra todavía escena interior.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "8f67a64fee63b0ce8705db12c3690bc73e52251d6273bae415cdba761e61e437",
+          "screenshot": "docs/qa/recorridos/034.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -2073,7 +2202,16 @@
           "finalUrl": "https://www.plangoservidor.com/360_Nollagam/CostaneraCoquimbo/App360/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada Nollagam y texto Haz clic aquí para empezar el tour virtual; no muestra todavía escena interior.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "8f67a64fee63b0ce8705db12c3690bc73e52251d6273bae415cdba761e61e437",
+          "screenshot": "docs/qa/recorridos/034.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -2221,7 +2359,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7PSFh?logo=1&info=0&logosize=59&fs=1&vr=1&sd=1&initload=0&thumbs=1",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada Edificio Ecuador con dirección, logo Norte Verde y botón de reproducción; preview desenfocado previo al inicio.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "6803e03064862ab60a1e503ae7b870e1c987648909f1d4a991d1e8a89db03c77",
+          "screenshot": "docs/qa/recorridos/035.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -2379,19 +2526,19 @@
     ],
     "sourceEvidence": "Edificio Coronel Godoy; Estación Central; Av. Ecuador 4226; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 2440,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Estación Central",
       "estado": "Venta en verde",
       "entrega": "Segundo semestre 2028",
-      "direccion": "Av. Ecuador 4226",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Coronel Godoy"
+      "comuna": "Estación Central",
+      "nombre": "Edificio Coronel Godoy",
+      "precioDesdeUF": 2440,
+      "direccion": "Av. Ecuador 4226"
     },
     "originalImages": [
       {
@@ -2512,7 +2659,16 @@
           "finalUrl": "https://www.tourvirtuales360.cl/pano/leben/indi/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena interior INDI, selector Acceso, hotspot y controles de planta.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "ea55a9d9e0bbc187b6632c7f6dbbc4906d23cfcb5187ec58f7a9eeb6955ced2f",
+          "screenshot": "docs/qa/recorridos/036.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -2532,18 +2688,18 @@
     ],
     "sourceEvidence": "Edificio Indi; Independencia; Vallenar 2070, esquina Hipódromo; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 3827,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Independencia",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "Vallenar 2070",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Indi"
+      "comuna": "Independencia",
+      "nombre": "Edificio Indi",
+      "precioDesdeUF": 3827,
+      "direccion": "Vallenar 2070"
     },
     "originalImages": [
       {
@@ -2666,18 +2822,18 @@
     ],
     "sourceEvidence": "Edificio Vivaceta; Independencia; Av. Fermín Vivaceta 864; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 2972,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Independencia",
       "estado": "Entrega futura",
       "entrega": "Segundo semestre 2027",
-      "direccion": "Av. Fermín Vivaceta 864",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Vivaceta"
+      "comuna": "Independencia",
+      "nombre": "Edificio Vivaceta",
+      "precioDesdeUF": 2972,
+      "direccion": "Av. Fermín Vivaceta 864"
     },
     "originalImages": [
       {
@@ -2807,6 +2963,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://my.matterport.com/show/?m=g5PkX5rmoMF",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "8f28a49f45c894a8446de1087094f8e54f2364d8712f86df0d494e753e0c1406",
+          "screenshot": "docs/qa/recorridos/001.jpg"
         }
       }
     ],
@@ -3060,7 +3225,16 @@
           "finalUrl": "https://www.nollagam.cl/panoramicas/santa-maria-3/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Vista aérea Santa María con hotspots a modelos 2D2B y 3D2B.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "e6493c8375b30352697b72256efeeba81d686f5c2b278ddd7ff8f5b45e1a12ca",
+          "screenshot": "docs/qa/recorridos/037.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -3483,6 +3657,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://mybakerlab.com/endemicocasa/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena interior de dormitorio con revestimiento de madera renderizada y control de navegación lateral; sin error, pantalla vacía ni indicador de carga.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "8a9ea8294b285a59ef47c4f2f32352780d4c8a1a67b726c34b5435529252c66d",
+          "screenshot": "docs/qa/recorridos/038.jpg"
         }
       },
       {
@@ -3490,9 +3673,9 @@
         "title": "Recorrido 2 · Endémico Pichilemu",
         "provider": "Otro",
         "sourceUrl": "https://endemicopichilemu.cl/",
-        "verificationStatus": "http_verified",
+        "verificationStatus": "visualization_pending",
         "httpVerified": true,
-        "embedStatus": "allowed",
+        "embedStatus": "visual_pending",
         "availabilityCheck": {
           "httpStatus": 200,
           "xFrameOptions": "",
@@ -3501,6 +3684,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://mybakerlab.com/endemico/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "pending",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Después del reintento solo se observa el fondo verde uniforme del recuadro. No hay escena, interfaz, logo, controles ni indicador de carga del proveedor. Integración visual no acreditada.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "b2fcb35647f45faf93628352fcdac91ffae6cf32c457f19dac7093cc9d26d80e",
+          "screenshot": "docs/qa/recorridos/039.jpg"
         }
       }
     ],
@@ -3514,8 +3706,7 @@
       "Dirección exacta",
       "Precio vigente y disponibilidad",
       "Fecha de entrega",
-      "Verificación visual completa del recorrido Recorrido 1 · Endémico Pichilemu",
-      "Verificación visual completa del recorrido Recorrido 2 · Endémico Pichilemu"
+      "Disponibilidad del visor Recorrido 2 · Endémico Pichilemu: no mostró escena tras reintento; conservar enlace oficial y confirmar con el proveedor"
     ],
     "reviewedOriginal": {
       "comuna": "Pichilemu",
@@ -3651,13 +3842,21 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://tourvirtuales360.cl/pano/ecasa_/tipo%20A/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena interior Terratoltén con menú y controles de navegación/expandir.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "1535bc9edd066f3ed33758a79a6343ac7063cfe0e869904c6274b307a83d4448",
+          "screenshot": "docs/qa/recorridos/040.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
-      "Precio vigente y disponibilidad",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Terratoltén 1"
+      "Precio vigente y disponibilidad"
     ],
     "reviewedOriginal": {
       "comuna": "Villarrica",
@@ -3793,7 +3992,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7bPZ2?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&autop=8&thumbs=1&margin=6&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Render exterior Playa Peñuelas, logo Norte Verde, reproducción, fullscreen y galería.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "2a8ee3d8b3c8891e69c62d3c38ec085a3f46cdd0d58946602ddc39a1ee55db45",
+          "screenshot": "docs/qa/recorridos/041.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -4847,7 +5055,16 @@
           "finalUrl": "https://my.matterport.com/show/?m=tEmQDkecqkv",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "b89d048806eced7d64a5a7c71acf08bebe661746044df42bad669f3086dc8de1",
+          "screenshot": "docs/qa/recorridos/002.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -5322,7 +5539,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7bNPZ?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&autop=8&thumbs=1&margin=6&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Render exterior Dual390LTO, logo Norte Verde, reproducción, fullscreen y galería.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "98abff66039427723d6974ea504bd071d6197b12794f41982b880d0d9da98b4c",
+          "screenshot": "docs/qa/recorridos/042.jpg"
+        }
       },
       {
         "url": "https://norteverde.viewin360.co/share/collection/7DR7z?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&thumbs=-1&margin=6&inst=es",
@@ -5340,7 +5566,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7DR7z?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&thumbs=-1&margin=6&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Vista aérea Dual390LTO con marcador NV y hotspots.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "ad628381140a85be99d6ecd7fa3e4211cc5c2c3f9543725e008e86713bad2397",
+          "screenshot": "docs/qa/recorridos/043.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -5639,6 +5874,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://my.matterport.com/show/?m=QrYw7uT89YS",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "8afa669448194037c28d9275c9b5661a780b0da3f09e4ead7094b1cb2074a2d9",
+          "screenshot": "docs/qa/recorridos/003.jpg"
         }
       }
     ],
@@ -5765,14 +6009,22 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://www.tourvirtuales360.cl/pano/ecasa_/ferroparque/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada FERROPARQUE DEP.2D+2B con escena interior y botón Explorar el espacio3D.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "87e6492af4e53ff1fc9d7d6f18664b3242e6e24dfa9bacd83f5371649030552d",
+          "screenshot": "docs/qa/recorridos/044.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
       "Precio vigente y disponibilidad",
-      "Equipamiento y áreas comunes",
-      "Verificación visual completa del recorrido Piloto virtual oficial · FerroParque"
+      "Equipamiento y áreas comunes"
     ],
     "reviewedOriginal": {
       "comuna": "Temuco",
@@ -6103,7 +6355,16 @@
           "finalUrl": "https://my.matterport.com/show/?m=DfrGHmf9J7V",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "083e010196a1e4c93e6091fb9511e4b811cf32f5734708ca50fcb5078cfc3aa9",
+          "screenshot": "docs/qa/recorridos/004.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -6317,7 +6578,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7ZLW6?logo=1&info=0&logosize=40&fs=1&vr=1&sd=1&thumbs=1",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Render San Francisco1204 con hotspot, fullscreen y galería cargada.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "20dee475d75b8186ac57b71937c2acc5b7a930329ddb382dd2c3354d08914da7",
+          "screenshot": "docs/qa/recorridos/045.jpg"
+        }
       },
       {
         "url": "https://norteverde.viewin360.co/share/collection/7H00v?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&thumbs=-1&margin=6&inst=es",
@@ -6335,7 +6605,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7H00v?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&thumbs=-1&margin=6&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Vista aérea San Francisco1204 con marcador NV, hotspots y fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "7965b34ffb85b33720e0133ee7d5ef5e471addd34d0b3b69197aa7d12589b03d",
+          "screenshot": "docs/qa/recorridos/046.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -6495,13 +6774,21 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://www.tourvirtuales360.cl/pano/ecasa_/cumbres/index.htm",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada CUMBRES DE PEÑUELAS DEP.3D+2B con escena interior y botón Explorar el espacio3D.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "a06bad1881ada0e75b3248b26dd315d1d30ccdb4a6cdfc31c544d35b5f51e125",
+          "screenshot": "docs/qa/recorridos/047.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
-      "Precio vigente y disponibilidad",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Cumbres de Peñuelas"
+      "Precio vigente y disponibilidad"
     ],
     "reviewedOriginal": {
       "comuna": "Coquimbo",
@@ -6641,7 +6928,16 @@
           "finalUrl": "https://kuula.co/share/hX3sl/collection/71hlM?logo=1&info=1&fs=1&vr=0&thumbs=1&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interior BAUM1D1B, Kuula, galería y controles.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "52bde4d5db554300cc0dc9802dbf93ded31b9434654dd839b60c09788cbe78e0",
+          "screenshot": "docs/qa/recorridos/048.jpg"
+        }
       },
       {
         "url": "https://kuula.co/share/hX3Gx/collection/71hGP?logo=1&info=1&fs=1&vr=0&thumbs=1&inst=es",
@@ -6657,7 +6953,16 @@
           "finalUrl": "https://kuula.co/share/hX3Gx/collection/71hGP?logo=1&info=1&fs=1&vr=0&thumbs=1&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interior BAUM2D2B, Kuula, galería y instrucción arrastrar para mirar alrededor.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "2a6529232cc3a80e15a19634bd307cecbeb4581340c1e9c69507ef34f17e30b6",
+          "screenshot": "docs/qa/recorridos/049.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -6678,18 +6983,18 @@
     ],
     "sourceEvidence": "Edificio BAUM; La Florida; El Canelo 6750; Venta en verde",
     "reviewedOriginal": {
-      "precioDesdeUF": 3843,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "La Florida",
       "estado": "Entrega futura",
       "entrega": "Primer semestre 2028",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Edificio BAUM"
+      "comuna": "La Florida",
+      "nombre": "Edificio BAUM",
+      "precioDesdeUF": 3843,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -6813,17 +7118,17 @@
     ],
     "sourceEvidence": "Diagonal Paraguay; Santiago; Diagonal Paraguay 240; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3278.89,
       "tipologias": [
         "1 dormitorio"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
       "estado": "Entrega futura",
       "entrega": "Segundo semestre 2027",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Diagonal Paraguay"
+      "comuna": "Santiago",
+      "nombre": "Diagonal Paraguay",
+      "precioDesdeUF": 3278.89,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -6944,11 +7249,13 @@
         },
         "embedStatus": "allowed",
         "visualVerification": {
-          "status": "visual_confirmed",
+          "result": "valid_interface",
           "checkedAt": "2026-10-09",
-          "title": "INN PUERTO CHICO",
-          "evidence": "Escena tridimensional del piloto renderizada y controles Matterport visibles en navegador, captura inspeccionada",
-          "scope": "URL original directa, escritorio 1280×720; integración y móvil a validar en ficha Sollahms"
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y fondo negro; título/logo y acción de inicio visibles.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "74da3525e0798bee5006c9488ca0091c02a83e2e6dd3436bd38f166cdbc47436",
+          "screenshot": "docs/qa/recorridos/005.jpg"
         }
       }
     ],
@@ -6957,7 +7264,8 @@
       "Disponibilidad exacta por tipología",
       "Superficie útil",
       "Superficie total",
-      "Cantidad de departamentos"
+      "Cantidad de departamentos",
+      "Cantidad de pisos"
     ],
     "additionalSources": [
       {
@@ -6982,12 +7290,12 @@
       "entorno": "Frente al Lago Llanquihue, con vistas a los volcanes Osorno y Calbuco"
     },
     "reviewedOriginal": {
-      "precioDesdeUF": 9415,
       "tipologias": [
         "2 dormitorios",
         "3 dormitorios",
         "4 dormitorios"
       ],
+      "inmobiliaria": "Leben",
       "amenities": [
         "Piscina climatizada",
         "Quinchos",
@@ -7001,16 +7309,16 @@
         "Jardín interior",
         "Rooftop wellness"
       ],
-      "superficieDesdeM2": 78,
-      "inmobiliaria": "Leben",
-      "comuna": "Puerto Varas",
-      "estado": "Entrega futura",
-      "entrega": "Diciembre 2026",
-      "descripcionLarga": "Frente al Lago Llanquihue. Departamentos, unidades con patio privado y dúplex. Arquitectura respaldada por Otero Varas.",
-      "direccion": "Vicente Pérez Rosales 991",
       "mapQuery": "Vicente Pérez Rosales 991, Puerto Chico, Puerto Varas, Los Lagos, Chile",
+      "estado": "Entrega futura",
+      "superficieDesdeM2": 78,
+      "entrega": "Diciembre 2026",
       "region": "Los Lagos",
-      "nombre": "INN Puerto Chico"
+      "comuna": "Puerto Varas",
+      "nombre": "INN Puerto Chico",
+      "precioDesdeUF": 9415,
+      "descripcionLarga": "Frente al Lago Llanquihue. Departamentos, unidades con patio privado y dúplex. Arquitectura respaldada por Otero Varas.",
+      "direccion": "Vicente Pérez Rosales 991"
     },
     "originalImages": [
       {
@@ -7127,11 +7435,13 @@
         },
         "embedStatus": "allowed",
         "visualVerification": {
-          "status": "visual_confirmed",
+          "result": "valid_interface",
           "checkedAt": "2026-10-09",
-          "title": "Edificio Suecia Piloto tipo-A 2D+3B",
-          "evidence": "Escena tridimensional del piloto renderizada y controles Matterport visibles en navegador, captura inspeccionada",
-          "scope": "URL original directa, escritorio 1280×720; integración y móvil a validar en ficha Sollahms"
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y fondo negro; título/logo y acción de inicio visibles. Se inspeccionó el visor nuevo situado bajo Piloto oficial Suecia; el otro iframe original no se confunde con este.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "075d48f018ee505f4d47035e32d96f664fbb930d5994440e87ed4bca0a32be4f",
+          "screenshot": "docs/qa/recorridos/006.jpg"
         }
       },
       {
@@ -7148,7 +7458,16 @@
           "finalUrl": "https://my.matterport.com/show/?m=rNrkGFSKnF4",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor Matterport con escena de cocina/living efectivamente renderizada, controles inferiores y puntos de navegación; sin spinner, overlay de carga ni error. Proyecto Suecia coherente.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "139d0e71b52001e5f55f5d1feeabb3c119b6732ee25637278257ffeb07003c65",
+          "screenshot": "docs/qa/recorridos/007.jpg"
+        }
       },
       {
         "url": "https://www.tourvirtuales360.cl/pano/leben/Suecia/",
@@ -7164,7 +7483,16 @@
           "finalUrl": "https://www.tourvirtuales360.cl/pano/leben/Suecia/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interior Suecia, selector Comedor y hotspots; interfaz Leben visible.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "8bfb3741f4258df6cde82e78a113bf59ff75eeefea3f70e5d1ecc5c593f9caae",
+          "screenshot": "docs/qa/recorridos/050.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -7190,11 +7518,11 @@
       "entorno": null
     },
     "reviewedOriginal": {
-      "precioDesdeUF": 10885,
       "tipologias": [
         "2 dormitorios",
         "3 dormitorios"
       ],
+      "inmobiliaria": "Leben",
       "amenities": [
         "Coffee & Work",
         "Lounge",
@@ -7203,16 +7531,16 @@
         "Training Zone",
         "Piscina"
       ],
-      "superficieDesdeM2": 87.38,
-      "inmobiliaria": "Leben",
-      "comuna": "Providencia",
-      "estado": "Entrega inmediata",
-      "entrega": "Inmediata",
-      "descripcionLarga": "Edificio de 7 pisos con 37 departamentos.",
-      "direccion": "Tranquila 2307",
       "mapQuery": "Tranquila 2307, Providencia, Santiago, Chile",
+      "estado": "Entrega inmediata",
+      "superficieDesdeM2": 87.38,
+      "entrega": "Inmediata",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Suecia"
+      "comuna": "Providencia",
+      "nombre": "Edificio Suecia",
+      "precioDesdeUF": 10885,
+      "descripcionLarga": "Edificio de 7 pisos con 37 departamentos.",
+      "direccion": "Tranquila 2307"
     },
     "originalImages": [
       {
@@ -7328,11 +7656,13 @@
         },
         "embedStatus": "allowed",
         "visualVerification": {
-          "status": "visual_confirmed",
+          "result": "valid_interface",
           "checkedAt": "2026-10-09",
-          "title": "Edificio Capitanes Piloto 3d3b",
-          "evidence": "Escena tridimensional del piloto renderizada y controles Matterport visibles en navegador, captura inspeccionada",
-          "scope": "URL original directa, escritorio 1280×720; integración y móvil a validar en ficha Sollahms"
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "f0b234b707a533a6f84f2604089588007f3c955fd5291d0008742b9c3623b1d0",
+          "screenshot": "docs/qa/recorridos/008.jpg"
         }
       },
       {
@@ -7349,7 +7679,16 @@
           "finalUrl": "https://my.matterport.com/show/?m=y6C3Wf3Cjef",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "ffefa8a65595a964d513bb68dd10a5e4afd7133b5038cf084ea526bb165fa5dd",
+          "screenshot": "docs/qa/recorridos/009.jpg"
+        }
       },
       {
         "url": "https://www.lanube360.com/ileben/los-capitanes-piso8/",
@@ -7365,7 +7704,16 @@
           "finalUrl": "https://www.lanube360.com/ileben/los-capitanes-piso8/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno Capitanes vista real piso8 con hotspots e iconos de navegación/zoom/fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "18a11d8616753a4f87f523ed92992de572a49c159a89e0d443a3e35185bbabf6",
+          "screenshot": "docs/qa/recorridos/051.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -7385,18 +7733,18 @@
     ],
     "sourceEvidence": "Capitanes; Providencia; Los Capitanes 1447; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 8347,
       "tipologias": [
         "2 dormitorios",
         "3 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Providencia",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Capitanes"
+      "comuna": "Providencia",
+      "nombre": "Capitanes",
+      "precioDesdeUF": 8347,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -7513,19 +7861,19 @@
     ],
     "sourceEvidence": "Parque Germania; Puerto Montt; Diagonal Germania 200; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 3684.56,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios",
         "3 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Puerto Montt",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": null,
       "region": "Los Lagos",
-      "nombre": "Parque Germania"
+      "comuna": "Puerto Montt",
+      "nombre": "Parque Germania",
+      "precioDesdeUF": 3684.56,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -7641,17 +7989,17 @@
     ],
     "sourceEvidence": "Edificio Argomedo; Santiago; Argomedo 382; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 4212,
       "tipologias": [
         "2 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Santiago",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Edificio Argomedo"
+      "comuna": "Santiago",
+      "nombre": "Edificio Argomedo",
+      "precioDesdeUF": 4212,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -7772,18 +8120,18 @@
     ],
     "sourceEvidence": "Edificio Mood; La Florida; Av. Américo Vespucio 6630; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": null,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "La Florida",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "Av. Américo Vespucio 6630",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Mood"
+      "comuna": "La Florida",
+      "nombre": "Edificio Mood",
+      "precioDesdeUF": null,
+      "direccion": "Av. Américo Vespucio 6630"
     },
     "originalImages": [
       {
@@ -7897,11 +8245,13 @@
         },
         "embedStatus": "allowed",
         "visualVerification": {
-          "status": "visual_confirmed",
+          "result": "valid_interface",
           "checkedAt": "2026-10-09",
-          "title": "Índigo - Leben",
-          "evidence": "Escena tridimensional del piloto renderizada y controles Matterport visibles en navegador, captura inspeccionada",
-          "scope": "URL original directa, escritorio 1280×720; integración y móvil a validar en ficha Sollahms"
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "eaa90ec53aee584dc01d1824d299099232d32be830a4998587a8c939e76ae1ed",
+          "screenshot": "docs/qa/recorridos/010.jpg"
         }
       },
       {
@@ -7918,7 +8268,16 @@
           "finalUrl": "https://tourvirtuales360.cl/pano/leben/indigo/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada Índigo piloto modeloD2 3dormitorios/2baños con escena interior y botón de inicio.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "04255f66a46929f889b47e4bea2e245ccee99072d28c9f6613aa20f40dc4b50f",
+          "screenshot": "docs/qa/recorridos/052.jpg"
+        }
       },
       {
         "url": "https://www.lanube360.com/ileben/edificioindigo/",
@@ -7934,7 +8293,16 @@
           "finalUrl": "https://www.lanube360.com/ileben/edificioindigo/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno Índigo vista aérea360 con hotspots e iconos de navegación/zoom/fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "ab4405d914fb93723dede7f4dcbfae2d00869c40e0f53fdea0b44d4e4709c962",
+          "screenshot": "docs/qa/recorridos/053.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -7955,18 +8323,18 @@
     ],
     "sourceEvidence": "Edificio Índigo; Puerto Varas; Imperial 645; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 9000.1,
       "tipologias": [
         "2 dormitorios",
         "3 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Puerto Varas",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": null,
       "region": "Los Lagos",
-      "nombre": "Edificio Índigo"
+      "comuna": "Puerto Varas",
+      "nombre": "Edificio Índigo",
+      "precioDesdeUF": 9000.1,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -8140,17 +8508,17 @@
     ],
     "sourceEvidence": "Edificio Santo; Santiago; Cóndor 1071, esquina San Diego; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 4023,
       "tipologias": [
         "2 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Santiago",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Edificio Santo"
+      "comuna": "Santiago",
+      "nombre": "Edificio Santo",
+      "precioDesdeUF": 4023,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -8264,7 +8632,16 @@
           "finalUrl": "https://zume.cl/360/livingtown/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interior LivingTown con galería Cocina/Living/Dormitorios/Baño.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "3d179f0e461f7135678adbf5e97e8b91a1e898835d1164506d9218b5927579d9",
+          "screenshot": "docs/qa/recorridos/054.jpg"
+        }
       },
       {
         "url": "https://www.lanube360.com/ileben/eyzaguirre-piso9/",
@@ -8280,7 +8657,16 @@
           "finalUrl": "https://www.lanube360.com/ileben/eyzaguirre-piso9/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno LivingTown, vista real piso9 etiquetada Eyzaguirre, controles de navegación/zoom/fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "fcd3f845d539d6fcaa2efe80628f1b3a877564b349e93a3e8621af601d3e5c5f",
+          "screenshot": "docs/qa/recorridos/055.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -8301,18 +8687,18 @@
     ],
     "sourceEvidence": "Edificio Living Town; Santiago; Eyzaguirre 590; Venta en verde",
     "reviewedOriginal": {
-      "precioDesdeUF": 3949,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Santiago",
       "estado": "Entrega futura",
       "entrega": "Septiembre 2027",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Edificio Living Town"
+      "comuna": "Santiago",
+      "nombre": "Edificio Living Town",
+      "precioDesdeUF": 3949,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -8428,11 +8814,13 @@
         },
         "embedStatus": "allowed",
         "visualVerification": {
-          "status": "visual_confirmed",
+          "result": "valid_interface",
           "checkedAt": "2026-10-09",
-          "title": "Piloto Edificio BOLD - Valdivia",
-          "evidence": "Escena tridimensional del piloto renderizada y controles Matterport visibles en navegador, captura inspeccionada",
-          "scope": "URL original directa, escritorio 1280×720; integración y móvil a validar en ficha Sollahms"
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "18d331f95a5988625a49153ecff7e2e3c5f3d702aaf25e94b268df256d685333",
+          "screenshot": "docs/qa/recorridos/011.jpg"
         }
       },
       {
@@ -8449,7 +8837,16 @@
           "finalUrl": "https://my.matterport.com/show/?m=Snn5i7JvJ2p",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "1dff70f598c4bcee3e8d9f8533c1371ab5a352393ea497c91b71f77237c4d2ff",
+          "screenshot": "docs/qa/recorridos/012.jpg"
+        }
       },
       {
         "url": "https://www.lanube360.com/ileben/valdivia-bold/",
@@ -8465,7 +8862,16 @@
           "finalUrl": "https://www.lanube360.com/ileben/valdivia-bold/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno Bold vista360general con hotspots e iconos de navegación/zoom/fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "08a9b70b07221d4081b91f062667325841ccd7b581ea25ecf2d1614669600af5",
+          "screenshot": "docs/qa/recorridos/056.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -8486,17 +8892,17 @@
     ],
     "sourceEvidence": "Edificio Bold; Valdivia; Chacabuco 637; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": null,
       "tipologias": [
         "1 dormitorio"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Valdivia",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "Chacabuco 637",
       "region": "Los Ríos",
-      "nombre": "Edificio Bold"
+      "comuna": "Valdivia",
+      "nombre": "Edificio Bold",
+      "precioDesdeUF": null,
+      "direccion": "Chacabuco 637"
     },
     "originalImages": [
       {
@@ -8521,7 +8927,7 @@
     "sourceUrl": "https://sento.cl/proyectos/sento-domeyko-2055/",
     "checkedAt": "2026-10-09",
     "sourceStatus": "verified",
-    "sourceNotes": "Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega.",
+    "sourceNotes": "Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega. Rangos globales de superficie retirados para evitar mezclar poblaciones: Encabezado total 23,68 a 86,97 m; plantas publicadas: útil 24,93–51,43 m² y total 27,83–55,99 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
     "verifiedFields": [
       "nombre",
       "inmobiliaria",
@@ -8534,7 +8940,6 @@
       "precioDesdeUF",
       "amenities",
       "descripcionLarga",
-      "superficieDesdeM2",
       "mapQuery"
     ],
     "updates": {
@@ -8568,12 +8973,12 @@
         "Bicicleteros"
       ],
       "descripcionLarga": "Domeyko 2055 es un proyecto de Sento en Domeyko 2055, Santiago. La inmobiliaria informa tipologías de Estudio, 1 dormitorio, 2 dormitorios.",
-      "superficieDesdeM2": 23.68,
+      "superficieDesdeM2": null,
       "mapQuery": "Domeyko 2055, Santiago, Región Metropolitana, Chile"
     },
     "specs": {
-      "utilM2": "24,93–51,43 (plantas publicadas)",
-      "totalM2": "23,68–86,97",
+      "utilM2": null,
+      "totalM2": null,
       "terrenoM2": null,
       "dormitorios": "Estudio, 1–2",
       "banos": "1–2"
@@ -8619,7 +9024,16 @@
           "finalUrl": "https://sento.cl/360-domeyko/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interior Domeyko1D en proyección panorámica inicial con menú de navegación/VR/fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "26824c6dc5c1356faa5929d871861aaf1dfee1d8c5ff39876253c73b2e8e0ac4",
+          "screenshot": "docs/qa/recorridos/057.jpg"
+        }
       },
       {
         "url": "https://sento.cl/360-domeyko/entorno/",
@@ -8635,28 +9049,95 @@
           "finalUrl": "https://sento.cl/360-domeyko/entorno/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno Domeyko2055 con etiquetas de calles, hotspots y controles de zoom/navegación.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "d2e033e3dde9bffae8064dbeba304f2621e5dacd3715d09eb4919450aa60c4ad",
+          "screenshot": "docs/qa/recorridos/058.jpg"
+        }
       }
     ],
     "pendingFields": [
-      "Disponibilidad exacta por tipología"
+      "Disponibilidad exacta por tipología",
+      "Superficie útil y total globales pendientes de confirmación: Encabezado total 23,68 a 86,97 m; plantas publicadas: útil 24,93–51,43 m² y total 27,83–55,99 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
+      "Superficie mínima de las unidades actualmente disponibles"
     ],
     "additionalSources": [],
     "sourceEvidence": "Domeyko 2055; Santiago; Domeyko 2055; Entrega inmediata",
+    "surfaceEvidence": {
+      "sourceUrl": "https://sento.cl/proyectos/sento-domeyko-2055/",
+      "headerTotal": "23,68 a 86,97 m",
+      "publishedPlants": [
+        {
+          "tipo": "B14",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 32.87,
+          "terrazaM2": 3.75,
+          "totalM2": 36.62
+        },
+        {
+          "tipo": "B5",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 30.93,
+          "terrazaM2": 2.86,
+          "totalM2": 33.79
+        },
+        {
+          "tipo": "C1",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 40.24,
+          "terrazaM2": 2.8,
+          "totalM2": 43.04
+        },
+        {
+          "tipo": "D6",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 48.23,
+          "terrazaM2": 3.69,
+          "totalM2": 51.92
+        },
+        {
+          "tipo": "E2",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 51.43,
+          "terrazaM2": 4.56,
+          "totalM2": 55.99
+        },
+        {
+          "tipo": "A5",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 24.93,
+          "terrazaM2": 2.9,
+          "totalM2": 27.83
+        }
+      ],
+      "availabilityMatched": false,
+      "notes": "Encabezado total 23,68 a 86,97 m; plantas publicadas: útil 24,93–51,43 m² y total 27,83–55,99 m². No se acredita que ambos rangos correspondan a la misma disponibilidad."
+    },
     "reviewedOriginal": {
-      "precioDesdeUF": 3080,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Sento",
-      "comuna": "Santiago",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Domeyko 2055"
+      "comuna": "Santiago",
+      "nombre": "Domeyko 2055",
+      "precioDesdeUF": 3080,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -8783,7 +9264,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/79SXm?logo=1&info=0&logosize=59&fs=1&vr=1&sd=1&initload=0&thumbs=1",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada Viewin360 con fachada del Edificio Vergara Domeyko, marca Norte Verde, título correcto y botón Play. Interfaz lista para iniciar, sin error ni pantalla vacía.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "6da41b84fbe7085e8e5c5fe587c3852fe8e1155acc5d79a20130158f2bcf9d92",
+          "screenshot": "docs/qa/recorridos/059.jpg"
+        }
       },
       {
         "url": "https://norteverde.viewin360.co/share/collection/7HNRj?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&thumbs=-1&margin=6&inst=es",
@@ -8801,7 +9291,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7HNRj?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&thumbs=-1&margin=6&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno VergaraDomeyko con vista aérea, marcador NV, hotspots y fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "07cfc670153ba6edb584317df85960874cca1f1b67165b10728f9b96bb85efa9",
+          "screenshot": "docs/qa/recorridos/060.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -8963,7 +9462,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/79Kk8?logo=1&info=0&logosize=59&fs=1&vr=1&sd=1&initload=0&thumbs=1",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada oficial NorteVerde con botón de reproducción; el visor titula Edificio Plaza Panamá mientras la ficha usa Parque Panamá. Registrar variante de nombre publicada por el mismo enlace oficial.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "305de79a8b527282fd37f241e7b32bf8a53ad2f76e9b75d6198aef528d0a4b84",
+          "screenshot": "docs/qa/recorridos/061.jpg"
+        }
       },
       {
         "url": "https://norteverde.viewin360.co/share/collection/7H8fk?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&autop=8&thumbs=1&margin=6&inst=es",
@@ -8981,7 +9489,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7H8fk?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&autop=8&thumbs=1&margin=6&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno ParquePanamá con vista aérea, marcador NV, hotspots, galería y fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "1e34fc1e94d17a2449fe0989dc86e426f4e81908bb661f82768b01bb913bbf6c",
+          "screenshot": "docs/qa/recorridos/062.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -9142,7 +9659,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7vY3G?logo=1&info=0&logosize=40&fs=1&vr=1&sd=1&initload=0&thumbs=1&inst=0",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada PlayaSerena, logo NorteVerde y botón de reproducción; preview desenfocado previo al inicio.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "091f249a0425d1386677a64a5a39193276da1961c33b3690b749680e0a01006f",
+          "screenshot": "docs/qa/recorridos/063.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -9412,7 +9938,16 @@
           "finalUrl": "https://sento.cl/360-plc/213/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada oficial Sento/Plango con escena interior, botón Explora el Real Tour y controles; resolvió área verde del intento inicial.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "dcc664d890393e3e60915cf90c050eb440c09851389cdcde4ce15c0dcb4fae79",
+          "screenshot": "docs/qa/recorridos/064.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -9437,10 +9972,10 @@
       "entorno": null
     },
     "reviewedOriginal": {
-      "precioDesdeUF": 11073,
       "tipologias": [
         "2 dormitorios"
       ],
+      "inmobiliaria": "Sento",
       "amenities": [
         "Quinchos y terrazas",
         "Piscina y terraza en azotea",
@@ -9453,16 +9988,16 @@
         "Lavandería",
         "Bicicleteros"
       ],
-      "superficieDesdeM2": 33,
-      "inmobiliaria": "Sento",
-      "comuna": "Las Condes",
-      "estado": "Entrega futura",
-      "entrega": "Diciembre 2026",
-      "descripcionLarga": "Edificio de 10 pisos más azotea, con 130 departamentos.",
-      "direccion": "Av. Las Condes 7083",
       "mapQuery": "Av. Las Condes 7083, Las Condes, Santiago, Chile",
+      "estado": "Entrega futura",
+      "superficieDesdeM2": 33,
+      "entrega": "Diciembre 2026",
       "region": "Región Metropolitana",
-      "nombre": "Plaza Las Condes"
+      "comuna": "Las Condes",
+      "nombre": "Plaza Las Condes",
+      "precioDesdeUF": 11073,
+      "descripcionLarga": "Edificio de 10 pisos más azotea, con 130 departamentos.",
+      "direccion": "Av. Las Condes 7083"
     },
     "originalImages": [
       {
@@ -9636,7 +10171,7 @@
     "sourceUrl": "https://sento.cl/proyectos/jofre-157/",
     "checkedAt": "2026-10-09",
     "sourceStatus": "verified",
-    "sourceNotes": "Proyecto oficialmente 100% vendido/entregado. Continuidad respaldada: ficha titulada Jofré 157 y ubicación comercial 157 inserta mapa literal Gral. Jofré 135, coincidente con catálogo histórico Sollahms. Confirmar acceso exacto por discrepancia 135/157; no se usa precio de publicidad mayo 2026.",
+    "sourceNotes": "Proyecto oficialmente 100% vendido/entregado. Continuidad respaldada: ficha titulada Jofré 157 y ubicación comercial 157 inserta mapa literal Gral. Jofré 135, coincidente con catálogo histórico Sollahms. Confirmar acceso exacto por discrepancia 135/157; no se usa precio de publicidad mayo 2026. Rangos globales de superficie retirados para evitar mezclar poblaciones: Encabezado total 20,21 a 55,33  m; plantas publicadas: útil 20,77–48,43 m² y total 20,77–55,33 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
     "verifiedFields": [
       "nombre",
       "inmobiliaria",
@@ -9647,8 +10182,7 @@
       "entrega",
       "tipologias",
       "amenities",
-      "descripcionLarga",
-      "superficieDesdeM2"
+      "descripcionLarga"
     ],
     "updates": {
       "nombre": "Jofré 157",
@@ -9676,12 +10210,12 @@
         "Gimnasio"
       ],
       "descripcionLarga": "Jofré 157 (antes Jofré 135) es un proyecto de Sento en Jofré 157, Santiago. La inmobiliaria informa tipologías de Estudio, 1 dormitorio, 2 dormitorios.",
-      "superficieDesdeM2": 20.21,
+      "superficieDesdeM2": null,
       "mapQuery": null
     },
     "specs": {
-      "utilM2": "20,77–48,43 (plantas publicadas)",
-      "totalM2": "20,21–55,33",
+      "utilM2": null,
+      "totalM2": null,
       "terrenoM2": null,
       "dormitorios": "Estudio, 1–2",
       "banos": "1–2"
@@ -9729,11 +10263,13 @@
         },
         "embedStatus": "allowed",
         "visualVerification": {
-          "status": "visual_confirmed",
+          "result": "valid_interface",
           "checkedAt": "2026-10-09",
-          "title": "General Jofré 157",
-          "evidence": "Escena tridimensional del piloto renderizada y controles Matterport visibles en navegador, captura inspeccionada",
-          "scope": "URL original directa, escritorio 1280×720; integración y móvil a validar en ficha Sollahms"
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "cff5a767e4e8cfc0f9ca927af50e2746d851c6111a7a1136f8db90c5e561f3e5",
+          "screenshot": "docs/qa/recorridos/013.jpg"
         }
       },
       {
@@ -9750,29 +10286,88 @@
           "finalUrl": "https://sento.cl/360-jofre/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena exterior Jofré cargada con galería Ubicación/Elevación/Hall/FamilyRoom/Cowork/Piscina; resolvió Loading inicial.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "d43b720392a9aa26ac782351436b657c256350e0fcff15bd5d10faa833ea3681",
+          "screenshot": "docs/qa/recorridos/065.jpg"
+        }
       }
     ],
     "pendingFields": [
       "Disponibilidad exacta por tipología",
       "Acceso exacto del proyecto: 135 o 157",
-      "Precio y disponibilidad comercial actual"
+      "Precio y disponibilidad comercial actual",
+      "Superficie útil y total globales pendientes de confirmación: Encabezado total 20,21 a 55,33  m; plantas publicadas: útil 20,77–48,43 m² y total 20,77–55,33 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
+      "Superficie mínima de las unidades actualmente disponibles"
     ],
     "additionalSources": [],
     "sourceEvidence": "Jofré 157 (antes Jofré 135); Santiago; Jofré 157; Vendido",
     "officialMapQuery": "General Jofré 135, Santiago, Región Metropolitana, Chile",
+    "surfaceEvidence": {
+      "sourceUrl": "https://sento.cl/proyectos/jofre-157/",
+      "headerTotal": "20,21 a 55,33  m",
+      "publishedPlants": [
+        {
+          "tipo": "B27",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 31.22,
+          "terrazaM2": 2.48,
+          "totalM2": 33.7
+        },
+        {
+          "tipo": "C1",
+          "dormitorios": 2,
+          "banos": 1,
+          "utilM2": 38.19,
+          "terrazaM2": 2.78,
+          "totalM2": 40.97
+        },
+        {
+          "tipo": "D1",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 48.43,
+          "terrazaM2": 6.9,
+          "totalM2": 55.33
+        },
+        {
+          "tipo": "A1",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 20.77,
+          "terrazaM2": 0.0,
+          "totalM2": 20.77
+        },
+        {
+          "tipo": "A2",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 21.9,
+          "terrazaM2": 2.9,
+          "totalM2": 24.8
+        }
+      ],
+      "availabilityMatched": false,
+      "notes": "Encabezado total 20,21 a 55,33  m; plantas publicadas: útil 20,77–48,43 m² y total 20,77–55,33 m². No se acredita que ambos rangos correspondan a la misma disponibilidad."
+    },
     "reviewedOriginal": {
-      "precioDesdeUF": 4454,
       "tipologias": [
         "2 dormitorios"
       ],
       "inmobiliaria": "Sento",
-      "comuna": "Santiago",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Jofre 135"
+      "comuna": "Santiago",
+      "nombre": "Jofre 135",
+      "precioDesdeUF": 4454,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -9842,7 +10437,16 @@
           "finalUrl": "https://norte-verde.cl/360/edificio_irarrazabal/contexto/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada 360 Entrar de Irarrázaval1970 con fotografía aérea y controles/instrucción para arrastrar.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "5628aa50c028f509b1d8f12d32b40004e2c2c26cb61d0cecd8a3546f2afd15ea",
+          "screenshot": "docs/qa/recorridos/066.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -9974,7 +10578,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7vVx0?logo=1&info=0&logosize=40&fs=1&vr=1&sd=1&initload=0&thumbs=1",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor Norte Verde con fondo exterior del edificio, botón Play y título interno Edificio Parque Quinta; interfaz oficial cargada.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "141f05b487f6cef4ff95ffef8bd306347b0b1f401e00841458afa46dd9078c1e",
+          "screenshot": "docs/qa/recorridos/067.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -10136,7 +10749,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7YKBs?fs=1&vr=1&zoom=1&initload=0&thumbs=3&inst=es&info=0&logo=1&logosize=40",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor con portada, Play y título interno Edificio Quintavista, Santo Domingo 3810; interfaz oficial cargada.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "788cecc73ba2401b0bcc5745a47e08ac8a43b44be35bef2db7ca164bb7aa4d2a",
+          "screenshot": "docs/qa/recorridos/068.jpg"
+        }
       },
       {
         "url": "https://norte-verde.cl/360/edificio_quintavista/contexto/",
@@ -10154,7 +10776,16 @@
           "finalUrl": "https://norte-verde.cl/360/edificio_quintavista/contexto/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada 360 Entrar de Quintavista con fotografía aérea y controles/instrucción para arrastrar.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "acf285504d0f8fd6cee79f40dd3a451a08f451054cf9a4de160fecf9fc3b609a",
+          "screenshot": "docs/qa/recorridos/069.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -10448,19 +11079,19 @@
     ],
     "sourceEvidence": "Brasil; Santiago; Brasil 1290; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 2819.32,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios",
         "3 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
       "estado": "Entrega futura",
       "entrega": "Primer semestre 2029",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Brasil"
+      "comuna": "Santiago",
+      "nombre": "Brasil",
+      "precioDesdeUF": 2819.32,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -10588,18 +11219,18 @@
     ],
     "sourceEvidence": "Terrazzo; Santiago; Av. España 442; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3203,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
       "estado": "Entrega futura",
       "entrega": "Segundo semestre 2028",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Terrazzo"
+      "comuna": "Santiago",
+      "nombre": "Terrazzo",
+      "precioDesdeUF": 3203,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -10727,18 +11358,18 @@
     ],
     "sourceEvidence": "VIMA; La Florida; Vicuña Mackenna 5908; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3237.93,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "La Florida",
       "estado": "Entrega futura",
       "entrega": "Segundo semestre 2029",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "VIMA"
+      "comuna": "La Florida",
+      "nombre": "VIMA",
+      "precioDesdeUF": 3237.93,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -10866,18 +11497,18 @@
     ],
     "sourceEvidence": "Los Lilenes; La Florida; Vicuña Mackenna Poniente 6988; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3180.29,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "La Florida",
       "estado": "Entrega futura",
       "entrega": "Primer semestre 2029",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Los Lilenes"
+      "comuna": "La Florida",
+      "nombre": "Los Lilenes",
+      "precioDesdeUF": 3180.29,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -11007,19 +11638,19 @@
     ],
     "sourceEvidence": "Nueva Esmeralda; La Cisterna; Esmeralda 6548; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 2525.86,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "La Cisterna",
       "estado": "Entrega futura",
       "entrega": "Segundo semestre 2027",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "Nueva Esmeralda"
+      "comuna": "La Cisterna",
+      "nombre": "Nueva Esmeralda",
+      "precioDesdeUF": 2525.86,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -11145,18 +11776,18 @@
     ],
     "sourceEvidence": "El Aromo; La Florida; Américo Vespucio 6750; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3230.81,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "La Florida",
       "estado": "Entrega futura",
       "entrega": "Segundo semestre 2027",
-      "direccion": null,
       "region": "Región Metropolitana",
-      "nombre": "El Aromo"
+      "comuna": "La Florida",
+      "nombre": "El Aromo",
+      "precioDesdeUF": 3230.81,
+      "direccion": null
     },
     "originalImages": [
       {
@@ -11284,14 +11915,22 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://panoraven.com/es/embed/H8d4zOLgYb",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Escena interior EspacioVictoria con galería y control de panorama; no hay pantalla de carga.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "418b14dbd8aeffe1facab3d5c48269d7b55c41536d1d2a6e6f8171da14fd2036",
+          "screenshot": "docs/qa/recorridos/070.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
       "Precio vigente y disponibilidad",
-      "Fecha de entrega",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Espacio Victoria"
+      "Fecha de entrega"
     ],
     "reviewedOriginal": {
       "comuna": "La Cisterna",
@@ -11428,12 +12067,20 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://plango360.com/360_Ecasa/Terratolten/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Panorama interior visible con título ECASA - Terratoltén, Play y botones Home, miniaturas, VR, información y sello Plango.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "e0cab9a46c4d6c9c5e191dc3d4834f35d541c12014bd8921340fb7312944f26e",
+          "screenshot": "docs/qa/recorridos/071.jpg"
         }
       }
     ],
     "pendingFields": [
-      "Fecha de entrega",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Terratoltén 3"
+      "Fecha de entrega"
     ],
     "reviewedOriginal": {
       "comuna": "Villarrica",
@@ -11878,7 +12525,16 @@
           "finalUrl": "https://mpembed.com/show/?m=B1cKD3cJnVY&mpu=194",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "f7296a1ae2585460306a82c7c3e7c4a157a4c5d93d9ec74a68f51aff58fd1e85",
+          "screenshot": "docs/qa/recorridos/014.jpg"
+        }
       },
       {
         "url": "https://mpembed.com/show/?m=3GppCMTWxv5&mpu=194",
@@ -11896,7 +12552,16 @@
           "finalUrl": "https://mpembed.com/show/?m=3GppCMTWxv5&mpu=194",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "7f925d31a9ff259f30a6026ee9ef56f07918133a1ce2b6247ecf8cf8be59cb2b",
+          "screenshot": "docs/qa/recorridos/015.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -11960,7 +12625,7 @@
     "sourceUrl": "https://sento.cl/proyectos/mirador-la-florida/",
     "checkedAt": "2026-10-09",
     "sourceStatus": "verified",
-    "sourceNotes": "La fuente solo señala Calle Eugenia, La Florida; no corrobora numeración 14 del catálogo anterior. No se incorpora mapa exacto. Entrega estimada primer semestre 2029. Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega.",
+    "sourceNotes": "La fuente solo señala Calle Eugenia, La Florida; no corrobora numeración 14 del catálogo anterior. No se incorpora mapa exacto. Entrega estimada primer semestre 2029. Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega. Rangos globales de superficie retirados para evitar mezclar poblaciones: Encabezado total 20,75 a 46,77 m2 m; plantas publicadas: útil 20,51–46,89 m² y total 23,24–50,56 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
     "verifiedFields": [
       "nombre",
       "inmobiliaria",
@@ -11971,8 +12636,7 @@
       "tipologias",
       "precioDesdeUF",
       "amenities",
-      "descripcionLarga",
-      "superficieDesdeM2"
+      "descripcionLarga"
     ],
     "updates": {
       "nombre": "Mirador La Florida",
@@ -11998,12 +12662,12 @@
         "Bicicleteros."
       ],
       "descripcionLarga": "Mirador La Florida es un proyecto de Sento en La Florida. La inmobiliaria informa tipologías de Estudio, 1 dormitorio, 2 dormitorios.",
-      "superficieDesdeM2": 20.75,
+      "superficieDesdeM2": null,
       "mapQuery": null
     },
     "specs": {
-      "utilM2": "20,51–46,89 (plantas publicadas)",
-      "totalM2": "20,75–46,77",
+      "utilM2": null,
+      "totalM2": null,
       "terrenoM2": null,
       "dormitorios": "Estudio, 1–2",
       "banos": "1–2"
@@ -12038,24 +12702,106 @@
     "pendingFields": [
       "Disponibilidad exacta por tipología",
       "Dirección exacta y ubicación del proyecto",
-      "Existencia de recorrido virtual oficial"
+      "Existencia de recorrido virtual oficial",
+      "Superficie útil y total globales pendientes de confirmación: Encabezado total 20,75 a 46,77 m2 m; plantas publicadas: útil 20,51–46,89 m² y total 23,24–50,56 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
+      "Superficie mínima de las unidades actualmente disponibles"
     ],
     "additionalSources": [],
     "sourceEvidence": "Mirador La Florida; La Florida; dirección sin numeración corroborada; Venta en blanco",
+    "surfaceEvidence": {
+      "sourceUrl": "https://sento.cl/proyectos/mirador-la-florida/",
+      "headerTotal": "20,75 a 46,77 m2 m",
+      "publishedPlants": [
+        {
+          "tipo": "A3",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 31.76,
+          "terrazaM2": 3.16,
+          "totalM2": 34.92
+        },
+        {
+          "tipo": "A1",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 31.15,
+          "terrazaM2": 3.16,
+          "totalM2": 34.31
+        },
+        {
+          "tipo": "A4",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 31.11,
+          "terrazaM2": 2.87,
+          "totalM2": 33.98
+        },
+        {
+          "tipo": "A2",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 31.96,
+          "terrazaM2": 3.16,
+          "totalM2": 35.12
+        },
+        {
+          "tipo": "A1-3",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 30.72,
+          "terrazaM2": 19.84,
+          "totalM2": 50.56
+        },
+        {
+          "tipo": "C1",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 46.89,
+          "terrazaM2": 2.87,
+          "totalM2": 49.76
+        },
+        {
+          "tipo": "B2",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 41.26,
+          "terrazaM2": 2.81,
+          "totalM2": 44.07
+        },
+        {
+          "tipo": "B1",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 41.77,
+          "terrazaM2": 2.84,
+          "totalM2": 44.61
+        },
+        {
+          "tipo": "D1",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 20.51,
+          "terrazaM2": 2.73,
+          "totalM2": 23.24
+        }
+      ],
+      "availabilityMatched": false,
+      "notes": "Encabezado total 20,75 a 46,77 m2 m; plantas publicadas: útil 20,51–46,89 m² y total 23,24–50,56 m². No se acredita que ambos rangos correspondan a la misma disponibilidad."
+    },
     "reviewedOriginal": {
-      "precioDesdeUF": 2658,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Sento",
-      "comuna": "La Florida",
       "estado": "Venta en blanco",
       "entrega": "Primer semestre 2029",
-      "direccion": "Eugenia 14",
       "region": "Región Metropolitana",
-      "nombre": "Mirador La Florida"
+      "comuna": "La Florida",
+      "nombre": "Mirador La Florida",
+      "precioDesdeUF": 2658,
+      "direccion": "Eugenia 14"
     },
     "originalImages": [
       {
@@ -12336,7 +13082,16 @@
           "finalUrl": "https://www.plangoservidor.com/360_Nollagam/Eleuterio_Ramirez/GO360/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Panorama aéreo del proyecto Eleuterio Ramírez con branding Nollagam y panel Recorridos 360, Disponibilidad, Emplazamiento y navegación.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "7be0660a138ebbbc4f2c1fdeb006eebbf24815d7f448a474d5aebda19c0158a9",
+          "screenshot": "docs/qa/recorridos/072.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -12498,7 +13253,16 @@
           "finalUrl": "https://www.nollagam.cl/panoramicas/zenteno-8/index.html",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Panorama urbano del Barrio Zenteno con hotspots, controles de zoom/rotación y plano de planta con destinos.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "cf53d131d2a72a09bf264062aa21af429e1b9f9aff452017f988da6a19de9289",
+          "screenshot": "docs/qa/recorridos/073.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -12667,6 +13431,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://my.matterport.com/show/?m=1QUnKq6PoVq",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "d0db62bf1f572a26fd89133e6845509d8fd746fc391767cc887e03a0f822fd8c",
+          "screenshot": "docs/qa/recorridos/016.jpg"
         }
       }
     ],
@@ -12811,7 +13584,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7JT2L?logo=1&info=0&logosize=40&fs=1&vr=1&sd=1&thumbs=1",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Vista exterior Vicuña Mackenna 6896, logo Norte Verde, hotspot central, pantalla completa y barra de 10 miniaturas.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "a64c04d9983b9747e3a2da6863957842549dca48c62993a7327515d98dd9b17b",
+          "screenshot": "docs/qa/recorridos/074.jpg"
+        }
       },
       {
         "url": "https://norteverde.viewin360.co/share/collection/7HNy2?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&thumbs=-1&margin=6&inst=es",
@@ -12829,7 +13611,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7HNy2?logo=1&info=0&logosize=111&fs=1&vr=1&sd=1&thumbs=-1&margin=6&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno VicuñaMackenna6896: foto aérea, marcador NV, hotspots e instrucción arrastrar para mirar alrededor.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "3ffa82349bf25afab79887941e697a9ec473feb3e03d363b34a93954bc90bad6",
+          "screenshot": "docs/qa/recorridos/075.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -12994,18 +13785,18 @@
     ],
     "sourceEvidence": "Edificio Vespucio Capital; La Florida; Vicuña Mackenna 7630; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 3283,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "La Florida",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "Vicuña Mackenna 7630",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Vespucio Capital"
+      "comuna": "La Florida",
+      "nombre": "Edificio Vespucio Capital",
+      "precioDesdeUF": 3283,
+      "direccion": "Vicuña Mackenna 7630"
     },
     "originalImages": [
       {
@@ -13136,18 +13927,18 @@
     ],
     "sourceEvidence": "Edificio Vicuña Mackenna 7589; La Florida; Av. Vicuña Mackenna 7589; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3172,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "La Florida",
       "estado": "Entrega futura",
       "entrega": "Entrega futura",
-      "direccion": "Av. Vicuña Mackenna 7589",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Vicuña Mackenna 7589"
+      "comuna": "La Florida",
+      "nombre": "Edificio Vicuña Mackenna 7589",
+      "precioDesdeUF": 3172,
+      "direccion": "Av. Vicuña Mackenna 7589"
     },
     "originalImages": [
       {
@@ -13278,13 +14069,21 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://www.tourvirtuales360.cl/pano/ecasa_/aireslaflorida2/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor CAM360 con fondo living, título AIRES LA FLORIDA 2 DEP. 2D+2B y Play Explorar el espacio 3D.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "de55652f56c222b76fd06862a9758f5600cc0c608403ff0f72a2776199c19d91",
+          "screenshot": "docs/qa/recorridos/076.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
-      "Precio vigente y disponibilidad",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Aires La Florida 2"
+      "Precio vigente y disponibilidad"
     ],
     "reviewedOriginal": {
       "comuna": "La Florida",
@@ -13416,7 +14215,16 @@
           "finalUrl": "https://proyectos.rito3d.cl/proyectos/ileon/uruguay/2D2B/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Panorama de cocina del piloto Uruguay 2D/2B con logo León y controles de desplazamiento, zoom, miniaturas y pantalla completa.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "86ff583552d110848dc9293fa5faef870ab49b73ddf68b46f061b2438637cf63",
+          "screenshot": "docs/qa/recorridos/077.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -13426,18 +14234,18 @@
     "additionalSources": [],
     "sourceEvidence": "Condominio Uruguay; La Florida; Calle Uruguay 8866; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 3698,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "León",
-      "comuna": "La Florida",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "Uruguay 8866",
       "region": "Región Metropolitana",
-      "nombre": "Condominio Uruguay"
+      "comuna": "La Florida",
+      "nombre": "Condominio Uruguay",
+      "precioDesdeUF": 3698,
+      "direccion": "Uruguay 8866"
     },
     "originalImages": [
       {
@@ -13561,14 +14369,22 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://www.plangoservidor.com/360_Ecasa/Enlace_VicunaMackenna/DeptoC1_2D2B/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor Plango con panorama de comedor/living, portada Inmobiliaria Ecasa, Play y botones de navegación visibles.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "ca21d0d12a6478e95add84bd738262b6434ecc5775309e0cec9423d305593186",
+          "screenshot": "docs/qa/recorridos/078.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
       "Precio vigente y disponibilidad",
-      "Fecha de entrega",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Enlace Mackenna"
+      "Fecha de entrega"
     ],
     "reviewedOriginal": {
       "comuna": "San Joaquín",
@@ -13833,6 +14649,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://my.matterport.com/show/?m=G9G24rm9mXo",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "973dacd2beb9453c00f29363914bf873f620968e673fc2cc1922d490765d9523",
+          "screenshot": "docs/qa/recorridos/017.jpg"
         }
       },
       {
@@ -13852,6 +14677,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://my.matterport.com/show/?m=qdjsHsm8Yds",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "fae3983d9a20a078cd9fce54f6bcfe62a3085eaef724b54b7433ea6ecc29d06f",
+          "screenshot": "docs/qa/recorridos/018.jpg"
         }
       }
     ],
@@ -14126,17 +14960,13 @@
     "additionalSources": [],
     "sourceEvidence": "Gregorio de la Fuente; Macul; Gregorio de la Fuente 3011; Torre I: entrega inmediata / Torre II: venta en verde",
     "reviewedOriginal": {
-      "precioDesdeUF": 3349,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios",
         "3 dormitorios"
       ],
       "inmobiliaria": "León",
-      "comuna": "Macul",
       "estado": "Venta en verde",
-      "entrega": null,
-      "direccion": "Gregorio de la Fuente 3011",
       "etapas": [
         {
           "nombre": "Torre I",
@@ -14149,8 +14979,12 @@
           "entrega": null
         }
       ],
+      "entrega": null,
       "region": "Región Metropolitana",
-      "nombre": "Gregorio de la Fuente"
+      "comuna": "Macul",
+      "nombre": "Gregorio de la Fuente",
+      "precioDesdeUF": 3349,
+      "direccion": "Gregorio de la Fuente 3011"
     },
     "originalImages": [
       {
@@ -14276,19 +15110,19 @@
     ],
     "sourceEvidence": "Matta 016; Santiago; Av. Manuel Antonio Matta 16; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3314,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
       "estado": "Entrega futura",
       "entrega": null,
-      "direccion": "Av. Manuel Antonio Matta 16",
       "region": "Región Metropolitana",
-      "nombre": "Matta 016"
+      "comuna": "Santiago",
+      "nombre": "Matta 016",
+      "precioDesdeUF": 3314,
+      "direccion": "Av. Manuel Antonio Matta 16"
     },
     "originalImages": [
       {
@@ -14553,7 +15387,16 @@
           "finalUrl": "https://proyectos.rito3d.cl/proyectos/ileon/don-lautaro/DPTO_03/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Piloto Don Lautaro03 con panorama de comedor/living/cocina y controles de movimiento, zoom, miniaturas y pantalla completa.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "638f0da5b94ad0cc23b6e66369b3940438e6bc38c884da7fabf144f12d52f3c8",
+          "screenshot": "docs/qa/recorridos/079.jpg"
+        }
       },
       {
         "url": "https://proyectos.rito3d.cl/proyectos/ileon/don-lautaro/dpto_04/",
@@ -14569,7 +15412,16 @@
           "finalUrl": "https://proyectos.rito3d.cl/proyectos/ileon/don-lautaro/dpto_04/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Piloto Don Lautaro04 con panorama del acceso y controles de movimiento/zoom/miniaturas; se ve contexto de la ficha Don Lautaro.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "5022431ea3a353e6d4d7411b3e2bf2f9669242b337dd9b2b99aa1a65bf3a447d",
+          "screenshot": "docs/qa/recorridos/080.jpg"
+        }
       },
       {
         "url": "https://proyectos.rito3d.cl/proyectos/ileon/don-lautaro/dpto-06/",
@@ -14585,7 +15437,16 @@
           "finalUrl": "https://proyectos.rito3d.cl/proyectos/ileon/don-lautaro/dpto-06/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Piloto Don Lautaro06 presenta panorama de living con logo Don Lautaro y barra de controles de miniaturas, rotación y zoom.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "1a923235ed55d692a97c697bb698bb2c2d5a30c0c307ad6822c64d708e224380",
+          "screenshot": "docs/qa/recorridos/081.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -14596,18 +15457,18 @@
     "additionalSources": [],
     "sourceEvidence": "Condominio Parque Don Lautaro; Peñalolén; Av. Consistorial 6501; Venta en verde",
     "reviewedOriginal": {
-      "precioDesdeUF": 7778,
       "tipologias": [
         "2 dormitorios",
         "3 dormitorios"
       ],
       "inmobiliaria": "León",
-      "comuna": "Peñalolén",
       "estado": "Venta en verde",
       "entrega": null,
-      "direccion": "Av. Consistorial 6501",
       "region": "Región Metropolitana",
-      "nombre": "Condominio Parque Don Lautaro"
+      "comuna": "Peñalolén",
+      "nombre": "Condominio Parque Don Lautaro",
+      "precioDesdeUF": 7778,
+      "direccion": "Av. Consistorial 6501"
     },
     "originalImages": [
       {
@@ -15292,18 +16153,18 @@
     ],
     "sourceEvidence": "Abdón Cifuentes; Santiago; Abdón Cifuentes 90; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3158,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
       "estado": "Entrega futura",
       "entrega": null,
-      "direccion": "Abdón Cifuentes 90",
       "region": "Región Metropolitana",
-      "nombre": "Abdón Cifuentes"
+      "comuna": "Santiago",
+      "nombre": "Abdón Cifuentes",
+      "precioDesdeUF": 3158,
+      "direccion": "Abdón Cifuentes 90"
     },
     "originalImages": [
       {
@@ -15433,18 +16294,18 @@
     ],
     "sourceEvidence": "Don Ignacio; Santiago; Av. Manuel Rodríguez 701; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": 3050,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
       "estado": "Entrega futura",
       "entrega": null,
-      "direccion": "Av. Manuel Rodríguez 701",
       "region": "Región Metropolitana",
-      "nombre": "Don Ignacio"
+      "comuna": "Santiago",
+      "nombre": "Don Ignacio",
+      "precioDesdeUF": 3050,
+      "direccion": "Av. Manuel Rodríguez 701"
     },
     "originalImages": [
       {
@@ -15571,11 +16432,11 @@
     ],
     "sourceEvidence": "Tocornal; Santiago; Manuel Antonio Tocornal 678; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 3282,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
+      "inmobiliaria": "Ingevec",
       "amenities": [
         "Quincho",
         "Sala multiuso",
@@ -15585,16 +16446,16 @@
         "Bicicleteros",
         "Gimnasio"
       ],
-      "superficieDesdeM2": 37.73,
-      "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
-      "estado": "Entrega inmediata",
-      "entrega": "Inmediata",
-      "descripcionLarga": "Edificio de Ingevec en Santiago Centro, ubicado en Manuel Antonio Tocornal 678. Ofrece departamentos de 1 y 2 dormitorios con entrega inmediata, buena conectividad urbana y espacios comunes como quinchos, salón gourmet, lavandería, piscina, gimnasio y bicicleteros.",
-      "direccion": "Manuel Antonio Tocornal 678",
       "mapQuery": "Manuel Antonio Tocornal 678, Santiago, Región Metropolitana, Chile",
+      "estado": "Entrega inmediata",
+      "superficieDesdeM2": 37.73,
+      "entrega": "Inmediata",
       "region": "Región Metropolitana",
-      "nombre": "Tocornal"
+      "comuna": "Santiago",
+      "nombre": "Tocornal",
+      "precioDesdeUF": 3282,
+      "descripcionLarga": "Edificio de Ingevec en Santiago Centro, ubicado en Manuel Antonio Tocornal 678. Ofrece departamentos de 1 y 2 dormitorios con entrega inmediata, buena conectividad urbana y espacios comunes como quinchos, salón gourmet, lavandería, piscina, gimnasio y bicicleteros.",
+      "direccion": "Manuel Antonio Tocornal 678"
     },
     "originalImages": [
       {
@@ -15726,19 +16587,19 @@
     ],
     "sourceEvidence": "Centenario 1; Santiago; Centenario 1151; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 2545,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "Centenario 1151",
       "region": "Región Metropolitana",
-      "nombre": "Centenario 1"
+      "comuna": "Santiago",
+      "nombre": "Centenario 1",
+      "precioDesdeUF": 2545,
+      "direccion": "Centenario 1151"
     },
     "originalImages": [
       {
@@ -15768,7 +16629,7 @@
     "sourceUrl": "https://sento.cl/proyectos/sento-curico-77/",
     "checkedAt": "2026-10-09",
     "sourceStatus": "verified",
-    "sourceNotes": "Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega.",
+    "sourceNotes": "Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega. Rangos globales de superficie retirados para evitar mezclar poblaciones: Encabezado total 20.85 a 47.35 m; plantas publicadas: útil 21,09–46,83 m² y total 23,64–87,84 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
     "verifiedFields": [
       "nombre",
       "inmobiliaria",
@@ -15780,7 +16641,6 @@
       "precioDesdeUF",
       "amenities",
       "descripcionLarga",
-      "superficieDesdeM2",
       "mapQuery"
     ],
     "updates": {
@@ -15805,12 +16665,12 @@
         "Hall"
       ],
       "descripcionLarga": "Curicó 77 es un proyecto de Sento en Curicó 77, Santiago. La inmobiliaria informa tipologías de Estudio, 1 dormitorio, 2 dormitorios.",
-      "superficieDesdeM2": 20.85,
+      "superficieDesdeM2": null,
       "mapQuery": "Curicó 77, Santiago, Región Metropolitana, Chile"
     },
     "specs": {
-      "utilM2": "21,09–46,83 (plantas publicadas)",
-      "totalM2": "20,85–47,35",
+      "utilM2": null,
+      "totalM2": null,
       "terrenoM2": null,
       "dormitorios": "Estudio, 1–2",
       "banos": "1–2"
@@ -15856,7 +16716,16 @@
           "finalUrl": "https://sento.cl/360-curico/depto-1d1b/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor Plango Curicó1D/1B muestra fondo living/cocina, portada Inmobiliaria Sento, Play y controles laterales.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "adc93e22c7f72648144a028569b3d75201a688d855afe495d1f7614d2e4e9348",
+          "screenshot": "docs/qa/recorridos/082.jpg"
+        }
       },
       {
         "url": "https://sento.cl/360-curico/depto-tipo-c/",
@@ -15872,29 +16741,128 @@
           "finalUrl": "https://sento.cl/360-curico/depto-tipo-c/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor Plango Curicó tipoC muestra fondo de cocina/living, portada Sento, Play, hotspots y navegación lateral.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "3009ef5b008949fb54d08a588e989f719511b3205f009e952c0566be11200b34",
+          "screenshot": "docs/qa/recorridos/083.jpg"
+        }
       }
     ],
     "pendingFields": [
       "Disponibilidad exacta por tipología",
-      "Fecha exacta de entrega"
+      "Fecha exacta de entrega",
+      "Superficie útil y total globales pendientes de confirmación: Encabezado total 20.85 a 47.35 m; plantas publicadas: útil 21,09–46,83 m² y total 23,64–87,84 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
+      "Superficie mínima de las unidades actualmente disponibles"
     ],
     "additionalSources": [],
     "sourceEvidence": "Curicó 77; Santiago; Curicó 77; Venta en verde",
+    "surfaceEvidence": {
+      "sourceUrl": "https://sento.cl/proyectos/sento-curico-77/",
+      "headerTotal": "20.85 a 47.35 m",
+      "publishedPlants": [
+        {
+          "tipo": "A2",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 31.34,
+          "terrazaM2": 2.9,
+          "totalM2": 34.24
+        },
+        {
+          "tipo": "A5",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 31.79,
+          "terrazaM2": 1.93,
+          "totalM2": 33.72
+        },
+        {
+          "tipo": "B1",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 40.15,
+          "terrazaM2": 2.43,
+          "totalM2": 42.58
+        },
+        {
+          "tipo": "B2",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 43.71,
+          "terrazaM2": 3.04,
+          "totalM2": 46.75
+        },
+        {
+          "tipo": "C2",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 46.83,
+          "terrazaM2": 2.69,
+          "totalM2": 49.52
+        },
+        {
+          "tipo": "C2 – 1",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 46.83,
+          "terrazaM2": 41.01,
+          "totalM2": 87.84
+        },
+        {
+          "tipo": "D1",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 21.09,
+          "terrazaM2": 2.55,
+          "totalM2": 23.64
+        },
+        {
+          "tipo": "D3",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 21.25,
+          "terrazaM2": 2.85,
+          "totalM2": 24.1
+        },
+        {
+          "tipo": "D4",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 22.61,
+          "terrazaM2": 2.9,
+          "totalM2": 25.51
+        },
+        {
+          "tipo": "D5",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 21.64,
+          "terrazaM2": 2.88,
+          "totalM2": 24.52
+        }
+      ],
+      "availabilityMatched": false,
+      "notes": "Encabezado total 20.85 a 47.35 m; plantas publicadas: útil 21,09–46,83 m² y total 23,64–87,84 m². No se acredita que ambos rangos correspondan a la misma disponibilidad."
+    },
     "reviewedOriginal": {
-      "precioDesdeUF": null,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Sento",
-      "comuna": "Santiago",
       "estado": "Venta en verde",
       "entrega": null,
-      "direccion": "Curicó 77",
       "region": "Región Metropolitana",
-      "nombre": "Curicó 77"
+      "comuna": "Santiago",
+      "nombre": "Curicó 77",
+      "precioDesdeUF": null,
+      "direccion": "Curicó 77"
     },
     "originalImages": [
       {
@@ -15919,7 +16887,7 @@
     "sourceUrl": "https://sento.cl/proyectos/sento-san-ignacio-280/",
     "checkedAt": "2026-10-09",
     "sourceStatus": "verified",
-    "sourceNotes": "Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega.",
+    "sourceNotes": "Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega. Rangos globales de superficie retirados para evitar mezclar poblaciones: Encabezado total 21,1 a 57,95 m; plantas publicadas: útil 24,11–48,51 m² y total 24,11–55,19 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
     "verifiedFields": [
       "nombre",
       "inmobiliaria",
@@ -15932,7 +16900,6 @@
       "precioDesdeUF",
       "amenities",
       "descripcionLarga",
-      "superficieDesdeM2",
       "mapQuery"
     ],
     "updates": {
@@ -15964,12 +16931,12 @@
         "Baño para mascotas"
       ],
       "descripcionLarga": "San Ignacio es un proyecto de Sento en San Ignacio 280, Santiago. La inmobiliaria informa tipologías de Estudio, 1 dormitorio, 2 dormitorios.",
-      "superficieDesdeM2": 21.1,
+      "superficieDesdeM2": null,
       "mapQuery": "San Ignacio 280, Santiago, Región Metropolitana, Chile"
     },
     "specs": {
-      "utilM2": "24,11–48,51 (plantas publicadas)",
-      "totalM2": "21,1–57,95",
+      "utilM2": null,
+      "totalM2": null,
       "terrenoM2": null,
       "dormitorios": "Estudio, 1–2",
       "banos": "1–2"
@@ -16017,11 +16984,13 @@
         },
         "embedStatus": "allowed",
         "visualVerification": {
-          "status": "visual_confirmed",
+          "result": "valid_interface",
           "checkedAt": "2026-10-09",
-          "title": "San Ignacio 280",
-          "evidence": "Escena tridimensional del piloto renderizada y controles Matterport visibles en navegador, captura inspeccionada",
-          "scope": "URL original directa, escritorio 1280×720; integración y móvil a validar en ficha Sollahms"
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "ef97bf3b62ef5e5034127e156ae9ba2c7c2d4f354e3ce1fc811d9267f5424c15",
+          "screenshot": "docs/qa/recorridos/019.jpg"
         }
       },
       {
@@ -16038,28 +17007,87 @@
           "finalUrl": "https://sento.cl/360-sanignacio/entorno/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno San Ignacio muestra panorama aéreo, rótulos de calles y barra de controles/hotspots sobre el edificio.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "1d18f841707ae2c52019582f0bb494cb5a332ff2eccdea435ede89d562a592c6",
+          "screenshot": "docs/qa/recorridos/084.jpg"
+        }
       }
     ],
     "pendingFields": [
-      "Disponibilidad exacta por tipología"
+      "Disponibilidad exacta por tipología",
+      "Superficie útil y total globales pendientes de confirmación: Encabezado total 21,1 a 57,95 m; plantas publicadas: útil 24,11–48,51 m² y total 24,11–55,19 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
+      "Superficie mínima de las unidades actualmente disponibles"
     ],
     "additionalSources": [],
     "sourceEvidence": "San Ignacio; Santiago; San Ignacio 280; Entrega inmediata",
+    "surfaceEvidence": {
+      "sourceUrl": "https://sento.cl/proyectos/sento-san-ignacio-280/",
+      "headerTotal": "21,1 a 57,95 m",
+      "publishedPlants": [
+        {
+          "tipo": "B1",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 33.18,
+          "terrazaM2": 3.52,
+          "totalM2": 36.7
+        },
+        {
+          "tipo": "B8",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 34.56,
+          "terrazaM2": 3.24,
+          "totalM2": 37.8
+        },
+        {
+          "tipo": "C1",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 44.36,
+          "terrazaM2": 6.92,
+          "totalM2": 51.28
+        },
+        {
+          "tipo": "D1",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 48.51,
+          "terrazaM2": 6.68,
+          "totalM2": 55.19
+        },
+        {
+          "tipo": "A3",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 24.11,
+          "terrazaM2": 0.0,
+          "totalM2": 24.11
+        }
+      ],
+      "availabilityMatched": false,
+      "notes": "Encabezado total 21,1 a 57,95 m; plantas publicadas: útil 24,11–48,51 m² y total 24,11–55,19 m². No se acredita que ambos rangos correspondan a la misma disponibilidad."
+    },
     "reviewedOriginal": {
-      "precioDesdeUF": null,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Sento",
-      "comuna": "Santiago",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "San Ignacio 280",
       "region": "Región Metropolitana",
-      "nombre": "San Ignacio"
+      "comuna": "Santiago",
+      "nombre": "San Ignacio",
+      "precioDesdeUF": null,
+      "direccion": "San Ignacio 280"
     },
     "originalImages": [
       {
@@ -16084,7 +17112,7 @@
     "sourceUrl": "https://sento.cl/proyectos/angamos-205/",
     "checkedAt": "2026-10-09",
     "sourceStatus": "verified",
-    "sourceNotes": "Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega.",
+    "sourceNotes": "Precio de campaña oficial octubre 2026, unidad específica con descuento; sujeto a disponibilidad, excluye estacionamiento y bodega. Rangos globales de superficie retirados para evitar mezclar poblaciones: Encabezado total 22,24 a 54,45 m; plantas publicadas: útil 22,31–48,37 m² y total 24,62–51,36 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
     "verifiedFields": [
       "nombre",
       "inmobiliaria",
@@ -16097,7 +17125,6 @@
       "precioDesdeUF",
       "amenities",
       "descripcionLarga",
-      "superficieDesdeM2",
       "mapQuery"
     ],
     "updates": {
@@ -16128,12 +17155,12 @@
         "Bicicleteros"
       ],
       "descripcionLarga": "Angamos es un proyecto de Sento en Angamos 205, Santiago. La inmobiliaria informa tipologías de Estudio, 1 dormitorio, 2 dormitorios.",
-      "superficieDesdeM2": 22.24,
+      "superficieDesdeM2": null,
       "mapQuery": "Angamos 205, Santiago, Región Metropolitana, Chile"
     },
     "specs": {
-      "utilM2": "22,31–48,37 (plantas publicadas)",
-      "totalM2": "22,24–54,45",
+      "utilM2": null,
+      "totalM2": null,
       "terrenoM2": null,
       "dormitorios": "Estudio, 1–2",
       "banos": "1–2"
@@ -16181,11 +17208,13 @@
         },
         "embedStatus": "allowed",
         "visualVerification": {
-          "status": "visual_confirmed",
+          "result": "valid_interface",
           "checkedAt": "2026-10-09",
-          "title": "Piloto 1 dormitorio / Angamos",
-          "evidence": "Escena tridimensional del piloto renderizada y controles Matterport visibles en navegador, captura inspeccionada",
-          "scope": "URL original directa, escritorio 1280×720; integración y móvil a validar en ficha Sollahms"
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "eb26a50da33646f14bc4ca6ce65d78b4bc55b98b47ad823a98eb311be8e729e0",
+          "screenshot": "docs/qa/recorridos/020.jpg"
         }
       },
       {
@@ -16202,28 +17231,95 @@
           "finalUrl": "https://sento.cl/360-angamos/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Recorrido Angamos presenta panorama aéreo con hotspots de Sento Angamos y entorno, y destinos Ubicación/Elevación/Hall/FamilyRoom/CoWork/Piscina.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "81f9926b50549e6345d22b4de5ee3f78a7800c2b104184a34dcf5d4b88727a2d",
+          "screenshot": "docs/qa/recorridos/085.jpg"
+        }
       }
     ],
     "pendingFields": [
-      "Disponibilidad exacta por tipología"
+      "Disponibilidad exacta por tipología",
+      "Superficie útil y total globales pendientes de confirmación: Encabezado total 22,24 a 54,45 m; plantas publicadas: útil 22,31–48,37 m² y total 24,62–51,36 m². No se acredita que ambos rangos correspondan a la misma disponibilidad.",
+      "Superficie mínima de las unidades actualmente disponibles"
     ],
     "additionalSources": [],
     "sourceEvidence": "Angamos; Santiago; Angamos 205; Entrega inmediata",
+    "surfaceEvidence": {
+      "sourceUrl": "https://sento.cl/proyectos/angamos-205/",
+      "headerTotal": "22,24 a 54,45 m",
+      "publishedPlants": [
+        {
+          "tipo": "B10-I",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 31.22,
+          "terrazaM2": 2.5,
+          "totalM2": 33.72
+        },
+        {
+          "tipo": "C3",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 45.55,
+          "terrazaM2": 2.55,
+          "totalM2": 48.1
+        },
+        {
+          "tipo": "C4",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 47.39,
+          "terrazaM2": 2.68,
+          "totalM2": 50.07
+        },
+        {
+          "tipo": "C6",
+          "dormitorios": 2,
+          "banos": 2,
+          "utilM2": 48.37,
+          "terrazaM2": 2.89,
+          "totalM2": 51.36
+        },
+        {
+          "tipo": "A2",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 22.31,
+          "terrazaM2": 2.31,
+          "totalM2": 24.62
+        },
+        {
+          "tipo": "A4",
+          "dormitorios": 1,
+          "banos": 1,
+          "utilM2": 22.89,
+          "terrazaM2": 1.78,
+          "totalM2": 24.67
+        }
+      ],
+      "availabilityMatched": false,
+      "notes": "Encabezado total 22,24 a 54,45 m; plantas publicadas: útil 22,31–48,37 m² y total 24,62–51,36 m². No se acredita que ambos rangos correspondan a la misma disponibilidad."
+    },
     "reviewedOriginal": {
-      "precioDesdeUF": null,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Sento",
-      "comuna": "Santiago",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "Angamos 205",
       "region": "Región Metropolitana",
-      "nombre": "Angamos"
+      "comuna": "Santiago",
+      "nombre": "Angamos",
+      "precioDesdeUF": null,
+      "direccion": "Angamos 205"
     },
     "originalImages": [
       {
@@ -16491,7 +17587,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7qFc7?logo=1&info=0&fs=1&vr=1&sd=1&initload=0&thumbs=1&inst=es",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor Norte Verde Borde Vivo con portada exterior, Play, nombre interno y dirección San Isidro513 esquina Santa Isabel.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "30c13e629846f9ab4ac29a76fabb75304f33c93d845d170f85fce2c447b93cbc",
+          "screenshot": "docs/qa/recorridos/086.jpg"
+        }
       },
       {
         "url": "https://norte-verde.cl/360/edificio_bordevivo/contexto/v2/",
@@ -16509,7 +17614,16 @@
           "finalUrl": "https://norte-verde.cl/360/edificio_bordevivo/contexto/v2/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Entorno Borde Vivo muestra panorama aéreo del edificio y sector urbano; escena renderizada sin pantalla de error.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "7eaf52f948f4fa905540883ced7720c47252194b8ed64eea4c0b3b640e65bc1f",
+          "screenshot": "docs/qa/recorridos/087.jpg"
+        }
       }
     ],
     "pendingFields": [
@@ -16808,6 +17922,15 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://my.matterport.com/show/?m=zCWeZ7Tb63Y",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "d87a77503bd7fa05ff101503553856651621f27ece5f77496108edf34033c3d0",
+          "screenshot": "docs/qa/recorridos/021.jpg"
         }
       }
     ],
@@ -16961,13 +18084,21 @@
           "viewerStatus": "http_accessible",
           "finalUrl": "https://www.lanube360.com/ecasa/bosquemar/piloto360/",
           "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interior Bosquemar livingcomedor con plano, hotspots y controles de navegación/zoom/fullscreen.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "e0c74ebe93f4152c0ff5eae5a66485af8bacd0ed6c825509db48e35af2f30f57",
+          "screenshot": "docs/qa/recorridos/088.jpg"
         }
       }
     ],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
-      "Precio vigente y disponibilidad",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Bosquemar"
+      "Precio vigente y disponibilidad"
     ],
     "reviewedOriginal": {
       "comuna": "Concón",
@@ -17446,7 +18577,17 @@
           "finalUrl": "https://data.sentiovr.com/spaces/19805/space_1600948559/vtour/tour.html?showme=true?showme=true&_ga=2.18944824.1839358211.1767707268-1601151291.1753297916",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "visual_pending",
+        "visualVerification": {
+          "result": "pending_blank",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor VistaBulnes completamente negro, sin escena ni controles después de60–120s de carga según root.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "84b57abc65d06412bfae7e8df4714b75f0fd78e1834b9a91c42372e4184c29a5",
+          "screenshot": "docs/qa/recorridos/089.jpg"
+        },
+        "verificationStatus": "visualization_pending"
       },
       {
         "url": "https://norte-verde.cl/360/edificio_vista_bulnes/contexto/",
@@ -17464,11 +18605,21 @@
           "finalUrl": "https://norte-verde.cl/360/edificio_vista_bulnes/contexto/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada360Entrar de entorno VistaBulnes con vista aérea y controles/instrucción para arrastrar.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "ca3a4047c8a38c8a026686486d3c9dc4dbeb6b8063bcddebd6ae70772bae084f",
+          "screenshot": "docs/qa/recorridos/090.jpg"
+        }
       }
     ],
     "pendingFields": [
-      "Baños del modelo estudio: no se publica número explícito"
+      "Baños del modelo estudio: no se publica número explícito",
+      "Disponibilidad del visor Recorrido virtual de Vista Bulnes: no mostró escena tras reintento; conservar enlace oficial y confirmar con el proveedor"
     ],
     "sourceEvidence": {
       "location": ".proyecto-hero-content; .caracteristica-row; .planta-tabla; .proyecto-areas-section",
@@ -17636,11 +18787,11 @@
     ],
     "sourceEvidence": "Edificio Serrano Capital; Santiago; Serrano 562; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 3070,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
+      "inmobiliaria": "Ingevec",
       "amenities": [
         "Piscina",
         "Quincho",
@@ -17650,16 +18801,16 @@
         "Lavandería",
         "Bicicleteros"
       ],
-      "superficieDesdeM2": 34.44,
-      "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
-      "estado": "Entrega inmediata",
-      "entrega": "Inmediata",
-      "descripcionLarga": "Edificio de Ingevec ubicado en Serrano 562, Santiago Centro. Cuenta con departamentos de 1 y 2 dormitorios con entrega inmediata, cercano a Metro Parque Almagro y servicios urbanos del centro de Santiago. Sus espacios comunes incluyen piscina, quinchos, cowork, gimnasio, juegos infantiles, lavandería y bicicleteros.",
-      "direccion": "Serrano 562",
       "mapQuery": "Serrano 562, Santiago, Región Metropolitana, Chile",
+      "estado": "Entrega inmediata",
+      "superficieDesdeM2": 34.44,
+      "entrega": "Inmediata",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Serrano Capital"
+      "comuna": "Santiago",
+      "nombre": "Edificio Serrano Capital",
+      "precioDesdeUF": 3070,
+      "descripcionLarga": "Edificio de Ingevec ubicado en Serrano 562, Santiago Centro. Cuenta con departamentos de 1 y 2 dormitorios con entrega inmediata, cercano a Metro Parque Almagro y servicios urbanos del centro de Santiago. Sus espacios comunes incluyen piscina, quinchos, cowork, gimnasio, juegos infantiles, lavandería y bicicleteros.",
+      "direccion": "Serrano 562"
     },
     "originalImages": [
       {
@@ -17796,12 +18947,12 @@
     ],
     "sourceEvidence": "Edificio Carrera Capital; Santiago; José Miguel Carrera 68; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 2638,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
+      "inmobiliaria": "Ingevec",
       "amenities": [
         "Cowork",
         "Sala multiuso",
@@ -17812,16 +18963,16 @@
         "Lavandería",
         "Áreas verdes"
       ],
-      "superficieDesdeM2": 27.74,
-      "inmobiliaria": "Ingevec",
-      "comuna": "Santiago",
-      "estado": "Entrega inmediata",
-      "entrega": "Inmediata",
-      "descripcionLarga": "Edificio de Ingevec ubicado en José Miguel Carrera 68, Santiago Centro, en el sector Barrio Universitario. Ofrece departamentos estudio, 1 y 2 dormitorios con entrega inmediata y conectividad con Metro República, Metro Los Héroes y Autopista Central. Sus espacios comunes incluyen cowork, sala multiuso, salón gourmet, quinchos, gimnasio, piscina, lavandería y áreas verdes.",
-      "direccion": "José Miguel Carrera 68",
       "mapQuery": "José Miguel Carrera 68, Santiago, Región Metropolitana, Chile",
+      "estado": "Entrega inmediata",
+      "superficieDesdeM2": 27.74,
+      "entrega": "Inmediata",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Carrera Capital"
+      "comuna": "Santiago",
+      "nombre": "Edificio Carrera Capital",
+      "precioDesdeUF": 2638,
+      "descripcionLarga": "Edificio de Ingevec ubicado en José Miguel Carrera 68, Santiago Centro, en el sector Barrio Universitario. Ofrece departamentos estudio, 1 y 2 dormitorios con entrega inmediata y conectividad con Metro República, Metro Los Héroes y Autopista Central. Sus espacios comunes incluyen cowork, sala multiuso, salón gourmet, quinchos, gimnasio, piscina, lavandería y áreas verdes.",
+      "direccion": "José Miguel Carrera 68"
     },
     "originalImages": [
       {
@@ -17951,11 +19102,11 @@
     ],
     "sourceEvidence": "Edificio Froilán Roa; La Florida; Froilán Roa 5746; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 3169,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
+      "inmobiliaria": "Ingevec",
       "amenities": [
         "Quincho",
         "Salón gourmet",
@@ -17965,16 +19116,16 @@
         "Lavandería",
         "Bicicleteros"
       ],
-      "superficieDesdeM2": 34.1,
-      "inmobiliaria": "Ingevec",
-      "comuna": "La Florida",
-      "estado": "Entrega inmediata",
-      "entrega": "Inmediata",
-      "descripcionLarga": "Edificio de Ingevec ubicado en Froilán Roa 5746, La Florida, a pasos de Metro Mirador y cercano a centros comerciales, servicios de salud y áreas verdes. Ofrece departamentos de 1 y 2 dormitorios con entrega inmediata y espacios comunes como quinchos, salón gourmet, sala multiuso, piscina, gimnasio, lavandería y bicicleteros.",
-      "direccion": "Froilán Roa 5746",
       "mapQuery": "Froilán Roa 5746, La Florida, Región Metropolitana, Chile",
+      "estado": "Entrega inmediata",
+      "superficieDesdeM2": 34.1,
+      "entrega": "Inmediata",
       "region": "Región Metropolitana",
-      "nombre": "Edificio Froilán Roa"
+      "comuna": "La Florida",
+      "nombre": "Edificio Froilán Roa",
+      "precioDesdeUF": 3169,
+      "descripcionLarga": "Edificio de Ingevec ubicado en Froilán Roa 5746, La Florida, a pasos de Metro Mirador y cercano a centros comerciales, servicios de salud y áreas verdes. Ofrece departamentos de 1 y 2 dormitorios con entrega inmediata y espacios comunes como quinchos, salón gourmet, sala multiuso, piscina, gimnasio, lavandería y bicicleteros.",
+      "direccion": "Froilán Roa 5746"
     },
     "originalImages": [
       {
@@ -18069,18 +19220,18 @@
     ],
     "sourceEvidence": "Hacienda Lo Errázuriz; Cerrillos; Av. Lo Errázuriz 6576; Entrega futura",
     "reviewedOriginal": {
-      "precioDesdeUF": null,
       "tipologias": [
         "2 dormitorios",
         "3 dormitorios"
       ],
       "inmobiliaria": "Ingevec",
-      "comuna": "Cerrillos",
       "estado": "Entrega futura",
       "entrega": null,
-      "direccion": "Av. Lo Errázuriz 6576",
       "region": "Región Metropolitana",
-      "nombre": "Hacienda Lo Errázuriz"
+      "comuna": "Cerrillos",
+      "nombre": "Hacienda Lo Errázuriz",
+      "precioDesdeUF": null,
+      "direccion": "Av. Lo Errázuriz 6576"
     },
     "originalImages": [
       {
@@ -18172,19 +19323,19 @@
     "additionalSources": [],
     "sourceEvidence": "Jardines de Ramón Cruz; Macul; Ramón Cruz 3291; Entrega inmediata",
     "reviewedOriginal": {
-      "precioDesdeUF": 3412,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios",
         "3 dormitorios"
       ],
       "inmobiliaria": "León",
-      "comuna": "Macul",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "Ramón Cruz 3291",
       "region": "Región Metropolitana",
-      "nombre": "Jardines de Ramón Cruz"
+      "comuna": "Macul",
+      "nombre": "Jardines de Ramón Cruz",
+      "precioDesdeUF": 3412,
+      "direccion": "Ramón Cruz 3291"
     },
     "originalImages": [
       {
@@ -18286,17 +19437,17 @@
     "additionalSources": [],
     "sourceEvidence": "La Casona de Buin; Buin; Camino Buin Maipo 2470; Lanzamiento",
     "reviewedOriginal": {
-      "precioDesdeUF": 4711,
       "tipologias": [
         "Casas de 3 dormitorios"
       ],
       "inmobiliaria": "León",
-      "comuna": "Buin",
       "estado": "Lanzamiento",
       "entrega": null,
-      "direccion": "Camino Buin Maipo 2470",
       "region": "Región Metropolitana",
-      "nombre": "La Casona de Buin"
+      "comuna": "Buin",
+      "nombre": "La Casona de Buin",
+      "precioDesdeUF": 4711,
+      "direccion": "Camino Buin Maipo 2470"
     },
     "originalImages": [
       {
@@ -18398,19 +19549,19 @@
     "additionalSources": [],
     "sourceEvidence": "Urbano Centro; Concepción; Serrano 453; Lanzamiento",
     "reviewedOriginal": {
-      "precioDesdeUF": 2067,
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "León",
-      "comuna": "Concepción",
       "estado": "Lanzamiento",
       "entrega": null,
-      "direccion": "Serrano 453",
       "region": "Biobío",
-      "nombre": "Urbano Centro"
+      "comuna": "Concepción",
+      "nombre": "Urbano Centro",
+      "precioDesdeUF": 2067,
+      "direccion": "Serrano 453"
     },
     "originalImages": [
       {
@@ -18807,7 +19958,16 @@
           "finalUrl": "https://polyform3d.cl/vtour/euro_IR2325/IR2325_F3/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_scene",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Alto Irarrázaval muestra panorama de acceso/living/comedor con hotspots entre habitaciones y menú del visor.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "ce03873ba81a99ca8fa3d886833e4822175f6f7b8ebe81d1fbb04ccf96ee1ad6",
+          "screenshot": "docs/qa/recorridos/091.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -19095,7 +20255,16 @@
           "finalUrl": "https://my.matterport.com/show/?m=oJ8qqy3kLRC",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Interfaz original de Matterport con título coherente, botón Play/Explorar y vista previa fotográfica coherente del proyecto.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "c5d6d93055c82361d6b33416a05672020f753ea3c0059db54153b679bd75fadf",
+          "screenshot": "docs/qa/recorridos/022.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -19936,18 +21105,18 @@
     ],
     "sourceEvidence": "Own; Ñuñoa; San Eugenio 567; Vendido",
     "reviewedOriginal": {
-      "precioDesdeUF": null,
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
       "inmobiliaria": "Leben",
-      "comuna": "Ñuñoa",
       "estado": "Entrega inmediata",
       "entrega": "Inmediata",
-      "direccion": "San Eugenio 567",
       "region": "Región Metropolitana",
-      "nombre": "Own"
+      "comuna": "Ñuñoa",
+      "nombre": "Own",
+      "precioDesdeUF": null,
+      "direccion": "San Eugenio 567"
     },
     "originalImages": [
       {
@@ -20299,32 +21468,13 @@
         "height": 717
       }
     ],
-    "virtualTours": [
-      {
-        "url": "https://www.lanube360.com/edificio-ha/",
-        "title": "Piloto virtual oficial · Edificio HA Strip Center",
-        "provider": "Otro",
-        "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha",
-        "verificationStatus": "http_verified",
-        "httpVerified": true,
-        "embedStatus": "allowed",
-        "availabilityCheck": {
-          "httpStatus": 200,
-          "xFrameOptions": "ALLOWALL",
-          "frameAncestors": "",
-          "embedStatus": "allowed",
-          "viewerStatus": "http_accessible",
-          "finalUrl": "https://www.lanube360.com/edificio-ha/",
-          "checkedAt": "2026-10-09"
-        }
-      }
-    ],
+    "virtualTours": [],
     "pendingFields": [
       "Superficie útil",
       "Dormitorios",
       "Baños",
       "Equipamiento y áreas comunes",
-      "Verificación visual completa del recorrido Piloto virtual oficial · Edificio HA Strip Center"
+      "Recorrido oficial HA Strip Center: enlace antiguo redirige a un portal general; confirmar un enlace propio vigente"
     ],
     "reviewedOriginal": {
       "comuna": "Coquimbo",
@@ -20351,6 +21501,36 @@
         "url": "https://ecasa.cl/uploads/images/diapositivas/2b938492a3d650a7a193c7ebb6f7cbea.png",
         "alt": "Imagen oficial de Edificio HA Strip Center",
         "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha"
+      }
+    ],
+    "unavailableVirtualTours": [
+      {
+        "url": "https://www.lanube360.com/edificio-ha/",
+        "title": "Piloto virtual oficial · Edificio HA Strip Center",
+        "provider": "Otro",
+        "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha",
+        "verificationStatus": "http_verified",
+        "httpVerified": true,
+        "embedStatus": "allowed",
+        "availabilityCheck": {
+          "httpStatus": 200,
+          "xFrameOptions": "ALLOWALL",
+          "frameAncestors": "",
+          "embedStatus": "allowed",
+          "viewerStatus": "http_accessible",
+          "finalUrl": "https://www.lanube360.com/edificio-ha/",
+          "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "redirected_to_general_portal",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Carga portal general Lanube360 de parcelas (Tu próxima parcela; buscador y más de500proyectos), sin identidad ni escena HA StripCenter/ECASA. No constituye recorrido específico del proyecto; retirar integración y registrar enlace oficial antiguo/redirigido.",
+          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+          "screenshotSha256": "db72c163f6d8fda9b2da9acf7b53bd14b813dfd48faad5bd01b927873f6fc11a",
+          "screenshot": "docs/qa/recorridos/092.jpg"
+        },
+        "reason": "El enlace oficial antiguo abre un portal general de parcelas de Lanube360, sin recorrido identificable de HA Strip Center."
       }
     ]
   },
@@ -20455,7 +21635,16 @@
           "finalUrl": "https://norte-verde.cl/360/atelier_prat/consultas/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada NorteVerde360Entrar con escena consulta Box2 de AtelierPrat.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "fd524a9eefac0ebc2561de5eb454ce0cd760dabcce6da64106448c4b42c897cd",
+          "screenshot": "docs/qa/recorridos/093.jpg"
+        }
       },
       {
         "url": "https://norte-verde.cl/360/atelier_prat/oficinas/",
@@ -20473,7 +21662,16 @@
           "finalUrl": "https://norte-verde.cl/360/atelier_prat/oficinas/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada NorteVerde360Entrar con escena oficina de AtelierPrat.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "d4d4c8186b2d2f1ec9e356a395155c244cf108868cca2e383448c11dc39e0864",
+          "screenshot": "docs/qa/recorridos/094.jpg"
+        }
       },
       {
         "url": "https://norteverde.viewin360.co/share/collection/7PQbm?fs=1&vr=1&zoom=1&initload=0&thumbs=3&inst=es&info=0&logo=1&logosize=55",
@@ -20491,7 +21689,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7PQbm?fs=1&vr=1&zoom=1&initload=0&thumbs=3&inst=es&info=0&logo=1&logosize=55",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor Norte Verde Atelier Prat muestra portada interior, Play, título Edificio Atelier Prat y dirección Arturo Prat1756.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "55e25f4cb2bbfe6011db33df836587819ea2a0b7caab0288796b9ab265b79fbf",
+          "screenshot": "docs/qa/recorridos/095.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -20640,7 +21847,16 @@
           "finalUrl": "https://norteverde.viewin360.co/share/collection/7PQPc?fs=1&vr=1&zoom=1&initload=0&thumbs=3&inst=es&info=0&logo=1&logosize=55",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Visor Norte Verde Corrientes presenta portada interior, Play, título Edificio Corrientes y dirección Francisco Bilbao2540, Providencia.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "0337df71957b2aa29c0cb916a72da6f5a16da6f5b2a0677b5c8355a2f0417b2a",
+          "screenshot": "docs/qa/recorridos/096.jpg"
+        }
       },
       {
         "url": "https://norte-verde.cl/360/edificio_corrientes/contexto/",
@@ -20658,7 +21874,16 @@
           "finalUrl": "https://norte-verde.cl/360/edificio_corrientes/contexto/",
           "checkedAt": "2026-10-09"
         },
-        "embedStatus": "allowed"
+        "embedStatus": "allowed",
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada360Entrar de entorno CorrientesOficinas con vista aérea y controles/instrucción para arrastrar.",
+          "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+          "screenshotSha256": "36894f3418c1b1ae7165933d89e6eb462a6da8a02f2489e530dc375fdcd20009",
+          "screenshot": "docs/qa/recorridos/097.jpg"
+        }
       }
     ],
     "pendingFields": [],
@@ -20790,19 +22015,19 @@
     "additionalSources": [],
     "sourceEvidence": "BOX Santiago; Santiago; Copiapó 1039; Lanzamiento",
     "reviewedOriginal": {
-      "precioDesdeUF": 429,
+      "tipoActivo": "Comercial",
       "tipologias": [
         "Minibodegas",
         "Locales comerciales"
       ],
-      "tipoActivo": "Comercial",
       "inmobiliaria": "León",
-      "comuna": "Santiago",
       "estado": "Lanzamiento",
       "entrega": null,
-      "direccion": "Copiapó 1039",
       "region": "Región Metropolitana",
-      "nombre": "BOX Santiago"
+      "comuna": "Santiago",
+      "nombre": "BOX Santiago",
+      "precioDesdeUF": 429,
+      "direccion": "Copiapó 1039"
     },
     "originalImages": [
       {

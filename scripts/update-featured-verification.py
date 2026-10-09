@@ -21,7 +21,7 @@ for research in records:
     project = projects[slug]
     path = ROOT / (slug + '.html')
     page = path.read_text()
-    page = re.sub(r'<!-- verified-featured-start -->.*?<!-- verified-featured-end -->', '', page, flags=re.S)
+    page = re.sub(r'<!-- verified-featured-start -->.*?<!-- verified-featured-end -->\n?', '', page, flags=re.S)
     updates = research.get('updates', {})
     old = research.get('reviewedOriginal', {})
     features = research.get('verifiedFeatures', {})
@@ -35,6 +35,8 @@ for research in records:
                 page = page.replace(esc(address), esc(updates['direccion']))
                 page = page.replace(address, updates['direccion'])
     field = lambda key: details.field(project, research, key)
+    description = f'Conoce {project["nombre"]} de {project["inmobiliaria"]}. Consulta características verificadas, imágenes oficiales, ubicación y disponibilidad en Sollahms.'
+    page = re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")[^"]*(">)', lambda match: match[1] + esc(description) + match[2], page)
     surface = field('superficieDesdeM2')
     cells = {
         'Inmobiliaria': esc(project['inmobiliaria']),
@@ -77,6 +79,7 @@ for research in records:
         if value.get('@type') == 'ApartmentComplex':
             value['address'] = {'@type': 'PostalAddress', 'streetAddress': field('direccion'), 'addressLocality': field('comuna'), 'addressRegion': field('region'), 'addressCountry': 'CL'}
             value['citation'] = research['sourceUrl']
+            value['description'] = description
         return '<script type="application/ld+json">\n' + json.dumps(value, ensure_ascii=False, indent=2).replace('<', '\\u003c') + '\n</script>'
     page = re.sub(r'<script type="application/ld\+json">(.*?)</script>', update_ld, page, flags=re.S)
     gallery = '<h2>Galería oficial</h2><div class="featured-gallery">' + ''.join(f'<figure><a href="{esc(i["localPath"])}" target="_blank" rel="noopener noreferrer"><img src="{esc(i["localPath"])}" alt="{esc(i["alt"])}" loading="lazy" width="{i["width"]}" height="{i["height"]}"></a><figcaption><a href="{esc(i["sourceUrl"])}" target="_blank" rel="noopener noreferrer">Fuente oficial · {esc(i["alt"])}</a></figcaption></figure>' for i in research.get('images', []) if i.get('localPath')) + '</div>'
@@ -104,7 +107,8 @@ for research in records:
     if not research.get('virtualTours'):
         tours += '<p>Recorrido virtual oficial específico pendiente de verificación.</p>'
     for key, label in [('edificio', 'Cantidad de pisos'), ('departamentos', 'Cantidad de departamentos')]:
-        if not features.get(key) and label not in research['pendingFields']:
+        verified_count = bool(re.search(r'\d+\s*pisos?', str(features.get(key) or ''), re.I)) if key == 'edificio' else isinstance(features.get(key), int) and features[key] > 0
+        if not verified_count and label not in research['pendingFields']:
             research['pendingFields'].append(label)
     audit = '<!-- verified-featured-start --><section class="featured-verification" id="fuentes-verificadas">' + gallery + specs + tours + '<h2>Fuentes y verificación</h2>' + details.source_content(project, research) + '</section><!-- verified-featured-end -->'
     anchor = '</div>\n<aside class="lg:col-span-4">'
@@ -112,7 +116,7 @@ for research in records:
     page = page.replace(anchor, audit + '\n' + anchor, 1)
     if '/assets/css/featured-verification.css' not in page:
         page = page.replace('</head>', '<link rel="stylesheet" href="/assets/css/featured-verification.css">\n<script src="/assets/js/project-embeds.js" defer></script>\n</head>')
-    page = re.sub(r'<script type="application/json" id="project-embed-hosts">.*?</script>', '', page, flags=re.S)
+    page = re.sub(r'<script type="application/json" id="project-embed-hosts">.*?</script>\n?', '', page, flags=re.S)
     page = page.replace('</head>', '<script type="application/json" id="project-embed-hosts">' + json.dumps(sorted(permitted)) + '</script>\n</head>')
     path.write_text(page)
 (ROOT / 'data/fichas-proyectos.json').write_text(json.dumps(records, ensure_ascii=False, indent=2) + '\n')

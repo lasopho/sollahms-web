@@ -213,7 +213,8 @@
     };
     const card = project => {
         const article = element('article', undefined, 'bg-surface-container-lowest p-8 shadow-sm');
-        article.append(element('p', project.inmobiliaria, 'text-sm font-bold text-secondary mb-3'));
+        const builderVerified = project.verificacion?.camposVerificados?.includes('inmobiliaria');
+        article.append(element('p', project.inmobiliaria + (builderVerified ? '' : ' · Asociación por verificar'), 'text-sm font-bold text-secondary mb-3'));
         article.append(element('h2', project.nombre, 'text-xl font-bold text-primary mb-4'));
         article.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
         if (project.direccion != null) article.append(element('p', project.direccion, 'text-sm text-secondary mb-4'));
@@ -250,6 +251,8 @@
         article.append(details);
         if (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF)) {
             article.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
+        } else {
+            article.append(element('p', 'Precio pendiente de verificación', 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
         }
         if (typeof project.slug === 'string' && project.slug.trim().length) {
             const actions = element('div', undefined, 'mt-4 flex flex-col sm:flex-row gap-3');

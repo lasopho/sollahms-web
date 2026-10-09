@@ -13,7 +13,7 @@ FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las
 class Page(HTMLParser):
     def __init__(self, text):
         super().__init__()
-        self.links, self.images, self.ids, self.embeds = [], [], [], []
+        self.links, self.images, self.ids, self.embeds, self.iframes = [], [], [], [], []
         self.headings = 0
         self.feed(text)
     def handle_starttag(self, tag, pairs):
@@ -28,6 +28,8 @@ class Page(HTMLParser):
             self.images.append(attrs)
         if attrs.get('data-embed-src'):
             self.embeds.append(attrs)
+        if tag == 'iframe':
+            self.iframes.append(attrs)
 
 projects = json.loads((ROOT / 'data/proyectos.json').read_text())
 research = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
@@ -40,6 +42,17 @@ assert len(research) == len(ledger) == len(projects), 'Duplicated audit records'
 assert all(r['fichaDesarrollada'] for r in ledger), 'A detail page is missing'
 checked_links = 0
 maps = 0
+new_maps = 0
+ledger_by_slug = {entry['slug']: entry for entry in ledger}
+
+def same_tour(rendered, official):
+    """Matterport presentation parameters may differ; the model must match."""
+    current, published = urlparse(rendered), urlparse(official)
+    if current.hostname == published.hostname and current.hostname in {'my.matterport.com', 'mpembed.com'}:
+        current_model = parse_qs(current.query).get('m', [None])[0]
+        published_model = parse_qs(published.query).get('m', [None])[0]
+        return bool(current_model) and current_model == published_model
+    return rendered == official
 for project in projects:
     slug = project['slug']
     path = ROOT / (slug + '.html')
@@ -75,21 +88,39 @@ for project in projects:
         assert image.get('sourceUrl', '').startswith('https://'), f'{slug}: official image without provenance'
     for tour in record.get('virtualTours', []):
         assert tour.get('sourceUrl', '').startswith('https://'), f'{slug}: tour without provenance'
+    host_config = re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', text, re.S)
+    assert host_config, f'{slug}: missing iframe host configuration'
+    permitted_hosts = json.loads(host_config[1])
+    assert isinstance(permitted_hosts, list) and all(isinstance(host, str) for host in permitted_hosts)
+    embedded_urls = [entry['data-embed-src'] for entry in page.embeds] + [entry.get('src', '') for entry in page.iframes]
+    project_maps = []
+    for embedded_url in embedded_urls:
+        url = urlparse(embedded_url)
+        assert url.scheme == 'https' and url.hostname in permitted_hosts and not url.username and not url.password, f'{slug}: unsafe or unapproved iframe host'
+        if url.hostname == 'www.google.com':
+            project_maps.append(embedded_url)
+            assert all(key in record['verifiedFields'] for key in ['direccion', 'comuna', 'mapQuery']), f'{slug}: map without verified location'
+            official_address = record.get('updates', {}).get('direccion', project.get('direccion'))
+            query = parse_qs(url.query).get('q', [None])[0]
+            assert query and official_address in query, f'{slug}: map diverges from official address'
+            assert not re.search(r'-\d{2}\.\d+\s*,\s*-\d{2}\.\d+', query), f'{slug}: approximate coordinates'
+        else:
+            backed = [tour for tour in record.get('virtualTours', []) if same_tour(embedded_url, tour['url'])]
+            assert backed, f'{slug}: embedded tour is not backed by project research'
+            assert any(tour.get('embedStatus') == 'allowed' for tour in backed), f'{slug}: tour embedding permission is not verified'
+    assert len(project_maps) <= 1, f'{slug}: duplicated map'
+    maps += len(project_maps)
+    if slug not in FEATURED:
+        new_maps += len(project_maps)
+    assert ledger_by_slug[slug]['mapa'] == bool(project_maps), f'{slug}: map audit differs from rendered page'
+    published_links = {entry.get('href') for entry in page.links}
+    for tour in record.get('virtualTours', []):
+        assert tour['url'] in published_links, f'{slug}: original tour link missing'
+    actual_matterport = any(tour.get('provider') == 'Matterport' and tour['url'] in published_links for tour in record.get('virtualTours', []))
+    assert ledger_by_slug[slug]['matterport'] == actual_matterport, f'{slug}: Matterport audit differs from rendered page'
+    assert ledger_by_slug[slug]['recorridosOficiales'] == len(record.get('virtualTours', [])), f'{slug}: official tour count differs from research'
     if slug not in FEATURED:
         assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'recorrido', 'ubicacion', 'fuentes'])
-        for embed in page.embeds:
-            url = urlparse(embed['data-embed-src'])
-            approved = ['my.matterport.com', 'mpembed.com', 'www.google.com', 'www.youtube.com', 'player.vimeo.com']
-            approved += [urlparse(t['url']).hostname for t in record.get('virtualTours', []) if t.get('embedStatus') == 'allowed']
-            assert url.scheme == 'https' and url.hostname in approved
-            if url.hostname == 'www.google.com':
-                maps += 1
-                assert 'direccion' in record['verifiedFields'] and 'comuna' in record['verifiedFields'], f'{slug}: map without verified address and commune'
-                official_address = record.get('updates', {}).get('direccion', project.get('direccion'))
-                assert official_address in parse_qs(url.query)['q'][0], f'{slug}: map diverges from official address'
-                assert not re.search(r'-\d{2}\.\d+\s*,\s*-\d{2}\.\d+', parse_qs(url.query)['q'][0]), f'{slug}: approximate coordinates'
-            else:
-                assert embed['data-embed-src'] in [t['url'] for t in record.get('virtualTours', [])], f'{slug}: tour is not backed by research'
         if 'precioDesdeUF' not in record.get('verifiedFields', []) or record.get('updates', {}).get('precioDesdeUF', project.get('precioDesdeUF')) is None:
             assert 'Precio desde</span><strong><span class="pending">' in text, f'{slug}: historical price shown as current'
         for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
@@ -99,4 +130,4 @@ urls = [x.text for x in sitemap.findall('.//{*}loc')]
 assert len(urls) == len(set(urls))
 assert all('https://sollahms.cl' + p['detalleUrl'] in urls for p in projects)
 assert 'fetch(\'/data/proyectos.json\')' in (ROOT / 'agenda-asesoria.html').read_text(), 'Booking still has a limited hardcoded project list'
-print(json.dumps({'projects': len(projects), 'pages': len(ledger), 'internalLinksChecked': checked_links, 'newVerifiedMaps': maps, 'sitemapUrls': len(urls), 'result': 'passed'}))
+print(json.dumps({'projects': len(projects), 'pages': len(ledger), 'internalLinksChecked': checked_links, 'newVerifiedMaps': new_maps, 'verifiedMaps': maps, 'sitemapUrls': len(urls), 'result': 'passed'}))

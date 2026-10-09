@@ -53,7 +53,7 @@ def pending_fields(project, research):
     for key in ['utilM2', 'totalM2', 'dormitorios', 'banos']:
         if project.get('tipoActivo') == 'Terreno' and key in ['utilM2', 'totalM2', 'dormitorios', 'banos']:
             continue
-        if project.get('tipoActivo') == 'Comercial' and key == 'dormitorios':
+        if project.get('tipoActivo') == 'Comercial' and key in ['dormitorios', 'banos']:
             continue
         if specs.get(key) in (None, ''):
             fields.append(LABELS[key])
@@ -63,12 +63,14 @@ def pending_fields(project, research):
         fields.append(LABELS['images'])
     if not research.get('virtualTours'):
         fields.append('Existencia de recorrido virtual oficial')
-    return list(dict.fromkeys(fields + research.get('pendingFields', [])))
+    combined = list(dict.fromkeys(fields + research.get('pendingFields', [])))
+    irrelevant = {'Superficie útil', 'Superficie total', 'Dormitorios', 'Baños'} if project.get('tipoActivo') == 'Terreno' else {'Dormitorios', 'Baños'} if project.get('tipoActivo') == 'Comercial' else set()
+    return [label for label in combined if label not in irrelevant]
 
 def source_content(project, research):
     url = secure_url(research.get('sourceUrl'))
     date = esc(research.get('checkedAt') or 'Pendiente')
-    source = f'<p><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar la fuente oficial de {esc(project["inmobiliaria"])}</a></p>' if url else '<p>Fuente oficial específica pendiente de identificación.</p>'
+    source = f'<p><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar la fuente oficial del proyecto</a></p>' if url else '<p>Fuente oficial específica pendiente de identificación.</p>'
     source += f'<p>Última revisión: <time datetime="{date}">{date}</time>. Los precios y la disponibilidad pueden cambiar; confirma las condiciones al consultar.</p>'
     if research.get('sourceNotes'):
         source += f'<p>{esc(research["sourceNotes"])}</p>'
@@ -80,7 +82,7 @@ def source_content(project, research):
 def render(project, research, template):
     name = project['nombre']
     slug = project['slug']
-    builder = project['inmobiliaria']
+    builder = project['inmobiliaria'] if 'inmobiliaria' in research.get('verifiedFields', []) else project['inmobiliaria'] + ' (asociación por verificar)'
     images = [i for i in research.get('images', []) if secure_url(i.get('url')) and secure_url(i.get('sourceUrl'))]
     # Prefer local official images after successful download; no stock fallback.
     def image_url(img):
@@ -105,7 +107,7 @@ def render(project, research, template):
             continue
         if project.get('tipoActivo') == 'Terreno' and key != 'terrenoM2':
             continue
-        if project.get('tipoActivo') == 'Comercial' and key == 'dormitorios':
+        if project.get('tipoActivo') == 'Comercial' and key in ['dormitorios', 'banos']:
             continue
         specification = research.get('specs', {}).get(key)
         if specification not in (None, '') and key.endswith('M2') and not re.search(r'm[²2]', str(specification)):
@@ -126,7 +128,7 @@ def render(project, research, template):
         title = tour.get('title') or f'Recorrido de {name}'
         parsed = urlparse(url)
         can_embed = tour.get('embedStatus') == 'allowed' or (not tour.get('embedStatus') and parsed.hostname in ['my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com'])
-        embed = f'<div class="embed-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(url)}" data-embed-title="{esc(title)}">Iniciar recorrido interactivo</button></div>' if can_embed else f'<p><a class="button button-outline" href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir experiencia virtual oficial ↗</a></p>'
+        embed = f'<div class="embed-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(url)}" data-embed-title="{esc(title)}">Iniciar recorrido interactivo</button></div>' if can_embed else f'<div class="pending-panel"><p>La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.</p><a class="button button-outline" href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar experiencia oficial ↗</a></div>'
         tours.append(f'<article class="tour-card"><h3>{esc(title)}</h3>{embed}<div class="embed-caption"><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></div></article>')
     tours_html = ''.join(tours) or '<div class="pending-panel"><p>No se ha verificado un recorrido virtual oficial para este proyecto. Su disponibilidad está pendiente de confirmación.</p></div>'
     query = ', '.join(str(x) for x in [address, field(project, research, 'comuna'), field(project, research, 'region'), 'Chile'] if x)
@@ -147,7 +149,7 @@ def render(project, research, template):
     badges = f'<span>{esc(project.get("tipoActivo", "Residencial"))}</span>'
     if field(project, research, 'estado'):
         badges += f'<span>{esc(field(project, research, "estado"))}</span>'
-    desc = f'Conoce {name} de {builder}. Consulta características verificadas, imágenes oficiales, ubicación y disponibilidad en Sollahms.'
+    desc = f'Conoce {name} en Sollahms. Consulta características verificadas, imágenes oficiales, ubicación y disponibilidad.'
     structured = {'@context': 'https://schema.org', '@type': 'WebPage', 'name': name + ' | Sollahms', 'url': f'https://sollahms.cl/{slug}.html', 'description': desc, 'breadcrumb': {'@type': 'BreadcrumbList', 'itemListElement': [{'@type': 'ListItem', 'position': 1, 'name': 'Inicio', 'item': 'https://sollahms.cl/'}, {'@type': 'ListItem', 'position': 2, 'name': 'Proyectos', 'item': 'https://sollahms.cl/proyectos.html'}, {'@type': 'ListItem', 'position': 3, 'name': name, 'item': f'https://sollahms.cl/{slug}.html'}]}}
     if source_url:
         structured['citation'] = source_url
@@ -184,7 +186,7 @@ def main():
             (ROOT / (slug + '.html')).write_text(page)
         project['detalleUrl'] = '/' + slug + '.html'
         actual = (ROOT / (slug + '.html')).read_text() if (ROOT / (slug + '.html')).exists() else ''
-        matterport = any(t.get('provider') == 'Matterport' for t in research.get('virtualTours', [])) if slug not in FEATURED else bool('my.matterport.com' in actual or 'mpembed.com' in actual)
+        matterport = any(t.get('provider') == 'Matterport' and secure_url(t.get('url')) and secure_url(t.get('sourceUrl')) and t['url'].replace('&', '&amp;') in actual for t in research.get('virtualTours', []))
         if slug in FEATURED:
             mapped = 'www.google.com/maps' in actual
         pending = pending_fields(project, research)
@@ -207,7 +209,7 @@ def main():
     for r in ledger:
         source = f'[Oficial]({r["fuente"]})' if secure_url(r.get('fuente')) else 'Por identificar'
         report += f'| [{cell(r["nombre"])}](../{r["slug"]}.html) | {cell(r["inmobiliaria"])} | {source} | {r["estadoFuente"]} | {"Sí" if r["mapa"] else "Pendiente"} | {"Sí" if r["matterport"] else "No verificado"} | {cell(", ".join(r["pendientes"]))} |\n'
-    report += '\n## Continuación reproducible\n\nEditar `data/fichas-proyectos.json` con nuevas evidencias, incorporando campos en `verifiedFields` únicamente cuando exista respaldo oficial. Actualizar `data/proyectos.json` solo con valores respaldados. Ejecutar `python3 scripts/build-project-details.py` y `python3 tests/validate-project-details.py`. Para un lote: `python3 scripts/build-project-details.py --batch Maestra,Ecasa`. El registro y sitemap siempre cubren todo el catálogo. Revisar `docs/verificacion-fichas.md` para pruebas de navegador y límites.\n'
+    report += '\n## Continuación reproducible\n\nEditar `data/fichas-proyectos.json` con nuevas evidencias, incorporando campos en `verifiedFields` únicamente cuando exista respaldo oficial. Actualizar `data/proyectos.json` solo con valores respaldados. Ejecutar `python3 scripts/update-featured-verification.py`, `python3 scripts/build-project-details.py`, `python3 tests/validate-project-details.py` y `node --test tests/booking-project-context.mjs`. Para un lote: `python3 scripts/build-project-details.py --batch Maestra,Ecasa`. El registro y sitemap siempre cubren todo el catálogo. Revisar `docs/verificacion-fichas.md` para pruebas de navegador y límites.\n'
     (ROOT / 'docs/registro-fichas-proyectos.md').write_text(report)
     print(json.dumps({'total': len(projects), 'developed': developed, 'maps': maps, 'matterport': matterports, 'withPendingData': unverified}, ensure_ascii=False))
 
