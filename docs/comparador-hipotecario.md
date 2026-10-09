@@ -74,6 +74,8 @@ node scripts/validate-mortgage-data.mjs
 node scripts/preview.mjs
 ```
 
+En esta máquina el checkout ya está en `/private/tmp/sollahms-comparador-hipotecario`, sobre la rama solicitada; entra allí para ejecutar los comandos. El checkout original pertenece al otro trabajo y no debe cambiarse de rama mientras se usa este worktree. Si `node` no está en PATH, el ejecutable incluido en Codex es `/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node`.
+
 Abre `http://127.0.0.1:4173/comparador-hipotecario.html`. Para revisar sin enviar correos reales, inicia con `RESEND_API_KEY= node scripts/preview.mjs`; el formulario devolverá un error de envío honesto. El servidor sólo escucha en loopback y bloquea archivos ocultos y rutas privadas. `PORT` permite otro puerto local. Reinicia el servidor al cambiar el catálogo o el backend, porque el JSON del servidor se importa al inicio.
 
 1. Ingresa una tasa propia: prueba pie 10/20%, varios plazos, tasa cero y valores inválidos.
