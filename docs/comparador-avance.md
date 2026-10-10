@@ -25,8 +25,14 @@ UF: $41.130,94 el 09/10/2026, SII y CMF. La API oficial CMF exige clave y contie
 - Commits `7ce7346` motor/datos, `4d23faf` captación, `1d235e2` interfaz e integración. Rama publicada en GitHub.
 - Vercel generó vista previa aislada READY, protegida por SSO; no se hizo merge ni publicación de producción.
 
-## Pendiente por accesos
+## Continuación de correo — 10 de octubre
 
-El acceso normal a preview requiere login Vercel. La revisión automática rechazó crear un enlace temporal de autenticación porque ampliaría acceso sin autorización específica. No se cambió la protección. La clave Resend existe en la metadata de preview, pero el correo remoto y su llegada al destino no pudieron verificarse. GitHub rechazó crear PR con 403 de integración; la rama está disponible para revisión.
+El usuario abrió sesiones normales de Vercel y Resend. Se ejecutó una sola prueba con los datos ficticios preparados. La aplicación confirmó el envío; Resend respondió HTTP 200 con ID `01a12570-c935-7dda-a216-5c697b748382` y mostró Sent/Delivered. Se comprobó el contenido identificado y el resumen financiero. La protección de Vercel permanece activa; no se usó un enlace temporal ni se cambiaron credenciales. La UF del 9 está vencida y el sistema omitió pesos correctamente.
+
+Queda pendiente la recepción efectiva en el buzón de contacto. Las conexiones Gmail disponibles no encontraron ese identificador y no constituyen acceso directo confirmado al buzón. Se solicitó al titular comprobar el mensaje y la carpeta. El [registro de prueba](prueba-correo-hipotecario.md) conserva tiempos, IDs y capturas. No repetir el envío.
+
+## Historial de accesos iniciales — 9 de octubre
+
+El 9/10, el acceso normal a preview requería login Vercel. La revisión automática rechazó crear un enlace temporal de autenticación porque ampliaría acceso sin autorización específica. No se cambió la protección. La metadata confirmó la existencia de la clave Resend en preview, pero ese día no se pudo verificar el envío remoto ni su recepción. La sesión autenticada permitió comprobar el formulario y el proveedor el 10/10, como se registra arriba; la recepción en el buzón sigue pendiente. GitHub rechazó crear PR con 403 de integración; la rama está disponible para revisión.
 
 La [guía](comparador-hipotecario.md), la [auditoría](comparador-auditoria.md) y el [informe de verificación](comparador-verificacion.md) conservan las fuentes, alcance, pruebas, correcciones y pasos de continuación. Continuar desde el checkout aislado, no desde el desarrollo de fichas ni main.

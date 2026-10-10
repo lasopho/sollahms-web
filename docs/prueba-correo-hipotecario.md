@@ -1,24 +1,24 @@
 # Prueba controlada del formulario hipotecario
 
-Preparada el 9 de octubre de 2026. **No ejecutada remotamente: no se ha enviado correo real.** El usuario autoriza una prueba con datos ficticios y exige mantener Vercel Authentication. No autoriza enlaces de acceso sin autenticación.
+Preparada el 9 de octubre y ejecutada el 10 de octubre de 2026. **Un envío real autorizado: aceptación Resend y entrega al servidor confirmadas; recepción efectiva en el buzón pendiente.** El usuario autorizó la prueba con datos ficticios y mantuvo Vercel Authentication. No se usaron enlaces de acceso sin autenticación.
 
 Identificador único: **QA-SOLLAHMS-HIP-20261009T230224Z-B5E38C90**. Usar una sola vez, en nombre y comentario.
 
-## Acceso pendiente
+## Acceso autenticado comprobado
 
 - Versión preparada: commit `635dc9468f2e66c5156da130adb242393a4ae8b5`, deployment `dpl_55imMM7hv4bepVxnEaYKPxeL8vUm`, READY como preview.
-- [Vista previa exacta](https://project-wrapp-mbokvmnqf-lsandoval2-8260s-projects.vercel.app/comparador-hipotecario.html): el acceso normal en el navegador integrado muestra login Vercel.
-- La metadata del proyecto confirma Vercel Authentication activa (`all_except_custom_domains`). No se cambió esa configuración.
-- No hay CLI Vercel ni sesión CLI local disponible en las ubicaciones comprobadas. La inspección del Chrome del sistema está bloqueada por permisos de control del equipo; no se puede afirmar si tiene una sesión válida.
-- [Emails de Resend](https://resend.com/emails): el navegador integrado también muestra login. No hay acceso directo confirmado al buzón `contacto@sollahms.cl` con las conexiones actuales.
+- [Vista previa exacta](https://project-wrapp-mbokvmnqf-lsandoval2-8260s-projects.vercel.app/comparador-hipotecario.html): el 10/10 se accedió normalmente después del inicio de sesión realizado por el usuario en el navegador integrado.
+- La metadata del proyecto volvió a confirmar el 10/10 Vercel Authentication activa (`all_except_custom_domains`). No se cambió esa configuración.
+- [Emails de Resend](https://resend.com/emails): se comprobó la sesión autenticada del usuario y se revisó exclusivamente el registro de esta prueba.
+- No hay acceso directo confirmado al buzón `contacto@sollahms.cl` con las conexiones actuales. La búsqueda restringida al identificador y destinatario en las dos conexiones Gmail disponibles no devolvió mensajes. Ese resultado no permite afirmar que el correo no haya llegado al buzón de contacto.
 
-Acciones manuales: abrir la preview en el navegador integrado de este chat, iniciar sesión con la cuenta Vercel que tiene acceso a `project-wrapp`, completar en privado cualquier contraseña o verificación, volver a la URL exacta y avisar cuando se vea el comparador. No enviar todavía el formulario. Para comprobar el registro del proveedor, iniciar también sesión con la cuenta existente de Resend que gestiona `forms.sollahms.cl`; no crear credenciales ni compartir claves, cookies o códigos. La recepción requiere acceso al buzón de contacto, o confirmación específica de su titular.
+Acción manual pendiente: en `contacto@sollahms.cl`, buscar el asunto **Comparador hipotecario Sollahms: Asesoría hipotecaria**, remitente `formularios@forms.sollahms.cl`, enviado el 10/10 a las **07:51 de Chile**. Abrir el mensaje y comprobar el identificador, el teléfono ficticio `000000000` y el dividendo `22,23 UF`. Registrar si está en Entrada, Spam u otra carpeta. La confirmación específica del titular sirve como evidencia del buzón y debe identificarse como tal.
 
-El acceso normal autenticado aún está pendiente. No se ha demostrado que un enlace temporal sea indispensable y no se solicita autorización para crearlo.
+El acceso normal autenticado permitió completar la prueba del formulario y del proveedor. No se requirió un enlace temporal. No se copiaron contraseñas, claves, cookies, códigos ni cabeceras de autenticación.
 
 ## Campos de la prueba
 
-El único correo real usado será `contacto@sollahms.cl`, como destinatario existente y como correo de prueba/Reply-To. No habrá CC, BCC, adjuntos, respuestas ni reenvíos. El remitente configurado sigue siendo `Sollahms Web <formularios@forms.sollahms.cl>`.
+La única dirección destinataria y de Reply-To fue `contacto@sollahms.cl`, también usada como correo de prueba en el formulario. No hubo CC, BCC, adjuntos, respuestas ni reenvíos. El remitente configurado sigue siendo `Sollahms Web <formularios@forms.sollahms.cl>`.
 
 | Campo | Valor |
 |---|---|
@@ -49,15 +49,15 @@ Resultados esperados del escenario: pie 1.000 UF, crédito 4.000 UF, financiamie
 
 Preflight local ejecutado con el handler real y transporte Resend sustituido por un simulador: HTTP 200, una llamada simulada, destino y Reply-To correctos, asunto e identificador presentes, y resultados financieros contrastados. No utilizó una credencial real ni transporte de red. Este resultado confirma la preparación de los datos; no demuestra aceptación real por Resend ni recepción de correo.
 
-## Ejecución de un único envío
+## Protocolo y comprobación pendiente: no repetir el envío
 
-La autorización del usuario para esta prueba ya consta en el chat; no requiere otra aprobación de envío. Falta obtener acceso normal autenticado.
+La autorización del usuario consta en el chat. Se comprobó el consentimiento, formato válido y honeypot vacío antes de pulsar una sola vez «Solicitar asesoría». El siguiente procedimiento se conserva como registro; no constituye una instrucción para volver a enviar.
 
 1. Configurar el escenario, abrir «Quiero que me contacten» y completar los campos anteriores. Capturar contexto y campos ficticios, sin incluir cabeceras de autenticación.
 2. Pulsar «Solicitar asesoría» una sola vez. Registrar hora UTC y Chile, URL/deployment, confirmación o error. Si está disponible la inspección de red, conservar sólo estado y JSON de respuesta de `POST /api/contact`, sin cookies ni tokens.
 3. En Resend → Emails, localizar el mensaje por hora, destinatario, remitente y asunto. Abrir Preview o Plain Text y comprobar el identificador. La documentación no garantiza que la búsqueda global indexe el cuerpo.
 4. En «View log», comprobar `POST /emails`, respuesta exitosa con `id`, y contenido de esta prueba. Registrar únicamente ID, destinatario, asunto, hora y estado; no copiar cabeceras Authorization ni otros mensajes.
-5. Comprobar el evento/estado Delivered del mismo mensaje. En `contacto@sollahms.cl`, buscar el identificador también en Spam o cuarentena y abrirlo. Registrar carpeta, remitente, destinatario, hora y resumen. Si está disponible, correlacionar Message-ID con Resend.
+5. Comprobar el evento/estado Delivered del mismo mensaje (completado). **Pendiente:** en `contacto@sollahms.cl`, buscar el identificador también en Spam o cuarentena y abrirlo. Registrar carpeta, remitente, destinatario, hora y resumen. Si está disponible, correlacionar Message-ID con Resend.
 
 ## Evidencia y límites
 
@@ -72,7 +72,27 @@ El handler sólo confirma su camino normal después de Resend 2xx e ID no vacío
 
 Ante timeout o resultado incierto, buscar primero el identificador en Resend y el buzón. No repetir automáticamente: el handler no utiliza idempotencia y otro POST podría duplicar el correo. No declarar éxito ante login, 400/403/413/415, 503, 502 o falta de evidencia. Mantener pendientes los niveles no comprobados.
 
-Registro actual: **envío no ejecutado; aceptación, entrega y recepción pendientes por sesiones/acceso**. No se modificó la implementación, `main`, producción ni las fichas.
+## Resultado observado el 10/10/2026
+
+| Evidencia | Resultado |
+|---|---|
+| Inicio del único intento | `2026-10-10T10:51:49.379Z` · 07:51:49 de Chile |
+| Respuesta visible | A las `10:51:51.170Z`: «Solicitud enviada correctamente. Sollahms se pondrá en contacto contigo para conversar sobre tu financiamiento.» |
+| Timestamp de simulación en el correo | `2026-10-10T10:51:49.867Z` |
+| Solicitud recibida por el servidor | `2026-10-10T10:51:50.891Z` |
+| Resend `POST /emails` | **HTTP 200** observado directamente en el panel de logs |
+| ID devuelto en Response body | `01a12570-c935-7dda-a216-5c697b748382` |
+| Log de proveedor | `ec6855bb-9a03-4576-979b-20c7acb9d9c3` |
+| Eventos del mismo mensaje | **Sent y Delivered**, Oct 10, 07:51 en el panel |
+| Contenido en Preview y Plain Text | Identificador exacto, teléfono ficticio, remitente/destinatario/Reply-To y escenario correctos; resumen recalculado con 22,23 UF y 6.669,99 UF |
+| UF del 9 de octubre | Se omiten pesos tanto en página como en correo y se explica que requiere actualización; no se cambió el catálogo para esta prueba |
+| Recepción efectiva | **Pendiente** de mensaje observado o confirmación específica del titular del buzón de contacto |
+
+Se observó la confirmación de aplicación, pero no se capturó directamente la respuesta HTTP de `/api/contact`; la aceptación HTTP 200 del proveedor sí se comprobó en Resend. No se consultaron Request headers. El ID Resend es un identificador de diagnóstico, no una credencial ni un Message-ID SMTP.
+
+Capturas: [formulario preparado](qa/correo-remoto-preparado.jpg), [confirmación de aplicación](qa/correo-remoto-resultado.jpg), [metadata del correo](qa/resend-correo-prueba.jpg), [aceptación HTTP 200](qa/resend-aceptacion-prueba.jpg) y [Sent/Delivered con identificador en el contenido](qa/resend-entrega-prueba.jpg).
+
+Registro actual: **aceptación y entrega al servidor verificadas; llegada a la bandeja aún no verificada**. No se modificó la implementación, `main`, producción ni las fichas.
 
 ## Documentación primaria
 
