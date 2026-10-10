@@ -6,7 +6,7 @@ Fecha de QA: 10 de octubre de 2026. Rama independiente: `codex/integracion-finan
 
 [Preview protegida del catálogo](https://project-wrapp-git-codex-integr-460693-lsandoval2-8260s-projects.vercel.app/proyectos.html). [Comparador integrado](https://project-wrapp-git-codex-integr-460693-lsandoval2-8260s-projects.vercel.app/comparador-hipotecario.html).
 
-La primera Preview auditada fue `dpl_AmM8myg6tnH3rv2qQXxmY8trV8is`, commit `9b3d6e2a006890a8a63f6e7f6d0aa98e5f29b11c`, URL inmutable `https://project-wrapp-jeg9t29ud-lsandoval2-8260s-projects.vercel.app`. El cierre añade evidencia, correcciones documentales, compatibilidad del Host del servidor QA local y elimina los valores de demostración del HTML inicial del simulador: no aparece un precio de ejemplo mientras se verifica un proyecto. El último SHA y su despliegue READY se contrastan con Vercel en la entrega final; la URL de rama conduce a esa revisión.
+La primera Preview auditada fue `dpl_AmM8myg6tnH3rv2qQXxmY8trV8is`, commit `9b3d6e2a006890a8a63f6e7f6d0aa98e5f29b11c`, URL inmutable `https://project-wrapp-jeg9t29ud-lsandoval2-8260s-projects.vercel.app`. El cierre añade evidencia, correcciones documentales, compatibilidad del Host del servidor QA local y elimina los valores de demostración del HTML inicial del simulador: no aparece un precio de ejemplo mientras se verifica un proyecto. La revisión intermedia `54f932f` se comprobó READY, con 148 fichas, Mapocho sin precio y la protección vigente. En esa comprobación final se detectó además que la tarjeta fija destacada podía dejar el tercer botón fuera de una pantalla de escritorio baja; se corrige con altura máxima y desplazamiento interno sólo desde 1024 px. El último SHA y su despliegue READY se contrastan con Vercel en la entrega final; la URL de rama conduce a esa revisión.
 
 La protección existente de Vercel sigue habilitada (`all_except_custom_domains`). No se crean accesos de bypass ni se cambian permisos. Las páginas Preview tienen `noindex, nofollow`; los formularios avisan y el backend rechaza envíos reales en Preview. El build publica 155 HTML, assets, sitemap y sólo los JSON `proyectos` e `hipotecario`. Fuentes de investigación, tests, documentos, lib, API y secretos no se copian al directorio público.
 
@@ -43,6 +43,8 @@ La navegación real en la Preview auditó **las 148 fichas a 390 píxeles**, no 
 
 Se verificaron catálogo y comparador a **320, 375, 768 y 1280 píxeles**, además del catálogo financiero y fichas a 390. Una, dos y tres columnas según tamaño, sin desbordamiento; campos con altura táctil de 48 px. [Registro responsive](qa/integracion-responsive.json), [catálogo móvil](qa/integracion-catalogo-movil.png), [buscador escritorio](qa/integracion-buscador-escritorio.png), [comparador tablet](qa/integracion-comparador-tablet.png). Se mantuvieron verde `#003229`, dorado `#E9C176`, navegación de tres enlaces/agenda y cabecera ASSET PORTAFOLIO/Catálogo inmobiliario.
 
+La comprobación final a **1280 × 720** encontró y corrigió la altura de las tarjetas fijas de las cuatro destacadas. Ahora su contenido admite desplazamiento dentro de la pantalla y el acceso por teclado desplaza el control enfocado. Las cuatro acciones de simulación navegan correctamente y cargan los precios oficiales: Distrito Centro 2.715, Suecia 8.247, INN Puerto Chico 9.816 y Plaza Las Condes 8.858 UF; B.COME estándar 2.490 UF también pasa. El botón enfocado de Distrito termina a 656 px y la tarjeta a 704 px dentro de una ventana de 720 px. [Prueba por ficha](qa/integracion-tarjetas-escritorio.json), [captura de la tarjeta](qa/integracion-tarjeta-destacada-escritorio.png). La regla CSS nueva no aplica debajo de 1024 px, preservando el comportamiento móvil ya comprobado.
+
 Flujos observados:
 
 | Flujo | Resultado |
@@ -75,7 +77,7 @@ En la interacción automatizada móvil de 375 píxeles, evaluar y renderizar tom
 
 ## Correcciones y límites pendientes
 
-Se corrigieron la presentación exacta de la UF, respuestas tardías tras limpiar/editar búsqueda, eliminación de escenarios anteriores, clasificación ante UF caducada, procedencia al editar precio, selección bancaria fuera de escenario/geografía/activo, integración/recálculo/consentimiento de contacto y carga inicial sin precio de ejemplo. Las suites y validadores se repitieron con resultado aprobado.
+Se corrigieron la presentación exacta de la UF, respuestas tardías tras limpiar/editar búsqueda, eliminación de escenarios anteriores, clasificación ante UF caducada, procedencia al editar precio, selección bancaria fuera de escenario/geografía/activo, integración/recálculo/consentimiento de contacto, carga inicial sin precio de ejemplo y acceso al tercer botón en tarjetas destacadas de escritorio bajo. Las suites y validadores se repitieron con resultado aprobado.
 
 Límites para revisión:
 

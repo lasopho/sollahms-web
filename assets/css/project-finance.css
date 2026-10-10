@@ -1,4 +1,14 @@
 .mortgage-project-cta { display:block; min-height:48px; padding:1rem; border:1px solid #003229; color:#003229; text-align:center; font-family:Manrope,sans-serif; font-weight:700; line-height:1.5; transition:background .2s ease; }
 .mortgage-project-cta:hover { background:#eef4f1; }
 .mortgage-project-cta:focus-visible { outline:3px solid #E9C176; outline-offset:3px; }
+@media(min-width:1024px){
+  aside > .sticky {
+    max-height:calc(100vh - 9rem);
+    max-height:calc(100dvh - 9rem);
+    overflow-y:auto;
+    overscroll-behavior-y:contain;
+    scrollbar-width:thin;
+    scrollbar-color:#E9C176 transparent;
+  }
+}
 @media(prefers-reduced-motion:reduce){.mortgage-project-cta{transition:none;}}
