@@ -116,6 +116,7 @@ def augment_record(page, record, namespace, builder):
     new += '<h3>Terminaciones y características</h3>' + documentary_list(record['finishes'] + record['features']) + '</div>'
     page = page[:equipment.start()] + equipment[1] + public(old) + preview(new) + equipment[3] + page[equipment.end():]
     sources = '<div class="aj-source"><h3>Fuente documental de modelos e imágenes</h3>'
+    sources += '<p class="aj-attribution">Material promocional proporcionado a Sollahms mediante Yapo/IRIS.</p>'
     sources += f'<p>{esc(record["document"]["fileName"])} · {esc(builder)}. Revisado el <time datetime="2026-10-10">2026-10-10</time>. Las superficies, orientaciones y planos se contrastaron con sus páginas originales; no se utilizan como oferta comercial vigente.</p>'
     sources += '<details><summary>Observaciones del brochure y datos por confirmar</summary><ul>' + ''.join(f'<li>{esc(note)}</li>' for note in record['warnings']) + '</ul></details></div>'
     page = page.replace('</section>\n        <a class="back-link"', preview(sources) + '</section>\n        <a class="back-link"', 1)

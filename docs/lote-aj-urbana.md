@@ -1,5 +1,7 @@
 # AJ Urbana — integración documental y revisión protegida
 
+Actualización contractual del 10/10/2026: la procedencia Yapo/IRIS y la ausencia de licencia individual adicional para material cubierto sustituyen el criterio anterior. Consultar el estado y los controles actuales en [Preparación de publicación Yapo/IRIS](brochures-yapo-iris-publicacion.md).
+
 Fecha: 2026-10-10. Rama: `codex/integracion-financiera-sollahms`. Baseline: `045fe182ef5d2ad2206df303ba74330aa747050d`.
 
 [Preview protegida del catálogo](https://project-wrapp-git-codex-integr-460693-lsandoval2-8260s-projects.vercel.app/proyectos.html). El commit de este informe y su despliegue correspondiente se identifican en el historial de la rama.

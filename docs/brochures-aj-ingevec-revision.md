@@ -1,5 +1,7 @@
 # Sollahms — revisión completa de brochures AJ Urbana e Ingevec
 
+Actualización contractual del 10/10/2026: la procedencia Yapo/IRIS y la ausencia de licencia individual adicional para material cubierto sustituyen el criterio anterior. Consultar el estado y los controles actuales en [Preparación de publicación Yapo/IRIS](brochures-yapo-iris-publicacion.md).
+
 Rama exclusiva: `codex/integracion-financiera-sollahms`. Base contrastada: `e903208160f62cc552e9efa4371a322ef75477b8`. Revisión: 10 de octubre de 2026.
 
 El catálogo conserva **148 proyectos**. Se auditaron los cinco proyectos AJ y se complementaron tres fichas Ingevec. Los Alerces y Valle Los Ingleses III están preparados fuera de Git y de todos los despliegues, pendientes de autorización y de comercialización vigente confirmada.

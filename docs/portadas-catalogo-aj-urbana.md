@@ -1,5 +1,7 @@
 # Portadas del catálogo AJ Urbana — revisión protegida
 
+Actualización contractual del 10/10/2026: la procedencia Yapo/IRIS y la ausencia de licencia individual adicional para material cubierto sustituyen el criterio anterior. Consultar el estado y los controles actuales en [Preparación de publicación Yapo/IRIS](brochures-yapo-iris-publicacion.md).
+
 Fecha: 2026-10-10. Rama: `codex/integracion-financiera-sollahms`.
 
 El catálogo utiliza `imagenPrincipal` e `imagenAlt` del JSON público. Las imágenes de las galerías AJ no estaban asignadas como portadas del catálogo. El empaquetador ahora asigna las cinco portadas únicamente en `dist/data/proyectos.json` cuando `VERCEL_ENV=preview`; el catálogo fuente conserva sus bytes y todos los campos comerciales y financieros originales.

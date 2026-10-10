@@ -260,8 +260,11 @@ test('all 78 plans have readable local images, hashes, source links and unique m
 
 test('33 candidates are reviewed, selected renders have provenance and no existing official photograph is deleted', () => {
   assert.equal(review.projects.reduce((sum, record) => sum + record.imageReview.length, 0), 33);
-  assert.deepEqual(review.publicationRights, { protectedPreview: 'authorized_by_user',
-    publicRedistribution: 'pending_explicit_license', productionPolicy: 'excluded_until_verified' });
+  assert.equal(review.publicationRights.sourceChannel, 'Yapo/IRIS');
+  assert.equal(review.publicationRights.protectedPreview, 'authorized_by_user');
+  assert.equal(review.publicationRights.individualAssetLicense, 'not_required_when_contract_covered');
+  assert.equal(review.publicationRights.contractScope.status, 'pending_contract_scope_verification');
+  assert.equal(review.publicationRights.productionPolicy, 'requires_verified_contract_scope');
   const referenced = new Set();
   const chosenHashes = new Set();
   for (const record of review.projects) {
@@ -365,6 +368,7 @@ test('real packaging script publishes AJ review only in Preview and removes its 
       mkdirSync(join(fixtureRoot, folder), { recursive: true });
     }
     copyFileSync(resolve(ROOT, 'scripts/package-vercel.mjs'), join(fixtureRoot, 'scripts/package-vercel.mjs'));
+    copyFileSync(resolve(ROOT, 'scripts/brochure-publication.mjs'), join(fixtureRoot, 'scripts/brochure-publication.mjs'));
     const protectedAsset = join(fixtureRoot, 'assets/js/unchanged.js');
     writeFileSync(protectedAsset, '/* historical asset */');
     writeFileSync(join(fixtureRoot, CSS), '/* review stylesheet */');
@@ -443,7 +447,7 @@ test('real packaging script publishes AJ review only in Preview and removes its 
       assert.doesNotMatch(html, /<!--AJ_(?:PUBLIC|PREVIEW)_(?:START|END)-->/);
     }
     assert.ok(existsSync(join(fixtureRoot, 'dist', CSS)));
-    assert.ok(existsSync(join(fixtureRoot, 'dist', ASSETS.slice(1), 'review.jpg')));
+    assert.equal(existsSync(join(fixtureRoot, 'dist', ASSETS.slice(1), 'review.jpg')), false, 'Unlisted brochure files are never copied');
     assert.equal(existsSync(join(fixtureRoot, 'dist/data/brochures-aj-urbana.json')), false, 'Review ledger is not public JSON');
     execFileSync(process.execPath, [script], { cwd: fixtureRoot, env: {...env, VERCEL_ENV: 'production'}, stdio: 'pipe' });
     for (const slug of SLUGS) {
@@ -464,7 +468,7 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     for (const slug of SLUGS) assert.equal(readFileSync(join(fixtureRoot, 'dist', slug + '.html'), 'utf8'), old(slug + '.html').toString());
     assert.ok(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')).equals(current('data/proyectos.json')),
       'An unspecified environment must retain the original public catalogue bytes');
-    assert.equal(existsSync(join(fixtureRoot, 'dist', ASSETS.slice(1))), false, 'An unspecified environment must also exclude unlicensed review assets');
+    assert.equal(existsSync(join(fixtureRoot, 'dist', ASSETS.slice(1))), false, 'An unspecified environment must also exclude assets whose contractual scope is pending');
     assert.throws(() => execFileSync(process.execPath, [script], { cwd: fixtureRoot,
       env: { ...env, VERCEL_ENV: 'preview', VERCEL_GIT_COMMIT_REF: 'codex/unapproved-test-branch' }, stdio: 'pipe' }),
     /Unexpected branch for this review build/, 'Preview builds must reject an unrelated branch');

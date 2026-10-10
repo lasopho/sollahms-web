@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync,
-  rmSync, copyFileSync, cpSync, existsSync } from 'node:fs';
+  rmSync, copyFileSync, cpSync, existsSync, symlinkSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -170,7 +170,18 @@ test('148 source objects, historical financial/research ledgers and all 140 unre
   assert.equal(new Set(catalogue.map(project => project.slug)).size, 148);
   for (const file of ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
     'data/fuentes-imagenes.json', 'data/hipotecario.json', 'data/catalogo-original-fichas.json',
-    'data/brochures-aj-urbana.json', 'lib/project-context.mjs', 'sitemap.xml', 'robots.txt', 'vercel.json']) unchanged(file);
+    'lib/project-context.mjs', 'sitemap.xml', 'robots.txt', 'vercel.json']) unchanged(file);
+  const manifestWithoutRights = value => {
+    const document = structuredClone(value);
+    delete document.publicationRights;
+    for (const record of document.projects) {
+      delete record.document.sourceChannel;
+      for (const image of record.imageReview) delete image.publicationRights;
+    }
+    return document;
+  };
+  assert.deepEqual(manifestWithoutRights(ajReview), manifestWithoutRights(JSON.parse(old('data/brochures-aj-urbana.json'))),
+    'AJ models, geometry, descriptions and original media hashes remain exact; only provenance/rights change');
   let protectedPages = 0;
   for (const project of catalogue) {
     if (REVIEW_PAGES.has(project.slug)) continue;
@@ -207,8 +218,9 @@ test('three original public fallbacks and all JSON-LD stay exact; five AJ change
   for (const slug of AJ_SLUGS) {
     const prior = old(slug + '.html').toString();
     const expected = prior.replace(/<!--AJ_PREVIEW_START-->[\s\S]*?<!--AJ_PREVIEW_END-->/g,
-      block => block.replaceAll('Modelos y planos', 'Modelos y distribuciones'));
-    assert.ok(htmlFor(slug) === expected, slug + ': only Preview section/navigation wording may change');
+      block => block.replaceAll('Modelos y planos', 'Modelos y distribuciones')
+        .replace('<h3>Fuente documental de modelos e imágenes</h3>', '<h3>Fuente documental de modelos e imágenes</h3><p class="aj-attribution">Material promocional proporcionado a Sollahms mediante Yapo/IRIS.</p>'));
+    assert.ok(htmlFor(slug) === expected, slug + ': only approved section/navigation wording and Yapo/IRIS attribution may change');
   }
   assert.match(htmlFor('centenario-1'), /Centenario 1151/);
 });
@@ -216,8 +228,11 @@ test('three original public fallbacks and all JSON-LD stay exact; five AJ change
 test('three supplied sources and fourteen unique models retain document/page evidence and unknown values', () => {
   assert.equal(review.reviewDate, DATE);
   assert.ok(review.baseline === BASELINE || review.baseline === BASELINE.slice(0, 7));
-  assert.deepEqual(review.publicationRights, { protectedPreview: 'authorized_by_user',
-    publicRedistribution: 'pending_explicit_license', productionPolicy: 'excluded_until_verified' });
+  assert.equal(review.publicationRights.sourceChannel, 'Yapo/IRIS');
+  assert.equal(review.publicationRights.protectedPreview, 'authorized_by_user');
+  assert.equal(review.publicationRights.individualAssetLicense, 'not_required_when_contract_covered');
+  assert.equal(review.publicationRights.contractScope.status, 'pending_contract_scope_verification');
+  assert.equal(review.publicationRights.productionPolicy, 'requires_verified_contract_scope');
   assert.deepEqual(review.projects.map(record => record.slug), SLUGS);
   assert.equal(review.projects.reduce((count, record) => count + record.models.length, 0), 14);
   const ids = new Set();
@@ -383,6 +398,7 @@ function createPackagingFixture() {
   const fixture = mkdtempSync(join(tmpdir(), 'sollahms-ingevec-build-'));
   for (const folder of ['scripts', 'data', 'assets/css', 'assets/js']) mkdirSync(join(fixture, folder), { recursive: true });
   copyFileSync(resolve(ROOT, 'scripts/package-vercel.mjs'), join(fixture, 'scripts/package-vercel.mjs'));
+  copyFileSync(resolve(ROOT, 'scripts/brochure-publication.mjs'), join(fixture, 'scripts/brochure-publication.mjs'));
   for (const path of ['data/proyectos.json', 'data/hipotecario.json', MANIFEST, 'data/brochures-aj-urbana.json',
     CSS, 'sitemap.xml', 'robots.txt']) copyFileSync(resolve(ROOT, path), join(fixture, path));
   for (const folder of [ASSETS, AJ_ASSETS]) {
@@ -399,6 +415,77 @@ function packageFixture(fixture, environment, extraEnv = {}) {
   if (environment === undefined) delete env.VERCEL_ENV; else env.VERCEL_ENV = environment;
   return execFileSync(process.execPath, [join(fixture, 'scripts/package-vercel.mjs')], { cwd: fixture, env, stdio: 'pipe' });
 }
+
+function verifySyntheticContract(fixture) {
+  // Test-only evidence: this function never changes the repository manifests.
+  for (const name of ['brochures-aj-urbana.json', 'brochures-ingevec.json']) {
+    const path = join(fixture, 'data', name);
+    const manifest = JSON.parse(readFileSync(path));
+    Object.assign(manifest.publicationRights.contractScope, {
+      status: 'verified_contract', evidenceSha256: 'a'.repeat(64), verifiedOn: DATE,
+      permittedOrigins: ['https://sollahms.cl'], permittedUses: ['web_promotion'],
+      coveredDocuments: manifest.projects.map(record => record.document.sha256),
+    });
+    writeFileSync(path, JSON.stringify(manifest));
+  }
+}
+
+test('a verified contract yields identical 148 fichas, covers and 140 media in Preview and an offline public web build', () => {
+  const fixture = createPackagingFixture();
+  try {
+    assert.throws(() => packageFixture(fixture, 'preview', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' }), /requires verified/);
+    verifySyntheticContract(fixture);
+    packageFixture(fixture, 'preview', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' });
+    const pages = new Map(catalogue.map(project => [project.slug,
+      readFileSync(join(fixture, 'dist', project.slug + '.html'), 'utf8')
+        .replace('<meta name="robots" content="noindex, nofollow">\n', '')]));
+    const previewCatalogue = readFileSync(join(fixture, 'dist/data/proyectos.json'));
+    const previewInventory = readFileSync(join(fixture, '.vercel/brochure-build-inventory.json'));
+    assert.equal(JSON.parse(previewInventory).media.length, 140);
+    assert.equal(JSON.parse(previewInventory).contractualCoverageVerified, true);
+    // This is a local fixture build, never a deployment or Production action.
+    packageFixture(fixture, 'production', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' });
+    assert.ok(readFileSync(join(fixture, 'dist/data/proyectos.json')).equals(previewCatalogue));
+    assert.ok(readFileSync(join(fixture, '.vercel/brochure-build-inventory.json')).equals(previewInventory));
+    for (const [slug, html] of pages) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), html, slug);
+    for (const asset of JSON.parse(previewInventory).media) {
+      assert.equal(sha256(readFileSync(join(fixture, 'dist', asset.path.slice(1)))), asset.sha256);
+    }
+    assert.equal(existsSync(join(fixture, 'dist/data/brochures-ingevec.json')), false);
+    assert.equal(existsSync(join(fixture, 'dist/data/brochures-aj-urbana.json')), false);
+  } finally { rmSync(fixture, { recursive: true, force: true }); }
+});
+
+test('covered media missing after a merge blocks the build instead of silently dropping galleries, plans and covers', () => {
+  const fixture = createPackagingFixture();
+  try {
+    verifySyntheticContract(fixture);
+    rmSync(join(fixture, ASSETS.slice(1)), { recursive: true });
+    for (const environment of ['preview', 'production', undefined]) {
+      assert.throws(() => packageFixture(fixture, environment), /reproducible source package required/);
+    }
+    assert.equal(existsSync(join(fixture, 'dist')), false);
+  } finally { rmSync(fixture, { recursive: true, force: true }); }
+});
+
+test('contract-covered output copies only selected derivatives and rejects symbolic selected media', () => {
+  const fixture = createPackagingFixture();
+  try {
+    verifySyntheticContract(fixture);
+    const folder = join(fixture, ASSETS.slice(1), SLUGS[0]);
+    for (const name of ['unselected.webp', 'contract.pdf', 'internal.xlsx']) writeFileSync(join(folder, name), 'synthetic unapproved content');
+    packageFixture(fixture, 'production');
+    for (const name of ['unselected.webp', 'contract.pdf', 'internal.xlsx']) {
+      assert.equal(existsSync(join(fixture, 'dist', ASSETS.slice(1), SLUGS[0], name)), false, name);
+    }
+    const selected = join(fixture, review.projects[0].catalogueCover.localPath.slice(1));
+    const target = join(fixture, 'synthetic-outside-cover.webp');
+    copyFileSync(selected, target);
+    rmSync(selected);
+    symlinkSync(target, selected);
+    assert.throws(() => packageFixture(fixture, 'preview'), /regular local file|Symbolic links/);
+  } finally { rmSync(fixture, { recursive: true, force: true }); }
+});
 
 test('real Preview packaging changes only eight authorized card covers, publishes fourteen Ingevec models, and hides all private manifests/documents', () => {
   const fixture = createPackagingFixture();

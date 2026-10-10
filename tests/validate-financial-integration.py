@@ -237,7 +237,19 @@ def main():
     data_changes = git('diff', '--name-only', fichas, '--', 'data').decode().splitlines()
     allowed_data_changes = {'data/hipotecario.json'}
     if args.brochure_review:
-        allowed_data_changes.add('data/brochures-ingevec.json')
+        allowed_data_changes.update({'data/brochures-ingevec.json', 'data/brochures-aj-urbana.json'})
+        # The contractual attestation may change only rights/provenance fields.
+        def without_contract_metadata(value):
+            value = json.loads(json.dumps(value))
+            value.pop('publicationRights', None)
+            for record in value['projects']:
+                record['document'].pop('sourceChannel', None)
+                for image in record['imageReview']:
+                    image.pop('publicationRights', None)
+            return value
+        check(without_contract_metadata(json.loads((ROOT / 'data/brochures-aj-urbana.json').read_bytes())) ==
+              without_contract_metadata(json.loads(baseline('data/brochures-aj-urbana.json', fichas))),
+              'AJ brochure source changed beyond contractual rights/provenance')
     check(all(path in allowed_data_changes for path in data_changes), 'An unapproved data source changed')
     catalog = (ROOT / 'proyectos.html').read_text()
     check('>ASSET PORTAFOLIO<' in catalog and '>Catálogo inmobiliario<' in catalog, 'Approved catalogue titles missing')

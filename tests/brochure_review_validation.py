@@ -34,9 +34,11 @@ def verified_public_page(current, previous, slug):
         assert '<!--INGEVEC_PUBLIC_START-->' in current
     elif slug in AJ:
         expected = re.sub(r'<!--AJ_PREVIEW_START-->.*?<!--AJ_PREVIEW_END-->',
-                          lambda match: match[0].replace('Modelos y planos', 'Modelos y distribuciones'),
+                          lambda match: match[0].replace('Modelos y planos', 'Modelos y distribuciones').replace(
+                              '<h3>Fuente documental de modelos e imágenes</h3>',
+                              '<h3>Fuente documental de modelos e imágenes</h3><p class="aj-attribution">Material promocional proporcionado a Sollahms mediante Yapo/IRIS.</p>'),
                           previous, flags=re.S)
-        assert current == expected, f'{slug}: change beyond the exact AJ Preview title'
+        assert current == expected, f'{slug}: change beyond exact AJ title and Yapo/IRIS attribution'
     else:
         assert current == previous, f'{slug}: unrelated page changed'
     return public_page(current, slug), public_page(previous, slug)
