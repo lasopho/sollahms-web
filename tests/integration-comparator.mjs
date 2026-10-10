@@ -89,7 +89,7 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   const elements = Object.fromEntries(ids.map(id => [id, new Element(id)]));
   elements['retry-data'] = new Element('retry-data');
-  Object.entries({ property: '4000', down: '20', years: '25', 'custom-years': '10', rate: '', convention: 'effective', location: 'unknown', sort: 'dividend', nombre: 'Cliente Prueba', correo: 'qa@comparator.test.invalid', telefono: '+56900000000', comentario: 'Prueba sin envío.', website: '' }).forEach(([id, value]) => elements[id].value = value);
+  Object.entries({ property: '', down: '20', years: '25', 'custom-years': '10', rate: '', convention: 'effective', location: 'unknown', sort: 'dividend', nombre: 'Cliente Prueba', correo: 'qa@comparator.test.invalid', telefono: '+56900000000', comentario: 'Prueba sin envío.', website: '' }).forEach(([id, value]) => elements[id].value = value);
   elements['lead-section'].hidden = true;
   const agenda = [new Element('agenda')];
   const presets = ['10', '15', '20', 'custom'].map(down => { const element = new Element('preset'); element.dataset = { down }; return element; });

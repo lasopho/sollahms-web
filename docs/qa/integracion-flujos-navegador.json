@@ -1,0 +1,78 @@
+{
+  "reviewedApplicationCommit": "9b3d6e2a006890a8a63f6e7f6d0aa98e5f29b11c",
+  "catalogue": {
+    "total": 148,
+    "knownPrices": 115,
+    "pendingPrices": 33,
+    "ascending": true,
+    "descending": true,
+    "maxUf3000": 71,
+    "commercialMaxUf3000": 3,
+    "resetCount": 148,
+    "financialRegionNuble": 1
+  },
+  "capacityCases": [
+    {
+      "expected": "A",
+      "result": "A. Potencialmente compatible"
+    },
+    {
+      "expected": "B",
+      "result": "B. Requiere mayor ahorro"
+    },
+    {
+      "expected": "C",
+      "result": "C. Requiere complementar renta o modificar financiamiento"
+    },
+    {
+      "expected": "D",
+      "result": "D. Fuera del presupuesto estimado"
+    }
+  ],
+  "manualFixture": {
+    "propertyUf": 4000,
+    "downPaymentPercent": 20,
+    "years": 20,
+    "annualRatePercent": 4.5,
+    "convention": "effective",
+    "displayDividendUf": "20,09",
+    "displayDividendClp": "$826.397"
+  },
+  "cmf": {
+    "exactScenarioReferences": 3,
+    "changingYearsTo30ClearsRate": true,
+    "changingYearsTo30References": 0
+  },
+  "pendingProject": {
+    "slug": "mapocho-3521-edificio-a",
+    "propertyField": "",
+    "rateField": "",
+    "valueOrigin": "visitor",
+    "keptVisible": true
+  },
+  "externalSamples": {
+    "matterport": {
+      "slug": "independencia-4745",
+      "loaded": true,
+      "dollhouseControl": true
+    },
+    "rito3d": {
+      "slug": "bcome",
+      "model": "depto-305",
+      "visiblePanorama": true
+    },
+    "maps": {
+      "slug": "independencia-4745",
+      "loaded": true,
+      "queryUsesVerifiedAddress": true
+    }
+  },
+  "localForms": {
+    "consentRequired": true,
+    "mortgageContactSuccess": true,
+    "agendaAvailabilitySuccess": true,
+    "agendaBookingSuccess": true,
+    "providers": "simulated only"
+  },
+  "renderAutomationWallTimeMs": 446
+}

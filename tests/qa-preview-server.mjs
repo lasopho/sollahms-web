@@ -45,7 +45,9 @@ function reply(res, status, text, type = 'text/plain; charset=utf-8', extra = {}
   res.end(text);
 }
 const server = createServer(async (req, res) => {
-  const url = new URL(req.url, `http://127.0.0.1:${port}`);
+  const requestedHost = req.headers.host;
+  if (![ `127.0.0.1:${port}`, `localhost:${port}` ].includes(requestedHost)) return reply(res, 400, 'Host local no permitido.');
+  const url = new URL(req.url, `http://${requestedHost}`);
   counters.requests += 1;
   try {
     if (url.pathname === '/__qa/status') return reply(res, 200, JSON.stringify({ counters, journal }), types['.json']);
