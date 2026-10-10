@@ -17,6 +17,13 @@ await mkdir(join(output, 'data'), { recursive: true });
 const pages = (await readdir(root)).filter(name => name.endsWith('.html'));
 for (const name of pages) {
   let html = await readFile(join(root, name), 'utf8');
+  // The user authorized a protected review of supplied brochures. An express
+  // public redistribution licence is still pending. Fail closed in every
+  // non-preview build, including a future production build of this branch.
+  const remove = preview ? 'PUBLIC' : 'PREVIEW';
+  const keep = preview ? 'PREVIEW' : 'PUBLIC';
+  html = html.replace(new RegExp(`<!--AJ_${remove}_START-->[\\s\\S]*?<!--AJ_${remove}_END-->`, 'g'), '');
+  html = html.replace(new RegExp(`<!--AJ_${keep}_(?:START|END)-->`, 'g'), '');
   if (preview) {
     html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
     if (name === 'agenda-asesoria.html' || name === 'contacto.html' || name === 'comparador-hipotecario.html') {
@@ -26,7 +33,8 @@ for (const name of pages) {
   }
   await writeFile(join(output, name), html);
 }
-await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true });
+await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
+  filter: (source) => preview || (!source.includes('/aj-urbana-preview') && !source.endsWith('/aj-brochure-preview.css')) });
 await cp(join(root, 'data/proyectos.json'), join(output, 'data/proyectos.json'));
 await cp(join(root, 'data/hipotecario.json'), join(output, 'data/hipotecario.json'));
 await cp(join(root, 'sitemap.xml'), join(output, 'sitemap.xml'));
