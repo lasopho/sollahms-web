@@ -1,3 +1,6 @@
+import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
+import { projects } from '../lib/project-context.mjs';
+
 const MAX_BODY_BYTES = 32_768;
 const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
@@ -56,25 +59,31 @@ async function readJson(request) {
 }
 
 function validate(body) {
-  if (!body || typeof body !== 'object' || Array.isArray(body)) return null;
-
-  const fields = ['nombre', 'correo', 'telefono', 'asunto', 'mensaje', 'website'];
-  if (fields.some(field => body[field] !== undefined && typeof body[field] !== 'string')) return null;
-
+  const invalid = { error: 'Revisa los datos del formulario.' };
+  if (!body || typeof body !== 'object' || Array.isArray(body)) return invalid;
+  const fields = ['nombre', 'correo', 'telefono', 'rut', 'mensaje', 'website', 'proyecto'];
+  if (Object.keys(body).some(field => !fields.includes(field))) return invalid;
+  if (fields.some(field => body[field] !== undefined && typeof body[field] !== 'string')) return invalid;
   const nombre = body.nombre?.trim() || '';
   const correo = body.correo?.trim() || '';
   const telefono = body.telefono?.trim() || '';
-  const asunto = body.asunto?.trim() || '';
   const mensaje = body.mensaje?.trim() || '';
-
-  if (!nombre || nombre.length > 100 || /[\u0000-\u001f\u007f]/.test(nombre)) return null;
+  if (normalizeRut(body.rut ?? '') === null) return { code: 'invalid_rut', error: RUT_ERROR };
+  if (!nombre || nombre.length > 100 || /[\u0000-\u001f\u007f]/.test(nombre)) return invalid;
   const emailPattern = /^[^\s@<>(),;:"\\[\].]+(?:\.[^\s@<>(),;:"\\[\].]+)*@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/i;
-  if (!correo || correo.length > 254 || /[\u0000-\u001f\u007f]/.test(correo) || !emailPattern.test(correo)) return null;
-  if (telefono.length > 30 || /[\u0000-\u001f\u007f]/.test(telefono)) return null;
-  if (asunto.length > 120 || /[\u0000-\u001f\u007f]/.test(asunto)) return null;
-  if (mensaje.length < 10 || mensaje.length > 5000 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(mensaje)) return null;
-
-  return { nombre, correo, telefono, asunto, mensaje };
+  if (!correo || correo.length > 254 || /[\u0000-\u001f\u007f]/.test(correo) || !emailPattern.test(correo)) return invalid;
+  if (telefono.length > 30 || /[\u0000-\u001f\u007f]/.test(telefono)) return invalid;
+  if (mensaje.length < 10 || mensaje.length > 5000 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(mensaje)) return invalid;
+  if ((body.website || '').length > 200) return invalid;
+  const hasProject = Object.hasOwn(body, 'proyecto');
+  if (hasProject && !Object.hasOwn(projects, body.proyecto)) {
+    return { code: 'invalid_project', error: 'Revisa el proyecto de la consulta.' };
+  }
+  const proyecto = hasProject ? body.proyecto : '';
+  const nombreProyecto = hasProject ? projects[proyecto].name : '';
+  const asunto = nombreProyecto ? 'Consulta sobre ' + nombreProyecto : 'Consulta desde Sollahms';
+  // RUT is validated above and is deliberately excluded from the email provider.
+  return { fields: { nombre, correo, telefono, asunto, mensaje, proyecto, nombreProyecto } };
 }
 
 export default {
@@ -100,8 +109,9 @@ export default {
       return json({ ok: true }, 200);
     }
 
-    const fields = validate(body);
-    if (!fields) return json({ error: 'Revisa los datos del formulario.' }, 400);
+    const validated = validate(body);
+    if (validated.error) return json(validated, 400);
+    const fields = validated.fields;
 
     if (process.env.VERCEL_ENV === 'preview') {
       return json({ ok: false, code: 'preview_read_only', error: 'La vista previa no envía mensajes reales. Puedes revisar el formulario sin contactar al equipo.' }, 503);
@@ -110,19 +120,22 @@ export default {
     const key = process.env.RESEND_API_KEY;
     if (!key) return json({ error: 'No pudimos enviar el mensaje. Inténtalo más tarde.' }, 503);
 
-    const { nombre, correo, telefono, asunto, mensaje } = fields;
+    const { nombre, correo, telefono, asunto, mensaje, proyecto, nombreProyecto } = fields;
     const displayTelefono = telefono || 'No informado';
-    const displayAsunto = asunto || 'Sin asunto';
+    const displayAsunto = asunto;
+    const projectHtml = proyecto ? `<p><strong>Proyecto:</strong> ${escapeHtml(nombreProyecto)}</p><p><strong>Identificador:</strong> ${escapeHtml(proyecto)}</p>` : '';
+    const projectText = proyecto ? `Proyecto: ${nombreProyecto}\nIdentificador: ${proyecto}\n` : '';
     const html = `<!doctype html><html lang="es"><body>
       <h1>Nueva consulta desde Sollahms Web</h1>
       <p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p>
       <p><strong>Correo:</strong> ${escapeHtml(correo)}</p>
       <p><strong>Teléfono:</strong> ${escapeHtml(displayTelefono)}</p>
+      ${projectHtml}
       <p><strong>Asunto:</strong> ${escapeHtml(displayAsunto)}</p>
       <p><strong>Mensaje:</strong></p>
       <p style="white-space: pre-wrap">${escapeHtml(mensaje)}</p>
     </body></html>`;
-    const text = `Nueva consulta desde Sollahms Web\n\nNombre: ${nombre}\nCorreo: ${correo}\nTeléfono: ${displayTelefono}\nAsunto: ${displayAsunto}\nMensaje:\n${mensaje}`;
+    const text = `Nueva consulta desde Sollahms Web\n\nNombre: ${nombre}\nCorreo: ${correo}\nTeléfono: ${displayTelefono}\n${projectText}Asunto: ${displayAsunto}\nMensaje:\n${mensaje}`;
 
     try {
       const response = await fetch('https://api.resend.com/emails', {
@@ -135,7 +148,7 @@ export default {
           from: 'Sollahms Web <formularios@forms.sollahms.cl>',
           to: ['contacto@sollahms.cl'],
           reply_to: correo,
-          subject: `Contacto Sollahms: ${safeSubject(displayAsunto)}`,
+          subject: safeSubject(displayAsunto),
           html,
           text,
         }),

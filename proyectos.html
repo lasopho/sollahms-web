@@ -50,7 +50,20 @@
         .catalog-control { width: 100%; min-height: 44px; border: 1px solid #bcc9c3; border-radius: .5rem; padding: .75rem; background: white; color: #00201a; }
         .catalog-control:focus-visible { outline: 2px solid #005144; outline-offset: 3px; }
         .catalog-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-        .catalog-grid article { min-width: 0; overflow-wrap: anywhere; }
+        .catalog-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; overflow-wrap: anywhere; background: #fff; border: 1px solid #00322914; border-radius: 1rem; box-shadow: 0 4px 18px #00322908; transition: box-shadow .2s ease, border-color .2s ease; }
+        .catalog-card:hover { border-color: #00322935; box-shadow: 0 8px 26px #00322912; }
+        .catalog-cover { display: block; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #eef2ee; color: #003229; }
+        .catalog-cover-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+        .catalog-cover-placeholder { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; padding: 1rem; text-align: center; background: linear-gradient(135deg, #003229, #154d41); color: #fff; }
+        .catalog-cover-placeholder strong { font-family: Manrope, sans-serif; color: #E9C176; font-size: 1.2rem; letter-spacing: .04em; }
+        .catalog-cover-placeholder span { font-size: .75rem; line-height: 1.5; color: #ffffffbf; }
+        .catalog-card-body { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+        .catalog-card-title { color: #003229; font-size: 1.2rem; line-height: 1.4; margin: 0 0 .8rem; }
+        .catalog-actions { margin-top: auto; padding-top: 1.25rem; }
+        .catalog-details-link { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1rem; border-radius: .5rem; background: #003229; color: #fff; font-size: .875rem; font-weight: 700; text-decoration: none; transition: background .2s ease; }
+        .catalog-details-link:hover { background: #185245; }
+        .catalog-cover:focus-visible, .catalog-details-link:focus-visible { outline: 3px solid #E9C176; outline-offset: -3px; }
+        @media (prefers-reduced-motion: reduce) { .catalog-card, .catalog-details-link { transition: none; } }
         @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (min-width: 1024px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; } }
     </style>
@@ -212,12 +225,38 @@
         if ([...commune.options].some(option => option.value === selected)) commune.value = selected;
     };
     const card = project => {
-        const article = element('article', undefined, 'bg-surface-container-lowest p-8 shadow-sm');
+        const article = element('article', undefined, 'catalog-card');
+        article.dataset.project = project.slug;
+        const hasDetail = typeof project.detalleUrl === 'string' && /^\/[a-z0-9-]+\.html$/.test(project.detalleUrl);
+        const cover = element(hasDetail ? 'a' : 'div', undefined, 'catalog-cover');
+        if (hasDetail) {
+            cover.href = project.detalleUrl;
+            cover.setAttribute('aria-label', 'Ver fotografías y detalles de ' + project.nombre);
+        }
+        const showPlaceholder = () => {
+            const placeholder = element('div', undefined, 'catalog-cover-placeholder');
+            placeholder.append(element('strong', 'Sollahms'), element('span', 'Fotografía oficial pendiente'));
+            cover.replaceChildren(placeholder);
+        };
+        // Only existing local official images enter the public catalogue dataset.
+        if (typeof project.imagenPrincipal === 'string' && /^\/assets\/propiedades\/[a-z0-9/._-]+\.(?:webp|jpe?g|png)$/i.test(project.imagenPrincipal)) {
+            const image = element('img', undefined, 'catalog-cover-image');
+            image.alt = project.imagenAlt || 'Fotografía del proyecto ' + project.nombre;
+            image.loading = 'lazy';
+            image.decoding = 'async';
+            image.width = 1600;
+            image.height = 900;
+            image.addEventListener('error', showPlaceholder, { once: true });
+            image.src = project.imagenPrincipal;
+            cover.append(image);
+        } else showPlaceholder();
+        const body = element('div', undefined, 'catalog-card-body');
+        article.append(cover, body);
         const builderVerified = project.verificacion?.camposVerificados?.includes('inmobiliaria');
-        article.append(element('p', project.inmobiliaria + (builderVerified ? '' : ' · Asociación por verificar'), 'text-sm font-bold text-secondary mb-3'));
-        article.append(element('h2', project.nombre, 'text-xl font-bold text-primary mb-4'));
-        article.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
-        if (project.direccion != null) article.append(element('p', project.direccion, 'text-sm text-secondary mb-4'));
+        body.append(element('p', project.inmobiliaria + (builderVerified ? '' : ' · Asociación por verificar'), 'text-sm font-bold text-secondary mb-3'));
+        body.append(element('h2', project.nombre, 'catalog-card-title font-bold'));
+        body.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
+        if (project.direccion != null) body.append(element('p', project.direccion, 'text-sm text-secondary mb-4'));
         const details = element('dl');
         const detail = (label, value) => {
             details.append(element('dt', label, 'text-sm font-bold text-primary mt-4'));
@@ -248,25 +287,19 @@
             values.append(list);
             details.append(values);
         }
-        article.append(details);
+        body.append(details);
         if (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF)) {
-            article.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
+            body.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
         } else {
-            article.append(element('p', 'Precio pendiente de verificación', 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
+            body.append(element('p', 'Precio pendiente de verificación', 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
         }
-        if (typeof project.slug === 'string' && project.slug.trim().length) {
-            const actions = element('div', undefined, 'mt-4 flex flex-col sm:flex-row gap-3');
-            if (typeof project.detalleUrl === 'string' && project.detalleUrl.trim().length) {
-                const details = element('a', 'Ver detalles', 'inline-flex min-w-0 items-center justify-center px-4 py-3 bg-primary text-white text-sm font-bold rounded-lg transition-colors');
-                details.href = project.detalleUrl;
-                details.setAttribute('aria-label', 'Ver detalles de ' + project.nombre);
-                actions.append(details);
-            }
-            const contact = element('a', 'Consultar proyecto', 'inline-flex min-w-0 items-center justify-center px-4 py-3 bg-primary text-white text-sm font-bold rounded-lg transition-colors');
-            contact.href = '/contacto.html?proyecto=' + encodeURIComponent(project.slug);
-            contact.setAttribute('aria-label', 'Consultar proyecto ' + project.nombre);
-            actions.append(contact);
-            article.append(actions);
+        if (hasDetail) {
+            const actions = element('div', undefined, 'catalog-actions');
+            const details = element('a', 'Ver detalles', 'catalog-details-link');
+            details.href = project.detalleUrl;
+            details.setAttribute('aria-label', 'Ver detalles de ' + project.nombre);
+            actions.append(details);
+            body.append(actions);
         }
         return article;
     };

@@ -13,7 +13,7 @@ const validBooking = {
 };
 const validContact = {
   nombre: 'Cliente Prueba', correo: 'qa@form.test.invalid', telefono: '+56900000000',
-  asunto: 'Consulta sobre un proyecto', mensaje: 'Mensaje de prueba sin envío real.', website: '',
+  rut: '', mensaje: 'Mensaje de prueba sin envío real.', website: '',
 };
 
 function isolate(t, response = { status: 200, body: { ok: true, available: true, booked: true } }) {
@@ -174,19 +174,19 @@ test('provider timeout is handled by each form without leaking its exception', a
 
 test('contact rejects invalid fields and oversize bodies without an email request', async t => {
   const calls = isolate(t);
-  for (const field of [{ nombre: 'Prueba\r\nOtra' }, { correo: 'invalid' }, { asunto: 'Mensaje\r\nBcc: otro' }, { mensaje: 'corto' }, { telefono: '1'.repeat(31) }]) await assertResult(contact, request({ ...validContact, ...field }), 400);
+  for (const field of [{ nombre: 'Prueba\r\nOtra' }, { correo: 'invalid' }, { rut: '10.000.000-1' }, { mensaje: 'corto' }, { telefono: '1'.repeat(31) }]) await assertResult(contact, request({ ...validContact, ...field }), 400);
   await assertResult(contact, request(null, { raw: 'x'.repeat(32769) }), 413);
   assert.equal(calls.length, 0);
 });
 
 test('project consultation escapes message markup and keeps email credentials server-side', async t => {
   const calls = isolate(t);
-  await assertResult(contact, request({ ...validContact, nombre: 'Prueba <b>texto</b>', asunto: 'Consulta <proyecto>', mensaje: '<script>alert("test")</script> & texto' }), 200, { ok: true });
+  await assertResult(contact, request({ ...validContact, nombre: 'Prueba <b>texto</b>', proyecto: 'distrito-centro', mensaje: '<script>alert("test")</script> & texto' }), 200, { ok: true });
   const email = calls[0].body;
   assert.equal(calls[0].url, 'https://api.resend.com/emails');
   assert.deepEqual(email.to, ['contacto@sollahms.cl']);
   assert.equal(email.reply_to, validContact.correo);
-  assert.equal(email.subject, 'Contacto Sollahms: Consulta proyecto');
+  assert.equal(email.subject, 'Consulta sobre Distrito Centro');
   assert.ok(email.html.includes('&lt;script&gt;'));
   assert.ok(!email.html.includes('<script>'));
   assert.ok(!email.html.includes('<b>texto</b>'));

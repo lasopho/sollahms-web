@@ -82,7 +82,7 @@ for research in records:
             value['description'] = description
         return '<script type="application/ld+json">\n' + json.dumps(value, ensure_ascii=False, indent=2).replace('<', '\\u003c') + '\n</script>'
     page = re.sub(r'<script type="application/ld\+json">(.*?)</script>', update_ld, page, flags=re.S)
-    gallery = '<h2>Galería oficial</h2><div class="featured-gallery">' + ''.join(f'<figure><a href="{esc(i["localPath"])}" target="_blank" rel="noopener noreferrer"><img src="{esc(i["localPath"])}" alt="{esc(i["alt"])}" loading="lazy" width="{i["width"]}" height="{i["height"]}"></a><figcaption><a href="{esc(i["sourceUrl"])}" target="_blank" rel="noopener noreferrer">Fuente oficial · {esc(i["alt"])}</a></figcaption></figure>' for i in research.get('images', []) if i.get('localPath')) + '</div>'
+    gallery = '<h2>Galería oficial</h2><div class="featured-gallery">' + ''.join(f'<figure><a href="{esc(i["localPath"])}" target="_blank" rel="noopener noreferrer"><img src="{esc(i["localPath"])}" alt="{esc(i["alt"])}" loading="lazy" width="{i["width"]}" height="{i["height"]}"></a></figure>' for i in research.get('images', []) if i.get('localPath')) + '</div>'
     specs = '<h2>Superficies y distribución</h2><ul>'
     for key in ['utilM2', 'totalM2', 'dormitorios', 'banos']:
         value = research.get('specs', {}).get(key)

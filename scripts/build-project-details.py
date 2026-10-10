@@ -116,7 +116,7 @@ def render(project, research, template):
     price = uf(field(project, research, 'precioDesdeUF'))
     cells.append(('Precio desde', price))
     specs = ''.join(f'<div><dt>{esc(label)}</dt><dd>{value}</dd></div>' for label, value in cells)
-    gallery = '<div class="gallery-grid">' + ''.join(f'<figure><a href="{esc(image_url(i))}" target="_blank" rel="noopener noreferrer"><img src="{esc(image_url(i))}" alt="{esc(i.get("alt") or name)}" loading="lazy" decoding="async"></a><figcaption>{esc(i.get("alt") or name)} · <a href="{esc(i["sourceUrl"])}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></figcaption></figure>' for i in images[:6]) + '</div>' if images else '<div class="pending-panel"><p>Fotografías oficiales pendientes de verificación. Puedes solicitar material del proyecto al consultar.</p></div>'
+    gallery = '<div class="gallery-grid">' + ''.join(f'<figure><a href="{esc(image_url(i))}" target="_blank" rel="noopener noreferrer"><img src="{esc(image_url(i))}" alt="{esc(i.get("alt") or name)}" loading="lazy" decoding="async"></a></figure>' for i in images[:6]) + '</div>' if images else '<div class="pending-panel"><p>Fotografías oficiales pendientes de verificación. Puedes solicitar material del proyecto al consultar.</p></div>'
     amenities = field(project, research, 'amenities')
     amenities_html = '<ul class="amenity-list">' + ''.join(f'<li>{esc(x)}</li>' for x in amenities) + '</ul>' if isinstance(amenities, list) and amenities else '<div class="pending-panel"><p>Equipamiento y áreas comunes pendientes de verificación.</p></div>'
     tours = []

@@ -133,7 +133,7 @@
 <h2 class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-3">Escríbenos</h2>
 <p class="text-slate-600 leading-relaxed mb-10">Completa el formulario o escríbenos a nuestro correo. Te responderemos a la brevedad.</p>
 <p id="contact-project-context" class="text-slate-600 leading-relaxed mb-6" hidden></p>
-<form id="contact-form" aria-describedby="form-status">
+<form id="contact-form" method="post" action="/api/contact" aria-describedby="form-status">
 <div class="hidden" aria-hidden="true">
 <label for="website">Sitio web</label>
 <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
@@ -152,8 +152,10 @@
 <input class="w-full rounded border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-800 focus:ring-emerald-800" id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="30">
 </div>
 <div>
-<label class="block text-xs uppercase tracking-[0.16em] font-semibold text-slate-600 mb-2" for="asunto">Asunto</label>
-<input class="w-full rounded border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-800 focus:ring-emerald-800" id="asunto" name="asunto" type="text" maxlength="120">
+<label class="block text-xs uppercase tracking-[0.16em] font-semibold text-slate-600 mb-2" for="rut">RUT</label>
+<input class="w-full rounded border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-800 focus:ring-emerald-800" id="rut" name="rut" type="text" inputmode="text" autocapitalize="characters" autocomplete="off" spellcheck="false" maxlength="14" aria-describedby="rut-help rut-error">
+<p id="rut-help" class="mt-2 text-sm text-slate-500">Opcional. Puedes escribirlo con o sin puntos.</p>
+<p id="rut-error" class="mt-2 text-sm text-slate-600" role="alert" hidden></p>
 </div>
 <div class="sm:col-span-2">
 <label class="block text-xs uppercase tracking-[0.16em] font-semibold text-slate-600 mb-2" for="mensaje">Mensaje</label>
@@ -181,37 +183,49 @@
 <p class="text-sm text-slate-600">© 2026 Sollahms. Todos los derechos reservados.</p>
 </div>
 </footer>
-<script>
+<script type="module">
+import { normalizeRut, RUT_ERROR } from '/assets/js/rut.mjs';
+
 (() => {
     const form = document.getElementById('contact-form');
     const button = form.querySelector('button[type="submit"]');
     const status = document.getElementById('form-status');
+    const rut = document.getElementById('rut');
+    const rutError = document.getElementById('rut-error');
+    const projectSlug = new URLSearchParams(window.location.search).get('proyecto');
     let sending = false;
-    let projectSubject = "";
+
+    const showRutError = message => {
+        rut.setCustomValidity(message);
+        rut.setAttribute('aria-invalid', String(Boolean(message)));
+        rutError.textContent = message;
+        rutError.hidden = !message;
+    };
+    rut.addEventListener('input', () => showRutError(''));
+    rut.addEventListener('blur', () => {
+        const normalized = normalizeRut(rut.value);
+        showRutError(normalized === null ? RUT_ERROR : '');
+        if (normalized !== null) rut.value = normalized;
+    });
+    rut.addEventListener('invalid', () => showRutError(RUT_ERROR));
 
     const contextualizeProject = async () => {
-        const slug = new URLSearchParams(window.location.search).get('proyecto');
-        if (slug === null) return;
-
+        if (projectSlug === null) return;
         try {
             const response = await fetch('/data/proyectos.json');
             if (!response.ok) return;
             const projects = await response.json();
             if (!Array.isArray(projects)) return;
-            const project = projects.find(project => project && project.slug === slug);
+            const project = projects.find(project => project && project.slug === projectSlug);
             if (!project || typeof project.nombre !== 'string' || !project.nombre.trim()) return;
-
             const context = document.getElementById('contact-project-context');
             context.textContent = 'Estás consultando por ' + project.nombre + '.';
             context.hidden = false;
-            const subject = document.getElementById('asunto');
-            projectSubject = 'Consulta sobre ' + project.nombre;
-            if (subject.value === '') subject.value = projectSubject;
             document.querySelectorAll('a[href="/agenda-asesoria.html"]').forEach(link => {
-                link.href = '/agenda-asesoria.html?proyecto=' + encodeURIComponent(slug);
+                link.href = '/agenda-asesoria.html?proyecto=' + encodeURIComponent(projectSlug);
             });
         } catch {
-            // La contextualización es opcional y no debe impedir el envío.
+            // The server verifies the slug even if this display cannot load.
         }
     };
     contextualizeProject();
@@ -219,14 +233,23 @@
     form.addEventListener('submit', async event => {
         event.preventDefault();
         if (sending) return;
-
+        const normalizedRut = normalizeRut(rut.value);
+        if (normalizedRut === null) {
+            showRutError(RUT_ERROR);
+            rut.focus();
+            return;
+        }
+        showRutError('');
+        rut.value = normalizedRut;
         sending = true;
         button.disabled = true;
         button.textContent = 'Enviando…';
         status.textContent = '';
-
         try {
             const data = Object.fromEntries(new FormData(form));
+            data.rut = normalizedRut;
+            // The server derives the trusted project name and email subject.
+            if (projectSlug !== null) data.proyecto = projectSlug;
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -238,11 +261,19 @@
                     status.textContent = result.error;
                     return;
                 }
+                if (result.code === 'invalid_rut') {
+                    showRutError(RUT_ERROR);
+                    rut.focus();
+                    return;
+                }
+                if (result.code === 'invalid_project') {
+                    status.textContent = 'No pudimos identificar el proyecto. Vuelve a abrir la consulta desde su ficha.';
+                    return;
+                }
                 throw new Error('Contact request failed');
             }
-
             form.reset();
-            if (projectSubject) form.elements.asunto.value = projectSubject;
+            showRutError('');
             status.textContent = 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.';
         } catch {
             status.textContent = 'No pudimos enviar el mensaje. Inténtalo de nuevo más tarde.';
