@@ -1,0 +1,100 @@
+{
+  "result": "passed",
+  "scope": "Local static Preview package integrity; no remote deployment claims",
+  "sourceCommit": "6f054130aaf1814df4b00a68f9fb0a07717f971f",
+  "htmlPages": 154,
+  "noindexPages": 154,
+  "pagesMissingNoindex": [],
+  "publicAssetFiles": 509,
+  "assetSetAndHashesMatchSource": true,
+  "publicDataFiles": [
+    "proyectos.json"
+  ],
+  "rutModuleCopiedByteIdentical": true,
+  "privatePathsAbsent": [
+    "/docs/revision-preview.md",
+    "/tests/rut-contact.mjs",
+    "/lib/project-context.mjs",
+    "/api/contact.mjs",
+    "/scripts/package-vercel.mjs",
+    "/data/fichas-proyectos.json",
+    "/data/registro-fichas.json",
+    "/.git/HEAD",
+    "/vercel.json"
+  ],
+  "exposedPrivatePaths": [],
+  "previewRobots": "User-agent: *\nDisallow: /\n",
+  "privacyCopiedByteIdenticalExceptPreviewMetadata": true,
+  "contactReadOnlyNotice": true,
+  "agendaReadOnlyNotice": true,
+  "packageHttpChecks": [
+    {
+      "path": "/proyectos.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytesMatchPackage": true
+    },
+    {
+      "path": "/contacto.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytesMatchPackage": true
+    },
+    {
+      "path": "/agenda-asesoria.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytesMatchPackage": true
+    },
+    {
+      "path": "/privacidad.html",
+      "status": 200,
+      "contentType": "text/html",
+      "bytesMatchPackage": true
+    },
+    {
+      "path": "/assets/js/rut.mjs",
+      "status": 200,
+      "contentType": "text/javascript",
+      "bytesMatchPackage": true
+    },
+    {
+      "path": "/docs/revision-preview.md",
+      "status": 404
+    },
+    {
+      "path": "/tests/rut-contact.mjs",
+      "status": 404
+    },
+    {
+      "path": "/lib/project-context.mjs",
+      "status": 404
+    },
+    {
+      "path": "/api/contact.mjs",
+      "status": 404
+    },
+    {
+      "path": "/scripts/package-vercel.mjs",
+      "status": 404
+    },
+    {
+      "path": "/data/fichas-proyectos.json",
+      "status": 404
+    },
+    {
+      "path": "/data/registro-fichas.json",
+      "status": 404
+    },
+    {
+      "path": "/.git/HEAD",
+      "status": 404
+    },
+    {
+      "path": "/vercel.json",
+      "status": 404
+    }
+  ],
+  "packageHttpScope": "Ephemeral local static server, closed after GET checks; does not establish Vercel MIME/route behavior",
+  "rutModuleLocalMime": "text/javascript"
+}

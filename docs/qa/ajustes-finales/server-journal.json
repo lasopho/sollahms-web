@@ -1,0 +1,54 @@
+{
+  "counters": {
+    "requests": 1331,
+    "availability": 0,
+    "booking": 0,
+    "contact": 7,
+    "simulatedProvider": 6,
+    "externalRequests": 0
+  },
+  "journal": [
+    {
+      "route": "/api/contact",
+      "scenario": "success",
+      "status": 200,
+      "proyecto": "distrito-centro"
+    },
+    {
+      "route": "/api/contact",
+      "scenario": "success",
+      "status": 200,
+      "proyecto": "distrito-centro"
+    },
+    {
+      "route": "/api/contact",
+      "scenario": "success",
+      "status": 200,
+      "proyecto": "distrito-centro"
+    },
+    {
+      "route": "/api/contact",
+      "scenario": "success",
+      "status": 200,
+      "proyecto": "distrito-centro"
+    },
+    {
+      "route": "/api/contact",
+      "scenario": "success",
+      "status": 200,
+      "proyecto": "distrito-centro"
+    },
+    {
+      "route": "/api/contact",
+      "scenario": "upstream_error",
+      "status": 502,
+      "proyecto": "distrito-centro"
+    },
+    {
+      "route": "/api/contact",
+      "scenario": "preview_read_only",
+      "status": 503,
+      "proyecto": "distrito-centro"
+    }
+  ]
+}
