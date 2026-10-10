@@ -81,7 +81,7 @@ const server = createServer(async (req, res) => {
     if (!['GET', 'HEAD'].includes(req.method)) return reply(res, 405, 'Método no permitido.');
     let path = decodeURIComponent(url.pathname);
     if (path === '/') path = '/index.html';
-    const publicPath = /^\/[a-z0-9-]+\.html$/.test(path) || path.startsWith('/assets/') || ['/data/proyectos.json', '/data/fichas-proyectos.json', '/robots.txt', '/sitemap.xml'].includes(path);
+    const publicPath = /^\/[a-z0-9-]+\.html$/.test(path) || path.startsWith('/assets/') || ['/data/hipotecario.json', '/data/proyectos.json', '/data/fichas-proyectos.json', '/robots.txt', '/sitemap.xml'].includes(path);
     const local = resolve(root, '.' + path);
     if (!publicPath || !local.startsWith(root + sep) || !(await stat(local)).isFile()) return reply(res, 404, await readFile(resolve(root, '404.html')), types['.html']);
     res.writeHead(200, { 'Content-Type': types[extname(local)] || 'application/octet-stream', 'Cache-Control': 'no-store' });

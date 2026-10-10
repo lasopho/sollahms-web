@@ -16,7 +16,8 @@ const validContact = {
   rut: '', mensaje: 'Mensaje de prueba sin envío real.', website: '',
 };
 
-function isolate(t, response = { status: 200, body: { ok: true, available: true, booked: true } }) {
+const defaultResponse = { status: 200, body: { ok: true, available: true, booked: true } };
+function isolate(t, response = defaultResponse) {
   const previousFetch = globalThis.fetch;
   const previousEnv = Object.fromEntries(['BOOKING_BACKEND_URL', 'BOOKING_SECRET', 'RESEND_API_KEY', 'VERCEL_ENV'].map(key => [key, process.env[key]]));
   delete process.env.VERCEL_ENV;
@@ -28,7 +29,7 @@ function isolate(t, response = { status: 200, body: { ok: true, available: true,
     assert.ok(['https://booking.test.invalid/', 'https://api.resend.com/emails'].includes(String(url)), 'Unexpected network destination');
     calls.push({ url: String(url), options, body: JSON.parse(options.body) });
     if (response.error) throw response.error;
-    return new Response(response.raw ?? JSON.stringify(response.body), { status: response.status, headers: { 'Content-Type': 'application/json' } });
+    return new Response(response.raw ?? JSON.stringify(String(url) === 'https://api.resend.com/emails' && response === defaultResponse ? { id: 'simulated-only' } : response.body), { status: response.status, headers: { 'Content-Type': 'application/json' } });
   };
   t.after(() => {
     globalThis.fetch = previousFetch;

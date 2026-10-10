@@ -199,7 +199,7 @@ def main():
     contexts = {p['slug']: {'name': p['nombre'], 'url': p['detalleUrl']} for p in projects}
     (ROOT / 'lib/project-context.mjs').write_text('// Generated from data/proyectos.json by build-project-details.py.\nexport const projects = Object.freeze(' + json.dumps(contexts, ensure_ascii=False, indent=2).replace('<', '\\u003c') + ');\n')
     # Keep the existing global destinations and append all details exactly once.
-    urls = ['/', '/proyectos.html', '/agenda-asesoria.html', '/contacto.html', '/privacidad.html'] + [p['detalleUrl'] for p in projects]
+    urls = ['/', '/proyectos.html', '/agenda-asesoria.html', '/contacto.html', '/privacidad.html', '/comparador-hipotecario.html'] + [p['detalleUrl'] for p in projects]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('  <url><loc>https://sollahms.cl' + esc(url) + '</loc></url>\n' for url in dict.fromkeys(urls)) + '</urlset>\n'
     (ROOT / 'sitemap.xml').write_text(sitemap)
     def cell(value):

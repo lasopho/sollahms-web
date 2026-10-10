@@ -1,0 +1,12 @@
+/* Keep the existing navigation comfortable after adding the mortgage entry. */
+@media (min-width: 768px) and (max-width: 1099px)  {
+  .mortgage-entry-nav nav[aria-label="Navegación principal"] > div.hidden  {
+    display: none !important;
+  }
+  .mortgage-entry-nav button[aria-controls="mobile-menu"]  {
+    display: inline-flex !important;
+  }
+  .mortgage-entry-nav #mobile-menu:not(.hidden)  {
+    display: block !important;
+  }
+}

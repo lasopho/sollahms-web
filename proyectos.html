@@ -67,6 +67,7 @@
         @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (min-width: 1024px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; } }
     </style>
+<link rel="stylesheet" href="/assets/css/purchase-capacity.css">
 </head>
 <body class="text-on-background pt-20">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
@@ -136,6 +137,29 @@
 </section>
 <section class="py-16 bg-surface" aria-label="Catálogo de proyectos">
 <div class="max-w-7xl mx-auto px-8">
+<section class="capacity-search" aria-labelledby="capacity-title">
+<div class="capacity-intro"><div><h2 id="capacity-title">Encuentra tu propiedad según tu renta</h2><p>Explora un escenario de compra con tu renta, ahorro y un pie estimado. Puedes seguir usando el catálogo sin ingresar datos financieros.</p></div><button class="capacity-button" id="capacity-toggle" type="button" aria-expanded="false" aria-controls="capacity-form" disabled>Buscar según mi renta</button></div>
+<form id="capacity-form" class="capacity-form" hidden autocomplete="off">
+<div class="capacity-fields">
+<div class="capacity-field"><label for="capacity-income">Renta líquida individual (CLP / mes)</label><input id="capacity-income" type="number" min="1" max="10000000000" step="1" inputmode="numeric" required></div>
+<div class="capacity-field"><label for="capacity-complement">¿Complementar renta?</label><select id="capacity-complement"><option value="no">No</option><option value="yes">Sí</option></select></div>
+<div class="capacity-field" id="capacity-second-wrap" hidden><label for="capacity-second">Renta segunda persona (CLP / mes)</label><input id="capacity-second" type="number" min="1" max="10000000000" step="1" inputmode="numeric" disabled></div>
+<div class="capacity-field"><label for="capacity-debt">Cuotas de deudas mensuales (CLP, opcional)</label><input id="capacity-debt" type="number" min="0" max="10000000000" step="1" inputmode="numeric" placeholder="0"></div>
+<div class="capacity-field"><label for="capacity-savings">Ahorro disponible</label><input id="capacity-savings" type="number" min="0" max="1000000" step="any" inputmode="decimal" placeholder="0"></div>
+<div class="capacity-field"><label for="capacity-currency">Moneda del ahorro</label><select id="capacity-currency"><option value="UF">UF</option><option value="CLP">Pesos chilenos (CLP)</option></select></div>
+<div class="capacity-field"><label for="capacity-monthly">Capacidad de ahorro mensual (CLP)</label><input id="capacity-monthly" type="number" min="0" max="10000000000" step="1" inputmode="numeric" placeholder="0"></div>
+<div class="capacity-field"><label for="capacity-horizon">Horizonte de compra</label><select id="capacity-horizon"><option value="0">Inmediata</option><option value="6">6 meses</option><option value="12">12 meses</option><option value="18">18 meses</option><option value="24">24 meses</option><option value="custom">Otro horizonte</option></select><div class="capacity-custom" id="capacity-horizon-wrap" hidden><label for="capacity-horizon-custom">Meses (0 a 600)</label><input id="capacity-horizon-custom" type="number" min="0" max="600" step="1" inputmode="numeric" disabled></div></div>
+<div class="capacity-field"><label for="capacity-pie">Pie estimado</label><select id="capacity-pie"><option value="10">10%</option><option value="15">15%</option><option value="20" selected>20%</option><option value="custom">Otro porcentaje</option></select><div class="capacity-custom" id="capacity-pie-wrap" hidden><label for="capacity-pie-custom">Porcentaje de pie (5 a 90)</label><input id="capacity-pie-custom" type="number" min="5" max="90" step="any" inputmode="decimal" disabled></div></div>
+<div class="capacity-field"><label for="capacity-years">Plazo del crédito</label><select id="capacity-years"><option value="15">15 años</option><option value="20">20 años</option><option value="25" selected>25 años</option><option value="30">30 años</option><option value="custom">Otro plazo</option></select><div class="capacity-custom" id="capacity-years-wrap" hidden><label for="capacity-years-custom">Años (5 a 40)</label><input id="capacity-years-custom" type="number" min="5" max="40" step="1" inputmode="numeric" disabled></div></div>
+<div class="capacity-field"><label for="capacity-rate">Tasa anual proporcionada por ti (%)</label><input id="capacity-rate" type="number" min="0" max="25" step="any" inputmode="decimal" placeholder="Ingresa la tasa de tu cotización" aria-describedby="capacity-rate-help"></div>
+<div class="capacity-field"><label for="capacity-convention">Convención de la tasa anual</label><select id="capacity-convention"><option value="effective">Efectiva anual</option><option value="nominal">Nominal anual</option></select></div>
+<div class="capacity-field"><label for="capacity-criterion">Criterio referencial configurable</label><select id="capacity-criterion"><option value="25">25% de la renta − deudas</option><option value="30">30% de la renta − deudas</option></select></div>
+</div>
+<div class="capacity-notes"><p id="capacity-rate-help">No suponemos una tasa bancaria. Si dejas la tasa vacía, los proyectos quedarán pendientes de evaluación. El comparador permite consultar referencias sólo cuando coinciden con el escenario.</p><p>El presupuesto mensual es renta total × criterio − cuotas de deudas, con mínimo cero. 25% y 30% son criterios de exploración configurables; no son requisitos universales. Complementar renta depende de cada institución.</p><p>El dividendo incluye capital e intereses. Seguros y gastos están pendientes de verificación. El ahorro proyectado usa la UF fechada de hoy constante y no considera rentabilidad ni predice la UF futura.</p><p>Los resultados no representan aprobación ni probabilidad de crédito. La evaluación bancaria considera historial, antigüedad laboral, edad, deudas, seguros y el tipo de activo.</p><p>La búsqueda se calcula en tu navegador. No se guardan ni envían renta, deudas o ahorro. Al abrir un escenario sólo se conserva temporalmente el proyecto, monto, pie, plazo y tasa para el simulador.</p></div>
+<p id="capacity-uf" class="capacity-uf" role="status">Cargando referencia UF…</p><p id="capacity-error" class="capacity-error" role="alert"></p>
+<div class="capacity-form-actions"><button id="capacity-submit" class="capacity-button" type="submit">Evaluar proyectos</button><button id="capacity-reset" class="capacity-button capacity-button-secondary" type="button">Volver al catálogo</button></div>
+</form><p id="capacity-summary" class="capacity-summary" role="status" aria-live="polite"></p>
+</section>
 <form id="catalog-filters" class="catalog-filters mb-8" role="search" aria-label="Filtros del catálogo">
 <div><label class="block font-bold text-primary mb-3" for="search">Buscar proyecto</label><input class="catalog-control" id="search" type="search" disabled></div>
 <div><label class="block font-bold text-primary mb-3" for="asset-type">Tipo de activo</label><select class="catalog-control" id="asset-type" disabled><option value="">Todos</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option><option value="Terreno">Terreno</option></select></div>
@@ -197,6 +221,7 @@
     const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
     const numberFormat = new Intl.NumberFormat('es-CL');
     let projects = [];
+    let capacitySearch = null;
     const stages = project => Array.isArray(project.etapas) ? project.etapas : [];
     const projectStates = project => [project.estado, ...stages(project).map(stage => stage.estado)]
         .filter(value => typeof value === 'string' && value.length);
@@ -299,6 +324,7 @@
             actions.append(details);
             body.append(actions);
         }
+        capacitySearch?.decorateCard(article, project);
         return article;
     };
     const render = () => {
@@ -327,6 +353,7 @@
                 return direction * (a.precioDesdeUF - b.precioDesdeUF);
             });
         }
+        if (sortOrder.value === 'original') capacitySearch?.sortProjects(sorted);
         grid.replaceChildren(...sorted.map(card));
         count.textContent = filtered.length + (filtered.length === 1 ? ' proyecto' : ' proyectos');
         message.textContent = filtered.length ? '' : 'No encontramos proyectos que coincidan con tus filtros.';
@@ -367,6 +394,12 @@
             updateCommunes();
             render();
             [search, assetType, region, commune, state, maxPriceInput, sortOrder, clear].forEach(control => { control.disabled = false; });
+            import('/assets/js/purchase-capacity-ui.mjs').then(({ initializeCapacitySearch }) => {
+                capacitySearch = initializeCapacitySearch({ projects, onChange: render });
+                document.getElementById('capacity-toggle').disabled = false;
+            }).catch(() => {
+                document.getElementById('capacity-summary').textContent = 'El buscador financiero no pudo cargar. Puedes seguir utilizando los filtros del catálogo.';
+            });
         } catch (error) {
             grid.replaceChildren();
             count.textContent = '';

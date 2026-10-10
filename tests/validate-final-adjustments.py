@@ -93,7 +93,6 @@ def main():
         'docs/verificacion-fichas.md', 'docs/catalogo-22-validacion-2026-10-01.md',
         'agenda-asesoria.html', 'api/booking-create.mjs', 'api/booking-availability.mjs',
         'lib/booking-server.mjs', 'assets/js/project-embeds.js', 'assets/js/project-detail.js',
-        'sitemap.xml',
     ]
     for name in protected_files:
         current_bytes = (ROOT / name).read_bytes()
@@ -112,8 +111,10 @@ def main():
               f'{slug}: fields outside cover metadata changed')
         path = slug + '.html'
         current_text = (ROOT / path).read_text()
+        integrity_text = re.sub(r'<a class="(?:button button-outline|mortgage-project-cta)" href="/comparador-hipotecario.html\?proyecto=' + re.escape(slug) + r'">Simular crédito hipotecario</a>', '', current_text)
+        integrity_text = integrity_text.replace('<link rel="stylesheet" href="/assets/css/project-finance.css">\n', '')
         old_text = baseline(path, ref).decode()
-        check(current_text == with_current_navigation(gallery_without_source_captions(old_text)),
+        check(integrity_text == with_current_navigation(gallery_without_source_captions(old_text)),
               f'{slug}: detail changed beyond gallery captions and approved main navigation')
         check(not any('Fuente oficial' in caption for caption in CAPTION.findall(current_text)),
               f'{slug}: repetitive visible gallery source caption remains')
