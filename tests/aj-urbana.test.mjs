@@ -10,7 +10,8 @@ import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 
-// This review extends five static pages only. Historical brochure material
+// This review extends five static pages and their protected Preview card covers.
+// Historical brochure material
 // must never overwrite current catalogue, financial or source-verification data.
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASELINE = '045fe182ef5d2ad2206df303ba74330aa747050d';
@@ -368,12 +369,39 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     writeFileSync(join(fixtureRoot, 'data/proyectos.json'), current('data/proyectos.json'));
     writeFileSync(join(fixtureRoot, 'data/hipotecario.json'), current('data/hipotecario.json'));
     writeFileSync(join(fixtureRoot, 'data/brochures-aj-urbana.json'), current('data/brochures-aj-urbana.json'));
+    for (const record of review.projects) {
+      const asset = record.catalogueCover.localPath.slice(1);
+      mkdirSync(join(fixtureRoot, asset, '..'), { recursive: true });
+      writeFileSync(join(fixtureRoot, asset), current(asset));
+    }
     writeFileSync(join(fixtureRoot, 'sitemap.xml'), current('sitemap.xml'));
     writeFileSync(join(fixtureRoot, 'robots.txt'), current('robots.txt'));
     for (const slug of SLUGS) writeFileSync(join(fixtureRoot, slug + '.html'), current(slug + '.html'));
     const script = join(fixtureRoot, 'scripts/package-vercel.mjs');
     const env = { ...process.env, VERCEL_GIT_COMMIT_REF: 'codex/integracion-financiera-sollahms' };
     execFileSync(process.execPath, [script], { cwd: fixtureRoot, env: {...env, VERCEL_ENV: 'preview'}, stdio: 'pipe' });
+    const previewCatalogue = JSON.parse(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')));
+    const coverPages = { 'downtown-san-martin': 5, 'edificio-teatinos-750': 5,
+      'edificio-vista-amunategui': 1, 'monjitas-690': 13, 'vista-morande': 1 };
+    assert.equal(previewCatalogue.length, 148);
+    assert.deepEqual(previewCatalogue.map(project => project.slug), catalogue.map(project => project.slug));
+    let changedCovers = 0;
+    for (let index = 0; index < catalogue.length; index++) {
+      const original = catalogue[index], published = previewCatalogue[index];
+      if (!FOCUS.has(original.slug)) { assert.deepEqual(published, original); continue; }
+      const record = records.get(original.slug), cover = record.catalogueCover;
+      const image = record.images.find(image => image.localPath === cover.localPath);
+      assert.equal(image.sourcePage, coverPages[original.slug]);
+      assert.equal(published.imagenPrincipal, cover.localPath);
+      assert.equal(published.imagenAlt, cover.alt);
+      assert.match(published.imagenAlt, /render ilustrativo/i);
+      assert.ok(existsSync(join(fixtureRoot, 'dist', cover.localPath.slice(1))));
+      assert.deepEqual({ ...published, imagenPrincipal: original.imagenPrincipal, imagenAlt: original.imagenAlt }, original,
+        original.slug + ': commercial, financial and navigation fields must remain identical');
+      assert.notEqual(published.imagenPrincipal, original.imagenPrincipal);
+      changedCovers++;
+    }
+    assert.equal(changedCovers, 5);
     for (const slug of SLUGS) {
       const html = readFileSync(join(fixtureRoot, 'dist', slug + '.html'), 'utf8');
       const original = htmlFor(slug);
@@ -408,10 +436,23 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     delete defaultEnvironment.VERCEL_ENV;
     execFileSync(process.execPath, [script], { cwd: fixtureRoot, env: defaultEnvironment, stdio: 'pipe' });
     for (const slug of SLUGS) assert.equal(readFileSync(join(fixtureRoot, 'dist', slug + '.html'), 'utf8'), old(slug + '.html').toString());
+    assert.ok(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')).equals(current('data/proyectos.json')),
+      'An unspecified environment must retain the original public catalogue bytes');
     assert.equal(existsSync(join(fixtureRoot, 'dist', ASSETS.slice(1))), false, 'An unspecified environment must also exclude unlicensed review assets');
     assert.throws(() => execFileSync(process.execPath, [script], { cwd: fixtureRoot,
       env: { ...env, VERCEL_ENV: 'preview', VERCEL_GIT_COMMIT_REF: 'codex/unapproved-test-branch' }, stdio: 'pipe' }),
     /Unexpected branch for this review build/, 'Preview builds must reject an unrelated branch');
+    const invalidReview = structuredClone(review);
+    invalidReview.projects[0].catalogueCover.localPath = invalidReview.projects[1].catalogueCover.localPath;
+    writeFileSync(join(fixtureRoot, 'data/brochures-aj-urbana.json'), JSON.stringify(invalidReview));
+    assert.throws(() => execFileSync(process.execPath, [script], { cwd: fixtureRoot,
+      env: { ...env, VERCEL_ENV: 'preview' }, stdio: 'pipe' }), /Unverified AJ catalogue cover/,
+    'The build must reject a cover assigned from another project');
+    writeFileSync(join(fixtureRoot, 'data/brochures-aj-urbana.json'), current('data/brochures-aj-urbana.json'));
+    writeFileSync(join(fixtureRoot, review.projects[0].catalogueCover.localPath.slice(1)), 'modified image');
+    assert.throws(() => execFileSync(process.execPath, [script], { cwd: fixtureRoot,
+      env: { ...env, VERCEL_ENV: 'preview' }, stdio: 'pipe' }), /does not match its verified gallery/,
+    'The build must reject an altered cover asset');
   } finally {
     rmSync(fixtureRoot, { recursive: true, force: true });
   }
