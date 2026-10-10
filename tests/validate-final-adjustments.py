@@ -12,6 +12,7 @@ import subprocess
 from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
+from brochure_review_validation import BASELINE as REVIEW_BASELINE, verified_public_page
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -75,8 +76,10 @@ def gallery_without_source_captions(text):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--baseline', default='1465b49')
+    parser.add_argument('--brochure-review', action='store_true',
+                        help='Audit the exact eight brochure exceptions against the fixed completed integration')
     args = parser.parse_args()
-    ref = args.baseline
+    ref = REVIEW_BASELINE if args.brochure_review else args.baseline
     projects = json.loads((ROOT / 'data/proyectos.json').read_text())
     old_projects = json.loads(baseline('data/proyectos.json', ref))
     research_bytes = (ROOT / 'data/fichas-proyectos.json').read_bytes()
@@ -111,11 +114,16 @@ def main():
               f'{slug}: fields outside cover metadata changed')
         path = slug + '.html'
         current_text = (ROOT / path).read_text()
+        old_text = baseline(path, ref).decode()
+        if args.brochure_review:
+            current_text, old_text = verified_public_page(current_text, old_text, slug)
         integrity_text = re.sub(r'<a class="(?:button button-outline|mortgage-project-cta)" href="/comparador-hipotecario.html\?proyecto=' + re.escape(slug) + r'">Simular crédito hipotecario</a>', '', current_text)
         integrity_text = integrity_text.replace('<link rel="stylesheet" href="/assets/css/project-finance.css">\n', '')
-        old_text = baseline(path, ref).decode()
-        check(integrity_text == with_current_navigation(gallery_without_source_captions(old_text)),
-              f'{slug}: detail changed beyond gallery captions and approved main navigation')
+        if args.brochure_review:
+            check(current_text == old_text, f'{slug}: public detail differs from the fixed integration baseline')
+        else:
+            check(integrity_text == with_current_navigation(gallery_without_source_captions(old_text)),
+                  f'{slug}: detail changed beyond gallery captions and approved main navigation')
         check(not any('Fuente oficial' in caption for caption in CAPTION.findall(current_text)),
               f'{slug}: repetitive visible gallery source caption remains')
         captions_removed += len(CAPTION.findall(old_text)) - len(CAPTION.findall(current_text))
@@ -188,8 +196,11 @@ def main():
     return {
         'result': 'passed', 'scope': 'structural and baseline file integrity; browser checks separate',
         'baselineCommit': git('rev-parse', ref).decode().strip(), 'projects': len(projects),
+        'brochureReviewMode': args.brochure_review,
         'officialCovers': len(covers), 'placeholders': len(placeholders), 'placeholderSlugs': placeholders,
         'detailPagesPreserved': len(projects), 'captionsRemoved': captions_removed,
+        **({'publicFallbackPagesPreserved': len(projects), 'sourcePagesByteIdentical': len(projects) - 8,
+            'exactBrochureSourceExceptions': 8} if args.brochure_review else {}),
         'researchImageRecordsPreserved': gallery_images, 'originalAssetFilesPreserved': len(asset_paths),
         'mapsPreserved': maps, 'embeddedTourInstancesPreserved': tours,
         'researchMetadataUnchanged': True, 'commercialDataUnchanged': True,

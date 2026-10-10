@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync, rmSync, copyFileSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync, rmSync, copyFileSync, cpSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -18,6 +18,8 @@ const BASELINE = '045fe182ef5d2ad2206df303ba74330aa747050d';
 const DATE = '2026-10-10';
 const NOW = Date.parse('2026-10-10T15:00:00Z');
 const ASSETS = '/assets/propiedades/aj-urbana-preview/';
+const INGEVEC_ASSETS = '/assets/propiedades/ingevec-preview/';
+const INGEVEC_REVIEW = new Set(['centenario-1', 'tocornal', 'vivaceta']);
 const CSS = 'assets/css/aj-brochure-preview.css';
 const SOURCE_DOCUMENTS = {
   'downtown-san-martin': { sha256: 'a5c95f31e3f90b365d0b8edd8340bd6fb7bfdb28172cd30e59dfef854e6643f4', pages: 38, modelPages: [19,20,21,22,23,24,26,27,28,29,30,31,32,33,34,35,36,37,38] },
@@ -142,7 +144,7 @@ const PRINTED_MODELS = {
   ],
 };
 
-test('AJ review preserves all 148 catalogue objects, all historical research and 143 other fichas exactly', () => {
+test('AJ review preserves all 148 catalogue objects, all historical research and 140 other fichas exactly', () => {
   assert.equal(git('rev-parse', BASELINE).toString().trim(), BASELINE);
   assert.equal(catalogue.length, 148);
   assert.equal(new Set(catalogue.map((project) => project.slug)).size, 148);
@@ -154,11 +156,11 @@ test('AJ review preserves all 148 catalogue objects, all historical research and
   assert.equal(ledger.length, 148);
   let protectedPages = 0;
   for (const project of catalogue) {
-    if (FOCUS.has(project.slug)) continue;
+    if (FOCUS.has(project.slug) || INGEVEC_REVIEW.has(project.slug)) continue;
     unchanged(project.slug + '.html');
     protectedPages++;
   }
-  assert.equal(protectedPages, 143);
+  assert.equal(protectedPages, 140);
 });
 
 test('531 existing assets, API handlers, financial engines and global public pages remain byte identical', () => {
@@ -168,9 +170,10 @@ test('531 existing assets, API handlers, financial engines and global public pag
   for (const prefix of ['api', 'lib']) for (const { file } of baselineTree(prefix)) unchanged(file);
   for (const file of ['data/hipotecario.json', 'data/catalogo-original-fichas.json', 'sitemap.xml', 'robots.txt', 'vercel.json']) unchanged(file);
   for (const { file } of baselineTree()) {
-    if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5))) unchanged(file);
+    if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
-  assert.deepEqual(listFiles('assets').filter((file) => !file.startsWith(ASSETS.slice(1)) && file !== CSS), assets.map(({ file }) => file).sort());
+  assert.deepEqual(listFiles('assets').filter((file) => !file.startsWith(ASSETS.slice(1)) &&
+    !file.startsWith(INGEVEC_ASSETS.slice(1)) && file !== CSS), assets.map(({ file }) => file).sort());
 });
 
 test('five original documents and 78 unique models retain exact identifiers, source pages and original SHA provenance', () => {
@@ -369,10 +372,25 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     writeFileSync(join(fixtureRoot, 'data/proyectos.json'), current('data/proyectos.json'));
     writeFileSync(join(fixtureRoot, 'data/hipotecario.json'), current('data/hipotecario.json'));
     writeFileSync(join(fixtureRoot, 'data/brochures-aj-urbana.json'), current('data/brochures-aj-urbana.json'));
+    cpSync(resolve(ROOT, ASSETS.slice(1)), join(fixtureRoot, ASSETS.slice(1)), { recursive: true });
     for (const record of review.projects) {
       const asset = record.catalogueCover.localPath.slice(1);
       mkdirSync(join(fixtureRoot, asset, '..'), { recursive: true });
       writeFileSync(join(fixtureRoot, asset), current(asset));
+    }
+    // The shared Preview packager also checks the later, separately scoped
+    // Ingevec cover manifest. Supply those real covers/pages in this fixture
+    // without weakening the AJ assertions or touching the workspace dist.
+    if (existsSync(resolve(ROOT, 'data/brochures-ingevec.json'))) {
+      const ingevec = json('data/brochures-ingevec.json');
+      writeFileSync(join(fixtureRoot, 'data/brochures-ingevec.json'), current('data/brochures-ingevec.json'));
+      cpSync(resolve(ROOT, INGEVEC_ASSETS.slice(1)), join(fixtureRoot, INGEVEC_ASSETS.slice(1)), { recursive: true });
+      for (const record of ingevec.projects) {
+        const asset = record.catalogueCover.localPath.slice(1);
+        mkdirSync(join(fixtureRoot, asset, '..'), { recursive: true });
+        writeFileSync(join(fixtureRoot, asset), current(asset));
+        writeFileSync(join(fixtureRoot, record.slug + '.html'), current(record.slug + '.html'));
+      }
     }
     writeFileSync(join(fixtureRoot, 'sitemap.xml'), current('sitemap.xml'));
     writeFileSync(join(fixtureRoot, 'robots.txt'), current('robots.txt'));
@@ -388,6 +406,14 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     let changedCovers = 0;
     for (let index = 0; index < catalogue.length; index++) {
       const original = catalogue[index], published = previewCatalogue[index];
+      if (INGEVEC_REVIEW.has(original.slug)) {
+        const ingevec = json('data/brochures-ingevec.json').projects.find(record => record.slug === original.slug);
+        assert.equal(published.imagenPrincipal, ingevec.catalogueCover.localPath);
+        assert.equal(published.imagenAlt, ingevec.catalogueCover.alt);
+        assert.deepEqual({ ...published, imagenPrincipal: original.imagenPrincipal, imagenAlt: original.imagenAlt }, original,
+          original.slug + ': the separately audited Ingevec exception changes only the Preview cover');
+        continue;
+      }
       if (!FOCUS.has(original.slug)) { assert.deepEqual(published, original); continue; }
       const record = records.get(original.slug), cover = record.catalogueCover;
       const image = record.images.find(image => image.localPath === cover.localPath);

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Catalogue-wide navigation, provenance and safe fallback checks."""
+import argparse
 import json
 import re
 from html.parser import HTMLParser
@@ -8,6 +9,11 @@ from urllib.parse import urlparse, parse_qs, unquote
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--site-root', type=Path,
+                    help='Check the actual packaged public DOM/assets while retaining repository provenance')
+args = parser.parse_args()
+SITE_ROOT = args.site_root.resolve() if args.site_root else ROOT
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
 
 class Page(HTMLParser):
@@ -64,7 +70,7 @@ def same_tour(rendered, official):
     return rendered == official
 for project in projects:
     slug = project['slug']
-    path = ROOT / (slug + '.html')
+    path = SITE_ROOT / (slug + '.html')
     assert project['detalleUrl'] == '/' + slug + '.html'
     assert path.is_file(), f'{slug}: missing detail'
     text = path.read_text()
@@ -83,7 +89,7 @@ for project in projects:
             assert href[1:] in page.ids, f'{slug}: broken anchor {href}'
         elif href.startswith('/'):
             parsed = urlparse(href)
-            dest = ROOT / (unquote(parsed.path).lstrip('/') or 'index.html')
+            dest = SITE_ROOT / (unquote(parsed.path).lstrip('/') or 'index.html')
             assert dest.is_file(), f'{slug}: broken internal link {href}'
             checked_links += 1
         elif href.startswith('https:'):
@@ -91,7 +97,7 @@ for project in projects:
     for img in page.images:
         assert img.get('alt'), f'{slug}: image without accessible description'
         if img.get('src', '').startswith('/'):
-            assert (ROOT / img['src'].lstrip('/')).is_file(), f'{slug}: missing local image'
+            assert (SITE_ROOT / img['src'].lstrip('/')).is_file(), f'{slug}: missing local image'
     record = records[slug]
     for image in record.get('images', []):
         assert image.get('sourceUrl', '').startswith('https://'), f'{slug}: official image without provenance'
@@ -149,9 +155,9 @@ for project in projects:
             assert 'Precio desde</span><strong><span class="pending">' in text, f'{slug}: historical price shown as current'
         for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
             assert json.loads(ld)['@type'] == 'WebPage'
-sitemap = ET.fromstring((ROOT / 'sitemap.xml').read_text())
+sitemap = ET.fromstring((SITE_ROOT / 'sitemap.xml').read_text())
 urls = [x.text for x in sitemap.findall('.//{*}loc')]
 assert len(urls) == len(set(urls))
 assert all('https://sollahms.cl' + p['detalleUrl'] in urls for p in projects)
-assert 'fetch(\'/data/proyectos.json\')' in (ROOT / 'agenda-asesoria.html').read_text(), 'Booking still has a limited hardcoded project list'
-print(json.dumps({'projects': len(projects), 'pages': len(ledger), 'internalLinksChecked': checked_links, 'newVerifiedMaps': new_maps, 'verifiedMaps': maps, 'officialContextReferenceMaps': context_reference_maps, 'sitemapUrls': len(urls), 'result': 'passed'}))
+assert 'fetch(\'/data/proyectos.json\')' in (SITE_ROOT / 'agenda-asesoria.html').read_text(), 'Booking still has a limited hardcoded project list'
+print(json.dumps({'projects': len(projects), 'pages': len(ledger), 'internalLinksChecked': checked_links, 'newVerifiedMaps': new_maps, 'verifiedMaps': maps, 'officialContextReferenceMaps': context_reference_maps, 'sitemapUrls': len(urls), 'siteRoot': str(SITE_ROOT), 'result': 'passed'}))

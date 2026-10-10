@@ -23,6 +23,9 @@ const FOCUS = new Set(['mapocho-3521', 'mapocho-3521-edificio-a',
 // their catalogue objects and all older assets remain covered here as well.
 const AJ_REVIEW = new Set(['downtown-san-martin', 'edificio-teatinos-750',
   'edificio-vista-amunategui', 'monjitas-690', 'vista-morande']);
+// The three supplied Ingevec brochures receive their own exact baseline and
+// public-fallback audit in ingevec-brochures.test.mjs.
+const INGEVEC_REVIEW = new Set(['centenario-1', 'tocornal', 'vivaceta']);
 const CONTEXT_SOURCES = Object.freeze({
   'mapocho-3521-edificio-a': 'https://euroinmobiliaria.cl/proyectos/mapocho-3521',
   'froilan-roa-5731-torre-norte': 'https://euroinmobiliaria.cl/proyectos/froilan-roa-5731',
@@ -117,7 +120,7 @@ const readPage = (slug, baseline = false) => page((baseline ? old(`${slug}.html`
 const oneId = (parsed, id) => { const found = parsed.id(id); assert.equal(found.length, 1, id); return found[0]; };
 const identity = (parsed, node) => ({ attrs: node.attrs, text: parsed.text(node).replace(/\s+/g, ' ').trim() });
 
-test('fixed baseline: 148 ordered identities, 142 unchanged public objects and 137 untouched research/HTML/ledger rows', () => {
+test('fixed baseline: 148 ordered identities, 142 unchanged public objects and 134 untouched HTML pages', () => {
   assert.match(git('rev-parse', BASELINE).toString(), /^a279744[0-9a-f]{33}\s*$/);
   assert.equal(catalogue.length, 148);
   assert.equal(new Set(catalogue.map((project) => project.slug)).size, 148);
@@ -132,12 +135,13 @@ test('fixed baseline: 148 ordered identities, 142 unchanged public objects and 1
     if (FOCUS.has(project.slug)) continue;
     assert.deepEqual(project, previousProjects.get(project.slug), project.slug);
     if (AJ_REVIEW.has(project.slug)) continue;
-    protectedCount++;
     assert.deepEqual(records.get(project.slug), previousRecords.get(project.slug), project.slug);
     assert.deepEqual(ledger.find((row) => row.slug === project.slug), oldLedger.get(project.slug), project.slug);
+    if (INGEVEC_REVIEW.has(project.slug)) continue;
+    protectedCount++;
     unchangedFile(`${project.slug}.html`);
   }
-  assert.equal(protectedCount, 137);
+  assert.equal(protectedCount, 134);
 });
 
 test('only Mapocho catalogue amenities and explicitly reviewed source/date change; five focus objects remain exact', () => {
@@ -344,7 +348,8 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   }
   assert.equal(newPaths.size, 10);
   const currentAssets = listFiles('assets').filter((file) =>
-    !file.startsWith('assets/propiedades/aj-urbana-preview/') && file !== 'assets/css/aj-brochure-preview.css');
+    !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
+    !file.startsWith('assets/propiedades/ingevec-preview/') && file !== 'assets/css/aj-brochure-preview.css');
   const expected = [...protectedAssets.map(({ file }) => file), ...newPaths].sort();
   assert.deepEqual(currentAssets, expected, 'No other asset additions/deletions are authorized');
 });
@@ -353,7 +358,8 @@ test('project registry, sitemap, financial data/motors, all APIs and global publ
   for (const path of ['lib/project-context.mjs', 'sitemap.xml', 'data/hipotecario.json', 'data/catalogo-original-fichas.json']) unchangedFile(path);
   for (const path of tree(BASELINE, 'api').concat(tree(BASELINE, 'lib')).map(({ file }) => file)) unchangedFile(path);
   for (const { file } of tree(BASELINE, '')) {
-    if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !AJ_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
+    if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) &&
+        !AJ_REVIEW.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
   }
   assert.equal(Object.keys(trustedContexts).length, 148);
   for (const project of catalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });

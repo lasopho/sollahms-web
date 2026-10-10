@@ -15,6 +15,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 import xml.etree.ElementTree as ET
+from brochure_review_validation import (BASELINE as REVIEW_BASELINE, CSS as REVIEW_CSS, public_page,
+                                        verified_public_page, verify_asset)
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -111,17 +113,22 @@ def git_blob(data):
     return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
 
 
-def audit_assets(ref):
+def audit_assets(ref, brochure_review=False):
     protected = []
     for line in git('ls-tree', '-r', ref, '--', 'assets').decode().splitlines():
         metadata, path = line.split('\t', 1)
         expected_blob = metadata.split()[2]
         current = ROOT / path
         check(current.is_file(), f'Existing asset missing: {path}')
-        check(git_blob(current.read_bytes()) == expected_blob, f'Existing asset changed: {path}')
+        if brochure_review and path == REVIEW_CSS:
+            verify_asset(path, current.read_bytes(), baseline(path, ref))
+        else:
+            check(git_blob(current.read_bytes()) == expected_blob, f'Existing asset changed: {path}')
         protected.append(path)
     property_paths = [p for p in protected if p.startswith('assets/propiedades/')]
-    current_properties = sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / 'assets/propiedades').rglob('*') if p.is_file())
+    current_properties = sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / 'assets/propiedades').rglob('*')
+                                if p.is_file() and not (brochure_review and
+                                p.relative_to(ROOT).as_posix().startswith('assets/propiedades/ingevec-preview/')))
     check(current_properties == sorted(property_paths), 'Official photograph set gained/lost a file')
     return len(protected), len(property_paths)
 
@@ -135,8 +142,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--fichas-baseline', default='bd42519')
     parser.add_argument('--comparador-baseline', default='fb01839')
+    parser.add_argument('--brochure-review', action='store_true',
+                        help='Audit the exact eight brochure exceptions against the fixed completed integration')
     args = parser.parse_args()
-    fichas, comparador = args.fichas_baseline, args.comparador_baseline
+    fichas = REVIEW_BASELINE if args.brochure_review else args.fichas_baseline
+    comparador = args.comparador_baseline
     catalogue_bytes = (ROOT / 'data/proyectos.json').read_bytes()
     check(catalogue_bytes == baseline('data/proyectos.json', fichas), 'Catalogue/commercial data or cover metadata changed')
     projects = json.loads(catalogue_bytes)
@@ -147,13 +157,15 @@ def main():
                  'docs/verificacion-fichas.md', 'docs/catalogo-22-validacion-2026-10-01.md']
     for path in protected:
         check((ROOT / path).read_bytes() == baseline(path, fichas), f'Protected fichas file changed: {path}')
-    total_assets, property_assets = audit_assets(fichas)
+    total_assets, property_assets = audit_assets(fichas, args.brochure_review)
     simulations, maps, tours, photographs, featured_styles = 0, 0, 0, 0, 0
     for project in projects:
         slug = project['slug']
         path = slug + '.html'
         current = (ROOT / path).read_text()
         previous = baseline(path, fichas).decode()
+        if args.brochure_review:
+            current, previous = verified_public_page(current, previous, slug)
         matches = SIM_LINK.findall(current)
         check(matches == [slug], f'{slug}: exactly one simulation action for its own verified identifier required')
         stripped = SIM_LINK.sub('', current)
@@ -163,7 +175,13 @@ def main():
             featured_styles += 1
         else:
             check(FEATURED_CSS not in stripped, f'{slug}: unexpected featured styling added')
-        check(stripped == previous, f'{slug}: detail changed beyond its simulation action and approved featured stylesheet')
+        if args.brochure_review:
+            previous_stripped = SIM_LINK.sub('', previous)
+            if slug in FEATURED:
+                previous_stripped = previous_stripped.replace(FEATURED_CSS, '', 1)
+            check(stripped == previous_stripped, f'{slug}: original public detail changed')
+        else:
+            check(stripped == previous, f'{slug}: detail changed beyond its simulation action and approved featured stylesheet')
         page = audit_navigation(current, path)
         old_page = Page(previous)
         images = [node.attrs for node in page.nodes('img')]
@@ -186,16 +204,23 @@ def main():
         simulations += 1
     template = (ROOT / 'templates/project-detail.html').read_text()
     check(SIM_LINK.findall(template) == ['$slug'], 'Reusable detail template simulation context missing/duplicated')
-    check(SIM_LINK.sub('', template).encode() == baseline('templates/project-detail.html', fichas), 'Detail template changed beyond simulation action')
+    previous_template = baseline('templates/project-detail.html', fichas).decode()
+    if args.brochure_review:
+        previous_template = SIM_LINK.sub('', previous_template)
+    check(SIM_LINK.sub('', template) == previous_template, 'Detail template changed beyond simulation action')
     old_locations = sitemap_locations(baseline('sitemap.xml', fichas))
     locations = sitemap_locations((ROOT / 'sitemap.xml').read_bytes())
-    check(len(old_locations) == 153, 'Reviewed baseline must contain 153 sitemap locations')
+    check(len(old_locations) == (154 if args.brochure_review else 153), 'Reviewed baseline sitemap size changed')
     check(len(locations) == len(set(locations)) == 154, 'Integrated sitemap must contain 154 unique pages')
-    check(set(locations) == set(old_locations) | {'https://sollahms.cl/comparador-hipotecario.html'}, 'Integrated sitemap lost pages or adds unexpected URLs')
+    expected_locations = set(old_locations) if args.brochure_review else set(old_locations) | {'https://sollahms.cl/comparador-hipotecario.html'}
+    check(set(locations) == expected_locations, 'Integrated sitemap lost pages or adds unexpected URLs')
     public_pages = ['index.html' if urlparse(loc).path == '/' else urlparse(loc).path.lstrip('/') for loc in locations]
     for path in public_pages:
         check((ROOT / path).is_file(), f'Public page missing: {path}')
-        audit_navigation((ROOT / path).read_text(), path)
+        text = (ROOT / path).read_text()
+        if args.brochure_review:
+            text = public_page(text, path.removesuffix('.html'))
+        audit_navigation(text, path)
     # Only the independently checked UF value/date/review may change financial
     # source records; bank metadata, rates, conditions and evidence dates survive.
     financial = json.loads((ROOT / 'data/hipotecario.json').read_bytes())
@@ -210,7 +235,10 @@ def main():
     for path in ['assets/js/mortgage-engine.mjs', 'assets/js/mortgage-data.mjs', 'docs/cmf-fuentes-hipotecarias-2026-10-09.md']:
         check((ROOT / path).read_bytes() == baseline(path, comparador), f'Existing financial engine/source evidence changed: {path}')
     data_changes = git('diff', '--name-only', fichas, '--', 'data').decode().splitlines()
-    check(all(path == 'data/hipotecario.json' for path in data_changes), 'An unapproved data source changed')
+    allowed_data_changes = {'data/hipotecario.json'}
+    if args.brochure_review:
+        allowed_data_changes.add('data/brochures-ingevec.json')
+    check(all(path in allowed_data_changes for path in data_changes), 'An unapproved data source changed')
     catalog = (ROOT / 'proyectos.html').read_text()
     check('>ASSET PORTAFOLIO<' in catalog and '>Catálogo inmobiliario<' in catalog, 'Approved catalogue titles missing')
     check('Explora las alternativas disponibles y filtra el catálogo según ubicación o estado del proyecto.' in catalog, 'Exact catalogue description changed')
@@ -218,11 +246,18 @@ def main():
         'result': 'passed', 'scope': 'structural and baseline byte/file integrity; browser QA separate',
         'fichasBaseline': git('rev-parse', fichas).decode().strip(),
         'comparadorBaseline': git('rev-parse', comparador).decode().strip(),
+        'brochureReviewMode': args.brochure_review,
         'projects': len(projects), 'simulationActions': simulations,
-        'detailPagesOtherwiseByteIdentical': simulations, 'featuredStylesheetLinksAdded': featured_styles,
+        **({'publicFallbackPagesPreserved': simulations, 'sourcePagesByteIdentical': simulations - 8,
+            'exactBrochureSourceExceptions': 8} if args.brochure_review else
+           {'detailPagesOtherwiseByteIdentical': simulations}),
+        'featuredStylesheetLinksAdded': 0 if args.brochure_review else featured_styles,
+        'featuredStylesheetLinksVerified': featured_styles,
         'mapsPreserved': maps, 'embeddedTourInstancesPreserved': tours,
         'detailImageElementsPreserved': photographs, 'originalAssetFilesPreserved': total_assets,
-        'officialPhotographFilesPreserved': property_assets, 'publicPagesWithBothMenusChecked': len(public_pages),
+        **({'propertyAssetFilesPreserved': property_assets} if args.brochure_review else
+           {'officialPhotographFilesPreserved': property_assets}),
+        'publicPagesWithBothMenusChecked': len(public_pages),
         'sitemapPagesPreserved': len(old_locations), 'sitemapPagesIntegrated': len(locations),
         'commercialDataUnchanged': True, 'researchSourcesUnchanged': True, 'bookingUnchanged': True,
         'optionalRutContactUnchanged': True, 'mortgageMathAndBankReferencesUnchanged': True,

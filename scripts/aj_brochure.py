@@ -31,18 +31,36 @@ def documentary_list(items):
 
 
 def augment_page(page, slug):
-    if not MANIFEST.is_file():
-        return page
-    record = next((p for p in json.loads(MANIFEST.read_text())['projects'] if p['slug'] == slug), None)
-    if not record:
-        return page
+    for manifest, namespace, builder in [(MANIFEST, 'AJ', 'AJ Urbana'),
+            (ROOT / 'data/brochures-ingevec.json', 'INGEVEC', 'Ingevec Inmobiliaria')]:
+        if not manifest.is_file():
+            continue
+        record = next((p for p in json.loads(manifest.read_text())['projects'] if p['slug'] == slug), None)
+        if record:
+            return augment_record(page, record, namespace, builder)
+    return page
+
+
+def augment_record(page, record, namespace, builder):
+    # Both batches share the existing premium presentation. Their separate
+    # markers allow the packager to reproduce the original public fallback.
+    def preview(value):
+        return f'<!--{namespace}_PREVIEW_START-->' + value + f'<!--{namespace}_PREVIEW_END-->'
+
+    def public(value):
+        return f'<!--{namespace}_PUBLIC_START-->' + value + f'<!--{namespace}_PUBLIC_END-->'
+
     page = page.replace('</head>', preview('<link rel="stylesheet" href="/assets/css/aj-brochure-preview.css?v=20261010">') + '</head>')
-    page = page.replace('<a href="#recorrido">', preview('<a href="#modelos">Modelos y planos</a>') + '<a href="#recorrido">', 1)
+    page = page.replace('<a href="#recorrido">', preview('<a href="#modelos">Modelos y distribuciones</a>') + '<a href="#recorrido">', 1)
     if record.get('hero'):
-        # These two fichas previously had no official image. The fallback page
-        # remains byte-identical after removing the preview block.
+        # A better reviewed hero is isolated from the original public image.
+        # Removing preview blocks reconstructs the public fallback exactly.
         hero = f'<img class="hero-image aj-hero" src="{esc(record["hero"])}" alt="Fachada de {esc(record["name"])} — render ilustrativo del brochure" fetchpriority="high" decoding="async">'
-        page = page.replace('<div class="hero-shade">', preview(hero) + '<div class="hero-shade">', 1)
+        original = re.search(r'<img class="hero-image"[^>]*>', page)
+        if original:
+            page = page[:original.start()] + public(original[0]) + preview(hero) + page[original.end():]
+        else:
+            page = page.replace('<div class="hero-shade">', preview(hero) + '<div class="hero-shade">', 1)
     images = '<div class="gallery-grid aj-gallery">'
     for image in record['images']:
         caption = f'{image["caption"]} · Brochure, pág. {image["sourcePage"]}'
@@ -51,7 +69,11 @@ def augment_page(page, slug):
     gallery = re.search(r'(<section id="galeria"[^>]*>)(.*?)(</section>)', page, re.S)
     old = gallery[2]
     if 'gallery-grid' in old:
-        new = old + '<div class="aj-gallery-heading"><h3>Imágenes del brochure</h3><p>Representaciones ilustrativas del proyecto. No acreditan su estado actual ni la disponibilidad de una unidad.</p></div>' + images
+        retained = old
+        for image in record['images']:
+            if image.get('replaces'):
+                retained = re.sub(r'<figure>(?:(?!</figure>).)*' + re.escape(esc(image['replaces'])) + r'(?:(?!</figure>).)*</figure>', '', retained, flags=re.S)
+        new = retained + '<div class="aj-gallery-heading"><h3>Imágenes del brochure</h3><p>Representaciones ilustrativas del proyecto. No acreditan su estado actual ni la disponibilidad de una unidad.</p></div>' + images
     else:
         heading = '<p class="eyebrow">Imágenes del proyecto</p><h2>Galería del proyecto</h2>'
         new = heading + '<p>Renders ilustrativos del brochure. Consulta con la inmobiliaria las fotografías del estado actual del proyecto.</p>' + images
@@ -59,15 +81,26 @@ def augment_page(page, slug):
     groups = {}
     for model in record['models']:
         groups.setdefault(model['tipologia'], []).append(model)
-    content = '<section id="modelos" class="detail-section aj-models" aria-labelledby="modelos-title"><p class="eyebrow">Diseño y distribución</p><h2 id="modelos-title">Modelos y planos</h2>'
+    model_class = 'detail-section aj-models' + (' ingevec-models' if namespace == 'INGEVEC' else '')
+    content = f'<section id="modelos" class="{model_class}" aria-labelledby="modelos-title"><p class="eyebrow">Diseño y distribución</p><h2 id="modelos-title">Modelos y distribuciones</h2>'
     content += f'<p class="lead">{len(record["models"])} modelos documentados en el brochure de {esc(record["name"])}.</p><div class="aj-scope"><p>Información referencial del brochure, con superficies aproximadas. Estos modelos no acreditan disponibilidad actual. Los precios, el estado comercial y la entrega se consultan en la información vigente de la ficha.</p></div>'
     for typology, models in groups.items():
         content += f'<details class="aj-typology"><summary><span>{esc(typology)}</span><span class="aj-count">{len(models)} {"modelo" if len(models) == 1 else "modelos"}</span></summary><div class="aj-model-list">'
         for model in models:
             plan = model['plan']
-            name = 'Modelo ' + model['modelo']
-            content += f'<details class="aj-model" id="modelo-{esc(model["modelo"].lower())}"><summary><span>{esc(name)}<small>{esc(model["orientacion"])} · Pisos {esc(model["pisos"])}</small></span><span class="aj-total">{area(model["superficie_total_m2"])}<small>Total según brochure</small></span></summary><div class="aj-model-content">'
-            content += '<dl class="aj-metrics">' + ''.join(f'<div><dt>{esc(label)}</dt><dd>{value}</dd></div>' for label, value in [('Útil', area(model['superficie_util_m2'])), ('Terraza', area(model['terraza_m2'])), ('Total impreso', area(model['superficie_total_m2']))]) + '</dl>'
+            name = 'Modelo ' + model.get('label', model['modelo'])
+            orientation = model.get('orientacion') or 'Orientación no indicada'
+            floor = ' · Pisos ' + str(model['pisos']) if model.get('pisos') else ''
+            content += f'<details class="aj-model" id="modelo-{esc(model["modelo"].lower())}"><summary><span>{esc(name)}<small>{esc(orientation + floor)}</small></span><span class="aj-total">{area(model["superficie_total_m2"])}<small>Total según brochure</small></span></summary><div class="aj-model-content">'
+            typology_numbers = re.search(r'(\d+) dormitorio.*?(\d+) baño', typology)
+            bedrooms = model.get('dormitorios', int(typology_numbers[1]) if typology_numbers else None)
+            bathrooms = model.get('banos', int(typology_numbers[2]) if typology_numbers else None)
+            bedrooms_text = 'Estudio' if typology == 'Estudio' or bedrooms == 0 else str(bedrooms) if bedrooms is not None else 'Por confirmar'
+            bathrooms_text = str(bathrooms) if bathrooms is not None else 'Por confirmar'
+            metrics = [('Útil', area(model['superficie_util_m2'])), ('Terraza', area(model['terraza_m2'])), ('Total impreso', area(model['superficie_total_m2']))]
+            if namespace == 'INGEVEC':
+                metrics += [('Dormitorios', bedrooms_text), ('Baños', bathrooms_text), ('Orientación', model.get('orientacion') or 'No indicada')]
+            content += '<dl class="aj-metrics">' + ''.join(f'<div><dt>{esc(label)}</dt><dd>{esc(value)}</dd></div>' for label, value in metrics) + '</dl>'
             notes = model.get('notes', []) + [model[key] for key in ['advertencia', 'excepcion'] if model.get(key)]
             if notes:
                 content += '<div class="aj-model-note">' + ''.join(f'<p>{esc(note)}</p>' for note in dict.fromkeys(notes)) + '</div>'
@@ -83,7 +116,7 @@ def augment_page(page, slug):
     new += '<h3>Terminaciones y características</h3>' + documentary_list(record['finishes'] + record['features']) + '</div>'
     page = page[:equipment.start()] + equipment[1] + public(old) + preview(new) + equipment[3] + page[equipment.end():]
     sources = '<div class="aj-source"><h3>Fuente documental de modelos e imágenes</h3>'
-    sources += f'<p>{esc(record["document"]["fileName"])} · AJ Urbana. Revisado el <time datetime="2026-10-10">2026-10-10</time>. Las superficies, orientaciones y planos se contrastaron con sus páginas originales; no se utilizan como oferta comercial vigente.</p>'
+    sources += f'<p>{esc(record["document"]["fileName"])} · {esc(builder)}. Revisado el <time datetime="2026-10-10">2026-10-10</time>. Las superficies, orientaciones y planos se contrastaron con sus páginas originales; no se utilizan como oferta comercial vigente.</p>'
     sources += '<details><summary>Observaciones del brochure y datos por confirmar</summary><ul>' + ''.join(f'<li>{esc(note)}</li>' for note in record['warnings']) + '</ul></details></div>'
     page = page.replace('</section>\n        <a class="back-link"', preview(sources) + '</section>\n        <a class="back-link"', 1)
     return page
