@@ -1,6 +1,6 @@
-# Registro de fichas Sollahms — 2026-10-09
+# Registro de fichas Sollahms — 2026-10-10
 
-Rama: `codex/fichas-proyectos-completas`. Sin merge ni despliegue de producción.
+Rama: `codex/integracion-financiera-sollahms`. Sin merge ni despliegue de producción.
 
 - Catálogo real: 148 proyectos.
 - Fichas desarrolladas: 148 (4 destacadas preexistentes, 144 nuevas).
@@ -9,7 +9,7 @@ Rama: `codex/fichas-proyectos-completas`. Sin merge ni despliegue de producción
 - Proyectos con apartado de mapa: 137.
 - Proyectos con al menos un dato pendiente: 138.
 
-Una ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los recorridos se cargan a petición y tienen un enlace al original.
+Una ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los recorridos se cargan a petición y tienen un enlace al original. Los apartados de información oficial relacionada tienen fuente, fecha y alcance propios: sus precios, imágenes y mapas generales no se atribuyen a una torre o producto residencial sin verificar ni alimentan su evaluación financiera.
 
 ## Inventario completo
 
@@ -83,7 +83,7 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Edificio Playa Serena](../playa-serena.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/playa-serena/) | verified | Sí | No verificado | — |
 | [Don Tomás](../don-tomas.html) | Crescer | [Oficial](https://crescer.cl/project/dontomas) | verified | Sí | No verificado | Precio actual en UF, Estado, Entrega, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Entrega actual: web aún indica Segundo semestre 2025, Recorrido virtual oficial específico no localizado, Precio vigente y disponibilidad, Fecha de entrega |
 | [Plaza Las Condes](../plaza-las-condes.html) | Sento | [Oficial](https://sento.cl/proyectos/plaza-las-condes-7083/) | verified | Sí | No verificado | Entrega, Disponibilidad exacta por tipología, Fecha exacta de entrega, Cantidad de pisos, Cantidad de departamentos |
-| [Mapocho 3521](../mapocho-3521.html) | Euro | [Oficial](https://www.euroinmobiliaria.cl/proyectos/mapocho-3521) | verified | Sí | No verificado | Existencia de recorrido virtual oficial, Recorrido oficial enlazado no disponible: HTTP404 |
+| [Mapocho 3521](../mapocho-3521.html) | Euro | [Oficial](https://euroinmobiliaria.cl/proyectos/mapocho-3521) | verified | Sí | No verificado | Existencia de recorrido virtual oficial, Recorrido oficial enlazado no disponible: HTTP404 |
 | [Jofré 157](../jofre-135.html) | Sento | [Oficial](https://sento.cl/proyectos/jofre-157/) | verified | Pendiente | Sí | Precio actual en UF, Superficie útil, Superficie total, Disponibilidad exacta por tipología, Acceso exacto del proyecto: 135 o 157, Precio y disponibilidad comercial actual, Superficie útil y total globales pendientes de confirmación: Encabezado total 20,21 a 55,33  m; plantas publicadas: útil 20,77–48,43 m² y total 20,77–55,33 m². No se acredita que ambos rangos correspondan a la misma disponibilidad., Superficie mínima de las unidades actualmente disponibles |
 | [Edificio Irarrázaval 1970](../irarrazaval.html) | Norte Verde | [Oficial](https://norte-verde.cl/wp-content/uploads/2026/01/IRARRAZAVAL_BROCHURE.pdf) | verified | Sí | No verificado | Precio actual en UF, Tipologías disponibles, Estado, Entrega, Equipamiento y áreas comunes, Superficie útil, Superficie total, Dormitorios, Baños, Fotografías oficiales, Precio vigente, Stock y tipologías disponibles actualmente, Estado comercial y entrega actual, Superficies útiles y totales, Equipamiento vigente, Fotografías actuales |
 | [Edificio Parque Quinta](../parque-quinta.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/parque-quinta/) | verified | Pendiente | No verificado | Comuna, Comuna administrativa exacta: fuente oficial usa Santiago Centro, Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan |
@@ -163,6 +163,15 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Edificio Atelier Prat Oficinas](../atelier-prat-oficinas.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/atelier-prat-oficinas/) | verified | Sí | No verificado | — |
 | [Edificio Corrientes Oficinas](../corrientes-oficinas.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/corrientes-oficinas/) | verified | Sí | No verificado | — |
 | [BOX Santiago](../box-santiago.html) | León | [Oficial](https://www.ileon.cl/proyectos/box-santiago/) | verified | Sí | No verificado | Entrega, Equipamiento y áreas comunes, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
+
+## Fuentes relacionadas con alcance separado
+
+| Ficha | Fuente relacionada | Alcance | Revisión | Imágenes | Mapa de referencia |
+| --- | --- | --- | --- | --- | --- |
+| [Mapocho 3521 - Edificio A](../mapocho-3521-edificio-a.html#contexto-oficial) | [Mapocho 3521](https://euroinmobiliaria.cl/proyectos/mapocho-3521) | conjunto_sin_etapa | 2026-10-10 | 6 | Sí, sólo de la fuente relacionada |
+| [Froilán Roa 5731 - Torre Norte](../froilan-roa-5731-torre-norte.html#contexto-oficial) | [Froilán Roa 5731](https://euroinmobiliaria.cl/proyectos/froilan-roa-5731) | conjunto_sin_etapa | 2026-10-10 | 4 | Sí, sólo de la fuente relacionada |
+| [Froilán Roa 5731 - Torre Sur](../froilan-roa-5731-torre-sur.html#contexto-oficial) | [Froilán Roa 5731](https://euroinmobiliaria.cl/proyectos/froilan-roa-5731) | conjunto_sin_etapa | 2026-10-10 | 4 | Sí, sólo de la fuente relacionada |
+| [Edificio Verne](../edificio-verne.html#contexto-oficial) | [Verne Oficinas](https://norte-verde.cl/proyecto/verne-oficinas/) | oficinas | 2026-10-10 | 4 | Sí, sólo de la fuente relacionada |
 
 ## Continuación reproducible
 

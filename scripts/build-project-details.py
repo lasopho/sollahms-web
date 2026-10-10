@@ -79,6 +79,33 @@ def source_content(project, research):
         source += '<details><summary>Datos pendientes de verificación (' + str(len(fields)) + ')</summary><ul>' + ''.join('<li>' + esc(x) + '</li>' for x in fields) + '</ul></details>'
     return source
 
+def official_context_content(research):
+    """Related official material never becomes a stage's commercial offer."""
+    context = research.get('officialContext', {})
+    source = secure_url(context.get('sourceUrl'))
+    if not source or context.get('sourceStatus') != 'verified':
+        return ''
+    title = context.get('title') or 'Información oficial relacionada'
+    content = '<section id="contexto-oficial" class="detail-section" aria-labelledby="contexto-oficial-title"><p class="eyebrow">Fuente oficial relacionada</p>'
+    content += f'<h2 id="contexto-oficial-title">{esc(title)}</h2><div class="pending-panel"><p>{esc(context.get("limitation", ""))}</p></div>'
+    content += '<dl class="spec-grid">' + ''.join(f'<div><dt>{esc(item["label"])}</dt><dd>{esc(item["value"])}</dd></div>' for item in context.get('facts', [])) + '</dl>'
+    images = [item for item in context.get('images', []) if secure_url(item.get('url')) and secure_url(item.get('sourceUrl'))]
+    if images:
+        content += '<h3>Imágenes oficiales relacionadas</h3>'
+        content += f'<p>{esc(context.get("imageNote") or "Material de la fuente relacionada; no acredita una unidad o etapa específica.")}</p><div class="gallery-grid">'
+        for item in images:
+            local = item.get('localPath')
+            url = local if isinstance(local, str) and local.startswith('/assets/propiedades/catalogo/') and (ROOT / local.lstrip('/')).is_file() else item['url']
+            content += f'<figure><a href="{esc(url)}" target="_blank" rel="noopener noreferrer"><img src="{esc(url)}" alt="{esc(item.get("alt") or context.get("name"))}" loading="lazy" decoding="async"></a></figure>'
+        content += '</div>'
+    if context.get('mapQuery'):
+        query = context['mapQuery']
+        maps_link = 'https://www.google.com/maps/search/?' + urlencode({'api': 1, 'query': query})
+        embed_link = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
+        content += f'<h3>Ubicación publicada en esta fuente</h3><p>{esc(query)}</p><div class="embed-shell map-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(embed_link)}" data-embed-title="Mapa de {esc(context["name"])} — fuente relacionada">Mostrar mapa de la fuente relacionada</button></div><a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir dirección relacionada en Google Maps ↗</a><p class="map-note">{esc(context.get("mapNote") or "Dirección general publicada por la inmobiliaria. El acceso de la etapa específica sigue pendiente de verificación; el marcador lo determina Google Maps.")}</p>'
+    content += f'<p><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Consultar esta fuente oficial ↗</a> · Revisión de este apartado: <time datetime="{esc(context["checkedAt"])}">{esc(context["checkedAt"])}</time>.</p></section>'
+    return content
+
 def render(project, research, template):
     name = project['nombre']
     slug = project['slug']
@@ -129,7 +156,8 @@ def render(project, research, template):
         parsed = urlparse(url)
         can_embed = tour.get('embedStatus') == 'allowed' or (not tour.get('embedStatus') and parsed.hostname in ['my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com'])
         embed = f'<div class="embed-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(url)}" data-embed-title="{esc(title)}">Iniciar recorrido interactivo</button></div>' if can_embed else f'<div class="pending-panel"><p>La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.</p><a class="button button-outline" href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar experiencia oficial ↗</a></div>'
-        tours.append(f'<article class="tour-card"><h3>{esc(title)}</h3>{embed}<div class="embed-caption"><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></div></article>')
+        limitation = f'<div class="pending-panel"><p>{esc(tour["identityLimitation"])}</p></div>' if tour.get('identityLimitation') else ''
+        tours.append(f'<article class="tour-card"><h3>{esc(title)}</h3>{limitation}{embed}<div class="embed-caption"><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></div></article>')
     tours_html = ''.join(tours) or '<div class="pending-panel"><p>No se ha verificado un recorrido virtual oficial para este proyecto. Su disponibilidad está pendiente de confirmación.</p></div>'
     query = ', '.join(str(x) for x in [address, field(project, research, 'comuna'), field(project, research, 'region'), 'Chile'] if x)
     # An address requires both official address and official commune. No approximate coordinates.
@@ -165,12 +193,15 @@ def render(project, research, template):
     if 'etapas' in research.get('verifiedFields', []) and project.get('etapas'):
         stages = '<h3>Etapas del proyecto</h3><ul>' + ''.join('<li>' + esc(s.get('nombre', '')) + ': ' + esc(s.get('estado', 'Pendiente')) + '</li>' for s in project['etapas']) + '</ul>'
     embed_hosts = sorted({'www.google.com', 'my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com'} | {urlparse(t['url']).hostname for t in research.get('virtualTours', []) if secure_url(t.get('url')) and t.get('embedStatus') == 'allowed'})
-    page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts), overview=overview_html, specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tours=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
+    page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts), overview=overview_html, official_context=official_context_content(research), specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tours=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
     return page, mapped, len(tours)
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--batch', help='Comma-separated builders to regenerate; ledger always covers entire catalogue')
+    parser.add_argument('--slugs', help='Comma-separated existing identifiers to regenerate without changing other details')
+    parser.add_argument('--review-date', default='2026-10-09', help='Date for the generated ledger')
+    parser.add_argument('--branch', default='codex/fichas-proyectos-completas', help='Working branch for the generated ledger')
     args = parser.parse_args()
     projects = json.loads((ROOT / 'data/proyectos.json').read_text())
     records = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
@@ -179,13 +210,17 @@ def main():
     assert set(by_slug) == {p['slug'] for p in projects}, 'Every catalogue project needs a research record'
     template = Template((ROOT / 'templates/project-detail.html').read_text())
     selected = set(args.batch.split(',')) if args.batch else None
+    selected_slugs = set(args.slugs.split(',')) if args.slugs else None
+    assert not (selected and selected_slugs), 'Choose builders or individual slugs'
+    assert selected_slugs is None or selected_slugs <= set(by_slug), 'Unknown project identifier'
+    assert re.fullmatch(r'\d{4}-\d{2}-\d{2}', args.review_date), 'Explicit ledger date required'
     ledger = []
     for project in projects:
         slug = project['slug']
         assert re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug), 'Unsafe slug'
         research = by_slug[slug]
         page, mapped, tours = render(project, research, template)
-        if slug not in FEATURED and (selected is None or project['inmobiliaria'] in selected):
+        if slug not in FEATURED and (selected is None or project['inmobiliaria'] in selected) and (selected_slugs is None or slug in selected_slugs):
             (ROOT / (slug + '.html')).write_text(page)
         project['detalleUrl'] = '/' + slug + '.html'
         actual = (ROOT / (slug + '.html')).read_text() if (ROOT / (slug + '.html')).exists() else ''
@@ -194,12 +229,15 @@ def main():
             mapped = 'www.google.com/maps' in actual
         pending = pending_fields(project, research)
         ledger.append({'slug': slug, 'nombre': project['nombre'], 'inmobiliaria': project['inmobiliaria'], 'detalleUrl': project['detalleUrl'], 'fichaDesarrollada': bool(actual), 'destacadaExistente': slug in FEATURED, 'estadoFuente': research.get('sourceStatus', 'research_pending'), 'fuente': research.get('sourceUrl'), 'fechaRevision': research.get('checkedAt'), 'mapa': mapped, 'matterport': matterport, 'recorridosOficiales': tours, 'pendientes': pending, 'controlCalidad': 'pendiente' if pending else 'datos_verificados'})
+        context = research.get('officialContext')
+        if context and context.get('sourceStatus') == 'verified' and secure_url(context.get('sourceUrl')):
+            ledger[-1]['contextoOficial'] = {'nombre': context['name'], 'alcance': context['scope'], 'fuente': context['sourceUrl'], 'fechaRevision': context['checkedAt'], 'mapaDeReferencia': bool(context.get('mapQuery')), 'imagenesRelacionadas': len(context.get('images', []))}
     (ROOT / 'data/proyectos.json').write_text(json.dumps(projects, ensure_ascii=False, indent=2) + '\n')
     (ROOT / 'data/registro-fichas.json').write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + '\n')
     contexts = {p['slug']: {'name': p['nombre'], 'url': p['detalleUrl']} for p in projects}
     (ROOT / 'lib/project-context.mjs').write_text('// Generated from data/proyectos.json by build-project-details.py.\nexport const projects = Object.freeze(' + json.dumps(contexts, ensure_ascii=False, indent=2).replace('<', '\\u003c') + ');\n')
     # Keep the existing global destinations and append all details exactly once.
-    urls = ['/', '/proyectos.html', '/agenda-asesoria.html', '/contacto.html', '/privacidad.html', '/comparador-hipotecario.html'] + [p['detalleUrl'] for p in projects]
+    urls = ['/', '/proyectos.html', '/agenda-asesoria.html', '/contacto.html', '/privacidad.html'] + [p['detalleUrl'] for p in projects] + ['/comparador-hipotecario.html']
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('  <url><loc>https://sollahms.cl' + esc(url) + '</loc></url>\n' for url in dict.fromkeys(urls)) + '</urlset>\n'
     (ROOT / 'sitemap.xml').write_text(sitemap)
     def cell(value):
@@ -208,10 +246,17 @@ def main():
     maps = sum(r['mapa'] for r in ledger)
     matterports = sum(r['matterport'] for r in ledger)
     unverified = sum(bool(r['pendientes']) for r in ledger)
-    report = f'# Registro de fichas Sollahms — 2026-10-09\n\nRama: `codex/fichas-proyectos-completas`. Sin merge ni despliegue de producción.\n\n- Catálogo real: {len(projects)} proyectos.\n- Fichas desarrolladas: {developed} ({len(FEATURED)} destacadas preexistentes, {developed-len(FEATURED)} nuevas).\n- Fichas por desarrollar: {len(projects)-developed}.\n- Proyectos con Matterport integrado: {matterports}.\n- Proyectos con apartado de mapa: {maps}.\n- Proyectos con al menos un dato pendiente: {unverified}.\n\nUna ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los recorridos se cargan a petición y tienen un enlace al original.\n\n## Inventario completo\n\n| Proyecto / ficha | Inmobiliaria | Fuente oficial | Estado de fuente | Mapa | Matterport | Pendientes |\n| --- | --- | --- | --- | --- | --- | --- |\n'
+    report = f'# Registro de fichas Sollahms — {args.review_date}\n\nRama: `{args.branch}`. Sin merge ni despliegue de producción.\n\n- Catálogo real: {len(projects)} proyectos.\n- Fichas desarrolladas: {developed} ({len(FEATURED)} destacadas preexistentes, {developed-len(FEATURED)} nuevas).\n- Fichas por desarrollar: {len(projects)-developed}.\n- Proyectos con Matterport integrado: {matterports}.\n- Proyectos con apartado de mapa: {maps}.\n- Proyectos con al menos un dato pendiente: {unverified}.\n\nUna ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los recorridos se cargan a petición y tienen un enlace al original. Los apartados de información oficial relacionada tienen fuente, fecha y alcance propios: sus precios, imágenes y mapas generales no se atribuyen a una torre o producto residencial sin verificar ni alimentan su evaluación financiera.\n\n## Inventario completo\n\n| Proyecto / ficha | Inmobiliaria | Fuente oficial | Estado de fuente | Mapa | Matterport | Pendientes |\n| --- | --- | --- | --- | --- | --- | --- |\n'
     for r in ledger:
         source = f'[Oficial]({r["fuente"]})' if secure_url(r.get('fuente')) else 'Por identificar'
         report += f'| [{cell(r["nombre"])}](../{r["slug"]}.html) | {cell(r["inmobiliaria"])} | {source} | {r["estadoFuente"]} | {"Sí" if r["mapa"] else "Pendiente"} | {"Sí" if r["matterport"] else "No verificado"} | {cell(", ".join(r["pendientes"]))} |\n'
+    if any('contextoOficial' in r for r in ledger):
+        report += '\n## Fuentes relacionadas con alcance separado\n\n| Ficha | Fuente relacionada | Alcance | Revisión | Imágenes | Mapa de referencia |\n| --- | --- | --- | --- | --- | --- |\n'
+        for r in ledger:
+            if 'contextoOficial' not in r:
+                continue
+            c = r['contextoOficial']
+            report += f'| [{cell(r["nombre"])}](../{r["slug"]}.html#contexto-oficial) | [{cell(c["nombre"])}]({c["fuente"]}) | {cell(c["alcance"])} | {cell(c["fechaRevision"])} | {c["imagenesRelacionadas"]} | {"Sí, sólo de la fuente relacionada" if c["mapaDeReferencia"] else "No verificado"} |\n'
     report += '\n## Continuación reproducible\n\nEditar `data/fichas-proyectos.json` con nuevas evidencias, incorporando campos en `verifiedFields` únicamente cuando exista respaldo oficial. Actualizar `data/proyectos.json` solo con valores respaldados. Ejecutar `python3 scripts/update-featured-verification.py`, `python3 scripts/build-project-details.py`, `python3 tests/validate-project-details.py` y `node --test tests/booking-project-context.mjs`. Para un lote: `python3 scripts/build-project-details.py --batch Maestra,Ecasa`. El registro y sitemap siempre cubren todo el catálogo. Revisar `docs/verificacion-fichas.md` para pruebas de navegador y límites.\n'
     (ROOT / 'docs/registro-fichas-proyectos.md').write_text(report)
     print(json.dumps({'total': len(projects), 'developed': developed, 'maps': maps, 'matterport': matterports, 'withPendingData': unverified}, ensure_ascii=False))

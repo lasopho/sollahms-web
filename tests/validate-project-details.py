@@ -14,10 +14,13 @@ class Page(HTMLParser):
     def __init__(self, text):
         super().__init__()
         self.links, self.images, self.ids, self.embeds, self.iframes = [], [], [], [], []
+        self.sections, self.embed_sections, self.iframe_sections = [], [], []
         self.headings = 0
         self.feed(text)
     def handle_starttag(self, tag, pairs):
         attrs = dict(pairs)
+        if tag == 'section':
+            self.sections.append(attrs.get('id'))
         if attrs.get('id'):
             self.ids.append(attrs['id'])
         if tag == 'h1':
@@ -28,8 +31,13 @@ class Page(HTMLParser):
             self.images.append(attrs)
         if attrs.get('data-embed-src'):
             self.embeds.append(attrs)
+            self.embed_sections.append(tuple(self.sections))
         if tag == 'iframe':
             self.iframes.append(attrs)
+            self.iframe_sections.append(tuple(self.sections))
+    def handle_endtag(self, tag):
+        if tag == 'section' and self.sections:
+            self.sections.pop()
 
 projects = json.loads((ROOT / 'data/proyectos.json').read_text())
 research = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
@@ -43,6 +51,7 @@ assert all(r['fichaDesarrollada'] for r in ledger), 'A detail page is missing'
 checked_links = 0
 maps = 0
 new_maps = 0
+context_reference_maps = 0
 ledger_by_slug = {entry['slug']: entry for entry in ledger}
 
 def same_tour(rendered, official):
@@ -92,27 +101,42 @@ for project in projects:
     assert host_config, f'{slug}: missing iframe host configuration'
     permitted_hosts = json.loads(host_config[1])
     assert isinstance(permitted_hosts, list) and all(isinstance(host, str) for host in permitted_hosts)
-    embedded_urls = [entry['data-embed-src'] for entry in page.embeds] + [entry.get('src', '') for entry in page.iframes]
+    embedded_urls = [(entry['data-embed-src'], section) for entry, section in zip(page.embeds, page.embed_sections)] + [(entry.get('src', ''), section) for entry, section in zip(page.iframes, page.iframe_sections)]
     project_maps = []
-    for embedded_url in embedded_urls:
+    reference_maps = []
+    for embedded_url, sections in embedded_urls:
         url = urlparse(embedded_url)
         assert url.scheme == 'https' and url.hostname in permitted_hosts and not url.username and not url.password, f'{slug}: unsafe or unapproved iframe host'
         if url.hostname == 'www.google.com':
-            project_maps.append(embedded_url)
-            assert all(key in record['verifiedFields'] for key in ['direccion', 'comuna', 'mapQuery']), f'{slug}: map without verified location'
-            official_address = record.get('updates', {}).get('direccion', project.get('direccion'))
             query = parse_qs(url.query).get('q', [None])[0]
-            assert query and official_address in query, f'{slug}: map diverges from official address'
+            if 'contexto-oficial' in sections:
+                context = record.get('officialContext')
+                assert isinstance(context, dict) and context.get('sourceStatus') == 'verified', f'{slug}: reference map without verified contextual source'
+                assert context.get('scope') in {'conjunto_sin_etapa', 'oficinas'}, f'{slug}: unapproved reference-map scope'
+                source = urlparse(context.get('sourceUrl', ''))
+                assert source.scheme == 'https' and source.hostname and not source.username and not source.password, f'{slug}: reference map without official-source provenance'
+                assert isinstance(context.get('mapQuery'), str) and context['mapQuery'].strip(), f'{slug}: reference map without official contextual address'
+                assert url.path == '/maps' and parse_qs(url.query) == {'output': ['embed'], 'q': [context['mapQuery']]}, f'{slug}: reference map diverges from exact contextual address'
+                reference_maps.append(embedded_url)
+            else:
+                project_maps.append(embedded_url)
+                assert all(key in record['verifiedFields'] for key in ['direccion', 'comuna', 'mapQuery']), f'{slug}: map without verified location'
+                official_address = record.get('updates', {}).get('direccion', project.get('direccion'))
+                assert query and official_address in query, f'{slug}: map diverges from official address'
             assert not re.search(r'-\d{2}\.\d+\s*,\s*-\d{2}\.\d+', query), f'{slug}: approximate coordinates'
         else:
             backed = [tour for tour in record.get('virtualTours', []) if same_tour(embedded_url, tour['url'])]
             assert backed, f'{slug}: embedded tour is not backed by project research'
             assert any(tour.get('embedStatus') == 'allowed' for tour in backed), f'{slug}: tour embedding permission is not verified'
     assert len(project_maps) <= 1, f'{slug}: duplicated map'
+    assert len(reference_maps) <= 1, f'{slug}: duplicated contextual reference map'
+    context_reference_maps += len(reference_maps)
     maps += len(project_maps)
     if slug not in FEATURED:
         new_maps += len(project_maps)
     assert ledger_by_slug[slug]['mapa'] == bool(project_maps), f'{slug}: map audit differs from rendered page'
+    context_ledger = ledger_by_slug[slug].get('contextoOficial', {})
+    assert context_ledger.get('mapaDeReferencia', False) == bool(reference_maps), f'{slug}: reference-map audit differs from rendered page'
     published_links = {entry.get('href') for entry in page.links}
     for tour in record.get('virtualTours', []):
         assert tour['url'] in published_links, f'{slug}: original tour link missing'
@@ -130,4 +154,4 @@ urls = [x.text for x in sitemap.findall('.//{*}loc')]
 assert len(urls) == len(set(urls))
 assert all('https://sollahms.cl' + p['detalleUrl'] in urls for p in projects)
 assert 'fetch(\'/data/proyectos.json\')' in (ROOT / 'agenda-asesoria.html').read_text(), 'Booking still has a limited hardcoded project list'
-print(json.dumps({'projects': len(projects), 'pages': len(ledger), 'internalLinksChecked': checked_links, 'newVerifiedMaps': new_maps, 'verifiedMaps': maps, 'sitemapUrls': len(urls), 'result': 'passed'}))
+print(json.dumps({'projects': len(projects), 'pages': len(ledger), 'internalLinksChecked': checked_links, 'newVerifiedMaps': new_maps, 'verifiedMaps': maps, 'officialContextReferenceMaps': context_reference_maps, 'sitemapUrls': len(urls), 'result': 'passed'}))
