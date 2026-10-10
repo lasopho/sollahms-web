@@ -4,8 +4,10 @@ import vm from 'node:vm';
 import { readFile } from 'node:fs/promises';
 import catalogue from '../data/proyectos.json' with { type: 'json' };
 import publishedDataset from '../data/hipotecario.json' with { type: 'json' };
-import { evaluateProject, validateCapacityInput } from '../assets/js/purchase-capacity.mjs';
+import { evaluateProject, validateCapacityInput, CAPACITY_LIMITS } from '../assets/js/purchase-capacity.mjs';
+import { ufToClp } from '../assets/js/mortgage-engine.mjs';
 import { validateDataset, getUfStatus } from '../assets/js/mortgage-data.mjs';
+import { parseClpAmount, formatClpAmount } from '../assets/js/clp-input.mjs';
 import { chileDate } from '../assets/js/project-finance.mjs';
 import { writeMortgageHandoff, consumeMortgageHandoff, MORTGAGE_HANDOFF_KEY } from '../assets/js/mortgage-handoff.mjs';
 
@@ -28,10 +30,16 @@ class Element {
     this.tagName = tag.toUpperCase(); this.id = id; this.value = value; this.defaultValue = value;
     this.children = []; this.listeners = {}; this.attributes = {}; this.className = '';
     this.hidden = false; this.disabled = false; this.required = false; this._text = '';
+    this.type = 'text'; this.validationMessage = ''; this.selectionStart = 0; this.selectionEnd = 0; this.dataset = {};
   }
   get value() { return this._value; }
   set value(value) { this._value = String(value); }
-  get valueAsNumber() { return this.value.trim() === '' ? NaN : Number(this.value); }
+  get valueAsNumber() { return this.type === 'text' || this.value.trim() === '' ? NaN : Number(this.value); }
+  setCustomValidity(message) { this.validationMessage = String(message); }
+  checkValidity() { return !this.validationMessage; }
+  reportValidity() { return this.checkValidity(); }
+  setSelectionRange(start, end) { this.selectionStart = start; this.selectionEnd = end; }
+  select() { this.setSelectionRange(0, this.value.length); }
   get textContent() { return this._text + this.children.map(child => child.textContent ?? String(child)).join(''); }
   set textContent(value) { this._text = String(value); this.children = []; }
   addEventListener(name, callback) { this.listeners[name] = callback; }
@@ -56,19 +64,25 @@ async function frontend({ projects = catalogue, responses = [response()], defer 
   class Clock extends Date { constructor(...args) { super(...(args.length ? args : [now])); } static now() { return now; } }
   const ids = [...html.matchAll(/\bid="(capacity-[^"]+)"/g)].map(match => match[1]);
   const elements = Object.fromEntries(ids.map(id => [id, new Element('div', id)]));
-  const defaults = { income: '', complement: 'no', second: '', debt: '', savings: '', currency: 'UF', monthly: '',
+  const defaults = { income: '', complement: 'no', second: '', debt: '', savings: '', monthly: '',
     horizon: '0', 'horizon-custom': '', pie: '20', 'pie-custom': '', years: '25', 'years-custom': '', rate: '', convention: 'effective', criterion: '25' };
-  for (const [key, value] of Object.entries(defaults)) { elements['capacity-' + key].value = value; elements['capacity-' + key].defaultValue = value; }
+  for (const [key, value] of Object.entries(defaults)) {
+    const element = elements['capacity-' + key]; element.value = value; element.defaultValue = value;
+    const tag = html.match(new RegExp('<(?:input|select)[^>]*id="capacity-' + key + '"[^>]*>'))?.[0] ?? '';
+    element.type = tag.match(/\btype="([^"]+)"/)?.[1] ?? 'select';
+  }
   elements['capacity-toggle'].setAttribute('aria-expanded', 'false');
   elements['capacity-form'].hidden = true;
   elements['capacity-form'].reset = () => { for (const key of Object.keys(defaults)) elements['capacity-' + key].value = defaults[key]; };
+  elements['capacity-form'].checkValidity = () => Object.values(elements).filter(element => element !== elements['capacity-form']).every(element => element.checkValidity());
+  elements['capacity-form'].reportValidity = () => elements['capacity-form'].checkValidity();
   let changeCount = 0, release;
   const requests = [];
   const context = vm.createContext({
     document: { getElementById: id => elements[id], createElement: tag => new Element(tag) },
     Date: Clock, Intl, sessionStorage: storage, MORTGAGE_HANDOFF_KEY,
     matchMedia: () => ({ matches: true }),
-    validateDataset, validateCapacityInput,
+    validateDataset, validateCapacityInput, CAPACITY_LIMITS, parseClpAmount, formatClpAmount, ufToClp,
     chileDate: instant => chileDate(instant ?? new Clock()),
     getUfStatus: (uf, instant) => getUfStatus(uf, instant ?? new Clock()),
     evaluateProject: (project, input, dataset, instant) => evaluateProject(project, input, dataset, instant ?? new Clock()),
@@ -90,7 +104,11 @@ async function frontend({ projects = catalogue, responses = [response()], defer 
   await settle();
   const field = key => elements['capacity-' + key];
   const set = values => { for (const [key, value] of Object.entries(values)) field(key).value = value; };
-  const change = (values, kind = 'input') => { set(values); field('form').listeners[kind]({ target: field(Object.keys(values)[0]) }); };
+  const change = (values, kind = 'input') => {
+    set(values);
+    for (const key of Object.keys(values)) field(key).listeners[kind]?.({ target: field(key) });
+    field('form').listeners[kind]({ target: field(Object.keys(values)[0]) });
+  };
   const submit = () => field('form').listeners.submit(event());
   const card = project => {
     const article = new Element('article'); const body = new Element('div'); body.className = 'catalog-card-body';
@@ -101,10 +119,12 @@ async function frontend({ projects = catalogue, responses = [response()], defer 
     changeCount: () => changeCount, release: () => release?.(),
     advance: milliseconds => { now += milliseconds; },
     reset: () => field('reset').listeners.click(event()),
+    focus: key => field(key).listeners.focus?.({ target: field(key) }),
+    blur: key => field(key).listeners.blur?.({ target: field(key) }),
     toggle: () => field('toggle').listeners.click(event()),
   };
 }
-const valid = { income: 3500000, savings: 800, years: '20', rate: '4.5' };
+const valid = { income: 3500000, savings: 32908992, years: '20', rate: '4.5' };
 
 // These tests exercise the actual closure/rendering and real financial helpers.
 // The fake DOM models events and output, not viewport layout or browser validity.
@@ -145,7 +165,7 @@ test('actual UI inputs and metrics classify A/B/C/D, with stable compatibility o
   const expensive = { ...fixture, slug: 'expensive-property', precioDesdeUF: 8000 };
   const projects = [pending, expensive, fixture, cheap];
   const ui = await frontend({ projects });
-  for (const [values, expected] of [[valid, 'A'], [{ ...valid, savings: 400 }, 'B'], [{ ...valid, income: 2500000 }, 'C'], [{ ...valid, income: 2500000, savings: 400 }, 'D']]) {
+  for (const [values, expected] of [[valid, 'A'], [{ ...valid, savings: 16454496 }, 'B'], [{ ...valid, income: 2500000 }, 'C'], [{ ...valid, income: 2500000, savings: 16454496 }, 'D']]) {
     ui.change(values); await ui.submit();
     const article = ui.card(fixture);
     assert.match(article.querySelector('.capacity-badge').textContent, new RegExp('^' + expected + '\\.'));
@@ -172,9 +192,9 @@ test('zero rate and custom periods are accepted; invalid custom periods recover 
 
 test('complement, CLP savings, horizon and debts use actual inputs and clear hidden second income', async () => {
   const ui = await frontend({ projects: [fixture] });
-  ui.change({ ...valid, income: 2500000, complement: 'yes', second: 1000000, savings: 32908992, currency: 'CLP' });
+  ui.change({ ...valid, income: 2500000, complement: 'yes', second: 1000000, savings: 32908992 });
   assert.equal(ui.field('second-wrap').hidden, false); assert.equal(ui.field('second').required, true);
-  assert.equal(ui.field('savings').max, '1000000000000'); await ui.submit();
+  assert.equal(ui.elements['capacity-currency'], undefined); await ui.submit();
   assert.match(ui.card(fixture).querySelector('.capacity-badge').textContent, /^A\./);
   ui.change({ complement: 'no' }, 'change');
   assert.equal(ui.field('second').value, ''); assert.equal(ui.field('second').disabled, true); await ui.submit();
@@ -204,7 +224,7 @@ test('stale or absent UF yields E and no peso dividend while mortgage UF remains
   assert.match(article.querySelector('.capacity-badge').textContent, /^E\./);
   assert.match(article.textContent, /20,09 UF/); assert.ok(!article.textContent.includes('$'));
   assert.ok(!article.textContent.includes('Dividendo / renta'));
-  assert.match(ui.field('uf').textContent, /UF pendiente o sin vigencia/);
+  assert.match(ui.field('uf').textContent, /No tenemos una UF oficial vigente/);
   const absent = structuredClone(publishedDataset); delete absent.uf;
   const invalid = await frontend({ projects: [fixture], responses: [response(absent), response(absent)] });
   invalid.set(valid); await invalid.submit();
@@ -236,7 +256,7 @@ test('input and select changes during delayed fetch prevent applying stale captu
 
 test('explicit CTA handoff stores only scenario once; income, debts, savings and identity never leave closure', async () => {
   const ui = await frontend({ projects: [fixture] });
-  ui.set({ ...valid, income: 4500000, debt: 100000, savings: 1200, monthly: 400000, horizon: 12 }); await ui.submit();
+  ui.set({ ...valid, income: 4500000, debt: 100000, savings: 49363488, monthly: 400000, horizon: 12 }); await ui.submit();
   const anchor = ui.card(fixture).querySelector('a');
   assert.equal(anchor.href, '/comparador-hipotecario.html?proyecto=synthetic-property');
   const click = event(); anchor.listeners.click(click); assert.equal(click.defaultPrevented, false);
@@ -273,5 +293,124 @@ test('date refresh recomputes compatibility as E instead of reusing yesterday co
   ui.advance(24 * 60 * 60 * 1000); ui.search.sortProjects([fixture]);
   const article = ui.card(fixture);
   assert.match(article.querySelector('.capacity-badge').textContent, /^E\./);
-  assert.ok(!article.textContent.includes('$')); assert.match(ui.field('uf').textContent, /sin vigencia/);
+  assert.ok(!article.textContent.includes('$')); assert.match(ui.field('uf').textContent, /No tenemos una UF oficial vigente/);
+});
+
+
+function metricText(article, label) {
+  const row = article.querySelector('.capacity-metrics')?.children.find(row => row.children[0].textContent === label);
+  return row?.children[1].textContent;
+}
+
+test('savings controls are optional CLP text fields, with no currency selector or UF entry', () => {
+  assert.ok(!html.includes('id="capacity-currency"'));
+  for (const id of ['savings', 'monthly']) {
+    const inputTag = html.match(new RegExp('<input[^>]*id="capacity-' + id + '"[^>]*>'))?.[0];
+    assert.ok(inputTag, 'Missing savings input');
+    assert.match(inputTag, /type="text"/);
+    assert.ok(!/\brequired(?:\s|>|=)/.test(inputTag));
+    assert.match(inputTag, /inputmode="numeric"/);
+  }
+});
+
+test('empty current and monthly savings behave as zero and keep all categories available', async () => {
+  const ui = await frontend({ projects: [fixture] });
+  ui.set({ ...valid, savings: '', monthly: '' }); await ui.submit();
+  const article = ui.card(fixture);
+  assert.match(article.querySelector('.capacity-badge').textContent, /^B\./);
+  assert.match(metricText(article, 'Ahorro actual'), /\$0/); assert.match(metricText(article, 'Ahorro actual'), /0 UF/);
+  assert.match(metricText(article, 'Ahorro a 0 meses'), /\$0/); assert.match(metricText(article, 'Ahorro a 0 meses'), /0 UF/);
+  assert.equal(metricText(article, 'Tiempo desde el ahorro actual'), 'No calculable sin ahorro mensual');
+  assert.equal(ui.field('savings').value, ''); assert.equal(ui.field('monthly').value, '');
+  assert.equal(ui.field('submit').disabled, false);
+});
+
+test('5m,20m and100m CLP raw, grouped and currency formats preserve exact savings conversion', async () => {
+  for (const [amount, grouped, category] of [[5_000_000, '5.000.000', 'B'], [20_000_000, '20.000.000', 'B'], [100_000_000, '100.000.000', 'A']]) {
+    for (const value of [String(amount), grouped, '$' + grouped, '$ ' + grouped]) {
+      const ui = await frontend({ projects: [fixture] });
+      ui.change({ ...valid, savings: value, monthly: '' });
+      ui.blur('savings'); assert.equal(ui.field('savings').value, '$' + grouped);
+      assert.equal(ui.field('savings').validationMessage, '');
+      await ui.submit(); const article = ui.card(fixture);
+      assert.match(article.querySelector('.capacity-badge').textContent, new RegExp('^' + category + '\\.'));
+      const expected = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 }).format(amount / publishedDataset.uf.valueClp) + ' UF';
+      assert.ok(metricText(article, 'Ahorro actual').includes(expected));
+      assert.ok(metricText(article, 'Ahorro actual').includes('$' + grouped));
+      assert.ok(metricText(article, 'Ahorro a 0 meses').includes(expected));
+      assert.ok(metricText(article, 'Ahorro a 0 meses').includes('$' + grouped));
+      assert.equal(ui.storage.writes.length, 0); assert.equal(ui.requests.length, 1);
+    }
+  }
+});
+
+test('formatted monthly savings preserves horizon and integer months, with current savings independently optional', async () => {
+  const ui = await frontend({ projects: [fixture] });
+  ui.change({ ...valid, savings: '$20.000.000', monthly: '$5.000.000', horizon: '6' });
+  ui.blur('monthly'); assert.equal(ui.field('monthly').value, '$5.000.000'); await ui.submit();
+  let article = ui.card(fixture);
+  assert.match(article.querySelector('.capacity-badge').textContent, /^A\./);
+  assert.equal(metricText(article, 'Tiempo desde el ahorro actual'), '3 meses');
+  assert.match(metricText(article, 'Falta para el pie al horizonte'), /\$0/); assert.match(metricText(article, 'Falta para el pie al horizonte'), /0 UF/);
+  ui.change({ savings: '', monthly: '$5.000.000' }); await ui.submit();
+  article = ui.card(fixture);
+  assert.match(article.querySelector('.capacity-badge').textContent, /^B\./);
+  assert.equal(metricText(article, 'Tiempo desde el ahorro actual'), '7 meses');
+  ui.change({ horizon: '12' }); await ui.submit();
+  assert.match(ui.card(fixture).querySelector('.capacity-badge').textContent, /^A\./);
+  for (const [amount, grouped, expectedCategory, months] of [[5_000_000, '5.000.000', 'B', 7], [20_000_000, '20.000.000', 'A', 2], [100_000_000, '100.000.000', 'A', 1]]) {
+    for (const value of [String(amount), grouped, '$' + grouped]) {
+      ui.change({ income: 1_000_000_000, savings: '', monthly: value, horizon: '6' });
+      ui.blur('monthly'); assert.equal(ui.field('monthly').value, '$' + grouped); await ui.submit();
+      const result = ui.card(fixture);
+      assert.ok(result.querySelector('.capacity-badge').textContent.startsWith(expectedCategory + '.'));
+      const expectedCash = new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(amount * 6);
+      assert.ok(metricText(result, 'Ahorro a 6 meses').includes(expectedCash));
+      assert.equal(metricText(result, 'Tiempo desde el ahorro actual'), months + ' meses');
+    }
+  }
+});
+
+test('focus permits digit editing, blur reformats, input errors clear, and reset clears custom validity', async () => {
+  const ui = await frontend({ projects: [fixture] });
+  ui.change({ ...valid, savings: '$5.000.000' }); ui.blur('savings'); ui.focus('savings');
+  assert.equal(ui.field('savings').value, '5000000');
+  ui.change({ savings: '-5000000' }); ui.blur('savings');
+  assert.ok(ui.field('savings').validationMessage); assert.equal(ui.field('savings').value, '-5000000');
+  ui.change({ savings: '20000000' }); assert.equal(ui.field('savings').validationMessage, '');
+  ui.blur('savings'); assert.equal(ui.field('savings').value, '$20.000.000');
+  ui.change({ monthly: '5,5' }); ui.blur('monthly'); assert.ok(ui.field('monthly').validationMessage);
+  ui.reset(); assert.equal(ui.field('monthly').validationMessage, ''); assert.equal(ui.field('savings').validationMessage, '');
+  assert.equal(ui.field('monthly').value, ''); assert.equal(ui.field('savings').value, '');
+  assert.equal(ui.field('form').hidden, true);
+});
+
+test('invalid,negative,decimal,exponent,UF and excessive CLP savings are rejected without coercion', async () => {
+  const invalid = ['-5000000', '$-5.000.000', '5.000.000,00', '5,5', '1.5', '5e6', '5M', '100 UF', '5.00.000', 'NaN', 'Infinity', '1000000000001', '9007199254740993'];
+  for (const key of ['savings', 'monthly']) {
+    for (const value of [...invalid, ...(key === 'monthly' ? ['10000000001'] : [])]) {
+      const ui = await frontend({ projects: [fixture] });
+      ui.change({ ...valid, [key]: value }); ui.blur(key);
+      assert.ok(ui.field(key).validationMessage, key + ': ' + value);
+      assert.equal(ui.field(key).value, value);
+      await ui.submit();
+      assert.equal(ui.card(fixture).querySelector('.capacity-result'), null);
+      assert.ok(ui.field('error').textContent || ui.field(key).validationMessage);
+      assert.equal(ui.field('submit').disabled, false);
+      assert.equal(ui.storage.writes.length, 0); assert.equal(ui.requests.length, 1);
+    }
+  }
+});
+
+test('stale UF cannot turn formatted peso savings into a current UF value or a compatible category', async () => {
+  const stale = structuredClone(publishedDataset); stale.uf.date = '2026-10-09';
+  const ui = await frontend({ projects: [fixture], responses: [response(stale)] });
+  ui.change({ ...valid, savings: '$100.000.000', monthly: '$5.000.000', horizon: '12' }); await ui.submit();
+  const article = ui.card(fixture);
+  assert.match(article.querySelector('.capacity-badge').textContent, /^E\./);
+  assert.equal(metricText(article, 'Ahorro actual'), undefined);
+  assert.equal(metricText(article, 'Ahorro a 12 meses'), undefined);
+  assert.equal(metricText(article, 'Dividendo / renta'), undefined);
+  assert.equal(metricText(article, 'Dividendo financiero'), '20,09 UF');
+  assert.match(ui.field('uf').textContent, /No tenemos una UF oficial vigente/);
 });

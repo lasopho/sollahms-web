@@ -1,4 +1,6 @@
-import { evaluateProject, validateCapacityInput } from './purchase-capacity.mjs';
+import { evaluateProject, validateCapacityInput, CAPACITY_LIMITS } from './purchase-capacity.mjs';
+import { parseClpAmount, formatClpAmount } from './clp-input.mjs';
+import { ufToClp } from './mortgage-engine.mjs';
 import { validateDataset, getUfStatus } from './mortgage-data.mjs';
 import { chileDate } from './project-finance.mjs';
 import { writeMortgageHandoff, MORTGAGE_HANDOFF_KEY } from './mortgage-handoff.mjs';
@@ -28,13 +30,40 @@ export function initializeCapacitySearch({ projects, onChange }) {
   const ufInfo = document.getElementById('capacity-uf');
   const submit = document.getElementById('capacity-submit');
   const field = id => document.getElementById('capacity-' + id);
+  const moneyFields = {
+    savings: { max: CAPACITY_LIMITS.savingsClp.max, label: 'Ahorro para el pie' },
+    monthly: { max: CAPACITY_LIMITS.monthlySavingsClp.max, label: 'Ahorro mensual' },
+  };
+  const readMoney = id => {
+    try {
+      const value = parseClpAmount(field(id).value, moneyFields[id]);
+      field(id).setCustomValidity('');
+      return value;
+    } catch (failure) {
+      field(id).setCustomValidity(failure.message);
+      throw failure;
+    }
+  };
+  const displayMoney = (id, editing = false) => {
+    try {
+      const amount = readMoney(id);
+      if (field(id).value.trim() !== '') {
+        const displayed = editing ? String(amount) : formatClpAmount(amount);
+        if (field(id).value !== displayed) field(id).value = displayed;
+      }
+    } catch { /* Keep invalid input visible so the visitor can correct it. */ }
+  };
+  for (const id of Object.keys(moneyFields)) {
+    field(id).addEventListener('focus', () => displayMoney(id, true));
+    field(id).addEventListener('blur', () => displayMoney(id));
+  }
   let dataset = null, input = null, results = new Map(), evaluationDate = null;
   let loading = null, revision = 0;
   const updateUf = () => {
     const status = getUfStatus(dataset?.uf);
     ufInfo.replaceChildren(node('span', status.usable
       ? 'UF oficial del ' + dataset.uf.date + ': ' + officialUf(status.valueClp) + '. '
-      : 'UF pendiente o sin vigencia para hoy. Las conversiones a pesos y la evaluación por renta quedan pendientes. '));
+      : 'No tenemos una UF oficial vigente para hoy. Tus ahorros siguen en pesos, pero no los convertiremos a UF ni evaluaremos su compatibilidad hasta actualizar esa referencia. Los resultados quedan como información insuficiente; puedes seguir navegando el catálogo. '));
     if (dataset?.uf?.source?.url) {
       const source = node('a', 'Consultar fuente oficial UF');
       source.href = dataset.uf.source.url; source.target = '_blank'; source.rel = 'noopener noreferrer';
@@ -65,7 +94,6 @@ export function initializeCapacitySearch({ projects, onChange }) {
       field(key + '-custom').required = custom;
       field(key + '-custom').disabled = !custom;
     }
-    field('savings').max = field('currency').value === 'UF' ? '1000000' : '1000000000000';
   };
   const readInput = () => {
     const number = id => field(id).value.trim() === '' ? 0 : field(id).valueAsNumber;
@@ -73,8 +101,8 @@ export function initializeCapacitySearch({ projects, onChange }) {
     return validateCapacityInput({
       incomeClp: number('income'), complementIncome: field('complement').value === 'yes',
       secondIncomeClp: number('second'), debtClp: number('debt'),
-      savings: number('savings'), savingsCurrency: field('currency').value,
-      monthlySavingsClp: number('monthly'), horizonMonths: choice('horizon'),
+      savings: readMoney('savings'), savingsCurrency: 'CLP',
+      monthlySavingsClp: readMoney('monthly'), horizonMonths: choice('horizon'),
       downPaymentPercent: choice('pie'), years: choice('years'),
       annualRatePercent: field('rate').value.trim() === '' ? null : field('rate').valueAsNumber,
       rateConvention: field('convention').value, burdenPercent: Number(field('criterion').value),
@@ -94,13 +122,20 @@ export function initializeCapacitySearch({ projects, onChange }) {
     toggle.setAttribute('aria-expanded', String(open)); form.hidden = !open;
     if (open) field('income').focus();
   });
-  form.addEventListener('input', () => { revision += 1; updateConditional(); error.textContent = ''; if (input) clearResults(); });
+  form.addEventListener('input', event => {
+    revision += 1; updateConditional(); error.textContent = '';
+    for (const id of Object.keys(moneyFields)) if (event.target === field(id)) {
+      try { readMoney(id); } catch {}
+    }
+    if (input) clearResults();
+  });
   form.addEventListener('change', () => { revision += 1; updateConditional(); if (input) clearResults(); });
   form.addEventListener('submit', async event => {
     event.preventDefault(); if (submit.disabled) return; error.textContent = ''; submit.disabled = true;
     const submittedRevision = revision;
     try {
       const next = readInput();
+      for (const id of Object.keys(moneyFields)) displayMoney(id);
       if (!dataset) await loadDataset();
       if (revision !== submittedRevision) return;
       input = next; evaluate(); onChange();
@@ -110,6 +145,7 @@ export function initializeCapacitySearch({ projects, onChange }) {
   });
   document.getElementById('capacity-reset').addEventListener('click', () => {
     revision += 1; form.reset(); updateConditional(); error.textContent = ''; clearResults();
+    for (const id of Object.keys(moneyFields)) field(id).setCustomValidity('');
     try { sessionStorage.removeItem(MORTGAGE_HANDOFF_KEY); } catch {}
     form.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.focus();
   });
@@ -137,9 +173,10 @@ export function initializeCapacitySearch({ projects, onChange }) {
       }
       if (result.mortgage) {
         metric('Pie necesario (' + input.downPaymentPercent + '%)', uf(result.mortgage.downPaymentUf) + (result.downPaymentClp === null ? '' : ' · ' + clp(result.downPaymentClp)));
-        if (result.currentSavingsUf !== null) metric('Ahorro actual', uf(result.currentSavingsUf));
-        if (result.horizonSavingsUf !== null) metric('Ahorro a ' + input.horizonMonths + ' meses', uf(result.horizonSavingsUf));
-        if (result.gapUf !== null) metric('Falta para el pie al horizonte', uf(result.gapUf));
+        const savingsAmount = valueUf => clp(ufToClp(valueUf, result.ufStatus.valueClp)) + ' · ' + uf(valueUf);
+        if (result.currentSavingsUf !== null) metric('Ahorro actual', savingsAmount(result.currentSavingsUf));
+        if (result.horizonSavingsUf !== null) metric('Ahorro a ' + input.horizonMonths + ' meses', savingsAmount(result.horizonSavingsUf));
+        if (result.gapUf !== null) metric('Falta para el pie al horizonte', savingsAmount(result.gapUf));
         if (result.currentGapUf !== null) metric('Tiempo desde el ahorro actual', result.monthsToSave === null ? 'No calculable sin ahorro mensual' : result.monthsToSave + ' meses');
         metric('Monto a financiar', uf(result.mortgage.principalUf));
         metric('Dividendo financiero', uf(result.mortgage.monthlyPaymentUf) + (result.monthlyPaymentClp === null ? '' : ' · ' + clp(result.monthlyPaymentClp)));
