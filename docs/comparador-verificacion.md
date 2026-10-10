@@ -1,6 +1,6 @@
 # Verificación del comparador hipotecario
 
-Revisión inicial: 9 de octubre de 2026, Chile. Actualización con prueba de correo remota: 10 de octubre de 2026.
+Revisión inicial: 9 de octubre de 2026, Chile. Actualización con prueba de correo remota y confirmación de recepción del usuario: 10 de octubre de 2026.
 
 ## Resultado comprobado
 
@@ -9,7 +9,7 @@ Revisión inicial: 9 de octubre de 2026, Chile. Actualización con prueba de cor
 - Contraste independiente con dividendos financieros CMF: Scotia 19,04 UF, Itaú 19,65 UF y Chile 19,27 UF para crédito 3.000 UF a 20 años.
 - Catálogo válido: 10 instituciones, 3 referencias vigentes el 09/10/2026; sin datos financieros ficticios.
 - Contacto probado mediante `Request` HTTP y Resend simulado: destinatario, recálculo, fuentes, consentimiento, cobertura, errores y compatibilidad del formulario existente.
-- Formulario remoto probado mediante sesión Vercel autenticada el 10/10: un envío ficticio autorizado, confirmación visible, Resend HTTP 200 con ID y eventos Sent/Delivered; recepción efectiva en el buzón todavía pendiente.
+- Formulario remoto probado mediante sesión Vercel autenticada el 10/10: un envío ficticio autorizado, confirmación visible, Resend HTTP 200 con ID y eventos Sent/Delivered; recepción efectiva en `contacto@sollahms.cl` confirmada por el usuario mediante captura de pantalla, según su declaración en el chat.
 
 ## Navegador local
 
@@ -54,7 +54,9 @@ Se comprobó únicamente la metadata de entorno, sin descifrar ni mostrar valore
 
 **Correo real:** se envió un único mensaje a `contacto@sollahms.cl` el 10/10 a las 07:51 de Chile. En Resend se observó `POST /emails` HTTP 200 con ID `01a12570-c935-7dda-a216-5c697b748382`, log `ec6855bb-9a03-4576-979b-20c7acb9d9c3`, y eventos Sent/Delivered. El registro contiene `QA-SOLLAHMS-HIP-20261009T230224Z-B5E38C90`, teléfono ficticio, escenario y resumen correctos. Página y correo omiten la conversión a pesos porque la UF del 9/10 ya no corresponde al día de la prueba.
 
-**Pendiente:** recepción efectiva en el buzón de contacto. Las búsquedas restringidas al identificador y destinatario en las dos conexiones Gmail disponibles no devolvieron mensajes; no son un acceso directo confirmado a ese buzón y no demuestran ausencia de entrega. Se solicitó al usuario abrir el mensaje en contacto y confirmar identificador, contenido y carpeta. Delivered acredita recepción por el servidor destinatario, no presencia en la bandeja. La [prueba controlada ejecutada](prueba-correo-hipotecario.md) conserva todas las evidencias y capturas, sin secretos.
+**Recepción efectiva confirmada por el usuario:** el titular informó que recibió y abrió correctamente el mensaje en `contacto@sollahms.cl`. Confirmó el identificador `QA-SOLLAHMS-HIP-20261009T230224Z-B5E38C90` y los datos: propiedad 5.000 UF, pie 1.000 UF, crédito 4.000 UF, plazo 25 años y dividendo financiero 22,23 UF. Solicitó registrar la confirmación mediante captura de pantalla. La evidencia de recepción se atribuye al usuario: no se adjuntó una captura del buzón en ese mensaje ni el agente inspeccionó directamente el buzón. La carpeta no fue informada.
+
+Las búsquedas anteriores en las conexiones Gmail disponibles no constituían acceso directo al buzón de contacto. Delivered acredita entrega al servidor; la confirmación posterior del titular acredita la recepción y apertura efectiva. La [prueba controlada ejecutada](prueba-correo-hipotecario.md) conserva los registros y las capturas de aplicación/Resend, sin secretos. **Prueba cerrada con un solo envío; no realizar más envíos de prueba.**
 
 La integración GitHub devolvió `403 Resource not accessible by integration` al intentar crear un PR borrador. La rama está publicada y es revisable; no existe un PR creado por esta ejecución. Enlace de rama:
 
@@ -62,6 +64,6 @@ https://github.com/lasopho/sollahms-web/tree/codex/comparador-hipotecario
 
 ## Cierre técnico
 
-No hay errores críticos conocidos en las funciones comprobadas. Los límites de comparación son deliberados por calidad de datos y se muestran en la experiencia. El formulario y la aceptación/entrega por Resend se verificaron en preview; el componente de correo no se declara verificado en producción ni en una bandeja real hasta observar esa última evidencia.
+No hay errores críticos conocidos en las funciones comprobadas. Los límites de comparación son deliberados por calidad de datos y se muestran en la experiencia. El flujo de correo en preview queda verificado: confirmación de aplicación, aceptación y entrega por Resend, y recepción/apertura en el buzón confirmadas por el usuario. No se ejecutaron pruebas ni publicación en Production. Todo queda listo para revisión final, sin merge.
 
 Las fichas inmobiliarias, `data/proyectos.json`, `main` y el checkout original no fueron modificados. El trabajo conserva commits separados para motor/datos, captación, interfaz y documentación de revisión.
