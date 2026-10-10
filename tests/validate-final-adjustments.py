@@ -50,6 +50,16 @@ class Page(HTMLParser):
             self.iframes.append(attrs)
 
 
+def with_current_navigation(text):
+    """Allow only the later approved main-nav relabel/removal in old baselines."""
+    def update(match):
+        header = re.sub(r'<a\b[^>]*href="(?:/)?#portfolio"[^>]*>Asset Portfolio</a>\n?',
+                        '', match[0], flags=re.S)
+        return re.sub(r'(<a\b[^>]*href="/proyectos\.html"[^>]*>)Proyectos(</a>)',
+                      r'\1Asset Portafolio\2', header)
+    return re.sub(r'<header\b[^>]*>.*?</header>', update, text, flags=re.S)
+
+
 def gallery_without_source_captions(text):
     def remove(match):
         caption = match[0]
@@ -86,7 +96,11 @@ def main():
         'sitemap.xml',
     ]
     for name in protected_files:
-        check((ROOT / name).read_bytes() == baseline(name, ref), f'Protected file changed: {name}')
+        current_bytes = (ROOT / name).read_bytes()
+        old_bytes = baseline(name, ref)
+        if name == 'agenda-asesoria.html':
+            old_bytes = with_current_navigation(old_bytes.decode()).encode()
+        check(current_bytes == old_bytes, f'Protected file changed: {name}')
 
     covers, placeholders, captions_removed, gallery_images = [], [], 0, 0
     maps, tours, attribution_fields = 0, 0, []
@@ -99,8 +113,8 @@ def main():
         path = slug + '.html'
         current_text = (ROOT / path).read_text()
         old_text = baseline(path, ref).decode()
-        check(current_text == gallery_without_source_captions(old_text),
-              f'{slug}: detail changed beyond repetitive gallery captions')
+        check(current_text == with_current_navigation(gallery_without_source_captions(old_text)),
+              f'{slug}: detail changed beyond gallery captions and approved main navigation')
         check(not any('Fuente oficial' in caption for caption in CAPTION.findall(current_text)),
               f'{slug}: repetitive visible gallery source caption remains')
         captions_removed += len(CAPTION.findall(old_text)) - len(CAPTION.findall(current_text))
