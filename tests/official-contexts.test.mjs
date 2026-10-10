@@ -9,18 +9,20 @@ import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import { projects as trustedContexts } from '../lib/project-context.mjs';
+import { assertCommercialBytes, commercialPage } from './commercial-html.mjs';
 
 // This is the scoped successor to the historical integrity audits, whose
 // baselines predate the explicitly approved official-source additions.
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASELINE = 'a279744';
+const PRESENTATION_BASELINE = '7a2732ae333b6a4d119cc2b651583daacbab8755';
 const NOW = Date.parse('2026-10-10T15:00:00Z');
 const DATE = '2026-10-10';
 const FOCUS = new Set(['mapocho-3521', 'mapocho-3521-edificio-a',
   'froilan-roa-5731-torre-norte', 'froilan-roa-5731-torre-sur', 'edificio-verne', 'irarrazaval']);
-// The subsequent AJ brochure review is independently audited against 045fe18
-// in aj-urbana.test.mjs. Its five static pages are the only later page exception;
-// their catalogue objects and all older assets remain covered here as well.
+// The later brochure additions have independent exact audits. The latest
+// commercial presentation is the only extra permitted HTML transformation;
+// catalogue objects, research and older media retain their original controls.
 const AJ_REVIEW = new Set(['downtown-san-martin', 'edificio-teatinos-750',
   'edificio-vista-amunategui', 'monjitas-690', 'vista-morande']);
 // The three supplied Ingevec brochures receive their own exact baseline and
@@ -49,7 +51,7 @@ const previousProjects = bySlug(beforeCatalogue);
 const records = bySlug(research);
 const previousRecords = bySlug(beforeResearch);
 const clone = (value) => structuredClone(value);
-const unchangedFile = (path) => assert.ok(current(path).equals(old(path)), `${path}: baseline bytes changed`);
+const unchangedFile = (path) => assertCommercialBytes(path, current(path), old(path));
 const blobHash = (bytes) => createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const tree = (ref, path) => git('ls-tree', '-r', ref, ...(path ? ['--', path] : [])).toString().trim().split('\n').filter(Boolean)
@@ -116,11 +118,12 @@ function page(html) {
       .map((child) => [child.attrs.href, text(child).trim()]),
   };
 }
-const readPage = (slug, baseline = false) => page((baseline ? old(`${slug}.html`) : current(`${slug}.html`)).toString());
+const readPage = (slug, baseline = false) => page(baseline
+  ? commercialPage(old(`${slug}.html`), slug) : current(`${slug}.html`).toString());
 const oneId = (parsed, id) => { const found = parsed.id(id); assert.equal(found.length, 1, id); return found[0]; };
 const identity = (parsed, node) => ({ attrs: node.attrs, text: parsed.text(node).replace(/\s+/g, ' ').trim() });
 
-test('fixed baseline: 148 ordered identities, 142 unchanged public objects and 134 untouched HTML pages', () => {
+test('fixed baseline: 148 ordered identities, 142 unchanged public objects and only approved presentation changes to 134 other HTML pages', () => {
   assert.match(git('rev-parse', BASELINE).toString(), /^a279744[0-9a-f]{33}\s*$/);
   assert.equal(catalogue.length, 148);
   assert.equal(new Set(catalogue.map((project) => project.slug)).size, 148);
@@ -160,7 +163,7 @@ test('only Mapocho catalogue amenities and explicitly reviewed source/date chang
   assert.deepEqual(verifiedProjectPrice(project, DATE), { valueUf: 2994, date: DATE, source: project.verificacion.fuente });
 });
 
-test('four official contexts have their own provenance, explicit limitations and separate rendered sections', () => {
+test('four official contexts retain internal provenance and commercial scope notices without exposing research sources or dates', () => {
   for (const slug of PENDING) {
     const record = records.get(slug);
     const context = record.officialContext;
@@ -179,17 +182,21 @@ test('four official contexts have their own provenance, explicit limitations and
     delete restored.officialContext;
     assert.deepEqual(restored, previousRecords.get(slug), `${slug}: primary research/provenance cannot change through contextual review`);
     const parsed = readPage(slug);
+    const expectedPage = page(commercialPage(old(`${slug}.html`, PRESENTATION_BASELINE), slug));
+    assert.equal(parsed.html, expectedPage.html, `${slug}: context changes exceed the approved presentation`);
     const section = oneId(parsed, 'contexto-oficial');
     assert.equal(section.tag, 'section');
     const text = parsed.text(section);
-    assert.ok(text.includes(context.title) && text.includes(context.name), slug);
-    assert.ok(text.includes(context.limitation), `${slug}: limitation must be visible`);
-    assert.ok(text.includes(context.imageNote) && text.includes(context.mapNote), `${slug}: image/map scope notes must be visible`);
-    assert.ok(parsed.anchors(section).some(([href]) => href === context.sourceUrl), `${slug}: contextual source link missing`);
+    assert.ok(text.includes(context.name), slug);
+    assert.equal(parsed.raw(section), expectedPage.raw(oneId(expectedPage, 'contexto-oficial')),
+      `${slug}: related alternative, images and map retain their commercial scope notices`);
+    assert.ok(!parsed.anchors(section).some(([href]) => href === context.sourceUrl), `${slug}: technical contextual source link must remain internal`);
+    assert.equal(parsed.id('fuentes').length, 0, `${slug}: research source section is not public`);
     for (const fact of context.facts) {
       assert.deepEqual(Object.keys(fact).sort(), ['label', 'value']);
       assert.ok(typeof fact.label === 'string' && typeof fact.value === 'string');
-      assert.ok(text.includes(fact.label) && text.includes(fact.value), `${slug}: missing contextual fact ${fact.label}`);
+      assert.ok(expectedPage.text(oneId(expectedPage, 'contexto-oficial')).includes(fact.label),
+        `${slug}: contextual fact label ${fact.label}`);
     }
     const oldPage = readPage(slug, true);
     // Pending stage/product content and its primary location remain distinct
@@ -201,7 +208,7 @@ test('four official contexts have their own provenance, explicit limitations and
     const oldStructured = oldPage.nodes.filter((node) => node.tag === 'script' && node.attrs.type === 'application/ld+json');
     assert.deepEqual(structured.map((node) => parsed.raw(node)), oldStructured.map((node) => oldPage.raw(node)), `${slug}: context is not a residential offer`);
     const aside = parsed.nodes.find((node) => node.tag === 'aside');
-    assert.ok(parsed.text(aside).includes('Pendiente de verificación'), `${slug}: primary price must remain pending`);
+    assert.ok(parsed.text(aside).includes('Consultar precio'), `${slug}: unverified primary price must remain unavailable`);
     const contextImgs = parsed.all(section).filter((node) => node.tag === 'img');
     assert.equal(contextImgs.length, context.images.length, `${slug}: contextual images count`);
     for (const image of context.images) {
@@ -282,7 +289,7 @@ test('Mapocho preserves its four images/map/identity and adds only two official 
   for (const image of record.images) assert.ok(gallery.some((node) => node.attrs.src === image.localPath));
 });
 
-test('Irarrázaval preserves the existing map/tour and empty commercial/photo data while disclosing the identity limitation', () => {
+test('Irarrázaval preserves the map/tour, internal identity evidence and a concise commercial limitation', () => {
   const record = records.get('irarrazaval');
   const previous = previousRecords.get(record.slug);
   assert.deepEqual(record.images, []);
@@ -305,8 +312,11 @@ test('Irarrázaval preserves the existing map/tour and empty commercial/photo da
   const before = readPage(record.slug, true);
   assert.equal(parsed.raw(oneId(parsed, 'ubicacion')), before.raw(oneId(before, 'ubicacion')));
   assert.ok(parsed.html.includes(tour.url));
-  assert.match(parsed.text(oneId(parsed, 'recorrido')) + parsed.text(oneId(parsed, 'fuentes')), /2021/);
-  assert.match(parsed.text(oneId(parsed, 'recorrido')) + parsed.text(oneId(parsed, 'fuentes')), /[áa]lbora/i);
+  assert.equal(parsed.html, commercialPage(old(`${record.slug}.html`, PRESENTATION_BASELINE), record.slug),
+    'Irarrázaval: only the approved commercial presentation may change');
+  assert.equal(parsed.id('fuentes').length, 0);
+  assert.match(parsed.text(oneId(parsed, 'recorrido')), /contexto|referencial/i);
+  assert.match(parsed.text(oneId(parsed, 'recorrido')), /confirmar|confirmaci[oó]n/i);
   assert.equal(parsed.nodes.filter((node) => node.tag === 'img').length, before.nodes.filter((node) => node.tag === 'img').length);
   const restored = clone(record);
   for (const key of ['sourceNotes', 'identityReview', 'virtualTours']) {
@@ -354,7 +364,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   assert.deepEqual(currentAssets, expected, 'No other asset additions/deletions are authorized');
 });
 
-test('project registry, sitemap, financial data/motors, all APIs and global public pages stay byte identical', () => {
+test('project registry, sitemap, financial data/motors and APIs remain byte identical; HTML changes are limited to the approved presentation', () => {
   for (const path of ['lib/project-context.mjs', 'sitemap.xml', 'data/hipotecario.json', 'data/catalogo-original-fichas.json']) unchangedFile(path);
   for (const path of tree(BASELINE, 'api').concat(tree(BASELINE, 'lib')).map(({ file }) => file)) unchangedFile(path);
   for (const { file } of tree(BASELINE, '')) {

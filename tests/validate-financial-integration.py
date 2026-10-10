@@ -16,7 +16,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 import xml.etree.ElementTree as ET
 from brochure_review_validation import (BASELINE as REVIEW_BASELINE, CSS as REVIEW_CSS, public_page,
-                                        verified_public_page, verify_asset)
+                                        verified_public_page, verify_asset, validate_commercial_source)
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -144,7 +144,22 @@ def main():
     parser.add_argument('--comparador-baseline', default='fb01839')
     parser.add_argument('--brochure-review', action='store_true',
                         help='Audit the exact eight brochure exceptions against the fixed completed integration')
+    parser.add_argument('--commercial-presentation', action='store_true',
+                        help='Audit display-only changes with exact financial data, source and engine integrity')
     args = parser.parse_args()
+    if args.commercial_presentation:
+        result = validate_commercial_source()
+        # Preserve the full shared navigation assertions as well as the
+        # exact financial bytes proven by the successor source audit.
+        # Keep the historical scope: sitemap public pages share this menu;
+        # the error fallback page has its own compact navigation by design.
+        pages = [ROOT / ('index.html' if urlparse(loc).path == '/' else urlparse(loc).path.lstrip('/'))
+                 for loc in sitemap_locations((ROOT / 'sitemap.xml').read_bytes())]
+        for path in pages:
+            audit_navigation(path.read_text(), path.name)
+        result['publicPagesWithBothMenusChecked'] = len(pages)
+        result['simulationActions'] = len(json.loads((ROOT / 'data/proyectos.json').read_text()))
+        return result
     fichas = REVIEW_BASELINE if args.brochure_review else args.fichas_baseline
     comparador = args.comparador_baseline
     catalogue_bytes = (ROOT / 'data/proyectos.json').read_bytes()

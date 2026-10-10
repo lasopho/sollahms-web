@@ -12,7 +12,8 @@ import subprocess
 from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
-from brochure_review_validation import BASELINE as REVIEW_BASELINE, verified_public_page
+from brochure_review_validation import (BASELINE as REVIEW_BASELINE, verified_public_page,
+                                        validate_commercial_source)
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -78,7 +79,11 @@ def main():
     parser.add_argument('--baseline', default='1465b49')
     parser.add_argument('--brochure-review', action='store_true',
                         help='Audit the exact eight brochure exceptions against the fixed completed integration')
+    parser.add_argument('--commercial-presentation', action='store_true',
+                        help='Audit display-only changes against the fixed approved 148-page brochure integration')
     args = parser.parse_args()
+    if args.commercial_presentation:
+        return validate_commercial_source()
     ref = REVIEW_BASELINE if args.brochure_review else args.baseline
     projects = json.loads((ROOT / 'data/proyectos.json').read_text())
     old_projects = json.loads(baseline('data/proyectos.json', ref))

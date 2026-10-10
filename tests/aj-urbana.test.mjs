@@ -9,6 +9,7 @@ import { tmpdir } from 'node:os';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
+import { assertCommercialBytes, commercialPage } from './commercial-html.mjs';
 
 // This review extends five static pages and their protected Preview card covers.
 // Historical brochure material
@@ -46,7 +47,7 @@ const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const blobHash = (bytes) => createHash('sha1').update('blob ' + bytes.length + '\0').update(bytes).digest('hex');
 const baselineTree = (path = '') => git('ls-tree', '-r', BASELINE, ...(path ? ['--', path] : [])).toString().trim().split('\n').filter(Boolean)
   .map((line) => { const [meta, file] = line.split('\t'); return { file, hash: meta.split(' ')[2] }; });
-const unchanged = (file) => assert.ok(current(file).equals(old(file)), file + ': protected bytes changed');
+const unchanged = (file) => assertCommercialBytes(file, current(file), old(file));
 const listFiles = (path) => readdirSync(resolve(ROOT, path)).flatMap((name) => {
   const file = resolve(ROOT, path, name);
   return statSync(file).isDirectory() ? listFiles(relative(ROOT, file)) : [relative(ROOT, file)];
@@ -144,7 +145,7 @@ const PRINTED_MODELS = {
   ],
 };
 
-test('AJ review preserves all 148 catalogue objects, all historical research and 140 other fichas exactly', () => {
+test('AJ review preserves all 148 catalogue objects and historical research; 140 other fichas receive only the approved presentation', () => {
   assert.equal(git('rev-parse', BASELINE).toString().trim(), BASELINE);
   assert.equal(catalogue.length, 148);
   assert.equal(new Set(catalogue.map((project) => project.slug)).size, 148);
@@ -163,7 +164,7 @@ test('AJ review preserves all 148 catalogue objects, all historical research and
   assert.equal(protectedPages, 140);
 });
 
-test('531 existing assets, API handlers, financial engines and global public pages remain byte identical', () => {
+test('531 existing assets, API handlers, financial engines and global public pages remain exact outside the approved privacy notice', () => {
   const assets = baselineTree('assets');
   assert.equal(assets.length, 531);
   for (const { file, hash } of assets) assert.equal(blobHash(current(file)), hash, file);
@@ -232,12 +233,12 @@ test('34 independently reviewed models preserve printed values, unknown terraces
   for (const model of ['5A','6A','7A','8A','9A','10A','11A','12A','14B','15B']) assert.equal(modelFor('vista-morande', model).terraza_m2, null);
 });
 
-test('all 78 plans have readable local images, hashes, source links and unique model-page identification', () => {
+test('all 78 plans preserve readable local images, internal hashes, enlargement links and unique model identification', () => {
   const planPaths = [];
   for (const record of review.projects) {
     const block = reviewBlocks(htmlFor(record.slug));
     assert.ok(block, record.slug + ': missing review section');
-    assert.match(block, /brochure|folleto/i);
+    assert.match(block, /Modelos y distribuciones/);
     assert.match(block, /ilustrativ|aproximad|referencial/i);
     const anchors = tagAttributes(block, 'a');
     const images = tagAttributes(block, 'img');
@@ -252,6 +253,8 @@ test('all 78 plans have readable local images, hashes, source links and unique m
       assert.equal(image.loading, 'lazy');
       assert.ok(image.alt?.trim());
       assert.ok(anchors.some((anchor) => anchor.href === plan.localPath), record.slug + ': model ' + model.modelo + ' enlargement link missing');
+      assert.ok(tagAttributes(block, 'details').some(node => node.id === 'modelo-' + model.modelo.toLowerCase()),
+        record.slug + ': model identifier missing');
       planPaths.push(plan.localPath);
     }
   }
@@ -309,7 +312,8 @@ test('documented equipment has page provenance; five public fallback pages prese
       }
     }
     assert.ok(Array.isArray(record.warnings) && record.warnings.length > 0);
-    assert.equal(publicVersion(htmlFor(record.slug)), old(record.slug + '.html').toString(), record.slug + ': review must leave an exact original public fallback');
+    assert.equal(publicVersion(htmlFor(record.slug)), commercialPage(old(record.slug + '.html'), record.slug),
+      record.slug + ': public fallback may receive only the approved commercial presentation');
     for (const [path, label] of [
       ['/contacto.html', 'Consultar proyecto'], ['/agenda-asesoria.html', 'Agendar Asesoría'], ['/comparador-hipotecario.html', 'Simular crédito hipotecario'],
     ]) {
@@ -452,7 +456,7 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     execFileSync(process.execPath, [script], { cwd: fixtureRoot, env: {...env, VERCEL_ENV: 'production'}, stdio: 'pipe' });
     for (const slug of SLUGS) {
       const html = readFileSync(join(fixtureRoot, 'dist', slug + '.html'), 'utf8');
-      assert.equal(html, old(slug + '.html').toString(), slug + ': non-Preview build must retain only the original fiche');
+      assert.equal(html, commercialPage(old(slug + '.html'), slug), slug + ': non-Preview fallback preserves its original content and approved presentation');
       assert.ok(!html.includes(ASSETS));
       assert.ok(!html.includes('aj-brochure-preview.css'));
       assert.doesNotMatch(html, /<!--AJ_(?:PUBLIC|PREVIEW)_(?:START|END)-->/);
@@ -465,7 +469,7 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     const defaultEnvironment = { ...env };
     delete defaultEnvironment.VERCEL_ENV;
     execFileSync(process.execPath, [script], { cwd: fixtureRoot, env: defaultEnvironment, stdio: 'pipe' });
-    for (const slug of SLUGS) assert.equal(readFileSync(join(fixtureRoot, 'dist', slug + '.html'), 'utf8'), old(slug + '.html').toString());
+    for (const slug of SLUGS) assert.equal(readFileSync(join(fixtureRoot, 'dist', slug + '.html'), 'utf8'), commercialPage(old(slug + '.html'), slug));
     assert.ok(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')).equals(current('data/proyectos.json')),
       'An unspecified environment must retain the original public catalogue bytes');
     assert.equal(existsSync(join(fixtureRoot, 'dist', ASSETS.slice(1))), false, 'An unspecified environment must also exclude assets whose contractual scope is pending');

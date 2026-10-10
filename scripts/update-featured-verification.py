@@ -21,7 +21,7 @@ for research in records:
     project = projects[slug]
     path = ROOT / (slug + '.html')
     page = path.read_text()
-    page = re.sub(r'<!-- verified-featured-start -->.*?<!-- verified-featured-end -->\n?', '', page, flags=re.S)
+    page = re.sub(r'<!-- (?:verified-featured|featured-details)-start -->.*?<!-- (?:verified-featured|featured-details)-end -->\n?', '', page, flags=re.S)
     updates = research.get('updates', {})
     old = research.get('reviewedOriginal', {})
     features = research.get('verifiedFeatures', {})
@@ -110,14 +110,14 @@ for research in records:
         verified_count = bool(re.search(r'\d+\s*pisos?', str(features.get(key) or ''), re.I)) if key == 'edificio' else isinstance(features.get(key), int) and features[key] > 0
         if not verified_count and label not in research['pendingFields']:
             research['pendingFields'].append(label)
-    audit = '<!-- verified-featured-start --><section class="featured-verification" id="fuentes-verificadas">' + gallery + specs + tours + '<h2>Fuentes y verificación</h2>' + details.source_content(project, research) + '</section><!-- verified-featured-end -->'
+    commercial_details = '<!-- featured-details-start --><section class="featured-verification" id="detalle-adicional">' + gallery + specs + tours + '</section><!-- featured-details-end -->'
     anchor = '</div>\n<aside class="lg:col-span-4">'
     assert anchor in page, slug + ': featured layout anchor missing'
-    page = page.replace(anchor, audit + '\n' + anchor, 1)
+    page = page.replace(anchor, commercial_details + '\n' + anchor, 1)
     if '/assets/css/featured-verification.css' not in page:
         page = page.replace('</head>', '<link rel="stylesheet" href="/assets/css/featured-verification.css">\n<script src="/assets/js/project-embeds.js" defer></script>\n</head>')
     page = re.sub(r'<script type="application/json" id="project-embed-hosts">.*?</script>\n?', '', page, flags=re.S)
     page = page.replace('</head>', '<script type="application/json" id="project-embed-hosts">' + json.dumps(sorted(permitted)) + '</script>\n</head>')
-    path.write_text(page)
+    path.write_text(details.commercialize_fiche(page, slug))
 (ROOT / 'data/fichas-proyectos.json').write_text(json.dumps(records, ensure_ascii=False, indent=2) + '\n')
-print('Updated only sourced featured facts, official media, maps and verification sections')
+print('Updated sourced featured facts, media and maps with commercial presentation')

@@ -11,6 +11,7 @@ import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import booking from '../api/booking-create.mjs';
+import { assertCommercialBytes, commercialPage } from './commercial-html.mjs';
 
 // Supplied brochures enrich only these protected Preview pages and covers.
 // They never replace the live source, catalogue, financial or contact data.
@@ -104,7 +105,7 @@ const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const blobHash = bytes => createHash('sha1').update('blob ' + bytes.length + '\0').update(bytes).digest('hex');
 const tree = (ref, path = '') => git('ls-tree', '-r', ref, ...(path ? ['--', path] : [])).toString().trim().split('\n').filter(Boolean)
   .map(line => { const [meta, file] = line.split('\t'); return { file, hash: meta.split(' ')[2] }; });
-const unchanged = file => assert.ok(current(file).equals(old(file)), file + ': protected baseline bytes changed');
+const unchanged = file => assertCommercialBytes(file, current(file), old(file));
 const listFiles = path => readdirSync(resolve(ROOT, path)).flatMap(name => {
   const file = resolve(ROOT, path, name);
   return statSync(file).isDirectory() ? listFiles(relative(ROOT, file)) : [relative(ROOT, file)];
@@ -164,7 +165,7 @@ function assetBytes(slug, asset) {
   return bytes;
 }
 
-test('148 source objects, historical financial/research ledgers and all 140 unrelated fichas remain exact', () => {
+test('148 source objects and historical financial/research ledgers remain exact; 140 other fichas receive only the approved presentation', () => {
   assert.equal(git('rev-parse', BASELINE).toString().trim(), BASELINE);
   assert.equal(catalogue.length, 148);
   assert.equal(new Set(catalogue.map(project => project.slug)).size, 148);
@@ -207,10 +208,10 @@ test('531 original assets and every prior AJ/official asset preserve hashes; onl
     prior.map(({ file }) => file).sort());
 });
 
-test('three original public fallbacks and all JSON-LD stay exact; five AJ changes are limited to the Preview section title', () => {
+test('three public fallbacks retain original content and JSON-LD; five AJ fichas receive only their previously approved additions and commercial presentation', () => {
   for (const slug of SLUGS) {
     const html = htmlFor(slug);
-    assert.equal(publicVersion(html), old(slug + '.html').toString(), slug + ': public fallback');
+    assert.equal(publicVersion(html), commercialPage(old(slug + '.html'), slug), slug + ': public fallback');
     assert.deepEqual(structuredData(html), structuredData(old(slug + '.html').toString()), slug + ': structured residential offer');
     assert.match(previewBlocks(html), /Modelos y distribuciones/);
     assert.doesNotMatch(previewBlocks(html), /<h2[^>]*>[^<]*(?:Modelos y planos|Plantas)/);
@@ -220,7 +221,8 @@ test('three original public fallbacks and all JSON-LD stay exact; five AJ change
     const expected = prior.replace(/<!--AJ_PREVIEW_START-->[\s\S]*?<!--AJ_PREVIEW_END-->/g,
       block => block.replaceAll('Modelos y planos', 'Modelos y distribuciones')
         .replace('<h3>Fuente documental de modelos e imágenes</h3>', '<h3>Fuente documental de modelos e imágenes</h3><p class="aj-attribution">Material promocional proporcionado a Sollahms mediante Yapo/IRIS.</p>'));
-    assert.ok(htmlFor(slug) === expected, slug + ': only approved section/navigation wording and Yapo/IRIS attribution may change');
+    assert.equal(htmlFor(slug), commercialPage(expected, slug),
+      slug + ': no content changes beyond the earlier brochure additions and approved commercial presentation');
   }
   assert.match(htmlFor('centenario-1'), /Centenario 1151/);
 });
@@ -264,6 +266,7 @@ test('three supplied sources and fourteen unique models retain document/page evi
       assert.ok(image && image.alt?.trim(), id + ': labelled plan');
       assert.equal(image.loading, 'lazy');
       assert.ok(attributes(blocks, 'a').some(anchor => anchor.href === model.plan.localPath), id + ': enlargement link');
+      assert.ok(attributes(blocks, 'details').some(node => node.id === 'modelo-' + model.modelo.toLowerCase()), id + ': model identifier');
     }
     assert.match(blocks, /referencial|aproximad|ilustrativ/i);
     assert.match(blocks, /disponibilidad/i);
@@ -533,11 +536,11 @@ test('Production and unspecified environment exclude both brochure folders/CSS a
     for (const environment of ['production', undefined]) {
       packageFixture(fixture, environment);
       assert.ok(readFileSync(join(fixture, 'dist/data/proyectos.json')).equals(old('data/proyectos.json')));
-      for (const slug of SLUGS) assert.ok(readFileSync(join(fixture, 'dist', slug + '.html')).equals(old(slug + '.html')), slug);
+      for (const slug of SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), commercialPage(old(slug + '.html'), slug), slug);
       for (const slug of AJ_SLUGS) {
         const original = old(slug + '.html').toString().replace(/<!--AJ_PREVIEW_START-->[\s\S]*?<!--AJ_PREVIEW_END-->/g, '')
           .replace(/<!--AJ_PUBLIC_START-->([\s\S]*?)<!--AJ_PUBLIC_END-->/g, '$1');
-        assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), original, slug);
+        assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), commercialPage(original, slug), slug);
       }
       for (const folder of [ASSETS, AJ_ASSETS]) assert.equal(existsSync(join(fixture, 'dist', folder.slice(1))), false);
       assert.equal(existsSync(join(fixture, 'dist', CSS)), false);
@@ -640,7 +643,7 @@ test('Git Preview without all 36 private Ingevec assets preserves the three exac
     assert.equal(changedCovers, 5, 'Only the five existing AJ cover overrides survive a Git-only build');
     for (const slug of SLUGS) {
       const html = readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8');
-      const expected = old(slug + '.html').toString().replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
+      const expected = commercialPage(old(slug + '.html'), slug).replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
       assert.equal(html, expected, slug + ': old images, maps, tours, navigation and forms must remain exact');
       assert.doesNotMatch(html, /ingevec-preview|Modelos y distribuciones|INGEVEC_(?:PUBLIC|PREVIEW)/);
     }

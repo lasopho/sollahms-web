@@ -14,6 +14,7 @@ from pathlib import Path
 from string import Template
 from urllib.parse import urlencode, urlparse, parse_qs
 from aj_brochure import augment_page
+from fiche_presentation import commercialize_fiche
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -195,7 +196,7 @@ def render(project, research, template):
         stages = '<h3>Etapas del proyecto</h3><ul>' + ''.join('<li>' + esc(s.get('nombre', '')) + ': ' + esc(s.get('estado', 'Pendiente')) + '</li>' for s in project['etapas']) + '</ul>'
     embed_hosts = sorted({'www.google.com', 'my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com'} | {urlparse(t['url']).hostname for t in research.get('virtualTours', []) if secure_url(t.get('url')) and t.get('embedStatus') == 'allowed'})
     page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts), overview=overview_html, official_context=official_context_content(research), specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tours=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
-    return augment_page(page, slug), mapped, len(tours)
+    return commercialize_fiche(augment_page(page, slug), slug), mapped, len(tours)
 
 def main():
     parser = argparse.ArgumentParser()

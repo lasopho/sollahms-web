@@ -3,6 +3,7 @@ import html
 import json
 import re
 from pathlib import Path
+from fiche_presentation import commercialize_fiche
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / 'data/brochures-aj-urbana.json'
@@ -115,9 +116,6 @@ def augment_record(page, record, namespace, builder):
     new += '<div class="aj-equipment"><h3>Equipamiento documentado en el brochure</h3><p>Características del documento de referencia, sujetas a confirmación para la unidad y etapa que consultes.</p>' + documentary_list(record['amenities'])
     new += '<h3>Terminaciones y características</h3>' + documentary_list(record['finishes'] + record['features']) + '</div>'
     page = page[:equipment.start()] + equipment[1] + public(old) + preview(new) + equipment[3] + page[equipment.end():]
-    sources = '<div class="aj-source"><h3>Fuente documental de modelos e imágenes</h3>'
-    sources += '<p class="aj-attribution">Material promocional proporcionado a Sollahms mediante Yapo/IRIS.</p>'
-    sources += f'<p>{esc(record["document"]["fileName"])} · {esc(builder)}. Revisado el <time datetime="2026-10-10">2026-10-10</time>. Las superficies, orientaciones y planos se contrastaron con sus páginas originales; no se utilizan como oferta comercial vigente.</p>'
-    sources += '<details><summary>Observaciones del brochure y datos por confirmar</summary><ul>' + ''.join(f'<li>{esc(note)}</li>' for note in record['warnings']) + '</ul></details></div>'
-    page = page.replace('</section>\n        <a class="back-link"', preview(sources) + '</section>\n        <a class="back-link"', 1)
-    return page
+    # Documentary provenance stays in the immutable manifests. The shared
+    # presentation policy retains the relevant brief cautions next to models.
+    return commercialize_fiche(page, record['slug'])

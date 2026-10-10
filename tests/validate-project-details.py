@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Catalogue-wide navigation, provenance and safe fallback checks."""
+"""Catalogue-wide navigation, internal provenance and safe public fallback checks."""
 import argparse
 import json
 import re
@@ -150,11 +150,14 @@ for project in projects:
     assert ledger_by_slug[slug]['matterport'] == actual_matterport, f'{slug}: Matterport audit differs from rendered page'
     assert ledger_by_slug[slug]['recorridosOficiales'] == len(record.get('virtualTours', [])), f'{slug}: official tour count differs from research'
     if slug not in FEATURED:
-        assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'recorrido', 'ubicacion', 'fuentes'])
+        assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'recorrido', 'ubicacion'])
         if 'precioDesdeUF' not in record.get('verifiedFields', []) or record.get('updates', {}).get('precioDesdeUF', project.get('precioDesdeUF')) is None:
             assert 'Precio desde</span><strong><span class="pending">' in text, f'{slug}: historical price shown as current'
+            assert 'Consultar precio' in text, f'{slug}: unconfirmed commercial price must invite consultation'
         for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
             assert json.loads(ld)['@type'] == 'WebPage'
+    assert not any(x in page.ids for x in ['fuentes', 'fuentes-verificadas']), f'{slug}: audit section remains visitor-facing'
+    assert not any(x.get('href') in ['#fuentes', '#fuentes-verificadas'] for x in page.links), f'{slug}: stale audit navigation anchor'
 sitemap = ET.fromstring((SITE_ROOT / 'sitemap.xml').read_text())
 urls = [x.text for x in sitemap.findall('.//{*}loc')]
 assert len(urls) == len(set(urls))
