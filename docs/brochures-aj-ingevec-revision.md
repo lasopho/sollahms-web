@@ -49,7 +49,7 @@ En todas: autorización de difusión pública del material y disponibilidad actu
 
 ## Centenario 1
 
-Se incorporan fachada, sala gourmet, interiores y espacios comunes seleccionados; nueve imágenes nuevas, preservando las cuatro oficiales existentes. Galería final: 13 imágenes únicas. Equipamiento documentado: piscina, zona deportiva, cowork, gimnasio, bicicletas, salón gourmet, quinchos, lavandería y sala común; terminaciones de cocina, ventanas termopanel, piso vinílico y terrazas. Se citan las páginas de cada atributo.
+Se incorporan fachada, sala de juegos, interiores y espacios comunes seleccionados; nueve imágenes nuevas, preservando las cuatro oficiales existentes. Galería final: 13 imágenes únicas. Equipamiento documentado: piscina, zona deportiva, cowork, gimnasio, bicicletas, salón gourmet, quinchos, lavandería y sala común; terminaciones de cocina, ventanas termopanel, piso vinílico y terrazas. Se citan las páginas de cada atributo.
 
 La única dirección visible es **Centenario 1151, Santiago**. La referencia documental interna y el original que la contiene se guardan exclusivamente fuera de Git y de los despliegues. Se excluyen las páginas originales de contexto, dirección y mapa de los recursos publicables. La fachada se extrae como imagen nativa limpia; los planos corresponden a las páginas 10–14. No se crea otra ficha.
 
@@ -57,7 +57,7 @@ Conserva desde **UF 2.545**, entrega inmediata y rango comercial total **26,98�
 
 ## Tocornal
 
-Se incorporan siete imágenes nuevas de interiores y áreas comunes y una fachada de mayor resolución. Se conservan las fotografías reales correctas de piscina, quincho y sala común. Galería final: 11 imágenes únicas; la fachada anterior se conserva como fallback público y no se duplica dentro de la Preview. Equipamiento y terminaciones llevan su página: cocina equipada, termopanel, pisos, lavandería, quinchos, gimnasio, cowork y otras áreas comunes del documento.
+Se incorporan siete imágenes nuevas de interiores y áreas comunes y una fachada de mayor resolución. Se conservan las fotografías reales correctas de piscina, quincho y sala común. Galería final: 11 imágenes únicas; la fachada anterior se conserva como fallback público y no se duplica dentro de la Preview. Equipamiento y terminaciones llevan su página: cocina equipada, termopanel, pisos, lavandería, quinchos, gimnasio y otras áreas comunes del documento.
 
 Conserva **Manuel Antonio Tocornal 678**, desde **UF 3.282**, entrega inmediata y rango comercial **37,73–48,02 m²**, revisados el 09/10/2026. Los modelos históricos **20,21–50,34 m²** no reemplazan las tipologías ni superficies comerciales vigentes.
 
