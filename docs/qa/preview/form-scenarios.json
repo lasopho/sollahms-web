@@ -1,0 +1,22 @@
+[
+  {
+    "scenario": "availability_unavailable",
+    "availabilityStatus": "Ese horario ya no está disponible. Elige otra fecha u hora.",
+    "status": "Ese horario ya no está disponible. Elige otra fecha u hora."
+  },
+  {
+    "scenario": "upstream_error",
+    "availabilityStatus": "No pudimos comprobar la disponibilidad. Inténtalo más tarde.",
+    "status": "No pudimos comprobar la disponibilidad. Inténtalo más tarde."
+  },
+  {
+    "scenario": "booking_conflict",
+    "availabilityStatus": "Este horario está disponible.",
+    "status": "Ese horario ya no está disponible. Elige otra fecha u hora."
+  },
+  {
+    "scenario": "preview_read_only",
+    "availabilityStatus": "Este horario está disponible.",
+    "status": "La vista previa no envía reservas reales. Puedes revisar el formulario sin confirmar una asesoría."
+  }
+]

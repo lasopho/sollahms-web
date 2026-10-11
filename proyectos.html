@@ -50,10 +50,24 @@
         .catalog-control { width: 100%; min-height: 44px; border: 1px solid #bcc9c3; border-radius: .5rem; padding: .75rem; background: white; color: #00201a; }
         .catalog-control:focus-visible { outline: 2px solid #005144; outline-offset: 3px; }
         .catalog-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-        .catalog-grid article { min-width: 0; overflow-wrap: anywhere; }
+        .catalog-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; overflow-wrap: anywhere; background: #fff; border: 1px solid #00322914; border-radius: 1rem; box-shadow: 0 4px 18px #00322908; transition: box-shadow .2s ease, border-color .2s ease; }
+        .catalog-card:hover { border-color: #00322935; box-shadow: 0 8px 26px #00322912; }
+        .catalog-cover { display: block; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #eef2ee; color: #003229; }
+        .catalog-cover-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+        .catalog-cover-placeholder { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; padding: 1rem; text-align: center; background: linear-gradient(135deg, #003229, #154d41); color: #fff; }
+        .catalog-cover-placeholder strong { font-family: Manrope, sans-serif; color: #E9C176; font-size: 1.2rem; letter-spacing: .04em; }
+        .catalog-cover-placeholder span { font-size: .75rem; line-height: 1.5; color: #ffffffbf; }
+        .catalog-card-body { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+        .catalog-card-title { color: #003229; font-size: 1.2rem; line-height: 1.4; margin: 0 0 .8rem; }
+        .catalog-actions { margin-top: auto; padding-top: 1.25rem; }
+        .catalog-details-link { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1rem; border-radius: .5rem; background: #003229; color: #fff; font-size: .875rem; font-weight: 700; text-decoration: none; transition: background .2s ease; }
+        .catalog-details-link:hover { background: #185245; }
+        .catalog-cover:focus-visible, .catalog-details-link:focus-visible { outline: 3px solid #E9C176; outline-offset: -3px; }
+        @media (prefers-reduced-motion: reduce) { .catalog-card, .catalog-details-link { transition: none; } }
         @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (min-width: 1024px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; } }
     </style>
+<link rel="stylesheet" href="/assets/css/purchase-capacity.css">
 </head>
 <body class="text-on-background pt-20">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
@@ -65,8 +79,7 @@
 <a class="text-2xl font-black tracking-tighter text-emerald-950" href="/">Sollahms</a>
 <div class="hidden md:flex items-center space-x-8">
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/#expertise">Expertise</a>
-<a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/#portfolio">Asset Portfolio</a>
-<a class="text-emerald-950 font-headline font-bold tracking-tight" href="/proyectos.html" aria-current="page">Proyectos</a>
+<a class="text-emerald-950 font-headline font-bold tracking-tight" href="/proyectos.html" aria-current="page">Asset Portafolio</a>
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/contacto.html">Contacto</a>
 </div>
 <div class="flex items-center gap-2 md:gap-6">
@@ -79,8 +92,7 @@
 <div id="mobile-menu" class="hidden md:hidden absolute top-full inset-x-0 bg-white shadow-lg border-t border-slate-200">
 <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col" aria-label="Navegación móvil">
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a>
-<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#portfolio">Asset Portfolio</a>
-<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html" aria-current="page">Proyectos</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html" aria-current="page">Asset Portafolio</a>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/contacto.html">Contacto</a>
 </nav>
 </div>
@@ -118,13 +130,35 @@
 <main id="contenido-principal">
 <section class="bg-[#00201a] text-white py-16 md:py-24">
 <div class="max-w-7xl mx-auto px-8">
-<p class="text-sm font-bold tracking-[0.2em] uppercase text-primary-fixed mb-6">CATÁLOGO INMOBILIARIO</p>
-<h1 class="text-4xl md:text-6xl font-extrabold mb-6">Proyectos</h1>
+<p class="text-sm font-bold tracking-[0.2em] uppercase text-primary-fixed mb-6">ASSET PORTAFOLIO</p>
+<h1 class="text-4xl md:text-6xl font-extrabold mb-6">Catálogo inmobiliario</h1>
 <p class="leading-relaxed">Explora las alternativas disponibles y filtra el catálogo según ubicación o estado del proyecto.</p>
 </div>
 </section>
 <section class="py-16 bg-surface" aria-label="Catálogo de proyectos">
 <div class="max-w-7xl mx-auto px-8">
+<section class="capacity-search" aria-labelledby="capacity-title">
+<div class="capacity-intro"><div><h2 id="capacity-title">Encuentra tu propiedad según tu renta</h2><p>Explora un escenario de compra con tu renta, ahorro y un pie estimado. Puedes seguir usando el catálogo sin ingresar datos financieros.</p></div><button class="capacity-button" id="capacity-toggle" type="button" aria-expanded="false" aria-controls="capacity-form" disabled>Buscar según mi renta</button></div>
+<form id="capacity-form" class="capacity-form" hidden autocomplete="off">
+<div class="capacity-fields">
+<div class="capacity-field"><label for="capacity-income">Renta líquida individual (CLP / mes)</label><input id="capacity-income" type="number" min="1" max="10000000000" step="1" inputmode="numeric" required></div>
+<div class="capacity-field"><label for="capacity-complement">¿Complementar renta?</label><select id="capacity-complement"><option value="no">No</option><option value="yes">Sí</option></select></div>
+<div class="capacity-field" id="capacity-second-wrap" hidden><label for="capacity-second">Renta segunda persona (CLP / mes)</label><input id="capacity-second" type="number" min="1" max="10000000000" step="1" inputmode="numeric" disabled></div>
+<div class="capacity-field"><label for="capacity-debt">Cuotas de deudas mensuales (CLP, opcional)</label><input id="capacity-debt" type="number" min="0" max="10000000000" step="1" inputmode="numeric" placeholder="0"></div>
+<div class="capacity-field"><label for="capacity-savings">¿Cuánto tienes ahorrado para el pie?</label><input id="capacity-savings" type="text" inputmode="numeric" placeholder="$5.000.000" aria-describedby="capacity-savings-help"><p id="capacity-savings-help" class="capacity-field-help">Ingresa tu ahorro actual en pesos chilenos (CLP). Lo convertimos a UF con el valor oficial de hoy; no necesitas calcularlo. Si aún no tienes ahorro, puedes dejarlo en blanco.</p></div>
+<div class="capacity-field"><label for="capacity-monthly">¿Cuánto puedes ahorrar cada mes?</label><input id="capacity-monthly" type="text" inputmode="numeric" placeholder="$0" aria-describedby="capacity-monthly-help"><p id="capacity-monthly-help" class="capacity-field-help">Opcional, en pesos chilenos (CLP). Sumamos este aporte durante el horizonte de compra que elijas. Si lo dejas en blanco, consideramos $0.</p></div>
+<div class="capacity-field"><label for="capacity-horizon">Horizonte de compra</label><select id="capacity-horizon"><option value="0">Inmediata</option><option value="6">6 meses</option><option value="12">12 meses</option><option value="18">18 meses</option><option value="24">24 meses</option><option value="custom">Otro horizonte</option></select><div class="capacity-custom" id="capacity-horizon-wrap" hidden><label for="capacity-horizon-custom">Meses (0 a 600)</label><input id="capacity-horizon-custom" type="number" min="0" max="600" step="1" inputmode="numeric" disabled></div></div>
+<div class="capacity-field"><label for="capacity-pie">Pie estimado</label><select id="capacity-pie"><option value="10">10%</option><option value="15">15%</option><option value="20" selected>20%</option><option value="custom">Otro porcentaje</option></select><div class="capacity-custom" id="capacity-pie-wrap" hidden><label for="capacity-pie-custom">Porcentaje de pie (5 a 90)</label><input id="capacity-pie-custom" type="number" min="5" max="90" step="any" inputmode="decimal" disabled></div></div>
+<div class="capacity-field"><label for="capacity-years">Plazo del crédito</label><select id="capacity-years"><option value="15">15 años</option><option value="20">20 años</option><option value="25" selected>25 años</option><option value="30">30 años</option><option value="custom">Otro plazo</option></select><div class="capacity-custom" id="capacity-years-wrap" hidden><label for="capacity-years-custom">Años (5 a 40)</label><input id="capacity-years-custom" type="number" min="5" max="40" step="1" inputmode="numeric" disabled></div></div>
+<div class="capacity-field"><label for="capacity-rate">Tasa anual proporcionada por ti (%)</label><input id="capacity-rate" type="number" min="0" max="25" step="any" inputmode="decimal" placeholder="Ingresa la tasa de tu cotización" aria-describedby="capacity-rate-help"></div>
+<div class="capacity-field"><label for="capacity-convention">Convención de la tasa anual</label><select id="capacity-convention"><option value="effective">Efectiva anual</option><option value="nominal">Nominal anual</option></select></div>
+<div class="capacity-field"><label for="capacity-criterion">Criterio referencial configurable</label><select id="capacity-criterion"><option value="25">25% de la renta − deudas</option><option value="30">30% de la renta − deudas</option></select></div>
+</div>
+<div class="capacity-notes"><p id="capacity-rate-help">No suponemos una tasa bancaria. Si dejas la tasa vacía, los proyectos quedarán pendientes de evaluación. El comparador permite consultar referencias sólo cuando coinciden con el escenario.</p><p>El presupuesto mensual es renta total × criterio − cuotas de deudas, con mínimo cero. 25% y 30% son criterios de exploración configurables; no son requisitos universales. Complementar renta depende de cada institución.</p><p>El dividendo incluye capital e intereses. Seguros y gastos están pendientes de verificación. El ahorro proyectado usa la UF fechada de hoy constante y no considera rentabilidad ni predice la UF futura.</p><p>Los resultados no representan aprobación ni probabilidad de crédito. La evaluación bancaria considera historial, antigüedad laboral, edad, deudas, seguros y el tipo de activo.</p><p>La búsqueda se calcula en tu navegador. No se guardan ni envían renta, deudas o ahorro. Al abrir un escenario sólo se conserva temporalmente el proyecto, monto, pie, plazo y tasa para el simulador.</p></div>
+<p id="capacity-uf" class="capacity-uf" role="status">Cargando referencia UF…</p><p id="capacity-error" class="capacity-error" role="alert"></p>
+<div class="capacity-form-actions"><button id="capacity-submit" class="capacity-button" type="submit">Evaluar proyectos</button><button id="capacity-reset" class="capacity-button capacity-button-secondary" type="button">Volver al catálogo</button></div>
+</form><p id="capacity-summary" class="capacity-summary" role="status" aria-live="polite"></p>
+</section>
 <form id="catalog-filters" class="catalog-filters mb-8" role="search" aria-label="Filtros del catálogo">
 <div><label class="block font-bold text-primary mb-3" for="search">Buscar proyecto</label><input class="catalog-control" id="search" type="search" disabled></div>
 <div><label class="block font-bold text-primary mb-3" for="asset-type">Tipo de activo</label><select class="catalog-control" id="asset-type" disabled><option value="">Todos</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option><option value="Terreno">Terreno</option></select></div>
@@ -186,6 +220,7 @@
     const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
     const numberFormat = new Intl.NumberFormat('es-CL');
     let projects = [];
+    let capacitySearch = null;
     const stages = project => Array.isArray(project.etapas) ? project.etapas : [];
     const projectStates = project => [project.estado, ...stages(project).map(stage => stage.estado)]
         .filter(value => typeof value === 'string' && value.length);
@@ -212,11 +247,38 @@
         if ([...commune.options].some(option => option.value === selected)) commune.value = selected;
     };
     const card = project => {
-        const article = element('article', undefined, 'bg-surface-container-lowest p-8 shadow-sm');
-        article.append(element('p', project.inmobiliaria, 'text-sm font-bold text-secondary mb-3'));
-        article.append(element('h2', project.nombre, 'text-xl font-bold text-primary mb-4'));
-        article.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
-        if (project.direccion != null) article.append(element('p', project.direccion, 'text-sm text-secondary mb-4'));
+        const article = element('article', undefined, 'catalog-card');
+        article.dataset.project = project.slug;
+        const hasDetail = typeof project.detalleUrl === 'string' && /^\/[a-z0-9-]+\.html$/.test(project.detalleUrl);
+        const cover = element(hasDetail ? 'a' : 'div', undefined, 'catalog-cover');
+        if (hasDetail) {
+            cover.href = project.detalleUrl;
+            cover.setAttribute('aria-label', 'Ver fotografías y detalles de ' + project.nombre);
+        }
+        const showPlaceholder = () => {
+            const placeholder = element('div', undefined, 'catalog-cover-placeholder');
+            placeholder.append(element('strong', 'Sollahms'), element('span', 'Fotografía oficial pendiente'));
+            cover.replaceChildren(placeholder);
+        };
+        // Only existing local official images enter the public catalogue dataset.
+        if (typeof project.imagenPrincipal === 'string' && /^\/assets\/propiedades\/[a-z0-9/._-]+\.(?:webp|jpe?g|png)$/i.test(project.imagenPrincipal)) {
+            const image = element('img', undefined, 'catalog-cover-image');
+            image.alt = project.imagenAlt || 'Fotografía del proyecto ' + project.nombre;
+            image.loading = 'lazy';
+            image.decoding = 'async';
+            image.width = 1600;
+            image.height = 900;
+            image.addEventListener('error', showPlaceholder, { once: true });
+            image.src = project.imagenPrincipal;
+            cover.append(image);
+        } else showPlaceholder();
+        const body = element('div', undefined, 'catalog-card-body');
+        article.append(cover, body);
+        const builderVerified = project.verificacion?.camposVerificados?.includes('inmobiliaria');
+        body.append(element('p', project.inmobiliaria + (builderVerified ? '' : ' · Asociación por verificar'), 'text-sm font-bold text-secondary mb-3'));
+        body.append(element('h2', project.nombre, 'catalog-card-title font-bold'));
+        body.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
+        if (project.direccion != null) body.append(element('p', project.direccion, 'text-sm text-secondary mb-4'));
         const details = element('dl');
         const detail = (label, value) => {
             details.append(element('dt', label, 'text-sm font-bold text-primary mt-4'));
@@ -247,24 +309,21 @@
             values.append(list);
             details.append(values);
         }
-        article.append(details);
+        body.append(details);
         if (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF)) {
-            article.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
+            body.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
+        } else {
+            body.append(element('p', (['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación'), 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
         }
-        if (typeof project.slug === 'string' && project.slug.trim().length) {
-            const actions = element('div', undefined, 'mt-4 flex flex-col sm:flex-row gap-3');
-            if (typeof project.detalleUrl === 'string' && project.detalleUrl.trim().length) {
-                const details = element('a', 'Ver detalles', 'inline-flex min-w-0 items-center justify-center px-4 py-3 bg-primary text-white text-sm font-bold rounded-lg transition-colors');
-                details.href = project.detalleUrl;
-                details.setAttribute('aria-label', 'Ver detalles de ' + project.nombre);
-                actions.append(details);
-            }
-            const contact = element('a', 'Consultar proyecto', 'inline-flex min-w-0 items-center justify-center px-4 py-3 bg-primary text-white text-sm font-bold rounded-lg transition-colors');
-            contact.href = '/contacto.html?proyecto=' + encodeURIComponent(project.slug);
-            contact.setAttribute('aria-label', 'Consultar proyecto ' + project.nombre);
-            actions.append(contact);
-            article.append(actions);
+        if (hasDetail) {
+            const actions = element('div', undefined, 'catalog-actions');
+            const details = element('a', 'Ver detalles', 'catalog-details-link');
+            details.href = project.detalleUrl;
+            details.setAttribute('aria-label', 'Ver detalles de ' + project.nombre);
+            actions.append(details);
+            body.append(actions);
         }
+        capacitySearch?.decorateCard(article, project);
         return article;
     };
     const render = () => {
@@ -293,6 +352,7 @@
                 return direction * (a.precioDesdeUF - b.precioDesdeUF);
             });
         }
+        if (sortOrder.value === 'original') capacitySearch?.sortProjects(sorted);
         grid.replaceChildren(...sorted.map(card));
         count.textContent = filtered.length + (filtered.length === 1 ? ' proyecto' : ' proyectos');
         message.textContent = filtered.length ? '' : 'No encontramos proyectos que coincidan con tus filtros.';
@@ -333,6 +393,12 @@
             updateCommunes();
             render();
             [search, assetType, region, commune, state, maxPriceInput, sortOrder, clear].forEach(control => { control.disabled = false; });
+            import('/assets/js/purchase-capacity-ui.mjs').then(({ initializeCapacitySearch }) => {
+                capacitySearch = initializeCapacitySearch({ projects, onChange: render });
+                document.getElementById('capacity-toggle').disabled = false;
+            }).catch(() => {
+                document.getElementById('capacity-summary').textContent = 'El buscador financiero no pudo cargar. Puedes seguir utilizando los filtros del catálogo.';
+            });
         } catch (error) {
             grid.replaceChildren();
             count.textContent = '';

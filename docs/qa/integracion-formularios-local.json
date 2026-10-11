@@ -1,0 +1,29 @@
+{
+  "counters": {
+    "requests": 61,
+    "availability": 1,
+    "booking": 1,
+    "contact": 1,
+    "simulatedProvider": 3,
+    "externalRequests": 0
+  },
+  "journal": [
+    {
+      "route": "/api/contact",
+      "scenario": "success",
+      "status": 200,
+      "proyecto": "distrito-centro"
+    },
+    {
+      "route": "/api/booking-availability",
+      "scenario": "success",
+      "status": 200
+    },
+    {
+      "route": "/api/booking-create",
+      "scenario": "success",
+      "status": 200,
+      "proyecto": "distrito-centro"
+    }
+  ]
+}

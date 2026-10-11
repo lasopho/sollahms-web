@@ -1,0 +1,151 @@
+[
+  {
+    "case": "responsive",
+    "action": "/api/contact",
+    "agenda": [
+      "/agenda-asesoria.html?proyecto=distrito-centro",
+      "/agenda-asesoria.html?proyecto=distrito-centro"
+    ],
+    "context": "Estás consultando por Distrito Centro.",
+    "method": "post",
+    "noSubject": true,
+    "overflow": false,
+    "rutOptional": true,
+    "width": 320
+  },
+  {
+    "case": "responsive",
+    "action": "/api/contact",
+    "agenda": [
+      "/agenda-asesoria.html?proyecto=distrito-centro",
+      "/agenda-asesoria.html?proyecto=distrito-centro"
+    ],
+    "context": "Estás consultando por Distrito Centro.",
+    "method": "post",
+    "noSubject": true,
+    "overflow": false,
+    "rutOptional": true,
+    "width": 390
+  },
+  {
+    "case": "responsive",
+    "action": "/api/contact",
+    "agenda": [
+      "/agenda-asesoria.html?proyecto=distrito-centro",
+      "/agenda-asesoria.html?proyecto=distrito-centro"
+    ],
+    "context": "Estás consultando por Distrito Centro.",
+    "method": "post",
+    "noSubject": true,
+    "overflow": false,
+    "rutOptional": true,
+    "width": 768
+  },
+  {
+    "case": "responsive",
+    "action": "/api/contact",
+    "agenda": [
+      "/agenda-asesoria.html?proyecto=distrito-centro",
+      "/agenda-asesoria.html?proyecto=distrito-centro"
+    ],
+    "context": "Estás consultando por Distrito Centro.",
+    "method": "post",
+    "noSubject": true,
+    "overflow": false,
+    "rutOptional": true,
+    "width": 1024
+  },
+  {
+    "case": "responsive",
+    "action": "/api/contact",
+    "agenda": [
+      "/agenda-asesoria.html?proyecto=distrito-centro",
+      "/agenda-asesoria.html?proyecto=distrito-centro"
+    ],
+    "context": "Estás consultando por Distrito Centro.",
+    "method": "post",
+    "noSubject": true,
+    "overflow": false,
+    "rutOptional": true,
+    "width": 1440
+  },
+  {
+    "case": "invalid",
+    "error": "Ingresa un RUT válido con su dígito verificador.",
+    "invalid": "true",
+    "status": "",
+    "url": "http://127.0.0.1:8898/contacto.html?proyecto=distrito-centro",
+    "visible": true
+  },
+  {
+    "case": "valid-simulated",
+    "format": "dotted",
+    "normalized": "10000000-8",
+    "buttonEnabled": true,
+    "cleared": true,
+    "context": "Estás consultando por Distrito Centro.",
+    "status": "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.",
+    "url": "http://127.0.0.1:8898/contacto.html?proyecto=distrito-centro",
+    "rutErrorHidden": true
+  },
+  {
+    "case": "valid-simulated",
+    "format": "plain",
+    "normalized": "10000000-8",
+    "buttonEnabled": true,
+    "cleared": true,
+    "context": "Estás consultando por Distrito Centro.",
+    "status": "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.",
+    "url": "http://127.0.0.1:8898/contacto.html?proyecto=distrito-centro",
+    "rutErrorHidden": true
+  },
+  {
+    "case": "valid-simulated",
+    "format": "plain",
+    "normalized": "10000000-8",
+    "buttonEnabled": true,
+    "cleared": true,
+    "context": "Estás consultando por Distrito Centro.",
+    "status": "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.",
+    "url": "http://127.0.0.1:8898/contacto.html?proyecto=distrito-centro",
+    "rutErrorHidden": true
+  },
+  {
+    "case": "valid-simulated",
+    "format": "dotted",
+    "normalized": "1000005-K",
+    "buttonEnabled": true,
+    "cleared": true,
+    "context": "Estás consultando por Distrito Centro.",
+    "status": "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.",
+    "url": "http://127.0.0.1:8898/contacto.html?proyecto=distrito-centro",
+    "rutErrorHidden": true
+  },
+  {
+    "case": "valid-simulated",
+    "format": "empty",
+    "normalized": "",
+    "buttonEnabled": true,
+    "cleared": true,
+    "context": "Estás consultando por Distrito Centro.",
+    "status": "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.",
+    "url": "http://127.0.0.1:8898/contacto.html?proyecto=distrito-centro",
+    "rutErrorHidden": true
+  },
+  {
+    "case": "upstream_error",
+    "buttonEnabled": true,
+    "entriesPreserved": true,
+    "rutNormalized": true,
+    "status": "No pudimos enviar el mensaje. Inténtalo de nuevo más tarde.",
+    "url": "http://127.0.0.1:8898/contacto.html?proyecto=distrito-centro"
+  },
+  {
+    "case": "preview_read_only",
+    "buttonEnabled": true,
+    "entriesPreserved": true,
+    "rutNormalized": true,
+    "status": "La vista previa no envía mensajes reales. Puedes revisar el formulario sin contactar al equipo.",
+    "url": "http://127.0.0.1:8898/contacto.html?proyecto=distrito-centro"
+  }
+]

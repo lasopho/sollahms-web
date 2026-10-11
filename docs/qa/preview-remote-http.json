@@ -1,0 +1,120 @@
+{
+  "checkedAt": "2026-10-09T23:24:11.961698+00:00",
+  "status": "blocked_by_vercel_authentication",
+  "scope": {
+    "previewBase": "https://project-wrapp-git-codex-fichas-eb9b71-lsandoval2-8260s-projects.vercel.app",
+    "deploymentIdProvidedByPrimaryAgent": "dpl_FwXjXqkZ1GzKNxoAGv9mSBeCDg4M",
+    "deploymentStateProvidedByPrimaryAgent": "READY",
+    "sourceCommit": "f1e9162bf98e4697b4c2fa81615c17e807c322cf",
+    "branch": "codex/fichas-proyectos-completas",
+    "requestMethod": "GET",
+    "tlsVerificationEnabled": true,
+    "cookiesSent": false,
+    "privateHeadersSent": false,
+    "bypassUsed": false,
+    "authenticationChanges": false,
+    "postRequests": 0,
+    "realReservations": 0,
+    "realContactMessages": 0
+  },
+  "publicProbe": {
+    "url": "https://project-wrapp-git-codex-fichas-eb9b71-lsandoval2-8260s-projects.vercel.app/proyectos.html",
+    "status": 302,
+    "headers": {
+      "cache-control": "no-store, max-age=0",
+      "content-type": "text/plain",
+      "server": "Vercel",
+      "x-robots-tag": "noindex"
+    },
+    "bytes": 263,
+    "sha256": "078d44efe538819a52deef2d03cc221b5b81ea1ae1f577dc80710db061c3766f",
+    "authenticationRedirectOrigin": "https://vercel.com",
+    "authenticationRedirectPath": "/sso-api",
+    "authenticationRedirectFollowed": false,
+    "protectionMessagePresent": true,
+    "catalogueHtmlReceived": false,
+    "authenticationQueryAndCookieValuesNotStored": true
+  },
+  "summary": {
+    "remotePublicRequests": 1,
+    "remoteDetailPagesVerified": 0,
+    "remoteAssetsVerified": 0,
+    "remoteContextualLinksVerified": 0,
+    "remotePrivatePathsVerified": 0,
+    "plannedDetailPages": 148,
+    "plannedAssets": 508,
+    "plannedContextualLinks": 296,
+    "exhaustiveRemoteHttpAuditCompleted": false,
+    "localPackageReport": "docs/qa/preview-http.json",
+    "localPackageFingerprintSha256": "7f45b893f1291c7f4614e643f7d0075ee6439bca8c6e29870f2ba15c2da171d0"
+  },
+  "functionArchitecture": {
+    "assessment": "compatible_by_official_documentation_and_local_get_checks",
+    "layout": "api/*.mjs",
+    "handler": "export default object with async fetch(Request) returning Response",
+    "defaultRuntime": "Node.js",
+    "noFrameworkRequired": true,
+    "esmMjsSupported": true,
+    "sources": [
+      {
+        "title": "Vercel Functions: default fetch Web Standard export",
+        "url": "https://vercel.com/docs/functions"
+      },
+      {
+        "title": "Node.js Runtime: functions inside api and fetch Web Standard export",
+        "url": "https://vercel.com/docs/functions/runtimes/node-js"
+      },
+      {
+        "title": "Functions API Reference: Request/Response Web Handler",
+        "url": "https://vercel.com/docs/functions/functions-api-reference"
+      }
+    ],
+    "localGetChecks": {
+      "results": [
+        {
+          "path": "/api/booking-create",
+          "method": "GET",
+          "status": 405,
+          "allow": "POST",
+          "body": {
+            "ok": false,
+            "error": "Método no permitido."
+          },
+          "environment": "local_module_handler_direct"
+        },
+        {
+          "path": "/api/booking-availability",
+          "method": "GET",
+          "status": 405,
+          "allow": "POST",
+          "body": {
+            "ok": false,
+            "error": "Método no permitido."
+          },
+          "environment": "local_module_handler_direct"
+        },
+        {
+          "path": "/api/contact",
+          "method": "GET",
+          "status": 405,
+          "allow": "POST",
+          "body": {
+            "error": "Método no permitido."
+          },
+          "environment": "local_module_handler_direct"
+        }
+      ],
+      "outgoingRequests": 0,
+      "passed": true,
+      "remoteVerification": false
+    },
+    "deployedGet405Verified": false,
+    "deployedGet405Limitation": "La comprobación HTTP pública encontró autenticación Vercel antes del catálogo; no se presentaron cookies ni se intentó sortearla para acceder a las funciones."
+  },
+  "limitations": [
+    "El alias es accesible para la sesión normal autenticada del navegador del agente principal; este informe corresponde a GET público sin esa sesión.",
+    "El302 y x-robots-tag noindex corresponden a la respuesta de protección, no acreditan losHTML,hashes ni rutas privadas del despliegue.",
+    "No se repitieron los98GETexternos de recorridos; su evidencia permanece en el informe local anterior.",
+    "No se crearon enlaces temporales ni se usaron herramientas de bypass."
+  ]
+}

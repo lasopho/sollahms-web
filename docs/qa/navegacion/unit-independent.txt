@@ -1,0 +1,47 @@
+✔ existing callers without a project keep the original backend payload (24.788042ms)
+✔ a known project forwards its trusted catalogue name with its slug (0.823125ms)
+✔ unknown and inherited project names are rejected without backend requests (1.248083ms)
+✔ malformed project types are rejected without backend requests (3.1785ms)
+✔ adding optional project context does not weaken required fields or accepted keys (0.683833ms)
+✔ a backend failure remains an error with and without project context (0.733834ms)
+✔ both booking APIs and contact reject non-POST and non-JSON requests without network calls (22.191709ms)
+✔ booking APIs reject malformed, non-object, oversized and invalid UTF-8 requests (4.940917ms)
+✔ slot validation respects Chile local time, business days and half-hour boundaries (2.57525ms)
+✔ invalid dates, slots and forged availability fields cannot reach the provider (1.520792ms)
+✔ availability forwards only a validated slot and returns only the boolean result (0.557792ms)
+✔ all 148 project slugs forward the trusted catalogue name without exposing it in responses (29.152333ms)
+✔ person validation rejects header injection, markup, malformed email and phone (2.659084ms)
+✔ honeypots complete silently without sending a reservation or email (0.51275ms)
+✔ booking races report an unavailable slot for both provider conflict conventions (0.2825ms)
+✔ a provider false availability is also reported as a booking conflict (0.405041ms)
+✔ missing configuration and unsafe backend URLs fail without outgoing requests (2.425833ms)
+✔ provider non-JSON responses cannot be treated as successful bookings (0.324125ms)
+✔ provider timeout is handled by each form without leaking its exception (0.818458ms)
+✔ contact rejects invalid fields and oversize bodies without an email request (0.705625ms)
+✔ project consultation escapes message markup and keeps email credentials server-side (0.377667ms)
+✔ Vercel Preview cannot send real reservations or contact messages even with configured credentials (0.445875ms)
+✔ Vercel Production retains valid form behavior against the simulated provider (0.378292ms)
+✔ oversized booking provider responses fail safely (0.491958ms)
+✔ RUT accepts dotted/plain forms, absent dash, lowercase K and modulo 11 branches (1.465916ms)
+✔ backend accepts optional empty/omitted RUT and all supported synthetic formats (50.058625ms)
+✔ backend rejects invalid RUT before any provider and never echoes the identifier (3.19775ms)
+✔ contact rejects malformed/non-object JSON, invalid UTF-8 and oversized bodies before any provider (0.634458ms)
+✔ all 148 projects derive the email subject and internal name from the server catalogue (19.045916ms)
+✔ forged subject/name and unknown, inherited, malformed or whitespace slugs cannot reach the provider (2.949458ms)
+✔ Preview and honeypot protect against sends with RUT and trusted project context (0.506625ms)
+✔ provider errors preserve a generic response without personal data (0.373792ms)
+✔ frontend replaces visible subject with an optional RUT and uses POST even without JavaScript (0.68875ms)
+✔ frontend invalid RUT blocks fetch, gives a clear error and clears it while editing (1.78ms)
+✔ frontend normalizes valid blur/send forms, accepts empty input and keeps identifiers out of URLs (5.073625ms)
+✔ frontend retains all 148 project contexts and both agenda links before and after successful resets (65.704458ms)
+✔ frontend preserves slug even if contextual catalogue fetch fails (0.6005ms)
+✔ frontend prevents duplicate requests while sending and recovers button after completion (0.424375ms)
+✔ frontend preserves entries on Preview/provider failure and displays server RUT/project errors (1.757125ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 241.448334
