@@ -27,7 +27,21 @@ APPROVED_PROJECTS = {
         'edificio-vista-amunategui', 'monjitas-690', 'vista-morande'},
     'brochures-ingevec.json': {'centenario-1', 'tocornal', 'vivaceta',
         'coronel-godoy', 'diagonal-paraguay', 'el-aromo', 'los-lilenes',
-        'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589'},
+        'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589',
+        'abdon-cifuentes', 'don-ignacio', 'terrazzo', 'vima',
+        'los-alerces', 'valle-los-ingleses-iii'},
+}
+REMOVED_PROJECTS = {'brasil', 'vespucio-capital', 'edificio-serrano-capital',
+                    'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz'}
+PUBLIC_PAGES = {'404.html', 'agenda-asesoria.html', 'comparador-hipotecario.html',
+                'contacto.html', 'index.html', 'privacidad.html', 'proyectos.html'}
+RETIRED_ASSETS = {
+    'assets/propiedades/catalogo/a563beb6adb19f55406aff15.webp',
+    'assets/propiedades/catalogo/045681ecf683fff01b6c662e.webp',
+    'assets/propiedades/catalogo/ff0e16740bb921f587be6864.webp',
+    'assets/propiedades/catalogo/1c8afdcef4daab70c27ecb01.webp',
+    'assets/propiedades/catalogo/ae7bcf577b09a561c3359867.webp',
+    'assets/propiedades/catalogo/2e0af89ee3298d9791639ae2.webp',
 }
 
 
@@ -37,8 +51,22 @@ def sha(data):
 
 def selected_source_files(root):
     catalogue = json.loads((root / 'data/proyectos.json').read_text())
-    assert len(catalogue) == 148 and len({p['slug'] for p in catalogue}) == 148
-    assert not {'los-alerces', 'valle-los-ingleses-iii'} & {p['slug'] for p in catalogue}
+    slugs = {project['slug'] for project in catalogue}
+    assert len(catalogue) == 144 and len(slugs) == 144, 'The exact final catalogue must contain 144 projects'
+    assert APPROVED_PROJECTS['brochures-ingevec.json'] <= slugs and not REMOVED_PROJECTS & slugs
+    assert all(p['inmobiliaria'] == 'Ingevec' for p in catalogue if p['slug'] in APPROVED_PROJECTS['brochures-ingevec.json'])
+    untouched = [p for p in catalogue if p['slug'] not in APPROVED_PROJECTS['brochures-ingevec.json']]
+    # Python's canonical encoder retains .0 on float values; its independent
+    # fingerprint is pinned to the same 128 objects in the approved baseline.
+    assert len(untouched) == 128 and sha(json.dumps(untouched, ensure_ascii=False, sort_keys=True,
+        separators=(',', ':')).encode()) == '984a50766cd3ad57ae65da72ac4d69f37bbfc262feedbf20507ade41fff951a6', 'Other developers changed'
+    pages = {p.name for p in root.glob('*.html')}
+    assert pages <= PUBLIC_PAGES | {slug + '.html' for slug in slugs}, 'Unapproved or retired public route'
+    assert {slug + '.html' for slug in slugs} <= pages, 'Missing approved public route'
+    page_text = '\n'.join((root / name).read_text() for name in pages)
+    catalogue_text = (root / 'data/proyectos.json').read_text()
+    retired_exclusive = {path for path in RETIRED_ASSETS
+                         if '/' + path not in page_text and '/' + path not in catalogue_text}
     media = {}
     model_count = 0
     for name in MANIFESTS:
@@ -54,11 +82,10 @@ def selected_source_files(root):
                 assert path.startswith(prefix) and path.count('/') == prefix.count('/'), 'Media belongs to another project or directory'
                 assert path not in media, 'Duplicate selected media destination'
                 media[path] = asset['sha256']
-    assert model_count == 119, 'The complete selected batch must contain 119 plans'
-    assert len(media) == 210, 'The complete selected batch must contain 210 approved brochure resources'
+    assert model_count == 142, 'The complete selected batch must contain 142 plans'
+    assert len(media) == 269, 'The complete selected batch must contain 269 approved brochure resources'
     files = set(media)
-    files.update(p.name for p in root.glob('*.html'))
-    assert not {'los-alerces.html', 'valle-los-ingleses-iii.html'} & files
+    files.update(pages)
     files.update(('vercel.json', 'robots.txt', 'sitemap.xml', 'data/proyectos.json',
                   'data/hipotecario.json', *(f'data/{name}' for name in MANIFESTS),
                   'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs'))
@@ -67,7 +94,7 @@ def selected_source_files(root):
                      if p.is_file() and p.suffix in {'.js', '.mjs'})
     for path in (root / 'assets').rglob('*'):
         relative = str(path.relative_to(root))
-        if not path.is_file() or '/brochure-candidates/' in relative:
+        if not path.is_file() or '/brochure-candidates/' in relative or relative in retired_exclusive:
             continue
         if any(f'/propiedades/{folder}/' in relative for folder in MEDIA_FOLDERS):
             continue  # Only the exact manifest above can select these assets.

@@ -1,13 +1,13 @@
-# Registro de fichas Sollahms — 2026-10-10
+# Registro de fichas Sollahms — 2026-10-11
 
 Rama: `codex/integracion-financiera-sollahms`. Sin merge ni despliegue de producción.
 
-- Catálogo real: 148 proyectos.
-- Fichas desarrolladas: 148 (4 destacadas preexistentes, 144 nuevas).
+- Catálogo real: 144 proyectos (128 de otras inmobiliarias y 16 Ingevec; 17 entradas comerciales).
+- Fichas desarrolladas: 144 (4 destacadas preexistentes, 140 restantes).
 - Fichas por desarrollar: 0.
 - Proyectos con Matterport integrado: 18.
-- Proyectos con apartado de mapa: 137.
-- Proyectos con al menos un dato pendiente: 138.
+- Proyectos con apartado de mapa: 133.
+- Proyectos con al menos un dato pendiente: 134.
 
 Una ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los recorridos se cargan a petición y tienen un enlace al original. Los apartados de información oficial relacionada tienen fuente, fecha y alcance propios: sus precios, imágenes y mapas generales no se atribuyen a una torre o producto residencial sin verificar ni alimentan su evaluación financiera.
 
@@ -89,7 +89,6 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Edificio Parque Quinta](../parque-quinta.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/parque-quinta/) | verified | Pendiente | No verificado | Comuna, Comuna administrativa exacta: fuente oficial usa Santiago Centro, Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan |
 | [Edificio Quintavista](../quintavista.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/quintavista/) | verified | Sí | No verificado | Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan |
 | [Don Rafael](../don-rafael.html) | Crescer | [Oficial](https://crescer.cl/project/donrafael) | verified | Sí | No verificado | Precio actual en UF, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Recorrido virtual oficial específico no localizado, Precio vigente y disponibilidad |
-| [Brasil](../brasil.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-brasil) | verified | Sí | No verificado | Entrega, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
 | [Terrazzo](../terrazzo.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-terrazzo) | verified | Sí | No verificado | Entrega, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
 | [VIMA](../vima.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-vima) | verified | Sí | No verificado | Entrega, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
 | [Los Lilenes](../los-lilenes.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-loslilenes) | verified | Sí | No verificado | Entrega, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
@@ -107,7 +106,6 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Barrio Zenteno](../barrio-zenteno.html) | Nollagam | [Oficial](https://nollagam.cl/nuestros-proyectos/barrio-zenteno/) | verified | Sí | No verificado | Superficie útil, Superficie útil: fuente publica área Interior sin equivalencia explícita |
 | [Urban La Florida](../urban-la-florida.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/urban-la-florida) | verified | Sí | Sí | Precio actual en UF, Precio vigente: campaña CYBER sin fechas oficiales corroboradas, Precio vigente y disponibilidad |
 | [Edificio Vicuña Mackenna 6896](../vicuna-mackenna-6896.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/vicuna-mackenna-6896/) | verified | Sí | No verificado | Baños, Baños del modelo estudio: no se publica número explícito |
-| [Edificio Vespucio Capital](../vespucio-capital.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-vespuciocapital) | verified | Sí | No verificado | Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología |
 | [Edificio Vicuña Mackenna 7589](../vicuna-mackenna-7589.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-vicu%C3%B1amackenna7589) | verified | Sí | No verificado | Entrega, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
 | [Aires La Florida 2](../aires-la-florida-2.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/aires-la-florida-2) | verified | Sí | No verificado | Precio actual en UF, Precio vigente: campaña CYBER sin fechas oficiales corroboradas, Precio vigente y disponibilidad |
 | [Condominio Uruguay](../condominio-uruguay.html) | León | [Oficial](https://www.ileon.cl/proyectos/condominio-uruguay/) | verified | Sí | No verificado | Superficie útil, Disponibilidad exacta por tipología |
@@ -139,10 +137,6 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Robles del Aconcagua](../robles-del-aconcagua.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/robles-del-aconcagua) | verified | Sí | No verificado | Superficie útil, Existencia de recorrido virtual oficial, Recorrido virtual oficial específico no localizado |
 | [El Real](../el-real.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/el-real) | verified | Sí | No verificado | Superficie útil, Existencia de recorrido virtual oficial, Recorrido virtual oficial específico no localizado |
 | [Edificio Vista Bulnes](../vista-bulnes.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/vista-bulnes/) | verified | Sí | No verificado | Baños, Baños del modelo estudio: no se publica número explícito, Disponibilidad del visor Recorrido virtual de Vista Bulnes: no mostró escena tras reintento; conservar enlace oficial y confirmar con el proveedor |
-| [Edificio Serrano Capital](../edificio-serrano-capital.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-serranocapital) | verified | Sí | No verificado | Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología |
-| [Edificio Carrera Capital](../edificio-carrera-capital.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-carreracapital) | verified | Sí | No verificado | Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología |
-| [Edificio Froilán Roa](../edificio-froilan-roa.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-froilanroa) | verified | Sí | No verificado | Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología |
-| [Hacienda Lo Errázuriz](../hacienda-lo-errazuriz.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyectos-en-venta) | verified | Sí | No verificado | Precio actual en UF, Entrega, Equipamiento y áreas comunes, Superficie útil, Superficie total, Baños, Existencia de recorrido virtual oficial, Fecha exacta de entrega, Precio y disponibilidad comercial actual |
 | [Jardines de Ramón Cruz](../jardines-de-ramon-cruz.html) | León | [Oficial](https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/) | verified | Sí | No verificado | Equipamiento y áreas comunes, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología |
 | [La Casona de Buin](../la-casona-de-buin.html) | León | [Oficial](https://www.ileon.cl/proyectos/casona-de-buin/) | verified | Sí | No verificado | Entrega, Superficie útil, Existencia de recorrido virtual oficial, Superficie de terreno, Fecha exacta de entrega |
 | [Urbano Centro](../urbano-centro.html) | León | [Oficial](https://www.ileon.cl/proyectos/urbano-centro/) | verified | Sí | No verificado | Entrega, Equipamiento y áreas comunes, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
@@ -163,6 +157,8 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Edificio Atelier Prat Oficinas](../atelier-prat-oficinas.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/atelier-prat-oficinas/) | verified | Sí | No verificado | — |
 | [Edificio Corrientes Oficinas](../corrientes-oficinas.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/corrientes-oficinas/) | verified | Sí | No verificado | — |
 | [BOX Santiago](../box-santiago.html) | León | [Oficial](https://www.ileon.cl/proyectos/box-santiago/) | verified | Sí | No verificado | Entrega, Equipamiento y áreas comunes, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
+| [Los Alerces](../los-alerces.html) | Ingevec | Brochure privado Yapo/IRIS | verified | Sí | No verificado | Precio vigente, Disponibilidad de unidades y modelos, Estado comercial y fecha de entrega, Orientaciones y pisos por unidad, Existencia de recorrido virtual oficial, Cantidad de departamentos: originales con cifras diferentes; no publicada |
+| [Valle Los Ingleses III](../valle-los-ingleses-iii.html) | Ingevec | Brochure privado Yapo/IRIS | verified | Sí | No verificado | Precio vigente, Disponibilidad de unidades y modelos, Estado comercial y fecha de entrega, Orientaciones y pisos por unidad, Existencia de recorrido virtual oficial, Vinculación de líneas A–K con cada distribución, Confirmación de comercialización actual exclusiva Etapa III |
 
 ## Fuentes relacionadas con alcance separado
 

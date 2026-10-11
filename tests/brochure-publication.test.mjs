@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { brochurePublication, brochureSourceDocuments } from '../scripts/brochure-publication.mjs';
+import { brochurePublication, brochureSourceDocuments, assertBrochureCatalogue,
+  BROCHURE_INGEVEC_SLUGS, BROCHURE_REMOVED_SLUGS } from '../scripts/brochure-publication.mjs';
 
 const review = JSON.parse(readFileSync(new URL('../data/brochures-ingevec.json', import.meta.url)));
 function verifiedFixture() {
@@ -26,6 +27,9 @@ test('Yapo/IRIS provenance replaces individual licences without fabricating cont
 
 test('a verified website contract covers the exact document batch without an individual-image licence', () => {
   const fixture = verifiedFixture();
+  assert.equal(fixture.projects.length, 16);
+  assert.equal(brochureSourceDocuments(fixture).length, 17,
+    'Coverage includes all seventeen originals, including both Vicuña stages and the newly promoted documents');
   assert.deepEqual(brochurePublication(fixture), { protectedReview: true, publicWeb: true });
   assert.equal(fixture.publicationRights.publicSourceDistribution, 'pending_contract_scope_verification',
     'Website coverage is not recorded as public repository coverage');
@@ -69,9 +73,31 @@ test('multi-stage website coverage requires both original documents and never tr
 });
 
 test('missing primary source and duplicate stage documents fail even during a protected review', () => {
-  for (const sources of [[], [{ sha256: 'b'.repeat(64) }], [review.projects[0].document, review.projects[0].document]]) {
+  for (const sources of [[], [{ sha256: 'b'.repeat(64) }], [review.projects[0].document, review.projects[0].document],
+    [{ ...review.projects[0].document, fileName: 'unrelated.pdf' }],
+    [{ ...review.projects[0].document, pageCount: review.projects[0].document.pageCount + 1 }]]) {
     const fixture = structuredClone(review);
     fixture.projects[0].documents = sources;
     assert.throws(() => brochurePublication(fixture), /source document/);
+  }
+});
+
+test('the final catalogue pins sixteen authorized identities and all 128 unaffected projects without Git at build time', () => {
+  const catalogue = JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url)));
+  assert.doesNotThrow(() => assertBrochureCatalogue(catalogue));
+  assert.equal(BROCHURE_INGEVEC_SLUGS.length, 16);
+  assert.equal(BROCHURE_REMOVED_SLUGS.length, 6);
+  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ingevec').length, 128);
+  for (const kind of ['retired-project', 'unknown-project', 'duplicate', 'other-price', 'other-route', 'developer']) {
+    const copy = structuredClone(catalogue);
+    const position = copy.findIndex(project => project.slug === 'los-alerces');
+    const other = copy.find(project => project.inmobiliaria !== 'Ingevec');
+    if (kind === 'retired-project') copy[position].slug = BROCHURE_REMOVED_SLUGS[0];
+    else if (kind === 'unknown-project') copy[position].slug = 'unapproved-candidate';
+    else if (kind === 'duplicate') copy[position] = copy[0];
+    else if (kind === 'other-price') other.precioDesdeUF = 999999;
+    else if (kind === 'other-route') other.detalleUrl = '/unrelated-project.html';
+    else copy[position].inmobiliaria = 'Euroinmobiliaria';
+    assert.throws(() => assertBrochureCatalogue(copy), /approved catalogue|128 projects/, kind);
   }
 });

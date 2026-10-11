@@ -9,7 +9,9 @@ import { tmpdir } from 'node:os';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
-import { assertCommercialBytes, commercialPage, INGEVEC_ADDED_SLUGS } from './commercial-html.mjs';
+import { BROCHURE_PUBLIC_PAGES } from '../scripts/brochure-publication.mjs';
+import { assertCommercialBytes, commercialPage, INGEVEC_FINAL_SLUGS,
+  INGEVEC_NEW_SLUGS, readCommercialFile } from './commercial-html.mjs';
 
 // This review extends five static pages and their protected Preview card covers.
 // Historical brochure material
@@ -21,7 +23,7 @@ const NOW = Date.parse('2026-10-10T15:00:00Z');
 const ASSETS = '/assets/propiedades/aj-urbana-preview/';
 const INGEVEC_ASSETS = '/assets/propiedades/ingevec-preview/';
 const INGEVEC_REVIEW = new Set(['centenario-1', 'tocornal', 'vivaceta']);
-const ALL_INGEVEC_COVERS = new Set([...INGEVEC_REVIEW, ...INGEVEC_ADDED_SLUGS]);
+const ALL_INGEVEC_COVERS = INGEVEC_FINAL_SLUGS;
 const CSS = 'assets/css/aj-brochure-preview.css';
 const SOURCE_DOCUMENTS = {
   'downtown-san-martin': { sha256: 'a5c95f31e3f90b365d0b8edd8340bd6fb7bfdb28172cd30e59dfef854e6643f4', pages: 38, modelPages: [19,20,21,22,23,24,26,27,28,29,30,31,32,33,34,35,36,37,38] },
@@ -34,7 +36,7 @@ const SLUGS = Object.keys(SOURCE_DOCUMENTS);
 const FOCUS = new Set(SLUGS);
 const git = (...args) => execFileSync('git', args, { cwd: ROOT });
 const old = (path) => git('show', BASELINE + ':' + path);
-const current = (path) => readFileSync(resolve(ROOT, path));
+const current = (path) => readCommercialFile(path);
 const json = (path) => JSON.parse(current(path));
 const catalogue = json('data/proyectos.json');
 const research = json('data/fichas-proyectos.json');
@@ -146,23 +148,27 @@ const PRINTED_MODELS = {
   ],
 };
 
-test('AJ review preserves all 148 catalogue objects and historical research; 140 other fichas receive only the approved presentation', () => {
+test('AJ review preserves its five projects and historical research within the exact 144-project portfolio; 136 other fichas retain scoped presentation controls', () => {
   assert.equal(git('rev-parse', BASELINE).toString().trim(), BASELINE);
-  assert.equal(catalogue.length, 148);
-  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 148);
+  assert.equal(catalogue.length, 144);
+  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 144);
   unchanged('data/proyectos.json');
   unchanged('data/fichas-proyectos.json');
   unchanged('data/registro-fichas.json');
   unchanged('data/fuentes-imagenes.json');
-  assert.equal(research.length, 148);
-  assert.equal(ledger.length, 148);
+  assert.equal(research.length, 144);
+  assert.equal(ledger.length, 144);
   let protectedPages = 0;
   for (const project of catalogue) {
     if (FOCUS.has(project.slug) || INGEVEC_REVIEW.has(project.slug)) continue;
-    unchanged(project.slug + '.html');
+    if (INGEVEC_NEW_SLUGS.has(project.slug)) {
+      // The strict portfolio data audit above verifies the two exact source
+      // identities and absent prices; new pages cannot have an old Git blob.
+      assertCommercialBytes(project.slug + '.html', current(project.slug + '.html'), Buffer.alloc(0));
+    } else unchanged(project.slug + '.html');
     protectedPages++;
   }
-  assert.equal(protectedPages, 140);
+  assert.equal(protectedPages, 136);
 });
 
 test('531 existing assets, API handlers, financial engines and global public pages remain exact outside the approved privacy notice', () => {
@@ -330,7 +336,7 @@ test('brochure models do not create catalogue prices or alter A–E financial cl
     savings: 100_000_000, savingsCurrency: 'CLP', monthlySavingsClp: 1_000_000, horizonMonths: 24,
     downPaymentPercent: 20, years: 20, annualRatePercent: 4.5, rateConvention: 'effective', burdenPercent: 25 };
   const prior = JSON.parse(old('data/proyectos.json'));
-  assert.equal(catalogue.filter((project) => verifiedProjectPrice(project, DATE)).length, 115);
+  assert.equal(catalogue.filter((project) => verifiedProjectPrice(project, DATE)).length, 110);
   for (const slug of SLUGS) {
     const project = projectFor(slug);
     assert.equal(project.precioDesdeUF, null, slug);
@@ -403,14 +409,20 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     }
     writeFileSync(join(fixtureRoot, 'sitemap.xml'), current('sitemap.xml'));
     writeFileSync(join(fixtureRoot, 'robots.txt'), current('robots.txt'));
-    for (const slug of SLUGS) writeFileSync(join(fixtureRoot, slug + '.html'), current(slug + '.html'));
+    // The packager now verifies every authorized route, including the two
+    // newly documented pages that have no historical Git blob. Reproduce the
+    // complete current public route inventory in this isolated fixture;
+    // keeping only brochure pages would fail before any AJ check can run.
+    const fixturePages = new Set([...BROCHURE_PUBLIC_PAGES, ...catalogue.map(project => project.slug + '.html')]);
+    assert.equal(fixturePages.size, 151);
+    for (const file of fixturePages) writeFileSync(join(fixtureRoot, file), current(file));
     const script = join(fixtureRoot, 'scripts/package-vercel.mjs');
     const env = { ...process.env, VERCEL_GIT_COMMIT_REF: 'codex/integracion-financiera-sollahms' };
     execFileSync(process.execPath, [script], { cwd: fixtureRoot, env: {...env, VERCEL_ENV: 'preview'}, stdio: 'pipe' });
     const previewCatalogue = JSON.parse(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')));
     const coverPages = { 'downtown-san-martin': 5, 'edificio-teatinos-750': 5,
       'edificio-vista-amunategui': 1, 'monjitas-690': 13, 'vista-morande': 1 };
-    assert.equal(previewCatalogue.length, 148);
+    assert.equal(previewCatalogue.length, 144);
     assert.deepEqual(previewCatalogue.map(project => project.slug), catalogue.map(project => project.slug));
     let changedCovers = 0;
     for (let index = 0; index < catalogue.length; index++) {

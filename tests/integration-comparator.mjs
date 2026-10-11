@@ -119,7 +119,7 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
   return { elements, agenda, posts, storage, invoke, release: () => release(), advance: amount => { now += amount; }, input: (id, value) => { elements[id].value = String(value); elements['simulation-form'].listeners.input({ target: elements[id] }); }, submit: () => elements['lead-form'].listeners.submit({ preventDefault() {} }) };
 }
 
-test('all148 project origins load exactly115 verified prices, leave33 pending blank and keep agenda/detail context', async () => {
+test('all144 project origins load exactly110 verified prices, leave34 pending blank and keep agenda/detail context', async () => {
   let verified = 0;
   for (const project of catalogue) {
     const ui = await frontend({ slug: project.slug });
@@ -134,8 +134,8 @@ test('all148 project origins load exactly115 verified prices, leave33 pending bl
     if (price) { verified++; assert.ok(ui.elements['project-price-origin'].textContent.includes('verificado')); }
     else assert.ok(ui.elements['project-price-origin'].textContent.includes('pendiente de verificación'));
   }
-  assert.equal(verified, 115);
-  assert.equal(catalogue.length - verified, 33);
+  assert.equal(verified, 110);
+  assert.equal(catalogue.length - verified, 34);
 });
 
 test('project contact preserves trusted slug and9 mortgage inputs, never sends arbitrary subject/name or RUT', async () => {

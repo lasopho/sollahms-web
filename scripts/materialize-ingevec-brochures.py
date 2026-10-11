@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Materialize reviewed media without copying original PDFs into the repository.
 
-Only the ten explicitly reviewed existing fichas are eligible. Candidate projects are maintained
-in private storage outside this repository and outside the deploy allowlist.
+Only the sixteen explicitly authorized and reviewed fichas are eligible.
+The seventeen commercial entries include the two Vicuña Mackenna stages.
 Requires pypdf, Pillow and Poppler. Full pages 1-3 of Centenario are forbidden.
 The reviewed manifest is immutable input: a renderer/encoder change must fail,
 not silently approve a new asset hash. All media is verified before installation.
@@ -25,7 +25,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PREFIX = '/assets/propiedades/ingevec-preview/'
 OLD_SLUGS = {'centenario-1', 'tocornal', 'vivaceta'}
 NEW_SLUGS = {'coronel-godoy', 'diagonal-paraguay', 'el-aromo', 'los-lilenes',
-             'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589'}
+             'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589',
+             'abdon-cifuentes', 'don-ignacio', 'terrazzo', 'vima',
+             'los-alerces', 'valle-los-ingleses-iii'}
 SLUGS = OLD_SLUGS | NEW_SLUGS
 SELECTION = {
     'centenario-1': (9, {10, 11, 12, 13, 14}),
@@ -48,10 +50,18 @@ NEW_DOCUMENTS = {
         'ded2b0d73122c2160791e4dc1575e18a73dfc784fb397aad313638cab05c8cdc': (13, {9, 10, 11}, 'Etapa 1'),
         'ea21b26f8fc2df546b06faf9eeb8cdafbce76edbb37b0922e8a4cf13acdcfc94': (13, {9, 10, 11}, 'Etapa 2'),
     },
+    'los-alerces': {'c93eaab1b4c5a398c7f49e98614a40781fb01f9428aba6c9fea7d52e2a7882bd': (13, {10, 11}, None)},
+    'valle-los-ingleses-iii': {'509ad7aeaafec2b9e09354505a117aea77efb354a433a0d4eae27b08e6378f08': (13, {8, 9, 10, 11}, 'Etapa III')},
+    'abdon-cifuentes': {'790eac34ce7353365f5c765bd8399eeb12845fb31d6e02f6a8ae31e831f293d5': (16, {10, 11, 12, 13}, None)},
+    'don-ignacio': {'11fd8e276a5b72d6da4832d63f823810ffe1f80c4c83db8a97975cfc2b63961d': (21, {15, 16, 17, 18}, None)},
+    'terrazzo': {'5c5e880dceb83d6fb0c0a80d78f1e5a51484408c437936811e028364a6c9a685': (18, {10, 11, 12, 13, 14, 15}, None)},
+    'vima': {'1a4253e74dba77535e89dbb40790d98cfcc5ed4e693a1858c14de4526278efd9': (17, {12, 13, 14}, None)},
 }
 NEW_IMAGE_COUNTS = {'coronel-godoy': 6, 'diagonal-paraguay': 4, 'el-aromo': 4,
                     'los-lilenes': 6, 'matta-016': 11, 'nueva-esmeralda': 7,
-                    'vicuna-mackenna-7589': 5}
+                    'vicuna-mackenna-7589': 5, 'abdon-cifuentes': 3,
+                    'don-ignacio': 8, 'terrazzo': 4, 'vima': 4,
+                    'los-alerces': 10, 'valle-los-ingleses-iii': 7}
 
 
 class MaterializationError(ValueError):
@@ -86,7 +96,7 @@ def validate_manifest(manifest):
     """Return the exact approved output inventory without changing metadata."""
     records = manifest.get('projects', [])
     require(len(records) == len(SLUGS) and {p.get('slug') for p in records} == SLUGS,
-            'Only the ten reviewed existing projects are eligible')
+            'Only the sixteen explicitly authorized and reviewed projects are eligible')
     assets = {}
     for record in manifest['projects']:
         slug = record['slug']
@@ -112,8 +122,8 @@ def validate_manifest(manifest):
         else:
             plan_selection = NEW_DOCUMENTS[slug]
             require(set(sources) == set(plan_selection), f'{slug}: reviewed source document batch changed')
-            require(all(sources[key]['pageCount'] == evidence[0] for key, evidence in plan_selection.items()),
-                    f'{slug}: reviewed source page count changed')
+            require(all(sources[key]['pageCount'] == evidence[0] and sources[key].get('etapa') == evidence[2]
+                        for key, evidence in plan_selection.items()), f'{slug}: reviewed source page count or stage changed')
             require(len(record['models']) == sum(len(evidence[1]) for evidence in plan_selection.values())
                     and len(record['images']) == NEW_IMAGE_COUNTS[slug], f'{slug}: reviewed media/model count changed')
         native_sources = set()
@@ -177,14 +187,14 @@ def validate_manifest(manifest):
             require(plan['sourceSha256'] == source_hash, f'{slug}: plan/model source mismatch')
             require(model.get('etapa') == selection[2] and plan.get('etapa') == selection[2],
                     f'{slug}: source stage is missing or inconsistent')
-            if selection[2] is not None:
+            if slug == 'vicuna-mackenna-7589':
                 prefix = 'e1-' if selection[2] == 'Etapa 1' else 'e2-'
                 require(model['modelo'].startswith(prefix), f'{slug}: model identifier does not match its source stage')
         require(pages == {(source_hash, page) for source_hash, selection in plan_selection.items()
                           for page in selection[1]}, f'{slug}: reviewed plan selection is incomplete')
-    require(sum(len(record['models']) for record in records) == 41,
-            'The exact reviewed inventory must contain 41 plans')
-    require(len(assets) == 106, 'The exact reviewed Ingevec inventory must contain 106 assets')
+    require(sum(len(record['models']) for record in records) == 64,
+            'The exact reviewed inventory must contain 64 plans')
+    require(len(assets) == 165, 'The exact reviewed Ingevec inventory must contain 165 assets')
     return assets
 
 
@@ -251,7 +261,10 @@ def materialize(input_directory, pdftoppm):
                 source_files[document['sha256']] = source
             for image in record['images']:
                 reader = readers[image['sourceSha256']]
-                native_images = list(reader.pages[image['sourcePage'] - 1].images)
+                # Index only the approved image. Iterating the collection would
+                # decode unrelated brochure pictures, including huge rejected
+                # artwork; do not change Pillow's safety limits to process it.
+                native_images = reader.pages[image['sourcePage'] - 1].images
                 require(image['imageIndex'] < len(native_images), f'{slug}: native image index is absent')
                 native = native_images[image['imageIndex']]
                 require(digest(native.data) == image['originalSha256'], f'{slug}: native image changed')

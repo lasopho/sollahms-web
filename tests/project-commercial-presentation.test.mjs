@@ -6,18 +6,19 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { INGEVEC_ADDED_BASELINE, INGEVEC_ADDED_SLUGS, assertAddedFicheFallback,
-  assertIngevecManifestAddition } from './commercial-html.mjs';
+  assertIngevecManifestAddition, assertCommercialBytes, INGEVEC_NEW_SLUGS, INGEVEC_ENRICHED_SLUGS,
+  assertDefinitiveFicheFallback, vimaImageCorrection, readCommercialFile } from './commercial-html.mjs';
 
 // This reviewed commit contains all eight brochure integrations, their actual
-// scope status and the 148-page financial integration. The request changes
+// scope status and the 144-page financial integration. The request changes
 // visitor-facing presentation; these tests independently protect the content.
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASELINE = '7a2732ae333b6a4d119cc2b651583daacbab8755';
 const git = (...args) => execFileSync('git', args, { cwd: ROOT });
-const current = (path) => readFileSync(resolve(ROOT, path));
+const current = readCommercialFile;
 const old = (path) => git('show', `${BASELINE}:${path}`);
 const projects = JSON.parse(current('data/proyectos.json'));
-const snapshots = projects.map(({ slug }) => ({ slug, before: old(`${slug}.html`).toString(), after: current(`${slug}.html`).toString() }));
+const snapshots = projects.map(({ slug }) => ({ slug, before: INGEVEC_NEW_SLUGS.has(slug) ? null : old(`${slug}.html`).toString(), after: current(`${slug}.html`).toString() }));
 const decode = (value) => value.replace(/&(?:amp|quot|apos|lt|gt|#\d+|#x[a-f0-9]+);/gi, (entity) => {
   const named = { '&amp;': '&', '&quot;': '"', '&apos;': "'", '&lt;': '<', '&gt;': '>' };
   return named[entity.toLowerCase()] ?? String.fromCodePoint(entity[2].toLowerCase() === 'x'
@@ -44,26 +45,28 @@ const numericSpecs = (html) => [...html.matchAll(/<dd\b[^>]*>([\s\S]*?)<\/dd>/gi
 const blobHash = (bytes) => createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
-test('commercial presentation preserves all 148 ordered identities and private source records byte for byte', () => {
-  assert.equal(projects.length, 148);
-  assert.equal(new Set(projects.map((item) => item.slug)).size, 148);
-  assert.deepEqual(current('data/proyectos.json'), old('data/proyectos.json'));
+test('commercial presentation preserves all 144 ordered identities and private source records byte for byte', () => {
+  assert.equal(projects.length, 144);
+  assert.equal(new Set(projects.map((item) => item.slug)).size, 144);
+  assertCommercialBytes('data/proyectos.json',current('data/proyectos.json'), old('data/proyectos.json'));
   for (const path of git('ls-tree', '-r', '--name-only', BASELINE, '--', 'data').toString().trim().split('\n')) {
     if (path === 'data/brochures-ingevec.json') assertIngevecManifestAddition(current(path), old(path));
-    else assert.deepEqual(current(path), old(path), path);
+    else assertCommercialBytes(path,current(path), old(path));
   }
   for (const path of ['docs/registro-fichas-proyectos.md', 'docs/verificacion-fichas.md',
     'docs/catalogo-22-validacion-2026-10-01.md', 'docs/brochures-yapo-iris-publicacion.md']) {
-    assert.deepEqual(current(path), old(path), path);
+    assertCommercialBytes(path,current(path), old(path));
   }
   for (const { slug, after } of snapshots) {
+    if(INGEVEC_NEW_SLUGS.has(slug)) continue;
+    if(INGEVEC_ENRICHED_SLUGS.has(slug)) {assertDefinitiveFicheFallback(after,slug);continue;}
     if (INGEVEC_ADDED_SLUGS.has(slug)) assertAddedFicheFallback(after, slug);
     else assert.equal(after, git('show', `${INGEVEC_ADDED_BASELINE}:${slug}.html`).toString(),
       slug + ': one of the 141 unrelated fichas changed');
   }
 });
 
-test('all 148 visitor-facing fichas omit research sections, contract provenance and audit captions', () => {
+test('all 144 visitor-facing fichas omit research sections, contract provenance and audit captions', () => {
   const forbidden = /\b(?:Yapo|IRIS|SHA-?256|hash(?:es)?|auditor[ií]a|procedencia documental|verificaci[oó]n|documentad[oa]s?)\b|(?:fuentes? oficiales?|fecha de verificaci[oó]n|[uú]ltima revisi[oó]n|revisado el|fuentes y verificaci[oó]n|brochure\s*·\s*p[aá]g|registrado en el cat[aá]logo)/i;
   for (const { slug, after } of snapshots) {
     const nodes = elements(after);
@@ -81,8 +84,10 @@ test('all 148 visitor-facing fichas omit research sections, contract provenance 
 test('every fiche retains its original SEO, scripts, images, plans, embeds and numeric specifications outside the seven guarded brochure additions', () => {
   let images = 0;
   let models = 0;
-  for (const { slug, before, after: complete } of snapshots) {
-    const after = INGEVEC_ADDED_SLUGS.has(slug) ? assertAddedFicheFallback(complete, slug) : complete;
+  for (const { slug, before: historicalBefore, after: complete } of snapshots) {
+    if(INGEVEC_NEW_SLUGS.has(slug)) continue;
+    const before=slug==='vima'?vimaImageCorrection(historicalBefore):historicalBefore;
+    const after = INGEVEC_ENRICHED_SLUGS.has(slug) ? assertDefinitiveFicheFallback(complete,slug) : INGEVEC_ADDED_SLUGS.has(slug) ? assertAddedFicheFallback(complete, slug) : complete;
     assert.equal(head(after), head(before), `${slug}: SEO changed`);
     assert.deepEqual([...after.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map((match) => match[0]),
       [...before.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map((match) => match[0]), `${slug}: scripts/host configuration changed`);
@@ -102,7 +107,7 @@ test('every fiche retains its original SEO, scripts, images, plans, embeds and n
     models += modelIds(after).length;
     assert.deepEqual(numericSpecs(after), numericSpecs(before), `${slug}: commercial/model figures changed`);
   }
-  assert.ok(images > 600, '148-fiche image audit unexpectedly incomplete');
+  assert.ok(images > 600, '144-fiche image audit unexpectedly incomplete');
   assert.equal(models, 92, 'All 78 AJ and 14 Ingevec models must remain');
 });
 
@@ -110,14 +115,16 @@ test('all styles, financial references, catalogue controls, backend and form/act
   for (const directory of ['assets', 'api', 'lib']) {
     for (const line of git('ls-tree', '-r', BASELINE, '--', directory).toString().trim().split('\n').filter(Boolean)) {
       const [meta, path] = line.split('\t');
-      assert.equal(blobHash(current(path)), meta.split(' ')[2], path);
+      if(path==='lib/project-context.mjs') assertCommercialBytes(path,current(path),old(path));
+      else assert.equal(blobHash(current(path)), meta.split(' ')[2], path);
     }
   }
   for (const path of ['proyectos.html', 'index.html', 'contacto.html', 'agenda-asesoria.html',
     'comparador-hipotecario.html', 'sitemap.xml', 'robots.txt', 'vercel.json']) {
-    assert.deepEqual(current(path), old(path), path);
+    assertCommercialBytes(path,current(path), old(path));
   }
   for (const { slug, before, after } of snapshots) {
+    if(INGEVEC_NEW_SLUGS.has(slug)) continue;
     const controls = (html) => elements(html).filter(({ tag }) => ['form', 'input', 'select', 'textarea'].includes(tag));
     assert.deepEqual(controls(after), controls(before), `${slug}: form changed`);
     const actions = (html) => byTag(html, 'a').filter(({ attrs }) => /^\/(?:contacto|agenda-asesoria|comparador-hipotecario)\.html(?:\?|$)/.test(attrs.href ?? ''));
@@ -128,7 +135,7 @@ test('all styles, financial references, catalogue controls, backend and form/act
   }
 });
 
-test('all 210 supplied media derivatives retain approved identity, hashes and contractual scope status', () => {
+test('all 269 supplied media derivatives retain approved identity, hashes and contractual scope status', () => {
   let checked = 0;
   for (const manifestPath of ['data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
     const manifest = JSON.parse(current(manifestPath));
@@ -144,7 +151,7 @@ test('all 210 supplied media derivatives retain approved identity, hashes and co
       }
     }
   }
-  assert.equal(checked, 210);
+  assert.equal(checked, 269);
 });
 
 test('direct commercial cautions survive alongside current prices, referential plans and ambiguous alternatives', () => {
@@ -167,7 +174,7 @@ test('direct commercial cautions survive alongside current prices, referential p
       enquire++;
     }
   }
-  assert.equal(priced + enquire, 148);
+  assert.equal(priced + enquire, 144);
   assert.ok(priced > 100 && enquire > 20);
   const find = (slug) => snapshots.find((item) => item.slug === slug).after;
   for (const slug of ['downtown-san-martin', 'edificio-teatinos-750', 'edificio-vista-amunategui',
@@ -235,6 +242,6 @@ test('privacy notice is additive, generic and paired with the documented future 
   for (const label of ['Sources', 'Official sources', 'Verification date', 'Document provenance']) assert.ok(policy.includes(label), label);
   assert.match(policy, /comparador y la referencia de UF/);
   const englishPages = git('ls-tree', '-r', '--name-only', BASELINE).toString().split('\n')
-    .filter((path) => path.endsWith('.html')).filter((path) => /<html\b[^>]*lang="en(?:-[^"]+)?"/i.test(current(path).toString()));
+    .filter((path) => path.endsWith('.html')).filter((path) => current(path).length).filter((path) => /<html\b[^>]*lang="en(?:-[^"]+)?"/i.test(current(path).toString()));
   assert.deepEqual(englishPages, [], 'An existing English route requires the same visitor-facing regression checks');
 });

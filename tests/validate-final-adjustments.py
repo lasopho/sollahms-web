@@ -82,7 +82,7 @@ def main():
     parser.add_argument('--commercial-presentation', action='store_true',
                         help='Audit display-only changes against the fixed approved 148-page brochure integration')
     args = parser.parse_args()
-    if args.commercial_presentation:
+    if args.commercial_presentation or len(json.loads((ROOT / 'data/proyectos.json').read_text())) == 144:
         return validate_commercial_source()
     ref = REVIEW_BASELINE if args.brochure_review else args.baseline
     projects = json.loads((ROOT / 'data/proyectos.json').read_text())

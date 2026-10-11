@@ -141,6 +141,8 @@ def assert_ingevec_manifest_addition(current, previous):
 
 def validate_commercial_source():
     """Successor audit scoped to display-only edits from the approved baseline."""
+    if len(json.loads((ROOT / 'data/proyectos.json').read_text())) == 144:
+        return validate_portfolio_source()
     def git(*args):
         return subprocess.check_output(['git', *args], cwd=ROOT)
 
@@ -250,3 +252,128 @@ def verified_public_page(current, previous, slug):
 def verify_asset(path, current, previous):
     expected = previous + MOBILE_RULE.encode() if path == CSS else previous
     assert current == expected, f'{path}: existing asset changed'
+
+# Definitive authorization is a forward audit pinned to the last reviewed
+# integration. Earlier audit modes above remain available for their snapshots.
+PORTFOLIO_BASELINE = '8cdb9bf2af607a4f0822e5ea2c3ec4ba3f4c76b1'
+RETIRED = {'brasil', 'vespucio-capital', 'edificio-serrano-capital',
+           'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz'}
+ENRICHED = {'abdon-cifuentes', 'don-ignacio', 'terrazzo', 'vima'}
+NEW_PROJECTS = {'los-alerces', 'valle-los-ingleses-iii'}
+FINAL_INGEVEC = INGEVEC | INGEVEC_ADDED | ENRICHED | NEW_PROJECTS
+
+
+def portfolio_previous(path):
+    return subprocess.check_output(['git', 'show', f'{PORTFOLIO_BASELINE}:{path}'], cwd=ROOT)
+
+
+def corrected_vima(text):
+    return re.sub(r'<figure>(?:(?!</figure>).)*571b2a1740b3b5d4920157fa\.webp(?:(?!</figure>).)*</figure>', '', text, flags=re.S)
+
+
+def validate_portfolio_source():
+    projects = json.loads((ROOT / 'data/proyectos.json').read_text())
+    assert len(projects) == len({p['slug'] for p in projects}) == 144
+    old_projects = json.loads(portfolio_previous('data/proyectos.json'))
+    assert len(old_projects) == 148
+    expected_slugs = [p['slug'] for p in old_projects if p['slug'] not in RETIRED] + ['los-alerces', 'valle-los-ingleses-iii']
+    assert [p['slug'] for p in projects] == expected_slugs
+    assert {p['slug'] for p in projects if p['inmobiliaria'] == 'Ingevec'} == FINAL_INGEVEC
+    assert len([p for p in projects if p['inmobiliaria'] != 'Ingevec']) == 128
+    assert all(not (ROOT / (s + '.html')).exists() for s in RETIRED)
+    new_specs = {'los-alerces': ('Los Alerces', 'Ñuñoa', 'Los Alerces 3254', 'c93eaab1b4c5a398c7f49e98614a40781fb01f9428aba6c9fea7d52e2a7882bd'),
+                 'valle-los-ingleses-iii': ('Valle Los Ingleses III', 'Valparaíso', 'Camino Los Ingleses 715', '509ad7aeaafec2b9e09354505a117aea77efb354a433a0d4eae27b08e6378f08')}
+    for name in ['proyectos', 'fichas-proyectos', 'registro-fichas']:
+        before = json.loads(portfolio_previous(f'data/{name}.json'))
+        after = json.loads((ROOT / f'data/{name}.json').read_text())
+        assert len(after) == 144 and [r['slug'] for r in after] == expected_slugs
+        by_slug = {r['slug']: r for r in after}
+        for item in before:
+            if item['slug'] in RETIRED:
+                continue
+            if name == 'fichas-proyectos' and item['slug'] == 'vima':
+                item['images'] = [image for image in item['images'] if image.get('localPath') != '/assets/propiedades/catalogo/571b2a1740b3b5d4920157fa.webp']
+            assert by_slug[item['slug']] == item, f'{name}/{item["slug"]}: prior data changed'
+        for slug, (title, commune, address, source_hash) in new_specs.items():
+            item = by_slug[slug]
+            if name == 'proyectos':
+                assert item['nombre'] == title and item['inmobiliaria'] == 'Ingevec' and item['comuna'] == commune and item['direccion'] == address
+                assert all(item[key] is None for key in ['precioDesdeUF', 'estado', 'entrega'])
+                assert 'precioDesdeUF' not in item['verificacion']['camposVerificados']
+            elif name == 'fichas-proyectos':
+                assert item['sourceDocument']['sha256'] == source_hash and item['virtualTours'] == []
+                assert item['updates']['precioDesdeUF'] is None
+            else:
+                assert item['mapa'] and item['fichaDesarrollada'] and not item['matterport']
+    # All ten prior brochure records, commercial policy and scope remain exact.
+    manifest = json.loads((ROOT / 'data/brochures-ingevec.json').read_text())
+    before_manifest = json.loads(portfolio_previous('data/brochures-ingevec.json'))
+    assert len(manifest['projects']) == 16
+    assert manifest['projects'][:10] == before_manifest['projects']
+    restored = dict(manifest, projects=before_manifest['projects'])
+    restored.pop('portfolioConsolidation')
+    assert restored == before_manifest
+    assert {r['slug'] for r in manifest['projects']} == FINAL_INGEVEC
+    for path in ['data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/fuentes-imagenes.json', 'data/catalogo-original-fichas.json', 'privacidad.html', 'templates/project-detail.html', 'vercel.json', 'robots.txt']:
+        assert (ROOT / path).read_bytes() == portfolio_previous(path), f'{path}: protected content changed'
+    assets = 0
+    for directory in ['assets', 'api', 'lib']:
+        tree = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', PORTFOLIO_BASELINE, '--', directory], cwd=ROOT).decode().splitlines()
+        for path in tree:
+            if path == 'lib/project-context.mjs':
+                continue
+            assert (ROOT / path).read_bytes() == portfolio_previous(path), f'{path}: existing resource/backend changed'
+            assets += 1
+    context = (ROOT / 'lib/project-context.mjs').read_text()
+    actual_context = json.loads(re.search(r'Object\.freeze\((.*)\);', context, re.S)[1])
+    assert actual_context == {p['slug']: {'name': p['nombre'], 'url': p['detalleUrl']} for p in projects}
+    old_urls = re.findall(r'<loc>([^<]+)</loc>', portfolio_previous('sitemap.xml').decode())
+    expected_urls = [url for url in old_urls if url.rsplit('/',1)[-1].removesuffix('.html') not in RETIRED]
+    at = expected_urls.index('https://sollahms.cl/comparador-hipotecario.html')
+    expected_urls[at:at] = ['https://sollahms.cl/los-alerces.html', 'https://sollahms.cl/valle-los-ingleses-iii.html']
+    assert re.findall(r'<loc>([^<]+)</loc>', (ROOT / 'sitemap.xml').read_text()) == expected_urls
+    assert len(set(expected_urls)) == 150
+    import sys
+    sys.path.insert(0,str(ROOT / 'scripts'))
+    from fiche_presentation import commercialize_fiche
+    images = models = maps = tours = unchanged = 0
+    for project in projects:
+        slug = project['slug']; text = (ROOT / (slug + '.html')).read_text()
+        if slug not in NEW_PROJECTS:
+            previous = portfolio_previous(slug + '.html').decode()
+            if slug in ENRICHED:
+                fallback = re.sub(r'<!--INGEVEC_PREVIEW_START-->.*?<!--INGEVEC_PREVIEW_END-->', '', text, flags=re.S)
+                fallback = re.sub(r'<!--INGEVEC_PUBLIC_START-->(.*?)<!--INGEVEC_PUBLIC_END-->', r'\1', fallback, flags=re.S)
+                assert fallback == (corrected_vima(previous) if slug == 'vima' else previous), f'{slug}: enrichment exceeds guarded scope'
+                for key in ['embeds','forms','actions','scripts','head','numericSpecifications']:
+                    assert presentation_resource_signature(fallback)[key] == presentation_resource_signature(previous)[key], f'{slug}: {key} changed'
+            else:
+                assert text == previous, f'{slug}: unrelated fiche changed'
+                unchanged += 1
+        else:
+            assert 'Consultar precio' in text and 'id="modelos"' in text and 'www.google.com/maps' in text
+            for route in ['contacto','agenda-asesoria','comparador-hipotecario']:
+                assert f'/{route}.html?proyecto={slug}' in text
+        assert commercialize_fiche(text,slug) == text
+        page=CommercialPage(text); visible=' '.join(page.visible)
+        assert not re.search(r'\b(?:Yapo|IRIS|SHA-?256|auditor[ií]a|procedencia documental|fecha de verificaci[oó]n|fuentes oficiales|hashes?)\b',visible,re.I)
+        assert not re.search(r'id="fuentes(?:-verificadas)?"',text)
+        signature=presentation_resource_signature(text);images+=len(signature['images']);models+=len(signature['modelIds'])
+        for embed in signature['embeds']:
+            url=embed.get('data-embed-src') or embed.get('src','');maps+='google.com/maps' in url;tours+='google.com/maps' not in url
+    assert unchanged == 138
+    # Seven existing global public/error pages are byte identical.
+    for path in ['index.html','proyectos.html','contacto.html','agenda-asesoria.html','comparador-hipotecario.html','guia-de-inversion.html','404.html']:
+        if (ROOT/path).is_file():
+            expected=portfolio_previous(path)
+            if path=='proyectos.html':
+                assert expected.count(b"'Precio pendiente de verificaci\xc3\xb3n'")==1
+                expected=expected.replace(b"'Precio pendiente de verificaci\xc3\xb3n'", "(['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación')".encode())
+            assert (ROOT/path).read_bytes()==expected,path
+    for path in ROOT.glob('*.html'):
+        text=path.read_text()
+        for slug in RETIRED:assert not re.search(r'(?:href|src|data-[\w-]+)=["\'][^"\']*/'+re.escape(slug)+r'\.html',text),f'{path}: retired route referenced'
+    return {'result':'passed','scope':'definitive portfolio authorization plus exact preservation of 128 other developers and existing commercial/financial resources',
+            'portfolioConsolidationMode':True,'baselineCommit':PORTFOLIO_BASELINE,'projects':144,'ingevecProjects':16,'commercialEntries':17,'otherDevelopersUnchanged':128,'retiredRoutes':6,'newProjects':2,'enrichedExistingProjects':4,
+            'commercialPagesChecked':144,'resourceImageElementsPreserved':images,'modelIdsPreserved':models,'mapInstancesPreserved':maps,'embeddedTourInstancesPreserved':tours,'protectedAssetAndBackendFiles':assets,
+            'commercialDataUnchanged':True,'contractScopeUnchanged':True,'financialLogicAndReferencesUnchanged':True,'seoHeadAndScriptsUnchanged':True}

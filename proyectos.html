@@ -313,7 +313,7 @@
         if (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF)) {
             body.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
         } else {
-            body.append(element('p', 'Precio pendiente de verificación', 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
+            body.append(element('p', (['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación'), 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
         }
         if (hasDetail) {
             const actions = element('div', undefined, 'catalog-actions');

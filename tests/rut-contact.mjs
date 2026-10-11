@@ -94,9 +94,9 @@ test('contact rejects malformed/non-object JSON, invalid UTF-8 and oversized bod
   assert.equal(calls.length, 0);
 });
 
-test('all 148 projects derive the email subject and internal name from the server catalogue', async t => {
+test('all 144 projects derive the email subject and internal name from the server catalogue', async t => {
   const calls = provider(t);
-  assert.equal(Object.keys(projects).length, 148);
+  assert.equal(Object.keys(projects).length, 144);
   for (const [slug, project] of Object.entries(projects)) {
     const result = await contact.fetch(request({ ...validContact, proyecto: slug, rut: '1.000.005-K' }));
     assert.equal(result.status, 200);
@@ -108,7 +108,7 @@ test('all 148 projects derive the email subject and internal name from the serve
     assert.ok(!JSON.stringify(email).includes('1000005-K'));
     assert.ok(!JSON.stringify(email).includes('1.000.005-K'));
   }
-  assert.equal(calls.length, 148);
+  assert.equal(calls.length, 144);
 });
 
 test('forged subject/name and unknown, inherited, malformed or whitespace slugs cannot reach the provider', async t => {
@@ -231,7 +231,7 @@ test('frontend normalizes valid blur/send forms, accepts empty input and keeps i
   }
 });
 
-test('frontend retains all 148 project contexts and both agenda links before and after successful resets', async () => {
+test('frontend retains all 144 project contexts and both agenda links before and after successful resets', async () => {
   for (const [slug, project] of Object.entries(projects)) {
     const ui = frontend({ slug });
     await settle();

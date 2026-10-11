@@ -32,7 +32,8 @@ class MaterializerSafetyTests(unittest.TestCase):
         before = deepcopy(self.manifest)
         assets = MODULE.validate_manifest(self.manifest)
         self.assertEqual(len(assets), sum(len(r['images']) + len(r['models']) for r in self.manifest['projects']))
-        self.assertEqual(sum(len(r['models']) for r in self.manifest['projects']), 41)
+        self.assertEqual(sum(len(r['models']) for r in self.manifest['projects']), 64)
+        self.assertEqual(len(assets), 165)
         historic = [r for r in self.manifest['projects'] if r['slug'] in MODULE.OLD_SLUGS]
         self.assertEqual(sum(len(r['images']) + len(r['models']) for r in historic), 36)
         self.assertEqual(self.manifest, before)
@@ -135,7 +136,23 @@ class MaterializerSafetyTests(unittest.TestCase):
             existing.write_bytes(b'existing approved destination must remain untouched on failure')
             before = existing.read_bytes()
             native = SimpleNamespace(data=native_bytes, image=Image.new('RGB', (16, 12), 'blue'))
-            reader = SimpleNamespace(pages=[SimpleNamespace(images=[native])] * record['document']['pageCount'])
+            class SelectedOnlyImages:
+                def __len__(self):
+                    return 1
+
+                def __getitem__(self, index):
+                    self.assert_index(index)
+                    return native
+
+                @staticmethod
+                def assert_index(index):
+                    if index != 0:
+                        raise AssertionError('Only the approved native image may be decoded')
+
+                def __iter__(self):
+                    raise AssertionError('Unselected native images, including giant artwork, must not be decoded')
+
+            reader = SimpleNamespace(pages=[SimpleNamespace(images=SelectedOnlyImages())] * record['document']['pageCount'])
             with patch.object(MODULE, 'ROOT', root), patch.object(MODULE, 'CENTENARIO_FACADE', native_hash), \
                     patch.object(MODULE, 'PdfReader', return_value=reader), \
                     patch.object(MODULE.subprocess, 'run') as render:
@@ -160,10 +177,10 @@ class MaterializerSafetyTests(unittest.TestCase):
             with self.assertRaisesRegex(MODULE.MaterializationError, 'metadata'):
                 MODULE.verify_generated(path, approved)
 
-    def test_new_pdf_evidence_and_exact_twenty_seven_plan_selection_cannot_be_replaced(self):
+    def test_added_pdf_evidence_and_exact_fifty_plan_selection_cannot_be_replaced(self):
         added = [record for record in self.manifest['projects'] if record['slug'] in MODULE.NEW_SLUGS]
-        self.assertEqual(len(added), 7)
-        self.assertEqual(sum(len(record['models']) for record in added), 27)
+        self.assertEqual(len(added), 13)
+        self.assertEqual(sum(len(record['models']) for record in added), 50)
         for kind in ['unknown-pdf', 'missing-model-source', 'wrong-plan-source', 'duplicate-page', 'missing-page', 'unknown-orientation', 'unknown-floor']:
             with self.subTest(kind=kind):
                 self.manifest = deepcopy(APPROVED)
@@ -207,6 +224,34 @@ class MaterializerSafetyTests(unittest.TestCase):
                 else:
                     record['models'][0]['modelo'] = 'e2-source-mismatch'
                     record['models'][0]['plan']['localPath'] = MODULE.PREFIX + 'vicuna-mackenna-7589/plano-e2-source-mismatch.webp'
+                with self.assertRaises(MODULE.MaterializationError):
+                    MODULE.validate_manifest(self.manifest)
+
+    def test_final_portfolio_has_seventeen_originals_and_preserves_valle_stage_iii(self):
+        self.assertEqual(len(self.manifest['projects']), 16)
+        self.assertEqual(sum(len(MODULE.documents_for(record)) for record in self.manifest['projects']), 17)
+        record = next(record for record in self.manifest['projects'] if record['slug'] == 'valle-los-ingleses-iii')
+        self.assertEqual(record['document']['sha256'], '509ad7aeaafec2b9e09354505a117aea77efb354a433a0d4eae27b08e6378f08')
+        self.assertEqual(record['document']['etapa'], 'Etapa III')
+        self.assertEqual([model['pagina_brochure'] for model in record['models']], [8, 9, 10, 11])
+        self.assertTrue(all(model['etapa'] == 'Etapa III' and model['plan']['etapa'] == 'Etapa III'
+                            for model in record['models']))
+        for kind in ['document-stage', 'model-stage', 'plan-stage', 'earlier-page', 'unknown-orientation', 'unknown-floor']:
+            with self.subTest(kind=kind):
+                self.manifest = deepcopy(APPROVED)
+                current = next(row for row in self.manifest['projects'] if row['slug'] == record['slug'])
+                if kind == 'document-stage':
+                    current['document']['etapa'] = 'Etapa II'
+                elif kind == 'model-stage':
+                    current['models'][0]['etapa'] = 'Etapa II'
+                elif kind == 'plan-stage':
+                    current['models'][0]['plan']['etapa'] = 'Etapa II'
+                elif kind == 'unknown-orientation':
+                    current['models'][0]['orientacion'] = 'Norte'
+                elif kind == 'unknown-floor':
+                    current['models'][0]['pisos'] = '5'
+                else:
+                    current['models'][0]['pagina_brochure'] = 7
                 with self.assertRaises(MODULE.MaterializationError):
                     MODULE.validate_manifest(self.manifest)
 

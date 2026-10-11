@@ -2,7 +2,9 @@ import { cp, mkdir, readFile, readdir, rm, writeFile, access, lstat, realpath } 
 import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
-import { brochurePublication } from './brochure-publication.mjs';
+import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
+  BROCHURE_REMOVED_SLUGS, BROCHURE_PUBLIC_PAGES, BROCHURE_RETIRED_ASSETS,
+  brochureFingerprint } from './brochure-publication.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
@@ -27,13 +29,64 @@ const ingevecAddedDocuments = {
     'ded2b0d73122c2160791e4dc1575e18a73dfc784fb397aad313638cab05c8cdc': [13, [9,10,11], 'Etapa 1'],
     'ea21b26f8fc2df546b06faf9eeb8cdafbce76edbb37b0922e8a4cf13acdcfc94': [13, [9,10,11], 'Etapa 2'],
   },
+  'los-alerces': { 'c93eaab1b4c5a398c7f49e98614a40781fb01f9428aba6c9fea7d52e2a7882bd': [13, [10,11], null] },
+  'valle-los-ingleses-iii': { '509ad7aeaafec2b9e09354505a117aea77efb354a433a0d4eae27b08e6378f08': [13, [8,9,10,11], 'Etapa III'] },
+  'abdon-cifuentes': { '790eac34ce7353365f5c765bd8399eeb12845fb31d6e02f6a8ae31e831f293d5': [16, [10,11,12,13], null] },
+  'don-ignacio': { '11fd8e276a5b72d6da4832d63f823810ffe1f80c4c83db8a97975cfc2b63961d': [21, [15,16,17,18], null] },
+  'terrazzo': { '5c5e880dceb83d6fb0c0a80d78f1e5a51484408c437936811e028364a6c9a685': [18, [10,11,12,13,14,15], null] },
+  'vima': { '1a4253e74dba77535e89dbb40790d98cfcc5ed4e693a1858c14de4526278efd9': [17, [12,13,14], null] },
 };
-const ingevecSlugs = new Set([...ingevecOldSlugs, ...Object.keys(ingevecAddedDocuments)]);
+const ingevecSlugs = new Set(BROCHURE_INGEVEC_SLUGS);
 const ingevecImageCounts = { 'centenario-1':9, 'tocornal':8, 'vivaceta':5,
   'coronel-godoy':6, 'diagonal-paraguay':4, 'el-aromo':4, 'los-lilenes':6,
-  'matta-016':11, 'nueva-esmeralda':7, 'vicuna-mackenna-7589':5 };
+  'matta-016':11, 'nueva-esmeralda':7, 'vicuna-mackenna-7589':5,
+  'abdon-cifuentes':3, 'don-ignacio':8, 'terrazzo':4, 'vima':4,
+  'los-alerces':10, 'valle-los-ingleses-iii':7 };
 const ajRights = brochurePublication(ajReview);
 const ingevecRights = brochurePublication(ingevecReview);
+const priorIngevec = ingevecReview.projects.filter(record =>
+  ingevecOldSlugs.has(record.slug) || ['coronel-godoy', 'diagonal-paraguay', 'el-aromo',
+    'los-lilenes', 'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589'].includes(record.slug));
+if (priorIngevec.length !== 10 ||
+    brochureFingerprint(priorIngevec) !== 'c942007af5a961926e432808624bfdb9536b98009f41b053abdcac1969f8ac48') {
+  throw new Error('The ten previously approved Ingevec records must remain unchanged');
+}
+if (ingevecReview.projects.length !== 16 || new Set(ingevecReview.projects.map(record => record.slug)).size !== 16 ||
+    ingevecReview.projects.some(record => !ingevecSlugs.has(record.slug)) ||
+    ingevecReview.projects.reduce((count, record) => count + record.models.length, 0) !== 64 ||
+    ingevecReview.projects.reduce((count, record) => count + record.images.length, 0) !== 101) {
+  throw new Error('The final Ingevec review must contain sixteen authorized projects, 101 images and 64 plans');
+}
+// Validate documentary bindings even when an ordinary Git build has no
+// private derivatives and uses the public fallbacks for all sixteen fichas.
+for (const record of ingevecReview.projects) {
+  if (ingevecOldSlugs.has(record.slug)) continue; // These immutable rows are pinned above.
+  const evidence = ingevecAddedDocuments[record.slug];
+  const documents = record.documents ?? [record.document];
+  const sources = new Map(documents.map(document => [document.sha256, document]));
+  if (!evidence || sources.size !== documents.length ||
+      JSON.stringify([...sources.keys()].sort()) !== JSON.stringify(Object.keys(evidence).sort()) ||
+      documents.some(document => document.pageCount !== evidence[document.sha256][0] ||
+        (document.etapa ?? null) !== evidence[document.sha256][2]) ||
+      record.models.length !== Object.values(evidence).reduce((count, row) => count + row[1].length, 0) ||
+      record.images.length !== ingevecImageCounts[record.slug]) {
+    throw new Error('Ingevec reviewed source document or plan batch changed: ' + record.slug);
+  }
+  const identities = new Set();
+  for (const model of record.models) {
+    const source = evidence[model.sourceSha256];
+    const identity = model.sourceSha256 + ':' + model.pagina_brochure;
+    if (!source || !source[1].includes(model.pagina_brochure) || identities.has(identity) ||
+        model.sourcePages?.length !== 1 || model.sourcePages[0] !== model.pagina_brochure ||
+        model.plan.sourceSha256 !== model.sourceSha256 || model.plan.sourcePage !== model.pagina_brochure ||
+        (model.etapa ?? null) !== source[2] || (model.plan.etapa ?? null) !== source[2] ||
+        model.orientacion !== null || model.pisos !== null || !model.visuallyVerified || !model.approximate ||
+        (record.slug === 'vicuna-mackenna-7589' && !model.modelo?.startsWith(source[2] === 'Etapa 1' ? 'e1-' : 'e2-'))) {
+      throw new Error('Ingevec model source or stage does not match its reviewed plan: ' + record.slug);
+    }
+    identities.add(identity);
+  }
+}
 if (profile === 'public-web' && (!ajRights.publicWeb || !ingevecRights.publicWeb)) {
   throw new Error('Public web content requires verified Yapo/IRIS contract scope for both batches');
 }
@@ -60,11 +113,25 @@ if (preview && ingevecPresent.some(Boolean) && !ingevecPresent.every(Boolean)) {
 const catalogueSource = await readFile(join(root, 'data/proyectos.json'));
 let catalogueOutput = catalogueSource;
 const sourceProjects = JSON.parse(catalogueSource);
-const candidates = new Set(['los-alerces', 'valle-los-ingleses-iii']);
-if (sourceProjects.length !== 148 || new Set(sourceProjects.map(project => project.slug)).size !== 148 ||
-    sourceProjects.some(project => candidates.has(project.slug))) {
-  throw new Error('The approved catalogue must contain exactly 148 existing projects');
+assertBrochureCatalogue(sourceProjects);
+const approvedPages = new Set([...BROCHURE_PUBLIC_PAGES, ...sourceProjects.map(project => project.slug + '.html')]);
+const pages = (await readdir(root)).filter(name => name.endsWith('.html'));
+if (pages.some(name => !approvedPages.has(name))) {
+  throw new Error('Unapproved candidate pages and retired routes must remain outside the deployment');
 }
+if (sourceProjects.some(project => !pages.includes(project.slug + '.html'))) {
+  throw new Error('Every approved catalogue project must have its own public route');
+}
+const retiredLink = new RegExp('(?:["\\\'/])(?:' + BROCHURE_REMOVED_SLUGS.join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
+const sitemapSource = await readFile(join(root, 'sitemap.xml'));
+if (retiredLink.test(sitemapSource.toString())) throw new Error('The sitemap still contains a retired project route');
+const pageSources = new Map(await Promise.all(pages.map(async name => [name, await readFile(join(root, name), 'utf8')])));
+for (const [name, html] of pageSources) {
+  if (retiredLink.test(html)) throw new Error('A public page still links to a retired project route: ' + name);
+}
+const retiredExclusiveAssets = new Set(BROCHURE_RETIRED_ASSETS.filter(path =>
+  !catalogueSource.toString().includes(path) && ![...pageSources.values()].some(html => html.includes(path)))
+  .map(path => path.slice(1)));
 const selectedMedia = new Set();
 const mediaInventory = [];
 if (ajIncluded || ingevecIncluded) {
@@ -94,7 +161,8 @@ if (ajIncluded || ingevecIncluded) {
     if (batch.name === 'Ingevec' && !ingevecOldSlugs.has(record.slug)) {
       const evidence = ingevecAddedDocuments[record.slug];
       if (!evidence || JSON.stringify([...sources.keys()].sort()) !== JSON.stringify(Object.keys(evidence).sort()) ||
-          documents.some(document => document.pageCount !== evidence[document.sha256][0]) ||
+          documents.some(document => document.pageCount !== evidence[document.sha256][0] ||
+            (document.etapa ?? null) !== evidence[document.sha256][2]) ||
           record.models.length !== Object.values(evidence).reduce((count, row) => count + row[1].length, 0)) {
         throw new Error('Ingevec reviewed source document or plan batch changed: ' + record.slug);
       }
@@ -105,7 +173,7 @@ if (ajIncluded || ingevecIncluded) {
         if (!source || !source[1].includes(model.pagina_brochure) || modelSources.has(identity) ||
             model.plan.sourceSha256 !== model.sourceSha256 || model.plan.sourcePage !== model.pagina_brochure ||
             (model.etapa ?? null) !== source[2] || (model.plan.etapa ?? null) !== source[2] ||
-            (source[2] !== null && !model.modelo?.startsWith(source[2] === 'Etapa 1' ? 'e1-' : 'e2-'))) {
+            (record.slug === 'vicuna-mackenna-7589' && !model.modelo?.startsWith(source[2] === 'Etapa 1' ? 'e1-' : 'e2-'))) {
           throw new Error('Ingevec model source or stage does not match its reviewed plan: ' + record.slug);
         }
         modelSources.add(identity);
@@ -118,7 +186,8 @@ if (ajIncluded || ingevecIncluded) {
     if (!batch.slugs.has(record.slug) || !project || !image ||
         !cover.localPath.startsWith(prefix) ||
         !/^\/[a-z0-9/_.-]+\.(?:webp|jpe?g|png)$/i.test(cover.localPath) || cover.localPath.includes('..') ||
-        typeof cover.alt !== 'string' || !cover.alt.trim() || !/render ilustrativo/i.test(cover.alt)) {
+        typeof cover.alt !== 'string' || !cover.alt.trim() ||
+        !/render ilustrativo|fotograf[ií]a (?:ilustrativa|referencial)/i.test(cover.alt)) {
       throw new Error('Unverified ' + batch.name + ' catalogue cover: ' + record.slug);
     }
     const fiche = await readFile(join(root, record.slug + '.html'), 'utf8');
@@ -174,12 +243,8 @@ if (ajIncluded || ingevecIncluded) {
 // bundled separately by Vercel, never copied into the public directory.
 await rm(output, { recursive: true, force: true });
 await mkdir(join(output, 'data'), { recursive: true });
-const pages = (await readdir(root)).filter(name => name.endsWith('.html'));
-if (pages.some(name => candidates.has(name.slice(0, -5)))) {
-  throw new Error('Unapproved candidate pages must remain outside the deployment');
-}
 for (const name of pages) {
-  let html = await readFile(join(root, name), 'utf8');
+  let html = pageSources.get(name);
   // Legacy marker names describe the original review blocks. They select
   // content according to contractual coverage, never grant deploy approval.
   for (const batch of ['AJ', 'INGEVEC']) {
@@ -202,6 +267,7 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
   filter: async source => {
     const path = relative(root, source).split(sep).join('/');
     if (path.includes('/brochure-candidates')) return false;
+    if (retiredExclusiveAssets.has(path)) return false;
     const info = await lstat(source);
     // No symlink can turn a nominal image directory into private content.
     if (info.isSymbolicLink()) throw new Error('Symbolic links are excluded from public assets');
@@ -218,7 +284,7 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
   } });
 await writeFile(join(output, 'data/proyectos.json'), catalogueOutput);
 await cp(join(root, 'data/hipotecario.json'), join(output, 'data/hipotecario.json'));
-await cp(join(root, 'sitemap.xml'), join(output, 'sitemap.xml'));
+await writeFile(join(output, 'sitemap.xml'), sitemapSource);
 await writeFile(join(output, 'robots.txt'), preview ? 'User-agent: *\nDisallow: /\n' : await readFile(join(root, 'robots.txt'), 'utf8'));
 // A private build receipt can be compared across Preview and an offline public
 // build. It is deliberately outside dist and contains no contract text.

@@ -50,7 +50,9 @@ research = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
 ledger = json.loads((ROOT / 'data/registro-fichas.json').read_text())
 records = {r['slug']: r for r in research}
 slugs = {p['slug'] for p in projects}
-assert len(slugs) == len(projects) == 148, 'Catalogue has lost or duplicated projects'
+assert len(slugs) == len(projects) == 144, 'Catalogue has lost or duplicated projects'
+assert len([p for p in projects if p['inmobiliaria'] != 'Ingevec']) == 128
+assert len([p for p in projects if p['inmobiliaria'] == 'Ingevec']) == 16
 assert slugs == set(records) == {x['slug'] for x in ledger}, 'Incomplete inventory or research'
 assert len(research) == len(ledger) == len(projects), 'Duplicated audit records'
 assert all(r['fichaDesarrollada'] for r in ledger), 'A detail page is missing'

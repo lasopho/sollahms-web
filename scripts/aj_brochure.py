@@ -83,7 +83,10 @@ def augment_record(page, record, namespace, builder):
         new = retained + '<div class="aj-gallery-heading"><h3>Imágenes del brochure</h3><p>Representaciones ilustrativas del proyecto. No acreditan su estado actual ni la disponibilidad de una unidad.</p></div>' + images
     else:
         heading = '<p class="eyebrow">Imágenes del proyecto</p><h2>Galería del proyecto</h2>'
-        new = heading + '<p>Renders ilustrativos del brochure. Consulta con la inmobiliaria las fotografías del estado actual del proyecto.</p>' + images
+        image_note = ('Fotografías y renders referenciales del proyecto. Consulta con la inmobiliaria las imágenes del estado actual.'
+                      if any(image.get('kind') in {'photo', 'brochure_photo'} for image in record['images'])
+                      else 'Renders ilustrativos del brochure. Consulta con la inmobiliaria las fotografías del estado actual del proyecto.')
+        new = heading + '<p>' + image_note + '</p>' + images
     page = page[:gallery.start()] + gallery[1] + public(old) + preview(new) + gallery[3] + page[gallery.end():]
     groups = {}
     for model in record['models']:
