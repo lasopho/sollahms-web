@@ -1,5 +1,26 @@
 # Sollahms — publicación controlada y reversión
 
+## Actualización del circuito CI y Preview — 11/10/2026
+
+La revisión posterior a `8d4af25` mantiene el gate de main y añade el gate exacto
+de `codex/integracion-financiera-sollahms`, porque los eventos Git no incluyen los
+165 recursos privados. El valor operacional de `git.deploymentEnabled` pasa a
+ser `{ "main": false, "codex/integracion-financiera-sollahms": false }`; no cambia
+ninguna otra configuración. En el paso 2 de FASE A utilizar ese mapa y actualizar
+sólo los fingerprints actuales de `vercel.json`, conservando los históricos.
+
+El [procedimiento CI y Previews privadas](ci-y-previews-privadas.md) complementa
+las instrucciones históricas de abajo. El CI público valida fuentes y el rechazo
+de paquetes incompletos; la batería privada completa, los hashes y la Preview
+siguen siendo necesarios. Comprobar el resultado real del nuevo SHA: un evento
+Git omitido no se declara automáticamente exitoso. No omitir checks obligatorios
+ni cambiar protecciones para resolver el circuito.
+
+**La autorización vigente de esta revisión termina antes del merge.** No ejecutar
+el paso de integración de FASE A ni FASE B hasta una nueva autorización expresa.
+Las referencias y comprobantes anteriores permanecen históricos y no atribuyen
+sus SHA-256 al paquete nuevo.
+
 Preparación verificada el **11/10/2026**. **FASE A y FASE B no ejecutadas ni autorizadas.** Este documento es el procedimiento para una autorización posterior; no habilita por sí mismo merge, despliegue, promoción, rollback ni cambios de plataforma.
 
 ## Versión y diagnóstico confirmados

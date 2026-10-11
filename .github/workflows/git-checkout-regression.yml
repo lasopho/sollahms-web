@@ -1,0 +1,43 @@
+name: Sollahms Git checkout regression
+
+on:
+  push:
+    branches:
+      - codex/integracion-financiera-sollahms
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sollahms-git-ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  git-checkout-regression:
+    name: Git checkout regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out real history without persisting credentials
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Use Node 24 for unit and DOM regressions
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Use Python 3.12 for synthetic safety fixtures
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Install only hashed test dependencies
+        run: |
+          python -m pip install --disable-pip-version-check --require-hashes --only-binary=:all: -r requirements-ci.txt
+      - name: Validate tracked sources and reject incomplete deployment packages
+        run: python scripts/run-git-ci.py --output "$RUNNER_TEMP/sollahms-git-ci-results"

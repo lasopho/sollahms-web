@@ -18,7 +18,7 @@ const LAUNCH_CHANGES = {
   'assets/js/purchase-capacity-ui.mjs': ['9c88641dae8d6cf9ab5ea1223b02a5abc917f9370f7862dea33366b226f73657', 'bdec9e59215c9b2116122dbded8e7604e380654defb3ef69f9d364c38556f724'],
   'api/contact.mjs': ['49de20c58d907203e424d17d2c933a7109c8c2d339d5bec4c67080c10992b73e', '6533c6f2e3cda476cd325d2074cc963394efdab16cc0839fb526da4aa1c399b2'],
   'lib/booking-server.mjs': ['09bada2e8bbeba6116fbe4974b391488f3c94ec3eca0df8696b6a194bc45326c', '27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4'],
-  'vercel.json': ['657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', '9c2a184fc1d64ad8358b29dcedcac7a230c41775b7251dafd95add92141c1059'],
+  'vercel.json': ['657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', 'dcfd7ec8a1502e2a344b99eec83198702643438378ddda9c135274a92036a97f'],
 };
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const REVIEWED_SCOPES = {
