@@ -1,3 +1,4 @@
+import { loadOfficialUf, UF_CLIENT_REFRESH_MS } from '../assets/js/official-uf.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -59,7 +60,7 @@ class Element {
 function event() { return { defaultPrevented: false, preventDefault() { this.defaultPrevented = true; } }; }
 function response(data = publishedDataset, ok = true) { return { ok, json: async () => data }; }
 
-async function frontend({ projects = catalogue, responses = [response()], defer = false, storage = storageFixture() } = {}) {
+async function frontend({ projects = catalogue, responses = [response()], ufResponses = null, defer = false, storage = storageFixture() } = {}) {
   let now = NOW;
   class Clock extends Date { constructor(...args) { super(...(args.length ? args : [now])); } static now() { return now; } }
   const ids = [...html.matchAll(/\bid="(capacity-[^"]+)"/g)].map(match => match[1]);
@@ -77,9 +78,10 @@ async function frontend({ projects = catalogue, responses = [response()], defer 
   elements['capacity-form'].checkValidity = () => Object.values(elements).filter(element => element !== elements['capacity-form']).every(element => element.checkValidity());
   elements['capacity-form'].reportValidity = () => elements['capacity-form'].checkValidity();
   let changeCount = 0, release;
-  const requests = [];
+  const requests = [], ufRequests = [];
   const context = vm.createContext({
     document: { getElementById: id => elements[id], createElement: tag => new Element(tag) },
+    AbortSignal, UF_CLIENT_REFRESH_MS,
     Date: Clock, Intl, sessionStorage: storage, MORTGAGE_HANDOFF_KEY,
     matchMedia: () => ({ matches: true }),
     validateDataset, validateCapacityInput, CAPACITY_LIMITS, parseClpAmount, formatClpAmount, ufToClp,
@@ -88,6 +90,14 @@ async function frontend({ projects = catalogue, responses = [response()], defer 
     evaluateProject: (project, input, dataset, instant) => evaluateProject(project, input, dataset, instant ?? new Clock()),
     writeMortgageHandoff: value => writeMortgageHandoff(value, { storage, now }),
     fetch: async (url, options = {}) => {
+      if (url === '/api/uf') {
+        assert.equal(options.cache, 'no-store'); assert.equal(options.body, undefined);
+        ufRequests.push({ url, options });
+        const next = ufResponses?.[Math.min(ufRequests.length - 1, ufResponses.length - 1)]
+          ?? response({ uf: (await responses[responses.length - 1].json?.())?.uf });
+        if (next instanceof Error) throw next;
+        return next;
+      }
       assert.equal(url, '/data/hipotecario.json'); assert.equal(options.cache, 'no-store');
       assert.ok(!options.method || options.method === 'GET'); assert.equal(options.body, undefined);
       requests.push({ url, options });
@@ -97,6 +107,7 @@ async function frontend({ projects = catalogue, responses = [response()], defer 
       return next;
     },
   });
+  context.loadOfficialUf = options => loadOfficialUf({ ...options, fetchImpl: context.fetch, now: () => new Clock() });
   Object.defineProperty(context, 'localStorage', { get() { throw new Error('Financial search must not use persistent storage'); } });
   vm.runInContext(script, context);
   context.options = { projects, onChange: () => { changeCount++; } };
@@ -115,7 +126,7 @@ async function frontend({ projects = catalogue, responses = [response()], defer 
     const actions = new Element('div'); actions.className = 'catalog-actions'; body.append(actions); article.append(body);
     search.decorateCard(article, project); return article;
   };
-  return { elements, field, set, change, submit, search, card, requests, storage,
+  return { elements, field, set, change, submit, search, card, requests, ufRequests, storage,
     changeCount: () => changeCount, release: () => release?.(),
     advance: milliseconds => { now += milliseconds; },
     reset: () => field('reset').listeners.click(event()),
@@ -413,4 +424,24 @@ test('stale UF cannot turn formatted peso savings into a current UF value or a c
   assert.equal(metricText(article, 'Dividendo / renta'), undefined);
   assert.equal(metricText(article, 'Dividendo financiero'), '20,09 UF');
   assert.match(ui.field('uf').textContent, /No tenemos una UF oficial vigente/);
+});
+
+
+test('automatic official UF recovers a stale checked-in snapshot and preserves CLP classification', async () => {
+  const stale = structuredClone(publishedDataset); stale.uf.date = '2026-10-09'; stale.uf.source.verifiedAt = '2026-10-09';
+  const ui = await frontend({ projects: [fixture], responses: [response(stale)], ufResponses: [response({ uf: publishedDataset.uf })] });
+  ui.set({ ...valid, savings: '$100.000.000', monthly: '$5.000.000', horizon: '12' }); await ui.submit();
+  assert.match(ui.card(fixture).querySelector('.capacity-badge').textContent, /^A\./);
+  assert.match(ui.field('uf').textContent, /41\.136,24/);
+  assert.equal(ui.ufRequests.length, 1); assert.equal(ui.ufRequests[0].options.body, undefined);
+});
+test('official UF failure blocks conversion and a later search recovers without losing peso inputs', async () => {
+  const stale = structuredClone(publishedDataset); stale.uf.date = '2026-10-09'; stale.uf.source.verifiedAt = '2026-10-09';
+  const ui = await frontend({ projects: [fixture], responses: [response(stale)], ufResponses: [new Error('SII temporary failure'), new Error('SII temporary failure'), response({ uf: publishedDataset.uf })] });
+  ui.change({ ...valid, savings: '$100.000.000' }); await ui.submit();
+  assert.match(ui.card(fixture).querySelector('.capacity-badge').textContent, /^E\./);
+  assert.ok(!ui.card(fixture).textContent.includes('$'));
+  await ui.submit(); assert.match(ui.card(fixture).querySelector('.capacity-badge').textContent, /^A\./);
+  assert.equal(ui.field('savings').value, '$100.000.000');
+  assert.equal(ui.ufRequests.length, 3); assert.equal(ui.storage.writes.length, 0);
 });

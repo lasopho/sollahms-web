@@ -171,17 +171,20 @@ test('AJ review preserves its five projects and historical research within the e
   assert.equal(protectedPages, 136);
 });
 
-test('531 existing assets, API handlers, financial engines and global public pages remain exact outside the approved privacy notice', () => {
+test('531 historical assets and handlers retain strict baselines outside the scoped official UF and privacy changes', () => {
   const assets = baselineTree('assets');
   assert.equal(assets.length, 531);
-  for (const { file, hash } of assets) assert.equal(blobHash(current(file)), hash, file);
+  for (const { file, hash } of assets) {
+    if (['assets/js/hipotecario.mjs', 'assets/js/purchase-capacity-ui.mjs'].includes(file)) unchanged(file);
+    else assert.equal(blobHash(current(file)), hash, file);
+  }
   for (const prefix of ['api', 'lib']) for (const { file } of baselineTree(prefix)) unchanged(file);
   for (const file of ['data/hipotecario.json', 'data/catalogo-original-fichas.json', 'sitemap.xml', 'robots.txt', 'vercel.json']) unchanged(file);
   for (const { file } of baselineTree()) {
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
   assert.deepEqual(listFiles('assets').filter((file) => !file.startsWith(ASSETS.slice(1)) &&
-    !file.startsWith(INGEVEC_ASSETS.slice(1)) && file !== CSS), assets.map(({ file }) => file).sort());
+    !file.startsWith(INGEVEC_ASSETS.slice(1)) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs'].sort());
 });
 
 test('five original documents and 78 unique models retain exact identifiers, source pages and original SHA provenance', () => {
@@ -273,7 +276,9 @@ test('33 candidates are reviewed, selected renders have provenance and no existi
   assert.equal(review.publicationRights.sourceChannel, 'Yapo/IRIS');
   assert.equal(review.publicationRights.protectedPreview, 'authorized_by_user');
   assert.equal(review.publicationRights.individualAssetLicense, 'not_required_when_contract_covered');
-  assert.equal(review.publicationRights.contractScope.status, 'pending_contract_scope_verification');
+  assert.equal(review.publicationRights.contractScope.status, 'verified_contract');
+  assert.equal(review.publicationRights.contractScope.evidence.type, 'official_terms_and_owner_attestation');
+  assert.equal(review.publicationRights.publicSourceDistribution, 'pending_contract_scope_verification');
   assert.equal(review.publicationRights.productionPolicy, 'requires_verified_contract_scope');
   const referenced = new Set();
   const chosenHashes = new Set();
@@ -370,7 +375,7 @@ test('contact regression rejects synthetic brochure-derived catalogue amounts fo
   assert.equal(keys, 0);
 });
 
-test('real packaging script publishes AJ review only in Preview and removes its content/assets from a non-Preview build', () => {
+test('a synthetic pending contract publishes AJ only in Preview and removes review assets from non-Preview output', () => {
   // The temporary fixture runs the actual packaging code twice, sequentially.
   // It cannot overwrite the workspace dist or publish any deployment.
   const fixtureRoot = mkdtempSync(join(tmpdir(), 'sollahms-aj-build-'));
@@ -417,6 +422,17 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     assert.equal(fixturePages.size, 151);
     for (const file of fixturePages) writeFileSync(join(fixtureRoot, file), current(file));
     const script = join(fixtureRoot, 'scripts/package-vercel.mjs');
+    // Exercise the fallback policy independently of the verified real batch.
+    for (const name of ['brochures-aj-urbana.json', 'brochures-ingevec.json']) {
+      const path = join(fixtureRoot, 'data', name);
+      const pending = JSON.parse(readFileSync(path));
+      Object.assign(pending.publicationRights.contractScope, {
+        status: 'pending_contract_scope_verification', evidenceSha256: null,
+        verifiedOn: null, permittedOrigins: [], permittedUses: [], coveredDocuments: [],
+      });
+      delete pending.publicationRights.contractScope.evidence;
+      writeFileSync(path, JSON.stringify(pending));
+    }
     const env = { ...process.env, VERCEL_GIT_COMMIT_REF: 'codex/integracion-financiera-sollahms' };
     execFileSync(process.execPath, [script], { cwd: fixtureRoot, env: {...env, VERCEL_ENV: 'preview'}, stdio: 'pipe' });
     const previewCatalogue = JSON.parse(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')));

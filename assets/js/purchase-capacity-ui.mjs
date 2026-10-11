@@ -2,6 +2,7 @@ import { evaluateProject, validateCapacityInput, CAPACITY_LIMITS } from './purch
 import { parseClpAmount, formatClpAmount } from './clp-input.mjs';
 import { ufToClp } from './mortgage-engine.mjs';
 import { validateDataset, getUfStatus } from './mortgage-data.mjs';
+import { loadOfficialUf, UF_CLIENT_REFRESH_MS } from './official-uf.mjs';
 import { chileDate } from './project-finance.mjs';
 import { writeMortgageHandoff, MORTGAGE_HANDOFF_KEY } from './mortgage-handoff.mjs';
 
@@ -58,7 +59,7 @@ export function initializeCapacitySearch({ projects, onChange }) {
     field(id).addEventListener('blur', () => displayMoney(id));
   }
   let dataset = null, input = null, results = new Map(), evaluationDate = null;
-  let loading = null, revision = 0;
+  let loading = null, revision = 0, ufLoading = null, ufAttemptAt = 0;
   const updateUf = () => {
     const status = getUfStatus(dataset?.uf);
     ufInfo.replaceChildren(node('span', status.usable
@@ -70,6 +71,16 @@ export function initializeCapacitySearch({ projects, onChange }) {
       ufInfo.append(source);
     }
   };
+  const refreshUf = async () => {
+    if (ufLoading) return ufLoading;
+    ufAttemptAt = Date.now();
+    ufLoading = (async () => {
+      const currentUf = await loadOfficialUf({ fallbackUf: dataset?.uf });
+      if (dataset) dataset = { ...dataset, uf: currentUf };
+      updateUf();
+    })();
+    try { await ufLoading; } finally { ufLoading = null; }
+  };
   const loadDataset = async () => {
     if (loading) return loading;
     loading = (async () => {
@@ -78,7 +89,7 @@ export function initializeCapacitySearch({ projects, onChange }) {
       const data = await response.json();
       const validation = validateDataset(data);
       if (!validation.valid) throw new Error('La referencia financiera necesita verificación.');
-      dataset = data; updateUf();
+      dataset = data; await refreshUf();
     })();
     try { await loading; } finally { loading = null; }
   };
@@ -116,7 +127,14 @@ export function initializeCapacitySearch({ projects, onChange }) {
     summary.textContent = 'Evaluación de ' + projects.length + ' proyectos. ' + counts + '. Orden por compatibilidad en “Orden original”; los filtros y el orden por precio siguen disponibles. No representa aprobación bancaria.';
     updateUf();
   };
-  const refreshDate = () => { if (input && evaluationDate !== chileDate()) evaluate(); };
+  const refreshDate = () => {
+    if (input && evaluationDate !== chileDate()) evaluate();
+    else updateUf();
+    if (dataset && !loading && !ufLoading && (Date.now() - ufAttemptAt >= UF_CLIENT_REFRESH_MS
+      || (!getUfStatus(dataset.uf).usable && Date.now() - ufAttemptAt >= 60000))) {
+      refreshUf().then(() => { if (input) { evaluate(); onChange(); } });
+    }
+  };
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded', String(open)); form.hidden = !open;
@@ -137,6 +155,7 @@ export function initializeCapacitySearch({ projects, onChange }) {
       const next = readInput();
       for (const id of Object.keys(moneyFields)) displayMoney(id);
       if (!dataset) await loadDataset();
+      else if (!getUfStatus(dataset.uf).usable || Date.now() - ufAttemptAt >= UF_CLIENT_REFRESH_MS) await refreshUf();
       if (revision !== submittedRevision) return;
       input = next; evaluate(); onChange();
       summary.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
@@ -149,6 +168,8 @@ export function initializeCapacitySearch({ projects, onChange }) {
     try { sessionStorage.removeItem(MORTGAGE_HANDOFF_KEY); } catch {}
     form.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.focus();
   });
+  if (typeof setInterval === 'function') setInterval(() => { if (!document.hidden) refreshDate(); }, 60000);
+  document.addEventListener?.('visibilitychange', () => { if (!document.hidden) refreshDate(); });
   updateConditional();
   loadDataset().catch(failure => { ufInfo.textContent = failure.message + ' Puedes navegar el catálogo normalmente.'; });
   return {

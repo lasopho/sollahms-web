@@ -28,7 +28,7 @@ function harness({ projectDataset = catalogue, now = NOW, environment = 'test', 
   const calls = [];
   let keyReads = 0;
   const handler = createContactHandler({
-    mortgageDataset: financialData, projectDataset, now: () => now, getEnvironment: () => environment,
+    mortgageDataset: financialData, resolveUf: async () => financialData.uf, projectDataset, now: () => now, getEnvironment: () => environment,
     getApiKey: () => { keyReads++; return 'synthetic-test-key'; },
     fetchImpl: async (url, options) => { calls.push({ url, body: JSON.parse(options.body) }); return provider ? provider() : Response.json({ id: 'simulated-only' }); },
   });

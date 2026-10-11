@@ -18,11 +18,35 @@ function verifiedFixture() {
   return fixture;
 }
 
-test('Yapo/IRIS provenance replaces individual licences without fabricating contractual verification', () => {
-  assert.deepEqual(brochurePublication(review), { protectedReview: true, publicWeb: false });
-  assert.equal(review.publicationRights.contractScope.evidenceSha256, null);
+test('official Chilean terms and the direct owner attestation cover the supplied website material', () => {
+  assert.deepEqual(brochurePublication(review), { protectedReview: true, publicWeb: true });
+  const scope = review.publicationRights.contractScope;
+  assert.match(scope.evidenceSha256, /^[a-f0-9]{64}$/);
+  assert.equal(scope.verifiedOn, '2026-10-11');
+  assert.deepEqual(scope.permittedOrigins, ['https://sollahms.cl']);
+  assert.deepEqual(scope.permittedUses, ['web_promotion']);
+  assert.deepEqual(scope.coveredDocuments, brochureSourceDocuments(review));
+  assert.deepEqual(scope.evidence, {
+    type: 'official_terms_and_owner_attestation',
+    termsUrl: 'https://iris.yapo.cl/terminos-y-condiciones',
+    termsUpdatedOn: '2023-08-04',
+    termsSha256: '99e724e9cee0539229d1dbfc1e7e44c6094f24368ccd4c96bc5f08aed2361853',
+    liveBundleSha256: 'ff1798ff2c3b9ff7392c1e322eced52210bab8f7f5a17b2a001114b2ab559ed0',
+    ownerAttestation: 'user_confirmed_yapo_iris_channel_and_sollahms_web_use',
+    clauses: ['Publicidad sobre el Proyecto', 'Entrega de materiales'],
+  });
   assert.equal(review.publicationRights.publicSourceDistribution, 'pending_contract_scope_verification');
   assert.doesNotMatch(JSON.stringify(review.publicationRights), /pending_explicit_license/);
+});
+
+test('an unverified owner provenance alone retains only the protected review permission', () => {
+  const fixture = structuredClone(review);
+  Object.assign(fixture.publicationRights.contractScope, {
+    status: 'pending_contract_scope_verification', evidenceSha256: null,
+    verifiedOn: null, permittedOrigins: [], permittedUses: [], coveredDocuments: [],
+  });
+  delete fixture.publicationRights.contractScope.evidence;
+  assert.deepEqual(brochurePublication(fixture), { protectedReview: true, publicWeb: false });
 });
 
 test('a verified website contract covers the exact document batch without an individual-image licence', () => {
@@ -44,6 +68,12 @@ test('wrong site, wrong use, missing evidence, partial documents and lifted priv
     scope => { scope.coveredDocuments.push(scope.coveredDocuments[0]); },
     scope => { scope.exclusions = []; },
     scope => { scope.status = 'expired_contract'; },
+    scope => { delete scope.evidence; },
+    scope => { scope.evidence.termsUrl = 'https://unrelated.test.invalid/terms'; },
+    scope => { scope.evidence.termsSha256 = null; },
+    scope => { scope.evidence.liveBundleSha256 = null; },
+    scope => { scope.evidence.ownerAttestation = 'account_signature_independently_verified'; },
+    scope => { scope.evidence.clauses = ['Unrelated clause']; },
   ];
   for (const mutate of mutations) {
     const fixture = verifiedFixture();

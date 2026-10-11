@@ -5,7 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { assertCommercialBytes, INGEVEC_NEW_SLUGS } from './commercial-html.mjs';
+import { assertCommercialBytes, restoreReviewedScope, INGEVEC_NEW_SLUGS } from './commercial-html.mjs';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASE = 'b64911588e2fdf52f32d5f772b53735936fbd423';
 const read = path => readFileSync(resolve(ROOT,path));
@@ -31,7 +31,8 @@ test('eight originals enrich exactly seven of the 144 fichas while all commercia
  for(const p of catalogue) if(!slugs.includes(p.slug) && !INGEVEC_NEW_SLUGS.has(p.slug)) assertCommercialBytes(p.slug+'.html',read(p.slug+'.html'),old(p.slug+'.html'));
  const previous=JSON.parse(old('data/brochures-ingevec.json'));
  assert.deepEqual(manifest.projects.slice(0,3),previous.projects);
- for(const [key,value] of Object.entries(previous)) if(key!=='projects') assert.deepEqual(manifest[key],value,key);
+ const restored=restoreReviewedScope(manifest,previous,'data/brochures-ingevec.json');
+ for(const [key,value] of Object.entries(previous)) if(key!=='projects') assert.deepEqual(restored[key],value,key);
  assert.deepEqual(manifest.batchAddition.projects,slugs);assert.equal(manifest.batchAddition.originalPdfsReviewed,8);assert.equal(manifest.batchAddition.candidateImagesReviewed,48);
  assert.equal(manifest.batchAddition.modelsAndPlansReviewed,27);
  for(const r of records) assert.equal(fallback(html(r.slug)),old(r.slug+'.html').toString(),r.slug);

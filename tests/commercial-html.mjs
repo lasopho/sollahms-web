@@ -10,6 +10,30 @@ const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')))
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
 assert.equal(ficheFiles.size, 144);
 const transformed = new Map();
+// Exact reviewed launch changes. These five files formerly had a byte-for-byte
+// freeze; keep that freeze everywhere else and pin both sides of these narrow
+// UF/Origin/header exceptions. Their behavior is tested independently.
+const LAUNCH_CHANGES = {
+  'assets/js/hipotecario.mjs': ['23a3cd6ac6b5f7af33e747ba9afcc687f85b94b3fc77a2f0f055b8dcbac44e2a', 'b313f5dd6dbe2b27694d9751c0e19053ca3b671809914cab24854c82ded355d9'],
+  'assets/js/purchase-capacity-ui.mjs': ['9c88641dae8d6cf9ab5ea1223b02a5abc917f9370f7862dea33366b226f73657', 'bdec9e59215c9b2116122dbded8e7604e380654defb3ef69f9d364c38556f724'],
+  'api/contact.mjs': ['49de20c58d907203e424d17d2c933a7109c8c2d339d5bec4c67080c10992b73e', '6533c6f2e3cda476cd325d2074cc963394efdab16cc0839fb526da4aa1c399b2'],
+  'lib/booking-server.mjs': ['09bada2e8bbeba6116fbe4974b391488f3c94ec3eca0df8696b6a194bc45326c', '27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4'],
+  'vercel.json': ['657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', '23905805cfa4e455f9fcaf8a10a2fb1b9a705b3dd0a6dd8a6a9af8292b1c762b'],
+};
+const digest = bytes => createHash('sha256').update(bytes).digest('hex');
+const REVIEWED_SCOPES = {
+  'data/brochures-aj-urbana.json': '8dc9872b11f578321d176dcd83b9c2da457a55f65104112c029582f20a688cc2',
+  'data/brochures-ingevec.json': 'a7ba43c7df9066c1be2fff1c04c8e05c24465b8528c2ed49d4ca1e23808aa6ca',
+};
+export function restoreReviewedScope(after, before, file) {
+  assert.equal(digest(JSON.stringify(after.publicationRights.contractScope)), REVIEWED_SCOPES[file],
+    file + ': changes exceed the exact official-terms/owner-attestation web scope');
+  const restored = structuredClone(after);
+  restored.publicationRights.contractScope = structuredClone(before.publicationRights.contractScope);
+  assert.deepEqual(restored.publicationRights, before.publicationRights,
+    file + ': rights outside the reviewed contractScope must remain exact');
+  return restored;
+}
 export const INGEVEC_ADDED_BASELINE = 'b64911588e2fdf52f32d5f772b53735936fbd423';
 export const INGEVEC_ADDED_SLUGS = new Set(['coronel-godoy', 'diagonal-paraguay',
   'el-aromo', 'los-lilenes', 'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589']);
@@ -124,7 +148,7 @@ export function assertIngevecManifestAddition(actual, baseline) {
   assert.deepEqual(after.projects.slice(0, 3), before.projects, 'The previous three Ingevec records must remain exact');
   assert.deepEqual(after.projects.slice(3).map(record => record.slug).sort(), [...INGEVEC_ADDED_SLUGS,...INGEVEC_ENRICHED_SLUGS,...INGEVEC_NEW_SLUGS].sort(),
     'Only seven authorized existing projects may enter the brochure manifest');
-  const restored = structuredClone(after);
+  const restored = restoreReviewedScope(after, before, 'data/brochures-ingevec.json');
   restored.projects = before.projects;
   delete restored.batchAddition;
   delete restored.portfolioConsolidation;
@@ -164,6 +188,18 @@ export function assertCatalogueConsultPrices(actual, baseline) {
 }
 
 export function assertCommercialBytes(file, actual, baseline) {
+  if (LAUNCH_CHANGES[file]) {
+    const [before, after] = LAUNCH_CHANGES[file];
+    assert.equal(digest(baseline), before, file + ': unrecognized pre-launch baseline');
+    assert.equal(digest(actual), after, file + ': changes exceed the reviewed UF/security change');
+    return;
+  }
+  if (file === 'data/brochures-aj-urbana.json') {
+    const before = JSON.parse(baseline), after = JSON.parse(actual);
+    assert.deepEqual(restoreReviewedScope(after, before, file), before,
+      file + ': all original projects, assets and evidence remain exact');
+    return;
+  }
   if(file === 'proyectos.html') {assertCatalogueConsultPrices(actual,baseline);return;}
   if (INGEVEC_REMOVED_SLUGS.has(file.replace(/\.html$/, ''))) {
     assert.equal(actual.length,0);assert.equal(existsSync(resolve(ROOT,file)),false);return;

@@ -333,13 +333,19 @@ test('Irarrázaval preserves the map/tour, internal identity evidence and a conc
   assert.deepEqual(restored, previous, 'Irarrázaval changed beyond the tour identity review');
 });
 
-test('all 521 integration assets and 509 historical originals retain their hashes; exactly ten new official images have complete provenance', () => {
+test('all 521 integration assets and 509 historical originals retain their hashes outside the exact official UF UI change; ten official images retain complete provenance', () => {
   const protectedAssets = tree(BASELINE, 'assets');
   assert.equal(protectedAssets.length, 521);
-  for (const { file, hash } of protectedAssets) assert.equal(blobHash(current(file)), hash, file);
+  for (const { file, hash } of protectedAssets) {
+    if (['assets/js/hipotecario.mjs', 'assets/js/purchase-capacity-ui.mjs'].includes(file)) assertCommercialBytes(file,current(file),old(file));
+    else assert.equal(blobHash(current(file)), hash, file);
+  }
   const originalAssets = tree('bd42519', 'assets');
   assert.equal(originalAssets.length, 509);
-  for (const { file, hash } of originalAssets) assert.equal(blobHash(current(file)), hash, file);
+  for (const { file, hash } of originalAssets) {
+    if (['assets/js/hipotecario.mjs', 'assets/js/purchase-capacity-ui.mjs'].includes(file)) assertCommercialBytes(file,current(file),execFileSync('git',['show','bd42519:'+file],{cwd:ROOT}));
+    else assert.equal(blobHash(current(file)), hash, file);
+  }
   const manifest = json('data/fuentes-imagenes.json');
   const previous = oldJson('data/fuentes-imagenes.json');
   for (const [url, entry] of Object.entries(previous)) assert.deepEqual(manifest[url], entry, `existing image provenance: ${url}`);
@@ -368,7 +374,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   const currentAssets = listFiles('assets').filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
     !file.startsWith('assets/propiedades/ingevec-preview/') && file !== 'assets/css/aj-brochure-preview.css');
-  const expected = [...protectedAssets.map(({ file }) => file), ...newPaths].sort();
+  const expected = [...protectedAssets.map(({ file }) => file), ...newPaths, 'assets/js/official-uf.mjs'].sort();
   assert.deepEqual(currentAssets, expected, 'No other asset additions/deletions are authorized');
 });
 

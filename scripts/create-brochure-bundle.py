@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a deterministic PRIVATE source bundle for the protected web review.
+"""Create a deterministic PRIVATE source bundle for an authorized web build.
 
 No original PDF, contract, candidate, environment file or Git directory enters
 the bundle. It includes the exact selected derivatives, so materialization is
@@ -124,10 +124,39 @@ def archive_bytes(root, files):
     return output.getvalue()
 
 
+def public_files(root):
+    return {str(path.relative_to(root)): path.read_bytes()
+            for path in sorted(root.rglob('*')) if path.is_file()}
+
+
+def comparable_review_html(data):
+    # These are the only intentional differences in the protected review.
+    # Do not strip arbitrary notices, metadata, content or financial values.
+    text = data.decode('utf-8')
+    text = text.replace('<meta name="robots" content="noindex, nofollow">\n', '')
+    notice = '<div role="note" style="padding:14px 24px;background:#003229;color:#fff;text-align:center;font-family:Inter,Arial,sans-serif;font-size:14px;line-height:1.6">Vista previa de revisión. Los formularios no envían mensajes ni crean reservas.</div>'
+    return text.replace(notice, '').encode('utf-8')
+
+
+def assert_public_parity(preview, public):
+    assert preview.keys() == public.keys(), 'Protected Preview and public build have different routes/resources'
+    for name, content in public.items():
+        if name == 'robots.txt':
+            assert preview[name] == b'User-agent: *\nDisallow: /\n'
+            assert b'Allow: /' in content and b'https://sollahms.cl/sitemap.xml' in content
+        elif name.endswith('.html'):
+            assert comparable_review_html(preview[name]) == content, f'Preview differs from public content: {name}'
+            assert b'noindex, nofollow' not in content, f'Public route cannot be indexed: {name}'
+        else:
+            assert preview[name] == content, f'Preview differs from public resource: {name}'
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output-directory', required=True, type=Path)
     parser.add_argument('--node', default=shutil.which('node'))
+    parser.add_argument('--verify-public-web', action='store_true',
+                        help='Require real contractual web coverage and compare an offline Production build; never deploys')
     args = parser.parse_args()
     assert args.node, 'Node is required to verify the source package'
     destination = args.output_directory.expanduser().resolve()
@@ -152,8 +181,21 @@ def main():
         expected_media = sum(len(json.loads((stage / 'data' / name).read_text())['projects'][index][key])
             for name in MANIFESTS for index in range(len(APPROVED_PROJECTS[name])) for key in ['images', 'models'])
         assert len(receipt['media']) == expected_media, 'The build omitted or added selected brochure resources'
-        public_inventory = [{'file': str(p.relative_to(stage / 'dist')), 'sha256': sha(p.read_bytes())}
-                            for p in sorted((stage / 'dist').rglob('*')) if p.is_file()]
+        preview_output = public_files(stage / 'dist')
+        public_inventory = [{'file': name, 'sha256': sha(content)}
+                            for name, content in preview_output.items()]
+        production_inventory = None
+        if args.verify_public_web:
+            assert receipt['contractualCoverageVerified'], 'The actual website contract scope must be verified before public parity can be asserted'
+            public_env = dict(env, VERCEL_ENV='production', SOLLAHMS_BROCHURE_PROFILE='public-web')
+            subprocess.run([args.node, str(stage / 'scripts/package-vercel.mjs')],
+                           cwd=stage, env=public_env, check=True, stdout=subprocess.PIPE)
+            public_receipt = json.loads((stage / '.vercel/brochure-build-inventory.json').read_text())
+            assert public_receipt == receipt, 'The public build changed the reviewed selected-media inventory'
+            production_output = public_files(stage / 'dist')
+            assert_public_parity(preview_output, production_output)
+            production_inventory = [{'file': name, 'sha256': sha(content)}
+                                    for name, content in production_output.items()]
         data = archive_bytes(stage, files)
     archive = destination / 'source.tgz'
     archive.write_bytes(data)
@@ -171,6 +213,8 @@ def main():
                 'sourceFileCount': len(files), 'sourceBytes': sum(f['size'] for f in inventory),
                 'archive': {'privatePath': str(archive), 'sha256': sha(data), 'size': len(data)},
                 'chunks': chunks, 'files': inventory, 'publicOutput': public_inventory,
+                'offlineProductionOutput': production_inventory,
+                'publicWebParityVerified': bool(args.verify_public_web),
                 'selectedBrochureMedia': receipt['media']}
     (destination / 'metadata.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + '\n')
     for path in destination.iterdir():
@@ -179,6 +223,7 @@ def main():
     print(json.dumps({'sourceFiles': len(files), 'selectedBrochureMedia': len(receipt['media']),
                       'archiveSha256': sha(data), 'archiveBytes': len(data),
                       'contractualCoverageVerified': receipt['contractualCoverageVerified'],
+                      'publicWebParityVerified': bool(args.verify_public_web),
                       'uploaded': False}))
 
 

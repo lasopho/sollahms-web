@@ -2,6 +2,10 @@ import dataset from '../data/hipotecario.json' with { type: 'json' };
 import catalogue from '../data/proyectos.json' with { type: 'json' };
 import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
 import { mortgageSummaryLines, validateMortgageLead, validFormTiming } from '../lib/mortgage-lead.mjs';
+import { createOfficialUfService } from '../lib/official-uf.mjs';
+import { getUfStatus } from '../assets/js/mortgage-data.mjs';
+
+const officialUf = createOfficialUfService();
 
 const MAX_BODY_BYTES = 32_768;
 const JSON_HEADERS = {
@@ -94,6 +98,7 @@ export function createContactHandler({
   mortgageDataset = dataset, projectDataset = catalogue, now = Date.now,
   fetchImpl = (...args) => fetch(...args), getApiKey = () => process.env.RESEND_API_KEY,
   getEnvironment = () => process.env.VERCEL_ENV,
+  resolveUf = () => officialUf.resolve(),
 } = {}) {
   // Names and prices come only from the server's checked-in project catalogue.
   const projectIndex = Object.create(null);
@@ -129,6 +134,12 @@ export function createContactHandler({
       if (getEnvironment() === 'preview') return json({ ok: false, code: 'preview_read_only', error: 'La vista previa no envía mensajes reales. Puedes revisar el formulario sin contactar al equipo.' }, 503);
       const key = getApiKey()?.trim();
       if (!key) return json({ error: 'No pudimos enviar el mensaje. Inténtalo más tarde.' }, 503);
+      // The server owns CLP conversion too; a visitor never supplies a UF rate.
+      // A same-day verified snapshot is safe. If stale, fetch today's official UF.
+      if (mortgageLead && !mortgageLead.uf.usable) {
+        try { mortgageLead.uf = getUfStatus(await resolveUf(), new Date(now())); }
+        catch { mortgageLead.uf = getUfStatus(null, new Date(now())); }
+      }
       const { nombre, correo, telefono, asunto, mensaje, proyecto, nombreProyecto } = fields;
       const displayTelefono = telefono || 'No informado';
       const summary = mortgageLead ? mortgageSummaryLines(mortgageLead) : [];

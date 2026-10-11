@@ -7,18 +7,40 @@
     "protectedPreview": "authorized_by_user",
     "individualAssetLicense": "not_required_when_contract_covered",
     "contractScope": {
-      "status": "pending_contract_scope_verification",
-      "evidenceSha256": null,
-      "verifiedOn": null,
-      "permittedOrigins": [],
-      "permittedUses": [],
-      "coveredDocuments": [],
+      "status": "verified_contract",
+      "evidenceSha256": "a3f5fc354a7fd5e41ed1c3f3ae499d4b5511376a7a914161d4de9c87ee44f3eb",
+      "verifiedOn": "2026-10-11",
+      "permittedOrigins": [
+        "https://sollahms.cl"
+      ],
+      "permittedUses": [
+        "web_promotion"
+      ],
+      "coveredDocuments": [
+        "119976d9a6cc9045be5c9ccdedd6c293d0ebdc38be7df3065843a29b88c56327",
+        "3a80503b8ef2670deb75c7776724f6d6880128a03b1609484cedb43f452893f4",
+        "4e1ac72e7fa333bc944039a50745d935800df80f3d9d8d3f4d01a277207ef628",
+        "a5c95f31e3f90b365d0b8edd8340bd6fb7bfdb28172cd30e59dfef854e6643f4",
+        "da6ede0213e85e675ff7531e0640dc55194e375c1e4822244a459c2a837816b1"
+      ],
       "exclusions": [
         "contract_documents",
         "internal_commercial_information",
         "original_pdfs",
         "unapproved_candidates"
-      ]
+      ],
+      "evidence": {
+        "type": "official_terms_and_owner_attestation",
+        "termsUrl": "https://iris.yapo.cl/terminos-y-condiciones",
+        "termsUpdatedOn": "2023-08-04",
+        "termsSha256": "99e724e9cee0539229d1dbfc1e7e44c6094f24368ccd4c96bc5f08aed2361853",
+        "liveBundleSha256": "ff1798ff2c3b9ff7392c1e322eced52210bab8f7f5a17b2a001114b2ab559ed0",
+        "ownerAttestation": "user_confirmed_yapo_iris_channel_and_sollahms_web_use",
+        "clauses": [
+          "Publicidad sobre el Proyecto",
+          "Entrega de materiales"
+        ]
+      }
     },
     "publicSourceDistribution": "pending_contract_scope_verification",
     "productionPolicy": "requires_verified_contract_scope"

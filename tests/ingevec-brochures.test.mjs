@@ -205,17 +205,23 @@ test('the definitive 144 objects preserve all 128 other developers and historica
   for (const prefix of ['api', 'lib']) for (const { file } of tree(BASELINE, prefix)) unchanged(file);
 });
 
-test('531 original assets and every prior AJ/official asset preserve hashes; only the new scoped image folder is added', () => {
+test('531 historical assets retain hashes outside the scoped official UF changes and reviewed image additions', () => {
   const historical = tree(ORIGINAL_ASSETS, 'assets');
   assert.equal(historical.length, 531);
-  for (const { file, hash } of historical) assert.equal(blobHash(current(file)), hash, file);
+  for (const { file, hash } of historical) {
+    if (['assets/js/hipotecario.mjs', 'assets/js/purchase-capacity-ui.mjs'].includes(file)) unchanged(file);
+    else assert.equal(blobHash(current(file)), hash, file);
+  }
   const prior = tree(BASELINE, 'assets');
-  for (const { file, hash } of prior) if (file !== CSS) assert.equal(blobHash(current(file)), hash, file);
+  for (const { file, hash } of prior) if (file !== CSS) {
+    if (['assets/js/hipotecario.mjs', 'assets/js/purchase-capacity-ui.mjs'].includes(file)) unchanged(file);
+    else assert.equal(blobHash(current(file)), hash, file);
+  }
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
   assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1))),
-    prior.map(({ file }) => file).sort());
+    [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs'].sort());
 });
 
 test('three public fallbacks retain original content and JSON-LD; five AJ fichas receive only their previously approved additions and commercial presentation', () => {
@@ -243,7 +249,9 @@ test('three supplied sources and fourteen unique models retain document/page evi
   assert.equal(review.publicationRights.sourceChannel, 'Yapo/IRIS');
   assert.equal(review.publicationRights.protectedPreview, 'authorized_by_user');
   assert.equal(review.publicationRights.individualAssetLicense, 'not_required_when_contract_covered');
-  assert.equal(review.publicationRights.contractScope.status, 'pending_contract_scope_verification');
+  assert.equal(review.publicationRights.contractScope.status, 'verified_contract');
+  assert.equal(review.publicationRights.contractScope.evidence.type, 'official_terms_and_owner_attestation');
+  assert.equal(review.publicationRights.publicSourceDistribution, 'pending_contract_scope_verification');
   assert.equal(review.publicationRights.productionPolicy, 'requires_verified_contract_scope');
   assert.deepEqual(review.projects.filter(record => FOCUS.has(record.slug)).map(record => record.slug), SLUGS);
   assert.equal(review.projects.filter(record => FOCUS.has(record.slug)).reduce((count, record) => count + record.models.length, 0), 14);
@@ -444,7 +452,22 @@ function verifySyntheticContract(fixture) {
       status: 'verified_contract', evidenceSha256: 'a'.repeat(64), verifiedOn: DATE,
       permittedOrigins: ['https://sollahms.cl'], permittedUses: ['web_promotion'],
       coveredDocuments: brochureSourceDocuments(manifest),
+      evidence: structuredClone(review.publicationRights.contractScope.evidence),
     });
+    writeFileSync(path, JSON.stringify(manifest));
+  }
+}
+
+function resetSyntheticContractPending(fixture) {
+  // Historical policy regression only; the real manifests stay verified.
+  for (const name of ['brochures-aj-urbana.json', 'brochures-ingevec.json']) {
+    const path = join(fixture, 'data', name);
+    const manifest = JSON.parse(readFileSync(path));
+    Object.assign(manifest.publicationRights.contractScope, {
+      status: 'pending_contract_scope_verification', evidenceSha256: null,
+      verifiedOn: null, permittedOrigins: [], permittedUses: [], coveredDocuments: [],
+    });
+    delete manifest.publicationRights.contractScope.evidence;
     writeFileSync(path, JSON.stringify(manifest));
   }
 }
@@ -452,6 +475,7 @@ function verifySyntheticContract(fixture) {
 test('a verified contract yields identical 144 fichas, covers and 269 media in Preview and an offline public web build', () => {
   const fixture = createPackagingFixture();
   try {
+    resetSyntheticContractPending(fixture);
     assert.throws(() => packageFixture(fixture, 'preview', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' }), /requires verified/);
     verifySyntheticContract(fixture);
     packageFixture(fixture, 'preview', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' });
@@ -543,9 +567,10 @@ test('real Preview packaging changes only twenty-one authorized card covers, pub
   } finally { rmSync(fixture, { recursive: true, force: true }); }
 });
 
-test('Production and unspecified environment exclude protected media and reproduce the approved 144 source objects and public fallbacks', () => {
+test('a synthetic pending contract excludes protected media outside Preview and retains all 144 approved fallback objects', () => {
   const fixture = createPackagingFixture();
   try {
+    resetSyntheticContractPending(fixture);
     // First package Preview so the next builds must actively remove any old
     // review output rather than merely leave an initially empty directory.
     packageFixture(fixture, 'preview');
@@ -647,6 +672,9 @@ test('new source bindings and Vicuña stage identifiers cannot be reassigned thr
       else if (kind === 'plan-stage') record.models[0].plan.etapa = 'Etapa 2';
       else record.models[0].modelo = 'e2-mismatched-source';
       writeFileSync(join(fixture, MANIFEST), JSON.stringify(mutation));
+      // Isolate source/stage identity validation from the separate exact-batch
+      // contract gate, which also rejects a removed original in verified data.
+      resetSyntheticContractPending(fixture);
       assert.throws(() => packageFixture(fixture, 'preview'), /source document|model source or stage|ten previously approved Ingevec records/i, kind);
       assert.equal(existsSync(join(fixture, 'dist')), false, 'A source/stage mismatch cannot produce public output');
     }
@@ -739,9 +767,10 @@ test('new supplied brochure plaintext remains ignored and absent from the public
   assert.match(current('.gitignore').toString(), /^\/assets\/propiedades\/ingevec-preview\/$/m);
 });
 
-test('Git Preview without all 165 private Ingevec assets preserves sixteen public fallbacks and all five AJ reviews', () => {
+test('a synthetic pending Git Preview without Ingevec assets preserves sixteen fallbacks and the five AJ reviews', () => {
   const fixture = createPackagingFixture();
   try {
+    resetSyntheticContractPending(fixture);
     rmSync(join(fixture, ASSETS.slice(1)), { recursive: true, force: true });
     packageFixture(fixture, 'preview');
     const published = JSON.parse(readFileSync(join(fixture, 'dist/data/proyectos.json')));

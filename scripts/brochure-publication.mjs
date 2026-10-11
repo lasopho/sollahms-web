@@ -91,7 +91,16 @@ export function brochurePublication(review, site = 'https://sollahms.cl') {
   const requiredExclusions = ['contract_documents', 'internal_commercial_information',
     'original_pdfs', 'unapproved_candidates'];
   const covered = [...(scope?.coveredDocuments ?? [])].sort();
+  const evidence = scope?.evidence;
+  const verifiedBasis = evidence?.type === 'official_terms_and_owner_attestation' &&
+    evidence.termsUrl === 'https://iris.yapo.cl/terminos-y-condiciones' &&
+    /^\d{4}-\d{2}-\d{2}$/.test(evidence.termsUpdatedOn ?? '') &&
+    /^[a-f0-9]{64}$/.test(evidence.termsSha256 ?? '') &&
+    /^[a-f0-9]{64}$/.test(evidence.liveBundleSha256 ?? '') &&
+    evidence.ownerAttestation === 'user_confirmed_yapo_iris_channel_and_sollahms_web_use' &&
+    ['Publicidad sobre el Proyecto', 'Entrega de materiales'].every(clause => evidence.clauses?.includes(clause));
   if (scope?.status !== 'verified_contract' || !/^[a-f0-9]{64}$/.test(scope.evidenceSha256 ?? '') ||
+      !verifiedBasis ||
       !/^\d{4}-\d{2}-\d{2}$/.test(scope.verifiedOn ?? '') ||
       !scope.permittedOrigins?.includes(new URL(site).origin) ||
       !scope.permittedUses?.includes('web_promotion') ||

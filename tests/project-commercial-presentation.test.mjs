@@ -111,11 +111,12 @@ test('every fiche retains its original SEO, scripts, images, plans, embeds and n
   assert.equal(models, 92, 'All 78 AJ and 14 Ingevec models must remain');
 });
 
-test('all styles, financial references, catalogue controls, backend and form/action contexts stay exact', () => {
+test('all styles, catalogue controls and form/action contexts stay exact outside scoped official UF and security changes', () => {
   for (const directory of ['assets', 'api', 'lib']) {
     for (const line of git('ls-tree', '-r', BASELINE, '--', directory).toString().trim().split('\n').filter(Boolean)) {
       const [meta, path] = line.split('\t');
-      if(path==='lib/project-context.mjs') assertCommercialBytes(path,current(path),old(path));
+      if(['lib/project-context.mjs', 'assets/js/hipotecario.mjs', 'assets/js/purchase-capacity-ui.mjs',
+        'api/contact.mjs', 'lib/booking-server.mjs'].includes(path)) assertCommercialBytes(path,current(path),old(path));
       else assert.equal(blobHash(current(path)), meta.split(' ')[2], path);
     }
   }
@@ -139,7 +140,9 @@ test('all 269 supplied media derivatives retain approved identity, hashes and co
   let checked = 0;
   for (const manifestPath of ['data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
     const manifest = JSON.parse(current(manifestPath));
-    assert.equal(manifest.publicationRights.contractScope.status, 'pending_contract_scope_verification');
+    assert.equal(manifest.publicationRights.contractScope.status, 'verified_contract');
+    assert.equal(manifest.publicationRights.contractScope.evidence.type, 'official_terms_and_owner_attestation');
+    assert.equal(manifest.publicationRights.publicSourceDistribution, 'pending_contract_scope_verification');
     for (const record of manifest.projects) {
       for (const image of record.images) {
         assert.equal(sha256(current(image.localPath.slice(1))), image.sha256, image.localPath);

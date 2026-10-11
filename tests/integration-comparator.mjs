@@ -1,3 +1,4 @@
+import { loadOfficialUf, UF_CLIENT_REFRESH_MS } from '../assets/js/official-uf.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import vm from 'node:vm';
@@ -99,6 +100,7 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
     document: { getElementById: id => elements[id], querySelectorAll: selector => selector === '[data-down]' ? presets : selector === '[data-project-agenda]' ? agenda : [], addEventListener() {}, hidden: false },
     window: { location: { search: search ?? (slug ? '?proyecto=' + encodeURIComponent(slug) : '') }, addEventListener() {} },
     innerWidth: 1440, URL, URLSearchParams, Intl, Date: Clock, AbortSignal, setInterval() {},
+    UF_CLIENT_REFRESH_MS,
     calculateMortgage, validateDataset, getUfStatus, getOfferStatus, compareOffers, sortComparisons, verifiedProjectPrice, verifiedProjectLocation,
     consumeMortgageHandoff: projectSlug => consumeMortgageHandoff(projectSlug, { storage, now }),
     fetch: async (url, options) => {
@@ -106,6 +108,7 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
         if (failCatalogue) throw new Error('Synthetic unavailable catalogue');
         return { ok: true, json: async () => catalogue };
       }
+      if (url === '/api/uf') return { ok: true, json: async () => ({ uf: dataset.uf }) };
       if (url === '/data/hipotecario.json') return { ok: true, json: async () => dataset };
       assert.equal(url, '/api/contact');
       posts.push(JSON.parse(options.body));
@@ -113,6 +116,7 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
       return { ok: status === 200, json: async () => status === 200 ? { ok: true } : { code: 'preview_read_only', error: 'La vista previa no envía mensajes reales.' } };
     },
   });
+  context.loadOfficialUf = options => loadOfficialUf({ ...options, fetchImpl: context.fetch, now: () => new Clock() });
   vm.runInContext(script, context);
   await settle();
   const invoke = code => vm.runInContext(code, context);

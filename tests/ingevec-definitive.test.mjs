@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { assertPortfolioData, assertPortfolioIndex, assertDefinitiveFicheFallback, assertCatalogueConsultPrices,
+  assertCommercialBytes, restoreReviewedScope,
   PORTFOLIO_BASELINE, INGEVEC_REMOVED_SLUGS, INGEVEC_NEW_SLUGS } from './commercial-html.mjs';
 import { projects as contextualProjects } from '../lib/project-context.mjs';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
@@ -869,7 +870,7 @@ test('definitive portfolio preserves exactly 128 other developers and ten prior 
     }
   }
   assert.deepEqual(manifest.projects.slice(10).map(project => project.slug), slugs);
-  const restored = structuredClone(manifest);
+  const restored = restoreReviewedScope(manifest, priorManifest, 'data/brochures-ingevec.json');
   restored.projects = priorManifest.projects; delete restored.portfolioConsolidation;
   assert.deepEqual(restored, priorManifest, 'Existing rights and all top-level evidence remain exact');
 });
@@ -1018,10 +1019,13 @@ test('financial classification changes only through six retirements and two unkn
   assert.equal([...result.values()].filter(value => value.price).length, 110);
 });
 
-test('all 636 historical assets survive and VIMA corrects only the association to El Aromo', () => {
+test('all 636 historical assets survive outside the exact official UF UI change, and VIMA corrects only the association to El Aromo', () => {
   const paths = execFileSync('git', ['ls-tree', '-r', '--name-only', BASELINE, '--', 'assets'], { cwd: ROOT }).toString().trim().split('\n');
   assert.equal(paths.length, 636);
-  for (const path of paths) assert.deepEqual(current(path), old(path), path + ': historical physical resource');
+  for (const path of paths) {
+    if (['assets/js/hipotecario.mjs', 'assets/js/purchase-capacity-ui.mjs'].includes(path)) assertCommercialBytes(path, current(path), old(path));
+    else assert.deepEqual(current(path), old(path), path + ': historical physical resource');
+  }
   assert.deepEqual(current(WRONG_VIMA_IMAGE.slice(1)), old(WRONG_VIMA_IMAGE.slice(1)));
   assert.ok(html('el-aromo').includes(WRONG_VIMA_IMAGE));
   assert.ok(!html('vima').includes(WRONG_VIMA_IMAGE));

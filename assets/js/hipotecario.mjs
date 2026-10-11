@@ -2,6 +2,7 @@ import { calculateMortgage } from './mortgage-engine.mjs';
 import { validateDataset, getUfStatus, getOfferStatus, compareOffers, sortComparisons } from './mortgage-data.mjs';
 import { verifiedProjectPrice, verifiedProjectLocation } from './project-finance.mjs';
 import { consumeMortgageHandoff } from './mortgage-handoff.mjs';
+import { loadOfficialUf, UF_CLIENT_REFRESH_MS } from './official-uf.mjs';
 
 const $ = id => document.getElementById(id);
 const number = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 });
@@ -25,6 +26,7 @@ let simulatedAt = null;
 let startedAt = Date.now();
 let sending = false;
 let loading = false;
+let ufLoading = null, ufAttemptAt = 0;
 let project = null;
 let projectPrice = null;
 let propertyValueOrigin = 'visitor';
@@ -166,10 +168,12 @@ function renderDataStatus() {
 <a href="${esc(status.sourceUrl)}" target="_blank" rel="noopener">Fuente SII ↗</a>
 <span>Resultados orientativos</span>`
     : `<span>${esc(status.message)} Se mantiene la simulación en UF, sin conversión a pesos.</span>
-<a href="${esc(status.sourceUrl || 'https://www.sii.cl/valores_y_fechas/uf/uf2026.htm')}" target="_blank" rel="noopener">Consultar fuente ↗</a>`;
+<a href="${esc(status.sourceUrl || 'https://www.sii.cl/valores_y_fechas/uf/uf' + new Intl.DateTimeFormat('en', { timeZone: 'America/Santiago', year: 'numeric' }).format(new Date()) + '.htm')}" target="_blank" rel="noopener">Consultar fuente ↗</a>
+<button type="button" class="text-button" id="retry-data">Reintentar UF</button>`;
+  if (!status.usable) $('retry-data').addEventListener('click', () => refreshUf().then(update));
   $('uf-method').textContent = status.usable
     ? `UF de ${ufPeso.format(status.valueClp)} al ${date(status.date)}, verificada en SII. Multiplicamos el dividendo en UF por este valor. El resultado no proyecta la variación futura de la UF ni el costo del crédito en pesos.`
-    : `La última UF disponible tiene fecha ${date(status.date)}. No la usamos como UF actual ni proyectamos pagos futuros en pesos.`;
+    : 'No pudimos verificar la UF oficial de hoy. Puedes reintentar; las simulaciones continúan en UF y no convertimos a pesos con un valor antiguo ni proyectamos la UF futura.';
 }
 
 function renderInstitutions() {
@@ -367,6 +371,21 @@ function update({ clearSelection = false, showError = false } = {}) {
   if (!$('lead-section').hidden) renderLeadContext();
 }
 
+async function refreshUf() {
+  if (ufLoading) return ufLoading;
+  ufAttemptAt = Date.now();
+  ufLoading = (async () => {
+    const currentUf = await loadOfficialUf({ fallbackUf: dataset?.uf });
+    if (dataset) dataset = { ...dataset, uf: currentUf };
+  })();
+  try { await ufLoading; } finally { ufLoading = null; }
+}
+function refreshFinancialDate() {
+  update(); // Invalidates a previous day's CLP conversion immediately.
+  if (dataset && !loading && !ufLoading && (Date.now() - ufAttemptAt >= UF_CLIENT_REFRESH_MS
+    || (!getUfStatus(dataset.uf).usable && Date.now() - ufAttemptAt >= 60000))) refreshUf().then(update);
+}
+
 async function loadData() {
   if (loading) return;
   loading = true;
@@ -377,7 +396,7 @@ async function loadData() {
     const data = await response.json();
     const validation = validateDataset(data);
     if (!validation.valid) throw new Error('Invalid financial data');
-    dataset = data;
+    dataset = data; await refreshUf();
   } catch { dataset = null; selectedId = null; }
   finally { loading = false; renderInstitutions(); update(); }
 }
@@ -477,7 +496,7 @@ menuButton.addEventListener('click', () => { const open = menuButton.getAttribut
 $('mobile-menu').addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { closeMenu(); menuButton.focus(); } });
 window.addEventListener('resize', () => { if (innerWidth > 800) closeMenu(); });
-document.addEventListener('visibilitychange', () => { if (!document.hidden) update(); });
-setInterval(() => { if (!document.hidden && !sending) update(); }, 60000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden && !sending) refreshFinancialDate(); });
+setInterval(() => { if (!document.hidden && !sending) refreshFinancialDate(); }, 60000);
 loadProject();
 loadData();

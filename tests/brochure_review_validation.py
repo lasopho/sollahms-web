@@ -262,6 +262,42 @@ ENRICHED = {'abdon-cifuentes', 'don-ignacio', 'terrazzo', 'vima'}
 NEW_PROJECTS = {'los-alerces', 'valle-los-ingleses-iii'}
 FINAL_INGEVEC = INGEVEC | INGEVEC_ADDED | ENRICHED | NEW_PROJECTS
 
+# Exact launch exceptions reviewed in tests/commercial-html.mjs. Pin both
+# historical and current bytes; unrelated assets, APIs and references keep the
+# existing byte freeze. A new digest requires a separate source review.
+LAUNCH_CHANGES = {
+    'assets/js/hipotecario.mjs': ('23a3cd6ac6b5f7af33e747ba9afcc687f85b94b3fc77a2f0f055b8dcbac44e2a', 'b313f5dd6dbe2b27694d9751c0e19053ca3b671809914cab24854c82ded355d9'),
+    'assets/js/purchase-capacity-ui.mjs': ('9c88641dae8d6cf9ab5ea1223b02a5abc917f9370f7862dea33366b226f73657', 'bdec9e59215c9b2116122dbded8e7604e380654defb3ef69f9d364c38556f724'),
+    'api/contact.mjs': ('49de20c58d907203e424d17d2c933a7109c8c2d339d5bec4c67080c10992b73e', '6533c6f2e3cda476cd325d2074cc963394efdab16cc0839fb526da4aa1c399b2'),
+    'lib/booking-server.mjs': ('09bada2e8bbeba6116fbe4974b391488f3c94ec3eca0df8696b6a194bc45326c', '27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4'),
+    'vercel.json': ('657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', '23905805cfa4e455f9fcaf8a10a2fb1b9a705b3dd0a6dd8a6a9af8292b1c762b'),
+}
+REVIEWED_SCOPES = {
+    'data/brochures-aj-urbana.json': '8dc9872b11f578321d176dcd83b9c2da457a55f65104112c029582f20a688cc2',
+    'data/brochures-ingevec.json': 'a7ba43c7df9066c1be2fff1c04c8e05c24465b8528c2ed49d4ca1e23808aa6ca',
+}
+
+
+def restore_reviewed_scope(after, before, path):
+    scope = after['publicationRights']['contractScope']
+    # Match JSON.stringify's UTF-8 compact serialization used by the Node audit.
+    digest = hashlib.sha256(json.dumps(scope, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
+    assert digest == REVIEWED_SCOPES[path], f'{path}: contractScope exceeds exact reviewed evidence'
+    restored = json.loads(json.dumps(after))
+    restored['publicationRights']['contractScope'] = before['publicationRights']['contractScope']
+    assert restored['publicationRights'] == before['publicationRights'], f'{path}: unreviewed publication rights changed'
+    return restored
+
+
+def assert_launch_bytes(path, current, previous):
+    if path in LAUNCH_CHANGES:
+        before, after = LAUNCH_CHANGES[path]
+        assert hashlib.sha256(previous).hexdigest() == before, f'{path}: unrecognized protected baseline'
+        assert hashlib.sha256(current).hexdigest() == after, f'{path}: change exceeds exact UF/security review'
+    else:
+        assert current == previous, f'{path}: protected baseline bytes changed'
+
+
 
 def portfolio_previous(path):
     return subprocess.check_output(['git', 'show', f'{PORTFOLIO_BASELINE}:{path}'], cwd=ROOT)
@@ -305,24 +341,30 @@ def validate_portfolio_source():
                 assert item['updates']['precioDesdeUF'] is None
             else:
                 assert item['mapa'] and item['fichaDesarrollada'] and not item['matterport']
-    # All ten prior brochure records, commercial policy and scope remain exact.
+    # All ten prior records and commercial policy remain exact. Only the exact
+    # contractual scope verified for launch may replace the previous scope.
     manifest = json.loads((ROOT / 'data/brochures-ingevec.json').read_text())
     before_manifest = json.loads(portfolio_previous('data/brochures-ingevec.json'))
     assert len(manifest['projects']) == 16
     assert manifest['projects'][:10] == before_manifest['projects']
-    restored = dict(manifest, projects=before_manifest['projects'])
+    restored = restore_reviewed_scope(manifest, before_manifest, 'data/brochures-ingevec.json')
+    restored['projects'] = before_manifest['projects']
     restored.pop('portfolioConsolidation')
     assert restored == before_manifest
     assert {r['slug'] for r in manifest['projects']} == FINAL_INGEVEC
     for path in ['data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/fuentes-imagenes.json', 'data/catalogo-original-fichas.json', 'privacidad.html', 'templates/project-detail.html', 'vercel.json', 'robots.txt']:
-        assert (ROOT / path).read_bytes() == portfolio_previous(path), f'{path}: protected content changed'
+        current, previous = (ROOT / path).read_bytes(), portfolio_previous(path)
+        if path == 'data/brochures-aj-urbana.json':
+            assert restore_reviewed_scope(json.loads(current), json.loads(previous), path) == json.loads(previous), f'{path}: original assets/evidence changed'
+        else:
+            assert_launch_bytes(path, current, previous)
     assets = 0
     for directory in ['assets', 'api', 'lib']:
         tree = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', PORTFOLIO_BASELINE, '--', directory], cwd=ROOT).decode().splitlines()
         for path in tree:
             if path == 'lib/project-context.mjs':
                 continue
-            assert (ROOT / path).read_bytes() == portfolio_previous(path), f'{path}: existing resource/backend changed'
+            assert_launch_bytes(path, (ROOT / path).read_bytes(), portfolio_previous(path))
             assets += 1
     context = (ROOT / 'lib/project-context.mjs').read_text()
     actual_context = json.loads(re.search(r'Object\.freeze\((.*)\);', context, re.S)[1])
@@ -376,4 +418,5 @@ def validate_portfolio_source():
     return {'result':'passed','scope':'definitive portfolio authorization plus exact preservation of 128 other developers and existing commercial/financial resources',
             'portfolioConsolidationMode':True,'baselineCommit':PORTFOLIO_BASELINE,'projects':144,'ingevecProjects':16,'commercialEntries':17,'otherDevelopersUnchanged':128,'retiredRoutes':6,'newProjects':2,'enrichedExistingProjects':4,
             'commercialPagesChecked':144,'resourceImageElementsPreserved':images,'modelIdsPreserved':models,'mapInstancesPreserved':maps,'embeddedTourInstancesPreserved':tours,'protectedAssetAndBackendFiles':assets,
-            'commercialDataUnchanged':True,'contractScopeUnchanged':True,'financialLogicAndReferencesUnchanged':True,'seoHeadAndScriptsUnchanged':True}
+            'commercialDataUnchanged':True,'contractScopeUnchanged':False,'contractScopeExactlyReviewed':True,
+            'approvedUfAndSecurityChanges':sorted(LAUNCH_CHANGES),'mortgageMathAndBankReferencesUnchanged':True,'seoHeadAndScriptsUnchanged':True}

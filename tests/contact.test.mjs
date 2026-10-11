@@ -37,7 +37,7 @@ function fixtureDataset() {
 function harness({ mortgageDataset = fixtureDataset(), key = 'test-resend-key', provider = () => new Response(JSON.stringify({ id: 'accepted-test-email' }), { status: 200, headers: { 'Content-Type': 'application/json' } }) } = {}) {
   const sent = [];
   const handler = createContactHandler({
-    mortgageDataset, now: () => NOW, getApiKey: () => key, getEnvironment: () => 'test',
+    mortgageDataset, resolveUf: async () => mortgageDataset.uf, now: () => NOW, getApiKey: () => key, getEnvironment: () => 'test',
     fetchImpl: async (url, options) => { sent.push({ url, options, payload: JSON.parse(options.body) }); return provider(); },
   });
   return { handler, sent };
@@ -209,4 +209,24 @@ test('mortgage comments may be short while the legacy contact form retains its m
   assert.equal((await handler.fetch(request({ ...baseContact, mensaje: 'Hola' }))).status, 400);
   assert.equal(sent.length, 1);
   assert.ok(sent[0].payload.text.includes('Mensaje:\nHola'));
+});
+
+
+test('server recovers a stale UF from official resolver without trusting a client rate', async () => {
+  const stale = fixtureDataset(); stale.uf.date = '2026-10-08'; stale.uf.source.verifiedAt = '2026-10-08';
+  let resolved = 0, sent;
+  const handler = createContactHandler({ mortgageDataset: stale, now: () => NOW, getEnvironment: () => 'test', getApiKey: () => 'synthetic-key',
+    resolveUf: async () => { resolved++; return fixtureDataset().uf; },
+    fetchImpl: async (_, options) => { sent = JSON.parse(options.body); return Response.json({ id: 'simulated-only' }); } });
+  assert.equal((await handler.fetch(request(lead()))).status, 200); assert.equal(resolved, 1);
+  assert.ok(sent.text.includes('41.130,94')); assert.ok(sent.text.includes('(aprox. $'));
+});
+test('server UF failures or future responses retain UF-only calculations and never invent pesos', async () => {
+  const stale = fixtureDataset(); stale.uf.date = '2026-10-08'; stale.uf.source.verifiedAt = '2026-10-08';
+  for (const resolveUf of [async () => { throw new Error('Official outage'); }, async () => ({ ...fixtureDataset().uf, date: '2026-10-10' })]) {
+    let sent; const handler = createContactHandler({ mortgageDataset: stale, now: () => NOW, getEnvironment: () => 'test', getApiKey: () => 'synthetic-key', resolveUf,
+      fetchImpl: async (_, options) => { sent = JSON.parse(options.body); return Response.json({ id: 'simulated-only' }); } });
+    assert.equal((await handler.fetch(request(lead()))).status, 200);
+    assert.ok(sent.text.includes('Dividendo base mensual:')); assert.ok(!sent.text.includes('(aprox. $'));
+  }
 });
