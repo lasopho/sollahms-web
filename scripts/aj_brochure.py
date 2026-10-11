@@ -2,6 +2,7 @@
 import html
 import json
 import re
+import unicodedata
 from pathlib import Path
 from fiche_presentation import commercialize_fiche
 
@@ -56,7 +57,8 @@ def augment_record(page, record, namespace, builder):
     if record.get('hero'):
         # A better reviewed hero is isolated from the original public image.
         # Removing preview blocks reconstructs the public fallback exactly.
-        hero = f'<img class="hero-image aj-hero" src="{esc(record["hero"])}" alt="Fachada de {esc(record["name"])} — render ilustrativo del brochure" fetchpriority="high" decoding="async">'
+        hero_caption = record.get('heroCaption', f'Fachada de {record["name"]} — render ilustrativo del brochure')
+        hero = f'<img class="hero-image aj-hero" src="{esc(record["hero"])}" alt="{esc(hero_caption)}" fetchpriority="high" decoding="async">'
         original = re.search(r'<img class="hero-image"[^>]*>', page)
         if original:
             page = page[:original.start()] + public(original[0]) + preview(hero) + page[original.end():]
@@ -64,6 +66,8 @@ def augment_record(page, record, namespace, builder):
             page = page.replace('<div class="hero-shade">', preview(hero) + '<div class="hero-shade">', 1)
     images = '<div class="gallery-grid aj-gallery">'
     for image in record['images']:
+        if image.get('gallery') is False:
+            continue
         caption = f'{image["caption"]} · Brochure, pág. {image["sourcePage"]}'
         images += f'<figure><a href="{esc(image["localPath"])}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar: {esc(image["caption"])}"><img src="{esc(image["localPath"])}" alt="{esc(image["caption"])}" width="{image["width"]}" height="{image["height"]}" loading="lazy" decoding="async"></a><figcaption>{esc(caption)}</figcaption></figure>'
     images += '</div>'
@@ -73,7 +77,9 @@ def augment_record(page, record, namespace, builder):
         retained = old
         for image in record['images']:
             if image.get('replaces'):
-                retained = re.sub(r'<figure>(?:(?!</figure>).)*' + re.escape(esc(image['replaces'])) + r'(?:(?!</figure>).)*</figure>', '', retained, flags=re.S)
+                replaced_paths = image['replaces'] if isinstance(image['replaces'], list) else [image['replaces']]
+                for replaced_path in replaced_paths:
+                    retained = re.sub(r'<figure>(?:(?!</figure>).)*' + re.escape(esc(replaced_path)) + r'(?:(?!</figure>).)*</figure>', '', retained, flags=re.S)
         new = retained + '<div class="aj-gallery-heading"><h3>Imágenes del brochure</h3><p>Representaciones ilustrativas del proyecto. No acreditan su estado actual ni la disponibilidad de una unidad.</p></div>' + images
     else:
         heading = '<p class="eyebrow">Imágenes del proyecto</p><h2>Galería del proyecto</h2>'
@@ -81,15 +87,23 @@ def augment_record(page, record, namespace, builder):
     page = page[:gallery.start()] + gallery[1] + public(old) + preview(new) + gallery[3] + page[gallery.end():]
     groups = {}
     for model in record['models']:
-        groups.setdefault(model['tipologia'], []).append(model)
+        groups.setdefault((model.get('etapa'), model['tipologia']), []).append(model)
     model_class = 'detail-section aj-models' + (' ingevec-models' if namespace == 'INGEVEC' else '')
     content = f'<section id="modelos" class="{model_class}" aria-labelledby="modelos-title"><p class="eyebrow">Diseño y distribución</p><h2 id="modelos-title">Modelos y distribuciones</h2>'
     content += f'<p class="lead">{len(record["models"])} modelos documentados en el brochure de {esc(record["name"])}.</p><div class="aj-scope"><p>Información referencial del brochure, con superficies aproximadas. Estos modelos no acreditan disponibilidad actual. Los precios, el estado comercial y la entrega se consultan en la información vigente de la ficha.</p></div>'
-    for typology, models in groups.items():
+    active_stage = None
+    for (stage, typology), models in groups.items():
+        if stage != active_stage:
+            if active_stage:
+                content += '</div>'
+            if stage:
+                content += f'<div class="aj-stage" data-stage="{esc(stage)}"><h3>{esc(stage)}</h3><p>Distribuciones referenciales de esta etapa. Confirma su comercialización y la unidad disponible al consultar.</p>'
+            active_stage = stage
         content += f'<details class="aj-typology"><summary><span>{esc(typology)}</span><span class="aj-count">{len(models)} {"modelo" if len(models) == 1 else "modelos"}</span></summary><div class="aj-model-list">'
         for model in models:
             plan = model['plan']
             name = 'Modelo ' + model.get('label', model['modelo'])
+            accessible_name = name + (' · ' + stage if stage else '')
             orientation = model.get('orientacion') or 'Orientación no indicada'
             floor = ' · Pisos ' + str(model['pisos']) if model.get('pisos') else ''
             content += f'<details class="aj-model" id="modelo-{esc(model["modelo"].lower())}"><summary><span>{esc(name)}<small>{esc(orientation + floor)}</small></span><span class="aj-total">{area(model["superficie_total_m2"])}<small>Total según brochure</small></span></summary><div class="aj-model-content">'
@@ -105,15 +119,38 @@ def augment_record(page, record, namespace, builder):
             notes = model.get('notes', []) + [model[key] for key in ['advertencia', 'excepcion'] if model.get(key)]
             if notes:
                 content += '<div class="aj-model-note">' + ''.join(f'<p>{esc(note)}</p>' for note in dict.fromkeys(notes)) + '</div>'
-            content += f'<a class="aj-plan-link" href="{esc(plan["localPath"])}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar plano de {esc(name)}"><img src="{esc(plan["localPath"])}" alt="Plano referencial de {esc(name)}, {esc(typology)}, {esc(record["name"])} — página {model["pagina_brochure"]}" width="{plan["width"]}" height="{plan["height"]}" loading="lazy" decoding="async"></a><div class="aj-plan-caption"><span>Brochure · pág. {model["pagina_brochure"]}</span><a href="{esc(plan["localPath"])}" target="_blank" rel="noopener noreferrer">Ampliar plano ↗</a></div></div></details>'
+            content += f'<a class="aj-plan-link" href="{esc(plan["localPath"])}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar plano de {esc(accessible_name)}"><img src="{esc(plan["localPath"])}" alt="Plano referencial de {esc(accessible_name)}, {esc(typology)}, {esc(record["name"])} — página {model["pagina_brochure"]}" width="{plan["width"]}" height="{plan["height"]}" loading="lazy" decoding="async"></a><div class="aj-plan-caption"><span>Brochure · pág. {model["pagina_brochure"]}</span><a href="{esc(plan["localPath"])}" target="_blank" rel="noopener noreferrer">Ampliar plano ↗</a></div></div></details>'
         content += '</div></details>'
+    if active_stage:
+        content += '</div>'
     content += '</section>'
     page = page.replace('<section id="equipamiento"', preview(content) + '<section id="equipamiento"', 1)
     equipment = re.search(r'(<section id="equipamiento"[^>]*>)(.*?)(</section>)', page, re.S)
     old = equipment[2]
     heading = old.split('</h2>')[0] + '</h2>'
     new = old if 'amenity-list' in old else heading
-    new += '<div class="aj-equipment"><h3>Equipamiento documentado en el brochure</h3><p>Características del documento de referencia, sujetas a confirmación para la unidad y etapa que consultes.</p>' + documentary_list(record['amenities'])
+    amenities = record['amenities']
+    if record.get('mergeEquipment'):
+        # Combine the seven newly enriched fichas with their verified existing
+        # amenities. The public fallback remains byte identical.
+        aliases = {'quincho': 'quinchos', 'sala cowork': 'cowork', 'sala co work': 'cowork',
+                   'sala gourmet': 'gourmet', 'salon gourmet': 'gourmet',
+                   'salon multiuso': 'multiuso', 'sala multiuso': 'multiuso'}
+        def key(label):
+            normalized = ''.join(c for c in unicodedata.normalize('NFD', label.lower()) if not unicodedata.combining(c))
+            normalized = ' '.join(normalized.split())
+            return aliases.get(normalized, normalized)
+        amenities = list(amenities)
+        seen = {key(item['label']) for item in amenities}
+        old_list = re.search(r'<ul class="amenity-list"[^>]*>(.*?)</ul>', old, re.S)
+        if old_list:
+            for item in re.findall(r'<li>(.*?)</li>', old_list[1], re.S):
+                label = html.unescape(re.sub(r'<[^>]+>', '', item)).strip()
+                if key(label) not in seen:
+                    amenities.append({'label': label, 'pages': []})
+                    seen.add(key(label))
+            new = old[:old_list.start()] + old[old_list.end():]
+    new += '<div class="aj-equipment"><h3>Equipamiento documentado en el brochure</h3><p>Características del documento de referencia, sujetas a confirmación para la unidad y etapa que consultes.</p>' + documentary_list(amenities)
     new += '<h3>Terminaciones y características</h3>' + documentary_list(record['finishes'] + record['features']) + '</div>'
     page = page[:equipment.start()] + equipment[1] + public(old) + preview(new) + equipment[3] + page[equipment.end():]
     # Documentary provenance stays in the immutable manifests. The shared

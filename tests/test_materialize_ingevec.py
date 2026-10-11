@@ -31,8 +31,10 @@ class MaterializerSafetyTests(unittest.TestCase):
     def test_current_inventory_is_exact_and_validation_does_not_mutate_manifest(self):
         before = deepcopy(self.manifest)
         assets = MODULE.validate_manifest(self.manifest)
-        self.assertEqual(len(assets), 36)
-        self.assertEqual(sum(len(r['models']) for r in self.manifest['projects']), 14)
+        self.assertEqual(len(assets), sum(len(r['images']) + len(r['models']) for r in self.manifest['projects']))
+        self.assertEqual(sum(len(r['models']) for r in self.manifest['projects']), 41)
+        historic = [r for r in self.manifest['projects'] if r['slug'] in MODULE.OLD_SLUGS]
+        self.assertEqual(sum(len(r['images']) + len(r['models']) for r in historic), 36)
         self.assertEqual(self.manifest, before)
 
     def test_missing_duplicate_or_candidate_projects_are_rejected(self):
@@ -92,7 +94,7 @@ class MaterializerSafetyTests(unittest.TestCase):
         assets = MODULE.validate_manifest(self.manifest)
         for kind in ['extra-file', 'nested-directory', 'symlink']:
             with self.subTest(kind=kind), tempfile.TemporaryDirectory() as temporary:
-                root = Path(temporary)
+                root = Path(temporary).resolve()
                 folder = root / MODULE.PREFIX.lstrip('/') / 'centenario-1'
                 folder.mkdir(parents=True)
                 with patch.object(MODULE, 'ROOT', root):
@@ -110,7 +112,7 @@ class MaterializerSafetyTests(unittest.TestCase):
 
     def test_encoder_drift_rejects_output_and_preserves_manifest_and_existing_assets(self):
         with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary)
+            root = Path(temporary).resolve()
             (root / 'data').mkdir()
             inputs = root / 'inputs'
             inputs.mkdir()
@@ -157,6 +159,76 @@ class MaterializerSafetyTests(unittest.TestCase):
             approved['sha256'] = sha256(path.read_bytes()).hexdigest()
             with self.assertRaisesRegex(MODULE.MaterializationError, 'metadata'):
                 MODULE.verify_generated(path, approved)
+
+    def test_new_pdf_evidence_and_exact_twenty_seven_plan_selection_cannot_be_replaced(self):
+        added = [record for record in self.manifest['projects'] if record['slug'] in MODULE.NEW_SLUGS]
+        self.assertEqual(len(added), 7)
+        self.assertEqual(sum(len(record['models']) for record in added), 27)
+        for kind in ['unknown-pdf', 'missing-model-source', 'wrong-plan-source', 'duplicate-page', 'missing-page', 'unknown-orientation', 'unknown-floor']:
+            with self.subTest(kind=kind):
+                self.manifest = deepcopy(APPROVED)
+                record = next(record for record in self.manifest['projects'] if record['slug'] == 'coronel-godoy')
+                if kind == 'unknown-pdf':
+                    record['document']['sha256'] = '0' * 64
+                elif kind == 'missing-model-source':
+                    record['models'][0].pop('sourceSha256')
+                elif kind == 'wrong-plan-source':
+                    record['models'][0]['plan']['sourceSha256'] = '0' * 64
+                elif kind == 'duplicate-page':
+                    record['models'][1]['pagina_brochure'] = record['models'][0]['pagina_brochure']
+                elif kind == 'unknown-orientation':
+                    record['models'][0]['orientacion'] = 'Norte'
+                elif kind == 'unknown-floor':
+                    record['models'][0]['pisos'] = '5'
+                else:
+                    record['models'].pop()
+                with self.assertRaises(MODULE.MaterializationError):
+                    MODULE.validate_manifest(self.manifest)
+
+    def test_vicuna_two_stages_remain_distinct_even_for_visually_identical_plans(self):
+        record = next(record for record in self.manifest['projects'] if record['slug'] == 'vicuna-mackenna-7589')
+        self.assertEqual(len(record['documents']), 2)
+        self.assertEqual(len(record['models']), 6)
+        self.assertEqual({model['etapa'] for model in record['models']}, {'Etapa 1', 'Etapa 2'})
+        self.assertEqual(len({(model['sourceSha256'], model['pagina_brochure']) for model in record['models']}), 6)
+        self.assertEqual(len({model['plan']['localPath'] for model in record['models']}), 6)
+        for kind in ['missing-stage-document', 'duplicate-document', 'wrong-model-stage', 'wrong-plan-stage', 'wrong-model-stage-identifier']:
+            with self.subTest(kind=kind):
+                self.manifest = deepcopy(APPROVED)
+                record = next(record for record in self.manifest['projects'] if record['slug'] == 'vicuna-mackenna-7589')
+                if kind == 'missing-stage-document':
+                    record['documents'].pop()
+                elif kind == 'duplicate-document':
+                    record['documents'][1] = deepcopy(record['documents'][0])
+                elif kind == 'wrong-model-stage':
+                    record['models'][0]['etapa'] = 'Etapa 2'
+                elif kind == 'wrong-plan-stage':
+                    record['models'][0]['plan']['etapa'] = 'Etapa 2'
+                else:
+                    record['models'][0]['modelo'] = 'e2-source-mismatch'
+                    record['models'][0]['plan']['localPath'] = MODULE.PREFIX + 'vicuna-mackenna-7589/plano-e2-source-mismatch.webp'
+                with self.assertRaises(MODULE.MaterializationError):
+                    MODULE.validate_manifest(self.manifest)
+
+    def test_source_symlink_is_rejected_before_reading_or_rendering_the_pdf(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve()
+            (root / 'data').mkdir()
+            manifest = root / 'data/brochures-ingevec.json'
+            manifest.write_text(json.dumps(self.manifest))
+            inputs = root / 'inputs'
+            inputs.mkdir()
+            target = root / 'synthetic-source.pdf'
+            target.write_bytes(b'synthetic source that must not be read as a linked input')
+            source = inputs / self.manifest['projects'][0]['document']['fileName']
+            source.symlink_to(target)
+            with patch.object(MODULE, 'ROOT', root), patch.object(MODULE, 'PdfReader') as read, \
+                    patch.object(MODULE.subprocess, 'run') as render:
+                with self.assertRaisesRegex(MODULE.MaterializationError, 'regular PDF'):
+                    MODULE.materialize(inputs, '/synthetic/pdftoppm')
+                read.assert_not_called()
+                render.assert_not_called()
+            self.assertFalse((root / MODULE.PREFIX.lstrip('/')).exists())
 
 
 if __name__ == '__main__':

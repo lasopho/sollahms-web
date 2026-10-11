@@ -11,7 +11,9 @@ import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import booking from '../api/booking-create.mjs';
-import { assertCommercialBytes, commercialPage } from './commercial-html.mjs';
+import { assertCommercialBytes, commercialPage, INGEVEC_ADDED_SLUGS,
+  assertAddedFicheFallback, assertIngevecManifestAddition } from './commercial-html.mjs';
+import { brochureSourceDocuments } from '../scripts/brochure-publication.mjs';
 
 // Supplied brochures enrich only these protected Preview pages and covers.
 // They never replace the live source, catalogue, financial or contact data.
@@ -25,6 +27,8 @@ const FOCUS = new Set(SLUGS);
 const AJ_SLUGS = ['downtown-san-martin', 'edificio-teatinos-750',
   'edificio-vista-amunategui', 'monjitas-690', 'vista-morande'];
 const REVIEW_PAGES = new Set([...SLUGS, ...AJ_SLUGS]);
+const ALL_INGEVEC_SLUGS = [...SLUGS, ...INGEVEC_ADDED_SLUGS];
+const COVER_PAGES = new Set([...REVIEW_PAGES, ...INGEVEC_ADDED_SLUGS]);
 const ASSETS = '/assets/propiedades/ingevec-preview/';
 const AJ_ASSETS = '/assets/propiedades/aj-urbana-preview/';
 const CSS = 'assets/css/aj-brochure-preview.css';
@@ -189,6 +193,7 @@ test('148 source objects and historical financial/research ledgers remain exact;
     unchanged(project.slug + '.html'); protectedPages++;
   }
   assert.equal(protectedPages, 140);
+  assertIngevecManifestAddition(current(MANIFEST), old(MANIFEST, 'b64911588e2fdf52f32d5f772b53735936fbd423'));
   for (const { file } of tree(BASELINE)) {
     if (/^[^/]+\.html$/.test(file) && !REVIEW_PAGES.has(file.slice(0, -5))) unchanged(file);
   }
@@ -235,10 +240,10 @@ test('three supplied sources and fourteen unique models retain document/page evi
   assert.equal(review.publicationRights.individualAssetLicense, 'not_required_when_contract_covered');
   assert.equal(review.publicationRights.contractScope.status, 'pending_contract_scope_verification');
   assert.equal(review.publicationRights.productionPolicy, 'requires_verified_contract_scope');
-  assert.deepEqual(review.projects.map(record => record.slug), SLUGS);
-  assert.equal(review.projects.reduce((count, record) => count + record.models.length, 0), 14);
+  assert.deepEqual(review.projects.filter(record => FOCUS.has(record.slug)).map(record => record.slug), SLUGS);
+  assert.equal(review.projects.filter(record => FOCUS.has(record.slug)).reduce((count, record) => count + record.models.length, 0), 14);
   const ids = new Set();
-  for (const record of review.projects) {
+  for (const record of review.projects.filter(record => FOCUS.has(record.slug))) {
     const source = SOURCE_DOCUMENTS[record.slug];
     assert.equal(record.name, projectFor(record.slug).nombre);
     assert.equal(record.document.sha256, source.sha256);
@@ -277,10 +282,10 @@ test('three supplied sources and fourteen unique models retain document/page evi
   assert.equal(ids.size, 14);
 });
 
-test('selected original images/plans are project scoped, source hashed and exhaust the new asset directory', () => {
+test('the previous 36 images/plans retain project identity and hashes within the explicitly enlarged 106-resource directory', () => {
   const referenced = new Set();
   const imageHashes = new Set();
-  for (const record of review.projects) {
+  for (const record of review.projects.filter(record => FOCUS.has(record.slug))) {
     const blocks = previewBlocks(htmlFor(record.slug));
     const images = attributes(blocks, 'img');
     assert.ok(record.images.length >= 1, record.slug + ': selected gallery');
@@ -314,8 +319,13 @@ test('selected original images/plans are project scoped, source hashed and exhau
       assert.ok(blocks.includes(original) || record.images.some(image => image.replaces === original), original + ': omitted image needs a documented resolution upgrade');
     }
   }
-  assert.deepEqual(listFiles(ASSETS.slice(1)), [...referenced].sort(), 'Only selected images and fourteen verified plans belong in the Preview asset directory');
-  assert.deepEqual(readdirSync(resolve(ROOT, ASSETS.slice(1))).sort(), [...SLUGS].sort(), 'Candidate identities must stay outside repository and deployment media');
+  assert.deepEqual(listFiles(ASSETS.slice(1)).filter(path => SLUGS.some(slug => path.startsWith(ASSETS.slice(1) + slug + '/'))),
+    [...referenced].sort(), 'The original three image galleries and fourteen plans remain exact');
+  const allPaths = review.projects.flatMap(record => [...record.images, ...record.models.map(model => model.plan)])
+    .map(asset => asset.localPath.slice(1)).sort();
+  assert.equal(allPaths.length, 106);
+  assert.deepEqual(listFiles(ASSETS.slice(1)), allPaths, 'Only the 106 explicitly selected Ingevec media may be present');
+  assert.deepEqual(readdirSync(resolve(ROOT, ASSETS.slice(1))).sort(), ALL_INGEVEC_SLUGS.sort(), 'Candidate identities must stay outside repository and deployment media');
 });
 
 test('fourteen independently reviewed printed areas remain exact, editorial identifiers do not invent missing floors/orientations, and Tocornal contradictions stay visible', () => {
@@ -427,13 +437,13 @@ function verifySyntheticContract(fixture) {
     Object.assign(manifest.publicationRights.contractScope, {
       status: 'verified_contract', evidenceSha256: 'a'.repeat(64), verifiedOn: DATE,
       permittedOrigins: ['https://sollahms.cl'], permittedUses: ['web_promotion'],
-      coveredDocuments: manifest.projects.map(record => record.document.sha256),
+      coveredDocuments: brochureSourceDocuments(manifest),
     });
     writeFileSync(path, JSON.stringify(manifest));
   }
 }
 
-test('a verified contract yields identical 148 fichas, covers and 140 media in Preview and an offline public web build', () => {
+test('a verified contract yields identical 148 fichas, covers and 210 media in Preview and an offline public web build', () => {
   const fixture = createPackagingFixture();
   try {
     assert.throws(() => packageFixture(fixture, 'preview', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' }), /requires verified/);
@@ -444,7 +454,7 @@ test('a verified contract yields identical 148 fichas, covers and 140 media in P
         .replace('<meta name="robots" content="noindex, nofollow">\n', '')]));
     const previewCatalogue = readFileSync(join(fixture, 'dist/data/proyectos.json'));
     const previewInventory = readFileSync(join(fixture, '.vercel/brochure-build-inventory.json'));
-    assert.equal(JSON.parse(previewInventory).media.length, 140);
+    assert.equal(JSON.parse(previewInventory).media.length, 210);
     assert.equal(JSON.parse(previewInventory).contractualCoverageVerified, true);
     // This is a local fixture build, never a deployment or Production action.
     packageFixture(fixture, 'production', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' });
@@ -490,7 +500,7 @@ test('contract-covered output copies only selected derivatives and rejects symbo
   } finally { rmSync(fixture, { recursive: true, force: true }); }
 });
 
-test('real Preview packaging changes only eight authorized card covers, publishes fourteen Ingevec models, and hides all private manifests/documents', () => {
+test('real Preview packaging changes only fifteen authorized card covers, publishes 41 Ingevec models, and hides all private manifests/documents', () => {
   const fixture = createPackagingFixture();
   try {
     packageFixture(fixture, 'preview');
@@ -500,7 +510,7 @@ test('real Preview packaging changes only eight authorized card covers, publishe
     let changed = 0;
     for (let index = 0; index < catalogue.length; index++) {
       const before = catalogue[index], after = published[index];
-      if (!REVIEW_PAGES.has(before.slug)) { assert.deepEqual(after, before); continue; }
+      if (!COVER_PAGES.has(before.slug)) { assert.deepEqual(after, before); continue; }
       const record = records.get(before.slug) ?? ajReview.projects.find(record => record.slug === before.slug);
       assert.equal(after.imagenPrincipal, record.catalogueCover.localPath);
       assert.equal(after.imagenAlt, record.catalogueCover.alt);
@@ -509,8 +519,8 @@ test('real Preview packaging changes only eight authorized card covers, publishe
         before.slug + ': cover selection must not change financial, commercial, source or navigation data');
       assert.notEqual(after.imagenPrincipal, before.imagenPrincipal); changed++;
     }
-    assert.equal(changed, 8);
-    for (const slug of SLUGS) {
+    assert.equal(changed, 15);
+    for (const slug of ALL_INGEVEC_SLUGS) {
       const html = readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8');
       const expected = htmlFor(slug).replace(/<!--INGEVEC_PUBLIC_START-->[\s\S]*?<!--INGEVEC_PUBLIC_END-->/g, '')
         .replace(/<!--INGEVEC_PREVIEW_(?:START|END)-->/g, '').replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
@@ -521,7 +531,7 @@ test('real Preview packaging changes only eight authorized card covers, publishe
     }
     for (const manifest of [MANIFEST, 'data/brochures-aj-urbana.json']) assert.equal(existsSync(join(fixture, 'dist', manifest)), false);
     assert.deepEqual(readdirSync(join(fixture, 'dist/data')).sort(), ['hipotecario.json', 'proyectos.json']);
-    assert.deepEqual(readdirSync(join(fixture, 'dist', ASSETS.slice(1))).sort(), [...SLUGS].sort());
+    assert.deepEqual(readdirSync(join(fixture, 'dist', ASSETS.slice(1))).sort(), ALL_INGEVEC_SLUGS.sort());
     assert.ok(listFiles(ASSETS.slice(1)).every(path => !path.endsWith('.pdf')));
     assert.equal(readFileSync(join(fixture, 'dist/robots.txt'), 'utf8'), 'User-agent: *\nDisallow: /\n');
   } finally { rmSync(fixture, { recursive: true, force: true }); }
@@ -537,6 +547,8 @@ test('Production and unspecified environment exclude both brochure folders/CSS a
       packageFixture(fixture, environment);
       assert.ok(readFileSync(join(fixture, 'dist/data/proyectos.json')).equals(old('data/proyectos.json')));
       for (const slug of SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), commercialPage(old(slug + '.html'), slug), slug);
+      for (const slug of INGEVEC_ADDED_SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'),
+        assertAddedFicheFallback(htmlFor(slug), slug), slug + ': new brochures must preserve the exact approved public fallback');
       for (const slug of AJ_SLUGS) {
         const original = old(slug + '.html').toString().replace(/<!--AJ_PREVIEW_START-->[\s\S]*?<!--AJ_PREVIEW_END-->/g, '')
           .replace(/<!--AJ_PUBLIC_START-->([\s\S]*?)<!--AJ_PUBLIC_END-->/g, '$1');
@@ -610,10 +622,26 @@ test('real packager checks non-cover galleries/plans and privacy flags, and reje
   } finally { rmSync(fixture, { recursive: true, force: true }); }
 });
 
+test('new source bindings and Vicuña stage identifiers cannot be reassigned through the packaging manifest', () => {
+  const fixture = createPackagingFixture();
+  try {
+    for (const kind of ['source-document', 'plan-stage', 'stage-identifier']) {
+      const mutation = structuredClone(review);
+      const record = mutation.projects.find(record => record.slug === 'vicuna-mackenna-7589');
+      if (kind === 'source-document') record.documents.pop();
+      else if (kind === 'plan-stage') record.models[0].plan.etapa = 'Etapa 2';
+      else record.models[0].modelo = 'e2-mismatched-source';
+      writeFileSync(join(fixture, MANIFEST), JSON.stringify(mutation));
+      assert.throws(() => packageFixture(fixture, 'preview'), /source document|model source or stage/i, kind);
+      assert.equal(existsSync(join(fixture, 'dist')), false, 'A source/stage mismatch cannot produce public output');
+    }
+  } finally { rmSync(fixture, { recursive: true, force: true }); }
+});
+
 
 test('new supplied brochure plaintext remains ignored and absent from the public Git index', () => {
   const files = listFiles(ASSETS.slice(1));
-  assert.equal(files.length, 36);
+  assert.equal(files.length, 106);
   assert.equal(git('ls-files', '--', ASSETS.slice(1)).toString().trim(), '',
     'New supplied images must not enter the public repository as plaintext');
   const ignored = git('check-ignore', '--', ...files).toString().trim().split('\n').sort();
@@ -621,7 +649,7 @@ test('new supplied brochure plaintext remains ignored and absent from the public
   assert.match(current('.gitignore').toString(), /^\/assets\/propiedades\/ingevec-preview\/$/m);
 });
 
-test('Git Preview without all 36 private Ingevec assets preserves the three exact public fichas and all five AJ reviews', () => {
+test('Git Preview without all 106 private Ingevec assets preserves ten exact public fallbacks and all five AJ reviews', () => {
   const fixture = createPackagingFixture();
   try {
     rmSync(join(fixture, ASSETS.slice(1)), { recursive: true, force: true });
@@ -646,6 +674,11 @@ test('Git Preview without all 36 private Ingevec assets preserves the three exac
       const expected = commercialPage(old(slug + '.html'), slug).replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
       assert.equal(html, expected, slug + ': old images, maps, tours, navigation and forms must remain exact');
       assert.doesNotMatch(html, /ingevec-preview|Modelos y distribuciones|INGEVEC_(?:PUBLIC|PREVIEW)/);
+    }
+    for (const slug of INGEVEC_ADDED_SLUGS) {
+      const expected = assertAddedFicheFallback(htmlFor(slug), slug)
+        .replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
+      assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), expected, slug);
     }
     for (const slug of AJ_SLUGS) {
       const html = readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8');

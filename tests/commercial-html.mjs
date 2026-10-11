@@ -10,6 +10,36 @@ const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')))
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
 assert.equal(ficheFiles.size, 148);
 const transformed = new Map();
+export const INGEVEC_ADDED_BASELINE = 'b64911588e2fdf52f32d5f772b53735936fbd423';
+export const INGEVEC_ADDED_SLUGS = new Set(['coronel-godoy', 'diagonal-paraguay',
+  'el-aromo', 'los-lilenes', 'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589']);
+const additionBaseline = new Map();
+export function addedPublicFallback(html) {
+  return html.replace(/<!--INGEVEC_PREVIEW_START-->[\s\S]*?<!--INGEVEC_PREVIEW_END-->/g, '')
+    .replace(/<!--INGEVEC_PUBLIC_START-->([\s\S]*?)<!--INGEVEC_PUBLIC_END-->/g, '$1');
+}
+export function assertAddedFicheFallback(html, slug) {
+  assert.ok(INGEVEC_ADDED_SLUGS.has(slug), 'Only the seven explicitly authorized brochure fichas are eligible');
+  if (!additionBaseline.has(slug)) additionBaseline.set(slug,
+    execFileSync('git', ['show', `${INGEVEC_ADDED_BASELINE}:${slug}.html`], { cwd: ROOT, encoding: 'utf8' }));
+  assert.ok(html.includes('<!--INGEVEC_PREVIEW_START-->') && html.includes('<!--INGEVEC_PUBLIC_START-->'),
+    slug + ': reviewed media must retain their public fallback guards');
+  const fallback = addedPublicFallback(html);
+  assert.equal(fallback, additionBaseline.get(slug), slug + ': content outside the new brochure blocks changed');
+  return fallback;
+}
+export function assertIngevecManifestAddition(actual, baseline) {
+  const before = JSON.parse(baseline), after = JSON.parse(actual);
+  assert.equal(before.projects.length, 3);
+  assert.equal(after.projects.length, 10);
+  assert.deepEqual(after.projects.slice(0, 3), before.projects, 'The previous three Ingevec records must remain exact');
+  assert.deepEqual(after.projects.slice(3).map(record => record.slug).sort(), [...INGEVEC_ADDED_SLUGS].sort(),
+    'Only seven authorized existing projects may enter the brochure manifest');
+  const restored = structuredClone(after);
+  restored.projects = before.projects;
+  delete restored.batchAddition;
+  assert.deepEqual(restored, before, 'All original rights, date, baseline and top-level evidence remain exact');
+}
 
 // The single approved addition to the privacy policy is fixed here, rather
 // than accepting arbitrary new sections or changes to existing paragraphs.
@@ -39,7 +69,9 @@ export function commercialPage(bytes, slug) {
 
 export function assertCommercialBytes(file, actual, baseline) {
   if (ficheFiles.has(file)) {
-    assert.equal(actual.toString(), commercialPage(baseline, file.slice(0, -5)),
+    const slug = file.slice(0, -5);
+    const html = INGEVEC_ADDED_SLUGS.has(slug) ? assertAddedFicheFallback(actual.toString(), slug) : actual.toString();
+    assert.equal(html, commercialPage(baseline, slug),
       file + ': changes exceed the approved commercial presentation');
   } else if (file === 'privacidad.html') {
     const html = actual.toString();

@@ -5,6 +5,8 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { INGEVEC_ADDED_BASELINE, INGEVEC_ADDED_SLUGS, assertAddedFicheFallback,
+  assertIngevecManifestAddition } from './commercial-html.mjs';
 
 // This reviewed commit contains all eight brochure integrations, their actual
 // scope status and the 148-page financial integration. The request changes
@@ -47,11 +49,17 @@ test('commercial presentation preserves all 148 ordered identities and private s
   assert.equal(new Set(projects.map((item) => item.slug)).size, 148);
   assert.deepEqual(current('data/proyectos.json'), old('data/proyectos.json'));
   for (const path of git('ls-tree', '-r', '--name-only', BASELINE, '--', 'data').toString().trim().split('\n')) {
-    assert.deepEqual(current(path), old(path), path);
+    if (path === 'data/brochures-ingevec.json') assertIngevecManifestAddition(current(path), old(path));
+    else assert.deepEqual(current(path), old(path), path);
   }
   for (const path of ['docs/registro-fichas-proyectos.md', 'docs/verificacion-fichas.md',
     'docs/catalogo-22-validacion-2026-10-01.md', 'docs/brochures-yapo-iris-publicacion.md']) {
     assert.deepEqual(current(path), old(path), path);
+  }
+  for (const { slug, after } of snapshots) {
+    if (INGEVEC_ADDED_SLUGS.has(slug)) assertAddedFicheFallback(after, slug);
+    else assert.equal(after, git('show', `${INGEVEC_ADDED_BASELINE}:${slug}.html`).toString(),
+      slug + ': one of the 141 unrelated fichas changed');
   }
 });
 
@@ -70,10 +78,11 @@ test('all 148 visitor-facing fichas omit research sections, contract provenance 
   }
 });
 
-test('every fiche retains exact SEO, scripts, image resources, enlarged plans, embeds and numerical specifications', () => {
+test('every fiche retains its original SEO, scripts, images, plans, embeds and numeric specifications outside the seven guarded brochure additions', () => {
   let images = 0;
   let models = 0;
-  for (const { slug, before, after } of snapshots) {
+  for (const { slug, before, after: complete } of snapshots) {
+    const after = INGEVEC_ADDED_SLUGS.has(slug) ? assertAddedFicheFallback(complete, slug) : complete;
     assert.equal(head(after), head(before), `${slug}: SEO changed`);
     assert.deepEqual([...after.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map((match) => match[0]),
       [...before.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map((match) => match[0]), `${slug}: scripts/host configuration changed`);
@@ -119,7 +128,7 @@ test('all styles, financial references, catalogue controls, backend and form/act
   }
 });
 
-test('all 140 supplied media derivatives retain approved identity, hashes and contractual scope status', () => {
+test('all 210 supplied media derivatives retain approved identity, hashes and contractual scope status', () => {
   let checked = 0;
   for (const manifestPath of ['data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
     const manifest = JSON.parse(current(manifestPath));
@@ -135,7 +144,7 @@ test('all 140 supplied media derivatives retain approved identity, hashes and co
       }
     }
   }
-  assert.equal(checked, 140);
+  assert.equal(checked, 210);
 });
 
 test('direct commercial cautions survive alongside current prices, referential plans and ambiguous alternatives', () => {

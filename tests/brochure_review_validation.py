@@ -24,6 +24,9 @@ MOBILE_RULE = ('@media(max-width:600px){.ingevec-models .aj-metrics'
 # The commercial presentation request has its own fixed, already reviewed
 # baseline. Historical brochure exceptions above stay available separately.
 COMMERCIAL_BASELINE = '7a2732ae333b6a4d119cc2b651583daacbab8755'
+INGEVEC_ADDED_BASELINE = 'b64911588e2fdf52f32d5f772b53735936fbd423'
+INGEVEC_ADDED = {'coronel-godoy', 'diagonal-paraguay', 'el-aromo', 'los-lilenes',
+                 'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589'}
 ROOT = Path(__file__).resolve().parents[1]
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link',
         'meta', 'param', 'source', 'track', 'wbr'}
@@ -102,9 +105,17 @@ def assert_commercial_presentation(current, previous, slug):
     sys.path.insert(0, str(ROOT / 'scripts'))
     from fiche_presentation import commercialize_fiche
     expected = commercialize_fiche(previous, slug=slug)
-    assert current == expected, f'{slug}: change beyond commercial presentation'
+    protected_current = current
+    if slug in INGEVEC_ADDED:
+        assert '<!--INGEVEC_PREVIEW_START-->' in current and '<!--INGEVEC_PUBLIC_START-->' in current, \
+            f'{slug}: reviewed additions must retain public fallback guards'
+        protected_current = re.sub(r'<!--INGEVEC_PREVIEW_START-->.*?<!--INGEVEC_PREVIEW_END-->', '', current, flags=re.S)
+        protected_current = re.sub(r'<!--INGEVEC_PUBLIC_START-->(.*?)<!--INGEVEC_PUBLIC_END-->', r'\1', protected_current, flags=re.S)
+        baseline = subprocess.check_output(['git', 'show', f'{INGEVEC_ADDED_BASELINE}:{slug}.html'], cwd=ROOT).decode()
+        assert protected_current == baseline, f'{slug}: content outside the new brochure blocks changed'
+    assert protected_current == expected, f'{slug}: change beyond commercial presentation'
     assert commercialize_fiche(current, slug=slug) == current, f'{slug}: presentation is not idempotent'
-    assert presentation_resource_signature(current) == presentation_resource_signature(previous), \
+    assert presentation_resource_signature(protected_current) == presentation_resource_signature(previous), \
         f'{slug}: resource, security, form or SEO configuration changed'
     page = CommercialPage(current)
     visible = ' '.join(page.visible)
@@ -118,6 +129,16 @@ def assert_commercial_presentation(current, previous, slug):
     return current, previous
 
 
+def assert_ingevec_manifest_addition(current, previous):
+    before, after = json.loads(previous), json.loads(current)
+    assert len(before['projects']) == 3 and len(after['projects']) == 10
+    assert after['projects'][:3] == before['projects'], 'The previous three Ingevec records changed'
+    assert {record['slug'] for record in after['projects'][3:]} == INGEVEC_ADDED, 'Unapproved brochure project addition'
+    restored = dict(after, projects=before['projects'])
+    restored.pop('batchAddition', None)
+    assert restored == before, 'Original rights, date, baseline or top-level evidence changed'
+
+
 def validate_commercial_source():
     """Successor audit scoped to display-only edits from the approved baseline."""
     def git(*args):
@@ -127,7 +148,10 @@ def validate_commercial_source():
         return git('show', f'{COMMERCIAL_BASELINE}:{path}')
 
     def same(path):
-        assert (ROOT / path).read_bytes() == old(path), f'{path}: protected bytes changed'
+        if path == 'data/brochures-ingevec.json':
+            assert_ingevec_manifest_addition((ROOT / path).read_bytes(), old(path))
+        else:
+            assert (ROOT / path).read_bytes() == old(path), f'{path}: protected bytes changed'
 
     projects = json.loads((ROOT / 'data/proyectos.json').read_bytes())
     assert len(projects) == len({p['slug'] for p in projects}) == 148, 'Expected exactly 148 projects'
@@ -164,6 +188,9 @@ def validate_commercial_source():
         slug = project['slug']
         current = (ROOT / (slug + '.html')).read_text()
         previous = old(slug + '.html').decode()
+        if slug not in INGEVEC_ADDED:
+            addition_previous = git('show', f'{INGEVEC_ADDED_BASELINE}:{slug}.html').decode()
+            assert current == addition_previous, f'{slug}: one of the 141 unrelated fichas changed'
         assert_commercial_presentation(current, previous, slug)
         signature = presentation_resource_signature(current)
         images += len(signature['images'])

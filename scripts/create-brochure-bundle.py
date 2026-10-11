@@ -22,6 +22,13 @@ MEDIA_FOLDERS = ('aj-urbana-preview', 'ingevec-preview')
 MANIFESTS = ('brochures-aj-urbana.json', 'brochures-ingevec.json')
 PUBLIC_EXTENSIONS = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.webp',
                      '.png', '.jpg', '.jpeg', '.ico', '.woff', '.woff2', '.txt', '.xml'}
+APPROVED_PROJECTS = {
+    'brochures-aj-urbana.json': {'downtown-san-martin', 'edificio-teatinos-750',
+        'edificio-vista-amunategui', 'monjitas-690', 'vista-morande'},
+    'brochures-ingevec.json': {'centenario-1', 'tocornal', 'vivaceta',
+        'coronel-godoy', 'diagonal-paraguay', 'el-aromo', 'los-lilenes',
+        'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589'},
+}
 
 
 def sha(data):
@@ -33,14 +40,22 @@ def selected_source_files(root):
     assert len(catalogue) == 148 and len({p['slug'] for p in catalogue}) == 148
     assert not {'los-alerces', 'valle-los-ingleses-iii'} & {p['slug'] for p in catalogue}
     media = {}
+    model_count = 0
     for name in MANIFESTS:
         manifest = json.loads((root / 'data' / name).read_text())
+        assert len(manifest['projects']) == len(APPROVED_PROJECTS[name])
+        assert {record['slug'] for record in manifest['projects']} == APPROVED_PROJECTS[name], 'Unapproved brochure project'
         for record in manifest['projects']:
+            folder = 'aj-urbana-preview' if name == 'brochures-aj-urbana.json' else 'ingevec-preview'
+            prefix = f'assets/propiedades/{folder}/{record["slug"]}/'
+            model_count += len(record['models'])
             for asset in [*record['images'], *(m['plan'] for m in record['models'])]:
                 path = asset['localPath'].lstrip('/')
-                assert path not in media
+                assert path.startswith(prefix) and path.count('/') == prefix.count('/'), 'Media belongs to another project or directory'
+                assert path not in media, 'Duplicate selected media destination'
                 media[path] = asset['sha256']
-    assert len(media) == 140, 'The complete selected brochure batch is required'
+    assert model_count == 119, 'The complete selected batch must contain 119 plans'
+    assert len(media) == 210, 'The complete selected batch must contain 210 approved brochure resources'
     files = set(media)
     files.update(p.name for p in root.glob('*.html'))
     assert not {'los-alerces.html', 'valle-los-ingleses-iii.html'} & files
@@ -107,7 +122,9 @@ def main():
         subprocess.run([args.node, str(stage / 'scripts/package-vercel.mjs')],
                        cwd=stage, env=env, check=True, stdout=subprocess.PIPE)
         receipt = json.loads((stage / '.vercel/brochure-build-inventory.json').read_text())
-        assert len(receipt['media']) == 140
+        expected_media = sum(len(json.loads((stage / 'data' / name).read_text())['projects'][index][key])
+            for name in MANIFESTS for index in range(len(APPROVED_PROJECTS[name])) for key in ['images', 'models'])
+        assert len(receipt['media']) == expected_media, 'The build omitted or added selected brochure resources'
         public_inventory = [{'file': str(p.relative_to(stage / 'dist')), 'sha256': sha(p.read_bytes())}
                             for p in sorted((stage / 'dist').rglob('*')) if p.is_file()]
         data = archive_bytes(stage, files)

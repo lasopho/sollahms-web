@@ -15,6 +15,23 @@ const profile = process.env.SOLLAHMS_BROCHURE_PROFILE;
 if (profile !== undefined && profile !== 'public-web') throw new Error('Unknown brochure content profile');
 const ajReview = JSON.parse(await readFile(join(root, 'data/brochures-aj-urbana.json'), 'utf8'));
 const ingevecReview = JSON.parse(await readFile(join(root, 'data/brochures-ingevec.json'), 'utf8'));
+const ingevecOldSlugs = new Set(['centenario-1', 'tocornal', 'vivaceta']);
+const ingevecAddedDocuments = {
+  'coronel-godoy': { '86e7bcd761a1037a460ae58c23f3c5f19ab047dde162f46c2f61c5ad38ad1085': [21, [15,16,17,18], null] },
+  'diagonal-paraguay': { '4b86d9b13723b7e12edf9b44e7c5616284f2e81b8f7f81d177ca0dfa3bd94f3f': [13, [9,10,11], null] },
+  'el-aromo': { '2f5ee0fee2dc93ece339756b705030861a9c7c133b78307327b8d1401baeeefc': [18, [13,14,15], null] },
+  'los-lilenes': { '5890a3c98ef2e130f5a91bd30073203314039741cbd68d7a8f10a294c026dda0': [20, [15,16,17], null] },
+  'matta-016': { '1718596161846470541f7eb1f103c0dd550b52fc6b8c93507adb2c8b53af07e8': [23, [17,18,19,20], null] },
+  'nueva-esmeralda': { 'd5cfa2a624f441173a6ec27c1091c5cff2b7c37e45782d84fbbc866966112e08': [22, [16,17,18,19], null] },
+  'vicuna-mackenna-7589': {
+    'ded2b0d73122c2160791e4dc1575e18a73dfc784fb397aad313638cab05c8cdc': [13, [9,10,11], 'Etapa 1'],
+    'ea21b26f8fc2df546b06faf9eeb8cdafbce76edbb37b0922e8a4cf13acdcfc94': [13, [9,10,11], 'Etapa 2'],
+  },
+};
+const ingevecSlugs = new Set([...ingevecOldSlugs, ...Object.keys(ingevecAddedDocuments)]);
+const ingevecImageCounts = { 'centenario-1':9, 'tocornal':8, 'vivaceta':5,
+  'coronel-godoy':6, 'diagonal-paraguay':4, 'el-aromo':4, 'los-lilenes':6,
+  'matta-016':11, 'nueva-esmeralda':7, 'vicuna-mackenna-7589':5 };
 const ajRights = brochurePublication(ajReview);
 const ingevecRights = brochurePublication(ingevecReview);
 if (profile === 'public-web' && (!ajRights.publicWeb || !ingevecRights.publicWeb)) {
@@ -54,7 +71,7 @@ if (ajIncluded || ingevecIncluded) {
   const projects = JSON.parse(catalogueSource);
   const batches = [
     { file: 'brochures-aj-urbana.json', folder: 'aj-urbana-preview', name: 'AJ', slugs: new Set(['downtown-san-martin', 'edificio-teatinos-750', 'edificio-vista-amunategui', 'monjitas-690', 'vista-morande']) },
-    { file: 'brochures-ingevec.json', folder: 'ingevec-preview', name: 'Ingevec', slugs: new Set(['centenario-1', 'tocornal', 'vivaceta']) },
+    { file: 'brochures-ingevec.json', folder: 'ingevec-preview', name: 'Ingevec', slugs: ingevecSlugs },
   ];
   for (const batch of batches) {
     if (batch.name === 'Ingevec' ? !ingevecIncluded : !ajIncluded) continue;
@@ -64,6 +81,36 @@ if (ajIncluded || ingevecIncluded) {
       throw new Error(batch.name + ' catalogue cover review authorization is missing or invalid');
     }
     for (const record of review.projects) {
+    if (batch.name === 'Ingevec' && record.images.length !== ingevecImageCounts[record.slug]) {
+      throw new Error('Ingevec reviewed image selection changed: ' + record.slug);
+    }
+    const documents = record.documents ?? [record.document];
+    const sources = new Map(documents.map(document => [document.sha256, document]));
+    if (documents.some(document => typeof document.fileName !== 'string' ||
+        !/^[^/\\]+\.pdf$/i.test(document.fileName) || !Number.isInteger(document.pageCount) || document.pageCount < 1) ||
+        sources.size !== documents.length || !sources.has(record.document.sha256)) {
+      throw new Error(batch.name + ' source document batch is missing or invalid: ' + record.slug);
+    }
+    if (batch.name === 'Ingevec' && !ingevecOldSlugs.has(record.slug)) {
+      const evidence = ingevecAddedDocuments[record.slug];
+      if (!evidence || JSON.stringify([...sources.keys()].sort()) !== JSON.stringify(Object.keys(evidence).sort()) ||
+          documents.some(document => document.pageCount !== evidence[document.sha256][0]) ||
+          record.models.length !== Object.values(evidence).reduce((count, row) => count + row[1].length, 0)) {
+        throw new Error('Ingevec reviewed source document or plan batch changed: ' + record.slug);
+      }
+      const modelSources = new Set();
+      for (const model of record.models) {
+        const source = evidence[model.sourceSha256];
+        const identity = model.sourceSha256 + ':' + model.pagina_brochure;
+        if (!source || !source[1].includes(model.pagina_brochure) || modelSources.has(identity) ||
+            model.plan.sourceSha256 !== model.sourceSha256 || model.plan.sourcePage !== model.pagina_brochure ||
+            (model.etapa ?? null) !== source[2] || (model.plan.etapa ?? null) !== source[2] ||
+            (source[2] !== null && !model.modelo?.startsWith(source[2] === 'Etapa 1' ? 'e1-' : 'e2-'))) {
+          throw new Error('Ingevec model source or stage does not match its reviewed plan: ' + record.slug);
+        }
+        modelSources.add(identity);
+      }
+    }
     const cover = record.catalogueCover;
     const image = record.images.find(image => image.localPath === cover?.localPath);
     const project = projects.find(project => project.slug === record.slug);
@@ -83,6 +130,21 @@ if (ajIncluded || ingevecIncluded) {
           !/^\/[a-z0-9/_.-]+\.(?:webp|jpe?g|png)$/i.test(asset.localPath) || !fiche.includes(asset.localPath)) {
         throw new Error(batch.name + ' asset does not match its verified gallery or plan: ' + record.slug);
       }
+      const source = sources.get(asset.sourceSha256);
+      if (!source || !Number.isInteger(asset.sourcePage) || asset.sourcePage < 1 || asset.sourcePage > source.pageCount ||
+          !/^[a-f0-9]{64}$/.test(asset.sha256 ?? '') || !Number.isInteger(asset.width) || asset.width < 1 ||
+          !Number.isInteger(asset.height) || asset.height < 1) {
+        throw new Error(batch.name + ' selected media source evidence is invalid: ' + record.slug);
+      }
+      if (batch.name === 'Ingevec' && record.images.includes(asset) &&
+          (!Number.isInteger(asset.imageIndex) || asset.imageIndex < 0 || !/^[a-f0-9]{64}$/.test(asset.originalSha256 ?? '') ||
+          (record.slug === 'centenario-1' && [2,3].includes(asset.sourcePage)))) {
+        throw new Error('Ingevec selected image source privacy evidence is invalid: ' + record.slug);
+      }
+      if (batch.name === 'Ingevec' && record.images.includes(asset) && record.slug === 'centenario-1' && asset.sourcePage === 1 &&
+          (asset.imageIndex !== 0 || asset.originalSha256 !== '5af64f402e804a3be87a774e56aa8756cd54575136a8ada3c06422502bb7fe8d')) {
+        throw new Error('Centenario: only the reviewed bare facade is eligible on page 1');
+      }
       const path = join(root, asset.localPath.slice(1));
       const resolved = await realpath(path);
       if (!(await lstat(path)).isFile() || resolved !== path) {
@@ -97,7 +159,7 @@ if (ajIncluded || ingevecIncluded) {
       mediaInventory.push({ path: asset.localPath, sha256: asset.sha256, bytes: bytes.length });
     }
     if (batch.name === 'Ingevec' && (record.images.some(asset => !asset.privacySafe || !asset.visuallyVerified) ||
-        record.models.some(model => !model.visuallyVerified ||
+        record.models.some(model => !model.visuallyVerified || model.orientacion !== null || model.pisos !== null ||
           (record.slug === 'centenario-1' && ![10,11,12,13,14].includes(model.pagina_brochure))))) {
       throw new Error('Ingevec media privacy review is missing: ' + record.slug);
     }

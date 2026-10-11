@@ -9,7 +9,7 @@ import { tmpdir } from 'node:os';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
-import { assertCommercialBytes, commercialPage } from './commercial-html.mjs';
+import { assertCommercialBytes, commercialPage, INGEVEC_ADDED_SLUGS } from './commercial-html.mjs';
 
 // This review extends five static pages and their protected Preview card covers.
 // Historical brochure material
@@ -21,6 +21,7 @@ const NOW = Date.parse('2026-10-10T15:00:00Z');
 const ASSETS = '/assets/propiedades/aj-urbana-preview/';
 const INGEVEC_ASSETS = '/assets/propiedades/ingevec-preview/';
 const INGEVEC_REVIEW = new Set(['centenario-1', 'tocornal', 'vivaceta']);
+const ALL_INGEVEC_COVERS = new Set([...INGEVEC_REVIEW, ...INGEVEC_ADDED_SLUGS]);
 const CSS = 'assets/css/aj-brochure-preview.css';
 const SOURCE_DOCUMENTS = {
   'downtown-san-martin': { sha256: 'a5c95f31e3f90b365d0b8edd8340bd6fb7bfdb28172cd30e59dfef854e6643f4', pages: 38, modelPages: [19,20,21,22,23,24,26,27,28,29,30,31,32,33,34,35,36,37,38] },
@@ -414,7 +415,7 @@ test('real packaging script publishes AJ review only in Preview and removes its 
     let changedCovers = 0;
     for (let index = 0; index < catalogue.length; index++) {
       const original = catalogue[index], published = previewCatalogue[index];
-      if (INGEVEC_REVIEW.has(original.slug)) {
+      if (ALL_INGEVEC_COVERS.has(original.slug)) {
         const ingevec = json('data/brochures-ingevec.json').projects.find(record => record.slug === original.slug);
         assert.equal(published.imagenPrincipal, ingevec.catalogueCover.localPath);
         assert.equal(published.imagenAlt, ingevec.catalogueCover.alt);

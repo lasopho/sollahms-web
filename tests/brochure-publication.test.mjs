@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { brochurePublication } from '../scripts/brochure-publication.mjs';
+import { brochurePublication, brochureSourceDocuments } from '../scripts/brochure-publication.mjs';
 
 const review = JSON.parse(readFileSync(new URL('../data/brochures-ingevec.json', import.meta.url)));
 function verifiedFixture() {
@@ -11,7 +11,7 @@ function verifiedFixture() {
     status: 'verified_contract', evidenceSha256: 'a'.repeat(64),
     verifiedOn: '2026-10-10', permittedOrigins: ['https://sollahms.cl'],
     permittedUses: ['web_promotion'],
-    coveredDocuments: fixture.projects.map(record => record.document.sha256),
+    coveredDocuments: brochureSourceDocuments(fixture),
   };
   // Synthetic policy fixture: never writes verified rights to the live manifest.
   return fixture;
@@ -53,5 +53,25 @@ test('an unauthorized review or removed Yapo/IRIS provenance cannot authorize a 
     const fixture = verifiedFixture();
     delete fixture.publicationRights[field];
     assert.throws(() => brochurePublication(fixture), /authorization/);
+  }
+});
+
+test('multi-stage website coverage requires both original documents and never treats the primary source as full coverage', () => {
+  const fixture = verifiedFixture();
+  const record = fixture.projects[0];
+  const second = { ...record.document, sha256: 'b'.repeat(64) };
+  record.documents = [record.document, second];
+  assert.throws(() => brochurePublication(fixture), /contract scope/);
+  fixture.publicationRights.contractScope.coveredDocuments = brochureSourceDocuments(fixture);
+  assert.deepEqual(brochurePublication(fixture), { protectedReview: true, publicWeb: true });
+  record.documents.pop();
+  assert.throws(() => brochurePublication(fixture), /contract scope/);
+});
+
+test('missing primary source and duplicate stage documents fail even during a protected review', () => {
+  for (const sources of [[], [{ sha256: 'b'.repeat(64) }], [review.projects[0].document, review.projects[0].document]]) {
+    const fixture = structuredClone(review);
+    fixture.projects[0].documents = sources;
+    assert.throws(() => brochurePublication(fixture), /source document/);
   }
 });
