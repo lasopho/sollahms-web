@@ -27,7 +27,10 @@ try {
       if (request.isNavigationRequest() && new URL(request.url()).origin !== new URL(base).origin) {
         return route.fulfill({ status: 200, contentType: 'text/html', body: '<html><body>External frame isolated for layout audit</body></html>' });
       }
-      if (new URL(request.url()).origin !== new URL(base).origin && !/fonts\.(googleapis|gstatic)\.com/.test(new URL(request.url()).hostname)) return route.abort();
+      // The all-fiche layout pass is deterministic; live screenshots separately
+      // exercise provider content and fonts over the network.
+      if (new URL(request.url()).hostname === 'fonts.googleapis.com') return route.fulfill({ status: 200, contentType: 'text/css', body: '' });
+      if (new URL(request.url()).origin !== new URL(base).origin) return route.abort();
       if (new URL(request.url()).origin === new URL(base).origin && process.env.VERCEL_OIDC_TOKEN) {
         return route.continue({ headers: { ...request.headers(), 'x-vercel-trusted-oidc-idp-token': process.env.VERCEL_OIDC_TOKEN } });
       }
@@ -41,7 +44,7 @@ try {
         const localErrors = [];
         const onError = e => localErrors.push(e.message);
         page.on('pageerror', onError);
-        const response = await page.goto(base + project.detalleUrl, { waitUntil: 'load', timeout: 45000 });
+        const response = await page.goto(base + project.detalleUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
         const localHtml = await readFile(resolve(packagedRoot, project.slug + '.html'));
         const htmlMatchesPackagedPreview = createHash('sha256').update(await response.body()).digest('hex') === createHash('sha256').update(localHtml).digest('hex');
         const inspected = await page.evaluate(() => {
@@ -115,7 +118,7 @@ try {
   }
 } finally { await browser.close(); }
 const report = { base, packagedRoot, projects: projects.length, viewports, pageChecks: results.length,
-  automaticFrameChecks: results.reduce((sum, r) => sum + r.frameChecks.length, 0), externalFramesIsolated: true, externalPostRequests: 0,
+  automaticFrameChecks: results.reduce((sum, r) => sum + r.frameChecks.length, 0), externalFramesIsolated: true, externalFontsIsolated: true, externalPostRequests: 0,
   passed: errors.length === 0 && results.length === 432, errors, results };
 await writeFile(resolve(out, 'responsive-results.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ passed: report.passed, pageChecks: report.pageChecks, automaticFrameChecks: report.automaticFrameChecks, errors }));
