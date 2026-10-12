@@ -136,7 +136,7 @@ async function audit(sample, index) {
     let activeFrame = frame;
     if (sample.host === 'my.matterport.com' || sample.host === 'mpembed.com') {
       row.nativeEntry = await clickFirstVisible(frame, [ /explore.*3d|explorar.*3d|explorar.*espacio|explore.*space|play|reproducci[oó]n|reproducir/i,
-        '#showcase-play', '.play-button', 'button[aria-label*="Explore" i]', 'button[aria-label*="Explorar" i]', '[data-testid="showcase-play-button"]' ]);
+        '#circleLoader', '#showcase-play', '.play-button', 'button[aria-label*="Explore" i]', 'button[aria-label*="Explorar" i]', '[data-testid="showcase-play-button"]' ]);
       if (row.nativeEntry.clicked) {
         if (sample.host === 'mpembed.com') {
           await page.waitForTimeout(5000);
@@ -152,6 +152,17 @@ async function audit(sample, index) {
     row.nativeFullscreen = await clickFirstVisible(fullscreenFrame, [ /full.?screen|pantalla completa|tela cheia|plein écran/i,
       '[title*="fullscreen" i]', '[title*="pantalla completa" i]', '[aria-label*="fullscreen" i]', '[aria-label*="pantalla completa" i]',
       '[data-balloon="Fullscreen"]', '.spl.fullscreen' ]);
+    if (!row.nativeFullscreen.clicked && sample.host === 'my.matterport.com' && row.nativeEntry?.clicked) {
+      row.nativeViewerMenu = await clickFirstVisible(frame, [ /^men[uú]$/i ]);
+      if (row.nativeViewerMenu.clicked) {
+        await page.waitForTimeout(300);
+        const menuControl = frame.getByText(/pantalla completa|fullscreen/i).first();
+        if (await menuControl.isVisible().catch(() => false)) {
+          await menuControl.click();
+          row.nativeFullscreen = { clicked: true, method: 'native_matterport_menu_fullscreen' };
+        }
+      }
+    }
     // These three 3DVista toolbars draw their controls as unlabeled canvases.
     // Desktop screenshots verified the native expand icon at (567, 477) in
     // the 801x500 viewer; use it only with that exact reviewed geometry.

@@ -68,7 +68,8 @@ def approved_frame(url, title, kind):
         fallback, wrapper = url, 'project-embed'
         permission = ('fullscreen; xr-spatial-tracking; gyroscope; accelerometer'
                       if parsed.hostname in {'my.matterport.com', 'mpembed.com', 'kuula.co',
-                                             'norteverde.viewin360.co', 'panoraven.com'}
+                                             'norteverde.viewin360.co', 'panoraven.com',
+                                             'proyectos.rito3d.cl'}
                       else 'fullscreen; gyroscope; accelerometer')
         if parsed.hostname == 'panoraven.com':
             permission += '; magnetometer'
