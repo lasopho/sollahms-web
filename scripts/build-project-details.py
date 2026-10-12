@@ -153,7 +153,7 @@ def render(project, research, template):
         title = tour.get('title') or f'Recorrido de {name}'
         parsed = urlparse(url)
         can_embed = tour.get('embedStatus') == 'allowed' or (not tour.get('embedStatus') and parsed.hostname in ['my.matterport.com', 'mpembed.com'])
-        embed = f'<div class="embed-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(url)}" data-embed-title="{esc(title)}">Iniciar recorrido interactivo</button></div>' if can_embed else f'<div class="pending-panel"><p>La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.</p><a class="button button-outline" href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar experiencia oficial ↗</a></div>'
+        embed = f'<div class="embed-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(url)}" data-embed-title="{esc(title)}">Iniciar recorrido interactivo</button></div>' if can_embed else f'<a class="button button-outline" href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar experiencia oficial ↗</a>'
         limitation = f'<div class="pending-panel"><p>{esc(tour["identityLimitation"])}</p></div>' if tour.get('identityLimitation') else ''
         tours.append(f'<article class="tour-card"><h3>{esc(title)}</h3>{limitation}{embed}<div class="embed-caption"><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></div></article>')
     tours_html = ''.join(tours)

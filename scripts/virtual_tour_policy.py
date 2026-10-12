@@ -9,6 +9,12 @@ from urllib.parse import unquote, urlparse
 
 VISUAL_RESULTS = {'valid_scene', 'valid_interface', 'interactive_viewer'}
 TOUR_TYPES = {'tour', 'virtual_tour', 'virtual-tour', 'virtualtour', '360', 'panorama', 'matterport'}
+# Rechecked 2026-10-12: this exact Vista Bulnes URL has an expired TLS certificate.
+# Keep the historical research record; omit its unusable card from rendering.
+UNAVAILABLE_TOURS = {
+    ('vista-bulnes',
+     'https://data.sentiovr.com/spaces/19805/space_1600948559/vtour/tour.html?showme=true?showme=true&_ga=2.18944824.1839358211.1767707268-1601151291.1753297916'),
+}
 NON_TOUR_SUFFIXES = {
     '.avif', '.bmp', '.gif', '.jpeg', '.jpg', '.png', '.svg', '.tif', '.tiff',
     '.webp', '.pdf', '.mp4', '.m4v', '.mov', '.webm', '.avi', '.m3u8', '.mp3', '.wav',
@@ -47,6 +53,8 @@ def registered_virtual_tours(research):
             continue
         url = secure_url(tour.get('url'))
         if not url or not secure_url(tour.get('sourceUrl')):
+            continue
+        if (research.get('slug'), url) in UNAVAILABLE_TOURS:
             continue
         parsed = urlparse(url)
         host = parsed.hostname.lower()

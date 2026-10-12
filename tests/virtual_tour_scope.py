@@ -12,6 +12,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = '3f7b7e481e632e06d36702f556f6f2bca61bc55b'
+VISTA_UNAVAILABLE_URL = ('https://data.sentiovr.com/spaces/19805/space_1600948559/vtour/tour.html'
+                         '?showme=true?showme=true&_ga=2.18944824.1839358211.1767707268-1601151291.1753297916')
+VISTA_UNAVAILABLE_CARD = (
+    '<article class="tour-card"><h3>Recorrido virtual de Vista Bulnes</h3>'
+    '<div class="pending-panel"><p>La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.</p>'
+    '<a class="button button-outline" href="' + VISTA_UNAVAILABLE_URL.replace('&', '&amp;') + '" target="_blank" rel="noopener noreferrer">Consultar experiencia oficial ↗</a></div>'
+    '<div class="embed-caption"><a href="' + VISTA_UNAVAILABLE_URL.replace('&', '&amp;') + '" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a></div></article>'
+)
+ENDEMICO_EXTERNAL_BUTTON = ('<a class="button button-outline" href="https://mybakerlab.com/endemico/" '
+                           'target="_blank" rel="noopener noreferrer">Consultar experiencia oficial ↗</a>')
+ENDEMICO_PENDING_CONTAINER = (
+    '<div class="pending-panel"><p>La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.</p>'
+    + ENDEMICO_EXTERNAL_BUTTON + '</div>'
+)
 
 
 @functools.lru_cache(maxsize=None)
@@ -32,7 +46,18 @@ def removal_slugs():
 
 
 def exact_removed_page(original, slug):
-    if slug not in removal_slugs():
+    removed = removal_slugs()
+    # These two literal exceptions preserve every other byte in the 61 tour
+    # fichas. Neither the production policy nor its renderer defines this scope.
+    if slug == 'endemico':
+        expected = original.decode()
+        assert expected.count(ENDEMICO_PENDING_CONTAINER) == 1
+        return expected.replace(ENDEMICO_PENDING_CONTAINER, ENDEMICO_EXTERNAL_BUTTON, 1).encode()
+    if slug == 'vista-bulnes':
+        expected = original.decode()
+        assert expected.count(VISTA_UNAVAILABLE_CARD) == 1
+        return expected.replace(VISTA_UNAVAILABLE_CARD, '', 1).encode()
+    if slug not in removed:
         return original
     text = original.decode()
     if slug == 'distrito-centro':

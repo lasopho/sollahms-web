@@ -17,8 +17,12 @@ recorridos y el de Irarrázaval, cuya única experiencia conserva una limitació
 explícita de asociación. Se eliminan 82 enlaces de navegación y 83 mensajes,
 incluida una fila secundaria sin visor de Verne Oficinas. Distrito Centro tenía
 un apartado antiguo mezclado con fotografías y superficies; se conserva ese
-material. Las otras 61 fichas mantienen exactamente sus 99 enlaces de recorridos,
-incluidos los 23 Matterport. Los 100 registros de investigación siguen intactos.
+material. La revisión autorizada posterior conserva 98 enlaces en 61 fichas, incluidos
+los 23 Matterport. Se retiró únicamente la alternativa Sentiovr de Vista Bulnes
+por certificado TLS vencido y los dos avisos de experiencias pendientes. Las
+otras 59 fichas con tours siguen idénticas; Endémico conserva ambos enlaces y
+Vista Bulnes conserva su recorrido acreditado. Los 100 registros originales de
+investigación siguen intactos.
 
 Las 21 fichas con brochures conservan su enlace a modelos al regenerarse aunque
 no tengan recorrido. La ausencia de un apartado no deja contenedores ni reservas

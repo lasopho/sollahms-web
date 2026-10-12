@@ -152,13 +152,15 @@ for project in projects:
     rendered_tours = virtual_tours_to_render(record)
     for tour in rendered_tours:
         assert tour['url'] in published_links, f'{slug}: original tour link missing'
+    for tour in record.get('virtualTours', []):
+        if tour not in rendered_tours:
+            assert tour['url'] not in published_links, f'{slug}: unavailable or unassociated tour still published'
+    assert 'La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.' not in text, f'{slug}: stale tour availability notice'
     if not rendered_tours:
         assert 'recorrido' not in page.ids, f'{slug}: empty or unassociated tour section'
         assert '#recorrido' not in published_links, f'{slug}: stale tour navigation'
         assert 'Recorridos y experiencias oficiales' not in text, f'{slug}: empty legacy tour block'
         assert 'Consulta la disponibilidad de un recorrido virtual' not in text, f'{slug}: absent-tour placeholder'
-        for tour in record.get('virtualTours', []):
-            assert tour['url'] not in published_links, f'{slug}: unassociated tour still published'
     actual_matterport = any(tour.get('provider') == 'Matterport' and tour['url'] in published_links for tour in record.get('virtualTours', []))
     assert ledger_by_slug[slug]['matterport'] == actual_matterport, f'{slug}: Matterport audit differs from rendered page'
     assert ledger_by_slug[slug]['recorridosOficiales'] == len(record.get('virtualTours', [])), f'{slug}: official tour count differs from research'

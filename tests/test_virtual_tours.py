@@ -11,6 +11,7 @@ import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 from string import Template
+from virtual_tour_scope import exact_removed_page, VISTA_UNAVAILABLE_URL
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = '3f7b7e481e632e06d36702f556f6f2bca61bc55b'
@@ -43,12 +44,26 @@ class VirtualTours(unittest.TestCase):
         self.assertEqual(sum(bool(r['virtualTours']) for r in RECORDS.values()), 62)
         self.assertEqual(sum(len(r['virtualTours']) for r in RECORDS.values()), 100)
 
-    def test_61_tour_pages_are_byte_identical(self):
+    def test_61_tour_pages_preserve_exact_authorized_scope(self):
         preserved = [r for r in RECORDS.values() if r['virtualTours'] and r['slug'] != 'irarrazaval']
         self.assertEqual(len(preserved), 61)
         self.assertEqual(sum(len(r['virtualTours']) for r in preserved), 99)
+        untouched = corrected = published = 0
         for r in preserved:
-            self.assertEqual((ROOT / (r['slug'] + '.html')).read_bytes(), original(r['slug'] + '.html'))
+            path = r['slug'] + '.html'
+            before = original(path)
+            expected = exact_removed_page(before, r['slug'])
+            self.assertEqual((ROOT / path).read_bytes(), expected, path)
+            untouched += expected == before
+            corrected += expected != before
+            retained = [t for t in r['virtualTours']
+                        if (r['slug'], t['url']) != ('vista-bulnes', VISTA_UNAVAILABLE_URL)]
+            self.assertEqual(virtual_tours_to_render(r), retained, r['slug'])
+            published += len(retained)
+        self.assertEqual((untouched, corrected, published), (59, 2, 98))
+        self.assertNotIn(VISTA_UNAVAILABLE_URL.replace('&', '&amp;'), (ROOT / 'vista-bulnes.html').read_text())
+        self.assertNotIn('La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.',
+                         (ROOT / 'endemico.html').read_text())
         self.assertEqual(sum(t.get('provider') == 'Matterport' for r in preserved for t in r['virtualTours']), 23)
 
     def test_all_83_absent_or_unassociated_sections_are_removed(self):
@@ -114,10 +129,15 @@ class VirtualTours(unittest.TestCase):
             self.assertEqual('id="recorrido"' in page, expected, p['slug'])
             self.assertEqual('href="#recorrido"' in page, expected, p['slug'])
             self.assertNotIn('Consulta la disponibilidad de un recorrido virtual', page)
-            self.assertEqual(count, len(RECORDS[p['slug']]['virtualTours']) if expected else 0)
+            self.assertNotIn('La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.', page)
+            expected_links = [t for t in RECORDS[p['slug']]['virtualTours']
+                              if (p['slug'], t['url']) != ('vista-bulnes', VISTA_UNAVAILABLE_URL)] if expected else []
+            self.assertEqual(count, len(expected_links))
+            if p['slug'] == 'vista-bulnes':
+                self.assertNotIn(VISTA_UNAVAILABLE_URL.replace('&', '&amp;'), page)
             sections += expected
             tours += count
-        self.assertEqual((sections, tours), (61, 99))
+        self.assertEqual((sections, tours), (61, 98))
 
     def test_future_empty_record_never_renders_a_tour(self):
         record = copy.deepcopy(RECORDS['endemico'])
@@ -167,9 +187,17 @@ class VirtualTours(unittest.TestCase):
         self.assertEqual(virtual_tours_to_render(RECORDS['irarrazaval']), [])
 
     def test_alternate_registered_links_survive_with_one_usable_tour(self):
-        for slug in ['endemico', 'vista-bulnes']:
-            self.assertTrue(usable_virtual_tours(RECORDS[slug]))
-            self.assertEqual(virtual_tours_to_render(RECORDS[slug]), RECORDS[slug]['virtualTours'])
+        self.assertTrue(usable_virtual_tours(RECORDS['endemico']))
+        self.assertEqual(virtual_tours_to_render(RECORDS['endemico']), RECORDS['endemico']['virtualTours'])
+        vista = RECORDS['vista-bulnes']
+        self.assertEqual(len(vista['virtualTours']), 2)
+        self.assertEqual(virtual_tours_to_render(vista),
+                         [t for t in vista['virtualTours'] if t['url'] != VISTA_UNAVAILABLE_URL])
+        self.assertEqual(len(virtual_tours_to_render(vista)), 1)
+        expired_only = copy.deepcopy(vista)
+        expired_only['virtualTours'] = [t for t in vista['virtualTours'] if t['url'] == VISTA_UNAVAILABLE_URL]
+        self.assertEqual(usable_virtual_tours(expired_only), [])
+        self.assertEqual(virtual_tours_to_render(expired_only), [])
 
     def test_legacy_mixed_sections_keep_images_specs_and_maps(self):
         empty = {'slug': 'example', 'virtualTours': []}
