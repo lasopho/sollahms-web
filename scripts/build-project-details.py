@@ -15,6 +15,7 @@ from string import Template
 from urllib.parse import urlencode, urlparse, parse_qs
 from aj_brochure import augment_page
 from fiche_presentation import commercialize_fiche
+from virtual_tour_policy import secure_url, virtual_tours_to_render
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -23,12 +24,6 @@ PENDING = '<span class="pending">Pendiente de verificación</span>'
 
 def esc(value):
     return html.escape(str(value), quote=True)
-
-def secure_url(value):
-    if not isinstance(value, str):
-        return None
-    parsed = urlparse(value)
-    return value if parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password else None
 
 def uf(value):
     if isinstance(value, (int, float)) and not isinstance(value, bool) and value > 0:
@@ -149,18 +144,21 @@ def render(project, research, template):
     amenities = field(project, research, 'amenities')
     amenities_html = '<ul class="amenity-list">' + ''.join(f'<li>{esc(x)}</li>' for x in amenities) + '</ul>' if isinstance(amenities, list) and amenities else '<div class="pending-panel"><p>Equipamiento y áreas comunes pendientes de verificación.</p></div>'
     tours = []
-    for tour in research.get('virtualTours', []):
+    rendered_tours = virtual_tours_to_render(research)
+    for tour in rendered_tours:
         url = secure_url(tour.get('url'))
         source = secure_url(tour.get('sourceUrl'))
         if not url or not source:
             continue
         title = tour.get('title') or f'Recorrido de {name}'
         parsed = urlparse(url)
-        can_embed = tour.get('embedStatus') == 'allowed' or (not tour.get('embedStatus') and parsed.hostname in ['my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com'])
+        can_embed = tour.get('embedStatus') == 'allowed' or (not tour.get('embedStatus') and parsed.hostname in ['my.matterport.com', 'mpembed.com'])
         embed = f'<div class="embed-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(url)}" data-embed-title="{esc(title)}">Iniciar recorrido interactivo</button></div>' if can_embed else f'<div class="pending-panel"><p>La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.</p><a class="button button-outline" href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar experiencia oficial ↗</a></div>'
         limitation = f'<div class="pending-panel"><p>{esc(tour["identityLimitation"])}</p></div>' if tour.get('identityLimitation') else ''
         tours.append(f'<article class="tour-card"><h3>{esc(title)}</h3>{limitation}{embed}<div class="embed-caption"><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></div></article>')
-    tours_html = ''.join(tours) or '<div class="pending-panel"><p>No se ha verificado un recorrido virtual oficial para este proyecto. Su disponibilidad está pendiente de confirmación.</p></div>'
+    tours_html = ''.join(tours)
+    tour_navigation = '<a href="#recorrido">Recorrido virtual</a>' if tours else ''
+    tour_section = '<section id="recorrido" class="detail-section"><p class="eyebrow">Explora los espacios</p><h2>Recorrido virtual</h2>' + tours_html + '</section>' if tours else ''
     query = ', '.join(str(x) for x in [address, field(project, research, 'comuna'), field(project, research, 'region'), 'Chile'] if x)
     # An address requires both official address and official commune. No approximate coordinates.
     mapped = bool(address and field(project, research, 'comuna') and field(project, research, 'mapQuery'))
@@ -195,8 +193,8 @@ def render(project, research, template):
     if 'etapas' in research.get('verifiedFields', []) and project.get('etapas'):
         stages = '<h3>Etapas del proyecto</h3><ul>' + ''.join('<li>' + esc(s.get('nombre', '')) + ': ' + esc(s.get('estado', 'Pendiente')) + '</li>' for s in project['etapas']) + '</ul>'
     embed_hosts = sorted({'www.google.com', 'my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com'} | {urlparse(t['url']).hostname for t in research.get('virtualTours', []) if secure_url(t.get('url')) and t.get('embedStatus') == 'allowed'})
-    page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts), overview=overview_html, official_context=official_context_content(research), specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tours=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
-    return commercialize_fiche(augment_page(page, slug), slug), mapped, len(tours)
+    page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts), overview=overview_html, official_context=official_context_content(research), specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tour_navigation=tour_navigation, tour_section=tour_section, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
+    return commercialize_fiche(augment_page(page, slug), slug, research=research), mapped, len(tours)
 
 def main():
     parser = argparse.ArgumentParser()
@@ -230,7 +228,7 @@ def main():
         if slug in FEATURED:
             mapped = 'www.google.com/maps' in actual
         pending = pending_fields(project, research)
-        ledger.append({'slug': slug, 'nombre': project['nombre'], 'inmobiliaria': project['inmobiliaria'], 'detalleUrl': project['detalleUrl'], 'fichaDesarrollada': bool(actual), 'destacadaExistente': slug in FEATURED, 'estadoFuente': research.get('sourceStatus', 'research_pending'), 'fuente': research.get('sourceUrl'), 'fechaRevision': research.get('checkedAt'), 'mapa': mapped, 'matterport': matterport, 'recorridosOficiales': tours, 'pendientes': pending, 'controlCalidad': 'pendiente' if pending else 'datos_verificados'})
+        ledger.append({'slug': slug, 'nombre': project['nombre'], 'inmobiliaria': project['inmobiliaria'], 'detalleUrl': project['detalleUrl'], 'fichaDesarrollada': bool(actual), 'destacadaExistente': slug in FEATURED, 'estadoFuente': research.get('sourceStatus', 'research_pending'), 'fuente': research.get('sourceUrl'), 'fechaRevision': research.get('checkedAt'), 'mapa': mapped, 'matterport': matterport, 'recorridosOficiales': len(research.get('virtualTours', [])), 'pendientes': pending, 'controlCalidad': 'pendiente' if pending else 'datos_verificados'})
         context = research.get('officialContext')
         if context and context.get('sourceStatus') == 'verified' and secure_url(context.get('sourceUrl')):
             ledger[-1]['contextoOficial'] = {'nombre': context['name'], 'alcance': context['scope'], 'fuente': context['sourceUrl'], 'fechaRevision': context['checkedAt'], 'mapaDeReferencia': bool(context.get('mapQuery')), 'imagenesRelacionadas': len(context.get('images', []))}

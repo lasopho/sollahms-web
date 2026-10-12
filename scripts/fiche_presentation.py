@@ -6,14 +6,13 @@ The same policy applies to a future English rendering without creating routes.
 """
 import html
 import re
+from virtual_tour_policy import hide_absent_virtual_tours
 
 
 ES_COPY = {
     'Pendiente de verificación en la fuente oficial actual.': 'Consulta las terminaciones disponibles para la unidad que te interesa.',
     'Fotografías oficiales pendientes de verificación. Puedes solicitar material del proyecto al consultar.': 'Solicita imágenes del proyecto al consultar.',
     'Equipamiento y áreas comunes pendientes de verificación.': 'Consulta el equipamiento y las áreas comunes del proyecto.',
-    'No se ha verificado un recorrido virtual oficial para este proyecto. Su disponibilidad está pendiente de confirmación.': 'Consulta la disponibilidad de un recorrido virtual del proyecto.',
-    'Recorrido virtual oficial específico pendiente de verificación.': 'Consulta la disponibilidad de un recorrido virtual del proyecto.',
     'Dirección exacta pendiente de verificación. Incorporaremos el mapa cuando la ubicación del proyecto se confirme en una fuente oficial.': 'Consulta la dirección y el acceso exacto al proyecto.',
     'Las características detalladas de este proyecto están pendientes de verificación con la inmobiliaria.': 'Consulta las características y alternativas disponibles para este proyecto.',
     'El mapa busca la dirección publicada por la inmobiliaria. La ubicación del marcador la determina Google Maps; confirma el acceso exacto en la fuente oficial.': 'Google Maps determina el marcador por dirección. Confirma el acceso exacto al consultar.',
@@ -68,7 +67,6 @@ ES_COPY = {
     'La fuente describe Verne Oficinas, un producto comercial con ascensores y escaleras independientes. Estos precios y superficies corresponden a oficinas. La identidad y disponibilidad residencial de Edificio Verne siguen pendientes de confirmación.': 'Verne Oficinas es una alternativa comercial con ascensores y escaleras independientes. Sus precios, imágenes y superficies corresponden exclusivamente a oficinas; la oferta residencial de Edificio Verne debe consultarse por separado.',
     '21 a 57,96 m²; la fuente no precisa si este rango es útil o total': '21 a 57,96 m²; clasificación de superficie por confirmar',
     'Entrega inmediata; la fuente no publica una fecha de entrega': 'Entrega inmediata; confirma la fecha exacta al consultar',
-    'Pendiente de verificación: la fuente no publica un visor funcional.': 'Consulta la disponibilidad de un recorrido virtual de oficinas.',
     'La dirección Av. Videla 810 corresponde a la ficha vigente de oficinas. El brochure relacionado indica Videla 812; no se atribuye ninguna de estas direcciones al producto residencial sin confirmación. Google Maps determina el marcador por dirección.': 'Este mapa corresponde exclusivamente a Verne Oficinas, en Av. Videla 810. La dirección y el acceso del producto residencial deben consultarse por separado. Google Maps determina el marcador por dirección.',
     'Segundo semestre de 2027, según la ficha oficial; no confirma la entrega de una torre específica': 'Segundo semestre de 2027 para el conjunto; confirma la entrega de la torre que consultes',
     'Edificio Irarrázaval 1970 es un proyecto de Norte Verde en Irarrázaval 1970, Ñuñoa. Su identidad y ubicación constan en el brochure oficial. La disponibilidad comercial, los precios y las superficies vigentes están pendientes de verificación.': 'Edificio Irarrázaval 1970 es un proyecto de Norte Verde en Irarrázaval 1970, Ñuñoa. Consulta disponibilidad, precios y superficies de las unidades.',
@@ -134,7 +132,7 @@ def _visible_copy(value, language):
     return value
 
 
-def commercialize_fiche(page, slug=None, language=None):
+def commercialize_fiche(page, slug=None, language=None, research=None):
     """Remove visitor-facing audit content while preserving resources and SEO.
 
     This is intentionally idempotent and leaves the head/scripts unchanged.
@@ -216,4 +214,5 @@ def commercialize_fiche(page, slug=None, language=None):
     # Unknown prices retain uncertainty with an actionable commercial label.
     body = re.sub(r'(<(?:strong|div class="price[^\"]*")>)<span class="pending">Por confirmar</span>', r'\1<span class="pending">Consultar precio</span>', body)
     body = body.replace('href="/privacidad.html"', 'href="/privacidad.html#informacion-inmobiliaria-material-grafico"')
-    return prefix + body
+    result = prefix + body
+    return hide_absent_virtual_tours(result, research) if research is not None else result

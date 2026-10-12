@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { assertPortfolioData, assertPortfolioIndex, assertDefinitiveFicheFallback, assertCatalogueConsultPrices,
   assertCommercialBytes, restoreReviewedScope,
-  PORTFOLIO_BASELINE, INGEVEC_REMOVED_SLUGS, INGEVEC_NEW_SLUGS } from './commercial-html.mjs';
+  PORTFOLIO_BASELINE, INGEVEC_REMOVED_SLUGS, INGEVEC_NEW_SLUGS, readCommercialFile } from './commercial-html.mjs';
 import { projects as contextualProjects } from '../lib/project-context.mjs';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
@@ -16,7 +16,7 @@ const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASELINE = '8cdb9bf2af607a4f0822e5ea2c3ec4ba3f4c76b1';
 const PREFIX = '/assets/propiedades/ingevec-preview/';
 const WRONG_VIMA_IMAGE = '/assets/propiedades/catalogo/571b2a1740b3b5d4920157fa.webp';
-const current = path => readFileSync(resolve(ROOT, path));
+const current = readCommercialFile;
 const old = path => execFileSync('git', ['show', `${BASELINE}:${path}`], { cwd: ROOT });
 const json = path => JSON.parse(current(path));
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');

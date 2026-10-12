@@ -3,12 +3,15 @@
 import argparse
 import json
 import re
+import sys
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from virtual_tour_policy import virtual_tours_to_render
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--site-root', type=Path,
                     help='Check the actual packaged public DOM/assets while retaining repository provenance')
@@ -146,13 +149,22 @@ for project in projects:
     context_ledger = ledger_by_slug[slug].get('contextoOficial', {})
     assert context_ledger.get('mapaDeReferencia', False) == bool(reference_maps), f'{slug}: reference-map audit differs from rendered page'
     published_links = {entry.get('href') for entry in page.links}
-    for tour in record.get('virtualTours', []):
+    rendered_tours = virtual_tours_to_render(record)
+    for tour in rendered_tours:
         assert tour['url'] in published_links, f'{slug}: original tour link missing'
+    if not rendered_tours:
+        assert 'recorrido' not in page.ids, f'{slug}: empty or unassociated tour section'
+        assert '#recorrido' not in published_links, f'{slug}: stale tour navigation'
+        assert 'Recorridos y experiencias oficiales' not in text, f'{slug}: empty legacy tour block'
+        assert 'Consulta la disponibilidad de un recorrido virtual' not in text, f'{slug}: absent-tour placeholder'
+        for tour in record.get('virtualTours', []):
+            assert tour['url'] not in published_links, f'{slug}: unassociated tour still published'
     actual_matterport = any(tour.get('provider') == 'Matterport' and tour['url'] in published_links for tour in record.get('virtualTours', []))
     assert ledger_by_slug[slug]['matterport'] == actual_matterport, f'{slug}: Matterport audit differs from rendered page'
     assert ledger_by_slug[slug]['recorridosOficiales'] == len(record.get('virtualTours', [])), f'{slug}: official tour count differs from research'
     if slug not in FEATURED:
-        assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'recorrido', 'ubicacion'])
+        assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'ubicacion'])
+        assert ('recorrido' in page.ids) == bool(rendered_tours), f'{slug}: conditional tour section disagrees with registered usable tours'
         if 'precioDesdeUF' not in record.get('verifiedFields', []) or record.get('updates', {}).get('precioDesdeUF', project.get('precioDesdeUF')) is None:
             assert 'Precio desde</span><strong><span class="pending">' in text, f'{slug}: historical price shown as current'
             assert 'Consultar precio' in text, f'{slug}: unconfirmed commercial price must invite consultation'

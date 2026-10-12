@@ -42,14 +42,14 @@
         <p class="hero-location">$location</p><div class="hero-badges">$badges</div>
       </div>
     </section>
-    <nav class="section-nav" aria-label="Secciones del proyecto"><div class="container"><a href="#proyecto">El proyecto</a><a href="#caracteristicas">Características</a><a href="#galeria">Galería</a><a href="#recorrido">Recorrido virtual</a><a href="#ubicacion">Ubicación</a></div></nav>
+    <nav class="section-nav" aria-label="Secciones del proyecto"><div class="container"><a href="#proyecto">El proyecto</a><a href="#caracteristicas">Características</a><a href="#galeria">Galería</a>$tour_navigation<a href="#ubicacion">Ubicación</a></div></nav>
     <div class="container project-layout">
       <div class="project-body">
         <section id="proyecto" class="detail-section"><p class="eyebrow">El proyecto</p><h2>$title</h2>$overview</section>$official_context
         <section id="caracteristicas" class="detail-section"><p class="eyebrow">Información del proyecto</p><h2>Características</h2><dl class="spec-grid">$specs</dl>$stages</section>
         <section id="galeria" class="detail-section"><p class="eyebrow">Imágenes del proyecto</p><h2>Galería oficial</h2>$gallery</section>
         <section id="equipamiento" class="detail-section"><p class="eyebrow">Vida cotidiana</p><h2>Equipamiento y áreas comunes</h2>$amenities</section>
-        <section id="recorrido" class="detail-section"><p class="eyebrow">Explora los espacios</p><h2>Recorrido virtual</h2>$tours</section>
+        $tour_section
         <section id="ubicacion" class="detail-section"><p class="eyebrow">Ubicación</p><h2>$location_heading</h2>$map</section>
         <a class="back-link" href="/proyectos.html">← Volver al catálogo de proyectos</a>
       </div>

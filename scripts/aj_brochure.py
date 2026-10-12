@@ -53,7 +53,9 @@ def augment_record(page, record, namespace, builder):
         return f'<!--{namespace}_PUBLIC_START-->' + value + f'<!--{namespace}_PUBLIC_END-->'
 
     page = page.replace('</head>', preview('<link rel="stylesheet" href="/assets/css/aj-brochure-preview.css?v=20261010">') + '</head>')
-    page = page.replace('<a href="#recorrido">', preview('<a href="#modelos">Modelos y distribuciones</a>') + '<a href="#recorrido">', 1)
+    if not re.search(r'\bhref=[\"\']#modelos[\"\']', page):
+        navigation_anchor = '<a href="#recorrido">' if '<a href="#recorrido">' in page else '<a href="#ubicacion">'
+        page = page.replace(navigation_anchor, preview('<a href="#modelos">Modelos y distribuciones</a>') + navigation_anchor, 1)
     if record.get('hero'):
         # A better reviewed hero is isolated from the original public image.
         # Removing preview blocks reconstructs the public fallback exactly.
