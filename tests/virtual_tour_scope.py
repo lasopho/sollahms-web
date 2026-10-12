@@ -9,6 +9,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from automatic_embed_scope import restore_automatic_file
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = '3f7b7e481e632e06d36702f556f6f2bca61bc55b'
@@ -87,6 +88,7 @@ def exact_removed_page(original, slug):
 
 def restore_reviewed_file(path, current):
     """Return approved bytes only after exact authorized-diff verification."""
+    current = restore_automatic_file(path, current)
     original = approved_bytes(path)
     if path == 'templates/project-detail.html':
         nav = b'<a href="#recorrido">Recorrido virtual</a>'

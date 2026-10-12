@@ -11,7 +11,7 @@ import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import { BROCHURE_PUBLIC_PAGES } from '../scripts/brochure-publication.mjs';
 import { assertCommercialBytes, commercialPage, INGEVEC_FINAL_SLUGS,
-  INGEVEC_NEW_SLUGS, readCommercialFile } from './commercial-html.mjs';
+  INGEVEC_NEW_SLUGS, readCommercialFile, AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet } from './commercial-html.mjs';
 
 // This review extends five static pages and their protected Preview card covers.
 // Historical brochure material
@@ -184,7 +184,8 @@ test('531 historical assets and handlers retain strict baselines outside the sco
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
   assert.deepEqual(listFiles('assets').filter((file) => !file.startsWith(ASSETS.slice(1)) &&
-    !file.startsWith(INGEVEC_ASSETS.slice(1)) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs'].sort());
+    !file.startsWith(INGEVEC_ASSETS.slice(1)) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort());
+  assertAutomaticEmbedStylesheet();
 });
 
 test('five original documents and 78 unique models retain exact identifiers, source pages and original SHA provenance', () => {

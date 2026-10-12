@@ -11,6 +11,7 @@ import subprocess
 from pathlib import Path
 from html.parser import HTMLParser
 from virtual_tour_scope import restore_reviewed_file, historical_commercial_renderer
+from automatic_embed_scope import REVIEWED_ASSETS, restore_automatic_asset
 
 BASELINE = 'e903208160f62cc552e9efa4371a322ef75477b8'
 INGEVEC = {'centenario-1', 'tocornal', 'vivaceta'}
@@ -271,7 +272,7 @@ LAUNCH_CHANGES = {
     'assets/js/purchase-capacity-ui.mjs': ('9c88641dae8d6cf9ab5ea1223b02a5abc917f9370f7862dea33366b226f73657', 'bdec9e59215c9b2116122dbded8e7604e380654defb3ef69f9d364c38556f724'),
     'api/contact.mjs': ('49de20c58d907203e424d17d2c933a7109c8c2d339d5bec4c67080c10992b73e', '6533c6f2e3cda476cd325d2074cc963394efdab16cc0839fb526da4aa1c399b2'),
     'lib/booking-server.mjs': ('09bada2e8bbeba6116fbe4974b391488f3c94ec3eca0df8696b6a194bc45326c', '27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4'),
-    'vercel.json': ('657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', 'c63faaa21f31a17621b38eb6f9f21ffbcb39611eb12564ef492808a35001ed22'),
+    'vercel.json': ('657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', '01087c9848f31ae6259db2c53ed20f668eb547e68bd4603303670aedc2b3320d'),
 }
 REVIEWED_SCOPES = {
     'data/brochures-aj-urbana.json': '8dc9872b11f578321d176dcd83b9c2da457a55f65104112c029582f20a688cc2',
@@ -291,6 +292,8 @@ def restore_reviewed_scope(after, before, path):
 
 
 def assert_launch_bytes(path, current, previous):
+    if path in REVIEWED_ASSETS:
+        current = restore_automatic_asset(path, current)
     if path in LAUNCH_CHANGES:
         before, after = LAUNCH_CHANGES[path]
         assert hashlib.sha256(previous).hexdigest() == before, f'{path}: unrecognized protected baseline'

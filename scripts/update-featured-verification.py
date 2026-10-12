@@ -4,8 +4,8 @@ import importlib.util
 import json
 import re
 from pathlib import Path
-from urllib.parse import urlencode, urlparse, parse_qs
-from virtual_tour_policy import virtual_tours_to_render
+from urllib.parse import urlencode
+from project_embed_policy import map_markup, normalize_page_embeds
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('details', ROOT / 'scripts/build-project-details.py')
@@ -71,9 +71,9 @@ for research in records:
     if query:
         embed = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
         link = 'https://www.google.com/maps/search/?' + urlencode({'api': 1, 'query': query})
-        replacement = f'<iframe class="w-full shadow-sm" src="{esc(embed)}" height="400" style="border:0" loading="lazy" title="Mapa de {esc(query)}"></iframe><p class="text-secondary"><a href="{esc(link)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a></p><p class="text-secondary text-sm">Mapa de búsqueda de la dirección oficial. Google Maps determina el marcador; confirma el acceso en la fuente original.</p>'
+        replacement = map_markup(embed, f'Mapa de {query}') + f'<p class="text-secondary"><a href="{esc(link)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a></p><p class="text-secondary text-sm">Mapa de búsqueda de la dirección oficial. Google Maps determina el marcador; confirma el acceso en la fuente original.</p>'
         # Include previous appended links when rerunning; preserve idempotence.
-        pattern = r'<iframe\b[^>]*src="https://www.google.com/maps[^>]*></iframe>(?:<p class="text-secondary"><a href="https://www.google.com/maps/search/.*?</p><p class="text-secondary text-sm">.*?</p>)?'
+        pattern = r'(?:<div class="project-embed project-embed-map">)?<iframe\b[^>]*src="https://www.google.com/maps[^>]*></iframe>(?:</div>)?(?:<p class="text-secondary"><a href="https://www.google.com/maps/search/.*?</p><p class="text-secondary text-sm">.*?</p>)?'
         page = re.sub(pattern, lambda _: replacement, page, count=1, flags=re.S)
     def update_ld(match):
         value = json.loads(match[1])
@@ -92,32 +92,17 @@ for research in records:
             text += ' m²'
         specs += '<li>' + esc(details.LABELS[key]) + ': ' + text + '</li>'
     specs += '</ul>'
-    original_models = {parse_qs(urlparse(escaped.replace('&amp;', '&')).query).get('m', [None])[0] for escaped in re.findall(r'src="(https://my\.matterport\.com[^"]*)"', page)}
-    rendered_tours = virtual_tours_to_render(research)
-    tours = '<h2>Recorridos y experiencias oficiales</h2>' if rendered_tours else ''
-    permitted = {'www.google.com', 'my.matterport.com', 'mpembed.com'}
-    for tour in rendered_tours:
-        model = parse_qs(urlparse(tour['url']).query).get('m', [None])[0]
-        if model and model in original_models:
-            tours += f'<p><a href="{esc(tour["url"])}" target="_blank" rel="noopener noreferrer">Abrir {esc(tour["title"])} en su experiencia original ↗</a></p>'
-            continue
-        tours += f'<h3>{esc(tour["title"])}</h3>'
-        if tour.get('embedStatus') == 'allowed':
-            permitted.add(urlparse(tour['url']).hostname)
-            tours += f'<div class="featured-embed"><button type="button" data-embed-src="{esc(tour["url"])}" data-embed-title="{esc(tour["title"])}">Iniciar recorrido interactivo</button></div>'
-        tours += f'<p><a href="{esc(tour["url"])}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a></p>'
     for key, label in [('edificio', 'Cantidad de pisos'), ('departamentos', 'Cantidad de departamentos')]:
         verified_count = bool(re.search(r'\d+\s*pisos?', str(features.get(key) or ''), re.I)) if key == 'edificio' else isinstance(features.get(key), int) and features[key] > 0
         if not verified_count and label not in research['pendingFields']:
             research['pendingFields'].append(label)
-    commercial_details = '<!-- featured-details-start --><section class="featured-verification" id="detalle-adicional">' + gallery + specs + tours + '</section><!-- featured-details-end -->'
+    commercial_details = '<!-- featured-details-start --><section class="featured-verification" id="detalle-adicional">' + gallery + specs + '</section><!-- featured-details-end -->'
     anchor = '</div>\n<aside class="lg:col-span-4">'
     assert anchor in page, slug + ': featured layout anchor missing'
     page = page.replace(anchor, commercial_details + '\n' + anchor, 1)
     if '/assets/css/featured-verification.css' not in page:
         page = page.replace('</head>', '<link rel="stylesheet" href="/assets/css/featured-verification.css">\n<script src="/assets/js/project-embeds.js" defer></script>\n</head>')
-    page = re.sub(r'<script type="application/json" id="project-embed-hosts">.*?</script>\n?', '', page, flags=re.S)
-    page = page.replace('</head>', '<script type="application/json" id="project-embed-hosts">' + json.dumps(sorted(permitted)) + '</script>\n</head>')
+    page = normalize_page_embeds(page, research, featured=True)
     path.write_text(details.commercialize_fiche(page, slug, research=research))
 (ROOT / 'data/fichas-proyectos.json').write_text(json.dumps(records, ensure_ascii=False, indent=2) + '\n')
 print('Updated sourced featured facts, media and maps with commercial presentation')

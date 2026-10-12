@@ -149,19 +149,30 @@ for project in projects:
     context_ledger = ledger_by_slug[slug].get('contextoOficial', {})
     assert context_ledger.get('mapaDeReferencia', False) == bool(reference_maps), f'{slug}: reference-map audit differs from rendered page'
     published_links = {entry.get('href') for entry in page.links}
+    published_frames = {entry.get('src') for entry in page.iframes}
+    assert not page.embeds, f'{slug}: activation-only embeds remain'
+    for frame in page.iframes:
+        assert frame.get('loading') == 'lazy' and frame.get('title'), f'{slug}: iframe must load automatically and have an accessible title'
+        assert frame.get('referrerpolicy') == 'strict-origin-when-cross-origin', f'{slug}: iframe referrer policy changed'
     rendered_tours = virtual_tours_to_render(record)
     for tour in rendered_tours:
-        assert tour['url'] in published_links, f'{slug}: original tour link missing'
+        if tour.get('embedStatus') == 'allowed':
+            assert tour['url'] in published_frames, f'{slug}: automatic tour frame missing'
+            assert tour['url'] not in published_links, f'{slug}: redundant external tour link remains'
+        else:
+            assert slug == 'endemico' and tour['url'] == 'https://mybakerlab.com/endemico/', f'{slug}: unreviewed provider fallback'
+            assert tour['url'] in published_links and tour['url'] not in published_frames, f'{slug}: documented external alternative missing'
     for tour in record.get('virtualTours', []):
         if tour not in rendered_tours:
             assert tour['url'] not in published_links, f'{slug}: unavailable or unassociated tour still published'
+            assert tour['url'] not in published_frames, f'{slug}: unavailable or unassociated tour still embedded'
     assert 'La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.' not in text, f'{slug}: stale tour availability notice'
     if not rendered_tours:
         assert 'recorrido' not in page.ids, f'{slug}: empty or unassociated tour section'
         assert '#recorrido' not in published_links, f'{slug}: stale tour navigation'
         assert 'Recorridos y experiencias oficiales' not in text, f'{slug}: empty legacy tour block'
         assert 'Consulta la disponibilidad de un recorrido virtual' not in text, f'{slug}: absent-tour placeholder'
-    actual_matterport = any(tour.get('provider') == 'Matterport' and tour['url'] in published_links for tour in record.get('virtualTours', []))
+    actual_matterport = any(tour.get('provider') == 'Matterport' and tour['url'] in published_frames for tour in record.get('virtualTours', []))
     assert ledger_by_slug[slug]['matterport'] == actual_matterport, f'{slug}: Matterport audit differs from rendered page'
     assert ledger_by_slug[slug]['recorridosOficiales'] == len(record.get('virtualTours', [])), f'{slug}: official tour count differs from research'
     if slug not in FEATURED:

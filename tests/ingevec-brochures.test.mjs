@@ -15,7 +15,8 @@ import { assertCommercialBytes, commercialPage, INGEVEC_ADDED_SLUGS,
   assertAddedFicheFallback, assertIngevecManifestAddition, PORTFOLIO_BASELINE,
   INGEVEC_NEW_SLUGS, INGEVEC_ENRICHED_SLUGS, INGEVEC_FINAL_SLUGS,
   INGEVEC_REMOVED_SLUGS, readCommercialFile, assertPortfolioData,
-  assertDefinitiveFicheFallback, removeReviewedTourBlocks } from './commercial-html.mjs';
+  assertDefinitiveFicheFallback, removeReviewedTourBlocks,
+  AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet } from './commercial-html.mjs';
 import { brochureSourceDocuments, BROCHURE_RETIRED_ASSETS } from '../scripts/brochure-publication.mjs';
 
 // Supplied brochures enrich only these protected Preview pages and covers.
@@ -221,7 +222,8 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
   assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1))),
-    [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs'].sort());
+    [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort());
+  assertAutomaticEmbedStylesheet();
 });
 
 test('three public fallbacks retain original content and JSON-LD; five AJ fichas receive only their previously approved additions and commercial presentation', () => {

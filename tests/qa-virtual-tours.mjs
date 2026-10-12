@@ -1,5 +1,5 @@
 // Read-only browser audit of every fiche at all three requested viewports.
-// External frames are isolated; loader-to-iframe behavior is checked separately.
+// External frames are isolated for 432 layout checks; live provider QA is separate.
 import { createRequire } from 'node:module';
 import { createHash } from 'node:crypto';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
@@ -11,6 +11,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const option = (name, fallback) => process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : fallback;
 const base = option('--base', 'http://127.0.0.1:8897');
 const out = resolve(option('--output', '/private/tmp/sollahms-virtual-tour-browser'));
+const packagedRoot = resolve(option('--site-root', resolve(root, 'dist')));
 await mkdir(out, { recursive: true });
 const projects = JSON.parse(await readFile(resolve(root, 'data/proyectos.json')));
 const records = new Map(JSON.parse(await readFile(resolve(root, 'data/fichas-proyectos.json'))).map(r => [r.slug, r]));
@@ -26,7 +27,10 @@ try {
       if (request.isNavigationRequest() && new URL(request.url()).origin !== new URL(base).origin) {
         return route.fulfill({ status: 200, contentType: 'text/html', body: '<html><body>External frame isolated for layout audit</body></html>' });
       }
-      if (new URL(request.url()).origin !== new URL(base).origin && !/fonts\.(googleapis|gstatic)\.com/.test(new URL(request.url()).hostname)) return route.abort();
+      // The all-fiche layout pass is deterministic; live screenshots separately
+      // exercise provider content and fonts over the network.
+      if (new URL(request.url()).hostname === 'fonts.googleapis.com') return route.fulfill({ status: 200, contentType: 'text/css', body: '' });
+      if (new URL(request.url()).origin !== new URL(base).origin) return route.abort();
       if (new URL(request.url()).origin === new URL(base).origin && process.env.VERCEL_OIDC_TOKEN) {
         return route.continue({ headers: { ...request.headers(), 'x-vercel-trusted-oidc-idp-token': process.env.VERCEL_OIDC_TOKEN } });
       }
@@ -40,8 +44,8 @@ try {
         const localErrors = [];
         const onError = e => localErrors.push(e.message);
         page.on('pageerror', onError);
-        const response = await page.goto(base + project.detalleUrl, { waitUntil: 'load', timeout: 45000 });
-        const localHtml = await readFile(resolve(root, 'dist', project.slug + '.html'));
+        const response = await page.goto(base + project.detalleUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+        const localHtml = await readFile(resolve(packagedRoot, project.slug + '.html'));
         const htmlMatchesPackagedPreview = createHash('sha256').update(await response.body()).digest('hex') === createHash('sha256').update(localHtml).digest('hex');
         const inspected = await page.evaluate(() => {
           const visible = e => !!e.getClientRects().length;
@@ -73,23 +77,36 @@ try {
         if (!expected && (inspected.tourSection || inspected.tourNav || inspected.legacyTour)) localErrors.push('Tour remains without usable registration');
         if (expected && !inspected.tourSection && !inspected.legacyTour) localErrors.push('Registered tour section missing');
         if (!expected && inspected.locationGap !== null && Math.abs(inspected.locationGap - inspected.previousMargin) > 2) localErrors.push('Location gap differs from normal section margin');
-        const loader = page.locator('#recorrido button[data-embed-src]').first();
-        let loaderChecked = false;
-        if (await loader.count()) {
-          const originalUrl = await loader.getAttribute('data-embed-src');
-          await loader.click();
-          const frame = page.locator('#recorrido iframe').first();
-          await frame.waitFor({ state: 'attached' });
-          if (await frame.getAttribute('src') !== originalUrl) localErrors.push('Tour loader changed registered URL');
-          if (!await frame.getAttribute('title')) localErrors.push('Tour iframe has no accessible title');
-          loaderChecked = true;
+        if (await page.locator('[data-embed-src]').count()) localErrors.push('Activation button remains');
+        if (await page.getByText('Abrir recorrido original', { exact: false }).count()) localErrors.push('Redundant original viewer link remains');
+        const frameChecks = [];
+        const frames = page.locator('iframe');
+        for (let n = 0; n < await frames.count(); n++) {
+          const frame = frames.nth(n);
+          const attributes = await frame.evaluate(f => ({ src: f.src, title: f.title, loading: f.loading,
+            referrerPolicy: f.referrerPolicy, allowFullscreen: f.allowFullscreen, allow: f.allow,
+            width: f.getBoundingClientRect().width, height: f.getBoundingClientRect().height }));
+          if (attributes.loading !== 'lazy') localErrors.push('Iframe is not lazy');
+          if (!attributes.title || !attributes.src.startsWith('https://')) localErrors.push('Iframe missing safe URL/title');
+          if (attributes.referrerPolicy !== 'strict-origin-when-cross-origin') localErrors.push('Iframe missing referrer policy');
+          if (!attributes.src.includes('google.com/maps') && !attributes.allowFullscreen) localErrors.push('Tour lacks fullscreen permission');
+          await frame.evaluate(f => f.scrollIntoView({ block: 'center', behavior: 'instant' }));
+          const handle = await frame.elementHandle();
+          const child = await handle.contentFrame();
+          try {
+            await child.waitForURL(attributes.src, { timeout: 5000 });
+            frameChecks.push({ ...attributes, autoLoadedAfterScroll: true });
+          } catch {
+            localErrors.push('Iframe did not load automatically after scrolling: ' + attributes.src);
+            frameChecks.push({ ...attributes, autoLoadedAfterScroll: false });
+          }
         }
-        if (['distrito-centro', 'centenario-1', 'irarrazaval', 'inn-puerto-chico', 'endemico', 'edificio-verne'].includes(project.slug)) {
+        if (['bcome', 'distrito-centro', 'centenario-1', 'irarrazaval', 'inn-puerto-chico', 'endemico', 'edificio-verne'].includes(project.slug)) {
           const target = page.locator('#ubicacion').first();
           if (await target.count()) await target.scrollIntoViewIfNeeded();
           await page.screenshot({ path: resolve(out, `${viewport.name}-${project.slug}.png`) });
         }
-        const row = { slug: project.slug, viewport: viewport.name, expectedTour: expected, status: response.status(), htmlMatchesPackagedPreview, ...inspected, loaderChecked, errors: localErrors };
+        const row = { slug: project.slug, viewport: viewport.name, expectedTour: expected, status: response.status(), htmlMatchesPackagedPreview, ...inspected, frameChecks, errors: localErrors };
         results.push(row);
         if (localErrors.length) errors.push({ slug: project.slug, viewport: viewport.name, errors: localErrors });
         page.off('pageerror', onError);
@@ -100,9 +117,9 @@ try {
     console.log(JSON.stringify({ viewport: viewport.name, checked: results.filter(r => r.viewport === viewport.name).length, errors: errors.filter(r => r.viewport === viewport.name).length }));
   }
 } finally { await browser.close(); }
-const report = { base, projects: projects.length, viewports, pageChecks: results.length,
-  loaderChecks: results.filter(r => r.loaderChecked).length, externalFramesIsolated: true, externalPostRequests: 0,
+const report = { base, packagedRoot, projects: projects.length, viewports, pageChecks: results.length,
+  automaticFrameChecks: results.reduce((sum, r) => sum + r.frameChecks.length, 0), externalFramesIsolated: true, externalFontsIsolated: true, externalPostRequests: 0,
   passed: errors.length === 0 && results.length === 432, errors, results };
 await writeFile(resolve(out, 'responsive-results.json'), JSON.stringify(report, null, 2) + '\n');
-console.log(JSON.stringify({ passed: report.passed, pageChecks: report.pageChecks, loaderChecks: report.loaderChecks, errors }));
+console.log(JSON.stringify({ passed: report.passed, pageChecks: report.pageChecks, automaticFrameChecks: report.automaticFrameChecks, errors }));
 process.exitCode = report.passed ? 0 : 1;
