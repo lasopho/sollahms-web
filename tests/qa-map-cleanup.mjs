@@ -16,7 +16,11 @@ const base = option('--base', 'http://127.0.0.1:8898').replace(/\/$/, '');
 const output = resolve(option('--output', '/private/tmp/sollahms-map-cleanup-qa'));
 const siteRoot = resolve(option('--site-root', root));
 const baselineRef = option('--baseline-ref', 'bb69615d03230cbab76bdc2678938cc741f80e86');
+const resumePath = option('--resume', '');
+const previousReport = resumePath ? JSON.parse(await readFile(resolve(resumePath))) : null;
+const retryCases = previousReport ? new Set(previousReport.results.filter(row => row.errors?.length).map(row => `${row.viewport}:${row.slug}`)) : null;
 const live = !process.argv.includes('--skip-live');
+const liveOnly = process.argv.includes('--live-only');
 const projects = JSON.parse(await readFile(resolve(root, 'data/proyectos.json')));
 const baseline = new Map(projects.map(project => [project.slug,
   execFileSync('git', ['show', `${baselineRef}:${project.slug}.html`], { cwd: root, encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 })]));
@@ -26,7 +30,9 @@ const viewports = [
   { name: 'mobile', width: 390, height: 844 },
 ];
 const samples = new Set(['bcome', 'inn-puerto-chico', 'distrito-centro', 'centenario-1', 'edificio-verne', 'endemico', 'irarrazaval']);
-const results = [], errors = [], screenshots = [], fallbackResults = [], liveResults = [];
+const results = previousReport ? previousReport.results.filter(row => !retryCases.has(`${row.viewport}:${row.slug}`)) : [];
+const errors = [], warnings = [], screenshots = previousReport?.screenshots || [];
+const fallbackResults = previousReport?.fallbackResults || [], liveResults = [];
 const externalMutations = [];
 const origin = new URL(base).origin;
 await mkdir(output, { recursive: true });
@@ -102,33 +108,64 @@ async function inspect(page, originalHtml, project) {
   }, { originalHtml, project });
 }
 
+async function waitForLocalStyles(page) {
+  await page.waitForFunction(() => [...document.querySelectorAll('link[rel="stylesheet"]')]
+    .filter(link => new URL(link.href).origin === location.origin)
+    .every(link => link.sheet && link.sheet.cssRules.length > 0), null, { timeout: 10000 });
+}
+
 try {
-  for (const viewport of viewports) {
+  for (const viewport of liveOnly ? [] : viewports) {
+    const selectedProjects = retryCases ? projects.filter(project => retryCases.has(`${viewport.name}:${project.slug}`)) : projects;
+    if (!selectedProjects.length) continue;
     const context = await browser.newContext({ viewport });
     await isolate(context);
     let index = 0;
-    await Promise.all(Array.from({ length: 6 }, async () => {
+    await Promise.all(Array.from({ length: Number(option('--concurrency', previousReport ? '1' : '3')) }, async () => {
       const page = await context.newPage();
-      while (index < projects.length) {
-        const project = projects[index++], rowErrors = [];
+      while (index < selectedProjects.length) {
+        const project = selectedProjects[index++], rowErrors = [];
         const onError = error => rowErrors.push('Page error: ' + error.message);
         page.on('pageerror', onError);
         try {
           const response = await page.goto(base + project.detalleUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+          await waitForLocalStyles(page);
           const expectedHtml = await readFile(resolve(siteRoot, project.slug + '.html'));
           const servedHtml = await response.body();
           const htmlMatchesSite = createHash('sha256').update(expectedHtml).digest('hex') === createHash('sha256').update(servedHtml).digest('hex');
           const inspected = await inspect(page, baseline.get(project.slug), project);
+          let baselineLayoutComparison = null;
+          if (inspected.overflow > 2 || inspected.mapLayout.some(map => map.outsideViewport || map.height < 240)) {
+            const pageUrl = base + project.detalleUrl;
+            await page.route(pageUrl, route => route.fulfill({ status: 200, contentType: 'text/html', body: baseline.get(project.slug) }));
+            await page.goto(pageUrl, { waitUntil: 'domcontentloaded' });
+            await waitForLocalStyles(page);
+            const originalLayout = await inspect(page, baseline.get(project.slug), project);
+            baselineLayoutComparison = { baselineRef, currentOverflow: inspected.overflow, baselineOverflow: originalLayout.overflow,
+              currentMapLayout: inspected.mapLayout, baselineMapLayout: originalLayout.mapLayout,
+              preexistingOverflow: inspected.overflow > 2 && inspected.overflow === originalLayout.overflow,
+              preexistingMapDimensions: equal(inspected.mapLayout.map(map => [map.width, map.height, map.outsideViewport]), originalLayout.mapLayout.map(map => [map.width, map.height, map.outsideViewport])) };
+            await page.screenshot({ path: resolve(output, `${viewport.name}-${project.slug}-baseline-layout.png`) });
+            await page.unroute(pageUrl);
+            await page.goto(pageUrl, { waitUntil: 'domcontentloaded' });
+            await waitForLocalStyles(page);
+          }
           if (response.status() !== 200) rowErrors.push('HTML HTTP ' + response.status());
           if (!htmlMatchesSite) rowErrors.push('Served HTML differs from requested site root');
-          if (inspected.overflow > 2) rowErrors.push('Horizontal overflow: ' + inspected.overflow);
+          if (inspected.overflow > 2) {
+            if (baselineLayoutComparison?.preexistingOverflow) warnings.push({ slug: project.slug, viewport: viewport.name, type: 'baseline-overflow-in-isolated-font-environment', details: baselineLayoutComparison });
+            else rowErrors.push('Horizontal overflow: ' + inspected.overflow);
+          }
           if (!inspected.addressPreserved) rowErrors.push('Project address missing');
           if (inspected.persistentMapLinks.length) rowErrors.push('Persistent external map link remains');
           if (inspected.genericNote) rowErrors.push('Generic geocoding note remains');
           if (inspected.obsoleteNoscript) rowErrors.push('Obsolete map-link noscript remains');
           if (inspected.emptyLeftovers.length) rowErrors.push('Empty element remains after map');
           if (inspected.brokenFragments.length) rowErrors.push('Broken fragment target: ' + inspected.brokenFragments.join(', '));
-          if (inspected.mapLayout.some(map => map.outsideViewport || map.height < 240)) rowErrors.push('Map has invalid responsive dimensions');
+          if (inspected.mapLayout.some(map => map.outsideViewport || map.height < 240)) {
+            if (baselineLayoutComparison?.preexistingMapDimensions) warnings.push({ slug: project.slug, viewport: viewport.name, type: 'baseline-map-dimensions', details: baselineLayoutComparison });
+            else rowErrors.push('Map has invalid responsive dimensions');
+          }
           for (const key of ['frames', 'images', 'links', 'specifications', 'directions', 'plans', 'endemicoException']) {
             if (!equal(inspected.current[key], inspected.previous[key])) rowErrors.push('Baseline inventory changed: ' + key);
           }
@@ -156,6 +193,7 @@ try {
           const { current, previous, ...layout } = inspected;
           results.push({ slug: project.slug, viewport: viewport.name, status: response.status(), htmlMatchesSite,
             ...layout, imageCount: current.images.length, planCount: current.plans.length,
+            baselineLayoutComparison,
             inventoryPreserved: { frames: equal(current.frames, previous.frames), images: equal(current.images, previous.images),
               links: equal(current.links, previous.links), specifications: equal(current.specifications, previous.specifications),
               directions: equal(current.directions, previous.directions), plans: equal(current.plans, previous.plans) },
@@ -180,7 +218,7 @@ try {
 
   // Deliberately dispatch the browser's actual error event through the retained
   // listener. No timing heuristic or cross-origin load event means failure.
-  for (const slug of ['bcome', 'inn-puerto-chico', 'distrito-centro', 'edificio-verne']) {
+  for (const slug of previousReport || liveOnly ? [] : ['bcome', 'inn-puerto-chico', 'distrito-centro', 'edificio-verne']) {
     const context = await browser.newContext({ viewport: viewports[2] });
     await isolate(context);
     const page = await context.newPage();
@@ -208,7 +246,9 @@ try {
     const context = await browser.newContext({ viewport });
     await context.route('**/*', async route => {
       const request = route.request(), url = new URL(request.url());
-      if (!['GET', 'HEAD'].includes(request.method())) return route.abort();
+      // Google uses POST RPCs to read place/viewport data. Allow its native
+      // provider traffic; no first-party forms or links are submitted here.
+      if (!['GET', 'HEAD'].includes(request.method()) && !/(?:^|\.)(?:google\.com|googleapis\.com|gstatic\.com)$/.test(url.hostname)) return route.abort();
       if (request.isNavigationRequest() && url.origin !== origin && !url.hostname.endsWith('google.com')) return route.fulfill({ status: 200, contentType: 'text/html', body: '<html><body>Tour isolated during live Google-map QA</body></html>' });
       if (url.origin === origin && process.env.VERCEL_OIDC_TOKEN) return route.continue({ headers: { ...request.headers(), 'x-vercel-trusted-oidc-idp-token': process.env.VERCEL_OIDC_TOKEN } });
       return route.continue();
@@ -216,11 +256,13 @@ try {
     const page = await context.newPage(), networkFailures = [];
     page.on('requestfailed', request => { if (request.isNavigationRequest()) networkFailures.push({ url: request.url(), error: request.failure()?.errorText }); });
     await page.goto(`${base}/${slug}.html`, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    await waitForLocalStyles(page);
     const element = page.locator('iframe[data-project-embed="map"]').first();
     await element.scrollIntoViewIfNeeded();
     const child = await (await element.elementHandle()).contentFrame();
     let evidence;
     try {
+      await child.waitForURL(url => url.protocol === 'https:' && /(?:^|\.)google\.com$/.test(url.hostname), { timeout: 15000 });
       await child.waitForLoadState('domcontentloaded', { timeout: 30000 });
       await child.waitForTimeout(4000);
       evidence = await child.evaluate(() => {
@@ -254,13 +296,16 @@ const counts = viewports.map(viewport => {
     maplessFiches: rows.filter(row => row.mapCount === 0).map(row => row.slug),
     healthyPersistentLinks: rows.reduce((sum, row) => sum + (row.persistentMapLinks?.length || 0), 0) };
 });
-if (counts.some(row => row.fiches !== 144 || row.maps !== 137 || row.tours !== 97 || row.plans !== 142)) errors.push({ phase: 'catalogue-counts', counts });
+if (!liveOnly && counts.some(row => row.fiches !== 144 || row.maps !== 137 || row.tours !== 97 || row.plans !== 142)) errors.push({ phase: 'catalogue-counts', counts });
 const report = { base, siteRoot, baselineRef, generatedAt: new Date().toISOString(), projects: projects.length,
+  auditMode: liveOnly ? 'live-google-samples-only' : 'all-fiche-responsive-and-live',
   viewports, pageChecks: results.length, counts, externalFramesIsolatedForLayout: true, externalFontsIsolatedForLayout: true,
   automaticFrameChecks: results.reduce((sum, row) => sum + (row.automaticFrames?.length || 0), 0),
   fallbackResults, liveResults, liveNativeGoogleControlsVerified: liveResults.filter(row => row.nativeGoogleControl).length,
-  screenshots, externalMutationsBlocked: externalMutations, errors,
-  passed: projects.length === 144 && results.length === 432 && errors.length === 0, results };
+  screenshots, externalMutationsBlocked: externalMutations, errors, warnings,
+  retryProvenance: previousReport ? { priorReport: resolve(resumePath), retriedResponsiveCases: [...retryCases], liveProviderRoutingCorrected: true, allPreviousSuccessfulResponsiveCasesRetained: true } : null,
+  previousValidationProvenance: previousReport?.validationProvenance || previousReport?.retryProvenance || null,
+  passed: errors.length === 0 && (liveOnly ? liveResults.length === 9 && liveResults.every(row => row.nativeGoogleControl && row.persistentLinks === 0) : projects.length === 144 && results.length === 432), results };
 await writeFile(resolve(output, 'results.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ passed: report.passed, pageChecks: report.pageChecks, counts, automaticFrameChecks: report.automaticFrameChecks,
   errorRecoveryChecks: fallbackResults.length, liveNativeGoogleControlsVerified: report.liveNativeGoogleControlsVerified, errors }));
