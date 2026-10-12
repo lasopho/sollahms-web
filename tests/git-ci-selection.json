@@ -1,10 +1,14 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 235,
+  "expectedGitNodeTests": 240,
   "expectedReleaseOnlyCases": 22,
-  "expectedPythonFixtureTests": 67,
+  "expectedPythonFixtureTests": 74,
   "fullFiles": [
+    {
+      "file": "tests/project-map-cleanup.test.mjs",
+      "reason": "Runs in full using the unchanged native-lazy runtime and synthetic DOM/error events; no private derivatives or external providers needed."
+    },
     {
       "file": "tests/brochure-publication.test.mjs",
       "reason": "Runs in full using tracked code/data, local DOM doubles and synthetic providers/fixtures; no private derivatives needed."

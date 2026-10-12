@@ -98,9 +98,8 @@ def official_context_content(research):
         content += '</div>'
     if context.get('mapQuery'):
         query = context['mapQuery']
-        maps_link = 'https://www.google.com/maps/search/?' + urlencode({'api': 1, 'query': query})
         embed_link = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
-        content += f'<h3>Ubicación publicada en esta fuente</h3><p>{esc(query)}</p>' + map_markup(embed_link, f'Mapa de {context["name"]} — fuente relacionada') + f'<a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir dirección relacionada en Google Maps ↗</a><p class="map-note">{esc(context.get("mapNote") or "Dirección general publicada por la inmobiliaria. El acceso de la etapa específica sigue pendiente de verificación; el marcador lo determina Google Maps.")}</p>'
+        content += f'<h3>Ubicación publicada en esta fuente</h3><p>{esc(query)}</p>' + map_markup(embed_link, f'Mapa de {context["name"]} — fuente relacionada') + f'<p class="map-note">{esc(context.get("mapNote") or "Dirección general publicada por la inmobiliaria. El acceso de la etapa específica sigue pendiente de verificación; el marcador lo determina Google Maps.")}</p>'
     content += f'<p><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Consultar esta fuente oficial ↗</a> · Revisión de este apartado: <time datetime="{esc(context["checkedAt"])}">{esc(context["checkedAt"])}</time>.</p></section>'
     return content
 
@@ -151,9 +150,8 @@ def render(project, research, template):
     # An address requires both official address and official commune. No approximate coordinates.
     mapped = bool(address and field(project, research, 'comuna') and field(project, research, 'mapQuery'))
     if mapped:
-        maps_link = 'https://www.google.com/maps/search/?' + urlencode({'api': 1, 'query': query})
         embed_link = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
-        map_html = f'<p class="lead">{esc(query)}</p>' + map_markup(embed_link, f'Mapa de {query}') + f'<a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a><p class="map-note">El mapa busca la dirección publicada por la inmobiliaria. La ubicación del marcador la determina Google Maps; confirma el acceso exacto en la fuente oficial.</p><noscript><p>El enlace a Google Maps permite consultar la ubicación sin JavaScript.</p></noscript>'
+        map_html = f'<p class="lead">{esc(query)}</p>' + map_markup(embed_link, f'Mapa de {query}')
     else:
         if address:
             reason = 'Falta confirmar la comuna administrativa para incorporar un mapa sin ambigüedad.' if not field(project, research, 'comuna') else 'La ubicación exacta o el acceso presenta referencias pendientes de aclaración. Confirma el punto de acceso con la inmobiliaria.'
