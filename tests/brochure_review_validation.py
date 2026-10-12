@@ -10,6 +10,7 @@ import hashlib
 import subprocess
 from pathlib import Path
 from html.parser import HTMLParser
+from virtual_tour_scope import restore_reviewed_file, historical_commercial_renderer
 
 BASELINE = 'e903208160f62cc552e9efa4371a322ef75477b8'
 INGEVEC = {'centenario-1', 'tocornal', 'vivaceta'}
@@ -103,7 +104,7 @@ def assert_commercial_presentation(current, previous, slug):
     plans, maps, scripts, SEO or contact/simulation controls.
     """
     sys.path.insert(0, str(ROOT / 'scripts'))
-    from fiche_presentation import commercialize_fiche
+    commercialize_fiche = historical_commercial_renderer()
     expected = commercialize_fiche(previous, slug=slug)
     protected_current = current
     if slug in INGEVEC_ADDED:
@@ -270,7 +271,7 @@ LAUNCH_CHANGES = {
     'assets/js/purchase-capacity-ui.mjs': ('9c88641dae8d6cf9ab5ea1223b02a5abc917f9370f7862dea33366b226f73657', 'bdec9e59215c9b2116122dbded8e7604e380654defb3ef69f9d364c38556f724'),
     'api/contact.mjs': ('49de20c58d907203e424d17d2c933a7109c8c2d339d5bec4c67080c10992b73e', '6533c6f2e3cda476cd325d2074cc963394efdab16cc0839fb526da4aa1c399b2'),
     'lib/booking-server.mjs': ('09bada2e8bbeba6116fbe4974b391488f3c94ec3eca0df8696b6a194bc45326c', '27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4'),
-    'vercel.json': ('657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', 'dcfd7ec8a1502e2a344b99eec83198702643438378ddda9c135274a92036a97f'),
+    'vercel.json': ('657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', 'c63faaa21f31a17621b38eb6f9f21ffbcb39611eb12564ef492808a35001ed22'),
 }
 REVIEWED_SCOPES = {
     'data/brochures-aj-urbana.json': '8dc9872b11f578321d176dcd83b9c2da457a55f65104112c029582f20a688cc2',
@@ -354,6 +355,8 @@ def validate_portfolio_source():
     assert {r['slug'] for r in manifest['projects']} == FINAL_INGEVEC
     for path in ['data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/fuentes-imagenes.json', 'data/catalogo-original-fichas.json', 'privacidad.html', 'templates/project-detail.html', 'vercel.json', 'robots.txt']:
         current, previous = (ROOT / path).read_bytes(), portfolio_previous(path)
+        if path == 'templates/project-detail.html':
+            current = restore_reviewed_file(path, current)
         if path == 'data/brochures-aj-urbana.json':
             assert restore_reviewed_scope(json.loads(current), json.loads(previous), path) == json.loads(previous), f'{path}: original assets/evidence changed'
         else:
@@ -377,10 +380,10 @@ def validate_portfolio_source():
     assert len(set(expected_urls)) == 150
     import sys
     sys.path.insert(0,str(ROOT / 'scripts'))
-    from fiche_presentation import commercialize_fiche
+    commercialize_fiche = historical_commercial_renderer()
     images = models = maps = tours = unchanged = 0
     for project in projects:
-        slug = project['slug']; text = (ROOT / (slug + '.html')).read_text()
+        slug = project['slug']; text = restore_reviewed_file(slug + '.html', (ROOT / (slug + '.html')).read_bytes()).decode()
         if slug not in NEW_PROJECTS:
             previous = portfolio_previous(slug + '.html').decode()
             if slug in ENRICHED:

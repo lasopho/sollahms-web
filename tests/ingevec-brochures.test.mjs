@@ -15,7 +15,7 @@ import { assertCommercialBytes, commercialPage, INGEVEC_ADDED_SLUGS,
   assertAddedFicheFallback, assertIngevecManifestAddition, PORTFOLIO_BASELINE,
   INGEVEC_NEW_SLUGS, INGEVEC_ENRICHED_SLUGS, INGEVEC_FINAL_SLUGS,
   INGEVEC_REMOVED_SLUGS, readCommercialFile, assertPortfolioData,
-  assertDefinitiveFicheFallback } from './commercial-html.mjs';
+  assertDefinitiveFicheFallback, removeReviewedTourBlocks } from './commercial-html.mjs';
 import { brochureSourceDocuments, BROCHURE_RETIRED_ASSETS } from '../scripts/brochure-publication.mjs';
 
 // Supplied brochures enrich only these protected Preview pages and covers.
@@ -554,7 +554,7 @@ test('real Preview packaging changes only twenty-one authorized card covers, pub
       const html = readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8');
       const expected = htmlFor(slug).replace(/<!--INGEVEC_PUBLIC_START-->[\s\S]*?<!--INGEVEC_PUBLIC_END-->/g, '')
         .replace(/<!--INGEVEC_PREVIEW_(?:START|END)-->/g, '').replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
-      assert.equal(html, expected, slug);
+      assert.equal(html, removeReviewedTourBlocks(expected, slug), slug);
       assert.match(html, /Modelos y distribuciones/);
       assert.doesNotMatch(html, /<!--INGEVEC_(?:PUBLIC|PREVIEW)_(?:START|END)-->/);
       for (const model of records.get(slug).models) assert.ok(html.includes(model.plan.localPath));
@@ -577,14 +577,14 @@ test('a synthetic pending contract excludes protected media outside Preview and 
     for (const environment of ['production', undefined]) {
       packageFixture(fixture, environment);
       assert.ok(readFileSync(join(fixture, 'dist/data/proyectos.json')).equals(current('data/proyectos.json')));
-      for (const slug of SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), commercialPage(old(slug + '.html'), slug), slug);
+      for (const slug of SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), removeReviewedTourBlocks(commercialPage(old(slug + '.html'), slug), slug), slug);
       for (const slug of INGEVEC_ADDED_SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'),
-        assertAddedFicheFallback(htmlFor(slug), slug), slug + ': new brochures must preserve the exact approved public fallback');
+        removeReviewedTourBlocks(assertAddedFicheFallback(htmlFor(slug), slug), slug), slug + ': new brochures must preserve the exact approved public fallback');
       for (const slug of INGEVEC_ENRICHED_SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'),
-        assertDefinitiveFicheFallback(htmlFor(slug), slug), slug + ': the four additions preserve their exact approved fallback');
+        removeReviewedTourBlocks(assertDefinitiveFicheFallback(htmlFor(slug), slug), slug), slug + ': the four additions preserve their exact approved fallback');
       for (const slug of INGEVEC_NEW_SLUGS) {
         const html = readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8');
-        assert.equal(html, publicVersion(htmlFor(slug)), slug + ': the new fiche retains its documented public fallback');
+        assert.equal(html, removeReviewedTourBlocks(publicVersion(htmlFor(slug)), slug), slug + ': the new fiche retains its documented public fallback');
         assert.match(html, /Consultar precio/);
         assert.doesNotMatch(html, /ingevec-preview|id="modelos"|INGEVEC_(?:PUBLIC|PREVIEW)/);
       }
@@ -592,7 +592,7 @@ test('a synthetic pending contract excludes protected media outside Preview and 
       for (const slug of AJ_SLUGS) {
         const original = old(slug + '.html').toString().replace(/<!--AJ_PREVIEW_START-->[\s\S]*?<!--AJ_PREVIEW_END-->/g, '')
           .replace(/<!--AJ_PUBLIC_START-->([\s\S]*?)<!--AJ_PUBLIC_END-->/g, '$1');
-        assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), commercialPage(original, slug), slug);
+        assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), removeReviewedTourBlocks(commercialPage(original, slug), slug), slug);
       }
       for (const folder of [ASSETS, AJ_ASSETS]) assert.equal(existsSync(join(fixture, 'dist', folder.slice(1))), false);
       assert.equal(existsSync(join(fixture, 'dist', CSS)), false);
@@ -791,25 +791,25 @@ test('a synthetic pending Git Preview without Ingevec assets preserves sixteen f
     for (const slug of SLUGS) {
       const html = readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8');
       const expected = commercialPage(old(slug + '.html'), slug).replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
-      assert.equal(html, expected, slug + ': old images, maps, tours, navigation and forms must remain exact');
+      assert.equal(html, removeReviewedTourBlocks(expected, slug), slug + ': resources remain exact outside the approved tour removal');
       assert.doesNotMatch(html, /ingevec-preview|Modelos y distribuciones|INGEVEC_(?:PUBLIC|PREVIEW)/);
     }
     for (const slug of INGEVEC_ADDED_SLUGS) {
       const expected = assertAddedFicheFallback(htmlFor(slug), slug)
         .replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
-      assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), expected, slug);
+      assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), removeReviewedTourBlocks(expected, slug), slug);
     }
     for (const slug of [...INGEVEC_ENRICHED_SLUGS, ...INGEVEC_NEW_SLUGS]) {
       const base = INGEVEC_ENRICHED_SLUGS.has(slug) ? assertDefinitiveFicheFallback(htmlFor(slug), slug) : publicVersion(htmlFor(slug));
       const html = readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8');
-      assert.equal(html, base.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>'), slug);
+      assert.equal(html, removeReviewedTourBlocks(base.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>'), slug), slug);
       assert.doesNotMatch(html, /ingevec-preview|id="modelos"|INGEVEC_(?:PUBLIC|PREVIEW)/);
     }
     for (const slug of AJ_SLUGS) {
       const html = readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8');
       const expected = htmlFor(slug).replace(/<!--AJ_PUBLIC_START-->[\s\S]*?<!--AJ_PUBLIC_END-->/g, '')
         .replace(/<!--AJ_PREVIEW_(?:START|END)-->/g, '').replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
-      assert.equal(html, expected, slug + ': absent Ingevec media must not disable the existing AJ review');
+      assert.equal(html, removeReviewedTourBlocks(expected, slug), slug + ': absent Ingevec media must not disable the existing AJ review');
       assert.match(html, /Modelos y distribuciones/);
     }
     assert.equal(existsSync(join(fixture, 'dist', ASSETS.slice(1))), false);

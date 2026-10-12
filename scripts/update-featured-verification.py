@@ -5,6 +5,7 @@ import json
 import re
 from pathlib import Path
 from urllib.parse import urlencode, urlparse, parse_qs
+from virtual_tour_policy import virtual_tours_to_render
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('details', ROOT / 'scripts/build-project-details.py')
@@ -92,9 +93,10 @@ for research in records:
         specs += '<li>' + esc(details.LABELS[key]) + ': ' + text + '</li>'
     specs += '</ul>'
     original_models = {parse_qs(urlparse(escaped.replace('&amp;', '&')).query).get('m', [None])[0] for escaped in re.findall(r'src="(https://my\.matterport\.com[^"]*)"', page)}
-    tours = '<h2>Recorridos y experiencias oficiales</h2>'
+    rendered_tours = virtual_tours_to_render(research)
+    tours = '<h2>Recorridos y experiencias oficiales</h2>' if rendered_tours else ''
     permitted = {'www.google.com', 'my.matterport.com', 'mpembed.com'}
-    for tour in research.get('virtualTours', []):
+    for tour in rendered_tours:
         model = parse_qs(urlparse(tour['url']).query).get('m', [None])[0]
         if model and model in original_models:
             tours += f'<p><a href="{esc(tour["url"])}" target="_blank" rel="noopener noreferrer">Abrir {esc(tour["title"])} en su experiencia original ↗</a></p>'
@@ -104,8 +106,6 @@ for research in records:
             permitted.add(urlparse(tour['url']).hostname)
             tours += f'<div class="featured-embed"><button type="button" data-embed-src="{esc(tour["url"])}" data-embed-title="{esc(tour["title"])}">Iniciar recorrido interactivo</button></div>'
         tours += f'<p><a href="{esc(tour["url"])}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a></p>'
-    if not research.get('virtualTours'):
-        tours += '<p>Recorrido virtual oficial específico pendiente de verificación.</p>'
     for key, label in [('edificio', 'Cantidad de pisos'), ('departamentos', 'Cantidad de departamentos')]:
         verified_count = bool(re.search(r'\d+\s*pisos?', str(features.get(key) or ''), re.I)) if key == 'edificio' else isinstance(features.get(key), int) and features[key] > 0
         if not verified_count and label not in research['pendingFields']:
@@ -118,6 +118,6 @@ for research in records:
         page = page.replace('</head>', '<link rel="stylesheet" href="/assets/css/featured-verification.css">\n<script src="/assets/js/project-embeds.js" defer></script>\n</head>')
     page = re.sub(r'<script type="application/json" id="project-embed-hosts">.*?</script>\n?', '', page, flags=re.S)
     page = page.replace('</head>', '<script type="application/json" id="project-embed-hosts">' + json.dumps(sorted(permitted)) + '</script>\n</head>')
-    path.write_text(details.commercialize_fiche(page, slug))
+    path.write_text(details.commercialize_fiche(page, slug, research=research))
 (ROOT / 'data/fichas-proyectos.json').write_text(json.dumps(records, ensure_ascii=False, indent=2) + '\n')
 print('Updated sourced featured facts, media and maps with commercial presentation')

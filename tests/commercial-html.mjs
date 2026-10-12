@@ -10,6 +10,17 @@ const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')))
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
 assert.equal(ficheFiles.size, 144);
 const transformed = new Map();
+const restoredTourFiles = new Map();
+export function restoreReviewedTourFile(file, actual) {
+  const key = file + ':' + createHash('sha256').update(actual).digest('hex');
+  if (!restoredTourFiles.has(key)) restoredTourFiles.set(key, execFileSync('python3',
+    [resolve(ROOT, 'tests/virtual_tour_scope.py'), file], { cwd: ROOT, input: actual, maxBuffer: 4 * 1024 * 1024 }));
+  return restoredTourFiles.get(key);
+}
+export function removeReviewedTourBlocks(html, slug) {
+  return execFileSync('python3', [resolve(ROOT, 'tests/virtual_tour_scope.py'), '--remove', slug],
+    { cwd: ROOT, input: html, encoding: 'utf8', maxBuffer: 4 * 1024 * 1024 });
+}
 // Exact reviewed launch changes. These five files formerly had a byte-for-byte
 // freeze; keep that freeze everywhere else and pin both sides of these narrow
 // UF/Origin/header exceptions. Their behavior is tested independently.
@@ -18,7 +29,7 @@ const LAUNCH_CHANGES = {
   'assets/js/purchase-capacity-ui.mjs': ['9c88641dae8d6cf9ab5ea1223b02a5abc917f9370f7862dea33366b226f73657', 'bdec9e59215c9b2116122dbded8e7604e380654defb3ef69f9d364c38556f724'],
   'api/contact.mjs': ['49de20c58d907203e424d17d2c933a7109c8c2d339d5bec4c67080c10992b73e', '6533c6f2e3cda476cd325d2074cc963394efdab16cc0839fb526da4aa1c399b2'],
   'lib/booking-server.mjs': ['09bada2e8bbeba6116fbe4974b391488f3c94ec3eca0df8696b6a194bc45326c', '27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4'],
-  'vercel.json': ['657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', 'dcfd7ec8a1502e2a344b99eec83198702643438378ddda9c135274a92036a97f'],
+  'vercel.json': ['657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', 'c63faaa21f31a17621b38eb6f9f21ffbcb39611eb12564ef492808a35001ed22'],
 };
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const REVIEWED_SCOPES = {
@@ -50,7 +61,11 @@ export function readCommercialFile(file) {
     assert.equal(existsSync(resolve(ROOT,file)), false, file + ': retired public route must be absent');
     return Buffer.alloc(0);
   }
-  return readFileSync(resolve(ROOT,file));
+  const actual = readFileSync(resolve(ROOT,file));
+  // Historical checks receive the original only after independently proving
+  // that real current bytes contain exactly the authorized tour removal.
+  return ficheFiles.has(file) || file === 'templates/project-detail.html'
+    ? restoreReviewedTourFile(file, actual) : actual;
 }
 export function vimaImageCorrection(value, json = false) {
   const bad = '/assets/propiedades/catalogo/571b2a1740b3b5d4920157fa.webp';
@@ -173,8 +188,8 @@ export function commercialPage(bytes, slug) {
   const html = bytes.toString();
   const key = slug + ':' + createHash('sha256').update(html).digest('hex');
   if (!transformed.has(key)) {
-    const script = 'import sys\nsys.path.insert(0,sys.argv[1])\nfrom fiche_presentation import commercialize_fiche\nsys.stdout.write(commercialize_fiche(sys.stdin.read(),sys.argv[2]))';
-    transformed.set(key, execFileSync('python3', ['-c', script, resolve(ROOT, 'scripts'), slug], {
+    const script = 'import sys\nsys.path.insert(0,sys.argv[1])\nfrom virtual_tour_scope import historical_commercial_renderer\nsys.stdout.write(historical_commercial_renderer()(sys.stdin.read(),sys.argv[2]))';
+    transformed.set(key, execFileSync('python3', ['-c', script, resolve(ROOT, 'tests'), slug], {
       cwd: ROOT, input: html, encoding: 'utf8', maxBuffer: 4 * 1024 * 1024,
     }));
   }

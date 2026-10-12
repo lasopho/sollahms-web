@@ -155,6 +155,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output-directory', required=True, type=Path)
     parser.add_argument('--node', default=shutil.which('node'))
+    parser.add_argument('--branch', default='codex/integracion-financiera-sollahms',
+                        help='Authorized review branch recorded in the private package')
     parser.add_argument('--verify-public-web', action='store_true',
                         help='Require real contractual web coverage and compare an offline Production build; never deploys')
     args = parser.parse_args()
@@ -173,7 +175,7 @@ def main():
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, target)
         env = dict(os.environ, VERCEL_ENV='preview',
-                   VERCEL_GIT_COMMIT_REF='codex/integracion-financiera-sollahms')
+                   VERCEL_GIT_COMMIT_REF=args.branch)
         env.pop('SOLLAHMS_BROCHURE_PROFILE', None)
         subprocess.run([args.node, str(stage / 'scripts/package-vercel.mjs')],
                        cwd=stage, env=env, check=True, stdout=subprocess.PIPE)
@@ -208,7 +210,7 @@ def main():
         chunks.append({'file': f'.vercel/source.tgz.part{index}', 'privatePath': str(target),
                        'sha': hashlib.sha1(fragment).hexdigest(), 'sha256': sha(fragment), 'size': len(fragment)})
     metadata = {'transport': 'native_source_archive', 'target': 'preview',
-                'branch': 'codex/integracion-financiera-sollahms',
+                'branch': args.branch,
                 'contractualCoverageVerified': receipt['contractualCoverageVerified'],
                 'sourceFileCount': len(files), 'sourceBytes': sum(f['size'] for f in inventory),
                 'archive': {'privatePath': str(archive), 'sha256': sha(data), 'size': len(data)},
