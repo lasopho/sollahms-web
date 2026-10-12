@@ -70,8 +70,7 @@ for research in records:
     query = field('mapQuery')
     if query:
         embed = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
-        link = 'https://www.google.com/maps/search/?' + urlencode({'api': 1, 'query': query})
-        replacement = map_markup(embed, f'Mapa de {query}') + f'<p class="text-secondary"><a href="{esc(link)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a></p><p class="text-secondary text-sm">Mapa de búsqueda de la dirección oficial. Google Maps determina el marcador; confirma el acceso en la fuente original.</p>'
+        replacement = map_markup(embed, f'Mapa de {query}')
         # Include previous appended links when rerunning; preserve idempotence.
         pattern = r'(?:<div class="project-embed project-embed-map">)?<iframe\b[^>]*src="https://www.google.com/maps[^>]*></iframe>(?:</div>)?(?:<p class="text-secondary"><a href="https://www.google.com/maps/search/.*?</p><p class="text-secondary text-sm">.*?</p>)?'
         page = re.sub(pattern, lambda _: replacement, page, count=1, flags=re.S)

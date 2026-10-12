@@ -113,6 +113,30 @@ def attributes(tag):
             re.findall(r'([\w-]+)\s*=\s*(["\'])(.*?)\2', tag, re.S)}
 
 
+def remove_redundant_map_details(page):
+    """Remove only permanent map actions and generic address-marker boilerplate.
+
+    The iframe's URL, accessible title and error-only fallback stay untouched.
+    Related-project identity notes remain because they explain the map's scope.
+    """
+    action = (r'<a class="button button-outline" href="https://www\.google\.com/maps/search/[^"<>]*" '
+              r'target="_blank" rel="noopener noreferrer">'
+              r'(?:Abrir en Google Maps|Abrir dirección relacionada en Google Maps) ↗</a>'
+              r'|<p class="text-secondary"><a href="https://www\.google\.com/maps/search/[^"<>]*" '
+              r'target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a></p>')
+    frame = r'(<div class="project-embed project-embed-map"><iframe\b[^>]*></iframe></div>)'
+    page = re.sub(frame + r'(?:' + action + r')', r'\1', page)
+    notes = (
+        'Google Maps determina el marcador por dirección. Confirma el acceso exacto al consultar.',
+        'El mapa busca la dirección publicada por la inmobiliaria. La ubicación del marcador la determina Google Maps; confirma el acceso exacto en la fuente oficial.',
+        'Mapa de búsqueda de la dirección oficial. Google Maps determina el marcador; confirma el acceso en la fuente original.',
+    )
+    for note in notes:
+        page = re.sub(r'<p class="(?:map-note|text-secondary text-sm)">' + re.escape(note) + r'</p>', '', page)
+    page = page.replace('<noscript><p>El enlace a Google Maps permite consultar la ubicación sin JavaScript.</p></noscript>', '')
+    return page
+
+
 def normalize_page_embeds(page, research, featured=False):
     """Migrate just map/tour markup and the shared stylesheet, idempotently.
 
@@ -169,4 +193,4 @@ def normalize_page_embeds(page, research, featured=False):
         page = page.replace('</head>', host_script + '\n</head>', 1)
     if 'data-embed-src=' in page:
         raise ValueError(research['slug'] + ': an activation loader remains')
-    return page
+    return remove_redundant_map_details(page)

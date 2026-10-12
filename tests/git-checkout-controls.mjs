@@ -12,6 +12,7 @@ const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const INTEGRATION = 'codex/integracion-financiera-sollahms';
 const TOUR_REVIEW = 'codex/recorridos-validos-144';
 const AUTOMATIC_EMBEDS = 'codex/mapas-recorridos-auto';
+const MAP_CLEANUP = 'codex/limpieza-mapas-fichas';
 const APPROVED_PORTFOLIO = 'e7afe04';
 const read = path => readFileSync(resolve(ROOT, path));
 const json = path => JSON.parse(read(path));
@@ -19,8 +20,8 @@ const git = (...args) => execFileSync('git', args, { cwd: ROOT });
 const configuration = json('vercel.json');
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false },
-    'Main, integration and both virtual-tour review branches require the reproducible manual deployment path');
+  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false },
+    'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
   const global = config.headers?.filter(rule => rule.source === '/(.*)');
@@ -40,6 +41,8 @@ test('manual deployment gates reject missing integration protection, enabled bra
     config => { config.git.deploymentEnabled[TOUR_REVIEW] = true; },
     config => { delete config.git.deploymentEnabled[AUTOMATIC_EMBEDS]; },
     config => { config.git.deploymentEnabled[AUTOMATIC_EMBEDS] = true; },
+    config => { delete config.git.deploymentEnabled[MAP_CLEANUP]; },
+    config => { config.git.deploymentEnabled[MAP_CLEANUP] = true; },
     config => { config.git.deploymentEnabled.main = true; },
     config => { config.git.deploymentEnabled[INTEGRATION] = true; },
     config => { config.git.deploymentEnabled['*'] = true; },

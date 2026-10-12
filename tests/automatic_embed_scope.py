@@ -14,6 +14,7 @@ import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlparse
+from map_cleanup_scope import transform_map_cleanup
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = 'f342ae969b53d3e9460803d024b34b06574b294c'
@@ -180,7 +181,7 @@ def transform_automatic_markup(original, slug):
     pattern = r'<script type="application/json" id="project-embed-hosts">.*?</script>'
     assert len(re.findall(pattern, text, re.S)) == 1
     text = re.sub(pattern, lambda _: host_script, text, count=1, flags=re.S)
-    return text
+    return transform_map_cleanup(text, slug)
 
 
 def restore_automatic_file(path, current):

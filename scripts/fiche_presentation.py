@@ -7,6 +7,7 @@ The same policy applies to a future English rendering without creating routes.
 import html
 import re
 from virtual_tour_policy import hide_absent_virtual_tours
+from project_embed_policy import remove_redundant_map_details
 
 
 ES_COPY = {
@@ -214,5 +215,5 @@ def commercialize_fiche(page, slug=None, language=None, research=None):
     # Unknown prices retain uncertainty with an actionable commercial label.
     body = re.sub(r'(<(?:strong|div class="price[^\"]*")>)<span class="pending">Por confirmar</span>', r'\1<span class="pending">Consultar precio</span>', body)
     body = body.replace('href="/privacidad.html"', 'href="/privacidad.html#informacion-inmobiliaria-material-grafico"')
-    result = prefix + body
+    result = remove_redundant_map_details(prefix + body)
     return hide_absent_virtual_tours(result, research) if research is not None else result

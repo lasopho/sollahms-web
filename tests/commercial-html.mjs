@@ -32,8 +32,13 @@ export function removeReviewedTourBlocks(html, slug) {
     { cwd: ROOT, input: removed, encoding: 'utf8', maxBuffer: 4 * 1024 * 1024 });
 }
 export const AUTOMATIC_EMBED_CSS = 'assets/css/project-embeds.css';
+function restoreMapCleanupAsset(file, actual) {
+  return execFileSync('python3', [resolve(ROOT, 'tests/map_cleanup_scope.py'), file],
+    { cwd: ROOT, input: actual, maxBuffer: 4 * 1024 * 1024 });
+}
 export function assertAutomaticEmbedStylesheet() {
-  assert.equal(createHash('sha256').update(readFileSync(resolve(ROOT, AUTOMATIC_EMBED_CSS))).digest('hex'),
+  const historical = restoreMapCleanupAsset(AUTOMATIC_EMBED_CSS, readFileSync(resolve(ROOT, AUTOMATIC_EMBED_CSS)));
+  assert.equal(createHash('sha256').update(historical).digest('hex'),
     '8c0d88544e0341fd795fa76f86af44dc12ed29f7b7368258f6c077e6880a298f',
     'Only the exact shared automatic-viewer stylesheet is an authorized asset addition');
 }
@@ -220,6 +225,7 @@ export function assertCatalogueConsultPrices(actual, baseline) {
 }
 
 export function assertCommercialBytes(file, actual, baseline) {
+  if (file === 'vercel.json') actual = restoreMapCleanupAsset(file, actual);
   if (LAUNCH_CHANGES[file]) {
     const [before, after] = LAUNCH_CHANGES[file];
     assert.equal(digest(baseline), before, file + ': unrecognized pre-launch baseline');
