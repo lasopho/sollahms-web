@@ -11,6 +11,14 @@ const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
 assert.equal(ficheFiles.size, 144);
 const transformed = new Map();
 const restoredTourFiles = new Map();
+const automaticEmbedAssets = new Set(['assets/js/project-embeds.js']);
+const restoredEmbedAssets = new Map();
+function restoreReviewedEmbedAsset(file, actual) {
+  const key = file + ':' + createHash('sha256').update(actual).digest('hex');
+  if (!restoredEmbedAssets.has(key)) restoredEmbedAssets.set(key, execFileSync('python3',
+    [resolve(ROOT, 'tests/automatic_embed_scope.py'), file], { cwd: ROOT, input: actual, maxBuffer: 4 * 1024 * 1024 }));
+  return restoredEmbedAssets.get(key);
+}
 export function restoreReviewedTourFile(file, actual) {
   const key = file + ':' + createHash('sha256').update(actual).digest('hex');
   if (!restoredTourFiles.has(key)) restoredTourFiles.set(key, execFileSync('python3',
@@ -18,8 +26,16 @@ export function restoreReviewedTourFile(file, actual) {
   return restoredTourFiles.get(key);
 }
 export function removeReviewedTourBlocks(html, slug) {
-  return execFileSync('python3', [resolve(ROOT, 'tests/virtual_tour_scope.py'), '--remove', slug],
+  const removed = execFileSync('python3', [resolve(ROOT, 'tests/virtual_tour_scope.py'), '--remove', slug],
     { cwd: ROOT, input: html, encoding: 'utf8', maxBuffer: 4 * 1024 * 1024 });
+  return execFileSync('python3', [resolve(ROOT, 'tests/automatic_embed_scope.py'), '--transform', slug],
+    { cwd: ROOT, input: removed, encoding: 'utf8', maxBuffer: 4 * 1024 * 1024 });
+}
+export const AUTOMATIC_EMBED_CSS = 'assets/css/project-embeds.css';
+export function assertAutomaticEmbedStylesheet() {
+  assert.equal(createHash('sha256').update(readFileSync(resolve(ROOT, AUTOMATIC_EMBED_CSS))).digest('hex'),
+    '8c0d88544e0341fd795fa76f86af44dc12ed29f7b7368258f6c077e6880a298f',
+    'Only the exact shared automatic-viewer stylesheet is an authorized asset addition');
 }
 // Exact reviewed launch changes. These five files formerly had a byte-for-byte
 // freeze; keep that freeze everywhere else and pin both sides of these narrow
@@ -29,7 +45,7 @@ const LAUNCH_CHANGES = {
   'assets/js/purchase-capacity-ui.mjs': ['9c88641dae8d6cf9ab5ea1223b02a5abc917f9370f7862dea33366b226f73657', 'bdec9e59215c9b2116122dbded8e7604e380654defb3ef69f9d364c38556f724'],
   'api/contact.mjs': ['49de20c58d907203e424d17d2c933a7109c8c2d339d5bec4c67080c10992b73e', '6533c6f2e3cda476cd325d2074cc963394efdab16cc0839fb526da4aa1c399b2'],
   'lib/booking-server.mjs': ['09bada2e8bbeba6116fbe4974b391488f3c94ec3eca0df8696b6a194bc45326c', '27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4'],
-  'vercel.json': ['657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', 'c63faaa21f31a17621b38eb6f9f21ffbcb39611eb12564ef492808a35001ed22'],
+  'vercel.json': ['657438c67f137cc5536583aa13f9451afec31bf8969ffc22480a1963d8a00401', '01087c9848f31ae6259db2c53ed20f668eb547e68bd4603303670aedc2b3320d'],
 };
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const REVIEWED_SCOPES = {
@@ -62,6 +78,7 @@ export function readCommercialFile(file) {
     return Buffer.alloc(0);
   }
   const actual = readFileSync(resolve(ROOT,file));
+  if (automaticEmbedAssets.has(file)) return restoreReviewedEmbedAsset(file, actual);
   // Historical checks receive the original only after independently proving
   // that real current bytes contain exactly the authorized tour removal.
   return ficheFiles.has(file) || file === 'templates/project-detail.html'

@@ -14,6 +14,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from brochure_review_validation import (BASELINE as REVIEW_BASELINE, verified_public_page,
                                         validate_commercial_source)
+from automatic_embed_scope import REVIEWED_ASSETS, restore_automatic_asset
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -104,6 +105,8 @@ def main():
     ]
     for name in protected_files:
         current_bytes = (ROOT / name).read_bytes()
+        if name in REVIEWED_ASSETS:
+            current_bytes = restore_automatic_asset(name, current_bytes)
         old_bytes = baseline(name, ref)
         if name == 'agenda-asesoria.html':
             old_bytes = with_current_navigation(old_bytes.decode()).encode()

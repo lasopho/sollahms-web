@@ -11,7 +11,9 @@ import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 from string import Template
+from urllib.parse import urlparse
 from virtual_tour_scope import exact_removed_page, VISTA_UNAVAILABLE_URL
+from automatic_embed_scope import expected_automatic_file, restore_automatic_file, main_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = '3f7b7e481e632e06d36702f556f6f2bca61bc55b'
@@ -52,10 +54,12 @@ class VirtualTours(unittest.TestCase):
         for r in preserved:
             path = r['slug'] + '.html'
             before = original(path)
-            expected = exact_removed_page(before, r['slug'])
+            removed = exact_removed_page(before, r['slug'])
+            self.assertEqual(removed, main_bytes(path), path + ': approved tour withdrawal baseline')
+            expected = expected_automatic_file(path)
             self.assertEqual((ROOT / path).read_bytes(), expected, path)
-            untouched += expected == before
-            corrected += expected != before
+            untouched += removed == before
+            corrected += removed != before
             retained = [t for t in r['virtualTours']
                         if (r['slug'], t['url']) != ('vista-bulnes', VISTA_UNAVAILABLE_URL)]
             self.assertEqual(virtual_tours_to_render(r), retained, r['slug'])
@@ -130,6 +134,10 @@ class VirtualTours(unittest.TestCase):
             self.assertEqual('href="#recorrido"' in page, expected, p['slug'])
             self.assertNotIn('Consulta la disponibilidad de un recorrido virtual', page)
             self.assertNotIn('La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.', page)
+            self.assertNotIn('data-embed-src=', page)
+            self.assertNotIn('Iniciar recorrido interactivo', page)
+            self.assertNotIn('Mostrar mapa interactivo', page)
+            self.assertNotIn('Abrir recorrido original', page)
             expected_links = [t for t in RECORDS[p['slug']]['virtualTours']
                               if (p['slug'], t['url']) != ('vista-bulnes', VISTA_UNAVAILABLE_URL)] if expected else []
             self.assertEqual(count, len(expected_links))
@@ -138,6 +146,70 @@ class VirtualTours(unittest.TestCase):
             sections += expected
             tours += count
         self.assertEqual((sections, tours), (61, 98))
+
+    def test_all_144_pages_are_the_exact_automatic_embed_transform(self):
+        for project in PROJECTS:
+            path = project['slug'] + '.html'
+            current = (ROOT / path).read_bytes()
+            self.assertEqual(current, expected_automatic_file(path), path)
+            self.assertEqual(restore_automatic_file(path, current), main_bytes(path), path)
+        path = 'templates/project-detail.html'
+        self.assertEqual((ROOT / path).read_bytes(), expected_automatic_file(path))
+
+    def test_137_maps_and_97_tour_frames_keep_exact_sources_and_secure_lazy_attributes(self):
+        maps = tours = sections = external = 0
+        for project in PROJECTS:
+            slug = project['slug']
+            page = (ROOT / (slug + '.html')).read_text()
+            nodes = Nodes(page).nodes
+            hosts = json.loads(re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', page, re.S)[1])
+            self.assertNotIn('data-embed-src=', page, slug)
+            self.assertNotIn('Iniciar recorrido interactivo', page, slug)
+            self.assertNotIn('Mostrar mapa interactivo', page, slug)
+            self.assertNotIn('Abrir recorrido original', page, slug)
+            frames = [attrs for tag, attrs in nodes if tag == 'iframe']
+            map_frames = [attrs for attrs in frames if attrs.get('src', '').startswith('https://www.google.com/maps')]
+            before = Nodes(main_bytes(slug + '.html').decode()).nodes
+            previous_maps = [attrs.get('src') or attrs.get('data-embed-src') for tag, attrs in before
+                             if tag in {'iframe', 'button'} and
+                             (attrs.get('src') or attrs.get('data-embed-src', '')).startswith('https://www.google.com/maps')]
+            self.assertEqual([attrs['src'] for attrs in map_frames], previous_maps, slug + ': map query changed')
+            maps += len(map_frames)
+            tour_frames = [attrs for attrs in frames if attrs not in map_frames]
+            retained = [tour for tour in RECORDS[slug]['virtualTours']
+                        if slug != 'irarrazaval' and (slug, tour['url']) != ('vista-bulnes', VISTA_UNAVAILABLE_URL)]
+            expected_tours = [tour for tour in retained if tour.get('embedStatus') == 'allowed']
+            self.assertEqual([attrs['src'] for attrs in tour_frames], [tour['url'] for tour in expected_tours], slug)
+            self.assertEqual([attrs['title'] for attrs in tour_frames], [tour['title'] for tour in expected_tours], slug)
+            sections += any(attrs.get('id') == 'recorrido' for tag, attrs in nodes if tag == 'section')
+            tours += len(tour_frames)
+            for frame in map_frames + tour_frames:
+                url = urlparse(frame['src'])
+                self.assertEqual(url.scheme, 'https', slug)
+                self.assertIn(url.hostname, hosts, slug)
+                self.assertEqual(frame.get('loading'), 'lazy', slug)
+                self.assertTrue(frame.get('title'), slug)
+                self.assertEqual(frame.get('referrerpolicy'), 'strict-origin-when-cross-origin', slug)
+                self.assertIn('allowfullscreen', frame, slug)
+            for tour in expected_tours:
+                self.assertNotIn(tour['url'], [attrs.get('href') for tag, attrs in nodes if tag == 'a'], slug + ': redundant external tour link')
+            if slug == 'endemico':
+                fallback = [attrs for tag, attrs in nodes if tag == 'a' and attrs.get('href') == 'https://mybakerlab.com/endemico/']
+                self.assertEqual(len(fallback), 1)
+                self.assertEqual(fallback[0].get('target'), '_blank')
+                self.assertEqual(fallback[0].get('rel'), 'noopener noreferrer')
+                external += len(fallback)
+        self.assertEqual((maps, tours, sections, external), (137, 97, 61, 1))
+
+    def test_automatic_scope_rejects_mutations_outside_and_inside_approved_embeds(self):
+        path = 'bcome.html'
+        page = expected_automatic_file(path)
+        for mutation in [page + b'\n', page.replace(b'Paicav', b'Other location', 1),
+                         page.replace(b'loading="lazy"', b'loading="eager"', 1),
+                         page.replace(b'https://proyectos.rito3d.cl', b'https://unapproved.example', 1)]:
+            self.assertNotEqual(mutation, page)
+            with self.assertRaises(AssertionError):
+                restore_automatic_file(path, mutation)
 
     def test_future_empty_record_never_renders_a_tour(self):
         record = copy.deepcopy(RECORDS['endemico'])

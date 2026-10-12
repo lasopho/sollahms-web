@@ -12,10 +12,11 @@ import json
 import re
 from pathlib import Path
 from string import Template
-from urllib.parse import urlencode, urlparse, parse_qs
+from urllib.parse import urlencode
 from aj_brochure import augment_page
 from fiche_presentation import commercialize_fiche
-from virtual_tour_policy import secure_url, virtual_tours_to_render
+from virtual_tour_policy import secure_url
+from project_embed_policy import embed_hosts, map_markup, tour_section, unique_tours
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -99,7 +100,7 @@ def official_context_content(research):
         query = context['mapQuery']
         maps_link = 'https://www.google.com/maps/search/?' + urlencode({'api': 1, 'query': query})
         embed_link = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
-        content += f'<h3>Ubicación publicada en esta fuente</h3><p>{esc(query)}</p><div class="embed-shell map-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(embed_link)}" data-embed-title="Mapa de {esc(context["name"])} — fuente relacionada">Mostrar mapa de la fuente relacionada</button></div><a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir dirección relacionada en Google Maps ↗</a><p class="map-note">{esc(context.get("mapNote") or "Dirección general publicada por la inmobiliaria. El acceso de la etapa específica sigue pendiente de verificación; el marcador lo determina Google Maps.")}</p>'
+        content += f'<h3>Ubicación publicada en esta fuente</h3><p>{esc(query)}</p>' + map_markup(embed_link, f'Mapa de {context["name"]} — fuente relacionada') + f'<a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir dirección relacionada en Google Maps ↗</a><p class="map-note">{esc(context.get("mapNote") or "Dirección general publicada por la inmobiliaria. El acceso de la etapa específica sigue pendiente de verificación; el marcador lo determina Google Maps.")}</p>'
     content += f'<p><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Consultar esta fuente oficial ↗</a> · Revisión de este apartado: <time datetime="{esc(context["checkedAt"])}">{esc(context["checkedAt"])}</time>.</p></section>'
     return content
 
@@ -143,29 +144,16 @@ def render(project, research, template):
     gallery = '<div class="gallery-grid">' + ''.join(f'<figure><a href="{esc(image_url(i))}" target="_blank" rel="noopener noreferrer"><img src="{esc(image_url(i))}" alt="{esc(i.get("alt") or name)}" loading="lazy" decoding="async"></a></figure>' for i in images[:6]) + '</div>' if images else '<div class="pending-panel"><p>Fotografías oficiales pendientes de verificación. Puedes solicitar material del proyecto al consultar.</p></div>'
     amenities = field(project, research, 'amenities')
     amenities_html = '<ul class="amenity-list">' + ''.join(f'<li>{esc(x)}</li>' for x in amenities) + '</ul>' if isinstance(amenities, list) and amenities else '<div class="pending-panel"><p>Equipamiento y áreas comunes pendientes de verificación.</p></div>'
-    tours = []
-    rendered_tours = virtual_tours_to_render(research)
-    for tour in rendered_tours:
-        url = secure_url(tour.get('url'))
-        source = secure_url(tour.get('sourceUrl'))
-        if not url or not source:
-            continue
-        title = tour.get('title') or f'Recorrido de {name}'
-        parsed = urlparse(url)
-        can_embed = tour.get('embedStatus') == 'allowed' or (not tour.get('embedStatus') and parsed.hostname in ['my.matterport.com', 'mpembed.com'])
-        embed = f'<div class="embed-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(url)}" data-embed-title="{esc(title)}">Iniciar recorrido interactivo</button></div>' if can_embed else f'<a class="button button-outline" href="{esc(url)}" target="_blank" rel="noopener noreferrer">Consultar experiencia oficial ↗</a>'
-        limitation = f'<div class="pending-panel"><p>{esc(tour["identityLimitation"])}</p></div>' if tour.get('identityLimitation') else ''
-        tours.append(f'<article class="tour-card"><h3>{esc(title)}</h3>{limitation}{embed}<div class="embed-caption"><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Abrir recorrido original ↗</a><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Fuente oficial</a></div></article>')
-    tours_html = ''.join(tours)
+    tours = list(unique_tours(research))
     tour_navigation = '<a href="#recorrido">Recorrido virtual</a>' if tours else ''
-    tour_section = '<section id="recorrido" class="detail-section"><p class="eyebrow">Explora los espacios</p><h2>Recorrido virtual</h2>' + tours_html + '</section>' if tours else ''
+    tours_html = tour_section(research)
     query = ', '.join(str(x) for x in [address, field(project, research, 'comuna'), field(project, research, 'region'), 'Chile'] if x)
     # An address requires both official address and official commune. No approximate coordinates.
     mapped = bool(address and field(project, research, 'comuna') and field(project, research, 'mapQuery'))
     if mapped:
         maps_link = 'https://www.google.com/maps/search/?' + urlencode({'api': 1, 'query': query})
         embed_link = 'https://www.google.com/maps?' + urlencode({'output': 'embed', 'q': query})
-        map_html = f'<p class="lead">{esc(query)}</p><div class="embed-shell map-shell"><button type="button" class="button button-gold embed-loader" data-embed-src="{esc(embed_link)}" data-embed-title="Mapa de {esc(query)}">Mostrar mapa interactivo</button></div><a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a><p class="map-note">El mapa busca la dirección publicada por la inmobiliaria. La ubicación del marcador la determina Google Maps; confirma el acceso exacto en la fuente oficial.</p><noscript><p>El enlace a Google Maps permite consultar la ubicación sin JavaScript.</p></noscript>'
+        map_html = f'<p class="lead">{esc(query)}</p>' + map_markup(embed_link, f'Mapa de {query}') + f'<a class="button button-outline" href="{esc(maps_link)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a><p class="map-note">El mapa busca la dirección publicada por la inmobiliaria. La ubicación del marcador la determina Google Maps; confirma el acceso exacto en la fuente oficial.</p><noscript><p>El enlace a Google Maps permite consultar la ubicación sin JavaScript.</p></noscript>'
     else:
         if address:
             reason = 'Falta confirmar la comuna administrativa para incorporar un mapa sin ambigüedad.' if not field(project, research, 'comuna') else 'La ubicación exacta o el acceso presenta referencias pendientes de aclaración. Confirma el punto de acceso con la inmobiliaria.'
@@ -192,8 +180,7 @@ def render(project, research, template):
     stages = ''
     if 'etapas' in research.get('verifiedFields', []) and project.get('etapas'):
         stages = '<h3>Etapas del proyecto</h3><ul>' + ''.join('<li>' + esc(s.get('nombre', '')) + ': ' + esc(s.get('estado', 'Pendiente')) + '</li>' for s in project['etapas']) + '</ul>'
-    embed_hosts = sorted({'www.google.com', 'my.matterport.com', 'mpembed.com', 'www.youtube.com', 'player.vimeo.com'} | {urlparse(t['url']).hostname for t in research.get('virtualTours', []) if secure_url(t.get('url')) and t.get('embedStatus') == 'allowed'})
-    page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts), overview=overview_html, official_context=official_context_content(research), specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tour_navigation=tour_navigation, tour_section=tour_section, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
+    page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts(research)), overview=overview_html, official_context=official_context_content(research), specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tour_navigation=tour_navigation, tour_section=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
     return commercialize_fiche(augment_page(page, slug), slug, research=research), mapped, len(tours)
 
 def main():
@@ -246,7 +233,7 @@ def main():
     maps = sum(r['mapa'] for r in ledger)
     matterports = sum(r['matterport'] for r in ledger)
     unverified = sum(bool(r['pendientes']) for r in ledger)
-    report = f'# Registro de fichas Sollahms — {args.review_date}\n\nRama: `{args.branch}`. Sin merge ni despliegue de producción.\n\n- Catálogo real: {len(projects)} proyectos.\n- Fichas desarrolladas: {developed} ({len(FEATURED)} destacadas preexistentes, {developed-len(FEATURED)} nuevas).\n- Fichas por desarrollar: {len(projects)-developed}.\n- Proyectos con Matterport integrado: {matterports}.\n- Proyectos con apartado de mapa: {maps}.\n- Proyectos con al menos un dato pendiente: {unverified}.\n\nUna ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los recorridos se cargan a petición y tienen un enlace al original. Los apartados de información oficial relacionada tienen fuente, fecha y alcance propios: sus precios, imágenes y mapas generales no se atribuyen a una torre o producto residencial sin verificar ni alimentan su evaluación financiera.\n\n## Inventario completo\n\n| Proyecto / ficha | Inmobiliaria | Fuente oficial | Estado de fuente | Mapa | Matterport | Pendientes |\n| --- | --- | --- | --- | --- | --- | --- |\n'
+    report = f'# Registro de fichas Sollahms — {args.review_date}\n\nRama: `{args.branch}`. Sin merge ni despliegue de producción.\n\n- Catálogo real: {len(projects)} proyectos.\n- Fichas desarrolladas: {developed} ({len(FEATURED)} destacadas preexistentes, {developed-len(FEATURED)} nuevas).\n- Fichas por desarrollar: {len(projects)-developed}.\n- Proyectos con Matterport integrado: {matterports}.\n- Proyectos con apartado de mapa: {maps}.\n- Proyectos con al menos un dato pendiente: {unverified}.\n\nUna ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los mapas y recorridos acreditados usan iframes HTTPS con carga diferida nativa, sin botones de activación. Las alternativas externas se reservan para experiencias no acreditadas para integración o un fallo real del visor. Los apartados de información oficial relacionada tienen fuente, fecha y alcance propios: sus precios, imágenes y mapas generales no se atribuyen a una torre o producto residencial sin verificar ni alimentan su evaluación financiera.\n\n## Inventario completo\n\n| Proyecto / ficha | Inmobiliaria | Fuente oficial | Estado de fuente | Mapa | Matterport | Pendientes |\n| --- | --- | --- | --- | --- | --- | --- |\n'
     for r in ledger:
         source = f'[Oficial]({r["fuente"]})' if secure_url(r.get('fuente')) else 'Por identificar'
         report += f'| [{cell(r["nombre"])}](../{r["slug"]}.html) | {cell(r["inmobiliaria"])} | {source} | {r["estadoFuente"]} | {"Sí" if r["mapa"] else "Pendiente"} | {"Sí" if r["matterport"] else "No verificado"} | {cell(", ".join(r["pendientes"]))} |\n'
