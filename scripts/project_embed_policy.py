@@ -16,7 +16,6 @@ SHARED_STYLESHEET = '<link rel="stylesheet" href="/assets/css/project-embeds.css
 SHARED_SCRIPT = '<script src="/assets/js/project-embeds.js" defer></script>'
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
 MATTERPORT_HOSTS = {'my.matterport.com', 'mpembed.com'}
-XR_VIEWER_HOSTS = MATTERPORT_HOSTS | {'kuula.co', 'norteverde.viewin360.co', 'panoraven.com', 'proyectos.rito3d.cl'}
 
 
 def esc(value):
@@ -33,15 +32,12 @@ def iframe_permissions(url, kind='tour'):
     if kind == 'map':
         return 'fullscreen'
     host = urlparse(url).hostname
-    if host in XR_VIEWER_HOSTS:
-        # Kuula's official integration delegates XR, including its registered
-        # Norte Verde custom domain. Rito3D also queries XR in its native viewer.
-        # Panoraven's published embed delegates the mobile/VR compass sensor.
-        return ('fullscreen; xr-spatial-tracking; gyroscope; accelerometer' +
-                ('; magnetometer' if host == 'panoraven.com' else ''))
-    # Panorama viewers need fullscreen; motion controls are supported by the
-    # registered providers. Camera, microphone and autoplay are not delegated.
-    return 'fullscreen; gyroscope; accelerometer'
+    # Preserve the original site's tour permissions: providers may consult XR
+    # even when the visible scene does not expose a VR control. Panoraven's
+    # official embed additionally delegates its mobile/VR compass sensor.
+    # Camera, microphone and autoplay are not delegated.
+    return ('fullscreen; xr-spatial-tracking; gyroscope; accelerometer' +
+            ('; magnetometer' if host == 'panoraven.com' else ''))
 
 
 def iframe_markup(url, title, *, kind='tour', permitted_hosts=(), fallback_url=None):

@@ -11,6 +11,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const option = (name, fallback) => process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : fallback;
 const base = option('--base', 'http://127.0.0.1:8897');
 const out = resolve(option('--output', '/private/tmp/sollahms-virtual-tour-browser'));
+const packagedRoot = resolve(option('--site-root', resolve(root, 'dist')));
 await mkdir(out, { recursive: true });
 const projects = JSON.parse(await readFile(resolve(root, 'data/proyectos.json')));
 const records = new Map(JSON.parse(await readFile(resolve(root, 'data/fichas-proyectos.json'))).map(r => [r.slug, r]));
@@ -41,7 +42,7 @@ try {
         const onError = e => localErrors.push(e.message);
         page.on('pageerror', onError);
         const response = await page.goto(base + project.detalleUrl, { waitUntil: 'load', timeout: 45000 });
-        const localHtml = await readFile(resolve(root, 'dist', project.slug + '.html'));
+        const localHtml = await readFile(resolve(packagedRoot, project.slug + '.html'));
         const htmlMatchesPackagedPreview = createHash('sha256').update(await response.body()).digest('hex') === createHash('sha256').update(localHtml).digest('hex');
         const inspected = await page.evaluate(() => {
           const visible = e => !!e.getClientRects().length;
@@ -113,7 +114,7 @@ try {
     console.log(JSON.stringify({ viewport: viewport.name, checked: results.filter(r => r.viewport === viewport.name).length, errors: errors.filter(r => r.viewport === viewport.name).length }));
   }
 } finally { await browser.close(); }
-const report = { base, projects: projects.length, viewports, pageChecks: results.length,
+const report = { base, packagedRoot, projects: projects.length, viewports, pageChecks: results.length,
   automaticFrameChecks: results.reduce((sum, r) => sum + r.frameChecks.length, 0), externalFramesIsolated: true, externalPostRequests: 0,
   passed: errors.length === 0 && results.length === 432, errors, results };
 await writeFile(resolve(out, 'responsive-results.json'), JSON.stringify(report, null, 2) + '\n');

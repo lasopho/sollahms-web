@@ -66,11 +66,10 @@ def approved_frame(url, title, kind):
         wrapper, permission = 'project-embed project-embed-map', 'fullscreen'
     else:
         fallback, wrapper = url, 'project-embed'
-        permission = ('fullscreen; xr-spatial-tracking; gyroscope; accelerometer'
-                      if parsed.hostname in {'my.matterport.com', 'mpembed.com', 'kuula.co',
-                                             'norteverde.viewin360.co', 'panoraven.com',
-                                             'proyectos.rito3d.cl'}
-                      else 'fullscreen; gyroscope; accelerometer')
+        # Preserve the exact four permissions granted by main's original
+        # project-embeds.js after activation. Native-lazy scheduling changes
+        # when the iframe exists, not the provider's approved capabilities.
+        permission = 'fullscreen; xr-spatial-tracking; gyroscope; accelerometer'
         if parsed.hostname == 'panoraven.com':
             permission += '; magnetometer'
     return (f'<div class="{wrapper}"><iframe src="{esc(url)}" title="{esc(title)}" loading="lazy" '
