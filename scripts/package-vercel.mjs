@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile, access, lstat, realpath } 
 import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import { ecasaPublication, validateEcasaReview, ECASA_SLUGS, ECASA_RETIRED_SLUGS } from './ecasa-publication.mjs';
 import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   BROCHURE_REMOVED_SLUGS, BROCHURE_PUBLIC_PAGES, BROCHURE_RETIRED_ASSETS,
   brochureFingerprint } from './brochure-publication.mjs';
@@ -9,7 +10,7 @@ import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
-const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas']);
+const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva']);
 if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
   throw new Error('Unexpected branch for this review build');
 }
@@ -17,6 +18,10 @@ const profile = process.env.SOLLAHMS_BROCHURE_PROFILE;
 if (profile !== undefined && profile !== 'public-web') throw new Error('Unknown brochure content profile');
 const ajReview = JSON.parse(await readFile(join(root, 'data/brochures-aj-urbana.json'), 'utf8'));
 const ingevecReview = JSON.parse(await readFile(join(root, 'data/brochures-ingevec.json'), 'utf8'));
+const ecasaReview = JSON.parse(await readFile(join(root, 'data/brochures-ecasa.json'), 'utf8'));
+const ecasaRights = ecasaPublication(ecasaReview);
+const ecasaAssets = validateEcasaReview(ecasaReview);
+const ecasaIncluded = preview && ecasaRights.protectedReview;
 const ingevecOldSlugs = new Set(['centenario-1', 'tocornal', 'vivaceta']);
 const ingevecAddedDocuments = {
   'coronel-godoy': { '86e7bcd761a1037a460ae58c23f3c5f19ab047dde162f46c2f61c5ad38ad1085': [21, [15,16,17,18], null] },
@@ -90,6 +95,9 @@ for (const record of ingevecReview.projects) {
 if (profile === 'public-web' && (!ajRights.publicWeb || !ingevecRights.publicWeb)) {
   throw new Error('Public web content requires verified Yapo/IRIS contract scope for both batches');
 }
+if (profile === 'public-web' && !ecasaRights.publicWeb) {
+  throw new Error('Ecasa public web content requires its own verified promotional scope');
+}
 // Content eligibility is independent of Vercel's deployment environment.
 // Once contractual coverage is verified, missing media fails the build;
 // a future merge cannot silently replace those approved resources.
@@ -122,7 +130,7 @@ if (pages.some(name => !approvedPages.has(name))) {
 if (sourceProjects.some(project => !pages.includes(project.slug + '.html'))) {
   throw new Error('Every approved catalogue project must have its own public route');
 }
-const retiredLink = new RegExp('(?:["\\\'/])(?:' + BROCHURE_REMOVED_SLUGS.join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
+const retiredLink = new RegExp('(?:["\\\'/])(?:' + [...BROCHURE_REMOVED_SLUGS, ...ECASA_RETIRED_SLUGS].join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
 const sitemapSource = await readFile(join(root, 'sitemap.xml'));
 if (retiredLink.test(sitemapSource.toString())) throw new Error('The sitemap still contains a retired project route');
 const pageSources = new Map(await Promise.all(pages.map(async name => [name, await readFile(join(root, name), 'utf8')])));
@@ -239,6 +247,38 @@ if (ajIncluded || ingevecIncluded) {
   catalogueOutput = JSON.stringify(projects, null, 2) + '\n';
 }
 
+if (ecasaIncluded) {
+  const projects = JSON.parse(catalogueOutput);
+  for (const record of ecasaReview.projects) {
+    const project = projects.find(project => project.slug === record.slug);
+    if (!project || project.inmobiliaria !== 'Ecasa' || !ECASA_SLUGS.includes(record.slug)) {
+      throw new Error('Ecasa media identity differs from the authorized catalogue: ' + record.slug);
+    }
+    const fiche = pageSources.get(record.slug + '.html');
+    for (const asset of [...record.images, ...record.models.map(model => model.plan)]) {
+      if (!fiche.includes(asset.localPath)) throw new Error('Ecasa selected media is absent from its own fiche: ' + record.slug);
+      const path = join(root, asset.localPath.slice(1));
+      let bytes;
+      try {
+        if (!(await lstat(path)).isFile() || await realpath(path) !== path) throw new Error('Nonregular media');
+        bytes = await readFile(path);
+      } catch {
+        throw new Error('Incomplete Ecasa protected Preview media batch: reproducible source package required');
+      }
+      if (createHash('sha256').update(bytes).digest('hex') !== asset.sha256) {
+        throw new Error('Ecasa selected media bytes differ from review: ' + record.slug);
+      }
+      selectedMedia.add(path);
+      mediaInventory.push({ path: asset.localPath, sha256: asset.sha256, bytes: bytes.length });
+    }
+    if (record.catalogueCover) {
+      project.imagenPrincipal = record.catalogueCover.localPath;
+      project.imagenAlt = record.catalogueCover.alt;
+    }
+  }
+  catalogueOutput = JSON.stringify(projects, null, 2) + '\n';
+}
+
 // Static output is an explicit allowlist. API sources and their imports are
 // bundled separately by Vercel, never copied into the public directory.
 await rm(output, { recursive: true, force: true });
@@ -247,8 +287,8 @@ for (const name of pages) {
   let html = pageSources.get(name);
   // Legacy marker names describe the original review blocks. They select
   // content according to contractual coverage, never grant deploy approval.
-  for (const batch of ['AJ', 'INGEVEC']) {
-    const included = batch === 'AJ' ? ajIncluded : ingevecIncluded;
+  for (const batch of ['AJ', 'INGEVEC', 'ECASA']) {
+    const included = batch === 'AJ' ? ajIncluded : batch === 'INGEVEC' ? ingevecIncluded : ecasaIncluded;
     const remove = included ? 'PUBLIC' : 'PREVIEW';
     const keep = included ? 'PREVIEW' : 'PUBLIC';
     html = html.replace(new RegExp(`<!--${batch}_${remove}_START-->[\\s\\S]*?<!--${batch}_${remove}_END-->`, 'g'), '');
@@ -271,14 +311,14 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
     const info = await lstat(source);
     // No symlink can turn a nominal image directory into private content.
     if (info.isSymbolicLink()) throw new Error('Symbolic links are excluded from public assets');
-    for (const [folder, included] of [['aj-urbana-preview', ajIncluded], ['ingevec-preview', ingevecIncluded]]) {
+    for (const [folder, included] of [['aj-urbana-preview', ajIncluded], ['ingevec-preview', ingevecIncluded], ['ecasa-preview', ecasaIncluded]]) {
       const prefix = 'assets/propiedades/' + folder;
       if (path === prefix || path.startsWith(prefix + '/')) {
         if (!included) return false;
         return info.isDirectory() ? [...selectedMedia].some(file => file.startsWith(source + sep)) : selectedMedia.has(source);
       }
     }
-    if (path === 'assets/css/aj-brochure-preview.css') return ajIncluded || ingevecIncluded;
+    if (path === 'assets/css/aj-brochure-preview.css') return ajIncluded || ingevecIncluded || ecasaIncluded;
     if (info.isFile() && /\.(?:pdf|zip|docx?|xlsx?|toml|env)$/i.test(path)) return false;
     return true;
   } });
@@ -290,8 +330,11 @@ await writeFile(join(output, 'robots.txt'), preview ? 'User-agent: *\nDisallow: 
 // build. It is deliberately outside dist and contains no contract text.
 await mkdir(join(root, '.vercel'), { recursive: true });
 await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.stringify({
-  catalogueProjects: sourceProjects.length, publicationSource: 'Yapo/IRIS',
-  contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb,
+  catalogueProjects: sourceProjects.length, publicationSource: 'Yapo/IRIS + Ecasa/user_supplied',
+  contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb,
+  preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb,
+  ecasaContractualCoverageVerified: ecasaRights.publicWeb,
+  ecasaReviewMedia: ecasaIncluded ? ecasaAssets.length : 0,
   media: mediaInventory.sort((a, b) => a.path.localeCompare(b.path)),
 }, null, 2) + '\n');
-console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, selectedBrochureMedia: selectedMedia.size, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb }));
+console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: ecasaIncluded ? ecasaAssets.length : 0, selectedBrochureMedia: selectedMedia.size, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));

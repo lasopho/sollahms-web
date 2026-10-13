@@ -10,6 +10,7 @@ import subprocess
 import sys
 from pathlib import Path
 from automatic_embed_scope import restore_automatic_file
+from ecasa_scope import restore_successor_data
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = '3f7b7e481e632e06d36702f556f6f2bca61bc55b'
@@ -37,7 +38,7 @@ def approved_bytes(path):
 @functools.lru_cache(maxsize=1)
 def removal_slugs():
     original = approved_bytes('data/fichas-proyectos.json')
-    assert (ROOT / 'data/fichas-proyectos.json').read_bytes() == original, 'Tour research must remain byte exact'
+    assert restore_successor_data('data/fichas-proyectos.json', (ROOT / 'data/fichas-proyectos.json').read_bytes()) == json.loads(original), 'Tour research must remain exact outside the Ecasa successor'
     records = json.loads(original)
     absent = {row['slug'] for row in records if not row.get('virtualTours')}
     assert len(records) == 144 and len(absent) == 82

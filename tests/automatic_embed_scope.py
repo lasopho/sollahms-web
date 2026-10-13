@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlparse
 from map_cleanup_scope import transform_map_cleanup
+from ecasa_scope import restore_ecasa_page, restore_successor_data
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = 'f342ae969b53d3e9460803d024b34b06574b294c'
@@ -40,7 +41,7 @@ def main_bytes(path):
 @functools.lru_cache(maxsize=1)
 def records():
     baseline = main_bytes('data/fichas-proyectos.json')
-    assert (ROOT / 'data/fichas-proyectos.json').read_bytes() == baseline, 'Historical tour research changed'
+    assert restore_successor_data('data/fichas-proyectos.json', (ROOT / 'data/fichas-proyectos.json').read_bytes()) == json.loads(baseline), 'Historical tour research changed outside the Ecasa successor'
     rows = json.loads(baseline)
     assert len(rows) == 144
     return {row['slug']: row for row in rows}
@@ -186,6 +187,8 @@ def transform_automatic_markup(original, slug):
 
 def restore_automatic_file(path, current):
     """Return main bytes only after validating the actual exact authorized edit."""
+    if path.endswith('.html'):
+        current = restore_ecasa_page(path, current)
     expected = expected_automatic_file(path)
     assert current == expected, f'{path}: bytes outside exact automatic map/tour scope changed'
     return main_bytes(path)

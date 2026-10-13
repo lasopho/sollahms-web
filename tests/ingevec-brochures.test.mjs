@@ -11,7 +11,7 @@ import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import booking from '../api/booking-create.mjs';
-import { assertCommercialBytes, commercialPage, INGEVEC_ADDED_SLUGS,
+import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, assertCommercialBytes, commercialPage, INGEVEC_ADDED_SLUGS,
   assertAddedFicheFallback, assertIngevecManifestAddition, PORTFOLIO_BASELINE,
   INGEVEC_NEW_SLUGS, INGEVEC_ENRICHED_SLUGS, INGEVEC_FINAL_SLUGS,
   INGEVEC_REMOVED_SLUGS, readCommercialFile, assertPortfolioData,
@@ -174,10 +174,10 @@ function assetBytes(slug, asset) {
   return bytes;
 }
 
-test('the definitive 144 objects preserve all 128 other developers and historical research/financial evidence', () => {
+test('the 143-project Ecasa successor preserves non-Ecasa historical research and financial evidence', () => {
   assert.equal(git('rev-parse', BASELINE).toString().trim(), BASELINE);
-  assert.equal(catalogue.length, 144);
-  assert.equal(new Set(catalogue.map(project => project.slug)).size, 144);
+  assert.equal(catalogue.length, 143);
+  assert.equal(new Set(catalogue.map(project => project.slug)).size, 143);
   assertPortfolioData(current('data/proyectos.json'), old('data/proyectos.json', PORTFOLIO_BASELINE));
   for (const file of ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
     'data/fuentes-imagenes.json', 'data/hipotecario.json', 'data/catalogo-original-fichas.json',
@@ -195,10 +195,10 @@ test('the definitive 144 objects preserve all 128 other developers and historica
     'AJ models, geometry, descriptions and original media hashes remain exact; only provenance/rights change');
   let protectedPages = 0;
   for (const project of catalogue) {
-    if (REVIEW_PAGES.has(project.slug)) continue;
+    if (REVIEW_PAGES.has(project.slug) || ECASA_NEW_SLUGS.has(project.slug)) continue;
     unchanged(project.slug + '.html'); protectedPages++;
   }
-  assert.equal(protectedPages, 136);
+  assert.equal(protectedPages, 131);
   assertIngevecManifestAddition(current(MANIFEST), old(MANIFEST, 'b64911588e2fdf52f32d5f772b53735936fbd423'));
   for (const { file } of tree(BASELINE)) {
     if (/^[^/]+\.html$/.test(file) && !REVIEW_PAGES.has(file.slice(0, -5))) unchanged(file);
@@ -221,7 +221,7 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
-  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1))),
+  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/')),
     [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort());
   assertAutomaticEmbedStylesheet();
 });
@@ -371,7 +371,7 @@ test('brochure surfaces/typologies do not change existing prices, source confide
     savings: 100_000_000, savingsCurrency: 'CLP', monthlySavingsClp: 1_000_000, horizonMonths: 24,
     downPaymentPercent: 20, years: 20, annualRatePercent: 4.5, rateConvention: 'effective', burdenPercent: 25 };
   const prior = JSON.parse(old('data/proyectos.json'));
-  assert.equal(catalogue.filter(project => verifiedProjectPrice(project, DATE)).length, 110,
+  assert.equal(catalogue.filter(project => verifiedProjectPrice(project, DATE)).length, 106,
     'Only the five verified prices belonging to retired projects are removed; two new prices remain unverified');
   for (const slug of SLUGS) {
     const project = projectFor(slug);
@@ -428,6 +428,9 @@ function createPackagingFixture() {
   for (const folder of ['scripts', 'data', 'assets/css', 'assets/js']) mkdirSync(join(fixture, folder), { recursive: true });
   copyFileSync(resolve(ROOT, 'scripts/package-vercel.mjs'), join(fixture, 'scripts/package-vercel.mjs'));
   copyFileSync(resolve(ROOT, 'scripts/brochure-publication.mjs'), join(fixture, 'scripts/brochure-publication.mjs'));
+    copyFileSync(resolve(ROOT, 'scripts/ecasa-publication.mjs'), join(fixture, 'scripts/ecasa-publication.mjs'));
+    copyFileSync(resolve(ROOT, 'data/brochures-ecasa.json'), join(fixture, 'data/brochures-ecasa.json'));
+    if (existsSync(resolve(ROOT, 'assets/propiedades/ecasa-preview'))) cpSync(resolve(ROOT, 'assets/propiedades/ecasa-preview'), join(fixture, 'assets/propiedades/ecasa-preview'), { recursive: true });
   for (const path of ['data/proyectos.json', 'data/hipotecario.json', MANIFEST, 'data/brochures-aj-urbana.json',
     CSS, 'sitemap.xml', 'robots.txt']) copyFileSync(resolve(ROOT, path), join(fixture, path));
   for (const folder of [ASSETS, AJ_ASSETS]) {
@@ -474,26 +477,30 @@ function resetSyntheticContractPending(fixture) {
   }
 }
 
-test('a verified contract yields identical 144 fichas, covers and 269 media in Preview and an offline public web build', () => {
+test('AJ and Ingevec retain their 269 media across Preview and offline public fallback while Ecasa stays protected', () => {
   const fixture = createPackagingFixture();
   try {
     resetSyntheticContractPending(fixture);
     assert.throws(() => packageFixture(fixture, 'preview', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' }), /requires verified/);
     verifySyntheticContract(fixture);
-    packageFixture(fixture, 'preview', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' });
+    assert.throws(() => packageFixture(fixture, 'preview', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' }), /Ecasa public web content requires/);
+    packageFixture(fixture, 'preview');
     const pages = new Map(catalogue.map(project => [project.slug,
       readFileSync(join(fixture, 'dist', project.slug + '.html'), 'utf8')
         .replace('<meta name="robots" content="noindex, nofollow">\n', '')]));
     const previewCatalogue = readFileSync(join(fixture, 'dist/data/proyectos.json'));
     const previewInventory = readFileSync(join(fixture, '.vercel/brochure-build-inventory.json'));
-    assert.equal(JSON.parse(previewInventory).media.length, 269);
-    assert.equal(JSON.parse(previewInventory).contractualCoverageVerified, true);
+    assert.equal(JSON.parse(previewInventory).media.filter(a=>!a.path.includes('/ecasa-preview/')).length, 269);
+    assert.equal(JSON.parse(previewInventory).contractualCoverageVerified, false);
+    assert.equal(JSON.parse(previewInventory).preservedContractualCoverageVerified, true);
     // This is a local fixture build, never a deployment or Production action.
-    packageFixture(fixture, 'production', { SOLLAHMS_BROCHURE_PROFILE: 'public-web' });
-    assert.ok(readFileSync(join(fixture, 'dist/data/proyectos.json')).equals(previewCatalogue));
-    assert.ok(readFileSync(join(fixture, '.vercel/brochure-build-inventory.json')).equals(previewInventory));
-    for (const [slug, html] of pages) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), html, slug);
-    for (const asset of JSON.parse(previewInventory).media) {
+    packageFixture(fixture, 'production');
+    const nonEcasa=value=>JSON.parse(value).filter(p=>p.inmobiliaria!=='Ecasa');
+    assert.deepEqual(nonEcasa(readFileSync(join(fixture, 'dist/data/proyectos.json'))), nonEcasa(previewCatalogue));
+    const withoutEcasaMedia=value=>JSON.parse(value).media.filter(a=>!a.path.includes('/ecasa-preview/'));
+    assert.deepEqual(withoutEcasaMedia(readFileSync(join(fixture, '.vercel/brochure-build-inventory.json'))),withoutEcasaMedia(previewInventory));
+    for (const [slug, html] of pages) if(!ECASA_SLUGS.has(slug)) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), html, slug);
+    for (const asset of JSON.parse(previewInventory).media.filter(a=>!a.path.includes('/ecasa-preview/'))) {
       assert.equal(sha256(readFileSync(join(fixture, 'dist', asset.path.slice(1)))), asset.sha256);
     }
     assert.equal(existsSync(join(fixture, 'dist/data/brochures-ingevec.json')), false);
@@ -537,11 +544,12 @@ test('real Preview packaging changes only twenty-one authorized card covers, pub
   try {
     packageFixture(fixture, 'preview');
     const published = JSON.parse(readFileSync(join(fixture, 'dist/data/proyectos.json')));
-    assert.equal(published.length, 144);
+    assert.equal(published.length, 143);
     assert.deepEqual(published.map(project => project.slug), catalogue.map(project => project.slug));
     let changed = 0;
     for (let index = 0; index < catalogue.length; index++) {
       const before = catalogue[index], after = published[index];
+      if (ECASA_SLUGS.has(before.slug)) { assert.deepEqual({...after,imagenPrincipal:before.imagenPrincipal,imagenAlt:before.imagenAlt},before); continue; }
       if (!COVER_PAGES.has(before.slug)) { assert.deepEqual(after, before); continue; }
       const record = records.get(before.slug) ?? ajReview.projects.find(record => record.slug === before.slug);
       assert.equal(after.imagenPrincipal, record.catalogueCover.localPath);
@@ -569,7 +577,7 @@ test('real Preview packaging changes only twenty-one authorized card covers, pub
   } finally { rmSync(fixture, { recursive: true, force: true }); }
 });
 
-test('a synthetic pending contract excludes protected media outside Preview and retains all 144 approved fallback objects', () => {
+test('a synthetic pending contract excludes protected media outside Preview and retains all 143 fallback objects', () => {
   const fixture = createPackagingFixture();
   try {
     resetSyntheticContractPending(fixture);
@@ -652,7 +660,7 @@ test('real packager checks non-cover galleries/plans and privacy flags, and reje
     for (const slug of ['unapproved-candidate-a', 'unapproved-candidate-b']) {
       const expanded = [...catalogue, { slug, nombre: 'Candidato sintético de prueba' }];
       writeFileSync(join(fixture, 'data/proyectos.json'), JSON.stringify(expanded));
-      assert.throws(() => packageFixture(fixture, 'preview'), /exactly 144 projects/);
+      assert.throws(() => packageFixture(fixture, 'preview'), /exactly 143 projects/);
       writeFileSync(join(fixture, 'data/proyectos.json'), current('data/proyectos.json'));
       writeFileSync(join(fixture, slug + '.html'), '<!doctype html><p>Candidato privado de prueba</p>');
       for (const environment of ['preview', 'production', undefined]) {
@@ -776,11 +784,12 @@ test('a synthetic pending Git Preview without Ingevec assets preserves sixteen f
     rmSync(join(fixture, ASSETS.slice(1)), { recursive: true, force: true });
     packageFixture(fixture, 'preview');
     const published = JSON.parse(readFileSync(join(fixture, 'dist/data/proyectos.json')));
-    assert.equal(published.length, 144);
+    assert.equal(published.length, 143);
     assert.deepEqual(published.map(project => project.slug), catalogue.map(project => project.slug));
     let changedCovers = 0;
     for (let index = 0; index < catalogue.length; index++) {
       const before = catalogue[index], after = published[index];
+      if (ECASA_SLUGS.has(before.slug)) { assert.deepEqual({...after,imagenPrincipal:before.imagenPrincipal,imagenAlt:before.imagenAlt},before); continue; }
       if (!AJ_SLUGS.includes(before.slug)) { assert.deepEqual(after, before, before.slug); continue; }
       const record = ajReview.projects.find(record => record.slug === before.slug);
       assert.equal(after.imagenPrincipal, record.catalogueCover.localPath);

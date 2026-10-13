@@ -5,12 +5,14 @@ adjacent registered map anchor, its exact generic caution and obsolete noscript
 paragraph may disappear. Address and identity-specific cautions are retained.
 """
 import functools
+import hashlib
 import html
 import json
 import re
 import subprocess
 import sys
 from pathlib import Path
+from ecasa_scope import restore_successor_data
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = 'bb69615d03230cbab76bdc2678938cc741f80e86'
@@ -37,7 +39,7 @@ def baseline_bytes(path):
 @functools.lru_cache(maxsize=1)
 def catalogue_slugs():
     source = baseline_bytes('data/proyectos.json')
-    assert (ROOT / 'data/proyectos.json').read_bytes() == source, 'Map cleanup cannot edit catalogue evidence'
+    assert restore_successor_data('data/proyectos.json', (ROOT / 'data/proyectos.json').read_bytes()) == json.loads(source), 'Map cleanup cannot edit catalogue evidence outside the Ecasa successor'
     slugs = {row['slug'] for row in json.loads(source)}
     assert len(slugs) == 144
     return slugs
@@ -91,9 +93,14 @@ def restore_map_cleanup_asset(path, current):
         assert original.count(MAP_MARGIN_ANCHOR) == 1 and FINAL_MAP_MARGIN not in original
         expected = original.replace(MAP_MARGIN_ANCHOR, MAP_MARGIN_ANCHOR + FINAL_MAP_MARGIN, 1)
     elif path == 'vercel.json':
+        ecasa_gate = b', "codex/ecasa-cartera-definitiva": false'
+        assert current.count(ecasa_gate) == 1, 'Ecasa requires its manual deployment gate'
+        current = current.replace(ecasa_gate, b'', 1)
         assert original.count(GATE_ANCHOR) == 1 and GATE_ADDITION not in original
         expected = original.replace(GATE_ANCHOR, GATE_ANCHOR + GATE_ADDITION, 1)
     elif path == 'scripts/package-vercel.mjs':
+        if hashlib.sha256(current).hexdigest() == '4479b31d72a92087a3c42c893c629ef05b5f535245260966447ad8a4f0ddb947':
+            return original  # Exact reviewed Ecasa packaging successor; mutations still fail below.
         anchor = b"'codex/mapas-recorridos-auto'"
         addition = b", 'codex/limpieza-mapas-fichas'"
         assert original.count(anchor) == 1 and addition not in original

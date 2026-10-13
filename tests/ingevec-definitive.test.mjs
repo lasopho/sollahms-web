@@ -5,7 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { assertPortfolioData, assertPortfolioIndex, assertDefinitiveFicheFallback, assertCatalogueConsultPrices,
+import { ECASA_NEW_SLUGS, ECASA_RETIRED_SLUGS, ECASA_SLUGS, restoreEcasaData, assertPortfolioData, assertPortfolioIndex, assertDefinitiveFicheFallback, assertCatalogueConsultPrices,
   assertCommercialBytes, restoreReviewedScope,
   PORTFOLIO_BASELINE, INGEVEC_REMOVED_SLUGS, INGEVEC_NEW_SLUGS, readCommercialFile } from './commercial-html.mjs';
 import { projects as contextualProjects } from '../lib/project-context.mjs';
@@ -848,17 +848,17 @@ function webp(bytes) {
   return dimensions;
 }
 
-test('definitive portfolio preserves exactly 128 other developers and ten prior Ingevec records', () => {
+test('definitive Ingevec portfolio retains ten prior records and 105 non-Ecasa non-Ingevec historical objects', () => {
   assert.equal(PORTFOLIO_BASELINE, BASELINE);
   assert.equal(priorCatalogue.length, 148);
-  assert.equal(catalogue.length, 144);
-  assert.equal(new Set(catalogue.map(project => project.slug)).size, 144);
+  assert.equal(catalogue.length, 143);
+  assert.equal(new Set(catalogue.map(project => project.slug)).size, 143);
   assertPortfolioData(current('data/proyectos.json'), old('data/proyectos.json'));
   assertPortfolioData(current('data/fichas-proyectos.json'), old('data/fichas-proyectos.json'), 'data/fichas-proyectos.json');
   assertPortfolioData(current('data/registro-fichas.json'), old('data/registro-fichas.json'), 'data/registro-fichas.json');
-  const unaffected = priorCatalogue.filter(project => project.inmobiliaria !== 'Ingevec');
-  assert.equal(unaffected.length, 128);
-  assert.deepEqual(catalogue.filter(project => project.inmobiliaria !== 'Ingevec'), unaffected);
+  const unaffected = priorCatalogue.filter(project => project.inmobiliaria !== 'Ingevec' && project.inmobiliaria !== 'Ecasa');
+  assert.equal(unaffected.length, 105);
+  assert.deepEqual(catalogue.filter(project => project.inmobiliaria !== 'Ingevec' && project.inmobiliaria !== 'Ecasa'), unaffected);
   for (const project of unaffected) assert.deepEqual(current(project.slug + '.html'), old(project.slug + '.html'), project.slug + ': unrelated HTML must be byte identical');
   assert.equal(priorManifest.projects.length, 10);
   assert.equal(manifest.projects.length, 16);
@@ -879,7 +879,7 @@ test('six retired identities are absent from navigation, sitemap, context and fi
   assert.deepEqual([...INGEVEC_REMOVED_SLUGS], ['brasil', 'vespucio-capital', 'edificio-serrano-capital', 'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz']);
   assert.deepEqual([...INGEVEC_NEW_SLUGS], ['los-alerces', 'valle-los-ingleses-iii']);
   const priorRoutes = execFileSync('git', ['ls-tree', '--name-only', BASELINE], { cwd: ROOT }).toString().trim().split('\n').filter(path => path.endsWith('.html'));
-  const expectedRoutes = [...priorRoutes.filter(path => !INGEVEC_REMOVED_SLUGS.has(path.replace(/\.html$/, ''))), ...[...INGEVEC_NEW_SLUGS].map(slug => slug + '.html')].sort();
+  const expectedRoutes = [...priorRoutes.filter(path => !INGEVEC_REMOVED_SLUGS.has(path.replace(/\.html$/, '')) && !ECASA_RETIRED_SLUGS.has(path.replace(/\.html$/, ''))), ...[...INGEVEC_NEW_SLUGS, ...ECASA_NEW_SLUGS].map(slug => slug + '.html')].sort();
   assert.deepEqual(readdirSync(ROOT).filter(path => path.endsWith('.html')).sort(), expectedRoutes, 'Only six retired routes and two new routes are authorized');
   assertPortfolioIndex('lib/project-context.mjs', current('lib/project-context.mjs'));
   assertPortfolioIndex('sitemap.xml', current('sitemap.xml'));
@@ -1007,8 +1007,8 @@ test('financial classification changes only through six retirements and two unkn
     savings: 20000000, savingsCurrency: 'CLP', monthlySavingsClp: 300000, horizonMonths: 24,
     downPaymentPercent: 20, years: 20, annualRatePercent: 4.5, rateConvention: 'effective', burdenPercent: 25 };
   const result = new Map(catalogue.map(project => [project.slug, evaluateProject(project, input, dataset, now)]));
-  assert.equal(result.size, 144);
-  for (const project of priorCatalogue.filter(row => !INGEVEC_REMOVED_SLUGS.has(row.slug))) assert.deepEqual(result.get(project.slug), evaluateProject(project, input, dataset, now), project.slug + ': previous financial result');
+  assert.equal(result.size, 143);
+  for (const project of priorCatalogue.filter(row => !INGEVEC_REMOVED_SLUGS.has(row.slug) && row.inmobiliaria !== 'Ecasa')) assert.deepEqual(result.get(project.slug), evaluateProject(project, input, dataset, now), project.slug + ': previous financial result');
   for (const slug of INGEVEC_REMOVED_SLUGS) assert.equal(result.has(slug), false);
   for (const slug of INGEVEC_NEW_SLUGS) {
     const project = catalogue.find(row => row.slug === slug), evaluation = result.get(slug);
@@ -1016,7 +1016,7 @@ test('financial classification changes only through six retirements and two unkn
     assert.equal(evaluation.price, null); assert.equal(evaluation.mortgage, null);
     assert.equal(evaluation.currentSavingsUf, null); assert.equal(evaluation.monthlyPaymentClp, null);
   }
-  assert.equal([...result.values()].filter(value => value.price).length, 110);
+  assert.equal([...result.values()].filter(value => value.price).length, 106);
 });
 
 test('all 636 historical assets survive outside the exact official UF UI change, and VIMA corrects only the association to El Aromo', () => {

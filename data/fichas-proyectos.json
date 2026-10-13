@@ -1015,7 +1015,10 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas"
     ],
     "updates": {
       "nombre": "Núcleo Costanera",
@@ -1038,7 +1041,21 @@
         "Skybar",
         "Quincho Panorámico"
       ],
-      "descripcionLarga": "Proyecto de Ecasa en Presbítero Ramírez 110, Arica. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Salón Gourmet, Skybar, Quincho Panorámico."
+      "descripcionLarga": "Proyecto de Ecasa en Presbítero Ramírez 110, Arica. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Salón Gourmet, Skybar, Quincho Panorámico.",
+      "proyectoMatrizSlug": "nucleo-costanera",
+      "etapa": 1,
+      "etapasRelacionadas": [
+        {
+          "slug": "nucleo-costanera",
+          "nombre": "Núcleo Costanera",
+          "etapa": 1
+        },
+        {
+          "slug": "nucleo-costanera-2",
+          "nombre": "Núcleo Costanera 2",
+          "etapa": 2
+        }
+      ]
     },
     "specs": {
       "utilM2": "25–72",
@@ -1081,35 +1098,7 @@
         "height": 745
       }
     ],
-    "virtualTours": [
-      {
-        "url": "https://tourvirtuales360.cl/pano/ecasa_/nucleo_pilotos/",
-        "title": "Piloto virtual oficial · Núcleo Costanera",
-        "provider": "Otro",
-        "sourceUrl": "https://ecasa.cl/proyecto/nucleo-costanera",
-        "verificationStatus": "http_verified",
-        "httpVerified": true,
-        "embedStatus": "allowed",
-        "availabilityCheck": {
-          "httpStatus": 200,
-          "xFrameOptions": "",
-          "frameAncestors": "",
-          "embedStatus": "allowed",
-          "viewerStatus": "http_accessible",
-          "finalUrl": "https://tourvirtuales360.cl/pano/ecasa_/nucleo_pilotos/",
-          "checkedAt": "2026-10-09"
-        },
-        "visualVerification": {
-          "result": "valid_interface",
-          "checkedAt": "2026-10-09",
-          "method": "local_iframe_cua_screenshot_review",
-          "evidence": "Portada Cam360 oficial con nombre del proyecto, botón Tour Virtual, marca Ecasa, información comercial y fondo aéreo; sin pantalla de error.",
-          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
-          "screenshotSha256": "40866a4e5a8fe812fd53501d8f3d000af0b775b376c00b88daf4f2ca1372cb18",
-          "screenshot": "docs/qa/recorridos/031.jpg"
-        }
-      }
-    ],
+    "virtualTours": [],
     "pendingFields": [
       "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
       "Precio vigente y disponibilidad",
@@ -1152,7 +1141,21 @@
         "alt": "Imagen oficial de Núcleo Costanera",
         "sourceUrl": "https://ecasa.cl/proyecto/nucleo-costanera"
       }
-    ]
+    ],
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    },
+    "virtualTourAssociationReview": {
+      "checkedAt": "2026-10-12",
+      "previousAssignment": "nucleo-costanera",
+      "verifiedAssignment": "nucleo-costanera-2",
+      "url": "https://tourvirtuales360.cl/pano/ecasa_/nucleo_pilotos/",
+      "screenshotSha256": "6ece36e317446c208542438c1c25c924c322e388a956763b7529bd85ec1511c2",
+      "scope": "virtual_tour_only",
+      "reason": "El título del proveedor y la escena tras Play nativo identifican inequívocamente la etapa 2."
+    }
   },
   {
     "slug": "wayra",
@@ -1180,7 +1183,7 @@
       "tipologias"
     ],
     "updates": {
-      "nombre": "Wayra",
+      "nombre": "Edificio Wayra",
       "inmobiliaria": "Ecasa",
       "comuna": "Arica",
       "region": "Arica y Parinacota",
@@ -1311,7 +1314,15 @@
         "alt": "Imagen oficial de Wayra",
         "sourceUrl": "https://ecasa.cl/proyecto/wayra"
       }
-    ]
+    ],
+    "commercialIdentity": {
+      "name": "Edificio Wayra",
+      "aliases": [
+        "Wayra"
+      ],
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12"
+    }
   },
   {
     "slug": "lamara",
@@ -2884,7 +2895,7 @@
       "tipologias"
     ],
     "updates": {
-      "nombre": "Edificio Bezanilla",
+      "nombre": "Bezanilla",
       "inmobiliaria": "Ecasa",
       "comuna": "Independencia",
       "region": "Región Metropolitana",
@@ -3013,7 +3024,15 @@
         "alt": "Imagen oficial de Edificio Bezanilla",
         "sourceUrl": "https://ecasa.cl/proyecto/edificio-bezanilla"
       }
-    ]
+    ],
+    "commercialIdentity": {
+      "name": "Bezanilla",
+      "aliases": [
+        "Edificio Bezanilla"
+      ],
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12"
+    }
   },
   {
     "slug": "jardines-de-alvarado",
@@ -3574,7 +3593,8 @@
     "sourceStatus": "verified",
     "sourceNotes": "Sitio dedicado oficial: los cuatro modelos Doca, Boldo, Ciprés y Molle figuran Sin unidades. No se confirma oferta actual ni precio del catálogo; no se asigna superficie aproximada a útil/total. Relación actual con Ecasa pendiente de corroboración en el sitio dedicado.",
     "sourceEvidence": [
-      "Doca: 2 dormitorios, 2 baños, 105 m² aprox; Boldo: 3D2B, 119 m² aprox; Ciprés: 3D2B, 143 m² aprox; Molle: 4D3B, 160 m² aprox. Todos Sin unidades."
+      "Doca: 2 dormitorios, 2 baños, 105 m² aprox; Boldo: 3D2B, 119 m² aprox; Ciprés: 3D2B, 143 m² aprox; Molle: 4D3B, 160 m² aprox. Todos Sin unidades.",
+      "El propietario identifica expresamente Endémico como entrada autorizada de la cartera Ecasa. Esta evidencia acredita identidad e inmobiliaria; no establece vigencia de precio, estado o fecha de entrega."
     ],
     "verifiedFields": [
       "amenities",
@@ -3582,10 +3602,11 @@
       "descripcionLarga",
       "estado",
       "nombre",
-      "region"
+      "region",
+      "inmobiliaria"
     ],
     "updates": {
-      "nombre": "Endémico Pichilemu",
+      "nombre": "Endémico",
       "comuna": "Pichilemu",
       "region": "O'Higgins",
       "estado": "Sin unidades disponibles",
@@ -3597,7 +3618,8 @@
         "Salas de ejercicio",
         "Áreas verdes"
       ],
-      "descripcionLarga": "Condominio frente a la playa en Pichilemu, con acceso a áreas verdes, piscinas, saunas y pump track. El sitio oficial presenta casas de 2 a 4 dormitorios y actualmente señala todos los modelos sin unidades disponibles."
+      "descripcionLarga": "Condominio frente a la playa en Pichilemu, con acceso a áreas verdes, piscinas, saunas y pump track. El sitio oficial presenta casas de 2 a 4 dormitorios y actualmente señala todos los modelos sin unidades disponibles.",
+      "inmobiliaria": "Ecasa"
     },
     "specs": {
       "utilM2": null,
@@ -3742,7 +3764,20 @@
         "alt": "vista B",
         "sourceUrl": "https://endemicopichilemu.cl/"
       }
-    ]
+    ],
+    "commercialIdentity": {
+      "name": "Endémico",
+      "aliases": [
+        "Endémico Pichilemu"
+      ],
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "verifiedFields": [
+        "nombre",
+        "inmobiliaria"
+      ],
+      "scope": "portfolio_identity_only"
+    }
   },
   {
     "slug": "terratolten-1",
@@ -3767,7 +3802,10 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas"
     ],
     "updates": {
       "nombre": "Terratoltén 1",
@@ -3790,7 +3828,26 @@
         "Juegos infantiles",
         "Bicicleteros"
       ],
-      "descripcionLarga": "Proyecto de Ecasa en Beato Adolfo Kolping 685, Villarrica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Juegos infantiles, Bicicleteros."
+      "descripcionLarga": "Proyecto de Ecasa en Beato Adolfo Kolping 685, Villarrica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Juegos infantiles, Bicicleteros.",
+      "proyectoMatrizSlug": "terratolten-1",
+      "etapa": 1,
+      "etapasRelacionadas": [
+        {
+          "slug": "terratolten-1",
+          "nombre": "Terratoltén 1",
+          "etapa": 1
+        },
+        {
+          "slug": "terratolten-2",
+          "nombre": "Terratoltén 2",
+          "etapa": 2
+        },
+        {
+          "slug": "terratolten-3",
+          "nombre": "Terratoltén 3",
+          "etapa": 3
+        }
+      ]
     },
     "specs": {
       "utilM2": "39.42–63.85",
@@ -3887,7 +3944,12 @@
         "alt": "Imagen oficial de Terratoltén 1",
         "sourceUrl": "https://ecasa.cl/proyecto/terratolten"
       }
-    ]
+    ],
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
   },
   {
     "slug": "playa-penuelas",
@@ -5939,7 +6001,10 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas"
     ],
     "updates": {
       "nombre": "Lomas de Puyai",
@@ -5962,7 +6027,21 @@
         "Bicicleteros",
         "Juegos infantiles"
       ],
-      "descripcionLarga": "Proyecto de Ecasa en Paseo Punta Puyai 1600, Papudo. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Bicicleteros, Juegos infantiles."
+      "descripcionLarga": "Proyecto de Ecasa en Paseo Punta Puyai 1600, Papudo. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Bicicleteros, Juegos infantiles.",
+      "proyectoMatrizSlug": "lomas-de-puyai",
+      "etapa": 1,
+      "etapasRelacionadas": [
+        {
+          "slug": "lomas-de-puyai",
+          "nombre": "Lomas de Puyai",
+          "etapa": 1
+        },
+        {
+          "slug": "lomas-de-puyai-3",
+          "nombre": "Lomas de Puyai 3",
+          "etapa": 3
+        }
+      ]
     },
     "specs": {
       "utilM2": "51.9–65.3",
@@ -6074,7 +6153,12 @@
         "alt": "Imagen oficial de Lomas de Puyai",
         "sourceUrl": "https://ecasa.cl/proyecto/lomas-de-puyai"
       }
-    ]
+    ],
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
   },
   {
     "slug": "ferroparque",
@@ -6098,7 +6182,10 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas"
     ],
     "updates": {
       "nombre": "FerroParque",
@@ -6114,7 +6201,21 @@
         "3 dormitorios"
       ],
       "superficieDesdeM2": 44.78,
-      "descripcionLarga": "Proyecto de Ecasa en Pasaje Bascuñán Santa María 0699, Temuco. La ficha oficial publica 2 dormitorios, 3 dormitorios. "
+      "descripcionLarga": "Proyecto de Ecasa en Pasaje Bascuñán Santa María 0699, Temuco. La ficha oficial publica 2 dormitorios, 3 dormitorios. ",
+      "proyectoMatrizSlug": "ferroparque",
+      "etapa": 1,
+      "etapasRelacionadas": [
+        {
+          "slug": "ferroparque",
+          "nombre": "FerroParque",
+          "etapa": 1
+        },
+        {
+          "slug": "ferroparque-2",
+          "nombre": "Ferroparque 2",
+          "etapa": 2
+        }
+      ]
     },
     "specs": {
       "utilM2": "41.38–50.83",
@@ -6201,7 +6302,12 @@
         "alt": "Imagen oficial de FerroParque",
         "sourceUrl": "https://ecasa.cl/proyecto/ferroparque"
       }
-    ]
+    ],
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
   },
   {
     "slug": "froilan-roa-5731-torre-norte",
@@ -12281,7 +12387,10 @@
       "precioDesdeUF",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas"
     ],
     "updates": {
       "nombre": "Terratoltén 3",
@@ -12303,7 +12412,26 @@
         "Quinchos",
         "Gimnasio"
       ],
-      "descripcionLarga": "Proyecto de Ecasa en Beato Adolfo Kolping 685, Villarrica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Gimnasio."
+      "descripcionLarga": "Proyecto de Ecasa en Beato Adolfo Kolping 685, Villarrica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Gimnasio.",
+      "proyectoMatrizSlug": "terratolten-1",
+      "etapa": 3,
+      "etapasRelacionadas": [
+        {
+          "slug": "terratolten-1",
+          "nombre": "Terratoltén 1",
+          "etapa": 1
+        },
+        {
+          "slug": "terratolten-2",
+          "nombre": "Terratoltén 2",
+          "etapa": 2
+        },
+        {
+          "slug": "terratolten-3",
+          "nombre": "Terratoltén 3",
+          "etapa": 3
+        }
+      ]
     },
     "specs": {
       "utilM2": "39.84–64.25",
@@ -12400,7 +12528,12 @@
         "alt": "Imagen oficial de Terratoltén 3",
         "sourceUrl": "https://ecasa.cl/proyecto/terratolten-3"
       }
-    ]
+    ],
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
   },
   {
     "slug": "lomas-de-puyai-3",
@@ -12408,9 +12541,39 @@
     "checkedAt": "2026-10-09",
     "sourceStatus": "not_found",
     "sourceNotes": "El catálogo oficial actual incluye Lomas de Puyai y Lomas de Puyai 2, pero no identifica etapa 3. La URL ensayada /proyecto/lomas-de-puyai-3 retorna la portada, no una ficha específica. No se transfieren datos de otras etapas. Reauditoría del 09/10/2026: el catálogo público conserva Lomas de Puyai y Lomas de Puyai 2; las referencias a etapa 3 encontradas corresponden a intermediarios, sin respaldo oficial propio. No se actualizan datos comerciales.",
-    "sourceEvidence": [],
-    "verifiedFields": [],
-    "updates": {},
+    "sourceEvidence": [
+      "El propietario identifica expresamente Lomas de Puyai 3 como entrada autorizada de la cartera Ecasa. Esta evidencia acredita identidad e inmobiliaria; no establece vigencia de precio, estado o fecha de entrega.",
+      "La tarjeta privada Ecasa - Lomas de Puyai 3 imprime Comuna Papudo. Región Valparaíso corresponde a la geografía estable de esa comuna. No acredita dirección, planos, superficies ni vigencia comercial de la etapa."
+    ],
+    "verifiedFields": [
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas",
+      "nombre",
+      "inmobiliaria",
+      "comuna",
+      "region"
+    ],
+    "updates": {
+      "proyectoMatrizSlug": "lomas-de-puyai",
+      "etapa": 3,
+      "nombre": "Lomas de Puyai 3",
+      "inmobiliaria": "Ecasa",
+      "comuna": "Papudo",
+      "region": "Valparaíso",
+      "etapasRelacionadas": [
+        {
+          "slug": "lomas-de-puyai",
+          "nombre": "Lomas de Puyai",
+          "etapa": 1
+        },
+        {
+          "slug": "lomas-de-puyai-3",
+          "nombre": "Lomas de Puyai 3",
+          "etapa": 3
+        }
+      ]
+    },
     "specs": {
       "utilM2": null,
       "totalM2": null,
@@ -12457,6 +12620,28 @@
         "https://ecasa.cl/proyectos",
         "https://ecasa.cl/proyecto/lomas-de-puyai-3"
       ]
+    },
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    },
+    "commercialIdentity": {
+      "name": "Lomas de Puyai 3",
+      "basis": "user_commercial_capture",
+      "verifiedFields": [
+        "nombre",
+        "inmobiliaria",
+        "comuna"
+      ],
+      "scope": "portfolio_identity_and_locality_only",
+      "reviewedOn": "2026-10-12",
+      "fileName": "cartera_ecasa_captura_02.png",
+      "sha256": "213b043714050f9dc55deb079defdce7a40cf7772b426c4f520c2a891934ad2f",
+      "derivedFields": [
+        "region"
+      ],
+      "geographicDerivation": "region_from_commune"
     }
   },
   {
@@ -14597,7 +14782,10 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas"
     ],
     "updates": {
       "nombre": "Ferroparque 2",
@@ -14620,7 +14808,21 @@
         "Gimnasio",
         "Pet Zone"
       ],
-      "descripcionLarga": "Proyecto de Ecasa en Av. Bascuñán Santa María 0699, Temuco. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Gimnasio, Pet Zone."
+      "descripcionLarga": "Proyecto de Ecasa en Av. Bascuñán Santa María 0699, Temuco. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Gimnasio, Pet Zone.",
+      "proyectoMatrizSlug": "ferroparque",
+      "etapa": 2,
+      "etapasRelacionadas": [
+        {
+          "slug": "ferroparque",
+          "nombre": "FerroParque",
+          "etapa": 1
+        },
+        {
+          "slug": "ferroparque-2",
+          "nombre": "Ferroparque 2",
+          "etapa": 2
+        }
+      ]
     },
     "specs": {
       "utilM2": "21.06–47",
@@ -14693,7 +14895,12 @@
         "alt": "Imagen oficial de Ferroparque 2",
         "sourceUrl": "https://ecasa.cl/proyecto/ferroparque-2"
       }
-    ]
+    ],
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
   },
   {
     "slug": "novo-catedral",
@@ -17991,7 +18198,10 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas"
     ],
     "updates": {
       "nombre": "Alto San Joaquín",
@@ -18013,7 +18223,26 @@
         "ZONA PET",
         "AMPLIA PISCINA"
       ],
-      "descripcionLarga": "Proyecto de Ecasa en Benito Rebolledo esquina San Joaquín, La Serena. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen PARQUE PRIVADO, ZONA DE SPA, VISTAS PANORÁMICAS, ZONA PET, AMPLIA PISCINA."
+      "descripcionLarga": "Proyecto de Ecasa en Benito Rebolledo esquina San Joaquín, La Serena. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen PARQUE PRIVADO, ZONA DE SPA, VISTAS PANORÁMICAS, ZONA PET, AMPLIA PISCINA.",
+      "proyectoMatrizSlug": "alto-san-joaquin",
+      "etapa": 1,
+      "etapasRelacionadas": [
+        {
+          "slug": "alto-san-joaquin",
+          "nombre": "Alto San Joaquín",
+          "etapa": 1
+        },
+        {
+          "slug": "alto-san-joaquin-2",
+          "nombre": "Alto San Joaquín 2",
+          "etapa": 2
+        },
+        {
+          "slug": "alto-san-joaquin-3",
+          "nombre": "Alto San Joaquín 3",
+          "etapa": 3
+        }
+      ]
     },
     "specs": {
       "utilM2": "62–100",
@@ -18126,505 +18355,12 @@
         "alt": "Imagen oficial de Alto San Joaquín",
         "sourceUrl": "https://ecasa.cl/proyecto/alto-san-joaquin"
       }
-    ]
-  },
-  {
-    "slug": "bosquemar",
-    "sourceUrl": "https://ecasa.cl/proyecto/bosquemar",
-    "checkedAt": "2026-10-09",
-    "sourceStatus": "verified",
-    "sourceNotes": "Página y plantas oficiales consultadas. El índice muestra huincha CYBER sin vigencia visible; precio de campaña requiere cotización y no se marca vigente.",
-    "sourceEvidence": [
-      "Componente oficial https://ecasa.cl/js/ecasa.js identifica superficie_semi como Sup. Útil y superficie_total como Sup. Total.",
-      "Proyectos Inversionistas Lomas de Montemar Bosquemar Deptos 2 y 3 dormitorios Desde UF 5.780",
-      "Visítanos en San Fernando 46, Concón Horario de Atención Lunes a Domingo 09:30 a 14:00 y 15:00 a 18:30 hrs bosquemar@ecasa.cl Ejecutivos de ventas JOHANNA JAMEN +569 5859 2510"
     ],
-    "verifiedFields": [
-      "amenities",
-      "comuna",
-      "descripcionLarga",
-      "direccion",
-      "entrega",
-      "estado",
-      "inmobiliaria",
-      "mapQuery",
-      "nombre",
-      "region",
-      "superficieDesdeM2",
-      "tipologias"
-    ],
-    "updates": {
-      "nombre": "Bosquemar",
-      "inmobiliaria": "Ecasa",
-      "comuna": "Concón",
-      "region": "Valparaíso",
-      "direccion": "San Fernando 46",
-      "mapQuery": "San Fernando 46, Concón, Valparaíso, Chile",
-      "estado": "Entrega inmediata",
-      "entrega": "Inmediata",
-      "tipologias": [
-        "2 dormitorios",
-        "3 dormitorios"
-      ],
-      "superficieDesdeM2": 79.62,
-      "amenities": [
-        "Piscina",
-        "Quinchos",
-        "Lavandería",
-        "Salón Gourmet",
-        "Bicicleteros",
-        "Sala de Yoga",
-        "Pet Zone"
-      ],
-      "descripcionLarga": "Proyecto de Ecasa en San Fernando 46, Concón. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Lavandería, Salón Gourmet, Bicicleteros."
-    },
-    "specs": {
-      "utilM2": "66.37–87.8",
-      "totalM2": "79.62–108.42",
-      "terrenoM2": null,
-      "dormitorios": "2–3",
-      "banos": "2"
-    },
-    "images": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/Mesa-de-trabajo-1_2x.webp",
-        "alt": "Imagen oficial de Bosquemar",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar",
-        "localPath": "/assets/propiedades/catalogo/883af11703388c0dba211491.webp",
-        "width": 1600,
-        "height": 716
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/a4bd3d43e910045064c5a3cc9cd66ab2.webp",
-        "alt": "Imagen oficial de Bosquemar",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar",
-        "localPath": "/assets/propiedades/catalogo/70413545b58983da8e24825a.webp",
-        "width": 1600,
-        "height": 716
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/1968dcd39b3eea74aa269599bddeddd5.webp",
-        "alt": "Imagen oficial de Bosquemar",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar",
-        "localPath": "/assets/propiedades/catalogo/5ec72b840d3cb985b609df36.webp",
-        "width": 1600,
-        "height": 716
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/90d031bd1a7ee38d6eeb300e57d45746.webp",
-        "alt": "Imagen oficial de Bosquemar",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar",
-        "localPath": "/assets/propiedades/catalogo/cc5c4d04b4f258731931d6eb.webp",
-        "width": 1600,
-        "height": 716
-      }
-    ],
-    "virtualTours": [
-      {
-        "url": "https://www.lanube360.com/ecasa/bosquemar/piloto360/",
-        "title": "Piloto virtual oficial · Bosquemar",
-        "provider": "Otro",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar",
-        "verificationStatus": "http_verified",
-        "httpVerified": true,
-        "embedStatus": "allowed",
-        "availabilityCheck": {
-          "httpStatus": 200,
-          "xFrameOptions": "ALLOWALL",
-          "frameAncestors": "",
-          "embedStatus": "allowed",
-          "viewerStatus": "http_accessible",
-          "finalUrl": "https://www.lanube360.com/ecasa/bosquemar/piloto360/",
-          "checkedAt": "2026-10-09"
-        },
-        "visualVerification": {
-          "result": "valid_scene",
-          "checkedAt": "2026-10-09",
-          "method": "local_iframe_cua_screenshot_review",
-          "evidence": "Interior Bosquemar livingcomedor con plano, hotspots y controles de navegación/zoom/fullscreen.",
-          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
-          "screenshotSha256": "e0c74ebe93f4152c0ff5eae5a66485af8bacd0ed6c825509db48e35af2f30f57",
-          "screenshot": "docs/qa/recorridos/088.jpg"
-        }
-      }
-    ],
-    "pendingFields": [
-      "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
-      "Precio vigente y disponibilidad"
-    ],
-    "reviewedOriginal": {
-      "comuna": "Concón",
-      "nombre": "Bosquemar",
-      "mapQuery": "San Fernando 46, Concón, Valparaíso, Chile",
-      "tipologias": [
-        "2 dormitorios",
-        "3 dormitorios"
-      ],
-      "inmobiliaria": "Ecasa",
-      "precioDesdeUF": 5780,
-      "amenities": [
-        "Piscina",
-        "Quincho",
-        "Lavandería",
-        "Salón gourmet",
-        "Bicicleteros",
-        "Sala de yoga",
-        "Pet Zone"
-      ],
-      "region": "Valparaíso",
-      "entrega": "Inmediata",
-      "superficieDesdeM2": null,
-      "direccion": "San Fernando 46",
-      "descripcionLarga": "Proyecto Ecasa en Lomas de Montemar, Concón, con últimas unidades de 2 dormitorios y entrega inmediata. Cuenta con espacios comunes como piscina, quinchos, lavandería, salón gourmet, bicicleteros, sala de yoga y Pet Zone.",
-      "estado": "Entrega inmediata"
-    },
-    "originalImages": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/Mesa-de-trabajo-1_2x.webp",
-        "alt": "Imagen oficial de Bosquemar",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar"
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/a4bd3d43e910045064c5a3cc9cd66ab2.webp",
-        "alt": "Imagen oficial de Bosquemar",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar"
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/1968dcd39b3eea74aa269599bddeddd5.webp",
-        "alt": "Imagen oficial de Bosquemar",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar"
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/90d031bd1a7ee38d6eeb300e57d45746.webp",
-        "alt": "Imagen oficial de Bosquemar",
-        "sourceUrl": "https://ecasa.cl/proyecto/bosquemar"
-      }
-    ]
-  },
-  {
-    "slug": "altos-del-wayra",
-    "sourceUrl": "https://ecasa.cl/proyecto/altos-del-wayra",
-    "checkedAt": "2026-10-09",
-    "sourceStatus": "verified",
-    "sourceNotes": "Precio publicado en ficha oficial, sujeto a disponibilidad y cotización de Ecasa.",
-    "sourceEvidence": [
-      "Componente oficial https://ecasa.cl/js/ecasa.js identifica superficie_semi como Sup. Útil y superficie_total como Sup. Total.",
-      "Proyectos Inversionistas PROYECTO EN CONSTRUCCIÓN ENTREGA SEGUNDO SEMESTRE 2027 Los Andes Altos del Wayra Deptos 2 y 3 dormitorios, desde 59.57m² Desde UF 2.600 TE ASESORAMOS GRATIS Rango de Renta* 0 - 1.000.000 1.000.000 - 1.500.000 1.500.000 - 2.000.000 2.000.000 - 2.500.000 2.500.000 - 3.000.000 3.000.000 - más Enviar ¡Muchas gracias por inscribirte! Cotiza aquí TU PRIMER HOGAR EN LOS ANDES ¡Tu primer hogar te espera en Los Andes! Bienvenido a Altos del Wayra, un proyecto con subsidio automát",
-      "Ubicación del proyecto Regidora Dissolina Rojas 2302, Los Andes Ejecutivos de ventas CONSTANZA RIVERA +569 5859 2459 ROSANA BRIONES +569 9796 5492 Oficina Central:"
-    ],
-    "verifiedFields": [
-      "amenities",
-      "comuna",
-      "descripcionLarga",
-      "direccion",
-      "entrega",
-      "estado",
-      "inmobiliaria",
-      "mapQuery",
-      "nombre",
-      "precioDesdeUF",
-      "region",
-      "superficieDesdeM2",
-      "tipologias"
-    ],
-    "updates": {
-      "nombre": "Altos del Wayra",
-      "inmobiliaria": "Ecasa",
-      "comuna": "Los Andes",
-      "region": "Valparaíso",
-      "direccion": "Regidora Dissolina Rojas 2302",
-      "mapQuery": "Regidora Dissolina Rojas 2302, Los Andes, Valparaíso, Chile",
-      "estado": "En construcción",
-      "entrega": "Segundo semestre 2027",
-      "precioDesdeUF": 2600.0,
-      "tipologias": [
-        "2 dormitorios",
-        "3 dormitorios"
-      ],
-      "superficieDesdeM2": 59.57,
-      "amenities": [
-        "Áreas verdes",
-        "Juegos infantiles",
-        "Bicicleteros",
-        "Salón Multiuso",
-        "Plaza Activa"
-      ],
-      "descripcionLarga": "Proyecto de Ecasa en Regidora Dissolina Rojas 2302, Los Andes. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Áreas verdes, Juegos infantiles, Bicicleteros, Salón Multiuso, Plaza Activa."
-    },
-    "specs": {
-      "utilM2": null,
-      "totalM2": "59.57",
-      "terrenoM2": null,
-      "dormitorios": "3",
-      "banos": "1"
-    },
-    "images": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/Mesa%20de%20trabajo%2016@2x-8.png",
-        "alt": "Imagen oficial de Altos del Wayra",
-        "sourceUrl": "https://ecasa.cl/proyecto/altos-del-wayra",
-        "localPath": "/assets/propiedades/catalogo/81adaf07bdbd2fab601a093c.webp",
-        "width": 1600,
-        "height": 717
-      }
-    ],
-    "virtualTours": [],
-    "pendingFields": [
-      "Superficie útil",
-      "Recorrido virtual oficial específico no localizado"
-    ],
-    "reviewedOriginal": {
-      "comuna": "Los Andes",
-      "nombre": "Altos del Wayra",
-      "mapQuery": "Regidora Dissolina Rojas 2302, Los Andes, Valparaíso, Chile",
-      "tipologias": [
-        "2 dormitorios",
-        "3 dormitorios"
-      ],
-      "inmobiliaria": "Ecasa",
-      "precioDesdeUF": 2600,
-      "amenities": [
-        "Áreas verdes",
-        "Juegos infantiles",
-        "Bicicleteros",
-        "Sala multiuso",
-        "Plaza activa"
-      ],
-      "region": "Valparaíso",
-      "entrega": "Segundo semestre 2027",
-      "superficieDesdeM2": 59.57,
-      "direccion": "Regidora Dissolina Rojas 2302",
-      "descripcionLarga": "Proyecto Ecasa con subsidio automático DS19 en Los Andes, ubicado en un sector residencial consolidado. Ofrece departamentos de 2 y 3 dormitorios desde 59.57 m², con áreas comunes para vida familiar y comunitaria.",
-      "estado": "En construcción"
-    },
-    "originalImages": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/Mesa%20de%20trabajo%2016@2x-8.png",
-        "alt": "Imagen oficial de Altos del Wayra",
-        "sourceUrl": "https://ecasa.cl/proyecto/altos-del-wayra"
-      }
-    ]
-  },
-  {
-    "slug": "robles-del-aconcagua",
-    "sourceUrl": "https://ecasa.cl/proyecto/robles-del-aconcagua",
-    "checkedAt": "2026-10-09",
-    "sourceStatus": "verified",
-    "sourceNotes": "Precio publicado en ficha oficial, sujeto a disponibilidad y cotización de Ecasa.",
-    "sourceEvidence": [
-      "Componente oficial https://ecasa.cl/js/ecasa.js identifica superficie_semi como Sup. Útil y superficie_total como Sup. Total.",
-      "Proyectos Inversionistas PROYECTO EN CONSTRUCCIÓN ENTREGA PRIMER SEMESTRE 2027 Los Andes Robles del Aconcagua Deptos 2 y 3 dormitorios, desde 59m² Desde UF 2.600 TE ASESORAMOS GRATIS Rango de Renta* 0 - 1.000.000 1.000.000 - 1.500.000 1.500.000 - 2.000.000 2.000.000 - 2.500.000 2.500.000 - 3.000.000 3.000.000 - más Enviar ¡Muchas gracias por inscribirte! Cotiza aquí TU PRIMER HOGAR EN LOS ANDES ¡Tu primer hogar te espera en Los Andes! Bienvenido a Robles del Aconcagua, un proyecto con subsidio a",
-      "Ubicación del proyecto Vicuña 2101, Los Andes. Visítanos en Regidora Dissolina Rojas 2302, Los Andes Ejecutivos de ventas CONSTANZA RIVERA +569 5859 2459 ROSANA BRIO"
-    ],
-    "verifiedFields": [
-      "amenities",
-      "comuna",
-      "descripcionLarga",
-      "direccion",
-      "entrega",
-      "estado",
-      "inmobiliaria",
-      "mapQuery",
-      "nombre",
-      "precioDesdeUF",
-      "region",
-      "superficieDesdeM2",
-      "tipologias"
-    ],
-    "updates": {
-      "nombre": "Robles del Aconcagua",
-      "inmobiliaria": "Ecasa",
-      "comuna": "Los Andes",
-      "region": "Valparaíso",
-      "direccion": "Vicuña 2101",
-      "mapQuery": "Vicuña 2101, Los Andes, Valparaíso, Chile",
-      "estado": "En construcción",
-      "entrega": "Primer semestre 2027",
-      "precioDesdeUF": 2600.0,
-      "tipologias": [
-        "2 dormitorios",
-        "3 dormitorios"
-      ],
-      "superficieDesdeM2": 59,
-      "amenities": [
-        "Quinchos",
-        "Juegos infantiles",
-        "Salón Multiuso",
-        "Plaza Activa"
-      ],
-      "descripcionLarga": "Proyecto de Ecasa en Vicuña 2101, Los Andes. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Quinchos, Juegos infantiles, Salón Multiuso, Plaza Activa."
-    },
-    "specs": {
-      "utilM2": null,
-      "totalM2": "59–64",
-      "terrenoM2": null,
-      "dormitorios": "3",
-      "banos": "1–2"
-    },
-    "images": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/0610208393cf7de0895e769b743be6ae.png",
-        "alt": "Imagen oficial de Robles del Aconcagua",
-        "sourceUrl": "https://ecasa.cl/proyecto/robles-del-aconcagua",
-        "localPath": "/assets/propiedades/catalogo/da691207ca6c24621740a2e4.webp",
-        "width": 1600,
-        "height": 716
-      }
-    ],
-    "virtualTours": [],
-    "pendingFields": [
-      "Superficie útil",
-      "Recorrido virtual oficial específico no localizado"
-    ],
-    "reviewedOriginal": {
-      "comuna": "Los Andes",
-      "nombre": "Robles del Aconcagua",
-      "tipologias": [
-        "2 dormitorios",
-        "3 dormitorios"
-      ],
-      "inmobiliaria": "Ecasa",
-      "precioDesdeUF": 2600,
-      "region": "Valparaíso",
-      "entrega": "Primer semestre 2027",
-      "direccion": "Vicuña 2101",
-      "estado": "En construcción"
-    },
-    "originalImages": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/0610208393cf7de0895e769b743be6ae.png",
-        "alt": "Imagen oficial de Robles del Aconcagua",
-        "sourceUrl": "https://ecasa.cl/proyecto/robles-del-aconcagua"
-      }
-    ]
-  },
-  {
-    "slug": "el-real",
-    "sourceUrl": "https://ecasa.cl/proyecto/el-real",
-    "checkedAt": "2026-10-09",
-    "sourceStatus": "verified",
-    "sourceNotes": "Precio publicado en ficha oficial, sujeto a disponibilidad y cotización de Ecasa.",
-    "sourceEvidence": [
-      "Componente oficial https://ecasa.cl/js/ecasa.js identifica superficie_semi como Sup. Útil y superficie_total como Sup. Total.",
-      "Proyectos Inversionistas PROYECTO EN CONSTRUCCIÓN ENTREGA 2° SEMESTRE 2026 San Felipe El Real Deptos 3 dormitorios, desde 58m² Desde UF 2.600 TE ASESORAMOS GRATIS Rango de Renta* 0 - 1.000.000 1.000.000 - 1.500.000 1.500.000 - 2.000.000 2.000.000 - 2.500.000 2.500.000 - 3.000.000 3.000.000 - más Enviar ¡Muchas gracias por inscribirte! Cotiza aquí TU PRIMER HOGAR EN SAN FELIPE · DEPTOS MÁS AMPLIOS EN SECTOR AERÓDROMO ¿Buscas tu primera propiedad con Subsidio Habitacional? En Ecasa es posible, te ",
-      "Ubicación del proyecto Avenida Costanera con Fernando Márquez de la Plata, San Felipe. elreal@ecasa.cl Ejecutivos de ventas KIMBERLY CATALÁN +569 2601 5330 HILARY SA"
-    ],
-    "verifiedFields": [
-      "amenities",
-      "comuna",
-      "descripcionLarga",
-      "direccion",
-      "entrega",
-      "estado",
-      "inmobiliaria",
-      "mapQuery",
-      "nombre",
-      "precioDesdeUF",
-      "region",
-      "superficieDesdeM2",
-      "tipologias"
-    ],
-    "updates": {
-      "nombre": "El Real",
-      "inmobiliaria": "Ecasa",
-      "comuna": "San Felipe",
-      "region": "Valparaíso",
-      "direccion": "Avenida Costanera con Fernando Márquez de la Plata",
-      "mapQuery": "Avenida Costanera con Fernando Márquez de la Plata, San Felipe, Valparaíso, Chile",
-      "estado": "En construcción",
-      "entrega": "Segundo semestre 2026",
-      "precioDesdeUF": 2600.0,
-      "tipologias": [
-        "3 dormitorios"
-      ],
-      "superficieDesdeM2": 58,
-      "amenities": [
-        "Piscina",
-        "Quinchos",
-        "Juegos infantiles",
-        "Salón Multiuso",
-        "Plaza Activa"
-      ],
-      "descripcionLarga": "Proyecto de Ecasa en Avenida Costanera con Fernando Márquez de la Plata, San Felipe. La ficha oficial publica 3 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Juegos infantiles, Salón Multiuso, Plaza Activa."
-    },
-    "specs": {
-      "utilM2": null,
-      "totalM2": "58–63",
-      "terrenoM2": null,
-      "dormitorios": "3",
-      "banos": "1–2"
-    },
-    "images": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/mapa-el-real%201920x860.png",
-        "alt": "Imagen oficial de El Real",
-        "sourceUrl": "https://ecasa.cl/proyecto/el-real",
-        "localPath": "/assets/propiedades/catalogo/204406fdd4ac3e04f45dcd19.webp",
-        "width": 1600,
-        "height": 717
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/c6c076469ba6e973de1144f304e8e5df.webp",
-        "alt": "Imagen oficial de El Real",
-        "sourceUrl": "https://ecasa.cl/proyecto/el-real",
-        "localPath": "/assets/propiedades/catalogo/9521654e9d91c2fac363344a.webp",
-        "width": 1600,
-        "height": 725
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/cc066d5a23a2a83fa51f516fe1ed58d9.webp",
-        "alt": "Imagen oficial de El Real",
-        "sourceUrl": "https://ecasa.cl/proyecto/el-real",
-        "localPath": "/assets/propiedades/catalogo/22dad05519d3b294ee0d70f5.webp",
-        "width": 1600,
-        "height": 725
-      }
-    ],
-    "virtualTours": [],
-    "pendingFields": [
-      "Superficie útil",
-      "Recorrido virtual oficial específico no localizado"
-    ],
-    "reviewedOriginal": {
-      "comuna": "San Felipe",
-      "nombre": "El Real",
-      "mapQuery": "Avenida Costanera con Fernando Márquez de la Plata, San Felipe, Valparaíso, Chile",
-      "tipologias": [
-        "3 dormitorios"
-      ],
-      "inmobiliaria": "Ecasa",
-      "precioDesdeUF": 2600,
-      "amenities": [
-        "Piscina",
-        "Quincho",
-        "Juegos infantiles",
-        "Sala multiuso",
-        "Plaza activa"
-      ],
-      "region": "Valparaíso",
-      "entrega": "Segundo semestre 2026",
-      "superficieDesdeM2": 58,
-      "direccion": "Avenida Costanera con Fernando Márquez de la Plata",
-      "descripcionLarga": "Proyecto Ecasa con subsidio automático DS19 en San Felipe, junto al sector aeródromo. Ofrece departamentos de 3 dormitorios desde 58 m², con espacios comunes orientados a vida familiar y vistas despejadas hacia la cordillera.",
-      "estado": "En construcción"
-    },
-    "originalImages": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/mapa-el-real%201920x860.png",
-        "alt": "Imagen oficial de El Real",
-        "sourceUrl": "https://ecasa.cl/proyecto/el-real"
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/c6c076469ba6e973de1144f304e8e5df.webp",
-        "alt": "Imagen oficial de El Real",
-        "sourceUrl": "https://ecasa.cl/proyecto/el-real"
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/cc066d5a23a2a83fa51f516fe1ed58d9.webp",
-        "alt": "Imagen oficial de El Real",
-        "sourceUrl": "https://ecasa.cl/proyecto/el-real"
-      }
-    ]
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
   },
   {
     "slug": "vista-bulnes",
@@ -20991,139 +20727,6 @@
     ]
   },
   {
-    "slug": "edificio-ha-strip-center",
-    "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha",
-    "checkedAt": "2026-10-09",
-    "sourceStatus": "verified",
-    "sourceNotes": "Precio publicado en ficha oficial, sujeto a disponibilidad y cotización de Ecasa.",
-    "sourceEvidence": [
-      "Componente oficial https://ecasa.cl/js/ecasa.js identifica superficie_semi como Sup. Útil y superficie_total como Sup. Total.",
-      "Proyectos Inversionistas Coquimbo Edificio HA Strip Center Oficinas y locales comerciales Desde UF 3.190",
-      ""
-    ],
-    "verifiedFields": [
-      "comuna",
-      "descripcionLarga",
-      "direccion",
-      "entrega",
-      "estado",
-      "inmobiliaria",
-      "mapQuery",
-      "nombre",
-      "precioDesdeUF",
-      "region",
-      "superficieDesdeM2",
-      "tipologias"
-    ],
-    "updates": {
-      "nombre": "Edificio HA Strip Center",
-      "inmobiliaria": "Ecasa",
-      "comuna": "Coquimbo",
-      "region": "Coquimbo",
-      "direccion": "Varela 875",
-      "mapQuery": "Varela 875, Coquimbo, Coquimbo, Chile",
-      "estado": "Entrega inmediata",
-      "entrega": "Inmediata",
-      "precioDesdeUF": 3190.0,
-      "tipologias": [
-        "Oficinas",
-        "Locales comerciales"
-      ],
-      "superficieDesdeM2": 62.74,
-      "descripcionLarga": "Proyecto de Ecasa en Varela 875, Coquimbo. La ficha oficial publica Oficinas, Locales comerciales. "
-    },
-    "specs": {
-      "utilM2": null,
-      "totalM2": "62.74–193",
-      "terrenoM2": null,
-      "dormitorios": null,
-      "banos": null
-    },
-    "images": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/1.-mantra-ha-of-1920x860.png",
-        "alt": "Imagen oficial de Edificio HA Strip Center",
-        "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha",
-        "localPath": "/assets/propiedades/catalogo/a773e94159c8ca452f77aabb.webp",
-        "width": 1600,
-        "height": 717
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/2b938492a3d650a7a193c7ebb6f7cbea.png",
-        "alt": "Imagen oficial de Edificio HA Strip Center",
-        "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha",
-        "localPath": "/assets/propiedades/catalogo/a35bc3797ca9f594152f5de1.webp",
-        "width": 1600,
-        "height": 717
-      }
-    ],
-    "virtualTours": [],
-    "pendingFields": [
-      "Superficie útil",
-      "Dormitorios",
-      "Baños",
-      "Equipamiento y áreas comunes",
-      "Recorrido oficial HA Strip Center: enlace antiguo redirige a un portal general; confirmar un enlace propio vigente"
-    ],
-    "reviewedOriginal": {
-      "comuna": "Coquimbo",
-      "nombre": "Edificio HA Strip Center",
-      "tipologias": [
-        "Oficinas",
-        "Locales comerciales"
-      ],
-      "inmobiliaria": "Ecasa",
-      "precioDesdeUF": 3190,
-      "tipoActivo": "Comercial",
-      "region": "Coquimbo",
-      "entrega": "Inmediata",
-      "direccion": "Varela 875",
-      "estado": "Entrega inmediata"
-    },
-    "originalImages": [
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/1.-mantra-ha-of-1920x860.png",
-        "alt": "Imagen oficial de Edificio HA Strip Center",
-        "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha"
-      },
-      {
-        "url": "https://ecasa.cl/uploads/images/diapositivas/2b938492a3d650a7a193c7ebb6f7cbea.png",
-        "alt": "Imagen oficial de Edificio HA Strip Center",
-        "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha"
-      }
-    ],
-    "unavailableVirtualTours": [
-      {
-        "url": "https://www.lanube360.com/edificio-ha/",
-        "title": "Piloto virtual oficial · Edificio HA Strip Center",
-        "provider": "Otro",
-        "sourceUrl": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha",
-        "verificationStatus": "http_verified",
-        "httpVerified": true,
-        "embedStatus": "allowed",
-        "availabilityCheck": {
-          "httpStatus": 200,
-          "xFrameOptions": "ALLOWALL",
-          "frameAncestors": "",
-          "embedStatus": "allowed",
-          "viewerStatus": "http_accessible",
-          "finalUrl": "https://www.lanube360.com/edificio-ha/",
-          "checkedAt": "2026-10-09"
-        },
-        "visualVerification": {
-          "result": "redirected_to_general_portal",
-          "checkedAt": "2026-10-09",
-          "method": "local_iframe_cua_screenshot_review",
-          "evidence": "Carga portal general Lanube360 de parcelas (Tu próxima parcela; buscador y más de500proyectos), sin identidad ni escena HA StripCenter/ECASA. No constituye recorrido específico del proyecto; retirar integración y registrar enlace oficial antiguo/redirigido.",
-          "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
-          "screenshotSha256": "db72c163f6d8fda9b2da9acf7b53bd14b813dfd48faad5bd01b927873f6fc11a",
-          "screenshot": "docs/qa/recorridos/092.jpg"
-        },
-        "reason": "El enlace oficial antiguo abre un portal general de parcelas de Lanube360, sin recorrido identificable de HA Strip Center."
-      }
-    ]
-  },
-  {
     "slug": "atelier-prat-oficinas",
     "sourceUrl": "https://norte-verde.cl/proyecto/atelier-prat-oficinas/",
     "checkedAt": "2026-10-09",
@@ -21779,6 +21382,343 @@
       "sourceSha256": "509ad7aeaafec2b9e09354505a117aea77efb354a433a0d4eae27b08e6378f08",
       "scope": "Etapa III únicamente",
       "surfacesPolicy": "Referenciales; no sustituir medidas de la unidad ofertada"
+    }
+  },
+  {
+    "slug": "alto-san-joaquin-2",
+    "sourceUrl": null,
+    "checkedAt": "2026-10-12",
+    "sourceStatus": "stage_documentation_pending",
+    "sourceNotes": "Identidad comercial y relación con el desarrollo matriz autorizadas expresamente por el propietario en la cartera definitiva. La documentación, los precios, la disponibilidad y las características específicas de esta etapa requieren evidencia propia o documentación común que acredite su alcance.",
+    "sourceEvidence": [
+      "La captura comercial privada identifica expresamente Alto San Joaquín 2 en La Serena. Acredita identidad y comuna; no contiene una fecha visible que permita afirmar vigencia de precios o disponibilidad."
+    ],
+    "verifiedFields": [
+      "nombre",
+      "inmobiliaria",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas",
+      "comuna",
+      "region"
+    ],
+    "updates": {
+      "nombre": "Alto San Joaquín 2",
+      "inmobiliaria": "Ecasa",
+      "proyectoMatrizSlug": "alto-san-joaquin",
+      "etapa": 2,
+      "comuna": "La Serena",
+      "region": "Coquimbo",
+      "etapasRelacionadas": [
+        {
+          "slug": "alto-san-joaquin",
+          "nombre": "Alto San Joaquín",
+          "etapa": 1
+        },
+        {
+          "slug": "alto-san-joaquin-2",
+          "nombre": "Alto San Joaquín 2",
+          "etapa": 2
+        },
+        {
+          "slug": "alto-san-joaquin-3",
+          "nombre": "Alto San Joaquín 3",
+          "etapa": 3
+        }
+      ]
+    },
+    "specs": {
+      "utilM2": null,
+      "totalM2": null,
+      "terrenoM2": null,
+      "dormitorios": null,
+      "banos": null
+    },
+    "images": [],
+    "virtualTours": [],
+    "pendingFields": [
+      "Documentación específica o alcance común acreditado para esta etapa",
+      "Precio y disponibilidad vigentes de la etapa",
+      "Fotografías y planos acreditados de la etapa"
+    ],
+    "commercialIdentity": {
+      "name": "Alto San Joaquín 2",
+      "basis": "user_commercial_capture",
+      "reviewedOn": "2026-10-12",
+      "fileName": "cartera_ecasa_captura_01.png",
+      "sha256": "fdf798d1ba6876289c941c4530d2b4dd9e44791d0f3c761f545b82cc54127662",
+      "verifiedFields": [
+        "nombre",
+        "comuna",
+        "region"
+      ],
+      "scope": "portfolio_identity_and_locality_only"
+    },
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
+  },
+  {
+    "slug": "alto-san-joaquin-3",
+    "sourceUrl": null,
+    "checkedAt": "2026-10-12",
+    "sourceStatus": "stage_documentation_pending",
+    "sourceNotes": "Identidad comercial y relación con el desarrollo matriz autorizadas expresamente por el propietario en la cartera definitiva. La documentación, los precios, la disponibilidad y las características específicas de esta etapa requieren evidencia propia o documentación común que acredite su alcance.",
+    "sourceEvidence": [
+      "La captura comercial privada identifica expresamente Alto San Joaquín 3 en La Serena. Acredita identidad y comuna; no contiene una fecha visible que permita afirmar vigencia de precios o disponibilidad."
+    ],
+    "verifiedFields": [
+      "nombre",
+      "inmobiliaria",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas",
+      "comuna",
+      "region"
+    ],
+    "updates": {
+      "nombre": "Alto San Joaquín 3",
+      "inmobiliaria": "Ecasa",
+      "proyectoMatrizSlug": "alto-san-joaquin",
+      "etapa": 3,
+      "comuna": "La Serena",
+      "region": "Coquimbo",
+      "etapasRelacionadas": [
+        {
+          "slug": "alto-san-joaquin",
+          "nombre": "Alto San Joaquín",
+          "etapa": 1
+        },
+        {
+          "slug": "alto-san-joaquin-2",
+          "nombre": "Alto San Joaquín 2",
+          "etapa": 2
+        },
+        {
+          "slug": "alto-san-joaquin-3",
+          "nombre": "Alto San Joaquín 3",
+          "etapa": 3
+        }
+      ]
+    },
+    "specs": {
+      "utilM2": null,
+      "totalM2": null,
+      "terrenoM2": null,
+      "dormitorios": null,
+      "banos": null
+    },
+    "images": [],
+    "virtualTours": [],
+    "pendingFields": [
+      "Documentación específica o alcance común acreditado para esta etapa",
+      "Precio y disponibilidad vigentes de la etapa",
+      "Fotografías y planos acreditados de la etapa"
+    ],
+    "commercialIdentity": {
+      "name": "Alto San Joaquín 3",
+      "basis": "user_commercial_capture",
+      "reviewedOn": "2026-10-12",
+      "fileName": "cartera_ecasa_captura_02.png",
+      "sha256": "213b043714050f9dc55deb079defdce7a40cf7772b426c4f520c2a891934ad2f",
+      "verifiedFields": [
+        "nombre",
+        "comuna",
+        "region"
+      ],
+      "scope": "portfolio_identity_and_locality_only"
+    },
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
+  },
+  {
+    "slug": "terratolten-2",
+    "sourceUrl": null,
+    "checkedAt": "2026-10-12",
+    "sourceStatus": "stage_documentation_pending",
+    "sourceNotes": "Identidad comercial y relación con el desarrollo matriz autorizadas expresamente por el propietario en la cartera definitiva. La documentación, los precios, la disponibilidad y las características específicas de esta etapa requieren evidencia propia o documentación común que acredite su alcance.",
+    "sourceEvidence": [
+      "La captura comercial privada identifica expresamente Terratoltén 2 en Villarrica. Acredita identidad y comuna; no contiene una fecha visible que permita afirmar vigencia de precios o disponibilidad."
+    ],
+    "verifiedFields": [
+      "nombre",
+      "inmobiliaria",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas",
+      "comuna",
+      "region"
+    ],
+    "updates": {
+      "nombre": "Terratoltén 2",
+      "inmobiliaria": "Ecasa",
+      "proyectoMatrizSlug": "terratolten-1",
+      "etapa": 2,
+      "comuna": "Villarrica",
+      "region": "La Araucanía",
+      "etapasRelacionadas": [
+        {
+          "slug": "terratolten-1",
+          "nombre": "Terratoltén 1",
+          "etapa": 1
+        },
+        {
+          "slug": "terratolten-2",
+          "nombre": "Terratoltén 2",
+          "etapa": 2
+        },
+        {
+          "slug": "terratolten-3",
+          "nombre": "Terratoltén 3",
+          "etapa": 3
+        }
+      ]
+    },
+    "specs": {
+      "utilM2": null,
+      "totalM2": null,
+      "terrenoM2": null,
+      "dormitorios": null,
+      "banos": null
+    },
+    "images": [],
+    "virtualTours": [],
+    "pendingFields": [
+      "Documentación específica o alcance común acreditado para esta etapa",
+      "Precio y disponibilidad vigentes de la etapa",
+      "Fotografías y planos acreditados de la etapa"
+    ],
+    "commercialIdentity": {
+      "name": "Terratoltén 2",
+      "basis": "user_commercial_capture",
+      "reviewedOn": "2026-10-12",
+      "fileName": "cartera_ecasa_captura_01.png",
+      "sha256": "fdf798d1ba6876289c941c4530d2b4dd9e44791d0f3c761f545b82cc54127662",
+      "verifiedFields": [
+        "nombre",
+        "comuna",
+        "region"
+      ],
+      "scope": "portfolio_identity_and_locality_only"
+    },
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
+    }
+  },
+  {
+    "slug": "nucleo-costanera-2",
+    "sourceUrl": null,
+    "checkedAt": "2026-10-12",
+    "sourceStatus": "stage_documentation_pending",
+    "sourceNotes": "Identidad comercial y relación con el desarrollo matriz autorizadas expresamente por el propietario en la cartera definitiva. La documentación, los precios, la disponibilidad y las características específicas de esta etapa requieren evidencia propia o documentación común que acredite su alcance.",
+    "sourceEvidence": [
+      "La captura comercial privada identifica expresamente Núcleo Costanera 2 en Arica. Acredita identidad y comuna; no contiene una fecha visible que permita afirmar vigencia de precios o disponibilidad."
+    ],
+    "verifiedFields": [
+      "nombre",
+      "inmobiliaria",
+      "proyectoMatrizSlug",
+      "etapa",
+      "etapasRelacionadas",
+      "comuna",
+      "region"
+    ],
+    "updates": {
+      "nombre": "Núcleo Costanera 2",
+      "inmobiliaria": "Ecasa",
+      "proyectoMatrizSlug": "nucleo-costanera",
+      "etapa": 2,
+      "comuna": "Arica",
+      "region": "Arica y Parinacota",
+      "etapasRelacionadas": [
+        {
+          "slug": "nucleo-costanera",
+          "nombre": "Núcleo Costanera",
+          "etapa": 1
+        },
+        {
+          "slug": "nucleo-costanera-2",
+          "nombre": "Núcleo Costanera 2",
+          "etapa": 2
+        }
+      ]
+    },
+    "specs": {
+      "utilM2": null,
+      "totalM2": null,
+      "terrenoM2": null,
+      "dormitorios": null,
+      "banos": null
+    },
+    "images": [],
+    "virtualTours": [
+      {
+        "url": "https://tourvirtuales360.cl/pano/ecasa_/nucleo_pilotos/",
+        "title": "Piloto virtual oficial · Núcleo Costanera 2",
+        "provider": "Otro",
+        "sourceUrl": "https://ecasa.cl/proyecto/nucleo-costanera",
+        "verificationStatus": "http_verified",
+        "httpVerified": true,
+        "embedStatus": "allowed",
+        "availabilityCheck": {
+          "httpStatus": 200,
+          "xFrameOptions": "",
+          "frameAncestors": "",
+          "embedStatus": "allowed",
+          "viewerStatus": "http_accessible",
+          "finalUrl": "https://tourvirtuales360.cl/pano/ecasa_/nucleo_pilotos/",
+          "checkedAt": "2026-10-09"
+        },
+        "visualVerification": {
+          "result": "valid_interface",
+          "checkedAt": "2026-10-09",
+          "method": "local_iframe_cua_screenshot_review",
+          "evidence": "Portada Cam360 oficial con nombre del proyecto, botón Tour Virtual, marca Ecasa, información comercial y fondo aéreo; sin pantalla de error.",
+          "limitation": "La captura acredita interfaz preparada para iniciar; no demuestra navegación interior después de pulsar Play del proveedor.",
+          "screenshotSha256": "40866a4e5a8fe812fd53501d8f3d000af0b775b376c00b88daf4f2ca1372cb18",
+          "screenshot": "docs/qa/recorridos/031.jpg"
+        },
+        "stageVerification": {
+          "verifiedStageSlug": "nucleo-costanera-2",
+          "checkedAt": "2026-10-12",
+          "method": "live_provider_title_and_native_play_scene",
+          "providerTitle": "Nucleo Costanera 2",
+          "visibleLabel": "NÚCLEO COSTANERA 2",
+          "screenshotSha256": "6ece36e317446c208542438c1c25c924c322e388a956763b7529bd85ec1511c2",
+          "privateEvidence": "qa-providers/desktop/native-scenes/nucleo-costanera-native-scene.png",
+          "scope": "virtual_tour_only"
+        }
+      }
+    ],
+    "pendingFields": [
+      "Documentación específica o alcance común acreditado para esta etapa",
+      "Precio y disponibilidad vigentes de la etapa",
+      "Fotografías y planos acreditados de la etapa"
+    ],
+    "commercialIdentity": {
+      "name": "Núcleo Costanera 2",
+      "basis": "user_commercial_capture",
+      "reviewedOn": "2026-10-12",
+      "fileName": "cartera_ecasa_captura_01.png",
+      "sha256": "fdf798d1ba6876289c941c4530d2b4dd9e44791d0f3c761f545b82cc54127662",
+      "verifiedFields": [
+        "nombre",
+        "comuna",
+        "region"
+      ],
+      "scope": "portfolio_identity_and_locality_only"
+    },
+    "portfolioVerification": {
+      "basis": "user_definitive_portfolio",
+      "reviewedOn": "2026-10-12",
+      "scope": "stage_identity_and_relationship_only"
     }
   }
 ]

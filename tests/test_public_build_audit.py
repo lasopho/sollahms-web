@@ -22,8 +22,8 @@ class PublicBuildAuditTests(unittest.TestCase):
         (self.source / 'data').mkdir(parents=True)
         (self.public / 'data').mkdir(parents=True)
         aj = ['downtown-san-martin', 'edificio-teatinos-750', 'edificio-vista-amunategui', 'monjitas-690', 'vista-morande']
-        slugs = sorted(audit_module.INGEVEC) + aj + ['other-' + str(n) for n in range(123)]
-        catalogue = [{'slug': slug, 'inmobiliaria': 'Ingevec' if slug in audit_module.INGEVEC else 'Other',
+        slugs = sorted(audit_module.INGEVEC) + aj + sorted(audit_module.ECASA) + ['other-' + str(n) for n in range(100)]
+        catalogue = [{'slug': slug, 'inmobiliaria': 'Ingevec' if slug in audit_module.INGEVEC else 'Ecasa' if slug in audit_module.ECASA else 'Other',
                       'detalleUrl': '/' + slug + '.html', 'imagenPrincipal': '/assets/generic.webp'} for slug in slugs]
         by_slug = {p['slug']: p for p in catalogue}
         references = {slug: [] for slug in slugs}
@@ -74,19 +74,54 @@ class PublicBuildAuditTests(unittest.TestCase):
                 text = text.replace('<body>', '<body>' + audit_module.NOTICE)
             path.write_text(text)
         (self.preview / 'robots.txt').write_text('User-agent: *\nDisallow: /\n')
+        ecasa_records = []
+        preview_catalogue = json.loads(json.dumps(catalogue))
+        preview_by_slug = {p['slug']: p for p in preview_catalogue}
+        for index, slug in enumerate(sorted(audit_module.ECASA)):
+            images, models = [], []
+            if index == 0:
+                for kind in ['image', 'plan']:
+                    path = '/assets/propiedades/ecasa-preview/' + slug + '/' + kind + '.webp'
+                    payload = ('ecasa-fixture-' + path).encode()
+                    file = self.preview / path.lstrip('/')
+                    file.parent.mkdir(parents=True, exist_ok=True)
+                    file.write_bytes(payload)
+                    asset = {'localPath': path, 'sha256': hashlib.sha256(payload).hexdigest()}
+                    if kind == 'image': images.append(asset)
+                    else: models.append({'plan': asset})
+            cover = {'localPath': images[0]['localPath'], 'alt': 'Render ilustrativo'} if images else None
+            if cover:
+                preview_by_slug[slug]['imagenPrincipal'] = cover['localPath']
+                preview_by_slug[slug]['imagenAlt'] = cover['alt']
+            record = {'slug': slug, 'images': images, 'models': models, 'catalogueCover': cover}
+            ecasa_records.append(record)
+            original = (self.public / (slug + '.html')).read_text()
+            refs = ''.join('<img src="' + asset['localPath'] + '">' for asset in images + [model['plan'] for model in models])
+            original = original.replace('</body>', '<!--ECASA_PUBLIC_START--><p>Ficha comercial vigente</p><!--ECASA_PUBLIC_END--><!--ECASA_PREVIEW_START-->' + refs + '<!--ECASA_PREVIEW_END--></body>')
+            (self.source / (slug + '.html')).write_text(original)
+            (self.public / (slug + '.html')).write_text(audit_module.selected_ecasa_html(original, False))
+            (self.preview / (slug + '.html')).write_text(audit_module.selected_ecasa_html(original, True).replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>'))
+        (self.source / 'data/brochures-ecasa.json').write_text(json.dumps({'projects': ecasa_records,
+            'publicationRights': {'sourceChannel': 'Ecasa/user_supplied', 'protectedPreview': 'authorized_by_user',
+                'productionPolicy': 'requires_verified_contract_scope',
+                'contractScope': {'status': 'pending_contract_scope_verification'}}}))
+        (self.preview / 'data/proyectos.json').write_text(json.dumps(preview_catalogue))
 
     def tearDown(self):
         self.temporary.cleanup()
 
     def result(self):
-        return audit_module.audit(self.source, self.public, self.preview)
+        return audit_module.audit(self.source, self.public, self.preview, protected_review=True)
 
-    def test_complete_public_and_preview_twins_pass(self):
+    def test_complete_protected_review_and_preserved_public_batches_pass(self):
         result = self.result()
         self.assertTrue(result['ok'], result['errors'])
         self.assertEqual(result['counts']['brochureMedia'], 269)
         self.assertEqual(result['counts']['brochurePlans'], 142)
-        self.assertEqual(result['counts']['canonicalFiches'], 144)
+        self.assertEqual(result['counts']['canonicalFiches'], 143)
+        self.assertEqual(result['counts']['ecasa'], 22)
+        self.assertEqual(result['counts']['ecasaMedia'], 2)
+        self.assertFalse(result['ecasaPublicWebParityVerified'])
         self.assertEqual(result['networkRequests'], 0)
 
     def test_missing_selected_image_is_rejected(self):
@@ -137,6 +172,51 @@ class PublicBuildAuditTests(unittest.TestCase):
         result = self.result()
         self.assertFalse(result['ok'])
         self.assertTrue(any('Incorrect canonical' in e for e in result['errors']))
+
+    def test_removed_ecasa_identity_is_rejected(self):
+        path = self.public / 'data/proyectos.json'
+        catalogue = json.loads(path.read_text())
+        next(p for p in catalogue if p['inmobiliaria'] == 'Ecasa')['slug'] = 'altos-del-wayra'
+        path.write_text(json.dumps(catalogue))
+        result = self.result()
+        self.assertFalse(result['ok'])
+        self.assertTrue(any('22 approved Ecasa identities' in e for e in result['errors']))
+
+    def test_stage_price_change_in_preview_is_rejected(self):
+        path = self.preview / 'data/proyectos.json'
+        catalogue = json.loads(path.read_text())
+        next(p for p in catalogue if p['slug'] == 'alto-san-joaquin-3')['precioDesdeUF'] = 1234
+        path.write_text(json.dumps(catalogue))
+        self.assertTrue(any('commercial data beyond reviewed covers' in e for e in self.result()['errors']))
+
+    def test_changed_ecasa_plan_and_unselected_candidate_are_rejected(self):
+        path = next(self.preview.glob('assets/propiedades/ecasa-preview/*/plan.webp'))
+        path.write_bytes(b'CHANGED-PLAN')
+        (path.parent / 'unselected.webp').write_bytes(b'PRIVATE-CANDIDATE')
+        result = self.result()
+        self.assertFalse(result['ok'])
+        self.assertTrue(any('Selected Ecasa resource bytes changed' in e for e in result['errors']))
+        self.assertTrue(any('Unselected candidate or omitted Ecasa' in e for e in result['errors']))
+
+    def test_pending_ecasa_media_cannot_enter_public_output(self):
+        path = next(self.preview.glob('assets/propiedades/ecasa-preview/*/image.webp'))
+        target = self.public / path.relative_to(self.preview)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(path, target)
+        self.assertTrue(any('public eligibility' in e for e in self.result()['errors']))
+
+    def test_other_developer_rights_cannot_authorize_ecasa(self):
+        path = self.source / 'data/brochures-ecasa.json'
+        review = json.loads(path.read_text())
+        review['publicationRights']['sourceChannel'] = 'Yapo/IRIS'
+        path.write_text(json.dumps(review))
+        self.assertTrue(any('Independent Ecasa' in e for e in self.result()['errors']))
+
+    def test_official_financial_sources_remain_visible_in_the_comparator(self):
+        for root in [self.public, self.preview]:
+            path = root / 'comparador-hipotecario.html'
+            path.write_text(path.read_text().replace('</body>', '<p>Fuentes oficiales y fecha de verificación de la UF</p></body>'))
+        self.assertTrue(self.result()['ok'], self.result()['errors'])
 
 
 if __name__ == '__main__':

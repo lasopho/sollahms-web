@@ -13,6 +13,7 @@ from pathlib import Path
 from string import Template
 
 from automatic_embed_scope import restore_automatic_file
+from ecasa_scope import restore_ecasa_page, ADDED
 from map_cleanup_scope import (ROOT, FEATURED, RELATED, GENERIC_NOTES, NOSCRIPT,
                                baseline_bytes, expected_cleanup_file,
                                transform_map_cleanup, restore_map_cleanup_asset)
@@ -50,19 +51,23 @@ class MapCleanup(unittest.TestCase):
                 self.assertNotRegex(attrs.get('href', ''), r'https://www\.google\.com/maps', slug)
         self.assertNotRegex(page, r'</iframe></div><p\b[^>]*>\s*</p>', slug)
 
-    def test_all_144_fichas_match_exact_main_cleanup_with_137_changes(self):
+    def test_all_121_non_ecasa_fichas_keep_exact_cleanup_with_116_changes(self):
         changed = 0
         for project in PROJECTS:
+            if project['inmobiliaria'] == 'Ecasa':
+                continue  # Names, relations and protected media have exact successor checks.
             path = project['slug'] + '.html'
             current = (ROOT / path).read_bytes()
             self.assertEqual(current, expected_cleanup_file(path), path)
             restore_automatic_file(path, current)
             changed += current != baseline_bytes(path)
-        self.assertEqual((len(PROJECTS), changed, len(PROJECTS) - changed), (144, 137, 7))
+        self.assertEqual((len(PROJECTS), changed, 121 - changed), (143, 116, 5))
 
-    def test_137_maps_97_tours_and_all_images_actions_remain_exact(self):
+    def test_116_non_ecasa_maps_81_tours_and_all_images_actions_remain_exact(self):
         maps = tours = plans = 0
         for project in PROJECTS:
+            if project['inmobiliaria'] == 'Ecasa':
+                continue  # Names, relations and protected media have exact successor checks.
             path = project['slug'] + '.html'
             before = Nodes(baseline_bytes(path).decode()).nodes
             after = Nodes((ROOT / path).read_text()).nodes
@@ -77,7 +82,7 @@ class MapCleanup(unittest.TestCase):
                 self.assertEqual(frame.get('loading'), 'lazy', path)
             # Each brochure model still has its own original displayed plan.
             plans += (ROOT / path).read_text().count('class="aj-model"')
-        self.assertEqual((maps, tours, plans), (137, 97, 142))
+        self.assertEqual((maps, tours, plans), (116, 81, 142))
 
     def test_no_persistent_map_links_generic_notes_or_empty_remnants(self):
         related = 0
@@ -97,6 +102,8 @@ class MapCleanup(unittest.TestCase):
             slug = project['slug']
             page, _, _ = details.render(project, copy.deepcopy(RECORDS[slug]), template)
             self.assert_clean(page, slug)
+            if project['inmobiliaria'] == 'Ecasa':
+                continue
             before = baseline_bytes(slug + '.html').decode()
             current = (ROOT / (slug + '.html')).read_text()
             self.assertEqual(normalize_page_embeds(before, RECORDS[slug], featured=slug in FEATURED), current, slug)

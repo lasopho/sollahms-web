@@ -8,9 +8,22 @@ export const BROCHURE_INGEVEC_SLUGS = Object.freeze([
   'el-aromo', 'los-lilenes', 'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589',
   'abdon-cifuentes', 'don-ignacio', 'terrazzo', 'vima', 'los-alerces', 'valle-los-ingleses-iii',
 ]);
+export const BROCHURE_ECASA_SLUGS = Object.freeze([
+  'lomas-de-puyai', 'ferroparque', 'edificio-bezanilla', 'endemico',
+  'terratolten-1', 'wayra', 'alto-san-joaquin-3', 'enlace-mackenna',
+  'ferroparque-2', 'espacio-victoria', 'lamara', 'terratolten-3',
+  'lomas-de-puyai-3', 'cumbres-de-penuelas', 'aires-la-florida-2',
+  'conecta-huechuraba', 'urban-la-florida', 'alto-san-joaquin',
+  'alto-san-joaquin-2', 'nucleo-costanera', 'terratolten-2', 'nucleo-costanera-2',
+]);
+export const BROCHURE_ECASA_REMOVED_SLUGS = Object.freeze([
+  'bosquemar', 'altos-del-wayra', 'robles-del-aconcagua',
+  'el-real', 'edificio-ha-strip-center',
+]);
 export const BROCHURE_REMOVED_SLUGS = Object.freeze([
   'brasil', 'vespucio-capital', 'edificio-serrano-capital',
   'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz',
+  ...BROCHURE_ECASA_REMOVED_SLUGS,
 ]);
 export const BROCHURE_PUBLIC_PAGES = Object.freeze([
   '404.html', 'agenda-asesoria.html', 'comparador-hipotecario.html',
@@ -25,10 +38,21 @@ export const BROCHURE_RETIRED_ASSETS = Object.freeze([
   '/assets/propiedades/catalogo/1c8afdcef4daab70c27ecb01.webp',
   '/assets/propiedades/catalogo/ae7bcf577b09a561c3359867.webp',
   '/assets/propiedades/catalogo/2e0af89ee3298d9791639ae2.webp',
+  '/assets/propiedades/catalogo/883af11703388c0dba211491.webp',
+  '/assets/propiedades/catalogo/70413545b58983da8e24825a.webp',
+  '/assets/propiedades/catalogo/5ec72b840d3cb985b609df36.webp',
+  '/assets/propiedades/catalogo/cc5c4d04b4f258731931d6eb.webp',
+  '/assets/propiedades/catalogo/81adaf07bdbd2fab601a093c.webp',
+  '/assets/propiedades/catalogo/da691207ca6c24621740a2e4.webp',
+  '/assets/propiedades/catalogo/204406fdd4ac3e04f45dcd19.webp',
+  '/assets/propiedades/catalogo/9521654e9d91c2fac363344a.webp',
+  '/assets/propiedades/catalogo/22dad05519d3b294ee0d70f5.webp',
+  '/assets/propiedades/catalogo/a773e94159c8ca452f77aabb.webp',
+  '/assets/propiedades/catalogo/a35bc3797ca9f594152f5de1.webp',
 ]);
-// Canonical fingerprints pin the 128 unaffected catalogue objects from
-// 8cdb9bf; the packaged source does not require a .git directory to check them.
-const OTHER_CATALOGUE_SHA256 = '22a466f71ae9eaddbf8ed5642cbc5440ed2b9615b8a4abcafccd4c801c27a446';
+// Pin all 121 non-Ecasa objects from current main f1e9bf1, including the
+// sixteen approved Ingevec identities. This check also works outside Git.
+const OTHER_CATALOGUE_SHA256 = '24d8a4338b54b1649fa77244d6010579d37f46b206292f1675e27b94853a75b7';
 export const canonicalBrochureValue = value => Array.isArray(value) ? value.map(canonicalBrochureValue) :
   value && typeof value === 'object' ? Object.fromEntries(Object.entries(value)
     .sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)
@@ -38,16 +62,21 @@ export const brochureFingerprint = value => createHash('sha256')
 
 export function assertBrochureCatalogue(projects) {
   const allowed = new Set(BROCHURE_INGEVEC_SLUGS);
+  const ecasaAllowed = new Set(BROCHURE_ECASA_SLUGS);
   const slugs = new Set(projects.map(project => project.slug));
-  if (projects.length !== 144 || slugs.size !== 144 ||
+  if (projects.length !== 143 || slugs.size !== 143 ||
       !BROCHURE_INGEVEC_SLUGS.every(slug => slugs.has(slug)) ||
+      !BROCHURE_ECASA_SLUGS.every(slug => slugs.has(slug)) ||
       BROCHURE_REMOVED_SLUGS.some(slug => slugs.has(slug)) ||
-      projects.some(project => allowed.has(project.slug) && project.inmobiliaria !== 'Ingevec')) {
-    throw new Error('The approved catalogue must contain exactly 144 projects with the sixteen authorized Ingevec identities');
+      projects.filter(project => project.inmobiliaria === 'Ingevec').length !== 16 ||
+      projects.filter(project => project.inmobiliaria === 'Ecasa').length !== 22 ||
+      projects.some(project => (allowed.has(project.slug) && project.inmobiliaria !== 'Ingevec') ||
+        (ecasaAllowed.has(project.slug) && project.inmobiliaria !== 'Ecasa'))) {
+    throw new Error('The approved catalogue must contain exactly 143 projects with twenty-two Ecasa and sixteen Ingevec identities');
   }
-  const untouched = projects.filter(project => !allowed.has(project.slug));
-  if (untouched.length !== 128 || brochureFingerprint(untouched) !== OTHER_CATALOGUE_SHA256) {
-    throw new Error('The 128 projects from other developers must remain unchanged from the approved catalogue');
+  const untouched = projects.filter(project => project.inmobiliaria !== 'Ecasa');
+  if (untouched.length !== 121 || brochureFingerprint(untouched) !== OTHER_CATALOGUE_SHA256) {
+    throw new Error('The 121 projects from other developers must remain unchanged from approved main f1e9bf1');
   }
 }
 

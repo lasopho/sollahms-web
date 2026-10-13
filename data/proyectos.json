@@ -330,11 +330,25 @@
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/10a2ce6fe3d7d8c64b07e502.webp",
-    "imagenAlt": "Imagen oficial de Núcleo Costanera"
+    "imagenAlt": "Imagen oficial de Núcleo Costanera",
+    "proyectoMatrizSlug": "nucleo-costanera",
+    "etapa": 1,
+    "etapasRelacionadas": [
+      {
+        "slug": "nucleo-costanera",
+        "nombre": "Núcleo Costanera",
+        "etapa": 1
+      },
+      {
+        "slug": "nucleo-costanera-2",
+        "nombre": "Núcleo Costanera 2",
+        "etapa": 2
+      }
+    ]
   },
   {
     "slug": "wayra",
-    "nombre": "Wayra",
+    "nombre": "Edificio Wayra",
     "inmobiliaria": "Ecasa",
     "comuna": "Arica",
     "region": "Arica y Parinacota",
@@ -873,7 +887,7 @@
   },
   {
     "slug": "edificio-bezanilla",
-    "nombre": "Edificio Bezanilla",
+    "nombre": "Bezanilla",
     "inmobiliaria": "Ecasa",
     "comuna": "Independencia",
     "region": "Región Metropolitana",
@@ -1144,7 +1158,7 @@
   },
   {
     "slug": "endemico",
-    "nombre": "Endémico Pichilemu",
+    "nombre": "Endémico",
     "inmobiliaria": "Ecasa",
     "comuna": "Pichilemu",
     "region": "O'Higgins",
@@ -1175,7 +1189,8 @@
         "descripcionLarga",
         "estado",
         "nombre",
-        "region"
+        "region",
+        "inmobiliaria"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/2b22212f50bd2d3577662f18.webp",
@@ -1226,7 +1241,26 @@
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/4947617ecd885a17aa405c6c.webp",
-    "imagenAlt": "Imagen oficial de Terratoltén 1"
+    "imagenAlt": "Imagen oficial de Terratoltén 1",
+    "proyectoMatrizSlug": "terratolten-1",
+    "etapa": 1,
+    "etapasRelacionadas": [
+      {
+        "slug": "terratolten-1",
+        "nombre": "Terratoltén 1",
+        "etapa": 1
+      },
+      {
+        "slug": "terratolten-2",
+        "nombre": "Terratoltén 2",
+        "etapa": 2
+      },
+      {
+        "slug": "terratolten-3",
+        "nombre": "Terratoltén 3",
+        "etapa": 3
+      }
+    ]
   },
   {
     "slug": "playa-penuelas",
@@ -1937,7 +1971,21 @@
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/a280b021758d64582b300406.webp",
-    "imagenAlt": "Imagen oficial de Lomas de Puyai"
+    "imagenAlt": "Imagen oficial de Lomas de Puyai",
+    "proyectoMatrizSlug": "lomas-de-puyai",
+    "etapa": 1,
+    "etapasRelacionadas": [
+      {
+        "slug": "lomas-de-puyai",
+        "nombre": "Lomas de Puyai",
+        "etapa": 1
+      },
+      {
+        "slug": "lomas-de-puyai-3",
+        "nombre": "Lomas de Puyai 3",
+        "etapa": 3
+      }
+    ]
   },
   {
     "slug": "ferroparque",
@@ -1977,7 +2025,21 @@
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/91ff04bbcf904896681228e0.webp",
-    "imagenAlt": "Imagen oficial de FerroParque"
+    "imagenAlt": "Imagen oficial de FerroParque",
+    "proyectoMatrizSlug": "ferroparque",
+    "etapa": 1,
+    "etapasRelacionadas": [
+      {
+        "slug": "ferroparque",
+        "nombre": "FerroParque",
+        "etapa": 1
+      },
+      {
+        "slug": "ferroparque-2",
+        "nombre": "Ferroparque 2",
+        "etapa": 2
+      }
+    ]
   },
   {
     "slug": "froilan-roa-5731-torre-norte",
@@ -3750,14 +3812,33 @@
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/1a51a3df930e14e3c6440c9a.webp",
-    "imagenAlt": "Imagen oficial de Terratoltén 3"
+    "imagenAlt": "Imagen oficial de Terratoltén 3",
+    "proyectoMatrizSlug": "terratolten-1",
+    "etapa": 3,
+    "etapasRelacionadas": [
+      {
+        "slug": "terratolten-1",
+        "nombre": "Terratoltén 1",
+        "etapa": 1
+      },
+      {
+        "slug": "terratolten-2",
+        "nombre": "Terratoltén 2",
+        "etapa": 2
+      },
+      {
+        "slug": "terratolten-3",
+        "nombre": "Terratoltén 3",
+        "etapa": 3
+      }
+    ]
   },
   {
     "slug": "lomas-de-puyai-3",
     "nombre": "Lomas de Puyai 3",
     "inmobiliaria": "Ecasa",
-    "comuna": null,
-    "region": null,
+    "comuna": "Papudo",
+    "region": "Valparaíso",
     "direccion": null,
     "estado": null,
     "entrega": null,
@@ -3772,10 +3853,29 @@
       "fecha": "2026-10-09",
       "fuente": "https://ecasa.cl/proyectos",
       "estadoFuente": "not_found",
-      "camposVerificados": []
+      "camposVerificados": [
+        "nombre",
+        "inmobiliaria",
+        "comuna",
+        "region"
+      ]
     },
     "imagenPrincipal": null,
-    "imagenAlt": null
+    "imagenAlt": null,
+    "proyectoMatrizSlug": "lomas-de-puyai",
+    "etapa": 3,
+    "etapasRelacionadas": [
+      {
+        "slug": "lomas-de-puyai",
+        "nombre": "Lomas de Puyai",
+        "etapa": 1
+      },
+      {
+        "slug": "lomas-de-puyai-3",
+        "nombre": "Lomas de Puyai 3",
+        "etapa": 3
+      }
+    ]
   },
   {
     "slug": "pintor-cicarelli-iii",
@@ -4458,7 +4558,21 @@
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/b8dccb67ec6fec7cc2a6e011.webp",
-    "imagenAlt": "Imagen oficial de Ferroparque 2"
+    "imagenAlt": "Imagen oficial de Ferroparque 2",
+    "proyectoMatrizSlug": "ferroparque",
+    "etapa": 2,
+    "etapasRelacionadas": [
+      {
+        "slug": "ferroparque",
+        "nombre": "FerroParque",
+        "etapa": 1
+      },
+      {
+        "slug": "ferroparque-2",
+        "nombre": "Ferroparque 2",
+        "etapa": 2
+      }
+    ]
   },
   {
     "slug": "novo-catedral",
@@ -5496,198 +5610,26 @@
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/35362f377694247fd6260156.webp",
-    "imagenAlt": "Imagen oficial de Alto San Joaquín"
-  },
-  {
-    "slug": "bosquemar",
-    "nombre": "Bosquemar",
-    "inmobiliaria": "Ecasa",
-    "comuna": "Concón",
-    "region": "Valparaíso",
-    "direccion": "San Fernando 46",
-    "estado": "Entrega inmediata",
-    "entrega": "Inmediata",
-    "tipologias": [
-      "2 dormitorios",
-      "3 dormitorios"
-    ],
-    "precioDesdeUF": null,
-    "amenities": [
-      "Piscina",
-      "Quinchos",
-      "Lavandería",
-      "Salón Gourmet",
-      "Bicicleteros",
-      "Sala de Yoga",
-      "Pet Zone"
-    ],
-    "mapQuery": "San Fernando 46, Concón, Valparaíso, Chile",
-    "descripcionLarga": "Proyecto de Ecasa en San Fernando 46, Concón. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Lavandería, Salón Gourmet, Bicicleteros.",
-    "superficieDesdeM2": 79.62,
-    "imagenPrincipal": "/assets/propiedades/catalogo/883af11703388c0dba211491.webp",
-    "imagenAlt": "Imagen oficial de Bosquemar",
-    "detalleUrl": "/bosquemar.html",
-    "verificacion": {
-      "fecha": "2026-10-09",
-      "fuente": "https://ecasa.cl/proyecto/bosquemar",
-      "estadoFuente": "verified",
-      "camposVerificados": [
-        "amenities",
-        "comuna",
-        "descripcionLarga",
-        "direccion",
-        "entrega",
-        "estado",
-        "inmobiliaria",
-        "mapQuery",
-        "nombre",
-        "region",
-        "superficieDesdeM2",
-        "tipologias"
-      ]
-    }
-  },
-  {
-    "slug": "altos-del-wayra",
-    "nombre": "Altos del Wayra",
-    "inmobiliaria": "Ecasa",
-    "comuna": "Los Andes",
-    "region": "Valparaíso",
-    "direccion": "Regidora Dissolina Rojas 2302",
-    "estado": "En construcción",
-    "entrega": "Segundo semestre 2027",
-    "tipologias": [
-      "2 dormitorios",
-      "3 dormitorios"
-    ],
-    "precioDesdeUF": 2600.0,
-    "amenities": [
-      "Áreas verdes",
-      "Juegos infantiles",
-      "Bicicleteros",
-      "Salón Multiuso",
-      "Plaza Activa"
-    ],
-    "mapQuery": "Regidora Dissolina Rojas 2302, Los Andes, Valparaíso, Chile",
-    "descripcionLarga": "Proyecto de Ecasa en Regidora Dissolina Rojas 2302, Los Andes. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Áreas verdes, Juegos infantiles, Bicicleteros, Salón Multiuso, Plaza Activa.",
-    "superficieDesdeM2": 59.57,
-    "imagenPrincipal": "/assets/propiedades/catalogo/81adaf07bdbd2fab601a093c.webp",
-    "imagenAlt": "Imagen oficial de Altos del Wayra",
-    "detalleUrl": "/altos-del-wayra.html",
-    "verificacion": {
-      "fecha": "2026-10-09",
-      "fuente": "https://ecasa.cl/proyecto/altos-del-wayra",
-      "estadoFuente": "verified",
-      "camposVerificados": [
-        "amenities",
-        "comuna",
-        "descripcionLarga",
-        "direccion",
-        "entrega",
-        "estado",
-        "inmobiliaria",
-        "mapQuery",
-        "nombre",
-        "precioDesdeUF",
-        "region",
-        "superficieDesdeM2",
-        "tipologias"
-      ]
-    }
-  },
-  {
-    "slug": "robles-del-aconcagua",
-    "nombre": "Robles del Aconcagua",
-    "inmobiliaria": "Ecasa",
-    "comuna": "Los Andes",
-    "region": "Valparaíso",
-    "direccion": "Vicuña 2101",
-    "estado": "En construcción",
-    "entrega": "Primer semestre 2027",
-    "tipologias": [
-      "2 dormitorios",
-      "3 dormitorios"
-    ],
-    "precioDesdeUF": 2600.0,
-    "detalleUrl": "/robles-del-aconcagua.html",
-    "descripcionLarga": "Proyecto de Ecasa en Vicuña 2101, Los Andes. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Quinchos, Juegos infantiles, Salón Multiuso, Plaza Activa.",
-    "mapQuery": "Vicuña 2101, Los Andes, Valparaíso, Chile",
-    "amenities": [
-      "Quinchos",
-      "Juegos infantiles",
-      "Salón Multiuso",
-      "Plaza Activa"
-    ],
-    "superficieDesdeM2": 59,
-    "verificacion": {
-      "fecha": "2026-10-09",
-      "fuente": "https://ecasa.cl/proyecto/robles-del-aconcagua",
-      "estadoFuente": "verified",
-      "camposVerificados": [
-        "amenities",
-        "comuna",
-        "descripcionLarga",
-        "direccion",
-        "entrega",
-        "estado",
-        "inmobiliaria",
-        "mapQuery",
-        "nombre",
-        "precioDesdeUF",
-        "region",
-        "superficieDesdeM2",
-        "tipologias"
-      ]
-    },
-    "imagenPrincipal": "/assets/propiedades/catalogo/da691207ca6c24621740a2e4.webp",
-    "imagenAlt": "Imagen oficial de Robles del Aconcagua"
-  },
-  {
-    "slug": "el-real",
-    "nombre": "El Real",
-    "inmobiliaria": "Ecasa",
-    "comuna": "San Felipe",
-    "region": "Valparaíso",
-    "direccion": "Avenida Costanera con Fernando Márquez de la Plata",
-    "estado": "En construcción",
-    "entrega": "Segundo semestre 2026",
-    "tipologias": [
-      "3 dormitorios"
-    ],
-    "precioDesdeUF": 2600.0,
-    "amenities": [
-      "Piscina",
-      "Quinchos",
-      "Juegos infantiles",
-      "Salón Multiuso",
-      "Plaza Activa"
-    ],
-    "mapQuery": "Avenida Costanera con Fernando Márquez de la Plata, San Felipe, Valparaíso, Chile",
-    "descripcionLarga": "Proyecto de Ecasa en Avenida Costanera con Fernando Márquez de la Plata, San Felipe. La ficha oficial publica 3 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Juegos infantiles, Salón Multiuso, Plaza Activa.",
-    "superficieDesdeM2": 58,
-    "imagenPrincipal": "/assets/propiedades/catalogo/204406fdd4ac3e04f45dcd19.webp",
-    "imagenAlt": "Imagen oficial de El Real",
-    "detalleUrl": "/el-real.html",
-    "verificacion": {
-      "fecha": "2026-10-09",
-      "fuente": "https://ecasa.cl/proyecto/el-real",
-      "estadoFuente": "verified",
-      "camposVerificados": [
-        "amenities",
-        "comuna",
-        "descripcionLarga",
-        "direccion",
-        "entrega",
-        "estado",
-        "inmobiliaria",
-        "mapQuery",
-        "nombre",
-        "precioDesdeUF",
-        "region",
-        "superficieDesdeM2",
-        "tipologias"
-      ]
-    }
+    "imagenAlt": "Imagen oficial de Alto San Joaquín",
+    "proyectoMatrizSlug": "alto-san-joaquin",
+    "etapa": 1,
+    "etapasRelacionadas": [
+      {
+        "slug": "alto-san-joaquin",
+        "nombre": "Alto San Joaquín",
+        "etapa": 1
+      },
+      {
+        "slug": "alto-san-joaquin-2",
+        "nombre": "Alto San Joaquín 2",
+        "etapa": 2
+      },
+      {
+        "slug": "alto-san-joaquin-3",
+        "nombre": "Alto San Joaquín 3",
+        "etapa": 3
+      }
+    ]
   },
   {
     "slug": "vista-bulnes",
@@ -6457,48 +6399,6 @@
     "imagenAlt": "Imagen oficial de Patio Brasil"
   },
   {
-    "slug": "edificio-ha-strip-center",
-    "nombre": "Edificio HA Strip Center",
-    "inmobiliaria": "Ecasa",
-    "comuna": "Coquimbo",
-    "region": "Coquimbo",
-    "direccion": "Varela 875",
-    "estado": "Entrega inmediata",
-    "entrega": "Inmediata",
-    "tipologias": [
-      "Oficinas",
-      "Locales comerciales"
-    ],
-    "precioDesdeUF": 3190.0,
-    "tipoActivo": "Comercial",
-    "detalleUrl": "/edificio-ha-strip-center.html",
-    "descripcionLarga": "Proyecto de Ecasa en Varela 875, Coquimbo. La ficha oficial publica Oficinas, Locales comerciales. ",
-    "mapQuery": "Varela 875, Coquimbo, Coquimbo, Chile",
-    "amenities": [],
-    "superficieDesdeM2": 62.74,
-    "verificacion": {
-      "fecha": "2026-10-09",
-      "fuente": "https://ecasa.cl/proyecto/oficinas-locales-edificio-ha",
-      "estadoFuente": "verified",
-      "camposVerificados": [
-        "comuna",
-        "descripcionLarga",
-        "direccion",
-        "entrega",
-        "estado",
-        "inmobiliaria",
-        "mapQuery",
-        "nombre",
-        "precioDesdeUF",
-        "region",
-        "superficieDesdeM2",
-        "tipologias"
-      ]
-    },
-    "imagenPrincipal": "/assets/propiedades/catalogo/a773e94159c8ca452f77aabb.webp",
-    "imagenAlt": "Imagen oficial de Edificio HA Strip Center"
-  },
-  {
     "slug": "atelier-prat-oficinas",
     "nombre": "Edificio Atelier Prat Oficinas",
     "inmobiliaria": "Norte Verde",
@@ -6719,5 +6619,204 @@
     },
     "imagenPrincipal": null,
     "imagenAlt": null
+  },
+  {
+    "slug": "alto-san-joaquin-2",
+    "nombre": "Alto San Joaquín 2",
+    "inmobiliaria": "Ecasa",
+    "comuna": "La Serena",
+    "region": "Coquimbo",
+    "direccion": null,
+    "estado": null,
+    "entrega": null,
+    "tipologias": [],
+    "precioDesdeUF": null,
+    "detalleUrl": "/alto-san-joaquin-2.html",
+    "descripcionLarga": null,
+    "mapQuery": null,
+    "amenities": [],
+    "superficieDesdeM2": null,
+    "imagenPrincipal": null,
+    "imagenAlt": null,
+    "proyectoMatrizSlug": "alto-san-joaquin",
+    "etapa": 2,
+    "verificacion": {
+      "fecha": "2026-10-12",
+      "fuente": null,
+      "estadoFuente": "stage_documentation_pending",
+      "camposVerificados": [
+        "nombre",
+        "inmobiliaria",
+        "proyectoMatrizSlug",
+        "etapa",
+        "comuna",
+        "region"
+      ]
+    },
+    "etapasRelacionadas": [
+      {
+        "slug": "alto-san-joaquin",
+        "nombre": "Alto San Joaquín",
+        "etapa": 1
+      },
+      {
+        "slug": "alto-san-joaquin-2",
+        "nombre": "Alto San Joaquín 2",
+        "etapa": 2
+      },
+      {
+        "slug": "alto-san-joaquin-3",
+        "nombre": "Alto San Joaquín 3",
+        "etapa": 3
+      }
+    ]
+  },
+  {
+    "slug": "alto-san-joaquin-3",
+    "nombre": "Alto San Joaquín 3",
+    "inmobiliaria": "Ecasa",
+    "comuna": "La Serena",
+    "region": "Coquimbo",
+    "direccion": null,
+    "estado": null,
+    "entrega": null,
+    "tipologias": [],
+    "precioDesdeUF": null,
+    "detalleUrl": "/alto-san-joaquin-3.html",
+    "descripcionLarga": null,
+    "mapQuery": null,
+    "amenities": [],
+    "superficieDesdeM2": null,
+    "imagenPrincipal": null,
+    "imagenAlt": null,
+    "proyectoMatrizSlug": "alto-san-joaquin",
+    "etapa": 3,
+    "verificacion": {
+      "fecha": "2026-10-12",
+      "fuente": null,
+      "estadoFuente": "stage_documentation_pending",
+      "camposVerificados": [
+        "nombre",
+        "inmobiliaria",
+        "proyectoMatrizSlug",
+        "etapa",
+        "comuna",
+        "region"
+      ]
+    },
+    "etapasRelacionadas": [
+      {
+        "slug": "alto-san-joaquin",
+        "nombre": "Alto San Joaquín",
+        "etapa": 1
+      },
+      {
+        "slug": "alto-san-joaquin-2",
+        "nombre": "Alto San Joaquín 2",
+        "etapa": 2
+      },
+      {
+        "slug": "alto-san-joaquin-3",
+        "nombre": "Alto San Joaquín 3",
+        "etapa": 3
+      }
+    ]
+  },
+  {
+    "slug": "terratolten-2",
+    "nombre": "Terratoltén 2",
+    "inmobiliaria": "Ecasa",
+    "comuna": "Villarrica",
+    "region": "La Araucanía",
+    "direccion": null,
+    "estado": null,
+    "entrega": null,
+    "tipologias": [],
+    "precioDesdeUF": null,
+    "detalleUrl": "/terratolten-2.html",
+    "descripcionLarga": null,
+    "mapQuery": null,
+    "amenities": [],
+    "superficieDesdeM2": null,
+    "imagenPrincipal": null,
+    "imagenAlt": null,
+    "proyectoMatrizSlug": "terratolten-1",
+    "etapa": 2,
+    "verificacion": {
+      "fecha": "2026-10-12",
+      "fuente": null,
+      "estadoFuente": "stage_documentation_pending",
+      "camposVerificados": [
+        "nombre",
+        "inmobiliaria",
+        "proyectoMatrizSlug",
+        "etapa",
+        "comuna",
+        "region"
+      ]
+    },
+    "etapasRelacionadas": [
+      {
+        "slug": "terratolten-1",
+        "nombre": "Terratoltén 1",
+        "etapa": 1
+      },
+      {
+        "slug": "terratolten-2",
+        "nombre": "Terratoltén 2",
+        "etapa": 2
+      },
+      {
+        "slug": "terratolten-3",
+        "nombre": "Terratoltén 3",
+        "etapa": 3
+      }
+    ]
+  },
+  {
+    "slug": "nucleo-costanera-2",
+    "nombre": "Núcleo Costanera 2",
+    "inmobiliaria": "Ecasa",
+    "comuna": "Arica",
+    "region": "Arica y Parinacota",
+    "direccion": null,
+    "estado": null,
+    "entrega": null,
+    "tipologias": [],
+    "precioDesdeUF": null,
+    "detalleUrl": "/nucleo-costanera-2.html",
+    "descripcionLarga": null,
+    "mapQuery": null,
+    "amenities": [],
+    "superficieDesdeM2": null,
+    "imagenPrincipal": null,
+    "imagenAlt": null,
+    "proyectoMatrizSlug": "nucleo-costanera",
+    "etapa": 2,
+    "verificacion": {
+      "fecha": "2026-10-12",
+      "fuente": null,
+      "estadoFuente": "stage_documentation_pending",
+      "camposVerificados": [
+        "nombre",
+        "inmobiliaria",
+        "proyectoMatrizSlug",
+        "etapa",
+        "comuna",
+        "region"
+      ]
+    },
+    "etapasRelacionadas": [
+      {
+        "slug": "nucleo-costanera",
+        "nombre": "Núcleo Costanera",
+        "etapa": 1
+      },
+      {
+        "slug": "nucleo-costanera-2",
+        "nombre": "Núcleo Costanera 2",
+        "etapa": 2
+      }
+    ]
   }
 ]

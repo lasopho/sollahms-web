@@ -19,7 +19,14 @@ INGEVEC = {'centenario-1', 'tocornal', 'vivaceta', 'coronel-godoy',
     'nueva-esmeralda', 'vicuna-mackenna-7589', 'abdon-cifuentes',
     'don-ignacio', 'terrazzo', 'vima', 'los-alerces', 'valle-los-ingleses-iii'}
 REMOVED = {'brasil', 'vespucio-capital', 'edificio-serrano-capital',
-    'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz'}
+    'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz',
+    'bosquemar', 'altos-del-wayra', 'robles-del-aconcagua', 'el-real', 'edificio-ha-strip-center'}
+ECASA = {'lomas-de-puyai', 'ferroparque', 'edificio-bezanilla', 'endemico',
+    'terratolten-1', 'wayra', 'alto-san-joaquin-3', 'enlace-mackenna',
+    'ferroparque-2', 'espacio-victoria', 'lamara', 'terratolten-3',
+    'lomas-de-puyai-3', 'cumbres-de-penuelas', 'aires-la-florida-2',
+    'conecta-huechuraba', 'urban-la-florida', 'alto-san-joaquin',
+    'alto-san-joaquin-2', 'nucleo-costanera', 'terratolten-2', 'nucleo-costanera-2'}
 PAGES = {'404.html', 'agenda-asesoria.html', 'comparador-hipotecario.html',
     'contacto.html', 'index.html', 'privacidad.html', 'proyectos.html'}
 PUBLIC_DATA = {'data/proyectos.json', 'data/hipotecario.json'}
@@ -69,11 +76,19 @@ def normalized_preview(text):
     return re.sub(r'<meta name="robots" content="noindex, nofollow">\s*', '', text).replace(NOTICE, '')
 
 
-def audit(source, public, preview):
+def selected_ecasa_html(text, included):
+    """Project only the two reviewed Ecasa branches; preserve every other byte."""
+    remove, keep = ('PUBLIC', 'PREVIEW') if included else ('PREVIEW', 'PUBLIC')
+    text = re.sub(r'<!--ECASA_' + remove + r'_START-->[\s\S]*?<!--ECASA_' + remove + r'_END-->', '', text)
+    return re.sub(r'<!--ECASA_' + keep + r'_(?:START|END)-->', '', text)
+
+
+def audit(source, public, preview, protected_review=False):
     errors, warnings = [], []
-    counts = {'projects': 0, 'ingevec': 0, 'pages': 0, 'localReferences': 0,
+    counts = {'projects': 0, 'ingevec': 0, 'ecasa': 0, 'pages': 0, 'localReferences': 0,
               'brochureImages': 0, 'brochurePlans': 0, 'brochureMedia': 0,
-              'brochureCovers': 0, 'canonicalFiches': 0, 'sitemapUrls': 0}
+              'brochureCovers': 0, 'canonicalFiches': 0, 'sitemapUrls': 0,
+              'ecasaImages': 0, 'ecasaPlans': 0, 'ecasaMedia': 0, 'ecasaCovers': 0}
 
     def require(condition, issue):
         if not condition:
@@ -83,9 +98,12 @@ def audit(source, public, preview):
     slugs = {p['slug'] for p in catalogue}
     counts['projects'] = len(catalogue)
     counts['ingevec'] = sum(p['inmobiliaria'] == 'Ingevec' for p in catalogue)
-    require(len(catalogue) == len(slugs) == 144, 'Catalogue must contain exactly 144 distinct projects')
+    counts['ecasa'] = sum(p['inmobiliaria'].lower() == 'ecasa' for p in catalogue)
+    require(len(catalogue) == len(slugs) == 143, 'Catalogue must contain exactly 143 distinct projects')
     require({p['slug'] for p in catalogue if p['inmobiliaria'] == 'Ingevec'} == INGEVEC,
             'The sixteen approved Ingevec identities must remain exact')
+    require({p['slug'] for p in catalogue if p['inmobiliaria'].lower() == 'ecasa'} == ECASA,
+            'The 22 approved Ecasa identities must remain exact')
     require(not REMOVED & slugs, 'A retired project re-entered the catalogue')
     expected_pages = PAGES | {slug + '.html' for slug in slugs}
     files = {str(p.relative_to(public)) for p in public.rglob('*') if p.is_file()}
@@ -183,27 +201,111 @@ def audit(source, public, preview):
 
     urls = [node.text for node in ET.parse(public / 'sitemap.xml').iter() if node.tag.endswith('}loc')]
     sitemap_expected = {'https://sollahms.cl/' + p for p in expected_pages - {'404.html', 'index.html'}} | {'https://sollahms.cl/'}
-    require(set(urls) == sitemap_expected and len(urls) == len(set(urls)) == 150, 'Sitemap does not match the 150 indexable public pages')
+    require(set(urls) == sitemap_expected and len(urls) == len(set(urls)) == 149, 'Sitemap does not match the 149 indexable public pages')
     counts['sitemapUrls'] = len(urls)
     robots = (public / 'robots.txt').read_text()
     require('Allow: /' in robots and 'Disallow: /' not in robots and 'Sitemap: https://sollahms.cl/sitemap.xml' in robots,
             'Production robots must allow indexing and declare the canonical sitemap')
     require('noindex' in documents['404.html'].metas.get('robots', ''), 'The 404 document must remain noindex')
 
+    ecasa_review = json.loads((source / 'data/brochures-ecasa.json').read_text())
+    ecasa_rights = ecasa_review.get('publicationRights', {})
+    require(ecasa_rights.get('sourceChannel') == 'Ecasa/user_supplied' and
+            ecasa_rights.get('protectedPreview') == 'authorized_by_user' and
+            ecasa_rights.get('productionPolicy') == 'requires_verified_contract_scope',
+            'Independent Ecasa protected review authorization is missing')
+    expected_scope = 'pending_contract_scope_verification' if protected_review else 'verified_contract'
+    require(ecasa_rights.get('contractScope', {}).get('status') == expected_scope,
+            'Ecasa contractual scope does not match the requested audit profile')
+    ecasa_records = ecasa_review['projects']
+    require(len(ecasa_records) == 22 and {record['slug'] for record in ecasa_records} == ECASA,
+            'Ecasa documentary inventory must contain the 22 authorized entries')
     preview_files = {str(p.relative_to(preview)) for p in preview.rglob('*') if p.is_file()}
-    require(preview_files == files, 'Protected Preview and public build contain different files')
+    preview_catalogue = json.loads((preview / 'data/proyectos.json').read_text())
+    preview_by_slug = {p['slug']: p for p in preview_catalogue}
+    ecasa_chosen = set()
+    for record in ecasa_records:
+        page = record['slug'] + '.html'
+        target = preview if protected_review else public
+        target_files = preview_files if protected_review else files
+        html = (target / page).read_text() if page in target_files else ''
+        cover = record.get('catalogueCover')
+        if cover:
+            require(preview_by_slug.get(record['slug'], {}).get('imagenPrincipal') == cover['localPath'],
+                    'Ecasa reviewed catalogue cover lost: ' + record['slug'])
+            require(any(asset['localPath'] == cover['localPath'] for asset in record['images']),
+                    'Ecasa cover is not a selected image: ' + record['slug'])
+            counts['ecasaCovers'] += 1
+        counts['ecasaImages'] += len(record['images'])
+        counts['ecasaPlans'] += len(record['models'])
+        for asset in [*record['images'], *(model['plan'] for model in record['models'])]:
+            path = asset['localPath'].lstrip('/')
+            prefix = 'assets/propiedades/ecasa-preview/' + record['slug'] + '/'
+            require(path.startswith(prefix) and path.count('/') == prefix.count('/'),
+                    'Ecasa resource belongs to another entry: ' + path)
+            require(path not in ecasa_chosen and path not in chosen, 'Duplicate selected Ecasa resource: ' + path)
+            ecasa_chosen.add(path)
+            require(path in target_files, 'Selected Ecasa image or plan missing: ' + path)
+            if path in target_files:
+                require(digest(target / path) == asset['sha256'], 'Selected Ecasa resource bytes changed: ' + path)
+                require(not (target / path).is_symlink(), 'Symbolic Ecasa resource: ' + path)
+            require(asset['localPath'] in html, 'Selected Ecasa resource absent from its fiche: ' + path)
+    counts['ecasaMedia'] = len(ecasa_chosen)
+    actual_ecasa_preview = {f for f in preview_files if f.startswith('assets/propiedades/ecasa-preview/')}
+    require(actual_ecasa_preview == ecasa_chosen, 'Unselected candidate or omitted Ecasa resource in protected Preview')
+    actual_ecasa_public = {f for f in files if f.startswith('assets/propiedades/ecasa-preview/')}
+    require(actual_ecasa_public == (set() if protected_review else ecasa_chosen),
+            'Ecasa media public eligibility does not match the requested audit profile')
+    expected_preview_files = files | ecasa_chosen if protected_review else files
+    require(preview_files == expected_preview_files, 'Protected Preview and public build contain unexpected different files')
+    expected_preview_catalogue = json.loads(json.dumps(catalogue))
+    if protected_review:
+        expected_by_slug = {p['slug']: p for p in expected_preview_catalogue}
+        for record in ecasa_records:
+            cover = record.get('catalogueCover')
+            if cover and record['slug'] in expected_by_slug:
+                expected_by_slug[record['slug']]['imagenPrincipal'] = cover['localPath']
+                expected_by_slug[record['slug']]['imagenAlt'] = cover['alt']
+    require(preview_catalogue == expected_preview_catalogue, 'Ecasa Preview changed commercial data beyond reviewed covers')
+    preview_documents = {page: Document((preview / page).read_text()) for page in expected_pages & preview_files}
+    for page, doc in preview_documents.items():
+        for ref in doc.refs:
+            url = urllib.parse.urlsplit(ref)
+            if url.scheme in {'data', 'mailto', 'tel', 'javascript'}:
+                require(url.scheme != 'javascript', 'Unsafe JavaScript URL in Preview: ' + page)
+                continue
+            if url.netloc and url.netloc != 'sollahms.cl' or url.path.startswith('/api/'):
+                continue
+            target = urllib.parse.unquote(urllib.parse.urljoin('/' + page, url.path or '/' + page)).lstrip('/') or 'index.html'
+            require(target in preview_files, 'Missing Preview local reference: ' + page + ' -> ' + target)
+            if url.fragment and target in preview_documents:
+                require(urllib.parse.unquote(url.fragment) in preview_documents[target].ids,
+                        'Missing Preview local anchor: ' + page + ' -> ' + target + '#' + url.fragment)
+        if page.removesuffix('.html') in slugs:
+            require(not HIDDEN_AUDIT.search(' '.join(doc.visible)), 'Research/contractual audit displayed in Preview: ' + page)
     for path in sorted(files & preview_files):
         if path == 'robots.txt':
             require((preview / path).read_text() == 'User-agent: *\nDisallow: /\n', 'Protected Preview robots must block indexing')
         elif path.endswith('.html'):
             text = (preview / path).read_text()
             require('<meta name="robots" content="noindex, nofollow">' in text, 'Preview page missing noindex: ' + path)
-            require(normalized_preview(text) == (public / path).read_text(), 'Preview/public commercial content differs: ' + path)
+            if protected_review and path.removesuffix('.html') in ECASA:
+                original = (source / path).read_text()
+                require(normalized_preview(text) == selected_ecasa_html(original, True), 'Ecasa Preview differs from selected source: ' + path)
+                require((public / path).read_text() == selected_ecasa_html(original, False), 'Ecasa public fallback differs from selected source: ' + path)
+            else:
+                require(normalized_preview(text) == (public / path).read_text(), 'Preview/public commercial content differs: ' + path)
+        elif protected_review and path == 'data/proyectos.json':
+            pass  # Exact allowed cover changes were validated as objects above.
         else:
             require(digest(preview / path) == digest(public / path), 'Preview/public asset or data differs: ' + path)
     return {'ok': not errors, 'networkRequests': 0, 'realMessages': 0, 'realReservations': 0,
             'counts': counts, 'errors': errors, 'warnings': warnings,
-            'allowedPreviewDifferences': ['noindex meta', 'robots Disallow', 'read-only forms notice'],
+            'auditProfile': 'protected_ecasa_review' if protected_review else 'public_web_parity',
+            'allowedPreviewDifferences': ['noindex meta', 'robots Disallow', 'read-only forms notice'] +
+                (['documented Ecasa brochure blocks, covers and selected derivatives'] if protected_review else []),
+            'ecasaPublicWebParityVerified': not protected_review and not errors,
+            'productionDeploymentAuthorized': False,
             'providerAvailabilityVerified': False}
 
 
@@ -213,9 +315,11 @@ def main():
     parser.add_argument('--public', required=True, type=Path)
     parser.add_argument('--preview', required=True, type=Path)
     parser.add_argument('--receipt', type=Path)
+    parser.add_argument('--protected-review', action='store_true',
+                        help='Verify the complete protected Ecasa review and its public fallbacks; grants no publication rights')
     args = parser.parse_args()
     source, public, preview = (value.resolve() for value in [args.source, args.public, args.preview])
-    result = audit(source, public, preview)
+    result = audit(source, public, preview, args.protected_review)
     if args.receipt:
         receipt = args.receipt.resolve()
         assert not any(receipt == root or root in receipt.parents for root in [source, public, preview]), 'Receipt must remain outside public source/output'

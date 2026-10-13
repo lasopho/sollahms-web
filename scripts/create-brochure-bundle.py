@@ -18,8 +18,8 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-MEDIA_FOLDERS = ('aj-urbana-preview', 'ingevec-preview')
-MANIFESTS = ('brochures-aj-urbana.json', 'brochures-ingevec.json')
+MEDIA_FOLDERS = ('aj-urbana-preview', 'ingevec-preview', 'ecasa-preview')
+MANIFESTS = ('brochures-aj-urbana.json', 'brochures-ingevec.json', 'brochures-ecasa.json')
 PUBLIC_EXTENSIONS = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.webp',
                      '.png', '.jpg', '.jpeg', '.ico', '.woff', '.woff2', '.txt', '.xml'}
 APPROVED_PROJECTS = {
@@ -30,9 +30,26 @@ APPROVED_PROJECTS = {
         'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589',
         'abdon-cifuentes', 'don-ignacio', 'terrazzo', 'vima',
         'los-alerces', 'valle-los-ingleses-iii'},
+    'brochures-ecasa.json': {'lomas-de-puyai', 'ferroparque', 'edificio-bezanilla',
+        'endemico', 'terratolten-1', 'wayra', 'alto-san-joaquin-3',
+        'enlace-mackenna', 'ferroparque-2', 'espacio-victoria', 'lamara',
+        'terratolten-3', 'lomas-de-puyai-3', 'cumbres-de-penuelas',
+        'aires-la-florida-2', 'conecta-huechuraba', 'urban-la-florida',
+        'alto-san-joaquin', 'alto-san-joaquin-2', 'nucleo-costanera',
+        'terratolten-2', 'nucleo-costanera-2'},
 }
 REMOVED_PROJECTS = {'brasil', 'vespucio-capital', 'edificio-serrano-capital',
-                    'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz'}
+                    'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz',
+                    'bosquemar', 'altos-del-wayra', 'robles-del-aconcagua', 'el-real',
+                    'edificio-ha-strip-center'}
+# Keep the 121 non-Ecasa catalogue objects from main f1e9bf1 byte-equivalent
+# as canonical values, and preserve the complete previously approved manifests.
+NON_ECASA_SHA256 = '2c4b8aec0bd36c289aa51e4303d80344c0796f917d1ecff93b33f56736f07dbf'
+PRESERVED_MANIFESTS = {
+    'brochures-aj-urbana.json': 'b23e5730201768f4be2d83eabdcfdbfa648d8b5906df188e7ae8de7ca42ac42c',
+    'brochures-ingevec.json': 'ce57d1e608aae4e11edd9c224fb7593c7aa2ae0604eddf5ba4f279be75a08c03',
+}
+ECASA_REVIEW_SHA256 = 'a8a9d0609f6420e2582d6f91c5eb217322a2eaec151da1a563edbf5193c13987'
 PUBLIC_PAGES = {'404.html', 'agenda-asesoria.html', 'comparador-hipotecario.html',
                 'contacto.html', 'index.html', 'privacidad.html', 'proyectos.html'}
 RETIRED_ASSETS = {
@@ -42,6 +59,17 @@ RETIRED_ASSETS = {
     'assets/propiedades/catalogo/1c8afdcef4daab70c27ecb01.webp',
     'assets/propiedades/catalogo/ae7bcf577b09a561c3359867.webp',
     'assets/propiedades/catalogo/2e0af89ee3298d9791639ae2.webp',
+    'assets/propiedades/catalogo/883af11703388c0dba211491.webp',
+    'assets/propiedades/catalogo/70413545b58983da8e24825a.webp',
+    'assets/propiedades/catalogo/5ec72b840d3cb985b609df36.webp',
+    'assets/propiedades/catalogo/cc5c4d04b4f258731931d6eb.webp',
+    'assets/propiedades/catalogo/81adaf07bdbd2fab601a093c.webp',
+    'assets/propiedades/catalogo/da691207ca6c24621740a2e4.webp',
+    'assets/propiedades/catalogo/204406fdd4ac3e04f45dcd19.webp',
+    'assets/propiedades/catalogo/9521654e9d91c2fac363344a.webp',
+    'assets/propiedades/catalogo/22dad05519d3b294ee0d70f5.webp',
+    'assets/propiedades/catalogo/a773e94159c8ca452f77aabb.webp',
+    'assets/propiedades/catalogo/a35bc3797ca9f594152f5de1.webp',
 }
 
 
@@ -52,14 +80,13 @@ def sha(data):
 def selected_source_files(root):
     catalogue = json.loads((root / 'data/proyectos.json').read_text())
     slugs = {project['slug'] for project in catalogue}
-    assert len(catalogue) == 144 and len(slugs) == 144, 'The exact final catalogue must contain 144 projects'
+    assert len(catalogue) == 143 and len(slugs) == 143, 'The exact final catalogue must contain 143 projects'
     assert APPROVED_PROJECTS['brochures-ingevec.json'] <= slugs and not REMOVED_PROJECTS & slugs
     assert all(p['inmobiliaria'] == 'Ingevec' for p in catalogue if p['slug'] in APPROVED_PROJECTS['brochures-ingevec.json'])
-    untouched = [p for p in catalogue if p['slug'] not in APPROVED_PROJECTS['brochures-ingevec.json']]
-    # Python's canonical encoder retains .0 on float values; its independent
-    # fingerprint is pinned to the same 128 objects in the approved baseline.
-    assert len(untouched) == 128 and sha(json.dumps(untouched, ensure_ascii=False, sort_keys=True,
-        separators=(',', ':')).encode()) == '984a50766cd3ad57ae65da72ac4d69f37bbfc262feedbf20507ade41fff951a6', 'Other developers changed'
+    assert {p['slug'] for p in catalogue if p['inmobiliaria'].lower() == 'ecasa'} == APPROVED_PROJECTS['brochures-ecasa.json'], 'The 22 Ecasa commercial identities must remain exact'
+    untouched = [p for p in catalogue if p['inmobiliaria'].lower() != 'ecasa']
+    assert len(untouched) == 121 and sha(json.dumps(untouched, ensure_ascii=False, sort_keys=True,
+        separators=(',', ':')).encode()) == NON_ECASA_SHA256, 'Other developers changed'
     pages = {p.name for p in root.glob('*.html')}
     assert pages <= PUBLIC_PAGES | {slug + '.html' for slug in slugs}, 'Unapproved or retired public route'
     assert {slug + '.html' for slug in slugs} <= pages, 'Missing approved public route'
@@ -68,27 +95,35 @@ def selected_source_files(root):
     retired_exclusive = {path for path in RETIRED_ASSETS
                          if '/' + path not in page_text and '/' + path not in catalogue_text}
     media = {}
-    model_count = 0
-    for name in MANIFESTS:
+    preserved_model_count = 0
+    preserved_media_count = 0
+    for name, folder in zip(MANIFESTS, MEDIA_FOLDERS):
+        if name in PRESERVED_MANIFESTS:
+            assert sha((root / 'data' / name).read_bytes()) == PRESERVED_MANIFESTS[name], 'Previously approved brochure evidence changed'
+        else:
+            assert sha((root / 'data' / name).read_bytes()) == ECASA_REVIEW_SHA256, 'Final Ecasa documentary review changed'
         manifest = json.loads((root / 'data' / name).read_text())
         assert len(manifest['projects']) == len(APPROVED_PROJECTS[name])
         assert {record['slug'] for record in manifest['projects']} == APPROVED_PROJECTS[name], 'Unapproved brochure project'
         for record in manifest['projects']:
-            folder = 'aj-urbana-preview' if name == 'brochures-aj-urbana.json' else 'ingevec-preview'
             prefix = f'assets/propiedades/{folder}/{record["slug"]}/'
-            model_count += len(record['models'])
+            if name in PRESERVED_MANIFESTS:
+                preserved_model_count += len(record['models'])
+                preserved_media_count += len(record['images']) + len(record['models'])
             for asset in [*record['images'], *(m['plan'] for m in record['models'])]:
                 path = asset['localPath'].lstrip('/')
                 assert path.startswith(prefix) and path.count('/') == prefix.count('/'), 'Media belongs to another project or directory'
                 assert path not in media, 'Duplicate selected media destination'
                 media[path] = asset['sha256']
-    assert model_count == 142, 'The complete selected batch must contain 142 plans'
-    assert len(media) == 269, 'The complete selected batch must contain 269 approved brochure resources'
+    assert preserved_model_count == 142, 'The previously approved AJ/Ingevec batch must preserve 142 plans'
+    assert preserved_media_count == 269, 'The previously approved AJ/Ingevec batch must preserve 269 resources'
     files = set(media)
     files.update(pages)
     files.update(('vercel.json', 'robots.txt', 'sitemap.xml', 'data/proyectos.json',
                   'data/hipotecario.json', *(f'data/{name}' for name in MANIFESTS),
                   'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs'))
+    if (root / 'scripts/ecasa-publication.mjs').exists():
+        files.add('scripts/ecasa-publication.mjs')
     for folder in ('api', 'lib'):
         files.update(str(p.relative_to(root)) for p in (root / folder).rglob('*')
                      if p.is_file() and p.suffix in {'.js', '.mjs'})
@@ -155,7 +190,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output-directory', required=True, type=Path)
     parser.add_argument('--node', default=shutil.which('node'))
-    parser.add_argument('--branch', default='codex/integracion-financiera-sollahms',
+    parser.add_argument('--branch', default='codex/ecasa-cartera-definitiva',
                         help='Authorized review branch recorded in the private package')
     parser.add_argument('--verify-public-web', action='store_true',
                         help='Require real contractual web coverage and compare an offline Production build; never deploys')
@@ -174,9 +209,8 @@ def main():
             target = stage / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, target)
-        env = dict(os.environ, VERCEL_ENV='preview',
-                   VERCEL_GIT_COMMIT_REF=args.branch)
-        env.pop('SOLLAHMS_BROCHURE_PROFILE', None)
+        env = {'PATH': str(Path(args.node).resolve().parent) + os.pathsep + os.defpath,
+               'VERCEL_ENV': 'preview', 'VERCEL_GIT_COMMIT_REF': args.branch}
         subprocess.run([args.node, str(stage / 'scripts/package-vercel.mjs')],
                        cwd=stage, env=env, check=True, stdout=subprocess.PIPE)
         receipt = json.loads((stage / '.vercel/brochure-build-inventory.json').read_text())
@@ -211,6 +245,12 @@ def main():
                        'sha': hashlib.sha1(fragment).hexdigest(), 'sha256': sha(fragment), 'size': len(fragment)})
     metadata = {'transport': 'native_source_archive', 'target': 'preview',
                 'branch': args.branch,
+                'reviewCommit': subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD']).decode().strip(),
+                'contentProfile': 'protected_ecasa_review',
+                'publicationAuthorized': False,
+                'integrationAuthorized': False,
+                'catalogueProjects': 143, 'ecasaProjects': 22,
+                'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
                 'contractualCoverageVerified': receipt['contractualCoverageVerified'],
                 'sourceFileCount': len(files), 'sourceBytes': sum(f['size'] for f in inventory),
                 'archive': {'privatePath': str(archive), 'sha256': sha(data), 'size': len(data)},

@@ -8,7 +8,14 @@ import { resolve } from 'node:path';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')));
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
-assert.equal(ficheFiles.size, 144);
+assert.equal(ficheFiles.size, 143);
+export const ECASA_NEW_SLUGS = new Set(['alto-san-joaquin-2','alto-san-joaquin-3','terratolten-2','nucleo-costanera-2']);
+export const ECASA_RETIRED_SLUGS = new Set(['bosquemar','altos-del-wayra','robles-del-aconcagua','el-real','edificio-ha-strip-center']);
+export const ECASA_SLUGS = new Set(catalogue.filter(p=>p.inmobiliaria==='Ecasa').map(p=>p.slug));
+export function restoreEcasaData(actual, file) {
+  return JSON.parse(execFileSync('python3', [resolve(ROOT,'tests/ecasa_scope.py'),'--data',file],
+    {cwd:ROOT,input:actual,maxBuffer:8*1024*1024}));
+}
 const transformed = new Map();
 const restoredTourFiles = new Map();
 const automaticEmbedAssets = new Set(['assets/js/project-embeds.js']);
@@ -78,11 +85,12 @@ export const INGEVEC_FINAL_SLUGS = new Set([...INGEVEC_ADDED_SLUGS,'centenario-1
   ...INGEVEC_ENRICHED_SLUGS,...INGEVEC_NEW_SLUGS]);
 const portfolioOld = path => execFileSync('git',['show',`${PORTFOLIO_BASELINE}:${path}`],{cwd:ROOT});
 export function readCommercialFile(file) {
-  if (INGEVEC_REMOVED_SLUGS.has(file.replace(/\.html$/, ''))) {
+  if (INGEVEC_REMOVED_SLUGS.has(file.replace(/\.html$/, '')) || ECASA_RETIRED_SLUGS.has(file.replace(/\.html$/, ''))) {
     assert.equal(existsSync(resolve(ROOT,file)), false, file + ': retired public route must be absent');
     return Buffer.alloc(0);
   }
   const actual = readFileSync(resolve(ROOT,file));
+  if (ECASA_NEW_SLUGS.has(file.replace(/\.html$/, ''))) return actual;
   if (automaticEmbedAssets.has(file)) return restoreReviewedEmbedAsset(file, actual);
   // Historical checks receive the original only after independently proving
   // that real current bytes contain exactly the authorized tour removal.
@@ -99,7 +107,7 @@ export function vimaImageCorrection(value, json = false) {
   return value.replace(/<figure>(?:(?!<\/figure>).)*571b2a1740b3b5d4920157fa\.webp(?:(?!<\/figure>).)*<\/figure>/gs,'');
 }
 export function assertPortfolioData(actual, baseline, file='data/proyectos.json') {
-  const after = JSON.parse(actual), prior = JSON.parse(portfolioOld(file));
+  const after = restoreEcasaData(actual, file), prior = JSON.parse(portfolioOld(file));
   assert.equal(prior.length,148,file+': fixed pre-consolidation inventory');
   assert.equal(after.length,144,file+': exact final inventory');
   assert.deepEqual(after.map(row=>row.slug), [...prior.filter(row=>!INGEVEC_REMOVED_SLUGS.has(row.slug)).map(row=>row.slug),...INGEVEC_NEW_SLUGS],
@@ -138,19 +146,22 @@ export function assertPortfolioIndex(file,actual) {
     const urls=text=>[...text.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
     const old=urls(portfolioOld(file).toString());
     const expected=old.filter(url=>!INGEVEC_REMOVED_SLUGS.has(url.split('/').at(-1).replace(/\.html$/,'')));
+    for(let i=expected.length-1;i>=0;i--) if(ECASA_RETIRED_SLUGS.has(expected[i].split('/').at(-1).replace(/\.html$/,''))) expected.splice(i,1);
     expected.splice(expected.indexOf('https://sollahms.cl/comparador-hipotecario.html'),0,...[...INGEVEC_NEW_SLUGS].map(s=>'https://sollahms.cl/'+s+'.html'));
-    assert.deepEqual(urls(actual.toString()),expected);assert.equal(new Set(expected).size,150);
+    expected.splice(expected.indexOf('https://sollahms.cl/comparador-hipotecario.html'),0,...[...ECASA_NEW_SLUGS].map(s=>'https://sollahms.cl/'+s+'.html'));
+    assert.deepEqual(urls(actual.toString()),expected);assert.equal(new Set(expected).size,149);
   } else if(file==='docs/registro-fichas-proyectos.md') {
     const old=portfolioOld(file).toString();
-    const originalRows=old.split('\n').filter(line=>line.startsWith('| ['));
-    const currentRows=actual.toString().split('\n').filter(line=>line.startsWith('| ['));
+    const inventory=text=>text.split('## Inventario completo')[1].split('\n## ')[0].split('\n').filter(line=>line.startsWith('| ['));
+    const originalRows=inventory(old);
+    const currentRows=inventory(actual.toString());
     for(const line of originalRows) {
+      if(line.includes('| Ecasa |')) continue; // Exact identities and rows are independently checked by ecasa-definitive.
       if([...INGEVEC_REMOVED_SLUGS].some(slug=>line.includes('../'+slug+'.html)'))) assert.ok(!currentRows.includes(line));
       else assert.ok(currentRows.includes(line),'Existing inventory row changed: '+line);
     }
-    assert.equal(currentRows.length,originalRows.length-6+2);
-    assert.ok(actual.toString().includes('Catálogo real: 144 proyectos'));
-    assert.ok(actual.toString().includes('128 de otras inmobiliarias y 16 Ingevec; 17 entradas comerciales'));
+    assert.equal(currentRows.length,143);
+    assert.ok(actual.toString().includes('Catálogo real: 143 proyectos'));
   } else throw new Error('Unknown portfolio index '+file);
 }
 export function assertDefinitiveFicheFallback(html,slug) {
@@ -239,7 +250,7 @@ export function assertCommercialBytes(file, actual, baseline) {
     return;
   }
   if(file === 'proyectos.html') {assertCatalogueConsultPrices(actual,baseline);return;}
-  if (INGEVEC_REMOVED_SLUGS.has(file.replace(/\.html$/, ''))) {
+  if (INGEVEC_REMOVED_SLUGS.has(file.replace(/\.html$/, '')) || ECASA_RETIRED_SLUGS.has(file.replace(/\.html$/, ''))) {
     assert.equal(actual.length,0);assert.equal(existsSync(resolve(ROOT,file)),false);return;
   }
   if(['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json'].includes(file)) {assertPortfolioData(actual,baseline,file);return;}

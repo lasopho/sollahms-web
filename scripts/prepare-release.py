@@ -88,7 +88,11 @@ def verify_git_reference(root, files, policy):
                     'Source differs from approved Git commit: ' + name)
             tracked += 1
         else:
-            require(name.startswith('assets/propiedades/ingevec-preview/'), 'Unapproved non-Git source file: ' + name)
+            folders = policy.get('privateMediaFolders', ['ingevec-preview'])
+            require(bool(folders) and set(folders) <= {'ingevec-preview', 'ecasa-preview'},
+                    'Unapproved private media folder policy')
+            require(any(name.startswith('assets/propiedades/' + folder + '/') for folder in folders),
+                    'Unapproved non-Git source file: ' + name)
     require(tracked == policy['trackedSourceFiles'] and len(files) - tracked == policy['privateSourceFiles'],
             'Tracked/private source inventory differs from approval')
     return tracked
@@ -100,6 +104,7 @@ def verify_worktree(root, files, policy):
     tracked = set(git(root, 'ls-tree', '-rz', '--name-only', policy['approvedAppCommit']).decode().split('\0'))
     relevant = ['assets', 'api', 'lib', 'data/proyectos.json', 'data/hipotecario.json',
                 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
+                'data/brochures-ecasa.json', 'scripts/ecasa-publication.mjs',
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
     require(not git(root, 'diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
@@ -137,11 +142,12 @@ def extract_verified(archive, destination, files):
     require(seen == files.keys(), 'Archive changed after verification')
 
 
-def build(source, node, environment, branch):
+def build(source, node, environment, branch, public_profile=True):
     # Local packaging requires no provider credentials or environment download.
     env = {'PATH': str(Path(node).parent) + os.pathsep + os.defpath,
-           'VERCEL_ENV': environment, 'VERCEL_GIT_COMMIT_REF': branch,
-           'SOLLAHMS_BROCHURE_PROFILE': 'public-web'}
+           'VERCEL_ENV': environment, 'VERCEL_GIT_COMMIT_REF': branch}
+    if public_profile:
+        env['SOLLAHMS_BROCHURE_PROFILE'] = 'public-web'
     result = subprocess.run([node, str(source / 'scripts/package-vercel.mjs')],
                             cwd=source, env=env, check=True, capture_output=True, text=True)
     return json.loads(result.stdout.strip())
@@ -153,6 +159,8 @@ def verify_staged_deployment(snapshot, policy):
     Presence of these fields is required, not guessed from omitted API fields.
     The operator records runtime/build evidence after authorized staging.
     """
+    require(policy.get('contentProfile') != 'protected_ecasa_review',
+            'A protected Ecasa review reference cannot authorize a staged Production release')
     require(snapshot.get('projectId') == policy['projectId'] and snapshot.get('teamId') == policy['teamId'],
             'Staged deployment belongs to another or unverified project/team')
     require(snapshot.get('target') == 'production' and snapshot.get('readyState') == 'READY',
@@ -169,7 +177,7 @@ def verify_staged_deployment(snapshot, policy):
     return snapshot['deploymentId']
 
 
-def prepare(archive, output, node, policy):
+def prepare(archive, output, node, policy, protected_review=False):
     files = verify_archive(archive, policy)
     tracked = verify_git_reference(ROOT, files, policy)
     verify_worktree(ROOT, files, policy)
@@ -181,19 +189,28 @@ def prepare(archive, output, node, policy):
     public, preview = destination / 'production-local', destination / 'preview-local'
     shutil.copytree(source, public)
     shutil.copytree(source, preview)
-    public_result = build(public, node, 'production', 'main')
-    preview_result = build(preview, node, 'preview', policy['developmentBranch'])
+    public_result = build(public, node, 'production', 'main', public_profile=not protected_review)
+    preview_result = build(preview, node, 'preview', policy['developmentBranch'], public_profile=not protected_review)
     for result in (public_result, preview_result):
+        expected_media = (policy.get('preservedBrochureMedia', 269) if protected_review and result['environment'] == 'production'
+                          else policy['selectedBrochureMedia'])
+        expected_ingevec = policy.get('ingevecReviewMedia', policy['privateSourceFiles'])
         require(result['pages'] == policy['htmlPages'] and
-                result['selectedBrochureMedia'] == policy['selectedBrochureMedia'] and
-                result['ingevecReviewMedia'] == policy['privateSourceFiles'] and
-                result['contractualCoverageVerified'] is True, 'Build omitted approved source content')
+                result['selectedBrochureMedia'] == expected_media and
+                result['ingevecReviewMedia'] == expected_ingevec,
+                'Build omitted approved source content')
+        require(result.get('preservedContractualCoverageVerified', result['contractualCoverageVerified']) is True
+                if protected_review else result['contractualCoverageVerified'] is True,
+                'Contractual scope for the selected public batches is unverified')
     require(public_result['environment'] == 'production' and not public_result['noindex'] and
             preview_result['environment'] == 'preview' and preview_result['noindex'], 'Build environment mismatch')
     audit_path = destination / 'public-preview-audit.json'
-    subprocess.run([sys.executable, str(ROOT / 'tests/audit_public_build.py'), '--source', str(source),
+    audit_command = [sys.executable, str(ROOT / 'tests/audit_public_build.py'), '--source', str(source),
                     '--public', str(public / 'dist'), '--preview', str(preview / 'dist'),
-                    '--receipt', str(audit_path)], check=True, capture_output=True, text=True)
+                    '--receipt', str(audit_path)]
+    if protected_review:
+        audit_command.append('--protected-review')
+    subprocess.run(audit_command, check=True, capture_output=True, text=True)
     audit = json.loads(audit_path.read_text())
     require(not audit['errors'], 'Public/Preview audit failed')
     # Local linkage is metadata only. It does not contact or modify Vercel.
@@ -210,6 +227,8 @@ def prepare(archive, output, node, policy):
                'publicBuild': public_result, 'previewBuild': preview_result,
                'auditReceipt': str(audit_path), 'deployableSourceInventory': files,
                'localPreparationPassed': True, 'networkUsed': False, 'deploymentPerformed': False,
+               'contentProfile': 'protected_ecasa_review' if protected_review else 'public_web_parity',
+               'ecasaPublicWebParityVerified': not protected_review,
                'publicationAuthorized': False, 'integrationAuthorized': False}
     (destination / 'release-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
     os.chmod(destination / 'release-receipt.json', 0o600)
@@ -225,17 +244,19 @@ def main():
     parser.add_argument('--node', default=shutil.which('node'))
     parser.add_argument('--staged-receipt', type=Path,
                         help='Verify a sanitized future staged deployment receipt locally; never promotes')
+    parser.add_argument('--protected-review', action='store_true',
+                        help='Prepare only the protected Ecasa review and offline public fallbacks; never verifies production eligibility')
     args = parser.parse_args()
     policy = json.loads(args.reference.read_text())
     require(policy['schemaVersion'] == 1, 'Unknown release reference version')
     if args.staged_receipt:
-        require(not args.archive and not args.output_directory, 'Select one operation')
+        require(not args.archive and not args.output_directory and not args.protected_review, 'Select one operation')
         identifier = verify_staged_deployment(json.loads(args.staged_receipt.read_text()), policy)
         print(json.dumps({'deploymentId': identifier, 'stagedReceiptPassed': True, 'promoted': False}))
     else:
         require(args.archive and args.output_directory and args.node, 'Archive, private output and Node are required')
         print(json.dumps(prepare(args.archive.expanduser().absolute(), args.output_directory,
-                                 str(Path(args.node).resolve()), policy)))
+                                 str(Path(args.node).resolve()), policy, args.protected_review)))
 
 
 if __name__ == '__main__':

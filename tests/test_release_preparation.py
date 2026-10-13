@@ -175,6 +175,26 @@ class ReleasePreparationTests(unittest.TestCase):
                          {'PATH', 'VERCEL_ENV', 'VERCEL_GIT_COMMIT_REF', 'SOLLAHMS_BROCHURE_PROFILE'})
         self.assertNotIn('RESEND_API_KEY', run.call_args.kwargs['env'])
 
+    def test_protected_review_does_not_request_a_public_web_profile(self):
+        fake = type('Result', (), {'stdout': '{"pages":150}'})()
+        with patch.object(release.subprocess, 'run', return_value=fake) as run:
+            release.build(self.root, '/usr/bin/node', 'preview', 'codex/ecasa-cartera-definitiva', public_profile=False)
+        self.assertEqual(set(run.call_args.kwargs['env']), {'PATH', 'VERCEL_ENV', 'VERCEL_GIT_COMMIT_REF'})
+
+    def test_protected_ecasa_reference_cannot_authorize_production_staging(self):
+        policy = dict(self.policy, contentProfile='protected_ecasa_review')
+        with self.assertRaisesRegex(ValueError, 'protected Ecasa review'):
+            release.verify_staged_deployment(self.staged(), policy)
+
+    def test_private_ecasa_media_require_an_explicit_folder_policy(self):
+        files = {'assets/propiedades/ecasa-preview/ferroparque/cover.webp': {'gitBlob': 'a' * 40}}
+        replies = [self.policy['approvedAppCommit'].encode() + b'\n', b'sha1\n', b'']
+        with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'non-Git'):
+            release.verify_git_reference(self.root, files, self.policy)
+        policy = dict(self.policy, privateMediaFolders=['ingevec-preview', 'ecasa-preview'], trackedSourceFiles=0, privateSourceFiles=1)
+        with patch.object(release, 'git', side_effect=replies):
+            self.assertEqual(release.verify_git_reference(self.root, files, policy), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

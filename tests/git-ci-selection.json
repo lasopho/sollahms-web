@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 240,
-  "expectedReleaseOnlyCases": 22,
-  "expectedPythonFixtureTests": 74,
+  "expectedGitNodeTests": 258,
+  "expectedReleaseOnlyCases": 23,
+  "expectedPythonFixtureTests": 87,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -72,6 +72,10 @@
     {
       "file": "tests/integration-contact.mjs",
       "reason": "Runs in full using tracked code/data, local DOM doubles and synthetic providers/fixtures; no private derivatives needed."
+    },
+    {
+      "file": "tests/ecasa-publication.test.mjs",
+      "reason": "Definitive Ecasa successor checks exact 143/22 identities, main preservation and independent rights/stage provenance using tracked data and synthetic fixtures."
     }
   ],
   "selectedSuites": [
@@ -79,14 +83,14 @@
       "file": "tests/aj-urbana.test.mjs",
       "reason": "Source/manifest/UI cases need only tracked Git bytes; release cases require private Ingevec media or media-based packaging fixtures.",
       "cases": [
-        "AJ review preserves its five projects and historical research within the exact 144-project portfolio; 136 other fichas retain scoped presentation controls",
+        "AJ review preserves its five projects within the 143-project Ecasa successor and 131 prior fiche controls",
         "531 historical assets and handlers retain strict baselines outside the scoped official UF and privacy changes",
         "five original documents and 78 unique models retain exact identifiers, source pages and original SHA provenance",
         "34 independently reviewed models preserve printed values, unknown terraces and documented contradictions",
         "all 78 plans preserve readable local images, internal hashes, enlargement links and unique model identification",
         "33 candidates are reviewed, selected renders have provenance and no existing official photograph is deleted",
         "documented equipment has page provenance; five public fallback pages preserve maps, tours, navigation and forms exactly",
-        "brochure models do not create catalogue prices or alter A\u2013E financial classification and verified surface minima",
+        "brochure models do not create catalogue prices or alter A–E financial classification and verified surface minima",
         "contact regression rejects synthetic brochure-derived catalogue amounts for all five identities without sending messages"
       ],
       "releaseRequired": [
@@ -100,7 +104,7 @@
       "file": "tests/ingevec-brochures.test.mjs",
       "reason": "Source/manifest/UI cases need only tracked Git bytes; release cases require private Ingevec media or media-based packaging fixtures.",
       "cases": [
-        "the definitive 144 objects preserve all 128 other developers and historical research/financial evidence",
+        "the 143-project Ecasa successor preserves non-Ecasa historical research and financial evidence",
         "531 historical assets retain hashes outside the scoped official UF changes and reviewed image additions",
         "three public fallbacks retain original content and JSON-LD; five AJ fichas receive only their previously approved additions and commercial presentation",
         "fourteen independently reviewed printed areas remain exact, editorial identifiers do not invent missing floors/orientations, and Tocornal contradictions stay visible",
@@ -117,7 +121,7 @@
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
-          "name": "a verified contract yields identical 144 fichas, covers and 269 media in Preview and an offline public web build",
+          "name": "AJ and Ingevec retain their 269 media across Preview and offline public fallback while Ecasa stays protected",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
@@ -133,7 +137,7 @@
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
-          "name": "a synthetic pending contract excludes protected media outside Preview and retains all 144 approved fallback objects",
+          "name": "a synthetic pending contract excludes protected media outside Preview and retains all 143 fallback objects",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
@@ -145,7 +149,7 @@
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
-          "name": "new source bindings and Vicu\u00f1a stage identifiers cannot be reassigned through the packaging manifest",
+          "name": "new source bindings and Vicuña stage identifiers cannot be reassigned through the packaging manifest",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
@@ -188,7 +192,7 @@
       ],
       "releaseRequired": [
         {
-          "name": "definitive portfolio preserves exactly 128 other developers and ten prior Ingevec records",
+          "name": "definitive Ingevec portfolio retains ten prior records and 105 non-Ecasa non-Ingevec historical objects",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
@@ -196,7 +200,7 @@
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
-          "name": "Vicu\u00f1a Mackenna retains six independent plans and its exact prior stage-source assignment",
+          "name": "Vicuña Mackenna retains six independent plans and its exact prior stage-source assignment",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         }
       ]
@@ -205,9 +209,9 @@
       "file": "tests/ingevec-eight.test.mjs",
       "reason": "Source/manifest/UI cases need only tracked Git bytes; release cases require private Ingevec media or media-based packaging fixtures.",
       "cases": [
-        "eight originals enrich exactly seven of the 144 fichas while all commercial/financial data remain exact",
+        "eight originals enrich exactly seven of the 143 fichas while non-Ecasa financial data remain exact",
         "all 27 distributions reproduce independent printed surfaces and visible room counts without stock assumptions",
-        "Vicu\u00f1a Mackenna keeps six unique plans grouped by stage with stage-specific source documents",
+        "Vicuña Mackenna keeps six unique plans grouped by stage with stage-specific source documents",
         "seven enriched fichas retain SEO, contextual financial/contact actions, maps and tours without visible audit labels"
       ],
       "releaseRequired": [
@@ -221,8 +225,8 @@
       "file": "tests/project-commercial-presentation.test.mjs",
       "reason": "Source/manifest/UI cases need only tracked Git bytes; release cases require private Ingevec media or media-based packaging fixtures.",
       "cases": [
-        "commercial presentation preserves all 144 ordered identities and private source records byte for byte",
-        "all 144 visitor-facing fichas omit research sections, contract provenance and audit captions",
+        "commercial presentation preserves the 143-project successor and non-Ecasa private source records",
+        "all retained prior fichas omit research sections, contract provenance and audit captions",
         "every fiche retains its original SEO, scripts, images, plans, embeds and numeric specifications outside the seven guarded brochure additions",
         "all styles, catalogue controls and form/action contexts stay exact outside scoped official UF and security changes",
         "direct commercial cautions survive alongside current prices, referential plans and ambiguous alternatives",
@@ -233,6 +237,27 @@
         {
           "name": "all 269 supplied media derivatives retain approved identity, hashes and contractual scope status",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+        }
+      ]
+    },
+    {
+      "file": "tests/ecasa-definitive.test.mjs",
+      "reason": "Nine tracked-data and reviewed-output cases validate the exact Ecasa successor; one derivative byte audit requires the private reproducible source bundle.",
+      "cases": [
+        "definitive Ecasa portfolio contains the exact 22 commercial identities and 143 unique projects",
+        "all 121 other developers retain exact catalogue, research, ledger and public fiche bytes from main",
+        "only the five named Ecasa retirements disappear from public navigation and trusted form contexts",
+        "stages keep independent routes and explicit matrix links without transferring commercial characteristics",
+        "current accredited Ecasa commercial values and every financial engine remain exact",
+        "new stages show only accredited prices, surfaces and media with contextual consultation and booking",
+        "packaging rejects resurrection, wrong developers, duplicate stages and unrelated data mutation",
+        "reviewed Ecasa manifest and all 22 public fiche outputs match their independently pinned SHA inventory",
+        "brochure stage bindings preserve 17 originals, 15 distinct sources and independently checked printed geometry"
+      ],
+      "releaseRequired": [
+        {
+          "name": "all 130 selected Ecasa photos and plans keep their reviewed hashes and enlarged fiche references",
+          "reason": "Requires all 130 original-derived Ecasa resources; mandatory before the protected Preview delivery."
         }
       ]
     }

@@ -34,11 +34,14 @@ def documentary_list(items):
 
 def augment_page(page, slug):
     for manifest, namespace, builder in [(MANIFEST, 'AJ', 'AJ Urbana'),
-            (ROOT / 'data/brochures-ingevec.json', 'INGEVEC', 'Ingevec Inmobiliaria')]:
+            (ROOT / 'data/brochures-ingevec.json', 'INGEVEC', 'Ingevec Inmobiliaria'),
+            (ROOT / 'data/brochures-ecasa.json', 'ECASA', 'Ecasa')]:
         if not manifest.is_file():
             continue
         record = next((p for p in json.loads(manifest.read_text())['projects'] if p['slug'] == slug), None)
         if record:
+            if namespace == 'ECASA' and not record['images'] and not record['models']:
+                return page
             return augment_record(page, record, namespace, builder)
     return page
 
@@ -53,7 +56,7 @@ def augment_record(page, record, namespace, builder):
         return f'<!--{namespace}_PUBLIC_START-->' + value + f'<!--{namespace}_PUBLIC_END-->'
 
     page = page.replace('</head>', preview('<link rel="stylesheet" href="/assets/css/aj-brochure-preview.css?v=20261010">') + '</head>')
-    if not re.search(r'\bhref=[\"\']#modelos[\"\']', page):
+    if record['models'] and not re.search(r'\bhref=[\"\']#modelos[\"\']', page):
         navigation_anchor = '<a href="#recorrido">' if '<a href="#recorrido">' in page else '<a href="#ubicacion">'
         page = page.replace(navigation_anchor, preview('<a href="#modelos">Modelos y distribuciones</a>') + navigation_anchor, 1)
     if record.get('hero'):
@@ -117,11 +120,15 @@ def augment_record(page, record, namespace, builder):
             bathrooms = model.get('banos', int(typology_numbers[2]) if typology_numbers else None)
             bedrooms_text = 'Estudio' if typology == 'Estudio' or bedrooms == 0 else str(bedrooms) if bedrooms is not None else 'Por confirmar'
             bathrooms_text = str(bathrooms) if bathrooms is not None else 'Por confirmar'
-            metrics = [('Útil', area(model['superficie_util_m2'])), ('Terraza', area(model['terraza_m2'])), ('Total impreso', area(model['superficie_total_m2']))]
+            metrics = [(model.get('areaLabel', 'Útil'), area(model['superficie_util_m2'])), ('Terraza', area(model['terraza_m2'])), ('Total impreso', area(model['superficie_total_m2']))]
+            if namespace == 'ECASA' and 'superficie_interior_m2' in model:
+                metrics[0] = ('Interior', area(model['superficie_interior_m2']))
+            if namespace == 'ECASA' and model.get('terraza_cubierta_m2') is not None:
+                metrics.insert(2, ('Terraza cubierta', area(model['terraza_cubierta_m2'])))
             if namespace == 'INGEVEC':
                 metrics += [('Dormitorios', bedrooms_text), ('Baños', bathrooms_text), ('Orientación', model.get('orientacion') or 'No indicada')]
             content += '<dl class="aj-metrics">' + ''.join(f'<div><dt>{esc(label)}</dt><dd>{esc(value)}</dd></div>' for label, value in metrics) + '</dl>'
-            notes = model.get('notes', []) + [model[key] for key in ['advertencia', 'excepcion'] if model.get(key)]
+            notes = model.get('notes', []) + [model[key] for key in ['advertencia', 'excepcion', 'terraceNote'] if model.get(key)]
             if notes:
                 content += '<div class="aj-model-note">' + ''.join(f'<p>{esc(note)}</p>' for note in dict.fromkeys(notes)) + '</div>'
             content += f'<a class="aj-plan-link" href="{esc(plan["localPath"])}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar plano de {esc(accessible_name)}"><img src="{esc(plan["localPath"])}" alt="Plano referencial de {esc(accessible_name)}, {esc(typology)}, {esc(record["name"])} — página {model["pagina_brochure"]}" width="{plan["width"]}" height="{plan["height"]}" loading="lazy" decoding="async"></a><div class="aj-plan-caption"><span>Brochure · pág. {model["pagina_brochure"]}</span><a href="{esc(plan["localPath"])}" target="_blank" rel="noopener noreferrer">Ampliar plano ↗</a></div></div></details>'
@@ -129,7 +136,8 @@ def augment_record(page, record, namespace, builder):
     if active_stage:
         content += '</div>'
     content += '</section>'
-    page = page.replace('<section id="equipamiento"', preview(content) + '<section id="equipamiento"', 1)
+    if record['models']:
+        page = page.replace('<section id="equipamiento"', preview(content) + '<section id="equipamiento"', 1)
     equipment = re.search(r'(<section id="equipamiento"[^>]*>)(.*?)(</section>)', page, re.S)
     old = equipment[2]
     heading = old.split('</h2>')[0] + '</h2>'

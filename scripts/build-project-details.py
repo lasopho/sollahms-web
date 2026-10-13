@@ -103,6 +103,18 @@ def official_context_content(research):
     content += f'<p><a href="{esc(source)}" target="_blank" rel="noopener noreferrer">Consultar esta fuente oficial ↗</a> · Revisión de este apartado: <time datetime="{esc(context["checkedAt"])}">{esc(context["checkedAt"])}</time>.</p></section>'
     return content
 
+def stage_links(project, research):
+    """Commercial identity links do not transfer a stage's offer or media."""
+    if 'etapasRelacionadas' not in research.get('verifiedFields', []) or not project.get('etapasRelacionadas'):
+        return ''
+    stages = project['etapasRelacionadas']
+    assert all(re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', stage.get('slug', '')) for stage in stages)
+    content = '<div class="project-stages" data-project-matrix="' + esc(project['proyectoMatrizSlug']) + '"><h3>Etapas de este desarrollo</h3><ul>'
+    for stage in stages:
+        current = ' aria-current="page"' if stage['slug'] == project['slug'] else ''
+        content += '<li><a href="/' + esc(stage['slug']) + '.html"' + current + '>' + esc(stage['nombre']) + '</a></li>'
+    return content + '</ul><p>Consulta los precios, la disponibilidad y las características de cada etapa en su ficha.</p></div>'
+
 def render(project, research, template):
     name = project['nombre']
     slug = project['slug']
@@ -175,11 +187,16 @@ def render(project, research, template):
     # Escape script delimiters as well as all HTML text and URL attributes.
     json_ld = json.dumps(structured, ensure_ascii=False).replace('<', '\\u003c')
     social_image = f'<meta property="og:image" content="{esc(structured["image"])}"><meta property="og:image:alt" content="{esc(hero.get("alt") or name)}"><meta name="twitter:card" content="summary_large_image">' if src else '<meta name="twitter:card" content="summary">'
-    stages = ''
-    if 'etapas' in research.get('verifiedFields', []) and project.get('etapas'):
+    stages = stage_links(project, research) if project.get('proyectoMatrizSlug') else ''
+    if not stages and 'etapas' in research.get('verifiedFields', []) and project.get('etapas'):
         stages = '<h3>Etapas del proyecto</h3><ul>' + ''.join('<li>' + esc(s.get('nombre', '')) + ': ' + esc(s.get('estado', 'Pendiente')) + '</li>' for s in project['etapas']) + '</ul>'
     page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts(research)), overview=overview_html, official_context=official_context_content(research), specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tour_navigation=tour_navigation, tour_section=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
-    return commercialize_fiche(augment_page(page, slug), slug, research=research), mapped, len(tours)
+    page = commercialize_fiche(augment_page(page, slug), slug, research=research)
+    if slug in {'alto-san-joaquin-2', 'alto-san-joaquin-3', 'terratolten-2', 'nucleo-costanera-2'}:
+        # New independent stage pages have optional empty template slots.
+        # Keep their blank lines clean without rewriting existing fiches.
+        page = re.sub(r'(?m)^[ \t]+$', '', page)
+    return page, mapped, len(tours)
 
 def main():
     parser = argparse.ArgumentParser()
@@ -191,6 +208,8 @@ def main():
     projects = json.loads((ROOT / 'data/proyectos.json').read_text())
     records = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
     by_slug = {r['slug']: r for r in records}
+    previous_ledger_path = ROOT / 'data/registro-fichas.json'
+    previous_ledger = {row['slug']: row for row in json.loads(previous_ledger_path.read_text())} if previous_ledger_path.exists() else {}
     assert len(by_slug) == len(records), 'Duplicate research slug'
     assert set(by_slug) == {p['slug'] for p in projects}, 'Every catalogue project needs a research record'
     template = Template((ROOT / 'templates/project-detail.html').read_text())
@@ -204,6 +223,12 @@ def main():
         slug = project['slug']
         assert re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug), 'Unsafe slug'
         research = by_slug[slug]
+        in_scope = (selected is None or project['inmobiliaria'] in selected) and (selected_slugs is None or slug in selected_slugs)
+        if not in_scope and slug in previous_ledger:
+            assert (ROOT / (slug + '.html')).is_file(), 'Existing out-of-scope detail missing'
+            project['detalleUrl'] = '/' + slug + '.html'
+            ledger.append(previous_ledger[slug])
+            continue
         page, mapped, tours = render(project, research, template)
         if slug not in FEATURED and (selected is None or project['inmobiliaria'] in selected) and (selected_slugs is None or slug in selected_slugs):
             (ROOT / (slug + '.html')).write_text(page)
@@ -217,6 +242,8 @@ def main():
         context = research.get('officialContext')
         if context and context.get('sourceStatus') == 'verified' and secure_url(context.get('sourceUrl')):
             ledger[-1]['contextoOficial'] = {'nombre': context['name'], 'alcance': context['scope'], 'fuente': context['sourceUrl'], 'fechaRevision': context['checkedAt'], 'mapaDeReferencia': bool(context.get('mapQuery')), 'imagenesRelacionadas': len(context.get('images', []))}
+        if (selected is not None and project['inmobiliaria'] not in selected or selected_slugs is not None and slug not in selected_slugs) and slug in previous_ledger:
+            ledger[-1] = previous_ledger[slug]
     (ROOT / 'data/proyectos.json').write_text(json.dumps(projects, ensure_ascii=False, indent=2) + '\n')
     (ROOT / 'data/registro-fichas.json').write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + '\n')
     contexts = {p['slug']: {'name': p['nombre'], 'url': p['detalleUrl']} for p in projects}
