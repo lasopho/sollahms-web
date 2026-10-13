@@ -213,26 +213,29 @@
 <p class="font-body text-sm text-secondary leading-relaxed mt-6">Tus datos se utilizarán para coordinar la llamada y enviar la invitación. Consulta nuestra <a class="text-primary underline" href="/privacidad.html">política de privacidad</a>.</p>
 </section>
 </div>
-<script>
+<script type="module">
+import { resolveProjectIdentity } from '/assets/js/project-identity.mjs';
+
 (() => {
     let bookingProject = null;
-    const projectSlug = new URLSearchParams(window.location.search).get('proyecto');
-    if (projectSlug) {
-        fetch('/data/proyectos.json')
+    const query = new URLSearchParams(window.location.search);
+    const projectSlug = query.getAll('proyecto').length > 1 ? '' : query.get('proyecto');
+    const requestedEtapa = query.getAll('etapa').length > 1 ? '' : query.get('etapa');
+    const projectContextReady = projectSlug !== null
+        ? fetch('/data/proyectos.json')
             .then(response => response.ok ? response.json() : [])
             .then(projects => {
-                if (!Array.isArray(projects)) return;
-                const project = projects.find(item => item.slug === projectSlug);
-                if (!project || typeof project.nombre !== 'string') return;
-                bookingProject = project.slug;
+                const project = resolveProjectIdentity(projects, projectSlug, requestedEtapa);
+                if (!project) return;
+                bookingProject = project.bodyProjectSlug;
                 document.getElementById('agenda-reserva-titulo').textContent = 'Asesoría sobre ' + project.nombre;
                 const backLink = document.getElementById('agenda-project-back-link');
                 backLink.href = project.detalleUrl || '/proyectos.html';
                 backLink.textContent = 'Volver a ' + project.nombre;
                 document.getElementById('agenda-project-back').hidden = false;
             })
-            .catch(() => { /* Optional context must not interrupt booking. */ });
-    }
+            .catch(() => { /* Unresolved context must not be replaced by another stage. */ })
+        : Promise.resolve();
 
     const form = document.getElementById('booking-form');
     const selector = document.getElementById('booking-selector');
@@ -372,6 +375,11 @@
         status.textContent = 'Reservando tu llamada…';
         const fields = Object.fromEntries(personalInputs.map(name => [name, form.elements.namedItem(name).value]));
         try {
+            await projectContextReady;
+            if ((projectSlug !== null || requestedEtapa !== null) && !bookingProject) {
+                status.textContent = 'No pudimos identificar el proyecto o etapa. Vuelve a abrir la asesoría desde su ficha.';
+                return;
+            }
             const response = await fetch('/api/booking-create', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

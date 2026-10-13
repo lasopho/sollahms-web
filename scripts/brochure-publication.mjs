@@ -10,11 +10,9 @@ export const BROCHURE_INGEVEC_SLUGS = Object.freeze([
 ]);
 export const BROCHURE_ECASA_SLUGS = Object.freeze([
   'lomas-de-puyai', 'ferroparque', 'edificio-bezanilla', 'endemico',
-  'terratolten-1', 'wayra', 'alto-san-joaquin-3', 'enlace-mackenna',
-  'ferroparque-2', 'espacio-victoria', 'lamara', 'terratolten-3',
-  'lomas-de-puyai-3', 'cumbres-de-penuelas', 'aires-la-florida-2',
-  'conecta-huechuraba', 'urban-la-florida', 'alto-san-joaquin',
-  'alto-san-joaquin-2', 'nucleo-costanera', 'terratolten-2', 'nucleo-costanera-2',
+  'terratolten', 'wayra', 'enlace-mackenna', 'espacio-victoria', 'lamara',
+  'cumbres-de-penuelas', 'aires-la-florida-2', 'conecta-huechuraba',
+  'urban-la-florida', 'alto-san-joaquin', 'nucleo-costanera',
 ]);
 export const BROCHURE_ECASA_REMOVED_SLUGS = Object.freeze([
   'bosquemar', 'altos-del-wayra', 'robles-del-aconcagua',
@@ -64,15 +62,15 @@ export function assertBrochureCatalogue(projects) {
   const allowed = new Set(BROCHURE_INGEVEC_SLUGS);
   const ecasaAllowed = new Set(BROCHURE_ECASA_SLUGS);
   const slugs = new Set(projects.map(project => project.slug));
-  if (projects.length !== 143 || slugs.size !== 143 ||
+  if (projects.length !== 136 || slugs.size !== 136 ||
       !BROCHURE_INGEVEC_SLUGS.every(slug => slugs.has(slug)) ||
       !BROCHURE_ECASA_SLUGS.every(slug => slugs.has(slug)) ||
       BROCHURE_REMOVED_SLUGS.some(slug => slugs.has(slug)) ||
       projects.filter(project => project.inmobiliaria === 'Ingevec').length !== 16 ||
-      projects.filter(project => project.inmobiliaria === 'Ecasa').length !== 22 ||
+      projects.filter(project => project.inmobiliaria === 'Ecasa').length !== 15 ||
       projects.some(project => (allowed.has(project.slug) && project.inmobiliaria !== 'Ingevec') ||
         (ecasaAllowed.has(project.slug) && project.inmobiliaria !== 'Ecasa'))) {
-    throw new Error('The approved catalogue must contain exactly 143 projects with twenty-two Ecasa and sixteen Ingevec identities');
+    throw new Error('The approved catalogue must contain exactly 136 projects with fifteen Ecasa and sixteen Ingevec identities');
   }
   const untouched = projects.filter(project => project.inmobiliaria !== 'Ecasa');
   if (untouched.length !== 121 || brochureFingerprint(untouched) !== OTHER_CATALOGUE_SHA256) {

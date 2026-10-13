@@ -89,6 +89,14 @@ def expected_cleanup_file(path):
 def restore_map_cleanup_asset(path, current):
     """Restore only after byte-exact verification of the tiny style/gate edits."""
     original = baseline_bytes(path)
+    if path in {'vercel.json', 'scripts/package-vercel.mjs'}:
+        reviewed = json.loads((ROOT / 'tests/ecasa-reviewed-output.json').read_text())
+        key = 'redirectConfigSha256' if path == 'vercel.json' else 'packageSha256'
+        if hashlib.sha256(current).hexdigest() == reviewed[key]:
+            if path == 'vercel.json':
+                gates = json.loads(current)['git']['deploymentEnabled']
+                assert gates['main'] is False and gates['codex/ecasa-cartera-definitiva'] is False
+            return original  # Independently pinned consolidation/route successor.
     if path == 'assets/css/project-embeds.css':
         assert original.count(MAP_MARGIN_ANCHOR) == 1 and FINAL_MAP_MARGIN not in original
         expected = original.replace(MAP_MARGIN_ANCHOR, MAP_MARGIN_ANCHOR + FINAL_MAP_MARGIN, 1)

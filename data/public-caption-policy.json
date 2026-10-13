@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "captionRules": [
+    {"pattern": "\\s*[·—–-]?\\s*Brochure,?\\s*(?:pág\\.|p\\.|page)\\s*\\d+(?:,\\s*\\d+)*", "replacement": ""},
+    {"pattern": "\\s*(?:según|segun|according to)\\s+(?:el |the )?(?:brochure|folleto)\\b", "replacement": ""},
+    {"pattern": "\\s*[—–·]\\s*(?:imagen|fotografía|fotografia|ilustración|ilustracion)\\s+(?:ilustrativa\\s+)?(?:del|de un|del original)\\s+(?:brochure|folleto)\\b", "replacement": " · Imagen referencial"},
+    {"pattern": "\\s*[—–·]\\s*render\\s+(?:ilustrativo\\s+)?(?:del\\s+)?(?:brochure|folleto)\\b", "replacement": " · Render referencial"},
+    {"pattern": "^(?:Fotografía|Fotografia|Imagen|Plano)\\s+(?:extraída|extraida|obtenida|obtenido|extraído|extraido)\\s+(?:del|de un)\\s+(?:brochure|folleto)\\s*[:—–-]?\\s*", "replacement": ""},
+    {"pattern": "\\s*(?:extraída|extraida|obtenida|obtenido|extraído|extraido)\\s+(?:del|de un)\\s+(?:brochure|folleto)\\b", "replacement": ""},
+    {"pattern": "\\s*(?:del|de el)\\s+(?:brochure|folleto)\\b", "replacement": ""},
+    {"pattern": "\\s*—\\s*página\\s+\\d+", "replacement": ""},
+    {"pattern": "^(?:Imagen del desarrollo)\\s+", "replacement": "Vista de "},
+    {"pattern": "^Fotografías del desarrollo\\s+", "replacement": ""},
+    {"pattern": "^Fotografía de\\s+", "replacement": ""},
+    {"pattern": "\\s+del (?:departamento|desarrollo)\\b", "replacement": ""}
+  ],
+  "textRules": [
+    {"pattern": "\\bTotal según brochure\\b", "replacement": "Superficie total referencial"},
+    {"pattern": "\\s*(?:según|segun|according to)\\s+(?:el |the )?(?:brochure|folleto)\\b", "replacement": ""},
+    {"pattern": "\\bmodelos documentados en el brochure de\\b", "replacement": "modelos referenciales de"},
+    {"pattern": "\\bEquipamiento documentado en el brochure\\b", "replacement": "Equipamiento del proyecto"},
+    {"pattern": "\\bImágenes del brochure\\b", "replacement": "Imágenes del proyecto"},
+    {"pattern": "\\b(?:brochures?|folletos?)\\b", "replacement": "material de referencia"}
+  ]
+}

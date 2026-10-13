@@ -8,13 +8,19 @@ import { resolve } from 'node:path';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')));
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
-assert.equal(ficheFiles.size, 143);
-export const ECASA_NEW_SLUGS = new Set(['alto-san-joaquin-2','alto-san-joaquin-3','terratolten-2','nucleo-costanera-2']);
+assert.equal(ficheFiles.size, 136);
+export const ECASA_NEW_SLUGS = new Set(['alto-san-joaquin-2','alto-san-joaquin-3','terratolten-2','nucleo-costanera-2','terratolten']);
+export const ECASA_ALIAS_SLUGS = new Set(['nucleo-costanera-2','ferroparque-2','terratolten-1','terratolten-2','terratolten-3','lomas-de-puyai-3','alto-san-joaquin-2','alto-san-joaquin-3']);
 export const ECASA_RETIRED_SLUGS = new Set(['bosquemar','altos-del-wayra','robles-del-aconcagua','el-real','edificio-ha-strip-center']);
-export const ECASA_SLUGS = new Set(catalogue.filter(p=>p.inmobiliaria==='Ecasa').map(p=>p.slug));
+export const ECASA_SLUGS = new Set(catalogue.filter(p=>p.inmobiliaria==='Ecasa').flatMap(p=>[p.slug,...p.etapasComerciales.map(stage=>stage.slug)]));
 export function restoreEcasaData(actual, file) {
   return JSON.parse(execFileSync('python3', [resolve(ROOT,'tests/ecasa_scope.py'),'--data',file],
     {cwd:ROOT,input:actual,maxBuffer:8*1024*1024}));
+}
+export function restoreEcasaContext(file, actual) {
+  const review=JSON.parse(readFileSync(resolve(ROOT,'tests/ecasa-context-reviewed-output.json')));
+  if(!Object.hasOwn(review.files,file)) return actual;
+  return execFileSync('python3',[resolve(ROOT,'tests/ecasa_scope.py'),'--context',file],{cwd:ROOT,input:actual,maxBuffer:8*1024*1024});
 }
 const transformed = new Map();
 const restoredTourFiles = new Map();
@@ -89,8 +95,12 @@ export function readCommercialFile(file) {
     assert.equal(existsSync(resolve(ROOT,file)), false, file + ': retired public route must be absent');
     return Buffer.alloc(0);
   }
+  if (ECASA_SLUGS.has(file.replace(/\.html$/, ''))) {
+    const input=existsSync(resolve(ROOT,file))?readFileSync(resolve(ROOT,file)):Buffer.alloc(0);
+    if(ECASA_NEW_SLUGS.has(file.replace(/\.html$/, ''))) return input;
+    return restoreReviewedTourFile(file,input);
+  }
   const actual = readFileSync(resolve(ROOT,file));
-  if (ECASA_NEW_SLUGS.has(file.replace(/\.html$/, ''))) return actual;
   if (automaticEmbedAssets.has(file)) return restoreReviewedEmbedAsset(file, actual);
   // Historical checks receive the original only after independently proving
   // that real current bytes contain exactly the authorized tour removal.
@@ -140,16 +150,12 @@ export function assertPortfolioData(actual, baseline, file='data/proyectos.json'
 }
 export function assertPortfolioIndex(file,actual) {
   if(file==='lib/project-context.mjs') {
-    const objects=actual.toString().match(/Object\.freeze\(([\s\S]*)\);/)[1];
+    const objects=actual.toString().match(/export const projects = Object\.freeze\(([\s\S]*?)\);/)[1];
     assert.deepEqual(JSON.parse(objects),Object.fromEntries(catalogue.map(p=>[p.slug,{name:p.nombre,url:p.detalleUrl}])));
   } else if(file==='sitemap.xml') {
     const urls=text=>[...text.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-    const old=urls(portfolioOld(file).toString());
-    const expected=old.filter(url=>!INGEVEC_REMOVED_SLUGS.has(url.split('/').at(-1).replace(/\.html$/,'')));
-    for(let i=expected.length-1;i>=0;i--) if(ECASA_RETIRED_SLUGS.has(expected[i].split('/').at(-1).replace(/\.html$/,''))) expected.splice(i,1);
-    expected.splice(expected.indexOf('https://sollahms.cl/comparador-hipotecario.html'),0,...[...INGEVEC_NEW_SLUGS].map(s=>'https://sollahms.cl/'+s+'.html'));
-    expected.splice(expected.indexOf('https://sollahms.cl/comparador-hipotecario.html'),0,...[...ECASA_NEW_SLUGS].map(s=>'https://sollahms.cl/'+s+'.html'));
-    assert.deepEqual(urls(actual.toString()),expected);assert.equal(new Set(expected).size,149);
+    const expected=['/','/proyectos.html','/agenda-asesoria.html','/contacto.html','/privacidad.html',...catalogue.map(p=>p.detalleUrl),'/comparador-hipotecario.html'].map(path=>'https://sollahms.cl'+path);
+    assert.deepEqual(urls(actual.toString()),expected);assert.equal(new Set(expected).size,142);
   } else if(file==='docs/registro-fichas-proyectos.md') {
     const old=portfolioOld(file).toString();
     const inventory=text=>text.split('## Inventario completo')[1].split('\n## ')[0].split('\n').filter(line=>line.startsWith('| ['));
@@ -160,8 +166,8 @@ export function assertPortfolioIndex(file,actual) {
       if([...INGEVEC_REMOVED_SLUGS].some(slug=>line.includes('../'+slug+'.html)'))) assert.ok(!currentRows.includes(line));
       else assert.ok(currentRows.includes(line),'Existing inventory row changed: '+line);
     }
-    assert.equal(currentRows.length,143);
-    assert.ok(actual.toString().includes('Catálogo real: 143 proyectos'));
+    assert.equal(currentRows.length,136);
+    assert.ok(actual.toString().includes('Catálogo real: 136 proyectos'));
   } else throw new Error('Unknown portfolio index '+file);
 }
 export function assertDefinitiveFicheFallback(html,slug) {
@@ -230,12 +236,15 @@ export function commercialPage(bytes, slug) {
 }
 
 export function assertCatalogueConsultPrices(actual, baseline) {
+  actual = restoreEcasaContext('proyectos.html',actual);
   const previous = baseline.toString();
   assert.equal(previous.split("'Precio pendiente de verificación'").length, 2);
   assert.equal(actual.toString(), previous.replace("'Precio pendiente de verificación'", "(['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación')"), 'Only the two newly authorized cards change their unknown-price label');
 }
 
 export function assertCommercialBytes(file, actual, baseline) {
+  if(file === 'proyectos.html') {assertCatalogueConsultPrices(actual,baseline);return;}
+  actual = restoreEcasaContext(file,actual);
   if (file === 'vercel.json') actual = restoreMapCleanupAsset(file, actual);
   if (LAUNCH_CHANGES[file]) {
     const [before, after] = LAUNCH_CHANGES[file];
@@ -249,9 +258,14 @@ export function assertCommercialBytes(file, actual, baseline) {
       file + ': all original projects, assets and evidence remain exact');
     return;
   }
-  if(file === 'proyectos.html') {assertCatalogueConsultPrices(actual,baseline);return;}
   if (INGEVEC_REMOVED_SLUGS.has(file.replace(/\.html$/, '')) || ECASA_RETIRED_SLUGS.has(file.replace(/\.html$/, ''))) {
     assert.equal(actual.length,0);assert.equal(existsSync(resolve(ROOT,file)),false);return;
+  }
+  if (ECASA_ALIAS_SLUGS.has(file.replace(/\.html$/, ''))) {
+    // A former fiche is accepted only after the independent route scope proves
+    // its absence and both exact permanent redirects in the frozen config.
+    execFileSync('python3',[resolve(ROOT,'tests/ecasa_scope.py'),file],{cwd:ROOT,input:Buffer.alloc(0),maxBuffer:4*1024*1024});
+    return;
   }
   if(['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json'].includes(file)) {assertPortfolioData(actual,baseline,file);return;}
   if(['lib/project-context.mjs','sitemap.xml','docs/registro-fichas-proyectos.md'].includes(file)) {assertPortfolioIndex(file,actual);return;}

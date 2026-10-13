@@ -55,9 +55,9 @@ test('fechas siguen Chile, no el día UTC ni fechas calendario inválidas', () =
   assert.equal(chileDate('invalid'), null);
 });
 
-test('143 proyectos: 106 precios verificados participan y 37 quedan E', async () => {
+test('136 proyectos: 106 precios verificados participan y 30 quedan E', async () => {
   const projects = JSON.parse(await readFile(new URL('../data/proyectos.json', import.meta.url), 'utf8'));
-  assert.equal(projects.length, 143);
+  assert.equal(projects.length, 136);
   const known = projects.filter((p) => verifiedProjectPrice(p, now));
   assert.equal(known.length, 106);
   for (const p of projects) {

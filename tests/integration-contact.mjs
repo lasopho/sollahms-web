@@ -1,3 +1,4 @@
+import { expectedProjectLabel, expectedProjectQuery, expectedProjectDetail } from './ecasa-expected-context.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
@@ -36,23 +37,23 @@ function harness({ projectDataset = catalogue, now = NOW, environment = 'test', 
 }
 const number = new Intl.NumberFormat('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-test('all 143 mortgage contexts derive project name and subject on the server without forwarding RUT', async () => {
+test('all 136 mortgage contexts derive project name and subject on the server without forwarding RUT', async () => {
   const { handler, calls } = harness();
-  assert.equal(catalogue.length, 143);
+  assert.equal(catalogue.length, 136);
   for (const project of catalogue) {
     const response = await handler.fetch(request(lead(project.slug)));
     assert.equal(response.status, 200, project.slug);
     assert.deepEqual(await response.json(), { ok: true });
     const email = calls.at(-1).body;
-    assert.equal(email.subject, 'Asesoría hipotecaria sobre ' + project.nombre);
-    assert.ok(email.text.includes('Proyecto: ' + project.nombre));
+    assert.equal(email.subject, 'Asesoría hipotecaria sobre ' + expectedProjectLabel(project.nombre,project.slug));
+    assert.ok(email.text.includes('Proyecto: ' + expectedProjectLabel(project.nombre,project.slug)));
     assert.ok(email.text.includes('Identificador: ' + project.slug));
     assert.ok(email.text.includes('Origen del valor: proporcionado por el visitante'));
     assert.ok(!JSON.stringify(email).includes('1000005-K'));
     assert.ok(!JSON.stringify(email).includes('RUT'));
     assert.ok(!JSON.stringify(email.subject).includes('4.000'));
   }
-  assert.equal(calls.length, 143);
+  assert.equal(calls.length, 136);
 });
 
 test('106 catalogue prices match verified server provenance and are independently recalculated', async () => {
@@ -76,7 +77,7 @@ test('106 catalogue prices match verified server provenance and are independentl
   assert.equal(calls.length, 106);
 });
 
-test('37 unpriced projects require a visitor-declared price and cannot borrow another project price', async () => {
+test('30 unpriced projects require a visitor-declared price and cannot borrow another project price', async () => {
   const { handler, calls } = harness();
   let unpriced = 0;
   for (const project of catalogue) {
@@ -89,7 +90,7 @@ test('37 unpriced projects require a visitor-declared price and cannot borrow an
     assert.ok(calls.at(-1).body.text.includes('no representa un precio vigente confirmado'));
     assert.ok(!calls.at(-1).body.text.includes('revisión: 2026-10-09'));
   }
-  assert.equal(unpriced, 37);
+  assert.equal(unpriced, 30);
 });
 
 test('a visitor may deliberately edit a known catalogue price, and the resulting amount stays labelled as declared', async () => {

@@ -1,3 +1,5 @@
+import { resolveProjectIdentity } from '../assets/js/project-identity.mjs';
+import { expectedProjectLabel, expectedProjectQuery, expectedProjectDetail } from './ecasa-expected-context.mjs';
 import { loadOfficialUf, UF_CLIENT_REFRESH_MS } from '../assets/js/official-uf.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
@@ -100,7 +102,7 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
     document: { getElementById: id => elements[id], querySelectorAll: selector => selector === '[data-down]' ? presets : selector === '[data-project-agenda]' ? agenda : [], addEventListener() {}, hidden: false },
     window: { location: { search: search ?? (slug ? '?proyecto=' + encodeURIComponent(slug) : '') }, addEventListener() {} },
     innerWidth: 1440, URL, URLSearchParams, Intl, Date: Clock, AbortSignal, setInterval() {},
-    UF_CLIENT_REFRESH_MS,
+    UF_CLIENT_REFRESH_MS, resolveProjectIdentity,
     calculateMortgage, validateDataset, getUfStatus, getOfferStatus, compareOffers, sortComparisons, verifiedProjectPrice, verifiedProjectLocation,
     consumeMortgageHandoff: projectSlug => consumeMortgageHandoff(projectSlug, { storage, now }),
     fetch: async (url, options) => {
@@ -123,14 +125,14 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
   return { elements, agenda, posts, storage, invoke, release: () => release(), advance: amount => { now += amount; }, input: (id, value) => { elements[id].value = String(value); elements['simulation-form'].listeners.input({ target: elements[id] }); }, submit: () => elements['lead-form'].listeners.submit({ preventDefault() {} }) };
 }
 
-test('all143 project origins load exactly106 verified prices, leave37 pending blank and keep agenda/detail context', async () => {
+test('all136 project origins load exactly106 verified prices, leave30 pending blank and keep agenda/detail context', async () => {
   let verified = 0;
   for (const project of catalogue) {
     const ui = await frontend({ slug: project.slug });
     const price = verifiedProjectPrice(project, new Date(NOW));
-    assert.equal(ui.elements['project-name'].textContent, project.nombre);
-    assert.equal(ui.elements['project-detail'].href, project.detalleUrl);
-    assert.ok(ui.agenda.every(link => link.href === '/agenda-asesoria.html?proyecto=' + encodeURIComponent(project.slug)));
+    assert.equal(ui.elements['project-name'].textContent, expectedProjectLabel(project.nombre,project.slug));
+    assert.equal(ui.elements['project-detail'].href, expectedProjectDetail(project));
+    assert.ok(ui.agenda.every(link => link.href === '/agenda-asesoria.html' + expectedProjectQuery(project.slug)));
     assert.equal(Number(ui.elements.property.value) || null, price?.valueUf ?? null);
     assert.equal(ui.elements.down.value, '20');
     assert.equal(ui.elements.years.value, '25');
@@ -139,7 +141,7 @@ test('all143 project origins load exactly106 verified prices, leave37 pending bl
     else assert.ok(ui.elements['project-price-origin'].textContent.includes('pendiente de verificación'));
   }
   assert.equal(verified, 106);
-  assert.equal(catalogue.length - verified, 37);
+  assert.equal(catalogue.length - verified, 30);
 });
 
 test('project contact preserves trusted slug and9 mortgage inputs, never sends arbitrary subject/name or RUT', async () => {

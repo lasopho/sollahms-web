@@ -13,6 +13,7 @@ from html.parser import HTMLParser
 from virtual_tour_scope import restore_reviewed_file, historical_commercial_renderer
 from automatic_embed_scope import REVIEWED_ASSETS, restore_automatic_asset
 from map_cleanup_scope import restore_map_cleanup_asset
+from ecasa_scope import restore_context_file
 
 BASELINE = 'e903208160f62cc552e9efa4371a322ef75477b8'
 INGEVEC = {'centenario-1', 'tocornal', 'vivaceta'}
@@ -293,6 +294,7 @@ def restore_reviewed_scope(after, before, path):
 
 
 def assert_launch_bytes(path, current, previous):
+    current = restore_context_file(path, current)
     if path == 'vercel.json':
         current = restore_map_cleanup_asset(path, current)
     if path in REVIEWED_ASSETS:

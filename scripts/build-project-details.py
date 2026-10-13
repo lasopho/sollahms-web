@@ -17,6 +17,7 @@ from aj_brochure import augment_page
 from fiche_presentation import commercialize_fiche
 from virtual_tour_policy import secure_url
 from project_embed_policy import embed_hosts, map_markup, tour_section, unique_tours
+from ecasa_fiche import consolidate_page, consolidated_embed_hosts, presentation_research
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -191,10 +192,16 @@ def render(project, research, template):
     if not stages and 'etapas' in research.get('verifiedFields', []) and project.get('etapas'):
         stages = '<h3>Etapas del proyecto</h3><ul>' + ''.join('<li>' + esc(s.get('nombre', '')) + ': ' + esc(s.get('estado', 'Pendiente')) + '</li>' for s in project['etapas']) + '</ul>'
     page = template.substitute(title=esc(name), description=esc(desc), slug=slug, builder=esc(builder), location=esc(location), badges=badges, hero_class='' if hero else 'hero-without-image', hero_image=f'<img class="hero-image" src="{esc(src)}" alt="{esc(hero.get("alt") or name)}" fetchpriority="high" decoding="async">' if hero else '', social_image=social_image, structured_data=json_ld, embed_hosts=json.dumps(embed_hosts(research)), overview=overview_html, official_context=official_context_content(research), specs=specs, stages=stages, gallery=gallery, amenities=amenities_html, tour_navigation=tour_navigation, tour_section=tours_html, location_heading=esc(field(project, research, 'comuna') or ('Dirección oficial' if address else 'Dirección por verificar')), map=map_html, sources=source_content(project, research), price=price, price_note=price_note, official_link=official_link)
-    page = commercialize_fiche(augment_page(page, slug), slug, research=research)
-    if slug in {'alto-san-joaquin-2', 'alto-san-joaquin-3', 'terratolten-2', 'nucleo-costanera-2'}:
-        # New independent stage pages have optional empty template slots.
-        # Keep their blank lines clean without rewriting existing fiches.
+    if project.get('inmobiliaria') == 'Ecasa':
+        page = consolidate_page(page, project, research)
+        combined = presentation_research(research)
+        page = re.sub(r'(<script type="application/json" id="project-embed-hosts">).*?(</script>)', lambda m: m[1] + json.dumps(consolidated_embed_hosts(research)) + m[2], page, flags=re.S)
+        tours = list(unique_tours(combined))
+    else:
+        combined = research
+    page = commercialize_fiche(augment_page(page, slug), slug, research=combined)
+    if project.get('inmobiliaria') == 'Ecasa':
+        # Optional template slots remain clean in the consolidated output.
         page = re.sub(r'(?m)^[ \t]+$', '', page)
     return page, mapped, len(tours)
 
@@ -242,12 +249,33 @@ def main():
         context = research.get('officialContext')
         if context and context.get('sourceStatus') == 'verified' and secure_url(context.get('sourceUrl')):
             ledger[-1]['contextoOficial'] = {'nombre': context['name'], 'alcance': context['scope'], 'fuente': context['sourceUrl'], 'fechaRevision': context['checkedAt'], 'mapaDeReferencia': bool(context.get('mapQuery')), 'imagenesRelacionadas': len(context.get('images', []))}
+        if project.get('etapasComerciales'):
+            # A scoped regeneration must retain the original commercial-stage
+            # ledger records and their independently reviewed source evidence.
+            previous = previous_ledger.get(slug, {})
+            for key in ['etapasComerciales', 'etapaReferenciaSlug', 'consolidacion']:
+                if key in previous:
+                    ledger[-1][key] = previous[key]
+            ledger[-1]['etapaReferenciaSlug'] = project['etapaReferenciaSlug']
+            ledger[-1]['recorridosOficiales'] = len(presentation_research(research).get('virtualTours', []))
+            ledger[-1]['matterport'] = any(t.get('provider') == 'Matterport' and secure_url(t.get('url')) and secure_url(t.get('sourceUrl')) and t['url'].replace('&', '&amp;') in actual for t in presentation_research(research).get('virtualTours', []))
         if (selected is not None and project['inmobiliaria'] not in selected or selected_slugs is not None and slug not in selected_slugs) and slug in previous_ledger:
             ledger[-1] = previous_ledger[slug]
     (ROOT / 'data/proyectos.json').write_text(json.dumps(projects, ensure_ascii=False, indent=2) + '\n')
     (ROOT / 'data/registro-fichas.json').write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + '\n')
     contexts = {p['slug']: {'name': p['nombre'], 'url': p['detalleUrl']} for p in projects}
-    (ROOT / 'lib/project-context.mjs').write_text('// Generated from data/proyectos.json by build-project-details.py.\nexport const projects = Object.freeze(' + json.dumps(contexts, ensure_ascii=False, indent=2).replace('<', '\\u003c') + ');\n')
+    aliases, commercial_stages = {}, {}
+    for project in projects:
+        for stage in project.get('etapasComerciales', []):
+            stage_number = int(stage['detalleUrl'].rsplit('#etapa-', 1)[1])
+            item = {'slug': project['slug'], 'etapa': stage_number, 'stageSlug': stage['slug'], 'name': stage['nombre'], 'url': stage['detalleUrl']}
+            commercial_stages[stage['slug']] = item
+            if stage['slug'] != project['slug']:
+                aliases[stage['slug']] = item
+    context_source = '// Generated from the authorized Ecasa project/stage consolidation; 121 other projects remain exact.\n'
+    for name, values in [('projects', contexts), ('projectAliases', aliases), ('projectStages', commercial_stages)]:
+        context_source += 'export const ' + name + ' = Object.freeze(' + json.dumps(values, ensure_ascii=False, indent=2).replace('<', '\\u003c') + ');\n'
+    (ROOT / 'lib/project-context.mjs').write_text(context_source)
     # Keep the existing global destinations and append all details exactly once.
     urls = ['/', '/proyectos.html', '/agenda-asesoria.html', '/contacto.html', '/privacidad.html'] + [p['detalleUrl'] for p in projects] + ['/comparador-hipotecario.html']
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join('  <url><loc>https://sollahms.cl' + esc(url) + '</loc></url>\n' for url in dict.fromkeys(urls)) + '</urlset>\n'

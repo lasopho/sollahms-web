@@ -2,12 +2,12 @@
 
 Rama: `codex/ecasa-cartera-definitiva`. Sin merge ni despliegue de producción.
 
-- Catálogo real: 143 proyectos.
-- Fichas desarrolladas: 143 (4 destacadas preexistentes, 139 nuevas).
+- Catálogo real: 136 proyectos (15 Ecasa, 22 identidades comerciales por etapa).
+- Fichas desarrolladas: 136 (4 destacadas preexistentes, 132 nuevas).
 - Fichas por desarrollar: 0.
 - Proyectos con Matterport integrado: 18.
-- Proyectos con apartado de mapa: 128.
-- Proyectos con al menos un dato pendiente: 133.
+- Proyectos con apartado de mapa: 126.
+- Proyectos con al menos un dato pendiente: 126.
 
 Una ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los mapas y recorridos acreditados usan iframes HTTPS con carga diferida nativa, sin botones de activación. Las alternativas externas se reservan para experiencias no acreditadas para integración o un fallo real del visor. Los apartados de información oficial relacionada tienen fuente, fecha y alcance propios: sus precios, imágenes y mapas generales no se atribuyen a una torre o producto residencial sin verificar ni alimentan su evaluación financiera.
 
@@ -40,7 +40,6 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Edificio Teatinos 750](../edificio-teatinos-750.html) | AJ Urbana | [Oficial](https://ajurbana.cl/edificio-teatinos-750/) | verified | Sí | No verificado | Precio actual en UF, Equipamiento y áreas comunes, Fotografías oficiales, Existencia de recorrido virtual oficial, Fotografías oficiales propias del proyecto, Recorrido virtual oficial específico no localizado, Precio vigente y disponibilidad |
 | [Edificio Vista Amunategui](../edificio-vista-amunategui.html) | AJ Urbana | [Oficial](https://ajurbana.cl/edificio-vista-amunategui/) | verified | Sí | No verificado | Precio actual en UF, Equipamiento y áreas comunes, Superficie útil, Superficie total, Fotografías oficiales, Existencia de recorrido virtual oficial, Fotografías oficiales propias del proyecto, Recorrido virtual oficial específico no localizado, Precio vigente y disponibilidad |
 | [Endémico](../endemico.html) | Ecasa | [Oficial](https://endemicopichilemu.cl/) | verified | Pendiente | No verificado | Dirección, Precio actual en UF, Tipologías disponibles, Entrega, Superficie útil, Superficie total, Precio y disponibilidad comercial: todos los modelos están sin unidades, Dirección exacta; sitio sólo indica Punta de Lobos y coordenadas oficiales, Relación comercial vigente con Ecasa, Superficie de terreno, Dirección exacta, Precio vigente y disponibilidad, Fecha de entrega, Disponibilidad del visor Recorrido 2 · Endémico Pichilemu: no mostró escena tras reintento; conservar enlace oficial y confirmar con el proveedor |
-| [Terratoltén 1](../terratolten-1.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/terratolten) | verified | Sí | No verificado | Precio actual en UF, Precio vigente: campaña CYBER sin fechas oficiales corroboradas, Precio vigente y disponibilidad |
 | [Edificio Playa Peñuelas](../playa-penuelas.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/playa-penuelas/) | verified | Sí | No verificado | Diferencia de máximo entre resumen y tabla de superficies |
 | [Serrano - Torre A](../serrano-torre-a.html) | Maestra | [Oficial](https://maestra.cl/proyectos/serrano/) | verified | Sí | No verificado | Entrega, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM, Recorrido virtual oficial específico no localizado, Fecha de entrega |
 | [Plaza Cervantes - Torre A](../plaza-cervantes.html) | Maestra | [Oficial](https://maestra.cl/promocion-gastos-operacionales/) | verified | Pendiente | No verificado | Dirección, Tipologías disponibles, Entrega, Equipamiento y áreas comunes, Superficie útil, Superficie total, Dormitorios, Baños, Existencia de recorrido virtual oficial, Disponibilidad y condiciones comerciales específicas de Torre A, Dirección y acceso específicos de Torre A, Tipologías y superficies de Torre A, Recorrido virtual oficial específico no localizado, Condiciones efectivas de entrega |
@@ -95,8 +94,7 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Nueva Esmeralda](../nueva-esmeralda.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-nuevaesmeralda) | verified | Sí | No verificado | Entrega, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
 | [El Aromo](../el-aromo.html) | Ingevec | [Oficial](https://ingevecinmobiliaria.cl/proyecto-elaromo) | verified | Sí | No verificado | Entrega, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
 | [Espacio Victoria](../espacio-victoria.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/espacio-victoria) | verified | Sí | No verificado | Precio actual en UF, Entrega, Precio vigente: campaña CYBER sin fechas oficiales corroboradas, Precio vigente y disponibilidad, Fecha de entrega |
-| [Terratoltén 3](../terratolten-3.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/terratolten-3) | verified | Sí | No verificado | Entrega, Fecha de entrega |
-| [Lomas de Puyai 3](../lomas-de-puyai-3.html) | Ecasa | [Oficial](https://ecasa.cl/proyectos) | not_found | Pendiente | No verificado | Dirección, Precio actual en UF, Tipologías disponibles, Estado, Entrega, Equipamiento y áreas comunes, Características del proyecto, Superficie útil, Superficie total, Dormitorios, Baños, Fotografías oficiales, Existencia de recorrido virtual oficial, Existencia y oferta comercial de etapa 3, Fuente oficial específica, Superficie de terreno, Fotografías oficiales propias del proyecto, Recorrido virtual oficial específico no localizado, Dirección exacta, Precio vigente y disponibilidad, Fecha de entrega |
+| [Terratoltén](../terratolten.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/terratolten-3) | verified | Sí | No verificado | Entrega, Fecha de entrega |
 | [Pintor Cicarelli III](../pintor-cicarelli-iii.html) | Maestra | [Oficial](https://maestra.cl/proyectos/pintor-cicarelli-iii/) | verified | Sí | No verificado | Entrega, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM, Recorrido virtual oficial específico no localizado, Fecha de entrega |
 | [Trinidad III](../trinidad-iii.html) | Maestra | [Oficial](https://maestra.cl/proyectos/trinidad-iii/) | verified | Sí | No verificado | Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Recorrido virtual oficial específico no localizado |
 | [Edificio Liverpool](../edificio-liverpool.html) | Nollagam | [Oficial](https://nollagam.cl/nuestros-proyectos/liverpool/) | verified | Sí | Sí | Superficie útil, Superficie útil: fuente publica área Interior sin equivalencia explícita |
@@ -110,7 +108,6 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [Aires La Florida 2](../aires-la-florida-2.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/aires-la-florida-2) | verified | Sí | No verificado | Precio actual en UF, Precio vigente: campaña CYBER sin fechas oficiales corroboradas, Precio vigente y disponibilidad |
 | [Condominio Uruguay](../condominio-uruguay.html) | León | [Oficial](https://www.ileon.cl/proyectos/condominio-uruguay/) | verified | Sí | No verificado | Superficie útil, Disponibilidad exacta por tipología |
 | [Enlace Mackenna](../enlace-mackenna.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/enlace-mackenna) | verified | Sí | No verificado | Precio actual en UF, Entrega, Precio vigente: campaña CYBER sin fechas oficiales corroboradas, Precio vigente y disponibilidad, Fecha de entrega |
-| [Ferroparque 2](../ferroparque-2.html) | Ecasa | [Oficial](https://ecasa.cl/proyecto/ferroparque-2) | verified | Sí | No verificado | Precio actual en UF, Entrega, Existencia de recorrido virtual oficial, Precio vigente: campaña CYBER sin fechas oficiales corroboradas, Recorrido virtual oficial específico no localizado, Precio vigente y disponibilidad, Fecha de entrega |
 | [Novo Catedral](../novo-catedral.html) | Sudamericana | [Oficial](https://isudamericana.cl/proyectos/novo-catedral/) | verified | Sí | Sí | Superficie útil, Superficie total, Baños |
 | [Edificio Carmen Marín](../carmen-marin.html) | Norte Verde | [Oficial](https://norte-verde.cl/proyecto/carmen-marin/) | verified | Sí | No verificado | Existencia de recorrido virtual oficial, Recorrido virtual propio: los botones de la ficha no enlazan una experiencia publicada, Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan |
 | [Gregorio de la Fuente](../gregorio-de-la-fuente-a.html) | León | [Oficial](https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/) | verified | Sí | No verificado | Entrega, Equipamiento y áreas comunes, Superficie útil, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
@@ -154,11 +151,6 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [BOX Santiago](../box-santiago.html) | León | [Oficial](https://www.ileon.cl/proyectos/box-santiago/) | verified | Sí | No verificado | Entrega, Equipamiento y áreas comunes, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
 | [Los Alerces](../los-alerces.html) | Ingevec | Por identificar | verified | Sí | No verificado | Precio vigente, Disponibilidad de unidades y modelos, Estado comercial y fecha de entrega, Orientaciones y pisos por unidad, Existencia de recorrido virtual oficial, Cantidad de departamentos: originales con cifras diferentes; no publicada |
 | [Valle Los Ingleses III](../valle-los-ingleses-iii.html) | Ingevec | Por identificar | verified | Sí | No verificado | Precio vigente, Disponibilidad de unidades y modelos, Estado comercial y fecha de entrega, Orientaciones y pisos por unidad, Existencia de recorrido virtual oficial, Vinculación de líneas A–K con cada distribución, Confirmación de comercialización actual exclusiva Etapa III |
-| [Alto San Joaquín 2](../alto-san-joaquin-2.html) | Ecasa | Por identificar | stage_documentation_pending | Pendiente | No verificado | Dirección, Precio actual en UF, Tipologías disponibles, Estado, Entrega, Equipamiento y áreas comunes, Características del proyecto, Superficie útil, Superficie total, Dormitorios, Baños, Fotografías oficiales, Existencia de recorrido virtual oficial, Documentación específica o alcance común acreditado para esta etapa, Precio y disponibilidad vigentes de la etapa, Fotografías y planos acreditados de la etapa |
-| [Alto San Joaquín 3](../alto-san-joaquin-3.html) | Ecasa | Por identificar | stage_documentation_pending | Pendiente | No verificado | Dirección, Precio actual en UF, Tipologías disponibles, Estado, Entrega, Equipamiento y áreas comunes, Características del proyecto, Superficie útil, Superficie total, Dormitorios, Baños, Fotografías oficiales, Existencia de recorrido virtual oficial, Documentación específica o alcance común acreditado para esta etapa, Precio y disponibilidad vigentes de la etapa, Fotografías y planos acreditados de la etapa |
-| [Terratoltén 2](../terratolten-2.html) | Ecasa | Por identificar | stage_documentation_pending | Pendiente | No verificado | Dirección, Precio actual en UF, Tipologías disponibles, Estado, Entrega, Equipamiento y áreas comunes, Características del proyecto, Superficie útil, Superficie total, Dormitorios, Baños, Fotografías oficiales, Existencia de recorrido virtual oficial, Documentación específica o alcance común acreditado para esta etapa, Precio y disponibilidad vigentes de la etapa, Fotografías y planos acreditados de la etapa |
-| [Núcleo Costanera 2](../nucleo-costanera-2.html) | Ecasa | Por identificar | stage_documentation_pending | Pendiente | No verificado | Dirección, Precio actual en UF, Tipologías disponibles, Estado, Entrega, Equipamiento y áreas comunes, Características del proyecto, Superficie útil, Superficie total, Dormitorios, Baños, Fotografías oficiales, Documentación específica o alcance común acreditado para esta etapa, Precio y disponibilidad vigentes de la etapa, Fotografías y planos acreditados de la etapa |
-
 ## Fuentes relacionadas con alcance separado
 
 | Ficha | Fuente relacionada | Alcance | Revisión | Imágenes | Mapa de referencia |
@@ -171,3 +163,32 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 ## Continuación reproducible
 
 Editar `data/fichas-proyectos.json` con nuevas evidencias, incorporando campos en `verifiedFields` únicamente cuando exista respaldo oficial. Actualizar `data/proyectos.json` solo con valores respaldados. Ejecutar `python3 scripts/update-featured-verification.py`, `python3 scripts/build-project-details.py`, `python3 tests/validate-project-details.py` y `node --test tests/booking-project-context.mjs`. Para un lote: `python3 scripts/build-project-details.py --batch Maestra,Ecasa`. El registro y sitemap siempre cubren todo el catálogo. Revisar `docs/verificacion-fichas.md` para pruebas de navegador y límites.
+
+## Identidades comerciales Ecasa conservadas
+
+Los 15 proyectos principales conservan 22 registros de etapa; los precios, estados, fotografías, mapas y recorridos siguen asociados a su origen. La referencia comercial del proyecto principal identifica la etapa de origen y no se transmite al resto.
+
+| Proyecto principal | Identidad comercial | Etapa | Ficha canónica |
+| --- | --- | --- | --- |
+| Núcleo Costanera | Núcleo Costanera | 1 | [Núcleo Costanera](../nucleo-costanera.html#etapa-1) |
+| Núcleo Costanera | Núcleo Costanera 2 | 2 | [Núcleo Costanera 2](../nucleo-costanera.html#etapa-2) |
+| FerroParque | FerroParque | 1 | [FerroParque](../ferroparque.html#etapa-1) |
+| FerroParque | Ferroparque 2 | 2 | [Ferroparque 2](../ferroparque.html#etapa-2) |
+| Terratoltén | Terratoltén 1 | 1 | [Terratoltén 1](../terratolten.html#etapa-1) |
+| Terratoltén | Terratoltén 2 | 2 | [Terratoltén 2](../terratolten.html#etapa-2) |
+| Terratoltén | Terratoltén 3 | 3 | [Terratoltén 3](../terratolten.html#etapa-3) |
+| Lomas de Puyai | Lomas de Puyai | 1 | [Lomas de Puyai](../lomas-de-puyai.html#etapa-1) |
+| Lomas de Puyai | Lomas de Puyai 3 | 3 | [Lomas de Puyai 3](../lomas-de-puyai.html#etapa-3) |
+| Alto San Joaquín | Alto San Joaquín | 1 | [Alto San Joaquín](../alto-san-joaquin.html#etapa-1) |
+| Alto San Joaquín | Alto San Joaquín 2 | 2 | [Alto San Joaquín 2](../alto-san-joaquin.html#etapa-2) |
+| Alto San Joaquín | Alto San Joaquín 3 | 3 | [Alto San Joaquín 3](../alto-san-joaquin.html#etapa-3) |
+| Edificio Wayra | Edificio Wayra | 1 | [Edificio Wayra](../wayra.html#etapa-1) |
+| Lamara | Lamara | 1 | [Lamara](../lamara.html#etapa-1) |
+| Bezanilla | Bezanilla | 1 | [Bezanilla](../edificio-bezanilla.html#etapa-1) |
+| Endémico | Endémico | 1 | [Endémico](../endemico.html#etapa-1) |
+| Cumbres de Peñuelas | Cumbres de Peñuelas | 1 | [Cumbres de Peñuelas](../cumbres-de-penuelas.html#etapa-1) |
+| Espacio Victoria | Espacio Victoria | 1 | [Espacio Victoria](../espacio-victoria.html#etapa-1) |
+| Urban La Florida | Urban La Florida | 1 | [Urban La Florida](../urban-la-florida.html#etapa-1) |
+| Aires La Florida 2 | Aires La Florida 2 | 2 | [Aires La Florida 2](../aires-la-florida-2.html#etapa-2) |
+| Enlace Mackenna | Enlace Mackenna | 1 | [Enlace Mackenna](../enlace-mackenna.html#etapa-1) |
+| Conecta Huechuraba | Conecta Huechuraba | 1 | [Conecta Huechuraba](../conecta-huechuraba.html#etapa-1) |

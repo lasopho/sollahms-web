@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REFERENCE = ROOT / 'docs/release-reference.json'
 EXTENSIONS = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.webp',
               '.png', '.jpg', '.jpeg', '.ico', '.woff', '.woff2', '.txt', '.xml'}
+VERIFICATION_TOOLS = {'tests/qa-ecasa.mjs', 'tests/qa-ecasa-remote.mjs', 'tests/qa-preview-server.mjs'}
 
 
 def require(condition, message):
@@ -70,6 +71,24 @@ def git(root, *args):
     return subprocess.check_output(['git', '-C', str(root), *args], stderr=subprocess.PIPE)
 
 
+def verify_verification_tools(root, policy):
+    tools = policy.get('verificationTools')
+    if tools is None:
+        return
+    require(isinstance(tools, list) and len(tools) == len(VERIFICATION_TOOLS) and
+            {tool.get('file') for tool in tools} == VERIFICATION_TOOLS,
+            'Private verification tool inventory differs from the reviewed QA selection')
+    for tool in tools:
+        name = tool['file']
+        path = root / name
+        require(path.is_file() and not path.is_symlink(), 'Missing or symbolic verification tool: ' + name)
+        data = path.read_bytes()
+        require(len(data) == tool.get('size') and digest(data) == tool.get('sha256'),
+                'Verification tool differs from private receipt: ' + name)
+        require(data == git(root, 'show', policy['approvedAppCommit'] + ':' + name),
+                'Verification tool differs from prepared Git commit: ' + name)
+
+
 def verify_git_reference(root, files, policy):
     commit = policy['approvedAppCommit']
     require(git(root, 'rev-parse', commit + '^{commit}').decode().strip() == commit, 'Approved application commit is unavailable')
@@ -105,6 +124,7 @@ def verify_worktree(root, files, policy):
     relevant = ['assets', 'api', 'lib', 'data/proyectos.json', 'data/hipotecario.json',
                 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
                 'data/brochures-ecasa.json', 'scripts/ecasa-publication.mjs',
+                'data/public-caption-policy.json', 'scripts/public-fiche-copy.mjs',
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
     require(not git(root, 'diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
@@ -181,6 +201,7 @@ def prepare(archive, output, node, policy, protected_review=False):
     files = verify_archive(archive, policy)
     tracked = verify_git_reference(ROOT, files, policy)
     verify_worktree(ROOT, files, policy)
+    verify_verification_tools(ROOT, policy)
     destination = outside_source(output, ROOT)
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.mkdir(mode=0o700)
@@ -228,6 +249,7 @@ def prepare(archive, output, node, policy, protected_review=False):
                'auditReceipt': str(audit_path), 'deployableSourceInventory': files,
                'localPreparationPassed': True, 'networkUsed': False, 'deploymentPerformed': False,
                'contentProfile': 'protected_ecasa_review' if protected_review else 'public_web_parity',
+               'verificationTools': policy.get('verificationTools', []),
                'ecasaPublicWebParityVerified': not protected_review,
                'publicationAuthorized': False, 'integrationAuthorized': False}
     (destination / 'release-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')

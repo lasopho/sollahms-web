@@ -4,6 +4,7 @@ import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
 import { mortgageSummaryLines, validateMortgageLead, validFormTiming } from '../lib/mortgage-lead.mjs';
 import { createOfficialUfService } from '../lib/official-uf.mjs';
 import { getUfStatus } from '../assets/js/mortgage-data.mjs';
+import { resolveProjectIdentity } from '../assets/js/project-identity.mjs';
 
 const officialUf = createOfficialUfService();
 
@@ -103,7 +104,18 @@ export function createContactHandler({
   // Names and prices come only from the server's checked-in project catalogue.
   const projectIndex = Object.create(null);
   for (const project of projectDataset) {
-    if (project && typeof project.slug === 'string' && typeof project.nombre === 'string') projectIndex[project.slug] = project;
+    const identity = resolveProjectIdentity(projectDataset, project?.slug);
+    if (identity) projectIndex[project.slug] = identity;
+  }
+  // Canonical roots win slug collisions. Numbered aliases use only their own
+  // public snapshots, so a missing stage price cannot inherit a parent quote.
+  for (const project of projectDataset) {
+    if (project?.inmobiliaria !== 'Ecasa' || !Array.isArray(project.etapasComerciales)) continue;
+    for (const stage of project.etapasComerciales) {
+      if (!stage || Object.hasOwn(projectIndex, stage.slug)) continue;
+      const identity = resolveProjectIdentity(projectDataset, stage.slug);
+      if (identity) projectIndex[stage.slug] = identity;
+    }
   }
   return {
     async fetch(request) {

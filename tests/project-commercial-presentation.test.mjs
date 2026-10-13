@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, INGEVEC_ADDED_BASELINE, INGEVEC_ADDED_SLUGS, assertAddedFicheFallback,
   assertIngevecManifestAddition, assertCommercialBytes, INGEVEC_NEW_SLUGS, INGEVEC_ENRICHED_SLUGS,
-  assertDefinitiveFicheFallback, vimaImageCorrection, readCommercialFile } from './commercial-html.mjs';
+  assertDefinitiveFicheFallback, vimaImageCorrection, readCommercialFile, restoreEcasaContext } from './commercial-html.mjs';
 
 // This reviewed commit contains all eight brochure integrations, their actual
 // scope status and the 144-page financial integration. The request changes
@@ -45,9 +45,9 @@ const numericSpecs = (html) => [...html.matchAll(/<dd\b[^>]*>([\s\S]*?)<\/dd>/gi
 const blobHash = (bytes) => createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
-test('commercial presentation preserves the 143-project successor and non-Ecasa private source records', () => {
-  assert.equal(projects.length, 143);
-  assert.equal(new Set(projects.map((item) => item.slug)).size, 143);
+test('commercial presentation preserves the 136-project successor and non-Ecasa private source records', () => {
+  assert.equal(projects.length, 136);
+  assert.equal(new Set(projects.map((item) => item.slug)).size, 136);
   assertCommercialBytes('data/proyectos.json',current('data/proyectos.json'), old('data/proyectos.json'));
   for (const path of git('ls-tree', '-r', '--name-only', BASELINE, '--', 'data').toString().trim().split('\n')) {
     if (path === 'data/brochures-ingevec.json') assertIngevecManifestAddition(current(path), old(path));
@@ -117,7 +117,7 @@ test('all styles, catalogue controls and form/action contexts stay exact outside
       const [meta, path] = line.split('\t');
       if(['lib/project-context.mjs', 'assets/js/hipotecario.mjs', 'assets/js/purchase-capacity-ui.mjs',
         'api/contact.mjs', 'lib/booking-server.mjs'].includes(path)) assertCommercialBytes(path,current(path),old(path));
-      else assert.equal(blobHash(current(path)), meta.split(' ')[2], path);
+      else assert.equal(blobHash(restoreEcasaContext(path,current(path))), meta.split(' ')[2], path);
     }
   }
   for (const path of ['proyectos.html', 'index.html', 'contacto.html', 'agenda-asesoria.html',
@@ -177,7 +177,7 @@ test('direct commercial cautions survive alongside current prices, referential p
       enquire++;
     }
   }
-  assert.equal(priced + enquire, 139);
+  assert.equal(priced + enquire, 135, 'The 136 canonical roots exclude only the new Terratoltén route from this historical presentation freeze');
   assert.ok(priced > 100 && enquire > 20);
   const find = (slug) => snapshots.find((item) => item.slug === slug).after;
   for (const slug of ['downtown-san-martin', 'edificio-teatinos-750', 'edificio-vista-amunategui',

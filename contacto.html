@@ -183,6 +183,7 @@
 </footer>
 <script type="module">
 import { normalizeRut, RUT_ERROR } from '/assets/js/rut.mjs';
+import { resolveProjectIdentity } from '/assets/js/project-identity.mjs';
 
 (() => {
     const form = document.getElementById('contact-form');
@@ -190,7 +191,10 @@ import { normalizeRut, RUT_ERROR } from '/assets/js/rut.mjs';
     const status = document.getElementById('form-status');
     const rut = document.getElementById('rut');
     const rutError = document.getElementById('rut-error');
-    const projectSlug = new URLSearchParams(window.location.search).get('proyecto');
+    const query = new URLSearchParams(window.location.search);
+    const projectSlug = query.getAll('proyecto').length > 1 ? '' : query.get('proyecto');
+    const requestedEtapa = query.getAll('etapa').length > 1 ? '' : query.get('etapa');
+    let projectIdentity = null;
     let sending = false;
 
     const showRutError = message => {
@@ -213,20 +217,20 @@ import { normalizeRut, RUT_ERROR } from '/assets/js/rut.mjs';
             const response = await fetch('/data/proyectos.json');
             if (!response.ok) return;
             const projects = await response.json();
-            if (!Array.isArray(projects)) return;
-            const project = projects.find(project => project && project.slug === projectSlug);
-            if (!project || typeof project.nombre !== 'string' || !project.nombre.trim()) return;
+            const project = resolveProjectIdentity(projects, projectSlug, requestedEtapa);
+            if (!project) return;
+            projectIdentity = project;
             const context = document.getElementById('contact-project-context');
             context.textContent = 'Estás consultando por ' + project.nombre + '.';
             context.hidden = false;
             document.querySelectorAll('a[href="/agenda-asesoria.html"]').forEach(link => {
-                link.href = '/agenda-asesoria.html?proyecto=' + encodeURIComponent(projectSlug);
+                link.href = '/agenda-asesoria.html' + project.contextQuery;
             });
         } catch {
             // The server verifies the slug even if this display cannot load.
         }
     };
-    contextualizeProject();
+    const projectContextReady = contextualizeProject();
 
     form.addEventListener('submit', async event => {
         event.preventDefault();
@@ -244,10 +248,15 @@ import { normalizeRut, RUT_ERROR } from '/assets/js/rut.mjs';
         button.textContent = 'Enviando…';
         status.textContent = '';
         try {
+            await projectContextReady;
+            if (requestedEtapa !== null && !projectIdentity) {
+                status.textContent = 'No pudimos identificar la etapa. Vuelve a abrir la consulta desde su ficha.';
+                return;
+            }
             const data = Object.fromEntries(new FormData(form));
             data.rut = normalizedRut;
             // The server derives the trusted project name and email subject.
-            if (projectSlug !== null) data.proyecto = projectSlug;
+            if (projectSlug !== null) data.proyecto = projectIdentity?.bodyProjectSlug ?? projectSlug;
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

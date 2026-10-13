@@ -19,6 +19,21 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parents[1]
 PREFIX = '/assets/propiedades/ecasa-preview/'
+COMMERCIAL_SLUGS = (
+    'lomas-de-puyai', 'ferroparque', 'edificio-bezanilla', 'endemico',
+    'terratolten-1', 'wayra', 'alto-san-joaquin-3', 'enlace-mackenna',
+    'ferroparque-2', 'espacio-victoria', 'lamara', 'terratolten-3',
+    'lomas-de-puyai-3', 'cumbres-de-penuelas', 'aires-la-florida-2',
+    'conecta-huechuraba', 'urban-la-florida', 'alto-san-joaquin',
+    'alto-san-joaquin-2', 'nucleo-costanera', 'terratolten-2', 'nucleo-costanera-2',
+)
+CONSOLIDATED_PROJECTS = {
+    'terratolten-1': 'terratolten', 'terratolten-2': 'terratolten', 'terratolten-3': 'terratolten',
+    'lomas-de-puyai-3': 'lomas-de-puyai', 'ferroparque-2': 'ferroparque',
+    'alto-san-joaquin-2': 'alto-san-joaquin', 'alto-san-joaquin-3': 'alto-san-joaquin',
+    'nucleo-costanera-2': 'nucleo-costanera',
+}
+PROJECT_BY_ORIGIN = {slug: CONSOLIDATED_PROJECTS.get(slug, slug) for slug in COMMERCIAL_SLUGS}
 
 
 def require(condition, message):
@@ -70,8 +85,16 @@ def materialize(manifest_path, input_directory, root=ROOT, pdftoppm='pdftoppm'):
     original_manifest = manifest_path.read_bytes()
     manifest = json.loads(original_manifest)
     records = manifest['projects']
-    require(len(records) == 22 and len({p['slug'] for p in records}) == 22,
-            'Ecasa manifest must have 22 distinct entries')
+    require(manifest.get('schemaVersion') == 2 and len(records) == 15 and
+            {p['slug'] for p in records} == set(PROJECT_BY_ORIGIN.values()),
+            'Ecasa manifest must have 15 distinct projects')
+    commercial_sources = manifest.get('commercialSources', [])
+    require(len(commercial_sources) == 22 and {source['slug'] for source in commercial_sources} ==
+            set(COMMERCIAL_SLUGS), 'Ecasa manifest must retain 22 private commercial origins')
+    for source in commercial_sources:
+        require(source['projectSlug'] == PROJECT_BY_ORIGIN[source['slug']] and
+                source['stageScope'] == 'named_development_only', 'Commercial origin mapping changed')
+    origins = {source['slug']: source for source in commercial_sources}
     require(manifest['publicationRights']['sourceChannel'] == 'Ecasa/user_supplied',
             'Ecasa source channel must remain independent')
     sources = {}
@@ -93,10 +116,17 @@ def materialize(manifest_path, input_directory, root=ROOT, pdftoppm='pdftoppm'):
         assets = list(record.get('images', [])) + [m['plan'] for m in record.get('models', [])]
         for asset in assets:
             path = asset['localPath']
-            prefix = PREFIX + record['slug'] + '/'
-            require(path.startswith(prefix) and
+            origin_slug = asset.get('originCommercialSlug')
+            origin = origins.get(origin_slug)
+            prefix = PREFIX + str(origin_slug) + '/'
+            require(origin and origin['projectSlug'] == record['slug'] and
+                    asset.get('etapa') == origin['etapa'] and path.startswith(prefix) and
                     re.fullmatch(r'[a-z0-9_.-]+\.webp', path[len(prefix):]),
-                    'Derivative belongs to another entry or has an unsafe path')
+                    'Derivative belongs to another commercial origin or has an unsafe path')
+            inventory = origin['selectedPlanPaths'] if asset.get('kind') == 'plan' else origin['selectedImagePaths']
+            require(path in inventory and asset['sourceSha256'] in
+                    {document['sha256'] for document in origin['documents']},
+                    'Derivative is outside its original commercial selection or document scope')
             destination = root / path.lstrip('/')
             require(destination.resolve() == root.resolve() / path.lstrip('/') and
                     not destination.is_symlink(), 'Derivative path contains a symlink')
@@ -109,6 +139,8 @@ def materialize(manifest_path, input_directory, root=ROOT, pdftoppm='pdftoppm'):
             page = asset['sourcePage']
             require(type(page) is int and 1 <= page <= count, 'Invalid source page')
             jobs.append((source, page, destination, asset))
+    require(len(jobs) == 130 and sum(len(p['images']) for p in records) == 56 and
+            sum(len(p['models']) for p in records) == 74, 'All 130 reviewed derivatives must be retained')
     staged = []
     with tempfile.TemporaryDirectory(prefix='sollahms-ecasa-materialize-') as temporary:
         temporary = Path(temporary)
@@ -129,7 +161,7 @@ def materialize(manifest_path, input_directory, root=ROOT, pdftoppm='pdftoppm'):
             if not destination.exists() or digest(destination) != asset['sha256']:
                 shutil.copyfile(candidate, destination)
             verify_image(destination, asset)
-    return {'entries': 22, 'documents': len(manifest['sourceDocuments']),
+    return {'entries': 15, 'commercialSources': 22, 'documents': len(manifest['sourceDocuments']),
             'uniqueDocuments': len(sources), 'images': sum(len(p['images']) for p in records),
             'plans': sum(len(p['models']) for p in records), 'assets': len(jobs),
             'manifestUnchanged': True}

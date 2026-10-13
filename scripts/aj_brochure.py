@@ -5,6 +5,7 @@ import re
 import unicodedata
 from pathlib import Path
 from fiche_presentation import commercialize_fiche
+from public_copy import natural_caption, natural_text
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / 'data/brochures-aj-urbana.json'
@@ -28,7 +29,7 @@ def area(value):
 
 def documentary_list(items):
     return '<ul class="amenity-list aj-facts">' + ''.join(
-        f'<li>{esc(item["label"])}<span class="aj-page">Brochure · pág. {esc(", ".join(map(str, item["pages"])))}</span></li>'
+        f'<li>{esc(natural_text(item.get("displayLabel", item["label"])))}<span class="aj-page">Brochure · pág. {esc(", ".join(map(str, item["pages"])))}</span></li>'
         for item in items) + '</ul>'
 
 
@@ -62,8 +63,12 @@ def augment_record(page, record, namespace, builder):
     if record.get('hero'):
         # A better reviewed hero is isolated from the original public image.
         # Removing preview blocks reconstructs the public fallback exactly.
-        hero_caption = record.get('heroCaption', f'Fachada de {record["name"]} — render ilustrativo del brochure')
-        hero = f'<img class="hero-image aj-hero" src="{esc(record["hero"])}" alt="{esc(hero_caption)}" fetchpriority="high" decoding="async">'
+        hero_caption = natural_caption(record.get('heroDisplayCaption', record.get('heroCaption', f'Fachada de {record["name"]} — render ilustrativo del brochure')))
+        hero_source = next((i for i in record['images'] if i['localPath'] == record['hero']), {})
+        provenance = f' data-commercial-stage="{esc(hero_source["originCommercialSlug"])}"' if namespace == 'ECASA' and hero_source.get('originCommercialSlug') else ''
+        hero = f'<img class="hero-image aj-hero" src="{esc(record["hero"])}" alt="{esc(hero_caption)}" fetchpriority="high" decoding="async"{provenance}>'
+        if namespace == 'ECASA' and hero_source.get('etapa') and len(record.get('commercialSourceSlugs', [])) > 1:
+            hero += '<span class="ecasa-media-label">' + esc(hero_source['etapa']) + ' · Imagen referencial</span>'
         original = re.search(r'<img class="hero-image"[^>]*>', page)
         if original:
             page = page[:original.start()] + public(original[0]) + preview(hero) + page[original.end():]
@@ -73,8 +78,10 @@ def augment_record(page, record, namespace, builder):
     for image in record['images']:
         if image.get('gallery') is False:
             continue
-        caption = f'{image["caption"]} · Brochure, pág. {image["sourcePage"]}'
-        images += f'<figure><a href="{esc(image["localPath"])}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar: {esc(image["caption"])}"><img src="{esc(image["localPath"])}" alt="{esc(image["caption"])}" width="{image["width"]}" height="{image["height"]}" loading="lazy" decoding="async"></a><figcaption>{esc(caption)}</figcaption></figure>'
+        caption = natural_caption(image.get('displayCaption', image['caption']))
+        provenance = f' data-commercial-stage="{esc(image["originCommercialSlug"])}"' if namespace == 'ECASA' and image.get('originCommercialSlug') else ''
+        stage = '<span class="ecasa-image-stage">' + esc(image['etapa']) + '</span>' if namespace == 'ECASA' and image.get('etapa') and len(record.get('commercialSourceSlugs', [])) > 1 else ''
+        images += f'<figure{provenance}><a href="{esc(image["localPath"])}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar: {esc(caption)}"><img src="{esc(image["localPath"])}" alt="{esc(caption)}" width="{image["width"]}" height="{image["height"]}" loading="lazy" decoding="async"></a><figcaption>{stage}{esc(caption)}</figcaption></figure>'
     images += '</div>'
     gallery = re.search(r'(<section id="galeria"[^>]*>)(.*?)(</section>)', page, re.S)
     old = gallery[2]
@@ -114,7 +121,8 @@ def augment_record(page, record, namespace, builder):
             accessible_name = name + (' · ' + stage if stage else '')
             orientation = model.get('orientacion') or 'Orientación no indicada'
             floor = ' · Pisos ' + str(model['pisos']) if model.get('pisos') else ''
-            content += f'<details class="aj-model" id="modelo-{esc(model["modelo"].lower())}"><summary><span>{esc(name)}<small>{esc(orientation + floor)}</small></span><span class="aj-total">{area(model["superficie_total_m2"])}<small>Total según brochure</small></span></summary><div class="aj-model-content">'
+            provenance = f' data-commercial-stage="{esc(model["originCommercialSlug"])}"' if namespace == 'ECASA' and model.get('originCommercialSlug') else ''
+            content += f'<details class="aj-model" id="modelo-{esc(model["modelo"].lower())}"{provenance}><summary><span>{esc(name)}<small>{esc(orientation + floor)}</small></span><span class="aj-total">{area(model["superficie_total_m2"])}<small>Total según brochure</small></span></summary><div class="aj-model-content">'
             typology_numbers = re.search(r'(\d+) dormitorio.*?(\d+) baño', typology)
             bedrooms = model.get('dormitorios', int(typology_numbers[1]) if typology_numbers else None)
             bathrooms = model.get('banos', int(typology_numbers[2]) if typology_numbers else None)
@@ -163,7 +171,11 @@ def augment_record(page, record, namespace, builder):
                     amenities.append({'label': label, 'pages': []})
                     seen.add(key(label))
             new = old[:old_list.start()] + old[old_list.end():]
-    new += '<div class="aj-equipment"><h3>Equipamiento documentado en el brochure</h3><p>Características del documento de referencia, sujetas a confirmación para la unidad y etapa que consultes.</p>' + documentary_list(amenities)
+    origin = record.get('document', {}).get('originCommercialSlug') or (record.get('sourceAssetSlugs') or [record['slug']])[0]
+    provenance = f' data-commercial-stage="{esc(origin)}"' if namespace == 'ECASA' else ''
+    phase_label = next((item.get('etapa') for item in amenities + record['finishes'] + record['features'] if item.get('etapa')), None)
+    phase_heading = ' · ' + esc(phase_label) if namespace == 'ECASA' and phase_label and len(record.get('commercialSourceSlugs', [])) > 1 else ''
+    new += '<div class="aj-equipment"' + provenance + '><h3>Equipamiento del proyecto' + phase_heading + '</h3><p>Características referenciales; confirma el equipamiento y las terminaciones de la etapa y unidad que consultes.</p>' + documentary_list(amenities)
     new += '<h3>Terminaciones y características</h3>' + documentary_list(record['finishes'] + record['features']) + '</div>'
     page = page[:equipment.start()] + equipment[1] + public(old) + preview(new) + equipment[3] + page[equipment.end():]
     # Documentary provenance stays in the immutable manifests. The shared

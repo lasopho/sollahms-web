@@ -89,11 +89,11 @@ with ThreadPoolExecutor(max_workers=2) as executor:
     results = list(executor.map(run, commands))
 node_results = [item for item in results if item['name'].startswith('node-')]
 node_counts = {key: sum(item['tests'][key] for item in node_results) for key in ['tests','pass','fail','skipped','cancelled']}
-assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 258, 'Executed case count changed; classify the change explicitly'
+assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 283, 'Executed case count changed; classify the change explicitly'
 assert node_counts['skipped'] == 0, 'Filtered release cases are not represented as successful or skipped test executions'
 python_result = next(item for item in results if item['name'] == 'python-synthetic-units')
-assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 87
-passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 258 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
+assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 99
+passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 283 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
 report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
           'node': node_counts, 'pythonFixtureTests': python_result['tests'],
           'releaseOnlyNotRun': release_cases, 'releaseOnlyNotRunCount': len(release_cases),
@@ -103,7 +103,7 @@ report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
 summary = '\n'.join([
     '## Sollahms — Git checkout regression',
     f"Node: {node_counts['pass']}/{node_counts['tests']}; Python synthetic fixtures: {python_result['tests']}; mortgage validator: " + str(results[-1]['exitCode']==0),
-    '143 projects / 22 Ecasa / 16 Ingevec; manual main + integration deployment gates; catalogue/privacy/security guards and incomplete-build rejection are checked.',
+    '136 projects / 15 Ecasa (22 commercial origins) / 16 Ingevec; manual main + integration deployment gates; catalogue/privacy/security guards and incomplete-build rejection are checked.',
     '23 named image/release cases require the private reproducible package and protected Preview. They were not run and are not marked passed.',
     'This job does not build a publishable site, import private derivatives, deploy, merge, or send forms.',
 ])+'\n'

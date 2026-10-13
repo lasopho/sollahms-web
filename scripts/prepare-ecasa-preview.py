@@ -18,6 +18,16 @@ import tarfile
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_FOLDERS = {'brochures-aj-urbana.json': 'aj-urbana-preview',
                     'brochures-ingevec.json': 'ingevec-preview', 'brochures-ecasa.json': 'ecasa-preview'}
+ECASA_PROJECTS = {'lomas-de-puyai', 'ferroparque', 'edificio-bezanilla', 'endemico',
+    'terratolten', 'wayra', 'enlace-mackenna', 'espacio-victoria', 'lamara',
+    'cumbres-de-penuelas', 'aires-la-florida-2', 'conecta-huechuraba',
+    'urban-la-florida', 'alto-san-joaquin', 'nucleo-costanera'}
+ECASA_PROJECT_BY_COMMERCIAL_SLUG = {slug: slug for slug in ECASA_PROJECTS if slug != 'terratolten'}
+ECASA_PROJECT_BY_COMMERCIAL_SLUG.update({
+    'terratolten-1': 'terratolten', 'terratolten-2': 'terratolten', 'terratolten-3': 'terratolten',
+    'lomas-de-puyai-3': 'lomas-de-puyai', 'ferroparque-2': 'ferroparque',
+    'alto-san-joaquin-2': 'alto-san-joaquin', 'alto-san-joaquin-3': 'alto-san-joaquin',
+    'nucleo-costanera-2': 'nucleo-costanera'})
 spec = importlib.util.spec_from_file_location('release_preparation', ROOT / 'scripts/prepare-release.py')
 release = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(release)
@@ -28,8 +38,13 @@ def make_reference(metadata, platform, files, commit):
                     metadata.get('contentProfile') == 'protected_ecasa_review', 'A protected Preview bundle is required')
     release.require(metadata.get('reviewCommit') == commit, 'Bundle review commit differs from current HEAD')
     release.require(metadata.get('branch') == 'codex/ecasa-cartera-definitiva', 'Unexpected protected Ecasa review branch')
-    release.require(metadata.get('catalogueProjects') == 143 and metadata.get('ecasaProjects') == 22,
+    release.require(metadata.get('catalogueProjects') == 136 and metadata.get('ecasaProjects') == 15 and
+                    metadata.get('ecasaCommercialEntries') == 22 and metadata.get('ecasaLegacyRoutes') == 8,
                     'Incorrect Ecasa catalogue composition')
+    tools = metadata.get('verificationTools', [])
+    release.require(isinstance(tools, list) and len(tools) == 3 and
+                    {tool.get('file') for tool in tools} == release.VERIFICATION_TOOLS,
+                    'The three private QA tools must be pinned in the review receipt')
     tracked_names = set(release.git(ROOT, 'ls-tree', '-rz', '--name-only', commit).decode().split('\0'))
     tracked = sum(name in tracked_names for name in files)
     return {'schemaVersion': 1, 'contentProfile': 'protected_ecasa_review',
@@ -40,10 +55,12 @@ def make_reference(metadata, platform, files, commit):
             'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
             'trackedSourceFiles': tracked, 'privateSourceFiles': len(files) - tracked,
             'privateMediaFolders': ['ingevec-preview', 'ecasa-preview'],
-            'catalogueProjects': 143, 'ecasaProjects': 22, 'ingevecProjects': 16,
-            'htmlPages': 150, 'selectedBrochureMedia': len(metadata['selectedBrochureMedia']),
+            'catalogueProjects': 136, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
+            'ecasaLegacyRoutes': 8, 'ingevecProjects': 16,
+            'htmlPages': 143, 'selectedBrochureMedia': len(metadata['selectedBrochureMedia']),
             'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
             'ecasaPublicWebRights': 'pending_contract_scope_verification',
+            'verificationTools': tools,
             'publicationAuthorized': False, 'integrationAuthorized': False}
 
 
@@ -69,8 +86,13 @@ def manifest_media(manifests):
     selected = {}
     for name, folder in MANIFEST_FOLDERS.items():
         for record in manifests[name]['projects']:
-            prefix = 'assets/propiedades/' + folder + '/' + record['slug'] + '/'
             for asset in [*record['images'], *(model['plan'] for model in record['models'])]:
+                origin = asset.get('originCommercialSlug') if folder == 'ecasa-preview' else record['slug']
+                if folder == 'ecasa-preview':
+                    release.require(origin in record.get('commercialSourceSlugs', []) and
+                                    ECASA_PROJECT_BY_COMMERCIAL_SLUG.get(origin) == record['slug'],
+                                    'Selected media belongs to another project directory')
+                prefix = 'assets/propiedades/' + folder + '/' + str(origin) + '/'
                 path = asset['localPath'].lstrip('/')
                 release.require(path.startswith(prefix) and path.count('/') == prefix.count('/'),
                                 'Selected media belongs to another project directory')
@@ -100,6 +122,7 @@ def main():
     reference = make_reference(metadata, platform, files, commit)
     release.verify_git_reference(ROOT, files, reference)
     release.verify_worktree(ROOT, files, reference)
+    release.verify_verification_tools(ROOT, reference)
     # No original documents or credentials are needed to restore the selected
     # media. Manifest hashes are checked again by the staged local builds.
     selected_inventory = {item['path'].lstrip('/'): item['sha256'] for item in metadata['selectedBrochureMedia']}

@@ -14,9 +14,11 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
     def setUp(self):
         self.commit = '1' * 40
         self.metadata = {'target': 'preview', 'contentProfile': 'protected_ecasa_review',
-            'reviewCommit': self.commit, 'catalogueProjects': 143, 'ecasaProjects': 22,
+            'reviewCommit': self.commit, 'catalogueProjects': 136, 'ecasaProjects': 15,
+            'ecasaCommercialEntries': 22, 'ecasaLegacyRoutes': 8,
             'branch': 'codex/ecasa-cartera-definitiva', 'archive': {'sha256': 'a' * 64, 'size': 100},
             'sourceFileCount': 2, 'sourceBytes': 200, 'selectedBrochureMedia': [],
+            'verificationTools': [{'file': name, 'sha256': 'c' * 64, 'size': 12} for name in sorted(preview.release.VERIFICATION_TOOLS)],
             'chunks': [{'file': '.vercel/source.tgz.part1', 'sha': 'b' * 40, 'size': 100}]}
         self.platform = {'projectId': 'prj_fixture', 'teamId': 'team_fixture', 'teamSlug': 'fixture',
                          'projectName': 'fixture-project', 'productionOrigin': 'https://sollahms.cl'}
@@ -35,10 +37,18 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
         self.assertFalse(reference['publicationAuthorized'])
         self.assertFalse(reference['integrationAuthorized'])
         self.assertEqual(reference['ecasaPublicWebRights'], 'pending_contract_scope_verification')
+        self.assertEqual(reference['verificationTools'], self.metadata['verificationTools'])
+
+    def test_missing_or_unrelated_private_qa_selection_is_rejected(self):
+        for tools in [[], self.metadata['verificationTools'][:-1],
+                      [*self.metadata['verificationTools'][:-1], {'file': 'tests/unrelated.mjs', 'sha256': 'c' * 64, 'size': 12}]]:
+            with self.subTest(tools=tools), self.assertRaisesRegex(ValueError, 'three private QA'):
+                self.reference(dict(self.metadata, verificationTools=tools))
 
     def test_production_target_wrong_commit_and_wrong_identity_count_are_rejected(self):
         for key, value in [('target', 'production'), ('reviewCommit', '2' * 40),
-                           ('catalogueProjects', 144), ('ecasaProjects', 23), ('contentProfile', 'public_web_parity')]:
+                           ('catalogueProjects', 143), ('ecasaProjects', 22), ('ecasaCommercialEntries', 21),
+                           ('ecasaLegacyRoutes', 7), ('contentProfile', 'public_web_parity')]:
             with self.subTest(key=key), self.assertRaises(ValueError):
                 self.reference(dict(self.metadata, **{key: value}))
 
@@ -56,7 +66,7 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
 
     def test_derivative_selection_cannot_cross_stage_directories_or_duplicate_paths(self):
         manifests = {name: {'projects': []} for name in preview.MANIFEST_FOLDERS}
-        record = {'slug': 'ferroparque', 'images': [{'localPath': '/assets/propiedades/ecasa-preview/ferroparque/cover.webp', 'sha256': 'a' * 64}], 'models': []}
+        record = {'slug': 'ferroparque', 'commercialSourceSlugs': ['ferroparque'], 'images': [{'localPath': '/assets/propiedades/ecasa-preview/ferroparque/cover.webp', 'sha256': 'a' * 64, 'originCommercialSlug': 'ferroparque'}], 'models': []}
         manifests['brochures-ecasa.json']['projects'].append(record)
         self.assertEqual(len(preview.manifest_media(manifests)), 1)
         record['images'].append(dict(record['images'][0]))
@@ -64,6 +74,17 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
             preview.manifest_media(manifests)
         record['images'].pop()
         record['images'][0]['localPath'] = '/assets/propiedades/ecasa-preview/ferroparque-2/cover.webp'
+        with self.assertRaisesRegex(ValueError, 'another project'):
+            preview.manifest_media(manifests)
+
+    def test_terratolten_keeps_the_reviewed_stage_one_asset_namespace(self):
+        manifests = {name: {'projects': []} for name in preview.MANIFEST_FOLDERS}
+        path = '/assets/propiedades/ecasa-preview/terratolten-1/cover.webp'
+        record = {'slug': 'terratolten', 'commercialSourceSlugs': ['terratolten-1', 'terratolten-2', 'terratolten-3'],
+                  'images': [{'localPath': path, 'sha256': 'a' * 64, 'originCommercialSlug': 'terratolten-1'}], 'models': []}
+        manifests['brochures-ecasa.json']['projects'].append(record)
+        self.assertEqual(preview.manifest_media(manifests), {path.lstrip('/'): 'a' * 64})
+        record['images'][0]['originCommercialSlug'] = 'ferroparque'
         with self.assertRaisesRegex(ValueError, 'another project'):
             preview.manifest_media(manifests)
 

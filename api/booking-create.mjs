@@ -1,5 +1,5 @@
 import { callBookingBackend, hasOnlyKeys, isSlotUnavailable, json, readJson, validatePerson, validateSlot } from '../lib/booking-server.mjs';
-import { projects } from '../lib/project-context.mjs';
+import { projects, projectAliases, projectStages } from '../lib/project-context.mjs';
 
 export default {
   async fetch(request) {
@@ -12,7 +12,15 @@ export default {
     if (!hasOnlyKeys(body, acceptedKeys) || typeof body.website !== 'string' || body.website.length > 200) {
       return json({ ok: false, error: 'Revisa los datos de la reserva.' }, 400);
     }
-    if (hasProject && (typeof body.proyecto !== 'string' || !Object.hasOwn(projects, body.proyecto))) {
+    const project = typeof body.proyecto === 'string' && Object.hasOwn(projects, body.proyecto)
+      ? projects[body.proyecto]
+      : typeof body.proyecto === 'string' && Object.hasOwn(projectAliases, body.proyecto)
+        && Object.hasOwn(projectStages, body.proyecto)
+        && projectAliases[body.proyecto].slug === projectStages[body.proyecto].slug
+        && projectStages[body.proyecto].stageSlug === body.proyecto
+        && Object.hasOwn(projects, projectStages[body.proyecto].slug)
+        ? projectStages[body.proyecto] : null;
+    if (hasProject && !project) {
       return json({ ok: false, error: 'Revisa el proyecto de la reserva.' }, 400);
     }
     const slot = validateSlot(body.date, body.time);
@@ -23,7 +31,7 @@ export default {
     }
     if (body.website.trim()) return json({ ok: true, booked: true });
 
-    const projectContext = hasProject ? { proyecto: body.proyecto, nombreProyecto: projects[body.proyecto].name } : {};
+    const projectContext = hasProject ? { proyecto: body.proyecto, nombreProyecto: project.name } : {};
     const result = await callBookingBackend({ action: 'book', ...slot, ...person, ...projectContext });
     if (!result) return json({ ok: false, error: 'No pudimos completar la reserva. Inténtalo más tarde.' }, 502);
     if (isSlotUnavailable(result)) return json({ ok: false, code: 'slot_unavailable' }, 409);

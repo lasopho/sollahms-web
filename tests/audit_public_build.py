@@ -22,11 +22,17 @@ REMOVED = {'brasil', 'vespucio-capital', 'edificio-serrano-capital',
     'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz',
     'bosquemar', 'altos-del-wayra', 'robles-del-aconcagua', 'el-real', 'edificio-ha-strip-center'}
 ECASA = {'lomas-de-puyai', 'ferroparque', 'edificio-bezanilla', 'endemico',
-    'terratolten-1', 'wayra', 'alto-san-joaquin-3', 'enlace-mackenna',
-    'ferroparque-2', 'espacio-victoria', 'lamara', 'terratolten-3',
-    'lomas-de-puyai-3', 'cumbres-de-penuelas', 'aires-la-florida-2',
+    'terratolten', 'wayra', 'enlace-mackenna',
+    'espacio-victoria', 'lamara', 'cumbres-de-penuelas', 'aires-la-florida-2',
     'conecta-huechuraba', 'urban-la-florida', 'alto-san-joaquin',
-    'alto-san-joaquin-2', 'nucleo-costanera', 'terratolten-2', 'nucleo-costanera-2'}
+    'nucleo-costanera'}
+LEGACY_TARGETS = {'nucleo-costanera-2': ('nucleo-costanera', 2),
+    'ferroparque-2': ('ferroparque', 2), 'terratolten-1': ('terratolten', 1),
+    'terratolten-2': ('terratolten', 2), 'terratolten-3': ('terratolten', 3),
+    'lomas-de-puyai-3': ('lomas-de-puyai', 3),
+    'alto-san-joaquin-2': ('alto-san-joaquin', 2), 'alto-san-joaquin-3': ('alto-san-joaquin', 3)}
+COMMERCIAL_PROJECTS = {slug: slug for slug in ECASA if slug != 'terratolten'}
+COMMERCIAL_PROJECTS.update({slug: target for slug, (target, stage) in LEGACY_TARGETS.items()})
 PAGES = {'404.html', 'agenda-asesoria.html', 'comparador-hipotecario.html',
     'contacto.html', 'index.html', 'privacidad.html', 'proyectos.html'}
 PUBLIC_DATA = {'data/proyectos.json', 'data/hipotecario.json'}
@@ -83,27 +89,81 @@ def selected_ecasa_html(text, included):
     return re.sub(r'<!--ECASA_' + keep + r'_(?:START|END)-->', '', text)
 
 
+def apply_copy_rules(text, rules):
+    # JavaScript's word boundaries use ASCII word characters. Keep Unicode
+    # whitespace/case matching while reproducing that boundary explicitly.
+    boundary = r'(?:(?<![A-Za-z0-9_])(?=[A-Za-z0-9_])|(?<=[A-Za-z0-9_])(?![A-Za-z0-9_]))'
+    for rule in rules:
+        pattern = rule['pattern'].replace(r'\b', boundary)
+        text = re.sub(pattern, lambda match: rule['replacement'], text, flags=re.I)
+    return text
+
+
+def natural_caption(text, policy):
+    return re.sub(r'\s{2,}', ' ', apply_copy_rules(str(text), policy['captionRules'])).strip()
+
+
+def normalize_fiche_copy(text, policy):
+    if policy is None:
+        return text
+    if re.search(r'\bid=[\"\']informacion-inmobiliaria-material-grafico[\"\']', text, re.I):
+        return text
+    body = re.search(r'<body\b[^>]*>', text, re.I)
+    if not body:
+        return text
+    prefix = text[:body.end()]
+    prefix = re.sub(r'(<meta\b[^>]*property="og:image:alt"[^>]*content=")([^"]*)(")',
+                    lambda match: match[1] + natural_caption(match[2], policy) + match[3], prefix, flags=re.I)
+    tokens = re.split(r'(<(?:[^>"\']|"[^"]*"|\'[^\']*\')+>)', text[body.end():])
+    protected_tag, caption_depth = None, 0
+    for index, token in enumerate(tokens):
+        if token.startswith('<'):
+            start = re.match(r'<(script|style)\b', token, re.I)
+            if start:
+                protected_tag = start[1].lower()
+            elif protected_tag and re.match(r'</' + protected_tag + r'\b', token, re.I):
+                protected_tag = None
+            elif not protected_tag:
+                if re.match(r'<figcaption\b', token, re.I):
+                    caption_depth += 1
+                if re.match(r'</figcaption\b', token, re.I):
+                    caption_depth -= 1
+                tokens[index] = re.sub(r'\b(alt|aria-label|data-embed-title)=(["\'])(.*?)(\2)',
+                    lambda match: match[1] + '=' + match[2] + natural_caption(match[3], policy) + match[4], token, flags=re.I)
+        elif not protected_tag:
+            tokens[index] = natural_caption(token, policy) if caption_depth > 0 else apply_copy_rules(token, policy['textRules'])
+    return prefix + ''.join(tokens)
+
+
 def audit(source, public, preview, protected_review=False):
     errors, warnings = [], []
     counts = {'projects': 0, 'ingevec': 0, 'ecasa': 0, 'pages': 0, 'localReferences': 0,
               'brochureImages': 0, 'brochurePlans': 0, 'brochureMedia': 0,
               'brochureCovers': 0, 'canonicalFiches': 0, 'sitemapUrls': 0,
-              'ecasaImages': 0, 'ecasaPlans': 0, 'ecasaMedia': 0, 'ecasaCovers': 0}
+              'ecasaImages': 0, 'ecasaPlans': 0, 'ecasaMedia': 0, 'ecasaCovers': 0,
+              'ecasaCommercialSources': 0, 'legacyRoutes': 0, 'permanentRouteRules': 0}
 
     def require(condition, issue):
         if not condition:
             errors.append(issue)
+
+    policy_path = source / 'data/public-caption-policy.json'
+    caption_policy = json.loads(policy_path.read_text()) if policy_path.exists() else None
+    if caption_policy is not None:
+        require(caption_policy.get('schemaVersion') == 1 and
+                (source / 'scripts/public-fiche-copy.mjs').is_file(), 'The reviewed display-copy policy or its consumer is missing')
 
     catalogue = json.loads((public / 'data/proyectos.json').read_text())
     slugs = {p['slug'] for p in catalogue}
     counts['projects'] = len(catalogue)
     counts['ingevec'] = sum(p['inmobiliaria'] == 'Ingevec' for p in catalogue)
     counts['ecasa'] = sum(p['inmobiliaria'].lower() == 'ecasa' for p in catalogue)
-    require(len(catalogue) == len(slugs) == 143, 'Catalogue must contain exactly 143 distinct projects')
+    require(len(catalogue) == len(slugs) == 136, 'Catalogue must contain exactly 136 distinct projects')
     require({p['slug'] for p in catalogue if p['inmobiliaria'] == 'Ingevec'} == INGEVEC,
             'The sixteen approved Ingevec identities must remain exact')
     require({p['slug'] for p in catalogue if p['inmobiliaria'].lower() == 'ecasa'} == ECASA,
-            'The 22 approved Ecasa identities must remain exact')
+            'The 15 approved Ecasa developments must remain exact')
+    require(not LEGACY_TARGETS.keys() & slugs, 'A commercial stage remains a duplicate public project')
     require(not REMOVED & slugs, 'A retired project re-entered the catalogue')
     expected_pages = PAGES | {slug + '.html' for slug in slugs}
     files = {str(p.relative_to(public)) for p in public.rglob('*') if p.is_file()}
@@ -120,6 +180,28 @@ def audit(source, public, preview, protected_review=False):
             'Only catalogue and public mortgage reference data may be static JSON routes')
 
     documents = {page: Document((public / page).read_text()) for page in expected_pages if page in files}
+    expected_redirects = {'/' + slug + suffix: '/' + target + '.html#etapa-' + str(stage)
+                          for slug, (target, stage) in LEGACY_TARGETS.items() for suffix in ['', '.html']}
+    route_rules = {}
+    redirects = json.loads((source / 'vercel.json').read_text()).get('redirects', [])
+    require(len(redirects) == 16, 'Only the sixteen authorized legacy path rules may change routing')
+    for rule in redirects:
+        old_path = rule.get('source')
+        if old_path not in expected_redirects:
+            require(False, 'Unrelated public route redirect: ' + str(old_path))
+            continue
+        require(old_path not in route_rules, 'Duplicate legacy redirect: ' + old_path)
+        require(not rule.get('has') and not rule.get('missing'), 'Conditional legacy route redirect: ' + old_path)
+        require((rule.get('permanent') is True and 'statusCode' not in rule) or ('permanent' not in rule and rule.get('statusCode') in {301, 308}), 'Legacy redirect is not unambiguously permanent: ' + old_path)
+        require(rule.get('destination') == expected_redirects[old_path], 'Wrong development, stage or loop in legacy redirect: ' + old_path)
+        route_rules[old_path] = rule.get('destination')
+    require(route_rules == expected_redirects, 'All eight legacy routes require exact bare and .html redirects')
+    counts['legacyRoutes'] = len(LEGACY_TARGETS)
+    counts['permanentRouteRules'] = len(route_rules)
+    for legacy, (target, stage) in LEGACY_TARGETS.items():
+        require(legacy + '.html' not in files, 'Duplicate HTML fiche for a redirected commercial stage: ' + legacy)
+        require('etapa-' + str(stage) in documents.get(target + '.html', Document('')).ids,
+                'Legacy redirect anchor is missing from its public development: ' + legacy)
     counts['pages'] = len(documents)
     missing_social = []
     for project in catalogue:
@@ -201,7 +283,7 @@ def audit(source, public, preview, protected_review=False):
 
     urls = [node.text for node in ET.parse(public / 'sitemap.xml').iter() if node.tag.endswith('}loc')]
     sitemap_expected = {'https://sollahms.cl/' + p for p in expected_pages - {'404.html', 'index.html'}} | {'https://sollahms.cl/'}
-    require(set(urls) == sitemap_expected and len(urls) == len(set(urls)) == 149, 'Sitemap does not match the 149 indexable public pages')
+    require(set(urls) == sitemap_expected and len(urls) == len(set(urls)) == 142, 'Sitemap does not match the 142 indexable public pages')
     counts['sitemapUrls'] = len(urls)
     robots = (public / 'robots.txt').read_text()
     require('Allow: /' in robots and 'Disallow: /' not in robots and 'Sitemap: https://sollahms.cl/sitemap.xml' in robots,
@@ -218,13 +300,19 @@ def audit(source, public, preview, protected_review=False):
     require(ecasa_rights.get('contractScope', {}).get('status') == expected_scope,
             'Ecasa contractual scope does not match the requested audit profile')
     ecasa_records = ecasa_review['projects']
-    require(len(ecasa_records) == 22 and {record['slug'] for record in ecasa_records} == ECASA,
-            'Ecasa documentary inventory must contain the 22 authorized entries')
+    require(ecasa_review.get('schemaVersion') == 2 and len(ecasa_records) == 15 and {record['slug'] for record in ecasa_records} == ECASA,
+            'Ecasa documentary inventory must contain the 15 authorized developments')
+    commercial_sources = ecasa_review.get('commercialSources', [])
+    counts['ecasaCommercialSources'] = len(commercial_sources)
+    require(len(commercial_sources) == 22 and {record['slug']: record['projectSlug'] for record in commercial_sources} == COMMERCIAL_PROJECTS,
+            'The 22 internal Ecasa commercial sources must retain their exact development binding')
     preview_files = {str(p.relative_to(preview)) for p in preview.rglob('*') if p.is_file()}
     preview_catalogue = json.loads((preview / 'data/proyectos.json').read_text())
     preview_by_slug = {p['slug']: p for p in preview_catalogue}
     ecasa_chosen = set()
     for record in ecasa_records:
+        require(len(record.get('commercialSourceSlugs', [])) == len(set(record.get('commercialSourceSlugs', []))) and set(record.get('commercialSourceSlugs', [])) == {slug for slug, matrix in COMMERCIAL_PROJECTS.items() if matrix == record['slug']},
+                'Ecasa development lost or acquired an unrelated commercial stage: ' + record['slug'])
         page = record['slug'] + '.html'
         target = preview if protected_review else public
         target_files = preview_files if protected_review else files
@@ -240,7 +328,10 @@ def audit(source, public, preview, protected_review=False):
         counts['ecasaPlans'] += len(record['models'])
         for asset in [*record['images'], *(model['plan'] for model in record['models'])]:
             path = asset['localPath'].lstrip('/')
-            prefix = 'assets/propiedades/ecasa-preview/' + record['slug'] + '/'
+            origin = asset.get('originCommercialSlug')
+            require(origin in record.get('commercialSourceSlugs', []) and COMMERCIAL_PROJECTS.get(origin) == record['slug'],
+                    'Ecasa resource belongs to an unrelated commercial stage: ' + path)
+            prefix = 'assets/propiedades/ecasa-preview/' + str(origin) + '/'
             require(path.startswith(prefix) and path.count('/') == prefix.count('/'),
                     'Ecasa resource belongs to another entry: ' + path)
             require(path not in ecasa_chosen and path not in chosen, 'Duplicate selected Ecasa resource: ' + path)
@@ -251,6 +342,15 @@ def audit(source, public, preview, protected_review=False):
                 require(not (target / path).is_symlink(), 'Symbolic Ecasa resource: ' + path)
             require(asset['localPath'] in html, 'Selected Ecasa resource absent from its fiche: ' + path)
     counts['ecasaMedia'] = len(ecasa_chosen)
+    for commercial in commercial_sources:
+        matrix = next((record for record in ecasa_records if record['slug'] == commercial['projectSlug']), None)
+        if matrix is None:
+            continue
+        expected_images = {asset['localPath'] for asset in matrix['images'] if asset.get('originCommercialSlug') == commercial['slug']}
+        expected_plans = {model['plan']['localPath'] for model in matrix['models'] if model['plan'].get('originCommercialSlug') == commercial['slug']}
+        require(set(commercial.get('selectedImagePaths', [])) == expected_images and
+                set(commercial.get('selectedPlanPaths', [])) == expected_plans,
+                'Consolidated Ecasa matrix lost or transferred a selected commercial resource: ' + commercial['slug'])
     actual_ecasa_preview = {f for f in preview_files if f.startswith('assets/propiedades/ecasa-preview/')}
     require(actual_ecasa_preview == ecasa_chosen, 'Unselected candidate or omitted Ecasa resource in protected Preview')
     actual_ecasa_public = {f for f in files if f.startswith('assets/propiedades/ecasa-preview/')}
@@ -265,9 +365,18 @@ def audit(source, public, preview, protected_review=False):
             cover = record.get('catalogueCover')
             if cover and record['slug'] in expected_by_slug:
                 expected_by_slug[record['slug']]['imagenPrincipal'] = cover['localPath']
-                expected_by_slug[record['slug']]['imagenAlt'] = cover['alt']
+                display_alt = cover.get('displayAlt', cover['alt'])
+                expected_by_slug[record['slug']]['imagenAlt'] = natural_caption(display_alt, caption_policy) if caption_policy else display_alt
+                image = next((asset for asset in record['images'] if asset['localPath'] == cover['localPath']), None)
+                if image and image.get('etapa') and len(record['commercialSourceSlugs']) > 1:
+                    require(record['slug'] == 'terratolten' and image['etapa'] == 'Etapa 1',
+                            'The reviewed catalogue cover acquired an unaccredited stage: ' + record['slug'])
+                    expected_by_slug[record['slug']]['imagenEtapa'] = image['etapa']
     require(preview_catalogue == expected_preview_catalogue, 'Ecasa Preview changed commercial data beyond reviewed covers')
     preview_documents = {page: Document((preview / page).read_text()) for page in expected_pages & preview_files}
+    for legacy, (target, stage) in LEGACY_TARGETS.items():
+        require('etapa-' + str(stage) in preview_documents.get(target + '.html', Document('')).ids,
+                'Legacy redirect anchor is missing from its protected development: ' + legacy)
     for page, doc in preview_documents.items():
         for ref in doc.refs:
             url = urllib.parse.urlsplit(ref)
@@ -291,8 +400,8 @@ def audit(source, public, preview, protected_review=False):
             require('<meta name="robots" content="noindex, nofollow">' in text, 'Preview page missing noindex: ' + path)
             if protected_review and path.removesuffix('.html') in ECASA:
                 original = (source / path).read_text()
-                require(normalized_preview(text) == selected_ecasa_html(original, True), 'Ecasa Preview differs from selected source: ' + path)
-                require((public / path).read_text() == selected_ecasa_html(original, False), 'Ecasa public fallback differs from selected source: ' + path)
+                require(normalized_preview(text) == normalize_fiche_copy(selected_ecasa_html(original, True), caption_policy), 'Ecasa Preview differs from selected source and reviewed display policy: ' + path)
+                require((public / path).read_text() == normalize_fiche_copy(selected_ecasa_html(original, False), caption_policy), 'Ecasa public fallback differs from selected source and reviewed display policy: ' + path)
             else:
                 require(normalized_preview(text) == (public / path).read_text(), 'Preview/public commercial content differs: ' + path)
         elif protected_review and path == 'data/proyectos.json':
@@ -306,6 +415,7 @@ def audit(source, public, preview, protected_review=False):
                 (['documented Ecasa brochure blocks, covers and selected derivatives'] if protected_review else []),
             'ecasaPublicWebParityVerified': not protected_review and not errors,
             'productionDeploymentAuthorized': False,
+            'displayCopyPolicySha256': digest(policy_path) if caption_policy is not None else None,
             'providerAvailabilityVerified': False}
 
 

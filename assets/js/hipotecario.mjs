@@ -3,6 +3,7 @@ import { validateDataset, getUfStatus, getOfferStatus, compareOffers, sortCompar
 import { verifiedProjectPrice, verifiedProjectLocation } from './project-finance.mjs';
 import { consumeMortgageHandoff } from './mortgage-handoff.mjs';
 import { loadOfficialUf, UF_CLIENT_REFRESH_MS } from './official-uf.mjs';
+import { resolveProjectIdentity } from './project-identity.mjs';
 
 const $ = id => document.getElementById(id);
 const number = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 });
@@ -33,6 +34,7 @@ let propertyValueOrigin = 'visitor';
 let projectLoading = false;
 const query = new URLSearchParams(window.location.search);
 const requestedSlug = query.getAll('proyecto').length === 1 && /^[a-z0-9][a-z0-9-]{0,99}$/.test(query.get('proyecto')) ? query.get('proyecto') : null;
+const requestedEtapa = query.getAll('etapa').length > 1 ? '' : query.get('etapa');
 const handoff = consumeMortgageHandoff(requestedSlug);
 
 function projectAllowsOffer(offer) {
@@ -60,7 +62,7 @@ function renderProjectContext() {
     : projectLocation === 'other'
       ? 'La ubicación oficial del proyecto está fuera del escenario CMF de Santiago. Puedes simular con una tasa proporcionada por ti.'
       : 'El alcance geográfico de las referencias CMF no está confirmado para este proyecto. Puedes simular con una tasa proporcionada por ti.';
-  document.querySelectorAll('[data-project-agenda]').forEach(link => { link.href = '/agenda-asesoria.html?proyecto=' + encodeURIComponent(project.slug); });
+  document.querySelectorAll('[data-project-agenda]').forEach(link => { link.href = '/agenda-asesoria.html' + project.contextQuery; });
   const currentPrice = verifiedProjectPrice(project, new Date());
   if (propertyValueOrigin === 'catalogue' && !currentPrice) {
     $('property').value = '';
@@ -101,9 +103,8 @@ async function loadProject() {
     const response = await fetch('/data/proyectos.json', { cache: 'no-store', signal: AbortSignal.timeout(10000) });
     if (!response.ok) throw new Error('Project catalogue unavailable');
     const catalogue = await response.json();
-    const candidate = Array.isArray(catalogue) && catalogue.find(item => item?.slug === requestedSlug);
-    if (!candidate || typeof candidate.nombre !== 'string' || !candidate.nombre.trim()
-      || candidate.nombre.length > 200 || candidate.detalleUrl !== '/' + requestedSlug + '.html') throw new Error('Invalid project');
+    const candidate = resolveProjectIdentity(catalogue, requestedSlug, requestedEtapa);
+    if (!candidate) throw new Error('Invalid project');
     project = candidate;
     projectPrice = verifiedProjectPrice(project, new Date());
     if (projectPrice) {
@@ -470,7 +471,7 @@ $('lead-form').addEventListener('submit', async event => {
   try {
     const response = await fetch('/api/contact', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre: $('nombre').value, correo: $('correo').value, telefono: phone, mensaje: $('comentario').value.trim() || 'Solicitud de asesoría hipotecaria.', website: $('website').value, mortgage, consent: $('consent').checked, startedAt, ...(project ? { proyecto: project.slug } : {}) }),
+      body: JSON.stringify({ nombre: $('nombre').value, correo: $('correo').value, telefono: phone, mensaje: $('comentario').value.trim() || 'Solicitud de asesoría hipotecaria.', website: $('website').value, mortgage, consent: $('consent').checked, startedAt, ...(project ? { proyecto: project.bodyProjectSlug } : {}) }),
       signal: AbortSignal.timeout(15000),
     });
     const body = await response.json();

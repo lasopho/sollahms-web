@@ -61,7 +61,7 @@ class MapCleanup(unittest.TestCase):
             self.assertEqual(current, expected_cleanup_file(path), path)
             restore_automatic_file(path, current)
             changed += current != baseline_bytes(path)
-        self.assertEqual((len(PROJECTS), changed, 121 - changed), (143, 116, 5))
+        self.assertEqual((len(PROJECTS), changed, 121 - changed), (136, 116, 5))
 
     def test_116_non_ecasa_maps_81_tours_and_all_images_actions_remain_exact(self):
         maps = tours = plans = 0

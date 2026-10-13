@@ -6,31 +6,53 @@ import { dirname, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
-import { ecasaPublication, validateEcasaReview, ECASA_SLUGS, ecasaAssetDigest } from '../scripts/ecasa-publication.mjs';
+import { ecasaPublication, validateEcasaReview, ECASA_SLUGS, ECASA_COMMERCIAL_SLUGS,
+  ECASA_PROJECT_BY_COMMERCIAL_SLUG, ecasaAssetDigest } from '../scripts/ecasa-publication.mjs';
 
 const H1 = '1'.repeat(64), H2 = '2'.repeat(64), H3 = '3'.repeat(64);
 function fixture() {
-  const record = slug => ({ slug, nombre: slug, images: [], models: [], documents: [] });
-  const review = { publicationRights: { sourceChannel: 'Ecasa/user_supplied',
+  const stage = slug => /-(1|2|3)$/.test(slug) ? 'Etapa ' + slug.at(-1) : null;
+  const sources = ECASA_COMMERCIAL_SLUGS.map(slug => ({ slug, name: slug,
+    projectSlug: ECASA_PROJECT_BY_COMMERCIAL_SLUG[slug], etapa: stage(slug),
+    documents: [], stageScope: 'named_development_only', selectedImagePaths: [], selectedPlanPaths: [] }));
+  const record = slug => ({ slug, name: slug, images: [], models: [], documents: [],
+    stageScope: 'named_development_only',
+    commercialSourceSlugs: sources.filter(source => source.projectSlug === slug).map(source => source.slug),
+    sourceAssetSlugs: [] });
+  const review = { schemaVersion: 2, publicationRights: { sourceChannel: 'Ecasa/user_supplied',
     protectedPreview: 'authorized_by_user', productionPolicy: 'requires_verified_contract_scope',
-    contractScope: { status: 'pending_contract_scope_verification' } }, projects: ECASA_SLUGS.map(record) };
+    contractScope: { status: 'pending_contract_scope_verification' } },
+    projects: ECASA_SLUGS.map(record), commercialSources: sources };
   const r = review.projects.find(r=>r.slug==='edificio-bezanilla');
+  const source = sources.find(source=>source.slug===r.slug);
   const document = { fileName: 'Bezanilla.pdf', sha256: H1, pageCount: 4, sourceChannel: 'Ecasa/user_supplied', assetScope: 'named_development' };
   r.document = document; r.documents = [document];
+  source.documents = [document];
   const image = { localPath: '/assets/propiedades/ecasa-preview/edificio-bezanilla/photo.webp',
     sourceSha256: H1, sourcePage: 1, sha256: H2, width: 1600, height: 900, privacySafe: true,
-    visuallyVerified: true, assetScope: 'named_development', sourceChannel: 'Ecasa/user_supplied' };
-  r.images = [image]; r.catalogueCover = { localPath: image.localPath, alt: 'Render ilustrativo' };
-  r.models = [{ modelo: '2d-p2', pagina_brochure: 2, sourceSha256: H1,
+    visuallyVerified: true, assetScope: 'named_development', sourceChannel: 'Ecasa/user_supplied',
+    originCommercialSlug: r.slug, etapa: null, kind: 'render', caption: 'Imagen según brochure',
+    displayCaption: 'Imagen referencial' };
+  r.images = Array.from({length:56},(_,i)=>({...image,
+    localPath:'/assets/propiedades/ecasa-preview/edificio-bezanilla/photo-'+i+'.webp'}));
+  r.catalogueCover = { localPath: r.images[0].localPath, alt: 'Render ilustrativo' };
+  const model = { modelo: '2d-p2', pagina_brochure: 2, sourceSha256: H1,
     superficie_util_m2: 45, terraza_m2: 5, superficie_total_m2: 50, dormitorios: 2, banos: 1,
     visuallyVerified: true, approximate: true, orientacion: null, pisos: null,
-    plan: { ...image, localPath: '/assets/propiedades/ecasa-preview/edificio-bezanilla/plan.webp', sha256: H3, sourcePage: 2 } }];
+    originCommercialSlug: r.slug, etapa: null, stageScope: 'named_development_only',
+    plan: { ...image, kind: 'plan', caption: 'Plano referencial', displayCaption: 'Plano referencial',
+      localPath: '/assets/propiedades/ecasa-preview/edificio-bezanilla/plan.webp', sha256: H3, sourcePage: 2 } };
+  r.models = Array.from({length:74},(_,i)=>({...model,modelo:model.modelo+'-'+i,
+    plan:{...model.plan,localPath:'/assets/propiedades/ecasa-preview/edificio-bezanilla/plan-'+i+'.webp'}}));
+  source.selectedImagePaths=r.images.map(image=>image.localPath);
+  source.selectedPlanPaths=r.models.map(model=>model.plan.localPath);
+  r.sourceAssetSlugs=[r.slug];
   return review;
 }
 
 test('Ecasa grants protected review independently while its promotional web scope stays pending', () => {
   assert.deepEqual(ecasaPublication(fixture()), { protectedReview: true, publicWeb: false });
-  assert.equal(validateEcasaReview(fixture()).length, 2);
+  assert.equal(validateEcasaReview(fixture()).length, 130);
   const actual = JSON.parse(readFileSync(new URL('../data/brochures-ecasa.json', import.meta.url)));
   assert.deepEqual(ecasaPublication(actual), { protectedReview: true, publicWeb: false });
 });
@@ -46,19 +68,85 @@ test('another developer contract, Yapo attestation and an invented Ecasa web ver
 });
 
 test('review rejects missing identities, duplicate projects and cross-project selected paths', () => {
-  const missing=fixture(); missing.projects.pop(); assert.throws(()=>validateEcasaReview(missing), /22 authorized identities/);
-  const duplicate=fixture(); duplicate.projects[0]=duplicate.projects[1]; assert.throws(()=>validateEcasaReview(duplicate), /22 authorized identities/);
+  const missing=fixture(); missing.projects.pop(); assert.throws(()=>validateEcasaReview(missing), /15 project identities/);
+  const duplicate=fixture(); duplicate.projects[0]=duplicate.projects[1]; assert.throws(()=>validateEcasaReview(duplicate), /15 project identities/);
   const crossed=fixture(); crossed.projects.find(r=>r.slug==='edificio-bezanilla').images[0].localPath='/assets/propiedades/ecasa-preview/ferroparque/photo.webp';
   assert.throws(()=>validateEcasaReview(crossed), /invalid selected path/);
 });
 
 test('a duplicated parent PDF cannot authorize plans or photographs for an undocumented numbered stage', () => {
   for (const slug of ['alto-san-joaquin-2','alto-san-joaquin-3','nucleo-costanera-2','lomas-de-puyai-3','terratolten-2']) {
-    const review=fixture(), stage=review.projects.find(r=>r.slug===slug), original=review.projects.find(r=>r.slug==='edificio-bezanilla');
+    const review=fixture(), stage=review.commercialSources.find(r=>r.slug===slug), original=review.projects.find(r=>r.slug==='edificio-bezanilla');
     stage.documents=structuredClone(original.documents);
-    stage.images=[{...original.images[0],localPath:'/assets/propiedades/ecasa-preview/'+slug+'/photo.webp'}];
+    stage.selectedImagePaths=['/assets/propiedades/ecasa-preview/'+slug+'/photo.webp'];
     assert.throws(()=>validateEcasaReview(review), /stage-specific evidence remains pending/);
   }
+});
+
+test('consolidation retains 22 exact origins and cannot declare a numbered stage common to the parent', () => {
+  const missing=fixture(); missing.commercialSources.pop();
+  assert.throws(()=>validateEcasaReview(missing), /22 commercial source identities/);
+  for(const change of [source=>{source.projectSlug='terratolten';},
+    source=>{source.etapa='Etapa 1';},source=>{source.stageScope='all_stages';}]) {
+    const review=fixture(); change(review.commercialSources.find(source=>source.slug==='alto-san-joaquin'));
+    assert.throws(()=>validateEcasaReview(review), /commercial origin mapping or scope/);
+  }
+  const borrowed=fixture(), record=borrowed.projects.find(record=>record.slug==='edificio-bezanilla');
+  record.images[0].originCommercialSlug='nucleo-costanera';
+  assert.throws(()=>validateEcasaReview(borrowed), /invalid selected path/);
+  const shared=fixture(); shared.projects.find(record=>record.slug==='terratolten').commercialSourceSlugs=['terratolten-1'];
+  assert.throws(()=>validateEcasaReview(shared), /project origin inventory or scope/);
+});
+
+test('display captions are natural while documentary captions and asset scope remain private evidence', () => {
+  const review=fixture(), image=review.projects.find(record=>record.slug==='edificio-bezanilla').images[0];
+  assert.equal(image.caption,'Imagen según brochure');
+  assert.equal(image.displayCaption,'Imagen referencial');
+  for(const displayCaption of ['Imagen según brochure','Documento, página 3','Distribución documentada']) {
+    image.displayCaption=displayCaption;
+    assert.throws(()=>validateEcasaReview(review), /invalid display caption/);
+  }
+});
+
+test('all 130 reviewed selections are required and cannot silently disappear during consolidation', () => {
+  const review=fixture(), record=review.projects.find(record=>record.slug==='edificio-bezanilla');
+  record.images.pop();
+  assert.throws(()=>validateEcasaReview(review), /130 reviewed derivatives/);
+});
+
+test('the real consolidated manifest retains the exact reviewed crops, captions, hashes and model surfaces', () => {
+  const actual=JSON.parse(readFileSync(new URL('../data/brochures-ecasa.json',import.meta.url)));
+  const selected=validateEcasaReview(actual);
+  const fingerprint=selected.slice().sort((a,b)=>a.localPath.localeCompare(b.localPath)).map(asset=>[
+    asset.localPath,asset.sha256,asset.sourceSha256,asset.sourcePage,asset.crop,
+    asset.width,asset.height,asset.kind,asset.caption,asset.assetScope,asset.privacySafe,asset.visuallyVerified]);
+  assert.equal(ecasaAssetDigest(JSON.stringify(fingerprint)),
+    'e763d5a3964e9f2c127a17a16a1a0fdd2ea128fc97124faa70cddb3884e66431');
+  const models=actual.projects.flatMap(project=>project.models.map(model=>[
+    model.originCommercialSlug,model.modelo,model.tipologia,model.dormitorios,model.banos,
+    model.superficie_util_m2,model.superficie_interior_m2??null,model.terraza_m2,
+    model.terraza_cubierta_m2??null,model.superficie_total_m2,model.pagina_brochure,
+    model.sourceSha256,model.stageScope])).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
+  assert.equal(ecasaAssetDigest(JSON.stringify(models)),
+    'faeed6976e0390fa8224b71823bb35ca36c348478b3034ca518187d26f8546cf');
+  const terratolten=actual.projects.find(project=>project.slug==='terratolten');
+  assert.deepEqual(terratolten.sourceAssetSlugs,['terratolten-1']);
+  for(const asset of [...terratolten.images,...terratolten.models.map(model=>model.plan)]) {
+    assert.equal(asset.originCommercialSlug,'terratolten-1');
+    assert.equal(asset.etapa,'Etapa 1');
+    assert.ok(asset.localPath.startsWith('/assets/propiedades/ecasa-preview/terratolten-1/'));
+  }
+  for(const slug of ['nucleo-costanera','alto-san-joaquin','ferroparque']) {
+    const project=actual.projects.find(project=>project.slug===slug);
+    assert.ok([...project.images,...project.models.map(model=>model.plan)].every(asset=>asset.etapa===null));
+  }
+});
+
+test('consolidation cannot lend matrix equipment to an undocumented stage', () => {
+  const review=fixture(), project=review.projects.find(project=>project.slug==='nucleo-costanera');
+  project.amenities=[{label:'Piscina',displayLabel:'Piscina',pages:[1],
+    originCommercialSlug:'nucleo-costanera-2',etapa:'Etapa 2'}];
+  assert.throws(()=>validateEcasaReview(review), /feature origin or display label/);
 });
 
 test('a plan cannot change its document or printed page, inherit availability, or contain an invented surface', () => {
@@ -84,7 +172,8 @@ function packagingFixture() {
     const destination = join(root, path); mkdirSync(dirname(destination), { recursive: true });
     copyFileSync(resolve(source, path), destination);
   };
-  for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs',
+  for (const path of ['scripts/package-vercel.mjs', 'scripts/public-fiche-copy.mjs',
+    'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/public-caption-policy.json',
     'data/proyectos.json', 'data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
     'assets/css/aj-brochure-preview.css', 'sitemap.xml', 'robots.txt']) copy(path);
   // A pending synthetic Ingevec scope exercises the approved fallback without

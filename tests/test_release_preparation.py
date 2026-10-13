@@ -195,6 +195,25 @@ class ReleasePreparationTests(unittest.TestCase):
         with patch.object(release, 'git', side_effect=replies):
             self.assertEqual(release.verify_git_reference(self.root, files, policy), 0)
 
+    def test_private_qa_tools_are_verified_without_entering_deployment_source(self):
+        data = b'// committed QA tool'
+        tools = []
+        for name in sorted(release.VERIFICATION_TOOLS):
+            path = self.root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+            tools.append({'file': name, 'sha256': release.digest(data), 'size': len(data)})
+            with self.assertRaisesRegex(ValueError, 'operational directory'):
+                release.safe_name(name)
+        policy = dict(self.policy, verificationTools=tools)
+        with patch.object(release, 'git', return_value=data):
+            release.verify_verification_tools(self.root, policy)
+        with patch.object(release, 'git', return_value=b'// other commit'), self.assertRaisesRegex(ValueError, 'Git commit'):
+            release.verify_verification_tools(self.root, policy)
+        tools[0]['sha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'private receipt'):
+            release.verify_verification_tools(self.root, policy)
+
 
 if __name__ == '__main__':
     unittest.main()

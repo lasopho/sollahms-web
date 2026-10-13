@@ -1,10 +1,32 @@
-# Ecasa: inventario documental de las 22 entradas
+# Ecasa: inventario documental de 15 proyectos y 22 identidades comerciales
 
-Revisión del 12/10/2026. El ZIP recibido contiene 17 originales PDF coincidentes por SHA-256 con los originales locales, 15 contenidos únicos, tres capturas comerciales privadas, 57 páginas de referencia y 248 candidatos gráficos. Se revisaron originales, inventarios e instrucciones. La composición de cartera sigue la instrucción expresa del titular: 22 entradas; las restricciones antiguas del paquete a 23 fichas quedan sustituidas por esta instrucción.
+Revisión documental del 12/10/2026 y consolidación del 13/10/2026. El ZIP recibido contiene 17 originales PDF coincidentes por SHA-256 con los originales locales, 15 contenidos únicos, tres capturas comerciales privadas, 57 páginas de referencia y 248 candidatos gráficos. Se revisaron originales, inventarios e instrucciones. La nueva instrucción expresa del titular consolida las 22 identidades comerciales en **15 proyectos públicos con sus etapas integradas**; sustituye la estructura anterior de 22 fichas independientes y las restricciones antiguas del paquete a 23 fichas.
 
-Se seleccionaron **56 imágenes y 74 planos individuales (130 derivados)**: 14 fichas tienen nuevas galerías, 12 tienen planos documentados. Cada recurso conserva documento, página, recorte normalizado, dimensiones y SHA-256. Los originales y capturas permanecen fuera de Git y del output público. Los ceros de la tabla corresponden al nuevo lote; los recursos oficiales previamente acreditados se conservan en sus fichas.
+Se conservan exactamente **56 imágenes y 74 planos individuales (130 derivados)**: 14 proyectos tienen nuevas galerías, 12 tienen planos documentados. Ningún archivo gráfico cambia de bytes ni de ruta. Cada recurso conserva documento, página, recorte normalizado, dimensiones, caption documental y SHA-256; añade su identidad comercial de origen y la etapa sólo cuando está documentada. Los originales y capturas permanecen fuera de Git y del output público. Los ceros de la tabla corresponden al lote; los recursos oficiales previamente acreditados mantienen su alcance original.
 
-| Entrada autorizada | Imágenes nuevas del lote | Planos nuevos | Alcance o pendiente |
+| Proyecto público | Identidades comerciales conservadas internamente | Imágenes del lote | Planos del lote |
+| --- | --- | ---: | ---: |
+| Lomas de Puyai | Lomas de Puyai; Lomas de Puyai 3 | 0 | 0 |
+| FerroParque | FerroParque; Ferroparque 2 | 4 | 0 |
+| Bezanilla | Bezanilla | 4 | 3 |
+| Endémico | Endémico | 6 | 4 |
+| Terratoltén | Terratoltén 1; Terratoltén 2; Terratoltén 3 | 4 | 5 |
+| Edificio Wayra | Edificio Wayra | 5 | 3 |
+| Enlace Mackenna | Enlace Mackenna | 1 | 9 |
+| Espacio Victoria | Espacio Victoria | 3 | 9 |
+| Lamara | Lamara | 4 | 4 |
+| Cumbres de Peñuelas | Cumbres de Peñuelas | 2 | 9 |
+| Aires La Florida 2 | Aires La Florida 2 | 4 | 6 |
+| Conecta Huechuraba | Conecta Huechuraba | 4 | 6 |
+| Urban La Florida | Urban La Florida | 6 | 0 |
+| Alto San Joaquín | Alto San Joaquín; Alto San Joaquín 2; Alto San Joaquín 3 | 5 | 8 |
+| Núcleo Costanera | Núcleo Costanera; Núcleo Costanera 2 | 4 | 8 |
+
+El manifiesto privado usa `projects` para las 15 matrices y `commercialSources` para las 22 identidades anteriores, incluidos documentos duplicados, pendientes y selecciones vacías. Las listas `commercialSourceSlugs` y `sourceAssetSlugs` identifican la relación con la matriz y el namespace gráfico aprobado. Los medios Terratoltén conservan `/assets/propiedades/ecasa-preview/terratolten-1/` y su atribución **Etapa 1**. La consolidación no acredita cobertura documental común de las otras etapas.
+
+`displayCaption`, `heroDisplayCaption`, `catalogueCover.displayAlt` y `displayLabel` ofrecen textos naturales para la interfaz. Los captions, labels, páginas y scopes documentales originales siguen en el manifiesto privado. Los renders mantienen su identificación de imagen referencial; los planos, sus superficies y las precauciones aplicables conservan su carácter referencial. Las etapas sin imágenes, planos, precio o recorrido acreditado no generan secciones públicas artificiales por existir en el inventario.
+
+| Identidad comercial interna | Imágenes del lote | Planos del lote | Alcance o pendiente |
 | --- | ---: | ---: | --- |
 | Lomas de Puyai | 0 | 0 | Sin brochure específico |
 | FerroParque | 4 | 0 | Desarrollo homónimo documentado; modelos no asignados por etapa |
@@ -41,7 +63,7 @@ La autorización Ecasa para promoción pública web sigue pendiente de contraste
 
 Reconstrucción con Python 3, Pillow, pypdf y Poppler: `python3 scripts/materialize-ecasa-brochures.py --input /directorio/privado/con/los/17/originales`. El materializador exige que los hashes PDF y las dimensiones coincidan con el manifiesto y reproduce los recortes y el encoder aprobados. El paquete privado de Preview transporta únicamente los 130 derivados seleccionados, sin originales o inventarios comerciales.
 
-Verificación documental y de medios: 17 originales coinciden con el ZIP, 130 hashes y dimensiones de derivados correctos, validación de procedencia y derechos de Preview aprobada. Una reconstrucción independiente desde dos páginas originales reprodujo los hashes de cinco medios, sin modificar el manifiesto ni los recursos seleccionados. El resto de las pruebas de aplicación y despliegue se registra en el cierre de la tarea.
+Verificación documental y de medios: 17 originales coinciden con el ZIP, 130 hashes y dimensiones de derivados correctos, validación de procedencia y derechos de Preview aprobada. Una reconstrucción independiente desde dos páginas originales reprodujo los hashes de cinco medios, sin modificar el manifiesto ni los recursos seleccionados. La consolidación mantiene los mismos 130 hashes, rutas, recortes y modelos y no modifica los 269 medios AJ Urbana/Ingevec. El validador exige 15 matrices, 22 identidades comerciales, 56 imágenes y 74 planos; rechaza la atribución de recursos a una etapa pendiente y cualquier ampliación automática de scope. El resto de las pruebas de aplicación y despliegue se registra en el cierre de la tarea.
 
 Durante la comprobación viva de recorridos, el visor `https://tourvirtuales360.cl/pano/ecasa_/nucleo_pilotos/` identificado anteriormente en la matriz mostró inequívocamente **Núcleo Costanera 2** en la portada, en la barra lateral y en el título del documento del proveedor. Tras pulsar su control nativo se confirmó el panorama aéreo. Esta evidencia respalda reasignar **únicamente ese recorrido ya aprobado** a Núcleo Costanera 2, manteniendo su URL y carga automática. No acredita el alcance del brochure duplicado ni transfiere imágenes, planos o superficies de la matriz. El recorrido de la matriz queda pendiente de documentación específica.
 

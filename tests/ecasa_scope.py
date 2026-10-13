@@ -1,125 +1,190 @@
-"""Exact Ecasa successor to the historical map/tour/commercial freezes.
+"""Exact successor: 15 Ecasa projects preserve 22 independent commercial origins.
 
-Brochure blocks retain an exact public fallback. Reviewed names, linked stages,
-locality and the Núcleo stage-2 tour relocation are exact exceptions; all other
-developers stay byte-identical.
+Every non-Ecasa object remains exact. Historical HTML guards can recover an
+older Ecasa page only after proving its independently reviewed current SHA;
+commercial source snapshots are checked against the immutable 22-fiche base.
 """
+import copy
 import functools
 import hashlib
 import json
-import re
 import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = 'f1e9bf1715cc99d095a367eba9028a9a1ad2b026'
+CONSOLIDATION_BASE = 'f8e1c848998d5ed9c0eef7cd5f3424b1d908a155'
 REVIEWED_OUTPUT = ROOT / 'tests/ecasa-reviewed-output.json'
+CONTEXT_REVIEW = ROOT / 'tests/ecasa-context-reviewed-output.json'
 RETIRED = {'bosquemar', 'altos-del-wayra', 'robles-del-aconcagua', 'el-real', 'edificio-ha-strip-center'}
-ADDED = {'alto-san-joaquin-2', 'alto-san-joaquin-3', 'terratolten-2', 'nucleo-costanera-2'}
-RENAMES = {'edificio-bezanilla': ('Edificio Bezanilla', 'Bezanilla'),
-           'wayra': ('Wayra', 'Edificio Wayra'), 'endemico': ('Endémico Pichilemu', 'Endémico')}
-GROUPS = {'lomas-de-puyai': ['lomas-de-puyai', 'lomas-de-puyai-3'],
+ADDED = {'alto-san-joaquin-2', 'alto-san-joaquin-3', 'terratolten-2', 'nucleo-costanera-2', 'terratolten'}
+GROUPS = {'nucleo-costanera': ['nucleo-costanera', 'nucleo-costanera-2'],
           'ferroparque': ['ferroparque', 'ferroparque-2'],
-          'terratolten-1': ['terratolten-1', 'terratolten-2', 'terratolten-3'],
-          'alto-san-joaquin': ['alto-san-joaquin', 'alto-san-joaquin-2', 'alto-san-joaquin-3'],
-          'nucleo-costanera': ['nucleo-costanera', 'nucleo-costanera-2']}
+          'terratolten': ['terratolten-1', 'terratolten-2', 'terratolten-3'],
+          'lomas-de-puyai': ['lomas-de-puyai', 'lomas-de-puyai-3'],
+          'alto-san-joaquin': ['alto-san-joaquin', 'alto-san-joaquin-2', 'alto-san-joaquin-3']}
+REFERENCES = {'terratolten': 'terratolten-3'}
+ALIASES = {'nucleo-costanera-2': ('nucleo-costanera', 2), 'ferroparque-2': ('ferroparque', 2),
+           'terratolten-1': ('terratolten', 1), 'terratolten-2': ('terratolten', 2),
+           'terratolten-3': ('terratolten', 3), 'lomas-de-puyai-3': ('lomas-de-puyai', 3),
+           'alto-san-joaquin-2': ('alto-san-joaquin', 2), 'alto-san-joaquin-3': ('alto-san-joaquin', 3)}
 
 @functools.lru_cache(maxsize=None)
 def main_bytes(path):
     return subprocess.check_output(['git', 'show', f'{MAIN}:{path}'], cwd=ROOT)
 
+@functools.lru_cache(maxsize=None)
+def consolidation_bytes(path):
+    return subprocess.check_output(['git', 'show', f'{CONSOLIDATION_BASE}:{path}'], cwd=ROOT)
+
+@functools.lru_cache(maxsize=1)
+def original_data():
+    return {path: json.loads(consolidation_bytes(path)) for path in
+            ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json']}
+
+def stage_groups():
+    groups = copy.deepcopy(GROUPS)
+    for project in original_data()['data/proyectos.json']:
+        if project['inmobiliaria'] == 'Ecasa' and not any(project['slug'] in slugs for slugs in groups.values()):
+            groups[project['slug']] = [project['slug']]
+    assert len(groups) == 15 and sum(map(len, groups.values())) == 22
+    return groups
+
+def stage_number(project):
+    return project.get('etapa', 2 if project['slug'] == 'aires-la-florida-2' else 1)
+
+def expected_consolidation(path):
+    originals = original_data()
+    projects = {row['slug']: row for row in originals['data/proyectos.json']}
+    research = {row['slug']: row for row in originals['data/fichas-proyectos.json']}
+    ledger = {row['slug']: row for row in originals['data/registro-fichas.json']}
+    groups = stage_groups()
+    references = {REFERENCES.get(canonical, slugs[0]): canonical for canonical, slugs in groups.items()}
+    expected = []
+    for project in originals['data/proyectos.json']:
+        slug = project['slug']
+        if project['inmobiliaria'] != 'Ecasa':
+            expected.append(copy.deepcopy(next(row for row in originals[path] if row['slug'] == slug)))
+            continue
+        if slug not in references:
+            continue
+        canonical = references[slug]
+        name = 'Terratoltén' if canonical == 'terratolten' else project['nombre']
+        slugs = groups[canonical]
+        private = [{'slug': stage, 'nombre': projects[stage]['nombre'], 'etapa': stage_number(projects[stage]),
+                    'catalogo': copy.deepcopy(projects[stage]), 'investigacion': copy.deepcopy(research[stage]),
+                    'registro': copy.deepcopy(ledger[stage])} for stage in slugs]
+        row = copy.deepcopy(next(row for row in originals[path] if row['slug'] == slug))
+        row.update(slug=canonical, etapaReferenciaSlug=slug)
+        if path == 'data/proyectos.json':
+            row.update(nombre=name, detalleUrl='/' + canonical + '.html')
+            for field in ['proyectoMatrizSlug', 'etapa', 'etapasRelacionadas']:
+                row.pop(field, None)
+            row['etapasComerciales'] = []
+            for stage in slugs:
+                public = copy.deepcopy(projects[stage])
+                public['detalleUrl'] = '/' + canonical + '.html#etapa-' + str(stage_number(public))
+                row['etapasComerciales'].append(public)
+        elif path == 'data/fichas-proyectos.json':
+            row['etapasComerciales'] = private
+            row['verifiedFields'] = [field for field in row['verifiedFields'] if field not in ['proyectoMatrizSlug', 'etapa', 'etapasRelacionadas']]
+            row['verifiedFields'] = list(dict.fromkeys(row['verifiedFields'] + ['etapaReferenciaSlug', 'etapasComerciales']))
+            for field in ['proyectoMatrizSlug', 'etapa', 'etapasRelacionadas']:
+                row['updates'].pop(field, None)
+            row['updates'].update(nombre=name, etapaReferenciaSlug=slug)
+            row['portfolioConsolidation'] = {'basis': 'user_authorized_project_consolidation', 'reviewedOn': '2026-10-13',
+                'baselineCommit': CONSOLIDATION_BASE, 'referenceStageSlug': slug, 'commercialStageSlugs': slugs,
+                'scope': 'project_identity_with_independent_commercial_stages'}
+            row['recorridosPorEtapa'] = [{'etapaSlug': item['slug'], 'nombre': item['nombre'],
+                'virtualTours': copy.deepcopy(item['investigacion']['virtualTours'])} for item in private if item['investigacion'].get('virtualTours')]
+        else:
+            row.update(nombre=name, detalleUrl='/' + canonical + '.html')
+            row['etapasComerciales'] = [{'slug': item['slug'], 'nombre': item['nombre'], 'etapa': item['etapa'],
+                                       'registro': copy.deepcopy(item['registro'])} for item in private]
+            row['mapa'] = any(item['registro']['mapa'] for item in private)
+            row['matterport'] = any(item['registro']['matterport'] for item in private)
+            row['recorridosOficiales'] = sum(item['registro']['recorridosOficiales'] for item in private)
+        expected.append(row)
+    return expected
+
 def validate_successor_data(path, actual=None):
     current = json.loads(actual if actual is not None else (ROOT / path).read_bytes())
-    base = json.loads(main_bytes(path))
-    projects = json.loads((ROOT / 'data/proyectos.json').read_bytes())
-    old_projects = json.loads(main_bytes('data/proyectos.json'))
-    others = {p['slug'] for p in old_projects if p['inmobiliaria'] != 'Ecasa'}
-    expected = {p['slug'] for p in old_projects} - RETIRED | ADDED
-    assert len(current) == len({r['slug'] for r in current}) == 143
-    assert {r['slug'] for r in current} == expected
-    assert [r for r in current if r['slug'] in others] == [r for r in base if r['slug'] in others], path + ': non-Ecasa evidence changed'
-    assert len([p for p in projects if p['inmobiliaria'] == 'Ecasa']) == 22
-    lookup = {p['slug']: p for p in projects}
-    for p in old_projects:
-        if p['inmobiliaria'] == 'Ecasa' and p['slug'] not in RETIRED:
-            for key in ['precioDesdeUF', 'estado', 'entrega']:
-                assert lookup[p['slug']].get(key) == p.get(key), p['slug'] + ': current commercial value changed'
-    for slug in ADDED:
-        for key in ['precioDesdeUF', 'estado', 'entrega']:
-            assert lookup[slug].get(key) is None, slug + ': no accredited commercial source received'
+    expected = expected_consolidation(path)
+    assert len(current) == len({row['slug'] for row in current}) == 136, path + ': expected 136 unique canonical projects'
+    assert current == expected, path + ': changes exceed the exact 15-project/22-origin Ecasa consolidation'
     return current
 
 def restore_successor_data(path, actual):
     current = validate_successor_data(path, actual)
     base = json.loads(main_bytes(path))
     old_ecasa = {p['slug'] for p in json.loads(main_bytes('data/proyectos.json')) if p['inmobiliaria'] == 'Ecasa'}
-    by_slug = {row['slug']: row for row in current}
-    return [row if row['slug'] in old_ecasa else by_slug[row['slug']] for row in base]
+    lookup = {row['slug']: row for row in current}
+    return [row if row['slug'] in old_ecasa else lookup[row['slug']] for row in base]
 
 def public_fallback(text):
+    import re
     for start, end in [('ECASA_PREVIEW_START', 'ECASA_PREVIEW_END'), ('ECASA_PUBLIC_START', 'ECASA_PUBLIC_END')]:
         assert text.count('<!--' + start + '-->') == text.count('<!--' + end + '-->'), 'Unpaired Ecasa packaging marker'
     text = re.sub(r'<!--ECASA_PREVIEW_START-->.*?<!--ECASA_PREVIEW_END-->', '', text, flags=re.S)
-    return re.sub(r'<!--ECASA_PUBLIC_START-->(.*?)<!--ECASA_PUBLIC_END-->', lambda m: m[1], text, flags=re.S)
+    return re.sub(r'<!--ECASA_PUBLIC_START-->(.*?)<!--ECASA_PUBLIC_END-->', lambda match: match[1], text, flags=re.S)
 
-def expected_ecasa_page(slug):
-    text = main_bytes(slug + '.html').decode()
-    if slug in RENAMES:
-        old, new = RENAMES[slug]
-        text = re.sub(r'(?<![\w/-])Wayra(?![\w/-])', new, text) if slug == 'wayra' else text.replace(old, new)
-    if slug in {'endemico', 'lomas-de-puyai-3'}:
-        assert text.count('Ecasa (por confirmar)') == (3 if slug == 'endemico' else 4)
-        text = text.replace('Ecasa (por confirmar)', 'Ecasa')
-    if slug == 'lomas-de-puyai-3':
-        text = text.replace('<p class="hero-location">Ubicación por confirmar</p>', '<p class="hero-location">Papudo, Valparaíso</p>')
-        for label, value in [('Comuna', 'Papudo'), ('Región', 'Valparaíso')]:
-            old = '<div><dt>' + label + '</dt><dd><span class="pending">Por confirmar</span></dd></div>'
-            assert text.count(old) == 1
-            text = text.replace(old, '<div><dt>' + label + '</dt><dd>' + value + '</dd></div>')
-        text = text.replace('<h2>Dirección por confirmar</h2>', '<h2>Papudo</h2>')
-        text = text.replace('<p>Ubicación por confirmar</p>', '<p>Papudo, Valparaíso</p>')
-    if slug == 'nucleo-costanera':
-        # The live provider title and the native Play scene identify stage 2.
-        # Remove exactly this existing tour; its bytes remain on the new route.
-        tour = re.search(r'<section id="recorrido".*?</section>', text, re.S)
-        assert tour and 'https://tourvirtuales360.cl/pano/ecasa_/nucleo_pilotos/' in tour[0]
-        text = text.replace('        ' + tour[0], '', 1)
-        assert text.count('<a href="#recorrido">Recorrido virtual</a>') == 1
-        text = text.replace('<a href="#recorrido">Recorrido virtual</a>', '', 1)
-        text = text.replace('["tourvirtuales360.cl", "www.google.com"]', '["www.google.com"]', 1)
-    for parent, stages in GROUPS.items():
-        if slug not in stages:
-            continue
-        base_names = {p['slug']: p['nombre'] for p in json.loads(main_bytes('data/proyectos.json'))}
-        base_names.update({'alto-san-joaquin-2': 'Alto San Joaquín 2', 'alto-san-joaquin-3': 'Alto San Joaquín 3', 'terratolten-2': 'Terratoltén 2', 'nucleo-costanera-2': 'Núcleo Costanera 2'})
-        links = '<div class="project-stages" data-project-matrix="' + parent + '"><h3>Etapas de este desarrollo</h3><ul>'
-        for stage in stages:
-            current = ' aria-current="page"' if stage == slug else ''
-            links += '<li><a href="/' + stage + '.html"' + current + '>' + base_names[stage] + '</a></li>'
-        links += '</ul><p>Consulta los precios, la disponibilidad y las características de cada etapa en su ficha.</p></div>'
-        match = re.search(r'<section id="caracteristicas"[^>]*>.*?</section>', text, re.S)
-        assert match
-        text = text[:match.start()] + match[0].replace('</section>', links + '</section>') + text[match.end():]
-    return text.encode()
+def validate_reviewed_page(path, current):
+    reviewed = json.loads(REVIEWED_OUTPUT.read_text())
+    assert reviewed['baselineCommit'] == CONSOLIDATION_BASE, 'Ecasa consolidated HTML review is not frozen'
+    assert hashlib.sha256((ROOT / 'data/brochures-ecasa.json').read_bytes()).hexdigest() == reviewed['manifestSha256'], 'Ecasa reviewed manifest changed'
+    assert hashlib.sha256(current).hexdigest() == reviewed['htmlSha256'][path], path + ': reviewed consolidated Ecasa output changed'
+
+def validate_alias_route(slug):
+    assert slug in ALIASES
+    assert not (ROOT / (slug + '.html')).exists(), slug + ': alias cannot remain an independent fiche'
+    reviewed = json.loads(REVIEWED_OUTPUT.read_text())
+    assert reviewed['baselineCommit'] == CONSOLIDATION_BASE, 'Ecasa consolidated route review is not frozen'
+    config = (ROOT / 'vercel.json').read_bytes()
+    assert hashlib.sha256(config).hexdigest() == reviewed['redirectConfigSha256'], 'Ecasa reviewed route configuration changed'
+    canonical, number = ALIASES[slug]
+    destination = '/' + canonical + '.html#etapa-' + str(number)
+    rules = json.loads(config).get('redirects', [])
+    for source in ['/' + slug, '/' + slug + '.html']:
+        matches = [rule for rule in rules if rule.get('source') == source]
+        assert matches == [{'source': source, 'destination': destination, 'permanent': True}], source + ': exact canonical stage redirect missing'
+
+def restore_context_file(path, current):
+    review = json.loads(CONTEXT_REVIEW.read_text())
+    assert review['baselineCommit'] == CONSOLIDATION_BASE and review['scope'] == 'canonical_and_commercial_stage_context_only'
+    if path not in review['files']:
+        return current
+    checked = review['files'][path]
+    assert hashlib.sha256(current).hexdigest() == checked['afterSha256'], path + ': reviewed stage-context bytes changed'
+    if checked['beforeSha256'] is None:
+        assert path == 'assets/js/project-identity.mjs', 'Unreviewed context asset addition'
+        return b''
+    original = consolidation_bytes(path)
+    assert hashlib.sha256(original).hexdigest() == checked['beforeSha256'], path + ': unrecognized pre-context baseline'
+    return original
+
 
 def restore_ecasa_page(path, current):
     slug = path.removesuffix('.html')
-    old_ecasa = {p['slug'] for p in json.loads(main_bytes('data/proyectos.json')) if p['inmobiliaria'] == 'Ecasa'}
-    if slug not in old_ecasa:
+    canonical = stage_groups()
+    commercial = {source for sources in canonical.values() for source in sources}
+    if slug in RETIRED:
+        raise AssertionError(slug + ': retired public route returned')
+    if slug not in canonical and slug not in commercial:
         return current
-    assert slug not in RETIRED, slug + ': retired route returned'
-    if REVIEWED_OUTPUT.is_file():
-        reviewed = json.loads(REVIEWED_OUTPUT.read_text())
-        assert hashlib.sha256((ROOT / 'data/brochures-ecasa.json').read_bytes()).hexdigest() == reviewed['manifestSha256'], 'Ecasa reviewed manifest changed'
-        assert hashlib.sha256(current).hexdigest() == reviewed['htmlSha256'][path], slug + ': reviewed Ecasa output changed'
-    expected = expected_ecasa_page(slug)
-    assert public_fallback(current.decode()).encode() == expected, slug + ': bytes outside authorized Ecasa names/stages/brochure blocks changed'
-    return main_bytes(path)
+    if slug in ALIASES:
+        validate_alias_route(slug)
+    else:
+        validate_reviewed_page(path, current)
+    legacy = 'terratolten-1' if slug == 'terratolten' else slug
+    old_slugs = {project['slug'] for project in json.loads(main_bytes('data/proyectos.json'))}
+    return main_bytes(legacy + '.html') if legacy in old_slugs else consolidation_bytes(legacy + '.html')
 
 if __name__ == '__main__':
     import sys
-    content = sys.stdin.buffer.read()
+    data = sys.stdin.buffer.read()
     if sys.argv[1] == '--data':
-        sys.stdout.write(json.dumps(restore_successor_data(sys.argv[2], content), ensure_ascii=False))
+        sys.stdout.write(json.dumps(restore_successor_data(sys.argv[2], data), ensure_ascii=False))
+    elif sys.argv[1] == '--context':
+        sys.stdout.buffer.write(restore_context_file(sys.argv[2], data))
     else:
-        sys.stdout.buffer.write(restore_ecasa_page(sys.argv[1], content))
+        sys.stdout.buffer.write(restore_ecasa_page(sys.argv[1], data))

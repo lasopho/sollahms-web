@@ -3,6 +3,7 @@ import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { ecasaPublication, validateEcasaReview, ECASA_SLUGS, ECASA_RETIRED_SLUGS } from './ecasa-publication.mjs';
+import { naturalCaption, normalizeFicheCopy } from './public-fiche-copy.mjs';
 import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   BROCHURE_REMOVED_SLUGS, BROCHURE_PUBLIC_PAGES, BROCHURE_RETIRED_ASSETS,
   brochureFingerprint } from './brochure-publication.mjs';
@@ -241,7 +242,7 @@ if (ajIncluded || ingevecIncluded) {
       throw new Error('Ingevec media privacy review is missing: ' + record.slug);
     }
     project.imagenPrincipal = cover.localPath;
-    project.imagenAlt = cover.alt;
+    project.imagenAlt = naturalCaption(cover.alt);
     }
   }
   catalogueOutput = JSON.stringify(projects, null, 2) + '\n';
@@ -273,7 +274,9 @@ if (ecasaIncluded) {
     }
     if (record.catalogueCover) {
       project.imagenPrincipal = record.catalogueCover.localPath;
-      project.imagenAlt = record.catalogueCover.alt;
+      project.imagenAlt = naturalCaption(record.catalogueCover.displayAlt ?? record.catalogueCover.alt);
+      const image = record.images.find(image => image.localPath === record.catalogueCover.localPath);
+      if (image.etapa && record.commercialSourceSlugs.length > 1) project.imagenEtapa = image.etapa;
     }
   }
   catalogueOutput = JSON.stringify(projects, null, 2) + '\n';
@@ -294,6 +297,7 @@ for (const name of pages) {
     html = html.replace(new RegExp(`<!--${batch}_${remove}_START-->[\\s\\S]*?<!--${batch}_${remove}_END-->`, 'g'), '');
     html = html.replace(new RegExp(`<!--${batch}_${keep}_(?:START|END)-->`, 'g'), '');
   }
+  if (sourceProjects.some(project => project.slug + '.html' === name)) html = normalizeFicheCopy(html);
   if (preview) {
     html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
     if (name === 'agenda-asesoria.html' || name === 'contacto.html' || name === 'comparador-hipotecario.html') {

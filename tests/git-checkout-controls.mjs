@@ -77,7 +77,7 @@ test('shared security headers reject missing and weakened framing, MIME, referre
 test('all 121 non-Ecasa catalogue objects and 16 Ingevec identities retain the approved portfolio', () => {
   const catalogue = json('data/proyectos.json');
   assertBrochureCatalogue(catalogue);
-  assert.equal(catalogue.length, 143);
+  assert.equal(catalogue.length, 136);
   assert.equal(catalogue.filter(project => project.inmobiliaria === 'Ingevec').length, 16);
   assert.deepEqual(catalogue.filter(p=>p.inmobiliaria !== 'Ecasa'),
     JSON.parse(git('show', APPROVED_PORTFOLIO + ':data/proyectos.json')).filter(p=>p.inmobiliaria !== 'Ecasa'));
@@ -119,7 +119,7 @@ test('Git CI never publishes private originals or secretly imports the 165 Ingev
   assert.equal(paths.some(path => /(?:^|\/)(?:brochure-candidates|contratos?|private-input)(?:\/|$)/i.test(path)), false);
 });
 
-test('the 143 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
+test('the 136 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
   const catalogue = json('data/proyectos.json');
   const pages = readdirSync(ROOT).filter(path => /^[^/]+\.html$/.test(path));
   assert.deepEqual(new Set(pages), new Set([...BROCHURE_PUBLIC_PAGES, ...catalogue.map(project => project.slug + '.html')]));
@@ -139,7 +139,7 @@ test('the 143 fiches retain routes, contextual actions and approved image/plan r
 function assertIncompleteBuildRejected(environment, partial) {
   const fixture = mkdtempSync(join(tmpdir(), 'sollahms-incomplete-git-ci-'));
   try {
-    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
+    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs', 'scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json', 'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
       const target = resolve(fixture, path);
       mkdirSync(dirname(target), { recursive: true }); copyFileSync(resolve(ROOT, path), target);
     }

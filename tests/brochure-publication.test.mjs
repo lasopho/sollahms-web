@@ -112,7 +112,7 @@ test('missing primary source and duplicate stage documents fail even during a pr
   }
 });
 
-test('the final catalogue pins 22 Ecasa, 16 Ingevec and all 121 unaffected projects without Git at build time', () => {
+test('the final catalogue pins 15 Ecasa projects and 22 stage origins, 16 Ingevec and all 121 unaffected projects without Git at build time', () => {
   const catalogue = JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url)));
   assert.doesNotThrow(() => assertBrochureCatalogue(catalogue));
   assert.equal(BROCHURE_INGEVEC_SLUGS.length, 16);

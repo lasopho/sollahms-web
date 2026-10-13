@@ -8,6 +8,7 @@ import html
 import re
 from virtual_tour_policy import hide_absent_virtual_tours
 from project_embed_policy import remove_redundant_map_details
+from public_copy import natural_caption, natural_text
 
 
 ES_COPY = {
@@ -130,7 +131,7 @@ def _visible_copy(value, language):
         value = re.sub(r'\b(?:La fuente oficial|La inmobiliaria) informa venta en verde\.', 'Venta en verde.', value)
         value = value.replace(' (asociación por verificar)', ' (por confirmar)')
         value = re.sub(r'Precio publicado en la fuente oficial, revisado el \d{4}-\d{2}-\d{2}\. Sujeto a disponibilidad y condiciones de la inmobiliaria\.', 'Precio sujeto a disponibilidad y condiciones comerciales. Confirma el valor vigente al consultar.', value)
-    return value
+    return natural_text(value)
 
 
 def commercialize_fiche(page, slug=None, language=None, research=None):
@@ -194,7 +195,7 @@ def commercialize_fiche(page, slug=None, language=None, research=None):
             elif closing:
                 protected = None
             elif not protected:
-                tokens[index] = re.sub(r'\b(alt|aria-label|data-embed-title)=([\"\'])(.*?)(\2)', lambda m: m[1] + '=' + m[2] + _visible_copy(m[3], lang) + m[4], token)
+                tokens[index] = re.sub(r'\b(alt|aria-label|data-embed-title)=([\"\'])(.*?)(\2)', lambda m: m[1] + '=' + m[2] + natural_caption(_visible_copy(m[3], lang)) + m[4], token)
         elif not protected:
             tokens[index] = _visible_copy(token, lang)
     body = ''.join(tokens)

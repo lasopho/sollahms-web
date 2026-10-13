@@ -1,3 +1,5 @@
+import { resolveProjectIdentity } from '../assets/js/project-identity.mjs';
+import { expectedProjectLabel, expectedProjectQuery, expectedProjectDetail } from './ecasa-expected-context.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
@@ -94,21 +96,21 @@ test('contact rejects malformed/non-object JSON, invalid UTF-8 and oversized bod
   assert.equal(calls.length, 0);
 });
 
-test('all 143 projects derive the email subject and internal name from the server catalogue', async t => {
+test('all 136 projects derive the email subject and internal name from the server catalogue', async t => {
   const calls = provider(t);
-  assert.equal(Object.keys(projects).length, 143);
+  assert.equal(Object.keys(projects).length, 136);
   for (const [slug, project] of Object.entries(projects)) {
     const result = await contact.fetch(request({ ...validContact, proyecto: slug, rut: '1.000.005-K' }));
     assert.equal(result.status, 200);
     assert.deepEqual(await result.json(), { ok: true });
     const email = calls.at(-1).body;
-    assert.equal(email.subject, 'Consulta sobre ' + project.name);
-    assert.ok(email.text.includes('Proyecto: ' + project.name));
+    assert.equal(email.subject, 'Consulta sobre ' + expectedProjectLabel(project.name,slug));
+    assert.ok(email.text.includes('Proyecto: ' + expectedProjectLabel(project.name,slug)));
     assert.ok(email.text.includes('Identificador: ' + slug));
     assert.ok(!JSON.stringify(email).includes('1000005-K'));
     assert.ok(!JSON.stringify(email).includes('1.000.005-K'));
   }
-  assert.equal(calls.length, 143);
+  assert.equal(calls.length, 136);
 });
 
 test('forged subject/name and unknown, inherited, malformed or whitespace slugs cannot reach the provider', async t => {
@@ -146,8 +148,9 @@ test('provider errors preserve a generic response without personal data', async 
   assert.equal(calls.length, 1);
 });
 
+const frontendCatalogue = JSON.parse(await readFile(new URL('../data/proyectos.json', import.meta.url),'utf8'));
 const html = await readFile(new URL('../contacto.html', import.meta.url), 'utf8');
-const formScript = html.match(/<script type="module">([\s\S]*?)<\/script>/)[1].replace(/^import .*;$/m, '');
+const formScript = html.match(/<script type="module">([\s\S]*?)<\/script>/)[1].replace(/^import .*;$/gm, '');
 class Element {
   constructor(value = '') { this.value = value; this.hidden = false; this.listeners = {}; this.attributes = {}; this.textContent = ''; }
   addEventListener(name, fn) { this.listeners[name] = fn; }
@@ -173,7 +176,7 @@ function frontend({ slug = null, status = 200, code, deferred = false, failCatal
   const mockFetch = async (url, options) => {
     if (url === '/data/proyectos.json') {
       if (failCatalogue) throw new Error('Synthetic catalogue failure');
-      return { ok: true, json: async () => Object.entries(projects).map(([slug, project]) => ({ slug, nombre: project.name })) };
+      return { ok: true, json: async () => frontendCatalogue };
     }
     assert.equal(url, '/api/contact');
     posts.push({ url, payload: JSON.parse(options.body) });
@@ -184,7 +187,7 @@ function frontend({ slug = null, status = 200, code, deferred = false, failCatal
   vm.runInNewContext(formScript, {
     document: { getElementById: id => elements[id], querySelectorAll: () => agenda },
     window: { location: { search: slug === null ? '' : '?proyecto=' + encodeURIComponent(slug) } },
-    URLSearchParams, FormData: MockFormData, fetch: mockFetch, normalizeRut, RUT_ERROR,
+    URLSearchParams, FormData: MockFormData, fetch: mockFetch, normalizeRut, RUT_ERROR, resolveProjectIdentity,
   });
   return { controls, button, status: statusText, context, error, form, agenda, posts, release: () => release(), submit: () => form.listeners.submit({ preventDefault() {} }) };
 }
@@ -231,17 +234,17 @@ test('frontend normalizes valid blur/send forms, accepts empty input and keeps i
   }
 });
 
-test('frontend retains all 143 project contexts and both agenda links before and after successful resets', async () => {
+test('frontend retains all 136 project contexts and both agenda links before and after successful resets', async () => {
   for (const [slug, project] of Object.entries(projects)) {
     const ui = frontend({ slug });
     await settle();
-    assert.equal(ui.context.textContent, 'Estás consultando por ' + project.name + '.');
+    assert.equal(ui.context.textContent, 'Estás consultando por ' + expectedProjectLabel(project.name,slug) + '.');
     assert.equal(ui.context.hidden, false);
-    assert.ok(ui.agenda.every(link => link.href === '/agenda-asesoria.html?proyecto=' + encodeURIComponent(slug)));
+    assert.ok(ui.agenda.every(link => link.href === '/agenda-asesoria.html' + expectedProjectQuery(slug)));
     await ui.submit();
     await ui.submit();
     assert.ok(ui.posts.every(post => post.payload.proyecto === slug));
-    assert.equal(ui.context.textContent, 'Estás consultando por ' + project.name + '.');
+    assert.equal(ui.context.textContent, 'Estás consultando por ' + expectedProjectLabel(project.name,slug) + '.');
     assert.equal(ui.form.resets, 2);
   }
 });
@@ -257,6 +260,7 @@ test('frontend prevents duplicate requests while sending and recovers button aft
   const ui = frontend({ slug: 'distrito-centro', deferred: true });
   const first = ui.submit();
   await ui.submit();
+  await settle();
   assert.equal(ui.posts.length, 1);
   assert.equal(ui.button.disabled, true);
   ui.release();

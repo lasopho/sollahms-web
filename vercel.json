@@ -1,18 +1,121 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "git": { "deploymentEnabled": { "main": false, "codex/integracion-financiera-sollahms": false, "codex/recorridos-validos-144": false, "codex/mapas-recorridos-auto": false, "codex/limpieza-mapas-fichas": false, "codex/ecasa-cartera-definitiva": false } },
+  "git": {
+    "deploymentEnabled": {
+      "main": false,
+      "codex/integracion-financiera-sollahms": false,
+      "codex/recorridos-validos-144": false,
+      "codex/mapas-recorridos-auto": false,
+      "codex/limpieza-mapas-fichas": false,
+      "codex/ecasa-cartera-definitiva": false
+    }
+  },
   "buildCommand": "node scripts/package-vercel.mjs",
   "outputDirectory": "dist",
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Content-Security-Policy", "value": "base-uri 'self'; object-src 'none'; frame-ancestors 'self'" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "base-uri 'self'; object-src 'none'; frame-ancestors 'self'"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/nucleo-costanera-2",
+      "destination": "/nucleo-costanera.html#etapa-2",
+      "permanent": true
+    },
+    {
+      "source": "/nucleo-costanera-2.html",
+      "destination": "/nucleo-costanera.html#etapa-2",
+      "permanent": true
+    },
+    {
+      "source": "/ferroparque-2",
+      "destination": "/ferroparque.html#etapa-2",
+      "permanent": true
+    },
+    {
+      "source": "/ferroparque-2.html",
+      "destination": "/ferroparque.html#etapa-2",
+      "permanent": true
+    },
+    {
+      "source": "/terratolten-1",
+      "destination": "/terratolten.html#etapa-1",
+      "permanent": true
+    },
+    {
+      "source": "/terratolten-1.html",
+      "destination": "/terratolten.html#etapa-1",
+      "permanent": true
+    },
+    {
+      "source": "/terratolten-2",
+      "destination": "/terratolten.html#etapa-2",
+      "permanent": true
+    },
+    {
+      "source": "/terratolten-2.html",
+      "destination": "/terratolten.html#etapa-2",
+      "permanent": true
+    },
+    {
+      "source": "/terratolten-3",
+      "destination": "/terratolten.html#etapa-3",
+      "permanent": true
+    },
+    {
+      "source": "/terratolten-3.html",
+      "destination": "/terratolten.html#etapa-3",
+      "permanent": true
+    },
+    {
+      "source": "/lomas-de-puyai-3",
+      "destination": "/lomas-de-puyai.html#etapa-3",
+      "permanent": true
+    },
+    {
+      "source": "/lomas-de-puyai-3.html",
+      "destination": "/lomas-de-puyai.html#etapa-3",
+      "permanent": true
+    },
+    {
+      "source": "/alto-san-joaquin-2",
+      "destination": "/alto-san-joaquin.html#etapa-2",
+      "permanent": true
+    },
+    {
+      "source": "/alto-san-joaquin-2.html",
+      "destination": "/alto-san-joaquin.html#etapa-2",
+      "permanent": true
+    },
+    {
+      "source": "/alto-san-joaquin-3",
+      "destination": "/alto-san-joaquin.html#etapa-3",
+      "permanent": true
+    },
+    {
+      "source": "/alto-san-joaquin-3.html",
+      "destination": "/alto-san-joaquin.html#etapa-3",
+      "permanent": true
     }
   ]
 }

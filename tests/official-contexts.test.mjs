@@ -9,7 +9,7 @@ import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import { projects as trustedContexts } from '../lib/project-context.mjs';
-import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, assertCommercialBytes, assertPortfolioData, commercialPage,
+import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, restoreEcasaContext, assertCommercialBytes, assertPortfolioData, commercialPage,
   INGEVEC_NEW_SLUGS, readCommercialFile, vimaImageCorrection,
   AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet } from './commercial-html.mjs';
 
@@ -125,10 +125,10 @@ const readPage = (slug, baseline = false) => page(baseline
 const oneId = (parsed, id) => { const found = parsed.id(id); assert.equal(found.length, 1, id); return found[0]; };
 const identity = (parsed, node) => ({ attrs: node.attrs, text: parsed.text(node).replace(/\s+/g, ' ').trim() });
 
-test('fixed baselines: 143 authorized identities and 105 prior non-Ecasa context-external HTML controls', () => {
+test('fixed baselines: 136 authorized identities and 105 prior non-Ecasa context-external HTML controls', () => {
   assert.match(git('rev-parse', BASELINE).toString(), /^a279744[0-9a-f]{33}\s*$/);
-  assert.equal(catalogue.length, 143);
-  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 143);
+  assert.equal(catalogue.length, 136);
+  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 136);
   // The independent portfolio helper permits exactly six retired Ingevec
   // identities, two documented additions and VIMA's proved image correction.
   // All retained commercial objects and source records remain exact to 8cdb9bf.
@@ -375,7 +375,14 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   const currentAssets = listFiles('assets').filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
     !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && file !== 'assets/css/aj-brochure-preview.css');
-  const expected = [...protectedAssets.map(({ file }) => file), ...newPaths, 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort();
+  const ecasaReview = json('tests/ecasa-reviewed-output.json');
+  const stageAssets = ['assets/css/ecasa-stages.css', 'assets/js/ecasa-stages.js'];
+  assert.deepEqual(Object.keys(ecasaReview.assetSha256).sort(),stageAssets.toSorted());
+  for(const file of stageAssets) assert.equal(sha256(current(file)),ecasaReview.assetSha256[file],file+': only the exact reviewed Ecasa stage asset is permitted');
+  assert.equal(restoreEcasaContext('assets/js/project-identity.mjs',current('assets/js/project-identity.mjs')).length,0,
+    'Only the exact reviewed stage-context helper is permitted as a new context asset');
+  const expected = [...protectedAssets.map(({ file }) => file), ...newPaths, 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS,
+    ...stageAssets, 'assets/js/project-identity.mjs'].sort();
   assert.deepEqual(currentAssets, expected, 'No other asset additions/deletions are authorized');
   assertAutomaticEmbedStylesheet();
 });
@@ -387,11 +394,11 @@ test('registry and sitemap match the authorized portfolio; financial data/motors
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) &&
         !AJ_REVIEW.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
   }
-  assert.equal(Object.keys(trustedContexts).length, 143);
+  assert.equal(Object.keys(trustedContexts).length, 136);
   for (const project of catalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
   const locations = current('sitemap.xml').toString().match(/<loc>[^<]+<\/loc>/g);
-  assert.equal(locations.length, 149);
-  assert.equal(new Set(locations).size, 149);
+  assert.equal(locations.length, 142);
+  assert.equal(new Set(locations).size, 142);
 });
 
 test('both menus and consultation/booking/simulation links keep their exact six project identities and no financial URL data', () => {
