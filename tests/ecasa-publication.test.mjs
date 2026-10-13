@@ -172,8 +172,9 @@ function packagingFixture() {
     const destination = join(root, path); mkdirSync(dirname(destination), { recursive: true });
     copyFileSync(resolve(source, path), destination);
   };
-  for (const path of ['scripts/package-vercel.mjs', 'scripts/public-fiche-copy.mjs',
+  for (const path of ['scripts/package-vercel.mjs', 'scripts/public-fiche-copy.mjs', 'scripts/ecasa-image-quality.mjs',
     'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/public-caption-policy.json',
+    'data/ecasa-image-quality.json', 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
     'data/proyectos.json', 'data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
     'assets/css/aj-brochure-preview.css', 'sitemap.xml', 'robots.txt']) copy(path);
   // A pending synthetic Ingevec scope exercises the approved fallback without
@@ -193,11 +194,59 @@ function packagingFixture() {
     const path=join(root,asset.localPath.slice(1)); mkdirSync(dirname(path),{recursive:true}); writeFileSync(path,bytes);
   }
   writeFileSync(join(root,'data/brochures-ecasa.json'),JSON.stringify(review));
-  const fichePath=join(root,'edificio-bezanilla.html');
-  let fiche=readFileSync(fichePath,'utf8');
-  // Add only the synthetic selected paths needed by this isolated build.
-  fiche=fiche.replace('</body>',record.images.concat(record.models.map(m=>m.plan)).map(a=>'<img src="'+a.localPath+'" alt="Synthetic fixture">').join('')+'</body>');
-  writeFileSync(fichePath,fiche);
+  const researchPath=join(root,'data/fichas-proyectos.json');
+  const research=JSON.parse(readFileSync(researchPath));
+  const officialPath=join(root,'data/fuentes-imagenes.json');
+  const official=JSON.parse(readFileSync(officialPath));
+  const policyPath=join(root,'data/ecasa-image-quality.json');
+  const policy=JSON.parse(readFileSync(policyPath));
+  policy.projects=[];
+  let officialCount=0;
+  // Preserve the fixture's 22 commercial origins, but replace every Ecasa
+  // photograph with local synthetic bytes. No private real image is required.
+  for(const project of review.projects) {
+    const evidence=research.find(row=>row.slug===project.slug);
+    const officialImages=[];
+    for(const stage of evidence.etapasComerciales) {
+      stage.investigacion.images=(stage.investigacion.images??[]).map((image,index)=> {
+        const localPath='/assets/propiedades/catalogo/synthetic-'+stage.slug+'-'+index+'.webp';
+        const url='https://ecasa.example.invalid/synthetic/'+stage.slug+'/'+index+'.webp';
+        const fake={...image,url,localPath,width:1600,height:900,alt:'Imagen referencial'};
+        const destination=join(root,localPath.slice(1));mkdirSync(dirname(destination),{recursive:true});writeFileSync(destination,bytes);
+        official[url]={status:'downloaded',localPath,localSha256:ecasaAssetDigest(bytes),width:1600,height:900};
+        officialImages.push({...fake,sha256:ecasaAssetDigest(bytes),originCommercialSlug:stage.slug,kind:'official'});
+        officialCount++;
+        return fake;
+      });
+    }
+    const documentary=project.images.map(image=>({...image,kind:'documentary'}));
+    const choices=[...officialImages,...documentary].map(image=>({
+      localPath:image.localPath,sha256:image.sha256,width:image.width,height:image.height,
+      originCommercialSlug:image.originCommercialSlug,kind:image.kind,
+      decision:'keep',coverOnly:false,reason:'Synthetic reviewed fixture image.'
+    }));
+    const previewCover=documentary[0]??officialImages[0]??null;
+    const publicCover=officialImages[0]??null;
+    policy.projects.push({slug:project.slug,images:choices,covers:{
+      preview:{hero:previewCover?.localPath??null,catalogue:previewCover?.localPath??null},
+      public:{hero:publicCover?.localPath??null,catalogue:publicCover?.localPath??null}
+    }});
+    const figure=image=>'<figure data-commercial-stage="'+image.originCommercialSlug+'"><a href="'+image.localPath+'"><img src="'+image.localPath+'" alt="Imagen referencial"></a></figure>';
+    const hero=previewCover?'<img class="hero-image" data-commercial-stage="'+previewCover.originCommercialSlug+'" src="'+previewCover.localPath+'" alt="Imagen referencial">':'';
+    const plans=project.models.map(model=>'<article class="aj-model" data-commercial-stage="'+model.originCommercialSlug+'"><h3>Modelo '+model.modelo+'</h3><a href="'+model.plan.localPath+'"><img src="'+model.plan.localPath+'" alt="Plano referencial"></a></article>').join('');
+    const imageMetadata=previewCover?'<meta property="og:image" content="https://sollahms.cl'+previewCover.localPath+'">':'';
+    const structured={name:project.name,...(previewCover?{image:'https://sollahms.cl'+previewCover.localPath}:{})};
+    // Construct the entire Ecasa fiche from this fixture. A real fiche would
+    // reference unrelated reviewed paths and could conceal a missing binding.
+    writeFileSync(join(root,project.slug+'.html'),'<!doctype html><html lang="es"><head><title>'+project.name+'</title>'+imageMetadata+
+      '<script type="application/ld+json">'+JSON.stringify(structured)+'</script></head><body><main>'+
+      '<section class="project-hero">'+hero+'<div class="hero-shade"></div><h1>'+project.name+'</h1></section>'+
+      '<section id="galeria"><div class="gallery-grid">'+[...officialImages,...documentary].map(figure).join('')+'</div></section>'+plans+'</main></body></html>');
+  }
+  assert.equal(officialCount,62,'fixture must exercise every original official image slot');
+  writeFileSync(researchPath,JSON.stringify(research));
+  writeFileSync(officialPath,JSON.stringify(official));
+  writeFileSync(policyPath,JSON.stringify(policy));
   const run=extra=>spawnSync(process.execPath,[join(root,'scripts/package-vercel.mjs')],{cwd:root,
     env:{...process.env,VERCEL_ENV:'preview',VERCEL_GIT_COMMIT_REF:'codex/ecasa-cartera-definitiva',...extra},encoding:'utf8',timeout:15000});
   return {root,record,run};
@@ -207,8 +256,8 @@ test('protected Preview fails closed when a selected Ecasa derivative is absent 
   for(const symbolic of [false,true]) {
     const f=packagingFixture();
     try {
-      const selected=join(f.root,f.record.images[0].localPath.slice(1)); unlinkSync(selected);
-      if(symbolic) symlinkSync(join(f.root,f.record.models[0].plan.localPath.slice(1)),selected);
+      const selected=join(f.root,f.record.models[0].plan.localPath.slice(1)); unlinkSync(selected);
+      if(symbolic) symlinkSync(join(f.root,f.record.models[1].plan.localPath.slice(1)),selected);
       const result=f.run(); assert.notEqual(result.status,0);
       assert.match(result.stderr,/Incomplete Ecasa protected Preview media batch/);
       assert.equal(existsSync(join(f.root,'dist')),false);
@@ -219,7 +268,7 @@ test('protected Preview fails closed when a selected Ecasa derivative is absent 
 test('a changed derivative hash blocks Preview and the explicit public web profile requires Ecasa rights', () => {
   const f=packagingFixture();
   try {
-    writeFileSync(join(f.root,f.record.images[0].localPath.slice(1)),'Changed synthetic bytes');
+    writeFileSync(join(f.root,f.record.models[0].plan.localPath.slice(1)),'Changed synthetic bytes');
     const changed=f.run(); assert.notEqual(changed.status,0); assert.match(changed.stderr,/Ecasa selected media bytes differ from review/);
     const publicWeb=f.run({SOLLAHMS_BROCHURE_PROFILE:'public-web'});
     assert.notEqual(publicWeb.status,0); assert.match(publicWeb.stderr,/Public web content requires|Ecasa public web content requires/);

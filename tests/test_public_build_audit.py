@@ -331,6 +331,47 @@ class PublicBuildAuditTests(unittest.TestCase):
         path.write_text(json.dumps(catalogue))
         self.assertTrue(any('commercial data beyond reviewed covers' in error for error in self.result()['errors']))
 
+    def visual_fixture(self):
+        review = json.loads((self.source / 'data/brochures-ecasa.json').read_text())
+        catalogue = json.loads((self.public / 'data/proyectos.json').read_text())
+        research = [{'slug': record['slug'], 'etapasComerciales': [{'slug': origin, 'catalogo': {},
+                    'investigacion': {'images': []}} for origin in record['commercialSourceSlugs']]}
+                    for record in review['projects']]
+        projects = []
+        for record in review['projects']:
+            images = [{**image, 'kind': 'documentary', 'width': image.get('width'), 'height': image.get('height'),
+                       'decision': 'keep', 'coverOnly': False, 'reason': 'Reviewed fixture'} for image in record['images']]
+            path = images[0]['localPath'] if images else None
+            projects.append({'slug': record['slug'], 'images': images, 'covers': {
+                'preview': {'hero': path, 'catalogue': path}, 'public': {'hero': None, 'catalogue': None}}})
+        return review, research, catalogue, {'projects': projects}
+
+    def test_visual_decisions_cannot_transfer_an_image_to_another_stage(self):
+        review, research, catalogue, policy = self.visual_fixture()
+        selected = next(record for record in policy['projects'] if record['images'])
+        selected['images'][0]['originCommercialSlug'] = 'terratolten-1'
+        errors = []
+        audit_module.quality_images(review, research, catalogue, policy, {}, lambda condition, message: errors.append(message) if not condition else None)
+        self.assertTrue(any('changed source bytes, dimensions or origin' in error for error in errors))
+
+    def test_visual_quality_cannot_exclude_a_plan_as_a_photograph(self):
+        review, research, catalogue, policy = self.visual_fixture()
+        selected = next(record for record in policy['projects'] if record['images'])
+        record = next(record for record in review['projects'] if record['slug'] == selected['slug'])
+        plan = record['models'][0]['plan']
+        selected['images'].append({**selected['images'][0], 'localPath': plan['localPath'], 'sha256': plan['sha256'], 'decision': 'exclude'})
+        errors = []
+        audit_module.quality_images(review, research, catalogue, policy, {}, lambda condition, message: errors.append(message) if not condition else None)
+        self.assertTrue(any('omitted or added a source image' in error for error in errors))
+
+    def test_visual_cover_does_not_grant_public_brochure_rights(self):
+        review, research, catalogue, policy = self.visual_fixture()
+        selected = next(record for record in policy['projects'] if record['images'])
+        selected['covers']['public']['hero'] = selected['images'][0]['localPath']
+        errors = []
+        audit_module.quality_images(review, research, catalogue, policy, {}, lambda condition, message: errors.append(message) if not condition else None)
+        self.assertTrue(any('ineligible' in error for error in errors))
+
     def test_reviewed_display_policy_replays_captions_without_changing_prices_or_scripts(self):
         policy = {'schemaVersion': 1, 'captionRules': [{'pattern': r'\s*·\s*Brochure, pág\. 1', 'replacement': ''}],
                   'textRules': [{'pattern': r'\bImágenes del brochure\b', 'replacement': 'Imágenes del proyecto'}]}

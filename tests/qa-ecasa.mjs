@@ -15,6 +15,8 @@ const base = option('--base', 'http://127.0.0.1:8897').replace(/\/$/, '');
 const output = resolve(option('--output', '/private/tmp/sollahms-ecasa-browser-qa'));
 const projects = JSON.parse(await readFile(resolve(root, 'data/proyectos.json')));
 const review = JSON.parse(await readFile(resolve(root, 'data/brochures-ecasa.json')));
+const quality = JSON.parse(await readFile(resolve(root, 'data/ecasa-image-quality.json')));
+const qualityBySlug = new Map(quality.projects.map(project => [project.slug, project]));
 const deploymentConfig = JSON.parse(await readFile(resolve(root, 'vercel.json')));
 const assetOrigins = Object.fromEntries(review.projects.flatMap(record =>
   [...record.images, ...record.models.map(model => model.plan)].map(asset => [asset.localPath, asset.originCommercialSlug])));
@@ -58,6 +60,9 @@ try {
         document.images && [...document.images].forEach(image => { image.loading = 'eager'; });
       });
       await page.waitForFunction(() => [...document.images].filter(image => new URL(image.src).origin === location.origin).every(image => image.complete), null, { timeout: 15000 });
+      await page.locator('img').evaluateAll(async images => {
+        await Promise.all(images.filter(image => new URL(image.src).origin === location.origin && image.naturalWidth).map(image => image.decode()));
+      });
       const evidence = await page.evaluate(({ slug, assetOrigins }) => {
         const ids = [...document.querySelectorAll('[id]')].map(element => element.id);
         const images = [...document.images].filter(image => new URL(image.src).origin === location.origin);
@@ -95,6 +100,26 @@ try {
       if (evidence.visibleDocumentReferences) errors.push('Visible documentary caption reference');
       if (consoleErrors.length) errors.push(...consoleErrors);
       const record = review.projects.find(record => record.slug === project.slug);
+      const visual = qualityBySlug.get(project.slug);
+      if (visual) {
+        const gallery = await page.locator('.gallery-grid img').evaluateAll(images => images.map(image => new URL(image.src).pathname));
+        const expected = visual.images.filter(image => image.decision === 'keep').map(image => image.localPath);
+        check(JSON.stringify([...new Set(gallery)].sort()) === JSON.stringify([...expected].sort()), viewport.name + ' accepted image gallery ' + project.slug);
+        check(await page.locator('.gallery-grid').evaluateAll(grids => grids.every(grid => grid.querySelector('img'))), viewport.name + ' no empty gallery ' + project.slug);
+        const approvedHero = visual.covers.preview.hero;
+        const approvedOrigin = visual.images.find(image => image.localPath === approvedHero)?.originCommercialSlug;
+        check(await page.locator('.hero-image').evaluateAll((images, expected) => images.length === 1 && images.every(image =>
+          image.complete && image.naturalWidth && new URL(image.src).pathname === expected.path &&
+          image.getAttribute('data-commercial-stage') === expected.origin), { path: approvedHero, origin: approvedOrigin }),
+          viewport.name + ' approved valid hero ' + project.slug);
+        for (let index = 0; index < await page.locator('.gallery-grid').count(); index++) {
+          const galleryImages = page.locator('.gallery-grid').nth(index).locator('img');
+          for (let picture = 0; picture < await galleryImages.count(); picture++) await galleryImages.nth(picture).scrollIntoViewIfNeeded();
+          const galleryPath = resolve(output, viewport.name + '-' + project.slug + '-gallery-' + (index + 1) + '.png');
+          await page.locator('.gallery-grid').nth(index).screenshot({ path: galleryPath });
+          screenshots.push(galleryPath);
+        }
+      }
       if (record && evidence.plans !== record.models.length) errors.push('Ecasa plan inventory');
       if (record?.models.length) {
         const [popup] = await Promise.all([page.waitForEvent('popup'), page.locator('.aj-plan-link').first().click()]);
@@ -106,7 +131,7 @@ try {
       }
       results.push({ slug: project.slug, viewport: viewport.name, status: response.status(), ...evidence, errors });
       if (errors.length) issues.push(viewport.name + ':' + project.slug + ': ' + errors.join(', '));
-      if (project.inmobiliaria === 'Ecasa' && ['wayra', 'alto-san-joaquin', 'terratolten', 'ferroparque', 'nucleo-costanera'].includes(project.slug)) {
+      if (project.inmobiliaria === 'Ecasa') {
         await page.evaluate(() => window.scrollTo(0, 0));
         const path = resolve(output, viewport.name + '-' + project.slug + '.png');
         await page.screenshot({ path }); screenshots.push(path);
@@ -126,6 +151,17 @@ try {
       await page.waitForTimeout(100);
       const cards = await page.locator('#project-grid a[href$=".html"]').evaluateAll(anchors => anchors.map(anchor => anchor.getAttribute('href')));
       check(new Set(cards).size === 15 && ECASA_SLUGS.every(slug => cards.includes('/' + slug + '.html')), viewport.name + ' Ecasa search 15 principal projects');
+      await page.locator('#project-grid img').evaluateAll(images => images.forEach(image => { image.loading = 'eager'; }));
+      await page.waitForFunction(() => [...document.querySelectorAll('#project-grid img')].every(image => image.complete && image.naturalWidth));
+      await page.locator('#project-grid img').evaluateAll(async images => { await Promise.all(images.map(image => image.decode())); });
+      for (let index = 0; index < await page.locator('.catalog-card').count(); index++) {
+        const card = page.locator('.catalog-card').nth(index);
+        await card.scrollIntoViewIfNeeded();
+        const cardPath = resolve(output, viewport.name + '-catalogue-' + await card.getAttribute('data-project') + '.png');
+        await card.screenshot({ path: cardPath }); screenshots.push(cardPath);
+      }
+      const cataloguePath = resolve(output, viewport.name + '-ecasa-catalogue.png');
+      await page.locator('#project-grid').screenshot({ path: cataloguePath }); screenshots.push(cataloguePath);
       for (const slug of ['alto-san-joaquin-2', 'alto-san-joaquin-3', 'terratolten-2', 'nucleo-costanera-2', 'ferroparque-2', 'lomas-de-puyai-3']) {
         const principal = projects.find(project => project.etapasComerciales?.some(stage => stage.slug === slug));
         await search.fill(principal.etapasComerciales.find(stage => stage.slug === slug).nombre);
@@ -201,7 +237,8 @@ try {
       'Permanent stage redirect ' + rule.source);
   }
   for (const record of review.projects) {
-    for (const asset of [...record.images, ...record.models.map(model => model.plan)]) {
+    const visual = qualityBySlug.get(record.slug);
+    for (const asset of [...record.images.filter(image => visual.images.some(reviewed => reviewed.localPath === image.localPath && (reviewed.decision === 'keep' || reviewed.coverOnly))), ...record.models.map(model => model.plan)]) {
       const response = await request.request.get(base + asset.localPath, requestOptions);
       check(response.status() === 200 && createHash('sha256').update(await response.body()).digest('hex') === asset.sha256, 'Media hash ' + asset.localPath);
     }

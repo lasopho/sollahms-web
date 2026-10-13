@@ -139,7 +139,10 @@ test('the 136 fiches retain routes, contextual actions and approved image/plan r
 function assertIncompleteBuildRejected(environment, partial) {
   const fixture = mkdtempSync(join(tmpdir(), 'sollahms-incomplete-git-ci-'));
   try {
-    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs', 'scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json', 'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
+    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs',
+      'scripts/ecasa-image-quality.mjs','scripts/public-fiche-copy.mjs','data/public-caption-policy.json',
+      'data/ecasa-image-quality.json','data/fichas-proyectos.json','data/fuentes-imagenes.json',
+      'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
       const target = resolve(fixture, path);
       mkdirSync(dirname(target), { recursive: true }); copyFileSync(resolve(ROOT, path), target);
     }

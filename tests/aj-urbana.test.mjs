@@ -1,3 +1,5 @@
+import { copyEcasaImageQualityInputs, assertEcasaQualityCoverFields as assertEcasaCoverFields,
+  assertEcasaQualityPublicCatalogue } from './ecasa-quality-fixture.mjs';
 import test from 'node:test';
 import { naturalCaption, normalizeFicheCopy } from '../scripts/public-fiche-copy.mjs';
 import assert from 'node:assert/strict';
@@ -47,17 +49,7 @@ const review = json('data/brochures-aj-urbana.json');
 const records = new Map(review.projects.map((record) => [record.slug, record]));
 const projectFor = (slug) => catalogue.find((project) => project.slug === slug);
 const modelFor = (slug, model) => records.get(slug).models.find((row) => row.modelo === model);
-function assertEcasaCoverFields(before, after) {
-  const record = JSON.parse(readFileSync(resolve(ROOT, 'data/brochures-ecasa.json'))).projects.find(record => record.slug === before.slug);
-  const restored = { ...after, imagenPrincipal: before.imagenPrincipal, imagenAlt: before.imagenAlt };
-  delete restored.imagenEtapa;
-  assert.deepEqual(restored, before, before.slug + ': only reviewed presentation cover fields change');
-  assert.equal(after.imagenEtapa, before.slug === 'terratolten' ? 'Etapa 1' : undefined);
-  if (record.catalogueCover) {
-    assert.equal(after.imagenPrincipal, record.catalogueCover.localPath);
-    assert.equal(after.imagenAlt, naturalCaption(record.catalogueCover.displayAlt ?? record.catalogueCover.alt));
-  }
-}
+
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const blobHash = (bytes) => createHash('sha1').update('blob ' + bytes.length + '\0').update(bytes).digest('hex');
 const baselineTree = (path = '') => git('ls-tree', '-r', BASELINE, ...(path ? ['--', path] : [])).toString().trim().split('\n').filter(Boolean)
@@ -401,6 +393,7 @@ test('a synthetic pending contract publishes AJ only in Preview and removes revi
     copyFileSync(resolve(ROOT, 'scripts/ecasa-publication.mjs'), join(fixtureRoot, 'scripts/ecasa-publication.mjs'));
     for (const path of ['scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json', 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css', 'vercel.json']) copyFileSync(resolve(ROOT, path), join(fixtureRoot, path));
     copyFileSync(resolve(ROOT, 'data/brochures-ecasa.json'), join(fixtureRoot, 'data/brochures-ecasa.json'));
+    copyEcasaImageQualityInputs(fixtureRoot);
     if (existsSync(resolve(ROOT, 'assets/propiedades/ecasa-preview'))) cpSync(resolve(ROOT, 'assets/propiedades/ecasa-preview'), join(fixtureRoot, 'assets/propiedades/ecasa-preview'), { recursive: true });
     const protectedAsset = join(fixtureRoot, 'assets/js/unchanged.js');
     writeFileSync(protectedAsset, '/* historical asset */');
@@ -512,13 +505,12 @@ test('a synthetic pending contract publishes AJ only in Preview and removes revi
     assert.equal(existsSync(join(fixtureRoot, 'dist', ASSETS.slice(1))), false);
     assert.equal(existsSync(join(fixtureRoot, 'dist/data/brochures-aj-urbana.json')), false);
     assert.equal(readFileSync(join(fixtureRoot, 'dist/assets/js/unchanged.js'), 'utf8'), '/* historical asset */');
-    assert.ok(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')).equals(current('data/proyectos.json')));
+    assertEcasaQualityPublicCatalogue(catalogue,JSON.parse(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json'))));
     const defaultEnvironment = { ...env };
     delete defaultEnvironment.VERCEL_ENV;
     execFileSync(process.execPath, [script], { cwd: fixtureRoot, env: defaultEnvironment, stdio: 'pipe' });
     for (const slug of SLUGS) assert.equal(readFileSync(join(fixtureRoot, 'dist', slug + '.html'), 'utf8'), commercialPage(old(slug + '.html'), slug));
-    assert.ok(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')).equals(current('data/proyectos.json')),
-      'An unspecified environment must retain the original public catalogue bytes');
+    assertEcasaQualityPublicCatalogue(catalogue,JSON.parse(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json'))));
     assert.equal(existsSync(join(fixtureRoot, 'dist', ASSETS.slice(1))), false, 'An unspecified environment must also exclude assets whose contractual scope is pending');
     assert.throws(() => execFileSync(process.execPath, [script], { cwd: fixtureRoot,
       env: { ...env, VERCEL_ENV: 'preview', VERCEL_GIT_COMMIT_REF: 'codex/unapproved-test-branch' }, stdio: 'pipe' }),

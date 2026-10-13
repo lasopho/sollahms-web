@@ -10,6 +10,8 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import shutil
+import subprocess
 import urllib.parse
 import xml.etree.ElementTree as ET
 
@@ -33,6 +35,12 @@ LEGACY_TARGETS = {'nucleo-costanera-2': ('nucleo-costanera', 2),
     'alto-san-joaquin-2': ('alto-san-joaquin', 2), 'alto-san-joaquin-3': ('alto-san-joaquin', 3)}
 COMMERCIAL_PROJECTS = {slug: slug for slug in ECASA if slug != 'terratolten'}
 COMMERCIAL_PROJECTS.update({slug: target for slug, (target, stage) in LEGACY_TARGETS.items()})
+VISUAL_EXCLUDED = {
+    '/assets/propiedades/ecasa-preview/enlace-mackenna/imagen-01-p01.webp',
+    '/assets/propiedades/ecasa-preview/ferroparque/imagen-04-p01.webp',
+    '/assets/propiedades/ecasa-preview/terratolten-1/imagen-03-p01.webp',
+    '/assets/propiedades/ecasa-preview/terratolten-1/imagen-04-p01.webp',
+}
 PAGES = {'404.html', 'agenda-asesoria.html', 'comparador-hipotecario.html',
     'contacto.html', 'index.html', 'privacidad.html', 'proyectos.html'}
 PUBLIC_DATA = {'data/proyectos.json', 'data/hipotecario.json'}
@@ -135,7 +143,99 @@ def normalize_fiche_copy(text, policy):
     return prefix + ''.join(tokens)
 
 
-def audit(source, public, preview, protected_review=False):
+def quality_images(review, research, catalogue, policy, official_sources, require):
+    """Rebuild every image identity from original evidence, not policy claims."""
+    originals, project_info = {}, {}
+    by_slug = {record['slug']: record for record in research}
+    by_project = {record['slug']: record for record in catalogue}
+    for record in review['projects']:
+        stages = by_slug.get(record['slug'], {}).get('etapasComerciales', [])
+        origins = {stage['slug']: stage for stage in stages}
+        require(set(origins) == set(record['commercialSourceSlugs']), 'Original commercial image origins changed: ' + record['slug'])
+        project_info[record['slug']] = {'multiple': len(origins) > 1}
+        def add(image, origin, kind, sha):
+            path = image['localPath']
+            require(path not in originals, 'Duplicated original visual image: ' + path)
+            source = origins.get(origin, {}).get('catalogo', {})
+            stage = image.get('etapa')
+            if not isinstance(stage, str) or not stage.strip():
+                number = source.get('etapa')
+                stage = 'Etapa ' + str(number) if isinstance(number, int) and re.search(r'\s' + str(number) + r'$', source.get('nombre', '')) else None
+            originals[path] = {**image, 'sha256': sha, 'kind': kind, 'originCommercialSlug': origin,
+                'projectSlug': record['slug'], 'displayStage': stage,
+                'displayAlt': (image.get('displayCaption') or image.get('caption')) if kind == 'documentary' else image.get('alt', by_project[record['slug']]['nombre'])}
+        for stage in stages:
+            for image in stage.get('investigacion', {}).get('images', []):
+                source = official_sources.get(image.get('url'), {})
+                require(source.get('status') == 'downloaded' and source.get('localPath') == image['localPath'] and
+                        source.get('width') == image['width'] and source.get('height') == image['height'],
+                        'Official image provenance changed: ' + image['localPath'])
+                add(image, stage['slug'], 'official', source.get('localSha256'))
+        for image in record['images']:
+            add(image, image['originCommercialSlug'], 'documentary', image['sha256'])
+    projects = {project['slug']: project for project in policy['projects']}
+    require(set(projects) == {record['slug'] for record in review['projects']}, 'Visual policy changed development identities')
+    choices = {}
+    for project in policy['projects']:
+        expected = {path for path, image in originals.items() if image['projectSlug'] == project['slug']}
+        require(len(project['images']) == len(expected) and {image['localPath'] for image in project['images']} == expected,
+                'Visual review omitted or added a source image: ' + project['slug'])
+        for choice in project['images']:
+            path = choice['localPath'];original = originals.get(path, {})
+            require(path not in choices, 'Duplicated visual decision: ' + path)
+            require(all(choice.get(key) == original.get(key) for key in ['sha256', 'width', 'height', 'kind', 'originCommercialSlug']),
+                    'Visual decision changed source bytes, dimensions or origin: ' + path)
+            require(choice.get('decision') in {'keep', 'exclude'} and choice.get('coverOnly') is False and bool(choice.get('reason')),
+                    'Unreviewed visual decision or cover-only exception: ' + path)
+            choices[path] = {**original, **choice}
+        for profile in ['public', 'preview']:
+            for role in ['hero', 'catalogue']:
+                path = project.get('covers', {}).get(profile, {}).get(role)
+                image = choices.get(path) if path else None
+                require(path is None or image and image.get('projectSlug') == project['slug'] and image.get('decision') == 'keep' and
+                        (profile == 'preview' or image.get('kind') == 'official'),
+                        'Visual cover is excluded, unrelated or ineligible: ' + project['slug'] + '/' + profile + '/' + role)
+    return choices, projects, project_info
+
+
+def quality_catalogue(catalogue, images, projects, project_info, caption_policy, preview):
+    result = json.loads(json.dumps(catalogue))
+    for project in result:
+        selection = projects.get(project['slug'])
+        if not selection:
+            continue
+        path = selection['covers']['preview' if preview else 'public']['catalogue']
+        image = images.get(path)
+        project['imagenPrincipal'] = path
+        project.pop('imagenEtapa', None)
+        if image:
+            project['imagenAlt'] = natural_caption(image['displayAlt'], caption_policy)
+            if project_info[project['slug']]['multiple'] and image.get('displayStage'):
+                project['imagenEtapa'] = image['displayStage']
+        else:
+            project.pop('imagenAlt', None)
+        for stage in project.get('etapasComerciales', []):
+            candidate = images.get(stage.get('imagenPrincipal'))
+            if candidate and candidate['decision'] == 'exclude':
+                stage['imagenPrincipal'] = None
+                stage.pop('imagenAlt', None);stage.pop('imagenEtapa', None)
+    return result
+
+
+def quality_html_projections(source, review, node):
+    # Use the same reviewed, private overlay consumer to replay its byte-level
+    # HTML transformation, then independently audit provenance and eligibility.
+    script = r"""import {readFile} from 'node:fs/promises';import {pathToFileURL} from 'node:url';
+const root=process.argv[1];const load=async name=>JSON.parse(await readFile(root+'/'+name,'utf8'));
+const {validateEcasaImageQuality,transformEcasaImageQuality}=await import(pathToFileURL(root+'/scripts/ecasa-image-quality.mjs'));
+const {normalizeFicheCopy}=await import(pathToFileURL(root+'/scripts/public-fiche-copy.mjs'));
+const review=await load('data/brochures-ecasa.json');const verified=validateEcasaImageQuality(review,await load('data/fichas-proyectos.json'),await load('data/proyectos.json'),await load('data/ecasa-image-quality.json'),await load('data/fuentes-imagenes.json'));
+const output={public:{},preview:{}};for(const record of review.projects){const original=await readFile(root+'/'+record.slug+'.html','utf8');for(const profile of ['public','preview']){const remove=profile==='preview'?'PUBLIC':'PREVIEW';const keep=profile==='preview'?'PREVIEW':'PUBLIC';let html=original.replace(new RegExp('<!--ECASA_'+remove+'_START-->[\\s\\S]*?<!--ECASA_'+remove+'_END-->','g'),'').replace(new RegExp('<!--ECASA_'+keep+'_(?:START|END)-->','g'),'');html=transformEcasaImageQuality(html,record.slug,verified,{preview:profile==='preview'});output[profile][record.slug+'.html']=normalizeFicheCopy(html);}}process.stdout.write(JSON.stringify(output));"""
+    result = subprocess.run([node, '--input-type=module', '-e', script, str(source)], check=True, capture_output=True, text=True)
+    return json.loads(result.stdout)
+
+
+def audit(source, public, preview, protected_review=False, node=None):
     errors, warnings = [], []
     counts = {'projects': 0, 'ingevec': 0, 'ecasa': 0, 'pages': 0, 'localReferences': 0,
               'brochureImages': 0, 'brochurePlans': 0, 'brochureMedia': 0,
@@ -302,6 +402,30 @@ def audit(source, public, preview, protected_review=False):
     ecasa_records = ecasa_review['projects']
     require(ecasa_review.get('schemaVersion') == 2 and len(ecasa_records) == 15 and {record['slug'] for record in ecasa_records} == ECASA,
             'Ecasa documentary inventory must contain the 15 authorized developments')
+    quality_path = source / 'data/ecasa-image-quality.json'
+    quality_policy = json.loads(quality_path.read_text()) if quality_path.is_file() else None
+    quality_choices, quality_projects, quality_project_info, quality_projections = {}, {}, {}, None
+    if quality_policy:
+        require(quality_policy.get('schemaVersion') == 1 and quality_policy.get('baselineCommit') == '2d34997f8fd82b775c0697b20493674773e7fdc2' and
+                quality_policy.get('scope') == 'ecasa_images_only', 'Unexpected visual review baseline or scope')
+        research = json.loads((source / 'data/fichas-proyectos.json').read_text())
+        official_sources = json.loads((source / 'data/fuentes-imagenes.json').read_text())
+        source_catalogue = json.loads((source / 'data/proyectos.json').read_text())
+        quality_choices, quality_projects, quality_project_info = quality_images(ecasa_review, research, source_catalogue, quality_policy, official_sources, require)
+        require(len(quality_choices) == 118 and sum(image['kind'] == 'official' for image in quality_choices.values()) == 62 and
+                sum(image['kind'] == 'documentary' for image in quality_choices.values()) == 56,
+                'Original visual inventory must contain 62 official and 56 documentary images')
+        excluded = {path for path, image in quality_choices.items() if image['decision'] == 'exclude'}
+        require(excluded == VISUAL_EXCLUDED, 'The four reviewed image exclusions changed or a plan was excluded')
+        counts['ecasaOriginalImages'] = 56
+        counts['ecasaReviewedImages'] = 118
+        counts['ecasaGalleryImages'] = sum(image['decision'] == 'keep' for image in quality_choices.values())
+        counts['ecasaExcludedImages'] = len(excluded)
+        require(counts['ecasaGalleryImages'] == 114, 'The 114 approved Ecasa gallery photographs must remain exact')
+        try:
+            quality_projections = quality_html_projections(source, ecasa_review, node or shutil.which('node'))
+        except (OSError, subprocess.CalledProcessError, json.JSONDecodeError, TypeError) as error:
+            require(False, 'Reviewed visual HTML projection failed: ' + str(error))
     commercial_sources = ecasa_review.get('commercialSources', [])
     counts['ecasaCommercialSources'] = len(commercial_sources)
     require(len(commercial_sources) == 22 and {record['slug']: record['projectSlug'] for record in commercial_sources} == COMMERCIAL_PROJECTS,
@@ -318,13 +442,13 @@ def audit(source, public, preview, protected_review=False):
         target_files = preview_files if protected_review else files
         html = (target / page).read_text() if page in target_files else ''
         cover = record.get('catalogueCover')
-        if cover:
+        if cover and not quality_policy:
             require(preview_by_slug.get(record['slug'], {}).get('imagenPrincipal') == cover['localPath'],
                     'Ecasa reviewed catalogue cover lost: ' + record['slug'])
             require(any(asset['localPath'] == cover['localPath'] for asset in record['images']),
                     'Ecasa cover is not a selected image: ' + record['slug'])
             counts['ecasaCovers'] += 1
-        counts['ecasaImages'] += len(record['images'])
+        counts['ecasaImages'] += sum(not quality_policy or quality_choices.get(asset['localPath'], {}).get('decision') == 'keep' for asset in record['images'])
         counts['ecasaPlans'] += len(record['models'])
         for asset in [*record['images'], *(model['plan'] for model in record['models'])]:
             path = asset['localPath'].lstrip('/')
@@ -334,6 +458,14 @@ def audit(source, public, preview, protected_review=False):
             prefix = 'assets/propiedades/ecasa-preview/' + str(origin) + '/'
             require(path.startswith(prefix) and path.count('/') == prefix.count('/'),
                     'Ecasa resource belongs to another entry: ' + path)
+            if quality_policy:
+                original = source / path
+                require(original.is_file() and not original.is_symlink() and digest(original) == asset['sha256'],
+                        'Visual filtering changed or omitted original documentary evidence: ' + path)
+                if asset['localPath'] in VISUAL_EXCLUDED:
+                    require(path not in files and path not in preview_files and asset['localPath'] not in html,
+                            'Excluded Ecasa photograph survived as a published resource: ' + path)
+                    continue
             require(path not in ecasa_chosen and path not in chosen, 'Duplicate selected Ecasa resource: ' + path)
             ecasa_chosen.add(path)
             require(path in target_files, 'Selected Ecasa image or plan missing: ' + path)
@@ -342,6 +474,19 @@ def audit(source, public, preview, protected_review=False):
                 require(not (target / path).is_symlink(), 'Symbolic Ecasa resource: ' + path)
             require(asset['localPath'] in html, 'Selected Ecasa resource absent from its fiche: ' + path)
     counts['ecasaMedia'] = len(ecasa_chosen)
+    if quality_policy:
+        require(counts['ecasaMedia'] == 126 and counts['ecasaImages'] == 52 and counts['ecasaPlans'] == 74,
+                'Visual publication must preserve 52 documentary photographs and all 74 plans')
+        counts['ecasaCovers'] = sum(project['covers']['preview']['catalogue'] is not None for project in quality_projects.values())
+        for path, image in quality_choices.items():
+            if image['kind'] != 'official':
+                continue
+            original = source / path.lstrip('/')
+            require(original.is_file() and not original.is_symlink() and digest(original) == image['sha256'],
+                    'Original official visual evidence changed: ' + path)
+            for output in [public, preview]:
+                require((output / path.lstrip('/')).is_file() and digest(output / path.lstrip('/')) == image['sha256'],
+                        'Reviewed official photograph missing or changed: ' + path)
     for commercial in commercial_sources:
         matrix = next((record for record in ecasa_records if record['slug'] == commercial['projectSlug']), None)
         if matrix is None:
@@ -359,7 +504,13 @@ def audit(source, public, preview, protected_review=False):
     expected_preview_files = files | ecasa_chosen if protected_review else files
     require(preview_files == expected_preview_files, 'Protected Preview and public build contain unexpected different files')
     expected_preview_catalogue = json.loads(json.dumps(catalogue))
-    if protected_review:
+    if quality_policy:
+        expected_preview_catalogue = quality_catalogue(catalogue, quality_choices, quality_projects, quality_project_info, caption_policy, True)
+        expected_public_catalogue = quality_catalogue(source_catalogue, quality_choices, quality_projects, quality_project_info, caption_policy, False)
+        require([project for project in catalogue if project['slug'] in ECASA] ==
+                [project for project in expected_public_catalogue if project['slug'] in ECASA],
+                'Visual public build changed Ecasa commercial data beyond reviewed image fields')
+    elif protected_review:
         expected_by_slug = {p['slug']: p for p in expected_preview_catalogue}
         for record in ecasa_records:
             cover = record.get('catalogueCover')
@@ -400,8 +551,10 @@ def audit(source, public, preview, protected_review=False):
             require('<meta name="robots" content="noindex, nofollow">' in text, 'Preview page missing noindex: ' + path)
             if protected_review and path.removesuffix('.html') in ECASA:
                 original = (source / path).read_text()
-                require(normalized_preview(text) == normalize_fiche_copy(selected_ecasa_html(original, True), caption_policy), 'Ecasa Preview differs from selected source and reviewed display policy: ' + path)
-                require((public / path).read_text() == normalize_fiche_copy(selected_ecasa_html(original, False), caption_policy), 'Ecasa public fallback differs from selected source and reviewed display policy: ' + path)
+                expected_preview_html = quality_projections['preview'][path] if quality_projections else normalize_fiche_copy(selected_ecasa_html(original, True), caption_policy)
+                expected_public_html = quality_projections['public'][path] if quality_projections else normalize_fiche_copy(selected_ecasa_html(original, False), caption_policy)
+                require(normalized_preview(text) == expected_preview_html, 'Ecasa Preview differs from selected source and reviewed display/visual policy: ' + path)
+                require((public / path).read_text() == expected_public_html, 'Ecasa public fallback differs from selected source and reviewed display/visual policy: ' + path)
             else:
                 require(normalized_preview(text) == (public / path).read_text(), 'Preview/public commercial content differs: ' + path)
         elif protected_review and path == 'data/proyectos.json':
@@ -416,6 +569,7 @@ def audit(source, public, preview, protected_review=False):
             'ecasaPublicWebParityVerified': not protected_review and not errors,
             'productionDeploymentAuthorized': False,
             'displayCopyPolicySha256': digest(policy_path) if caption_policy is not None else None,
+            'imageQualityPolicySha256': digest(quality_path) if quality_policy is not None else None,
             'providerAvailabilityVerified': False}
 
 
@@ -427,9 +581,10 @@ def main():
     parser.add_argument('--receipt', type=Path)
     parser.add_argument('--protected-review', action='store_true',
                         help='Verify the complete protected Ecasa review and its public fallbacks; grants no publication rights')
+    parser.add_argument('--node', default=shutil.which('node'), help='Node runtime for the reviewed visual HTML projection')
     args = parser.parse_args()
     source, public, preview = (value.resolve() for value in [args.source, args.public, args.preview])
-    result = audit(source, public, preview, args.protected_review)
+    result = audit(source, public, preview, args.protected_review, args.node)
     if args.receipt:
         receipt = args.receipt.resolve()
         assert not any(receipt == root or root in receipt.parents for root in [source, public, preview]), 'Receipt must remain outside public source/output'

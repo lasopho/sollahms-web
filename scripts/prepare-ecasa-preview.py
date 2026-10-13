@@ -28,6 +28,12 @@ ECASA_PROJECT_BY_COMMERCIAL_SLUG.update({
     'lomas-de-puyai-3': 'lomas-de-puyai', 'ferroparque-2': 'ferroparque',
     'alto-san-joaquin-2': 'alto-san-joaquin', 'alto-san-joaquin-3': 'alto-san-joaquin',
     'nucleo-costanera-2': 'nucleo-costanera'})
+VISUAL_EXCLUDED = {
+    '/assets/propiedades/ecasa-preview/enlace-mackenna/imagen-01-p01.webp',
+    '/assets/propiedades/ecasa-preview/ferroparque/imagen-04-p01.webp',
+    '/assets/propiedades/ecasa-preview/terratolten-1/imagen-03-p01.webp',
+    '/assets/propiedades/ecasa-preview/terratolten-1/imagen-04-p01.webp',
+}
 spec = importlib.util.spec_from_file_location('release_preparation', ROOT / 'scripts/prepare-release.py')
 release = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(release)
@@ -41,6 +47,9 @@ def make_reference(metadata, platform, files, commit):
     release.require(metadata.get('catalogueProjects') == 136 and metadata.get('ecasaProjects') == 15 and
                     metadata.get('ecasaCommercialEntries') == 22 and metadata.get('ecasaLegacyRoutes') == 8,
                     'Incorrect Ecasa catalogue composition')
+    release.require(metadata.get('sourceBrochureMedia') == 399 and metadata.get('ecasaSourceMedia') == 130 and
+                    metadata.get('ecasaPublishedMedia') == 126 and len(metadata['selectedBrochureMedia']) == 395,
+                    'Original and published brochure selections must remain distinct and exact')
     tools = metadata.get('verificationTools', [])
     release.require(isinstance(tools, list) and len(tools) == 3 and
                     {tool.get('file') for tool in tools} == release.VERIFICATION_TOOLS,
@@ -59,6 +68,8 @@ def make_reference(metadata, platform, files, commit):
             'ecasaLegacyRoutes': 8, 'ingevecProjects': 16,
             'htmlPages': 143, 'selectedBrochureMedia': len(metadata['selectedBrochureMedia']),
             'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
+            'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': 126,
+            'imageQuality': metadata['imageQuality'],
             'ecasaPublicWebRights': 'pending_contract_scope_verification',
             'verificationTools': tools,
             'publicationAuthorized': False, 'integrationAuthorized': False}
@@ -101,6 +112,16 @@ def manifest_media(manifests):
     return selected
 
 
+def published_media(originals, quality):
+    decisions = [image for project in quality['projects'] for image in project['images']]
+    excluded = {image['localPath'] for image in decisions if image['decision'] == 'exclude'}
+    release.require(excluded == VISUAL_EXCLUDED and not any(image.get('coverOnly') for image in decisions),
+                    'Unexpected or unreviewed image exclusion')
+    release.require(all(path.lstrip('/') in originals for path in excluded),
+                    'Visual quality exclusion is not an original documentary image')
+    return {path: digest for path, digest in originals.items() if '/' + path not in excluded}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bundle-directory', required=True, type=Path)
@@ -129,13 +150,16 @@ def main():
     release.require(len(selected_inventory) == len(metadata['selectedBrochureMedia']), 'Duplicate brochure media receipt')
     with tarfile.open(archive, 'r:gz') as source_archive:
         manifests = {name: json.loads(source_archive.extractfile('data/' + name).read()) for name in MANIFEST_FOLDERS}
-    expected_media = manifest_media(manifests)
-    release.require(selected_inventory == expected_media, 'Brochure receipt differs from the exact manifest selection')
+        quality = json.loads(source_archive.extractfile('data/ecasa-image-quality.json').read())
+    original_media = manifest_media(manifests)
+    expected_media = published_media(original_media, quality)
+    release.require(len(original_media) == 399 and len(expected_media) == 395 and selected_inventory == expected_media,
+                    'Brochure receipt differs from the exact reviewed publication selection')
     archived_derivatives = {name for name in files if any(name.startswith('assets/propiedades/' + folder + '/')
                                                         for folder in MANIFEST_FOLDERS.values())}
-    release.require(archived_derivatives == expected_media.keys(), 'Unselected derivative or omitted resource in source archive')
-    release.require(all(files.get(name, {}).get('sha256') == digest for name, digest in selected_inventory.items()),
-                    'Selected brochure media differs from source archive')
+    release.require(archived_derivatives == original_media.keys(), 'Original derivative omitted or candidate added in source archive')
+    release.require(all(files.get(name, {}).get('sha256') == digest for name, digest in original_media.items()),
+                    'Original brochure media differs from source archive')
     transport_digest = hashlib.sha256()
     for index, chunk in enumerate(metadata['chunks'], 1):
         release.require(chunk['file'] == '.vercel/source.tgz.part' + str(index), 'Unexpected archive transport path')

@@ -60,6 +60,16 @@ PRESERVED_MANIFESTS = {
 }
 ECASA_REVIEW_SHA256 = 'fd37681006e965e83241dccd88b7b532dba5411733219dbdc152aef1e4f5017c'
 ECASA_MEDIA_SHA256 = 'adc94ac87d8d7d6068fc2fd46117bd5a1d600307fd938d15767a391a519345ab'
+QUALITY_ORIGINALS = {
+    'data/fichas-proyectos.json': '3f23035e8ef82d20970d1ed10dc0606e3c91b81f232d4119c3599039bc33a235',
+    'data/fuentes-imagenes.json': 'c16009d0ed27e342441529f81c9e065f1a15ea9499ddf00388ff75681152c49b',
+}
+VISUAL_EXCLUDED = {
+    '/assets/propiedades/ecasa-preview/enlace-mackenna/imagen-01-p01.webp',
+    '/assets/propiedades/ecasa-preview/ferroparque/imagen-04-p01.webp',
+    '/assets/propiedades/ecasa-preview/terratolten-1/imagen-03-p01.webp',
+    '/assets/propiedades/ecasa-preview/terratolten-1/imagen-04-p01.webp',
+}
 PUBLIC_PAGES = {'404.html', 'agenda-asesoria.html', 'comparador-hipotecario.html',
                 'contacto.html', 'index.html', 'privacidad.html', 'proyectos.html'}
 RETIRED_ASSETS = {
@@ -121,6 +131,13 @@ def assert_legacy_redirects(root, page_texts):
 
 
 def selected_source_files(root):
+    for name, digest in QUALITY_ORIGINALS.items():
+        assert sha((root / name).read_bytes()) == digest, 'Original research/commercial image evidence changed: ' + name
+    quality = json.loads((root / 'data/ecasa-image-quality.json').read_text())
+    decisions = [image for project in quality['projects'] for image in project['images']]
+    assert len(decisions) == 118 and sum(image['decision'] == 'keep' for image in decisions) == 114
+    assert {image['localPath'] for image in decisions if image['decision'] == 'exclude'} == VISUAL_EXCLUDED
+    assert not any(image.get('coverOnly') for image in decisions), 'Unexpected cover-only quality exception'
     catalogue = json.loads((root / 'data/proyectos.json').read_text())
     slugs = {project['slug'] for project in catalogue}
     assert len(catalogue) == 136 and len(slugs) == 136, 'The exact final catalogue must contain 136 projects'
@@ -182,6 +199,7 @@ def selected_source_files(root):
     if (root / 'scripts/ecasa-publication.mjs').exists():
         files.add('scripts/ecasa-publication.mjs')
     files.update(('scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json'))
+    files.update(('scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json', *QUALITY_ORIGINALS))
     for folder in ('api', 'lib'):
         files.update(str(p.relative_to(root)) for p in (root / folder).rglob('*')
                      if p.is_file() and p.suffix in {'.js', '.mjs'})
@@ -274,9 +292,14 @@ def main():
         subprocess.run([args.node, str(stage / 'scripts/package-vercel.mjs')],
                        cwd=stage, env=env, check=True, stdout=subprocess.PIPE)
         receipt = json.loads((stage / '.vercel/brochure-build-inventory.json').read_text())
-        expected_media = sum(len(json.loads((stage / 'data' / name).read_text())['projects'][index][key])
+        source_media = sum(len(json.loads((stage / 'data' / name).read_text())['projects'][index][key])
             for name in MANIFESTS for index in range(len(APPROVED_PROJECTS[name])) for key in ['images', 'models'])
-        assert len(receipt['media']) == expected_media, 'The build omitted or added selected brochure resources'
+        assert source_media == 399 and len(receipt['media']) == source_media - len(VISUAL_EXCLUDED) == 395, 'The build omitted or added selected brochure resources'
+        source_inventory = {asset['localPath']: asset['sha256']
+            for name in MANIFESTS for record in json.loads((stage / 'data' / name).read_text())['projects']
+            for asset in [*record['images'], *(model['plan'] for model in record['models'])]}
+        assert {asset['path']: asset['sha256'] for asset in receipt['media']} == {
+            path: digest for path, digest in source_inventory.items() if path not in VISUAL_EXCLUDED}, 'Published media differs from the reviewed visual selection'
         preview_output = public_files(stage / 'dist')
         public_inventory = [{'file': name, 'sha256': sha(content)}
                             for name, content in preview_output.items()]
@@ -312,6 +335,8 @@ def main():
                 'catalogueProjects': 136, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
                 'ecasaLegacyRoutes': 8,
                 'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
+                'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': 126,
+                'imageQuality': receipt['ecasaImageQuality'],
                 'contractualCoverageVerified': receipt['contractualCoverageVerified'],
                 'sourceFileCount': len(files), 'sourceBytes': sum(f['size'] for f in inventory),
                 'archive': {'privatePath': str(archive), 'sha256': sha(data), 'size': len(data)},

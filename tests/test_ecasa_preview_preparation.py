@@ -17,7 +17,10 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
             'reviewCommit': self.commit, 'catalogueProjects': 136, 'ecasaProjects': 15,
             'ecasaCommercialEntries': 22, 'ecasaLegacyRoutes': 8,
             'branch': 'codex/ecasa-cartera-definitiva', 'archive': {'sha256': 'a' * 64, 'size': 100},
-            'sourceFileCount': 2, 'sourceBytes': 200, 'selectedBrochureMedia': [],
+            'sourceFileCount': 2, 'sourceBytes': 200,
+            'selectedBrochureMedia': [{'path': '/assets/fixture-' + str(index), 'sha256': 'd' * 64} for index in range(395)],
+            'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': 126,
+            'imageQuality': {'reviewedImages': 118, 'keptImages': 114, 'excludedImages': 4, 'plansPreserved': 74},
             'verificationTools': [{'file': name, 'sha256': 'c' * 64, 'size': 12} for name in sorted(preview.release.VERIFICATION_TOOLS)],
             'chunks': [{'file': '.vercel/source.tgz.part1', 'sha': 'b' * 40, 'size': 100}]}
         self.platform = {'projectId': 'prj_fixture', 'teamId': 'team_fixture', 'teamSlug': 'fixture',
@@ -38,12 +41,26 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
         self.assertFalse(reference['integrationAuthorized'])
         self.assertEqual(reference['ecasaPublicWebRights'], 'pending_contract_scope_verification')
         self.assertEqual(reference['verificationTools'], self.metadata['verificationTools'])
+        self.assertEqual(reference['sourceBrochureMedia'], 399)
+        self.assertEqual(reference['ecasaPublishedMedia'], 126)
 
     def test_missing_or_unrelated_private_qa_selection_is_rejected(self):
         for tools in [[], self.metadata['verificationTools'][:-1],
                       [*self.metadata['verificationTools'][:-1], {'file': 'tests/unrelated.mjs', 'sha256': 'c' * 64, 'size': 12}]]:
             with self.subTest(tools=tools), self.assertRaisesRegex(ValueError, 'three private QA'):
                 self.reference(dict(self.metadata, verificationTools=tools))
+
+    def test_publication_selection_does_not_remove_original_archive_evidence(self):
+        originals = {path.lstrip('/'): 'a' * 64 for path in preview.VISUAL_EXCLUDED}
+        originals['assets/propiedades/ecasa-preview/terratolten-1/plano.webp'] = 'b' * 64
+        quality = {'projects': [{'images': [{'localPath': path, 'decision': 'exclude', 'coverOnly': False}
+                                           for path in preview.VISUAL_EXCLUDED]}]}
+        selected = preview.published_media(originals, quality)
+        self.assertEqual(len(originals), 5)
+        self.assertEqual(selected, {'assets/propiedades/ecasa-preview/terratolten-1/plano.webp': 'b' * 64})
+        quality['projects'][0]['images'][0]['localPath'] = '/assets/propiedades/ecasa-preview/terratolten-1/plano.webp'
+        with self.assertRaisesRegex(ValueError, 'unreviewed image exclusion'):
+            preview.published_media(originals, quality)
 
     def test_production_target_wrong_commit_and_wrong_identity_count_are_rejected(self):
         for key, value in [('target', 'production'), ('reviewCommit', '2' * 40),

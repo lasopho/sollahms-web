@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { ecasaPublication, validateEcasaReview, ECASA_SLUGS, ECASA_RETIRED_SLUGS } from './ecasa-publication.mjs';
 import { naturalCaption, normalizeFicheCopy } from './public-fiche-copy.mjs';
+import { validateEcasaImageQuality, selectEcasaPublishedAssets, transformEcasaImageQuality,
+  applyEcasaCatalogueImageQuality, ecasaExcludedImagePaths } from './ecasa-image-quality.mjs';
 import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   BROCHURE_REMOVED_SLUGS, BROCHURE_PUBLIC_PAGES, BROCHURE_RETIRED_ASSETS,
   brochureFingerprint } from './brochure-publication.mjs';
@@ -123,6 +125,24 @@ const catalogueSource = await readFile(join(root, 'data/proyectos.json'));
 let catalogueOutput = catalogueSource;
 const sourceProjects = JSON.parse(catalogueSource);
 assertBrochureCatalogue(sourceProjects);
+const [qualityBytes, researchBytes, officialBytes] = await Promise.all([
+  readFile(join(root, 'data/ecasa-image-quality.json')),
+  readFile(join(root, 'data/fichas-proyectos.json')),
+  readFile(join(root, 'data/fuentes-imagenes.json')),
+]);
+const imageQuality = validateEcasaImageQuality(ecasaReview, JSON.parse(researchBytes), sourceProjects,
+  JSON.parse(qualityBytes), JSON.parse(officialBytes));
+const publishedEcasaAssets = selectEcasaPublishedAssets(ecasaReview, imageQuality, { preview: ecasaIncluded });
+const publishedEcasaPaths = new Set(publishedEcasaAssets.map(asset => asset.localPath));
+const excludedImagePaths = ecasaExcludedImagePaths(imageQuality, { preview: ecasaIncluded });
+// Selection changes publication, never the original files or their evidence.
+for (const image of imageQuality.images.values()) {
+  const path = join(root, image.localPath.slice(1));
+  if (!(await lstat(path)).isFile() || await realpath(path) !== path ||
+      createHash('sha256').update(await readFile(path)).digest('hex') !== image.sha256) {
+    throw new Error('Ecasa image quality source bytes differ from review: ' + image.localPath);
+  }
+}
 const approvedPages = new Set([...BROCHURE_PUBLIC_PAGES, ...sourceProjects.map(project => project.slug + '.html')]);
 const pages = (await readdir(root)).filter(name => name.endsWith('.html'));
 if (pages.some(name => !approvedPages.has(name))) {
@@ -141,6 +161,9 @@ for (const [name, html] of pageSources) {
 const retiredExclusiveAssets = new Set(BROCHURE_RETIRED_ASSETS.filter(path =>
   !catalogueSource.toString().includes(path) && ![...pageSources.values()].some(html => html.includes(path)))
   .map(path => path.slice(1)));
+const otherProjects = sourceProjects.filter(project => project.inmobiliaria !== 'Ecasa');
+const otherReferences = [JSON.stringify(otherProjects), ...otherProjects.map(project => pageSources.get(project.slug + '.html'))];
+const exclusiveExcludedImages = new Set([...excludedImagePaths].filter(path => !otherReferences.some(source => source.includes(path))));
 const selectedMedia = new Set();
 const mediaInventory = [];
 if (ajIncluded || ingevecIncluded) {
@@ -247,7 +270,6 @@ if (ajIncluded || ingevecIncluded) {
   }
   catalogueOutput = JSON.stringify(projects, null, 2) + '\n';
 }
-
 if (ecasaIncluded) {
   const projects = JSON.parse(catalogueOutput);
   for (const record of ecasaReview.projects) {
@@ -269,8 +291,10 @@ if (ecasaIncluded) {
       if (createHash('sha256').update(bytes).digest('hex') !== asset.sha256) {
         throw new Error('Ecasa selected media bytes differ from review: ' + record.slug);
       }
-      selectedMedia.add(path);
-      mediaInventory.push({ path: asset.localPath, sha256: asset.sha256, bytes: bytes.length });
+      if (publishedEcasaPaths.has(asset.localPath)) {
+        selectedMedia.add(path);
+        mediaInventory.push({ path: asset.localPath, sha256: asset.sha256, bytes: bytes.length });
+      }
     }
     if (record.catalogueCover) {
       project.imagenPrincipal = record.catalogueCover.localPath;
@@ -284,6 +308,8 @@ if (ecasaIncluded) {
 
 // Static output is an explicit allowlist. API sources and their imports are
 // bundled separately by Vercel, never copied into the public directory.
+catalogueOutput = JSON.stringify(applyEcasaCatalogueImageQuality(JSON.parse(catalogueOutput), imageQuality,
+  { preview: ecasaIncluded }), null, 2) + '\n';
 await rm(output, { recursive: true, force: true });
 await mkdir(join(output, 'data'), { recursive: true });
 for (const name of pages) {
@@ -298,6 +324,8 @@ for (const name of pages) {
     html = html.replace(new RegExp(`<!--${batch}_${keep}_(?:START|END)-->`, 'g'), '');
   }
   if (sourceProjects.some(project => project.slug + '.html' === name)) html = normalizeFicheCopy(html);
+  if (sourceProjects.some(project => project.inmobiliaria === 'Ecasa' && project.slug + '.html' === name))
+    html = transformEcasaImageQuality(html, name.slice(0, -5), imageQuality, { preview: ecasaIncluded });
   if (preview) {
     html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
     if (name === 'agenda-asesoria.html' || name === 'contacto.html' || name === 'comparador-hipotecario.html') {
@@ -312,6 +340,7 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
     const path = relative(root, source).split(sep).join('/');
     if (path.includes('/brochure-candidates')) return false;
     if (retiredExclusiveAssets.has(path)) return false;
+    if (exclusiveExcludedImages.has('/' + path)) return false;
     const info = await lstat(source);
     // No symlink can turn a nominal image directory into private content.
     if (info.isSymbolicLink()) throw new Error('Symbolic links are excluded from public assets');
@@ -338,7 +367,8 @@ await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.string
   contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb,
   preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb,
   ecasaContractualCoverageVerified: ecasaRights.publicWeb,
-  ecasaReviewMedia: ecasaIncluded ? ecasaAssets.length : 0,
+  ecasaReviewMedia: publishedEcasaAssets.length,
+  ecasaImageQuality: { policySha256: createHash('sha256').update(qualityBytes).digest('hex'), ...imageQuality.summary },
   media: mediaInventory.sort((a, b) => a.path.localeCompare(b.path)),
 }, null, 2) + '\n');
-console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: ecasaIncluded ? ecasaAssets.length : 0, selectedBrochureMedia: selectedMedia.size, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));
+console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));

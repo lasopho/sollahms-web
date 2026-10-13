@@ -125,6 +125,8 @@ def verify_worktree(root, files, policy):
                 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
                 'data/brochures-ecasa.json', 'scripts/ecasa-publication.mjs',
                 'data/public-caption-policy.json', 'scripts/public-fiche-copy.mjs',
+                'scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json',
+                'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
     require(not git(root, 'diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
@@ -228,7 +230,7 @@ def prepare(archive, output, node, policy, protected_review=False):
     audit_path = destination / 'public-preview-audit.json'
     audit_command = [sys.executable, str(ROOT / 'tests/audit_public_build.py'), '--source', str(source),
                     '--public', str(public / 'dist'), '--preview', str(preview / 'dist'),
-                    '--receipt', str(audit_path)]
+                    '--receipt', str(audit_path), '--node', node]
     if protected_review:
         audit_command.append('--protected-review')
     subprocess.run(audit_command, check=True, capture_output=True, text=True)
@@ -250,6 +252,10 @@ def prepare(archive, output, node, policy, protected_review=False):
                'localPreparationPassed': True, 'networkUsed': False, 'deploymentPerformed': False,
                'contentProfile': 'protected_ecasa_review' if protected_review else 'public_web_parity',
                'verificationTools': policy.get('verificationTools', []),
+               'sourceBrochureMedia': policy.get('sourceBrochureMedia'),
+               'ecasaSourceMedia': policy.get('ecasaSourceMedia'),
+               'ecasaPublishedMedia': policy.get('ecasaPublishedMedia'),
+               'imageQuality': policy.get('imageQuality'),
                'ecasaPublicWebParityVerified': not protected_review,
                'publicationAuthorized': False, 'integrationAuthorized': False}
     (destination / 'release-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')

@@ -1,3 +1,5 @@
+import { copyEcasaImageQualityInputs, assertEcasaQualityCoverFields as assertEcasaCoverFields,
+  assertEcasaQualityPublicCatalogue } from './ecasa-quality-fixture.mjs';
 import test from 'node:test';
 import { naturalCaption, normalizeFicheCopy } from '../scripts/public-fiche-copy.mjs';
 import assert from 'node:assert/strict';
@@ -110,17 +112,7 @@ const review = json(MANIFEST);
 const ajReview = json('data/brochures-aj-urbana.json');
 const records = new Map(review.projects.map(record => [record.slug, record]));
 const projectFor = slug => catalogue.find(project => project.slug === slug);
-function assertEcasaCoverFields(before, after) {
-  const record = JSON.parse(readFileSync(resolve(ROOT, 'data/brochures-ecasa.json'))).projects.find(record => record.slug === before.slug);
-  const restored = { ...after, imagenPrincipal: before.imagenPrincipal, imagenAlt: before.imagenAlt };
-  delete restored.imagenEtapa;
-  assert.deepEqual(restored, before, before.slug + ': only reviewed presentation cover fields change');
-  assert.equal(after.imagenEtapa, before.slug === 'terratolten' ? 'Etapa 1' : undefined);
-  if (record.catalogueCover) {
-    assert.equal(after.imagenPrincipal, record.catalogueCover.localPath);
-    assert.equal(after.imagenAlt, naturalCaption(record.catalogueCover.displayAlt ?? record.catalogueCover.alt));
-  }
-}
+
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const blobHash = bytes => createHash('sha1').update('blob ' + bytes.length + '\0').update(bytes).digest('hex');
 const tree = (ref, path = '') => git('ls-tree', '-r', ref, ...(path ? ['--', path] : [])).toString().trim().split('\n').filter(Boolean)
@@ -443,6 +435,7 @@ function createPackagingFixture() {
     copyFileSync(resolve(ROOT, 'scripts/ecasa-publication.mjs'), join(fixture, 'scripts/ecasa-publication.mjs'));
     for (const path of ['scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json', 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css', 'vercel.json']) copyFileSync(resolve(ROOT, path), join(fixture, path));
     copyFileSync(resolve(ROOT, 'data/brochures-ecasa.json'), join(fixture, 'data/brochures-ecasa.json'));
+    copyEcasaImageQualityInputs(fixture);
     if (existsSync(resolve(ROOT, 'assets/propiedades/ecasa-preview'))) cpSync(resolve(ROOT, 'assets/propiedades/ecasa-preview'), join(fixture, 'assets/propiedades/ecasa-preview'), { recursive: true });
   for (const path of ['data/proyectos.json', 'data/hipotecario.json', MANIFEST, 'data/brochures-aj-urbana.json',
     CSS, 'sitemap.xml', 'robots.txt']) copyFileSync(resolve(ROOT, path), join(fixture, path));
@@ -599,7 +592,7 @@ test('a synthetic pending contract excludes protected media outside Preview and 
     packageFixture(fixture, 'preview');
     for (const environment of ['production', undefined]) {
       packageFixture(fixture, environment);
-      assert.ok(readFileSync(join(fixture, 'dist/data/proyectos.json')).equals(current('data/proyectos.json')));
+      assertEcasaQualityPublicCatalogue(catalogue,JSON.parse(readFileSync(join(fixture, 'dist/data/proyectos.json'))));
       for (const slug of SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'), removeReviewedTourBlocks(commercialPage(old(slug + '.html'), slug), slug), slug);
       for (const slug of INGEVEC_ADDED_SLUGS) assert.equal(readFileSync(join(fixture, 'dist', slug + '.html'), 'utf8'),
         removeReviewedTourBlocks(assertAddedFicheFallback(htmlFor(slug), slug), slug), slug + ': new brochures must preserve the exact approved public fallback');

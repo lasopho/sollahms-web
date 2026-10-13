@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 283,
-  "expectedReleaseOnlyCases": 23,
-  "expectedPythonFixtureTests": 99,
+  "expectedGitNodeTests": 292,
+  "expectedReleaseOnlyCases": 24,
+  "expectedPythonFixtureTests": 103,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -270,6 +270,26 @@
         {
           "name": "all 130 selected Ecasa photos and plans preserve their original bytes, origin-stage bindings and enlarged canonical references",
           "reason": "Requires all 130 original-derived Ecasa resources; mandatory before the protected Preview delivery."
+        }
+      ]
+    },
+    {
+      "file": "tests/ecasa-image-quality.test.mjs",
+      "cases": [
+        "quality review preserves 118 source photographs and explicitly excludes only four reviewed documentary images",
+        "source catalogue, 22 stage snapshots, documentary manifests and all 136 fiche files remain exact",
+        "published selection removes four photographs while preserving all 74 original models and their stage-bound plans",
+        "quality filtering is idempotent in both profiles and preserves every plan, map, specification and runtime fragment",
+        "only Ecasa display image fields change while financial values, source references and 121 other projects stay exact",
+        "quality decisions reject missing inventories, wrong bytes, borrowed stages, plan removal and unauthorized cover substitutions",
+        "explicit cover-only and no-cover fixtures cannot leak excluded gallery images or leave empty gallery navigation",
+        "image filtering preserves financial stage labels and rejects remote-image escapes and stage reassignment",
+        "every non-Ecasa HTML string is unchanged by the quality transform in both publication profiles"
+      ],
+      "releaseRequired": [
+        {
+          "name": "real private packaging publishes 395 selected resources, keeps 74 Ecasa plans and excludes four source photographs",
+          "reason": "Requires all preserved private AJ/Ingevec/Ecasa bytes and tests actual output exclusion, source preservation and 74 plans in isolated builds."
         }
       ]
     }
