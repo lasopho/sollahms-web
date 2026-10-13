@@ -8,6 +8,7 @@ import { resolve, relative } from 'node:path';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
+import { reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
 import { projects as trustedContexts } from '../lib/project-context.mjs';
 import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, restoreEcasaContext, assertCommercialBytes, assertPortfolioData, commercialPage,
   INGEVEC_NEW_SLUGS, readCommercialFile, vimaImageCorrection,
@@ -374,7 +375,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   assert.equal(newPaths.size, 10);
   const currentAssets = listFiles('assets').filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
-    !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && file !== 'assets/css/aj-brochure-preview.css');
+    !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');
   const ecasaReview = json('tests/ecasa-reviewed-output.json');
   const stageAssets = ['assets/css/ecasa-stages.css', 'assets/js/ecasa-stages.js'];
   assert.deepEqual(Object.keys(ecasaReview.assetSha256).sort(),stageAssets.toSorted());

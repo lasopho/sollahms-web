@@ -54,6 +54,12 @@ def make_reference(metadata, platform, files, commit):
     release.require(isinstance(tools, list) and len(tools) == 3 and
                     {tool.get('file') for tool in tools} == release.VERIFICATION_TOOLS,
                     'The three private QA tools must be pinned in the review receipt')
+    official = metadata.get('officialOriginals')
+    if official is not None:
+        release.require(metadata.get('officialSourceMedia') == 4 and metadata.get('officialPublishedMedia') == 2 and
+                        metadata.get('ecasaGalleryImages') == 116,
+                        'The four official private sources and two Preview images must remain distinct')
+        release.official_policy_inventory(metadata, files)
     tracked_names = set(release.git(ROOT, 'ls-tree', '-rz', '--name-only', commit).decode().split('\0'))
     tracked = sum(name in tracked_names for name in files)
     return {'schemaVersion': 1, 'contentProfile': 'protected_ecasa_review',
@@ -63,13 +69,17 @@ def make_reference(metadata, platform, files, commit):
             'archiveSha256': metadata['archive']['sha256'], 'archiveBytes': metadata['archive']['size'],
             'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
             'trackedSourceFiles': tracked, 'privateSourceFiles': len(files) - tracked,
-            'privateMediaFolders': ['ingevec-preview', 'ecasa-preview'],
+            'privateMediaFolders': ['ingevec-preview', 'ecasa-preview'] + ([release.OFFICIAL_FOLDER] if official else []),
             'catalogueProjects': 136, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
             'ecasaLegacyRoutes': 8, 'ingevecProjects': 16,
             'htmlPages': 143, 'selectedBrochureMedia': len(metadata['selectedBrochureMedia']),
             'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
             'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': 126,
             'imageQuality': metadata['imageQuality'],
+            **({'officialSourceMedia': metadata['officialSourceMedia'],
+                'officialPublishedMedia': metadata['officialPublishedMedia'],
+                'ecasaGalleryImages': metadata['ecasaGalleryImages'],
+                'officialOriginals': official} if official else {}),
             'ecasaPublicWebRights': 'pending_contract_scope_verification',
             'verificationTools': tools,
             'publicationAuthorized': False, 'integrationAuthorized': False}
@@ -138,19 +148,32 @@ def main():
     commit = release.git(ROOT, 'rev-parse', 'HEAD').decode().strip()
     archive = bundle / 'source.tgz'
     initial_policy = {'archiveBytes': metadata['archive']['size'], 'archiveSha256': metadata['archive']['sha256'],
-                      'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes']}
+                      'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
+                      **{key: metadata[key] for key in ['officialOriginals', 'officialSourceMedia',
+                         'officialPublishedMedia', 'ecasaGalleryImages', 'contentProfile'] if key in metadata}}
     files = release.verify_archive(archive, initial_policy)
     reference = make_reference(metadata, platform, files, commit)
     release.verify_git_reference(ROOT, files, reference)
     release.verify_worktree(ROOT, files, reference)
     release.verify_verification_tools(ROOT, reference)
-    # No original documents or credentials are needed to restore the selected
-    # media. Manifest hashes are checked again by the staged local builds.
+    # No original PDFs or credentials are needed to restore the selected media.
+    # The four official image source files remain private and are hash-verified.
     selected_inventory = {item['path'].lstrip('/'): item['sha256'] for item in metadata['selectedBrochureMedia']}
     release.require(len(selected_inventory) == len(metadata['selectedBrochureMedia']), 'Duplicate brochure media receipt')
     with tarfile.open(archive, 'r:gz') as source_archive:
         manifests = {name: json.loads(source_archive.extractfile('data/' + name).read()) for name in MANIFEST_FOLDERS}
         quality = json.loads(source_archive.extractfile('data/ecasa-image-quality.json').read())
+        official_manifest = json.loads(source_archive.extractfile(release.OFFICIAL_MANIFEST).read())
+    official_sources, official_published = release.official_manifest_inventory(official_manifest)
+    release.require(metadata.get('officialOriginals', {}).get('sourceAssets') ==
+                    [official_sources[name] for name in sorted(official_sources)] and
+                    metadata.get('officialOriginals', {}).get('publishedAssets') ==
+                    [official_published[name] for name in sorted(official_published)],
+                    'Official source/publication receipt differs from the exact manifest')
+    release.require({name for name in files if name.startswith('assets/propiedades/' + release.OFFICIAL_FOLDER + '/')} ==
+                    set(official_sources) and all(files[name]['sha256'] == item['sha256'] and
+                    files[name]['size'] == item['bytes'] for name, item in official_sources.items()),
+                    'Official review originals or selected images differ from source archive')
     original_media = manifest_media(manifests)
     expected_media = published_media(original_media, quality)
     release.require(len(original_media) == 399 and len(expected_media) == 395 and selected_inventory == expected_media,

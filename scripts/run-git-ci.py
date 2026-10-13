@@ -49,7 +49,7 @@ for suite in selected:
     assert set(declared) == set(allowed) | set(release), 'New/missing case needs a declared CI or release scope'
     assert len(declared) == len(allowed) + len(release), 'Duplicated declaration'
     release_cases.extend({'file': suite['file'], **entry} for entry in suite['releaseRequired'])
-assert len(release_cases) == manifest['expectedReleaseOnlyCases'] == 24
+assert len(release_cases) == manifest['expectedReleaseOnlyCases'] == 25
 # All historical byte-preservation guards use actual local Git objects.
 assert subprocess.check_output(['git', 'rev-parse', '--is-shallow-repository'], cwd=ROOT, text=True).strip() == 'false', 'fetch-depth: 0 required'
 for revision in ['e7afe04', '8cdb9bf2af607a4f0822e5ea2c3ec4ba3f4c76b1', 'b64911588e2fdf52f32d5f772b53735936fbd423', 'e903208160f62cc552e9efa4371a322ef75477b8', '045fe182ef5d2ad2206df303ba74330aa747050d']:
@@ -89,11 +89,11 @@ with ThreadPoolExecutor(max_workers=2) as executor:
     results = list(executor.map(run, commands))
 node_results = [item for item in results if item['name'].startswith('node-')]
 node_counts = {key: sum(item['tests'][key] for item in node_results) for key in ['tests','pass','fail','skipped','cancelled']}
-assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 292, 'Executed case count changed; classify the change explicitly'
+assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 302, 'Executed case count changed; classify the change explicitly'
 assert node_counts['skipped'] == 0, 'Filtered release cases are not represented as successful or skipped test executions'
 python_result = next(item for item in results if item['name'] == 'python-synthetic-units')
-assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 103
-passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 292 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
+assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 113
+passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 302 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
 report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
           'node': node_counts, 'pythonFixtureTests': python_result['tests'],
           'releaseOnlyNotRun': release_cases, 'releaseOnlyNotRunCount': len(release_cases),
@@ -104,7 +104,7 @@ summary = '\n'.join([
     '## Sollahms — Git checkout regression',
     f"Node: {node_counts['pass']}/{node_counts['tests']}; Python synthetic fixtures: {python_result['tests']}; mortgage validator: " + str(results[-1]['exitCode']==0),
     '136 projects / 15 Ecasa (22 commercial origins) / 16 Ingevec; manual main + integration deployment gates; catalogue/privacy/security guards and incomplete-build rejection are checked.',
-    '24 named image/release cases require the private reproducible package and protected Preview. They were not run and are not marked passed.',
+    '25 named image/release cases require the private reproducible package and protected Preview. They were not run and are not marked passed.',
     'This job does not build a publishable site, import private derivatives, deploy, merge, or send forms.',
 ])+'\n'
 print(summary)

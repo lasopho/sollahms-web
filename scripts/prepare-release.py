@@ -2,13 +2,14 @@
 """Verify and prepare a private release locally. Never deploys or changes Git.
 
 The approved archive is immutable. These operational tools are not included
-in it. No credentials, original documents or audit receipts enter source/.
+in it. No credentials, original PDF documents or audit receipts enter source/.
 """
 import argparse
 import hashlib
 import json
 import os
 from pathlib import Path, PurePosixPath
+import re
 import shutil
 import subprocess
 import sys
@@ -19,6 +20,84 @@ REFERENCE = ROOT / 'docs/release-reference.json'
 EXTENSIONS = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.webp',
               '.png', '.jpg', '.jpeg', '.ico', '.woff', '.woff2', '.txt', '.xml'}
 VERIFICATION_TOOLS = {'tests/qa-ecasa.mjs', 'tests/qa-ecasa-remote.mjs', 'tests/qa-preview-server.mjs'}
+OFFICIAL_FOLDER = 'ecasa-official-review'
+OFFICIAL_MANIFEST = 'data/ecasa-official-originals.json'
+OFFICIAL_MODULE = 'scripts/ecasa-official-originals.mjs'
+OFFICIAL_SLUGS = {'ferroparque', 'alto-san-joaquin'}
+
+
+def official_manifest_inventory(manifest):
+    """Bind the four private files to the two exact reviewed project origins."""
+    require(manifest.get('schemaVersion') == 1 and
+            manifest.get('baselineCommit') == '0117cc546cc75183f73cae07c90dd093937a819f' and
+            manifest.get('scope') == 'two_named_ecasa_projects' and
+            manifest.get('protectedPreviewOnly') is True, 'Unrecognized official-original review scope')
+    rights = manifest.get('rights', {})
+    require(rights.get('status') == 'pending_explicit_ecasa_authorization' and
+            rights.get('publicWeb') is False and rights.get('irisYapo') is False,
+            'Independent official Ecasa public rights must remain pending')
+    projects = manifest.get('projects', [])
+    require(len(projects) == 2 and {project.get('slug') for project in projects} == OFFICIAL_SLUGS,
+            'Official originals must cover only the two named developments')
+    sources, published = {}, {}
+    for project in projects:
+        slug = project['slug']
+        require(project.get('sourcePageUrl') == 'https://ecasa.cl/proyecto/' + slug,
+                'Official source page belongs to another development')
+        images = project.get('images', [])
+        require(len(images) == 1, 'The exact official review contains one photograph per development')
+        selected = {image.get('localPath') for image in images}
+        require(project.get('previewCover') in selected and project.get('gallery') == [project['previewCover']],
+                'Official publication selection differs from the two reviewed images')
+        for image in images:
+            require(image.get('originCommercialSlug') == slug and image.get('scope') == 'development_general',
+                    'Official image origin transferred to another project or stage')
+            original = image.get('original', {})
+            require(re.fullmatch(r'https://ecasa\.cl/uploads/images/[a-zA-Z0-9_./-]+\.(?:webp|png|jpe?g)',
+                                 original.get('url', '')) is not None and '..' not in original['url'],
+                    'Official resource URL is outside the authorized Ecasa host')
+            for kind, asset in [('original', original), ('selected', image)]:
+                prefix = 'assets/propiedades/' + OFFICIAL_FOLDER + '/' + ('originals/' if kind == 'original' else '') + slug + '/'
+                path = asset.get('localPath', '').lstrip('/')
+                require(asset.get('localPath') == '/' + path and path.startswith(prefix) and
+                        re.fullmatch(r'[a-zA-Z0-9_.-]+\.(?:webp|png|jpe?g)', path[len(prefix):]) is not None and
+                        '..' not in path, 'Official private path belongs to another project or directory')
+                require(path not in sources and re.fullmatch(r'[a-f0-9]{64}', asset.get('sha256', '')) is not None and
+                        all(type(asset.get(key)) is int and asset[key] > 0 for key in ['bytes', 'width', 'height']),
+                        'Duplicate or incomplete official asset inventory')
+                item = {'path': '/' + path, 'sha256': asset['sha256'], 'bytes': asset['bytes'],
+                        'width': asset['width'], 'height': asset['height'], 'kind': kind}
+                sources[path] = item
+                if kind == 'selected':
+                    published[path] = item
+    require(len(sources) == 4 and len(published) == 2, 'Official source/publication inventories are incomplete')
+    return sources, published
+
+
+def official_policy_inventory(policy, files):
+    review = policy.get('officialOriginals')
+    official_files = {name for name in files if name.startswith('assets/propiedades/' + OFFICIAL_FOLDER + '/')}
+    if review is None:
+        require(not official_files, 'Official private files require an exact review inventory')
+        return {}
+    require(policy.get('contentProfile') == 'protected_ecasa_review' and
+            policy.get('officialSourceMedia') == 4 and policy.get('officialPublishedMedia') == 2 and
+            policy.get('ecasaGalleryImages') == 116, 'Official originals require the protected review profile')
+    require(files.get(OFFICIAL_MANIFEST, {}).get('sha256') == review.get('manifestSha256'),
+            'Official manifest differs from private review receipt')
+    sources = review.get('sourceAssets', [])
+    published = review.get('publishedAssets', [])
+    require(len(sources) == 4 and len(published) == 2, 'Official private receipt inventory is incomplete')
+    inventory = {item.get('path', '').lstrip('/'): item for item in sources}
+    require(len(inventory) == 4 and set(inventory) == official_files,
+            'Official private archive differs from exact review inventory')
+    for name, item in inventory.items():
+        require(item.get('path') == '/' + name and
+                files[name].get('sha256') == item.get('sha256') and files[name].get('size') == item.get('bytes'),
+                'Official private bytes differ from reviewed manifest')
+    require({item.get('path') for item in published} == {item.get('path') for item in sources if item.get('kind') == 'selected'} and
+            all(item in sources for item in published), 'Official published inventory includes an original or unreviewed file')
+    return inventory
 
 
 def require(condition, message):
@@ -30,14 +109,18 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def safe_name(name):
+def safe_name(name, official_original_paths=()):
     parts = PurePosixPath(name).parts
     require(bool(parts) and not name.startswith('/') and '\\' not in name and
             all(part not in {'.', '..'} and not part.startswith('.') for part in parts) and
             str(PurePosixPath(name)) == name, 'Unsafe archive path')
     require(PurePosixPath(name).suffix.lower() in EXTENSIONS, 'Private or unexpected file type')
     require(not any(part in {'docs', 'tests', 'contracts', 'node_modules',
-                             'brochure-candidates', 'inventarios', 'originals'} for part in parts),
+                             'brochure-candidates', 'inventarios'} for part in parts),
+            'Private or operational directory in deployment source')
+    require('originals' not in parts or name in official_original_paths and
+            parts[:4] == ('assets', 'propiedades', OFFICIAL_FOLDER, 'originals') and
+            len(parts) == 6 and parts[4] in OFFICIAL_SLUGS,
             'Private or operational directory in deployment source')
     return name
 
@@ -50,10 +133,12 @@ def verify_archive(archive, policy):
         for block in iter(lambda: stream.read(1024 * 1024), b''):
             hasher.update(block)
     require(hasher.hexdigest() == policy['archiveSha256'], 'Archive SHA-256 differs from approval')
-    files, total = {}, 0
+    files, total, official_manifest = {}, 0, None
+    official_original_paths = {item.get('path', '').lstrip('/')
+        for item in (policy.get('officialOriginals') or {}).get('sourceAssets', []) if item.get('kind') == 'original'}
     with tarfile.open(archive, 'r:gz') as bundle:
         for member in bundle:
-            name = safe_name(member.name)
+            name = safe_name(member.name, official_original_paths)
             require(member.isfile() and not member.issym() and not member.islnk(), 'Nonregular archive member')
             require(name not in files, 'Duplicate archive member')
             require(0 <= member.size <= policy['sourceBytes'] - total, 'Archive exceeds approved uncompressed size')
@@ -62,8 +147,19 @@ def verify_archive(archive, policy):
             require(len(data) == member.size, 'Truncated archive member')
             files[name] = {'size': len(data), 'sha256': digest(data),
                            'gitBlob': hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()}
+            if name == OFFICIAL_MANIFEST:
+                official_manifest = json.loads(data)
             total += len(data)
     require(len(files) == policy['sourceFiles'] and total == policy['sourceBytes'], 'Incomplete source archive')
+    if policy.get('officialOriginals') is not None:
+        require(official_manifest is not None and OFFICIAL_MODULE in files,
+                'Official review manifest or overlay is missing from source archive')
+        source_assets, published_assets = official_manifest_inventory(official_manifest)
+        review = policy['officialOriginals']
+        require(review.get('sourceAssets') == [source_assets[name] for name in sorted(source_assets)] and
+                review.get('publishedAssets') == [published_assets[name] for name in sorted(published_assets)],
+                'Official source receipt differs from exact archived manifest')
+        official_policy_inventory(policy, files)
     return files
 
 
@@ -99,6 +195,8 @@ def verify_git_reference(root, files, policy):
             fields, name = record.split(b'\t', 1)
             mode, kind, oid = fields.decode().split()
             tree[name.decode()] = (mode, kind, oid)
+    official = official_policy_inventory(policy, files)
+    require(not set(official) & set(tree), 'Official review images must remain outside public Git source')
     tracked = 0
     for name, info in files.items():
         if name in tree:
@@ -108,8 +206,11 @@ def verify_git_reference(root, files, policy):
             tracked += 1
         else:
             folders = policy.get('privateMediaFolders', ['ingevec-preview'])
-            require(bool(folders) and set(folders) <= {'ingevec-preview', 'ecasa-preview'},
+            require(bool(folders) and set(folders) <= {'ingevec-preview', 'ecasa-preview', OFFICIAL_FOLDER},
                     'Unapproved private media folder policy')
+            if name.startswith('assets/propiedades/' + OFFICIAL_FOLDER + '/'):
+                require(OFFICIAL_FOLDER in folders and name in official,
+                        'Official private source is not in its exact manifest inventory')
             require(any(name.startswith('assets/propiedades/' + folder + '/') for folder in folders),
                     'Unapproved non-Git source file: ' + name)
     require(tracked == policy['trackedSourceFiles'] and len(files) - tracked == policy['privateSourceFiles'],
@@ -127,6 +228,7 @@ def verify_worktree(root, files, policy):
                 'data/public-caption-policy.json', 'scripts/public-fiche-copy.mjs',
                 'scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json',
                 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
+                OFFICIAL_MANIFEST, OFFICIAL_MODULE,
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
     require(not git(root, 'diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
@@ -153,7 +255,7 @@ def extract_verified(archive, destination, files):
     seen = set()
     with tarfile.open(archive, 'r:gz') as bundle:
         for member in bundle:
-            name = safe_name(member.name)
+            name = safe_name(member.name, files)
             require(member.isfile() and name in files and name not in seen, 'Archive changed after verification')
             seen.add(name)
             data = bundle.extractfile(member).read()
@@ -225,6 +327,9 @@ def prepare(archive, output, node, policy, protected_review=False):
         require(result.get('preservedContractualCoverageVerified', result['contractualCoverageVerified']) is True
                 if protected_review else result['contractualCoverageVerified'] is True,
                 'Contractual scope for the selected public batches is unverified')
+        if policy.get('officialOriginals') is not None:
+            require(result.get('officialPublishedMedia') == (policy['officialPublishedMedia'] if result['environment'] == 'preview' else 0),
+                    'Build omitted official review images or leaked them to the public profile')
     require(public_result['environment'] == 'production' and not public_result['noindex'] and
             preview_result['environment'] == 'preview' and preview_result['noindex'], 'Build environment mismatch')
     audit_path = destination / 'public-preview-audit.json'
@@ -256,6 +361,10 @@ def prepare(archive, output, node, policy, protected_review=False):
                'ecasaSourceMedia': policy.get('ecasaSourceMedia'),
                'ecasaPublishedMedia': policy.get('ecasaPublishedMedia'),
                'imageQuality': policy.get('imageQuality'),
+               'officialSourceMedia': policy.get('officialSourceMedia', 0),
+               'officialPublishedMedia': policy.get('officialPublishedMedia', 0),
+               'ecasaGalleryImages': policy.get('ecasaGalleryImages', 114),
+               'officialOriginals': policy.get('officialOriginals'),
                'ecasaPublicWebParityVerified': not protected_review,
                'publicationAuthorized': False, 'integrationAuthorized': False}
     (destination / 'release-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')

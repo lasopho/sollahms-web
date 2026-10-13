@@ -6,6 +6,7 @@ must be written outside the source checkout and both public output directories.
 """
 import argparse
 import hashlib
+import importlib.util
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -14,6 +15,12 @@ import shutil
 import subprocess
 import urllib.parse
 import xml.etree.ElementTree as ET
+
+_release_spec = importlib.util.spec_from_file_location('official_review_inventory',
+    Path(__file__).resolve().parents[1] / 'scripts/prepare-release.py')
+release_inventory = importlib.util.module_from_spec(_release_spec)
+_release_spec.loader.exec_module(release_inventory)
+OFFICIAL_PREFIX = 'assets/propiedades/ecasa-official-review/'
 
 
 INGEVEC = {'centenario-1', 'tocornal', 'vivaceta', 'coronel-godoy',
@@ -222,6 +229,64 @@ def quality_catalogue(catalogue, images, projects, project_info, caption_policy,
     return result
 
 
+def official_images(source, public, preview, require):
+    """Independently check private source bytes and Preview-only publication."""
+    source_paths = {str(path.relative_to(source)) for path in source.rglob('*')
+                    if path.is_file() and str(path.relative_to(source)).startswith(OFFICIAL_PREFIX)}
+    manifest_path = source / release_inventory.OFFICIAL_MANIFEST
+    public_paths = {str(path.relative_to(public)) for path in public.rglob('*')
+                    if path.is_file() and str(path.relative_to(public)).startswith(OFFICIAL_PREFIX)}
+    preview_paths = {str(path.relative_to(preview)) for path in preview.rglob('*')
+                     if path.is_file() and str(path.relative_to(preview)).startswith(OFFICIAL_PREFIX)}
+    require(not public_paths, 'Official Ecasa originals or review images leaked into public output')
+    if not manifest_path.is_file():
+        require(not source_paths and not preview_paths, 'Official images lack their independent review manifest')
+        return None, {}, {}
+    try:
+        manifest = json.loads(manifest_path.read_text())
+        originals, published = release_inventory.official_manifest_inventory(manifest)
+    except (ValueError, KeyError, TypeError, json.JSONDecodeError) as error:
+        require(False, 'Invalid independent official Ecasa review: ' + str(error))
+        return None, {}, {}
+    require(not manifest_path.is_symlink() and (source / release_inventory.OFFICIAL_MODULE).is_file(),
+            'Official review manifest or overlay is missing or symbolic')
+    require(source_paths == set(originals), 'Official source contains an omitted original or unselected candidate')
+    require(preview_paths == set(published), 'Official Preview selection omitted an image or published an original/candidate')
+    for name, item in originals.items():
+        path = source / name
+        require(path.is_file() and not path.is_symlink() and path.resolve() == path and
+                path.stat().st_size == item['bytes'] and digest(path) == item['sha256'],
+                'Official source bytes differ from reviewed originals: ' + name)
+    for name, item in published.items():
+        path = preview / name
+        require(path.is_file() and not path.is_symlink() and path.stat().st_size == item['bytes'] and
+                digest(path) == item['sha256'], 'Official Preview image bytes differ from review: ' + name)
+    private_refs = [item['path'] for item in originals.values() if item['kind'] == 'original'] + [
+        image['original']['url'] for project in manifest['projects'] for image in project['images']]
+    for output in [public, preview]:
+        for path in output.rglob('*'):
+            if path.is_file() and path.suffix in {'.html', '.json', '.js', '.mjs', '.css'}:
+                text = path.read_text()
+                require(not any(reference in text for reference in private_refs),
+                        'Private official original reference leaked: ' + str(path.relative_to(output)))
+                if output == public:
+                    require('/' + OFFICIAL_PREFIX not in text, 'Official review URL leaked into public content: ' + str(path.relative_to(output)))
+    return manifest, originals, published
+
+
+def official_catalogue(catalogue, manifest, caption_policy):
+    result = json.loads(json.dumps(catalogue))
+    selections = {project['slug']: project for project in manifest['projects']}
+    for project in result:
+        selection = selections.get(project['slug'])
+        if selection is not None:
+            image = next(image for image in selection['images'] if image['localPath'] == selection['previewCover'])
+            project['imagenPrincipal'] = image['localPath']
+            project['imagenAlt'] = natural_caption(image['alt'], caption_policy) if caption_policy else image['alt']
+            project.pop('imagenEtapa', None)
+    return result
+
+
 def quality_html_projections(source, review, node):
     # Use the same reviewed, private overlay consumer to replay its byte-level
     # HTML transformation, then independently audit provenance and eligibility.
@@ -230,7 +295,9 @@ const root=process.argv[1];const load=async name=>JSON.parse(await readFile(root
 const {validateEcasaImageQuality,transformEcasaImageQuality}=await import(pathToFileURL(root+'/scripts/ecasa-image-quality.mjs'));
 const {normalizeFicheCopy}=await import(pathToFileURL(root+'/scripts/public-fiche-copy.mjs'));
 const review=await load('data/brochures-ecasa.json');const verified=validateEcasaImageQuality(review,await load('data/fichas-proyectos.json'),await load('data/proyectos.json'),await load('data/ecasa-image-quality.json'),await load('data/fuentes-imagenes.json'));
-const output={public:{},preview:{}};for(const record of review.projects){const original=await readFile(root+'/'+record.slug+'.html','utf8');for(const profile of ['public','preview']){const remove=profile==='preview'?'PUBLIC':'PREVIEW';const keep=profile==='preview'?'PREVIEW':'PUBLIC';let html=original.replace(new RegExp('<!--ECASA_'+remove+'_START-->[\\s\\S]*?<!--ECASA_'+remove+'_END-->','g'),'').replace(new RegExp('<!--ECASA_'+keep+'_(?:START|END)-->','g'),'');html=transformEcasaImageQuality(html,record.slug,verified,{preview:profile==='preview'});output[profile][record.slug+'.html']=normalizeFicheCopy(html);}}process.stdout.write(JSON.stringify(output));"""
+let official=null,officialApi=null;try{const manifest=await load('data/ecasa-official-originals.json');officialApi=await import(pathToFileURL(root+'/scripts/ecasa-official-originals.mjs'));official=await officialApi.validateOfficialOriginals(manifest,{root});}catch(error){if(error.code!=='ENOENT')throw error;}
+const copyQuality=()=>({...verified,images:new Map(verified.images),projects:new Map(verified.projects),aliases:new Map(verified.aliases)});
+const output={public:{},preview:{},officialSummary:official?.summary??null};for(const record of review.projects){const original=await readFile(root+'/'+record.slug+'.html','utf8');for(const profile of ['public','preview']){const remove=profile==='preview'?'PUBLIC':'PREVIEW';const keep=profile==='preview'?'PREVIEW':'PUBLIC';let html=original.replace(new RegExp('<!--ECASA_'+remove+'_START-->[\\s\\S]*?<!--ECASA_'+remove+'_END-->','g'),'').replace(new RegExp('<!--ECASA_'+keep+'_(?:START|END)-->','g'),'');html=transformEcasaImageQuality(html,record.slug,copyQuality(),{preview:profile==='preview'});html=normalizeFicheCopy(html);if(official)html=officialApi.transformOfficialOriginals(html,record.slug,copyQuality(),official,{preview:profile==='preview'});output[profile][record.slug+'.html']=html;}}process.stdout.write(JSON.stringify(output));"""
     result = subprocess.run([node, '--input-type=module', '-e', script, str(source)], check=True, capture_output=True, text=True)
     return json.loads(result.stdout)
 
@@ -405,6 +472,12 @@ def audit(source, public, preview, protected_review=False, node=None):
     quality_path = source / 'data/ecasa-image-quality.json'
     quality_policy = json.loads(quality_path.read_text()) if quality_path.is_file() else None
     quality_choices, quality_projects, quality_project_info, quality_projections = {}, {}, {}, None
+    official_manifest, official_sources, official_published = official_images(source, public, preview, require)
+    counts['officialSourceMedia'] = len(official_sources)
+    counts['officialPublishedMedia'] = len(official_published)
+    if official_manifest:
+        require(protected_review and quality_policy is not None,
+                'Official originals require a protected review with its frozen base quality policy')
     if quality_policy:
         require(quality_policy.get('schemaVersion') == 1 and quality_policy.get('baselineCommit') == '2d34997f8fd82b775c0697b20493674773e7fdc2' and
                 quality_policy.get('scope') == 'ecasa_images_only', 'Unexpected visual review baseline or scope')
@@ -422,6 +495,10 @@ def audit(source, public, preview, protected_review=False, node=None):
         counts['ecasaGalleryImages'] = sum(image['decision'] == 'keep' for image in quality_choices.values())
         counts['ecasaExcludedImages'] = len(excluded)
         require(counts['ecasaGalleryImages'] == 114, 'The 114 approved Ecasa gallery photographs must remain exact')
+        counts['ecasaGalleryImagesBeforeOfficial'] = counts['ecasaGalleryImages']
+        counts['ecasaGalleryImages'] += len(official_published)
+        if official_manifest:
+            require(counts['ecasaGalleryImages'] == 116, 'Official supplements must produce exactly 116 Ecasa gallery images')
         try:
             quality_projections = quality_html_projections(source, ecasa_review, node or shutil.which('node'))
         except (OSError, subprocess.CalledProcessError, json.JSONDecodeError, TypeError) as error:
@@ -501,7 +578,7 @@ def audit(source, public, preview, protected_review=False, node=None):
     actual_ecasa_public = {f for f in files if f.startswith('assets/propiedades/ecasa-preview/')}
     require(actual_ecasa_public == (set() if protected_review else ecasa_chosen),
             'Ecasa media public eligibility does not match the requested audit profile')
-    expected_preview_files = files | ecasa_chosen if protected_review else files
+    expected_preview_files = files | ecasa_chosen | set(official_published) if protected_review else files
     require(preview_files == expected_preview_files, 'Protected Preview and public build contain unexpected different files')
     expected_preview_catalogue = json.loads(json.dumps(catalogue))
     if quality_policy:
@@ -523,6 +600,8 @@ def audit(source, public, preview, protected_review=False, node=None):
                     require(record['slug'] == 'terratolten' and image['etapa'] == 'Etapa 1',
                             'The reviewed catalogue cover acquired an unaccredited stage: ' + record['slug'])
                     expected_by_slug[record['slug']]['imagenEtapa'] = image['etapa']
+    if official_manifest:
+        expected_preview_catalogue = official_catalogue(expected_preview_catalogue, official_manifest, caption_policy)
     require(preview_catalogue == expected_preview_catalogue, 'Ecasa Preview changed commercial data beyond reviewed covers')
     preview_documents = {page: Document((preview / page).read_text()) for page in expected_pages & preview_files}
     for legacy, (target, stage) in LEGACY_TARGETS.items():
@@ -570,6 +649,7 @@ def audit(source, public, preview, protected_review=False, node=None):
             'productionDeploymentAuthorized': False,
             'displayCopyPolicySha256': digest(policy_path) if caption_policy is not None else None,
             'imageQualityPolicySha256': digest(quality_path) if quality_policy is not None else None,
+            'officialOriginalsManifestSha256': digest(source / release_inventory.OFFICIAL_MANIFEST) if official_manifest else None,
             'providerAvailabilityVerified': False}
 
 

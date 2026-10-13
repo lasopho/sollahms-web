@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 292,
-  "expectedReleaseOnlyCases": 24,
-  "expectedPythonFixtureTests": 103,
+  "expectedGitNodeTests": 302,
+  "expectedReleaseOnlyCases": 25,
+  "expectedPythonFixtureTests": 113,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -290,6 +290,28 @@
         {
           "name": "real private packaging publishes 395 selected resources, keeps 74 Ecasa plans and excludes four source photographs",
           "reason": "Requires all preserved private AJ/Ingevec/Ecasa bytes and tests actual output exclusion, source preservation and 74 plans in isolated builds."
+        }
+      ]
+    },
+    {
+      "file": "tests/ecasa-official-originals.test.mjs",
+      "reason": "Synthetic encoded files and immutable Git sources verify native dimensions, independent rights, stage ownership and scope without importing private original photographs.",
+      "cases": [
+        "official originals validate exact encoded files and restrict publication to two protected development galleries",
+        "independent authorization, baseline, canonical identities and exact source pages fail closed",
+        "unsafe URLs, private-original publication and borrowed project or stage bindings are rejected",
+        "missing, symlinked, corrupted and geometrically inconsistent file evidence cannot build",
+        "only native extraction or unchanged copies are accepted; resize, synthesis and lossy conversion are forbidden",
+        "lossless pixel receipts are mandatory and the optional decoder verifies every exact crop byte",
+        "Preview overlay adds natural galleries and coherent covers idempotently while preserving all protected fragments",
+        "catalogue override changes only two display covers and preserves every commercial price and all 22 stage snapshots",
+        "original catalogue, snapshots, quality policy, source HTML and 74 plan bindings remain byte exact",
+        "null cover and sparse gallery never erase existing images or publish unselected private originals"
+      ],
+      "releaseRequired": [
+        {
+          "name": "real private official originals decode to exact native rectangles and retain frozen evidence",
+          "reason": "Requires the four privately materialized Ecasa official files and a local Sharp decoder to prove exact RGBA crop identity and unchanged original bytes."
         }
       ]
     }

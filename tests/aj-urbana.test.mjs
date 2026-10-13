@@ -1,5 +1,5 @@
 import { copyEcasaImageQualityInputs, assertEcasaQualityCoverFields as assertEcasaCoverFields,
-  assertEcasaQualityPublicCatalogue } from './ecasa-quality-fixture.mjs';
+  assertEcasaQualityPublicCatalogue, reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
 import test from 'node:test';
 import { naturalCaption, normalizeFicheCopy } from '../scripts/public-fiche-copy.mjs';
 import assert from 'node:assert/strict';
@@ -188,7 +188,7 @@ test('531 historical assets and handlers retain strict baselines outside the sco
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
   assert.deepEqual(listFiles('assets').filter((file) => !file.startsWith(ASSETS.slice(1)) &&
-    !file.startsWith(INGEVEC_ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
+    !file.startsWith(INGEVEC_ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });
 

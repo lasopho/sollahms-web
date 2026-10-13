@@ -9,6 +9,7 @@ import argparse
 import gzip
 import hashlib
 import io
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -19,6 +20,9 @@ import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
+spec = importlib.util.spec_from_file_location('review_release_inventory', ROOT / 'scripts/prepare-release.py')
+release = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(release)
 MEDIA_FOLDERS = ('aj-urbana-preview', 'ingevec-preview', 'ecasa-preview')
 MANIFESTS = ('brochures-aj-urbana.json', 'brochures-ingevec.json', 'brochures-ecasa.json')
 VERIFICATION_TOOLS = ('tests/qa-ecasa.mjs', 'tests/qa-ecasa-remote.mjs', 'tests/qa-preview-server.mjs')
@@ -131,6 +135,7 @@ def assert_legacy_redirects(root, page_texts):
 
 
 def selected_source_files(root):
+    official_sources, _ = release.official_manifest_inventory(json.loads((root / release.OFFICIAL_MANIFEST).read_text()))
     for name, digest in QUALITY_ORIGINALS.items():
         assert sha((root / name).read_bytes()) == digest, 'Original research/commercial image evidence changed: ' + name
     quality = json.loads((root / 'data/ecasa-image-quality.json').read_text())
@@ -191,7 +196,7 @@ def selected_source_files(root):
     assert preserved_media_count == 269, 'The previously approved AJ/Ingevec batch must preserve 269 resources'
     ecasa_media = sorted([['/' + path, digest] for path, digest in media.items() if path.startswith('assets/propiedades/ecasa-preview/')])
     assert len(ecasa_media) == 130 and sha(json.dumps(ecasa_media, ensure_ascii=False, separators=(',', ':')).encode()) == ECASA_MEDIA_SHA256, 'The exact 130 Ecasa resource paths and bytes must be preserved'
-    files = set(media)
+    files = set(media) | set(official_sources)
     files.update(pages)
     files.update(('vercel.json', 'robots.txt', 'sitemap.xml', 'data/proyectos.json',
                   'data/hipotecario.json', *(f'data/{name}' for name in MANIFESTS),
@@ -200,6 +205,7 @@ def selected_source_files(root):
         files.add('scripts/ecasa-publication.mjs')
     files.update(('scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json'))
     files.update(('scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json', *QUALITY_ORIGINALS))
+    files.update((release.OFFICIAL_MANIFEST, release.OFFICIAL_MODULE))
     for folder in ('api', 'lib'):
         files.update(str(p.relative_to(root)) for p in (root / folder).rglob('*')
                      if p.is_file() and p.suffix in {'.js', '.mjs'})
@@ -207,7 +213,7 @@ def selected_source_files(root):
         relative = str(path.relative_to(root))
         if not path.is_file() or '/brochure-candidates/' in relative or relative in retired_exclusive:
             continue
-        if any(f'/propiedades/{folder}/' in relative for folder in MEDIA_FOLDERS):
+        if any(f'/propiedades/{folder}/' in relative for folder in (*MEDIA_FOLDERS, release.OFFICIAL_FOLDER)):
             continue  # Only the exact manifest above can select these assets.
         if path.suffix.lower() in PUBLIC_EXTENSIONS:
             files.add(relative)
@@ -218,6 +224,8 @@ def selected_source_files(root):
         assert '..' not in Path(relative).parts and not relative.startswith('.')
         if relative in media:
             assert sha(path.read_bytes()) == media[relative], f'Changed selected media: {relative}'
+        if relative in official_sources:
+            assert path.stat().st_size == official_sources[relative]['bytes'] and sha(path.read_bytes()) == official_sources[relative]['sha256'], f'Changed official review source: {relative}'
     return sorted(files)
 
 
@@ -279,6 +287,7 @@ def main():
     review_commit = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD']).decode().strip()
     tool_inventory = verification_tools(ROOT, review_commit)
     files = selected_source_files(ROOT)
+    official_sources, official_published = release.official_manifest_inventory(json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
     inventory = [{'file': name, 'size': (ROOT / name).stat().st_size,
                   'sha256': sha((ROOT / name).read_bytes())} for name in files]
     with tempfile.TemporaryDirectory(prefix='sollahms-reproducible-review-') as temporary:
@@ -300,6 +309,7 @@ def main():
             for asset in [*record['images'], *(model['plan'] for model in record['models'])]}
         assert {asset['path']: asset['sha256'] for asset in receipt['media']} == {
             path: digest for path, digest in source_inventory.items() if path not in VISUAL_EXCLUDED}, 'Published media differs from the reviewed visual selection'
+        assert receipt['officialOriginals']['sourceAssets'] == [official_sources[name] for name in sorted(official_sources)] and receipt['officialOriginals']['publishedAssets'] == [official_published[name] for name in sorted(official_published)], 'Official transport/publication differs from the exact reviewed selection'
         preview_output = public_files(stage / 'dist')
         public_inventory = [{'file': name, 'sha256': sha(content)}
                             for name, content in preview_output.items()]
@@ -337,6 +347,12 @@ def main():
                 'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
                 'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': 126,
                 'imageQuality': receipt['ecasaImageQuality'],
+                'officialSourceMedia': len(official_sources), 'officialPublishedMedia': len(official_published),
+                'ecasaGalleryImages': 114 + len(official_published),
+                'officialOriginals': {'manifestSha256': sha((ROOT / release.OFFICIAL_MANIFEST).read_bytes()),
+                    'sourceAssets': [official_sources[name] for name in sorted(official_sources)],
+                    'publishedAssets': [official_published[name] for name in sorted(official_published)],
+                    'summary': receipt['officialOriginals']['summary']},
                 'contractualCoverageVerified': receipt['contractualCoverageVerified'],
                 'sourceFileCount': len(files), 'sourceBytes': sum(f['size'] for f in inventory),
                 'archive': {'privatePath': str(archive), 'sha256': sha(data), 'size': len(data)},

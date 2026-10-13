@@ -17,20 +17,26 @@ const projects = JSON.parse(await readFile(resolve(root, 'data/proyectos.json'))
 const review = JSON.parse(await readFile(resolve(root, 'data/brochures-ecasa.json')));
 const quality = JSON.parse(await readFile(resolve(root, 'data/ecasa-image-quality.json')));
 const qualityBySlug = new Map(quality.projects.map(project => [project.slug, project]));
+const official = JSON.parse(await readFile(resolve(root, 'data/ecasa-official-originals.json')));
+const officialBySlug = new Map(official.projects.map(project => [project.slug, project]));
 const deploymentConfig = JSON.parse(await readFile(resolve(root, 'vercel.json')));
 const assetOrigins = Object.fromEntries(review.projects.flatMap(record =>
   [...record.images, ...record.models.map(model => model.plan)].map(asset => [asset.localPath, asset.originCommercialSlug])));
+for (const project of official.projects) for (const image of project.images) assetOrigins[image.localPath] = project.slug;
 const selectedSlugs = new Set(option('--slugs', '').split(',').filter(Boolean));
 const origin = new URL(base).origin;
 const results = [], checks = [], issues = [], screenshots = [];
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
-const viewports = [{ name: 'desktop', width: 1440, height: 1000 }, { name: 'tablet', width: 768, height: 1024 }, { name: 'mobile', width: 390, height: 844 }];
+const viewports = [{ name: 'desktop', width: 1440, height: 1000 }, { name: 'tablet', width: 768, height: 1024 }, { name: 'mobile', width: 390, height: 844 },
+  { name: 'desktop-retina', width: 1440, height: 1000, dpr: 2, targetsOnly: true },
+  { name: 'tablet-retina', width: 768, height: 1024, dpr: 2, targetsOnly: true },
+  { name: 'mobile-retina', width: 390, height: 844, dpr: 2, targetsOnly: true }];
 const check = (condition, label) => { checks.push({ label, passed: !!condition }); if (!condition) issues.push(label); };
 
 try {
   for (const viewport of viewports) {
-    const context = await browser.newContext({ viewport });
+    const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: viewport.dpr ?? 1 });
     await context.route('**/*', async route => {
       const request = route.request(), url = new URL(request.url());
       if (!['GET', 'HEAD'].includes(request.method())) {
@@ -50,6 +56,7 @@ try {
     let consoleErrors = [];
     page.on('pageerror', error => consoleErrors.push(error.message));
     const selected = (viewport.name === 'desktop' ? projects : projects.filter(project => project.inmobiliaria === 'Ecasa'))
+      .filter(project => !viewport.targetsOnly || officialBySlug.has(project.slug))
       .filter(project => !selectedSlugs.size || selectedSlugs.has(project.slug));
     for (const project of selected) {
       consoleErrors = [];
@@ -72,6 +79,11 @@ try {
         });
         return {
           heading: document.querySelector('h1')?.textContent.trim(),
+          devicePixelRatio,
+          heroGeometry: [...document.querySelectorAll('.hero-image')].map(image => ({ path: new URL(image.src).pathname,
+            naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
+            width: image.getBoundingClientRect().width, height: image.getBoundingClientRect().height,
+            objectFit: getComputedStyle(image).objectFit })),
           overflow: document.documentElement.scrollWidth - innerWidth,
           failedImages: images.filter(image => !image.naturalWidth).map(image => image.src),
           images: images.length, plans: document.querySelectorAll('.aj-plan-link').length,
@@ -104,14 +116,24 @@ try {
       if (visual) {
         const gallery = await page.locator('.gallery-grid img').evaluateAll(images => images.map(image => new URL(image.src).pathname));
         const expected = visual.images.filter(image => image.decision === 'keep').map(image => image.localPath);
+        expected.push(...(officialBySlug.get(project.slug)?.gallery ?? []));
         check(JSON.stringify([...new Set(gallery)].sort()) === JSON.stringify([...expected].sort()), viewport.name + ' accepted image gallery ' + project.slug);
         check(await page.locator('.gallery-grid').evaluateAll(grids => grids.every(grid => grid.querySelector('img'))), viewport.name + ' no empty gallery ' + project.slug);
-        const approvedHero = visual.covers.preview.hero;
-        const approvedOrigin = visual.images.find(image => image.localPath === approvedHero)?.originCommercialSlug;
+        const originalSelection = officialBySlug.get(project.slug);
+        const approvedHero = originalSelection?.previewCover ?? visual.covers.preview.hero;
+        const approvedOrigin = originalSelection ? project.slug : visual.images.find(image => image.localPath === approvedHero)?.originCommercialSlug;
         check(await page.locator('.hero-image').evaluateAll((images, expected) => images.length === 1 && images.every(image =>
           image.complete && image.naturalWidth && new URL(image.src).pathname === expected.path &&
           image.getAttribute('data-commercial-stage') === expected.origin), { path: approvedHero, origin: approvedOrigin }),
           viewport.name + ' approved valid hero ' + project.slug);
+        if (originalSelection) {
+          check(evidence.devicePixelRatio === (viewport.dpr ?? 1), viewport.name + ' actual device pixel ratio ' + project.slug);
+          for (const image of originalSelection.images) check(await page.locator('.gallery-grid img').evaluateAll((images, expected) => {
+            const selected = images.filter(image => new URL(image.src).pathname === expected.localPath);
+            return selected.length === 1 && selected.every(image => image.naturalWidth === expected.width && image.naturalHeight === expected.height &&
+              image.closest('[data-official-scope]')?.getAttribute('data-official-scope') === 'development_general' && getComputedStyle(image).objectFit === 'cover');
+          }, image), viewport.name + ' original native dimensions and general scope ' + project.slug);
+        }
         for (let index = 0; index < await page.locator('.gallery-grid').count(); index++) {
           const galleryImages = page.locator('.gallery-grid').nth(index).locator('img');
           for (let picture = 0; picture < await galleryImages.count(); picture++) await galleryImages.nth(picture).scrollIntoViewIfNeeded();
@@ -136,6 +158,23 @@ try {
         const path = resolve(output, viewport.name + '-' + project.slug + '.png');
         await page.screenshot({ path }); screenshots.push(path);
       }
+    }
+    if (viewport.targetsOnly) {
+      await page.goto(base + '/proyectos.html', { waitUntil: 'domcontentloaded' });
+      await page.waitForFunction(() => !document.querySelector('#search')?.disabled && document.querySelectorAll('.catalog-card').length > 0);
+      await page.locator('#search').fill('Ecasa');
+      await page.waitForTimeout(100);
+      for (const project of official.projects) {
+        const card = page.locator('.catalog-card[data-project="' + project.slug + '"]');
+        await card.scrollIntoViewIfNeeded();
+        await card.locator('img').evaluate(image => { image.loading = 'eager'; });
+        await card.locator('img').evaluate(async image => { await image.decode(); });
+        check(await card.locator('img').evaluate((image, path) => image.complete && image.naturalWidth && new URL(image.src).pathname === path,
+          project.previewCover), viewport.name + ' valid original catalogue cover ' + project.slug);
+        const cardPath = resolve(output, viewport.name + '-catalogue-' + project.slug + '.png');
+        await card.screenshot({ path: cardPath }); screenshots.push(cardPath);
+      }
+      await context.close(); continue;
     }
     for (const path of ['/proyectos.html', '/comparador-hipotecario.html', '/contacto.html?proyecto=alto-san-joaquin-3', '/agenda-asesoria.html?proyecto=terratolten-2']) {
       const response = await page.goto(base + path, { waitUntil: 'domcontentloaded' });
@@ -242,6 +281,13 @@ try {
       const response = await request.request.get(base + asset.localPath, requestOptions);
       check(response.status() === 200 && createHash('sha256').update(await response.body()).digest('hex') === asset.sha256, 'Media hash ' + asset.localPath);
     }
+  }
+  for (const project of official.projects) for (const image of project.images) {
+    const response = await request.request.get(base + image.localPath, requestOptions);
+    check(response.status() === 200 && createHash('sha256').update(await response.body()).digest('hex') === image.sha256,
+      'Selected original image hash ' + image.localPath);
+    check((await request.request.get(base + image.original.localPath, requestOptions)).status() === 404,
+      'Raw official download remains private ' + project.slug);
   }
   await request.close();
 } finally { await browser.close(); }

@@ -135,6 +135,28 @@ const imageQuality = validateEcasaImageQuality(ecasaReview, JSON.parse(researchB
 const publishedEcasaAssets = selectEcasaPublishedAssets(ecasaReview, imageQuality, { preview: ecasaIncluded });
 const publishedEcasaPaths = new Set(publishedEcasaAssets.map(asset => asset.localPath));
 const excludedImagePaths = ecasaExcludedImagePaths(imageQuality, { preview: ecasaIncluded });
+// The extra original photographs are independent of the frozen brochure and
+// quality records. Historical synthetic fixtures have no such sidecar; real
+// release preparation requires both this manifest and its four private files.
+let officialOriginals = null, officialOperations = null, officialOriginalsBytes = null;
+try { officialOriginalsBytes = await readFile(join(root, 'data/ecasa-official-originals.json')); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+if (officialOriginalsBytes) {
+  officialOperations = await import('./ecasa-official-originals.mjs');
+  officialOriginals = await officialOperations.validateOfficialOriginals(JSON.parse(officialOriginalsBytes), { root });
+}
+const officialPublished = officialOriginals
+  ? officialOperations.selectPublishedOfficialAssets(officialOriginals, { preview: ecasaIncluded }) : [];
+const officialPublishedPaths = new Set(officialPublished.map(asset => join(root, asset.localPath.slice(1))));
+const officialAssetReceipt = (asset, kind) => ({ path: asset.localPath, sha256: asset.sha256,
+  bytes: asset.bytes, width: asset.width, height: asset.height, kind });
+const officialReceipt = officialOriginals ? {
+  manifestSha256: createHash('sha256').update(officialOriginalsBytes).digest('hex'),
+  sourceAssets: [...officialOriginals.originals.values()].map(asset => officialAssetReceipt(asset, 'original'))
+    .concat([...officialOriginals.assets.values()].map(asset => officialAssetReceipt(asset, 'selected'))).sort((a, b) => a.path.localeCompare(b.path)),
+  publishedAssets: officialPublished.map(asset => officialAssetReceipt(asset, 'selected')).sort((a, b) => a.path.localeCompare(b.path)),
+  summary: officialOriginals.summary,
+} : null;
 // Selection changes publication, never the original files or their evidence.
 for (const image of imageQuality.images.values()) {
   const path = join(root, image.localPath.slice(1));
@@ -310,6 +332,8 @@ if (ecasaIncluded) {
 // bundled separately by Vercel, never copied into the public directory.
 catalogueOutput = JSON.stringify(applyEcasaCatalogueImageQuality(JSON.parse(catalogueOutput), imageQuality,
   { preview: ecasaIncluded }), null, 2) + '\n';
+if (officialOriginals) catalogueOutput = JSON.stringify(officialOperations.applyOfficialCatalogue(
+  JSON.parse(catalogueOutput), imageQuality, officialOriginals, { preview: ecasaIncluded }), null, 2) + '\n';
 await rm(output, { recursive: true, force: true });
 await mkdir(join(output, 'data'), { recursive: true });
 for (const name of pages) {
@@ -326,6 +350,8 @@ for (const name of pages) {
   if (sourceProjects.some(project => project.slug + '.html' === name)) html = normalizeFicheCopy(html);
   if (sourceProjects.some(project => project.inmobiliaria === 'Ecasa' && project.slug + '.html' === name))
     html = transformEcasaImageQuality(html, name.slice(0, -5), imageQuality, { preview: ecasaIncluded });
+  if (officialOriginals) html = officialOperations.transformOfficialOriginals(html, name.slice(0, -5),
+    imageQuality, officialOriginals, { preview: ecasaIncluded });
   if (preview) {
     html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
     if (name === 'agenda-asesoria.html' || name === 'contacto.html' || name === 'comparador-hipotecario.html') {
@@ -344,6 +370,13 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
     const info = await lstat(source);
     // No symlink can turn a nominal image directory into private content.
     if (info.isSymbolicLink()) throw new Error('Symbolic links are excluded from public assets');
+    const officialPrefix = 'assets/propiedades/ecasa-official-review';
+    if (path === officialPrefix || path.startsWith(officialPrefix + '/')) {
+      // Raw downloaded banners, unused candidates and documentary receipts
+      // remain private even inside the protected Preview.
+      return info.isDirectory() ? [...officialPublishedPaths].some(file => file.startsWith(source + sep))
+        : officialPublishedPaths.has(source);
+    }
     for (const [folder, included] of [['aj-urbana-preview', ajIncluded], ['ingevec-preview', ingevecIncluded], ['ecasa-preview', ecasaIncluded]]) {
       const prefix = 'assets/propiedades/' + folder;
       if (path === prefix || path.startsWith(prefix + '/')) {
@@ -369,6 +402,10 @@ await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.string
   ecasaContractualCoverageVerified: ecasaRights.publicWeb,
   ecasaReviewMedia: publishedEcasaAssets.length,
   ecasaImageQuality: { policySha256: createHash('sha256').update(qualityBytes).digest('hex'), ...imageQuality.summary },
+  officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0,
+  officialPublishedMedia: officialPublished.length,
+  ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null,
+  officialOriginals: officialReceipt,
   media: mediaInventory.sort((a, b) => a.path.localeCompare(b.path)),
 }, null, 2) + '\n');
-console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));
+console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0, officialPublishedMedia: officialPublished.length, ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));

@@ -1,5 +1,7 @@
 """Controls for the protected-only Ecasa transport reference; no platform calls."""
 import importlib.util
+import copy
+import json
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -104,6 +106,44 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
         record['images'][0]['originCommercialSlug'] = 'ferroparque'
         with self.assertRaisesRegex(ValueError, 'another project'):
             preview.manifest_media(manifests)
+
+    def official_metadata(self):
+        manifest = json.loads((MODULE.parents[1] / 'data/ecasa-official-originals.json').read_text())
+        sources, published = preview.release.official_manifest_inventory(manifest)
+        metadata = copy.deepcopy(self.metadata)
+        metadata.update(officialSourceMedia=4, officialPublishedMedia=2, ecasaGalleryImages=116,
+            officialOriginals={'manifestSha256': 'e' * 64,
+                'sourceAssets': [sources[name] for name in sorted(sources)],
+                'publishedAssets': [published[name] for name in sorted(published)], 'summary': {'publicWeb': False}})
+        self.files.update({name: {'sha256': item['sha256'], 'size': item['bytes']} for name, item in sources.items()})
+        self.files[preview.release.OFFICIAL_MANIFEST] = {'sha256': 'e' * 64}
+        return metadata
+
+    def test_official_reference_transports_originals_without_publishing_them(self):
+        reference = self.reference(self.official_metadata())
+        self.assertIn('ecasa-official-review', reference['privateMediaFolders'])
+        self.assertEqual(reference['officialSourceMedia'], 4)
+        self.assertEqual(reference['officialPublishedMedia'], 2)
+        self.assertEqual(reference['ecasaGalleryImages'], 116)
+        self.assertEqual(reference['selectedBrochureMedia'], 395)
+        self.assertEqual(reference['imageQuality']['keptImages'], 114)
+        self.assertFalse(reference['publicationAuthorized'])
+
+    def test_official_reference_rejects_omitted_sources_changed_bytes_and_original_publication(self):
+        original = self.official_metadata()
+        for mutation in ['missing', 'changed', 'published_original', 'changed_gallery_count']:
+            metadata = copy.deepcopy(original)
+            if mutation == 'missing':
+                metadata['officialOriginals']['sourceAssets'].pop()
+            elif mutation == 'changed':
+                metadata['officialOriginals']['sourceAssets'][0]['sha256'] = '0' * 64
+            elif mutation == 'published_original':
+                original_asset = next(item for item in metadata['officialOriginals']['sourceAssets'] if item['kind'] == 'original')
+                metadata['officialOriginals']['publishedAssets'][0] = original_asset
+            else:
+                metadata['ecasaGalleryImages'] = 117
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                self.reference(metadata)
 
 
 if __name__ == '__main__':

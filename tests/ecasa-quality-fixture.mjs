@@ -9,6 +9,17 @@ const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const json=file=>JSON.parse(readFileSync(resolve(ROOT,file)));
 const quality=validateEcasaImageQuality(json('data/brochures-ecasa.json'),json('data/fichas-proyectos.json'),
   json('data/proyectos.json'),json('data/ecasa-image-quality.json'),json('data/fuentes-imagenes.json'));
+// Historical asset-list guards allow only these four explicitly reviewed new
+// private paths. Their original/selected hashes and pixels have a separate
+// release test; every historical asset is still checked against its Git blob.
+export const reviewedOfficialSourceFiles = Object.freeze([
+  'assets/propiedades/ecasa-official-review/ferroparque/cocina-living-8f4a01f128d58e46.webp',
+  'assets/propiedades/ecasa-official-review/alto-san-joaquin/living-terraza-1c280f71ad82ecac.webp',
+  'assets/propiedades/ecasa-official-review/originals/ferroparque/59cef73347f67699.webp',
+  'assets/propiedades/ecasa-official-review/originals/alto-san-joaquin/1c280f71ad82ecac.webp',
+]);
+assert.deepEqual(json('data/ecasa-official-originals.json').projects.flatMap(project => project.images.flatMap(image =>
+  [image.localPath.slice(1), image.original.localPath.slice(1)])).toSorted(), [...reviewedOfficialSourceFiles].sort());
 
 export function copyEcasaImageQualityInputs(destination) {
   for(const file of ['scripts/ecasa-image-quality.mjs','data/ecasa-image-quality.json',

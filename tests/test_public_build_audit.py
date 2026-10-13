@@ -1,5 +1,6 @@
 """Negative controls for the independent, offline launch audit."""
 import hashlib
+import copy
 import importlib.util
 import json
 from pathlib import Path
@@ -17,7 +18,7 @@ spec.loader.exec_module(audit_module)
 class PublicBuildAuditTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix='sollahms-public-audit-negative-')
-        self.base = Path(self.temporary.name)
+        self.base = Path(self.temporary.name).resolve()
         self.source, self.public, self.preview = [self.base / p for p in ['source', 'public', 'preview']]
         (self.source / 'data').mkdir(parents=True)
         redirects = [{'source': '/' + slug + suffix, 'destination': '/' + target + '.html#etapa-' + str(stage), 'permanent': True}
@@ -391,6 +392,83 @@ class PublicBuildAuditTests(unittest.TestCase):
             self.assertIn('const evidence="Brochure, pág. 1";', preview)
             self.assertIn('Imágenes del proyecto', preview)
         self.assertTrue(self.result()['ok'], self.result()['errors'])
+
+    def official_fixture(self):
+        manifest = json.loads((MODULE.parents[1] / 'data/ecasa-official-originals.json').read_text())
+        for project in manifest['projects']:
+            image = project['images'][0]
+            for kind, asset in [('original', image['original']), ('selected', image)]:
+                payload = ('independent official fixture:' + asset['localPath']).encode()
+                asset['bytes'], asset['sha256'] = len(payload), hashlib.sha256(payload).hexdigest()
+                path = self.source / asset['localPath'].lstrip('/')
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(payload)
+                if kind == 'selected':
+                    selected = self.preview / asset['localPath'].lstrip('/')
+                    selected.parent.mkdir(parents=True, exist_ok=True)
+                    selected.write_bytes(payload)
+        (self.source / 'data/ecasa-official-originals.json').write_text(json.dumps(manifest))
+        (self.source / 'scripts').mkdir(exist_ok=True)
+        (self.source / 'scripts/ecasa-official-originals.mjs').write_text('// independent overlay fixture')
+        return manifest
+
+    def official_errors(self):
+        errors = []
+        result = audit_module.official_images(self.source, self.public, self.preview,
+            lambda condition, message: errors.append(message) if not condition else None)
+        return result, errors
+
+    def test_official_source_inventory_keeps_originals_private_and_publishes_only_selected_images(self):
+        self.official_fixture()
+        (manifest, sources, published), errors = self.official_errors()
+        self.assertEqual(errors, [])
+        self.assertEqual((len(sources), len(published)), (4, 2))
+        self.assertFalse(manifest['rights']['publicWeb'])
+        self.assertFalse({path for path in published if '/originals/' in path})
+
+    def test_official_public_file_leak_is_rejected_even_when_bytes_are_correct(self):
+        manifest = self.official_fixture()
+        image = manifest['projects'][0]['images'][0]
+        target = self.public / image['localPath'].lstrip('/')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((self.source / image['localPath'].lstrip('/')).read_bytes())
+        self.assertTrue(any('public output' in issue for issue in self.official_errors()[1]))
+
+    def test_official_original_in_preview_and_private_source_reference_are_rejected(self):
+        manifest = self.official_fixture()
+        original = manifest['projects'][0]['images'][0]['original']
+        target = self.preview / original['localPath'].lstrip('/')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((self.source / original['localPath'].lstrip('/')).read_bytes())
+        page = self.preview / 'ferroparque.html'
+        page.write_text(page.read_text().replace('</body>', '<img src="' + original['url'] + '"></body>'))
+        errors = self.official_errors()[1]
+        self.assertTrue(any('original/candidate' in issue for issue in errors))
+        self.assertTrue(any('Private official original reference' in issue for issue in errors))
+
+    def test_official_changed_original_or_cross_project_origin_fails_audit(self):
+        manifest = self.official_fixture()
+        original = manifest['projects'][0]['images'][0]['original']
+        (self.source / original['localPath'].lstrip('/')).write_bytes(b'changed-original')
+        self.assertTrue(any('source bytes differ' in issue for issue in self.official_errors()[1]))
+        manifest['projects'][0]['images'][0]['originCommercialSlug'] = 'alto-san-joaquin'
+        (self.source / 'data/ecasa-official-originals.json').write_text(json.dumps(manifest))
+        self.assertTrue(any('another project or stage' in issue for issue in self.official_errors()[1]))
+
+    def test_official_catalogue_overlay_preserves_financial_values_and_every_stage_snapshot(self):
+        manifest = self.official_fixture()
+        catalogue = json.loads((self.public / 'data/proyectos.json').read_text())
+        for project in catalogue:
+            project['precioDesdeUF'] = 1234
+            project['etapasComerciales'] = [{'slug': project['slug'] + '-2', 'precioDesdeUF': 4321,
+                                           'imagenPrincipal': '/assets/generic.webp'}]
+        result = audit_module.official_catalogue(catalogue, manifest, None)
+        restored = copy.deepcopy(result)
+        for before, after in zip(catalogue, restored):
+            if before['slug'] in {'ferroparque', 'alto-san-joaquin'}:
+                after['imagenPrincipal'] = before['imagenPrincipal']
+                after.pop('imagenAlt', None)
+        self.assertEqual(restored, catalogue)
 
 
 if __name__ == '__main__':

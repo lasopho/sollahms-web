@@ -1,5 +1,6 @@
 """Offline failure controls for release preparation; no platform mutations."""
 import hashlib
+import copy
 import importlib.util
 import io
 import json
@@ -213,6 +214,73 @@ class ReleasePreparationTests(unittest.TestCase):
         tools[0]['sha256'] = '0' * 64
         with self.assertRaisesRegex(ValueError, 'private receipt'):
             release.verify_verification_tools(self.root, policy)
+
+
+    def official_archive(self):
+        manifest = json.loads((MODULE.parents[1] / release.OFFICIAL_MANIFEST).read_text())
+        records = []
+        for project in manifest['projects']:
+            image = project['images'][0]
+            for asset in [image['original'], image]:
+                payload = ('fixture:' + asset['localPath']).encode()
+                asset['bytes'], asset['sha256'] = len(payload), release.digest(payload)
+                records.append((asset['localPath'].lstrip('/'), payload, 'file'))
+        manifest_bytes = json.dumps(manifest).encode()
+        records.extend([(release.OFFICIAL_MANIFEST, manifest_bytes, 'file'),
+                        (release.OFFICIAL_MODULE, b'// synthetic reviewed overlay', 'file')])
+        sources, published = release.official_manifest_inventory(manifest)
+        archive, policy = self.archive(records)
+        policy.update(contentProfile='protected_ecasa_review', officialSourceMedia=4,
+            officialPublishedMedia=2, ecasaGalleryImages=116,
+            officialOriginals={'manifestSha256': release.digest(manifest_bytes),
+                'sourceAssets': [sources[name] for name in sorted(sources)],
+                'publishedAssets': [published[name] for name in sorted(published)]})
+        return archive, policy
+
+    def test_official_archive_binds_four_private_sources_and_two_published_images(self):
+        archive, policy = self.official_archive()
+        files = release.verify_archive(archive, policy)
+        self.assertEqual(len(files), 6)
+        self.assertEqual(len(release.official_policy_inventory(policy, files)), 4)
+        self.assertEqual(sum(item['kind'] == 'original' for item in policy['officialOriginals']['sourceAssets']), 2)
+
+    def test_official_archive_rejects_original_publication_and_changed_source_receipts(self):
+        archive, original = self.official_archive()
+        for mutation in ['publish_original', 'changed_hash', 'missing_source', 'production_profile']:
+            policy = copy.deepcopy(original)
+            if mutation == 'publish_original':
+                policy['officialOriginals']['publishedAssets'][0] = next(item for item in policy['officialOriginals']['sourceAssets'] if item['kind'] == 'original')
+            elif mutation == 'changed_hash':
+                policy['officialOriginals']['sourceAssets'][0]['sha256'] = '0' * 64
+            elif mutation == 'missing_source':
+                policy['officialOriginals']['sourceAssets'].pop()
+            else:
+                policy['contentProfile'] = 'public_web_parity'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                release.verify_archive(archive, policy)
+
+    def test_official_folder_permission_cannot_replace_its_exact_manifest_inventory(self):
+        archive, policy = self.official_archive()
+        files = release.verify_archive(archive, policy)
+        policy.update(approvedAppCommit=self.policy['approvedAppCommit'], trackedSourceFiles=2, privateSourceFiles=4,
+                      privateMediaFolders=['ingevec-preview', 'ecasa-preview', release.OFFICIAL_FOLDER])
+        tree = b''.join(b'100644 blob ' + files[name]['gitBlob'].encode() + b'\t' + name.encode() + b'\0'
+                        for name in [release.OFFICIAL_MANIFEST, release.OFFICIAL_MODULE])
+        replies = [policy['approvedAppCommit'].encode() + b'\n', b'sha1\n', tree]
+        with patch.object(release, 'git', side_effect=replies):
+            self.assertEqual(release.verify_git_reference(self.root, files, policy), 2)
+        bad = dict(policy, privateMediaFolders=['ingevec-preview', 'ecasa-preview'])
+        with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'exact manifest inventory'):
+            release.verify_git_reference(self.root, files, bad)
+        bad = dict(policy)
+        bad.pop('officialOriginals')
+        with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'exact review inventory'):
+            release.verify_git_reference(self.root, files, bad)
+        private_name = policy['officialOriginals']['sourceAssets'][0]['path'].lstrip('/')
+        tracked_private = tree + b'100644 blob ' + files[private_name]['gitBlob'].encode() + b'\t' + private_name.encode() + b'\0'
+        replies = [policy['approvedAppCommit'].encode() + b'\n', b'sha1\n', tracked_private]
+        with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'outside public Git'):
+            release.verify_git_reference(self.root, files, policy)
 
 
 if __name__ == '__main__':
