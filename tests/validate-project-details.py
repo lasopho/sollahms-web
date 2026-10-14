@@ -9,6 +9,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
 import xml.etree.ElementTree as ET
+from norte_verde_scope import original_data as original_norte_verde_data
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -67,9 +68,10 @@ research = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
 ledger = json.loads((ROOT / 'data/registro-fichas.json').read_text())
 records = {r['slug']: r for r in research}
 slugs = {p['slug'] for p in projects}
-assert len(slugs) == len(projects) == 137, 'Catalogue has lost or duplicated projects'
+assert len(slugs) == len(projects) == 134, 'Catalogue has lost or duplicated projects'
+assert len([p for p in projects if p['inmobiliaria'] == 'Norte Verde']) == 17
 assert len([p for p in projects if p['inmobiliaria'] == 'Ecasa']) == 15
-assert len([p for p in projects if p['inmobiliaria'] != 'Ecasa']) == 122
+assert len([p for p in projects if p['inmobiliaria'] != 'Ecasa']) == 119
 assert len([p for p in projects if p['inmobiliaria'] == 'Ingevec']) == 16
 assert slugs == set(records) == {x['slug'] for x in ledger}, 'Incomplete inventory or research'
 assert len(research) == len(ledger) == len(projects), 'Duplicated audit records'
@@ -77,7 +79,7 @@ assert all(r['fichaDesarrollada'] for r in ledger), 'A detail page is missing'
 baseline = json.loads((ROOT / 'tests/fixtures/nordico-catalogue-baseline.json').read_text())
 def canonical_digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-previous_projects = [project for project in projects if project['slug'] != 'edificio-nordico']
+previous_projects = [project for project in original_norte_verde_data(projects, 'data/proyectos.json') if project['slug'] != 'edificio-nordico']
 assert len(previous_projects) == baseline['count'] == 136
 assert canonical_digest(previous_projects) == baseline['projectsSha256'], 'Nórdico integration changed an existing commercial catalogue row'
 assert canonical_digest([project for project in previous_projects if project['inmobiliaria'] == 'Ecasa']) == baseline['ecasaSha256'], 'The 15 approved Ecasa projects changed'
@@ -153,7 +155,10 @@ for project in projects:
     stage_records = {stage['slug']: stage['investigacion'] for stage in stage_entries}
     all_records = list(stage_records.values()) if stage_records else [record]
     for image in record.get('images', []):
-        assert image.get('sourceUrl', '').startswith('https://'), f'{slug}: official image without provenance'
+        if project['inmobiliaria'] == 'Norte Verde':
+            assert image.get('sourceUrl', '').endswith('/assets/brochures/norte-verde/' + slug + '.pdf'), f'{slug}: image without its own original PDF provenance'
+        else:
+            assert image.get('sourceUrl', '').startswith('https://'), f'{slug}: official image without provenance'
     for tour in [tour for source in all_records for tour in source.get('virtualTours', [])]:
         assert tour.get('sourceUrl', '').startswith('https://'), f'{slug}: tour without provenance'
     host_config = re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', text, re.S)

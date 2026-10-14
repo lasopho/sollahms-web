@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { projectNorteVerdeFile } from './norte-verde-preservation.mjs';
 
 export const NORDICO_SLUG = 'edificio-nordico';
 export function originalLebenHtml(bytes) {
@@ -11,6 +12,7 @@ export function originalLebenHtml(bytes) {
     .replace(/<!--LEBEN_PUBLIC_START-->([\s\S]*?)<!--LEBEN_PUBLIC_END-->/g, '$1'));
 }
 export function assertPreservedSource(path, current, baseline) {
+  current = projectNorteVerdeFile(path, current);
   if (['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json'].includes(path)) {
     const rows = JSON.parse(current);
     assert.equal(rows.filter(row => row.slug === NORDICO_SLUG).length, 1);

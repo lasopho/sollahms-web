@@ -1,6 +1,7 @@
 import { copyEcasaImageQualityInputs, assertEcasaQualityCoverFields as assertEcasaCoverFields,
   assertEcasaQualityPublicCatalogue, reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
 import test from 'node:test';
+import { prepareHistoricalNorteVerdePackagingFixture, readHistoricalNorteVerdeFile } from './norte-verde-preservation.mjs';
 import { naturalCaption, normalizeFicheCopy } from '../scripts/public-fiche-copy.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync,
@@ -225,7 +226,7 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
-  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file)),
+  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/norte-verde.css'),
     [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });
@@ -443,7 +444,7 @@ function createPackagingFixture() {
   for (const folder of [ASSETS, AJ_ASSETS]) {
     cpSync(resolve(ROOT, folder.slice(1)), join(fixture, folder.slice(1)), { recursive: true });
   }
-  for (const project of catalogue) copyFileSync(resolve(ROOT, project.slug + '.html'), join(fixture, project.slug + '.html'));
+  for (const project of catalogue) writeFileSync(join(fixture, project.slug + '.html'), readHistoricalNorteVerdeFile(project.slug + '.html'));
   const sentinel = '/* historical public asset */';
   writeFileSync(join(fixture, 'assets/js/unchanged.js'), sentinel);
   return fixture;
@@ -452,6 +453,7 @@ function packageFixture(fixture, environment, extraEnv = {}) {
   const env = { ...process.env, VERCEL_GIT_COMMIT_REF: 'codex/integracion-financiera-sollahms' };
   Object.assign(env, extraEnv);
   if (environment === undefined) delete env.VERCEL_ENV; else env.VERCEL_ENV = environment;
+  prepareHistoricalNorteVerdePackagingFixture(fixture);
   return execFileSync(process.execPath, [join(fixture, 'scripts/package-vercel.mjs')], { cwd: fixture, env, stdio: 'pipe' });
 }
 

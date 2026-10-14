@@ -1,6 +1,7 @@
 import { copyEcasaImageQualityInputs, assertEcasaQualityCoverFields as assertEcasaCoverFields,
   assertEcasaQualityPublicCatalogue, reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
 import test from 'node:test';
+import { prepareHistoricalNorteVerdePackagingFixture } from './norte-verde-preservation.mjs';
 import { naturalCaption, normalizeFicheCopy } from '../scripts/public-fiche-copy.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync, rmSync, copyFileSync, cpSync, existsSync } from 'node:fs';
@@ -188,7 +189,7 @@ test('531 historical assets and handlers retain strict baselines outside the sco
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
   assert.deepEqual(listFiles('assets').filter((file) => !file.startsWith(ASSETS.slice(1)) &&
-    !file.startsWith(INGEVEC_ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
+    !file.startsWith(INGEVEC_ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file) && file !== CSS && file !== 'assets/css/norte-verde.css'), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });
 
@@ -433,6 +434,7 @@ test('a synthetic pending contract publishes AJ only in Preview and removes revi
     assert.equal(fixturePages.size, 144);
     for (const file of fixturePages) writeFileSync(join(fixtureRoot, file), ECASA_SLUGS.has(file.replace(/\.html$/, '')) ? readFileSync(resolve(ROOT,file)) : current(file));
     const script = join(fixtureRoot, 'scripts/package-vercel.mjs');
+    prepareHistoricalNorteVerdePackagingFixture(fixtureRoot);
     // Exercise the fallback policy independently of the verified real batch.
     for (const name of ['brochures-aj-urbana.json', 'brochures-ingevec.json']) {
       const path = join(fixtureRoot, 'data', name);

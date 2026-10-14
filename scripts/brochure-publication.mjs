@@ -2,6 +2,7 @@
 // Public website use and redistribution of the source repository are distinct
 // channels; a protected review is already authorized by the user.
 import { createHash } from 'node:crypto';
+import { assertNorteVerdeCatalogue, restoreNorteVerdeCatalogue } from './norte-verde-publication.mjs';
 
 export const BROCHURE_INGEVEC_SLUGS = Object.freeze([
   'centenario-1', 'tocornal', 'vivaceta', 'coronel-godoy', 'diagonal-paraguay',
@@ -59,6 +60,10 @@ export const brochureFingerprint = value => createHash('sha256')
   .update(JSON.stringify(canonicalBrochureValue(value))).digest('hex');
 
 export function assertBrochureCatalogue(projects) {
+  if (projects.length === 134) {
+    assertNorteVerdeCatalogue(projects);
+    projects = restoreNorteVerdeCatalogue(projects);
+  }
   // Nórdico is the only authorized catalogue addition. All 136 consolidated
   // objects retain the existing fingerprints and identity checks below.
   const nordico = projects.filter(project => project.slug === 'edificio-nordico');

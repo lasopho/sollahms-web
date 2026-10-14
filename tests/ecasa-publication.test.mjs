@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { prepareHistoricalNorteVerdePackagingFixture } from './norte-verde-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, copyFileSync, mkdirSync, mkdtempSync, rmSync,
   unlinkSync, symlinkSync, existsSync } from 'node:fs';
@@ -173,7 +174,7 @@ function packagingFixture() {
     copyFileSync(resolve(source, path), destination);
   };
   for (const path of ['scripts/package-vercel.mjs', 'scripts/public-fiche-copy.mjs', 'scripts/ecasa-image-quality.mjs',
-    'scripts/brochure-publication.mjs', 'scripts/leben-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/public-caption-policy.json',
+    'scripts/brochure-publication.mjs', 'scripts/norte-verde-publication.mjs', 'data/norte-verde-baseline.json', 'scripts/leben-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/public-caption-policy.json',
     'data/ecasa-image-quality.json', 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
     'data/proyectos.json', 'data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
     'assets/css/aj-brochure-preview.css', 'sitemap.xml', 'robots.txt']) copy(path);
@@ -247,6 +248,7 @@ function packagingFixture() {
   writeFileSync(researchPath,JSON.stringify(research));
   writeFileSync(officialPath,JSON.stringify(official));
   writeFileSync(policyPath,JSON.stringify(policy));
+  prepareHistoricalNorteVerdePackagingFixture(root);
   const run=extra=>spawnSync(process.execPath,[join(root,'scripts/package-vercel.mjs')],{cwd:root,
     env:{...process.env,VERCEL_ENV:'preview',VERCEL_GIT_COMMIT_REF:'codex/ecasa-cartera-definitiva',...extra},encoding:'utf8',timeout:15000});
   return {root,record,run};

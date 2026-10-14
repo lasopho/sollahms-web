@@ -13,6 +13,7 @@ import subprocess
 import sys
 from pathlib import Path
 from ecasa_scope import restore_successor_data
+from norte_verde_scope import historical_file
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = 'bb69615d03230cbab76bdc2678938cc741f80e86'
@@ -88,6 +89,7 @@ def expected_cleanup_file(path):
 
 def restore_map_cleanup_asset(path, current):
     """Restore only after byte-exact verification of the tiny style/gate edits."""
+    current = historical_file(path, current)
     original = baseline_bytes(path)
     if path in {'vercel.json', 'scripts/package-vercel.mjs'}:
         reviewed = json.loads((ROOT / 'tests/ecasa-reviewed-output.json').read_text())

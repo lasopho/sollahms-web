@@ -5,9 +5,10 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { assertPreservedSource } from './leben-preservation.mjs';
+import { restoreNorteVerdeData, projectNorteVerdeFile, readHistoricalNorteVerdeFile } from './norte-verde-preservation.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')));
+const catalogue = restoreNorteVerdeData(JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json'))));
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
 assert.equal(ficheFiles.size, 137);
 export const ECASA_NEW_SLUGS = new Set(['alto-san-joaquin-2','alto-san-joaquin-3','terratolten-2','nucleo-costanera-2','terratolten']);
@@ -15,10 +16,12 @@ export const ECASA_ALIAS_SLUGS = new Set(['nucleo-costanera-2','ferroparque-2','
 export const ECASA_RETIRED_SLUGS = new Set(['bosquemar','altos-del-wayra','robles-del-aconcagua','el-real','edificio-ha-strip-center']);
 export const ECASA_SLUGS = new Set(catalogue.filter(p=>p.inmobiliaria==='Ecasa').flatMap(p=>[p.slug,...p.etapasComerciales.map(stage=>stage.slug)]));
 export function restoreEcasaData(actual, file) {
+  actual = projectNorteVerdeFile(file, actual);
   return JSON.parse(execFileSync('python3', [resolve(ROOT,'tests/ecasa_scope.py'),'--data',file],
     {cwd:ROOT,input:actual,maxBuffer:8*1024*1024}));
 }
 export function restoreEcasaContext(file, actual) {
+  if (!file.endsWith('.html')) actual = projectNorteVerdeFile(file, actual);
   const review=JSON.parse(readFileSync(resolve(ROOT,'tests/ecasa-context-reviewed-output.json')));
   if(!Object.hasOwn(review.files,file)) return actual;
   return execFileSync('python3',[resolve(ROOT,'tests/ecasa_scope.py'),'--context',file],{cwd:ROOT,input:actual,maxBuffer:8*1024*1024});
@@ -101,7 +104,7 @@ export function readCommercialFile(file) {
     if(ECASA_NEW_SLUGS.has(file.replace(/\.html$/, ''))) return input;
     return restoreReviewedTourFile(file,input);
   }
-  let actual = readFileSync(resolve(ROOT,file));
+  let actual = projectNorteVerdeFile(file, readHistoricalNorteVerdeFile(file));
   if (file === 'edificio-nordico.html') return actual;
   if (file.endsWith('.html')) actual = Buffer.from(actual.toString().replace(/<!--LEBEN_PREVIEW_START-->[\s\S]*?<!--LEBEN_PREVIEW_END-->/g, '').replace(/<!--LEBEN_PUBLIC_START-->([\s\S]*?)<!--LEBEN_PUBLIC_END-->/g, '$1'));
   if (automaticEmbedAssets.has(file)) return restoreReviewedEmbedAsset(file, actual);

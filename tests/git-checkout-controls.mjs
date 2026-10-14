@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { restoreNorteVerdeData, prepareHistoricalNorteVerdePackagingFixture } from './norte-verde-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -22,7 +23,7 @@ const git = (...args) => execFileSync('git', args, { cwd: ROOT });
 const configuration = json('vercel.json');
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false },
+  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false, 'codex/norte-verde-cartera-definitiva': false },
     'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
@@ -38,6 +39,8 @@ function assertSecurityHeaders(config) {
 test('manual deployment gates reject missing integration protection, enabled branches and overlapping permissive patterns', () => {
   assertManualDeploymentGates(configuration);
   for (const mutation of [
+    config => { delete config.git.deploymentEnabled['codex/norte-verde-cartera-definitiva']; },
+    config => { config.git.deploymentEnabled['codex/norte-verde-cartera-definitiva'] = true; },
     config => { delete config.git.deploymentEnabled[INTEGRATION]; },
     config => { delete config.git.deploymentEnabled[TOUR_REVIEW]; },
     config => { config.git.deploymentEnabled[TOUR_REVIEW] = true; },
@@ -77,12 +80,12 @@ test('shared security headers reject missing and weakened framing, MIME, referre
   assert.ok(policy);
 });
 
-test('all 121 non-Ecasa catalogue objects and 16 Ingevec identities retain the approved portfolio', () => {
+test('the approved Norte Verde successor preserves all other catalogue objects and 16 Ingevec identities', () => {
   const catalogue = json('data/proyectos.json');
   assertBrochureCatalogue(catalogue);
-  assert.equal(catalogue.length, 137);
+  assert.equal(catalogue.length, 134);
   assert.equal(catalogue.filter(project => project.inmobiliaria === 'Ingevec').length, 16);
-  assert.deepEqual(catalogue.filter(p=>p.slug !== 'edificio-nordico' && p.inmobiliaria !== 'Ecasa'),
+  assert.deepEqual(restoreNorteVerdeData(catalogue).filter(p=>p.slug !== 'edificio-nordico' && p.inmobiliaria !== 'Ecasa'),
     JSON.parse(git('show', APPROVED_PORTFOLIO + ':data/proyectos.json')).filter(p=>p.inmobiliaria !== 'Ecasa'));
   assert.deepEqual(read('data/hipotecario.json'), git('show', APPROVED_PORTFOLIO + ':data/hipotecario.json'));
   const changed = structuredClone(catalogue);
@@ -122,7 +125,7 @@ test('Git CI never publishes private originals or secretly imports the 165 Ingev
   assert.equal(paths.some(path => /(?:^|\/)(?:brochure-candidates|contratos?|private-input)(?:\/|$)/i.test(path)), false);
 });
 
-test('the 136 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
+test('the 134 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
   const catalogue = json('data/proyectos.json');
   const pages = readdirSync(ROOT).filter(path => /^[^/]+\.html$/.test(path));
   assert.deepEqual(new Set(pages), new Set([...BROCHURE_PUBLIC_PAGES, ...catalogue.map(project => project.slug + '.html')]));
@@ -142,7 +145,7 @@ test('the 136 fiches retain routes, contextual actions and approved image/plan r
 function assertIncompleteBuildRejected(environment, partial) {
   const fixture = mkdtempSync(join(tmpdir(), 'sollahms-incomplete-git-ci-'));
   try {
-    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/leben-publication.mjs', 'scripts/ecasa-publication.mjs',
+    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/norte-verde-publication.mjs', 'data/norte-verde-baseline.json', 'scripts/leben-publication.mjs', 'scripts/ecasa-publication.mjs',
       'scripts/ecasa-image-quality.mjs','scripts/public-fiche-copy.mjs','data/public-caption-policy.json',
       'data/ecasa-image-quality.json','data/fichas-proyectos.json','data/fuentes-imagenes.json',
       'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
@@ -154,6 +157,7 @@ function assertIncompleteBuildRejected(environment, partial) {
       const target = resolve(fixture, asset.localPath.slice(1));
       mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, 'synthetic CI bytes; never a publishable image');
     }
+    prepareHistoricalNorteVerdePackagingFixture(fixture);
     const env = { ...process.env, VERCEL_ENV: environment, VERCEL_GIT_COMMIT_REF: INTEGRATION };
     const result = spawnSync(process.execPath, [resolve(fixture, 'scripts/package-vercel.mjs')], { cwd: fixture, env, encoding: 'utf8', timeout: 15_000 });
     assert.equal(result.error, undefined);

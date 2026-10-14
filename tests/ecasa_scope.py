@@ -11,6 +11,7 @@ import json
 import subprocess
 from pathlib import Path
 from leben_scope import original_html, original_context, assert_base_records
+from norte_verde_scope import historical_file as original_norte_verde_file
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = 'f1e9bf1715cc99d095a367eba9028a9a1ad2b026'
@@ -112,7 +113,7 @@ def validate_successor_data(path, actual=None):
     current = json.loads(actual if actual is not None else (ROOT / path).read_bytes())
     expected = expected_consolidation(path)
     if any(row['slug'] == 'edificio-nordico' for row in current):
-        assert_base_records(current, expected, path)
+        current = assert_base_records(current, expected, path)
     else:
         assert len(current) == len({row['slug'] for row in current}) == 136, path + ': expected 136 unique canonical projects'
         assert current == expected, path + ': changes exceed the exact 15-project/22-origin Ecasa consolidation'
@@ -144,7 +145,7 @@ def validate_alias_route(slug):
     assert not (ROOT / (slug + '.html')).exists(), slug + ': alias cannot remain an independent fiche'
     reviewed = json.loads(REVIEWED_OUTPUT.read_text())
     assert reviewed['baselineCommit'] == CONSOLIDATION_BASE, 'Ecasa consolidated route review is not frozen'
-    config = (ROOT / 'vercel.json').read_bytes()
+    config = original_norte_verde_file('vercel.json', (ROOT / 'vercel.json').read_bytes())
     assert hashlib.sha256(config).hexdigest() == reviewed['redirectConfigSha256'], 'Ecasa reviewed route configuration changed'
     canonical, number = ALIASES[slug]
     destination = '/' + canonical + '.html#etapa-' + str(number)

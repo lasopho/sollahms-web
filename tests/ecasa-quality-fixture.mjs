@@ -5,14 +5,19 @@ import { readFileSync, copyFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateEcasaImageQuality } from '../scripts/ecasa-image-quality.mjs';
+import { existsSync } from 'node:fs';
+import { restoreNorteVerdeData } from './norte-verde-preservation.mjs';
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const json=file=>JSON.parse(readFileSync(resolve(ROOT,file)));
 const quality=validateEcasaImageQuality(json('data/brochures-ecasa.json'),json('data/fichas-proyectos.json'),
   json('data/proyectos.json'),json('data/ecasa-image-quality.json'),json('data/fuentes-imagenes.json'));
+const norteVerdeAssets = existsSync(resolve(ROOT, 'data/brochures-norte-verde.json'))
+  ? json('data/brochures-norte-verde.json').projects.flatMap(project => [project.document, ...project.images, ...project.models.map(model => model.plan)]).map(asset => asset.localPath.slice(1)) : [];
 // Historical asset-list guards allow only these four explicitly reviewed new
 // private paths. Their original/selected hashes and pixels have a separate
 // release test; every historical asset is still checked against its Git blob.
 export const reviewedOfficialSourceFiles = Object.freeze([
+  ...norteVerdeAssets,
   ...json('data/fichas-proyectos.json').find(project => project.slug === 'edificio-nordico').images.map(image => image.localPath.slice(1)),
   'assets/propiedades/ecasa-official-review/ferroparque/cocina-living-8f4a01f128d58e46.webp',
   'assets/propiedades/ecasa-official-review/alto-san-joaquin/living-terraza-1c280f71ad82ecac.webp',
@@ -27,6 +32,17 @@ export function copyEcasaImageQualityInputs(destination) {
     'data/fichas-proyectos.json','data/fuentes-imagenes.json',
     ...[...quality.images.values()].filter(image=>image.kind==='official').map(image=>image.localPath.slice(1))]) {
     const target=resolve(destination,file);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(ROOT,file),target);
+  }
+  const norteVerdeFiles = ['scripts/norte-verde-publication.mjs', 'data/norte-verde-baseline.json'];
+  if (existsSync(resolve(ROOT, 'data/brochures-norte-verde.json'))) {
+    norteVerdeFiles.push('data/brochures-norte-verde.json');
+    for (const project of json('data/brochures-norte-verde.json').projects) {
+      norteVerdeFiles.push(project.document.localPath.slice(1), ...project.images.map(image => image.localPath.slice(1)),
+        ...project.models.map(model => model.plan.localPath.slice(1)));
+    }
+  }
+  for (const file of norteVerdeFiles) {
+    const target = resolve(destination, file); mkdirSync(dirname(target), { recursive: true }); copyFileSync(resolve(ROOT, file), target);
   }
 }
 
@@ -49,6 +65,8 @@ export function assertEcasaQualityCoverFields(before,after,{preview=true}={}) {
 }
 
 export function assertEcasaQualityPublicCatalogue(before,after) {
+  before = restoreNorteVerdeData(before);
+  after = restoreNorteVerdeData(after);
   assert.deepEqual(after.map(project=>project.slug),before.map(project=>project.slug));
   for(const original of before) {
     const published=after.find(project=>project.slug===original.slug);

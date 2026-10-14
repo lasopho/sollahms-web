@@ -55,6 +55,10 @@ NOTICE = '<div role="note" style="padding:14px 24px;background:#003229;color:#ff
 HIDDEN_AUDIT = re.compile(r'fuentes oficiales|fecha de verificaci[oó]n|procedencia documental|registro de investigaci[oó]n|auditor[ií]a|\bsha256\b|\bhash(?:es)?\b|Yapo/IRIS', re.I)
 
 
+NORTE_VERDE_ORIGINALS = {'bordevivo': 'a03d8cfd168820d42920846b85eb7fee023feaf6277118661f5b480cfac040a6', 'carmen-marin': '7fe99d4c2c4adde49670b8a849a7d800fc473655a1568b4c27fd1735e5950951', 'edificio-ecuador': '9e8e5d5e8eb1657ac0de438dae88581d3bdda1f11f1c636e84df139091ba345b', 'edif-origen-atacama-3008': 'a498c413854ec372475692f7fde9a208cf1d9d8d0ea8a89a37445a3ebf497d8a', 'edificio-dual-390-lto': '0e29ce7b9f49f96b57bf1ccaabae759cbf379a5cdd9aabc00bffd19139db5233', 'edificio-lira-622': 'b0838a91b908c1c84e844a7c053a7bc7b34edd933b2af4e57abcd7aeec88b691', 'edificio-plaza-nova': 'b6179e82cd769e9480274642092e7c64d5a61d5b21cfdebba96fee52d450ca2b', 'edificio-san-francisco-1204': '060a1e709069e01439b93f85c292e1481b2380667065b23f71e2e41c6841319d', 'edificio-verne': 'f532853b33840d2d53b80175219fe85bb66295d8dbfcb513c6b0b84addc0ee69', 'irarrazaval': 'e8919b2e367d1884098ed11f244786bf8f4fefbac2355bc1fd57717261f0d2d2', 'parque-panama': '15a75e8590a12a3154b65472fab63a4d113515b2bcee1d5b2c9bcdeb3f253c11', 'parque-quinta': '71586591136ea9ce406658f36b73ec3c7e50609d5c667b6efc6f5f7a94bf5b3c', 'playa-penuelas': '96405c2b508095ed236a8b3135dc1b1fc7b0d01ce28a117854afbca1dced2ead', 'playa-serena': '66e3bcb903fceb214a2835c3e5d522f9203849974ef806b02c8f8c69897e8320', 'quintavista': 'b7526e1c5032730958cfd2d3eed3128ba7e3df5052de811920f955343ab05900', 'vicuna-mackenna-6896': '17f3c20e370f40019c3ceda6d9345c4f55bcdfdd5a8e0455ebc11a6f6770379f', 'vista-bulnes': '9fcfe8660c212aaa39fe4f89511fdfe7e371d4fb98d17260be6327a4fc8c6b83'}
+NORTE_VERDE_RETIRED = {'vergara-domeyko', 'atelier-prat-oficinas', 'corrientes-oficinas'}
+
+
 class Document(HTMLParser):
     def __init__(self, text):
         super().__init__(convert_charrefs=True)
@@ -347,7 +351,111 @@ const output={public:{},preview:{},officialSummary:official?.summary??null,manua
     return json.loads(result.stdout)
 
 
+def audit_norte_verde_preview(source, public, preview, protected_review):
+    """Audit the authorized Preview without constructing a Production twin."""
+    errors = []
+    def require(value, message):
+        if not value:
+            errors.append(message)
+    require(protected_review and public == preview, 'Norte Verde is Preview-only; use the same protected output for both audit paths')
+    review = json.loads((source / 'data/brochures-norte-verde.json').read_text())
+    require(review.get('schemaVersion') == 1 and {p['slug'] for p in review['projects']} == set(NORTE_VERDE_ORIGINALS), 'Exactly seventeen Norte Verde originals are required')
+    baseline_path = source / 'data/norte-verde-baseline.json'
+    require(digest(baseline_path) == '2874865cb1ba9f323c1ed669eb673548776877d34927e21fd83887beaea3ec23', 'Frozen Norte Verde preservation evidence changed')
+    baseline = json.loads(baseline_path.read_text())
+    def canonical(value):
+        if isinstance(value, dict):
+            return {key: canonical(item) for key, item in sorted(value.items())}
+        if isinstance(value, list):
+            return [canonical(item) for item in value]
+        if isinstance(value, float) and value.is_integer():
+            return int(value)
+        return value
+    for path, key in [('data/proyectos.json', 'otherCatalogueSha256'), ('data/fichas-proyectos.json', 'otherResearchSha256'), ('data/registro-fichas.json', 'otherLedgerSha256')]:
+        rows = [row for row in json.loads((source / path).read_text()) if row['slug'] not in NORTE_VERDE_ORIGINALS]
+        value = hashlib.sha256(json.dumps(canonical(rows), ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
+        require(len(rows) == 117 and value == baseline[key], 'All 117 other developer records must remain exact: ' + path)
+    for row in baseline['otherHtml']:
+        require((source / row['path']).is_file() and digest(source / row['path']) == row['sha256'], 'Unrelated source fiche changed: ' + row['path'])
+    catalogue = json.loads((preview / 'data/proyectos.json').read_text())
+    slugs = {p['slug'] for p in catalogue}
+    require(len(catalogue) == len(slugs) == 134 and {p['slug'] for p in catalogue if p['inmobiliaria'] == 'Norte Verde'} == set(NORTE_VERDE_ORIGINALS), 'Preview must contain 134 projects with exactly seventeen Norte Verde identities')
+    require(not NORTE_VERDE_RETIRED & slugs, 'An excluded Norte Verde identity re-entered the Preview')
+    files = {str(path.relative_to(preview)) for path in preview.rglob('*') if path.is_file()}
+    expected_pages = PAGES | {slug + '.html' for slug in slugs}
+    require({path for path in files if '/' not in path and path.endswith('.html')} == expected_pages, 'Preview routes differ from the 134 authorized projects')
+    allowed_pdfs = {'assets/brochures/norte-verde/' + slug + '.pdf': value for slug, value in NORTE_VERDE_ORIGINALS.items()}
+    require({path for path in files if path.lower().endswith('.pdf')} == set(allowed_pdfs), 'Only the seventeen supplied original PDFs may enter this protected Preview')
+    for path in files:
+        require(path in expected_pages | PUBLIC_DATA | {'robots.txt', 'sitemap.xml'} or path.startswith('assets/'), 'Unexpected Preview file: ' + path)
+        require(not (preview / path).is_symlink(), 'Symbolic Preview resource: ' + path)
+        if re.search(r'(^|/)(?:\.[^/]+|brochure-candidates)(/|$)|\.(?:pdf|zip|docx?|xlsx?|toml|env)$', path, re.I):
+            require(path in allowed_pdfs and digest(preview / path) == allowed_pdfs[path], 'Private/unreviewed document leaked: ' + path)
+    require({path for path in files if path.startswith('data/')} == PUBLIC_DATA, 'Private source manifests must remain outside Preview routes')
+    documents = {page: Document((preview / page).read_text()) for page in expected_pages if page in files}
+    local_references = 0
+    for page, document in documents.items():
+        require('noindex' in document.metas.get('robots', ''), 'Preview page must remain noindex: ' + page)
+        visible = ' '.join(document.visible)
+        if page == 'comparador-hipotecario.html':
+            # This existing title describes the institutions behind financial
+            # offers, rather than an internal fiche research/audit section.
+            # Permit its one exact occurrence only when the entire preceding
+            # comparator and its Preview projection remain independently pinned.
+            original_comparator = source / page
+            require(digest(original_comparator) == 'fe21cdd598221b307cc7c92d25ab12eb8f83e0895add975acef6bb191794f56e', 'Historical comparator source bytes changed')
+            require(normalized_preview((preview / page).read_text()) == original_comparator.read_text(), 'Unrelated comparator Preview content changed')
+            institutions_title = 'Instituciones y fuentes oficiales consultadas'
+            require(visible.count(institutions_title) == 1, 'Historical comparator institutions title changed')
+            visible = visible.replace(institutions_title, '', 1)
+        require(not HIDDEN_AUDIT.search(visible), 'Internal audit text displayed: ' + page)
+        for ref in document.refs:
+            url = urllib.parse.urlsplit(ref)
+            if url.scheme in {'data', 'mailto', 'tel'} or url.path.startswith('/api/'):
+                continue
+            require(url.scheme != 'javascript', 'Unsafe script reference: ' + page)
+            if url.netloc and url.netloc != 'sollahms.cl':
+                require(url.scheme == 'https', 'Insecure external reference: ' + page)
+                continue
+            path = urllib.parse.unquote(urllib.parse.urljoin('/' + page, url.path or '/' + page)).lstrip('/') or 'index.html'
+            require(path in files, 'Broken Preview reference: ' + page + ' -> ' + path)
+            if url.fragment and path in documents:
+                require(urllib.parse.unquote(url.fragment) in documents[path].ids, 'Broken Preview anchor: ' + page + ' -> ' + path)
+            local_references += 1
+    for project in catalogue:
+        page = project['slug'] + '.html'
+        if page not in documents:
+            continue
+        document = documents[page]
+        require(document.h1 == 1 and bool(document.metas.get('description')), 'Missing SEO description or unique heading: ' + page)
+        require([link.get('href') for link in document.links if link.get('rel') == 'canonical'] == ['https://sollahms.cl/' + page], 'Incorrect Preview canonical: ' + page)
+        for action in ['contacto', 'agenda-asesoria']:
+            require(any(ref.startswith('/' + action + '.html?proyecto=' + project['slug']) for ref in document.refs), 'Missing contextual action: ' + page)
+    native_media = set()
+    for record in review['projects']:
+        slug = record['slug']; document = record['document']; page = (preview / (slug + '.html')).read_text()
+        require(document['sha256'] == NORTE_VERDE_ORIGINALS[slug] and document['localPath'] == '/assets/brochures/norte-verde/' + slug + '.pdf', 'Brochure transferred to another project: ' + slug)
+        for asset in [document, *record['images'], *(model['plan'] for model in record['models'])]:
+            path = asset['localPath'].lstrip('/')
+            require(path in files and digest(preview / path) == asset['sha256'], 'Reviewed original/derivative SHA differs: ' + path)
+            require(asset['localPath'] in page, 'Reviewed asset absent from own fiche: ' + path)
+            if asset is not document:
+                native_media.add(path)
+                require(asset.get('sourceSha256') == document['sha256'], 'Media source transferred: ' + path)
+        require(next(p for p in catalogue if p['slug'] == slug)['imagenPrincipal'] == record['cover'], 'Catalogue cover differs from its own facade: ' + slug)
+        for model in record['models']:
+            require(model['sourcePage'] == model['plan']['sourcePage'], 'Plan/model printed page differs: ' + slug)
+    require({path for path in files if path.startswith('assets/propiedades/norte-verde/')} == native_media, 'Unselected Norte Verde candidate leaked or reviewed media omitted')
+    require((preview / 'robots.txt').read_text() == 'User-agent: *\nDisallow: /\n', 'Preview robots must block indexing')
+    urls = [node.text for node in ET.parse(preview / 'sitemap.xml').iter() if node.tag.endswith('}loc')]
+    expected_urls = {'https://sollahms.cl/' + page for page in expected_pages - {'404.html', 'index.html'}} | {'https://sollahms.cl/'}
+    require(len(urls) == len(set(urls)) == 140 and set(urls) == expected_urls, 'Preview sitemap does not match its authorized routes')
+    return {'ok': not errors, 'auditProfile': 'protected_norte_verde_review', 'counts': {'projects': len(catalogue), 'norteVerde': 17, 'originalPdf': len(allowed_pdfs), 'norteVerdeMedia': len(native_media), 'pages': len(documents), 'localReferences': local_references, 'sitemapUrls': len(urls)}, 'errors': errors, 'warnings': [], 'networkRequests': 0, 'realMessages': 0, 'realReservations': 0, 'productionDeploymentAuthorized': False}
+
+
 def audit(source, public, preview, protected_review=False, node=None):
+    if (source / 'data/brochures-norte-verde.json').is_file():
+        return audit_norte_verde_preview(source, public, preview, protected_review)
     errors, warnings = [], []
     counts = {'projects': 0, 'ingevec': 0, 'ecasa': 0, 'pages': 0, 'localReferences': 0,
               'brochureImages': 0, 'brochurePlans': 0, 'brochureMedia': 0,

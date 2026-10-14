@@ -117,6 +117,11 @@ def stage_links(project, research):
     return content + '</ul><p>Consulta los precios, la disponibilidad y las características de cada etapa en su ficha.</p></div>'
 
 def render(project, research, template):
+    if project.get('inmobiliaria') == 'Norte Verde' and (ROOT / 'data/brochures-norte-verde.json').is_file():
+        from norte_verde_fiche import render as render_norte_verde
+        record = next(row for row in json.loads((ROOT / 'data/brochures-norte-verde.json').read_text())['projects'] if row['slug'] == project['slug'])
+        page, mapped = render_norte_verde(record)
+        return page, mapped, 0
     name = project['nombre']
     slug = project['slug']
     builder = project['inmobiliaria'] if 'inmobiliaria' in research.get('verifiedFields', []) else project['inmobiliaria'] + ' (asociación por verificar)'

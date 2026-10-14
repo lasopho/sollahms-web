@@ -139,11 +139,11 @@ const valid = { income: 3500000, savings: 32908992, years: '20', rate: '4.5' };
 
 // These tests exercise the actual closure/rendering and real financial helpers.
 // The fake DOM models events and output, not viewport layout or browser validity.
-test('optional search leaves all136 catalogue projects and storage untouched until submission, with exact dated UF', async () => {
+test('optional search leaves all 134 catalogue projects and storage untouched until submission, with exact dated UF', async () => {
   const ui = await frontend();
   assert.equal(ui.field('form').hidden, true);
   assert.equal(ui.changeCount(), 0);
-  assert.equal(ui.search.sortProjects([...catalogue]).length, 137);
+  assert.equal(ui.search.sortProjects([...catalogue]).length, 134);
   assert.equal(ui.card(catalogue[0]).querySelector('.capacity-result'), null);
   assert.match(ui.field('uf').textContent, /41\.136,24/);
   assert.match(ui.field('uf').textContent, /2026-10-10/);
@@ -152,11 +152,11 @@ test('optional search leaves all136 catalogue projects and storage untouched unt
   ui.toggle(); assert.equal(ui.field('form').hidden, false); assert.equal(ui.field('income').focused, true);
 });
 
-test('no rate retains136 E results, including106 known prices and30 missing prices, without fake dividends', async () => {
+test('no rate retains all 134 E results, including 88 known prices and 46 pending prices, without fake dividends', async () => {
   const ui = await frontend(); ui.set({ ...valid, rate: '' }); await ui.submit();
-  assert.match(ui.field('summary').textContent, /Evaluación de 137 proyectos/);
-  assert.match(ui.field('summary').textContent, /E: 137/);
-  const sorted = ui.search.sortProjects([...catalogue]); assert.equal(sorted.length, 137);
+  assert.match(ui.field('summary').textContent, /Evaluación de 134 proyectos/);
+  assert.match(ui.field('summary').textContent, /E: 134/);
+  const sorted = ui.search.sortProjects([...catalogue]); assert.equal(sorted.length, 134);
   let priceCount = 0;
   for (const project of sorted) {
     const article = ui.card(project);
@@ -166,7 +166,7 @@ test('no rate retains136 E results, including106 known prices and30 missing pric
     assert.ok(!text.includes('Dividendo financiero'));
     assert.equal(article.querySelector('a').href, '/comparador-hipotecario.html?proyecto=' + project.slug);
   }
-  assert.equal(priceCount, 106);
+  assert.equal(priceCount, 88);
   assert.equal(ui.storage.writes.length, 0);
 });
 

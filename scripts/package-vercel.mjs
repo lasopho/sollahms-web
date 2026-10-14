@@ -11,13 +11,19 @@ import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   brochureFingerprint } from './brochure-publication.mjs';
 import { lebenPublication, validateLebenReview, assertLebenBuildEnvironment, LEBEN_MANIFEST, LEBEN_MEDIA_FOLDER } from './leben-publication.mjs';
 
+import { NORTE_VERDE_SLUGS, NORTE_VERDE_RETIRED_SLUGS, verifyNorteVerdeAssets } from './norte-verde-publication.mjs';
+
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
-const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva', 'codex/leben-brochures-nordico']);
+const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva', 'codex/leben-brochures-nordico', 'codex/norte-verde-cartera-definitiva']);
 if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
   throw new Error('Unexpected branch for this review build');
 }
+const norteVerdeReview = JSON.parse(await readFile(join(root, 'data/brochures-norte-verde.json'), 'utf8'));
+if (!preview) throw new Error('The Norte Verde update is authorized for Preview only');
+const norteVerdeAssets = await verifyNorteVerdeAssets(norteVerdeReview, { root });
+const norteVerdePaths = new Set(norteVerdeAssets.map(asset => join(root, asset.localPath.slice(1))));
 const profile = process.env.SOLLAHMS_BROCHURE_PROFILE;
 if (profile !== undefined && profile !== 'public-web') throw new Error('Unknown brochure content profile');
 const ajReview = JSON.parse(await readFile(join(root, 'data/brochures-aj-urbana.json'), 'utf8'));
@@ -203,7 +209,7 @@ if (pages.some(name => !approvedPages.has(name))) {
 if (sourceProjects.some(project => !pages.includes(project.slug + '.html'))) {
   throw new Error('Every approved catalogue project must have its own public route');
 }
-const retiredLink = new RegExp('(?:["\\\'/])(?:' + [...BROCHURE_REMOVED_SLUGS, ...ECASA_RETIRED_SLUGS].join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
+const retiredLink = new RegExp('(?:["\\\'/])(?:' + [...BROCHURE_REMOVED_SLUGS, ...ECASA_RETIRED_SLUGS, ...NORTE_VERDE_RETIRED_SLUGS].join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
 const sitemapSource = await readFile(join(root, 'sitemap.xml'));
 if (retiredLink.test(sitemapSource.toString())) throw new Error('The sitemap still contains a retired project route');
 const pageSources = new Map(await Promise.all(pages.map(async name => [name, await readFile(join(root, name), 'utf8')])));
@@ -217,7 +223,14 @@ const otherProjects = sourceProjects.filter(project => project.inmobiliaria !== 
 const otherReferences = [JSON.stringify(otherProjects), ...otherProjects.map(project => pageSources.get(project.slug + '.html'))];
 const exclusiveExcludedImages = new Set([...excludedImagePaths].filter(path => !otherReferences.some(source => source.includes(path))));
 const selectedMedia = new Set();
-const mediaInventory = [];
+const mediaInventory = norteVerdeAssets.map(asset => ({ path: asset.localPath, sha256: asset.sha256, bytes: asset.bytes }));
+for (const record of norteVerdeReview.projects) {
+  const project = sourceProjects.find(project => project.slug === record.slug);
+  if (!project || project.inmobiliaria !== 'Norte Verde' || project.imagenPrincipal !== record.cover) throw new Error('Norte Verde catalogue cover differs from its own brochure');
+  for (const asset of [record.document, ...record.images, ...record.models.map(model => model.plan)]) {
+    if (!pageSources.get(record.slug + '.html').includes(asset.localPath)) throw new Error('Norte Verde asset is absent from its own fiche');
+  }
+}
 if (ajIncluded || ingevecIncluded) {
   const projects = JSON.parse(catalogueSource);
   const batches = [
@@ -420,6 +433,11 @@ for (const name of pages) {
 await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
   filter: async source => {
     const path = relative(root, source).split(sep).join('/');
+    if (path.startsWith('assets/brochures/norte-verde') || path.startsWith('assets/propiedades/norte-verde')) {
+      const info = await lstat(source);
+      if (info.isSymbolicLink()) throw new Error('Norte Verde assets must be regular files');
+      return info.isDirectory() ? [...norteVerdePaths].some(file => file.startsWith(source + sep)) : norteVerdePaths.has(source);
+    }
     if (path.includes('/brochure-candidates')) return false;
     if (retiredExclusiveAssets.has(path)) return false;
     if (exclusiveExcludedImages.has('/' + path)) return false;
@@ -452,6 +470,7 @@ await writeFile(join(output, 'robots.txt'), preview ? 'User-agent: *\nDisallow: 
 // build. It is deliberately outside dist and contains no contract text.
 await mkdir(join(root, '.vercel'), { recursive: true });
 await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.stringify({
+  norteVerdeProjects: norteVerdeReview.projects.length, norteVerdeImages: norteVerdeReview.projects.reduce((n,r)=>n+r.images.length,0), norteVerdePlans: norteVerdeReview.projects.reduce((n,r)=>n+r.models.length,0), norteVerdeOriginalPdfs: 17,
   catalogueProjects: sourceProjects.length, publicationSource: 'Yapo/IRIS + Ecasa/user_supplied' + (lebenReview ? ' + Leben/user_supplied' : ''),
   contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb && !lebenReview,
   preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb,

@@ -2,12 +2,14 @@
 import json
 import re
 from pathlib import Path
+from norte_verde_scope import original_data as original_norte_verde_data, original_context as original_norte_verde_context, original_html as original_norte_verde_html
 
 ROOT = Path(__file__).resolve().parents[1]
 NORDICO = 'edificio-nordico'
 
 
 def original_html(text):
+    text = original_norte_verde_html(text)
     for kind in ['PREVIEW', 'PUBLIC']:
         assert text.count('<!--LEBEN_' + kind + '_START-->') == text.count('<!--LEBEN_' + kind + '_END-->'), 'Unpaired Leben source marker'
     text = re.sub(r'<!--LEBEN_PREVIEW_START-->[\s\S]*?<!--LEBEN_PREVIEW_END-->', '', text)
@@ -15,6 +17,7 @@ def original_html(text):
 
 
 def original_context(data):
+    data = original_norte_verde_context(data)
     text = data.decode()
     pattern = r'(export const projects = Object\.freeze\()([\s\S]*?)(\);)'
     match = re.search(pattern, text)
@@ -28,6 +31,7 @@ def original_context(data):
 
 
 def assert_base_records(current, expected, path):
+    current = original_norte_verde_data(current, path)
     nordico = [row for row in current if row['slug'] == NORDICO]
     assert len(nordico) == 1 and len(current) == 137 and len({row['slug'] for row in current}) == 137, path + ': expected the 136 preserved identities plus Nórdico'
     row = nordico[0]

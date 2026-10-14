@@ -1,4 +1,5 @@
 import { originalLebenHtml } from './leben-preservation.mjs';
+import { projectNorteVerdeFile, readHistoricalNorteVerdeFile, restoreNorteVerdeContexts } from './norte-verde-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
@@ -7,11 +8,12 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 import { assertBrochureCatalogue, BROCHURE_ECASA_SLUGS, BROCHURE_ECASA_REMOVED_SLUGS } from '../scripts/brochure-publication.mjs';
-import { projects as trustedContexts, projectAliases, projectStages } from '../lib/project-context.mjs';
+import { projects as actualTrustedContexts, projectAliases, projectStages } from '../lib/project-context.mjs';
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const BASELINE='f8e1c848998d5ed9c0eef7cd5f3424b1d908a155';
-const read=path=>readFileSync(resolve(ROOT,path));
+const read=path=>projectNorteVerdeFile(path,readHistoricalNorteVerdeFile(path));
+const trustedContexts=restoreNorteVerdeContexts(actualTrustedContexts);
 const json=path=>JSON.parse(read(path));
 const before=path=>execFileSync('git',['show',`${BASELINE}:${path}`],{cwd:ROOT});
 const originalProjects=JSON.parse(before('data/proyectos.json'));

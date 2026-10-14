@@ -1,5 +1,6 @@
 import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
+import { projectNorteVerdeFile, readHistoricalNorteVerdeFile } from './norte-verde-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -12,7 +13,7 @@ import { validateEcasaManualQuality, effectiveEcasaManualQuality, transformEcasa
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const BASELINE='fd9f238685ed59e03716ccef10f40ab8b0a9a1c5';
-const read=path=>readFileSync(join(ROOT,path));
+const read=path=>projectNorteVerdeFile(path,readHistoricalNorteVerdeFile(path));
 const json=path=>JSON.parse(read(path));
 const catalogue=json('data/proyectos.json'),documents=json('data/brochures-ecasa.json'),research=json('data/fichas-proyectos.json');
 const base=validateEcasaImageQuality(documents,research,catalogue,json('data/ecasa-image-quality.json'),json('data/fuentes-imagenes.json'));

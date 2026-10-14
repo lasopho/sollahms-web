@@ -1,5 +1,6 @@
 import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
+import { projectNorteVerdeFile, readHistoricalNorteVerdeFile } from './norte-verde-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync, symlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -16,7 +17,7 @@ import { validateOfficialOriginals, selectPublishedOfficialAssets, transformOffi
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const BASELINE='0117cc546cc75183f73cae07c90dd093937a819f';
 const PREFIX='/assets/propiedades/ecasa-official-review/';
-const read=path=>readFileSync(join(ROOT,path));
+const read=path=>projectNorteVerdeFile(path,readHistoricalNorteVerdeFile(path));
 const json=path=>JSON.parse(read(path));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const catalogue=json('data/proyectos.json');

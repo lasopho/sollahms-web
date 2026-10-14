@@ -1,5 +1,6 @@
 import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
+import { projectNorteVerdeFile, readHistoricalNorteVerdeFile, prepareHistoricalNorteVerdePackagingFixture } from './norte-verde-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, copyFileSync, cpSync, existsSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -13,7 +14,7 @@ import { validateEcasaImageQuality, selectEcasaPublishedAssets, transformEcasaIm
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const BASELINE='2d34997f8fd82b775c0697b20493674773e7fdc2';
-const read=path=>readFileSync(resolve(ROOT,path));
+const read=path=>projectNorteVerdeFile(path,readHistoricalNorteVerdeFile(path));
 const json=path=>JSON.parse(read(path));
 const original=path=>execFileSync('git',['show',BASELINE+':'+path],{cwd:ROOT,maxBuffer:8*1024*1024});
 const hash=value=>createHash('sha256').update(value).digest('hex');
@@ -183,7 +184,7 @@ test('every non-Ecasa HTML string is unchanged by the quality transform in both 
 
 test('real private packaging publishes 395 selected resources, keeps 74 Ecasa plans and excludes four source photographs',()=>{
   const fixture=mkdtempSync(join(tmpdir(),'sollahms-quality-release-'));
-  const copy=path=>{const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(ROOT,path),target);};
+  const copy=path=>{const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,projectNorteVerdeFile(path,readHistoricalNorteVerdeFile(path)));};
   try {
     cpSync(resolve(ROOT,'assets'),join(fixture,'assets'),{recursive:true});
     for(const path of ['scripts/package-vercel.mjs','scripts/ecasa-publication.mjs','scripts/ecasa-image-quality.mjs','scripts/brochure-publication.mjs', 'scripts/leben-publication.mjs',
@@ -195,6 +196,7 @@ test('real private packaging publishes 395 selected resources, keeps 74 Ecasa pl
       !key.startsWith('RESEND_')&&!key.startsWith('SMTP_')&&key!=='GITHUB_TOKEN'));
     const env={...environment,VERCEL_ENV:'preview',VERCEL_GIT_COMMIT_REF:'codex/ecasa-cartera-definitiva'};
     const script=join(fixture,'scripts/package-vercel.mjs');
+    prepareHistoricalNorteVerdePackagingFixture(fixture,{packager:false});
     writeFileSync(script,original('scripts/package-vercel.mjs'));
     execFileSync(process.execPath,[script],{cwd:fixture,env,stdio:'pipe'});
     const beforeCatalogue=JSON.parse(readFileSync(join(fixture,'dist/data/proyectos.json')));

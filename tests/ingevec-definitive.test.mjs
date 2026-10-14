@@ -1,4 +1,6 @@
 import test from 'node:test';
+import { restoreNorteVerdeContexts } from './norte-verde-preservation.mjs';
+import { NORTE_VERDE_RETIRED_SLUGS } from '../scripts/norte-verde-publication.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, lstatSync, readdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -8,11 +10,12 @@ import { resolve } from 'node:path';
 import { ECASA_NEW_SLUGS, ECASA_ALIAS_SLUGS, ECASA_RETIRED_SLUGS, ECASA_SLUGS, restoreEcasaData, restoreEcasaContext, assertPortfolioData, assertPortfolioIndex, assertDefinitiveFicheFallback, assertCatalogueConsultPrices,
   assertCommercialBytes, restoreReviewedScope,
   PORTFOLIO_BASELINE, INGEVEC_REMOVED_SLUGS, INGEVEC_NEW_SLUGS, readCommercialFile } from './commercial-html.mjs';
-import { projects as contextualProjects } from '../lib/project-context.mjs';
+import { projects as actualContextualProjects } from '../lib/project-context.mjs';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
+const contextualProjects = restoreNorteVerdeContexts(actualContextualProjects);
 const BASELINE = '8cdb9bf2af607a4f0822e5ea2c3ec4ba3f4c76b1';
 const PREFIX = '/assets/propiedades/ingevec-preview/';
 const WRONG_VIMA_IMAGE = '/assets/propiedades/catalogo/571b2a1740b3b5d4920157fa.webp';
@@ -880,7 +883,7 @@ test('six retired identities are absent from navigation, sitemap, context and fi
   assert.deepEqual([...INGEVEC_NEW_SLUGS], ['los-alerces', 'valle-los-ingleses-iii']);
   const priorRoutes = execFileSync('git', ['ls-tree', '--name-only', BASELINE], { cwd: ROOT }).toString().trim().split('\n').filter(path => path.endsWith('.html'));
   const expectedRoutes = [...priorRoutes.filter(path => !INGEVEC_REMOVED_SLUGS.has(path.replace(/\.html$/, '')) && !ECASA_RETIRED_SLUGS.has(path.replace(/\.html$/, '')) && !ECASA_ALIAS_SLUGS.has(path.replace(/\.html$/, ''))), ...[...INGEVEC_NEW_SLUGS, ...ECASA_NEW_SLUGS, 'edificio-nordico'].filter(slug=>!ECASA_ALIAS_SLUGS.has(slug)).map(slug => slug + '.html')].sort();
-  assert.deepEqual(readdirSync(ROOT).filter(path => path.endsWith('.html')).sort(), expectedRoutes, 'Only the reviewed Ingevec routes and canonical Ecasa successor routes are authorized');
+  assert.deepEqual(readdirSync(ROOT).filter(path => path.endsWith('.html')).sort(), expectedRoutes.filter(path => !NORTE_VERDE_RETIRED_SLUGS.includes(path.replace(/\.html$/, ''))), 'Only the reviewed Ingevec, Ecasa and Norte Verde successor routes are authorized');
   assertPortfolioIndex('lib/project-context.mjs', current('lib/project-context.mjs'));
   assertPortfolioIndex('sitemap.xml', current('sitemap.xml'));
   assert.deepEqual(contextualProjects, Object.fromEntries(catalogue.map(project => [project.slug, { name: project.nombre, url: project.detalleUrl }])));

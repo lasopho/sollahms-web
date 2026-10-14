@@ -15,6 +15,7 @@ from string import Template
 from automatic_embed_scope import restore_automatic_file
 from ecasa_scope import restore_ecasa_page, ADDED
 from leben_scope import original_html
+from norte_verde_scope import original_data, read_historical_file, render_historical_fiche
 from map_cleanup_scope import (ROOT, FEATURED, RELATED, GENERIC_NOTES, NOSCRIPT,
                                baseline_bytes, expected_cleanup_file,
                                transform_map_cleanup, restore_map_cleanup_asset)
@@ -26,8 +27,8 @@ from fiche_presentation import commercialize_fiche
 spec = importlib.util.spec_from_file_location('map_cleanup_details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(details)
-PROJECTS = json.loads((ROOT / 'data/proyectos.json').read_text())
-RECORDS = {row['slug']: row for row in json.loads((ROOT / 'data/fichas-proyectos.json').read_text())}
+PROJECTS = original_data(json.loads((ROOT / 'data/proyectos.json').read_text()), 'data/proyectos.json')
+RECORDS = {row['slug']: row for row in original_data(json.loads((ROOT / 'data/fichas-proyectos.json').read_text()), 'data/fichas-proyectos.json')}
 
 
 class Nodes(HTMLParser):
@@ -58,7 +59,7 @@ class MapCleanup(unittest.TestCase):
             if project['inmobiliaria'] == 'Ecasa' or project['slug'] == 'edificio-nordico':
                 continue  # Names, relations and protected media have exact successor checks.
             path = project['slug'] + '.html'
-            current = original_html((ROOT / path).read_text()).encode()
+            current = original_html(read_historical_file(path).decode()).encode()
             self.assertEqual(current, expected_cleanup_file(path), path)
             restore_automatic_file(path, current)
             changed += current != baseline_bytes(path)
@@ -71,7 +72,7 @@ class MapCleanup(unittest.TestCase):
                 continue  # Names, relations and protected media have exact successor checks.
             path = project['slug'] + '.html'
             before = Nodes(baseline_bytes(path).decode()).nodes
-            after = Nodes(original_html((ROOT / path).read_text())).nodes
+            after = Nodes(original_html(read_historical_file(path).decode())).nodes
             for tag in ['iframe', 'img', 'script', 'form', 'input', 'button']:
                 self.assertEqual([a for t, a in after if t == tag], [a for t, a in before if t == tag], path + ':' + tag)
             actions = lambda nodes: [a for t, a in nodes if t == 'a' and not a.get('href', '').startswith('https://www.google.com/maps')]
@@ -82,14 +83,14 @@ class MapCleanup(unittest.TestCase):
             for frame in frames:
                 self.assertEqual(frame.get('loading'), 'lazy', path)
             # Each brochure model still has its own original displayed plan.
-            plans += original_html((ROOT / path).read_text()).count('class="aj-model"')
+            plans += original_html(read_historical_file(path).decode()).count('class="aj-model"')
         self.assertEqual((maps, tours, plans), (116, 81, 142))
 
     def test_no_persistent_map_links_generic_notes_or_empty_remnants(self):
         related = 0
         for project in PROJECTS:
             slug = project['slug']
-            text = (ROOT / (slug + '.html')).read_text()
+            text = read_historical_file(slug + '.html').decode()
             self.assert_clean(text, slug)
             if slug in RELATED:
                 note = re.search(r'<p class="map-note">.*?</p>', baseline_bytes(slug + '.html').decode())[0]
@@ -101,12 +102,12 @@ class MapCleanup(unittest.TestCase):
         template = Template((ROOT / 'templates/project-detail.html').read_text())
         for project in PROJECTS:
             slug = project['slug']
-            page, _, _ = details.render(project, copy.deepcopy(RECORDS[slug]), template)
+            page, _, _ = render_historical_fiche(details, project, copy.deepcopy(RECORDS[slug]), template)
             self.assert_clean(page, slug)
             if project['inmobiliaria'] == 'Ecasa' or project['slug'] == 'edificio-nordico':
                 continue
             before = baseline_bytes(slug + '.html').decode()
-            current = original_html((ROOT / (slug + '.html')).read_text())
+            current = original_html(read_historical_file(slug + '.html').decode())
             self.assertEqual(normalize_page_embeds(before, RECORDS[slug], featured=slug in FEATURED), current, slug)
             self.assertEqual(normalize_page_embeds(current, RECORDS[slug], featured=slug in FEATURED), current, slug + ': repeated regeneration')
 

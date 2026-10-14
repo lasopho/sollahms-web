@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { restoreNorteVerdeContexts } from './norte-verde-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -9,7 +10,7 @@ import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import { reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
-import { projects as trustedContexts } from '../lib/project-context.mjs';
+import { projects as actualTrustedContexts } from '../lib/project-context.mjs';
 import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, restoreEcasaContext, assertCommercialBytes, assertPortfolioData, commercialPage,
   INGEVEC_NEW_SLUGS, readCommercialFile, vimaImageCorrection,
   AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet } from './commercial-html.mjs';
@@ -17,6 +18,7 @@ import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, restoreEcasaContext, as
 // This is the scoped successor to the historical integrity audits, whose
 // baselines predate the explicitly approved official-source additions.
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
+const trustedContexts = restoreNorteVerdeContexts(actualTrustedContexts);
 const BASELINE = 'a279744';
 const PRESENTATION_BASELINE = '7a2732ae333b6a4d119cc2b651583daacbab8755';
 const NOW = Date.parse('2026-10-10T15:00:00Z');
@@ -375,7 +377,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   assert.equal(newPaths.size, 10);
   const currentAssets = listFiles('assets').filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
-    !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');
+    !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css' && file !== 'assets/css/norte-verde.css');
   const ecasaReview = json('tests/ecasa-reviewed-output.json');
   const stageAssets = ['assets/css/ecasa-stages.css', 'assets/js/ecasa-stages.js'];
   assert.deepEqual(Object.keys(ecasaReview.assetSha256).sort(),stageAssets.toSorted());

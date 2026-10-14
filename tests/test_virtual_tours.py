@@ -12,6 +12,7 @@ import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 from leben_scope import original_html
+from norte_verde_scope import original_data, read_historical_file, render_historical_fiche
 from string import Template
 from urllib.parse import urlparse
 from virtual_tour_scope import exact_removed_page, VISTA_UNAVAILABLE_URL
@@ -25,8 +26,8 @@ from virtual_tour_policy import usable_virtual_tours, virtual_tours_to_render, h
 spec = importlib.util.spec_from_file_location('details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(details)
-PROJECTS = json.loads((ROOT / 'data/proyectos.json').read_text())
-RECORDS = {r['slug']: r for r in json.loads((ROOT / 'data/fichas-proyectos.json').read_text())}
+PROJECTS = original_data(json.loads((ROOT / 'data/proyectos.json').read_text()), 'data/proyectos.json')
+RECORDS = {r['slug']: r for r in original_data(json.loads((ROOT / 'data/fichas-proyectos.json').read_text()), 'data/fichas-proyectos.json')}
 TEMPLATE = Template((ROOT / 'templates/project-detail.html').read_text())
 
 def stage_records(record):
@@ -53,7 +54,10 @@ class VirtualTours(unittest.TestCase):
     def test_source_records_and_prices_stay_exact(self):
         for path in ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
                      'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']:
-            self.assertEqual(restore_successor_data(path, (ROOT / path).read_bytes()), json.loads(original(path)), path) if path.endswith(('proyectos.json', 'registro-fichas.json')) else self.assertEqual((ROOT / path).read_bytes(), original(path), path)
+            if path in {'data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json'}:
+                self.assertEqual(restore_successor_data(path, (ROOT / path).read_bytes()), json.loads(original(path)), path)
+            else:
+                self.assertEqual((ROOT / path).read_bytes(), original(path), path)
         self.assertEqual(len(PROJECTS), 137)
         self.assertEqual(len(EXPANDED_RECORDS), 144)
         self.assertEqual(sum(bool(r['virtualTours']) for r in EXPANDED_RECORDS.values()), 61)
@@ -73,18 +77,18 @@ class VirtualTours(unittest.TestCase):
             before = original(path)
             removed = exact_removed_page(before, r['slug'])
             self.assertEqual(removed, main_bytes(path), path + ': approved tour withdrawal baseline')
-            self.assertEqual(original_html((ROOT / path).read_text()).encode(), expected_automatic_file(path), path)
+            self.assertEqual(original_html(read_historical_file(path).decode()).encode(), expected_automatic_file(path), path)
             untouched += removed == before
             corrected += removed != before
         self.assertEqual((untouched, corrected), (44, 1))
-        self.assertNotIn(VISTA_UNAVAILABLE_URL.replace('&', '&amp;'), (ROOT / 'vista-bulnes.html').read_text())
+        self.assertNotIn(VISTA_UNAVAILABLE_URL.replace('&', '&amp;'), read_historical_file('vista-bulnes.html').decode())
         self.assertEqual(sum(t.get('provider') == 'Matterport' for r in preserved for t in canonical_tours(r)), 23)
 
     def test_all_77_absent_or_unassociated_canonical_sections_are_removed(self):
         hidden = [r for r in RECORDS.values() if not canonical_tours(r)]
         self.assertEqual(len(hidden), 78)
         for r in hidden:
-            page = (ROOT / (r['slug'] + '.html')).read_text()
+            page = read_historical_file(r['slug'] + '.html').decode()
             self.assertNotRegex(page, r'id=["\']recorrido["\']|href=["\']#recorrido["\']')
             self.assertNotIn('Recorridos y experiencias oficiales', page)
             self.assertNotIn('Consulta la disponibilidad de un recorrido virtual', page)
@@ -96,7 +100,7 @@ class VirtualTours(unittest.TestCase):
 
     def test_internal_fragments_resolve_on_all_136_canonical_pages(self):
         for p in PROJECTS:
-            nodes = Nodes((ROOT / (p['slug'] + '.html')).read_text()).nodes
+            nodes = Nodes(read_historical_file(p['slug'] + '.html').decode()).nodes
             ids = [a['id'] for _, a in nodes if a.get('id')]
             self.assertEqual(len(ids), len(set(ids)), p['slug'])
             for tag, attrs in nodes:
@@ -127,7 +131,7 @@ class VirtualTours(unittest.TestCase):
                 continue  # Exact Ecasa fallback and selected additions have independent successor checks.
             path = p['slug'] + '.html'
             images = lambda html: [a for tag, a in Nodes(html).nodes if tag == 'img']
-            self.assertEqual(images(original_html((ROOT / path).read_text())), images(original(path).decode()), path)
+            self.assertEqual(images(original_html(read_historical_file(path).decode())), images(original(path).decode()), path)
 
     def test_search_and_mortgage_comparator_sources_are_unchanged(self):
         paths = ['index.html', 'proyectos.html', 'comparador-hipotecario.html',
@@ -139,7 +143,7 @@ class VirtualTours(unittest.TestCase):
     def test_future_rendering_of_all_136_pages_preserves_stage_provenance_and_tour_policy(self):
         sections = tours = 0
         for p in PROJECTS:
-            page, _, count = details.render(p, RECORDS[p['slug']], TEMPLATE)
+            page, _, count = render_historical_fiche(details, p, RECORDS[p['slug']], TEMPLATE)
             expected_tours = canonical_tours(RECORDS[p['slug']])
             expected = bool(expected_tours)
             self.assertEqual('id="recorrido"' in page, expected, p['slug'])
@@ -161,7 +165,7 @@ class VirtualTours(unittest.TestCase):
         other = ecasa = 0
         for project in PROJECTS:
             path = project['slug'] + '.html'
-            current = original_html((ROOT / path).read_text()).encode()
+            current = original_html(read_historical_file(path).decode()).encode()
             if project['slug'] == 'edificio-nordico':
                 continue  # Its official source has independent new-project coverage.
             if project['inmobiliaria'] == 'Ecasa':
@@ -178,7 +182,7 @@ class VirtualTours(unittest.TestCase):
         maps = tours = sections = external = 0
         for project in PROJECTS:
             slug = project['slug']
-            page = public_fallback((ROOT / (slug + '.html')).read_text())
+            page = public_fallback(read_historical_file(slug + '.html').decode())
             nodes = Nodes(page).nodes
             hosts = json.loads(re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', page, re.S)[1])
             self.assertNotIn('data-embed-src=', page, slug)

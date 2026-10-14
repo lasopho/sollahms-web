@@ -1,3 +1,4 @@
+import { assertNorteVerdeCatalogue } from './norte-verde-publication.mjs';
 // Publication selection only. Documentary evidence and commercial snapshots
 // remain intact; this module never edits a source file or changes image bytes.
 import { naturalCaption } from './public-fiche-copy.mjs';
@@ -80,9 +81,10 @@ function imagePath(value) {
 }
 
 export function validateEcasaImageQuality(review,research,catalogue,policy,officialSources) {
+  if (catalogue?.length === 134) assertNorteVerdeCatalogue(catalogue);
   requireValue(policy?.schemaVersion===1&&policy.baselineCommit===BASELINE&&policy.scope==='ecasa_images_only'&&
     /^\d{4}-\d{2}-\d{2}$/.test(policy.reviewedOn??''),'unrecognized review scope or baseline');
-  requireValue(Array.isArray(catalogue) && (catalogue.length === 136 || catalogue.length === 137 && catalogue.filter(project => project.slug === 'edificio-nordico').length === 1), 'the 136 canonical projects and authorized Nórdico addition must remain intact');
+  requireValue(Array.isArray(catalogue) && (catalogue.length === 134 || catalogue.length === 136 || catalogue.length === 137 && catalogue.filter(project => project.slug === 'edificio-nordico').length === 1), 'the 136 canonical projects and authorized Nórdico addition must remain intact');
   const ecasa=catalogue.filter(project=>project.inmobiliaria==='Ecasa');
   requireValue(ecasa.length===15&&Array.isArray(review?.projects)&&review.projects.length===15&&
     Array.isArray(policy.projects)&&policy.projects.length===15,'exactly fifteen Ecasa project selections are required');
