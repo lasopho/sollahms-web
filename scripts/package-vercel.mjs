@@ -13,7 +13,7 @@ import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
-const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva']);
+const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva', 'codex/ecasa-publicacion-independiente']);
 if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
   throw new Error('Unexpected branch for this review build');
 }
@@ -24,7 +24,16 @@ const ingevecReview = JSON.parse(await readFile(join(root, 'data/brochures-ingev
 const ecasaReview = JSON.parse(await readFile(join(root, 'data/brochures-ecasa.json'), 'utf8'));
 const ecasaRights = ecasaPublication(ecasaReview);
 const ecasaAssets = validateEcasaReview(ecasaReview);
-const ecasaIncluded = preview && ecasaRights.protectedReview;
+// A separately scoped owner attestation allows the already-reviewed Ecasa
+// selection in both content profiles. It does not authorize a deployment.
+let publicationCandidate=null,publicationCandidateBytes=null;
+try { publicationCandidateBytes=await readFile(join(root,'data/ecasa-publication-candidate.json')); }
+catch(error) { if(error.code!=='ENOENT')throw error; }
+if(publicationCandidateBytes) {
+  const {validateEcasaPublicationCandidate}=await import('./ecasa-publication-candidate.mjs');
+  publicationCandidate=await validateEcasaPublicationCandidate(JSON.parse(publicationCandidateBytes),{root});
+}
+const ecasaIncluded = (preview && ecasaRights.protectedReview) || publicationCandidate?.eligible===true;
 const ingevecOldSlugs = new Set(['centenario-1', 'tocornal', 'vivaceta']);
 const ingevecAddedDocuments = {
   'coronel-godoy': { '86e7bcd761a1037a460ae58c23f3c5f19ab047dde162f46c2f61c5ad38ad1085': [21, [15,16,17,18], null] },
@@ -98,7 +107,7 @@ for (const record of ingevecReview.projects) {
 if (profile === 'public-web' && (!ajRights.publicWeb || !ingevecRights.publicWeb)) {
   throw new Error('Public web content requires verified Yapo/IRIS contract scope for both batches');
 }
-if (profile === 'public-web' && !ecasaRights.publicWeb) {
+if (profile === 'public-web' && !ecasaRights.publicWeb && !publicationCandidate?.eligible) {
   throw new Error('Ecasa public web content requires its own verified promotional scope');
 }
 // Content eligibility is independent of Vercel's deployment environment.
@@ -160,7 +169,7 @@ if(ownerBytes) {
   ownerOperations=await import('./ecasa-owner-cover.mjs');
   ownerCover=await ownerOperations.validateOwnerCover(JSON.parse(ownerBytes),{root,manualPolicy:manualQuality?.policy});
 }
-const ownerIncluded=preview&&ecasaIncluded&&!!ownerCover;
+const ownerIncluded=ecasaIncluded&&!!ownerCover;
 const ownerPublished=ownerCover?ownerOperations.selectPublishedOwnerAssets(ownerCover,{preview:ownerIncluded}):[];
 const ownerPublishedPaths=new Set(ownerPublished.map(asset=>join(root,asset.localPath.slice(1))));
 const ownerReceipt=ownerCover?{
@@ -330,7 +339,7 @@ if (ajIncluded || ingevecIncluded) {
       throw new Error('Ingevec media privacy review is missing: ' + record.slug);
     }
     project.imagenPrincipal = cover.localPath;
-    project.imagenAlt = naturalCaption(cover.alt);
+    project.imagenAlt = publicationCandidate ? cover.alt : naturalCaption(cover.alt);
     }
   }
   catalogueOutput = JSON.stringify(projects, null, 2) + '\n';
@@ -392,7 +401,8 @@ for (const name of pages) {
     html = html.replace(new RegExp(`<!--${batch}_${remove}_START-->[\\s\\S]*?<!--${batch}_${remove}_END-->`, 'g'), '');
     html = html.replace(new RegExp(`<!--${batch}_${keep}_(?:START|END)-->`, 'g'), '');
   }
-  if (sourceProjects.some(project => project.slug + '.html' === name)) html = normalizeFicheCopy(html);
+  if (sourceProjects.some(project => project.slug + '.html' === name &&
+      (!publicationCandidate || project.inmobiliaria === 'Ecasa'))) html = normalizeFicheCopy(html);
   if (sourceProjects.some(project => project.inmobiliaria === 'Ecasa' && project.slug + '.html' === name))
     html = transformEcasaImageQuality(html, name.slice(0, -5), imageQuality, { preview: ecasaIncluded });
   if (officialOriginals) html = officialOperations.transformOfficialOriginals(html, name.slice(0, -5),
@@ -444,11 +454,25 @@ await writeFile(join(output, 'data/proyectos.json'), catalogueOutput);
 await cp(join(root, 'data/hipotecario.json'), join(output, 'data/hipotecario.json'));
 await writeFile(join(output, 'sitemap.xml'), sitemapSource);
 await writeFile(join(output, 'robots.txt'), preview ? 'User-agent: *\nDisallow: /\n' : await readFile(join(root, 'robots.txt'), 'utf8'));
+if(publicationCandidate) {
+  const actual=[...publishedEcasaAssets,...officialPublished,...ownerPublished]
+    .map(asset=>({localPath:asset.localPath,sha256:asset.sha256})).sort((a,b)=>a.localPath.localeCompare(b.localPath));
+  const approved=publicationCandidate.selectedResources.map(({localPath,sha256})=>({localPath,sha256}));
+  if(JSON.stringify(actual)!==JSON.stringify(approved))throw new Error('Independent Ecasa output differs from its exact authorized ninety-two resources');
+  for(const asset of publicationCandidate.selectedResources) {
+    const bytes=await readFile(join(output,asset.localPath.slice(1)));
+    if(bytes.length!==asset.bytes||createHash('sha256').update(bytes).digest('hex')!==asset.sha256)
+      throw new Error('Independent Ecasa published bytes changed: '+asset.localPath);
+  }
+}
+
 // A private build receipt can be compared across Preview and an offline public
 // build. It is deliberately outside dist and contains no contract text.
 await mkdir(join(root, '.vercel'), { recursive: true });
 await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.stringify({
-  catalogueProjects: sourceProjects.length, publicationSource: 'Yapo/IRIS + Ecasa/user_supplied',
+  catalogueProjects: sourceProjects.length,
+  independentEcasaCandidate:publicationCandidate?{manifestSha256:publicationCandidate.manifestSha256,baselineCommit:publicationCandidate.baselineCommit,reviewCommit:publicationCandidate.reviewCommit,summary:publicationCandidate.summary,publicContentEligible:true,productionActionAuthorized:false,mergeActionAuthorized:false}:null,
+  publicationSource: 'Yapo/IRIS + Ecasa/user_supplied',
   contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb,
   preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb,
   ecasaContractualCoverageVerified: ecasaRights.publicWeb,
@@ -462,4 +486,4 @@ await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.string
   officialOriginals: officialReceipt,
   media: mediaInventory.sort((a, b) => a.path.localeCompare(b.path)),
 }, null, 2) + '\n');
-console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0, officialPublishedMedia: officialPublished.length, ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null, ownerSourceMedia: ownerReceipt?.sourceAssets.length ?? 0, ownerPublishedMedia: ownerPublished.length, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));
+console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, independentEcasaContentEligible:publicationCandidate?.eligible===true, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0, officialPublishedMedia: officialPublished.length, ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null, ownerSourceMedia: ownerReceipt?.sourceAssets.length ?? 0, ownerPublishedMedia: ownerPublished.length, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));

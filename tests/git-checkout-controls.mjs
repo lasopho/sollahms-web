@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,14 +15,15 @@ const TOUR_REVIEW = 'codex/recorridos-validos-144';
 const AUTOMATIC_EMBEDS = 'codex/mapas-recorridos-auto';
 const MAP_CLEANUP = 'codex/limpieza-mapas-fichas';
 const ECASA = 'codex/ecasa-cartera-definitiva';
+const ECASA_INDEPENDENT = 'codex/ecasa-publicacion-independiente';
 const APPROVED_PORTFOLIO = 'e7afe04';
 const read = path => readFileSync(resolve(ROOT, path));
 const json = path => JSON.parse(read(path));
-const git = (...args) => execFileSync('git', args, { cwd: ROOT });
+const git = (...args) => execFileSync('git', args, { cwd: ROOT, maxBuffer: 16 * 1024 * 1024 });
 const configuration = json('vercel.json');
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false },
+  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [ECASA_INDEPENDENT]: false },
     'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
@@ -38,6 +40,8 @@ test('manual deployment gates reject missing integration protection, enabled bra
   assertManualDeploymentGates(configuration);
   for (const mutation of [
     config => { delete config.git.deploymentEnabled[INTEGRATION]; },
+    config => { delete config.git.deploymentEnabled[ECASA_INDEPENDENT]; },
+    config => { config.git.deploymentEnabled[ECASA_INDEPENDENT] = true; },
     config => { delete config.git.deploymentEnabled[TOUR_REVIEW]; },
     config => { config.git.deploymentEnabled[TOUR_REVIEW] = true; },
     config => { delete config.git.deploymentEnabled[AUTOMATIC_EMBEDS]; },
@@ -113,8 +117,21 @@ test('contract and source controls validate the exact 165-resource Ingevec manif
 test('Git CI never publishes private originals or secretly imports the 165 Ingevec derivatives', () => {
   const paths = git('ls-files', '-z').toString().split('\0').filter(Boolean);
   assert.equal(paths.some(path => path.startsWith('assets/propiedades/ingevec-preview/')), false);
-  assert.equal(paths.some(path => path.startsWith('assets/propiedades/ecasa-preview/')), false,
-    'Private Ecasa derivatives must remain outside the Git index, even in a local review checkout');
+  const ecasaPaths=paths.filter(path=>/^assets\/propiedades\/ecasa-(?:preview|official-review|owner-review)\//.test(path));
+  if(existsSync(resolve(ROOT,'data/ecasa-publication-candidate.json'))) {
+    const candidate=json('data/ecasa-publication-candidate.json');
+    const approved=candidate.selectedResources.map(row=>row.localPath.slice(1));
+    assert.equal(candidate.scope,'ecasa_independent_public_candidate');
+    assert.deepEqual(candidate.actionAuthorization,{production:false,mergeMain:false});
+    assert.equal(approved.length,92);
+    assert.equal(new Set(approved).size,92);
+    assert.deepEqual(ecasaPaths.toSorted(),approved.toSorted(),'Only the exact ninety-two approved Ecasa derivatives may enter Git');
+    for(const row of candidate.selectedResources) {
+      assert.equal(createHash('sha256').update(git('show',':'+row.localPath.slice(1))).digest('hex'),row.sha256,
+        'Approved Ecasa Git blob changed: '+row.localPath);
+      assert.ok(!row.localPath.includes('/originals/')&&row.localPath.endsWith('.webp'));
+    }
+  } else assert.equal(ecasaPaths.length,0,'Historical protected Ecasa inputs remain outside Git');
   assert.equal(paths.some(path => /\.pdf$/i.test(path)), false);
   assert.equal(paths.some(path => /(?:^|\/)(?:brochure-candidates|contratos?|private-input)(?:\/|$)/i.test(path)), false);
 });
