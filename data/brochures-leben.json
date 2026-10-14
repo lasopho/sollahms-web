@@ -3488,7 +3488,7 @@
       ],
       "images": [
         {
-          "localPath": "/assets/propiedades/leben-preview/edificio-indi/imagen-01-p02.webp",
+          "localPath": "/assets/propiedades/leben-preview/edificio-indi/fachada-p02.jpg",
           "sourceSha256": "19dd0607687d870baad169e238e0df414fa896f3de85d58cd45a23b55900ad26",
           "sourcePage": 2,
           "crop": [
@@ -3509,21 +3509,26 @@
           "privacySafe": true,
           "visuallyVerified": true,
           "qualityDecision": "keep",
-          "qualityReason": "Original nítido revisado visualmente; salida a resolución nativa o inferior, sin ampliación artificial.",
+          "qualityReason": "JPEG embebido original nítido de 2113 × 1335 px, copiado byte por byte; sin recorte, reducción, ampliación ni recodificación.",
           "assetScope": "named_development",
           "verificationStatus": "visually_reviewed_original_image",
-          "sha256": "ad6c47a6b00254b2609865d6aefc63cd085f453d64f0812f189cf4fc6fdcfd8a",
-          "width": 1800,
-          "height": 1137,
+          "sha256": "ed7357ef2e13b6b6953f0b91c5e644ddd4f1bb350b235f465786cd1fa20ccfac",
+          "width": 2113,
+          "height": 1335,
           "nativeWidth": 2113,
           "nativeHeight": 1335,
-          "encoderQuality": 93,
           "sourcePageBBox": [
             -0.044466559999989386,
             -0.1649780999999848,
             1014.0314547600001,
             640.6300219
-          ]
+          ],
+          "sourceEncodedStream": {
+            "resourceName": "X2",
+            "sha256": "ed7357ef2e13b6b6953f0b91c5e644ddd4f1bb350b235f465786cd1fa20ccfac",
+            "format": "JPEG"
+          },
+          "encoderMethod": "original_embedded_jpeg_no_reencoding"
         },
         {
           "localPath": "/assets/propiedades/leben-preview/edificio-indi/imagen-02-p02.webp",
@@ -3886,7 +3891,11 @@
           "published": false
         }
       ],
-      "mergeEquipment": false
+      "mergeEquipment": false,
+      "catalogueCover": {
+        "localPath": "/assets/propiedades/leben-preview/edificio-indi/fachada-p02.jpg",
+        "alt": "Render referencial de la fachada y el acceso de Edificio Indi"
+      }
     },
     {
       "slug": "edificio-living-town",

@@ -106,7 +106,7 @@ node_counts = {key: sum(item['tests'][key] for item in node_results) for key in 
 assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 315, 'Executed case count changed; classify the change explicitly'
 assert node_counts['skipped'] == 0, 'Filtered release cases are not represented as successful or skipped test executions'
 python_result = next(item for item in results if item['name'] == 'python-synthetic-units')
-assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 130
+assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 135
 passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 315 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
 report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
           'node': node_counts, 'pythonFixtureTests': python_result['tests'],

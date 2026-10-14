@@ -278,6 +278,18 @@ def leben_manifest_inventory(manifest):
                         type(asset.get('nativeWidth')) is int and asset['nativeWidth'] >= asset['width'] and
                         type(asset.get('nativeHeight')) is int and asset['nativeHeight'] >= asset['height'],
                         'An excluded, enlarged or unreviewed Leben photograph cannot be selected')
+            if 'sourceEncodedStream' in asset:
+                stream = asset['sourceEncodedStream']
+                require(isinstance(stream, dict) and set(stream) == {'format', 'resourceName', 'sha256'} and
+                        stream.get('format') == 'JPEG' and isinstance(stream.get('resourceName'), str) and
+                        re.fullmatch(r'[A-Za-z0-9_.-]+', stream['resourceName']) is not None and isinstance(stream.get('sha256'), str) and
+                        re.fullmatch(r'[a-f0-9]{64}', stream['sha256']) is not None and stream['sha256'] == asset['sha256'] and
+                        Path(path).suffix.lower() in {'.jpg', '.jpeg'} and asset.get('extractionMethod') == 'pdf_image_object' and
+                        re.fullmatch(r'[a-f0-9]{64}', asset.get('sourceImageSha256', '')) is not None and
+                        asset.get('sourceImageName') in {stream['resourceName'] + '.jpg', stream['resourceName'] + '.jpeg'} and
+                        asset.get('encoderMethod') == 'original_embedded_jpeg_no_reencoding' and 'encoderQuality' not in asset and
+                        asset.get('crop') == [0, 0, 1, 1] and asset['width'] == asset.get('nativeWidth') and asset['height'] == asset.get('nativeHeight'),
+                        'Encoded JPEG evidence must preserve the original stream, complete crop and native dimensions')
             inventory[path.lstrip('/')] = {'path': path, 'sha256': asset['sha256'],
                 'width': asset['width'], 'height': asset['height']}
         identities = set()

@@ -66,6 +66,19 @@ export function validateLebenReview(review) {
         Number.isInteger(asset.nativeWidth) && asset.nativeWidth >= asset.width &&
         Number.isInteger(asset.nativeHeight) && asset.nativeHeight >= asset.height,
         'an excluded, enlarged or unreviewed photograph cannot be selected: ' + record.slug);
+      if (asset.sourceEncodedStream !== undefined) {
+        const stream = asset.sourceEncodedStream;
+        requireEvidence(stream && Object.keys(stream).sort().join(',') === 'format,resourceName,sha256' &&
+          stream.format === 'JPEG' && typeof stream.resourceName === 'string' && /^[A-Za-z0-9_.-]+$/.test(stream.resourceName) &&
+          hash.test(stream.sha256 ?? '') && stream.sha256 === asset.sha256 &&
+          /\.jpe?g$/i.test(asset.localPath) && asset.extractionMethod === 'pdf_image_object' &&
+          hash.test(asset.sourceImageSha256 ?? '') &&
+          ['.jpg', '.jpeg'].some(extension => asset.sourceImageName === stream.resourceName + extension) &&
+          asset.encoderMethod === 'original_embedded_jpeg_no_reencoding' && asset.encoderQuality === undefined &&
+          JSON.stringify(asset.crop) === '[0,0,1,1]' &&
+          asset.width === asset.nativeWidth && asset.height === asset.nativeHeight,
+        'encoded JPEG evidence must preserve the original stream, complete crop and native dimensions: ' + record.slug);
+      }
       media.set(asset.localPath, asset);
     }
     const modelIdentities = new Set();

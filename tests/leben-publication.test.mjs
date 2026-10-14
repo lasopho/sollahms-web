@@ -52,6 +52,18 @@ test('missing original review, altered sources, rejected/upscaled media and fore
     const review = fixture(); mutate(review);
     assert.throws(() => validateLebenReview(review), /Leben:/);
   }
+  const encoded = fixture(), image = encoded.projects[0].images[0];
+  Object.assign(image, {localPath: image.localPath.replace('.webp', '.jpg'), width: image.nativeWidth, height: image.nativeHeight,
+    sourceImageName: 'X2.jpg', sourceImageSha256: 'b'.repeat(64), extractionMethod: 'pdf_image_object', crop: [0, 0, 1, 1],
+    encoderMethod: 'original_embedded_jpeg_no_reencoding', sourceEncodedStream: {resourceName: 'X2', sha256: image.sha256, format: 'JPEG'}});
+  encoded.projects[0].catalogueCover.localPath = image.localPath;
+  assert.doesNotThrow(() => validateLebenReview(encoded));
+  for (const mutate of [asset => {asset.sourceEncodedStream.sha256 = 'c'.repeat(64);}, asset => {asset.sourceEncodedStream.format = 'PNG';},
+    asset => {asset.width--;}, asset => {asset.crop = [0, 0, .9, 1];}, asset => {asset.encoderQuality = 90;},
+    asset => {asset.sourceEncodedStream.resourceName = 'Other';}]) {
+    const review = structuredClone(encoded); mutate(review.projects[0].images[0]);
+    assert.throws(() => validateLebenReview(review), /encoded JPEG evidence/);
+  }
 });
 
 test('Nórdico can extend the frozen catalogue once without changing any commercial baseline field', () => {

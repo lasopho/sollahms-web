@@ -34,13 +34,50 @@ def valid_crop(crop):
     return isinstance(crop, list) and len(crop) == 4 and all(type(n) in (int, float) for n in crop) and 0 <= crop[0] < crop[2] <= 1 and 0 <= crop[1] < crop[3] <= 1
 
 
+def copy_encoded_jpeg(page, native, asset, destination, crop):
+    """Copy a reviewed RGB DCT stream verbatim, with no pixel conversion."""
+    evidence = asset['sourceEncodedStream']
+    require(isinstance(evidence, dict) and set(evidence) == {'format', 'resourceName', 'sha256'} and evidence.get('format') == 'JPEG' and
+            isinstance(evidence.get('resourceName'), str) and re.fullmatch(r'[A-Za-z0-9_.-]+', evidence['resourceName']) and
+            isinstance(evidence.get('sha256'), str) and re.fullmatch(r'[a-f0-9]{64}', evidence['sha256']), 'Invalid encoded JPEG stream evidence')
+    require(destination.suffix.lower() in {'.jpg', '.jpeg'} and crop == [0, 0, 1, 1] and
+            asset.get('encoderMethod') == 'original_embedded_jpeg_no_reencoding' and 'encoderQuality' not in asset,
+            'Encoded JPEG must retain its original format and full crop without reencoding')
+    resources = page['/Resources']['/XObject']
+    name = '/' + evidence['resourceName']
+    require(name in resources, 'Encoded stream resource is absent from its source page')
+    reference = resources.raw_get(name)
+    require(native.name in {evidence['resourceName'] + '.jpg', evidence['resourceName'] + '.jpeg'} and
+            native.indirect_reference is not None and reference == native.indirect_reference,
+            'Encoded stream resource differs from the reviewed native image object')
+    obj = reference.get_object()
+    filters = obj.get('/Filter')
+    filters = [filters] if isinstance(filters, str) else list(filters or [])
+    require(obj.get('/Subtype') == '/Image' and filters in [['/DCTDecode'], ['/FlateDecode', '/DCTDecode']] and
+            obj.get('/ColorSpace') == '/DeviceRGB' and '/Decode' not in obj and '/SMask' not in obj,
+            'Only an original RGB DCT image without decode mapping or a mask may be copied')
+    encoded = obj.get_data()
+    require(sha256(encoded).hexdigest() == evidence['sha256'] == asset['sha256'], 'Encoded stream SHA-256 differs from review')
+    size = (asset['nativeWidth'], asset['nativeHeight'])
+    require(size == (asset['width'], asset['height']) == (obj['/Width'], obj['/Height']), 'Encoded JPEG dimensions must remain fully native')
+    with Image.open(io.BytesIO(encoded)) as image:
+        require(image.format == 'JPEG' and image.mode == 'RGB' and image.size == size, 'Encoded stream is not the reviewed native RGB JPEG')
+        image.load()
+    destination.write_bytes(encoded)
+
+
 def render_asset(source, reader, asset, destination, temporary, pdftoppm, pdfimages):
     crop = asset.get('crop', [0, 0, 1, 1])
     require(valid_crop(crop), 'Invalid normalized crop')
     method = asset.get('extractionMethod', 'pdf_page_crop')
+    require(asset.get('sourceEncodedStream') is None or method == 'pdf_image_object', 'An encoded stream must bind a native PDF image object')
     if method == 'pdf_image_object':
-        native = reader.pages[asset['sourcePage'] - 1].images[asset['sourceImageIndex']]
+        page = reader.pages[asset['sourcePage'] - 1]
+        native = page.images[asset['sourceImageIndex']]
         require(native.name == asset['sourceImageName'] and sha256(native.data).hexdigest() == asset['sourceImageSha256'], 'Native image object differs from review')
+        if asset.get('sourceEncodedStream') is not None:
+            copy_encoded_jpeg(page, native, asset, destination, crop)
+            return
         if native.name.lower().endswith('.jp2'):
             # Poppler decodes JPEG2000 efficiently and consistently with the PDF.
             require(pdfimages, 'Poppler pdfimages is required for selected JPEG2000 resources')
@@ -70,6 +107,7 @@ def verify_asset(path, asset):
     require(digest(path) == asset['sha256'], 'Derivative differs from reviewed SHA-256')
     with Image.open(path) as image:
         require(image.size == (asset['width'], asset['height']), 'Derivative dimensions differ from review')
+        require(image.format == ('JPEG' if asset.get('sourceEncodedStream') is not None else 'WEBP'), 'Derivative format differs from reviewed extraction')
         image.verify()
 
 
@@ -94,7 +132,10 @@ def materialize(manifest_path, input_directory, root=ROOT, pdftoppm='pdftoppm', 
         for asset in record.get('images', []) + [m['plan'] for m in record.get('models', [])]:
             path = asset['localPath']
             prefix = PREFIX + record['slug'] + '/'
-            require(path.startswith(prefix) and re.fullmatch(r'[a-z0-9_.-]+\.webp', path[len(prefix):]), 'Unsafe derivative path or wrong project scope')
+            require(path.startswith(prefix) and re.fullmatch(r'[a-z0-9_.-]+\.(?:webp|jpe?g)', path[len(prefix):]) and
+                    (path.endswith('.webp') and asset.get('sourceEncodedStream') is None or
+                     Path(path).suffix in {'.jpg', '.jpeg'} and asset.get('sourceEncodedStream') is not None),
+                    'Unsafe derivative path, unsupported JPEG source or wrong project scope')
             require(path not in paths, 'Duplicate derivative path')
             paths.add(path)
             require(asset.get('privacySafe') is True and asset.get('visuallyVerified') is True and asset.get('qualityDecision') == 'keep', 'Missing visual and quality review')
@@ -110,7 +151,7 @@ def materialize(manifest_path, input_directory, root=ROOT, pdftoppm='pdftoppm', 
         temporary = Path(folder)
         for index, (source, reader, asset, destination) in enumerate(jobs):
             work = temporary / str(index); work.mkdir()
-            candidate = work / 'asset.webp'
+            candidate = work / ('asset' + Path(asset['localPath']).suffix)
             render_asset(source, reader, asset, candidate, work, pdftoppm, pdfimages)
             verify_asset(candidate, asset)
             staged.append((candidate, destination, asset))

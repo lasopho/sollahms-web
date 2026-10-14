@@ -96,13 +96,20 @@ class VirtualTours(unittest.TestCase):
 
     def test_internal_fragments_resolve_on_all_136_canonical_pages(self):
         for p in PROJECTS:
-            nodes = Nodes((ROOT / (p['slug'] + '.html')).read_text()).nodes
-            ids = [a['id'] for _, a in nodes if a.get('id')]
-            self.assertEqual(len(ids), len(set(ids)), p['slug'])
-            for tag, attrs in nodes:
-                href = attrs.get('href', '')
-                if tag == 'a' and href.startswith('#'):
-                    self.assertIn(href[1:], ids, p['slug'] + ':' + href)
+            source = (ROOT / (p['slug'] + '.html')).read_text()
+            # Source contains both private/public hero branches. Audit each
+            # real projection, including the complementary Preview anchors.
+            for kept in ['PUBLIC', 'PREVIEW']:
+                removed = 'PREVIEW' if kept == 'PUBLIC' else 'PUBLIC'
+                projected = re.sub(r'<!--LEBEN_' + removed + r'_START-->[\s\S]*?<!--LEBEN_' + removed + r'_END-->', '', source)
+                projected = re.sub(r'<!--LEBEN_' + kept + r'_(?:START|END)-->', '', projected)
+                nodes = Nodes(projected).nodes
+                ids = [a['id'] for _, a in nodes if a.get('id')]
+                self.assertEqual(len(ids), len(set(ids)), p['slug'] + ':' + kept)
+                for tag, attrs in nodes:
+                    href = attrs.get('href', '')
+                    if tag == 'a' and href.startswith('#'):
+                        self.assertIn(href[1:], ids, p['slug'] + ':' + kept + ':' + href)
 
     def test_all_269_resources_and_142_plans_keep_hashes(self):
         resources = plans = 0

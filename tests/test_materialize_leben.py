@@ -7,7 +7,10 @@ from types import SimpleNamespace
 import tempfile
 import unittest
 from unittest.mock import patch
+import zlib
 from PIL import Image
+from pypdf import PdfReader, PdfWriter
+from pypdf.generic import ArrayObject, DictionaryObject, EncodedStreamObject, NameObject, NumberObject
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('leben_materializer', ROOT / 'scripts/materialize-leben-brochures.py')
@@ -77,6 +80,52 @@ class LebenMaterializerTests(unittest.TestCase):
         self.assertEqual(previous.read_bytes(), b'previously approved media')
         self.assertEqual(manifest.read_bytes(), frozen)
         self.assertEqual(list(target.iterdir()), [previous])
+
+    def test_opted_in_original_jpeg_copy_keeps_exact_bytes_and_rejects_invalid_stream_evidence(self):
+        image = Image.new('RGB', (320, 240), '#557766')
+        encoded = io.BytesIO(); image.save(encoded, 'JPEG', quality=88); data = encoded.getvalue()
+        writer = PdfWriter(); page = writer.add_blank_page(width=320, height=240)
+        stream = EncodedStreamObject(); stream._data = zlib.compress(data)
+        stream.update({NameObject('/Type'): NameObject('/XObject'), NameObject('/Subtype'): NameObject('/Image'),
+                       NameObject('/Width'): NumberObject(320), NameObject('/Height'): NumberObject(240),
+                       NameObject('/BitsPerComponent'): NumberObject(8), NameObject('/ColorSpace'): NameObject('/DeviceRGB'),
+                       NameObject('/Filter'): ArrayObject([NameObject('/FlateDecode'), NameObject('/DCTDecode')])})
+        page[NameObject('/Resources')] = DictionaryObject({NameObject('/XObject'): DictionaryObject({NameObject('/X2'): writer._add_object(stream)})})
+        pdf = self.root / 'private.pdf'
+        with pdf.open('wb') as output: writer.write(output)
+        reader = PdfReader(pdf); native = reader.pages[0].images[0]
+        sha = hashlib.sha256(data).hexdigest()
+        asset = {'sourcePage': 1, 'sourceImageIndex': 0, 'sourceImageName': native.name,
+                 'sourceImageSha256': hashlib.sha256(native.data).hexdigest(), 'extractionMethod': 'pdf_image_object',
+                 'crop': [0, 0, 1, 1], 'nativeWidth': 320, 'nativeHeight': 240, 'width': 320, 'height': 240,
+                 'sha256': sha, 'sourceEncodedStream': {'resourceName': 'X2', 'sha256': sha, 'format': 'JPEG'},
+                 'encoderMethod': 'original_embedded_jpeg_no_reencoding'}
+        destination = self.root / 'original.jpg'
+        module.render_asset(pdf, reader, asset, destination, self.root, 'unused', 'unused')
+        self.assertEqual(destination.read_bytes(), data)
+        for mutation in ['malformed', 'hash', 'crop', 'resize', 'native', 'quality', 'resource', 'mapping', 'rgb', 'not_jpeg']:
+            changed = json.loads(json.dumps(asset)); local_reader = PdfReader(pdf); page = local_reader.pages[0]; native = page.images[0]
+            obj = page['/Resources']['/XObject']['/X2']
+            if mutation == 'malformed': changed['sourceEncodedStream'] = {}
+            elif mutation == 'hash': changed['sourceEncodedStream']['sha256'] = '0' * 64
+            elif mutation == 'crop': changed['crop'] = [0, 0, .9, 1]
+            elif mutation == 'resize': changed['width'] = 160
+            elif mutation == 'native': changed['nativeHeight'] = 241
+            elif mutation == 'quality': changed['encoderQuality'] = 90
+            elif mutation == 'resource': changed['sourceEncodedStream']['resourceName'] = 'Foreign'
+            elif mutation == 'mapping': obj[NameObject('/Decode')] = ArrayObject([NumberObject(0), NumberObject(1)])
+            elif mutation == 'rgb': obj[NameObject('/ColorSpace')] = NameObject('/DeviceCMYK')
+            else:
+                png = io.BytesIO(); image.save(png, 'PNG'); payload = png.getvalue()
+                with patch.object(obj, 'get_data', return_value=payload):
+                    changed['sha256'] = changed['sourceEncodedStream']['sha256'] = hashlib.sha256(payload).hexdigest()
+                    with self.assertRaisesRegex(ValueError, 'native RGB JPEG'):
+                        module.copy_encoded_jpeg(page, native, changed, self.root / 'not_jpeg.jpg', changed['crop'])
+                self.assertFalse((self.root / 'not_jpeg.jpg').exists()); continue
+            target = self.root / (mutation + '.jpg')
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                module.copy_encoded_jpeg(page, native, changed, target, changed['crop'])
+            self.assertFalse(target.exists())
 
 
 if __name__ == '__main__':
