@@ -172,7 +172,8 @@ def main():
                       'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
                       **{key: metadata[key] for key in ['officialOriginals', 'officialSourceMedia',
                          'officialPublishedMedia', 'ecasaGalleryImages', 'contentProfile',
-                         'manualQuality', 'ecasaPublishedMedia', 'lebenReview', 'lebenReviewMedia'] if key in metadata}}
+                         'manualQuality', 'ecasaPublishedMedia', 'lebenReview', 'lebenReviewMedia',
+                         'sentoReview'] if key in metadata}}
     files = release.verify_archive(archive, initial_policy)
     reference = make_reference(metadata, platform, files, commit)
     release.verify_git_reference(ROOT, files, reference)
