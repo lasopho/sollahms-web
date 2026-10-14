@@ -1,4 +1,5 @@
 import { originalLebenHtml } from './leben-preservation.mjs';
+import { projectSentoFile } from './sento-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
@@ -57,8 +58,8 @@ test('definitive Ecasa consolidation contains 15 canonical projects, 22 commerci
 test('all 121 other developers retain exact catalogue, research, ledger and public fiche bytes from the reviewed commit',()=>{
   const keep=new Set(originalProjects.filter(p=>p.inmobiliaria!=='Ecasa').map(p=>p.slug));assert.equal(keep.size,121);
   for(const path of ['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json'])
-    assert.deepEqual(json(path).filter(row=>keep.has(row.slug)),JSON.parse(before(path)).filter(row=>keep.has(row.slug)),path);
-  for(const slug of keep)assert.deepEqual(originalLebenHtml(read(slug+'.html')),before(slug+'.html'),slug);
+    assert.deepEqual(JSON.parse(projectSentoFile(path,read(path))).filter(row=>keep.has(row.slug)),JSON.parse(before(path)).filter(row=>keep.has(row.slug)),path);
+  for(const slug of keep)assert.deepEqual(originalLebenHtml(projectSentoFile(slug+'.html',read(slug+'.html'))),before(slug+'.html'),slug);
   for(const path of ['data/brochures-aj-urbana.json','data/brochures-ingevec.json'])assert.deepEqual(read(path),before(path),path);
 });
 
@@ -150,7 +151,7 @@ test('catalogue and exact successor controls reject resurrection, duplicate iden
 test('the 15 reviewed canonical Ecasa outputs and eight exact alias routes match the independently pinned consolidation inventory',()=>{
   const reviewed=json('tests/ecasa-reviewed-output.json');assert.equal(reviewed.baselineCommit,BASELINE);
   assert.equal(sha(read('data/brochures-ecasa.json')),reviewed.manifestSha256);
-  const config=read('vercel.json').toString();
+  const config=projectSentoFile('vercel.json',read('vercel.json')).toString();
   const gate=',\n      "codex/norte-verde-hero-merge": false';
   assert.equal(config.split(gate).length,2,'Only the explicit disabled Norte Verde review gate may accompany the pinned routes');
   assert.equal(sha(config.replace(gate,'')),reviewed.redirectConfigSha256);
