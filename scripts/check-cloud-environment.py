@@ -47,7 +47,12 @@ for (const [name, override] of [['sharp', 'SOLLAHMS_SHARP_MODULE'], ['playwright
       directory = path.dirname(directory);
     }
     result[name] = {status: 'ok', version};
-    if (name === 'sharp') result[name].libvips = module.versions?.vips;
+    if (name === 'sharp') {
+      if (typeof module !== 'function' || typeof module.versions?.vips !== 'string' || !module.versions.vips || !version) {
+        throw Object.assign(new Error(), {code: 'INVALID_SHARP_MODULE'});
+      }
+      result[name].libvips = module.versions.vips;
+    }
     else result[name].bundled_browser_present = fs.existsSync(module.chromium.executablePath());
   } catch (error) { result[name] = {status: 'missing', code: safeError(error)}; }
 }
@@ -151,10 +156,13 @@ def main():
             report['warning'] = 'Native Node PIPE operations are restricted; use Git CI --cloud-stdio after the compatibility check passes.'
     browser = os.environ.get('SOLLAHMS_BROWSER_EXECUTABLE') or shutil.which('chromium') or '/usr/bin/chromium'
     browser_code, browser_version = run([browser, '--version'])
-    report['browser'] = {'status': 'ok' if browser_code == 0 else 'missing', 'executable': browser,
+    browser_verified = browser_code == 0 and bool(browser_version)
+    report['browser'] = {'status': 'ok' if browser_verified else 'missing', 'executable': browser,
                          'launch_verified': False}
-    if browser_code == 0:
+    if browser_verified:
         report['browser']['version'] = browser_version.splitlines()[0]
+    elif browser_code == 0:
+        report['browser']['reason'] = 'empty_version_output'
     report['browser']['note'] = 'Existing QA scripts use Chrome channel; selecting system Chromium requires an explicit executable path.'
     report['network'] = network_probe() if args.network else {'status': 'not_run', 'reason': 'offline_default'}
     network_ok = not args.network or all(report['network'].get(name, {}).get('status') == 'ok'
@@ -162,7 +170,7 @@ def main():
     report['git_ci_ready'] = bool(python_ok and all(row['status'] == 'ok' for row in report['dependencies'].values())
         and node and node['status'] == 'ok' and child_ok and node['scrypt']['status'] == 'ok')
     report['optional_tools_present'] = bool(node and node['sharp']['status'] == 'ok'
-        and node['playwright']['status'] == 'ok' and browser_code == 0)
+        and node['playwright']['status'] == 'ok' and browser_verified)
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report['git_ci_ready'] and network_ok else 1
 

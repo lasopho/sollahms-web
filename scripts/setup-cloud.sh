@@ -52,7 +52,41 @@ for line in pathlib.Path(sys.argv[1]).read_text().splitlines():
         raise SystemExit(1)
 PY
 then
-  "$venv_path/bin/python" -m pip install --quiet --disable-pip-version-check \
+  if ! "$venv_path/bin/python" - <<'PYGUARD'
+import ast, os, subprocess, sys
+names = ('TARGET', 'PREFIX', 'ROOT', 'PYTHON', 'LOG', 'REPORT')
+if any(os.environ.get('PIP_' + name) for name in names):
+    raise SystemExit(1)
+env = os.environ.copy()
+env.update(PIP_QUIET='0', PIP_VERBOSE='0', PIP_ISOLATED='0',
+           PIP_USER='0', PIP_GLOBAL='0', PIP_SITE='0')
+try:
+    result = subprocess.run(
+        [sys.executable, '-m', 'pip', '--python', sys.executable,
+         '--log', os.devnull, '--disable-pip-version-check', 'config', 'list'],
+        env=env, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+        text=True, timeout=5)
+    if result.returncode:
+        raise SystemExit(1)
+    for line in result.stdout.splitlines():
+        if not line.strip():
+            continue
+        key, separator, encoded = line.partition('=')
+        scope, dot, name = key.strip().lower().rpartition('.')
+        if not separator or not dot or not scope or not name:
+            raise SystemExit(1)
+        if scope in ('global', 'install', ':env:') and name.upper() in names:
+            value = ast.literal_eval(encoded)
+            if not isinstance(value, str) or value != '':
+                raise SystemExit(1)
+except (OSError, ValueError, SyntaxError, subprocess.SubprocessError):
+    raise SystemExit(1)
+PYGUARD
+  then
+    printf '%s\n' 'Cannot inspect pip safely or destination overrides are configured. Clear pip target/prefix/root/python/log/report options before setup.' >&2
+    exit 2
+  fi
+  "$venv_path/bin/python" -m pip --python "$venv_path/bin/python" install --no-user --quiet --disable-pip-version-check \
     --cache-dir "$venv_path/.pip-cache" --require-hashes --only-binary=:all: \
     -r "$repo_root/requirements-ci.txt"
 else

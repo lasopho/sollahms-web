@@ -24,6 +24,13 @@ red. Si faltan, pip instala exclusivamente wheels con los hashes revisados,
 manteniendo la verificación TLS y la configuración de proxy heredadas.
 Comprueba `pyvenv.cfg` y que el prefijo Python pertenezca al directorio elegido;
 una instalación global no puede utilizarse como destino de pip.
+Antes de instalar, también rechaza destinos configurados para paquetes,
+intérprete, logs o reportes en variables pip y sus secciones global/install.
+La inspección usa la CLI soportada, captura sus valores sin mostrarlos y
+conserva la configuración de proxy, certificados e índices. El rechazo es
+conservador, incluso si otra sección sobrescribe el destino. El install fija
+el intérprete de la virtualenv y usa `--no-user`; no modifica la configuración
+de pip del llamador.
 No reemplaza una virtualenv existente de otra versión ni instala npm, Chrome
 o herramientas del sistema.
 

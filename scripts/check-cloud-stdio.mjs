@@ -15,6 +15,13 @@ assert.equal(execFileSync[Symbol.for('sollahms.cloud-sync-stdio')], true, 'Prelo
 
 const head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 assert.match(head, /^[a-f\d]{40}$/);
+const negativeGitDescriptors = spawnSync('git', ['rev-parse', 'HEAD'], {
+  cwd: root, stdio: ['ignore', -1, -1], encoding: 'utf8',
+});
+assert.equal(negativeGitDescriptors.error, undefined);
+assert.equal(negativeGitDescriptors.status, 0);
+assert.equal(negativeGitDescriptors.stdout.trim(), head);
+assert.equal(negativeGitDescriptors.stderr, '');
 checks.push('Git HEAD captured without discarding subprocess errors');
 
 const source = '<body>' + '<figcaption>Piscina según brochure · Vista de Peñuelas ↗</figcaption>'.repeat(3000) + '</body>';
@@ -28,6 +35,12 @@ checks.push('Existing CLI preserves exact 3000-caption UTF-8 input/output');
 const binaryInput = new Uint8Array([0, 1, 127, 128, 255]);
 const binaryOutput = execFileSync(process.execPath, ['-e', "process.stdout.write(require('node:fs').readFileSync(0))"], { input: binaryInput });
 assert.deepEqual(binaryOutput, Buffer.from(binaryInput));
+const negativeStdinDescriptor = spawnSync(process.execPath, ['-e', "process.stdout.write(require('node:fs').readFileSync(0))"], {
+  input: binaryInput, stdio: [-1, 'pipe', 'pipe'],
+});
+assert.equal(negativeStdinDescriptor.error, undefined);
+assert.equal(negativeStdinDescriptor.status, 0);
+assert.deepEqual(negativeStdinDescriptor.stdout, Buffer.from(binaryInput));
 checks.push('TypedArray input and Buffer output retain every byte');
 
 const failure = spawnSync(process.execPath, ['-e', "console.log('stdout retained');console.error('stderr retained');process.exitCode=7"], { encoding: 'utf8' });
@@ -61,6 +74,7 @@ assert.equal(missing.error?.code, 'ENOENT');
 assert.equal(missing.status, null);
 assert.throws(() => execFileSync('/sollahms-nonexistent-executable'), error => error.code === 'ENOENT');
 assert.throws(() => spawnSync(process.execPath, [], { stdio: ['pipe', 'pipe', 'pipe', 'ipc'] }), /does not support IPC/);
+assert.throws(() => spawnSync(process.execPath, [], { stdio: ['pipe', 'pipe', 'pipe', -1] }), /additional pipe descriptors/);
 for (const input of [0, false]) {
   const ignoredFalsy = spawnSync(process.execPath, ['-e', "process.stdout.write(require('node:fs').readFileSync(0))"], { input });
   assert.equal(ignoredFalsy.status, 0);

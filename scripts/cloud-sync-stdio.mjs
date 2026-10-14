@@ -30,7 +30,7 @@ function stdioEntries(stdio) {
   if (!Array.isArray(stdio)) {
     throw new TypeError('Cloud stdio accepts pipe, ignore, inherit, or a stdio array.');
   }
-  const entries = [...stdio];
+  const entries = [...stdio].map(entry => typeof entry === 'number' && entry < 0 ? 'pipe' : entry);
   for (let index = 0; index < 3; index++) entries[index] ??= 'pipe';
   for (let index = 3; index < entries.length; index++) entries[index] ??= 'ignore';
   if (entries.some((entry, index) => entry === 'ipc' || (index > 2 && entry === 'pipe'))) {
