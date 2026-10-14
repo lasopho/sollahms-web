@@ -25,6 +25,8 @@ CANDIDATE_FILES = {'data/ecasa-publication-candidate.json', 'scripts/ecasa-publi
 PROFILE = 'ecasa_independent_candidate'
 PRIVATE_FOLDERS = {'ingevec-preview', 'ecasa-preview', 'ecasa-official-review', 'ecasa-owner-review'}
 VERIFICATION_TOOLS = ('tests/qa-ecasa.mjs', 'tests/qa-ecasa-remote.mjs', 'tests/qa-preview-server.mjs')
+AUDIT_CONTEXT_FILES = ('data/fichas-proyectos.json', 'data/registro-fichas.json')
+AUDIT_ONLY_LEDGER = 'data/registro-fichas.json'
 
 def require(value, message):
     if not value:
@@ -89,6 +91,25 @@ def verification_tools(tree):
                 'Private QA tool differs from prepared HEAD Git bytes: ' + name)
         inventory.append({'file': name, 'size': len(data), 'sha256': sha(data)})
     return inventory
+
+
+def audit_context_inventory(tree):
+    inventory = []
+    for name in AUDIT_CONTEXT_FILES:
+        path = ROOT / name
+        regular(path)
+        data = path.read_bytes()
+        record = tree.get(name)
+        require(record and record['kind'] == 'blob' and record['mode'] in {'100644', '100755'} and
+                record['oid'] == blob_id(data),
+                'Operational audit context differs from prepared HEAD Git bytes: ' + name)
+        inventory.append({'file': name, 'size': len(data), 'sha256': sha(data), 'gitBlob': blob_id(data)})
+    return inventory
+
+
+def require_runtime_selection(names):
+    require(not set(VERIFICATION_TOOLS) & set(names), 'Private QA tools cannot enter runtime source archive')
+    require(AUDIT_ONLY_LEDGER not in names, 'Operational audit ledger cannot enter runtime source archive')
 
 
 def validate_candidate(source, node, branch):
@@ -275,9 +296,10 @@ def main():
     require(str(audit.relative_to(ROOT)) in tree and tree[str(audit.relative_to(ROOT))]['oid'] == blob_id(audit.read_bytes()),
             'Independent auditor differs from the prepared Git commit')
     tool_inventory = verification_tools(tree)
+    context_inventory = audit_context_inventory(tree)
     candidate = validate_candidate(ROOT, args.node, args.branch)
     names = sorted(set(bundle.selected_source_files(ROOT)) | CANDIDATE_FILES)
-    require(not set(VERIFICATION_TOOLS) & set(names), 'Private QA tools cannot enter runtime source archive')
+    require_runtime_selection(names)
     inventory = source_inventory(names, tree, candidate)
     source_count = len(inventory)
     tracked_count = sum(row['gitTracked'] for row in inventory)
@@ -302,13 +324,20 @@ def main():
     bundle.assert_public_parity(preview_files, public_files)
     require(len(public_files) == len(preview_files) == 1028, 'Independent candidate changed reviewed route/resource count')
     audit_output = destination / 'independent-audit.json'
-    subprocess.run([sys.executable, str(audit), '--source', str(source), '--public', str(public / 'dist'),
+    require(git('rev-parse', 'HEAD').decode().strip() == commit and
+            not git('status', '--porcelain', '--untracked-files=all').strip(),
+            'Committed audit checkout changed during runtime preparation')
+    require(audit_context_inventory(tree) == context_inventory, 'Operational audit context changed before validation')
+    subprocess.run([sys.executable, str(audit), '--source', str(ROOT), '--public', str(public / 'dist'),
         '--preview', str(preview / 'dist'), '--production-source', str(args.production_source),
         '--production-public', str(args.production_public), '--approved-preview', str(args.approved_preview),
         '--output', str(audit_output)], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     audited = read_json(audit_output)
     require(audited.get('ok') is True or audited.get('passed') is True, 'Independent source/output audit did not pass')
     require(not audited.get('errors') and not audited.get('failures'), 'Independent audit has unresolved failures')
+    require(audit_context_inventory(tree) == context_inventory and
+            all(sha((source / row['file']).read_bytes()) == row['sha256'] for row in inventory),
+            'Committed audit context or restored runtime bytes changed during validation')
     # Archive only the selected original inputs. dist/.vercel/QA/receipts/PDFs
     # and contractual material cannot enter this source allowlist.
     data = bundle.archive_bytes(source, names)
@@ -352,6 +381,11 @@ def main():
         'publicBuild': public_build, 'previewBuild': preview_build,
         'buildReceipt': preview_receipt,
         'baselineVerification': baseline_verification,
+        'auditSourceRoot': str(ROOT), 'runtimeSourceRoot': str(source),
+        'auditSourceBinding': {'preparedCommit': commit, 'auditSourceRoot': str(ROOT),
+            'runtimeSourceRoot': str(source), 'restoredSourceFiles': source_count,
+            'restoredSourceHashesVerified': True, 'operationalContextFiles': context_inventory,
+            'operationalLedgerInSourceArchive': False},
         'baselines': {'productionSource': str(args.production_source), 'productionPublic': str(args.production_public),
                       'approvedPreview': str(args.approved_preview)}}
     reference = {'schemaVersion': 1, 'contentProfile': PROFILE, 'preparedCommitForReview': commit,
