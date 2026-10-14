@@ -19,10 +19,12 @@ La compilación activa el prototipo únicamente con `VERCEL_ENV=preview` y la re
 - 42 vistas de fichas/variantes/tamaños y 144 estados del comparador sobre el contenido de `main`: 2467 comprobaciones, cero fallos. La prueba usa un manifiesto operacional privado derivado del HTML existente para comprobar títulos, fotografías, galerías y ausencia de modelos añadidos.
 - Compilación local habitual: los 1129 archivos coinciden byte por byte con la salida del `main` anterior, incluida la misma lista de archivos. Fue una compilación offline, sin despliegue.
 - Compilación local de revisión: conserva 1112 archivos anteriores; las 17 fichas Norte Verde restantes recuperan exactamente el HTML previo al retirar las dos etiquetas de carga y la clase `nv-hero`. Se añaden únicamente los tres recursos del prototipo.
-- Todos los HTML fuente, datos, galerías, planos, imágenes, precios y textos comerciales de `main` permanecen idénticos. `vercel.json` permanece idéntico y conserva `main: false` para despliegues automáticos.
+- Todos los HTML fuente, datos, galerías, planos, imágenes, precios y textos comerciales de `main` permanecen idénticos. `vercel.json` conserva `main: false` y añade únicamente `codex/norte-verde-hero-merge: false`, que exige el paquete privado reproducible para un Preview manual.
 
 Las capturas automatizadas usan fuentes de reserva al aislar servicios externos. Las declaraciones Manrope/Inter permanecen intactas. No se enviaron formularios, mensajes ni reservas.
 
 La evidencia local de integración se guarda en [norte-verde-hero-merge-evidencias](norte-verde-hero-merge-evidencias/). El commit funcional es `77f153e`; el commit posterior añade este informe y evidencias. La confirmación del merge figura en el PR asociado.
 
 No se autoriza ni ejecuta un despliegue a Production como parte del merge.
+
+El CI de GitHub aprobó la integración. El intento de Preview automático desde Git fue rechazado por la protección existente de recursos Ingevec incompletos; se añadió el bloqueo automático de esta rama. El Preview visual protegido y su paquete privado validado permanecen disponibles.
