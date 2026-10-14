@@ -1,3 +1,4 @@
+import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync, rmSync, copyFileSync, cpSync, existsSync } from 'node:fs';
@@ -183,7 +184,7 @@ test('531 historical assets and handlers retain strict baselines outside the sco
   for (const { file } of baselineTree()) {
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
-  assert.deepEqual(listFiles('assets').filter((file) => !file.startsWith(ASSETS.slice(1)) &&
+  assert.deepEqual(historicalSentoAssetFiles(listFiles('assets')).filter((file) => !file.startsWith(ASSETS.slice(1)) &&
     !file.startsWith(INGEVEC_ASSETS.slice(1)) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort());
   assertAutomaticEmbedStylesheet();
 });

@@ -1,3 +1,4 @@
+import { projectSentoFile } from './sento-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
@@ -14,8 +15,8 @@ const TOUR_REVIEW = 'codex/recorridos-validos-144';
 const AUTOMATIC_EMBEDS = 'codex/mapas-recorridos-auto';
 const MAP_CLEANUP = 'codex/limpieza-mapas-fichas';
 const APPROVED_PORTFOLIO = 'e7afe04';
-const read = path => readFileSync(resolve(ROOT, path));
-const json = path => JSON.parse(read(path));
+const read = path => projectSentoFile(path, readFileSync(resolve(ROOT, path)));
+const json = path => JSON.parse(projectSentoFile(path, read(path)));
 const git = (...args) => execFileSync('git', args, { cwd: ROOT });
 const configuration = json('vercel.json');
 
@@ -137,7 +138,7 @@ function assertIncompleteBuildRejected(environment, partial) {
   try {
     for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
       const target = resolve(fixture, path);
-      mkdirSync(dirname(target), { recursive: true }); copyFileSync(resolve(ROOT, path), target);
+      mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, projectSentoFile(path, readFileSync(resolve(ROOT, path))));
     }
     if (partial) {
       const asset = json('data/brochures-ingevec.json').projects[0].images[0];

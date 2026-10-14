@@ -1,3 +1,4 @@
+import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync,
@@ -221,7 +222,7 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
-  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1))),
+  assert.deepEqual(historicalSentoAssetFiles(listFiles('assets')).filter(file => !file.startsWith(ASSETS.slice(1))),
     [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort());
   assertAutomaticEmbedStylesheet();
 });

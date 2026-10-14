@@ -10,6 +10,7 @@ import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
+from sento_scope import original_data, historical_file, original_html
 from string import Template
 
 from automatic_embed_scope import restore_automatic_file
@@ -24,8 +25,8 @@ from fiche_presentation import commercialize_fiche
 spec = importlib.util.spec_from_file_location('map_cleanup_details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(details)
-PROJECTS = json.loads((ROOT / 'data/proyectos.json').read_text())
-RECORDS = {row['slug']: row for row in json.loads((ROOT / 'data/fichas-proyectos.json').read_text())}
+PROJECTS = original_data(json.loads((ROOT / 'data/proyectos.json').read_text()))
+RECORDS = {row['slug']: row for row in original_data(json.loads((ROOT / 'data/fichas-proyectos.json').read_text()), 'data/fichas-proyectos.json')}
 
 
 class Nodes(HTMLParser):
@@ -54,7 +55,7 @@ class MapCleanup(unittest.TestCase):
         changed = 0
         for project in PROJECTS:
             path = project['slug'] + '.html'
-            current = (ROOT / path).read_bytes()
+            current = historical_file(path, (ROOT / path).read_bytes())
             self.assertEqual(current, expected_cleanup_file(path), path)
             restore_automatic_file(path, current)
             changed += current != baseline_bytes(path)
@@ -65,7 +66,7 @@ class MapCleanup(unittest.TestCase):
         for project in PROJECTS:
             path = project['slug'] + '.html'
             before = Nodes(baseline_bytes(path).decode()).nodes
-            after = Nodes((ROOT / path).read_text()).nodes
+            after = Nodes(original_html((ROOT / path).read_text())).nodes
             for tag in ['iframe', 'img', 'script', 'form', 'input', 'button']:
                 self.assertEqual([a for t, a in after if t == tag], [a for t, a in before if t == tag], path + ':' + tag)
             actions = lambda nodes: [a for t, a in nodes if t == 'a' and not a.get('href', '').startswith('https://www.google.com/maps')]
@@ -76,14 +77,14 @@ class MapCleanup(unittest.TestCase):
             for frame in frames:
                 self.assertEqual(frame.get('loading'), 'lazy', path)
             # Each brochure model still has its own original displayed plan.
-            plans += (ROOT / path).read_text().count('class="aj-model"')
+            plans += original_html((ROOT / path).read_text()).count('class="aj-model"')
         self.assertEqual((maps, tours, plans), (137, 97, 142))
 
     def test_no_persistent_map_links_generic_notes_or_empty_remnants(self):
         related = 0
         for project in PROJECTS:
             slug = project['slug']
-            text = (ROOT / (slug + '.html')).read_text()
+            text = original_html((ROOT / (slug + '.html')).read_text())
             self.assert_clean(text, slug)
             if slug in RELATED:
                 note = re.search(r'<p class="map-note">.*?</p>', baseline_bytes(slug + '.html').decode())[0]
@@ -98,7 +99,7 @@ class MapCleanup(unittest.TestCase):
             page, _, _ = details.render(project, copy.deepcopy(RECORDS[slug]), template)
             self.assert_clean(page, slug)
             before = baseline_bytes(slug + '.html').decode()
-            current = (ROOT / (slug + '.html')).read_text()
+            current = original_html((ROOT / (slug + '.html')).read_text())
             self.assertEqual(normalize_page_embeds(before, RECORDS[slug], featured=slug in FEATURED), current, slug)
             self.assertEqual(normalize_page_embeds(current, RECORDS[slug], featured=slug in FEATURED), current, slug + ': repeated regeneration')
 
@@ -107,6 +108,8 @@ class MapCleanup(unittest.TestCase):
             fixture = Path(directory)
             for name in ['scripts', 'data', 'templates']:
                 shutil.copytree(ROOT / name, fixture / name)
+            for path in ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json']:
+                (fixture / path).write_bytes(historical_file(path, (ROOT / path).read_bytes()))
             for slug in FEATURED:
                 (fixture / (slug + '.html')).write_bytes(baseline_bytes(slug + '.html'))
             result = subprocess.run([sys.executable, str(fixture / 'scripts/update-featured-verification.py')],
@@ -128,7 +131,7 @@ class MapCleanup(unittest.TestCase):
         self.assertEqual(remove_redundant_map_details(unrelated), unrelated)
         self.assert_clean(commercialize_fiche(page, 'bcome', research=RECORDS['bcome']), 'bcome')
         for path in ['assets/css/project-embeds.css', 'vercel.json', 'scripts/package-vercel.mjs']:
-            self.assertEqual(restore_map_cleanup_asset(path, (ROOT / path).read_bytes()), baseline_bytes(path))
+            self.assertEqual(restore_map_cleanup_asset(path, historical_file(path, (ROOT / path).read_bytes())), baseline_bytes(path))
         self.assertEqual((ROOT / 'assets/js/project-embeds.js').read_bytes(), baseline_bytes('assets/js/project-embeds.js'), 'Native controls/error-only runtime must remain exact')
 
     def test_exact_cleanup_scope_rejects_unrelated_markup_assets_and_missing_removals(self):
@@ -140,7 +143,7 @@ class MapCleanup(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 restore_automatic_file(path, mutation)
         for path in ['assets/css/project-embeds.css', 'vercel.json', 'scripts/package-vercel.mjs']:
-            current = (ROOT / path).read_bytes()
+            current = historical_file(path, (ROOT / path).read_bytes())
             for mutation in [current + b'\n', baseline_bytes(path)]:
                 with self.assertRaises(AssertionError):
                     restore_map_cleanup_asset(path, mutation)

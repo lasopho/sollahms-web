@@ -2,6 +2,7 @@
 // Public website use and redistribution of the source repository are distinct
 // channels; a protected review is already authorized by the user.
 import { createHash } from 'node:crypto';
+import { restoreSentoRows } from './sento-publication.mjs';
 
 export const BROCHURE_INGEVEC_SLUGS = Object.freeze([
   'centenario-1', 'tocornal', 'vivaceta', 'coronel-godoy', 'diagonal-paraguay',
@@ -45,7 +46,7 @@ export function assertBrochureCatalogue(projects) {
       projects.some(project => allowed.has(project.slug) && project.inmobiliaria !== 'Ingevec')) {
     throw new Error('The approved catalogue must contain exactly 144 projects with the sixteen authorized Ingevec identities');
   }
-  const untouched = projects.filter(project => !allowed.has(project.slug));
+  const untouched = restoreSentoRows(projects).filter(project => !allowed.has(project.slug));
   if (untouched.length !== 128 || brochureFingerprint(untouched) !== OTHER_CATALOGUE_SHA256) {
     throw new Error('The 128 projects from other developers must remain unchanged from the approved catalogue');
   }
