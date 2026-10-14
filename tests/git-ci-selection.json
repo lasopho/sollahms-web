@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 323,
+  "expectedGitNodeTests": 326,
   "expectedReleaseOnlyCases": 26,
   "expectedPythonFixtureTests": 152,
   "fullFiles": [
@@ -117,6 +117,14 @@
         "a Production build rejects the merged Sento source before creating public output",
         "two real Sento regenerations preserve the validated presentation and all 137 other projects",
         "generic and featured generators use the validated Sento presentation without documentation blocks"
+      ]
+    },
+    {
+      "file": "tests/ecasa-main-integration.test.mjs",
+      "cases": [
+        "Vercel Preview accepts only the complete approved configuration object while preserving its raw source binding",
+        "runtime configuration equivalence rejects changed redirects gates headers build settings and unknown fields without logging values",
+        "configuration representation fallback is unavailable outside explicit Vercel Preview and cannot authorize Production"
       ]
     }
   ],

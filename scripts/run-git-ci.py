@@ -113,11 +113,11 @@ with ThreadPoolExecutor(max_workers=2) as executor:
     results = list(executor.map(run, commands))
 node_results = [item for item in results if item['name'].startswith('node-')]
 node_counts = {key: sum(item['tests'][key] for item in node_results) for key in ['tests','pass','fail','skipped','cancelled']}
-node_count_exact = node_counts['tests'] == manifest['expectedGitNodeTests'] == 323
+node_count_exact = node_counts['tests'] == manifest['expectedGitNodeTests'] == 326
 no_skipped = node_counts['skipped'] == 0
 python_result = next(item for item in results if item['name'] == 'python-synthetic-units')
 python_count_exact = python_result['tests'] == manifest['expectedPythonFixtureTests'] == 152
-passed = node_count_exact and python_count_exact and no_skipped and all(item.get('summaryComplete', True) for item in results) and all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 323 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
+passed = node_count_exact and python_count_exact and no_skipped and all(item.get('summaryComplete', True) for item in results) and all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 326 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
 report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
           'node': node_counts, 'pythonFixtureTests': python_result['tests'],
           'exactClassifiedCounts': node_count_exact and python_count_exact,

@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 export const INTEGRATION_MANIFEST = 'data/ecasa-main-integration.json';
-export const INTEGRATION_MANIFEST_SHA256 = '3272d97c81cc01ce8a186be683ec10ea405356241fb2de65ddf70561cceb0fb7';
+export const INTEGRATION_MANIFEST_SHA256 = '4815c706248bbc9af231a7acf256a3c4d96b6252019cf16e763c4e28ec463f16';
 const known = new WeakSet();
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const canonical = value => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object'
@@ -29,8 +29,28 @@ function bytes(root, name) {
   assert.ok(lstatSync(path).isFile() && realpathSync(path) === path, 'Nonregular integration source: ' + name);
   return readFileSync(path);
 }
-function verifyFile(root, item) {
+function verifyFile(root, item, policy) {
   const data = bytes(root, item.file);
+  if (item.file === 'vercel.json' && (data.length !== item.bytes || sha(data) !== item.sha256)
+    && process.env.VERCEL === '1' && process.env.VERCEL_ENV === 'preview') {
+    // Vercel may serialize this configuration before invoking the build command.
+    // The archive retains its raw Git hash; runtime permits only the same full JSON object.
+    const expected = policy?.runtimeVercelConfiguration;
+    assert.deepEqual(expected && { file: expected.file, rawBytes: expected.rawBytes,
+      rawSha256: expected.rawSha256, protectedPreviewOnly: expected.protectedPreviewOnly },
+    { file: item.file, rawBytes: item.bytes, rawSha256: item.sha256, protectedPreviewOnly: true },
+    'Missing exact Vercel configuration representation binding');
+    let parsed;
+    try { parsed = JSON.parse(data); }
+    catch { assert.fail('Malformed runtime Vercel configuration (bytes=' + data.length + ', sha256=' + sha(data) + ')'); }
+    const fingerprint = integrationFingerprint(parsed);
+    const keys = parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+      ? Object.keys(parsed).sort().map(key => key.replace(/[^a-zA-Z0-9_$-]/g, '?').slice(0, 64)).slice(0, 24) : [];
+    assert.equal(fingerprint, expected.canonicalSha256,
+      'Integration configuration semantics changed: vercel.json (bytes=' + data.length +
+      ', sha256=' + sha(data) + ', canonicalSha256=' + fingerprint + ', keys=' + keys.join(',') + ')');
+    return;
+  }
   assert.equal(data.length, item.bytes, 'Integration resource size changed: ' + item.file);
   assert.equal(sha(data), item.sha256, 'Integration resource changed: ' + item.file);
 }
@@ -63,7 +83,7 @@ export function assertEcasaMainIntegration(root = ROOT, { requirePrivateDocument
     assert.ok(!policy.retiredLeonSlugs.some(slug => rows.some(row => row.slug === slug)), 'Retired León project returned');
   }
   for (const item of [...policy.mainFiches, ...policy.ecasaFiches, ...policy.mainResources, ...policy.reviewResources,
-    ...policy.sourceInputs]) verifyFile(root, item);
+    ...policy.sourceInputs]) verifyFile(root, item, policy);
   let privateDocumentsVerified = 0;
   for (const item of policy.privateDocuments) {
     if (!requirePrivateDocuments && !existsSync(resolve(root, item.file))) continue;
@@ -118,6 +138,6 @@ export function assertIntegratedSharedSuccessor(file, expectedSha256, { root = R
   assert.equal(expectedSha256, integration.policy.sharedMainSha256[file], 'Unapproved shared predecessor: ' + file);
   const current = integration.policy.sourceInputs.find(item => item.file === file);
   assert.ok(current, 'Missing pinned shared integration successor');
-  verifyFile(root, current);
+  verifyFile(root, current, integration.policy);
   return true;
 }
