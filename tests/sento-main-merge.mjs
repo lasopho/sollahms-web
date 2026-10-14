@@ -1,5 +1,6 @@
 // Current main integration checks; historical fixtures retain their exact old pins.
 import test from 'node:test';
+import { restoreEcasaContext } from './commercial-html.mjs';
 import { readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
@@ -42,7 +43,7 @@ test('main retains 144 identities and all 137 foreign records, HTML, contexts an
   assert.deepEqual(Object.fromEntries(Object.entries(JSON.parse(read('lib/project-context.mjs').toString().match(/Object\.freeze\(([\s\S]*?)\);/)[1])).filter(([slug]) => !SENTO_SLUGS.includes(slug))), sentoMainBaseline.otherContexts);
   for (const line of git('ls-tree', '-r', sentoMainBaseline.sourceCommit, 'assets').toString().trim().split('\n')) {
     const match = line.match(/^\d+ blob ([a-f0-9]+)\t(.+)$/); assert.ok(match);
-    const bytes = read(match[2]);
+    const bytes = restoreEcasaContext(match[2],read(match[2]));
     assert.equal(createHash('sha1').update('blob ' + bytes.length + '\0').update(bytes).digest('hex'), match[1], match[2]);
   }
 });
@@ -105,7 +106,7 @@ test('main and Sento automatic deployments remain disabled and source originals 
 test('a Production build rejects the merged Sento source before creating public output', () => {
   const fixture = mkdtempSync(join(tmpdir(), 'sento-production-gate-'));
   try {
-    for (const path of ['scripts/package-vercel.mjs','scripts/brochure-publication.mjs','scripts/sento-publication.mjs','data/sento-baseline.json','data/sento-main-baseline.json','data/sento-review.json']) {
+    for (const path of ['scripts/ecasa-main-integration.mjs','scripts/package-vercel.mjs','scripts/brochure-publication.mjs','scripts/sento-publication.mjs','data/sento-baseline.json','data/sento-main-baseline.json','data/sento-review.json']) {
       const target = join(fixture,path);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,readPreLeonFile(path));
     }
     const result = spawnSync(process.execPath,[join(fixture,'scripts/package-vercel.mjs')],{cwd:fixture,env:{...process.env,VERCEL_ENV:'production'},encoding:'utf8'});

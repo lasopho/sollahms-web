@@ -1,0 +1,980 @@
+{
+  "schemaVersion": 1,
+  "scope": "ecasa_independent_public_candidate",
+  "baselineCommit": "f1e9bf1715cc99d095a367eba9028a9a1ad2b026",
+  "reviewCommit": "fb11f3fb466f7362cb20e99fa89b2abc610683c5",
+  "allowedBranches": [
+    "main",
+    "codex/ecasa-publicacion-independiente"
+  ],
+  "projectSlugs": [
+    "aires-la-florida-2",
+    "alto-san-joaquin",
+    "conecta-huechuraba",
+    "cumbres-de-penuelas",
+    "edificio-bezanilla",
+    "endemico",
+    "enlace-mackenna",
+    "espacio-victoria",
+    "ferroparque",
+    "lamara",
+    "lomas-de-puyai",
+    "nucleo-costanera",
+    "terratolten",
+    "urban-la-florida",
+    "wayra"
+  ],
+  "contentAuthorization": {
+    "status": "owner_authorized_web_promotion",
+    "permittedOrigin": "https://sollahms.cl",
+    "contractEvidenceSha256": "a3f5fc354a7fd5e41ed1c3f3ae499d4b5511376a7a914161d4de9c87ee44f3eb",
+    "ownerDeclarationSha256": "78af5bd82017fe2445eebca37bd8e3f4c0abe245041dee893ec8e6ff334ecfbc",
+    "availabilityViaYapo": "owner_attested_not_hash_verified",
+    "observedOfficialSource": "direct_ecasa_download",
+    "userCoverSource": "user_provided"
+  },
+  "actionAuthorization": {
+    "production": false,
+    "mergeMain": false
+  },
+  "frozenInputs": {
+    "data/brochures-ecasa.json": "fd37681006e965e83241dccd88b7b532dba5411733219dbdc152aef1e4f5017c",
+    "data/ecasa-image-quality.json": "b4562d1dfbe729520a270039df347b8e3e62f5cff7c3b62d99355d784b0bfb34",
+    "data/ecasa-manual-quality.json": "68f3187f03062d83fcc294d77bda83d7094b249bd50e60e3823ed3687317fe14",
+    "data/ecasa-official-originals.json": "3fce8acf5d4c6e5e2585e2a4f7087f739db2125bc198fab9a5d19be0a9907cdf",
+    "data/ecasa-owner-cover.json": "e2b8a85a2721bee343ec6ff50689713864fc9973191018aebe46c84ed4270b4a"
+  },
+  "selectedResources": [
+    {
+      "localPath": "/assets/propiedades/ecasa-official-review/alto-san-joaquin/living-terraza-1c280f71ad82ecac.webp",
+      "sha256": "1c280f71ad82ecac554f8decb85343809ac461a4203e72019997c34a96f16bb1",
+      "bytes": 370260,
+      "width": 1920,
+      "height": 870,
+      "kind": "official_photo",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-official-review/ferroparque/cocina-living-8f4a01f128d58e46.webp",
+      "sha256": "8f4a01f128d58e462ccc256d589d9944c1b2f04cbcae1de060f258f72211c7c5",
+      "bytes": 4692312,
+      "width": 3840,
+      "height": 1380,
+      "kind": "official_photo",
+      "projectSlug": "ferroparque",
+      "originCommercialSlug": "ferroparque"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-owner-review/aires-la-florida-2/fachada-14c384e376fa64c8.webp",
+      "sha256": "14c384e376fa64c83314f689c71cd8791f9507360a2263346e83c458fcdb453c",
+      "bytes": 477884,
+      "width": 1060,
+      "height": 972,
+      "kind": "owner_cover",
+      "projectSlug": "aires-la-florida-2",
+      "originCommercialSlug": "aires-la-florida-2"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-owner-review/conecta-huechuraba/fachada-fa36b64328871ca9.webp",
+      "sha256": "fa36b64328871ca95d94413c7e4676e22b9328383d15fe9ab7a8fb8a20af5c7a",
+      "bytes": 2228470,
+      "width": 1728,
+      "height": 1152,
+      "kind": "owner_cover",
+      "projectSlug": "conecta-huechuraba",
+      "originCommercialSlug": "conecta-huechuraba"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-owner-review/edificio-bezanilla/fachada-050bbe96d9dc5a48.webp",
+      "sha256": "050bbe96d9dc5a482006556d4acf93e40232aa013cbaf34e524f82f34f30a796",
+      "bytes": 834090,
+      "width": 1640,
+      "height": 972,
+      "kind": "owner_cover",
+      "projectSlug": "edificio-bezanilla",
+      "originCommercialSlug": "edificio-bezanilla"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-owner-review/espacio-victoria/fachada-73d87ae7002cadae.webp",
+      "sha256": "73d87ae7002cadae4c4d5591389481856cdc4f70bedadfb60c2e872028c47fb9",
+      "bytes": 1426230,
+      "width": 1186,
+      "height": 949,
+      "kind": "owner_cover",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-owner-review/urban-la-florida/fachada-4f2f1c6501d8983e.webp",
+      "sha256": "4f2f1c6501d8983e40aa11bb5a390f68299676b444a52fae18873ca52e8175b9",
+      "bytes": 492952,
+      "width": 1180,
+      "height": 972,
+      "kind": "owner_cover",
+      "projectSlug": "urban-la-florida",
+      "originCommercialSlug": "urban-la-florida"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/aires-la-florida-2/plano-a-p01.webp",
+      "sha256": "cee10b87f5d03209a00f079639da6d95048dd376ec8be6f8549419ca3db7f163",
+      "bytes": 72876,
+      "width": 900,
+      "height": 1248,
+      "kind": "plan",
+      "projectSlug": "aires-la-florida-2",
+      "originCommercialSlug": "aires-la-florida-2"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/aires-la-florida-2/plano-b-p01.webp",
+      "sha256": "1dabeca2077399cc446670ff8a65a4316ffd2e5d0ab9d21fa51af6ad8c5191d6",
+      "bytes": 88224,
+      "width": 928,
+      "height": 1248,
+      "kind": "plan",
+      "projectSlug": "aires-la-florida-2",
+      "originCommercialSlug": "aires-la-florida-2"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/aires-la-florida-2/plano-c-p01.webp",
+      "sha256": "fe9422718101d3c3029f655b5b0b8cf0c0bcad5f092c83098b6460a33417f447",
+      "bytes": 91938,
+      "width": 928,
+      "height": 1248,
+      "kind": "plan",
+      "projectSlug": "aires-la-florida-2",
+      "originCommercialSlug": "aires-la-florida-2"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/aires-la-florida-2/plano-e-p01.webp",
+      "sha256": "9ca0da49041a94998cb221e09898fdf86f1e8fca5250f690169a347c2b32f157",
+      "bytes": 93946,
+      "width": 900,
+      "height": 1380,
+      "kind": "plan",
+      "projectSlug": "aires-la-florida-2",
+      "originCommercialSlug": "aires-la-florida-2"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/aires-la-florida-2/plano-f-p01.webp",
+      "sha256": "06eeadafe8db2ac93d81a2338b60f6e1fc4a497b667165a7b3929fc755a2fcf0",
+      "bytes": 91436,
+      "width": 928,
+      "height": 1380,
+      "kind": "plan",
+      "projectSlug": "aires-la-florida-2",
+      "originCommercialSlug": "aires-la-florida-2"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/aires-la-florida-2/plano-g-p01.webp",
+      "sha256": "910dab45f4802bff66b1cdb873ef8e0f01189947eea310ad0e7c9bde395d4a45",
+      "bytes": 94972,
+      "width": 928,
+      "height": 1380,
+      "kind": "plan",
+      "projectSlug": "aires-la-florida-2",
+      "originCommercialSlug": "aires-la-florida-2"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/alto-san-joaquin/plano-a1-p01.webp",
+      "sha256": "182532b66181119b7d78caef6ba75b4ff018dbfb648fdbdafd72c8f363636dfb",
+      "bytes": 64206,
+      "width": 708,
+      "height": 1168,
+      "kind": "plan",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/alto-san-joaquin/plano-a2-p01.webp",
+      "sha256": "da35eec5399d4620b41b611055ae24c15a337c09432d5602fbc2c44d5a9c3b04",
+      "bytes": 66034,
+      "width": 676,
+      "height": 1168,
+      "kind": "plan",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/alto-san-joaquin/plano-a3-p01.webp",
+      "sha256": "03202109dbce9c1a7d7e5bfa34b37195b03bb0a3e824582a317f22a3f5191914",
+      "bytes": 63308,
+      "width": 700,
+      "height": 1168,
+      "kind": "plan",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/alto-san-joaquin/plano-a4-p01.webp",
+      "sha256": "2e0440cde53704426912e812befd08751de2151fbde205e68b04bddba07888a6",
+      "bytes": 58954,
+      "width": 676,
+      "height": 1168,
+      "kind": "plan",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/alto-san-joaquin/plano-b1-p01.webp",
+      "sha256": "a6a65a407d1329aec0e811de7a6de20527660558c476d820b3a3d5a6251dca22",
+      "bytes": 68578,
+      "width": 708,
+      "height": 1200,
+      "kind": "plan",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/alto-san-joaquin/plano-b2-p01.webp",
+      "sha256": "00834ec0f5cf700fa012f2b376eca0cb4a85750fc01b1fe845e5a76fe03177c4",
+      "bytes": 69164,
+      "width": 676,
+      "height": 1200,
+      "kind": "plan",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/alto-san-joaquin/plano-b3-p01.webp",
+      "sha256": "066eb28e5dc5643eab50be39b91e1328de86ff6b43c7f73db6dc275b1ee4553a",
+      "bytes": 70200,
+      "width": 700,
+      "height": 1200,
+      "kind": "plan",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/alto-san-joaquin/plano-b4-p01.webp",
+      "sha256": "9b9d3d9a72f1bdcabc6d001ab3f7ee9b05364817d1d6871ffeda2ec3c6769a9e",
+      "bytes": 62020,
+      "width": 676,
+      "height": 1200,
+      "kind": "plan",
+      "projectSlug": "alto-san-joaquin",
+      "originCommercialSlug": "alto-san-joaquin"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/conecta-huechuraba/plano-a-p01.webp",
+      "sha256": "7b6fdb80898197e2fd57dd736bc72e5513d2cec398ff1f6e763736843cfdc8dd",
+      "bytes": 61912,
+      "width": 900,
+      "height": 1164,
+      "kind": "plan",
+      "projectSlug": "conecta-huechuraba",
+      "originCommercialSlug": "conecta-huechuraba"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/conecta-huechuraba/plano-b-p01.webp",
+      "sha256": "5b264c4dbdcee91bfa352f1e3296f18ee9314c2ab6a6e6a7f9aab6d572144e39",
+      "bytes": 72924,
+      "width": 928,
+      "height": 1164,
+      "kind": "plan",
+      "projectSlug": "conecta-huechuraba",
+      "originCommercialSlug": "conecta-huechuraba"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/conecta-huechuraba/plano-c-p01.webp",
+      "sha256": "8629a40e2b19a5b1ad93479e2e5ce7166b638da7a42278943b3b4c175cbd9b56",
+      "bytes": 73340,
+      "width": 928,
+      "height": 1164,
+      "kind": "plan",
+      "projectSlug": "conecta-huechuraba",
+      "originCommercialSlug": "conecta-huechuraba"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/conecta-huechuraba/plano-d-p01.webp",
+      "sha256": "83dfd33ace69d94c338175adc477e0b9fa5fa69114bc274e86da8a3d6ac39e87",
+      "bytes": 65086,
+      "width": 900,
+      "height": 1380,
+      "kind": "plan",
+      "projectSlug": "conecta-huechuraba",
+      "originCommercialSlug": "conecta-huechuraba"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/conecta-huechuraba/plano-e-p01.webp",
+      "sha256": "5f241a2f1910363185fce21b999f1ddbfec6ace82278db32f3cdd05f1a75c24e",
+      "bytes": 64892,
+      "width": 928,
+      "height": 1380,
+      "kind": "plan",
+      "projectSlug": "conecta-huechuraba",
+      "originCommercialSlug": "conecta-huechuraba"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/conecta-huechuraba/plano-f-p01.webp",
+      "sha256": "fdd7620cb222ddefaf4431df2987a1af036185584b14e562d1adc5884357d938",
+      "bytes": 66080,
+      "width": 928,
+      "height": 1380,
+      "kind": "plan",
+      "projectSlug": "conecta-huechuraba",
+      "originCommercialSlug": "conecta-huechuraba"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/imagen-01-p01.webp",
+      "sha256": "5f283b877680c865b2f9b809532a8da7c34a542d29c869bf90ccff277b38bb00",
+      "bytes": 321748,
+      "width": 1800,
+      "height": 680,
+      "kind": "documentary_photo",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-a-p17.webp",
+      "sha256": "c24ae83dc9952d0e7884c97a37d9ef2aec118407f82a6b1c38effea5cd3955f4",
+      "bytes": 163122,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-a1-p18.webp",
+      "sha256": "913b2fa4519106c36850ee41ece253b7211f3b3c112711ea7e08b1a8ccf25f2c",
+      "bytes": 186634,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-b-p19.webp",
+      "sha256": "6164b20ca0fa2205895d621f8553552c1adc5049c7f4c25639d5cb21f20c8ffd",
+      "bytes": 173476,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-b1-p20.webp",
+      "sha256": "38f901c938ae4e2497d50d62d672c4b093c2b2aee61b7df572ed9a8b1567e0b7",
+      "bytes": 187800,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-c-p21.webp",
+      "sha256": "31394dccf8f94e92b5d6b172cb1be541e8822a6d6296c7000ab14818ae1c6ba5",
+      "bytes": 181092,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-c1-p22.webp",
+      "sha256": "ed0e9411736c9cf86a51635a734cbec43ca2d98c63e22b0bb33c235684c48fe6",
+      "bytes": 193298,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-d-p23.webp",
+      "sha256": "f552137bc768c1a536e821c3e940b6545c715916bba8cf2c83a75d5f0d33b4e4",
+      "bytes": 167542,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-e-p24.webp",
+      "sha256": "55caa404e335261c2be811dbd17c53724004876c9758dea684f003ec835783e4",
+      "bytes": 176454,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/cumbres-de-penuelas/plano-e1-p25.webp",
+      "sha256": "f07c8bc1924e47719b79be72c103671c38515fe9fe4de3c3a827152dafc768cf",
+      "bytes": 197906,
+      "width": 3400,
+      "height": 2200,
+      "kind": "plan",
+      "projectSlug": "cumbres-de-penuelas",
+      "originCommercialSlug": "cumbres-de-penuelas"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/edificio-bezanilla/plano-b-p01.webp",
+      "sha256": "b7c651fb993286ffc5292606cafed855764a56daa0e3e92df31753b12dd3cacf",
+      "bytes": 62568,
+      "width": 880,
+      "height": 1252,
+      "kind": "plan",
+      "projectSlug": "edificio-bezanilla",
+      "originCommercialSlug": "edificio-bezanilla"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/edificio-bezanilla/plano-d-p01.webp",
+      "sha256": "d0dc4a01fc544ca498d10340974c7e3862086aa2d767fb7fac24269c3faa0a40",
+      "bytes": 83800,
+      "width": 900,
+      "height": 1252,
+      "kind": "plan",
+      "projectSlug": "edificio-bezanilla",
+      "originCommercialSlug": "edificio-bezanilla"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/edificio-bezanilla/plano-f-p01.webp",
+      "sha256": "0a67b10381a52de6aeb4f8a3f580f7e17beaf3757b96f80a770daea2d3593284",
+      "bytes": 71334,
+      "width": 1008,
+      "height": 1252,
+      "kind": "plan",
+      "projectSlug": "edificio-bezanilla",
+      "originCommercialSlug": "edificio-bezanilla"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/endemico/imagen-01-p01.webp",
+      "sha256": "0a7cb1a89974ef17dd84f471f0509d7ca105ee818e549dfb62ffcd02eac44cb5",
+      "bytes": 191256,
+      "width": 1761,
+      "height": 1800,
+      "kind": "documentary_photo",
+      "projectSlug": "endemico",
+      "originCommercialSlug": "endemico"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/endemico/plano-a--casa-docas-p08.webp",
+      "sha256": "563a2c5936064ea48cb59067898ac48fd918c5a172ee46ab9d4f5da2d5cec76d",
+      "bytes": 128958,
+      "width": 1598,
+      "height": 1913,
+      "kind": "plan",
+      "projectSlug": "endemico",
+      "originCommercialSlug": "endemico"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/endemico/plano-b--casa-boldo-p10.webp",
+      "sha256": "01693b0678b902c57ab696f95e72b99cc18a34a30dbae6fa8e2d20c79a02a687",
+      "bytes": 100554,
+      "width": 1394,
+      "height": 1913,
+      "kind": "plan",
+      "projectSlug": "endemico",
+      "originCommercialSlug": "endemico"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/endemico/plano-c--casa-cipres-p13.webp",
+      "sha256": "d674cd45049dea264405c3bca74cdc39cd1b9b353b62a2e7b60e0981f1df6e37",
+      "bytes": 160328,
+      "width": 1598,
+      "height": 1913,
+      "kind": "plan",
+      "projectSlug": "endemico",
+      "originCommercialSlug": "endemico"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/endemico/plano-d--casa-molle-p15.webp",
+      "sha256": "54a03dccd067c6d1f0747b4ea23871a108273e38a769d3c400386f133a016de3",
+      "bytes": 160846,
+      "width": 1581,
+      "height": 1913,
+      "kind": "plan",
+      "projectSlug": "endemico",
+      "originCommercialSlug": "endemico"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-a1-p01.webp",
+      "sha256": "22bb5026a08f31954dac2e411f66617022fa930b92796ab9150528128cf3a791",
+      "bytes": 39206,
+      "width": 740,
+      "height": 856,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-a1-prima-p01.webp",
+      "sha256": "53557913439841a7554547c01e365519538c9940cfa25f82293e77d9717f3a4a",
+      "bytes": 39552,
+      "width": 760,
+      "height": 856,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-a2-p01.webp",
+      "sha256": "04a7dfa03a67b303439d96dcb70c41d378bcb1177b5525fd22c63e135d5c359a",
+      "bytes": 40914,
+      "width": 856,
+      "height": 856,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-a2-prima-p01.webp",
+      "sha256": "760fb90c4d15fe380eb25ebfbfd669dead474c7c838a369b51b08babd56621b8",
+      "bytes": 40000,
+      "width": 740,
+      "height": 836,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-b1-p01.webp",
+      "sha256": "8ce8d38815636b2688ec2d1f4bc0191604cc4bbbe88bb5c5e1bf230bedcbbefd",
+      "bytes": 42436,
+      "width": 760,
+      "height": 836,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-b2-p01.webp",
+      "sha256": "3e66a61c9f66bf125ea57efdc89975f98a1c2cfa6ed94aa82f0d51a74b708030",
+      "bytes": 45890,
+      "width": 856,
+      "height": 836,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-c1-p01.webp",
+      "sha256": "a2f86ed62aec31da16121d902401a42e46f5d76ff4d36eab6b9895fba70fa3d2",
+      "bytes": 48576,
+      "width": 740,
+      "height": 916,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-c1-prima-p01.webp",
+      "sha256": "f9d6c8e717dfa034d57ef7ffd3c4119d2abf4a3eae04dff6b832a5add31505ee",
+      "bytes": 49144,
+      "width": 760,
+      "height": 916,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/enlace-mackenna/plano-c2-p01.webp",
+      "sha256": "b24c23f4d7583010059ba2a550f3e92e2bfce58271485e7d19df7a1c3144f211",
+      "bytes": 52386,
+      "width": 856,
+      "height": 916,
+      "kind": "plan",
+      "projectSlug": "enlace-mackenna",
+      "originCommercialSlug": "enlace-mackenna"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/imagen-02-p01.webp",
+      "sha256": "9bd570bbfbdba14b5f5ebf37d13a1951bc889f5df275f71d083dd1a4361477af",
+      "bytes": 175772,
+      "width": 1800,
+      "height": 544,
+      "kind": "documentary_photo",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/imagen-03-p01.webp",
+      "sha256": "4a5420d67b1a9e20475dd26ebefac2037f1d1a635ae223173800c6342cefbf8e",
+      "bytes": 303550,
+      "width": 1800,
+      "height": 773,
+      "kind": "documentary_photo",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-a-p01.webp",
+      "sha256": "2454985470c1be979dc19c1958d5a162abe81e820976d57302642a66a7487d3f",
+      "bytes": 70310,
+      "width": 752,
+      "height": 1360,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-a2-p01.webp",
+      "sha256": "bb52099f3c428e8709388adc1b8a90966021175ec0e2baec928d02ef45a8e7ed",
+      "bytes": 72774,
+      "width": 728,
+      "height": 1360,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-a3-p01.webp",
+      "sha256": "5696608849c4f475a627085009f434bf926e4de50c3a6a2fa7be7d04ba15be96",
+      "bytes": 63894,
+      "width": 708,
+      "height": 1388,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-b-p01.webp",
+      "sha256": "0d345edd8dc6759a3f467a34f1cd446d95e81866bf37262f4e17e0d1089f1fd6",
+      "bytes": 52766,
+      "width": 752,
+      "height": 1388,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-b2-p01.webp",
+      "sha256": "9d7370e3762e7b5e3d28e62a4d8cd4a2f3fdb461295ddd0d9883f14fca80541f",
+      "bytes": 50366,
+      "width": 728,
+      "height": 1388,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-b3-p01.webp",
+      "sha256": "cfaac2d7af941677f0262e4bc16adb28f8262315c7566542df9f77c1af025612",
+      "bytes": 52398,
+      "width": 708,
+      "height": 1312,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-b4-p01.webp",
+      "sha256": "e089cee3af4b723f6b4e5b93d5948ee675ce5421754e6c85d15c7c48e459b046",
+      "bytes": 62154,
+      "width": 752,
+      "height": 1312,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-b5-p01.webp",
+      "sha256": "b9919e41c3db978e66d6b69072de02920a655eb52fff33bc053f13161405378d",
+      "bytes": 53238,
+      "width": 728,
+      "height": 1312,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/espacio-victoria/plano-s-p01.webp",
+      "sha256": "ca463f99889832acee6fb666cb9ca3760f4cc2cd32b2f93da75e401f45bb2635",
+      "bytes": 44724,
+      "width": 708,
+      "height": 1360,
+      "kind": "plan",
+      "projectSlug": "espacio-victoria",
+      "originCommercialSlug": "espacio-victoria"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/lamara/imagen-02-p01.webp",
+      "sha256": "cf75757abfc81f1b0170d573a2fbfafc5baddbd7fd2455ed978fa09942a9d920",
+      "bytes": 137022,
+      "width": 1800,
+      "height": 604,
+      "kind": "documentary_photo",
+      "projectSlug": "lamara",
+      "originCommercialSlug": "lamara"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/lamara/plano-c-p01.webp",
+      "sha256": "a6aef3dc44e9292fe33d24b599373558f5fb8e13d4440845b7b322149dbe5dfc",
+      "bytes": 75454,
+      "width": 760,
+      "height": 1412,
+      "kind": "plan",
+      "projectSlug": "lamara",
+      "originCommercialSlug": "lamara"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/lamara/plano-d1-p01.webp",
+      "sha256": "9de524b72c325c89fb7f6efdaec3ac25431317e0556a777bf2f54c66cb99eb93",
+      "bytes": 66620,
+      "width": 760,
+      "height": 1412,
+      "kind": "plan",
+      "projectSlug": "lamara",
+      "originCommercialSlug": "lamara"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/lamara/plano-d2-p01.webp",
+      "sha256": "70f22d5c4f3681b97fddc5bb6e581805276fdd1b3d17066224f129db9c729fa4",
+      "bytes": 64970,
+      "width": 740,
+      "height": 1412,
+      "kind": "plan",
+      "projectSlug": "lamara",
+      "originCommercialSlug": "lamara"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/lamara/plano-e-p01.webp",
+      "sha256": "8aa9f7bc950e0103d5a6812eff0f6ae157bb5ee6a7058fb558aeb379f3c9159b",
+      "bytes": 57830,
+      "width": 692,
+      "height": 1412,
+      "kind": "plan",
+      "projectSlug": "lamara",
+      "originCommercialSlug": "lamara"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/imagen-02-p01.webp",
+      "sha256": "8bc5d1dd35eb9cb76c1777a8eceb8c1b9fdac99606c055590872eeb6c95b3e7e",
+      "bytes": 197598,
+      "width": 1800,
+      "height": 521,
+      "kind": "documentary_photo",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/plano-b-p01.webp",
+      "sha256": "87ac3a99a63957e75e998afdd17ca554964904f85920afbc5391306235af3ef2",
+      "bytes": 86720,
+      "width": 900,
+      "height": 1260,
+      "kind": "plan",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/plano-c-p01.webp",
+      "sha256": "0d0e01d443126afb132e93a7bd256592ace42e6f2dac505bb125a72eab518ebb",
+      "bytes": 77072,
+      "width": 928,
+      "height": 1260,
+      "kind": "plan",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/plano-d-p01.webp",
+      "sha256": "2f3ad115ba279ff8af26d2c4e8d7893c6aab9c29340326a288987e376cd77549",
+      "bytes": 70334,
+      "width": 928,
+      "height": 1260,
+      "kind": "plan",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/plano-e-p01.webp",
+      "sha256": "4ed04a9db920b3491f34f2f817b1d5c940a21e315eb86337cb527a97c02de63f",
+      "bytes": 86328,
+      "width": 900,
+      "height": 1392,
+      "kind": "plan",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/plano-f-p01.webp",
+      "sha256": "d9c8bea6ff94b3db4cdf10ae42cba00f2cac73350b9980173c4c5e622ae59da0",
+      "bytes": 81144,
+      "width": 928,
+      "height": 1392,
+      "kind": "plan",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/plano-h-p01.webp",
+      "sha256": "c8256f2977c04f42c72744579878d52acd7ee6de3f86195088e064b18c589fa2",
+      "bytes": 75228,
+      "width": 928,
+      "height": 1392,
+      "kind": "plan",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/plano-i-p01.webp",
+      "sha256": "d7144b489eb9a958d30b39dec8ab3e46c80b7a1b088cf5e1c120440d5d9a5935",
+      "bytes": 104334,
+      "width": 860,
+      "height": 1279,
+      "kind": "plan",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/nucleo-costanera/plano-j-p01.webp",
+      "sha256": "678fc166c799b7aeb3e6a07568949fee68ee06c04823e3c469dade0bc09674d8",
+      "bytes": 90444,
+      "width": 788,
+      "height": 1279,
+      "kind": "plan",
+      "projectSlug": "nucleo-costanera",
+      "originCommercialSlug": "nucleo-costanera"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/terratolten-1/plano-a-p01.webp",
+      "sha256": "526f620e35f479592c20c08c41efd82eefa21de484da6a8ed6770fc60cdd3697",
+      "bytes": 60768,
+      "width": 760,
+      "height": 1220,
+      "kind": "plan",
+      "projectSlug": "terratolten",
+      "originCommercialSlug": "terratolten-1"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/terratolten-1/plano-b-p01.webp",
+      "sha256": "e6222522a3aa7a3b83e14dd74c29227d6e5155f10d430d4f0d0c65e369a293be",
+      "bytes": 58294,
+      "width": 780,
+      "height": 1220,
+      "kind": "plan",
+      "projectSlug": "terratolten",
+      "originCommercialSlug": "terratolten-1"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/terratolten-1/plano-c-p01.webp",
+      "sha256": "3c5e4071150f7c9b792f7cbd3261f2d9f33090d67b5186732154ec0bfcc0e080",
+      "bytes": 74302,
+      "width": 840,
+      "height": 1220,
+      "kind": "plan",
+      "projectSlug": "terratolten",
+      "originCommercialSlug": "terratolten-1"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/terratolten-1/plano-d-p01.webp",
+      "sha256": "6e30caf112fafad98204ad86d2655a327eaf8e7d20d3f7088a8d45ad82737e50",
+      "bytes": 67564,
+      "width": 760,
+      "height": 1220,
+      "kind": "plan",
+      "projectSlug": "terratolten",
+      "originCommercialSlug": "terratolten-1"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/terratolten-1/plano-e-p01.webp",
+      "sha256": "8c8d65cbfb447444a8b4709a13c07f95cb1939cf521f0f38fb59f0ff9be5eb98",
+      "bytes": 61636,
+      "width": 760,
+      "height": 1220,
+      "kind": "plan",
+      "projectSlug": "terratolten",
+      "originCommercialSlug": "terratolten-1"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/wayra/imagen-01-p01.webp",
+      "sha256": "4a1c5f8e2404ad0a54683c8a0b2c524c9fbeadea82bf63b37b82c51db35ef8a9",
+      "bytes": 291072,
+      "width": 1112,
+      "height": 744,
+      "kind": "documentary_photo",
+      "projectSlug": "wayra",
+      "originCommercialSlug": "wayra"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/wayra/imagen-02-p01.webp",
+      "sha256": "9a6a3af129326484e29802cd7416233f2eaeeeda8346cb495b26dc86e8654d36",
+      "bytes": 117148,
+      "width": 952,
+      "height": 456,
+      "kind": "documentary_photo",
+      "projectSlug": "wayra",
+      "originCommercialSlug": "wayra"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/wayra/imagen-03-p01.webp",
+      "sha256": "af336dab30bc1f6fdbc1ed1b6e6aa42bed9fb0a240d8b5ae4ed69752103eaac1",
+      "bytes": 188674,
+      "width": 948,
+      "height": 664,
+      "kind": "documentary_photo",
+      "projectSlug": "wayra",
+      "originCommercialSlug": "wayra"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/wayra/imagen-04-p01.webp",
+      "sha256": "9fb9b613e53572f3dd0c67321c1a97f91f0c17c9febba339fa326b8c9919fc53",
+      "bytes": 90632,
+      "width": 952,
+      "height": 652,
+      "kind": "documentary_photo",
+      "projectSlug": "wayra",
+      "originCommercialSlug": "wayra"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/wayra/imagen-05-p01.webp",
+      "sha256": "f800c16a0b84893647443b9de4b98ff3f0d884d9ca95919f5bb764c7860c4d17",
+      "bytes": 92096,
+      "width": 948,
+      "height": 452,
+      "kind": "documentary_photo",
+      "projectSlug": "wayra",
+      "originCommercialSlug": "wayra"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/wayra/plano-a-p01.webp",
+      "sha256": "04e60b261750e41f18bdf678635fdc936656b18aa1b179b8d8298cd6fceab49f",
+      "bytes": 53612,
+      "width": 840,
+      "height": 1160,
+      "kind": "plan",
+      "projectSlug": "wayra",
+      "originCommercialSlug": "wayra"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/wayra/plano-b-p01.webp",
+      "sha256": "0c358fb2b3c9f27ffa512229e641872444f73cc7be9ee98b6c4021a48bbcf73d",
+      "bytes": 56582,
+      "width": 840,
+      "height": 1160,
+      "kind": "plan",
+      "projectSlug": "wayra",
+      "originCommercialSlug": "wayra"
+    },
+    {
+      "localPath": "/assets/propiedades/ecasa-preview/wayra/plano-c-p01.webp",
+      "sha256": "59838c5c0f768347b138ad516f263012c51110ae9aeca3cb13a1adafb34bac22",
+      "bytes": 67206,
+      "width": 880,
+      "height": 1160,
+      "kind": "plan",
+      "projectSlug": "wayra",
+      "originCommercialSlug": "wayra"
+    }
+  ],
+  "selectionSummary": {
+    "resources": 92,
+    "brochureResources": 85,
+    "documentaryPhotographs": 11,
+    "plans": 74,
+    "officialPhotographs": 2,
+    "ownerCovers": 5,
+    "galleryImages": 72,
+    "catalogueProjects": 136,
+    "otherDeveloperProjects": 121
+  }
+}

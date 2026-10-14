@@ -12,6 +12,7 @@ import sys
 from pathlib import Path
 from sento_scope import original_data, historical_file
 from automatic_embed_scope import restore_automatic_file
+from ecasa_scope import restore_successor_data
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = '3f7b7e481e632e06d36702f556f6f2bca61bc55b'
@@ -39,7 +40,7 @@ def approved_bytes(path):
 @functools.lru_cache(maxsize=1)
 def removal_slugs():
     original = approved_bytes('data/fichas-proyectos.json')
-    assert historical_file('data/fichas-proyectos.json', read_pre_leon('data/fichas-proyectos.json')) == original, 'Tour research must remain byte exact'
+    assert restore_successor_data('data/fichas-proyectos.json', (ROOT / 'data/fichas-proyectos.json').read_bytes()) == json.loads(original), 'Tour research must remain exact outside the Ecasa successor'
     records = json.loads(original)
     absent = {row['slug'] for row in records if not row.get('virtualTours')}
     assert len(records) == 144 and len(absent) == 82
@@ -111,6 +112,15 @@ def historical_commercial_renderer():
 
 
 if __name__ == '__main__':
-    content = historical_file(sys.argv[1], sys.stdin.buffer.read())
-    sys.stdout.buffer.write(exact_removed_page(content, sys.argv[2]) if sys.argv[1] == '--remove'
-                            else restore_reviewed_file(sys.argv[1], content))
+    if sys.argv[1] == '--batch':
+        import base64
+        requests = json.load(sys.stdin)
+        results = []
+        for path, payload in requests:
+            content = historical_file(path, base64.b64decode(payload, validate=True))
+            results.append(base64.b64encode(restore_reviewed_file(path, content)).decode('ascii'))
+        json.dump(results, sys.stdout)
+    else:
+        content = historical_file(sys.argv[1], sys.stdin.buffer.read())
+        sys.stdout.buffer.write(exact_removed_page(content, sys.argv[2]) if sys.argv[1] == '--remove'
+                                else restore_reviewed_file(sys.argv[1], content))

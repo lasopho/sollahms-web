@@ -114,22 +114,22 @@ test('missing primary source and duplicate stage documents fail even during a pr
   }
 });
 
-test('the final catalogue pins sixteen authorized identities and all 128 unaffected projects without Git at build time', () => {
-  const catalogue = restoreLeonRows(restoreSentoRows(JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url)))));
+test('the final catalogue pins 15 Ecasa projects and 22 stage origins, 16 Ingevec and all 118 unaffected projects without Git at build time', () => {
+  const catalogue = JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url)));
   assert.doesNotThrow(() => assertBrochureCatalogue(catalogue));
   assert.equal(BROCHURE_INGEVEC_SLUGS.length, 16);
-  assert.equal(BROCHURE_REMOVED_SLUGS.length, 6);
-  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ingevec').length, 128);
+  assert.equal(BROCHURE_REMOVED_SLUGS.length, 11);
+  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ecasa').length, 118);
   for (const kind of ['retired-project', 'unknown-project', 'duplicate', 'other-price', 'other-route', 'developer']) {
     const copy = structuredClone(catalogue);
     const position = copy.findIndex(project => project.slug === 'los-alerces');
-    const other = copy.find(project => project.inmobiliaria !== 'Ingevec');
+    const other = copy.find(project => project.inmobiliaria !== 'Ingevec' && project.inmobiliaria !== 'Ecasa');
     if (kind === 'retired-project') copy[position].slug = BROCHURE_REMOVED_SLUGS[0];
     else if (kind === 'unknown-project') copy[position].slug = 'unapproved-candidate';
     else if (kind === 'duplicate') copy[position] = copy[0];
     else if (kind === 'other-price') other.precioDesdeUF = 999999;
     else if (kind === 'other-route') other.detalleUrl = '/unrelated-project.html';
     else copy[position].inmobiliaria = 'Euroinmobiliaria';
-    assert.throws(() => assertBrochureCatalogue(copy), /approved catalogue|128 projects/, kind);
+    assert.throws(() => assertBrochureCatalogue(copy), /approved catalogue|118 projects|121 projects/, kind);
   }
 });

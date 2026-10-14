@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 243,
-  "expectedReleaseOnlyCases": 23,
-  "expectedPythonFixtureTests": 74,
+  "expectedGitNodeTests": 326,
+  "expectedReleaseOnlyCases": 26,
+  "expectedPythonFixtureTests": 152,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -72,6 +72,60 @@
     {
       "file": "tests/integration-contact.mjs",
       "reason": "Runs in full using tracked code/data, local DOM doubles and synthetic providers/fixtures; no private derivatives needed."
+    },
+    {
+      "file": "tests/ecasa-publication.test.mjs",
+      "reason": "Exact 133 canonical projects / 15 Ecasa / 22 commercial origins; immutable a99 Ecasa and f66 other developer composition, independently preserved rights and stage provenance."
+    },
+    {
+      "file": "tests/project-identity.test.mjs",
+      "reason": "Nine independent legacy/canonical stage context cases, with real helpers and mocked providers."
+    },
+    {
+      "file": "tests/public-fiche-copy.test.mjs",
+      "reason": "Six caption/legal/UTF-8 cases using tracked source and synthetic inputs."
+    },
+    {
+      "file": "tests/ecasa-stage-presentation.test.mjs",
+      "reason": "Five DOM attribution cases proving all130selected and62official images retain their own commercial-stage origin."
+    },
+    {
+      "file": "tests/ecasa-manual-quality.test.mjs",
+      "reason": "Ten literal Git-only cases verify exact manual image choices, explicit cover-only roles, stage binding, immutable source records and protected HTML using tracked JSON/HTML and synthetic official photo markup; no private photograph bytes or codec needed.",
+      "cases": [
+        "manual review retains all 118 source photographs and 74 plans while selecting 70 gallery images and seven explicit cover-only exceptions",
+        "scope, identity coverage and nine-field choices reject any additional caption, stage, commercial or source mutation",
+        "manual decisions cannot remove official images, reintroduce the four discarded photos or reverse the project-specific instructions",
+        "cover exceptions require a real retained cover role and cannot borrow from another development or stage declaration",
+        "effective Preview maps are independent and the public profile returns the exact frozen base",
+        "published selection keeps all plans and exactly fifteen documentary files, excluding 37 additional unused documentary routes",
+        "all fifteen Preview galleries prune documentary images and empty groups without changing plans, specifications, maps or runtime",
+        "FerroParque integrates its existing photograph first in the official grid while keeping previous figures ordered and Alto unchanged",
+        "Cumbres retains only its facade at full width and natural aspect without changing other project layout or imagery",
+        "source files, 133 identities, financial values, 22 stage snapshots and public projection remain exact"
+      ]
+    },
+    {
+      "file": "tests/sento-main-merge.mjs",
+      "reason": "All six tracked-source main preservation, 277-image/45-plan authority and disabled deployment gate cases remain mandatory after the exact Ecasa/main integration guard. Private PDF payload verification stays in the reproducible release workflow.",
+      "cases": [
+        "main retains 144 identities and all 137 foreign records, HTML, contexts and original assets",
+        "the seven published fiches retain exactly the validated Preview source and 125 confirmed surface rows",
+        "all 277 published image resources retain their verified hashes and independent plan authorities",
+        "arbitrary price, foreign developer, recalculated C6, borrowed code and source URL changes fail closed",
+        "main and Sento automatic deployments remain disabled and source originals stay outside Git",
+        "a Production build rejects the merged Sento source before creating public output",
+        "two real Sento regenerations preserve the validated presentation and all 137 other projects",
+        "generic and featured generators use the validated Sento presentation without documentation blocks"
+      ]
+    },
+    {
+      "file": "tests/ecasa-main-integration.test.mjs",
+      "cases": [
+        "Vercel Preview accepts only the complete approved configuration object while preserving its raw source binding",
+        "runtime configuration equivalence rejects changed redirects gates headers build settings and unknown fields without logging values",
+        "configuration representation fallback is unavailable outside explicit Vercel Preview and cannot authorize Production"
+      ]
     }
   ],
   "selectedSuites": [
@@ -79,7 +133,7 @@
       "file": "tests/aj-urbana.test.mjs",
       "reason": "Source/manifest/UI cases need only tracked Git bytes; release cases require private Ingevec media or media-based packaging fixtures.",
       "cases": [
-        "AJ review preserves its five projects and historical research within the exact 144-project portfolio; 136 other fichas retain scoped presentation controls",
+        "AJ review preserves its five projects within the 133-project Ecasa successor and 124 bound prior fiche controls",
         "531 historical assets and handlers retain strict baselines outside the scoped official UF and privacy changes",
         "five original documents and 78 unique models retain exact identifiers, source pages and original SHA provenance",
         "34 independently reviewed models preserve printed values, unknown terraces and documented contradictions",
@@ -100,7 +154,7 @@
       "file": "tests/ingevec-brochures.test.mjs",
       "reason": "Source/manifest/UI cases need only tracked Git bytes; release cases require private Ingevec media or media-based packaging fixtures.",
       "cases": [
-        "the definitive 144 objects preserve all 128 other developers and historical research/financial evidence",
+        "the 133-project Ecasa successor preserves non-Ecasa historical research and financial evidence",
         "531 historical assets retain hashes outside the scoped official UF changes and reviewed image additions",
         "three public fallbacks retain original content and JSON-LD; five AJ fichas receive only their previously approved additions and commercial presentation",
         "fourteen independently reviewed printed areas remain exact, editorial identifiers do not invent missing floors/orientations, and Tocornal contradictions stay visible",
@@ -117,7 +171,7 @@
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
-          "name": "a verified contract yields identical 144 fichas, covers and 269 media in Preview and an offline public web build",
+          "name": "AJ and Ingevec retain their 269 media across Preview and offline public fallback while Ecasa stays protected",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
@@ -133,7 +187,7 @@
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
-          "name": "a synthetic pending contract excludes protected media outside Preview and retains all 144 approved fallback objects",
+          "name": "a synthetic pending contract excludes protected media outside Preview and retains all 136 fallback objects",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
@@ -188,7 +242,7 @@
       ],
       "releaseRequired": [
         {
-          "name": "definitive portfolio preserves exactly 128 other developers and ten prior Ingevec records",
+          "name": "definitive Ingevec portfolio retains ten prior records and 105 non-Ecasa non-Ingevec historical objects",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
@@ -205,7 +259,7 @@
       "file": "tests/ingevec-eight.test.mjs",
       "reason": "Source/manifest/UI cases need only tracked Git bytes; release cases require private Ingevec media or media-based packaging fixtures.",
       "cases": [
-        "eight originals enrich exactly seven of the 144 fichas while all commercial/financial data remain exact",
+        "eight originals enrich exactly seven of the 133 fichas while non-Ecasa financial data remain exact",
         "all 27 distributions reproduce independent printed surfaces and visible room counts without stock assumptions",
         "Vicuña Mackenna keeps six unique plans grouped by stage with stage-specific source documents",
         "seven enriched fichas retain SEO, contextual financial/contact actions, maps and tours without visible audit labels"
@@ -221,8 +275,8 @@
       "file": "tests/project-commercial-presentation.test.mjs",
       "reason": "Source/manifest/UI cases need only tracked Git bytes; release cases require private Ingevec media or media-based packaging fixtures.",
       "cases": [
-        "commercial presentation preserves all 144 ordered identities and private source records byte for byte",
-        "all 144 visitor-facing fichas omit research sections, contract provenance and audit captions",
+        "commercial presentation preserves the 133-project successor and non-Ecasa private source records",
+        "all retained prior fichas omit research sections, contract provenance and audit captions",
         "every fiche retains its original SEO, scripts, images, plans, embeds and numeric specifications outside the seven guarded brochure additions",
         "all styles, catalogue controls and form/action contexts stay exact outside scoped official UF and security changes",
         "direct commercial cautions survive alongside current prices, referential plans and ambiguous alternatives",
@@ -237,10 +291,73 @@
       ]
     },
     {
+      "file": "tests/ecasa-definitive.test.mjs",
+      "reason": "Nine tracked-data and reviewed-output cases validate the exact Ecasa successor; one derivative byte audit requires the private reproducible source bundle.",
+      "cases": [
+        "definitive Ecasa consolidation contains 15 canonical projects, 22 commercial identities and 133 unique projects",
+        "all 118 other developers retain exact concurrent-main catalogue, research, ledger and public fiche bytes",
+        "the five retirements remain absent and eight legacy identities redirect permanently to their canonical stage anchors",
+        "22 public and private stage snapshots preserve their own attributes while each canonical quote has an explicit coherent origin",
+        "18 existing and four pending Ecasa commercial records stay exact and all financial mathematics, UF and privacy remain unchanged",
+        "stage documentation gaps do not invent prices, surfaces, photographs, plans or borrowed tours",
+        "catalogue and exact successor controls reject resurrection, duplicate identities, unrelated mutation and stage-price borrowing",
+        "the 15 reviewed canonical Ecasa outputs and eight exact alias routes match the independently pinned consolidation inventory",
+        "consolidated brochure bindings preserve 17 originals, 15 distinct sources, 22 explicit origins and printed geometry"
+      ],
+      "releaseRequired": [
+        {
+          "name": "all 130 selected Ecasa photos and plans preserve their original bytes, origin-stage bindings and enlarged canonical references",
+          "reason": "Requires all 130 original-derived Ecasa resources; mandatory before the protected Preview delivery."
+        }
+      ]
+    },
+    {
+      "file": "tests/ecasa-image-quality.test.mjs",
+      "cases": [
+        "quality review preserves 118 source photographs and explicitly excludes only four reviewed documentary images",
+        "source catalogue, 22 stage snapshots, documentary manifests and all 133 fiche files remain exact",
+        "published selection removes four photographs while preserving all 74 original models and their stage-bound plans",
+        "quality filtering is idempotent in both profiles and preserves every plan, map, specification and runtime fragment",
+        "only Ecasa display image fields change while financial values, source references and 118 other projects stay exact",
+        "quality decisions reject missing inventories, wrong bytes, borrowed stages, plan removal and unauthorized cover substitutions",
+        "explicit cover-only and no-cover fixtures cannot leak excluded gallery images or leave empty gallery navigation",
+        "image filtering preserves financial stage labels and rejects remote-image escapes and stage reassignment",
+        "every non-Ecasa HTML string is unchanged by the quality transform in both publication profiles"
+      ],
+      "releaseRequired": [
+        {
+          "name": "real private packaging publishes 395 selected resources, keeps 74 Ecasa plans and excludes four source photographs",
+          "reason": "Requires all preserved private AJ/Ingevec/Ecasa bytes and tests actual output exclusion, source preservation and 74 plans in isolated builds."
+        }
+      ]
+    },
+    {
+      "file": "tests/ecasa-official-originals.test.mjs",
+      "reason": "Synthetic encoded files and immutable Git sources verify native dimensions, independent rights, stage ownership and scope without importing private original photographs.",
+      "cases": [
+        "official originals validate exact encoded files and restrict publication to two protected development galleries",
+        "independent authorization, baseline, canonical identities and exact source pages fail closed",
+        "unsafe URLs, private-original publication and borrowed project or stage bindings are rejected",
+        "missing, symlinked, corrupted and geometrically inconsistent file evidence cannot build",
+        "only native extraction or unchanged copies are accepted; resize, synthesis and lossy conversion are forbidden",
+        "lossless pixel receipts are mandatory and the optional decoder verifies every exact crop byte",
+        "Preview overlay adds natural galleries and coherent covers idempotently while preserving all protected fragments",
+        "catalogue override changes only two display covers and preserves every commercial price and all 22 stage snapshots",
+        "original catalogue, snapshots, quality policy, source HTML and 74 plan bindings remain byte exact",
+        "null cover and sparse gallery never erase existing images or publish unselected private originals"
+      ],
+      "releaseRequired": [
+        {
+          "name": "real private official originals decode to exact native rectangles and retain frozen evidence",
+          "reason": "Requires the four privately materialized Ecasa official files and a local Sharp decoder to prove exact RGBA crop identity and unchanged original bytes."
+        }
+      ]
+    },
+    {
       "file": "tests/leon-main-integration.test.mjs",
       "reason": "Main-preservation, catalogue and deployment gates need tracked Git resources; the full 310-resource check also needs the five original private PDFs.",
       "cases": [
-        "León integrates five fiches while all 136 other main records and 143 other pages remain exact",
+        "León preserves five reviewed fiches within the exact 133-project Ecasa and main integration",
         "historical projection rejects wrong León data and retains other developer checks",
         "main and integration automatic deploy gates remain disabled"
       ],

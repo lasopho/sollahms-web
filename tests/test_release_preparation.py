@@ -1,5 +1,6 @@
 """Offline failure controls for release preparation; no platform mutations."""
 import hashlib
+import copy
 import importlib.util
 import io
 import json
@@ -174,6 +175,351 @@ class ReleasePreparationTests(unittest.TestCase):
         self.assertEqual(set(run.call_args.kwargs['env']),
                          {'PATH', 'VERCEL_ENV', 'VERCEL_GIT_COMMIT_REF', 'SOLLAHMS_BROCHURE_PROFILE'})
         self.assertNotIn('RESEND_API_KEY', run.call_args.kwargs['env'])
+
+    def test_protected_review_does_not_request_a_public_web_profile(self):
+        fake = type('Result', (), {'stdout': '{"pages":150}'})()
+        with patch.object(release.subprocess, 'run', return_value=fake) as run:
+            release.build(self.root, '/usr/bin/node', 'preview', 'codex/ecasa-cartera-definitiva', public_profile=False)
+        self.assertEqual(set(run.call_args.kwargs['env']), {'PATH', 'VERCEL_ENV', 'VERCEL_GIT_COMMIT_REF'})
+
+    def test_protected_ecasa_reference_cannot_authorize_production_staging(self):
+        policy = dict(self.policy, contentProfile='protected_ecasa_review')
+        with self.assertRaisesRegex(ValueError, 'protected Ecasa review'):
+            release.verify_staged_deployment(self.staged(), policy)
+
+    def test_private_ecasa_media_require_an_explicit_folder_policy(self):
+        files = {'assets/propiedades/ecasa-preview/ferroparque/cover.webp': {'gitBlob': 'a' * 40}}
+        replies = [self.policy['approvedAppCommit'].encode() + b'\n', b'sha1\n', b'']
+        with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'non-Git'):
+            release.verify_git_reference(self.root, files, self.policy)
+        policy = dict(self.policy, privateMediaFolders=['ingevec-preview', 'ecasa-preview'], trackedSourceFiles=0, privateSourceFiles=1)
+        with patch.object(release, 'git', side_effect=replies):
+            self.assertEqual(release.verify_git_reference(self.root, files, policy), 0)
+
+    def test_private_qa_tools_are_verified_without_entering_deployment_source(self):
+        data = b'// committed QA tool'
+        tools = []
+        for name in sorted(release.VERIFICATION_TOOLS):
+            path = self.root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(data)
+            tools.append({'file': name, 'sha256': release.digest(data), 'size': len(data)})
+            with self.assertRaisesRegex(ValueError, 'operational directory'):
+                release.safe_name(name)
+        policy = dict(self.policy, verificationTools=tools)
+        with patch.object(release, 'git', return_value=data):
+            release.verify_verification_tools(self.root, policy)
+        with patch.object(release, 'git', return_value=b'// other commit'), self.assertRaisesRegex(ValueError, 'Git commit'):
+            release.verify_verification_tools(self.root, policy)
+        tools[0]['sha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'private receipt'):
+            release.verify_verification_tools(self.root, policy)
+
+
+    def official_archive(self):
+        manifest = json.loads((MODULE.parents[1] / release.OFFICIAL_MANIFEST).read_text())
+        records = []
+        for project in manifest['projects']:
+            image = project['images'][0]
+            for asset in [image['original'], image]:
+                payload = ('fixture:' + asset['localPath']).encode()
+                asset['bytes'], asset['sha256'] = len(payload), release.digest(payload)
+                records.append((asset['localPath'].lstrip('/'), payload, 'file'))
+        manifest_bytes = json.dumps(manifest).encode()
+        records.extend([(release.OFFICIAL_MANIFEST, manifest_bytes, 'file'),
+                        (release.OFFICIAL_MODULE, b'// synthetic reviewed overlay', 'file')])
+        sources, published = release.official_manifest_inventory(manifest)
+        archive, policy = self.archive(records)
+        policy.update(contentProfile='protected_ecasa_review', officialSourceMedia=4,
+            officialPublishedMedia=2, ecasaGalleryImages=116,
+            officialOriginals={'manifestSha256': release.digest(manifest_bytes),
+                'sourceAssets': [sources[name] for name in sorted(sources)],
+                'publishedAssets': [published[name] for name in sorted(published)]})
+        return archive, policy
+
+    def test_official_archive_binds_four_private_sources_and_two_published_images(self):
+        archive, policy = self.official_archive()
+        files = release.verify_archive(archive, policy)
+        self.assertEqual(len(files), 6)
+        self.assertEqual(len(release.official_policy_inventory(policy, files)), 4)
+        self.assertEqual(sum(item['kind'] == 'original' for item in policy['officialOriginals']['sourceAssets']), 2)
+
+    def test_official_archive_rejects_original_publication_and_changed_source_receipts(self):
+        archive, original = self.official_archive()
+        for mutation in ['publish_original', 'changed_hash', 'missing_source', 'production_profile']:
+            policy = copy.deepcopy(original)
+            if mutation == 'publish_original':
+                policy['officialOriginals']['publishedAssets'][0] = next(item for item in policy['officialOriginals']['sourceAssets'] if item['kind'] == 'original')
+            elif mutation == 'changed_hash':
+                policy['officialOriginals']['sourceAssets'][0]['sha256'] = '0' * 64
+            elif mutation == 'missing_source':
+                policy['officialOriginals']['sourceAssets'].pop()
+            else:
+                policy['contentProfile'] = 'public_web_parity'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                release.verify_archive(archive, policy)
+
+    def test_official_folder_permission_cannot_replace_its_exact_manifest_inventory(self):
+        archive, policy = self.official_archive()
+        files = release.verify_archive(archive, policy)
+        policy.update(approvedAppCommit=self.policy['approvedAppCommit'], trackedSourceFiles=2, privateSourceFiles=4,
+                      privateMediaFolders=['ingevec-preview', 'ecasa-preview', release.OFFICIAL_FOLDER])
+        tree = b''.join(b'100644 blob ' + files[name]['gitBlob'].encode() + b'\t' + name.encode() + b'\0'
+                        for name in [release.OFFICIAL_MANIFEST, release.OFFICIAL_MODULE])
+        replies = [policy['approvedAppCommit'].encode() + b'\n', b'sha1\n', tree]
+        with patch.object(release, 'git', side_effect=replies):
+            self.assertEqual(release.verify_git_reference(self.root, files, policy), 2)
+        bad = dict(policy, privateMediaFolders=['ingevec-preview', 'ecasa-preview'])
+        with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'exact manifest inventory'):
+            release.verify_git_reference(self.root, files, bad)
+        bad = dict(policy)
+        bad.pop('officialOriginals')
+        with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'exact review inventory'):
+            release.verify_git_reference(self.root, files, bad)
+        private_name = policy['officialOriginals']['sourceAssets'][0]['path'].lstrip('/')
+        tracked_private = tree + b'100644 blob ' + files[private_name]['gitBlob'].encode() + b'\t' + private_name.encode() + b'\0'
+        replies = [policy['approvedAppCommit'].encode() + b'\n', b'sha1\n', tracked_private]
+        with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'outside public Git'):
+            release.verify_git_reference(self.root, files, policy)
+
+    def manual_fixture(self):
+        checkout = MODULE.parents[1]
+        base = json.loads((checkout / release.BASE_QUALITY_MANIFEST).read_text())
+        manual = json.loads((checkout / release.MANUAL_MANIFEST).read_text())
+        official = json.loads((checkout / release.OFFICIAL_MANIFEST).read_text())
+        return base, manual, official
+
+    def manual_archive(self):
+        archive, official_policy = self.official_archive()
+        with tarfile.open(archive) as bundle:
+            records = [(member.name, bundle.extractfile(member).read(), 'file') for member in bundle]
+        base, manual, official = self.manual_fixture()
+        selection = release.manual_quality_selection(manual, base, official)
+        manual_bytes = json.dumps(manual).encode()
+        records.extend([(release.BASE_QUALITY_MANIFEST, (MODULE.parents[1] / release.BASE_QUALITY_MANIFEST).read_bytes(), 'file'),
+                        (release.MANUAL_MANIFEST, manual_bytes, 'file'),
+                        (release.MANUAL_MODULE, b'// private manual consumer fixture', 'file')])
+        archive, policy = self.archive(records)
+        policy.update({key: value for key, value in official_policy.items() if key not in
+                       {'archiveBytes', 'archiveSha256', 'sourceBytes', 'sourceFiles'}})
+        policy.update(ecasaPublishedMedia=89, ecasaGalleryImages=72,
+            manualQuality={'manifestSha256': release.digest(manual_bytes), 'summary': selection['summary'],
+                           'effectiveImages': selection['effectiveImages'], 'projects': selection['projects']})
+        return archive, policy
+
+    def test_manual_archive_preserves_frozen_base_and_separates_source_from_publication(self):
+        archive, policy = self.manual_archive()
+        files = release.verify_archive(archive, policy)
+        summary = release.manual_policy_inventory(policy, files)
+        self.assertEqual((summary['keptImages'], summary['excludedImages'], summary['coverOnlyImages']), (70, 48, 7))
+        self.assertEqual((summary['documentaryGalleryImages'], summary['documentaryPublishedImages']), (8, 15))
+        self.assertEqual(policy['ecasaPublishedMedia'], 89)
+        self.assertEqual(len(release.official_policy_inventory(policy, files)), 4)
+
+    def test_manual_archive_rejects_changed_receipts_missing_consumer_and_public_profile(self):
+        archive, original = self.manual_archive()
+        for mutation in ['hash', 'decision', 'count', 'project', 'public']:
+            policy = copy.deepcopy(original)
+            if mutation == 'hash': policy['manualQuality']['manifestSha256'] = '0' * 64
+            elif mutation == 'decision': policy['manualQuality']['effectiveImages'][0]['reason'] = 'unreviewed receipt edit'
+            elif mutation == 'count': policy['manualQuality']['summary']['documentaryPublishedImages'] += 1
+            elif mutation == 'project': policy['manualQuality']['projects'][0]['previewCover'] = '/assets/unrelated.webp'
+            else: policy['contentProfile'] = 'public_web_parity'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.verify_archive(archive, policy)
+        files = release.verify_archive(archive, original)
+        files.pop(release.MANUAL_MODULE)
+        with self.assertRaisesRegex(ValueError, 'manifest or consumer'): release.manual_policy_inventory(original, files)
+
+    def test_manual_decisions_cannot_mutate_originals_plans_or_untouched_galleries(self):
+        base, original, official = self.manual_fixture()
+        for mutation in ['hash', 'origin', 'plan', 'official', 'untouched', 'extra']:
+            manual = copy.deepcopy(original)
+            if mutation == 'untouched':
+                row = next(project for project in manual['projects'] if project['slug'] == 'wayra')['images'][-1]
+                row['decision'] = 'exclude'
+            else:
+                row = manual['projects'][0]['images'][0]
+                if mutation == 'hash': row['sha256'] = '0' * 64
+                elif mutation == 'origin': row['originCommercialSlug'] = 'ferroparque'
+                elif mutation == 'plan': row['localPath'] = '/assets/propiedades/ecasa-preview/lomas-de-puyai-3/plano.webp'
+                elif mutation == 'official': row['decision'] = 'exclude'
+                else: row['alt'] = 'unapproved caption'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                release.manual_quality_selection(manual, base, official)
+
+    def test_cover_only_must_be_a_real_final_cover_after_official_overlay(self):
+        base, manual, official = self.manual_fixture()
+        ferro = next(project for project in manual['projects'] if project['slug'] == 'ferroparque')
+        row = next(image for image in ferro['images'] if image['kind'] == 'documentary')
+        ferro['previewCover'] = row['localPath'];row['coverOnly'] = True
+        with self.assertRaisesRegex(ValueError, 'final same-project cover'):
+            release.manual_quality_selection(manual, base, official)
+
+    def test_manual_selection_preserves_source_dictionary_and_all_plan_hashes(self):
+        base, manual, official = self.manual_fixture()
+        selection = release.manual_quality_selection(manual, base, official)
+        docs = json.loads((MODULE.parents[1] / 'data/brochures-ecasa.json').read_text())
+        originals = {asset['localPath'].lstrip('/'): asset['sha256'] for project in docs['projects']
+                     for asset in [*project['images'], *(model['plan'] for model in project['models'])]}
+        before = dict(originals); selected = release.manual_published_media(originals, selection)
+        plans = {model['plan']['localPath'].lstrip('/'): model['plan']['sha256']
+                 for project in docs['projects'] for model in project['models']}
+        self.assertEqual(originals, before)
+        self.assertEqual(len(originals), 130);self.assertEqual(len(selected), 89)
+        self.assertEqual({name: selected[name] for name in plans}, plans)
+        excluded = [row for row in selection['effectiveImages'] if row['kind'] == 'documentary' and
+                    row['decision'] == 'exclude' and not row['coverOnly']]
+        self.assertTrue(all(row['localPath'].lstrip('/') not in selected for row in excluded))
+
+    def owner_fixture(self):
+        owner = json.loads((MODULE.parents[1] / release.OWNER_MANIFEST).read_text())
+        if owner['schemaVersion'] == 2:
+            project = copy.deepcopy(next(project for project in owner['projects'] if project['projectSlug'] == release.OWNER_PROJECT))
+            project['conversion']['crop'] = False
+            owner = {**{key: owner[key] for key in ['protectedPreviewOnly', 'baselineCommit', 'provenance']},
+                     'schemaVersion': 1, 'scope': 'ecasa_owner_cover_only', **project}
+        manual = json.loads((MODULE.parents[1] / release.MANUAL_MANIFEST).read_text())
+        sources, published = release.owner_manifest_inventory(owner, manual)
+        files = {name: {'sha256': item['sha256'], 'size': item['bytes']} for name, item in sources.items()}
+        files.update({release.OWNER_MANIFEST: {'sha256': 'f' * 64}, release.OWNER_MODULE: {},
+                      owner['supersededCoverOnly']['localPath'].lstrip('/'): {'sha256': owner['supersededCoverOnly']['sha256']}})
+        policy = {'contentProfile': 'protected_ecasa_review', 'ownerSourceMedia': 2, 'ownerPublishedMedia': 1,
+                  'ownerCover': {'manifestSha256': 'f' * 64, 'projectSlug': release.OWNER_PROJECT, 'provenance': 'user_provided',
+                    'sourceAssets': [sources[name] for name in sorted(sources)],
+                    'publishedAssets': [published[name] for name in sorted(published)],
+                    'supersededCoverOnly': owner['supersededCoverOnly']}}
+        return owner, manual, policy, files
+
+    def test_owner_inventory_publishes_only_native_webp_and_requires_preserved_previous_cover(self):
+        owner, manual, policy, files = self.owner_fixture()
+        inventory = release.owner_policy_inventory(policy, files)
+        self.assertEqual(len(inventory), 2)
+        self.assertEqual([item['kind'] for item in policy['ownerCover']['publishedAssets']], ['selected'])
+        original = owner['original']['localPath'].lstrip('/')
+        self.assertEqual(release.safe_name(original, inventory), original)
+        with self.assertRaises(ValueError): release.safe_name(original)
+        files.pop(owner['supersededCoverOnly']['localPath'].lstrip('/'))
+        with self.assertRaisesRegex(ValueError, 'preserved superseded source'): release.owner_policy_inventory(policy, files)
+
+    def test_owner_manifest_rejects_cross_project_supersession_extra_fields_and_changed_native_conversion(self):
+        original, manual, _, _ = self.owner_fixture()
+        for mutation in ['project', 'superseded', 'lossy', 'resize', 'dimensions', 'extra', 'original_public_path']:
+            owner = copy.deepcopy(original)
+            if mutation == 'project': owner['projectSlug'] = 'endemico'
+            elif mutation == 'superseded': owner['supersededCoverOnly']['localPath'] = '/assets/propiedades/ecasa-preview/lamara/imagen-02-p01.webp'
+            elif mutation == 'lossy': owner['conversion']['lossless'] = False
+            elif mutation == 'resize': owner['conversion']['resize'] = True
+            elif mutation == 'dimensions': owner['selected']['width'] += 1
+            elif mutation == 'extra': owner['selected']['precioDesdeUF'] = 1000
+            else: owner['original']['localPath'] = owner['selected']['localPath'].replace('.webp', '.png')
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_manifest_inventory(owner, manual)
+
+    def test_owner_receipt_cannot_publish_raw_or_bypass_exact_source_allowlist(self):
+        _, _, original, files = self.owner_fixture()
+        for mutation in ['raw', 'missing', 'hash', 'unreceipted', 'public']:
+            policy = copy.deepcopy(original);inventory = copy.deepcopy(files)
+            if mutation == 'raw': policy['ownerCover']['publishedAssets'] = [item for item in policy['ownerCover']['sourceAssets'] if item['kind'] == 'original']
+            elif mutation == 'missing': inventory.pop(release.OWNER_MODULE)
+            elif mutation == 'hash': policy['ownerCover']['sourceAssets'][0]['sha256'] = '0' * 64
+            elif mutation == 'unreceipted': policy.pop('ownerCover')
+            else: policy['contentProfile'] = 'public_web_parity'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_policy_inventory(policy, inventory)
+
+    def test_owner_selection_removes_only_superseded_documentary_cover_and_keeps_source_immutable(self):
+        owner, manual, _, _ = self.owner_fixture()
+        base = json.loads((MODULE.parents[1] / release.BASE_QUALITY_MANIFEST).read_text())
+        official = json.loads((MODULE.parents[1] / release.OFFICIAL_MANIFEST).read_text())
+        selection = release.manual_quality_selection(manual, base, official)
+        docs = json.loads((MODULE.parents[1] / 'data/brochures-ecasa.json').read_text())
+        originals = {asset['localPath'].lstrip('/'): asset['sha256'] for project in docs['projects']
+                     for asset in [*project['images'], *(model['plan'] for model in project['models'])]}
+        before = dict(originals)
+        without_owner = release.manual_published_media(originals, selection)
+        with_owner = release.manual_published_media(originals, selection, owner)
+        self.assertEqual(originals, before)
+        self.assertEqual(len(with_owner), 88)
+        self.assertEqual(set(without_owner) - set(with_owner), {release.SUPERSEDED_OWNER_COVER.lstrip('/')})
+        self.assertEqual(selection['summary']['coverOnlyImages'], 7)
+
+    def owner_v2_fixture(self):
+        legacy, manual, _, _ = self.owner_fixture()
+        projects = []
+        for index, slug in enumerate(sorted(release.OWNER_PROJECTS)):
+            project = {key: copy.deepcopy(legacy[key]) for key in ['original', 'selected', 'conversion']}
+            project['projectSlug'] = slug; project['conversion']['crop'] = None
+            for kind in ['original', 'selected']:
+                project[kind]['localPath'] = project[kind]['localPath'].replace('/edificio-bezanilla/', '/' + slug + '/')
+                project[kind]['sha256'] = str(index + 1) * 64
+            previous = next(row for row in manual['projects'] if row['slug'] == slug)
+            choice = next(row for row in previous['images'] if row['localPath'] == previous['previewCover'])
+            project['supersededCoverOnly'] = None if slug == 'espacio-victoria' else {'localPath': choice['localPath'], 'sha256': choice['sha256']}
+            projects.append(project)
+        owner = {'schemaVersion': 2, 'scope': 'ecasa_owner_covers_only', 'protectedPreviewOnly': True,
+                 'baselineCommit': legacy['baselineCommit'], 'provenance': 'user_provided', 'projects': projects}
+        return owner, manual
+
+    def test_five_owner_projects_require_exact_cardinality_identity_and_source_namespace(self):
+        original, manual = self.owner_v2_fixture()
+        sources, published = release.owner_manifest_inventory(original, manual)
+        self.assertEqual((len(sources), len(published)), (10, 5))
+        for mutation in ['missing', 'duplicate', 'other', 'extra', 'cross_asset']:
+            owner = copy.deepcopy(original)
+            if mutation == 'missing': owner['projects'].pop()
+            elif mutation == 'duplicate': owner['projects'][-1] = copy.deepcopy(owner['projects'][0])
+            elif mutation == 'other': owner['projects'][0]['projectSlug'] = 'lamara'
+            elif mutation == 'extra': owner['projects'][0]['precioDesdeUF'] = 1000
+            else: owner['projects'][0]['selected']['localPath'] = owner['projects'][1]['selected']['localPath']
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_manifest_inventory(owner, manual)
+
+    def test_owner_crop_must_be_integer_bounded_native_rectangle_with_matching_output(self):
+        original, manual = self.owner_v2_fixture()
+        project = original['projects'][0]; project['conversion']['crop'] = {'left': 10, 'top': 20, 'width': 1000, 'height': 700}
+        project['selected'].update(width=1000, height=700)
+        self.assertEqual(len(release.owner_manifest_inventory(original, manual)[1]), 5)
+        for mutation in ['negative', 'fraction', 'boolean', 'bounds', 'zero', 'output', 'resize']:
+            owner = copy.deepcopy(original); project = owner['projects'][0]
+            if mutation == 'negative': project['conversion']['crop']['left'] = -1
+            elif mutation == 'fraction': project['conversion']['crop']['top'] = 1.5
+            elif mutation == 'boolean': project['conversion']['crop']['width'] = True
+            elif mutation == 'bounds': project['conversion']['crop']['width'] = project['original']['width']
+            elif mutation == 'zero': project['conversion']['crop']['height'] = 0
+            elif mutation == 'output': project['selected']['height'] += 1
+            else: project['conversion']['resize'] = True
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_manifest_inventory(owner, manual)
+
+    def test_five_owner_selection_retires_four_cover_only_sources_and_preserves_espacio_gallery(self):
+        owner, manual = self.owner_v2_fixture()
+        base = json.loads((MODULE.parents[1] / release.BASE_QUALITY_MANIFEST).read_text())
+        official = json.loads((MODULE.parents[1] / release.OFFICIAL_MANIFEST).read_text())
+        selection = release.manual_quality_selection(manual, base, official)
+        docs = json.loads((MODULE.parents[1] / 'data/brochures-ecasa.json').read_text())
+        originals = {asset['localPath'].lstrip('/'): asset['sha256'] for project in docs['projects']
+                     for asset in [*project['images'], *(model['plan'] for model in project['models'])]}
+        old = release.manual_published_media(originals, selection)
+        new = release.manual_published_media(originals, selection, owner)
+        self.assertEqual(len(new), 85)
+        self.assertEqual(set(old)-set(new), {path.lstrip('/') for path in release.OWNER_SUPERSEDED.values()})
+        self.assertIn('assets/propiedades/ecasa-preview/espacio-victoria/imagen-03-p01.webp', new)
+        self.assertEqual(len(originals), 130)
+        self.assertEqual(selection['summary']['coverOnlyImages'], 7)
+
+    def test_five_owner_receipt_rejects_omitted_supersession_raw_publication_and_changed_counts(self):
+        owner, manual = self.owner_v2_fixture()
+        sources, published = release.owner_manifest_inventory(owner, manual)
+        files = {name: {'sha256': item['sha256'], 'size': item['bytes']} for name, item in sources.items()}
+        files.update({release.OWNER_MANIFEST: {'sha256': 'f' * 64}, release.OWNER_MODULE: {}})
+        files.update({row['localPath'].lstrip('/'): {'sha256': row['sha256']} for row in release.owner_superseded_covers(owner)})
+        policy = {'contentProfile': 'protected_ecasa_review', 'ownerSourceMedia': 10, 'ownerPublishedMedia': 5,
+                  'ownerCover': {'manifestSha256': 'f' * 64, **release.owner_review_fields(owner),
+                    'sourceAssets': [sources[name] for name in sorted(sources)], 'publishedAssets': [published[name] for name in sorted(published)]}}
+        self.assertEqual(len(release.owner_policy_inventory(policy, files)), 10)
+        for mutation in ['superseded', 'raw', 'count', 'identity']:
+            changed = copy.deepcopy(policy)
+            if mutation == 'superseded': changed['ownerCover']['supersededCovers'].pop()
+            elif mutation == 'raw': changed['ownerCover']['publishedAssets'][0] = next(row for row in changed['ownerCover']['sourceAssets'] if row['kind'] == 'original')
+            elif mutation == 'count': changed['ownerPublishedMedia'] = 4
+            else: changed['ownerCover']['projectSlugs'][0] = 'lamara'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_policy_inventory(changed, files)
 
 
 if __name__ == '__main__':

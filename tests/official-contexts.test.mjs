@@ -1,3 +1,4 @@
+import { withoutReviewedOwnerAssets } from './ecasa-quality-fixture.mjs';
 import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
 import { isReviewedLeonAsset, readPreLeonFile } from './leon-main-preservation.mjs';
@@ -10,10 +11,9 @@ import { resolve, relative } from 'node:path';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
-import { projects as actualSentoContexts } from '../lib/project-context.mjs';
-import { restoreSentoContexts } from './sento-preservation.mjs';
-const trustedContexts = restoreSentoContexts(actualSentoContexts);
-import { assertCommercialBytes, assertPortfolioData, commercialPage,
+import { reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
+import { projects as trustedContexts } from '../lib/project-context.mjs';
+import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, restoreEcasaContext, assertCommercialBytes, assertPortfolioData, commercialPage,
   INGEVEC_NEW_SLUGS, readCommercialFile, vimaImageCorrection,
   AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet, NORTE_VERDE_HERO_ASSETS } from './commercial-html.mjs';
 
@@ -129,10 +129,10 @@ const readPage = (slug, baseline = false) => page(baseline
 const oneId = (parsed, id) => { const found = parsed.id(id); assert.equal(found.length, 1, id); return found[0]; };
 const identity = (parsed, node) => ({ attrs: node.attrs, text: parsed.text(node).replace(/\s+/g, ' ').trim() });
 
-test('fixed baselines: 144 authorized identities, preserved historical objects and only approved presentation changes to 128 other HTML pages', () => {
+test('fixed baselines: 133 authorized identities and 102 prior non-Ecasa context-external HTML controls', () => {
   assert.match(git('rev-parse', BASELINE).toString(), /^a279744[0-9a-f]{33}\s*$/);
-  assert.equal(catalogue.length, 144);
-  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 144);
+  assert.equal(catalogue.length, 133);
+  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 133);
   // The independent portfolio helper permits exactly six retired Ingevec
   // identities, two documented additions and VIMA's proved image correction.
   // All retained commercial objects and source records remain exact to 8cdb9bf.
@@ -145,7 +145,7 @@ test('fixed baselines: 144 authorized identities, preserved historical objects a
   for (const project of catalogue) {
     // Their complete data/source assertions run above; neither added identity
     // can have an HTML baseline in the historical official-context audit.
-    if (INGEVEC_NEW_SLUGS.has(project.slug)) continue;
+    if (INGEVEC_NEW_SLUGS.has(project.slug) || ECASA_SLUGS.has(project.slug)) continue;
     assert.equal(project.detalleUrl, previousProjects.get(project.slug).detalleUrl, project.slug);
     if (FOCUS.has(project.slug)) continue;
     assert.deepEqual(project, previousProjects.get(project.slug), project.slug);
@@ -157,7 +157,7 @@ test('fixed baselines: 144 authorized identities, preserved historical objects a
     protectedCount++;
     unchangedFile(`${project.slug}.html`);
   }
-  assert.equal(protectedCount, 128);
+  assert.equal(protectedCount, 102);
 });
 
 test('only Mapocho catalogue amenities and explicitly reviewed source/date change; five focus objects remain exact', () => {
@@ -240,7 +240,7 @@ test('four pending identities cannot borrow office/aggregate prices for A–E, e
   const input = { incomeClp: 10_000_000, complementIncome: false, secondIncomeClp: 0, debtClp: 0,
     savings: 10_000_000, savingsCurrency: 'CLP', monthlySavingsClp: 1_000_000, horizonMonths: 24,
     downPaymentPercent: 20, years: 20, annualRatePercent: 4.5, rateConvention: 'effective', burdenPercent: 25 };
-  assert.equal(catalogue.filter((project) => verifiedProjectPrice(project, DATE)).length, 110);
+  assert.equal(catalogue.filter((project) => verifiedProjectPrice(project, DATE)).length, 103);
   for (const slug of PENDING) {
     const project = projects.get(slug);
     for (const key of ['precioDesdeUF', 'direccion', 'estado', 'entrega']) assert.equal(project[key], null, `${slug}: ${key}`);
@@ -376,11 +376,17 @@ test('all 521 integration assets and 509 historical originals retain their hashe
     newPaths.add(entry.localPath.slice(1));
   }
   assert.equal(newPaths.size, 10);
-  const currentAssets = historicalSentoAssetFiles(listFiles('assets').filter(file=>!isReviewedLeonAsset(file))).filter((file) =>
-    !NORTE_VERDE_HERO_ASSETS.includes(file) &&
+  const currentAssets = withoutReviewedOwnerAssets(historicalSentoAssetFiles(listFiles('assets').filter(file=>!isReviewedLeonAsset(file)))).filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
-    !file.startsWith('assets/propiedades/ingevec-preview/') && file !== 'assets/css/aj-brochure-preview.css');
-  const expected = [...protectedAssets.map(({ file }) => file), ...newPaths, 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort();
+    !file.startsWith('assets/propiedades/ingevec-preview/') && !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');
+  const ecasaReview = json('tests/ecasa-reviewed-output.json');
+  const stageAssets = ['assets/css/ecasa-stages.css', 'assets/js/ecasa-stages.js'];
+  assert.deepEqual(Object.keys(ecasaReview.assetSha256).sort(),stageAssets.toSorted());
+  for(const file of stageAssets) assert.equal(sha256(current(file)),ecasaReview.assetSha256[file],file+': only the exact reviewed Ecasa stage asset is permitted');
+  assert.equal(restoreEcasaContext('assets/js/project-identity.mjs',current('assets/js/project-identity.mjs')).length,0,
+    'Only the exact reviewed stage-context helper is permitted as a new context asset');
+  const expected = [...protectedAssets.map(({ file }) => file), ...newPaths, 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS,
+    ...stageAssets, 'assets/js/project-identity.mjs'].sort();
   assert.deepEqual(currentAssets, expected, 'No other asset additions/deletions are authorized');
   assertAutomaticEmbedStylesheet();
 });
@@ -392,12 +398,11 @@ test('registry and sitemap match the authorized portfolio; financial data/motors
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) &&
         !AJ_REVIEW.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
   }
-  const currentCatalogue=JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
-  assert.equal(Object.keys(actualSentoContexts).length, 141);
-  for (const project of currentCatalogue) assert.deepEqual(actualSentoContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
+  assert.equal(Object.keys(trustedContexts).length, 133);
+  for (const project of JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')))) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
   const locations = current('sitemap.xml').toString().match(/<loc>[^<]+<\/loc>/g);
-  assert.equal(locations.length, 150);
-  assert.equal(new Set(locations).size, 150);
+  assert.equal(locations.length, 139);
+  assert.equal(new Set(locations).size, 139);
 });
 
 test('both menus and consultation/booking/simulation links keep their exact six project identities and no financial URL data', () => {

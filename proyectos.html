@@ -221,7 +221,10 @@
     const numberFormat = new Intl.NumberFormat('es-CL');
     let projects = [];
     let capacitySearch = null;
-    const stages = project => Array.isArray(project.etapas) ? project.etapas : [];
+    const stages = project => project.inmobiliaria === 'Ecasa' && Array.isArray(project.etapasComerciales) && project.etapasComerciales.length > 1
+        ? project.etapasComerciales : Array.isArray(project.etapas) ? project.etapas : [];
+    const commercialReference = project => project.inmobiliaria === 'Ecasa' && stages(project).length > 1
+        ? stages(project).find(stage => stage.slug === project.etapaReferenciaSlug) : null;
     const projectStates = project => [project.estado, ...stages(project).map(stage => stage.estado)]
         .filter(value => typeof value === 'string' && value.length);
     const element = (tag, text, classes) => {
@@ -278,6 +281,9 @@
         body.append(element('p', project.inmobiliaria + (builderVerified ? '' : ' · Asociación por verificar'), 'text-sm font-bold text-secondary mb-3'));
         body.append(element('h2', project.nombre, 'catalog-card-title font-bold'));
         body.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
+        const reference = commercialReference(project);
+        if (project.imagenEtapa) body.append(element('p', 'Imagen referencial · ' + project.imagenEtapa, 'text-xs text-secondary mb-3'));
+        if (reference) body.append(element('p', 'Información comercial · Etapa ' + reference.etapa, 'text-xs text-secondary mb-3'));
         if (project.direccion != null) body.append(element('p', project.direccion, 'text-sm text-secondary mb-4'));
         const details = element('dl');
         const detail = (label, value) => {
@@ -285,13 +291,13 @@
             details.append(element('dd', value, 'text-sm text-secondary'));
         };
         if (project.estado != null) detail('Estado', project.estado);
-        const projectStages = stages(project);
+        const projectStages = stages(project).filter(stage => project.inmobiliaria !== 'Ecasa' || (stage.slug !== project.etapaReferenciaSlug && (stage.estado != null || stage.entrega != null)));
         if (projectStages.length) {
             details.append(element('dt', 'Etapas', 'text-sm font-bold text-primary mt-4'));
             const values = element('dd');
             const list = element('ul');
             projectStages.forEach(stage => {
-                let summary = stage.nombre + ' — ' + stage.estado;
+                let summary = stage.nombre + (stage.estado != null ? ' — ' + stage.estado : '');
                 if (stage.entrega != null && !normalize(stage.estado).includes(normalize(stage.entrega))) {
                     summary += ' · Entrega ' + stage.entrega;
                 }
@@ -311,7 +317,7 @@
         }
         body.append(details);
         if (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF)) {
-            body.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
+            body.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF) + (reference ? ' · Etapa ' + reference.etapa : ''), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
         } else {
             body.append(element('p', (['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación'), 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
         }

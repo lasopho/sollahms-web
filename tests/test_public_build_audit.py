@@ -1,5 +1,6 @@
 """Negative controls for the independent, offline launch audit."""
 import hashlib
+import copy
 import importlib.util
 import json
 from pathlib import Path
@@ -17,13 +18,16 @@ spec.loader.exec_module(audit_module)
 class PublicBuildAuditTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix='sollahms-public-audit-negative-')
-        self.base = Path(self.temporary.name)
+        self.base = Path(self.temporary.name).resolve()
         self.source, self.public, self.preview = [self.base / p for p in ['source', 'public', 'preview']]
         (self.source / 'data').mkdir(parents=True)
+        redirects = [{'source': '/' + slug + suffix, 'destination': '/' + target + '.html#etapa-' + str(stage), 'permanent': True}
+                     for slug, (target, stage) in audit_module.LEGACY_TARGETS.items() for suffix in ['', '.html']]
+        (self.source / 'vercel.json').write_text(json.dumps({'redirects': redirects}))
         (self.public / 'data').mkdir(parents=True)
         aj = ['downtown-san-martin', 'edificio-teatinos-750', 'edificio-vista-amunategui', 'monjitas-690', 'vista-morande']
-        slugs = sorted(audit_module.INGEVEC) + aj + ['other-' + str(n) for n in range(123)]
-        catalogue = [{'slug': slug, 'inmobiliaria': 'Ingevec' if slug in audit_module.INGEVEC else 'Other',
+        slugs = sorted(audit_module.INGEVEC) + aj + sorted(audit_module.ECASA) + ['other-' + str(n) for n in range(100)]
+        catalogue = [{'slug': slug, 'inmobiliaria': 'Ingevec' if slug in audit_module.INGEVEC else 'Ecasa' if slug in audit_module.ECASA else 'Other',
                       'detalleUrl': '/' + slug + '.html', 'imagenPrincipal': '/assets/generic.webp'} for slug in slugs]
         by_slug = {p['slug']: p for p in catalogue}
         references = {slug: [] for slug in slugs}
@@ -59,6 +63,8 @@ class PublicBuildAuditTests(unittest.TestCase):
             html += '<a href="/proyectos.html">Asset Portafolio</a>'
             html += ''.join('<a href="/' + route + '?proyecto=' + slug + '">Contextual action</a>' for route in ['contacto.html', 'agenda-asesoria.html', 'comparador-hipotecario.html'])
             html += ''.join('<img src="' + path + '">' for path in references[slug]) + '</body></html>'
+            stages = {stage for target, stage in audit_module.LEGACY_TARGETS.values() if target == slug}
+            html = html.replace('</body>', ''.join('<span id="etapa-' + str(stage) + '"></span>' for stage in sorted(stages)) + '</body>')
             (self.public / page).write_text(html)
         for page in audit_module.PAGES:
             (self.public / page).write_text('<html><head>' + ('<meta name="robots" content="noindex,follow">' if page == '404.html' else '') + '</head><body></body></html>')
@@ -74,19 +80,64 @@ class PublicBuildAuditTests(unittest.TestCase):
                 text = text.replace('<body>', '<body>' + audit_module.NOTICE)
             path.write_text(text)
         (self.preview / 'robots.txt').write_text('User-agent: *\nDisallow: /\n')
+        ecasa_records = []
+        preview_catalogue = json.loads(json.dumps(catalogue))
+        preview_by_slug = {p['slug']: p for p in preview_catalogue}
+        for index, slug in enumerate(sorted(audit_module.ECASA)):
+            images, models = [], []
+            if index == 0:
+                for kind in ['image', 'plan']:
+                    path = '/assets/propiedades/ecasa-preview/' + slug + '/' + kind + '.webp'
+                    payload = ('ecasa-fixture-' + path).encode()
+                    file = self.preview / path.lstrip('/')
+                    file.parent.mkdir(parents=True, exist_ok=True)
+                    file.write_bytes(payload)
+                    asset = {'localPath': path, 'sha256': hashlib.sha256(payload).hexdigest(), 'originCommercialSlug': slug}
+                    if kind == 'image': images.append(asset)
+                    else: models.append({'plan': asset})
+            cover = {'localPath': images[0]['localPath'], 'alt': 'Render ilustrativo'} if images else None
+            if cover:
+                preview_by_slug[slug]['imagenPrincipal'] = cover['localPath']
+                preview_by_slug[slug]['imagenAlt'] = cover['alt']
+            record = {'slug': slug, 'images': images, 'models': models, 'catalogueCover': cover,
+                      'commercialSourceSlugs': [commercial for commercial, target in audit_module.COMMERCIAL_PROJECTS.items() if target == slug]}
+            ecasa_records.append(record)
+            original = (self.public / (slug + '.html')).read_text()
+            refs = ''.join('<img src="' + asset['localPath'] + '">' for asset in images + [model['plan'] for model in models])
+            original = original.replace('</body>', '<!--ECASA_PUBLIC_START--><p>Ficha comercial vigente</p><!--ECASA_PUBLIC_END--><!--ECASA_PREVIEW_START-->' + refs + '<!--ECASA_PREVIEW_END--></body>')
+            (self.source / (slug + '.html')).write_text(original)
+            (self.public / (slug + '.html')).write_text(audit_module.selected_ecasa_html(original, False))
+            (self.preview / (slug + '.html')).write_text(audit_module.selected_ecasa_html(original, True).replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>'))
+        commercial_sources = []
+        for slug, target in audit_module.COMMERCIAL_PROJECTS.items():
+            record = next(record for record in ecasa_records if record['slug'] == target)
+            commercial_sources.append({'slug': slug, 'projectSlug': target,
+                'selectedImagePaths': [asset['localPath'] for asset in record['images'] if asset['originCommercialSlug'] == slug],
+                'selectedPlanPaths': [model['plan']['localPath'] for model in record['models'] if model['plan']['originCommercialSlug'] == slug]})
+        (self.source / 'data/brochures-ecasa.json').write_text(json.dumps({'schemaVersion': 2, 'projects': ecasa_records,
+            'commercialSources': commercial_sources,
+            'publicationRights': {'sourceChannel': 'Ecasa/user_supplied', 'protectedPreview': 'authorized_by_user',
+                'productionPolicy': 'requires_verified_contract_scope',
+                'contractScope': {'status': 'pending_contract_scope_verification'}}}))
+        (self.preview / 'data/proyectos.json').write_text(json.dumps(preview_catalogue))
 
     def tearDown(self):
         self.temporary.cleanup()
 
     def result(self):
-        return audit_module.audit(self.source, self.public, self.preview)
+        return audit_module.audit(self.source, self.public, self.preview, protected_review=True)
 
-    def test_complete_public_and_preview_twins_pass(self):
+    def test_complete_protected_review_and_preserved_public_batches_pass(self):
         result = self.result()
         self.assertTrue(result['ok'], result['errors'])
         self.assertEqual(result['counts']['brochureMedia'], 269)
         self.assertEqual(result['counts']['brochurePlans'], 142)
-        self.assertEqual(result['counts']['canonicalFiches'], 144)
+        self.assertEqual(result['counts']['canonicalFiches'], 136)
+        self.assertEqual(result['counts']['ecasa'], 15)
+        self.assertEqual(result['counts']['ecasaCommercialSources'], 22)
+        self.assertEqual(result['counts']['permanentRouteRules'], 16)
+        self.assertEqual(result['counts']['ecasaMedia'], 2)
+        self.assertFalse(result['ecasaPublicWebParityVerified'])
         self.assertEqual(result['networkRequests'], 0)
 
     def test_missing_selected_image_is_rejected(self):
@@ -137,6 +188,451 @@ class PublicBuildAuditTests(unittest.TestCase):
         result = self.result()
         self.assertFalse(result['ok'])
         self.assertTrue(any('Incorrect canonical' in e for e in result['errors']))
+
+    def test_removed_ecasa_identity_is_rejected(self):
+        path = self.public / 'data/proyectos.json'
+        catalogue = json.loads(path.read_text())
+        next(p for p in catalogue if p['inmobiliaria'] == 'Ecasa')['slug'] = 'altos-del-wayra'
+        path.write_text(json.dumps(catalogue))
+        result = self.result()
+        self.assertFalse(result['ok'])
+        self.assertTrue(any('15 approved Ecasa developments' in e for e in result['errors']))
+
+    def test_stage_price_change_in_preview_is_rejected(self):
+        path = self.preview / 'data/proyectos.json'
+        catalogue = json.loads(path.read_text())
+        next(p for p in catalogue if p['slug'] == 'alto-san-joaquin')['etapas'] = [{'slug': 'alto-san-joaquin-3', 'precioDesdeUF': 1234}]
+        path.write_text(json.dumps(catalogue))
+        self.assertTrue(any('commercial data beyond reviewed covers' in e for e in self.result()['errors']))
+
+    def test_changed_ecasa_plan_and_unselected_candidate_are_rejected(self):
+        path = next(self.preview.glob('assets/propiedades/ecasa-preview/*/plan.webp'))
+        path.write_bytes(b'CHANGED-PLAN')
+        (path.parent / 'unselected.webp').write_bytes(b'PRIVATE-CANDIDATE')
+        result = self.result()
+        self.assertFalse(result['ok'])
+        self.assertTrue(any('Selected Ecasa resource bytes changed' in e for e in result['errors']))
+        self.assertTrue(any('Unselected candidate or omitted Ecasa' in e for e in result['errors']))
+
+    def test_pending_ecasa_media_cannot_enter_public_output(self):
+        path = next(self.preview.glob('assets/propiedades/ecasa-preview/*/image.webp'))
+        target = self.public / path.relative_to(self.preview)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(path, target)
+        self.assertTrue(any('public eligibility' in e for e in self.result()['errors']))
+
+    def test_other_developer_rights_cannot_authorize_ecasa(self):
+        path = self.source / 'data/brochures-ecasa.json'
+        review = json.loads(path.read_text())
+        review['publicationRights']['sourceChannel'] = 'Yapo/IRIS'
+        path.write_text(json.dumps(review))
+        self.assertTrue(any('Independent Ecasa' in e for e in self.result()['errors']))
+
+    def test_official_financial_sources_remain_visible_in_the_comparator(self):
+        for root in [self.public, self.preview]:
+            path = root / 'comparador-hipotecario.html'
+            path.write_text(path.read_text().replace('</body>', '<p>Fuentes oficiales y fecha de verificación de la UF</p></body>'))
+        self.assertTrue(self.result()['ok'], self.result()['errors'])
+
+    def test_redirect_loops_wrong_stage_or_temporary_status_are_rejected(self):
+        path = self.source / 'vercel.json'
+        original = json.loads(path.read_text())
+        for key, value in [('destination', original['redirects'][0]['source']), ('destination', '/nucleo-costanera.html#etapa-3'), ('permanent', False), ('statusCode', 302)]:
+            rules = json.loads(json.dumps(original))
+            rules['redirects'][0][key] = value
+            path.write_text(json.dumps(rules))
+            self.assertFalse(self.result()['ok'], key)
+
+    def test_consolidation_cannot_redirect_an_unrelated_project(self):
+        path = self.source / 'vercel.json'
+        configuration = json.loads(path.read_text())
+        configuration['redirects'].append({'source': '/other-0.html', 'destination': '/ferroparque.html', 'permanent': True})
+        path.write_text(json.dumps(configuration))
+        self.assertTrue(any('Unrelated public route redirect' in error for error in self.result()['errors']))
+
+    def test_duplicate_legacy_html_and_missing_target_anchor_are_rejected(self):
+        for root in [self.public, self.preview]:
+            (root / 'terratolten-1.html').write_text('<h1>Duplicate stage</h1>')
+            target = root / 'terratolten.html'
+            target.write_text(target.read_text().replace('id="etapa-1"', 'id="wrong-stage"'))
+        errors = self.result()['errors']
+        self.assertTrue(any('Duplicate HTML fiche' in error for error in errors))
+        self.assertTrue(any('redirect anchor is missing' in error for error in errors))
+
+    def test_consolidation_cannot_transfer_media_to_another_development(self):
+        path = self.source / 'data/brochures-ecasa.json'
+        manifest = json.loads(path.read_text())
+        selected = next(record for record in manifest['projects'] if record['images'])
+        selected['images'][0]['originCommercialSlug'] = 'terratolten-1'
+        path.write_text(json.dumps(manifest))
+        self.assertTrue(any('unrelated commercial stage' in error for error in self.result()['errors']))
+
+    def test_commercial_sources_preserve_resources_after_matrix_consolidation(self):
+        path = self.source / 'data/brochures-ecasa.json'
+        manifest = json.loads(path.read_text())
+        selected = next(record for record in manifest['projects'] if record['images'])
+        selected['images'].clear()
+        selected['catalogueCover'] = None
+        path.write_text(json.dumps(manifest))
+        self.assertTrue(any('lost or transferred a selected commercial resource' in error for error in self.result()['errors']))
+
+    def test_reviewed_display_alt_is_the_only_catalogue_caption_difference(self):
+        path = self.source / 'data/brochures-ecasa.json'
+        manifest = json.loads(path.read_text())
+        selected = next(record for record in manifest['projects'] if record['catalogueCover'])
+        selected['catalogueCover']['displayAlt'] = 'Vista del proyecto · Imagen referencial'
+        path.write_text(json.dumps(manifest))
+        catalogue_path = self.preview / 'data/proyectos.json'
+        catalogue = json.loads(catalogue_path.read_text())
+        project = next(project for project in catalogue if project['slug'] == selected['slug'])
+        project['imagenAlt'] = selected['catalogueCover']['displayAlt']
+        catalogue_path.write_text(json.dumps(catalogue))
+        self.assertTrue(self.result()['ok'], self.result()['errors'])
+        project['imagenAlt'] = selected['catalogueCover']['alt']
+        catalogue_path.write_text(json.dumps(catalogue))
+        self.assertFalse(self.result()['ok'])
+
+    def test_terratolten_cover_stage_remains_accredited_and_other_stages_are_rejected(self):
+        path = self.source / 'data/brochures-ecasa.json'
+        manifest = json.loads(path.read_text())
+        matrix = next(record for record in manifest['projects'] if record['slug'] == 'terratolten')
+        image_path = '/assets/propiedades/ecasa-preview/terratolten-1/image.webp'
+        payload = b'accredited-stage-one-cover'
+        asset = {'localPath': image_path, 'sha256': hashlib.sha256(payload).hexdigest(),
+                 'originCommercialSlug': 'terratolten-1', 'etapa': 'Etapa 1'}
+        matrix['images'].append(asset)
+        matrix['catalogueCover'] = {'localPath': image_path, 'alt': 'Vista de Terratoltén 1'}
+        commercial = next(record for record in manifest['commercialSources'] if record['slug'] == 'terratolten-1')
+        commercial['selectedImagePaths'] = [image_path]
+        path.write_text(json.dumps(manifest))
+        file = self.preview / image_path.lstrip('/')
+        file.parent.mkdir(parents=True, exist_ok=True)
+        file.write_bytes(payload)
+        source_page = self.source / 'terratolten.html'
+        original = source_page.read_text().replace('<!--ECASA_PREVIEW_START-->', '<!--ECASA_PREVIEW_START--><img src="' + image_path + '">')
+        source_page.write_text(original)
+        (self.preview / source_page.name).write_text(audit_module.selected_ecasa_html(original, True).replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>'))
+        catalogue_path = self.preview / 'data/proyectos.json'
+        catalogue = json.loads(catalogue_path.read_text())
+        project = next(project for project in catalogue if project['slug'] == 'terratolten')
+        project.update({'imagenPrincipal': image_path, 'imagenAlt': matrix['catalogueCover']['alt'], 'imagenEtapa': 'Etapa 1'})
+        catalogue_path.write_text(json.dumps(catalogue))
+        self.assertTrue(self.result()['ok'], self.result()['errors'])
+        asset['etapa'] = 'Etapa 3'
+        path.write_text(json.dumps(manifest))
+        project['imagenEtapa'] = 'Etapa 3'
+        catalogue_path.write_text(json.dumps(catalogue))
+        self.assertTrue(any('unaccredited stage' in error for error in self.result()['errors']))
+
+    def test_unauthorized_catalogue_stage_label_is_rejected(self):
+        path = self.preview / 'data/proyectos.json'
+        catalogue = json.loads(path.read_text())
+        project = next(project for project in catalogue if project['slug'] == 'alto-san-joaquin')
+        project['imagenEtapa'] = 'Etapa 3'
+        path.write_text(json.dumps(catalogue))
+        self.assertTrue(any('commercial data beyond reviewed covers' in error for error in self.result()['errors']))
+
+    def visual_fixture(self):
+        review = json.loads((self.source / 'data/brochures-ecasa.json').read_text())
+        catalogue = json.loads((self.public / 'data/proyectos.json').read_text())
+        research = [{'slug': record['slug'], 'etapasComerciales': [{'slug': origin, 'catalogo': {},
+                    'investigacion': {'images': []}} for origin in record['commercialSourceSlugs']]}
+                    for record in review['projects']]
+        projects = []
+        for record in review['projects']:
+            images = [{**image, 'kind': 'documentary', 'width': image.get('width'), 'height': image.get('height'),
+                       'decision': 'keep', 'coverOnly': False, 'reason': 'Reviewed fixture'} for image in record['images']]
+            path = images[0]['localPath'] if images else None
+            projects.append({'slug': record['slug'], 'images': images, 'covers': {
+                'preview': {'hero': path, 'catalogue': path}, 'public': {'hero': None, 'catalogue': None}}})
+        return review, research, catalogue, {'projects': projects}
+
+    def test_visual_decisions_cannot_transfer_an_image_to_another_stage(self):
+        review, research, catalogue, policy = self.visual_fixture()
+        selected = next(record for record in policy['projects'] if record['images'])
+        selected['images'][0]['originCommercialSlug'] = 'terratolten-1'
+        errors = []
+        audit_module.quality_images(review, research, catalogue, policy, {}, lambda condition, message: errors.append(message) if not condition else None)
+        self.assertTrue(any('changed source bytes, dimensions or origin' in error for error in errors))
+
+    def test_visual_quality_cannot_exclude_a_plan_as_a_photograph(self):
+        review, research, catalogue, policy = self.visual_fixture()
+        selected = next(record for record in policy['projects'] if record['images'])
+        record = next(record for record in review['projects'] if record['slug'] == selected['slug'])
+        plan = record['models'][0]['plan']
+        selected['images'].append({**selected['images'][0], 'localPath': plan['localPath'], 'sha256': plan['sha256'], 'decision': 'exclude'})
+        errors = []
+        audit_module.quality_images(review, research, catalogue, policy, {}, lambda condition, message: errors.append(message) if not condition else None)
+        self.assertTrue(any('omitted or added a source image' in error for error in errors))
+
+    def test_visual_cover_does_not_grant_public_brochure_rights(self):
+        review, research, catalogue, policy = self.visual_fixture()
+        selected = next(record for record in policy['projects'] if record['images'])
+        selected['covers']['public']['hero'] = selected['images'][0]['localPath']
+        errors = []
+        audit_module.quality_images(review, research, catalogue, policy, {}, lambda condition, message: errors.append(message) if not condition else None)
+        self.assertTrue(any('ineligible' in error for error in errors))
+
+    def test_reviewed_display_policy_replays_captions_without_changing_prices_or_scripts(self):
+        policy = {'schemaVersion': 1, 'captionRules': [{'pattern': r'\s*·\s*Brochure, pág\. 1', 'replacement': ''}],
+                  'textRules': [{'pattern': r'\bImágenes del brochure\b', 'replacement': 'Imágenes del proyecto'}]}
+        (self.source / 'data/public-caption-policy.json').write_text(json.dumps(policy))
+        (self.source / 'scripts').mkdir()
+        (self.source / 'scripts/public-fiche-copy.mjs').write_text('// Reviewed consumer fixture')
+        for slug in audit_module.ECASA:
+            path = self.source / (slug + '.html')
+            original = path.read_text().replace('</body>', '<p>UF 2.000</p><h2>Imágenes del brochure</h2><img src="/assets/generic.webp" alt="Fachada · Brochure, pág. 1"><script>const evidence="Brochure, pág. 1";</script></body>')
+            path.write_text(original)
+            public = audit_module.normalize_fiche_copy(audit_module.selected_ecasa_html(original, False), policy)
+            preview = audit_module.normalize_fiche_copy(audit_module.selected_ecasa_html(original, True), policy)
+            (self.public / path.name).write_text(public)
+            (self.preview / path.name).write_text(preview.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>'))
+            self.assertIn('UF 2.000', preview)
+            self.assertIn('alt="Fachada"', preview)
+            self.assertIn('const evidence="Brochure, pág. 1";', preview)
+            self.assertIn('Imágenes del proyecto', preview)
+        self.assertTrue(self.result()['ok'], self.result()['errors'])
+
+    def official_fixture(self):
+        manifest = json.loads((MODULE.parents[1] / 'data/ecasa-official-originals.json').read_text())
+        for project in manifest['projects']:
+            image = project['images'][0]
+            for kind, asset in [('original', image['original']), ('selected', image)]:
+                payload = ('independent official fixture:' + asset['localPath']).encode()
+                asset['bytes'], asset['sha256'] = len(payload), hashlib.sha256(payload).hexdigest()
+                path = self.source / asset['localPath'].lstrip('/')
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(payload)
+                if kind == 'selected':
+                    selected = self.preview / asset['localPath'].lstrip('/')
+                    selected.parent.mkdir(parents=True, exist_ok=True)
+                    selected.write_bytes(payload)
+        (self.source / 'data/ecasa-official-originals.json').write_text(json.dumps(manifest))
+        (self.source / 'scripts').mkdir(exist_ok=True)
+        (self.source / 'scripts/ecasa-official-originals.mjs').write_text('// independent overlay fixture')
+        return manifest
+
+    def official_errors(self):
+        errors = []
+        result = audit_module.official_images(self.source, self.public, self.preview,
+            lambda condition, message: errors.append(message) if not condition else None)
+        return result, errors
+
+    def test_official_source_inventory_keeps_originals_private_and_publishes_only_selected_images(self):
+        self.official_fixture()
+        (manifest, sources, published), errors = self.official_errors()
+        self.assertEqual(errors, [])
+        self.assertEqual((len(sources), len(published)), (4, 2))
+        self.assertFalse(manifest['rights']['publicWeb'])
+        self.assertFalse({path for path in published if '/originals/' in path})
+
+    def test_official_public_file_leak_is_rejected_even_when_bytes_are_correct(self):
+        manifest = self.official_fixture()
+        image = manifest['projects'][0]['images'][0]
+        target = self.public / image['localPath'].lstrip('/')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((self.source / image['localPath'].lstrip('/')).read_bytes())
+        self.assertTrue(any('public output' in issue for issue in self.official_errors()[1]))
+
+    def test_official_original_in_preview_and_private_source_reference_are_rejected(self):
+        manifest = self.official_fixture()
+        original = manifest['projects'][0]['images'][0]['original']
+        target = self.preview / original['localPath'].lstrip('/')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((self.source / original['localPath'].lstrip('/')).read_bytes())
+        page = self.preview / 'ferroparque.html'
+        page.write_text(page.read_text().replace('</body>', '<img src="' + original['url'] + '"></body>'))
+        errors = self.official_errors()[1]
+        self.assertTrue(any('original/candidate' in issue for issue in errors))
+        self.assertTrue(any('Private official original reference' in issue for issue in errors))
+
+    def test_official_changed_original_or_cross_project_origin_fails_audit(self):
+        manifest = self.official_fixture()
+        original = manifest['projects'][0]['images'][0]['original']
+        (self.source / original['localPath'].lstrip('/')).write_bytes(b'changed-original')
+        self.assertTrue(any('source bytes differ' in issue for issue in self.official_errors()[1]))
+        manifest['projects'][0]['images'][0]['originCommercialSlug'] = 'alto-san-joaquin'
+        (self.source / 'data/ecasa-official-originals.json').write_text(json.dumps(manifest))
+        self.assertTrue(any('another project or stage' in issue for issue in self.official_errors()[1]))
+
+    def test_official_catalogue_overlay_preserves_financial_values_and_every_stage_snapshot(self):
+        manifest = self.official_fixture()
+        catalogue = json.loads((self.public / 'data/proyectos.json').read_text())
+        for project in catalogue:
+            project['precioDesdeUF'] = 1234
+            project['etapasComerciales'] = [{'slug': project['slug'] + '-2', 'precioDesdeUF': 4321,
+                                           'imagenPrincipal': '/assets/generic.webp'}]
+        result = audit_module.official_catalogue(catalogue, manifest, None)
+        restored = copy.deepcopy(result)
+        for before, after in zip(catalogue, restored):
+            if before['slug'] in {'ferroparque', 'alto-san-joaquin'}:
+                after['imagenPrincipal'] = before['imagenPrincipal']
+                after.pop('imagenAlt', None)
+        self.assertEqual(restored, catalogue)
+
+    def manual_fixture(self):
+        root = MODULE.parents[1]
+        base_path = root / audit_module.release_inventory.BASE_QUALITY_MANIFEST
+        base = json.loads(base_path.read_text())
+        policy = json.loads((root / audit_module.release_inventory.MANUAL_MANIFEST).read_text())
+        official = json.loads((root / audit_module.release_inventory.OFFICIAL_MANIFEST).read_text())
+        (self.source / audit_module.release_inventory.BASE_QUALITY_MANIFEST).write_bytes(base_path.read_bytes())
+        (self.source / 'scripts').mkdir(exist_ok=True)
+        (self.source / audit_module.release_inventory.MANUAL_MODULE).write_text('// reviewed synthetic consumer')
+        images = {image['localPath']: {**image, 'projectSlug': project['slug'], 'displayAlt': 'Fixture photograph'}
+                  for project in base['projects'] for image in project['images']}
+        projects = {project['slug']: project for project in base['projects']}
+        return base, policy, official, images, projects
+
+    def test_manual_auditor_clones_preview_choices_without_mutating_frozen_public_selection(self):
+        base, policy, official, images, projects = self.manual_fixture()
+        before = copy.deepcopy((base, images, projects)); errors = []
+        choices, effective, selection = audit_module.manual_images(self.source, policy, base, images, projects, official,
+            lambda condition, issue: errors.append(issue) if not condition else None)
+        self.assertEqual(errors, [])
+        self.assertEqual((base, images, projects), before)
+        self.assertEqual(selection['summary']['keptImages'], 70)
+        self.assertEqual(sum(row['coverOnly'] for row in choices.values()), 7)
+        self.assertEqual(effective['urban-la-florida']['covers']['public'], projects['urban-la-florida']['covers']['public'])
+        self.assertNotEqual(effective['urban-la-florida']['covers']['preview'], projects['urban-la-florida']['covers']['preview'])
+
+    def test_manual_auditor_rejects_image_from_another_project_and_changed_frozen_bytes(self):
+        base, policy, official, images, projects = self.manual_fixture()
+        policy['projects'][0]['images'][0]['originCommercialSlug'] = 'alto-san-joaquin'
+        errors = []
+        audit_module.manual_images(self.source, policy, base, images, projects, official,
+            lambda condition, issue: errors.append(issue) if not condition else None)
+        self.assertTrue(any('commercial origin' in error for error in errors))
+        (self.source / audit_module.release_inventory.BASE_QUALITY_MANIFEST).write_text(json.dumps(base))
+        errors.clear()
+        audit_module.manual_images(self.source, policy, base, images, projects, official,
+            lambda condition, issue: errors.append(issue) if not condition else None)
+        self.assertTrue(any('frozen base quality' in error for error in errors))
+
+    def test_cover_roles_distinguish_gallery_links_from_hero_and_metadata(self):
+        path = '/assets/propiedades/ecasa-preview/urban-la-florida/imagen-03-p02.webp'
+        cover = '<meta property="og:image" content="https://sollahms.cl' + path + '"><main><img src="' + path + '"></main>'
+        self.assertEqual(audit_module.image_roles(cover, path), {'gallery': 0, 'hero': 1, 'links': 0})
+        leak = cover + '<section id="galeria"><div><a href="' + path + '"><img src="' + path + '"></a></div></section>'
+        self.assertEqual(audit_module.image_roles(leak, path), {'gallery': 1, 'hero': 1, 'links': 1})
+
+    def owner_fixture(self):
+        root = MODULE.parents[1]
+        manifest = json.loads((root / audit_module.release_inventory.OWNER_MANIFEST).read_text())
+        if manifest['schemaVersion'] == 2:
+            project = copy.deepcopy(next(project for project in manifest['projects'] if project['projectSlug'] == audit_module.release_inventory.OWNER_PROJECT))
+            project['conversion']['crop'] = False
+            manifest = {**{key: manifest[key] for key in ['protectedPreviewOnly', 'baselineCommit', 'provenance']},
+                        'schemaVersion': 1, 'scope': 'ecasa_owner_cover_only', **project}
+        manual = json.loads((root / audit_module.release_inventory.MANUAL_MANIFEST).read_text())
+        for kind, asset in [('original', manifest['original']), ('selected', manifest['selected'])]:
+            payload = ('owner cover independent fixture:' + asset['localPath']).encode()
+            asset['bytes'] = len(payload);asset['sha256'] = hashlib.sha256(payload).hexdigest()
+            file = self.source / asset['localPath'].lstrip('/');file.parent.mkdir(parents=True, exist_ok=True);file.write_bytes(payload)
+            if kind == 'selected':
+                target = self.preview / asset['localPath'].lstrip('/');target.parent.mkdir(parents=True, exist_ok=True);target.write_bytes(payload)
+        (self.source / audit_module.release_inventory.OWNER_MANIFEST).write_text(json.dumps(manifest))
+        (self.source / 'scripts').mkdir(exist_ok=True)
+        (self.source / audit_module.release_inventory.OWNER_MODULE).write_text('// independent owner cover consumer')
+        return manifest, manual
+
+    def owner_errors(self, manual):
+        errors = []
+        result = audit_module.owner_images(self.source, self.public, self.preview, manual,
+            lambda condition, issue: errors.append(issue) if not condition else None)
+        return result, errors
+
+    def test_owner_audit_keeps_png_private_and_publishes_only_exact_selected_webp(self):
+        _, manual = self.owner_fixture()
+        (_, sources, published), errors = self.owner_errors(manual)
+        self.assertEqual(errors, [])
+        self.assertEqual((len(sources), len(published)), (2, 1))
+        self.assertTrue(all(item['kind'] == 'selected' for item in published.values()))
+
+    def test_owner_audit_rejects_private_png_or_sidecar_reference_in_public_output(self):
+        manifest, manual = self.owner_fixture()
+        source = self.source / manifest['original']['localPath'].lstrip('/')
+        for output in [self.public, self.preview]:
+            target = output / manifest['original']['localPath'].lstrip('/');target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes(source.read_bytes())
+        (self.preview / 'edificio-bezanilla.html').write_text('<img src="/' + audit_module.release_inventory.OWNER_MANIFEST + '">')
+        errors = self.owner_errors(manual)[1]
+        self.assertTrue(any('leaked an original' in error for error in errors))
+        self.assertTrue(any('Private owner cover reference' in error for error in errors))
+
+    def test_owner_catalogue_and_gallery_checks_preserve_every_other_project_and_commercial_value(self):
+        manifest, _ = self.owner_fixture()
+        catalogue = json.loads((self.public / 'data/proyectos.json').read_text())
+        for project in catalogue:
+            project['precioDesdeUF'] = 1234
+            project['etapasComerciales'] = [{'slug': project['slug'], 'precioDesdeUF': 4321}]
+        result = audit_module.owner_catalogue(catalogue, manifest)
+        restored = copy.deepcopy(result)
+        for before, after in zip(catalogue, restored):
+            if before['slug'] == 'edificio-bezanilla':
+                after['imagenPrincipal'] = before['imagenPrincipal'];after.pop('imagenAlt', None)
+        self.assertEqual(restored, catalogue)
+        gallery = '<section id="galeria"><img src="/existing.webp"></section>'
+        self.assertEqual(audit_module.gallery_fragments('<img src="/old-cover.webp">'+gallery),
+                         audit_module.gallery_fragments('<img src="/new-cover.webp">'+gallery))
+        old = '<body><img src="/old.webp" class="hero-image"><dl><dd>UF 1234</dd></dl>'+gallery+'</body>'
+        new = old.replace('/old.webp', '/new.webp').replace('hero-image', 'hero-image ecasa-owner-hero')
+        self.assertEqual(audit_module.commercial_body(old, True), audit_module.commercial_body(new, True))
+        self.assertNotEqual(audit_module.commercial_body(old, True), audit_module.commercial_body(new.replace('UF 1234', 'UF 9999'), True))
+
+    def five_owner_fixture(self):
+        root = MODULE.parents[1]
+        manifest = json.loads((root / audit_module.release_inventory.OWNER_MANIFEST).read_text())
+        manual = json.loads((root / audit_module.release_inventory.MANUAL_MANIFEST).read_text())
+        if manifest['schemaVersion'] == 1:
+            projects = []
+            for slug in sorted(audit_module.release_inventory.OWNER_PROJECTS):
+                project = {key: copy.deepcopy(manifest[key]) for key in ['original', 'selected', 'conversion']}
+                project['projectSlug'] = slug;project['conversion']['crop'] = None
+                for kind in ['original', 'selected']:
+                    project[kind]['localPath'] = project[kind]['localPath'].replace('/edificio-bezanilla/', '/' + slug + '/')
+                previous = next(row for row in manual['projects'] if row['slug'] == slug)
+                choice = next(row for row in previous['images'] if row['localPath'] == previous['previewCover'])
+                project['supersededCoverOnly'] = None if slug == 'espacio-victoria' else {'localPath': choice['localPath'], 'sha256': choice['sha256']}
+                projects.append(project)
+            manifest = {'schemaVersion': 2, 'scope': 'ecasa_owner_covers_only', 'protectedPreviewOnly': True,
+                        'baselineCommit': manifest['baselineCommit'], 'provenance': 'user_provided', 'projects': projects}
+        for project in manifest['projects']:
+            for kind, asset in [('original', project['original']), ('selected', project['selected'])]:
+                payload = ('five owner fixture:' + asset['localPath']).encode()
+                asset['bytes'] = len(payload);asset['sha256'] = hashlib.sha256(payload).hexdigest()
+                file = self.source / asset['localPath'].lstrip('/');file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(payload)
+                if kind == 'selected':
+                    target = self.preview / asset['localPath'].lstrip('/');target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(payload)
+        (self.source / audit_module.release_inventory.OWNER_MANIFEST).write_text(json.dumps(manifest))
+        (self.source / 'scripts').mkdir(exist_ok=True)
+        (self.source / audit_module.release_inventory.OWNER_MODULE).write_text('// independent five-owner fixture')
+        return manifest, manual
+
+    def test_five_owner_audit_rejects_a_single_raw_or_selected_asset_in_public_profile(self):
+        manifest, manual = self.five_owner_fixture()
+        (_, sources, published), errors = self.owner_errors(manual)
+        self.assertEqual(errors, []);self.assertEqual((len(sources),len(published)),(10,5))
+        project = manifest['projects'][-1]
+        for kind in ['original','selected']:
+            path = project[kind]['localPath'].lstrip('/')
+            target = self.public / path;target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes((self.source / path).read_bytes())
+        self.assertTrue(any('leaked an original' in error for error in self.owner_errors(manual)[1]))
+
+    def test_five_owner_catalogue_changes_only_the_named_cover_fields(self):
+        manifest, _ = self.five_owner_fixture()
+        catalogue = json.loads((self.public / 'data/proyectos.json').read_text())
+        result = audit_module.owner_catalogue(catalogue, manifest)
+        selected = {project['projectSlug']: project for project in manifest['projects']}
+        self.assertEqual(len(selected), 5)
+        for before, after in zip(catalogue,result):
+            if before['slug'] not in selected: self.assertEqual(before,after)
+            else:
+                restored = copy.deepcopy(after);restored['imagenPrincipal'] = before['imagenPrincipal'];restored.pop('imagenAlt',None)
+                self.assertEqual(restored,before)
+        espacio = next(project for project in manifest['projects'] if project['projectSlug']=='espacio-victoria')
+        self.assertIsNone(espacio['supersededCoverOnly'])
 
 
 if __name__ == '__main__':

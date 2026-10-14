@@ -2,8 +2,9 @@ import { projectSentoFile } from './sento-preservation.mjs';
 import test from 'node:test';
 import { readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,14 +16,18 @@ const INTEGRATION = 'codex/integracion-financiera-sollahms';
 const TOUR_REVIEW = 'codex/recorridos-validos-144';
 const AUTOMATIC_EMBEDS = 'codex/mapas-recorridos-auto';
 const MAP_CLEANUP = 'codex/limpieza-mapas-fichas';
+const ECASA = 'codex/ecasa-cartera-definitiva';
+const ECASA_INDEPENDENT = 'codex/ecasa-publicacion-independiente';
 const APPROVED_PORTFOLIO = 'e7afe04';
-const read = path => projectSentoFile(path, readPreLeonFile(path));
-const json = path => JSON.parse(projectSentoFile(path, read(path)));
-const git = (...args) => execFileSync('git', args, { cwd: ROOT });
-const configuration = JSON.parse(projectSentoFile('vercel.json',readPreLeonFile('vercel.json')));
+const CONCURRENT_MAIN = 'f66fbec15f1f4b30be3a70e94644a29212402a63';
+const expectedGates={...JSON.parse(execFileSync('git',['show','a99d1c8d077698f78d9824ca96d47cb19e515dcd:vercel.json'],{cwd:ROOT})).git.deploymentEnabled,...JSON.parse(execFileSync('git',['show',CONCURRENT_MAIN+':vercel.json'],{cwd:ROOT})).git.deploymentEnabled};
+const read = path => readFileSync(resolve(ROOT, path));
+const json = path => JSON.parse(read(path));
+const git = (...args) => execFileSync('git', args, { cwd: ROOT, maxBuffer: 16 * 1024 * 1024 });
+const configuration = json('vercel.json');
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, 'codex/norte-verde-hero-merge': false },
+  assert.deepEqual(config.git?.deploymentEnabled, expectedGates,
     'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
@@ -37,16 +42,19 @@ function assertSecurityHeaders(config) {
 
 test('manual deployment gates reject missing integration protection, enabled branches and overlapping permissive patterns', () => {
   assertManualDeploymentGates(configuration);
+  for (const branch of Object.keys(expectedGates)) {const missing=structuredClone(configuration);delete missing.git.deploymentEnabled[branch];assert.throws(()=>assertManualDeploymentGates(missing));const enabled=structuredClone(configuration);enabled.git.deploymentEnabled[branch]=true;assert.throws(()=>assertManualDeploymentGates(enabled));}
   for (const mutation of [
     config => { delete config.git.deploymentEnabled[INTEGRATION]; },
+    config => { delete config.git.deploymentEnabled[ECASA_INDEPENDENT]; },
+    config => { config.git.deploymentEnabled[ECASA_INDEPENDENT] = true; },
     config => { delete config.git.deploymentEnabled[TOUR_REVIEW]; },
     config => { config.git.deploymentEnabled[TOUR_REVIEW] = true; },
     config => { delete config.git.deploymentEnabled[AUTOMATIC_EMBEDS]; },
     config => { config.git.deploymentEnabled[AUTOMATIC_EMBEDS] = true; },
     config => { delete config.git.deploymentEnabled[MAP_CLEANUP]; },
     config => { config.git.deploymentEnabled[MAP_CLEANUP] = true; },
-    config => { delete config.git.deploymentEnabled['codex/norte-verde-hero-merge']; },
-    config => { config.git.deploymentEnabled['codex/norte-verde-hero-merge'] = true; },
+    config => { delete config.git.deploymentEnabled[ECASA]; },
+    config => { config.git.deploymentEnabled[ECASA] = true; },
     config => { config.git.deploymentEnabled.main = true; },
     config => { config.git.deploymentEnabled[INTEGRATION] = true; },
     config => { config.git.deploymentEnabled['*'] = true; },
@@ -75,15 +83,16 @@ test('shared security headers reject missing and weakened framing, MIME, referre
   assert.ok(policy);
 });
 
-test('all 144 catalogue objects and 16 Ingevec identities remain byte-identical to the approved portfolio', () => {
-  const catalogue = JSON.parse(projectSentoFile('data/proyectos.json',readPreLeonFile('data/proyectos.json')));
+test('all 118 non-Ecasa catalogue objects and 16 Ingevec identities retain the approved portfolio', () => {
+  const catalogue = json('data/proyectos.json');
   assertBrochureCatalogue(catalogue);
-  assert.equal(catalogue.length, 144);
+  assert.equal(catalogue.length, 133);
   assert.equal(catalogue.filter(project => project.inmobiliaria === 'Ingevec').length, 16);
-  assert.deepEqual(projectSentoFile('data/proyectos.json',readPreLeonFile('data/proyectos.json')), git('show', APPROVED_PORTFOLIO + ':data/proyectos.json'));
+  assert.deepEqual(catalogue.filter(p=>p.inmobiliaria !== 'Ecasa'),
+    JSON.parse(git('show', CONCURRENT_MAIN + ':data/proyectos.json')).filter(p=>p.inmobiliaria !== 'Ecasa'));
   assert.deepEqual(read('data/hipotecario.json'), git('show', APPROVED_PORTFOLIO + ':data/hipotecario.json'));
   const changed = structuredClone(catalogue);
-  changed.find(project => project.inmobiliaria !== 'Ingevec').nombre += ' changed';
+  changed.find(project => project.inmobiliaria !== 'Ingevec' && project.inmobiliaria !== 'Ecasa').nombre += ' changed';
   assert.throws(() => assertBrochureCatalogue(changed));
   const resurrected = structuredClone(catalogue);
   resurrected[0].slug = BROCHURE_REMOVED_SLUGS[0];
@@ -113,15 +122,28 @@ test('contract and source controls validate the exact 165-resource Ingevec manif
 test('Git CI never publishes private originals or secretly imports the 165 Ingevec derivatives', () => {
   const paths = git('ls-files', '-z').toString().split('\0').filter(Boolean);
   assert.equal(paths.some(path => path.startsWith('assets/propiedades/ingevec-preview/')), false);
-  assert.equal(existsSync(resolve(ROOT, 'assets/propiedades/ingevec-preview')), false,
-    'This check is specifically for an ordinary Git checkout, not the private release package');
+  const ecasaPaths=paths.filter(path=>/^assets\/propiedades\/ecasa-(?:preview|official-review|owner-review)\//.test(path));
+  if(existsSync(resolve(ROOT,'data/ecasa-publication-candidate.json'))) {
+    const candidate=json('data/ecasa-publication-candidate.json');
+    const approved=candidate.selectedResources.map(row=>row.localPath.slice(1));
+    assert.equal(candidate.scope,'ecasa_independent_public_candidate');
+    assert.deepEqual(candidate.actionAuthorization,{production:false,mergeMain:false});
+    assert.equal(approved.length,92);
+    assert.equal(new Set(approved).size,92);
+    assert.deepEqual(ecasaPaths.toSorted(),approved.toSorted(),'Only the exact ninety-two approved Ecasa derivatives may enter Git');
+    for(const row of candidate.selectedResources) {
+      assert.equal(createHash('sha256').update(git('show',':'+row.localPath.slice(1))).digest('hex'),row.sha256,
+        'Approved Ecasa Git blob changed: '+row.localPath);
+      assert.ok(!row.localPath.includes('/originals/')&&row.localPath.endsWith('.webp'));
+    }
+  } else assert.equal(ecasaPaths.length,0,'Historical protected Ecasa inputs remain outside Git');
   assert.equal(paths.some(path => /\.pdf$/i.test(path)), false);
   assert.equal(paths.some(path => /(?:^|\/)(?:brochure-candidates|contratos?|private-input)(?:\/|$)/i.test(path)), false);
 });
 
-test('the 141 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
-  const catalogue = JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
-  const pages = git('ls-files', '-z').toString().split('\0').filter(path => /^[^/]+\.html$/.test(path));
+test('the 133 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
+  const catalogue = json('data/proyectos.json');
+  const pages = readdirSync(ROOT).filter(path => /^[^/]+\.html$/.test(path));
   assert.deepEqual(new Set(pages), new Set([...BROCHURE_PUBLIC_PAGES, ...catalogue.map(project => project.slug + '.html')]));
   const manifests = ['data/brochures-aj-urbana.json', 'data/brochures-ingevec.json'].map(json);
   const bySlug = new Map(manifests.flatMap(manifest => manifest.projects.map(project => [project.slug, project])));
@@ -139,7 +161,10 @@ test('the 141 fiches retain routes, contextual actions and approved image/plan r
 function assertIncompleteBuildRejected(environment, partial) {
   const fixture = mkdtempSync(join(tmpdir(), 'sollahms-incomplete-git-ci-'));
   try {
-    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
+    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs',
+      'scripts/ecasa-image-quality.mjs','scripts/public-fiche-copy.mjs','data/public-caption-policy.json',
+      'data/ecasa-image-quality.json','data/fichas-proyectos.json','data/fuentes-imagenes.json',
+      'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
       const target = resolve(fixture, path);
       mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, projectSentoFile(path, readPreLeonFile(path)));
     }
@@ -148,7 +173,7 @@ function assertIncompleteBuildRejected(environment, partial) {
       const target = resolve(fixture, asset.localPath.slice(1));
       mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, 'synthetic CI bytes; never a publishable image');
     }
-    const env = { ...process.env, VERCEL_ENV: environment, VERCEL_GIT_COMMIT_REF: INTEGRATION, SOLLAHMS_BROCHURE_PROFILE: 'public-web' };
+    const env = { ...process.env, VERCEL_ENV: environment, VERCEL_GIT_COMMIT_REF: INTEGRATION };
     const result = spawnSync(process.execPath, [resolve(fixture, 'scripts/package-vercel.mjs')], { cwd: fixture, env, encoding: 'utf8', timeout: 15_000 });
     assert.equal(result.error, undefined);
     assert.notEqual(result.status, 0, 'A missing private batch must never be declared a successful public build');

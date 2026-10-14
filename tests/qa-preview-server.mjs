@@ -14,23 +14,28 @@ const sourceRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const rootIndex = process.argv.indexOf('--root');
 const root = resolve(sourceRoot, rootIndex >= 0 ? (process.argv[rootIndex + 1] || '.') : '.');
 const port = Number(process.env.SOLLAHMS_QA_PORT || 8897);
+const deploymentConfig = JSON.parse(await readFile(resolve(sourceRoot, 'vercel.json')));
+const permanentRedirects = new Map((deploymentConfig.redirects || []).filter(rule => rule.permanent)
+  .map(rule => [rule.source, rule.destination]));
 const context = new AsyncLocalStorage();
 const scenarios = new Set(['success', 'availability_unavailable', 'booking_conflict', 'upstream_error', 'preview_read_only', 'uf_unavailable', 'uf_recovery']);
 const counters = { requests: 0, availability: 0, booking: 0, contact: 0, uf: 0, simulatedProvider: 0, externalRequests: 0 };
 const journal = [];
 let ufRecoveryRemaining = 0;
-// A QA-only fixture verified against SII on this exact day. Never carry its
-// numerical value into another day and label it as a current official quote.
-const UF_FIXTURE_DATE = '2026-10-11';
+// QA-only dated fixtures transcribed from SII's published October table on
+// 2026-10-12. Each day has its own official value; unknown days fail closed.
+// https://www.sii.cl/valores_y_fechas/uf/uf2026.htm
+const UF_FIXTURES = new Map([['2026-10-12', 41146.83], ['2026-10-13', 41152.13]]);
+const UF_FIXTURE_VERIFIED_ON = '2026-10-12';
 const ufService = {
   async resolve() {
     const date = chileDate(new Date());
     const scenario = context.getStore() || 'success';
-    if (date !== UF_FIXTURE_DATE || scenario === 'uf_unavailable'
+    if (!UF_FIXTURES.has(date) || scenario === 'uf_unavailable'
       || (scenario === 'uf_recovery' && ufRecoveryRemaining-- > 0)) throw new Error('Simulated unavailable UF');
-    return { date, valueClp: 41141.53, source: {
+    return { date, valueClp: UF_FIXTURES.get(date), source: {
       url: 'https://www.sii.cl/valores_y_fechas/uf/uf2026.htm',
-      title: 'Servicio de Impuestos Internos — valores UF 2026', verifiedAt: UF_FIXTURE_DATE,
+      title: 'Servicio de Impuestos Internos — valores UF 2026', verifiedAt: UF_FIXTURE_VERIFIED_ON,
     } };
   },
 };
@@ -102,6 +107,11 @@ const server = createServer(async (req, res) => {
       return res.end(Buffer.from(await result.arrayBuffer()));
     }
     if (!['GET', 'HEAD'].includes(req.method)) return reply(res, 405, 'Método no permitido.');
+    if (permanentRedirects.has(url.pathname)) {
+      const destination = new URL(permanentRedirects.get(url.pathname), url.origin);
+      destination.search = url.search;
+      return reply(res, 308, '', undefined, { Location: destination.pathname + destination.search + destination.hash });
+    }
     let path = decodeURIComponent(url.pathname);
     if (path === '/') path = '/index.html';
     const publicPath = /^\/[a-z0-9-]+\.html$/.test(path) || path.startsWith('/assets/') || ['/data/hipotecario.json', '/data/proyectos.json', '/data/fichas-proyectos.json', '/robots.txt', '/sitemap.xml'].includes(path);

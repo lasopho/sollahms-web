@@ -9,17 +9,23 @@ import argparse
 import gzip
 import hashlib
 import io
+import importlib.util
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tarfile
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-MEDIA_FOLDERS = ('aj-urbana-preview', 'ingevec-preview')
-MANIFESTS = ('brochures-aj-urbana.json', 'brochures-ingevec.json')
+spec = importlib.util.spec_from_file_location('review_release_inventory', ROOT / 'scripts/prepare-release.py')
+release = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(release)
+MEDIA_FOLDERS = ('aj-urbana-preview', 'ingevec-preview', 'ecasa-preview')
+MANIFESTS = ('brochures-aj-urbana.json', 'brochures-ingevec.json', 'brochures-ecasa.json')
+VERIFICATION_TOOLS = ('tests/qa-ecasa.mjs', 'tests/qa-ecasa-remote.mjs', 'tests/qa-preview-server.mjs')
 PUBLIC_EXTENSIONS = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.webp',
                      '.png', '.jpg', '.jpeg', '.ico', '.woff', '.woff2', '.txt', '.xml'}
 APPROVED_PROJECTS = {
@@ -30,9 +36,44 @@ APPROVED_PROJECTS = {
         'matta-016', 'nueva-esmeralda', 'vicuna-mackenna-7589',
         'abdon-cifuentes', 'don-ignacio', 'terrazzo', 'vima',
         'los-alerces', 'valle-los-ingleses-iii'},
+    'brochures-ecasa.json': {'lomas-de-puyai', 'ferroparque', 'edificio-bezanilla',
+        'endemico', 'terratolten', 'wayra',
+        'enlace-mackenna', 'espacio-victoria', 'lamara', 'cumbres-de-penuelas',
+        'aires-la-florida-2', 'conecta-huechuraba', 'urban-la-florida',
+        'alto-san-joaquin', 'nucleo-costanera'},
 }
+ECASA_LEGACY_TARGETS = {
+    'nucleo-costanera-2': ('nucleo-costanera', 2),
+    'ferroparque-2': ('ferroparque', 2),
+    'terratolten-1': ('terratolten', 1), 'terratolten-2': ('terratolten', 2),
+    'terratolten-3': ('terratolten', 3), 'lomas-de-puyai-3': ('lomas-de-puyai', 3),
+    'alto-san-joaquin-2': ('alto-san-joaquin', 2), 'alto-san-joaquin-3': ('alto-san-joaquin', 3),
+}
+ECASA_COMMERCIAL_PROJECTS = {slug: slug for slug in APPROVED_PROJECTS['brochures-ecasa.json'] if slug != 'terratolten'}
+ECASA_COMMERCIAL_PROJECTS.update({slug: target[0] for slug, target in ECASA_LEGACY_TARGETS.items()})
 REMOVED_PROJECTS = {'brasil', 'vespucio-capital', 'edificio-serrano-capital',
-                    'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz'}
+                    'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz',
+                    'bosquemar', 'altos-del-wayra', 'robles-del-aconcagua', 'el-real',
+                    'edificio-ha-strip-center'}
+# Keep the 121 non-Ecasa catalogue objects from main f1e9bf1 byte-equivalent
+# as canonical values, and preserve the complete previously approved manifests.
+NON_ECASA_SHA256 = '2c4b8aec0bd36c289aa51e4303d80344c0796f917d1ecff93b33f56736f07dbf'
+PRESERVED_MANIFESTS = {
+    'brochures-aj-urbana.json': 'b23e5730201768f4be2d83eabdcfdbfa648d8b5906df188e7ae8de7ca42ac42c',
+    'brochures-ingevec.json': 'ce57d1e608aae4e11edd9c224fb7593c7aa2ae0604eddf5ba4f279be75a08c03',
+}
+ECASA_REVIEW_SHA256 = 'fd37681006e965e83241dccd88b7b532dba5411733219dbdc152aef1e4f5017c'
+ECASA_MEDIA_SHA256 = 'adc94ac87d8d7d6068fc2fd46117bd5a1d600307fd938d15767a391a519345ab'
+QUALITY_ORIGINALS = {
+    'data/fichas-proyectos.json': '3f23035e8ef82d20970d1ed10dc0606e3c91b81f232d4119c3599039bc33a235',
+    'data/fuentes-imagenes.json': 'c16009d0ed27e342441529f81c9e065f1a15ea9499ddf00388ff75681152c49b',
+}
+VISUAL_EXCLUDED = {
+    '/assets/propiedades/ecasa-preview/enlace-mackenna/imagen-01-p01.webp',
+    '/assets/propiedades/ecasa-preview/ferroparque/imagen-04-p01.webp',
+    '/assets/propiedades/ecasa-preview/terratolten-1/imagen-03-p01.webp',
+    '/assets/propiedades/ecasa-preview/terratolten-1/imagen-04-p01.webp',
+}
 PUBLIC_PAGES = {'404.html', 'agenda-asesoria.html', 'comparador-hipotecario.html',
                 'contacto.html', 'index.html', 'privacidad.html', 'proyectos.html'}
 RETIRED_ASSETS = {
@@ -42,6 +83,17 @@ RETIRED_ASSETS = {
     'assets/propiedades/catalogo/1c8afdcef4daab70c27ecb01.webp',
     'assets/propiedades/catalogo/ae7bcf577b09a561c3359867.webp',
     'assets/propiedades/catalogo/2e0af89ee3298d9791639ae2.webp',
+    'assets/propiedades/catalogo/883af11703388c0dba211491.webp',
+    'assets/propiedades/catalogo/70413545b58983da8e24825a.webp',
+    'assets/propiedades/catalogo/5ec72b840d3cb985b609df36.webp',
+    'assets/propiedades/catalogo/cc5c4d04b4f258731931d6eb.webp',
+    'assets/propiedades/catalogo/81adaf07bdbd2fab601a093c.webp',
+    'assets/propiedades/catalogo/da691207ca6c24621740a2e4.webp',
+    'assets/propiedades/catalogo/204406fdd4ac3e04f45dcd19.webp',
+    'assets/propiedades/catalogo/9521654e9d91c2fac363344a.webp',
+    'assets/propiedades/catalogo/22dad05519d3b294ee0d70f5.webp',
+    'assets/propiedades/catalogo/a773e94159c8ca452f77aabb.webp',
+    'assets/propiedades/catalogo/a35bc3797ca9f594152f5de1.webp',
 }
 
 
@@ -49,46 +101,121 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def verification_tools(root, commit):
+    inventory = []
+    for name in VERIFICATION_TOOLS:
+        path = root / name
+        assert path.is_file() and not path.is_symlink(), 'Missing or symbolic verification tool: ' + name
+        data = path.read_bytes()
+        committed = subprocess.check_output(['git', '-C', str(root), 'show', commit + ':' + name])
+        assert data == committed, 'Verification tool differs from prepared commit: ' + name
+        inventory.append({'file': name, 'size': len(data), 'sha256': sha(data)})
+    return inventory
+
+
+def assert_legacy_redirects(root, page_texts):
+    expected = {'/' + slug + suffix: '/' + target + '.html#etapa-' + str(stage)
+                for slug, (target, stage) in ECASA_LEGACY_TARGETS.items() for suffix in ['', '.html']}
+    selected = {}
+    rules = json.loads((root / 'vercel.json').read_text()).get('redirects', [])
+    assert len(rules) == 16, 'Only the sixteen authorized legacy path rules may change routing'
+    for rule in rules:
+        source = rule.get('source')
+        assert source in expected, 'Unrelated public route redirect'
+        assert source not in selected, 'Duplicate legacy route redirect'
+        assert not rule.get('has') and not rule.get('missing'), 'Legacy route redirect must be unconditional'
+        assert (rule.get('permanent') is True and 'statusCode' not in rule) or ('permanent' not in rule and rule.get('statusCode') in {301, 308}), 'Legacy route redirect must be unambiguously permanent'
+        assert rule.get('destination') == expected[source], 'Legacy route redirect has an unrelated target or wrong stage'
+        selected[source] = rule['destination']
+    assert selected == expected, 'All eight legacy routes require bare and .html permanent redirects'
+    for slug, (target, stage) in ECASA_LEGACY_TARGETS.items():
+        assert slug + '.html' not in page_texts, 'A legacy route still has a duplicate HTML fiche'
+        assert re.search(r'\bid=["\']etapa-' + str(stage) + r'["\']', page_texts[target + '.html']), 'Legacy redirect stage anchor is absent'
+    return selected
+
+
 def selected_source_files(root):
+    official_manifest = json.loads((root / release.OFFICIAL_MANIFEST).read_text())
+    official_sources, _ = release.official_manifest_inventory(official_manifest)
+    owner_manifest = json.loads((root / release.OWNER_MANIFEST).read_text())
+    assert owner_manifest.get('schemaVersion') == 2, 'This real review requires all five owner covers; schema v1 is reserved for legacy fixtures'
+    owner_sources, _ = release.owner_manifest_inventory(owner_manifest,
+        json.loads((root / release.MANUAL_MANIFEST).read_text()))
+    assert sha((root / release.BASE_QUALITY_MANIFEST).read_bytes()) == release.BASE_QUALITY_SHA256, 'Frozen base quality evidence changed'
+    release.manual_quality_selection(json.loads((root / release.MANUAL_MANIFEST).read_text()),
+        json.loads((root / release.BASE_QUALITY_MANIFEST).read_text()), official_manifest)
+    for name, digest in QUALITY_ORIGINALS.items():
+        assert sha((root / name).read_bytes()) == digest, 'Original research/commercial image evidence changed: ' + name
+    quality = json.loads((root / 'data/ecasa-image-quality.json').read_text())
+    decisions = [image for project in quality['projects'] for image in project['images']]
+    assert len(decisions) == 118 and sum(image['decision'] == 'keep' for image in decisions) == 114
+    assert {image['localPath'] for image in decisions if image['decision'] == 'exclude'} == VISUAL_EXCLUDED
+    assert not any(image.get('coverOnly') for image in decisions), 'Unexpected cover-only quality exception'
     catalogue = json.loads((root / 'data/proyectos.json').read_text())
     slugs = {project['slug'] for project in catalogue}
-    assert len(catalogue) == 144 and len(slugs) == 144, 'The exact final catalogue must contain 144 projects'
+    assert len(catalogue) == 136 and len(slugs) == 136, 'The exact final catalogue must contain 136 projects'
     assert APPROVED_PROJECTS['brochures-ingevec.json'] <= slugs and not REMOVED_PROJECTS & slugs
     assert all(p['inmobiliaria'] == 'Ingevec' for p in catalogue if p['slug'] in APPROVED_PROJECTS['brochures-ingevec.json'])
-    untouched = [p for p in catalogue if p['slug'] not in APPROVED_PROJECTS['brochures-ingevec.json']]
-    # Python's canonical encoder retains .0 on float values; its independent
-    # fingerprint is pinned to the same 128 objects in the approved baseline.
-    assert len(untouched) == 128 and sha(json.dumps(untouched, ensure_ascii=False, sort_keys=True,
-        separators=(',', ':')).encode()) == '984a50766cd3ad57ae65da72ac4d69f37bbfc262feedbf20507ade41fff951a6', 'Other developers changed'
+    assert {p['slug'] for p in catalogue if p['inmobiliaria'].lower() == 'ecasa'} == APPROVED_PROJECTS['brochures-ecasa.json'], 'The 15 Ecasa development identities must remain exact'
+    assert not ECASA_LEGACY_TARGETS.keys() & slugs, 'A commercial stage remains a duplicate catalogue project'
+    untouched = [p for p in catalogue if p['inmobiliaria'].lower() != 'ecasa']
+    assert len(untouched) == 121 and sha(json.dumps(untouched, ensure_ascii=False, sort_keys=True,
+        separators=(',', ':')).encode()) == NON_ECASA_SHA256, 'Other developers changed'
     pages = {p.name for p in root.glob('*.html')}
     assert pages <= PUBLIC_PAGES | {slug + '.html' for slug in slugs}, 'Unapproved or retired public route'
     assert {slug + '.html' for slug in slugs} <= pages, 'Missing approved public route'
-    page_text = '\n'.join((root / name).read_text() for name in pages)
+    page_texts = {name: (root / name).read_text() for name in pages}
+    assert_legacy_redirects(root, page_texts)
+    page_text = '\n'.join(page_texts.values())
     catalogue_text = (root / 'data/proyectos.json').read_text()
     retired_exclusive = {path for path in RETIRED_ASSETS
                          if '/' + path not in page_text and '/' + path not in catalogue_text}
     media = {}
-    model_count = 0
-    for name in MANIFESTS:
+    preserved_model_count = 0
+    preserved_media_count = 0
+    for name, folder in zip(MANIFESTS, MEDIA_FOLDERS):
+        if name in PRESERVED_MANIFESTS:
+            assert sha((root / 'data' / name).read_bytes()) == PRESERVED_MANIFESTS[name], 'Previously approved brochure evidence changed'
+        else:
+            assert sha((root / 'data' / name).read_bytes()) == ECASA_REVIEW_SHA256, 'Final Ecasa documentary review changed'
         manifest = json.loads((root / 'data' / name).read_text())
         assert len(manifest['projects']) == len(APPROVED_PROJECTS[name])
         assert {record['slug'] for record in manifest['projects']} == APPROVED_PROJECTS[name], 'Unapproved brochure project'
+        if name == 'brochures-ecasa.json':
+            commercial = manifest.get('commercialSources', [])
+            assert manifest.get('schemaVersion') == 2 and len(commercial) == 22, 'The internal Ecasa inventory must preserve 22 commercial sources'
+            assert {record['slug']: record['projectSlug'] for record in commercial} == ECASA_COMMERCIAL_PROJECTS, 'Ecasa commercial stage identities changed'
         for record in manifest['projects']:
-            folder = 'aj-urbana-preview' if name == 'brochures-aj-urbana.json' else 'ingevec-preview'
-            prefix = f'assets/propiedades/{folder}/{record["slug"]}/'
-            model_count += len(record['models'])
+            if name == 'brochures-ecasa.json':
+                assert len(record.get('commercialSourceSlugs', [])) == len(set(record.get('commercialSourceSlugs', []))) and set(record.get('commercialSourceSlugs', [])) == {slug for slug, project in ECASA_COMMERCIAL_PROJECTS.items() if project == record['slug']}, 'Ecasa matrix lost or duplicated a commercial stage'
+            if name in PRESERVED_MANIFESTS:
+                preserved_model_count += len(record['models'])
+                preserved_media_count += len(record['images']) + len(record['models'])
             for asset in [*record['images'], *(m['plan'] for m in record['models'])]:
+                origin = asset.get('originCommercialSlug') if name == 'brochures-ecasa.json' else record['slug']
+                if name == 'brochures-ecasa.json':
+                    assert ECASA_COMMERCIAL_PROJECTS.get(origin) == record['slug'], 'Ecasa media transferred to another development'
+                prefix = f'assets/propiedades/{folder}/{origin}/'
                 path = asset['localPath'].lstrip('/')
                 assert path.startswith(prefix) and path.count('/') == prefix.count('/'), 'Media belongs to another project or directory'
                 assert path not in media, 'Duplicate selected media destination'
                 media[path] = asset['sha256']
-    assert model_count == 142, 'The complete selected batch must contain 142 plans'
-    assert len(media) == 269, 'The complete selected batch must contain 269 approved brochure resources'
-    files = set(media)
+    assert preserved_model_count == 142, 'The previously approved AJ/Ingevec batch must preserve 142 plans'
+    assert preserved_media_count == 269, 'The previously approved AJ/Ingevec batch must preserve 269 resources'
+    ecasa_media = sorted([['/' + path, digest] for path, digest in media.items() if path.startswith('assets/propiedades/ecasa-preview/')])
+    assert len(ecasa_media) == 130 and sha(json.dumps(ecasa_media, ensure_ascii=False, separators=(',', ':')).encode()) == ECASA_MEDIA_SHA256, 'The exact 130 Ecasa resource paths and bytes must be preserved'
+    files = set(media) | set(official_sources) | set(owner_sources)
     files.update(pages)
     files.update(('vercel.json', 'robots.txt', 'sitemap.xml', 'data/proyectos.json',
                   'data/hipotecario.json', *(f'data/{name}' for name in MANIFESTS),
                   'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs'))
+    if (root / 'scripts/ecasa-publication.mjs').exists():
+        files.add('scripts/ecasa-publication.mjs')
+    files.update(('scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json'))
+    files.update(('scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json', *QUALITY_ORIGINALS))
+    files.update((release.OFFICIAL_MANIFEST, release.OFFICIAL_MODULE))
+    files.update((release.MANUAL_MANIFEST, release.MANUAL_MODULE))
+    files.update((release.OWNER_MANIFEST, release.OWNER_MODULE))
     for folder in ('api', 'lib'):
         files.update(str(p.relative_to(root)) for p in (root / folder).rglob('*')
                      if p.is_file() and p.suffix in {'.js', '.mjs'})
@@ -96,7 +223,7 @@ def selected_source_files(root):
         relative = str(path.relative_to(root))
         if not path.is_file() or '/brochure-candidates/' in relative or relative in retired_exclusive:
             continue
-        if any(f'/propiedades/{folder}/' in relative for folder in MEDIA_FOLDERS):
+        if any(f'/propiedades/{folder}/' in relative for folder in (*MEDIA_FOLDERS, release.OFFICIAL_FOLDER, release.OWNER_FOLDER)):
             continue  # Only the exact manifest above can select these assets.
         if path.suffix.lower() in PUBLIC_EXTENSIONS:
             files.add(relative)
@@ -107,6 +234,10 @@ def selected_source_files(root):
         assert '..' not in Path(relative).parts and not relative.startswith('.')
         if relative in media:
             assert sha(path.read_bytes()) == media[relative], f'Changed selected media: {relative}'
+        if relative in official_sources:
+            assert path.stat().st_size == official_sources[relative]['bytes'] and sha(path.read_bytes()) == official_sources[relative]['sha256'], f'Changed official review source: {relative}'
+        if relative in owner_sources:
+            assert path.stat().st_size == owner_sources[relative]['bytes'] and sha(path.read_bytes()) == owner_sources[relative]['sha256'], f'Changed owner cover source: {relative}'
     return sorted(files)
 
 
@@ -155,7 +286,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output-directory', required=True, type=Path)
     parser.add_argument('--node', default=shutil.which('node'))
-    parser.add_argument('--branch', default='codex/integracion-financiera-sollahms',
+    parser.add_argument('--branch', default='codex/ecasa-cartera-definitiva',
                         help='Authorized review branch recorded in the private package')
     parser.add_argument('--verify-public-web', action='store_true',
                         help='Require real contractual web coverage and compare an offline Production build; never deploys')
@@ -165,7 +296,16 @@ def main():
     assert destination != ROOT and ROOT not in destination.parents, 'Bundle must remain outside public source'
     destination.mkdir(parents=True, exist_ok=True, mode=0o700)
     os.chmod(destination, 0o700)
+    review_commit = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD']).decode().strip()
+    tool_inventory = verification_tools(ROOT, review_commit)
     files = selected_source_files(ROOT)
+    owner_manifest = json.loads((ROOT / release.OWNER_MANIFEST).read_text())
+    owner_sources, owner_published = release.owner_manifest_inventory(owner_manifest,
+        json.loads((ROOT / release.MANUAL_MANIFEST).read_text()))
+    official_sources, official_published = release.official_manifest_inventory(json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
+    manual = release.manual_quality_selection(json.loads((ROOT / release.MANUAL_MANIFEST).read_text()),
+        json.loads((ROOT / release.BASE_QUALITY_MANIFEST).read_text()),
+        json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
     inventory = [{'file': name, 'size': (ROOT / name).stat().st_size,
                   'sha256': sha((ROOT / name).read_bytes())} for name in files]
     with tempfile.TemporaryDirectory(prefix='sollahms-reproducible-review-') as temporary:
@@ -174,15 +314,24 @@ def main():
             target = stage / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / name, target)
-        env = dict(os.environ, VERCEL_ENV='preview',
-                   VERCEL_GIT_COMMIT_REF=args.branch)
-        env.pop('SOLLAHMS_BROCHURE_PROFILE', None)
+        env = {'PATH': str(Path(args.node).resolve().parent) + os.pathsep + os.defpath,
+               'VERCEL_ENV': 'preview', 'VERCEL_GIT_COMMIT_REF': args.branch}
         subprocess.run([args.node, str(stage / 'scripts/package-vercel.mjs')],
                        cwd=stage, env=env, check=True, stdout=subprocess.PIPE)
         receipt = json.loads((stage / '.vercel/brochure-build-inventory.json').read_text())
-        expected_media = sum(len(json.loads((stage / 'data' / name).read_text())['projects'][index][key])
+        source_media = sum(len(json.loads((stage / 'data' / name).read_text())['projects'][index][key])
             for name in MANIFESTS for index in range(len(APPROVED_PROJECTS[name])) for key in ['images', 'models'])
-        assert len(receipt['media']) == expected_media, 'The build omitted or added selected brochure resources'
+        assert source_media == 399, 'The original brochure sources must remain exact'
+        source_inventory = {asset['localPath']: asset['sha256']
+            for name in MANIFESTS for record in json.loads((stage / 'data' / name).read_text())['projects']
+            for asset in [*record['images'], *(model['plan'] for model in record['models'])]}
+        expected_publication = release.manual_published_media({path.lstrip('/'): value for path, value in source_inventory.items()}, manual, owner_manifest)
+        assert {asset['path'].lstrip('/'): asset['sha256'] for asset in receipt['media']} == expected_publication, 'Published media differs from the exact manual selection'
+        assert len(expected_publication) == 269 + 74 + manual['summary']['documentaryPublishedImages'] - len(release.owner_superseded_covers(owner_manifest)), 'Owner cover publication omitted another plan or brochure resource'
+        assert receipt['manualQuality']['effectiveImages'] == manual['effectiveImages'] and receipt['manualQuality']['projects'] == manual['projects'], 'Manual build receipt differs from the reviewed policy'
+        assert all(receipt['manualQuality']['summary'].get(key) == value for key, value in manual['summary'].items()), 'Manual build counts differ from the effective image inventory'
+        assert receipt['officialOriginals']['sourceAssets'] == [official_sources[name] for name in sorted(official_sources)] and receipt['officialOriginals']['publishedAssets'] == [official_published[name] for name in sorted(official_published)], 'Official transport/publication differs from the exact reviewed selection'
+        assert receipt['ownerCover']['sourceAssets'] == [owner_sources[name] for name in sorted(owner_sources)] and receipt['ownerCover']['publishedAssets'] == [owner_published[name] for name in sorted(owner_published)] and all(receipt['ownerCover'].get(key) == value for key, value in release.owner_review_fields(owner_manifest).items()), 'Owner cover transport/publication differs from the exact reviewed selection'
         preview_output = public_files(stage / 'dist')
         public_inventory = [{'file': name, 'sha256': sha(content)}
                             for name, content in preview_output.items()]
@@ -211,6 +360,30 @@ def main():
                        'sha': hashlib.sha1(fragment).hexdigest(), 'sha256': sha(fragment), 'size': len(fragment)})
     metadata = {'transport': 'native_source_archive', 'target': 'preview',
                 'branch': args.branch,
+                'reviewCommit': review_commit, 'verificationTools': tool_inventory,
+                'contentProfile': 'protected_ecasa_review',
+                'publicationAuthorized': False,
+                'integrationAuthorized': False,
+                'catalogueProjects': 136, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
+                'ecasaLegacyRoutes': 8,
+                'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
+                'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130,
+                'ecasaPublishedMedia': 74 + manual['summary']['documentaryPublishedImages'] - len(release.owner_superseded_covers(owner_manifest)),
+                'imageQuality': receipt['ecasaImageQuality'],
+                'officialSourceMedia': len(official_sources), 'officialPublishedMedia': len(official_published),
+                'ecasaGalleryImages': manual['summary']['keptImages'] + len(official_published),
+                'manualQuality': {'manifestSha256': sha((ROOT / release.MANUAL_MANIFEST).read_bytes()),
+                    'summary': manual['summary'], 'effectiveImages': manual['effectiveImages'], 'projects': manual['projects']},
+                'ownerSourceMedia': len(owner_sources), 'ownerPublishedMedia': len(owner_published),
+                'ownerCover': {'manifestSha256': sha((ROOT / release.OWNER_MANIFEST).read_bytes()),
+                    **release.owner_review_fields(owner_manifest),
+                    'sourceAssets': [owner_sources[name] for name in sorted(owner_sources)],
+                    'publishedAssets': [owner_published[name] for name in sorted(owner_published)],
+                    },
+                'officialOriginals': {'manifestSha256': sha((ROOT / release.OFFICIAL_MANIFEST).read_bytes()),
+                    'sourceAssets': [official_sources[name] for name in sorted(official_sources)],
+                    'publishedAssets': [official_published[name] for name in sorted(official_published)],
+                    'summary': receipt['officialOriginals']['summary']},
                 'contractualCoverageVerified': receipt['contractualCoverageVerified'],
                 'sourceFileCount': len(files), 'sourceBytes': sum(f['size'] for f in inventory),
                 'archive': {'privatePath': str(archive), 'sha256': sha(data), 'size': len(data)},

@@ -5,6 +5,7 @@ adjacent registered map anchor, its exact generic caution and obsolete noscript
 paragraph may disappear. Address and identity-specific cautions are retained.
 """
 import functools
+import hashlib
 from leon_main_scope import read_pre_leon
 import html
 import json
@@ -12,6 +13,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from ecasa_scope import restore_successor_data
 from sento_scope import original_data, historical_file
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,7 +41,7 @@ def baseline_bytes(path):
 @functools.lru_cache(maxsize=1)
 def catalogue_slugs():
     source = baseline_bytes('data/proyectos.json')
-    assert historical_file('data/proyectos.json', read_pre_leon('data/proyectos.json')) == source, 'Map cleanup cannot edit catalogue evidence'
+    assert restore_successor_data('data/proyectos.json', (ROOT / 'data/proyectos.json').read_bytes()) == json.loads(source), 'Map cleanup cannot edit catalogue evidence outside the Ecasa successor'
     slugs = {row['slug'] for row in json.loads(source)}
     assert len(slugs) == 144
     return slugs
@@ -88,6 +90,10 @@ def expected_cleanup_file(path):
 
 def restore_map_cleanup_asset(path, current):
     """Restore only after byte-exact verification of the tiny style/gate edits."""
+    if path in {'vercel.json','scripts/package-vercel.mjs'}:
+        from integrated_scope import verify_runtime_fixture
+        verify_runtime_fixture(path,current)
+        return baseline_bytes(path)
     if path == 'scripts/package-vercel.mjs':
         from norte_verde_hero_scope import restore_norte_verde_hero_packager
         current = restore_norte_verde_hero_packager(current)
@@ -96,13 +102,26 @@ def restore_map_cleanup_asset(path, current):
         assert current.count(gate) == 1, 'Protected hero review deployment gate must remain false'
         current = current.replace(gate, b'', 1)
     original = baseline_bytes(path)
+    if path in {'vercel.json', 'scripts/package-vercel.mjs'}:
+        reviewed = json.loads((ROOT / 'tests/ecasa-reviewed-output.json').read_text())
+        key = 'redirectConfigSha256' if path == 'vercel.json' else 'packageSha256'
+        if hashlib.sha256(current).hexdigest() == reviewed[key]:
+            if path == 'vercel.json':
+                gates = json.loads(current)['git']['deploymentEnabled']
+                assert gates['main'] is False and gates['codex/ecasa-cartera-definitiva'] is False
+            return original  # Independently pinned consolidation/route successor.
     if path == 'assets/css/project-embeds.css':
         assert original.count(MAP_MARGIN_ANCHOR) == 1 and FINAL_MAP_MARGIN not in original
         expected = original.replace(MAP_MARGIN_ANCHOR, MAP_MARGIN_ANCHOR + FINAL_MAP_MARGIN, 1)
     elif path == 'vercel.json':
+        ecasa_gate = b', "codex/ecasa-cartera-definitiva": false'
+        assert current.count(ecasa_gate) == 1, 'Ecasa requires its manual deployment gate'
+        current = current.replace(ecasa_gate, b'', 1)
         assert original.count(GATE_ANCHOR) == 1 and GATE_ADDITION not in original
         expected = original.replace(GATE_ANCHOR, GATE_ANCHOR + GATE_ADDITION, 1)
     elif path == 'scripts/package-vercel.mjs':
+        if hashlib.sha256(current).hexdigest() == '4479b31d72a92087a3c42c893c629ef05b5f535245260966447ad8a4f0ddb947':
+            return original  # Exact reviewed Ecasa packaging successor; mutations still fail below.
         anchor = b"'codex/mapas-recorridos-auto'"
         addition = b", 'codex/limpieza-mapas-fichas'"
         assert original.count(anchor) == 1 and addition not in original

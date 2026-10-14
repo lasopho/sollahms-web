@@ -36,6 +36,8 @@ def original_data(rows, path='data/proyectos.json'):
 
 @functools.lru_cache(maxsize=256)
 def historical_file(path, data):
+    from ecasa_scope import restore_context_file
+    data = restore_context_file(path, data)
     if path not in {'data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
                     'lib/project-context.mjs', 'vercel.json', 'scripts/package-vercel.mjs',
                     'scripts/norte-verde-publication.mjs'} and path.removesuffix('.html') not in SLUGS:

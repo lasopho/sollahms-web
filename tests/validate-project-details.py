@@ -24,10 +24,15 @@ class Page(HTMLParser):
         super().__init__()
         self.links, self.images, self.ids, self.embeds, self.iframes = [], [], [], [], []
         self.sections, self.embed_sections, self.iframe_sections = [], [], []
+        self.current_stage, self.stage_stack, self.iframe_stages = None, [], []
         self.headings = 0
         self.feed(text)
     def handle_starttag(self, tag, pairs):
         attrs = dict(pairs)
+        previous_stage = self.current_stage
+        self.current_stage = attrs.get('data-commercial-stage', self.current_stage)
+        if tag not in {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}:
+            self.stage_stack.append((tag, previous_stage))
         if tag == 'section':
             self.sections.append(attrs.get('id'))
         if attrs.get('id'):
@@ -44,17 +49,26 @@ class Page(HTMLParser):
         if tag == 'iframe':
             self.iframes.append(attrs)
             self.iframe_sections.append(tuple(self.sections))
+            self.iframe_stages.append(self.current_stage)
+        if tag in {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}:
+            self.current_stage = previous_stage
     def handle_endtag(self, tag):
         if tag == 'section' and self.sections:
             self.sections.pop()
+        for index in range(len(self.stage_stack)-1, -1, -1):
+            if self.stage_stack[index][0] == tag:
+                self.current_stage = self.stage_stack[index][1]
+                del self.stage_stack[index:]
+                break
 
 projects = json.loads((ROOT / 'data/proyectos.json').read_text())
 research = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
 ledger = json.loads((ROOT / 'data/registro-fichas.json').read_text())
 records = {r['slug']: r for r in research}
 slugs = {p['slug'] for p in projects}
-assert len(slugs) == len(projects) == 144, 'Catalogue has lost or duplicated projects'
-assert len([p for p in projects if p['inmobiliaria'] != 'Ingevec']) == 128
+assert len(slugs) == len(projects) == 136, 'Catalogue has lost or duplicated projects'
+assert len([p for p in projects if p['inmobiliaria'] == 'Ecasa']) == 15
+assert len([p for p in projects if p['inmobiliaria'] != 'Ecasa']) == 121
 assert len([p for p in projects if p['inmobiliaria'] == 'Ingevec']) == 16
 assert slugs == set(records) == {x['slug'] for x in ledger}, 'Incomplete inventory or research'
 assert len(research) == len(ledger) == len(projects), 'Duplicated audit records'
@@ -85,8 +99,11 @@ for project in projects:
     assert '<html' in text and 'lang="es"' in text
     assert 'name="viewport"' in text and f'https://sollahms.cl/{slug}.html' in text
     assert not re.search(r'\b(?:undefined|NaN)\b', text), f'{slug}: missing value leaks to page'
-    contact = [a for a in page.links if a.get('href') == '/contacto.html?proyecto=' + slug]
-    booking = [a for a in page.links if a.get('href') == '/agenda-asesoria.html?proyecto=' + slug]
+    multiple_stages = len(project.get('etapasComerciales', [])) > 1
+    reference_stage = next((stage for stage in project.get('etapasComerciales', []) if stage['slug'] == project.get('etapaReferenciaSlug')), None)
+    action_query = '?proyecto=' + slug + ('&etapa=' + str(reference_stage['etapa']) if multiple_stages else '')
+    contact = [a for a in page.links if a.get('href') == '/contacto.html' + action_query]
+    booking = [a for a in page.links if a.get('href') == '/agenda-asesoria.html' + action_query]
     assert contact and booking, f'{slug}: contextual consultation or booking missing'
     for link in page.links:
         href = link.get('href', '')
@@ -104,18 +121,24 @@ for project in projects:
         if img.get('src', '').startswith('/'):
             assert (SITE_ROOT / img['src'].lstrip('/')).is_file(), f'{slug}: missing local image'
     record = records[slug]
+    stage_entries = record.get('etapasComerciales', [])
+    stage_records = {stage['slug']: stage['investigacion'] for stage in stage_entries}
+    all_records = list(stage_records.values()) if stage_records else [record]
     for image in record.get('images', []):
         assert image.get('sourceUrl', '').startswith('https://'), f'{slug}: official image without provenance'
-    for tour in record.get('virtualTours', []):
+    for tour in [tour for source in all_records for tour in source.get('virtualTours', [])]:
         assert tour.get('sourceUrl', '').startswith('https://'), f'{slug}: tour without provenance'
     host_config = re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', text, re.S)
     assert host_config, f'{slug}: missing iframe host configuration'
     permitted_hosts = json.loads(host_config[1])
     assert isinstance(permitted_hosts, list) and all(isinstance(host, str) for host in permitted_hosts)
-    embedded_urls = [(entry['data-embed-src'], section) for entry, section in zip(page.embeds, page.embed_sections)] + [(entry.get('src', ''), section) for entry, section in zip(page.iframes, page.iframe_sections)]
+    embedded_urls = [(entry['data-embed-src'], section, None) for entry, section in zip(page.embeds, page.embed_sections)] + [(entry.get('src', ''), section, stage) for entry, section, stage in zip(page.iframes, page.iframe_sections, page.iframe_stages)]
     project_maps = []
     reference_maps = []
-    for embedded_url, sections in embedded_urls:
+    for embedded_url, sections, origin_stage in embedded_urls:
+        if stage_records:
+            assert origin_stage in stage_records, f'{slug}: iframe lacks its exact commercial origin'
+        source_record = stage_records.get(origin_stage, record)
         url = urlparse(embedded_url)
         assert url.scheme == 'https' and url.hostname in permitted_hosts and not url.username and not url.password, f'{slug}: unsafe or unapproved iframe host'
         if url.hostname == 'www.google.com':
@@ -131,15 +154,19 @@ for project in projects:
                 reference_maps.append(embedded_url)
             else:
                 project_maps.append(embedded_url)
-                assert all(key in record['verifiedFields'] for key in ['direccion', 'comuna', 'mapQuery']), f'{slug}: map without verified location'
-                official_address = record.get('updates', {}).get('direccion', project.get('direccion'))
+                assert all(key in source_record['verifiedFields'] for key in ['direccion', 'comuna', 'mapQuery']), f'{slug}: map without verified location'
+                official_address = source_record.get('updates', {}).get('direccion', project.get('direccion'))
                 assert query and official_address in query, f'{slug}: map diverges from official address'
             assert not re.search(r'-\d{2}\.\d+\s*,\s*-\d{2}\.\d+', query), f'{slug}: approximate coordinates'
         else:
-            backed = [tour for tour in record.get('virtualTours', []) if same_tour(embedded_url, tour['url'])]
+            backed = [tour for tour in source_record.get('virtualTours', []) if same_tour(embedded_url, tour['url'])]
             assert backed, f'{slug}: embedded tour is not backed by project research'
             assert any(tour.get('embedStatus') == 'allowed' for tour in backed), f'{slug}: tour embedding permission is not verified'
-    assert len(project_maps) <= 1, f'{slug}: duplicated map'
+    assert len(project_maps) <= max(1, len(stage_records)), f'{slug}: duplicated map'
+    if stage_records:
+        for stage_slug in stage_records:
+            own_maps = [frame for frame, origin in zip(page.iframes, page.iframe_stages) if origin == stage_slug and frame.get('data-project-embed') == 'map']
+            assert len(own_maps) <= 1, f'{slug}/{stage_slug}: duplicated stage map'
     assert len(reference_maps) <= 1, f'{slug}: duplicated contextual reference map'
     context_reference_maps += len(reference_maps)
     maps += len(project_maps)
@@ -154,7 +181,7 @@ for project in projects:
     for frame in page.iframes:
         assert frame.get('loading') == 'lazy' and frame.get('title'), f'{slug}: iframe must load automatically and have an accessible title'
         assert frame.get('referrerpolicy') == 'strict-origin-when-cross-origin', f'{slug}: iframe referrer policy changed'
-    rendered_tours = virtual_tours_to_render(record)
+    rendered_tours = [tour for source in all_records for tour in virtual_tours_to_render(source)]
     for tour in rendered_tours:
         if tour.get('embedStatus') == 'allowed':
             assert tour['url'] in published_frames, f'{slug}: automatic tour frame missing'
@@ -162,7 +189,7 @@ for project in projects:
         else:
             assert slug == 'endemico' and tour['url'] == 'https://mybakerlab.com/endemico/', f'{slug}: unreviewed provider fallback'
             assert tour['url'] in published_links and tour['url'] not in published_frames, f'{slug}: documented external alternative missing'
-    for tour in record.get('virtualTours', []):
+    for tour in [tour for source in all_records for tour in source.get('virtualTours', [])]:
         if tour not in rendered_tours:
             assert tour['url'] not in published_links, f'{slug}: unavailable or unassociated tour still published'
             assert tour['url'] not in published_frames, f'{slug}: unavailable or unassociated tour still embedded'
@@ -172,14 +199,14 @@ for project in projects:
         assert '#recorrido' not in published_links, f'{slug}: stale tour navigation'
         assert 'Recorridos y experiencias oficiales' not in text, f'{slug}: empty legacy tour block'
         assert 'Consulta la disponibilidad de un recorrido virtual' not in text, f'{slug}: absent-tour placeholder'
-    actual_matterport = any(tour.get('provider') == 'Matterport' and tour['url'] in published_frames for tour in record.get('virtualTours', []))
+    actual_matterport = any(tour.get('provider') == 'Matterport' and tour['url'] in published_frames for source in all_records for tour in source.get('virtualTours', []))
     assert ledger_by_slug[slug]['matterport'] == actual_matterport, f'{slug}: Matterport audit differs from rendered page'
-    assert ledger_by_slug[slug]['recorridosOficiales'] == len(record.get('virtualTours', [])), f'{slug}: official tour count differs from research'
+    assert ledger_by_slug[slug]['recorridosOficiales'] == sum(len(source.get('virtualTours', [])) for source in all_records), f'{slug}: official tour count differs from research'
     if slug not in FEATURED:
         assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'ubicacion'])
         assert ('recorrido' in page.ids) == bool(rendered_tours), f'{slug}: conditional tour section disagrees with registered usable tours'
         if 'precioDesdeUF' not in record.get('verifiedFields', []) or record.get('updates', {}).get('precioDesdeUF', project.get('precioDesdeUF')) is None:
-            assert 'Precio desde</span><strong><span class="pending">' in text, f'{slug}: historical price shown as current'
+            assert re.search(r'Precio desde(?: · Etapa [1-3])?</span><strong><span class="pending">', text), f'{slug}: historical price shown as current'
             assert 'Consultar precio' in text, f'{slug}: unconfirmed commercial price must invite consultation'
         for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
             assert json.loads(ld)['@type'] == 'WebPage'

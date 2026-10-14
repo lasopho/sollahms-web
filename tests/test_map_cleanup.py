@@ -1,3 +1,4 @@
+"""Historical map/tour policy fixtures, after exact current 133-project validation."""
 """Catalogue-wide narrow cleanup and regeneration regressions."""
 import copy
 from leon_main_scope import read_pre_leon

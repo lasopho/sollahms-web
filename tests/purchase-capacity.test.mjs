@@ -57,11 +57,11 @@ test('fechas siguen Chile, no el día UTC ni fechas calendario inválidas', () =
   assert.equal(chileDate('invalid'), null);
 });
 
-test('144 proyectos conservados: sólo 110 precios verificados participan; 34 quedan E', async () => {
-  const projects = restoreLeonRows(historicalSentoFinancialRows(JSON.parse(await readFile(new URL('../data/proyectos.json', import.meta.url), 'utf8'))));
-  assert.equal(projects.length, 144);
+test('133 proyectos: 92 precios vigentes en la fixture del 10 de octubre participan y 41 quedan E', async () => {
+  const projects = JSON.parse(await readFile(new URL('../data/proyectos.json', import.meta.url), 'utf8'));
+  assert.equal(projects.length, 133);
   const known = projects.filter((p) => verifiedProjectPrice(p, now));
-  assert.equal(known.length, 110);
+  assert.equal(known.length, 92);
   for (const p of projects) {
     const result = evaluateProject(p, baseInput, dataset, now);
     if (!verifiedProjectPrice(p, now)) {

@@ -3,6 +3,8 @@ import { createHash } from 'node:crypto';
 import { readFileSync, existsSync, lstatSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertEcasaMainIntegration, restoreEcasaMainRows, verifyHistoricalEcasaFiche,
+  assertIntegratedSharedSuccessor } from './ecasa-main-integration.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASELINE = 'data/leon-main-baseline.json';
@@ -18,16 +20,17 @@ export function readMainBaseline(root=ROOT) {
  const bytes=readFileSync(resolve(root,BASELINE));assert.equal(hash(bytes),BASELINE_SHA256,'Unreviewed main preservation baseline');return JSON.parse(bytes);
 }
 export { restoreLeonRows } from './brochure-publication.mjs';
-export function assertLeonMainScope(root=ROOT) {
+export function assertLeonMainScope(root=ROOT,{integration}={}) {
+ integration ??= assertEcasaMainIntegration(root);
  const b=readMainBaseline(root), manifestBytes=readFileSync(resolve(root,LEON_MANIFEST));
  assert.equal(hash(manifestBytes),'962ed948e818a6c27046657bea5835d54e1e885f88c14775b5567b1c6c3ec28d','Unreviewed León source manifest');
  const review=JSON.parse(manifestBytes);
  for(const [file,key] of [['data/proyectos.json','catalogue'],['data/fichas-proyectos.json','research'],['data/registro-fichas.json','ledger']]){
-  const rows=JSON.parse(readFileSync(resolve(root,file)));assert.equal(rows.length,b.catalogueCount-3);assert.equal(new Set(rows.map(p=>p.slug)).size,rows.length);
+  const rows=restoreEcasaMainRows(JSON.parse(readFileSync(resolve(root,file))),file,{root,integration});assert.equal(rows.length,b.catalogueCount-3);assert.equal(new Set(rows.map(p=>p.slug)).size,rows.length);
   assert.equal(fingerprint(rows.filter(p=>all.has(p.slug))),fingerprint(review[key]));assert.equal(fingerprint(rows.filter(p=>!all.has(p.slug))),b.otherRowsSha256[file],'Other main developer records changed: '+file);
  }
- for(const item of [...b.otherHtml,...b.existingAssets]){const bytes=readFileSync(resolve(root,item.path));assert.equal(bytes.length,item.bytes);assert.equal(hash(bytes),item.sha256,'Other main resource changed: '+item.path);}
- for(const [file,expected] of Object.entries(b.approvedFiles))assert.equal(hash(readFileSync(resolve(root,file))),expected,'Reviewed León integration file changed: '+file);
+ for(const item of [...b.otherHtml,...b.existingAssets]){if(verifyHistoricalEcasaFiche(item,{root,integration}))continue;const bytes=readFileSync(resolve(root,item.path));assert.equal(bytes.length,item.bytes);assert.equal(hash(bytes),item.sha256,'Other main resource changed: '+item.path);}
+ for(const [file,expected] of Object.entries(b.approvedFiles)){if(assertIntegratedSharedSuccessor(file,expected,{root,integration}))continue;assert.equal(hash(readFileSync(resolve(root,file))),expected,'Reviewed León integration file changed: '+file);}
  return { otherProjects:b.catalogueCount-8,otherHtml:b.otherHtml.length,existingAssets:b.existingAssets.length };
 }
 export function verifyLeonAssets(review,{root=ROOT}={}) {

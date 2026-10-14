@@ -1,3 +1,4 @@
+import { assertEcasaMainIntegration, restoreEcasaMainRows } from '../scripts/ecasa-main-integration.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
@@ -8,16 +9,18 @@ import { projects } from '../lib/project-context.mjs';
 const json=path=>JSON.parse(readFileSync(new URL('../'+path,import.meta.url)));
 const review=json('data/brochures-leon.json'),register=json('data/leon-plan-surfaces.json');
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
-test('León integrates five fiches while all 136 other main records and 143 other pages remain exact',()=>{
+test('León preserves five reviewed fiches within the exact 133-project Ecasa and main integration',()=>{
+ const integration=assertEcasaMainIntegration();assert.equal(integration.projects,133);assert.equal(integration.otherDeveloperProjects,118);assert.equal(integration.ecasaProjects,15);
  const result=assertLeonMainScope();assert.equal(result.otherProjects,136);assert.equal(result.otherHtml,143);assert.equal(result.existingAssets,919);
- const rows=json('data/proyectos.json');assert.equal(rows.length,141);assert.equal(Object.keys(projects).length,141);assertBrochureCatalogue(rows);
- const b=readMainBaseline();
- for(const [slug,value] of Object.entries(b.originalContexts))if(![...LEON_SLUGS,...LEON_RETIRED_SLUGS].includes(slug))assert.deepEqual(projects[slug],value);
+ const rows=json('data/proyectos.json');assert.equal(rows.length,133);assert.equal(Object.keys(projects).length,133);assertBrochureCatalogue(rows);
+ const b=readMainBaseline(),ecasa=new Set([...integration.policy.ecasaSlugs,...integration.policy.mainEcasaSlugs]);
+ for(const [slug,value] of Object.entries(b.originalContexts))if(![...LEON_SLUGS,...LEON_RETIRED_SLUGS].includes(slug)&&!ecasa.has(slug))assert.deepEqual(projects[slug],value);
+ assert.deepEqual(projects,Object.fromEntries(rows.map(row=>[row.slug,{name:row.nombre,url:row.detalleUrl}])));
  for(const row of review.catalogue)assert.deepEqual(projects[row.slug],{name:row.nombre,url:row.detalleUrl});
  for(const slug of LEON_RETIRED_SLUGS){assert.equal(projects[slug],undefined);assert.equal(existsSync(new URL('../'+slug+'.html',import.meta.url)),false);}
 });
 test('historical projection rejects wrong León data and retains other developer checks',()=>{
- const rows=json('data/proyectos.json'),b=readMainBaseline(),old=restoreLeonRows(rows);assert.equal(old.length,144);
+ const rows=json('data/proyectos.json'),b=readMainBaseline(),integration=assertEcasaMainIntegration(),old=restoreLeonRows(restoreEcasaMainRows(rows,'data/proyectos.json',{integration}));assert.equal(old.length,144);
  assert.deepEqual(old.filter(p=>p.inmobiliaria==='León'),b.originalRows['data/proyectos.json']);
  const altered=structuredClone(rows);altered.find(p=>p.slug==='bcome').direccion='Incorrect';assert.throws(()=>assertBrochureCatalogue(altered));
  const other=structuredClone(rows);other.find(p=>p.inmobiliaria!=='León').precioDesdeUF=999999;assert.throws(()=>assertBrochureCatalogue(other));

@@ -4,6 +4,7 @@ import { readFileSync, existsSync, lstatSync, realpathSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { restoreEcasaMainRows } from './ecasa-main-integration.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 export const SENTO_SLUGS = Object.freeze(['angamos', 'curico-77', 'domeyko-2055', 'jofre-135', 'mirador-la-florida', 'plaza-las-condes', 'san-ignacio']);
@@ -145,7 +146,8 @@ function restoreLeonRowsForSento(rows, file='data/proyectos.json') {
   return result;
 }
 
-export function assertSentoCatalogue(rows, review = optionalReview()) {
+export function assertSentoCatalogue(rows, review = optionalReview(), { root = ROOT, integration } = {}) {
+  rows=restoreEcasaMainRows(rows,'data/proyectos.json',{root,integration});
   rows=restoreLeonRowsForSento(rows);
   assert.ok(review && review.schemaVersion === 1 && review.protectedPreviewOnly === true, 'Sento: reviewed Preview source is required');
   assert.equal(rows.length, sentoMainBaseline.catalogueCount, 'Sento: main catalogue count changed');
