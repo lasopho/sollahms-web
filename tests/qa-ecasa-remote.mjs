@@ -15,6 +15,10 @@ const official = JSON.parse(await readFile(new URL('../data/ecasa-official-origi
 let manual = null;
 try { manual = JSON.parse(await readFile(new URL('../data/ecasa-manual-quality.json', import.meta.url))); }
 catch (error) { if (error.code !== 'ENOENT') throw error; }
+let ownerCover = null;
+try { ownerCover = JSON.parse(await readFile(new URL('../data/ecasa-owner-cover.json', import.meta.url))); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+const ownerCoverProjects = ownerCover ? (ownerCover.schemaVersion === 2 ? ownerCover.projects : [ownerCover]) : [];
 if (metadata.target !== 'preview' || metadata.contentProfile !== 'protected_ecasa_review') throw new Error('Protected Ecasa build receipt required');
 const auth = { 'x-vercel-trusted-oidc-idp-token': process.env.VERCEL_OIDC_TOKEN };
 const results = [], checks = [];
@@ -35,13 +39,21 @@ await Promise.all(Array.from({ length: 8 }, async () => {
   }
 }));
 for (const path of [...ECASA_RETIRED_SLUGS.flatMap(slug => ['/' + slug, '/' + slug + '.html']), '/data/brochures-ecasa.json', '/data/fichas-proyectos.json', '/data/ecasa-image-quality.json', '/data/ecasa-official-originals.json', '/data/ecasa-manual-quality.json', '/data/fuentes-imagenes.json', '/docs/ecasa-preview-reproducible.md', '/03_CAPTURAS_CARTERA_PRIVADAS/', '/01_PDF_ORIGINALES_PRIVADOS/', '/.env',
-  ...official.projects.flatMap(project => project.images.map(image => image.original.localPath))]) {
+  ...official.projects.flatMap(project => project.images.map(image => image.original.localPath)),
+  ...(ownerCoverProjects.length ? ['/data/ecasa-owner-cover.json'] : []),
+  ...ownerCoverProjects.flatMap(project => [project.original.localPath, ...(project.supersededCoverOnly ? [project.supersededCoverOnly.localPath] : [])])]) {
   const response = await fetch(new URL(path, base), { headers: auth, redirect: 'manual', signal: AbortSignal.timeout(45000) });
   checks.push({ label: 'Excluded ' + path, status: response.status, passed: response.status === 404 });
 }
 for (const image of (manual ?? quality).projects.flatMap(project => project.images).filter(image => image.decision === 'exclude' && !image.coverOnly)) {
   const response = await fetch(new URL(image.localPath, base), { headers: auth, redirect: 'manual', signal: AbortSignal.timeout(45000) });
   checks.push({ label: 'Visually excluded image ' + image.localPath, status: response.status, passed: response.status === 404 });
+}
+for (const project of ownerCoverProjects) {
+  const selected = results.find(file => file.file === project.selected.localPath.slice(1));
+  const approved = metadata.publicOutput.find(file => file.file === project.selected.localPath.slice(1));
+  checks.push({ label: 'Selected owner cover matches approved SHA ' + project.projectSlug,
+    status: selected?.status ?? null, passed: selected?.matches === true && approved?.sha256 === project.selected.sha256 });
 }
 for (const rule of deploymentConfig.redirects.filter(rule => rule.permanent)) {
   const response = await fetch(new URL(rule.source, base), { headers: auth, redirect: 'manual', signal: AbortSignal.timeout(45000) });
@@ -60,6 +72,7 @@ const summary = { origin: base.origin, sourceCommit: metadata.reviewCommit,
   selectedMedia: results.filter(row => /assets\/propiedades\/(ingevec|aj-urbana|ecasa)-preview\//.test(row.file)).length,
   ecasaMedia: results.filter(row => row.file.startsWith('assets/propiedades/ecasa-preview/')).length,
   officialMedia: results.filter(row => row.file.startsWith('assets/propiedades/ecasa-official-review/')).length,
+  ownerCoverMedia: results.filter(row => row.file.startsWith('assets/propiedades/ecasa-owner-review/')).length,
   checks, uf, failures: results.filter(row => !row.matches), noApplicationWrites: true };
 summary.passed = !summary.failures.length && checks.every(check => check.passed);
 await writeFile(resolve(output, 'report.json'), JSON.stringify({ summary, results }, null, 2) + '\n');

@@ -516,6 +516,124 @@ class PublicBuildAuditTests(unittest.TestCase):
         leak = cover + '<section id="galeria"><div><a href="' + path + '"><img src="' + path + '"></a></div></section>'
         self.assertEqual(audit_module.image_roles(leak, path), {'gallery': 1, 'hero': 1, 'links': 1})
 
+    def owner_fixture(self):
+        root = MODULE.parents[1]
+        manifest = json.loads((root / audit_module.release_inventory.OWNER_MANIFEST).read_text())
+        if manifest['schemaVersion'] == 2:
+            project = copy.deepcopy(next(project for project in manifest['projects'] if project['projectSlug'] == audit_module.release_inventory.OWNER_PROJECT))
+            project['conversion']['crop'] = False
+            manifest = {**{key: manifest[key] for key in ['protectedPreviewOnly', 'baselineCommit', 'provenance']},
+                        'schemaVersion': 1, 'scope': 'ecasa_owner_cover_only', **project}
+        manual = json.loads((root / audit_module.release_inventory.MANUAL_MANIFEST).read_text())
+        for kind, asset in [('original', manifest['original']), ('selected', manifest['selected'])]:
+            payload = ('owner cover independent fixture:' + asset['localPath']).encode()
+            asset['bytes'] = len(payload);asset['sha256'] = hashlib.sha256(payload).hexdigest()
+            file = self.source / asset['localPath'].lstrip('/');file.parent.mkdir(parents=True, exist_ok=True);file.write_bytes(payload)
+            if kind == 'selected':
+                target = self.preview / asset['localPath'].lstrip('/');target.parent.mkdir(parents=True, exist_ok=True);target.write_bytes(payload)
+        (self.source / audit_module.release_inventory.OWNER_MANIFEST).write_text(json.dumps(manifest))
+        (self.source / 'scripts').mkdir(exist_ok=True)
+        (self.source / audit_module.release_inventory.OWNER_MODULE).write_text('// independent owner cover consumer')
+        return manifest, manual
+
+    def owner_errors(self, manual):
+        errors = []
+        result = audit_module.owner_images(self.source, self.public, self.preview, manual,
+            lambda condition, issue: errors.append(issue) if not condition else None)
+        return result, errors
+
+    def test_owner_audit_keeps_png_private_and_publishes_only_exact_selected_webp(self):
+        _, manual = self.owner_fixture()
+        (_, sources, published), errors = self.owner_errors(manual)
+        self.assertEqual(errors, [])
+        self.assertEqual((len(sources), len(published)), (2, 1))
+        self.assertTrue(all(item['kind'] == 'selected' for item in published.values()))
+
+    def test_owner_audit_rejects_private_png_or_sidecar_reference_in_public_output(self):
+        manifest, manual = self.owner_fixture()
+        source = self.source / manifest['original']['localPath'].lstrip('/')
+        for output in [self.public, self.preview]:
+            target = output / manifest['original']['localPath'].lstrip('/');target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes(source.read_bytes())
+        (self.preview / 'edificio-bezanilla.html').write_text('<img src="/' + audit_module.release_inventory.OWNER_MANIFEST + '">')
+        errors = self.owner_errors(manual)[1]
+        self.assertTrue(any('leaked an original' in error for error in errors))
+        self.assertTrue(any('Private owner cover reference' in error for error in errors))
+
+    def test_owner_catalogue_and_gallery_checks_preserve_every_other_project_and_commercial_value(self):
+        manifest, _ = self.owner_fixture()
+        catalogue = json.loads((self.public / 'data/proyectos.json').read_text())
+        for project in catalogue:
+            project['precioDesdeUF'] = 1234
+            project['etapasComerciales'] = [{'slug': project['slug'], 'precioDesdeUF': 4321}]
+        result = audit_module.owner_catalogue(catalogue, manifest)
+        restored = copy.deepcopy(result)
+        for before, after in zip(catalogue, restored):
+            if before['slug'] == 'edificio-bezanilla':
+                after['imagenPrincipal'] = before['imagenPrincipal'];after.pop('imagenAlt', None)
+        self.assertEqual(restored, catalogue)
+        gallery = '<section id="galeria"><img src="/existing.webp"></section>'
+        self.assertEqual(audit_module.gallery_fragments('<img src="/old-cover.webp">'+gallery),
+                         audit_module.gallery_fragments('<img src="/new-cover.webp">'+gallery))
+        old = '<body><img src="/old.webp" class="hero-image"><dl><dd>UF 1234</dd></dl>'+gallery+'</body>'
+        new = old.replace('/old.webp', '/new.webp').replace('hero-image', 'hero-image ecasa-owner-hero')
+        self.assertEqual(audit_module.commercial_body(old, True), audit_module.commercial_body(new, True))
+        self.assertNotEqual(audit_module.commercial_body(old, True), audit_module.commercial_body(new.replace('UF 1234', 'UF 9999'), True))
+
+    def five_owner_fixture(self):
+        root = MODULE.parents[1]
+        manifest = json.loads((root / audit_module.release_inventory.OWNER_MANIFEST).read_text())
+        manual = json.loads((root / audit_module.release_inventory.MANUAL_MANIFEST).read_text())
+        if manifest['schemaVersion'] == 1:
+            projects = []
+            for slug in sorted(audit_module.release_inventory.OWNER_PROJECTS):
+                project = {key: copy.deepcopy(manifest[key]) for key in ['original', 'selected', 'conversion']}
+                project['projectSlug'] = slug;project['conversion']['crop'] = None
+                for kind in ['original', 'selected']:
+                    project[kind]['localPath'] = project[kind]['localPath'].replace('/edificio-bezanilla/', '/' + slug + '/')
+                previous = next(row for row in manual['projects'] if row['slug'] == slug)
+                choice = next(row for row in previous['images'] if row['localPath'] == previous['previewCover'])
+                project['supersededCoverOnly'] = None if slug == 'espacio-victoria' else {'localPath': choice['localPath'], 'sha256': choice['sha256']}
+                projects.append(project)
+            manifest = {'schemaVersion': 2, 'scope': 'ecasa_owner_covers_only', 'protectedPreviewOnly': True,
+                        'baselineCommit': manifest['baselineCommit'], 'provenance': 'user_provided', 'projects': projects}
+        for project in manifest['projects']:
+            for kind, asset in [('original', project['original']), ('selected', project['selected'])]:
+                payload = ('five owner fixture:' + asset['localPath']).encode()
+                asset['bytes'] = len(payload);asset['sha256'] = hashlib.sha256(payload).hexdigest()
+                file = self.source / asset['localPath'].lstrip('/');file.parent.mkdir(parents=True,exist_ok=True);file.write_bytes(payload)
+                if kind == 'selected':
+                    target = self.preview / asset['localPath'].lstrip('/');target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(payload)
+        (self.source / audit_module.release_inventory.OWNER_MANIFEST).write_text(json.dumps(manifest))
+        (self.source / 'scripts').mkdir(exist_ok=True)
+        (self.source / audit_module.release_inventory.OWNER_MODULE).write_text('// independent five-owner fixture')
+        return manifest, manual
+
+    def test_five_owner_audit_rejects_a_single_raw_or_selected_asset_in_public_profile(self):
+        manifest, manual = self.five_owner_fixture()
+        (_, sources, published), errors = self.owner_errors(manual)
+        self.assertEqual(errors, []);self.assertEqual((len(sources),len(published)),(10,5))
+        project = manifest['projects'][-1]
+        for kind in ['original','selected']:
+            path = project[kind]['localPath'].lstrip('/')
+            target = self.public / path;target.parent.mkdir(parents=True,exist_ok=True)
+            target.write_bytes((self.source / path).read_bytes())
+        self.assertTrue(any('leaked an original' in error for error in self.owner_errors(manual)[1]))
+
+    def test_five_owner_catalogue_changes_only_the_named_cover_fields(self):
+        manifest, _ = self.five_owner_fixture()
+        catalogue = json.loads((self.public / 'data/proyectos.json').read_text())
+        result = audit_module.owner_catalogue(catalogue, manifest)
+        selected = {project['projectSlug']: project for project in manifest['projects']}
+        self.assertEqual(len(selected), 5)
+        for before, after in zip(catalogue,result):
+            if before['slug'] not in selected: self.assertEqual(before,after)
+            else:
+                restored = copy.deepcopy(after);restored['imagenPrincipal'] = before['imagenPrincipal'];restored.pop('imagenAlt',None)
+                self.assertEqual(restored,before)
+        espacio = next(project for project in manifest['projects'] if project['projectSlug']=='espacio-victoria')
+        self.assertIsNone(espacio['supersededCoverOnly'])
+
 
 if __name__ == '__main__':
     unittest.main()

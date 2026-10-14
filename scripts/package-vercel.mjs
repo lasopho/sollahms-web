@@ -152,7 +152,30 @@ const manualReceipt = manualQuality ? {
   projects: JSON.parse(manualBytes).projects.map(({ slug, previewCover, officialGalleryMode }) => ({ slug, previewCover, officialGalleryMode }))
     .sort((a, b) => a.slug.localeCompare(b.slug)),
 } : null;
-const publishedEcasaAssets = selectEcasaPublishedAssets(ecasaReview, imageQuality, { preview: ecasaIncluded });
+// The supplied cover is independent of the immutable gallery selections.
+let ownerCover=null,ownerOperations=null,ownerBytes=null;
+try { ownerBytes=await readFile(join(root,'data/ecasa-owner-cover.json')); }
+catch(error) { if(error.code!=='ENOENT')throw error; }
+if(ownerBytes) {
+  ownerOperations=await import('./ecasa-owner-cover.mjs');
+  ownerCover=await ownerOperations.validateOwnerCover(JSON.parse(ownerBytes),{root,manualPolicy:manualQuality?.policy});
+}
+const ownerIncluded=preview&&ecasaIncluded&&!!ownerCover;
+const ownerPublished=ownerCover?ownerOperations.selectPublishedOwnerAssets(ownerCover,{preview:ownerIncluded}):[];
+const ownerPublishedPaths=new Set(ownerPublished.map(asset=>join(root,asset.localPath.slice(1))));
+const ownerReceipt=ownerCover?{
+  manifestSha256:createHash('sha256').update(ownerBytes).digest('hex'),
+  provenance:ownerCover.policy.provenance,
+  sourceAssets:ownerCover.sourceAssets.slice().sort((a,b)=>a.path.localeCompare(b.path)),
+  publishedAssets:ownerCover.sourceAssets.filter(asset=>asset.kind==='selected'&&ownerIncluded),
+  ...(ownerCover.policy.schemaVersion===1?{
+    projectSlug:ownerCover.policy.projectSlug,supersededCoverOnly:ownerCover.policy.supersededCoverOnly,
+  }:{projectSlugs:ownerCover.projects.map(project=>project.projectSlug).sort(),
+    supersededCovers:ownerCover.projects.map(project=>project.supersededCoverOnly).filter(Boolean).sort((a,b)=>a.localPath.localeCompare(b.localPath))}),
+}:null;
+const supersededOwnerPaths=new Set(ownerIncluded?ownerCover.projects.map(project=>project.supersededCoverOnly?.localPath).filter(Boolean):[]);
+const publishedEcasaAssets = selectEcasaPublishedAssets(ecasaReview, imageQuality, { preview: ecasaIncluded })
+  .filter(asset=>!supersededOwnerPaths.has(asset.localPath));
 const publishedEcasaPaths = new Set(publishedEcasaAssets.map(asset => asset.localPath));
 const excludedImagePaths = ecasaExcludedImagePaths(imageQuality, { preview: ecasaIncluded });
 // The extra original photographs are independent of the frozen brochure and
@@ -354,6 +377,8 @@ catalogueOutput = JSON.stringify(applyEcasaCatalogueImageQuality(JSON.parse(cata
   { preview: ecasaIncluded }), null, 2) + '\n';
 if (officialOriginals) catalogueOutput = JSON.stringify(officialOperations.applyOfficialCatalogue(
   JSON.parse(catalogueOutput), imageQuality, officialOriginals, { preview: ecasaIncluded }), null, 2) + '\n';
+if(ownerCover)catalogueOutput=JSON.stringify(ownerOperations.applyOwnerCatalogue(
+  JSON.parse(catalogueOutput),ownerCover,{preview:ownerIncluded}),null,2)+'\n';
 await rm(output, { recursive: true, force: true });
 await mkdir(join(output, 'data'), { recursive: true });
 for (const name of pages) {
@@ -374,6 +399,7 @@ for (const name of pages) {
     imageQuality, officialOriginals, { preview: ecasaIncluded });
   if (manualQuality) html = manualOperations.transformEcasaManualGallery(html, name.slice(0, -5),
     manualQuality, { preview: ecasaIncluded });
+  if(ownerCover)html=ownerOperations.transformOwnerCover(html,name.slice(0,-5),ownerCover,{preview:ownerIncluded});
   if (preview) {
     html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
     if (name === 'agenda-asesoria.html' || name === 'contacto.html' || name === 'comparador-hipotecario.html') {
@@ -392,6 +418,10 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
     const info = await lstat(source);
     // No symlink can turn a nominal image directory into private content.
     if (info.isSymbolicLink()) throw new Error('Symbolic links are excluded from public assets');
+    const ownerPrefix='assets/propiedades/ecasa-owner-review';
+    if(path===ownerPrefix||path.startsWith(ownerPrefix+'/')) {
+      return info.isDirectory()?[...ownerPublishedPaths].some(file=>file.startsWith(source+sep)):ownerPublishedPaths.has(source);
+    }
     const officialPrefix = 'assets/propiedades/ecasa-official-review';
     if (path === officialPrefix || path.startsWith(officialPrefix + '/')) {
       // Raw downloaded banners, unused candidates and documentary receipts
@@ -425,10 +455,11 @@ await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.string
   ecasaReviewMedia: publishedEcasaAssets.length,
   ecasaImageQuality: { policySha256: createHash('sha256').update(qualityBytes).digest('hex'), ...baseImageQuality.summary },
   manualQuality: manualReceipt,
+  ownerCover:ownerReceipt,ownerSourceMedia:ownerReceipt?.sourceAssets.length??0,ownerPublishedMedia:ownerPublished.length,
   officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0,
   officialPublishedMedia: officialPublished.length,
   ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null,
   officialOriginals: officialReceipt,
   media: mediaInventory.sort((a, b) => a.path.localeCompare(b.path)),
 }, null, 2) + '\n');
-console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0, officialPublishedMedia: officialPublished.length, ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));
+console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0, officialPublishedMedia: officialPublished.length, ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null, ownerSourceMedia: ownerReceipt?.sourceAssets.length ?? 0, ownerPublishedMedia: ownerPublished.length, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));

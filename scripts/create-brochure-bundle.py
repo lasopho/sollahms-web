@@ -137,6 +137,10 @@ def assert_legacy_redirects(root, page_texts):
 def selected_source_files(root):
     official_manifest = json.loads((root / release.OFFICIAL_MANIFEST).read_text())
     official_sources, _ = release.official_manifest_inventory(official_manifest)
+    owner_manifest = json.loads((root / release.OWNER_MANIFEST).read_text())
+    assert owner_manifest.get('schemaVersion') == 2, 'This real review requires all five owner covers; schema v1 is reserved for legacy fixtures'
+    owner_sources, _ = release.owner_manifest_inventory(owner_manifest,
+        json.loads((root / release.MANUAL_MANIFEST).read_text()))
     assert sha((root / release.BASE_QUALITY_MANIFEST).read_bytes()) == release.BASE_QUALITY_SHA256, 'Frozen base quality evidence changed'
     release.manual_quality_selection(json.loads((root / release.MANUAL_MANIFEST).read_text()),
         json.loads((root / release.BASE_QUALITY_MANIFEST).read_text()), official_manifest)
@@ -200,7 +204,7 @@ def selected_source_files(root):
     assert preserved_media_count == 269, 'The previously approved AJ/Ingevec batch must preserve 269 resources'
     ecasa_media = sorted([['/' + path, digest] for path, digest in media.items() if path.startswith('assets/propiedades/ecasa-preview/')])
     assert len(ecasa_media) == 130 and sha(json.dumps(ecasa_media, ensure_ascii=False, separators=(',', ':')).encode()) == ECASA_MEDIA_SHA256, 'The exact 130 Ecasa resource paths and bytes must be preserved'
-    files = set(media) | set(official_sources)
+    files = set(media) | set(official_sources) | set(owner_sources)
     files.update(pages)
     files.update(('vercel.json', 'robots.txt', 'sitemap.xml', 'data/proyectos.json',
                   'data/hipotecario.json', *(f'data/{name}' for name in MANIFESTS),
@@ -211,6 +215,7 @@ def selected_source_files(root):
     files.update(('scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json', *QUALITY_ORIGINALS))
     files.update((release.OFFICIAL_MANIFEST, release.OFFICIAL_MODULE))
     files.update((release.MANUAL_MANIFEST, release.MANUAL_MODULE))
+    files.update((release.OWNER_MANIFEST, release.OWNER_MODULE))
     for folder in ('api', 'lib'):
         files.update(str(p.relative_to(root)) for p in (root / folder).rglob('*')
                      if p.is_file() and p.suffix in {'.js', '.mjs'})
@@ -218,7 +223,7 @@ def selected_source_files(root):
         relative = str(path.relative_to(root))
         if not path.is_file() or '/brochure-candidates/' in relative or relative in retired_exclusive:
             continue
-        if any(f'/propiedades/{folder}/' in relative for folder in (*MEDIA_FOLDERS, release.OFFICIAL_FOLDER)):
+        if any(f'/propiedades/{folder}/' in relative for folder in (*MEDIA_FOLDERS, release.OFFICIAL_FOLDER, release.OWNER_FOLDER)):
             continue  # Only the exact manifest above can select these assets.
         if path.suffix.lower() in PUBLIC_EXTENSIONS:
             files.add(relative)
@@ -231,6 +236,8 @@ def selected_source_files(root):
             assert sha(path.read_bytes()) == media[relative], f'Changed selected media: {relative}'
         if relative in official_sources:
             assert path.stat().st_size == official_sources[relative]['bytes'] and sha(path.read_bytes()) == official_sources[relative]['sha256'], f'Changed official review source: {relative}'
+        if relative in owner_sources:
+            assert path.stat().st_size == owner_sources[relative]['bytes'] and sha(path.read_bytes()) == owner_sources[relative]['sha256'], f'Changed owner cover source: {relative}'
     return sorted(files)
 
 
@@ -292,6 +299,9 @@ def main():
     review_commit = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD']).decode().strip()
     tool_inventory = verification_tools(ROOT, review_commit)
     files = selected_source_files(ROOT)
+    owner_manifest = json.loads((ROOT / release.OWNER_MANIFEST).read_text())
+    owner_sources, owner_published = release.owner_manifest_inventory(owner_manifest,
+        json.loads((ROOT / release.MANUAL_MANIFEST).read_text()))
     official_sources, official_published = release.official_manifest_inventory(json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
     manual = release.manual_quality_selection(json.loads((ROOT / release.MANUAL_MANIFEST).read_text()),
         json.loads((ROOT / release.BASE_QUALITY_MANIFEST).read_text()),
@@ -315,12 +325,13 @@ def main():
         source_inventory = {asset['localPath']: asset['sha256']
             for name in MANIFESTS for record in json.loads((stage / 'data' / name).read_text())['projects']
             for asset in [*record['images'], *(model['plan'] for model in record['models'])]}
-        expected_publication = release.manual_published_media({path.lstrip('/'): value for path, value in source_inventory.items()}, manual)
+        expected_publication = release.manual_published_media({path.lstrip('/'): value for path, value in source_inventory.items()}, manual, owner_manifest)
         assert {asset['path'].lstrip('/'): asset['sha256'] for asset in receipt['media']} == expected_publication, 'Published media differs from the exact manual selection'
-        assert len(expected_publication) == 269 + 74 + manual['summary']['documentaryPublishedImages'], 'Manual publication omitted a plan or preserved brochure resource'
+        assert len(expected_publication) == 269 + 74 + manual['summary']['documentaryPublishedImages'] - len(release.owner_superseded_covers(owner_manifest)), 'Owner cover publication omitted another plan or brochure resource'
         assert receipt['manualQuality']['effectiveImages'] == manual['effectiveImages'] and receipt['manualQuality']['projects'] == manual['projects'], 'Manual build receipt differs from the reviewed policy'
         assert all(receipt['manualQuality']['summary'].get(key) == value for key, value in manual['summary'].items()), 'Manual build counts differ from the effective image inventory'
         assert receipt['officialOriginals']['sourceAssets'] == [official_sources[name] for name in sorted(official_sources)] and receipt['officialOriginals']['publishedAssets'] == [official_published[name] for name in sorted(official_published)], 'Official transport/publication differs from the exact reviewed selection'
+        assert receipt['ownerCover']['sourceAssets'] == [owner_sources[name] for name in sorted(owner_sources)] and receipt['ownerCover']['publishedAssets'] == [owner_published[name] for name in sorted(owner_published)] and all(receipt['ownerCover'].get(key) == value for key, value in release.owner_review_fields(owner_manifest).items()), 'Owner cover transport/publication differs from the exact reviewed selection'
         preview_output = public_files(stage / 'dist')
         public_inventory = [{'file': name, 'sha256': sha(content)}
                             for name, content in preview_output.items()]
@@ -357,12 +368,18 @@ def main():
                 'ecasaLegacyRoutes': 8,
                 'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
                 'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130,
-                'ecasaPublishedMedia': 74 + manual['summary']['documentaryPublishedImages'],
+                'ecasaPublishedMedia': 74 + manual['summary']['documentaryPublishedImages'] - len(release.owner_superseded_covers(owner_manifest)),
                 'imageQuality': receipt['ecasaImageQuality'],
                 'officialSourceMedia': len(official_sources), 'officialPublishedMedia': len(official_published),
                 'ecasaGalleryImages': manual['summary']['keptImages'] + len(official_published),
                 'manualQuality': {'manifestSha256': sha((ROOT / release.MANUAL_MANIFEST).read_bytes()),
                     'summary': manual['summary'], 'effectiveImages': manual['effectiveImages'], 'projects': manual['projects']},
+                'ownerSourceMedia': len(owner_sources), 'ownerPublishedMedia': len(owner_published),
+                'ownerCover': {'manifestSha256': sha((ROOT / release.OWNER_MANIFEST).read_bytes()),
+                    **release.owner_review_fields(owner_manifest),
+                    'sourceAssets': [owner_sources[name] for name in sorted(owner_sources)],
+                    'publishedAssets': [owner_published[name] for name in sorted(owner_published)],
+                    },
                 'officialOriginals': {'manifestSha256': sha((ROOT / release.OFFICIAL_MANIFEST).read_bytes()),
                     'sourceAssets': [official_sources[name] for name in sorted(official_sources)],
                     'publishedAssets': [official_published[name] for name in sorted(official_published)],

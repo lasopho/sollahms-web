@@ -371,6 +371,156 @@ class ReleasePreparationTests(unittest.TestCase):
                     row['decision'] == 'exclude' and not row['coverOnly']]
         self.assertTrue(all(row['localPath'].lstrip('/') not in selected for row in excluded))
 
+    def owner_fixture(self):
+        owner = json.loads((MODULE.parents[1] / release.OWNER_MANIFEST).read_text())
+        if owner['schemaVersion'] == 2:
+            project = copy.deepcopy(next(project for project in owner['projects'] if project['projectSlug'] == release.OWNER_PROJECT))
+            project['conversion']['crop'] = False
+            owner = {**{key: owner[key] for key in ['protectedPreviewOnly', 'baselineCommit', 'provenance']},
+                     'schemaVersion': 1, 'scope': 'ecasa_owner_cover_only', **project}
+        manual = json.loads((MODULE.parents[1] / release.MANUAL_MANIFEST).read_text())
+        sources, published = release.owner_manifest_inventory(owner, manual)
+        files = {name: {'sha256': item['sha256'], 'size': item['bytes']} for name, item in sources.items()}
+        files.update({release.OWNER_MANIFEST: {'sha256': 'f' * 64}, release.OWNER_MODULE: {},
+                      owner['supersededCoverOnly']['localPath'].lstrip('/'): {'sha256': owner['supersededCoverOnly']['sha256']}})
+        policy = {'contentProfile': 'protected_ecasa_review', 'ownerSourceMedia': 2, 'ownerPublishedMedia': 1,
+                  'ownerCover': {'manifestSha256': 'f' * 64, 'projectSlug': release.OWNER_PROJECT, 'provenance': 'user_provided',
+                    'sourceAssets': [sources[name] for name in sorted(sources)],
+                    'publishedAssets': [published[name] for name in sorted(published)],
+                    'supersededCoverOnly': owner['supersededCoverOnly']}}
+        return owner, manual, policy, files
+
+    def test_owner_inventory_publishes_only_native_webp_and_requires_preserved_previous_cover(self):
+        owner, manual, policy, files = self.owner_fixture()
+        inventory = release.owner_policy_inventory(policy, files)
+        self.assertEqual(len(inventory), 2)
+        self.assertEqual([item['kind'] for item in policy['ownerCover']['publishedAssets']], ['selected'])
+        original = owner['original']['localPath'].lstrip('/')
+        self.assertEqual(release.safe_name(original, inventory), original)
+        with self.assertRaises(ValueError): release.safe_name(original)
+        files.pop(owner['supersededCoverOnly']['localPath'].lstrip('/'))
+        with self.assertRaisesRegex(ValueError, 'preserved superseded source'): release.owner_policy_inventory(policy, files)
+
+    def test_owner_manifest_rejects_cross_project_supersession_extra_fields_and_changed_native_conversion(self):
+        original, manual, _, _ = self.owner_fixture()
+        for mutation in ['project', 'superseded', 'lossy', 'resize', 'dimensions', 'extra', 'original_public_path']:
+            owner = copy.deepcopy(original)
+            if mutation == 'project': owner['projectSlug'] = 'endemico'
+            elif mutation == 'superseded': owner['supersededCoverOnly']['localPath'] = '/assets/propiedades/ecasa-preview/lamara/imagen-02-p01.webp'
+            elif mutation == 'lossy': owner['conversion']['lossless'] = False
+            elif mutation == 'resize': owner['conversion']['resize'] = True
+            elif mutation == 'dimensions': owner['selected']['width'] += 1
+            elif mutation == 'extra': owner['selected']['precioDesdeUF'] = 1000
+            else: owner['original']['localPath'] = owner['selected']['localPath'].replace('.webp', '.png')
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_manifest_inventory(owner, manual)
+
+    def test_owner_receipt_cannot_publish_raw_or_bypass_exact_source_allowlist(self):
+        _, _, original, files = self.owner_fixture()
+        for mutation in ['raw', 'missing', 'hash', 'unreceipted', 'public']:
+            policy = copy.deepcopy(original);inventory = copy.deepcopy(files)
+            if mutation == 'raw': policy['ownerCover']['publishedAssets'] = [item for item in policy['ownerCover']['sourceAssets'] if item['kind'] == 'original']
+            elif mutation == 'missing': inventory.pop(release.OWNER_MODULE)
+            elif mutation == 'hash': policy['ownerCover']['sourceAssets'][0]['sha256'] = '0' * 64
+            elif mutation == 'unreceipted': policy.pop('ownerCover')
+            else: policy['contentProfile'] = 'public_web_parity'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_policy_inventory(policy, inventory)
+
+    def test_owner_selection_removes_only_superseded_documentary_cover_and_keeps_source_immutable(self):
+        owner, manual, _, _ = self.owner_fixture()
+        base = json.loads((MODULE.parents[1] / release.BASE_QUALITY_MANIFEST).read_text())
+        official = json.loads((MODULE.parents[1] / release.OFFICIAL_MANIFEST).read_text())
+        selection = release.manual_quality_selection(manual, base, official)
+        docs = json.loads((MODULE.parents[1] / 'data/brochures-ecasa.json').read_text())
+        originals = {asset['localPath'].lstrip('/'): asset['sha256'] for project in docs['projects']
+                     for asset in [*project['images'], *(model['plan'] for model in project['models'])]}
+        before = dict(originals)
+        without_owner = release.manual_published_media(originals, selection)
+        with_owner = release.manual_published_media(originals, selection, owner)
+        self.assertEqual(originals, before)
+        self.assertEqual(len(with_owner), 88)
+        self.assertEqual(set(without_owner) - set(with_owner), {release.SUPERSEDED_OWNER_COVER.lstrip('/')})
+        self.assertEqual(selection['summary']['coverOnlyImages'], 7)
+
+    def owner_v2_fixture(self):
+        legacy, manual, _, _ = self.owner_fixture()
+        projects = []
+        for index, slug in enumerate(sorted(release.OWNER_PROJECTS)):
+            project = {key: copy.deepcopy(legacy[key]) for key in ['original', 'selected', 'conversion']}
+            project['projectSlug'] = slug; project['conversion']['crop'] = None
+            for kind in ['original', 'selected']:
+                project[kind]['localPath'] = project[kind]['localPath'].replace('/edificio-bezanilla/', '/' + slug + '/')
+                project[kind]['sha256'] = str(index + 1) * 64
+            previous = next(row for row in manual['projects'] if row['slug'] == slug)
+            choice = next(row for row in previous['images'] if row['localPath'] == previous['previewCover'])
+            project['supersededCoverOnly'] = None if slug == 'espacio-victoria' else {'localPath': choice['localPath'], 'sha256': choice['sha256']}
+            projects.append(project)
+        owner = {'schemaVersion': 2, 'scope': 'ecasa_owner_covers_only', 'protectedPreviewOnly': True,
+                 'baselineCommit': legacy['baselineCommit'], 'provenance': 'user_provided', 'projects': projects}
+        return owner, manual
+
+    def test_five_owner_projects_require_exact_cardinality_identity_and_source_namespace(self):
+        original, manual = self.owner_v2_fixture()
+        sources, published = release.owner_manifest_inventory(original, manual)
+        self.assertEqual((len(sources), len(published)), (10, 5))
+        for mutation in ['missing', 'duplicate', 'other', 'extra', 'cross_asset']:
+            owner = copy.deepcopy(original)
+            if mutation == 'missing': owner['projects'].pop()
+            elif mutation == 'duplicate': owner['projects'][-1] = copy.deepcopy(owner['projects'][0])
+            elif mutation == 'other': owner['projects'][0]['projectSlug'] = 'lamara'
+            elif mutation == 'extra': owner['projects'][0]['precioDesdeUF'] = 1000
+            else: owner['projects'][0]['selected']['localPath'] = owner['projects'][1]['selected']['localPath']
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_manifest_inventory(owner, manual)
+
+    def test_owner_crop_must_be_integer_bounded_native_rectangle_with_matching_output(self):
+        original, manual = self.owner_v2_fixture()
+        project = original['projects'][0]; project['conversion']['crop'] = {'left': 10, 'top': 20, 'width': 1000, 'height': 700}
+        project['selected'].update(width=1000, height=700)
+        self.assertEqual(len(release.owner_manifest_inventory(original, manual)[1]), 5)
+        for mutation in ['negative', 'fraction', 'boolean', 'bounds', 'zero', 'output', 'resize']:
+            owner = copy.deepcopy(original); project = owner['projects'][0]
+            if mutation == 'negative': project['conversion']['crop']['left'] = -1
+            elif mutation == 'fraction': project['conversion']['crop']['top'] = 1.5
+            elif mutation == 'boolean': project['conversion']['crop']['width'] = True
+            elif mutation == 'bounds': project['conversion']['crop']['width'] = project['original']['width']
+            elif mutation == 'zero': project['conversion']['crop']['height'] = 0
+            elif mutation == 'output': project['selected']['height'] += 1
+            else: project['conversion']['resize'] = True
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_manifest_inventory(owner, manual)
+
+    def test_five_owner_selection_retires_four_cover_only_sources_and_preserves_espacio_gallery(self):
+        owner, manual = self.owner_v2_fixture()
+        base = json.loads((MODULE.parents[1] / release.BASE_QUALITY_MANIFEST).read_text())
+        official = json.loads((MODULE.parents[1] / release.OFFICIAL_MANIFEST).read_text())
+        selection = release.manual_quality_selection(manual, base, official)
+        docs = json.loads((MODULE.parents[1] / 'data/brochures-ecasa.json').read_text())
+        originals = {asset['localPath'].lstrip('/'): asset['sha256'] for project in docs['projects']
+                     for asset in [*project['images'], *(model['plan'] for model in project['models'])]}
+        old = release.manual_published_media(originals, selection)
+        new = release.manual_published_media(originals, selection, owner)
+        self.assertEqual(len(new), 85)
+        self.assertEqual(set(old)-set(new), {path.lstrip('/') for path in release.OWNER_SUPERSEDED.values()})
+        self.assertIn('assets/propiedades/ecasa-preview/espacio-victoria/imagen-03-p01.webp', new)
+        self.assertEqual(len(originals), 130)
+        self.assertEqual(selection['summary']['coverOnlyImages'], 7)
+
+    def test_five_owner_receipt_rejects_omitted_supersession_raw_publication_and_changed_counts(self):
+        owner, manual = self.owner_v2_fixture()
+        sources, published = release.owner_manifest_inventory(owner, manual)
+        files = {name: {'sha256': item['sha256'], 'size': item['bytes']} for name, item in sources.items()}
+        files.update({release.OWNER_MANIFEST: {'sha256': 'f' * 64}, release.OWNER_MODULE: {}})
+        files.update({row['localPath'].lstrip('/'): {'sha256': row['sha256']} for row in release.owner_superseded_covers(owner)})
+        policy = {'contentProfile': 'protected_ecasa_review', 'ownerSourceMedia': 10, 'ownerPublishedMedia': 5,
+                  'ownerCover': {'manifestSha256': 'f' * 64, **release.owner_review_fields(owner),
+                    'sourceAssets': [sources[name] for name in sorted(sources)], 'publishedAssets': [published[name] for name in sorted(published)]}}
+        self.assertEqual(len(release.owner_policy_inventory(policy, files)), 10)
+        for mutation in ['superseded', 'raw', 'count', 'identity']:
+            changed = copy.deepcopy(policy)
+            if mutation == 'superseded': changed['ownerCover']['supersededCovers'].pop()
+            elif mutation == 'raw': changed['ownerCover']['publishedAssets'][0] = next(row for row in changed['ownerCover']['sourceAssets'] if row['kind'] == 'original')
+            elif mutation == 'count': changed['ownerPublishedMedia'] = 4
+            else: changed['ownerCover']['projectSlugs'][0] = 'lamara'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.owner_policy_inventory(changed, files)
+
 
 if __name__ == '__main__':
     unittest.main()

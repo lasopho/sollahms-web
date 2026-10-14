@@ -22,12 +22,25 @@ try { manual = JSON.parse(await readFile(resolve(root, 'data/ecasa-manual-qualit
 catch (error) { if (error.code !== 'ENOENT') throw error; }
 const manualBySlug = new Map((manual?.projects ?? []).map(project => [project.slug, project]));
 const effectiveBySlug = manual ? manualBySlug : qualityBySlug;
+let ownerCover = null;
+try { ownerCover = JSON.parse(await readFile(resolve(root, 'data/ecasa-owner-cover.json'))); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+const ownerCoverProjects = ownerCover ? (ownerCover.schemaVersion === 2 ? ownerCover.projects : [ownerCover]) : [];
+const ownerCoverBySlug = new Map(ownerCoverProjects.map(project => [project.projectSlug, project]));
+const ownerSupersededPaths = new Set(ownerCoverProjects.flatMap(project => project.supersededCoverOnly ? [project.supersededCoverOnly.localPath] : []));
 const official = JSON.parse(await readFile(resolve(root, 'data/ecasa-official-originals.json')));
 const officialBySlug = new Map(official.projects.map(project => [project.slug, project]));
+const retinaProjects = [...official.projects, ...ownerCoverProjects.map(project => ({ slug: project.projectSlug, previewCover: project.selected.localPath }))];
 const deploymentConfig = JSON.parse(await readFile(resolve(root, 'vercel.json')));
 const assetOrigins = Object.fromEntries(review.projects.flatMap(record =>
   [...record.images, ...record.models.map(model => model.plan)].map(asset => [asset.localPath, asset.originCommercialSlug])));
 for (const project of official.projects) for (const image of project.images) assetOrigins[image.localPath] = project.slug;
+for (const project of ownerCoverProjects) assetOrigins[project.selected.localPath] = project.projectSlug;
+const ownerSourcePlans = new Map(await Promise.all(ownerCoverProjects.map(async project => {
+  const html = await readFile(resolve(root, project.projectSlug + '.html'), 'utf8');
+  const paths = [...html.matchAll(/<a\b(?=[^>]*\bclass="[^"]*\baj-plan-link\b[^"]*")(?=[^>]*\bhref="([^"]+)")[^>]*>/g)].map(match => match[1]);
+  return [project.projectSlug, paths];
+})));
 const selectedSlugs = new Set(option('--slugs', '').split(',').filter(Boolean));
 const ecasaOnly = process.argv.includes('--ecasa-only');
 const visualOnly = process.argv.includes('--visual-only');
@@ -40,6 +53,21 @@ const viewports = [{ name: 'desktop', width: 1440, height: 1000 }, { name: 'tabl
   { name: 'tablet-retina', width: 768, height: 1024, dpr: 2, targetsOnly: true },
   { name: 'mobile-retina', width: 390, height: 844, dpr: 2, targetsOnly: true }];
 const check = (condition, label) => { checks.push({ label, passed: !!condition }); if (!condition) issues.push(label); };
+async function checkOwnerCard(card, project, viewport) {
+  const selected = ownerCoverBySlug.get(project.slug)?.selected;
+  if (!selected) return;
+  const geometry = await card.locator('img').evaluate(image => ({
+    naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
+    width: image.getBoundingClientRect().width, height: image.getBoundingClientRect().height,
+    objectFit: getComputedStyle(image).objectFit,
+    coverWidth: image.closest('.catalog-cover').getBoundingClientRect().width,
+    coverHeight: image.closest('.catalog-cover').getBoundingClientRect().height,
+  }));
+  check(geometry.naturalWidth === selected.width && geometry.naturalHeight === selected.height &&
+    geometry.objectFit === 'contain' && Math.abs(geometry.coverWidth / geometry.coverHeight - selected.width / selected.height) < 0.015 &&
+    geometry.width <= selected.width + 1 && geometry.height <= selected.height + 1,
+  viewport.name + ' complete native owner catalogue photograph ' + project.slug);
+}
 
 try {
   for (const viewport of viewports) {
@@ -64,7 +92,7 @@ try {
     page.on('pageerror', error => consoleErrors.push(error.message));
     const selected = (viewport.name === 'desktop' ? projects : projects.filter(project => project.inmobiliaria === 'Ecasa'))
       .filter(project => !ecasaOnly || project.inmobiliaria === 'Ecasa')
-      .filter(project => !viewport.targetsOnly || officialBySlug.has(project.slug))
+      .filter(project => !viewport.targetsOnly || officialBySlug.has(project.slug) || ownerCoverBySlug.has(project.slug))
       .filter(project => !selectedSlugs.size || selectedSlugs.has(project.slug));
     for (const project of selected) {
       consoleErrors = [];
@@ -91,7 +119,10 @@ try {
           heroGeometry: [...document.querySelectorAll('.hero-image')].map(image => ({ path: new URL(image.src).pathname,
             naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
             width: image.getBoundingClientRect().width, height: image.getBoundingClientRect().height,
-            objectFit: getComputedStyle(image).objectFit })),
+            objectFit: getComputedStyle(image).objectFit,
+            nativePixelLimitExceeded: image.getBoundingClientRect().width * devicePixelRatio > image.naturalWidth + 1 })),
+          galleryImagePaths: [...document.querySelectorAll('.gallery-grid img')].map(image => new URL(image.src).pathname),
+          planImagePaths: [...document.querySelectorAll('.aj-plan-link img')].map(image => new URL(image.src).pathname),
           overflow: document.documentElement.scrollWidth - innerWidth,
           failedImages: images.filter(image => !image.naturalWidth).map(image => image.src),
           images: images.length, plans: document.querySelectorAll('.aj-plan-link').length,
@@ -128,12 +159,33 @@ try {
         check(JSON.stringify([...new Set(gallery)].sort()) === JSON.stringify([...expected].sort()), viewport.name + ' accepted image gallery ' + project.slug);
         check(await page.locator('.gallery-grid').evaluateAll(grids => grids.every(grid => grid.querySelector('img'))), viewport.name + ' no empty gallery ' + project.slug);
         const originalSelection = officialBySlug.get(project.slug);
-        const approvedHero = originalSelection?.previewCover ?? visual.previewCover ?? visual.covers?.preview.hero;
-        const approvedOrigin = originalSelection ? project.slug : visual.images.find(image => image.localPath === approvedHero)?.originCommercialSlug;
+        const selectedOwnerCover = ownerCoverBySlug.get(project.slug);
+        const approvedHero = selectedOwnerCover?.selected.localPath ?? originalSelection?.previewCover ?? visual.previewCover ?? visual.covers?.preview.hero;
+        const approvedOrigin = selectedOwnerCover || originalSelection ? project.slug : visual.images.find(image => image.localPath === approvedHero)?.originCommercialSlug;
         check(await page.locator('.hero-image').evaluateAll((images, expected) => images.length === 1 && images.every(image =>
           image.complete && image.naturalWidth && new URL(image.src).pathname === expected.path &&
           image.getAttribute('data-commercial-stage') === expected.origin), { path: approvedHero, origin: approvedOrigin }),
           viewport.name + ' approved valid hero ' + project.slug);
+        if (selectedOwnerCover) {
+          check(evidence.devicePixelRatio === (viewport.dpr ?? 1), viewport.name + ' actual owner cover device pixel ratio ' + project.slug);
+          check(evidence.heroGeometry.length === 1 && evidence.heroGeometry.every(image =>
+            image.naturalWidth === selectedOwnerCover.selected.width && image.naturalHeight === selectedOwnerCover.selected.height &&
+            image.objectFit === 'contain' && Math.abs(image.width / image.height - image.naturalWidth / image.naturalHeight) < 0.015 &&
+            image.width <= image.naturalWidth + 1 && image.height <= image.naturalHeight + 1),
+          viewport.name + ' complete owner photograph without crop or enlargement ' + project.slug);
+          check(new URL(await page.locator('meta[property="og:image"]').getAttribute('content'), base).pathname === selectedOwnerCover.selected.localPath,
+            viewport.name + ' approved owner Open Graph cover ' + project.slug);
+          check(JSON.stringify(evidence.planImagePaths) === JSON.stringify(ownerSourcePlans.get(project.slug)) &&
+            JSON.stringify([...evidence.planImagePaths].sort()) === JSON.stringify(record.models.map(model => model.plan.localPath).sort()),
+          viewport.name + ' unchanged owner project plan inventory ' + project.slug);
+          check(evidence.galleryImagePaths.length === expected.length && !evidence.galleryImagePaths.includes(selectedOwnerCover.selected.localPath) &&
+            (!selectedOwnerCover.supersededCoverOnly || !evidence.galleryImagePaths.includes(selectedOwnerCover.supersededCoverOnly.localPath)),
+          viewport.name + ' owner cover does not enter unchanged gallery ' + project.slug);
+          if (!selectedOwnerCover.supersededCoverOnly) {
+            const previousCover = visual.previewCover ?? visual.covers?.preview.hero;
+            check(evidence.galleryImagePaths.includes(previousCover), viewport.name + ' previous accepted photograph remains in gallery ' + project.slug);
+          }
+        }
         if (originalSelection) {
           check(evidence.devicePixelRatio === (viewport.dpr ?? 1), viewport.name + ' actual device pixel ratio ' + project.slug);
           for (const image of originalSelection.images) check(await page.locator('.gallery-grid img').evaluateAll((images, expected) => {
@@ -184,13 +236,14 @@ try {
       await page.waitForFunction(() => !document.querySelector('#search')?.disabled && document.querySelectorAll('.catalog-card').length > 0);
       await page.locator('#search').fill('Ecasa');
       await page.waitForTimeout(100);
-      for (const project of official.projects) {
+      for (const project of retinaProjects) {
         const card = page.locator('.catalog-card[data-project="' + project.slug + '"]');
         await card.scrollIntoViewIfNeeded();
         await card.locator('img').evaluate(image => { image.loading = 'eager'; });
         await card.locator('img').evaluate(async image => { await image.decode(); });
         check(await card.locator('img').evaluate((image, path) => image.complete && image.naturalWidth && new URL(image.src).pathname === path,
           project.previewCover), viewport.name + ' valid original catalogue cover ' + project.slug);
+        await checkOwnerCard(card, project, viewport);
         const cardPath = resolve(output, viewport.name + '-catalogue-' + project.slug + '.png');
         await card.screenshot({ path: cardPath }); screenshots.push(cardPath);
       }
@@ -205,9 +258,10 @@ try {
         const card = page.locator('.catalog-card[data-project="' + project.slug + '"]');
         await card.scrollIntoViewIfNeeded(); await card.locator('img').evaluate(image => { image.loading = 'eager'; });
         await card.locator('img').evaluate(async image => { await image.decode(); });
-        const expectedCover = officialBySlug.get(project.slug)?.previewCover ?? manualBySlug.get(project.slug)?.previewCover ?? qualityBySlug.get(project.slug).covers.preview.catalogue;
+        const expectedCover = ownerCoverBySlug.get(project.slug)?.selected.localPath ?? officialBySlug.get(project.slug)?.previewCover ?? manualBySlug.get(project.slug)?.previewCover ?? qualityBySlug.get(project.slug).covers.preview.catalogue;
         check(await card.locator('img').evaluate((image, path) => image.complete && image.naturalWidth && new URL(image.src).pathname === path, expectedCover),
           viewport.name + ' valid selected catalogue cover ' + project.slug);
+        await checkOwnerCard(card, project, viewport);
         const cardPath = resolve(output, viewport.name + '-catalogue-' + project.slug + '.png');
         await card.screenshot({ path: cardPath }); screenshots.push(cardPath);
       }
@@ -315,7 +369,7 @@ try {
   }
   for (const record of review.projects) {
     const visual = effectiveBySlug.get(record.slug);
-    for (const asset of [...record.images.filter(image => visual.images.some(reviewed => reviewed.localPath === image.localPath && (reviewed.decision === 'keep' || reviewed.coverOnly))), ...record.models.map(model => model.plan)]) {
+    for (const asset of [...record.images.filter(image => !ownerSupersededPaths.has(image.localPath) && visual.images.some(reviewed => reviewed.localPath === image.localPath && (reviewed.decision === 'keep' || reviewed.coverOnly))), ...record.models.map(model => model.plan)]) {
       const response = await request.request.get(base + asset.localPath, requestOptions);
       check(response.status() === 200 && createHash('sha256').update(await response.body()).digest('hex') === asset.sha256, 'Media hash ' + asset.localPath);
     }
@@ -326,6 +380,15 @@ try {
       'Selected original image hash ' + image.localPath);
     check((await request.request.get(base + image.original.localPath, requestOptions)).status() === 404,
       'Raw official download remains private ' + project.slug);
+  }
+  if (ownerCoverProjects.length) check((await request.request.get(base + '/data/ecasa-owner-cover.json', requestOptions)).status() === 404,
+    'Owner cover review remains private');
+  for (const project of ownerCoverProjects) {
+    const response = await request.request.get(base + project.selected.localPath, requestOptions);
+    check(response.status() === 200 && createHash('sha256').update(await response.body()).digest('hex') === project.selected.sha256,
+      'Selected owner cover image hash ' + project.projectSlug);
+    for (const path of [project.original.localPath, ...(project.supersededCoverOnly ? [project.supersededCoverOnly.localPath] : [])])
+      check((await request.request.get(base + path, requestOptions)).status() === 404, 'Excluded owner cover resource ' + path);
   }
   await request.close();
 } finally { await browser.close(); }

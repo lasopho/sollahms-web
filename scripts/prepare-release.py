@@ -26,6 +26,15 @@ OFFICIAL_MODULE = 'scripts/ecasa-official-originals.mjs'
 OFFICIAL_SLUGS = {'ferroparque', 'alto-san-joaquin'}
 MANUAL_MANIFEST = 'data/ecasa-manual-quality.json'
 MANUAL_MODULE = 'scripts/ecasa-manual-quality.mjs'
+OWNER_FOLDER = 'ecasa-owner-review'
+OWNER_MANIFEST = 'data/ecasa-owner-cover.json'
+OWNER_MODULE = 'scripts/ecasa-owner-cover.mjs'
+OWNER_PROJECT = 'edificio-bezanilla'
+SUPERSEDED_OWNER_COVER = '/assets/propiedades/ecasa-preview/edificio-bezanilla/imagen-02-p01.webp'
+OWNER_PROJECTS = {'edificio-bezanilla', 'espacio-victoria', 'aires-la-florida-2', 'conecta-huechuraba', 'urban-la-florida'}
+OWNER_SUPERSEDED = {slug: '/assets/propiedades/ecasa-preview/' + slug + '/' + filename for slug, filename in {
+    'edificio-bezanilla': 'imagen-02-p01.webp', 'aires-la-florida-2': 'imagen-02-p01.webp',
+    'conecta-huechuraba': 'imagen-02-p01.webp', 'urban-la-florida': 'imagen-03-p02.webp'}.items()}
 BASE_QUALITY_MANIFEST = 'data/ecasa-image-quality.json'
 BASE_QUALITY_SHA256 = 'b4562d1dfbe729520a270039df347b8e3e62f5cff7c3b62d99355d784b0bfb34'
 MANUAL_IMAGE_FIELDS = ('localPath', 'sha256', 'width', 'height', 'originCommercialSlug',
@@ -112,12 +121,141 @@ def manual_summary(images):
             'documentaryPublishedImages': sum(image['kind'] == 'documentary' and (image['decision'] == 'keep' or image['coverOnly']) for image in images)}
 
 
-def manual_published_media(originals, selection):
+def manual_published_media(originals, selection, owner=None):
     images = {image['localPath'].lstrip('/'): image for image in selection['effectiveImages']}
     require(all(path in originals and originals[path] == image['sha256'] for path, image in images.items()
                 if image['kind'] == 'documentary'), 'Manual documentary selection differs from the source manifest')
-    return {path: value for path, value in originals.items() if path not in images or
-            images[path]['decision'] == 'keep' or images[path]['coverOnly']}
+    selected = {path: value for path, value in originals.items() if path not in images or
+                images[path]['decision'] == 'keep' or images[path]['coverOnly']}
+    if owner is not None:
+        for superseded in owner_superseded_covers(owner):
+            path = superseded['localPath'].lstrip('/')
+            require(images.get(path, {}).get('projectSlug') in OWNER_PROJECTS and images[path]['coverOnly'] is True and
+                    selected.get(path) == superseded['sha256'], 'Owner cover cannot retire another documentary resource')
+            del selected[path]
+    return selected
+
+
+def owner_manifest_projects(manifest):
+    require(manifest.get('baselineCommit') == '04d9628787c825532c3507a15db7f0f2cbb42c4b' and
+            manifest.get('protectedPreviewOnly') is True and manifest.get('provenance') == 'user_provided',
+            'Unrecognized owner cover baseline or provenance')
+    if manifest.get('schemaVersion') == 1:
+        require(set(manifest) == {'schemaVersion', 'scope', 'protectedPreviewOnly', 'baselineCommit', 'projectSlug',
+                                 'provenance', 'original', 'selected', 'conversion', 'supersededCoverOnly'} and
+                manifest.get('scope') == 'ecasa_owner_cover_only' and manifest.get('projectSlug') == OWNER_PROJECT,
+                'Unrecognized legacy owner cover project or scope')
+        return [{key: manifest[key] for key in ['projectSlug', 'original', 'selected', 'conversion', 'supersededCoverOnly']}]
+    projects = manifest.get('projects', [])
+    require(set(manifest) == {'schemaVersion', 'scope', 'protectedPreviewOnly', 'baselineCommit', 'provenance', 'projects'} and
+            manifest.get('schemaVersion') == 2 and manifest.get('scope') == 'ecasa_owner_covers_only' and
+            len(projects) == 5 and {project.get('projectSlug') for project in projects} == OWNER_PROJECTS and
+            all(set(project) == {'projectSlug', 'original', 'selected', 'conversion', 'supersededCoverOnly'} for project in projects),
+            'Owner covers require exactly the five named project identities')
+    return projects
+
+
+def owner_superseded_covers(owner):
+    if owner is None: return []
+    if owner.get('schemaVersion') == 2:
+        values = [project['supersededCoverOnly'] for project in owner_manifest_projects(owner) if project['supersededCoverOnly'] is not None]
+    elif 'projectSlugs' in owner:
+        values = owner.get('supersededCovers', [])
+    else:
+        values = [owner['supersededCoverOnly']]
+    return sorted(values, key=lambda value: value['localPath'])
+
+
+def owner_review_fields(manifest):
+    if manifest['schemaVersion'] == 1:
+        return {'projectSlug': OWNER_PROJECT, 'provenance': 'user_provided', 'supersededCoverOnly': manifest['supersededCoverOnly']}
+    return {'projectSlugs': sorted(OWNER_PROJECTS), 'provenance': 'user_provided', 'supersededCovers': owner_superseded_covers(manifest)}
+
+
+def owner_manifest_inventory(manifest, manual=None):
+    projects = owner_manifest_projects(manifest)
+    sources, published = {}, {}
+    for project in projects:
+        slug = project['projectSlug'];conversion = project['conversion']
+        require(set(conversion) == {'format', 'lossless', 'resize', 'crop'} and conversion.get('format') == 'webp' and
+                conversion.get('lossless') is True and conversion.get('resize') is False,
+                'Owner cover must retain lossless native pixels without resize')
+        original, selected = project['original'], project['selected']
+        for kind, asset in [('original', original), ('selected', selected)]:
+            require(set(asset) == {'localPath', 'sha256', 'bytes', 'width', 'height', 'fileName' if kind == 'original' else 'alt'},
+                    'Owner cover asset contains unreviewed metadata')
+            prefix = 'assets/propiedades/' + OWNER_FOLDER + '/' + ('originals/' if kind == 'original' else '') + slug + '/'
+            path = asset.get('localPath', '').lstrip('/');suffix = '.png' if kind == 'original' else '.webp'
+            require(asset.get('localPath') == '/' + path and path.startswith(prefix) and
+                    re.fullmatch(r'[a-zA-Z0-9_.-]+' + re.escape(suffix), path[len(prefix):]) is not None and '..' not in path and
+                    path not in sources, 'Owner cover asset is outside the exact project namespace or duplicated')
+            require(re.fullmatch(r'[a-f0-9]{64}', asset.get('sha256', '')) is not None and
+                    all(type(asset.get(key)) is int and asset[key] > 0 for key in ['bytes', 'width', 'height']),
+                    'Owner cover hash, size or native dimensions are incomplete')
+            item = {'path': '/' + path, 'sha256': asset['sha256'], 'bytes': asset['bytes'],
+                    'width': asset['width'], 'height': asset['height'], 'kind': kind}
+            sources[path] = item
+            if kind == 'selected': published[path] = item
+        crop = conversion['crop']
+        if manifest['schemaVersion'] == 1:
+            require(crop is False and selected.get('alt') == 'Fachada de Bezanilla' and
+                    original.get('fileName') == 'web-header-bezanilla-1649x972.png', 'Legacy owner attribution or crop changed')
+        else:
+            require(crop is None or isinstance(crop, dict) and set(crop) == {'left', 'top', 'width', 'height'} and
+                    all(type(crop.get(key)) is int for key in crop) and crop['left'] >= 0 and crop['top'] >= 0 and
+                    crop['width'] > 0 and crop['height'] > 0 and crop['left'] + crop['width'] <= original['width'] and
+                    crop['top'] + crop['height'] <= original['height'], 'Owner crop is outside its original native rectangle')
+            require(isinstance(selected.get('alt'), str) and bool(selected['alt'].strip()) and
+                    isinstance(original.get('fileName'), str) and original['fileName'].endswith('.png'), 'Owner attribution is incomplete')
+        expected_dimensions = (crop['width'], crop['height']) if isinstance(crop, dict) else (original['width'], original['height'])
+        require((selected['width'], selected['height']) == expected_dimensions, 'Owner cover crop/native dimensions differ')
+        superseded = project['supersededCoverOnly']
+        if slug == 'espacio-victoria':
+            require(superseded is None, 'Espacio documentary gallery cannot be retired by a new cover')
+        else:
+            require(isinstance(superseded, dict) and set(superseded) == {'localPath', 'sha256'} and
+                    superseded.get('localPath') == OWNER_SUPERSEDED[slug] and re.fullmatch(r'[a-f0-9]{64}', superseded.get('sha256', '')) is not None,
+                    'Only the named prior cover-only image may be superseded')
+        if manual is not None:
+            previous = next((row for row in manual.get('projects', []) if row.get('slug') == slug), {})
+            image = next((row for row in previous.get('images', []) if row.get('localPath') == previous.get('previewCover')), {})
+            require(image.get('kind') == 'documentary' and
+                    (superseded is None and image.get('decision') == 'keep' and not image.get('coverOnly') or
+                     superseded is not None and image.get('decision') == 'exclude' and image.get('coverOnly') is True and
+                     image.get('localPath') == superseded['localPath'] and image.get('sha256') == superseded['sha256']),
+                    'Owner cover must preserve its frozen same-project gallery/cover-only decisions')
+    return sources, published
+
+
+def owner_policy_inventory(policy, files):
+    review = policy.get('ownerCover')
+    private = {name for name in files if name.startswith('assets/propiedades/' + OWNER_FOLDER + '/')}
+    if review is None:
+        require(not private and OWNER_MANIFEST not in files and OWNER_MODULE not in files,
+                'Owner cover files require an independent exact review receipt')
+        return {}
+    slugs = review.get('projectSlugs', [review.get('projectSlug')])
+    require(slugs == sorted(OWNER_PROJECTS) if 'projectSlugs' in review else slugs == [OWNER_PROJECT],
+            'Owner cover receipt changed the named project identities')
+    require(policy.get('contentProfile') == 'protected_ecasa_review' and policy.get('ownerSourceMedia') == 2 * len(slugs) and
+            policy.get('ownerPublishedMedia') == len(slugs) and
+            review.get('provenance') == 'user_provided' and files.get(OWNER_MANIFEST, {}).get('sha256') == review.get('manifestSha256') and
+            OWNER_MODULE in files, 'Owner cover manifest, consumer or private receipt differs')
+    sources = review.get('sourceAssets', []);published = review.get('publishedAssets', [])
+    inventory = {item.get('path', '').lstrip('/'): item for item in sources}
+    require(len(inventory) == len(sources) == 2 * len(slugs) and set(inventory) == private and
+            {item.get('kind') for item in sources} == {'original', 'selected'} and len(published) == len(slugs) and
+            published == [item for item in sources if item.get('kind') == 'selected'],
+            'Owner cover private/publication inventory includes an extra resource or original')
+    for name, item in inventory.items():
+        require(files[name].get('sha256') == item.get('sha256') and files[name].get('size') == item.get('bytes'),
+                'Owner cover source bytes differ from the exact review inventory')
+    superseded = owner_superseded_covers(review)
+    expected = set(OWNER_SUPERSEDED.values()) if len(slugs) == 5 else {SUPERSEDED_OWNER_COVER}
+    require(len(superseded) == len(expected) and {item.get('localPath') for item in superseded} == expected and
+            all(files.get(item['localPath'].lstrip('/'), {}).get('sha256') == item.get('sha256') for item in superseded),
+            'Owner cover receipt omitted or changed a preserved superseded source')
+    return inventory
 
 
 def manual_policy_inventory(policy, files):
@@ -136,7 +274,7 @@ def manual_policy_inventory(policy, files):
     summary = manual_summary(images)
     require(all(review.get('summary', {}).get(key) == value for key, value in summary.items()),
             'Manual summary differs from its exact effective image inventory')
-    require(policy.get('ecasaPublishedMedia') == 74 + summary['documentaryPublishedImages'] and
+    require(policy.get('ecasaPublishedMedia') == 74 + summary['documentaryPublishedImages'] - len(owner_superseded_covers(policy.get('ownerCover'))) and
             policy.get('ecasaGalleryImages') == summary['keptImages'] + policy.get('officialPublishedMedia', 0),
             'Manual publication counts differ from selected photographs and preserved plans')
     return summary
@@ -235,9 +373,9 @@ def safe_name(name, official_original_paths=()):
     require(not any(part in {'docs', 'tests', 'contracts', 'node_modules',
                              'brochure-candidates', 'inventarios'} for part in parts),
             'Private or operational directory in deployment source')
-    require('originals' not in parts or name in official_original_paths and
-            parts[:4] == ('assets', 'propiedades', OFFICIAL_FOLDER, 'originals') and
-            len(parts) == 6 and parts[4] in OFFICIAL_SLUGS,
+    require('originals' not in parts or name in official_original_paths and len(parts) == 6 and
+            (parts[:4] == ('assets', 'propiedades', OFFICIAL_FOLDER, 'originals') and parts[4] in OFFICIAL_SLUGS or
+             parts[:4] == ('assets', 'propiedades', OWNER_FOLDER, 'originals') and parts[4] in OWNER_PROJECTS and parts[5].endswith('.png')),
             'Private or operational directory in deployment source')
     return name
 
@@ -253,6 +391,9 @@ def verify_archive(archive, policy):
     files, total, official_manifest, manual_manifest, base_quality = {}, 0, None, None, None
     official_original_paths = {item.get('path', '').lstrip('/')
         for item in (policy.get('officialOriginals') or {}).get('sourceAssets', []) if item.get('kind') == 'original'}
+    owner_manifest = None
+    official_original_paths.update(item.get('path', '').lstrip('/')
+        for item in (policy.get('ownerCover') or {}).get('sourceAssets', []) if item.get('kind') == 'original')
     with tarfile.open(archive, 'r:gz') as bundle:
         for member in bundle:
             name = safe_name(member.name, official_original_paths)
@@ -270,6 +411,8 @@ def verify_archive(archive, policy):
                 manual_manifest = json.loads(data)
             elif name == BASE_QUALITY_MANIFEST:
                 base_quality = json.loads(data)
+            elif name == OWNER_MANIFEST:
+                owner_manifest = json.loads(data)
             total += len(data)
     require(len(files) == policy['sourceFiles'] and total == policy['sourceBytes'], 'Incomplete source archive')
     if policy.get('officialOriginals') is not None:
@@ -290,6 +433,16 @@ def verify_archive(archive, policy):
         require(policy['manualQuality'].get('effectiveImages') == derived['effectiveImages'] and
                 policy['manualQuality'].get('projects') == derived['projects'],
                 'Manual receipt differs from the exact archived selection')
+    owner_policy_inventory(policy, files)
+    if policy.get('ownerCover') is not None:
+        require(owner_manifest is not None and manual_manifest is not None,
+                'Owner cover omitted its exact source manifest or frozen manual selection')
+        sources, published = owner_manifest_inventory(owner_manifest, manual_manifest)
+        review = policy['ownerCover']
+        require(review.get('sourceAssets') == [sources[name] for name in sorted(sources)] and
+                review.get('publishedAssets') == [published[name] for name in sorted(published)] and
+                all(review.get(key) == value for key, value in owner_review_fields(owner_manifest).items()),
+                'Owner cover receipt differs from the exact archived manifest')
     return files
 
 
@@ -326,8 +479,10 @@ def verify_git_reference(root, files, policy):
             mode, kind, oid = fields.decode().split()
             tree[name.decode()] = (mode, kind, oid)
     official = official_policy_inventory(policy, files)
+    owner = owner_policy_inventory(policy, files)
     manual_policy_inventory(policy, files)
     require(not set(official) & set(tree), 'Official review images must remain outside public Git source')
+    require(not set(owner) & set(tree), 'Owner cover images must remain outside public Git source')
     tracked = 0
     for name, info in files.items():
         if name in tree:
@@ -337,11 +492,14 @@ def verify_git_reference(root, files, policy):
             tracked += 1
         else:
             folders = policy.get('privateMediaFolders', ['ingevec-preview'])
-            require(bool(folders) and set(folders) <= {'ingevec-preview', 'ecasa-preview', OFFICIAL_FOLDER},
+            require(bool(folders) and set(folders) <= {'ingevec-preview', 'ecasa-preview', OFFICIAL_FOLDER, OWNER_FOLDER},
                     'Unapproved private media folder policy')
             if name.startswith('assets/propiedades/' + OFFICIAL_FOLDER + '/'):
                 require(OFFICIAL_FOLDER in folders and name in official,
                         'Official private source is not in its exact manifest inventory')
+            if name.startswith('assets/propiedades/' + OWNER_FOLDER + '/'):
+                require(OWNER_FOLDER in folders and name in owner,
+                        'Owner cover private source is not in its exact manifest inventory')
             require(any(name.startswith('assets/propiedades/' + folder + '/') for folder in folders),
                     'Unapproved non-Git source file: ' + name)
     require(tracked == policy['trackedSourceFiles'] and len(files) - tracked == policy['privateSourceFiles'],
@@ -360,7 +518,7 @@ def verify_worktree(root, files, policy):
                 'scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json',
                 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
                 OFFICIAL_MANIFEST, OFFICIAL_MODULE,
-                MANUAL_MANIFEST, MANUAL_MODULE,
+                MANUAL_MANIFEST, MANUAL_MODULE, OWNER_MANIFEST, OWNER_MODULE,
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
     require(not git(root, 'diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
@@ -466,6 +624,10 @@ def prepare(archive, output, node, policy, protected_review=False):
             require(result.get('ecasaReviewMedia') == policy['ecasaPublishedMedia'] and
                     result.get('ecasaGalleryImages') == policy['ecasaGalleryImages'],
                     'Manual build publication differs from the reviewed image/plan inventory')
+        if policy.get('ownerCover') is not None:
+            require(result.get('ownerSourceMedia') == policy['ownerSourceMedia'] and
+                    result.get('ownerPublishedMedia') == (policy['ownerPublishedMedia'] if result['environment'] == 'preview' else 0),
+                    'Owner cover publication differs from its Preview-only review inventory')
     require(public_result['environment'] == 'production' and not public_result['noindex'] and
             preview_result['environment'] == 'preview' and preview_result['noindex'], 'Build environment mismatch')
     audit_path = destination / 'public-preview-audit.json'
@@ -502,6 +664,8 @@ def prepare(archive, output, node, policy, protected_review=False):
                'ecasaGalleryImages': policy.get('ecasaGalleryImages', 114),
                'officialOriginals': policy.get('officialOriginals'),
                **({'manualQuality': policy['manualQuality']} if policy.get('manualQuality') is not None else {}),
+               **({'ownerCover': policy['ownerCover'], 'ownerSourceMedia': policy['ownerSourceMedia'], 'ownerPublishedMedia': policy['ownerPublishedMedia']}
+                  if policy.get('ownerCover') is not None else {}),
                'ecasaPublicWebParityVerified': not protected_review,
                'publicationAuthorized': False, 'integrationAuthorized': False}
     (destination / 'release-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')

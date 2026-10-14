@@ -178,6 +178,81 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
             with self.subTest(key=key), self.assertRaises(ValueError):
                 self.reference(dict(original, **{key: value}))
 
+    def owner_metadata(self):
+        metadata = self.manual_metadata()
+        owner = json.loads((MODULE.parents[1] / preview.release.OWNER_MANIFEST).read_text())
+        if owner['schemaVersion'] == 2:
+            project = copy.deepcopy(next(project for project in owner['projects'] if project['projectSlug'] == preview.release.OWNER_PROJECT))
+            project['conversion']['crop'] = False
+            owner = {**{key: owner[key] for key in ['protectedPreviewOnly', 'baselineCommit', 'provenance']},
+                     'schemaVersion': 1, 'scope': 'ecasa_owner_cover_only', **project}
+        manual = json.loads((MODULE.parents[1] / preview.release.MANUAL_MANIFEST).read_text())
+        sources, published = preview.release.owner_manifest_inventory(owner, manual)
+        self.files.update({name: {'sha256': item['sha256'], 'size': item['bytes']} for name, item in sources.items()})
+        self.files.update({preview.release.OWNER_MANIFEST: {'sha256': '9' * 64}, preview.release.OWNER_MODULE: {},
+            owner['supersededCoverOnly']['localPath'].lstrip('/'): {'sha256': owner['supersededCoverOnly']['sha256']}})
+        metadata.update(ecasaPublishedMedia=88, selectedBrochureMedia=metadata['selectedBrochureMedia'][:-1],
+            ownerSourceMedia=2, ownerPublishedMedia=1,
+            ownerCover={'manifestSha256': '9' * 64, 'projectSlug': preview.release.OWNER_PROJECT, 'provenance': 'user_provided',
+                'sourceAssets': [sources[name] for name in sorted(sources)],
+                'publishedAssets': [published[name] for name in sorted(published)],
+                'supersededCoverOnly': owner['supersededCoverOnly']})
+        return metadata
+
+    def test_owner_reference_transports_raw_and_superseded_source_without_counting_them_as_publication(self):
+        reference = self.reference(self.owner_metadata())
+        self.assertEqual(reference['selectedBrochureMedia'], 357)
+        self.assertEqual(reference['ecasaPublishedMedia'], 88)
+        self.assertEqual(reference['ecasaGalleryImages'], 72)
+        self.assertEqual(reference['manualQuality']['summary']['coverOnlyImages'], 7)
+        self.assertEqual(reference['ownerPublishedMedia'], 1)
+        self.assertIn(preview.release.OWNER_FOLDER, reference['privateMediaFolders'])
+        self.assertEqual(reference['sourceBrochureMedia'], 399)
+        self.assertFalse(reference['publicationAuthorized'])
+
+    def test_owner_reference_rejects_stale_publication_count_and_raw_selected_asset(self):
+        original = self.owner_metadata()
+        for mutation in ['count', 'raw']:
+            metadata = copy.deepcopy(original)
+            if mutation == 'count': metadata['ecasaPublishedMedia'] = 89
+            else: metadata['ownerCover']['publishedAssets'] = [row for row in metadata['ownerCover']['sourceAssets'] if row['kind'] == 'original']
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): self.reference(metadata)
+
+    def test_five_owner_reference_keeps_frozen_summary_and_separates_four_superseded_covers(self):
+        metadata = self.manual_metadata()
+        owner = json.loads((MODULE.parents[1] / preview.release.OWNER_MANIFEST).read_text())
+        manual = json.loads((MODULE.parents[1] / preview.release.MANUAL_MANIFEST).read_text())
+        if owner['schemaVersion'] == 1:
+            projects = []
+            for slug in sorted(preview.release.OWNER_PROJECTS):
+                project = {key: copy.deepcopy(owner[key]) for key in ['original', 'selected', 'conversion']}
+                project['projectSlug'] = slug;project['conversion']['crop'] = None
+                for kind in ['original', 'selected']:
+                    project[kind]['localPath'] = project[kind]['localPath'].replace('/edificio-bezanilla/', '/' + slug + '/')
+                previous = next(row for row in manual['projects'] if row['slug'] == slug)
+                choice = next(row for row in previous['images'] if row['localPath'] == previous['previewCover'])
+                project['supersededCoverOnly'] = None if slug == 'espacio-victoria' else {'localPath': choice['localPath'], 'sha256': choice['sha256']}
+                projects.append(project)
+            owner = {'schemaVersion': 2, 'scope': 'ecasa_owner_covers_only', 'protectedPreviewOnly': True,
+                     'baselineCommit': owner['baselineCommit'], 'provenance': 'user_provided', 'projects': projects}
+        sources, published = preview.release.owner_manifest_inventory(owner, manual)
+        self.files.update({name: {'sha256': item['sha256'], 'size': item['bytes']} for name, item in sources.items()})
+        self.files.update({preview.release.OWNER_MANIFEST: {'sha256': '9' * 64}, preview.release.OWNER_MODULE: {}})
+        self.files.update({row['localPath'].lstrip('/'): {'sha256': row['sha256']} for row in preview.release.owner_superseded_covers(owner)})
+        metadata.update(ecasaPublishedMedia=85, selectedBrochureMedia=metadata['selectedBrochureMedia'][:354],
+            ownerSourceMedia=10, ownerPublishedMedia=5,
+            ownerCover={'manifestSha256': '9' * 64, **preview.release.owner_review_fields(owner),
+                'sourceAssets': [sources[name] for name in sorted(sources)], 'publishedAssets': [published[name] for name in sorted(published)]})
+        reference = self.reference(metadata)
+        self.assertEqual(reference['selectedBrochureMedia'], 354)
+        self.assertEqual(reference['ownerPublishedMedia'], 5)
+        self.assertEqual(reference['ecasaPublishedMedia'], 85)
+        self.assertEqual(reference['ecasaGalleryImages'], 72)
+        self.assertEqual(reference['manualQuality']['summary']['documentaryPublishedImages'], 15)
+        self.assertEqual(len(reference['ownerCover']['supersededCovers']), 4)
+        metadata['ecasaPublishedMedia'] = 88
+        with self.assertRaises(ValueError): self.reference(metadata)
+
 
 if __name__ == '__main__':
     unittest.main()

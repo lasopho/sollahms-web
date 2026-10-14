@@ -48,7 +48,9 @@ def make_reference(metadata, platform, files, commit):
                     metadata.get('ecasaCommercialEntries') == 22 and metadata.get('ecasaLegacyRoutes') == 8,
                     'Incorrect Ecasa catalogue composition')
     manual_summary = release.manual_policy_inventory(metadata, files)
-    expected_ecasa = 74 + manual_summary['documentaryPublishedImages'] if manual_summary else 126
+    owner = metadata.get('ownerCover')
+    release.owner_policy_inventory(metadata, files)
+    expected_ecasa = 74 + manual_summary['documentaryPublishedImages'] - len(release.owner_superseded_covers(owner)) if manual_summary else 126
     release.require(metadata.get('sourceBrochureMedia') == 399 and metadata.get('ecasaSourceMedia') == 130 and
                     metadata.get('ecasaPublishedMedia') == expected_ecasa and
                     len(metadata['selectedBrochureMedia']) == 269 + expected_ecasa,
@@ -72,7 +74,7 @@ def make_reference(metadata, platform, files, commit):
             'archiveSha256': metadata['archive']['sha256'], 'archiveBytes': metadata['archive']['size'],
             'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
             'trackedSourceFiles': tracked, 'privateSourceFiles': len(files) - tracked,
-            'privateMediaFolders': ['ingevec-preview', 'ecasa-preview'] + ([release.OFFICIAL_FOLDER] if official else []),
+            'privateMediaFolders': ['ingevec-preview', 'ecasa-preview'] + ([release.OFFICIAL_FOLDER] if official else []) + ([release.OWNER_FOLDER] if owner else []),
             'catalogueProjects': 136, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
             'ecasaLegacyRoutes': 8, 'ingevecProjects': 16,
             'htmlPages': 143, 'selectedBrochureMedia': len(metadata['selectedBrochureMedia']),
@@ -84,6 +86,7 @@ def make_reference(metadata, platform, files, commit):
                 'ecasaGalleryImages': metadata['ecasaGalleryImages'],
                 'officialOriginals': official} if official else {}),
             **({'manualQuality': metadata['manualQuality']} if manual_summary else {}),
+            **({'ownerCover': owner, 'ownerSourceMedia': metadata['ownerSourceMedia'], 'ownerPublishedMedia': metadata['ownerPublishedMedia']} if owner else {}),
             'ecasaPublicWebRights': 'pending_contract_scope_verification',
             'verificationTools': tools,
             'publicationAuthorized': False, 'integrationAuthorized': False}
@@ -126,10 +129,10 @@ def manifest_media(manifests):
     return selected
 
 
-def published_media(originals, quality, manual=None, official=None):
+def published_media(originals, quality, manual=None, official=None, owner=None):
     if manual is not None:
         selection = release.manual_quality_selection(manual, quality, official)
-        return release.manual_published_media(originals, selection)
+        return release.manual_published_media(originals, selection, owner)
     decisions = [image for project in quality['projects'] for image in project['images']]
     excluded = {image['localPath'] for image in decisions if image['decision'] == 'exclude'}
     release.require(excluded == VISUAL_EXCLUDED and not any(image.get('coverOnly') for image in decisions),
@@ -158,7 +161,7 @@ def main():
                       'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
                       **{key: metadata[key] for key in ['officialOriginals', 'officialSourceMedia',
                          'officialPublishedMedia', 'ecasaGalleryImages', 'contentProfile',
-                         'manualQuality', 'ecasaPublishedMedia'] if key in metadata}}
+                         'manualQuality', 'ecasaPublishedMedia', 'ownerCover', 'ownerSourceMedia', 'ownerPublishedMedia'] if key in metadata}}
     files = release.verify_archive(archive, initial_policy)
     reference = make_reference(metadata, platform, files, commit)
     release.verify_git_reference(ROOT, files, reference)
@@ -173,6 +176,9 @@ def main():
         quality = json.loads(source_archive.extractfile('data/ecasa-image-quality.json').read())
         official_manifest = json.loads(source_archive.extractfile(release.OFFICIAL_MANIFEST).read())
         manual_manifest = json.loads(source_archive.extractfile(release.MANUAL_MANIFEST).read())
+        owner_manifest = json.loads(source_archive.extractfile(release.OWNER_MANIFEST).read())
+        release.require(owner_manifest.get('schemaVersion') == 2,
+                        'This real Preview requires the five owner covers; legacy v1 cannot prepare Bezanilla alone')
     official_sources, official_published = release.official_manifest_inventory(official_manifest)
     release.require(metadata.get('officialOriginals', {}).get('sourceAssets') ==
                     [official_sources[name] for name in sorted(official_sources)] and
@@ -184,7 +190,11 @@ def main():
                     files[name]['size'] == item['bytes'] for name, item in official_sources.items()),
                     'Official review originals or selected images differ from source archive')
     original_media = manifest_media(manifests)
-    expected_media = published_media(original_media, quality, manual_manifest, official_manifest)
+    owner_sources, owner_published = release.owner_manifest_inventory(owner_manifest, manual_manifest)
+    release.require(metadata.get('ownerCover', {}).get('sourceAssets') == [owner_sources[name] for name in sorted(owner_sources)] and
+                    metadata.get('ownerCover', {}).get('publishedAssets') == [owner_published[name] for name in sorted(owner_published)],
+                    'Owner cover receipt differs from the exact source/publication selection')
+    expected_media = published_media(original_media, quality, manual_manifest, official_manifest, owner_manifest)
     release.require(len(original_media) == 399 and
                     len(expected_media) == 269 + reference['ecasaPublishedMedia'] and selected_inventory == expected_media,
                     'Brochure receipt differs from the exact reviewed publication selection')

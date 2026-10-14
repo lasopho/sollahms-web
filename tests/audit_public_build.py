@@ -331,6 +331,69 @@ def official_catalogue(catalogue, manifest, caption_policy):
     return result
 
 
+def owner_images(source, public, preview, manual, require):
+    prefix = 'assets/propiedades/' + release_inventory.OWNER_FOLDER + '/'
+    paths = lambda root: {str(path.relative_to(root)) for path in root.rglob('*')
+                          if path.is_file() and str(path.relative_to(root)).startswith(prefix)}
+    manifest_path = source / release_inventory.OWNER_MANIFEST
+    if not manifest_path.is_file():
+        require(not paths(source) and not paths(public) and not paths(preview) and
+                not (source / release_inventory.OWNER_MODULE).exists(), 'Owner cover files lack their exact private manifest')
+        return None, {}, {}
+    try:
+        manifest = json.loads(manifest_path.read_text())
+        sources, published = release_inventory.owner_manifest_inventory(manifest, manual)
+    except (ValueError, KeyError, TypeError, json.JSONDecodeError) as error:
+        require(False, 'Invalid independent owner cover review: ' + str(error))
+        return None, {}, {}
+    require(not manifest_path.is_symlink() and (source / release_inventory.OWNER_MODULE).is_file() and
+            not (source / release_inventory.OWNER_MODULE).is_symlink(), 'Owner cover manifest or consumer missing or symbolic')
+    require(paths(source) == set(sources) and not paths(public) and paths(preview) == set(published),
+            'Owner cover source/publication leaked an original or includes an unselected candidate')
+    for name, item in sources.items():
+        original = source / name
+        require(original.is_file() and not original.is_symlink() and original.stat().st_size == item['bytes'] and
+                digest(original) == item['sha256'], 'Owner cover original or conversion bytes changed: ' + name)
+    for name, item in published.items():
+        target = preview / name
+        require(target.is_file() and not target.is_symlink() and target.stat().st_size == item['bytes'] and
+                digest(target) == item['sha256'], 'Owner cover Preview bytes changed: ' + name)
+    private_refs = [item['path'] for item in sources.values() if item['kind'] == 'original']
+    private_refs.append(release_inventory.OWNER_MANIFEST)
+    for output in [public, preview]:
+        for path in output.rglob('*'):
+            if path.is_file() and path.suffix in {'.html', '.json', '.js', '.mjs', '.css'}:
+                text = path.read_text()
+                require(not any(reference in text for reference in private_refs), 'Private owner cover reference leaked: ' + str(path.relative_to(output)))
+                if output == public:
+                    require(prefix not in text, 'Owner cover reference leaked into public profile: ' + str(path.relative_to(output)))
+    return manifest, sources, published
+
+
+def owner_catalogue(catalogue, manifest):
+    result = json.loads(json.dumps(catalogue))
+    choices = {project['projectSlug']: project for project in release_inventory.owner_manifest_projects(manifest)}
+    for project in result:
+        if project['slug'] in choices:
+            choice = choices[project['slug']]
+            project['imagenPrincipal'] = choice['selected']['localPath']
+            project['imagenAlt'] = choice['selected']['alt']
+            project.pop('imagenEtapa', None)
+    return result
+
+
+def gallery_fragments(text):
+    return re.findall(r'<section\b[^>]*\bid=["\']galeria["\'][^>]*>[\s\S]*?</section>', text, re.I)
+
+
+def commercial_body(text, allow_owner_hero=False):
+    match = re.search(r'<body\b[^>]*>([\s\S]*)</body>', normalized_preview(text), re.I)
+    body = match[1] if match else text
+    if allow_owner_hero:
+        body = re.sub(r'<img\b[^>]*\bclass=["\'][^"\']*\bhero-image\b[^"\']*["\'][^>]*>', '<OWNER_COVER_HERO>', body, flags=re.I)
+    return body
+
+
 def quality_html_projections(source, review, node):
     # Use the same reviewed, private overlay consumer to replay its byte-level
     # HTML transformation, then independently audit provenance and eligibility.
@@ -341,8 +404,9 @@ const {normalizeFicheCopy}=await import(pathToFileURL(root+'/scripts/public-fich
 const review=await load('data/brochures-ecasa.json');const verified=validateEcasaImageQuality(review,await load('data/fichas-proyectos.json'),await load('data/proyectos.json'),await load('data/ecasa-image-quality.json'),await load('data/fuentes-imagenes.json'));
 let official=null,officialApi=null;try{const manifest=await load('data/ecasa-official-originals.json');officialApi=await import(pathToFileURL(root+'/scripts/ecasa-official-originals.mjs'));official=await officialApi.validateOfficialOriginals(manifest,{root});}catch(error){if(error.code!=='ENOENT')throw error;}
 let manual=null,manualApi=null;try{const policy=await load('data/ecasa-manual-quality.json');manualApi=await import(pathToFileURL(root+'/scripts/ecasa-manual-quality.mjs'));manual=manualApi.validateEcasaManualQuality(verified,policy);}catch(error){if(error.code!=='ENOENT')throw error;}
+let owner=null,ownerApi=null;try{const policy=await load('data/ecasa-owner-cover.json');ownerApi=await import(pathToFileURL(root+'/scripts/ecasa-owner-cover.mjs'));owner=await ownerApi.validateOwnerCover(policy,{root,manualPolicy:await load('data/ecasa-manual-quality.json')});}catch(error){if(error.code!=='ENOENT')throw error;}
 const copyQuality=preview=>{const selection=manual?manualApi.effectiveEcasaManualQuality(verified,manual,{preview}):verified;return {...selection,images:new Map(selection.images),projects:new Map(selection.projects),aliases:new Map(selection.aliases)};};
-const output={public:{},preview:{},officialSummary:official?.summary??null,manualSummary:manual?.summary??null};for(const record of review.projects){const original=await readFile(root+'/'+record.slug+'.html','utf8');for(const profile of ['public','preview']){const isPreview=profile==='preview',remove=isPreview?'PUBLIC':'PREVIEW',keep=isPreview?'PREVIEW':'PUBLIC';let html=original.replace(new RegExp('<!--ECASA_'+remove+'_START-->[\\s\\S]*?<!--ECASA_'+remove+'_END-->','g'),'').replace(new RegExp('<!--ECASA_'+keep+'_(?:START|END)-->','g'),'');html=transformEcasaImageQuality(html,record.slug,copyQuality(isPreview),{preview:isPreview});html=normalizeFicheCopy(html);if(official)html=officialApi.transformOfficialOriginals(html,record.slug,copyQuality(isPreview),official,{preview:isPreview});if(manual)html=manualApi.transformEcasaManualGallery(html,record.slug,manual,{preview:isPreview});output[profile][record.slug+'.html']=html;}}process.stdout.write(JSON.stringify(output));"""
+const output={public:{},preview:{},previewBaseline:{},officialSummary:official?.summary??null,manualSummary:manual?.summary??null};for(const record of review.projects){const original=await readFile(root+'/'+record.slug+'.html','utf8');for(const profile of ['public','preview']){const isPreview=profile==='preview',remove=isPreview?'PUBLIC':'PREVIEW',keep=isPreview?'PREVIEW':'PUBLIC';let html=original.replace(new RegExp('<!--ECASA_'+remove+'_START-->[\\s\\S]*?<!--ECASA_'+remove+'_END-->','g'),'').replace(new RegExp('<!--ECASA_'+keep+'_(?:START|END)-->','g'),'');html=transformEcasaImageQuality(html,record.slug,copyQuality(isPreview),{preview:isPreview});html=normalizeFicheCopy(html);if(official)html=officialApi.transformOfficialOriginals(html,record.slug,copyQuality(isPreview),official,{preview:isPreview});if(manual)html=manualApi.transformEcasaManualGallery(html,record.slug,manual,{preview:isPreview});if(isPreview)output.previewBaseline[record.slug+'.html']=html;if(owner)html=ownerApi.transformOwnerCover(html,record.slug,owner,{preview:isPreview});output[profile][record.slug+'.html']=html;}}if(owner){const original=normalizeFicheCopy(await readFile(root+'/proyectos.html','utf8'));for(const profile of ['public','preview'])output[profile]['proyectos.html']=ownerApi.transformOwnerCover(original,'proyectos',owner,{preview:profile==='preview'});}process.stdout.write(JSON.stringify(output));"""
     result = subprocess.run([node, '--input-type=module', '-e', script, str(source)], check=True, capture_output=True, text=True)
     return json.loads(result.stdout)
 
@@ -520,6 +584,13 @@ def audit(source, public, preview, protected_review=False, node=None):
     manual_path = source / release_inventory.MANUAL_MANIFEST
     manual_policy = json.loads(manual_path.read_text()) if manual_path.is_file() else None
     manual_selection, base_choices, base_projects = None, {}, {}
+    owner_manifest, owner_sources, owner_published = owner_images(source, public, preview, manual_policy, require)
+    counts['ownerSourceMedia'] = len(owner_sources)
+    counts['ownerPublishedMedia'] = len(owner_published)
+    if owner_manifest:
+        require(protected_review and manual_policy is not None, 'Owner cover requires the frozen manual review and protected Preview')
+    superseded_owner = {item['localPath'] for item in release_inventory.owner_superseded_covers(owner_manifest)}
+    owner_project_slugs = {project['projectSlug'] for project in release_inventory.owner_manifest_projects(owner_manifest)} if owner_manifest else set()
     official_manifest, official_sources, official_published = official_images(source, public, preview, require)
     counts['officialSourceMedia'] = len(official_sources)
     counts['officialPublishedMedia'] = len(official_published)
@@ -555,7 +626,8 @@ def audit(source, public, preview, protected_review=False, node=None):
             counts['ecasaExcludedImages'] = summary['excludedImages']
             counts['ecasaCoverOnlyImages'] = summary['coverOnlyImages']
             counts['ecasaDocumentaryGalleryImages'] = summary['documentaryGalleryImages']
-            counts['ecasaDocumentaryPublishedImages'] = summary['documentaryPublishedImages']
+            counts['ecasaManualDocumentaryPublishedImages'] = summary['documentaryPublishedImages']
+            counts['ecasaDocumentaryPublishedImages'] = summary['documentaryPublishedImages'] - len(superseded_owner)
         counts['ecasaGalleryImagesBeforeOfficial'] = counts['ecasaGalleryImages']
         counts['ecasaGalleryImages'] += len(official_published)
         if official_manifest and not manual_selection:
@@ -589,7 +661,7 @@ def audit(source, public, preview, protected_review=False, node=None):
                     'Ecasa cover is not a selected image: ' + record['slug'])
             counts['ecasaCovers'] += 1
         counts['ecasaImages'] += sum(not quality_policy or quality_choices.get(asset['localPath'], {}).get('decision') == 'keep' or
-            quality_choices.get(asset['localPath'], {}).get('coverOnly') is True for asset in record['images'])
+            quality_choices.get(asset['localPath'], {}).get('coverOnly') is True and asset['localPath'] not in superseded_owner for asset in record['images'])
         counts['ecasaPlans'] += len(record['models'])
         for asset in [*record['images'], *(model['plan'] for model in record['models'])]:
             path = asset['localPath'].lstrip('/')
@@ -604,7 +676,7 @@ def audit(source, public, preview, protected_review=False, node=None):
                 require(original.is_file() and not original.is_symlink() and digest(original) == asset['sha256'],
                         'Visual filtering changed or omitted original documentary evidence: ' + path)
                 choice = quality_choices.get(asset['localPath'])
-                if choice and choice['decision'] == 'exclude' and not choice.get('coverOnly'):
+                if choice and choice['decision'] == 'exclude' and (not choice.get('coverOnly') or asset['localPath'] in superseded_owner):
                     require(path not in files and path not in preview_files and asset['localPath'] not in html,
                             'Excluded Ecasa photograph survived as a published resource: ' + path)
                     continue
@@ -626,7 +698,9 @@ def audit(source, public, preview, protected_review=False, node=None):
             require(asset['localPath'] in html, 'Selected Ecasa resource absent from its fiche: ' + path)
     counts['ecasaMedia'] = len(ecasa_chosen)
     if quality_policy:
-        expected_images = manual_selection['summary']['documentaryPublishedImages'] if manual_selection else 52
+        expected_images = manual_selection['summary']['documentaryPublishedImages'] - len(superseded_owner) if manual_selection else 52
+        counts['ecasaPublishedCoverOnlyImages'] = counts.get('ecasaCoverOnlyImages', 0) - len(superseded_owner)
+        counts['ecasaSupersededCoverOnlyImages'] = len(superseded_owner)
         require(counts['ecasaMedia'] == 74 + expected_images and counts['ecasaImages'] == expected_images and counts['ecasaPlans'] == 74,
                 'Visual publication must preserve its selected documentary photographs and all 74 plans')
         counts['ecasaCovers'] = sum(project['covers']['preview']['catalogue'] is not None for project in quality_projects.values())
@@ -653,7 +727,7 @@ def audit(source, public, preview, protected_review=False, node=None):
     actual_ecasa_public = {f for f in files if f.startswith('assets/propiedades/ecasa-preview/')}
     require(actual_ecasa_public == (set() if protected_review else ecasa_chosen),
             'Ecasa media public eligibility does not match the requested audit profile')
-    expected_preview_files = files | ecasa_chosen | set(official_published) if protected_review else files
+    expected_preview_files = files | ecasa_chosen | set(official_published) | set(owner_published) if protected_review else files
     require(preview_files == expected_preview_files, 'Protected Preview and public build contain unexpected different files')
     expected_preview_catalogue = json.loads(json.dumps(catalogue))
     if quality_policy:
@@ -677,6 +751,13 @@ def audit(source, public, preview, protected_review=False, node=None):
                     expected_by_slug[record['slug']]['imagenEtapa'] = image['etapa']
     if official_manifest:
         expected_preview_catalogue = official_catalogue(expected_preview_catalogue, official_manifest, caption_policy)
+    if owner_manifest:
+        expected_preview_catalogue = owner_catalogue(expected_preview_catalogue, owner_manifest)
+        for project in release_inventory.owner_manifest_projects(owner_manifest):
+            page = (preview / (project['projectSlug'] + '.html')).read_text()
+            path = project['selected']['localPath'];roles = image_roles(page, path)
+            require(roles == {'hero': 1, 'gallery': 0, 'links': 0} and Document(page).metas.get('og:image', '').endswith(path),
+                    'Owner cover must be used only as its final same-project hero and social image: ' + project['projectSlug'])
     require(preview_catalogue == expected_preview_catalogue, 'Ecasa Preview changed commercial data beyond reviewed covers')
     preview_documents = {page: Document((preview / page).read_text()) for page in expected_pages & preview_files}
     for legacy, (target, stage) in LEGACY_TARGETS.items():
@@ -709,6 +790,18 @@ def audit(source, public, preview, protected_review=False, node=None):
                 expected_public_html = quality_projections['public'][path] if quality_projections else normalize_fiche_copy(selected_ecasa_html(original, False), caption_policy)
                 require(normalized_preview(text) == expected_preview_html, 'Ecasa Preview differs from selected source and reviewed display/visual policy: ' + path)
                 require((public / path).read_text() == expected_public_html, 'Ecasa public fallback differs from selected source and reviewed display/visual policy: ' + path)
+                if owner_manifest and quality_projections:
+                    require(gallery_fragments(text) == gallery_fragments(quality_projections['previewBaseline'][path]),
+                            'Owner cover changed an existing gallery: ' + path)
+                    require(commercial_body(text, path.removesuffix('.html') in owner_project_slugs) ==
+                            commercial_body(quality_projections['previewBaseline'][path], path.removesuffix('.html') in owner_project_slugs),
+                            'Owner cover changed commercial body, map, plan or runtime content: ' + path)
+            elif owner_manifest and quality_projections and path == 'proyectos.html':
+                require(normalized_preview(text) == quality_projections['preview'][path] and
+                        (public / path).read_text() == quality_projections['public'][path],
+                        'Owner cover changed project listing beyond its reviewed card style')
+                require(commercial_body(text) == commercial_body((public / path).read_text()),
+                        'Owner cover changed the project listing body or runtime')
             else:
                 require(normalized_preview(text) == (public / path).read_text(), 'Preview/public commercial content differs: ' + path)
         elif protected_review and path == 'data/proyectos.json':
@@ -726,6 +819,7 @@ def audit(source, public, preview, protected_review=False, node=None):
             'imageQualityPolicySha256': digest(quality_path) if quality_policy is not None else None,
             'officialOriginalsManifestSha256': digest(source / release_inventory.OFFICIAL_MANIFEST) if official_manifest else None,
             'manualQualityManifestSha256': digest(manual_path) if manual_policy else None,
+            'ownerCoverManifestSha256': digest(source / release_inventory.OWNER_MANIFEST) if owner_manifest else None,
             'providerAvailabilityVerified': False}
 
 

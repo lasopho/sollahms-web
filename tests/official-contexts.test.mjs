@@ -1,3 +1,4 @@
+import { withoutReviewedOwnerAssets } from './ecasa-quality-fixture.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -373,7 +374,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
     newPaths.add(entry.localPath.slice(1));
   }
   assert.equal(newPaths.size, 10);
-  const currentAssets = listFiles('assets').filter((file) =>
+  const currentAssets = withoutReviewedOwnerAssets(listFiles('assets')).filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
     !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');
   const ecasaReview = json('tests/ecasa-reviewed-output.json');
