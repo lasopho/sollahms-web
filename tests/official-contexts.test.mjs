@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { isReviewedLeonAsset } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -372,7 +373,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
     newPaths.add(entry.localPath.slice(1));
   }
   assert.equal(newPaths.size, 10);
-  const currentAssets = listFiles('assets').filter((file) =>
+  const currentAssets = listFiles('assets').filter(file=>!isReviewedLeonAsset(file)).filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
     !file.startsWith('assets/propiedades/ingevec-preview/') && file !== 'assets/css/aj-brochure-preview.css');
   const expected = [...protectedAssets.map(({ file }) => file), ...newPaths, 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort();
@@ -387,8 +388,9 @@ test('registry and sitemap match the authorized portfolio; financial data/motors
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) &&
         !AJ_REVIEW.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
   }
-  assert.equal(Object.keys(trustedContexts).length, 144);
-  for (const project of catalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
+  const actualCatalogue=JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
+  assert.equal(Object.keys(trustedContexts).length, 141);
+  for (const project of actualCatalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
   const locations = current('sitemap.xml').toString().match(/<loc>[^<]+<\/loc>/g);
   assert.equal(locations.length, 150);
   assert.equal(new Set(locations).size, 150);

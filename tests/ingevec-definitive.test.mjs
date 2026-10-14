@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { LEON_RETIRED_SLUGS } from '../scripts/leon-main-publication.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, lstatSync, readdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -879,11 +880,11 @@ test('six retired identities are absent from navigation, sitemap, context and fi
   assert.deepEqual([...INGEVEC_REMOVED_SLUGS], ['brasil', 'vespucio-capital', 'edificio-serrano-capital', 'edificio-carrera-capital', 'edificio-froilan-roa', 'hacienda-lo-errazuriz']);
   assert.deepEqual([...INGEVEC_NEW_SLUGS], ['los-alerces', 'valle-los-ingleses-iii']);
   const priorRoutes = execFileSync('git', ['ls-tree', '--name-only', BASELINE], { cwd: ROOT }).toString().trim().split('\n').filter(path => path.endsWith('.html'));
-  const expectedRoutes = [...priorRoutes.filter(path => !INGEVEC_REMOVED_SLUGS.has(path.replace(/\.html$/, ''))), ...[...INGEVEC_NEW_SLUGS].map(slug => slug + '.html')].sort();
-  assert.deepEqual(readdirSync(ROOT).filter(path => path.endsWith('.html')).sort(), expectedRoutes, 'Only six retired routes and two new routes are authorized');
+  const expectedRoutes = [...priorRoutes.filter(path => !INGEVEC_REMOVED_SLUGS.has(path.replace(/\.html$/, '')) && !LEON_RETIRED_SLUGS.includes(path.replace(/\.html$/, ''))), ...[...INGEVEC_NEW_SLUGS].map(slug => slug + '.html')].sort();
+  assert.deepEqual(readdirSync(ROOT).filter(path => path.endsWith('.html')).sort(), expectedRoutes, 'Only the six Ingevec and three independently verified León retirements and two Ingevec additions are authorized');
   assertPortfolioIndex('lib/project-context.mjs', current('lib/project-context.mjs'));
   assertPortfolioIndex('sitemap.xml', current('sitemap.xml'));
-  assert.deepEqual(contextualProjects, Object.fromEntries(catalogue.map(project => [project.slug, { name: project.nombre, url: project.detalleUrl }])));
+  assert.deepEqual(contextualProjects, Object.fromEntries(JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json'))).map(project => [project.slug, { name: project.nombre, url: project.detalleUrl }])));
   for (const slug of INGEVEC_REMOVED_SLUGS) {
     assert.equal(existsSync(resolve(ROOT, slug + '.html')), false, slug + ': retired route');
     assert.ok(!catalogue.some(project => project.slug === slug));

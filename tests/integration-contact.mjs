@@ -36,9 +36,9 @@ function harness({ projectDataset = catalogue, now = NOW, environment = 'test', 
 }
 const number = new Intl.NumberFormat('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-test('all 144 mortgage contexts derive project name and subject on the server without forwarding RUT', async () => {
+test('all 141 mortgage contexts derive project name and subject on the server without forwarding RUT', async () => {
   const { handler, calls } = harness();
-  assert.equal(catalogue.length, 144);
+  assert.equal(catalogue.length, 141);
   for (const project of catalogue) {
     const response = await handler.fetch(request(lead(project.slug)));
     assert.equal(response.status, 200, project.slug);
@@ -52,10 +52,10 @@ test('all 144 mortgage contexts derive project name and subject on the server wi
     assert.ok(!JSON.stringify(email).includes('RUT'));
     assert.ok(!JSON.stringify(email.subject).includes('4.000'));
   }
-  assert.equal(calls.length, 144);
+  assert.equal(calls.length, 141);
 });
 
-test('110 catalogue prices match verified server provenance and are independently recalculated', async () => {
+test('102 catalogue prices match verified server provenance and are independently recalculated', async () => {
   const { handler, calls } = harness();
   let priced = 0;
   for (const project of catalogue) {
@@ -72,11 +72,11 @@ test('110 catalogue prices match verified server provenance and are independentl
     assert.ok(text.includes('revisión: ' + price.date));
     assert.ok(text.includes('fuente: ' + price.source));
   }
-  assert.equal(priced, 110);
-  assert.equal(calls.length, 110);
+  assert.equal(priced, 102);
+  assert.equal(calls.length, 102);
 });
 
-test('34 unpriced projects require a visitor-declared price and cannot borrow another project price', async () => {
+test('39 unpriced projects require a visitor-declared price and cannot borrow another project price', async () => {
   const { handler, calls } = harness();
   let unpriced = 0;
   for (const project of catalogue) {
@@ -89,7 +89,7 @@ test('34 unpriced projects require a visitor-declared price and cannot borrow an
     assert.ok(calls.at(-1).body.text.includes('no representa un precio vigente confirmado'));
     assert.ok(!calls.at(-1).body.text.includes('revisión: 2026-10-09'));
   }
-  assert.equal(unpriced, 34);
+  assert.equal(unpriced, 39);
 });
 
 test('a visitor may deliberately edit a known catalogue price, and the resulting amount stays labelled as declared', async () => {

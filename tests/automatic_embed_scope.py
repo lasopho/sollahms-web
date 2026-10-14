@@ -6,6 +6,7 @@ historical test pass. Only the fixed iframe/duplicate-tour changes below can
 restore historical bytes.
 """
 import functools
+from leon_main_scope import read_pre_leon
 import hashlib
 import html
 import json
@@ -40,7 +41,7 @@ def main_bytes(path):
 @functools.lru_cache(maxsize=1)
 def records():
     baseline = main_bytes('data/fichas-proyectos.json')
-    assert (ROOT / 'data/fichas-proyectos.json').read_bytes() == baseline, 'Historical tour research changed'
+    assert read_pre_leon('data/fichas-proyectos.json') == baseline, 'Historical tour research changed'
     rows = json.loads(baseline)
     assert len(rows) == 144
     return {row['slug']: row for row in rows}

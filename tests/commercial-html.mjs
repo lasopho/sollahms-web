@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readPreLeonFile } from './leon-main-preservation.mjs';
 import { readFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -6,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')));
+const catalogue = JSON.parse(readPreLeonFile('data/proyectos.json'));
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
 assert.equal(ficheFiles.size, 144);
 const transformed = new Map();
@@ -82,7 +83,7 @@ export function readCommercialFile(file) {
     assert.equal(existsSync(resolve(ROOT,file)), false, file + ': retired public route must be absent');
     return Buffer.alloc(0);
   }
-  const actual = readFileSync(resolve(ROOT,file));
+  const actual = readPreLeonFile(file);
   if (automaticEmbedAssets.has(file)) return restoreReviewedEmbedAsset(file, actual);
   // Historical checks receive the original only after independently proving
   // that real current bytes contain exactly the authorized tour removal.

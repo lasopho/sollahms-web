@@ -9,10 +9,14 @@ import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
-const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas']);
+const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/leon-main-integration', 'codex/leon-cartera-preview']);
 if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
   throw new Error('Unexpected branch for this review build');
 }
+let leonReview=null, leonTools=null;
+try { leonReview=JSON.parse(await readFile(join(root,'data/brochures-leon.json'),'utf8')); }
+catch(error){ if(error.code!=='ENOENT')throw error; }
+const leonPaths=new Set();
 const profile = process.env.SOLLAHMS_BROCHURE_PROFILE;
 if (profile !== undefined && profile !== 'public-web') throw new Error('Unknown brochure content profile');
 const ajReview = JSON.parse(await readFile(join(root, 'data/brochures-aj-urbana.json'), 'utf8'));
@@ -110,6 +114,12 @@ if (preview && ingevecPresent.some(Boolean) && !ingevecPresent.every(Boolean)) {
 // Card covers use the same local, verified images as the reviewed galleries.
 // Keep commercial and financial source data byte-identical. Override only
 // covers whose corresponding image belongs to the selected brochure batch.
+if(leonReview){
+  if(!preview)throw new Error('The León update remains authorized for protected Preview only');
+  leonTools=await import('./leon-main-publication.mjs');
+  leonTools.assertLeonMainScope(root);
+  for(const a of leonTools.verifyLeonAssets(leonReview,{root}))leonPaths.add(join(root,a.localPath.slice(1)));
+}
 const catalogueSource = await readFile(join(root, 'data/proyectos.json'));
 let catalogueOutput = catalogueSource;
 const sourceProjects = JSON.parse(catalogueSource);
@@ -122,7 +132,7 @@ if (pages.some(name => !approvedPages.has(name))) {
 if (sourceProjects.some(project => !pages.includes(project.slug + '.html'))) {
   throw new Error('Every approved catalogue project must have its own public route');
 }
-const retiredLink = new RegExp('(?:["\\\'/])(?:' + BROCHURE_REMOVED_SLUGS.join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
+const retiredLink = new RegExp('(?:["\\\'/])(?:' + [...BROCHURE_REMOVED_SLUGS,...(leonTools?.LEON_RETIRED_SLUGS??[])].join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
 const sitemapSource = await readFile(join(root, 'sitemap.xml'));
 if (retiredLink.test(sitemapSource.toString())) throw new Error('The sitemap still contains a retired project route');
 const pageSources = new Map(await Promise.all(pages.map(async name => [name, await readFile(join(root, name), 'utf8')])));
@@ -266,6 +276,10 @@ for (const name of pages) {
 await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
   filter: async source => {
     const path = relative(root, source).split(sep).join('/');
+    if(path.startsWith('assets/brochures/leon')||path.startsWith('assets/propiedades/leon')){
+      const info=await lstat(source);if(info.isSymbolicLink())throw new Error('León media must be regular');
+      return info.isDirectory()?[...leonPaths].some(file=>file.startsWith(source+sep)):leonPaths.has(source);
+    }
     if (path.includes('/brochure-candidates')) return false;
     if (retiredExclusiveAssets.has(path)) return false;
     const info = await lstat(source);

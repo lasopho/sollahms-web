@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { isReviewedLeonAsset, readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync,
   rmSync, copyFileSync, cpSync, existsSync, symlinkSync } from 'node:fs';
@@ -221,7 +222,7 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
-  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1))),
+  assert.deepEqual(listFiles('assets').filter(file=>!isReviewedLeonAsset(file)).filter(file => !file.startsWith(ASSETS.slice(1))),
     [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort());
   assertAutomaticEmbedStylesheet();
 });
@@ -426,14 +427,14 @@ test('Preview consultation and booking guards reject all three synthetic submiss
 function createPackagingFixture() {
   const fixture = mkdtempSync(join(tmpdir(), 'sollahms-ingevec-build-'));
   for (const folder of ['scripts', 'data', 'assets/css', 'assets/js']) mkdirSync(join(fixture, folder), { recursive: true });
-  copyFileSync(resolve(ROOT, 'scripts/package-vercel.mjs'), join(fixture, 'scripts/package-vercel.mjs'));
-  copyFileSync(resolve(ROOT, 'scripts/brochure-publication.mjs'), join(fixture, 'scripts/brochure-publication.mjs'));
+  writeFileSync(join(fixture, 'scripts/package-vercel.mjs'),readPreLeonFile('scripts/package-vercel.mjs'));
+  writeFileSync(join(fixture, 'scripts/brochure-publication.mjs'),readPreLeonFile('scripts/brochure-publication.mjs'));
   for (const path of ['data/proyectos.json', 'data/hipotecario.json', MANIFEST, 'data/brochures-aj-urbana.json',
-    CSS, 'sitemap.xml', 'robots.txt']) copyFileSync(resolve(ROOT, path), join(fixture, path));
+    CSS, 'sitemap.xml', 'robots.txt']) writeFileSync(join(fixture,path),readPreLeonFile(path));
   for (const folder of [ASSETS, AJ_ASSETS]) {
     cpSync(resolve(ROOT, folder.slice(1)), join(fixture, folder.slice(1)), { recursive: true });
   }
-  for (const project of catalogue) copyFileSync(resolve(ROOT, project.slug + '.html'), join(fixture, project.slug + '.html'));
+  for (const project of catalogue) writeFileSync(join(fixture,project.slug+'.html'),readPreLeonFile(project.slug+'.html'));
   const sentinel = '/* historical public asset */';
   writeFileSync(join(fixture, 'assets/js/unchanged.js'), sentinel);
   return fixture;

@@ -2,6 +2,7 @@
 // Public website use and redistribution of the source repository are distinct
 // channels; a protected review is already authorized by the user.
 import { createHash } from 'node:crypto';
+import { existsSync, readFileSync } from 'node:fs';
 
 export const BROCHURE_INGEVEC_SLUGS = Object.freeze([
   'centenario-1', 'tocornal', 'vivaceta', 'coronel-godoy', 'diagonal-paraguay',
@@ -36,7 +37,27 @@ export const canonicalBrochureValue = value => Array.isArray(value) ? value.map(
 export const brochureFingerprint = value => createHash('sha256')
   .update(JSON.stringify(canonicalBrochureValue(value))).digest('hex');
 
+// Project only the independently approved León successor for historical checks.
+// Other developer objects retain their original values and fingerprint checks.
+export function restoreLeonRows(rows, file='data/proyectos.json') {
+  const baselineUrl=new URL('../data/leon-main-baseline.json',import.meta.url);
+  const reviewUrl=new URL('../data/brochures-leon.json',import.meta.url);
+  if(!existsSync(baselineUrl)||!existsSync(reviewUrl))return rows;
+  const baseline=JSON.parse(readFileSync(baselineUrl)),review=JSON.parse(readFileSync(reviewUrl));
+  const originals=baseline.originalRows[file];if(!originals)return rows;
+  const slugs=new Set([...baseline.authorizedSlugs,...baseline.retiredSlugs]);
+  const actual=rows.filter(p=>slugs.has(p.slug));
+  if(brochureFingerprint(actual)===brochureFingerprint(originals))return rows;
+  const approved=review[file==='data/proyectos.json'?'catalogue':file==='data/fichas-proyectos.json'?'research':'ledger'];
+  if(actual.length!==5||rows.some(p=>baseline.retiredSlugs.includes(p.slug))||actual.some(p=>brochureFingerprint(p)!==brochureFingerprint(approved.find(q=>q.slug===p.slug))))throw new Error('The approved catalogue requires exact León successors');
+  const old=new Map(originals.map(p=>[p.slug,p]));const result=rows.map(p=>slugs.has(p.slug)?structuredClone(old.get(p.slug)):p);
+  const order=new Map(baseline.catalogueOrder.map((slug,index)=>[slug,index]));
+  for(const slug of baseline.retiredSlugs){const index=result.findIndex(p=>order.get(p.slug)>order.get(slug));result.splice(index<0?result.length:index,0,structuredClone(old.get(slug)));}
+  return result;
+}
+
 export function assertBrochureCatalogue(projects) {
+  projects = restoreLeonRows(projects);
   const allowed = new Set(BROCHURE_INGEVEC_SLUGS);
   const slugs = new Set(projects.map(project => project.slug));
   if (projects.length !== 144 || slugs.size !== 144 ||

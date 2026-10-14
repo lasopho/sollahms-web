@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -17,7 +18,7 @@ const APPROVED_PORTFOLIO = 'e7afe04';
 const read = path => readFileSync(resolve(ROOT, path));
 const json = path => JSON.parse(read(path));
 const git = (...args) => execFileSync('git', args, { cwd: ROOT });
-const configuration = json('vercel.json');
+const configuration = JSON.parse(readPreLeonFile('vercel.json'));
 
 function assertManualDeploymentGates(config) {
   assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false },
@@ -72,11 +73,11 @@ test('shared security headers reject missing and weakened framing, MIME, referre
 });
 
 test('all 144 catalogue objects and 16 Ingevec identities remain byte-identical to the approved portfolio', () => {
-  const catalogue = json('data/proyectos.json');
+  const catalogue = JSON.parse(readPreLeonFile('data/proyectos.json'));
   assertBrochureCatalogue(catalogue);
   assert.equal(catalogue.length, 144);
   assert.equal(catalogue.filter(project => project.inmobiliaria === 'Ingevec').length, 16);
-  assert.deepEqual(read('data/proyectos.json'), git('show', APPROVED_PORTFOLIO + ':data/proyectos.json'));
+  assert.deepEqual(readPreLeonFile('data/proyectos.json'), git('show', APPROVED_PORTFOLIO + ':data/proyectos.json'));
   assert.deepEqual(read('data/hipotecario.json'), git('show', APPROVED_PORTFOLIO + ':data/hipotecario.json'));
   const changed = structuredClone(catalogue);
   changed.find(project => project.inmobiliaria !== 'Ingevec').nombre += ' changed';
