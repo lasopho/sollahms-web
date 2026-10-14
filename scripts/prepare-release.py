@@ -435,7 +435,7 @@ LEON_MAIN_BASELINE = 'data/leon-main-baseline.json'
 LEON_MAIN_BASELINE_SHA256 = '2a5a315c3a63073a01e38f4fb68c0dbb83d5481b7c90aea6f19616e328edf64c'
 LEON_COMBINED_BASELINE = 'data/leon-leben-combined-baseline.json'
 LEON_COMBINED_SHA256 = '1209b8f6b5ee2f8691b9eaf204d1a71e7bb5538b9624a83dd0951a0fbf838ae9'
-LEON_RUNTIME_FILES = (LEON_MANIFEST, LEON_MAIN_BASELINE, LEON_COMBINED_BASELINE,
+LEON_RUNTIME_FILES = (LEON_MANIFEST, LEON_MAIN_BASELINE, LEON_COMBINED_BASELINE, 'data/registro-fichas.json',
                       'scripts/leon-main-publication.mjs', 'scripts/leon-combined-scope.mjs')
 LEON_DOCUMENTS = {
     'jardines-de-ramon-cruz': ('34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765', 12),
