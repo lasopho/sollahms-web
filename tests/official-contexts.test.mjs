@@ -11,7 +11,7 @@ import { createContactHandler } from '../api/contact.mjs';
 import { projects as trustedContexts } from '../lib/project-context.mjs';
 import { assertCommercialBytes, assertPortfolioData, commercialPage,
   INGEVEC_NEW_SLUGS, readCommercialFile, vimaImageCorrection,
-  AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet } from './commercial-html.mjs';
+  AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet, NORTE_VERDE_HERO_ASSETS } from './commercial-html.mjs';
 
 // This is the scoped successor to the historical integrity audits, whose
 // baselines predate the explicitly approved official-source additions.
@@ -373,6 +373,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   }
   assert.equal(newPaths.size, 10);
   const currentAssets = listFiles('assets').filter((file) =>
+    !NORTE_VERDE_HERO_ASSETS.includes(file) &&
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
     !file.startsWith('assets/propiedades/ingevec-preview/') && file !== 'assets/css/aj-brochure-preview.css');
   const expected = [...protectedAssets.map(({ file }) => file), ...newPaths, 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort();
