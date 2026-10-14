@@ -2,6 +2,7 @@
 // developer suites audit their own historical release. The real Sento suite
 // independently checks all 130 other projects and the actual Preview package.
 import { readFileSync } from 'node:fs';
+import { projectLeonFile, restoreLeonRows } from './leon-main-preservation.mjs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { SENTO_SLUGS, restoreSentoRows, restoreSentoContexts, projectSentoFile as publicationProjectSentoFile } from '../scripts/sento-publication.mjs';
@@ -24,12 +25,12 @@ export function isVerifiedHistoricalHtml(file, value) {
 }
 export function projectSentoFile(file, value) {
   if (SENTO_SLUGS.includes(file.replace(/\.html$/, '')) && isVerifiedHistoricalHtml(file, value)) return value;
-  return publicationProjectSentoFile(file, value);
+  return publicationProjectSentoFile(file, projectLeonFile(file, value));
 }
 
 export function restoreSentoData(value, file = 'data/proyectos.json') {
   const rows = typeof value === 'string' || Buffer.isBuffer(value) ? JSON.parse(value) : value;
-  return restoreSentoRows(rows, file);
+  return restoreSentoRows(restoreLeonRows(rows, file), file);
 }
 
 export function readHistoricalSentoFile(file) {
@@ -40,8 +41,9 @@ export function readHistoricalSentoFile(file) {
 // approved historical price provenance for those fixtures while retaining live
 // display names, route identities and all other current fields.
 export function historicalSentoFinancialRows(rows) {
-  const historical = restoreSentoRows(rows);
-  return rows.map((row, index) => SENTO_SLUGS.includes(row.slug)
+  const datedRows = restoreLeonRows(rows);
+  const historical = restoreSentoRows(datedRows);
+  return datedRows.map((row, index) => SENTO_SLUGS.includes(row.slug)
     ? { ...row, precioDesdeUF: historical[index].precioDesdeUF, verificacion: structuredClone(historical[index].verificacion) }
     : row);
 }

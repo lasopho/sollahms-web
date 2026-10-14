@@ -1,3 +1,5 @@
+import { LEON_RETIRED_SLUGS } from '../scripts/leon-main-publication.mjs';
+import { restoreLeonContexts, isReviewedLeonAsset, readPreLeonFile } from './leon-main-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync, lstatSync, readdirSync } from 'node:fs';
@@ -10,7 +12,7 @@ import { ECASA_NEW_SLUGS, ECASA_ALIAS_SLUGS, ECASA_RETIRED_SLUGS, ECASA_SLUGS, r
   PORTFOLIO_BASELINE, INGEVEC_REMOVED_SLUGS, INGEVEC_NEW_SLUGS, readCommercialFile } from './commercial-html.mjs';
 import { projects as actualSentoContexts } from '../lib/project-context.mjs';
 import { restoreSentoContexts } from './sento-preservation.mjs';
-const contextualProjects = restoreSentoContexts(actualSentoContexts);
+const contextualProjects = restoreSentoContexts(restoreLeonContexts(actualSentoContexts));
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 
@@ -882,7 +884,12 @@ test('six retired identities are absent from navigation, sitemap, context and fi
   assert.deepEqual([...INGEVEC_NEW_SLUGS], ['los-alerces', 'valle-los-ingleses-iii']);
   const priorRoutes = execFileSync('git', ['ls-tree', '--name-only', BASELINE], { cwd: ROOT }).toString().trim().split('\n').filter(path => path.endsWith('.html'));
   const expectedRoutes = [...priorRoutes.filter(path => !INGEVEC_REMOVED_SLUGS.has(path.replace(/\.html$/, '')) && !ECASA_RETIRED_SLUGS.has(path.replace(/\.html$/, '')) && !ECASA_ALIAS_SLUGS.has(path.replace(/\.html$/, ''))), ...[...INGEVEC_NEW_SLUGS, ...ECASA_NEW_SLUGS, 'edificio-nordico'].filter(slug=>!ECASA_ALIAS_SLUGS.has(slug)).map(slug => slug + '.html')].sort();
-  assert.deepEqual(readdirSync(ROOT).filter(path => path.endsWith('.html')).sort(), expectedRoutes, 'Only the reviewed Ingevec routes and canonical Ecasa successor routes are authorized');
+  const projectedRoutes = [...readdirSync(ROOT).filter(path => path.endsWith('.html')), ...LEON_RETIRED_SLUGS.map(slug=>{
+    assert.equal(existsSync(resolve(ROOT,slug+'.html')),false,slug+': approved public retirement');
+    readPreLeonFile(slug+'.html'); // Strict archive byte proof, never a live route.
+    return slug+'.html';
+  })].sort();
+  assert.deepEqual(projectedRoutes, expectedRoutes, 'Only the reviewed Ingevec routes and canonical Ecasa successor routes are authorized');
   assertPortfolioIndex('lib/project-context.mjs', current('lib/project-context.mjs'));
   assertPortfolioIndex('sitemap.xml', current('sitemap.xml'));
   assert.deepEqual(contextualProjects, Object.fromEntries(catalogue.map(project => [project.slug, { name: project.nombre, url: project.detalleUrl }])));

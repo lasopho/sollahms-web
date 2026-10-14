@@ -1,4 +1,5 @@
 import { projectSentoFile } from './sento-preservation.mjs';
+import { readPreLeonFile } from './leon-main-preservation.mjs';
 import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -14,7 +15,7 @@ import { validateEcasaImageQuality, selectEcasaPublishedAssets, transformEcasaIm
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const BASELINE='2d34997f8fd82b775c0697b20493674773e7fdc2';
-const read=path=>readFileSync(resolve(ROOT,path));
+const read=path=>readPreLeonFile(path);
 const json=path=>JSON.parse(read(path));
 const original=path=>execFileSync('git',['show',BASELINE+':'+path],{cwd:ROOT,maxBuffer:8*1024*1024});
 const hash=value=>createHash('sha256').update(value).digest('hex');

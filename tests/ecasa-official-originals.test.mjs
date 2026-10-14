@@ -1,3 +1,4 @@
+import { readPreLeonFile } from './leon-main-preservation.mjs';
 import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -16,7 +17,7 @@ import { validateOfficialOriginals, selectPublishedOfficialAssets, transformOffi
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const BASELINE='0117cc546cc75183f73cae07c90dd093937a819f';
 const PREFIX='/assets/propiedades/ecasa-official-review/';
-const read=path=>readFileSync(join(ROOT,path));
+const read=path=>readPreLeonFile(path);
 const json=path=>JSON.parse(read(path));
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const catalogue=json('data/proyectos.json');

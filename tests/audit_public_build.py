@@ -9,6 +9,7 @@ import hashlib
 import importlib.util
 from html.parser import HTMLParser
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -412,8 +413,16 @@ def audit(source, public, preview, protected_review=False, node=None):
     counts['projects'] = len(catalogue)
     counts['ingevec'] = sum(p['inmobiliaria'] == 'Ingevec' for p in catalogue)
     counts['ecasa'] = sum(p['inmobiliaria'].lower() == 'ecasa' for p in catalogue)
-    expected_project_count = 137 if 'edificio-nordico' in slugs else 136
-    require(len(catalogue) == len(slugs) == expected_project_count, 'Catalogue may only add Nórdico to the 136 consolidated identities')
+    leon_retired = {'la-casona-de-buin', 'urbano-centro', 'box-santiago'}
+    leon_manifest = source / 'data/brochures-leon.json'
+    if leon_manifest.exists():
+        node = os.environ.get('SOLLAHMS_CI_NODE') or shutil.which('node') or '/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node'
+        proof = subprocess.check_output([node, '--input-type=module', '-e', "import {assertLeonCombinedScope} from './scripts/leon-main-publication.mjs'; assertLeonCombinedScope();"], cwd=source)
+        expected_project_count = 134
+        require(not leon_retired & slugs, 'A retired León identity re-entered the public catalogue')
+    else:
+        expected_project_count = 137 if 'edificio-nordico' in slugs else 136
+    require(len(catalogue) == len(slugs) == expected_project_count, 'Catalogue differs from its independently approved composition')
     require({p['slug'] for p in catalogue if p['inmobiliaria'] == 'Ingevec'} == INGEVEC,
             'The sixteen approved Ingevec identities must remain exact')
     require({p['slug'] for p in catalogue if p['inmobiliaria'].lower() == 'ecasa'} == ECASA,
@@ -424,7 +433,7 @@ def audit(source, public, preview, protected_review=False, node=None):
     files = {str(p.relative_to(public)) for p in public.rglob('*') if p.is_file()}
     require({f for f in files if '/' not in f and f.endswith('.html')} == expected_pages,
             'Public HTML routes differ from the approved catalogue and seven global pages')
-    require(not any(slug + '.html' in files for slug in REMOVED), 'Retired project route must return 404')
+    require(not any(slug + '.html' in files for slug in REMOVED | (leon_retired if leon_manifest.exists() else set())), 'Retired project route must return 404')
     for path in sorted(files):
         require(path in expected_pages | PUBLIC_DATA | {'robots.txt', 'sitemap.xml'} or path.startswith('assets/'),
                 'Unexpected public file: ' + path)

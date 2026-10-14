@@ -1,3 +1,4 @@
+import { isReviewedLeonAsset, readPreLeonFile } from './leon-main-preservation.mjs';
 import { copyEcasaImageQualityInputs, assertEcasaQualityCoverFields as assertEcasaCoverFields,
   assertEcasaQualityPublicCatalogue, reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
 import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
@@ -188,7 +189,7 @@ test('531 historical assets and handlers retain strict baselines outside the sco
   for (const { file } of baselineTree()) {
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
-  assert.deepEqual(historicalSentoAssetFiles(listFiles('assets')).filter((file) => !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith(ASSETS.slice(1)) &&
+  assert.deepEqual(historicalSentoAssetFiles(listFiles('assets').filter(file=>!isReviewedLeonAsset(file))).filter((file) => !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith(ASSETS.slice(1)) &&
     !file.startsWith(INGEVEC_ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && file !== 'assets/css/leben-project-hero.css' && !reviewedOfficialSourceFiles.includes(file) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });

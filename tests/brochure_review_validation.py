@@ -8,6 +8,8 @@ import sys
 import json
 import hashlib
 import subprocess
+import os
+import shutil
 from pathlib import Path
 from html.parser import HTMLParser
 from virtual_tour_scope import restore_reviewed_file, historical_commercial_renderer
@@ -147,6 +149,8 @@ def assert_ingevec_manifest_addition(current, previous):
 def validate_commercial_source():
     """Successor audit scoped to display-only edits from the approved baseline."""
     count = len(json.loads((ROOT / 'data/proyectos.json').read_text()))
+    if count == 134:
+        return validate_combined_source()
     if count in {136, 137}:
         return validate_consolidated_source()
     if count == 144:
@@ -513,3 +517,20 @@ def validate_consolidated_source():
             'preservedCatalogueObjects': 136, 'commercialPagesChecked': len(projects), 'protectedAssetAndBackendFiles': checked_assets,
             'lebenReviewMedia': leben_media, 'sitemapUrls': len(sitemap), 'commercialDataUnchanged': True,
             'mortgageMathAndBankReferencesUnchanged': True, 'productionPublicationAuthorized': False}
+
+
+def validate_combined_source():
+    """Independent134 proof supplements the immutable136/137/144 histories."""
+    node = os.environ.get('SOLLAHMS_CI_NODE') or shutil.which('node') or '/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node'
+    code = "import {assertLeonCombinedScope} from './scripts/leon-main-publication.mjs'; const result=assertLeonCombinedScope(); process.stdout.write(JSON.stringify(result));"
+    proof = json.loads(subprocess.check_output([node, '--input-type=module', '-e', code], cwd=ROOT))
+    catalogue = json.loads((ROOT / 'data/proyectos.json').read_text())
+    assert len(catalogue) == len({row['slug'] for row in catalogue}) == 134
+    assert sum(row['inmobiliaria'] == 'Ecasa' for row in catalogue) == 15
+    assert sum(row['inmobiliaria'] == 'Leben' for row in catalogue) == 14
+    assert sum(row['inmobiliaria'] == 'Sento' for row in catalogue) == 7
+    assert sum(row['inmobiliaria'] == 'León' for row in catalogue) == 5
+    retired = {'la-casona-de-buin', 'urbano-centro', 'box-santiago'}
+    assert not retired & {row['slug'] for row in catalogue}
+    assert all(not (ROOT / (slug + '.html')).exists() for slug in retired)
+    return {'result': 'passed', 'scope': 'Exact authorized134 composition:129foreign complete records/resources from73 and5León fromf66; immutable historical pins retained', 'projects':134, 'ecasaProjects':15, 'lebenProjects':14, 'sentoProjects':7, 'leonProjects':5, 'preservedForeignObjects':129, 'strictCombinedProof':proof, 'productionPublicationAuthorized':False}

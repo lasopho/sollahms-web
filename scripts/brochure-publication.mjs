@@ -3,6 +3,8 @@
 // channels; a protected review is already authorized by the user.
 import { createHash } from 'node:crypto';
 import { restoreSentoRows } from './sento-publication.mjs';
+import { restoreLeonRows } from './leon-combined-scope.mjs';
+export { restoreLeonRows } from './leon-combined-scope.mjs';
 
 export const BROCHURE_INGEVEC_SLUGS = Object.freeze([
   'centenario-1', 'tocornal', 'vivaceta', 'coronel-godoy', 'diagonal-paraguay',
@@ -60,6 +62,7 @@ export const brochureFingerprint = value => createHash('sha256')
   .update(JSON.stringify(canonicalBrochureValue(value))).digest('hex');
 
 export function assertBrochureCatalogue(projects) {
+  projects = restoreLeonRows(projects);
   // Nórdico is the only authorized catalogue addition. All 136 consolidated
   // objects retain the existing fingerprints and identity checks below.
   const nordico = projects.filter(project => project.slug === 'edificio-nordico');

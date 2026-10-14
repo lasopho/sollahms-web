@@ -4,6 +4,7 @@ import { readFileSync, existsSync, lstatSync, realpathSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { restoreLeonRows, projectLeonFile } from './leon-combined-scope.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 export const SENTO_SLUGS = Object.freeze(['angamos', 'curico-77', 'domeyko-2055', 'jofre-135', 'mirador-la-florida', 'plaza-las-condes', 'san-ignacio']);
@@ -106,6 +107,7 @@ export function restoreSentoContexts(contexts) {
   }));
 }
 export function projectSentoFile(file, value) {
+  value = projectLeonFile(file, value);
   if (file === 'scripts/brochure-publication.mjs') {
     const projected = Buffer.from(value.toString().replace("import { restoreSentoRows } from './sento-publication.mjs';\n", '').replace('restoreSentoRows(projects).filter', 'projects.filter'));
     assertProjectedShared(file, projected);
@@ -160,6 +162,7 @@ export function projectSentoFile(file, value) {
   return value;
 }
 export function assertSentoCatalogue(rows, review = optionalReview()) {
+  rows = restoreLeonRows(rows);
   assert.ok(review && review.schemaVersion === 1 && review.protectedPreviewOnly === true, 'Sento: reviewed Preview source is required');
   assertForeignSentoRows(rows, 'data/proyectos.json');
   if (rows.length === sentoCombinedBaseline.catalogueCount) {

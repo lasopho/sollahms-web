@@ -12,6 +12,10 @@ def original_html(text):
         assert text.count('<!--LEBEN_' + kind + '_START-->') == text.count('<!--LEBEN_' + kind + '_END-->'), 'Unpaired Leben source marker'
     text = re.sub(r'<!--LEBEN_PREVIEW_START-->[\s\S]*?<!--LEBEN_PREVIEW_END-->', '', text)
     text = re.sub(r'<!--LEBEN_PUBLIC_START-->([\s\S]*?)<!--LEBEN_PUBLIC_END-->', lambda match: match[1], text)
+    leon_matches = set(re.findall(r'/assets/propiedades/leon/([a-z0-9-]+)/', text))
+    if len(leon_matches) == 1:
+        from leon_main_scope import project_leon_file
+        text = project_leon_file(next(iter(leon_matches)) + '.html', text.encode()).decode()
     from sento_scope import original_html as original_sento_html
     return original_sento_html(text)
 

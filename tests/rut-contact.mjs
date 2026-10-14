@@ -98,7 +98,7 @@ test('contact rejects malformed/non-object JSON, invalid UTF-8 and oversized bod
 
 test('all 136 projects derive the email subject and internal name from the server catalogue', async t => {
   const calls = provider(t);
-  assert.equal(Object.keys(projects).length, 137);
+  assert.equal(Object.keys(projects).length, 134);
   for (const [slug, project] of Object.entries(projects)) {
     const result = await contact.fetch(request({ ...validContact, proyecto: slug, rut: '1.000.005-K' }));
     assert.equal(result.status, 200);
@@ -110,7 +110,7 @@ test('all 136 projects derive the email subject and internal name from the serve
     assert.ok(!JSON.stringify(email).includes('1000005-K'));
     assert.ok(!JSON.stringify(email).includes('1.000.005-K'));
   }
-  assert.equal(calls.length, 137);
+  assert.equal(calls.length, 134);
 });
 
 test('forged subject/name and unknown, inherited, malformed or whitespace slugs cannot reach the provider', async t => {
@@ -140,7 +140,7 @@ test('Preview and honeypot protect against sends with RUT and trusted project co
 
 test('provider errors preserve a generic response without personal data', async t => {
   const calls = provider(t, { throws: true });
-  const response = await contact.fetch(request({ ...validContact, rut: '1000005-K', proyecto: 'box-santiago' }));
+  const response = await contact.fetch(request({ ...validContact, rut: '1000005-K', proyecto: 'bcome' }));
   assert.equal(response.status, 502);
   const body = await response.json();
   assert.ok(!JSON.stringify(body).includes('1000005'));

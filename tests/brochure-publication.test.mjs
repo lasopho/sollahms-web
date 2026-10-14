@@ -1,3 +1,4 @@
+import { restoreLeonRows } from './leon-main-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -117,9 +118,10 @@ test('the final catalogue pins 15 Ecasa projects and 22 stage origins, 16 Ingeve
   assert.doesNotThrow(() => assertBrochureCatalogue(catalogue));
   assert.equal(BROCHURE_INGEVEC_SLUGS.length, 16);
   assert.equal(BROCHURE_REMOVED_SLUGS.length, 11);
-  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ecasa').length, 122);
+  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ecasa').length, 119);
+  const historical = restoreLeonRows(catalogue);
   for (const kind of ['retired-project', 'unknown-project', 'duplicate', 'other-price', 'other-route', 'developer']) {
-    const copy = structuredClone(catalogue);
+    const copy = structuredClone(historical);
     const position = copy.findIndex(project => project.slug === 'los-alerces');
     const other = copy.find(project => project.inmobiliaria !== 'Ingevec' && project.inmobiliaria !== 'Ecasa');
     if (kind === 'retired-project') copy[position].slug = BROCHURE_REMOVED_SLUGS[0];

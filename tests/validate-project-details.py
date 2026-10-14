@@ -9,6 +9,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
 import xml.etree.ElementTree as ET
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -73,11 +74,39 @@ restore_sento_rows(ledger, 'data/registro-fichas.json')
 sento_review_bytes = (ROOT / 'data/sento-review.json').read_bytes()
 assert hashlib.sha256(sento_review_bytes).hexdigest() == 'e44ae176a8fe3384ba33df0306e0a97594fc2a1c692aa423310e9b4b6a1bea5f'
 sento_sources = {entry['slug']: entry for entry in json.loads(sento_review_bytes)['projects']}
+leon_review_bytes = (ROOT / 'data/brochures-leon.json').read_bytes()
+assert hashlib.sha256(leon_review_bytes).hexdigest() == '962ed948e818a6c27046657bea5835d54e1e885f88c14775b5567b1c6c3ec28d'
+leon_sources = {entry['slug']: entry for entry in json.loads(leon_review_bytes)['projects']}
+LEON_SLUGS = set(leon_sources)
+LEON_OFFICIAL_FACADES = {
+    'gregorio-de-la-fuente-a': {
+        'localPath': '/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-1600.webp',
+        'sha256': '5aba758a7668c463d4beec2459766413a9cc157e6101f30aa5b8b45776898331',
+        'size': (1600, 900),
+        'sourceKind': 'official_web_original',
+        'sourceUrl': 'https://www.ileon.cl/wp-content/uploads/2023/11/gregorio-banner-desktop-2.png',
+        'officialUrl': 'https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/',
+        'originalPath': '/assets/propiedades/leon/gregorio-de-la-fuente-a/originales/fachada-oficial-gregorio.png',
+        'originalSha256': 'f0142f43d3d98563adfae026f9242f35574d71cd3c827366ce8229818e8bb7ea',
+        'originalSize': (1920, 1080),
+    },
+    'jardines-de-ramon-cruz': {
+        'localPath': '/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial.webp',
+        'sha256': 'd4652465aa17a535b3f228834d572b5aed76b9d3779ec51da8fab2ceff332c84',
+        'size': (1920, 1078),
+        'sourceKind': 'official_original',
+        'sourceUrl': 'https://www.ileon.cl/wp-content/uploads/2024/02/JARDINES-DE-RAMON-CRUZ.webp',
+        'officialSourceUrl': 'https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/',
+        'originalPath': '/assets/propiedades/leon/jardines-de-ramon-cruz/originals/fachada-oficial.webp',
+        'originalSha256': '25e209750339e496c54fa251b67aba78eacf5887acade1410517fda45315e547',
+        'originalSize': (1920, 1078),
+    },
+}
 records = {r['slug']: r for r in research}
 slugs = {p['slug'] for p in projects}
-assert len(slugs) == len(projects) == 137, 'Catalogue has lost or duplicated projects'
+assert len(slugs) == len(projects) == 134, 'Catalogue has lost or duplicated projects'
 assert len([p for p in projects if p['inmobiliaria'] == 'Ecasa']) == 15
-assert len([p for p in projects if p['inmobiliaria'] != 'Ecasa']) == 122
+assert len([p for p in projects if p['inmobiliaria'] != 'Ecasa']) == 119
 assert len([p for p in projects if p['inmobiliaria'] == 'Ingevec']) == 16
 assert slugs == set(records) == {x['slug'] for x in ledger}, 'Incomplete inventory or research'
 assert len(research) == len(ledger) == len(projects), 'Duplicated audit records'
@@ -133,7 +162,7 @@ for project in projects:
     assert project['detalleUrl'] == '/' + slug + '.html'
     assert path.is_file(), f'{slug}: missing detail'
     text = path.read_text()
-    if slug in SENTO_SLUGS:
+    if slug in SENTO_SLUGS | LEON_SLUGS:
         # The packaged Preview adds noindex and the shared caption policy;
         # bind its source to the exact approved HTML, then check real DOM below.
         validate_sento_file(slug + '.html', (ROOT / (slug + '.html')).read_bytes())
@@ -169,11 +198,39 @@ for project in projects:
     stage_records = {stage['slug']: stage['investigacion'] for stage in stage_entries}
     all_records = list(stage_records.values()) if stage_records else [record]
     for image in record.get('images', []):
-        document = sento_sources.get(slug, {}).get('document')
-        if document:
+        source_binding = sento_sources.get(slug) or leon_sources.get(slug) or {}
+        document = source_binding.get('document')
+        official_facade = LEON_OFFICIAL_FACADES.get(slug)
+        if official_facade and image.get('localPath') == official_facade['localPath']:
+            # Exactly these two complete objects are bound to the immutable
+            # León manifest. Their original official web files have independent
+            # hashes; no supplied PDF/page association is invented.
+            assert image in leon_sources[slug]['images'], f'{slug}: official facade differs from the pinned review'
+            for field in ['localPath', 'sha256', 'sourceKind', 'sourceUrl']:
+                assert image.get(field) == official_facade[field], f'{slug}: changed official facade binding {field}'
+            official_field = 'officialUrl' if slug == 'gregorio-de-la-fuente-a' else 'officialSourceUrl'
+            assert image.get(official_field) == official_facade[official_field]
+            for field in ['sourceUrl', official_field]:
+                source_url = urlparse(image[field])
+                assert source_url.scheme == 'https' and source_url.hostname == 'www.ileon.cl' and not source_url.username and not source_url.password, f'{slug}: official facade left its approved source scope'
+            assert image['sourcePage'] is None and image['sourceSha256'] is None
+            assert (image['width'], image['height']) == official_facade['size']
+            original = image['original']
+            assert original['localPath'] == official_facade['originalPath'] and original['sha256'] == official_facade['originalSha256']
+            assert (original['width'], original['height']) == official_facade['originalSize']
+            for asset in [image, original, *image.get('variants', [])]:
+                assert asset['width'] <= original['width'] and asset['height'] <= original['height'], f'{slug}: official facade was upscaled'
+                for asset_root in dict.fromkeys([ROOT, SITE_ROOT]):
+                    path = asset_root / asset['localPath'].lstrip('/')
+                    assert path.is_file() and not path.is_symlink() and path.resolve().is_relative_to(asset_root.resolve()), f'{slug}: unsafe official facade payload path'
+                    assert path.stat().st_size == asset['bytes'] and hashlib.sha256(path.read_bytes()).hexdigest() == asset['sha256'], f'{slug}: changed official facade payload'
+                    with Image.open(path) as decoded:
+                        decoded.load()
+                        assert decoded.size == (asset['width'], asset['height']), f'{slug}: official facade pixel dimensions differ from the pinned review'
+        elif document:
             assert image['sourceSha256'] == document['sha256'], f'{slug}: image assigned to another PDF'
             assert isinstance(image['sourcePage'], int) and 1 <= image['sourcePage'] <= document['pageCount'], f'{slug}: undocumented image page'
-            assert image in sento_sources[slug]['images'], f'{slug}: image differs from the pinned Sento review'
+            assert image in source_binding['images'], f'{slug}: image differs from the pinned Sento review'
             assert hashlib.sha256((SITE_ROOT / image['localPath'].lstrip('/')).read_bytes()).hexdigest() == image['sha256'], f'{slug}: changed reviewed Sento image'
         else:
             assert image.get('sourceUrl', '').startswith('https://'), f'{slug}: official image without provenance'
@@ -236,14 +293,14 @@ for project in projects:
     # alternatives as links; they use sento_fiche's independently reviewed
     # policy. All other developers keep the existing usable-tour policy.
     rendered_tours = ([tour for source in all_records for tour in source.get('virtualTours', [])]
-                      if slug in SENTO_SLUGS else
+                      if slug in SENTO_SLUGS | LEON_SLUGS else
                       [tour for source in all_records for tour in virtual_tours_to_render(source)])
     for tour in rendered_tours:
         if tour.get('embedStatus') == 'allowed':
             assert tour['url'] in published_frames, f'{slug}: automatic tour frame missing'
             assert tour['url'] not in published_links, f'{slug}: redundant external tour link remains'
         else:
-            if slug in SENTO_SLUGS:
+            if slug in SENTO_SLUGS | LEON_SLUGS:
                 assert tour in records[slug]['virtualTours'] and tour.get('embedStatus') == 'link', f'{slug}: unreviewed Sento provider alternative'
             else:
                 assert slug == 'endemico' and tour['url'] == 'https://mybakerlab.com/endemico/', f'{slug}: unreviewed provider fallback'
@@ -258,20 +315,20 @@ for project in projects:
         assert '#recorrido' not in published_links, f'{slug}: stale tour navigation'
         assert 'Recorridos y experiencias oficiales' not in text, f'{slug}: empty legacy tour block'
         assert 'Consulta la disponibilidad de un recorrido virtual' not in text, f'{slug}: absent-tour placeholder'
-    actual_matterport = any((tour.get('provider') == 'Matterport' or slug in SENTO_SLUGS and urlparse(tour['url']).hostname in {'my.matterport.com', 'mpembed.com'}) and tour['url'] in published_frames for source in all_records for tour in source.get('virtualTours', []))
+    actual_matterport = any((tour.get('provider') == 'Matterport' or slug in SENTO_SLUGS | LEON_SLUGS and urlparse(tour['url']).hostname in {'my.matterport.com', 'mpembed.com'}) and tour['url'] in published_frames for source in all_records for tour in source.get('virtualTours', []))
     assert ledger_by_slug[slug]['matterport'] == actual_matterport, f'{slug}: Matterport audit differs from rendered page'
     assert ledger_by_slug[slug]['recorridosOficiales'] == sum(len(source.get('virtualTours', [])) for source in all_records), f'{slug}: official tour count differs from research'
     if slug not in FEATURED:
         assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'ubicacion'])
         assert ('recorrido' in page.ids) == bool(rendered_tours), f'{slug}: conditional tour section disagrees with registered usable tours'
         if 'precioDesdeUF' not in record.get('verifiedFields', []) or record.get('updates', {}).get('precioDesdeUF', project.get('precioDesdeUF')) is None:
-            if slug in SENTO_SLUGS:
+            if slug in SENTO_SLUGS | LEON_SLUGS:
                 assert project['precioDesdeUF'] is None and re.search(r'<span class="price-label">Precio desde</span><strong>Consultar precio</strong>', text), f'{slug}: unconfirmed Sento price shown as current'
             else:
                 assert re.search(r'Precio desde(?: · Etapa [1-3])?</span><strong><span class="pending">', text), f'{slug}: historical price shown as current'
             assert 'Consultar precio' in text, f'{slug}: unconfirmed commercial price must invite consultation'
         actual_schema = [json.loads(ld) for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)]
-        if slug in SENTO_SLUGS:
+        if slug in SENTO_SLUGS | LEON_SLUGS:
             source_schema = [json.loads(ld) for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', (ROOT / (slug + '.html')).read_text(), re.S)]
             assert actual_schema == source_schema, f'{slug}: approved Sento structured data changed in packaging'
         else:

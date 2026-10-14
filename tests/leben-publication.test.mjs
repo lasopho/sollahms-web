@@ -1,3 +1,4 @@
+import { restoreLeonRows } from './leon-main-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -67,7 +68,7 @@ test('missing original review, altered sources, rejected/upscaled media and fore
 });
 
 test('Nórdico can extend the frozen catalogue once without changing any commercial baseline field', () => {
-  const catalogue = JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url))).filter(project => project.slug !== 'edificio-nordico');
+  const catalogue = restoreLeonRows(JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url)))).filter(project => project.slug !== 'edificio-nordico');
   const nordico = {slug: 'edificio-nordico', inmobiliaria: 'Leben', detalleUrl: '/edificio-nordico.html',
     verificacion: {fuente: 'https://nordico.ileben.cl/', estadoFuente: 'verified'}};
   assert.doesNotThrow(() => assertBrochureCatalogue([...catalogue, nordico]));

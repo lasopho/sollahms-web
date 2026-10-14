@@ -1,4 +1,5 @@
 import { projectSentoFile } from './sento-preservation.mjs';
+import { readPreLeonFile } from './leon-main-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync,
@@ -174,12 +175,13 @@ function packagingFixture() {
     // Bind only the seven reviewed Sento successors to their approved old
     // fixture objects/HTML. Keep the current packager and real guards; this
     // Ecasa-only synthetic package never supplies Sento private media.
-    const current = readFileSync(resolve(source, path));
+    const current = path.startsWith('scripts/') ? readFileSync(resolve(source,path)) : readPreLeonFile(path);
     writeFileSync(destination, path.startsWith('scripts/') ? current : projectSentoFile(path, current));
   };
   for (const path of ['scripts/package-vercel.mjs', 'scripts/public-fiche-copy.mjs', 'scripts/ecasa-image-quality.mjs',
     'scripts/brochure-publication.mjs', 'scripts/leben-publication.mjs', 'scripts/ecasa-publication.mjs',
-    'scripts/sento-publication.mjs', 'data/sento-baseline.json', 'data/sento-main-baseline.json', 'data/public-caption-policy.json',
+    'scripts/sento-publication.mjs', 'scripts/leon-main-publication.mjs', 'scripts/leon-combined-scope.mjs',
+    'data/sento-baseline.json', 'data/sento-main-baseline.json', 'data/public-caption-policy.json',
     'data/ecasa-image-quality.json', 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
     'data/proyectos.json', 'data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
     'assets/css/aj-brochure-preview.css', 'sitemap.xml', 'robots.txt']) copy(path);

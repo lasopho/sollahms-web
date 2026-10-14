@@ -16,6 +16,7 @@ from string import Template
 from automatic_embed_scope import restore_automatic_file
 from ecasa_scope import restore_ecasa_page, ADDED
 from leben_scope import original_html
+from leon_main_scope import read_pre_leon
 from map_cleanup_scope import (ROOT, FEATURED, RELATED, GENERIC_NOTES, NOSCRIPT,
                                baseline_bytes, expected_cleanup_file,
                                transform_map_cleanup, restore_map_cleanup_asset)
@@ -59,7 +60,7 @@ class MapCleanup(unittest.TestCase):
             if project['inmobiliaria'] == 'Ecasa' or project['slug'] == 'edificio-nordico':
                 continue  # Names, relations and protected media have exact successor checks.
             path = project['slug'] + '.html'
-            current = original_html((ROOT / path).read_text()).encode()
+            current = original_html(read_pre_leon(path).decode()).encode()
             self.assertEqual(current, expected_cleanup_file(path), path)
             restore_automatic_file(path, current)
             changed += current != baseline_bytes(path)
@@ -72,7 +73,7 @@ class MapCleanup(unittest.TestCase):
                 continue  # Names, relations and protected media have exact successor checks.
             path = project['slug'] + '.html'
             before = Nodes(baseline_bytes(path).decode()).nodes
-            after = Nodes(original_html((ROOT / path).read_text())).nodes
+            after = Nodes(original_html(read_pre_leon(path).decode())).nodes
             for tag in ['iframe', 'img', 'script', 'form', 'input', 'button']:
                 self.assertEqual([a for t, a in after if t == tag], [a for t, a in before if t == tag], path + ':' + tag)
             actions = lambda nodes: [a for t, a in nodes if t == 'a' and not a.get('href', '').startswith('https://www.google.com/maps')]
@@ -83,14 +84,14 @@ class MapCleanup(unittest.TestCase):
             for frame in frames:
                 self.assertEqual(frame.get('loading'), 'lazy', path)
             # Each brochure model still has its own original displayed plan.
-            plans += original_html((ROOT / path).read_text()).count('class="aj-model"')
+            plans += original_html(read_pre_leon(path).decode()).count('class="aj-model"')
         self.assertEqual((maps, tours, plans), (116, 81, 142))
 
     def test_no_persistent_map_links_generic_notes_or_empty_remnants(self):
         related = 0
         for project in PROJECTS:
             slug = project['slug']
-            text = original_html((ROOT / (slug + '.html')).read_text())
+            text = original_html(read_pre_leon(slug + '.html').decode())
             self.assert_clean(text, slug)
             if slug in RELATED:
                 note = re.search(r'<p class="map-note">.*?</p>', baseline_bytes(slug + '.html').decode())[0]
@@ -107,7 +108,7 @@ class MapCleanup(unittest.TestCase):
             if project['inmobiliaria'] == 'Ecasa' or project['slug'] == 'edificio-nordico':
                 continue
             before = baseline_bytes(slug + '.html').decode()
-            current = original_html((ROOT / (slug + '.html')).read_text())
+            current = original_html(read_pre_leon(slug + '.html').decode())
             self.assertEqual(normalize_page_embeds(before, RECORDS[slug], featured=slug in FEATURED), current, slug)
             self.assertEqual(normalize_page_embeds(current, RECORDS[slug], featured=slug in FEATURED), current, slug + ': repeated regeneration')
 
@@ -151,7 +152,7 @@ class MapCleanup(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 restore_automatic_file(path, mutation)
         for path in ['assets/css/project-embeds.css', 'vercel.json', 'scripts/package-vercel.mjs']:
-            current = original_html((ROOT / path).read_text()).encode()
+            current = original_html(read_pre_leon(path).decode()).encode()
             for mutation in [current + b'\n', baseline_bytes(path)]:
                 with self.assertRaises(AssertionError):
                     restore_map_cleanup_asset(path, mutation)

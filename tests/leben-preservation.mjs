@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict';
 import { projectSentoFile, restoreSentoRows } from './sento-preservation.mjs';
+import { projectLeonFile } from './leon-main-preservation.mjs';
 
 export const NORDICO_SLUG = 'edificio-nordico';
 export function originalLebenHtml(bytes) {
-  const text = bytes.toString();
+  let text = bytes.toString();
+  const slugs = new Set([...text.matchAll(/\/assets\/propiedades\/leon\/([a-z0-9-]+)\//g)].map(match=>match[1]));
+  if(slugs.size===1)text=projectLeonFile([...slugs][0]+'.html',Buffer.from(text)).toString();
   for (const kind of ['PREVIEW', 'PUBLIC']) {
     assert.equal((text.match(new RegExp('<!--LEBEN_' + kind + '_START-->', 'g')) ?? []).length,
       (text.match(new RegExp('<!--LEBEN_' + kind + '_END-->', 'g')) ?? []).length, 'Unpaired Leben source marker');

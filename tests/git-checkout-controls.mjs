@@ -1,4 +1,5 @@
 import { projectSentoFile } from './sento-preservation.mjs';
+import { readPreLeonFile } from './leon-main-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
@@ -18,13 +19,13 @@ const ECASA = 'codex/ecasa-cartera-definitiva';
 const LEBEN = 'codex/leben-brochures-nordico';
 const SENTO = 'codex/sento-cartera-documentada';
 const APPROVED_PORTFOLIO = 'e7afe04';
-const read = path => projectSentoFile(path, readFileSync(resolve(ROOT, path)));
+const read = path => projectSentoFile(path, readPreLeonFile(path));
 const json = path => JSON.parse(projectSentoFile(path, read(path)));
 const git = (...args) => execFileSync('git', args, { cwd: ROOT });
 const configuration = JSON.parse(readFileSync(resolve(ROOT, 'vercel.json')));
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false, 'codex/norte-verde-hero-merge': false, [SENTO]: false },
+  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false, 'codex/norte-verde-hero-merge': false, [SENTO]: false, 'codex/leon-main-integration': false, 'codex/leon-cartera-preview': false },
     'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
@@ -55,6 +56,10 @@ test('manual deployment gates reject missing integration protection, enabled bra
     config => { config.git.deploymentEnabled['codex/norte-verde-hero-merge'] = true; },
     config => { delete config.git.deploymentEnabled[SENTO]; },
     config => { config.git.deploymentEnabled[SENTO] = true; },
+    config => { delete config.git.deploymentEnabled['codex/leon-main-integration']; },
+    config => { config.git.deploymentEnabled['codex/leon-main-integration'] = true; },
+    config => { delete config.git.deploymentEnabled['codex/leon-cartera-preview']; },
+    config => { config.git.deploymentEnabled['codex/leon-cartera-preview'] = true; },
     config => { config.git.deploymentEnabled.main = true; },
     config => { config.git.deploymentEnabled[INTEGRATION] = true; },
     config => { config.git.deploymentEnabled['*'] = true; },
@@ -129,13 +134,14 @@ test('Git CI never publishes private originals or secretly imports the 165 Ingev
 });
 
 test('the 136 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
-  const catalogue = json('data/proyectos.json');
+  const catalogue = JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
+  assert.equal(catalogue.length,134);
   const pages = readdirSync(ROOT).filter(path => /^[^/]+\.html$/.test(path));
   assert.deepEqual(new Set(pages), new Set([...BROCHURE_PUBLIC_PAGES, ...catalogue.map(project => project.slug + '.html')]));
   const manifests = ['data/brochures-aj-urbana.json', 'data/brochures-ingevec.json'].map(json);
   const bySlug = new Map(manifests.flatMap(manifest => manifest.projects.map(project => [project.slug, project])));
   for (const project of catalogue) {
-    const html = read(project.slug + '.html').toString();
+    const html = readFileSync(resolve(ROOT,project.slug + '.html')).toString();
     const text = html.replace(/<!--[\s\S]*?-->|<head\b[^>]*>[\s\S]*?<\/head>|<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)>/gi, '').replace(/<[^>]*>/g, ' ');
     assert.doesNotMatch(text, /Fuentes oficiales|Fecha de verificaci[oó]n|Procedencia documental|evidenceSha256|Yapo\/IRIS|Auditor[ií]a interna/i, project.slug);
     assert.ok(html.includes('/contacto.html?proyecto=' + project.slug), project.slug);

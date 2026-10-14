@@ -2,8 +2,8 @@
 """Verify and prepare a private release locally. Never deploys or changes Git.
 
 The approved archive is immutable. These operational tools are not included
-in it. No credentials or audit receipts enter source/. Only the six pinned
-Sento PDF documents preserved from its existing protected Preview are allowed.
+in it. No credentials or audit receipts enter source/. The six Sento and five León
+PDFs pinned for their existing protected Previews are allowed.
 """
 import argparse
 import hashlib
@@ -429,13 +429,126 @@ def sento_policy_inventory(policy, files):
     return inventory
 
 
-def safe_name(name, official_original_paths=(), sento_document_paths=()):
+LEON_MANIFEST = 'data/brochures-leon.json'
+LEON_REVIEW_SHA256 = '962ed948e818a6c27046657bea5835d54e1e885f88c14775b5567b1c6c3ec28d'
+LEON_MAIN_BASELINE = 'data/leon-main-baseline.json'
+LEON_MAIN_BASELINE_SHA256 = '2a5a315c3a63073a01e38f4fb68c0dbb83d5481b7c90aea6f19616e328edf64c'
+LEON_COMBINED_BASELINE = 'data/leon-leben-combined-baseline.json'
+LEON_COMBINED_SHA256 = '1209b8f6b5ee2f8691b9eaf204d1a71e7bb5538b9624a83dd0951a0fbf838ae9'
+LEON_RUNTIME_FILES = (LEON_MANIFEST, LEON_MAIN_BASELINE, LEON_COMBINED_BASELINE,
+                      'scripts/leon-main-publication.mjs', 'scripts/leon-combined-scope.mjs')
+LEON_DOCUMENTS = {
+    'jardines-de-ramon-cruz': ('34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765', 12),
+    'condominio-parque-don-lautaro': ('9a7514fdaf684e92a3c3369b2e3c734d3afb5f5f9410bc88e4ca22714f313081', 12),
+    'condominio-uruguay': ('67b6daae38716b987e7f5974f4fbc0dd49c75ddb8714ca02e236de328decc119', 16),
+    'gregorio-de-la-fuente-a': ('097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa', 16),
+    'bcome': ('5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d', 10),
+}
+LEON_RETIRED_SLUGS = {'box-santiago', 'la-casona-de-buin', 'urbano-centro'}
+
+
+def restore_leon_rows(root, rows, name):
+    """Project only the five exact main successors and their three archived predecessors."""
+    path = root / LEON_MANIFEST
+    if not path.exists():
+        return rows
+    require(digest(path.read_bytes()) == LEON_REVIEW_SHA256, 'Independent León review changed')
+    baseline_path = root / LEON_MAIN_BASELINE
+    require(digest(baseline_path.read_bytes()) == LEON_MAIN_BASELINE_SHA256, 'Independent León main baseline changed')
+    baseline = json.loads(baseline_path.read_text())
+    # Git restores historical numeric encodings, independent of JSON serialization.
+    historical = json.loads(git(root, 'show', baseline['mainCommit'] + ':' + name))
+    all_slugs = set(LEON_DOCUMENTS) | LEON_RETIRED_SLUGS
+    original = {row['slug']: row for row in historical if row['slug'] in all_slugs}
+    require(list(original.values()) == baseline['originalRows'][name], 'León historical Git source changed')
+    actual = [row for row in rows if row['slug'] in all_slugs]
+    if actual == list(original.values()):
+        return rows
+    key = {'data/proyectos.json': 'catalogue', 'data/fichas-proyectos.json': 'research', 'data/registro-fichas.json': 'ledger'}[name]
+    approved = json.loads(path.read_text())[key]
+    require(actual == approved and not any(row['slug'] in LEON_RETIRED_SLUGS for row in rows),
+            'Only five exact main León objects and the three authorized retirements may be projected')
+    result = [original[row['slug']] if row['slug'] in all_slugs else row for row in rows]
+    order_source = json.loads(git(root, 'show', '73a16a34846aebc9f551f63241d8f2abeef5ca15:' + name)) if len(rows) == 134 else historical
+    order = {row['slug']: index for index, row in enumerate(order_source)}
+    for slug in baseline['retiredSlugs']:
+        index = next((i for i, row in enumerate(result) if order.get(row['slug'], 10**9) > order[slug]), len(result))
+        result.insert(index, original[slug])
+    return result
+
+
+def leon_manifest_inventory(manifest):
+    require(manifest.get('schemaVersion') == 1 and manifest.get('protectedPreviewOnly') is True,
+            'León source is only authorized for protected Preview')
+    projects = manifest.get('projects', [])
+    require(len(projects) == 5 and {p.get('slug') for p in projects} == set(LEON_DOCUMENTS), 'León identities changed')
+    inventory = {}
+    def variants(asset):
+        value = asset.get('variants', {})
+        return [item for group in value.values() for item in (group if isinstance(group, list) else [group])] if isinstance(value, dict) else value
+    for project in projects:
+        slug = project['slug']; doc = project.get('document', {})
+        require((doc.get('sha256'), doc.get('pageCount')) == LEON_DOCUMENTS[slug] and
+                doc.get('localPath') == '/assets/brochures/leon/' + slug + '.pdf', 'Unapproved León original PDF')
+        assets = [(doc, 'document')]
+        for image in project.get('images', []):
+            assets.append((image, 'image'))
+            if image.get('original', {}).get('localPath'):
+                assets.append((image['original'], 'image'))
+            assets.extend((a, 'image') for a in variants(image))
+        for model in project.get('models', []):
+            assets.append((model['plan'], 'plan'))
+            assets.extend((a, 'plan') for a in variants(model['plan']))
+        for asset, kind in assets:
+            name = asset.get('localPath', '').lstrip('/')
+            require('..' not in PurePosixPath(name).parts and re.fullmatch(r'assets/(?:propiedades|brochures)/leon/[a-zA-Z0-9/._-]+', name), 'Unsafe León path')
+            require(name == 'assets/brochures/leon/' + slug + '.pdf' if kind == 'document' else
+                    name.startswith('assets/propiedades/leon/' + slug + '/') and PurePosixPath(name).suffix.lower() in EXTENSIONS,
+                    'León asset belongs to another project or unapproved document')
+            require(re.fullmatch(r'[a-f0-9]{64}', asset.get('sha256', '')) and isinstance(asset.get('bytes'), int) and asset['bytes'] > 0,
+                    'León source lacks exact bytes or digest')
+            row = {'path': '/' + name, 'sha256': asset['sha256'], 'bytes': asset['bytes'], 'kind': kind}
+            if kind != 'document':
+                require(asset.get('width', 0) > 0 and asset.get('height', 0) > 0, 'León media lacks native dimensions')
+                row.update(width=asset['width'], height=asset['height'])
+            if name in inventory:
+                require(inventory[name]['sha256'] == row['sha256'] and inventory[name]['bytes'] == row['bytes'], 'Conflicting León resource')
+            else:
+                inventory[name] = row
+    require(len(inventory) == 310 and sum(item['kind'] == 'document' for item in inventory.values()) == 5,
+            'León transport must preserve exactly305 media and5 PDFs')
+    return inventory
+
+
+def leon_policy_inventory(policy, files):
+    review = policy.get('leonReview')
+    present = {name for name in files if name.startswith(('assets/propiedades/leon/', 'assets/brochures/leon/'))}
+    if review is None:
+        require(not present and LEON_MANIFEST not in files, 'León needs its independent protected receipt')
+        return {}
+    require(policy.get('contentProfile') == 'protected_leben_review' and review.get('manifestSha256') == LEON_REVIEW_SHA256 and
+            review.get('projects') == 5 and review.get('images') == 305 and review.get('documents') == 5 and
+            all(name in files for name in LEON_RUNTIME_FILES), 'Incomplete León protected source policy')
+    require(files[LEON_MANIFEST]['sha256'] == LEON_REVIEW_SHA256 and files[LEON_MAIN_BASELINE]['sha256'] == LEON_MAIN_BASELINE_SHA256 and
+            files[LEON_COMBINED_BASELINE]['sha256'] == LEON_COMBINED_SHA256,
+            'León independently bound evidence changed')
+    inventory = {item.get('path', '').lstrip('/'): item for item in review.get('assets', [])}
+    require(len(inventory) == len(review.get('assets', [])) == 310 and set(inventory) == present, 'León selection includes a candidate or lacks approved content')
+    for name, item in inventory.items():
+        require(files[name]['sha256'] == item['sha256'] and files[name]['size'] == item['bytes'], 'León bytes differ from pinned selection: ' + name)
+    require({name for name in inventory if name.endswith('.pdf')} == {'assets/brochures/leon/' + slug + '.pdf' for slug in LEON_DOCUMENTS},
+            'Only five independently pinned León original PDFs may enter transport')
+    return inventory
+
+
+def safe_name(name, official_original_paths=(), sento_document_paths=(), leon_document_paths=()):
     parts = PurePosixPath(name).parts
     require(bool(parts) and not name.startswith('/') and '\\' not in name and
             all(part not in {'.', '..'} and not part.startswith('.') for part in parts) and
             str(PurePosixPath(name)) == name, 'Unsafe archive path')
     require(PurePosixPath(name).suffix.lower() in EXTENSIONS or name in sento_document_paths and
-            name in {'assets/brochures/sento/' + slug + '.pdf' for slug in SENTO_DOCUMENTS}, 'Private or unexpected file type')
+            name in {'assets/brochures/sento/' + slug + '.pdf' for slug in SENTO_DOCUMENTS} or name in leon_document_paths and
+            name in {'assets/brochures/leon/' + slug + '.pdf' for slug in LEON_DOCUMENTS}, 'Private or unexpected file type')
     require(not any(part in {'docs', 'tests', 'contracts', 'node_modules',
                              'brochure-candidates', 'inventarios'} for part in parts),
             'Private or operational directory in deployment source')
@@ -454,13 +567,14 @@ def verify_archive(archive, policy):
         for block in iter(lambda: stream.read(1024 * 1024), b''):
             hasher.update(block)
     require(hasher.hexdigest() == policy['archiveSha256'], 'Archive SHA-256 differs from approval')
-    files, total, official_manifest, manual_manifest, base_quality, leben_manifest, sento_manifest = {}, 0, None, None, None, None, None
+    files, total, official_manifest, manual_manifest, base_quality, leben_manifest, sento_manifest, leon_manifest = {}, 0, None, None, None, None, None, None
     official_original_paths = {item.get('path', '').lstrip('/')
         for item in (policy.get('officialOriginals') or {}).get('sourceAssets', []) if item.get('kind') == 'original'}
     sento_document_paths = {item.get('path', '').lstrip('/') for item in (policy.get('sentoReview') or {}).get('assets', []) if item.get('kind') == 'document'}
+    leon_document_paths = {item.get('path', '').lstrip('/') for item in (policy.get('leonReview') or {}).get('assets', []) if item.get('kind') == 'document'}
     with tarfile.open(archive, 'r:gz') as bundle:
         for member in bundle:
-            name = safe_name(member.name, official_original_paths, sento_document_paths)
+            name = safe_name(member.name, official_original_paths, sento_document_paths, leon_document_paths)
             require(member.isfile() and not member.issym() and not member.islnk(), 'Nonregular archive member')
             require(name not in files, 'Duplicate archive member')
             require(0 <= member.size <= policy['sourceBytes'] - total, 'Archive exceeds approved uncompressed size')
@@ -479,6 +593,8 @@ def verify_archive(archive, policy):
                 leben_manifest = json.loads(data)
             elif name == SENTO_MANIFEST:
                 sento_manifest = json.loads(data)
+            elif name == LEON_MANIFEST:
+                leon_manifest = json.loads(data)
             total += len(data)
     require(len(files) == policy['sourceFiles'] and total == policy['sourceBytes'], 'Incomplete source archive')
     if policy.get('officialOriginals') is not None:
@@ -493,6 +609,11 @@ def verify_archive(archive, policy):
     manual_policy_inventory(policy, files)
     leben_policy_inventory(policy, files)
     sento_policy_inventory(policy, files)
+    leon_policy_inventory(policy, files)
+    if policy.get('leonReview') is not None:
+        require(leon_manifest is not None, 'León source manifest is missing')
+        selected = leon_manifest_inventory(leon_manifest)
+        require(policy['leonReview']['assets'] == [selected[name] for name in sorted(selected)], 'León source receipt differs from its pinned archived manifest')
     if policy.get('sentoReview') is not None:
         require(sento_manifest is not None, 'Sento manifest is missing')
         selected = sento_manifest_inventory(sento_manifest)
@@ -550,11 +671,14 @@ def verify_git_reference(root, files, policy):
     official = official_policy_inventory(policy, files)
     leben = leben_policy_inventory(policy, files)
     sento = sento_policy_inventory(policy, files)
+    leon = leon_policy_inventory(policy, files)
     manual_policy_inventory(policy, files)
     require(not set(official) & set(tree), 'Official review images must remain outside public Git source')
     require(not set(leben) & set(tree), 'Leben review images must remain outside public Git source')
     sento_documents = {name for name, item in sento.items() if item['kind'] == 'document'}
+    leon_documents = {name for name, item in leon.items() if item['kind'] == 'document'}
     require(not sento_documents & set(tree), 'Sento PDF originals must remain outside public Git source')
+    require(not leon_documents & set(tree), 'León originals must remain outside public Git source')
     tracked = 0
     for name, info in files.items():
         if name in tree:
@@ -563,6 +687,9 @@ def verify_git_reference(root, files, policy):
                     'Source differs from approved Git commit: ' + name)
             tracked += 1
         else:
+            if name in leon_documents:
+                require(name.startswith('assets/brochures/leon/') and info['sha256'] == leon[name]['sha256'], 'Unapproved non-Git León document')
+                continue
             if name in sento_documents:
                 require(name.startswith('assets/brochures/sento/') and info['sha256'] == sento[name]['sha256'],
                         'Unapproved non-Git Sento document')
@@ -594,7 +721,7 @@ def verify_worktree(root, files, policy):
                 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
                 OFFICIAL_MANIFEST, OFFICIAL_MODULE,
                 MANUAL_MANIFEST, MANUAL_MODULE,
-                SENTO_MODULE, *SENTO_REQUIRED_FILES,
+                SENTO_MODULE, *SENTO_REQUIRED_FILES, *LEON_RUNTIME_FILES,
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
     require(not git(root, 'diff', '--no-ext-diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
@@ -663,7 +790,10 @@ def audit_protected_preview_only(source, preview, policy, files, production_resu
     tree = {path.relative_to(preview).as_posix(): path for path in preview.rglob('*') if path.is_file()}
     expected = policy.get('previewOutputInventory', [])
     names = {item['file'] for item in expected}
-    require(len(names) == len(expected) == len(tree) == 1360 and names == set(tree),
+    leon = leon_policy_inventory(policy, files)
+    output_count = 1668 if leon else 1360
+    project_count = 134 if leon else 137
+    require(len(names) == len(expected) == len(tree) == output_count and names == set(tree),
             'Protected Preview omitted or added an output resource')
     for item in expected:
         require(not tree[item['file']].is_symlink() and digest(tree[item['file']].read_bytes()) == item['sha256'],
@@ -673,8 +803,11 @@ def audit_protected_preview_only(source, preview, policy, files, production_resu
     sento = sento_policy_inventory(policy, files)
     require({name for name in tree if name.startswith(('assets/propiedades/sento/', 'assets/brochures/sento/'))} == set(sento),
             'Unselected Sento source/candidate was published')
-    require({name for name in tree if name.endswith('.pdf')} == {name for name in sento if sento[name]['kind'] == 'document'},
-            'Only the six independently pinned Sento PDFs may be served in this protected Preview')
+    require({name for name in tree if name.startswith(('assets/propiedades/leon/', 'assets/brochures/leon/'))} == set(leon), 'Unselected León asset was published')
+    for name, item in leon.items():
+        require(digest(tree[name].read_bytes()) == item['sha256'] and tree[name].stat().st_size == item['bytes'], 'León output differs from its pinned source')
+    require({name for name in tree if name.endswith('.pdf')} == {name for name in sento if sento[name]['kind'] == 'document'} | {name for name in leon if leon[name]['kind'] == 'document'},
+            'Only the independently pinned six Sento and five León PDFs may be served in this protected Preview')
     for name, item in sento.items():
         require(digest(tree[name].read_bytes()) == item['sha256'] and tree[name].stat().st_size == item['bytes'],
                 'Sento Preview bytes differ from independent source pins')
@@ -684,16 +817,19 @@ def audit_protected_preview_only(source, preview, policy, files, production_resu
     for name, item in leben.items():
         require(digest(tree[name].read_bytes()) == item['sha256'], 'Leben derivative changed in combined output')
     catalogue = json.loads(tree['data/proyectos.json'].read_text())
-    require(len(catalogue) == len({row['slug'] for row in catalogue}) == 137 and
+    require(len(catalogue) == len({row['slug'] for row in catalogue}) == project_count and
             sum(row['inmobiliaria'] == 'Ecasa' for row in catalogue) == 15 and
             {row['slug'] for row in catalogue if row['inmobiliaria'] == 'Sento'} == SENTO_SLUGS and
             sum(row['slug'] == 'own' for row in catalogue) == 1 and sum(row['slug'] == 'edificio-nordico' for row in catalogue) == 1,
             'Combined Preview changed project identities')
+    if leon:
+        approved_leon = json.loads((source / LEON_MANIFEST).read_text())['catalogue']
+        require([row for row in catalogue if row['slug'] in LEON_DOCUMENTS] == approved_leon and not LEON_RETIRED_SLUGS & {row['slug'] for row in catalogue}, 'León output differs from five exact successors or restores retired projects')
     sento_manifest = json.loads((source / SENTO_MANIFEST).read_text())
     require([row for row in catalogue if row['slug'] in SENTO_SLUGS] == sento_manifest['catalogue'],
             'Sento Preview commercial records differ from their pinned review')
     pages = {name for name in tree if name.endswith('.html')}
-    require(len(pages) == 144 and all(row['slug'] + '.html' in pages for row in catalogue), 'Combined Preview lost a project page')
+    require(len(pages) == project_count + 7 and all(row['slug'] + '.html' in pages for row in catalogue), 'Combined Preview lost a project page')
     headers = set()
     for name in pages:
         text = tree[name].read_text()
@@ -705,9 +841,9 @@ def audit_protected_preview_only(source, preview, policy, files, production_resu
     require(headers == LEBEN_SLUGS | {'own', 'edificio-nordico'}, 'The combined output lost a Leben header')
     require(tree['robots.txt'].read_text() == 'User-agent: *\nDisallow: /\n', 'Preview robots must block indexing')
     return {'ok': True, 'auditProfile': 'protected_leben_review_with_preserved_sento',
-            'counts': {'projects': 137, 'Ecasa': 15, 'LebenHeaders': 14, 'SentoProjects': 7,
-                       'htmlPages': 144, 'outputFiles': 1360, 'LebenMedia': 43, 'SentoImages': 277, 'SentoDocuments': 6},
-            'outputHashesVerified': 1360, 'SentoPublicParityVerified': False, 'ProductionRejected': True,
+            'counts': {'projects': project_count, 'Ecasa': 15, 'LebenHeaders': 14, 'SentoProjects': 7,
+                       'htmlPages': project_count + 7, 'outputFiles': output_count, 'LeonProjects': 5 if leon else 0, 'LeonMedia': 305 if leon else 0, 'LeonDocuments': 5 if leon else 0, 'LebenMedia': 43, 'SentoImages': 277, 'SentoDocuments': 6},
+            'outputHashesVerified': output_count, 'SentoPublicParityVerified': False, 'ProductionRejected': True,
             'productionPublicAuditPerformed': False, 'networkRequests': 0, 'realMessages': 0, 'realReservations': 0,
             'errors': [], 'productionDeploymentAuthorized': False}
 
@@ -821,6 +957,7 @@ def prepare(archive, output, node, policy, protected_review=False):
                   if policy.get('lebenReview') is not None else {}),
                **({'lebenPublicWebRights': 'pending_contract_scope_verification'}
                   if policy.get('lebenReview') is not None else {}),
+               **({'leonReview': policy['leonReview']} if policy.get('leonReview') else {}),
                **({'sentoReview': policy['sentoReview'], 'SentoPublicParityVerified': False,
                    'ProductionRejected': True, 'productionPublicAuditPerformed': False}
                   if sento_only else {}),

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Create a deterministic PRIVATE source bundle for an authorized web build.
 
-Only the six pinned PDF documents already approved for the Sento Preview may
+Only the six Sento and five León PDFs independently pinned for protected Preview may
 enter; Leben originals, contracts, candidates, environment files and Git do not.
 It includes the exact selected derivatives, so materialization is
 not a build dependency. This command does not upload or deploy anything.
@@ -77,6 +77,7 @@ QUALITY_BASE_VALUES = {
 
 
 def original_sento_rows(root, rows, name):
+    rows = release.restore_leon_rows(root, rows, name)
     path = root / release.SENTO_MANIFEST
     if not path.exists():
         return rows
@@ -203,7 +204,8 @@ def selected_source_files(root):
     catalogue = json.loads((root / 'data/proyectos.json').read_text())
     slugs = {project['slug'] for project in catalogue}
     nordico = [project for project in catalogue if project['slug'] == 'edificio-nordico']
-    assert len(catalogue) == len(slugs) == 136 + len(nordico) and len(nordico) <= 1, 'Only Nórdico may extend the consolidated 136 catalogue'
+    historical_catalogue = release.restore_leon_rows(root, catalogue, 'data/proyectos.json')
+    assert len(catalogue) == len(slugs) and len(historical_catalogue) == 136 + len(nordico) and len(nordico) <= 1, 'Only Nórdico may extend the consolidated 136 catalogue'
     assert not nordico or nordico[0]['inmobiliaria'] == 'Leben' and nordico[0]['verificacion']['fuente'] == 'https://nordico.ileben.cl/' and nordico[0]['verificacion']['estadoFuente'] == 'verified', 'Nórdico requires verified official identity'
     assert APPROVED_PROJECTS['brochures-ingevec.json'] <= slugs and not REMOVED_PROJECTS & slugs
     assert all(p['inmobiliaria'] == 'Ingevec' for p in catalogue if p['slug'] in APPROVED_PROJECTS['brochures-ingevec.json'])
@@ -265,11 +267,17 @@ def selected_source_files(root):
     assert len(ecasa_media) == 130 and sha(json.dumps(ecasa_media, ensure_ascii=False, separators=(',', ':')).encode()) == ECASA_MEDIA_SHA256, 'The exact 130 Ecasa resource paths and bytes must be preserved'
     leben_path = root / release.LEBEN_MANIFEST
     if leben_path.exists():
-        assert len(catalogue) == 137 and len(nordico) == 1, 'The completed Leben batch requires the authorized Nórdico addition'
+        assert len(historical_catalogue) == 137 and len(nordico) == 1, 'The completed Leben batch requires the authorized Nórdico addition'
         leben = release.leben_manifest_inventory(json.loads(leben_path.read_text()))
         assert not set(leben) & set(media), 'Duplicate Leben media destination'
         media.update({name: item['sha256'] for name, item in leben.items()})
-    files = set(media) | set(official_sources) | set(sento)
+    leon_path = root / release.LEON_MANIFEST
+    leon = release.leon_manifest_inventory(json.loads(leon_path.read_text())) if leon_path.exists() else {}
+    if leon:
+        assert sha(leon_path.read_bytes()) == release.LEON_REVIEW_SHA256, 'León approved source manifest changed'
+    files = set(media) | set(official_sources) | set(sento) | set(leon)
+    if leon:
+        files.update(release.LEON_RUNTIME_FILES)
     if sento:
         files.update((release.SENTO_MODULE, *release.SENTO_REQUIRED_FILES))
     files.add(release.LEBEN_MODULE)
@@ -296,19 +304,21 @@ def selected_source_files(root):
             continue
         if any(f'/propiedades/{folder}/' in relative for folder in (*PRIVATE_MEDIA_FOLDERS, release.OFFICIAL_FOLDER)):
             continue  # Only the exact manifest above can select these assets.
-        if relative.startswith(('assets/propiedades/sento/', 'assets/brochures/sento/')):
+        if relative.startswith(('assets/propiedades/sento/', 'assets/brochures/sento/', 'assets/propiedades/leon/', 'assets/brochures/leon/')):
             continue  # The preserved Sento selection is independent and exact.
         if path.suffix.lower() in PUBLIC_EXTENSIONS:
             files.add(relative)
     for relative in sorted(files):
         path = root / relative
         assert path.is_file() and path.resolve() == path, f'Nonregular or symbolic source: {relative}'
-        assert path.suffix.lower() in PUBLIC_EXTENSIONS or relative in sento and sento[relative]['kind'] == 'document'
+        assert path.suffix.lower() in PUBLIC_EXTENSIONS or relative in sento and sento[relative]['kind'] == 'document' or relative in leon and leon[relative]['kind'] == 'document'
         assert '..' not in Path(relative).parts and not relative.startswith('.')
         if relative in media:
             assert sha(path.read_bytes()) == media[relative], f'Changed selected media: {relative}'
         if relative in official_sources:
             assert path.stat().st_size == official_sources[relative]['bytes'] and sha(path.read_bytes()) == official_sources[relative]['sha256'], f'Changed official review source: {relative}'
+        if relative in leon:
+            assert sha(path.read_bytes()) == leon[relative]['sha256'] and path.stat().st_size == leon[relative]['bytes'], 'Changed preserved León source: ' + relative
         if relative in sento:
             assert sha(path.read_bytes()) == sento[relative]['sha256'], 'Changed preserved Sento source: ' + relative
     if sento:
@@ -384,6 +394,10 @@ def main():
     sento = release.sento_manifest_inventory(json.loads(sento_path.read_text())) if sento_path.exists() else {}
     sento_receipt = {'manifestSha256': release.SENTO_REVIEW_SHA256, 'projects': 7, 'images': 277, 'documents': 6,
                     'assets': [{**sento[name], 'bytes': (ROOT / name).stat().st_size} for name in sorted(sento)]} if sento else None
+    leon_path = ROOT / release.LEON_MANIFEST
+    leon = release.leon_manifest_inventory(json.loads(leon_path.read_text())) if leon_path.exists() else {}
+    leon_receipt = {'manifestSha256': release.LEON_REVIEW_SHA256, 'projects': 5, 'images': 305, 'documents': 5,
+                    'assets': [leon[name] for name in sorted(leon)]} if leon else None
     official_sources, official_published = release.official_manifest_inventory(json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
     manual = release.manual_quality_selection(json.loads((ROOT / release.MANUAL_MANIFEST).read_text()),
         json.loads((ROOT / release.BASE_QUALITY_MANIFEST).read_text()),
@@ -447,6 +461,7 @@ def main():
                 'reviewCommit': review_commit, 'verificationTools': tool_inventory,
                 'contentProfile': 'protected_leben_review' if leben_receipt else 'protected_ecasa_review',
                 **({'lebenReview': leben_receipt, 'lebenReviewMedia': len(leben)} if leben_receipt else {}),
+                **({'leonReview': leon_receipt} if leon_receipt else {}),
                 **({'sentoReview': sento_receipt, 'sentoPublicParityVerified': False, 'productionComparisonAvailable': False} if sento_receipt else {}),
                 'publicationAuthorized': False,
                 'integrationAuthorized': False,

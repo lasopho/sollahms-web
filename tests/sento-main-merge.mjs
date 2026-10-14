@@ -12,8 +12,9 @@ import { SENTO_SLUGS, SENTO_DOCUMENTS, sentoMainBaseline, sentoFingerprint,
 import { projects as contexts } from '../lib/project-context.mjs';
 import { originalLebenHtml } from './leben-preservation.mjs';
 import { projectSentoFile } from './sento-preservation.mjs';
+import { readPreLeonFile, restoreLeonContexts } from './leon-main-preservation.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
-const read = path => readFileSync(resolve(root, path));
+const read = path => readPreLeonFile(path);
 const json = path => JSON.parse(read(path));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const review = json('data/sento-review.json');
@@ -51,7 +52,7 @@ test('the composed catalogue retains 137 identities, fifteen Ecasa and all 130 f
   assert.equal(json('data/proyectos.json').filter(row => row.inmobiliaria === 'Leben').length, 14);
   assert.equal(json('data/proyectos.json').filter(row => row.slug === 'edificio-nordico').length, 1);
   for (const slug of otherSlugs) assert.deepEqual(originalLebenHtml(read(slug + '.html')), originalLebenHtml(before(slug + '.html')), slug + ': only protected Leben header/media projections may differ');
-  assert.deepEqual(Object.fromEntries(Object.entries(contexts).filter(([slug]) => !SENTO_SLUGS.includes(slug))), Object.fromEntries(Object.entries(priorContexts).filter(([slug]) => !SENTO_SLUGS.includes(slug))));
+  assert.deepEqual(Object.fromEntries(Object.entries(restoreLeonContexts(contexts)).filter(([slug]) => !SENTO_SLUGS.includes(slug))), Object.fromEntries(Object.entries(priorContexts).filter(([slug]) => !SENTO_SLUGS.includes(slug))));
   for (const line of git('ls-tree', '-r', COMPOSED_BASELINE, 'assets').toString().trim().split('\n')) {
     const match = line.match(/^\d+ blob ([a-f0-9]+)\t(.+)$/); assert.ok(match);
     const bytes = read(match[2]);
@@ -118,8 +119,8 @@ test('main and Sento automatic deployments remain disabled and source originals 
 test('a Production build rejects the merged Sento source before creating public output', () => {
   const fixture = mkdtempSync(join(tmpdir(), 'sento-production-gate-'));
   try {
-    for (const path of ['scripts/package-vercel.mjs','scripts/brochure-publication.mjs','scripts/sento-publication.mjs','scripts/leben-publication.mjs','scripts/ecasa-publication.mjs','scripts/ecasa-image-quality.mjs','scripts/public-fiche-copy.mjs','data/public-caption-policy.json','data/ecasa-image-quality.json','data/sento-baseline.json','data/sento-main-baseline.json','data/sento-review.json']) {
-      const target = join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(root,path),target);
+    for (const path of ['scripts/package-vercel.mjs','scripts/brochure-publication.mjs','scripts/sento-publication.mjs','scripts/leon-combined-scope.mjs','scripts/leben-publication.mjs','scripts/ecasa-publication.mjs','scripts/ecasa-image-quality.mjs','scripts/public-fiche-copy.mjs','data/public-caption-policy.json','data/ecasa-image-quality.json','data/sento-baseline.json','data/sento-main-baseline.json','data/sento-review.json']) {
+      const target = join(fixture,path);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,readPreLeonFile(path));
     }
     const result = spawnSync(process.execPath,[join(fixture,'scripts/package-vercel.mjs')],{cwd:fixture,env:{...process.env,VERCEL_ENV:'production'},encoding:'utf8'});
     assert.notEqual(result.status,0);assert.match(result.stderr,/The Sento update is authorized for Preview only/);
@@ -133,7 +134,7 @@ test('two real Sento regenerations preserve the validated presentation and all 1
     const paths = ['scripts/apply-sento.py','scripts/sento_fiche.py','scripts/project_embed_policy.py','scripts/virtual_tour_policy.py','templates/project-detail.html','templates/sento-plaza-las-condes.html','lib/project-context.mjs',
       ...readdirSync(resolve(root,'data')).filter(name => name.startsWith('sento') || name === 'brochures-sento.json').map(name => 'data/'+name),
       'data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json',...otherSlugs.map(slug => slug + '.html'),...SENTO_SLUGS.map(slug => slug+'.html')];
-    for (const path of paths) {const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(root,path),target);}
+    for (const path of paths) {const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,readPreLeonFile(path));}
     const preserved = Object.fromEntries(otherSlugs.map(slug=>[slug + '.html',hash(read(slug + '.html'))]));
     const preservedData = Object.fromEntries(['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json'].map(file=>[file,json(file).filter(row=>!SENTO_SLUGS.includes(row.slug))]));
     const python=process.env.SOLLAHMS_CI_PYTHON || 'python3';
@@ -153,7 +154,7 @@ test('generic and featured generators use the validated Sento presentation witho
     const paths = [...readdirSync(resolve(root,'scripts')).filter(name=>name.endsWith('.py')).map(name=>'scripts/'+name),
       ...readdirSync(resolve(root,'data')).filter(name=>name.endsWith('.json')).map(name=>'data/'+name),
       'templates/project-detail.html','templates/sento-plaza-las-condes.html',...SENTO_SLUGS.map(slug=>slug+'.html'),'distrito-centro.html','inn-puerto-chico.html','edificio-suecia.html'];
-    for (const path of paths) {const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(root,path),target);}
+    for (const path of paths) {const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,readPreLeonFile(path));}
     const python=process.env.SOLLAHMS_CI_PYTHON || 'python3';
     const script = "import importlib.util,json\nfrom pathlib import Path\np=Path('scripts/build-project-details.py')\nspec=importlib.util.spec_from_file_location('details',p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)\nrows=json.loads(Path('data/proyectos.json').read_text());research={r['slug']:r for r in json.loads(Path('data/fichas-proyectos.json').read_text())}\nfor r in rows:\n if r['inmobiliaria']=='Sento':\n  rendered,_,_=m.render(r,research[r['slug']],None);assert rendered==Path(r['slug']+'.html').read_text(),r['slug']\n";
     const generic=spawnSync(python,['-c',script],{cwd:fixture,env:{...process.env,PYTHONPATH:join(fixture,'scripts')},encoding:'utf8'});

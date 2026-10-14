@@ -18,10 +18,11 @@ NODE = os.environ.get('SOLLAHMS_CI_NODE') or shutil.which('node') or '/Users/lui
 SLUGS = {'angamos', 'curico-77', 'domeyko-2055', 'jofre-135', 'mirador-la-florida', 'plaza-las-condes', 'san-ignacio'}
 BRIDGE = """
 import { readFileSync } from 'node:fs';
-import { restoreSentoRows, projectSentoFile } from './scripts/sento-publication.mjs';
+import { restoreSentoRows, projectSentoFile } from './tests/sento-preservation.mjs';
+import { restoreLeonRows } from './tests/leon-main-preservation.mjs';
 const request = JSON.parse(readFileSync(0, 'utf8'));
 if (request.kind === 'rows') {
-  process.stdout.write(JSON.stringify(restoreSentoRows(request.rows, request.path)));
+  process.stdout.write(JSON.stringify(restoreSentoRows(restoreLeonRows(request.rows, request.path), request.path)));
 } else {
   process.stdout.write(projectSentoFile(request.path, Buffer.from(request.bytes, 'base64')).toString('base64'));
 }
@@ -38,14 +39,18 @@ def original_data(rows, path='data/proyectos.json'):
     originals = json.loads((ROOT / 'data/sento-baseline.json').read_text())['originalRows'][path]
     original_by_slug = {row['slug']: row for row in originals}
     assert all(restored[slug] == original_by_slug[slug] for slug in SLUGS)
-    return [original_by_slug[row['slug']] if row['slug'] in SLUGS else row for row in rows]
+    leon = json.loads((ROOT / 'data/leon-main-baseline.json').read_text())['originalRows'][path]
+    leon_by_slug = {row['slug']: row for row in leon}
+    current_by_slug = {row['slug']: row for row in rows}
+    order = json.loads(output)
+    return [original_by_slug[row['slug']] if row['slug'] in SLUGS else leon_by_slug[row['slug']] if row['slug'] in leon_by_slug else current_by_slug[row['slug']] for row in order]
 
 
 @functools.lru_cache(maxsize=256)
 def historical_file(path, data):
     if path not in {'data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
                     'lib/project-context.mjs', 'vercel.json', 'scripts/package-vercel.mjs',
-                    'scripts/norte-verde-publication.mjs'} and path.removesuffix('.html') not in SLUGS:
+                    'scripts/norte-verde-publication.mjs', 'scripts/brochure-publication.mjs'} and path.removesuffix('.html') not in SLUGS | {'bcome','condominio-uruguay','gregorio-de-la-fuente-a','condominio-parque-don-lautaro','jardines-de-ramon-cruz'}:
         return data
     output = subprocess.check_output([NODE, '--input-type=module', '-e', BRIDGE], cwd=ROOT,
         input=json.dumps({'kind': 'bytes', 'path': path, 'bytes': base64.b64encode(data).decode()}).encode())

@@ -30,7 +30,7 @@ const saveProgress = async (completed = false) => writeFile(resolve(output, 'rep
 }, null, 2) + '\n');
 
 try {
-  check(projects.length === 137 && slugs.size === 13, '137 catalogue projects, 13 review targets');
+  check(projects.length === 134 && slugs.size === 13, '134 catalogue projects, 13 review targets');
   check(brochure.projects.reduce((n, project) => n + project.images.length, 0) === 43, '43 accepted documentary images');
   for (const viewport of viewports) {
     const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1 });
@@ -141,7 +141,7 @@ try {
     }
     await page.goto(base + '/proyectos.html', { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => !document.querySelector('#search')?.disabled && document.querySelectorAll('.catalog-card').length > 0);
-    check(await page.locator('.catalog-card').count() === 137, viewport.name + ' 137 catalogue cards');
+    check(await page.locator('.catalog-card').count() === 134, viewport.name + ' 134 catalogue cards');
     check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2), viewport.name + ' catalogue without overflow');
     await page.locator('#search').fill('nordico');
     await page.waitForFunction(() => document.querySelectorAll('.catalog-card').length === 1);

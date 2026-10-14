@@ -1,3 +1,4 @@
+import { restoreLeonContexts, isReviewedLeonAsset } from './leon-main-preservation.mjs';
 import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -12,7 +13,7 @@ import { createContactHandler } from '../api/contact.mjs';
 import { reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
 import { projects as actualSentoContexts } from '../lib/project-context.mjs';
 import { restoreSentoContexts } from './sento-preservation.mjs';
-const trustedContexts = restoreSentoContexts(actualSentoContexts);
+const trustedContexts = restoreSentoContexts(restoreLeonContexts(actualSentoContexts));
 import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, restoreEcasaContext, assertCommercialBytes, assertPortfolioData, commercialPage,
   INGEVEC_NEW_SLUGS, readCommercialFile, vimaImageCorrection,
   AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet, NORTE_VERDE_HERO_ASSETS } from './commercial-html.mjs';
@@ -376,7 +377,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
     newPaths.add(entry.localPath.slice(1));
   }
   assert.equal(newPaths.size, 10);
-  const currentAssets = historicalSentoAssetFiles(listFiles('assets')).filter((file) =>
+  const currentAssets = historicalSentoAssetFiles(listFiles('assets').filter(file=>!isReviewedLeonAsset(file))).filter((file) =>
     !NORTE_VERDE_HERO_ASSETS.includes(file) &&
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
     !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && file !== 'assets/css/leben-project-hero.css' && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');

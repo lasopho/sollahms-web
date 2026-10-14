@@ -1,6 +1,7 @@
 // Publication selection only. Documentary evidence and commercial snapshots
 // remain intact; this module never edits a source file or changes image bytes.
 import { naturalCaption } from './public-fiche-copy.mjs';
+import { restoreLeonRows } from './leon-combined-scope.mjs';
 
 const BASELINE = '2d34997f8fd82b775c0697b20493674773e7fdc2';
 const HASH = /^[a-f0-9]{64}$/;
@@ -80,6 +81,7 @@ function imagePath(value) {
 }
 
 export function validateEcasaImageQuality(review,research,catalogue,policy,officialSources) {
+  catalogue = restoreLeonRows(catalogue);
   requireValue(policy?.schemaVersion===1&&policy.baselineCommit===BASELINE&&policy.scope==='ecasa_images_only'&&
     /^\d{4}-\d{2}-\d{2}$/.test(policy.reviewedOn??''),'unrecognized review scope or baseline');
   requireValue(Array.isArray(catalogue) && (catalogue.length === 136 || catalogue.length === 137 && catalogue.filter(project => project.slug === 'edificio-nordico').length === 1), 'the 136 canonical projects and authorized Nórdico addition must remain intact');

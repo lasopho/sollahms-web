@@ -1,3 +1,4 @@
+import { restoreLeonRows } from './leon-main-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -23,10 +24,11 @@ const request = (path,body) => new Request('https://sollahms.cl/api/'+path,
   {method:'POST',headers:{'Content-Type':'application/json',Origin:'https://sollahms.cl'},body:JSON.stringify(body)});
 
 test('121 other projects and the ten single Ecasa projects preserve their catalogue context', () => {
-  const unchanged=catalogue.filter(project=>project.inmobiliaria!=='Ecasa'||project.etapasComerciales.length===1);
+  const historical=restoreLeonRows(catalogue);
+  const unchanged=historical.filter(project=>project.inmobiliaria!=='Ecasa'||project.etapasComerciales.length===1);
   assert.equal(unchanged.length,132);
   for(const project of unchanged) {
-    const identity=resolveProjectIdentity(catalogue,project.slug);
+    const identity=resolveProjectIdentity(historical,project.slug);
     for(const [key,value] of Object.entries(project)) assert.deepEqual(identity[key],value,project.slug+': '+key);
     assert.equal(identity.bodyProjectSlug,project.slug);
     assert.equal(identity.contextQuery,'?proyecto='+project.slug);

@@ -147,7 +147,7 @@ def main():
     parser.add_argument('--commercial-presentation', action='store_true',
                         help='Audit display-only changes with exact financial data, source and engine integrity')
     args = parser.parse_args()
-    if args.commercial_presentation or len(json.loads((ROOT / 'data/proyectos.json').read_text())) in {136, 137, 144}:
+    if args.commercial_presentation or len(json.loads((ROOT / 'data/proyectos.json').read_text())) in {134, 136, 137, 144}:
         result = validate_commercial_source()
         # Preserve the full shared navigation assertions as well as the
         # exact financial bytes proven by the successor source audit.

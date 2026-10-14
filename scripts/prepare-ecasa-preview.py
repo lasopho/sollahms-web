@@ -48,8 +48,9 @@ def make_reference(metadata, platform, files, commit):
     release.require(metadata.get('branch') == ('codex/leben-brochures-nordico' if leben else 'codex/ecasa-cartera-definitiva'), 'Unexpected protected review branch')
     leben_inventory = release.leben_policy_inventory(metadata, files)
     sento_inventory = release.sento_policy_inventory(metadata, files)
+    leon_inventory = release.leon_policy_inventory(metadata, files)
     catalogue_count = metadata.get('catalogueProjects')
-    release.require(catalogue_count == (137 if leben else 136) and metadata.get('ecasaProjects') == 15 and
+    release.require(catalogue_count == (134 if leon_inventory else 137 if leben else 136) and metadata.get('ecasaProjects') == 15 and
                     metadata.get('ecasaCommercialEntries') == 22 and metadata.get('ecasaLegacyRoutes') == 8,
                     'Incorrect Ecasa catalogue composition')
     manual_summary = release.manual_policy_inventory(metadata, files)
@@ -72,11 +73,12 @@ def make_reference(metadata, platform, files, commit):
     tracked = sum(name in tracked_names for name in files)
     if sento_inventory:
         release.require(leben and metadata.get('sentoPublicParityVerified') is False and
-                        metadata.get('productionComparisonAvailable') is False and len(metadata.get('publicOutput', [])) == 1360,
+                        metadata.get('productionComparisonAvailable') is False and len(metadata.get('publicOutput', [])) == (1668 if leon_inventory else 1360),
                         'The combined Sento package must be Preview-only with its exact output inventory')
     return {'schemaVersion': 1, 'contentProfile': profile,
             **({'lebenReview': leben, 'lebenReviewMedia': len(leben_inventory)} if leben else {}),
             **({'lebenPublicWebRights': 'pending_contract_scope_verification'} if leben else {}),
+            **({'leonReview': metadata['leonReview']} if leon_inventory else {}),
             **({'sentoReview': metadata['sentoReview'], 'sentoPublicParityVerified': False,
                 'productionComparisonAvailable': False, 'previewOutputInventory': metadata['publicOutput']}
                if sento_inventory else {}),
@@ -173,7 +175,7 @@ def main():
                       **{key: metadata[key] for key in ['officialOriginals', 'officialSourceMedia',
                          'officialPublishedMedia', 'ecasaGalleryImages', 'contentProfile',
                          'manualQuality', 'ecasaPublishedMedia', 'lebenReview', 'lebenReviewMedia',
-                         'sentoReview'] if key in metadata}}
+                         'sentoReview', 'leonReview'] if key in metadata}}
     files = release.verify_archive(archive, initial_policy)
     reference = make_reference(metadata, platform, files, commit)
     release.verify_git_reference(ROOT, files, reference)

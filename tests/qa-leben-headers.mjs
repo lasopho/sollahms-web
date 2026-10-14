@@ -13,14 +13,16 @@ const output=resolve(option('--output','/private/tmp/sollahms-leben-headers-qa')
 const before = JSON.parse(await readFile(option('--before')));
 const baselineCatalogueBytes=await readFile(option('--before-catalogue',resolve(before.source.build,'data/proyectos.json')));
 const baselineCatalogue=JSON.parse(baselineCatalogueBytes);
-let sentoReview=null;
+let sentoReview=null, leonReview=null;
+try { leonReview=JSON.parse(await readFile(sourceRoot+'data/brochures-leon.json')); }
+catch(error){if(error.code!=='ENOENT')throw error;}
 try { sentoReview=JSON.parse(await readFile(sourceRoot+'data/sento-review.json')); }
 catch(error){if(error.code!=='ENOENT')throw error;}
 const config = JSON.parse(await readFile(sourceRoot+'data/leben-headers.json'));
 const catalogueBytes = await readFile(resolve(root, 'data/proyectos.json'));
 const catalogue = JSON.parse(catalogueBytes), projects = catalogue.filter(project => project.inmobiliaria === 'Leben');
 const expected = ['edificio-indi','edificio-baum','inn-puerto-chico','edificio-suecia','capitanes','parque-germania','edificio-argomedo','edificio-mood','edificio-indigo','edificio-santo','edificio-living-town','edificio-bold','own','edificio-nordico'];
-if (catalogue.length !== 137 || projects.length !== 14 || expected.some(slug => projects.filter(project => project.slug === slug).length !== 1)) throw new Error('Baseline catalogue inventory mismatch.');
+if (catalogue.length !== 134 || projects.length !== 14 || expected.some(slug => projects.filter(project => project.slug === slug).length !== 1)) throw new Error('Baseline catalogue inventory mismatch.');
 const contexts = ['desktop','tablet','mobile'].flatMap(name => [1,2].map(dpr => ({name:name+'-dpr'+dpr,dpr,width:name==='desktop'?1440:name==='tablet'?768:390,height:name==='desktop'?1000:name==='tablet'?1024:844})));
 const views = [], checks = [], requests = { fontGets:0, isolatedProviders:0, httpFailures:[], blockedWrites:[] };
 const check = (passed,label) => checks.push({passed:!!passed,label});
@@ -30,11 +32,13 @@ if(sha256(baselineCatalogueBytes)!==before.source.catalogueSha256)throw new Erro
 const sentoSlugs=new Set(sentoReview?.catalogue.map(row=>row.slug)??[]);
 const canonical=value=>Array.isArray(value)?value.map(canonical):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).sort(([a],[b])=>a.localeCompare(b)).map(([key,item])=>[key,canonical(item)])):value;
 const fingerprint=rows=>sha256(JSON.stringify(canonical(rows)));
-const preserved=catalogue.filter(row=>!sentoSlugs.has(row.slug));
-const previous=baselineCatalogue.filter(row=>!sentoSlugs.has(row.slug));
+const leonSlugs=new Set(['bcome','condominio-uruguay','gregorio-de-la-fuente-a','condominio-parque-don-lautaro','jardines-de-ramon-cruz','la-casona-de-buin','urbano-centro','box-santiago']);
+const preserved=catalogue.filter(row=>!sentoSlugs.has(row.slug)&&!leonSlugs.has(row.slug));
+const previous=baselineCatalogue.filter(row=>!sentoSlugs.has(row.slug)&&!leonSlugs.has(row.slug));
 const sentoExact=!sentoReview||sentoSlugs.size===7&&fingerprint(catalogue.filter(row=>sentoSlugs.has(row.slug)))===fingerprint(sentoReview.catalogue);
-check(fingerprint(preserved)===fingerprint(previous)&&sentoExact,'Catalogue unchanged outside seven independently approved Sento successors');
-const source = {commit:process.env.SOLLAHMS_HEADER_QA_COMMIT||'working-tree',build:root,catalogueSha256:sha256(catalogueBytes),projectCount:137,lebenCount:14,ecasaCount:catalogue.filter(project=>project.inmobiliaria==='Ecasa').length,inventory:projects.map(project=>({slug:project.slug,nombre:project.nombre,estado:project.estado,catalogueCover:project.imagenPrincipal}))};
+const leonExact=leonReview&&fingerprint(catalogue.filter(row=>leonSlugs.has(row.slug)))===fingerprint(leonReview.catalogue)&&!catalogue.some(row=>['la-casona-de-buin','urbano-centro','box-santiago'].includes(row.slug));
+check(fingerprint(preserved)===fingerprint(previous)&&sentoExact&&leonExact,'Catalogue preserves all foreign fields outside exact approved Sento and León successors');
+const source = {commit:process.env.SOLLAHMS_HEADER_QA_COMMIT||'working-tree',build:root,catalogueSha256:sha256(catalogueBytes),projectCount:134,lebenCount:14,ecasaCount:catalogue.filter(project=>project.inmobiliaria==='Ecasa').length,inventory:projects.map(project=>({slug:project.slug,nombre:project.nombre,estado:project.estado,catalogueCover:project.imagenPrincipal}))};
 const save = async completed => { const report={base,completed,source,contexts,views,checks,requests,failures:checks.filter(check=>!check.passed),limitations:'Only GET/HEAD. Actual Google fonts allowed; providers isolated for layout. No live-provider claim. After uses one shared header; body and catalogue checked against the recorded baseline. DPR source coverage is measured, not assumed.'};await writeFile(output+'/report.next.json',JSON.stringify(report,null,2)+'\n');await rename(output+'/report.next.json',output+'/report.json'); };
 function inspect() {
   const title=document.querySelector('h1'),hero=title.closest('section'),image=hero.querySelector('img'),header=document.querySelector('header');
