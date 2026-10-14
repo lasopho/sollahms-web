@@ -1,19 +1,23 @@
 # CI Git y Previews privadas de Sollahms
 
-La fuente Git pública no contiene los 165 derivados privados de Ingevec. El
+La fuente Git pública no contiene todos los medios privados de las carteras,
+incluidos los 165 derivados de Ingevec. El
 packager debe seguir rechazando un build comercial incompleto; un checkout Git
 no sustituye el paquete privado reproducible.
 
 ## Despliegues
 
-`vercel.json` deshabilita únicamente los eventos de deployment Git de `main` y
-`codex/integracion-financiera-sollahms`. Las otras ramas conservan el comportamiento
-por defecto. No añadir un patrón permisivo que coincida con las ramas bloqueadas:
+`vercel.json` deshabilita los eventos de deployment Git de las once ramas
+enumeradas en `git.deploymentEnabled`, incluidas `main` y
+`codex/integracion-financiera-sollahms`. Las ramas no enumeradas conservan el
+comportamiento por defecto. No añadir un patrón permisivo que coincida con las ramas bloqueadas:
 según la [configuración oficial](https://vercel.com/docs/project-configuration/git-configuration),
 una coincidencia `true` habilita el deployment.
 
-Las Previews se crean manualmente desde las 964 fuentes aprobadas, incluidos los
-165 derivados, con el procedimiento de paquete y preparación existente. Usar
+Las Previews se crean manualmente desde el inventario privado aprobado para
+el commit y la cartera concretos, con el procedimiento de paquete y preparación
+correspondiente. Las 964 fuentes del lanzamiento anterior son una referencia
+histórica, no el inventario del árbol actual. Usar
 target Preview, conservar Deployment Protection y registrar commit, SHA-256,
 inventario y deployment real. No publicar el archivo privado en GitHub Actions,
 artefactos de GitHub ni el repositorio. Production requiere la autorización
@@ -33,12 +37,18 @@ no escribir estados manuales para reemplazarlo. GitHub evalúa los checks del
 fixtures fijadas por versión/hash. No obtiene secretos ni llama a Vercel, no
 despliega y no envía consultas o reservas reales.
 
-`python scripts/run-git-ci.py` ejecuta 235 casos Node (227 originales aptos para
-Git más ocho controles), los 50 tests Python con fixtures sintéticos y el
+`python scripts/run-git-ci.py` ejecuta 330 casos Node aptos para el checkout
+Git, los 137 tests Python con fixtures sintéticos y el
 validador hipotecario. La clasificación positiva en `tests/git-ci-selection.json`
-enumera 22 casos que necesitan el release privado: **no se ejecutan ni se
+enumera 26 casos que necesitan el release privado: **no se ejecutan ni se
 declaran aprobados en este CI**. Nuevos archivos/casos sin clasificar o conteos
 distintos detienen el runner.
+
+En Codex Cloud, `--cloud-stdio` activa el transporte de subprocess mediante
+archivos temporales y ejecuta cada archivo Node en su propio proceso. Conserva
+las mismas assertions, selección y cantidades; no recupera recursos privados.
+La preparación y los límites del entorno se describen en
+[Desarrollo en Codex Cloud](cloud-development.md).
 
 Los controles verifican gates, headers, catálogo aprobado, manifiestos,
 privacidad y rutas; ejecutan el packager sin medios o con un lote parcial y
@@ -51,9 +61,9 @@ privados corresponde a ese entorno.
 
 ## Controles privados antes de integrar o publicar
 
-El CI Git no reemplaza las 249 pruebas Node completas, los 50 tests Python, los
-cuatro validadores, la comparación por hash de 269 recursos/142 planos y las
-auditorías del paquete completo y Preview protegida. Ejecutarlos sin la selección
+El CI Git no reemplaza la validación de release, incluidos los 26 casos Node
+privados, los cuatro validadores, la comparación por hash del inventario
+aprobado y las auditorías del paquete completo y Preview protegida. Ejecutarlos sin la selección
 Git, usando el procedimiento de operación. Conservar la igualdad del build
 publicable respecto de su Preview y el deployment anterior de `sollahms.cl`.
 

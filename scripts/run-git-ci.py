@@ -21,6 +21,8 @@ EXTRA_TESTS = {
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
 parser.add_argument('--output', type=Path, default=Path(tempfile.gettempdir()) / 'sollahms-git-ci-results')
+parser.add_argument('--cloud-stdio', action='store_true',
+                    help='Use regular-file subprocess streams and a separate Node process per test file in restricted cloud runtimes')
 args = parser.parse_args()
 ROOT = args.root.resolve()
 OUT = args.output.resolve()
@@ -67,10 +69,19 @@ for revision in ['e7afe04', '8cdb9bf2af607a4f0822e5ea2c3ec4ba3f4c76b1', 'b649115
     subprocess.run(['git', 'cat-file', '-e', revision + '^{commit}'], cwd=ROOT, check=True)
 
 node = os.environ.get('SOLLAHMS_CI_NODE', 'node')
-commands = [('node-full-git-suites', [node, '--test', '--test-reporter=tap', *full_files])]
+node_flags = ['--test', '--test-reporter=tap']
+if args.cloud_stdio:
+    preload = ROOT / 'scripts/cloud-sync-stdio.mjs'
+    assert preload.is_file(), 'Cloud subprocess compatibility preload is missing'
+    node_flags.append('--test-isolation=none')
+    # Python launches each file independently, retaining process isolation for
+    # DOM/provider mocks without Node's socket-based test-worker transport.
+    commands = [('node-' + Path(file).stem, [node, *node_flags, file]) for file in full_files]
+else:
+    commands = [('node-full-git-suites', [node, *node_flags, *full_files])]
 for suite in selected:
     pattern = '^(?:' + '|'.join(re.escape(name) for name in suite['cases']) + ')$'
-    commands.append(('node-' + Path(suite['file']).stem, [node, '--test', '--test-reporter=tap', '--test-name-pattern', pattern, suite['file']]))
+    commands.append(('node-' + Path(suite['file']).stem, [node, *node_flags, '--test-name-pattern', pattern, suite['file']]))
 commands += [('python-synthetic-units', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v']),
              ('mortgage-data-validation', [node, 'scripts/validate-mortgage-data.mjs'])]
 env = {key: value for key, value in os.environ.items() if not key.startswith(('VERCEL_', 'BOOKING_', 'RESEND_', 'SMTP_')) and key != 'GITHUB_TOKEN'}
@@ -79,6 +90,8 @@ env['GIT_PAGER'] = 'cat'
 env['GIT_TERMINAL_PROMPT'] = '0'
 env['PAGER'] = 'cat'
 env['PYTHONDONTWRITEBYTECODE'] = '1'
+if args.cloud_stdio:
+    env['NODE_OPTIONS'] = (env.get('NODE_OPTIONS', '') + ' --import=' + json.dumps(str(preload))).strip()
 
 def run(item):
     name, command = item
@@ -113,6 +126,8 @@ python_result = next(item for item in results if item['name'] == 'python-synthet
 assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 137
 passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 330 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
 report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
+          'nodeSubprocessTransport': 'regular-files' if args.cloud_stdio else 'native',
+          'nodeTestIsolation': 'separate-process-per-file' if args.cloud_stdio else 'native',
           'node': node_counts, 'pythonFixtureTests': python_result['tests'],
           'releaseOnlyNotRun': release_cases, 'releaseOnlyNotRunCount': len(release_cases),
           'commands': results, 'productionBuildPerformed': False, 'deploymentsCreated': 0,
