@@ -6,6 +6,7 @@ import { ecasaPublication, validateEcasaReview, ECASA_SLUGS, ECASA_RETIRED_SLUGS
 import { naturalCaption, normalizeFicheCopy } from './public-fiche-copy.mjs';
 import { validateEcasaImageQuality, selectEcasaPublishedAssets, transformEcasaImageQuality,
   applyEcasaCatalogueImageQuality, ecasaExcludedImagePaths } from './ecasa-image-quality.mjs';
+import { assertSentoCatalogue, verifySentoAssets, SENTO_MANIFEST } from './sento-publication.mjs';
 import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   BROCHURE_REMOVED_SLUGS, BROCHURE_PUBLIC_PAGES, BROCHURE_RETIRED_ASSETS,
   brochureFingerprint } from './brochure-publication.mjs';
@@ -13,10 +14,33 @@ import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
-const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva', 'codex/ecasa-publicacion-independiente']);
-if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
-  throw new Error('Unexpected branch for this review build');
+let mainIntegration = null, mainIntegrationBytes = null;
+try { mainIntegrationBytes = await readFile(join(root, 'data/ecasa-main-integration.json')); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+if (mainIntegrationBytes) {
+  const { assertEcasaMainIntegration } = await import('./ecasa-main-integration.mjs');
+  mainIntegration = assertEcasaMainIntegration(root, { requirePrivateDocuments: true });
+  if (!preview) throw new Error('The composed Ecasa/main candidate is authorized for protected Preview only');
 }
+const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva', 'codex/ecasa-publicacion-independiente', 'codex/norte-verde-hero-merge', 'codex/leon-main-integration', 'codex/leon-cartera-preview']);
+if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
+  if (process.env.VERCEL_GIT_COMMIT_REF !== 'codex/sento-cartera-documentada') throw new Error('Unexpected branch for this review build');
+}
+let leonReview=null, leonTools=null;
+try { leonReview=JSON.parse(await readFile(join(root,'data/brochures-leon.json'),'utf8')); }
+catch(error){ if(error.code!=='ENOENT')throw error; }
+const leonPaths=new Set();
+// This merged prototype is opt-in in its protected review branch only.
+// Main and every other build keep the original output and existing hero.
+const heroReview = preview && process.env.VERCEL_GIT_COMMIT_REF === 'codex/norte-verde-hero-merge';
+const heroSlugs = new Set(['bordevivo','carmen-marin','edificio-ecuador','edif-origen-atacama-3008','edificio-dual-390-lto','edificio-lira-622','edificio-plaza-nova','edificio-san-francisco-1204','edificio-verne','irarrazaval','parque-panama','parque-quinta','playa-penuelas','playa-serena','quintavista','vicuna-mackenna-6896','vista-bulnes']);
+const heroAssets = new Set(['assets/css/norte-verde-hero-variants.css','assets/js/norte-verde-hero-variants.js','assets/review/norte-verde-hero-variantes.html']);
+let sentoReview = null;
+try { sentoReview = JSON.parse(await readFile(join(root, SENTO_MANIFEST), 'utf8')); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+if (sentoReview && !preview) throw new Error('The Sento update is authorized for Preview only');
+const sentoAssets = sentoReview ? verifySentoAssets(sentoReview, { root }) : [];
+const sentoPaths = new Set(sentoAssets.map(asset => join(root, asset.localPath.slice(1))));
 const profile = process.env.SOLLAHMS_BROCHURE_PROFILE;
 if (profile !== undefined && profile !== 'public-web') throw new Error('Unknown brochure content profile');
 const ajReview = JSON.parse(await readFile(join(root, 'data/brochures-aj-urbana.json'), 'utf8'));
@@ -130,9 +154,16 @@ if (preview && ingevecPresent.some(Boolean) && !ingevecPresent.every(Boolean)) {
 // Card covers use the same local, verified images as the reviewed galleries.
 // Keep commercial and financial source data byte-identical. Override only
 // covers whose corresponding image belongs to the selected brochure batch.
+if(leonReview){
+  if(!preview)throw new Error('The León update remains authorized for protected Preview only');
+  leonTools=await import('./leon-main-publication.mjs');
+  leonTools.assertLeonMainScope(root, { integration: mainIntegration });
+  for(const a of leonTools.verifyLeonAssets(leonReview,{root}))leonPaths.add(join(root,a.localPath.slice(1)));
+}
 const catalogueSource = await readFile(join(root, 'data/proyectos.json'));
 let catalogueOutput = catalogueSource;
 const sourceProjects = JSON.parse(catalogueSource);
+if (sentoReview) assertSentoCatalogue(sourceProjects, sentoReview, { root, integration: mainIntegration });
 assertBrochureCatalogue(sourceProjects);
 const [qualityBytes, researchBytes, officialBytes] = await Promise.all([
   readFile(join(root, 'data/ecasa-image-quality.json')),
@@ -140,7 +171,7 @@ const [qualityBytes, researchBytes, officialBytes] = await Promise.all([
   readFile(join(root, 'data/fuentes-imagenes.json')),
 ]);
 const baseImageQuality = validateEcasaImageQuality(ecasaReview, JSON.parse(researchBytes), sourceProjects,
-  JSON.parse(qualityBytes), JSON.parse(officialBytes));
+  JSON.parse(qualityBytes), JSON.parse(officialBytes), { root, integration: mainIntegration });
 let imageQuality = baseImageQuality, manualQuality = null, manualOperations = null, manualBytes = null;
 try { manualBytes = await readFile(join(root, 'data/ecasa-manual-quality.json')); }
 catch (error) { if (error.code !== 'ENOENT') throw error; }
@@ -225,7 +256,7 @@ if (pages.some(name => !approvedPages.has(name))) {
 if (sourceProjects.some(project => !pages.includes(project.slug + '.html'))) {
   throw new Error('Every approved catalogue project must have its own public route');
 }
-const retiredLink = new RegExp('(?:["\\\'/])(?:' + [...BROCHURE_REMOVED_SLUGS, ...ECASA_RETIRED_SLUGS].join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
+const retiredLink = new RegExp('(?:["\\\'/])(?:' + [...BROCHURE_REMOVED_SLUGS, ...ECASA_RETIRED_SLUGS, ...(leonTools?.LEON_RETIRED_SLUGS ?? [])].join('|') + ')\\.html(?:["\\\'?#<]|$)', 'i');
 const sitemapSource = await readFile(join(root, 'sitemap.xml'));
 if (retiredLink.test(sitemapSource.toString())) throw new Error('The sitemap still contains a retired project route');
 const pageSources = new Map(await Promise.all(pages.map(async name => [name, await readFile(join(root, name), 'utf8')])));
@@ -417,11 +448,24 @@ for (const name of pages) {
       html = html.replace(/(<main[^>]*>)/, '$1' + notice);
     }
   }
+  if (heroReview && heroSlugs.has(name.replace(/\.html$/, ''))) {
+    if (!/<p class="eyebrow">Norte Verde<\/p>/.test(html)) throw new Error('Hero review scope mismatch: ' + name);
+    html = html.replace(/class="project-hero([^"]*)"/, 'class="project-hero$1 nv-hero"');
+    html = html.replace('</head>', '<link rel="stylesheet" href="/assets/css/norte-verde-hero-variants.css?v=20261014"><script src="/assets/js/norte-verde-hero-variants.js?v=20261014"></script></head>');
+  }
   await writeFile(join(output, name), html);
 }
 await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
   filter: async source => {
     const path = relative(root, source).split(sep).join('/');
+    // Original brochures are private build inputs in every developer batch.
+    // Apply this before developer allowlists, which also verify their sources.
+    if (/\.(?:pdf|zip|docx?|xlsx?|toml|env)$/i.test(path)) return false;
+    if (!heroReview && heroAssets.has(path)) return false;
+    if(path.startsWith('assets/brochures/leon')||path.startsWith('assets/propiedades/leon')){
+      const info=await lstat(source);if(info.isSymbolicLink())throw new Error('León media must be regular');
+      return info.isDirectory()?[...leonPaths].some(file=>file.startsWith(source+sep)):leonPaths.has(source);
+    }
     if (path.includes('/brochure-candidates')) return false;
     if (retiredExclusiveAssets.has(path)) return false;
     if (exclusiveExcludedImages.has('/' + path)) return false;
@@ -438,6 +482,10 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
       // remain private even inside the protected Preview.
       return info.isDirectory() ? [...officialPublishedPaths].some(file => file.startsWith(source + sep))
         : officialPublishedPaths.has(source);
+    }
+    if (path.startsWith('assets/brochures/sento') || path.startsWith('assets/propiedades/sento')) {
+      if (!preview || !sentoReview) return false;
+      return info.isDirectory() ? [...sentoPaths].some(file => file.startsWith(source + sep)) : sentoPaths.has(source);
     }
     for (const [folder, included] of [['aj-urbana-preview', ajIncluded], ['ingevec-preview', ingevecIncluded], ['ecasa-preview', ecasaIncluded]]) {
       const prefix = 'assets/propiedades/' + folder;

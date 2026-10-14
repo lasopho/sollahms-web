@@ -1,3 +1,4 @@
+import { assertMergedSource } from './integrated-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -174,14 +175,14 @@ test('Cumbres retains only its facade at full width and natural aspect without c
   assert.throws(()=>transformEcasaManualGallery(filtered.replaceAll('src="'+image.localPath+'"','src="/assets/propiedades/ecasa-preview/cumbres-de-penuelas/imagen-02-p03.webp"'),'cumbres-de-penuelas',manual),/single-photo layout/);
 });
 
-test('source files, 136 identities, financial values, 22 stage snapshots and public projection remain exact',()=>{
+test('source files, 133 identities, financial values, 22 stage snapshots and public projection remain exact',()=>{
   for(const path of ['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json','data/fuentes-imagenes.json',
     'data/brochures-ecasa.json','data/brochures-aj-urbana.json','data/brochures-ingevec.json','data/ecasa-image-quality.json',
     'data/ecasa-official-originals.json','sitemap.xml','vercel.json',...catalogue.map(project=>project.slug+'.html')])
-    assert.deepEqual(read(path),execFileSync('git',['show',BASELINE+':'+path],{cwd:ROOT,maxBuffer:8*1024*1024}),path);
+    assertMergedSource(path,execFileSync('git',['show',BASELINE+':'+path],{cwd:ROOT,maxBuffer:8*1024*1024}));
   const output=applyEcasaCatalogueImageQuality(catalogue,effective);
-  assert.equal(output.length,136);assert.equal(output.filter(project=>project.inmobiliaria!=='Ecasa').length,121);
-  assert.equal(output.filter(project=>Number.isFinite(project.precioDesdeUF)&&project.precioDesdeUF>0).length,106);
+  assert.equal(output.length,133);assert.equal(output.filter(project=>project.inmobiliaria!=='Ecasa').length,118);
+  assert.equal(output.filter(project=>Number.isFinite(project.precioDesdeUF)&&project.precioDesdeUF>0).length,103);
   for(let i=0;i<catalogue.length;i++) {
     const a=structuredClone(output[i]),b=structuredClone(catalogue[i]);for(const key of ['imagenPrincipal','imagenAlt','imagenEtapa']){delete a[key];delete b[key];}
     assert.deepEqual(a,b);assert.deepEqual(output[i].etapasComerciales,catalogue[i].etapasComerciales);

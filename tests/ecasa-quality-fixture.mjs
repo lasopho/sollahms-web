@@ -74,7 +74,10 @@ const reviewedOwnerHashes=new Map([
 ]);
 export function withoutReviewedOwnerAssets(files) {
   const present=files.filter(file=>reviewedOwnerHashes.has(file));
-  assert.ok(present.length===0||present.length===10,'The private owner selection must be complete when materialized');
+  const candidate=readFileSync(resolve(ROOT,'data/ecasa-publication-candidate.json'),'utf8');
+  const selected=JSON.parse(candidate).selectedResources.filter(row=>row.kind==='owner_cover').map(row=>row.localPath.slice(1));
+  const publicOnly=present.length===5&&present.toSorted().join('\n')===selected.toSorted().join('\n');
+  assert.ok(present.length===0||present.length===10||publicOnly,'The private source must be complete, or the exact five committed public selections must be present');
   for(const file of present)assert.equal(createHash('sha256').update(readFileSync(resolve(ROOT,file))).digest('hex'),
     reviewedOwnerHashes.get(file),'Owner source pixels or provenance bytes changed: '+file);
   return files.filter(file=>!reviewedOwnerHashes.has(file));

@@ -1,0 +1,214 @@
+{
+  "checkScope": "git-checkout-regression-not-release-build",
+  "allPassed": false,
+  "node": {
+    "tests": 240,
+    "pass": 240,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "pythonFixtureTests": 74,
+  "releaseOnlyNotRun": [
+    {
+      "file": "tests/aj-urbana.test.mjs",
+      "name": "a synthetic pending contract publishes AJ only in Preview and removes review assets from non-Preview output",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "three supplied sources and fourteen unique models retain document/page evidence and unknown values",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "the previous 36 images/plans retain project identity and hashes within the explicitly enlarged 165-resource directory",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "a verified contract yields identical 144 fichas, covers and 269 media in Preview and an offline public web build",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "covered media missing after a merge blocks the build instead of silently dropping galleries, plans and covers",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "contract-covered output copies only selected derivatives and rejects symbolic selected media",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "real Preview packaging changes only twenty-one authorized card covers, publishes 64 Ingevec models, and hides all private manifests/documents",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "a synthetic pending contract excludes protected media outside Preview and retains all 144 approved fallback objects",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "real packaging fails closed for absent authorization, unrelated branch, cross-project covers and altered image bytes",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "real packager checks non-cover galleries/plans and privacy flags, and rejects unapproved identities and routes",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "new source bindings and Vicuña stage identifiers cannot be reassigned through the packaging manifest",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "final source bindings reject earlier Valle stages, unprinted fields and unsafe newly added galleries in every build profile",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "retired and unknown routes, sitemap entries and internal links cannot reappear in Preview or fallback builds",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "exclusive retired covers stay in historical source but are excluded from output, while a shared photograph remains usable",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "new supplied brochure plaintext remains ignored and absent from the public Git index",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "a synthetic pending Git Preview without Ingevec assets preserves sixteen fallbacks and the five AJ reviews",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-brochures.test.mjs",
+      "name": "Preview rejects partial Ingevec uploads instead of publishing a mixture of incomplete review fichas",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-definitive.test.mjs",
+      "name": "definitive portfolio preserves exactly 128 other developers and ten prior Ingevec records",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-definitive.test.mjs",
+      "name": "36 selected native images and 23 full-page plans retain independent hashes, dimensions and metadata privacy",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-definitive.test.mjs",
+      "name": "Vicuña Mackenna retains six independent plans and its exact prior stage-source assignment",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/ingevec-eight.test.mjs",
+      "name": "reviewed images include seven distinct catalogue/hero covers without duplicate gallery renders or confidential Matta attribution",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    },
+    {
+      "file": "tests/project-commercial-presentation.test.mjs",
+      "name": "all 269 supplied media derivatives retain approved identity, hashes and contractual scope status",
+      "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+    }
+  ],
+  "releaseOnlyNotRunCount": 22,
+  "commands": [
+    {
+      "name": "node-full-git-suites",
+      "exitCode": 0,
+      "seconds": 62.812,
+      "tests": {
+        "tests": 207,
+        "pass": 207,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "node-aj-urbana.test",
+      "exitCode": 0,
+      "seconds": 65.402,
+      "tests": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "node-ingevec-brochures.test",
+      "exitCode": 0,
+      "seconds": 105.013,
+      "tests": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "node-ingevec-definitive.test",
+      "exitCode": 0,
+      "seconds": 85.973,
+      "tests": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "node-ingevec-eight.test",
+      "exitCode": 0,
+      "seconds": 118.09,
+      "tests": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "node-project-commercial-presentation.test",
+      "exitCode": 0,
+      "seconds": 99.343,
+      "tests": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "python-synthetic-units",
+      "exitCode": 1,
+      "seconds": 22.787,
+      "tests": 74
+    },
+    {
+      "name": "mortgage-data-validation",
+      "exitCode": 0,
+      "seconds": 0.079
+    }
+  ],
+  "productionBuildPerformed": false,
+  "deploymentsCreated": 0,
+  "privateAssetsImported": false,
+  "externalProviderCalls": "synthetic handlers/fixtures only"
+}

@@ -110,15 +110,15 @@ test('availability forwards only a validated slot and returns only the boolean r
   assert.deepEqual(calls[0].body, { action: 'availability', date: validBooking.date, time: validBooking.time, secret: 'test-secret-only' });
 });
 
-test('all 136 project slugs forward the trusted catalogue name without exposing it in responses', async t => {
+test('all 133 project slugs forward the trusted catalogue name without exposing it in responses', async t => {
   const calls = isolate(t);
-  assert.equal(Object.keys(projects).length, 136);
+  assert.equal(Object.keys(projects).length, 133);
   for (const [slug, project] of Object.entries(projects)) {
     await assertResult(booking, request({ ...validBooking, proyecto: slug }), 200, { ok: true, booked: true });
     assert.equal(calls.at(-1).body.proyecto, slug);
     assert.equal(calls.at(-1).body.nombreProyecto, project.name);
   }
-  assert.equal(calls.length, 136);
+  assert.equal(calls.length, 133);
 });
 
 test('person validation rejects header injection, markup, malformed email and phone', async t => {

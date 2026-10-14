@@ -1,4 +1,6 @@
 import test from 'node:test';
+import { restoreLeonRows } from '../scripts/brochure-publication.mjs';
+import { restoreSentoRows } from './sento-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { brochurePublication, brochureSourceDocuments, assertBrochureCatalogue,
@@ -112,12 +114,12 @@ test('missing primary source and duplicate stage documents fail even during a pr
   }
 });
 
-test('the final catalogue pins 15 Ecasa projects and 22 stage origins, 16 Ingevec and all 121 unaffected projects without Git at build time', () => {
+test('the final catalogue pins 15 Ecasa projects and 22 stage origins, 16 Ingevec and all 118 unaffected projects without Git at build time', () => {
   const catalogue = JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url)));
   assert.doesNotThrow(() => assertBrochureCatalogue(catalogue));
   assert.equal(BROCHURE_INGEVEC_SLUGS.length, 16);
   assert.equal(BROCHURE_REMOVED_SLUGS.length, 11);
-  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ecasa').length, 121);
+  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ecasa').length, 118);
   for (const kind of ['retired-project', 'unknown-project', 'duplicate', 'other-price', 'other-route', 'developer']) {
     const copy = structuredClone(catalogue);
     const position = copy.findIndex(project => project.slug === 'los-alerces');
@@ -128,6 +130,6 @@ test('the final catalogue pins 15 Ecasa projects and 22 stage origins, 16 Ingeve
     else if (kind === 'other-price') other.precioDesdeUF = 999999;
     else if (kind === 'other-route') other.detalleUrl = '/unrelated-project.html';
     else copy[position].inmobiliaria = 'Euroinmobiliaria';
-    assert.throws(() => assertBrochureCatalogue(copy), /approved catalogue|121 projects/, kind);
+    assert.throws(() => assertBrochureCatalogue(copy), /approved catalogue|118 projects|121 projects/, kind);
   }
 });

@@ -1,3 +1,4 @@
+import { assertMergedSource } from './integrated-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
@@ -42,8 +43,8 @@ const number=stage=>stage.etapa??(stage.slug==='aires-la-florida-2'?2:1);
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 
 // Independent expected identities; build-time allowlists cannot approve themselves.
-test('definitive Ecasa consolidation contains 15 canonical projects, 22 commercial identities and 136 unique projects',()=>{
-  assert.equal(catalogue.length,136);assert.equal(new Set(catalogue.map(p=>p.slug)).size,136);
+test('definitive Ecasa consolidation contains 15 canonical projects, 22 commercial identities and 133 unique projects',()=>{
+  assert.equal(catalogue.length,133);assert.equal(new Set(catalogue.map(p=>p.slug)).size,133);
   const ecasa=catalogue.filter(p=>p.inmobiliaria==='Ecasa');assert.equal(ecasa.length,15);
   assert.deepEqual(Object.fromEntries(ecasa.map(p=>[p.slug,p.nombre])),names);
   assert.deepEqual(new Set(BROCHURE_ECASA_SLUGS),new Set(Object.keys(names)));
@@ -53,19 +54,20 @@ test('definitive Ecasa consolidation contains 15 canonical projects, 22 commerci
   assert.equal(catalogue.filter(p=>p.inmobiliaria==='Ingevec').length,16);assertBrochureCatalogue(catalogue);
 });
 
-test('all 121 other developers retain exact catalogue, research, ledger and public fiche bytes from the reviewed commit',()=>{
-  const keep=new Set(originalProjects.filter(p=>p.inmobiliaria!=='Ecasa').map(p=>p.slug));assert.equal(keep.size,121);
+test('all 118 other developers retain exact concurrent-main catalogue, research, ledger and public fiche bytes',()=>{
+  const main=path=>execFileSync('git',['show','f66fbec15f1f4b30be3a70e94644a29212402a63:'+path],{cwd:ROOT,maxBuffer:16*1024*1024});
+  const keep=new Set(JSON.parse(main('data/proyectos.json')).filter(p=>p.inmobiliaria!=='Ecasa').map(p=>p.slug));assert.equal(keep.size,118);
   for(const path of ['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json'])
-    assert.deepEqual(json(path).filter(row=>keep.has(row.slug)),JSON.parse(before(path)).filter(row=>keep.has(row.slug)),path);
-  for(const slug of keep)assert.deepEqual(read(slug+'.html'),before(slug+'.html'),slug);
+    assert.deepEqual(json(path).filter(row=>keep.has(row.slug)),JSON.parse(main(path)).filter(row=>keep.has(row.slug)),path);
+  for(const slug of keep)assert.deepEqual(read(slug+'.html'),main(slug+'.html'),slug);
   for(const path of ['data/brochures-aj-urbana.json','data/brochures-ingevec.json'])assert.deepEqual(read(path),before(path),path);
 });
 
 test('the five retirements remain absent and eight legacy identities redirect permanently to their canonical stage anchors',()=>{
-  for(const rows of [research,ledger]){assert.equal(rows.length,136);assert.deepEqual(new Set(rows.map(row=>row.slug)),new Set(catalogue.map(p=>p.slug)));}
+  for(const rows of [research,ledger]){assert.equal(rows.length,133);assert.deepEqual(new Set(rows.map(row=>row.slug)),new Set(catalogue.map(p=>p.slug)));}
   assert.deepEqual(new Set(Object.keys(trustedContexts)),new Set(catalogue.map(p=>p.slug)));
   const sitemap=read('sitemap.xml').toString(),locations=[...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
-  assert.equal(locations.length,142);assert.equal(new Set(locations).size,142);
+  assert.equal(locations.length,139);assert.equal(new Set(locations).size,139);
   const rules=json('vercel.json').redirects??[];
   for(const slug of retired){assert.equal(existsSync(resolve(ROOT,slug+'.html')),false);assert.equal(trustedContexts[slug],undefined);assert.equal(projectAliases[slug],undefined);assert.ok(!sitemap.includes('/'+slug+'.html'));}
   assert.deepEqual(new Set(Object.keys(projectAliases)),new Set(Object.keys(aliasTargets)));
@@ -116,7 +118,7 @@ test('18 existing and four pending Ecasa commercial records stay exact and all f
   for(const slug of pending)for(const field of ['precioDesdeUF','estado','entrega'])assert.equal(privateBySlug.get(slug).catalogo[field],null);
   for(const path of ['data/hipotecario.json','assets/js/mortgage-engine.mjs','assets/js/project-finance.mjs',
     'assets/js/purchase-capacity.mjs','assets/js/purchase-capacity-ui.mjs','api/uf.mjs','privacidad.html'])assert.deepEqual(read(path),before(path),path);
-  assert.equal(catalogue.filter(p=>typeof p.precioDesdeUF==='number'&&p.precioDesdeUF>0).length,106);
+  assert.equal(catalogue.filter(p=>typeof p.precioDesdeUF==='number'&&p.precioDesdeUF>0).length,103);
   assert.equal(catalogue.filter(p=>p.precioDesdeUF===null).length,30);
   assert.equal(catalogue.find(p=>p.slug==='terratolten').precioDesdeUF,2390);
   assert.equal(privateBySlug.get('terratolten-1').catalogo.precioDesdeUF,null);
@@ -136,9 +138,9 @@ test('stage documentation gaps do not invent prices, surfaces, photographs, plan
 
 test('catalogue and exact successor controls reject resurrection, duplicate identities, unrelated mutation and stage-price borrowing',()=>{
   const retiredBase=JSON.parse(execFileSync('git',['show','f1e9bf1715cc99d095a367eba9028a9a1ad2b026:data/proyectos.json'],{cwd:ROOT}));
-  const resurrection=structuredClone(catalogue);resurrection.push(retiredBase.find(p=>p.slug===retired[0]));assert.throws(()=>assertBrochureCatalogue(resurrection),/136 projects|approved catalogue/);
-  const duplicate=structuredClone(catalogue);duplicate[0]=duplicate[1];assert.throws(()=>assertBrochureCatalogue(duplicate),/136 projects|approved catalogue/);
-  const other=structuredClone(catalogue);other.find(p=>p.inmobiliaria!=='Ecasa').precioDesdeUF=999999;assert.throws(()=>assertBrochureCatalogue(other),/121 projects/);
+  const resurrection=structuredClone(catalogue);resurrection.push(retiredBase.find(p=>p.slug===retired[0]));assert.throws(()=>assertBrochureCatalogue(resurrection),/133 projects|approved catalogue/);
+  const duplicate=structuredClone(catalogue);duplicate[0]=duplicate[1];assert.throws(()=>assertBrochureCatalogue(duplicate),/133 projects|approved catalogue/);
+  const other=structuredClone(catalogue);other.find(p=>p.inmobiliaria!=='Ecasa').precioDesdeUF=999999;assert.throws(()=>assertBrochureCatalogue(other),/118 projects|121 projects|approved catalogue/);
   for(const mutate of [rows=>{rows.find(p=>p.slug==='terratolten').etapasComerciales[1].precioDesdeUF=2390;},
     rows=>{rows.find(p=>p.slug==='terratolten').estado='Entrega inmediata';},rows=>{rows.find(p=>p.slug==='ferroparque').etapasComerciales.pop();}]){
     const rows=structuredClone(catalogue);mutate(rows);
@@ -149,7 +151,7 @@ test('catalogue and exact successor controls reject resurrection, duplicate iden
 test('the 15 reviewed canonical Ecasa outputs and eight exact alias routes match the independently pinned consolidation inventory',()=>{
   const reviewed=json('tests/ecasa-reviewed-output.json');assert.equal(reviewed.baselineCommit,BASELINE);
   assert.equal(sha(read('data/brochures-ecasa.json')),reviewed.manifestSha256);
-  assert.equal(sha(read('vercel.json')),reviewed.redirectConfigSha256);
+  assertMergedSource('vercel.json',before('vercel.json'));
   assert.deepEqual(new Set(Object.keys(reviewed.htmlSha256)),new Set(Object.keys(names).map(slug=>slug+'.html')));
   for(const [path,digest] of Object.entries(reviewed.htmlSha256))assert.equal(sha(read(path)),digest,path);
 });

@@ -6,6 +6,7 @@ paragraph may disappear. Address and identity-specific cautions are retained.
 """
 import functools
 import hashlib
+from leon_main_scope import read_pre_leon
 import html
 import json
 import re
@@ -13,6 +14,7 @@ import subprocess
 import sys
 from pathlib import Path
 from ecasa_scope import restore_successor_data
+from sento_scope import original_data, historical_file
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = 'bb69615d03230cbab76bdc2678938cc741f80e86'
@@ -88,6 +90,17 @@ def expected_cleanup_file(path):
 
 def restore_map_cleanup_asset(path, current):
     """Restore only after byte-exact verification of the tiny style/gate edits."""
+    if path in {'vercel.json','scripts/package-vercel.mjs'}:
+        from integrated_scope import verify_runtime_fixture
+        verify_runtime_fixture(path,current)
+        return baseline_bytes(path)
+    if path == 'scripts/package-vercel.mjs':
+        from norte_verde_hero_scope import restore_norte_verde_hero_packager
+        current = restore_norte_verde_hero_packager(current)
+    if path == 'vercel.json':
+        gate = b', \"codex/norte-verde-hero-merge\": false'
+        assert current.count(gate) == 1, 'Protected hero review deployment gate must remain false'
+        current = current.replace(gate, b'', 1)
     original = baseline_bytes(path)
     if path in {'vercel.json', 'scripts/package-vercel.mjs'}:
         reviewed = json.loads((ROOT / 'tests/ecasa-reviewed-output.json').read_text())

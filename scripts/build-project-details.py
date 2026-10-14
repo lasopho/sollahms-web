@@ -117,6 +117,11 @@ def stage_links(project, research):
     return content + '</ul><p>Consulta los precios, la disponibilidad y las características de cada etapa en su ficha.</p></div>'
 
 def render(project, research, template):
+    review_path = ROOT / 'data/sento-review.json'
+    if project.get('inmobiliaria') == 'Sento' and str(project.get('imagenPrincipal', '')).startswith('/assets/propiedades/sento/') and review_path.exists():
+        from sento_fiche import render as render_sento
+        record = next(row for row in json.loads(review_path.read_text())['projects'] if row['slug'] == project['slug'])
+        return render_sento(record), bool(record.get('location', {}).get('address')), len(record.get('virtualTours', []))
     name = project['nombre']
     slug = project['slug']
     builder = project['inmobiliaria'] if 'inmobiliaria' in research.get('verifiedFields', []) else project['inmobiliaria'] + ' (asociación por verificar)'
@@ -244,6 +249,10 @@ def main():
         matterport = any(t.get('provider') == 'Matterport' and secure_url(t.get('url')) and secure_url(t.get('sourceUrl')) and t['url'].replace('&', '&amp;') in actual for t in research.get('virtualTours', []))
         if slug in FEATURED:
             mapped = 'www.google.com/maps' in actual
+        if project.get('inmobiliaria') == 'Sento' and str(project.get('imagenPrincipal', '')).startswith('/assets/propiedades/sento/') and (ROOT / 'data/sento-review.json').exists():
+            reviewed = json.loads((ROOT / 'data/sento-review.json').read_text())
+            ledger.append(next(row for row in reviewed['ledger'] if row['slug'] == slug))
+            continue
         pending = pending_fields(project, research)
         ledger.append({'slug': slug, 'nombre': project['nombre'], 'inmobiliaria': project['inmobiliaria'], 'detalleUrl': project['detalleUrl'], 'fichaDesarrollada': bool(actual), 'destacadaExistente': slug in FEATURED, 'estadoFuente': research.get('sourceStatus', 'research_pending'), 'fuente': research.get('sourceUrl'), 'fechaRevision': research.get('checkedAt'), 'mapa': mapped, 'matterport': matterport, 'recorridosOficiales': len(research.get('virtualTours', [])), 'pendientes': pending, 'controlCalidad': 'pendiente' if pending else 'datos_verificados'})
         context = research.get('officialContext')

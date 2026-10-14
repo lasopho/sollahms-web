@@ -6,6 +6,7 @@ import argparse
 import json
 import os
 import re
+import signal
 import subprocess
 import sys
 import tempfile
@@ -15,7 +16,7 @@ EXTRA_TESTS = {
     'tests/booking-project-context.mjs', 'tests/form-regression.mjs',
     'tests/rut-contact.mjs', 'tests/integration-capacity-ui.mjs',
     'tests/integration-comparator.mjs', 'tests/integration-contact.mjs',
-    'tests/git-checkout-controls.mjs',
+    'tests/git-checkout-controls.mjs', 'tests/sento-main-merge.mjs',
 }
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
@@ -59,17 +60,20 @@ for suite in selected:
     assert set(declared) == set(allowed) | set(release), 'New/missing case needs a declared CI or release scope'
     assert len(declared) == len(allowed) + len(release), 'Duplicated declaration'
     release_cases.extend({'file': suite['file'], **entry} for entry in suite['releaseRequired'])
-assert len(release_cases) == manifest['expectedReleaseOnlyCases'] == 25
+assert len(release_cases) == manifest['expectedReleaseOnlyCases'] == 26
 # All historical byte-preservation guards use actual local Git objects.
 assert subprocess.check_output(['git', 'rev-parse', '--is-shallow-repository'], cwd=ROOT, text=True).strip() == 'false', 'fetch-depth: 0 required'
 for revision in ['e7afe04', '8cdb9bf2af607a4f0822e5ea2c3ec4ba3f4c76b1', 'b64911588e2fdf52f32d5f772b53735936fbd423', 'e903208160f62cc552e9efa4371a322ef75477b8', '045fe182ef5d2ad2206df303ba74330aa747050d']:
     subprocess.run(['git', 'cat-file', '-e', revision + '^{commit}'], cwd=ROOT, check=True)
 
 node = os.environ.get('SOLLAHMS_CI_NODE', 'node')
-commands = [('node-full-git-suites', [node, '--test', '--test-reporter=tap', *full_files])]
+# Each file keeps Node's process isolation. Bounding file concurrency avoids a
+# many-process Git/source audit storm in the newly combined developer suites.
+commands = [('node-full-' + Path(file).stem, [node, '--test', '--test-concurrency=1', '--test-reporter=tap', file])
+            for file in full_files]
 for suite in selected:
     pattern = '^(?:' + '|'.join(re.escape(name) for name in suite['cases']) + ')$'
-    commands.append(('node-' + Path(suite['file']).stem, [node, '--test', '--test-reporter=tap', '--test-name-pattern', pattern, suite['file']]))
+    commands.append(('node-' + Path(suite['file']).stem, [node, '--test', '--test-concurrency=1', '--test-reporter=tap', '--test-name-pattern', pattern, suite['file']]))
 commands += [('python-synthetic-units', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-v']),
              ('mortgage-data-validation', [node, 'scripts/validate-mortgage-data.mjs'])]
 env = {key: value for key, value in os.environ.items() if not key.startswith(('VERCEL_', 'BOOKING_', 'RESEND_', 'SMTP_')) and key != 'GITHUB_TOKEN'}
@@ -78,20 +82,30 @@ env['PYTHONDONTWRITEBYTECODE'] = '1'
 def run(item):
     name, command = item
     start = time.monotonic()
-    result = subprocess.run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=300)
-    output = result.stdout
+    process = subprocess.Popen(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE,
+                               stderr=subprocess.STDOUT, start_new_session=True)
+    timed_out = False
+    try:
+        output, _ = process.communicate(timeout=300)
+    except subprocess.TimeoutExpired:
+        timed_out = True
+        # Node test workers inherit stdout; killing only their parent otherwise
+        # leaves communicate waiting forever for an orphaned worker's pipe.
+        os.killpg(process.pid, signal.SIGKILL)
+        output, _ = process.communicate()
+        output += '\nCI command exceeded the 300-second limit; its local process group was stopped.\n'
     (OUT / (name + '.log')).write_text(output)
-    row = {'name': name, 'exitCode': result.returncode, 'seconds': round(time.monotonic()-start, 3)}
+    row = {'name': name, 'exitCode': process.returncode, 'seconds': round(time.monotonic()-start, 3), 'timedOut': timed_out}
     if name.startswith('node-'):
         counts = {key: int(value) for key, value in re.findall(r'^# (tests|pass|fail|skipped|cancelled) (\d+)$', output, re.MULTILINE)}
-        assert all(key in counts for key in ['tests', 'pass', 'fail', 'skipped', 'cancelled']), 'Missing Node test summary: ' + name
-        row['tests'] = counts
+        row['summaryComplete'] = all(key in counts for key in ['tests', 'pass', 'fail', 'skipped', 'cancelled'])
+        row['tests'] = {key: counts.get(key, 0) for key in ['tests', 'pass', 'fail', 'skipped', 'cancelled']}
     elif name == 'python-synthetic-units':
         count = re.search(r'^Ran (\d+) tests', output, re.MULTILINE)
-        assert count, 'Missing Python summary'
-        row['tests'] = int(count[1])
+        row['summaryComplete'] = bool(count)
+        row['tests'] = int(count[1]) if count else 0
     print(json.dumps(row), flush=True)
-    if result.returncode:
+    if process.returncode:
         print(output[-10000:], flush=True)
     return row
 
@@ -99,13 +113,15 @@ with ThreadPoolExecutor(max_workers=2) as executor:
     results = list(executor.map(run, commands))
 node_results = [item for item in results if item['name'].startswith('node-')]
 node_counts = {key: sum(item['tests'][key] for item in node_results) for key in ['tests','pass','fail','skipped','cancelled']}
-assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 312, 'Executed case count changed; classify the change explicitly'
-assert node_counts['skipped'] == 0, 'Filtered release cases are not represented as successful or skipped test executions'
+node_count_exact = node_counts['tests'] == manifest['expectedGitNodeTests'] == 323
+no_skipped = node_counts['skipped'] == 0
 python_result = next(item for item in results if item['name'] == 'python-synthetic-units')
-assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 148
-passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 312 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
+python_count_exact = python_result['tests'] == manifest['expectedPythonFixtureTests'] == 152
+passed = node_count_exact and python_count_exact and no_skipped and all(item.get('summaryComplete', True) for item in results) and all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 323 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
 report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
           'node': node_counts, 'pythonFixtureTests': python_result['tests'],
+          'exactClassifiedCounts': node_count_exact and python_count_exact,
+          'missingSummaries': [item['name'] for item in results if not item.get('summaryComplete', True)],
           'releaseOnlyNotRun': release_cases, 'releaseOnlyNotRunCount': len(release_cases),
           'commands': results, 'productionBuildPerformed': False, 'deploymentsCreated': 0,
           'privateAssetsImported': False, 'externalProviderCalls': 'synthetic handlers/fixtures only'}
@@ -113,8 +129,8 @@ report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
 summary = '\n'.join([
     '## Sollahms — Git checkout regression',
     f"Node: {node_counts['pass']}/{node_counts['tests']}; Python synthetic fixtures: {python_result['tests']}; mortgage validator: " + str(results[-1]['exitCode']==0),
-    '136 projects / 15 Ecasa (22 commercial origins) / 16 Ingevec; manual main + integration deployment gates; catalogue/privacy/security guards and incomplete-build rejection are checked.',
-    '25 named image/release cases require the private reproducible package and protected Preview. They were not run and are not marked passed.',
+    '133 projects / 15 Ecasa (22 commercial origins) / 5 León / 7 Sento / 16 Ingevec; manual main + integration deployment gates; catalogue/privacy/security guards and incomplete-build rejection are checked.',
+    '26 named image/release cases require the private reproducible package and protected Preview. They were not run and are not marked passed.',
     'This job does not build a publishable site, import private derivatives, deploy, merge, or send forms.',
 ])+'\n'
 print(summary)

@@ -105,21 +105,29 @@ def expected_consolidation(path):
             row['matterport'] = any(item['registro']['matterport'] for item in private)
             row['recorridosOficiales'] = sum(item['registro']['recorridosOficiales'] for item in private)
         expected.append(row)
-    return expected
+    from integrated_scope import expected_data, ecasa_slugs
+    merged = expected_data(path)
+    assert [row for row in merged if row['slug'] in ecasa_slugs()] == [row for row in expected if row['slug'] in ecasa_slugs()], 'Original 22-stage consolidation evidence changed'
+    return merged
 
 def validate_successor_data(path, actual=None):
     current = json.loads(actual if actual is not None else (ROOT / path).read_bytes())
     expected = expected_consolidation(path)
-    assert len(current) == len({row['slug'] for row in current}) == 136, path + ': expected 136 unique canonical projects'
+    assert len(current) == len({row['slug'] for row in current}) == 133, path + ': expected 133 unique canonical projects'
     assert current == expected, path + ': changes exceed the exact 15-project/22-origin Ecasa consolidation'
     return current
 
 def restore_successor_data(path, actual):
-    current = validate_successor_data(path, actual)
     base = json.loads(main_bytes(path))
+    from integrated_scope import validate_data, historical_merged_data
+    if json.loads(actual) in [base, historical_merged_data(path)]:
+        validate_data(path)
+        return base
+    current = validate_successor_data(path, actual)
     old_ecasa = {p['slug'] for p in json.loads(main_bytes('data/proyectos.json')) if p['inmobiliaria'] == 'Ecasa'}
-    lookup = {row['slug']: row for row in current}
-    return [row if row['slug'] in old_ecasa else lookup[row['slug']] for row in base]
+    # The current 118 foreign rows were independently bound to f66 above.
+    # Historical fixtures restore their own immutable predecessor, never output.
+    return base
 
 def public_fallback(text):
     import re
@@ -140,7 +148,10 @@ def validate_alias_route(slug):
     reviewed = json.loads(REVIEWED_OUTPUT.read_text())
     assert reviewed['baselineCommit'] == CONSOLIDATION_BASE, 'Ecasa consolidated route review is not frozen'
     config = (ROOT / 'vercel.json').read_bytes()
-    assert hashlib.sha256(config).hexdigest() == reviewed['redirectConfigSha256'], 'Ecasa reviewed route configuration changed'
+    from integrated_scope import verify_shared
+    import json as _json
+    policy=_json.loads((ROOT/'data/ecasa-main-integration.json').read_bytes())
+    verify_shared('vercel.json',policy['sharedMainSha256']['vercel.json'])
     canonical, number = ALIASES[slug]
     destination = '/' + canonical + '.html#etapa-' + str(number)
     rules = json.loads(config).get('redirects', [])
@@ -168,14 +179,31 @@ def restore_ecasa_page(path, current):
     canonical = stage_groups()
     commercial = {source for sources in canonical.values() for source in sources}
     if slug in RETIRED:
-        raise AssertionError(slug + ': retired public route returned')
+        from integrated_scope import validate_data
+        validate_data('data/proyectos.json')
+        assert not (ROOT / path).exists(), slug + ': retired public route returned'
+        assert current == main_bytes(path), slug + ': unapproved retired historical fixture'
+        return current
     if slug not in canonical and slug not in commercial:
+        return current
+    legacy = 'terratolten-1' if slug == 'terratolten' else slug
+    old_slugs = {project['slug'] for project in json.loads(main_bytes('data/proyectos.json'))}
+    historical = main_bytes(legacy + '.html') if legacy in old_slugs else consolidation_bytes(legacy + '.html')
+    if current == historical:
+        # This is a fixed historical test input, never deployment data. Verify
+        # the real consolidated route first, then let older map/tour guards
+        # compare the immutable predecessor without a second consolidation.
+        from integrated_scope import validate_data
+        validate_data('data/proyectos.json')
+        if slug in ALIASES:
+            validate_alias_route(slug)
+        else:
+            validate_reviewed_page(path, (ROOT / path).read_bytes())
         return current
     if slug in ALIASES:
         validate_alias_route(slug)
     else:
         validate_reviewed_page(path, current)
-    legacy = 'terratolten-1' if slug == 'terratolten' else slug
     old_slugs = {project['slug'] for project in json.loads(main_bytes('data/proyectos.json'))}
     return main_bytes(legacy + '.html') if legacy in old_slugs else consolidation_bytes(legacy + '.html')
 

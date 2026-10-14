@@ -1,3 +1,4 @@
+import { verifyMergedShared, assertMergedSource } from './integrated-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, copyFileSync, cpSync, existsSync, rmSync } from 'node:fs';
@@ -47,8 +48,11 @@ const visible=html=>html.replace(/<head\b[^>]*>[\s\S]*?<\/head>|<script\b[^>]*>[
 
 test('quality review preserves 118 source photographs and explicitly excludes only four reviewed documentary images',()=>{
   const pinned=json('tests/ecasa-reviewed-output.json');
-  assert.equal(hash(read('scripts/package-vercel.mjs')),pinned.packageSha256);
-  assert.equal(hash(read('scripts/ecasa-image-quality.mjs')),pinned.imageQualityModuleSha256);
+  const integration=json('data/ecasa-main-integration.json');
+  verifyMergedShared('scripts/package-vercel.mjs',integration.sharedMainSha256['scripts/package-vercel.mjs']);
+  assert.equal(hash(execFileSync('git',['show','a99d1c8d077698f78d9824ca96d47cb19e515dcd:scripts/package-vercel.mjs'],{cwd:ROOT})),pinned.packageSha256);
+  assert.equal(hash(read('scripts/ecasa-image-quality.mjs')),integration.sourceInputs.find(row=>row.file==='scripts/ecasa-image-quality.mjs').sha256);
+  assert.equal(hash(execFileSync('git',['show','a99d1c8d077698f78d9824ca96d47cb19e515dcd:scripts/ecasa-image-quality.mjs'],{cwd:ROOT})),pinned.imageQualityModuleSha256);
   assert.equal(hash(read('data/ecasa-image-quality.json')),pinned.imageQualityPolicySha256);
   assert.equal(policy.baselineCommit,BASELINE);assert.equal(policy.projects.length,15);
   assert.deepEqual(validated.summary,{reviewedImages:118,officialImages:62,documentaryImages:56,plansPreserved:74,
@@ -61,13 +65,13 @@ test('quality review preserves 118 source photographs and explicitly excludes on
   }
 });
 
-test('source catalogue, 22 stage snapshots, documentary manifests and all 136 fiche files remain exact',()=>{
+test('source catalogue, 22 stage snapshots, documentary manifests and all 133 fiche files remain exact',()=>{
   for(const file of ['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json','data/fuentes-imagenes.json',
     'data/brochures-ecasa.json','data/brochures-aj-urbana.json','data/brochures-ingevec.json','sitemap.xml','vercel.json'])
-    assert.deepEqual(read(file),original(file),file);
-  for(const project of catalogue)assert.deepEqual(read(project.slug+'.html'),original(project.slug+'.html'),project.slug);
+    assertMergedSource(file,original(file));
+  for(const project of catalogue)assertMergedSource(project.slug+'.html',original(project.slug+'.html'));
   const stages=research.flatMap(record=>record.etapasComerciales??[]);
-  assert.equal(stages.length,22);assert.equal(catalogue.filter(project=>project.inmobiliaria!=='Ecasa').length,121);
+  assert.equal(stages.length,22);assert.equal(catalogue.filter(project=>project.inmobiliaria!=='Ecasa').length,118);
 });
 
 test('published selection removes four photographs while preserving all 74 original models and their stage-bound plans',()=>{
@@ -97,7 +101,7 @@ test('quality filtering is idempotent in both profiles and preserves every plan,
   assert.equal(profiles,30);assert.equal(plans,74);
 });
 
-test('only Ecasa display image fields change while financial values, source references and 121 other projects stay exact',()=>{
+test('only Ecasa display image fields change while financial values, source references and 118 other projects stay exact',()=>{
   const source=JSON.stringify(catalogue),output=applyEcasaCatalogueImageQuality(catalogue,validated);
   assert.equal(JSON.stringify(catalogue),source,'source input was mutated');
   const other=rows=>rows.filter(project=>project.inmobiliaria!=='Ecasa');assert.deepEqual(other(output),other(catalogue));
@@ -110,10 +114,10 @@ test('only Ecasa display image fields change while financial values, source refe
     assert.deepEqual(after.etapasComerciales,before.etapasComerciales,before.slug+': original stage snapshots');
     assert.equal(after.imagenPrincipal,policy.projects.find(project=>project.slug===before.slug).covers.preview.catalogue);
   }
-  assert.equal(output.filter(project=>project.precioDesdeUF>0).length,106);assert.equal(output.filter(project=>project.precioDesdeUF===null).length,30);
+  assert.equal(output.filter(project=>project.precioDesdeUF>0).length,103);assert.equal(output.filter(project=>project.precioDesdeUF===null).length,30);
   for(const file of ['data/hipotecario.json','api/uf.mjs','assets/js/mortgage-engine.mjs','assets/js/project-finance.mjs',
     'assets/js/purchase-capacity.mjs','assets/js/purchase-capacity-ui.mjs','assets/js/hipotecario.mjs','privacidad.html'])
-    assert.deepEqual(read(file),original(file),file);
+    assertMergedSource(file,original(file));
 });
 
 test('quality decisions reject missing inventories, wrong bytes, borrowed stages, plan removal and unauthorized cover substitutions',()=>{
@@ -177,7 +181,7 @@ test('every non-Ecasa HTML string is unchanged by the quality transform in both 
     for(const preview of [true,false])assert.equal(transformEcasaImageQuality(source,project.slug,validated,{preview}),source,project.slug);
     checked++;
   }
-  assert.equal(checked,121);
+  assert.equal(checked,118);
 });
 
 test('real private packaging publishes 395 selected resources, keeps 74 Ecasa plans and excludes four source photographs',()=>{

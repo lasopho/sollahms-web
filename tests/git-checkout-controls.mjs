@@ -1,4 +1,6 @@
+import { projectSentoFile } from './sento-preservation.mjs';
 import test from 'node:test';
+import { readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -17,13 +19,15 @@ const MAP_CLEANUP = 'codex/limpieza-mapas-fichas';
 const ECASA = 'codex/ecasa-cartera-definitiva';
 const ECASA_INDEPENDENT = 'codex/ecasa-publicacion-independiente';
 const APPROVED_PORTFOLIO = 'e7afe04';
+const CONCURRENT_MAIN = 'f66fbec15f1f4b30be3a70e94644a29212402a63';
+const expectedGates={...JSON.parse(execFileSync('git',['show','a99d1c8d077698f78d9824ca96d47cb19e515dcd:vercel.json'],{cwd:ROOT})).git.deploymentEnabled,...JSON.parse(execFileSync('git',['show',CONCURRENT_MAIN+':vercel.json'],{cwd:ROOT})).git.deploymentEnabled};
 const read = path => readFileSync(resolve(ROOT, path));
 const json = path => JSON.parse(read(path));
 const git = (...args) => execFileSync('git', args, { cwd: ROOT, maxBuffer: 16 * 1024 * 1024 });
 const configuration = json('vercel.json');
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [ECASA_INDEPENDENT]: false },
+  assert.deepEqual(config.git?.deploymentEnabled, expectedGates,
     'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
@@ -38,6 +42,7 @@ function assertSecurityHeaders(config) {
 
 test('manual deployment gates reject missing integration protection, enabled branches and overlapping permissive patterns', () => {
   assertManualDeploymentGates(configuration);
+  for (const branch of Object.keys(expectedGates)) {const missing=structuredClone(configuration);delete missing.git.deploymentEnabled[branch];assert.throws(()=>assertManualDeploymentGates(missing));const enabled=structuredClone(configuration);enabled.git.deploymentEnabled[branch]=true;assert.throws(()=>assertManualDeploymentGates(enabled));}
   for (const mutation of [
     config => { delete config.git.deploymentEnabled[INTEGRATION]; },
     config => { delete config.git.deploymentEnabled[ECASA_INDEPENDENT]; },
@@ -78,13 +83,13 @@ test('shared security headers reject missing and weakened framing, MIME, referre
   assert.ok(policy);
 });
 
-test('all 121 non-Ecasa catalogue objects and 16 Ingevec identities retain the approved portfolio', () => {
+test('all 118 non-Ecasa catalogue objects and 16 Ingevec identities retain the approved portfolio', () => {
   const catalogue = json('data/proyectos.json');
   assertBrochureCatalogue(catalogue);
-  assert.equal(catalogue.length, 136);
+  assert.equal(catalogue.length, 133);
   assert.equal(catalogue.filter(project => project.inmobiliaria === 'Ingevec').length, 16);
   assert.deepEqual(catalogue.filter(p=>p.inmobiliaria !== 'Ecasa'),
-    JSON.parse(git('show', APPROVED_PORTFOLIO + ':data/proyectos.json')).filter(p=>p.inmobiliaria !== 'Ecasa'));
+    JSON.parse(git('show', CONCURRENT_MAIN + ':data/proyectos.json')).filter(p=>p.inmobiliaria !== 'Ecasa'));
   assert.deepEqual(read('data/hipotecario.json'), git('show', APPROVED_PORTFOLIO + ':data/hipotecario.json'));
   const changed = structuredClone(catalogue);
   changed.find(project => project.inmobiliaria !== 'Ingevec' && project.inmobiliaria !== 'Ecasa').nombre += ' changed';
@@ -136,7 +141,7 @@ test('Git CI never publishes private originals or secretly imports the 165 Ingev
   assert.equal(paths.some(path => /(?:^|\/)(?:brochure-candidates|contratos?|private-input)(?:\/|$)/i.test(path)), false);
 });
 
-test('the 136 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
+test('the 133 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
   const catalogue = json('data/proyectos.json');
   const pages = readdirSync(ROOT).filter(path => /^[^/]+\.html$/.test(path));
   assert.deepEqual(new Set(pages), new Set([...BROCHURE_PUBLIC_PAGES, ...catalogue.map(project => project.slug + '.html')]));
@@ -161,7 +166,7 @@ function assertIncompleteBuildRejected(environment, partial) {
       'data/ecasa-image-quality.json','data/fichas-proyectos.json','data/fuentes-imagenes.json',
       'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
       const target = resolve(fixture, path);
-      mkdirSync(dirname(target), { recursive: true }); copyFileSync(resolve(ROOT, path), target);
+      mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, projectSentoFile(path, readPreLeonFile(path)));
     }
     if (partial) {
       const asset = json('data/brochures-ingevec.json').projects[0].images[0];

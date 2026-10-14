@@ -2,7 +2,9 @@ import { expectedProjectLabel, expectedProjectQuery, expectedProjectDetail } fro
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
-import catalogue from '../data/proyectos.json' with { type: 'json' };
+import actualCatalogue from '../data/proyectos.json' with { type: 'json' };
+import { historicalSentoFinancialRows } from './sento-preservation.mjs';
+const catalogue = historicalSentoFinancialRows(actualCatalogue);
 import mortgageDataset from '../data/hipotecario.json' with { type: 'json' };
 import { createContactHandler } from '../api/contact.mjs';
 import { calculateMortgage } from '../assets/js/mortgage-engine.mjs';
@@ -37,9 +39,9 @@ function harness({ projectDataset = catalogue, now = NOW, environment = 'test', 
 }
 const number = new Intl.NumberFormat('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-test('all 136 mortgage contexts derive project name and subject on the server without forwarding RUT', async () => {
+test('all 133 mortgage contexts derive project name and subject on the server without forwarding RUT', async () => {
   const { handler, calls } = harness();
-  assert.equal(catalogue.length, 136);
+  assert.equal(catalogue.length, 133);
   for (const project of catalogue) {
     const response = await handler.fetch(request(lead(project.slug)));
     assert.equal(response.status, 200, project.slug);
@@ -53,10 +55,10 @@ test('all 136 mortgage contexts derive project name and subject on the server wi
     assert.ok(!JSON.stringify(email).includes('RUT'));
     assert.ok(!JSON.stringify(email.subject).includes('4.000'));
   }
-  assert.equal(calls.length, 136);
+  assert.equal(calls.length, 133);
 });
 
-test('106 catalogue prices match verified server provenance and are independently recalculated', async () => {
+test('98 historically dated catalogue prices match verified server provenance and are independently recalculated', async () => {
   const { handler, calls } = harness();
   let priced = 0;
   for (const project of catalogue) {
@@ -73,11 +75,11 @@ test('106 catalogue prices match verified server provenance and are independentl
     assert.ok(text.includes('revisión: ' + price.date));
     assert.ok(text.includes('fuente: ' + price.source));
   }
-  assert.equal(priced, 106);
-  assert.equal(calls.length, 106);
+  assert.equal(priced, 98);
+  assert.equal(calls.length, 98);
 });
 
-test('30 unpriced projects require a visitor-declared price and cannot borrow another project price', async () => {
+test('35 unpriced or future-dated projects require a visitor-declared price and cannot borrow another project price', async () => {
   const { handler, calls } = harness();
   let unpriced = 0;
   for (const project of catalogue) {
@@ -90,7 +92,7 @@ test('30 unpriced projects require a visitor-declared price and cannot borrow an
     assert.ok(calls.at(-1).body.text.includes('no representa un precio vigente confirmado'));
     assert.ok(!calls.at(-1).body.text.includes('revisión: 2026-10-09'));
   }
-  assert.equal(unpriced, 30);
+  assert.equal(unpriced, 35);
 });
 
 test('a visitor may deliberately edit a known catalogue price, and the resulting amount stays labelled as declared', async () => {

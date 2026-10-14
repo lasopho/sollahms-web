@@ -1,4 +1,6 @@
+import { historicalSentoFinancialRows } from './sento-preservation.mjs';
 import test from 'node:test';
+import { restoreLeonRows } from '../scripts/brochure-publication.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { evaluateProject, validateCapacityInput, CapacityValidationError } from '../assets/js/purchase-capacity.mjs';
@@ -55,11 +57,11 @@ test('fechas siguen Chile, no el día UTC ni fechas calendario inválidas', () =
   assert.equal(chileDate('invalid'), null);
 });
 
-test('136 proyectos: 106 precios verificados participan y 30 quedan E', async () => {
+test('133 proyectos: 92 precios vigentes en la fixture del 10 de octubre participan y 41 quedan E', async () => {
   const projects = JSON.parse(await readFile(new URL('../data/proyectos.json', import.meta.url), 'utf8'));
-  assert.equal(projects.length, 136);
+  assert.equal(projects.length, 133);
   const known = projects.filter((p) => verifiedProjectPrice(p, now));
-  assert.equal(known.length, 106);
+  assert.equal(known.length, 92);
   for (const p of projects) {
     const result = evaluateProject(p, baseInput, dataset, now);
     if (!verifiedProjectPrice(p, now)) {

@@ -1,3 +1,4 @@
+import subprocess
 """Git-only negative fixtures for the offline independent Ecasa auditor.
 
 The fixture uses the 92 versioned selected resources and the 62 previously
@@ -54,13 +55,13 @@ class EcasaIndependentAuditTest(unittest.TestCase):
         source = cls.roots['source']
         cls.manifest = json.loads((ROOT / 'data/ecasa-publication-candidate.json').read_text())
         cls.selected = cls.manifest['selectedResources']
-        cls.catalogue = json.loads((ROOT / 'data/proyectos.json').read_text())
+        cls.catalogue = json.loads(subprocess.check_output(['git','show','a99d1c8d077698f78d9824ca96d47cb19e515dcd:data/proyectos.json'],cwd=ROOT).decode())
         cls.other_slug = next(row['slug'] for row in cls.catalogue if row['inmobiliaria'] != 'Ecasa')
         for name in AUDITOR.FROZEN_INPUTS:
             put(source, name, (ROOT / name).read_bytes())
         put(source, 'data/ecasa-publication-candidate.json', json_bytes(cls.manifest))
         for name in ['proyectos.json', 'fichas-proyectos.json', 'registro-fichas.json']:
-            value = (ROOT / 'data' / name).read_bytes()
+            value = subprocess.check_output(['git','show','a99d1c8d077698f78d9824ca96d47cb19e515dcd:data/'+name],cwd=ROOT)
             put(source, 'data/' + name, value)
             put(cls.roots['production-source'], 'data/' + name, value)
         for name in AUDITOR.CORE:

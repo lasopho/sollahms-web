@@ -22,9 +22,9 @@ const bookingBody = {date:'2030-01-07',time:'10:00',nombre:'Cliente',apellido:'P
 const request = (path,body) => new Request('https://sollahms.cl/api/'+path,
   {method:'POST',headers:{'Content-Type':'application/json',Origin:'https://sollahms.cl'},body:JSON.stringify(body)});
 
-test('121 other projects and the ten single Ecasa projects preserve their catalogue context', () => {
+test('118 other projects and the ten single Ecasa projects preserve their catalogue context', () => {
   const unchanged=catalogue.filter(project=>project.inmobiliaria!=='Ecasa'||project.etapasComerciales.length===1);
-  assert.equal(unchanged.length,131);
+  assert.equal(unchanged.length,128);
   for(const project of unchanged) {
     const identity=resolveProjectIdentity(catalogue,project.slug);
     for(const [key,value] of Object.entries(project)) assert.deepEqual(identity[key],value,project.slug+': '+key);

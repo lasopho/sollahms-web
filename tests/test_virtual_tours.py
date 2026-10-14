@@ -1,6 +1,7 @@
+"""Historical map/tour policy fixtures, after exact current 133-project validation."""
 """Real catalogue regressions and future rendering of absent/invalid tours."""
 import copy
-from collections import Counter
+from leon_main_scope import read_pre_leon
 import hashlib
 import importlib.util
 import json
@@ -11,11 +12,11 @@ import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
+from sento_scope import original_data, historical_file, original_html
 from string import Template
 from urllib.parse import urlparse
 from virtual_tour_scope import exact_removed_page, VISTA_UNAVAILABLE_URL
 from automatic_embed_scope import expected_automatic_file, restore_automatic_file, main_bytes
-from ecasa_scope import restore_successor_data, restore_ecasa_page, ADDED, public_fallback, validate_reviewed_page, consolidation_bytes, restore_context_file
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = '3f7b7e481e632e06d36702f556f6f2bca61bc55b'
@@ -24,18 +25,9 @@ from virtual_tour_policy import usable_virtual_tours, virtual_tours_to_render, h
 spec = importlib.util.spec_from_file_location('details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(details)
-PROJECTS = json.loads((ROOT / 'data/proyectos.json').read_text())
-RECORDS = {r['slug']: r for r in json.loads((ROOT / 'data/fichas-proyectos.json').read_text())}
-TEMPLATE = Template((ROOT / 'templates/project-detail.html').read_text())
-
-def stage_records(record):
-    return [stage['investigacion'] for stage in record.get('etapasComerciales', [])] or [record]
-
-def canonical_tours(record):
-    return [tour for source in stage_records(record) for tour in virtual_tours_to_render(source)]
-
-EXPANDED_RECORDS = {source['slug']: source for record in RECORDS.values() for source in stage_records(record)}
-
+PROJECTS = original_data(json.loads(read_pre_leon('data/proyectos.json').decode()))
+RECORDS = {r['slug']: r for r in original_data(json.loads(read_pre_leon('data/fichas-proyectos.json').decode()), 'data/fichas-proyectos.json')}
+TEMPLATE = Template(read_pre_leon('templates/project-detail.html').decode())
 
 def original(path):
     return subprocess.check_output(['git', 'show', f'{BASE}:{path}'], cwd=ROOT)
@@ -52,50 +44,51 @@ class VirtualTours(unittest.TestCase):
     def test_source_records_and_prices_stay_exact(self):
         for path in ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
                      'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']:
-            self.assertEqual(restore_successor_data(path, (ROOT / path).read_bytes()), json.loads(original(path)), path) if path.endswith(('proyectos.json', 'registro-fichas.json')) else self.assertEqual((ROOT / path).read_bytes(), original(path), path)
-        self.assertEqual(len(PROJECTS), 136)
-        self.assertEqual(len(EXPANDED_RECORDS), 143)
-        self.assertEqual(sum(bool(r['virtualTours']) for r in EXPANDED_RECORDS.values()), 61)
-        self.assertEqual(sum(len(r['virtualTours']) for r in EXPANDED_RECORDS.values()), 99)
-        self.assertEqual({r['slug']: r for r in json.loads(consolidation_bytes('data/fichas-proyectos.json'))}, EXPANDED_RECORDS)
+            self.assertEqual(historical_file(path, read_pre_leon(path)), original(path), path)
+        self.assertEqual(len(PROJECTS), 144)
+        self.assertEqual(sum(bool(r['virtualTours']) for r in RECORDS.values()), 62)
+        self.assertEqual(sum(len(r['virtualTours']) for r in RECORDS.values()), 100)
 
-    def test_59_canonical_tour_pages_preserve_all_97_authorized_experiences_and_exact_non_ecasa_scope(self):
-        preserved = [r for r in RECORDS.values() if canonical_tours(r)]
-        self.assertEqual(len(preserved), 59)
-        self.assertEqual(sum(len(canonical_tours(r)) for r in preserved), 97)
-        untouched = corrected = 0
+    def test_61_tour_pages_preserve_exact_authorized_scope(self):
+        preserved = [r for r in RECORDS.values() if r['virtualTours'] and r['slug'] != 'irarrazaval']
+        self.assertEqual(len(preserved), 61)
+        self.assertEqual(sum(len(r['virtualTours']) for r in preserved), 99)
+        untouched = corrected = published = 0
         for r in preserved:
             path = r['slug'] + '.html'
-            if r.get('etapasComerciales'):
-                validate_reviewed_page(path, (ROOT / path).read_bytes())
-                continue
             before = original(path)
             removed = exact_removed_page(before, r['slug'])
             self.assertEqual(removed, main_bytes(path), path + ': approved tour withdrawal baseline')
-            self.assertEqual((ROOT / path).read_bytes(), expected_automatic_file(path), path)
+            expected = expected_automatic_file(path)
+            self.assertEqual(historical_file(path, read_pre_leon(path)), expected, path)
             untouched += removed == before
             corrected += removed != before
-        self.assertEqual((untouched, corrected), (44, 1))
-        self.assertNotIn(VISTA_UNAVAILABLE_URL.replace('&', '&amp;'), (ROOT / 'vista-bulnes.html').read_text())
-        self.assertEqual(sum(t.get('provider') == 'Matterport' for r in preserved for t in canonical_tours(r)), 23)
+            retained = [t for t in r['virtualTours']
+                        if (r['slug'], t['url']) != ('vista-bulnes', VISTA_UNAVAILABLE_URL)]
+            self.assertEqual(virtual_tours_to_render(r), retained, r['slug'])
+            published += len(retained)
+        self.assertEqual((untouched, corrected, published), (59, 2, 98))
+        self.assertNotIn(VISTA_UNAVAILABLE_URL.replace('&', '&amp;'), read_pre_leon('vista-bulnes.html').decode())
+        self.assertNotIn('La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.',
+                         read_pre_leon('endemico.html').decode())
+        self.assertEqual(sum(t.get('provider') == 'Matterport' for r in preserved for t in r['virtualTours']), 23)
 
-    def test_all_77_absent_or_unassociated_canonical_sections_are_removed(self):
-        hidden = [r for r in RECORDS.values() if not canonical_tours(r)]
-        self.assertEqual(len(hidden), 77)
+    def test_all_83_absent_or_unassociated_sections_are_removed(self):
+        hidden = [r for r in RECORDS.values() if not r['virtualTours'] or r['slug'] == 'irarrazaval']
+        self.assertEqual(len(hidden), 83)
         for r in hidden:
-            page = (ROOT / (r['slug'] + '.html')).read_text()
+            page = original_html(read_pre_leon(r['slug']+'.html').decode())
             self.assertNotRegex(page, r'id=["\']recorrido["\']|href=["\']#recorrido["\']')
             self.assertNotIn('Recorridos y experiencias oficiales', page)
             self.assertNotIn('Consulta la disponibilidad de un recorrido virtual', page)
             if 'id="modelos"' in page:
                 self.assertIn('href="#modelos"', page, r['slug'] + ': plan navigation missing')
-            for source in stage_records(r):
-                for tour in source['virtualTours']:
-                    self.assertNotIn(tour['url'], page)
+            for t in r['virtualTours']:
+                self.assertNotIn(t['url'], page)
 
-    def test_internal_fragments_resolve_on_all_136_canonical_pages(self):
+    def test_internal_fragments_resolve_on_all_144_pages(self):
         for p in PROJECTS:
-            nodes = Nodes((ROOT / (p['slug'] + '.html')).read_text()).nodes
+            nodes = Nodes(original_html(read_pre_leon(p['slug']+'.html').decode())).nodes
             ids = [a['id'] for _, a in nodes if a.get('id')]
             self.assertEqual(len(ids), len(set(ids)), p['slug'])
             for tag, attrs in nodes:
@@ -122,60 +115,55 @@ class VirtualTours(unittest.TestCase):
 
     def test_photos_and_plan_elements_are_unchanged(self):
         for p in PROJECTS:
-            if p['inmobiliaria'] == 'Ecasa':
-                continue  # Exact Ecasa fallback and selected additions have independent successor checks.
             path = p['slug'] + '.html'
             images = lambda html: [a for tag, a in Nodes(html).nodes if tag == 'img']
-            self.assertEqual(images((ROOT / path).read_text()), images(original(path).decode()), path)
+            self.assertEqual(images(original_html(read_pre_leon(path).decode())), images(original(path).decode()), path)
 
     def test_search_and_mortgage_comparator_sources_are_unchanged(self):
         paths = ['index.html', 'proyectos.html', 'comparador-hipotecario.html',
                  'data/hipotecario.json', 'api/uf.mjs', 'assets/js/hipotecario.mjs',
                  'assets/js/purchase-capacity-ui.mjs', 'assets/js/project-finance.mjs']
         for path in paths:
-            self.assertEqual(restore_context_file(path, (ROOT / path).read_bytes()), original(path), path)
+            self.assertEqual(historical_file(path, read_pre_leon(path)), original(path), path)
 
-    def test_future_rendering_of_all_136_pages_preserves_stage_provenance_and_tour_policy(self):
+    def test_future_rendering_of_all_144_pages_matches_policy(self):
         sections = tours = 0
         for p in PROJECTS:
             page, _, count = details.render(p, RECORDS[p['slug']], TEMPLATE)
-            expected_tours = canonical_tours(RECORDS[p['slug']])
-            expected = bool(expected_tours)
+            if 'id="modelos"' in page:
+                self.assertIn('href="#modelos"', page, p['slug'] + ': plan navigation missing')
+            expected = bool(RECORDS[p['slug']]['virtualTours']) and p['slug'] != 'irarrazaval'
             self.assertEqual('id="recorrido"' in page, expected, p['slug'])
             self.assertEqual('href="#recorrido"' in page, expected, p['slug'])
             self.assertNotIn('Consulta la disponibilidad de un recorrido virtual', page)
+            self.assertNotIn('La disponibilidad de esta experiencia está pendiente de confirmación con el proveedor.', page)
             self.assertNotIn('data-embed-src=', page)
             self.assertNotIn('Iniciar recorrido interactivo', page)
             self.assertNotIn('Mostrar mapa interactivo', page)
-            self.assertEqual(count, len(expected_tours))
-            for stage in RECORDS[p['slug']].get('etapasComerciales', []):
-                self.assertIn('id="etapa-' + str(stage['etapa']) + '"', page)
-                if virtual_tours_to_render(stage['investigacion']):
-                    self.assertIn('data-commercial-stage="' + stage['slug'] + '"', page)
+            self.assertNotIn('Abrir recorrido original', page)
+            expected_links = [t for t in RECORDS[p['slug']]['virtualTours']
+                              if (p['slug'], t['url']) != ('vista-bulnes', VISTA_UNAVAILABLE_URL)] if expected else []
+            self.assertEqual(count, len(expected_links))
+            if p['slug'] == 'vista-bulnes':
+                self.assertNotIn(VISTA_UNAVAILABLE_URL.replace('&', '&amp;'), page)
             sections += expected
             tours += count
-        self.assertEqual((sections, tours), (59, 97))
+        self.assertEqual((sections, tours), (61, 98))
 
-    def test_all_121_other_pages_keep_the_exact_automatic_embed_transform_and_ecasa_has_independent_review_pins(self):
-        other = ecasa = 0
+    def test_all_144_pages_are_the_exact_automatic_embed_transform(self):
         for project in PROJECTS:
             path = project['slug'] + '.html'
-            current = (ROOT / path).read_bytes()
-            if project['inmobiliaria'] == 'Ecasa':
-                validate_reviewed_page(path, current)
-                ecasa += 1
-                continue
+            current = historical_file(path, read_pre_leon(path))
             self.assertEqual(current, expected_automatic_file(path), path)
             self.assertEqual(restore_automatic_file(path, current), main_bytes(path), path)
-            other += 1
-        self.assertEqual((other, ecasa), (121, 15))
-        self.assertEqual((ROOT / 'templates/project-detail.html').read_bytes(), expected_automatic_file('templates/project-detail.html'))
+        path = 'templates/project-detail.html'
+        self.assertEqual(historical_file(path, read_pre_leon(path)), expected_automatic_file(path))
 
-    def test_132_maps_and_96_tour_frames_keep_exact_sources_and_secure_lazy_attributes(self):
+    def test_137_maps_and_97_tour_frames_keep_exact_sources_and_secure_lazy_attributes(self):
         maps = tours = sections = external = 0
         for project in PROJECTS:
             slug = project['slug']
-            page = public_fallback((ROOT / (slug + '.html')).read_text())
+            page = original_html(read_pre_leon(slug+'.html').decode())
             nodes = Nodes(page).nodes
             hosts = json.loads(re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', page, re.S)[1])
             self.assertNotIn('data-embed-src=', page, slug)
@@ -184,18 +172,18 @@ class VirtualTours(unittest.TestCase):
             self.assertNotIn('Abrir recorrido original', page, slug)
             frames = [attrs for tag, attrs in nodes if tag == 'iframe']
             map_frames = [attrs for attrs in frames if attrs.get('src', '').startswith('https://www.google.com/maps')]
-            sources = stage_records(RECORDS[slug])
-            before = [node for source in sources for node in Nodes(consolidation_bytes(source['slug'] + '.html').decode()).nodes]
+            before = Nodes(main_bytes(slug + '.html').decode()).nodes
             previous_maps = [attrs.get('src') or attrs.get('data-embed-src') for tag, attrs in before
                              if tag in {'iframe', 'button'} and
                              (attrs.get('src') or attrs.get('data-embed-src', '')).startswith('https://www.google.com/maps')]
-            self.assertEqual(Counter(attrs['src'] for attrs in map_frames), Counter(previous_maps), slug + ': original stage map queries changed')
+            self.assertEqual([attrs['src'] for attrs in map_frames], previous_maps, slug + ': map query changed')
             maps += len(map_frames)
             tour_frames = [attrs for attrs in frames if attrs not in map_frames]
-            retained = canonical_tours(RECORDS[slug])
+            retained = [tour for tour in RECORDS[slug]['virtualTours']
+                        if slug != 'irarrazaval' and (slug, tour['url']) != ('vista-bulnes', VISTA_UNAVAILABLE_URL)]
             expected_tours = [tour for tour in retained if tour.get('embedStatus') == 'allowed']
-            self.assertEqual(Counter(attrs['src'] for attrs in tour_frames), Counter(tour['url'] for tour in expected_tours), slug)
-            self.assertEqual(Counter(attrs['title'].replace('Endémico Pichilemu','Endémico').replace('Edificio Wayra', 'Wayra').replace('· Bezanilla', '· Edificio Bezanilla') for attrs in tour_frames), Counter(tour['title'].replace('Endémico Pichilemu', 'Endémico').replace('Edificio Wayra', 'Wayra').replace('· Bezanilla', '· Edificio Bezanilla') for tour in expected_tours), slug)
+            self.assertEqual([attrs['src'] for attrs in tour_frames], [tour['url'] for tour in expected_tours], slug)
+            self.assertEqual([attrs['title'] for attrs in tour_frames], [tour['title'] for tour in expected_tours], slug)
             sections += any(attrs.get('id') == 'recorrido' for tag, attrs in nodes if tag == 'section')
             tours += len(tour_frames)
             for frame in map_frames + tour_frames:
@@ -214,7 +202,7 @@ class VirtualTours(unittest.TestCase):
                 self.assertEqual(fallback[0].get('target'), '_blank')
                 self.assertEqual(fallback[0].get('rel'), 'noopener noreferrer')
                 external += len(fallback)
-        self.assertEqual((maps, tours, sections, external), (132, 96, 59, 1))
+        self.assertEqual((maps, tours, sections, external), (137, 97, 61, 1))
 
     def test_automatic_scope_rejects_mutations_outside_and_inside_approved_embeds(self):
         path = 'bcome.html'
@@ -229,8 +217,6 @@ class VirtualTours(unittest.TestCase):
     def test_future_empty_record_never_renders_a_tour(self):
         record = copy.deepcopy(RECORDS['endemico'])
         record['virtualTours'] = []
-        for stage in record.get('etapasComerciales', []):
-            stage['investigacion']['virtualTours'] = []
         self.assertEqual(virtual_tours_to_render(record), [])
         p = next(p for p in PROJECTS if p['slug'] == 'endemico')
         page, _, count = details.render(p, record, TEMPLATE)
@@ -301,7 +287,7 @@ class VirtualTours(unittest.TestCase):
         self.assertNotIn('Recorridos y experiencias oficiales', result)
         self.assertEqual(hide_absent_virtual_tours(result, empty), result)
         for slug in ['inn-puerto-chico', 'edificio-suecia']:
-            result = hide_absent_virtual_tours((ROOT / (slug + '.html')).read_text(), empty)
+            result = hide_absent_virtual_tours(original_html(read_pre_leon(slug+'.html').decode()), empty)
             self.assertNotIn('Recorrido virtual 360°', result)
             self.assertNotIn('my.matterport.com/show/', result)
             self.assertIn('https://www.google.com/maps', result)

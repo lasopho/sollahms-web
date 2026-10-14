@@ -170,10 +170,12 @@ function packagingFixture() {
   const root = mkdtempSync(join(tmpdir(), 'sollahms-ecasa-synthetic-build-'));
   const copy = path => {
     const destination = join(root, path); mkdirSync(dirname(destination), { recursive: true });
-    copyFileSync(resolve(source, path), destination);
+    if(['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json','sitemap.xml'].includes(path)||path.endsWith('.html'))
+      writeFileSync(destination,spawnSync('git',['show','a99d1c8d077698f78d9824ca96d47cb19e515dcd:'+path],{cwd:source,maxBuffer:8*1024*1024}).stdout);
+    else copyFileSync(resolve(source, path), destination);
   };
-  for (const path of ['scripts/package-vercel.mjs', 'scripts/public-fiche-copy.mjs', 'scripts/ecasa-image-quality.mjs',
-    'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/public-caption-policy.json',
+  for (const path of ['scripts/ecasa-main-integration.mjs','scripts/sento-publication.mjs','scripts/package-vercel.mjs', 'scripts/public-fiche-copy.mjs', 'scripts/ecasa-image-quality.mjs',
+    'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/sento-baseline.json', 'data/sento-main-baseline.json', 'data/public-caption-policy.json',
     'data/ecasa-image-quality.json', 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
     'data/proyectos.json', 'data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
     'assets/css/aj-brochure-preview.css', 'sitemap.xml', 'robots.txt']) copy(path);

@@ -6,6 +6,7 @@ historical test pass. Only the fixed iframe/duplicate-tour changes below can
 restore historical bytes.
 """
 import functools
+from leon_main_scope import read_pre_leon
 import hashlib
 import html
 import json
@@ -13,6 +14,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from sento_scope import original_data, historical_file
 from urllib.parse import parse_qs, urlencode, urlparse
 from map_cleanup_scope import transform_map_cleanup
 from ecasa_scope import restore_ecasa_page, restore_successor_data
@@ -205,7 +207,7 @@ def restore_automatic_asset(path, current):
 
 if __name__ == '__main__':
     path = sys.argv[1]
-    current = sys.stdin.buffer.read()
+    current = historical_file(sys.argv[1], sys.stdin.buffer.read())
     if path == '--transform':
         sys.stdout.buffer.write(transform_automatic_markup(current.decode(), sys.argv[2]).encode())
         sys.exit(0)

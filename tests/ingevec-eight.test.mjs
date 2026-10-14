@@ -25,8 +25,8 @@ const nums = [
  [[16,23.20,2.87,26.07,0,1],[17,30.66,3.13,33.79,1,1],[18,49.14,3.41,52.55,2,1],[19,50.35,3.47,53.82,2,2]],
  [[9,33.12,2.99,36.11,1,1],[10,47.42,5.60,53.02,2,2],[11,49.04,5.97,55.01,2,2],[9,33.21,3.00,36.21,1,1],[10,47.53,5.56,53.09,2,2],[11,49.04,5.97,55.01,2,2]],
 ];
-test('eight originals enrich exactly seven of the 136 fichas while non-Ecasa financial data remain exact',()=>{
- const catalogue=JSON.parse(read('data/proyectos.json'));assert.equal(catalogue.length,136);
+test('eight originals enrich exactly seven of the 133 fichas while non-Ecasa financial data remain exact',()=>{
+ const catalogue=JSON.parse(read('data/proyectos.json'));assert.equal(catalogue.length,133);
  for(const path of ['data/proyectos.json','data/fichas-proyectos.json','data/hipotecario.json','data/brochures-aj-urbana.json','proyectos.html','comparador-hipotecario.html','contacto.html','agenda-asesoria.html','privacidad.html','sitemap.xml','vercel.json']) assertCommercialBytes(path,read(path),old(path));
  for(const p of catalogue) if(!slugs.includes(p.slug) && !INGEVEC_NEW_SLUGS.has(p.slug) && !ECASA_NEW_SLUGS.has(p.slug)) assertCommercialBytes(p.slug+'.html',read(p.slug+'.html'),old(p.slug+'.html'));
  const previous=JSON.parse(old('data/brochures-ingevec.json'));

@@ -3,6 +3,8 @@ import { copyEcasaImageQualityInputs, assertEcasaQualityCoverFields as assertEca
   assertEcasaQualityPublicCatalogue, reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
 import test from 'node:test';
 import { naturalCaption, normalizeFicheCopy } from '../scripts/public-fiche-copy.mjs';
+import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
+import { isReviewedLeonAsset, readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync, rmSync, copyFileSync, cpSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -15,7 +17,7 @@ import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import { BROCHURE_PUBLIC_PAGES } from '../scripts/brochure-publication.mjs';
 import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, assertCommercialBytes, commercialPage, INGEVEC_FINAL_SLUGS,
-  INGEVEC_NEW_SLUGS, readCommercialFile, AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet } from './commercial-html.mjs';
+  INGEVEC_NEW_SLUGS, readCommercialFile, AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet, NORTE_VERDE_HERO_ASSETS } from './commercial-html.mjs';
 
 // This review extends five static pages and their protected Preview card covers.
 // Historical brochure material
@@ -153,16 +155,16 @@ const PRINTED_MODELS = {
   ],
 };
 
-test('AJ review preserves its five projects within the 136-project Ecasa successor and 127 prior fiche controls', () => {
+test('AJ review preserves its five projects within the 133-project Ecasa successor and 124 bound prior fiche controls', () => {
   assert.equal(git('rev-parse', BASELINE).toString().trim(), BASELINE);
-  assert.equal(catalogue.length, 136);
-  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 136);
+  assert.equal(catalogue.length, 133);
+  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 133);
   unchanged('data/proyectos.json');
   unchanged('data/fichas-proyectos.json');
   unchanged('data/registro-fichas.json');
   unchanged('data/fuentes-imagenes.json');
-  assert.equal(research.length, 136);
-  assert.equal(ledger.length, 136);
+  assert.equal(research.length, 133);
+  assert.equal(ledger.length, 133);
   let protectedPages = 0;
   for (const project of catalogue) {
     if (FOCUS.has(project.slug) || INGEVEC_REVIEW.has(project.slug) || ECASA_NEW_SLUGS.has(project.slug)) continue;
@@ -173,7 +175,7 @@ test('AJ review preserves its five projects within the 136-project Ecasa success
     } else unchanged(project.slug + '.html');
     protectedPages++;
   }
-  assert.equal(protectedPages, 127);
+  assert.equal(protectedPages, 124);
 });
 
 test('531 historical assets and handlers retain strict baselines outside the scoped official UF and privacy changes', () => {
@@ -188,8 +190,8 @@ test('531 historical assets and handlers retain strict baselines outside the sco
   for (const { file } of baselineTree()) {
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
-  assert.deepEqual(withoutReviewedOwnerAssets(listFiles('assets')).filter((file) => !file.startsWith(ASSETS.slice(1)) &&
-    !file.startsWith(INGEVEC_ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
+  assert.deepEqual(withoutReviewedOwnerAssets(historicalSentoAssetFiles(listFiles('assets').filter(file=>!isReviewedLeonAsset(file)))).filter((file) => !file.startsWith(ASSETS.slice(1)) &&
+    !file.startsWith(INGEVEC_ASSETS.slice(1)) && !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });
 
@@ -347,7 +349,7 @@ test('brochure models do not create catalogue prices or alter A–E financial cl
     savings: 100_000_000, savingsCurrency: 'CLP', monthlySavingsClp: 1_000_000, horizonMonths: 24,
     downPaymentPercent: 20, years: 20, annualRatePercent: 4.5, rateConvention: 'effective', burdenPercent: 25 };
   const prior = JSON.parse(old('data/proyectos.json'));
-  assert.equal(catalogue.filter((project) => verifiedProjectPrice(project, DATE)).length, 106);
+  assert.equal(catalogue.filter((project) => verifiedProjectPrice(project, DATE)).length, 103);
   for (const slug of SLUGS) {
     const project = projectFor(slug);
     assert.equal(project.precioDesdeUF, null, slug);
@@ -449,7 +451,7 @@ test('a synthetic pending contract publishes AJ only in Preview and removes revi
     const previewCatalogue = JSON.parse(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')));
     const coverPages = { 'downtown-san-martin': 5, 'edificio-teatinos-750': 5,
       'edificio-vista-amunategui': 1, 'monjitas-690': 13, 'vista-morande': 1 };
-    assert.equal(previewCatalogue.length, 136);
+    assert.equal(previewCatalogue.length, 133);
     assert.deepEqual(previewCatalogue.map(project => project.slug), catalogue.map(project => project.slug));
     let changedCovers = 0;
     for (let index = 0; index < catalogue.length; index++) {

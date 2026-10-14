@@ -4,11 +4,13 @@ Historical audits may restore their approved source only after checking the real
 file against the exact removal. No production renderer is imported here.
 """
 import functools
+from leon_main_scope import read_pre_leon
 import json
 import re
 import subprocess
 import sys
 from pathlib import Path
+from sento_scope import original_data, historical_file
 from automatic_embed_scope import restore_automatic_file
 from ecasa_scope import restore_successor_data
 
@@ -110,6 +112,15 @@ def historical_commercial_renderer():
 
 
 if __name__ == '__main__':
-    content = sys.stdin.buffer.read()
-    sys.stdout.buffer.write(exact_removed_page(content, sys.argv[2]) if sys.argv[1] == '--remove'
-                            else restore_reviewed_file(sys.argv[1], content))
+    if sys.argv[1] == '--batch':
+        import base64
+        requests = json.load(sys.stdin)
+        results = []
+        for path, payload in requests:
+            content = historical_file(path, base64.b64decode(payload, validate=True))
+            results.append(base64.b64encode(restore_reviewed_file(path, content)).decode('ascii'))
+        json.dump(results, sys.stdout)
+    else:
+        content = historical_file(sys.argv[1], sys.stdin.buffer.read())
+        sys.stdout.buffer.write(exact_removed_page(content, sys.argv[2]) if sys.argv[1] == '--remove'
+                                else restore_reviewed_file(sys.argv[1], content))
