@@ -23,10 +23,10 @@ const counters = { requests: 0, availability: 0, booking: 0, contact: 0, uf: 0, 
 const journal = [];
 let ufRecoveryRemaining = 0;
 // QA-only dated fixtures transcribed from SII's published October table on
-// 2026-10-12. Each day has its own official value; unknown days fail closed.
+// 2026-10-12 and rechecked on 2026-10-14. Unknown days fail closed.
 // https://www.sii.cl/valores_y_fechas/uf/uf2026.htm
-const UF_FIXTURES = new Map([['2026-10-12', 41146.83], ['2026-10-13', 41152.13]]);
-const UF_FIXTURE_VERIFIED_ON = '2026-10-12';
+const UF_FIXTURES = new Map([['2026-10-12', 41146.83], ['2026-10-13', 41152.13], ['2026-10-14', 41157.43]]);
+const UF_FIXTURE_VERIFIED_ON = '2026-10-14';
 const ufService = {
   async resolve() {
     const date = chileDate(new Date());

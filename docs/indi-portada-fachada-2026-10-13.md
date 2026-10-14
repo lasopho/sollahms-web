@@ -20,8 +20,8 @@ El materializador exige el PDF acreditado, objeto de imagen, hashes, dimensiones
 
 ## Catálogo y ficha
 
-El catálogo y el hero de Indi usan el mismo recurso seleccionado exclusivamente en el build Preview. La ficha conserva la fachada completa con `contain` y coloca el título sobre el verde de Sollahms. La tarjeta recibe un encuadre específico; las demás fichas mantienen sus estilos. La fotografía de la casona permanece en la galería oficial.
+El catálogo y el hero de Indi usan el mismo recurso seleccionado exclusivamente en el build Preview. La corrección del 14/10 integra fotografía, degradado y contenido en un mismo encabezado. Reutiliza los valores reales del componente destacado de Suecia e INN Puerto Chico: título Manrope 800 de 72/48 px, márgenes de 16 px y degradado verde de opacidad 80 % → 20 % → transparente. El título, ubicación y estados quedan superpuestos. La altura y el foco se ajustan a la proporción nativa de esta fachada; las demás fichas mantienen sus estilos. La fotografía de la casona permanece en la galería oficial.
 
 Las 137 filas comerciales, los 15 Ecasa, precios, dirección, mapas, recorrido, contacto, agenda y comparador no cambian. El fallback público conserva la portada anterior. El gate real de Vercel continúa rechazando Production para este paquete privado. No se realiza merge ni promoción.
 
-La revisión final registra las cajas efectivas, recorte, densidad de pantalla, decodificación y ampliación en escritorio, tablet y móvil a DPR 1 y 2. La densidad se mide sobre la imagen contenida, no sobre sus bandas laterales. Los recibos y capturas quedan en el paquete privado de entrega.
+La revisión final registra las cajas efectivas, recorte, densidad de pantalla, decodificación y ampliación en escritorio, tablet y móvil a DPR 1 y 2. La densidad se mide sobre el dibujo real de `cover`. El original resuelve las cajas CSS ensayadas; el escritorio a DPR 2 supera su densidad nativa y se registra como límite físico, sin ampliar el archivo ni inventar detalle. La comparación verifica los estilos computados de ambos referentes en cada pantalla. Los recibos y capturas quedan en el paquete privado de entrega.
