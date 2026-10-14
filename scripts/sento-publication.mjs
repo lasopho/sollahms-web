@@ -128,7 +128,25 @@ export function projectSentoFile(file, value) {
   }
   return value;
 }
+function restoreLeonRowsForSento(rows, file='data/proyectos.json') {
+  const baselineUrl=new URL('../data/leon-main-baseline.json',import.meta.url);
+  const reviewUrl=new URL('../data/brochures-leon.json',import.meta.url);
+  if(!existsSync(baselineUrl)||!existsSync(reviewUrl))return rows;
+  const baseline=JSON.parse(readFileSync(baselineUrl)),review=JSON.parse(readFileSync(reviewUrl));
+  const originals=baseline.originalRows[file];if(!originals)return rows;
+  const slugs=new Set([...baseline.authorizedSlugs,...baseline.retiredSlugs]);
+  const actual=rows.filter(p=>slugs.has(p.slug));
+  if(sentoFingerprint(actual)===sentoFingerprint(originals))return rows;
+  const approved=review[file==='data/proyectos.json'?'catalogue':file==='data/fichas-proyectos.json'?'research':'ledger'];
+  if(actual.length!==5||rows.some(p=>baseline.retiredSlugs.includes(p.slug))||actual.some(p=>sentoFingerprint(p)!==sentoFingerprint(approved.find(q=>q.slug===p.slug))))throw new Error('Sento: another main developer has an unapproved León successor');
+  const old=new Map(originals.map(p=>[p.slug,p]));const result=rows.map(p=>slugs.has(p.slug)?structuredClone(old.get(p.slug)):p);
+  const order=new Map(baseline.catalogueOrder.map((slug,index)=>[slug,index]));
+  for(const slug of baseline.retiredSlugs){const index=result.findIndex(p=>order.get(p.slug)>order.get(slug));result.splice(index<0?result.length:index,0,structuredClone(old.get(slug)));}
+  return result;
+}
+
 export function assertSentoCatalogue(rows, review = optionalReview()) {
+  rows=restoreLeonRowsForSento(rows);
   assert.ok(review && review.schemaVersion === 1 && review.protectedPreviewOnly === true, 'Sento: reviewed Preview source is required');
   assert.equal(rows.length, sentoMainBaseline.catalogueCount, 'Sento: main catalogue count changed');
   assert.equal(new Set(rows.map(row => row.slug)).size, rows.length, 'Sento: duplicate project');

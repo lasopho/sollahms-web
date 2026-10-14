@@ -5,6 +5,7 @@ adjacent registered map anchor, its exact generic caution and obsolete noscript
 paragraph may disappear. Address and identity-specific cautions are retained.
 """
 import functools
+from leon_main_scope import read_pre_leon
 import html
 import json
 import re
@@ -38,7 +39,7 @@ def baseline_bytes(path):
 @functools.lru_cache(maxsize=1)
 def catalogue_slugs():
     source = baseline_bytes('data/proyectos.json')
-    assert historical_file('data/proyectos.json', (ROOT / 'data/proyectos.json').read_bytes()) == source, 'Map cleanup cannot edit catalogue evidence'
+    assert historical_file('data/proyectos.json', read_pre_leon('data/proyectos.json')) == source, 'Map cleanup cannot edit catalogue evidence'
     slugs = {row['slug'] for row in json.loads(source)}
     assert len(slugs) == 144
     return slugs

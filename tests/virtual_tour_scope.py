@@ -4,6 +4,7 @@ Historical audits may restore their approved source only after checking the real
 file against the exact removal. No production renderer is imported here.
 """
 import functools
+from leon_main_scope import read_pre_leon
 import json
 import re
 import subprocess
@@ -38,7 +39,7 @@ def approved_bytes(path):
 @functools.lru_cache(maxsize=1)
 def removal_slugs():
     original = approved_bytes('data/fichas-proyectos.json')
-    assert historical_file('data/fichas-proyectos.json', (ROOT / 'data/fichas-proyectos.json').read_bytes()) == original, 'Tour research must remain byte exact'
+    assert historical_file('data/fichas-proyectos.json', read_pre_leon('data/fichas-proyectos.json')) == original, 'Tour research must remain byte exact'
     records = json.loads(original)
     absent = {row['slug'] for row in records if not row.get('virtualTours')}
     assert len(records) == 144 and len(absent) == 82

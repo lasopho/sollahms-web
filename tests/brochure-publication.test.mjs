@@ -1,4 +1,6 @@
 import test from 'node:test';
+import { restoreLeonRows } from '../scripts/brochure-publication.mjs';
+import { restoreSentoRows } from './sento-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { brochurePublication, brochureSourceDocuments, assertBrochureCatalogue,
@@ -113,7 +115,7 @@ test('missing primary source and duplicate stage documents fail even during a pr
 });
 
 test('the final catalogue pins sixteen authorized identities and all 128 unaffected projects without Git at build time', () => {
-  const catalogue = JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url)));
+  const catalogue = restoreLeonRows(restoreSentoRows(JSON.parse(readFileSync(new URL('../data/proyectos.json', import.meta.url)))));
   assert.doesNotThrow(() => assertBrochureCatalogue(catalogue));
   assert.equal(BROCHURE_INGEVEC_SLUGS.length, 16);
   assert.equal(BROCHURE_REMOVED_SLUGS.length, 6);

@@ -1,5 +1,6 @@
 import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
+import { isReviewedLeonAsset, readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -375,7 +376,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
     newPaths.add(entry.localPath.slice(1));
   }
   assert.equal(newPaths.size, 10);
-  const currentAssets = historicalSentoAssetFiles(listFiles('assets')).filter((file) =>
+  const currentAssets = historicalSentoAssetFiles(listFiles('assets').filter(file=>!isReviewedLeonAsset(file))).filter((file) =>
     !NORTE_VERDE_HERO_ASSETS.includes(file) &&
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
     !file.startsWith('assets/propiedades/ingevec-preview/') && file !== 'assets/css/aj-brochure-preview.css');
@@ -391,8 +392,9 @@ test('registry and sitemap match the authorized portfolio; financial data/motors
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) &&
         !AJ_REVIEW.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
   }
-  assert.equal(Object.keys(trustedContexts).length, 144);
-  for (const project of catalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
+  const currentCatalogue=JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
+  assert.equal(Object.keys(actualSentoContexts).length, 141);
+  for (const project of currentCatalogue) assert.deepEqual(actualSentoContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
   const locations = current('sitemap.xml').toString().match(/<loc>[^<]+<\/loc>/g);
   assert.equal(locations.length, 150);
   assert.equal(new Set(locations).size, 150);

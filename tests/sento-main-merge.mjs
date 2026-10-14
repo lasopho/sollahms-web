@@ -1,5 +1,6 @@
 // Current main integration checks; historical fixtures retain their exact old pins.
 import test from 'node:test';
+import { readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -11,7 +12,7 @@ import { SENTO_SLUGS, SENTO_DOCUMENTS, sentoMainBaseline, sentoFingerprint,
   assertSentoCatalogue, sentoAssets, verifySentoAssets, historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import { projects as contexts } from '../lib/project-context.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
-const read = path => readFileSync(resolve(root, path));
+const read = path => readPreLeonFile(path);
 const json = path => JSON.parse(read(path));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const review = json('data/sento-review.json');
@@ -38,7 +39,7 @@ test('main retains 144 identities and all 137 foreign records, HTML, contexts an
     assert.deepEqual(rows.filter(row => SENTO_SLUGS.includes(row.slug)), review[key]);
   }
   for (const row of sentoMainBaseline.otherHtml) assert.equal(hash(read(row.path)), row.sha256, row.path);
-  assert.deepEqual(Object.fromEntries(Object.entries(contexts).filter(([slug]) => !SENTO_SLUGS.includes(slug))), sentoMainBaseline.otherContexts);
+  assert.deepEqual(Object.fromEntries(Object.entries(JSON.parse(read('lib/project-context.mjs').toString().match(/Object\.freeze\(([\s\S]*?)\);/)[1])).filter(([slug]) => !SENTO_SLUGS.includes(slug))), sentoMainBaseline.otherContexts);
   for (const line of git('ls-tree', '-r', sentoMainBaseline.sourceCommit, 'assets').toString().trim().split('\n')) {
     const match = line.match(/^\d+ blob ([a-f0-9]+)\t(.+)$/); assert.ok(match);
     const bytes = read(match[2]);
@@ -105,7 +106,7 @@ test('a Production build rejects the merged Sento source before creating public 
   const fixture = mkdtempSync(join(tmpdir(), 'sento-production-gate-'));
   try {
     for (const path of ['scripts/package-vercel.mjs','scripts/brochure-publication.mjs','scripts/sento-publication.mjs','data/sento-baseline.json','data/sento-main-baseline.json','data/sento-review.json']) {
-      const target = join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(root,path),target);
+      const target = join(fixture,path);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,readPreLeonFile(path));
     }
     const result = spawnSync(process.execPath,[join(fixture,'scripts/package-vercel.mjs')],{cwd:fixture,env:{...process.env,VERCEL_ENV:'production'},encoding:'utf8'});
     assert.notEqual(result.status,0);assert.match(result.stderr,/The Sento update is authorized for Preview only/);
@@ -119,7 +120,7 @@ test('two real Sento regenerations preserve the validated presentation and all 1
     const paths = ['scripts/apply-sento.py','scripts/sento_fiche.py','scripts/project_embed_policy.py','scripts/virtual_tour_policy.py','templates/project-detail.html','templates/sento-plaza-las-condes.html','lib/project-context.mjs',
       ...readdirSync(resolve(root,'data')).filter(name => name.startsWith('sento') || name === 'brochures-sento.json').map(name => 'data/'+name),
       'data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json',...sentoMainBaseline.otherHtml.map(row => row.path),...SENTO_SLUGS.map(slug => slug+'.html')];
-    for (const path of paths) {const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(root,path),target);}
+    for (const path of paths) {const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,readPreLeonFile(path));}
     const before = Object.fromEntries(sentoMainBaseline.otherHtml.map(row=>[row.path,hash(read(row.path))]));
     const python=process.env.SOLLAHMS_CI_PYTHON || 'python3';
     for(let i=0;i<2;i++) {
@@ -138,7 +139,7 @@ test('generic and featured generators use the validated Sento presentation witho
     const paths = [...readdirSync(resolve(root,'scripts')).filter(name=>name.endsWith('.py')).map(name=>'scripts/'+name),
       ...readdirSync(resolve(root,'data')).filter(name=>name.endsWith('.json')).map(name=>'data/'+name),
       'templates/project-detail.html','templates/sento-plaza-las-condes.html',...SENTO_SLUGS.map(slug=>slug+'.html'),'distrito-centro.html','inn-puerto-chico.html','edificio-suecia.html'];
-    for (const path of paths) {const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(root,path),target);}
+    for (const path of paths) {const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});writeFileSync(target,readPreLeonFile(path));}
     const python=process.env.SOLLAHMS_CI_PYTHON || 'python3';
     const script = "import importlib.util,json\nfrom pathlib import Path\np=Path('scripts/build-project-details.py')\nspec=importlib.util.spec_from_file_location('details',p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)\nrows=json.loads(Path('data/proyectos.json').read_text());research={r['slug']:r for r in json.loads(Path('data/fichas-proyectos.json').read_text())}\nfor r in rows:\n if r['inmobiliaria']=='Sento':\n  rendered,_,_=m.render(r,research[r['slug']],None);assert rendered==Path(r['slug']+'.html').read_text(),r['slug']\n";
     const generic=spawnSync(python,['-c',script],{cwd:fixture,env:{...process.env,PYTHONPATH:join(fixture,'scripts')},encoding:'utf8'});
