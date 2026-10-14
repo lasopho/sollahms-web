@@ -111,11 +111,13 @@ export function transformOwnerCover(html,slug,validated,{preview=false}={}) {
   const marker='ecasa-owner-cover-framing';
   requireValue(!html.includes('id="'+marker+'"'),'duplicate owner framing');
   let css='';
-  if(slug==='proyectos')css=projects.map(project=>{
-    const {width,height}=project.selected;
-    return '.catalog-card[data-project="'+project.projectSlug+'"] .catalog-cover{aspect-ratio:'+width+'/'+height+'}'+
-      '.catalog-card[data-project="'+project.projectSlug+'"] .catalog-cover-image{object-fit:contain;object-position:center}';
-  }).join('');
+  if(slug==='proyectos') {
+    // Catalogue cards share the existing 16:9 frame; individual fiches retain their native framing.
+    const positions={'edificio-bezanilla':'50% 40%','espacio-victoria':'50% 20%',
+      'urban-la-florida':'50% 0%','aires-la-florida-2':'50% 0%','conecta-huechuraba':'50% 100%'};
+    css=projects.map(project=>'.catalog-card[data-project="'+project.projectSlug+'"] .catalog-cover-image'+
+      '{object-fit:cover;object-position:'+(positions[project.projectSlug]??'50% 40%')+'}').join('');
+  }
   else {
     const {selected}=record,ratio=selected.width+'/'+selected.height;
     const former=record.supersededCoverOnly?.localPath??null;

@@ -64,9 +64,10 @@ async function checkOwnerCard(card, project, viewport) {
     coverHeight: image.closest('.catalog-cover').getBoundingClientRect().height,
   }));
   check(geometry.naturalWidth === selected.width && geometry.naturalHeight === selected.height &&
-    geometry.objectFit === 'contain' && Math.abs(geometry.coverWidth / geometry.coverHeight - selected.width / selected.height) < 0.015 &&
+    geometry.objectFit === 'cover' && Math.abs(geometry.coverWidth / geometry.coverHeight - 16 / 9) < 0.015 &&
+    Math.abs(geometry.width - geometry.coverWidth) < 1 && Math.abs(geometry.height - geometry.coverHeight) < 1 &&
     geometry.width <= selected.width + 1 && geometry.height <= selected.height + 1,
-  viewport.name + ' complete native owner catalogue photograph ' + project.slug);
+  viewport.name + ' uniform owner catalogue frame with original photograph ' + project.slug);
 }
 
 try {
