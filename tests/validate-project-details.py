@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Catalogue-wide navigation, internal provenance and safe public fallback checks."""
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -66,13 +67,40 @@ research = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
 ledger = json.loads((ROOT / 'data/registro-fichas.json').read_text())
 records = {r['slug']: r for r in research}
 slugs = {p['slug'] for p in projects}
-assert len(slugs) == len(projects) == 136, 'Catalogue has lost or duplicated projects'
+assert len(slugs) == len(projects) == 137, 'Catalogue has lost or duplicated projects'
 assert len([p for p in projects if p['inmobiliaria'] == 'Ecasa']) == 15
-assert len([p for p in projects if p['inmobiliaria'] != 'Ecasa']) == 121
+assert len([p for p in projects if p['inmobiliaria'] != 'Ecasa']) == 122
 assert len([p for p in projects if p['inmobiliaria'] == 'Ingevec']) == 16
 assert slugs == set(records) == {x['slug'] for x in ledger}, 'Incomplete inventory or research'
 assert len(research) == len(ledger) == len(projects), 'Duplicated audit records'
 assert all(r['fichaDesarrollada'] for r in ledger), 'A detail page is missing'
+baseline = json.loads((ROOT / 'tests/fixtures/nordico-catalogue-baseline.json').read_text())
+def canonical_digest(value):
+    return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+previous_projects = [project for project in projects if project['slug'] != 'edificio-nordico']
+assert len(previous_projects) == baseline['count'] == 136
+assert canonical_digest(previous_projects) == baseline['projectsSha256'], 'Nórdico integration changed an existing commercial catalogue row'
+assert canonical_digest([project for project in previous_projects if project['inmobiliaria'] == 'Ecasa']) == baseline['ecasaSha256'], 'The 15 approved Ecasa projects changed'
+assert sum(project['slug'] == 'own' for project in projects) == 1, 'Own must remain in the catalogue'
+assert sum(project['slug'] == 'parque-germania' for project in projects) == 1, 'Parque Germania must remain one project'
+nordico = next(project for project in projects if project['slug'] == 'edificio-nordico')
+nordico_record = records[nordico['slug']]
+assert nordico['inmobiliaria'] == 'Leben' and nordico['comuna'] == 'Puerto Varas'
+assert nordico['precioDesdeUF'] == 4746 and nordico['superficieDesdeM2'] == 42
+assert nordico['estado'] == 'Venta en blanco' and nordico['entrega'] is None
+assert nordico_record['specs']['utilM2'] is None and nordico_record['specs']['totalM2'] is None, 'An unclassified range must not invent useful or total areas'
+assert nordico_record['specs']['banos'] is None, 'The 1D1B unit 101 does not establish bathrooms for all layouts'
+assert nordico_record['verifiedFeatures']['terminaciones'] == []
+assert nordico_record.get('planPendingNote') and not nordico_record.get('sourceDocument'), 'Nórdico has no supplied brochure or accredited model plans'
+assert not nordico_record.get('virtualTours'), 'The unverified location viewer must not become an accredited interior tour'
+image_sources = json.loads((ROOT / 'data/fuentes-imagenes.json').read_text())
+assert len(nordico_record['images']) == 3
+for image in nordico_record['images']:
+    provenance = image_sources[image['url']]
+    assert image['sourceUrl'] == provenance['sourceUrl'] == 'https://nordico.ileben.cl/'
+    assert image['width'] >= 1200 and image['height'] >= 588
+    assert provenance.get('qualityStatus') == 'approved'
+    assert hashlib.sha256((SITE_ROOT / image['localPath'].lstrip('/')).read_bytes()).hexdigest() == provenance['localSha256'], 'Nórdico official derivative does not match its reviewed hash'
 checked_links = 0
 maps = 0
 new_maps = 0
@@ -210,6 +238,10 @@ for project in projects:
             assert 'Consultar precio' in text, f'{slug}: unconfirmed commercial price must invite consultation'
         for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
             assert json.loads(ld)['@type'] == 'WebPage'
+    if slug == 'edificio-nordico':
+        assert 'planos-pendientes' in page.ids and 'Planos y superficies por modelo' in text
+        assert 'unidad 101' in text and 'No incluye estacionamiento ni bodega' in text, 'Nórdico price must preserve its unit and exclusions'
+        assert 'https://www.lanube360.com/ileben/edificio-nordico/' not in text
     assert not any(x in page.ids for x in ['fuentes', 'fuentes-verificadas']), f'{slug}: audit section remains visitor-facing'
     assert not any(x.get('href') in ['#fuentes', '#fuentes-verificadas'] for x in page.links), f'{slug}: stale audit navigation anchor'
 sitemap = ET.fromstring((SITE_ROOT / 'sitemap.xml').read_text())

@@ -154,17 +154,17 @@ const PRINTED_MODELS = {
 
 test('AJ review preserves its five projects within the 136-project Ecasa successor and 127 prior fiche controls', () => {
   assert.equal(git('rev-parse', BASELINE).toString().trim(), BASELINE);
-  assert.equal(catalogue.length, 136);
-  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 136);
+  assert.equal(catalogue.length, 137);
+  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 137);
   unchanged('data/proyectos.json');
   unchanged('data/fichas-proyectos.json');
   unchanged('data/registro-fichas.json');
   unchanged('data/fuentes-imagenes.json');
-  assert.equal(research.length, 136);
-  assert.equal(ledger.length, 136);
+  assert.equal(research.length, 137);
+  assert.equal(ledger.length, 137);
   let protectedPages = 0;
   for (const project of catalogue) {
-    if (FOCUS.has(project.slug) || INGEVEC_REVIEW.has(project.slug) || ECASA_NEW_SLUGS.has(project.slug)) continue;
+    if (project.slug === 'edificio-nordico' || FOCUS.has(project.slug) || INGEVEC_REVIEW.has(project.slug) || ECASA_NEW_SLUGS.has(project.slug)) continue;
     if (INGEVEC_NEW_SLUGS.has(project.slug)) {
       // The strict portfolio data audit above verifies the two exact source
       // identities and absent prices; new pages cannot have an old Git blob.
@@ -188,7 +188,7 @@ test('531 historical assets and handlers retain strict baselines outside the sco
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
   assert.deepEqual(listFiles('assets').filter((file) => !file.startsWith(ASSETS.slice(1)) &&
-    !file.startsWith(INGEVEC_ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
+    !file.startsWith(INGEVEC_ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });
 
@@ -390,6 +390,7 @@ test('a synthetic pending contract publishes AJ only in Preview and removes revi
     }
     copyFileSync(resolve(ROOT, 'scripts/package-vercel.mjs'), join(fixtureRoot, 'scripts/package-vercel.mjs'));
     copyFileSync(resolve(ROOT, 'scripts/brochure-publication.mjs'), join(fixtureRoot, 'scripts/brochure-publication.mjs'));
+    copyFileSync(resolve(ROOT, 'scripts/leben-publication.mjs'), join(fixtureRoot, 'scripts/leben-publication.mjs'));
     copyFileSync(resolve(ROOT, 'scripts/ecasa-publication.mjs'), join(fixtureRoot, 'scripts/ecasa-publication.mjs'));
     for (const path of ['scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json', 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css', 'vercel.json']) copyFileSync(resolve(ROOT, path), join(fixtureRoot, path));
     copyFileSync(resolve(ROOT, 'data/brochures-ecasa.json'), join(fixtureRoot, 'data/brochures-ecasa.json'));
@@ -429,7 +430,7 @@ test('a synthetic pending contract publishes AJ only in Preview and removes revi
     // complete current public route inventory in this isolated fixture;
     // keeping only brochure pages would fail before any AJ check can run.
     const fixturePages = new Set([...BROCHURE_PUBLIC_PAGES, ...catalogue.map(project => project.slug + '.html')]);
-    assert.equal(fixturePages.size, 143);
+    assert.equal(fixturePages.size, 144);
     for (const file of fixturePages) writeFileSync(join(fixtureRoot, file), ECASA_SLUGS.has(file.replace(/\.html$/, '')) ? readFileSync(resolve(ROOT,file)) : current(file));
     const script = join(fixtureRoot, 'scripts/package-vercel.mjs');
     // Exercise the fallback policy independently of the verified real batch.
@@ -448,7 +449,7 @@ test('a synthetic pending contract publishes AJ only in Preview and removes revi
     const previewCatalogue = JSON.parse(readFileSync(join(fixtureRoot, 'dist/data/proyectos.json')));
     const coverPages = { 'downtown-san-martin': 5, 'edificio-teatinos-750': 5,
       'edificio-vista-amunategui': 1, 'monjitas-690': 13, 'vista-morande': 1 };
-    assert.equal(previewCatalogue.length, 136);
+    assert.equal(previewCatalogue.length, 137);
     assert.deepEqual(previewCatalogue.map(project => project.slug), catalogue.map(project => project.slug));
     let changedCovers = 0;
     for (let index = 0; index < catalogue.length; index++) {

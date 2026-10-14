@@ -1,3 +1,4 @@
+import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync, symlinkSync } from 'node:fs';
@@ -182,16 +183,16 @@ test('catalogue override changes only two display covers and preserves every com
     const a=structuredClone(after[i]),b=structuredClone(base[i]);for(const key of ['imagenPrincipal','imagenAlt','imagenEtapa']){delete a[key];delete b[key];}
     assert.deepEqual(a,b);assert.deepEqual(after[i].etapasComerciales,base[i].etapasComerciales);
   }
-  assert.equal(changed,2);assert.equal(after.length,136);assert.equal(after.filter(record=>record.inmobiliaria!=='Ecasa').length,121);
-  assert.equal(after.filter(record=>Number.isFinite(record.precioDesdeUF)&&record.precioDesdeUF>0).length,106);
+  assert.equal(changed,2);assert.equal(after.length,137);assert.equal(after.filter(record=>record.inmobiliaria!=='Ecasa').length,122);
+  assert.equal(after.filter(record=>Number.isFinite(record.precioDesdeUF)&&record.precioDesdeUF>0).length,107);
   assert.deepEqual(after.flatMap(record=>record.etapasComerciales??[]),base.flatMap(record=>record.etapasComerciales??[]));
 }));
 
 test('original catalogue, snapshots, quality policy, source HTML and 74 plan bindings remain byte exact',()=>{
   for(const path of ['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json','data/fuentes-imagenes.json',
     'data/ecasa-image-quality.json','data/brochures-ecasa.json','data/brochures-aj-urbana.json','data/brochures-ingevec.json','sitemap.xml','vercel.json',
-    ...catalogue.map(project=>project.slug+'.html')])
-    assert.deepEqual(read(path),execFileSync('git',['show',BASELINE+':'+path],{cwd:ROOT,maxBuffer:8*1024*1024}),path);
+    ...catalogue.filter(project=>project.slug !== 'edificio-nordico').map(project=>project.slug+'.html')])
+    assertPreservedSource(path,read(path),execFileSync('git',['show',BASELINE+':'+path],{cwd:ROOT,maxBuffer:8*1024*1024}));
   assert.equal(json('data/fichas-proyectos.json').flatMap(project=>project.etapasComerciales??[]).length,22);
   assert.equal(review.projects.flatMap(project=>project.models).length,74);
 });

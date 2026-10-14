@@ -24,7 +24,7 @@ const request = (path,body) => new Request('https://sollahms.cl/api/'+path,
 
 test('121 other projects and the ten single Ecasa projects preserve their catalogue context', () => {
   const unchanged=catalogue.filter(project=>project.inmobiliaria!=='Ecasa'||project.etapasComerciales.length===1);
-  assert.equal(unchanged.length,131);
+  assert.equal(unchanged.length,132);
   for(const project of unchanged) {
     const identity=resolveProjectIdentity(catalogue,project.slug);
     for(const [key,value] of Object.entries(project)) assert.deepEqual(identity[key],value,project.slug+': '+key);

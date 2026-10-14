@@ -180,8 +180,8 @@ function assetBytes(slug, asset) {
 
 test('the 136-project Ecasa successor preserves non-Ecasa historical research and financial evidence', () => {
   assert.equal(git('rev-parse', BASELINE).toString().trim(), BASELINE);
-  assert.equal(catalogue.length, 136);
-  assert.equal(new Set(catalogue.map(project => project.slug)).size, 136);
+  assert.equal(catalogue.length, 137);
+  assert.equal(new Set(catalogue.map(project => project.slug)).size, 137);
   assertPortfolioData(current('data/proyectos.json'), old('data/proyectos.json', PORTFOLIO_BASELINE));
   for (const file of ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
     'data/fuentes-imagenes.json', 'data/hipotecario.json', 'data/catalogo-original-fichas.json',
@@ -199,7 +199,7 @@ test('the 136-project Ecasa successor preserves non-Ecasa historical research an
     'AJ models, geometry, descriptions and original media hashes remain exact; only provenance/rights change');
   let protectedPages = 0;
   for (const project of catalogue) {
-    if (REVIEW_PAGES.has(project.slug) || ECASA_NEW_SLUGS.has(project.slug)) continue;
+    if (project.slug === 'edificio-nordico' || REVIEW_PAGES.has(project.slug) || ECASA_NEW_SLUGS.has(project.slug)) continue;
     unchanged(project.slug + '.html'); protectedPages++;
   }
   assert.equal(protectedPages, 127);
@@ -225,7 +225,7 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
-  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file)),
+  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file)),
     [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });
@@ -432,6 +432,7 @@ function createPackagingFixture() {
   for (const folder of ['scripts', 'data', 'assets/css', 'assets/js']) mkdirSync(join(fixture, folder), { recursive: true });
   copyFileSync(resolve(ROOT, 'scripts/package-vercel.mjs'), join(fixture, 'scripts/package-vercel.mjs'));
   copyFileSync(resolve(ROOT, 'scripts/brochure-publication.mjs'), join(fixture, 'scripts/brochure-publication.mjs'));
+  copyFileSync(resolve(ROOT, 'scripts/leben-publication.mjs'), join(fixture, 'scripts/leben-publication.mjs'));
     copyFileSync(resolve(ROOT, 'scripts/ecasa-publication.mjs'), join(fixture, 'scripts/ecasa-publication.mjs'));
     for (const path of ['scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json', 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css', 'vercel.json']) copyFileSync(resolve(ROOT, path), join(fixture, path));
     copyFileSync(resolve(ROOT, 'data/brochures-ecasa.json'), join(fixture, 'data/brochures-ecasa.json'));
@@ -550,7 +551,7 @@ test('real Preview packaging changes only twenty-one authorized card covers, pub
   try {
     packageFixture(fixture, 'preview');
     const published = JSON.parse(readFileSync(join(fixture, 'dist/data/proyectos.json')));
-    assert.equal(published.length, 136);
+    assert.equal(published.length, 137);
     assert.deepEqual(published.map(project => project.slug), catalogue.map(project => project.slug));
     let changed = 0;
     for (let index = 0; index < catalogue.length; index++) {
@@ -666,7 +667,7 @@ test('real packager checks non-cover galleries/plans and privacy flags, and reje
     for (const slug of ['unapproved-candidate-a', 'unapproved-candidate-b']) {
       const expanded = [...catalogue, { slug, nombre: 'Candidato sintético de prueba' }];
       writeFileSync(join(fixture, 'data/proyectos.json'), JSON.stringify(expanded));
-      assert.throws(() => packageFixture(fixture, 'preview'), /exactly 136 projects/);
+      assert.throws(() => packageFixture(fixture, 'preview'), /Nórdico addition|exactly 136 projects/);
       writeFileSync(join(fixture, 'data/proyectos.json'), current('data/proyectos.json'));
       writeFileSync(join(fixture, slug + '.html'), '<!doctype html><p>Candidato privado de prueba</p>');
       for (const environment of ['preview', 'production', undefined]) {
@@ -790,7 +791,7 @@ test('a synthetic pending Git Preview without Ingevec assets preserves sixteen f
     rmSync(join(fixture, ASSETS.slice(1)), { recursive: true, force: true });
     packageFixture(fixture, 'preview');
     const published = JSON.parse(readFileSync(join(fixture, 'dist/data/proyectos.json')));
-    assert.equal(published.length, 136);
+    assert.equal(published.length, 137);
     assert.deepEqual(published.map(project => project.slug), catalogue.map(project => project.slug));
     let changedCovers = 0;
     for (let index = 0; index < catalogue.length; index++) {

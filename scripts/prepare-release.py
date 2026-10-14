@@ -28,6 +28,13 @@ MANUAL_MANIFEST = 'data/ecasa-manual-quality.json'
 MANUAL_MODULE = 'scripts/ecasa-manual-quality.mjs'
 BASE_QUALITY_MANIFEST = 'data/ecasa-image-quality.json'
 BASE_QUALITY_SHA256 = 'b4562d1dfbe729520a270039df347b8e3e62f5cff7c3b62d99355d784b0bfb34'
+LEBEN_MANIFEST = 'data/brochures-leben.json'
+LEBEN_MODULE = 'scripts/leben-publication.mjs'
+LEBEN_FOLDER = 'leben-preview'
+PROTECTED_PROFILES = {'protected_ecasa_review', 'protected_leben_review'}
+LEBEN_SLUGS = {'edificio-living-town', 'edificio-mood', 'edificio-santo', 'edificio-baum',
+    'edificio-suecia', 'parque-germania', 'capitanes', 'edificio-bold', 'edificio-argomedo',
+    'edificio-indi', 'edificio-indigo', 'inn-puerto-chico'}
 MANUAL_IMAGE_FIELDS = ('localPath', 'sha256', 'width', 'height', 'originCommercialSlug',
                        'kind', 'decision', 'coverOnly', 'reason')
 
@@ -126,7 +133,7 @@ def manual_policy_inventory(policy, files):
         require(MANUAL_MANIFEST not in files and MANUAL_MODULE not in files,
                 'Manual source inputs require their own review receipt')
         return None
-    require(policy.get('contentProfile') == 'protected_ecasa_review' and
+    require(policy.get('contentProfile') in PROTECTED_PROFILES and
             files.get(MANUAL_MANIFEST, {}).get('sha256') == review.get('manifestSha256') and MANUAL_MODULE in files,
             'Manual manifest or consumer differs from the private review receipt')
     images = review.get('effectiveImages', []); projects = review.get('projects', [])
@@ -196,7 +203,7 @@ def official_policy_inventory(policy, files):
     if review is None:
         require(not official_files, 'Official private files require an exact review inventory')
         return {}
-    require(policy.get('contentProfile') == 'protected_ecasa_review' and
+    require(policy.get('contentProfile') in PROTECTED_PROFILES and
             policy.get('officialSourceMedia') == 4 and policy.get('officialPublishedMedia') == 2 and
             (policy.get('manualQuality') is not None or policy.get('ecasaGalleryImages') == 116),
             'Official originals require the protected review profile')
@@ -220,6 +227,98 @@ def official_policy_inventory(policy, files):
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def leben_manifest_inventory(manifest):
+    """Select derivatives only; the twelve source PDFs never enter an archive."""
+    rights = manifest.get('publicationRights', {})
+    source_package = manifest.get('sourcePackage', {})
+    require(source_package.get('sourceMode') == 'regenerated_from_local_originals' and
+            re.fullmatch(r'[a-f0-9]{64}', source_package.get('inventorySha256', '')) is not None and
+            source_package.get('status') == 'reviewed' and source_package.get('originalPdfCount') == 12 and
+            source_package.get('originalsValidatedBySha256') == 12 and
+            source_package.get('instructions', {}).get('fileName') == 'INSTRUCCIONES_CODEX.md' and
+            re.fullmatch(r'[a-f0-9]{64}', source_package.get('instructions', {}).get('sha256', '')) is not None,
+            'Leben local originals, regenerated SHA inventory and instructions must be reviewed first')
+    require(manifest.get('schemaVersion') == 1 and manifest.get('inmobiliaria') == 'Leben' and
+            manifest.get('protectedPreviewOnly') is True and rights.get('sourceChannel') == 'Leben/user_supplied' and
+            rights.get('protectedPreview') == 'authorized_by_user' and
+            rights.get('productionPolicy') == 'requires_verified_contract_scope' and
+            rights.get('contractScope', {}).get('status') == 'pending_contract_scope_verification',
+            'Leben supplement requires its independent protected review permission')
+    projects = manifest.get('projects', [])
+    require(len(projects) == 12 and {project.get('slug') for project in projects} == LEBEN_SLUGS,
+            'Leben supplement must complement exactly twelve existing identities')
+    inventory, documents = {}, {}
+    for project in projects:
+        document = project.get('document')
+        require(project.get('documents', [document]) == [document] and isinstance(document, dict) and
+                document.get('sourceChannel') == 'Leben/user_supplied' and
+                re.fullmatch(r'[a-f0-9]{64}', document.get('sha256', '')) is not None and
+                re.fullmatch(r'[^/\\]+\.pdf', document.get('fileName', ''), re.I) is not None and
+                type(document.get('pageCount')) is int and document['pageCount'] > 0 and
+                document['sha256'] not in documents, 'Invalid or duplicate Leben PDF evidence')
+        documents[document['sha256']] = document
+        require(isinstance(project.get('images'), list) and isinstance(project.get('models'), list),
+                'Leben selection arrays are missing')
+        prefix = '/assets/propiedades/' + LEBEN_FOLDER + '/' + project['slug'] + '/'
+        images = project['images']; models = project['models']
+        for asset in images + [model.get('plan', {}) for model in models]:
+            path = asset.get('localPath', '')
+            require(path.startswith(prefix) and '..' not in path and
+                    re.fullmatch(r'[a-z0-9_.-]+\.(?:webp|jpe?g|png)', path[len(prefix):], re.I) is not None and
+                    path.lstrip('/') not in inventory and re.fullmatch(r'[a-f0-9]{64}', asset.get('sha256', '')) is not None and
+                    asset.get('sourceSha256') == document['sha256'] and type(asset.get('sourcePage')) is int and
+                    1 <= asset['sourcePage'] <= document['pageCount'] and
+                    all(type(asset.get(key)) is int and asset[key] > 0 for key in ['width', 'height']) and
+                    asset.get('visuallyVerified') is True and asset.get('privacySafe') is True,
+                    'Leben resource lacks exact project, source or review evidence')
+            if asset in images:
+                require(asset.get('qualityDecision') == 'keep' and
+                        type(asset.get('nativeWidth')) is int and asset['nativeWidth'] >= asset['width'] and
+                        type(asset.get('nativeHeight')) is int and asset['nativeHeight'] >= asset['height'],
+                        'An excluded, enlarged or unreviewed Leben photograph cannot be selected')
+            inventory[path.lstrip('/')] = {'path': path, 'sha256': asset['sha256'],
+                'width': asset['width'], 'height': asset['height']}
+        identities = set()
+        for model in models:
+            identity = (model.get('sourceSha256'), model.get('modelo'))
+            plan = model.get('plan', {})
+            require(isinstance(model.get('modelo'), str) and model['modelo'].strip() and identity not in identities and
+                    model.get('visuallyVerified') is True and model.get('sourceSha256') == document['sha256'] and
+                    model.get('pagina_brochure') == plan.get('sourcePage') and
+                    model.get('sourcePages') == [model.get('pagina_brochure')] and
+                    plan.get('sourceSha256') == model.get('sourceSha256'), 'Leben plan must have individual source evidence')
+            identities.add(identity)
+            require(plan.get('sourceKind') in {'vector', 'raster'} and
+                    (plan['sourceKind'] == 'vector' or type(plan.get('nativeWidth')) is int and
+                     plan['nativeWidth'] >= plan['width'] and type(plan.get('nativeHeight')) is int and
+                     plan['nativeHeight'] >= plan['height']), 'Leben raster plans cannot be enlarged')
+        cover = project.get('catalogueCover')
+        require(cover is None or any(image['localPath'] == cover.get('localPath') for image in images) and
+                isinstance(cover.get('alt'), str) and cover['alt'].strip(), 'Leben cover is not a selected same-project photograph')
+    sources = manifest.get('sourceDocuments', [])
+    require(len(sources) == 12 and len({source.get('sha256') for source in sources}) == 12 and
+            all(source == documents.get(source.get('sha256')) for source in sources), 'Leben source inventory must bind twelve PDFs exactly')
+    return inventory
+
+
+def leben_policy_inventory(policy, files):
+    review = policy.get('lebenReview')
+    private = {name for name in files if name.startswith('assets/propiedades/' + LEBEN_FOLDER + '/')}
+    if review is None:
+        require(not private and LEBEN_MANIFEST not in files, 'Leben private sources require their exact review receipt')
+        return {}
+    require(policy.get('contentProfile') == 'protected_leben_review' and LEBEN_MODULE in files and
+            files.get(LEBEN_MANIFEST, {}).get('sha256') == review.get('manifestSha256'),
+            'Leben manifest or consumer differs from the protected review receipt')
+    assets = review.get('assets', [])
+    inventory = {item.get('path', '').lstrip('/'): item for item in assets}
+    require(len(inventory) == len(assets) == policy.get('lebenReviewMedia') and set(inventory) == private,
+            'Leben private archive differs from its exact selected inventory')
+    require(all(files[name]['sha256'] == item.get('sha256') and files[name]['size'] == item.get('bytes')
+                for name, item in inventory.items()), 'Leben private bytes differ from the selected manifest')
+    return inventory
 
 
 def digest(data):
@@ -250,7 +349,7 @@ def verify_archive(archive, policy):
         for block in iter(lambda: stream.read(1024 * 1024), b''):
             hasher.update(block)
     require(hasher.hexdigest() == policy['archiveSha256'], 'Archive SHA-256 differs from approval')
-    files, total, official_manifest, manual_manifest, base_quality = {}, 0, None, None, None
+    files, total, official_manifest, manual_manifest, base_quality, leben_manifest = {}, 0, None, None, None, None
     official_original_paths = {item.get('path', '').lstrip('/')
         for item in (policy.get('officialOriginals') or {}).get('sourceAssets', []) if item.get('kind') == 'original'}
     with tarfile.open(archive, 'r:gz') as bundle:
@@ -270,6 +369,8 @@ def verify_archive(archive, policy):
                 manual_manifest = json.loads(data)
             elif name == BASE_QUALITY_MANIFEST:
                 base_quality = json.loads(data)
+            elif name == LEBEN_MANIFEST:
+                leben_manifest = json.loads(data)
             total += len(data)
     require(len(files) == policy['sourceFiles'] and total == policy['sourceBytes'], 'Incomplete source archive')
     if policy.get('officialOriginals') is not None:
@@ -282,6 +383,13 @@ def verify_archive(archive, policy):
                 'Official source receipt differs from exact archived manifest')
         official_policy_inventory(policy, files)
     manual_policy_inventory(policy, files)
+    leben_policy_inventory(policy, files)
+    if policy.get('lebenReview') is not None:
+        require(leben_manifest is not None, 'Leben selected manifest is missing')
+        selected = leben_manifest_inventory(leben_manifest)
+        expected = [{**selected[name], 'bytes': files.get(name, {}).get('size')} for name in sorted(selected)]
+        require(policy['lebenReview'].get('assets') == expected,
+                'Leben receipt differs from the exact archived selection')
     if policy.get('manualQuality') is not None:
         require(manual_manifest is not None and base_quality is not None and
                 files[BASE_QUALITY_MANIFEST]['sha256'] == BASE_QUALITY_SHA256,
@@ -294,7 +402,7 @@ def verify_archive(archive, policy):
 
 
 def git(root, *args):
-    return subprocess.check_output(['git', '-C', str(root), *args], stderr=subprocess.PIPE)
+    return subprocess.check_output(['git', '--no-pager', '-C', str(root), *args], stderr=subprocess.PIPE)
 
 
 def verify_verification_tools(root, policy):
@@ -326,8 +434,10 @@ def verify_git_reference(root, files, policy):
             mode, kind, oid = fields.decode().split()
             tree[name.decode()] = (mode, kind, oid)
     official = official_policy_inventory(policy, files)
+    leben = leben_policy_inventory(policy, files)
     manual_policy_inventory(policy, files)
     require(not set(official) & set(tree), 'Official review images must remain outside public Git source')
+    require(not set(leben) & set(tree), 'Leben review images must remain outside public Git source')
     tracked = 0
     for name, info in files.items():
         if name in tree:
@@ -337,11 +447,13 @@ def verify_git_reference(root, files, policy):
             tracked += 1
         else:
             folders = policy.get('privateMediaFolders', ['ingevec-preview'])
-            require(bool(folders) and set(folders) <= {'ingevec-preview', 'ecasa-preview', OFFICIAL_FOLDER},
+            require(bool(folders) and set(folders) <= {'ingevec-preview', 'ecasa-preview', OFFICIAL_FOLDER, LEBEN_FOLDER},
                     'Unapproved private media folder policy')
             if name.startswith('assets/propiedades/' + OFFICIAL_FOLDER + '/'):
                 require(OFFICIAL_FOLDER in folders and name in official,
                         'Official private source is not in its exact manifest inventory')
+            if name.startswith('assets/propiedades/' + LEBEN_FOLDER + '/'):
+                require(LEBEN_FOLDER in folders and name in leben, 'Leben private source is not in its exact manifest inventory')
             require(any(name.startswith('assets/propiedades/' + folder + '/') for folder in folders),
                     'Unapproved non-Git source file: ' + name)
     require(tracked == policy['trackedSourceFiles'] and len(files) - tracked == policy['privateSourceFiles'],
@@ -363,7 +475,7 @@ def verify_worktree(root, files, policy):
                 MANUAL_MANIFEST, MANUAL_MODULE,
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
-    require(not git(root, 'diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
+    require(not git(root, 'diff', '--no-ext-diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
             'Current deployable tracked source differs from approval')
     require(not git(root, 'ls-files', '--others', '--exclude-standard', '--', *relevant).strip(),
             'Untracked application changes require a new reviewed release')
@@ -415,8 +527,8 @@ def verify_staged_deployment(snapshot, policy):
     Presence of these fields is required, not guessed from omitted API fields.
     The operator records runtime/build evidence after authorized staging.
     """
-    require(policy.get('contentProfile') != 'protected_ecasa_review',
-            'A protected Ecasa review reference cannot authorize a staged Production release')
+    require(policy.get('contentProfile') not in PROTECTED_PROFILES,
+            'A protected Ecasa review or protected Leben review reference cannot authorize a staged Production release')
     require(snapshot.get('projectId') == policy['projectId'] and snapshot.get('teamId') == policy['teamId'],
             'Staged deployment belongs to another or unverified project/team')
     require(snapshot.get('target') == 'production' and snapshot.get('readyState') == 'READY',
@@ -466,6 +578,9 @@ def prepare(archive, output, node, policy, protected_review=False):
             require(result.get('ecasaReviewMedia') == policy['ecasaPublishedMedia'] and
                     result.get('ecasaGalleryImages') == policy['ecasaGalleryImages'],
                     'Manual build publication differs from the reviewed image/plan inventory')
+        if policy.get('lebenReview') is not None:
+            require(result.get('lebenReviewMedia') == (policy['lebenReviewMedia'] if result['environment'] == 'preview' else 0),
+                    'Leben build omitted selected resources or leaked them to the public profile')
     require(public_result['environment'] == 'production' and not public_result['noindex'] and
             preview_result['environment'] == 'preview' and preview_result['noindex'], 'Build environment mismatch')
     audit_path = destination / 'public-preview-audit.json'
@@ -491,7 +606,7 @@ def prepare(archive, output, node, policy, protected_review=False):
                'publicBuild': public_result, 'previewBuild': preview_result,
                'auditReceipt': str(audit_path), 'deployableSourceInventory': files,
                'localPreparationPassed': True, 'networkUsed': False, 'deploymentPerformed': False,
-               'contentProfile': 'protected_ecasa_review' if protected_review else 'public_web_parity',
+               'contentProfile': policy.get('contentProfile', 'protected_ecasa_review') if protected_review else 'public_web_parity',
                'verificationTools': policy.get('verificationTools', []),
                'sourceBrochureMedia': policy.get('sourceBrochureMedia'),
                'ecasaSourceMedia': policy.get('ecasaSourceMedia'),
@@ -502,6 +617,10 @@ def prepare(archive, output, node, policy, protected_review=False):
                'ecasaGalleryImages': policy.get('ecasaGalleryImages', 114),
                'officialOriginals': policy.get('officialOriginals'),
                **({'manualQuality': policy['manualQuality']} if policy.get('manualQuality') is not None else {}),
+               **({'lebenReview': policy['lebenReview'], 'lebenReviewMedia': policy['lebenReviewMedia']}
+                  if policy.get('lebenReview') is not None else {}),
+               **({'lebenPublicWebRights': 'pending_contract_scope_verification'}
+                  if policy.get('lebenReview') is not None else {}),
                'ecasaPublicWebParityVerified': not protected_review,
                'publicationAuthorized': False, 'integrationAuthorized': False}
     (destination / 'release-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')

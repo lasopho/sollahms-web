@@ -39,7 +39,7 @@ const number = new Intl.NumberFormat('es-CL', { minimumFractionDigits: 2, maximu
 
 test('all 136 mortgage contexts derive project name and subject on the server without forwarding RUT', async () => {
   const { handler, calls } = harness();
-  assert.equal(catalogue.length, 136);
+  assert.equal(catalogue.length, 137);
   for (const project of catalogue) {
     const response = await handler.fetch(request(lead(project.slug)));
     assert.equal(response.status, 200, project.slug);
@@ -53,7 +53,7 @@ test('all 136 mortgage contexts derive project name and subject on the server wi
     assert.ok(!JSON.stringify(email).includes('RUT'));
     assert.ok(!JSON.stringify(email.subject).includes('4.000'));
   }
-  assert.equal(calls.length, 136);
+  assert.equal(calls.length, 137);
 });
 
 test('106 catalogue prices match verified server provenance and are independently recalculated', async () => {
@@ -90,7 +90,7 @@ test('30 unpriced projects require a visitor-declared price and cannot borrow an
     assert.ok(calls.at(-1).body.text.includes('no representa un precio vigente confirmado'));
     assert.ok(!calls.at(-1).body.text.includes('revisión: 2026-10-09'));
   }
-  assert.equal(unpriced, 30);
+  assert.equal(unpriced, 31);
 });
 
 test('a visitor may deliberately edit a known catalogue price, and the resulting amount stays labelled as declared', async () => {

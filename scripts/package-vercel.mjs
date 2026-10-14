@@ -9,11 +9,12 @@ import { validateEcasaImageQuality, selectEcasaPublishedAssets, transformEcasaIm
 import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   BROCHURE_REMOVED_SLUGS, BROCHURE_PUBLIC_PAGES, BROCHURE_RETIRED_ASSETS,
   brochureFingerprint } from './brochure-publication.mjs';
+import { lebenPublication, validateLebenReview, assertLebenBuildEnvironment, LEBEN_MANIFEST, LEBEN_MEDIA_FOLDER } from './leben-publication.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
-const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva']);
+const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/ecasa-cartera-definitiva', 'codex/leben-brochures-nordico']);
 if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
   throw new Error('Unexpected branch for this review build');
 }
@@ -25,6 +26,14 @@ const ecasaReview = JSON.parse(await readFile(join(root, 'data/brochures-ecasa.j
 const ecasaRights = ecasaPublication(ecasaReview);
 const ecasaAssets = validateEcasaReview(ecasaReview);
 const ecasaIncluded = preview && ecasaRights.protectedReview;
+let lebenReview = null, lebenAssets = [];
+try { lebenReview = JSON.parse(await readFile(join(root, LEBEN_MANIFEST), 'utf8')); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+if (lebenReview) {
+  assertLebenBuildEnvironment(process.env);
+  lebenAssets = validateLebenReview(lebenReview);
+}
+const lebenIncluded = preview && !!lebenReview && lebenPublication(lebenReview).protectedReview;
 const ingevecOldSlugs = new Set(['centenario-1', 'tocornal', 'vivaceta']);
 const ingevecAddedDocuments = {
   'coronel-godoy': { '86e7bcd761a1037a460ae58c23f3c5f19ab047dde162f46c2f61c5ad38ad1085': [21, [15,16,17,18], null] },
@@ -101,6 +110,7 @@ if (profile === 'public-web' && (!ajRights.publicWeb || !ingevecRights.publicWeb
 if (profile === 'public-web' && !ecasaRights.publicWeb) {
   throw new Error('Ecasa public web content requires its own verified promotional scope');
 }
+if (profile === 'public-web' && lebenReview) throw new Error('The Leben supplement is only authorized for protected Preview');
 // Content eligibility is independent of Vercel's deployment environment.
 // Once contractual coverage is verified, missing media fails the build;
 // a future merge cannot silently replace those approved resources.
@@ -348,6 +358,30 @@ if (ecasaIncluded) {
   catalogueOutput = JSON.stringify(projects, null, 2) + '\n';
 }
 
+if (lebenIncluded) {
+  const projects = JSON.parse(catalogueOutput);
+  for (const record of lebenReview.projects) {
+    const project = projects.find(project => project.slug === record.slug);
+    if (!project || project.inmobiliaria !== 'Leben') throw new Error('Leben supplement changed an existing identity: ' + record.slug);
+    const fiche = pageSources.get(record.slug + '.html');
+    for (const asset of [...record.images, ...record.models.map(model => model.plan)]) {
+      if (!fiche.includes(asset.localPath)) throw new Error('Leben resource is absent from its own fiche: ' + record.slug);
+      const path = join(root, asset.localPath.slice(1));
+      if (!(await lstat(path)).isFile() || await realpath(path) !== path) throw new Error('Leben selected resource must be a regular local file');
+      const bytes = await readFile(path);
+      if (createHash('sha256').update(bytes).digest('hex') !== asset.sha256) throw new Error('Leben resource bytes differ from the reviewed manifest');
+      if (selectedMedia.has(path)) throw new Error('Duplicate selected Leben media path');
+      selectedMedia.add(path);
+      mediaInventory.push({ path: asset.localPath, sha256: asset.sha256, bytes: bytes.length });
+    }
+    if (record.catalogueCover) {
+      project.imagenPrincipal = record.catalogueCover.localPath;
+      project.imagenAlt = naturalCaption(record.catalogueCover.alt);
+    }
+  }
+  catalogueOutput = JSON.stringify(projects, null, 2) + '\n';
+}
+
 // Static output is an explicit allowlist. API sources and their imports are
 // bundled separately by Vercel, never copied into the public directory.
 catalogueOutput = JSON.stringify(applyEcasaCatalogueImageQuality(JSON.parse(catalogueOutput), imageQuality,
@@ -360,8 +394,8 @@ for (const name of pages) {
   let html = pageSources.get(name);
   // Legacy marker names describe the original review blocks. They select
   // content according to contractual coverage, never grant deploy approval.
-  for (const batch of ['AJ', 'INGEVEC', 'ECASA']) {
-    const included = batch === 'AJ' ? ajIncluded : batch === 'INGEVEC' ? ingevecIncluded : ecasaIncluded;
+  for (const batch of ['AJ', 'INGEVEC', 'ECASA', 'LEBEN']) {
+    const included = batch === 'AJ' ? ajIncluded : batch === 'INGEVEC' ? ingevecIncluded : batch === 'ECASA' ? ecasaIncluded : lebenIncluded;
     const remove = included ? 'PUBLIC' : 'PREVIEW';
     const keep = included ? 'PREVIEW' : 'PUBLIC';
     html = html.replace(new RegExp(`<!--${batch}_${remove}_START-->[\\s\\S]*?<!--${batch}_${remove}_END-->`, 'g'), '');
@@ -399,14 +433,14 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
       return info.isDirectory() ? [...officialPublishedPaths].some(file => file.startsWith(source + sep))
         : officialPublishedPaths.has(source);
     }
-    for (const [folder, included] of [['aj-urbana-preview', ajIncluded], ['ingevec-preview', ingevecIncluded], ['ecasa-preview', ecasaIncluded]]) {
+    for (const [folder, included] of [['aj-urbana-preview', ajIncluded], ['ingevec-preview', ingevecIncluded], ['ecasa-preview', ecasaIncluded], [LEBEN_MEDIA_FOLDER, lebenIncluded]]) {
       const prefix = 'assets/propiedades/' + folder;
       if (path === prefix || path.startsWith(prefix + '/')) {
         if (!included) return false;
         return info.isDirectory() ? [...selectedMedia].some(file => file.startsWith(source + sep)) : selectedMedia.has(source);
       }
     }
-    if (path === 'assets/css/aj-brochure-preview.css') return ajIncluded || ingevecIncluded || ecasaIncluded;
+    if (path === 'assets/css/aj-brochure-preview.css') return ajIncluded || ingevecIncluded || ecasaIncluded || lebenIncluded;
     if (info.isFile() && /\.(?:pdf|zip|docx?|xlsx?|toml|env)$/i.test(path)) return false;
     return true;
   } });
@@ -418,8 +452,8 @@ await writeFile(join(output, 'robots.txt'), preview ? 'User-agent: *\nDisallow: 
 // build. It is deliberately outside dist and contains no contract text.
 await mkdir(join(root, '.vercel'), { recursive: true });
 await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.stringify({
-  catalogueProjects: sourceProjects.length, publicationSource: 'Yapo/IRIS + Ecasa/user_supplied',
-  contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb,
+  catalogueProjects: sourceProjects.length, publicationSource: 'Yapo/IRIS + Ecasa/user_supplied' + (lebenReview ? ' + Leben/user_supplied' : ''),
+  contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb && !lebenReview,
   preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb,
   ecasaContractualCoverageVerified: ecasaRights.publicWeb,
   ecasaReviewMedia: publishedEcasaAssets.length,
@@ -430,5 +464,8 @@ await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.string
   ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null,
   officialOriginals: officialReceipt,
   media: mediaInventory.sort((a, b) => a.path.localeCompare(b.path)),
+  lebenReviewMedia: lebenIncluded ? lebenAssets.length : 0,
+  lebenPublicWebRights: lebenReview ? 'pending_contract_scope_verification' : null,
+  lebenManifestSha256: lebenReview ? createHash('sha256').update(await readFile(join(root, LEBEN_MANIFEST))).digest('hex') : null,
 }, null, 2) + '\n');
-console.log(JSON.stringify({ pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0, officialPublishedMedia: officialPublished.length, ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));
+console.log(JSON.stringify({ lebenReviewMedia: lebenIncluded ? lebenAssets.length : 0, pages: pages.length, publicDataFiles: ['proyectos.json', 'hipotecario.json'], environment: preview ? 'preview' : 'production', noindex: preview, ingevecReviewMedia: ingevecIncluded ? ingevecAssets.length : 0, ecasaReviewMedia: publishedEcasaAssets.length, selectedBrochureMedia: selectedMedia.size, imageQuality: imageQuality.summary, officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0, officialPublishedMedia: officialPublished.length, ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null, contractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb && ecasaRights.publicWeb && !lebenReview, preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb, ecasaContractualCoverageVerified: ecasaRights.publicWeb }));

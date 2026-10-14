@@ -199,9 +199,13 @@ def render(project, research, template):
         tours = list(unique_tours(combined))
     else:
         combined = research
+    plan_pending_note = research.get('planPendingNote')
+    if isinstance(plan_pending_note, str) and plan_pending_note.strip():
+        pending_plans = '<section id="planos-pendientes" class="detail-section" aria-labelledby="planos-pendientes-title"><p class="eyebrow">Diseño y distribución</p><h2 id="planos-pendientes-title">Planos y superficies por modelo</h2><div class="pending-panel"><p>' + esc(plan_pending_note) + '</p></div></section>'
+        page = page.replace('<section id="equipamiento"', pending_plans + '<section id="equipamiento"', 1)
     page = commercialize_fiche(augment_page(page, slug), slug, research=combined)
-    if project.get('inmobiliaria') == 'Ecasa':
-        # Optional template slots remain clean in the consolidated output.
+    if project.get('inmobiliaria') == 'Ecasa' or plan_pending_note:
+        # Optional template slots remain clean in consolidated and new output.
         page = re.sub(r'(?m)^[ \t]+$', '', page)
     return page, mapped, len(tours)
 
@@ -274,6 +278,14 @@ def main():
                 aliases[stage['slug']] = item
     context_source = '// Generated from the authorized Ecasa project/stage consolidation; 121 other projects remain exact.\n'
     for name, values in [('projects', contexts), ('projectAliases', aliases), ('projectStages', commercial_stages)]:
+        # An additive project must not reorder the existing stage registry.
+        previous_context = ROOT / 'lib/project-context.mjs'
+        if previous_context.is_file():
+            previous = re.search(r'export const ' + name + r' = Object\.freeze\((.*?)\);', previous_context.read_text(), re.S)
+            if previous:
+                old_order = json.loads(previous[1])
+                values = {**{key: values[key] for key in old_order if key in values},
+                          **{key: value for key, value in values.items() if key not in old_order}}
         context_source += 'export const ' + name + ' = Object.freeze(' + json.dumps(values, ensure_ascii=False, indent=2).replace('<', '\\u003c') + ');\n'
     (ROOT / 'lib/project-context.mjs').write_text(context_source)
     # Keep the existing global destinations and append all details exactly once.

@@ -117,7 +117,7 @@ test('the final catalogue pins 15 Ecasa projects and 22 stage origins, 16 Ingeve
   assert.doesNotThrow(() => assertBrochureCatalogue(catalogue));
   assert.equal(BROCHURE_INGEVEC_SLUGS.length, 16);
   assert.equal(BROCHURE_REMOVED_SLUGS.length, 11);
-  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ecasa').length, 121);
+  assert.equal(catalogue.filter(project => project.inmobiliaria !== 'Ecasa').length, 122);
   for (const kind of ['retired-project', 'unknown-project', 'duplicate', 'other-price', 'other-route', 'developer']) {
     const copy = structuredClone(catalogue);
     const position = copy.findIndex(project => project.slug === 'los-alerces');

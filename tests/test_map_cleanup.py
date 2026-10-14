@@ -14,6 +14,7 @@ from string import Template
 
 from automatic_embed_scope import restore_automatic_file
 from ecasa_scope import restore_ecasa_page, ADDED
+from leben_scope import original_html
 from map_cleanup_scope import (ROOT, FEATURED, RELATED, GENERIC_NOTES, NOSCRIPT,
                                baseline_bytes, expected_cleanup_file,
                                transform_map_cleanup, restore_map_cleanup_asset)
@@ -54,23 +55,23 @@ class MapCleanup(unittest.TestCase):
     def test_all_121_non_ecasa_fichas_keep_exact_cleanup_with_116_changes(self):
         changed = 0
         for project in PROJECTS:
-            if project['inmobiliaria'] == 'Ecasa':
+            if project['inmobiliaria'] == 'Ecasa' or project['slug'] == 'edificio-nordico':
                 continue  # Names, relations and protected media have exact successor checks.
             path = project['slug'] + '.html'
-            current = (ROOT / path).read_bytes()
+            current = original_html((ROOT / path).read_text()).encode()
             self.assertEqual(current, expected_cleanup_file(path), path)
             restore_automatic_file(path, current)
             changed += current != baseline_bytes(path)
-        self.assertEqual((len(PROJECTS), changed, 121 - changed), (136, 116, 5))
+        self.assertEqual((len(PROJECTS), changed, 121 - changed), (137, 116, 5))
 
     def test_116_non_ecasa_maps_81_tours_and_all_images_actions_remain_exact(self):
         maps = tours = plans = 0
         for project in PROJECTS:
-            if project['inmobiliaria'] == 'Ecasa':
+            if project['inmobiliaria'] == 'Ecasa' or project['slug'] == 'edificio-nordico':
                 continue  # Names, relations and protected media have exact successor checks.
             path = project['slug'] + '.html'
             before = Nodes(baseline_bytes(path).decode()).nodes
-            after = Nodes((ROOT / path).read_text()).nodes
+            after = Nodes(original_html((ROOT / path).read_text())).nodes
             for tag in ['iframe', 'img', 'script', 'form', 'input', 'button']:
                 self.assertEqual([a for t, a in after if t == tag], [a for t, a in before if t == tag], path + ':' + tag)
             actions = lambda nodes: [a for t, a in nodes if t == 'a' and not a.get('href', '').startswith('https://www.google.com/maps')]
@@ -81,7 +82,7 @@ class MapCleanup(unittest.TestCase):
             for frame in frames:
                 self.assertEqual(frame.get('loading'), 'lazy', path)
             # Each brochure model still has its own original displayed plan.
-            plans += (ROOT / path).read_text().count('class="aj-model"')
+            plans += original_html((ROOT / path).read_text()).count('class="aj-model"')
         self.assertEqual((maps, tours, plans), (116, 81, 142))
 
     def test_no_persistent_map_links_generic_notes_or_empty_remnants(self):
@@ -102,10 +103,10 @@ class MapCleanup(unittest.TestCase):
             slug = project['slug']
             page, _, _ = details.render(project, copy.deepcopy(RECORDS[slug]), template)
             self.assert_clean(page, slug)
-            if project['inmobiliaria'] == 'Ecasa':
+            if project['inmobiliaria'] == 'Ecasa' or project['slug'] == 'edificio-nordico':
                 continue
             before = baseline_bytes(slug + '.html').decode()
-            current = (ROOT / (slug + '.html')).read_text()
+            current = original_html((ROOT / (slug + '.html')).read_text())
             self.assertEqual(normalize_page_embeds(before, RECORDS[slug], featured=slug in FEATURED), current, slug)
             self.assertEqual(normalize_page_embeds(current, RECORDS[slug], featured=slug in FEATURED), current, slug + ': repeated regeneration')
 
@@ -147,7 +148,7 @@ class MapCleanup(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 restore_automatic_file(path, mutation)
         for path in ['assets/css/project-embeds.css', 'vercel.json', 'scripts/package-vercel.mjs']:
-            current = (ROOT / path).read_bytes()
+            current = original_html((ROOT / path).read_text()).encode()
             for mutation in [current + b'\n', baseline_bytes(path)]:
                 with self.assertRaises(AssertionError):
                     restore_map_cleanup_asset(path, mutation)

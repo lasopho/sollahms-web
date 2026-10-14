@@ -4,11 +4,12 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { assertPreservedSource } from './leben-preservation.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')));
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
-assert.equal(ficheFiles.size, 136);
+assert.equal(ficheFiles.size, 137);
 export const ECASA_NEW_SLUGS = new Set(['alto-san-joaquin-2','alto-san-joaquin-3','terratolten-2','nucleo-costanera-2','terratolten']);
 export const ECASA_ALIAS_SLUGS = new Set(['nucleo-costanera-2','ferroparque-2','terratolten-1','terratolten-2','terratolten-3','lomas-de-puyai-3','alto-san-joaquin-2','alto-san-joaquin-3']);
 export const ECASA_RETIRED_SLUGS = new Set(['bosquemar','altos-del-wayra','robles-del-aconcagua','el-real','edificio-ha-strip-center']);
@@ -100,7 +101,9 @@ export function readCommercialFile(file) {
     if(ECASA_NEW_SLUGS.has(file.replace(/\.html$/, ''))) return input;
     return restoreReviewedTourFile(file,input);
   }
-  const actual = readFileSync(resolve(ROOT,file));
+  let actual = readFileSync(resolve(ROOT,file));
+  if (file === 'edificio-nordico.html') return actual;
+  if (file.endsWith('.html')) actual = Buffer.from(actual.toString().replace(/<!--LEBEN_PREVIEW_START-->[\s\S]*?<!--LEBEN_PREVIEW_END-->/g, '').replace(/<!--LEBEN_PUBLIC_START-->([\s\S]*?)<!--LEBEN_PUBLIC_END-->/g, '$1'));
   if (automaticEmbedAssets.has(file)) return restoreReviewedEmbedAsset(file, actual);
   // Historical checks receive the original only after independently proving
   // that real current bytes contain exactly the authorized tour removal.
@@ -155,7 +158,7 @@ export function assertPortfolioIndex(file,actual) {
   } else if(file==='sitemap.xml') {
     const urls=text=>[...text.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
     const expected=['/','/proyectos.html','/agenda-asesoria.html','/contacto.html','/privacidad.html',...catalogue.map(p=>p.detalleUrl),'/comparador-hipotecario.html'].map(path=>'https://sollahms.cl'+path);
-    assert.deepEqual(urls(actual.toString()),expected);assert.equal(new Set(expected).size,142);
+    assert.deepEqual(urls(actual.toString()),expected);assert.equal(new Set(expected).size,143);
   } else if(file==='docs/registro-fichas-proyectos.md') {
     const old=portfolioOld(file).toString();
     const inventory=text=>text.split('## Inventario completo')[1].split('\n## ')[0].split('\n').filter(line=>line.startsWith('| ['));
@@ -166,8 +169,8 @@ export function assertPortfolioIndex(file,actual) {
       if([...INGEVEC_REMOVED_SLUGS].some(slug=>line.includes('../'+slug+'.html)'))) assert.ok(!currentRows.includes(line));
       else assert.ok(currentRows.includes(line),'Existing inventory row changed: '+line);
     }
-    assert.equal(currentRows.length,136);
-    assert.ok(actual.toString().includes('Catálogo real: 136 proyectos'));
+    assert.equal(currentRows.length,137);
+    assert.ok(actual.toString().includes('Catálogo real: 137 proyectos'));
   } else throw new Error('Unknown portfolio index '+file);
 }
 export function assertDefinitiveFicheFallback(html,slug) {
@@ -267,6 +270,7 @@ export function assertCommercialBytes(file, actual, baseline) {
     execFileSync('python3',[resolve(ROOT,'tests/ecasa_scope.py'),file],{cwd:ROOT,input:Buffer.alloc(0),maxBuffer:4*1024*1024});
     return;
   }
+  if (file === 'data/fuentes-imagenes.json') { assertPreservedSource(file, actual, baseline); return; }
   if(['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json'].includes(file)) {assertPortfolioData(actual,baseline,file);return;}
   if(['lib/project-context.mjs','sitemap.xml','docs/registro-fichas-proyectos.md'].includes(file)) {assertPortfolioIndex(file,actual);return;}
   if (INGEVEC_NEW_SLUGS.has(file.replace(/\.html$/, ''))) {

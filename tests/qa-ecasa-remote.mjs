@@ -15,7 +15,7 @@ const official = JSON.parse(await readFile(new URL('../data/ecasa-official-origi
 let manual = null;
 try { manual = JSON.parse(await readFile(new URL('../data/ecasa-manual-quality.json', import.meta.url))); }
 catch (error) { if (error.code !== 'ENOENT') throw error; }
-if (metadata.target !== 'preview' || metadata.contentProfile !== 'protected_ecasa_review') throw new Error('Protected Ecasa build receipt required');
+if (metadata.target !== 'preview' || !['protected_ecasa_review', 'protected_leben_review'].includes(metadata.contentProfile)) throw new Error('Protected Ecasa build receipt required');
 const auth = { 'x-vercel-trusted-oidc-idp-token': process.env.VERCEL_OIDC_TOKEN };
 const results = [], checks = [];
 let cursor = 0;
@@ -34,7 +34,7 @@ await Promise.all(Array.from({ length: 8 }, async () => {
     } catch (error) { results.push({ file: file.file, matches: false, error: error.message }); }
   }
 }));
-for (const path of [...ECASA_RETIRED_SLUGS.flatMap(slug => ['/' + slug, '/' + slug + '.html']), '/data/brochures-ecasa.json', '/data/fichas-proyectos.json', '/data/ecasa-image-quality.json', '/data/ecasa-official-originals.json', '/data/ecasa-manual-quality.json', '/data/fuentes-imagenes.json', '/docs/ecasa-preview-reproducible.md', '/03_CAPTURAS_CARTERA_PRIVADAS/', '/01_PDF_ORIGINALES_PRIVADOS/', '/.env',
+for (const path of [...ECASA_RETIRED_SLUGS.flatMap(slug => ['/' + slug, '/' + slug + '.html']), '/data/brochures-ecasa.json', '/data/brochures-leben.json', '/data/fichas-proyectos.json', '/data/ecasa-image-quality.json', '/data/ecasa-official-originals.json', '/data/ecasa-manual-quality.json', '/data/fuentes-imagenes.json', '/docs/ecasa-preview-reproducible.md', '/03_CAPTURAS_CARTERA_PRIVADAS/', '/01_PDF_ORIGINALES_PRIVADOS/', '/.env',
   ...official.projects.flatMap(project => project.images.map(image => image.original.localPath))]) {
   const response = await fetch(new URL(path, base), { headers: auth, redirect: 'manual', signal: AbortSignal.timeout(45000) });
   checks.push({ label: 'Excluded ' + path, status: response.status, passed: response.status === 404 });
@@ -57,7 +57,7 @@ checks.push({ label: 'Official UF endpoint', status: ufResponse.status, passed: 
 const summary = { origin: base.origin, sourceCommit: metadata.reviewCommit,
   files: results.length, matchingFiles: results.filter(row => row.matches).length,
   pages: results.filter(row => row.file.endsWith('.html')).length,
-  selectedMedia: results.filter(row => /assets\/propiedades\/(ingevec|aj-urbana|ecasa)-preview\//.test(row.file)).length,
+  selectedMedia: results.filter(row => /assets\/propiedades\/(ingevec|aj-urbana|ecasa|leben)-preview\//.test(row.file)).length,
   ecasaMedia: results.filter(row => row.file.startsWith('assets/propiedades/ecasa-preview/')).length,
   officialMedia: results.filter(row => row.file.startsWith('assets/propiedades/ecasa-official-review/')).length,
   checks, uf, failures: results.filter(row => !row.matches), noApplicationWrites: true };

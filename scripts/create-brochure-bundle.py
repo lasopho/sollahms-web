@@ -24,6 +24,7 @@ spec = importlib.util.spec_from_file_location('review_release_inventory', ROOT /
 release = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(release)
 MEDIA_FOLDERS = ('aj-urbana-preview', 'ingevec-preview', 'ecasa-preview')
+PRIVATE_MEDIA_FOLDERS = (*MEDIA_FOLDERS, release.LEBEN_FOLDER)
 MANIFESTS = ('brochures-aj-urbana.json', 'brochures-ingevec.json', 'brochures-ecasa.json')
 VERIFICATION_TOOLS = ('tests/qa-ecasa.mjs', 'tests/qa-ecasa-remote.mjs', 'tests/qa-preview-server.mjs')
 PUBLIC_EXTENSIONS = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.webp',
@@ -68,6 +69,32 @@ QUALITY_ORIGINALS = {
     'data/fichas-proyectos.json': '3f23035e8ef82d20970d1ed10dc0606e3c91b81f232d4119c3599039bc33a235',
     'data/fuentes-imagenes.json': 'c16009d0ed27e342441529f81c9e065f1a15ea9499ddf00388ff75681152c49b',
 }
+QUALITY_BASE_VALUES = {
+    'data/fichas-proyectos.json': '0870e277c2dacf05ea37b8ce051997bc7ec55d7ca227c4bfe287a0b412d38608',
+    'data/fuentes-imagenes.json': 'c3cc43337827f6cddfe711c26aaf0f3c15e28ad6097b0d70033b1606467a6e42',
+}
+
+
+def assert_quality_base(root):
+    research = json.loads((root / 'data/fichas-proyectos.json').read_text())
+    nordico = [record for record in research if record['slug'] == 'edificio-nordico']
+    assert len(nordico) <= 1, 'Nórdico research identity is duplicated'
+    sources = json.loads((root / 'data/fuentes-imagenes.json').read_text())
+    new_sources = {url: item for url, item in sources.items() if url.startswith('https://nordico.ileben.cl/')}
+    assert set(new_sources) == {image['url'] for record in nordico for image in record['images']}, 'Nórdico official image evidence does not match its exact researched selection'
+    for name, digest in QUALITY_ORIGINALS.items():
+        data = (root / name).read_bytes()
+        if sha(data) == digest:
+            continue
+        base = [record for record in research if record['slug'] != 'edificio-nordico'] if name.endswith('fichas-proyectos.json') else {url: item for url, item in sources.items() if url not in new_sources}
+        assert sha(json.dumps(base, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()) == QUALITY_BASE_VALUES[name], 'Frozen historical research/image evidence changed: ' + name
+    for url, item in new_sources.items():
+        assert item['sourceUrl'] == 'https://nordico.ileben.cl/' and item['qualityStatus'] == 'approved' and item['status'] == 'downloaded', 'Unreviewed Nórdico image selection'
+        path = item['localPath'].lstrip('/')
+        assert path.startswith('assets/propiedades/catalogo/') and path.count('/') == 3 and '..' not in path
+        assert sha((root / path).read_bytes()) == item['localSha256'], 'Nórdico official derivative bytes changed'
+
+
 VISUAL_EXCLUDED = {
     '/assets/propiedades/ecasa-preview/enlace-mackenna/imagen-01-p01.webp',
     '/assets/propiedades/ecasa-preview/ferroparque/imagen-04-p01.webp',
@@ -140,8 +167,7 @@ def selected_source_files(root):
     assert sha((root / release.BASE_QUALITY_MANIFEST).read_bytes()) == release.BASE_QUALITY_SHA256, 'Frozen base quality evidence changed'
     release.manual_quality_selection(json.loads((root / release.MANUAL_MANIFEST).read_text()),
         json.loads((root / release.BASE_QUALITY_MANIFEST).read_text()), official_manifest)
-    for name, digest in QUALITY_ORIGINALS.items():
-        assert sha((root / name).read_bytes()) == digest, 'Original research/commercial image evidence changed: ' + name
+    assert_quality_base(root)
     quality = json.loads((root / 'data/ecasa-image-quality.json').read_text())
     decisions = [image for project in quality['projects'] for image in project['images']]
     assert len(decisions) == 118 and sum(image['decision'] == 'keep' for image in decisions) == 114
@@ -149,12 +175,14 @@ def selected_source_files(root):
     assert not any(image.get('coverOnly') for image in decisions), 'Unexpected cover-only quality exception'
     catalogue = json.loads((root / 'data/proyectos.json').read_text())
     slugs = {project['slug'] for project in catalogue}
-    assert len(catalogue) == 136 and len(slugs) == 136, 'The exact final catalogue must contain 136 projects'
+    nordico = [project for project in catalogue if project['slug'] == 'edificio-nordico']
+    assert len(catalogue) == len(slugs) == 136 + len(nordico) and len(nordico) <= 1, 'Only Nórdico may extend the consolidated 136 catalogue'
+    assert not nordico or nordico[0]['inmobiliaria'] == 'Leben' and nordico[0]['verificacion']['fuente'] == 'https://nordico.ileben.cl/' and nordico[0]['verificacion']['estadoFuente'] == 'verified', 'Nórdico requires verified official identity'
     assert APPROVED_PROJECTS['brochures-ingevec.json'] <= slugs and not REMOVED_PROJECTS & slugs
     assert all(p['inmobiliaria'] == 'Ingevec' for p in catalogue if p['slug'] in APPROVED_PROJECTS['brochures-ingevec.json'])
     assert {p['slug'] for p in catalogue if p['inmobiliaria'].lower() == 'ecasa'} == APPROVED_PROJECTS['brochures-ecasa.json'], 'The 15 Ecasa development identities must remain exact'
     assert not ECASA_LEGACY_TARGETS.keys() & slugs, 'A commercial stage remains a duplicate catalogue project'
-    untouched = [p for p in catalogue if p['inmobiliaria'].lower() != 'ecasa']
+    untouched = [p for p in catalogue if p['inmobiliaria'].lower() != 'ecasa' and p['slug'] != 'edificio-nordico']
     assert len(untouched) == 121 and sha(json.dumps(untouched, ensure_ascii=False, sort_keys=True,
         separators=(',', ':')).encode()) == NON_ECASA_SHA256, 'Other developers changed'
     pages = {p.name for p in root.glob('*.html')}
@@ -200,7 +228,16 @@ def selected_source_files(root):
     assert preserved_media_count == 269, 'The previously approved AJ/Ingevec batch must preserve 269 resources'
     ecasa_media = sorted([['/' + path, digest] for path, digest in media.items() if path.startswith('assets/propiedades/ecasa-preview/')])
     assert len(ecasa_media) == 130 and sha(json.dumps(ecasa_media, ensure_ascii=False, separators=(',', ':')).encode()) == ECASA_MEDIA_SHA256, 'The exact 130 Ecasa resource paths and bytes must be preserved'
+    leben_path = root / release.LEBEN_MANIFEST
+    if leben_path.exists():
+        assert len(catalogue) == 137 and len(nordico) == 1, 'The completed Leben batch requires the authorized Nórdico addition'
+        leben = release.leben_manifest_inventory(json.loads(leben_path.read_text()))
+        assert not set(leben) & set(media), 'Duplicate Leben media destination'
+        media.update({name: item['sha256'] for name, item in leben.items()})
     files = set(media) | set(official_sources)
+    files.add(release.LEBEN_MODULE)
+    if leben_path.exists():
+        files.add(release.LEBEN_MANIFEST)
     files.update(pages)
     files.update(('vercel.json', 'robots.txt', 'sitemap.xml', 'data/proyectos.json',
                   'data/hipotecario.json', *(f'data/{name}' for name in MANIFESTS),
@@ -218,7 +255,7 @@ def selected_source_files(root):
         relative = str(path.relative_to(root))
         if not path.is_file() or '/brochure-candidates/' in relative or relative in retired_exclusive:
             continue
-        if any(f'/propiedades/{folder}/' in relative for folder in (*MEDIA_FOLDERS, release.OFFICIAL_FOLDER)):
+        if any(f'/propiedades/{folder}/' in relative for folder in (*PRIVATE_MEDIA_FOLDERS, release.OFFICIAL_FOLDER)):
             continue  # Only the exact manifest above can select these assets.
         if path.suffix.lower() in PUBLIC_EXTENSIONS:
             files.add(relative)
@@ -292,6 +329,11 @@ def main():
     review_commit = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD']).decode().strip()
     tool_inventory = verification_tools(ROOT, review_commit)
     files = selected_source_files(ROOT)
+    leben_path = ROOT / release.LEBEN_MANIFEST
+    leben = release.leben_manifest_inventory(json.loads(leben_path.read_text())) if leben_path.exists() else {}
+    assert not args.verify_public_web or not leben_path.exists(), 'Leben is only authorized for protected Preview'
+    catalogue_count = len(json.loads((ROOT / 'data/proyectos.json').read_text()))
+    leben_receipt = {'manifestSha256': sha(leben_path.read_bytes()), 'assets': [{**leben[name], 'bytes': (ROOT / name).stat().st_size} for name in sorted(leben)]} if leben_path.exists() else None
     official_sources, official_published = release.official_manifest_inventory(json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
     manual = release.manual_quality_selection(json.loads((ROOT / release.MANUAL_MANIFEST).read_text()),
         json.loads((ROOT / release.BASE_QUALITY_MANIFEST).read_text()),
@@ -316,8 +358,9 @@ def main():
             for name in MANIFESTS for record in json.loads((stage / 'data' / name).read_text())['projects']
             for asset in [*record['images'], *(model['plan'] for model in record['models'])]}
         expected_publication = release.manual_published_media({path.lstrip('/'): value for path, value in source_inventory.items()}, manual)
+        expected_publication.update({name: item['sha256'] for name, item in leben.items()})
         assert {asset['path'].lstrip('/'): asset['sha256'] for asset in receipt['media']} == expected_publication, 'Published media differs from the exact manual selection'
-        assert len(expected_publication) == 269 + 74 + manual['summary']['documentaryPublishedImages'], 'Manual publication omitted a plan or preserved brochure resource'
+        assert len(expected_publication) == 269 + 74 + manual['summary']['documentaryPublishedImages'] + len(leben), 'Manual publication omitted a plan or preserved brochure resource'
         assert receipt['manualQuality']['effectiveImages'] == manual['effectiveImages'] and receipt['manualQuality']['projects'] == manual['projects'], 'Manual build receipt differs from the reviewed policy'
         assert all(receipt['manualQuality']['summary'].get(key) == value for key, value in manual['summary'].items()), 'Manual build counts differ from the effective image inventory'
         assert receipt['officialOriginals']['sourceAssets'] == [official_sources[name] for name in sorted(official_sources)] and receipt['officialOriginals']['publishedAssets'] == [official_published[name] for name in sorted(official_published)], 'Official transport/publication differs from the exact reviewed selection'
@@ -350,13 +393,14 @@ def main():
     metadata = {'transport': 'native_source_archive', 'target': 'preview',
                 'branch': args.branch,
                 'reviewCommit': review_commit, 'verificationTools': tool_inventory,
-                'contentProfile': 'protected_ecasa_review',
+                'contentProfile': 'protected_leben_review' if leben_receipt else 'protected_ecasa_review',
+                **({'lebenReview': leben_receipt, 'lebenReviewMedia': len(leben)} if leben_receipt else {}),
                 'publicationAuthorized': False,
                 'integrationAuthorized': False,
-                'catalogueProjects': 136, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
+                'catalogueProjects': catalogue_count, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
                 'ecasaLegacyRoutes': 8,
                 'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
-                'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130,
+                'sourceBrochureMedia': 399 + len(leben), 'ecasaSourceMedia': 130,
                 'ecasaPublishedMedia': 74 + manual['summary']['documentaryPublishedImages'],
                 'imageQuality': receipt['ecasaImageQuality'],
                 'officialSourceMedia': len(official_sources), 'officialPublishedMedia': len(official_published),

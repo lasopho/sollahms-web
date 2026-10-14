@@ -98,7 +98,7 @@ test('contact rejects malformed/non-object JSON, invalid UTF-8 and oversized bod
 
 test('all 136 projects derive the email subject and internal name from the server catalogue', async t => {
   const calls = provider(t);
-  assert.equal(Object.keys(projects).length, 136);
+  assert.equal(Object.keys(projects).length, 137);
   for (const [slug, project] of Object.entries(projects)) {
     const result = await contact.fetch(request({ ...validContact, proyecto: slug, rut: '1.000.005-K' }));
     assert.equal(result.status, 200);
@@ -110,7 +110,7 @@ test('all 136 projects derive the email subject and internal name from the serve
     assert.ok(!JSON.stringify(email).includes('1000005-K'));
     assert.ok(!JSON.stringify(email).includes('1.000.005-K'));
   }
-  assert.equal(calls.length, 136);
+  assert.equal(calls.length, 137);
 });
 
 test('forged subject/name and unknown, inherited, malformed or whitespace slugs cannot reach the provider', async t => {

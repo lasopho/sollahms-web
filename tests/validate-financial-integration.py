@@ -147,7 +147,7 @@ def main():
     parser.add_argument('--commercial-presentation', action='store_true',
                         help='Audit display-only changes with exact financial data, source and engine integrity')
     args = parser.parse_args()
-    if args.commercial_presentation or len(json.loads((ROOT / 'data/proyectos.json').read_text())) == 144:
+    if args.commercial_presentation or len(json.loads((ROOT / 'data/proyectos.json').read_text())) in {136, 137, 144}:
         result = validate_commercial_source()
         # Preserve the full shared navigation assertions as well as the
         # exact financial bytes proven by the successor source audit.
@@ -249,7 +249,7 @@ def main():
     check(restored_financial == old_financial, 'Bank/reference/source data changed beyond the approved official UF update')
     for path in ['assets/js/mortgage-engine.mjs', 'assets/js/mortgage-data.mjs', 'docs/cmf-fuentes-hipotecarias-2026-10-09.md']:
         check((ROOT / path).read_bytes() == baseline(path, comparador), f'Existing financial engine/source evidence changed: {path}')
-    data_changes = git('diff', '--name-only', fichas, '--', 'data').decode().splitlines()
+    data_changes = git('diff', '--no-ext-diff', '--name-only', fichas, '--', 'data').decode().splitlines()
     allowed_data_changes = {'data/hipotecario.json'}
     if args.brochure_review:
         allowed_data_changes.update({'data/brochures-ingevec.json', 'data/brochures-aj-urbana.json'})

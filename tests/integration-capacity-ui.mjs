@@ -143,7 +143,7 @@ test('optional search leaves all136 catalogue projects and storage untouched unt
   const ui = await frontend();
   assert.equal(ui.field('form').hidden, true);
   assert.equal(ui.changeCount(), 0);
-  assert.equal(ui.search.sortProjects([...catalogue]).length, 136);
+  assert.equal(ui.search.sortProjects([...catalogue]).length, 137);
   assert.equal(ui.card(catalogue[0]).querySelector('.capacity-result'), null);
   assert.match(ui.field('uf').textContent, /41\.136,24/);
   assert.match(ui.field('uf').textContent, /2026-10-10/);
@@ -154,9 +154,9 @@ test('optional search leaves all136 catalogue projects and storage untouched unt
 
 test('no rate retains136 E results, including106 known prices and30 missing prices, without fake dividends', async () => {
   const ui = await frontend(); ui.set({ ...valid, rate: '' }); await ui.submit();
-  assert.match(ui.field('summary').textContent, /Evaluación de 136 proyectos/);
-  assert.match(ui.field('summary').textContent, /E: 136/);
-  const sorted = ui.search.sortProjects([...catalogue]); assert.equal(sorted.length, 136);
+  assert.match(ui.field('summary').textContent, /Evaluación de 137 proyectos/);
+  assert.match(ui.field('summary').textContent, /E: 137/);
+  const sorted = ui.search.sortProjects([...catalogue]); assert.equal(sorted.length, 137);
   let priceCount = 0;
   for (const project of sorted) {
     const article = ui.card(project);

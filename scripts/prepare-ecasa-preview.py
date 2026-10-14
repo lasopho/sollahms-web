@@ -40,18 +40,22 @@ spec.loader.exec_module(release)
 
 
 def make_reference(metadata, platform, files, commit):
+    leben = metadata.get('lebenReview')
+    profile = 'protected_leben_review' if leben else 'protected_ecasa_review'
     release.require(metadata.get('target') == 'preview' and
-                    metadata.get('contentProfile') == 'protected_ecasa_review', 'A protected Preview bundle is required')
+                    metadata.get('contentProfile') == profile, 'A protected Preview bundle is required')
     release.require(metadata.get('reviewCommit') == commit, 'Bundle review commit differs from current HEAD')
-    release.require(metadata.get('branch') == 'codex/ecasa-cartera-definitiva', 'Unexpected protected Ecasa review branch')
-    release.require(metadata.get('catalogueProjects') == 136 and metadata.get('ecasaProjects') == 15 and
+    release.require(metadata.get('branch') == ('codex/leben-brochures-nordico' if leben else 'codex/ecasa-cartera-definitiva'), 'Unexpected protected review branch')
+    leben_inventory = release.leben_policy_inventory(metadata, files)
+    catalogue_count = metadata.get('catalogueProjects')
+    release.require(catalogue_count == (137 if leben else 136) and metadata.get('ecasaProjects') == 15 and
                     metadata.get('ecasaCommercialEntries') == 22 and metadata.get('ecasaLegacyRoutes') == 8,
                     'Incorrect Ecasa catalogue composition')
     manual_summary = release.manual_policy_inventory(metadata, files)
     expected_ecasa = 74 + manual_summary['documentaryPublishedImages'] if manual_summary else 126
-    release.require(metadata.get('sourceBrochureMedia') == 399 and metadata.get('ecasaSourceMedia') == 130 and
+    release.require(metadata.get('sourceBrochureMedia') == 399 + len(leben_inventory) and metadata.get('ecasaSourceMedia') == 130 and
                     metadata.get('ecasaPublishedMedia') == expected_ecasa and
-                    len(metadata['selectedBrochureMedia']) == 269 + expected_ecasa,
+                    len(metadata['selectedBrochureMedia']) == 269 + expected_ecasa + len(leben_inventory),
                     'Original and published brochure selections must remain distinct and exact')
     tools = metadata.get('verificationTools', [])
     release.require(isinstance(tools, list) and len(tools) == 3 and
@@ -65,19 +69,21 @@ def make_reference(metadata, platform, files, commit):
         release.official_policy_inventory(metadata, files)
     tracked_names = set(release.git(ROOT, 'ls-tree', '-rz', '--name-only', commit).decode().split('\0'))
     tracked = sum(name in tracked_names for name in files)
-    return {'schemaVersion': 1, 'contentProfile': 'protected_ecasa_review',
+    return {'schemaVersion': 1, 'contentProfile': profile,
+            **({'lebenReview': leben, 'lebenReviewMedia': len(leben_inventory)} if leben else {}),
+            **({'lebenPublicWebRights': 'pending_contract_scope_verification'} if leben else {}),
             'approvedAppCommit': commit, 'preparedCommitForReview': commit,
             'developmentBranch': metadata['branch'],
             **{key: platform[key] for key in ['projectId', 'teamId', 'teamSlug', 'projectName', 'productionOrigin']},
             'archiveSha256': metadata['archive']['sha256'], 'archiveBytes': metadata['archive']['size'],
             'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
             'trackedSourceFiles': tracked, 'privateSourceFiles': len(files) - tracked,
-            'privateMediaFolders': ['ingevec-preview', 'ecasa-preview'] + ([release.OFFICIAL_FOLDER] if official else []),
-            'catalogueProjects': 136, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
+            'privateMediaFolders': ['ingevec-preview', 'ecasa-preview'] + ([release.LEBEN_FOLDER] if leben else []) + ([release.OFFICIAL_FOLDER] if official else []),
+            'catalogueProjects': catalogue_count, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
             'ecasaLegacyRoutes': 8, 'ingevecProjects': 16,
-            'htmlPages': 143, 'selectedBrochureMedia': len(metadata['selectedBrochureMedia']),
+            'htmlPages': catalogue_count + 7, 'selectedBrochureMedia': len(metadata['selectedBrochureMedia']),
             'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
-            'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': expected_ecasa,
+            'sourceBrochureMedia': 399 + len(leben_inventory), 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': expected_ecasa,
             'imageQuality': metadata['imageQuality'],
             **({'officialSourceMedia': metadata['officialSourceMedia'],
                 'officialPublishedMedia': metadata['officialPublishedMedia'],
@@ -102,7 +108,7 @@ def preview_request(policy, metadata):
         'meta': {'githubCommitRef': policy['developmentBranch'],
                  'githubCommitSha': policy['preparedCommitForReview'],
                  'privateSourceArchiveSha256': policy['archiveSha256'],
-                 'sollahmsContentProfile': 'protected_ecasa_review'},
+                 'sollahmsContentProfile': policy['contentProfile']},
         'projectSettings': {'framework': None, 'buildCommand': 'node scripts/package-vercel.mjs',
                             'outputDirectory': 'dist', 'nodeVersion': '24.x'}}}
 
@@ -158,7 +164,7 @@ def main():
                       'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
                       **{key: metadata[key] for key in ['officialOriginals', 'officialSourceMedia',
                          'officialPublishedMedia', 'ecasaGalleryImages', 'contentProfile',
-                         'manualQuality', 'ecasaPublishedMedia'] if key in metadata}}
+                         'manualQuality', 'ecasaPublishedMedia', 'lebenReview', 'lebenReviewMedia'] if key in metadata}}
     files = release.verify_archive(archive, initial_policy)
     reference = make_reference(metadata, platform, files, commit)
     release.verify_git_reference(ROOT, files, reference)
@@ -185,11 +191,17 @@ def main():
                     'Official review originals or selected images differ from source archive')
     original_media = manifest_media(manifests)
     expected_media = published_media(original_media, quality, manual_manifest, official_manifest)
-    release.require(len(original_media) == 399 and
-                    len(expected_media) == 269 + reference['ecasaPublishedMedia'] and selected_inventory == expected_media,
+    if reference.get('lebenReview'):
+        with tarfile.open(archive, 'r:gz') as source_archive:
+            leben_manifest = json.loads(source_archive.extractfile(release.LEBEN_MANIFEST).read())
+        leben = release.leben_manifest_inventory(leben_manifest)
+        original_media.update({name: item['sha256'] for name, item in leben.items()})
+        expected_media.update({name: item['sha256'] for name, item in leben.items()})
+    release.require(len(original_media) == 399 + reference.get('lebenReviewMedia', 0) and
+                    len(expected_media) == 269 + reference['ecasaPublishedMedia'] + reference.get('lebenReviewMedia', 0) and selected_inventory == expected_media,
                     'Brochure receipt differs from the exact reviewed publication selection')
     archived_derivatives = {name for name in files if any(name.startswith('assets/propiedades/' + folder + '/')
-                                                        for folder in MANIFEST_FOLDERS.values())}
+                                                        for folder in [*MANIFEST_FOLDERS.values(), release.LEBEN_FOLDER])}
     release.require(archived_derivatives == original_media.keys(), 'Original derivative omitted or candidate added in source archive')
     release.require(all(files.get(name, {}).get('sha256') == digest for name, digest in original_media.items()),
                     'Original brochure media differs from source archive')

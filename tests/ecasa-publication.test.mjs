@@ -173,7 +173,7 @@ function packagingFixture() {
     copyFileSync(resolve(source, path), destination);
   };
   for (const path of ['scripts/package-vercel.mjs', 'scripts/public-fiche-copy.mjs', 'scripts/ecasa-image-quality.mjs',
-    'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/public-caption-policy.json',
+    'scripts/brochure-publication.mjs', 'scripts/leben-publication.mjs', 'scripts/ecasa-publication.mjs', 'data/public-caption-policy.json',
     'data/ecasa-image-quality.json', 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
     'data/proyectos.json', 'data/hipotecario.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json',
     'assets/css/aj-brochure-preview.css', 'sitemap.xml', 'robots.txt']) copy(path);

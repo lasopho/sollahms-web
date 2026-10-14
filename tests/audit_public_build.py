@@ -365,12 +365,22 @@ def audit(source, public, preview, protected_review=False, node=None):
         require(caption_policy.get('schemaVersion') == 1 and
                 (source / 'scripts/public-fiche-copy.mjs').is_file(), 'The reviewed display-copy policy or its consumer is missing')
 
+    leben_path = source / release_inventory.LEBEN_MANIFEST
+    leben_manifest = json.loads(leben_path.read_text()) if leben_path.exists() else None
+    leben_assets = {}
+    if leben_manifest is not None:
+        require(protected_review, 'Leben supplement is only eligible for protected review')
+        try:
+            leben_assets = release_inventory.leben_manifest_inventory(leben_manifest)
+        except (ValueError, KeyError, TypeError) as error:
+            require(False, 'Leben selected evidence is invalid: ' + str(error))
     catalogue = json.loads((public / 'data/proyectos.json').read_text())
     slugs = {p['slug'] for p in catalogue}
     counts['projects'] = len(catalogue)
     counts['ingevec'] = sum(p['inmobiliaria'] == 'Ingevec' for p in catalogue)
     counts['ecasa'] = sum(p['inmobiliaria'].lower() == 'ecasa' for p in catalogue)
-    require(len(catalogue) == len(slugs) == 136, 'Catalogue must contain exactly 136 distinct projects')
+    expected_project_count = 137 if 'edificio-nordico' in slugs else 136
+    require(len(catalogue) == len(slugs) == expected_project_count, 'Catalogue may only add Nórdico to the 136 consolidated identities')
     require({p['slug'] for p in catalogue if p['inmobiliaria'] == 'Ingevec'} == INGEVEC,
             'The sixteen approved Ingevec identities must remain exact')
     require({p['slug'] for p in catalogue if p['inmobiliaria'].lower() == 'ecasa'} == ECASA,
@@ -495,7 +505,7 @@ def audit(source, public, preview, protected_review=False, node=None):
 
     urls = [node.text for node in ET.parse(public / 'sitemap.xml').iter() if node.tag.endswith('}loc')]
     sitemap_expected = {'https://sollahms.cl/' + p for p in expected_pages - {'404.html', 'index.html'}} | {'https://sollahms.cl/'}
-    require(set(urls) == sitemap_expected and len(urls) == len(set(urls)) == 142, 'Sitemap does not match the 142 indexable public pages')
+    require(set(urls) == sitemap_expected and len(urls) == len(set(urls)) == expected_project_count + 6, 'Sitemap does not match all indexable public pages')
     counts['sitemapUrls'] = len(urls)
     robots = (public / 'robots.txt').read_text()
     require('Allow: /' in robots and 'Disallow: /' not in robots and 'Sitemap: https://sollahms.cl/sitemap.xml' in robots,
@@ -653,7 +663,18 @@ def audit(source, public, preview, protected_review=False, node=None):
     actual_ecasa_public = {f for f in files if f.startswith('assets/propiedades/ecasa-preview/')}
     require(actual_ecasa_public == (set() if protected_review else ecasa_chosen),
             'Ecasa media public eligibility does not match the requested audit profile')
-    expected_preview_files = files | ecasa_chosen | set(official_published) if protected_review else files
+    leben_chosen = set(leben_assets)
+    require(not any(name.startswith('assets/propiedades/' + release_inventory.LEBEN_FOLDER + '/') for name in files),
+            'Leben private resource leaked to the public profile')
+    require({name for name in preview_files if name.startswith('assets/propiedades/' + release_inventory.LEBEN_FOLDER + '/')} == leben_chosen,
+            'Leben Preview omitted a selected resource or published a candidate')
+    for name, item in leben_assets.items():
+        require((source / name).is_file() and digest(source / name) == item['sha256'], 'Leben source bytes differ from the selected manifest: ' + name)
+        require(name in preview_files and digest(preview / name) == item['sha256'], 'Leben Preview bytes differ from the selected manifest: ' + name)
+        slug = name.split('/')[3]
+        require(item['path'] in (preview / (slug + '.html')).read_text(), 'Leben selected resource is absent from its own fiche: ' + name)
+    counts['lebenMedia'] = len(leben_chosen)
+    expected_preview_files = files | ecasa_chosen | set(official_published) | leben_chosen if protected_review else files
     require(preview_files == expected_preview_files, 'Protected Preview and public build contain unexpected different files')
     expected_preview_catalogue = json.loads(json.dumps(catalogue))
     if quality_policy:
@@ -677,7 +698,14 @@ def audit(source, public, preview, protected_review=False, node=None):
                     expected_by_slug[record['slug']]['imagenEtapa'] = image['etapa']
     if official_manifest:
         expected_preview_catalogue = official_catalogue(expected_preview_catalogue, official_manifest, caption_policy)
-    require(preview_catalogue == expected_preview_catalogue, 'Ecasa Preview changed commercial data beyond reviewed covers')
+    if leben_manifest:
+        expected_by_slug = {project['slug']: project for project in expected_preview_catalogue}
+        for record in leben_manifest['projects']:
+            cover = record.get('catalogueCover')
+            if cover:
+                expected_by_slug[record['slug']]['imagenPrincipal'] = cover['localPath']
+                expected_by_slug[record['slug']]['imagenAlt'] = natural_caption(cover['alt'], caption_policy) if caption_policy else cover['alt']
+    require(preview_catalogue == expected_preview_catalogue, 'Protected Preview changed commercial data beyond reviewed covers')
     preview_documents = {page: Document((preview / page).read_text()) for page in expected_pages & preview_files}
     for legacy, (target, stage) in LEGACY_TARGETS.items():
         require('etapa-' + str(stage) in preview_documents.get(target + '.html', Document('')).ids,
@@ -709,6 +737,15 @@ def audit(source, public, preview, protected_review=False, node=None):
                 expected_public_html = quality_projections['public'][path] if quality_projections else normalize_fiche_copy(selected_ecasa_html(original, False), caption_policy)
                 require(normalized_preview(text) == expected_preview_html, 'Ecasa Preview differs from selected source and reviewed display/visual policy: ' + path)
                 require((public / path).read_text() == expected_public_html, 'Ecasa public fallback differs from selected source and reviewed display/visual policy: ' + path)
+            elif leben_manifest and path.removesuffix('.html') in release_inventory.LEBEN_SLUGS:
+                original = (source / path).read_text()
+                def select_life(included):
+                    remove, keep = ('PUBLIC', 'PREVIEW') if included else ('PREVIEW', 'PUBLIC')
+                    projected = re.sub(r'<!--LEBEN_' + remove + r'_START-->[\s\S]*?<!--LEBEN_' + remove + r'_END-->', '', original)
+                    projected = re.sub(r'<!--LEBEN_' + keep + r'_(?:START|END)-->', '', projected)
+                    return normalize_fiche_copy(projected, caption_policy)
+                require(normalized_preview(text) == select_life(True), 'Leben Preview differs from its documented source projection: ' + path)
+                require((public / path).read_text() == select_life(False), 'Leben public fallback differs from its source projection: ' + path)
             else:
                 require(normalized_preview(text) == (public / path).read_text(), 'Preview/public commercial content differs: ' + path)
         elif protected_review and path == 'data/proyectos.json':
@@ -717,15 +754,18 @@ def audit(source, public, preview, protected_review=False, node=None):
             require(digest(preview / path) == digest(public / path), 'Preview/public asset or data differs: ' + path)
     return {'ok': not errors, 'networkRequests': 0, 'realMessages': 0, 'realReservations': 0,
             'counts': counts, 'errors': errors, 'warnings': warnings,
-            'auditProfile': 'protected_ecasa_review' if protected_review else 'public_web_parity',
+            'auditProfile': ('protected_leben_review' if leben_manifest else 'protected_ecasa_review') if protected_review else 'public_web_parity',
             'allowedPreviewDifferences': ['noindex meta', 'robots Disallow', 'read-only forms notice'] +
-                (['documented Ecasa brochure blocks, covers and selected derivatives'] if protected_review else []),
+                (['documented Ecasa brochure blocks, covers and selected derivatives'] if protected_review else []) +
+                (['complementary Leben brochure blocks and exactly selected private derivatives'] if leben_manifest else []),
             'ecasaPublicWebParityVerified': not protected_review and not errors,
             'productionDeploymentAuthorized': False,
             'displayCopyPolicySha256': digest(policy_path) if caption_policy is not None else None,
             'imageQualityPolicySha256': digest(quality_path) if quality_policy is not None else None,
             'officialOriginalsManifestSha256': digest(source / release_inventory.OFFICIAL_MANIFEST) if official_manifest else None,
             'manualQualityManifestSha256': digest(manual_path) if manual_policy else None,
+            'lebenManifestSha256': digest(leben_path) if leben_manifest else None,
+            'lebenPublicWebParityVerified': False if leben_manifest else None,
             'providerAvailabilityVerified': False}
 
 

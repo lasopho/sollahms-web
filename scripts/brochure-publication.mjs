@@ -59,6 +59,18 @@ export const brochureFingerprint = value => createHash('sha256')
   .update(JSON.stringify(canonicalBrochureValue(value))).digest('hex');
 
 export function assertBrochureCatalogue(projects) {
+  // Nórdico is the only authorized catalogue addition. All 136 consolidated
+  // objects retain the existing fingerprints and identity checks below.
+  const nordico = projects.filter(project => project.slug === 'edificio-nordico');
+  if (nordico.length) {
+    if (nordico.length !== 1 || projects.length !== 137 || nordico[0].inmobiliaria !== 'Leben' ||
+        nordico[0].detalleUrl !== '/edificio-nordico.html' ||
+        nordico[0].verificacion?.fuente !== 'https://nordico.ileben.cl/' ||
+        nordico[0].verificacion?.estadoFuente !== 'verified') {
+      throw new Error('The authorized Nórdico addition requires one verified Leben identity');
+    }
+    projects = projects.filter(project => project.slug !== 'edificio-nordico');
+  }
   const allowed = new Set(BROCHURE_INGEVEC_SLUGS);
   const ecasaAllowed = new Set(BROCHURE_ECASA_SLUGS);
   const slugs = new Set(projects.map(project => project.slug));

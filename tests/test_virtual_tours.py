@@ -11,6 +11,7 @@ import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
+from leben_scope import original_html
 from string import Template
 from urllib.parse import urlparse
 from virtual_tour_scope import exact_removed_page, VISTA_UNAVAILABLE_URL
@@ -53,11 +54,11 @@ class VirtualTours(unittest.TestCase):
         for path in ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
                      'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']:
             self.assertEqual(restore_successor_data(path, (ROOT / path).read_bytes()), json.loads(original(path)), path) if path.endswith(('proyectos.json', 'registro-fichas.json')) else self.assertEqual((ROOT / path).read_bytes(), original(path), path)
-        self.assertEqual(len(PROJECTS), 136)
-        self.assertEqual(len(EXPANDED_RECORDS), 143)
+        self.assertEqual(len(PROJECTS), 137)
+        self.assertEqual(len(EXPANDED_RECORDS), 144)
         self.assertEqual(sum(bool(r['virtualTours']) for r in EXPANDED_RECORDS.values()), 61)
         self.assertEqual(sum(len(r['virtualTours']) for r in EXPANDED_RECORDS.values()), 99)
-        self.assertEqual({r['slug']: r for r in json.loads(consolidation_bytes('data/fichas-proyectos.json'))}, EXPANDED_RECORDS)
+        self.assertEqual({r['slug']: r for r in json.loads(consolidation_bytes('data/fichas-proyectos.json'))}, {slug: record for slug, record in EXPANDED_RECORDS.items() if slug != 'edificio-nordico'})
 
     def test_59_canonical_tour_pages_preserve_all_97_authorized_experiences_and_exact_non_ecasa_scope(self):
         preserved = [r for r in RECORDS.values() if canonical_tours(r)]
@@ -72,7 +73,7 @@ class VirtualTours(unittest.TestCase):
             before = original(path)
             removed = exact_removed_page(before, r['slug'])
             self.assertEqual(removed, main_bytes(path), path + ': approved tour withdrawal baseline')
-            self.assertEqual((ROOT / path).read_bytes(), expected_automatic_file(path), path)
+            self.assertEqual(original_html((ROOT / path).read_text()).encode(), expected_automatic_file(path), path)
             untouched += removed == before
             corrected += removed != before
         self.assertEqual((untouched, corrected), (44, 1))
@@ -81,7 +82,7 @@ class VirtualTours(unittest.TestCase):
 
     def test_all_77_absent_or_unassociated_canonical_sections_are_removed(self):
         hidden = [r for r in RECORDS.values() if not canonical_tours(r)]
-        self.assertEqual(len(hidden), 77)
+        self.assertEqual(len(hidden), 78)
         for r in hidden:
             page = (ROOT / (r['slug'] + '.html')).read_text()
             self.assertNotRegex(page, r'id=["\']recorrido["\']|href=["\']#recorrido["\']')
@@ -122,11 +123,11 @@ class VirtualTours(unittest.TestCase):
 
     def test_photos_and_plan_elements_are_unchanged(self):
         for p in PROJECTS:
-            if p['inmobiliaria'] == 'Ecasa':
+            if p['inmobiliaria'] == 'Ecasa' or p['slug'] == 'edificio-nordico':
                 continue  # Exact Ecasa fallback and selected additions have independent successor checks.
             path = p['slug'] + '.html'
             images = lambda html: [a for tag, a in Nodes(html).nodes if tag == 'img']
-            self.assertEqual(images((ROOT / path).read_text()), images(original(path).decode()), path)
+            self.assertEqual(images(original_html((ROOT / path).read_text())), images(original(path).decode()), path)
 
     def test_search_and_mortgage_comparator_sources_are_unchanged(self):
         paths = ['index.html', 'proyectos.html', 'comparador-hipotecario.html',
@@ -160,7 +161,9 @@ class VirtualTours(unittest.TestCase):
         other = ecasa = 0
         for project in PROJECTS:
             path = project['slug'] + '.html'
-            current = (ROOT / path).read_bytes()
+            current = original_html((ROOT / path).read_text()).encode()
+            if project['slug'] == 'edificio-nordico':
+                continue  # Its official source has independent new-project coverage.
             if project['inmobiliaria'] == 'Ecasa':
                 validate_reviewed_page(path, current)
                 ecasa += 1
@@ -184,6 +187,9 @@ class VirtualTours(unittest.TestCase):
             self.assertNotIn('Abrir recorrido original', page, slug)
             frames = [attrs for tag, attrs in nodes if tag == 'iframe']
             map_frames = [attrs for attrs in frames if attrs.get('src', '').startswith('https://www.google.com/maps')]
+            if slug == 'edificio-nordico':
+                self.assertEqual(len(map_frames), 1)
+                continue  # The new official map has no historical source.
             sources = stage_records(RECORDS[slug])
             before = [node for source in sources for node in Nodes(consolidation_bytes(source['slug'] + '.html').decode()).nodes]
             previous_maps = [attrs.get('src') or attrs.get('data-embed-src') for tag, attrs in before

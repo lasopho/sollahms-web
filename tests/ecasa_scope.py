@@ -10,6 +10,7 @@ import hashlib
 import json
 import subprocess
 from pathlib import Path
+from leben_scope import original_html, original_context, assert_base_records
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = 'f1e9bf1715cc99d095a367eba9028a9a1ad2b026'
@@ -110,8 +111,11 @@ def expected_consolidation(path):
 def validate_successor_data(path, actual=None):
     current = json.loads(actual if actual is not None else (ROOT / path).read_bytes())
     expected = expected_consolidation(path)
-    assert len(current) == len({row['slug'] for row in current}) == 136, path + ': expected 136 unique canonical projects'
-    assert current == expected, path + ': changes exceed the exact 15-project/22-origin Ecasa consolidation'
+    if any(row['slug'] == 'edificio-nordico' for row in current):
+        assert_base_records(current, expected, path)
+    else:
+        assert len(current) == len({row['slug'] for row in current}) == 136, path + ': expected 136 unique canonical projects'
+        assert current == expected, path + ': changes exceed the exact 15-project/22-origin Ecasa consolidation'
     return current
 
 def restore_successor_data(path, actual):
@@ -122,6 +126,7 @@ def restore_successor_data(path, actual):
     return [row if row['slug'] in old_ecasa else lookup[row['slug']] for row in base]
 
 def public_fallback(text):
+    text = original_html(text)
     import re
     for start, end in [('ECASA_PREVIEW_START', 'ECASA_PREVIEW_END'), ('ECASA_PUBLIC_START', 'ECASA_PUBLIC_END')]:
         assert text.count('<!--' + start + '-->') == text.count('<!--' + end + '-->'), 'Unpaired Ecasa packaging marker'
@@ -149,6 +154,8 @@ def validate_alias_route(slug):
         assert matches == [{'source': source, 'destination': destination, 'permanent': True}], source + ': exact canonical stage redirect missing'
 
 def restore_context_file(path, current):
+    if path == 'lib/project-context.mjs':
+        current = original_context(current)
     review = json.loads(CONTEXT_REVIEW.read_text())
     assert review['baselineCommit'] == CONSOLIDATION_BASE and review['scope'] == 'canonical_and_commercial_stage_context_only'
     if path not in review['files']:

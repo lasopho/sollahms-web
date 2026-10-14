@@ -83,7 +83,7 @@ def main():
     parser.add_argument('--commercial-presentation', action='store_true',
                         help='Audit display-only changes against the fixed approved 148-page brochure integration')
     args = parser.parse_args()
-    if args.commercial_presentation or len(json.loads((ROOT / 'data/proyectos.json').read_text())) == 144:
+    if args.commercial_presentation or len(json.loads((ROOT / 'data/proyectos.json').read_text())) in {136, 137, 144}:
         return validate_commercial_source()
     ref = REVIEW_BASELINE if args.brochure_review else args.baseline
     projects = json.loads((ROOT / 'data/proyectos.json').read_text())
@@ -178,7 +178,7 @@ def main():
         maps += sum('www.google.com/maps' in url for url in rendered)
         tours += sum('www.google.com/maps' not in url for url in rendered)
 
-    asset_changes = git('diff', '--name-only', ref, '--', 'assets/propiedades').decode().splitlines()
+    asset_changes = git('diff', '--no-ext-diff', '--name-only', ref, '--', 'assets/propiedades').decode().splitlines()
     untracked_assets = git('ls-files', '--others', '--exclude-standard', '--', 'assets/propiedades').decode().splitlines()
     check(not asset_changes and not untracked_assets, 'Existing official asset set changed or photos were downloaded again')
     asset_paths = git('ls-tree', '-r', '--name-only', ref, 'assets/propiedades').decode().splitlines()

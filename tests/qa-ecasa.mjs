@@ -258,9 +258,9 @@ try {
       await page.locator('#capacity-savings').fill('20000000');
       await page.locator('#capacity-rate').fill('4.5');
       await page.locator('#capacity-submit').click();
-      await page.waitForFunction(() => document.querySelector('#capacity-summary').textContent.includes('136'));
+      await page.waitForFunction(() => document.querySelector('#capacity-summary').textContent.includes('137'));
       check(!(await page.locator('#capacity-error').textContent()).trim(), viewport.name + ' capacity calculation');
-      check(await page.locator('.catalog-card').count() === 136, viewport.name + ' capacity retains the portfolio');
+      check(await page.locator('.catalog-card').count() === 137, viewport.name + ' capacity retains the portfolio');
     } else check(false, 'Search control selector');
     await page.goto(base + '/comparador-hipotecario.html', { waitUntil: 'domcontentloaded' });
     await page.locator('#property').fill('3500');

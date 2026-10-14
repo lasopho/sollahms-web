@@ -26688,5 +26688,191 @@
       "scope": "Etapa III únicamente",
       "surfacesPolicy": "Referenciales; no sustituir medidas de la unidad ofertada"
     }
+  },
+  {
+    "slug": "edificio-nordico",
+    "sourceUrl": "https://nordico.ileben.cl/",
+    "checkedAt": "2026-10-13",
+    "sourceStatus": "verified",
+    "sourceNotes": "Fuente oficial sin brochure ni sección de plantas encontrada. El rango 42–120 m² no distingue superficie útil o total. Desde UF 4.746 corresponde sólo a unidad 101, 1 dormitorio y 1 baño, y excluye estacionamiento y bodega; valor sujeto a confirmación. No inferir características materiales desde renders. La ubicación 360 está asociada al proyecto, pero su funcionamiento y alcance quedan por revisar.",
+    "verifiedFields": [
+      "nombre",
+      "inmobiliaria",
+      "comuna",
+      "region",
+      "direccion",
+      "estado",
+      "tipologias",
+      "precioDesdeUF",
+      "amenities",
+      "descripcionLarga",
+      "superficieDesdeM2",
+      "mapQuery"
+    ],
+    "updates": {
+      "nombre": "Edificio Nórdico",
+      "inmobiliaria": "Leben",
+      "comuna": "Puerto Varas",
+      "region": "Los Lagos",
+      "direccion": "Del Rosario esquina Mirador",
+      "estado": "Venta en blanco",
+      "entrega": null,
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios",
+        "3 dormitorios"
+      ],
+      "precioDesdeUF": 4746,
+      "amenities": [
+        "Quincho techado",
+        "Salón gourmet",
+        "Piscina temperada",
+        "Hidromasaje",
+        "Sauna",
+        "Gimnasio",
+        "Patio interior",
+        "Bicicletero"
+      ],
+      "descripcionLarga": "Edificio Nórdico es un proyecto de Leben en Del Rosario esquina Mirador, Puerto Varas. Su propuesta de diseño escandinavo contempla departamentos de 1, 2 y 3 dormitorios y espacios comunes para disfrutar. La información oficial anuncia superficies de 42 a 120 m²; confirma la superficie y las vistas de la unidad al consultar.",
+      "superficieDesdeM2": 42,
+      "mapQuery": "Del Rosario esquina Mirador, Puerto Varas, Los Lagos, Chile"
+    },
+    "specs": {
+      "utilM2": null,
+      "totalM2": null,
+      "terrenoM2": null,
+      "dormitorios": "1–3",
+      "banos": null
+    },
+    "images": [
+      {
+        "url": "https://nordico.ileben.cl/wp-content/uploads/2026/02/PERSPECTIVA-NORDICO-baja.jpg",
+        "alt": "Render oficial referencial de la fachada de Edificio Nórdico",
+        "sourceUrl": "https://nordico.ileben.cl/",
+        "localPath": "/assets/propiedades/catalogo/4ad3049986c206d1795aa28d.webp",
+        "width": 1969,
+        "height": 1108,
+        "qualityStatus": "approved",
+        "type": "render"
+      },
+      {
+        "url": "https://nordico.ileben.cl/wp-content/uploads/2026/02/PERS-NORDICO-AREA-baja-e1770234860807.jpg",
+        "alt": "Render oficial referencial de Nórdico y su entorno junto al Lago Llanquihue",
+        "sourceUrl": "https://nordico.ileben.cl/",
+        "localPath": "/assets/propiedades/catalogo/621ea8c3115eaa270cac53a4.webp",
+        "width": 1890,
+        "height": 790,
+        "qualityStatus": "approved",
+        "type": "render"
+      },
+      {
+        "url": "https://nordico.ileben.cl/wp-content/uploads/2026/01/Aerea_Vista_Volcanes.jpg",
+        "alt": "Fotografía oficial del Lago Llanquihue y volcanes en el entorno de Puerto Varas",
+        "sourceUrl": "https://nordico.ileben.cl/",
+        "localPath": "/assets/propiedades/catalogo/caca55441619278454bdf5f1.webp",
+        "width": 1200,
+        "height": 588,
+        "qualityStatus": "approved",
+        "type": "entorno"
+      }
+    ],
+    "virtualTours": [],
+    "pendingFields": [
+      "Brochure oficial de Edificio Nórdico",
+      "Plantas individuales por modelo",
+      "Superficies útiles, terrazas y totales por modelo",
+      "Clasificación útil/total del rango general de superficie de 42–120 m²",
+      "Fecha o semestre de entrega",
+      "Terminaciones y equipamiento de los departamentos",
+      "Cantidad de departamentos",
+      "Cantidad de pisos",
+      "Disponibilidad y precio de cada unidad",
+      "Baños por tipología (únicamente unidad 101 acreditada como 1D1B)",
+      "Verificación visual de la ubicación 360 oficial de La Nube; no asumir recorrido interior"
+    ],
+    "additionalSources": [],
+    "sourceEvidence": "Encabezado y sección proyecto: 1, 2 y 3 dormitorios, 42–120 m², venta en blanco, UF 4.746. Sección espacios comunes: 8 amenities. Sección mapa: esquina Del Rosario/Mirador, Puerto Varas. Footer: valor de unidad 101, 1D1B, sin estacionamiento ni bodega.",
+    "verifiedFeatures": {
+      "edificio": "Diseño inspirado en la arquitectura escandinava",
+      "departamentos": null,
+      "terminaciones": [],
+      "entorno": "Ubicación en el centro de Puerto Varas, próxima al Lago Llanquihue; las vistas deben confirmarse por unidad."
+    },
+    "priceNote": "Desde UF 4.746 para la unidad 101, de 1 dormitorio y 1 baño. No incluye estacionamiento ni bodega. Confirma disponibilidad y condiciones comerciales.",
+    "fieldEvidence": {
+      "identity": {
+        "url": "https://nordico.ileben.cl/",
+        "section": "proyecto/footer",
+        "evidence": "El documento se titula Leben | Nordico y el footer identifica Edificio Nórdico."
+      },
+      "commercial": {
+        "url": "https://nordico.ileben.cl/",
+        "section": "proyecto/footer",
+        "facts": {
+          "state": "Venta en blanco",
+          "bedrooms": [
+            1,
+            2,
+            3
+          ],
+          "rangeM2": [
+            42,
+            120
+          ],
+          "rangeClass": null,
+          "priceUF": 4746,
+          "priceUnit": "101",
+          "priceUnitBedrooms": 1,
+          "priceUnitBathrooms": 1,
+          "excludes": [
+            "estacionamiento",
+            "bodega"
+          ]
+        }
+      },
+      "address": {
+        "url": "https://nordico.ileben.cl/",
+        "section": "mapa",
+        "value": "Del Rosario esquina Mirador, Puerto Varas"
+      },
+      "amenities": {
+        "url": "https://nordico.ileben.cl/",
+        "section": "espacios-comunes",
+        "values": [
+          "Quincho techado",
+          "Salón gourmet",
+          "Piscina temperada",
+          "Hidromasaje",
+          "Sauna",
+          "Gimnasio",
+          "Patio interior",
+          "Bicicletero"
+        ]
+      },
+      "notProvided": {
+        "sectionMissing": "#plantas no existe en DOM aunque el menú lo referencia",
+        "values": [
+          "Brochure oficial de Edificio Nórdico",
+          "Plantas individuales por modelo",
+          "Superficies útiles, terrazas y totales por modelo",
+          "Clasificación útil/total del rango general de superficie de 42–120 m²",
+          "Fecha o semestre de entrega",
+          "Terminaciones y equipamiento de los departamentos",
+          "Cantidad de departamentos",
+          "Cantidad de pisos",
+          "Disponibilidad y precio de cada unidad",
+          "Baños por tipología (únicamente unidad 101 acreditada como 1D1B)",
+          "Verificación visual de la ubicación 360 oficial de La Nube; no asumir recorrido interior"
+        ]
+      }
+    },
+    "qualityReview": {
+      "checkedAt": "2026-10-13",
+      "method": "original_full_image_visual_review",
+      "accepted": 3,
+      "lowResolutionIconsExcluded": 8
+    },
+    "documentaryPending": "Planos individuales y superficies por modelo pendientes de brochure",
+    "planPendingNote": "Los planos individuales y las superficies por modelo están por confirmar. Consulta los planos, las terminaciones, el equipamiento interior y la fecha de entrega de la unidad que te interesa."
   }
 ]

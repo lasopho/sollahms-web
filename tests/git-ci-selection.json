@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 312,
+  "expectedGitNodeTests": 315,
   "expectedReleaseOnlyCases": 25,
-  "expectedPythonFixtureTests": 123,
+  "expectedPythonFixtureTests": 130,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -103,6 +103,15 @@
         "FerroParque integrates its existing photograph first in the official grid while keeping previous figures ordered and Alto unchanged",
         "Cumbres retains only its facade at full width and natural aspect without changing other project layout or imagery",
         "source files, 136 identities, financial values, 22 stage snapshots and public projection remain exact"
+      ]
+    },
+    {
+      "file": "tests/leben-publication.test.mjs",
+      "reason": "Synthetic Leben provenance/native-quality and private-only publication guards; verifies the one authorized catalogue addition without private image bytes.",
+      "cases": [
+        "a synthetic reviewed Leben fixture selects only the twelve existing identities and grants protected review",
+        "missing original review, altered sources, rejected/upscaled media and foreign paths fail closed",
+        "Nórdico can extend the frozen catalogue once without changing any commercial baseline field"
       ]
     }
   ],

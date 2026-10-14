@@ -6,6 +6,7 @@ import unicodedata
 from pathlib import Path
 from fiche_presentation import commercialize_fiche
 from public_copy import natural_caption, natural_text
+from leben_brochure import augment_leben_page
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / 'data/brochures-aj-urbana.json'
@@ -34,6 +35,7 @@ def documentary_list(items):
 
 
 def augment_page(page, slug):
+    page = augment_leben_page(page, slug)
     for manifest, namespace, builder in [(MANIFEST, 'AJ', 'AJ Urbana'),
             (ROOT / 'data/brochures-ingevec.json', 'INGEVEC', 'Ingevec Inmobiliaria'),
             (ROOT / 'data/brochures-ecasa.json', 'ECASA', 'Ecasa')]:

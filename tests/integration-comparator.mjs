@@ -141,7 +141,7 @@ test('all136 project origins load exactly106 verified prices, leave30 pending bl
     else assert.ok(ui.elements['project-price-origin'].textContent.includes('pendiente de verificación'));
   }
   assert.equal(verified, 106);
-  assert.equal(catalogue.length - verified, 30);
+  assert.equal(catalogue.length - verified, 31);
 });
 
 test('project contact preserves trusted slug and9 mortgage inputs, never sends arbitrary subject/name or RUT', async () => {

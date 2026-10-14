@@ -14,6 +14,7 @@ from virtual_tour_scope import restore_reviewed_file, historical_commercial_rend
 from automatic_embed_scope import REVIEWED_ASSETS, restore_automatic_asset
 from map_cleanup_scope import restore_map_cleanup_asset
 from ecasa_scope import restore_context_file
+from leben_scope import original_image_sources, original_html, original_context, assert_base_records
 
 BASELINE = 'e903208160f62cc552e9efa4371a322ef75477b8'
 INGEVEC = {'centenario-1', 'tocornal', 'vivaceta'}
@@ -145,7 +146,10 @@ def assert_ingevec_manifest_addition(current, previous):
 
 def validate_commercial_source():
     """Successor audit scoped to display-only edits from the approved baseline."""
-    if len(json.loads((ROOT / 'data/proyectos.json').read_text())) == 144:
+    count = len(json.loads((ROOT / 'data/proyectos.json').read_text()))
+    if count in {136, 137}:
+        return validate_consolidated_source()
+    if count == 144:
         return validate_portfolio_source()
     def git(*args):
         return subprocess.check_output(['git', *args], cwd=ROOT)
@@ -294,6 +298,8 @@ def restore_reviewed_scope(after, before, path):
 
 
 def assert_launch_bytes(path, current, previous):
+    if path == 'data/fuentes-imagenes.json':
+        current = original_image_sources(current, previous)
     current = restore_context_file(path, current)
     if path == 'vercel.json':
         current = restore_map_cleanup_asset(path, current)
@@ -431,3 +437,79 @@ def validate_portfolio_source():
             'commercialPagesChecked':144,'resourceImageElementsPreserved':images,'modelIdsPreserved':models,'mapInstancesPreserved':maps,'embeddedTourInstancesPreserved':tours,'protectedAssetAndBackendFiles':assets,
             'commercialDataUnchanged':True,'contractScopeUnchanged':False,'contractScopeExactlyReviewed':True,
             'approvedUfAndSecurityChanges':sorted(LAUNCH_CHANGES),'mortgageMathAndBankReferencesUnchanged':True,'seoHeadAndScriptsUnchanged':True}
+
+
+CONSOLIDATED_REVIEW_BASELINE = '04d9628787c825532c3507a15db7f0f2cbb42c4b'
+
+def validate_consolidated_source():
+    """Forward check: preserve all 136 objects and fallbacks; allow only Nórdico."""
+    def baseline(path):
+        return subprocess.check_output(['git', 'show', CONSOLIDATED_REVIEW_BASELINE + ':' + path], cwd=ROOT)
+    catalogue = json.loads((ROOT / 'data/proyectos.json').read_text())
+    projects = json.loads(baseline('data/proyectos.json'))
+    added = [project for project in catalogue if project['slug'] == 'edificio-nordico']
+    assert len(catalogue) == len({project['slug'] for project in catalogue}) == 136 + len(added) and len(added) <= 1
+    assert len([project for project in catalogue if project['inmobiliaria'] == 'Ecasa']) == 15
+    for path in ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json']:
+        current, before = json.loads((ROOT / path).read_text()), json.loads(baseline(path))
+        if added:
+            assert_base_records(current, before, path)
+        else:
+            assert current == before, path + ': consolidated source changed'
+    sources = (ROOT / 'data/fuentes-imagenes.json').read_bytes()
+    if added:
+        original_image_sources(sources, baseline('data/fuentes-imagenes.json'))
+    else:
+        assert sources == baseline('data/fuentes-imagenes.json')
+    for path in ['data/brochures-aj-urbana.json', 'data/brochures-ingevec.json', 'data/brochures-ecasa.json',
+                 'data/ecasa-image-quality.json', 'data/ecasa-manual-quality.json', 'data/ecasa-official-originals.json',
+                 'data/hipotecario.json', 'robots.txt', 'privacidad.html', 'index.html', 'proyectos.html',
+                 'contacto.html', 'agenda-asesoria.html', 'comparador-hipotecario.html', '404.html']:
+        assert (ROOT / path).read_bytes() == baseline(path), path + ': previously reviewed source changed'
+    checked_assets = 0
+    tree = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', CONSOLIDATED_REVIEW_BASELINE,
+                                    '--', 'assets', 'api', 'lib'], cwd=ROOT).decode().splitlines()
+    for path in tree:
+        current = (ROOT / path).read_bytes()
+        if path == 'lib/project-context.mjs':
+            current = original_context(current)
+        assert current == baseline(path), path + ': existing resource, financial logic or backend changed'
+        checked_assets += 1
+    for project in projects:
+        path = project['slug'] + '.html'
+        assert original_html((ROOT / path).read_text()).encode() == baseline(path), path + ': existing fallback changed'
+    expected_pages = {project['slug'] + '.html' for project in catalogue} | {'404.html', 'agenda-asesoria.html',
+                       'comparador-hipotecario.html', 'contacto.html', 'index.html', 'privacidad.html', 'proyectos.html'}
+    assert {path.name for path in ROOT.glob('*.html')} == expected_pages, 'Unapproved or missing public HTML route'
+    configuration = json.loads((ROOT / 'vercel.json').read_text())
+    assert configuration['git']['deploymentEnabled']['main'] is False
+    if 'codex/leben-brochures-nordico' in configuration['git']['deploymentEnabled']:
+        assert configuration['git']['deploymentEnabled'].pop('codex/leben-brochures-nordico') is False
+    assert configuration == json.loads(baseline('vercel.json')), 'Routing, security or previous deployment gates changed'
+    urls = lambda text: re.findall(r'<loc>(.*?)</loc>', text)
+    sitemap = urls((ROOT / 'sitemap.xml').read_text())
+    previous_urls = urls(baseline('sitemap.xml').decode())
+    assert len(sitemap) == len(set(sitemap)) == len(catalogue) + 6
+    assert [url for url in sitemap if url != 'https://sollahms.cl/edificio-nordico.html'] == previous_urls
+    leben_media = 0
+    manifest_path = ROOT / 'data/brochures-leben.json'
+    if manifest_path.exists():
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('forward_leben_inventory', ROOT / 'scripts/prepare-release.py')
+        release = importlib.util.module_from_spec(spec); spec.loader.exec_module(release)
+        selection = release.leben_manifest_inventory(json.loads(manifest_path.read_text()))
+        assert len(catalogue) == 137 and len(added) == 1, 'Completed Leben supplement requires the single Nórdico addition'
+        for path, item in selection.items():
+            asset = ROOT / path
+            if asset.exists():
+                assert asset.is_file() and not asset.is_symlink() and hashlib.sha256(asset.read_bytes()).hexdigest() == item['sha256']
+            else:
+                assert subprocess.run(['git', 'check-ignore', '-q', '--', path], cwd=ROOT).returncode == 0
+            slug = path.split('/')[3]
+            assert item['path'] in (ROOT / (slug + '.html')).read_text(), path + ': selected asset absent from its own fiche'
+        leben_media = len(selection)
+    return {'result': 'passed', 'scope': '136 exact consolidated source objects and HTML fallbacks plus authorized Nórdico and private Leben supplement',
+            'baselineCommit': CONSOLIDATED_REVIEW_BASELINE, 'projects': len(catalogue), 'ecasaProjects': 15,
+            'preservedCatalogueObjects': 136, 'commercialPagesChecked': len(projects), 'protectedAssetAndBackendFiles': checked_assets,
+            'lebenReviewMedia': leben_media, 'sitemapUrls': len(sitemap), 'commercialDataUnchanged': True,
+            'mortgageMathAndBankReferencesUnchanged': True, 'productionPublicationAuthorized': False}

@@ -18,7 +18,7 @@ const git = (...args) => execFileSync('git', args, { cwd: ROOT });
 const current = readCommercialFile;
 const old = (path) => git('show', `${BASELINE}:${path}`);
 const projects = JSON.parse(current('data/proyectos.json'));
-const snapshots = projects.filter(p => !ECASA_NEW_SLUGS.has(p.slug)).map(({ slug }) => ({ slug, before: INGEVEC_NEW_SLUGS.has(slug) ? null : old(`${slug}.html`).toString(), after: current(`${slug}.html`).toString() }));
+const snapshots = projects.filter(p => p.slug !== 'edificio-nordico' && !ECASA_NEW_SLUGS.has(p.slug)).map(({ slug }) => ({ slug, before: INGEVEC_NEW_SLUGS.has(slug) ? null : old(`${slug}.html`).toString(), after: current(`${slug}.html`).toString() }));
 const decode = (value) => value.replace(/&(?:amp|quot|apos|lt|gt|#\d+|#x[a-f0-9]+);/gi, (entity) => {
   const named = { '&amp;': '&', '&quot;': '"', '&apos;': "'", '&lt;': '<', '&gt;': '>' };
   return named[entity.toLowerCase()] ?? String.fromCodePoint(entity[2].toLowerCase() === 'x'
@@ -46,8 +46,8 @@ const blobHash = (bytes) => createHash('sha1').update(`blob ${bytes.length}\0`).
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
 test('commercial presentation preserves the 136-project successor and non-Ecasa private source records', () => {
-  assert.equal(projects.length, 136);
-  assert.equal(new Set(projects.map((item) => item.slug)).size, 136);
+  assert.equal(projects.length, 137);
+  assert.equal(new Set(projects.map((item) => item.slug)).size, 137);
   assertCommercialBytes('data/proyectos.json',current('data/proyectos.json'), old('data/proyectos.json'));
   for (const path of git('ls-tree', '-r', '--name-only', BASELINE, '--', 'data').toString().trim().split('\n')) {
     if (path === 'data/brochures-ingevec.json') assertIngevecManifestAddition(current(path), old(path));

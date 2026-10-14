@@ -1,13 +1,13 @@
-# Registro de fichas Sollahms — 2026-10-12
+# Registro de fichas Sollahms — 2026-10-13
 
-Rama: `codex/ecasa-cartera-definitiva`. Sin merge ni despliegue de producción.
+Rama: `codex/leben-brochures-nordico`. Sin merge ni despliegue de producción.
 
-- Catálogo real: 136 proyectos (15 Ecasa, 22 identidades comerciales por etapa).
-- Fichas desarrolladas: 136 (4 destacadas preexistentes, 132 nuevas).
+- Catálogo real: 137 proyectos.
+- Fichas desarrolladas: 137 (4 destacadas preexistentes, 133 nuevas).
 - Fichas por desarrollar: 0.
 - Proyectos con Matterport integrado: 18.
-- Proyectos con apartado de mapa: 126.
-- Proyectos con al menos un dato pendiente: 126.
+- Proyectos con apartado de mapa: 127.
+- Proyectos con al menos un dato pendiente: 127.
 
 Una ficha desarrollada no implica que todos sus datos comerciales estén verificados. Las fuentes pueden omitir campos, restringir acceso o agrupar varias etapas. `controlCalidad` registra esta diferencia; ningún dato faltante se inventa. Las cuatro destacadas conservan su estructura. Los mapas nuevos usan direcciones oficiales como búsqueda, sin coordenadas estimadas; el marcador lo determina Google. Los mapas y recorridos acreditados usan iframes HTTPS con carga diferida nativa, sin botones de activación. Las alternativas externas se reservan para experiencias no acreditadas para integración o un fallo real del visor. Los apartados de información oficial relacionada tienen fuente, fecha y alcance propios: sus precios, imágenes y mapas generales no se atribuyen a una torre o producto residencial sin verificar ni alimentan su evaluación financiera.
 
@@ -151,6 +151,8 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 | [BOX Santiago](../box-santiago.html) | León | [Oficial](https://www.ileon.cl/proyectos/box-santiago/) | verified | Sí | No verificado | Entrega, Equipamiento y áreas comunes, Superficie útil, Superficie total, Existencia de recorrido virtual oficial, Disponibilidad exacta por tipología, Fecha exacta de entrega |
 | [Los Alerces](../los-alerces.html) | Ingevec | Por identificar | verified | Sí | No verificado | Precio vigente, Disponibilidad de unidades y modelos, Estado comercial y fecha de entrega, Orientaciones y pisos por unidad, Existencia de recorrido virtual oficial, Cantidad de departamentos: originales con cifras diferentes; no publicada |
 | [Valle Los Ingleses III](../valle-los-ingleses-iii.html) | Ingevec | Por identificar | verified | Sí | No verificado | Precio vigente, Disponibilidad de unidades y modelos, Estado comercial y fecha de entrega, Orientaciones y pisos por unidad, Existencia de recorrido virtual oficial, Vinculación de líneas A–K con cada distribución, Confirmación de comercialización actual exclusiva Etapa III |
+| [Edificio Nórdico](../edificio-nordico.html) | Leben | [Oficial](https://nordico.ileben.cl/) | verified | Sí | No verificado | Entrega, Superficie útil, Superficie total, Baños, Existencia de recorrido virtual oficial, Brochure oficial de Edificio Nórdico, Plantas individuales por modelo, Superficies útiles, terrazas y totales por modelo, Clasificación útil/total del rango general de superficie de 42–120 m², Fecha o semestre de entrega, Terminaciones y equipamiento de los departamentos, Cantidad de departamentos, Cantidad de pisos, Disponibilidad y precio de cada unidad, Baños por tipología (únicamente unidad 101 acreditada como 1D1B), Verificación visual de la ubicación 360 oficial de La Nube; no asumir recorrido interior |
+
 ## Fuentes relacionadas con alcance separado
 
 | Ficha | Fuente relacionada | Alcance | Revisión | Imágenes | Mapa de referencia |
@@ -163,32 +165,3 @@ Una ficha desarrollada no implica que todos sus datos comerciales estén verific
 ## Continuación reproducible
 
 Editar `data/fichas-proyectos.json` con nuevas evidencias, incorporando campos en `verifiedFields` únicamente cuando exista respaldo oficial. Actualizar `data/proyectos.json` solo con valores respaldados. Ejecutar `python3 scripts/update-featured-verification.py`, `python3 scripts/build-project-details.py`, `python3 tests/validate-project-details.py` y `node --test tests/booking-project-context.mjs`. Para un lote: `python3 scripts/build-project-details.py --batch Maestra,Ecasa`. El registro y sitemap siempre cubren todo el catálogo. Revisar `docs/verificacion-fichas.md` para pruebas de navegador y límites.
-
-## Identidades comerciales Ecasa conservadas
-
-Los 15 proyectos principales conservan 22 registros de etapa; los precios, estados, fotografías, mapas y recorridos siguen asociados a su origen. La referencia comercial del proyecto principal identifica la etapa de origen y no se transmite al resto.
-
-| Proyecto principal | Identidad comercial | Etapa | Ficha canónica |
-| --- | --- | --- | --- |
-| Núcleo Costanera | Núcleo Costanera | 1 | [Núcleo Costanera](../nucleo-costanera.html#etapa-1) |
-| Núcleo Costanera | Núcleo Costanera 2 | 2 | [Núcleo Costanera 2](../nucleo-costanera.html#etapa-2) |
-| FerroParque | FerroParque | 1 | [FerroParque](../ferroparque.html#etapa-1) |
-| FerroParque | Ferroparque 2 | 2 | [Ferroparque 2](../ferroparque.html#etapa-2) |
-| Terratoltén | Terratoltén 1 | 1 | [Terratoltén 1](../terratolten.html#etapa-1) |
-| Terratoltén | Terratoltén 2 | 2 | [Terratoltén 2](../terratolten.html#etapa-2) |
-| Terratoltén | Terratoltén 3 | 3 | [Terratoltén 3](../terratolten.html#etapa-3) |
-| Lomas de Puyai | Lomas de Puyai | 1 | [Lomas de Puyai](../lomas-de-puyai.html#etapa-1) |
-| Lomas de Puyai | Lomas de Puyai 3 | 3 | [Lomas de Puyai 3](../lomas-de-puyai.html#etapa-3) |
-| Alto San Joaquín | Alto San Joaquín | 1 | [Alto San Joaquín](../alto-san-joaquin.html#etapa-1) |
-| Alto San Joaquín | Alto San Joaquín 2 | 2 | [Alto San Joaquín 2](../alto-san-joaquin.html#etapa-2) |
-| Alto San Joaquín | Alto San Joaquín 3 | 3 | [Alto San Joaquín 3](../alto-san-joaquin.html#etapa-3) |
-| Edificio Wayra | Edificio Wayra | 1 | [Edificio Wayra](../wayra.html#etapa-1) |
-| Lamara | Lamara | 1 | [Lamara](../lamara.html#etapa-1) |
-| Bezanilla | Bezanilla | 1 | [Bezanilla](../edificio-bezanilla.html#etapa-1) |
-| Endémico | Endémico | 1 | [Endémico](../endemico.html#etapa-1) |
-| Cumbres de Peñuelas | Cumbres de Peñuelas | 1 | [Cumbres de Peñuelas](../cumbres-de-penuelas.html#etapa-1) |
-| Espacio Victoria | Espacio Victoria | 1 | [Espacio Victoria](../espacio-victoria.html#etapa-1) |
-| Urban La Florida | Urban La Florida | 1 | [Urban La Florida](../urban-la-florida.html#etapa-1) |
-| Aires La Florida 2 | Aires La Florida 2 | 2 | [Aires La Florida 2](../aires-la-florida-2.html#etapa-2) |
-| Enlace Mackenna | Enlace Mackenna | 1 | [Enlace Mackenna](../enlace-mackenna.html#etapa-1) |
-| Conecta Huechuraba | Conecta Huechuraba | 1 | [Conecta Huechuraba](../conecta-huechuraba.html#etapa-1) |

@@ -128,8 +128,8 @@ const identity = (parsed, node) => ({ attrs: node.attrs, text: parsed.text(node)
 
 test('fixed baselines: 136 authorized identities and 105 prior non-Ecasa context-external HTML controls', () => {
   assert.match(git('rev-parse', BASELINE).toString(), /^a279744[0-9a-f]{33}\s*$/);
-  assert.equal(catalogue.length, 136);
-  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 136);
+  assert.equal(catalogue.length, 137);
+  assert.equal(new Set(catalogue.map((project) => project.slug)).size, 137);
   // The independent portfolio helper permits exactly six retired Ingevec
   // identities, two documented additions and VIMA's proved image correction.
   // All retained commercial objects and source records remain exact to 8cdb9bf.
@@ -142,7 +142,7 @@ test('fixed baselines: 136 authorized identities and 105 prior non-Ecasa context
   for (const project of catalogue) {
     // Their complete data/source assertions run above; neither added identity
     // can have an HTML baseline in the historical official-context audit.
-    if (INGEVEC_NEW_SLUGS.has(project.slug) || ECASA_SLUGS.has(project.slug)) continue;
+    if (project.slug === 'edificio-nordico' || INGEVEC_NEW_SLUGS.has(project.slug) || ECASA_SLUGS.has(project.slug)) continue;
     assert.equal(project.detalleUrl, previousProjects.get(project.slug).detalleUrl, project.slug);
     if (FOCUS.has(project.slug)) continue;
     assert.deepEqual(project, previousProjects.get(project.slug), project.slug);
@@ -352,10 +352,10 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   const previous = oldJson('data/fuentes-imagenes.json');
   for (const [url, entry] of Object.entries(previous)) assert.deepEqual(manifest[url], entry, `existing image provenance: ${url}`);
   const added = Object.keys(manifest).filter((url) => !Object.hasOwn(previous, url));
-  assert.equal(added.length, 10);
+  assert.equal(added.length, 13);
   const usedImages = [...records.get('mapocho-3521').images, ...PENDING.flatMap((slug) => records.get(slug).officialContext.images)];
   const newPaths = new Set();
-  for (const url of added) {
+  for (const url of added.filter(url => !url.startsWith('https://nordico.ileben.cl/'))) {
     const entry = manifest[url];
     officialUrl(url);
     officialUrl(entry.sourceUrl);
@@ -375,7 +375,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   assert.equal(newPaths.size, 10);
   const currentAssets = listFiles('assets').filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
-    !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');
+    !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');
   const ecasaReview = json('tests/ecasa-reviewed-output.json');
   const stageAssets = ['assets/css/ecasa-stages.css', 'assets/js/ecasa-stages.js'];
   assert.deepEqual(Object.keys(ecasaReview.assetSha256).sort(),stageAssets.toSorted());
@@ -395,11 +395,11 @@ test('registry and sitemap match the authorized portfolio; financial data/motors
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) &&
         !AJ_REVIEW.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
   }
-  assert.equal(Object.keys(trustedContexts).length, 136);
+  assert.equal(Object.keys(trustedContexts).length, 137);
   for (const project of catalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
   const locations = current('sitemap.xml').toString().match(/<loc>[^<]+<\/loc>/g);
-  assert.equal(locations.length, 142);
-  assert.equal(new Set(locations).size, 142);
+  assert.equal(locations.length, 143);
+  assert.equal(new Set(locations).size, 143);
 });
 
 test('both menus and consultation/booking/simulation links keep their exact six project identities and no financial URL data', () => {

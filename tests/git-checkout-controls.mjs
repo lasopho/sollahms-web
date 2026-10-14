@@ -14,6 +14,7 @@ const TOUR_REVIEW = 'codex/recorridos-validos-144';
 const AUTOMATIC_EMBEDS = 'codex/mapas-recorridos-auto';
 const MAP_CLEANUP = 'codex/limpieza-mapas-fichas';
 const ECASA = 'codex/ecasa-cartera-definitiva';
+const LEBEN = 'codex/leben-brochures-nordico';
 const APPROVED_PORTFOLIO = 'e7afe04';
 const read = path => readFileSync(resolve(ROOT, path));
 const json = path => JSON.parse(read(path));
@@ -21,7 +22,7 @@ const git = (...args) => execFileSync('git', args, { cwd: ROOT });
 const configuration = json('vercel.json');
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false },
+  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false },
     'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
@@ -44,6 +45,8 @@ test('manual deployment gates reject missing integration protection, enabled bra
     config => { config.git.deploymentEnabled[AUTOMATIC_EMBEDS] = true; },
     config => { delete config.git.deploymentEnabled[MAP_CLEANUP]; },
     config => { config.git.deploymentEnabled[MAP_CLEANUP] = true; },
+    config => { delete config.git.deploymentEnabled[LEBEN]; },
+    config => { config.git.deploymentEnabled[LEBEN] = true; },
     config => { delete config.git.deploymentEnabled[ECASA]; },
     config => { config.git.deploymentEnabled[ECASA] = true; },
     config => { config.git.deploymentEnabled.main = true; },
@@ -77,9 +80,9 @@ test('shared security headers reject missing and weakened framing, MIME, referre
 test('all 121 non-Ecasa catalogue objects and 16 Ingevec identities retain the approved portfolio', () => {
   const catalogue = json('data/proyectos.json');
   assertBrochureCatalogue(catalogue);
-  assert.equal(catalogue.length, 136);
+  assert.equal(catalogue.length, 137);
   assert.equal(catalogue.filter(project => project.inmobiliaria === 'Ingevec').length, 16);
-  assert.deepEqual(catalogue.filter(p=>p.inmobiliaria !== 'Ecasa'),
+  assert.deepEqual(catalogue.filter(p=>p.slug !== 'edificio-nordico' && p.inmobiliaria !== 'Ecasa'),
     JSON.parse(git('show', APPROVED_PORTFOLIO + ':data/proyectos.json')).filter(p=>p.inmobiliaria !== 'Ecasa'));
   assert.deepEqual(read('data/hipotecario.json'), git('show', APPROVED_PORTFOLIO + ':data/hipotecario.json'));
   const changed = structuredClone(catalogue);
@@ -139,7 +142,7 @@ test('the 136 fiches retain routes, contextual actions and approved image/plan r
 function assertIncompleteBuildRejected(environment, partial) {
   const fixture = mkdtempSync(join(tmpdir(), 'sollahms-incomplete-git-ci-'));
   try {
-    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/ecasa-publication.mjs',
+    for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'scripts/leben-publication.mjs', 'scripts/ecasa-publication.mjs',
       'scripts/ecasa-image-quality.mjs','scripts/public-fiche-copy.mjs','data/public-caption-policy.json',
       'data/ecasa-image-quality.json','data/fichas-proyectos.json','data/fuentes-imagenes.json',
       'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {

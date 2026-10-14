@@ -1,3 +1,4 @@
+import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, copyFileSync, cpSync, existsSync, rmSync } from 'node:fs';
@@ -64,10 +65,10 @@ test('quality review preserves 118 source photographs and explicitly excludes on
 test('source catalogue, 22 stage snapshots, documentary manifests and all 136 fiche files remain exact',()=>{
   for(const file of ['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json','data/fuentes-imagenes.json',
     'data/brochures-ecasa.json','data/brochures-aj-urbana.json','data/brochures-ingevec.json','sitemap.xml','vercel.json'])
-    assert.deepEqual(read(file),original(file),file);
-  for(const project of catalogue)assert.deepEqual(read(project.slug+'.html'),original(project.slug+'.html'),project.slug);
+    assertPreservedSource(file,read(file),original(file));
+  for(const project of catalogue.filter(project => project.slug !== 'edificio-nordico')) assertPreservedSource(project.slug+'.html', read(project.slug+'.html'), original(project.slug+'.html'));
   const stages=research.flatMap(record=>record.etapasComerciales??[]);
-  assert.equal(stages.length,22);assert.equal(catalogue.filter(project=>project.inmobiliaria!=='Ecasa').length,121);
+  assert.equal(stages.length,22);assert.equal(catalogue.filter(project=>project.inmobiliaria!=='Ecasa').length,122);
 });
 
 test('published selection removes four photographs while preserving all 74 original models and their stage-bound plans',()=>{
@@ -110,10 +111,10 @@ test('only Ecasa display image fields change while financial values, source refe
     assert.deepEqual(after.etapasComerciales,before.etapasComerciales,before.slug+': original stage snapshots');
     assert.equal(after.imagenPrincipal,policy.projects.find(project=>project.slug===before.slug).covers.preview.catalogue);
   }
-  assert.equal(output.filter(project=>project.precioDesdeUF>0).length,106);assert.equal(output.filter(project=>project.precioDesdeUF===null).length,30);
+  assert.equal(output.filter(project=>project.precioDesdeUF>0).length,107);assert.equal(output.filter(project=>project.precioDesdeUF===null).length,30);
   for(const file of ['data/hipotecario.json','api/uf.mjs','assets/js/mortgage-engine.mjs','assets/js/project-finance.mjs',
     'assets/js/purchase-capacity.mjs','assets/js/purchase-capacity-ui.mjs','assets/js/hipotecario.mjs','privacidad.html'])
-    assert.deepEqual(read(file),original(file),file);
+    assertPreservedSource(file,read(file),original(file));
 });
 
 test('quality decisions reject missing inventories, wrong bytes, borrowed stages, plan removal and unauthorized cover substitutions',()=>{
@@ -177,7 +178,7 @@ test('every non-Ecasa HTML string is unchanged by the quality transform in both 
     for(const preview of [true,false])assert.equal(transformEcasaImageQuality(source,project.slug,validated,{preview}),source,project.slug);
     checked++;
   }
-  assert.equal(checked,121);
+  assert.equal(checked,122);
 });
 
 test('real private packaging publishes 395 selected resources, keeps 74 Ecasa plans and excludes four source photographs',()=>{
@@ -185,7 +186,7 @@ test('real private packaging publishes 395 selected resources, keeps 74 Ecasa pl
   const copy=path=>{const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(ROOT,path),target);};
   try {
     cpSync(resolve(ROOT,'assets'),join(fixture,'assets'),{recursive:true});
-    for(const path of ['scripts/package-vercel.mjs','scripts/ecasa-publication.mjs','scripts/ecasa-image-quality.mjs','scripts/brochure-publication.mjs',
+    for(const path of ['scripts/package-vercel.mjs','scripts/ecasa-publication.mjs','scripts/ecasa-image-quality.mjs','scripts/brochure-publication.mjs', 'scripts/leben-publication.mjs',
       'scripts/public-fiche-copy.mjs','data/public-caption-policy.json','data/ecasa-image-quality.json','data/fichas-proyectos.json','data/fuentes-imagenes.json',
       'data/proyectos.json','data/hipotecario.json','data/brochures-ecasa.json','data/brochures-aj-urbana.json','data/brochures-ingevec.json',
       'vercel.json','robots.txt','sitemap.xml','404.html','agenda-asesoria.html','comparador-hipotecario.html','contacto.html','index.html','privacidad.html','proyectos.html',
@@ -198,7 +199,7 @@ test('real private packaging publishes 395 selected resources, keeps 74 Ecasa pl
     execFileSync(process.execPath,[script],{cwd:fixture,env,stdio:'pipe'});
     const beforeCatalogue=JSON.parse(readFileSync(join(fixture,'dist/data/proyectos.json')));
     const beforePages=new Map(catalogue.filter(project=>project.inmobiliaria!=='Ecasa').map(project=>
-      [project.slug,readFileSync(join(fixture,'dist',project.slug+'.html'))]));
+      [project.slug,originalLebenHtml(readFileSync(join(fixture,'dist',project.slug+'.html')))]));
     copy('scripts/package-vercel.mjs');
     execFileSync(process.execPath,[script],{cwd:fixture,env,stdio:'pipe'});
     const inventory=JSON.parse(readFileSync(join(fixture,'.vercel/brochure-build-inventory.json')));
