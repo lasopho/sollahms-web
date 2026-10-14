@@ -2,7 +2,8 @@
 """Verify and prepare a private release locally. Never deploys or changes Git.
 
 The approved archive is immutable. These operational tools are not included
-in it. No credentials, original PDF documents or audit receipts enter source/.
+in it. No credentials or audit receipts enter source/. Only the six pinned
+Sento PDF documents preserved from its existing protected Preview are allowed.
 """
 import argparse
 import hashlib
@@ -31,6 +32,25 @@ BASE_QUALITY_SHA256 = 'b4562d1dfbe729520a270039df347b8e3e62f5cff7c3b62d99355d784
 LEBEN_MANIFEST = 'data/brochures-leben.json'
 LEBEN_MODULE = 'scripts/leben-publication.mjs'
 LEBEN_FOLDER = 'leben-preview'
+SENTO_MANIFEST = 'data/sento-review.json'
+SENTO_MODULE = 'scripts/sento-publication.mjs'
+SENTO_REVIEW_SHA256 = 'e44ae176a8fe3384ba33df0306e0a97594fc2a1c692aa423310e9b4b6a1bea5f'
+SENTO_REQUIRED_FILES = {
+    SENTO_MANIFEST: SENTO_REVIEW_SHA256,
+    'data/sento-baseline.json': '78fa927b17b0d7cda3f58744f6ba8c134a0b8cd36306b250cfd92af4e01d4d19',
+    'data/sento-main-baseline.json': 'b97c7de6fded5cc25ed726192e9a0de1ef5c6a68e016b5afe63bb9a332557326',
+    'data/sento-plan-audit-pdf.json': '4eff4766ed0a523028787fab5d2be2e372453579a8f4e28840039821759c2ee8',
+    'data/sento-plan-audit-angamos.json': 'b52d42bc6567614503812e21b5c537d1d2fa4a6ea9305bb8fea3f09a0c5e24ae',
+}
+SENTO_SLUGS = {'angamos', 'curico-77', 'domeyko-2055', 'jofre-135', 'mirador-la-florida', 'plaza-las-condes', 'san-ignacio'}
+SENTO_DOCUMENTS = {
+    'curico-77': ('4aced7cd07f11a65a02885a83b134c09338e82b58e7acf0df14ef1897c3bcdf8', 17),
+    'domeyko-2055': ('01451ac31ac2441997e341d1ae91e27954a0b0a6862adcc4223678edc4ad3a7b', 6),
+    'jofre-135': ('c55b58c468201c8b252c2148666203039109dd1d39bc98bdd2501a4cd00a1dd0', 6),
+    'mirador-la-florida': ('8d591a6572948c1fc17466727c500b2c573d371027625d59c0624055ab946199', 22),
+    'plaza-las-condes': ('85ba1584b1f4658b57d26768682cfebff8f4823541625326221657e71e935a6d', 9),
+    'san-ignacio': ('cc8e7cdfb6f68fc1e375ef71c8ddaf85f614d50ff8a6b5d3494c2d6806a69a5f', 6),
+}
 PROTECTED_PROFILES = {'protected_ecasa_review', 'protected_leben_review'}
 LEBEN_SLUGS = {'edificio-living-town', 'edificio-mood', 'edificio-santo', 'edificio-baum',
     'edificio-suecia', 'parque-germania', 'capitanes', 'edificio-bold', 'edificio-argomedo',
@@ -337,12 +357,85 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def safe_name(name, official_original_paths=()):
+def sento_manifest_inventory(manifest):
+    require(manifest.get('schemaVersion') == 1 and manifest.get('protectedPreviewOnly') is True and
+            len(manifest.get('projects', [])) == 7 and {row.get('slug') for row in manifest['projects']} == SENTO_SLUGS,
+            'Sento review must preserve the exact seven protected identities')
+    inventory = {}
+    def variants(asset):
+        collection = asset.get('variants') or {}
+        for group in collection.values() if isinstance(collection, dict) else collection:
+            yield from group if isinstance(group, list) else [group]
+    def add(asset, kind, prefix):
+        name = asset.get('localPath', '').lstrip('/')
+        require(asset.get('localPath') == '/' + name and name.startswith(prefix) and '..' not in name and
+                re.fullmatch(r'assets/(?:propiedades|brochures)/sento/[a-z0-9/._-]+', name) and
+                re.fullmatch(r'[a-f0-9]{64}', asset.get('sha256', '')), 'Invalid selected Sento asset')
+        item = {'path': '/' + name, 'sha256': asset['sha256'], 'kind': kind}
+        if kind != 'document':
+            require(Path(name).suffix in {'.webp', '.png', '.jpg', '.jpeg'} and
+                    type(asset.get('width')) is int and asset['width'] > 0 and type(asset.get('height')) is int and asset['height'] > 0,
+                    'Sento image needs positive encoded dimensions')
+            item.update(width=asset['width'], height=asset['height'])
+        else:
+            require(name in {'assets/brochures/sento/' + slug + '.pdf' for slug in SENTO_DOCUMENTS}, 'Unapproved original PDF in Sento transport')
+        if name in inventory:
+            require(inventory[name] == item, 'Duplicate inconsistent Sento asset')
+        inventory[name] = item
+    models = 0
+    for row in manifest['projects']:
+        prefix = 'assets/propiedades/sento/' + row['slug'] + '/'
+        if row['slug'] in SENTO_DOCUMENTS:
+            document = row.get('document', {})
+            require((document.get('sha256'), document.get('pageCount')) == SENTO_DOCUMENTS[row['slug']] and
+                    document.get('localPath') == '/assets/brochures/sento/' + row['slug'] + '.pdf', 'Sento PDF differs from its independent source pin')
+            add(document, 'document', 'assets/brochures/sento/')
+        else:
+            require(row.get('document') is None, 'Angamos cannot acquire an invented source PDF')
+        for photo in row['images']:
+            require(photo.get('visuallyVerified') is True, 'Sento photograph lacks its approved visual review')
+            add(photo, 'image', prefix)
+            for asset in variants(photo): add(asset, 'image', prefix)
+            if (photo.get('original') or {}).get('localPath'): add(photo['original'], 'image', prefix)
+        for model in row['models']:
+            models += 1
+            add(model['plan'], 'plan', prefix)
+            for asset in variants(model['plan']): add(asset, 'plan', prefix)
+    require(len(inventory) == 283 and sum(item['kind'] == 'document' for item in inventory.values()) == 6 and models == 45,
+            'Sento transport must preserve exactly 277 images/plans, six PDFs and 45 models')
+    return inventory
+
+
+def sento_policy_inventory(policy, files):
+    review = policy.get('sentoReview')
+    present = {name for name in files if name.startswith(('assets/propiedades/sento/', 'assets/brochures/sento/'))}
+    if review is None:
+        require(not present and SENTO_MANIFEST not in files, 'Sento assets need their independent protected receipt')
+        return {}
+    require(policy.get('contentProfile') == 'protected_leben_review' and SENTO_MODULE in files and
+            review.get('manifestSha256') == SENTO_REVIEW_SHA256 and review.get('projects') == 7 and
+            review.get('images') == 277 and review.get('documents') == 6,
+            'Invalid Sento protected receipt')
+    for name, expected in SENTO_REQUIRED_FILES.items():
+        require(files.get(name, {}).get('sha256') == expected, 'Sento independent evidence was omitted or changed: ' + name)
+    assets = review.get('assets', [])
+    inventory = {item.get('path', '').lstrip('/'): item for item in assets}
+    require(len(assets) == len(inventory) == 283 and set(inventory) == present, 'Sento source inventory is incomplete or includes candidates')
+    for name, item in inventory.items():
+        require(files[name]['sha256'] == item['sha256'] and files[name]['size'] == item['bytes'], 'Sento source bytes differ from review: ' + name)
+    require(sum(name.endswith('.pdf') for name in inventory) == 6 and
+            {name for name in inventory if name.endswith('.pdf')} == {'assets/brochures/sento/' + slug + '.pdf' for slug in SENTO_DOCUMENTS},
+            'Only the six preserved Sento PDF originals may enter transport')
+    return inventory
+
+
+def safe_name(name, official_original_paths=(), sento_document_paths=()):
     parts = PurePosixPath(name).parts
     require(bool(parts) and not name.startswith('/') and '\\' not in name and
             all(part not in {'.', '..'} and not part.startswith('.') for part in parts) and
             str(PurePosixPath(name)) == name, 'Unsafe archive path')
-    require(PurePosixPath(name).suffix.lower() in EXTENSIONS, 'Private or unexpected file type')
+    require(PurePosixPath(name).suffix.lower() in EXTENSIONS or name in sento_document_paths and
+            name in {'assets/brochures/sento/' + slug + '.pdf' for slug in SENTO_DOCUMENTS}, 'Private or unexpected file type')
     require(not any(part in {'docs', 'tests', 'contracts', 'node_modules',
                              'brochure-candidates', 'inventarios'} for part in parts),
             'Private or operational directory in deployment source')
@@ -361,12 +454,13 @@ def verify_archive(archive, policy):
         for block in iter(lambda: stream.read(1024 * 1024), b''):
             hasher.update(block)
     require(hasher.hexdigest() == policy['archiveSha256'], 'Archive SHA-256 differs from approval')
-    files, total, official_manifest, manual_manifest, base_quality, leben_manifest = {}, 0, None, None, None, None
+    files, total, official_manifest, manual_manifest, base_quality, leben_manifest, sento_manifest = {}, 0, None, None, None, None, None
     official_original_paths = {item.get('path', '').lstrip('/')
         for item in (policy.get('officialOriginals') or {}).get('sourceAssets', []) if item.get('kind') == 'original'}
+    sento_document_paths = {item.get('path', '').lstrip('/') for item in (policy.get('sentoReview') or {}).get('assets', []) if item.get('kind') == 'document'}
     with tarfile.open(archive, 'r:gz') as bundle:
         for member in bundle:
-            name = safe_name(member.name, official_original_paths)
+            name = safe_name(member.name, official_original_paths, sento_document_paths)
             require(member.isfile() and not member.issym() and not member.islnk(), 'Nonregular archive member')
             require(name not in files, 'Duplicate archive member')
             require(0 <= member.size <= policy['sourceBytes'] - total, 'Archive exceeds approved uncompressed size')
@@ -383,6 +477,8 @@ def verify_archive(archive, policy):
                 base_quality = json.loads(data)
             elif name == LEBEN_MANIFEST:
                 leben_manifest = json.loads(data)
+            elif name == SENTO_MANIFEST:
+                sento_manifest = json.loads(data)
             total += len(data)
     require(len(files) == policy['sourceFiles'] and total == policy['sourceBytes'], 'Incomplete source archive')
     if policy.get('officialOriginals') is not None:
@@ -396,6 +492,12 @@ def verify_archive(archive, policy):
         official_policy_inventory(policy, files)
     manual_policy_inventory(policy, files)
     leben_policy_inventory(policy, files)
+    sento_policy_inventory(policy, files)
+    if policy.get('sentoReview') is not None:
+        require(sento_manifest is not None, 'Sento manifest is missing')
+        selected = sento_manifest_inventory(sento_manifest)
+        expected = [{**selected[name], 'bytes': files.get(name, {}).get('size')} for name in sorted(selected)]
+        require(policy['sentoReview']['assets'] == expected, 'Sento receipt differs from the exact archived selection')
     if policy.get('lebenReview') is not None:
         require(leben_manifest is not None, 'Leben selected manifest is missing')
         selected = leben_manifest_inventory(leben_manifest)
@@ -447,9 +549,12 @@ def verify_git_reference(root, files, policy):
             tree[name.decode()] = (mode, kind, oid)
     official = official_policy_inventory(policy, files)
     leben = leben_policy_inventory(policy, files)
+    sento = sento_policy_inventory(policy, files)
     manual_policy_inventory(policy, files)
     require(not set(official) & set(tree), 'Official review images must remain outside public Git source')
     require(not set(leben) & set(tree), 'Leben review images must remain outside public Git source')
+    sento_documents = {name for name, item in sento.items() if item['kind'] == 'document'}
+    require(not sento_documents & set(tree), 'Sento PDF originals must remain outside public Git source')
     tracked = 0
     for name, info in files.items():
         if name in tree:
@@ -458,6 +563,10 @@ def verify_git_reference(root, files, policy):
                     'Source differs from approved Git commit: ' + name)
             tracked += 1
         else:
+            if name in sento_documents:
+                require(name.startswith('assets/brochures/sento/') and info['sha256'] == sento[name]['sha256'],
+                        'Unapproved non-Git Sento document')
+                continue
             folders = policy.get('privateMediaFolders', ['ingevec-preview'])
             require(bool(folders) and set(folders) <= {'ingevec-preview', 'ecasa-preview', OFFICIAL_FOLDER, LEBEN_FOLDER},
                     'Unapproved private media folder policy')
@@ -485,6 +594,7 @@ def verify_worktree(root, files, policy):
                 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
                 OFFICIAL_MANIFEST, OFFICIAL_MODULE,
                 MANUAL_MANIFEST, MANUAL_MODULE,
+                SENTO_MODULE, *SENTO_REQUIRED_FILES,
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
     require(not git(root, 'diff', '--no-ext-diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
@@ -511,7 +621,7 @@ def extract_verified(archive, destination, files):
     seen = set()
     with tarfile.open(archive, 'r:gz') as bundle:
         for member in bundle:
-            name = safe_name(member.name, files)
+            name = safe_name(member.name, files, files)
             require(member.isfile() and name in files and name not in seen, 'Archive changed after verification')
             seen.add(name)
             data = bundle.extractfile(member).read()
@@ -531,6 +641,75 @@ def build(source, node, environment, branch, public_profile=True):
     result = subprocess.run([node, str(source / 'scripts/package-vercel.mjs')],
                             cwd=source, env=env, check=True, capture_output=True, text=True)
     return json.loads(result.stdout.strip())
+
+
+def reject_production_build(source, node):
+    """Exercise the real gate on unchanged source; never fabricate a fallback."""
+    env = {'PATH': str(Path(node).parent) + os.pathsep + os.defpath,
+           'VERCEL': '1', 'VERCEL_ENV': 'production', 'VERCEL_GIT_COMMIT_REF': 'main'}
+    result = subprocess.run([node, str(source / 'scripts/package-vercel.mjs')],
+                            cwd=source, env=env, capture_output=True, text=True)
+    message = 'The Sento update is authorized for Preview only'
+    require(result.returncode != 0 and message in result.stderr and not (source / 'dist').exists(),
+            'The real Sento Production gate must reject unchanged source before creating output')
+    return {'environment': 'production', 'rejected': True, 'exitCode': result.returncode,
+            'reason': message, 'outputCreated': False, 'publicParityVerified': False}
+
+
+def audit_protected_preview_only(source, preview, policy, files, production_result):
+    """Exact output hashes plus independent source/identity/asset privacy checks."""
+    require(production_result.get('rejected') is True and policy.get('sentoPublicParityVerified') is False,
+            'A combined Sento review must not claim public parity')
+    tree = {path.relative_to(preview).as_posix(): path for path in preview.rglob('*') if path.is_file()}
+    expected = policy.get('previewOutputInventory', [])
+    names = {item['file'] for item in expected}
+    require(len(names) == len(expected) == len(tree) == 1360 and names == set(tree),
+            'Protected Preview omitted or added an output resource')
+    for item in expected:
+        require(not tree[item['file']].is_symlink() and digest(tree[item['file']].read_bytes()) == item['sha256'],
+                'Protected Preview output bytes differ from the committed source package: ' + item['file'])
+    require({name for name in tree if name.startswith('data/')} == {'data/proyectos.json', 'data/hipotecario.json'},
+            'An internal data manifest leaked into protected output')
+    sento = sento_policy_inventory(policy, files)
+    require({name for name in tree if name.startswith(('assets/propiedades/sento/', 'assets/brochures/sento/'))} == set(sento),
+            'Unselected Sento source/candidate was published')
+    require({name for name in tree if name.endswith('.pdf')} == {name for name in sento if sento[name]['kind'] == 'document'},
+            'Only the six independently pinned Sento PDFs may be served in this protected Preview')
+    for name, item in sento.items():
+        require(digest(tree[name].read_bytes()) == item['sha256'] and tree[name].stat().st_size == item['bytes'],
+                'Sento Preview bytes differ from independent source pins')
+    leben = leben_policy_inventory(policy, files)
+    require({name for name in tree if name.startswith('assets/propiedades/leben-preview/')} == set(leben),
+            'The reviewed Leben selection changed in combined output')
+    for name, item in leben.items():
+        require(digest(tree[name].read_bytes()) == item['sha256'], 'Leben derivative changed in combined output')
+    catalogue = json.loads(tree['data/proyectos.json'].read_text())
+    require(len(catalogue) == len({row['slug'] for row in catalogue}) == 137 and
+            sum(row['inmobiliaria'] == 'Ecasa' for row in catalogue) == 15 and
+            {row['slug'] for row in catalogue if row['inmobiliaria'] == 'Sento'} == SENTO_SLUGS and
+            sum(row['slug'] == 'own' for row in catalogue) == 1 and sum(row['slug'] == 'edificio-nordico' for row in catalogue) == 1,
+            'Combined Preview changed project identities')
+    sento_manifest = json.loads((source / SENTO_MANIFEST).read_text())
+    require([row for row in catalogue if row['slug'] in SENTO_SLUGS] == sento_manifest['catalogue'],
+            'Sento Preview commercial records differ from their pinned review')
+    pages = {name for name in tree if name.endswith('.html')}
+    require(len(pages) == 144 and all(row['slug'] + '.html' in pages for row in catalogue), 'Combined Preview lost a project page')
+    headers = set()
+    for name in pages:
+        text = tree[name].read_text()
+        require('<meta name="robots" content="noindex, nofollow">' in text, 'Preview route lacks noindex: ' + name)
+        require(not re.search(r'<!--(?:LEBEN|ECASA|INGEVEC|AJ)_(?:PREVIEW|PUBLIC)_(?:START|END)-->', text),
+                'Unprojected source markers in protected output')
+        require(len(re.findall(r'<h1\b', text)) == 1, 'Protected route must retain exactly one main heading: ' + name)
+        headers.update(re.findall(r'data-leben-header="([^"]+)"', text))
+    require(headers == LEBEN_SLUGS | {'own', 'edificio-nordico'}, 'The combined output lost a Leben header')
+    require(tree['robots.txt'].read_text() == 'User-agent: *\nDisallow: /\n', 'Preview robots must block indexing')
+    return {'ok': True, 'auditProfile': 'protected_leben_review_with_preserved_sento',
+            'counts': {'projects': 137, 'Ecasa': 15, 'LebenHeaders': 14, 'SentoProjects': 7,
+                       'htmlPages': 144, 'outputFiles': 1360, 'LebenMedia': 43, 'SentoImages': 277, 'SentoDocuments': 6},
+            'outputHashesVerified': 1360, 'SentoPublicParityVerified': False, 'ProductionRejected': True,
+            'productionPublicAuditPerformed': False, 'networkRequests': 0, 'realMessages': 0, 'realReservations': 0,
+            'errors': [], 'productionDeploymentAuthorized': False}
 
 
 def verify_staged_deployment(snapshot, policy):
@@ -568,11 +747,16 @@ def prepare(archive, output, node, policy, protected_review=False):
     source = destination / 'source'
     extract_verified(archive, source, files)
     public, preview = destination / 'production-local', destination / 'preview-local'
-    shutil.copytree(source, public)
     shutil.copytree(source, preview)
-    public_result = build(public, node, 'production', 'main', public_profile=not protected_review)
+    sento_only = policy.get('sentoReview') is not None
+    if sento_only:
+        require(protected_review, 'Preserved Sento source is only authorized for a protected Preview')
+        public_result = reject_production_build(source, node)
+    else:
+        shutil.copytree(source, public)
+        public_result = build(public, node, 'production', 'main', public_profile=not protected_review)
     preview_result = build(preview, node, 'preview', policy['developmentBranch'], public_profile=not protected_review)
-    for result in (public_result, preview_result):
+    for result in (preview_result,) if sento_only else (public_result, preview_result):
         expected_media = (policy.get('preservedBrochureMedia', 269) if protected_review and result['environment'] == 'production'
                           else policy['selectedBrochureMedia'])
         expected_ingevec = policy.get('ingevecReviewMedia', policy['privateSourceFiles'])
@@ -593,7 +777,7 @@ def prepare(archive, output, node, policy, protected_review=False):
         if policy.get('lebenReview') is not None:
             require(result.get('lebenReviewMedia') == (policy['lebenReviewMedia'] if result['environment'] == 'preview' else 0),
                     'Leben build omitted selected resources or leaked them to the public profile')
-    require(public_result['environment'] == 'production' and not public_result['noindex'] and
+    require((public_result.get('rejected') is True if sento_only else public_result['environment'] == 'production' and not public_result['noindex']) and
             preview_result['environment'] == 'preview' and preview_result['noindex'], 'Build environment mismatch')
     audit_path = destination / 'public-preview-audit.json'
     audit_command = [sys.executable, str(ROOT / 'tests/audit_public_build.py'), '--source', str(source),
@@ -601,8 +785,12 @@ def prepare(archive, output, node, policy, protected_review=False):
                     '--receipt', str(audit_path), '--node', node]
     if protected_review:
         audit_command.append('--protected-review')
-    subprocess.run(audit_command, check=True, capture_output=True, text=True)
-    audit = json.loads(audit_path.read_text())
+    if sento_only:
+        audit = audit_protected_preview_only(source, preview / 'dist', policy, files, public_result)
+        audit_path.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + '\n')
+    else:
+        subprocess.run(audit_command, check=True, capture_output=True, text=True)
+        audit = json.loads(audit_path.read_text())
     require(not audit['errors'], 'Public/Preview audit failed')
     # Local linkage is metadata only. It does not contact or modify Vercel.
     link = source / '.vercel'
@@ -633,6 +821,9 @@ def prepare(archive, output, node, policy, protected_review=False):
                   if policy.get('lebenReview') is not None else {}),
                **({'lebenPublicWebRights': 'pending_contract_scope_verification'}
                   if policy.get('lebenReview') is not None else {}),
+               **({'sentoReview': policy['sentoReview'], 'SentoPublicParityVerified': False,
+                   'ProductionRejected': True, 'productionPublicAuditPerformed': False}
+                  if sento_only else {}),
                'ecasaPublicWebParityVerified': not protected_review,
                'publicationAuthorized': False, 'integrationAuthorized': False}
     (destination / 'release-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')

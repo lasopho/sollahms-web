@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { projectSentoFile, restoreSentoRows } from './sento-preservation.mjs';
 
 export const NORDICO_SLUG = 'edificio-nordico';
 export function originalLebenHtml(bytes) {
@@ -11,11 +12,12 @@ export function originalLebenHtml(bytes) {
     .replace(/<!--LEBEN_PUBLIC_START-->([\s\S]*?)<!--LEBEN_PUBLIC_END-->/g, '$1'));
 }
 export function assertPreservedSource(path, current, baseline) {
+  current = projectSentoFile(path, current);
   if (['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json'].includes(path)) {
     const rows = JSON.parse(current);
     assert.equal(rows.filter(row => row.slug === NORDICO_SLUG).length, 1);
     assert.equal(rows.length, 137);
-    assert.deepEqual(rows.filter(row => row.slug !== NORDICO_SLUG), JSON.parse(baseline), path + ': the 136 existing objects must remain exact');
+    assert.deepEqual(rows.filter(row => row.slug !== NORDICO_SLUG), restoreSentoRows(JSON.parse(baseline), path), path + ': the 136 existing objects must remain exact outside the independently approved seven Sento rows');
   } else if (path === 'data/fuentes-imagenes.json') {
     const entries = Object.entries(JSON.parse(current));
     const added = entries.filter(([url]) => url.startsWith('https://nordico.ileben.cl/'));

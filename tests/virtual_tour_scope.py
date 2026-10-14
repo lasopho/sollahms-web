@@ -9,6 +9,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from sento_scope import original_data, historical_file
 from automatic_embed_scope import restore_automatic_file
 from ecasa_scope import restore_successor_data
 
@@ -110,6 +111,6 @@ def historical_commercial_renderer():
 
 
 if __name__ == '__main__':
-    content = sys.stdin.buffer.read()
+    content = historical_file(sys.argv[1], sys.stdin.buffer.read())
     sys.stdout.buffer.write(exact_removed_page(content, sys.argv[2]) if sys.argv[1] == '--remove'
                             else restore_reviewed_file(sys.argv[1], content))

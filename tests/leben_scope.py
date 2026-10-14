@@ -11,7 +11,9 @@ def original_html(text):
     for kind in ['PREVIEW', 'PUBLIC']:
         assert text.count('<!--LEBEN_' + kind + '_START-->') == text.count('<!--LEBEN_' + kind + '_END-->'), 'Unpaired Leben source marker'
     text = re.sub(r'<!--LEBEN_PREVIEW_START-->[\s\S]*?<!--LEBEN_PREVIEW_END-->', '', text)
-    return re.sub(r'<!--LEBEN_PUBLIC_START-->([\s\S]*?)<!--LEBEN_PUBLIC_END-->', lambda match: match[1], text)
+    text = re.sub(r'<!--LEBEN_PUBLIC_START-->([\s\S]*?)<!--LEBEN_PUBLIC_END-->', lambda match: match[1], text)
+    from sento_scope import original_html as original_sento_html
+    return original_sento_html(text)
 
 
 def original_context(data):

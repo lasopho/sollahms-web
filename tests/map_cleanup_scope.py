@@ -13,6 +13,7 @@ import subprocess
 import sys
 from pathlib import Path
 from ecasa_scope import restore_successor_data
+from sento_scope import original_data, historical_file
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = 'bb69615d03230cbab76bdc2678938cc741f80e86'

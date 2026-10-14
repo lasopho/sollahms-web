@@ -1,3 +1,4 @@
+import { historicalSentoFinancialRows } from './sento-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -55,8 +56,8 @@ test('fechas siguen Chile, no el día UTC ni fechas calendario inválidas', () =
   assert.equal(chileDate('invalid'), null);
 });
 
-test('136 proyectos: 106 precios verificados participan y 30 quedan E', async () => {
-  const projects = JSON.parse(await readFile(new URL('../data/proyectos.json', import.meta.url), 'utf8'));
+test('137 proyectos: 106 precios históricos verificados participan y 31 quedan E', async () => {
+  const projects = historicalSentoFinancialRows(JSON.parse(await readFile(new URL('../data/proyectos.json', import.meta.url), 'utf8')));
   assert.equal(projects.length, 137);
   const known = projects.filter((p) => verifiedProjectPrice(p, now));
   assert.equal(known.length, 106);

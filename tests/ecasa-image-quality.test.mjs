@@ -1,3 +1,4 @@
+import { projectSentoFile } from './sento-preservation.mjs';
 import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -50,7 +51,7 @@ test('quality review preserves 118 source photographs and explicitly excludes on
   const pinned=json('tests/ecasa-reviewed-output.json');
   const reviewedPackager=execFileSync('python3',['-c',
     'import sys; sys.path.insert(0,sys.argv[1]); from norte_verde_hero_scope import restore_norte_verde_hero_packager; sys.stdout.buffer.write(restore_norte_verde_hero_packager(sys.stdin.buffer.read()))',
-    resolve(ROOT,'tests')],{input:read('scripts/package-vercel.mjs')});
+    resolve(ROOT,'tests')],{input:projectSentoFile('scripts/package-vercel.mjs',read('scripts/package-vercel.mjs'))});
   assert.equal(hash(reviewedPackager),pinned.packageSha256);
   assert.equal(hash(read('scripts/ecasa-image-quality.mjs')),pinned.imageQualityModuleSha256);
   assert.equal(hash(read('data/ecasa-image-quality.json')),pinned.imageQualityPolicySha256);

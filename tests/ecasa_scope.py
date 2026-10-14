@@ -11,6 +11,7 @@ import json
 import subprocess
 from pathlib import Path
 from leben_scope import original_html, original_context, assert_base_records
+from sento_scope import original_data as restore_sento_data, historical_file
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = 'f1e9bf1715cc99d095a367eba9028a9a1ad2b026'
@@ -109,7 +110,7 @@ def expected_consolidation(path):
     return expected
 
 def validate_successor_data(path, actual=None):
-    current = json.loads(actual if actual is not None else (ROOT / path).read_bytes())
+    current = restore_sento_data(json.loads(actual if actual is not None else (ROOT / path).read_bytes()), path)
     expected = expected_consolidation(path)
     if any(row['slug'] == 'edificio-nordico' for row in current):
         assert_base_records(current, expected, path)
@@ -144,7 +145,7 @@ def validate_alias_route(slug):
     assert not (ROOT / (slug + '.html')).exists(), slug + ': alias cannot remain an independent fiche'
     reviewed = json.loads(REVIEWED_OUTPUT.read_text())
     assert reviewed['baselineCommit'] == CONSOLIDATION_BASE, 'Ecasa consolidated route review is not frozen'
-    config = (ROOT / 'vercel.json').read_bytes()
+    config = historical_file('vercel.json', (ROOT / 'vercel.json').read_bytes())
     gates = json.loads(config).get('git', {}).get('deploymentEnabled', {})
     if 'codex/norte-verde-hero-merge' in gates:
         assert all(gates.get(branch) is False for branch in ['main', 'codex/ecasa-cartera-definitiva',
@@ -161,6 +162,7 @@ def validate_alias_route(slug):
         assert matches == [{'source': source, 'destination': destination, 'permanent': True}], source + ': exact canonical stage redirect missing'
 
 def restore_context_file(path, current):
+    current = historical_file(path, current)
     if path == 'lib/project-context.mjs':
         current = original_context(current)
     review = json.loads(CONTEXT_REVIEW.read_text())

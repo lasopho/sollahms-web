@@ -11,6 +11,11 @@ const root=resolve(option('--build',sourceRoot+'dist'));
 const base=option('--base',process.env.SOLLAHMS_HEADER_QA_URL || 'http://127.0.0.1:8917'), origin = new URL(base).origin;
 const output=resolve(option('--output','/private/tmp/sollahms-leben-headers-qa'));
 const before = JSON.parse(await readFile(option('--before')));
+const baselineCatalogueBytes=await readFile(option('--before-catalogue',resolve(before.source.build,'data/proyectos.json')));
+const baselineCatalogue=JSON.parse(baselineCatalogueBytes);
+let sentoReview=null;
+try { sentoReview=JSON.parse(await readFile(sourceRoot+'data/sento-review.json')); }
+catch(error){if(error.code!=='ENOENT')throw error;}
 const config = JSON.parse(await readFile(sourceRoot+'data/leben-headers.json'));
 const catalogueBytes = await readFile(resolve(root, 'data/proyectos.json'));
 const catalogue = JSON.parse(catalogueBytes), projects = catalogue.filter(project => project.inmobiliaria === 'Leben');
@@ -21,7 +26,14 @@ const views = [], checks = [], requests = { fontGets:0, isolatedProviders:0, htt
 const check = (passed,label) => checks.push({passed:!!passed,label});
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 await mkdir(output,{recursive:true});
-check(sha256(catalogueBytes)===before.source.catalogueSha256,'Catalogue covers and commercial objects byte exact');
+if(sha256(baselineCatalogueBytes)!==before.source.catalogueSha256)throw new Error('Immutable baseline catalogue changed.');
+const sentoSlugs=new Set(sentoReview?.catalogue.map(row=>row.slug)??[]);
+const canonical=value=>Array.isArray(value)?value.map(canonical):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).sort(([a],[b])=>a.localeCompare(b)).map(([key,item])=>[key,canonical(item)])):value;
+const fingerprint=rows=>sha256(JSON.stringify(canonical(rows)));
+const preserved=catalogue.filter(row=>!sentoSlugs.has(row.slug));
+const previous=baselineCatalogue.filter(row=>!sentoSlugs.has(row.slug));
+const sentoExact=!sentoReview||sentoSlugs.size===7&&fingerprint(catalogue.filter(row=>sentoSlugs.has(row.slug)))===fingerprint(sentoReview.catalogue);
+check(fingerprint(preserved)===fingerprint(previous)&&sentoExact,'Catalogue unchanged outside seven independently approved Sento successors');
 const source = {commit:process.env.SOLLAHMS_HEADER_QA_COMMIT||'working-tree',build:root,catalogueSha256:sha256(catalogueBytes),projectCount:137,lebenCount:14,ecasaCount:catalogue.filter(project=>project.inmobiliaria==='Ecasa').length,inventory:projects.map(project=>({slug:project.slug,nombre:project.nombre,estado:project.estado,catalogueCover:project.imagenPrincipal}))};
 const save = async completed => { const report={base,completed,source,contexts,views,checks,requests,failures:checks.filter(check=>!check.passed),limitations:'Only GET/HEAD. Actual Google fonts allowed; providers isolated for layout. No live-provider claim. After uses one shared header; body and catalogue checked against the recorded baseline. DPR source coverage is measured, not assumed.'};await writeFile(output+'/report.next.json',JSON.stringify(report,null,2)+'\n');await rename(output+'/report.next.json',output+'/report.json'); };
 function inspect() {
@@ -52,7 +64,23 @@ try {
   browser=await chromium.launch({channel:'chrome',headless:true});
   for(const viewport of contexts){
     const context=await browser.newContext({viewport:{width:viewport.width,height:viewport.height},deviceScaleFactor:viewport.dpr});
-    await context.route('**/*',route=>{const request=route.request(),url=new URL(request.url());if(!['GET','HEAD'].includes(request.method())){requests.blockedWrites.push({method:request.method(),path:url.pathname});return route.abort();}if(url.origin===origin){if(!process.env.VERCEL_OIDC_TOKEN)return route.continue();return route.fetch({headers:{...request.headers(),'x-vercel-trusted-oidc-idp-token':process.env.VERCEL_OIDC_TOKEN},maxRedirects:0,timeout:60000}).then(response=>route.fulfill({response}));}if(['fonts.googleapis.com','fonts.gstatic.com'].includes(url.hostname)){requests.fontGets++;return route.continue();}requests.isolatedProviders++;if(request.isNavigationRequest())return route.fulfill({status:200,contentType:'text/html',body:'<!doctype html><title>Provider isolated for baseline QA</title>'});return route.abort();});
+    await context.route('**/*',async route=>{
+      const request=route.request(),url=new URL(request.url());
+      if(!['GET','HEAD'].includes(request.method())){requests.blockedWrites.push({method:request.method(),path:url.pathname});return route.abort();}
+      if(url.origin===origin){
+        if(!process.env.VERCEL_OIDC_TOKEN)return route.continue();
+        for(let attempt=0;attempt<2;attempt++){
+          try {const response=await route.fetch({headers:{...request.headers(),'x-vercel-trusted-oidc-idp-token':process.env.VERCEL_OIDC_TOKEN},maxRedirects:0,timeout:60000});return await route.fulfill({response});}
+          catch(error){
+            if(attempt===0&&/ETIMEDOUT|ECONNRESET|timed out/i.test(error.message))continue;
+            requests.httpFailures.push({path:url.pathname,error:'Exact-origin GET transport failed after bounded retry'});
+            return route.abort();
+          }
+        }
+      }
+      if(['fonts.googleapis.com','fonts.gstatic.com'].includes(url.hostname)){requests.fontGets++;return route.continue();}
+      requests.isolatedProviders++;if(request.isNavigationRequest())return route.fulfill({status:200,contentType:'text/html',body:'<!doctype html><title>Provider isolated for baseline QA</title>'});return route.abort();
+    });
     context.on('response',response=>{const url=new URL(response.url());if(url.origin===origin&&response.status()>=400)requests.httpFailures.push({path:url.pathname,status:response.status()});});
     for(const project of projects){const page=await context.newPage(),errors=[];page.on('pageerror',error=>errors.push(error.message));const response=await page.goto(base+project.detalleUrl,{waitUntil:'domcontentloaded'});
       await page.waitForFunction(()=>[...document.querySelectorAll('link[rel="stylesheet"]')].filter(link=>new URL(link.href).origin===location.origin).every(link=>link.sheet));

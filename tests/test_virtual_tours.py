@@ -12,6 +12,7 @@ import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 from leben_scope import original_html
+from sento_scope import original_data, historical_file
 from string import Template
 from urllib.parse import urlparse
 from virtual_tour_scope import exact_removed_page, VISTA_UNAVAILABLE_URL
@@ -25,8 +26,8 @@ from virtual_tour_policy import usable_virtual_tours, virtual_tours_to_render, h
 spec = importlib.util.spec_from_file_location('details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(details)
-PROJECTS = json.loads((ROOT / 'data/proyectos.json').read_text())
-RECORDS = {r['slug']: r for r in json.loads((ROOT / 'data/fichas-proyectos.json').read_text())}
+PROJECTS = original_data(json.loads((ROOT / 'data/proyectos.json').read_text()))
+RECORDS = {r['slug']: r for r in original_data(json.loads((ROOT / 'data/fichas-proyectos.json').read_text()), 'data/fichas-proyectos.json')}
 TEMPLATE = Template((ROOT / 'templates/project-detail.html').read_text())
 
 def stage_records(record):
@@ -84,7 +85,7 @@ class VirtualTours(unittest.TestCase):
         hidden = [r for r in RECORDS.values() if not canonical_tours(r)]
         self.assertEqual(len(hidden), 78)
         for r in hidden:
-            page = (ROOT / (r['slug'] + '.html')).read_text()
+            page = original_html((ROOT / (r['slug'] + '.html')).read_text())
             self.assertNotRegex(page, r'id=["\']recorrido["\']|href=["\']#recorrido["\']')
             self.assertNotIn('Recorridos y experiencias oficiales', page)
             self.assertNotIn('Consulta la disponibilidad de un recorrido virtual', page)
@@ -314,7 +315,7 @@ class VirtualTours(unittest.TestCase):
         self.assertNotIn('Recorridos y experiencias oficiales', result)
         self.assertEqual(hide_absent_virtual_tours(result, empty), result)
         for slug in ['inn-puerto-chico', 'edificio-suecia']:
-            result = hide_absent_virtual_tours((ROOT / (slug + '.html')).read_text(), empty)
+            result = hide_absent_virtual_tours(original_html((ROOT / (slug + '.html')).read_text()), empty)
             self.assertNotIn('Recorrido virtual 360°', result)
             self.assertNotIn('my.matterport.com/show/', result)
             self.assertIn('https://www.google.com/maps', result)

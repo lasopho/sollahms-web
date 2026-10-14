@@ -16,6 +16,7 @@ EXTRA_TESTS = {
     'tests/rut-contact.mjs', 'tests/integration-capacity-ui.mjs',
     'tests/integration-comparator.mjs', 'tests/integration-contact.mjs',
     'tests/git-checkout-controls.mjs',
+    'tests/sento-main-merge.mjs',
 }
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
@@ -82,7 +83,10 @@ env['PYTHONDONTWRITEBYTECODE'] = '1'
 def run(item):
     name, command = item
     start = time.monotonic()
-    result = subprocess.run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=300)
+    # The composed Sento/Ecasa/Leben historical HTML audit was measured at
+    # 309 seconds in a focused run. Preserve every assertion and allow its
+    # subprocess transport to finish instead of truncating a valid suite.
+    result = subprocess.run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=600)
     output = result.stdout
     (OUT / (name + '.log')).write_text(output)
     row = {'name': name, 'exitCode': result.returncode, 'seconds': round(time.monotonic()-start, 3)}
@@ -103,11 +107,11 @@ with ThreadPoolExecutor(max_workers=2) as executor:
     results = list(executor.map(run, commands))
 node_results = [item for item in results if item['name'].startswith('node-')]
 node_counts = {key: sum(item['tests'][key] for item in node_results) for key in ['tests','pass','fail','skipped','cancelled']}
-assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 317, 'Executed case count changed; classify the change explicitly'
+assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 325, 'Executed case count changed; classify the change explicitly'
 assert node_counts['skipped'] == 0, 'Filtered release cases are not represented as successful or skipped test executions'
 python_result = next(item for item in results if item['name'] == 'python-synthetic-units')
 assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 137
-passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 317 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
+passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 325 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
 report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
           'node': node_counts, 'pythonFixtureTests': python_result['tests'],
           'releaseOnlyNotRun': release_cases, 'releaseOnlyNotRunCount': len(release_cases),

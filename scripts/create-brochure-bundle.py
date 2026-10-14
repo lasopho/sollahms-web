@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Create a deterministic PRIVATE source bundle for an authorized web build.
 
-No original PDF, contract, candidate, environment file or Git directory enters
-the bundle. It includes the exact selected derivatives, so materialization is
+Only the six pinned PDF documents already approved for the Sento Preview may
+enter; Leben originals, contracts, candidates, environment files and Git do not.
+It includes the exact selected derivatives, so materialization is
 not a build dependency. This command does not upload or deploy anything.
 """
 import argparse
@@ -75,6 +76,32 @@ QUALITY_BASE_VALUES = {
 }
 
 
+def original_sento_rows(root, rows, name):
+    path = root / release.SENTO_MANIFEST
+    if not path.exists():
+        return rows
+    assert sha(path.read_bytes()) == release.SENTO_REVIEW_SHA256, 'The current Sento source review changed'
+    baseline_path = root / 'data/sento-baseline.json'
+    assert sha(baseline_path.read_bytes()) == release.SENTO_REQUIRED_FILES['data/sento-baseline.json'], 'The independent Sento baseline changed'
+    frozen = json.loads(baseline_path.read_text())
+    # Recover exact original numeric encodings (e.g. printed terrace 0.0),
+    # rather than losing their historical Python fingerprint in a JS snapshot.
+    originals = json.loads(release.git(root, 'show', frozen['sourceCommit'] + ':' + name))
+    baseline = {row['slug']: row for row in originals if row['slug'] in release.SENTO_SLUGS}
+    assert list(baseline.values()) == frozen['originalRows'][name], 'Sento original Git rows differ from their independently pinned snapshot'
+    review = json.loads(path.read_text())
+    key = {'data/proyectos.json': 'catalogue', 'data/fichas-proyectos.json': 'research', 'data/registro-fichas.json': 'ledger'}[name]
+    current = {row['slug']: row for row in review[key]}
+    result = []
+    for row in rows:
+        if row['slug'] in baseline:
+            assert row == baseline[row['slug']] or row == current[row['slug']], 'Only exact approved Sento rows may extend this source: ' + row['slug']
+            result.append(baseline[row['slug']])
+        else:
+            result.append(row)
+    return result
+
+
 def assert_quality_base(root):
     research = json.loads((root / 'data/fichas-proyectos.json').read_text())
     nordico = [record for record in research if record['slug'] == 'edificio-nordico']
@@ -86,7 +113,7 @@ def assert_quality_base(root):
         data = (root / name).read_bytes()
         if sha(data) == digest:
             continue
-        base = [record for record in research if record['slug'] != 'edificio-nordico'] if name.endswith('fichas-proyectos.json') else {url: item for url, item in sources.items() if url not in new_sources}
+        base = [record for record in original_sento_rows(root, research, name) if record['slug'] != 'edificio-nordico'] if name.endswith('fichas-proyectos.json') else {url: item for url, item in sources.items() if url not in new_sources}
         assert sha(json.dumps(base, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()) == QUALITY_BASE_VALUES[name], 'Frozen historical research/image evidence changed: ' + name
     for url, item in new_sources.items():
         assert item['sourceUrl'] == 'https://nordico.ileben.cl/' and item['qualityStatus'] == 'approved' and item['status'] == 'downloaded', 'Unreviewed Nórdico image selection'
@@ -182,7 +209,15 @@ def selected_source_files(root):
     assert all(p['inmobiliaria'] == 'Ingevec' for p in catalogue if p['slug'] in APPROVED_PROJECTS['brochures-ingevec.json'])
     assert {p['slug'] for p in catalogue if p['inmobiliaria'].lower() == 'ecasa'} == APPROVED_PROJECTS['brochures-ecasa.json'], 'The 15 Ecasa development identities must remain exact'
     assert not ECASA_LEGACY_TARGETS.keys() & slugs, 'A commercial stage remains a duplicate catalogue project'
-    untouched = [p for p in catalogue if p['inmobiliaria'].lower() != 'ecasa' and p['slug'] != 'edificio-nordico']
+    # Normalize only the seven exact reviewed Sento successor rows when
+    # checking the independently frozen 121 non-Ecasa catalogue objects.
+    sento_path = root / release.SENTO_MANIFEST
+    sento = release.sento_manifest_inventory(json.loads(sento_path.read_text())) if sento_path.exists() else {}
+    if sento:
+        frozen_catalogue = original_sento_rows(root, catalogue, 'data/proyectos.json')
+    else:
+        frozen_catalogue = catalogue
+    untouched = [p for p in frozen_catalogue if p['inmobiliaria'].lower() != 'ecasa' and p['slug'] != 'edificio-nordico']
     assert len(untouched) == 121 and sha(json.dumps(untouched, ensure_ascii=False, sort_keys=True,
         separators=(',', ':')).encode()) == NON_ECASA_SHA256, 'Other developers changed'
     pages = {p.name for p in root.glob('*.html')}
@@ -234,7 +269,9 @@ def selected_source_files(root):
         leben = release.leben_manifest_inventory(json.loads(leben_path.read_text()))
         assert not set(leben) & set(media), 'Duplicate Leben media destination'
         media.update({name: item['sha256'] for name, item in leben.items()})
-    files = set(media) | set(official_sources)
+    files = set(media) | set(official_sources) | set(sento)
+    if sento:
+        files.update((release.SENTO_MODULE, *release.SENTO_REQUIRED_FILES))
     files.add(release.LEBEN_MODULE)
     if leben_path.exists():
         files.add(release.LEBEN_MANIFEST)
@@ -259,17 +296,24 @@ def selected_source_files(root):
             continue
         if any(f'/propiedades/{folder}/' in relative for folder in (*PRIVATE_MEDIA_FOLDERS, release.OFFICIAL_FOLDER)):
             continue  # Only the exact manifest above can select these assets.
+        if relative.startswith(('assets/propiedades/sento/', 'assets/brochures/sento/')):
+            continue  # The preserved Sento selection is independent and exact.
         if path.suffix.lower() in PUBLIC_EXTENSIONS:
             files.add(relative)
     for relative in sorted(files):
         path = root / relative
         assert path.is_file() and path.resolve() == path, f'Nonregular or symbolic source: {relative}'
-        assert path.suffix.lower() in PUBLIC_EXTENSIONS
+        assert path.suffix.lower() in PUBLIC_EXTENSIONS or relative in sento and sento[relative]['kind'] == 'document'
         assert '..' not in Path(relative).parts and not relative.startswith('.')
         if relative in media:
             assert sha(path.read_bytes()) == media[relative], f'Changed selected media: {relative}'
         if relative in official_sources:
             assert path.stat().st_size == official_sources[relative]['bytes'] and sha(path.read_bytes()) == official_sources[relative]['sha256'], f'Changed official review source: {relative}'
+        if relative in sento:
+            assert sha(path.read_bytes()) == sento[relative]['sha256'], 'Changed preserved Sento source: ' + relative
+    if sento:
+        for name, expected in release.SENTO_REQUIRED_FILES.items():
+            assert sha((root / name).read_bytes()) == expected, 'Sento source evidence changed: ' + name
     return sorted(files)
 
 
@@ -336,6 +380,10 @@ def main():
     assert not args.verify_public_web or not leben_path.exists(), 'Leben is only authorized for protected Preview'
     catalogue_count = len(json.loads((ROOT / 'data/proyectos.json').read_text()))
     leben_receipt = {'manifestSha256': sha(leben_path.read_bytes()), 'assets': [{**leben[name], 'bytes': (ROOT / name).stat().st_size} for name in sorted(leben)]} if leben_path.exists() else None
+    sento_path = ROOT / release.SENTO_MANIFEST
+    sento = release.sento_manifest_inventory(json.loads(sento_path.read_text())) if sento_path.exists() else {}
+    sento_receipt = {'manifestSha256': release.SENTO_REVIEW_SHA256, 'projects': 7, 'images': 277, 'documents': 6,
+                    'assets': [{**sento[name], 'bytes': (ROOT / name).stat().st_size} for name in sorted(sento)]} if sento else None
     official_sources, official_published = release.official_manifest_inventory(json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
     manual = release.manual_quality_selection(json.loads((ROOT / release.MANUAL_MANIFEST).read_text()),
         json.loads((ROOT / release.BASE_QUALITY_MANIFEST).read_text()),
@@ -353,6 +401,8 @@ def main():
         subprocess.run([args.node, str(stage / 'scripts/package-vercel.mjs')],
                        cwd=stage, env=env, check=True, stdout=subprocess.PIPE)
         receipt = json.loads((stage / '.vercel/brochure-build-inventory.json').read_text())
+        if sento:
+            assert {name for name in public_files(stage / 'dist') if name.startswith(('assets/propiedades/sento/', 'assets/brochures/sento/'))} == set(sento), 'Sento Preview selection changed or includes candidates'
         source_media = sum(len(json.loads((stage / 'data' / name).read_text())['projects'][index][key])
             for name in MANIFESTS for index in range(len(APPROVED_PROJECTS[name])) for key in ['images', 'models'])
         assert source_media == 399, 'The original brochure sources must remain exact'
@@ -397,6 +447,7 @@ def main():
                 'reviewCommit': review_commit, 'verificationTools': tool_inventory,
                 'contentProfile': 'protected_leben_review' if leben_receipt else 'protected_ecasa_review',
                 **({'lebenReview': leben_receipt, 'lebenReviewMedia': len(leben)} if leben_receipt else {}),
+                **({'sentoReview': sento_receipt, 'sentoPublicParityVerified': False, 'productionComparisonAvailable': False} if sento_receipt else {}),
                 'publicationAuthorized': False,
                 'integrationAuthorized': False,
                 'catalogueProjects': catalogue_count, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,

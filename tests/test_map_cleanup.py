@@ -10,6 +10,7 @@ import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
+from sento_scope import original_data, historical_file
 from string import Template
 
 from automatic_embed_scope import restore_automatic_file
@@ -26,8 +27,8 @@ from fiche_presentation import commercialize_fiche
 spec = importlib.util.spec_from_file_location('map_cleanup_details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(details)
-PROJECTS = json.loads((ROOT / 'data/proyectos.json').read_text())
-RECORDS = {row['slug']: row for row in json.loads((ROOT / 'data/fichas-proyectos.json').read_text())}
+PROJECTS = original_data(json.loads((ROOT / 'data/proyectos.json').read_text()))
+RECORDS = {row['slug']: row for row in original_data(json.loads((ROOT / 'data/fichas-proyectos.json').read_text()), 'data/fichas-proyectos.json')}
 
 
 class Nodes(HTMLParser):
@@ -89,7 +90,7 @@ class MapCleanup(unittest.TestCase):
         related = 0
         for project in PROJECTS:
             slug = project['slug']
-            text = (ROOT / (slug + '.html')).read_text()
+            text = original_html((ROOT / (slug + '.html')).read_text())
             self.assert_clean(text, slug)
             if slug in RELATED:
                 note = re.search(r'<p class="map-note">.*?</p>', baseline_bytes(slug + '.html').decode())[0]
@@ -115,6 +116,8 @@ class MapCleanup(unittest.TestCase):
             fixture = Path(directory)
             for name in ['scripts', 'data', 'templates']:
                 shutil.copytree(ROOT / name, fixture / name)
+            for path in ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json']:
+                (fixture / path).write_bytes(historical_file(path, (ROOT / path).read_bytes()))
             for slug in FEATURED:
                 (fixture / (slug + '.html')).write_bytes(baseline_bytes(slug + '.html'))
             result = subprocess.run([sys.executable, str(fixture / 'scripts/update-featured-verification.py')],
@@ -136,7 +139,7 @@ class MapCleanup(unittest.TestCase):
         self.assertEqual(remove_redundant_map_details(unrelated), unrelated)
         self.assert_clean(commercialize_fiche(page, 'bcome', research=RECORDS['bcome']), 'bcome')
         for path in ['assets/css/project-embeds.css', 'vercel.json', 'scripts/package-vercel.mjs']:
-            self.assertEqual(restore_map_cleanup_asset(path, (ROOT / path).read_bytes()), baseline_bytes(path))
+            self.assertEqual(restore_map_cleanup_asset(path, historical_file(path, (ROOT / path).read_bytes())), baseline_bytes(path))
         self.assertEqual((ROOT / 'assets/js/project-embeds.js').read_bytes(), baseline_bytes('assets/js/project-embeds.js'), 'Native controls/error-only runtime must remain exact')
 
     def test_exact_cleanup_scope_rejects_unrelated_markup_assets_and_missing_removals(self):

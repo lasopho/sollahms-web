@@ -2,7 +2,9 @@ import { expectedProjectLabel, expectedProjectQuery, expectedProjectDetail } fro
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
-import catalogue from '../data/proyectos.json' with { type: 'json' };
+import actualCatalogue from '../data/proyectos.json' with { type: 'json' };
+import { historicalSentoFinancialRows } from './sento-preservation.mjs';
+const catalogue = historicalSentoFinancialRows(actualCatalogue);
 import mortgageDataset from '../data/hipotecario.json' with { type: 'json' };
 import { createContactHandler } from '../api/contact.mjs';
 import { calculateMortgage } from '../assets/js/mortgage-engine.mjs';

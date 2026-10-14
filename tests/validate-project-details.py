@@ -13,6 +13,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from virtual_tour_policy import virtual_tours_to_render
+from sento_scope import original_data as restore_sento_rows, historical_file as validate_sento_file, SLUGS as SENTO_SLUGS
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--site-root', type=Path,
                     help='Check the actual packaged public DOM/assets while retaining repository provenance')
@@ -65,6 +66,13 @@ class Page(HTMLParser):
 projects = json.loads((ROOT / 'data/proyectos.json').read_text())
 research = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
 ledger = json.loads((ROOT / 'data/registro-fichas.json').read_text())
+# Validate the current seven approved successor rows before using their
+# distinct PDF/page provenance schema in the catalogue-wide DOM checks.
+restore_sento_rows(research, 'data/fichas-proyectos.json')
+restore_sento_rows(ledger, 'data/registro-fichas.json')
+sento_review_bytes = (ROOT / 'data/sento-review.json').read_bytes()
+assert hashlib.sha256(sento_review_bytes).hexdigest() == 'e44ae176a8fe3384ba33df0306e0a97594fc2a1c692aa423310e9b4b6a1bea5f'
+sento_sources = {entry['slug']: entry for entry in json.loads(sento_review_bytes)['projects']}
 records = {r['slug']: r for r in research}
 slugs = {p['slug'] for p in projects}
 assert len(slugs) == len(projects) == 137, 'Catalogue has lost or duplicated projects'
@@ -77,7 +85,11 @@ assert all(r['fichaDesarrollada'] for r in ledger), 'A detail page is missing'
 baseline = json.loads((ROOT / 'tests/fixtures/nordico-catalogue-baseline.json').read_text())
 def canonical_digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-previous_projects = [project for project in projects if project['slug'] != 'edificio-nordico']
+# Restore only the seven independently approved Sento successor rows before
+# checking the fixed 136-project Nórdico integration boundary. Current Sento
+# data and HTML retain their independent assertions in sento-main-merge.mjs.
+historical_projects = restore_sento_rows(projects)
+previous_projects = [project for project in historical_projects if project['slug'] != 'edificio-nordico']
 assert len(previous_projects) == baseline['count'] == 136
 assert canonical_digest(previous_projects) == baseline['projectsSha256'], 'Nórdico integration changed an existing commercial catalogue row'
 assert canonical_digest([project for project in previous_projects if project['inmobiliaria'] == 'Ecasa']) == baseline['ecasaSha256'], 'The 15 approved Ecasa projects changed'
@@ -121,6 +133,10 @@ for project in projects:
     assert project['detalleUrl'] == '/' + slug + '.html'
     assert path.is_file(), f'{slug}: missing detail'
     text = path.read_text()
+    if slug in SENTO_SLUGS:
+        # The packaged Preview adds noindex and the shared caption policy;
+        # bind its source to the exact approved HTML, then check real DOM below.
+        validate_sento_file(slug + '.html', (ROOT / (slug + '.html')).read_bytes())
     page = Page(text)
     assert page.headings == 1, f'{slug}: expected one main heading'
     assert len(page.ids) == len(set(page.ids)), f'{slug}: duplicated element IDs'
@@ -153,7 +169,14 @@ for project in projects:
     stage_records = {stage['slug']: stage['investigacion'] for stage in stage_entries}
     all_records = list(stage_records.values()) if stage_records else [record]
     for image in record.get('images', []):
-        assert image.get('sourceUrl', '').startswith('https://'), f'{slug}: official image without provenance'
+        document = sento_sources.get(slug, {}).get('document')
+        if document:
+            assert image['sourceSha256'] == document['sha256'], f'{slug}: image assigned to another PDF'
+            assert isinstance(image['sourcePage'], int) and 1 <= image['sourcePage'] <= document['pageCount'], f'{slug}: undocumented image page'
+            assert image in sento_sources[slug]['images'], f'{slug}: image differs from the pinned Sento review'
+            assert hashlib.sha256((SITE_ROOT / image['localPath'].lstrip('/')).read_bytes()).hexdigest() == image['sha256'], f'{slug}: changed reviewed Sento image'
+        else:
+            assert image.get('sourceUrl', '').startswith('https://'), f'{slug}: official image without provenance'
     for tour in [tour for source in all_records for tour in source.get('virtualTours', [])]:
         assert tour.get('sourceUrl', '').startswith('https://'), f'{slug}: tour without provenance'
     host_config = re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', text, re.S)
@@ -209,13 +232,21 @@ for project in projects:
     for frame in page.iframes:
         assert frame.get('loading') == 'lazy' and frame.get('title'), f'{slug}: iframe must load automatically and have an accessible title'
         assert frame.get('referrerpolicy') == 'strict-origin-when-cross-origin', f'{slug}: iframe referrer policy changed'
-    rendered_tours = [tour for source in all_records for tour in virtual_tours_to_render(source)]
+    # The seven pinned Sento fiches preserve their approved external viewer
+    # alternatives as links; they use sento_fiche's independently reviewed
+    # policy. All other developers keep the existing usable-tour policy.
+    rendered_tours = ([tour for source in all_records for tour in source.get('virtualTours', [])]
+                      if slug in SENTO_SLUGS else
+                      [tour for source in all_records for tour in virtual_tours_to_render(source)])
     for tour in rendered_tours:
         if tour.get('embedStatus') == 'allowed':
             assert tour['url'] in published_frames, f'{slug}: automatic tour frame missing'
             assert tour['url'] not in published_links, f'{slug}: redundant external tour link remains'
         else:
-            assert slug == 'endemico' and tour['url'] == 'https://mybakerlab.com/endemico/', f'{slug}: unreviewed provider fallback'
+            if slug in SENTO_SLUGS:
+                assert tour in records[slug]['virtualTours'] and tour.get('embedStatus') == 'link', f'{slug}: unreviewed Sento provider alternative'
+            else:
+                assert slug == 'endemico' and tour['url'] == 'https://mybakerlab.com/endemico/', f'{slug}: unreviewed provider fallback'
             assert tour['url'] in published_links and tour['url'] not in published_frames, f'{slug}: documented external alternative missing'
     for tour in [tour for source in all_records for tour in source.get('virtualTours', [])]:
         if tour not in rendered_tours:
@@ -227,17 +258,24 @@ for project in projects:
         assert '#recorrido' not in published_links, f'{slug}: stale tour navigation'
         assert 'Recorridos y experiencias oficiales' not in text, f'{slug}: empty legacy tour block'
         assert 'Consulta la disponibilidad de un recorrido virtual' not in text, f'{slug}: absent-tour placeholder'
-    actual_matterport = any(tour.get('provider') == 'Matterport' and tour['url'] in published_frames for source in all_records for tour in source.get('virtualTours', []))
+    actual_matterport = any((tour.get('provider') == 'Matterport' or slug in SENTO_SLUGS and urlparse(tour['url']).hostname in {'my.matterport.com', 'mpembed.com'}) and tour['url'] in published_frames for source in all_records for tour in source.get('virtualTours', []))
     assert ledger_by_slug[slug]['matterport'] == actual_matterport, f'{slug}: Matterport audit differs from rendered page'
     assert ledger_by_slug[slug]['recorridosOficiales'] == sum(len(source.get('virtualTours', [])) for source in all_records), f'{slug}: official tour count differs from research'
     if slug not in FEATURED:
         assert all(x in page.ids for x in ['proyecto', 'caracteristicas', 'galeria', 'ubicacion'])
         assert ('recorrido' in page.ids) == bool(rendered_tours), f'{slug}: conditional tour section disagrees with registered usable tours'
         if 'precioDesdeUF' not in record.get('verifiedFields', []) or record.get('updates', {}).get('precioDesdeUF', project.get('precioDesdeUF')) is None:
-            assert re.search(r'Precio desde(?: · Etapa [1-3])?</span><strong><span class="pending">', text), f'{slug}: historical price shown as current'
+            if slug in SENTO_SLUGS:
+                assert project['precioDesdeUF'] is None and re.search(r'<span class="price-label">Precio desde</span><strong>Consultar precio</strong>', text), f'{slug}: unconfirmed Sento price shown as current'
+            else:
+                assert re.search(r'Precio desde(?: · Etapa [1-3])?</span><strong><span class="pending">', text), f'{slug}: historical price shown as current'
             assert 'Consultar precio' in text, f'{slug}: unconfirmed commercial price must invite consultation'
-        for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
-            assert json.loads(ld)['@type'] == 'WebPage'
+        actual_schema = [json.loads(ld) for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)]
+        if slug in SENTO_SLUGS:
+            source_schema = [json.loads(ld) for ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', (ROOT / (slug + '.html')).read_text(), re.S)]
+            assert actual_schema == source_schema, f'{slug}: approved Sento structured data changed in packaging'
+        else:
+            assert all(ld['@type'] == 'WebPage' for ld in actual_schema)
     if slug == 'edificio-nordico':
         assert 'planos-pendientes' in page.ids and 'Planos y superficies por modelo' in text
         assert 'unidad 101' in text and 'No incluye estacionamiento ni bodega' in text, 'Nórdico price must preserve its unit and exclusions'

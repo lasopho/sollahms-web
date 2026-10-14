@@ -1,3 +1,4 @@
+import { projectSentoFile, restoreSentoRows } from './sento-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -9,7 +10,7 @@ import { assertPreservedSource } from './leben-preservation.mjs';
 export const NORTE_VERDE_HERO_ASSETS = ['assets/css/norte-verde-hero-variants.css', 'assets/js/norte-verde-hero-variants.js', 'assets/review/norte-verde-hero-variantes.html'];
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const catalogue = JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json')));
+const catalogue = restoreSentoRows(JSON.parse(readFileSync(resolve(ROOT, 'data/proyectos.json'))));
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
 assert.equal(ficheFiles.size, 137);
 export const ECASA_NEW_SLUGS = new Set(['alto-san-joaquin-2','alto-san-joaquin-3','terratolten-2','nucleo-costanera-2','terratolten']);
@@ -103,7 +104,7 @@ export function readCommercialFile(file) {
     if(ECASA_NEW_SLUGS.has(file.replace(/\.html$/, ''))) return input;
     return restoreReviewedTourFile(file,input);
   }
-  let actual = readFileSync(resolve(ROOT,file));
+  let actual = projectSentoFile(file, readFileSync(resolve(ROOT,file)));
   if (file === 'edificio-nordico.html') return actual;
   if (file.endsWith('.html')) actual = Buffer.from(actual.toString().replace(/<!--LEBEN_PREVIEW_START-->[\s\S]*?<!--LEBEN_PREVIEW_END-->/g, '').replace(/<!--LEBEN_PUBLIC_START-->([\s\S]*?)<!--LEBEN_PUBLIC_END-->/g, '$1'));
   if (automaticEmbedAssets.has(file)) return restoreReviewedEmbedAsset(file, actual);

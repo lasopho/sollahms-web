@@ -1,5 +1,6 @@
 import { copyEcasaImageQualityInputs, assertEcasaQualityCoverFields as assertEcasaCoverFields,
   assertEcasaQualityPublicCatalogue, reviewedOfficialSourceFiles } from './ecasa-quality-fixture.mjs';
+import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
 import { naturalCaption, normalizeFicheCopy } from '../scripts/public-fiche-copy.mjs';
 import assert from 'node:assert/strict';
@@ -225,7 +226,7 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
-  assert.deepEqual(listFiles('assets').filter(file => !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && file !== 'assets/css/leben-project-hero.css' && !reviewedOfficialSourceFiles.includes(file)),
+  assert.deepEqual(historicalSentoAssetFiles(listFiles('assets')).filter(file => !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && file !== 'assets/css/leben-project-hero.css' && !reviewedOfficialSourceFiles.includes(file)),
     [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });

@@ -47,6 +47,7 @@ def make_reference(metadata, platform, files, commit):
     release.require(metadata.get('reviewCommit') == commit, 'Bundle review commit differs from current HEAD')
     release.require(metadata.get('branch') == ('codex/leben-brochures-nordico' if leben else 'codex/ecasa-cartera-definitiva'), 'Unexpected protected review branch')
     leben_inventory = release.leben_policy_inventory(metadata, files)
+    sento_inventory = release.sento_policy_inventory(metadata, files)
     catalogue_count = metadata.get('catalogueProjects')
     release.require(catalogue_count == (137 if leben else 136) and metadata.get('ecasaProjects') == 15 and
                     metadata.get('ecasaCommercialEntries') == 22 and metadata.get('ecasaLegacyRoutes') == 8,
@@ -69,9 +70,16 @@ def make_reference(metadata, platform, files, commit):
         release.official_policy_inventory(metadata, files)
     tracked_names = set(release.git(ROOT, 'ls-tree', '-rz', '--name-only', commit).decode().split('\0'))
     tracked = sum(name in tracked_names for name in files)
+    if sento_inventory:
+        release.require(leben and metadata.get('sentoPublicParityVerified') is False and
+                        metadata.get('productionComparisonAvailable') is False and len(metadata.get('publicOutput', [])) == 1360,
+                        'The combined Sento package must be Preview-only with its exact output inventory')
     return {'schemaVersion': 1, 'contentProfile': profile,
             **({'lebenReview': leben, 'lebenReviewMedia': len(leben_inventory)} if leben else {}),
             **({'lebenPublicWebRights': 'pending_contract_scope_verification'} if leben else {}),
+            **({'sentoReview': metadata['sentoReview'], 'sentoPublicParityVerified': False,
+                'productionComparisonAvailable': False, 'previewOutputInventory': metadata['publicOutput']}
+               if sento_inventory else {}),
             'approvedAppCommit': commit, 'preparedCommitForReview': commit,
             'developmentBranch': metadata['branch'],
             **{key: platform[key] for key in ['projectId', 'teamId', 'teamSlug', 'projectName', 'productionOrigin']},

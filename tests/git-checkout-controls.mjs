@@ -1,3 +1,4 @@
+import { projectSentoFile } from './sento-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync, mkdtempSync, mkdirSync, copyFileSync, writeFileSync, rmSync } from 'node:fs';
@@ -15,14 +16,15 @@ const AUTOMATIC_EMBEDS = 'codex/mapas-recorridos-auto';
 const MAP_CLEANUP = 'codex/limpieza-mapas-fichas';
 const ECASA = 'codex/ecasa-cartera-definitiva';
 const LEBEN = 'codex/leben-brochures-nordico';
+const SENTO = 'codex/sento-cartera-documentada';
 const APPROVED_PORTFOLIO = 'e7afe04';
-const read = path => readFileSync(resolve(ROOT, path));
-const json = path => JSON.parse(read(path));
+const read = path => projectSentoFile(path, readFileSync(resolve(ROOT, path)));
+const json = path => JSON.parse(projectSentoFile(path, read(path)));
 const git = (...args) => execFileSync('git', args, { cwd: ROOT });
-const configuration = json('vercel.json');
+const configuration = JSON.parse(readFileSync(resolve(ROOT, 'vercel.json')));
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false, 'codex/norte-verde-hero-merge': false },
+  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false, 'codex/norte-verde-hero-merge': false, [SENTO]: false },
     'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
@@ -51,6 +53,8 @@ test('manual deployment gates reject missing integration protection, enabled bra
     config => { config.git.deploymentEnabled[ECASA] = true; },
     config => { delete config.git.deploymentEnabled['codex/norte-verde-hero-merge']; },
     config => { config.git.deploymentEnabled['codex/norte-verde-hero-merge'] = true; },
+    config => { delete config.git.deploymentEnabled[SENTO]; },
+    config => { config.git.deploymentEnabled[SENTO] = true; },
     config => { config.git.deploymentEnabled.main = true; },
     config => { config.git.deploymentEnabled[INTEGRATION] = true; },
     config => { config.git.deploymentEnabled['*'] = true; },
@@ -149,7 +153,7 @@ function assertIncompleteBuildRejected(environment, partial) {
       'data/ecasa-image-quality.json','data/fichas-proyectos.json','data/fuentes-imagenes.json',
       'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
       const target = resolve(fixture, path);
-      mkdirSync(dirname(target), { recursive: true }); copyFileSync(resolve(ROOT, path), target);
+      mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, projectSentoFile(path, readFileSync(resolve(ROOT, path))));
     }
     if (partial) {
       const asset = json('data/brochures-ingevec.json').projects[0].images[0];
