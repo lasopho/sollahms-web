@@ -22,7 +22,7 @@ const git = (...args) => execFileSync('git', args, { cwd: ROOT });
 const configuration = json('vercel.json');
 
 function assertManualDeploymentGates(config) {
-  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false },
+  assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, [ECASA]: false, [LEBEN]: false, 'codex/norte-verde-hero-merge': false },
     'Main, integration and map/tour review branches require the reproducible manual deployment path');
 }
 function assertSecurityHeaders(config) {
@@ -49,6 +49,8 @@ test('manual deployment gates reject missing integration protection, enabled bra
     config => { config.git.deploymentEnabled[LEBEN] = true; },
     config => { delete config.git.deploymentEnabled[ECASA]; },
     config => { config.git.deploymentEnabled[ECASA] = true; },
+    config => { delete config.git.deploymentEnabled['codex/norte-verde-hero-merge']; },
+    config => { config.git.deploymentEnabled['codex/norte-verde-hero-merge'] = true; },
     config => { config.git.deploymentEnabled.main = true; },
     config => { config.git.deploymentEnabled[INTEGRATION] = true; },
     config => { config.git.deploymentEnabled['*'] = true; },

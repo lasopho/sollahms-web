@@ -150,7 +150,10 @@ test('catalogue and exact successor controls reject resurrection, duplicate iden
 test('the 15 reviewed canonical Ecasa outputs and eight exact alias routes match the independently pinned consolidation inventory',()=>{
   const reviewed=json('tests/ecasa-reviewed-output.json');assert.equal(reviewed.baselineCommit,BASELINE);
   assert.equal(sha(read('data/brochures-ecasa.json')),reviewed.manifestSha256);
-  assert.equal(sha(read('vercel.json')),reviewed.redirectConfigSha256);
+  const config=read('vercel.json').toString();
+  const gate=',\n      "codex/norte-verde-hero-merge": false';
+  assert.equal(config.split(gate).length,2,'Only the explicit disabled Norte Verde review gate may accompany the pinned routes');
+  assert.equal(sha(config.replace(gate,'')),reviewed.redirectConfigSha256);
   assert.deepEqual(new Set(Object.keys(reviewed.htmlSha256)),new Set(Object.keys(names).map(slug=>slug+'.html')));
   for(const [path,digest] of Object.entries(reviewed.htmlSha256))assert.equal(sha(read(path)),digest,path);
 });

@@ -19,7 +19,7 @@ import { ECASA_NEW_SLUGS, ECASA_SLUGS, restoreEcasaData, assertCommercialBytes, 
   INGEVEC_NEW_SLUGS, INGEVEC_ENRICHED_SLUGS, INGEVEC_FINAL_SLUGS,
   INGEVEC_REMOVED_SLUGS, readCommercialFile, assertPortfolioData,
   assertDefinitiveFicheFallback, removeReviewedTourBlocks,
-  AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet } from './commercial-html.mjs';
+  AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet, NORTE_VERDE_HERO_ASSETS } from './commercial-html.mjs';
 import { brochureSourceDocuments, BROCHURE_RETIRED_ASSETS } from '../scripts/brochure-publication.mjs';
 
 // Supplied brochures enrich only these protected Preview pages and covers.
@@ -225,7 +225,7 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
-  assert.deepEqual(listFiles('assets').filter(file => !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && file !== 'assets/css/leben-project-hero.css' && !reviewedOfficialSourceFiles.includes(file)),
+  assert.deepEqual(listFiles('assets').filter(file => !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith(ASSETS.slice(1)) && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && file !== 'assets/css/leben-project-hero.css' && !reviewedOfficialSourceFiles.includes(file)),
     [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS, 'assets/js/project-identity.mjs', 'assets/js/ecasa-stages.js', 'assets/css/ecasa-stages.css'].sort());
   assertAutomaticEmbedStylesheet();
 });

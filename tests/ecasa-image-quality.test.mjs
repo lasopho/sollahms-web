@@ -48,7 +48,10 @@ const visible=html=>html.replace(/<head\b[^>]*>[\s\S]*?<\/head>|<script\b[^>]*>[
 
 test('quality review preserves 118 source photographs and explicitly excludes only four reviewed documentary images',()=>{
   const pinned=json('tests/ecasa-reviewed-output.json');
-  assert.equal(hash(read('scripts/package-vercel.mjs')),pinned.packageSha256);
+  const reviewedPackager=execFileSync('python3',['-c',
+    'import sys; sys.path.insert(0,sys.argv[1]); from norte_verde_hero_scope import restore_norte_verde_hero_packager; sys.stdout.buffer.write(restore_norte_verde_hero_packager(sys.stdin.buffer.read()))',
+    resolve(ROOT,'tests')],{input:read('scripts/package-vercel.mjs')});
+  assert.equal(hash(reviewedPackager),pinned.packageSha256);
   assert.equal(hash(read('scripts/ecasa-image-quality.mjs')),pinned.imageQualityModuleSha256);
   assert.equal(hash(read('data/ecasa-image-quality.json')),pinned.imageQualityPolicySha256);
   assert.equal(policy.baselineCommit,BASELINE);assert.equal(policy.projects.length,15);

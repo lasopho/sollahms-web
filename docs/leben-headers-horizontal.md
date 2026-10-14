@@ -13,3 +13,5 @@ Limitaciones visuales: Mood dispone de imágenes interiores aprobadas, sin facha
 Pruebas:317Node y137Python;84vistas antes y84después en1440/768/390px,DPR1/2. Se cotejan textos, enlaces, galerías, tablas, iframes y portadas contra el baseline f369f36. El validador de las137 rutas comprueba3503 enlaces internos y143URLs del sitemap. Los12 complementos y22 superficies documentales se conservan.
 
 El usuario autorizó posteriormente el merge a main, manteniendo la restricción de no modificar Production. La Preview final se verifica antes de realizar ese merge. No se promueve ni despliega Production.
+
+La integración conserva el merge concurrente de Norte Verde 61884b0: sus recursos y sus cuatro inserciones de empaquetado permanecen exactos y se activan sólo en su rama de revisión. La Preview Leben mantiene sus 14 encabezados y excluye los tres recursos de ese prototipo. Todas las ramas de revisión, además de main, conservan el despliegue automático desactivado.

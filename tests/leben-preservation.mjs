@@ -31,7 +31,9 @@ export function assertPreservedSource(path, current, baseline) {
     const configuration = JSON.parse(current);
     assert.equal(configuration.git.deploymentEnabled['codex/leben-brochures-nordico'], false);
     delete configuration.git.deploymentEnabled['codex/leben-brochures-nordico'];
-    assert.deepEqual(configuration, JSON.parse(baseline), 'Only the manual Leben deployment gate may extend the reviewed configuration');
+    assert.equal(configuration.git.deploymentEnabled['codex/norte-verde-hero-merge'], false);
+    delete configuration.git.deploymentEnabled['codex/norte-verde-hero-merge'];
+    assert.deepEqual(configuration, JSON.parse(baseline), 'Only the disabled Leben and Norte Verde review gates may extend the reviewed configuration');
   } else if (path.endsWith('.html')) {
     assert.deepEqual(originalLebenHtml(current), baseline, path + ': content outside the complementary Leben block changed');
   } else assert.deepEqual(current, baseline, path);

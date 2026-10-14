@@ -145,6 +145,13 @@ def validate_alias_route(slug):
     reviewed = json.loads(REVIEWED_OUTPUT.read_text())
     assert reviewed['baselineCommit'] == CONSOLIDATION_BASE, 'Ecasa consolidated route review is not frozen'
     config = (ROOT / 'vercel.json').read_bytes()
+    gates = json.loads(config).get('git', {}).get('deploymentEnabled', {})
+    if 'codex/norte-verde-hero-merge' in gates:
+        assert all(gates.get(branch) is False for branch in ['main', 'codex/ecasa-cartera-definitiva',
+                   'codex/leben-brochures-nordico', 'codex/norte-verde-hero-merge']), 'The combined private review deployment gates must remain false'
+        addition = b',\n      "codex/norte-verde-hero-merge": false'
+        assert config.count(addition) == 1, 'Only the literal disabled Norte Verde gate may extend the pinned Ecasa routes'
+        config = config.replace(addition, b'', 1)
     assert hashlib.sha256(config).hexdigest() == reviewed['redirectConfigSha256'], 'Ecasa reviewed route configuration changed'
     canonical, number = ALIASES[slug]
     destination = '/' + canonical + '.html#etapa-' + str(number)

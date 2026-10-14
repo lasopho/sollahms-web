@@ -88,6 +88,22 @@ def expected_cleanup_file(path):
 
 def restore_map_cleanup_asset(path, current):
     """Restore only after byte-exact verification of the tiny style/gate edits."""
+    if path == 'scripts/package-vercel.mjs':
+        from norte_verde_hero_scope import restore_norte_verde_hero_packager
+        current = restore_norte_verde_hero_packager(current)
+    if path == 'vercel.json':
+        gate = b', \"codex/norte-verde-hero-merge\": false'
+        union_before = b'      "codex/leben-brochures-nordico": false\n'
+        union_after = b'      "codex/leben-brochures-nordico": false,\n      "codex/norte-verde-hero-merge": false\n'
+        gates = json.loads(current)['git']['deploymentEnabled']
+        assert gates.get('main') is False and gates.get('codex/norte-verde-hero-merge') is False, 'Protected hero review deployment gates must remain false'
+        if 'codex/leben-brochures-nordico' in gates:
+            assert gates.get('codex/ecasa-cartera-definitiva') is False and gates['codex/leben-brochures-nordico'] is False, 'The independent Ecasa/Leben deployment gates must remain false'
+            assert current.count(union_after) == 1, 'Protected hero gate changed outside the exact multiline union'
+            current = current.replace(union_after, union_before, 1)
+        else:
+            assert current.count(gate) == 1, 'Protected hero review deployment gate must remain false'
+            current = current.replace(gate, b'', 1)
     original = baseline_bytes(path)
     if path in {'vercel.json', 'scripts/package-vercel.mjs'}:
         reviewed = json.loads((ROOT / 'tests/ecasa-reviewed-output.json').read_text())
