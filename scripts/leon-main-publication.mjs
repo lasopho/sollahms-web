@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASELINE = 'data/leon-main-baseline.json';
-const BASELINE_SHA256 = 'e64e23d30fd6c62928af394575cdae8ecbe4d0489020ead4f096628cf166386d';
+const BASELINE_SHA256 = '1098005b8cf9e45bc4ba74c341a41a70063bfe86ae73c82005fb4fb71d64e5f3';
 export const LEON_SLUGS = ['jardines-de-ramon-cruz','condominio-parque-don-lautaro','condominio-uruguay','gregorio-de-la-fuente-a','bcome'];
 export const LEON_RETIRED_SLUGS = ['la-casona-de-buin','urbano-centro','box-santiago'];
 export const LEON_MANIFEST = 'data/brochures-leon.json';

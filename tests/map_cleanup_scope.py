@@ -87,6 +87,13 @@ def expected_cleanup_file(path):
 
 def restore_map_cleanup_asset(path, current):
     """Restore only after byte-exact verification of the tiny style/gate edits."""
+    if path == 'scripts/package-vercel.mjs':
+        from norte_verde_hero_scope import restore_norte_verde_hero_packager
+        current = restore_norte_verde_hero_packager(current)
+    if path == 'vercel.json':
+        gate = b', \"codex/norte-verde-hero-merge\": false'
+        assert current.count(gate) == 1, 'Protected hero review deployment gate must remain false'
+        current = current.replace(gate, b'', 1)
     original = baseline_bytes(path)
     if path == 'assets/css/project-embeds.css':
         assert original.count(MAP_MARGIN_ANCHOR) == 1 and FINAL_MAP_MARGIN not in original

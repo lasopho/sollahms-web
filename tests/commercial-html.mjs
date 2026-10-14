@@ -6,6 +6,8 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
+export const NORTE_VERDE_HERO_ASSETS = ['assets/css/norte-verde-hero-variants.css', 'assets/js/norte-verde-hero-variants.js', 'assets/review/norte-verde-hero-variantes.html'];
+
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const catalogue = JSON.parse(readPreLeonFile('data/proyectos.json'));
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));

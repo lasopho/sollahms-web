@@ -17,7 +17,7 @@ import { assertCommercialBytes, commercialPage, INGEVEC_ADDED_SLUGS,
   INGEVEC_NEW_SLUGS, INGEVEC_ENRICHED_SLUGS, INGEVEC_FINAL_SLUGS,
   INGEVEC_REMOVED_SLUGS, readCommercialFile, assertPortfolioData,
   assertDefinitiveFicheFallback, removeReviewedTourBlocks,
-  AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet } from './commercial-html.mjs';
+  AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet, NORTE_VERDE_HERO_ASSETS } from './commercial-html.mjs';
 import { brochureSourceDocuments, BROCHURE_RETIRED_ASSETS } from '../scripts/brochure-publication.mjs';
 
 // Supplied brochures enrich only these protected Preview pages and covers.
@@ -222,7 +222,7 @@ test('531 historical assets retain hashes outside the scoped official UF changes
   const mobileMetrics = '@media(max-width:600px){.ingevec-models .aj-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ingevec-models .aj-metrics dd{overflow-wrap:anywhere}}\n';
   assert.equal(current(CSS).toString(), old(CSS).toString() + mobileMetrics,
     'The shared review CSS may add only the narrow-screen metric wrapping rule');
-  assert.deepEqual(listFiles('assets').filter(file=>!isReviewedLeonAsset(file)).filter(file => !file.startsWith(ASSETS.slice(1))),
+  assert.deepEqual(listFiles('assets').filter(file=>!isReviewedLeonAsset(file)).filter(file => !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith(ASSETS.slice(1))),
     [...prior.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort());
   assertAutomaticEmbedStylesheet();
 });

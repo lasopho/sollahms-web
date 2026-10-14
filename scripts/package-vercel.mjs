@@ -9,7 +9,7 @@ import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
-const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/leon-main-integration', 'codex/leon-cartera-preview']);
+const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/norte-verde-hero-merge', 'codex/leon-main-integration', 'codex/leon-cartera-preview']);
 if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
   throw new Error('Unexpected branch for this review build');
 }
@@ -17,6 +17,11 @@ let leonReview=null, leonTools=null;
 try { leonReview=JSON.parse(await readFile(join(root,'data/brochures-leon.json'),'utf8')); }
 catch(error){ if(error.code!=='ENOENT')throw error; }
 const leonPaths=new Set();
+// This merged prototype is opt-in in its protected review branch only.
+// Main and every other build keep the original output and existing hero.
+const heroReview = preview && process.env.VERCEL_GIT_COMMIT_REF === 'codex/norte-verde-hero-merge';
+const heroSlugs = new Set(['bordevivo','carmen-marin','edificio-ecuador','edif-origen-atacama-3008','edificio-dual-390-lto','edificio-lira-622','edificio-plaza-nova','edificio-san-francisco-1204','edificio-verne','irarrazaval','parque-panama','parque-quinta','playa-penuelas','playa-serena','quintavista','vicuna-mackenna-6896','vista-bulnes']);
+const heroAssets = new Set(['assets/css/norte-verde-hero-variants.css','assets/js/norte-verde-hero-variants.js','assets/review/norte-verde-hero-variantes.html']);
 const profile = process.env.SOLLAHMS_BROCHURE_PROFILE;
 if (profile !== undefined && profile !== 'public-web') throw new Error('Unknown brochure content profile');
 const ajReview = JSON.parse(await readFile(join(root, 'data/brochures-aj-urbana.json'), 'utf8'));
@@ -271,11 +276,17 @@ for (const name of pages) {
       html = html.replace(/(<main[^>]*>)/, '$1' + notice);
     }
   }
+  if (heroReview && heroSlugs.has(name.replace(/\.html$/, ''))) {
+    if (!/<p class="eyebrow">Norte Verde<\/p>/.test(html)) throw new Error('Hero review scope mismatch: ' + name);
+    html = html.replace(/class="project-hero([^"]*)"/, 'class="project-hero$1 nv-hero"');
+    html = html.replace('</head>', '<link rel="stylesheet" href="/assets/css/norte-verde-hero-variants.css?v=20261014"><script src="/assets/js/norte-verde-hero-variants.js?v=20261014"></script></head>');
+  }
   await writeFile(join(output, name), html);
 }
 await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
   filter: async source => {
     const path = relative(root, source).split(sep).join('/');
+    if (!heroReview && heroAssets.has(path)) return false;
     if(path.startsWith('assets/brochures/leon')||path.startsWith('assets/propiedades/leon')){
       const info=await lstat(source);if(info.isSymbolicLink())throw new Error('León media must be regular');
       return info.isDirectory()?[...leonPaths].some(file=>file.startsWith(source+sep)):leonPaths.has(source);
