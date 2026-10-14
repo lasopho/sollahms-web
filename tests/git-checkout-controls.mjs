@@ -119,8 +119,8 @@ test('Git CI never publishes private originals or secretly imports the 165 Ingev
   assert.equal(paths.some(path => /(?:^|\/)(?:brochure-candidates|contratos?|private-input)(?:\/|$)/i.test(path)), false);
 });
 
-test('the 144 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
-  const catalogue = json('data/proyectos.json');
+test('the 141 fiches retain routes, contextual actions and approved image/plan references without visitor audit sections', () => {
+  const catalogue = JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
   const pages = git('ls-files', '-z').toString().split('\0').filter(path => /^[^/]+\.html$/.test(path));
   assert.deepEqual(new Set(pages), new Set([...BROCHURE_PUBLIC_PAGES, ...catalogue.map(project => project.slug + '.html')]));
   const manifests = ['data/brochures-aj-urbana.json', 'data/brochures-ingevec.json'].map(json);

@@ -886,7 +886,7 @@ test('six retired identities are absent from navigation, sitemap, context and fi
   assert.deepEqual(readdirSync(ROOT).filter(path => path.endsWith('.html')).sort(), expectedRoutes, 'Only the six Ingevec and three independently verified León retirements and two Ingevec additions are authorized');
   assertPortfolioIndex('lib/project-context.mjs', current('lib/project-context.mjs'));
   assertPortfolioIndex('sitemap.xml', current('sitemap.xml'));
-  assert.deepEqual(contextualProjects, Object.fromEntries(JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json'))).map(project => [project.slug, { name: project.nombre, url: project.detalleUrl }])));
+  assert.deepEqual(actualSentoContexts, Object.fromEntries(JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json'))).map(project => [project.slug, { name: project.nombre, url: project.detalleUrl }])));
   for (const slug of INGEVEC_REMOVED_SLUGS) {
     assert.equal(existsSync(resolve(ROOT, slug + '.html')), false, slug + ': retired route');
     assert.ok(!catalogue.some(project => project.slug === slug));

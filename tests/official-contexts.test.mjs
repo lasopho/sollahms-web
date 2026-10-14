@@ -393,8 +393,8 @@ test('registry and sitemap match the authorized portfolio; financial data/motors
         !AJ_REVIEW.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
   }
   const currentCatalogue=JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
-  assert.equal(Object.keys(trustedContexts).length, 141);
-  for (const project of currentCatalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
+  assert.equal(Object.keys(actualSentoContexts).length, 141);
+  for (const project of currentCatalogue) assert.deepEqual(actualSentoContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
   const locations = current('sitemap.xml').toString().match(/<loc>[^<]+<\/loc>/g);
   assert.equal(locations.length, 150);
   assert.equal(new Set(locations).size, 150);
