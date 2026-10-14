@@ -4,11 +4,11 @@ import json
 import re
 import unicodedata
 from pathlib import Path
+import leben_header as header
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / 'data/brochures-leben.json'
 MARKERS = re.compile(r'<!--LEBEN_PREVIEW_START-->.*?<!--LEBEN_PREVIEW_END-->', re.S)
-INDI_SLUG = 'edificio-indi'
 
 
 def esc(value):
@@ -26,31 +26,6 @@ def public_leben_page(page):
             raise ValueError('Unpaired Leben source marker')
     page = MARKERS.sub('', page)
     return re.sub(r'<!--LEBEN_PUBLIC_(?:START|END)-->', '', page)
-
-
-def private_indi_hero(page, record):
-    cover = record.get('catalogueCover')
-    if not cover:
-        return page
-    if record['slug'] != INDI_SLUG:
-        raise ValueError('Only the reviewed Indi cover may change a Leben hero')
-    image = next((image for image in record['images'] if image['localPath'] == cover.get('localPath')), None)
-    prefix = '/assets/propiedades/leben-preview/' + INDI_SLUG + '/'
-    if not image or not image['localPath'].startswith(prefix) or not re.fullmatch(r'[a-z0-9_.-]+\.(?:webp|jpe?g|png)', image['localPath'][len(prefix):]) or image.get('qualityDecision') != 'keep' or image.get('visuallyVerified') is not True or image.get('privacySafe') is not True or not isinstance(cover.get('alt'), str) or not cover['alt'].strip():
-        raise ValueError('Indi hero must use a visually reviewed selected same-project image')
-    hero_pattern = re.compile(r'<section\b[^>]*class=["\'][^"\']*\bproject-hero\b[^"\']*["\'][^>]*>.*?</section>', re.S)
-    heroes = list(hero_pattern.finditer(page))
-    if len(heroes) != 1:
-        raise ValueError('Indi requires exactly one original hero')
-    original = heroes[0].group(0)
-    preview = re.sub(r'(\bclass=["\'])([^"\']*)(["\'])', lambda match: match[1] + match[2] + ' project-hero-indi-preview' + match[3], original, count=1)
-    image_pattern = re.compile(r'<img\b[^>]*class=["\'][^"\']*\bhero-image\b[^"\']*["\'][^>]*>')
-    if len(image_pattern.findall(preview)) != 1:
-        raise ValueError('Indi requires exactly one original hero image')
-    selected_image = '<img class="hero-image hero-image-indi-preview" src="' + esc(image['localPath']) + '" alt="' + esc(cover['alt']) + '" width="' + str(image['width']) + '" height="' + str(image['height']) + '" fetchpriority="high" decoding="async" data-brochure-page="' + str(image['sourcePage']) + '">'
-    preview = image_pattern.sub(lambda _: selected_image, preview, count=1)
-    replacement = block(preview) + '<!--LEBEN_PUBLIC_START-->' + original + '<!--LEBEN_PUBLIC_END-->'
-    return page[:heroes[0].start()] + replacement + page[heroes[0].end():]
 
 
 def area(value):
@@ -104,13 +79,13 @@ def complement(record):
 
 
 def augment_leben_page(page, slug):
-    if not MANIFEST.is_file():
-        return page
-    record = next((record for record in json.loads(MANIFEST.read_text())['projects'] if record['slug'] == slug), None)
-    if not record:
+    record = next((record for record in json.loads(MANIFEST.read_text())['projects'] if record['slug'] == slug), None) if MANIFEST.is_file() else None
+    if not record and slug not in header.configuration():
         return page
     page = public_leben_page(page)
-    page = private_indi_hero(page, record)
+    page = header.apply_leben_header(page, slug)
+    if not record:
+        return page
     styles = block('<link rel="stylesheet" href="/assets/css/leben-brochure-preview.css?v=20261013">')
     page = page.replace('</head>', styles + '</head>', 1)
     content = block(complement(record))
@@ -124,11 +99,12 @@ def augment_leben_page(page, slug):
 
 
 def main():
-    review = json.loads(MANIFEST.read_text())
-    for record in review['projects']:
-        path = ROOT / (record['slug'] + '.html')
-        path.write_text(augment_leben_page(path.read_text(), record['slug']))
-    print(json.dumps({'complementedExistingFiches': len(review['projects'])}))
+    review = json.loads(MANIFEST.read_text()) if MANIFEST.is_file() else {'projects': []}
+    slugs = list(dict.fromkeys([*header.configuration(), *(record['slug'] for record in review['projects'])]))
+    for slug in slugs:
+        path = ROOT / (slug + '.html')
+        path.write_text(augment_leben_page(path.read_text(), slug))
+    print(json.dumps({'configuredHeaders': len(header.configuration()), 'complementedExistingFiches': len(review['projects'])}))
 
 
 if __name__ == '__main__':

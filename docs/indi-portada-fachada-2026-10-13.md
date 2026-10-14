@@ -25,3 +25,6 @@ El catálogo y el hero de Indi usan el mismo recurso seleccionado exclusivamente
 Las 137 filas comerciales, los 15 Ecasa, precios, dirección, mapas, recorrido, contacto, agenda y comparador no cambian. El fallback público conserva la portada anterior. El gate real de Vercel continúa rechazando Production para este paquete privado. No se realiza merge ni promoción.
 
 La revisión final registra las cajas efectivas, recorte, densidad de pantalla, decodificación y ampliación en escritorio, tablet y móvil a DPR 1 y 2. La densidad se mide sobre el dibujo real de `cover`. El original resuelve las cajas CSS ensayadas; el escritorio a DPR 2 supera su densidad nativa y se registra como límite físico, sin ampliar el archivo ni inventar detalle. La comparación verifica los estilos computados de ambos referentes en cada pantalla. Los recibos y capturas quedan en el paquete privado de entrega.
+
+
+El rediseño compartido del 14/10 sustituye el encuadre particular de Indi por verde sólido a la izquierda, transición horizontal y fotografía a la derecha. Conserva el mismo JPEG original, catálogo y galería. El ancho de la foto se limita a su proporción para evitar el recorte panorámico; móvil utiliza una transición vertical continua. Las condiciones anteriores de 620/420 px corresponden a la Preview previa.

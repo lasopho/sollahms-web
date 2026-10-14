@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 from urllib.parse import urlencode
 from project_embed_policy import map_markup, normalize_page_embeds
+from leben_brochure import augment_leben_page, public_leben_page
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('details', ROOT / 'scripts/build-project-details.py')
@@ -22,6 +23,8 @@ for research in records:
     project = projects[slug]
     path = ROOT / (slug + '.html')
     page = path.read_text()
+    if project['inmobiliaria'] == 'Leben':
+        page = public_leben_page(page)
     page = re.sub(r'<!-- (?:verified-featured|featured-details)-start -->.*?<!-- (?:verified-featured|featured-details)-end -->\n?', '', page, flags=re.S)
     updates = research.get('updates', {})
     old = research.get('reviewedOriginal', {})
@@ -102,6 +105,7 @@ for research in records:
     if '/assets/css/featured-verification.css' not in page:
         page = page.replace('</head>', '<link rel="stylesheet" href="/assets/css/featured-verification.css">\n<script src="/assets/js/project-embeds.js" defer></script>\n</head>')
     page = normalize_page_embeds(page, research, featured=True)
-    path.write_text(details.commercialize_fiche(page, slug, research=research))
+    page = details.commercialize_fiche(page, slug, research=research)
+    path.write_text(augment_leben_page(page, slug) if project['inmobiliaria'] == 'Leben' else page)
 (ROOT / 'data/fichas-proyectos.json').write_text(json.dumps(records, ensure_ascii=False, indent=2) + '\n')
 print('Updated sourced featured facts, media and maps with commercial presentation')

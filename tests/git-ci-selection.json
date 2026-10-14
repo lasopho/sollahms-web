@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 315,
+  "expectedGitNodeTests": 317,
   "expectedReleaseOnlyCases": 25,
-  "expectedPythonFixtureTests": 135,
+  "expectedPythonFixtureTests": 137,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -111,7 +111,9 @@
       "cases": [
         "a synthetic reviewed Leben fixture selects only the twelve existing identities and grants protected review",
         "missing original review, altered sources, rejected/upscaled media and foreign paths fail closed",
-        "Nórdico can extend the frozen catalogue once without changing any commercial baseline field"
+        "Nórdico can extend the frozen catalogue once without changing any commercial baseline field",
+        "shared headers bind fourteen Leben fiches without changing catalogue objects or the twelve PDF selection",
+        "shared header configuration rejects foreign photographs, rejected private images, incomplete identities and invalid geometry"
       ]
     }
   ],

@@ -238,6 +238,8 @@ def selected_source_files(root):
     files.add(release.LEBEN_MODULE)
     if leben_path.exists():
         files.add(release.LEBEN_MANIFEST)
+        if (root / 'data/leben-headers.json').exists():
+            files.add('data/leben-headers.json')
     files.update(pages)
     files.update(('vercel.json', 'robots.txt', 'sitemap.xml', 'data/proyectos.json',
                   'data/hipotecario.json', *(f'data/{name}' for name in MANIFESTS),

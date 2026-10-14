@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { validateLebenReview, lebenPublication, assertLebenBuildEnvironment, LEBEN_BROCHURE_SLUGS } from '../scripts/leben-publication.mjs';
+import { validateLebenReview, validateLebenHeaders, lebenPublication, assertLebenBuildEnvironment, LEBEN_BROCHURE_SLUGS, LEBEN_HEADER_SLUGS } from '../scripts/leben-publication.mjs';
 import { assertBrochureCatalogue } from '../scripts/brochure-publication.mjs';
 
 function fixture() {
@@ -74,4 +74,49 @@ test('Nórdico can extend the frozen catalogue once without changing any commerc
   assert.throws(() => assertBrochureCatalogue([...catalogue, nordico, nordico]), /Nórdico/);
   const changed = structuredClone(catalogue); changed.find(record => record.slug === 'parque-germania').precioDesdeUF += 1;
   assert.throws(() => assertBrochureCatalogue([...changed, nordico]), /121 projects/);
+});
+
+function headerFixture() {
+  const review = fixture();
+  const catalogue = LEBEN_HEADER_SLUGS.map(slug => ({slug, inmobiliaria: 'Leben', imagenPrincipal: '/assets/propiedades/catalogo/' + slug + '.webp'}));
+  const research = catalogue.map(project => ({slug: project.slug, images: [{localPath: project.imagenPrincipal, width: 900, height: 600}]}));
+  const configuration = {schemaVersion: 1, protectedPreviewOnly: true, projects: catalogue.map(project => ({slug: project.slug,
+    image: {localPath: project.imagenPrincipal, width: 900, height: 600, sha256: 'a'.repeat(64), alt: project.slug},
+    focal: {desktop: [50, 50], tablet: [40, 60], mobile: [50, 50]}, photoWidthPercent: 76, solidUntilPercent: 40, fadeUntilPercent: 80}))};
+  const indi = configuration.projects.find(row => row.slug === 'edificio-indi');
+  const photograph = review.projects.find(row => row.slug === 'edificio-indi').images[0];
+  indi.image = {localPath: photograph.localPath, sha256: photograph.sha256, width: photograph.width, height: photograph.height, alt: 'Fachada de Indi'};
+  return {review, catalogue, research, configuration};
+}
+
+test('shared headers bind fourteen Leben fiches without changing catalogue objects or the twelve PDF selection', () => {
+  const data = headerFixture();
+  const before = structuredClone(data);
+  assert.equal(validateLebenHeaders(data.configuration, data.catalogue, data.research, data.review).length, 14);
+  assert.deepEqual(data, before);
+  assert.equal(data.review.projects.length, 12);
+  assert.equal(data.catalogue.filter(row => row.slug === 'own').length, 1);
+  assert.equal(data.catalogue.filter(row => row.slug === 'edificio-nordico').length, 1);
+});
+
+test('shared header configuration rejects foreign photographs, rejected private images, incomplete identities and invalid geometry', () => {
+  const mutations = [
+    data => {data.configuration.projects.pop();},
+    data => {data.configuration.projects[1].slug = data.configuration.projects[0].slug;},
+    data => {data.configuration.projects[1].image.localPath = data.catalogue[2].imagenPrincipal;},
+    data => {data.configuration.projects[1].image.width++;},
+    data => {data.configuration.projects[0].image.localPath = '/assets/propiedades/leben-preview/foreign/photo.webp';},
+    data => {data.review.projects.find(row => row.slug === 'edificio-indi').images[0].qualityDecision = 'exclude';},
+    data => {data.configuration.projects.find(row => row.slug === 'edificio-indi').image.sha256 = 'b'.repeat(64);},
+    data => {data.configuration.projects.find(row => row.slug === 'edificio-indi').image.height++;},
+    data => {data.configuration.projects[0].focal.mobile = [NaN, 50];},
+    data => {data.configuration.projects[0].focal.tablet = [50, 101];},
+    data => {data.configuration.projects[0].photoWidthPercent = 120;},
+    data => {data.configuration.projects[0].fadeUntilPercent = 41;},
+    data => {data.configuration.protectedPreviewOnly = false;},
+  ];
+  for (const mutate of mutations) {
+    const data = headerFixture(); mutate(data);
+    assert.throws(() => validateLebenHeaders(data.configuration, data.catalogue, data.research, data.review), /Leben:/);
+  }
 });

@@ -21,6 +21,9 @@ _release_spec = importlib.util.spec_from_file_location('official_review_inventor
 release_inventory = importlib.util.module_from_spec(_release_spec)
 _release_spec.loader.exec_module(release_inventory)
 OFFICIAL_PREFIX = 'assets/propiedades/ecasa-official-review/'
+LEBEN_HEADER_CONFIG = 'data/leben-headers.json'
+LEBEN_HEADER_CSS = 'assets/css/leben-project-hero.css'
+LEBEN_HEADER_SLUGS = release_inventory.LEBEN_SLUGS | {'own', 'edificio-nordico'}
 
 
 INGEVEC = {'centenario-1', 'tocornal', 'vivaceta', 'coronel-godoy',
@@ -375,6 +378,36 @@ def audit(source, public, preview, protected_review=False, node=None):
         except (ValueError, KeyError, TypeError) as error:
             require(False, 'Leben selected evidence is invalid: ' + str(error))
     catalogue = json.loads((public / 'data/proyectos.json').read_text())
+    header_path = source / LEBEN_HEADER_CONFIG
+    header_configuration = json.loads(header_path.read_text()) if header_path.exists() else None
+    header_rows = header_configuration.get('projects', []) if header_configuration else []
+    if header_configuration:
+        require(protected_review and leben_manifest is not None and header_configuration.get('schemaVersion') == 1 and
+                header_configuration.get('protectedPreviewOnly') is True and len(header_rows) == 14 and
+                {row['slug'] for row in header_rows} == LEBEN_HEADER_SLUGS and
+                {project['slug'] for project in catalogue if project['inmobiliaria'] == 'Leben'} == LEBEN_HEADER_SLUGS,
+                'Shared Leben headers must bind exactly fourteen existing protected fiches')
+        source_catalogue = {project['slug']: project for project in json.loads((source / 'data/proyectos.json').read_text())}
+        header_research = {record['slug']: record for record in json.loads((source / 'data/fichas-proyectos.json').read_text())}
+        for row in header_rows:
+            image = row['image']
+            document = leben_assets.get(image['localPath'].lstrip('/'))
+            official = next((item for item in header_research.get(row['slug'], {}).get('images', []) if item.get('localPath') == image['localPath']), None)
+            require(image['localPath'] == source_catalogue.get(row['slug'], {}).get('imagenPrincipal') or official or
+                    document and image['localPath'].startswith('/assets/propiedades/leben-preview/' + row['slug'] + '/'),
+                    'Borrowed photograph in shared Leben header: ' + row['slug'])
+            path = source / image['localPath'].lstrip('/')
+            require(path.is_file() and not path.is_symlink() and digest(path) == image['sha256'],
+                    'Header photograph bytes differ from reviewed source: ' + row['slug'])
+            for witness in [document, official]:
+                if witness:
+                    require(witness['width'] == image['width'] and witness['height'] == image['height'],
+                            'Header native dimensions differ from source metadata: ' + row['slug'])
+            if document:
+                selected = next(asset for record in leben_manifest['projects'] for asset in record['images'] if asset['localPath'] == image['localPath'])
+                require(selected['qualityDecision'] == 'keep' and selected['visuallyVerified'] is True and selected['privacySafe'] is True,
+                        'An excluded photograph became a Leben header')
+        counts['lebenHeaders'] = len(header_rows)
     slugs = {p['slug'] for p in catalogue}
     counts['projects'] = len(catalogue)
     counts['ingevec'] = sum(p['inmobiliaria'] == 'Ingevec' for p in catalogue)
@@ -674,7 +707,10 @@ def audit(source, public, preview, protected_review=False, node=None):
         slug = name.split('/')[3]
         require(item['path'] in (preview / (slug + '.html')).read_text(), 'Leben selected resource is absent from its own fiche: ' + name)
     counts['lebenMedia'] = len(leben_chosen)
-    expected_preview_files = files | ecasa_chosen | set(official_published) | leben_chosen if protected_review else files
+    header_styles = {LEBEN_HEADER_CSS} if header_configuration else set()
+    require(not header_styles & files, 'The protected Leben header stylesheet leaked into public output')
+    require(not header_styles or digest(preview / LEBEN_HEADER_CSS) == digest(source / LEBEN_HEADER_CSS), 'Shared Leben stylesheet differs from its reviewed bytes')
+    expected_preview_files = files | ecasa_chosen | set(official_published) | leben_chosen | header_styles if protected_review else files
     require(preview_files == expected_preview_files, 'Protected Preview and public build contain unexpected different files')
     expected_preview_catalogue = json.loads(json.dumps(catalogue))
     if quality_policy:
@@ -707,6 +743,18 @@ def audit(source, public, preview, protected_review=False, node=None):
                 expected_by_slug[record['slug']]['imagenAlt'] = natural_caption(cover['alt'], caption_policy) if caption_policy else cover['alt']
     require(preview_catalogue == expected_preview_catalogue, 'Protected Preview changed commercial data beyond reviewed covers')
     preview_documents = {page: Document((preview / page).read_text()) for page in expected_pages & preview_files}
+    actual_header_slugs = set()
+    for page in expected_pages & preview_files:
+        text = (preview / page).read_text()
+        identities = re.findall(r'data-leben-header="([^"]+)"', text)
+        require(not identities or len(identities) == 1 and identities[0] == page.removesuffix('.html'), 'A shared header lost its fiche identity: ' + page)
+        actual_header_slugs.update(identities)
+    require(actual_header_slugs == ({row['slug'] for row in header_rows} if header_configuration else set()), 'Protected output omitted or added a configured Leben header')
+    for row in header_rows:
+        text = (preview / (row['slug'] + '.html')).read_text()
+        hero = re.search(r'<section\b[^>]*data-leben-header="' + re.escape(row['slug']) + r'"[^>]*>.*?</section>', text, re.S)
+        require(hero is not None and row['image']['localPath'] in hero[0] and text.count('/' + LEBEN_HEADER_CSS + '?v=20261014') == 1,
+                'Protected header differs from its source configuration: ' + row['slug'])
     for legacy, (target, stage) in LEGACY_TARGETS.items():
         require('etapa-' + str(stage) in preview_documents.get(target + '.html', Document('')).ids,
                 'Legacy redirect anchor is missing from its protected development: ' + legacy)
@@ -737,7 +785,7 @@ def audit(source, public, preview, protected_review=False, node=None):
                 expected_public_html = quality_projections['public'][path] if quality_projections else normalize_fiche_copy(selected_ecasa_html(original, False), caption_policy)
                 require(normalized_preview(text) == expected_preview_html, 'Ecasa Preview differs from selected source and reviewed display/visual policy: ' + path)
                 require((public / path).read_text() == expected_public_html, 'Ecasa public fallback differs from selected source and reviewed display/visual policy: ' + path)
-            elif leben_manifest and path.removesuffix('.html') in release_inventory.LEBEN_SLUGS:
+            elif leben_manifest and path.removesuffix('.html') in (release_inventory.LEBEN_SLUGS | ({row['slug'] for row in header_rows} if header_configuration else set())):
                 original = (source / path).read_text()
                 def select_life(included):
                     remove, keep = ('PUBLIC', 'PREVIEW') if included else ('PREVIEW', 'PUBLIC')
@@ -765,6 +813,7 @@ def audit(source, public, preview, protected_review=False, node=None):
             'officialOriginalsManifestSha256': digest(source / release_inventory.OFFICIAL_MANIFEST) if official_manifest else None,
             'manualQualityManifestSha256': digest(manual_path) if manual_policy else None,
             'lebenManifestSha256': digest(leben_path) if leben_manifest else None,
+            'lebenHeaderConfigurationSha256': digest(header_path) if header_configuration else None,
             'lebenPublicWebParityVerified': False if leben_manifest else None,
             'providerAvailabilityVerified': False}
 

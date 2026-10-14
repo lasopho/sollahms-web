@@ -1,0 +1,29 @@
+/* One Leben header: solid corporate green → continuous horizontal fade → photo.
+   The image's intrinsic ratio caps its frame, so square and portrait façades
+   retain their architecture. The masked left edge joins the green smoothly. */
+.leben-project-hero{--leben-hero-height:600px;position:relative;isolation:isolate;display:block;width:100%;height:var(--leben-hero-height);min-height:0;overflow:hidden;background:#003229;color:#fff}
+.leben-project-hero .leben-hero-image{position:absolute;inset:0 0 0 auto;z-index:0;display:block;width:min(var(--leben-photo-width,76%),calc(var(--leben-hero-height)*var(--leben-image-ratio)));height:100%;max-width:none;object-fit:cover;object-position:var(--leben-focus-desktop,50% 50%);filter:none;mask-image:linear-gradient(to right,transparent,#000 14%)}
+.leben-project-hero .leben-hero-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to right,#003229 0%,#003229 var(--leben-solid,40%),rgba(0,50,41,.98) calc(var(--leben-solid,40%) + 3%),rgba(0,50,41,.75) calc(var(--leben-solid,40%) + 12%),rgba(0,50,41,.35) calc(var(--leben-fade,80%) - 12%),transparent var(--leben-fade,80%))}
+.leben-project-hero .leben-hero-content{position:absolute;z-index:2;left:48px;top:50%;transform:translateY(-50%);width:calc(var(--leben-solid,40%) - 72px);max-width:540px;margin:0;padding:0;font-family:Inter,Arial,sans-serif;line-height:1.5}
+.leben-project-hero .leben-hero-breadcrumb{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;line-height:18px;color:#e5ede8;margin:0 0 24px}
+.leben-project-hero .leben-hero-breadcrumb a{color:inherit;text-decoration:underline;text-underline-offset:4px}
+.leben-project-hero .leben-hero-label{font-size:10px;line-height:15px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:#ffdea5;margin:0 0 16px}
+.leben-project-hero h1{font-family:Manrope,Arial,sans-serif;font-size:clamp(44px,5vw,72px);line-height:1.05;font-weight:800;letter-spacing:-.05em;color:#fff;margin:0 0 20px;max-width:100%;overflow-wrap:break-word}
+.leben-project-hero .leben-hero-location{display:flex;align-items:center;gap:8px;font-size:18px;line-height:28px;font-weight:500;color:rgba(255,255,255,.9);margin:0 0 20px}
+.leben-project-hero .leben-hero-location>span:last-child{font-size:inherit;line-height:inherit;font-weight:inherit}
+.leben-project-hero .leben-hero-location .material-symbols-outlined{flex:0 0 auto;margin:0;font-size:24px}
+.leben-project-hero .leben-hero-badges{display:flex;flex-wrap:wrap;gap:8px}
+.leben-project-hero .leben-hero-badges span{font-size:12px;line-height:20px;border:1px solid #ffffff59;border-radius:2px;padding:5px 13px;color:#fff;background:transparent}
+@media(min-width:601px) and (max-width:1099px){.leben-project-hero .leben-hero-content{left:32px;width:calc(var(--leben-solid,40%) - 56px)}.leben-project-hero .leben-hero-image{object-position:var(--leben-focus-tablet,50% 50%)}}
+/* Mobile stays one composition: the full photograph above, a progressive
+   vertical fade, and the preserved title/location on solid green below. */
+@media(max-width:600px){
+  .leben-project-hero{--leben-mobile-photo-height:calc(100vw/var(--leben-image-ratio));height:auto;min-height:0}
+  .leben-project-hero .leben-hero-image{inset:0 0 auto;width:100%;height:var(--leben-mobile-photo-height);mask-image:none;object-position:var(--leben-focus-mobile,50% 50%)}
+  .leben-project-hero .leben-hero-shade{background:linear-gradient(to bottom,transparent 0,transparent calc(var(--leben-mobile-photo-height)*.55),rgba(0,50,41,.35) calc(var(--leben-mobile-photo-height)*.72),#003229 var(--leben-mobile-photo-height),#003229 100%)}
+  .leben-project-hero .leben-hero-content{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:none;padding:calc(var(--leben-mobile-photo-height) + 24px) 24px 36px}
+  .leben-project-hero h1{font-size:48px}
+  .leben-project-hero .leben-hero-breadcrumb{margin-bottom:20px}
+  .leben-project-hero .leben-hero-location{display:block}
+  .leben-project-hero .leben-hero-location .material-symbols-outlined{display:inline-block;vertical-align:middle;margin-right:8px}
+}

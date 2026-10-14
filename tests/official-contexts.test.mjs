@@ -375,7 +375,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   assert.equal(newPaths.size, 10);
   const currentAssets = listFiles('assets').filter((file) =>
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
-    !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');
+    !file.startsWith('assets/propiedades/ingevec-preview/') && !file.startsWith('assets/propiedades/ecasa-preview/') && !file.startsWith('assets/propiedades/leben-preview/') && file !== 'assets/css/leben-brochure-preview.css' && file !== 'assets/css/leben-project-hero.css' && !reviewedOfficialSourceFiles.includes(file) && file !== 'assets/css/aj-brochure-preview.css');
   const ecasaReview = json('tests/ecasa-reviewed-output.json');
   const stageAssets = ['assets/css/ecasa-stages.css', 'assets/js/ecasa-stages.js'];
   assert.deepEqual(Object.keys(ecasaReview.assetSha256).sort(),stageAssets.toSorted());

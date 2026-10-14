@@ -8,10 +8,55 @@ export const LEBEN_BROCHURE_SLUGS = Object.freeze([
 export const LEBEN_MANIFEST = 'data/brochures-leben.json';
 export const LEBEN_MEDIA_FOLDER = 'leben-preview';
 export const LEBEN_REVIEW_PROFILE = 'protected_leben_review';
+export const LEBEN_HEADER_SLUGS = Object.freeze([...LEBEN_BROCHURE_SLUGS, 'own', 'edificio-nordico']);
+export const LEBEN_HEADER_CONFIG = 'data/leben-headers.json';
+export const LEBEN_HEADER_CSS = 'assets/css/leben-project-hero.css';
 const hash = /^[a-f0-9]{64}$/;
 const requireEvidence = (condition, message) => {
   if (!condition) throw new Error('Leben: ' + message);
 };
+
+export function validateLebenHeaders(configuration, catalogue, research, review) {
+  const projects = catalogue.filter(project => project.inmobiliaria === 'Leben');
+  const rows = configuration?.projects;
+  requireEvidence(configuration?.schemaVersion === 1 && configuration.protectedPreviewOnly === true &&
+    projects.length === 14 && projects.every(project => LEBEN_HEADER_SLUGS.includes(project.slug)) &&
+    Array.isArray(rows) && rows.length === 14 && new Set(rows.map(row => row.slug)).size === 14 &&
+    rows.every(row => projects.some(project => project.slug === row.slug)), 'header configuration must cover exactly fourteen Leben fiches');
+  for (const row of rows) {
+    const project = projects.find(project => project.slug === row.slug);
+    const official = research.find(record => record.slug === row.slug)?.images ?? [];
+    const selected = review?.projects.find(record => record.slug === row.slug)?.images ?? [];
+    const image = row.image;
+    requireEvidence(image && typeof image.localPath === 'string' &&
+      /^\/assets\/propiedades\/[a-z0-9_./-]+\.(?:webp|jpe?g|png)$/.test(image.localPath) &&
+      !image.localPath.includes('..') && hash.test(image.sha256 ?? '') &&
+      Number.isInteger(image.width) && image.width > 0 && Number.isInteger(image.height) && image.height > 0 &&
+      typeof image.alt === 'string' && image.alt.trim(), 'invalid header image metadata: ' + row.slug);
+    const documentary = selected.find(asset => asset.localPath === image.localPath);
+    const original = official.find(asset => asset.localPath === image.localPath);
+    if (image.localPath.startsWith('/assets/propiedades/leben-preview/')) {
+      requireEvidence(documentary && image.localPath.startsWith('/assets/propiedades/leben-preview/' + row.slug + '/') &&
+        documentary.qualityDecision === 'keep' && documentary.visuallyVerified === true && documentary.privacySafe === true &&
+        documentary.sha256 === image.sha256 && documentary.width === image.width && documentary.height === image.height &&
+        documentary.nativeWidth >= image.width && documentary.nativeHeight >= image.height,
+      'header must bind an accepted same-project private photograph: ' + row.slug);
+    } else {
+      requireEvidence(image.localPath === project.imagenPrincipal || original,
+        'header photograph belongs to another project: ' + row.slug);
+      if (original) requireEvidence(original.width === image.width && original.height === image.height,
+        'official header dimensions differ from their source evidence: ' + row.slug);
+    }
+    for (const device of ['desktop', 'tablet', 'mobile']) requireEvidence(Array.isArray(row.focal?.[device]) &&
+      row.focal[device].length === 2 && row.focal[device].every(value => Number.isFinite(value) && value >= 0 && value <= 100),
+    'invalid header focal point: ' + row.slug);
+    requireEvidence(Number.isFinite(row.photoWidthPercent) && row.photoWidthPercent >= 55 && row.photoWidthPercent <= 85 &&
+      Number.isFinite(row.solidUntilPercent) && row.solidUntilPercent >= 30 && row.solidUntilPercent <= 48 &&
+      Number.isFinite(row.fadeUntilPercent) && row.fadeUntilPercent >= row.solidUntilPercent + 20 && row.fadeUntilPercent <= 95,
+    'invalid continuous header gradient: ' + row.slug);
+  }
+  return rows;
+}
 
 export function lebenPublication(review) {
   const rights = review.publicationRights;

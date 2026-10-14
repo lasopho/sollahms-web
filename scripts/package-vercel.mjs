@@ -9,7 +9,7 @@ import { validateEcasaImageQuality, selectEcasaPublishedAssets, transformEcasaIm
 import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   BROCHURE_REMOVED_SLUGS, BROCHURE_PUBLIC_PAGES, BROCHURE_RETIRED_ASSETS,
   brochureFingerprint } from './brochure-publication.mjs';
-import { lebenPublication, validateLebenReview, assertLebenBuildEnvironment, LEBEN_MANIFEST, LEBEN_MEDIA_FOLDER } from './leben-publication.mjs';
+import { lebenPublication, validateLebenReview, validateLebenHeaders, assertLebenBuildEnvironment, LEBEN_MANIFEST, LEBEN_MEDIA_FOLDER, LEBEN_HEADER_CONFIG, LEBEN_HEADER_CSS } from './leben-publication.mjs';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
@@ -140,6 +140,10 @@ const [qualityBytes, researchBytes, officialBytes] = await Promise.all([
   readFile(join(root, 'data/fichas-proyectos.json')),
   readFile(join(root, 'data/fuentes-imagenes.json')),
 ]);
+let headerConfiguration = null;
+try { headerConfiguration = JSON.parse(await readFile(join(root, LEBEN_HEADER_CONFIG), 'utf8')); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+const headerRows = headerConfiguration ? validateLebenHeaders(headerConfiguration, sourceProjects, JSON.parse(researchBytes), lebenReview) : [];
 const baseImageQuality = validateEcasaImageQuality(ecasaReview, JSON.parse(researchBytes), sourceProjects,
   JSON.parse(qualityBytes), JSON.parse(officialBytes));
 let imageQuality = baseImageQuality, manualQuality = null, manualOperations = null, manualBytes = null;
@@ -209,6 +213,17 @@ if (retiredLink.test(sitemapSource.toString())) throw new Error('The sitemap sti
 const pageSources = new Map(await Promise.all(pages.map(async name => [name, await readFile(join(root, name), 'utf8')])));
 for (const [name, html] of pageSources) {
   if (retiredLink.test(html)) throw new Error('A public page still links to a retired project route: ' + name);
+  if (lebenReview && html.includes('data-leben-header=') && !headerConfiguration) throw new Error('Leben shared header configuration is missing');
+}
+for (const row of headerRows) {
+  const source = pageSources.get(row.slug + '.html');
+  if ((source.match(new RegExp('data-leben-header="' + row.slug + '"', 'g')) ?? []).length !== 1 ||
+      !source.includes('href="/' + LEBEN_HEADER_CSS + '?v=20261014"')) throw new Error('A configured Leben header or stylesheet is absent: ' + row.slug);
+  if (lebenIncluded || !row.image.localPath.startsWith('/assets/propiedades/leben-preview/')) {
+    const path = join(root, row.image.localPath.slice(1));
+    if (!(await lstat(path)).isFile() || await realpath(path) !== path ||
+        createHash('sha256').update(await readFile(path)).digest('hex') !== row.image.sha256) throw new Error('Leben header photograph bytes differ from the reviewed same-project source: ' + row.slug);
+  }
 }
 const retiredExclusiveAssets = new Set(BROCHURE_RETIRED_ASSETS.filter(path =>
   !catalogueSource.toString().includes(path) && ![...pageSources.values()].some(html => html.includes(path)))
@@ -441,6 +456,7 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
       }
     }
     if (path === 'assets/css/aj-brochure-preview.css') return ajIncluded || ingevecIncluded || ecasaIncluded || lebenIncluded;
+    if (path === LEBEN_HEADER_CSS) return lebenIncluded && headerRows.length === 14;
     if (info.isFile() && /\.(?:pdf|zip|docx?|xlsx?|toml|env)$/i.test(path)) return false;
     return true;
   } });
