@@ -19,7 +19,7 @@ const selectedWidths = new Set(option('--widths', '').split(',').filter(Boolean)
 const selected = manifest.projects.filter(record => !selectedSlugs.size || selectedSlugs.has(record.slug));
 const viewports = [{ name: 'desktop', width: 1440, height: 1000 }, { name: 'tablet', width: 768, height: 1024 }, { name: 'mobile', width: 375, height: 844 }].filter(viewport => !selectedWidths.size || selectedWidths.has(viewport.width));
 const pages = [], checks = [], actions = [], catalogues = [], screenshots = [], popups = [];
-const requests = { mockApiCalls: [], unexpectedWrites: [], localFailures: [], externalIsolated: 0 };
+const requests = { mockApiCalls: [], unexpectedWrites: [], localFailures: [], localRequestFailures: [], externalIsolated: 0 };
 const check = (passed, label, evidence) => checks.push({ passed: !!passed, label, ...(evidence === undefined ? {} : { evidence }) });
 const reportPath = resolve(output, 'report.json');
 const report = completed => ({ base, completed, methodology: 'Headless Chrome at 375, 768 and 1440 CSS pixels. All first-party images decode; gallery and plan ownership matches the reviewed PDF manifest. Each ficha uses an isolated browser context, and each image must finish loading before strict decode. Real catalogue searches and navigation links are exercised. External map documents are isolated for layout checks. Form API calls are intercepted with fixtures before network delivery; no real messages or bookings are sent.', targets: selected.map(record => record.slug), viewports, pages, catalogues, actions, popups, requests, screenshots, checks, failures: checks.filter(row => !row.passed) });
@@ -50,6 +50,7 @@ const openContext = async viewport => {
       return route.abort();
     });
     context.on('response', response => { const url = new URL(response.url()); if (url.origin === origin && response.status() >= 400 && !url.pathname.startsWith('/api/')) requests.localFailures.push({ path: url.pathname, status: response.status() }); });
+    context.on('requestfailed', request => { const url = new URL(request.url()); if (url.origin === origin) requests.localRequestFailures.push({ path: url.pathname, type: request.resourceType(), error: request.failure()?.errorText }); });
     return context;
 };
 try {
@@ -167,6 +168,8 @@ try {
 finally { await browser.close(); }
 check(!requests.localFailures.length, 'No missing first-party page, CSS, gallery, plan or PDF responses', requests.localFailures);
 check(!requests.unexpectedWrites.length, 'No unexpected write escaped or was attempted', requests.unexpectedWrites);
+const requiredResourceFailures = requests.localRequestFailures.filter(row => ['image', 'script', 'stylesheet', 'document'].includes(row.type) && row.error !== 'net::ERR_ABORTED');
+check(!requiredResourceFailures.length, 'No first-party image, script, stylesheet or document connection failures', requiredResourceFailures);
 const completed = pages.length === selected.length * viewports.length && checks.every(row => row.passed);
 await save(completed);
 console.log(JSON.stringify({ completed, pages: pages.length, catalogueWidths: catalogues.length, contextualFlows: actions.length, checkedNativePopups: popups.length, mockedApiCalls: requests.mockApiCalls.length, failures: checks.filter(row => !row.passed).length, report: reportPath }));

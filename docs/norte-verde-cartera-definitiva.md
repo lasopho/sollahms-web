@@ -1,6 +1,6 @@
-# Cartera definitiva de Norte Verde — borrador de entrega
+# Cartera definitiva de Norte Verde — informe de entrega
 
-**Estado: documentación preliminar. Las pruebas finales, el commit y la Preview de Vercel siguen pendientes de cierre por el responsable de integración. Este documento no declara QA completo ni autorización de publicación en Production.**
+**Entrega: 14 de octubre de 2026. Preview lista para revisión y aprobación. Las 17 fichas están integradas y verificadas; los pendientes comerciales y las limitaciones del material se documentan por proyecto.**
 
 ## Alcance y fuente documental
 
@@ -22,32 +22,32 @@ Los 17 autorizados ya existían: se conservaron sus slugs y enlaces de ficha. Lo
 - Edificio Atelier Prat Oficinas (`atelier-prat-oficinas`): Fuera de la lista definitiva autorizada.
 - Edificio Corrientes Oficinas (`corrientes-oficinas`): Fuera de la lista definitiva autorizada.
 
-Las 117 fichas HTML de otras inmobiliarias fueron comparadas por SHA-256 con la línea base y conservan su contenido. La comprobación de ausencia de regresiones funcionales y del catálogo completo forma parte del cierre de pruebas todavía pendiente.
+Las 117 fichas HTML de otras inmobiliarias fueron comparadas por SHA-256 con la línea base y conservan su contenido. La regresión automatizada pasó y los 1.343 archivos públicos se compararon con el Preview remoto por SHA-256. El catálogo público conserva las proyecciones de portada previamente aprobadas de las otras inmobiliarias.
 
 ## Estado de las 17 fichas
 
-El estado de esta tabla describe la preparación documental en la fuente de trabajo; no acredita disponibilidad de unidades ni estado de venta. Las limitaciones de cada brochure se detallan más abajo.
+El estado de esta tabla acredita integración y verificación de la ficha en el Preview; no acredita disponibilidad de unidades ni estado de venta. Las limitaciones de cada brochure se detallan más abajo.
 
 | Proyecto | Ficha | Imágenes | Planos | Estado de preparación |
 |---|---|---:|---:|---|
-| Bordevivo | [`bordevivo.html`](../bordevivo.html) | 12 | 8 | Integrada en fuente; validación final pendiente |
-| Carmen Marín | [`carmen-marin.html`](../carmen-marin.html) | 7 | 9 | Integrada en fuente; validación final pendiente |
-| Ecuador | [`edificio-ecuador.html`](../edificio-ecuador.html) | 3 | 8 | Integrada en fuente; validación final pendiente |
-| Origen Atacama 3008 | [`edif-origen-atacama-3008.html`](../edif-origen-atacama-3008.html) | 7 | 6 | Integrada en fuente; validación final pendiente |
-| Dual 390 LTO | [`edificio-dual-390-lto.html`](../edificio-dual-390-lto.html) | 8 | 7 | Integrada en fuente; validación final pendiente |
-| Lira 622 | [`edificio-lira-622.html`](../edificio-lira-622.html) | 6 | 10 | Integrada en fuente; validación final pendiente |
-| Plaza Nova | [`edificio-plaza-nova.html`](../edificio-plaza-nova.html) | 8 | 8 | Integrada en fuente; validación final pendiente |
-| San Francisco 1204 | [`edificio-san-francisco-1204.html`](../edificio-san-francisco-1204.html) | 6 | 6 | Integrada en fuente; validación final pendiente |
-| Verne | [`edificio-verne.html`](../edificio-verne.html) | 6 | 6 | Integrada en fuente; validación final pendiente |
-| Irarrázaval 1970 | [`irarrazaval.html`](../irarrazaval.html) | 8 | 11 | Integrada en fuente; validación final pendiente |
-| Parque Panamá | [`parque-panama.html`](../parque-panama.html) | 4 | 6 | Integrada en fuente; validación final pendiente |
-| Parque Quinta | [`parque-quinta.html`](../parque-quinta.html) | 3 | 8 | Integrada en fuente; validación final pendiente |
-| Playa Peñuelas | [`playa-penuelas.html`](../playa-penuelas.html) | 7 | 8 | Integrada en fuente; validación final pendiente |
-| Playa Serena | [`playa-serena.html`](../playa-serena.html) | 8 | 7 | Integrada en fuente; validación final pendiente |
-| Quintavista | [`quintavista.html`](../quintavista.html) | 8 | 9 | Integrada en fuente; validación final pendiente |
-| Vicuña Mackenna 6896 | [`vicuna-mackenna-6896.html`](../vicuna-mackenna-6896.html) | 8 | 10 | Integrada en fuente; validación final pendiente |
-| Vista Bulnes | [`vista-bulnes.html`](../vista-bulnes.html) | 9 | 8 | Integrada en fuente; validación final pendiente |
-| **Total** | **17 fichas** | **118** | **135** | **Cierre de validación pendiente** |
+| Bordevivo | [`bordevivo.html`](../bordevivo.html) | 12 | 8 | Integrada y verificada en Preview |
+| Carmen Marín | [`carmen-marin.html`](../carmen-marin.html) | 7 | 9 | Integrada y verificada en Preview |
+| Ecuador | [`edificio-ecuador.html`](../edificio-ecuador.html) | 3 | 8 | Integrada y verificada en Preview |
+| Origen Atacama 3008 | [`edif-origen-atacama-3008.html`](../edif-origen-atacama-3008.html) | 7 | 6 | Integrada y verificada en Preview |
+| Dual 390 LTO | [`edificio-dual-390-lto.html`](../edificio-dual-390-lto.html) | 8 | 7 | Integrada y verificada en Preview |
+| Lira 622 | [`edificio-lira-622.html`](../edificio-lira-622.html) | 6 | 10 | Integrada y verificada en Preview |
+| Plaza Nova | [`edificio-plaza-nova.html`](../edificio-plaza-nova.html) | 8 | 8 | Integrada y verificada en Preview |
+| San Francisco 1204 | [`edificio-san-francisco-1204.html`](../edificio-san-francisco-1204.html) | 6 | 6 | Integrada y verificada en Preview |
+| Verne | [`edificio-verne.html`](../edificio-verne.html) | 6 | 6 | Integrada y verificada en Preview |
+| Irarrázaval 1970 | [`irarrazaval.html`](../irarrazaval.html) | 8 | 11 | Integrada y verificada en Preview |
+| Parque Panamá | [`parque-panama.html`](../parque-panama.html) | 4 | 6 | Integrada y verificada en Preview |
+| Parque Quinta | [`parque-quinta.html`](../parque-quinta.html) | 3 | 8 | Integrada y verificada en Preview |
+| Playa Peñuelas | [`playa-penuelas.html`](../playa-penuelas.html) | 7 | 8 | Integrada y verificada en Preview |
+| Playa Serena | [`playa-serena.html`](../playa-serena.html) | 8 | 7 | Integrada y verificada en Preview |
+| Quintavista | [`quintavista.html`](../quintavista.html) | 8 | 9 | Integrada y verificada en Preview |
+| Vicuña Mackenna 6896 | [`vicuna-mackenna-6896.html`](../vicuna-mackenna-6896.html) | 8 | 10 | Integrada y verificada en Preview |
+| Vista Bulnes | [`vista-bulnes.html`](../vista-bulnes.html) | 9 | 8 | Integrada y verificada en Preview |
+| **Total** | **17 fichas** | **118** | **135** | **Verificadas en Preview** |
 
 Las galerías excluyen fotografías genéricas del entorno, recursos decorativos, texto de los brochures y repeticiones detectadas. Los renders se identifican como referenciales. La optimización WebP conserva la proporción original y no agrega ni modifica arquitectura.
 
@@ -193,7 +193,7 @@ Para todos los proyectos, precios, disponibilidad, estado comercial, fechas de e
 
 ## Integridad y reproducibilidad
 
-El manifiesto contiene 17 PDF, 118 imágenes y 135 planos: 270 recursos documentales. Cada entrada conserva su SHA-256. La constancia de reproducción independiente está en el expediente de revisión `reproducibility.json`; el cierre de integridad del paquete de publicación queda pendiente hasta generar y comprobar el paquete final.
+El manifiesto contiene 17 PDF, 118 imágenes y 135 planos: 270 recursos documentales. Cada entrada conserva su SHA-256. La [reproducción independiente](norte-verde-evidencias/reproducibility.json) confirmó los 270 SHA-256, incluido el recorte final de Verne. El paquete final se leyó nuevamente y sus archivos coinciden con el inventario de entrada de Vercel y el código del commit publicado.
 
 La portada final de Verne usa `crop.width = 0.590`. Se reprodujeron sus 13 recursos —un PDF, seis imágenes y seis planos— mediante `materialize(..., root=TEMP)` en una carpeta temporal nueva, sin escribir en la fuente ni en `dist`. Los 13 SHA-256 coinciden con el manifiesto y los archivos fuente. Se registró `finalVerneCoverReverified = true`.
 
@@ -203,20 +203,52 @@ La portada final de Verne usa `crop.width = 0.590`. Se reprodujeron sus 13 recur
 
 Esta reproducción comprueba determinismo e integridad de archivos; no reemplaza las pruebas de navegación, responsive, consulta, agendamiento ni despliegue.
 
-## Cierre técnico pendiente
+## Resultado de pruebas
 
-| Verificación | Estado de este borrador |
+| Verificación | Resultado |
 |---|---|
-| Exactamente 17 Norte Verde visibles, sin no autorizados ni duplicados | Pendiente de consolidar resultado final |
-| Portadas, galerías, planos, enlaces y ausencia de secciones vacías | Pendiente de consolidar resultado final |
-| Consulta y agendamiento funcionales | Pendiente de consolidar resultado final |
-| Escritorio, tablet y móvil; ausencia de desbordamientos | Pendiente de consolidar resultado final |
-| Datos comerciales respaldados y pendientes correctamente presentados | Pendiente de consolidar resultado final |
-| Ausencia de regresiones en otras inmobiliarias | SHA de 117 HTML preservados; cierre funcional pendiente |
-| Integridad SHA-256 del paquete final de publicación | Pendiente |
-| Suites automatizadas y build final | Pendiente de consignar ejecución, alcance y resultado |
-| Commit final | Pendiente |
-| Rama de trabajo | Pendiente de consignar por integración |
-| Nueva Preview de Vercel y comprobación remota | Pendiente |
+| Regresión Node del catálogo y funciones existentes | 323/323 aprobadas; cero omitidas |
+| Casos adicionales de publicación con recursos reales | 27/27 aprobados; cero omitidos |
+| Fixtures Python y validación hipotecaria | 130/130 aprobados; validador aprobado |
+| Suite Norte Verde sobre código final | 10/10 aprobadas, incluidos originales y archivos publicados |
+| Auditor del paquete | 134 proyectos, 17 Norte Verde, 141 páginas, 6.717 referencias locales; sin errores |
+| Revisión responsive completa | 17 fichas × 3 anchos (1440, 768, 375 px): 51 vistas y 1.660 comprobaciones aprobadas |
+| Navegación y acciones | 3 catálogos, 17 flujos contextuales, 34 ampliaciones; 51 llamadas API interceptadas |
+| Muestra visual en Vercel | Bordevivo e Irarrázaval: 4 vistas, 225 comprobaciones aprobadas |
+| Integridad remota | 1.343/1.343 archivos; 301.668.664 bytes; todos SHA-256 iguales al paquete local |
+| Exclusiones públicas | Las 3 rutas retiradas responden HTTP 404 en la nueva Preview |
+| Formularios de las 17 fichas en Preview | 34/34 respuestas HTTP 503 con `preview_read_only`, antes de proveedores externos |
+| Preservación | 117 registros y fichas HTML ajenos intactos; catálogo público histórico preservado |
 
-No se declara la entrega concluida mientras falten estos resultados. La Preview se entrega para revisión del usuario; no se autoriza merge a `main` ni modificación de Production.
+Las 27 pruebas adicionales se ejecutaron con los recursos privados reales. Los casos Norte Verde verifican el catálogo actual de 134 proyectos; los casos históricos reproducen sus políticas anteriores con las 20 filas Norte Verde archivadas, manteniendo sus hashes originales. Las llamadas de navegador se interceptaron y se comprobaron además los guardas del Preview desplegado. No se enviaron mensajes ni se crearon reservas reales.
+
+El servidor local inicial de QA reinició algunas conexiones. La evidencia de red descartó corrupción de archivos; se corrigió únicamente la cola del servidor de pruebas y se repitieron las 51 vistas desde cero, sin fallos. El sitio y sus archivos no requirieron cambios por ese incidente. La muestra remota en Vercel también pasó.
+
+Evidencias: [CI](norte-verde-evidencias/git-ci.json), [publicación](norte-verde-evidencias/release-cases.json), [auditor](norte-verde-evidencias/public-build-audit.json), [responsive](norte-verde-evidencias/qa-responsive.json), [Vercel visual](norte-verde-evidencias/qa-preview.json), [SHA remotos y formularios](norte-verde-evidencias/remote-integrity.json).
+
+## Rama, commit y Preview
+
+- Rama: `codex/norte-verde-cartera-definitiva`, subida a `lasopho/sollahms-web`.
+- Commit de aplicación desplegado: [`1d7f5586e87e08ea0fed7bd0b7f9371c212a93d3`](https://github.com/lasopho/sollahms-web/commit/1d7f5586e87e08ea0fed7bd0b7f9371c212a93d3).
+- Preview: [abrir catálogo](https://project-wrapp-7d8yg0ufx-lsandoval2-8260s-projects.vercel.app/proyectos.html). Buscar «Norte Verde» muestra exactamente los 17 proyectos.
+- Deployment: `dpl_2DB6XbTe6omhhEGRnAUsfcoVyWL6`, estado READY, entorno Preview, sin aliases de Production.
+- Proyecto Vercel: `project-wrapp` / `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`.
+- La plataforma confirma rama, commit y SHA de los paquetes en su metadata: [receipt](norte-verde-evidencias/deployment.json).
+
+El checkout compartido fue utilizado por otro trabajo durante la ejecución. Esta entrega se cerró en un checkout independiente en `/private/tmp/norte-verde-checkout`; se preservó el trabajo concurrente. El commit que contiene este informe añade únicamente evidencia, documentación y el harness final de QA respecto del commit de aplicación indicado.
+
+## SHA-256 del paquete
+
+| Elemento | SHA-256 |
+|---|---|
+| Archivo de fuente `source.tgz` | `99f79449cefba3e4ddf4e35a3c006fb3bad937918348d8c866ab07029153296d` |
+| Inventario de fuente | `9567fb606d0e748c73b4c81f0c10dd508b467701d3725e24fba7219fdedef8c1` |
+| Inventario de publicación | `b80fef312f71defc435309a296ac9723a1a35f5d743e56af41791dde08ec6138` |
+
+El archivo contiene 1,789 archivos de entrada y 333,132,012 bytes, ocupa 319,454,453 bytes comprimidos y fue leído y verificado después de su creación. Copia local: `/private/tmp/norte-verde-delivery/source.tgz`. El [receipt de fuente](norte-verde-evidencias/source-package.json) y el [inventario público](norte-verde-evidencias/public-inventory.json) conservan los valores verificables.
+
+## Revisión pendiente del usuario
+
+La Preview está protegida por autenticación de Vercel y lista para revisar diseño, selección de imágenes y contenido. Los pendientes documentales descritos para cada proyecto requieren confirmación comercial; ninguna condición se inventó para completarlos. No quedan pruebas críticas pendientes ni recursos faltantes sin documentar.
+
+No se hizo merge a `main` ni se modificó Production. Antes y después de esta entrega, Production mantuvo `dpl_9LvbrLDbZhho3Umm5Rmv6AMkauXE` y `main` mantuvo `f1e9bf1715cc99d095a367eba9028a9a1ad2b026`: [antes](norte-verde-evidencias/production-before.json), [después](norte-verde-evidencias/production-after.json).

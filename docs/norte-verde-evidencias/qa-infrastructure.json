@@ -1,0 +1,30 @@
+{
+  "previousAssetReceipts": [
+    "/private/tmp/norte-verde-review/qa-final/irarrazaval-asset-receipt.json",
+    "/private/tmp/norte-verde-review/qa-final/decode-asset-receipt.json"
+  ],
+  "isolatedEvidence": [
+    "/private/tmp/norte-verde-review/qa-isolated-irarrazaval/report.json",
+    "/private/tmp/norte-verde-review/debug-media.json"
+  ],
+  "observedError": "net::ERR_CONNECTION_RESET on first-party local script under port 8087",
+  "fixedServer": "ThreadingHTTPServer request_queue_size=128 and Cache-Control=no-store on 127.0.0.1:8088",
+  "fixedServerReport": "/private/tmp/norte-verde-review/qa-final-fixed-server/report.json",
+  "conclusion": "The completed clean full browser run on the fixed server, together with exact SHA/PIL decode receipts, supports the earlier failures being local HTTP infrastructure failures; asset checks remained strict without replacement or suppression.",
+  "summary": {
+    "completed": true,
+    "pages": 51,
+    "catalogues": 3,
+    "contextualFlows": 17,
+    "nativePopups": 34,
+    "checks": 1660,
+    "failures": [],
+    "imageChecks": 759,
+    "apiMockCalls": 51,
+    "httpFailures": [],
+    "requestFailures": [],
+    "unexpectedWrites": [],
+    "overflowMax": 0
+  },
+  "harnessSha256": "a0703a951139f946b95e7f356d6c4a803733d83ba83cba154e473b065fbb61b7"
+}
