@@ -282,6 +282,95 @@ class ReleasePreparationTests(unittest.TestCase):
         with patch.object(release, 'git', side_effect=replies), self.assertRaisesRegex(ValueError, 'outside public Git'):
             release.verify_git_reference(self.root, files, policy)
 
+    def manual_fixture(self):
+        checkout = MODULE.parents[1]
+        base = json.loads((checkout / release.BASE_QUALITY_MANIFEST).read_text())
+        manual = json.loads((checkout / release.MANUAL_MANIFEST).read_text())
+        official = json.loads((checkout / release.OFFICIAL_MANIFEST).read_text())
+        return base, manual, official
+
+    def manual_archive(self):
+        archive, official_policy = self.official_archive()
+        with tarfile.open(archive) as bundle:
+            records = [(member.name, bundle.extractfile(member).read(), 'file') for member in bundle]
+        base, manual, official = self.manual_fixture()
+        selection = release.manual_quality_selection(manual, base, official)
+        manual_bytes = json.dumps(manual).encode()
+        records.extend([(release.BASE_QUALITY_MANIFEST, (MODULE.parents[1] / release.BASE_QUALITY_MANIFEST).read_bytes(), 'file'),
+                        (release.MANUAL_MANIFEST, manual_bytes, 'file'),
+                        (release.MANUAL_MODULE, b'// private manual consumer fixture', 'file')])
+        archive, policy = self.archive(records)
+        policy.update({key: value for key, value in official_policy.items() if key not in
+                       {'archiveBytes', 'archiveSha256', 'sourceBytes', 'sourceFiles'}})
+        policy.update(ecasaPublishedMedia=89, ecasaGalleryImages=72,
+            manualQuality={'manifestSha256': release.digest(manual_bytes), 'summary': selection['summary'],
+                           'effectiveImages': selection['effectiveImages'], 'projects': selection['projects']})
+        return archive, policy
+
+    def test_manual_archive_preserves_frozen_base_and_separates_source_from_publication(self):
+        archive, policy = self.manual_archive()
+        files = release.verify_archive(archive, policy)
+        summary = release.manual_policy_inventory(policy, files)
+        self.assertEqual((summary['keptImages'], summary['excludedImages'], summary['coverOnlyImages']), (70, 48, 7))
+        self.assertEqual((summary['documentaryGalleryImages'], summary['documentaryPublishedImages']), (8, 15))
+        self.assertEqual(policy['ecasaPublishedMedia'], 89)
+        self.assertEqual(len(release.official_policy_inventory(policy, files)), 4)
+
+    def test_manual_archive_rejects_changed_receipts_missing_consumer_and_public_profile(self):
+        archive, original = self.manual_archive()
+        for mutation in ['hash', 'decision', 'count', 'project', 'public']:
+            policy = copy.deepcopy(original)
+            if mutation == 'hash': policy['manualQuality']['manifestSha256'] = '0' * 64
+            elif mutation == 'decision': policy['manualQuality']['effectiveImages'][0]['reason'] = 'unreviewed receipt edit'
+            elif mutation == 'count': policy['manualQuality']['summary']['documentaryPublishedImages'] += 1
+            elif mutation == 'project': policy['manualQuality']['projects'][0]['previewCover'] = '/assets/unrelated.webp'
+            else: policy['contentProfile'] = 'public_web_parity'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError): release.verify_archive(archive, policy)
+        files = release.verify_archive(archive, original)
+        files.pop(release.MANUAL_MODULE)
+        with self.assertRaisesRegex(ValueError, 'manifest or consumer'): release.manual_policy_inventory(original, files)
+
+    def test_manual_decisions_cannot_mutate_originals_plans_or_untouched_galleries(self):
+        base, original, official = self.manual_fixture()
+        for mutation in ['hash', 'origin', 'plan', 'official', 'untouched', 'extra']:
+            manual = copy.deepcopy(original)
+            if mutation == 'untouched':
+                row = next(project for project in manual['projects'] if project['slug'] == 'wayra')['images'][-1]
+                row['decision'] = 'exclude'
+            else:
+                row = manual['projects'][0]['images'][0]
+                if mutation == 'hash': row['sha256'] = '0' * 64
+                elif mutation == 'origin': row['originCommercialSlug'] = 'ferroparque'
+                elif mutation == 'plan': row['localPath'] = '/assets/propiedades/ecasa-preview/lomas-de-puyai-3/plano.webp'
+                elif mutation == 'official': row['decision'] = 'exclude'
+                else: row['alt'] = 'unapproved caption'
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                release.manual_quality_selection(manual, base, official)
+
+    def test_cover_only_must_be_a_real_final_cover_after_official_overlay(self):
+        base, manual, official = self.manual_fixture()
+        ferro = next(project for project in manual['projects'] if project['slug'] == 'ferroparque')
+        row = next(image for image in ferro['images'] if image['kind'] == 'documentary')
+        ferro['previewCover'] = row['localPath'];row['coverOnly'] = True
+        with self.assertRaisesRegex(ValueError, 'final same-project cover'):
+            release.manual_quality_selection(manual, base, official)
+
+    def test_manual_selection_preserves_source_dictionary_and_all_plan_hashes(self):
+        base, manual, official = self.manual_fixture()
+        selection = release.manual_quality_selection(manual, base, official)
+        docs = json.loads((MODULE.parents[1] / 'data/brochures-ecasa.json').read_text())
+        originals = {asset['localPath'].lstrip('/'): asset['sha256'] for project in docs['projects']
+                     for asset in [*project['images'], *(model['plan'] for model in project['models'])]}
+        before = dict(originals); selected = release.manual_published_media(originals, selection)
+        plans = {model['plan']['localPath'].lstrip('/'): model['plan']['sha256']
+                 for project in docs['projects'] for model in project['models']}
+        self.assertEqual(originals, before)
+        self.assertEqual(len(originals), 130);self.assertEqual(len(selected), 89)
+        self.assertEqual({name: selected[name] for name in plans}, plans)
+        excluded = [row for row in selection['effectiveImages'] if row['kind'] == 'documentary' and
+                    row['decision'] == 'exclude' and not row['coverOnly']]
+        self.assertTrue(all(row['localPath'].lstrip('/') not in selected for row in excluded))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -17,6 +17,11 @@ const projects = JSON.parse(await readFile(resolve(root, 'data/proyectos.json'))
 const review = JSON.parse(await readFile(resolve(root, 'data/brochures-ecasa.json')));
 const quality = JSON.parse(await readFile(resolve(root, 'data/ecasa-image-quality.json')));
 const qualityBySlug = new Map(quality.projects.map(project => [project.slug, project]));
+let manual = null;
+try { manual = JSON.parse(await readFile(resolve(root, 'data/ecasa-manual-quality.json'))); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+const manualBySlug = new Map((manual?.projects ?? []).map(project => [project.slug, project]));
+const effectiveBySlug = manual ? manualBySlug : qualityBySlug;
 const official = JSON.parse(await readFile(resolve(root, 'data/ecasa-official-originals.json')));
 const officialBySlug = new Map(official.projects.map(project => [project.slug, project]));
 const deploymentConfig = JSON.parse(await readFile(resolve(root, 'vercel.json')));
@@ -24,6 +29,8 @@ const assetOrigins = Object.fromEntries(review.projects.flatMap(record =>
   [...record.images, ...record.models.map(model => model.plan)].map(asset => [asset.localPath, asset.originCommercialSlug])));
 for (const project of official.projects) for (const image of project.images) assetOrigins[image.localPath] = project.slug;
 const selectedSlugs = new Set(option('--slugs', '').split(',').filter(Boolean));
+const ecasaOnly = process.argv.includes('--ecasa-only');
+const visualOnly = process.argv.includes('--visual-only');
 const origin = new URL(base).origin;
 const results = [], checks = [], issues = [], screenshots = [];
 await mkdir(output, { recursive: true });
@@ -56,6 +63,7 @@ try {
     let consoleErrors = [];
     page.on('pageerror', error => consoleErrors.push(error.message));
     const selected = (viewport.name === 'desktop' ? projects : projects.filter(project => project.inmobiliaria === 'Ecasa'))
+      .filter(project => !ecasaOnly || project.inmobiliaria === 'Ecasa')
       .filter(project => !viewport.targetsOnly || officialBySlug.has(project.slug))
       .filter(project => !selectedSlugs.size || selectedSlugs.has(project.slug));
     for (const project of selected) {
@@ -112,7 +120,7 @@ try {
       if (evidence.visibleDocumentReferences) errors.push('Visible documentary caption reference');
       if (consoleErrors.length) errors.push(...consoleErrors);
       const record = review.projects.find(record => record.slug === project.slug);
-      const visual = qualityBySlug.get(project.slug);
+      const visual = effectiveBySlug.get(project.slug);
       if (visual) {
         const gallery = await page.locator('.gallery-grid img').evaluateAll(images => images.map(image => new URL(image.src).pathname));
         const expected = visual.images.filter(image => image.decision === 'keep').map(image => image.localPath);
@@ -120,7 +128,7 @@ try {
         check(JSON.stringify([...new Set(gallery)].sort()) === JSON.stringify([...expected].sort()), viewport.name + ' accepted image gallery ' + project.slug);
         check(await page.locator('.gallery-grid').evaluateAll(grids => grids.every(grid => grid.querySelector('img'))), viewport.name + ' no empty gallery ' + project.slug);
         const originalSelection = officialBySlug.get(project.slug);
-        const approvedHero = originalSelection?.previewCover ?? visual.covers.preview.hero;
+        const approvedHero = originalSelection?.previewCover ?? visual.previewCover ?? visual.covers?.preview.hero;
         const approvedOrigin = originalSelection ? project.slug : visual.images.find(image => image.localPath === approvedHero)?.originCommercialSlug;
         check(await page.locator('.hero-image').evaluateAll((images, expected) => images.length === 1 && images.every(image =>
           image.complete && image.naturalWidth && new URL(image.src).pathname === expected.path &&
@@ -133,6 +141,18 @@ try {
             return selected.length === 1 && selected.every(image => image.naturalWidth === expected.width && image.naturalHeight === expected.height &&
               image.closest('[data-official-scope]')?.getAttribute('data-official-scope') === 'development_general' && getComputedStyle(image).objectFit === 'cover');
           }, image), viewport.name + ' original native dimensions and general scope ' + project.slug);
+        }
+        if (manualBySlug.has(project.slug)) {
+          check(await page.locator('#galeria .aj-gallery').evaluateAll(grids => grids.every(grid => grid.querySelector('img'))),
+            viewport.name + ' no empty documentary section ' + project.slug);
+          const additional = visual.images.filter(image => image.kind === 'documentary' && image.decision === 'keep');
+          check(await page.locator('#galeria .aj-gallery img').count() === additional.length,
+            viewport.name + ' exact manually selected additional photographs ' + project.slug);
+          if (!additional.length) check(await page.locator('#galeria').evaluate(gallery => ![...gallery.querySelectorAll('h3')].some(heading => heading.textContent.trim() === 'Imágenes del proyecto')),
+            viewport.name + ' no empty additional image heading ' + project.slug);
+          if (project.slug === 'ferroparque') check(await page.locator('#galeria .gallery-grid').first().locator('img').evaluateAll((images, path) =>
+            images.some(image => new URL(image.src).pathname === path), originalSelection.previewCover),
+            viewport.name + ' development photograph belongs to official gallery');
         }
         for (let index = 0; index < await page.locator('.gallery-grid').count(); index++) {
           const galleryImages = page.locator('.gallery-grid').nth(index).locator('img');
@@ -174,6 +194,24 @@ try {
         const cardPath = resolve(output, viewport.name + '-catalogue-' + project.slug + '.png');
         await card.screenshot({ path: cardPath }); screenshots.push(cardPath);
       }
+      await context.close(); continue;
+    }
+    if (visualOnly) {
+      await page.goto(base + '/proyectos.html', { waitUntil: 'domcontentloaded' });
+      await page.waitForFunction(() => !document.querySelector('#search')?.disabled && document.querySelectorAll('.catalog-card').length > 0);
+      await page.locator('#search').fill('Ecasa'); await page.waitForTimeout(100);
+      check(await page.locator('.catalog-card').count() === 15, viewport.name + ' catalogue contains fifteen Ecasa projects');
+      for (const project of projects.filter(project => project.inmobiliaria === 'Ecasa')) {
+        const card = page.locator('.catalog-card[data-project="' + project.slug + '"]');
+        await card.scrollIntoViewIfNeeded(); await card.locator('img').evaluate(image => { image.loading = 'eager'; });
+        await card.locator('img').evaluate(async image => { await image.decode(); });
+        const expectedCover = officialBySlug.get(project.slug)?.previewCover ?? manualBySlug.get(project.slug)?.previewCover ?? qualityBySlug.get(project.slug).covers.preview.catalogue;
+        check(await card.locator('img').evaluate((image, path) => image.complete && image.naturalWidth && new URL(image.src).pathname === path, expectedCover),
+          viewport.name + ' valid selected catalogue cover ' + project.slug);
+        const cardPath = resolve(output, viewport.name + '-catalogue-' + project.slug + '.png');
+        await card.screenshot({ path: cardPath }); screenshots.push(cardPath);
+      }
+      check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2), viewport.name + ' no catalogue overflow');
       await context.close(); continue;
     }
     for (const path of ['/proyectos.html', '/comparador-hipotecario.html', '/contacto.html?proyecto=alto-san-joaquin-3', '/agenda-asesoria.html?proyecto=terratolten-2']) {
@@ -276,7 +314,7 @@ try {
       'Permanent stage redirect ' + rule.source);
   }
   for (const record of review.projects) {
-    const visual = qualityBySlug.get(record.slug);
+    const visual = effectiveBySlug.get(record.slug);
     for (const asset of [...record.images.filter(image => visual.images.some(reviewed => reviewed.localPath === image.localPath && (reviewed.decision === 'keep' || reviewed.coverOnly))), ...record.models.map(model => model.plan)]) {
       const response = await request.request.get(base + asset.localPath, requestOptions);
       check(response.status() === 200 && createHash('sha256').update(await response.body()).digest('hex') === asset.sha256, 'Media hash ' + asset.localPath);

@@ -24,6 +24,122 @@ OFFICIAL_FOLDER = 'ecasa-official-review'
 OFFICIAL_MANIFEST = 'data/ecasa-official-originals.json'
 OFFICIAL_MODULE = 'scripts/ecasa-official-originals.mjs'
 OFFICIAL_SLUGS = {'ferroparque', 'alto-san-joaquin'}
+MANUAL_MANIFEST = 'data/ecasa-manual-quality.json'
+MANUAL_MODULE = 'scripts/ecasa-manual-quality.mjs'
+BASE_QUALITY_MANIFEST = 'data/ecasa-image-quality.json'
+BASE_QUALITY_SHA256 = 'b4562d1dfbe729520a270039df347b8e3e62f5cff7c3b62d99355d784b0bfb34'
+MANUAL_IMAGE_FIELDS = ('localPath', 'sha256', 'width', 'height', 'originCommercialSlug',
+                       'kind', 'decision', 'coverOnly', 'reason')
+
+
+def manual_quality_selection(manual, base, official=None):
+    """Derive the effective selection independently from the frozen image identities."""
+    require(manual.get('schemaVersion') == 1 and manual.get('baselineCommit') ==
+            'fd9f238685ed59e03716ccef10f40ab8b0a9a1c5' and
+            manual.get('scope') == 'ecasa_manual_images_only' and manual.get('protectedPreviewOnly') is True,
+            'Unrecognized manual Ecasa review scope or baseline')
+    baseline = {project['slug']: project for project in base['projects']}
+    projects = manual.get('projects', [])
+    require(len(projects) == len(baseline) == 15 and len({project.get('slug') for project in projects}) == 15 and
+            {project.get('slug') for project in projects} == set(baseline), 'Manual review changed project identities')
+    final_official_covers = {project['slug']: project.get('previewCover') for project in (official or {}).get('projects', [])}
+    images, choices, covers = {}, [], {}
+    remove_doc = {'nucleo-costanera', 'lamara', 'edificio-bezanilla', 'endemico', 'ferroparque', 'terratolten',
+                  'urban-la-florida', 'aires-la-florida-2', 'conecta-huechuraba', 'alto-san-joaquin'}
+    unchanged = {'wayra', 'lomas-de-puyai', 'enlace-mackenna'}
+    for project in projects:
+        slug = project['slug']; previous = baseline[slug]
+        originals = {image['localPath']: image for image in previous['images']}
+        rows = project.get('images', [])
+        require(len(rows) == len(originals) and {image.get('localPath') for image in rows} == set(originals),
+                'Manual review omitted or added a source photograph: ' + slug)
+        mode = project.get('officialGalleryMode')
+        expected_mode = 'integrate_into_official' if slug == 'ferroparque' else 'retain_development_photo' if slug == 'alto-san-joaquin' else 'unchanged'
+        require(mode == expected_mode, 'Manual gallery mode belongs to another development')
+        require(isinstance(project.get('instruction'), str) and bool(project['instruction'].strip()),
+                'Manual instruction is missing')
+        cover = project.get('previewCover')
+        require(cover is None or cover in originals, 'Manual cover belongs to another project or source')
+        selected_covers = dict(previous['covers']['preview']) if cover is None else {'hero': cover, 'catalogue': cover}
+        covers[slug] = selected_covers
+        final_covers = {'hero': final_official_covers[slug], 'catalogue': final_official_covers[slug]} if final_official_covers.get(slug) else selected_covers
+        for row in rows:
+            path = row['localPath']; original = originals[path]
+            require(set(row) == set(MANUAL_IMAGE_FIELDS), 'Manual choice contains unreviewed fields')
+            require(path not in images and all(row.get(key) == original.get(key) for key in
+                    ['sha256', 'width', 'height', 'originCommercialSlug', 'kind']),
+                    'Manual decision changed source bytes, dimensions or commercial origin')
+            require(row.get('decision') in {'keep', 'exclude'} and type(row.get('coverOnly')) is bool and
+                    isinstance(row.get('reason'), str) and bool(row['reason'].strip()), 'Incomplete manual image decision')
+            require(original.get('decision') != 'exclude' or row['decision'] == 'exclude' and not row['coverOnly'],
+                    'Manual review resurrected an original quality exclusion')
+            require(row['kind'] != 'official' or row['decision'] == 'keep' and not row['coverOnly'],
+                    'Manual review must preserve all historical official images')
+            require(not row['coverOnly'] or row['kind'] == 'documentary' and row['decision'] == 'exclude' and
+                    path in final_covers.values(), 'Manual cover-only resource is not a final same-project cover')
+            if row['kind'] == 'documentary':
+                if slug in remove_doc:
+                    require(row['decision'] == 'exclude', 'Manual instruction removes this documentary gallery')
+                if slug in unchanged:
+                    require(row['decision'] == original['decision'] and row['coverOnly'] == original['coverOnly'],
+                            'Manual review changed an untouched documentary gallery')
+                if slug in {'cumbres-de-penuelas', 'espacio-victoria'}:
+                    removed = '/assets/propiedades/ecasa-preview/' + slug + '/' + (
+                        'imagen-02-p03.webp' if slug == 'cumbres-de-penuelas' else 'imagen-01-p01.webp')
+                    require(row['decision'] == ('exclude' if path == removed else 'keep') and not row['coverOnly'],
+                            'Manual review changed the specifically retained documentary photographs')
+            images[path] = {key: row[key] for key in MANUAL_IMAGE_FIELDS}
+            images[path]['projectSlug'] = slug
+        require(all(path is None or images[path]['decision'] == 'keep' or images[path]['coverOnly']
+                    for path in selected_covers.values()), 'Excluded manual cover has no explicit cover-only permission')
+        require(slug not in unchanged or selected_covers == previous['covers']['preview'],
+                'Manual review changed an untouched project cover')
+        choices.append({'slug': slug, 'previewCover': cover, 'officialGalleryMode': mode})
+    require(len(images) == 118, 'Manual review must preserve all 118 original image identities')
+    return {'effectiveImages': [images[path] for path in sorted(images)],
+            'projects': sorted(choices, key=lambda project: project['slug']), 'covers': covers,
+            'summary': manual_summary(images.values())}
+
+
+def manual_summary(images):
+    images = list(images)
+    return {'reviewedImages': len(images), 'officialImages': sum(image['kind'] == 'official' for image in images),
+            'documentaryImages': sum(image['kind'] == 'documentary' for image in images), 'plansPreserved': 74,
+            'keptImages': sum(image['decision'] == 'keep' for image in images),
+            'excludedImages': sum(image['decision'] == 'exclude' for image in images),
+            'coverOnlyImages': sum(image['coverOnly'] for image in images),
+            'documentaryGalleryImages': sum(image['kind'] == 'documentary' and image['decision'] == 'keep' for image in images),
+            'documentaryPublishedImages': sum(image['kind'] == 'documentary' and (image['decision'] == 'keep' or image['coverOnly']) for image in images)}
+
+
+def manual_published_media(originals, selection):
+    images = {image['localPath'].lstrip('/'): image for image in selection['effectiveImages']}
+    require(all(path in originals and originals[path] == image['sha256'] for path, image in images.items()
+                if image['kind'] == 'documentary'), 'Manual documentary selection differs from the source manifest')
+    return {path: value for path, value in originals.items() if path not in images or
+            images[path]['decision'] == 'keep' or images[path]['coverOnly']}
+
+
+def manual_policy_inventory(policy, files):
+    review = policy.get('manualQuality')
+    if review is None:
+        require(MANUAL_MANIFEST not in files and MANUAL_MODULE not in files,
+                'Manual source inputs require their own review receipt')
+        return None
+    require(policy.get('contentProfile') == 'protected_ecasa_review' and
+            files.get(MANUAL_MANIFEST, {}).get('sha256') == review.get('manifestSha256') and MANUAL_MODULE in files,
+            'Manual manifest or consumer differs from the private review receipt')
+    images = review.get('effectiveImages', []); projects = review.get('projects', [])
+    require(len(images) == 118 and len({image.get('localPath') for image in images}) == 118 and
+            len(projects) == 15 and len({project.get('slug') for project in projects}) == 15,
+            'Manual receipt image/project inventory is incomplete or duplicated')
+    summary = manual_summary(images)
+    require(all(review.get('summary', {}).get(key) == value for key, value in summary.items()),
+            'Manual summary differs from its exact effective image inventory')
+    require(policy.get('ecasaPublishedMedia') == 74 + summary['documentaryPublishedImages'] and
+            policy.get('ecasaGalleryImages') == summary['keptImages'] + policy.get('officialPublishedMedia', 0),
+            'Manual publication counts differ from selected photographs and preserved plans')
+    return summary
 
 
 def official_manifest_inventory(manifest):
@@ -82,7 +198,8 @@ def official_policy_inventory(policy, files):
         return {}
     require(policy.get('contentProfile') == 'protected_ecasa_review' and
             policy.get('officialSourceMedia') == 4 and policy.get('officialPublishedMedia') == 2 and
-            policy.get('ecasaGalleryImages') == 116, 'Official originals require the protected review profile')
+            (policy.get('manualQuality') is not None or policy.get('ecasaGalleryImages') == 116),
+            'Official originals require the protected review profile')
     require(files.get(OFFICIAL_MANIFEST, {}).get('sha256') == review.get('manifestSha256'),
             'Official manifest differs from private review receipt')
     sources = review.get('sourceAssets', [])
@@ -133,7 +250,7 @@ def verify_archive(archive, policy):
         for block in iter(lambda: stream.read(1024 * 1024), b''):
             hasher.update(block)
     require(hasher.hexdigest() == policy['archiveSha256'], 'Archive SHA-256 differs from approval')
-    files, total, official_manifest = {}, 0, None
+    files, total, official_manifest, manual_manifest, base_quality = {}, 0, None, None, None
     official_original_paths = {item.get('path', '').lstrip('/')
         for item in (policy.get('officialOriginals') or {}).get('sourceAssets', []) if item.get('kind') == 'original'}
     with tarfile.open(archive, 'r:gz') as bundle:
@@ -149,6 +266,10 @@ def verify_archive(archive, policy):
                            'gitBlob': hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()}
             if name == OFFICIAL_MANIFEST:
                 official_manifest = json.loads(data)
+            elif name == MANUAL_MANIFEST:
+                manual_manifest = json.loads(data)
+            elif name == BASE_QUALITY_MANIFEST:
+                base_quality = json.loads(data)
             total += len(data)
     require(len(files) == policy['sourceFiles'] and total == policy['sourceBytes'], 'Incomplete source archive')
     if policy.get('officialOriginals') is not None:
@@ -160,6 +281,15 @@ def verify_archive(archive, policy):
                 review.get('publishedAssets') == [published_assets[name] for name in sorted(published_assets)],
                 'Official source receipt differs from exact archived manifest')
         official_policy_inventory(policy, files)
+    manual_policy_inventory(policy, files)
+    if policy.get('manualQuality') is not None:
+        require(manual_manifest is not None and base_quality is not None and
+                files[BASE_QUALITY_MANIFEST]['sha256'] == BASE_QUALITY_SHA256,
+                'Manual review changed or omitted the frozen base quality policy')
+        derived = manual_quality_selection(manual_manifest, base_quality, official_manifest)
+        require(policy['manualQuality'].get('effectiveImages') == derived['effectiveImages'] and
+                policy['manualQuality'].get('projects') == derived['projects'],
+                'Manual receipt differs from the exact archived selection')
     return files
 
 
@@ -196,6 +326,7 @@ def verify_git_reference(root, files, policy):
             mode, kind, oid = fields.decode().split()
             tree[name.decode()] = (mode, kind, oid)
     official = official_policy_inventory(policy, files)
+    manual_policy_inventory(policy, files)
     require(not set(official) & set(tree), 'Official review images must remain outside public Git source')
     tracked = 0
     for name, info in files.items():
@@ -229,6 +360,7 @@ def verify_worktree(root, files, policy):
                 'scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json',
                 'data/fichas-proyectos.json', 'data/fuentes-imagenes.json',
                 OFFICIAL_MANIFEST, OFFICIAL_MODULE,
+                MANUAL_MANIFEST, MANUAL_MODULE,
                 'scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs',
                 'vercel.json', 'robots.txt', 'sitemap.xml', ':(top)*.html']
     require(not git(root, 'diff', '--name-only', policy['approvedAppCommit'], '--', *relevant).strip(),
@@ -330,6 +462,10 @@ def prepare(archive, output, node, policy, protected_review=False):
         if policy.get('officialOriginals') is not None:
             require(result.get('officialPublishedMedia') == (policy['officialPublishedMedia'] if result['environment'] == 'preview' else 0),
                     'Build omitted official review images or leaked them to the public profile')
+        if policy.get('manualQuality') is not None and result['environment'] == 'preview':
+            require(result.get('ecasaReviewMedia') == policy['ecasaPublishedMedia'] and
+                    result.get('ecasaGalleryImages') == policy['ecasaGalleryImages'],
+                    'Manual build publication differs from the reviewed image/plan inventory')
     require(public_result['environment'] == 'production' and not public_result['noindex'] and
             preview_result['environment'] == 'preview' and preview_result['noindex'], 'Build environment mismatch')
     audit_path = destination / 'public-preview-audit.json'
@@ -365,6 +501,7 @@ def prepare(archive, output, node, policy, protected_review=False):
                'officialPublishedMedia': policy.get('officialPublishedMedia', 0),
                'ecasaGalleryImages': policy.get('ecasaGalleryImages', 114),
                'officialOriginals': policy.get('officialOriginals'),
+               **({'manualQuality': policy['manualQuality']} if policy.get('manualQuality') is not None else {}),
                'ecasaPublicWebParityVerified': not protected_review,
                'publicationAuthorized': False, 'integrationAuthorized': False}
     (destination / 'release-receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')

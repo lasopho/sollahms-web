@@ -47,8 +47,11 @@ def make_reference(metadata, platform, files, commit):
     release.require(metadata.get('catalogueProjects') == 136 and metadata.get('ecasaProjects') == 15 and
                     metadata.get('ecasaCommercialEntries') == 22 and metadata.get('ecasaLegacyRoutes') == 8,
                     'Incorrect Ecasa catalogue composition')
+    manual_summary = release.manual_policy_inventory(metadata, files)
+    expected_ecasa = 74 + manual_summary['documentaryPublishedImages'] if manual_summary else 126
     release.require(metadata.get('sourceBrochureMedia') == 399 and metadata.get('ecasaSourceMedia') == 130 and
-                    metadata.get('ecasaPublishedMedia') == 126 and len(metadata['selectedBrochureMedia']) == 395,
+                    metadata.get('ecasaPublishedMedia') == expected_ecasa and
+                    len(metadata['selectedBrochureMedia']) == 269 + expected_ecasa,
                     'Original and published brochure selections must remain distinct and exact')
     tools = metadata.get('verificationTools', [])
     release.require(isinstance(tools, list) and len(tools) == 3 and
@@ -57,7 +60,7 @@ def make_reference(metadata, platform, files, commit):
     official = metadata.get('officialOriginals')
     if official is not None:
         release.require(metadata.get('officialSourceMedia') == 4 and metadata.get('officialPublishedMedia') == 2 and
-                        metadata.get('ecasaGalleryImages') == 116,
+                        metadata.get('ecasaGalleryImages') == (manual_summary['keptImages'] + 2 if manual_summary else 116),
                         'The four official private sources and two Preview images must remain distinct')
         release.official_policy_inventory(metadata, files)
     tracked_names = set(release.git(ROOT, 'ls-tree', '-rz', '--name-only', commit).decode().split('\0'))
@@ -74,12 +77,13 @@ def make_reference(metadata, platform, files, commit):
             'ecasaLegacyRoutes': 8, 'ingevecProjects': 16,
             'htmlPages': 143, 'selectedBrochureMedia': len(metadata['selectedBrochureMedia']),
             'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
-            'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': 126,
+            'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': expected_ecasa,
             'imageQuality': metadata['imageQuality'],
             **({'officialSourceMedia': metadata['officialSourceMedia'],
                 'officialPublishedMedia': metadata['officialPublishedMedia'],
                 'ecasaGalleryImages': metadata['ecasaGalleryImages'],
                 'officialOriginals': official} if official else {}),
+            **({'manualQuality': metadata['manualQuality']} if manual_summary else {}),
             'ecasaPublicWebRights': 'pending_contract_scope_verification',
             'verificationTools': tools,
             'publicationAuthorized': False, 'integrationAuthorized': False}
@@ -122,7 +126,10 @@ def manifest_media(manifests):
     return selected
 
 
-def published_media(originals, quality):
+def published_media(originals, quality, manual=None, official=None):
+    if manual is not None:
+        selection = release.manual_quality_selection(manual, quality, official)
+        return release.manual_published_media(originals, selection)
     decisions = [image for project in quality['projects'] for image in project['images']]
     excluded = {image['localPath'] for image in decisions if image['decision'] == 'exclude'}
     release.require(excluded == VISUAL_EXCLUDED and not any(image.get('coverOnly') for image in decisions),
@@ -150,7 +157,8 @@ def main():
     initial_policy = {'archiveBytes': metadata['archive']['size'], 'archiveSha256': metadata['archive']['sha256'],
                       'sourceFiles': metadata['sourceFileCount'], 'sourceBytes': metadata['sourceBytes'],
                       **{key: metadata[key] for key in ['officialOriginals', 'officialSourceMedia',
-                         'officialPublishedMedia', 'ecasaGalleryImages', 'contentProfile'] if key in metadata}}
+                         'officialPublishedMedia', 'ecasaGalleryImages', 'contentProfile',
+                         'manualQuality', 'ecasaPublishedMedia'] if key in metadata}}
     files = release.verify_archive(archive, initial_policy)
     reference = make_reference(metadata, platform, files, commit)
     release.verify_git_reference(ROOT, files, reference)
@@ -164,6 +172,7 @@ def main():
         manifests = {name: json.loads(source_archive.extractfile('data/' + name).read()) for name in MANIFEST_FOLDERS}
         quality = json.loads(source_archive.extractfile('data/ecasa-image-quality.json').read())
         official_manifest = json.loads(source_archive.extractfile(release.OFFICIAL_MANIFEST).read())
+        manual_manifest = json.loads(source_archive.extractfile(release.MANUAL_MANIFEST).read())
     official_sources, official_published = release.official_manifest_inventory(official_manifest)
     release.require(metadata.get('officialOriginals', {}).get('sourceAssets') ==
                     [official_sources[name] for name in sorted(official_sources)] and
@@ -175,8 +184,9 @@ def main():
                     files[name]['size'] == item['bytes'] for name, item in official_sources.items()),
                     'Official review originals or selected images differ from source archive')
     original_media = manifest_media(manifests)
-    expected_media = published_media(original_media, quality)
-    release.require(len(original_media) == 399 and len(expected_media) == 395 and selected_inventory == expected_media,
+    expected_media = published_media(original_media, quality, manual_manifest, official_manifest)
+    release.require(len(original_media) == 399 and
+                    len(expected_media) == 269 + reference['ecasaPublishedMedia'] and selected_inventory == expected_media,
                     'Brochure receipt differs from the exact reviewed publication selection')
     archived_derivatives = {name for name in files if any(name.startswith('assets/propiedades/' + folder + '/')
                                                         for folder in MANIFEST_FOLDERS.values())}

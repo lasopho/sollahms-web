@@ -130,8 +130,28 @@ const [qualityBytes, researchBytes, officialBytes] = await Promise.all([
   readFile(join(root, 'data/fichas-proyectos.json')),
   readFile(join(root, 'data/fuentes-imagenes.json')),
 ]);
-const imageQuality = validateEcasaImageQuality(ecasaReview, JSON.parse(researchBytes), sourceProjects,
+const baseImageQuality = validateEcasaImageQuality(ecasaReview, JSON.parse(researchBytes), sourceProjects,
   JSON.parse(qualityBytes), JSON.parse(officialBytes));
+let imageQuality = baseImageQuality, manualQuality = null, manualOperations = null, manualBytes = null;
+try { manualBytes = await readFile(join(root, 'data/ecasa-manual-quality.json')); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+if (manualBytes) {
+  manualOperations = await import('./ecasa-manual-quality.mjs');
+  manualQuality = manualOperations.validateEcasaManualQuality(baseImageQuality, JSON.parse(manualBytes));
+  imageQuality = manualOperations.effectiveEcasaManualQuality(baseImageQuality, manualQuality, { preview: ecasaIncluded });
+}
+const manualReceipt = manualQuality ? {
+  manifestSha256: createHash('sha256').update(manualBytes).digest('hex'),
+  summary: { ...manualOperations.effectiveEcasaManualQuality(baseImageQuality, manualQuality, { preview: true }).summary,
+    documentaryGalleryImages: JSON.parse(manualBytes).projects.flatMap(project => project.images)
+      .filter(image => image.kind === 'documentary' && image.decision === 'keep').length,
+    documentaryPublishedImages: JSON.parse(manualBytes).projects.flatMap(project => project.images)
+      .filter(image => image.kind === 'documentary' && (image.decision === 'keep' || image.coverOnly)).length },
+  effectiveImages: JSON.parse(manualBytes).projects.flatMap(project => project.images.map(image => ({ ...image, projectSlug: project.slug })))
+    .sort((a, b) => a.localPath.localeCompare(b.localPath)),
+  projects: JSON.parse(manualBytes).projects.map(({ slug, previewCover, officialGalleryMode }) => ({ slug, previewCover, officialGalleryMode }))
+    .sort((a, b) => a.slug.localeCompare(b.slug)),
+} : null;
 const publishedEcasaAssets = selectEcasaPublishedAssets(ecasaReview, imageQuality, { preview: ecasaIncluded });
 const publishedEcasaPaths = new Set(publishedEcasaAssets.map(asset => asset.localPath));
 const excludedImagePaths = ecasaExcludedImagePaths(imageQuality, { preview: ecasaIncluded });
@@ -352,6 +372,8 @@ for (const name of pages) {
     html = transformEcasaImageQuality(html, name.slice(0, -5), imageQuality, { preview: ecasaIncluded });
   if (officialOriginals) html = officialOperations.transformOfficialOriginals(html, name.slice(0, -5),
     imageQuality, officialOriginals, { preview: ecasaIncluded });
+  if (manualQuality) html = manualOperations.transformEcasaManualGallery(html, name.slice(0, -5),
+    manualQuality, { preview: ecasaIncluded });
   if (preview) {
     html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>');
     if (name === 'agenda-asesoria.html' || name === 'contacto.html' || name === 'comparador-hipotecario.html') {
@@ -401,7 +423,8 @@ await writeFile(join(root, '.vercel/brochure-build-inventory.json'), JSON.string
   preservedContractualCoverageVerified: ajRights.publicWeb && ingevecRights.publicWeb,
   ecasaContractualCoverageVerified: ecasaRights.publicWeb,
   ecasaReviewMedia: publishedEcasaAssets.length,
-  ecasaImageQuality: { policySha256: createHash('sha256').update(qualityBytes).digest('hex'), ...imageQuality.summary },
+  ecasaImageQuality: { policySha256: createHash('sha256').update(qualityBytes).digest('hex'), ...baseImageQuality.summary },
+  manualQuality: manualReceipt,
   officialSourceMedia: officialReceipt?.sourceAssets.length ?? 0,
   officialPublishedMedia: officialPublished.length,
   ecasaGalleryImages: ecasaIncluded ? imageQuality.summary.keptImages + officialPublished.length : null,

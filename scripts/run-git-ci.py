@@ -33,6 +33,16 @@ classified = full_files + [entry['file'] for entry in selected]
 assert len(classified) == len(set(classified)), 'Each file needs exactly one classification'
 actual = {path.relative_to(ROOT).as_posix() for path in ROOT.glob('tests/*.test.mjs')} | EXTRA_TESTS
 assert set(classified) == actual, 'New/missing test files require explicit classification'
+# Named full suites retain an exhaustive literal case inventory as well as file scope.
+for entry in manifest['fullFiles']:
+    if 'cases' not in entry:
+        continue
+    source = (ROOT / entry['file']).read_text()
+    declared = [match[2] for match in re.finditer(r'^test\(([\'\"])((?:\\.|(?!\1).)*?)\1', source, re.MULTILINE)]
+    assert len(declared) == len(re.findall(r'^test\(', source, re.MULTILINE)), 'Unclassified dynamic full-suite declaration'
+    assert all('\\' not in name for name in declared), 'Nonliteral full-suite name'
+    assert len(declared) == len(set(declared)), 'Duplicated full-suite declaration'
+    assert declared == entry['cases'], 'New/missing full-suite case requires explicit classification'
 release_cases = []
 for suite in selected:
     source = (ROOT / suite['file']).read_text()
@@ -89,11 +99,11 @@ with ThreadPoolExecutor(max_workers=2) as executor:
     results = list(executor.map(run, commands))
 node_results = [item for item in results if item['name'].startswith('node-')]
 node_counts = {key: sum(item['tests'][key] for item in node_results) for key in ['tests','pass','fail','skipped','cancelled']}
-assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 302, 'Executed case count changed; classify the change explicitly'
+assert node_counts['tests'] == manifest['expectedGitNodeTests'] == 312, 'Executed case count changed; classify the change explicitly'
 assert node_counts['skipped'] == 0, 'Filtered release cases are not represented as successful or skipped test executions'
 python_result = next(item for item in results if item['name'] == 'python-synthetic-units')
-assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 113
-passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 302 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
+assert python_result['tests'] == manifest['expectedPythonFixtureTests'] == 123
+passed = all(item['exitCode'] == 0 for item in results) and node_counts['pass'] == 312 and node_counts['fail'] == 0 and node_counts['cancelled'] == 0
 report = {'checkScope': manifest['checkScope'], 'allPassed': passed,
           'node': node_counts, 'pythonFixtureTests': python_result['tests'],
           'releaseOnlyNotRun': release_cases, 'releaseOnlyNotRunCount': len(release_cases),

@@ -145,6 +145,39 @@ class EcasaPreviewPreparationTests(unittest.TestCase):
             with self.subTest(mutation=mutation), self.assertRaises(ValueError):
                 self.reference(metadata)
 
+    def manual_metadata(self):
+        metadata = self.official_metadata()
+        root = MODULE.parents[1]
+        base = json.loads((root / preview.release.BASE_QUALITY_MANIFEST).read_text())
+        policy = json.loads((root / preview.release.MANUAL_MANIFEST).read_text())
+        official = json.loads((root / preview.release.OFFICIAL_MANIFEST).read_text())
+        selection = preview.release.manual_quality_selection(policy, base, official)
+        metadata.update(ecasaPublishedMedia=89, ecasaGalleryImages=72,
+            selectedBrochureMedia=metadata['selectedBrochureMedia'][:358],
+            manualQuality={'manifestSha256': 'f' * 64, 'summary': selection['summary'],
+                           'effectiveImages': selection['effectiveImages'], 'projects': selection['projects']})
+        self.files[preview.release.MANUAL_MANIFEST] = {'sha256': 'f' * 64}
+        self.files[preview.release.MANUAL_MODULE] = {'sha256': '0' * 64}
+        return metadata
+
+    def test_manual_reference_separates_base_review_from_effective_publication(self):
+        reference = self.reference(self.manual_metadata())
+        self.assertEqual(reference['selectedBrochureMedia'], 358)
+        self.assertEqual(reference['ecasaPublishedMedia'], 89)
+        self.assertEqual(reference['ecasaGalleryImages'], 72)
+        self.assertEqual(reference['sourceBrochureMedia'], 399)
+        self.assertEqual(reference['ecasaSourceMedia'], 130)
+        self.assertEqual(reference['imageQuality']['keptImages'], 114)
+        self.assertEqual(reference['manualQuality']['summary']['keptImages'], 70)
+        self.assertFalse(reference['publicationAuthorized'])
+
+    def test_manual_reference_cannot_reuse_historical_publication_counts(self):
+        original = self.manual_metadata()
+        for key, value in [('ecasaPublishedMedia', 126), ('ecasaGalleryImages', 116),
+                           ('selectedBrochureMedia', self.metadata['selectedBrochureMedia'])]:
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                self.reference(dict(original, **{key: value}))
+
 
 if __name__ == '__main__':
     unittest.main()

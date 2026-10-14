@@ -470,6 +470,52 @@ class PublicBuildAuditTests(unittest.TestCase):
                 after.pop('imagenAlt', None)
         self.assertEqual(restored, catalogue)
 
+    def manual_fixture(self):
+        root = MODULE.parents[1]
+        base_path = root / audit_module.release_inventory.BASE_QUALITY_MANIFEST
+        base = json.loads(base_path.read_text())
+        policy = json.loads((root / audit_module.release_inventory.MANUAL_MANIFEST).read_text())
+        official = json.loads((root / audit_module.release_inventory.OFFICIAL_MANIFEST).read_text())
+        (self.source / audit_module.release_inventory.BASE_QUALITY_MANIFEST).write_bytes(base_path.read_bytes())
+        (self.source / 'scripts').mkdir(exist_ok=True)
+        (self.source / audit_module.release_inventory.MANUAL_MODULE).write_text('// reviewed synthetic consumer')
+        images = {image['localPath']: {**image, 'projectSlug': project['slug'], 'displayAlt': 'Fixture photograph'}
+                  for project in base['projects'] for image in project['images']}
+        projects = {project['slug']: project for project in base['projects']}
+        return base, policy, official, images, projects
+
+    def test_manual_auditor_clones_preview_choices_without_mutating_frozen_public_selection(self):
+        base, policy, official, images, projects = self.manual_fixture()
+        before = copy.deepcopy((base, images, projects)); errors = []
+        choices, effective, selection = audit_module.manual_images(self.source, policy, base, images, projects, official,
+            lambda condition, issue: errors.append(issue) if not condition else None)
+        self.assertEqual(errors, [])
+        self.assertEqual((base, images, projects), before)
+        self.assertEqual(selection['summary']['keptImages'], 70)
+        self.assertEqual(sum(row['coverOnly'] for row in choices.values()), 7)
+        self.assertEqual(effective['urban-la-florida']['covers']['public'], projects['urban-la-florida']['covers']['public'])
+        self.assertNotEqual(effective['urban-la-florida']['covers']['preview'], projects['urban-la-florida']['covers']['preview'])
+
+    def test_manual_auditor_rejects_image_from_another_project_and_changed_frozen_bytes(self):
+        base, policy, official, images, projects = self.manual_fixture()
+        policy['projects'][0]['images'][0]['originCommercialSlug'] = 'alto-san-joaquin'
+        errors = []
+        audit_module.manual_images(self.source, policy, base, images, projects, official,
+            lambda condition, issue: errors.append(issue) if not condition else None)
+        self.assertTrue(any('commercial origin' in error for error in errors))
+        (self.source / audit_module.release_inventory.BASE_QUALITY_MANIFEST).write_text(json.dumps(base))
+        errors.clear()
+        audit_module.manual_images(self.source, policy, base, images, projects, official,
+            lambda condition, issue: errors.append(issue) if not condition else None)
+        self.assertTrue(any('frozen base quality' in error for error in errors))
+
+    def test_cover_roles_distinguish_gallery_links_from_hero_and_metadata(self):
+        path = '/assets/propiedades/ecasa-preview/urban-la-florida/imagen-03-p02.webp'
+        cover = '<meta property="og:image" content="https://sollahms.cl' + path + '"><main><img src="' + path + '"></main>'
+        self.assertEqual(audit_module.image_roles(cover, path), {'gallery': 0, 'hero': 1, 'links': 0})
+        leak = cover + '<section id="galeria"><div><a href="' + path + '"><img src="' + path + '"></a></div></section>'
+        self.assertEqual(audit_module.image_roles(leak, path), {'gallery': 1, 'hero': 1, 'links': 1})
+
 
 if __name__ == '__main__':
     unittest.main()

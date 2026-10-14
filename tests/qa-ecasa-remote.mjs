@@ -12,6 +12,9 @@ const metadata = JSON.parse(await readFile(metadataPath));
 const deploymentConfig = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url)));
 const quality = JSON.parse(await readFile(new URL('../data/ecasa-image-quality.json', import.meta.url)));
 const official = JSON.parse(await readFile(new URL('../data/ecasa-official-originals.json', import.meta.url)));
+let manual = null;
+try { manual = JSON.parse(await readFile(new URL('../data/ecasa-manual-quality.json', import.meta.url))); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
 if (metadata.target !== 'preview' || metadata.contentProfile !== 'protected_ecasa_review') throw new Error('Protected Ecasa build receipt required');
 const auth = { 'x-vercel-trusted-oidc-idp-token': process.env.VERCEL_OIDC_TOKEN };
 const results = [], checks = [];
@@ -31,12 +34,12 @@ await Promise.all(Array.from({ length: 8 }, async () => {
     } catch (error) { results.push({ file: file.file, matches: false, error: error.message }); }
   }
 }));
-for (const path of [...ECASA_RETIRED_SLUGS.flatMap(slug => ['/' + slug, '/' + slug + '.html']), '/data/brochures-ecasa.json', '/data/fichas-proyectos.json', '/data/ecasa-image-quality.json', '/data/ecasa-official-originals.json', '/data/fuentes-imagenes.json', '/docs/ecasa-preview-reproducible.md', '/03_CAPTURAS_CARTERA_PRIVADAS/', '/01_PDF_ORIGINALES_PRIVADOS/', '/.env',
+for (const path of [...ECASA_RETIRED_SLUGS.flatMap(slug => ['/' + slug, '/' + slug + '.html']), '/data/brochures-ecasa.json', '/data/fichas-proyectos.json', '/data/ecasa-image-quality.json', '/data/ecasa-official-originals.json', '/data/ecasa-manual-quality.json', '/data/fuentes-imagenes.json', '/docs/ecasa-preview-reproducible.md', '/03_CAPTURAS_CARTERA_PRIVADAS/', '/01_PDF_ORIGINALES_PRIVADOS/', '/.env',
   ...official.projects.flatMap(project => project.images.map(image => image.original.localPath))]) {
   const response = await fetch(new URL(path, base), { headers: auth, redirect: 'manual', signal: AbortSignal.timeout(45000) });
   checks.push({ label: 'Excluded ' + path, status: response.status, passed: response.status === 404 });
 }
-for (const image of quality.projects.flatMap(project => project.images).filter(image => image.decision === 'exclude' && !image.coverOnly)) {
+for (const image of (manual ?? quality).projects.flatMap(project => project.images).filter(image => image.decision === 'exclude' && !image.coverOnly)) {
   const response = await fetch(new URL(image.localPath, base), { headers: auth, redirect: 'manual', signal: AbortSignal.timeout(45000) });
   checks.push({ label: 'Visually excluded image ' + image.localPath, status: response.status, passed: response.status === 404 });
 }

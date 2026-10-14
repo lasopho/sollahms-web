@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 302,
+  "expectedGitNodeTests": 312,
   "expectedReleaseOnlyCases": 25,
-  "expectedPythonFixtureTests": 113,
+  "expectedPythonFixtureTests": 123,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -88,6 +88,22 @@
     {
       "file": "tests/ecasa-stage-presentation.test.mjs",
       "reason": "Five DOM attribution cases proving all130selected and62official images retain their own commercial-stage origin."
+    },
+    {
+      "file": "tests/ecasa-manual-quality.test.mjs",
+      "reason": "Ten literal Git-only cases verify exact manual image choices, explicit cover-only roles, stage binding, immutable source records and protected HTML using tracked JSON/HTML and synthetic official photo markup; no private photograph bytes or codec needed.",
+      "cases": [
+        "manual review retains all 118 source photographs and 74 plans while selecting 70 gallery images and seven explicit cover-only exceptions",
+        "scope, identity coverage and nine-field choices reject any additional caption, stage, commercial or source mutation",
+        "manual decisions cannot remove official images, reintroduce the four discarded photos or reverse the project-specific instructions",
+        "cover exceptions require a real retained cover role and cannot borrow from another development or stage declaration",
+        "effective Preview maps are independent and the public profile returns the exact frozen base",
+        "published selection keeps all plans and exactly fifteen documentary files, excluding 37 additional unused documentary routes",
+        "all fifteen Preview galleries prune documentary images and empty groups without changing plans, specifications, maps or runtime",
+        "FerroParque integrates its existing photograph first in the official grid while keeping previous figures ordered and Alto unchanged",
+        "Cumbres retains only its facade at full width and natural aspect without changing other project layout or imagery",
+        "source files, 136 identities, financial values, 22 stage snapshots and public projection remain exact"
+      ]
     }
   ],
   "selectedSuites": [

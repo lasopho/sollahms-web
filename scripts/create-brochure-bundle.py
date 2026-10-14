@@ -135,7 +135,11 @@ def assert_legacy_redirects(root, page_texts):
 
 
 def selected_source_files(root):
-    official_sources, _ = release.official_manifest_inventory(json.loads((root / release.OFFICIAL_MANIFEST).read_text()))
+    official_manifest = json.loads((root / release.OFFICIAL_MANIFEST).read_text())
+    official_sources, _ = release.official_manifest_inventory(official_manifest)
+    assert sha((root / release.BASE_QUALITY_MANIFEST).read_bytes()) == release.BASE_QUALITY_SHA256, 'Frozen base quality evidence changed'
+    release.manual_quality_selection(json.loads((root / release.MANUAL_MANIFEST).read_text()),
+        json.loads((root / release.BASE_QUALITY_MANIFEST).read_text()), official_manifest)
     for name, digest in QUALITY_ORIGINALS.items():
         assert sha((root / name).read_bytes()) == digest, 'Original research/commercial image evidence changed: ' + name
     quality = json.loads((root / 'data/ecasa-image-quality.json').read_text())
@@ -206,6 +210,7 @@ def selected_source_files(root):
     files.update(('scripts/public-fiche-copy.mjs', 'data/public-caption-policy.json'))
     files.update(('scripts/ecasa-image-quality.mjs', 'data/ecasa-image-quality.json', *QUALITY_ORIGINALS))
     files.update((release.OFFICIAL_MANIFEST, release.OFFICIAL_MODULE))
+    files.update((release.MANUAL_MANIFEST, release.MANUAL_MODULE))
     for folder in ('api', 'lib'):
         files.update(str(p.relative_to(root)) for p in (root / folder).rglob('*')
                      if p.is_file() and p.suffix in {'.js', '.mjs'})
@@ -288,6 +293,9 @@ def main():
     tool_inventory = verification_tools(ROOT, review_commit)
     files = selected_source_files(ROOT)
     official_sources, official_published = release.official_manifest_inventory(json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
+    manual = release.manual_quality_selection(json.loads((ROOT / release.MANUAL_MANIFEST).read_text()),
+        json.loads((ROOT / release.BASE_QUALITY_MANIFEST).read_text()),
+        json.loads((ROOT / release.OFFICIAL_MANIFEST).read_text()))
     inventory = [{'file': name, 'size': (ROOT / name).stat().st_size,
                   'sha256': sha((ROOT / name).read_bytes())} for name in files]
     with tempfile.TemporaryDirectory(prefix='sollahms-reproducible-review-') as temporary:
@@ -303,12 +311,15 @@ def main():
         receipt = json.loads((stage / '.vercel/brochure-build-inventory.json').read_text())
         source_media = sum(len(json.loads((stage / 'data' / name).read_text())['projects'][index][key])
             for name in MANIFESTS for index in range(len(APPROVED_PROJECTS[name])) for key in ['images', 'models'])
-        assert source_media == 399 and len(receipt['media']) == source_media - len(VISUAL_EXCLUDED) == 395, 'The build omitted or added selected brochure resources'
+        assert source_media == 399, 'The original brochure sources must remain exact'
         source_inventory = {asset['localPath']: asset['sha256']
             for name in MANIFESTS for record in json.loads((stage / 'data' / name).read_text())['projects']
             for asset in [*record['images'], *(model['plan'] for model in record['models'])]}
-        assert {asset['path']: asset['sha256'] for asset in receipt['media']} == {
-            path: digest for path, digest in source_inventory.items() if path not in VISUAL_EXCLUDED}, 'Published media differs from the reviewed visual selection'
+        expected_publication = release.manual_published_media({path.lstrip('/'): value for path, value in source_inventory.items()}, manual)
+        assert {asset['path'].lstrip('/'): asset['sha256'] for asset in receipt['media']} == expected_publication, 'Published media differs from the exact manual selection'
+        assert len(expected_publication) == 269 + 74 + manual['summary']['documentaryPublishedImages'], 'Manual publication omitted a plan or preserved brochure resource'
+        assert receipt['manualQuality']['effectiveImages'] == manual['effectiveImages'] and receipt['manualQuality']['projects'] == manual['projects'], 'Manual build receipt differs from the reviewed policy'
+        assert all(receipt['manualQuality']['summary'].get(key) == value for key, value in manual['summary'].items()), 'Manual build counts differ from the effective image inventory'
         assert receipt['officialOriginals']['sourceAssets'] == [official_sources[name] for name in sorted(official_sources)] and receipt['officialOriginals']['publishedAssets'] == [official_published[name] for name in sorted(official_published)], 'Official transport/publication differs from the exact reviewed selection'
         preview_output = public_files(stage / 'dist')
         public_inventory = [{'file': name, 'sha256': sha(content)}
@@ -345,10 +356,13 @@ def main():
                 'catalogueProjects': 136, 'ecasaProjects': 15, 'ecasaCommercialEntries': 22,
                 'ecasaLegacyRoutes': 8,
                 'preservedBrochureMedia': 269, 'ingevecReviewMedia': 165,
-                'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130, 'ecasaPublishedMedia': 126,
+                'sourceBrochureMedia': 399, 'ecasaSourceMedia': 130,
+                'ecasaPublishedMedia': 74 + manual['summary']['documentaryPublishedImages'],
                 'imageQuality': receipt['ecasaImageQuality'],
                 'officialSourceMedia': len(official_sources), 'officialPublishedMedia': len(official_published),
-                'ecasaGalleryImages': 114 + len(official_published),
+                'ecasaGalleryImages': manual['summary']['keptImages'] + len(official_published),
+                'manualQuality': {'manifestSha256': sha((ROOT / release.MANUAL_MANIFEST).read_bytes()),
+                    'summary': manual['summary'], 'effectiveImages': manual['effectiveImages'], 'projects': manual['projects']},
                 'officialOriginals': {'manifestSha256': sha((ROOT / release.OFFICIAL_MANIFEST).read_bytes()),
                     'sourceAssets': [official_sources[name] for name in sorted(official_sources)],
                     'publishedAssets': [official_published[name] for name in sorted(official_published)],

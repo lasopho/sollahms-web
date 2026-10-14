@@ -229,6 +229,50 @@ def quality_catalogue(catalogue, images, projects, project_info, caption_policy,
     return result
 
 
+def manual_images(source, policy, base, images, projects, official, require):
+    """Bind manual decisions to the independently reconstructed original identities."""
+    if policy is None:
+        require(not (source / release_inventory.MANUAL_MODULE).exists(), 'Manual consumer lacks its review manifest')
+        return images, projects, None
+    try:
+        require(digest(source / release_inventory.BASE_QUALITY_MANIFEST) == release_inventory.BASE_QUALITY_SHA256,
+                'Manual review changed the frozen base quality policy')
+        require((source / release_inventory.MANUAL_MODULE).is_file() and
+                not (source / release_inventory.MANUAL_MODULE).is_symlink(), 'Manual review consumer is missing or symbolic')
+        selection = release_inventory.manual_quality_selection(policy, base, official)
+        choices = {row['localPath']: {**images[row['localPath']], **row} for row in selection['effectiveImages']}
+        effective_projects = json.loads(json.dumps(projects))
+        for slug, covers in selection['covers'].items():
+            effective_projects[slug]['covers']['preview'] = covers
+        return choices, effective_projects, selection
+    except (ValueError, KeyError, TypeError, OSError) as error:
+        require(False, 'Invalid independent manual Ecasa review: ' + str(error))
+        return images, projects, None
+
+
+def image_roles(text, path):
+    """Count actual gallery/hero uses without relying on transformation output."""
+    class Roles(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=True)
+            self.stack, self.gallery, self.hero, self.links = [], 0, 0, 0
+        def handle_starttag(self, tag, attrs):
+            attrs = dict(attrs)
+            in_gallery = any(active for _, active in self.stack) or tag == 'section' and attrs.get('id') == 'galeria'
+            if tag == 'img' and attrs.get('src') == path:
+                if in_gallery: self.gallery += 1
+                else: self.hero += 1
+            if tag == 'a' and attrs.get('href') == path: self.links += 1
+            if tag not in {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}:
+                self.stack.append((tag, in_gallery))
+        def handle_endtag(self, tag):
+            for index in range(len(self.stack) - 1, -1, -1):
+                if self.stack[index][0] == tag:
+                    del self.stack[index:];break
+    roles = Roles();roles.feed(text)
+    return {'gallery': roles.gallery, 'hero': roles.hero, 'links': roles.links}
+
+
 def official_images(source, public, preview, require):
     """Independently check private source bytes and Preview-only publication."""
     source_paths = {str(path.relative_to(source)) for path in source.rglob('*')
@@ -296,8 +340,9 @@ const {validateEcasaImageQuality,transformEcasaImageQuality}=await import(pathTo
 const {normalizeFicheCopy}=await import(pathToFileURL(root+'/scripts/public-fiche-copy.mjs'));
 const review=await load('data/brochures-ecasa.json');const verified=validateEcasaImageQuality(review,await load('data/fichas-proyectos.json'),await load('data/proyectos.json'),await load('data/ecasa-image-quality.json'),await load('data/fuentes-imagenes.json'));
 let official=null,officialApi=null;try{const manifest=await load('data/ecasa-official-originals.json');officialApi=await import(pathToFileURL(root+'/scripts/ecasa-official-originals.mjs'));official=await officialApi.validateOfficialOriginals(manifest,{root});}catch(error){if(error.code!=='ENOENT')throw error;}
-const copyQuality=()=>({...verified,images:new Map(verified.images),projects:new Map(verified.projects),aliases:new Map(verified.aliases)});
-const output={public:{},preview:{},officialSummary:official?.summary??null};for(const record of review.projects){const original=await readFile(root+'/'+record.slug+'.html','utf8');for(const profile of ['public','preview']){const remove=profile==='preview'?'PUBLIC':'PREVIEW';const keep=profile==='preview'?'PREVIEW':'PUBLIC';let html=original.replace(new RegExp('<!--ECASA_'+remove+'_START-->[\\s\\S]*?<!--ECASA_'+remove+'_END-->','g'),'').replace(new RegExp('<!--ECASA_'+keep+'_(?:START|END)-->','g'),'');html=transformEcasaImageQuality(html,record.slug,copyQuality(),{preview:profile==='preview'});html=normalizeFicheCopy(html);if(official)html=officialApi.transformOfficialOriginals(html,record.slug,copyQuality(),official,{preview:profile==='preview'});output[profile][record.slug+'.html']=html;}}process.stdout.write(JSON.stringify(output));"""
+let manual=null,manualApi=null;try{const policy=await load('data/ecasa-manual-quality.json');manualApi=await import(pathToFileURL(root+'/scripts/ecasa-manual-quality.mjs'));manual=manualApi.validateEcasaManualQuality(verified,policy);}catch(error){if(error.code!=='ENOENT')throw error;}
+const copyQuality=preview=>{const selection=manual?manualApi.effectiveEcasaManualQuality(verified,manual,{preview}):verified;return {...selection,images:new Map(selection.images),projects:new Map(selection.projects),aliases:new Map(selection.aliases)};};
+const output={public:{},preview:{},officialSummary:official?.summary??null,manualSummary:manual?.summary??null};for(const record of review.projects){const original=await readFile(root+'/'+record.slug+'.html','utf8');for(const profile of ['public','preview']){const isPreview=profile==='preview',remove=isPreview?'PUBLIC':'PREVIEW',keep=isPreview?'PREVIEW':'PUBLIC';let html=original.replace(new RegExp('<!--ECASA_'+remove+'_START-->[\\s\\S]*?<!--ECASA_'+remove+'_END-->','g'),'').replace(new RegExp('<!--ECASA_'+keep+'_(?:START|END)-->','g'),'');html=transformEcasaImageQuality(html,record.slug,copyQuality(isPreview),{preview:isPreview});html=normalizeFicheCopy(html);if(official)html=officialApi.transformOfficialOriginals(html,record.slug,copyQuality(isPreview),official,{preview:isPreview});if(manual)html=manualApi.transformEcasaManualGallery(html,record.slug,manual,{preview:isPreview});output[profile][record.slug+'.html']=html;}}process.stdout.write(JSON.stringify(output));"""
     result = subprocess.run([node, '--input-type=module', '-e', script, str(source)], check=True, capture_output=True, text=True)
     return json.loads(result.stdout)
 
@@ -472,6 +517,9 @@ def audit(source, public, preview, protected_review=False, node=None):
     quality_path = source / 'data/ecasa-image-quality.json'
     quality_policy = json.loads(quality_path.read_text()) if quality_path.is_file() else None
     quality_choices, quality_projects, quality_project_info, quality_projections = {}, {}, {}, None
+    manual_path = source / release_inventory.MANUAL_MANIFEST
+    manual_policy = json.loads(manual_path.read_text()) if manual_path.is_file() else None
+    manual_selection, base_choices, base_projects = None, {}, {}
     official_manifest, official_sources, official_published = official_images(source, public, preview, require)
     counts['officialSourceMedia'] = len(official_sources)
     counts['officialPublishedMedia'] = len(official_published)
@@ -495,14 +543,29 @@ def audit(source, public, preview, protected_review=False, node=None):
         counts['ecasaGalleryImages'] = sum(image['decision'] == 'keep' for image in quality_choices.values())
         counts['ecasaExcludedImages'] = len(excluded)
         require(counts['ecasaGalleryImages'] == 114, 'The 114 approved Ecasa gallery photographs must remain exact')
+        counts['ecasaBaselineGalleryImages'] = counts['ecasaGalleryImages']
+        base_choices, base_projects = quality_choices, quality_projects
+        quality_choices, quality_projects, manual_selection = manual_images(source, manual_policy, quality_policy,
+            base_choices, base_projects, official_manifest, require)
+        if manual_policy:
+            require(protected_review, 'Manual Ecasa selection is authorized only for protected Preview')
+        if manual_selection:
+            summary = manual_selection['summary']
+            counts['ecasaGalleryImages'] = summary['keptImages']
+            counts['ecasaExcludedImages'] = summary['excludedImages']
+            counts['ecasaCoverOnlyImages'] = summary['coverOnlyImages']
+            counts['ecasaDocumentaryGalleryImages'] = summary['documentaryGalleryImages']
+            counts['ecasaDocumentaryPublishedImages'] = summary['documentaryPublishedImages']
         counts['ecasaGalleryImagesBeforeOfficial'] = counts['ecasaGalleryImages']
         counts['ecasaGalleryImages'] += len(official_published)
-        if official_manifest:
+        if official_manifest and not manual_selection:
             require(counts['ecasaGalleryImages'] == 116, 'Official supplements must produce exactly 116 Ecasa gallery images')
         try:
             quality_projections = quality_html_projections(source, ecasa_review, node or shutil.which('node'))
         except (OSError, subprocess.CalledProcessError, json.JSONDecodeError, TypeError) as error:
             require(False, 'Reviewed visual HTML projection failed: ' + str(error))
+    else:
+        require(not manual_policy, 'Manual review requires the frozen image quality identities')
     commercial_sources = ecasa_review.get('commercialSources', [])
     counts['ecasaCommercialSources'] = len(commercial_sources)
     require(len(commercial_sources) == 22 and {record['slug']: record['projectSlug'] for record in commercial_sources} == COMMERCIAL_PROJECTS,
@@ -525,7 +588,8 @@ def audit(source, public, preview, protected_review=False, node=None):
             require(any(asset['localPath'] == cover['localPath'] for asset in record['images']),
                     'Ecasa cover is not a selected image: ' + record['slug'])
             counts['ecasaCovers'] += 1
-        counts['ecasaImages'] += sum(not quality_policy or quality_choices.get(asset['localPath'], {}).get('decision') == 'keep' for asset in record['images'])
+        counts['ecasaImages'] += sum(not quality_policy or quality_choices.get(asset['localPath'], {}).get('decision') == 'keep' or
+            quality_choices.get(asset['localPath'], {}).get('coverOnly') is True for asset in record['images'])
         counts['ecasaPlans'] += len(record['models'])
         for asset in [*record['images'], *(model['plan'] for model in record['models'])]:
             path = asset['localPath'].lstrip('/')
@@ -539,10 +603,20 @@ def audit(source, public, preview, protected_review=False, node=None):
                 original = source / path
                 require(original.is_file() and not original.is_symlink() and digest(original) == asset['sha256'],
                         'Visual filtering changed or omitted original documentary evidence: ' + path)
-                if asset['localPath'] in VISUAL_EXCLUDED:
+                choice = quality_choices.get(asset['localPath'])
+                if choice and choice['decision'] == 'exclude' and not choice.get('coverOnly'):
                     require(path not in files and path not in preview_files and asset['localPath'] not in html,
                             'Excluded Ecasa photograph survived as a published resource: ' + path)
                     continue
+                if choice and manual_selection:
+                    roles = image_roles(html, asset['localPath'])
+                    if choice.get('coverOnly'):
+                        require(roles['gallery'] == 0 and roles['links'] == 0 and roles['hero'] == 1 and
+                                Document(html).metas.get('og:image', '').endswith(asset['localPath']) and
+                                preview_by_slug.get(record['slug'], {}).get('imagenPrincipal') == asset['localPath'],
+                                'Manual cover-only photograph lacks its exclusive final cover role: ' + path)
+                    else:
+                        require(roles['gallery'] >= 1, 'Manual documentary photograph missing from its approved gallery: ' + path)
             require(path not in ecasa_chosen and path not in chosen, 'Duplicate selected Ecasa resource: ' + path)
             ecasa_chosen.add(path)
             require(path in target_files, 'Selected Ecasa image or plan missing: ' + path)
@@ -552,8 +626,9 @@ def audit(source, public, preview, protected_review=False, node=None):
             require(asset['localPath'] in html, 'Selected Ecasa resource absent from its fiche: ' + path)
     counts['ecasaMedia'] = len(ecasa_chosen)
     if quality_policy:
-        require(counts['ecasaMedia'] == 126 and counts['ecasaImages'] == 52 and counts['ecasaPlans'] == 74,
-                'Visual publication must preserve 52 documentary photographs and all 74 plans')
+        expected_images = manual_selection['summary']['documentaryPublishedImages'] if manual_selection else 52
+        require(counts['ecasaMedia'] == 74 + expected_images and counts['ecasaImages'] == expected_images and counts['ecasaPlans'] == 74,
+                'Visual publication must preserve its selected documentary photographs and all 74 plans')
         counts['ecasaCovers'] = sum(project['covers']['preview']['catalogue'] is not None for project in quality_projects.values())
         for path, image in quality_choices.items():
             if image['kind'] != 'official':
@@ -583,7 +658,7 @@ def audit(source, public, preview, protected_review=False, node=None):
     expected_preview_catalogue = json.loads(json.dumps(catalogue))
     if quality_policy:
         expected_preview_catalogue = quality_catalogue(catalogue, quality_choices, quality_projects, quality_project_info, caption_policy, True)
-        expected_public_catalogue = quality_catalogue(source_catalogue, quality_choices, quality_projects, quality_project_info, caption_policy, False)
+        expected_public_catalogue = quality_catalogue(source_catalogue, base_choices, base_projects, quality_project_info, caption_policy, False)
         require([project for project in catalogue if project['slug'] in ECASA] ==
                 [project for project in expected_public_catalogue if project['slug'] in ECASA],
                 'Visual public build changed Ecasa commercial data beyond reviewed image fields')
@@ -650,6 +725,7 @@ def audit(source, public, preview, protected_review=False, node=None):
             'displayCopyPolicySha256': digest(policy_path) if caption_policy is not None else None,
             'imageQualityPolicySha256': digest(quality_path) if quality_policy is not None else None,
             'officialOriginalsManifestSha256': digest(source / release_inventory.OFFICIAL_MANIFEST) if official_manifest else None,
+            'manualQualityManifestSha256': digest(manual_path) if manual_policy else None,
             'providerAvailabilityVerified': False}
 
 
