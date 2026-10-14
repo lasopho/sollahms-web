@@ -541,7 +541,7 @@ def leon_policy_inventory(policy, files):
     return inventory
 
 
-def safe_name(name, official_original_paths=(), sento_document_paths=(), leon_document_paths=()):
+def safe_name(name, official_original_paths=(), sento_document_paths=(), leon_document_paths=(), leon_original_paths=()):
     parts = PurePosixPath(name).parts
     require(bool(parts) and not name.startswith('/') and '\\' not in name and
             all(part not in {'.', '..'} and not part.startswith('.') for part in parts) and
@@ -554,7 +554,9 @@ def safe_name(name, official_original_paths=(), sento_document_paths=(), leon_do
             'Private or operational directory in deployment source')
     require('originals' not in parts or name in official_original_paths and
             parts[:4] == ('assets', 'propiedades', OFFICIAL_FOLDER, 'originals') and
-            len(parts) == 6 and parts[4] in OFFICIAL_SLUGS,
+            len(parts) == 6 and parts[4] in OFFICIAL_SLUGS or
+            name in leon_original_paths and parts[:3] == ('assets', 'propiedades', 'leon') and
+            len(parts) == 6 and parts[3] in LEON_DOCUMENTS and parts[4] == 'originals',
             'Private or operational directory in deployment source')
     return name
 
@@ -572,9 +574,10 @@ def verify_archive(archive, policy):
         for item in (policy.get('officialOriginals') or {}).get('sourceAssets', []) if item.get('kind') == 'original'}
     sento_document_paths = {item.get('path', '').lstrip('/') for item in (policy.get('sentoReview') or {}).get('assets', []) if item.get('kind') == 'document'}
     leon_document_paths = {item.get('path', '').lstrip('/') for item in (policy.get('leonReview') or {}).get('assets', []) if item.get('kind') == 'document'}
+    leon_original_paths = {item.get('path', '').lstrip('/') for item in (policy.get('leonReview') or {}).get('assets', []) if item.get('kind') != 'document'}
     with tarfile.open(archive, 'r:gz') as bundle:
         for member in bundle:
-            name = safe_name(member.name, official_original_paths, sento_document_paths, leon_document_paths)
+            name = safe_name(member.name, official_original_paths, sento_document_paths, leon_document_paths, leon_original_paths)
             require(member.isfile() and not member.issym() and not member.islnk(), 'Nonregular archive member')
             require(name not in files, 'Duplicate archive member')
             require(0 <= member.size <= policy['sourceBytes'] - total, 'Archive exceeds approved uncompressed size')
