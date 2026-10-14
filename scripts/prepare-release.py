@@ -751,7 +751,7 @@ def extract_verified(archive, destination, files):
     seen = set()
     with tarfile.open(archive, 'r:gz') as bundle:
         for member in bundle:
-            name = safe_name(member.name, files, files)
+            name = safe_name(member.name, files, files, files, files)
             require(member.isfile() and name in files and name not in seen, 'Archive changed after verification')
             seen.add(name)
             data = bundle.extractfile(member).read()
