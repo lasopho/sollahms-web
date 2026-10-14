@@ -14,6 +14,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from sento_scope import original_data, historical_file
 from urllib.parse import parse_qs, urlencode, urlparse
 from map_cleanup_scope import transform_map_cleanup
 
@@ -41,7 +42,7 @@ def main_bytes(path):
 @functools.lru_cache(maxsize=1)
 def records():
     baseline = main_bytes('data/fichas-proyectos.json')
-    assert read_pre_leon('data/fichas-proyectos.json') == baseline, 'Historical tour research changed'
+    assert historical_file('data/fichas-proyectos.json', read_pre_leon('data/fichas-proyectos.json')) == baseline, 'Historical tour research changed'
     rows = json.loads(baseline)
     assert len(rows) == 144
     return {row['slug']: row for row in rows}
@@ -203,7 +204,7 @@ def restore_automatic_asset(path, current):
 
 if __name__ == '__main__':
     path = sys.argv[1]
-    current = sys.stdin.buffer.read()
+    current = historical_file(sys.argv[1], sys.stdin.buffer.read())
     if path == '--transform':
         sys.stdout.buffer.write(transform_automatic_markup(current.decode(), sys.argv[2]).encode())
         sys.exit(0)

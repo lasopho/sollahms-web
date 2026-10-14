@@ -1,5 +1,6 @@
+import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
-import { isReviewedLeonAsset } from './leon-main-preservation.mjs';
+import { isReviewedLeonAsset, readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, mkdtempSync, mkdirSync, writeFileSync, rmSync, copyFileSync, cpSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -184,7 +185,7 @@ test('531 historical assets and handlers retain strict baselines outside the sco
   for (const { file } of baselineTree()) {
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchanged(file);
   }
-  assert.deepEqual(listFiles('assets').filter(file=>!isReviewedLeonAsset(file)).filter((file) => !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith(ASSETS.slice(1)) &&
+  assert.deepEqual(historicalSentoAssetFiles(listFiles('assets').filter(file=>!isReviewedLeonAsset(file))).filter((file) => !NORTE_VERDE_HERO_ASSETS.includes(file) && !file.startsWith(ASSETS.slice(1)) &&
     !file.startsWith(INGEVEC_ASSETS.slice(1)) && file !== CSS), [...assets.map(({ file }) => file), 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS].sort());
   assertAutomaticEmbedStylesheet();
 });

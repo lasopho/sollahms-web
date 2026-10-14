@@ -1,3 +1,4 @@
+import { projectSentoFile } from './sento-preservation.mjs';
 import test from 'node:test';
 import { readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
@@ -15,10 +16,10 @@ const TOUR_REVIEW = 'codex/recorridos-validos-144';
 const AUTOMATIC_EMBEDS = 'codex/mapas-recorridos-auto';
 const MAP_CLEANUP = 'codex/limpieza-mapas-fichas';
 const APPROVED_PORTFOLIO = 'e7afe04';
-const read = path => readFileSync(resolve(ROOT, path));
-const json = path => JSON.parse(read(path));
+const read = path => projectSentoFile(path, readPreLeonFile(path));
+const json = path => JSON.parse(projectSentoFile(path, read(path)));
 const git = (...args) => execFileSync('git', args, { cwd: ROOT });
-const configuration = JSON.parse(readPreLeonFile('vercel.json'));
+const configuration = JSON.parse(projectSentoFile('vercel.json',readPreLeonFile('vercel.json')));
 
 function assertManualDeploymentGates(config) {
   assert.deepEqual(config.git?.deploymentEnabled, { main: false, [INTEGRATION]: false, [TOUR_REVIEW]: false, [AUTOMATIC_EMBEDS]: false, [MAP_CLEANUP]: false, 'codex/norte-verde-hero-merge': false },
@@ -75,11 +76,11 @@ test('shared security headers reject missing and weakened framing, MIME, referre
 });
 
 test('all 144 catalogue objects and 16 Ingevec identities remain byte-identical to the approved portfolio', () => {
-  const catalogue = JSON.parse(readPreLeonFile('data/proyectos.json'));
+  const catalogue = JSON.parse(projectSentoFile('data/proyectos.json',readPreLeonFile('data/proyectos.json')));
   assertBrochureCatalogue(catalogue);
   assert.equal(catalogue.length, 144);
   assert.equal(catalogue.filter(project => project.inmobiliaria === 'Ingevec').length, 16);
-  assert.deepEqual(readPreLeonFile('data/proyectos.json'), git('show', APPROVED_PORTFOLIO + ':data/proyectos.json'));
+  assert.deepEqual(projectSentoFile('data/proyectos.json',readPreLeonFile('data/proyectos.json')), git('show', APPROVED_PORTFOLIO + ':data/proyectos.json'));
   assert.deepEqual(read('data/hipotecario.json'), git('show', APPROVED_PORTFOLIO + ':data/hipotecario.json'));
   const changed = structuredClone(catalogue);
   changed.find(project => project.inmobiliaria !== 'Ingevec').nombre += ' changed';
@@ -140,7 +141,7 @@ function assertIncompleteBuildRejected(environment, partial) {
   try {
     for (const path of ['scripts/package-vercel.mjs', 'scripts/brochure-publication.mjs', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
       const target = resolve(fixture, path);
-      mkdirSync(dirname(target), { recursive: true }); copyFileSync(resolve(ROOT, path), target);
+      mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, projectSentoFile(path, readPreLeonFile(path)));
     }
     if (partial) {
       const asset = json('data/brochures-ingevec.json').projects[0].images[0];

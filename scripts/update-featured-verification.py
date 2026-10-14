@@ -21,6 +21,11 @@ for research in records:
         continue
     project = projects[slug]
     path = ROOT / (slug + '.html')
+    if project.get('inmobiliaria') == 'Sento' and str(project.get('imagenPrincipal', '')).startswith('/assets/propiedades/sento/') and (ROOT / 'data/sento-review.json').exists():
+        from sento_fiche import render as render_sento
+        review = json.loads((ROOT / 'data/sento-review.json').read_text())
+        path.write_text(render_sento(next(row for row in review['projects'] if row['slug'] == slug)))
+        continue
     page = path.read_text()
     page = re.sub(r'<!-- (?:verified-featured|featured-details)-start -->.*?<!-- (?:verified-featured|featured-details)-end -->\n?', '', page, flags=re.S)
     updates = research.get('updates', {})

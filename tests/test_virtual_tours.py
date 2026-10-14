@@ -1,6 +1,6 @@
-from leon_main_scope import read_pre_leon
 """Real catalogue regressions and future rendering of absent/invalid tours."""
 import copy
+from leon_main_scope import read_pre_leon
 import hashlib
 import importlib.util
 import json
@@ -11,6 +11,7 @@ import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
+from sento_scope import original_data, historical_file, original_html
 from string import Template
 from urllib.parse import urlparse
 from virtual_tour_scope import exact_removed_page, VISTA_UNAVAILABLE_URL
@@ -23,8 +24,8 @@ from virtual_tour_policy import usable_virtual_tours, virtual_tours_to_render, h
 spec = importlib.util.spec_from_file_location('details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(details)
-PROJECTS = json.loads(read_pre_leon('data/proyectos.json').decode())
-RECORDS = {r['slug']: r for r in json.loads(read_pre_leon('data/fichas-proyectos.json').decode())}
+PROJECTS = original_data(json.loads(read_pre_leon('data/proyectos.json').decode()))
+RECORDS = {r['slug']: r for r in original_data(json.loads(read_pre_leon('data/fichas-proyectos.json').decode()), 'data/fichas-proyectos.json')}
 TEMPLATE = Template(read_pre_leon('templates/project-detail.html').decode())
 
 def original(path):
@@ -42,7 +43,7 @@ class VirtualTours(unittest.TestCase):
     def test_source_records_and_prices_stay_exact(self):
         for path in ['data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
                      'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']:
-            self.assertEqual(read_pre_leon(path), original(path), path)
+            self.assertEqual(historical_file(path, read_pre_leon(path)), original(path), path)
         self.assertEqual(len(PROJECTS), 144)
         self.assertEqual(sum(bool(r['virtualTours']) for r in RECORDS.values()), 62)
         self.assertEqual(sum(len(r['virtualTours']) for r in RECORDS.values()), 100)
@@ -58,7 +59,7 @@ class VirtualTours(unittest.TestCase):
             removed = exact_removed_page(before, r['slug'])
             self.assertEqual(removed, main_bytes(path), path + ': approved tour withdrawal baseline')
             expected = expected_automatic_file(path)
-            self.assertEqual(read_pre_leon(path), expected, path)
+            self.assertEqual(historical_file(path, read_pre_leon(path)), expected, path)
             untouched += removed == before
             corrected += removed != before
             retained = [t for t in r['virtualTours']
@@ -75,7 +76,7 @@ class VirtualTours(unittest.TestCase):
         hidden = [r for r in RECORDS.values() if not r['virtualTours'] or r['slug'] == 'irarrazaval']
         self.assertEqual(len(hidden), 83)
         for r in hidden:
-            page = read_pre_leon(r['slug']+'.html').decode()
+            page = original_html(read_pre_leon(r['slug']+'.html').decode())
             self.assertNotRegex(page, r'id=["\']recorrido["\']|href=["\']#recorrido["\']')
             self.assertNotIn('Recorridos y experiencias oficiales', page)
             self.assertNotIn('Consulta la disponibilidad de un recorrido virtual', page)
@@ -86,7 +87,7 @@ class VirtualTours(unittest.TestCase):
 
     def test_internal_fragments_resolve_on_all_144_pages(self):
         for p in PROJECTS:
-            nodes = Nodes(read_pre_leon(p['slug']+'.html').decode()).nodes
+            nodes = Nodes(original_html(read_pre_leon(p['slug']+'.html').decode())).nodes
             ids = [a['id'] for _, a in nodes if a.get('id')]
             self.assertEqual(len(ids), len(set(ids)), p['slug'])
             for tag, attrs in nodes:
@@ -115,14 +116,14 @@ class VirtualTours(unittest.TestCase):
         for p in PROJECTS:
             path = p['slug'] + '.html'
             images = lambda html: [a for tag, a in Nodes(html).nodes if tag == 'img']
-            self.assertEqual(images(read_pre_leon(path).decode()), images(original(path).decode()), path)
+            self.assertEqual(images(original_html(read_pre_leon(path).decode())), images(original(path).decode()), path)
 
     def test_search_and_mortgage_comparator_sources_are_unchanged(self):
         paths = ['index.html', 'proyectos.html', 'comparador-hipotecario.html',
                  'data/hipotecario.json', 'api/uf.mjs', 'assets/js/hipotecario.mjs',
                  'assets/js/purchase-capacity-ui.mjs', 'assets/js/project-finance.mjs']
         for path in paths:
-            self.assertEqual(read_pre_leon(path), original(path), path)
+            self.assertEqual(historical_file(path, read_pre_leon(path)), original(path), path)
 
     def test_future_rendering_of_all_144_pages_matches_policy(self):
         sections = tours = 0
@@ -151,17 +152,17 @@ class VirtualTours(unittest.TestCase):
     def test_all_144_pages_are_the_exact_automatic_embed_transform(self):
         for project in PROJECTS:
             path = project['slug'] + '.html'
-            current = read_pre_leon(path)
+            current = historical_file(path, read_pre_leon(path))
             self.assertEqual(current, expected_automatic_file(path), path)
             self.assertEqual(restore_automatic_file(path, current), main_bytes(path), path)
         path = 'templates/project-detail.html'
-        self.assertEqual(read_pre_leon(path), expected_automatic_file(path))
+        self.assertEqual(historical_file(path, read_pre_leon(path)), expected_automatic_file(path))
 
     def test_137_maps_and_97_tour_frames_keep_exact_sources_and_secure_lazy_attributes(self):
         maps = tours = sections = external = 0
         for project in PROJECTS:
             slug = project['slug']
-            page = read_pre_leon(slug+'.html').decode()
+            page = original_html(read_pre_leon(slug+'.html').decode())
             nodes = Nodes(page).nodes
             hosts = json.loads(re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', page, re.S)[1])
             self.assertNotIn('data-embed-src=', page, slug)
@@ -285,7 +286,7 @@ class VirtualTours(unittest.TestCase):
         self.assertNotIn('Recorridos y experiencias oficiales', result)
         self.assertEqual(hide_absent_virtual_tours(result, empty), result)
         for slug in ['inn-puerto-chico', 'edificio-suecia']:
-            result = hide_absent_virtual_tours(read_pre_leon(slug+'.html').decode(), empty)
+            result = hide_absent_virtual_tours(original_html(read_pre_leon(slug+'.html').decode()), empty)
             self.assertNotIn('Recorrido virtual 360°', result)
             self.assertNotIn('my.matterport.com/show/', result)
             self.assertIn('https://www.google.com/maps', result)

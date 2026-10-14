@@ -1,0 +1,1382 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "slug": "angamos",
+    "name": "Angamos 205",
+    "sourceUrl": "https://sento.cl/proyectos/angamos-205/"
+  },
+  "checkedOn": "2026-10-14",
+  "internalOnly": true,
+  "models": [
+    {
+      "slug": "angamos",
+      "code": "B10-I",
+      "originalLabel": "Departamento tipo B10-I",
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "displayTypology": "1 dormitorio · 1 baño",
+      "officialCategory": "Departamento 1 dormitorio",
+      "sourceBedroomsField": 1,
+      "areas": [
+        {
+          "label": "Superficie útil",
+          "kind": "useful",
+          "valueM2": 31.22,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-B10-I",
+          "sourceField": "Superficie útil",
+          "sourceText": "31,22 m2",
+          "sourceMatchedCode": "B10-I"
+        },
+        {
+          "label": "Terraza",
+          "kind": "terrace",
+          "valueM2": 2.5,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-B10-I",
+          "sourceField": "Terraza",
+          "sourceText": "2,50 m2",
+          "sourceMatchedCode": "B10-I"
+        },
+        {
+          "label": "Superficie total",
+          "kind": "total",
+          "valueM2": 33.72,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-B10-I",
+          "sourceField": "Superficie total",
+          "sourceText": "33,72 m2",
+          "sourceMatchedCode": "B10-I"
+        }
+      ],
+      "otherAreas": [],
+      "consumerNotes": [],
+      "matchEvidence": {
+        "sourceCardRef": "angamos-current-card-B10-I",
+        "nativePlanRef": "angamos-native-B10-I",
+        "technicalPlanRef": "angamos-technical-B10-I",
+        "plantMetadataRef": "angamos-plant-post-B10-I",
+        "repositoryPlanPath": "/assets/propiedades/sento/angamos/plano-b10-i.webp",
+        "repositorySha256": "2a49e7a45c669a4f65b2728f0bf91651d45f25f0cc3d0e5125a63486cc07111d",
+        "sourceSha256": "f4fb0819f8ed7d581aee96013b9b9aca4cca69ff77428556f3294561a424a345",
+        "decodedPixelsIdentical": true,
+        "bedroomCountEvidence": "explicit current official card text; supported by printed room labels where unambiguous",
+        "bathroomCountEvidence": "explicit current official card text and printed BAÑO labels",
+        "roomGeometryUsedForCounts": false,
+        "surfacesEvidence": "explicit code-specific fields in current official HTML; neither plan raster prints m²",
+        "differentProjectOrBorrowedCode": false
+      },
+      "discrepancies": [],
+      "completeness": {
+        "sourceSurfaceFields": 3,
+        "capturedSurfaceFields": 3,
+        "additionalExplicitM2LabelsFound": 0,
+        "linearDimensionLabelsNotConvertedToAreas": true
+      },
+      "arithmetic": {
+        "matchesDeclaredTotal": true,
+        "diagnosticOnly": true,
+        "totalNeverRecalculatedForPublication": true
+      }
+    },
+    {
+      "slug": "angamos",
+      "code": "C3",
+      "originalLabel": "Departamento tipo C3",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "displayTypology": "2 dormitorios · 2 baños",
+      "officialCategory": "Departamento 2 dormitorios",
+      "sourceBedroomsField": 2,
+      "areas": [
+        {
+          "label": "Superficie útil",
+          "kind": "useful",
+          "valueM2": 45.55,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-C3",
+          "sourceField": "Superficie útil",
+          "sourceText": "45,55 m2",
+          "sourceMatchedCode": "C3"
+        },
+        {
+          "label": "Terraza",
+          "kind": "terrace",
+          "valueM2": 2.55,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-C3",
+          "sourceField": "Terraza",
+          "sourceText": "2,55 m2",
+          "sourceMatchedCode": "C3"
+        },
+        {
+          "label": "Superficie total",
+          "kind": "total",
+          "valueM2": 48.1,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-C3",
+          "sourceField": "Superficie total",
+          "sourceText": "48,10 m2",
+          "sourceMatchedCode": "C3"
+        }
+      ],
+      "otherAreas": [],
+      "consumerNotes": [],
+      "matchEvidence": {
+        "sourceCardRef": "angamos-current-card-C3",
+        "nativePlanRef": "angamos-native-C3",
+        "technicalPlanRef": "angamos-technical-C3",
+        "plantMetadataRef": "angamos-plant-post-C3",
+        "repositoryPlanPath": "/assets/propiedades/sento/angamos/plano-c3.webp",
+        "repositorySha256": "b4e38dfe981f20ee1d2455913314a8653612544a66081496e0a3685c282e4718",
+        "sourceSha256": "70cf4f7f94bfa63bbe1f28a44e0a438f6f6179e64576aee5b62a73b8144a873a",
+        "decodedPixelsIdentical": true,
+        "bedroomCountEvidence": "explicit current official card text; supported by printed room labels where unambiguous",
+        "bathroomCountEvidence": "explicit current official card text and printed BAÑO labels",
+        "roomGeometryUsedForCounts": false,
+        "surfacesEvidence": "explicit code-specific fields in current official HTML; neither plan raster prints m²",
+        "differentProjectOrBorrowedCode": false
+      },
+      "discrepancies": [],
+      "completeness": {
+        "sourceSurfaceFields": 3,
+        "capturedSurfaceFields": 3,
+        "additionalExplicitM2LabelsFound": 0,
+        "linearDimensionLabelsNotConvertedToAreas": true
+      },
+      "arithmetic": {
+        "matchesDeclaredTotal": true,
+        "diagnosticOnly": true,
+        "totalNeverRecalculatedForPublication": true
+      }
+    },
+    {
+      "slug": "angamos",
+      "code": "C4",
+      "originalLabel": "Departamento tipo C4",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "displayTypology": "2 dormitorios · 2 baños",
+      "officialCategory": "Departamento 2 dormitorios",
+      "sourceBedroomsField": 2,
+      "areas": [
+        {
+          "label": "Superficie útil",
+          "kind": "useful",
+          "valueM2": 47.39,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-C4",
+          "sourceField": "Superficie útil",
+          "sourceText": "47,39 m2",
+          "sourceMatchedCode": "C4"
+        },
+        {
+          "label": "Terraza",
+          "kind": "terrace",
+          "valueM2": 2.68,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-C4",
+          "sourceField": "Terraza",
+          "sourceText": "2,68 m2",
+          "sourceMatchedCode": "C4"
+        },
+        {
+          "label": "Superficie total",
+          "kind": "total",
+          "valueM2": 50.07,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-C4",
+          "sourceField": "Superficie total",
+          "sourceText": "50,07 m2",
+          "sourceMatchedCode": "C4"
+        }
+      ],
+      "otherAreas": [],
+      "consumerNotes": [],
+      "matchEvidence": {
+        "sourceCardRef": "angamos-current-card-C4",
+        "nativePlanRef": "angamos-native-C4",
+        "technicalPlanRef": "angamos-technical-C4",
+        "plantMetadataRef": "angamos-plant-post-C4",
+        "repositoryPlanPath": "/assets/propiedades/sento/angamos/plano-c4.webp",
+        "repositorySha256": "ffc488439c6d561334377142b18a42085ac5721dd14ec98ece2749b06704c453",
+        "sourceSha256": "638991c45f6fd148283ee04a1e194c58e45472f94e7aa91a746e4bb46d557406",
+        "decodedPixelsIdentical": true,
+        "bedroomCountEvidence": "explicit current official card text; supported by printed room labels where unambiguous",
+        "bathroomCountEvidence": "explicit current official card text and printed BAÑO labels",
+        "roomGeometryUsedForCounts": false,
+        "surfacesEvidence": "explicit code-specific fields in current official HTML; neither plan raster prints m²",
+        "differentProjectOrBorrowedCode": false
+      },
+      "discrepancies": [],
+      "completeness": {
+        "sourceSurfaceFields": 3,
+        "capturedSurfaceFields": 3,
+        "additionalExplicitM2LabelsFound": 0,
+        "linearDimensionLabelsNotConvertedToAreas": true
+      },
+      "arithmetic": {
+        "matchesDeclaredTotal": true,
+        "diagnosticOnly": true,
+        "totalNeverRecalculatedForPublication": true
+      }
+    },
+    {
+      "slug": "angamos",
+      "code": "C6",
+      "originalLabel": "Departamento tipo C6",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "displayTypology": "2 dormitorios · 2 baños",
+      "officialCategory": "Departamento 2 dormitorios",
+      "sourceBedroomsField": 2,
+      "areas": [
+        {
+          "label": "Superficie útil",
+          "kind": "useful",
+          "valueM2": 48.37,
+          "publishable": false,
+          "sourceRef": "angamos-current-card-C6",
+          "sourceField": "Superficie útil",
+          "sourceText": "48,37 m2",
+          "sourceMatchedCode": "C6",
+          "internalReason": "The official partial surfaces contradict the published total; do not publish as a coherent breakdown."
+        },
+        {
+          "label": "Terraza",
+          "kind": "terrace",
+          "valueM2": 2.89,
+          "publishable": false,
+          "sourceRef": "angamos-current-card-C6",
+          "sourceField": "Terraza",
+          "sourceText": "2,89 m2",
+          "sourceMatchedCode": "C6",
+          "internalReason": "The official partial surfaces contradict the published total; do not publish as a coherent breakdown."
+        },
+        {
+          "label": "Superficie total",
+          "kind": "total",
+          "valueM2": 51.36,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-C6",
+          "sourceField": "Superficie total",
+          "sourceText": "51,36 m2",
+          "sourceMatchedCode": "C6"
+        }
+      ],
+      "otherAreas": [],
+      "consumerNotes": [
+        "Confirma las medidas de esta tipología al cotizar."
+      ],
+      "matchEvidence": {
+        "sourceCardRef": "angamos-current-card-C6",
+        "nativePlanRef": "angamos-native-C6",
+        "technicalPlanRef": "angamos-technical-C6",
+        "plantMetadataRef": "angamos-plant-post-C6",
+        "repositoryPlanPath": "/assets/propiedades/sento/angamos/plano-c6.webp",
+        "repositorySha256": "3a95bc1751b1e723c0a5f710d8eab92ec48f2ad12eb5edbd793be1746e9e7657",
+        "sourceSha256": "633c08f2d6297ffe079968bd239ecc9717ca670cff059e9507b02703f83d114d",
+        "decodedPixelsIdentical": true,
+        "bedroomCountEvidence": "explicit current official card text; supported by printed room labels where unambiguous",
+        "bathroomCountEvidence": "explicit current official card text and printed BAÑO labels",
+        "roomGeometryUsedForCounts": false,
+        "surfacesEvidence": "explicit code-specific fields in current official HTML; neither plan raster prints m²",
+        "differentProjectOrBorrowedCode": false
+      },
+      "discrepancies": [
+        {
+          "kind": "area_arithmetic_conflict",
+          "sourceRef": "angamos-current-card-C6",
+          "usefulM2": 48.37,
+          "terraceM2": 2.89,
+          "declaredTotalM2": 51.36,
+          "diagnosticSumM2": 51.26,
+          "diagnosticDifferenceM2": 0.1,
+          "diagnosticOnly": true,
+          "status": "unresolved_in_public_official_evidence",
+          "resolution": "Publish only the directly declared total 51.36 m². Retain useful/terrace internally with publishable false; never replace total by the diagnostic sum."
+        }
+      ],
+      "completeness": {
+        "sourceSurfaceFields": 3,
+        "capturedSurfaceFields": 3,
+        "additionalExplicitM2LabelsFound": 0,
+        "linearDimensionLabelsNotConvertedToAreas": true
+      },
+      "arithmetic": {
+        "matchesDeclaredTotal": false,
+        "diagnosticOnly": true,
+        "totalNeverRecalculatedForPublication": true
+      }
+    },
+    {
+      "slug": "angamos",
+      "code": "A2",
+      "originalLabel": "Departamento tipo A2",
+      "bedrooms": null,
+      "bathrooms": 1,
+      "displayTypology": "1 baño",
+      "officialCategory": "Departamento Estudio",
+      "sourceBedroomsField": 1,
+      "areas": [
+        {
+          "label": "Superficie útil",
+          "kind": "useful",
+          "valueM2": 22.31,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-A2",
+          "sourceField": "Superficie útil",
+          "sourceText": "22,31 m2",
+          "sourceMatchedCode": "A2"
+        },
+        {
+          "label": "Terraza",
+          "kind": "terrace",
+          "valueM2": 2.31,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-A2",
+          "sourceField": "Terraza",
+          "sourceText": "2,31 m2",
+          "sourceMatchedCode": "A2"
+        },
+        {
+          "label": "Superficie total",
+          "kind": "total",
+          "valueM2": 24.62,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-A2",
+          "sourceField": "Superficie total",
+          "sourceText": "24,62 m2",
+          "sourceMatchedCode": "A2"
+        }
+      ],
+      "otherAreas": [],
+      "consumerNotes": [
+        "Plano marcado como reservado. Consulta distribución y disponibilidad."
+      ],
+      "matchEvidence": {
+        "sourceCardRef": "angamos-current-card-A2",
+        "nativePlanRef": "angamos-native-A2",
+        "technicalPlanRef": "angamos-technical-A2",
+        "plantMetadataRef": "angamos-plant-post-A2",
+        "repositoryPlanPath": "/assets/propiedades/sento/angamos/plano-a2.webp",
+        "repositorySha256": "0f1f10c19a0b25c1aa8f758af415bc16dbca32381a26b8a78f6c735b1c3b8415",
+        "sourceSha256": "0e6c6cc65b25a3103bb84ff91108f0eeb9ba992eedafc0243643a13fff6c0225",
+        "decodedPixelsIdentical": true,
+        "bedroomCountEvidence": "explicit current official card text; supported by printed room labels where unambiguous",
+        "bathroomCountEvidence": "explicit current official card text and printed BAÑO labels",
+        "roomGeometryUsedForCounts": false,
+        "surfacesEvidence": "explicit code-specific fields in current official HTML; neither plan raster prints m²",
+        "differentProjectOrBorrowedCode": false
+      },
+      "discrepancies": [
+        {
+          "kind": "bedroom_category_conflict",
+          "sourceRef": "angamos-current-card-A2",
+          "categoryText": "Departamento Estudio",
+          "bedroomsField": 1,
+          "status": "unresolved_in_public_official_evidence",
+          "resolution": "Keep numeric bedrooms null and display only the confirmed bathroom count.",
+          "technicalLabel": "DORMITORIO does not establish a separate bedroom classification or resolve the studio category."
+        }
+      ],
+      "completeness": {
+        "sourceSurfaceFields": 3,
+        "capturedSurfaceFields": 3,
+        "additionalExplicitM2LabelsFound": 0,
+        "linearDimensionLabelsNotConvertedToAreas": true
+      },
+      "arithmetic": {
+        "matchesDeclaredTotal": true,
+        "diagnosticOnly": true,
+        "totalNeverRecalculatedForPublication": true
+      }
+    },
+    {
+      "slug": "angamos",
+      "code": "A4",
+      "originalLabel": "Departamento tipo A4",
+      "bedrooms": null,
+      "bathrooms": 1,
+      "displayTypology": "1 baño",
+      "officialCategory": "Departamento Estudio",
+      "sourceBedroomsField": 1,
+      "areas": [
+        {
+          "label": "Superficie útil",
+          "kind": "useful",
+          "valueM2": 22.89,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-A4",
+          "sourceField": "Superficie útil",
+          "sourceText": "22,89 m2",
+          "sourceMatchedCode": "A4"
+        },
+        {
+          "label": "Terraza",
+          "kind": "terrace",
+          "valueM2": 1.78,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-A4",
+          "sourceField": "Terraza",
+          "sourceText": "1,78 m2",
+          "sourceMatchedCode": "A4"
+        },
+        {
+          "label": "Superficie total",
+          "kind": "total",
+          "valueM2": 24.67,
+          "publishable": true,
+          "sourceRef": "angamos-current-card-A4",
+          "sourceField": "Superficie total",
+          "sourceText": "24,67 m2",
+          "sourceMatchedCode": "A4"
+        }
+      ],
+      "otherAreas": [],
+      "consumerNotes": [
+        "Plano marcado como reservado. Consulta distribución y disponibilidad."
+      ],
+      "matchEvidence": {
+        "sourceCardRef": "angamos-current-card-A4",
+        "nativePlanRef": "angamos-native-A4",
+        "technicalPlanRef": "angamos-technical-A4",
+        "plantMetadataRef": "angamos-plant-post-A4",
+        "repositoryPlanPath": "/assets/propiedades/sento/angamos/plano-a4.webp",
+        "repositorySha256": "968cc70dfc9e9715f0252db3f66d4d362b20fc6e92901b437102e810fb6c58d8",
+        "sourceSha256": "44ad0dc7697561f2fcbb4450493fa7a331e32de4949790b1e35f9bc4408f63ba",
+        "decodedPixelsIdentical": true,
+        "bedroomCountEvidence": "explicit current official card text; supported by printed room labels where unambiguous",
+        "bathroomCountEvidence": "explicit current official card text and printed BAÑO labels",
+        "roomGeometryUsedForCounts": false,
+        "surfacesEvidence": "explicit code-specific fields in current official HTML; neither plan raster prints m²",
+        "differentProjectOrBorrowedCode": false
+      },
+      "discrepancies": [
+        {
+          "kind": "bedroom_category_conflict",
+          "sourceRef": "angamos-current-card-A4",
+          "categoryText": "Departamento Estudio",
+          "bedroomsField": 1,
+          "status": "unresolved_in_public_official_evidence",
+          "resolution": "Keep numeric bedrooms null and display only the confirmed bathroom count.",
+          "technicalLabel": "DORMITORIO does not establish a separate bedroom classification or resolve the studio category."
+        }
+      ],
+      "completeness": {
+        "sourceSurfaceFields": 3,
+        "capturedSurfaceFields": 3,
+        "additionalExplicitM2LabelsFound": 0,
+        "linearDimensionLabelsNotConvertedToAreas": true
+      },
+      "arithmetic": {
+        "matchesDeclaredTotal": true,
+        "diagnosticOnly": true,
+        "totalNeverRecalculatedForPublication": true
+      }
+    }
+  ],
+  "sources": {
+    "angamos-current-page": {
+      "url": "https://sento.cl/proyectos/angamos-205/",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/project-current.html",
+      "bytes": 162113,
+      "sha256": "982466e0ba70c8efbb08798fd09921ab4a9c3a52933ae89de0c373d882344d7b",
+      "kind": "current_official_html"
+    },
+    "angamos-media-page-1": {
+      "url": "https://sento.cl/wp-json/wp/v2/media?search=Angamos&per_page=100",
+      "file": "docs/qa/sento-final/angamos-sources/media-current-page1.json",
+      "bytes": 1334555,
+      "sha256": "7fab93f392387ff5fbce263cd9b5b773e715930b60677de71e16b837ffe43ea0"
+    },
+    "angamos-media-page-2": {
+      "url": "https://sento.cl/wp-json/wp/v2/media?search=Angamos&per_page=100&page=2",
+      "file": "docs/qa/sento-final/angamos-sources/media-current-page2.json",
+      "bytes": 212414,
+      "sha256": "e1631e30fdda2280ef6321c9aedc14615620d9e25bb9c7288c0939ef61796203"
+    },
+    "angamos-pdf-inventory": {
+      "url": "https://sento.cl/wp-json/wp/v2/media?search=Angamos&mime_type=application%2Fpdf&per_page=100",
+      "file": "docs/qa/sento-final/angamos-sources/angamos-pdf-inventory.json",
+      "bytes": 37609,
+      "sha256": "bdfcfd60323ac581f59a13f9620490fe466f47cae205efa99840040a7cb7083a"
+    },
+    "angamos-current-card-B10-I": {
+      "url": "https://sento.cl/proyectos/angamos-205/",
+      "snapshotRef": "angamos-current-page",
+      "matchedTitle": "Departamento tipo B10-I",
+      "category": "Departamento 1 dormitorio",
+      "categoryContainer": "tab2-1",
+      "locator": {
+        "containerId": "tab2-1",
+        "blockClass": "plantas-bloque",
+        "headingElement": "h4",
+        "headingTextExact": "Departamento tipo B10-I"
+      },
+      "printedFields": {
+        "Dormitorios": "1",
+        "Baños": "1",
+        "Superficie útil": "31,22 m2",
+        "Terraza": "2,50 m2",
+        "Superficie total": "33,72 m2"
+      },
+      "imageUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-B10i-Angamos-24.03.jpg",
+      "retrievedOn": "2026-10-14"
+    },
+    "angamos-native-B10-I": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-B10i-Angamos-24.03.jpg",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/current-B10-I.jpg",
+      "bytes": 280739,
+      "sha256": "f4fb0819f8ed7d581aee96013b9b9aca4cca69ff77428556f3294561a424a345",
+      "width": 1667,
+      "height": 1283,
+      "officialMediaId": 1450,
+      "visibleCode": "B10-I",
+      "areaLabelsPrinted": false,
+      "cropped": false,
+      "resampled": false
+    },
+    "angamos-technical-B10-I": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/ANGAMOS-B10-i-AG.png",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/ANGAMOS-B10-i-AG.png",
+      "bytes": 52736,
+      "sha256": "1dc8392e373a6c7f5807b70d8ffa0e194e95b520fc3022a2c6ccebbee8302cd9",
+      "officialMediaId": 1416,
+      "attachedPlantPostId": 1415,
+      "uploadedAt": "2023-03-23T16:25:01",
+      "width": 800,
+      "height": 800,
+      "printedRoomLabelsVisuallyReviewed": [
+        "DORMITORIO",
+        "BAÑO"
+      ],
+      "areaLabelsPrinted": false,
+      "numericBedroomSummaryPrinted": false,
+      "numericBathroomSummaryPrinted": false,
+      "codeMatch": "official filename and attachment to matching plant post; not inferred from room geometry",
+      "usedToReplacePublishedImage": false
+    },
+    "angamos-plant-post-B10-I": {
+      "url": "https://sento.cl/wp-json/wp/v2/plantas/1415",
+      "file": "docs/qa/sento-final/angamos-sources/plant-B10-I.json",
+      "bytes": 11418,
+      "sha256": "baa16d4180bbaba1219c0dbf3d785048c72296ad7e17724148d9fc46c1d311ca",
+      "publicUrl": "https://sento.cl/plantas/departamento-tipo-b10-i/",
+      "title": "Departamento tipo B10-I",
+      "id": 1415,
+      "modifiedAt": "2024-02-16T14:33:14",
+      "featuredMediaId": 1450,
+      "acfExposed": false,
+      "surfacesExposed": false
+    },
+    "angamos-current-card-C3": {
+      "url": "https://sento.cl/proyectos/angamos-205/",
+      "snapshotRef": "angamos-current-page",
+      "matchedTitle": "Departamento tipo C3",
+      "category": "Departamento 2 dormitorios",
+      "categoryContainer": "tab2-2",
+      "locator": {
+        "containerId": "tab2-2",
+        "blockClass": "plantas-bloque",
+        "headingElement": "h4",
+        "headingTextExact": "Departamento tipo C3"
+      },
+      "printedFields": {
+        "Dormitorios": "2",
+        "Baños": "2",
+        "Superficie útil": "45,55 m2",
+        "Terraza": "2,55 m2",
+        "Superficie total": "48,10 m2"
+      },
+      "imageUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-C3-Angamos-24.03.jpg",
+      "retrievedOn": "2026-10-14"
+    },
+    "angamos-native-C3": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-C3-Angamos-24.03.jpg",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/current-C3.jpg",
+      "bytes": 278978,
+      "sha256": "70cf4f7f94bfa63bbe1f28a44e0a438f6f6179e64576aee5b62a73b8144a873a",
+      "width": 1667,
+      "height": 1283,
+      "officialMediaId": 1451,
+      "visibleCode": "C3",
+      "areaLabelsPrinted": false,
+      "cropped": false,
+      "resampled": false
+    },
+    "angamos-technical-C3": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/ANGAMOS-C3-AG.png",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/ANGAMOS-C3-AG.png",
+      "bytes": 52336,
+      "sha256": "7d48a37375ec309b2629d0aab4bd432db6b6ffb13af9f19f71bd957a96d6f5e3",
+      "officialMediaId": 1418,
+      "attachedPlantPostId": 1417,
+      "uploadedAt": "2023-03-23T16:27:40",
+      "width": 800,
+      "height": 800,
+      "printedRoomLabelsVisuallyReviewed": [
+        "DORMITORIO 1",
+        "DORMITORIO 2",
+        "BAÑO 1",
+        "BAÑO 2"
+      ],
+      "areaLabelsPrinted": false,
+      "numericBedroomSummaryPrinted": false,
+      "numericBathroomSummaryPrinted": false,
+      "codeMatch": "official filename and attachment to matching plant post; not inferred from room geometry",
+      "usedToReplacePublishedImage": false
+    },
+    "angamos-plant-post-C3": {
+      "url": "https://sento.cl/wp-json/wp/v2/plantas/1417",
+      "file": "docs/qa/sento-final/angamos-sources/plant-C3.json",
+      "bytes": 11300,
+      "sha256": "3d82caad49915e3eeaf82d21a7ade5f19ee7b39637731be5484aa400f545c6f0",
+      "publicUrl": "https://sento.cl/plantas/departamento-tipo-c3/",
+      "title": "Departamento tipo C3",
+      "id": 1417,
+      "modifiedAt": "2024-02-16T14:34:18",
+      "featuredMediaId": 1451,
+      "acfExposed": false,
+      "surfacesExposed": false
+    },
+    "angamos-current-card-C4": {
+      "url": "https://sento.cl/proyectos/angamos-205/",
+      "snapshotRef": "angamos-current-page",
+      "matchedTitle": "Departamento tipo C4",
+      "category": "Departamento 2 dormitorios",
+      "categoryContainer": "tab2-2",
+      "locator": {
+        "containerId": "tab2-2",
+        "blockClass": "plantas-bloque",
+        "headingElement": "h4",
+        "headingTextExact": "Departamento tipo C4"
+      },
+      "printedFields": {
+        "Dormitorios": "2",
+        "Baños": "2",
+        "Superficie útil": "47,39 m2",
+        "Terraza": "2,68 m2",
+        "Superficie total": "50,07 m2"
+      },
+      "imageUrl": "https://sento.cl/wp-content/uploads/2023/03/Alta-Emplazamiento-C4-Angamos-24.03.jpg",
+      "retrievedOn": "2026-10-14"
+    },
+    "angamos-native-C4": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/Alta-Emplazamiento-C4-Angamos-24.03.jpg",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/current-C4.jpg",
+      "bytes": 81297,
+      "sha256": "638991c45f6fd148283ee04a1e194c58e45472f94e7aa91a746e4bb46d557406",
+      "width": 800,
+      "height": 616,
+      "officialMediaId": 1452,
+      "visibleCode": "C4",
+      "areaLabelsPrinted": false,
+      "cropped": false,
+      "resampled": false
+    },
+    "angamos-technical-C4": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/ANGAMOS-C4-AG.png",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/ANGAMOS-C4-AG.png",
+      "bytes": 54170,
+      "sha256": "6758d1bba2555eb2c5a75e4d441b50a97bc0f15a0c4e0881772d8951debc1294",
+      "officialMediaId": 1420,
+      "attachedPlantPostId": 1419,
+      "uploadedAt": "2023-03-23T16:28:58",
+      "width": 800,
+      "height": 800,
+      "printedRoomLabelsVisuallyReviewed": [
+        "DORMITORIO 1",
+        "DORMITORIO 2",
+        "BAÑO 1",
+        "BAÑO 2"
+      ],
+      "areaLabelsPrinted": false,
+      "numericBedroomSummaryPrinted": false,
+      "numericBathroomSummaryPrinted": false,
+      "codeMatch": "official filename and attachment to matching plant post; not inferred from room geometry",
+      "usedToReplacePublishedImage": false
+    },
+    "angamos-plant-post-C4": {
+      "url": "https://sento.cl/wp-json/wp/v2/plantas/1419",
+      "file": "docs/qa/sento-final/angamos-sources/plant-C4.json",
+      "bytes": 11306,
+      "sha256": "ee67dc1ec274efb00572677f1d6ed67c4dd9b51ea003eb75da2aa84b0bf039c6",
+      "publicUrl": "https://sento.cl/plantas/departamento-tipo-c4/",
+      "title": "Departamento tipo C4",
+      "id": 1419,
+      "modifiedAt": "2024-02-16T14:34:57",
+      "featuredMediaId": 1452,
+      "acfExposed": false,
+      "surfacesExposed": false
+    },
+    "angamos-current-card-C6": {
+      "url": "https://sento.cl/proyectos/angamos-205/",
+      "snapshotRef": "angamos-current-page",
+      "matchedTitle": "Departamento tipo C6",
+      "category": "Departamento 2 dormitorios",
+      "categoryContainer": "tab2-2",
+      "locator": {
+        "containerId": "tab2-2",
+        "blockClass": "plantas-bloque",
+        "headingElement": "h4",
+        "headingTextExact": "Departamento tipo C6"
+      },
+      "printedFields": {
+        "Dormitorios": "2",
+        "Baños": "2",
+        "Superficie útil": "48,37 m2",
+        "Terraza": "2,89 m2",
+        "Superficie total": "51,36 m2"
+      },
+      "imageUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-C6-Angamos-24.03.jpg",
+      "retrievedOn": "2026-10-14"
+    },
+    "angamos-native-C6": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-C6-Angamos-24.03.jpg",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/current-C6.jpg",
+      "bytes": 72026,
+      "sha256": "633c08f2d6297ffe079968bd239ecc9717ca670cff059e9507b02703f83d114d",
+      "width": 800,
+      "height": 616,
+      "officialMediaId": 1454,
+      "visibleCode": "C6",
+      "areaLabelsPrinted": false,
+      "cropped": false,
+      "resampled": false
+    },
+    "angamos-technical-C6": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/ANGAMOS-C6-AG-FICHAS.png",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/ANGAMOS-C6-AG-FICHAS.png",
+      "bytes": 58247,
+      "sha256": "3d975ce4ff6620f88260dcf3e4e4f685c828ea0d5b71bd8818735cb5ef734e72",
+      "officialMediaId": 1422,
+      "attachedPlantPostId": 1421,
+      "uploadedAt": "2023-03-23T16:30:03",
+      "width": 800,
+      "height": 800,
+      "printedRoomLabelsVisuallyReviewed": [
+        "DORMITORIO 1",
+        "DORMITORIO 2",
+        "BAÑO 1",
+        "BAÑO 2"
+      ],
+      "areaLabelsPrinted": false,
+      "numericBedroomSummaryPrinted": false,
+      "numericBathroomSummaryPrinted": false,
+      "codeMatch": "official filename and attachment to matching plant post; not inferred from room geometry",
+      "usedToReplacePublishedImage": false
+    },
+    "angamos-plant-post-C6": {
+      "url": "https://sento.cl/wp-json/wp/v2/plantas/1421",
+      "file": "docs/qa/sento-final/angamos-sources/plant-C6.json",
+      "bytes": 11296,
+      "sha256": "3f30f8121f3c6ddeb6812743f40f5110c5be77097332fdc19a31b0461a72ffb7",
+      "publicUrl": "https://sento.cl/plantas/departamento-tipo-c6/",
+      "title": "Departamento tipo C6",
+      "id": 1421,
+      "modifiedAt": "2024-02-16T14:37:04",
+      "featuredMediaId": 1454,
+      "acfExposed": false,
+      "surfacesExposed": false
+    },
+    "angamos-current-card-A2": {
+      "url": "https://sento.cl/proyectos/angamos-205/",
+      "snapshotRef": "angamos-current-page",
+      "matchedTitle": "Departamento tipo A2",
+      "category": "Departamento Estudio",
+      "categoryContainer": "tab2-estudio",
+      "locator": {
+        "containerId": "tab2-estudio",
+        "blockClass": "plantas-bloque",
+        "headingElement": "h4",
+        "headingTextExact": "Departamento tipo A2"
+      },
+      "printedFields": {
+        "Dormitorios": "1",
+        "Baños": "1",
+        "Superficie útil": "22,31 m2",
+        "Terraza": "2,31 m2",
+        "Superficie total": "24,62 m2"
+      },
+      "imageUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-A2-Angamos-reservado.jpg",
+      "retrievedOn": "2026-10-14"
+    },
+    "angamos-native-A2": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-A2-Angamos-reservado.jpg",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/current-A2.jpg",
+      "bytes": 186063,
+      "sha256": "0e6c6cc65b25a3103bb84ff91108f0eeb9ba992eedafc0243643a13fff6c0225",
+      "width": 1200,
+      "height": 924,
+      "officialMediaId": 2630,
+      "visibleCode": "A2",
+      "areaLabelsPrinted": false,
+      "cropped": false,
+      "resampled": false
+    },
+    "angamos-technical-A2": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/ANGAMOS-A2-AG.png",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/ANGAMOS-A2-AG.png",
+      "bytes": 36639,
+      "sha256": "278bb4fa0ff2e19d4e14e21053c6af8411b269a2823c5b3fdfc65a70c8de01b3",
+      "officialMediaId": 1409,
+      "attachedPlantPostId": 1408,
+      "uploadedAt": "2023-03-23T15:50:13",
+      "width": 800,
+      "height": 800,
+      "printedRoomLabelsVisuallyReviewed": [
+        "DORMITORIO",
+        "BAÑO"
+      ],
+      "areaLabelsPrinted": false,
+      "numericBedroomSummaryPrinted": false,
+      "numericBathroomSummaryPrinted": false,
+      "codeMatch": "official filename and attachment to matching plant post; not inferred from room geometry",
+      "usedToReplacePublishedImage": false
+    },
+    "angamos-plant-post-A2": {
+      "url": "https://sento.cl/wp-json/wp/v2/plantas/1408",
+      "file": "docs/qa/sento-final/angamos-sources/plant-A2.json",
+      "bytes": 11310,
+      "sha256": "b071bf45ae906e842a304eb8e2aee522e99a35df863c9f4f400ef3576f893b69",
+      "publicUrl": "https://sento.cl/plantas/departamento-tipo-a2/",
+      "title": "Departamento tipo A2",
+      "id": 1408,
+      "modifiedAt": "2024-09-10T16:54:00",
+      "featuredMediaId": 2630,
+      "acfExposed": false,
+      "surfacesExposed": false
+    },
+    "angamos-current-card-A4": {
+      "url": "https://sento.cl/proyectos/angamos-205/",
+      "snapshotRef": "angamos-current-page",
+      "matchedTitle": "Departamento tipo A4",
+      "category": "Departamento Estudio",
+      "categoryContainer": "tab2-estudio",
+      "locator": {
+        "containerId": "tab2-estudio",
+        "blockClass": "plantas-bloque",
+        "headingElement": "h4",
+        "headingTextExact": "Departamento tipo A4"
+      },
+      "printedFields": {
+        "Dormitorios": "1",
+        "Baños": "1",
+        "Superficie útil": "22,89 m2",
+        "Terraza": "1,78 m2",
+        "Superficie total": "24,67 m2"
+      },
+      "imageUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-A4-Angamos-reservado.jpg",
+      "retrievedOn": "2026-10-14"
+    },
+    "angamos-native-A4": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-A4-Angamos-reservado.jpg",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/current-A4.jpg",
+      "bytes": 167120,
+      "sha256": "44ad0dc7697561f2fcbb4450493fa7a331e32de4949790b1e35f9bc4408f63ba",
+      "width": 1200,
+      "height": 924,
+      "officialMediaId": 2631,
+      "visibleCode": "A4",
+      "areaLabelsPrinted": false,
+      "cropped": false,
+      "resampled": false
+    },
+    "angamos-technical-A4": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/ANGAMOS-A4-AG.png",
+      "retrievedOn": "2026-10-14",
+      "file": "docs/qa/sento-final/angamos-sources/ANGAMOS-A4-AG.png",
+      "bytes": 31456,
+      "sha256": "a66175b1dba94b8387f7ed129909c3398044e2a353ae42b76ee97fa9ad4817e3",
+      "officialMediaId": 1413,
+      "attachedPlantPostId": 1412,
+      "uploadedAt": "2023-03-23T16:01:39",
+      "width": 800,
+      "height": 800,
+      "printedRoomLabelsVisuallyReviewed": [
+        "DORMITORIO",
+        "BAÑO"
+      ],
+      "areaLabelsPrinted": false,
+      "numericBedroomSummaryPrinted": false,
+      "numericBathroomSummaryPrinted": false,
+      "codeMatch": "official filename and attachment to matching plant post; not inferred from room geometry",
+      "usedToReplacePublishedImage": false
+    },
+    "angamos-plant-post-A4": {
+      "url": "https://sento.cl/wp-json/wp/v2/plantas/1412",
+      "file": "docs/qa/sento-final/angamos-sources/plant-A4.json",
+      "bytes": 11310,
+      "sha256": "3b5949320a46681580f3d6d053a459ab2b9e43c38dcc1c3de5d9a857be2e994c",
+      "publicUrl": "https://sento.cl/plantas/departamento-tipo-a4/",
+      "title": "Departamento tipo A4",
+      "id": 1412,
+      "modifiedAt": "2024-09-10T16:54:59",
+      "featuredMediaId": 2631,
+      "acfExposed": false,
+      "surfacesExposed": false
+    },
+    "angamos-document-2527": {
+      "url": "https://sento.cl/wp-content/uploads/2024/07/TASA-ANGAMOS.pdf",
+      "file": "docs/qa/sento-final/angamos-sources/official-document-2527.pdf",
+      "bytes": 217598,
+      "sha256": "e35829c57dcdea90def3d28e63f00854127d33f757f3d92f53e9fd20dce880a0",
+      "officialMediaId": 2527,
+      "mediaTitle": "TASA ANGAMOS",
+      "uploadedAt": "2024-07-26T11:20:38",
+      "pages": 8,
+      "pdfMetadata": {
+        "/Producer": "Escaner.Cliente Versión 4.2 (compilación 150); modified using Escaner.Cliente Versión 4.2 (compilación 150)",
+        "/CreationDate": "D:20240725150826-04'00'",
+        "/ModDate": "D:20240725151242-04'00'"
+      },
+      "kind": "historical_promotional_or_referral_terms",
+      "usedForCurrentCommercialClaims": false,
+      "planCodesOrCodeSpecificAreasFound": false,
+      "review": "Full text extraction for media 1468; all scanned pages rendered and visually reviewed for media 2281 and 2527. No plan brochure or code-specific surface table found."
+    },
+    "angamos-document-2281": {
+      "url": "https://sento.cl/wp-content/uploads/2024/03/PROMOCION-ANGAMOS.pdf",
+      "file": "docs/qa/sento-final/angamos-sources/official-document-2281.pdf",
+      "bytes": 4526512,
+      "sha256": "4cf7c17f1a9185ac5f408a6ac1ad2dfd41e67d2fc1b53e4260381d8a3cf1c01d",
+      "officialMediaId": 2281,
+      "mediaTitle": "PROMOCION ANGAMOS",
+      "uploadedAt": "2024-03-05T09:27:18",
+      "pages": 10,
+      "pdfMetadata": {
+        "/Creator": "Canon SC1011",
+        "/CreationDate": "D:20240212124207-04'00'",
+        "/Producer": "IJ Scan Utility"
+      },
+      "kind": "historical_promotional_or_referral_terms",
+      "usedForCurrentCommercialClaims": false,
+      "planCodesOrCodeSpecificAreasFound": false,
+      "review": "Full text extraction for media 1468; all scanned pages rendered and visually reviewed for media 2281 and 2527. No plan brochure or code-specific surface table found."
+    },
+    "angamos-document-1468": {
+      "url": "https://sento.cl/wp-content/uploads/2023/03/BASES-VERSION-WEB-SIN-PROTOCOLIZAR-PRESENTO-CON-JOFRE-Y-ANGAMOS-Bases-Plan-Referidos-Sento-Inmobiliaria-22-11-21-1428838.3.pdf",
+      "file": "docs/qa/sento-final/angamos-sources/official-document-1468.pdf",
+      "bytes": 171845,
+      "sha256": "c7b356c1861c95e6085c5d1b42103cc9b1bcdd1a4c08ff2400181075d4191aa6",
+      "officialMediaId": 1468,
+      "mediaTitle": "BASES Y CONDICIONES GENERALES DE LA PROMOCIÓN",
+      "uploadedAt": "2023-03-27T11:30:53",
+      "pages": 5,
+      "pdfMetadata": {
+        "/Author": "Soledad Astaburuaga",
+        "/Creator": "Microsoft® Word para Microsoft 365",
+        "/CreationDate": "D:20230324191224-03'00'",
+        "/ModDate": "D:20230324191224-03'00'",
+        "/Producer": "Microsoft® Word para Microsoft 365"
+      },
+      "kind": "historical_promotional_or_referral_terms",
+      "usedForCurrentCommercialClaims": false,
+      "planCodesOrCodeSpecificAreasFound": false,
+      "review": "Full text extraction for media 1468; all scanned pages rendered and visually reviewed for media 2281 and 2527. No plan brochure or code-specific surface table found."
+    }
+  },
+  "commercialRecheck": {
+    "sourceRef": "angamos-current-page",
+    "sourceDate": "2026-10-14",
+    "priceFromUf": 2794,
+    "priceUnit": "516",
+    "priceTypology": "1D/1B",
+    "includedDiscountPercent": 20,
+    "delivery": "Entrega Inmediata",
+    "excludesParkingAndStorage": true,
+    "subjectToAvailability": true,
+    "changedSince2026_10_13": false,
+    "noPriceOrAvailabilityMutationPerformed": true
+  },
+  "publicationGuidance": {
+    "displayTypologyA2A4": "1 baño",
+    "publishNumericBedroomsA2A4": false,
+    "c6VisibleAreaKinds": [
+      "total"
+    ],
+    "c6VisibleTotalM2": 51.36,
+    "unknownAreaPublicLabels": [],
+    "keepOriginalImagesAndBands": true,
+    "consumerWarnings": [
+      {
+        "placement": "gallery",
+        "text": "Imágenes y decoración referenciales."
+      },
+      {
+        "placement": "plans",
+        "text": "Planos y superficies aproximados. Confirma las medidas de la unidad al cotizar."
+      },
+      {
+        "placement": "equipment",
+        "text": "Consulta el equipamiento incluido en la unidad."
+      }
+    ],
+    "warningBasis": "Concise paraphrase of the current official project's illustrative-media and approximate-dimensions disclaimer; no claim of a separate legal opinion.",
+    "keepCommercialConditionsWithPrice": true,
+    "omitPublicAuditBlockDatesSourcesUrlsHashesAndUnresolvedClassificationText": true
+  },
+  "limitations": [
+    "A2 and A4: Estudio category and Dormitorios 1 field disagree; printed DORMITORIO/BAÑO labels and available official documents do not resolve classification.",
+    "C6: the source declares useful 48.37, terrace 2.89 and total 51.36 m². Neither native image nor technical PNG prints a surface table; no authoritative correction found.",
+    "Current C4 and C6 render originals are 800 × 616 pixels. Higher-resolution 2024 variants contain a historical 13% promotion; they are not used and no band is removed.",
+    "No Angamos plan brochure PDF is linked from the current page or found in the complete public Angamos media/PDF inventory. The three available PDFs are historical promotional/referral terms, not plan sources.",
+    "Official plant REST metadata exposes names and featured images, but no ACF bedroom or surface fields. Uploaded/modified dates are source metadata, not evidence of current stock.",
+    "Linear dimension annotations in the 800 × 800 technical PNGs are retained only as source evidence; no area is derived from geometry or multiplied dimensions.",
+    "OCR of scanned legal PDFs failed in the local Vision runtime; all 18 scanned pages were rendered and visually reviewed instead. No OCR absence claim is used."
+  ],
+  "verification": {
+    "passed": true,
+    "modelsAudited": 6,
+    "officialSurfaceFieldsChecked": 18,
+    "plansWithIdenticalDecodedPixels": 6,
+    "publishableSurfaceFields": 16,
+    "roomsInferredFromDrawing": false,
+    "checks": [
+      {
+        "check": "official_area_field",
+        "code": "B10-I",
+        "field": "Superficie útil",
+        "capturedSourceValueM2": 31.22,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "B10-I",
+        "field": "Terraza",
+        "capturedSourceValueM2": 2.5,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "B10-I",
+        "field": "Superficie total",
+        "capturedSourceValueM2": 33.72,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "published_plan_fidelity",
+        "code": "B10-I",
+        "sourceUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-B10i-Angamos-24.03.jpg",
+        "repositoryPath": "/assets/propiedades/sento/angamos/plano-b10-i.webp",
+        "nativeSourceSha256": "f4fb0819f8ed7d581aee96013b9b9aca4cca69ff77428556f3294561a424a345",
+        "previousSourceSha256": "f4fb0819f8ed7d581aee96013b9b9aca4cca69ff77428556f3294561a424a345",
+        "sourceShaMatchesPrevious": true,
+        "repositorySha256": "2a49e7a45c669a4f65b2728f0bf91651d45f25f0cc3d0e5125a63486cc07111d",
+        "previousRepositorySha256": "2a49e7a45c669a4f65b2728f0bf91651d45f25f0cc3d0e5125a63486cc07111d",
+        "repositoryShaMatchesPrevious": true,
+        "sourceSize": [
+          1667,
+          1283
+        ],
+        "repositorySize": [
+          1667,
+          1283
+        ],
+        "decodedRGBPixelsIdentical": true,
+        "cropped": false,
+        "upscaled": false,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C3",
+        "field": "Superficie útil",
+        "capturedSourceValueM2": 45.55,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C3",
+        "field": "Terraza",
+        "capturedSourceValueM2": 2.55,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C3",
+        "field": "Superficie total",
+        "capturedSourceValueM2": 48.1,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "published_plan_fidelity",
+        "code": "C3",
+        "sourceUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-C3-Angamos-24.03.jpg",
+        "repositoryPath": "/assets/propiedades/sento/angamos/plano-c3.webp",
+        "nativeSourceSha256": "70cf4f7f94bfa63bbe1f28a44e0a438f6f6179e64576aee5b62a73b8144a873a",
+        "previousSourceSha256": "70cf4f7f94bfa63bbe1f28a44e0a438f6f6179e64576aee5b62a73b8144a873a",
+        "sourceShaMatchesPrevious": true,
+        "repositorySha256": "b4e38dfe981f20ee1d2455913314a8653612544a66081496e0a3685c282e4718",
+        "previousRepositorySha256": "b4e38dfe981f20ee1d2455913314a8653612544a66081496e0a3685c282e4718",
+        "repositoryShaMatchesPrevious": true,
+        "sourceSize": [
+          1667,
+          1283
+        ],
+        "repositorySize": [
+          1667,
+          1283
+        ],
+        "decodedRGBPixelsIdentical": true,
+        "cropped": false,
+        "upscaled": false,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C4",
+        "field": "Superficie útil",
+        "capturedSourceValueM2": 47.39,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C4",
+        "field": "Terraza",
+        "capturedSourceValueM2": 2.68,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C4",
+        "field": "Superficie total",
+        "capturedSourceValueM2": 50.07,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "published_plan_fidelity",
+        "code": "C4",
+        "sourceUrl": "https://sento.cl/wp-content/uploads/2023/03/Alta-Emplazamiento-C4-Angamos-24.03.jpg",
+        "repositoryPath": "/assets/propiedades/sento/angamos/plano-c4.webp",
+        "nativeSourceSha256": "638991c45f6fd148283ee04a1e194c58e45472f94e7aa91a746e4bb46d557406",
+        "previousSourceSha256": "638991c45f6fd148283ee04a1e194c58e45472f94e7aa91a746e4bb46d557406",
+        "sourceShaMatchesPrevious": true,
+        "repositorySha256": "ffc488439c6d561334377142b18a42085ac5721dd14ec98ece2749b06704c453",
+        "previousRepositorySha256": "ffc488439c6d561334377142b18a42085ac5721dd14ec98ece2749b06704c453",
+        "repositoryShaMatchesPrevious": true,
+        "sourceSize": [
+          800,
+          616
+        ],
+        "repositorySize": [
+          800,
+          616
+        ],
+        "decodedRGBPixelsIdentical": true,
+        "cropped": false,
+        "upscaled": false,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C6",
+        "field": "Superficie útil",
+        "capturedSourceValueM2": 48.37,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C6",
+        "field": "Terraza",
+        "capturedSourceValueM2": 2.89,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "C6",
+        "field": "Superficie total",
+        "capturedSourceValueM2": 51.36,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "published_plan_fidelity",
+        "code": "C6",
+        "sourceUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-C6-Angamos-24.03.jpg",
+        "repositoryPath": "/assets/propiedades/sento/angamos/plano-c6.webp",
+        "nativeSourceSha256": "633c08f2d6297ffe079968bd239ecc9717ca670cff059e9507b02703f83d114d",
+        "previousSourceSha256": "633c08f2d6297ffe079968bd239ecc9717ca670cff059e9507b02703f83d114d",
+        "sourceShaMatchesPrevious": true,
+        "repositorySha256": "3a95bc1751b1e723c0a5f710d8eab92ec48f2ad12eb5edbd793be1746e9e7657",
+        "previousRepositorySha256": "3a95bc1751b1e723c0a5f710d8eab92ec48f2ad12eb5edbd793be1746e9e7657",
+        "repositoryShaMatchesPrevious": true,
+        "sourceSize": [
+          800,
+          616
+        ],
+        "repositorySize": [
+          800,
+          616
+        ],
+        "decodedRGBPixelsIdentical": true,
+        "cropped": false,
+        "upscaled": false,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "A2",
+        "field": "Superficie útil",
+        "capturedSourceValueM2": 22.31,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "A2",
+        "field": "Terraza",
+        "capturedSourceValueM2": 2.31,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "A2",
+        "field": "Superficie total",
+        "capturedSourceValueM2": 24.62,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "published_plan_fidelity",
+        "code": "A2",
+        "sourceUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-A2-Angamos-reservado.jpg",
+        "repositoryPath": "/assets/propiedades/sento/angamos/plano-a2.webp",
+        "nativeSourceSha256": "0e6c6cc65b25a3103bb84ff91108f0eeb9ba992eedafc0243643a13fff6c0225",
+        "previousSourceSha256": "0e6c6cc65b25a3103bb84ff91108f0eeb9ba992eedafc0243643a13fff6c0225",
+        "sourceShaMatchesPrevious": true,
+        "repositorySha256": "0f1f10c19a0b25c1aa8f758af415bc16dbca32381a26b8a78f6c735b1c3b8415",
+        "previousRepositorySha256": "0f1f10c19a0b25c1aa8f758af415bc16dbca32381a26b8a78f6c735b1c3b8415",
+        "repositoryShaMatchesPrevious": true,
+        "sourceSize": [
+          1200,
+          924
+        ],
+        "repositorySize": [
+          1200,
+          924
+        ],
+        "decodedRGBPixelsIdentical": true,
+        "cropped": false,
+        "upscaled": false,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "A4",
+        "field": "Superficie útil",
+        "capturedSourceValueM2": 22.89,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "A4",
+        "field": "Terraza",
+        "capturedSourceValueM2": 1.78,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "official_area_field",
+        "code": "A4",
+        "field": "Superficie total",
+        "capturedSourceValueM2": 24.67,
+        "matchesRepositoryValue": true,
+        "matchedByCode": true,
+        "passed": true
+      },
+      {
+        "check": "published_plan_fidelity",
+        "code": "A4",
+        "sourceUrl": "https://sento.cl/wp-content/uploads/2023/03/Emplazamiento-A4-Angamos-reservado.jpg",
+        "repositoryPath": "/assets/propiedades/sento/angamos/plano-a4.webp",
+        "nativeSourceSha256": "44ad0dc7697561f2fcbb4450493fa7a331e32de4949790b1e35f9bc4408f63ba",
+        "previousSourceSha256": "44ad0dc7697561f2fcbb4450493fa7a331e32de4949790b1e35f9bc4408f63ba",
+        "sourceShaMatchesPrevious": true,
+        "repositorySha256": "968cc70dfc9e9715f0252db3f66d4d362b20fc6e92901b437102e810fb6c58d8",
+        "previousRepositorySha256": "968cc70dfc9e9715f0252db3f66d4d362b20fc6e92901b437102e810fb6c58d8",
+        "repositoryShaMatchesPrevious": true,
+        "sourceSize": [
+          1200,
+          924
+        ],
+        "repositorySize": [
+          1200,
+          924
+        ],
+        "decodedRGBPixelsIdentical": true,
+        "cropped": false,
+        "upscaled": false,
+        "passed": true
+      },
+      {
+        "check": "six_code_inventory",
+        "passed": true
+      },
+      {
+        "check": "current_card_image_binding",
+        "passed": true
+      },
+      {
+        "check": "commercial_fields_unchanged",
+        "passed": true,
+        "sourceRef": "angamos-current-page",
+        "priceFromUf": 2794,
+        "priceUnit": "516",
+        "discountPercent": 20,
+        "delivery": "Entrega Inmediata"
+      },
+      {
+        "check": "pdf_inventory",
+        "passed": true,
+        "officialPdfCount": 3,
+        "planPdfFound": false,
+        "currentPagePdfLinks": 0,
+        "scope": "Complete public Angamos-named media search plus current project links; not proof that unpublished documents do not exist."
+      }
+    ]
+  }
+}

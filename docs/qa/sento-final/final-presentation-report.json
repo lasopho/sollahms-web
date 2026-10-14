@@ -1,0 +1,590 @@
+{
+  "completed": true,
+  "buildRoot": "/private/tmp/sollahms-sento-work/dist",
+  "base": "http://127.0.0.1:8089",
+  "finalReceiptWrittenAt": "2026-10-14T15:59:12.451353+00:00",
+  "presentation": {
+    "tests": 5,
+    "passed": 5,
+    "failed": 0,
+    "durationMs": 1580.342334,
+    "regenerationTestDurationMs": 1218.557416,
+    "realRegenerationRuns": 2,
+    "byteIdempotent": true,
+    "preservedOtherHtml": 127,
+    "authorityFilesUnchanged": [
+      {
+        "file": "data/sento-plan-audit-pdf.json",
+        "sha256": "4eff4766ed0a523028787fab5d2be2e372453579a8f4e28840039821759c2ee8",
+        "unchanged": true
+      },
+      {
+        "file": "data/sento-plan-audit-angamos.json",
+        "sha256": "b52d42bc6567614503812e21b5c537d1d2fa4a6ea9305bb8fea3f09a0c5e24ae",
+        "unchanged": true
+      }
+    ],
+    "expectationAdjustments": {
+      "typographySeparatorOnly": "Treat · and / as equivalent separators; all codes, room counts and words still match exactly.",
+      "unknownAreas": "A missing area may have sourceRef:null only with valueM2:null and publishable:false. Every numeric field, including verified zero terraces, requires a source reference."
+    },
+    "tap": "docs/qa/sento-final/final-presentation.tap"
+  },
+  "browser": {
+    "pages": 21,
+    "projects": 7,
+    "viewports": [
+      375,
+      768,
+      1440
+    ],
+    "auditedModelCodes": 45,
+    "modelVisits": 135,
+    "publishedAreaVisits": 375,
+    "checks": 1581,
+    "failures": 0,
+    "catalogueWidths": 3,
+    "contextualFlows": 7,
+    "nativePopups": 14,
+    "mockApiCalls": 21,
+    "unexpectedWrites": 0,
+    "localFailures": 0,
+    "firstPartyNetworkErrors": 0,
+    "screenshots": 66,
+    "screenshotDirectory": "/private/tmp/sollahms-sento-final-browser",
+    "durationApproxSeconds": 100,
+    "durationBoundsSeconds": [
+      93,
+      101
+    ],
+    "durationMethod": "Successful launch occurred within 15:57:32–15:57:39 UTC; final report saved at 15:59:12.451 UTC. Approximation, not instrumented process timing."
+  },
+  "visualInspection": {
+    "screenshots": [
+      "desktop-plaza-las-condes-plan.png",
+      "mobile-angamos-hero.png",
+      "mobile-san-ignacio-plan.png"
+    ],
+    "passed": true,
+    "findings": "Plan image remains complete; total is dominant; verified absent terrace omitted; facade and mobile labels have clear contrast and fit. No documentation UI shown."
+  },
+  "sourceBuildHtml": [
+    {
+      "file": "curico-77.html",
+      "sourceSha256": "e901b0be1c42d747ec0d452d1da699663567f4ac3a7e24e12afbf35ca4220dd1",
+      "buildSha256": "1f58e0f5493ec82e596a4a0d99aafd4f9b115141154be286bdb7ed68524a5cea",
+      "rawEqual": false,
+      "exactKnownBuildTransformsMatch": true,
+      "robotsMetaAdded": "<meta name=\"robots\" content=\"noindex, nofollow\">\n",
+      "robotsMetaBytes": 49,
+      "captionTransform": null
+    },
+    {
+      "file": "domeyko-2055.html",
+      "sourceSha256": "35bdc47bd418989b100b0ea717b7ea2dd0f28ebe4bb19aea7d599fae6aec681d",
+      "buildSha256": "7630f4c371c3d2ca790398876209f97f5270a7d39eb7380c88f0d2db3c3f5e63",
+      "rawEqual": false,
+      "exactKnownBuildTransformsMatch": true,
+      "robotsMetaAdded": "<meta name=\"robots\" content=\"noindex, nofollow\">\n",
+      "robotsMetaBytes": 49,
+      "captionTransform": null
+    },
+    {
+      "file": "jofre-135.html",
+      "sourceSha256": "50b8145aa50a1eb0071a8afc136a871d429fa08e479a03bd6c613c276bf386df",
+      "buildSha256": "e79785565062a8c6291feba788630d39f1794af3bcec197912b6ff98e266aa90",
+      "rawEqual": false,
+      "exactKnownBuildTransformsMatch": true,
+      "robotsMetaAdded": "<meta name=\"robots\" content=\"noindex, nofollow\">\n",
+      "robotsMetaBytes": 49,
+      "captionTransform": null
+    },
+    {
+      "file": "mirador-la-florida.html",
+      "sourceSha256": "a65bdc9678aa8f009f326ddf5ce43921d06ae9b8f7f7f435d03bada15c132ed7",
+      "buildSha256": "8bc00960c1fdd7bf88b70077b27bf8e43e071a352b4bd0d0b903de5e60295a52",
+      "rawEqual": false,
+      "exactKnownBuildTransformsMatch": true,
+      "robotsMetaAdded": "<meta name=\"robots\" content=\"noindex, nofollow\">\n",
+      "robotsMetaBytes": 49,
+      "captionTransform": null
+    },
+    {
+      "file": "plaza-las-condes.html",
+      "sourceSha256": "284267bf313b28e89d365bc9ca3d5000e203e2e1b680e7631c24e825367cb9d0",
+      "buildSha256": "ea458d559b081174f831867ce81bd741c6da2d655daffaf6d9e43f827f7d37db",
+      "rawEqual": false,
+      "exactKnownBuildTransformsMatch": true,
+      "robotsMetaAdded": "<meta name=\"robots\" content=\"noindex, nofollow\">\n",
+      "robotsMetaBytes": 49,
+      "captionTransform": null
+    },
+    {
+      "file": "san-ignacio.html",
+      "sourceSha256": "aae00dbd858bd9282086ff168a85f7fe14a7d04469bb273de6dade0fd1ce943c",
+      "buildSha256": "1294a66ceba4a66f597be9123b2df89ed915bc8600a7dcaf4e275da8ad02b40c",
+      "rawEqual": false,
+      "exactKnownBuildTransformsMatch": true,
+      "robotsMetaAdded": "<meta name=\"robots\" content=\"noindex, nofollow\">\n",
+      "robotsMetaBytes": 49,
+      "captionTransform": null
+    },
+    {
+      "file": "angamos.html",
+      "sourceSha256": "5921af48e73609d102d13186f3d15281e17b255ca442ddc3371ecb855e13bcf3",
+      "buildSha256": "b3a5fbb80e530fd77bc34c110a92943bd8eead2d553a1c69ac8d112c9633e894",
+      "rawEqual": false,
+      "exactKnownBuildTransformsMatch": true,
+      "robotsMetaAdded": "<meta name=\"robots\" content=\"noindex, nofollow\">\n",
+      "robotsMetaBytes": 49,
+      "captionTransform": {
+        "count": 21,
+        "scope": [
+          "img alt",
+          "a aria-label",
+          "figcaption"
+        ],
+        "exactReplacement": {
+          "from": " del departamento piloto",
+          "to": " piloto"
+        }
+      }
+    }
+  ],
+  "testFiles": [
+    {
+      "file": "tests/sento-final-presentation.mjs",
+      "sha256": "302c4b702410758164eb46f029acd491f165a7d0033a3c3ff7933afdbef5499a"
+    },
+    {
+      "file": "tests/qa-sento.mjs",
+      "sha256": "cf89c31067bf213875d240d0a43c3577cd22f4d68021faab7b4fb4b4b94e8243"
+    }
+  ],
+  "commands": [
+    {
+      "cwd": "/private/tmp/sollahms-sento-work",
+      "environment": {
+        "SOLLAHMS_SENTO_ROOT": "/private/tmp/sollahms-sento-work",
+        "SOLLAHMS_PYTHON": "/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "SOLLAHMS_SENTO_PRESENTATION_RECEIPT": "/private/tmp/sollahms-sento-work/docs/qa/sento-final/regeneration-receipt.json"
+      },
+      "argv": [
+        "/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/sento-final-presentation.mjs"
+      ],
+      "stdoutFile": "docs/qa/sento-final/final-presentation.tap"
+    },
+    {
+      "cwd": "/private/tmp/sollahms-sento-work",
+      "environment": {
+        "SOLLAHMS_PLAYWRIGHT_MODULE": "/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright",
+        "SOLLAHMS_SENTO_ROOT": "/private/tmp/sollahms-sento-work"
+      },
+      "argv": [
+        "/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "tests/qa-sento.mjs",
+        "--root",
+        "/private/tmp/sollahms-sento-work",
+        "--base",
+        "http://127.0.0.1:8089",
+        "--output",
+        "/private/tmp/sollahms-sento-final-browser"
+      ],
+      "chromeEscalationAuthorized": true,
+      "formsIntercepted": true
+    }
+  ],
+  "pages": [
+    {
+      "slug": "curico-77",
+      "viewport": "desktop",
+      "status": 200,
+      "modelCodes": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "C2",
+        "C2-1",
+        "B1",
+        "B2",
+        "A2",
+        "A5"
+      ],
+      "publicAreaCount": 31,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "domeyko-2055",
+      "viewport": "desktop",
+      "status": 200,
+      "modelCodes": [
+        "A5",
+        "B5",
+        "C1"
+      ],
+      "publicAreaCount": 9,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "jofre-135",
+      "viewport": "desktop",
+      "status": 200,
+      "modelCodes": [
+        "A1",
+        "B27",
+        "C1",
+        "D1"
+      ],
+      "publicAreaCount": 11,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "mirador-la-florida",
+      "viewport": "desktop",
+      "status": 200,
+      "modelCodes": [
+        "D1",
+        "A1",
+        "A1-3",
+        "A2",
+        "A3",
+        "A4",
+        "B1",
+        "B2",
+        "C1"
+      ],
+      "publicAreaCount": 27,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "plaza-las-condes",
+      "viewport": "desktop",
+      "status": 200,
+      "modelCodes": [
+        "A2",
+        "B2",
+        "B5",
+        "B9",
+        "B14",
+        "C2",
+        "C4",
+        "C6",
+        "C8"
+      ],
+      "publicAreaCount": 23,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "san-ignacio",
+      "viewport": "desktop",
+      "status": 200,
+      "modelCodes": [
+        "A3",
+        "B1",
+        "D1"
+      ],
+      "publicAreaCount": 8,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "angamos",
+      "viewport": "desktop",
+      "status": 200,
+      "modelCodes": [
+        "B10-I",
+        "C3",
+        "C4",
+        "C6",
+        "A2",
+        "A4"
+      ],
+      "publicAreaCount": 16,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "curico-77",
+      "viewport": "tablet",
+      "status": 200,
+      "modelCodes": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "C2",
+        "C2-1",
+        "B1",
+        "B2",
+        "A2",
+        "A5"
+      ],
+      "publicAreaCount": 31,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "domeyko-2055",
+      "viewport": "tablet",
+      "status": 200,
+      "modelCodes": [
+        "A5",
+        "B5",
+        "C1"
+      ],
+      "publicAreaCount": 9,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "jofre-135",
+      "viewport": "tablet",
+      "status": 200,
+      "modelCodes": [
+        "A1",
+        "B27",
+        "C1",
+        "D1"
+      ],
+      "publicAreaCount": 11,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "mirador-la-florida",
+      "viewport": "tablet",
+      "status": 200,
+      "modelCodes": [
+        "D1",
+        "A1",
+        "A1-3",
+        "A2",
+        "A3",
+        "A4",
+        "B1",
+        "B2",
+        "C1"
+      ],
+      "publicAreaCount": 27,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "plaza-las-condes",
+      "viewport": "tablet",
+      "status": 200,
+      "modelCodes": [
+        "A2",
+        "B2",
+        "B5",
+        "B9",
+        "B14",
+        "C2",
+        "C4",
+        "C6",
+        "C8"
+      ],
+      "publicAreaCount": 23,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "san-ignacio",
+      "viewport": "tablet",
+      "status": 200,
+      "modelCodes": [
+        "A3",
+        "B1",
+        "D1"
+      ],
+      "publicAreaCount": 8,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "angamos",
+      "viewport": "tablet",
+      "status": 200,
+      "modelCodes": [
+        "B10-I",
+        "C3",
+        "C4",
+        "C6",
+        "A2",
+        "A4"
+      ],
+      "publicAreaCount": 16,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "curico-77",
+      "viewport": "mobile",
+      "status": 200,
+      "modelCodes": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "C2",
+        "C2-1",
+        "B1",
+        "B2",
+        "A2",
+        "A5"
+      ],
+      "publicAreaCount": 31,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "domeyko-2055",
+      "viewport": "mobile",
+      "status": 200,
+      "modelCodes": [
+        "A5",
+        "B5",
+        "C1"
+      ],
+      "publicAreaCount": 9,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "jofre-135",
+      "viewport": "mobile",
+      "status": 200,
+      "modelCodes": [
+        "A1",
+        "B27",
+        "C1",
+        "D1"
+      ],
+      "publicAreaCount": 11,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "mirador-la-florida",
+      "viewport": "mobile",
+      "status": 200,
+      "modelCodes": [
+        "D1",
+        "A1",
+        "A1-3",
+        "A2",
+        "A3",
+        "A4",
+        "B1",
+        "B2",
+        "C1"
+      ],
+      "publicAreaCount": 27,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "plaza-las-condes",
+      "viewport": "mobile",
+      "status": 200,
+      "modelCodes": [
+        "A2",
+        "B2",
+        "B5",
+        "B9",
+        "B14",
+        "C2",
+        "C4",
+        "C6",
+        "C8"
+      ],
+      "publicAreaCount": 23,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "san-ignacio",
+      "viewport": "mobile",
+      "status": 200,
+      "modelCodes": [
+        "A3",
+        "B1",
+        "D1"
+      ],
+      "publicAreaCount": 8,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    },
+    {
+      "slug": "angamos",
+      "viewport": "mobile",
+      "status": 200,
+      "modelCodes": [
+        "B10-I",
+        "C3",
+        "C4",
+        "C6",
+        "A2",
+        "A4"
+      ],
+      "publicAreaCount": 16,
+      "auditBlockAbsent": true,
+      "documentaryLinksAbsent": true,
+      "pageOverflowPx": 0,
+      "errors": []
+    }
+  ]
+}

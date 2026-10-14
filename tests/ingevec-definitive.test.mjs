@@ -9,7 +9,9 @@ import { resolve } from 'node:path';
 import { assertPortfolioData, assertPortfolioIndex, assertDefinitiveFicheFallback, assertCatalogueConsultPrices,
   assertCommercialBytes, restoreReviewedScope,
   PORTFOLIO_BASELINE, INGEVEC_REMOVED_SLUGS, INGEVEC_NEW_SLUGS, readCommercialFile } from './commercial-html.mjs';
-import { projects as contextualProjects } from '../lib/project-context.mjs';
+import { projects as actualSentoContexts } from '../lib/project-context.mjs';
+import { restoreSentoContexts } from './sento-preservation.mjs';
+const contextualProjects = restoreSentoContexts(actualSentoContexts);
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 

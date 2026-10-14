@@ -12,6 +12,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from sento_scope import original_data, historical_file
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = 'bb69615d03230cbab76bdc2678938cc741f80e86'
@@ -38,7 +39,7 @@ def baseline_bytes(path):
 @functools.lru_cache(maxsize=1)
 def catalogue_slugs():
     source = baseline_bytes('data/proyectos.json')
-    assert read_pre_leon('data/proyectos.json') == source, 'Map cleanup cannot edit catalogue evidence'
+    assert historical_file('data/proyectos.json', read_pre_leon('data/proyectos.json')) == source, 'Map cleanup cannot edit catalogue evidence'
     slugs = {row['slug'] for row in json.loads(source)}
     assert len(slugs) == 144
     return slugs

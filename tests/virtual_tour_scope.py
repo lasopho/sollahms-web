@@ -10,6 +10,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from sento_scope import original_data, historical_file
 from automatic_embed_scope import restore_automatic_file
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,7 +39,7 @@ def approved_bytes(path):
 @functools.lru_cache(maxsize=1)
 def removal_slugs():
     original = approved_bytes('data/fichas-proyectos.json')
-    assert read_pre_leon('data/fichas-proyectos.json') == original, 'Tour research must remain byte exact'
+    assert historical_file('data/fichas-proyectos.json', read_pre_leon('data/fichas-proyectos.json')) == original, 'Tour research must remain byte exact'
     records = json.loads(original)
     absent = {row['slug'] for row in records if not row.get('virtualTours')}
     assert len(records) == 144 and len(absent) == 82
@@ -110,6 +111,6 @@ def historical_commercial_renderer():
 
 
 if __name__ == '__main__':
-    content = sys.stdin.buffer.read()
+    content = historical_file(sys.argv[1], sys.stdin.buffer.read())
     sys.stdout.buffer.write(exact_removed_page(content, sys.argv[2]) if sys.argv[1] == '--remove'
                             else restore_reviewed_file(sys.argv[1], content))

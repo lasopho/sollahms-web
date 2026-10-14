@@ -9,7 +9,7 @@ const json=path=>JSON.parse(readFileSync(new URL('../'+path,import.meta.url)));
 const review=json('data/brochures-leon.json'),register=json('data/leon-plan-surfaces.json');
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 test('León integrates five fiches while all 136 other main records and 143 other pages remain exact',()=>{
- const result=assertLeonMainScope();assert.equal(result.otherProjects,136);assert.equal(result.otherHtml,143);assert.equal(result.existingAssets,641);
+ const result=assertLeonMainScope();assert.equal(result.otherProjects,136);assert.equal(result.otherHtml,143);assert.equal(result.existingAssets,919);
  const rows=json('data/proyectos.json');assert.equal(rows.length,141);assert.equal(Object.keys(projects).length,141);assertBrochureCatalogue(rows);
  const b=readMainBaseline();
  for(const [slug,value] of Object.entries(b.originalContexts))if(![...LEON_SLUGS,...LEON_RETIRED_SLUGS].includes(slug))assert.deepEqual(projects[slug],value);

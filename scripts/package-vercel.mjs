@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile, access, lstat, realpath } 
 import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import { assertSentoCatalogue, verifySentoAssets, SENTO_MANIFEST } from './sento-publication.mjs';
 import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   BROCHURE_REMOVED_SLUGS, BROCHURE_PUBLIC_PAGES, BROCHURE_RETIRED_ASSETS,
   brochureFingerprint } from './brochure-publication.mjs';
@@ -11,7 +12,7 @@ const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
 const expectedBranches = new Set(['codex/fichas-proyectos-completas', 'codex/integracion-financiera-sollahms', 'codex/recorridos-validos-144', 'codex/mapas-recorridos-auto', 'codex/limpieza-mapas-fichas', 'codex/norte-verde-hero-merge', 'codex/leon-main-integration', 'codex/leon-cartera-preview']);
 if (preview && process.env.VERCEL_GIT_COMMIT_REF && !expectedBranches.has(process.env.VERCEL_GIT_COMMIT_REF)) {
-  throw new Error('Unexpected branch for this review build');
+  if (process.env.VERCEL_GIT_COMMIT_REF !== 'codex/sento-cartera-documentada') throw new Error('Unexpected branch for this review build');
 }
 let leonReview=null, leonTools=null;
 try { leonReview=JSON.parse(await readFile(join(root,'data/brochures-leon.json'),'utf8')); }
@@ -22,6 +23,12 @@ const leonPaths=new Set();
 const heroReview = preview && process.env.VERCEL_GIT_COMMIT_REF === 'codex/norte-verde-hero-merge';
 const heroSlugs = new Set(['bordevivo','carmen-marin','edificio-ecuador','edif-origen-atacama-3008','edificio-dual-390-lto','edificio-lira-622','edificio-plaza-nova','edificio-san-francisco-1204','edificio-verne','irarrazaval','parque-panama','parque-quinta','playa-penuelas','playa-serena','quintavista','vicuna-mackenna-6896','vista-bulnes']);
 const heroAssets = new Set(['assets/css/norte-verde-hero-variants.css','assets/js/norte-verde-hero-variants.js','assets/review/norte-verde-hero-variantes.html']);
+let sentoReview = null;
+try { sentoReview = JSON.parse(await readFile(join(root, SENTO_MANIFEST), 'utf8')); }
+catch (error) { if (error.code !== 'ENOENT') throw error; }
+if (sentoReview && !preview) throw new Error('The Sento update is authorized for Preview only');
+const sentoAssets = sentoReview ? verifySentoAssets(sentoReview, { root }) : [];
+const sentoPaths = new Set(sentoAssets.map(asset => join(root, asset.localPath.slice(1))));
 const profile = process.env.SOLLAHMS_BROCHURE_PROFILE;
 if (profile !== undefined && profile !== 'public-web') throw new Error('Unknown brochure content profile');
 const ajReview = JSON.parse(await readFile(join(root, 'data/brochures-aj-urbana.json'), 'utf8'));
@@ -128,6 +135,7 @@ if(leonReview){
 const catalogueSource = await readFile(join(root, 'data/proyectos.json'));
 let catalogueOutput = catalogueSource;
 const sourceProjects = JSON.parse(catalogueSource);
+if (sentoReview) assertSentoCatalogue(sourceProjects, sentoReview);
 assertBrochureCatalogue(sourceProjects);
 const approvedPages = new Set([...BROCHURE_PUBLIC_PAGES, ...sourceProjects.map(project => project.slug + '.html')]);
 const pages = (await readdir(root)).filter(name => name.endsWith('.html'));
@@ -296,6 +304,10 @@ await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
     const info = await lstat(source);
     // No symlink can turn a nominal image directory into private content.
     if (info.isSymbolicLink()) throw new Error('Symbolic links are excluded from public assets');
+    if (path.startsWith('assets/brochures/sento') || path.startsWith('assets/propiedades/sento')) {
+      if (!preview || !sentoReview) return false;
+      return info.isDirectory() ? [...sentoPaths].some(file => file.startsWith(source + sep)) : sentoPaths.has(source);
+    }
     for (const [folder, included] of [['aj-urbana-preview', ajIncluded], ['ingevec-preview', ingevecIncluded]]) {
       const prefix = 'assets/propiedades/' + folder;
       if (path === prefix || path.startsWith(prefix + '/')) {

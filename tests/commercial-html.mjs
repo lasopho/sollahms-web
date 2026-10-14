@@ -1,3 +1,4 @@
+import { projectSentoFile, restoreSentoRows } from './sento-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readPreLeonFile } from './leon-main-preservation.mjs';
 import { readFileSync, existsSync } from 'node:fs';
@@ -9,7 +10,7 @@ import { resolve } from 'node:path';
 export const NORTE_VERDE_HERO_ASSETS = ['assets/css/norte-verde-hero-variants.css', 'assets/js/norte-verde-hero-variants.js', 'assets/review/norte-verde-hero-variantes.html'];
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const catalogue = JSON.parse(readPreLeonFile('data/proyectos.json'));
+const catalogue = restoreSentoRows(JSON.parse(readPreLeonFile('data/proyectos.json')));
 const ficheFiles = new Set(catalogue.map(project => project.slug + '.html'));
 assert.equal(ficheFiles.size, 144);
 const transformed = new Map();
@@ -85,7 +86,7 @@ export function readCommercialFile(file) {
     assert.equal(existsSync(resolve(ROOT,file)), false, file + ': retired public route must be absent');
     return Buffer.alloc(0);
   }
-  const actual = readPreLeonFile(file);
+  const actual = projectSentoFile(file, readPreLeonFile(file));
   if (automaticEmbedAssets.has(file)) return restoreReviewedEmbedAsset(file, actual);
   // Historical checks receive the original only after independently proving
   // that real current bytes contain exactly the authorized tour removal.

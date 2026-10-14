@@ -9,7 +9,7 @@ import { resolve } from 'node:path';
 import { readMainBaseline, restoreLeonRows, LEON_RETIRED_SLUGS } from '../scripts/leon-main-publication.mjs';
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const baseline=readMainBaseline();
-const original=file=>execFileSync('git',['show',baseline.mainCommit+':'+file],{cwd:ROOT});
+const original=file=>execFileSync('git',['show',baseline.mainCommit+':'+file],{cwd:ROOT,maxBuffer:16*1024*1024});
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function readPreLeonFile(file) {
  if(LEON_RETIRED_SLUGS.some(slug=>file===slug+'.html')) {

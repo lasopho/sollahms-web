@@ -1,5 +1,6 @@
+import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
-import { isReviewedLeonAsset } from './leon-main-preservation.mjs';
+import { isReviewedLeonAsset, readPreLeonFile } from './leon-main-preservation.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -9,7 +10,9 @@ import { resolve, relative } from 'node:path';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { evaluateProject } from '../assets/js/purchase-capacity.mjs';
 import { createContactHandler } from '../api/contact.mjs';
-import { projects as trustedContexts } from '../lib/project-context.mjs';
+import { projects as actualSentoContexts } from '../lib/project-context.mjs';
+import { restoreSentoContexts } from './sento-preservation.mjs';
+const trustedContexts = restoreSentoContexts(actualSentoContexts);
 import { assertCommercialBytes, assertPortfolioData, commercialPage,
   INGEVEC_NEW_SLUGS, readCommercialFile, vimaImageCorrection,
   AUTOMATIC_EMBED_CSS, assertAutomaticEmbedStylesheet, NORTE_VERDE_HERO_ASSETS } from './commercial-html.mjs';
@@ -373,7 +376,7 @@ test('all 521 integration assets and 509 historical originals retain their hashe
     newPaths.add(entry.localPath.slice(1));
   }
   assert.equal(newPaths.size, 10);
-  const currentAssets = listFiles('assets').filter(file=>!isReviewedLeonAsset(file)).filter((file) =>
+  const currentAssets = historicalSentoAssetFiles(listFiles('assets').filter(file=>!isReviewedLeonAsset(file))).filter((file) =>
     !NORTE_VERDE_HERO_ASSETS.includes(file) &&
     !file.startsWith('assets/propiedades/aj-urbana-preview/') &&
     !file.startsWith('assets/propiedades/ingevec-preview/') && file !== 'assets/css/aj-brochure-preview.css');
@@ -389,9 +392,9 @@ test('registry and sitemap match the authorized portfolio; financial data/motors
     if (/^[^/]+\.html$/.test(file) && !FOCUS.has(file.slice(0, -5)) &&
         !AJ_REVIEW.has(file.slice(0, -5)) && !INGEVEC_REVIEW.has(file.slice(0, -5))) unchangedFile(file);
   }
-  const actualCatalogue=JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
+  const currentCatalogue=JSON.parse(readFileSync(resolve(ROOT,'data/proyectos.json')));
   assert.equal(Object.keys(trustedContexts).length, 141);
-  for (const project of actualCatalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
+  for (const project of currentCatalogue) assert.deepEqual(trustedContexts[project.slug], { name: project.nombre, url: project.detalleUrl });
   const locations = current('sitemap.xml').toString().match(/<loc>[^<]+<\/loc>/g);
   assert.equal(locations.length, 150);
   assert.equal(new Set(locations).size, 150);
