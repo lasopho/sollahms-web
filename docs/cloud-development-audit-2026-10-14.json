@@ -1,0 +1,726 @@
+{
+  "schemaVersion": 1,
+  "auditDateAmericaSantiago": "2026-10-14",
+  "repository": "/workspace/sollahms-web",
+  "branch": "codex/cloud-development-diagnostics",
+  "sourceCommit": "42b8e87ee89c850ffc7a6b69b0136d33d51f84f8",
+  "cloudEnvironmentCheck": {
+    "python": {
+      "status": "ok",
+      "version": "3.12.14",
+      "executable": "/workspace/.venvs/sollahms-web/bin/python",
+      "platform": "linux",
+      "architecture": "x86_64"
+    },
+    "dependencies": {
+      "Pillow": {
+        "status": "ok",
+        "version": "12.3.0",
+        "expected": "12.3.0"
+      },
+      "pypdf": {
+        "status": "ok",
+        "version": "6.10.0",
+        "expected": "6.10.0"
+      }
+    },
+    "node": {
+      "version": "24.19.0",
+      "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "child_process": {
+        "status": "error",
+        "code": "EPERM"
+      },
+      "scrypt": {
+        "status": "ok"
+      },
+      "sharp": {
+        "status": "ok",
+        "version": "0.35.5",
+        "libvips": "8.18.7"
+      },
+      "playwright": {
+        "status": "ok",
+        "version": "1.62.1",
+        "bundled_browser_present": false
+      },
+      "status": "ok"
+    },
+    "cloud_stdio": {
+      "status": "ok",
+      "opt_in_required": true
+    },
+    "warning": "Native Node PIPE operations are restricted; use Git CI --cloud-stdio after the compatibility check passes.",
+    "browser": {
+      "status": "ok",
+      "executable": "/usr/bin/chromium",
+      "launch_verified": false,
+      "version": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+      "note": "Existing QA scripts use Chrome channel; selecting system Chromium requires an explicit executable path."
+    },
+    "network": {
+      "sii": {
+        "status": "error",
+        "http_status": 0,
+        "curl_exit_code": 7
+      },
+      "pypi": {
+        "status": "error",
+        "http_status": 0,
+        "curl_exit_code": 7
+      },
+      "npm": {
+        "status": "error",
+        "http_status": 0,
+        "curl_exit_code": 7
+      }
+    },
+    "git_ci_ready": true,
+    "optional_tools_present": true
+  },
+  "gitCheckoutRegression": {
+    "checkScope": "git-checkout-regression-not-release-build",
+    "allPassed": true,
+    "nodeSubprocessTransport": "regular-files",
+    "nodeTestIsolation": "separate-process-per-file",
+    "node": {
+      "tests": 330,
+      "pass": 330,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "pythonFixtureTests": 137,
+    "releaseOnlyNotRun": [
+      {
+        "file": "tests/aj-urbana.test.mjs",
+        "name": "a synthetic pending contract publishes AJ only in Preview and removes review assets from non-Preview output",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "three supplied sources and fourteen unique models retain document/page evidence and unknown values",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "the previous 36 images/plans retain project identity and hashes within the explicitly enlarged 165-resource directory",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "AJ and Ingevec retain their 269 media across Preview and offline public fallback while Ecasa stays protected",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "covered media missing after a merge blocks the build instead of silently dropping galleries, plans and covers",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "contract-covered output copies only selected derivatives and rejects symbolic selected media",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "real Preview packaging changes only twenty-one authorized card covers, publishes 64 Ingevec models, and hides all private manifests/documents",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "a synthetic pending contract excludes protected media outside Preview and retains all 136 fallback objects",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "real packaging fails closed for absent authorization, unrelated branch, cross-project covers and altered image bytes",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "real packager checks non-cover galleries/plans and privacy flags, and rejects unapproved identities and routes",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "new source bindings and Vicuña stage identifiers cannot be reassigned through the packaging manifest",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "final source bindings reject earlier Valle stages, unprinted fields and unsafe newly added galleries in every build profile",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "retired and unknown routes, sitemap entries and internal links cannot reappear in Preview or fallback builds",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "exclusive retired covers stay in historical source but are excluded from output, while a shared photograph remains usable",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "new supplied brochure plaintext remains ignored and absent from the public Git index",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "a synthetic pending Git Preview without Ingevec assets preserves sixteen fallbacks and the five AJ reviews",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-brochures.test.mjs",
+        "name": "Preview rejects partial Ingevec uploads instead of publishing a mixture of incomplete review fichas",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-definitive.test.mjs",
+        "name": "definitive Ingevec portfolio retains ten prior records and 105 non-Ecasa non-Ingevec historical objects",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-definitive.test.mjs",
+        "name": "36 selected native images and 23 full-page plans retain independent hashes, dimensions and metadata privacy",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-definitive.test.mjs",
+        "name": "Vicuña Mackenna retains six independent plans and its exact prior stage-source assignment",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ingevec-eight.test.mjs",
+        "name": "reviewed images include seven distinct catalogue/hero covers without duplicate gallery renders or confidential Matta attribution",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/project-commercial-presentation.test.mjs",
+        "name": "all 269 supplied media derivatives retain approved identity, hashes and contractual scope status",
+        "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
+      },
+      {
+        "file": "tests/ecasa-definitive.test.mjs",
+        "name": "all 130 selected Ecasa photos and plans preserve their original bytes, origin-stage bindings and enlarged canonical references",
+        "reason": "Requires all 130 original-derived Ecasa resources; mandatory before the protected Preview delivery."
+      },
+      {
+        "file": "tests/ecasa-image-quality.test.mjs",
+        "name": "real private packaging publishes 395 selected resources, keeps 74 Ecasa plans and excludes four source photographs",
+        "reason": "Requires all preserved private AJ/Ingevec/Ecasa bytes and tests actual output exclusion, source preservation and 74 plans in isolated builds."
+      },
+      {
+        "file": "tests/ecasa-official-originals.test.mjs",
+        "name": "real private official originals decode to exact native rectangles and retain frozen evidence",
+        "reason": "Requires the four privately materialized Ecasa official files and a local Sharp decoder to prove exact RGBA crop identity and unchanged original bytes."
+      },
+      {
+        "file": "tests/leon-main-integration.test.mjs",
+        "name": "all 310 original media and 36 individually bound plans retain their verified payloads",
+        "reason": "Requires five private original León PDFs and the complete existing Ecasa/Leben/AJ/Ingevec protected resource batch for assertLeonCombinedScope; tracked-only row/HTML/media guards remain in five Git cases."
+      }
+    ],
+    "releaseOnlyNotRunCount": 26,
+    "commands": [
+      {
+        "name": "node-project-map-cleanup.test",
+        "exitCode": 0,
+        "seconds": 0.089,
+        "tests": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-brochure-publication.test",
+        "exitCode": 0,
+        "seconds": 0.347,
+        "tests": {
+          "tests": 8,
+          "pass": 8,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-clp-input.test",
+        "exitCode": 0,
+        "seconds": 0.093,
+        "tests": {
+          "tests": 11,
+          "pass": 11,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-contact.test",
+        "exitCode": 0,
+        "seconds": 0.375,
+        "tests": {
+          "tests": 15,
+          "pass": 15,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-git-checkout-controls",
+        "exitCode": 0,
+        "seconds": 1.448,
+        "tests": {
+          "tests": 8,
+          "pass": 8,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-launch-security.test",
+        "exitCode": 0,
+        "seconds": 0.134,
+        "tests": {
+          "tests": 3,
+          "pass": 3,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-mortgage-data.test",
+        "exitCode": 0,
+        "seconds": 0.114,
+        "tests": {
+          "tests": 12,
+          "pass": 12,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-mortgage-engine.test",
+        "exitCode": 0,
+        "seconds": 0.086,
+        "tests": {
+          "tests": 8,
+          "pass": 8,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-official-contexts.test",
+        "exitCode": 0,
+        "seconds": 165.611,
+        "tests": {
+          "tests": 10,
+          "pass": 10,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-official-uf.test",
+        "exitCode": 0,
+        "seconds": 0.172,
+        "tests": {
+          "tests": 15,
+          "pass": 15,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-purchase-capacity.test",
+        "exitCode": 0,
+        "seconds": 0.197,
+        "tests": {
+          "tests": 19,
+          "pass": 19,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-booking-project-context",
+        "exitCode": 0,
+        "seconds": 0.147,
+        "tests": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-form-regression",
+        "exitCode": 0,
+        "seconds": 0.273,
+        "tests": {
+          "tests": 18,
+          "pass": 18,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-rut-contact",
+        "exitCode": 0,
+        "seconds": 0.328,
+        "tests": {
+          "tests": 15,
+          "pass": 15,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-integration-capacity-ui",
+        "exitCode": 0,
+        "seconds": 0.612,
+        "tests": {
+          "tests": 22,
+          "pass": 22,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-integration-comparator",
+        "exitCode": 0,
+        "seconds": 1.008,
+        "tests": {
+          "tests": 14,
+          "pass": 14,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-integration-contact",
+        "exitCode": 0,
+        "seconds": 0.612,
+        "tests": {
+          "tests": 18,
+          "pass": 18,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ecasa-publication.test",
+        "exitCode": 0,
+        "seconds": 27.18,
+        "tests": {
+          "tests": 14,
+          "pass": 14,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-project-identity.test",
+        "exitCode": 0,
+        "seconds": 0.264,
+        "tests": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-public-fiche-copy.test",
+        "exitCode": 0,
+        "seconds": 0.249,
+        "tests": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ecasa-stage-presentation.test",
+        "exitCode": 0,
+        "seconds": 0.168,
+        "tests": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ecasa-manual-quality.test",
+        "exitCode": 0,
+        "seconds": 5.976,
+        "tests": {
+          "tests": 10,
+          "pass": 10,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-leben-publication.test",
+        "exitCode": 0,
+        "seconds": 0.162,
+        "tests": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-sento-main-merge",
+        "exitCode": 0,
+        "seconds": 14.041,
+        "tests": {
+          "tests": 8,
+          "pass": 8,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-aj-urbana.test",
+        "exitCode": 0,
+        "seconds": 164.083,
+        "tests": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ingevec-brochures.test",
+        "exitCode": 0,
+        "seconds": 179.789,
+        "tests": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ingevec-definitive.test",
+        "exitCode": 0,
+        "seconds": 162.742,
+        "tests": {
+          "tests": 7,
+          "pass": 7,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ingevec-eight.test",
+        "exitCode": 0,
+        "seconds": 134.745,
+        "tests": {
+          "tests": 4,
+          "pass": 4,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-project-commercial-presentation.test",
+        "exitCode": 0,
+        "seconds": 150.272,
+        "tests": {
+          "tests": 7,
+          "pass": 7,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ecasa-definitive.test",
+        "exitCode": 0,
+        "seconds": 12.016,
+        "tests": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ecasa-image-quality.test",
+        "exitCode": 0,
+        "seconds": 8.418,
+        "tests": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-ecasa-official-originals.test",
+        "exitCode": 0,
+        "seconds": 6.2,
+        "tests": {
+          "tests": 10,
+          "pass": 10,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "node-leon-main-integration.test",
+        "exitCode": 0,
+        "seconds": 6.373,
+        "tests": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "python-synthetic-units",
+        "exitCode": 0,
+        "seconds": 35.305,
+        "tests": 137
+      },
+      {
+        "name": "mortgage-data-validation",
+        "exitCode": 0,
+        "seconds": 0.071
+      }
+    ],
+    "productionBuildPerformed": false,
+    "deploymentsCreated": 0,
+    "privateAssetsImported": false,
+    "externalProviderCalls": "synthetic handlers/fixtures only"
+  },
+  "subprocessCompatibilityCheck": {
+    "allPassed": true,
+    "checks": [
+      "Git HEAD captured without discarding subprocess errors",
+      "Existing CLI preserves exact 3000-caption UTF-8 input/output",
+      "TypedArray input and Buffer output retain every byte",
+      "Nonzero status and stderr remain visible and execFileSync throws",
+      "Timeout fails with ETIMEDOUT and retains termination signal",
+      "maxBuffer fails closed after completion instead of reporting success",
+      "Missing executables, unsupported IPC, and invalid input remain explicit errors",
+      "Private temporary files are removed after success and failure"
+    ],
+    "maxBufferEnforced": "after-child-completion"
+  },
+  "pythonDependencyIntegrity": [
+    {
+      "dependency": "Pillow",
+      "version": "12.3.0",
+      "recordFilesChecked": 141,
+      "errors": []
+    },
+    {
+      "dependency": "pypdf",
+      "version": "6.10.0",
+      "recordFilesChecked": 61,
+      "errors": []
+    }
+  ],
+  "gitFsck": {
+    "exitCode": 0,
+    "errors": 0,
+    "danglingObjects": 0,
+    "log": "/tmp/sollahms-cloud-audit/git-fsck.log"
+  },
+  "privateResourceInventory": {
+    "path": "/tmp/sollahms-cloud-audit/private-resources.json",
+    "summary": {
+      "selectedManifestResources": 1039,
+      "presentSelectedResources": 686,
+      "missingSelectedResources": 353,
+      "missingReferencedPrivateRasterFiles": 338,
+      "missingPrivatePdfFilesForCurrentPreviewBuild": 11,
+      "missingAdditionalEcasaSidecarResources": 4,
+      "sourcePdfFileNamesForReproduction": 62,
+      "uniqueSourcePdfContentsForReproduction": 60,
+      "approvedAjCandidateInputsForReproduction": 26,
+      "releaseOnlyCasesClassified": 26,
+      "gitNodeCasesClassified": 330,
+      "pythonFixtureCasesClassified": 137
+    }
+  },
+  "infrastructureLimits": {
+    "nativeNodeSocketStdio": "EPERM/EPIPE; use opt-in regular-file transport for trusted development commands",
+    "tcpSocketsIncludingLoopback": "EPERM at AF_INET socket creation",
+    "gitRemoteMain": "not verified; proxy connection blocked before HTTP/authentication",
+    "chromiumHeadless": "setsockopt EPERM; launch exit -5",
+    "additionalPrivilegesRequested": false,
+    "proxyOrTlsSettingsChanged": false
+  },
+  "projectSourceChanges": false,
+  "vercelChanges": false,
+  "productionChanges": false,
+  "mergesPerformed": 0,
+  "privateAssetsFabricated": false,
+  "integrationPreparation": {
+    "conventionalModePlanVerifiedUnchanged": true,
+    "conventionalModeChecks": [
+      "same commands and environment as base with and without inherited NODE_OPTIONS",
+      "original 22 assertions retained",
+      "test selection unchanged",
+      "run function unchanged"
+    ],
+    "configurationFixes": [
+      "native Node probes do not inherit NODE_OPTIONS",
+      "setup requires an actual virtualenv whose prefix matches its selected directory"
+    ],
+    "remoteMainVerifiedViaAuthorizedGitHubConnector": "42b8e87ee89c850ffc7a6b69b0136d33d51f84f8",
+    "repeatedCiPassed": true,
+    "verifiedAtAmericaSantiago": "2026-10-14T19:37:10-03:00",
+    "latestCiReportPath": "/tmp/sollahms-cloud-integration-ci/report.json",
+    "configurationRegressionChecks": {
+      "inheritedPreloadStillReportsNativeEperm": true,
+      "globalPythonRuntimeRejectedAsVenv": true
+    }
+  }
+}
