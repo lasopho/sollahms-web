@@ -20,11 +20,12 @@ BRIDGE = """
 import { readFileSync } from 'node:fs';
 import { restoreSentoRows, projectSentoFile } from './tests/sento-preservation.mjs';
 import { restoreLeonRows } from './tests/leon-main-preservation.mjs';
+import { projectP1CommercialFile } from './tests/p1-commercial-scope.mjs';
 const request = JSON.parse(readFileSync(0, 'utf8'));
 if (request.kind === 'rows') {
   process.stdout.write(JSON.stringify(restoreSentoRows(restoreLeonRows(request.rows, request.path), request.path)));
 } else {
-  process.stdout.write(projectSentoFile(request.path, Buffer.from(request.bytes, 'base64')).toString('base64'));
+  process.stdout.write(projectSentoFile(request.path, projectP1CommercialFile(request.path, Buffer.from(request.bytes, 'base64'))).toString('base64'));
 }
 """
 
@@ -43,14 +44,18 @@ def original_data(rows, path='data/proyectos.json'):
     leon_by_slug = {row['slug']: row for row in leon}
     current_by_slug = {row['slug']: row for row in rows}
     order = json.loads(output)
-    return [original_by_slug[row['slug']] if row['slug'] in SLUGS else leon_by_slug[row['slug']] if row['slug'] in leon_by_slug else current_by_slug[row['slug']] for row in order]
+    # Only Verne has an approved P1 source/ledger delta. The bridge has already
+    # validated the complete foreign-row hashes and that exact row's delta.
+    # Every other foreign object retains its original Python representation.
+    return [original_by_slug[row['slug']] if row['slug'] in SLUGS else leon_by_slug[row['slug']] if row['slug'] in leon_by_slug else row if row['slug'] == 'edificio-verne' and path in {'data/fichas-proyectos.json', 'data/registro-fichas.json'} else current_by_slug[row['slug']] for row in order]
 
 
 @functools.lru_cache(maxsize=256)
 def historical_file(path, data):
     if path not in {'data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
                     'lib/project-context.mjs', 'vercel.json', 'scripts/package-vercel.mjs',
-                    'scripts/norte-verde-publication.mjs', 'scripts/brochure-publication.mjs'} and path.removesuffix('.html') not in SLUGS | {'bcome','condominio-uruguay','gregorio-de-la-fuente-a','condominio-parque-don-lautaro','jardines-de-ramon-cruz'}:
+                    'scripts/norte-verde-publication.mjs', 'scripts/brochure-publication.mjs',
+                    'scripts/build-project-details.py', 'proyectos.html'} and path.removesuffix('.html') not in SLUGS | {'bcome','condominio-uruguay','gregorio-de-la-fuente-a','condominio-parque-don-lautaro','jardines-de-ramon-cruz','edificio-verne','mapocho-3521-edificio-a','froilan-roa-5731-torre-norte','froilan-roa-5731-torre-sur'}:
         return data
     output = subprocess.check_output([NODE, '--input-type=module', '-e', BRIDGE], cwd=ROOT,
         input=json.dumps({'kind': 'bytes', 'path': path, 'bytes': base64.b64encode(data).decode()}).encode())
