@@ -11,6 +11,8 @@ import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 import booking from '../api/booking-create.mjs';
 import { projects, projectAliases } from '../lib/project-context.mjs';
+import { createFormOperation } from '../assets/js/form-operation.mjs';
+import { createHash, randomUUID } from 'node:crypto';
 
 const NOW = Date.parse('2026-10-13T15:00:00Z');
 const RETIRED = ['bosquemar','altos-del-wayra','robles-del-aconcagua','el-real','edificio-ha-strip-center'];
@@ -201,6 +203,7 @@ test('contact page preserves the selected stage in its canonical agenda link and
     class MockFormData { [Symbol.iterator](){return Object.entries(fields).map(([key,field])=>[key,field.value])[Symbol.iterator]();} }
     vm.runInNewContext(script,{document:{getElementById:id=>elements[id],querySelectorAll:()=>agenda},
       window:{location:{search:query}},URLSearchParams,FormData:MockFormData,normalizeRut,RUT_ERROR,resolveProjectIdentity,
+      createFormOperation: options => createFormOperation({ ...options, storage: null, randomUUID, digest: text => createHash('sha256').update(text).digest('hex') }),
       fetch:async(url,options)=>url==='/data/proyectos.json'?{ok:true,json:async()=>catalogue}
         :(posts.push(JSON.parse(options.body)),{ok:false,json:async()=>({code:'preview_read_only',error:'Preview de prueba'})})});
     await new Promise(resolve=>setImmediate(resolve));

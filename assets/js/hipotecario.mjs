@@ -4,6 +4,7 @@ import { verifiedProjectPrice, verifiedProjectLocation } from './project-finance
 import { consumeMortgageHandoff } from './mortgage-handoff.mjs';
 import { loadOfficialUf, UF_CLIENT_REFRESH_MS } from './official-uf.mjs';
 import { resolveProjectIdentity } from './project-identity.mjs';
+import { createFormOperation } from './form-operation.mjs';
 
 const $ = id => document.getElementById(id);
 const number = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 });
@@ -26,6 +27,7 @@ let comparisons = [];
 let simulatedAt = null;
 let startedAt = Date.now();
 let sending = false;
+const contactOperation = createFormOperation({ name: 'mortgage-contact' });
 let loading = false;
 let ufLoading = null, ufAttemptAt = 0;
 let project = null;
@@ -469,18 +471,22 @@ $('lead-form').addEventListener('submit', async event => {
   $('lead-status').textContent = '';
   const mortgage = { ...input, bankId: selectedId, simulatedAt, propertyValueOrigin };
   try {
+    const attempt = await contactOperation.prepare({ nombre: $('nombre').value, correo: $('correo').value, telefono: phone, mensaje: $('comentario').value.trim() || 'Solicitud de asesoría hipotecaria.', website: $('website').value, mortgage, consent: $('consent').checked, startedAt, ...(project ? { proyecto: project.bodyProjectSlug } : {}) });
     const response = await fetch('/api/contact', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre: $('nombre').value, correo: $('correo').value, telefono: phone, mensaje: $('comentario').value.trim() || 'Solicitud de asesoría hipotecaria.', website: $('website').value, mortgage, consent: $('consent').checked, startedAt, ...(project ? { proyecto: project.bodyProjectSlug } : {}) }),
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': attempt.key },
+      body: attempt.body,
       signal: AbortSignal.timeout(15000),
     });
     const body = await response.json();
+    if (!attempt.reused && ([400, 403, 413, 415].includes(response.status) || body.code === 'preview_read_only')) contactOperation.discard();
     if (!response.ok || body.ok !== true) throw new Error(body.error || 'No pudimos enviar la solicitud. Inténtalo más tarde.');
+    contactOperation.complete();
     $('lead-form').reset();
     startedAt = Date.now();
     $('lead-status').textContent = 'Solicitud enviada correctamente. Sollahms se pondrá en contacto contigo para conversar sobre tu financiamiento.';
   } catch (error) {
-    $('lead-status').textContent = error.name === 'TimeoutError' ? 'El envío no pudo confirmarse. Inténtalo más tarde o escribe a contacto@sollahms.cl.' : error.message || 'No pudimos enviar la solicitud. Inténtalo más tarde.';
+    contactOperation.uncertain();
+    $('lead-status').textContent = ['TimeoutError', 'TypeError'].includes(error.name) ? 'El envío no pudo confirmarse. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.' : error.message || 'No pudimos confirmar el envío. Escribe a contacto@sollahms.cl.';
   } finally {
     sending = false;
     $('lead-submit').disabled = !simulation;

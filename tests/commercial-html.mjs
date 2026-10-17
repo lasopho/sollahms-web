@@ -7,6 +7,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { assertPreservedSource } from './leben-preservation.mjs';
+import { restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
 
 export const NORTE_VERDE_HERO_ASSETS = ['assets/css/norte-verde-hero-variants.css', 'assets/js/norte-verde-hero-variants.js', 'assets/review/norte-verde-hero-variantes.html'];
 
@@ -23,6 +24,7 @@ export function restoreEcasaData(actual, file) {
     {cwd:ROOT,input:actual,maxBuffer:8*1024*1024}));
 }
 export function restoreEcasaContext(file, actual) {
+  actual = restoreP1IdempotencyFile(file, actual);
   const review=JSON.parse(readFileSync(resolve(ROOT,'tests/ecasa-context-reviewed-output.json')));
   if(!Object.hasOwn(review.files,file)) return actual;
   return execFileSync('python3',[resolve(ROOT,'tests/ecasa_scope.py'),'--context',file],{cwd:ROOT,input:actual,maxBuffer:8*1024*1024});

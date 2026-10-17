@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 330,
+  "expectedGitNodeTests": 368,
   "expectedReleaseOnlyCases": 26,
-  "expectedPythonFixtureTests": 137,
+  "expectedPythonFixtureTests": 154,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -128,6 +128,61 @@
         "a Production build rejects the merged Sento source before creating public output",
         "two real Sento regenerations preserve the validated presentation and all 130 other projects including fifteen Ecasa and Nordico",
         "generic and featured generators use the validated Sento presentation without documentation blocks"
+      ]
+    },
+    {
+      "file": "tests/form-idempotency.test.mjs",
+      "reason": "FUN-001: 27 synthetic provider, concurrency, replay, timing, storage and strict historical-scope cases; no real mail or Calendar access.",
+      "cases": [
+        "operation headers reject malformed, future and expired keys without inventing a legacy key",
+        "a local operation joins concurrent calls and replays its confirmed result",
+        "an operation key cannot be reused for another payload even while the first call is pending",
+        "a saturated local ledger refuses new operations while preserving the pending reservation",
+        "local responses survive the full valid operation window when the client clock is ahead",
+        "concurrent booking requests forward one local operation and replay a successful reservation",
+        "booking retries retain an uncertain provider outcome without creating another local booking",
+        "changed booking details under the same operation are rejected without another provider call",
+        "legacy booking callers retain their existing payload and do not acquire a hidden local guarantee",
+        "independent booking handlers expose the remaining distributed deduplication boundary",
+        "invalid operation keys and Preview block both providers before any real side effect",
+        "independent contact handlers use the same native Resend key during concurrent submissions and retry",
+        "contact provider payload conflicts stay visible and cannot be presented as successful mail",
+        "legacy contact retries receive a deterministic opaque native provider key",
+        "an uncertain contact response preserves the native provider key for a safe same-data retry",
+        "contact operations retain the same key and exact in-memory body through uncertain retries and reload",
+        "booking operations refuse resubmission after uncertainty including after a tab reload",
+        "changed details, expired keys and a backward clock cannot silently create fresh contact operations",
+        "confirmed completion or a definitive unsent request explicitly clears the retained operation",
+        "unavailable or corrupt operation storage blocks submission before a replacement key is issued",
+        "operation age and future-clock boundaries reject expired requests before either provider is called",
+        "mortgage retries and tab reloads retain original form timestamps when the client clock advances",
+        "a changed server UF snapshot preserves the contact operation key and reports a native payload conflict without another acceptance",
+        "mortgage contact retries preserve the native email body when server time advances without a UF change",
+        "legacy mortgage retries retain a business-content key across volatile timestamps and do not produce a second acceptance",
+        "historical preservation projects only the five exact reviewed FUN corrections",
+        "historical preservation rejects every foreign change to reviewed FUN files"
+      ]
+    },
+    {
+      "file": "tests/booking-form-idempotency.test.mjs",
+      "reason": "FUN-001: three real agenda-script simulations for success, uncertain replay/reload and read-only Preview; no real reservations.",
+      "cases": [
+        "agenda confirms a simulated successful booking and preserves its original public response",
+        "agenda blocks repeat booking after a lost response in the same tab and after reload",
+        "agenda permits another simulated Preview review after a definitively unsent request"
+      ]
+    },
+    {
+      "file": "tests/p1-commercial.test.mjs",
+      "reason": "CAT-002/SRC-001: seven synthetic current-data, catalogue DOM, generator, source scope and mortgage-contact rejection cases; no provider or private asset access.",
+      "cases": [
+        "P1 Verne refreshes the complete official office quote while all 134 catalogue objects stay exact",
+        "P1 four pending fiches disclose their status before the overview and preserve all other HTML bytes and actions",
+        "P1 exact file projections reject unrelated edits, partial quotes, lost notices and altered generator code",
+        "P1 real fiche generator keeps the same four status notices and coherent office facts without touching other projects",
+        "P1 live catalogue renders exactly four clear status notices and preserves search, price filtering and detail links",
+        "P1 unconfirmed residential identities cannot use either the old or the new office price as a verified project offer",
+        "P1 simulated contact rejects office-derived residential mortgage values before reading credentials or sending messages"
       ]
     }
   ],
