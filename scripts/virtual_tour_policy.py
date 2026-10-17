@@ -80,7 +80,7 @@ def registered_virtual_tours(research):
 def usable_virtual_tours(research):
     """Require a rendered scene/interface, not an HTTP response or blank frame."""
     return [tour for tour in registered_virtual_tours(research)
-            if tour.get('visualVerification', {}).get('result') in VISUAL_RESULTS
+            if (tour.get('visualVerification') or {}).get('result') in VISUAL_RESULTS
             and tour.get('embedStatus') != 'visual_pending'
             and tour.get('verificationStatus') not in {'visualization_pending', 'invalid', 'rejected', 'unavailable'}]
 
