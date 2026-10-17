@@ -1,0 +1,1803 @@
+{
+  "schemaVersion": 1,
+  "finding": "CAT-004",
+  "reconciledOn": "2026-10-17",
+  "specializedReviewDate": "2026-10-14",
+  "sourceSha256": {
+    "data/leon-plan-surfaces.json": "0c3465d7e6f2f623378c7e295c2e0f9cf72b586dd60a3c45b18a78985d3400dc",
+    "data/brochures-leon.json": "962ed948e818a6c27046657bea5835d54e1e885f88c14775b5567b1c6c3ec28d",
+    "data/registro-fichas.json": "be206aac3bb43fd9a9fbf720e514a8fdc840cc273397c1d1d28f15aa4fe07396"
+  },
+  "scope": "Pendientes derivados por campo y plano; no cambia áreas, imágenes, oferta ni pendientes históricos.",
+  "summary": {
+    "plans": 36,
+    "statusCounts": {
+      "confirmado": 29,
+      "discrepante": 5,
+      "pendiente": 2
+    },
+    "completeSurfaceSets": 30,
+    "incompleteSurfaceSets": 6,
+    "bathroomsPending": 3,
+    "identityPending": 1,
+    "byProject": {
+      "jardines-de-ramon-cruz": {
+        "plans": 8,
+        "completeSurfaceSets": 6,
+        "incompleteSurfaceSets": 2
+      },
+      "condominio-parque-don-lautaro": {
+        "plans": 3,
+        "completeSurfaceSets": 3,
+        "incompleteSurfaceSets": 0
+      },
+      "condominio-uruguay": {
+        "plans": 4,
+        "completeSurfaceSets": 3,
+        "incompleteSurfaceSets": 1
+      },
+      "gregorio-de-la-fuente-a": {
+        "plans": 9,
+        "completeSurfaceSets": 7,
+        "incompleteSurfaceSets": 2
+      },
+      "bcome": {
+        "plans": 12,
+        "completeSurfaceSets": 11,
+        "incompleteSurfaceSets": 1
+      }
+    }
+  },
+  "historicalProjectPending": {
+    "bcome": [
+      "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 2.290 como referencia histórica.",
+      "Las páginas 7, 8, 9 y 10 no identifican unívocamente la correspondencia entre cada plano y cada fila de superficies. Se conservan las tablas aparte.",
+      "El brochure imprime --- para las terrazas de ciertas variantes; se conserva como superficie no informada, sin convertir a cero.",
+      "El número de baños de las tipologías estudio no se declara en el encabezado; no se deduce de la imagen.",
+      "Consultar disponibilidad y condiciones comerciales actuales."
+    ],
+    "condominio-parque-don-lautaro": [
+      "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 6.434 como referencia histórica.",
+      "Consultar disponibilidad y condiciones comerciales actuales."
+    ],
+    "condominio-uruguay": [
+      "El precio documental de UF 2.990 en página 11 se conserva como histórico; la web oficial vigente publica desde UF 3.698.",
+      "Las dimensiones del brochure son aproximadas. Confirmar disponibilidad por unidad.",
+      "Brochure y ficha web difieren en algunas terminaciones; esta ficha documental reproduce el PDF aportado.",
+      "Consultar disponibilidad y condiciones comerciales actuales."
+    ],
+    "gregorio-de-la-fuente-a": [
+      "El brochure informa 69,6 m² útiles + 11,3 m² de terraza y 70,9 m² totales; la suma no coincide. Valores documentales reproducidos, sujetos a confirmación.",
+      "El precio documental de UF 2.990 y estado En verde en página 11 no representan condiciones actuales: la web distingue Torre I inmediata y Torre II en verde, desde UF 3.349.",
+      "No se publica código o letra de modelo: los planos del PDF sólo rotulan dormitorio/baño y Tradicional/Mariposa.",
+      "Consultar disponibilidad y condiciones comerciales actuales.",
+      "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
+    ],
+    "jardines-de-ramon-cruz": [
+      "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 2.900 y entrega inmediata como referencia histórica.",
+      "Las páginas 9, 10 y 11 no identifican unívocamente la correspondencia entre cada plano y cada fila de superficies. Se conservan las tablas aparte.",
+      "Inconsistencia de superficies en página 12: 70,00 + 5,61 no suma el total impreso 77,57 m².",
+      "El plano de la página 12 repite la etiqueta Dormitorio 2 en dos habitaciones; el encabezado declara 3 dormitorios. Se conserva el diagrama original.",
+      "Consultar disponibilidad y condiciones comerciales actuales.",
+      "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
+    ]
+  },
+  "plans": [
+    {
+      "id": "jardines-de-ramon-cruz-01",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "planPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/plano-01.webp",
+      "planSha256": "7808f2700f5328b14eb9663b6f1847ea82440537b75af7e343c3a6f9d80378a6",
+      "status": "pendiente",
+      "complete": false,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": null,
+          "applicable": true,
+          "status": "pendiente",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": null,
+          "applicable": true,
+          "status": "pendiente",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": null,
+          "applicable": true,
+          "status": "pendiente",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/jardines-de-ramon-cruz.pdf",
+        "sha256": "34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765",
+        "page": 9
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [
+        "useful",
+        "terrace",
+        "total"
+      ],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "jardines-de-ramon-cruz-02",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "planPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/plano-02.webp",
+      "planSha256": "91be0ef9ff5dacc9ae11c190c1f4c9ef36e250576819190c35c6f9bb4238d1f9",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 36.85,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 7.5,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 44.35,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/jardines-de-ramon-cruz.pdf",
+        "sha256": "34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765",
+        "page": 9
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "jardines-de-ramon-cruz-03",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "planPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/plano-03.webp",
+      "planSha256": "632dd11b2e14a8c408526e8489348492035f1a61de392f381820da614f97bb2d",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 62.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 8.27,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 70.87,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/jardines-de-ramon-cruz.pdf",
+        "sha256": "34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765",
+        "page": 10
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "jardines-de-ramon-cruz-04",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "planPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/plano-04.webp",
+      "planSha256": "23c538111e67dcfc0fbc03eac0917cf773868c499f1ec8d9fcba4c4c9e98a521",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 60.11,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 8.0,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 68.11,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/jardines-de-ramon-cruz.pdf",
+        "sha256": "34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765",
+        "page": 10
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "jardines-de-ramon-cruz-05",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "planPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/plano-05.webp",
+      "planSha256": "a8bf9aafe9f9b09cf001e3645c8150ba02ac7273150dc075adf5e79fe38c79ae",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 63.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 8.27,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 71.87,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/jardines-de-ramon-cruz.pdf",
+        "sha256": "34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765",
+        "page": 10
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "jardines-de-ramon-cruz-06",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "planPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/plano-06.webp",
+      "planSha256": "d7c5264624c70268332a6be8f8e69aae21560a2cb72d566a300b3d65fec33099",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 56.76,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 5.68,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 62.44,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/jardines-de-ramon-cruz.pdf",
+        "sha256": "34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765",
+        "page": 11
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "jardines-de-ramon-cruz-07",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "planPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/plano-07.webp",
+      "planSha256": "5b38dea63621276cc60678f67bfd7dcef77e57e9d52fe753d359c3d4cbce9052",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 58.65,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 5.68,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 64.33,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/jardines-de-ramon-cruz.pdf",
+        "sha256": "34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765",
+        "page": 11
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "jardines-de-ramon-cruz-08",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "planPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/plano-08.webp",
+      "planSha256": "78bc34277dc3ad67ac3bb8496e3bfeb283c7af4c57605cca8d92fa4a36f6b632",
+      "status": "discrepante",
+      "complete": false,
+      "identityConfirmed": true,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 70.0,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": null,
+          "applicable": true,
+          "status": "discrepante",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 77.57,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/jardines-de-ramon-cruz.pdf",
+        "sha256": "34cadc95ac7343d771d8cf061f6203f3250084e6fd226ce45ad566efa16a3765",
+        "page": 12
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [
+        "terrace"
+      ],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "condominio-parque-don-lautaro-01",
+      "projectSlug": "condominio-parque-don-lautaro",
+      "planPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/plano-01.webp",
+      "planSha256": "cb6c15122d6af8b3ee5f6fe615797141ab9bd6d1358b1fc55de7c221bff3c069",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 76,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 14.5,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 90.5,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/condominio-parque-don-lautaro.pdf",
+        "sha256": "9a7514fdaf684e92a3c3369b2e3c734d3afb5f5f9410bc88e4ca22714f313081",
+        "page": 10
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-parque-don-lautaro/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "condominio-parque-don-lautaro-02",
+      "projectSlug": "condominio-parque-don-lautaro",
+      "planPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/plano-02.webp",
+      "planSha256": "cbaa577865a0b12e74a20bd7719fab287b5badf48bd36dfe3948cbb15fe1ddf8",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 80.4,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 17.3,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 97.7,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/condominio-parque-don-lautaro.pdf",
+        "sha256": "9a7514fdaf684e92a3c3369b2e3c734d3afb5f5f9410bc88e4ca22714f313081",
+        "page": 11
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-parque-don-lautaro/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "condominio-parque-don-lautaro-03",
+      "projectSlug": "condominio-parque-don-lautaro",
+      "planPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/plano-03.webp",
+      "planSha256": "201c8d89fc341d8e5f14b1af66cf72b1adc4c298a69969762cf66421ba814ca4",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 96.35,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 17.87,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 114.22,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/condominio-parque-don-lautaro.pdf",
+        "sha256": "9a7514fdaf684e92a3c3369b2e3c734d3afb5f5f9410bc88e4ca22714f313081",
+        "page": 12
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-parque-don-lautaro/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "condominio-uruguay-01",
+      "projectSlug": "condominio-uruguay",
+      "planPath": "/assets/propiedades/leon/condominio-uruguay/plano-p12-455-145-925-800.webp",
+      "planSha256": "820ee250043d74443e1b465dc365ce3d1a8673e6882d987fe3724cd294501dc8",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 38.8,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 8.8,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 47.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/condominio-uruguay.pdf",
+        "sha256": "67b6daae38716b987e7f5974f4fbc0dd49c75ddb8714ca02e236de328decc119",
+        "page": 12
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-uruguay/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "condominio-uruguay-02",
+      "projectSlug": "condominio-uruguay",
+      "planPath": "/assets/propiedades/leon/condominio-uruguay/plano-p13-535-105-920-855.webp",
+      "planSha256": "af71ffecca9853d9e2c6f9f0a2251827859122090a5a8195750bce589a93fefb",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 58.3,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 4.4,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 62.7,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/condominio-uruguay.pdf",
+        "sha256": "67b6daae38716b987e7f5974f4fbc0dd49c75ddb8714ca02e236de328decc119",
+        "page": 13
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-uruguay/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "condominio-uruguay-03",
+      "projectSlug": "condominio-uruguay",
+      "planPath": "/assets/propiedades/leon/condominio-uruguay/plano-p14-475-105-925-810.webp",
+      "planSha256": "06cd76fdf21c1ff1f45353186eb979d176ce3166df1a860ea27212c90b32178c",
+      "status": "discrepante",
+      "complete": false,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": null,
+          "applicable": true,
+          "status": "discrepante",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 5.8,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": null,
+          "applicable": true,
+          "status": "discrepante",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/condominio-uruguay.pdf",
+        "sha256": "67b6daae38716b987e7f5974f4fbc0dd49c75ddb8714ca02e236de328decc119",
+        "page": 14
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-uruguay/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [
+        "useful",
+        "total"
+      ],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "condominio-uruguay-04",
+      "projectSlug": "condominio-uruguay",
+      "planPath": "/assets/propiedades/leon/condominio-uruguay/plano-p15-475-75-925-810.webp",
+      "planSha256": "f1d22003d0f12fd9aca0e9d2cf9950cf2beffac561aa34224199f15af4e14d37",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 57.8,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 7.2,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 65.0,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/condominio-uruguay.pdf",
+        "sha256": "67b6daae38716b987e7f5974f4fbc0dd49c75ddb8714ca02e236de328decc119",
+        "page": 15
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-uruguay/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-01",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p12-438-188-662-795.webp",
+      "planSha256": "6053336c4e220aea81f972f83ada01a197e5079de738f8e52f353cb07ce9f3b7",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 37.0,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 6.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 43.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 12
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-02",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p12-682-318-973-723.webp",
+      "planSha256": "840d5bdb5d7507aebe438b3d99f481de7f740f0b88a25345f836567776ab1c94",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 40.3,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 6.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 46.9,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 12
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-03",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p13-438-235-682-775.webp",
+      "planSha256": "c5c795718c072928a9c78e34d254ea9b8e9b52e7c7772b02ef5d8323ff3c6db4",
+      "status": "discrepante",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 39.1,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 6.4,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 45.5,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 13
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-04",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p13-717-200-958-780.webp",
+      "planSha256": "879fcc97995ea12628f2d42f07ddbe2a4c80a66d0dc673fa8166226761750d25",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 40.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 6.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 47.2,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 13
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-05",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p14-417-254-667-747.webp",
+      "planSha256": "3fdc958c928014375bcf9da91d628a81630ccf9bde0d464f1763f2c43323bef6",
+      "status": "discrepante",
+      "complete": false,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": null,
+          "applicable": true,
+          "status": "discrepante",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 11.3,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": null,
+          "applicable": true,
+          "status": "discrepante",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 14
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [
+        "useful",
+        "total"
+      ],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-06",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p14-681-257-984-738.webp",
+      "planSha256": "c91b347266b6d5a1dffe942b96ee31a46b47d3b6259d96830981923cc93b1e75",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 59.8,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 9.8,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 69.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 14
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-07",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p15-419-291-689-700.webp",
+      "planSha256": "a7f91537e24c232dc910db902316fc736872b5f54ba85b9ecb856001c8245162",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 57.2,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 11.7,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 68.9,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 15
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-08",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p15-708-281-986-729.webp",
+      "planSha256": "c3189559d81ee46f52a9177e71debad5268642d5e9d0f30cf5d2fcfa18c456c1",
+      "status": "discrepante",
+      "complete": false,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": null,
+          "applicable": true,
+          "status": "discrepante",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 11.7,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 69.0,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 15
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [
+        "useful"
+      ],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "gregorio-de-la-fuente-a-09",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "planPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/plano-p16-490-178-858-833.webp",
+      "planSha256": "f3ef96b7b48b52ba0c106f1a86c07acae98fd46eccb804d5bfdfab44d91304ad",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "useful",
+          "label": "Superficie útil",
+          "valueM2": 69.9,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 22.6,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 92.5,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/gregorio-de-la-fuente-a.pdf",
+        "sha256": "097e4ec05dc2343bd8c82a2ae2cea1d440874939197836d775805dd2fd4733fa",
+        "page": 16
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-01",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-01.webp",
+      "planSha256": "47288f9363749e35a21d6d5889066431f13c42f0559961393519ff2a51e46d26",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 0,
+      "bathrooms": null,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 24.78,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": null,
+          "applicable": false,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 24.78,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 7
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [
+        "bathrooms"
+      ],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-02",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-02.webp",
+      "planSha256": "ea623a82b8f9af829f603ab12c2e657ab741f40bd8fb5be556961e226b5c225d",
+      "status": "pendiente",
+      "complete": false,
+      "identityConfirmed": false,
+      "bedrooms": 0,
+      "bathrooms": null,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": null,
+          "applicable": true,
+          "status": "pendiente",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": null,
+          "applicable": null,
+          "status": "pendiente",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": null,
+          "applicable": true,
+          "status": "pendiente",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 7
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [
+        "interior",
+        "terrace",
+        "total",
+        "identity",
+        "bathrooms"
+      ],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-03",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-03.webp",
+      "planSha256": "ff1a17d623ed07566e44c7ce44172a1d003426eb5d3da184cc6dd9bf234e5a8b",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 0,
+      "bathrooms": null,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 29.84,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": null,
+          "applicable": false,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 29.84,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 7
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [
+        "bathrooms"
+      ],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-04",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-04.webp",
+      "planSha256": "f517891705349a8a5e2772f4c919832b67e7173b33a54478869f2bcd70cafb12",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 32.87,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 7.52,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 40.39,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 8
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-05",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-05.webp",
+      "planSha256": "4363569e493c06ee05fa35f002bf7e7266d0fc15cf82eb1e5f3dac269a6c52d1",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 32.24,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 3.79,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 36.03,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 8
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-06",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-06.webp",
+      "planSha256": "5e61e06b5aee75335939237f4cee034202cc4d768452c4717b0e6f7aae8b8f13",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 31.12,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 3.29,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 34.41,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 8
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-07",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-07.webp",
+      "planSha256": "2ef4ab1279ca0bd53c598821ce0fce676635a18fc3965fac8afe86847e2dc4b1",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 35.25,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": null,
+          "applicable": false,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 35.25,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 8
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-08",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-08.webp",
+      "planSha256": "f9c53a1986e5ee91396467ffd5f9bd45053e5d70f2bf96f84b4e49eb25df200b",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 45.31,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": null,
+          "applicable": false,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 45.31,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 9
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-09",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-09.webp",
+      "planSha256": "68a7f2dcf93f08dd45481b644e163681bb6556bdfbb743cb18706b0e9ac63fb8",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 44.77,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": null,
+          "applicable": false,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 44.77,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 9
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-10",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-10.webp",
+      "planSha256": "962a9885121555ec6656e66f4ed8d83ed11ec3762e4200ad8efc9121e8bcd107",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 50.35,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 4.03,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 54.38,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 10
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-11",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-11.webp",
+      "planSha256": "85ad12c5d8b68befa718b6b18f08db86ebb959e8643ff960ac7c02c2f4aae17a",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 47.96,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 9.49,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 57.45,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 10
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    },
+    {
+      "id": "bcome-12",
+      "projectSlug": "bcome",
+      "planPath": "/assets/propiedades/leon/bcome/plano-12.webp",
+      "planSha256": "d5d3d7b403ca05134c661b555585fbe576d808c29b47abb20c34e5200156cfa5",
+      "status": "confirmado",
+      "complete": true,
+      "identityConfirmed": true,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "areas": [
+        {
+          "kind": "interior",
+          "label": "Superficie interior",
+          "valueM2": 50.35,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "terrace",
+          "label": "Terraza",
+          "valueM2": 3.5,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        },
+        {
+          "kind": "total",
+          "label": "Superficie total",
+          "valueM2": 53.85,
+          "applicable": true,
+          "status": "confirmado",
+          "derived": false
+        }
+      ],
+      "pdf": {
+        "path": "/assets/brochures/leon/bcome.pdf",
+        "sha256": "5eb9b2ba44e865f1981653d03f393cc30f46fe08b96096f1f1ec7b878ae6eb1d",
+        "page": 10
+      },
+      "officialUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "checkedOn": "2026-10-14",
+      "pendingFields": [],
+      "renderedFieldsMatch": true,
+      "evidenceStatus": "Conciliación de metadata retenida; originales privados no recertificados en P2."
+    }
+  ]
+}
