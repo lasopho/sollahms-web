@@ -7,8 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { projectP1CommercialFile, projectP1CommercialRows } from './p1-commercial-scope.mjs';
 import { restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
-import { restoreP2FinanceFile } from './p2-finance-preservation.mjs';
-import { restoreP2EmbedFile } from './p2-embed-scope.mjs';
+import { projectP2File } from './p2-preservation.mjs';
 import { readMainBaseline, projectLeonFile, restoreLeonRows as publicationRestoreLeonRows, restoreLeonContexts, LEON_RETIRED_SLUGS } from '../scripts/leon-main-publication.mjs';
 export { projectLeonFile, restoreLeonContexts };
 // Test-only historical projections. The real publication validator remains
@@ -25,7 +24,7 @@ export function readPreLeonFile(file) {
   assert.equal(existsSync(resolve(ROOT,file)),false,'Retired León public route returned');
   const before=original(file);assert.deepEqual(readFileSync(resolve(ROOT,'docs/archive/leon',file)),before);return before;
  }
- return projectLeonFile(file,projectP1CommercialFile(file,restoreP1IdempotencyFile(file,restoreP2FinanceFile(file,restoreP2EmbedFile(file,readFileSync(resolve(ROOT,file)))))));
+ return projectLeonFile(file,projectP1CommercialFile(file,restoreP1IdempotencyFile(file,projectP2File(file,readFileSync(resolve(ROOT,file))))));
 }
 const reviewBytes=readFileSync(resolve(ROOT,'data/brochures-leon.json'));
 assert.equal(sha(reviewBytes),'962ed948e818a6c27046657bea5835d54e1e885f88c14775b5567b1c6c3ec28d');

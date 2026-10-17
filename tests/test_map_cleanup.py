@@ -11,6 +11,7 @@ import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 from p2_embed_scope import restore_p2_embed_file, restore_generated_embed_alternatives
+from p2_scope import restore_p2_media_file
 from sento_scope import original_data, historical_file
 from string import Template
 
@@ -32,7 +33,11 @@ from fiche_presentation import commercialize_fiche
 
 spec = importlib.util.spec_from_file_location('map_cleanup_details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(details)
+# This suite renders the immutable historical identity set, including retired
+# projects. Reverse only the pinned MED-008 hook; current134 rendering and
+# unknown-identity rejection remain covered by test_reviewed_image_alts.
+exec(compile(restore_p2_media_file('scripts/build-project-details.py',
+    (ROOT / 'scripts/build-project-details.py').read_bytes()), str(spec.origin), 'exec'), details.__dict__)
 PROJECTS = original_data(json.loads((ROOT / 'data/proyectos.json').read_text()))
 RECORDS = {row['slug']: row for row in original_data(json.loads((ROOT / 'data/fichas-proyectos.json').read_text()), 'data/fichas-proyectos.json')}
 

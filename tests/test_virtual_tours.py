@@ -14,6 +14,7 @@ from pathlib import Path
 from leben_scope import original_html
 from leon_main_scope import read_pre_leon
 from sento_scope import original_data, historical_file
+from p2_scope import restore_p2_media_file
 from string import Template
 from urllib.parse import urlparse
 from virtual_tour_scope import exact_removed_page, VISTA_UNAVAILABLE_URL
@@ -26,7 +27,11 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 from virtual_tour_policy import usable_virtual_tours, virtual_tours_to_render, hide_absent_virtual_tours
 spec = importlib.util.spec_from_file_location('details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(details)
+# Keep this historical137-identity regression at the exact UX renderer stage.
+# MED-008 tests separately exercise the raw current renderer and its strict
+# refusal to assign reviewed descriptions to an unknown identity.
+exec(compile(restore_p2_media_file('scripts/build-project-details.py',
+    (ROOT / 'scripts/build-project-details.py').read_bytes()), str(spec.origin), 'exec'), details.__dict__)
 PROJECTS = original_data(json.loads((ROOT / 'data/proyectos.json').read_text()))
 RECORDS = {r['slug']: r for r in original_data(json.loads((ROOT / 'data/fichas-proyectos.json').read_text()), 'data/fichas-proyectos.json')}
 TEMPLATE = Template((ROOT / 'templates/project-detail.html').read_text())

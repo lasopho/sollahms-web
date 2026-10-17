@@ -13,7 +13,7 @@ import subprocess
 from pathlib import Path
 from leben_scope import original_html, original_context, assert_base_records
 from sento_scope import original_data as restore_sento_data, historical_file, NODE
-from p2_embed_scope import restore_p2_embed_file
+from p2_scope import restore_current_p2_file
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = 'f1e9bf1715cc99d095a367eba9028a9a1ad2b026'
@@ -157,7 +157,7 @@ def public_fallback(text):
     return re.sub(r'<!--ECASA_PUBLIC_START-->(.*?)<!--ECASA_PUBLIC_END-->', lambda match: match[1], text, flags=re.S)
 
 def validate_reviewed_page(path, current):
-    current = restore_p2_embed_file(path, current)
+    current = restore_current_p2_file(path, current)
     reviewed = json.loads(REVIEWED_OUTPUT.read_text())
     assert reviewed['baselineCommit'] == CONSOLIDATION_BASE, 'Ecasa consolidated HTML review is not frozen'
     assert hashlib.sha256((ROOT / 'data/brochures-ecasa.json').read_bytes()).hexdigest() == reviewed['manifestSha256'], 'Ecasa reviewed manifest changed'

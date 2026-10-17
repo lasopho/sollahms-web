@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from project_embed_policy import normalize_page_embeds, add_persistent_embed_alternatives, iframe_markup, map_markup
 from p2_embed_scope import SCOPE, restore_p2_embed_file, restore_generated_embed_alternatives
+from p2_scope import restore_p2_file, restore_p2_media_file
 from virtual_tour_policy import usable_virtual_tours, virtual_tours_to_render
 
 
@@ -89,12 +90,18 @@ class P2PersistentAlternatives(unittest.TestCase):
         for row in projects:
             path = row['slug'] + '.html'
             actual = (ROOT / path).read_bytes()
-            before = restore_p2_embed_file(path, actual)
+            # Full composition checks raw Media/UX bytes before the historical
+            # comparison. Behavior assertions below still inspect raw nodes.
+            before = restore_p2_file(path, actual)
             current_nodes = Nodes(actual.decode()).nodes
             prior_nodes = Nodes(before.decode()).nodes
             self.assertEqual([attrs for tag, attrs in current_nodes if tag == 'iframe'],
                              [attrs for tag, attrs in prior_nodes if tag == 'iframe'], path)
-            self.assertEqual(restore_generated_embed_alternatives(actual.decode()).encode(), before, path)
+            # MED-008 modifies only alt attributes. Validate its exact reverse
+            # delta separately before comparing the immutable UX embed scope.
+            ux_stage = restore_p2_media_file(path, actual)
+            self.assertEqual(restore_p2_embed_file(path, ux_stage), before, path)
+            self.assertEqual(restore_generated_embed_alternatives(ux_stage.decode()).encode(), before, path)
             host_match = re.search(r'id="project-embed-hosts">(.*?)</script>', actual.decode())
             permitted = json.loads(host_match[1]) if host_match else []
             for i, (tag, attrs) in enumerate(current_nodes):
@@ -113,7 +120,7 @@ class P2PersistentAlternatives(unittest.TestCase):
                 self.assertIn(urlparse(link[1]['href']).hostname, permitted, path)
                 frames += 1
                 links += 1
-            changed += before != actual
+            changed += before != ux_stage
         self.assertEqual((frames, links, changed), (220, 220, 132))
 
     def test_future_map_and_tour_markup_provides_static_access_without_javascript(self):

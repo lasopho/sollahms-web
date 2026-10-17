@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 368,
+  "expectedGitNodeTests": 399,
   "expectedReleaseOnlyCases": 26,
-  "expectedPythonFixtureTests": 154,
+  "expectedPythonFixtureTests": 198,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -183,6 +183,53 @@
         "P1 live catalogue renders exactly four clear status notices and preserves search, price filtering and detail links",
         "P1 unconfirmed residential identities cannot use either the old or the new office price as a verified project offer",
         "P1 simulated contact rejects office-derived residential mortgage values before reading credentials or sending messages"
+      ]
+    },
+    {
+      "file": "tests/p2-catalogue.test.mjs",
+      "reason": "Twelve current catalogue generation, conditions, five-cover,134 identity-directory and exact-scope cases using tracked data and local DOM fixtures.",
+      "cases": [
+        "P2 catalogue generation is reproducible and preserves all 134 source objects",
+        "CAT-005 every priced and unpriced card gives its retained review date and qualified detail link",
+        "CAT-005 Sento and Nórdico retain units, discounts and exclusions without treating them as fresh offers",
+        "CAT-005 uncertain dates and changed quotes cannot inherit a fresh date or Nórdico unit condition",
+        "catalogue search, unknown-price filtering, ordering and reset still operate on current data",
+        "PERF-001 five cover source sets exactly match their own reviewed existing images and retain the original",
+        "PERF-001 responsive cards keep lazy loading, original src and detail access while other covers keep fallback behavior",
+        "PERF-001 a changed project cover cannot borrow variants of the previous photograph",
+        "SEO-001 the initial HTML contains exactly the same 134 public identity links without commercial or private content",
+        "SEO-001 the static directory remains available after failed fetch and is hidden only after current cards render",
+        "P2 exact test-only projection rejects lost identity notices, altered prices, links, srcsets and appended bytes",
+        "catalogue improvements preserve every publication control and do not convert protected León media into public rights"
+      ]
+    },
+    {
+      "file": "tests/p2-embed-alternatives.test.mjs",
+      "reason": "Six current persistent-link/runtime cases and exact135-file embed scope, composing only the independently pinned MED-008 predecessor for historical comparisons.",
+      "cases": [
+        "P2 a silent blocked map keeps its static keyboard link without a load or error event",
+        "P2 a network error removes only the failed frame and preserves exactly its static alternative",
+        "P2 a tour load never certifies a scene and its alternative survives the later error",
+        "P2 runtime rejects a tampered static link and uses only the approved error fallback",
+        "P2 invalid iframe sources remove both the iframe and adjacent static action",
+        "P2 exact historical projection rejects edits to every reviewed HTML and source file"
+      ]
+    },
+    {
+      "file": "tests/p2-security-preservation.test.mjs",
+      "reason": "Two exact privacy/focus successor preservation cases; behavioral privacy/contrast checks also run as Python fixtures.",
+      "cases": [
+        "security historical projection accepts only reviewed source and its exact predecessor",
+        "security projection passes unrelated bytes through without creating a broad exception"
+      ]
+    },
+    {
+      "file": "tests/p2-preservation.test.mjs",
+      "reason": "Three composed P2 byte-scope, mutation, historical-ancestor and Python/JavaScript bridge whitelist cases; no release scope relaxation.",
+      "cases": [
+        "P2 composition validates complete current files before restoring exact predecessors and rejects extra bytes",
+        "older historical inputs keep their bytes and still require the original pinned P1 validation",
+        "Python and JavaScript P2 bridge whitelists agree and publication controls receive no projection"
       ]
     }
   ],

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { P2_EMBED_SCOPE, restoreP2EmbedFile } from './p2-embed-scope.mjs';
+import { projectP2MediaFile } from './p2-media-scope.mjs';
 
 const runtime = readFileSync(new URL('../assets/js/project-embeds.js', import.meta.url), 'utf8');
 const mapUrl = 'https://www.google.com/maps?output=embed&q=Published+address';
@@ -85,13 +86,13 @@ test('P2 invalid iframe sources remove both the iframe and adjacent static actio
 
 test('P2 exact historical projection rejects edits to every reviewed HTML and source file', () => {
   for (const file of Object.keys(P2_EMBED_SCOPE)) {
-    const actual = readFileSync(new URL('../' + file, import.meta.url));
+    const actual = projectP2MediaFile(file, readFileSync(new URL('../' + file, import.meta.url)));
     const before = restoreP2EmbedFile(file, actual);
     assert.notDeepEqual(actual, before, file);
     assert.deepEqual(restoreP2EmbedFile(file, before), before, file);
     assert.throws(() => restoreP2EmbedFile(file, Buffer.concat([actual, Buffer.from('\n')])), /Unreviewed P2 embed file/, file);
   }
-  const fiche = readFileSync(new URL('../bcome.html', import.meta.url), 'utf8');
+  const fiche = projectP2MediaFile('bcome.html', readFileSync(new URL('../bcome.html', import.meta.url))).toString();
   for (const [before, after] of [['Paicav', 'Other-address'],
     ['/contacto.html?proyecto=bcome', '/contacto.html?proyecto=other-project'],
     ['loading="lazy"', 'loading="eager"']]) {
