@@ -65,6 +65,8 @@ Urbana, Ingevec y Ecasa. Verifica SHA-256, bytes cuando están documentados,
 dimensiones de imágenes decodificables y número de páginas de los PDF. Rechaza
 rutas no canónicas y enlaces simbólicos, y no crea placeholders, descarga,
 descomprime, copia recursos ni cambia manifiestos o derechos.
+Si SHA-256 o bytes no coinciden, rechaza el archivo antes de invocar cualquier
+decodificador de imagen o PDF; sólo procesa los binarios exactos revisados.
 
 El comando devuelve salida 1 mientras haya ausencias o diferencias. Incluso con
 inventario íntegro, su resultado conserva `releaseApproved=false` y
@@ -101,10 +103,10 @@ CSV de los 353 faltantes, solicitudes por cartera y evidencia de búsqueda/red.
 La condición anterior y posterior es la misma para los binarios: 353 pendientes;
 ahora existe un preflight reproducible para comprobar su entrega autorizada.
 
-Ocho pruebas sintéticas comprueban archivos exactos, ausencias sin placeholders,
+Nueve pruebas sintéticas comprueban archivos exactos, ausencias sin placeholders,
 corrupción, SHA/bytes/dimensiones alterados, enlaces simbólicos, rutas inseguras,
-PDF y selección de las 1039 rutas con derechos intactos. No usan originales
-privados ni proveedores. Aprobaron 8/8. También aprobaron 29/29 pruebas Node
+PDF, rechazo previo al parser y selección de las 1039 rutas con derechos intactos.
+No usan originales privados ni proveedores. Aprobaron 9/9. También aprobaron 29/29 pruebas Node
 existentes: 10 de originales oficiales Ecasa, 14 de publicación Ecasa y 5 de
 publicación Leben. Las simulaciones confirman que recursos ausentes o alterados
 siguen bloqueando la preparación y que los perfiles públicos requieren derechos.

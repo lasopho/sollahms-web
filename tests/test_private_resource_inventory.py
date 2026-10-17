@@ -4,6 +4,7 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from PIL import Image
 from pypdf import PdfWriter
@@ -42,7 +43,28 @@ class PrivateResourceInventoryTests(unittest.TestCase):
         item = dict(self.item, sha256='0' * 64, bytes=1, width=9)
         row = CHECK.inspect_asset(self.root, item)
         self.assertEqual(row['status'], 'invalid')
-        self.assertEqual(row['errors'], ['sha256_mismatch', 'size_mismatch', 'dimensions_mismatch'])
+        self.assertEqual(row['errors'], ['sha256_mismatch', 'size_mismatch'])
+        row = CHECK.inspect_asset(self.root, dict(self.item, width=9))
+        self.assertEqual(row['errors'], ['dimensions_mismatch'])
+
+    def test_untrusted_pdf_and_image_never_reach_decoders(self):
+        pdf = self.root / 'assets/brochures/untrusted.pdf'
+        pdf.parent.mkdir(parents=True)
+        pdf.write_bytes(b'not reviewed PDF bytes')
+        cases = [
+            {'path': pdf.relative_to(self.root).as_posix(), 'sha256': '0' * 64, 'pageCount': 1},
+            dict(self.item, sha256='0' * 64),
+            dict(self.item, bytes=1),
+        ]
+        for item in cases:
+            with self.subTest(path=item['path'], sha=item['sha256']), \
+                    patch.object(CHECK, 'PdfReader') as pdf_reader, \
+                    patch.object(CHECK.Image, 'open') as image_reader:
+                row = CHECK.inspect_asset(self.root, item)
+                self.assertEqual(row['status'], 'invalid')
+                self.assertTrue(set(row['errors']) <= {'sha256_mismatch', 'size_mismatch'})
+                pdf_reader.assert_not_called()
+                image_reader.assert_not_called()
 
     def test_corrupt_image_is_rejected_even_with_matching_digest(self):
         self.path.write_bytes(b'not an image')

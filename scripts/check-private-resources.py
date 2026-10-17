@@ -116,6 +116,10 @@ def inspect_asset(asset_root, item):
         errors.append('sha256_mismatch')
     if 'bytes' in item and len(data) != item['bytes']:
         errors.append('size_mismatch')
+    # Decode only the exact reviewed bytes. A mismatched package has no reason
+    # to reach an image/PDF parser, even when the container looks well formed.
+    if errors:
+        return dict(row, status='invalid', errors=errors)
     if path.suffix.lower() == '.pdf':
         try:
             pages = len(PdfReader(path, strict=True).pages)
