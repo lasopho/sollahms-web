@@ -9,6 +9,7 @@ import { resolve } from 'node:path';
 import { assertPreservedSource } from './leben-preservation.mjs';
 import { restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
 import { restoreP2FinanceFile } from './p2-finance-preservation.mjs';
+import { restoreP2EmbedFile } from './p2-embed-scope.mjs';
 
 export const NORTE_VERDE_HERO_ASSETS = ['assets/css/norte-verde-hero-variants.css', 'assets/js/norte-verde-hero-variants.js', 'assets/review/norte-verde-hero-variantes.html'];
 
@@ -107,7 +108,7 @@ export function readCommercialFile(file) {
   if (ECASA_SLUGS.has(file.replace(/\.html$/, ''))) {
     const input=existsSync(resolve(ROOT,file))?readFileSync(resolve(ROOT,file)):Buffer.alloc(0);
     if(ECASA_NEW_SLUGS.has(file.replace(/\.html$/, ''))) return input;
-    return restoreReviewedTourFile(file,input);
+    return restoreReviewedTourFile(file,restoreP2EmbedFile(file,input));
   }
   let actual = projectSentoFile(file, readPreLeonFile(file));
   if (file === 'edificio-nordico.html') return actual;
