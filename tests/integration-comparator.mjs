@@ -136,6 +136,35 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
   return { elements, agenda, posts, postHeaders, storage, invoke, release: () => release(), advance: amount => { now += amount; }, input: (id, value) => { elements[id].value = String(value); elements['simulation-form'].listeners.input({ target: elements[id] }); }, submit: () => elements['lead-form'].listeners.submit({ preventDefault() {} }) };
 }
 
+test('comparador conserva simulación manual cuando las referencias vencen el 17/10 y después', async () => {
+  const ui = await frontend({ slug: null });
+  for (const [id, value] of [['property', 4000], ['down', 25], ['years', 20], ['location', 'santiago-metropolitana']]) ui.input(id, value);
+  ui.advance(6 * 86_400_000); ui.invoke('refreshFinancialDate()');
+  assert.match(ui.elements['comparison-status'].textContent, /^2 referencias CMF/);
+  for (const days of [1, 7]) {
+    ui.advance(days * 86_400_000); ui.invoke('refreshFinancialDate()');
+    assert.match(ui.elements['comparison-status'].textContent, /No hay tasas bancarias verificadas/);
+    assert.equal(ui.elements['comparison-cards'].innerHTML, '');
+    ui.input('rate', 4.5);
+    assert.equal(ui.invoke('simulation.propertyUf'), 4000);
+    assert.equal(ui.invoke('simulation.annualRatePercent'), 4.5);
+    assert.equal(ui.invoke('selectedId'), null);
+    assert.equal(ui.posts.length, 0);
+  }
+});
+
+test('comparador excluye CMF de vivienda para terreno y oficinas y conserva su advertencia', async () => {
+  for (const slug of ['reserva-mayor-2', 'atelier-prat-oficinas', 'corrientes-oficinas']) {
+    const ui = await frontend({ slug });
+    assert.equal(ui.elements['project-asset-note'].hidden, false);
+    assert.match(ui.elements['project-asset-note'].textContent, /no confirma acceso a un crédito de vivienda/);
+    assert.equal(ui.invoke('projectAllowsOffer({ ...dataset.offers[0], location: "any" })'), false);
+  }
+  const residential = await frontend();
+  assert.equal(residential.elements['project-asset-note'].hidden, true);
+  assert.equal(residential.invoke('projectAllowsOffer({ ...dataset.offers[0], location: "any" })'), true);
+});
+
 test('all136 project origins load exactly106 verified prices, leave30 pending blank and keep agenda/detail context', async () => {
   let verified = 0;
   for (const project of catalogue) {

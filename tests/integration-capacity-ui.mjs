@@ -141,6 +141,45 @@ const valid = { income: 3500000, savings: 32908992, years: '20', rate: '4.5' };
 
 // These tests exercise the actual closure/rendering and real financial helpers.
 // The fake DOM models events and output, not viewport layout or browser validity.
+test('capacidad distingue vivienda, oficinas y terrenos sin cambiar cálculos ni presentar una oferta CMF', async () => {
+  const projects = ['Residencial', 'Comercial', 'Terreno'].map(tipoActivo => ({ ...fixture, tipoActivo, slug: 'synthetic-' + tipoActivo.toLowerCase() }));
+  const ui = await frontend({ projects }); ui.set(valid); await ui.submit();
+  for (const project of projects) {
+    const article = ui.card(project);
+    assert.match(article.querySelector('.capacity-badge').textContent, /^A\./);
+    assert.match(article.textContent, /20,09 UF/);
+    assert.match(article.textContent, /826\.397/);
+    const note = article.querySelector('.capacity-asset-note');
+    if (project.tipoActivo === 'Residencial') {
+      assert.equal(note, null);
+      assert.doesNotMatch(article.querySelector('.capacity-badge').textContent, /Escenario manual/);
+    } else {
+      assert.match(note.textContent, new RegExp('Tipo de activo: ' + project.tipoActivo));
+      assert.match(note.textContent, /no confirma acceso a un crédito de vivienda/);
+      assert.match(note.textContent, /referencias CMF de vivienda no se aplican/);
+      assert.match(article.querySelector('.capacity-badge').textContent, /Escenario manual/);
+    }
+    const link = article.querySelector('.capacity-simulate');
+    link.listeners.click(event());
+    const handoff = consumeMortgageHandoff(project.slug, { storage: ui.storage, now: NOW });
+    assert.equal(handoff.projectSlug, project.slug);
+    assert.equal(handoff.annualRatePercent, 4.5);
+    assert.equal(handoff.propertyUf, 4000);
+    assert.ok(!Object.keys(handoff).some(key => /bank|institution|offer/i.test(key)));
+  }
+});
+
+test('advertencia de terreno/oficina también se muestra cuando no hay información para clasificar', async () => {
+  const projects = ['Comercial', 'Terreno'].map(tipoActivo => ({ ...fixture, tipoActivo, precioDesdeUF: null, slug: 'pending-' + tipoActivo.toLowerCase() }));
+  const ui = await frontend({ projects }); ui.set(valid); await ui.submit();
+  for (const project of projects) {
+    const article = ui.card(project);
+    assert.match(article.querySelector('.capacity-badge').textContent, /^E\./);
+    assert.match(article.querySelector('.capacity-asset-note').textContent, /escenario manual/);
+    assert.doesNotMatch(article.textContent, /Dividendo financiero/);
+  }
+});
+
 test('optional search leaves all136 catalogue projects and storage untouched until submission, with exact dated UF', async () => {
   const ui = await frontend();
   assert.equal(ui.field('form').hidden, true);
