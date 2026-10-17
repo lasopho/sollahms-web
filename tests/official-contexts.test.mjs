@@ -2,6 +2,7 @@ import { restoreLeonContexts, isReviewedLeonAsset } from './leon-main-preservati
 import { historicalSentoAssetFiles } from '../scripts/sento-publication.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { P1_IDEMPOTENCY_ASSET, assertP1IdempotencyAsset } from './p1-idempotency-preservation.mjs';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -388,7 +389,8 @@ test('all 521 integration assets and 509 historical originals retain their hashe
   assert.equal(restoreEcasaContext('assets/js/project-identity.mjs',current('assets/js/project-identity.mjs')).length,0,
     'Only the exact reviewed stage-context helper is permitted as a new context asset');
   const expected = [...protectedAssets.map(({ file }) => file), ...newPaths, 'assets/js/official-uf.mjs', AUTOMATIC_EMBED_CSS,
-    ...stageAssets, 'assets/js/project-identity.mjs'].sort();
+    ...stageAssets, 'assets/js/project-identity.mjs', P1_IDEMPOTENCY_ASSET].sort();
+  assertP1IdempotencyAsset(current(P1_IDEMPOTENCY_ASSET));
   assert.deepEqual(currentAssets, expected, 'No other asset additions/deletions are authorized');
   assertAutomaticEmbedStylesheet();
 });

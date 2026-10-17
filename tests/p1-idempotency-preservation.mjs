@@ -43,3 +43,7 @@ export function restoreP1IdempotencyFile(file, actual) {
   return originals.get(file);
 }
 export const P1_IDEMPOTENCY_FILES = Object.freeze(Object.keys(REVIEWED));
+export const P1_IDEMPOTENCY_ASSET = 'assets/js/form-operation.mjs';
+export function assertP1IdempotencyAsset(actual) {
+  assert.equal(sha(actual), '187042e1039d7e64c5cf8e14b3f007e8f2e11142ed7d50a80d677cee1b97c4b4', 'The new FUN-001 browser asset must match its exact reviewed bytes');
+}

@@ -5,7 +5,7 @@ import { createContactHandler } from '../api/contact.mjs';
 import { createBookingHandler } from '../api/booking-create.mjs';
 import { createOperationLedger, OPERATION_MAX_AGE_MS, readOperationKey } from '../lib/form-operation-server.mjs';
 import { createFormOperation } from '../assets/js/form-operation.mjs';
-import { P1_IDEMPOTENCY_FILES, restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
+import { P1_IDEMPOTENCY_FILES, P1_IDEMPOTENCY_ASSET, assertP1IdempotencyAsset, restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import mortgageDataset from '../data/hipotecario.json' with { type: 'json' };
@@ -514,6 +514,7 @@ test('historical preservation projects only the five exact reviewed FUN correcti
     assert.deepEqual(restoreP1IdempotencyFile(file, actual), baseline);
     assert.deepEqual(restoreP1IdempotencyFile(file, baseline), baseline);
   }
+  assertP1IdempotencyAsset(readFileSync(new URL('../' + P1_IDEMPOTENCY_ASSET, import.meta.url)));
 });
 
 test('historical preservation rejects every foreign change to reviewed FUN files', () => {
@@ -523,4 +524,5 @@ test('historical preservation rejects every foreign change to reviewed FUN files
   }
   const unrelated = Buffer.from('Unrelated bytes');
   assert.equal(restoreP1IdempotencyFile('unrelated.txt', unrelated), unrelated);
+  assert.throws(() => assertP1IdempotencyAsset(Buffer.from('Foreign asset')), /must match its exact reviewed bytes/);
 });
