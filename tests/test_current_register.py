@@ -25,7 +25,24 @@ class CurrentRegisterTests(unittest.TestCase):
         self.assertEqual(stored, actual)
         self.assertEqual(actual['summary']['projects'], 134)
         self.assertEqual(len(actual['summary']['developers']), 13)
+        self.assertEqual(actual['summary']['withPlanImages'], 45)
+        self.assertEqual(actual['summary']['withoutPlanImages'], 89)
         self.assertTrue(all(not row['missing'] and not row['extra'] for row in actual['slugComparisons'].values()))
+
+    def test_architectural_plan_labels_do_not_confuse_plants_or_photographic_foregrounds(self):
+        page = '''<img src="/sala.webp" alt="Fotografía de sala con plantas decorativas en primer plano.">
+        <img src="/plantas-decorativas.webp" alt="Plantas decorativas junto a un sofá.">
+        <img src="/fachada.webp" alt="Render de fachada con planta baja acristalada.">
+        <img src="/modelo.webp" alt="Plano Estudio de referencia">
+        <img src="/distribucion.webp" alt="Planta arquitectónica del departamento">
+        <img src="/variante.webp" alt="Planta de distribución de la vivienda">
+        <img src="/assets/plano-01.webp" alt="Modelo A">
+        <img src="/assets/floor_plan-02.webp" alt="Model B">'''
+        media = MODULE.Media(page)
+        self.assertEqual(len(media.images), 8)
+        self.assertEqual([item['src'] for item in media.plans],
+                         ['/modelo.webp', '/distribucion.webp', '/variante.webp',
+                          '/assets/plano-01.webp', '/assets/floor_plan-02.webp'])
 
     def test_duplicate_catalogue_slug_is_rejected(self):
         rows = json.loads((ROOT / 'data/proyectos.json').read_text())

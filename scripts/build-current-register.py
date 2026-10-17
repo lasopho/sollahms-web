@@ -41,7 +41,12 @@ class Media(HTMLParser):
         item = dict(attrs)
         if tag == 'img':
             self.images.append(item)
-            if re.search(r'plano|planta|floor.?plan', item.get('src', '') + ' ' + item.get('alt', ''), re.I):
+            # Require a resource identifier or a label for an architectural
+            # diagram. Scene descriptions may mention plants or foregrounds.
+            name = urlsplit(item.get('src', '')).path.rsplit('/', 1)[-1]
+            marked_path = re.match(r'^(?:planos?(?:[-_.\d]|$)|floor[-_]?plans?(?:[-_.\d]|$)|plantas?[-_]arquitect[oó]nicas?(?:[-_.\d]|$))', name, re.I)
+            marked_alt = re.match(r'^\s*(?:planos?\b|plantas?\s+(?:arquitect[oó]nicas?|de\s+distribuci[oó]n|tipo)\b|floor[\s_-]*plans?\b)', item.get('alt', ''), re.I)
+            if marked_path or marked_alt:
                 self.plans.append(item)
         if tag == 'iframe' and 'google.com/maps' in item.get('src', ''):
             self.maps.append(item['src'])
