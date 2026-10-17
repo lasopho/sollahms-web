@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { isP3AgendaLabelSuccessor, restoreP3AgendaLabels } from './p3-agenda-labels-scope.mjs';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BASE = '3866095';
 const REVIEWED = {
@@ -30,6 +31,7 @@ const REVIEWED = {
 const sha = value => createHash('sha256').update(value).digest('hex');
 const originals = new Map();
 export function restoreP1IdempotencyFile(file, actual) {
+  if (isP3AgendaLabelSuccessor(file, actual)) actual = restoreP3AgendaLabels(file, actual);
   if (!Object.hasOwn(REVIEWED, file)) return actual;
   const [before, after] = REVIEWED[file];
   const digest = sha(actual);
