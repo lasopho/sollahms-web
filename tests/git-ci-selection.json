@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 399,
+  "expectedGitNodeTests": 405,
   "expectedReleaseOnlyCases": 26,
   "expectedPythonFixtureTests": 198,
   "fullFiles": [
@@ -230,6 +230,18 @@
         "P2 composition validates complete current files before restoring exact predecessors and rejects extra bytes",
         "older historical inputs keep their bytes and still require the original pinned P1 validation",
         "Python and JavaScript P2 bridge whitelists agree and publication controls receive no projection"
+      ]
+    },
+    {
+      "file": "tests/p2-review-controls.test.mjs",
+      "reason": "Six stacked P2 review guards: PR events and targets, exact head checkout, read-only pinned Actions, unchanged native steps and exact publication controls.",
+      "cases": [
+        "P2 draft review runs against the exact P1 base without broadening PR targets",
+        "P2 draft opening and subsequent head updates trigger the unchanged review events",
+        "P2 CI checks the published head with complete history and no persisted credentials",
+        "P2 workflow retains read-only permissions and the reviewed immutable action pins",
+        "P2 technical workflow delta preserves every native test step and introduces no deployment",
+        "P2 review preserves exact Vercel configuration, release guards and private rights"
       ]
     }
   ],
