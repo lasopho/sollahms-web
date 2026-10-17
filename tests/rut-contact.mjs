@@ -7,6 +7,8 @@ import vm from 'node:vm';
 import contact from '../api/contact.mjs';
 import { projects } from '../lib/project-context.mjs';
 import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
+import { createFormOperation } from '../assets/js/form-operation.mjs';
+import { createHash, randomUUID } from 'node:crypto';
 
 // All values are synthetic. Every provider call is replaced; no mail is sent.
 const validContact = Object.freeze({
@@ -181,13 +183,14 @@ function frontend({ slug = null, status = 200, code, deferred = false, failCatal
     assert.equal(url, '/api/contact');
     posts.push({ url, payload: JSON.parse(options.body) });
     if (deferred) await new Promise(resolve => { release = resolve; });
-    return { ok: status === 200, json: async () => ({ code, error: code === 'preview_read_only' ? 'La vista previa no envía mensajes reales.' : RUT_ERROR }) };
+    return { status, ok: status === 200, json: async () => status === 200 ? { ok: true } : ({ code, error: code === 'preview_read_only' ? 'La vista previa no envía mensajes reales.' : RUT_ERROR }) };
   };
   class MockFormData { constructor() { this.values = Object.entries(controls).map(([key, control]) => [key, control.value]); } [Symbol.iterator]() { return this.values[Symbol.iterator](); } }
   vm.runInNewContext(formScript, {
     document: { getElementById: id => elements[id], querySelectorAll: () => agenda },
     window: { location: { search: slug === null ? '' : '?proyecto=' + encodeURIComponent(slug) } },
     URLSearchParams, FormData: MockFormData, fetch: mockFetch, normalizeRut, RUT_ERROR, resolveProjectIdentity,
+    createFormOperation: options => createFormOperation({ ...options, storage: null, randomUUID, digest: text => createHash('sha256').update(text).digest('hex') }),
   });
   return { controls, button, status: statusText, context, error, form, agenda, posts, release: () => release(), submit: () => form.listeners.submit({ preventDefault() {} }) };
 }

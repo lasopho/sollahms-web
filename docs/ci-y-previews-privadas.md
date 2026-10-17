@@ -37,9 +37,10 @@ no escribir estados manuales para reemplazarlo. GitHub evalúa los checks del
 fixtures fijadas por versión/hash. No obtiene secretos ni llama a Vercel, no
 despliega y no envía consultas o reservas reales.
 
-`python scripts/run-git-ci.py` ejecuta 330 casos Node aptos para el checkout
-Git, los 137 tests Python con fixtures sintéticos y el
-validador hipotecario. La clasificación positiva en `tests/git-ci-selection.json`
+`python scripts/run-git-ci.py` conserva los 330 casos Node y 137 tests Python
+de la línea base auditada y añade los casos clasificados por cada corrección.
+Los conteos vigentes se fijan explícitamente en `tests/git-ci-selection.json`;
+el runner exige ejecutarlos todos junto al validador hipotecario. La clasificación positiva
 enumera 26 casos que necesitan el release privado: **no se ejecutan ni se
 declaran aprobados en este CI**. Nuevos archivos/casos sin clasificar o conteos
 distintos detienen el runner.

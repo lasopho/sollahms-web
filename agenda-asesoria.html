@@ -215,6 +215,7 @@
 </div>
 <script type="module">
 import { resolveProjectIdentity } from '/assets/js/project-identity.mjs';
+import { createFormOperation } from '/assets/js/form-operation.mjs';
 
 (() => {
     let bookingProject = null;
@@ -250,6 +251,7 @@ import { resolveProjectIdentity } from '/assets/js/project-identity.mjs';
     let availabilityRequest = 0;
     let bookingBusy = false;
     let availabilityController = null;
+    const operation = createFormOperation({ name: 'booking' });
 
     const chileDate = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
         timeZone: 'America/Santiago', year: 'numeric', month: '2-digit', day: '2-digit',
@@ -380,27 +382,33 @@ import { resolveProjectIdentity } from '/assets/js/project-identity.mjs';
                 status.textContent = 'No pudimos identificar el proyecto o etapa. Vuelve a abrir la asesoría desde su ficha.';
                 return;
             }
+            // Until Google's backend can attest durable idempotency, an
+            // uncertain booking must be checked by the team, never recreated.
+            const attempt = await operation.prepare({ ...checkedSlot, ...fields, ...(bookingProject ? { proyecto: bookingProject } : {}) }, { allowRetry: false });
             const response = await fetch('/api/booking-create', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...checkedSlot, ...fields, ...(bookingProject ? { proyecto: bookingProject } : {}) }),
+                headers: { 'Content-Type': 'application/json', 'Idempotency-Key': attempt.key },
+                body: attempt.body,
             });
             const result = await response.json();
+            if ([400, 403, 413, 415].includes(response.status) || ['preview_read_only', 'slot_unavailable', 'operation_capacity'].includes(result.code)) operation.discard();
             if (response.status === 409 && result.code === 'slot_unavailable') {
                 invalidateSlot();
                 status.textContent = 'Ese horario ya no está disponible. Elige otra fecha u hora.';
                 dateInput.focus();
             } else if (response.ok && result.ok === true && result.booked === true) {
+                operation.complete();
                 selector.hidden = true;
                 details.hidden = true;
                 personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
                 status.textContent = `Tu asesoría quedó reservada para el ${formatBookingDate(checkedSlot.date)} a las ${checkedSlot.time}. Recibirás una invitación de Google Calendar en tu correo.`;
                 status.focus();
             } else {
-                status.textContent = result.error || 'No pudimos completar la reserva. Inténtalo nuevamente.';
+                status.textContent = result.error || 'No pudimos confirmar la reserva. No la repitas; escribe a contacto@sollahms.cl para verificarla.';
             }
-        } catch {
-            status.textContent = 'No pudimos completar la reserva. Inténtalo nuevamente.';
+        } catch (error) {
+            operation.uncertain();
+            status.textContent = error.message === 'Failed to fetch' ? 'No pudimos confirmar la reserva. No la repitas; escribe a contacto@sollahms.cl para verificarla.' : error.message || 'No pudimos confirmar la reserva. No la repitas; escribe a contacto@sollahms.cl para verificarla.';
         } finally {
             bookingBusy = false;
             dateInput.disabled = false;
