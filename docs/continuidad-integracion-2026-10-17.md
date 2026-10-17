@@ -9,9 +9,10 @@ la aceptación previa de una posible Preview privada continúa vigente. No se
 autoriza ningún deployment público, merge a main o cambio remoto de Vercel.
 Los 8 commits P1 y 20 commits P2 se conservan sin reescritura.
 
-El cambio de producto se limita a seis clases de etiquetas de agenda, de 9 a
-12 px. Usa la CSS local ya existente; todos los demás bytes de la página y su
-lógica permanecen intactos. Las pruebas históricas retienen sus pins/assertions:
+El cambio de producto contiene seis clases de etiquetas de agenda, de 9 a
+12 px, y una regla CSS de tres líneas para que la confirmación enfocada quede
+por debajo de la cabecera fija. Usa la CSS local ya existente para las etiquetas;
+la lógica JavaScript, identidad, horarios y controles permanecen intactos. Las pruebas históricas retienen sus pins/assertions:
 una proyección exclusiva de tests reconoce únicamente el sucesor completo y
 revierte exactamente esas seis clases antes de las comprobaciones congeladas.
 Los canarios rechazan cambios adicionales de identidad, horarios, enlaces o
@@ -22,7 +23,7 @@ operaciones del formulario. No se ha tocado ningún control real de publicación
 | Capa | Estado verificable |
 | --- | --- |
 | P1/P2 publicados | PR #9 y #10 abiertos en borrador; checks públicos aprobados en sus SHA exactos. |
-| Continuidad local | Etiquetas UX-003 implementadas; herramientas preparatorias de CSP y variantes añadidas. El runner exige 408 Node y 216 Python, manteniendo los 26 casos privados. Los resultados efectivos se conservan fuera del checkout. |
+| Continuidad local | Etiquetas UX-003 implementadas; herramientas preparatorias de CSP y variantes añadidas. El runner exige 411 Node y 216 Python, manteniendo los 26 casos privados. Los resultados efectivos se conservan fuera del checkout. |
 | Artefacto de release | No generado ni certificado. Referencia histórica, guardas, derechos, recursos y 26 casos privados siguen siendo requisitos independientes. |
 | Production | Alias sigue en `dpl_9LvbrLDbZhho3Umm5Rmv6AMkauXE`, READY, declarado `f1e9bf1715cc99d095a367eba9028a9a1ad2b026`. Esto no prueba equivalencia de sus bytes con main ni con los 134 proyectos de P2. |
 | Integraciones externas | Solo fixtures; no se prueban efectos reales, atomicidad distribuida ni políticas que no están disponibles. |
@@ -30,6 +31,8 @@ operaciones del formulario. No se ha tocado ningún control real de publicación
 ## Trabajo adicional preparado
 
 - **UX-003:** seis labels de agenda corregidos; alcance y mutaciones cubiertos por tres nuevos casos. QA de reflow, teclado y tamaños se registra aparte, sin equiparar ampliación CSS con zoom nativo.
+- **Confirmación de agenda:** QA detectó que el estado enfocado quedaba parcialmente detrás de la cabecera fija, también en P2. `scroll-margin-top: 6rem` acota la corrección al estado; no cambia ningún script o efecto de reserva. Tres casos nuevos verifican el sucesor exacto y sus mutaciones.
+- **CI de revisión apilada:** el workflow admite como base exacta la rama P2 para revisar esta continuidad. Retiene eventos, permisos de lectura, acciones fijadas, checkout del SHA exacto y pasos nativos; el checksum del workflow anterior sigue comprobado al revertir únicamente las adiciones explícitas de revisión.
 - **SEC-003:** `scripts/inventory-csp.py` inventaría HTML/CSS/JS locales, hashes inline y candidatos de orígenes. Distingue fuente de artefacto extraído y declara perfiles sin certificar. Sus políticas Report-Only permanecen inaplicadas: no cambia headers ni crea colectores. Ver [propuesta](proposals/p3-csp-report-only.md).
 - **PERF-001:** `scripts/prepare-cover-variants.py` prepara candidatos reproducibles desde una shortlist revisada, fuera de todos los worktrees, con versiones fijadas de Pillow/libwebp y fuentes exactas. Hay 46 variantes para 23 portadas, conservando escena y original. No están integradas en runtime ni aprobadas para publicación. Ver [propuesta](proposals/catalogue-cover-variants.md).
 - **Validación privada:** selección literal de los [26 casos pendientes y secuencia](proposals/private-validation-sequence.md), sin ejecutarlos ni rebajar el criterio de aprobación.
@@ -62,7 +65,8 @@ La autorización de publicación de P2 no autoriza merge a main. Estos pasos que
 3. Cambiar la base de PR #10 a main, sin reescribir P2. Mantenerlo en borrador hasta el cambio de base. Verificar que el diff sigue siendo exclusivamente P2 y que conserva exactamente los 20 commits. Comprobar merge-tree frente al main resultante; el árbol esperado sigue siendo `69c530b...` si no hay otros cambios.
 4. Retirar el borrador de #10 DESPUÉS del cambio de base para generar `ready_for_review`. El workflow no escucha `edited`, por lo que sólo retargetear no garantiza una nueva ejecución. Esta secuencia permite nueva ejecución sobre la cabecera exacta sin commits vacíos ni cambios de workflow.
 5. Verificar la ejecución real sobre `e3b66f8...`, su resultado completo, y cualquier Preview/estado de protección. Con aprobación de integración y checks válidos, integrar #10 mediante merge commit con condición de cabecera, conservando los 20 commits; no squash/rebase/cherry-pick. Confirmar árbol y ancestros después.
-6. Volver a comprobar main, PRs, Production y dominios; no promover ni desplegar. La integración de fuentes no crea un artefacto publicable ni cierra los 26 casos privados/353 recursos y demás bloqueos externos.
+6. Después de integrar P2 y con autorización expresa, retargetear el PR de continuidad a main conservándolo en borrador; revisar su delta y ancestros, retirar el borrador para CI fresco y usar merge commit con condición de cabecera. No reescribir P1/P2 ni los nuevos commits.
+7. Volver a comprobar main, PRs, Production y dominios; no promover ni desplegar. La integración de fuentes no crea un artefacto publicable ni cierra los 26 casos privados/353 recursos y demás bloqueos externos.
 
 ## Bloqueos que requieren evidencia o decisión externa
 
@@ -99,3 +103,7 @@ rama de revisión solo procede dentro del alcance vigente de Preview privada,
 con la privacidad comprobada y sin cambios de configuración remota. Antes de pedir
 una publicación definitiva deben completarse recursos/derechos, backend y abuso,
 artefacto reproducible, 26 casos y QA obligatorio; CI fuente aprobado no los sustituye.
+
+La confirmación adicional fue reproducida en Chromium a 360/390 px con clic simple/doble. La comparación local de CSS y JS confirmó ambas alternativas; se eligió la regla CSS por conservar íntegra la lógica. El reporte final distingue el QA principal de 22 escenarios y 20 capturas del retest acotado del archivo corregido. Los quince errores 404 observados corresponden a recursos del inventario de 353 ausentes, sin rutas404 inesperadas.
+
+El retest del archivo final de agenda, SHA-256 `23308485a1073e76b97d093d83e8a289ffebaf499169afd79d0b1b93e3872b58`, aprobó 4/4 combinaciones (360/390 px, clic simple/doble): confirmación enfocada debajo de la cabecera de 80 px y una única creación sintética. Las etiquetas a 12 y 24 px no se recortan. El ensayo Report-Only de agenda con hash actualizado registró tres avisos esperados de estilos inline y cero inesperados. Siguen pendientes el zoom nativo y proveedores reales; el control sintético de CSP no se presenta como protección aplicada al sitio.

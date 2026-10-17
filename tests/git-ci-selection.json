@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 408,
+  "expectedGitNodeTests": 411,
   "expectedReleaseOnlyCases": 26,
   "expectedPythonFixtureTests": 216,
   "fullFiles": [
@@ -251,6 +251,15 @@
         "UX-003 gives all six booking labels an existing 12px style and preserves their accessible control bindings",
         "UX-003 changes exactly six label sizes while every booking script, control, identity and source byte stays exact",
         "UX-003 and the frozen FUN-001 guard reject extra changes to labels, booking behavior, identity and historical bytes"
+      ]
+    },
+    {
+      "file": "tests/p3-agenda-visibility.test.mjs",
+      "reason": "Three focused booking confirmation visibility, exact CSS delta, composed historical scope and negative-mutation checks; provider and form logic remain unchanged.",
+      "cases": [
+        "booking confirmation receives a scoped 6rem scroll margin while retaining live-region focus and the fixed header",
+        "booking visibility successor preserves every prior byte outside the three-line CSS rule and retains frozen label and FUN guards",
+        "booking visibility scope rejects altered offsets, broader selectors, script and source mutations without bypassing prior guards"
       ]
     }
   ],
