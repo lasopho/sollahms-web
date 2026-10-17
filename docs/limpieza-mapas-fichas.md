@@ -1,5 +1,7 @@
 # Revisión de fichas: enlaces redundantes de Google Maps
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Revisión del 12/10/2026 en `codex/limpieza-mapas-fichas`, creada desde
 `origin/main` en `bb69615d03230cbab76bdc2678938cc741f80e86`.
 Sin merge ni publicación en Production.

@@ -1,5 +1,7 @@
 # Integración Sento a main
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Autorización posterior del usuario: «hacer merge», seguida de «continuar». Preparada exclusivamente desde main `f1e9bf1715cc99d095a367eba9028a9a1ad2b026`; no se incorpora el historial posterior de Ecasa, Leben, Norte Verde o León. La fuente de esta integración está en la copia aislada `/private/tmp/sollahms-sento-merge`.
 
 Se mantienen los 144 proyectos actuales de main: siete Sento actualizados y 137 ajenos. Las 137 filas de cada registro, HTML, contextos y todos los recursos originales de main se comprueban mediante un baseline propio, independiente del baseline134 de la Preview anterior. Las siete fichas y los277 recursos de imagen de Sento mantienen exactamente los hashes de aquella fuente validada:45 planos y125 superficies visibles. No se añaden rutas.

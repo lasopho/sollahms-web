@@ -1,5 +1,7 @@
 # Registro de fichas Sollahms — 2026-10-13
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Rama: `codex/leben-brochures-nordico`. Sin merge ni despliegue de producción.
 
 - Catálogo real: 137 proyectos.

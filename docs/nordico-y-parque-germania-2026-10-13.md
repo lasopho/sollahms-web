@@ -1,5 +1,7 @@
 # Nórdico: fuentes y pendientes
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Revisión: 13/10/2026. Nórdico se añade como `edificio-nordico`, con una sola ficha de Leben. El catálogo resultante tiene 137 proyectos. Las 136 filas comerciales anteriores, los 15 proyectos Ecasa y Own se conservan exactamente; el fixture `tests/fixtures/nordico-catalogue-baseline.json` verifica esta conservación. Esta tanda no autoriza merge ni cambios en Production.
 
 ## Información acreditada

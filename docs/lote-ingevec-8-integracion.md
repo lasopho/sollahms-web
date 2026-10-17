@@ -1,5 +1,7 @@
 # Lote Ingevec: integración de ocho brochures en siete fichas
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Integración realizada sobre `codex/integracion-financiera-sollahms`, con base `b649115`. Se revisaron los ocho PDF originales, sus 143 páginas, las 48 imágenes candidatas y los 27 planos entregados. Se seleccionaron y optimizaron **43 imágenes nativas: siete portadas y 36 imágenes para galerías**, además de **27 modelos con planos ampliables**. Estas cifras incluyen mejoras de resolución de escenas existentes, no sólo fotografías nuevas.
 
 El catálogo conserva **148 proyectos**. Sólo se enriquecen las siete fichas indicadas; las otras **141 fichas permanecen intactas**. Los precios, estados, fechas y condiciones comerciales preexistentes se conservan. Las superficies de los planos se presentan como información referencial separada de la oferta y del stock vigente.

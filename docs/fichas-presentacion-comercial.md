@@ -1,5 +1,7 @@
 # Presentación comercial de fichas e información inmobiliaria
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Actualización: 10/10/2026. Rama: `codex/integracion-financiera-sollahms`.
 
 ## Criterio de presentación

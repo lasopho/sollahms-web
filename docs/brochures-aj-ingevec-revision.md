@@ -1,5 +1,7 @@
 # Sollahms — revisión completa de brochures AJ Urbana e Ingevec
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Actualización contractual del 10/10/2026: la procedencia Yapo/IRIS y la ausencia de licencia individual adicional para material cubierto sustituyen el criterio anterior. Consultar el estado y los controles actuales en [Preparación de publicación Yapo/IRIS](brochures-yapo-iris-publicacion.md).
 
 Rama exclusiva: `codex/integracion-financiera-sollahms`. Base contrastada: `e903208160f62cc552e9efa4371a322ef75477b8`. Revisión: 10 de octubre de 2026.

@@ -1,5 +1,7 @@
 # AJ Urbana — integración documental y revisión protegida
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Actualización contractual del 10/10/2026: la procedencia Yapo/IRIS y la ausencia de licencia individual adicional para material cubierto sustituyen el criterio anterior. Consultar el estado y los controles actuales en [Preparación de publicación Yapo/IRIS](brochures-yapo-iris-publicacion.md).
 
 Fecha: 2026-10-10. Rama: `codex/integracion-financiera-sollahms`. Baseline: `045fe182ef5d2ad2206df303ba74330aa747050d`.

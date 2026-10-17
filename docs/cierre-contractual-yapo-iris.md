@@ -1,5 +1,7 @@
 # Cierre del alcance gráfico Yapo/IRIS
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Contraste realizado el 11/10/2026 en `codex/integracion-financiera-sollahms`. La cartera aprobada conserva 144 proyectos, de los cuales 16 son Ingevec; esta revisión no cambia su composición ni sus datos comerciales.
 
 Los [términos oficiales chilenos de IRIS](https://iris.yapo.cl/terminos-y-condiciones), cuya actualización publicada es del 04/08/2023, permiten al corredor emplear en su web los materiales de venta entregados por las inmobiliarias mediante IRIS. La cláusula de entrega contempla material de marca blanca para promocionar los proyectos en los sitios permitidos y atender a clientes interesados. Se contrastó el componente vigente de la aplicación: la ruta de contrato utiliza el mismo texto chileno y agrega la identificación del usuario. No se encontró una lista pública adicional de dominios permitidos.

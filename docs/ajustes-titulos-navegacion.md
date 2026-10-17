@@ -1,5 +1,7 @@
 # Cabecera y navegación Asset Portafolio
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Rama `codex/fichas-proyectos-completas`. Fecha: 10 de octubre de 2026.
 
 En `proyectos.html`, el texto superior es «ASSET PORTAFOLIO» y el h1 es «Catálogo inmobiliario». Se conserva exactamente «Explora las alternativas disponibles y filtra el catálogo según ubicación o estado del proyecto.». Las clases, colores, tipografía, animaciones y espacios permanecen iguales; el título se adapta mediante los estilos responsive existentes.

@@ -1,5 +1,7 @@
 # Cartera Ingevec definitiva — revisión del 11 de octubre de 2026
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Trabajo sobre `codex/integracion-financiera-sollahms`, con base `8cdb9bf2af607a4f0822e5ea2c3ec4ba3f4c76b1`. La cartera autorizada queda en **16 proyectos Ingevec y 17 entradas comerciales**: Vicuña Mackenna 7589 conserva una sola ficha con dos etapas separadas. El catálogo completo pasa de 148 a **144 proyectos**, al retirar seis identidades Ingevec y añadir dos. Los **128 proyectos de otras inmobiliarias permanecen intactos**, tanto en sus datos como en sus HTML.
 
 Se conservan los diez registros Ingevec ya integrados y sus fichas. Esta entrega complementa cuatro fichas existentes —Abdón Cifuentes, Don Ignacio, Terrazzo y VIMA— e incorpora Los Alerces y Valle Los Ingleses III. Los brochures complementan la presentación; no sustituyen precios públicos, condiciones, fechas ni disponibilidad previamente verificados.

@@ -1,5 +1,7 @@
 # Revisión de fuentes oficiales — 10 de octubre de 2026
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Rama exclusiva: `codex/integracion-financiera-sollahms`. Base: `a279744`. No merge ni despliegue Production. Se complementan seis fichas existentes; el catálogo conserva sus 148 proyectos.
 
 | Fuente entregada | Resultado | Pendientes conservados |
