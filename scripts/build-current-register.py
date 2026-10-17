@@ -12,6 +12,8 @@ from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
+P1_REVIEW_COMMIT = '39006d3a6c96bd4154dd99eb6e914c5857393a3b'
+P1_REVIEW_TREE = '8fe1cc599298c54743f4e503d828671e8d14b6e4'
 SITE_PATHS = {'/', '/proyectos.html', '/agenda-asesoria.html', '/contacto.html',
               '/privacidad.html', '/comparador-hipotecario.html'}
 INPUTS = ('data/proyectos.json', 'data/fichas-proyectos.json',
@@ -21,6 +23,10 @@ INPUTS = ('data/proyectos.json', 'data/fichas-proyectos.json',
 class Source:
     def __init__(self, root, commit=None):
         self.root, self.commit = Path(root), commit
+        if commit == P1_REVIEW_COMMIT:
+            tree = subprocess.check_output(['git', 'rev-parse', commit + '^{tree}'], cwd=self.root, text=True).strip()
+            if tree != P1_REVIEW_TREE:
+                raise ValueError('The canonical P1 review commit has an unexpected source tree')
 
     def read(self, path):
         if self.commit:
@@ -126,8 +132,10 @@ def markdown(register):
     summary = register['summary']
     lines = ['# Registro vigente de fichas Sollahms', '',
              f'Corte: {register["checkedOn"]} (America/Santiago). Commit fuente: `{register["sourceCommit"]}`.', '',
-             'El commit fuente local contiene el árbol revisado en P1; su SHA no debe confundirse con el '
-             'commit remoto del PR #9, creado mediante GitHub. La entrega P1 conserva la correspondencia de árboles.', '',
+             ('El commit fuente es el commit remoto de la revisión P1 en el [PR #9](https://github.com/lasopho/sollahms-web/pull/9), '
+              f'con árbol `{P1_REVIEW_TREE}`. Esta referencia no representa `main` ni certifica el artefacto de producción.'
+              if register['sourceCommit'] == P1_REVIEW_COMMIT else
+              'El commit fuente fija la evidencia del inventario; no certifica `main` ni el artefacto de producción.'), '',
              f'**{summary["projects"]} proyectos, {summary["htmlFiles"]} HTML y {len(summary["developers"])} inmobiliarias.** '
              'Los conjuntos de slugs de catálogo, investigación, registro, contexto de formularios y sitemap coinciden sin duplicados.', '',
              'Este inventario reemplaza únicamente los conteos de cabecera históricos de 148/144/137. '

@@ -1,8 +1,8 @@
 # Registro vigente de fichas Sollahms
 
-Corte: 2026-10-17 (America/Santiago). Commit fuente: `01b03931faefcd376023f3afdde99dad5a4f64c4`.
+Corte: 2026-10-17 (America/Santiago). Commit fuente: `39006d3a6c96bd4154dd99eb6e914c5857393a3b`.
 
-El commit fuente local contiene el árbol revisado en P1; su SHA no debe confundirse con el commit remoto del PR #9, creado mediante GitHub. La entrega P1 conserva la correspondencia de árboles.
+El commit fuente es el commit remoto de la revisión P1 en el [PR #9](https://github.com/lasopho/sollahms-web/pull/9), con árbol `8fe1cc599298c54743f4e503d828671e8d14b6e4`. Esta referencia no representa `main` ni certifica el artefacto de producción.
 
 **134 proyectos, 134 HTML y 13 inmobiliarias.** Los conjuntos de slugs de catálogo, investigación, registro, contexto de formularios y sitemap coinciden sin duplicados.
 
@@ -12,7 +12,7 @@ Este inventario reemplaza únicamente los conteos de cabecera históricos de 148
 
 La [conciliación vigente de planos León](leon-planos-vigentes.md) separa la revisión especializada del 14/10 de los textos genéricos anteriores. Los [insumos multimedia pendientes](p2-insumos-multimedia.md) describen MED-003 y MED-004.
 
-Fuente máquina y hashes: [data/registro-vigente.json](../data/registro-vigente.json). Regeneración desde el commit fuente: `python scripts/build-current-register.py --source-commit 01b03931faefcd376023f3afdde99dad5a4f64c4 --checked-on 2026-10-17`.
+Fuente máquina y hashes: [data/registro-vigente.json](../data/registro-vigente.json). Regeneración desde el commit fuente: `python scripts/build-current-register.py --source-commit 39006d3a6c96bd4154dd99eb6e914c5857393a3b --checked-on 2026-10-17`.
 
 ## Conteos por inmobiliaria
 
