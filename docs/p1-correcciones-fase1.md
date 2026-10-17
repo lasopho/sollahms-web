@@ -38,7 +38,7 @@ python -B scripts/run-git-ci.py --cloud-stdio --output /tmp/sollahms-p1-ci
 
 La opción stdio sólo adapta subprocess al entorno restringido; el workflow público conserva su ejecución nativa. Se registran logs y resultados fuera del checkout. Las pruebas de formularios y agenda usan dobles de DOM y proveedores sintéticos. No se envían correos ni se crean reservas reales. No se acredita revisión visual de navegador en este entorno.
 
-Las proyecciones históricas P1 viven sólo en tests y validan hashes completos o filas exactas antes/después; los casos nuevos ejercitan el código/datos actuales y canarios negativos. No se reescriben snapshots. `vercel.json`, workflow, packager y guardas reales de release conservan sus bytes. El gate real sigue rechazando el nuevo contexto Verne fuera de su alcance histórico autorizado: reconciliarlo queda pendiente de la autorización separada para cambiar controles de publicación. No se genera un build publicable para superar esa restricción.
+Las proyecciones históricas P1 viven sólo en tests y validan hashes completos o filas exactas antes/después; los casos nuevos ejercitan el código/datos actuales y canarios negativos. No se reescriben snapshots. `vercel.json`, workflow, packager y guardas reales de release conservan sus bytes. El gate real sigue rechazando el nuevo contexto Verne fuera de su alcance histórico autorizado: reconciliarlo queda pendiente de la autorización separada para cambiar controles de publicación. Los bytes de formularios FUN-001 cubiertos por esas guardas históricas también deben reconciliarse bajo la autorización posterior. El CI público no autoriza ni habilita ese release. No se genera un build publicable para superar esa restricción.
 
 ## Revisión y publicación de la propuesta
 

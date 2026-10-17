@@ -4,6 +4,7 @@ Every non-Ecasa object remains exact. Historical HTML guards can recover an
 older Ecasa page only after proving its independently reviewed current SHA;
 commercial source snapshots are checked against the immutable 22-fiche base.
 """
+import base64
 import copy
 import functools
 import hashlib
@@ -11,7 +12,7 @@ import json
 import subprocess
 from pathlib import Path
 from leben_scope import original_html, original_context, assert_base_records
-from sento_scope import original_data as restore_sento_data, historical_file
+from sento_scope import original_data as restore_sento_data, historical_file, NODE
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = 'f1e9bf1715cc99d095a367eba9028a9a1ad2b026'
@@ -30,6 +31,26 @@ ALIASES = {'nucleo-costanera-2': ('nucleo-costanera', 2), 'ferroparque-2': ('fer
            'terratolten-1': ('terratolten', 1), 'terratolten-2': ('terratolten', 2),
            'terratolten-3': ('terratolten', 3), 'lomas-de-puyai-3': ('lomas-de-puyai', 3),
            'alto-san-joaquin-2': ('alto-san-joaquin', 2), 'alto-san-joaquin-3': ('alto-san-joaquin', 3)}
+
+P1_IDEMPOTENCY_PATHS = {'agenda-asesoria.html', 'api/booking-create.mjs', 'api/contact.mjs',
+                        'assets/js/hipotecario.mjs', 'contacto.html'}
+P1_IDEMPOTENCY_BRIDGE = """
+import { readFileSync } from 'node:fs';
+import { restoreP1IdempotencyFile } from './tests/p1-idempotency-preservation.mjs';
+const request = JSON.parse(readFileSync(0, 'utf8'));
+process.stdout.write(restoreP1IdempotencyFile(request.path, Buffer.from(request.bytes, 'base64')).toString('base64'));
+"""
+
+
+@functools.lru_cache(maxsize=64)
+def restore_p1_idempotency_file(path, current):
+    if path not in P1_IDEMPOTENCY_PATHS:
+        return current
+    # Reuse the exact full-file before/after SHA pins from the JavaScript
+    # historical guard. No partial replacement or unverified normalization.
+    output = subprocess.check_output([NODE, '--input-type=module', '-e', P1_IDEMPOTENCY_BRIDGE], cwd=ROOT,
+        input=json.dumps({'path': path, 'bytes': base64.b64encode(current).decode()}).encode())
+    return base64.b64decode(output)
 
 @functools.lru_cache(maxsize=None)
 def main_bytes(path):
@@ -162,6 +183,7 @@ def validate_alias_route(slug):
         assert matches == [{'source': source, 'destination': destination, 'permanent': True}], source + ': exact canonical stage redirect missing'
 
 def restore_context_file(path, current):
+    current = restore_p1_idempotency_file(path, current)
     current = historical_file(path, current)
     if path == 'lib/project-context.mjs':
         current = original_context(current)
