@@ -7,10 +7,11 @@ import { restoreP2FinanceFile, P2_FINANCE_FILES } from './p2-finance-preservatio
 import { projectP2SecurityFile, P2_SECURITY_FILES } from './p2-security-scope.mjs';
 import { restoreP2EmbedFile, P2_EMBED_SCOPE } from './p2-embed-scope.mjs';
 import { projectP2MediaFile, P2_MEDIA_FILES } from './p2-media-scope.mjs';
+import { projectP2RegisterFile, P2_REGISTER_FILES } from './p2-register-scope.mjs';
 
 const ROOT = new URL('../', import.meta.url);
 export const P2_FILE_PATHS = Object.freeze([...new Set([
-  'proyectos.html', ...P2_FINANCE_FILES, ...P2_SECURITY_FILES, ...Object.keys(P2_EMBED_SCOPE), ...P2_MEDIA_FILES,
+  'proyectos.html', ...P2_FINANCE_FILES, ...P2_SECURITY_FILES, ...Object.keys(P2_EMBED_SCOPE), ...P2_MEDIA_FILES, ...P2_REGISTER_FILES,
 ])].sort());
 const paths = new Set(P2_FILE_PATHS);
 
@@ -25,7 +26,7 @@ export function projectP2File(file, bytes) {
   return restoreP2EmbedFile(file,
     projectP2SecurityFile(file,
       restoreP2FinanceFile(file,
-        projectP2CatalogueFile(file, beforeMedia))));
+        projectP2CatalogueFile(file, projectP2RegisterFile(file, beforeMedia)))));
 }
 
 /** Older audit stages sometimes receive already-projected ancestors.

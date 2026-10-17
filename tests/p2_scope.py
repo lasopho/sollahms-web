@@ -16,7 +16,8 @@ from p2_embed_scope import SCOPE
 ROOT = Path(__file__).resolve().parents[1]
 NODE = os.environ.get('SOLLAHMS_CI_NODE') or shutil.which('node')
 MEDIA_SCOPE = json.loads((ROOT / 'tests/p2-media-scope.json').read_text())['files']
-P2_PATHS = frozenset(SCOPE) | frozenset(MEDIA_SCOPE) | {
+REGISTER_SCOPE = json.loads((ROOT / 'tests/p2-register-scope.json').read_text())['files']
+P2_PATHS = frozenset(SCOPE) | frozenset(MEDIA_SCOPE) | frozenset(REGISTER_SCOPE) | {
     'proyectos.html', 'assets/js/purchase-capacity.mjs', 'assets/js/purchase-capacity-ui.mjs',
     'privacidad.html', 'assets/css/project-detail.css', 'assets/css/project-embeds.css',
 }

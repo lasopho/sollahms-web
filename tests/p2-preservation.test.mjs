@@ -4,8 +4,11 @@ import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { P2_FILE_PATHS, projectP2File, projectP2CurrentFile } from './p2-preservation.mjs';
 import { projectP1CommercialFile } from './p1-commercial-scope.mjs';
+import { P2_REGISTER_FILES } from './p2-register-scope.mjs';
 
 test('P2 composition validates complete current files before restoring exact predecessors and rejects extra bytes', () => {
+  assert.equal(P2_FILE_PATHS.length, 166);
+  assert.equal(P2_REGISTER_FILES.length, 23);
   for (const file of P2_FILE_PATHS) {
     const actual = readFileSync(new URL('../' + file, import.meta.url));
     const before = projectP2File(file, actual);
@@ -14,6 +17,14 @@ test('P2 composition validates complete current files before restoring exact pre
     assert.deepEqual(projectP2CurrentFile(file, actual), before, file);
     assert.throws(() => projectP2File(file, Buffer.concat([actual, Buffer.from('\n// unreviewed extra bytes')])));
     assert.throws(() => projectP2File(file, Buffer.concat([before, Buffer.from('\n// unreviewed extra bytes')])));
+    if (P2_REGISTER_FILES.includes(file)) {
+      const text = actual.toString();
+      const notice = text.split('\n').find(line => line.startsWith('> Conteos históricos:'));
+      assert.ok(notice, file);
+      assert.equal(text.replace(notice + '\n\n', ''), before.toString(), file + ': original historical body stays exact');
+      assert.throws(() => projectP2File(file, Buffer.from(text.replace('Conteos históricos:', 'Conteos vigentes:'))));
+      assert.throws(() => projectP2File(file, Buffer.from(text.replace(text.split('\n')[0], '# Unreviewed historical title'))));
+    }
   }
 });
 
