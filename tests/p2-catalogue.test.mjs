@@ -61,7 +61,15 @@ test('CAT-005 every priced and unpriced card gives its retained review date and 
     assert.ok(notes[0].textContent.includes('Referencia revisada el ' + (project.commercialSource?.verifiedOn ?? project.verificacion.fecha) + '.'));
     assert.ok(notes[0].textContent.includes('Información referencial; confirma precio, disponibilidad y condiciones al cotizar.'));
     const link = notes[0].children.find(n => n.tagName === 'a');
-    assert.equal(link.href, project.detalleUrl + '#proyecto');
+    const featured = ['distrito-centro', 'inn-puerto-chico', 'edificio-suecia'].includes(project.slug);
+    const target = featured ? 'contenido-principal' : 'proyecto';
+    assert.equal(link.href, project.detalleUrl + '#' + target);
+    const detailHtml = read(project.detalleUrl.slice(1)).toString();
+    assert.ok(detailHtml.includes('id="' + target + '"'), project.slug + ': conditions link target must exist');
+    if (featured) {
+      assert.match(detailHtml, /<main id="contenido-principal"/);
+      assert.match(detailHtml.match(/<main[\s\S]*?<\/main>/)[0], /price-commercial-note/);
+    }
     assert.equal(link.attributes['aria-label'], 'Ver condiciones y pendientes de ' + project.nombre);
     if (project.precioDesdeUF === null) assert.doesNotMatch(card.textContent, /Desde UF \d/);
     else assert.ok(card.textContent.includes('Desde UF ' + new Intl.NumberFormat('es-CL').format(project.precioDesdeUF)));

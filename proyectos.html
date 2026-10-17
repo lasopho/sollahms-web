@@ -369,6 +369,13 @@
     const form = document.getElementById('catalog-filters');
     const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
     const numberFormat = new Intl.NumberFormat('es-CL');
+    // CATALOG_CONDITION_TARGETS_START
+    const conditionTargets = {
+    "distrito-centro": "#contenido-principal",
+    "inn-puerto-chico": "#contenido-principal",
+    "edificio-suecia": "#contenido-principal"
+};
+    // CATALOG_CONDITION_TARGETS_END
     // CATALOG_COVERS_START
     const coverVariants = {
     "jardines-de-ramon-cruz": {
@@ -641,7 +648,7 @@
         referenceNote.append(element('p', 'Información referencial; confirma precio, disponibilidad y condiciones al cotizar.'));
         if (hasDetail) {
             const conditions = element('a', 'Ver condiciones y pendientes en la ficha');
-            conditions.href = project.detalleUrl + '#proyecto';
+            conditions.href = project.detalleUrl + (conditionTargets[project.slug] ?? '#proyecto');
             conditions.setAttribute('aria-label', 'Ver condiciones y pendientes de ' + project.nombre);
             referenceNote.append(conditions);
         }

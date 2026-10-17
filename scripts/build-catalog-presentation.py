@@ -36,9 +36,17 @@ def checked_asset(asset, prefix):
 def fragments():
     projects = read_json('data/proyectos.json')
     assert len(projects) == 134 and len({p['slug'] for p in projects}) == 134
+    condition_targets = {}
     for project in projects:
         assert project['detalleUrl'] == '/' + project['slug'] + '.html'
-        assert (ROOT / project['detalleUrl'].lstrip('/')).is_file()
+        page = (ROOT / project['detalleUrl'].lstrip('/')).read_text()
+        if 'id="proyecto"' not in page:
+            # Featured layouts keep the commercial note within the main
+            # content, whereas detalle-adicional is only gallery/surfaces.
+            assert 'id="contenido-principal"' in page and 'price-commercial-note' in page
+            condition_targets[project['slug']] = '#contenido-principal'
+        target = condition_targets.get(project['slug'], '#proyecto')
+        assert 'id="' + target[1:] + '"' in page
     # Every packaging profile retains these identities/routes. The directory
     # deliberately contains no prices, source documents or media references.
     directory = '\n'.join('    <li><a href="' + html.escape(p['detalleUrl'], quote=True) + '">' + html.escape(p['nombre']) + '</a></li>' for p in projects)
@@ -73,7 +81,8 @@ def fragments():
         covers[row['slug']] = {**original, 'sources': sorted([*variants, original], key=lambda a: a['width'])}
     assert len(covers) == 5
     image_map = '    // CATALOG_COVERS_START\n    const coverVariants = ' + json.dumps(covers, ensure_ascii=False, indent=4) + ';\n    // CATALOG_COVERS_END'
-    return directory, image_map
+    target_map = '    // CATALOG_CONDITION_TARGETS_START\n    const conditionTargets = ' + json.dumps(condition_targets, ensure_ascii=False, indent=4) + ';\n    // CATALOG_CONDITION_TARGETS_END'
+    return directory, image_map, target_map
 
 
 def main():
@@ -82,10 +91,12 @@ def main():
     args = parser.parse_args()
     path = ROOT / 'proyectos.html'
     before = path.read_text()
-    directory, image_map = fragments()
+    directory, image_map, target_map = fragments()
     after, count = re.subn(r'<!--CATALOG_DIRECTORY_START-->[\s\S]*?<!--CATALOG_DIRECTORY_END-->', lambda _: directory, before)
     assert count == 1
     after, count = re.subn(r'    // CATALOG_COVERS_START[\s\S]*?    // CATALOG_COVERS_END', lambda _: image_map, after)
+    assert count == 1
+    after, count = re.subn(r'    // CATALOG_CONDITION_TARGETS_START[\s\S]*?    // CATALOG_CONDITION_TARGETS_END', lambda _: target_map, after)
     assert count == 1
     if args.check:
         assert after == before, 'Catalogue presentation is out of date; run this script without --check'

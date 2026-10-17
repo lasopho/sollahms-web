@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const BEFORE_BLOB = 'dfbe29121c1bd7587867d890f20339d5661de9a0';
 const BEFORE_SHA256 = 'eec0893eddff1ee3030081e0314dd1347f80892c88484f3291b9f845a840175c';
-const AFTER_SHA256 = 'f9bb86c594280c46ae50d54869b4d612c201e16cb8b7d4280e0e1d83d7f1556d';
+const AFTER_SHA256 = '0be2a843f53ac9b909abfa1a297e728fc5b90cbfd56abbeba39d8cad8179b324';
 const digest = value => createHash('sha256').update(value).digest('hex');
 
 export function projectP2CatalogueFile(file, value) {

@@ -12,11 +12,13 @@ La corrección mantiene los 134 objetos comerciales de `data/proyectos.json` sin
 
 La fecha mostrada es la retenida en la evidencia, no la fecha de este cambio. Las condiciones de Nórdico proceden de `data/fichas-proyectos.json`, `sourceNotes`, y de `docs/nordico-y-parque-germania-2026-10-13.md`. Las de Sento ya estaban en el catálogo. Cuando falte una fecha se muestra un pendiente explícito.
 
+Los enlaces de condiciones apuntan a `#proyecto` en 131 fichas. Distrito Centro, INN Puerto Chico y Edificio Suecia usan `#contenido-principal`, el contenedor existente que incluye sus notas comerciales; su bloque `#detalle-adicional` sólo contiene galería y superficies. El generador verifica que los 134 destinos existan y genera las tres excepciones. Las pruebas comprueban también las notas comerciales de esos tres destinos.
+
 La tipografía, colores, grid, orden, imágenes originales y controles existentes se conservan. Sólo se añaden notas comerciales discretas, estados de foco y el directorio alternativo; no se cambia el diseño general.
 
 ## Generación y alcance de publicación
 
-`python3 -B scripts/build-catalog-presentation.py --check` valida el contenido generado. Sin `--check` actualiza únicamente los dos bloques identificados en `proyectos.html`.
+`python3 -B scripts/build-catalog-presentation.py --check` valida el contenido generado. Sin `--check` actualiza únicamente los tres bloques identificados en `proyectos.html`.
 
 El generador compara cada cubierta con la misma imagen de investigación y del manifiesto León; verifica archivo regular, proyecto, SHA-256, tamaño y dimensiones reales con Pillow antes de incorporarla. No deduce nombres de variantes ni convierte imágenes. Dos manifiestos repiten el principal entre sus variantes: la salida lo desduplica por ruta.
 
