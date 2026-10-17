@@ -39,6 +39,7 @@ despliega y no envía consultas o reservas reales.
 
 `python scripts/run-git-ci.py` conserva los 330 casos Node y 137 tests Python
 de la línea base auditada y añade los casos clasificados por cada corrección.
+La fase P1 añade 38 casos Node y 17 Python: 368 y 154 en total.
 Los conteos vigentes se fijan explícitamente en `tests/git-ci-selection.json`;
 el runner exige ejecutarlos todos junto al validador hipotecario. La clasificación positiva
 enumera 26 casos que necesitan el release privado: **no se ejecutan ni se

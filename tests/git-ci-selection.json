@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 361,
+  "expectedGitNodeTests": 368,
   "expectedReleaseOnlyCases": 26,
-  "expectedPythonFixtureTests": 137,
+  "expectedPythonFixtureTests": 154,
   "fullFiles": [
     {
       "file": "tests/project-map-cleanup.test.mjs",
@@ -170,6 +170,19 @@
         "agenda confirms a simulated successful booking and preserves its original public response",
         "agenda blocks repeat booking after a lost response in the same tab and after reload",
         "agenda permits another simulated Preview review after a definitively unsent request"
+      ]
+    },
+    {
+      "file": "tests/p1-commercial.test.mjs",
+      "reason": "CAT-002/SRC-001: seven synthetic current-data, catalogue DOM, generator, source scope and mortgage-contact rejection cases; no provider or private asset access.",
+      "cases": [
+        "P1 Verne refreshes the complete official office quote while all 134 catalogue objects stay exact",
+        "P1 four pending fiches disclose their status before the overview and preserve all other HTML bytes and actions",
+        "P1 exact file projections reject unrelated edits, partial quotes, lost notices and altered generator code",
+        "P1 real fiche generator keeps the same four status notices and coherent office facts without touching other projects",
+        "P1 live catalogue renders exactly four clear status notices and preserves search, price filtering and detail links",
+        "P1 unconfirmed residential identities cannot use either the old or the new office price as a verified project offer",
+        "P1 simulated contact rejects office-derived residential mortgage values before reading credentials or sending messages"
       ]
     }
   ],
