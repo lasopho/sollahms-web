@@ -1,0 +1,673 @@
+{
+  "schemaVersion": 1,
+  "finding": "MED-008",
+  "baseCommit": "9204a57e50ed8a5f7037be761cf70de55fe153d4",
+  "scope": "Exact reviewed alt-only HTML changes and renderer hook, restoring the P2 UX/embed predecessor rather than P1.",
+  "files": {
+    "abdon-cifuentes.html": {
+      "beforeBlob": "3c883025202a838594fe07dfd8d1241bb48aefe8",
+      "beforeSha256": "6760ab709406f902010f138bc47ee767c7cd970c2240cc5b16db6bbd9f13d16d",
+      "beforeBytes": 19392,
+      "afterSha256": "14a1e93d526148d0c9678324d160166223bebf9c4fbafa7b8b122820f746a404",
+      "afterBytes": 19878
+    },
+    "aires-la-florida-2.html": {
+      "beforeBlob": "379da4415d38801386534e29a7529a4348549c0c",
+      "beforeSha256": "77db172e54a031cf52a043507ea310a69adcd9258f71a29e1d02b923b89f80dc",
+      "beforeBytes": 24497,
+      "afterSha256": "0a1e0541504c7407bc72d4b83a7d5472c709c28f6bc57585715ac0923b409841",
+      "afterBytes": 25434
+    },
+    "alto-buzeta.html": {
+      "beforeBlob": "96653d9c93465fe221aa72cee4afb6cc8e781c45",
+      "beforeSha256": "7ad0e2fbd1ce674be3b50d14ec4ed3df0b685ba19712aebc1f0770556a50974f",
+      "beforeBytes": 10033,
+      "afterSha256": "94b11840965740a4052549cd7b6ca9ecaa167809da1676fe0e25847c02f00727",
+      "afterBytes": 10199
+    },
+    "alto-goycolea.html": {
+      "beforeBlob": "04b51c4ecb4b53dbdfdba92fbf8fb9aaadb6e392",
+      "beforeSha256": "7b6a453c6601326d396a39aac5acc2d48c38879ee3689ae3eda958df73001dae",
+      "beforeBytes": 10171,
+      "afterSha256": "f8bae8ed5312773ec48121a458ebbe4dfa9da8f3a48fcf6c3bd139707845736e",
+      "afterBytes": 10688
+    },
+    "alto-irarrazaval.html": {
+      "beforeBlob": "b4635d6709924d209a71b5b76d93694f52c139b2",
+      "beforeSha256": "04db480e0644055e98ad41a062073906b8bd8137ccd544226923f37726633049",
+      "beforeBytes": 11175,
+      "afterSha256": "fa994faedf438540511cde7374b3db3b6f696e5b3f8026dc4358944e1b25c525",
+      "afterBytes": 11645
+    },
+    "alto-san-joaquin.html": {
+      "beforeBlob": "d00a675bec86fcc73b83b6009a115ae48b9e08fb",
+      "beforeSha256": "3d0e65c240fd4c5d24b90cbfdf093d93591fca2393c1eeb2e15c6d87764b8abb",
+      "beforeBytes": 26921,
+      "afterSha256": "00fb260b3bbaf7c8b303ea3fc42938ab5394a06a2263ea9dc6deaeb620f1d4a4",
+      "afterBytes": 27805
+    },
+    "barrio-zenteno.html": {
+      "beforeBlob": "e0feb964c692fc95a8c8aa7b756192c3311636b4",
+      "beforeSha256": "99e0faa4e5919f4eedb0d4473eded5f17c69022f4895eb1069bd9797a9336d50",
+      "beforeBytes": 11187,
+      "afterSha256": "fa5674e567f9e5a3fea096d3fc50608504f0730795d22a31939bd7fed7349f1d",
+      "afterBytes": 11640
+    },
+    "caceres.html": {
+      "beforeBlob": "0f4dc81fbfc53d9b1efdabbd7f195e1c8cf3f0d7",
+      "beforeSha256": "0d9791dad048721c590d10ba3adeae3f6dd4b64eb77a3e957daafd52a51ffc01",
+      "beforeBytes": 10158,
+      "afterSha256": "37fd2d7a1b9ffce6832bf20274880b610681b98a31de53df2120d56afb23bd35",
+      "afterBytes": 10683
+    },
+    "campus-llacolen.html": {
+      "beforeBlob": "2041c6ea348b7b9ded9cdbdca611dfff7ca5ffa6",
+      "beforeSha256": "fba00e4d0ac676daae2626a9308e9b13cf76d0e7bd3d6886fb0db92a9b18cecd",
+      "beforeBytes": 10333,
+      "afterSha256": "8eb7675f05b71f41fa349e20d362260e49d0545befc09f82cccda656e9b9a3e2",
+      "afterBytes": 10515
+    },
+    "capitanes.html": {
+      "beforeBlob": "2acd800ddf51aa7b2f79069ed21d5cdcc73b7a42",
+      "beforeSha256": "852939a42de5206ca0dd405af889bf6d62ce51c1bdf63ee004a523021b1db94e",
+      "beforeBytes": 18266,
+      "afterSha256": "5c56daddeeaa1bfed04c40dc6b2d866af4c7fc659f05807662e8855bae4019b6",
+      "afterBytes": 18715
+    },
+    "centenario-1.html": {
+      "beforeBlob": "f3b7737f3e084dc3de49546a54eda0941ca1fe5f",
+      "beforeSha256": "8f42da84d79bc3ff101aad2f4266b50ea2aaedf5d9a1e4bab97651caa8d86abd",
+      "beforeBytes": 25241,
+      "afterSha256": "638438740d9615734c08cf6a74ebd728fc079df5f5000b61b80b1811a65e8dd6",
+      "afterBytes": 26020
+    },
+    "conecta-huechuraba.html": {
+      "beforeBlob": "2c4a210ad275123f6e78b71f73a72f3138bbf1a9",
+      "beforeSha256": "677ceaf1444da04e4304c52aa255310cd9fc3901fc8f03cfda29f34b26985773",
+      "beforeBytes": 23377,
+      "afterSha256": "c761eb46389b84cbd48f200e617aa63b65958c5957c7234896cbdf225e28d725",
+      "afterBytes": 24356
+    },
+    "coronel-godoy.html": {
+      "beforeBlob": "87188d779c49645b38c06264731684732b56140a",
+      "beforeSha256": "2c6a4e32d14f60088056888445a4c369b77b1b127b6bd4e8e07e38ede72478cc",
+      "beforeBytes": 21956,
+      "afterSha256": "4d0d94a6cbc707db7a3dc92da32421fc93ff202e133905672fa53cb3d23b953e",
+      "afterBytes": 22076
+    },
+    "costanera-coquimbo-a.html": {
+      "beforeBlob": "dfb47f400b433f70d814ad42ad4c75be1ad5834b",
+      "beforeSha256": "3975eeb6aaa203a0769f11e4ea9e6af0d6ace3dc91885b17eda6e82f783a53bd",
+      "beforeBytes": 11587,
+      "afterSha256": "0dad87371332b9a3013928d1375b87f103f01ee73de235cf7c80190764de5986",
+      "afterBytes": 11726
+    },
+    "costanera-coquimbo-b.html": {
+      "beforeBlob": "22bcc6a22273fbe58591a9ccc0c7466b32033724",
+      "beforeSha256": "c3d4df79b45e656823d826213b5dd1a26ef56aa328681ff815e390ac7c4f5fcb",
+      "beforeBytes": 11608,
+      "afterSha256": "9d93a5bc8756c04a3fe6e1eb88e5554a2f432f685b3890ea7e2615c509a92553",
+      "afterBytes": 11713
+    },
+    "cumbres-de-penuelas.html": {
+      "beforeBlob": "8643f84344804a1742a513fffea6cccf1f20b99c",
+      "beforeSha256": "80311d493f7f4e6db97b734f6d7cb034c092610997f3c1ae8eab3d19bbb3094e",
+      "beforeBytes": 27180,
+      "afterSha256": "75046d5e03bb7202e5879ebcbcdd5916199672d530c391bf5787974889626f66",
+      "afterBytes": 28072
+    },
+    "diagonal-paraguay.html": {
+      "beforeBlob": "65862d147650345884b9c856042eaa083c045322",
+      "beforeSha256": "fb4439273ec261b3e0e625cb105a14d6aadd838f21abc4f9dbae28dc18598813",
+      "beforeBytes": 19323,
+      "afterSha256": "2d46086a68ad69b53ef2bd21c6803c24d01719cd540d83e9731395e60a5b2edc",
+      "afterBytes": 19983
+    },
+    "diagonal-vicuna.html": {
+      "beforeBlob": "8d4e77481f46bf0a7c0cc1828002f21d29cf4bd7",
+      "beforeSha256": "43354c87953e692ba19927691f7c57f9b36db679922312704a3fe3671ab6dc51",
+      "beforeBytes": 10241,
+      "afterSha256": "52cf919af3923ac406d1fc2b3dfa77e242b66cd7c6c20e46bfa75aef7e448517",
+      "afterBytes": 10737
+    },
+    "distrito-centro.html": {
+      "beforeBlob": "56b8bc0971e573eacf582f399bddec07e27aca1d",
+      "beforeSha256": "9e23c31cdda99d18f33cdc899e0548ea5aa228eca64aa50c6ce710e5822473ed",
+      "beforeBytes": 17968,
+      "afterSha256": "e3f2d29c1c9e87d51eda651dad99744b16fe43fde8f54aba02455251b45d6b59",
+      "afterBytes": 18058
+    },
+    "don-ignacio.html": {
+      "beforeBlob": "fbd4e07e5d8048b896b3a345617715a264fac408",
+      "beforeSha256": "bbc3b7ddd71c0a2c700059e5a3bf5ac0395b6042fe37d5eed0bdf18c6958988f",
+      "beforeBytes": 21810,
+      "afterSha256": "eb020a9bdf5110d4f36f53eced8ae7332f7a695838382e03417edd67ec2cfb22",
+      "afterBytes": 22340
+    },
+    "don-rafael.html": {
+      "beforeBlob": "1b763b12d59b3fb712bf6a4316f3cc6eea27caa2",
+      "beforeSha256": "caa6bb7ec513269449ee373c881e82677a3f092aadd0921cef3fa8327a91c1da",
+      "beforeBytes": 10010,
+      "afterSha256": "61e535bf718e38864354b9161ead312e171445eed5baa407f3d2925160676902",
+      "afterBytes": 10506
+    },
+    "don-tomas.html": {
+      "beforeBlob": "5bf2f9e64aba5e5760bfd7cb60134ec951d3977c",
+      "beforeSha256": "b903baa312217a13cd8bec7240f529b36cc40bfe8e04f69ba9fa78dff2ef6795",
+      "beforeBytes": 9871,
+      "afterSha256": "69f80a92d813392ce191a172d60f02953d5a03a750f3175ea0638b8656d80437",
+      "afterBytes": 10267
+    },
+    "downtown-san-martin.html": {
+      "beforeBlob": "975e5ca2e313a0d60d2e86b5072221348c973d31",
+      "beforeSha256": "4b392eb87e863e00cbc4088eeb2c0a54aaacd7e9e41c24d6d1d049e272ac459d",
+      "beforeBytes": 35788,
+      "afterSha256": "c2dbe623e2f61b26809c37f19597e20d41a1e5b0f8d6d1b37ddd8ade736d2367",
+      "afterBytes": 35917
+    },
+    "edificio-argomedo.html": {
+      "beforeBlob": "b9697828aee4d85b308904facf09398c8a1c3d1f",
+      "beforeSha256": "8dee940332f20153a2839c6e4d9f2aad319c2ec3fd53c307ab58d0b75e3677af",
+      "beforeBytes": 15510,
+      "afterSha256": "d2d91fc57563c8c9086d66f2b61ad6e28bd59366fa96e34d34231acacc1d5b0d",
+      "afterBytes": 15956
+    },
+    "edificio-baum.html": {
+      "beforeBlob": "285ad8fef8b12316908bda344bf81f0334c3a0e8",
+      "beforeSha256": "13b2ab623086bedb3591fab3c63d4ab3dee23b690984f1c6d981ec3198a515f1",
+      "beforeBytes": 16774,
+      "afterSha256": "369e65666ccfc91376662739fecf498430057afd9dcc2b7c82d552805d68610b",
+      "afterBytes": 17183
+    },
+    "edificio-bezanilla.html": {
+      "beforeBlob": "4daa90e0d5dcd1adb60e98d52ac8e6e777b872fa",
+      "beforeSha256": "2c94947ea413ce11373563af1f8638928512371abcfae160a840b82fa3956f22",
+      "beforeBytes": 20424,
+      "afterSha256": "58ea03c85137f18c05bb1584582ad938d7b12f92b802a1bbd08f43f23d58b9e7",
+      "afterBytes": 20688
+    },
+    "edificio-bold.html": {
+      "beforeBlob": "f99238ba7f1b54e99c5449388bfca46d252839ac",
+      "beforeSha256": "a09ab68f3724e64688dc3a53608c06fd259419b59a455e4caaafb53dee8f1abd",
+      "beforeBytes": 14881,
+      "afterSha256": "2414f44a43f286912c3d29291d0821161fa469f967e00700a9d5456a66dc3cc0",
+      "afterBytes": 15316
+    },
+    "edificio-don-pepe-154.html": {
+      "beforeBlob": "fe1c16cb1a4ce63becd694c8dd6e241ac404e871",
+      "beforeSha256": "c5f095be5c8a8b8ecc71b1bbc81956c99c3967da06819b8cd1ce661f3f1506db",
+      "beforeBytes": 10137,
+      "afterSha256": "3df12ad6ebebc9173faf819f25c02778db5f1c6cf60daa1f14da125b87a860af",
+      "afterBytes": 10616
+    },
+    "edificio-indi.html": {
+      "beforeBlob": "ba1abbbd072f5c75d541af70e1044cbb033e9354",
+      "beforeSha256": "c8bace827ddf16cd4e2158ef8297dc8e315ce9081e4c26332f3c5a61459d2b17",
+      "beforeBytes": 17417,
+      "afterSha256": "18a4b2fa1be2fb359591325756ef30d80cb71c50baf6cf1051b434e014456d53",
+      "afterBytes": 17524
+    },
+    "edificio-indigo.html": {
+      "beforeBlob": "3b9eb5e278c72264b84ebc636da031926257ea10",
+      "beforeSha256": "5d9ee91f00d3fcd24561a6da8b73e85cda20bd41577fc6757acc68e888b5047a",
+      "beforeBytes": 17601,
+      "afterSha256": "22baec9e362c190586e14544a46afe9721d81c4be0218bf7d589c42734f0ae54",
+      "afterBytes": 18021
+    },
+    "edificio-liverpool.html": {
+      "beforeBlob": "7f255fb95612e7e9ab12d235914f68a71cca7416",
+      "beforeSha256": "d3f3bbe58232156aa876bcc61fec087299a49a2d55f8b7189baa12a70e671379",
+      "beforeBytes": 12130,
+      "afterSha256": "18b4d8692dcc71e4c5377247ceef17b17a281e3be672cde2b858b604e46c5921",
+      "afterBytes": 12590
+    },
+    "edificio-living-town.html": {
+      "beforeBlob": "1371444bee202d53b1c54282f53ca37f4f938850",
+      "beforeSha256": "ae7453ea142a6262cb6f35288327092a92bda8167cc3aec53e514352bcc94d59",
+      "beforeBytes": 17740,
+      "afterSha256": "083fc536f90c5b99cdc748fbad4a1ff2dc12f518ec58e9b3f2c2b1e58d83b62f",
+      "afterBytes": 18154
+    },
+    "edificio-mood.html": {
+      "beforeBlob": "3931d614170d32c6eba70b88dd9ad872414c3b9e",
+      "beforeSha256": "4b18a7c43278509aabcaec700870e37faf06875b9040f635f8990d3c52f71a01",
+      "beforeBytes": 12843,
+      "afterSha256": "cd3d955e79dd881f52e713b62821accd5de99e95b1a7c89c397a63de4afa3c23",
+      "afterBytes": 13170
+    },
+    "edificio-nordico.html": {
+      "beforeBlob": "fafdeee52b1c23959b88005e199947feacd07a02",
+      "beforeSha256": "2f4a3099af3bcd82ce9bd7f60e2b24c70b2fba95e124115e7e29f2c6feba36bf",
+      "beforeBytes": 12412,
+      "afterSha256": "5d05941ce0dabc30efd1ed82f982ea014173f0847b737f2e532fd15597cc7ce7",
+      "afterBytes": 12466
+    },
+    "edificio-santa-maria.html": {
+      "beforeBlob": "1d7dae97ccc37b6e8b6629b8d1180cf505850a60",
+      "beforeSha256": "b9e71d63afcfbf87dca974e606560d522ac6a3f0c3354c912089ba4b19dea173",
+      "beforeBytes": 11314,
+      "afterSha256": "5d0b00ca2db5966e838490254a9abf79c0b488585176bc01f939d38e66b80175",
+      "afterBytes": 11423
+    },
+    "edificio-santo.html": {
+      "beforeBlob": "daf54d63113bf072e1e3a5708656442cb031e1d2",
+      "beforeSha256": "63245ad477f93baa7f489544e155059ed327c81ee0f6511ba782ead5d266f80d",
+      "beforeBytes": 14566,
+      "afterSha256": "472c19f8665a4dacda322336bd1e955f99da72330983d0f9faedac0f12011a15",
+      "afterBytes": 14988
+    },
+    "edificio-suecia.html": {
+      "beforeBlob": "17a9eed7b7e39e7985b448d3b5af6271e7fd94b0",
+      "beforeSha256": "77de29018e0f50c41e46526da72d3ac6f97ab9d291c62970cd15b90748f3984a",
+      "beforeBytes": 25641,
+      "afterSha256": "5d7e159a5f4f5e798633836991bb3ca3323dc62fea18fd210fdbf781ede26b2c",
+      "afterBytes": 26034
+    },
+    "el-aromo.html": {
+      "beforeBlob": "c2f1c7d044766c8c827e7f6b18b244d8cf7062c3",
+      "beforeSha256": "2f4c146039f9e61fba3a9c0e044bee7151f632a41a82778cbd93de4947506484",
+      "beforeBytes": 18055,
+      "afterSha256": "6a54da6d7c1b40b3cb946c18ebd6b9837ed370bef6129037734e04170d55f792",
+      "afterBytes": 18597
+    },
+    "eleuterio-ramirez.html": {
+      "beforeBlob": "757af0d2a9d1e0950bcb0e46e4bd4ec1a456ffbb",
+      "beforeSha256": "0dd72f0bc7660497d8425962aaac73cec2e93304fd486f21fa619c8a3a5e386a",
+      "beforeBytes": 11531,
+      "afterSha256": "fc13afb4a2c7833d71f190ae1869de8e2556d98fa183e0a337631b74091d20fa",
+      "afterBytes": 11995
+    },
+    "endemico.html": {
+      "beforeBlob": "d22ca8cb19314030ddb2ac21e2a36fd11d3ac037",
+      "beforeSha256": "8467091735794b33d628fdf6093b2a9b006cc9762ccb943694e414bb2471dcd6",
+      "beforeBytes": 22529,
+      "afterSha256": "fa56f8bbb42aee10ba23e7f80cd0cb67d2e42fe3c2dc04291a7b064d60e5aa05",
+      "afterBytes": 22832
+    },
+    "enlace-mackenna.html": {
+      "beforeBlob": "1c79b73936f51499790dcc02526392aae6c6e884",
+      "beforeSha256": "384c29a047d5406ea89441a5b858f6a60486dbb7412bbd0a3ee1b79dd02fbb7b",
+      "beforeBytes": 25882,
+      "afterSha256": "2aed016198582881ea8117b782cf82cb684c8be8e033b7f4754693a550b91fb9",
+      "afterBytes": 26858
+    },
+    "entre-vicunas.html": {
+      "beforeBlob": "9b5d5c99ffde4b69568e40ac3db59755c21837d3",
+      "beforeSha256": "9b217c1fa4b7835ad981c4c4d7514859822e4c93128002b4a4ce3d8b56e816b5",
+      "beforeBytes": 10102,
+      "afterSha256": "91b4d76fda8ec6cda76df8f108bd5466c0f977e3cda80255dbadeb721e619a0d",
+      "afterBytes": 10593
+    },
+    "espacio-victoria.html": {
+      "beforeBlob": "76cd2d669de94ca7e80a8436e8811d11fa87bbd7",
+      "beforeSha256": "d0cc2efc6cd661dc3ec49135542356270d70c73e66b35a2bb7b47621e25a0472",
+      "beforeBytes": 26770,
+      "afterSha256": "45293a68cb439d2a939a0384b11b780a9c821fe549c1c65286569e5e334ef0d4",
+      "afterBytes": 27657
+    },
+    "ferroparque.html": {
+      "beforeBlob": "15b09cc2720c528ef7f046fcdea774d602ca5286",
+      "beforeSha256": "196a7e84cca23ae495e673dab7d7bb0cdccd603c616d45bf4f90e1d51d971032",
+      "beforeBytes": 18892,
+      "afterSha256": "7c35c09a2f52c24aeb93fba4f8e162cd4408b3b2546b7081163fdbbff6534da0",
+      "afterBytes": 19706
+    },
+    "guillermo-mann-1401.html": {
+      "beforeBlob": "733e27adae94e88b8347ecba70f61f1a0ccaa87e",
+      "beforeSha256": "9035597645eef7a647222a7f6ec05a8367e1d160e4e5ca243f4838385a0fd420",
+      "beforeBytes": 11197,
+      "afterSha256": "db567bb8dc63da25275d9a52e04de40fde384c7d575e7cefb3d2b52e8cb6145e",
+      "afterBytes": 11670
+    },
+    "independencia-4745.html": {
+      "beforeBlob": "d83cf914fe6c21f2788c0c8651caad4b0f60cbd0",
+      "beforeSha256": "4c2533bd07896fb99831c7fb218868b22124af7ac51d50070f1b59f537c31dd1",
+      "beforeBytes": 11267,
+      "afterSha256": "c4014a17551aa31c9a9b39a340e56bcae161656af8f955ef705ebefcec215f89",
+      "afterBytes": 11437
+    },
+    "inn-puerto-chico.html": {
+      "beforeBlob": "3d49031b5adddd3e4e3e9bb1bdd1cdb331533f4c",
+      "beforeSha256": "d8bdc61b820ff842cf52d681393b8338c209031e54bec8a820b17b5f34c4dbd9",
+      "beforeBytes": 27495,
+      "afterSha256": "2741a96d8a6f2e8a0600d25d8959c885ab3f6f4937b5d90953b1dbd37420c69f",
+      "afterBytes": 27875
+    },
+    "jardines-de-alvarado.html": {
+      "beforeBlob": "cf2e13fbcb1ebbe56808d81368853249fecc05cf",
+      "beforeSha256": "857439d35a0d997ea44796942d23fc65086ba61448b84f60008553c14066a38a",
+      "beforeBytes": 10016,
+      "afterSha256": "3e3ac4e51896968dd00de0d60f24437a37d3b26041b184fd97b94df2d587fd06",
+      "afterBytes": 10128
+    },
+    "jose-pedro-alessandri.html": {
+      "beforeBlob": "c2a196859abdbd0bc2a0140d4076730475f6d2ca",
+      "beforeSha256": "fac9ce52da0c1d6b3048c66e7cc19c01d3141f058567bc1744d8e7a98b4dd83b",
+      "beforeBytes": 10405,
+      "afterSha256": "1b60602c59dbe5b6309ad99287a479fa02db6465b38f22cc5fe1db40a3101047",
+      "afterBytes": 10812
+    },
+    "lamara.html": {
+      "beforeBlob": "faba4e50a92ab5e5e63da40ecf1dcf648426e47c",
+      "beforeSha256": "6aa9aad95909853a53e29f4ee65e8f0ef6d406a73da9a2a19aede61fc3b567e2",
+      "beforeBytes": 21321,
+      "afterSha256": "c1b5703131cbb143b44ecf4443d3f48ee7416ddf378d17d8f5079f64ea970f07",
+      "afterBytes": 21737
+    },
+    "lomas-de-puyai.html": {
+      "beforeBlob": "238bb763367a2081c9eaa607079cc8484cfd08f8",
+      "beforeSha256": "98728112b28d98296e2895d2e732dbbf0d2eee45e0259b23c14f3425fc779d60",
+      "beforeBytes": 11766,
+      "afterSha256": "964f432afca5df02e67293476ad3c134c4264ed77fc23e8110f013ebe5ff9cb7",
+      "afterBytes": 12269
+    },
+    "los-lilenes.html": {
+      "beforeBlob": "d7d4920911599291d94450eda40d1b7f3126e5eb",
+      "beforeSha256": "4d056f59b6c042be1f62587e61d1fd19e31c296afcab9e6f1e311810b07e5fbd",
+      "beforeBytes": 19431,
+      "afterSha256": "6559e8374e7dd1fe3d825e1bd2b51cb38d3d737fbb861883a799c5ec02f7f976",
+      "afterBytes": 20003
+    },
+    "mapocho-3521-edificio-a.html": {
+      "beforeBlob": "ab8b38c22680767e0f8be02dcb1dbf8b933cad02",
+      "beforeSha256": "7f2f4781f3bc0ea1a03d4d5540d702d4c0ce0df4fb086a96b50788ab0930f2f6",
+      "beforeBytes": 12705,
+      "afterSha256": "7aae797e42dbaca7658023b34499975ebd7f17f6fd6916ddff29a338fcf36ecc",
+      "afterBytes": 13116
+    },
+    "mapocho-3521.html": {
+      "beforeBlob": "b86c6d7472fb6e0e3dd09138cc3be86cfaaf1931",
+      "beforeSha256": "f8873d1558edcd31c0e8cf297373600540659958e580f0a9278c0b56f7a77fd2",
+      "beforeBytes": 10800,
+      "afterSha256": "8e75cbfe86e083de741f56cdff3ca56f794e93efeb4c891f708878d22ce64aeb",
+      "afterBytes": 11327
+    },
+    "marina-pacifico.html": {
+      "beforeBlob": "239c5e184ed3f084aa2449e47225d65093250833",
+      "beforeSha256": "8d7a7414cb815d129d552f57959c057e4cecb5e8d83129e8896d261b74e73def",
+      "beforeBytes": 10032,
+      "afterSha256": "68c251295d7c401c53d846571212f495f8bc58ef4d2ce4e62e390463eacd735d",
+      "afterBytes": 10500
+    },
+    "matta-016.html": {
+      "beforeBlob": "7c6c814c70116f40a95b7404eae92d4fa874087d",
+      "beforeSha256": "5770ada8fde0c77c6a2be958fcb2fda1414ac63958044371448dd1a2574b8e6d",
+      "beforeBytes": 22722,
+      "afterSha256": "6d11d96448caeae331157d1167a904022dc521e677610d0631615e0bfdee7b72",
+      "afterBytes": 23160
+    },
+    "mirador-irarrazaval.html": {
+      "beforeBlob": "4795c2321b691f5c83feedba41e9286f36fd3e1b",
+      "beforeSha256": "db6b870bb881d88796a40f2e85c498ad4dfdc7877a23dd336a8c9d6f1e0bdf7a",
+      "beforeBytes": 10219,
+      "afterSha256": "2f9adef4266b2aea4cce4def493d1018cd54156bcefdfdebb1faaacec2f40fb8",
+      "afterBytes": 10655
+    },
+    "mirador-mapocho.html": {
+      "beforeBlob": "fa5cc7908a066b538d2213d14a2c30fe30cc73b7",
+      "beforeSha256": "5d7c7e1cc88e00a7152b781ef2a1044a88a7445bbf5147a36c011a16af51ac12",
+      "beforeBytes": 10385,
+      "afterSha256": "01e05112e791b9193912754036c6cb5cee3e71ac80e76a514d48e87753815cb6",
+      "afterBytes": 10884
+    },
+    "nova-parque.html": {
+      "beforeBlob": "c583a25644d61146c2d8c71a1037936dac4a141b",
+      "beforeSha256": "d6ca8b4649a68f0ef640d5fb21c54ef04ef9f6e29c3b2adbf23e0c091f7100a0",
+      "beforeBytes": 10027,
+      "afterSha256": "b3f38d5206c93e7fd71d3a2b8d007964b8dd83a1194d74fdb7ac883c0419b25c",
+      "afterBytes": 10528
+    },
+    "novo-catedral.html": {
+      "beforeBlob": "10ef586cb8e689b913e46e382ed4421a72880160",
+      "beforeSha256": "104fa2df078ec05450fa07fd23aa6ecaf6354f404a433ac4e022648ef00f8059",
+      "beforeBytes": 11852,
+      "afterSha256": "ce4a76da094c5c7a66274634d750fbdb8dbfc98d0374afca77d852ac3a33f214",
+      "afterBytes": 12064
+    },
+    "nucleo-costanera.html": {
+      "beforeBlob": "0096f7b83805f65deff4f57344ae6344695fff83",
+      "beforeSha256": "99a552f01c73b17747d1d24630b2966dc861afc50f52d4903a6ea8ab9996efa8",
+      "beforeBytes": 26640,
+      "afterSha256": "cfb13c848db22e20bd5ddbed539f7ae3aef09e57ebad02d83b3b1c771ae130d1",
+      "afterBytes": 26951
+    },
+    "nueva-esmeralda.html": {
+      "beforeBlob": "55811ffed7c11510eff4ac04b03ba14e3e94bed7",
+      "beforeSha256": "67690ee85eef1456952d42e7b8b8a34252ee56554295041ba1ce76edc0cac44c",
+      "beforeBytes": 21499,
+      "afterSha256": "c794c424404cfe281fd3023bb52a19ba3704538dfa69709e56b1117842f8b263",
+      "afterBytes": 21960
+    },
+    "own.html": {
+      "beforeBlob": "b3abd55bac5dfdea835625db8787d87c4fa14edd",
+      "beforeSha256": "551d39d7b37fe9622812244275ee6bf4f8067b82b88230f211ccb9b84a84ee1a",
+      "beforeBytes": 10916,
+      "afterSha256": "ad2eba5563c649d23fc3a64e11b0503b6b4cc21361c6ee56eab2e6e35342c342",
+      "afterBytes": 11413
+    },
+    "parque-germania.html": {
+      "beforeBlob": "ed5aa64cd450b2ff705637217d9927ef0886de3b",
+      "beforeSha256": "ae3e2b8b0ff2776692d54df8cf9fdc5551d51f4e7b97738358dcc96b23851cc4",
+      "beforeBytes": 17477,
+      "afterSha256": "be2fa367524d2f63d42e5b375f2d54317971d7d2bf590d91a91b2d4d17f76fe4",
+      "afterBytes": 17913
+    },
+    "patio-brasil.html": {
+      "beforeBlob": "8c60eec05d23d7859689ae433032a04b82a692c0",
+      "beforeSha256": "33c50245ccba99e085fc3ea65bdcc487f31eff6f216ae32592371f83791d5926",
+      "beforeBytes": 10319,
+      "afterSha256": "97df7f381dedc57642ff6ca37e5fbafe4077103163dd08977ae2ca50b2de8e18",
+      "afterBytes": 10831
+    },
+    "pintor-cicarelli-i.html": {
+      "beforeBlob": "33033866d21f2a65b3977cd999b3d6e0c6b3cf62",
+      "beforeSha256": "54b0833fb641a9af9ccb3dbe4b5b330d1e3d88ae633603f1f7869071148fd8c2",
+      "beforeBytes": 10492,
+      "afterSha256": "0eba60fca5c89b5dbde32cb5c9b1fd346ed26d967b4a6fc768b353ca1332a698",
+      "afterBytes": 10969
+    },
+    "pintor-cicarelli-ii.html": {
+      "beforeBlob": "886f3f0443c949f095dcfb7b0ac212d888d598c1",
+      "beforeSha256": "34df0ee619c865dadb1f5ad241286c84c059fcbfb713fe47c2d28cd2ab6f8fd8",
+      "beforeBytes": 10544,
+      "afterSha256": "abc895b96ddcc6585651ff382c2d1eb2557c3feb7ace66ffdb7e622f958daa09",
+      "afterBytes": 11071
+    },
+    "pintor-cicarelli-iii.html": {
+      "beforeBlob": "663a5cc1ebb7d840ab3ef473aa3a521c37496dfa",
+      "beforeSha256": "9cf31774cf9558998f93dd1affb998e029ff3c9603f268e07e2e7064c6d1474d",
+      "beforeBytes": 10615,
+      "afterSha256": "93c1a764df2b6a448993b7acbbee5dac5883fe77c866f36c27af9e214cb70cf4",
+      "afterBytes": 11107
+    },
+    "plaza-cervantes-b.html": {
+      "beforeBlob": "730a4e5ff27d2a783a64dbcfc981a2b2b7e1d9f4",
+      "beforeSha256": "2f532026da7e66453b859931a008b66dc4dea69805d59f66479e1d5f52d12edc",
+      "beforeBytes": 10544,
+      "afterSha256": "056115c39f4b2d5951cc32e61b28862eb52ee65e8586750c7d156d5ed3475ba4",
+      "afterBytes": 10715
+    },
+    "plaza-cervantes.html": {
+      "beforeBlob": "66a3f9e3746be5ba5ab2f111308ab329f712ec1c",
+      "beforeSha256": "5733d46c61b8e1d3e00af4caec9abb403b71e0a3f17b36aa3f23a8c3651699a7",
+      "beforeBytes": 8963,
+      "afterSha256": "03f5212fdc6ad9d4ea715b90c319946405f4190a147144d7110103457d61af3e",
+      "afterBytes": 9011
+    },
+    "plaza-de-lourdes.html": {
+      "beforeBlob": "2f73296c8163387090b5928e3cd2af5ffb08ce74",
+      "beforeSha256": "4a057f74c21b82eee69f89b07e941f2ed67ad36ab9b2bff5d1f2f9b564686827",
+      "beforeBytes": 10201,
+      "afterSha256": "e80e049f6304c967ce2572f55b9bebe12e572f7947a73c64009231c4111f7c5a",
+      "afterBytes": 10671
+    },
+    "plaza-quilicura.html": {
+      "beforeBlob": "20fb10540ddc7b6716de7273c3478fad67ace78c",
+      "beforeSha256": "68815d3de304672a1ca454783e44e6b7276f5abcb51b719dfab73d07ec30da85",
+      "beforeBytes": 10068,
+      "afterSha256": "4d835c44d11b600788050c723f82a07ddff6f1dea370b9b79052a2a64f9c174e",
+      "afterBytes": 10509
+    },
+    "rosas-1444.html": {
+      "beforeBlob": "f4b3b85b6534aaa6434e1fcbf0c6f52a7c4e9de5",
+      "beforeSha256": "57da5366da2398eaaa24896d19fe4bed2c029a1dc5d45bebe201daac24b7ecc1",
+      "beforeBytes": 9961,
+      "afterSha256": "b18d6d3c85e0d50a8a6801de119cd01ad77649bfc280e0c734b9a91ce4e16dd1",
+      "afterBytes": 10506
+    },
+    "santa-elena-1670-mbi.html": {
+      "beforeBlob": "01246ca448169fe6fddafc5e44151f65f8dc8a9c",
+      "beforeSha256": "859b0a7f0e0d7780349cab4780b10d324aa6814ede01aa3dab5afb1d70e0edc4",
+      "beforeBytes": 11222,
+      "afterSha256": "8f821e49d64802d48cbfeccfdde69f736f659911d8cfc9630d29464bdf0ed3b5",
+      "afterBytes": 11689
+    },
+    "scripts/build-project-details.py": {
+      "beforeBlob": "eadbf03093ad9e101982d2e6b569c93634914cd8",
+      "beforeSha256": "13abee55e4caab781959719e9590cd0ef7d8b3e95e76aaa85cb14f80de51e9ec",
+      "beforeBytes": 30546,
+      "afterSha256": "0f74e0ddff8fe60e6ef38c5edd52b97351fcecbca2c96adc7a59ca84da0dbdd2",
+      "afterBytes": 30681
+    },
+    "serrano-torre-a.html": {
+      "beforeBlob": "7cfef7b0e0875c58680385c17d1cbd5ac0e91e48",
+      "beforeSha256": "6f00fadea7d1436d9d3ce2905096dd9164f9219dd8790950e94b6d165f988f2b",
+      "beforeBytes": 10289,
+      "afterSha256": "d2710e0860c5922c487e4b931011e28d2e9df7c3aaf2ff0d61a3049d02435481",
+      "afterBytes": 10483
+    },
+    "terratolten.html": {
+      "beforeBlob": "d888fa052e5d3ecfbf4a0c27e71a2c4b01910460",
+      "beforeSha256": "223be28dc352ade450cafa878f024800080a103b86ba1b5174e4ff6d1a54ba81",
+      "beforeBytes": 27650,
+      "afterSha256": "82b505bc8cb1b781a85b5c5d254f015fb38d731f9399acd926101ef5f3cfa639",
+      "afterBytes": 28643
+    },
+    "terrazzo.html": {
+      "beforeBlob": "dd5cdfa57ddc47f8cdd0ae15b4fcf60a4279eb00",
+      "beforeSha256": "ddc8a6248006b0f970983cfe8e8677932b796d472807bb5ea426eaa70a018c4e",
+      "beforeBytes": 22043,
+      "afterSha256": "34c0dd8d843c5575bba4b5582fe69b6ea9a20f447ee82cf162d6de0d77c0bece",
+      "afterBytes": 22537
+    },
+    "tocornal.html": {
+      "beforeBlob": "2cc773b8c30f0d89e2610d42d5f2632d6927d3ca",
+      "beforeSha256": "1eb5f8e90c4409359b1aba457dbca709de520eedf9b707d5c1787e6c74c8c628",
+      "beforeBytes": 24585,
+      "afterSha256": "1e735ecc4929c693b8ea1c6d966dc825adee2bfc19a2e94a5c5bfa30b2a6f561",
+      "afterBytes": 25291
+    },
+    "trinidad-iii.html": {
+      "beforeBlob": "775fe43a8853762bfbe6ee745f6148379cb1f949",
+      "beforeSha256": "44c1f711870977d4347ee9302d3db53850e3b11391f139cedbba16c9ecf0d533",
+      "beforeBytes": 10023,
+      "afterSha256": "796079fb4e8895df172711568cd3ed94f98cd264c46035c35827e7d4587c0515",
+      "afterBytes": 10484
+    },
+    "urban-la-florida.html": {
+      "beforeBlob": "3d788d5900a21d4cc6410547b24c9458f2368c9c",
+      "beforeSha256": "983ba4493c803ab6b990bb43ec3a63cb813a1aa8f32835b41ce351515dd15258",
+      "beforeBytes": 17228,
+      "afterSha256": "8371cf14f24b17c8924350057cbc54184537ead86c0bd303504a81304c15b033",
+      "afterBytes": 17988
+    },
+    "vicente-valdes.html": {
+      "beforeBlob": "0a5f1759e95886d2a02e2f55de59b6ab30a2c506",
+      "beforeSha256": "1d68e6a0e9476da48793fb5e276dbd8fd8e3fab4fcb2363257704358f7627952",
+      "beforeBytes": 10115,
+      "afterSha256": "8517b9fa8be007670c539e195d9968d8e3b8ec74def2218d35c99e82a1179ece",
+      "afterBytes": 10610
+    },
+    "vicuna-mackenna-1432.html": {
+      "beforeBlob": "ba55e67441e2775f61a8a2d443322e0d0379131a",
+      "beforeSha256": "531a9cd3da30a1b3f9c4c8c94aa327daaf6099a74b888c6698a898592117fcb5",
+      "beforeBytes": 11315,
+      "afterSha256": "acab77451df6dd44d09bbb38cb8d69f16fb137db8a0ee7ea34a84674f212a6e6",
+      "afterBytes": 11735
+    },
+    "vicuna-mackenna-7589.html": {
+      "beforeBlob": "7b33fce8570b59e83a434bc4635379c120ace27f",
+      "beforeSha256": "7de6d1516bc7bb2849f59b6c6447a5f201d7a391efe479385ac868e4fcfc0799",
+      "beforeBytes": 24764,
+      "afterSha256": "0f1c1d00ea509b89e3825500d898071b514e80d0dd26ba5210a34568e9e479ba",
+      "afterBytes": 25332
+    },
+    "vima.html": {
+      "beforeBlob": "bd1ece3fc2cea3e79478b87bd73cce87c0010b3e",
+      "beforeSha256": "e01530e36158f094dd1bc49b82b0882a0f93d9367ef748d7852f71deec9ec728",
+      "beforeBytes": 17879,
+      "afterSha256": "73864a47232736df9a13d13a42b5f0f00a04f09fcb96913ad79eea35e07b35ae",
+      "afterBytes": 18525
+    },
+    "vista-costanera.html": {
+      "beforeBlob": "bcba8b3f1a79a3f4ed25d7dcaa093dec4cb8fe45",
+      "beforeSha256": "1dcf05dd7df4dbb1e8a4dec6bbd8eb3dec02d6b1ce1f8a6b38ca27f640afb9d4",
+      "beforeBytes": 9779,
+      "afterSha256": "3cad573566e3e9b90f8c810a77548c12995a85f72da49ac0613a765736716179",
+      "afterBytes": 9876
+    },
+    "vista-llacolen-a.html": {
+      "beforeBlob": "9a853b65d30c77eec00f1799dc79c7738fde7ad0",
+      "beforeSha256": "c8b530fa52589a9b9b94dea4f4573515d8f8d01bc9cf3ed8ccb21935d0f37f0f",
+      "beforeBytes": 13492,
+      "afterSha256": "b4ae49dda2f217dc496243b8fb32432483bc34c1a0eee646a883db3491c6511d",
+      "afterBytes": 13629
+    },
+    "vista-llacolen-b.html": {
+      "beforeBlob": "79d508b0595530b848d7f05a0368a4040e3ae51f",
+      "beforeSha256": "dc8c9b7f95ab524ef58731d470fd67df2199e53abbdcad95a7bfcac1d54489d0",
+      "beforeBytes": 11698,
+      "afterSha256": "c59a81ee348eb88d97eb24c63b70ea05ff54f9fef9f982bf915108e08a904863",
+      "afterBytes": 11804
+    },
+    "vista-morande.html": {
+      "beforeBlob": "f45242a82d10b74020985b5184ceb639cf402e2a",
+      "beforeSha256": "a58dcd7aae5383b511b5f589eadc5cbe2c1afe176bc299887ba77335bb02ca6e",
+      "beforeBytes": 42343,
+      "afterSha256": "f6b6573262ef31b73b5c3e41d9e56c3b09e36f4e2e5a6aae260670d7638ae5ac",
+      "afterBytes": 42640
+    },
+    "vista-portugal.html": {
+      "beforeBlob": "f44ab2e5000a4638d55c418ad3ebbd4500946d1d",
+      "beforeSha256": "ff9e8af3529a4088ad63905b9b54b2958ebc4d0ac2dadcffc32f2d012af29117",
+      "beforeBytes": 10137,
+      "afterSha256": "1a5782108c6d986a6175df0b07f83ed23d922ef524bee9c557ddf9ee57d13067",
+      "afterBytes": 10583
+    },
+    "vista-reloncavi.html": {
+      "beforeBlob": "f96317bc3a85fb29993fc8167998e2168aceaf4a",
+      "beforeSha256": "c90bc736b8424198a6c90f803bc8eaa9f2cefafe2c193d6b130e151c5cced40d",
+      "beforeBytes": 10019,
+      "afterSha256": "11d45f7ca12f80e8d2977bc1cb8b2c2aa7798075eb35229e43968cc2905bdc41",
+      "afterBytes": 10163
+    },
+    "vistamar.html": {
+      "beforeBlob": "78236efc225ab3ca67dc60295a0fbf45dc68949b",
+      "beforeSha256": "a7d52299b0f7b40e3a49c929dfe2cead361dc9c2abea7af6227377f5a73b2640",
+      "beforeBytes": 10042,
+      "afterSha256": "d21e236223f9103de390783d1e2db1631ad6a4d59cbe3b350e2575f79fa8717c",
+      "afterBytes": 10268
+    },
+    "vitro.html": {
+      "beforeBlob": "f8dd841af2fc180597ea77c12f071ad8ae035d40",
+      "beforeSha256": "48caa1f0947f0cf310904db099c9bd67aee368c908ea16f3e057706859be5f70",
+      "beforeBytes": 9920,
+      "afterSha256": "3363cadb57675df09a738afae64dc026b6d3048e207b67b360d313c67e548334",
+      "afterBytes": 10445
+    },
+    "vivaceta.html": {
+      "beforeBlob": "095b45c74ac391de070a4c36358397493f8f2072",
+      "beforeSha256": "7b20ab3db83467e696358004ee3873938db55da365ef2c9681510bdac5935528",
+      "beforeBytes": 21900,
+      "afterSha256": "e0c8aba18c605662bd7b5d77814773c570d0b7d5e971c86c5b95eca6a57875a2",
+      "afterBytes": 22162
+    },
+    "wayra.html": {
+      "beforeBlob": "814c97bacaf47c414e439855f307996cd605782f",
+      "beforeSha256": "b894cec3a0846183f978764857af19dc6b23c64fd8f1daa35bbd5cbb9e16034e",
+      "beforeBytes": 19874,
+      "afterSha256": "d12fb57147dc7622b8068b11614af0b62fdff063f450cb47b8c2c969a22f08ad",
+      "afterBytes": 20252
+    }
+  }
+}

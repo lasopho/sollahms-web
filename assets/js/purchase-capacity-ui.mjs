@@ -184,7 +184,8 @@ export function initializeCapacitySearch({ projects, onChange }) {
       if (!input || !result) return;
       const block = node('section', undefined, 'capacity-result capacity-result-' + result.category.toLowerCase());
       block.setAttribute('aria-label', 'Evaluación financiera de ' + project.nombre);
-      block.append(node('p', result.category + '. ' + CATEGORIES[result.category], 'capacity-badge'));
+      block.append(node('p', result.category + '. ' + CATEGORIES[result.category] + (result.assetWarning ? ' · Escenario manual' : ''), 'capacity-badge'));
+      if (result.assetWarning) block.append(node('p', result.assetWarning, 'capacity-note capacity-asset-note'));
       block.append(node('p', result.reason, 'capacity-reason'));
       const values = node('dl', undefined, 'capacity-metrics');
       const metric = (label, value) => { const row = node('div'); row.append(node('dt', label), node('dd', value)); values.append(row); };

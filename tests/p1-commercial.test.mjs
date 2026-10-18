@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { projectP2File } from './p2-preservation.mjs';
 import { projectP1CommercialFile, projectP1CommercialRows, P1_COMMERCIAL_BASELINE, P1_COMMERCIAL_FILES } from './p1-commercial-scope.mjs';
 import { restoreLeonRows } from './leon-main-preservation.mjs';
 import { restoreLeonRows as publicationRestoreLeonRows, assertLeonCombinedScope } from '../scripts/leon-combined-scope.mjs';
@@ -11,7 +12,7 @@ import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { createContactHandler } from '../api/contact.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const read = path => readFileSync(new URL('../' + path, import.meta.url));
+const read = path => projectP2File(path, readFileSync(new URL('../' + path, import.meta.url)));
 const before = path => execFileSync('git', ['show', P1_COMMERCIAL_BASELINE + ':' + path], { cwd: ROOT, maxBuffer: 8 * 1024 * 1024 });
 const json = path => JSON.parse(read(path));
 const catalogue = json('data/proyectos.json');

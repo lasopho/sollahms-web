@@ -62,6 +62,14 @@
         .catalog-actions { margin-top: auto; padding-top: 1.25rem; }
         .catalog-details-link { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1rem; border-radius: .5rem; background: #003229; color: #fff; font-size: .875rem; font-weight: 700; text-decoration: none; transition: background .2s ease; }
         .catalog-details-link:hover { background: #185245; }
+        .catalog-reference { margin-top: .75rem; color: #4b635a; font-size: .8125rem; line-height: 1.6; }
+        .catalog-reference a { color: #003229; text-decoration: underline; text-underline-offset: .2em; }
+        .catalog-directory { padding: 1.25rem; margin-top: 1.5rem; border: 1px solid #bcc9c3; border-radius: .5rem; background: #fff; color: #003229; }
+        .catalog-directory summary { cursor: pointer; font-weight: 700; padding: .5rem 0; }
+        .catalog-directory p { margin: .75rem 0; line-height: 1.6; }
+        .catalog-directory ul { display: grid; gap: .5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+        .catalog-directory a { display: block; padding: .5rem 0; text-decoration: underline; text-underline-offset: .2em; }
+        .catalog-reference a:focus-visible, .catalog-directory a:focus-visible, .catalog-directory summary:focus-visible { outline: 3px solid #005144; outline-offset: 3px; }
         .catalog-cover:focus-visible, .catalog-details-link:focus-visible { outline: 3px solid #E9C176; outline-offset: -3px; }
         @media (prefers-reduced-motion: reduce) { .catalog-card, .catalog-details-link { transition: none; } }
         @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -172,7 +180,149 @@
 <p id="project-count" class="font-bold text-primary mb-6" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
 <p id="catalog-message" class="text-secondary mb-6" role="status" aria-live="polite" aria-atomic="true"></p>
 <div id="project-grid" class="catalog-grid" aria-busy="true"></div>
-<noscript><p>Activa JavaScript para cargar el catálogo de proyectos.</p></noscript>
+<noscript><p>Puedes explorar las fichas desde el listado siguiente. Los filtros y la búsqueda financiera requieren JavaScript.</p></noscript>
+<!--CATALOG_DIRECTORY_START-->
+<details id="catalog-static-directory" class="catalog-directory">
+<summary>Explorar el listado de fichas de proyectos</summary>
+<p>Consulta la información y los pendientes en cada ficha. El listado no acredita disponibilidad ni condiciones comerciales vigentes.</p>
+<ul>
+    <li><a href="/distrito-centro.html">Distrito Centro</a></li>
+    <li><a href="/reserva-mayor-2.html">Reserva Mayor 2</a></li>
+    <li><a href="/vista-llacolen-b.html">Vista Llacolén B</a></li>
+    <li><a href="/bcome.html">Edificio B.Come — Concepción</a></li>
+    <li><a href="/vista-llacolen-a.html">Vista Llacolén A</a></li>
+    <li><a href="/campus-llacolen.html">Campus Llacolén</a></li>
+    <li><a href="/nucleo-costanera.html">Núcleo Costanera</a></li>
+    <li><a href="/wayra.html">Edificio Wayra</a></li>
+    <li><a href="/lamara.html">Lamara</a></li>
+    <li><a href="/alto-buzeta.html">Alto Buzeta</a></li>
+    <li><a href="/independencia-4745.html">Independencia 4745</a></li>
+    <li><a href="/vistamar.html">Vistamar</a></li>
+    <li><a href="/costanera-coquimbo-a.html">Costanera Coquimbo Edificio A</a></li>
+    <li><a href="/costanera-coquimbo-b.html">Costanera Coquimbo Edificio B</a></li>
+    <li><a href="/edificio-ecuador.html">Edificio Ecuador</a></li>
+    <li><a href="/coronel-godoy.html">Edificio Coronel Godoy</a></li>
+    <li><a href="/edificio-indi.html">Edificio Indi</a></li>
+    <li><a href="/vivaceta.html">Edificio Vivaceta</a></li>
+    <li><a href="/edificio-bezanilla.html">Bezanilla</a></li>
+    <li><a href="/jardines-de-alvarado.html">Jardines de Alvarado</a></li>
+    <li><a href="/edificio-santa-maria.html">Edificio Santa María</a></li>
+    <li><a href="/plaza-cervantes-b.html">Plaza Cervantes - Torre B</a></li>
+    <li><a href="/edificio-teatinos-750.html">Edificio Teatinos 750</a></li>
+    <li><a href="/edificio-vista-amunategui.html">Edificio Vista Amunategui</a></li>
+    <li><a href="/endemico.html">Endémico</a></li>
+    <li><a href="/playa-penuelas.html">Edificio Playa Peñuelas</a></li>
+    <li><a href="/serrano-torre-a.html">Serrano - Torre A</a></li>
+    <li><a href="/plaza-cervantes.html">Plaza Cervantes - Torre A</a></li>
+    <li><a href="/vista-costanera.html">Vista Costanera</a></li>
+    <li><a href="/vista-reloncavi.html">Vista Reloncaví</a></li>
+    <li><a href="/downtown-san-martin.html">Downtown San Martín</a></li>
+    <li><a href="/vista-morande.html">Vista Morandé</a></li>
+    <li><a href="/edificio-don-pepe-154.html">Don Pepe 154</a></li>
+    <li><a href="/plaza-de-lourdes.html">Plaza de Lourdes</a></li>
+    <li><a href="/santa-elena-1670-mbi.html">Santa Elena 1670</a></li>
+    <li><a href="/plaza-quilicura.html">Plaza Quilicura</a></li>
+    <li><a href="/mapocho-3521-edificio-a.html">Mapocho 3521 - Edificio A</a></li>
+    <li><a href="/edificio-lira-622.html">Edificio Lira 622</a></li>
+    <li><a href="/edificio-dual-390-lto.html">Edificio Dual 390 LTO</a></li>
+    <li><a href="/entre-vicunas.html">Entre Vicuñas</a></li>
+    <li><a href="/lomas-de-puyai.html">Lomas de Puyai</a></li>
+    <li><a href="/ferroparque.html">FerroParque</a></li>
+    <li><a href="/froilan-roa-5731-torre-norte.html">Froilán Roa 5731 - Torre Norte</a></li>
+    <li><a href="/rosas-1444.html">Rosas 1444</a></li>
+    <li><a href="/guillermo-mann-1401.html">Guillermo Mann 1401</a></li>
+    <li><a href="/froilan-roa-5731-torre-sur.html">Froilán Roa 5731 - Torre Sur</a></li>
+    <li><a href="/edificio-san-francisco-1204.html">Edificio San Francisco 1204</a></li>
+    <li><a href="/cumbres-de-penuelas.html">Cumbres de Peñuelas</a></li>
+    <li><a href="/edificio-baum.html">Edificio BAUM</a></li>
+    <li><a href="/diagonal-paraguay.html">Diagonal Paraguay</a></li>
+    <li><a href="/inn-puerto-chico.html">INN Puerto Chico</a></li>
+    <li><a href="/edificio-suecia.html">Edificio Suecia</a></li>
+    <li><a href="/capitanes.html">Capitanes</a></li>
+    <li><a href="/parque-germania.html">Parque Germania</a></li>
+    <li><a href="/edificio-argomedo.html">Edificio Argomedo</a></li>
+    <li><a href="/edificio-mood.html">Edificio Mood</a></li>
+    <li><a href="/edificio-indigo.html">Edificio Índigo</a></li>
+    <li><a href="/edificio-verne.html">Edificio Verne</a></li>
+    <li><a href="/edificio-santo.html">Edificio Santo</a></li>
+    <li><a href="/edificio-living-town.html">Edificio Living Town</a></li>
+    <li><a href="/edificio-bold.html">Edificio Bold</a></li>
+    <li><a href="/domeyko-2055.html">Domeyko 2055</a></li>
+    <li><a href="/vergara-domeyko.html">Edificio Vergara Domeyko</a></li>
+    <li><a href="/parque-panama.html">Edificio Parque Panamá</a></li>
+    <li><a href="/playa-serena.html">Edificio Playa Serena</a></li>
+    <li><a href="/don-tomas.html">Don Tomás</a></li>
+    <li><a href="/plaza-las-condes.html">Plaza Las Condes</a></li>
+    <li><a href="/mapocho-3521.html">Mapocho 3521</a></li>
+    <li><a href="/jofre-135.html">Jofré 157</a></li>
+    <li><a href="/irarrazaval.html">Edificio Irarrázaval 1970</a></li>
+    <li><a href="/parque-quinta.html">Edificio Parque Quinta</a></li>
+    <li><a href="/quintavista.html">Edificio Quintavista</a></li>
+    <li><a href="/don-rafael.html">Don Rafael</a></li>
+    <li><a href="/terrazzo.html">Terrazzo</a></li>
+    <li><a href="/vima.html">VIMA</a></li>
+    <li><a href="/los-lilenes.html">Los Lilenes</a></li>
+    <li><a href="/nueva-esmeralda.html">Nueva Esmeralda</a></li>
+    <li><a href="/el-aromo.html">El Aromo</a></li>
+    <li><a href="/espacio-victoria.html">Espacio Victoria</a></li>
+    <li><a href="/terratolten.html">Terratoltén</a></li>
+    <li><a href="/pintor-cicarelli-iii.html">Pintor Cicarelli III</a></li>
+    <li><a href="/trinidad-iii.html">Trinidad III</a></li>
+    <li><a href="/edificio-liverpool.html">Edificio Liverpool</a></li>
+    <li><a href="/mirador-la-florida.html">Mirador La Florida</a></li>
+    <li><a href="/alto-goycolea.html">Alto Goycolea</a></li>
+    <li><a href="/eleuterio-ramirez.html">Eleuterio Ramírez</a></li>
+    <li><a href="/barrio-zenteno.html">Barrio Zenteno</a></li>
+    <li><a href="/urban-la-florida.html">Urban La Florida</a></li>
+    <li><a href="/vicuna-mackenna-6896.html">Edificio Vicuña Mackenna 6896</a></li>
+    <li><a href="/vicuna-mackenna-7589.html">Edificio Vicuña Mackenna 7589</a></li>
+    <li><a href="/aires-la-florida-2.html">Aires La Florida 2</a></li>
+    <li><a href="/condominio-uruguay.html">Condominio Uruguay</a></li>
+    <li><a href="/enlace-mackenna.html">Enlace Mackenna</a></li>
+    <li><a href="/novo-catedral.html">Novo Catedral</a></li>
+    <li><a href="/carmen-marin.html">Edificio Carmen Marín</a></li>
+    <li><a href="/gregorio-de-la-fuente-a.html">Condominio Gregorio de la Fuente</a></li>
+    <li><a href="/matta-016.html">Matta 016</a></li>
+    <li><a href="/edificio-plaza-nova.html">Edificio Plaza Nova</a></li>
+    <li><a href="/condominio-parque-don-lautaro.html">Condominio Parque Don Lautaro</a></li>
+    <li><a href="/caceres.html">Cáceres</a></li>
+    <li><a href="/pintor-cicarelli-i.html">Pintor Cicarelli I</a></li>
+    <li><a href="/pintor-cicarelli-ii.html">Pintor Cicarelli II</a></li>
+    <li><a href="/edif-origen-atacama-3008.html">Edificio Origen Atacama</a></li>
+    <li><a href="/abdon-cifuentes.html">Abdón Cifuentes</a></li>
+    <li><a href="/don-ignacio.html">Don Ignacio</a></li>
+    <li><a href="/tocornal.html">Tocornal</a></li>
+    <li><a href="/centenario-1.html">Centenario 1</a></li>
+    <li><a href="/curico-77.html">Curicó 77</a></li>
+    <li><a href="/san-ignacio.html">San Ignacio</a></li>
+    <li><a href="/angamos.html">Angamos 205</a></li>
+    <li><a href="/conecta-huechuraba.html">Conecta Huechuraba</a></li>
+    <li><a href="/bordevivo.html">Edificio Borde Vivo</a></li>
+    <li><a href="/mirador-mapocho.html">Mirador Mapocho</a></li>
+    <li><a href="/alto-san-joaquin.html">Alto San Joaquín</a></li>
+    <li><a href="/vista-bulnes.html">Edificio Vista Bulnes</a></li>
+    <li><a href="/jardines-de-ramon-cruz.html">Condominio Jardines de Ramón Cruz</a></li>
+    <li><a href="/vitro.html">Vitro</a></li>
+    <li><a href="/mirador-irarrazaval.html">Mirador Irarrázaval</a></li>
+    <li><a href="/alto-irarrazaval.html">Alto Irarrázaval</a></li>
+    <li><a href="/jose-pedro-alessandri.html">José Pedro Alessandri</a></li>
+    <li><a href="/vicuna-mackenna-1432.html">Vicuña Mackenna 1432</a></li>
+    <li><a href="/vicente-valdes.html">Vicente Valdés</a></li>
+    <li><a href="/diagonal-vicuna.html">Diagonal Vicuña</a></li>
+    <li><a href="/vista-portugal.html">Vista Portugal</a></li>
+    <li><a href="/marina-pacifico.html">Marina Pacífico</a></li>
+    <li><a href="/nova-parque.html">Nova Parque</a></li>
+    <li><a href="/own.html">Own</a></li>
+    <li><a href="/monjitas-690.html">Monjitas 690</a></li>
+    <li><a href="/patio-brasil.html">Patio Brasil</a></li>
+    <li><a href="/atelier-prat-oficinas.html">Edificio Atelier Prat Oficinas</a></li>
+    <li><a href="/corrientes-oficinas.html">Edificio Corrientes Oficinas</a></li>
+    <li><a href="/los-alerces.html">Los Alerces</a></li>
+    <li><a href="/valle-los-ingleses-iii.html">Valle Los Ingleses III</a></li>
+    <li><a href="/edificio-nordico.html">Edificio Nórdico</a></li>
+</ul>
+</details>
+<!--CATALOG_DIRECTORY_END-->
 </div>
 </section>
 </main>
@@ -219,6 +369,157 @@
     const form = document.getElementById('catalog-filters');
     const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
     const numberFormat = new Intl.NumberFormat('es-CL');
+    // CATALOG_CONDITION_TARGETS_START
+    const conditionTargets = {
+    "distrito-centro": "#contenido-principal",
+    "inn-puerto-chico": "#contenido-principal",
+    "edificio-suecia": "#contenido-principal"
+};
+    // CATALOG_CONDITION_TARGETS_END
+    // CATALOG_COVERS_START
+    const coverVariants = {
+    "jardines-de-ramon-cruz": {
+        "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial.webp",
+        "width": 1920,
+        "height": 1078,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial-480.webp",
+                "width": 480,
+                "height": 270
+            },
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial-640.webp",
+                "width": 640,
+                "height": 359
+            },
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial-960.webp",
+                "width": 960,
+                "height": 539
+            },
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial-1440.webp",
+                "width": 1440,
+                "height": 808
+            },
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial.webp",
+                "width": 1920,
+                "height": 1078
+            }
+        ]
+    },
+    "condominio-parque-don-lautaro": {
+        "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01.webp",
+        "width": 2000,
+        "height": 1124,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01-480.webp",
+                "width": 480,
+                "height": 270
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01-640.webp",
+                "width": 640,
+                "height": 360
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01-960.webp",
+                "width": 960,
+                "height": 540
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01-1440.webp",
+                "width": 1440,
+                "height": 809
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01.webp",
+                "width": 2000,
+                "height": 1124
+            }
+        ]
+    },
+    "condominio-uruguay": {
+        "localPath": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-1600.webp",
+        "width": 1600,
+        "height": 919,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-640.webp",
+                "width": 640,
+                "height": 368
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-960.webp",
+                "width": 960,
+                "height": 551
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-1600.webp",
+                "width": 1600,
+                "height": 919
+            }
+        ]
+    },
+    "gregorio-de-la-fuente-a": {
+        "localPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-640.webp",
+                "width": 640,
+                "height": 360
+            },
+            {
+                "localPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-960.webp",
+                "width": 960,
+                "height": 540
+            },
+            {
+                "localPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-1600.webp",
+                "width": 1600,
+                "height": 900
+            }
+        ]
+    },
+    "bcome": {
+        "localPath": "/assets/propiedades/leon/bcome/foto-01.webp",
+        "width": 1467,
+        "height": 1467,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01-480.webp",
+                "width": 480,
+                "height": 480
+            },
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01-640.webp",
+                "width": 640,
+                "height": 640
+            },
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01-960.webp",
+                "width": 960,
+                "height": 960
+            },
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01-1440.webp",
+                "width": 1440,
+                "height": 1440
+            },
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01.webp",
+                "width": 1467,
+                "height": 1467
+            }
+        ]
+    }
+};
+    // CATALOG_COVERS_END
     let projects = [];
     let capacitySearch = null;
     const stages = project => project.inmobiliaria === 'Ecasa' && Array.isArray(project.etapasComerciales) && project.etapasComerciales.length > 1
@@ -272,6 +573,14 @@
             image.width = 1600;
             image.height = 900;
             image.addEventListener('error', showPlaceholder, { once: true });
+            const responsive = coverVariants[project.slug];
+            // A changed cover never inherits another photograph's variants.
+            if (responsive?.localPath === project.imagenPrincipal) {
+                image.width = responsive.width;
+                image.height = responsive.height;
+                image.srcset = responsive.sources.map(source => source.localPath + ' ' + source.width + 'w').join(', ');
+                image.sizes = '(min-width: 1280px) 384px, (min-width: 1024px) calc(33.333vw - 42.667px), (min-width: 768px) calc(50vw - 48px), calc(100vw - 64px)';
+            }
             image.src = project.imagenPrincipal;
             cover.append(image);
         } else showPlaceholder();
@@ -329,6 +638,21 @@
         } else {
             body.append(element('p', (['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación'), 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
         }
+        const referenceNote = element('div', undefined, 'catalog-reference');
+        const reviewedOn = project.commercialSource?.verifiedOn ?? project.verificacion?.fecha;
+        const date = /^\d{4}-\d{2}-\d{2}$/.test(reviewedOn ?? '') ? reviewedOn : null;
+        referenceNote.append(element('p', date ? 'Referencia revisada el ' + date + '.' : 'Fecha de revisión pendiente.'));
+        const retainedConditions = project.commercialSource?.note || (project.slug === 'edificio-nordico' && project.precioDesdeUF === 4746 && date === '2026-10-13'
+            ? 'Desde UF 4.746 corresponde sólo a unidad 101, 1 dormitorio y 1 baño; excluye estacionamiento y bodega.' : '');
+        if (retainedConditions) referenceNote.append(element('p', retainedConditions));
+        referenceNote.append(element('p', 'Información referencial; confirma precio, disponibilidad y condiciones al cotizar.'));
+        if (hasDetail) {
+            const conditions = element('a', 'Ver condiciones y pendientes en la ficha');
+            conditions.href = project.detalleUrl + (conditionTargets[project.slug] ?? '#proyecto');
+            conditions.setAttribute('aria-label', 'Ver condiciones y pendientes de ' + project.nombre);
+            referenceNote.append(conditions);
+        }
+        body.append(referenceNote);
         if (hasDetail) {
             const actions = element('div', undefined, 'catalog-actions');
             const details = element('a', 'Ver detalles', 'catalog-details-link');
@@ -406,6 +730,7 @@
             appendOptions(state, projects.flatMap(projectStates));
             updateCommunes();
             render();
+            document.getElementById('catalog-static-directory').hidden = true;
             [search, assetType, region, commune, state, maxPriceInput, sortOrder, clear].forEach(control => { control.disabled = false; });
             import('/assets/js/purchase-capacity-ui.mjs').then(({ initializeCapacitySearch }) => {
                 capacitySearch = initializeCapacitySearch({ projects, onChange: render });

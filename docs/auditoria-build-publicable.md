@@ -1,5 +1,7 @@
 # Auditoría del build publicable
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 La auditoría conserva la composición aprobada del catálogo: **144 proyectos**, con **16 fichas Ingevec** y 128 de otras inmobiliarias. No modifica fichas, precios, modelos ni disponibilidad. La aprobación contractual y el despliegue en Production se controlan por separado.
 
 ## Resultado del cierre del 11/10/2026

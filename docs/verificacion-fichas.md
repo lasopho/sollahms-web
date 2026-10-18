@@ -1,5 +1,7 @@
 # Verificación del catálogo completo — 9 de octubre de 2026
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Rama `codex/fichas-proyectos-completas`, creada desde `origin/main` en un worktree independiente. El checkout compartido `codex/site-visual-system-v1` permanece limpio. Los cambios no se fusionan ni se despliegan a producción.
 
 La revisión adicional de Preview, formularios e identidades está en [revision-preview.md](revision-preview.md). Las pruebas del desarrollo inicial se conservan abajo como evidencia histórica.

@@ -45,13 +45,56 @@ def iframe_markup(url, title, *, kind='tour', permitted_hosts=(), fallback_url=N
     if not url or urlparse(url).hostname not in set(permitted_hosts):
         raise ValueError('An embed must use an explicitly permitted HTTPS host')
     fallback_url = secure_url(fallback_url) or url
+    if urlparse(fallback_url).hostname not in set(permitted_hosts):
+        raise ValueError('An alternative must use an explicitly permitted HTTPS host')
     modifier = ' project-embed-map' if kind == 'map' else ''
     return (f'<div class="project-embed{modifier}"><iframe src="{esc(url)}" '
             f'title="{esc(title)}" loading="lazy" '
             'referrerpolicy="strict-origin-when-cross-origin" '
             f'allow="{iframe_permissions(url, kind)}" allowfullscreen '
             f'data-project-embed="{kind}" data-embed-fallback="{esc(fallback_url)}">'
-            '</iframe></div>')
+            '</iframe></div>' + embed_alternative_markup(fallback_url, title, kind))
+
+
+def embed_alternative_markup(url, title, kind):
+    """A static link survives blocked frames and disabled JavaScript."""
+    label = 'Abrir en Google Maps' if kind == 'map' else 'Abrir experiencia externa'
+    return ('<p class="project-embed-fallback project-embed-alternative" '
+            'data-project-embed-alternative>'
+            f'<a href="{esc(url)}" target="_blank" rel="noopener noreferrer" '
+            f'aria-label="{esc(label + " (nueva pestaña)")}">'
+            f'{label} ↗</a></p>')
+
+
+def add_persistent_embed_alternatives(page):
+    """Add only approved adjacent alternatives; never rebuild a tour section.
+
+    The existing per-page host list and iframe data define the whole scope.
+    An existing alternative must match exactly, making repeated migration safe.
+    """
+    hosts = re.search(r'<script type="application/json" id="project-embed-hosts">(.*?)</script>', page, re.S)
+    if not hosts:
+        if re.search(r'<iframe\b[^>]*data-project-embed=', page):
+            raise ValueError('Registered embeds require a per-page host list')
+        return page
+    permitted = set(json.loads(hosts[1]))
+    pattern = r'<div class="project-embed(?: project-embed-map)?"><iframe\b[^>]*data-project-embed=["\'][^>]*></iframe></div>'
+    # Apply in reverse so offsets refer to the original bytes throughout.
+    for match in reversed(list(re.finditer(pattern, page))):
+        attrs = attributes(match[0])
+        source, fallback = secure_url(attrs.get('src')), secure_url(attrs.get('data-embed-fallback'))
+        kind = attrs.get('data-project-embed')
+        if (not source or not fallback or kind not in {'map', 'tour'} or
+                urlparse(source).hostname not in permitted or urlparse(fallback).hostname not in permitted):
+            raise ValueError('An embed alternative must retain registered HTTPS destinations')
+        expected = embed_alternative_markup(fallback, attrs.get('title', ''), kind)
+        tail = page[match.end():]
+        if tail.startswith('<p class="project-embed-fallback project-embed-alternative"'):
+            if not tail.startswith(expected):
+                raise ValueError('Existing embed alternative differs from its approved iframe destination')
+            continue
+        page = page[:match.end()] + expected + page[match.end():]
+    return page
 
 
 def map_markup(url, title):
@@ -193,4 +236,4 @@ def normalize_page_embeds(page, research, featured=False):
         page = page.replace('</head>', host_script + '\n</head>', 1)
     if 'data-embed-src=' in page:
         raise ValueError(research['slug'] + ': an activation loader remains')
-    return remove_redundant_map_details(page)
+    return add_persistent_embed_alternatives(remove_redundant_map_details(page))

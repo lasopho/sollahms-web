@@ -1,5 +1,7 @@
 # Recorridos virtuales de las fichas Sollahms
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 La sección y su enlace de navegación se publican únicamente cuando
 `data/fichas-proyectos.json` registra al menos un recorrido con identidad de
 proyecto acreditada y evidencia de una escena o interfaz utilizable. La política

@@ -1,5 +1,7 @@
 # Complemento Leben y nueva ficha Nórdico
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Revisión del 13/10/2026. Por autorización expresa del titular se utilizaron los doce originales de `Downloads/Leben`, sin depender del ZIP anterior. El inventario SHA-256 y `INSTRUCCIONES_CODEX.md` se regeneraron y permanecen privados; no se afirma haber contrastado un inventario externo ausente. El manifiesto registra los hashes de estos documentos de control.
 
 Los 12 PDF únicos suman 93 páginas. Se comprobaron encabezado y EOF, lectura estricta de las páginas y decodificación de las imágenes. El materializador vuelve a exigir SHA-256 y número de páginas antes de reconstruir los derivados.

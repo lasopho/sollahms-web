@@ -18,6 +18,7 @@ from fiche_presentation import commercialize_fiche
 from virtual_tour_policy import secure_url
 from project_embed_policy import embed_hosts, map_markup, tour_section, unique_tours
 from ecasa_fiche import consolidate_page, consolidated_embed_hosts, presentation_research
+from reviewed_image_alts import apply_reviewed_image_alts
 
 ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
@@ -131,7 +132,7 @@ def render(project, research, template):
     if project.get('inmobiliaria') == 'Sento' and str(project.get('imagenPrincipal', '')).startswith('/assets/propiedades/sento/') and review_path.exists():
         from sento_fiche import render as render_sento
         record = next(row for row in json.loads(review_path.read_text())['projects'] if row['slug'] == project['slug'])
-        return render_sento(record), bool(record.get('location', {}).get('address')), len(record.get('virtualTours', []))
+        return apply_reviewed_image_alts(render_sento(record), project['slug']), bool(record.get('location', {}).get('address')), len(record.get('virtualTours', []))
     name = project['nombre']
     slug = project['slug']
     builder = project['inmobiliaria'] if 'inmobiliaria' in research.get('verifiedFields', []) else project['inmobiliaria'] + ' (asociación por verificar)'
@@ -223,7 +224,7 @@ def render(project, research, template):
     if project.get('inmobiliaria') == 'Ecasa' or plan_pending_note:
         # Optional template slots remain clean in consolidated and new output.
         page = re.sub(r'(?m)^[ \t]+$', '', page)
-    return page, mapped, len(tours)
+    return apply_reviewed_image_alts(page, slug), mapped, len(tours)
 
 def main():
     parser = argparse.ArgumentParser()

@@ -1,0 +1,2839 @@
+{
+  "schemaVersion": 1,
+  "finding": "CAT-001",
+  "checkedOn": "2026-10-17",
+  "sourceCommit": "39006d3a6c96bd4154dd99eb6e914c5857393a3b",
+  "scope": "Identidades y DOM del commit fuente; no certifica vigencia comercial, derechos ni publicación.",
+  "sourceSha256": {
+    "data/proyectos.json": "f448bad2a9c36bf7b5249ecbb3ec343b5b4e916238b297a91fe9956057688aeb",
+    "data/fichas-proyectos.json": "aec64d00257833f0ac63f616bb95f70c59d1cbabc66a1df65ed740094733b585",
+    "data/registro-fichas.json": "be206aac3bb43fd9a9fbf720e514a8fdc840cc273397c1d1d28f15aa4fe07396",
+    "lib/project-context.mjs": "94e60805fd597b61e3c5230a53aeb6de33805494ebef4ad017c286f18cf6d8bc",
+    "sitemap.xml": "949060e3e75bc7589d05378748870e3684d64cbb7bac53cd8d53ab77e592da92"
+  },
+  "summary": {
+    "projects": 134,
+    "developers": {
+      "AJ Urbana": 5,
+      "Crescer": 2,
+      "Ecasa": 15,
+      "Euro": 21,
+      "Ingevec": 16,
+      "Leben": 14,
+      "León": 5,
+      "Maestra": 19,
+      "Nollagam": 7,
+      "Norte Verde": 20,
+      "Sento": 7,
+      "Sudamericana": 2,
+      "Vesant": 1
+    },
+    "htmlFiles": 134,
+    "withHistoricalPending": 124,
+    "withPlanImages": 45,
+    "withoutPlanImages": 89,
+    "withMaps": 130,
+    "mapIframes": 132
+  },
+  "slugComparisons": {
+    "research": {
+      "count": 134,
+      "missing": [],
+      "extra": []
+    },
+    "register": {
+      "count": 134,
+      "missing": [],
+      "extra": []
+    },
+    "formContext": {
+      "count": 134,
+      "missing": [],
+      "extra": []
+    },
+    "sitemap": {
+      "count": 134,
+      "missing": [],
+      "extra": []
+    }
+  },
+  "projects": [
+    {
+      "slug": "distrito-centro",
+      "name": "Distrito Centro",
+      "developer": "Maestra",
+      "detailUrl": "/distrito-centro.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/distrito-centro/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
+        "Recorrido virtual oficial específico no localizado",
+        "Fecha de entrega",
+        "Cantidad de pisos",
+        "Cantidad de departamentos"
+      ],
+      "htmlImages": 3,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=O%C2%B4Higgins+1125%2C+Chill%C3%A1n%2C+%C3%91uble%2C+Chile"
+      ]
+    },
+    {
+      "slug": "reserva-mayor-2",
+      "name": "Reserva Mayor 2",
+      "developer": "Vesant",
+      "detailUrl": "/reserva-mayor-2.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.vesant.cl/proyectos/reserva-mayor-2",
+      "historicalPending": [
+        "Dirección",
+        "Entrega",
+        "Existencia de recorrido virtual oficial",
+        "Fecha de entrega: discrepancia Q1/Q4 2026",
+        "Dirección o coordenadas exactas verificadas",
+        "Recorrido virtual oficial específico no localizado",
+        "Dirección exacta",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
+    },
+    {
+      "slug": "vista-llacolen-b",
+      "name": "Vista Llacolén B",
+      "developer": "Maestra",
+      "detailUrl": "/vista-llacolen-b.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/vista-llacolen/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 3,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Las+Heras+Poniente+77%2C+Concepci%C3%B3n%2C+Biob%C3%ADo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "bcome",
+      "name": "Edificio B.Come — Concepción",
+      "developer": "León",
+      "detailUrl": "/bcome.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://www.ileon.cl/proyectos/edificio-b-come/",
+      "historicalPending": [
+        "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 2.290 como referencia histórica.",
+        "Las páginas 7, 8, 9 y 10 no identifican unívocamente la correspondencia entre cada plano y cada fila de superficies. Se conservan las tablas aparte.",
+        "El brochure imprime --- para las terrazas de ciertas variantes; se conserva como superficie no informada, sin convertir a cero.",
+        "El número de baños de las tipologías estudio no se declara en el encabezado; no se deduce de la imagen.",
+        "Consultar disponibilidad y condiciones comerciales actuales."
+      ],
+      "htmlImages": 20,
+      "htmlPlanImages": 12,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Paicav%C3%AD+1485%2C+Concepci%C3%B3n%2C+Regi%C3%B3n+del+Biob%C3%ADo%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "vista-llacolen-a",
+      "name": "Vista Llacolén A",
+      "developer": "Maestra",
+      "detailUrl": "/vista-llacolen-a.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/vista-llacolen-a/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 3,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Las+Heras+Poniente+77%2C+Concepci%C3%B3n%2C+Biob%C3%ADo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "campus-llacolen",
+      "name": "Campus Llacolén",
+      "developer": "Maestra",
+      "detailUrl": "/campus-llacolen.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/campus-llacolen/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
+        "Recorrido virtual oficial específico no localizado",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Padre+Hurtado+830%2C+Concepci%C3%B3n%2C+Biob%C3%ADo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "nucleo-costanera",
+      "name": "Núcleo Costanera",
+      "developer": "Ecasa",
+      "detailUrl": "/nucleo-costanera.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/nucleo-costanera",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Entrega",
+        "Existencia de recorrido virtual oficial",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 22,
+      "htmlPlanImages": 8,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Presb%C3%ADtero+Ram%C3%ADrez+110%2C+Arica%2C+Arica+y+Parinacota%2C+Chile"
+      ]
+    },
+    {
+      "slug": "wayra",
+      "name": "Edificio Wayra",
+      "developer": "Ecasa",
+      "detailUrl": "/wayra.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/wayra",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 18,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avenida+Ing.+Ra%C3%BAl+Pey+Casado+2125%2C+Arica%2C+Arica+y+Parinacota%2C+Chile"
+      ]
+    },
+    {
+      "slug": "lamara",
+      "name": "Lamara",
+      "developer": "Ecasa",
+      "detailUrl": "/lamara.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/lamara",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Entrega",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 18,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avenida+Ing.+Ra%C3%BAl+Pey+Casado+2125%2C+Arica%2C+Arica+y+Parinacota%2C+Chile"
+      ]
+    },
+    {
+      "slug": "alto-buzeta",
+      "name": "Alto Buzeta",
+      "developer": "Maestra",
+      "detailUrl": "/alto-buzeta.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/alto-buzeta/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avenida+Cinco+2951%2C+Cerrillos%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "independencia-4745",
+      "name": "Independencia 4745",
+      "developer": "Euro",
+      "detailUrl": "/independencia-4745.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/independencia-4745",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Independencia+4745%2C+Conchal%C3%AD%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vistamar",
+      "name": "Vistamar",
+      "developer": "Maestra",
+      "detailUrl": "/vistamar.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/vistamar/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
+        "Recorrido virtual oficial específico no localizado",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Baquedano+802%2C+Coquimbo%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "costanera-coquimbo-a",
+      "name": "Costanera Coquimbo Edificio A",
+      "developer": "Nollagam",
+      "detailUrl": "/costanera-coquimbo-a.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://nollagam.cl/nuestros-proyectos/costanera-coquimbo-edificio-a/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie útil: fuente publica área Interior sin equivalencia explícita"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Costanera+3300%2C+Coquimbo%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "costanera-coquimbo-b",
+      "name": "Costanera Coquimbo Edificio B",
+      "developer": "Nollagam",
+      "detailUrl": "/costanera-coquimbo-b.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://nollagam.cl/nuestros-proyectos/costanera-coquimbo-edificio-b/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie útil: fuente publica área Interior sin equivalencia explícita"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Costanera+3300%2C+Coquimbo%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-ecuador",
+      "name": "Edificio Ecuador",
+      "developer": "Norte Verde",
+      "detailUrl": "/edificio-ecuador.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/ecuador/",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Coronel+Godoy+0157%2C+esquina+Av.+Ecuador%2C+Estaci%C3%B3n+Central%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "coronel-godoy",
+      "name": "Edificio Coronel Godoy",
+      "developer": "Ingevec",
+      "detailUrl": "/coronel-godoy.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-coronelgodoy",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 18,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Ecuador+4226%2C+Estaci%C3%B3n+Central%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-indi",
+      "name": "Edificio Indi",
+      "developer": "Leben",
+      "detailUrl": "/edificio-indi.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://indi.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 11,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vallenar+2070%2C+esquina+Hip%C3%B3dromo%2C+Independencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vivaceta",
+      "name": "Edificio Vivaceta",
+      "developer": "Ingevec",
+      "detailUrl": "/vivaceta.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-vivaceta",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 18,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Ferm%C3%ADn+Vivaceta+864%2C+Independencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-bezanilla",
+      "name": "Bezanilla",
+      "developer": "Ecasa",
+      "detailUrl": "/edificio-bezanilla.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/edificio-bezanilla",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 17,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Bezanilla+1278%2C+Independencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "jardines-de-alvarado",
+      "name": "Jardines de Alvarado",
+      "developer": "Maestra",
+      "detailUrl": "/jardines-de-alvarado.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/jardines-de-alvarado/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 3,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Coronel+Alvarado+2505%2C+Independencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-santa-maria",
+      "name": "Edificio Santa María",
+      "developer": "Nollagam",
+      "detailUrl": "/edificio-santa-maria.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://nollagam.cl/nuestros-proyectos/santa-maria/",
+      "historicalPending": [
+        "Equipamiento y áreas comunes",
+        "Superficie útil",
+        "Superficie útil: fuente publica área Interior sin equivalencia explícita",
+        "Equipamiento común: listado específico no accesible"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Capit%C3%A1n+Bynon+1277%2C+Independencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "plaza-cervantes-b",
+      "name": "Plaza Cervantes - Torre B",
+      "developer": "Maestra",
+      "detailUrl": "/plaza-cervantes-b.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/plaza-cervantes-torre-b/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Chile+Espa%C3%B1a+8184%2C+La+Cisterna%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-teatinos-750",
+      "name": "Edificio Teatinos 750",
+      "developer": "AJ Urbana",
+      "detailUrl": "/edificio-teatinos-750.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ajurbana.cl/edificio-teatinos-750/",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Equipamiento y áreas comunes",
+        "Fotografías oficiales",
+        "Existencia de recorrido virtual oficial",
+        "Fotografías oficiales propias del proyecto",
+        "Recorrido virtual oficial específico no localizado",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 20,
+      "htmlPlanImages": 15,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Teatinos+750%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-vista-amunategui",
+      "name": "Edificio Vista Amunategui",
+      "developer": "AJ Urbana",
+      "detailUrl": "/edificio-vista-amunategui.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ajurbana.cl/edificio-vista-amunategui/",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Equipamiento y áreas comunes",
+        "Superficie útil",
+        "Superficie total",
+        "Fotografías oficiales",
+        "Existencia de recorrido virtual oficial",
+        "Fotografías oficiales propias del proyecto",
+        "Recorrido virtual oficial específico no localizado",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 25,
+      "htmlPlanImages": 19,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Amun%C3%A1tegui+745%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "endemico",
+      "name": "Endémico",
+      "developer": "Ecasa",
+      "detailUrl": "/endemico.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://endemicopichilemu.cl/",
+      "historicalPending": [
+        "Dirección",
+        "Precio actual en UF",
+        "Tipologías disponibles",
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Precio y disponibilidad comercial: todos los modelos están sin unidades",
+        "Dirección exacta; sitio sólo indica Punta de Lobos y coordenadas oficiales",
+        "Relación comercial vigente con Ecasa",
+        "Superficie de terreno",
+        "Dirección exacta",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega",
+        "Disponibilidad del visor Recorrido 2 · Endémico Pichilemu: no mostró escena tras reintento; conservar enlace oficial y confirmar con el proveedor"
+      ],
+      "htmlImages": 20,
+      "htmlPlanImages": 4,
+      "htmlMaps": []
+    },
+    {
+      "slug": "playa-penuelas",
+      "name": "Edificio Playa Peñuelas",
+      "developer": "Norte Verde",
+      "detailUrl": "/playa-penuelas.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/playa-penuelas/",
+      "historicalPending": [
+        "Diferencia de máximo entre resumen y tabla de superficies"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Pe%C3%B1uelas+118%2C+Coquimbo%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "serrano-torre-a",
+      "name": "Serrano - Torre A",
+      "developer": "Maestra",
+      "detailUrl": "/serrano-torre-a.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/serrano/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
+        "Recorrido virtual oficial específico no localizado",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Serrano+53%2C+Puerto+Montt%2C+Los+Lagos%2C+Chile"
+      ]
+    },
+    {
+      "slug": "plaza-cervantes",
+      "name": "Plaza Cervantes - Torre A",
+      "developer": "Maestra",
+      "detailUrl": "/plaza-cervantes.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/promocion-gastos-operacionales/",
+      "historicalPending": [
+        "Dirección",
+        "Tipologías disponibles",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Superficie útil",
+        "Superficie total",
+        "Dormitorios",
+        "Baños",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad y condiciones comerciales específicas de Torre A",
+        "Dirección y acceso específicos de Torre A",
+        "Tipologías y superficies de Torre A",
+        "Recorrido virtual oficial específico no localizado",
+        "Condiciones efectivas de entrega"
+      ],
+      "htmlImages": 2,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
+    },
+    {
+      "slug": "vista-costanera",
+      "name": "Vista Costanera",
+      "developer": "Maestra",
+      "detailUrl": "/vista-costanera.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/vista-costanera/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 3,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Juana+Atala+de+Hirmas+601%2C+Renca%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vista-reloncavi",
+      "name": "Vista Reloncaví",
+      "developer": "Maestra",
+      "detailUrl": "/vista-reloncavi.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/vista-reloncavi/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Francisco+Bilbao+85%2C+Puerto+Montt%2C+Los+Lagos%2C+Chile"
+      ]
+    },
+    {
+      "slug": "downtown-san-martin",
+      "name": "Downtown San Martín",
+      "developer": "AJ Urbana",
+      "detailUrl": "/downtown-san-martin.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ajurbana.cl/edificio-downtown/",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega",
+        "Recorrido oficial localizado pero no disponible (dominio no resuelve)"
+      ],
+      "htmlImages": 29,
+      "htmlPlanImages": 19,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=San+Mart%C3%ADn+74%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vista-morande",
+      "name": "Vista Morandé",
+      "developer": "AJ Urbana",
+      "detailUrl": "/vista-morande.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ajurbana.cl/vista-morande/",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 36,
+      "htmlPlanImages": 23,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Morand%C3%A9+808%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-don-pepe-154",
+      "name": "Don Pepe 154",
+      "developer": "Euro",
+      "detailUrl": "/edificio-don-pepe-154.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/don-pepe-154",
+      "historicalPending": [
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Equipamiento: listado completo pendiente de confirmación",
+        "Recorrido oficial enlazado no disponible: HTTP404"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Don+Pepe+N%C2%B0154%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "plaza-de-lourdes",
+      "name": "Plaza de Lourdes",
+      "developer": "Euro",
+      "detailUrl": "/plaza-de-lourdes.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/plaza-de-lourdes",
+      "historicalPending": [
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Equipamiento: listado completo pendiente de confirmación",
+        "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avda.+San+Pablo+3770%2C+Quinta+Normal%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "santa-elena-1670-mbi",
+      "name": "Santa Elena 1670",
+      "developer": "Euro",
+      "detailUrl": "/santa-elena-1670-mbi.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/santa-elena-1670",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Santa+Elena+1670%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "plaza-quilicura",
+      "name": "Plaza Quilicura",
+      "developer": "Maestra",
+      "detailUrl": "/plaza-quilicura.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/plaza-quilicura/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Am%C3%A9rico+Vespucio+1456%2C+Quilicura%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "mapocho-3521-edificio-a",
+      "name": "Mapocho 3521 - Edificio A",
+      "developer": "Euro",
+      "detailUrl": "/mapocho-3521-edificio-a.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/mapocho-3521",
+      "historicalPending": [
+        "Dirección",
+        "Precio actual en UF",
+        "Tipologías disponibles",
+        "Estado",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Características del proyecto",
+        "Superficie útil",
+        "Superficie total",
+        "Dormitorios",
+        "Baños",
+        "Fotografías oficiales",
+        "Existencia de recorrido virtual oficial",
+        "Identidad de la torre o edificio específico",
+        "Dirección específica",
+        "Precio vigente de la torre",
+        "Tipologías y superficies de la torre",
+        "Estado y entrega de la torre",
+        "Fotografías y recorrido propio de la torre",
+        "Equipamiento específico"
+      ],
+      "htmlImages": 6,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Rivas+Vicu%C3%B1a+1131%2C+Quinta+Normal%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-lira-622",
+      "name": "Edificio Lira 622",
+      "developer": "Norte Verde",
+      "detailUrl": "/edificio-lira-622.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/lira-622/",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual propio: los botones de la ficha no enlazan una experiencia publicada",
+        "Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Lira+622%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-dual-390-lto",
+      "name": "Edificio Dual 390 LTO",
+      "developer": "Norte Verde",
+      "detailUrl": "/edificio-dual-390-lto.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/dual-390-lto/",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avda.+Luis+Thayer+Ojeda+390%2C+Providencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "entre-vicunas",
+      "name": "Entre Vicuñas",
+      "developer": "Euro",
+      "detailUrl": "/entre-vicunas.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/entre-vicunas",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+5970%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "lomas-de-puyai",
+      "name": "Lomas de Puyai",
+      "developer": "Ecasa",
+      "detailUrl": "/lomas-de-puyai.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/lomas-de-puyai",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Paseo+Punta+Puyai+1600%2C+Papudo%2C+Valpara%C3%ADso%2C+Chile"
+      ]
+    },
+    {
+      "slug": "ferroparque",
+      "name": "FerroParque",
+      "developer": "Ecasa",
+      "detailUrl": "/ferroparque.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/ferroparque",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Equipamiento y áreas comunes",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 13,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Bascu%C3%B1%C3%A1n+Santa+Mar%C3%ADa+0699%2C+Temuco%2C+La+Araucan%C3%ADa%2C+Chile",
+        "https://www.google.com/maps?output=embed&q=Pasaje+Bascu%C3%B1%C3%A1n+Santa+Mar%C3%ADa+0699%2C+Temuco%2C+La+Araucan%C3%ADa%2C+Chile"
+      ]
+    },
+    {
+      "slug": "froilan-roa-5731-torre-norte",
+      "name": "Froilán Roa 5731 - Torre Norte",
+      "developer": "Euro",
+      "detailUrl": "/froilan-roa-5731-torre-norte.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
+      "historicalPending": [
+        "Dirección",
+        "Precio actual en UF",
+        "Tipologías disponibles",
+        "Estado",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Características del proyecto",
+        "Superficie útil",
+        "Superficie total",
+        "Dormitorios",
+        "Baños",
+        "Fotografías oficiales",
+        "Existencia de recorrido virtual oficial",
+        "Identidad de la torre o edificio específico",
+        "Dirección específica",
+        "Precio vigente de la torre",
+        "Tipologías y superficies de la torre",
+        "Estado y entrega de la torre",
+        "Fotografías y recorrido propio de la torre",
+        "Equipamiento específico"
+      ],
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Froil%C3%A1n+Roa+5731%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "rosas-1444",
+      "name": "Rosas 1444",
+      "developer": "Euro",
+      "detailUrl": "/rosas-1444.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/rosas-1444",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido oficial enlazado no disponible: HTTP404"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Rosas+1438%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "guillermo-mann-1401",
+      "name": "Guillermo Mann 1401",
+      "developer": "Euro",
+      "detailUrl": "/guillermo-mann-1401.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/guillermo-mann-1401",
+      "historicalPending": [
+        "Rótulo de dormitorios del modelo de entrada: ficha oficial inconsistente"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Guillermo+Mann+1401%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "froilan-roa-5731-torre-sur",
+      "name": "Froilán Roa 5731 - Torre Sur",
+      "developer": "Euro",
+      "detailUrl": "/froilan-roa-5731-torre-sur.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
+      "historicalPending": [
+        "Dirección",
+        "Precio actual en UF",
+        "Tipologías disponibles",
+        "Estado",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Características del proyecto",
+        "Superficie útil",
+        "Superficie total",
+        "Dormitorios",
+        "Baños",
+        "Fotografías oficiales",
+        "Existencia de recorrido virtual oficial",
+        "Identidad de la torre o edificio específico",
+        "Dirección específica",
+        "Precio vigente de la torre",
+        "Tipologías y superficies de la torre",
+        "Estado y entrega de la torre",
+        "Fotografías y recorrido propio de la torre",
+        "Equipamiento específico"
+      ],
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Froil%C3%A1n+Roa+5731%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-san-francisco-1204",
+      "name": "Edificio San Francisco 1204",
+      "developer": "Norte Verde",
+      "detailUrl": "/edificio-san-francisco-1204.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/san-francisco-1204/",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+San+Francisco+1204%2C+esquina+Marina+de+Gaette%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "cumbres-de-penuelas",
+      "name": "Cumbres de Peñuelas",
+      "developer": "Ecasa",
+      "detailUrl": "/cumbres-de-penuelas.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/cumbres-de-pe%C3%B1uelas",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 21,
+      "htmlPlanImages": 9,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Los+Lagos+910%2C+Coquimbo%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-baum",
+      "name": "Edificio BAUM",
+      "developer": "Leben",
+      "detailUrl": "/edificio-baum.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://baum.ileben.cl/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 7,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=El+Canelo+6750%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "diagonal-paraguay",
+      "name": "Diagonal Paraguay",
+      "developer": "Ingevec",
+      "detailUrl": "/diagonal-paraguay.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-diagonalparaguay",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 15,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Diagonal+Paraguay+240%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "name": "INN Puerto Chico",
+      "developer": "Leben",
+      "detailUrl": "/inn-puerto-chico.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://innpuertochico.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología",
+        "Cantidad de departamentos",
+        "Cantidad de pisos"
+      ],
+      "htmlImages": 15,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicente+P%C3%A9rez+Rosales+991%2C+Puerto+Varas%2C+Los+Lagos%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-suecia",
+      "name": "Edificio Suecia",
+      "developer": "Leben",
+      "detailUrl": "/edificio-suecia.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://suecia.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 10,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Tranquila+2323%2C+esquina+Suecia%2C+Providencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "capitanes",
+      "name": "Capitanes",
+      "developer": "Leben",
+      "detailUrl": "/capitanes.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://capitanes.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 9,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Los+Capitanes+1447%2C+Providencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "parque-germania",
+      "name": "Parque Germania",
+      "developer": "Leben",
+      "detailUrl": "/parque-germania.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://parquegermania.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Diagonal+Germania+200%2C+Puerto+Montt%2C+Los+Lagos%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-argomedo",
+      "name": "Edificio Argomedo",
+      "developer": "Leben",
+      "detailUrl": "/edificio-argomedo.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://edificioargomedo.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 10,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Argomedo+382%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-mood",
+      "name": "Edificio Mood",
+      "developer": "Leben",
+      "detailUrl": "/edificio-mood.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://mood.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Am%C3%A9rico+Vespucio+6630%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-indigo",
+      "name": "Edificio Índigo",
+      "developer": "Leben",
+      "detailUrl": "/edificio-indigo.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://indigo.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología",
+        "Rango de baños de todas las tipologías"
+      ],
+      "htmlImages": 9,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Imperial+645%2C+Puerto+Varas%2C+Los+Lagos%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-verne",
+      "name": "Edificio Verne",
+      "developer": "Norte Verde",
+      "detailUrl": "/edificio-verne.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/wp-content/uploads/2020/10/memoriaNV_2019.pdf",
+      "historicalPending": [
+        "Dirección",
+        "Precio actual en UF",
+        "Tipologías disponibles",
+        "Estado",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Características del proyecto",
+        "Superficie útil",
+        "Superficie total",
+        "Dormitorios",
+        "Baños",
+        "Fotografías oficiales",
+        "Existencia de recorrido virtual oficial",
+        "Identidad y disponibilidad actual del producto residencial",
+        "Dirección residencial verificada",
+        "Precio residencial vigente",
+        "Tipologías y superficies residenciales actuales",
+        "Estado y entrega residenciales actuales",
+        "Imágenes y recorrido del producto residencial",
+        "Equipamiento residencial vigente"
+      ],
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Videla+810%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-santo",
+      "name": "Edificio Santo",
+      "developer": "Leben",
+      "detailUrl": "/edificio-santo.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://edificiosanto.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 8,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=C%C3%B3ndor+1071%2C+esquina+San+Diego%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-living-town",
+      "name": "Edificio Living Town",
+      "developer": "Leben",
+      "detailUrl": "/edificio-living-town.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://livingtown.ileben.cl/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 9,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Eyzaguirre+590%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-bold",
+      "name": "Edificio Bold",
+      "developer": "Leben",
+      "detailUrl": "/edificio-bold.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://bold.ileben.cl/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología",
+        "Rango de baños de todas las tipologías"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Chacabuco+637%2C+Valdivia%2C+Los+R%C3%ADos%2C+Chile"
+      ]
+    },
+    {
+      "slug": "domeyko-2055",
+      "name": "Domeyko 2055",
+      "developer": "Sento",
+      "detailUrl": "/domeyko-2055.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://sento.cl/proyectos/sento-domeyko-2055/",
+      "historicalPending": [
+        "El brochure indica entrega 2º semestre 2025; requiere contraste comercial oficial vigente."
+      ],
+      "htmlImages": 11,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Domeyko+2055%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "vergara-domeyko",
+      "name": "Edificio Vergara Domeyko",
+      "developer": "Norte Verde",
+      "detailUrl": "/vergara-domeyko.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/vergara-domeyko/",
+      "historicalPending": [
+        "Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Vergara+701%2C+esquina+calle+Domeyko%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "parque-panama",
+      "name": "Edificio Parque Panamá",
+      "developer": "Norte Verde",
+      "detailUrl": "/parque-panama.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/parque-panama/",
+      "historicalPending": [
+        "Baños",
+        "Baños del modelo estudio: no se publica número explícito"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Pasaje+Delfina+890%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "playa-serena",
+      "name": "Edificio Playa Serena",
+      "developer": "Norte Verde",
+      "detailUrl": "/playa-serena.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/playa-serena/",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avenida+del+Mar+con+Cuatro+Esquinas%2C+La+Serena%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "don-tomas",
+      "name": "Don Tomás",
+      "developer": "Crescer",
+      "detailUrl": "/don-tomas.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://crescer.cl/project/dontomas",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Estado",
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Entrega actual: web aún indica Segundo semestre 2025",
+        "Recorrido virtual oficial específico no localizado",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Teniente+Yavar+1733%2C+Conchal%C3%AD%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "plaza-las-condes",
+      "name": "Plaza Las Condes",
+      "developer": "Sento",
+      "detailUrl": "/plaza-las-condes.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://sento.cl/proyectos/plaza-las-condes-7083/",
+      "historicalPending": [
+        "La promoción de página 3 corresponde a junio y julio de 2023 y se excluye de datos comerciales vigentes.",
+        "Entrega 2026 indicada en el PDF, pendiente de contraste oficial vigente.",
+        "Nombre comercial incluye numeración 7083 de Av. Las Condes; sección de ubicación y mapa oficial usan Av. General Carol Urzúa 7060. Se documentan como accesos del mismo desarrollo, sin duplicar ficha.",
+        "Página general conserva Estudio/1D/2D, mientras precio actual y banner de unidades finales son 2D/2B; tipologías documentadas no equivalen a stock comercial.",
+        "C2 oficial publica 49,52 m², coincidente con planta Curicó: no usar la planta web para reemplazar el brochure sin evidencia adicional; conservar original brochure."
+      ],
+      "htmlImages": 17,
+      "htmlPlanImages": 9,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Av.+General+Carol+Urz%C3%BAa+7060%2C+Las+Condes%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "mapocho-3521",
+      "name": "Mapocho 3521",
+      "developer": "Euro",
+      "detailUrl": "/mapocho-3521.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-10",
+      "retainedSource": "https://euroinmobiliaria.cl/proyectos/mapocho-3521",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido oficial enlazado no disponible: HTTP404"
+      ],
+      "htmlImages": 7,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Rivas+Vicu%C3%B1a+1131%2C+Quinta+Normal%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "jofre-135",
+      "name": "Jofré 157",
+      "developer": "Sento",
+      "detailUrl": "/jofre-135.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://sento.cl/proyectos/jofre-157/",
+      "historicalPending": [
+        "El brochure se identifica como Jofré 135; no renombrar ficha existente ni crear un proyecto adicional sin verificar la equivalencia con Jofré 157.",
+        "Entrega 2º semestre 2026 indicada en el brochure, pendiente de contraste oficial vigente.",
+        "Brochure recibido declara 20,21–55,46 m² globales; cuatro planos aportados cubren 20,77–55,33 m². Web declara 20,21–55,33 m². No completar extremos con superficies inventadas.",
+        "El brochure recibido anuncia entrega segundo semestre 2026; web actual ya informa proyecto entregado y 100% vendido."
+      ],
+      "htmlImages": 11,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Jofr%C3%A9+157%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "irarrazaval",
+      "name": "Edificio Irarrázaval 1970",
+      "developer": "Norte Verde",
+      "detailUrl": "/irarrazaval.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/wp-content/uploads/2026/01/IRARRAZAVAL_BROCHURE.pdf",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Tipologías disponibles",
+        "Estado",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Superficie útil",
+        "Superficie total",
+        "Dormitorios",
+        "Baños",
+        "Fotografías oficiales",
+        "Precio vigente",
+        "Stock y tipologías disponibles actualmente",
+        "Estado comercial y entrega actual",
+        "Superficies útiles y totales",
+        "Equipamiento vigente",
+        "Fotografías actuales"
+      ],
+      "htmlImages": 0,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Irarr%C3%A1zaval+1970%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "parque-quinta",
+      "name": "Edificio Parque Quinta",
+      "developer": "Norte Verde",
+      "detailUrl": "/parque-quinta.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/parque-quinta/",
+      "historicalPending": [
+        "Comuna",
+        "Comuna administrativa exacta: fuente oficial usa Santiago Centro",
+        "Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
+    },
+    {
+      "slug": "quintavista",
+      "name": "Edificio Quintavista",
+      "developer": "Norte Verde",
+      "detailUrl": "/quintavista.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/quintavista/",
+      "historicalPending": [
+        "Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Santo+Domingo+3816%2C+Quinta+Normal%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "don-rafael",
+      "name": "Don Rafael",
+      "developer": "Crescer",
+      "detailUrl": "/don-rafael.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://crescer.cl/project/donrafael",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Domeyko+1950%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "terrazzo",
+      "name": "Terrazzo",
+      "developer": "Ingevec",
+      "detailUrl": "/terrazzo.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-terrazzo",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 15,
+      "htmlPlanImages": 6,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Espa%C3%B1a+442%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vima",
+      "name": "VIMA",
+      "developer": "Ingevec",
+      "detailUrl": "/vima.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-vima",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 13,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+5908%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "los-lilenes",
+      "name": "Los Lilenes",
+      "developer": "Ingevec",
+      "detailUrl": "/los-lilenes.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-loslilenes",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 15,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+Poniente+6988%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "nueva-esmeralda",
+      "name": "Nueva Esmeralda",
+      "developer": "Ingevec",
+      "detailUrl": "/nueva-esmeralda.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-nuevaesmeralda",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 16,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Esmeralda+6548%2C+La+Cisterna%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "el-aromo",
+      "name": "El Aromo",
+      "developer": "Ingevec",
+      "detailUrl": "/el-aromo.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-elaromo",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 13,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Am%C3%A9rico+Vespucio+6750%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "espacio-victoria",
+      "name": "Espacio Victoria",
+      "developer": "Ecasa",
+      "detailUrl": "/espacio-victoria.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/espacio-victoria",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Entrega",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 22,
+      "htmlPlanImages": 9,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Victoria+7997%2C+La+Cisterna%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "terratolten",
+      "name": "Terratoltén",
+      "developer": "Ecasa",
+      "detailUrl": "/terratolten.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/terratolten-3",
+      "historicalPending": [
+        "Entrega",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 20,
+      "htmlPlanImages": 5,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Beato+Adolfo+Kolping+685%2C+Villarrica%2C+La+Araucan%C3%ADa%2C+Chile",
+        "https://www.google.com/maps?output=embed&q=Beato+Adolfo+Kolping+685%2C+Villarrica%2C+La+Araucan%C3%ADa%2C+Chile"
+      ]
+    },
+    {
+      "slug": "pintor-cicarelli-iii",
+      "name": "Pintor Cicarelli III",
+      "developer": "Maestra",
+      "detailUrl": "/pintor-cicarelli-iii.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/pintor-cicarelli-iii/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Fecha de inicio de entrega: el cronograma oficial indica ingreso de carpeta de recepción municipal, sujeto a aprobación DOM",
+        "Recorrido virtual oficial específico no localizado",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Pintor+Cicarelli+268%2C+San+Joaqu%C3%ADn%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "trinidad-iii",
+      "name": "Trinidad III",
+      "developer": "Maestra",
+      "detailUrl": "/trinidad-iii.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/trinidad-iii/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avenida+Lo+Espejo+01173%2C+La+Cisterna%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-liverpool",
+      "name": "Edificio Liverpool",
+      "developer": "Nollagam",
+      "detailUrl": "/edificio-liverpool.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://nollagam.cl/nuestros-proyectos/liverpool/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie útil: fuente publica área Interior sin equivalencia explícita"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Inglaterra+60%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "mirador-la-florida",
+      "name": "Mirador La Florida",
+      "developer": "Sento",
+      "detailUrl": "/mirador-la-florida.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://sento.cl/proyectos/mirador-la-florida/",
+      "historicalPending": [
+        "El PDF no identifica de manera textual una dirección postal completa; resolver con fuente oficial.",
+        "La fachada original del brochure tiene 1004×981 px; se conserva sin ampliar artificialmente.",
+        "Página actual publica únicamente Calle Eugenia, La Florida, sin numeración; no inventar número.",
+        "Recorrido 360 enlazado es entorno. Página no aporta recorrido de departamento; iframe de galería vacío.",
+        "Fotos de Metro, Bosque Panul, MIM, parques, centro cívico y mall son entorno."
+      ],
+      "htmlImages": 17,
+      "htmlPlanImages": 9,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Calle+Eugenia%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "alto-goycolea",
+      "name": "Alto Goycolea",
+      "developer": "Nollagam",
+      "detailUrl": "/alto-goycolea.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://nollagam.cl/nuestros-proyectos/alto-goycolea/",
+      "historicalPending": [
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Superficie útil: fuente publica área Interior sin equivalencia explícita",
+        "Recorrido virtual propio no enlazado en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Goycolea+720%2C+La+Cisterna%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "eleuterio-ramirez",
+      "name": "Eleuterio Ramírez",
+      "developer": "Nollagam",
+      "detailUrl": "/eleuterio-ramirez.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://nollagam.cl/nuestros-proyectos/eleuterio-ramirez/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie útil: fuente publica área Interior sin equivalencia explícita"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Eleuterio+Ram%C3%ADrez+951%2C+San+Bernardo%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "barrio-zenteno",
+      "name": "Barrio Zenteno",
+      "developer": "Nollagam",
+      "detailUrl": "/barrio-zenteno.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://nollagam.cl/nuestros-proyectos/barrio-zenteno/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie útil: fuente publica área Interior sin equivalencia explícita"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Zenteno+1276%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "urban-la-florida",
+      "name": "Urban La Florida",
+      "developer": "Ecasa",
+      "detailUrl": "/urban-la-florida.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/urban-la-florida",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 14,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+7189%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vicuna-mackenna-6896",
+      "name": "Edificio Vicuña Mackenna 6896",
+      "developer": "Norte Verde",
+      "detailUrl": "/vicuna-mackenna-6896.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/vicuna-mackenna-6896/",
+      "historicalPending": [
+        "Baños",
+        "Baños del modelo estudio: no se publica número explícito"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+6896%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vicuna-mackenna-7589",
+      "name": "Edificio Vicuña Mackenna 7589",
+      "developer": "Ingevec",
+      "detailUrl": "/vicuna-mackenna-7589.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-vicu%C3%B1amackenna7589",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 18,
+      "htmlPlanImages": 6,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Vicu%C3%B1a+Mackenna+7589%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "aires-la-florida-2",
+      "name": "Aires La Florida 2",
+      "developer": "Ecasa",
+      "detailUrl": "/aires-la-florida-2.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/aires-la-florida-2",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad"
+      ],
+      "htmlImages": 20,
+      "htmlPlanImages": 6,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Pichidegua+6422%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "condominio-uruguay",
+      "name": "Condominio Uruguay",
+      "developer": "León",
+      "detailUrl": "/condominio-uruguay.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://www.ileon.cl/proyectos/condominio-uruguay/",
+      "historicalPending": [
+        "El precio documental de UF 2.990 en página 11 se conserva como histórico; la web oficial vigente publica desde UF 3.698.",
+        "Las dimensiones del brochure son aproximadas. Confirmar disponibilidad por unidad.",
+        "Brochure y ficha web difieren en algunas terminaciones; esta ficha documental reproduce el PDF aportado.",
+        "Consultar disponibilidad y condiciones comerciales actuales."
+      ],
+      "htmlImages": 13,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Uruguay+8866%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "enlace-mackenna",
+      "name": "Enlace Mackenna",
+      "developer": "Ecasa",
+      "detailUrl": "/enlace-mackenna.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/enlace-mackenna",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Entrega",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 20,
+      "htmlPlanImages": 9,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+5889%2C+San+Joaqu%C3%ADn%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "novo-catedral",
+      "name": "Novo Catedral",
+      "developer": "Sudamericana",
+      "detailUrl": "/novo-catedral.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://isudamericana.cl/proyectos/novo-catedral/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Baños"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Catedral+1743%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "carmen-marin",
+      "name": "Edificio Carmen Marín",
+      "developer": "Norte Verde",
+      "detailUrl": "/carmen-marin.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/carmen-marin/",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual propio: los botones de la ficha no enlazan una experiencia publicada",
+        "Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Carmen+318%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "gregorio-de-la-fuente-a",
+      "name": "Condominio Gregorio de la Fuente",
+      "developer": "León",
+      "detailUrl": "/gregorio-de-la-fuente-a.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
+      "historicalPending": [
+        "El brochure informa 69,6 m² útiles + 11,3 m² de terraza y 70,9 m² totales; la suma no coincide. Valores documentales reproducidos, sujetos a confirmación.",
+        "El precio documental de UF 2.990 y estado En verde en página 11 no representan condiciones actuales: la web distingue Torre I inmediata y Torre II en verde, desde UF 3.349.",
+        "No se publica código o letra de modelo: los planos del PDF sólo rotulan dormitorio/baño y Tradicional/Mariposa.",
+        "Consultar disponibilidad y condiciones comerciales actuales.",
+        "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
+      ],
+      "htmlImages": 19,
+      "htmlPlanImages": 9,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Gregorio+de+la+Fuente+3011%2C+Macul%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "matta-016",
+      "name": "Matta 016",
+      "developer": "Ingevec",
+      "detailUrl": "/matta-016.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-matta",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 20,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Manuel+Antonio+Matta+16%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-plaza-nova",
+      "name": "Edificio Plaza Nova",
+      "developer": "Norte Verde",
+      "detailUrl": "/edificio-plaza-nova.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/plaza-nova/",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual propio: los botones de la ficha no enlazan una experiencia publicada",
+        "Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Roberto+Espinoza+670%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "condominio-parque-don-lautaro",
+      "name": "Condominio Parque Don Lautaro",
+      "developer": "León",
+      "detailUrl": "/condominio-parque-don-lautaro.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://www.ileon.cl/proyectos/condominio-parque-don-lautaro/",
+      "historicalPending": [
+        "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 6.434 como referencia histórica.",
+        "Consultar disponibilidad y condiciones comerciales actuales."
+      ],
+      "htmlImages": 15,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Av.+Consistorial+6501%2C+Pe%C3%B1alol%C3%A9n%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "caceres",
+      "name": "Cáceres",
+      "developer": "Maestra",
+      "detailUrl": "/caceres.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/caceres/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Oficial+Agust%C3%ADn+Almarza+124%2C+Rancagua%2C+O%27Higgins%2C+Chile"
+      ]
+    },
+    {
+      "slug": "pintor-cicarelli-i",
+      "name": "Pintor Cicarelli I",
+      "developer": "Maestra",
+      "detailUrl": "/pintor-cicarelli-i.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/pintor-cicarelli-i/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Pintor+Cicarelli+288%2C+San+Joaqu%C3%ADn%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "pintor-cicarelli-ii",
+      "name": "Pintor Cicarelli II",
+      "developer": "Maestra",
+      "detailUrl": "/pintor-cicarelli-ii.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/pintor-cicarelli-ii/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Pintor+Cicarelli+278%2C+San+Joaqu%C3%ADn%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edif-origen-atacama-3008",
+      "name": "Edificio Origen Atacama",
+      "developer": "Norte Verde",
+      "detailUrl": "/edif-origen-atacama-3008.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/origen-atacama/",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual propio: los botones de la ficha no enlazan una experiencia publicada",
+        "Baños de estudios: confirmar cantidad, solo otras tipologías la explicitan"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Maip%C3%BA+1196%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "abdon-cifuentes",
+      "name": "Abdón Cifuentes",
+      "developer": "Ingevec",
+      "detailUrl": "/abdon-cifuentes.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-abdoncifuentes",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 13,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Abd%C3%B3n+Cifuentes+90%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "don-ignacio",
+      "name": "Don Ignacio",
+      "developer": "Ingevec",
+      "detailUrl": "/don-ignacio.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-donignacio",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología",
+        "Fecha exacta de entrega"
+      ],
+      "htmlImages": 18,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Manuel+Rodr%C3%ADguez+701%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "tocornal",
+      "name": "Tocornal",
+      "developer": "Ingevec",
+      "detailUrl": "/tocornal.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-tocornal",
+      "historicalPending": [
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 22,
+      "htmlPlanImages": 5,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Manuel+Antonio+Tocornal+678%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "centenario-1",
+      "name": "Centenario 1",
+      "developer": "Ingevec",
+      "detailUrl": "/centenario-1.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ingevecinmobiliaria.cl/proyecto-centenario",
+      "historicalPending": [
+        "Superficie útil",
+        "Existencia de recorrido virtual oficial",
+        "Disponibilidad exacta por tipología"
+      ],
+      "htmlImages": 24,
+      "htmlPlanImages": 5,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Centenario+1151%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "curico-77",
+      "name": "Curicó 77",
+      "developer": "Sento",
+      "detailUrl": "/curico-77.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://sento.cl/proyectos/sento-curico-77/",
+      "historicalPending": [
+        "Mapa iframe oficial apunta a Curicó 55; dirección comercial escrita es Curicó 77. Mantener la dirección comercial.",
+        "Rango global web 20,85–47,35 m² difiere de algunos planos oficiales de total 49,52/87,84 m²; guardar métricas por fuente sin inferir disponibilidad.",
+        "Galería de entorno incluye Barrio Italia, parques, GAM y comercios; estas imágenes no deben etiquetarse como interiores o áreas comunes del edificio."
+      ],
+      "htmlImages": 17,
+      "htmlPlanImages": 11,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Curic%C3%B3+77%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "san-ignacio",
+      "name": "San Ignacio",
+      "developer": "Sento",
+      "detailUrl": "/san-ignacio.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://sento.cl/proyectos/sento-san-ignacio-280/",
+      "historicalPending": [
+        "El brochure identifica San Ignacio 270; no sustituir automáticamente numeración 280 presente en sitio oficial o ficha existente sin comprobación de equivalencia.",
+        "Entrega 2º semestre 2025 indicada en el brochure, pendiente de contraste oficial vigente.",
+        "A3 brochure 24,18 m² versus web 24,11 m²; D1 brochure 55 m² versus web 55,19 m². Conservar ambos valores identificando fuente y versión.",
+        "El brochure recibido informa 24,18–57,95 m²; web 21,1–57,95 m². No mezclar rango global actual con una oferta de planos brochure que no lo cubre.",
+        "Brochure anuncia entrega segundo semestre 2025; web actual confirma entrega inmediata."
+      ],
+      "htmlImages": 10,
+      "htmlPlanImages": 3,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=San+Ignacio+280%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "angamos",
+      "name": "Angamos 205",
+      "developer": "Sento",
+      "detailUrl": "/angamos.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://sento.cl/proyectos/angamos-205/",
+      "historicalPending": [
+        "Los planos C4/C6 actuales están disponibles en 800 × 616 px. Las versiones de 1667 × 1283 px incluyen 13% de descuento histórico y se excluyen sin borrar marcas.",
+        "A2/A4 mantienen la banda RESERVADO de su original actual, sin convertirla en confirmación de stock.",
+        "El campo dormitorios de A2/A4 contradice la categoría Estudio; no se impone un valor numérico inventado.",
+        "La superficie total C6 difiere en 0,10 m² de la suma útil más terraza.",
+        "El punto del mapa oficial no coincide con la numeración del título; no se publican coordenadas exactas como verificadas.",
+        "Las fotografías de galería publicadas por Sento tienen resolución nativa de 1024 × 576 px, confirmada en el original y metadatos WP. No se amplían artificialmente.",
+        "Las imágenes oficiales son referenciales y ambientadas; la decoración del piloto no confirma inclusión en la venta.",
+        "Iframe mapa oficial referencia Angamos 215 y enlace pie de ubicación referencia Gral. Jofré 376; conservar dirección comercial Angamos 205 y mapa construido con esa dirección.",
+        "Plano C6 útil 48,37 + terraza 2,89 difiere del total oficial 51,36; mantener el total original con nota.",
+        "A2/A4 están en pestaña Estudio pero tarjeta numera dormitorio 1 y archivos incluyen reservado; no inferir stock actual desde filename.",
+        "Extracción detallada de medios, tour y comparación de original están documentadas por el agente Angamos."
+      ],
+      "htmlImages": 24,
+      "htmlPlanImages": 6,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Angamos+205%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "conecta-huechuraba",
+      "name": "Conecta Huechuraba",
+      "developer": "Ecasa",
+      "detailUrl": "/conecta-huechuraba.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/conecta-huechuraba",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Existencia de recorrido virtual oficial",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad",
+        "Recorrido oficial localizado pero no disponible (HTTP 404)"
+      ],
+      "htmlImages": 20,
+      "htmlPlanImages": 6,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Los+Libertadores+6170%2C+Huechuraba%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "bordevivo",
+      "name": "Edificio Borde Vivo",
+      "developer": "Norte Verde",
+      "detailUrl": "/bordevivo.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/borde-vivo/",
+      "historicalPending": [
+        "Baños",
+        "Baños del modelo estudio: no se publica número explícito",
+        "Discrepancia entre superficie de resumen y tabla del modelo"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+San+Isidro+513%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "mirador-mapocho",
+      "name": "Mirador Mapocho",
+      "developer": "Maestra",
+      "detailUrl": "/mirador-mapocho.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://maestra.cl/proyectos/mirador-mapocho/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Mapocho+3951%2C+Quinta+Normal%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "alto-san-joaquin",
+      "name": "Alto San Joaquín",
+      "developer": "Ecasa",
+      "detailUrl": "/alto-san-joaquin.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://ecasa.cl/proyecto/alto-san-joaquin",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Entrega",
+        "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 23,
+      "htmlPlanImages": 8,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Benito+Rebolledo+esquina+San+Joaqu%C3%ADn%2C+La+Serena%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vista-bulnes",
+      "name": "Edificio Vista Bulnes",
+      "developer": "Norte Verde",
+      "detailUrl": "/vista-bulnes.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/vista-bulnes/",
+      "historicalPending": [
+        "Baños",
+        "Baños del modelo estudio: no se publica número explícito",
+        "Disponibilidad del visor Recorrido virtual de Vista Bulnes: no mostró escena tras reintento; conservar enlace oficial y confirmar con el proveedor"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+C%C3%B3ndor+1152%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "jardines-de-ramon-cruz",
+      "name": "Condominio Jardines de Ramón Cruz",
+      "developer": "León",
+      "detailUrl": "/jardines-de-ramon-cruz.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
+      "historicalPending": [
+        "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 2.900 y entrega inmediata como referencia histórica.",
+        "Las páginas 9, 10 y 11 no identifican unívocamente la correspondencia entre cada plano y cada fila de superficies. Se conservan las tablas aparte.",
+        "Inconsistencia de superficies en página 12: 70,00 + 5,61 no suma el total impreso 77,57 m².",
+        "El plano de la página 12 repite la etiqueta Dormitorio 2 en dos habitaciones; el encabezado declara 3 dormitorios. Se conserva el diagrama original.",
+        "Consultar disponibilidad y condiciones comerciales actuales.",
+        "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
+      ],
+      "htmlImages": 19,
+      "htmlPlanImages": 8,
+      "htmlMaps": [
+        "https://www.google.com/maps?q=Ram%C3%B3n+Cruz+Montt+3291%2C+Macul%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
+      ]
+    },
+    {
+      "slug": "vitro",
+      "name": "Vitro",
+      "developer": "Euro",
+      "detailUrl": "/vitro.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/vitro",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Za%C3%B1artu+980%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "mirador-irarrazaval",
+      "name": "Mirador Irarrázaval",
+      "developer": "Euro",
+      "detailUrl": "/mirador-irarrazaval.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/mirador-irarrazabal",
+      "historicalPending": [
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Equipamiento: listado completo pendiente de confirmación",
+        "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Obispo+Orrego+40%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "alto-irarrazaval",
+      "name": "Alto Irarrázaval",
+      "developer": "Euro",
+      "detailUrl": "/alto-irarrazaval.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/alto-irarrazaval",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avda.+Irarr%C3%A1zaval+2325%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "jose-pedro-alessandri",
+      "name": "José Pedro Alessandri",
+      "developer": "Euro",
+      "detailUrl": "/jose-pedro-alessandri.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/jose-pedro-alessandri",
+      "historicalPending": [
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Equipamiento: listado completo pendiente de confirmación",
+        "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avda.+Jos%C3%A9+Pedro+Alessandri+1498%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vicuna-mackenna-1432",
+      "name": "Vicuña Mackenna 1432",
+      "developer": "Euro",
+      "detailUrl": "/vicuna-mackenna-1432.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/vicuna-mackenna-1432",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avda.+Vicu%C3%B1a+Mackenna+1432%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vicente-valdes",
+      "name": "Vicente Valdés",
+      "developer": "Euro",
+      "detailUrl": "/vicente-valdes.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/vicente-valdes",
+      "historicalPending": [
+        "Estado",
+        "Entrega",
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Estado de construcción vigente",
+        "Fecha estimada de entrega",
+        "Equipamiento: listado completo pendiente de confirmación",
+        "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicente+Vald%C3%A9s+86%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "diagonal-vicuna",
+      "name": "Diagonal Vicuña",
+      "developer": "Euro",
+      "detailUrl": "/diagonal-vicuna.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/diagonal-vicuna",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido oficial enlazado no disponible: HTTP404"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Santa+Elena+2000%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "vista-portugal",
+      "name": "Vista Portugal",
+      "developer": "Euro",
+      "detailUrl": "/vista-portugal.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/vista-portugal",
+      "historicalPending": [
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Portugal+755%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "marina-pacifico",
+      "name": "Marina Pacífico",
+      "developer": "Euro",
+      "detailUrl": "/marina-pacifico.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/mirador-pacifico",
+      "historicalPending": [
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Equipamiento: listado completo pendiente de confirmación",
+        "Recorrido oficial enlazado no disponible: HTTP404"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Av.+Los+Pescadores+5121%2C+Coquimbo%2C+Coquimbo%2C+Chile"
+      ]
+    },
+    {
+      "slug": "nova-parque",
+      "name": "Nova Parque",
+      "developer": "Euro",
+      "detailUrl": "/nova-parque.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://www.euroinmobiliaria.cl/proyectos/nova-parque",
+      "historicalPending": [
+        "Equipamiento y áreas comunes",
+        "Existencia de recorrido virtual oficial",
+        "Equipamiento: listado completo pendiente de confirmación",
+        "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+3747%2C+San+Joaqu%C3%ADn%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "own",
+      "name": "Own",
+      "developer": "Leben",
+      "detailUrl": "/own.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://own.ileben.cl/",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Superficie útil",
+        "Superficie total",
+        "Existencia de recorrido virtual oficial",
+        "Clasificación útil/total del rango general de superficie",
+        "Disponibilidad exacta por tipología",
+        "Precio y disponibilidad comercial actual"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=San+Eugenio+567%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "monjitas-690",
+      "name": "Monjitas 690",
+      "developer": "AJ Urbana",
+      "detailUrl": "/monjitas-690.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://monjitas690.cl/",
+      "historicalPending": [
+        "Precio actual en UF",
+        "Estado",
+        "Entrega",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado",
+        "Precio vigente y disponibilidad",
+        "Fecha de entrega"
+      ],
+      "htmlImages": 15,
+      "htmlPlanImages": 2,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Monjitas+690%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "patio-brasil",
+      "name": "Patio Brasil",
+      "developer": "Sudamericana",
+      "detailUrl": "/patio-brasil.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://isudamericana.cl/proyectos/patio-brasil/",
+      "historicalPending": [
+        "Superficie útil",
+        "Superficie total",
+        "Baños",
+        "Existencia de recorrido virtual oficial",
+        "Recorrido virtual oficial específico no localizado"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avenida+Brasil+697%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "atelier-prat-oficinas",
+      "name": "Edificio Atelier Prat Oficinas",
+      "developer": "Norte Verde",
+      "detailUrl": "/atelier-prat-oficinas.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/atelier-prat-oficinas/",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Arturo+Prat+1760%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "corrientes-oficinas",
+      "name": "Edificio Corrientes Oficinas",
+      "developer": "Norte Verde",
+      "detailUrl": "/corrientes-oficinas.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-09",
+      "retainedSource": "https://norte-verde.cl/proyecto/corrientes-oficinas/",
+      "historicalPending": [],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Avda.+Francisco+Bilbao+2518%2C+Providencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "los-alerces",
+      "name": "Los Alerces",
+      "developer": "Ingevec",
+      "detailUrl": "/los-alerces.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-11",
+      "retainedSource": null,
+      "historicalPending": [
+        "Precio vigente",
+        "Disponibilidad de unidades y modelos",
+        "Estado comercial y fecha de entrega",
+        "Orientaciones y pisos por unidad",
+        "Existencia de recorrido virtual oficial",
+        "Cantidad de departamentos: originales con cifras diferentes; no publicada"
+      ],
+      "htmlImages": 12,
+      "htmlPlanImages": 2,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Los+Alerces+3254%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+      ]
+    },
+    {
+      "slug": "valle-los-ingleses-iii",
+      "name": "Valle Los Ingleses III",
+      "developer": "Ingevec",
+      "detailUrl": "/valle-los-ingleses-iii.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-11",
+      "retainedSource": null,
+      "historicalPending": [
+        "Precio vigente",
+        "Disponibilidad de unidades y modelos",
+        "Estado comercial y fecha de entrega",
+        "Orientaciones y pisos por unidad",
+        "Existencia de recorrido virtual oficial",
+        "Vinculación de líneas A–K con cada distribución",
+        "Confirmación de comercialización actual exclusiva Etapa III"
+      ],
+      "htmlImages": 11,
+      "htmlPlanImages": 4,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Camino+Los+Ingleses+715%2C+Valpara%C3%ADso%2C+Valpara%C3%ADso%2C+Chile"
+      ]
+    },
+    {
+      "slug": "edificio-nordico",
+      "name": "Edificio Nórdico",
+      "developer": "Leben",
+      "detailUrl": "/edificio-nordico.html",
+      "htmlPresent": true,
+      "retainedReviewDate": "2026-10-13",
+      "retainedSource": "https://nordico.ileben.cl/",
+      "historicalPending": [
+        "Entrega",
+        "Superficie útil",
+        "Superficie total",
+        "Baños",
+        "Existencia de recorrido virtual oficial",
+        "Brochure oficial de Edificio Nórdico",
+        "Plantas individuales por modelo",
+        "Superficies útiles, terrazas y totales por modelo",
+        "Clasificación útil/total del rango general de superficie de 42–120 m²",
+        "Fecha o semestre de entrega",
+        "Terminaciones y equipamiento de los departamentos",
+        "Cantidad de departamentos",
+        "Cantidad de pisos",
+        "Disponibilidad y precio de cada unidad",
+        "Baños por tipología (únicamente unidad 101 acreditada como 1D1B)",
+        "Verificación visual de la ubicación 360 oficial de La Nube; no asumir recorrido interior"
+      ],
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Del+Rosario+esquina+Mirador%2C+Puerto+Varas%2C+Los+Lagos%2C+Chile"
+      ]
+    }
+  ]
+}

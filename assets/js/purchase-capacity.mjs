@@ -79,8 +79,12 @@ export function evaluateProject(project, rawInput, dataset, now = new Date()) {
   const ufStatus = getUfStatus(dataset?.uf, now);
   const totalIncomeClp = input.incomeClp + input.secondIncomeClp;
   const monthlyBudgetClp = Math.max(0, totalIncomeClp * input.burdenPercent / 100 - input.debtClp);
+  const nonResidential = ['Comercial', 'Terreno'].includes(project?.tipoActivo);
   const result = {
     category: 'E', reason: '', price, mortgage: null,
+    assetWarning: nonResidential
+      ? `Tipo de activo: ${project.tipoActivo}. Este resultado es un escenario manual y no confirma acceso a un crédito de vivienda. Las referencias CMF de vivienda no se aplican a este proyecto; confirma el financiamiento específico con la institución.`
+      : null,
     totalIncomeClp, monthlyBudgetClp,
     monthlyPaymentClp: null, downPaymentClp: null,
     currentSavingsUf: input.savingsCurrency === 'UF' ? input.savings : null,

@@ -1,5 +1,7 @@
 # Ahorro del buscador financiero exclusivamente en CLP
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Fecha de verificación: 10 de octubre de 2026. Rama: `codex/integracion-financiera-sollahms`.
 
 ## Cambio

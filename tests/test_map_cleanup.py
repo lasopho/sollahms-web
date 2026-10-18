@@ -10,6 +10,8 @@ import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
+from p2_embed_scope import restore_p2_embed_file, restore_generated_embed_alternatives
+from p2_scope import restore_p2_media_file
 from sento_scope import original_data, historical_file
 from string import Template
 
@@ -22,12 +24,20 @@ from map_cleanup_scope import (ROOT, FEATURED, RELATED, GENERIC_NOTES, NOSCRIPT,
                                transform_map_cleanup, restore_map_cleanup_asset)
 
 sys.path.insert(0, str(ROOT / 'scripts'))
-from project_embed_policy import normalize_page_embeds, remove_redundant_map_details
+from project_embed_policy import normalize_page_embeds as current_normalize_page_embeds, remove_redundant_map_details
+
+
+def normalize_page_embeds(*args, **kwargs):
+    return restore_generated_embed_alternatives(current_normalize_page_embeds(*args, **kwargs))
 from fiche_presentation import commercialize_fiche
 
 spec = importlib.util.spec_from_file_location('map_cleanup_details', ROOT / 'scripts/build-project-details.py')
 details = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(details)
+# This suite renders the immutable historical identity set, including retired
+# projects. Reverse only the pinned MED-008 hook; current134 rendering and
+# unknown-identity rejection remain covered by test_reviewed_image_alts.
+exec(compile(restore_p2_media_file('scripts/build-project-details.py',
+    (ROOT / 'scripts/build-project-details.py').read_bytes()), str(spec.origin), 'exec'), details.__dict__)
 PROJECTS = original_data(json.loads((ROOT / 'data/proyectos.json').read_text()))
 RECORDS = {row['slug']: row for row in original_data(json.loads((ROOT / 'data/fichas-proyectos.json').read_text()), 'data/fichas-proyectos.json')}
 
@@ -44,6 +54,7 @@ class Nodes(HTMLParser):
 
 class MapCleanup(unittest.TestCase):
     def assert_clean(self, page, slug):
+        page = restore_generated_embed_alternatives(page)
         self.assertNotIn('Abrir en Google Maps ↗', page, slug)
         self.assertNotIn('Abrir dirección relacionada en Google Maps ↗', page, slug)
         for note in GENERIC_NOTES:
@@ -141,7 +152,7 @@ class MapCleanup(unittest.TestCase):
         self.assert_clean(commercialize_fiche(page, 'bcome', research=RECORDS['bcome']), 'bcome')
         for path in ['assets/css/project-embeds.css', 'vercel.json', 'scripts/package-vercel.mjs']:
             self.assertEqual(restore_map_cleanup_asset(path, historical_file(path, (ROOT / path).read_bytes())), baseline_bytes(path))
-        self.assertEqual((ROOT / 'assets/js/project-embeds.js').read_bytes(), baseline_bytes('assets/js/project-embeds.js'), 'Native controls/error-only runtime must remain exact')
+        self.assertEqual(restore_p2_embed_file('assets/js/project-embeds.js', (ROOT / 'assets/js/project-embeds.js').read_bytes()), baseline_bytes('assets/js/project-embeds.js'), 'Native controls/error-only runtime must remain exact')
 
     def test_exact_cleanup_scope_rejects_unrelated_markup_assets_and_missing_removals(self):
         path = 'bcome.html'

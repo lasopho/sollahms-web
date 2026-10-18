@@ -8,6 +8,7 @@ on:
   pull_request:
     branches:
       - main
+      - codex/leon-cartera-preview
     types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
@@ -26,6 +27,7 @@ jobs:
       - name: Check out real history without persisting credentials
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: false
       - name: Use Node 24 for unit and DOM regressions

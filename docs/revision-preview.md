@@ -1,5 +1,7 @@
 # Revisión de Preview — 9 de octubre de 2026
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Rama: `codex/fichas-proyectos-completas`, repositorio `lasopho/sollahms-web`. Trabajo aislado en el worktree de esta rama. Sin merge a `main`, sin promoción ni despliegue a Production.
 
 [**Abrir Preview de la rama**](https://project-wrapp-git-codex-fichas-eb9b71-lsandoval2-8260s-projects.vercel.app/proyectos.html)

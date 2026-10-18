@@ -1,5 +1,7 @@
 # Brochures Yapo/IRIS: procedencia y preparación de publicación
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Actualización del 10/10/2026 en `codex/integracion-financiera-sollahms`.
 
 El titular confirmó que los brochures de AJ Urbana e Ingevec fueron entregados mediante Yapo/IRIS y que el contrato contempla su uso promocional por corredores. Esta aclaración sustituye el supuesto anterior de una licencia individual pendiente para cada fotografía, render o plano. Los recursos comprendidos en la autorización contractual no requieren esa licencia adicional.

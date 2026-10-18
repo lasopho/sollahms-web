@@ -1,5 +1,7 @@
 # Sollahms — cierre de preparación para lanzamiento
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Fecha: **11 de octubre de 2026**. Rama: `codex/integracion-financiera-sollahms`.
 
 La versión preparada conserva la cartera aprobada en `e7afe04`: **144 proyectos, 16 fichas Ingevec y 128 de otras inmobiliarias**. Vicuña Mackenna 7589 mantiene Etapa 1 y Etapa 2 como entradas comerciales diferenciadas dentro de una ficha. No se modifica la composición del catálogo.

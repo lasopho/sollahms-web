@@ -1,5 +1,7 @@
 # Encabezados compartidos Leben
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Alcance confirmado en el inventario vigente:14 fichas, incluidos Own y Nórdico; Parque Germania permanece único. El catálogo conserva137 proyectos y15Ecasa, con portadas y valores comerciales intactos.
 
 El componente scripts/leben_header.py y la configuración data/leben-headers.json generan un único sistema visual con assets/css/leben-project-hero.css. Escritorio/tablet: verde #003229 detrás del texto, degradado horizontal continuo y fotografía a la derecha. El ancho de la fotografía se limita a la proporción original en un marco de600px de altura; su borde real se enmascara para fundirlo con el verde. Móvil: fotografía en proporción completa, transición vertical progresiva y texto sobre verde sólido.

@@ -12,6 +12,7 @@ import re
 import shutil
 import subprocess
 from pathlib import Path
+from p2_scope import restore_current_p2_file
 
 ROOT = Path(__file__).resolve().parents[1]
 NODE = os.environ.get('SOLLAHMS_CI_NODE') or shutil.which('node') or '/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node'
@@ -52,6 +53,10 @@ def original_data(rows, path='data/proyectos.json'):
 
 @functools.lru_cache(maxsize=256)
 def historical_file(path, data):
+    # Some callers already restored León/Sento/P1 before this older boundary.
+    # Only scoped current source enters the strict P2 verifier. Other inputs
+    # remain byte-exact for their immutable downstream historical guards.
+    data = restore_current_p2_file(path, data)
     if path not in {'data/proyectos.json', 'data/fichas-proyectos.json', 'data/registro-fichas.json',
                     'lib/project-context.mjs', 'vercel.json', 'scripts/package-vercel.mjs',
                     'scripts/norte-verde-publication.mjs', 'scripts/brochure-publication.mjs',

@@ -14,6 +14,7 @@ import sys
 from pathlib import Path
 from ecasa_scope import restore_successor_data
 from sento_scope import original_data, historical_file
+from p2_scope import restore_current_p2_file
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = 'bb69615d03230cbab76bdc2678938cc741f80e86'
@@ -89,6 +90,7 @@ def expected_cleanup_file(path):
 
 def restore_map_cleanup_asset(path, current):
     """Restore only after byte-exact verification of the tiny style/gate edits."""
+    current = restore_current_p2_file(path, current)
     if path == 'scripts/package-vercel.mjs':
         from norte_verde_hero_scope import restore_norte_verde_hero_packager
         current = restore_norte_verde_hero_packager(current)

@@ -5,6 +5,7 @@ import { readFile } from 'node:fs/promises';
 import { evaluateProject, validateCapacityInput, CapacityValidationError } from '../assets/js/purchase-capacity.mjs';
 import { chileDate, verifiedProjectPrice, normalizeVerifiedPaymentTerms, verifiedProjectLocation } from '../assets/js/project-finance.mjs';
 import { compareOffers, getOfferStatus } from '../assets/js/mortgage-data.mjs';
+import { P2_FINANCE_FILES, restoreP2FinanceFile } from './p2-finance-preservation.mjs';
 
 const now = '2026-10-10';
 const source = 'https://maestra.cl/proyectos/distrito-centro/';
@@ -242,4 +243,56 @@ test('ubicación CMF no confunde toda Región Metropolitana con área urbana con
   assert.equal(verifiedProjectLocation({ ...place, verificacion: { ...place.verificacion, camposVerificados: ['comuna'] } }, now), 'unknown');
   assert.equal(verifiedProjectLocation({ ...place, verificacion: { ...place.verificacion, fecha: '2026-09-01' } }, now), 'unknown');
   assert.equal(verifiedProjectLocation(null, now), 'unknown');
+});
+
+test('oficinas y terrenos conservan la matemática manual y advierten su alcance financiero', () => {
+  const residential = evaluate({}, { tipoActivo: 'Residencial' });
+  assert.equal(residential.assetWarning, null);
+  for (const tipoActivo of ['Comercial', 'Terreno']) {
+    const result = evaluate({}, { tipoActivo });
+    assert.equal(result.category, 'A');
+    assert.match(result.assetWarning, new RegExp('Tipo de activo: ' + tipoActivo));
+    assert.match(result.assetWarning, /escenario manual.*no confirma acceso a un crédito de vivienda/);
+    assert.match(result.assetWarning, /referencias CMF de vivienda no se aplican/);
+    const { assetWarning, ...manual } = result;
+    const { assetWarning: unused, ...sameResidential } = residential;
+    assert.deepEqual(manual, sameResidential, tipoActivo + ': no change to mathematics or criteria');
+    near(result.mortgage.monthlyPaymentUf, independentPayment(3200, 4.5, 20, 'effective'));
+  }
+});
+
+test('advertencia de activos no residenciales permanece con precio, UF o tasa pendientes', () => {
+  for (const tipoActivo of ['Comercial', 'Terreno']) {
+    for (const [input, projectPatch, data] of [
+      [{}, { precioDesdeUF: null }, dataset], [{ annualRatePercent: null }, {}, dataset], [{}, {}, {}],
+    ]) {
+      const result = evaluate(input, { ...projectPatch, tipoActivo }, data);
+      assert.equal(result.category, 'E');
+      assert.match(result.assetWarning, /no confirma acceso a un crédito de vivienda/);
+    }
+  }
+});
+
+test('vencimientos 16/10, 17/10 y posteriores no renuevan referencias al consultar la fuente', async () => {
+  const published = JSON.parse(await readFile(new URL('../data/hipotecario.json', import.meta.url), 'utf8'));
+  const snapshot = structuredClone(published);
+  const exact = { propertyUf: 4000, downPaymentPercent: 25, years: 20, location: 'santiago-metropolitana' };
+  assert.deepEqual(compareOffers(exact, published.offers, '2026-10-16').map(item => item.offer.institutionId).sort(), ['banco-chile', 'itau']);
+  for (const date of ['2026-10-17', '2026-10-24', '2026-11-01']) {
+    assert.deepEqual(compareOffers(exact, published.offers, date), []);
+    for (const offer of published.offers) assert.equal(getOfferStatus(offer, date).usable, false);
+  }
+  assert.deepEqual(published, snapshot, 'A later lookup does not revise verification, validity or source dates');
+});
+
+test('proyección histórica FUN-004 admite sólo bytes revisados y rechaza cambios adicionales', async () => {
+  assert.deepEqual(P2_FINANCE_FILES, ['assets/js/purchase-capacity.mjs', 'assets/js/purchase-capacity-ui.mjs']);
+  for (const file of P2_FINANCE_FILES) {
+    const actual = await readFile(new URL('../' + file, import.meta.url));
+    const before = restoreP2FinanceFile(file, actual);
+    assert.notDeepEqual(actual, before);
+    assert.deepEqual(restoreP2FinanceFile(file, before), before);
+    assert.throws(() => restoreP2FinanceFile(file, Buffer.concat([actual, Buffer.from('\n// unauthorized mutation')])));
+    assert.throws(() => restoreP2FinanceFile(file, Buffer.concat([before, Buffer.from('\n// unauthorized mutation')])));
+  }
 });

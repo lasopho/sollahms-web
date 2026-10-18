@@ -1,5 +1,7 @@
 # Ajustes finales del catálogo y formulario de contacto
 
+> Conteos históricos: las cifras de catálogo de 148/144/137 de este documento corresponden a su etapa de revisión. El [registro vigente de 134 fichas](registro-vigente.md), fijado al commit fuente, define el inventario actual. Se conserva íntegra la evidencia y el alcance original.
+
 Fecha de cierre: 10 de octubre de 2026. Rama: `codex/fichas-proyectos-completas`.
 
 Los cambios de aplicación están en `6f054130aaf1814df4b00a68f9fb0a07717f971f`. Se conservaron las 148 fichas y la investigación existente. Este informe documenta las pruebas de ese commit y reemplaza las descripciones históricas del campo visible «Asunto»; no cambia los resultados comerciales de la revisión anterior.

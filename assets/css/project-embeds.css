@@ -10,5 +10,7 @@
 .project-tour-section .tour-card{margin:0 0 28px;min-width:0}
 .project-embed-fallback{border:1px solid #dbe3dd;background:#fff;color:#56665f;padding:18px 20px;margin:16px 0;line-height:1.6}
 .project-embed-fallback a{color:#003229;text-decoration:underline;text-underline-offset:4px}
-.project-embed-fallback a:focus-visible{outline:3px solid #E9C176;outline-offset:4px}
+.project-embed-fallback a:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 3px #003229}
 @media(max-width:600px){.project-embed{aspect-ratio:4/3}.project-embed-map{min-height:260px;max-height:360px}.project-tour-section h2{font-size:1.6rem}}
+
+@media(forced-colors:active){.project-embed-fallback a:focus-visible{outline:3px solid Highlight;box-shadow:none}}

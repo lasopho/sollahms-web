@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { assertPreservedSource } from './leben-preservation.mjs';
 import { restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
+import { projectP2File, projectP2CurrentFile } from './p2-preservation.mjs';
 
 export const NORTE_VERDE_HERO_ASSETS = ['assets/css/norte-verde-hero-variants.css', 'assets/js/norte-verde-hero-variants.js', 'assets/review/norte-verde-hero-variantes.html'];
 
@@ -24,6 +25,7 @@ export function restoreEcasaData(actual, file) {
     {cwd:ROOT,input:actual,maxBuffer:8*1024*1024}));
 }
 export function restoreEcasaContext(file, actual) {
+  actual = projectP2CurrentFile(file, actual);
   actual = restoreP1IdempotencyFile(file, actual);
   const review=JSON.parse(readFileSync(resolve(ROOT,'tests/ecasa-context-reviewed-output.json')));
   if(!Object.hasOwn(review.files,file)) return actual;
@@ -57,7 +59,7 @@ function restoreMapCleanupAsset(file, actual) {
     { cwd: ROOT, input: actual, maxBuffer: 4 * 1024 * 1024 });
 }
 export function assertAutomaticEmbedStylesheet() {
-  const historical = restoreMapCleanupAsset(AUTOMATIC_EMBED_CSS, readFileSync(resolve(ROOT, AUTOMATIC_EMBED_CSS)));
+  const historical = restoreMapCleanupAsset(AUTOMATIC_EMBED_CSS, projectP2File(AUTOMATIC_EMBED_CSS, readFileSync(resolve(ROOT, AUTOMATIC_EMBED_CSS))));
   assert.equal(createHash('sha256').update(historical).digest('hex'),
     '8c0d88544e0341fd795fa76f86af44dc12ed29f7b7368258f6c077e6880a298f',
     'Only the exact shared automatic-viewer stylesheet is an authorized asset addition');
@@ -105,7 +107,7 @@ export function readCommercialFile(file) {
   if (ECASA_SLUGS.has(file.replace(/\.html$/, ''))) {
     const input=existsSync(resolve(ROOT,file))?readFileSync(resolve(ROOT,file)):Buffer.alloc(0);
     if(ECASA_NEW_SLUGS.has(file.replace(/\.html$/, ''))) return input;
-    return restoreReviewedTourFile(file,input);
+    return restoreReviewedTourFile(file,projectP2File(file,input));
   }
   let actual = projectSentoFile(file, readPreLeonFile(file));
   if (file === 'edificio-nordico.html') return actual;
