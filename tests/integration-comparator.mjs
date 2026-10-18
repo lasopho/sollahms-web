@@ -13,6 +13,8 @@ import { calculateMortgage } from '../assets/js/mortgage-engine.mjs';
 import { validateDataset, getUfStatus, getOfferStatus, compareOffers, sortComparisons } from '../assets/js/mortgage-data.mjs';
 import { verifiedProjectPrice, verifiedProjectLocation } from '../assets/js/project-finance.mjs';
 import { consumeMortgageHandoff, writeMortgageHandoff, MORTGAGE_HANDOFF_KEY, MORTGAGE_HANDOFF_TTL_MS } from '../assets/js/mortgage-handoff.mjs';
+import { createFormOperation } from '../assets/js/form-operation.mjs';
+import { createHash, randomUUID } from 'node:crypto';
 
 const NOW = Date.parse('2026-10-10T15:00:00Z');
 const scenario = { projectSlug: 'distrito-centro', propertyUf: 2715, downPaymentPercent: 20, years: 25, annualRatePercent: 4.5, rateConvention: 'effective', propertyValueOrigin: 'catalogue' };
@@ -88,7 +90,7 @@ class Element {
   reset() { this.resets = (this.resets || 0) + 1; }
 }
 const settle = () => new Promise(resolve => setImmediate(resolve));
-async function frontend({ slug = 'distrito-centro', search, storage = memoryStorage(), failCatalogue = false, status = 503, deferred = false } = {}) {
+async function frontend({ slug = 'distrito-centro', search, storage = memoryStorage(), failCatalogue = false, status = 503, code = 'preview_read_only', deferred = false } = {}) {
   let now = NOW;
   class Clock extends Date { constructor(...args) { super(...(args.length ? args : [now])); } static now() { return now; } }
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
@@ -99,14 +101,19 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
   const agenda = [new Element('agenda')];
   const presets = ['10', '15', '20', 'custom'].map(down => { const element = new Element('preset'); element.dataset = { down }; return element; });
   const posts = [];
+  const postHeaders = [];
   let release;
   const context = vm.createContext({
     document: { getElementById: id => elements[id], querySelectorAll: selector => selector === '[data-down]' ? presets : selector === '[data-project-agenda]' ? agenda : [], addEventListener() {}, hidden: false },
     window: { location: { search: search ?? (slug ? '?proyecto=' + encodeURIComponent(slug) : '') }, addEventListener() {} },
     innerWidth: 1440, URL, URLSearchParams, Intl, Date: Clock, AbortSignal, setInterval() {},
     UF_CLIENT_REFRESH_MS, resolveProjectIdentity,
-    calculateMortgage, validateDataset, getUfStatus, getOfferStatus, compareOffers, sortComparisons, verifiedProjectPrice, verifiedProjectLocation,
+    calculateMortgage, validateDataset, getUfStatus: (uf, at = new Clock()) => getUfStatus(uf, at),
+    getOfferStatus: (offer, at = new Clock()) => getOfferStatus(offer, at),
+    compareOffers: (input, offers, at = new Clock()) => compareOffers(input, offers, at),
+    sortComparisons, verifiedProjectPrice, verifiedProjectLocation,
     consumeMortgageHandoff: projectSlug => consumeMortgageHandoff(projectSlug, { storage, now }),
+    createFormOperation: options => createFormOperation({ ...options, storage: memoryStorage(), now: () => now, randomUUID, digest: text => createHash('sha256').update(text).digest('hex') }),
     fetch: async (url, options) => {
       if (url === '/data/proyectos.json') {
         if (failCatalogue) throw new Error('Synthetic unavailable catalogue');
@@ -116,15 +123,17 @@ async function frontend({ slug = 'distrito-centro', search, storage = memoryStor
       if (url === '/data/hipotecario.json') return { ok: true, json: async () => dataset };
       assert.equal(url, '/api/contact');
       posts.push(JSON.parse(options.body));
+      postHeaders.push(options.headers);
       if (deferred) await new Promise(resolve => { release = resolve; });
-      return { ok: status === 200, json: async () => status === 200 ? { ok: true } : { code: 'preview_read_only', error: 'La vista previa no envía mensajes reales.' } };
+      const resultStatus = Array.isArray(status) ? status[Math.min(posts.length - 1, status.length - 1)] : status;
+      return { status: resultStatus, ok: resultStatus === 200, json: async () => resultStatus === 200 ? { ok: true } : { code, error: code === 'preview_read_only' ? 'La vista previa no envía mensajes reales.' : 'Resultado simulado pendiente.' } };
     },
   });
   context.loadOfficialUf = options => loadOfficialUf({ ...options, fetchImpl: context.fetch, now: () => new Clock() });
   vm.runInContext(script, context);
   await settle();
   const invoke = code => vm.runInContext(code, context);
-  return { elements, agenda, posts, storage, invoke, release: () => release(), advance: amount => { now += amount; }, input: (id, value) => { elements[id].value = String(value); elements['simulation-form'].listeners.input({ target: elements[id] }); }, submit: () => elements['lead-form'].listeners.submit({ preventDefault() {} }) };
+  return { elements, agenda, posts, postHeaders, storage, invoke, release: () => release(), advance: amount => { now += amount; }, input: (id, value) => { elements[id].value = String(value); elements['simulation-form'].listeners.input({ target: elements[id] }); }, submit: () => elements['lead-form'].listeners.submit({ preventDefault() {} }) };
 }
 
 test('all136 project origins load exactly106 verified prices, leave30 pending blank and keep agenda/detail context', async () => {
@@ -296,6 +305,21 @@ test('comparator prevents duplicate contact requests and preserves parameters an
   assert.equal(ui.elements.property.value, '2715');
   assert.equal(ui.elements.rate.value, '4.5');
   assert.equal(ui.elements['lead-submit'].disabled, false);
+});
+
+test('mortgage retries preserve operation and payload through elapsed time and an intervening validation rejection', async () => {
+  const ui = await frontend({ status: [502, 400, 200], code: 'contact_outcome_unknown' });
+  ui.input('rate', 4.5); ui.invoke('openLead()'); ui.advance(3000);
+  await ui.submit();
+  assert.equal(ui.posts.length, 1);
+  ui.advance(3000); await ui.submit();
+  ui.advance(3000); await ui.submit();
+  assert.equal(ui.posts.length, 3);
+  for (let index = 1; index < ui.posts.length; index++) {
+    assert.deepEqual(ui.posts[index], ui.posts[0]);
+    assert.equal(ui.postHeaders[index]['Idempotency-Key'], ui.postHeaders[0]['Idempotency-Key']);
+  }
+  assert.equal(ui.elements['lead-form'].resets, 1);
 });
 
 test('desktop/mobile navigation contains only required links and contact uses POST fallback', () => {

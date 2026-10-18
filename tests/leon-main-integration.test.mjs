@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { projectP1CommercialFile, projectP1CommercialRows } from './p1-commercial-scope.mjs';
+import { restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
 import { readFileSync, existsSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
@@ -20,8 +22,8 @@ test('the immutable 141-project León main guard and the separately approved 134
  } finally {rmSync(fixture,{recursive:true,force:true});}
  const combined=readLeonCombinedBaseline();
  const tracked=new Set(execFileSync('git',['ls-files','-z']).toString().split('\0'));
- for(const item of combined.otherHtml){const bytes=readFileSync(new URL('../'+item.path,import.meta.url));assert.equal(bytes.length,item.bytes);assert.equal(sha(bytes),item.sha256,item.path);}
- for(const item of combined.existingAssets.filter(item=>tracked.has(item.path))){const bytes=readFileSync(new URL('../'+item.path,import.meta.url));assert.equal(bytes.length,item.bytes);assert.equal(sha(bytes),item.sha256,item.path);}
+ for(const item of combined.otherHtml){const bytes=projectP1CommercialFile(item.path,restoreP1IdempotencyFile(item.path,readFileSync(new URL('../'+item.path,import.meta.url))));assert.equal(bytes.length,item.bytes);assert.equal(sha(bytes),item.sha256,item.path);}
+ for(const item of combined.existingAssets.filter(item=>tracked.has(item.path))){const bytes=projectP1CommercialFile(item.path,restoreP1IdempotencyFile(item.path,readFileSync(new URL('../'+item.path,import.meta.url))));assert.equal(bytes.length,item.bytes);assert.equal(sha(bytes),item.sha256,item.path);}
  const rows=json('data/proyectos.json');assert.equal(rows.length,134);assert.equal(Object.keys(projects).length,134);assertBrochureCatalogue(rows);
  assert.equal(rows.filter(row=>row.inmobiliaria==='Ecasa').length,15);assert.equal(rows.filter(row=>row.inmobiliaria==='Leben').length,14);assert.equal(rows.filter(row=>row.inmobiliaria==='Sento').length,7);
  const prior=JSON.parse(execFileSync('git',['show','73a16a34846aebc9f551f63241d8f2abeef5ca15:lib/project-context.mjs'],{maxBuffer:16*1024*1024}).toString().match(/export const projects = Object\.freeze\(([\s\S]*?)\);/)[1]);
@@ -48,7 +50,7 @@ test('main and integration automatic deploy gates remain disabled',()=>{
 
 test('León predecessor projection preserves all 129 foreign current objects and is idempotent without restoring public retirements',()=>{
  for(const file of ['data/proyectos.json','data/fichas-proyectos.json','data/registro-fichas.json']){
-  const current=json(file),old=restoreLeonRows(current,file);
+  const current=projectP1CommercialRows(json(file),file),old=restoreLeonRows(current,file);
   assert.equal(current.length,134);assert.equal(old.length,137);
   const foreign=rows=>rows.filter(row=>![...LEON_SLUGS,...LEON_RETIRED_SLUGS].includes(row.slug));
   assert.equal(foreign(current).length,129);assert.deepEqual(foreign(old),foreign(current));

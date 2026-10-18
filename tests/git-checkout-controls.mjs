@@ -1,3 +1,4 @@
+import { projectP1CommercialFile } from './p1-commercial-scope.mjs';
 import { projectSentoFile } from './sento-preservation.mjs';
 import { readPreLeonFile } from './leon-main-preservation.mjs';
 import test from 'node:test';
@@ -159,7 +160,7 @@ function assertIncompleteBuildRejected(environment, partial) {
       'data/ecasa-image-quality.json','data/fichas-proyectos.json','data/fuentes-imagenes.json',
       'data/brochures-ecasa.json', 'data/brochures-aj-urbana.json', 'data/brochures-ingevec.json']) {
       const target = resolve(fixture, path);
-      mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, projectSentoFile(path, readFileSync(resolve(ROOT, path))));
+      mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, projectSentoFile(path, projectP1CommercialFile(path, readFileSync(resolve(ROOT, path)))));
     }
     if (partial) {
       const asset = json('data/brochures-ingevec.json').projects[0].images[0];

@@ -281,6 +281,14 @@
         body.append(element('p', project.inmobiliaria + (builderVerified ? '' : ' · Asociación por verificar'), 'text-sm font-bold text-secondary mb-3'));
         body.append(element('h2', project.nombre, 'catalog-card-title font-bold'));
         body.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
+        const pendingIdentity = ['mapocho-3521-edificio-a', 'froilan-roa-5731-torre-norte', 'froilan-roa-5731-torre-sur', 'edificio-verne'].includes(project.slug);
+        if (pendingIdentity) {
+            const notice = element('p', project.slug === 'edificio-verne'
+                ? 'La oferta residencial vigente sigue sin confirmar. Verne Oficinas se presenta por separado como alternativa comercial.'
+                : 'La identidad comercial y la oferta vigente de esta etapa siguen sin confirmar. La información del conjunto se muestra por separado.', 'commercial-identity-notice text-sm text-secondary mb-4');
+            notice.setAttribute('role', 'note');
+            body.append(notice);
+        }
         const reference = commercialReference(project);
         if (project.imagenEtapa) body.append(element('p', 'Imagen referencial · ' + project.imagenEtapa, 'text-xs text-secondary mb-3'));
         if (reference) body.append(element('p', 'Información comercial · Etapa ' + reference.etapa, 'text-xs text-secondary mb-3'));

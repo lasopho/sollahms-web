@@ -5,6 +5,7 @@ import { mortgageSummaryLines, validateMortgageLead, validFormTiming } from '../
 import { createOfficialUfService } from '../lib/official-uf.mjs';
 import { getUfStatus } from '../assets/js/mortgage-data.mjs';
 import { resolveProjectIdentity } from '../assets/js/project-identity.mjs';
+import { operationFingerprint, readOperationKey } from '../lib/form-operation-server.mjs';
 
 const officialUf = createOfficialUfService();
 
@@ -144,6 +145,8 @@ export function createContactHandler({
       }
       // Guard every contact flow before credentials or external provider access.
       if (getEnvironment() === 'preview') return json({ ok: false, code: 'preview_read_only', error: 'La vista previa no envía mensajes reales. Puedes revisar el formulario sin contactar al equipo.' }, 503);
+      const operation = readOperationKey(request, receivedAt);
+      if (operation.error) return json(operation.error, operation.status);
       const key = getApiKey()?.trim();
       if (!key) return json({ error: 'No pudimos enviar el mensaje. Inténtalo más tarde.' }, 503);
       // The server owns CLP conversion too; a visitor never supplies a UF rate.
@@ -154,7 +157,10 @@ export function createContactHandler({
       }
       const { nombre, correo, telefono, asunto, mensaje, proyecto, nombreProyecto } = fields;
       const displayTelefono = telefono || 'No informado';
-      const summary = mortgageLead ? mortgageSummaryLines(mortgageLead) : [];
+      // Keep the provider payload stable on a keyed retry. Transport receipt
+      // time changes on every POST; the form's operation time does not.
+      const summary = mortgageLead ? mortgageSummaryLines(mortgageLead).map(line => operation.key && line.startsWith('Solicitud recibida: ')
+        ? 'Solicitud iniciada en el formulario: ' + new Date(Number(operation.key.split('-')[2])).toISOString() : line) : [];
       const summaryHtml = summary.length ? `<h2>Resumen hipotecario</h2><p style="white-space: pre-wrap">${escapeHtml(summary.join('\n'))}</p>` : '';
       const projectHtml = proyecto ? `<p><strong>Proyecto:</strong> ${escapeHtml(nombreProyecto)}</p><p><strong>Identificador:</strong> ${escapeHtml(proyecto)}</p>` : '';
       const projectText = proyecto ? `Proyecto: ${nombreProyecto}\nIdentificador: ${proyecto}\n` : '';
@@ -170,22 +176,35 @@ export function createContactHandler({
         ${summaryHtml}
       </body></html>`;
       const text = `Nueva consulta desde Sollahms Web\n\nNombre: ${nombre}\nCorreo: ${correo}\nTeléfono: ${displayTelefono}\n${projectText}Asunto: ${asunto}\nMensaje:\n${mensaje}${summary.length ? `\n\n${summary.join('\n')}` : ''}`;
+      const email = {
+        from: 'Sollahms Web <formularios@forms.sollahms.cl>', to: ['contacto@sollahms.cl'],
+        reply_to: correo, subject: safeSubject(asunto), html, text,
+      };
+      // Provider-owned storage deduplicates across serverless instances. Legacy
+      // callers get a business-content key for 24h; changing receipt time or UF
+      // may safely conflict, but must never create a fresh key and another mail.
+      const legacyMortgage = body.mortgage ? { ...body.mortgage } : null;
+      if (legacyMortgage) delete legacyMortgage.simulatedAt;
+      const idempotencyKey = operation.key ? 'contact/' + operation.key
+        : 'contact/legacy/' + operationFingerprint({ fields, mortgage: legacyMortgage, consent: body.consent ?? null });
       try {
         const response = await fetchImpl('https://api.resend.com/emails', {
           method: 'POST',
-          headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            from: 'Sollahms Web <formularios@forms.sollahms.cl>', to: ['contacto@sollahms.cl'],
-            reply_to: correo, subject: safeSubject(asunto), html, text,
-          }),
+          headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json', 'Idempotency-Key': idempotencyKey },
+          body: JSON.stringify(email),
           signal: AbortSignal.timeout(10_000),
         });
+        if (response.status === 409) {
+          const conflict = await response.json().catch(() => ({}));
+          if (conflict.name === 'concurrent_idempotent_requests') return json({ ok: false, code: 'contact_in_progress', retry: true, error: 'La solicitud está en curso. Espera un momento y vuelve a confirmar con los mismos datos.' }, 409, { 'Retry-After': '2' });
+          return json({ ok: false, code: 'operation_conflict', retry: false, error: 'El resultado de esta solicitud requiere confirmación con contacto@sollahms.cl antes de volver a enviarla.' }, 409);
+        }
         if (!response.ok) throw new Error('Email provider rejected request');
         const accepted = await response.json();
         if (!accepted || typeof accepted.id !== 'string' || !accepted.id.trim()) throw new Error('Email provider did not confirm acceptance');
         return json({ ok: true }, 200);
       } catch {
-        return json({ error: 'No pudimos enviar el mensaje. Inténtalo más tarde.' }, 502);
+        return json({ code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.' }, 502);
       }
     },
   };

@@ -23,6 +23,16 @@ ROOT = Path(__file__).resolve().parents[1]
 FEATURED = {'distrito-centro', 'inn-puerto-chico', 'edificio-suecia', 'plaza-las-condes'}
 LABELS = {'direccion': 'Dirección', 'region': 'Región', 'comuna': 'Comuna', 'precioDesdeUF': 'Precio actual en UF', 'tipologias': 'Tipologías disponibles', 'estado': 'Estado', 'entrega': 'Entrega', 'amenities': 'Equipamiento y áreas comunes', 'descripcionLarga': 'Características del proyecto', 'images': 'Fotografías oficiales', 'virtualTours': 'Recorrido virtual oficial', 'utilM2': 'Superficie útil', 'totalM2': 'Superficie total', 'terrenoM2': 'Superficie de terreno', 'dormitorios': 'Dormitorios', 'banos': 'Baños'}
 PENDING = '<span class="pending">Pendiente de verificación</span>'
+PENDING_IDENTITIES = {'mapocho-3521-edificio-a', 'froilan-roa-5731-torre-norte', 'froilan-roa-5731-torre-sur', 'edificio-verne'}
+
+def identity_notice(slug):
+    """Keep an unconfirmed stage/product distinct from its related alternative."""
+    if slug not in PENDING_IDENTITIES:
+        return ''
+    notice = ('La oferta residencial vigente sigue sin confirmar. Verne Oficinas se presenta por separado como alternativa comercial.'
+              if slug == 'edificio-verne' else
+              'La identidad comercial y la oferta vigente de esta etapa siguen sin confirmar. La información del conjunto se muestra por separado.')
+    return '<div class="pending-panel commercial-identity-notice" role="note"><p>' + esc(notice) + '</p></div>'
 
 def esc(value):
     return html.escape(str(value), quote=True)
@@ -139,6 +149,7 @@ def render(project, research, template):
         overview_html = f'<p class="lead">{esc(overview)}</p>'
     else:
         overview_html = f'<p class="lead">Conoce {esc(name)}, registrado en el catálogo Sollahms por {esc(builder)}.</p><div class="pending-panel"><p>Las características detalladas de este proyecto están pendientes de verificación con la inmobiliaria.</p></div>'
+    overview_html = identity_notice(slug) + overview_html
     cells = [('Inmobiliaria', esc(builder)), ('Tipo de activo', esc(project.get('tipoActivo', 'Residencial')))]
     cells += [(LABELS[key], text_value(field(project, research, key))) for key in ['comuna', 'region', 'direccion', 'estado', 'entrega', 'tipologias']]
     published_area = field(project, research, 'superficieDesdeM2')
