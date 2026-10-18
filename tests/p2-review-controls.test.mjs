@@ -12,7 +12,7 @@ function assertTargets(source) {
   const section = source.match(/^  pull_request:\n([\s\S]*?)(?=^\S)/m)?.[1];
   assert.ok(section);
   assert.deepEqual([...section.matchAll(/^      - (.+)$/gm)].map(row => row[1]),
-    ['main', 'codex/leon-cartera-preview']);
+    ['main', 'codex/leon-cartera-preview', 'codex/p2-revision-sin-deploy-20261017']);
   assert.doesNotMatch(source, /^  pull_request_target:/m);
 }
 
@@ -20,6 +20,8 @@ test('P2 draft review runs against the exact P1 base without broadening PR targe
   assertTargets(workflow);
   for (const source of [workflow.replace('      - codex/leon-cartera-preview\n', ''),
     workflow.replace('      - codex/leon-cartera-preview', '      - "*"'),
+    workflow.replace('      - codex/p2-revision-sin-deploy-20261017\n', ''),
+    workflow.replace('      - codex/p2-revision-sin-deploy-20261017', '      - "*"'),
     workflow.replace('  pull_request:', '  pull_request_target:')]) {
     assert.throws(() => assertTargets(source));
   }
@@ -57,6 +59,7 @@ test('P2 workflow retains read-only permissions and the reviewed immutable actio
 
 test('P2 technical workflow delta preserves every native test step and introduces no deployment', () => {
   const restored = workflow.replace('      - codex/leon-cartera-preview\n', '')
+    .replace('      - codex/p2-revision-sin-deploy-20261017\n', '')
     .replace('          ref: ${{ github.event.pull_request.head.sha || github.sha }}\n', '');
   assert.equal(hash(restored), originalWorkflow,
     'Only the stacked PR base and exact source checkout may change');
