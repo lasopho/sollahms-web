@@ -26,3 +26,13 @@ No cambian los HTML, JS, Python de producción, registros comerciales ni empaque
 Prueba específica: `python -m unittest discover -s tests -p ecasa_pr7_recovery.py -v` (3 casos; 92 archivos comprobados).
 CI público: `python scripts/run-git-ci.py --output /tmp/ecasa-recovery-ci`.
 Los 26 casos privados de publicación siguen pendientes. No se ejecutan envíos reales, merge ni despliegues. No hay QA visual de una versión desplegada en esta recuperación de recursos.
+
+## Resultado de ejecución local
+
+- Pruebas específicas de recuperación: 3/3 aprobadas; 92 imágenes íntegras.
+- Regresión pública completa: 396/411 Node aprobadas; 15 fallidas. Los controles históricos rechazan el inventario adicional de recursos y/o la nueva entrada de bloqueo en vercel.json.
+- Python: 216 ejecutadas, 213 aprobadas, 1 fallo y 2 errores. Los errores de map cleanup pasan por las proyecciones históricas de vercel.json. El fallo PDF DCTDecode también se reproduce sobre main sin cambios: el entorno tiene pypdf 6.10.0 frente a 6.21.1 fijado en requirements-ci.txt. El intento de instalar las dependencias verificadas encontró timeouts en PyPI y se detuvo.
+- Validador hipotecario aprobado; git diff --check aprobado.
+- 26 casos privados no ejecutados. No se declara CI aprobada ni aptitud para merge. Hace falta componer un alcance histórico específico que valide estos 92 blobs antes de proyectarlos fuera de las pruebas congeladas, y validar los originales y el resultado visual en preview protegida.
+- GitHub calcula el PR #12 integrable sin conflictos, en borrador; esto no equivale a aprobación de sus pruebas.
+
