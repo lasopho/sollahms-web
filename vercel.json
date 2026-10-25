@@ -16,7 +16,8 @@
       "codex/leon-cartera-preview": false,
       "codex/project-photos-20261025": false,
       "codex/shared-stage-photos-20261025": false,
-      "codex/home-patrimonio-20261025": false
+      "codex/home-patrimonio-20261025": false,
+      "codex/home-seo-20261025": false
     }
   },
   "buildCommand": "node scripts/package-vercel.mjs",
@@ -45,6 +46,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
     {
       "source": "/nucleo-costanera-2",
       "destination": "/nucleo-costanera.html#etapa-2",
