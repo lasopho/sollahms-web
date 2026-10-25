@@ -30,6 +30,12 @@
         const showFallback = () => {
             const shell = frame.closest('.project-embed');
             if (!shell || !fallback || !permittedHosts.has(fallback.hostname)) return;
+            // Do not recreate the removed Google Maps action box on an error.
+            // The published address remains available outside the failed frame.
+            if (frame.dataset.projectEmbed === 'map') {
+                shell.remove();
+                return;
+            }
             // The static alternative is available even when a blocked frame
             // emits no error. Do not create a duplicate after a real error.
             if (approvedAlternative) {
@@ -42,9 +48,7 @@
             link.href = fallback.href;
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
-            link.textContent = frame.dataset.projectEmbed === 'map'
-                ? 'Abrir en Google Maps ↗'
-                : 'Abrir experiencia externa ↗';
+            link.textContent = 'Abrir experiencia externa ↗';
             panel.append(link);
             shell.replaceWith(panel);
         };

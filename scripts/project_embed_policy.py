@@ -57,8 +57,10 @@ def iframe_markup(url, title, *, kind='tour', permitted_hosts=(), fallback_url=N
 
 
 def embed_alternative_markup(url, title, kind):
-    """A static link survives blocked frames and disabled JavaScript."""
-    label = 'Abrir en Google Maps' if kind == 'map' else 'Abrir experiencia externa'
+    """Keep external tour alternatives; project maps need no extra action box."""
+    if kind == 'map':
+        return ''
+    label = 'Abrir experiencia externa'
     return ('<p class="project-embed-fallback project-embed-alternative" '
             'data-project-embed-alternative>'
             f'<a href="{esc(url)}" target="_blank" rel="noopener noreferrer" '

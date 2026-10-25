@@ -65,12 +65,13 @@ test('P2 a tour load never certifies a scene and its alternative survives the la
 });
 
 test('P2 runtime rejects a tampered static link and uses only the approved error fallback', () => {
-  for (const href of ['http://www.google.com/maps', 'javascript:alert(1)', 'https://unapproved.test/map',
-    'https://user:pass@www.google.com/maps', mapFallback + '&query=Other']) {
-    const page = fixture({ href });
+  const tourUrl = 'https://my.matterport.com/show/?m=registered';
+  for (const href of ['http://my.matterport.com/show/', 'javascript:alert(1)', 'https://unapproved.test/tour',
+    'https://user:pass@my.matterport.com/show/', tourUrl + '&m=Other']) {
+    const page = fixture({ kind: 'tour', src: tourUrl, fallback: tourUrl, hosts: ['my.matterport.com'], href });
     assert.equal(page.alternative.removed, true, href);
     page.dispatch('error');
-    assert.equal(page.shell.replacement.children[0].href, mapFallback, href);
+    assert.equal(page.shell.replacement.children[0].href, tourUrl, href);
     assert.equal(page.shell.replacement.children[0].rel, 'noopener noreferrer');
   }
 });

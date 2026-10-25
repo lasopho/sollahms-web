@@ -63,21 +63,14 @@ test('a healthy native-lazy map creates no external link and generic load cannot
   assert.deepEqual(map.attrs, { src: source, loading: 'lazy', title: 'Mapa de la dirección publicada' });
 });
 
-test('an actual map error replaces the failed viewer with exactly one secure recovery link', () => {
+test('an actual map error removes the failed viewer without recreating the Maps action box', () => {
   const map = viewer();
   map.dispatch('error');
   assert.equal(map.removed, true);
-  assert.equal(map.replacement.tag, 'p');
-  assert.equal(map.replacement.className, 'project-embed-fallback');
-  assert.equal(map.replacement.children.length, 1);
-  const link = map.replacement.children[0];
-  assert.equal(link.tag, 'a');
-  assert.equal(link.href, fallback);
-  assert.equal(link.target, '_blank');
-  assert.equal(link.rel, 'noopener noreferrer');
-  assert.equal(link.textContent, 'Abrir en Google Maps ↗');
+  assert.equal(map.replacement, undefined);
+  assert.equal(map.created.length, 0);
   map.dispatch('error');
-  assert.equal(map.created.length, 2);
+  assert.equal(map.created.length, 0);
 });
 
 test('map recovery rejects unsafe and unregistered fallback URLs even after an error', () => {
