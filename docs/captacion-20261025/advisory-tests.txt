@@ -1,0 +1,28 @@
+✔ email-only request reaches authorized payload in controlled receiver (34.207399ms)
+✔ phone-only accepts no email and omits reply_to (5.076148ms)
+✔ same key and payload across handler instances is a single received message (8.337758ms)
+✔ empty name (0.499016ms)
+✔ invalid email (0.292711ms)
+✔ invalid phone (0.335054ms)
+✔ missing consent (0.353312ms)
+✔ sensitive field rejected (0.33933ms)
+✔ unknown project (0.296828ms)
+✔ honeypot (0.398978ms)
+✔ fast spam (0.246915ms)
+✔ unknown goal (0.248827ms)
+✔ both contacts (0.174557ms)
+✔ cross-origin request blocked (0.259493ms)
+✔ preview and missing/other delivery configuration never call a provider (0.622328ms)
+✔ provider rejection, missing acknowledgement and timeout cannot report success (1.227301ms)
+✔ input HTML is escaped and no body enters subject (6.370136ms)
+✔ oversized body rejected before transport (0.658261ms)
+✔ client operation survives retries without retaining personal data in storage (3.437881ms)
+✔ project context uses only server-owned published names (2.117314ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 178.0492

@@ -1,0 +1,101 @@
+✔ email-only request reaches authorized payload in controlled receiver (31.640773ms)
+✔ phone-only accepts no email and omits reply_to (4.586155ms)
+✔ same key and payload across handler instances is a single received message (8.048151ms)
+✔ empty name (0.389604ms)
+✔ invalid email (0.283878ms)
+✔ invalid phone (0.303377ms)
+✔ missing consent (0.356206ms)
+✔ sensitive field rejected (0.262748ms)
+✔ unknown project (0.3048ms)
+✔ honeypot (0.671801ms)
+✔ fast spam (0.464916ms)
+✔ unknown goal (0.180536ms)
+✔ both contacts (0.281916ms)
+✔ cross-origin request blocked (0.217151ms)
+✔ preview and missing/other delivery configuration never call a provider (0.729166ms)
+✖ provider rejection, missing acknowledgement and timeout cannot report success (1.493212ms)
+✔ input HTML is escaped and no body enters subject (5.252618ms)
+✔ oversized body rejected before transport (0.443143ms)
+✔ client operation survives retries without retaining personal data in storage (3.631257ms)
+✔ project context uses only server-owned published names (3.852613ms)
+✔ operation headers reject malformed, future and expired keys without inventing a legacy key (5.307208ms)
+✔ a local operation joins concurrent calls and replays its confirmed result (0.991092ms)
+✔ an operation key cannot be reused for another payload even while the first call is pending (0.287123ms)
+✔ a saturated local ledger refuses new operations while preserving the pending reservation (0.293243ms)
+✔ local responses survive the full valid operation window when the client clock is ahead (4.194117ms)
+✔ concurrent booking requests forward one local operation and replay a successful reservation (4.659403ms)
+✔ booking retries retain an uncertain provider outcome without creating another local booking (0.937813ms)
+✔ changed booking details under the same operation are rejected without another provider call (0.746411ms)
+✔ legacy booking callers retain their existing payload and do not acquire a hidden local guarantee (0.639974ms)
+✔ independent booking handlers expose the remaining distributed deduplication boundary (0.828913ms)
+✔ invalid operation keys and Preview block both providers before any real side effect (10.818338ms)
+✔ independent contact handlers use the same native Resend key during concurrent submissions and retry (8.288987ms)
+✔ contact provider payload conflicts stay visible and cannot be presented as successful mail (4.737248ms)
+✔ legacy contact retries receive a deterministic opaque native provider key (4.20681ms)
+✔ an uncertain contact response preserves the native provider key for a safe same-data retry (3.570086ms)
+✔ contact operations retain the same key and exact in-memory body through uncertain retries and reload (0.747352ms)
+✔ booking operations refuse resubmission after uncertainty including after a tab reload (0.651982ms)
+✔ changed details, expired keys and a backward clock cannot silently create fresh contact operations (0.568518ms)
+✔ confirmed completion or a definitive unsent request explicitly clears the retained operation (0.613955ms)
+✔ unavailable or corrupt operation storage blocks submission before a replacement key is issued (0.414381ms)
+✔ operation age and future-clock boundaries reject expired requests before either provider is called (4.687245ms)
+✔ mortgage retries and tab reloads retain original form timestamps when the client clock advances (0.761272ms)
+✔ a changed server UF snapshot preserves the contact operation key and reports a native payload conflict without another acceptance (8.04728ms)
+✔ mortgage contact retries preserve the native email body when server time advances without a UF change (4.451286ms)
+✔ legacy mortgage retries retain a business-content key across volatile timestamps and do not produce a second acceptance (4.680714ms)
+✖ historical preservation projects only the five exact reviewed FUN corrections (5390.102722ms)
+✔ historical preservation rejects every foreign change to reviewed FUN files (1.635742ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 45
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5599.82874
+
+✖ failing tests:
+
+test at tests/advisory.test.mjs:51:1
+✖ provider rejection, missing acknowledgement and timeout cannot report success (1.493212ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + false
+  - undefined
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/2bf2025ce132/lead-source/tests/advisory.test.mjs:52:252)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/form-idempotency.test.mjs:510:1
+✖ historical preservation projects only the five exact reviewed FUN corrections (5390.102722ms)
+  AssertionError [ERR_ASSERTION]: agenda-asesoria.html: change exceeds the exact FUN-001 correction
+  + actual - expected
+  
+  + 'b9cf5ace452bbdc71c4f865c3004d64a2811cbc51cbe497b31ce78b0d753f7ce'
+  - 'a94cdf089701c5c94c54643c02f09f05d9973a41f5e5c3f4b25473697351ada4'
+  
+      at restoreP1IdempotencyFile (file:///workspace/scratch/2bf2025ce132/lead-source/tests/p1-idempotency-preservation.mjs:41:10)
+      at TestContext.<anonymous> (file:///workspace/scratch/2bf2025ce132/lead-source/tests/form-idempotency.test.mjs:514:22)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'b9cf5ace452bbdc71c4f865c3004d64a2811cbc51cbe497b31ce78b0d753f7ce',
+    expected: 'a94cdf089701c5c94c54643c02f09f05d9973a41f5e5c3f4b25473697351ada4',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-25T19:39:31.795462+00:00",
+  "deployment": "dpl_2UdeBVgfUnABvSKEP2qRNJyAi5Ho",
+  "technicalOnlyNotPublicDomain": true,
+  "realBrowser": "Chrome extension",
+  "desktopWidth": 1425,
+  "mobileViewport": {
+    "width": 390,
+    "height": 844,
+    "contentWidth": 375
+  },
+  "passed": [
+    "empty form errors with focus on name",
+    "invalid email and missing consent errors",
+    "email-only successful request",
+    "phone-only successful request",
+    "keyboard Tab moves to preferred contact control",
+    "sending disables submit and fields",
+    "success clears personal fields and blocks accidental resubmission",
+    "actual server-side receipt inspected through GET in isolated test environment",
+    "provider error retains name, contact and optional message",
+    "mobile has no horizontal overflow",
+    "home CTA scrolls to form below fixed header",
+    "contact and advisory render same form directly"
+  ],
+  "externalEmailsSent": 0,
+  "limits": "The controlled receiver replaces Resend for safe testing. It validates request receipt by server-side test code, not production inbox delivery."
+}

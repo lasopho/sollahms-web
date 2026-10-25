@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light" lang="es">
+<html class="light" lang="es-CL">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +23,6 @@
   }
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/contacto.tailwind.css">
 <style>
     body { font-family: 'Inter', sans-serif; }
@@ -55,8 +51,10 @@
 <meta name="twitter:description" content="Contacta a Sollahms para conversar sobre asesoría inmobiliaria, inversión y evaluación de proyectos en Chile.">
 <meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v2.jpg">
 <meta name="twitter:image:alt" content="Sollahms — información y asesoría inmobiliaria">
+<link rel="stylesheet" href="/assets/css/home-seo.css">
+<link rel="stylesheet" href="/assets/css/advisory.css">
 </head>
-<body class="bg-surface text-on-surface antialiased">
+<body class="advisory-page bg-surface text-on-surface antialiased">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
@@ -64,12 +62,12 @@
 <nav class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between gap-2 md:gap-x-6" aria-label="Navegación principal">
 <a class="text-2xl font-black tracking-tighter text-emerald-950" href="/">Sollahms</a>
 <div class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#expertise">Expertise</a>
-<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/proyectos.html">Asset Portafolio</a>
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#expertise">Servicios</a>
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/proyectos.html">Proyectos</a>
 <a class="text-emerald-950 font-headline font-bold tracking-tight" href="/contacto.html" aria-current="page">Contacto</a>
 </div>
 <div class="flex items-center gap-2 md:gap-0">
-<a class="bg-tertiary-fixed text-on-tertiary-fixed px-2 md:px-6 py-2 hover:bg-tertiary-fixed-dim transition-colors font-bold tracking-tight rounded-lg flex items-center gap-2 text-xs md:text-base whitespace-nowrap" href="/agenda-asesoria.html">Agendar Asesoría <span class="material-symbols-outlined hidden sm:inline" aria-hidden="true">calendar_today</span></a>
+<a class="bg-tertiary-fixed text-on-tertiary-fixed px-2 md:px-6 py-2 hover:bg-tertiary-fixed-dim transition-colors font-bold tracking-tight rounded-lg flex items-center gap-2 text-xs md:text-base whitespace-nowrap" href="/agenda-asesoria.html">Solicitar asesoría </a>
 <button type="button" class="md:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-emerald-950 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" aria-label="Abrir menú de navegación" aria-controls="mobile-menu" aria-expanded="false">
 <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
 </button>
@@ -77,8 +75,8 @@
 </nav>
 <div id="mobile-menu" class="hidden md:hidden absolute top-full inset-x-0 bg-white shadow-lg border-t border-slate-200">
 <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col" aria-label="Navegación móvil">
-<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a>
-<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html">Asset Portafolio</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Servicios</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html">Proyectos</a>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/contacto.html" aria-current="page">Contacto</a>
 </nav>
 </div>
@@ -113,232 +111,36 @@
     });
 })();
 </script>
-<main id="contenido-principal">
-<section class="bg-[#00201a] text-white">
-<div class="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
-<p class="text-sm font-bold tracking-[0.25em] uppercase text-primary-fixed mb-7">CONTACTO</p>
-<h1 class="font-headline text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight tracking-[-0.04em] max-w-4xl">Conversemos sobre tu próximo proyecto inmobiliario</h1>
-<p class="mt-8 text-slate-200 text-base md:text-lg leading-relaxed max-w-2xl">Cuéntanos qué estás evaluando. Podemos conversar sobre tus objetivos y el contexto de tu proyecto.</p>
-</div>
-</section>
-<section class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-<div class="lg:col-span-4">
-<p class="text-xs font-bold tracking-[0.25em] uppercase text-emerald-800 mb-4">Hablemos</p>
-<h2 class="font-headline text-3xl md:text-4xl font-bold tracking-tight text-primary mb-8">Datos de contacto</h2>
-<div class="border-t border-slate-200 py-6">
-<p class="text-xs uppercase tracking-[0.18em] font-semibold text-slate-500 mb-3">Correo</p>
-<p class="text-base md:text-lg font-medium text-emerald-900 break-all"><a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a></p>
-</div>
-<div class="border-t border-slate-200 py-6">
-<p class="text-xs uppercase tracking-[0.18em] font-semibold text-slate-500 mb-3">Teléfono</p>
-<p class="text-base md:text-lg text-slate-700"><a href="tel:+56948502440">+56 9 4850 2440</a></p>
-</div>
-<a class="inline-flex items-center justify-center mt-6 px-7 py-3 border border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors" href="/agenda-asesoria.html">Agendar Asesoría</a>
-</div>
-<div class="lg:col-span-8 bg-white p-7 sm:p-10 md:p-12 shadow-sm border-t-4 border-primary">
-<h2 class="font-headline text-2xl md:text-3xl font-bold tracking-tight text-primary mb-3">Escríbenos</h2>
-<p class="text-slate-600 leading-relaxed mb-10">Completa el formulario o escríbenos a nuestro correo. Te responderemos a la brevedad.</p>
-<p id="contact-project-context" class="text-slate-600 leading-relaxed mb-6" hidden></p>
-<!-- FORM_PROGRESSIVE_CONTACT_NOTICE_START -->
-<p id="contact-form-unavailable" class="text-sm text-slate-600 mb-6" role="status">Este formulario necesita JavaScript. Puedes escribir a <a class="underline" href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a> o llamar al <a class="underline" href="tel:+56948502440">+56 9 4850 2440</a> para realizar tu consulta.</p>
-<!-- FORM_PROGRESSIVE_CONTACT_NOTICE_END -->
-<form id="contact-form" method="post" action="/api/contact" aria-describedby="form-status">
-<!-- FORM_PROGRESSIVE_CONTACT_FIELDS_OPEN_START -->
-<fieldset id="contact-form-fields" class="contact-form-fields" aria-label="Datos de la consulta" disabled>
-<!-- FORM_PROGRESSIVE_CONTACT_FIELDS_OPEN_END -->
-<div class="hidden" aria-hidden="true">
-<label for="website">Sitio web</label>
-<input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-<div>
-<label class="block text-xs uppercase tracking-[0.16em] font-semibold text-slate-600 mb-2" for="nombre">Nombre</label>
-<input class="w-full rounded border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-800 focus:ring-emerald-800" id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required>
-</div>
-<div>
-<label class="block text-xs uppercase tracking-[0.16em] font-semibold text-slate-600 mb-2" for="correo">Correo electrónico</label>
-<input class="w-full rounded border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-800 focus:ring-emerald-800" id="correo" name="correo" type="email" autocomplete="email" maxlength="254" required>
-</div>
-<div>
-<label class="block text-xs uppercase tracking-[0.16em] font-semibold text-slate-600 mb-2" for="telefono">Teléfono</label>
-<input class="w-full rounded border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-800 focus:ring-emerald-800" id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="30">
-</div>
-<div>
-<label class="block text-xs uppercase tracking-[0.16em] font-semibold text-slate-600 mb-2" for="rut">RUT</label>
-<input class="w-full rounded border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-800 focus:ring-emerald-800" id="rut" name="rut" type="text" inputmode="text" autocapitalize="characters" autocomplete="off" spellcheck="false" maxlength="14" aria-describedby="rut-help rut-error">
-<p id="rut-help" class="mt-2 text-sm text-slate-500">Opcional. Puedes escribirlo con o sin puntos.</p>
-<p id="rut-error" class="mt-2 text-sm text-slate-600" role="alert" hidden></p>
-</div>
-<div class="sm:col-span-2">
-<label class="block text-xs uppercase tracking-[0.16em] font-semibold text-slate-600 mb-2" for="mensaje">Mensaje</label>
-<textarea class="w-full rounded border-slate-300 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-800 focus:ring-emerald-800" id="mensaje" name="mensaje" rows="6" minlength="10" maxlength="5000" required></textarea>
-</div>
-</div>
-<label class="contact-consent mt-6 text-sm text-slate-600" for="contact-consent"><input id="contact-consent" name="consent" type="checkbox" required><span>Autorizo a Sollahms a tratar mis datos y el contexto de mi consulta para responder esta solicitud, según su <a class="underline" href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>. Esta autorización no incluye campañas de marketing.</span></label>
-<div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
-<button class="rounded-lg bg-tertiary-fixed px-7 py-3 font-bold text-on-tertiary-fixed hover:bg-tertiary-fixed-dim transition-colors whitespace-nowrap" type="submit">Enviar mensaje</button>
-<p class="text-sm text-slate-500" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
-</div>
-<p class="mt-2 text-sm text-slate-500">Usaremos tus datos para responder tu consulta. Lee nuestra <a class="hover:text-emerald-900" href="/privacidad.html">política de privacidad</a>.</p>
-<!-- FORM_PROGRESSIVE_CONTACT_FIELDS_CLOSE_START -->
+<main id="contenido-principal"><section class="advisory-page-heading"><div><p class="advisory-eyebrow">ASESORÍA INMOBILIARIA EN CHILE</p><h1>Hablemos de tu próxima inversión.</h1><p>¿Estás evaluando una propiedad o quieres orientación? Elige cómo prefieres que te contactemos.</p><a class="advisory-jump" href="#solicitar-asesoria">Ir al formulario ↓</a></div></section><section class="advisory-section"><div class="advisory-layout"><div class="advisory-copy"><p class="advisory-eyebrow">UN PRIMER PASO CLARO</p><h2>Conversemos sobre lo que quieres lograr.</h2><p>En el primer contacto podremos conocer tu objetivo, las ubicaciones que te interesan y las alternativas que estás evaluando.</p><ol class="advisory-next"><li><span>01</span>Cuéntanos cómo contactarte.</li><li><span>02</span>Revisamos el contexto de tu consulta.</li><li><span>03</span>Coordinamos contigo el siguiente paso.</li></ol><p class="advisory-help">No necesitas tener una propiedad elegida para consultar.</p><address><a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a><a href="tel:+56948502440">+56 9 4850 2440</a></address></div><div class="advisory-panel" id="solicitar-asesoria">
+<h2 id="advisory-form-title">Solicitar asesoría</h2>
+<p class="advisory-form-intro">Déjanos tu nombre y elige cómo prefieres que conversemos.</p>
+<p id="advisory-project-context" class="advisory-context" hidden></p>
+<p id="advisory-unavailable">Para usar el formulario, activa JavaScript. También puedes escribir a <a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a>.</p>
+<form id="advisory-form" action="/api/advisory" method="post" novalidate aria-labelledby="advisory-form-title" aria-describedby="advisory-use">
+<fieldset id="advisory-fields" disabled>
+<div class="advisory-trap" aria-hidden="true"><label for="advisory-website">Sitio web</label><input id="advisory-website" name="website" tabindex="-1" autocomplete="off"></div>
+<div class="advisory-field"><label for="advisory-name">Nombre</label><input id="advisory-name" name="nombre" autocomplete="name" maxlength="100" required aria-describedby="advisory-name-error"><p class="advisory-error" id="advisory-name-error" hidden></p></div>
+<fieldset class="advisory-choice"><legend>¿Cómo prefieres que te contactemos?</legend><div class="advisory-options"><label><input type="radio" name="medio" value="correo" checked> Correo electrónico</label><label><input type="radio" name="medio" value="telefono"> Llamada telefónica</label></div></fieldset>
+<div class="advisory-field" id="advisory-email-field"><label for="advisory-email">Correo electrónico</label><input id="advisory-email" name="correo" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="nombre@ejemplo.cl" maxlength="254" required aria-describedby="advisory-email-error"><p class="advisory-error" id="advisory-email-error" hidden></p></div>
+<div class="advisory-field" id="advisory-phone-field" hidden><label for="advisory-phone">Teléfono</label><input id="advisory-phone" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678" maxlength="30" disabled aria-describedby="advisory-phone-help advisory-phone-error"><p class="advisory-help" id="advisory-phone-help">Incluye el código de país.</p><p class="advisory-error" id="advisory-phone-error" hidden></p></div>
+<div class="advisory-field"><label for="advisory-goal">¿Qué te gustaría evaluar? <span>(opcional)</span></label><select id="advisory-goal" name="objetivo"><option value="">Selecciona si lo tienes claro</option value="patrimonio">Aumentar mi patrimonio</option><option value="diversificar">Diversificar mis inversiones</option><option value="propiedad">Una propiedad en particular</option><option value="orientacion">Aún lo estoy definiendo</option></select></div>
+<details class="advisory-message"><summary>Agregar un mensaje (opcional)</summary><label for="advisory-message">Lo que te gustaría contarnos</label><textarea id="advisory-message" name="mensaje" rows="3" maxlength="2000" aria-describedby="advisory-message-help advisory-message-error"></textarea><p class="advisory-help" id="advisory-message-help">Evita incluir RUT, documentos o datos bancarios.</p><p class="advisory-error" id="advisory-message-error" hidden></p></details>
+<label class="advisory-consent"><input id="advisory-consent" name="consent" type="checkbox" required aria-describedby="advisory-consent-error"><span>Autorizo el uso de mis datos para responder esta solicitud, según la <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label><p class="advisory-error" id="advisory-consent-error" hidden></p>
+<p class="advisory-help" id="advisory-use">Esta autorización no incluye campañas de marketing. La solicitud no reserva una propiedad ni confirma una cita.</p>
+<button class="advisory-submit" type="submit">Solicitar asesoría</button>
 </fieldset>
-<!-- FORM_PROGRESSIVE_CONTACT_FIELDS_CLOSE_END -->
-</form>
-</div>
-</section>
-</main>
-<footer class="bg-slate-100 border-t border-slate-200">
+<p class="advisory-status" id="advisory-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+</form></div></div></section></main><footer class="bg-slate-100 border-t border-slate-200">
 <div class="max-w-7xl mx-auto px-6 md:px-8 py-10 flex flex-col sm:flex-row justify-between gap-5">
 <a class="text-lg font-bold text-emerald-950" href="/">Sollahms</a>
 <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
-<a class="hover:text-emerald-900" href="/#expertise">Expertise</a>
-<a class="hover:text-emerald-900" href="/#portfolio">Asset Portfolio</a>
+<a class="hover:text-emerald-900" href="/#expertise">Servicios</a>
+<a class="hover:text-emerald-900" href="/#portfolio">Proyectos</a>
 <a class="hover:text-emerald-900" href="/contacto.html">Contacto</a>
 <a class="hover:text-emerald-900" href="/privacidad.html">Privacidad</a>
 </div>
 <p class="text-sm text-slate-600">© 2026 Sollahms. Todos los derechos reservados.</p>
 </div>
 </footer>
-<script type="module">
-import { normalizeRut, RUT_ERROR } from '/assets/js/rut.mjs';
-import { resolveProjectIdentity } from '/assets/js/project-identity.mjs';
-import { createFormOperation } from '/assets/js/form-operation.mjs';
-
-(() => {
-    const form = document.getElementById('contact-form');
-    const button = form.querySelector('button[type="submit"]');
-    const status = document.getElementById('form-status');
-    const rut = document.getElementById('rut');
-    const rutError = document.getElementById('rut-error');
-    const query = new URLSearchParams(window.location.search);
-    const projectSlug = query.getAll('proyecto').length > 1 ? '' : query.get('proyecto');
-    const requestedEtapa = query.getAll('etapa').length > 1 ? '' : query.get('etapa');
-    let projectIdentity = null;
-    let sending = false;
-    const operation = createFormOperation({ name: 'contact' });
-
-    const showRutError = message => {
-        rut.setCustomValidity(message);
-        rut.setAttribute('aria-invalid', String(Boolean(message)));
-        rutError.textContent = message;
-        rutError.hidden = !message;
-    };
-    rut.addEventListener('input', () => showRutError(''));
-    rut.addEventListener('blur', () => {
-        const normalized = normalizeRut(rut.value);
-        showRutError(normalized === null ? RUT_ERROR : '');
-        if (normalized !== null) rut.value = normalized;
-    });
-    rut.addEventListener('invalid', () => showRutError(RUT_ERROR));
-
-    const contextualizeProject = async () => {
-        if (projectSlug === null) return;
-        try {
-            // CONTACT_CATALOGUE_DEADLINE_START
-            const response = await fetch('/data/proyectos.json', { signal: AbortSignal.timeout(10000) });
-            // CONTACT_CATALOGUE_DEADLINE_END
-            if (!response.ok) return;
-            const projects = await response.json();
-            const project = resolveProjectIdentity(projects, projectSlug, requestedEtapa);
-            if (!project) return;
-            projectIdentity = project;
-            const context = document.getElementById('contact-project-context');
-            context.textContent = 'Estás consultando por ' + project.nombre + '.';
-            context.hidden = false;
-            document.querySelectorAll('a[href="/agenda-asesoria.html"]').forEach(link => {
-                link.href = '/agenda-asesoria.html' + project.contextQuery;
-            });
-        } catch {
-            // The server verifies the slug even if this display cannot load.
-        }
-    };
-    const projectContextReady = contextualizeProject();
-
-    form.addEventListener('submit', async event => {
-        event.preventDefault();
-        if (sending) return;
-        const normalizedRut = normalizeRut(rut.value);
-        if (normalizedRut === null) {
-            showRutError(RUT_ERROR);
-            rut.focus();
-            return;
-        }
-        showRutError('');
-        rut.value = normalizedRut;
-        sending = true;
-        button.disabled = true;
-        button.textContent = 'Enviando…';
-        status.textContent = '';
-        try {
-            await projectContextReady;
-            if (requestedEtapa !== null && !projectIdentity) {
-                status.textContent = 'No pudimos identificar la etapa. Vuelve a abrir la consulta desde su ficha.';
-                return;
-            }
-            const data = Object.fromEntries(new FormData(form));
-            data.rut = normalizedRut;
-            data.consent = document.getElementById('contact-consent')?.checked === true;
-            // The server derives the trusted project name and email subject.
-            if (projectSlug !== null) data.proyecto = projectIdentity?.bodyProjectSlug ?? projectSlug;
-            const attempt = await operation.prepare(data);
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Idempotency-Key': attempt.key },
-                body: attempt.body,
-                signal: AbortSignal.timeout(15000),
-            });
-            if (!response.ok) {
-                const result = await response.json().catch(() => ({}));
-                if (!attempt.reused && ([400, 403, 413, 415].includes(response.status) || result.code === 'preview_read_only')) operation.discard();
-                if (result.code === 'preview_read_only') {
-                    status.textContent = result.error;
-                    return;
-                }
-                if (result.code === 'invalid_rut') {
-                    showRutError(RUT_ERROR);
-                    rut.focus();
-                    return;
-                }
-                if (result.code === 'invalid_project') {
-                    status.textContent = 'No pudimos identificar el proyecto. Vuelve a abrir la consulta desde su ficha.';
-                    return;
-                }
-                throw new Error(result.error || 'No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.');
-            }
-            const result = await response.json();
-            // CONTACT_ACKNOWLEDGEMENT_PROOF_START
-            const persisted = result?.ok === true && result.persisted === true && result.providerAccepted === undefined && result.deliveryConfirmed === undefined;
-            const providerAccepted = result?.ok === true && result.providerAccepted === true && result.deliveryConfirmed === false && result.persisted === undefined;
-            if (!persisted && !providerAccepted) throw new Error('No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.');
-            // CONTACT_ACKNOWLEDGEMENT_PROOF_END
-            operation.complete();
-            form.reset();
-            showRutError('');
-            // CONTACT_ACKNOWLEDGEMENT_COPY_START
-            status.textContent = persisted
-                ? 'Solicitud registrada correctamente. Nos pondremos en contacto contigo pronto.'
-                : 'Solicitud aceptada para envío. La recepción por Sollahms aún no está confirmada.';
-            // CONTACT_ACKNOWLEDGEMENT_COPY_END
-        } catch (error) {
-            operation.uncertain();
-            // FORM_UNCERTAIN_JSON_RESPONSE_START
-            status.textContent = ['TimeoutError', 'TypeError', 'SyntaxError'].includes(error.name)
-                ? 'El envío no pudo confirmarse. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.'
-                : error.message || 'No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.';
-            // FORM_UNCERTAIN_JSON_RESPONSE_END
-        } finally {
-            sending = false;
-            button.disabled = false;
-            button.textContent = 'Enviar mensaje';
-        }
-    });
-    // FORM_PROGRESSIVE_CONTACT_ENABLE_START
-    const readyFields = document.getElementById('contact-form-fields');
-    if (readyFields) readyFields.disabled = false;
-    const unavailableNotice = document.getElementById('contact-form-unavailable');
-    if (unavailableNotice) unavailableNotice.hidden = true;
-    // FORM_PROGRESSIVE_CONTACT_ENABLE_END
-})();
-</script>
-</body>
-</html>
+<script type="module" src="/assets/js/advisory.mjs"></script>
+</body></html>

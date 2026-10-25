@@ -1,0 +1,14 @@
+✔ operation headers reject malformed, future and expired keys without inventing a legacy key (4.952866ms)
+✔ contact operations retain the same key and exact in-memory body through uncertain retries and reload (1.284865ms)
+✔ changed details, expired keys and a backward clock cannot silently create fresh contact operations (0.791618ms)
+✔ confirmed completion or a definitive unsent request explicitly clears the retained operation (0.469913ms)
+✔ unavailable or corrupt operation storage blocks submission before a replacement key is issued (0.597581ms)
+✔ mortgage retries and tab reloads retain original form timestamps when the client clock advances (0.748154ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 141.732614

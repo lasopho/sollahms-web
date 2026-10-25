@@ -1,61 +1,44 @@
-<!DOCTYPE html><html class="light" lang="es"><head>
+<!DOCTYPE html>
+<html class="light" lang="es-CL">
+<head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Agenda asesoría inmobiliaria | Sollahms</title>
-<meta name="description" content="Agenda una asesoría inmobiliaria con Sollahms para conversar sobre tus objetivos y evaluar alternativas de inversión en Chile.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Solicita asesoría para evaluar propiedades, aumentar tu patrimonio y diversificar tus inversiones en Chile.">
+<title>Solicitar asesoría inmobiliaria en Chile | Sollahms</title>
 <link rel="canonical" href="https://sollahms.cl/agenda-asesoria.html">
 <link rel="icon" type="image/svg+xml" href="/assets/branding/favicon.svg">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://sollahms.cl/agenda-asesoria.html#service",
-  "name": "Asesoría inmobiliaria Sollahms",
+  "@type": "ContactPage",
+  "@id": "https://sollahms.cl/agenda-asesoria.html#contact",
+  "name": "Solicitar asesoría Sollahms",
   "url": "https://sollahms.cl/agenda-asesoria.html",
-  "description": "Asesoría inmobiliaria para conversar sobre objetivos y evaluar alternativas de inversión en Chile.",
-  "provider": {
+  "description": "Solicitud de asesoría para evaluar propiedades en Chile.",
+  "about": {
     "@type": "Organization",
     "name": "Sollahms",
     "url": "https://sollahms.cl/"
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Chile"
   }
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/agenda-asesoria.tailwind.css">
+<link rel="stylesheet" href="/assets/css/contacto.tailwind.css">
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9ff;
-        }
-        h1, h2, h3 {
-            font-family: 'Manrope', sans-serif;
-        }
-        .tracking-institutional {
-            letter-spacing: 0.25em;
-        }
-        #booking-status {
-            scroll-margin-top: 6rem;
-        }
-        #advisory-request-link[hidden], #booking-legacy-widget[hidden] {
-            display: none !important;
-        }
-    </style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2 { font-family: 'Manrope', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .contact-consent { display: flex; align-items: flex-start; gap: .75rem; }
+    .contact-consent input { flex: 0 0 auto; margin-top: .25rem; }
+    /* FORM_PROGRESSIVE_CONTACT_STYLE_START */
+    .contact-form-fields { min-width: 0; margin: 0; padding: 0; border: 0; }
+    /* FORM_PROGRESSIVE_CONTACT_STYLE_END */
+</style>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sollahms">
 <meta property="og:locale" content="es_CL">
-<meta property="og:title" content="Agenda asesoría inmobiliaria | Sollahms">
-<meta property="og:description" content="Agenda una asesoría inmobiliaria con Sollahms para conversar sobre tus objetivos y evaluar alternativas de inversión en Chile.">
+<meta property="og:title" content="Solicitar asesoría inmobiliaria en Chile | Sollahms">
+<meta property="og:description" content="Solicita asesoría para evaluar propiedades, aumentar tu patrimonio y diversificar tus inversiones en Chile.">
 <meta property="og:url" content="https://sollahms.cl/agenda-asesoria.html">
 <meta property="og:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v2.jpg">
 <meta property="og:image:secure_url" content="https://sollahms.cl/assets/branding/og-sollahms-square-v2.jpg">
@@ -64,25 +47,27 @@
 <meta property="og:image:height" content="1254">
 <meta property="og:image:alt" content="Sollahms — información y asesoría inmobiliaria">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Agenda asesoría inmobiliaria | Sollahms">
-<meta name="twitter:description" content="Agenda una asesoría inmobiliaria con Sollahms para conversar sobre tus objetivos y evaluar alternativas de inversión en Chile.">
+<meta name="twitter:title" content="Solicitar asesoría inmobiliaria en Chile | Sollahms">
+<meta name="twitter:description" content="Solicita asesoría para evaluar propiedades, aumentar tu patrimonio y diversificar tus inversiones en Chile.">
 <meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v2.jpg">
 <meta name="twitter:image:alt" content="Sollahms — información y asesoría inmobiliaria">
+<link rel="stylesheet" href="/assets/css/home-seo.css">
+<link rel="stylesheet" href="/assets/css/advisory.css">
 </head>
-<body class="bg-surface text-on-surface antialiased" data-booking-mode="request-only">
+<body class="advisory-page bg-surface text-on-surface antialiased">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
-<!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-<nav class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20" aria-label="Navegación principal">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+<nav class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between gap-2 md:gap-x-6" aria-label="Navegación principal">
 <a class="text-2xl font-black tracking-tighter text-emerald-950" href="/">Sollahms</a>
-<div class="hidden md:flex items-center space-x-8">
-<a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/#expertise">Expertise</a>
-<a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/proyectos.html">Asset Portafolio</a>
-<a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/contacto.html">Contacto</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#expertise">Servicios</a>
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/proyectos.html">Proyectos</a>
+<a class="text-emerald-950 font-headline font-bold tracking-tight" href="/contacto.html">Contacto</a>
 </div>
-<div class="flex items-center gap-2 md:gap-6">
+<div class="flex items-center gap-2 md:gap-0">
+<a class="bg-tertiary-fixed text-on-tertiary-fixed px-2 md:px-6 py-2 hover:bg-tertiary-fixed-dim transition-colors font-bold tracking-tight rounded-lg flex items-center gap-2 text-xs md:text-base whitespace-nowrap" href="/agenda-asesoria.html">Solicitar asesoría </a>
 <button type="button" class="md:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-emerald-950 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" aria-label="Abrir menú de navegación" aria-controls="mobile-menu" aria-expanded="false">
 <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
 </button>
@@ -90,8 +75,8 @@
 </nav>
 <div id="mobile-menu" class="hidden md:hidden absolute top-full inset-x-0 bg-white shadow-lg border-t border-slate-200">
 <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col" aria-label="Navegación móvil">
-<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a>
-<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html">Asset Portafolio</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Servicios</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html">Proyectos</a>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/contacto.html">Contacto</a>
 </nav>
 </div>
@@ -126,461 +111,36 @@
     });
 })();
 </script>
-<main id="contenido-principal" class="min-h-screen pt-20 pb-20">
-<div class="max-w-[1440px] mx-auto px-6 md:px-12">
-<!-- Hero Title Section -->
-<div class="mb-16">
-<span class="font-label text-[9px] tracking-[0.4em] uppercase text-secondary font-semibold mb-4 block">Invierte en bienes raíces</span>
-<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-primary leading-none">Solicita tu asesoría</h1>
+<main id="contenido-principal"><section class="advisory-page-heading"><div><p class="advisory-eyebrow">ASESORÍA INMOBILIARIA EN CHILE</p><h1>Tu objetivo es el punto de partida.</h1><p>Solicita asesoría para evaluar propiedades en Chile y explorar alternativas para tu patrimonio.</p><a class="advisory-jump" href="#solicitar-asesoria">Ir al formulario ↓</a></div></section><section class="advisory-section"><div class="advisory-layout"><div class="advisory-copy"><p class="advisory-eyebrow">UN PRIMER PASO CLARO</p><h2>Conversemos sobre lo que quieres lograr.</h2><p>En el primer contacto podremos conocer tu objetivo, las ubicaciones que te interesan y las alternativas que estás evaluando.</p><ol class="advisory-next"><li><span>01</span>Cuéntanos cómo contactarte.</li><li><span>02</span>Revisamos el contexto de tu consulta.</li><li><span>03</span>Coordinamos contigo el siguiente paso.</li></ol><p class="advisory-help">No necesitas tener una propiedad elegida para consultar.</p><address><a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a><a href="tel:+56948502440">+56 9 4850 2440</a></address></div><div class="advisory-panel" id="solicitar-asesoria">
+<h2 id="advisory-form-title">Solicitar asesoría</h2>
+<p class="advisory-form-intro">Déjanos tu nombre y elige cómo prefieres que conversemos.</p>
+<p id="advisory-project-context" class="advisory-context" hidden></p>
+<p id="advisory-unavailable">Para usar el formulario, activa JavaScript. También puedes escribir a <a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a>.</p>
+<form id="advisory-form" action="/api/advisory" method="post" novalidate aria-labelledby="advisory-form-title" aria-describedby="advisory-use">
+<fieldset id="advisory-fields" disabled>
+<div class="advisory-trap" aria-hidden="true"><label for="advisory-website">Sitio web</label><input id="advisory-website" name="website" tabindex="-1" autocomplete="off"></div>
+<div class="advisory-field"><label for="advisory-name">Nombre</label><input id="advisory-name" name="nombre" autocomplete="name" maxlength="100" required aria-describedby="advisory-name-error"><p class="advisory-error" id="advisory-name-error" hidden></p></div>
+<fieldset class="advisory-choice"><legend>¿Cómo prefieres que te contactemos?</legend><div class="advisory-options"><label><input type="radio" name="medio" value="correo" checked> Correo electrónico</label><label><input type="radio" name="medio" value="telefono"> Llamada telefónica</label></div></fieldset>
+<div class="advisory-field" id="advisory-email-field"><label for="advisory-email">Correo electrónico</label><input id="advisory-email" name="correo" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="nombre@ejemplo.cl" maxlength="254" required aria-describedby="advisory-email-error"><p class="advisory-error" id="advisory-email-error" hidden></p></div>
+<div class="advisory-field" id="advisory-phone-field" hidden><label for="advisory-phone">Teléfono</label><input id="advisory-phone" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678" maxlength="30" disabled aria-describedby="advisory-phone-help advisory-phone-error"><p class="advisory-help" id="advisory-phone-help">Incluye el código de país.</p><p class="advisory-error" id="advisory-phone-error" hidden></p></div>
+<div class="advisory-field"><label for="advisory-goal">¿Qué te gustaría evaluar? <span>(opcional)</span></label><select id="advisory-goal" name="objetivo"><option value="">Selecciona si lo tienes claro</option value="patrimonio">Aumentar mi patrimonio</option><option value="diversificar">Diversificar mis inversiones</option><option value="propiedad">Una propiedad en particular</option><option value="orientacion">Aún lo estoy definiendo</option></select></div>
+<details class="advisory-message"><summary>Agregar un mensaje (opcional)</summary><label for="advisory-message">Lo que te gustaría contarnos</label><textarea id="advisory-message" name="mensaje" rows="3" maxlength="2000" aria-describedby="advisory-message-help advisory-message-error"></textarea><p class="advisory-help" id="advisory-message-help">Evita incluir RUT, documentos o datos bancarios.</p><p class="advisory-error" id="advisory-message-error" hidden></p></details>
+<label class="advisory-consent"><input id="advisory-consent" name="consent" type="checkbox" required aria-describedby="advisory-consent-error"><span>Autorizo el uso de mis datos para responder esta solicitud, según la <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label><p class="advisory-error" id="advisory-consent-error" hidden></p>
+<p class="advisory-help" id="advisory-use">Esta autorización no incluye campañas de marketing. La solicitud no reserva una propiedad ni confirma una cita.</p>
+<button class="advisory-submit" type="submit">Solicitar asesoría</button>
+</fieldset>
+<p class="advisory-status" id="advisory-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+</form></div></div></section></main><footer class="bg-slate-100 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-6 md:px-8 py-10 flex flex-col sm:flex-row justify-between gap-5">
+<a class="text-lg font-bold text-emerald-950" href="/">Sollahms</a>
+<div class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
+<a class="hover:text-emerald-900" href="/#expertise">Servicios</a>
+<a class="hover:text-emerald-900" href="/#portfolio">Proyectos</a>
+<a class="hover:text-emerald-900" href="/contacto.html">Contacto</a>
+<a class="hover:text-emerald-900" href="/privacidad.html">Privacidad</a>
 </div>
-<!-- Main Layout: Bento Style -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-<!-- Imagery Column -->
-<div class="lg:col-span-5 h-[400px] lg:h-auto relative overflow-hidden bg-surface-container-low shadow-sm"><div class="absolute inset-0 bg-primary-container"></div><div class="absolute inset-0 flex items-center justify-center text-white z-10"><div class="flex flex-col items-center justify-center h-full w-full text-center p-16"><span class="font-label text-[9px] tracking-[0.4em] uppercase text-on-primary-container font-semibold mb-6">INVIERTE EN BIENES RAÍCES</span><div class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter text-white mb-4">Sollahms</div><div class="font-headline text-xl md:text-2xl font-bold tracking-tight text-white leading-tight">Inversión Inmobiliaria<br>Estratégica</div></div></div></div>
-<!-- Booking Column -->
-<section class="lg:col-span-7 bg-surface-container-lowest p-8 md:p-16 shadow-sm" aria-labelledby="agenda-reserva-titulo">
-<span class="font-label text-[9px] tracking-[0.4em] uppercase text-secondary font-semibold mb-4 block">Solicita una asesoría</span>
-<h2 id="agenda-reserva-titulo" class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-primary mb-6">Asesoría inmobiliaria Sollahms</h2>
-<p id="agenda-project-back" class="font-body text-sm text-secondary leading-relaxed mb-6" hidden>
-<a id="agenda-project-back-link" class="text-primary underline" href="/">Volver a la propiedad</a>
-</p>
-<p class="font-body text-lg leading-relaxed text-secondary mb-6">Una conversación de 30 minutos para revisar tu situación, tus objetivos y las alternativas inmobiliarias que podrían ajustarse a ellos.</p>
-<div id="advisory-request" class="bg-surface-container-low border-l-4 border-primary p-8 mb-6">
-<p class="font-body text-sm text-secondary leading-relaxed mb-6">Cuéntanos qué necesitas y coordinaremos contigo una llamada. Esta solicitud no reserva una cita ni confirma disponibilidad.</p>
-<a id="advisory-request-link" class="inline-flex bg-primary text-on-primary font-headline font-bold tracking-institutional uppercase text-[12px] px-12 py-5" href="/contacto.html">Solicitar asesoría</a>
-<p id="advisory-request-context-status" class="font-body text-sm text-secondary leading-relaxed mt-6" role="status" hidden></p>
-</div>
-<div id="booking-legacy-widget" hidden inert>
-<div class="bg-surface-container-low border-l-4 border-primary p-8 mb-6">
-<p class="font-headline text-lg font-bold text-primary mb-4">Llamada telefónica</p>
-<p class="font-body text-sm text-secondary leading-relaxed">Elige una fecha y hora para comprobar si podemos llamarte en ese momento.</p>
-</div>
-<form id="booking-form">
-<div id="booking-selector">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-<div>
-<label class="font-label text-[12px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-date">Fecha</label>
-<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="date" id="booking-date" name="date" aria-describedby="booking-hours-note" required>
-</div>
-<div>
-<label class="font-label text-[12px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-time">Hora</label>
-<select class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" id="booking-time" name="time" aria-describedby="booking-hours-note" required>
-<option value="" selected disabled>Selecciona un horario</option>
-<option value="09:00">09:00</option>
-<option value="09:30">09:30</option>
-<option value="10:00">10:00</option>
-<option value="10:30">10:30</option>
-<option value="11:00">11:00</option>
-<option value="11:30">11:30</option>
-<option value="12:00">12:00</option>
-<option value="12:30">12:30</option>
-<option value="13:00">13:00</option>
-<option value="13:30">13:30</option>
-<option value="14:00">14:00</option>
-<option value="14:30">14:30</option>
-<option value="15:00">15:00</option>
-<option value="15:30">15:30</option>
-<option value="16:00">16:00</option>
-<option value="16:30">16:30</option>
-<option value="17:00">17:00</option>
-<option value="17:30">17:30</option>
-<option value="18:00">18:00</option>
-<option value="18:30">18:30</option>
-<option value="19:00">19:00</option>
-<option value="19:30">19:30</option>
-<option value="20:00">20:00</option>
-<option value="20:30">20:30</option>
-<option value="21:00">21:00</option>
-<option value="21:30">21:30</option>
-</select>
-</div>
-</div>
-<p id="booking-hours-note" class="font-body text-sm text-secondary leading-relaxed mb-6">Lunes a viernes, de 09:00 a 21:30, en intervalos de 30 minutos. Horarios correspondientes a Chile continental.</p>
-<button id="booking-check" class="w-full md:w-auto bg-primary text-on-primary font-headline font-bold tracking-institutional uppercase text-[12px] px-12 py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" type="button" aria-controls="booking-details" aria-expanded="false">Comprobar disponibilidad</button>
-</div>
-<p id="booking-status" class="font-body text-sm text-primary leading-relaxed mt-6" role="status" aria-live="polite" tabindex="-1"></p>
-<div id="booking-details" hidden>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-<div>
-<label class="font-label text-[12px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-nombre">Nombre</label>
-<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="text" id="booking-nombre" name="nombre" autocomplete="given-name" maxlength="100" required>
-</div>
-<div>
-<label class="font-label text-[12px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-apellido">Apellido</label>
-<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="text" id="booking-apellido" name="apellido" autocomplete="family-name" maxlength="100" required>
-</div>
-<div>
-<label class="font-label text-[12px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-correo">Correo electrónico</label>
-<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="email" id="booking-correo" name="correo" autocomplete="email" maxlength="254" required>
-</div>
-<div>
-<label class="font-label text-[12px] tracking-[0.25em] uppercase text-secondary font-bold block mb-2" for="booking-telefono">Número de teléfono</label>
-<input class="w-full bg-surface-container-low border-none focus:ring-1 focus:ring-primary py-4 px-4 font-body text-sm" type="tel" id="booking-telefono" name="telefono" autocomplete="tel" maxlength="30" required>
-</div>
-</div>
-<div class="sr-only" aria-hidden="true">
-<label for="booking-website">Deja este campo vacío</label>
-<input type="text" id="booking-website" name="website" tabindex="-1" autocomplete="off" maxlength="200">
-</div>
-<button id="booking-submit" class="w-full md:w-auto bg-primary text-on-primary font-headline font-bold tracking-institutional uppercase text-[12px] px-12 py-5 mt-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" type="submit">Reservar llamada</button>
-</div>
-</form>
-<p class="font-body text-sm text-secondary leading-relaxed mt-6">Tus datos se utilizarán para coordinar la llamada y enviar la invitación. Consulta nuestra <a class="text-primary underline" href="/privacidad.html">política de privacidad</a>.</p>
-</div>
-</section>
-</div>
-<script type="module">
-import { resolveProjectIdentity } from '/assets/js/project-identity.mjs';
-import { createFormOperation } from '/assets/js/form-operation.mjs';
-
-(() => {
-    // LOCAL REQUEST-ONLY CANDIDATE: never initialize booking or call its APIs.
-    if (document.body?.dataset.bookingMode === 'request-only') {
-        const link = document.getElementById('advisory-request-link');
-        const status = document.getElementById('advisory-request-context-status');
-        const query = new URLSearchParams(window.location.search);
-        const projects = query.getAll('proyecto');
-        const stages = query.getAll('etapa');
-        if (projects.length > 1 || stages.length > 1 || (!projects.length && stages.length)) {
-            link.hidden = true;
-            status.hidden = false;
-            status.textContent = 'El enlace de proyecto no es válido. Vuelve a abrir la solicitud desde su ficha.';
-            return;
-        }
-        if (projects.length) {
-            link.hidden = true;
-            status.hidden = false;
-            status.textContent = 'Validando el proyecto de tu consulta…';
-            // Public same-origin catalogue only; no availability or Google call.
-            fetch('/data/proyectos.json', { cache: 'no-store', signal: AbortSignal.timeout(5000) })
-                .then(response => {
-                    if (!response.ok) throw new Error('Catalogue unavailable');
-                    return response.json();
-                })
-                .then(catalogue => {
-                    const project = resolveProjectIdentity(catalogue, projects[0], stages[0] ?? null);
-                    if (!project) throw new Error('Project unavailable');
-                    link.href = '/contacto.html' + project.contextQuery;
-                    link.hidden = false;
-                    status.hidden = true;
-                    document.getElementById('agenda-reserva-titulo').textContent = 'Asesoría sobre ' + project.nombre;
-                    const backLink = document.getElementById('agenda-project-back-link');
-                    backLink.href = project.detalleUrl;
-                    backLink.textContent = 'Volver a ' + project.nombre;
-                    document.getElementById('agenda-project-back').hidden = false;
-                })
-                .catch(() => {
-                    status.textContent = 'No pudimos validar el proyecto. Vuelve a abrir la solicitud desde su ficha.';
-                });
-        }
-        return;
-    }
-    let bookingProject = null;
-    const query = new URLSearchParams(window.location.search);
-    const projectSlug = query.getAll('proyecto').length > 1 ? '' : query.get('proyecto');
-    const requestedEtapa = query.getAll('etapa').length > 1 ? '' : query.get('etapa');
-    const projectContextReady = projectSlug !== null
-        ? fetch('/data/proyectos.json')
-            .then(response => response.ok ? response.json() : [])
-            .then(projects => {
-                const project = resolveProjectIdentity(projects, projectSlug, requestedEtapa);
-                if (!project) return;
-                bookingProject = project.bodyProjectSlug;
-                document.getElementById('agenda-reserva-titulo').textContent = 'Asesoría sobre ' + project.nombre;
-                const backLink = document.getElementById('agenda-project-back-link');
-                backLink.href = project.detalleUrl || '/proyectos.html';
-                backLink.textContent = 'Volver a ' + project.nombre;
-                document.getElementById('agenda-project-back').hidden = false;
-            })
-            .catch(() => { /* Unresolved context must not be replaced by another stage. */ })
-        : Promise.resolve();
-
-    const form = document.getElementById('booking-form');
-    const selector = document.getElementById('booking-selector');
-    const details = document.getElementById('booking-details');
-    const status = document.getElementById('booking-status');
-    const dateInput = document.getElementById('booking-date');
-    const timeInput = document.getElementById('booking-time');
-    const checkButton = document.getElementById('booking-check');
-    const submitButton = document.getElementById('booking-submit');
-    const personalInputs = ['nombre', 'apellido', 'correo', 'telefono', 'website'];
-    let checkedSlot = null;
-    let availabilityRequest = 0;
-    let bookingBusy = false;
-    let availabilityController = null;
-    const operation = createFormOperation({ name: 'booking' });
-
-    const chileDate = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
-        timeZone: 'America/Santiago', year: 'numeric', month: '2-digit', day: '2-digit',
-    }).formatToParts(new Date()).map(part => [part.type, part.value]));
-    dateInput.min = `${chileDate.year}-${chileDate.month}-${chileDate.day}`;
-    personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
-
-    function setBusy(button, busy) {
-        button.disabled = busy;
-        button.classList.toggle('opacity-50', busy);
-        button.classList.toggle('cursor-not-allowed', busy);
-    }
-
-    function formatBookingDate(date) {
-        const [year, month, day] = date.split('-').map(Number);
-        const value = new Date(Date.UTC(year, month - 1, day));
-        return new Intl.DateTimeFormat('es-CL', {
-            weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
-        }).format(value).replace(',', '');
-    }
-
-    function invalidateSlot() {
-        availabilityRequest += 1;
-        availabilityController?.abort();
-        availabilityController = null;
-        checkedSlot = null;
-        details.hidden = true;
-        checkButton.setAttribute('aria-expanded', 'false');
-        personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
-        status.textContent = '';
-        setBusy(checkButton, false);
-    }
-
-    function updateTimeOptions() {
-        const chileNow = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
-            timeZone: 'America/Santiago', year: 'numeric', month: '2-digit', day: '2-digit',
-            hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
-        }).formatToParts(new Date()).map(part => [part.type, part.value]));
-        const today = `${chileNow.year}-${chileNow.month}-${chileNow.day}`;
-        const currentTime = `${chileNow.hour}:${chileNow.minute}`;
-        const selectedTime = timeInput.value;
-        let disabledSelectedTime = false;
-
-        for (const option of timeInput.options) {
-            if (!option.value) continue;
-            option.disabled = dateInput.value === today && option.value <= currentTime;
-            if (option.value === selectedTime && option.disabled) disabledSelectedTime = true;
-        }
-
-        if (disabledSelectedTime) timeInput.value = '';
-        return disabledSelectedTime;
-    }
-
-    dateInput.addEventListener('input', () => {
-        updateTimeOptions();
-        if (!dateInput.value) {
-            dateInput.setCustomValidity('');
-            return;
-        }
-        const [year, month, day] = dateInput.value.split('-').map(Number);
-        const weekday = new Date(Date.UTC(year, month - 1, day)).getUTCDay();
-        if (weekday === 0 || weekday === 6) {
-            dateInput.setCustomValidity('Selecciona un día de lunes a viernes.');
-        } else {
-            dateInput.setCustomValidity('');
-        }
-    });
-    dateInput.addEventListener('input', invalidateSlot);
-    timeInput.addEventListener('input', invalidateSlot);
-
-    checkButton.addEventListener('click', async () => {
-        if (bookingBusy) return;
-        if (updateTimeOptions()) invalidateSlot();
-        if (!dateInput.reportValidity() || !timeInput.reportValidity()) return;
-        invalidateSlot();
-        const requestId = availabilityRequest;
-        const slot = { date: dateInput.value, time: timeInput.value };
-        availabilityController = new AbortController();
-        setBusy(checkButton, true);
-        status.textContent = 'Comprobando disponibilidad…';
-        try {
-            const response = await fetch('/api/booking-availability', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(slot),
-                signal: availabilityController.signal,
-            });
-            const result = await response.json();
-            if (requestId !== availabilityRequest) return;
-            if (!response.ok || result.ok !== true || typeof result.available !== 'boolean') {
-                status.textContent = result.error || 'No pudimos comprobar la disponibilidad. Inténtalo nuevamente.';
-            } else if (!result.available) {
-                status.textContent = 'Ese horario ya no está disponible. Elige otra fecha u hora.';
-            } else {
-                checkedSlot = slot;
-                status.textContent = 'Este horario está disponible.';
-                details.hidden = false;
-                checkButton.setAttribute('aria-expanded', 'true');
-                personalInputs.forEach(name => { form.elements.namedItem(name).disabled = false; });
-            }
-        } catch {
-            if (requestId === availabilityRequest) status.textContent = 'No pudimos comprobar la disponibilidad. Inténtalo nuevamente.';
-        } finally {
-            if (requestId === availabilityRequest) {
-                availabilityController = null;
-                setBusy(checkButton, false);
-            }
-        }
-    });
-
-    form.addEventListener('submit', async event => {
-        event.preventDefault();
-        if (bookingBusy || !checkedSlot || dateInput.value !== checkedSlot.date || timeInput.value !== checkedSlot.time) {
-            invalidateSlot();
-            status.textContent = 'Comprueba nuevamente la disponibilidad del horario.';
-            return;
-        }
-        bookingBusy = true;
-        setBusy(submitButton, true);
-        setBusy(checkButton, true);
-        dateInput.disabled = true;
-        timeInput.disabled = true;
-        status.textContent = 'Reservando tu llamada…';
-        const fields = Object.fromEntries(personalInputs.map(name => [name, form.elements.namedItem(name).value]));
-        try {
-            await projectContextReady;
-            if ((projectSlug !== null || requestedEtapa !== null) && !bookingProject) {
-                status.textContent = 'No pudimos identificar el proyecto o etapa. Vuelve a abrir la asesoría desde su ficha.';
-                return;
-            }
-            // Until Google's backend can attest durable idempotency, an
-            // uncertain booking must be checked by the team, never recreated.
-            const attempt = await operation.prepare({ ...checkedSlot, ...fields, ...(bookingProject ? { proyecto: bookingProject } : {}) }, { allowRetry: false });
-            const response = await fetch('/api/booking-create', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Idempotency-Key': attempt.key },
-                body: attempt.body,
-            });
-            const result = await response.json();
-            if ([400, 403, 413, 415].includes(response.status) || ['preview_read_only', 'slot_unavailable', 'operation_capacity'].includes(result.code)) operation.discard();
-            if (response.status === 409 && result.code === 'slot_unavailable') {
-                invalidateSlot();
-                status.textContent = 'Ese horario ya no está disponible. Elige otra fecha u hora.';
-                dateInput.focus();
-            } else if (response.ok && result.ok === true && result.booked === true) {
-                operation.complete();
-                selector.hidden = true;
-                details.hidden = true;
-                personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
-                status.textContent = `Tu asesoría quedó reservada para el ${formatBookingDate(checkedSlot.date)} a las ${checkedSlot.time}. Recibirás una invitación de Google Calendar en tu correo.`;
-                status.focus();
-            } else {
-                status.textContent = result.error || 'No pudimos confirmar la reserva. No la repitas; escribe a contacto@sollahms.cl para verificarla.';
-            }
-        } catch (error) {
-            operation.uncertain();
-            status.textContent = error.message === 'Failed to fetch' ? 'No pudimos confirmar la reserva. No la repitas; escribe a contacto@sollahms.cl para verificarla.' : error.message || 'No pudimos confirmar la reserva. No la repitas; escribe a contacto@sollahms.cl para verificarla.';
-        } finally {
-            bookingBusy = false;
-            dateInput.disabled = false;
-            timeInput.disabled = false;
-            setBusy(submitButton, false);
-            if (!selector.hidden) setBusy(checkButton, false);
-        }
-    });
-})();
-</script>
-<!-- Section: Cómo Invertir -->
-<section class="mt-24 py-16 border-y border-outline-variant/30">
-<div class="max-w-4xl mx-auto text-center">
-<span class="font-label text-[9px] tracking-[0.4em] uppercase text-secondary font-semibold mb-6 block">Metodología de Inversión</span>
-<h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-primary mb-10">Cómo Invertir</h2>
-<div class="relative p-10 md:p-16 bg-surface-container-lowest shadow-sm border-l-4 border-primary">
-<p class="font-body text-lg md:text-xl leading-relaxed text-left text-primary"><b>Conectamos activos inmobiliarios con oportunidades acordes a sus características. Combinamos análisis de mercado, ubicación y estrategia comercial para orientar su posicionamiento.</b></p>
-<div class="mt-10 flex flex-wrap gap-8 justify-start">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;" aria-hidden="true">analytics</span>
-<span class="font-label text-[10px] tracking-widest uppercase font-bold text-primary">Análisis Financiero</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;" aria-hidden="true">handshake</span>
-<span class="font-label text-[10px] tracking-widest uppercase font-bold text-primary">Gestión Bancaria</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;" aria-hidden="true">home_work</span>
-<span class="font-label text-[10px] tracking-widest uppercase font-bold text-primary">Administración</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Section: Beneficios como Inversionista Inmobiliario -->
-<section class="mt-24 mb-16">
-<div class="mb-12">
-<span class="font-label text-[9px] tracking-[0.4em] uppercase text-secondary font-semibold mb-4 block">Ventajas Estratégicas</span>
-<h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-primary">Beneficios como Inversionista Inmobiliario</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<!-- Card 1 -->
-<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:border-primary/50 transition-colors group"><div class="w-12 h-12 bg-primary-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors"><svg class="group-hover:text-on-primary transition-colors" fill="none" height="24" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"></path><path d="m19 22-1-6 1-4h-5l-1 4-3 1"></path><path d="M14 10V6"></path><path d="M8 22v-4h1"></path><path d="M18 22h1"></path></svg></div>
-<h3 class="font-headline font-extrabold text-xl text-primary tracking-tight mb-3">Jubilación</h3>
-<p class="font-body text-sm text-secondary leading-relaxed">Una propiedad destinada a arriendo puede generar ingresos, sujetos a ocupación, gastos, financiamiento y condiciones de mercado.</p>
-</div>
-<!-- Card 2 -->
-<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:border-primary/50 transition-colors group">
-<div class="w-12 h-12 bg-primary-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-on-primary-container group-hover:text-on-primary transition-colors" aria-hidden="true">trending_up</span>
-</div>
-<h3 class="font-headline font-extrabold text-xl text-primary tracking-tight mb-3">Plusvalía</h3>
-<p class="font-body text-sm text-secondary leading-relaxed">El valor de una propiedad puede cambiar en el tiempo según su ubicación, oferta, demanda y condiciones del mercado.</p>
-</div>
-<!-- Card 3 -->
-<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:border-primary/50 transition-colors group">
-<div class="w-12 h-12 bg-primary-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-on-primary-container group-hover:text-on-primary transition-colors" aria-hidden="true">emergency</span>
-</div>
-<h3 class="font-headline font-extrabold text-xl text-primary tracking-tight mb-3">Activo de Emergencia</h3>
-<p class="font-body text-sm text-secondary leading-relaxed">Una propiedad puede formar parte de una estrategia patrimonial, considerando su liquidez, costos y exposición a cambios del mercado.</p>
-</div>
-<!-- Card 4 -->
-<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:border-primary/50 transition-colors group">
-<div class="w-12 h-12 bg-primary-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-on-primary-container group-hover:text-on-primary transition-colors" aria-hidden="true">account_balance_wallet</span>
-</div>
-<h3 class="font-headline font-extrabold text-xl text-primary tracking-tight mb-3">Proyección Financiera Futura</h3>
-<p class="font-body text-sm text-secondary leading-relaxed">Una propiedad arrendada puede generar flujo de caja; el resultado depende del arriendo efectivo, vacancia, financiamiento y gastos asociados.</p>
-</div>
-<!-- Card 5 -->
-<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:border-primary/50 transition-colors group">
-<div class="w-12 h-12 bg-primary-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-on-primary-container group-hover:text-on-primary transition-colors" aria-hidden="true">family_history</span>
-</div>
-<h3 class="font-headline font-extrabold text-xl text-primary tracking-tight mb-3">Herencia</h3>
-<p class="font-body text-sm text-secondary leading-relaxed">Crea activos que perduren en el tiempo y fortalezcan el futuro de quienes más te importan.</p>
-</div>
-<!-- Card 6 -->
-<div class="bg-surface-container-lowest p-8 border border-outline-variant/30 hover:border-primary/50 transition-colors group">
-<div class="w-12 h-12 bg-primary-container flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-on-primary-container group-hover:text-on-primary transition-colors" aria-hidden="true">shield_with_heart</span>
-</div>
-<h3 class="font-headline font-extrabold text-xl text-primary tracking-tight mb-3">Referencia en UF</h3>
-<p class="font-body text-sm text-secondary leading-relaxed">En Chile, muchas operaciones inmobiliarias se expresan en UF. La UF se reajusta según la variación del IPC; esto no garantiza que el valor comercial de una propiedad aumente.</p>
-</div>
-</div>
-</section>
-<!-- Secondary Info Grid -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-<div class="bg-surface-container-low p-10">
-<h3 class="font-headline font-extrabold tracking-tighter text-lg text-primary mb-4">Contacto</h3>
-<p class="font-body text-sm text-secondary leading-relaxed mb-6">Para consultas, escríbenos a <a class="text-primary underline" href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a>.</p>
-<a class="font-body text-sm text-primary underline" href="/contacto.html">Ver página de contacto</a>
-</div>
-<div class="bg-surface-container-low p-10 col-span-1 md:col-span-2 relative overflow-hidden">
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline font-extrabold tracking-tighter text-lg text-primary mb-4">Privacidad</h3>
-<p class="font-body text-sm text-secondary leading-relaxed max-w-md">Conoce cómo Sollahms trata tus datos personales y los derechos que puedes ejercer.</p>
-<a class="font-body text-sm text-primary underline inline-block mt-4" href="/privacidad.html">Ver política de privacidad</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- Footer -->
-<footer class="w-full px-12 py-16 flex flex-col md:flex-row justify-between items-center gap-8 bg-emerald-950 dark:bg-black border-t border-emerald-900/30">
-<div class="flex flex-col gap-4">
-<a class="text-lg font-bold tracking-tighter text-white" href="/">Sollahms</a>
-<p class="font-['Inter'] text-[9px] tracking-[0.4em] uppercase font-light text-slate-400">© 2026 Sollahms. Todos los derechos reservados.</p>
-</div>
-<div class="flex flex-wrap justify-center gap-8">
-<a class="text-sm text-slate-300 hover:text-white transition-colors" href="/privacidad.html">Privacidad</a>
+<p class="text-sm text-slate-600">© 2026 Sollahms. Todos los derechos reservados.</p>
 </div>
 </footer>
+<script type="module" src="/assets/js/advisory.mjs"></script>
 </body></html>
