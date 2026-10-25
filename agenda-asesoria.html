@@ -5,21 +5,7 @@
 <meta name="description" content="Agenda una asesoría inmobiliaria con Sollahms para conversar sobre tus objetivos y evaluar alternativas de inversión en Chile.">
 <link rel="canonical" href="https://sollahms.cl/agenda-asesoria.html">
 <link rel="icon" type="image/svg+xml" href="/assets/branding/favicon.svg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Sollahms">
-<meta property="og:title" content="Agenda asesoría inmobiliaria | Sollahms">
-<meta property="og:description" content="Agenda una asesoría inmobiliaria con Sollahms para conversar sobre tus objetivos y evaluar alternativas de inversión en Chile.">
-<meta property="og:url" content="https://sollahms.cl/agenda-asesoria.html">
-<meta property="og:image" content="https://sollahms.cl/assets/branding/og-sollahms.png">
-<meta property="og:image:alt" content="Sollahms">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Agenda asesoría inmobiliaria | Sollahms">
-<meta name="twitter:description" content="Agenda una asesoría inmobiliaria con Sollahms para conversar sobre tus objetivos y evaluar alternativas de inversión en Chile.">
-<meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms.png">
-<meta name="twitter:image:alt" content="Sollahms">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -61,9 +47,29 @@
         #booking-status {
             scroll-margin-top: 6rem;
         }
+        #advisory-request-link[hidden], #booking-legacy-widget[hidden] {
+            display: none !important;
+        }
     </style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sollahms">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="Agenda asesoría inmobiliaria | Sollahms">
+<meta property="og:description" content="Agenda una asesoría inmobiliaria con Sollahms para conversar sobre tus objetivos y evaluar alternativas de inversión en Chile.">
+<meta property="og:url" content="https://sollahms.cl/agenda-asesoria.html">
+<meta property="og:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v2.jpg">
+<meta property="og:image:secure_url" content="https://sollahms.cl/assets/branding/og-sollahms-square-v2.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
+<meta property="og:image:alt" content="Sollahms — información y asesoría inmobiliaria">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agenda asesoría inmobiliaria | Sollahms">
+<meta name="twitter:description" content="Agenda una asesoría inmobiliaria con Sollahms para conversar sobre tus objetivos y evaluar alternativas de inversión en Chile.">
+<meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v2.jpg">
+<meta name="twitter:image:alt" content="Sollahms — información y asesoría inmobiliaria">
 </head>
-<body class="bg-surface text-on-surface antialiased">
+<body class="bg-surface text-on-surface antialiased" data-booking-mode="request-only">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
@@ -125,7 +131,7 @@
 <!-- Hero Title Section -->
 <div class="mb-16">
 <span class="font-label text-[9px] tracking-[0.4em] uppercase text-secondary font-semibold mb-4 block">Invierte en bienes raíces</span>
-<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-primary leading-none">Agenda tu asesoría</h1>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-primary leading-none">Solicita tu asesoría</h1>
 </div>
 <!-- Main Layout: Bento Style -->
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -133,12 +139,18 @@
 <div class="lg:col-span-5 h-[400px] lg:h-auto relative overflow-hidden bg-surface-container-low shadow-sm"><div class="absolute inset-0 bg-primary-container"></div><div class="absolute inset-0 flex items-center justify-center text-white z-10"><div class="flex flex-col items-center justify-center h-full w-full text-center p-16"><span class="font-label text-[9px] tracking-[0.4em] uppercase text-on-primary-container font-semibold mb-6">INVIERTE EN BIENES RAÍCES</span><div class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter text-white mb-4">Sollahms</div><div class="font-headline text-xl md:text-2xl font-bold tracking-tight text-white leading-tight">Inversión Inmobiliaria<br>Estratégica</div></div></div></div>
 <!-- Booking Column -->
 <section class="lg:col-span-7 bg-surface-container-lowest p-8 md:p-16 shadow-sm" aria-labelledby="agenda-reserva-titulo">
-<span class="font-label text-[9px] tracking-[0.4em] uppercase text-secondary font-semibold mb-4 block">Reserva tu llamada</span>
+<span class="font-label text-[9px] tracking-[0.4em] uppercase text-secondary font-semibold mb-4 block">Solicita una asesoría</span>
 <h2 id="agenda-reserva-titulo" class="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-primary mb-6">Asesoría inmobiliaria Sollahms</h2>
 <p id="agenda-project-back" class="font-body text-sm text-secondary leading-relaxed mb-6" hidden>
 <a id="agenda-project-back-link" class="text-primary underline" href="/">Volver a la propiedad</a>
 </p>
 <p class="font-body text-lg leading-relaxed text-secondary mb-6">Una conversación de 30 minutos para revisar tu situación, tus objetivos y las alternativas inmobiliarias que podrían ajustarse a ellos.</p>
+<div id="advisory-request" class="bg-surface-container-low border-l-4 border-primary p-8 mb-6">
+<p class="font-body text-sm text-secondary leading-relaxed mb-6">Cuéntanos qué necesitas y coordinaremos contigo una llamada. Esta solicitud no reserva una cita ni confirma disponibilidad.</p>
+<a id="advisory-request-link" class="inline-flex bg-primary text-on-primary font-headline font-bold tracking-institutional uppercase text-[12px] px-12 py-5" href="/contacto.html">Solicitar asesoría</a>
+<p id="advisory-request-context-status" class="font-body text-sm text-secondary leading-relaxed mt-6" role="status" hidden></p>
+</div>
+<div id="booking-legacy-widget" hidden inert>
 <div class="bg-surface-container-low border-l-4 border-primary p-8 mb-6">
 <p class="font-headline text-lg font-bold text-primary mb-4">Llamada telefónica</p>
 <p class="font-body text-sm text-secondary leading-relaxed">Elige una fecha y hora para comprobar si podemos llamarte en ese momento.</p>
@@ -214,6 +226,7 @@
 </div>
 </form>
 <p class="font-body text-sm text-secondary leading-relaxed mt-6">Tus datos se utilizarán para coordinar la llamada y enviar la invitación. Consulta nuestra <a class="text-primary underline" href="/privacidad.html">política de privacidad</a>.</p>
+</div>
 </section>
 </div>
 <script type="module">
@@ -221,6 +234,47 @@ import { resolveProjectIdentity } from '/assets/js/project-identity.mjs';
 import { createFormOperation } from '/assets/js/form-operation.mjs';
 
 (() => {
+    // LOCAL REQUEST-ONLY CANDIDATE: never initialize booking or call its APIs.
+    if (document.body?.dataset.bookingMode === 'request-only') {
+        const link = document.getElementById('advisory-request-link');
+        const status = document.getElementById('advisory-request-context-status');
+        const query = new URLSearchParams(window.location.search);
+        const projects = query.getAll('proyecto');
+        const stages = query.getAll('etapa');
+        if (projects.length > 1 || stages.length > 1 || (!projects.length && stages.length)) {
+            link.hidden = true;
+            status.hidden = false;
+            status.textContent = 'El enlace de proyecto no es válido. Vuelve a abrir la solicitud desde su ficha.';
+            return;
+        }
+        if (projects.length) {
+            link.hidden = true;
+            status.hidden = false;
+            status.textContent = 'Validando el proyecto de tu consulta…';
+            // Public same-origin catalogue only; no availability or Google call.
+            fetch('/data/proyectos.json', { cache: 'no-store', signal: AbortSignal.timeout(5000) })
+                .then(response => {
+                    if (!response.ok) throw new Error('Catalogue unavailable');
+                    return response.json();
+                })
+                .then(catalogue => {
+                    const project = resolveProjectIdentity(catalogue, projects[0], stages[0] ?? null);
+                    if (!project) throw new Error('Project unavailable');
+                    link.href = '/contacto.html' + project.contextQuery;
+                    link.hidden = false;
+                    status.hidden = true;
+                    document.getElementById('agenda-reserva-titulo').textContent = 'Asesoría sobre ' + project.nombre;
+                    const backLink = document.getElementById('agenda-project-back-link');
+                    backLink.href = project.detalleUrl;
+                    backLink.textContent = 'Volver a ' + project.nombre;
+                    document.getElementById('agenda-project-back').hidden = false;
+                })
+                .catch(() => {
+                    status.textContent = 'No pudimos validar el proyecto. Vuelve a abrir la solicitud desde su ficha.';
+                });
+        }
+        return;
+    }
     let bookingProject = null;
     const query = new URLSearchParams(window.location.search);
     const projectSlug = query.getAll('proyecto').length > 1 ? '' : query.get('proyecto');

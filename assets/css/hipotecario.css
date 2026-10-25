@@ -969,3 +969,17 @@ input:focus,select:focus,textarea:focus {
 .bank-conditions li {
   margin:7px 0
 }
+
+/* SOLLAHMS_NO_SCRIPT_NAV_START */
+@media (scripting: none) and (max-width: 800px) {
+  header:has([aria-controls="mobile-menu"]) {
+    position: static !important;
+    height: auto !important;
+  }
+  #mobile-menu {
+    display: block !important;
+    position: static !important;
+  }
+  header button[aria-controls="mobile-menu"] { display: none !important; }
+}
+/* SOLLAHMS_NO_SCRIPT_NAV_END */

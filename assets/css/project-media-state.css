@@ -1,0 +1,7 @@
+/* Pending local media: keep the original reference, without a substitute image. */
+img[data-project-media-unavailable][hidden]{display:none!important}
+section[data-project-media-hero-pending][hidden]{display:none!important}
+.project-media-pending{display:block;min-height:5rem;margin:0;padding:1.25rem;border:1px dashed #9aa9a1;background:#f2f5f3;color:#29483d;font:500 .85rem/1.6 Inter,Arial,sans-serif;overflow-wrap:anywhere;text-align:center}
+.project-media-pending-hero{position:relative;z-index:3;display:inline-block;min-height:0;margin:1rem 0 0;padding:.65rem .9rem;background:#f2f5f3;color:#29483d;text-align:left}
+.project-media-unavailable-link[aria-disabled="true"]{cursor:not-allowed;text-decoration:none}
+@media(forced-colors:active){.project-media-pending{border-color:CanvasText;color:CanvasText;background:Canvas}}

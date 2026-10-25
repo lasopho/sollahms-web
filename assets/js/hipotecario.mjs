@@ -479,14 +479,24 @@ $('lead-form').addEventListener('submit', async event => {
     });
     const body = await response.json();
     if (!attempt.reused && ([400, 403, 413, 415].includes(response.status) || body.code === 'preview_read_only')) contactOperation.discard();
-    if (!response.ok || body.ok !== true) throw new Error(body.error || 'No pudimos enviar la solicitud. Inténtalo más tarde.');
+    // CONTACT_ACKNOWLEDGEMENT_PROOF_START
+    const persisted = body?.ok === true && body.persisted === true && body.providerAccepted === undefined && body.deliveryConfirmed === undefined;
+    const providerAccepted = body?.ok === true && body.providerAccepted === true && body.deliveryConfirmed === false && body.persisted === undefined;
+    if (!response.ok || (!persisted && !providerAccepted)) throw new Error(body?.error || 'No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.');
+    // CONTACT_ACKNOWLEDGEMENT_PROOF_END
     contactOperation.complete();
     $('lead-form').reset();
     startedAt = Date.now();
-    $('lead-status').textContent = 'Solicitud enviada correctamente. Sollahms se pondrá en contacto contigo para conversar sobre tu financiamiento.';
+    // CONTACT_ACKNOWLEDGEMENT_COPY_START
+    $('lead-status').textContent = persisted
+      ? 'Solicitud registrada correctamente. Sollahms se pondrá en contacto contigo para conversar sobre tu financiamiento.'
+      : 'Solicitud aceptada para envío. La recepción por Sollahms aún no está confirmada.';
+    // CONTACT_ACKNOWLEDGEMENT_COPY_END
   } catch (error) {
     contactOperation.uncertain();
-    $('lead-status').textContent = ['TimeoutError', 'TypeError'].includes(error.name) ? 'El envío no pudo confirmarse. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.' : error.message || 'No pudimos confirmar el envío. Escribe a contacto@sollahms.cl.';
+    // FORM_UNCERTAIN_JSON_RESPONSE_START
+    $('lead-status').textContent = ['TimeoutError', 'TypeError', 'SyntaxError'].includes(error.name) ? 'El envío no pudo confirmarse. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.' : error.message || 'No pudimos confirmar el envío. Escribe a contacto@sollahms.cl.';
+    // FORM_UNCERTAIN_JSON_RESPONSE_END
   } finally {
     sending = false;
     $('lead-submit').disabled = !simulation;
@@ -497,13 +507,16 @@ $('lead-form').addEventListener('submit', async event => {
   }
 });
 
-const menuButton = $('menu-toggle');
-function closeMenu() { $('mobile-menu').hidden = true; menuButton.setAttribute('aria-expanded','false'); menuButton.setAttribute('aria-label','Abrir menú de navegación'); }
-menuButton.addEventListener('click', () => { const open = menuButton.getAttribute('aria-expanded') === 'true'; $('mobile-menu').hidden = open; menuButton.setAttribute('aria-expanded', String(!open)); menuButton.setAttribute('aria-label', open ? 'Abrir menú de navegación' : 'Cerrar menú de navegación'); });
-$('mobile-menu').addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
-document.addEventListener('keydown', event => { if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { closeMenu(); menuButton.focus(); } });
-window.addEventListener('resize', () => { if (innerWidth > 800) closeMenu(); });
+// MORTGAGE_INDEPENDENT_MENU_MOVED_TO_HTML
 document.addEventListener('visibilitychange', () => { if (!document.hidden && !sending) refreshFinancialDate(); });
 setInterval(() => { if (!document.hidden && !sending) refreshFinancialDate(); }, 60000);
+// FORM_PROGRESSIVE_MORTGAGE_ENABLE_START
+for (const id of ['simulation-fields', 'lead-fields-controls']) {
+  const controls = $(id);
+  if (controls) controls.disabled = false;
+}
+const unavailableNotice = $('simulation-unavailable');
+if (unavailableNotice) unavailableNotice.hidden = true;
+// FORM_PROGRESSIVE_MORTGAGE_ENABLE_END
 loadProject();
 loadData();

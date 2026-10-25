@@ -84,9 +84,19 @@ export function initializeCapacitySearch({ projects, onChange }) {
   const loadDataset = async () => {
     if (loading) return loading;
     loading = (async () => {
-      const response = await fetch('/data/hipotecario.json', { cache: 'no-store' });
-      if (!response.ok) throw new Error('No pudimos cargar la referencia UF. Inténtalo nuevamente.');
-      const data = await response.json();
+      // CAPACITY_REFERENCE_TIMEOUT_START
+      let data;
+      try {
+        const response = await fetch('/data/hipotecario.json', { cache: 'no-store', signal: AbortSignal.timeout(10000) });
+        if (!response.ok) throw new Error('No pudimos cargar la referencia UF. Inténtalo nuevamente.');
+        data = await response.json();
+      } catch (failure) {
+        if (['TimeoutError', 'AbortError'].includes(failure.name)) {
+          throw new Error('La carga de la referencia financiera tardó demasiado. Inténtalo nuevamente.');
+        }
+        throw failure;
+      }
+      // CAPACITY_REFERENCE_TIMEOUT_END
       const validation = validateDataset(data);
       if (!validation.valid) throw new Error('La referencia financiera necesita verificación.');
       dataset = data; await refreshUf();

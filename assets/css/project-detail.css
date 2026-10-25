@@ -9,3 +9,122 @@
 
 .leben-gallery figure:focus-within{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 3px var(--green)}
 @media(forced-colors:active){a:focus-visible,button:focus-visible,summary:focus-visible,.section-nav a:focus-visible,.leben-gallery figure:focus-within{outline:3px solid Highlight;box-shadow:none}}
+
+/* Shared detail presentation, 2026-10-21.
+   Existing fichas opt in through their established classes. Content, media
+   geometry and specialized brochure/hero rules remain owned by each fiche. */
+:root{
+  --detail-panel-radius:8px;
+  --detail-section-gap:40px;
+  --detail-rail-offset:164px;
+}
+.section-nav .container{gap:4px}
+.section-nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:48px;
+  margin:6px 0;
+  padding:12px 14px;
+  border-radius:4px;
+}
+.section-nav a:hover{background:var(--soft);color:var(--green)}
+.section-nav a:focus-visible{outline-offset:-3px}
+.project-body>.detail-section{margin-bottom:var(--detail-section-gap)}
+.project-body>.detail-section+.detail-section{
+  padding-top:32px;
+  border-top:1px solid var(--line);
+}
+.detail-section>.eyebrow{font-size:.72rem;letter-spacing:.16em;margin-bottom:10px}
+.detail-section h2{margin-bottom:22px;text-wrap:balance}
+.detail-section h3{font-size:1.08rem;margin-top:28px;margin-bottom:12px}
+.spec-grid{
+  padding:0 24px;
+  column-gap:28px;
+  border:1px solid var(--line);
+  border-radius:var(--detail-panel-radius);
+  background:#fff;
+}
+.spec-grid>div{padding:18px 0}
+.spec-grid dt{font-size:.72rem;letter-spacing:.08em;line-height:1.5}
+.spec-grid dd{font-size:.95rem}
+.pending-panel{
+  padding:20px 22px;
+  border-color:#e4d2ac;
+  border-left:3px solid var(--gold);
+  border-radius:6px;
+  background:#fffaf0;
+}
+.gallery-grid figure,.amenity-list li,.tour-card{
+  border-radius:var(--detail-panel-radius);
+}
+.gallery-grid figure:focus-within{
+  outline:3px solid var(--green);
+  outline-offset:3px;
+}
+.contact-card{
+  border:1px solid var(--line);
+  border-top:3px solid var(--gold);
+  border-radius:var(--detail-panel-radius);
+  box-shadow:0 10px 32px #0032290a;
+}
+.contact-card h2{line-height:1.3;text-wrap:balance;overflow-wrap:anywhere}
+.contact-card .price-note,.contact-card .contact-note{font-size:.8rem;line-height:1.6}
+.contact-card .button{min-height:48px}
+.price-block{padding:20px 0;margin:22px 0}
+.price-label{font-size:.72rem;letter-spacing:.08em}
+@media(min-width:901px){
+  html{scroll-padding-top:calc(var(--detail-rail-offset) + 16px)}
+  .section-nav{position:sticky;top:80px;z-index:15}
+  .project-layout{grid-template-columns:minmax(0,1fr) 344px;gap:48px;padding-top:48px}
+  .project-aside{height:auto;align-self:stretch}
+  .contact-card{
+    top:var(--detail-rail-offset);
+    max-height:calc(100vh - var(--detail-rail-offset) - 24px);
+    max-height:calc(100dvh - var(--detail-rail-offset) - 24px);
+    overflow-y:auto;
+    scrollbar-gutter:stable;
+    overscroll-behavior-y:contain;
+  }
+  .detail-section{scroll-margin-top:0}
+}
+@media(min-width:901px) and (max-width:1100px){
+  .project-layout{grid-template-columns:minmax(0,1fr) 310px;gap:28px}
+}
+@media(max-width:900px){
+  .project-layout{padding-top:32px}
+  .contact-card{max-height:none;overflow:visible}
+}
+@media(max-width:600px){
+  :root{--detail-section-gap:32px}
+  .section-nav a{padding:12px 10px}
+  .project-body>.detail-section+.detail-section{padding-top:24px}
+  .spec-grid{padding:0 18px;column-gap:20px}
+  .pending-panel{padding:18px}
+}
+@media(max-width:480px){
+  .spec-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(forced-colors:active){
+  .gallery-grid figure:focus-within{outline-color:Highlight}
+  .pending-panel{border-color:CanvasText}
+}
+
+/* SOLLAHMS_LEBEN_RAW_HERO_START */
+/* Source files retain both publication alternatives. A visible preview hides
+   only its adjacent public hero; either exported profile remains independent. */
+.leben-project-hero:not([hidden])+.project-hero[aria-labelledby="project-name"]{display:none}
+/* SOLLAHMS_LEBEN_RAW_HERO_END */
+
+/* SOLLAHMS_NO_SCRIPT_NAV_START */
+@media (scripting: none) and (max-width: 900px) {
+  header:has([aria-controls="mobile-menu"]) {
+    position: static !important;
+    height: auto !important;
+  }
+  #mobile-menu {
+    display: block !important;
+    position: static !important;
+  }
+  header button[aria-controls="mobile-menu"] { display: none !important; }
+}
+/* SOLLAHMS_NO_SCRIPT_NAV_END */

@@ -1,0 +1,8 @@
+/* Scoped image presentation: preserve full building and gallery proportions. */
+.photo-project-hero .hero-image{object-fit:contain;object-position:right center;width:52%;left:auto;right:0;background:#002e27}
+.photo-project-hero .hero-shade{background:linear-gradient(90deg,#003229 42%,rgba(0,50,41,.4) 65%,transparent)}
+.photo-project-hero .hero-content>*{max-width:47%}
+.photo-project-hero h1{font-size:clamp(2.5rem,4vw,4rem)}
+.brochure-gallery img{object-fit:contain;background:#f2f4f0}
+.catalog-cover img[src*="/brochures-20261025/"],.brochure-home-cover{object-fit:contain!important;background:#edf1ed}
+@media(max-width:700px){.photo-project-hero{display:flex;flex-direction:column;align-items:stretch;min-height:0}.photo-project-hero .hero-image{position:relative;inset:auto;width:100%;height:320px;object-position:center;z-index:auto}.photo-project-hero .hero-shade{display:none}.photo-project-hero .hero-content{padding-top:28px}.photo-project-hero .hero-content>*{max-width:100%}.photo-project-hero h1{font-size:2.65rem}.brochure-gallery{grid-template-columns:1fr}.brochure-gallery img{aspect-ratio:4/3;height:auto;max-height:480px}}
