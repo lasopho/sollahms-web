@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-25T19:44:36.419539+00:00",
+  "domain": "https://sollahms.cl/",
+  "publishedDeployment": "dpl_uXwF4hPAnqTKeQJXATTswhdEV74R",
+  "sourceCommit": "1c7885b41f0c3a548845580c0e99f3a7bf7a3cef",
+  "previousDeployment": "dpl_awW6NxX9nDVyu6nreq12TT9uxkQc",
+  "previousState": "READY",
+  "main": "86e200ec191b38af355061e21bc0fc1e549cce3b",
+  "mainUnchanged": true,
+  "branch": "codex/captacion-20261025",
+  "autoDeploy": false,
+  "ssoProtection": {
+    "enabled": true,
+    "deploymentType": "all_except_custom_domains"
+  },
+  "httpChecks": {
+    "candidatePassed": 7,
+    "publicPassed": 16,
+    "productionPosts": 0
+  },
+  "tests": {
+    "advisoryPassed": 20,
+    "operationRegressionPassed": 6
+  },
+  "publicRoutes": [
+    "/",
+    "/contacto.html",
+    "/agenda-asesoria.html"
+  ],
+  "existingFilesUnchanged": 903,
+  "existingFunctionsUnchanged": true,
+  "destination": "Resend → contacto@sollahms.cl; same sender and recipient as prior contact flow",
+  "noCrmOrBookingActivation": true,
+  "noClientMessagesSent": true,
+  "uf": {
+    "date": "2026-10-25",
+    "valueClp": 41215.77,
+    "source": "SII"
+  },
+  "errorScan": {
+    "window": "2026-10-25T19:33:32.800Z/2026-10-25T19:43:32.800Z",
+    "levels": [
+      "error",
+      "fatal"
+    ],
+    "result": "No logs found for the specified criteria"
+  },
+  "limitation": "Controlled transport and server-side reception verified with synthetic data. Real Resend acceptance and delivery to the production mailbox were not exercised, as real test messages were prohibited. No conversion uplift measured."
+}
