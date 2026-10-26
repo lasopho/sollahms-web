@@ -14,7 +14,7 @@ const handler=createAdvisoryHandler({getApiKey:()=> 'isolated-test',getDeliveryM
   assert.equal(url,'https://api.resend.com/emails');captured.push({key:options.headers['Idempotency-Key'],email:JSON.parse(options.body)});
   return Response.json({id:'isolated-'+captured.length});
 }});
-const synthetic={nombre:'Prueba sintética',medio:'correo',correo:'qa@example.invalid',telefono:'+56 9 0000 0000',objetivo:'',mensaje:'Consulta de prueba',consent:true,website:''};
+const synthetic={nombre:'Prueba sintética',rut:'1000005-K',correo:'qa@example.invalid',telefono:'+56 9 0000 0000',objetivo:'',mensaje:'Consulta de prueba',consent:true,website:''};
 const identity=slug=>resolveProjectIdentity(catalogue,slug);
 const payload=(options={})=>composeProjectRequest({values:synthetic,project:identity('pintor-cicarelli-i'),intent:'cotizacion',startedAt:Date.now()-5000,...options});
 const request=(body)=>new Request('https://sollahms.cl/api/advisory',{method:'POST',headers:{'Content-Type':'application/json',Origin:'https://sollahms.cl','Idempotency-Key':`sollahms-v1-${Date.now()}-${randomUUID()}`},body:JSON.stringify(body)});
@@ -26,7 +26,7 @@ test('all live projects retain a server-recognized identity and canonical origin
     assert.deepEqual(await result.json(),{ok:true,providerAccepted:true,deliveryConfirmed:false});
     const email=captured.at(-1).email;assert.deepEqual(email.to,['contacto@sollahms.cl']);assert.equal(email.from,'Sollahms Web <formularios@forms.sollahms.cl>');
     assert.ok(email.text.includes('Ficha de origen: https://sollahms.cl'+project.detalleUrl));assert.ok(email.text.includes('Identificador: '+body.proyecto));
-    assert.equal(email.reply_to,synthetic.correo);assert.ok(!email.text.includes('Teléfono:'));
+    assert.equal(email.reply_to,synthetic.correo);assert.ok(email.text.includes('Teléfono: +56900000000'));assert.ok(email.text.includes('RUT: 1000005-K'));
   }
 });
 test('explicit commercial stages stay associated with their own published context',async()=>{
@@ -37,16 +37,16 @@ test('explicit commercial stages stay associated with their own published contex
     assert.equal((await handler.fetch(request(body))).status,200);
   }
 });
-test('call collects name and phone only; time is explicitly a preference',async()=>{
+test('call retains all four fields; time is explicitly a preference',async()=>{
   const body=payload({intent:'llamada',values:{...synthetic,franja:'Tardes'}});
-  assert.equal(body.correo,undefined);assert.equal(body.medio,'telefono');assert.match(body.mensaje,/Horario preferido \(no es una reserva\): Tardes/);
-  assert.equal((await handler.fetch(request(body))).status,200);assert.equal(captured.at(-1).email.reply_to,undefined);
+  assert.equal(body.correo,synthetic.correo);assert.equal(body.solicitud,'llamada');assert.equal(body.rut,synthetic.rut);assert.match(body.mensaje,/Horario preferido \(no es una reserva\): Tardes/);
+  assert.equal((await handler.fetch(request(body))).status,200);assert.equal(captured.at(-1).email.reply_to,synthetic.correo);
 });
-test('quote may also use phone without email',()=>{const body=payload({values:{...synthetic,medio:'telefono'}});assert.equal(body.correo,undefined);assert.equal(body.telefono,synthetic.telefono);});
+test('obsolete channel preference cannot exclude either contact field',()=>{const body=payload({values:{...synthetic,medio:'telefono'}});assert.equal(body.correo,synthetic.correo);assert.equal(body.telefono,'+56900000000');assert.equal(body.medio,undefined);});
 test('optional goal/message/time may be omitted',()=>{const body=payload({values:{...synthetic,mensaje:'',objetivo:''}});assert.equal(body.objetivo,'');assert.match(body.mensaje,/Solicitar cotización/);assert.ok(!body.mensaje.includes('Horario'));});
-test('name, chosen contact and consent are required, without asking for RUT',()=>{
-  for(const [field,values,intent] of [['nombre',{...synthetic,nombre:''},'cotizacion'],['correo',{...synthetic,correo:'incorrecto'},'cotizacion'],['telefono',{...synthetic,telefono:'123'},'llamada'],['consent',{...synthetic,consent:false},'cotizacion']])assert.ok(validateProjectRequest(values,intent)[field]);
-  assert.deepEqual(validateProjectRequest(synthetic,'cotizacion'),{});assert.ok(!('rut' in payload()));
+test('all four contact fields and consent are required',()=>{
+  for(const [field,values,intent] of [['nombre',{...synthetic,nombre:''},'cotizacion'],['rut',{...synthetic,rut:''},'llamada'],['correo',{...synthetic,correo:'incorrecto'},'cotizacion'],['telefono',{...synthetic,telefono:'123'},'llamada'],['consent',{...synthetic,consent:false},'cotizacion']])assert.ok(validateProjectRequest(values,intent)[field]);
+  assert.deepEqual(validateProjectRequest(synthetic,'cotizacion'),{});assert.equal(payload().rut,synthetic.rut);
 });
 test('server validation and preview protections still reject without sending',async()=>{
   const before=captured.length;

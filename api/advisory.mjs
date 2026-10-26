@@ -1,9 +1,10 @@
 import projects from '../data/advisory-projects.json' with { type: 'json' };
 import { readOperationKey } from '../lib/form-operation-server.mjs';
-import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
+import {validateCommercialFields, normalizedCommercialFields} from '../assets/js/commercial-fields.mjs';
 
+const requests={asesoria:'Asesoría',informacion:'Información',cotizacion:'Cotización',llamada:'Llamada'};
 const goals = { '': 'Sin especificar', patrimonio: 'Aumentar mi patrimonio', diversificar: 'Diversificar mis inversiones', propiedad: 'Una propiedad en particular', orientacion: 'Aún lo estoy definiendo' };
-const allowed = new Set(['nombre', 'rut', 'medio', 'correo', 'telefono', 'objetivo', 'mensaje', 'consent', 'website', 'startedAt', 'proyecto']);
+const allowed = new Set(['nombre', 'rut', 'medio', 'solicitud', 'correo', 'telefono', 'objetivo', 'mensaje', 'consent', 'website', 'startedAt', 'proyecto']);
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
 const escape = value => value.replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
 const uncertain = () => json({ ok: false, code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Tus datos siguen aquí. Reintenta sin cambiarlos o escribe a contacto@sollahms.cl para verificar la solicitud.' }, 502);
@@ -27,17 +28,10 @@ export function createAdvisoryHandler({ fetchImpl = (...args) => fetch(...args),
     } catch { return json({ error: 'No pudimos leer la solicitud. Revisa el formulario.' }, 400); }
     if (!body || Array.isArray(body) || typeof body !== 'object' || Object.keys(body).some(k => !allowed.has(k)) || Object.entries(body).some(([k,v]) => !['consent','startedAt'].includes(k) && typeof v !== 'string')) return json({ error: 'Revisa los datos del formulario.' }, 400);
     if (body.website?.trim()) return json({ error: 'No pudimos validar la solicitud.' }, 400);
-    const nombre = (body.nombre || '').trim(), correo = (body.correo || '').trim(), telefono = (body.telefono || '').trim(), mensaje = (body.mensaje || '').trim();
-    const objetivo = body.objetivo || '', medio = body.medio;
-    const errors = {};
-    if (!nombre || nombre.length > 100 || /[\u0000-\u001f\u007f]/.test(nombre)) errors.nombre = 'Escribe tu nombre.';
-    const rut=normalizeRut(body.rut??'');
-    if(rut===null)errors.rut=RUT_ERROR;
-    if (!['correo','telefono'].includes(medio)) errors.medio = 'Elige cómo prefieres que te contactemos.';
-    if (medio === 'correo' && (!/^[^\s@<>(),;:"\\]+@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9]{2,63}$/i.test(correo) || correo.length > 254 || /[\u0000-\u001f\u007f]/.test(correo))) errors.correo = 'Escribe un correo válido, por ejemplo nombre@ejemplo.cl.';
-    if (medio === 'telefono' && (!/^[+()\d .-]+$/.test(telefono) || telefono.length > 30 || (telefono.match(/\d/g)||[]).length < 9 || (telefono.match(/\d/g)||[]).length > 15)) errors.telefono = 'Escribe un teléfono válido con código de país.';
-    // Only the chosen contact channel is collected, never a hidden second value.
-    if ((medio === 'correo' && telefono) || (medio === 'telefono' && correo)) return json({ error: 'Envía sólo el medio de contacto elegido.' }, 400);
+    const errors=validateCommercialFields(body);
+    const {nombre,rut,correo,telefono}=normalizedCommercialFields(body);
+    const mensaje=(body.mensaje||'').trim(),objetivo=body.objetivo||'',solicitud=body.solicitud||'asesoria';
+    if(!Object.hasOwn(requests,solicitud))errors.solicitud='Revisa el tipo de solicitud.';
     if (!Object.hasOwn(goals, objetivo)) errors.objetivo = 'Revisa el objetivo seleccionado.';
     if (mensaje.length > 2000 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(mensaje)) errors.mensaje = 'Usa hasta 2.000 caracteres en tu mensaje.';
     if (body.consent !== true) errors.consent = 'Autoriza el uso de tus datos para responder la solicitud.';
@@ -51,11 +45,10 @@ export function createAdvisoryHandler({ fetchImpl = (...args) => fetch(...args),
     // Same authorized channel, sender and recipient as the existing contact flow.
     // Fail closed if a different channel is configured; this endpoint cannot activate CRM.
     if (getDeliveryMode() !== 'resend' || !getApiKey()?.trim()) return json({ code:'contact_configuration_unavailable', error:'El formulario no está disponible. Conserva tu mensaje o escribe a contacto@sollahms.cl.' }, 503);
-    const lines = ['Solicitud de asesoría desde Sollahms', '', 'Nombre: '+nombre, 'Medio preferido: '+(medio === 'correo' ? 'Correo electrónico' : 'Llamada telefónica'), (medio === 'correo' ? 'Correo: '+correo : 'Teléfono: '+telefono), 'Objetivo: '+goals[objetivo]];
-    if(rut)lines.splice(3,0,'RUT: '+rut);
+    const lines = ['Solicitud desde Sollahms', '', 'Nombre: '+nombre, 'RUT: '+rut, 'Correo: '+correo, 'Teléfono: '+telefono, 'Tipo de solicitud: '+requests[solicitud], 'Objetivo: '+goals[objetivo]];
     if (body.proyecto) lines.push('Proyecto: '+projectIndex[body.proyecto], 'Identificador: '+body.proyecto);
-    lines.push('Mensaje: '+(mensaje || 'Sin mensaje adicional.'), '', 'Consentimiento: autorizado para responder esta solicitud y, si se proporcionó RUT, identificar al interesado y dar continuidad a la evaluación solicitada conforme a la política de privacidad. Sin autorización de marketing.', 'Esta solicitud no reserva una propiedad ni confirma una cita.');
-    const email = { from:'Sollahms Web <formularios@forms.sollahms.cl>', to:['contacto@sollahms.cl'], subject:'Solicitud de asesoría desde Sollahms', text:lines.join('\n'), html:'<!doctype html><html lang="es"><body><h1>Solicitud de asesoría</h1><p style="white-space:pre-wrap">'+escape(lines.slice(2).join('\n'))+'</p></body></html>', ...(medio === 'correo' ? {reply_to:correo} : {}) };
+    lines.push('Mensaje: '+(mensaje || 'Sin mensaje adicional.'), '', 'Consentimiento: autorizado para responder esta solicitud e identificar al interesado y dar continuidad a la evaluación solicitada conforme a la política de privacidad. Sin autorización de marketing.', 'Esta solicitud no reserva una propiedad ni confirma una cita.');
+    const email = { from:'Sollahms Web <formularios@forms.sollahms.cl>', to:['contacto@sollahms.cl'], subject:'Solicitud de asesoría desde Sollahms', text:lines.join('\n'), html:'<!doctype html><html lang="es"><body><h1>Solicitud de asesoría</h1><p style="white-space:pre-wrap">'+escape(lines.slice(2).join('\n'))+'</p></body></html>', reply_to:correo };
     try {
       const response = await fetchImpl('https://api.resend.com/emails', {method:'POST',headers:{Authorization:'Bearer '+getApiKey().trim(),'Content-Type':'application/json','Idempotency-Key':'advisory/'+operation.key},body:JSON.stringify(email),signal:AbortSignal.timeout(10_000)});
       if (response.status === 409) {

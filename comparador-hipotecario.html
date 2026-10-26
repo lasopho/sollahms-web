@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/hipotecario.css?v=20261025-visual-1">
-  <script type="module" src="/assets/js/hipotecario.mjs?v=20261026-rut-1"></script>
+  <link rel="stylesheet" href="/assets/css/hipotecario.css?v=20261026-required-1">
+  <script type="module" src="/assets/js/hipotecario.mjs?v=20261026-required-1"></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sollahms">
 <meta property="og:locale" content="es_CL">
@@ -116,20 +116,20 @@
     </section>
     <section id="lead-section" class="panel lead-section" hidden aria-labelledby="lead-title">
       <div class="lead-intro"><div class="section-label"><span class="step-number">03</span><p class="eyebrow">TU SIGUIENTE PASO</p></div><h2 id="lead-title" tabindex="-1">Conversemos sobre tu financiamiento.</h2><p class="muted">Puedes solicitar que un asesor revise estos números junto con tus datos para evaluar el próximo paso.</p><div id="lead-context" class="lead-context"></div><p class="field-help">No necesitas compartir información bancaria ni credenciales.</p></div>
-      <form id="lead-form" method="post" action="/api/contact" aria-describedby="lead-status">
-        <!-- FORM_PROGRESSIVE_LEAD_FIELDS_OPEN_START -->
-        <fieldset id="lead-fields-controls" aria-label="Datos para solicitar asesoría" style="min-width:0;margin:0;padding:0;border:0" disabled>
-        <!-- FORM_PROGRESSIVE_LEAD_FIELDS_OPEN_END -->
-        <div class="honeypot" aria-hidden="true"><label for="website">Sitio web</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-        <div class="lead-fields"><div class="field"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required></div><div class="field"><label for="lead-rut">RUT</label><input id="lead-rut" name="rut" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="14" aria-describedby="lead-rut-help lead-rut-error"/><p class="field-help" id="lead-rut-help">Para identificarte y dar continuidad a tu evaluación. Opcional.</p><p class="field-error" id="lead-rut-error" hidden></p></div><div class="field"><label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" autocomplete="email" maxlength="254" required></div>
-        <div class="field"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="30" placeholder="+56 9 1234 5678" required aria-describedby="phone-help"><p class="field-help" id="phone-help">Incluye el código de país si corresponde.</p></div></div>
-        <div class="field"><label for="comentario">Comentario <span>opcional</span></label><textarea id="comentario" name="comentario" rows="3" maxlength="3000" placeholder="Cuéntanos qué estás evaluando"></textarea></div>
-        <label class="consent" for="consent"><input id="consent" name="consent" type="checkbox" required><span>Autorizo a Sollahms a tratar mis datos y esta simulación para responder mi solicitud de asesoría y, si proporciono RUT, identificarme y dar continuidad a la evaluación solicitada, según su <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
-        <button type="submit" class="button button-green full" id="lead-submit">Solicitar asesoría</button><p id="lead-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></p><p class="field-help">También puedes escribir a <a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a>.</p>
-        <!-- FORM_PROGRESSIVE_LEAD_FIELDS_CLOSE_START -->
-        </fieldset>
-        <!-- FORM_PROGRESSIVE_LEAD_FIELDS_CLOSE_END -->
-      </form>
+      <form action="/api/contact" aria-describedby="lead-status lead-required" id="lead-form" method="post" novalidate="">
+<!-- FORM_PROGRESSIVE_LEAD_FIELDS_OPEN_START -->
+<fieldset aria-label="Datos para solicitar asesoría" disabled="" id="lead-fields-controls" style="min-width:0;margin:0;padding:0;border:0">
+<!-- FORM_PROGRESSIVE_LEAD_FIELDS_OPEN_END -->
+<div aria-hidden="true" class="honeypot"><label for="website">Sitio web</label><input autocomplete="off" id="website" name="website" tabindex="-1" type="text"/></div>
+<p class="field-help" id="lead-required">Nombre completo, RUT, correo electrónico y teléfono son obligatorios.</p><div class="lead-fields"><div class="field"><label for="nombre">Nombre completo</label><input aria-describedby="lead-name-error" autocomplete="name" id="nombre" maxlength="100" name="nombre" required="" type="text"/><p class="field-error" hidden="" id="lead-name-error"></p></div><div class="field"><label for="lead-rut">RUT</label><input aria-describedby="lead-rut-help lead-rut-error" autocapitalize="characters" autocomplete="off" id="lead-rut" inputmode="text" maxlength="14" name="rut" required="" spellcheck="false" type="text"/><p class="field-help" id="lead-rut-help">Para identificarte y dar continuidad a tu evaluación.</p><p class="field-error" hidden="" id="lead-rut-error"></p></div><div class="field"><label for="correo">Correo electrónico</label><input aria-describedby="lead-email-error" autocomplete="email" id="correo" maxlength="254" name="correo" required="" type="email"/><p class="field-error" hidden="" id="lead-email-error"></p></div>
+<div class="field"><label for="telefono">Teléfono</label><input aria-describedby="phone-help lead-phone-error" autocomplete="tel" id="telefono" maxlength="30" name="telefono" placeholder="+56 9 1234 5678" required="" type="tel"/><p class="field-help" id="phone-help">En Chile, escribe 9 dígitos. Para otro país, incluye + y su código.</p><p class="field-error" hidden="" id="lead-phone-error"></p></div></div>
+<div class="field"><label for="comentario">Comentario <span>opcional</span></label><textarea id="comentario" maxlength="3000" name="comentario" placeholder="Cuéntanos qué estás evaluando" rows="3"></textarea></div>
+<label class="consent" for="consent"><input aria-describedby="lead-consent-error" id="consent" name="consent" required="" type="checkbox"/><span>Autorizo a Sollahms a tratar mis datos y esta simulación para responder mi solicitud de asesoría e identificarme y dar continuidad a la evaluación solicitada, según su <a href="/privacidad.html" rel="noopener" target="_blank">política de privacidad</a>.</span></label><p class="field-error" hidden="" id="lead-consent-error"></p>
+<button class="button button-green full" id="lead-submit" type="submit">Solicitar asesoría</button><p aria-atomic="true" aria-live="polite" class="form-status" id="lead-status" role="status"></p><p class="field-help">También puedes escribir a <a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a>.</p>
+<!-- FORM_PROGRESSIVE_LEAD_FIELDS_CLOSE_START -->
+</fieldset>
+<!-- FORM_PROGRESSIVE_LEAD_FIELDS_CLOSE_END -->
+</form>
     </section>
     <section class="methodology" aria-labelledby="method-title"><p class="eyebrow">INFORMACIÓN PARA DECIDIR</p><h2 id="method-title">Lo que considera tu simulación</h2><div class="method-grid"><details><summary>¿Cómo calculamos el dividendo?</summary><p>Usamos amortización de cuotas constantes en UF: dividendo = capital × i / (1 − (1 + i)<sup>−n</sup>), donde i es la tasa mensual y n el número de meses. Con tasa cero, capital / n. Una tasa nominal anual convertible mensualmente se divide por 12; una tasa anual efectiva se convierte con (1 + tasa anual)<sup>1/12</sup> − 1.</p></details><details><summary>¿Qué gastos están incluidos?</summary><p>El dividendo financiero contiene capital e intereses. Los seguros, gastos operacionales, impuestos e inscripciones sólo se agregan cuando la fuente los verifica para el mismo escenario. La suma de dividendos financieros no equivale al costo total con todos los gastos. El pie se informa por separado.</p></details><details><summary>¿Por qué puede no aparecer un banco?</summary><p>La información puede estar vencida, pendiente de verificación o no aplicar a tu monto, pie, plazo o ubicación. No extrapolamos CAE ni campañas a otros perfiles. Puedes simular con una tasa de tu cotización y solicitar asesoría igualmente.</p></details><details><summary>¿Cómo se convierte a pesos?</summary><p id="uf-method">Se utiliza una UF con fecha y fuente identificadas. El equivalente es una referencia para esa fecha, no una proyección de pagos futuros en pesos.</p><p><a href="https://www.sii.cl/valores_y_fechas/uf/uf2026.htm" target="_blank" rel="noopener">Consultar UF en SII ↗</a> · <a href="https://servicios.cmfchile.cl/simuladorhipotecario" target="_blank" rel="noopener">Consultar simulador CMF ↗</a></p></details></div></section>
   </div>

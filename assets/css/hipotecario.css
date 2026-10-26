@@ -983,3 +983,7 @@ input:focus,select:focus,textarea:focus {
   header button[aria-controls="mobile-menu"] { display: none !important; }
 }
 /* SOLLAHMS_NO_SCRIPT_NAV_END */
+/* Inline errors belong to the lead form, never to the calculator. */
+#lead-form .field-error{color:var(--s-error);font-size:.8rem;line-height:1.5;margin:.4rem 0}
+#lead-form [aria-invalid=true]{border-color:var(--s-error)}
+#lead-form [hidden]{display:none!important}

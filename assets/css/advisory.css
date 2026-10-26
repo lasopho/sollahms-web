@@ -46,3 +46,8 @@
 .advisory-page-heading>div>p:last-of-type{max-width:60ch;color:var(--s-muted);line-height:1.8;font-size:1.05rem}
 .advisory-jump{display:inline-block;margin-top:1.5rem;text-decoration:underline;text-underline-offset:.3rem;font-size:.9rem;font-weight:600}
 @media(max-width:767px){.advisory-section{padding:2.5rem 1.25rem}.advisory-layout{grid-template-columns:1fr;gap:2.5rem}.advisory-panel{padding:1.5rem}.advisory-page-heading{padding:2.5rem 1.5rem 2rem}.advisory-page .advisory-panel{grid-row:1}.advisory-page .advisory-copy{grid-row:2}.advisory-copy h2{max-width:23ch}.advisory-options{gap:.3rem 1rem}.advisory-page header nav>a{flex-shrink:0}.advisory-page header nav>div>a{font-size:.7rem}.advisory-section :focus-visible{outline-offset:2px}}
+
+/* Four visible identification/contact fields; one column on mobile. */
+.advisory-identity{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1rem}
+.advisory-panel .advisory-required{margin:0 0 1.1rem}
+@media(max-width:767px){.advisory-identity{grid-template-columns:1fr}}

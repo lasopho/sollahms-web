@@ -1,6 +1,6 @@
 import dataset from '../data/hipotecario.json' with { type: 'json' };
 import catalogue from '../data/proyectos.json' with { type: 'json' };
-import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
+import {validateCommercialFields, normalizedCommercialFields} from '../assets/js/commercial-fields.mjs';
 import { mortgageSummaryLines, validateMortgageLead, validFormTiming } from '../lib/mortgage-lead.mjs';
 import { createOfficialUfService } from '../lib/official-uf.mjs';
 import { getUfStatus } from '../assets/js/mortgage-data.mjs';
@@ -77,17 +77,11 @@ function validShape(body) {
 
 function validate(body, projectIndex) {
   const invalid = { error: 'Revisa los datos del formulario.' };
-  const nombre = body.nombre?.trim() || '';
-  const correo = body.correo?.trim() || '';
-  const telefono = body.telefono?.trim() || '';
-  const mensaje = body.mensaje?.trim() || '';
-  if (normalizeRut(body.rut ?? '') === null) return { code: 'invalid_rut', error: RUT_ERROR };
-  if (!nombre || nombre.length > 100 || /[\u0000-\u001f\u007f]/.test(nombre)) return invalid;
-  const emailPattern = /^[^\s@<>(),;:"\\[\].]+(?:\.[^\s@<>(),;:"\\[\].]+)*@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/i;
-  if (!correo || correo.length > 254 || /[\u0000-\u001f\u007f]/.test(correo) || !emailPattern.test(correo)) return invalid;
-  if (telefono.length > 30 || /[\u0000-\u001f\u007f]/.test(telefono)) return invalid;
-  const hipotecario = body.mortgage !== undefined;
-  if (hipotecario && (!/^[+()\d .-]+$/.test(telefono) || (telefono.match(/\d/g) || []).length < 9 || (telefono.match(/\d/g) || []).length > 15)) return invalid;
+  const fieldErrors=validateCommercialFields(body);
+  if(Object.keys(fieldErrors).length)return {...invalid,fieldErrors};
+  const {nombre,rut,correo,telefono}=normalizedCommercialFields(body);
+  const mensaje=body.mensaje?.trim()||'';
+  const hipotecario=body.mortgage!==undefined;
   if (mensaje.length < (hipotecario ? 1 : 10) || mensaje.length > 5000 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(mensaje)) return invalid;
   const hasProject = Object.hasOwn(body, 'proyecto');
   if (hasProject && !Object.hasOwn(projectIndex, body.proyecto)) return { code: 'invalid_project', error: 'Revisa el proyecto de la consulta.' };
@@ -97,9 +91,8 @@ function validate(body, projectIndex) {
   const asunto = hipotecario
     ? (nombreProyecto ? 'Asesoría hipotecaria sobre ' + nombreProyecto : 'Asesoría hipotecaria desde Sollahms')
     : (nombreProyecto ? 'Consulta sobre ' + nombreProyecto : 'Consulta desde Sollahms');
-  // Optional identification supplied with specific contact consent, never a lookup.
-  const rut=normalizeRut(body.rut??'');
-  return { fields: { nombre, correo, telefono, ...(rut?{rut}:{}), asunto, mensaje, proyecto, nombreProyecto }, project };
+  // Required identification supplied with specific consent, never a lookup.
+  return { fields: { nombre, rut, correo, telefono, asunto, mensaje, proyecto, nombreProyecto }, project };
 }
 
 export function createContactHandler({

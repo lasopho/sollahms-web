@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 STYLE = '/assets/css/project-journey.css?v=20261026-1'
-SCRIPT = '/assets/js/project-request.mjs?v=20261026-rut-1'
+SCRIPT = '/assets/js/project-request.mjs?v=20261026-required-1'
 UNKNOWN = re.compile(r'confirmar|consultar|pendiente|no disponible', re.I)
 
 def fragment(value):
@@ -154,7 +154,7 @@ def apply_project_journey(page, project):
         heading=soup.new_tag('summary',attrs={'data-scroll-static':''});heading.string='Evaluar financiamiento';finance.append(heading)
         mortgage['class']=['pj-text-link'];finance.append(mortgage);content.append(finance)
     form=Template((ROOT/'templates/project-contact.html').read_text()).substitute(slug=html.escape(project['slug'],quote=True),name=html.escape(project['nombre'],quote=True))
-    contact=fragment('<section class="pj-contact" data-scroll-static="" aria-labelledby="pj-contact-title"><div class="container pj-contact-layout"><div class="pj-contact-copy"><p class="eyebrow">EL SIGUIENTE PASO</p><h2 id="pj-contact-title">Recibe información para decidir</h2><p>Solicita una cotización o pide que te llamemos sobre '+html.escape(project['nombre'])+'. Usaremos el medio elegido para revisar tu consulta y coordinar el siguiente paso.</p><details class="pj-disclosure"><summary>¿Qué pasa después de enviar?</summary><p>La solicitud se dirige al equipo de Sollahms con el nombre del proyecto. Revisaremos los antecedentes y los datos que necesites confirmar. No se genera una cotización instantánea ni se garantiza disponibilidad.</p></details><details class="pj-disclosure"><summary>¿La solicitud reserva una propiedad o una cita?</summary><p>No. Es una solicitud de contacto; los precios, las condiciones y cualquier coordinación deben confirmarse posteriormente.</p></details></div>'+form+'</div></section>').section
+    contact=fragment('<section class="pj-contact" data-scroll-static="" aria-labelledby="pj-contact-title"><div class="container pj-contact-layout"><div class="pj-contact-copy"><p class="eyebrow">EL SIGUIENTE PASO</p><h2 id="pj-contact-title">Recibe información para decidir</h2><p>Solicita una cotización o pide que te llamemos sobre '+html.escape(project['nombre'])+'. Usaremos tus datos de contacto para revisar tu consulta y coordinar el siguiente paso.</p><details class="pj-disclosure"><summary>¿Qué pasa después de enviar?</summary><p>La solicitud se dirige al equipo de Sollahms con el nombre del proyecto. Revisaremos los antecedentes y los datos que necesites confirmar. No se genera una cotización instantánea ni se garantiza disponibilidad.</p></details><details class="pj-disclosure"><summary>¿La solicitud reserva una propiedad o una cita?</summary><p>No. Es una solicitud de contacto; los precios, las condiciones y cualquier coordinación deben confirmarse posteriormente.</p></details></div>'+form+'</div></section>').section
     for old in aside.select('[id]'):
         if not main.find(id=old['id']) or old.find_parent('aside'):
             contact.insert(0,soup.new_tag('span',attrs={'id':old['id'],'class':'pj-legacy-anchor'}))
@@ -177,7 +177,7 @@ def apply_project_journey(page, project):
             if a['href'].startswith('/agenda-asesoria.html'):
                 a['href']='#solicitar-cotizacion';a['data-request-intent']='cotizacion';a.string='Solicitar cotización'
         page=page[:header.start()]+str(h)+page[header.end():]
-    additions=f'<link rel="stylesheet" href="/assets/css/advisory.css?v=20261025-visual-1">\n<link rel="stylesheet" href="{STYLE}">\n<script type="module" src="{SCRIPT}"></script>\n'
+    additions=f'<link rel="stylesheet" href="/assets/css/advisory.css?v=20261026-required-1">\n<link rel="stylesheet" href="{STYLE}">\n<script type="module" src="{SCRIPT}"></script>\n'
     page=page.replace('</head>',additions+'</head>',1)
     return page
 

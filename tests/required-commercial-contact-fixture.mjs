@@ -1,0 +1,4 @@
+import {createContactHandler} from './contact.mjs';
+// Protected QA only: factory transport never reaches a real service.
+const opts={getEnvironment:()=> 'production',getDeliveryMode:()=> 'resend',getApiKey:()=> 'synthetic-only',resolveUf:async()=>({date:'2026-10-26',valueClp:41221.08,source:{verifiedAt:'2026-10-26'}}),persistCrmLead:()=>{throw Error('CRM forbidden');},fetchImpl:async(url,o)=>{const e=JSON.parse(o.body);if(url!=='https://api.resend.com/emails'||!e.text.includes('Nombre: QA')||e.reply_to!=='qa@example.invalid'||!e.text.includes('RUT: 1000005-K')||!e.text.includes('Correo: qa@example.invalid')||!e.text.includes('Teléfono: +56900000000'))return Response.json({}, {status:400});return Response.json({id:'synthetic-four-fields-reception-only'});}};
+export default createContactHandler(opts);
