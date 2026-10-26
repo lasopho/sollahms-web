@@ -1,0 +1,23 @@
+{"passed":34,"checks":"reversibility, bounds/overscan, idle, offscreen work, mobile limit, reduced-motion change, fail-open, low resolution, letterbox, transform isolation, srcset density"}
+{"passed":31,"checks":"entry/center/exit, fixed header, reverse equivalence, idle, keyboard, selection, reduced motion toggle, fail-open, unsupported observer"}
+✔ mapping never drops or duplicates a catalogue record; every admitted point matches its source identity (1.680818ms)
+✔ same-coordinate towers stay at one true point and remain individually selectable (0.899591ms)
+✔ screen clustering combines near points at a wide view, separates on zoom and never mutates their coordinates (0.287616ms)
+✔ map filters and ordering are the same exact catalogue result set (6.76309ms)
+✔ return map state accepts only finite coordinates, zoom and a public project slug (0.548402ms)
+✔ map code keeps provider access lazy and separate from forms, scrolling and static fallbacks (1.503265ms)
+✔ all 132 source records and original ordering survive without mutation or duplicates (9.449817ms)
+✔ both numeric directions preserve stable ties, decimals and unknown prices last (3.847274ms)
+✔ search covers names, communes and developers with accent-insensitive matching (11.538869ms)
+✔ combined filters and maximum price exclude unavailable amounts, never use zero (0.562502ms)
+✔ mixed and commercial offers keep the exact selected typology and decimal amount (1.267997ms)
+✔ facts distinguish reception state from delivery and do not fill absent data (0.414153ms)
+✔ return state is bounded to catalogue values; view persists only as an enum (2.493501ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 186.301097

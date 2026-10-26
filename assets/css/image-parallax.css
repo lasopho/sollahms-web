@@ -14,3 +14,24 @@ body.home-fluid-b2 #portfolio .s-parallax-frame { height: 100%; }
 @media print {
   .s-parallax-frame > img[data-parallax-active] { translate: none; scale: none; }
 }
+
+/* Zoom only the photograph; layout, gradients, badges and actions remain fixed.
+   Individual scale composes with parallax translate without changing the fade. */
+body.home-fluid-b2 #portfolio .s-parallax-frame > img,
+.catalog-page .catalog-cover > .catalog-cover-image {
+  scale: calc(var(--s-image-scale, 1) * var(--s-card-zoom, 1));
+  transform-origin: center;
+  transition: scale 320ms cubic-bezier(.2,.7,.2,1);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.home-fluid-b2 #portfolio .grid > div:hover .s-parallax-frame > img,
+  .catalog-page .catalog-item:hover .catalog-cover-image { --s-card-zoom: 1.07; }
+}
+@media (prefers-reduced-motion: reduce), (forced-colors: active) {
+  body.home-fluid-b2 #portfolio .s-parallax-frame > img,
+  .catalog-page .catalog-cover > .catalog-cover-image { scale: none; translate: none; transition: none; }
+}
+@media print {
+  body.home-fluid-b2 #portfolio .s-parallax-frame > img,
+  .catalog-page .catalog-cover > .catalog-cover-image { scale: none; translate: none; transition: none; }
+}

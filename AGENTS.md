@@ -36,3 +36,6 @@ Keep Tarjetas/Listado/Mapa on the same catalogue filter/order model. Only `data/
 
 # Collaboration contact-only exception (2026-10-26)
 The owner now requires only email OR phone, plus specific consent, in both Trabaja con nosotros paths. Do not collect name, RUT, company or optional profile data there. The four-field rule still applies to existing project/commercial forms. Keep the collaboration footer link inside the same container as the other footer links, including generated fiches.
+
+# Stronger image motion and card hover
+Preserve approved gradients and the existing scroll fade byte-for-byte when adjusting image motion. `image-parallax.js/css` owns image translation and card-only hover scale; other image transforms must stay isolated. Home/project photos and catalogue cards/list rows may move within safe geometry; maps, plans, logos and forms stay static. Keep the current catalogue representation registered after filtering and release removed frames. Honor reduced motion, touch pointers and source resolution. See docs/strong-parallax-hover-20261026.

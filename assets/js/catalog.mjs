@@ -64,7 +64,7 @@ viewButtons.forEach(button=>button.addEventListener('click',()=>{
 function card(project){
   const article=element('article',undefined,'catalog-item');article.dataset.project=project.slug;
   const group=element('div',undefined,'catalog-card');
-  const cover=element('div',undefined,'catalog-cover');
+  const cover=element('div',undefined,'catalog-cover s-parallax-frame');
   const placeholder=()=>{const box=element('div',undefined,'catalog-cover-placeholder');const brand=element('img');brand.src='/assets/branding/sollahms-logo-light.svg';brand.alt='Sollahms';brand.width=114;brand.height=22;box.append(brand,element('span','Imagen no disponible'));cover.replaceChildren(box);};
   if(typeof project.imagenPrincipal==='string'&&/^\/assets\/propiedades\/[a-z0-9/._-]+\.(?:webp|jpe?g|png)$/i.test(project.imagenPrincipal)){
     const img=element('img',undefined,'catalog-cover-image');img.src=project.imagenPrincipal;img.alt=project.imagenAlt||'Imagen del proyecto '+project.nombre;img.width=1600;img.height=900;img.loading='lazy';img.decoding='async';img.addEventListener('error',placeholder,{once:true});cover.append(img);

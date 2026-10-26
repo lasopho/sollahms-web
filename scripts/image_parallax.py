@@ -2,13 +2,14 @@
 import re
 from bs4 import BeautifulSoup
 
-CSS = '<link rel="stylesheet" href="/assets/css/image-parallax.css?v=20261026-1">'
-SCRIPT = '<script src="/assets/js/image-parallax.js?v=20261026-1" defer></script>'
+CSS = '<link rel="stylesheet" href="/assets/css/image-parallax.css?v=20261026-2">'
+SCRIPT = '<script src="/assets/js/image-parallax.js?v=20261026-2" defer></script>'
 
 def apply_image_parallax(page):
     # Regeneration can replace a gallery while retaining its head resources.
     # Re-apply the opt-in instead of skipping newly generated photographs.
-    page = page.replace(CSS + '\n', '').replace(SCRIPT + '\n', '')
+    page = re.sub(r'<link rel="stylesheet" href="/assets/css/image-parallax\.css\?v=[^"]+">\n?', '', page)
+    page = re.sub(r'<script src="/assets/js/image-parallax\.js\?v=[^"]+" defer></script>\n?', '', page)
     page = re.sub(r'<span class="s-parallax-frame">(<img\b[^>]*>)</span>', r'\1', page)
     soup = BeautifulSoup(page, 'html.parser')
     fiche = soup.html and soup.html.get('data-project-header') == 'b'
