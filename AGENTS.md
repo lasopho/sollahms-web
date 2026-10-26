@@ -17,3 +17,10 @@ Public pages also load the deferred `/assets/js/scroll-presence.js` through `scr
 
 # Approved project header B
 All live project details use the exact approved Cicarelli B composition through `scripts/project_header_b.py` and `assets/css/project-header-b.css`. Preserve own project images and descriptive alt text; do not generate a visible generic render/brochure caption. Apply this final shared renderer when regenerating a detail page. Preserve the three featured page variants below the header. The owner now also requires `Asset Portafolio` for visible catalogue-section links, breadcrumbs and catalogue H1; do not change prose occurrences or URLs. See `docs/project-header-b-20261026/README.md` for guarded packaging and rollback.
+# Project fiche journey (2026-10-26)
+
+- Preserve the shared fiche organization in `scripts/project_journey.py`, invoked by `project_header_b.py` and the Sento/León generators. It supersedes the older featured-fiche layout while retaining its media and data.
+- Keep `Solicitar cotización` primary, `Quiero que me llamen` secondary, and local informational navigation tertiary. Contact must remain associated with the current verified project/stage.
+- Use `templates/project-contact.html` and `assets/js/project-request.mjs` with the unchanged advisory endpoint and consent. Never activate a provider, CRM or new destination as a side effect of regeneration.
+- Do not add opacity to controls or nest fades. Preserve the approved shared scroll implementation and B hero.
+- See `docs/project-journey-20261026/README.md` and run its preservation and isolated-contact checks when changing these components.

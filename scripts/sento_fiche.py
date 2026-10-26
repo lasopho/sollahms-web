@@ -151,7 +151,9 @@ def render(record):
     if slug == 'plaza-las-condes': page = render_featured(record, b, nav)
     page = page.replace('características verificadas', 'características')
     page = page.replace('</head>', '<link rel="stylesheet" href="/assets/css/sento.css?v=20261014"></head>', 1)
-    return page
+    from project_header_b import apply_header
+    project = next(p for p in json.loads((ROOT/'data/proyectos.json').read_text()) if p['slug'] == slug)
+    return apply_header(page, project)
 
 def render_featured(record, b, nav):
     page = (ROOT/'templates/sento-plaza-las-condes.html').read_text()
