@@ -1,6 +1,6 @@
 /* Shared presentation for the four featured fichas. Their original commercial
    content, publication profiles and specialized media geometry remain intact. */
-.featured-project-detail{--featured-green:#003d31;--featured-muted:#52665e;--featured-line:#dce4df;--featured-gold:#c6a66b;background:#f7f8f5;line-height:1.65}
+.featured-project-detail{--featured-green:var(--s-green);--featured-muted:var(--s-muted);--featured-line:var(--s-line);--featured-gold:var(--s-gold);background:var(--s-canvas);line-height:1.65}
 .featured-project-detail,.featured-project-detail .font-body{font-family:Inter,Arial,sans-serif}
 .featured-project-detail .material-symbols-outlined[aria-hidden="true"]{display:none}
 .featured-project-detail main{min-width:0}
@@ -10,8 +10,8 @@
 .featured-project-detail .leben-project-hero:not([hidden])+section[class~="h-[620px]"]{display:none}
 .featured-project-detail .leben-project-hero[hidden]{display:none!important}
 .featured-project-detail .featured-section-nav,.featured-project-detail .sento-featured-nav{display:flex;align-items:center;gap:4px;max-width:none;margin:0;padding:0 max(24px,calc((100% - 1320px)/2));overflow-x:auto;white-space:nowrap;background:#fff;border-bottom:1px solid var(--featured-line);font-size:.78rem;font-weight:700;scrollbar-width:thin}
-.featured-project-detail .featured-section-nav a,.featured-project-detail .sento-featured-nav a{display:inline-flex;align-items:center;min-height:48px;margin:6px 0;padding:12px 14px;border-radius:4px;color:var(--featured-muted);text-decoration:none}
-.featured-project-detail .featured-section-nav a:hover,.featured-project-detail .sento-featured-nav a:hover{background:#edf2ee;color:var(--featured-green)}
+.featured-project-detail .featured-section-nav a,.featured-project-detail .sento-featured-nav a{display:inline-flex;align-items:center;min-height:48px;margin:6px 0;padding:12px 14px;border-radius:var(--s-radius);color:var(--featured-muted);text-decoration:none}
+.featured-project-detail .featured-section-nav a:hover,.featured-project-detail .sento-featured-nav a:hover{background:var(--s-soft);color:var(--featured-green)}
 .featured-project-detail main>section.max-w-screen-2xl{width:100%;max-width:1368px;margin-inline:auto;padding:48px 24px 72px}
 .featured-project-detail [class~="lg:grid-cols-12"]{display:grid;grid-template-columns:minmax(0,1fr) 344px;gap:48px}
 .featured-project-detail [class~="lg:col-span-8"],.featured-project-detail aside[class~="lg:col-span-4"]{grid-column:auto;min-width:0}
@@ -26,29 +26,29 @@
 .featured-project-detail .featured-intro>p{font-size:1rem;max-width:720px}
 .featured-project-detail .featured-facts{background:transparent;padding:32px 0 0}
 .featured-project-detail .featured-facts>:not([hidden])~:not([hidden]){margin-top:0}
-.featured-project-detail .featured-facts>div,.featured-project-detail .spec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;padding:0 24px;border:1px solid var(--featured-line);border-radius:8px;background:#fff}
+.featured-project-detail .featured-facts>div,.featured-project-detail .spec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;padding:0 24px;border:1px solid var(--featured-line);border-radius:var(--s-radius);background:#fff}
 .featured-project-detail .featured-facts>div>div,.featured-project-detail .spec-grid>div{min-width:0;padding:18px 0;border-bottom:1px solid var(--featured-line)}
 .featured-project-detail .featured-facts>div>div>div:first-child,.featured-project-detail .spec-grid dt{font-size:.72rem;letter-spacing:.08em;line-height:1.5;color:var(--featured-muted)}
 .featured-project-detail .featured-facts>div>div>div:last-child,.featured-project-detail .spec-grid dd{font-size:.95rem;line-height:1.6;overflow-wrap:anywhere}
 .featured-project-detail .featured-gallery,.featured-project-detail .gallery-grid,.featured-project-detail .leben-gallery{gap:16px}
-.featured-project-detail .featured-gallery figure,.featured-project-detail .gallery-grid figure,.featured-project-detail .leben-gallery figure,.featured-project-detail .sento-model,.featured-project-detail .tour-card{border:1px solid var(--featured-line);border-radius:8px;background:#fff;min-width:0}
+.featured-project-detail .featured-gallery figure,.featured-project-detail .gallery-grid figure,.featured-project-detail .leben-gallery figure,.featured-project-detail .sento-model,.featured-project-detail .tour-card{border:1px solid var(--featured-line);border-radius:var(--s-radius);background:#fff;min-width:0}
 .featured-project-detail .featured-gallery a,.featured-project-detail .gallery-grid a,.featured-project-detail .leben-gallery a{display:block}
 .featured-project-detail figure:focus-within{outline:3px solid var(--featured-green);outline-offset:3px}
 .featured-project-detail .featured-verification>h2:not(:first-child){margin-top:32px}
 .featured-project-detail .featured-verification>ul{padding-left:20px;list-style:disc}
 .featured-project-detail .leben-complement{padding-top:0!important;border-top:0!important}
 .featured-project-detail .leben-complement>.leben-section{margin:0 0 40px;padding-top:32px;border-top:1px solid var(--featured-line)}
-.featured-project-detail .leben-pending,.featured-project-detail .sento-consumer-note,.featured-project-detail .price-commercial-note,.featured-project-detail .price-note{padding:16px 18px;border-left:3px solid var(--featured-gold);border-radius:4px;background:#fffaf0;line-height:1.65}
+.featured-project-detail .leben-pending,.featured-project-detail .sento-consumer-note,.featured-project-detail .price-commercial-note,.featured-project-detail .price-note{padding:16px 18px;border-left:3px solid var(--featured-gold);border-radius:var(--s-radius);background:var(--s-warning-soft);line-height:1.65}
 .featured-project-detail aside[class~="lg:col-span-4"]{align-self:stretch}
-.featured-project-detail aside[class~="lg:col-span-4"]>div{position:sticky;top:164px;max-height:calc(100vh - 188px);max-height:calc(100dvh - 188px);overflow-y:auto;scrollbar-gutter:stable;overscroll-behavior-y:contain;padding:28px;border:1px solid var(--featured-line);border-top:3px solid var(--featured-gold);border-radius:8px;box-shadow:0 10px 32px #0032290a;background:#fff}
+.featured-project-detail aside[class~="lg:col-span-4"]>div{position:sticky;top:164px;max-height:calc(100vh - 188px);max-height:calc(100dvh - 188px);overflow-y:auto;scrollbar-gutter:stable;overscroll-behavior-y:contain;padding:28px;border:1px solid var(--featured-line);border-top:3px solid var(--featured-gold);border-radius:var(--s-radius);box-shadow:0 10px 32px #0032290a;background:#fff}
 .featured-project-detail aside[class~="lg:col-span-4"]>div>:not([hidden])~:not([hidden]){margin-top:18px}
 .featured-project-detail aside h2{font-size:1.5rem;line-height:1.3;text-wrap:balance;overflow-wrap:anywhere}
 .featured-project-detail aside .label-blue-print{font-size:.68rem;letter-spacing:.16em}
 .featured-project-detail aside p{font-size:.8rem;line-height:1.65;overflow-wrap:anywhere}
 .featured-project-detail aside .price-block{padding:20px 0;border-block:1px solid var(--featured-line)}
 .featured-project-detail aside .price-label{font-size:.72rem;letter-spacing:.08em}
-.featured-project-detail aside a[href^="/contacto.html"],.featured-project-detail aside a[href^="/agenda-asesoria.html"],.featured-project-detail aside a[href^="/comparador-hipotecario.html"]{display:flex;align-items:center;justify-content:center;min-height:48px;padding:12px 14px;border:1px solid var(--featured-green);border-radius:4px;background:var(--featured-green);color:#fff;text-align:center;text-decoration:none;font-size:.8rem;font-weight:700;line-height:1.5;letter-spacing:0}
-.featured-project-detail aside a[href^="/agenda-asesoria.html"]{background:#e7c883;border-color:#e7c883;color:#183d32}
+.featured-project-detail aside a[href^="/contacto.html"],.featured-project-detail aside a[href^="/agenda-asesoria.html"],.featured-project-detail aside a[href^="/comparador-hipotecario.html"]{display:flex;align-items:center;justify-content:center;min-height:48px;padding:12px 14px;border:1px solid var(--featured-green);border-radius:var(--s-radius);background:var(--featured-green);color:#fff;text-align:center;text-decoration:none;font-size:.8rem;font-weight:700;line-height:1.5;letter-spacing:0}
+.featured-project-detail aside a[href^="/agenda-asesoria.html"]{background:var(--s-gold);border-color:var(--s-gold);color:var(--s-green)}
 .featured-project-detail aside a[href^="/comparador-hipotecario.html"]{background:#fff;color:var(--featured-green)}
 .featured-project-detail a:focus-visible,.featured-project-detail button:focus-visible,.featured-project-detail summary:focus-visible{outline:3px solid var(--featured-green);outline-offset:3px}
 .featured-project-detail .featured-section-nav a:focus-visible,.featured-project-detail .sento-featured-nav a:focus-visible{outline-offset:-3px}

@@ -15,41 +15,41 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* Homepage only: existing brand palette and typography. */
-.home-seo-hero-copy{max-width:50ch;margin:1.8rem auto 0;color:#eef3ee;font-size:1.05rem;line-height:1.75}
+.home-seo-hero-copy{max-width:50ch;margin:1.8rem auto 0;color:var(--s-soft);font-size:1.05rem;line-height:1.75}
 .home-seo-hero-actions{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;justify-content:center;margin-top:2rem}
-.home-seo-button{display:inline-flex;justify-content:center;background:#e9c176;color:#003229;padding:1rem 1.4rem;border-radius:.5rem;font-weight:700;text-align:center;line-height:1.4;transition:background .2s}
-.home-seo-button:hover{background:#f2d39b}
+.home-seo-button{display:inline-flex;justify-content:center;background:var(--s-gold);color:var(--s-green);padding:1rem 1.4rem;border-radius:var(--s-radius);font-weight:700;text-align:center;line-height:1.4;transition:background .2s}
+.home-seo-button:hover{background:var(--s-gold-hover)}
 .home-seo-text-link{color:#fff;text-underline-offset:.35em;text-decoration:underline;font-weight:600}
-.home-seo-section{padding:6rem 2rem;background:#f8f9ff;color:#003229}
+.home-seo-section{padding:6rem 2rem;background:var(--s-canvas);color:var(--s-green)}
 .home-seo-wrap{max-width:1216px;margin:0 auto}
-.home-seo-eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.18em;color:#79623b;margin-bottom:1rem}
+.home-seo-eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.18em;color:var(--s-gold-ink);margin-bottom:1rem}
 .home-seo-section h2{max-width:20ch;font-size:clamp(2rem,3.2vw,3.1rem);font-weight:800;letter-spacing:-.035em;line-height:1.15}
-.home-seo-intro{max-width:62ch;margin-top:1.25rem;color:#4b6059;font-size:1.05rem;line-height:1.75}
+.home-seo-intro{max-width:62ch;margin-top:1.25rem;color:var(--s-muted);font-size:1.05rem;line-height:1.75}
 .home-seo-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin:3rem 0 2rem;padding:0;counter-reset:steps}
-.home-seo-steps li{border-top:1px solid #c8d3cd;padding-top:1.5rem}
-.home-seo-step-number{display:block;font:700 .85rem 'Inter',sans-serif;color:#79623b;margin-bottom:1.5rem}
+.home-seo-steps li{border-top:1px solid var(--s-line);padding-top:1.5rem}
+.home-seo-step-number{display:block;font:700 .85rem 'Inter',sans-serif;color:var(--s-gold-ink);margin-bottom:1.5rem}
 .home-seo-steps h3{font-size:1.2rem;line-height:1.35;font-weight:800;margin-bottom:.9rem}
-.home-seo-steps p,.home-seo-questions p{color:#4b6059;line-height:1.8;font-size:.96rem}
-.home-seo-steps a,.home-seo-note a,.home-seo-inline-link{text-decoration:underline;text-underline-offset:.2em;font-weight:600;color:#003229}
-.home-seo-note{padding:1.5rem;border-left:3px solid #e9c176;background:#edf2ee;color:#4b6059;font-size:.88rem;line-height:1.8}
-.home-seo-faq{background:#eef3ee}
+.home-seo-steps p,.home-seo-questions p{color:var(--s-muted);line-height:1.8;font-size:.96rem}
+.home-seo-steps a,.home-seo-note a,.home-seo-inline-link{text-decoration:underline;text-underline-offset:.2em;font-weight:600;color:var(--s-green)}
+.home-seo-note{padding:1.5rem;border-left:3px solid var(--s-gold);background:var(--s-soft);color:var(--s-muted);font-size:.88rem;line-height:1.8}
+.home-seo-faq{background:var(--s-soft)}
 .home-seo-faq-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:5rem;align-items:start}
 .home-seo-inline-link{display:inline-block;margin-top:1.5rem}
-.home-seo-questions{border-top:1px solid #c0cec6}
-.home-seo-questions details{border-bottom:1px solid #c0cec6;padding:1.35rem 0}
+.home-seo-questions{border-top:1px solid var(--s-line)}
+.home-seo-questions details{border-bottom:1px solid var(--s-line);padding:1.35rem 0}
 .home-seo-questions summary{cursor:pointer;font-weight:700;font-family:'Manrope',sans-serif;font-size:1.05rem;line-height:1.5;padding-right:.5rem}
-.home-seo-questions summary::marker{color:#8c6f38}
+.home-seo-questions summary::marker{color:var(--s-gold-ink)}
 .home-seo-questions p{margin-top:1rem}
-.home-seo-footer-about{color:#4b6059;font-size:.875rem;line-height:1.7;margin-top:1rem}
-.home-seo-contact{display:grid;gap:.5rem;margin-top:1rem;font-style:normal;color:#003229;font-size:.875rem;overflow-wrap:anywhere}
+.home-seo-footer-about{color:var(--s-muted);font-size:.875rem;line-height:1.7;margin-top:1rem}
+.home-seo-contact{display:grid;gap:.5rem;margin-top:1rem;font-style:normal;color:var(--s-green);font-size:.875rem;overflow-wrap:anywhere}
 .home-seo-contact a{text-decoration:underline;text-underline-offset:.2em}
 .home-seo-icon{width:1.25em;height:1.25em;display:inline-block;vertical-align:middle;flex-shrink:0}
 .home-seo-icon.text-3xl{width:1.7rem;height:1.7rem}
 body.home-fluid-b2 main>section:first-child h1>span{font-size:clamp(2.15rem,3.8vw,3.9rem);line-height:1.08}
-.home-seo-button:focus-visible,.home-seo-text-link:focus-visible,.home-seo-section a:focus-visible,.home-seo-questions summary:focus-visible,.home-seo-contact a:focus-visible{outline:3px solid #a77b2a;outline-offset:5px}
+.home-seo-button:focus-visible,.home-seo-text-link:focus-visible,.home-seo-section a:focus-visible,.home-seo-questions summary:focus-visible,.home-seo-contact a:focus-visible{outline:3px solid var(--s-gold-ink);outline-offset:5px}
 @media(max-width:767px){.home-seo-section{padding:4rem 1.5rem}.home-seo-steps,.home-seo-faq-layout{grid-template-columns:1fr;gap:2rem}.home-seo-steps{margin-top:2rem}.home-seo-hero-actions{align-items:stretch;flex-direction:column;gap:1rem}.home-seo-hero-copy{font-size:1rem}.home-seo-icon.hidden{display:none}}
 
 /* Keep informative text readable throughout scrolling; decorative diagram motion remains. */
 body.home-fluid-b2 main>section>div,body.home-fluid-b2 #expertise>div>.flex,body.home-fluid-b2 #expertise [class*="gap-y-16"]>div,body.home-fluid-b2 #portfolio .grid>div,body.home-fluid-b2 #portfolio>div>.text-center,body.home-fluid-b2 #portfolio>div>.flex{animation:none!important;opacity:1!important;transform:none}
-body.home-fluid-b2 .text-slate-400,body.home-fluid-b2 .text-slate-500{color:#52665f}
-body.home-fluid-b2 .text-tertiary-container{color:#806228}
+body.home-fluid-b2 .text-slate-400,body.home-fluid-b2 .text-slate-500{color:var(--s-muted)}
+body.home-fluid-b2 .text-tertiary-container{color:var(--s-gold-ink)}

@@ -5,7 +5,7 @@ html[data-nv-hero-variant] .nv-hero {
   --nv-photo-width: 70%;
   --nv-photo-focus: 50% 50%;
   min-height: 560px;
-  background: #003229;
+  background: var(--s-green);
   align-items: center;
 }
 html[data-nv-hero-variant] .nv-hero .hero-image {
@@ -30,12 +30,12 @@ html[data-nv-hero-variant] .nv-hero h1 {
   line-height: 1.06;
 }
 html[data-nv-hero-variant] .nv-hero .breadcrumb { margin-bottom: 34px; }
-html[data-nv-hero-variant] .nv-hero .hero-badges span { background: #003229; }
+html[data-nv-hero-variant] .nv-hero .hero-badges span { background: var(--s-green); }
 html[data-nv-hero-variant="lateral"] .nv-hero .hero-shade {
-  background: linear-gradient(90deg, #003229 0%, #003229 40%, rgba(0,50,41,.98) 44%, rgba(0,50,41,.78) 49%, rgba(0,50,41,.38) 57%, rgba(0,50,41,.08) 65%, rgba(0,50,41,0) 72%);
+  background: linear-gradient(90deg, var(--s-green) 0%, var(--s-green) 40%, rgba(0,50,41,.98) 44%, rgba(0,50,41,.78) 49%, rgba(0,50,41,.38) 57%, rgba(0,50,41,.08) 65%, rgba(0,50,41,0) 72%);
 }
 html[data-nv-hero-variant="envolvente"] .nv-hero .hero-shade {
-  background: linear-gradient(90deg, #003229 0%, #003229 40%, rgba(0,50,41,.94) 46%, rgba(0,50,41,.57) 54%, rgba(0,50,41,.16) 64%, rgba(0,50,41,0) 75%), linear-gradient(0deg, #003229 0%, rgba(0,50,41,.68) 9%, rgba(0,50,41,.25) 22%, rgba(0,50,41,0) 48%);
+  background: linear-gradient(90deg, var(--s-green) 0%, var(--s-green) 40%, rgba(0,50,41,.94) 46%, rgba(0,50,41,.57) 54%, rgba(0,50,41,.16) 64%, rgba(0,50,41,0) 75%), linear-gradient(0deg, var(--s-green) 0%, rgba(0,50,41,.68) 9%, rgba(0,50,41,.25) 22%, rgba(0,50,41,0) 48%);
 }
 html[data-nv-hero-variant="contenida"] .nv-hero { min-height: 580px; }
 html[data-nv-hero-variant="contenida"] .nv-hero .hero-image {
@@ -49,14 +49,14 @@ html[data-nv-hero-variant="contenida"] .nv-hero .hero-image {
   mask-composite: intersect;
 }
 html[data-nv-hero-variant="contenida"] .nv-hero .hero-shade {
-  background: linear-gradient(90deg, #003229 0%, #003229 40%, rgba(0,50,41,.8) 48%, rgba(0,50,41,.28) 59%, rgba(0,50,41,0) 72%);
+  background: linear-gradient(90deg, var(--s-green) 0%, var(--s-green) 40%, rgba(0,50,41,.8) 48%, rgba(0,50,41,.28) 59%, rgba(0,50,41,0) 72%);
 }
 html[data-nv-hero-variant] .nv-hero[data-nv-hero-slug="bordevivo"] { --nv-photo-left: 42%; --nv-photo-width: 100%; --nv-photo-focus: 50% 0%; }
 html[data-nv-hero-variant] .nv-hero[data-nv-hero-slug="edificio-verne"] { --nv-photo-focus: 50% 15%; }
 html[data-nv-hero-variant] .nv-hero[data-nv-hero-slug="quintavista"] { --nv-photo-focus: 50% 52%; }
 html[data-nv-hero-variant] .nv-hero[data-nv-hero-slug="playa-serena"] { --nv-photo-focus: 50% 68%; }
 html[data-nv-hero-variant] .nv-hero[data-nv-hero-image-unavailable] .hero-image { visibility: hidden; }
-html[data-nv-hero-variant] .nv-hero[data-nv-hero-image-unavailable] .hero-shade { background: #003229; }
+html[data-nv-hero-variant] .nv-hero[data-nv-hero-image-unavailable] .hero-shade { background: var(--s-green); }
 html[data-nv-hero-review] .site-header,
 html[data-nv-hero-review] .skip-link,
 html[data-nv-hero-review] .section-nav,
@@ -66,10 +66,10 @@ html[data-nv-hero-review] .site-footer { display: none; }
   html[data-nv-hero-variant] .nv-hero { --nv-solid-width: 43%; min-height: 510px; }
   html[data-nv-hero-variant] .nv-hero .hero-content { padding: 44px 24px 44px 32px; }
   html[data-nv-hero-variant] .nv-hero h1 { font-size: 2.6rem; }
-  html[data-nv-hero-variant="lateral"] .nv-hero .hero-shade { background: linear-gradient(90deg, #003229 0%, #003229 43%, rgba(0,50,41,.92) 48%, rgba(0,50,41,.48) 58%, rgba(0,50,41,0) 76%); }
-  html[data-nv-hero-variant="envolvente"] .nv-hero .hero-shade { background: linear-gradient(90deg, #003229 0%, #003229 43%, rgba(0,50,41,.9) 49%, rgba(0,50,41,.3) 65%, rgba(0,50,41,0) 80%), linear-gradient(0deg, #003229, rgba(0,50,41,0) 45%); }
+  html[data-nv-hero-variant="lateral"] .nv-hero .hero-shade { background: linear-gradient(90deg, var(--s-green) 0%, var(--s-green) 43%, rgba(0,50,41,.92) 48%, rgba(0,50,41,.48) 58%, rgba(0,50,41,0) 76%); }
+  html[data-nv-hero-variant="envolvente"] .nv-hero .hero-shade { background: linear-gradient(90deg, var(--s-green) 0%, var(--s-green) 43%, rgba(0,50,41,.9) 49%, rgba(0,50,41,.3) 65%, rgba(0,50,41,0) 80%), linear-gradient(0deg, var(--s-green), rgba(0,50,41,0) 45%); }
   html[data-nv-hero-variant="contenida"] .nv-hero .hero-image { inset: 0 0 0 auto; height: 100%; max-width: 61%; }
-  html[data-nv-hero-variant="contenida"] .nv-hero .hero-shade { background: linear-gradient(90deg, #003229 0%, #003229 43%, rgba(0,50,41,.77) 52%, rgba(0,50,41,0) 78%); }
+  html[data-nv-hero-variant="contenida"] .nv-hero .hero-shade { background: linear-gradient(90deg, var(--s-green) 0%, var(--s-green) 43%, rgba(0,50,41,.77) 52%, rgba(0,50,41,0) 78%); }
 }
 @media (max-width: 760px) {
   html[data-nv-hero-variant] .nv-hero { --nv-mobile-photo-height: 350px; display: block; min-height: 0; }
@@ -78,10 +78,10 @@ html[data-nv-hero-review] .site-footer { display: none; }
   html[data-nv-hero-variant] .nv-hero h1 { font-size: clamp(2.5rem, 9.5vw, 3.4rem); margin-bottom: 18px; }
   html[data-nv-hero-variant] .nv-hero .breadcrumb { margin-bottom: 24px; }
   html[data-nv-hero-variant] .nv-hero .hero-location { margin-bottom: 20px; }
-  html[data-nv-hero-variant] .nv-hero .hero-shade { inset: 0 0 auto; height: calc(var(--nv-mobile-photo-height) + 1px); background: linear-gradient(180deg, rgba(0,50,41,0) 0%, rgba(0,50,41,0) 53%, rgba(0,50,41,.12) 66%, rgba(0,50,41,.58) 82%, #003229 100%); }
+  html[data-nv-hero-variant] .nv-hero .hero-shade { inset: 0 0 auto; height: calc(var(--nv-mobile-photo-height) + 1px); background: linear-gradient(180deg, rgba(0,50,41,0) 0%, rgba(0,50,41,0) 53%, rgba(0,50,41,.12) 66%, rgba(0,50,41,.58) 82%, var(--s-green) 100%); }
   html[data-nv-hero-variant="envolvente"] .nv-hero { --nv-mobile-photo-height: 370px; }
-  html[data-nv-hero-variant="envolvente"] .nv-hero .hero-shade { background: linear-gradient(180deg, rgba(0,50,41,0) 0%, rgba(0,50,41,.06) 38%, rgba(0,50,41,.3) 61%, rgba(0,50,41,.82) 85%, #003229 100%), linear-gradient(90deg, rgba(0,50,41,.3), rgba(0,50,41,0) 26%, rgba(0,50,41,0) 80%, rgba(0,50,41,.16)); }
+  html[data-nv-hero-variant="envolvente"] .nv-hero .hero-shade { background: linear-gradient(180deg, rgba(0,50,41,0) 0%, rgba(0,50,41,.06) 38%, rgba(0,50,41,.3) 61%, rgba(0,50,41,.82) 85%, var(--s-green) 100%), linear-gradient(90deg, rgba(0,50,41,.3), rgba(0,50,41,0) 26%, rgba(0,50,41,0) 80%, rgba(0,50,41,.16)); }
   html[data-nv-hero-variant="contenida"] .nv-hero { --nv-mobile-photo-height: min(390px, calc(100vw / var(--nv-photo-ratio, 1.4))); }
   html[data-nv-hero-variant="contenida"] .nv-hero .hero-image { inset: 0 auto auto 50%; width: min(100%, calc(var(--nv-mobile-photo-height) * var(--nv-photo-ratio, 1.4))); height: var(--nv-mobile-photo-height); max-width: 100%; transform: translateX(-50%); object-fit: contain; mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%), linear-gradient(180deg, #000 0%, #000 75%, transparent 100%); mask-composite: intersect; }
-  html[data-nv-hero-variant="contenida"] .nv-hero .hero-shade { background: linear-gradient(180deg, rgba(0,50,41,0) 0%, rgba(0,50,41,0) 68%, rgba(0,50,41,.16) 80%, #003229 100%); }
+  html[data-nv-hero-variant="contenida"] .nv-hero .hero-shade { background: linear-gradient(180deg, rgba(0,50,41,0) 0%, rgba(0,50,41,0) 68%, rgba(0,50,41,.16) 80%, var(--s-green) 100%); }
 }

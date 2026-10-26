@@ -1,11 +1,11 @@
 :root {
-  --green:#003229;
-  --gold:#e9c176;
-  --cream:#ffdea5;
-  --ink:#153c33;
-  --muted:#586a64;
-  --line:#dce5e0;
-  --surface:#f4f6f2;
+  --green:var(--s-green);
+  --gold:var(--s-gold);
+  --cream:var(--s-gold-hover);
+  --ink:var(--s-green);
+  --muted:var(--s-muted);
+  --line:var(--s-line);
+  --surface:var(--s-canvas);
   --ease:cubic-bezier(.22,.61,.36,1)
 }
 * {
@@ -57,7 +57,7 @@ button,a,input,select,textarea {
   transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease)
 }
 :focus-visible {
-  outline:3px solid #bd903c;
+  outline:3px solid var(--s-gold-ink);
   outline-offset:4px
 }
 [hidden] {
@@ -84,7 +84,7 @@ button,a,input,select,textarea {
   z-index:30;
   background:#fffffff5;
   backdrop-filter:blur(14px);
-  border-bottom:1px solid #e8ede9
+  border-bottom:1px solid var(--s-line)
 }
 .header-inner {
   min-height:80px;
@@ -100,7 +100,7 @@ button,a,input,select,textarea {
   text-decoration:none
 }
 .brand-dot {
-  color:#bc883b
+  color:var(--s-gold-ink)
 }
 .desktop-nav {
   display:flex;
@@ -127,7 +127,7 @@ button,a,input,select,textarea {
   align-items:center;
   gap:18px;
   text-decoration:none;
-  border-radius:7px;
+  border-radius:var(--s-radius);
   border:1px solid transparent;
   padding:12px 22px;
   font-weight:600;
@@ -138,7 +138,7 @@ button,a,input,select,textarea {
 }
 .button-gold {
   background:var(--gold);
-  color:#283323
+  color:var(--s-green)
 }
 .button-gold:hover {
   background:var(--cream)
@@ -148,7 +148,7 @@ button,a,input,select,textarea {
   color:#fff
 }
 .button-green:hover {
-  background:#165446
+  background:var(--s-green-hover)
 }
 .small {
   font-size:13px;
@@ -209,7 +209,7 @@ button,a,input,select,textarea {
   .project-context-links { flex-shrink:1 }
 }
 .hero {
-  background:radial-gradient(ellipse at 20% 30%,#12554585,transparent 70%),linear-gradient(130deg,var(--green),#00261e);
+  background:radial-gradient(ellipse at 20% 30%,#12554585,transparent 70%),linear-gradient(130deg,var(--green),var(--s-green-deep));
   color:#fff
 }
 .hero-inner {
@@ -235,7 +235,7 @@ h1 {
   margin:18px 0 22px
 }
 .hero-copy {
-  color:#d7e4dc;
+  color:var(--s-on-dark);
   font-size:15px;
   line-height:1.8
 }
@@ -245,7 +245,7 @@ h1 {
   display:flex;
   gap:24px;
   font-size:12px;
-  color:#dce8e0;
+  color:var(--s-on-dark);
   flex-shrink:0
 }
 .journey li {
@@ -268,9 +268,9 @@ h1 {
   font-size:13px;
   padding:14px 18px;
   border:1px solid var(--line);
-  border-radius:7px;
-  background:#eaf0e9;
-  color:#31564a;
+  border-radius:var(--s-radius);
+  background:var(--s-soft);
+  color:var(--s-green);
   line-height:1.7
 }
 .data-status {
@@ -292,7 +292,7 @@ h1 {
 .panel {
   background:#fff;
   border:1px solid var(--line);
-  border-radius:12px;
+  border-radius:var(--s-radius);
   box-shadow:0 12px 42px #00322906
 }
 .input-panel {
@@ -310,7 +310,7 @@ h1 {
   justify-content:center;
   width:30px;
   height:30px;
-  border:1px solid #b5c5ba;
+  border:1px solid var(--s-field-line);
   border-radius:50%;
   font-size:10px;
   font-weight:600;
@@ -346,12 +346,12 @@ input:not([type=checkbox]),select,textarea {
   min-height:49px;
   padding:11px 14px;
   background:#fafcf9;
-  border:1px solid #cbd7ce;
-  border-radius:6px;
+  border:1px solid var(--s-field-line);
+  border-radius:var(--s-radius);
   color:var(--ink)
 }
 input::placeholder,textarea::placeholder {
-  color:#738179;
+  color:var(--s-muted);
   font-size:13px
 }
 input#property {
@@ -360,7 +360,7 @@ input#property {
   letter-spacing:-.5px
 }
 input:focus,select:focus,textarea:focus {
-  border-color:#b78b39;
+  border-color:var(--s-gold-ink);
   outline:2px solid #e9c17655;
   outline-offset:2px
 }
@@ -380,12 +380,12 @@ input:focus,select:focus,textarea:focus {
   border:1px solid var(--line);
   background:#fff;
   color:var(--ink);
-  border-radius:6px;
+  border-radius:var(--s-radius);
   font-weight:600;
   font-size:13px
 }
 .choice-row button:hover {
-  background:#edf3ed
+  background:var(--s-soft)
 }
 .choice-row button[aria-pressed=true] {
   background:var(--green);
@@ -423,12 +423,12 @@ input:focus,select:focus,textarea:focus {
 }
 .error {
   font-size:13px;
-  color:#9d3029;
+  color:var(--s-error);
   margin-top:12px
 }
 .result-panel {
   padding:36px 38px;
-  border-radius:12px;
+  border-radius:var(--s-radius);
   background:radial-gradient(ellipse at 90% 0%,#16544480,transparent 75%),var(--green);
   color:white;
   box-shadow:0 18px 50px #00322914;
@@ -443,7 +443,7 @@ input:focus,select:focus,textarea:focus {
   color:var(--gold)
 }
 .result-kicker {
-  color:#b8d5c6;
+  color:var(--s-on-dark);
   font-size:12px;
   margin-top:12px;
   min-height:39px
@@ -454,7 +454,7 @@ input:focus,select:focus,textarea:focus {
 }
 .payment-main>p:first-child {
   font-size:12px;
-  color:#cfdfd4
+  color:var(--s-on-dark)
 }
 .payment-main strong {
   display:block;
@@ -466,7 +466,7 @@ input:focus,select:focus,textarea:focus {
 .payment-main strong span {
   font-size:20px;
   letter-spacing:0;
-  color:#d8e3da
+  color:var(--s-on-dark)
 }
 .payment-clp {
   font-size:16px;
@@ -475,7 +475,7 @@ input:focus,select:focus,textarea:focus {
 .result-small {
   font-size:10px;
   line-height:1.7;
-  color:#c6dbd0;
+  color:var(--s-on-dark);
   margin-top:12px
 }
 .result-facts {
@@ -490,7 +490,7 @@ input:focus,select:focus,textarea:focus {
   margin:11px 0
 }
 .result-facts dt {
-  color:#c5d7cc;
+  color:var(--s-on-dark);
   max-width:52%
 }
 .result-facts dd {
@@ -502,7 +502,7 @@ input:focus,select:focus,textarea:focus {
 .financing-bar {
   height:7px;
   background:#47796a;
-  border-radius:4px;
+  border-radius:var(--s-radius);
   overflow:hidden
 }
 .financing-bar span {
@@ -553,7 +553,7 @@ input:focus,select:focus,textarea:focus {
   padding:25px;
   background:white;
   border:1px solid var(--line);
-  border-radius:10px;
+  border-radius:var(--s-radius);
   display:flex;
   flex-direction:column;
   gap:13px;
@@ -561,18 +561,18 @@ input:focus,select:focus,textarea:focus {
 }
 .bank-card.selected {
   border-color:var(--green);
-  box-shadow:0 0 0 2px #003229
+  box-shadow:0 0 0 2px var(--s-green)
 }
 .bank-card h3 {
   font-size:19px
 }
 .bank-tag {
   font-size:10px;
-  color:#446759;
+  color:var(--s-muted);
   align-self:flex-start;
-  background:#eef4ed;
+  background:var(--s-soft);
   padding:4px 8px;
-  border-radius:4px
+  border-radius:var(--s-radius)
 }
 .bank-payment {
   font:600 30px/1.2 Manrope,Arial,sans-serif;
@@ -591,7 +591,7 @@ input:focus,select:focus,textarea:focus {
   justify-content:space-between;
   gap:14px;
   padding:6px 0;
-  border-bottom:1px solid #edf0ed
+  border-bottom:1px solid var(--s-soft)
 }
 .bank-meta dd {
   margin:0;
@@ -685,7 +685,7 @@ input:focus,select:focus,textarea:focus {
   margin:25px 0;
   padding:18px;
   border-left:3px solid var(--gold);
-  background:#f5f7f3;
+  background:var(--s-section);
   font-size:12px
 }
 .lead-context p {
@@ -753,7 +753,7 @@ input:focus,select:focus,textarea:focus {
 }
 .site-footer {
   border-top:1px solid var(--line);
-  background:#eef2ec
+  background:var(--s-soft)
 }
 .footer-inner {
   padding:35px 0;

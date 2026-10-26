@@ -1,0 +1,126 @@
+/* SOLLAHMS shared visual system. Load after page styles. See docs/visual-system.md. */
+:root {
+  color-scheme: light;
+  --s-green: #003229;
+  --s-green-rgb: 0 50 41;
+  --s-green-hover: #145849;
+  --s-green-deep: #00291f;
+  --s-gold: #e9c176;
+  --s-gold-hover: #ffdea5;
+  --s-gold-ink: #806228;
+  --s-white: #ffffff;
+  --s-canvas: #f8f9ff;
+  --s-soft: #eef3ee;
+  --s-section: #f5f7f3;
+  --s-muted: #4b6059;
+  --s-line: #cdd7cf;
+  --s-field-line: #81948b;
+  --s-on-dark: #eef3ee;
+  --s-error: #994025;
+  --s-error-soft: #fff6f1;
+  --s-warning-soft: #fffaf0;
+  --s-disabled: #edf0ed;
+  --s-radius: 8px;
+  --s-radius-small: 4px;
+  --s-space-1: 8px;
+  --s-space-2: 16px;
+  --s-space-3: 24px;
+  --s-space-4: 32px;
+  --s-fast: 160ms;
+  --s-duration: 220ms;
+  --s-ease: cubic-bezier(.22,.61,.36,1);
+  --s-shadow: 0 10px 32px rgb(var(--s-green-rgb) / .04);
+  --s-shadow-hover: 0 16px 40px rgb(var(--s-green-rgb) / .08);
+  --s-shadow-header: 0 18px 54px rgb(var(--s-green-rgb) / .08);
+  --s-hero: radial-gradient(1200px circle at 18% 16%,rgba(20,88,73,.42),transparent 58%),radial-gradient(980px circle at 86% 18%,rgba(233,193,118,.08),transparent 54%),linear-gradient(155deg,var(--s-green) 0%,var(--s-green-deep) 100%);
+  /* Compatibility aliases for the existing page families. */
+  --green: var(--s-green);
+  --gold: var(--s-gold);
+  --cream: var(--s-gold-hover);
+  --ink: var(--s-green);
+  --muted: var(--s-muted);
+  --paper: var(--s-canvas);
+  --surface: var(--s-canvas);
+  --line: var(--s-line);
+  --soft: var(--s-soft);
+  --radius: var(--s-radius);
+  --detail-panel-radius: var(--s-radius);
+  --ease: var(--s-ease);
+}
+body { background-color:var(--s-canvas);color:var(--s-green) }
+::selection { background:var(--s-gold);color:var(--s-green) }
+/* Bridge existing generated utilities without changing content or rebuilding Tailwind. */
+.text-primary,.text-primary-container,.text-on-background,.text-on-surface,.text-on-tertiary-fixed,.text-on-tertiary-fixed-variant,.text-emerald-950,.text-emerald-900,.text-slate-800 { color:var(--s-green) }
+.text-secondary,.text-on-surface-variant,.text-slate-400,.text-slate-500,.text-slate-600 { color:var(--s-muted) }
+.text-tertiary-container,.text-tertiary,.text-secondary-container { color:var(--s-gold-ink) }
+.text-tertiary-fixed,.text-tertiary-fixed-dim { color:var(--s-gold) }
+.text-primary-fixed { color:var(--s-on-dark) }
+.bg-primary,.bg-primary-container { background-color:var(--s-green) }
+.bg-tertiary-fixed,.bg-tertiary-fixed-dim { background-color:var(--s-gold) }
+.bg-surface,.bg-background { background-color:var(--s-canvas) }
+.bg-surface-container-low,.bg-surface-container,.bg-slate-100,.bg-slate-50 { background-color:var(--s-soft) }
+.bg-surface-container-lowest { background-color:var(--s-white) }
+.border-primary { border-color:var(--s-green) }
+.border-slate-200,[class~="border-outline-variant/30"] { border-color:var(--s-line) }
+[class~="hover:text-emerald-900"]:hover,[class~="hover:text-emerald-700"]:hover,[class~="hover:text-primary"]:hover { color:var(--s-green-hover) }
+[class~="hover:bg-slate-100"]:hover { background-color:var(--s-soft) }
+[class~="hover:bg-primary-container"]:hover { background-color:var(--s-green-hover) }
+[class~="hover:bg-tertiary-fixed-dim"]:hover { background-color:var(--s-gold-hover) }
+.group:hover [class~="group-hover:bg-primary"] { background-color:var(--s-green) }
+.group:hover [class~="group-hover:border-primary"] { border-color:var(--s-green) }
+/* Primary surfaces retain each page's existing geometry and content hierarchy. */
+.green-v2-premium main>section:first-child { background:var(--s-hero)!important }
+main>section[class~="bg-[#00201a]"],.hero,.hero-without-image { background:var(--s-hero) }
+.site-header,body.home-fluid-b2 header { box-shadow:var(--s-shadow-header) }
+body.home-fluid-b2 #portfolio .grid>div,.catalog-card,.panel,.contact-card,.advisory-panel,.capacity-search { border-radius:var(--s-radius);box-shadow:var(--s-shadow) }
+.catalog-card { border-color:var(--s-line) }
+.catalog-card:hover,body.home-fluid-b2 #portfolio .grid>div:hover { box-shadow:var(--s-shadow-hover);border-color:var(--s-field-line) }
+.featured-project-detail aside[class~="lg:col-span-4"]>div { box-shadow:var(--s-shadow) }
+.advisory-panel { border:1px solid var(--s-line);border-top:3px solid var(--s-gold) }
+.rounded-lg,.rounded-xl,.rounded-2xl,.bank-card,.result-panel,.source-section details,.ecasa-stage,.catalog-directory { border-radius:var(--s-radius) }
+.gallery-grid img,.featured-gallery img { border-radius:var(--s-radius) var(--s-radius) 0 0 }
+.hero-badges span,.capacity-badge,.bank-tag { border-radius:var(--s-radius-small) }
+/* Controls share shape, hover and focus states; circles and third-party logos stay intact. */
+.button,.home-seo-button,.advisory-submit,.capacity-button,.capacity-simulate,.catalog-details-link,.choice-row button,.agenda-curtain-link,.cta-drawn-frame-link,.menu-toggle { border-radius:var(--s-radius) }
+.button-gold { color:var(--s-green) }
+.button-gold:hover,.home-seo-button:hover,.advisory-submit:hover { background:var(--s-gold-hover) }
+.button-green:hover,.catalog-details-link:hover,.capacity-button:not(.capacity-button-secondary):hover { background:var(--s-green-hover);color:var(--s-white) }
+.button-outline:hover,.capacity-button-secondary:hover,.capacity-simulate:hover { background:var(--s-soft);color:var(--s-green) }
+.featured-project-detail aside a[href^="/contacto.html"],.featured-project-detail aside a[href^="/agenda-asesoria.html"],.featured-project-detail aside a[href^="/comparador-hipotecario.html"] { border-radius:var(--s-radius) }
+.featured-project-detail aside a[href^="/contacto.html"]:hover { background:var(--s-green-hover) }
+.featured-project-detail aside a[href^="/agenda-asesoria.html"]:hover { background:var(--s-gold-hover) }
+.featured-project-detail aside a[href^="/comparador-hipotecario.html"]:hover { background:var(--s-soft) }
+input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]),select,textarea,
+.advisory-panel input:not([type=checkbox]):not([type=radio]),.advisory-panel select,.advisory-panel textarea,.capacity-field input,.capacity-field select { border-color:var(--s-field-line);border-radius:var(--s-radius);color:var(--s-green);background-color:var(--s-white) }
+input::placeholder,textarea::placeholder,.advisory-panel input::placeholder { color:var(--s-muted);opacity:1 }
+input[type=checkbox],input[type=radio],input[type=range] { accent-color:var(--s-green) }
+.choice-row button[aria-pressed=true],.bank-card.selected { border-color:var(--s-green) }
+.choice-row button[aria-pressed=true] { background:var(--s-green);color:var(--s-white) }
+button:active:not(:disabled),.button:active,.home-seo-button:active,.catalog-details-link:active { filter:brightness(.96) }
+/* Two-color focus ring is visible on both the light surfaces and dark hero. */
+body :is(a,button,input,select,textarea,summary):focus-visible { outline:3px solid var(--s-green);outline-offset:3px;box-shadow:0 0 0 3px var(--s-white) }
+body .section-nav a:focus-visible,body .featured-section-nav a:focus-visible { outline-offset:-3px;box-shadow:inset 0 0 0 6px var(--s-white) }
+body :is(button,input,select,textarea):disabled,body [aria-disabled=true] { opacity:1;background-color:var(--s-disabled);border-color:var(--s-line);color:var(--s-muted);cursor:not-allowed;filter:none }
+body [aria-busy=true],body button:disabled[aria-busy=true] { cursor:progress }
+body [aria-invalid=true] { border-color:var(--s-error)!important }
+.advisory-error,.capacity-error,.error { color:var(--s-error) }
+.advisory-status { background:var(--s-soft);border-color:var(--s-green);color:var(--s-green);border-radius:var(--s-radius-small) }
+.advisory-status[data-state=error] { background:var(--s-error-soft);border-color:var(--s-error);color:var(--s-error) }
+/* No size/position transitions for inputs: layout remains stable while interacting. */
+a,button,input,select,textarea,summary,.catalog-card,.bank-card { transition-property:background-color,color,border-color,box-shadow,filter;transition-duration:var(--s-duration);transition-timing-function:var(--s-ease) }
+body.home-fluid-b2 #portfolio .grid>div { transition:transform var(--s-duration) var(--s-ease),box-shadow var(--s-duration) var(--s-ease) }
+body.home-fluid-b2 #portfolio .grid>div:hover { transform:translateY(-2px) }
+body.home-fluid-b2 #portfolio img { transition-duration:var(--s-duration) }
+body.home-fluid-b2 #portfolio .group:hover img { transform:none;filter:none }
+.financing-bar span { transition:width var(--s-duration) var(--s-ease) }
+@media (prefers-reduced-motion:reduce) {
+  html,body { scroll-behavior:auto!important }
+  *,*::before,*::after { animation:none!important;transition:none!important;scroll-behavior:auto!important }
+  body.home-fluid-b2 #portfolio .grid>div:hover,body.home-fluid-b2 #expertise [class*="gap-y-16"]>div:hover { transform:none }
+  /* Do not reset layout transforms used to center diagram labels. */
+}
+@media (forced-colors:active) {
+  body :is(a,button,input,select,textarea,summary):focus-visible { outline:3px solid Highlight;box-shadow:none }
+  body :is(button,input,select,textarea):disabled { color:GrayText;border-color:GrayText }
+  body [aria-invalid=true] { border-color:CanvasText!important }
+}

@@ -1,16 +1,16 @@
 /* Shared automatic viewers for traditional and featured project fiches. */
-.project-embed{position:relative;width:100%;max-width:100%;aspect-ratio:16/10;overflow:hidden;background:#f0f4ef;border:1px solid #dbe3dd;margin:20px 0}
+.project-embed{position:relative;width:100%;max-width:100%;aspect-ratio:16/10;overflow:hidden;background:var(--s-soft);border:1px solid var(--s-line);margin:20px 0}
 .project-embed iframe{position:absolute;inset:0;display:block;width:100%;height:100%;border:0}
 .project-embed-map{aspect-ratio:16/9;min-height:280px;max-height:420px}
 .project-embed-map:last-child{margin-bottom:0}
-.project-tour-section{min-width:0;color:#003229}
+.project-tour-section{min-width:0;color:var(--s-green)}
 .project-tour-section h2{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:800;line-height:1.25;margin:0 0 24px}
 .project-tour-section h3{font-size:1rem;font-weight:700;line-height:1.5;margin:0 0 12px}
 .project-tour-section .eyebrow{font-size:.65rem;text-transform:uppercase;letter-spacing:.24em;font-weight:600;margin:0 0 14px}
 .project-tour-section .tour-card{margin:0 0 28px;min-width:0}
-.project-embed-fallback{border:1px solid #dbe3dd;background:#fff;color:#56665f;padding:18px 20px;margin:16px 0;line-height:1.6}
-.project-embed-fallback a{color:#003229;text-decoration:underline;text-underline-offset:4px}
-.project-embed-fallback a:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 3px #003229}
+.project-embed-fallback{border:1px solid var(--s-line);background:#fff;color:var(--s-muted);padding:18px 20px;margin:16px 0;line-height:1.6}
+.project-embed-fallback a{color:var(--s-green);text-decoration:underline;text-underline-offset:4px}
+.project-embed-fallback a:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 3px var(--s-green)}
 @media(max-width:600px){.project-embed{aspect-ratio:4/3}.project-embed-map{min-height:260px;max-height:360px}.project-tour-section h2{font-size:1.6rem}}
 
 @media(forced-colors:active){.project-embed-fallback a:focus-visible{outline:3px solid Highlight;box-shadow:none}}

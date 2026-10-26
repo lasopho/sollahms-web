@@ -12,7 +12,7 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--s-canvas); }
         h1, h2, h3 { font-family: 'Manrope', sans-serif; }
         .home-fluid-b2 {
             overflow-x: hidden;
@@ -27,7 +27,7 @@
         .home-fluid-b2 #expertise {
             background:
                 radial-gradient(circle at 22% 42%, rgba(0, 32, 26, 0.06), transparent 24rem),
-                #eef3ee;
+                var(--s-soft);
         }
         .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] {
             filter: drop-shadow(0 28px 54px rgba(0, 32, 26, 0.12));
@@ -43,29 +43,29 @@
         .home-fluid-b2 #expertise svg path:nth-of-type(4) { animation-delay: 360ms; }
         .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:not(.inset-0) {
             box-shadow: 0 18px 42px rgba(0, 32, 26, 0.13);
-            transition: transform 520ms ease, box-shadow 520ms ease;
+            transition: transform var(--s-duration) ease, box-shadow var(--s-duration) ease;
         }
         .home-fluid-b2 #expertise [class*="w-80"][class*="h-80"] > div.absolute:not(.inset-0):hover {
             transform: translate(-50%, -50%) scale(1.08);
             box-shadow: 0 24px 62px rgba(0, 32, 26, 0.18);
         }
         .home-fluid-b2 #expertise [class*="gap-y-16"] > div {
-            transition: transform 420ms ease;
+            transition: transform var(--s-duration) ease;
         }
         .home-fluid-b2 #expertise [class*="gap-y-16"] > div:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
         .home-fluid-b2 #portfolio .grid > div {
-            border-radius: 8px;
+            border-radius: var(--s-radius);
             box-shadow: 0 18px 58px rgba(0, 32, 26, 0.08);
-            transition: transform 520ms cubic-bezier(.2,.8,.2,1), box-shadow 520ms ease;
+            transition: transform var(--s-duration) cubic-bezier(.2,.8,.2,1), box-shadow var(--s-duration) ease;
         }
         .home-fluid-b2 #portfolio .grid > div:hover {
-            transform: translateY(-8px) scale(1.01);
+            transform: translateY(-2px);
             box-shadow: 0 34px 92px rgba(0, 32, 26, 0.15);
         }
         .home-fluid-b2 #portfolio img {
-            transition-duration: 1100ms;
+            transition-duration: var(--s-duration);
         }
         .home-fluid-b2 #portfolio .grid > div:hover img {
             filter: saturate(1.05) contrast(1.03);
@@ -163,7 +163,7 @@
         }
         @keyframes b-diagram-breathe {
             0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-8px) scale(1.015); }
+            50% { transform: translateY(-2px); }
         }
         @media (prefers-reduced-motion: reduce) {
             .home-fluid-b2 *,
@@ -171,24 +171,23 @@
             .home-fluid-b2 *::after {
                 animation: none !important;
                 transition: none !important;
-                transform: none !important;
             }
         }
         .green-v2-premium main > section:first-child {
             background:
                 radial-gradient(1200px circle at 18% 16%, rgba(20, 88, 73, 0.42), transparent 58%),
                 radial-gradient(980px circle at 86% 18%, rgba(233, 193, 118, 0.08), transparent 54%),
-                linear-gradient(155deg, #003229 0%, #00291f 100%) !important;
+                linear-gradient(155deg, var(--s-green) 0%, var(--s-green-deep) 100%) !important;
         }
         .green-v2-premium main > section:last-of-type:not(.advisory-section) {
             background:
                 radial-gradient(1100px circle at 22% 12%, rgba(31, 101, 84, 0.24), transparent 55%),
                 radial-gradient(1000px circle at 82% 78%, rgba(0, 25, 20, 0.48), transparent 62%),
-                linear-gradient(160deg, #003229 0%, #00261e 55%, #001f19 100%) !important;
+                linear-gradient(160deg, var(--s-green) 0%, var(--s-green-deep) 55%, var(--s-green-deep) 100%) !important;
         }
         .agenda-curtain-warm {
-            --agenda-curtain-color: #E9C176;
-            --agenda-curtain-bg-color: #003229;
+            --agenda-curtain-color: var(--s-gold);
+            --agenda-curtain-bg-color: var(--s-green);
         }
         .agenda-curtain-link {
             position: relative;
@@ -197,7 +196,7 @@
         }
         .agenda-curtain-link:hover,
         .agenda-curtain-link:focus-visible {
-            background-color: #FFDEA5 !important;
+            background-color: var(--s-gold-hover) !important;
         }
         .agenda-curtain-link::before {
             content: "";
@@ -207,11 +206,11 @@
             background-color: var(--agenda-curtain-bg-color);
             clip-path: inset(0 100% 0 0);
             pointer-events: none;
-            transition: clip-path 500ms cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: clip-path var(--s-duration) cubic-bezier(0.22, 0.61, 0.36, 1);
             will-change: clip-path;
         }
         .agenda-curtain-link:focus-visible {
-            outline: 2px solid #003229;
+            outline: 2px solid var(--s-green);
             outline-offset: 3px;
         }
         .agenda-curtain {
@@ -238,7 +237,7 @@
             color: var(--agenda-curtain-color);
             clip-path: inset(0 100% 0 0);
             pointer-events: none;
-            transition: clip-path 500ms cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: clip-path var(--s-duration) cubic-bezier(0.22, 0.61, 0.36, 1);
             will-change: clip-path;
         }
         .agenda-curtain-link:hover .agenda-curtain__fill,
@@ -260,11 +259,11 @@
             }
         }
         .cta-drawn-frame-link {
-            --cta-button-frame-color: #E9C176;
-            --cta-button-green: #003229;
+            --cta-button-frame-color: var(--s-gold);
+            --cta-button-green: var(--s-green);
             background-color: transparent !important;
             color: var(--cta-button-frame-color) !important;
-            border-radius: 6px;
+            border-radius: var(--s-radius);
             box-shadow: none !important;
         }
         .cta-drawn-frame-link:hover,
@@ -276,13 +275,13 @@
             display: block;
             background-color: var(--cta-button-frame-color);
             clip-path: inset(0 100% 0 0);
-            transition: clip-path 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: clip-path var(--s-duration) cubic-bezier(0.22, 0.61, 0.36, 1);
         }
         .cta-drawn-frame-link .agenda-curtain__fill {
             display: inline-flex;
             color: var(--cta-button-green);
             clip-path: inset(0 100% 0 0);
-            transition: clip-path 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: clip-path var(--s-duration) cubic-bezier(0.22, 0.61, 0.36, 1);
         }
         .cta-drawn-frame-link:hover::before,
         .cta-drawn-frame-link:focus-visible::before,
@@ -303,7 +302,7 @@
             background-color: var(--cta-button-frame-color);
             opacity: 0.95;
             pointer-events: none;
-            transition-duration: 170ms;
+            transition-duration: var(--s-fast);
             transition-property: transform;
             transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
             will-change: transform;
@@ -367,10 +366,10 @@
 <meta name="twitter:description" content="Sollahms conecta oportunidades inmobiliarias en Chile con personas y empresas que buscan evaluar activos, ubicaciones y alternativas de inversión.">
 <meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v2.jpg">
 <meta name="twitter:image:alt" content="Sollahms — información y asesoría inmobiliaria">
-<link rel="stylesheet" href="/assets/css/project-photos.css">
+<link rel="stylesheet" href="/assets/css/project-photos.css?v=20261025-visual-1">
 <link rel="preload" href="/assets/fonts/home/manrope-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/home/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/home-seo.css">
+<link rel="stylesheet" href="/assets/css/home-seo.css?v=20261025-visual-1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -454,7 +453,8 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/assets/css/advisory.css">
+<link rel="stylesheet" href="/assets/css/advisory.css?v=20261025-visual-1">
+<link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261025-visual-1">
 </head>
 <body class="home-fluid-b2 home-pillars-v3 agenda-curtain-warm green-v2-premium text-on-background pt-20">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
