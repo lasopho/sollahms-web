@@ -22,7 +22,7 @@ for name in pages:
 assert (ROOT / 'data/proyectos.json').read_bytes() == (public / 'data/proyectos.json').read_bytes()
 cfg = json.loads((ROOT / 'vercel.json').read_text())
 assert cfg['git']['deploymentEnabled']['main'] is False
-assert cfg['git']['deploymentEnabled']['codex/scroll-fade-20261026'] is False
+assert cfg['git']['deploymentEnabled']['codex/scroll-presence-strong-20261026'] is False
 assert not dest.exists()
 shutil.copytree(base, dest)
 overlay = pages + ['assets/css/sollahms-theme.css', 'assets/js/scroll-presence.js']
@@ -45,13 +45,13 @@ added = sorted(set(after) - set(before))
 assert not set(before) - set(after)
 assert set(changed + added) == {'static/' + p for p in overlay}
 assert all(before[p] == after[p] for p in before if not p.startswith('static/'))
-report = {'baselineDeployment':'dpl_35fUyemHC5JeAFyYm4t6DNH1zstm',
-          'baselineCommit':'e0172a21db1ce9622fd1a4a90a62040d4acb6431',
+report = {'baselineDeployment':'dpl_5zih4HpL2dAHqvXimqdSpg17zyuf',
+          'baselineCommit':'99a49a6797882ab8fdc6527db857d25e2aebf4df',
           'pages':pages, 'fichas':len(json.loads((public/'data/proyectos.json').read_text())),
           'contentAndMetadataIdentical':True, 'functionsAndRoutingIdentical':True,
           'catalogueAndMediaIdentical':True, 'changed':changed, 'added':added,
           'unchangedFiles':len(before)-len(changed), 'sha256':after}
-docs = ROOT / 'docs/scroll-presence-20261026'
+docs = ROOT / 'docs/scroll-presence-strong-20261026'
 docs.mkdir(parents=True, exist_ok=True)
 (docs/'package-verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({k:v for k,v in report.items() if k not in ['sha256','pages','changed','added']},indent=2))
