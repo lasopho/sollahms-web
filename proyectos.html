@@ -1,8 +1,8 @@
 <!DOCTYPE html><html class="light" lang="es"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Proyectos inmobiliarios | Sollahms</title>
-<meta name="description" content="Explora proyectos inmobiliarios disponibles en distintas ciudades de Chile y filtra las alternativas por ubicación y estado.">
+<title>Catálogo inmobiliario | Sollahms</title>
+<meta name="description" content="Encuentra tu próxima propiedad. Explora y compara alternativas por ubicación, precio y características.">
 <link rel="canonical" href="https://sollahms.cl/proyectos.html">
 <link rel="icon" type="image/svg+xml" href="/assets/branding/favicon.svg?v=20261026-logo-1">
 
@@ -11,9 +11,9 @@
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": "https://sollahms.cl/proyectos.html#collection",
-  "name": "Catálogo de proyectos inmobiliarios Sollahms",
+  "name": "Catálogo inmobiliario | Sollahms",
   "url": "https://sollahms.cl/proyectos.html",
-  "description": "Explora proyectos inmobiliarios disponibles en distintas ciudades de Chile y filtra las alternativas por ubicación y estado.",
+  "description": "Encuentra tu próxima propiedad. Explora y compara alternativas por ubicación, precio y características.",
   "publisher": {
     "@type": "Organization",
     "name": "Sollahms",
@@ -26,47 +26,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/index.tailwind.css">
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body { font-family: 'Inter', sans-serif; background-color: var(--s-canvas); }
-        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
-            .catalog-filters { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
-        .catalog-control { width: 100%; min-height: 44px; border: 1px solid var(--s-field-line); border-radius: var(--s-radius); padding: .75rem; background: white; color: var(--s-green); }
-        .catalog-control:focus-visible { outline: 2px solid var(--s-green); outline-offset: 3px; }
-        .catalog-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-        .catalog-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; overflow-wrap: anywhere; background: #fff; border: 1px solid #00322914; border-radius: var(--s-radius); box-shadow: 0 4px 18px #00322908; transition: box-shadow .2s ease, border-color .2s ease; }
-        .catalog-card:hover { border-color: #00322935; box-shadow: 0 8px 26px #00322912; }
-        .catalog-cover { display: block; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--s-soft); color: var(--s-green); }
-        .catalog-cover-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
-        .catalog-cover-placeholder { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; padding: 1rem; text-align: center; background: linear-gradient(135deg, var(--s-green), var(--s-green-hover)); color: #fff; }
-        .catalog-cover-placeholder strong { font-family: Manrope, sans-serif; color: var(--s-gold); font-size: 1.2rem; letter-spacing: .04em; }
-        .catalog-cover-placeholder span { font-size: .75rem; line-height: 1.5; color: #ffffffbf; }
-        .catalog-card-body { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
-        .catalog-card-title { color: var(--s-green); font-size: 1.2rem; line-height: 1.4; margin: 0 0 .8rem; }
-        .catalog-actions { margin-top: auto; padding-top: 1.25rem; }
-        .catalog-details-link { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1rem; border-radius: var(--s-radius); background: var(--s-green); color: #fff; font-size: .875rem; font-weight: 700; text-decoration: none; transition: background .2s ease; }
-        .catalog-details-link:hover { background: var(--s-green-hover); }
-        .catalog-reference { margin-top: .75rem; color: var(--s-muted); font-size: .8125rem; line-height: 1.6; }
-        .catalog-reference a { color: var(--s-green); text-decoration: underline; text-underline-offset: .2em; }
-        .catalog-directory { padding: 1.25rem; margin-top: 1.5rem; border: 1px solid var(--s-field-line); border-radius: var(--s-radius); background: #fff; color: var(--s-green); }
-        .catalog-directory summary { cursor: pointer; font-weight: 700; padding: .5rem 0; }
-        .catalog-directory p { margin: .75rem 0; line-height: 1.6; }
-        .catalog-directory ul { display: grid; gap: .5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
-        .catalog-directory a { display: block; padding: .5rem 0; text-decoration: underline; text-underline-offset: .2em; }
-        .catalog-reference a:focus-visible, .catalog-directory a:focus-visible, .catalog-directory summary:focus-visible { outline: 3px solid var(--s-green); outline-offset: 3px; }
-        .catalog-cover:focus-visible, .catalog-details-link:focus-visible { outline: 3px solid var(--s-gold); outline-offset: -3px; }
-        @media (prefers-reduced-motion: reduce) { .catalog-card, .catalog-details-link { transition: none; } }
-        @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (min-width: 1024px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; } }
-    </style>
+<link rel="stylesheet" href="/assets/css/catalog.css?v=20261026-1">
 <link rel="stylesheet" href="/assets/css/purchase-capacity.css?v=20261025-visual-1">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sollahms">
 <meta property="og:locale" content="es_CL">
-<meta property="og:title" content="Proyectos inmobiliarios | Sollahms">
-<meta property="og:description" content="Explora proyectos inmobiliarios disponibles en distintas ciudades de Chile y filtra las alternativas por ubicación y estado.">
+<meta property="og:title" content="Catálogo inmobiliario | Sollahms">
+<meta property="og:description" content="Encuentra tu próxima propiedad. Explora y compara alternativas por ubicación, precio y características.">
 <meta property="og:url" content="https://sollahms.cl/proyectos.html">
 <meta property="og:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v3.png">
 <meta property="og:image:secure_url" content="https://sollahms.cl/assets/branding/og-sollahms-square-v3.png">
@@ -75,8 +41,8 @@
 <meta property="og:image:height" content="1254">
 <meta property="og:image:alt" content="Sollahms — información y asesoría inmobiliaria">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Proyectos inmobiliarios | Sollahms">
-<meta name="twitter:description" content="Explora proyectos inmobiliarios disponibles en distintas ciudades de Chile y filtra las alternativas por ubicación y estado.">
+<meta name="twitter:title" content="Catálogo inmobiliario | Sollahms">
+<meta name="twitter:description" content="Encuentra tu próxima propiedad. Explora y compara alternativas por ubicación, precio y características.">
 <meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v3.png">
 <meta name="twitter:image:alt" content="Sollahms — información y asesoría inmobiliaria">
 <link rel="stylesheet" href="/assets/css/project-photos.css?v=20261025-visual-1">
@@ -84,7 +50,7 @@
 <script src="/assets/js/scroll-presence.js?v=20261026-3" defer></script>
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
 </head>
-<body class="text-on-background pt-20">
+<body class="catalog-page text-on-background pt-20">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
 </a>
@@ -143,15 +109,33 @@
 })();
 </script>
 <main id="contenido-principal">
-<section class="bg-[#00201a] text-white py-16 md:py-24">
+<section class="catalog-hero bg-[#00201a] text-white">
 <div class="max-w-7xl mx-auto px-8">
-<p class="text-sm font-bold tracking-[0.2em] uppercase text-primary-fixed mb-6">ASSET PORTAFOLIO</p>
-<h1 class="text-4xl md:text-6xl font-extrabold mb-6">Asset Portafolio</h1>
-<p class="leading-relaxed">Explora las alternativas disponibles y filtra el catálogo según ubicación o estado del proyecto.</p>
+<p class="catalog-eyebrow">ASSET PORTAFOLIO</p>
+<h1>Catálogo inmobiliario</h1>
+<p class="leading-relaxed">Encuentra tu próxima propiedad. Explora y compara alternativas por ubicación, precio y características.</p>
 </div>
 </section>
-<section class="py-16 bg-surface" aria-label="Catálogo de proyectos">
+<section class="catalog-results bg-surface" aria-label="Catálogo de proyectos">
 <div class="max-w-7xl mx-auto px-8">
+
+<div class="catalog-explore" data-scroll-static="">
+<form id="catalog-filters" role="search" aria-label="Filtros del catálogo">
+<div class="catalog-filters">
+<div class="catalog-search-field"><label for="search">Buscar</label><input class="catalog-control" id="search" type="search" maxlength="200" placeholder="Nombre, comuna o inmobiliaria" autocomplete="off" disabled></div>
+<div><label for="region">Región</label><select class="catalog-control" id="region" disabled><option value="">Todas las regiones</option></select></div>
+<div><label for="commune">Comuna</label><select class="catalog-control" id="commune" disabled><option value="">Todas las comunas</option></select></div>
+<div><label for="max-price">Precio máximo UF</label><input class="catalog-control" id="max-price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sin máximo" disabled></div>
+</div>
+<div class="catalog-filter-actions">
+<details id="catalog-more" class="catalog-more"><summary>Más filtros<span id="catalog-more-count"></span></summary><div class="catalog-secondary">
+<div><label for="asset-type">Tipo de activo</label><select class="catalog-control" id="asset-type" disabled><option value="">Todos</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option><option value="Mixto">Mixto</option><option value="Terreno">Terreno</option></select></div>
+<div><label for="state">Estado</label><select class="catalog-control" id="state" disabled><option value="">Todos los estados</option></select></div>
+</div></details>
+<button id="clear-filters" class="catalog-text-button" type="button" disabled>Limpiar filtros</button>
+</div>
+<div id="applied-filters" class="catalog-applied" aria-label="Filtros aplicados" hidden></div>
+</form>
 <section class="capacity-search" aria-labelledby="capacity-title">
 <div class="capacity-intro"><div><h2 id="capacity-title">Encuentra tu propiedad según tu renta</h2><p>Explora un escenario de compra con tu renta, ahorro y un pie estimado. Puedes seguir usando el catálogo sin ingresar datos financieros.</p></div><button class="capacity-button" id="capacity-toggle" type="button" aria-expanded="false" aria-controls="capacity-form" disabled>Buscar según mi renta</button></div>
 <form id="capacity-form" class="capacity-form" hidden autocomplete="off">
@@ -174,25 +158,19 @@
 <div class="capacity-form-actions"><button id="capacity-submit" class="capacity-button" type="submit">Evaluar proyectos</button><button id="capacity-reset" class="capacity-button capacity-button-secondary" type="button">Volver al catálogo</button></div>
 </form><p id="capacity-summary" class="capacity-summary" role="status" aria-live="polite"></p>
 </section>
-<form id="catalog-filters" class="catalog-filters mb-8" role="search" aria-label="Filtros del catálogo">
-<div><label class="block font-bold text-primary mb-3" for="search">Buscar proyecto</label><input class="catalog-control" id="search" type="search" disabled></div>
-<div><label class="block font-bold text-primary mb-3" for="asset-type">Tipo de activo</label><select class="catalog-control" id="asset-type" disabled><option value="">Todos</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option>
-<option value="Mixto">Mixto</option><option value="Terreno">Terreno</option></select></div>
-<div><label class="block font-bold text-primary mb-3" for="region">Región</label><select class="catalog-control" id="region" disabled><option value="">Todas las regiones</option></select></div>
-<div><label class="block font-bold text-primary mb-3" for="commune">Comuna</label><select class="catalog-control" id="commune" disabled><option value="">Todas las comunas</option></select></div>
-<div><label class="block font-bold text-primary mb-3" for="state">Estado</label><select class="catalog-control" id="state" disabled><option value="">Todos los estados</option></select></div>
-<div><label class="block font-bold text-primary mb-3" for="max-price">Precio máximo UF</label><input class="catalog-control" id="max-price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sin máximo" disabled></div>
-<div><label class="block font-bold text-primary mb-3" for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option></select></div>
-<button id="clear-filters" class="catalog-control font-bold hover:bg-slate-100" type="button" disabled>Limpiar filtros</button>
-</form>
-<p id="project-count" class="font-bold text-primary mb-6" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
-<p id="catalog-message" class="text-secondary mb-6" role="status" aria-live="polite" aria-atomic="true"></p>
-<div id="project-grid" class="catalog-grid" aria-busy="true"></div>
+<div class="catalog-toolbar">
+<p id="project-count" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
+<div class="catalog-view" role="group" aria-label="Vista del catálogo"><button type="button" data-catalog-view="cards" aria-pressed="true" disabled>Tarjetas</button><button type="button" data-catalog-view="list" aria-pressed="false" disabled>Listado</button></div>
+<div class="catalog-sort"><label for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" form="catalog-filters" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option></select></div>
+</div>
+<div id="catalog-feedback" class="catalog-feedback" hidden><p id="catalog-message" role="status" aria-live="polite" aria-atomic="true"></p><button id="empty-reset" class="catalog-text-button" type="button" hidden>Limpiar filtros y ver todos</button></div>
+</div>
+<div id="project-grid" class="catalog-grid" data-view="cards" aria-busy="true"></div>
 <noscript><p>Puedes explorar las fichas desde el listado siguiente. Los filtros y la búsqueda financiera requieren JavaScript.</p></noscript>
 <!--CATALOG_DIRECTORY_START-->
 <details id="catalog-static-directory" class="catalog-directory">
 <summary>Explorar el listado de fichas de proyectos</summary>
-<p>Consulta la información y los pendientes en cada ficha. El listado no acredita disponibilidad ni condiciones comerciales vigentes.</p>
+<p>Accede directamente a las fichas del catálogo.</p>
 <ul>
     <li><a href="/distrito-centro.html">Distrito Centro</a></li>
     <li><a href="/reserva-mayor-2.html">Reserva Mayor 2</a></li>
@@ -344,7 +322,7 @@
 <h2 class="text-emerald-900 font-semibold mb-4 font-['Inter'] text-sm uppercase tracking-widest">Secciones</h2>
 <ul class="space-y-2">
 <li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/#expertise">Expertise</a></li>
-<li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/#portfolio">Asset Portfolio</a></li>
+<li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/#portfolio">Asset Portafolio</a></li>
 <li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/contacto.html">Contacto</a></li>
 </ul>
 </div>
@@ -359,331 +337,6 @@
 <p class="text-[10px] text-slate-400 font-mono tracking-widest text-center">PRECISION • TRANSPARENCY • STRATEGY</p>
 </div>
 </footer>
-<script>
-(() => {
-    const search = document.getElementById('search');
-    const assetType = document.getElementById('asset-type');
-    const region = document.getElementById('region');
-    const commune = document.getElementById('commune');
-    const state = document.getElementById('state');
-    const maxPriceInput = document.getElementById('max-price');
-    const sortOrder = document.getElementById('sort-order');
-    const clear = document.getElementById('clear-filters');
-    const grid = document.getElementById('project-grid');
-    const count = document.getElementById('project-count');
-    const message = document.getElementById('catalog-message');
-    const form = document.getElementById('catalog-filters');
-    // CATALOG_FILTER_HISTORY_START
-    // Entry-local project filters only: no URL change, financial inputs, lead
-    // fields, cookies or persistent storage. Existing history keys are retained.
-    const filterHistoryKey = 'sollahmsCatalogFiltersV1';
-    const filterControls = { search, assetType, region, commune, state, maxPriceInput, sortOrder };
-    const validFilterState = value => value && typeof value === 'object' && !Array.isArray(value)
-        && value.version === 1 && Object.keys(value).length === 8
-        && Object.keys(filterControls).every(key => typeof value[key] === 'string')
-        && value.search.length <= 200 && !/[<>\u0000-\u001f\u007f]/.test(value.search)
-        && ['assetType', 'region', 'commune', 'state', 'sortOrder'].every(key => value[key].length <= 100)
-        && value.maxPriceInput.length <= 32
-        && (value.maxPriceInput === '' || (/^\d+(?:\.\d*)?(?:[eE][+-]?\d+)?$/.test(value.maxPriceInput)
-            && Number.isFinite(Number(value.maxPriceInput)) && Number(value.maxPriceInput) >= 0));
-    const restoreCatalogFilters = () => {
-        let saved;
-        try { saved = window.history.state?.[filterHistoryKey]; } catch { return; }
-        if (!validFilterState(saved)) return;
-        const select = (control, value, fallback = '') => {
-            control.value = [...control.options].some(option => option.value === value) ? value : fallback;
-        };
-        search.value = saved.search;
-        select(assetType, saved.assetType);
-        select(region, saved.region);
-        updateCommunes();
-        select(commune, saved.commune);
-        select(state, saved.state);
-        maxPriceInput.value = saved.maxPriceInput;
-        select(sortOrder, saved.sortOrder, 'original');
-    };
-    const rememberCatalogFilters = () => {
-        try {
-            const previous = window.history.state;
-            const next = previous && typeof previous === 'object' && !Array.isArray(previous) ? { ...previous } : {};
-            const values = { version: 1, ...Object.fromEntries(Object.entries(filterControls).map(([key, control]) => [key, control.value])) };
-            if (validFilterState(values)) next[filterHistoryKey] = values;
-            else delete next[filterHistoryKey];
-            window.history.replaceState(next, '');
-        } catch { /* Optional browser history cannot block catalogue filtering. */ }
-    };
-    // CATALOG_FILTER_HISTORY_END
-    const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
-    const numberFormat = new Intl.NumberFormat('es-CL');
-    // CATALOG_CONDITION_TARGETS_START
-    const conditionTargets = {
-    "distrito-centro": "#contenido-principal",
-    "inn-puerto-chico": "#contenido-principal",
-    "edificio-suecia": "#contenido-principal"
-};
-    // CATALOG_CONDITION_TARGETS_END
-    // CATALOG_COVERS_START
-    const coverVariants = {};
-    // CATALOG_COVERS_END
-    let projects = [];
-    let capacitySearch = null;
-    // CATALOG_TYPED_PRICE_START
-    const selectedOffer = (project, selectedType) => {
-        if (!Array.isArray(project.preciosPorTipologia)) return { value: project.precioDesdeUF, typology: project.precioDesdeTipologia };
-        const offers = project.preciosPorTipologia.filter(row =>
-            selectedType === 'Comercial' ? row.tipologia === 'Local' : selectedType === 'Residencial' ? row.tipologia !== 'Local' : true);
-        const lowest = offers.reduce((best, row) => !best || row.precioDesdeUF < best.precioDesdeUF ? row : best, null);
-        return { value: lowest?.precioDesdeUF ?? null, typology: lowest?.tipologia ?? null };
-    };
-    // CATALOG_TYPED_PRICE_END
-    const stages = project => project.inmobiliaria === 'Ecasa' && Array.isArray(project.etapasComerciales) && project.etapasComerciales.length > 1
-        ? project.etapasComerciales : Array.isArray(project.etapas) ? project.etapas : [];
-    const commercialReference = project => project.inmobiliaria === 'Ecasa' && stages(project).length > 1
-        ? stages(project).find(stage => stage.slug === project.etapaReferenciaSlug) : null;
-    const projectStates = project => [project.estado, ...stages(project).map(stage => stage.estado)]
-        .filter(value => typeof value === 'string' && value.length);
-    const element = (tag, text, classes) => {
-        const node = document.createElement(tag);
-        if (text !== undefined) node.textContent = text;
-        if (classes) node.className = classes;
-        return node;
-    };
-    const appendOptions = (select, values) => {
-        [...new Set(values.filter(value => typeof value === 'string' && value.length))]
-            .sort((a, b) => a.localeCompare(b, 'es-CL'))
-            .forEach(value => {
-                const option = element('option', value);
-                option.value = value;
-                select.append(option);
-            });
-    };
-    const options = (select, key, source = projects) => appendOptions(select, source.map(project => project[key]));
-    const updateCommunes = () => {
-        const selected = commune.value;
-        commune.replaceChildren(new Option('Todas las comunas', ''));
-        options(commune, 'comuna', projects.filter(project => !region.value || project.region === region.value));
-        if ([...commune.options].some(option => option.value === selected)) commune.value = selected;
-    };
-    const card = project => {
-        const article = element('article', undefined, 'catalog-card');
-        article.dataset.project = project.slug;
-        const hasDetail = typeof project.detalleUrl === 'string' && /^\/[a-z0-9-]+\.html$/.test(project.detalleUrl);
-        const cover = element(hasDetail ? 'a' : 'div', undefined, 'catalog-cover');
-        if (hasDetail) {
-            cover.href = project.detalleUrl;
-            cover.setAttribute('aria-label', 'Ver fotografías y detalles de ' + project.nombre);
-        }
-        const showPlaceholder = () => {
-            const placeholder = element('div', undefined, 'catalog-cover-placeholder');
-            const brand = element('img', undefined, 'sollahms-brand__image');
-            brand.src = '/assets/branding/sollahms-logo-light.svg';
-            brand.alt = 'Sollahms';
-            brand.width = 114; brand.height = 22;
-            placeholder.append(brand, element('span', 'Fotografía oficial pendiente'));
-            cover.replaceChildren(placeholder);
-        };
-        // Only existing local official images enter the public catalogue dataset.
-        if (typeof project.imagenPrincipal === 'string' && /^\/assets\/propiedades\/[a-z0-9/._-]+\.(?:webp|jpe?g|png)$/i.test(project.imagenPrincipal)) {
-            const image = element('img', undefined, 'catalog-cover-image');
-            image.alt = project.imagenAlt || 'Fotografía del proyecto ' + project.nombre;
-            image.loading = 'lazy';
-            image.decoding = 'async';
-            image.width = 1600;
-            image.height = 900;
-            image.addEventListener('error', showPlaceholder, { once: true });
-            const responsive = coverVariants[project.slug];
-            // A changed cover never inherits another photograph's variants.
-            if (responsive?.localPath === project.imagenPrincipal) {
-                image.width = responsive.width;
-                image.height = responsive.height;
-                image.srcset = responsive.sources.map(source => source.localPath + ' ' + source.width + 'w').join(', ');
-                image.sizes = '(min-width: 1280px) 384px, (min-width: 1024px) calc(33.333vw - 42.667px), (min-width: 768px) calc(50vw - 48px), calc(100vw - 64px)';
-            }
-            image.src = project.imagenPrincipal;
-            cover.append(image);
-        } else showPlaceholder();
-        const body = element('div', undefined, 'catalog-card-body');
-        article.append(cover, body);
-        const builderVerified = project.verificacion?.camposVerificados?.includes('inmobiliaria');
-        body.append(element('p', project.inmobiliaria + (builderVerified ? '' : ' · Asociación por verificar'), 'text-sm font-bold text-secondary mb-3'));
-        body.append(element('h2', project.nombre, 'catalog-card-title font-bold'));
-        body.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
-        const pendingIdentity = ['mapocho-3521-edificio-a', 'froilan-roa-5731-torre-norte', 'froilan-roa-5731-torre-sur'].includes(project.slug);
-        if (pendingIdentity) {
-            const notice = element('p', 'La identidad comercial y la oferta vigente de esta etapa siguen sin confirmar. La información del conjunto se muestra por separado.', 'commercial-identity-notice text-sm text-secondary mb-4');
-            notice.setAttribute('role', 'note');
-            body.append(notice);
-        }
-        const reference = commercialReference(project);
-        if (project.imagenEtapa) body.append(element('p', 'Imagen referencial · ' + project.imagenEtapa, 'text-xs text-secondary mb-3'));
-        if (reference) body.append(element('p', 'Información comercial · Etapa ' + reference.etapa, 'text-xs text-secondary mb-3'));
-        if (project.direccion != null) body.append(element('p', project.direccion, 'text-sm text-secondary mb-4'));
-        const details = element('dl');
-        const detail = (label, value) => {
-            details.append(element('dt', label, 'text-sm font-bold text-primary mt-4'));
-            details.append(element('dd', value, 'text-sm text-secondary'));
-        };
-        if (project.tipoActivo && project.preciosPorTipologia) detail('Tipo de oferta', project.tipoActivo);
-        if (project.estado != null) detail(project.preciosPorTipologia ? 'Estado informado' : 'Estado', project.estado);
-        const projectStages = stages(project).filter(stage => project.inmobiliaria !== 'Ecasa' || (stage.slug !== project.etapaReferenciaSlug && (stage.estado != null || stage.entrega != null)));
-        if (projectStages.length) {
-            details.append(element('dt', 'Etapas', 'text-sm font-bold text-primary mt-4'));
-            const values = element('dd');
-            const list = element('ul');
-            projectStages.forEach(stage => {
-                let summary = stage.nombre + (stage.estado != null ? ' — ' + stage.estado : '');
-                if (stage.entrega != null && !normalize(stage.estado).includes(normalize(stage.entrega))) {
-                    summary += ' · Entrega ' + stage.entrega;
-                }
-                list.append(element('li', summary, 'text-sm text-secondary'));
-            });
-            values.append(list);
-            details.append(values);
-        }
-        if (project.entrega != null) detail(project.preciosPorTipologia ? 'Entrega informada' : 'Entrega', project.entrega);
-        if (Array.isArray(project.tipologias) && project.tipologias.length) {
-            details.append(element('dt', 'Tipologías', 'text-sm font-bold text-primary mt-4'));
-            const values = element('dd');
-            const list = element('ul');
-            project.tipologias.forEach(value => {
-                const price = project.preciosPorTipologia?.find(row => row.tipologia === value);
-                const amount = price ? new Intl.NumberFormat('es-CL', {minimumFractionDigits: Number.isInteger(price.precioDesdeUF) ? 0 : 2, maximumFractionDigits: 2}).format(price.precioDesdeUF) : '';
-                list.append(element('li', value + (price ? ': desde UF ' + amount : ''), 'text-sm text-secondary'));
-            });
-            values.append(list);
-            details.append(values);
-        }
-        body.append(details);
-        const offer = selectedOffer(project, assetType.value);
-        if (typeof offer.value === 'number' && Number.isFinite(offer.value)) {
-            body.append(element('p', (offer.typology ? (offer.typology === 'Local' ? 'Local comercial' : offer.typology) + ' desde UF ' : 'Desde UF ') + (project.preciosPorTipologia ? new Intl.NumberFormat('es-CL', {minimumFractionDigits: Number.isInteger(offer.value) ? 0 : 2, maximumFractionDigits: 2}).format(offer.value) : numberFormat.format(offer.value)) + (reference ? ' · Etapa ' + reference.etapa : ''), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
-        } else {
-            body.append(element('p', (['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación'), 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
-        }
-        const referenceNote = element('div', undefined, 'catalog-reference');
-        const reviewedOn = project.commercialSource?.verifiedOn ?? project.verificacion?.fecha;
-        const date = /^\d{4}-\d{2}-\d{2}$/.test(reviewedOn ?? '') ? reviewedOn : null;
-        referenceNote.append(element('p', date ? 'Referencia revisada el ' + date + '.' : 'Fecha de revisión pendiente.'));
-        const retainedConditions = project.commercialSource?.note || (project.slug === 'edificio-nordico' && project.precioDesdeUF === 4746 && date === '2026-10-13'
-            ? 'Desde UF 4.746 corresponde sólo a unidad 101, 1 dormitorio y 1 baño; excluye estacionamiento y bodega.' : '');
-        if (retainedConditions) referenceNote.append(element('p', retainedConditions));
-        referenceNote.append(element('p', 'Información referencial; confirma precio, disponibilidad y condiciones al cotizar.'));
-        if (hasDetail) {
-            const conditions = element('a', 'Ver condiciones y pendientes en la ficha');
-            conditions.href = project.detalleUrl + (conditionTargets[project.slug] ?? '#proyecto');
-            conditions.setAttribute('aria-label', 'Ver condiciones y pendientes de ' + project.nombre);
-            referenceNote.append(conditions);
-        }
-        body.append(referenceNote);
-        if (hasDetail) {
-            const actions = element('div', undefined, 'catalog-actions');
-            const details = element('a', 'Ver detalles', 'catalog-details-link');
-            details.href = project.detalleUrl;
-            details.setAttribute('aria-label', 'Ver detalles de ' + project.nombre);
-            actions.append(details);
-            body.append(actions);
-        }
-        if (!(project.preciosPorTipologia && assetType.value === 'Comercial')) capacitySearch?.decorateCard(article, project);
-        return article;
-    };
-    const render = () => {
-        const query = normalize(search.value.trim());
-        const maxPrice = maxPriceInput.valueAsNumber;
-        const hasMaxPrice = Number.isFinite(maxPrice) && maxPrice >= 0;
-        const filtered = projects.filter(project =>
-            (!assetType.value || ((project.tiposActivos ?? [project.tipoActivo]).includes(assetType.value) || project.tipoActivo === assetType.value)) &&
-            (!region.value || project.region === region.value) &&
-            (!commune.value || project.comuna === commune.value) &&
-            (!state.value || projectStates(project).includes(state.value)) &&
-            (!hasMaxPrice || (typeof selectedOffer(project, assetType.value).value === 'number' && Number.isFinite(selectedOffer(project, assetType.value).value) && selectedOffer(project, assetType.value).value <= maxPrice)) &&
-            (!query || [
-                ...['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion', 'slug'].map(key => project[key]),
-                ...stages(project).map(stage => stage.nombre)
-            ].some(value => normalize(value).includes(query)))
-        );
-        const sorted = [...filtered];
-        if (sortOrder.value === 'price-asc' || sortOrder.value === 'price-desc') {
-            const direction = sortOrder.value === 'price-asc' ? 1 : -1;
-            // Stable sorting preserves JSON order for ties; unknown prices go last.
-            sorted.sort((a, b) => {
-                const aPrice = selectedOffer(a, assetType.value).value;
-                const bPrice = selectedOffer(b, assetType.value).value;
-                const aValid = typeof aPrice === 'number' && Number.isFinite(aPrice);
-                const bValid = typeof bPrice === 'number' && Number.isFinite(bPrice);
-                if (!aValid || !bValid) return aValid ? -1 : bValid ? 1 : 0;
-                return direction * (aPrice - bPrice);
-            });
-        }
-        if (sortOrder.value === 'original') capacitySearch?.sortProjects(sorted);
-        grid.replaceChildren(...sorted.map(card));
-        count.textContent = filtered.length + (filtered.length === 1 ? ' proyecto' : ' proyectos');
-        message.textContent = filtered.length ? '' : 'No encontramos proyectos que coincidan con tus filtros.';
-        // CATALOG_FILTER_HISTORY_SAVE_START
-        rememberCatalogFilters();
-        // CATALOG_FILTER_HISTORY_SAVE_END
-    };
-    form.addEventListener('submit', event => event.preventDefault());
-    search.addEventListener('input', render);
-    assetType.addEventListener('change', render);
-    maxPriceInput.addEventListener('input', render);
-    region.addEventListener('change', () => {
-        updateCommunes();
-        render();
-    });
-    commune.addEventListener('change', render);
-    state.addEventListener('change', render);
-    sortOrder.addEventListener('change', render);
-    clear.addEventListener('click', () => {
-        form.reset();
-        updateCommunes();
-        render();
-    });
-    const load = async () => {
-        try {
-            // CATALOG_LOAD_TIMEOUT_START
-            const response = await fetch('/data/proyectos.json', { signal: AbortSignal.timeout(10000) });
-            // CATALOG_LOAD_TIMEOUT_END
-            if (!response.ok) throw new Error('HTTP ' + response.status);
-            const data = await response.json();
-            if (!Array.isArray(data)) throw new Error('El catálogo debe ser un array');
-            data.forEach((project, index) => {
-                if (project.etapas === undefined) return;
-                if (!Array.isArray(project.etapas) || project.etapas.some(stage =>
-                    !stage || typeof stage.nombre !== 'string' || !stage.nombre.length ||
-                    typeof stage.estado !== 'string' || !stage.estado.length ||
-                    (stage.entrega !== null && typeof stage.entrega !== 'string')
-                )) throw new Error('Etapas inválidas en el proyecto ' + index);
-            });
-            projects = data;
-            options(region, 'region');
-            appendOptions(state, projects.flatMap(projectStates));
-            updateCommunes();
-            // CATALOG_FILTER_HISTORY_RESTORE_START
-            restoreCatalogFilters();
-            // CATALOG_FILTER_HISTORY_RESTORE_END
-            render();
-            document.getElementById('catalog-static-directory').hidden = true;
-            [search, assetType, region, commune, state, maxPriceInput, sortOrder, clear].forEach(control => { control.disabled = false; });
-            import('/assets/js/purchase-capacity-ui.mjs').then(({ initializeCapacitySearch }) => {
-                capacitySearch = initializeCapacitySearch({ projects, onChange: render });
-                document.getElementById('capacity-toggle').disabled = false;
-            }).catch(() => {
-                document.getElementById('capacity-summary').textContent = 'El buscador financiero no pudo cargar. Puedes seguir utilizando los filtros del catálogo.';
-            });
-        } catch (error) {
-            grid.replaceChildren();
-            count.textContent = '';
-            // CATALOG_TIMEOUT_MESSAGE_START
-            message.textContent = ['TimeoutError', 'AbortError'].includes(error.name)
-                ? 'La carga del catálogo tardó demasiado. Puedes consultar el directorio de proyectos o intentarlo nuevamente más tarde.'
-                : 'No pudimos cargar el catálogo de proyectos. Inténtalo nuevamente más tarde.';
-            // CATALOG_TIMEOUT_MESSAGE_END
-        } finally {
-            grid.setAttribute('aria-busy', 'false');
-        }
-    };
-    load();
-})();
-</script>
+<script type="module" src="/assets/js/catalog.mjs?v=20261026-1"></script>
 </body>
 </html>

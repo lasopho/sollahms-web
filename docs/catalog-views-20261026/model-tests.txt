@@ -1,0 +1,15 @@
+✔ all 132 source records and original ordering survive without mutation or duplicates (12.127832ms)
+✔ both numeric directions preserve stable ties, decimals and unknown prices last (5.050544ms)
+✔ search covers names, communes and developers with accent-insensitive matching (13.363052ms)
+✔ combined filters and maximum price exclude unavailable amounts, never use zero (0.482074ms)
+✔ mixed and commercial offers keep the exact selected typology and decimal amount (1.522013ms)
+✔ facts distinguish reception state from delivery and do not fill absent data (0.634279ms)
+✔ return state is bounded to catalogue values; view persists only as an enum (2.427735ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 263.523475
