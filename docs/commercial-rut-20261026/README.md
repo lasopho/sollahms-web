@@ -13,3 +13,9 @@ Las pruebas son sintéticas y sustituyen todo transporte. El preview de QA usa e
 La privacidad y el consentimiento describen identificación y continuidad de la evaluación solicitada, sin marketing. Las simulaciones permanecen anónimas hasta solicitar asesoría. No se agregan otros campos.
 
 Rollback: restaurar `dpl_HbPQb4nq6Riwpt2iK3WUJgLXGGbq` mediante `request_rollback` del proyecto `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`, equipo `team_A9VNIW2f2K1IJpd2pGdvDmEN`. No ejecutar salvo necesidad de recuperación.
+
+## Publicado y verificado
+
+Versión `34bded6cd287d80f1207780ef1fc0c4f5e125d56`, deployment `dpl_8xfJsBW1M88w25SGXwXe5gGehz4H`. Se verificaron 136 formularios, 2.220 controles de conservación, 18 pruebas aisladas y 166/166 comprobaciones HTTP públicas. UF SII del 26/10/2026: CLP 41.221,08. Sin logs de error/fatal en la ventana revisada.
+
+Capturas reales, sin datos personales: [escritorio](desktop.jpg) y [móvil](mobile.jpg). Las recepciones se probaron exclusivamente con datos sintéticos y transporte simulado; no se comprobó entrega a un buzón real. Véanse `browser-qa.json`, `public-checks.json`, `release.json` e `isolated-tests.txt`.

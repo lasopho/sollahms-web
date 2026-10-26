@@ -63,6 +63,11 @@ test('RUT does not bypass consent, origin, preview, key or channel protections',
  assert.equal((await createContactHandler({...options,getEnvironment:()=> 'preview'}).fetch(req('/api/contact',{...base,medio:undefined,objetivo:undefined,rut:valid[0]}))).status,503);
  assert.equal((await advisory.fetch(req('/api/advisory',{...quote({rut:valid[0]}),consent:false}))).status,400);
  assert.equal((await contact.fetch(req('/api/contact',{...base,medio:undefined,objetivo:undefined,rut:valid[0],consent:false}))).status,400);
+ const body=quote({rut:valid[0]});const cross=req('/api/advisory',body);cross.headers.set('Origin','https://example.invalid');assert.equal((await advisory.fetch(cross)).status,403);
+ const contactBody={...base,medio:undefined,objetivo:undefined,rut:valid[0]};const crossContact=req('/api/contact',contactBody);crossContact.headers.set('Origin','https://example.invalid');assert.equal((await contact.fetch(crossContact)).status,403);
+ const noKey=req('/api/advisory',body);noKey.headers.delete('Idempotency-Key');assert.equal((await advisory.fetch(noKey)).status,400);
+ assert.equal((await createAdvisoryHandler({...options,getDeliveryMode:()=>undefined}).fetch(req('/api/advisory',body))).status,503);
+ assert.equal((await createContactHandler({...options,getDeliveryMode:()=>undefined}).fetch(req('/api/contact',contactBody))).status,503);
  assert.equal(captured.length,before);
 });
 test('retries retain fingerprint without retaining raw personal fields in browser storage',async()=>{
