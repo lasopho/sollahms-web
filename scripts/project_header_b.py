@@ -22,7 +22,8 @@ LABELS = {
 def catalog_labels(page):
     def replace(m):
         node=BeautifulSoup(m[0], 'html.parser').a
-        if node.get('href','').split('?')[0].split('#')[0] not in ['/proyectos.html','proyectos.html']:
+        href=node.get('href','')
+        if href.split('?')[0].split('#')[0] not in ['/proyectos.html','proyectos.html'] and href not in ['/#portfolio','#portfolio']:
             return m[0]
         result=m[0]
         for old,new in LABELS.items():
