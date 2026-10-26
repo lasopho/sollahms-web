@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "finding": "CAT-001",
-  "checkedOn": "2026-10-17",
-  "sourceCommit": "39006d3a6c96bd4154dd99eb6e914c5857393a3b",
+  "checkedOn": "2026-10-25",
+  "sourceCommit": "fa5f5a8403632899af097338f23c2f9fa4f0812f",
   "scope": "Identidades y DOM del commit fuente; no certifica vigencia comercial, derechos ni publicación.",
   "sourceSha256": {
-    "data/proyectos.json": "f448bad2a9c36bf7b5249ecbb3ec343b5b4e916238b297a91fe9956057688aeb",
-    "data/fichas-proyectos.json": "aec64d00257833f0ac63f616bb95f70c59d1cbabc66a1df65ed740094733b585",
-    "data/registro-fichas.json": "be206aac3bb43fd9a9fbf720e514a8fdc840cc273397c1d1d28f15aa4fe07396",
-    "lib/project-context.mjs": "94e60805fd597b61e3c5230a53aeb6de33805494ebef4ad017c286f18cf6d8bc",
-    "sitemap.xml": "949060e3e75bc7589d05378748870e3684d64cbb7bac53cd8d53ab77e592da92"
+    "data/proyectos.json": "f2b28fbeff15c532f2277f6aee5c271837b724506546f0c490925476d5c46801",
+    "data/fichas-proyectos.json": "2aab2655ea5fd03a63545f954ea898d7f98a5ab223b89c17057b3e51348958de",
+    "data/registro-fichas.json": "c00c1204b363ec751e20ecd0e99180b0975c368c148bc5f9f65f13b5c735b17c",
+    "lib/project-context.mjs": "9eedfa6a2e02b0715a13bff679d47a28bd8e1bd18d97d4c0c431994c67c2dabe",
+    "sitemap.xml": "3d1b80373109799af130bde6fc9ae7802440539c224a4083bb970cd21b5a55f4"
   },
   "summary": {
-    "projects": 134,
+    "projects": 132,
     "developers": {
       "AJ Urbana": 5,
       "Crescer": 2,
@@ -23,36 +23,36 @@
       "León": 5,
       "Maestra": 19,
       "Nollagam": 7,
-      "Norte Verde": 20,
+      "Norte Verde": 18,
       "Sento": 7,
       "Sudamericana": 2,
       "Vesant": 1
     },
-    "htmlFiles": 134,
+    "htmlFiles": 132,
     "withHistoricalPending": 124,
-    "withPlanImages": 45,
-    "withoutPlanImages": 89,
-    "withMaps": 130,
-    "mapIframes": 132
+    "withPlanImages": 5,
+    "withoutPlanImages": 127,
+    "withMaps": 117,
+    "mapIframes": 119
   },
   "slugComparisons": {
     "research": {
-      "count": 134,
+      "count": 132,
       "missing": [],
       "extra": []
     },
     "register": {
-      "count": 134,
+      "count": 132,
       "missing": [],
       "extra": []
     },
     "formContext": {
-      "count": 134,
+      "count": 132,
       "missing": [],
       "extra": []
     },
     "sitemap": {
-      "count": 134,
+      "count": 132,
       "missing": [],
       "extra": []
     }
@@ -141,11 +141,9 @@
         "El número de baños de las tipologías estudio no se declara en el encabezado; no se deduce de la imagen.",
         "Consultar disponibilidad y condiciones comerciales actuales."
       ],
-      "htmlImages": 20,
-      "htmlPlanImages": 12,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Paicav%C3%AD+1485%2C+Concepci%C3%B3n%2C+Regi%C3%B3n+del+Biob%C3%ADo%2C+Chile&output=embed"
-      ]
+      "htmlImages": 9,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "vista-llacolen-a",
@@ -207,8 +205,8 @@
         "Precio vigente y disponibilidad",
         "Fecha de entrega"
       ],
-      "htmlImages": 22,
-      "htmlPlanImages": 8,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Presb%C3%ADtero+Ram%C3%ADrez+110%2C+Arica%2C+Arica+y+Parinacota%2C+Chile"
       ]
@@ -226,8 +224,8 @@
         "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
         "Precio vigente y disponibilidad"
       ],
-      "htmlImages": 18,
-      "htmlPlanImages": 3,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Avenida+Ing.+Ra%C3%BAl+Pey+Casado+2125%2C+Arica%2C+Arica+y+Parinacota%2C+Chile"
       ]
@@ -247,8 +245,8 @@
         "Precio vigente y disponibilidad",
         "Fecha de entrega"
       ],
-      "htmlImages": 18,
-      "htmlPlanImages": 4,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Avenida+Ing.+Ra%C3%BAl+Pey+Casado+2125%2C+Arica%2C+Arica+y+Parinacota%2C+Chile"
       ]
@@ -349,7 +347,7 @@
     },
     {
       "slug": "edificio-ecuador",
-      "name": "Edificio Ecuador",
+      "name": "Ecuador",
       "developer": "Norte Verde",
       "detailUrl": "/edificio-ecuador.html",
       "htmlPresent": true,
@@ -359,7 +357,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Coronel+Godoy+0157%2C+esquina+Av.+Ecuador%2C+Estaci%C3%B3n+Central%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Coronel+Godoy+0157%2C+Estaci%C3%B3n+Central%2C+Chile"
       ]
     },
     {
@@ -377,8 +375,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 18,
-      "htmlPlanImages": 4,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Ecuador+4226%2C+Estaci%C3%B3n+Central%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -397,7 +395,7 @@
         "Clasificación útil/total del rango general de superficie",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 11,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Vallenar+2070%2C+esquina+Hip%C3%B3dromo%2C+Independencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -418,8 +416,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 18,
-      "htmlPlanImages": 4,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Ferm%C3%ADn+Vivaceta+864%2C+Independencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -437,8 +435,8 @@
         "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
         "Precio vigente y disponibilidad"
       ],
-      "htmlImages": 17,
-      "htmlPlanImages": 3,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Bezanilla+1278%2C+Independencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -575,13 +573,13 @@
         "Fecha de entrega",
         "Disponibilidad del visor Recorrido 2 · Endémico Pichilemu: no mostró escena tras reintento; conservar enlace oficial y confirmar con el proveedor"
       ],
-      "htmlImages": 20,
-      "htmlPlanImages": 4,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": []
     },
     {
       "slug": "playa-penuelas",
-      "name": "Edificio Playa Peñuelas",
+      "name": "Playa Peñuelas",
       "developer": "Norte Verde",
       "detailUrl": "/playa-penuelas.html",
       "htmlPresent": true,
@@ -593,7 +591,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Av.+Pe%C3%B1uelas+118%2C+Coquimbo%2C+Coquimbo%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Av.+Pe%C3%B1uelas+118%2C+Coquimbo%2C+Chile"
       ]
     },
     {
@@ -643,7 +641,7 @@
         "Recorrido virtual oficial específico no localizado",
         "Condiciones efectivas de entrega"
       ],
-      "htmlImages": 2,
+      "htmlImages": 6,
       "htmlPlanImages": 0,
       "htmlMaps": []
     },
@@ -704,7 +702,7 @@
         "Fecha de entrega",
         "Recorrido oficial localizado pero no disponible (dominio no resuelve)"
       ],
-      "htmlImages": 29,
+      "htmlImages": 27,
       "htmlPlanImages": 19,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=San+Mart%C3%ADn+74%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -727,7 +725,7 @@
         "Precio vigente y disponibilidad",
         "Fecha de entrega"
       ],
-      "htmlImages": 36,
+      "htmlImages": 34,
       "htmlPlanImages": 23,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Morand%C3%A9+808%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -838,7 +836,7 @@
         "Fotografías y recorrido propio de la torre",
         "Equipamiento específico"
       ],
-      "htmlImages": 6,
+      "htmlImages": 13,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Rivas+Vicu%C3%B1a+1131%2C+Quinta+Normal%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -860,7 +858,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+Lira+622%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Calle+Lira+622%2C+Santiago%2C+Chile"
       ]
     },
     {
@@ -875,7 +873,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Avda.+Luis+Thayer+Ojeda+390%2C+Providencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Av.+Luis+Thayer+Ojeda+390%2C+Providencia%2C+Chile"
       ]
     },
     {
@@ -929,7 +927,7 @@
         "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
         "Precio vigente y disponibilidad"
       ],
-      "htmlImages": 13,
+      "htmlImages": 6,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Bascu%C3%B1%C3%A1n+Santa+Mar%C3%ADa+0699%2C+Temuco%2C+La+Araucan%C3%ADa%2C+Chile",
@@ -966,7 +964,7 @@
         "Fotografías y recorrido propio de la torre",
         "Equipamiento específico"
       ],
-      "htmlImages": 4,
+      "htmlImages": 6,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Froil%C3%A1n+Roa+5731%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1037,7 +1035,7 @@
         "Fotografías y recorrido propio de la torre",
         "Equipamiento específico"
       ],
-      "htmlImages": 4,
+      "htmlImages": 6,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Froil%C3%A1n+Roa+5731%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1055,7 +1053,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+San+Francisco+1204%2C+esquina+Marina+de+Gaette%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Calle+San+Francisco+1204%2C+esquina+Marina+de+Gaette%2C+Santiago%2C+Chile"
       ]
     },
     {
@@ -1071,8 +1069,8 @@
         "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
         "Precio vigente y disponibilidad"
       ],
-      "htmlImages": 21,
-      "htmlPlanImages": 9,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Los+Lagos+910%2C+Coquimbo%2C+Coquimbo%2C+Chile"
       ]
@@ -1093,7 +1091,7 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 7,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=El+Canelo+6750%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1114,8 +1112,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 15,
-      "htmlPlanImages": 3,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Diagonal+Paraguay+240%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1136,7 +1134,7 @@
         "Cantidad de departamentos",
         "Cantidad de pisos"
       ],
-      "htmlImages": 15,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Vicente+P%C3%A9rez+Rosales+991%2C+Puerto+Varas%2C+Los+Lagos%2C+Chile"
@@ -1156,7 +1154,7 @@
         "Clasificación útil/total del rango general de superficie",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 10,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Tranquila+2323%2C+esquina+Suecia%2C+Providencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1176,7 +1174,7 @@
         "Clasificación útil/total del rango general de superficie",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 9,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Los+Capitanes+1447%2C+Providencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1197,7 +1195,7 @@
         "Clasificación útil/total del rango general de superficie",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 5,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Diagonal+Germania+200%2C+Puerto+Montt%2C+Los+Lagos%2C+Chile"
@@ -1218,7 +1216,7 @@
         "Clasificación útil/total del rango general de superficie",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 10,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Argomedo+382%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1239,7 +1237,7 @@
         "Clasificación útil/total del rango general de superficie",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 5,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Am%C3%A9rico+Vespucio+6630%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1260,7 +1258,7 @@
         "Disponibilidad exacta por tipología",
         "Rango de baños de todas las tipologías"
       ],
-      "htmlImages": 9,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Imperial+645%2C+Puerto+Varas%2C+Los+Lagos%2C+Chile"
@@ -1296,7 +1294,7 @@
         "Imágenes y recorrido del producto residencial",
         "Equipamiento residencial vigente"
       ],
-      "htmlImages": 4,
+      "htmlImages": 9,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Videla+810%2C+Coquimbo%2C+Chile"
@@ -1317,7 +1315,7 @@
         "Clasificación útil/total del rango general de superficie",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 8,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=C%C3%B3ndor+1071%2C+esquina+San+Diego%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1339,7 +1337,7 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 9,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Eyzaguirre+590%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1360,7 +1358,7 @@
         "Disponibilidad exacta por tipología",
         "Rango de baños de todas las tipologías"
       ],
-      "htmlImages": 5,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Chacabuco+637%2C+Valdivia%2C+Los+R%C3%ADos%2C+Chile"
@@ -1377,15 +1375,13 @@
       "historicalPending": [
         "El brochure indica entrega 2º semestre 2025; requiere contraste comercial oficial vigente."
       ],
-      "htmlImages": 11,
-      "htmlPlanImages": 3,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Domeyko+2055%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 8,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "vergara-domeyko",
-      "name": "Edificio Vergara Domeyko",
+      "name": "Vergara Domeyko",
       "developer": "Norte Verde",
       "detailUrl": "/vergara-domeyko.html",
       "htmlPresent": true,
@@ -1397,12 +1393,12 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+Vergara+701%2C+esquina+calle+Domeyko%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Calle+Vergara+701%2C+Santiago%2C+Chile"
       ]
     },
     {
       "slug": "parque-panama",
-      "name": "Edificio Parque Panamá",
+      "name": "Parque Panamá",
       "developer": "Norte Verde",
       "detailUrl": "/parque-panama.html",
       "htmlPresent": true,
@@ -1415,12 +1411,12 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Pasaje+Delfina+890%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Av.+Mart%C3%ADnez+de+Rozas+2262%2C+Santiago%2C+Chile"
       ]
     },
     {
       "slug": "playa-serena",
-      "name": "Edificio Playa Serena",
+      "name": "Playa Serena",
       "developer": "Norte Verde",
       "detailUrl": "/playa-serena.html",
       "htmlPresent": true,
@@ -1430,7 +1426,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Avenida+del+Mar+con+Cuatro+Esquinas%2C+La+Serena%2C+Coquimbo%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Avenida+del+Mar+3500%2C+La+Serena%2C+Chile"
       ]
     },
     {
@@ -1474,11 +1470,9 @@
         "Página general conserva Estudio/1D/2D, mientras precio actual y banner de unidades finales son 2D/2B; tipologías documentadas no equivalen a stock comercial.",
         "C2 oficial publica 49,52 m², coincidente con planta Curicó: no usar la planta web para reemplazar el brochure sin evidencia adicional; conservar original brochure."
       ],
-      "htmlImages": 17,
-      "htmlPlanImages": 9,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Av.+General+Carol+Urz%C3%BAa+7060%2C+Las+Condes%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 8,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "mapocho-3521",
@@ -1512,15 +1506,13 @@
         "Brochure recibido declara 20,21–55,46 m² globales; cuatro planos aportados cubren 20,77–55,33 m². Web declara 20,21–55,33 m². No completar extremos con superficies inventadas.",
         "El brochure recibido anuncia entrega segundo semestre 2026; web actual ya informa proyecto entregado y 100% vendido."
       ],
-      "htmlImages": 11,
-      "htmlPlanImages": 4,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Jofr%C3%A9+157%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 7,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "irarrazaval",
-      "name": "Edificio Irarrázaval 1970",
+      "name": "Irarrázaval",
       "developer": "Norte Verde",
       "detailUrl": "/irarrazaval.html",
       "htmlPresent": true,
@@ -1544,15 +1536,15 @@
         "Equipamiento vigente",
         "Fotografías actuales"
       ],
-      "htmlImages": 0,
+      "htmlImages": 9,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Irarr%C3%A1zaval+1970%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Irarr%C3%A1zaval+1970%2C+%C3%91u%C3%B1oa%2C+Chile"
       ]
     },
     {
       "slug": "parque-quinta",
-      "name": "Edificio Parque Quinta",
+      "name": "Parque Quinta",
       "developer": "Norte Verde",
       "detailUrl": "/parque-quinta.html",
       "htmlPresent": true,
@@ -1565,11 +1557,13 @@
       ],
       "htmlImages": 5,
       "htmlPlanImages": 0,
-      "htmlMaps": []
+      "htmlMaps": [
+        "https://www.google.com/maps?output=embed&q=Calle+Santo+Domingo+3916%2C+Santiago%2C+Chile"
+      ]
     },
     {
       "slug": "quintavista",
-      "name": "Edificio Quintavista",
+      "name": "Quintavista",
       "developer": "Norte Verde",
       "detailUrl": "/quintavista.html",
       "htmlPresent": true,
@@ -1581,7 +1575,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+Santo+Domingo+3816%2C+Quinta+Normal%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Av.+Santo+Domingo+3810%2C+Santiago%2C+Chile"
       ]
     },
     {
@@ -1622,8 +1616,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 15,
-      "htmlPlanImages": 6,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Espa%C3%B1a+442%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1643,8 +1637,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 13,
-      "htmlPlanImages": 3,
+      "htmlImages": 4,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+5908%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1664,8 +1658,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 15,
-      "htmlPlanImages": 3,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+Poniente+6988%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1685,8 +1679,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 16,
-      "htmlPlanImages": 4,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Esmeralda+6548%2C+La+Cisterna%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1706,8 +1700,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 13,
-      "htmlPlanImages": 3,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Am%C3%A9rico+Vespucio+6750%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1727,8 +1721,8 @@
         "Precio vigente y disponibilidad",
         "Fecha de entrega"
       ],
-      "htmlImages": 22,
-      "htmlPlanImages": 9,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Victoria+7997%2C+La+Cisterna%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1745,8 +1739,8 @@
         "Entrega",
         "Fecha de entrega"
       ],
-      "htmlImages": 20,
-      "htmlPlanImages": 5,
+      "htmlImages": 7,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Beato+Adolfo+Kolping+685%2C+Villarrica%2C+La+Araucan%C3%ADa%2C+Chile",
         "https://www.google.com/maps?output=embed&q=Beato+Adolfo+Kolping+685%2C+Villarrica%2C+La+Araucan%C3%ADa%2C+Chile"
@@ -1828,11 +1822,9 @@
         "Recorrido 360 enlazado es entorno. Página no aporta recorrido de departamento; iframe de galería vacío.",
         "Fotos de Metro, Bosque Panul, MIM, parques, centro cívico y mall son entorno."
       ],
-      "htmlImages": 17,
-      "htmlPlanImages": 9,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Calle+Eugenia%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 8,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "alto-goycolea",
@@ -1903,7 +1895,7 @@
         "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
         "Precio vigente y disponibilidad"
       ],
-      "htmlImages": 14,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+7189%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -1911,7 +1903,7 @@
     },
     {
       "slug": "vicuna-mackenna-6896",
-      "name": "Edificio Vicuña Mackenna 6896",
+      "name": "Vicuña Mackenna 6896",
       "developer": "Norte Verde",
       "detailUrl": "/vicuna-mackenna-6896.html",
       "htmlPresent": true,
@@ -1924,7 +1916,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+6896%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+6896%2C+La+Florida%2C+Chile"
       ]
     },
     {
@@ -1942,8 +1934,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 18,
-      "htmlPlanImages": 6,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Vicu%C3%B1a+Mackenna+7589%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1961,8 +1953,8 @@
         "Precio vigente: campaña CYBER sin fechas oficiales corroboradas",
         "Precio vigente y disponibilidad"
       ],
-      "htmlImages": 20,
-      "htmlPlanImages": 6,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Pichidegua+6422%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -1981,11 +1973,9 @@
         "Brochure y ficha web difieren en algunas terminaciones; esta ficha documental reproduce el PDF aportado.",
         "Consultar disponibilidad y condiciones comerciales actuales."
       ],
-      "htmlImages": 13,
-      "htmlPlanImages": 4,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Uruguay+8866%2C+La+Florida%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 19,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "enlace-mackenna",
@@ -2002,8 +1992,8 @@
         "Precio vigente y disponibilidad",
         "Fecha de entrega"
       ],
-      "htmlImages": 20,
-      "htmlPlanImages": 9,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Vicu%C3%B1a+Mackenna+5889%2C+San+Joaqu%C3%ADn%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -2029,7 +2019,7 @@
     },
     {
       "slug": "carmen-marin",
-      "name": "Edificio Carmen Marín",
+      "name": "Carmen Marín",
       "developer": "Norte Verde",
       "detailUrl": "/carmen-marin.html",
       "htmlPresent": true,
@@ -2043,7 +2033,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+Carmen+318%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Calle+Carmen+318%2C+Santiago%2C+Chile"
       ]
     },
     {
@@ -2061,11 +2051,9 @@
         "Consultar disponibilidad y condiciones comerciales actuales.",
         "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
       ],
-      "htmlImages": 19,
-      "htmlPlanImages": 9,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Gregorio+de+la+Fuente+3011%2C+Macul%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 14,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "matta-016",
@@ -2082,8 +2070,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 20,
-      "htmlPlanImages": 4,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Manuel+Antonio+Matta+16%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -2104,7 +2092,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+Roberto+Espinoza+670%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Calle+Roberto+Espinoza+670%2C+Santiago%2C+Chile"
       ]
     },
     {
@@ -2119,11 +2107,9 @@
         "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 6.434 como referencia histórica.",
         "Consultar disponibilidad y condiciones comerciales actuales."
       ],
-      "htmlImages": 15,
-      "htmlPlanImages": 3,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Av.+Consistorial+6501%2C+Pe%C3%B1alol%C3%A9n%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 13,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "caceres",
@@ -2201,7 +2187,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+Maip%C3%BA+1196%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Calle+Maip%C3%BA+1196%2C+Santiago%2C+Chile"
       ]
     },
     {
@@ -2219,8 +2205,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 13,
-      "htmlPlanImages": 4,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Abd%C3%B3n+Cifuentes+90%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -2240,8 +2226,8 @@
         "Disponibilidad exacta por tipología",
         "Fecha exacta de entrega"
       ],
-      "htmlImages": 18,
-      "htmlPlanImages": 4,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Manuel+Rodr%C3%ADguez+701%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -2259,8 +2245,8 @@
         "Existencia de recorrido virtual oficial",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 22,
-      "htmlPlanImages": 5,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Manuel+Antonio+Tocornal+678%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -2278,8 +2264,8 @@
         "Existencia de recorrido virtual oficial",
         "Disponibilidad exacta por tipología"
       ],
-      "htmlImages": 24,
-      "htmlPlanImages": 5,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Centenario+1151%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -2297,11 +2283,9 @@
         "Rango global web 20,85–47,35 m² difiere de algunos planos oficiales de total 49,52/87,84 m²; guardar métricas por fuente sin inferir disponibilidad.",
         "Galería de entorno incluye Barrio Italia, parques, GAM y comercios; estas imágenes no deben etiquetarse como interiores o áreas comunes del edificio."
       ],
-      "htmlImages": 17,
-      "htmlPlanImages": 11,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Curic%C3%B3+77%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 6,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "san-ignacio",
@@ -2318,11 +2302,9 @@
         "El brochure recibido informa 24,18–57,95 m²; web 21,1–57,95 m². No mezclar rango global actual con una oferta de planos brochure que no lo cubre.",
         "Brochure anuncia entrega segundo semestre 2025; web actual confirma entrega inmediata."
       ],
-      "htmlImages": 10,
-      "htmlPlanImages": 3,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=San+Ignacio+280%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 9,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "angamos",
@@ -2345,11 +2327,9 @@
         "A2/A4 están en pestaña Estudio pero tarjeta numera dormitorio 1 y archivos incluyen reservado; no inferir stock actual desde filename.",
         "Extracción detallada de medios, tour y comparación de original están documentadas por el agente Angamos."
       ],
-      "htmlImages": 24,
-      "htmlPlanImages": 6,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Angamos+205%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 13,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "conecta-huechuraba",
@@ -2366,15 +2346,15 @@
         "Precio vigente y disponibilidad",
         "Recorrido oficial localizado pero no disponible (HTTP 404)"
       ],
-      "htmlImages": 20,
-      "htmlPlanImages": 6,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Av.+Los+Libertadores+6170%2C+Huechuraba%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
     },
     {
       "slug": "bordevivo",
-      "name": "Edificio Borde Vivo",
+      "name": "Bordevivo",
       "developer": "Norte Verde",
       "detailUrl": "/bordevivo.html",
       "htmlPresent": true,
@@ -2388,7 +2368,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+San+Isidro+513%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=San+Isidro+513%2C+Santiago%2C+Chile"
       ]
     },
     {
@@ -2426,15 +2406,15 @@
         "Precio vigente y disponibilidad",
         "Fecha de entrega"
       ],
-      "htmlImages": 23,
-      "htmlPlanImages": 8,
+      "htmlImages": 5,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Benito+Rebolledo+esquina+San+Joaqu%C3%ADn%2C+La+Serena%2C+Coquimbo%2C+Chile"
       ]
     },
     {
       "slug": "vista-bulnes",
-      "name": "Edificio Vista Bulnes",
+      "name": "Vista Bulnes",
       "developer": "Norte Verde",
       "detailUrl": "/vista-bulnes.html",
       "htmlPresent": true,
@@ -2448,7 +2428,7 @@
       "htmlImages": 5,
       "htmlPlanImages": 0,
       "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+C%C3%B3ndor+1152%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
+        "https://www.google.com/maps?output=embed&q=Calle+C%C3%B3ndor+1152%2C+Santiago%2C+Chile"
       ]
     },
     {
@@ -2467,11 +2447,9 @@
         "Consultar disponibilidad y condiciones comerciales actuales.",
         "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
       ],
-      "htmlImages": 19,
-      "htmlPlanImages": 8,
-      "htmlMaps": [
-        "https://www.google.com/maps?q=Ram%C3%B3n+Cruz+Montt+3291%2C+Macul%2C+Regi%C3%B3n+Metropolitana%2C+Chile&output=embed"
-      ]
+      "htmlImages": 13,
+      "htmlPlanImages": 0,
+      "htmlMaps": []
     },
     {
       "slug": "vitro",
@@ -2678,7 +2656,7 @@
         "Disponibilidad exacta por tipología",
         "Precio y disponibilidad comercial actual"
       ],
-      "htmlImages": 5,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=San+Eugenio+567%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -2701,7 +2679,7 @@
         "Precio vigente y disponibilidad",
         "Fecha de entrega"
       ],
-      "htmlImages": 15,
+      "htmlImages": 11,
       "htmlPlanImages": 2,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Monjitas+690%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
@@ -2729,36 +2707,6 @@
       ]
     },
     {
-      "slug": "atelier-prat-oficinas",
-      "name": "Edificio Atelier Prat Oficinas",
-      "developer": "Norte Verde",
-      "detailUrl": "/atelier-prat-oficinas.html",
-      "htmlPresent": true,
-      "retainedReviewDate": "2026-10-09",
-      "retainedSource": "https://norte-verde.cl/proyecto/atelier-prat-oficinas/",
-      "historicalPending": [],
-      "htmlImages": 5,
-      "htmlPlanImages": 0,
-      "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Calle+Arturo+Prat+1760%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
-      ]
-    },
-    {
-      "slug": "corrientes-oficinas",
-      "name": "Edificio Corrientes Oficinas",
-      "developer": "Norte Verde",
-      "detailUrl": "/corrientes-oficinas.html",
-      "htmlPresent": true,
-      "retainedReviewDate": "2026-10-09",
-      "retainedSource": "https://norte-verde.cl/proyecto/corrientes-oficinas/",
-      "historicalPending": [],
-      "htmlImages": 5,
-      "htmlPlanImages": 0,
-      "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Avda.+Francisco+Bilbao+2518%2C+Providencia%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
-      ]
-    },
-    {
       "slug": "los-alerces",
       "name": "Los Alerces",
       "developer": "Ingevec",
@@ -2774,8 +2722,8 @@
         "Existencia de recorrido virtual oficial",
         "Cantidad de departamentos: originales con cifras diferentes; no publicada"
       ],
-      "htmlImages": 12,
-      "htmlPlanImages": 2,
+      "htmlImages": 11,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Los+Alerces+3254%2C+%C3%91u%C3%B1oa%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
       ]
@@ -2797,8 +2745,8 @@
         "Vinculación de líneas A–K con cada distribución",
         "Confirmación de comercialización actual exclusiva Etapa III"
       ],
-      "htmlImages": 11,
-      "htmlPlanImages": 4,
+      "htmlImages": 9,
+      "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Camino+Los+Ingleses+715%2C+Valpara%C3%ADso%2C+Valpara%C3%ADso%2C+Chile"
       ]
@@ -2829,7 +2777,7 @@
         "Baños por tipología (únicamente unidad 101 acreditada como 1D1B)",
         "Verificación visual de la ubicación 360 oficial de La Nube; no asumir recorrido interior"
       ],
-      "htmlImages": 5,
+      "htmlImages": 4,
       "htmlPlanImages": 0,
       "htmlMaps": [
         "https://www.google.com/maps?output=embed&q=Del+Rosario+esquina+Mirador%2C+Puerto+Varas%2C+Los+Lagos%2C+Chile"

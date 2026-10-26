@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import vm from 'node:vm';
 import { verifiedProjectPrice } from '../assets/js/project-finance.mjs';
 import { resolveProjectIdentity } from '../assets/js/project-identity.mjs';
 import { projectPublicSafeCatalogue } from '../lib/public-project-view.mjs';
@@ -73,4 +74,16 @@ test('Commercial and booking identities agree; server projection accepts the 132
 test('Automatic deployment remains disabled, including main and this branch',()=>{
  const cfg=json('vercel.json');assert.equal(cfg.git.deploymentEnabled.main,false);
  assert.equal(cfg.git.deploymentEnabled['codex/norte-verde-18-20261025'],false);
+});
+test('Commercial filtering/sorting uses the local price of mixed projects, preserving residential prices',()=>{
+ const html=readFileSync(new URL('../proyectos.html',import.meta.url),'utf8');
+ const code=html.match(/\/\/ CATALOG_TYPED_PRICE_START([\s\S]*?)\/\/ CATALOG_TYPED_PRICE_END/)[1];
+ const selectedOffer=vm.runInNewContext(code+'\nselectedOffer');
+ const dual=nv.find(p=>p.slug==='edificio-dual-390-lto');
+ assert.equal(selectedOffer(dual,'Comercial').value,18386.36);
+ assert.equal(selectedOffer(dual,'Residencial').value,7337.21);
+ assert.equal(selectedOffer(dual,'').value,7337.21);
+ const commercialUnder4000=nv.filter(p=>p.tiposActivos.includes('Comercial')&&selectedOffer(p,'Comercial').value<=4000).map(p=>p.slug).sort();
+ assert.deepEqual(commercialUnder4000,['bordevivo','edif-origen-atacama-3008','parque-panama','parque-quinta'].sort());
+ for(const p of data.filter(p=>p.inmobiliaria!=='Norte Verde'))assert.equal(selectedOffer(p,'Comercial').value,p.precioDesdeUF);
 });

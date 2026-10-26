@@ -1,10 +1,10 @@
 # Registro vigente de fichas Sollahms
 
-Corte: 2026-10-17 (America/Santiago). Commit fuente: `39006d3a6c96bd4154dd99eb6e914c5857393a3b`.
+Corte: 2026-10-25 (America/Santiago). Commit fuente: `fa5f5a8403632899af097338f23c2f9fa4f0812f`.
 
-El commit fuente es el commit remoto de la revisión P1 en el [PR #9](https://github.com/lasopho/sollahms-web/pull/9), con árbol `8fe1cc599298c54743f4e503d828671e8d14b6e4`. Esta referencia no representa `main` ni certifica el artefacto de producción.
+El commit fuente fija la evidencia del inventario; no certifica `main` ni el artefacto de producción.
 
-**134 proyectos, 134 HTML y 13 inmobiliarias.** Los conjuntos de slugs de catálogo, investigación, registro, contexto de formularios y sitemap coinciden sin duplicados.
+**132 proyectos, 132 HTML y 13 inmobiliarias.** Los conjuntos de slugs de catálogo, investigación, registro, contexto de formularios y sitemap coinciden sin duplicados.
 
 Este inventario reemplaza únicamente los conteos de cabecera históricos de 148/144/137. Las auditorías y evidencias anteriores se conservan. Las etapas comerciales agrupadas no son fichas adicionales.
 
@@ -12,7 +12,7 @@ Este inventario reemplaza únicamente los conteos de cabecera históricos de 148
 
 La [conciliación vigente de planos León](leon-planos-vigentes.md) separa la revisión especializada del 14/10 de los textos genéricos anteriores. Los [insumos multimedia pendientes](p2-insumos-multimedia.md) describen MED-003 y MED-004.
 
-Fuente máquina y hashes: [data/registro-vigente.json](../data/registro-vigente.json). Regeneración desde el commit fuente: `python scripts/build-current-register.py --source-commit 39006d3a6c96bd4154dd99eb6e914c5857393a3b --checked-on 2026-10-17`.
+Fuente máquina y hashes: [data/registro-vigente.json](../data/registro-vigente.json). Regeneración desde el commit fuente: `python scripts/build-current-register.py --source-commit fa5f5a8403632899af097338f23c2f9fa4f0812f --checked-on 2026-10-25`.
 
 ## Conteos por inmobiliaria
 
@@ -27,7 +27,7 @@ Fuente máquina y hashes: [data/registro-vigente.json](../data/registro-vigente.
 | León | 5 |
 | Maestra | 19 |
 | Nollagam | 7 |
-| Norte Verde | 20 |
+| Norte Verde | 18 |
 | Sento | 7 |
 | Sudamericana | 2 |
 | Vesant | 1 |
@@ -165,8 +165,6 @@ Fuente máquina y hashes: [data/registro-vigente.json](../data/registro-vigente.
 | [own](../own.html) | Leben | 2026-10-09 | 7 |
 | [monjitas-690](../monjitas-690.html) | AJ Urbana | 2026-10-09 | 7 |
 | [patio-brasil](../patio-brasil.html) | Sudamericana | 2026-10-09 | 5 |
-| [atelier-prat-oficinas](../atelier-prat-oficinas.html) | Norte Verde | 2026-10-09 | 0 |
-| [corrientes-oficinas](../corrientes-oficinas.html) | Norte Verde | 2026-10-09 | 0 |
 | [los-alerces](../los-alerces.html) | Ingevec | 2026-10-11 | 6 |
 | [valle-los-ingleses-iii](../valle-los-ingleses-iii.html) | Ingevec | 2026-10-11 | 7 |
 | [edificio-nordico](../edificio-nordico.html) | Leben | 2026-10-13 | 16 |

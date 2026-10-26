@@ -179,7 +179,7 @@
 <div><label class="block font-bold text-primary mb-3" for="region">Región</label><select class="catalog-control" id="region" disabled><option value="">Todas las regiones</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="commune">Comuna</label><select class="catalog-control" id="commune" disabled><option value="">Todas las comunas</option></select></div>
 <div><label class="block font-bold text-primary mb-3" for="state">Estado</label><select class="catalog-control" id="state" disabled><option value="">Todos los estados</option></select></div>
-<div><label class="block font-bold text-primary mb-3" for="max-price">Precio máximo UF</label><input class="catalog-control" id="max-price" type="number" min="0" step="1" inputmode="numeric" placeholder="Sin máximo" disabled></div>
+<div><label class="block font-bold text-primary mb-3" for="max-price">Precio máximo UF</label><input class="catalog-control" id="max-price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sin máximo" disabled></div>
 <div><label class="block font-bold text-primary mb-3" for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option></select></div>
 <button id="clear-filters" class="catalog-control font-bold hover:bg-slate-100" type="button" disabled>Limpiar filtros</button>
 </form>
@@ -425,6 +425,15 @@
     // CATALOG_COVERS_END
     let projects = [];
     let capacitySearch = null;
+    // CATALOG_TYPED_PRICE_START
+    const selectedOffer = (project, selectedType) => {
+        if (!Array.isArray(project.preciosPorTipologia)) return { value: project.precioDesdeUF, typology: project.precioDesdeTipologia };
+        const offers = project.preciosPorTipologia.filter(row =>
+            selectedType === 'Comercial' ? row.tipologia === 'Local' : selectedType === 'Residencial' ? row.tipologia !== 'Local' : true);
+        const lowest = offers.reduce((best, row) => !best || row.precioDesdeUF < best.precioDesdeUF ? row : best, null);
+        return { value: lowest?.precioDesdeUF ?? null, typology: lowest?.tipologia ?? null };
+    };
+    // CATALOG_TYPED_PRICE_END
     const stages = project => project.inmobiliaria === 'Ecasa' && Array.isArray(project.etapasComerciales) && project.etapasComerciales.length > 1
         ? project.etapasComerciales : Array.isArray(project.etapas) ? project.etapas : [];
     const commercialReference = project => project.inmobiliaria === 'Ecasa' && stages(project).length > 1
@@ -539,8 +548,9 @@
             details.append(values);
         }
         body.append(details);
-        if (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF)) {
-            body.append(element('p', (project.precioDesdeTipologia ? (project.precioDesdeTipologia === 'Local' ? 'Local comercial' : project.precioDesdeTipologia) + ' desde UF ' : 'Desde UF ') + (project.preciosPorTipologia ? new Intl.NumberFormat('es-CL', {minimumFractionDigits: Number.isInteger(project.precioDesdeUF) ? 0 : 2, maximumFractionDigits: 2}).format(project.precioDesdeUF) : numberFormat.format(project.precioDesdeUF)) + (reference ? ' · Etapa ' + reference.etapa : ''), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
+        const offer = selectedOffer(project, assetType.value);
+        if (typeof offer.value === 'number' && Number.isFinite(offer.value)) {
+            body.append(element('p', (offer.typology ? (offer.typology === 'Local' ? 'Local comercial' : offer.typology) + ' desde UF ' : 'Desde UF ') + (project.preciosPorTipologia ? new Intl.NumberFormat('es-CL', {minimumFractionDigits: Number.isInteger(offer.value) ? 0 : 2, maximumFractionDigits: 2}).format(offer.value) : numberFormat.format(offer.value)) + (reference ? ' · Etapa ' + reference.etapa : ''), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
         } else {
             body.append(element('p', (['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación'), 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
         }
@@ -567,7 +577,7 @@
             actions.append(details);
             body.append(actions);
         }
-        capacitySearch?.decorateCard(article, project);
+        if (!(project.preciosPorTipologia && assetType.value === 'Comercial')) capacitySearch?.decorateCard(article, project);
         return article;
     };
     const render = () => {
@@ -579,7 +589,7 @@
             (!region.value || project.region === region.value) &&
             (!commune.value || project.comuna === commune.value) &&
             (!state.value || projectStates(project).includes(state.value)) &&
-            (!hasMaxPrice || (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF) && project.precioDesdeUF <= maxPrice)) &&
+            (!hasMaxPrice || (typeof selectedOffer(project, assetType.value).value === 'number' && Number.isFinite(selectedOffer(project, assetType.value).value) && selectedOffer(project, assetType.value).value <= maxPrice)) &&
             (!query || [
                 ...['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion', 'slug'].map(key => project[key]),
                 ...stages(project).map(stage => stage.nombre)
@@ -590,10 +600,12 @@
             const direction = sortOrder.value === 'price-asc' ? 1 : -1;
             // Stable sorting preserves JSON order for ties; unknown prices go last.
             sorted.sort((a, b) => {
-                const aValid = typeof a.precioDesdeUF === 'number' && Number.isFinite(a.precioDesdeUF);
-                const bValid = typeof b.precioDesdeUF === 'number' && Number.isFinite(b.precioDesdeUF);
+                const aPrice = selectedOffer(a, assetType.value).value;
+                const bPrice = selectedOffer(b, assetType.value).value;
+                const aValid = typeof aPrice === 'number' && Number.isFinite(aPrice);
+                const bValid = typeof bPrice === 'number' && Number.isFinite(bPrice);
                 if (!aValid || !bValid) return aValid ? -1 : bValid ? 1 : 0;
-                return direction * (a.precioDesdeUF - b.precioDesdeUF);
+                return direction * (aPrice - bPrice);
             });
         }
         if (sortOrder.value === 'original') capacitySearch?.sortProjects(sorted);
