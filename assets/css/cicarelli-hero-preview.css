@@ -1,0 +1,89 @@
+/* Preview limited to Pintor Cicarelli I. The shared homepage palette is authoritative. */
+.project-hero.cicarelli-hero-preview {
+  min-height: 360px;
+  background: var(--s-green);
+  align-items: center;
+}
+.cicarelli-hero-preview .cicarelli-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .36fr) minmax(0, .64fr);
+  align-items: center;
+  gap: clamp(32px, 4vw, 56px);
+  width: 100%;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+.cicarelli-hero-preview .cicarelli-hero-figure {
+  min-width: 0;
+  margin: 0;
+}
+.cicarelli-hero-preview .cicarelli-hero-media {
+  position: relative;
+}
+.cicarelli-hero-preview .hero-image {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+/* Only the far-right surroundings dissolve into the solid green; the building stays clear. */
+.cicarelli-hero-preview .cicarelli-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 12%;
+  background: linear-gradient(to right, transparent, var(--s-green));
+  pointer-events: none;
+}
+.cicarelli-hero-preview figcaption {
+  margin-top: 10px;
+  color: var(--s-on-dark);
+  font-size: .7rem;
+  line-height: 1.5;
+}
+.cicarelli-hero-preview .hero-content {
+  min-width: 0;
+  padding: 0;
+}
+.cicarelli-hero-preview .breadcrumb {
+  margin-bottom: 28px;
+}
+.cicarelli-hero-preview h1 {
+  font-size: clamp(2.35rem, 4.2vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -.05em;
+  margin-bottom: 18px;
+}
+.cicarelli-hero-preview .hero-location {
+  margin-bottom: 20px;
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .cicarelli-hero-preview .cicarelli-hero-layout {
+    grid-template-columns: minmax(0, .38fr) minmax(0, .62fr);
+    gap: 28px;
+  }
+}
+@media (max-width: 760px) {
+  .project-hero.cicarelli-hero-preview { min-height: 0; }
+  .cicarelli-hero-preview .cicarelli-hero-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-top: 24px;
+    padding-bottom: 28px;
+  }
+  .cicarelli-hero-preview .cicarelli-hero-figure {
+    width: 100%;
+    max-width: 320px;
+  }
+  .cicarelli-hero-preview .breadcrumb {
+    margin-bottom: 18px;
+    gap: 8px;
+  }
+  .cicarelli-hero-preview .eyebrow { margin-bottom: 10px; }
+  .cicarelli-hero-preview h1 {
+    font-size: clamp(1.9rem, 7.6vw, 2.6rem);
+    margin-bottom: 14px;
+  }
+  .cicarelli-hero-preview .hero-location { margin-bottom: 16px; }
+}
