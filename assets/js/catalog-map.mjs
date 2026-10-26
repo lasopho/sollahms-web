@@ -65,7 +65,7 @@ export async function createCatalogMap({host,onAlternative}){
     const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type)){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
     const offer=selectedOffer(p,type),amount=el('p',validPrice(offer.value)?'Desde UF '+price(offer.value):'Consultar precio','catalog-price-value');
     const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl;link.setAttribute('aria-label','Ver ficha de '+p.nombre);
-    detail.append(figure,title,location,facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
+    detail.append(figure,title,location);if(p.direccion)detail.append(el('p',p.direccion,'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
     if(reveal){map.setView([row.location.lat,row.location.lng],Math.max(15,map.getZoom()),{animate:false});}
     redraw();remember();
   }
@@ -102,9 +102,9 @@ export async function createCatalogMap({host,onAlternative}){
     type=options.assetType||'';const result=locateProjects(projects,registry);rows=result.located;locations=locationGroups(rows);
     const key=projects.map(p=>p.slug).join('|')+'|'+type;
     status.textContent=rows.length+' de '+projects.length+' resultados disponibles en el mapa';
-    note.textContent=result.pending.length?result.pending.length+' '+(result.pending.length===1?'proyecto conserva':'proyectos conservan')+' su ficha en Tarjetas y Listado; su ubicación en el mapa está pendiente de verificación.':'';note.hidden=!result.pending.length;
-    pending.hidden=!result.pending.length;pendingSummary.textContent='Ver proyectos pendientes de ubicación ('+result.pending.length+')';pendingList.replaceChildren();
-    for(const project of result.pending){const li=el('li'),link=el('a',project.nombre);link.href=project.detalleUrl;li.append(link);pendingList.append(li);}
+    note.textContent=result.pending.length?result.pending.length+' '+(result.pending.length===1?'proyecto conserva':'proyectos conservan')+' su ficha en Tarjetas y Listado. Sus coordenadas están pendientes de verificación.':'';note.hidden=!result.pending.length;
+    pending.hidden=!result.pending.length;pendingSummary.textContent='Ver direcciones y coordenadas pendientes ('+result.pending.length+')';pendingList.replaceChildren();
+    for(const project of result.pending){const li=el('li'),link=el('a',project.nombre);link.href=project.detalleUrl;li.append(link,el('span',' — '+(project.direccion?project.direccion+', '+project.comuna+'. '+(registry.addressNotes?.[project.slug]||'Coordenadas por confirmar.'):'Dirección y coordenadas por confirmar.')));pendingList.append(li);}
     const previous=selected;select.replaceChildren(new Option('Elige un proyecto',''));for(const row of rows)select.append(new Option(row.project.nombre+' · '+row.project.comuna,row.project.slug));
     select.disabled=!rows.length;fit.disabled=!rows.length;
     if(key!==currentKey){nearby.hidden=true;currentKey=key;}

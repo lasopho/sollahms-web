@@ -1,0 +1,24 @@
+✔ documented addresses reach catalogue and fiche without changing commercial records (31.752285ms)
+✔ Llacolén stages share the verified site and retain two selectable records (1.530291ms)
+✔ street centroid and interpolated geocode are not admitted as a verified project point (0.41218ms)
+✔ mapping never drops or duplicates a catalogue record; every admitted point matches its source identity (2.892483ms)
+✔ same-coordinate towers stay at one true point and remain individually selectable (3.713368ms)
+✔ screen clustering combines near points at a wide view, separates on zoom and never mutates their coordinates (0.436216ms)
+✔ map filters and ordering are the same exact catalogue result set (5.618649ms)
+✔ return map state accepts only finite coordinates, zoom and a public project slug (0.488863ms)
+✔ map code keeps provider access lazy and separate from forms, scrolling and static fallbacks (2.729962ms)
+✔ all 132 source records and original ordering survive without mutation or duplicates (11.868654ms)
+✔ both numeric directions preserve stable ties, decimals and unknown prices last (5.434395ms)
+✔ search covers names, communes and developers with accent-insensitive matching (17.560527ms)
+✔ combined filters and maximum price exclude unavailable amounts, never use zero (0.481293ms)
+✔ mixed and commercial offers keep the exact selected typology and decimal amount (1.70833ms)
+✔ facts distinguish reception state from delivery and do not fill absent data (0.324521ms)
+✔ return state is bounded to catalogue values; view persists only as an enum (4.359014ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 298.483326
