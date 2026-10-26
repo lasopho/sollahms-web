@@ -41,6 +41,7 @@ El degradado `--s-hero` conserva exactamente la composición de la portada: radi
 - Transicionar color, fondo, borde y sombra; no animar el tamaño o posición de campos.
 - Tarjetas de portada: elevación máxima **2 px**, sin zoom de fotografía. Diagrama decorativo: respiración suave de 7 s con amplitud de 2 px, sin ocultar texto.
 - `prefers-reduced-motion: reduce`: eliminar animaciones, transiciones y desplazamiento suave, y evitar elevación al pasar el cursor. **No eliminar transformaciones de composición** que centran los rótulos del diagrama.
+- Desvanecimiento compartido al desplazarse mediante `scroll-presence.js`: sólo opacidad en los bordes de la pantalla, sin cambiar posiciones ni tamaños; opacidad completa en el área de lectura. Formularios, navegación, paneles financieros y estados permanecen estáticos. Sin JavaScript, con movimiento reducido, al imprimir, con colores forzados o al enfocar un elemento, el contenido permanece visible.
 - Carga: cursor de progreso y mensaje existente. Deshabilitado: cursor no permitido y superficie estable; no ocultar el texto con opacidad.
 
 ## Conservación
