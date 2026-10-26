@@ -121,6 +121,7 @@ body.home-fluid-b2 #portfolio .group:hover img { transform:none;filter:none }
 .financing-bar span { transition:width var(--s-duration) var(--s-ease) }
 /* Position-bound opacity. Homepage selectors override its old opaque card rules. */
 body .s-scroll-presence,
+body.home-fluid-b2 main>section:nth-of-type(2)>div.s-scroll-presence,
 body.home-fluid-b2 #expertise [class*="gap-y-16"]>div.s-scroll-presence,
 body.home-fluid-b2 #portfolio .grid>div.s-scroll-presence {
   opacity:var(--s-presence,1)!important;

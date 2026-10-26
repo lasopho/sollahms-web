@@ -6,7 +6,7 @@
   if (!main || !('IntersectionObserver' in window)) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   const excluded = 'header,nav,aside,form,dialog,[role="dialog"],[role="status"],[role="alert"],[aria-live],[data-scroll-static],.advisory-panel,.workspace,.simulation-grid,.capacity-search,.source-section,.catalog-filters,#project-count,#catalog-message';
-  const blocks = '.ci-identity,.ci-details,figure,.catalog-card,#portfolio .grid>div,.home-seo-steps>li,#expertise [class*="gap-y-16"]>div,.featured-intro,.spec-grid>div,.featured-facts .space-y-1,.amenity-list,.advisory-next>li,.journey,details';
+  const blocks = 'body.home-fluid-b2 main>section:nth-of-type(2)>div,.ci-identity,.ci-details,figure,.catalog-card,#portfolio .grid>div,.home-seo-steps>li,#expertise [class*="gap-y-16"]>div,.featured-intro,.spec-grid>div,.featured-facts .space-y-1,.amenity-list,.advisory-next>li,.journey,details';
   const text = 'h1,h2,h3,h4,p,blockquote,address';
   const ownership = new Map();
   const visible = new Set();
