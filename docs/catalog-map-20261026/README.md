@@ -31,3 +31,7 @@ Official documentation reviewed 2026-10-26:
 - https://www.openstreetmap.org/copyright
 
 Validation: `node --test tests/catalog-views.test.mjs tests/catalog-map.test.mjs`; frozen artifact hash/preservation checks; browser desktop/mobile tasks and release evidence follow. Geocoding review progress is cached and recoverable; never treat an incomplete review as final coverage.
+
+## Final location review
+
+132 catalogue records retained. 59 admitted project locations (21 developer-published coordinates and 38 unique address/number/commune matches); 73 pending, individually documented in `pending-locations.md`. Co-located projects remain individually selectable at their shared true point. The completed response cache and source audit are retained here for recovery and future review, outside the deployed artifact. No geocoding requests occur in the public application.

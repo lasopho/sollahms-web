@@ -86,9 +86,13 @@ export async function createCatalogMap({host,onAlternative}){
       const bounds=L.latLngBounds(group.map(p=>[p.lat,p.lng]));const point=group.length===1?[group[0].lat,group[0].lng]:bounds.getCenter();
       const label=multi?all.length+' proyectos agrupados':all[0].project.nombre;
       const icon=L.divIcon({className:'catalog-map-marker'+(multi?' is-cluster':'')+(containsSelected?' is-selected':''),html:'<span aria-hidden="true">'+(multi?all.length:'')+'</span>',iconSize:[40,40],iconAnchor:[20,20]});
-      const marker=L.marker(point,{icon,keyboard:true,title:label,alt:label,riseOnHover:false}).addTo(markers);
-      const dom=marker.getElement();dom.dataset.mapMarker=group.map(p=>p.lat+','+p.lng).join('|');dom.setAttribute('role','button');dom.setAttribute('aria-label',label+(containsSelected?' · seleccionado':''));dom.setAttribute('aria-pressed',String(containsSelected));
-      marker.on('click',()=>chooseGroup(group));dom.addEventListener('keydown',event=>{if(event.key===' '){event.preventDefault();chooseGroup(group);}});
+      const marker=L.marker(point,{icon,keyboard:true,title:label,alt:label,riseOnHover:false});
+      marker.on('add',()=>{
+        const dom=marker.getElement();if(!dom)return;
+        dom.dataset.mapMarker=group.map(p=>p.lat+','+p.lng).join('|');dom.setAttribute('role','button');dom.setAttribute('aria-label',label+(containsSelected?' · seleccionado':''));dom.setAttribute('aria-pressed',String(containsSelected));
+        dom.addEventListener('keydown',event=>{if(event.key===' '||event.key==='Enter'){event.preventDefault();event.stopPropagation();chooseGroup(group);}});
+      });
+      marker.on('click',()=>chooseGroup(group));marker.addTo(markers);
     }
     if(focused){const replacement=[...canvas.querySelectorAll('[data-map-marker]')].find(e=>e.dataset.mapMarker===focused);(replacement||canvas).focus({preventScroll:true});}
   }
