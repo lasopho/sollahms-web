@@ -6,8 +6,10 @@ CSS = '<link rel="stylesheet" href="/assets/css/image-parallax.css?v=20261026-1"
 SCRIPT = '<script src="/assets/js/image-parallax.js?v=20261026-1" defer></script>'
 
 def apply_image_parallax(page):
-    if '/assets/js/image-parallax.js' in page:
-        return page
+    # Regeneration can replace a gallery while retaining its head resources.
+    # Re-apply the opt-in instead of skipping newly generated photographs.
+    page = page.replace(CSS + '\n', '').replace(SCRIPT + '\n', '')
+    page = re.sub(r'<span class="s-parallax-frame">(<img\b[^>]*>)</span>', r'\1', page)
     soup = BeautifulSoup(page, 'html.parser')
     fiche = soup.html and soup.html.get('data-project-header') == 'b'
     home = soup.body and 'home-fluid-b2' in soup.body.get('class', [])
