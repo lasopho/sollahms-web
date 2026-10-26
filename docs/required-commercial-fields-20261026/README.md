@@ -21,3 +21,7 @@ Protected QA substitutes only the two function entrypoints with `tests/required-
 - Browser and post-release records are added after execution. No conversion improvement or mailbox delivery is claimed.
 
 Rollback: retain baseline deployment above and use authorized Vercel `request_rollback` with this project if recovery is required. Do not merge main. Main reference remains `86e200ec191b38af355061e21bc0fc1e549cce3b`.
+
+## Published and verified
+
+Production `13cfd76` → `dpl_DKfCGLRiFZ3tkymA9dAmvhw3MFSe`, READY on sollahms.cl. Frozen build verified 1,136 files; 988 unchanged from baseline. 3,852 structural/preservation checks and 22 isolated test groups passed. Browser desktop/mobile results and their limits are recorded in `browser-qa.json`; public HTTP results in `public-checks.json`. No real submissions were sent. The only post-preview change was the contact introduction, checked publicly; all tested form code is identical. Runtime error/fatal scan returned no entries in the recorded window. `release.json` preserves deployment, exact artifact and ready rollback target.

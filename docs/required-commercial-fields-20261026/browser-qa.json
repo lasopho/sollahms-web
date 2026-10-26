@@ -1,0 +1,46 @@
+{
+  "preview": "https://project-wrapp-obj52a8qi-lsandoval2-8260s-projects.vercel.app",
+  "deployment": "dpl_DujWf8HmwfmtiqJbzDZUBVszjLEh",
+  "code": "57f333e8e00aeef55e23857210ca8a1742e2a0dc",
+  "environment": "Protected preview with injected in-memory email transport; no real provider call",
+  "desktop": [
+    1440,
+    900
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "reviewed": [
+    "contacto.html desktop",
+    "pintor-cicarelli-i.html mobile quote/call",
+    "agenda-asesoria.html mobile",
+    "index.html mobile",
+    "comparador-hipotecario.html desktop/mobile"
+  ],
+  "observations": [
+    "All four fields visible and required, in order; no exclusive selector",
+    "Empty submit shows four adjacent errors plus consent error",
+    "Invalid RUT preserves name/email/phone and focuses RUT centrally below fixed navigation",
+    "Lowercase K normalizes correctly",
+    "Corrected general advisory accepted only after all four values reach fixture email",
+    "Mobile call accepted only after all four values reach fixture email",
+    "Mortgage simulation works; all four errors visible; corrected request accepted with scenario",
+    "No horizontal overflow; mobile single column, desktop two columns",
+    "Forms remain opacity 1; no faded ancestors on mortgage fields",
+    "No console errors/warnings in inspected preview pages"
+  ],
+  "previewToFinalDelta": "Only contacto.html introductory sentence was corrected after QA; form, scripts, APIs and styles are identical. Final introduction verified on public domain.",
+  "publicChecks": [
+    "contacto.html desktop: four required enabled visible fields and no selector",
+    "pintor-cicarelli-i.html mobile call: all four fields required enabled visible, no overflow"
+  ],
+  "screenshots": [
+    "desktop.jpg",
+    "mobile.jpg"
+  ],
+  "limitations": [
+    "Viewport emulation, not a physical mobile keyboard test",
+    "No real mailbox delivery or new production POST tested"
+  ]
+}
