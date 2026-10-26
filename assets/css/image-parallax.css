@@ -1,0 +1,16 @@
+/* Stable media frames only. Gradients, opacity and existing fade ownership stay intact. */
+.s-parallax-frame { display: block; overflow: clip; }
+.gallery-grid .s-parallax-frame, .featured-gallery .s-parallax-frame { border-radius: var(--s-radius-sm, 4px); }
+/* Home card links already establish a fixed-height frame. */
+body.home-fluid-b2 #portfolio .s-parallax-frame { height: 100%; }
+.s-parallax-frame > img[data-parallax-active] {
+  translate: 0 var(--s-image-y, 0px);
+  scale: var(--s-image-scale, 1);
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: reduce), (forced-colors: active) {
+  .s-parallax-frame > img[data-parallax-active] { translate: none; scale: none; }
+}
+@media print {
+  .s-parallax-frame > img[data-parallax-active] { translate: none; scale: none; }
+}
