@@ -14,7 +14,8 @@ for p in static:
   previous=subprocess.check_output(['git','show',base+':'+p],cwd=root);assert hashlib.sha256(previous).hexdigest()==old[key],p+' differs from published base'
   if p.endswith('.html') and p!='privacidad.html':
    current=(root/p).read_text();strip=lambda s:re.sub(r'<a\b[^>]*href="/trabaja-con-nosotros.html"[^>]*>Trabaja con nosotros</a>\n','',s)
-   assert strip(current)==previous.decode(),p+' changes beyond footer'
+   clean=re.sub(r'\n<li\b[^>]*><a\b[^>]*href="/trabaja-con-nosotros.html"[^>]*>Trabaja con nosotros</a></li>','',current)
+   assert strip(clean)==previous.decode(),p+' changes beyond footer'
  replace(key,(root/p).read_text())
 func='functions/api/collaboration.func/'
 for p in ['api/collaboration.mjs','assets/js/collaboration-fields.mjs','assets/js/commercial-fields.mjs','assets/js/rut.mjs','lib/form-operation-server.mjs']:replace(func+p,(root/p).read_text())

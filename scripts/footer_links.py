@@ -1,4 +1,4 @@
-"""Keep the public collaboration entry in the existing shared footer."""
+"""Keep the public collaboration entry with section links, preserving list semantics."""
 import re
 
 def apply_footer_links(page):
@@ -6,6 +6,15 @@ def apply_footer_links(page):
     if start<0 or end<0:return page
     footer=page[start:end]
     if 'href="/trabaja-con-nosotros.html"' in footer:return page
+    # A section list gets its own item after Contacto, never in the Legal group.
+    item=re.search(r'<li\b[^>]*>\s*<a\b[^>]*href="/contacto.html"[^>]*>Contacto</a>\s*</li>',footer,re.S)
+    anchor=re.search(r'<a\b[^>]*href="/contacto.html"[^>]*>Contacto</a>',footer,re.S)
+    match=item or anchor
+    if match:
+        link=match.group().replace('href="/contacto.html"','href="/trabaja-con-nosotros.html"').replace('>Contacto</a>','>Trabaja con nosotros</a>')
+        link=re.sub(r' aria-current="page"','',link)
+        pos=start+match.end()
+        return page[:pos]+'\n'+link+page[pos:]
     match=re.search(r'<a\b[^>]*href="/privacidad.html"[^>]*>.*?</a>',footer,re.S)
     if match:
         link=match.group().replace('href="/privacidad.html"','href="/trabaja-con-nosotros.html"')
