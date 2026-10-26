@@ -119,7 +119,8 @@ body.home-fluid-b2 #portfolio img { transition-duration:var(--s-duration) }
 body.home-fluid-b2 #portfolio .group:hover img { transform:none;filter:none }
 .result-panel { background:var(--s-hero) }
 .financing-bar span { transition:width var(--s-duration) var(--s-ease) }
-/* Position-bound opacity. Homepage selectors override its old opaque card rules. */
+/* Position-bound 5–100% opacity; JS owns both edge ramps without a time tween.
+   Homepage selectors override its old opaque card rules. Hover never cancels opacity. */
 body .s-scroll-presence,
 body.home-fluid-b2 main>section:nth-of-type(2)>div.s-scroll-presence,
 body.home-fluid-b2 #expertise [class*="gap-y-16"]>div.s-scroll-presence,

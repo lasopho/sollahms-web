@@ -19,20 +19,20 @@ function environment({reduced=false,io=true}={}) {
  return {styles,classes,doc,body,element,queued,media,flush,opacity:()=>Number(styles.get('--s-presence')??1),move:(top,bottom)=>{rect={top,bottom,width:300,height:bottom-top};listeners.scroll();flush();},motion:v=>{media.matches=v;listeners.motion();flush();listeners.intersect?.();flush();},focus:v=>{doc.activeElement=v;listeners.focusin();flush();},select:v=>{selection=v;listeners.selectionchange();flush();},fail:()=>{throwRect=true;listeners.scroll();flush();}};
 }
 let count=0;const eq=(a,b)=>{assert.equal(a,b);count++;};const ok=v=>{assert.ok(v);count++;};
-const e=environment();eq(e.opacity(),.1); // Body focus must not disable the fade.
-e.move(797.5,857.5);eq(e.opacity(),.55);
-e.move(695,755);eq(e.opacity(),1);
+const e=environment();eq(e.opacity(),.05); // Body focus must not disable the fade.
+e.move(756.5,816.5);eq(e.opacity(),.525);
+e.move(613,673);eq(e.opacity(),1);
 e.move(350,410);eq(e.opacity(),1);
-e.move(28,88);eq(e.opacity(),.1); // Exit is above the fixed 80px menu.
-e.move(126.5,186.5);eq(e.opacity(),.55);
-const positions=[[900,960],[850,910],[797.5,857.5],[695,755],[350,410],[126.5,186.5],[28,88]],down=[];
+e.move(28,88);eq(e.opacity(),.05); // Exit is above the fixed 80px menu.
+e.move(147,207);eq(e.opacity(),.525);
+const positions=[[900,960],[850,910],[756.5,816.5],[613,673],[350,410],[147,207],[28,88]],down=[];
 for(const p of positions){e.move(...p);down.push(e.opacity());}
 for(let i=positions.length-1;i>=0;i--){e.move(...positions[i]);eq(e.opacity(),down[i]);}
 eq(e.queued.length,0);const stopped=e.opacity();e.flush();eq(e.opacity(),stopped);
-e.move(797.5,857.5);e.focus(e.element);eq(e.opacity(),1);e.focus(e.body);eq(e.opacity(),.55);
-e.select({isCollapsed:false,rangeCount:1,getRangeAt:()=>({intersectsNode:()=>true})});eq(e.opacity(),1);e.select(null);eq(e.opacity(),.55);
+e.move(756.5,816.5);e.focus(e.element);eq(e.opacity(),1);e.focus(e.body);eq(e.opacity(),.525);
+e.select({isCollapsed:false,rangeCount:1,getRangeAt:()=>({intersectsNode:()=>true})});eq(e.opacity(),1);e.select(null);eq(e.opacity(),.525);
 e.motion(true);eq(e.classes.size,0);eq(e.styles.size,0);e.move(900,960);eq(e.opacity(),1);
-e.motion(false);eq(e.opacity(),.1);ok(e.classes.has('s-scroll-presence'));
+e.motion(false);eq(e.opacity(),.05);ok(e.classes.has('s-scroll-presence'));
 e.fail();eq(e.classes.size,0);eq(e.styles.size,0);eq(e.opacity(),1);
 const r=environment({reduced:true});eq(r.classes.size,0);eq(r.opacity(),1);
 const fallback=environment({io:false});eq(fallback.classes.size,0);eq(fallback.styles.size,0);

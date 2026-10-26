@@ -1,4 +1,4 @@
-/* Position-bound opacity: 10% at the edges, 100% in the reading zone.
+/* Position-bound opacity: 5% at the edges, 100% in the reading zone.
    No transforms, timers, wrappers or hidden-by-default content. */
 (() => {
   'use strict';
@@ -16,10 +16,12 @@
   const smooth = n => { const x = clamp(n); return x * x * (3 - 2 * x); };
 
   function opacityAt(rect, top, bottom) {
-    const band = Math.max(1, (bottom - top) * .25);
-    const entry = smooth((bottom - rect.top) / band);
-    const exit = smooth((rect.bottom - top - 8) / Math.max(1, band - 8));
-    return .1 + .9 * Math.min(entry, exit);
+    const height = Math.max(1, bottom - top);
+    // Wider ramps make the fade visible before content reaches either edge.
+    // Keep the middle 35% fully opaque; tall groups retain their reading area.
+    const entry = smooth((bottom - rect.top) / (height * .35));
+    const exit = smooth((rect.bottom - top - 8) / Math.max(1, height * .30 - 8));
+    return .05 + .95 * Math.min(entry, exit);
   }
   function viewport() {
     const visual = window.visualViewport;
