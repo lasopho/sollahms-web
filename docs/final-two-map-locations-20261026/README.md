@@ -12,3 +12,9 @@ Base: production dpl_HphMyTm2PcfiYJdy8CvE41ThKRj1, code 8436c93361c1842f7fb05aa4
 
 ## Validation and recovery
 28 automated catalogue/location/preservation checks pass. Frozen runtime package: 1,157 files, only 3 changed, 1,154 identical including all functions. Production must still match the recorded baseline before publishing. The previous READY deployment above is the rollback target using Vercel's authorized rollback mechanism. Browser and public verification results are appended after deployment.
+
+Published code **de088c4acc3451413fe053b5176ebc3f14aaef9b**, production **dpl_HmkkoKEyVS7Qe37LHSeNWNLB7F4Q**. Public alias verified after publication. Public JSON and Mirador HTML match candidate bytes; catalogue, Marina fiche and Trabaja con nosotros remain byte-identical. Direct UF endpoint returns 2026-10-26 / CLP 41,221.08 from SII. The Vercel fetch helper adds preview-auth query parameters which the UF endpoint correctly rejects; a plain public GET succeeds. No application protection was changed.
+
+Real Chrome checks: 1440×1000 and 390×844, both new markers, thumbnails, location text, correct fiche navigation, search and map view retained on return, list/map switching, clear-filter count 132/132, no horizontal overflow and no captured browser errors. Production error/fatal logs show none in the inspected window. All published functions retain baseline hashes; no forms were submitted. Screenshots: public-desktop.png (Mirador and all-results count), public-mobile.png (Marina selection and address).
+
+Main remains 86e200ec191b38af355061e21bc0fc1e549cce3b. Project live=false and all_except_custom_domains SSO protection preserved; the new branch is explicitly false in git.deploymentEnabled. Rollback target remains READY. No remaining coordinate omissions in this 132-project catalogue; map references do not claim surveyed access or metre-level precision.
