@@ -1,0 +1,106 @@
+{
+  "codeCommit": "ce3b3c6e3ac5b6599f430a1dc6825d4f5322265d",
+  "branch": "codex/image-parallax-20261026",
+  "production": {
+    "id": "dpl_LqKgXFwDTf9Gz3TzcPAHkh66WaJA",
+    "url": "project-wrapp-dosfwzz9p-lsandoval2-8260s-projects.vercel.app",
+    "state": "READY"
+  },
+  "rollback": {
+    "id": "dpl_HmkkoKEyVS7Qe37LHSeNWNLB7F4Q",
+    "codeCommit": "de088c4acc3451413fe053b5176ebc3f14aaef9b",
+    "state": "READY",
+    "mechanism": "Vercel request_rollback(projectId, deploymentId, teamId)"
+  },
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "fiches": 132,
+  "pages": 133,
+  "candidateImages": 750,
+  "publicChecks": 150,
+  "automatedBehaviorChecks": 61,
+  "unchangedRuntimeFiles": 1024,
+  "totalRuntimeFiles": 1159,
+  "allFunctionsAndRoutingUnchanged": true,
+  "gradientsAndFadeByteIdentical": true,
+  "mediaAndCommercialDataUnchanged": true,
+  "mainModified": false,
+  "automaticDeployments": false,
+  "projectLive": false,
+  "protection": {
+    "enabled": true,
+    "deploymentType": "all_except_custom_domains"
+  },
+  "preview": {
+    "id": "dpl_EWVQCS9XFXdBnfSQM7pBjWzCDzSC",
+    "responsiveHarnessId": "dpl_5r4Apq17w9rAwtqNwFmiDauNkisL",
+    "harnessIncludedInProduction": false
+  },
+  "browser": {
+    "desktop": "1920x936 direct; 1440x900 same-origin frame",
+    "mobile": "390x844 same-origin frame, Chrome; actual iframe viewport verified",
+    "representatives": [
+      "index.html",
+      "pintor-cicarelli-i.html",
+      "edificio-verne.html",
+      "edificio-suecia.html",
+      "mirador-la-florida.html",
+      "monjitas-690.html",
+      "reserva-mayor-2.html"
+    ],
+    "checks": [
+      "reversible scroll",
+      "slow and fast movement",
+      "idle/no continuous frame loop",
+      "resize desktop/mobile",
+      "contained stable frame",
+      "existing fade intensity",
+      "unchanged homepage gradient",
+      "navigation/catalogue filtering",
+      "static plans/forms",
+      "no horizontal overflow",
+      "no captured console errors"
+    ],
+    "reducedMotion": "automated behavior tests; media preference change clears all motion",
+    "formsSubmitted": false,
+    "motionMetrics": [
+      {
+        "fade": "1",
+        "gradient": "none",
+        "scrollY": 650,
+        "translation": "0px -1.139px"
+      },
+      {
+        "fade": "1",
+        "scrollY": 870,
+        "translation": "0px 1.83px"
+      },
+      {
+        "fade": "0.366",
+        "scrollY": 1090,
+        "translation": "0px 3.79px"
+      },
+      {
+        "fade": "1",
+        "scrollY": 870,
+        "translation": "0px 1.83px"
+      },
+      {
+        "fade": "1",
+        "scrollY": 650,
+        "translation": "0px -1.139px"
+      }
+    ]
+  },
+  "exceptions": {
+    "homeHero": "Current homepage has no photograph in hero; existing gradient is preserved.",
+    "conditional": "Static where the current contain framing leaves insufficient margin, resolution is inadequate, or another transform already owns the image. Maximum fixed overscan 6%; no animated zoom.",
+    "observed": "Edificio Suecia gallery: 1000x600 source inside 349x262 contain box, insufficient vertical margin; preserved static."
+  },
+  "uf": {
+    "date": "2026-10-26",
+    "valueClp": 41221.08
+  },
+  "runtimeErrors": "## Runtime Logs\n\n**Project:** prj_URomRRU0MAy4etGKP5gWv3Qv4DGH\n**Deployment:** dpl_LqKgXFwDTf9Gz3TzcPAHkh66WaJA\n**Time range:** 2026-10-26T23:25:55.746Z → 2026-10-26T23:40:55.746Z\n\nNo logs found for the specified criteria.",
+  "motionArtifact": "desplazamiento-capturas-reales.gif — five real screenshots at scroll 650/870/1090/870/650; not continuous video"
+}
