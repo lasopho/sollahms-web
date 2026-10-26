@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="/assets/css/project-media-state.css?v=20261025-visual-1">
 <script src="/assets/js/project-media-state.js" defer></script>
 <link rel="stylesheet" href="/assets/css/brochure-media.css?v=20261025-maestra-1">
+<link rel="stylesheet" href="/assets/css/cicarelli-three-heroes.css">
+<script src="/assets/js/cicarelli-three-heroes.js"></script>
 <link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261025-visual-1">
 </head>
 <body>
@@ -49,14 +51,26 @@
     </nav>
     <nav id="mobile-menu" class="mobile-menu" hidden aria-label="Navegación móvil"><a href="/#expertise">Expertise</a><a href="/proyectos.html">Asset Portafolio</a><a href="/contacto.html">Contacto</a></nav>
   </header>
+  <nav class="ci-compare" aria-label="Comparar alternativas de cabecera">
+    <div class="container ci-compare-inner"><p>Vista previa <span>· Sin publicar</span></p>
+      <div class="ci-compare-links"><a href="?cabecera=a" data-ci-option="a"><span>A</span> Editorial</a><a href="?cabecera=b" data-ci-option="b"><span>B</span> Verde</a><a href="?cabecera=c" data-ci-option="c"><span>C</span> Compacta</a></div>
+    </div>
+  </nav>
   <main id="contenido-principal">
-    <section class="project-hero " aria-labelledby="project-name">
-      <img alt="Render referencial aéreo de Pintor Cicarelli I" class="hero-image" decoding="async" fetchpriority="high" height="1101" sizes="100vw" src="/assets/propiedades/maestra-brochures/pintor-cicarelli-i/imagen-p03-x10.webp" srcset="/assets/propiedades/maestra-brochures/pintor-cicarelli-i/imagen-p03-x10-vista.webp 960w, /assets/propiedades/maestra-brochures/pintor-cicarelli-i/imagen-p03-x10.webp 1800w" width="1800"/>
-      <div class="hero-shade"></div>
-      <div class="hero-content container">
-        <nav class="breadcrumb" aria-label="Ruta de navegación"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/proyectos.html">Proyectos</a><span aria-hidden="true">/</span><span aria-current="page">Pintor Cicarelli I</span></nav>
-        <p class="eyebrow">Maestra</p><h1 id="project-name">Pintor Cicarelli I</h1>
-        <p class="hero-location">San Joaquín, Región Metropolitana</p><div class="hero-badges"><span>Residencial</span><span>Entrega inmediata</span></div>
+    <section class="ci-hero" aria-labelledby="project-name">
+      <div class="container ci-shell">
+        <nav class="ci-breadcrumb" aria-label="Ruta de navegación"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/proyectos.html">Proyectos</a><span aria-hidden="true">/</span><span aria-current="page">Pintor Cicarelli I</span></nav>
+        <div class="ci-composition">
+          <div class="ci-copy">
+            <div class="ci-identity">
+              <div class="ci-name"><p class="ci-developer">Maestra</p><h1 id="project-name">Pintor Cicarelli I</h1></div>
+              <p class="ci-location">San Joaquín, Región Metropolitana</p>
+            </div>
+            <div class="ci-details"><p>Residencial <span aria-hidden="true">·</span> 2–3 dormitorios</p><p>Entrega inmediata</p></div>
+            <div class="ci-action"><a class="button ci-advisory" href="/agenda-asesoria.html?proyecto=pintor-cicarelli-i">Solicitar asesoría <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <figure class="ci-visual"><img alt="Render referencial aéreo de Pintor Cicarelli I" class="ci-image" decoding="async" fetchpriority="high" height="1101" sizes="(max-width: 680px) 300px, 360px" src="/assets/propiedades/maestra-brochures/pintor-cicarelli-i/imagen-p03-x10.webp" srcset="/assets/propiedades/maestra-brochures/pintor-cicarelli-i/imagen-p03-x10-vista.webp 960w, /assets/propiedades/maestra-brochures/pintor-cicarelli-i/imagen-p03-x10.webp 1800w" width="1800"/><figcaption>Render referencial <span>· Brochure Maestra</span></figcaption></figure>
+        </div>
       </div>
     </section>
     <nav class="section-nav" aria-label="Secciones del proyecto"><div class="container"><a href="#proyecto">El proyecto</a><a href="#caracteristicas">Características</a><a href="#galeria">Galería</a><a href="#planos">Planos</a><a href="#ubicacion">Ubicación</a></div></nav>

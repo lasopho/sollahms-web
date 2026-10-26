@@ -1,0 +1,112 @@
+/* Three compositions, one verified image and the approved shared palette.
+   This file is loaded exclusively by Pintor Cicarelli I in the preview. */
+.ci-compare { background: var(--s-canvas); border-bottom: 1px solid var(--s-line); }
+.ci-compare-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; }
+.ci-compare p { margin: 0; font-size: .75rem; font-weight: 600; }
+.ci-compare p span { color: var(--s-muted); font-weight: 400; }
+.ci-compare-links { display: flex; gap: 8px; }
+.ci-compare a { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 14px; font-size: .8rem; text-decoration: none; border-radius: var(--s-radius-small); }
+.ci-compare a span { font-size: .68rem; font-weight: 700; }
+.ci-compare a:hover { background: var(--s-soft); }
+.ci-compare a[aria-current="page"] { color: var(--s-white); background: var(--s-green); }
+.ci-hero { color: var(--s-green); background: var(--s-white); }
+.ci-hero .ci-shell { max-width: 1240px; padding-top: 24px; padding-bottom: 36px; }
+.ci-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; font-size: .7rem; line-height: 1.5; color: var(--s-muted); margin-bottom: 24px; }
+.ci-breadcrumb a { text-decoration: none; }
+.ci-breadcrumb a:hover { text-decoration: underline; }
+.ci-composition { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: center; }
+.ci-copy { min-width: 0; }
+.ci-hero .ci-developer { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; line-height: 1.5; margin: 0 0 12px; }
+.ci-hero h1 { margin: 0 0 12px; font-size: clamp(1.9rem, 3vw, 2.5rem); font-weight: 500; line-height: 1.2; letter-spacing: -.035em; }
+.ci-hero .ci-location { margin: 0; color: var(--s-muted); font-size: .95rem; line-height: 1.55; }
+.ci-details { margin-top: 24px; font-size: .84rem; line-height: 1.6; }
+.ci-details p { margin: 0; }
+.ci-details p+p { margin-top: 4px; }
+.ci-details span { padding: 0 5px; }
+.ci-action { margin-top: 24px; }
+.ci-hero .ci-advisory { min-height: 48px; padding: 12px 20px; gap: 24px; background: var(--s-green); color: var(--s-white); font-size: .83rem; font-weight: 600; border-radius: var(--s-radius); }
+.ci-hero .ci-advisory:hover { background: var(--s-green-hover); }
+.ci-hero .ci-advisory span { font-size: 1.1rem; line-height: 1; }
+.ci-visual { margin: 0; min-width: 0; }
+.ci-image { width: 100%; height: auto; display: block; object-fit: contain; }
+.ci-visual figcaption { margin-top: 9px; font-size: .69rem; line-height: 1.5; color: var(--s-muted); }
+
+/* A: open editorial layout, copy on the left and compact image on the right. */
+html[data-ci-version="a"] .ci-developer::before { content: ""; display: inline-block; width: 24px; height: 2px; margin: 0 10px 3px 0; background: var(--s-gold); }
+
+/* B: the solid green is confined to the right-hand panel, surrounded by light space. */
+html[data-ci-version="b"] .ci-hero { background: var(--s-section); }
+html[data-ci-version="b"] .ci-shell { padding-bottom: 28px; }
+html[data-ci-version="b"] .ci-breadcrumb { margin-bottom: 16px; }
+html[data-ci-version="b"] .ci-composition { grid-template-columns: 360px minmax(0, 1fr); gap: 0; max-width: 1060px; }
+html[data-ci-version="b"] .ci-visual { grid-column: 1; grid-row: 1; padding-right: 0; }
+html[data-ci-version="b"] .ci-copy { grid-column: 2; grid-row: 1; padding: 24px 36px; background: var(--s-green); color: var(--s-white); }
+html[data-ci-version="b"] .ci-hero h1 { font-size: clamp(1.9rem, 2.6vw, 2.2rem); margin-bottom: 8px; }
+html[data-ci-version="b"] .ci-developer { margin-bottom: 8px; color: var(--s-gold); }
+html[data-ci-version="b"] .ci-location { color: var(--s-on-dark); font-size: .9rem; }
+html[data-ci-version="b"] .ci-details { margin-top: 16px; color: var(--s-on-dark); display: flex; flex-wrap: wrap; gap: 4px 20px; }
+html[data-ci-version="b"] .ci-details p+p { margin: 0; }
+html[data-ci-version="b"] .ci-action { margin-top: 20px; }
+html[data-ci-version="b"] .ci-advisory { background: var(--s-white); color: var(--s-green); }
+html[data-ci-version="b"] .ci-advisory:hover { background: var(--s-soft); }
+
+/* C: identity strip, then a small image, essential facts and one clear action. */
+html[data-ci-version="c"] .ci-shell { padding-top: 18px; padding-bottom: 24px; }
+html[data-ci-version="c"] .ci-breadcrumb { margin-bottom: 16px; }
+html[data-ci-version="c"] .ci-composition { grid-template-columns: 220px minmax(0, 1fr) auto; gap: 20px 32px; }
+html[data-ci-version="c"] .ci-copy { display: contents; }
+html[data-ci-version="c"] .ci-identity { grid-column: 1/-1; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--s-line); padding-bottom: 16px; }
+html[data-ci-version="c"] .ci-developer { margin-bottom: 6px; }
+html[data-ci-version="c"] .ci-hero h1 { font-size: clamp(1.85rem, 2.5vw, 2.1rem); margin: 0; }
+html[data-ci-version="c"] .ci-location { padding-bottom: 3px; font-size: .88rem; }
+html[data-ci-version="c"] .ci-visual { grid-row: 2; grid-column: 1; }
+html[data-ci-version="c"] .ci-visual figcaption span { display: none; }
+html[data-ci-version="c"] .ci-details { grid-row: 2; grid-column: 2; margin: 0; }
+html[data-ci-version="c"] .ci-action { grid-row: 2; grid-column: 3; margin: 0; }
+
+@media (max-width: 1000px) and (min-width: 681px) {
+  .ci-composition { grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; }
+  html[data-ci-version="b"] .ci-composition { grid-template-columns: 300px minmax(0, 1fr); }
+  html[data-ci-version="b"] .ci-copy { padding: 24px; }
+  html[data-ci-version="c"] .ci-composition { grid-template-columns: 190px minmax(0, 1fr); gap: 16px 28px; }
+  html[data-ci-version="c"] .ci-visual { grid-row: 2/4; }
+  html[data-ci-version="c"] .ci-details { grid-row: 2; }
+  html[data-ci-version="c"] .ci-action { grid-column: 2; grid-row: 3; }
+  html[data-ci-version="c"] .ci-identity { align-items: flex-start; flex-direction: column; gap: 10px; }
+}
+@media (max-width: 680px) {
+  .ci-compare-inner { display: block; padding-top: 8px; padding-bottom: 8px; }
+  .ci-compare p { font-size: .65rem; margin-bottom: 4px; }
+  .ci-compare-links { gap: 4px; justify-content: space-between; }
+  .ci-compare a { font-size: .75rem; padding: 8px 10px; }
+  .ci-hero .ci-shell { padding-top: 20px; padding-bottom: 24px; }
+  .ci-breadcrumb { margin-bottom: 18px; font-size: .66rem; gap: 6px; }
+  .ci-composition { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .ci-copy { display: contents; }
+  .ci-identity { grid-row: 1; }
+  .ci-hero h1 { font-size: 1.9rem; font-weight: 500; }
+  .ci-hero .ci-location { font-size: .86rem; }
+  .ci-hero .ci-developer { margin-bottom: 8px; }
+  .ci-visual { grid-row: 2; max-width: 300px; }
+  .ci-details { grid-row: 3; margin: 0; font-size: .8rem; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .ci-details p+p { margin: 0; }
+  .ci-action { grid-row: 4; margin: 0; }
+  .ci-hero .ci-advisory { min-height: 48px; }
+  html[data-ci-version="b"] .ci-composition { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  html[data-ci-version="b"] .ci-visual { grid-row: 1; grid-column: 1; width: 100%; max-width: 280px; margin-bottom: 16px; }
+  html[data-ci-version="b"] .ci-copy { display: block; grid-row: 2; grid-column: 1; padding: 24px; }
+  html[data-ci-version="b"] .ci-hero h1 { font-size: 1.8rem; }
+  html[data-ci-version="b"] .ci-details { display: block; }
+  html[data-ci-version="b"] .ci-details p+p { margin-top: 4px; }
+  html[data-ci-version="c"] .ci-shell { padding-top: 16px; padding-bottom: 20px; }
+  html[data-ci-version="c"] .ci-composition { grid-template-columns: 120px minmax(0, 1fr); gap: 20px 16px; }
+  html[data-ci-version="c"] .ci-identity { align-items: flex-start; flex-direction: column; gap: 8px; }
+  html[data-ci-version="c"] .ci-hero h1 { font-size: 1.8rem; }
+  html[data-ci-version="c"] .ci-location { font-size: .82rem; padding: 0; }
+  html[data-ci-version="c"] .ci-visual { grid-column: 1; grid-row: 2; }
+  html[data-ci-version="c"] .ci-visual figcaption { font-size: .65rem; }
+  html[data-ci-version="c"] .ci-details { grid-column: 2; grid-row: 2; display: block; font-size: .78rem; }
+  html[data-ci-version="c"] .ci-details p+p { margin-top: 8px; }
+  html[data-ci-version="c"] .ci-details span { display: none; }
+  html[data-ci-version="c"] .ci-action { grid-column: 1/-1; grid-row: 3; }
+}
