@@ -107,7 +107,7 @@ function initializeProjectRequest(form) {
     if(Object.keys(invalid).length){
       for(const [name,message] of Object.entries(invalid))error(name,message);
       show('Revisa los campos indicados. Aún no se ha enviado tu solicitud.');
-      inputs[Object.keys(invalid)[0]]?.focus();return;
+      if(Object.keys(invalid)[0]==='rut')rutField.focus();else inputs[Object.keys(invalid)[0]]?.focus();return;
     }
     sending=true;submit.disabled=true;submit.textContent='Enviando…';modes.forEach(b=>b.disabled=true);form.setAttribute('aria-busy','true');show('Estamos enviando tu solicitud.','sending');
     try{

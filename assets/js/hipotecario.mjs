@@ -460,7 +460,7 @@ $('lead-form').addEventListener('submit', async event => {
   event.preventDefault();
   if (sending) return;
   update({ showError: true });
-  if(!rutField.validate()){$('lead-status').textContent=RUT_ERROR;$('lead-rut').focus();return;}
+  if(!rutField.validate()){$('lead-status').textContent=RUT_ERROR;rutField.focus();return;}
   if (!simulation || projectLoading || !$('lead-form').reportValidity()) return;
   const phone = $('telefono').value.trim();
   if (!/^[+()\d .-]+$/.test(phone) || (phone.match(/\d/g) || []).length < 9 || (phone.match(/\d/g) || []).length > 15) {

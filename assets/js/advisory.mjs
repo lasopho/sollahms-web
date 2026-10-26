@@ -42,7 +42,7 @@ if (form) {
     if(form.elements.medio.value==='correo'&&(!inputs.correo.value.trim()||!inputs.correo.validity.valid||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputs.correo.value.trim())))fail('correo','Escribe un correo válido, por ejemplo nombre@ejemplo.cl.');
     if(form.elements.medio.value==='telefono') {const value=inputs.telefono.value.trim(),count=(value.match(/\d/g)||[]).length;if(!/^[+()\d .-]+$/.test(value)||count<9||count>15)fail('telefono','Escribe un teléfono válido con código de país.');}
     if(!inputs.consent.checked)fail('consent','Autoriza el uso de tus datos para responder la solicitud.');
-    if(invalid.length){show('Revisa los campos indicados. Aún no se ha enviado tu solicitud.');inputs[invalid[0]].focus();return false;}return true;
+    if(invalid.length){show('Revisa los campos indicados. Aún no se ha enviado tu solicitud.');if(invalid[0]==='rut')rutField.focus();else inputs[invalid[0]].focus();return false;}return true;
   };
   form.addEventListener('submit',async event=>{
     event.preventDefault();if(sending||completed)return;if(!validate())return;

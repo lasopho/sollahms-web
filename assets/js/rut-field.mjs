@@ -10,5 +10,6 @@ export function bindRutField(input,error) {
   };
   input.addEventListener('input',clear);
   input.addEventListener('blur',validate);
-  return {validate,clear,value:()=>normalizeRut(input.value)};
+  const focus=()=>{input.focus({preventScroll:true});input.scrollIntoView({block:'center',behavior:'instant'});};
+  return {validate,clear,focus,value:()=>normalizeRut(input.value)};
 }
