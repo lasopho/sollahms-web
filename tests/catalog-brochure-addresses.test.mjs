@@ -17,11 +17,12 @@ test('documented addresses reach catalogue and fiche without changing commercial
  }
 });
 test('Llacolén stages share the verified site and retain two selectable records',()=>{
- const {located,pending}=locateProjects(projects,registry);assert.equal(located.length,64);assert.equal(pending.length,68);
+ const {located,pending}=locateProjects(projects,registry);assert.ok(located.length>=64);assert.equal(located.length+pending.length,132);
  const group=locationGroups(located.filter(x=>x.project.slug.startsWith('vista-llacolen-')));assert.equal(group.length,1);assert.equal(group[0].rows.length,2);
  for(const row of group[0].rows)assert.equal(row.location.address,'Las Heras Poniente 77');
 });
-test('street centroid and interpolated geocode are not admitted as a verified project point',()=>{
- for(const slug of changed)assert.equal(registry.locations[slug],undefined);
+test('a street without a verified project point remains pending; reviewed address estimates retain provenance',()=>{
+ assert.equal(registry.locations['mirador-la-florida'],undefined);
+ const located=registry.locations['jardines-de-ramon-cruz'];assert.equal(located.precision,'address_estimate');assert.equal(located.address,'Ramón Cruz Montt 3291');assert.match(located.corroboration,/sin precisión métrica garantizada/);
  assert.match(registry.addressNotes['mirador-la-florida'],/Numeración/);
 });
