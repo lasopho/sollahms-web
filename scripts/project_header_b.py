@@ -8,6 +8,7 @@ import copy, html, re
 from bs4 import BeautifulSoup
 from scroll_presence import apply_scroll_presence
 from project_journey import apply_project_journey
+from project_location import apply_project_location
 
 CSS = '/assets/css/project-header-b.css?v=20261026-b-1'
 LABELS = {
@@ -36,7 +37,7 @@ def catalog_labels(page):
 def apply_header(page, project):
     page = apply_scroll_presence(page)
     if 'data-project-header="b"' in page:
-        return apply_project_journey(catalog_labels(page), project)
+        return apply_project_location(apply_project_journey(catalog_labels(page), project), project)
     main=re.search(r'<main\b[^>]*>',page)
     assert main, project['slug']
     match=re.search(r'<section\b[^>]*>.*?</section>',page[main.end():],re.S)
@@ -87,4 +88,4 @@ def apply_header(page, project):
     theme='<link rel="stylesheet" href="/assets/css/sollahms-theme.css'
     assert theme in page
     page=page.replace(theme,f'<link rel="stylesheet" href="{CSS}">\n'+theme,1)
-    return apply_project_journey(catalog_labels(page), project)
+    return apply_project_location(apply_project_journey(catalog_labels(page), project), project)

@@ -34,7 +34,7 @@ export async function createCatalogMap({host,onAlternative}){
   const help=el('div',undefined,'catalog-map-help'),panToggle=el('button','Activar movimiento del mapa','catalog-text-button');panToggle.type='button';panToggle.setAttribute('aria-pressed','false');
   help.append(el('span','Usa + y − para acercar o alejar. El desplazamiento de la página permanece libre.'),panToggle);
   const tileError=el('p','El mapa base no pudo cargar. Puedes seguir eligiendo proyectos o usar Tarjetas y Listado.','catalog-map-warning');tileError.hidden=true;tileError.setAttribute('role','status');
-  const precisionNote=el('p','Ubicaciones referenciales del edificio o conjunto; el acceso puede variar.','catalog-map-note');
+  const precisionNote=el('p','Ubicaciones referenciales; el acceso puede variar.','catalog-map-note');
   mapColumn.append(canvas,help,precisionNote,tileError);
   const panel=el('div',undefined,'catalog-map-panel'),label=el('label','Proyecto en el mapa'),select=el('select',undefined,'catalog-control');select.id='map-project-choice';label.htmlFor=select.id;
   const selectionStatus=el('p',undefined,'catalog-map-selection-status');selectionStatus.setAttribute('role','status');
@@ -66,7 +66,7 @@ export async function createCatalogMap({host,onAlternative}){
     const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type)){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
     const offer=selectedOffer(p,type),amount=el('p',validPrice(offer.value)?'Desde UF '+price(offer.value):'Consultar precio','catalog-price-value');
     const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl;link.setAttribute('aria-label','Ver ficha de '+p.nombre);
-    detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
+    detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
     if(reveal){map.setView([row.location.lat,row.location.lng],Math.max(15,map.getZoom()),{animate:false});}
     redraw();remember();
   }
