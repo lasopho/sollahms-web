@@ -1,0 +1,96 @@
+{
+  "viewportDesktop": {
+    "width": 1920,
+    "height": 992
+  },
+  "viewportMobile": {
+    "width": 390,
+    "height": 844
+  },
+  "browser": "Chrome real, connected Browser plugin",
+  "preview": [
+    {
+      "task": "Concepción",
+      "result": "5/5 mapped; B.Come address Paicaví 1485 and useful building thumbnail"
+    },
+    {
+      "task": "Coquimbo",
+      "result": "6/7 mapped. Verne marker visually matches Edificio Verne/Avenida Videla; Playa Peñuelas on Peñuelas Norte/Los Pescadores"
+    },
+    {
+      "task": "Colocated towers",
+      "result": "Froilán Roa North/South share cluster; each selectable separately; each links to own fiche, shared site address shown"
+    },
+    {
+      "task": "Return from fiche",
+      "result": "Froilán Torre Sur selection, map and search retained"
+    },
+    {
+      "task": "Price / ordering",
+      "result": "Concepción maximum UF 2600: Reserva Mayor 2 UF2450, Vista Llacolén A UF2505, Campus Llacolén UF2529, ascending; identical 3 results in Cards/List/Map"
+    },
+    {
+      "task": "Mobile keyboard and controls",
+      "result": "Zoom click and Enter on zoom-out work; project selection works; no horizontal overflow (document375px within viewport390px)"
+    },
+    {
+      "task": "Images / console",
+      "result": "Selected thumbnail and map tiles loaded; no warnings/errors observed"
+    }
+  ],
+  "production": [
+    {
+      "task": "Deployment alias",
+      "result": "sollahms.cl resolves to dpl_B5M5RA5Jxh8aoAEo1EQUezyAhLVW"
+    },
+    {
+      "task": "Public point count",
+      "result": "126 of132 UI and JSON; no commercial catalogue row changed"
+    },
+    {
+      "task": "Playa Peñuelas",
+      "result": "Public pre-release0/1; post-release1/1"
+    },
+    {
+      "task": "Concepción desktop",
+      "result": "5/5; B.Come selected, own image, name, address, typologies and Ver ficha"
+    },
+    {
+      "task": "Mobile",
+      "result": "Vista Llacolén B selected at Las Heras Poniente77; tile/image load; no overflow; actual width390"
+    },
+    {
+      "task": "Mobile fiche navigation",
+      "result": "vista-llacolen-b.html loads with correct title; back preserves Concepción, map and Vista Llacolén B selection"
+    },
+    {
+      "task": "Console",
+      "result": "No error/warn messages observed"
+    },
+    {
+      "task": "UF",
+      "result": "Public /api/uf returns2026-10-26 UF41221.08"
+    },
+    {
+      "task": "End state",
+      "result": "Viewport reset; all132 results,126 mapped; public map left open"
+    }
+  ],
+  "screenshots": [
+    "public-desktop.png",
+    "public-mobile-map.png",
+    "public-mobile-detail.png"
+  ],
+  "automated": {
+    "passed": 20,
+    "failed": 0,
+    "log": "model-tests.txt"
+  },
+  "preservedChecks": "Lazy loading, failure fallback, accessible structure and reduced motion logic reused unchanged; validated by existing tests/artifact identity. Not claimed as new network-failure simulations.",
+  "interactionsNotPerformed": [
+    "form submissions",
+    "emails",
+    "reservations",
+    "visitor geolocation"
+  ]
+}

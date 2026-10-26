@@ -1,5 +1,7 @@
 # Direcciones al mapa — 2026-10-26
 
+**Publicado y verificado:** https://sollahms.cl/proyectos.html — código `5885616a4621d5e562f78bca0b09485a59211862`, deployment `dpl_B5M5RA5Jxh8aoAEo1EQUezyAhLVW` (READY). 126 de 132 proyectos ubicados. Ver `release.json`, `browser-qa.json`, `public-checks.json` y las capturas reales de escritorio y móvil. El rollback anterior permanece READY.
+
 Base exacta: producción `dpl_28hHJhKMBo2x9WLsGULRxKpHaUf2`, runtime `c9fb22a4ac378a0149329b37e431b4ec5d80d66a`, fuentes/evidencias `e9e533071effc5da44112e3fda9ec34b276dc9bd`.
 Rama independiente `codex/catalog-address-pins-20261026`. Main conservada en `86e200ec191b38af355061e21bc0fc1e549cce3b`; despliegues Git desactivados, incluida esta rama.
 
