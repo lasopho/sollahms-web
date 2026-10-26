@@ -48,7 +48,9 @@ def disclosure_grid(soup, grid, keep, noun):
         return
     more = soup.new_tag('details', attrs={'class':'pj-disclosure'})
     summary = soup.new_tag('summary', attrs={'data-scroll-static':''})
-    summary.string = f'Ver {len(figures)-keep} {noun} más'
+    count = len(figures)-keep
+    label = {'imágenes':'imagen','planos':'plano'}.get(noun,noun) if count == 1 else noun
+    summary.string = f'Ver {count} {label} más'
     more.append(summary)
     rest = soup.new_tag('div', attrs={'class':grid.get('class', [])})
     for figure in figures[keep:]:

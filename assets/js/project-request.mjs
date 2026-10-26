@@ -65,6 +65,7 @@ function initializeProjectRequest(form) {
     form.querySelector('.advisory-choice').hidden=mode==='llamada';
     document.getElementById('advisory-time-field').hidden=mode!=='llamada';form.elements.franja.disabled=mode!=='llamada';
     document.getElementById('advisory-form-title').textContent=mode==='llamada'?'Quiero que me llamen':'Solicitar cotización';
+    panel.querySelector('.advisory-form-intro').textContent=mode==='llamada'?'Deja tu nombre y teléfono para coordinar una conversación sobre este proyecto. El horario es una preferencia, no una cita confirmada.':'Deja tu nombre y un medio de contacto. Confirmaremos la información necesaria para preparar una respuesta sobre este proyecto.';
     submit.textContent=mode==='llamada'?'Solicitar llamada':'Solicitar cotización';
     modes.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.requestMode===mode)));
     switchChannel();
