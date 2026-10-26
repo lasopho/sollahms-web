@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-26",
+  "codeCommit": "8436c93361c1842f7fb05aa4ec653ccee19bb3f6",
+  "branch": "codex/official-project-addresses-20261026",
+  "deployment": {
+    "id": "dpl_HphMyTm2PcfiYJdy8CvE41ThKRj1",
+    "url": "project-wrapp-256jrx36g-lsandoval2-8260s-projects.vercel.app",
+    "state": "READY",
+    "publicAlias": "https://sollahms.cl",
+    "aliasDeploymentId": "dpl_HphMyTm2PcfiYJdy8CvE41ThKRj1"
+  },
+  "preview": {
+    "id": "dpl_koSnH21NyWJTwczFxEKSVZXKbjvU",
+    "url": "project-wrapp-go6gct8e5-lsandoval2-8260s-projects.vercel.app",
+    "state": "READY"
+  },
+  "rollback": {
+    "id": "dpl_GUh3TL7dxHP2AJoPVAwVqhg4JUQ9",
+    "codeCommit": "15fc44d0ef5335af9a4fdccb2f52d8ef5435ae72",
+    "state": "READY",
+    "mechanism": "Official Vercel request_rollback, project prj_URomRRU0MAy4etGKP5gWv3Qv4DGH; retained, not executed."
+  },
+  "preservation": {
+    "main": "86e200ec191b38af355061e21bc0fc1e549cce3b",
+    "mainUnchanged": true,
+    "gitDeployMain": false,
+    "gitDeployBranch": false,
+    "projectLive": false,
+    "ssoProtection": {
+      "enabled": true,
+      "deploymentType": "all_except_custom_domains"
+    },
+    "previousConcurrentReleasePreserved": true
+  },
+  "catalogue": {
+    "total": 132,
+    "mapped": 130,
+    "previouslyMapped": 126,
+    "fichesWithOfficialAttribution": 6,
+    "pending": [
+      "mirador-la-florida",
+      "marina-pacifico"
+    ]
+  },
+  "runtime": {
+    "files": 1157,
+    "changed": 9,
+    "unchanged": 1148,
+    "allFunctionsUnchanged": true,
+    "aggregate": "aa84fda746b607db49fbe043d5af67203a016120002a57028379b2b9a6306380"
+  },
+  "validation": {
+    "automatedTestsPassed": 24,
+    "previewHTTP": [
+      {
+        "path": "data/proyectos.json",
+        "status": 200,
+        "identical": true
+      },
+      {
+        "path": "assets/js/catalog-map.mjs",
+        "status": 200,
+        "identical": true
+      },
+      {
+        "path": "data/project-locations.json",
+        "status": 200,
+        "identical": true
+      },
+      {
+        "path": "marina-pacifico.html",
+        "status": 200,
+        "identicalApplicationHTML": true,
+        "previewToolbarOnly": true
+      },
+      {
+        "path": "edificio-nordico.html",
+        "status": 200,
+        "identicalApplicationHTML": true,
+        "previewToolbarOnly": true
+      },
+      {
+        "path": "edificio-ecuador.html",
+        "status": 200,
+        "identicalApplicationHTML": true,
+        "previewToolbarOnly": true
+      },
+      {
+        "path": "valle-los-ingleses-iii.html",
+        "status": 200,
+        "identicalApplicationHTML": true,
+        "previewToolbarOnly": true
+      },
+      {
+        "path": "gregorio-de-la-fuente-a.html",
+        "status": 200,
+        "identicalApplicationHTML": true,
+        "previewToolbarOnly": true
+      },
+      {
+        "path": "mirador-la-florida.html",
+        "status": 200,
+        "identicalApplicationHTML": true,
+        "previewToolbarOnly": true
+      }
+    ],
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "realBrowserChecks": [
+      "4 new projects selectable, correct own image/address/fiche link",
+      "Ecuador and Nórdico display explicit intersection-reference note",
+      "Ecuador fiche source, quote form four required fields, and return-to-map context",
+      "Nórdico fiche source and mobile layout",
+      "Public Valle Los Ingleses III marker, own image, source and mobile fiche",
+      "Public overall 130/132 count and two pending links",
+      "No horizontal document overflow",
+      "No forms submitted"
+    ],
+    "publicHTTPReport": "public-http-verification.json",
+    "UF": {
+      "date": "2026-10-26",
+      "valueClp": 41221.08
+    },
+    "runtimeErrorLogs": "No error or fatal entries returned for this deployment in the reviewed 30-minute window. This is an observation, not a guarantee of future availability.",
+    "buildWarning": "Preserved prebuilt functions contain CLI 65.0.0 metadata while build runner uses 65.1.0; build completed and all runtime hashes verified."
+  }
+}
+

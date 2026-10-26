@@ -15,3 +15,9 @@ El catálogo mantiene 132 registros: 130 georreferenciados y dos pendientes. Mir
 Rama `codex/official-project-addresses-20261026`, sin merge ni cambios en main; despliegues Git desactivados para ambas. Base de fuentes `15fc44d0ef5335af9a4fdccb2f52d8ef5435ae72`; código de producción anterior `15fc44d0ef5335af9a4fdccb2f52d8ef5435ae72`. Rollback anterior: `dpl_GUh3TL7dxHP2AJoPVAwVqhg4JUQ9`. La herramienta oficial `request_rollback` permite restaurarlo; no se ejecuta mientras la nueva versión está sana. Los registros posteriores documentan el despliegue y las comprobaciones públicas realmente realizadas.
 
 Producción avanzó durante la investigación. Se incorporó íntegramente la versión `15fc44d` de colaboración/contacto antes del empaquetado y se volvió a comprobar la preservación de todas las fichas.
+
+## Publicación comprobada
+
+Código `8436c93361c1842f7fb05aa4ec653ccee19bb3f6`. Producción `dpl_HphMyTm2PcfiYJdy8CvE41ThKRj1`, READY y asignada a sollahms.cl. Los nueve archivos modificados y tres controles sin cambios coinciden por SHA-256 con el candidato al descargarlos del dominio; `/api/uf` respondió 200 con $41.221,08 al 26/10/2026. No aparecieron errores/fatales del despliegue en la ventana consultada. La advertencia de versión CLI se documenta en release.json; no se recompilaron funciones intactas para eliminarla.
+
+Capturas reales: [mapa público de escritorio](public-desktop-map.png), [ficha pública móvil](public-mobile-fiche.png) y [mapa móvil de la vista previa](preview-mobile-map.png). Revisados a 1440×1000 y 390×844, sin desbordamiento horizontal. El preview y producción comparten los mismos 1157 hashes.
