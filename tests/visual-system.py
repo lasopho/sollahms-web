@@ -9,6 +9,10 @@ pages=list(public.glob('*.html'))
 assert len(pages)==141,len(pages)
 def content(html):
  soup=BeautifulSoup(html,'html.parser')
+ # Approved header names also apply to contact/advisory; body/footer copy is unchanged.
+ for a in soup.select('header a'):
+  if a.get_text(strip=True)=='Servicios' and a.get('href')=='/#expertise':a.string='Expertise'
+  if a.get_text(strip=True)=='Proyectos' and a.get('href')=='/proyectos.html':a.string='Asset Portafolio'
  for tag in soup.find_all('style'):tag.decompose()
  for tag in soup.select('link[rel=stylesheet]'):tag.decompose()
  return re.sub(r'>\s+<','><',str(soup)).strip()

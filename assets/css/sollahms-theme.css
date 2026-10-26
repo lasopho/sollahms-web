@@ -32,6 +32,7 @@
   --s-shadow: 0 10px 32px rgb(var(--s-green-rgb) / .04);
   --s-shadow-hover: 0 16px 40px rgb(var(--s-green-rgb) / .08);
   --s-shadow-header: 0 18px 54px rgb(var(--s-green-rgb) / .08);
+  --s-photo-shade: linear-gradient(0deg,rgb(var(--s-green-rgb) / .96),rgb(var(--s-green-rgb) / .85) 36%,rgb(var(--s-green-rgb) / .15) 75%,transparent);
   --s-hero: radial-gradient(1200px circle at 18% 16%,rgba(20,88,73,.42),transparent 58%),radial-gradient(980px circle at 86% 18%,rgba(233,193,118,.08),transparent 54%),linear-gradient(155deg,var(--s-green) 0%,var(--s-green-deep) 100%);
   /* Compatibility aliases for the existing page families. */
   --green: var(--s-green);
@@ -71,6 +72,7 @@ body { background-color:var(--s-canvas);color:var(--s-green) }
 /* Primary surfaces retain each page's existing geometry and content hierarchy. */
 .green-v2-premium main>section:first-child { background:var(--s-hero)!important }
 main>section[class~="bg-[#00201a]"],.hero,.hero-without-image { background:var(--s-hero) }
+.project-hero:not(.photo-project-hero):not(.hero-without-image) .hero-shade,.featured-project-detail main>section[class~="h-[620px]"]>div.bg-gradient-to-t { background:var(--s-photo-shade) }
 .site-header,body.home-fluid-b2 header { box-shadow:var(--s-shadow-header) }
 body.home-fluid-b2 #portfolio .grid>div,.catalog-card,.panel,.contact-card,.advisory-panel,.capacity-search { border-radius:var(--s-radius);box-shadow:var(--s-shadow) }
 .catalog-card { border-color:var(--s-line) }
@@ -93,25 +95,29 @@ body.home-fluid-b2 #portfolio .grid>div,.catalog-card,.panel,.contact-card,.advi
 input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]),select,textarea,
 .advisory-panel input:not([type=checkbox]):not([type=radio]),.advisory-panel select,.advisory-panel textarea,.capacity-field input,.capacity-field select { border-color:var(--s-field-line);border-radius:var(--s-radius);color:var(--s-green);background-color:var(--s-white) }
 input::placeholder,textarea::placeholder,.advisory-panel input::placeholder { color:var(--s-muted);opacity:1 }
-input[type=checkbox],input[type=radio],input[type=range] { accent-color:var(--s-green) }
+body input,body select,body textarea { --tw-ring-color:var(--s-green) }
+body input[type=checkbox],body input[type=radio] { accent-color:var(--s-green);color:var(--s-green);border-color:var(--s-field-line) }
+body input[type=checkbox]:checked,body input[type=radio]:checked { background-color:var(--s-green);border-color:var(--s-green) }
+input[type=range] { accent-color:var(--s-green) }
 .choice-row button[aria-pressed=true],.bank-card.selected { border-color:var(--s-green) }
 .choice-row button[aria-pressed=true] { background:var(--s-green);color:var(--s-white) }
 button:active:not(:disabled),.button:active,.home-seo-button:active,.catalog-details-link:active { filter:brightness(.96) }
 /* Two-color focus ring is visible on both the light surfaces and dark hero. */
-body :is(a,button,input,select,textarea,summary):focus-visible { outline:3px solid var(--s-green);outline-offset:3px;box-shadow:0 0 0 3px var(--s-white) }
+body :is(a,button,input,select,textarea,summary):focus-visible:focus { outline:3px solid var(--s-green);outline-offset:3px;box-shadow:0 0 0 3px var(--s-white) }
 body .section-nav a:focus-visible,body .featured-section-nav a:focus-visible { outline-offset:-3px;box-shadow:inset 0 0 0 6px var(--s-white) }
-body :is(button,input,select,textarea):disabled,body [aria-disabled=true] { opacity:1;background-color:var(--s-disabled);border-color:var(--s-line);color:var(--s-muted);cursor:not-allowed;filter:none }
-body [aria-busy=true],body button:disabled[aria-busy=true] { cursor:progress }
+body :is(button,input,select,textarea):disabled,body :is(.button,.capacity-button,.advisory-submit):disabled,body [aria-disabled=true] { opacity:1;background-color:var(--s-disabled);border-color:var(--s-line);color:var(--s-muted);cursor:not-allowed;filter:none }
+body [aria-busy=true],body [aria-busy=true] button:disabled,body button:disabled[aria-busy=true] { cursor:progress }
 body [aria-invalid=true] { border-color:var(--s-error)!important }
 .advisory-error,.capacity-error,.error { color:var(--s-error) }
 .advisory-status { background:var(--s-soft);border-color:var(--s-green);color:var(--s-green);border-radius:var(--s-radius-small) }
 .advisory-status[data-state=error] { background:var(--s-error-soft);border-color:var(--s-error);color:var(--s-error) }
 /* No size/position transitions for inputs: layout remains stable while interacting. */
-a,button,input,select,textarea,summary,.catalog-card,.bank-card { transition-property:background-color,color,border-color,box-shadow,filter;transition-duration:var(--s-duration);transition-timing-function:var(--s-ease) }
+a,button,input,select,textarea,summary,body :is(.button,.home-seo-button,.advisory-submit,.capacity-button,.capacity-simulate,.catalog-details-link,.choice-row button,.catalog-card,.bank-card) { transition-property:background-color,color,border-color,box-shadow,filter;transition-duration:var(--s-duration);transition-timing-function:var(--s-ease) }
 body.home-fluid-b2 #portfolio .grid>div { transition:transform var(--s-duration) var(--s-ease),box-shadow var(--s-duration) var(--s-ease) }
 body.home-fluid-b2 #portfolio .grid>div:hover { transform:translateY(-2px) }
 body.home-fluid-b2 #portfolio img { transition-duration:var(--s-duration) }
 body.home-fluid-b2 #portfolio .group:hover img { transform:none;filter:none }
+.result-panel { background:var(--s-hero) }
 .financing-bar span { transition:width var(--s-duration) var(--s-ease) }
 @media (prefers-reduced-motion:reduce) {
   html,body { scroll-behavior:auto!important }
@@ -120,7 +126,7 @@ body.home-fluid-b2 #portfolio .group:hover img { transform:none;filter:none }
   /* Do not reset layout transforms used to center diagram labels. */
 }
 @media (forced-colors:active) {
-  body :is(a,button,input,select,textarea,summary):focus-visible { outline:3px solid Highlight;box-shadow:none }
+  body :is(a,button,input,select,textarea,summary):focus-visible:focus { outline:3px solid Highlight;box-shadow:none }
   body :is(button,input,select,textarea):disabled { color:GrayText;border-color:GrayText }
   body [aria-invalid=true] { border-color:CanvasText!important }
 }

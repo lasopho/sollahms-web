@@ -54,7 +54,7 @@ button:disabled {
   opacity:.55
 }
 button,a,input,select,textarea {
-  transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease)
+  transition:background var(--s-duration) var(--ease),border-color var(--s-duration) var(--ease),box-shadow var(--s-duration) var(--ease)
 }
 :focus-visible {
   outline:3px solid var(--s-gold-ink);
@@ -509,7 +509,7 @@ input:focus,select:focus,textarea:focus {
   display:block;
   height:100%;
   background:var(--gold);
-  transition:width .3s
+  transition:width var(--s-duration)
 }
 .split-legend {
   display:flex;
@@ -557,7 +557,7 @@ input:focus,select:focus,textarea:focus {
   display:flex;
   flex-direction:column;
   gap:13px;
-  transition:border-color .25s,box-shadow .25s
+  transition:border-color var(--s-duration),box-shadow var(--s-duration)
 }
 .bank-card.selected {
   border-color:var(--green);

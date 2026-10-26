@@ -24,7 +24,7 @@ Referencia: portada aprobada publicada en `dpl_7ynhuaYPMN3VryB73zFLq5m6TJDE` (fu
 | warning-soft | `#FFFAF0` | Condiciones y pendientes comerciales; texto oscuro |
 | disabled | `#EDF0ED` | Controles deshabilitados, con texto muted y sin transparencia |
 
-El degradado `--s-hero` conserva exactamente la composición de la portada: radial verde `rgba(20,88,73,.42)`, radial dorado `rgba(233,193,118,.08)` y fondo de 155 grados de green a green-deep. Las fotografías conservan sus superposiciones de lectura y su geometría. No recolorear logos, fotografías, renders ni planos de terceros.
+El degradado `--s-hero` conserva exactamente la composición de la portada: radial verde `rgba(20,88,73,.42)`, radial dorado `rgba(233,193,118,.08)` y fondo de 155 grados de green a green-deep. Las fotografías conservan su geometría; `--s-photo-shade` refuerza el verde detrás de los títulos sobre imagen para sostener su legibilidad. No recolorear logos, fotografías, renders ni planos de terceros.
 
 ## Formas y jerarquía
 
@@ -45,6 +45,6 @@ El degradado `--s-hero` conserva exactamente la composición de la portada: radi
 
 ## Conservación
 
-Los nombres del menú de portada son literalmente **Expertise · Asset Portafolio · Contacto**. Los archivos HTML conservan contenido, enlaces de navegación, formularios, scripts, metadatos, JSON-LD y medios. Los cambios se limitan a CSS y sus enlaces versionados. No modificar el catálogo, los datos comerciales, UF, cálculo, consentimiento, agenda ni presentación de WhatsApp para resolver un problema visual.
+Los nombres del menú de portada son literalmente **Expertise · Asset Portafolio · Contacto**. Los encabezados de Contacto y Asesoría también conservan esos nombres aprobados; se sustituyen allí los rótulos antiguos Servicios/Proyectos, sin cambiar destinos. Los archivos HTML conservan los demás contenidos, enlaces de navegación, formularios, scripts, metadatos, JSON-LD y medios. Los cambios se limitan a CSS y sus enlaces versionados. No modificar el catálogo, los datos comerciales, UF, cálculo, consentimiento, agenda ni presentación de WhatsApp para resolver un problema visual.
 
 Antes de publicar, comparar las 141 páginas con la versión base ignorando únicamente estilos y enlaces CSS; revisar las familias de fichas en escritorio y móvil. Mantener los despliegues automáticos desactivados y publicar manualmente el paquete validado, conservando las funciones exactas de producción.
