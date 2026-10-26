@@ -1,5 +1,6 @@
 """Idempotent, narrowly scoped logo integration for pages and generators."""
 import re
+from footer_links import apply_footer_links
 
 CSS = '<link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">'
 SHARE = 'https://sollahms.cl/assets/branding/og-sollahms-square-v3.png'
@@ -33,7 +34,7 @@ def apply_brand_identity(page):
     page = re.sub(r'("logo"\s*:\s*\{\s*"@type"\s*:\s*"ImageObject",\s*"url"\s*:\s*)"' + re.escape(SHARE) + r'",\s*"width"\s*:\s*1254,\s*"height"\s*:\s*1254', r'\1"https://sollahms.cl/assets/branding/sollahms-logo.svg",\n        "width": 860,\n        "height": 162', page)
     if CSS not in page:
         page = page.replace('</head>', CSS + '\n</head>', 1)
-    return page
+    return apply_footer_links(page)
 
 if __name__ == '__main__':
     from pathlib import Path

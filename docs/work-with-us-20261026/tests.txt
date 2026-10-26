@@ -1,0 +1,37 @@
+✔ mapping never drops or duplicates a catalogue record; every admitted point matches its source identity (6.175704ms)
+✔ same-coordinate towers stay at one true point and remain individually selectable (1.483576ms)
+✔ screen clustering combines near points at a wide view, separates on zoom and never mutates their coordinates (0.43251ms)
+✔ map filters and ordering are the same exact catalogue result set (7.36837ms)
+✔ return map state accepts only finite coordinates, zoom and a public project slug (0.684633ms)
+✔ map code keeps provider access lazy and separate from forms, scrolling and static fallbacks (3.059279ms)
+✔ all 132 source records and original ordering survive without mutation or duplicates (6.34242ms)
+✔ both numeric directions preserve stable ties, decimals and unknown prices last (5.001185ms)
+✔ search covers names, communes and developers with accent-insensitive matching (18.556755ms)
+✔ combined filters and maximum price exclude unavailable amounts, never use zero (1.066709ms)
+✔ mixed and commercial offers keep the exact selected typology and decimal amount (6.321249ms)
+✔ facts distinguish reception state from delivery and do not fill absent data (0.53989ms)
+✔ return state is bounded to catalogue values; view persists only as an enum (5.581174ms)
+✔ inmobiliaria: all normalized data, type, origin and consent reach isolated HTTP receiver (93.460168ms)
+✔ inmobiliaria: required fields, DV, K, email, phone, bounds, URLs and consent fail before transport (43.487598ms)
+✔ inmobiliaria: minimal submission needs no optional data (24.292328ms)
+✔ persona: all normalized data, type, origin and consent reach isolated HTTP receiver (6.577147ms)
+✔ persona: required fields, DV, K, email, phone, bounds, URLs and consent fail before transport (5.137827ms)
+✔ persona: minimal submission needs no optional data (5.8088ms)
+✔ same operation across instances/retries deduplicates; changed body conflicts (17.648685ms)
+✔ request shape, honeypot, timing, origin, size and methods are protected (5.928588ms)
+✔ preview and misconfigured channel fail closed without provider (2.453622ms)
+✔ timeout, rejection, malformed/missing provider acknowledgement never claim delivery (5.177365ms)
+✔ untrusted content escaped, subject fixed and no link fetched (4.248696ms)
+✔ operation state stores no personal fields; uncertain retries preserve original request (5.147442ms)
+✔ real-name characters, diverse email providers and local/international phone formats (8.120614ms)
+✔ each missing or malformed field is rejected by both actual API handlers before transport (39.364172ms)
+✔ correction preserves all four normalized fields in existing destination without PII in acknowledgement (4.455768ms)
+✔ all advisory intents retain the four fields and no obsolete selector can bypass required data (5.989148ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 540.448851
