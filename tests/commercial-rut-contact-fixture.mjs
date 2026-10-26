@@ -1,0 +1,3 @@
+import {createContactHandler} from './contact.mjs';
+const opts={getEnvironment:()=> 'production',getDeliveryMode:()=> 'resend',getApiKey:()=> 'synthetic-only',resolveUf:async()=>({date:'2026-10-26',valueClp:41221.08,source:{verifiedAt:'2026-10-26'}}),persistCrmLead:()=>{throw Error('CRM forbidden');},fetchImpl:async(url,o)=>{const e=JSON.parse(o.body);if(url!=='https://api.resend.com/emails'||!e.text.includes('Nombre: QA Rut ')||e.reply_to&&e.reply_to!=='qa@example.invalid')return Response.json({}, {status:400});if(e.text.includes('Nombre: QA Rut Sintetico')&&!e.text.includes('RUT: 1000005-K'))return Response.json({}, {status:400});return Response.json({id:'synthetic-reception-only'});}};
+export default createContactHandler(opts);

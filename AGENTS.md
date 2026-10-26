@@ -24,3 +24,6 @@ All live project details use the exact approved Cicarelli B composition through 
 - Use `templates/project-contact.html` and `assets/js/project-request.mjs` with the unchanged advisory endpoint and consent. Never activate a provider, CRM or new destination as a side effect of regeneration.
 - Do not add opacity to controls or nest fades. Preserve the approved shared scroll implementation and B hero.
 - See `docs/project-journey-20261026/README.md` and run its preservation and isolated-contact checks when changing these components.
+
+# Optional commercial RUT
+Commercial forms use the shared `rut.mjs` validator and `rut-field.mjs` UI. RUT remains optional, directly after name, including quotes/calls/mortgage advisory. Keep normalization, server verification, consent and privacy purpose aligned; do not add RUT to URLs, analytics, logs or public error messages. Do not introduce automatic eligibility decisions or external identity/credit lookups. The contact handler now incorporates its exact published protection changes; preserve them. See `docs/commercial-rut-20261026/README.md`.

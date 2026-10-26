@@ -1,10 +1,13 @@
 import { createFormOperation } from './form-operation.mjs';
 import { resolveProjectIdentity } from './project-identity.mjs';
+import { normalizeRut, RUT_ERROR } from './rut.mjs';
+import { bindRutField } from './rut-field.mjs';
 
 /** Use the existing advisory contract; no new destination or provider fields. */
 export function composeProjectRequest({values,project,intent,startedAt}) {
   if (!project?.bodyProjectSlug || !/^\/[a-z0-9-]+\.html(?:#etapa-\d+)?$/.test(project.detalleUrl || '')) throw Error('No pudimos identificar el proyecto. Abre la solicitud desde su ficha.');
   if (!['cotizacion','llamada'].includes(intent)) throw Error('Selecciona el tipo de solicitud.');
+  const rut=normalizeRut(values.rut??'');if(rut===null)throw Error(RUT_ERROR);
   const medio = intent === 'llamada' ? 'telefono' : values.medio;
   const message = String(values.mensaje || '').trim(), time = String(values.franja || '').trim();
   if (message.length > 1600 || time.length > 100) throw Error('Reduce el mensaje o la preferencia horaria antes de enviar.');
@@ -14,7 +17,7 @@ export function composeProjectRequest({values,project,intent,startedAt}) {
   if (message) lines.push('Mensaje del visitante: '+message);
   const mensaje=lines.join('\n');
   if (mensaje.length>2000) throw Error('Reduce el mensaje antes de enviar.');
-  return {nombre:String(values.nombre || '').trim(),medio,
+  return {nombre:String(values.nombre || '').trim(),...(rut?{rut}:{}),medio,
     ...(medio==='telefono' ? {telefono:String(values.telefono || '').trim()} : {correo:String(values.correo || '').trim()}),
     objetivo:values.objetivo || '',mensaje,consent:values.consent===true,
     website:values.website || '',startedAt,proyecto:project.bodyProjectSlug};
@@ -22,7 +25,8 @@ export function composeProjectRequest({values,project,intent,startedAt}) {
 
 export function validateProjectRequest(values,intent) {
   const errors={};
-  if (!values.nombre?.trim() || values.nombre.trim().length>100 || /[\u0000-\u001f\u007f]/.test(values.nombre)) errors.nombre='Escribe tu nombre, sin números de documento.';
+  if (!values.nombre?.trim() || values.nombre.trim().length>100 || /[\u0000-\u001f\u007f]/.test(values.nombre)) errors.nombre='Escribe tu nombre.';
+  if(normalizeRut(values.rut??'')===null)errors.rut=RUT_ERROR;
   const medio=intent==='llamada'?'telefono':values.medio;
   if (medio==='correo' && (!/^[^\s@<>(),;:"\\]+@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9]{2,63}$/i.test(values.correo?.trim() || '') || values.correo.trim().length>254)) errors.correo='Escribe un correo válido, por ejemplo nombre@ejemplo.cl.';
   if (medio==='telefono') {const v=values.telefono?.trim()||'',digits=(v.match(/\d/g)||[]).length;if(!/^[+()\d .-]+$/.test(v)||digits<9||digits>15||v.length>30)errors.telefono='Escribe un teléfono válido con código de país.';}
@@ -43,8 +47,9 @@ function initializeProjectRequest(form) {
   const headerSize=()=>{if(header)main.style.setProperty('--pj-header-height',header.getBoundingClientRect().height+'px');};
   headerSize();if(header&&'ResizeObserver' in window)new ResizeObserver(headerSize).observe(header);
   const submit=form.querySelector('button[type=submit]'),modes=panel.querySelectorAll('[data-request-mode]');
-  const ids={nombre:'name',correo:'email',telefono:'phone',mensaje:'message',consent:'consent'};
+  const ids={nombre:'name',rut:'rut',correo:'email',telefono:'phone',mensaje:'message',consent:'consent'};
   const inputs=Object.fromEntries(Object.keys(ids).map(n=>[n,form.elements[n]]));
+  const rutField=bindRutField(inputs.rut,document.getElementById('advisory-rut-error'));
   const startedAt=Date.now(),operation=createFormOperation({name:'project-request:'+panel.dataset.projectSlug});
   let intent='cotizacion',quoteChannel='correo',sending=false,completed=false,project=null,catalogue=null;
   let stage=/^#etapa-([1-9]\d?)$/.exec(location.hash)?.[1] ?? null;
@@ -97,6 +102,7 @@ function initializeProjectRequest(form) {
   form.addEventListener('submit',async event=>{
     event.preventDefault();if(sending||completed)return;
     Object.keys(inputs).forEach(n=>error(n,''));
+    rutField.validate();
     const entered=values(),invalid=validateProjectRequest(entered,intent);
     if(Object.keys(invalid).length){
       for(const [name,message] of Object.entries(invalid))error(name,message);

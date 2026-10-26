@@ -1,8 +1,9 @@
 import projects from '../data/advisory-projects.json' with { type: 'json' };
 import { readOperationKey } from '../lib/form-operation-server.mjs';
+import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
 
 const goals = { '': 'Sin especificar', patrimonio: 'Aumentar mi patrimonio', diversificar: 'Diversificar mis inversiones', propiedad: 'Una propiedad en particular', orientacion: 'Aún lo estoy definiendo' };
-const allowed = new Set(['nombre', 'medio', 'correo', 'telefono', 'objetivo', 'mensaje', 'consent', 'website', 'startedAt', 'proyecto']);
+const allowed = new Set(['nombre', 'rut', 'medio', 'correo', 'telefono', 'objetivo', 'mensaje', 'consent', 'website', 'startedAt', 'proyecto']);
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
 const escape = value => value.replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
 const uncertain = () => json({ ok: false, code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Tus datos siguen aquí. Reintenta sin cambiarlos o escribe a contacto@sollahms.cl para verificar la solicitud.' }, 502);
@@ -29,7 +30,9 @@ export function createAdvisoryHandler({ fetchImpl = (...args) => fetch(...args),
     const nombre = (body.nombre || '').trim(), correo = (body.correo || '').trim(), telefono = (body.telefono || '').trim(), mensaje = (body.mensaje || '').trim();
     const objetivo = body.objetivo || '', medio = body.medio;
     const errors = {};
-    if (!nombre || nombre.length > 100 || /[\u0000-\u001f\u007f]/.test(nombre)) errors.nombre = 'Escribe tu nombre, sin números de documento.';
+    if (!nombre || nombre.length > 100 || /[\u0000-\u001f\u007f]/.test(nombre)) errors.nombre = 'Escribe tu nombre.';
+    const rut=normalizeRut(body.rut??'');
+    if(rut===null)errors.rut=RUT_ERROR;
     if (!['correo','telefono'].includes(medio)) errors.medio = 'Elige cómo prefieres que te contactemos.';
     if (medio === 'correo' && (!/^[^\s@<>(),;:"\\]+@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9]{2,63}$/i.test(correo) || correo.length > 254 || /[\u0000-\u001f\u007f]/.test(correo))) errors.correo = 'Escribe un correo válido, por ejemplo nombre@ejemplo.cl.';
     if (medio === 'telefono' && (!/^[+()\d .-]+$/.test(telefono) || telefono.length > 30 || (telefono.match(/\d/g)||[]).length < 9 || (telefono.match(/\d/g)||[]).length > 15)) errors.telefono = 'Escribe un teléfono válido con código de país.';
@@ -49,8 +52,9 @@ export function createAdvisoryHandler({ fetchImpl = (...args) => fetch(...args),
     // Fail closed if a different channel is configured; this endpoint cannot activate CRM.
     if (getDeliveryMode() !== 'resend' || !getApiKey()?.trim()) return json({ code:'contact_configuration_unavailable', error:'El formulario no está disponible. Conserva tu mensaje o escribe a contacto@sollahms.cl.' }, 503);
     const lines = ['Solicitud de asesoría desde Sollahms', '', 'Nombre: '+nombre, 'Medio preferido: '+(medio === 'correo' ? 'Correo electrónico' : 'Llamada telefónica'), (medio === 'correo' ? 'Correo: '+correo : 'Teléfono: '+telefono), 'Objetivo: '+goals[objetivo]];
+    if(rut)lines.splice(3,0,'RUT: '+rut);
     if (body.proyecto) lines.push('Proyecto: '+projectIndex[body.proyecto], 'Identificador: '+body.proyecto);
-    lines.push('Mensaje: '+(mensaje || 'Sin mensaje adicional.'), '', 'Consentimiento: autorizado para responder esta solicitud conforme a la política de privacidad. Sin autorización de marketing.', 'Esta solicitud no reserva una propiedad ni confirma una cita.');
+    lines.push('Mensaje: '+(mensaje || 'Sin mensaje adicional.'), '', 'Consentimiento: autorizado para responder esta solicitud y, si se proporcionó RUT, identificar al interesado y dar continuidad a la evaluación solicitada conforme a la política de privacidad. Sin autorización de marketing.', 'Esta solicitud no reserva una propiedad ni confirma una cita.');
     const email = { from:'Sollahms Web <formularios@forms.sollahms.cl>', to:['contacto@sollahms.cl'], subject:'Solicitud de asesoría desde Sollahms', text:lines.join('\n'), html:'<!doctype html><html lang="es"><body><h1>Solicitud de asesoría</h1><p style="white-space:pre-wrap">'+escape(lines.slice(2).join('\n'))+'</p></body></html>', ...(medio === 'correo' ? {reply_to:correo} : {}) };
     try {
       const response = await fetchImpl('https://api.resend.com/emails', {method:'POST',headers:{Authorization:'Bearer '+getApiKey().trim(),'Content-Type':'application/json','Idempotency-Key':'advisory/'+operation.key},body:JSON.stringify(email),signal:AbortSignal.timeout(10_000)});

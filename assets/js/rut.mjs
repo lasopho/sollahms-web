@@ -1,5 +1,5 @@
 // Shared by the contact form and its server handler. No external lookup is used.
-export const RUT_ERROR = 'Ingresa un RUT válido con su dígito verificador.';
+export const RUT_ERROR = 'Revisa el RUT y su dígito verificador (número o K). Puedes escribirlo con o sin puntos y guion.';
 
 // Canonical body-DV string; empty string means omitted, null means invalid.
 export function normalizeRut(value) {
@@ -24,4 +24,12 @@ export function normalizeRut(value) {
   const remainder = 11 - (sum % 11);
   const expected = remainder === 11 ? '0' : remainder === 10 ? 'K' : String(remainder);
   return match[2] === expected ? body + '-' + expected : null;
+}
+
+// Presentation only; the request uses the canonical body-DV value above.
+export function formatRut(value) {
+  const normalized = normalizeRut(value);
+  if (!normalized) return normalized;
+  const [body, digit] = normalized.split('-');
+  return body.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + digit;
 }

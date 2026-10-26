@@ -6,8 +6,13 @@ import { createOfficialUfService } from '../lib/official-uf.mjs';
 import { getUfStatus } from '../assets/js/mortgage-data.mjs';
 import { resolveProjectIdentity } from '../assets/js/project-identity.mjs';
 import { operationFingerprint, readOperationKey } from '../lib/form-operation-server.mjs';
+import { createCrmLeadClient, WEB_CRM_CONSENT } from '../lib/crm-lead-client.mjs';
+// CONTACT_PUBLIC_CATALOGUE_IMPORT_START
+import { projectPublicSafeCatalogue } from '../lib/public-project-view.mjs';
+// CONTACT_PUBLIC_CATALOGUE_IMPORT_END
 
 const officialUf = createOfficialUfService();
+const persistWebCrmLead = createCrmLeadClient();
 
 const MAX_BODY_BYTES = 32_768;
 const JSON_HEADERS = {
@@ -92,8 +97,9 @@ function validate(body, projectIndex) {
   const asunto = hipotecario
     ? (nombreProyecto ? 'Asesoría hipotecaria sobre ' + nombreProyecto : 'Asesoría hipotecaria desde Sollahms')
     : (nombreProyecto ? 'Consulta sobre ' + nombreProyecto : 'Consulta desde Sollahms');
-  // RUT is validated above and deliberately excluded from the email provider.
-  return { fields: { nombre, correo, telefono, asunto, mensaje, proyecto, nombreProyecto }, project };
+  // Optional identification supplied with specific contact consent, never a lookup.
+  const rut=normalizeRut(body.rut??'');
+  return { fields: { nombre, correo, telefono, ...(rut?{rut}:{}), asunto, mensaje, proyecto, nombreProyecto }, project };
 }
 
 export function createContactHandler({
@@ -101,6 +107,10 @@ export function createContactHandler({
   fetchImpl = (...args) => fetch(...args), getApiKey = () => process.env.RESEND_API_KEY,
   getEnvironment = () => process.env.VERCEL_ENV,
   resolveUf = () => officialUf.resolve(),
+  // CONTACT_EXPLICIT_CHANNEL_START
+  getDeliveryMode = () => process.env.CONTACT_DELIVERY_MODE,
+  // CONTACT_EXPLICIT_CHANNEL_END
+  persistCrmLead = persistWebCrmLead,
 } = {}) {
   // Names and prices come only from the server's checked-in project catalogue.
   const projectIndex = Object.create(null);
@@ -130,9 +140,16 @@ export function createContactHandler({
       if (parsed.invalid) return json({ error: 'Solicitud inválida.' }, 400);
       const body = parsed.body;
       if (!validShape(body)) return json({ error: 'Revisa los datos del formulario.' }, 400);
-      if (body.website?.trim()) return json({ ok: true }, 200);
+      const deliveryMode = getDeliveryMode();
+      if (!['crm', 'resend'].includes(deliveryMode)) return json({ ok: false, code: 'contact_configuration_unavailable', error: 'El formulario no está disponible. Inténtalo más tarde.' }, 503);
+      if (body.website?.trim()) return deliveryMode === 'crm'
+        ? json({ ok: false, error: 'Revisa los datos del formulario.' }, 400)
+        : json({ ok: true }, 200);
       const validated = validate(body, projectIndex);
       if (validated.error) return json(validated, 400);
+      // CONTACT_ALL_CHANNEL_CONSENT_START
+      if (body.consent !== true) return json({ ok: false, code: 'consent_required', error: 'Autoriza el tratamiento de tus datos para responder esta solicitud.' }, 400);
+      // CONTACT_ALL_CHANNEL_CONSENT_END
       const fields = validated.fields;
       const receivedAt = now();
       let mortgageLead = null;
@@ -147,6 +164,53 @@ export function createContactHandler({
       if (getEnvironment() === 'preview') return json({ ok: false, code: 'preview_read_only', error: 'La vista previa no envía mensajes reales. Puedes revisar el formulario sin contactar al equipo.' }, 503);
       const operation = readOperationKey(request, receivedAt);
       if (operation.error) return json(operation.error, operation.status);
+      if (deliveryMode === 'crm') {
+        if (!operation.key) return json({ ok: false, code: 'invalid_operation', error: 'Revisa el identificador de la solicitud.' }, 400);
+        const digits = (fields.telefono.match(/\d/g) || []).length;
+        if (fields.telefono && (!/^[+()\d .-]+$/.test(fields.telefono) || digits < 7 || digits > 15)) return json({ ok: false, code: 'invalid_phone', error: 'Revisa el teléfono de contacto.' }, 400);
+        const project = validated.project;
+        const crmLead = {
+          requestId: operation.key,
+          kind: mortgageLead ? 'mortgage' : 'contact',
+          name: fields.nombre,
+          email: fields.correo,
+          phone: fields.telefono,
+          message: fields.mensaje + (fields.rut ? '\nRUT proporcionado para identificación y continuidad de la evaluación: '+fields.rut : ''),
+          projectRef: project ? {
+            slug: fields.proyecto,
+            name: project.nombre,
+            canonicalSlug: project.canonicalSlug,
+            commercialSlug: project.originCommercialSlug,
+            detailPath: project.detalleUrl,
+          } : null,
+          consent: { ...WEB_CRM_CONSENT },
+        };
+        if (mortgageLead) {
+          // A deterministic UF-only snapshot needs no provider lookup. Receipt
+          // time belongs to CRM storage, never to the idempotent request body.
+          const summary = mortgageSummaryLines({ ...mortgageLead,
+            uf: { usable: false, message: 'Se conservan valores en UF, sin consulta externa.' },
+          }).filter(line => !line.startsWith('Solicitud recibida: ')).join('\n');
+          if (summary.length > 4_000) return json({ ok: false, error: 'Revisa los datos de la simulación.' }, 400);
+          crmLead.mortgage = { summary };
+        }
+        let stored;
+        try { stored = await persistCrmLead(crmLead); } catch { /* preserve an uncertain operation */ }
+        if (stored?.ok !== true || stored.persisted !== true) {
+          if (stored?.status === 413 && stored.code === 'contact_request_too_large') return json({ ok: false,
+            code: 'contact_request_too_large', error: 'La solicitud es demasiado extensa. Reduce el mensaje antes de enviarla.',
+          }, 413);
+          const conflict = stored?.status === 409;
+          return json({ ok: false,
+            code: conflict ? 'operation_conflict'
+              : stored?.code === 'contact_configuration_unavailable' ? stored.code : 'contact_outcome_unknown',
+            error: conflict
+              ? 'Esta solicitud requiere confirmación antes de cambiar los datos. Conserva el mismo identificador.'
+              : 'No pudimos confirmar el registro. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.',
+          }, conflict ? 409 : stored?.status === 503 ? 503 : 502);
+        }
+        return json({ ok: true, persisted: true }, 200);
+      }
       const key = getApiKey()?.trim();
       if (!key) return json({ error: 'No pudimos enviar el mensaje. Inténtalo más tarde.' }, 503);
       // The server owns CLP conversion too; a visitor never supplies a UF rate.
@@ -155,7 +219,7 @@ export function createContactHandler({
         try { mortgageLead.uf = getUfStatus(await resolveUf(), new Date(now())); }
         catch { mortgageLead.uf = getUfStatus(null, new Date(now())); }
       }
-      const { nombre, correo, telefono, asunto, mensaje, proyecto, nombreProyecto } = fields;
+      const { nombre, correo, telefono, rut, asunto, mensaje, proyecto, nombreProyecto } = fields;
       const displayTelefono = telefono || 'No informado';
       // Keep the provider payload stable on a keyed retry. Transport receipt
       // time changes on every POST; the form's operation time does not.
@@ -167,6 +231,7 @@ export function createContactHandler({
       const html = `<!doctype html><html lang="es"><body>
         <h1>Nueva consulta desde Sollahms Web</h1>
         <p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p>
+        ${rut ? '<p><strong>RUT:</strong> '+escapeHtml(rut)+'</p>' : ''}
         <p><strong>Correo:</strong> ${escapeHtml(correo)}</p>
         <p><strong>Teléfono:</strong> ${escapeHtml(displayTelefono)}</p>
         ${projectHtml}
@@ -175,7 +240,7 @@ export function createContactHandler({
         <p style="white-space: pre-wrap">${escapeHtml(mensaje)}</p>
         ${summaryHtml}
       </body></html>`;
-      const text = `Nueva consulta desde Sollahms Web\n\nNombre: ${nombre}\nCorreo: ${correo}\nTeléfono: ${displayTelefono}\n${projectText}Asunto: ${asunto}\nMensaje:\n${mensaje}${summary.length ? `\n\n${summary.join('\n')}` : ''}`;
+      const text = `Nueva consulta desde Sollahms Web\n\nNombre: ${nombre}\n${rut ? 'RUT: '+rut+'\n' : ''}Correo: ${correo}\nTeléfono: ${displayTelefono}\n${projectText}Asunto: ${asunto}\nMensaje:\n${mensaje}${summary.length ? `\n\n${summary.join('\n')}` : ''}`;
       const email = {
         from: 'Sollahms Web <formularios@forms.sollahms.cl>', to: ['contacto@sollahms.cl'],
         reply_to: correo, subject: safeSubject(asunto), html, text,
@@ -202,7 +267,9 @@ export function createContactHandler({
         if (!response.ok) throw new Error('Email provider rejected request');
         const accepted = await response.json();
         if (!accepted || typeof accepted.id !== 'string' || !accepted.id.trim()) throw new Error('Email provider did not confirm acceptance');
-        return json({ ok: true }, 200);
+        // CONTACT_PROVIDER_ACCEPTANCE_START
+        return json({ ok: true, providerAccepted: true, deliveryConfirmed: false }, 200);
+        // CONTACT_PROVIDER_ACCEPTANCE_END
       } catch {
         return json({ code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.' }, 502);
       }
@@ -210,4 +277,7 @@ export function createContactHandler({
   };
 }
 
-export default createContactHandler();
+// CONTACT_PUBLIC_CATALOGUE_DEFAULT_START
+// Public facts stay restricted even when no build-profile variable is present.
+export default createContactHandler({ projectDataset: projectPublicSafeCatalogue(catalogue) });
+// CONTACT_PUBLIC_CATALOGUE_DEFAULT_END

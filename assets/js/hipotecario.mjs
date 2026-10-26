@@ -5,8 +5,11 @@ import { consumeMortgageHandoff } from './mortgage-handoff.mjs';
 import { loadOfficialUf, UF_CLIENT_REFRESH_MS } from './official-uf.mjs';
 import { resolveProjectIdentity } from './project-identity.mjs';
 import { createFormOperation } from './form-operation.mjs';
+import { bindRutField } from './rut-field.mjs';
+import { RUT_ERROR } from './rut.mjs';
 
 const $ = id => document.getElementById(id);
+const rutField=bindRutField($('lead-rut'),$('lead-rut-error'));
 const number = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 });
 const rateNumber = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 3 });
 const ufPeso = new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -457,6 +460,7 @@ $('lead-form').addEventListener('submit', async event => {
   event.preventDefault();
   if (sending) return;
   update({ showError: true });
+  if(!rutField.validate()){$('lead-status').textContent=RUT_ERROR;$('lead-rut').focus();return;}
   if (!simulation || projectLoading || !$('lead-form').reportValidity()) return;
   const phone = $('telefono').value.trim();
   if (!/^[+()\d .-]+$/.test(phone) || (phone.match(/\d/g) || []).length < 9 || (phone.match(/\d/g) || []).length > 15) {
@@ -473,13 +477,14 @@ $('lead-form').addEventListener('submit', async event => {
   $('lead-status').textContent = '';
   const mortgage = { ...input, bankId: selectedId, simulatedAt, propertyValueOrigin };
   try {
-    const attempt = await contactOperation.prepare({ nombre: $('nombre').value, correo: $('correo').value, telefono: phone, mensaje: $('comentario').value.trim() || 'Solicitud de asesoría hipotecaria.', website: $('website').value, mortgage, consent: $('consent').checked, startedAt, ...(project ? { proyecto: project.bodyProjectSlug } : {}) });
+    const attempt = await contactOperation.prepare({ nombre: $('nombre').value, ...(rutField.value()?{rut:rutField.value()}:{}), correo: $('correo').value, telefono: phone, mensaje: $('comentario').value.trim() || 'Solicitud de asesoría hipotecaria.', website: $('website').value, mortgage, consent: $('consent').checked, startedAt, ...(project ? { proyecto: project.bodyProjectSlug } : {}) });
     const response = await fetch('/api/contact', {
       method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': attempt.key },
       body: attempt.body,
       signal: AbortSignal.timeout(15000),
     });
     const body = await response.json();
+    if(body.code==='invalid_rut'){$('lead-rut-error').textContent=RUT_ERROR;$('lead-rut-error').hidden=false;$('lead-rut').setAttribute('aria-invalid','true');}
     if (!attempt.reused && ([400, 403, 413, 415].includes(response.status) || body.code === 'preview_read_only')) contactOperation.discard();
     // CONTACT_ACKNOWLEDGEMENT_PROOF_START
     const persisted = body?.ok === true && body.persisted === true && body.providerAccepted === undefined && body.deliveryConfirmed === undefined;

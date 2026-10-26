@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/hipotecario.css?v=20261025-visual-1">
-  <script type="module" src="/assets/js/hipotecario.mjs"></script>
+  <script type="module" src="/assets/js/hipotecario.mjs?v=20261026-rut-1"></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sollahms">
 <meta property="og:locale" content="es_CL">
@@ -121,10 +121,10 @@
         <fieldset id="lead-fields-controls" aria-label="Datos para solicitar asesoría" style="min-width:0;margin:0;padding:0;border:0" disabled>
         <!-- FORM_PROGRESSIVE_LEAD_FIELDS_OPEN_END -->
         <div class="honeypot" aria-hidden="true"><label for="website">Sitio web</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-        <div class="lead-fields"><div class="field"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required></div><div class="field"><label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" autocomplete="email" maxlength="254" required></div></div>
-        <div class="field"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="30" placeholder="+56 9 1234 5678" required aria-describedby="phone-help"><p class="field-help" id="phone-help">Incluye el código de país si corresponde.</p></div>
+        <div class="lead-fields"><div class="field"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="100" required></div><div class="field"><label for="lead-rut">RUT</label><input id="lead-rut" name="rut" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="14" aria-describedby="lead-rut-help lead-rut-error"/><p class="field-help" id="lead-rut-help">Para identificarte y dar continuidad a tu evaluación. Opcional.</p><p class="field-error" id="lead-rut-error" hidden></p></div><div class="field"><label for="correo">Correo electrónico</label><input id="correo" name="correo" type="email" autocomplete="email" maxlength="254" required></div>
+        <div class="field"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="30" placeholder="+56 9 1234 5678" required aria-describedby="phone-help"><p class="field-help" id="phone-help">Incluye el código de país si corresponde.</p></div></div>
         <div class="field"><label for="comentario">Comentario <span>opcional</span></label><textarea id="comentario" name="comentario" rows="3" maxlength="3000" placeholder="Cuéntanos qué estás evaluando"></textarea></div>
-        <label class="consent" for="consent"><input id="consent" name="consent" type="checkbox" required><span>Autorizo a Sollahms a tratar mis datos y esta simulación para responder mi solicitud de asesoría, según su <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+        <label class="consent" for="consent"><input id="consent" name="consent" type="checkbox" required><span>Autorizo a Sollahms a tratar mis datos y esta simulación para responder mi solicitud de asesoría y, si proporciono RUT, identificarme y dar continuidad a la evaluación solicitada, según su <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
         <button type="submit" class="button button-green full" id="lead-submit">Solicitar asesoría</button><p id="lead-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></p><p class="field-help">También puedes escribir a <a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a>.</p>
         <!-- FORM_PROGRESSIVE_LEAD_FIELDS_CLOSE_START -->
         </fieldset>

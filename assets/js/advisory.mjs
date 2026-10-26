@@ -1,12 +1,14 @@
 import { createFormOperation } from './form-operation.mjs';
 import { resolveProjectIdentity } from './project-identity.mjs';
+import { bindRutField } from './rut-field.mjs';
 
 const form = document.getElementById('advisory-form');
 if (form) {
   const fields = document.getElementById('advisory-fields'), status = document.getElementById('advisory-status');
   const button = form.querySelector('button[type=submit]');
-  const inputs = {nombre:form.elements.nombre,correo:form.elements.correo,telefono:form.elements.telefono,mensaje:form.elements.mensaje,consent:form.elements.consent};
-  const ids = {nombre:'name',correo:'email',telefono:'phone',mensaje:'message',consent:'consent'};
+  const inputs = {nombre:form.elements.nombre,rut:form.elements.rut,correo:form.elements.correo,telefono:form.elements.telefono,mensaje:form.elements.mensaje,consent:form.elements.consent};
+  const ids = {nombre:'name',rut:'rut',correo:'email',telefono:'phone',mensaje:'message',consent:'consent'};
+  const rutField=bindRutField(inputs.rut,document.getElementById('advisory-rut-error'));
   const operation = createFormOperation({name:'advisory'});
   const startedAt = Date.now(); let sending = false, completed = false, project = null, contextError = '';
   const show = (text,state='error') => { status.textContent=text; status.dataset.state=state; };
@@ -36,6 +38,7 @@ if (form) {
     Object.keys(inputs).forEach(name=>fieldError(name,''));let invalid=[];
     const fail=(name,message)=>{fieldError(name,message);invalid.push(name);};
     if(!inputs.nombre.value.trim())fail('nombre','Escribe tu nombre.');
+    if(!rutField.validate())invalid.push('rut');
     if(form.elements.medio.value==='correo'&&(!inputs.correo.value.trim()||!inputs.correo.validity.valid||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputs.correo.value.trim())))fail('correo','Escribe un correo válido, por ejemplo nombre@ejemplo.cl.');
     if(form.elements.medio.value==='telefono') {const value=inputs.telefono.value.trim(),count=(value.match(/\d/g)||[]).length;if(!/^[+()\d .-]+$/.test(value)||count<9||count>15)fail('telefono','Escribe un teléfono válido con código de país.');}
     if(!inputs.consent.checked)fail('consent','Autoriza el uso de tus datos para responder la solicitud.');
@@ -47,6 +50,7 @@ if (form) {
     try {
       await contextReady;if(contextError)throw Error(contextError);
       const data=Object.fromEntries(new FormData(form));data.consent=inputs.consent.checked;data.startedAt=startedAt;
+      if(rutField.value())data.rut=rutField.value();else delete data.rut;
       if(project)data.proyecto=project.bodyProjectSlug;
       const attempt=await operation.prepare(data);
       // Freeze inputs until the result arrives, without losing their values on failure.
