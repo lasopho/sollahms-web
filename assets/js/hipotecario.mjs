@@ -72,7 +72,9 @@ function renderProjectContext() {
   } else if (propertyValueOrigin === 'catalogue' && Number($('property').value) !== currentPrice.valueUf) propertyValueOrigin = 'visitor';
   projectPrice = currentPrice;
   $('project-price-origin').textContent = propertyValueOrigin === 'catalogue' && projectPrice
-    ? `Precio desde ${uf(projectPrice.valueUf)}, verificado el ${date(projectPrice.date)}. Confirma el valor y disponibilidad de la unidad antes de contratar.`
+    ? projectPrice.sourceKind === 'owner-supplied'
+      ? `${projectPrice.typology}: desde ${uf(projectPrice.valueUf)}, informado por Sollahms el ${date(projectPrice.date)}. Confirma precio y disponibilidad de la unidad al cotizar.`
+      : `Precio desde ${uf(projectPrice.valueUf)}, verificado el ${date(projectPrice.date)}. Confirma el valor y disponibilidad de la unidad antes de contratar.`
     : projectPrice ? 'Valor proporcionado por ti para esta simulación. El proyecto de origen se conserva.'
       : 'Precio vigente pendiente de verificación. Ingresa el valor de la propiedad; se identificará como proporcionado por ti.';
   $('property-help').textContent = propertyValueOrigin === 'catalogue' && projectPrice
@@ -81,7 +83,7 @@ function renderProjectContext() {
   $('project-source').hidden = !projectPrice;
   if (projectPrice) {
     $('project-source').href = projectPrice.source;
-    $('project-source').textContent = propertyValueOrigin === 'catalogue' ? 'Ver fuente del precio ↗' : 'Ver precio publicado por la inmobiliaria ↗';
+    $('project-source').textContent = projectPrice.sourceKind === 'owner-supplied' ? 'Ver precio informado por Sollahms ↗' : propertyValueOrigin === 'catalogue' ? 'Ver fuente del precio ↗' : 'Ver precio publicado por la inmobiliaria ↗';
   }
 }
 

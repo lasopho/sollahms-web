@@ -44,7 +44,9 @@ export function verifiedProjectPrice(project, now = new Date()) {
       || !Number.isFinite(project.precioDesdeUF) || project.precioDesdeUF <= 0) return null;
   const provenance = verifiedProvenance(project.verificacion, now);
   if (!provenance || !project.verificacion.camposVerificados.includes('precioDesdeUF')) return null;
-  return { valueUf: project.precioDesdeUF, ...provenance };
+  const supplied = project.commercialSource?.type === 'owner-supplied';
+  return { valueUf: project.precioDesdeUF, ...provenance,
+    ...(supplied ? { sourceKind: 'owner-supplied', typology: project.precioDesdeTipologia } : {}) };
 }
 
 export const PAYMENT_TERM_FIELDS = Object.freeze([

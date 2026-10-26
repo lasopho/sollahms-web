@@ -200,7 +200,7 @@ export function initializeCapacitySearch({ projects, onChange }) {
       const values = node('dl', undefined, 'capacity-metrics');
       const metric = (label, value) => { const row = node('div'); row.append(node('dt', label), node('dd', value)); values.append(row); };
       if (result.price) {
-        metric('Precio desde verificado', uf(result.price.valueUf));
+        metric(result.price.sourceKind === 'owner-supplied' ? 'Precio desde informado por Sollahms · ' + result.price.typology : 'Precio desde verificado', uf(result.price.valueUf));
         metric('Revisión del precio', result.price.date);
       }
       if (result.mortgage) {
