@@ -7,7 +7,8 @@ def apply_project_location(page, project):
     if not evidence:
         return page
     esc = lambda value: html.escape(value, quote=True)
-    note = '<p class="price-note" data-address-source="official">Dirección informada por <a href="'+esc(evidence['source'])+'" target="_blank" rel="noopener noreferrer">'+esc(evidence['publisher'])+'</a>.'
+    prefix = 'Dirección confirmada por Sollahms. Información del proyecto en ' if evidence.get('ownerConfirmed') else 'Dirección informada por '
+    note = '<p class="price-note" data-address-source="official">'+prefix+'<a href="'+esc(evidence['source'])+'" target="_blank" rel="noopener noreferrer">'+esc(evidence['publisher'])+'</a>.'
     if evidence.get('publicNote'):
         note += ' '+esc(evidence['publicNote'])
     note += '</p>'

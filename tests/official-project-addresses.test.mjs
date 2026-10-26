@@ -1,3 +1,4 @@
+import {beforeFinalLocationHtml} from './helpers/final-location-baseline.mjs';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -14,16 +15,16 @@ test('all 132 commercial records survive the official address review',()=>{
 });
 test('four documented points extend 126 existing points without moving any',()=>{
  const prior=JSON.parse(old('data/project-locations.json')).locations;
- assert.equal(Object.keys(prior).length,126);assert.equal(Object.keys(registry.locations).length,130);
+ assert.equal(Object.keys(prior).length,126);assert.equal(Object.keys(registry.locations).length,132);
  for(const [slug,point]of Object.entries(prior))assert.deepEqual(registry.locations[slug],point);
  for(const r of records){const point=registry.locations[r.slug];if(r.point){
   assert.equal(point.lat,r.point.lat);assert.equal(point.lng,r.point.lng);assert.equal(point.addressSource,r.source);
   if(point.precision==='intersection_reference')assert.match(point.publicNote,/esquina/);
- }else assert.equal(point,undefined);}
+ }else assert.equal(point.status,'verified');}
 });
 test('six fiches gain official attribution while preserving all other HTML',()=>{
  for(const r of records){
-  const page=fs.readFileSync(r.slug+'.html','utf8');
+  const page=beforeFinalLocationHtml(fs.readFileSync(r.slug+'.html','utf8'),r.slug);
   assert.equal((page.match(/data-address-source="official"/g)||[]).length,1);
   assert.ok(page.includes(r.source.replaceAll('&','&amp;')));
   let clean=page.replace(/<p class="price-note" data-address-source="official">[\s\S]*?<\/p>/,'');

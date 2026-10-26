@@ -32,5 +32,6 @@ test('conflicting homonyms and camera centers are not used as project locations'
  assert.equal(registry.locations['matta-016'].commune,'Santiago');assert.ok(registry.locations['matta-016'].lat < -33.45);
  assert.equal(registry.locations['centenario-1'].source,'https://www.openstreetmap.org/way/1154369481');
  assert.notEqual(registry.locations.bcome.lng,-73.0516714);
- assert.equal(registry.locations['mirador-la-florida'],undefined);
+ assert.notEqual(registry.locations['mirador-la-florida'].lat,-33.5116100);
+ assert.notEqual(registry.locations['marina-pacifico'].lat,-29.9643728);
 });

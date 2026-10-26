@@ -1,0 +1,14 @@
+# Final two catalogue locations — 2026-10-26
+
+Base: production dpl_HphMyTm2PcfiYJdy8CvE41ThKRj1, code 8436c93361c1842f7fb05aa4ec653ccee19bb3f6, evidence/source 96eefe1bcb437816a4d47e0a4b7378b1d108c640. Independent branch codex/final-two-map-locations-20261026; main and all listed Git auto-deployments remain disabled.
+
+## Evidence and scope
+- Mirador La Florida: owner explicitly confirms Eugenia 8, La Florida. Sento confirms project identity and street, but does not publish the number; the fiche attributes confirmation to Sollahms, not to Sento. Google Maps manually selected address Eugenia 8 yields the actual !3d/!4d place point -33.5118008,-70.6099463.
+- Marina Pacífico: owner, current Euro project page and official brochure pages 1–2 agree on Los Pescadores 5121, Coquimbo. Brochure map identifies the site behind Enjoy. Manually selected Marina Pacífico place yields -29.9476744,-71.2898966. This is not the @ camera center, a street midpoint, the sales office Costanera 5351, Marina Costa, Marina Horizonte or Playa Marina.
+- Only two factual point references were manually checked. No Google tiles, photos, reviews, APIs, credentials or bulk extraction are used by the site. Exact source links and precision classifications are in accepted-locations.json. The existing Leaflet/OSM provider configuration and attribution remain intact. Locations remain referential; no metric accuracy or surveyed entrance is promised.
+- Rejected Nominatim street results: Eugenia -33.5116100,-70.6093276; Los Pescadores -29.9544365,-71.3005397. Neither result identifies the requested building/number. Bounded OSM checks supplied no more precise matching address.
+- Registry grows from 130 to 132, with no pending projects. All original 130 locations remain identical. Mirador address is reflected in shared catalogue, internal research and HTML; old unresolved-number messages removed. Sento regeneration respects the owner's later confirmation.
+- Commercial dates, prices, stock, all media, forms, calculators, functions, SEO, visual effects and the concurrent Trabaja con nosotros fixes are unchanged. No real requests submitted, services purchased or new integrations enabled.
+
+## Validation and recovery
+28 automated catalogue/location/preservation checks pass. Frozen runtime package: 1,157 files, only 3 changed, 1,154 identical including all functions. Production must still match the recorded baseline before publishing. The previous READY deployment above is the rollback target using Vercel's authorized rollback mechanism. Browser and public verification results are appended after deployment.

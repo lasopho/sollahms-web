@@ -66,6 +66,8 @@ def consumer_notes(record, model):
 
 def commercial_map_note(record):
     if not record['location'].get('mapNote'): return ''
+    if record['location'].get('ownerConfirmed'):
+        return 'Ubicación referencial del proyecto; confirma el acceso al coordinar una visita.'
     if record['slug'] == 'mirador-la-florida':
         return 'Ubicación referencial en Calle Eugenia. Confirma la dirección y el acceso exactos al consultar.'
     return 'Confirma la numeración y el acceso exacto de la unidad al consultar.'

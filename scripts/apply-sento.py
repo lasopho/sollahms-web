@@ -43,6 +43,7 @@ def main():
             assert model['bedrooms'] == source['bedrooms'] and model['bathrooms'] == source['bathrooms']
             assert [{f:a.get(f) for f in fields} for a in model['areas']] == [{f:a.get(f) for f in fields} for a in source['areas']], 'Unverified or recalculated plan surfaces'
     source_projects = read('data/proyectos.json')
+    approved_addresses = {p['slug']: p for p in source_projects if p.get('addressVerification', {}).get('ownerConfirmed')}
     old = {r['slug']: r for r in baseline['originalRows']['data/proyectos.json']}
     old_research = {r['slug']: r for r in baseline['originalRows']['data/fichas-proyectos.json']}
     old_ledger = {r['slug']: r for r in baseline['originalRows']['data/registro-fichas.json']}
@@ -58,6 +59,12 @@ def main():
         if slug == 'mirador-la-florida':
             record['location']['address'] = 'Calle Eugenia'
             record['location']['mapNote'] = 'Ubicación referencial de la calle publicada por Sento, sin numeración. La dirección y el acceso exactos están por confirmar.'
+        if slug in approved_addresses:
+            approved = approved_addresses[slug]
+            record['location']['address'] = approved['direccion']
+            record['location']['ownerConfirmed'] = True
+            record['location']['mapNote'] = 'Ubicación referencial del proyecto; confirma el acceso al coordinar una visita.'
+            record['pending'] = [p for p in record['pending'] if not ('dirección postal completa' in p or 'sin numeración' in p)]
         if slug == 'jofre-135':
             record['identityNote'] = 'El brochure identifica este desarrollo como Jofré 135. Sento lo presenta actualmente como Jofré 157, entregado y 100% vendido. La fachada y los cuatro planos coinciden con el brochure oficial; se conserva esta ficha.'
             record['location']['mapNote'] = 'Sento publica la dirección Jofré 157 y su mapa señala General Jofré 135. Confirma el acceso exacto.'
@@ -101,6 +108,9 @@ def main():
         p = {'slug': slug, 'nombre': record['name'], 'inmobiliaria': 'Sento', 'tipoActivo': 'Residencial', 'comuna': record['location']['commune'], 'region': 'Región Metropolitana', 'direccion': record['location']['address'], 'estado': record['commercial']['estado'], 'entrega': record['commercial']['entrega'], 'tipologias': types, 'precioDesdeUF': record['commercial']['precioDesdeUF'], 'detalleUrl': '/' + slug + '.html', 'descripcionLarga': record['description'], 'mapQuery': ', '.join([record['location']['address'], record['location']['commune'], 'Región Metropolitana', 'Chile']), 'amenities': [x if isinstance(x, str) else x['label'] for x in record['amenities']], 'superficieDesdeM2': None, 'imagenPrincipal': card['localPath'], 'imagenAlt': caption(hero, record), 'commercialSource': {'sourceUrl': web['urlOficial'], 'verifiedOn': '2026-10-13', 'unit': commercial['departamentoPrecio'], 'typology': commercial['tipologiaPrecio'], 'discountPercent': commercial['descuentoAplicadoPorcentaje'], 'note': record['commercial']['note']}}
         fields = [key for key in p if key not in ['superficieDesdeM2', 'commercialSource', 'slug', 'detalleUrl']]
         p['verificacion'] = {'fecha': '2026-10-13', 'fuente': web['urlOficial'], 'estadoFuente': 'verified', 'camposVerificados': fields, 'documentoPrincipal': record.get('document', {}).get('localPath'), 'tipologiasReferencialesSinStock': True}
+        if slug in approved_addresses:
+            p['addressVerification'] = copy.deepcopy(approved_addresses[slug]['addressVerification'])
+            fields.append('addressVerification')
         catalogue[slug] = p
         research[slug] = {'slug': slug, 'sourceUrl': web['urlOficial'], 'checkedAt': '2026-10-13', 'sourceStatus': 'verified', 'verifiedFields': fields, 'updates': {k:v for k,v in p.items() if k in fields}, 'specs': {'utilM2': None, 'totalM2': None}, 'images': record['images'], 'brochureModels': record['models'], 'virtualTours': record['virtualTours'], 'pendingFields': record['pending'], 'identityEvidence': web['identidad'], 'commercialEvidence': commercial, 'officialPlantEvidence': web['planosOficiales'], 'document': record.get('document')}
         ledger[slug] = {'slug': slug, 'nombre': p['nombre'], 'inmobiliaria': 'Sento', 'detalleUrl': p['detalleUrl'], 'fichaDesarrollada': True, 'destacadaExistente': old_ledger[slug]['destacadaExistente'], 'estadoFuente': 'verified', 'fuente': web['urlOficial'], 'fechaRevision': '2026-10-13', 'mapa': True, 'mapaAccesoExactoPendiente': bool(record['location'].get('mapNote')), 'matterport': any('matterport' in t['url'] for t in record['virtualTours']), 'recorridosOficiales': len(record['virtualTours']), 'pendientes': record['pending'], 'controlCalidad': 'documentado_datos_comerciales_contrastados', 'imagenes': len(record['images']), 'planos': len(record['models'])}
