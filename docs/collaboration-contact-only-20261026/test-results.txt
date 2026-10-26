@@ -1,0 +1,23 @@
+✔ inmobiliaria: all normalized data, type, origin and consent reach isolated HTTP receiver (48.035582ms)
+✔ inmobiliaria: email OR phone is enough, both optional individually (21.841306ms)
+✔ inmobiliaria: no channel, malformed supplied contact and missing consent fail before transport (7.392969ms)
+✔ persona: all normalized data, type, origin and consent reach isolated HTTP receiver (5.84466ms)
+✔ persona: email OR phone is enough, both optional individually (9.026458ms)
+✔ persona: no channel, malformed supplied contact and missing consent fail before transport (2.413043ms)
+✔ same operation across instances/retries deduplicates; changed body conflicts (10.85834ms)
+✔ request shape, honeypot, timing, origin, size and methods are protected (6.560486ms)
+✔ preview and misconfigured channel fail closed without provider (1.429417ms)
+✔ timeout, rejection, malformed/missing provider acknowledgement never claim delivery (3.017909ms)
+✔ operation state stores no personal fields; uncertain retries preserve original request (13.287688ms)
+✔ real-name characters, diverse email providers and local/international phone formats (10.585938ms)
+✔ each missing or malformed field is rejected by both actual API handlers before transport (24.857803ms)
+✔ correction preserves all four normalized fields in existing destination without PII in acknowledgement (3.317278ms)
+✔ all advisory intents retain the four fields and no obsolete selector can bypass required data (2.59996ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 390.759277

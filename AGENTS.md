@@ -33,3 +33,6 @@ The catalogue eyebrow is ASSET PORTAFOLIO; H1 is Catálogo inmobiliario. Keep As
 
 # Catalogue map
 Keep Tarjetas/Listado/Mapa on the same catalogue filter/order model. Only `data/project-locations.json` entries with verified provenance and matching current address/commune may become markers. Never infer exact locations from a city/street center. Preserve pending projects in full catalogue views. Follow `docs/catalog-map-20261026/README.md`: lazy Leaflet/map resources, exact coordinates, colocated chooser, static controls, explicit viewport changes and bounded provider usage. No client geocoding or visitor location permission.
+
+# Collaboration contact-only exception (2026-10-26)
+The owner now requires only email OR phone, plus specific consent, in both Trabaja con nosotros paths. Do not collect name, RUT, company or optional profile data there. The four-field rule still applies to existing project/commercial forms. Keep the collaboration footer link inside the same container as the other footer links, including generated fiches.

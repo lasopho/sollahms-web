@@ -1,6 +1,5 @@
 import {validateCollaboration, normalizeCollaboration} from './collaboration-fields.mjs';
 import {createFormOperation} from './form-operation.mjs';
-import {bindRutField} from './rut-field.mjs?v=20261026-required-1';
 import {focusCommercialField} from './commercial-fields.mjs';
 const choices=[...document.querySelectorAll('[data-collaboration-choice]')];
 function select(kind){
@@ -14,7 +13,6 @@ for(const form of document.querySelectorAll('[data-collaboration-form]')) {
   const errorFor=name=>document.getElementById(kind+'-'+name+'-error');
   const error=(name,message)=>{const input=form.elements[name],node=errorFor(name);if(!input||!node)return;node.textContent=message;node.hidden=!message;input.setAttribute('aria-invalid',String(Boolean(message)));};
   const show=(text,state='error')=>{status.textContent=text;status.dataset.state=state;};
-  bindRutField(form.elements.rut,errorFor('rut'));
   for(const input of form.elements)if(input.name)input.addEventListener('input',()=>error(input.name,''));
   form.addEventListener('submit',async event=>{
     event.preventDefault();if(sending||completed)return;

@@ -2,7 +2,7 @@ import {validateCollaboration, normalizeCollaboration, collaborationLines, COLLA
 import { readOperationKey } from '../lib/form-operation-server.mjs';
 
 
-const allowed = new Set(['tipo','nombre','rut','correo','telefono','empresa','sitio','zona','mensaje','area','ciudad','enlace','consent','website','startedAt']);
+const allowed = new Set(['tipo','correo','telefono','consent','website','startedAt']);
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
 const escape = value => value.replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
 const uncertain = () => json({ ok: false, code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Tus datos siguen aquí. Reintenta sin cambiarlos o escribe a contacto@sollahms.cl para verificar la solicitud.' }, 502);
@@ -25,8 +25,6 @@ export function createCollaborationHandler({ fetchImpl = (...args) => fetch(...a
       body = JSON.parse(new TextDecoder('utf-8', {fatal:true}).decode(bytes));
     } catch { return json({ error: 'No pudimos leer la solicitud. Revisa el formulario.' }, 400); }
     if (!body || Array.isArray(body) || typeof body !== 'object' || Object.keys(body).some(k => !allowed.has(k)) || Object.entries(body).some(([k,v]) => !['consent','startedAt'].includes(k) && typeof v !== 'string')) return json({ error: 'Revisa los datos del formulario.' }, 400);
-    const inappropriate=body.tipo==='inmobiliaria'?['area','ciudad','enlace']:['empresa','sitio','zona'];
-    if(inappropriate.some(k=>body[k]!==undefined))return json({error:'Los campos no corresponden al tipo de solicitud.'},400);
     if (body.website?.trim()) return json({ error: 'No pudimos validar la solicitud.' }, 400);
     const errors=validateCollaboration(body);
     if (Object.keys(errors).length) return json({ error: 'Revisa los campos indicados.', fieldErrors: errors }, 400);
@@ -40,7 +38,7 @@ export function createCollaborationHandler({ fetchImpl = (...args) => fetch(...a
     if (getDeliveryMode() !== 'resend' || !getApiKey()?.trim()) return json({ code:'contact_configuration_unavailable', error:'El formulario no está disponible. Conserva tu mensaje o escribe a contacto@sollahms.cl.' }, 503);
     const data=normalizeCollaboration(body), lines=collaborationLines(data);
     const subject=COLLABORATION_TYPES[data.tipo];
-    const email={from:'Sollahms Web <formularios@forms.sollahms.cl>',to:['contacto@sollahms.cl'],reply_to:data.correo,subject,text:lines.join('\n'),html:'<!doctype html><html lang="es"><body><h1>'+subject+'</h1><p style="white-space:pre-wrap">'+escape(lines.join('\n'))+'</p></body></html>'};
+    const email={from:'Sollahms Web <formularios@forms.sollahms.cl>',to:['contacto@sollahms.cl'],...(data.correo?{reply_to:data.correo}:{}),subject,text:lines.join('\n'),html:'<!doctype html><html lang="es"><body><h1>'+subject+'</h1><p style="white-space:pre-wrap">'+escape(lines.join('\n'))+'</p></body></html>'};
     try {
       const response = await fetchImpl('https://api.resend.com/emails', {method:'POST',headers:{Authorization:'Bearer '+getApiKey().trim(),'Content-Type':'application/json','Idempotency-Key':'collaboration/'+operation.key},body:JSON.stringify(email),signal:AbortSignal.timeout(10_000)});
       if (response.status === 409) {
