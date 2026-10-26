@@ -13,3 +13,9 @@ Artifact packaging starts with all content-addressed live files. Existing pages 
 Validation command: `node --test tests/collaboration.test.mjs tests/required-commercial-fields.test.mjs tests/catalog-map.test.mjs tests/catalog-views.test.mjs`. 29 checks pass, including reception of both complete payloads, minimal forms, K/check-digit errors, all required fields, consent, malicious URLs, escaping, retry deduplication, changed-body conflicts, origin/size/type/timing guards, provider failures and preview safety. Controlled reception verifies application transport and payload; it does not claim mailbox delivery.
 
 Rollback: retain baseline above and use official Vercel request_rollback with project `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`, team `team_A9VNIW2f2K1IJpd2pGdvDmEN`. This release never merges to main or enables automatic deployment.
+
+## Publication verified
+
+Public URL: https://sollahms.cl/trabaja-con-nosotros.html. Deployment `dpl_C8mXXxqLqMg75K9XYvXLdhAwPotb`, code `895205da75b89908b8fc2c5033ff4852f6018ca6`, READY. Build verified all 1,157 files, aggregate `7772af8ccf7ec80b5573aa63038d63f08a4879e35eb9f1ff310c468459d05b6d`. 15 public HTTP checks passed; exact payload hashes match. Footer links on homepage and catalogue are standalone list entries under Secciones. Desktop/mobile public selection and layout verified; screenshots show the unchanged final collaboration page. Runtime error/fatal search reported none in the initial 10-minute window. Existing prebuilt CLI-version metadata warning retained; no build error.
+
+The pre-task map release remains READY for rollback; the immediate preceding collaboration release is also recorded in release.json. Main was unchanged; no auto-deployment or additional service was enabled. All actual submission tests were isolated and synthetic; mailbox delivery was deliberately not tested.
