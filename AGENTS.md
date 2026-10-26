@@ -9,6 +9,8 @@ The owner requires these exact homepage header menu labels, in this order, on de
 Preserve the literal spelling `Asset Portafolio` in future improvements; do not translate or rename these labels unless the owner explicitly requests it. Preserve the existing advisory button and destinations. This constraint concerns the homepage header navigation; it does not request renaming body or footer copy.
 
 # Shared visual system
+Use the official outlined logo from `assets/branding/sollahms-logo.svg` everywhere; only its exact light contrast adaptation is allowed on dark backgrounds. Preserve the gold period, proportions and accessible name. Follow `docs/brand-identity.md` and `scripts/brand_identity.py`; do not recreate wordmarks with page fonts or append a slogan.
+
 All public pages must load `/assets/css/sollahms-theme.css` after page-specific styles. Preserve the exact palette, roles, shapes and motion rules in `docs/visual-system.md`; use shared tokens instead of adding local color/radius variants. Keep third-party logos and media unchanged.
 
 Public pages also load the deferred `/assets/js/scroll-presence.js` through `scripts/scroll_presence.py`. It provides the approved shared scroll fade without changing layout. Keep forms, navigation, status messages and financial controls static; honor reduced motion, printing and keyboard focus. Include this helper when generating new pages.

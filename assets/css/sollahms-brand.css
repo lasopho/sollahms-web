@@ -1,0 +1,9 @@
+/* Approved identity: one outlined master and its exact contrast adaptation.
+   Explicit dimensions reserve space; the artwork never depends on webfonts. */
+.sollahms-brand{display:inline-flex;align-items:center;flex-shrink:0;max-width:100%;line-height:1;vertical-align:middle}
+.sollahms-brand .sollahms-brand__image,
+.catalog-cover-placeholder .sollahms-brand__image{display:block;width:114px;height:auto;aspect-ratio:860/162;max-width:100%;object-fit:contain;flex-shrink:0;border:0;border-radius:0;box-shadow:none;transform:none}
+a.sollahms-brand{min-height:32px;text-decoration:none}
+a.sollahms-brand:focus-visible{outline:3px solid var(--s-gold-ink,#806228);outline-offset:5px;border-radius:2px}
+.site-footer a.sollahms-brand:focus-visible{outline-color:var(--s-gold,#E9C176)}
+@media(max-width:767px){.sollahms-brand .sollahms-brand__image,.catalog-cover-placeholder .sollahms-brand__image{width:104px}}
