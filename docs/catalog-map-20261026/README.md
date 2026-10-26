@@ -35,3 +35,9 @@ Validation: `node --test tests/catalog-views.test.mjs tests/catalog-map.test.mjs
 ## Final location review
 
 132 catalogue records retained. 59 admitted project locations (21 developer-published coordinates and 38 unique address/number/commune matches); 73 pending, individually documented in `pending-locations.md`. Co-located projects remain individually selectable at their shared true point. The completed response cache and source audit are retained here for recovery and future review, outside the deployed artifact. No geocoding requests occur in the public application.
+
+## Published and verified
+
+Production `dpl_3oonHWwYJWRJgA3x7iFVnE9UKdkk`, runtime code `608f72c7523f95b5b721d56d42adf11a05ec3341`; exact candidate matched the final preview aggregate `92d4c795cf4818bf64ee2e571bf5eecd7e51610885b2e0940b70be9190e0671f`. Public catalogue and nine changed/shared text resources were compared exactly; nineteen official HTTP checks passed expected status/content. Public UF 26 October 2026: CLP 41,221.08. See release, browser QA, build events, HTTP checks and real desktop/mobile screenshots. No claims of measured conversion change.
+
+Recovery: request rollback to `dpl_6NyvfFF8TH3734zmPLLKbkpCoTP6` in project `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`, team `team_A9VNIW2f2K1IJpd2pGdvDmEN`, using the official Vercel tool. That deployment remained READY immediately before publication. `deployment-files.json` retains content-addressed release references. Snapshot review scripts retain their original workspace paths; adjust those paths in a recovered checkout before use. Reuse `geocoding-evidence.json` and `official-source-audit.json`; do not automatically repeat the geocoding batch.

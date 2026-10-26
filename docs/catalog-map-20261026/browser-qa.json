@@ -1,0 +1,42 @@
+{
+  "preview": "dpl_7nfYFgYztjJGsf6nKXu7YT3MR54t",
+  "production": "dpl_3oonHWwYJWRJgA3x7iFVnE9UKdkk",
+  "code": "608f72c7523f95b5b721d56d42adf11a05ec3341",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "checks": [
+    "Initial cards: 132 articles; no Leaflet script or tiles before map activation.",
+    "Final map: 59 of 132 locations; pending entries remain accessible in cards/list and pending chooser.",
+    "Single active catalogue representation: zero cards while map is active.",
+    "Costanera Coquimbo A/B: one exact coordinate; cluster chooser, separate correct links; Enter and mouse selection.",
+    "Arica cluster: Space opens 3-project chooser; explicit zoom reveals Núcleo Costanera, Wayra and Lamara individually.",
+    "Santiago + maximum UF 3000: 12 total results, 7 mapped; price-ascending list compared across cards/list/map with filters retained.",
+    "Empty results and one pending-only Campus Llacolén result show distinct useful states.",
+    "Desktop Vista Portugal fiche and back: selected project, filters and tile-coordinate viewport identical.",
+    "Mobile Patio Brasil fiche and back: filters and selected project retained.",
+    "Wheel over map scrolls page 285 to 575 with unchanged zoom 15.",
+    "Mobile dragging starts disabled; explicit activation/deactivation succeeds; 340px map and panel below.",
+    "No horizontal overflow at either tested viewport; map and panel opacity 1 and no nested shared fade targets.",
+    "Public mapped tiles/images loaded; public navigation and 59/132 count verified.",
+    "Public UF endpoint opened in browser: 2026-10-26, CLP 41221.08.",
+    "Current final-preview/public browser logs contain no new application errors; historical initialization error belongs to discarded diagnostic preview."
+  ],
+  "limitations": [
+    "No conversion lift is asserted or measured.",
+    "Base-tile failure message implemented; initialization failure and fallback to all 132 list records were observed during QA. No artificial public outage was induced.",
+    "Reduced-motion behavior is enforced by animation-disabled Leaflet options and scoped reduced-motion CSS; device OS preference was not changed."
+  ],
+  "screenshots": [
+    "map-desktop.jpg",
+    "map-mobile.jpg",
+    "map-mobile-detail.jpg"
+  ]
+}
