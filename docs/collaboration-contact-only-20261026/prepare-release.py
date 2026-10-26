@@ -39,8 +39,7 @@ def package(files,hashes):return list(files.values())+[{'file':'prepare-output.m
 (docs/'candidate-hashes.json').write_text(json.dumps(expected,indent=2)+'\n');(docs/'deployment-files.json').write_text(json.dumps(package(refs,expected)))
 qa=dict(runtime);qhash=dict(expected)
 # Recover the unchanged function config from the preceding collaboration deployment package.
-original=json.loads((root.parent/'prod-files.json').read_text())
-config=json.loads(next(f['data'] for f in original if f['file']=='release/'+func+'.vc-config.json'))
+config=json.loads((docs/'function-config.json').read_text())
 assert hashlib.sha256(json.dumps(config).encode()).hexdigest()==old[func+'.vc-config.json']
 config['handler']='api/collaboration-fixture.mjs'
 for key,content in [(func+'.vc-config.json',json.dumps(config)),(func+'api/collaboration-fixture.mjs',(root/'tests/collaboration-preview-fixture.mjs').read_text())]:
