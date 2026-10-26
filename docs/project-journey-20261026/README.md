@@ -19,3 +19,11 @@ La confirmación significa aceptación por el proveedor, no entrega al buzón, d
 `scripts/verify-project-journey.py` compara las 132 fichas con la base, incluidos metadatos, imágenes, planos, mapas, anclas, UF y superficies; verifica que las otras siete páginas y los componentes compartidos protegidos no cambien. `tests/project-request.test.mjs` comprueba todas las identidades y etapas, campos mínimos, validación, resultados inciertos e idempotencia con transporte inyectado sin red.
 
 El preview de QA usa exclusivamente un handler sintético sin acceso al proveedor. Ese handler no forma parte del artefacto de producción. La publicación conserva todos los 41 archivos de funciones/configuración/rutas anteriores y reutiliza los recursos no modificados por hash. La referencia de rollback es el deployment indicado arriba.
+
+## Resultado publicado
+
+Producción `dpl_HbPQb4nq6Riwpt2iK3WUJgLXGGbq`, código `1396c3694a3b906202c9baecee8475b9f1eb63b3`. Las 132 fichas se actualizaron; 161/161 comprobaciones HTTP públicas concuerdan con el artefacto validado. UF SII del 26/10/2026: CLP 41.221,08. Sin errores/fatal en la ventana de logs inspeccionada.
+
+Se revisaron nueve proyectos representativos en escritorio/móvil. Las pruebas de contacto utilizaron exclusivamente transporte simulado; no se enviaron comunicaciones reales. No se ha medido un cambio de conversión ni se comprobó entrega a un buzón real.
+
+Capturas reales de producción: [escritorio](desktop.jpg), [móvil](mobile.jpg), [solicitud de llamada](contact-mobile.jpg). Detalle en `browser-qa.json`, `public-checks.json`, `release.json` y `package-checks.json`. La portada y otras seis páginas públicas permanecen byte a byte iguales.
