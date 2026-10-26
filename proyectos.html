@@ -160,11 +160,12 @@
 </section>
 <div class="catalog-toolbar">
 <p id="project-count" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
-<div class="catalog-view" role="group" aria-label="Vista del catálogo"><button type="button" data-catalog-view="cards" aria-pressed="true" disabled>Tarjetas</button><button type="button" data-catalog-view="list" aria-pressed="false" disabled>Listado</button></div>
+<div class="catalog-view" role="group" aria-label="Vista del catálogo"><button type="button" data-catalog-view="cards" aria-pressed="true" disabled>Tarjetas</button><button type="button" data-catalog-view="list" aria-pressed="false" disabled>Listado</button><button type="button" data-catalog-view="map" aria-pressed="false" disabled>Mapa</button></div>
 <div class="catalog-sort"><label for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" form="catalog-filters" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option></select></div>
 </div>
 <div id="catalog-feedback" class="catalog-feedback" hidden><p id="catalog-message" role="status" aria-live="polite" aria-atomic="true"></p><button id="empty-reset" class="catalog-text-button" type="button" hidden>Limpiar filtros y ver todos</button></div>
 </div>
+<section id="catalog-map" class="catalog-map" data-scroll-static="" aria-label="Mapa del catálogo" hidden></section>
 <div id="project-grid" class="catalog-grid" data-view="cards" aria-busy="true"></div>
 <noscript><p>Puedes explorar las fichas desde el listado siguiente. Los filtros y la búsqueda financiera requieren JavaScript.</p></noscript>
 <!--CATALOG_DIRECTORY_START-->
@@ -337,6 +338,6 @@
 <p class="text-[10px] text-slate-400 font-mono tracking-widest text-center">PRECISION • TRANSPARENCY • STRATEGY</p>
 </div>
 </footer>
-<script type="module" src="/assets/js/catalog.mjs?v=20261026-1"></script>
+<script type="module" src="/assets/js/catalog.mjs?v=20261026-map1"></script>
 </body>
 </html>

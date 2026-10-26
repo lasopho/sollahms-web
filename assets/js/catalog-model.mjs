@@ -53,7 +53,7 @@ export function projectFacts(project, selectedType='') {
 export const VIEW_KEY='sollahmsCatalogViewV1';
 export const FILTER_KEY='sollahmsCatalogFiltersV1';
 export const SESSION_KEY='sollahmsCatalogReturnV1';
-export const validView=value=>['cards','list'].includes(value);
+export const validView=value=>['cards','list','map'].includes(value);
 export function validFilterState(value) {
   const keys=['search','assetType','region','commune','state','maxPriceInput','sortOrder'];
   return !!value&&typeof value==='object'&&!Array.isArray(value)&&value.version===1&&Object.keys(value).length===8

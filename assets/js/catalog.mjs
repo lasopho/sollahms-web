@@ -4,7 +4,8 @@ const $=id=>document.getElementById(id);
 const controls={search:$('search'),assetType:$('asset-type'),region:$('region'),commune:$('commune'),state:$('state'),maxPriceInput:$('max-price'),sortOrder:$('sort-order')};
 const grid=$('project-grid'),form=$('catalog-filters'),count=$('project-count'),message=$('catalog-message');
 const viewButtons=[...document.querySelectorAll('[data-catalog-view]')];
-let projects=[],capacitySearch=null,view='cards';
+let projects=[],capacitySearch=null,view='cards',mapInstance=null,mapPromise=null,mapResults=[];
+const mapHost=$('catalog-map');
 const element=(tag,text,classes)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(classes)e.className=classes;return e;};
 const formatPrice=value=>new Intl.NumberFormat('es-CL',{minimumFractionDigits:Number.isInteger(value)?0:2,maximumFractionDigits:2}).format(value);
 const values=()=>Object.fromEntries(Object.entries(controls).map(([key,control])=>[key,control.value]));
@@ -37,12 +38,25 @@ function remember(){
     if(validFilterState(state))next[FILTER_KEY]=state;else delete next[FILTER_KEY];next[VIEW_KEY]=view;history.replaceState(next,'');}catch{}
   try{const safe=safeReturnFilters(state,projects);if(safe)sessionStorage.setItem(SESSION_KEY,JSON.stringify(safe));else sessionStorage.removeItem(SESSION_KEY);}catch{}
 }
+function ensureMap(){
+  if(mapInstance){mapInstance.show();mapInstance.update(mapResults,{assetType:controls.assetType.value});return;}
+  if(mapPromise)return;
+  mapHost.setAttribute('aria-busy','true');mapHost.replaceChildren(element('p','Cargando mapa…','catalog-map-status'));
+  mapPromise=import('./catalog-map.mjs').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
+    mapInstance=instance;if(view==='map'){instance.show();instance.update(mapResults,{assetType:controls.assetType.value});}else instance.hide();
+  }).catch(()=>{
+    mapHost.setAttribute('aria-busy','false');const note=element('p','El mapa no pudo cargar. Puedes seguir explorando todos los resultados en Tarjetas o Listado.');note.setAttribute('role','status');
+    const fallback=element('button','Continuar en Listado','catalog-text-button');fallback.type='button';fallback.addEventListener('click',()=>viewButtons.find(b=>b.dataset.catalogView==='list').click());mapHost.replaceChildren(note,fallback);
+  });
+}
 function applyView(){
-  grid.dataset.view=view;viewButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.catalogView===view)));
+  grid.dataset.view=view;grid.hidden=view==='map';mapHost.hidden=view!=='map';
+  viewButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.catalogView===view)));
+  if(view==='map'){grid.replaceChildren();ensureMap();}else mapInstance?.hide();
 }
 viewButtons.forEach(button=>button.addEventListener('click',()=>{
   if(button.dataset.catalogView===view)return;
-  view=button.dataset.catalogView;applyView();remember();
+  view=button.dataset.catalogView;applyView();render();remember();
   try{localStorage.setItem(VIEW_KEY,view);}catch{}
   // The same DOM items changed geometry. Refresh the unchanged shared scroll helper.
   window.dispatchEvent(new Event('resize'));
@@ -98,7 +112,9 @@ function appliedFilters(){
 function render(){
   const sorted=filterAndSort(projects,values());
   if(controls.sortOrder.value==='original')capacitySearch?.sortProjects(sorted);
-  grid.replaceChildren(...sorted.map(card));
+  mapResults=sorted;
+  if(view==='map'){grid.replaceChildren();if(mapInstance)mapInstance.update(sorted,{assetType:controls.assetType.value});else ensureMap();}
+  else grid.replaceChildren(...sorted.map(card));
   count.textContent=sorted.length===projects.length?projects.length+' proyectos':sorted.length+' de '+projects.length+' proyectos';
   message.textContent=sorted.length?'':'No encontramos propiedades con esos filtros. Prueba otra ubicación o amplía el precio máximo.';
   $('catalog-feedback').hidden=!!sorted.length;$('empty-reset').hidden=!!sorted.length;
