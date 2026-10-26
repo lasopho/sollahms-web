@@ -6,6 +6,7 @@ and by the guarded release overlay, without rebuilding historical content.
 """
 import copy, html, re
 from bs4 import BeautifulSoup
+from scroll_presence import apply_scroll_presence
 
 CSS = '/assets/css/project-header-b.css?v=20261026-b-1'
 LABELS = {
@@ -32,6 +33,7 @@ def catalog_labels(page):
     return re.sub(r'<a\b[^>]*>.*?</a>',replace,page,flags=re.S)
 
 def apply_header(page, project):
+    page = apply_scroll_presence(page)
     if 'data-project-header="b"' in page:
         return catalog_labels(page)
     main=re.search(r'<main\b[^>]*>',page)

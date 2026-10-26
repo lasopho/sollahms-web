@@ -11,5 +11,7 @@ Preserve the literal spelling `Asset Portafolio` in future improvements; do not 
 # Shared visual system
 All public pages must load `/assets/css/sollahms-theme.css` after page-specific styles. Preserve the exact palette, roles, shapes and motion rules in `docs/visual-system.md`; use shared tokens instead of adding local color/radius variants. Keep third-party logos and media unchanged.
 
+Public pages also load the deferred `/assets/js/scroll-presence.js` through `scripts/scroll_presence.py`. It provides the approved shared scroll fade without changing layout. Keep forms, navigation, status messages and financial controls static; honor reduced motion, printing and keyboard focus. Include this helper when generating new pages.
+
 # Approved project header B
 All live project details use the exact approved Cicarelli B composition through `scripts/project_header_b.py` and `assets/css/project-header-b.css`. Preserve own project images and descriptive alt text; do not generate a visible generic render/brochure caption. Apply this final shared renderer when regenerating a detail page. Preserve the three featured page variants below the header. The owner now also requires `Asset Portafolio` for visible catalogue-section links, breadcrumbs and catalogue H1; do not change prose occurrences or URLs. See `docs/project-header-b-20261026/README.md` for guarded packaging and rollback.

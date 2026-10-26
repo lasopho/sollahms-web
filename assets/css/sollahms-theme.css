@@ -119,13 +119,21 @@ body.home-fluid-b2 #portfolio img { transition-duration:var(--s-duration) }
 body.home-fluid-b2 #portfolio .group:hover img { transform:none;filter:none }
 .result-panel { background:var(--s-hero) }
 .financing-bar span { transition:width var(--s-duration) var(--s-ease) }
+/* Scroll presence: no layout shifts, no hidden content and no entry delay. */
+.s-scroll-presence { opacity:var(--s-presence,1) }
+.s-scroll-presence:focus-within,.s-scroll-presence:hover { opacity:1!important }
+@media print {
+  .s-scroll-presence { opacity:1!important }
+}
 @media (prefers-reduced-motion:reduce) {
+  .s-scroll-presence { opacity:1!important }
   html,body { scroll-behavior:auto!important }
   *,*::before,*::after { animation:none!important;transition:none!important;scroll-behavior:auto!important }
   body.home-fluid-b2 #portfolio .grid>div:hover,body.home-fluid-b2 #expertise [class*="gap-y-16"]>div:hover { transform:none }
   /* Do not reset layout transforms used to center diagram labels. */
 }
 @media (forced-colors:active) {
+  .s-scroll-presence { opacity:1!important }
   body :is(a,button,input,select,textarea,summary):focus-visible:focus { outline:3px solid Highlight;box-shadow:none }
   body :is(button,input,select,textarea):disabled { color:GrayText;border-color:GrayText }
   body [aria-invalid=true] { border-color:CanvasText!important }
