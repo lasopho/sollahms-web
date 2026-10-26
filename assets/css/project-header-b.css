@@ -1,0 +1,77 @@
+/* Approved B: extracted verbatim from f438e511, without A/C or preview controls. */
+.ci-hero { color: var(--s-green); background: var(--s-white); }
+.ci-hero .ci-shell { max-width: 1240px; padding-top: 24px; padding-bottom: 36px; }
+.ci-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; font-size: .7rem; line-height: 1.5; color: var(--s-muted); margin-bottom: 24px; }
+.ci-breadcrumb a { text-decoration: none; }
+.ci-breadcrumb a:hover { text-decoration: underline; }
+.ci-composition { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: center; }
+.ci-copy { min-width: 0; }
+.ci-hero .ci-developer { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; line-height: 1.5; margin: 0 0 12px; }
+.ci-hero h1 { margin: 0 0 12px; font-size: clamp(1.9rem, 3vw, 2.5rem); font-weight: 400; line-height: 1.2; letter-spacing: -.035em; }
+.ci-hero .ci-location { margin: 0; color: var(--s-muted); font-size: .95rem; line-height: 1.55; }
+.ci-details { margin-top: 24px; font-size: .84rem; line-height: 1.6; }
+.ci-details p { margin: 0; }
+.ci-details p+p { margin-top: 4px; }
+.ci-details span { padding: 0 5px; }
+.ci-action { margin-top: 24px; }
+.ci-hero .ci-advisory { min-height: 48px; padding: 12px 20px; gap: 24px; background: var(--s-green); color: var(--s-white); font-size: .83rem; font-weight: 600; border-radius: var(--s-radius); }
+.ci-hero .ci-advisory:hover { background: var(--s-green-hover); }
+.ci-hero .ci-advisory span { font-size: 1.1rem; line-height: 1; }
+.ci-visual { margin: 0; min-width: 0; }
+.ci-image { width: 100%; height: auto; display: block; object-fit: contain; }
+
+
+html[data-project-header="b"] .ci-hero { background: var(--s-section); }
+html[data-project-header="b"] .ci-shell { padding-bottom: 28px; }
+html[data-project-header="b"] .ci-breadcrumb { margin-bottom: 16px; }
+html[data-project-header="b"] .ci-composition { grid-template-columns: 360px minmax(0, 1fr); gap: 0; max-width: 1060px; }
+html[data-project-header="b"] .ci-visual { grid-column: 1; grid-row: 1; padding-right: 0; }
+html[data-project-header="b"] .ci-copy { grid-column: 2; grid-row: 1; padding: 24px 36px; background: var(--s-green); color: var(--s-white); }
+html[data-project-header="b"] .ci-hero h1 { font-size: clamp(1.9rem, 2.6vw, 2.2rem); margin-bottom: 8px; }
+html[data-project-header="b"] .ci-developer { margin-bottom: 8px; color: var(--s-gold); }
+html[data-project-header="b"] .ci-location { color: var(--s-on-dark); font-size: .9rem; }
+html[data-project-header="b"] .ci-details { margin-top: 16px; color: var(--s-on-dark); display: flex; flex-wrap: wrap; gap: 4px 20px; }
+html[data-project-header="b"] .ci-details p+p { margin: 0; }
+html[data-project-header="b"] .ci-action { margin-top: 20px; }
+html[data-project-header="b"] .ci-advisory { background: var(--s-white); color: var(--s-green); }
+html[data-project-header="b"] .ci-advisory:hover { background: var(--s-soft); }
+
+
+@media (max-width: 1000px) and (min-width: 681px) {
+  .ci-composition { grid-template-columns: minmax(0, 1fr) 300px; gap: 32px; }
+  html[data-project-header="b"] .ci-composition { grid-template-columns: 300px minmax(0, 1fr); }
+  html[data-project-header="b"] .ci-copy { padding: 24px; }
+}
+@media (max-width: 680px) {
+  .ci-hero .ci-shell { padding-top: 20px; padding-bottom: 24px; }
+  .ci-breadcrumb { margin-bottom: 18px; font-size: .66rem; gap: 6px; }
+  .ci-composition { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .ci-copy { display: contents; }
+  .ci-identity { grid-row: 1; }
+  .ci-hero h1 { font-size: 1.9rem; font-weight: 400; }
+  .ci-hero .ci-location { font-size: .86rem; }
+  .ci-hero .ci-developer { margin-bottom: 8px; }
+  .ci-visual { grid-row: 2; max-width: 300px; }
+  .ci-details { grid-row: 3; margin: 0; font-size: .8rem; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .ci-details p+p { margin: 0; }
+  .ci-action { grid-row: 4; margin: 0; }
+  .ci-hero .ci-advisory { min-height: 48px; }
+  html[data-project-header="b"] .ci-composition { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  html[data-project-header="b"] .ci-visual { grid-row: 1; grid-column: 1; width: 100%; max-width: 280px; margin-bottom: 16px; }
+  html[data-project-header="b"] .ci-copy { display: block; grid-row: 2; grid-column: 1; padding: 24px; }
+  html[data-project-header="b"] .ci-hero h1 { font-size: 1.8rem; }
+  html[data-project-header="b"] .ci-details { display: block; }
+  html[data-project-header="b"] .ci-details p+p { margin-top: 4px; }
+}
+/* Supply the same base typography/container on the three legacy featured pages. */
+.ci-hero { font-family: Inter, Arial, sans-serif; line-height: 1.7; }
+.ci-hero .ci-shell { width: 100%; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+.ci-hero h1, .ci-hero .ci-advisory { font-family: Manrope, Arial, sans-serif; }
+.ci-hero .ci-advisory { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; text-align: center; line-height: 1.5; border: 0; }
+.ci-hero .ci-image { max-height: 300px; object-fit: contain; }
+.ci-hero .ci-no-image { display: flex; align-items: center; min-height: 140px; padding: 24px; color: var(--s-muted); }
+.ci-hero .ci-no-image p { margin: 0; font-size: .84rem; }
+@media (max-width: 680px) {
+ .ci-hero .ci-shell { padding-left: 24px; padding-right: 24px; }
+ .ci-hero .ci-image { max-height: 220px; }
+}

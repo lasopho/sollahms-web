@@ -259,6 +259,8 @@ def main():
             continue
         page, mapped, tours = render(project, research, template)
         if slug not in FEATURED and (selected is None or project['inmobiliaria'] in selected) and (selected_slugs is None or slug in selected_slugs):
+            from project_header_b import apply_header
+            page = apply_header(page, project)
             (ROOT / (slug + '.html')).write_text(page)
         project['detalleUrl'] = '/' + slug + '.html'
         actual = (ROOT / (slug + '.html')).read_text() if (ROOT / (slug + '.html')).exists() else ''
