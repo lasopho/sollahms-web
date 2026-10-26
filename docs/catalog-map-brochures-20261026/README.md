@@ -1,5 +1,7 @@
 # Direcciones documentadas y cobertura del mapa — 26/10/2026
 
+Publicado y verificado en https://sollahms.cl/proyectos.html. Código `c9fb22a4ac378a0149329b37e431b4ec5d80d66a`, deployment `dpl_28hHJhKMBo2x9WLsGULRxKpHaUf2`. 16 pruebas satisfactorias y 8 comprobaciones HTTP públicas; navegación y selección revisadas en escritorio y móvil. La UF pública respondió 41.221,08 CLP para 26/10/2026. Sin errores/fatales encontrados en la ventana de logs revisada. Ver `release.json`, `browser-qa.json` y las capturas reales del dominio público.
+
 La ausencia de un marcador no implica ausencia de dirección. Se revisaron 61 PDFs (57 contenidos distintos, 862 páginas disponibles), extrayendo texto y OCR en 81 páginas sin texto útil. La revisión visual se centró en las páginas de identidad y ubicación utilizadas; no se afirma haber inspeccionado visualmente cada página.
 
 - Vista Llacolén B: **Las Heras Poniente 77, Concepción**, PDF pp. 2 y 7. No dice 477. A y B comparten punto de conjunto, pero conservan fichas independientes. El PDF titulado A es copia de B y no acredita la identidad de A; ésta se confirma mediante la página oficial.
