@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""Verify the public release byte-for-byte; read-only, no real submissions."""
+from pathlib import Path
+import argparse,concurrent.futures,hashlib,json,urllib.request,urllib.error
+ROOT=Path(__file__).resolve().parents[1]
+ap=argparse.ArgumentParser();ap.add_argument('--output',required=True);ap.add_argument('--deployment',required=True);args=ap.parse_args();OUT=Path(args.output)
+m=json.loads((ROOT/'docs/maestra-brochures-20261025/manifest.json').read_text());paths={f'/{s}.html':200 for s in m['projects']}
+for a in m['assets']:
+ paths[a['path']]=200
+ if 'thumbnail' in a:paths[a['thumbnail']['path']]=200
+paths.update({p:200 for p in ['/','/proyectos.html','/data/proyectos.json','/assets/css/brochure-media.css','/assets/css/sollahms-theme.css','/assets/branding/og-sollahms-square-v2.jpg','/sitemap.xml','/robots.txt','/api/uf','/edificio-verne.html','/irarrazaval.html']})
+paths.update({p:404 for p in ['/data/fichas-proyectos.json','/docs/maestra-brochures-20261025/manifest.json','/atelier-prat-oficinas.html','/corrientes-oficinas.html']})
+def verify(pair):
+ path,expected=pair
+ try:
+  try:r=urllib.request.urlopen('https://sollahms.cl'+path,timeout=45)
+  except urllib.error.HTTPError as e:r=e
+  body=r.read();status=r.code;result={'path':path,'status':status,'expected':expected,'ok':status==expected}
+  if expected==200 and path!='/api/uf':
+   file=OUT/('index.html' if path=='/' else path[1:]);result['matchesCandidate']=body==file.read_bytes();result['sha256']=hashlib.sha256(body).hexdigest();result['ok'] &= result['matchesCandidate']
+  if path=='/api/uf':result['uf']=json.loads(body)
+  return result
+ except Exception as e:return {'path':path,'ok':False,'error':str(e)}
+with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:results=list(pool.map(verify,paths.items()))
+report={'domain':'https://sollahms.cl','deployment':args.deployment,'reviewedSource':'5e0528305adb328b3ed66520c700a2387a717146','checks':len(results),'passed':sum(x['ok'] for x in results),'results':results}
+(ROOT/'docs/maestra-brochures-20261025/public-http.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({k:v for k,v in report.items() if k!='results'}));print(json.dumps([x for x in results if not x['ok'] or x['path']=='/api/uf'],ensure_ascii=False))
+assert all(x['ok'] for x in results),'Release failed public validation; inspect before claiming success'

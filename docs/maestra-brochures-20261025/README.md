@@ -18,6 +18,8 @@ No se modifican precios, entregas, disponibilidad, condiciones, direcciones, tip
 
 Las páginas de resumen que repiten los planos individuales no se incorporan de nuevo. Las imágenes ya publicadas de Campus Llacolén, Distrito Centro, Vista Costanera y Vista Reloncaví se sustituyen en la galería por el original del brochure de mayor resolución cuando corresponde; no se añaden como vistas duplicadas. Los archivos anteriores permanecen recuperables.
 
+Dos pares de páginas de modelos son idénticos entre Cáceres y Mirador Mapocho. Se conservan ambas procedencias documentales y se reutiliza un solo archivo público por par. El resultado son 85 referencias de planos/esquemas y 83 archivos únicos, sin repetir un modelo dentro de una ficha. Hay 21 imágenes únicas (16 nuevas y 5 de mayor resolución), más la referencia compartida de Llacolén A. Cada recurso tiene una vista liviana; las vistas de fotografías no superan 176 kB y el original optimizado se abre al ampliar.
+
 ## Discrepancias y decisiones
 
 - **Cáceres:** p.2 indica Almarza 126 y contiene una marca «Corregir». La ficha oficial actual identifica Almarza 124; se conserva 124. Un artículo oficial de 2022 también usó 126, por lo que la identidad del proyecto está conciliada y no se modifica la dirección vigente. Se extrae únicamente la imagen original del edificio. P.5 contiene la referencia «Aldunate»; ese plano 3D/1B queda excluido hasta contar con una versión corregida identificada. P.6 tampoco se usa para sustituir el mapa.
@@ -52,4 +54,14 @@ Consulta 25-10-2026. Algunas aperturas directas de Maestra devolvieron 502; se c
 
 No se retira ningún proyecto: siguen 132 registros, 19 de Maestra y los 18 autorizados de Norte Verde. Se preservan íntegros los proyectos sin brochure salvo la vista general autorizada de Llacolén A. Las fotos y recursos anteriores siguen disponibles en Git y en el despliegue previo.
 
-El paquete se deriva del output exacto desplegado de Norte Verde. Solo se superponen las fichas revisadas, el catálogo de datos (cambios de portada/alt), el CSS de planos y los recursos nuevos. Las funciones, configuraciones de protección, calculadora y UF se conservan byte por byte. `tests/maestra-brochures.py` registra identidad, metadatos, mapas, alcance, planos y recursos. La revisión de navegador y la verificación pública se registrarán junto con esta guía.
+El paquete se deriva del output exacto desplegado de Norte Verde. Solo se superponen las fichas revisadas, el catálogo de datos (cambios de portada/alt), el CSS de planos y los recursos nuevos. Las funciones, configuraciones de protección, calculadora y UF se conservan byte por byte. `tests/maestra-brochures.py` registra identidad, metadatos, mapas, alcance, planos y recursos. La revisión de navegador y la verificación pública se registran junto con esta guía.
+
+## Publicación
+
+Publicado mediante promoción del candidato protegido `dpl_DAo4ZEDA17geE8cFUn3cbkKCvXF7`. El alias público se verificó después de la promoción. `release.json` identifica las fuentes completas y el commit registrado en Vercel; una corrección del registro privado no alteró el artefacto público. `candidate-checks.json` conserva la revisión de navegador y la coincidencia HTTP de las 15 fichas protegidas; `public-http.json` registra todos los recursos nuevos y las rutas públicas comprobadas.
+
+Para recuperar la versión anterior, promover o ejecutar rollback hacia `dpl_CrKWwLe6pvGgR1VwYt9LQA9Usfjw` dentro del mismo proyecto/equipo. El despliegue anterior sigue READY. No se cambió main, no se habilitó CI, no se enviaron formularios y no se contrataron servicios.
+
+Capturas: `screenshots/public-desktop.jpg`, `screenshots/public-mobile.jpg`, `screenshots/candidate-mobile.jpg`, `screenshots/plan-zoom.jpg`.
+
+Resultado: 1.098 comprobaciones locales y 238 comprobaciones públicas satisfactorias. UF pública: $41.215,77 al 25/10/2026, fuente SII. No se encontraron errores/fatales en la consulta de logs del despliegue.
