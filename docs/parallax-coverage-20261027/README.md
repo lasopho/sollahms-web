@@ -3,7 +3,7 @@
 Baseline: production 86ee62407d3b6de77a95f3c86b992a9000332c04, READY deployment dpl_8iNWfR2uLFXvpxTLmc8EMBCrapsF. Source/evidence dd44a38303bcaa559fc4add937fb5d3a13845577. Independent branch codex/parallax-coverage-20261027; main and Git deployments remain disabled.
 
 ## Causes and changes
-Actual painted width of an object-fit:contain image can be smaller than its CSS box. The former pixel-budget calculation incorrectly counted empty side margins as image pixels, suppressing motion in otherwise sufficient portrait/square images. Budget now uses painted width. Small list photos are admitted from 40px; nested branding placeholders remain excluded. Genuine low-resolution photos still keep the static safeguard. No changes to fade, gradients, hover zoom, layout sizes, commercial data, forms, maps, UF or functions.
+Actual painted width of an object-fit:contain image can be smaller than its CSS box. The former pixel-budget calculation incorrectly counted empty side margins as image pixels, suppressing motion in otherwise sufficient portrait/square images. Budget now uses painted width. Small list photos are admitted from 40px; nested branding placeholders remain excluded. Genuine low-resolution photos still keep the static safeguard. Near-fitting landscape photos use the larger safe travel of existing letterbox or approved fixed overscan, avoiding an unnecessary near-static result with sufficient source pixels. No changes to fade, gradients, hover zoom, layout sizes, commercial data, forms, maps, UF or functions.
 
 Four small covers replaced in catalogue and fiche header using existing verified media, with descriptive alt text and generator preservation in project_cover.py and data/project-cover-overrides.json:
 - Reserva Mayor 2: 400×300 → 900×600, existing official parcel landscape in its gallery.
@@ -17,4 +17,4 @@ Plaza Cervantes A: 532×399 cover. B: 636×463, all saved gallery alternatives s
 
 ## Validation
 Read all 132 catalogue cover dimensions in Chrome. At the measured 387×230 cover box and DPR2, original geometry admitted 123; corrected geometry alone admits 127; verified cover replacements admit 130. The two remaining source limitations are the Cervantes stages. This is geometry coverage, not a claim every offscreen lazy image is always animated. Source-resolution safety still applies at other viewport sizes.
-39 image-motion checks, 31 unchanged fade checks, 13 catalogue/map checks. Cover tests verify source membership, alt/dimensions, untouched gallery content and generator idempotence. Browser candidate/public results and rollback receipt follow release.
+40 image-motion checks, 31 unchanged fade checks, 13 catalogue/map checks. Cover tests verify source membership, alt/dimensions, untouched gallery content and generator idempotence. Browser candidate/public results and rollback receipt follow release.

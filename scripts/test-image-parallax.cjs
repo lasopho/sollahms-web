@@ -40,4 +40,5 @@ const regular=environment({width:387,height:230,naturalWidth:822,naturalHeight:5
 check(regular.styles.get('--s-image-scale'),'1.16000');
 check(environment({width:387,height:230,naturalWidth:400,naturalHeight:300,dpr:2}).attrs.size,0);
 const list=environment({width:84,height:64,naturalWidth:960,naturalHeight:720,dpr:2});check(list.attrs.size,1);
+const narrowMargin=environment({width:387,height:230,naturalWidth:960,naturalHeight:540,dpr:2});narrowMargin.move(-1000);assert.ok(narrowMargin.y()>10);passed++;
 console.log(JSON.stringify({passed,checks:'reversibility, bounds/overscan, idle, offscreen work, mobile limit, reduced-motion change, fail-open, low resolution, letterbox, transform isolation, srcset density'}));

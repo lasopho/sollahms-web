@@ -43,9 +43,14 @@
     const resolution = sourceWidth / paintedWidth / pixelRatio;
     // Reuse an existing contain margin first: the whole photograph remains visible.
     // Otherwise reserve a fixed, modest crop; never animate zoom during scrolling.
-    const letterbox = fit === 'contain' && h - inkH >= 8;
-    const scale = letterbox ? 1 : Math.max(1, Math.min(mobile ? 1.12 : 1.16, resolution));
-    const safeMargin = letterbox ? (h - inkH) / 2 : (Math.min(inkH, h) * scale - h) / 2;
+    const overscan = Math.max(1, Math.min(mobile ? 1.12 : 1.16, resolution));
+    const containMargin = fit === 'contain' ? (h - inkH) / 2 : 0;
+    const overscanMargin = (Math.min(inkH, h) * overscan - h) / 2;
+    // A tiny letterbox must not suppress the larger, resolution-safe approved
+    // overscan. Choose whichever existing strategy provides the safer travel.
+    const letterbox = containMargin >= 4 && containMargin >= overscanMargin;
+    const scale = letterbox ? 1 : overscan;
+    const safeMargin = letterbox ? containMargin : overscanMargin;
     const amplitude = Math.min(requested, safeMargin - .5);
     if (amplitude < 2) return null;
     return { image, amplitude, scale };
