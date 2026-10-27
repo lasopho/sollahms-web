@@ -3,7 +3,7 @@ import re
 from bs4 import BeautifulSoup
 
 CSS = '<link rel="stylesheet" href="/assets/css/image-parallax.css?v=20261026-2">'
-SCRIPT = '<script src="/assets/js/image-parallax.js?v=20261026-2" defer></script>'
+SCRIPT = '<script src="/assets/js/image-parallax.js?v=20261027-1" defer></script>'
 
 def apply_image_parallax(page):
     # Regeneration can replace a gallery while retaining its head resources.

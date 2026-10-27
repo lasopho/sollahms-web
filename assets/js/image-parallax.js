@@ -21,7 +21,9 @@
     const image = frame.querySelector('img');
     if (!image?.complete || !image.naturalWidth) return null;
     const w = image.clientWidth, h = image.clientHeight;
-    if (w < 80 || h < 80) return null;
+    // Small list thumbnails are still project media; branding placeholders are not.
+    if (image.parentElement && image.parentElement !== frame) return null;
+    if (w < 40 || h < 40) return null;
     const style = getComputedStyle(image);
     const ratio = image.naturalWidth / image.naturalHeight;
     const fit = style.objectFit;
@@ -35,7 +37,10 @@
     const selected = (image.getAttribute('srcset') || '').split(',').map(s => s.trim().split(/\s+/))
       .find(([url, size]) => /\d+w$/.test(size || '') && new URL(url, document.baseURI).href === image.currentSrc);
     const sourceWidth = selected ? parseInt(selected[1], 10) : image.naturalWidth;
-    const resolution = Math.min(sourceWidth / w, sourceWidth / ratio / inkH) / pixelRatio;
+    // A contained portrait occupies less width than its CSS box. Budget against
+    // the actual painted image, not the empty side margins of that box.
+    const paintedWidth = inkH * ratio;
+    const resolution = sourceWidth / paintedWidth / pixelRatio;
     // Reuse an existing contain margin first: the whole photograph remains visible.
     // Otherwise reserve a fixed, modest crop; never animate zoom during scrolling.
     const letterbox = fit === 'contain' && h - inkH >= 8;

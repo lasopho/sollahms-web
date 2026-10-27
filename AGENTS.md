@@ -39,3 +39,6 @@ The owner now requires only email OR phone, plus specific consent, in both Traba
 
 # Stronger image motion and card hover
 Preserve approved gradients and the existing scroll fade byte-for-byte when adjusting image motion. `image-parallax.js/css` owns image translation and card-only hover scale; other image transforms must stay isolated. Home/project photos and catalogue cards/list rows may move within safe geometry; maps, plans, logos and forms stay static. Keep the current catalogue representation registered after filtering and release removed frames. Honor reduced motion, touch pointers and source resolution. See docs/strong-parallax-hover-20261026.
+
+# Verified cover quality
+Preserve data/project-cover-overrides.json through project_cover.py and the catalogue cover builder. These owner-authorized choices reuse higher-quality media already verified for each project. Do not replace them with historical thumbnails. Parallax pixel budgets use the painted image width, excluding contain side margins; never upscale a low-resolution source to force motion.
