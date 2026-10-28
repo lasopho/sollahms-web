@@ -32,3 +32,12 @@ Frozen Build Output preserves every untouched artifact by SHA256/CAS SHA1. `cand
 Restore the previous READY production deployment using Vercel's authorized rollback mechanism; do not rebuild historical sources or merge main. Recheck the current alias immediately before promotion. Keep authentication and environment protections unchanged.
 
 Browser correction: Google’s query-by-place-ID failed in the legacy embedded viewer (world map). Replaced with the exact verified coordinates; no approximate address geocoding is used.
+
+## Published and publicly verified
+Production code **6789a846bd8f94ffc9ec2f5e21b24914a0b233c2**, deployment **dpl_5ef6vUjv93NPNQs9FLYfHzx552jv** (READY), immutable URL https://project-wrapp-5ypi2k0uu-lsandoval2-8260s-projects.vercel.app. The sollahms.cl alias was verified against this deployment.
+
+All **38 public HTTP checks passed**, including byte hashes of every changed runtime file, all 21 distinct gallery/plan assets, unchanged shared motion/contact code, catalogue and representative preserved pages. Images were fully decoded. Internal provenance is not published (404). UF responds for 2026-10-28 with CLP 41,231.70 from the existing SII-backed endpoint. No error/fatal runtime logs were found for this deployment in the observed window.
+
+Real Chrome review covered desktop, 390 px and 320 px widths, existing mobile menu, anchor navigation, plan filters (1/4/4), both unit requests, 12 loaded gallery renders, the active 360° and the corrected Google marker. Public screenshots: `public-desktop.jpg`, `public-units.jpg`, `public-mobile.jpg`. Preview evidence: `preview-tour-identity.jpg`, `preview-map.jpg`. No live forms were submitted. The temporary viewport override was reset.
+
+Build verification: 1,175 runtime files, aggregate f3822799d99afc9c8f439f3593832eb9e0c9d19825cb8b12bfa2bb76cd5b89b8. All 1,155 unchanged production artifacts and existing functions were reused exactly. Main remains 86e200ec191b38af355061e21bc0fc1e549cce3b; project live=false and SSO protections remain enabled. Previous production deployment remains READY and available to the official Vercel rollback operation. See `release.json`, `public-verification.json`, and `browser-validation.json`.
