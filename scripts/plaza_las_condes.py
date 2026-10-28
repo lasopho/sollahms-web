@@ -85,11 +85,11 @@ def render_content(record, original_gallery):
         node.decompose()
     gallery.append(BeautifulSoup('<div class="gallery-grid brochure-gallery">'+''.join(str(f) for f in figures[:3])+'</div><details class="pj-disclosure"><summary data-scroll-static>Ver 9 imágenes más</summary><div class="gallery-grid brochure-gallery">'+''.join(str(f) for f in figures[3:])+'</div></details>','html.parser'))
     tour = section('recorrido', 'Visita virtual', 'Recorre el interior', '''
-      <p>Explora el recorrido 360° oficial de Sento como referencia del proyecto. Su distribución no acredita la correspondencia con una unidad disponible.</p>
+      <p>El recorrido oficial de Sento identifica el departamento 213 como modelo C7, de 2 dormitorios y 2 baños. Explora su distribución como referencia; el recorrido no confirma disponibilidad ni condiciones de venta.</p>
       <details class="pj-disclosure" data-scroll-static><summary>Cargar recorrido virtual 360°</summary><div class="project-embed plc-tour"><iframe src="https://sento.cl/360-plc/213/" title="Recorrido virtual referencial de Plaza Las Condes, publicado por Sento" loading="lazy" allow="fullscreen" allowfullscreen sandbox="allow-scripts allow-same-origin allow-pointer-lock" referrerpolicy="strict-origin-when-cross-origin" data-project-embed="tour" data-embed-fallback="https://sento.cl/360-plc/213/"></iframe></div><p data-project-embed-alternative><a href="https://sento.cl/360-plc/213/" target="_blank" rel="noopener noreferrer">Abrir el recorrido oficial en otra pestaña ↗</a></p><p class="plc-note">La experiencia pertenece a Sento. Para consultar precio o cotizar, utiliza el formulario de Sollahms en esta ficha.</p></details>''')
     location = section('ubicacion', 'Ubicación y entorno', 'Avenida Las Condes 7083', '''
       <p><strong>Dirección del edificio:</strong> Avenida Las Condes 7083, Las Condes, Región Metropolitana.</p><p>El entorno conecta con Alto Las Condes, Apumanque y Parque Arauco, además de restaurantes, parques, Estadio Italiano y Estadio Israelita. El tiempo a pie al metro es aproximado y depende de la ruta.</p>
-      <div class="project-embed project-embed-map" data-scroll-static><iframe src="https://www.google.com/maps?q=place_id%3AChIJHRm08KfPYpYRwYSH6WoXovA&amp;z=17&amp;output=embed" title="Ubicación del edificio Plaza Las Condes en Avenida Las Condes 7083" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" data-project-embed="map" data-embed-fallback="https://www.google.com/maps?q=place_id%3AChIJHRm08KfPYpYRwYSH6WoXovA"></iframe></div>
+      <div class="project-embed project-embed-map" data-scroll-static><iframe src="https://www.google.com/maps?q=-33.4052083%2C-70.5576861&amp;z=17&amp;output=embed" title="Ubicación del edificio Plaza Las Condes en Avenida Las Condes 7083" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" data-project-embed="map" data-embed-fallback="https://www.google.com/maps?q=-33.4052083%2C-70.5576861"></iframe></div>
       <p class="plc-note"><strong>Sala de ventas informada por Sento:</strong> General Carol Urzúa 7060. Es una referencia distinta de la dirección del edificio; confirma el acceso y la atención antes de visitar.</p>''')
     return overview+facts+finishes+units+plans+str(gallery)+tour+location
 
@@ -102,6 +102,7 @@ def apply_plaza_las_condes(page, project):
     main['class'] = list(dict.fromkeys([*main.get('class',[]),'plaza-detail']))
     main['data-plaza-version'] = '20261028-1'
     main.select_one('.ci-location').string = 'Avenida Las Condes 7083 · Las Condes'
+    main.select_one('.ci-market .price-label').string = 'Precio'
     main.select_one('.ci-market strong').string = 'Desde UF 8.858'
     main.select_one('.ci-market .price-note').string = 'Unidad 313 · 2D / 2B. 20 % aplicado; sin estacionamiento ni bodega. Sujeto a disponibilidad.'
     nav = main.select_one('.pj-nav .container'); nav.clear()

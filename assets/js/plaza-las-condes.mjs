@@ -14,7 +14,7 @@ export function initializePlaza(root) {
   const select=unit=>{
     selected=['213','313'].includes(unit)?unit:'';
     panel.hidden=!selected;
-    label.textContent=selected?`Tu solicitud incluirá Plaza Las Condes · Unidad ${selected}`:'';
+    label.textContent=selected?`Unidad ${selected} seleccionada para tu solicitud.`:'';
     message.maxLength=1600-withSelectedUnit('',selected).length;
   };
   root.addEventListener('click',event=>{
