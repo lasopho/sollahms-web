@@ -1,0 +1,28 @@
+/* Only Plaza Las Condes. Shared B geometry, palette and motion remain authoritative. */
+.plaza-detail .plc-note{color:var(--s-muted);font-size:.875rem;line-height:1.65;max-width:85ch}
+.plaza-detail .plc-amenities{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem 2rem;margin:1.75rem 0;padding:0}
+.plaza-detail .plc-amenities li{display:flex;gap:.85rem;align-items:center;line-height:1.5;min-width:0}
+.plaza-detail .plc-amenities svg{width:26px;height:26px;flex:none;color:var(--s-green)}
+.plaza-detail .plc-finishes{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 2.5rem;margin:1.5rem 0}
+.plaza-detail .plc-finishes li{display:grid;gap:.3rem;line-height:1.6}
+.plaza-detail .plc-finishes span{color:var(--s-muted)}
+.plaza-detail .plc-unit{display:grid;grid-template-columns:1fr 1fr 1.25fr auto;gap:1.25rem;align-items:center;border-top:1px solid var(--s-line);padding:1.5rem 0}
+.plaza-detail .plc-unit:last-child{border-bottom:1px solid var(--s-line)}
+.plaza-detail .plc-unit h3{font-size:1.15rem;margin:0 0 .4rem;font-weight:600}
+.plaza-detail .plc-unit p{font-size:.85rem;margin:.35rem 0 0;line-height:1.55;color:var(--s-muted)}
+.plaza-detail .plc-unit dl{margin:0}.plaza-detail .plc-unit dt{font-size:.78rem;color:var(--s-muted);line-height:1.5}.plaza-detail .plc-unit dd{margin:.35rem 0 0;font-weight:600}
+.plaza-detail .plc-unit-price strong{font-size:1.1rem;font-weight:600}
+.plaza-detail .plc-quote{background:var(--s-green);color:var(--s-white);font-size:.85rem;padding:.8rem 1rem;text-align:center;min-height:44px;white-space:normal}
+.plaza-detail .plc-plan-controls{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:1.25rem 0}.plaza-detail .plc-plan-controls[hidden]{display:none}
+.plaza-detail .plc-plan-controls select{min-height:44px;max-width:100%;padding:.65rem 2rem .65rem .8rem;border:1px solid var(--s-field-line);border-radius:var(--s-radius-small);color:var(--s-green);background:var(--s-white);font:inherit}
+.plaza-detail .plc-plan-controls span{font-size:.85rem;color:var(--s-muted)}
+.plaza-detail .plc-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin:1.5rem 0}
+.plaza-detail .plc-plan{min-width:0;border-bottom:1px solid var(--s-line);padding-bottom:1.25rem}.plaza-detail .plc-plan[hidden]{display:none}
+.plaza-detail .plc-plan h3{font-size:1.1rem;font-weight:600;margin:0 0 .4rem}.plaza-detail .plc-plan p{font-size:.875rem;margin:.5rem 0}
+.plaza-detail .plc-plan-image{display:block;background:var(--s-white);margin:1rem 0}.plaza-detail .plc-plan-image img{display:block;width:100%;height:250px;object-fit:contain;transform:none}
+.plaza-detail .plc-plan-total{font-weight:600}.plaza-detail .plc-plan .pj-text-link{font-size:.875rem}
+.plaza-detail .plc-tour{max-height:600px;min-height:300px}
+.plaza-detail .plc-unit-context{border-left:2px solid var(--s-gold);padding:.7rem 1rem;margin:1rem 0}.plaza-detail .plc-unit-context p{margin:0 0 .3rem;font-weight:600}.plaza-detail .plc-unit-context button{border:0;padding:.4rem 0;background:transparent;color:var(--s-green);font:inherit;font-size:.85rem;text-decoration:underline;cursor:pointer;min-height:44px}
+.plaza-detail :is(.plc-quote,.plc-plan-image,.plc-plan-controls select,.plc-unit-context button):focus-visible{outline:3px solid var(--s-gold-ink);outline-offset:4px}
+@media(max-width:1000px){.plaza-detail .plc-unit{grid-template-columns:1fr 1fr}.plaza-detail .plc-unit .plc-quote{justify-self:start}.plaza-detail .plc-amenities{gap:1.2rem}}
+@media(max-width:680px){.plaza-detail .plc-amenities{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem .9rem;font-size:.875rem}.plaza-detail .plc-amenities li{align-items:flex-start;gap:.6rem}.plaza-detail .plc-amenities svg{width:22px;height:22px}.plaza-detail .plc-finishes{grid-template-columns:1fr;gap:1.2rem}.plaza-detail .plc-unit{gap:1rem}.plaza-detail .plc-unit .plc-quote{width:100%;box-sizing:border-box;align-self:end}.plaza-detail .plc-plans{grid-template-columns:1fr;gap:1.5rem}.plaza-detail .plc-plan-image img{height:300px}.plaza-detail .plc-tour{min-height:360px}.plaza-detail .plc-plan-controls{gap:.65rem}.plaza-detail .plc-plan-controls label{width:100%}}

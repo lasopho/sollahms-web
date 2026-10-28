@@ -1,0 +1,34 @@
+✔ mapping never drops or duplicates a catalogue record; every admitted point matches its source identity (1.603249ms)
+✔ same-coordinate towers stay at one true point and remain individually selectable (0.826091ms)
+✔ screen clustering combines near points at a wide view, separates on zoom and never mutates their coordinates (0.284908ms)
+✔ map filters and ordering are the same exact catalogue result set (4.697344ms)
+✔ return map state accepts only finite coordinates, zoom and a public project slug (0.596411ms)
+✔ map code keeps provider access lazy and separate from forms, scrolling and static fallbacks (0.747443ms)
+✔ all 132 source records and original ordering survive without mutation or duplicates (3.489383ms)
+✔ both numeric directions preserve stable ties, decimals and unknown prices last (2.877754ms)
+✔ search covers names, communes and developers with accent-insensitive matching (8.601756ms)
+✔ combined filters and maximum price exclude unavailable amounts, never use zero (0.389716ms)
+✔ mixed and commercial offers keep the exact selected typology and decimal amount (1.200629ms)
+✔ facts distinguish reception state from delivery and do not fill absent data (0.776446ms)
+✔ return state is bounded to catalogue values; view persists only as an enum (2.276701ms)
+✔ selected unit and all contact fields reach the existing destination in isolation (13.646135ms)
+✔ missing identity, invalid RUT and message overflow still fail before transport (0.322514ms)
+✔ switching, clearing and resetting unit context preserves the typed message (0.952311ms)
+✔ all live projects retain a server-recognized identity and canonical origin (65.224297ms)
+✔ explicit commercial stages stay associated with their own published context (4.872902ms)
+✔ call retains all four fields; time is explicitly a preference (0.510737ms)
+✔ obsolete channel preference cannot exclude either contact field (0.195854ms)
+✔ optional goal/message/time may be omitted (0.242334ms)
+✔ all four contact fields and consent are required (0.316776ms)
+✔ server validation and preview protections still reject without sending (2.066015ms)
+✔ an uncertain result cannot be presented as successful delivery (0.534172ms)
+✔ retry keeps identity and payload; changing intent after uncertainty is blocked (6.390692ms)
+✔ bounded message cannot overflow the existing contract (0.476697ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 196.933574

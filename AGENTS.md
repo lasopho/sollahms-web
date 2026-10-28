@@ -42,3 +42,6 @@ Preserve approved gradients and the existing scroll fade byte-for-byte when adju
 
 # Verified cover quality
 Preserve data/project-cover-overrides.json through project_cover.py and the catalogue cover builder. These owner-authorized choices reuse higher-quality media already verified for each project. Do not replace them with historical thumbnails. Parallax pixel budgets use the painted image width, excluding contain side margins; never upscale a low-resolution source to force motion.
+
+# Plaza Las Condes verified fiche (2026-10-28)
+Apply `scripts/plaza_las_condes.py` after shared generators for this slug only. Preserve the verified project address at Avenida Las Condes 7083, separate sales office, nine plans, unit-specific quote context, and `data/plaza-las-condes-verified.json` provenance. Never infer stock, extend unit 313 discounts to 213, or restore conflicting model surfaces without current evidence.

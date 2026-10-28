@@ -11,6 +11,7 @@ from project_journey import apply_project_journey
 from project_location import apply_project_location
 from image_parallax import apply_image_parallax
 from project_cover import apply_project_cover
+from plaza_las_condes import apply_plaza_las_condes
 
 CSS = '/assets/css/project-header-b.css?v=20261026-b-1'
 LABELS = {
@@ -39,7 +40,7 @@ def catalog_labels(page):
 def apply_header(page, project):
     page = apply_scroll_presence(page)
     if 'data-project-header="b"' in page:
-        return apply_project_cover(apply_image_parallax(apply_project_location(apply_project_journey(catalog_labels(page), project), project)), project)
+        return apply_plaza_las_condes(apply_project_cover(apply_image_parallax(apply_project_location(apply_project_journey(catalog_labels(page), project), project)), project), project)
     main=re.search(r'<main\b[^>]*>',page)
     assert main, project['slug']
     match=re.search(r'<section\b[^>]*>.*?</section>',page[main.end():],re.S)
@@ -90,4 +91,4 @@ def apply_header(page, project):
     theme='<link rel="stylesheet" href="/assets/css/sollahms-theme.css'
     assert theme in page
     page=page.replace(theme,f'<link rel="stylesheet" href="{CSS}">\n'+theme,1)
-    return apply_project_cover(apply_image_parallax(apply_project_location(apply_project_journey(catalog_labels(page), project), project)), project)
+    return apply_plaza_las_condes(apply_project_cover(apply_image_parallax(apply_project_location(apply_project_journey(catalog_labels(page), project), project)), project), project)
