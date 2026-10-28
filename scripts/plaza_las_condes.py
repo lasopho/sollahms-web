@@ -47,20 +47,20 @@ def render_content(record, original_gallery):
       <a class="pj-text-link" href="#unidades">Ver unidades y condiciones <span aria-hidden="true">↓</span></a>''')
     amenities = [('social','Family & Social Club y Salón Lounge'),('roof','Quinchos, terrazas y Sky Bar'),('pool','Piscina en azotea'),('coffee','Cafetería'),('lobby','Hall de acceso y lobby'),('mail','E-commerce / Mail Room'),('bike','Bicicleteros'),('wash','Lavandería'),('parking','Estacionamientos')]
     facts = section('caracteristicas', 'Características', 'Espacios para compartir y disfrutar',
-        '<p>Áreas comunes y equipamiento descritos por Sento. Los estacionamientos se cotizan por separado y no están incluidos en el precio del departamento publicado.</p><ul class="plc-amenities">'+''.join(f'<li>{icon(kind)}<span>{label}</span></li>' for kind,label in amenities)+'</ul>')
+        '<p>Áreas comunes y equipamiento descritos por Sento. Confirma las condiciones y el valor de los estacionamientos al cotizar.</p><ul class="plc-amenities">'+''.join(f'<li>{icon(kind)}<span>{label}</span></li>' for kind,label in amenities)+'</ul>')
     finishes = section('terminaciones', 'Dentro de tu departamento', 'Terminaciones y equipamiento interior', '''
       <ul class="plc-finishes"><li><strong>Acceso digital</strong><span>Cerradura digital en la puerta de acceso del departamento.</span></li><li><strong>Ventanas termopanel</strong><span>Marcos de PVC y doble vidrio.</span></li><li><strong>Pisos por recinto</strong><span>SPC y porcelanato, según especificación.</span></li><li><strong>Cocina equipada</strong><span>Horno, campana, encimera de dos o tres platos y microondas, según tipología.</span></li><li><strong>Cubiertas de cuarzo</strong><span>En la cocina, según las especificaciones de Sento.</span></li><li><strong>Baño principal</strong><span>Ducha en obra según unidad y especificación vigente.</span></li></ul>
       <p class="plc-note">Confirma las terminaciones, el equipamiento y su alcance en la especificación de la unidad que cotices.</p>''')
     unit_rows = []
     for unit in record['units']:
-        price = 'Desde UF 8.858' if unit['priceUF'] else 'Consultar valor'
-        note = 'Precio publicado por Sento · 20 % aplicado' if unit['priceUF'] else 'Precio y disponibilidad por confirmar'
+        price = 'UF '+number(unit['priceUF']).removesuffix(',00') if unit['priceUF'] else 'Consultar valor'
+        note = 'Precio de lista' if unit['priceUF'] else 'Precio por confirmar'
         unit_rows.append(f'''<article class="plc-unit" aria-labelledby="unit-{unit['number']}"><div><h3 id="unit-{unit['number']}">Unidad {unit['number']}</h3><p>2 dormitorios · 2 baños</p></div><dl><dt>Superficie interior informada*</dt><dd>{number(unit['interiorM2'])} m²</dd></dl><div class="plc-unit-price"><strong>{price}</strong><p>{note}</p></div><a class="button button-green plc-quote" href="#solicitar-cotizacion" data-request-intent="cotizacion" data-plaza-unit="{unit['number']}" aria-label="Solicitar cotización de la unidad {unit['number']}">Solicitar cotización</a></article>''')
     units = section('unidades', 'Unidades para consultar', 'Una cotización para tu elección', '''
-      <p>La campaña vigente de Sento publica una alternativa de 2 dormitorios. Las tipologías Estudio y 1 dormitorio forman parte del diseño del proyecto; su disponibilidad actual requiere confirmación.</p>'''+
+      <p>Compara las unidades de 2 dormitorios informadas a Sollahms. Las tipologías Estudio y 1 dormitorio forman parte del diseño del proyecto; su disponibilidad actual requiere confirmación.</p>'''+
       '<div class="plc-units" data-scroll-static>'+''.join(unit_rows)+'</div>'+'''
       <p class="plc-note">*Superficies interiores aportadas a Sollahms para estas unidades, pendientes de confirmación documental por unidad. No equivalen a superficie total con terraza.</p>
-      <details class="pj-disclosure"><summary data-scroll-static>Precios, disponibilidad y fuente comercial</summary><p>Información revisada el 28 de octubre de 2026. Sento publica UF 8.858 para la unidad 313, con 20 % de descuento aplicado, sin estacionamiento ni bodega y sujeto a disponibilidad. No se ha extendido ese descuento a otras unidades.</p><p>El precio final de la unidad 213 y el número total de unidades disponibles no están confirmados. Solicita una cotización para conocer el valor, las condiciones y el stock vigente. La solicitud no constituye una reserva.</p><p><a href="https://sento.cl/proyectos/plaza-las-condes-7083/" target="_blank" rel="noopener noreferrer">Fuente: ficha oficial de Sento, campaña de octubre de 2026</a></p></details>''')
+      <details class="pj-disclosure"><summary data-scroll-static>Precios y condiciones de cotización</summary><p>Precios de lista proporcionados a Sollahms y actualizados el 28 de octubre de 2026: unidad 213, UF 11.119; unidad 313, UF 11.073.</p><p>No se han aplicado descuentos automáticamente. Confirma disponibilidad, inclusiones y condiciones comerciales al solicitar una cotización. La solicitud no constituye una reserva.</p></details>''')
     plan_cards = []
     for plan in record['plans']:
         total = f"{number(plan['totalM2'])} m² totales" if plan['totalM2'] else 'Consultar superficie'
@@ -102,9 +102,10 @@ def apply_plaza_las_condes(page, project):
     main['class'] = list(dict.fromkeys([*main.get('class',[]),'plaza-detail']))
     main['data-plaza-version'] = '20261028-1'
     main.select_one('.ci-location').string = 'Avenida Las Condes 7083 · Las Condes'
-    main.select_one('.ci-market .price-label').string = 'Precio'
-    main.select_one('.ci-market strong').string = 'Desde UF 8.858'
-    main.select_one('.ci-market .price-note').string = 'Unidad 313 · 2D / 2B. 20 % aplicado; sin estacionamiento ni bodega. Sujeto a disponibilidad.'
+    main.select_one('.ci-market .price-label').string = 'Precio de lista'
+    lowest = min((u for u in record['units'] if u.get('priceUF')), key=lambda u: u['priceUF'])
+    main.select_one('.ci-market strong').string = 'Desde UF '+number(lowest['priceUF']).removesuffix(',00')
+    main.select_one('.ci-market .price-note').string = f"Unidad {lowest['number']} · 2D / 2B. Disponibilidad y condiciones al cotizar."
     nav = main.select_one('.pj-nav .container'); nav.clear()
     nav.append(BeautifulSoup(''.join(f'<a href="#{a}">{b}</a>' for a,b in [('proyecto','Resumen'),('caracteristicas','Características'),('unidades','Unidades'),('planos','Planos'),('galeria','Galería y 360°'),('ubicacion','Ubicación'),('solicitar-cotizacion','Cotización')]),'html.parser'))
     content = main.select_one('.pj-content')

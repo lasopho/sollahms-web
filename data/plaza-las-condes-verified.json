@@ -18,7 +18,7 @@
   },
   "status": "Próxima entrega",
   "deliveryDate": null,
-  "campaign": "octubre 2026",
+  "campaign": "Precios de lista suministrados por el propietario",
   "stock": null,
   "units": [
     {
@@ -27,8 +27,8 @@
       "baths": 2,
       "interiorM2": 69.78,
       "interiorSource": "Datos suministrados por el propietario; correspondencia pendiente de confirmación oficial",
-      "priceUF": 8858,
-      "priceStatus": "Precio publicado por Sento, 20% aplicado, sin estacionamiento ni bodega; sujeto a disponibilidad",
+      "priceUF": 11073,
+      "priceStatus": "Precio de lista suministrado por el propietario; sin descuento calculado. Confirmar disponibilidad y condiciones al cotizar.",
       "ownerListPriceUF": 11073
     },
     {
@@ -37,8 +37,8 @@
       "baths": 2,
       "interiorM2": 69.85,
       "interiorSource": "Datos suministrados por el propietario; correspondencia pendiente de confirmación oficial",
-      "priceUF": null,
-      "priceStatus": "Consultar valor y disponibilidad; no se calculó descuento",
+      "priceUF": 11119,
+      "priceStatus": "Precio de lista suministrado por el propietario; sin descuento calculado. Confirmar disponibilidad y condiciones al cotizar.",
       "ownerListPriceUF": 11119,
       "model": "C7",
       "typologySource": "Identificación en el recorrido oficial 360°: Depto Tipo C7 (213): 2D+2B"
@@ -225,7 +225,7 @@
     "Ascensores, cámaras y sistema de seguridad no verificados: no publicados como equipamiento.",
     "SUM no verificado como recinto separado; no duplicar Family & Social Club / Salón Lounge.",
     "Stock total: propietario indica 3 y campaña 4; sin total publicado.",
-    "Precio final y disponibilidad de unidad 213 no confirmados.",
+    "Precio final después de cualquier descuento y disponibilidad de unidad 213 no confirmados; precio de lista autorizado UF 11.119.",
     "Disponibilidad de Estudio y 1 dormitorio no confirmada.",
     "Superficies interiores 213/313 aportadas por propietario, no contrastables por unidad en web pública.",
     "Planos B5, C2 y C4: superficies discordantes; se publican sin cifra total."
@@ -306,5 +306,12 @@
       "caption": "Salón social · Render referencial",
       "provenance": "data/brochures-sento.json"
     }
-  ]
+  ],
+  "commercialPriceSource": {
+    "type": "owner_supplied",
+    "checkedOn": "2026-10-28",
+    "instruction": "Usar los precios entregados por el propietario, no los publicados por Sento",
+    "priceType": "list",
+    "discountApplied": false
+  }
 }
