@@ -26,6 +26,31 @@ def caption_text(text):
     return (text[:1].upper() + text[1:]) if text != original else original
 
 def apply_image_label_policy(page):
+    # Gallery introductions sometimes repeat the same generic visual label.
+    # Retain facts needed to identify shared stages or residential/commercial areas.
+    def image_notice(match):
+        raw = match[0]
+        node = BeautifulSoup(raw, 'html.parser').p
+        text = node.get_text(' ', strip=True)
+        if 'compartidas entre sus etapas y edificios' in text:
+            node.string = 'Imágenes del conjunto, compartidas entre sus etapas y edificios. Abre cada imagen para verla completa.'
+        elif text.startswith('Render identificado por Euro'):
+            node.string = 'Vista exterior identificada por Euro para esta torre en su material oficial. Las imágenes del conjunto se conservan en su sección de contexto.'
+        elif 'Verne residencial' in text:
+            node.string = 'Vistas del brochure de Verne residencial, en un edificio de uso mixto. El documento distingue el acceso residencial del área comercial.'
+        elif re.search(r'\b(?:render|referencial|ilustrativ)', text, re.I):
+            return ''
+        else:
+            return raw
+        return str(node)
+    page = re.sub(r'<p\b[^>]*class="[^"]*\bimage-credit\b[^"]*"[^>]*>.*?</p>', image_notice, page, flags=re.S)
+    for notice in (
+        'Renders ilustrativos. Consulta fotografías del estado actual del proyecto.',
+        'Representaciones ilustrativas del proyecto. No acreditan su estado actual ni la disponibilidad de una unidad.',
+    ):
+        page = re.sub(r'<p\b[^>]*>\s*'+re.escape(notice)+r'\s*</p>', '', page)
+    page = page.replace('Imágenes referenciales del conjunto Froilán Roa 5731;', 'Imágenes del conjunto Froilán Roa 5731;')
+
     def caption(match):
         raw = match[0]
         soup = BeautifulSoup(raw, 'html.parser')

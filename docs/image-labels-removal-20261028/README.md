@@ -9,9 +9,9 @@ deployment `dpl_BDoEXZSyZC4kJ6Ctjk42Qy28PcZN`.
 Source parent including prior evidence: `5de7c2e1898c03a7ee9e45d99241e769de1100a7`.
 Branch: `codex/remove-image-labels-20261028`; main and automatic deployments stay disabled.
 
-Inventory: 132 live fiches within 140 public HTML pages. 33 fiches needed changes:
+Inventory: 132 live fiches within 140 public HTML pages. 39 fiches needed changes:
 139 descriptive image captions cleaned and 12 standalone header badges removed.
-The other 99 fiches and eight non-fiche HTML pages remain byte-for-byte identical.
+The other 93 fiches and eight non-fiche HTML pages remain byte-for-byte identical.
 
 `scripts/project_image_labels.py` applies the policy statically, after the shared
 header renderer and Plaza override, and in both historical gallery importers.
@@ -23,7 +23,7 @@ lose their complete elements; an empty badge group/caption is removed if present
 
 Validation compares every img/source/picture/iframe/script/style/link/form/head
 element, image links, prices and substantive notices with the exact baseline.
-All 1,175 output paths remain: 33 HTML files change; the other 1,142 files,
+All 1,175 output paths remain: 39 HTML files change; the other 1,136 files,
 including original media, CSS, JavaScript and API functions, retain their hashes.
 Existing motion/contact evidence is reused for these identical resources.
 
@@ -39,3 +39,5 @@ The previous immutable deployment is retained and READY. No rollback was execute
 
 Public release IDs, browser observations and public HTTP verification are recorded
 alongside this file after the candidate passes review.
+
+Visual QA additionally found redundant gallery introductions. Removed 19 generic notice paragraphs. Six project-identification notes retain their tower/stage or mixed-use distinctions without generic render labels. Separate plan/commercial notices remain unchanged.
