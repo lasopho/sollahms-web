@@ -1,4 +1,4 @@
-import {advancedFilterAndSort} from './catalog-filter-engine.mjs?v=20261029-filters-1';
+import {advancedFilterAndSort} from './catalog-filter-engine.mjs?v=20261029-stage-1';
 // Public catalogue facts only. This module never changes source records.
 export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
 export const validPrice = value => typeof value === 'number' && Number.isFinite(value) && value > 0;

@@ -49,6 +49,7 @@
 <link rel="stylesheet" href="/assets/css/project-photos.css?v=20261025-visual-1">
 <link rel="stylesheet" href="/assets/css/catalog-filters.css?v=20261029-filters-1">
 <link rel="stylesheet" href="/assets/css/guide-navigation.css?v=20261029-1">
+<link rel="stylesheet" href="/assets/css/purchase-stage-entry.css?v=20261029-1">
 <link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
 <script src="/assets/js/scroll-presence.js?v=20261026-3" defer></script>
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
@@ -125,7 +126,7 @@
 <section class="catalog-results bg-surface" aria-label="Catálogo de proyectos">
 <div class="max-w-7xl mx-auto px-8">
 
-<div class="catalog-explore" data-scroll-static="">
+<div class="purchase-catalog-entry" data-scroll-static><span>¿En qué etapa te conviene comprar?</span><a href="/cuando-comprar-propiedad.html">Compara en blanco, en verde y entrega inmediata ↗</a></div><div class="catalog-explore" data-scroll-static="">
 <form id="catalog-filters" role="search" aria-label="Filtros del catálogo">
   <div class="cf-search"><label for="search">Busca tu próximo proyecto</label><input id="search" type="search" class="catalog-control" placeholder="Nombre, comuna, inmobiliaria o característica" maxlength="200" autocomplete="off" disabled></div>
   <details id="catalog-options" class="cf-options" open>
@@ -143,7 +144,7 @@
       <summary>Más filtros<span id="catalog-more-count"></span></summary>
       <p class="cf-hint">Mostramos coincidencias documentadas. Un dato sin informar no significa que el proyecto no tenga esa característica.</p>
       <p id="advanced-data-status" class="cf-hint" hidden></p>
-      <div class="cf-groups">
+      <div class="cf-groups"><fieldset class="cf-group"><legend>Modalidad de compra revisada</legend><p class="cf-hint">Coincidir con cualquiera de las seleccionadas. Los proyectos con información pendiente quedan fuera de este filtro.</p><div id="filter-purchaseModes" class="cf-choices"></div></fieldset>
         <fieldset class="cf-group"><legend>Distribución y superficies</legend><div class="cf-distribution">
           <div><label for="bathrooms">Baños</label><select id="bathrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
           <div><label for="area-type">Tipo de superficie</label><select id="area-type" class="catalog-control" disabled><option value="util">Útil</option></select></div>
@@ -160,7 +161,7 @@
     </details>
     <div class="cf-mobile-results"><button type="button" class="cf-results-button" data-show-results disabled>Ver proyectos</button></div>
   </details>
-  <div class="catalog-filter-actions"><button id="clear-filters" type="button" class="catalog-text-button" disabled>Limpiar filtros</button><p id="filter-range-error" class="cf-range-error" role="status" tabindex="-1" hidden></p></div>
+  <p id="purchase-stage-filter-note" class="cf-hint" hidden>Resultados según etapa documentada. Para entrega inmediata se exige además una oferta comercial activa revisada el 29/10/2026; se excluyen recepciones pendientes y disponibilidades sin confirmar. Confirma la unidad, su habilitación legal y el plazo al cotizar. <a href="/cuando-comprar-propiedad.html#verificar-etapa">Cómo revisamos la etapa</a>.</p><div class="catalog-filter-actions"><button id="clear-filters" type="button" class="catalog-text-button" disabled>Limpiar filtros</button><p id="filter-range-error" class="cf-range-error" role="status" tabindex="-1" hidden></p></div>
   <div id="applied-filters" class="catalog-applied" aria-label="Filtros aplicados" hidden></div>
 </form>
 <section class="capacity-search" aria-labelledby="capacity-title">
@@ -350,7 +351,7 @@
 <ul class="space-y-2">
 <li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/#expertise">Expertise</a></li>
 <li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/#portfolio">Asset Portafolio</a></li>
-<li class=""><a data-guide-nav="" class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/guia-hipotecaria.html">Guía hipotecaria</a></li>
+<li class=""><a data-guide-nav="" class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/guia-hipotecaria.html">Guía hipotecaria</a></li><li><a data-purchase-guide-footer="" class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/cuando-comprar-propiedad.html">Cuándo comprar</a></li>
 <li><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/contacto.html">Contacto</a></li>
 <li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
 </ul>
@@ -366,6 +367,6 @@
 <p class="text-[10px] text-slate-400 font-mono tracking-widest text-center">PRECISION • TRANSPARENCY • STRATEGY</p>
 </div>
 </footer>
-<script type="module" src="/assets/js/catalog.mjs?v=20261029-crescer-1"></script>
+<script type="module" src="/assets/js/catalog.mjs?v=20261029-stage-1"></script>
 </body>
 </html>

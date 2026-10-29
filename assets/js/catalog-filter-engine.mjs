@@ -2,10 +2,10 @@
 export const fold=value=>String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es-CL');
 export const FILTER_VERSION=2;
 export const FILTER_STORAGE='sollahmsCatalogFiltersV2';
-export const defaults=()=>({version:2,search:'',region:'',commune:'',minPriceInput:'',maxPriceInput:'',propertyType:'',bedrooms:'',delivery:'',bathrooms:'',areaType:'util',minArea:'',maxArea:'',typologies:[],amenities:[],features:[],developers:[],amenitiesAll:false,featuresAll:false,state:'',assetType:'',sortOrder:'original'});
-const arrays=['amenities','features','developers','typologies'];
+export const defaults=()=>({version:2,search:'',region:'',commune:'',minPriceInput:'',maxPriceInput:'',propertyType:'',bedrooms:'',delivery:'',bathrooms:'',areaType:'util',minArea:'',maxArea:'',purchaseModes:[],typologies:[],amenities:[],features:[],developers:[],amenitiesAll:false,featuresAll:false,state:'',assetType:'',sortOrder:'original'});
+const arrays=['purchaseModes','amenities','features','developers','typologies'];
 const numbers=['minPriceInput','maxPriceInput','minArea','maxArea'];
-const fields={search:'q',region:'region',commune:'comuna',minPriceInput:'precio_min',maxPriceInput:'precio_max',propertyType:'tipo',bedrooms:'dormitorios',delivery:'entrega',bathrooms:'banos',areaType:'superficie',minArea:'m2_min',maxArea:'m2_max',typologies:'tipologia',amenities:'amenity',features:'caracteristica',developers:'inmobiliaria',amenitiesAll:'amenities_todas',featuresAll:'caracteristicas_todas',state:'estado',assetType:'uso',sortOrder:'orden'};
+const fields={purchaseModes:'modalidad',search:'q',region:'region',commune:'comuna',minPriceInput:'precio_min',maxPriceInput:'precio_max',propertyType:'tipo',bedrooms:'dormitorios',delivery:'entrega',bathrooms:'banos',areaType:'superficie',minArea:'m2_min',maxArea:'m2_max',typologies:'tipologia',amenities:'amenity',features:'caracteristica',developers:'inmobiliaria',amenitiesAll:'amenities_todas',featuresAll:'caracteristicas_todas',state:'estado',assetType:'uso',sortOrder:'orden'};
 export const validNumber=value=>typeof value==='number'&&Number.isFinite(value)&&value>=0;
 export const bound=value=>value===''||value==null?null:/^\d{1,9}(?:\.\d{1,2})?$/.test(String(value))?Number(value):NaN;
 export function rangeIssue(s){
@@ -45,6 +45,7 @@ export function advancedFilterAndSort(projects,input={}){
       &&(!s.developers.length||s.developers.includes(p.inmobiliaria))
       &&(!s.state||(f.states??[p.estado]).some(x=>fold(x)===fold(s.state)))
       &&(!s.assetType||(f.assetTypes??[]).includes(s.assetType))
+      &&(!s.purchaseModes.length||(f.purchaseStage?.eligible===true&&s.purchaseModes.includes(f.purchaseStage.mode)))
       &&(!s.delivery||(s.delivery==='inmediata'?f.delivery?.immediate===true:String(f.delivery?.year)===s.delivery))
       &&inRange(p.precioDesdeUF>0?p.precioDesdeUF:null,s.minPriceInput,s.maxPriceInput)&&matchesVariant(p,s)
       &&selectedMatch(ids,s.amenities,s.amenitiesAll)&&selectedMatch(ids,s.features,s.featuresAll)
@@ -63,7 +64,7 @@ const deliveryRank=p=>p._facets?.delivery?.immediate?0:p._facets?.delivery?.year
 const relevance=(p,words)=>words.reduce((n,w)=>n+(fold(p.nombre).includes(w)?3:0)+(fold(p.comuna).includes(w)?2:0)+(fold(p.inmobiliaria).includes(w)?1:0),0);
 export function sanitizeState(input,options){
   const s=defaults();if(!input||typeof input!=='object'||Array.isArray(input))return s;
-  const allowed={region:options.regions,commune:options.communes,propertyType:options.propertyTypes?.map(x=>x.id),bedrooms:['0','1','2','3','4+'],bathrooms:['1','2','3+'],delivery:options.deliveries?.map(x=>x.id),areaType:options.areaTypes?.map(x=>x.id),state:options.states,assetType:options.assetTypes,sortOrder:['original','price-asc','price-desc','delivery','name','relevance'],amenities:options.filters?.filter(x=>x.group==='amenities').map(x=>x.id),features:options.filters?.filter(x=>x.group==='features').map(x=>x.id),developers:options.developers,typologies:options.typologies?.map(x=>x.id)};
+  const allowed={purchaseModes:['blanco','verde','inmediata'],region:options.regions,commune:options.communes,propertyType:options.propertyTypes?.map(x=>x.id),bedrooms:['0','1','2','3','4+'],bathrooms:['1','2','3+'],delivery:options.deliveries?.map(x=>x.id),areaType:options.areaTypes?.map(x=>x.id),state:options.states,assetType:options.assetTypes,sortOrder:['original','price-asc','price-desc','delivery','name','relevance'],amenities:options.filters?.filter(x=>x.group==='amenities').map(x=>x.id),features:options.filters?.filter(x=>x.group==='features').map(x=>x.id),developers:options.developers,typologies:options.typologies?.map(x=>x.id)};
   for(const key of arrays)if(Array.isArray(input[key]))s[key]=[...new Set(input[key].filter(x=>typeof x==='string'&&(allowed[key]??[]).includes(x)))].sort().slice(0,50);
   for(const key of Object.keys(allowed).filter(k=>!arrays.includes(k)))if(typeof input[key]==='string'&&(allowed[key]??[]).includes(input[key]))s[key]=input[key];
   for(const key of numbers)if(typeof input[key]==='string'&&input[key].length<=12&&!Number.isNaN(bound(input[key])))s[key]=input[key];

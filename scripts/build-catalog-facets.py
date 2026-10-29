@@ -3,6 +3,7 @@ import argparse,hashlib,json,subprocess,sys
 from collections import Counter
 from pathlib import Path
 from project_amenities import entry
+from purchase_stage import classify
 ROOT=Path(__file__).resolve().parents[1]
 PROPERTY_LABELS={'departamento':'Departamento','casa':'Casa','local':'Local comercial','oficina':'Oficina','terreno':'Terreno o parcela'}
 STATE_LABELS={'en-blanco':'En blanco','en-verde':'En verde','en-construccion':'En construcción','en-recepcion-final':'En recepción final','inmediata':'Entrega inmediata','proxima-entrega':'Próxima entrega','entrega-futura':'Entrega futura','vendido':'Vendido','sin-unidades':'Sin unidades disponibles','en-desarrollo':'En desarrollo','lanzamiento':'Lanzamiento'}
@@ -14,6 +15,7 @@ def main():
         subprocess.run([sys.executable,str(ROOT/'scripts/catalog_property_facts.py'),'--root',str(ROOT),'--output',str(audit),'--report',str(docs/'property-audit.md')],check=True,stdout=subprocess.DEVNULL)
     property_data=json.loads(audit.read_text());catalog=json.loads((ROOT/'data/proyectos.json').read_text())
     shared=json.loads((ROOT/'data/project-features.json').read_text())['projects'];taxonomy=json.loads((ROOT/'data/amenities.json').read_text())
+    reviews=json.loads((ROOT/'data/purchase-stage-verifications.json').read_text())['reviews']
     definitions={f['id']:f for f in taxonomy['filters']};out={};counts=Counter();types={};missing=[]
     for project in catalog:
         slug=project['slug']
@@ -63,7 +65,7 @@ def main():
         for v in variants:
             if v.get('typology') in types and types[v['typology']] not in typology_labels:typology_labels.append(types[v['typology']])
         status=facts.get('status',{});state=STATE_LABELS.get(status.get('key')) if status.get('confirmed') else None
-        out[slug]={'propertyTypes':facts['propertyTypes'],'propertyLabels':[PROPERTY_LABELS[t] for t in facts['propertyTypes']],'assetTypes':asset,'variants':variants,'delivery':delivery,'features':list(features.values()),'states':[state] if state else [],'typologyLabels':typology_labels}
+        out[slug]={'propertyTypes':facts['propertyTypes'],'propertyLabels':[PROPERTY_LABELS[t] for t in facts['propertyTypes']],'assetTypes':asset,'variants':variants,'delivery':delivery,'features':list(features.values()),'states':[state] if state else [],'typologyLabels':typology_labels,'purchaseStage':classify(project,facts,reviews)}
         counts.update(features.keys())
         missing.append({'slug':slug,'name':project['nombre'],'pricePending':project.get('precioDesdeUF') is None,'amenitiesUnknown':not any(definitions[x]['group']=='amenities' for x in features),'propertyTypeUnknown':not facts['propertyTypes'],'deliveryUnknown':not delivery,'stateUnknown':not state,'typedAreaUnknown':not any(v['areas'] for v in variants),'bathroomsUnknown':not any(v.get('bathrooms') for v in variants),'notes':facts.get('pending',[])})
     filters=[{**f,'count':counts[id_]} for id_,f in definitions.items() if counts[id_]>0]

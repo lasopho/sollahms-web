@@ -1,12 +1,12 @@
-import {defaults,FILTER_STORAGE,sanitizeState,readQuery,writeQuery,safePublicState,rangeIssue} from './catalog-filter-engine.mjs?v=20261029-filters-1';
-import {assetTypes,projectStates,VIEW_KEY,SESSION_KEY} from './catalog-model.mjs?v=20261029-crescer-1';
+import {defaults,FILTER_STORAGE,sanitizeState,readQuery,writeQuery,safePublicState,rangeIssue} from './catalog-filter-engine.mjs?v=20261029-stage-1';
+import {assetTypes,projectStates,VIEW_KEY,SESSION_KEY} from './catalog-model.mjs?v=20261029-stage-1';
 const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
 const unique=values=>[...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'es-CL',{numeric:true}));
 const propertyLabels={departamento:'Departamento',casa:'Casa',terreno:'Terreno o parcela',local:'Local comercial',oficina:'Oficina'};
 const areaLabels={util:'Útil',interior:'Interior',total:'Total',departamento:'Departamento (según plano)',terreno:'Terreno',terraza:'Terraza',jardin:'Jardín privado'};
-const arrayFields=['amenities','features','developers','typologies'];
+const arrayFields=['purchaseModes','amenities','features','developers','typologies'];
 const controlIds={search:'search',region:'region',commune:'commune',minPriceInput:'min-price',maxPriceInput:'max-price',propertyType:'property-type',bedrooms:'bedrooms',delivery:'delivery',bathrooms:'bathrooms',areaType:'area-type',minArea:'min-area',maxArea:'max-area',state:'state',assetType:'asset-type',sortOrder:'sort-order'};
-const captions={search:'Búsqueda',region:'Región',commune:'Comuna',minPriceInput:'Desde UF',maxPriceInput:'Hasta UF',propertyType:'Propiedad',bedrooms:'Dormitorios',delivery:'Entrega',bathrooms:'Baños',minArea:'Desde m²',maxArea:'Hasta m²',state:'Estado',assetType:'Uso',amenities:'Amenity',features:'Vivienda',developers:'Inmobiliaria',typologies:'Tipología'};
+const captions={purchaseModes:'Modalidad',search:'Búsqueda',region:'Región',commune:'Comuna',minPriceInput:'Desde UF',maxPriceInput:'Hasta UF',propertyType:'Propiedad',bedrooms:'Dormitorios',delivery:'Entrega',bathrooms:'Baños',minArea:'Desde m²',maxArea:'Hasta m²',state:'Estado',assetType:'Uso',amenities:'Amenity',features:'Vivienda',developers:'Inmobiliaria',typologies:'Tipología'};
 export function facetOptions(projects,index){
   const f=projects.map(p=>p._facets??{}),types=unique(f.flatMap(x=>x.propertyTypes??[])),metrics=unique(f.flatMap(x=>(x.variants??[]).flatMap(v=>Object.keys(v.areas??{}))));
   return {regions:unique(projects.map(p=>p.region)),communes:unique(projects.map(p=>p.comuna)),developers:unique(projects.map(p=>p.inmobiliaria)),states:unique(f.flatMap((x,i)=>x.states??[projects[i].estado])),assetTypes:unique(projects.flatMap(assetTypes)),propertyTypes:types.map(id=>({id,label:propertyLabels[id]??id})),areaTypes:metrics.filter(id=>areaLabels[id]).map(id=>({id,label:areaLabels[id]})),deliveries:[...(f.some(x=>x.delivery?.immediate)?[{id:'inmediata',label:'Entrega inmediata'}]:[]),...unique(f.map(x=>x.delivery?.year).filter(Boolean)).map(y=>({id:String(y),label:String(y)}))],filters:index.filters??[],typologies:index.typologies??[]};
@@ -15,7 +15,7 @@ export function createFilterControls({projects,index,onChange,getView,setView}){
   const form=document.getElementById('catalog-filters'),controls=Object.fromEntries(Object.entries(controlIds).map(([k,id])=>[k,document.getElementById(id)]));
   const options=facetOptions(projects,index),checks={},labels={};let state=defaults(),timer,ready=false;
   const advanced=document.getElementById('catalog-more'),panel=document.getElementById('catalog-options'),status=document.getElementById('filter-range-error');
-  const groups={amenities:options.filters.filter(x=>x.group==='amenities'),features:options.filters.filter(x=>x.group==='features'),developers:options.developers.map(id=>({id,label:id,count:projects.filter(p=>p.inmobiliaria===id).length})),typologies:options.typologies};
+  const groups={purchaseModes:[{id:'blanco',label:'Compra en blanco'},{id:'verde',label:'Compra en verde'},{id:'inmediata',label:'Entrega inmediata'}].map(x=>({...x,count:projects.filter(p=>p._facets?.purchaseStage?.eligible&&p._facets.purchaseStage.mode===x.id).length})),amenities:options.filters.filter(x=>x.group==='amenities'),features:options.filters.filter(x=>x.group==='features'),developers:options.developers.map(id=>({id,label:id,count:projects.filter(p=>p.inmobiliaria===id).length})),typologies:options.typologies};
   const populate=(key,values,empty)=>{const c=controls[key];c.replaceChildren(...(empty!==null?[new Option(empty,'')]:[]),...values.map(v=>new Option(typeof v==='string'?v:v.label,typeof v==='string'?v:v.id)));};
   populate('region',options.regions,'Todas');populate('commune',options.communes,'Todas');populate('propertyType',options.propertyTypes,'Todas');populate('delivery',options.deliveries,'Cualquier entrega');populate('state',options.states,'Todos');populate('assetType',options.assetTypes,'Todos');populate('areaType',options.areaTypes,null);
   const variants=projects.flatMap(p=>p._facets?.variants??[]);
@@ -37,7 +37,8 @@ export function createFilterControls({projects,index,onChange,getView,setView}){
   function chips(){const host=document.getElementById('applied-filters');host.replaceChildren();let n=0;
     for(const [key,caption] of Object.entries(captions)){const selected=arrayFields.includes(key)?state[key]:state[key]?[state[key]]:[];for(const value of selected){let label=labels[key]?.get(value)??value;if(key==='minArea'||key==='maxArea')label+=' ('+(labels.areaType.get(state.areaType)??state.areaType)+')';const button=el('button',caption+': '+label+' ×','catalog-filter-tag');button.type='button';button.setAttribute('aria-label','Quitar filtro '+caption+': '+label);button.addEventListener('click',()=>{if(arrayFields.includes(key))state[key]=state[key].filter(x=>x!==value);else state[key]='';writeControls();update();document.getElementById('project-count').focus({preventScroll:true});});host.append(button);n++;}}
     host.hidden=!n;document.getElementById('catalog-filter-count').textContent=n?' ('+n+')':'';
-    const advancedCount=state.amenities.length+state.features.length+state.developers.length+state.typologies.length+['bathrooms','minArea','maxArea','state','assetType'].filter(k=>state[k]).length;
+    document.getElementById('purchase-stage-filter-note').hidden=!state.purchaseModes.length;
+    const advancedCount=state.purchaseModes.length+state.amenities.length+state.features.length+state.developers.length+state.typologies.length+['bathrooms','minArea','maxArea','state','assetType'].filter(k=>state[k]).length;
     document.getElementById('catalog-more-count').textContent=advancedCount?' ('+advancedCount+')':'';
   }
   function update(){clearTimeout(timer);readControls();const issue=rangeIssue(state);status.textContent=issue;status.hidden=!issue;chips();remember();if(ready)onChange();}
@@ -48,7 +49,7 @@ export function createFilterControls({projects,index,onChange,getView,setView}){
     if(!saved)try{const old=JSON.parse(sessionStorage.getItem(SESSION_KEY));if(old?.version===1)saved=old;}catch{}
     state=sanitizeState(saved??defaults(),options);writeControls();
     let view=query.view;try{view??=history.state?.[VIEW_KEY]??localStorage.getItem(VIEW_KEY);}catch{}if(['cards','list','map'].includes(view))setView(view);
-    if(state.amenities.length||state.features.length||state.developers.length||state.bathrooms||state.minArea||state.maxArea||state.typologies.length)advanced.open=true;
+    if(state.purchaseModes.length||state.amenities.length||state.features.length||state.developers.length||state.bathrooms||state.minArea||state.maxArea||state.typologies.length)advanced.open=true;
   }
   function clear(){state=defaults();writeControls();advanced.open=false;update();controls.search.focus({preventScroll:true});}
   form.addEventListener('submit',e=>{e.preventDefault();update();showResults();});

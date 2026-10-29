@@ -18,6 +18,7 @@ from crescer_details import apply_crescer
 from project_navigation import apply_navigation
 from project_amenities import apply_amenities
 from guide_navigation import apply_guide_navigation
+from purchase_stage_links import apply_stage_project
 
 CSS = '/assets/css/project-header-b.css?v=20261026-b-1'
 LABELS = {
@@ -108,4 +109,4 @@ def _finalize_project(page, project):
     page = apply_plaza_las_condes(page, project)
     page = apply_nollagam(page, project)
     page = apply_crescer(page, project)
-    return apply_guide_navigation(apply_image_label_policy(apply_navigation(apply_amenities(page, project), project)), project)
+    return apply_stage_project(apply_guide_navigation(apply_image_label_policy(apply_navigation(apply_amenities(page, project), project)), project), project)

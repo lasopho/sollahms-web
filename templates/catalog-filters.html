@@ -15,7 +15,7 @@
       <summary>Más filtros<span id="catalog-more-count"></span></summary>
       <p class="cf-hint">Mostramos coincidencias documentadas. Un dato sin informar no significa que el proyecto no tenga esa característica.</p>
       <p id="advanced-data-status" class="cf-hint" hidden></p>
-      <div class="cf-groups">
+      <div class="cf-groups"><fieldset class="cf-group"><legend>Modalidad de compra revisada</legend><p class="cf-hint">Coincidir con cualquiera de las seleccionadas. Los proyectos con información pendiente quedan fuera de este filtro.</p><div id="filter-purchaseModes" class="cf-choices"></div></fieldset>
         <fieldset class="cf-group"><legend>Distribución y superficies</legend><div class="cf-distribution">
           <div><label for="bathrooms">Baños</label><select id="bathrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
           <div><label for="area-type">Tipo de superficie</label><select id="area-type" class="catalog-control" disabled><option value="util">Útil</option></select></div>
@@ -32,6 +32,6 @@
     </details>
     <div class="cf-mobile-results"><button type="button" class="cf-results-button" data-show-results disabled>Ver proyectos</button></div>
   </details>
-  <div class="catalog-filter-actions"><button id="clear-filters" type="button" class="catalog-text-button" disabled>Limpiar filtros</button><p id="filter-range-error" class="cf-range-error" role="status" tabindex="-1" hidden></p></div>
+  <p id="purchase-stage-filter-note" class="cf-hint" hidden>Resultados según etapa documentada. Para entrega inmediata se exige además una oferta comercial activa revisada el 29/10/2026; se excluyen recepciones pendientes y disponibilidades sin confirmar. Confirma la unidad, su habilitación legal y el plazo al cotizar. <a href="/cuando-comprar-propiedad.html#verificar-etapa">Cómo revisamos la etapa</a>.</p><div class="catalog-filter-actions"><button id="clear-filters" type="button" class="catalog-text-button" disabled>Limpiar filtros</button><p id="filter-range-error" class="cf-range-error" role="status" tabindex="-1" hidden></p></div>
   <div id="applied-filters" class="catalog-applied" aria-label="Filtros aplicados" hidden></div>
 </form>

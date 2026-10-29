@@ -1,6 +1,6 @@
-import {priceFromLabel,validPrice,projectOffer as selectedOffer,projectFacts,filterAndSort,VIEW_KEY} from './catalog-model.mjs?v=20261029-crescer-1';
-import {createFilterControls} from './catalog-filter-controls.mjs?v=20261029-crescer-1';
-import {defaults,matchedLabels} from './catalog-filter-engine.mjs?v=20261029-filters-1';
+import {priceFromLabel,validPrice,projectOffer as selectedOffer,projectFacts,filterAndSort,VIEW_KEY} from './catalog-model.mjs?v=20261029-stage-1';
+import {createFilterControls} from './catalog-filter-controls.mjs?v=20261029-stage-1';
+import {defaults,matchedLabels} from './catalog-filter-engine.mjs?v=20261029-stage-1';
 const $=id=>document.getElementById(id);
 const controls={assetType:$('asset-type'),sortOrder:$('sort-order')};
 const grid=$('project-grid'),count=$('project-count'),message=$('catalog-message');
@@ -14,7 +14,7 @@ function ensureMap(){
   if(mapInstance){mapInstance.show();mapInstance.update(mapResults,{assetType:controls.assetType.value,filters:values()});return;}
   if(mapPromise)return;
   mapHost.setAttribute('aria-busy','true');mapHost.replaceChildren(element('p','Cargando mapa…','catalog-map-status'));
-  mapPromise=import('./catalog-map.mjs?v=20261029-crescer-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
+  mapPromise=import('./catalog-map.mjs?v=20261029-stage-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
     mapInstance=instance;if(view==='map'){instance.show();instance.update(mapResults,{assetType:controls.assetType.value,filters:values()});}else instance.hide();
   }).catch(error=>{
     mapHost.setAttribute('aria-busy','false');const note=element('p','El mapa no pudo cargar. Puedes seguir explorando todos los resultados en Tarjetas o Listado.');note.setAttribute('role','status');
@@ -90,7 +90,7 @@ async function load(){
     const data=await response.json();if(!Array.isArray(data)||new Set(data.map(p=>p.slug)).size!==data.length)throw Error('catalogue identity');
     data.forEach(project=>{if(!project||typeof project.slug!=='string'||typeof project.nombre!=='string'||!/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl))throw Error('catalogue identity');});
     let index={projects:{},filters:[],typologies:[]};
-    try{const response=await fetch('/data/catalog-facets.json?v=20261029-filters-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
+    try{const response=await fetch('/data/catalog-facets.json?v=20261029-stage-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Los filtros por características no pudieron cargar. Puedes seguir buscando por ubicación, nombre y precio.';}
     projects=data.map(p=>({...p,_facets:index.projects[p.slug]??{assetTypes:p.tiposActivos??[p.tipoActivo].filter(Boolean),states:[p.estado].filter(Boolean)}}));
     filterControls=createFilterControls({projects,index,onChange:render,getView:()=>view,setView:next=>{view=next;applyView();}});applyView();render();

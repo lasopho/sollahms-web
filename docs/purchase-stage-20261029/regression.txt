@@ -1,0 +1,29 @@
+✔ Decimal reference: UF3200, nominal4%, 240 payments (1.192012ms)
+✔ Three input modes match; changing financing changes principal (0.392309ms)
+✔ Zero, small and effective rates; full cash (0.323957ms)
+✔ Schedule reconciles principal and interest without intermediate rounding (1.278971ms)
+✔ Unknown is not zero; each cost counted once; initial excludes credit (0.291258ms)
+✔ Rejects unsafe, ambiguous and out-of-range numbers (0.900733ms)
+✔ Context trusts only current catalogue and a unique registered slug (0.328503ms)
+✔ all live projects retain a server-recognized identity and canonical origin (79.037628ms)
+✔ explicit commercial stages stay associated with their own published context (5.786374ms)
+✔ call retains all four fields; time is explicitly a preference (0.570367ms)
+✔ obsolete channel preference cannot exclude either contact field (0.216035ms)
+✔ optional goal/message/time may be omitted (0.268684ms)
+✔ all four contact fields and consent are required (0.375394ms)
+✔ server validation and preview protections still reject without sending (1.484931ms)
+✔ an uncertain result cannot be presented as successful delivery (0.500683ms)
+✔ retry keeps identity and payload; changing intent after uncertainty is blocked (6.137092ms)
+✔ bounded message cannot overflow the existing contract (0.576997ms)
+✔ real-name characters, diverse email providers and local/international phone formats (4.473432ms)
+✔ each missing or malformed field is rejected by both actual API handlers before transport (19.117686ms)
+✔ correction preserves all four normalized fields in existing destination without PII in acknowledgement (2.101227ms)
+✔ all advisory intents retain the four fields and no obsolete selector can bypass required data (1.781497ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 192.685114

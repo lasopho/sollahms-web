@@ -1,0 +1,27 @@
+200 combined filters: 39.2ms
+✔ no filters retain all projects, owner amounts, order and unknown data (9.810522ms)
+✔ categories intersect; selections within amenities use OR or explicit ALL (0.376756ms)
+✔ bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option (0.499711ms)
+✔ exact ranges are inclusive and invalid ranges never broaden results (0.53878ms)
+✔ project desde stays authoritative regardless of selected property or old typology prices (0.190997ms)
+✔ residential-only common spaces do not become local amenities; stage references remain separate (0.298208ms)
+✔ keywords include only registered features; sorting is deterministic with unknowns last (4.383837ms)
+✔ URL round trip is bounded, shareable, uses allowlists and excludes unrelated or private state (2.94165ms)
+✔ projection is complete without unit inventory, empty facets, generated absences or schema drift (3.595332ms)
+✔ current catalogue filtering stays responsive without network or mutation (40.479365ms)
+✔ all 72 combinations return bounded modes, reasons, warnings; purpose never ranks investment (2.333426ms)
+✔ conflict between urgent timing and pie is explicit (0.138108ms)
+✔ ties and clear priorities are explained (0.128523ms)
+✔ incomplete or invalid inputs cannot produce a recommendation (0.115924ms)
+✔ guided URLs round-trip multiple modes without retaining answers (0.806222ms)
+✔ guided filtering fails closed when facets are unavailable (0.607323ms)
+✔ no reception pending, sold, unverified availability or another stage enters immediate results (2.10302ms)
+✔ mode unions remain compatible with existing location/price criteria and immutable price source (5.696249ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 176.218858
