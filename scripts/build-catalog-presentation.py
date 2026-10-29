@@ -16,6 +16,7 @@ def directory(projects):
     links='\n'.join('    <li><a href="'+html.escape(p['detalleUrl'],quote=True)+'">'+html.escape(p['nombre'])+'</a> — <span>'+html.escape(price_from(p.get('precioDesdeUF'),p.get('precioDecimales',0)))+'</span></li>' for p in projects)
     return '<!--CATALOG_DIRECTORY_START-->\n<details id="catalog-static-directory" class="catalog-directory">\n<summary>Explorar el listado de fichas de proyectos</summary>\n<p>Accede directamente a las fichas del catálogo.</p>\n<ul>\n'+links+'\n</ul>\n</details>\n<!--CATALOG_DIRECTORY_END-->'
 def main():
+    from featured_project_cards import apply_home
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--check',action='store_true');args=parser.parse_args()
     projects=json.loads((ROOT/'data/proyectos.json').read_text());path=ROOT/'proyectos.html';before=path.read_text()
     after,count=re.subn(r'<!--CATALOG_DIRECTORY_START-->[\s\S]*?<!--CATALOG_DIRECTORY_END-->',lambda _:directory(projects),before);assert count==1
@@ -23,5 +24,9 @@ def main():
     after,count=re.subn(r'<form\b[^>]*id="catalog-filters"[^>]*>[\s\S]*?</form>',lambda _:controls,after);assert count==1
     if args.check:assert after==before,'Run build-catalog-presentation.py to refresh the directory'
     else:path.write_text(after)
+    home=ROOT/'index.html';original=home.read_text();synced=apply_home(original)
+    if args.check:assert synced==original,'Run featured_project_cards.py to synchronize homepage cards'
+    else:home.write_text(synced)
     print(json.dumps({'projects':len(projects),'newAssets':0,'check':args.check}))
 if __name__=='__main__':main()
+

@@ -72,6 +72,15 @@ class Audit:
             if state and not stateok:row['excluded'].append({'field':'status','value':state,'reason':'Reported catalogue state lacks current matching certification; owner commercial source does not certify reception/stock.'})
             self.projects[p['slug']]=row
     def specialized_models(self):
+        # Technical records from the existing central fiche registry, never stock/prices.
+        for slug,(i,f) in self.fi.items():
+            source=f.get('officialSurfaceModels')
+            if not source:continue
+            for j,m in enumerate(source['records']):
+                areas={'util':m['usefulM2'],'terraza':m['terraceM2']}
+                # Totals with unexplained extra private areas are not interchangeable.
+                if abs(m['totalM2']-m['usefulM2']-m['terraceM2'])<0.011:areas['total']=m['totalM2']
+                self.add(slug,variant('official-layout-'+str(j+1),m['typology'],'departamento',bedrooms(m['typology']),bathrooms(m['typology']),areas,evidence('data/fichas-proyectos.json',i,'officialSurfaceModels','records',j,url=source['sourceUrl']),sourceKind='official_technical_layout',availability='not_inferred',limitations=['Approximate technical dimensions; no price or stock association.']),'Official typed surfaces')
         for i,p in enumerate(self.load('data/sento-review.json')['projects']):
             if p['slug']=='plaza-las-condes':continue
             for j,m in enumerate(p['models']):

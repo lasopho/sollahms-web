@@ -103,6 +103,7 @@ def apply_header(page, project):
 
 
 def _finalize_project(page, project):
+    from featured_project_cards import apply_fiche
     page = apply_project_journey(catalog_labels(page), project)
     page = apply_project_location(page, project)
     page = apply_image_parallax(page)
@@ -111,4 +112,6 @@ def _finalize_project(page, project):
     page = apply_nollagam(page, project)
     page = apply_crescer(page, project)
     page = apply_euro(page, project)
+    page = apply_fiche(page, project)
     return apply_stage_project(apply_guide_navigation(apply_image_label_policy(apply_navigation(apply_amenities(page, project), project)), project), project)
+
