@@ -3,9 +3,10 @@ import { createFormOperation } from './form-operation.mjs';
 import { resolveProjectIdentity } from './project-identity.mjs';
 import { bindRutField } from './rut-field.mjs?v=20261026-required-1';
 import { priceFromLabel } from './catalog-model.mjs?v=20261029-crescer-1';
+import {publicOrigin,originLine} from './commercial-context.mjs?v=20261029-euro-1';
 
 /** Use the existing advisory contract; no new destination or provider fields. */
-export function composeProjectRequest({values,project,intent,startedAt}) {
+export function composeProjectRequest({values,project,intent,startedAt,origin='ficha'}) {
   if (!project?.bodyProjectSlug || !/^\/[a-z0-9-]+\.html(?:#etapa-\d+)?$/.test(project.detalleUrl || '')) throw Error('No pudimos identificar el proyecto. Abre la solicitud desde su ficha.');
   if (!['cotizacion','llamada'].includes(intent)) throw Error('Selecciona el tipo de solicitud.');
   const invalid=validateCommercialFields(values);if(Object.keys(invalid).length)throw Error('Revisa los datos de identificación y contacto.');
@@ -15,6 +16,7 @@ export function composeProjectRequest({values,project,intent,startedAt}) {
     'Ficha de origen: https://sollahms.cl'+project.detalleUrl];
   if(project.nombre)lines.push('Proyecto: '+project.nombre);
   if(project.inmobiliaria)lines.push('Inmobiliaria: '+project.inmobiliaria);
+  if(origin!=='ficha')lines.push(originLine(origin));
   if(Object.hasOwn(project,'precioDesdeUF'))lines.push('Referencia del proyecto: '+priceFromLabel(project.precioDesdeUF,project.precioDecimales)+'. No es el precio definitivo de una unidad.');
   if (intent === 'llamada' && time) lines.push('Horario preferido (no es una reserva): '+time);
   if (message) lines.push('Mensaje del visitante: '+message);
@@ -46,6 +48,7 @@ function initializeProjectRequest(form) {
   const submit=form.querySelector('button[type=submit]'),modes=panel.querySelectorAll('[data-request-mode]');
   const ids={nombre:'name',rut:'rut',correo:'email',telefono:'phone',mensaje:'message',consent:'consent'};
   const inputs=Object.fromEntries(Object.keys(ids).map(n=>[n,form.elements[n]]));
+  if(publicOrigin(location.search)!=='ficha')inputs.mensaje.maxLength=1500;
   const rutField=bindRutField(inputs.rut,document.getElementById('advisory-rut-error'));
   const startedAt=Date.now(),operation=createFormOperation({name:'project-request:'+panel.dataset.projectSlug});
   let intent='cotizacion',sending=false,completed=false,project=null,catalogue=null;
@@ -99,7 +102,7 @@ function initializeProjectRequest(form) {
     sending=true;submit.disabled=true;submit.textContent='Enviando…';modes.forEach(b=>b.disabled=true);form.setAttribute('aria-busy','true');show('Estamos enviando tu solicitud.','sending');
     try{
       await contextReady;resolve();
-      const payload=composeProjectRequest({values:entered,project,intent,startedAt});
+      const payload=composeProjectRequest({values:entered,project,intent,startedAt,origin:publicOrigin(location.search)});
       const attempt=await operation.prepare(payload);fields.disabled=true;
       const response=await fetch('/api/advisory',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':attempt.key},body:attempt.body,signal:AbortSignal.timeout(15000)});
       const result=await response.json();

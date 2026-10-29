@@ -4,7 +4,7 @@ Estado: cambios implementados en candidato; producción no modificada. Publicaci
 
 ## Base recuperada y alcance
 
-Producción comprobada: `dpl_CwKecmoAPWkxhdbheFWEWfx3nntF`, código `1369697b2dbd1c9d614ec1ad8a62c7cd715c32a7`. Rama de origen `codex/purchase-stage-guide-20261029`; padre del candidato `f8999fe8afa5962ae82c562d596e90c2a4099b6d`, cuyo único cambio posterior es documentación/evidencia. Manifiesto congelado de 1.508 archivos de salida más cuatro archivos de construcción. Conserva las funciones, retiro HTTP410 de Patio Brasil y sincronización de los nueve registros comerciales de Nollagam/Crescer.
+Base inicial auditada: `dpl_CwKecmoAPWkxhdbheFWEWfx3nntF`, código `1369697b2dbd1c9d614ec1ad8a62c7cd715c32a7`. Producción avanzó durante la tarea. El candidato final incorpora íntegramente la actualización Euro: producción `dpl_2ZVBbbzPnRAHfnDeFCaAaywgaDuY`, código `da064d6433d9099af4b3e5df892f4db23997ad5c`, evidencia `1b77fe086d8794d33d0990d82dcc92886808e1da`. Se conservaron sus nuevos enlaces de origen entre guías y contacto, scripts, 12 fichas, precios y recursos. El manifiesto vigente contiene 1.621 archivos de salida más cuatro archivos de construcción. Conserva funciones, retiro HTTP410 de Patio Brasil y sincronización de21registros comerciales (Nollagam/Crescer/Euro). Los nueve archivos de salida modificados por SEO se superponen a esa base; los otros1.612 permanecen idénticos.
 
 Ocho páginas auditadas y optimizadas: portada, contacto, agenda-asesoria, guia-hipotecaria, comparador-hipotecario, cuando-comprar-propiedad, trabaja-con-nosotros y privacidad. La última recibe únicamente metadatos estructurados: su texto legal permanece idéntico. Las dos guías conservan todo su texto educativo, herramientas y sección final de fuentes.
 
@@ -76,3 +76,5 @@ Pendientes del propietario: acceso a Search Console/Bing y, después de revisar 
 La rama `codex/corporate-seo-20261029` mantiene `main:false` y su propia clavefalse. El despliegue es preview; producción conserva su deployment anterior. Antes de una futura publicación, volver a comprobar el alias y recuperar cualquier avance posterior. No promover este candidato obsoleto sobre una producción más nueva. La versión anterior y el mecanismo oficial de rollback de Vercel siguen disponibles, pero no se ejecuta rollback porque no se cambió producción.
 
 La evidencia de preview, revisión visual y estado final se incorpora en `preview-verification.json` al concluir.
+
+Las capturas de Contacto/Expertise fueron obtenidas en el primer preview y reutilizadas tras comprobar el HTML visual idéntico; los enlaces de origen y el comparador se revisan de nuevo en el candidato final. El número de comprobaciones no equivale a solicitudes reales ni a métricas de posicionamiento.

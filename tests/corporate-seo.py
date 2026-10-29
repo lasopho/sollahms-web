@@ -1,18 +1,22 @@
 """Regression checks for the scoped SEO overlay; no requests or submissions."""
 from pathlib import Path
-import json,re,sys,hashlib,subprocess
+import json,re,sys,hashlib,subprocess,tempfile
 from urllib.parse import urlsplit,unquote
 from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from corporate_seo import apply_corporate_seo
-BASE=ROOT/'runtime-baseline/release/static'
+baseline_temp=tempfile.TemporaryDirectory()
+BASE=Path(baseline_temp.name)
 PAGES=list(json.loads((ROOT/'data/corporate-seo.json').read_text())['pages'])
 checks=[];errors=[]
 def check(name,condition):
  checks.append({'check':name,'passed':bool(condition)})
  if not condition:errors.append(name)
-manifest=json.loads((ROOT/'docs/seo-corporate-20261029/baseline-deployment-files.json').read_text())
+manifest=json.loads((ROOT/'docs/euro-20261029/deployment-files.json').read_text())
+for item in manifest:
+ if item['file'].startswith('release/static/') and 'data' in item:
+  target=BASE/item['file'].removeprefix('release/static/');target.parent.mkdir(parents=True,exist_ok=True);target.write_text(item['data'])
 paths={x['file'].removeprefix('release/static/') for x in manifest if x['file'].startswith('release/static/')}
 forms=lambda s:re.findall(r'<form\b.*?</form>',s,re.S)
 scripts=lambda s:[v for v in re.findall(r'<script\b.*?</script>',s,re.S) if 'application/ld+json' not in v]
@@ -64,8 +68,9 @@ oldsm=BeautifulSoup((BASE/'sitemap.xml').read_text(),'xml');newsm=BeautifulSoup(
 check('sitemap URLs retained',[x.text for x in oldsm.find_all('loc')]==[x.text for x in newsm.find_all('loc')])
 for x,y in zip(oldsm.find_all('url'),newsm.find_all('url')):
  if x.loc.text not in ['https://sollahms.cl/'+('' if f=='index.html' else f) for f in PAGES]:check('excluded sitemap '+x.loc.text,str(x)==str(y))
-check('robots unchanged',(ROOT/'robots.txt').read_text().rstrip()==(BASE/'robots.txt').read_text().rstrip())
-report={'passed':sum(x['passed'] for x in checks),'failed':len(errors),'checks':checks,'newBrokenLinks':new_broken,'existingBrokenLinks':existing_broken,'sourceBaseline':'1369697b2dbd1c9d614ec1ad8a62c7cd715c32a7'}
+expected_hashes=json.loads(next(x['data'] for x in manifest if x['file']=='release-hashes.json'))
+check('robots unchanged',hashlib.sha256((ROOT/'robots.txt').read_bytes()).hexdigest()==expected_hashes['static/robots.txt'])
+report={'passed':sum(x['passed'] for x in checks),'failed':len(errors),'checks':checks,'newBrokenLinks':new_broken,'existingBrokenLinks':existing_broken,'sourceBaseline':'da064d6433d9099af4b3e5df892f4db23997ad5c'}
 (ROOT/'docs/seo-corporate-20261029/static-verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({k:v for k,v in report.items() if k!='checks'},ensure_ascii=False))
 assert not errors,errors

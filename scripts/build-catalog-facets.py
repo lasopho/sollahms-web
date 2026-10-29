@@ -14,6 +14,8 @@ def main():
     if not args.property_audit:
         subprocess.run([sys.executable,str(ROOT/'scripts/catalog_property_facts.py'),'--root',str(ROOT),'--output',str(audit),'--report',str(docs/'property-audit.md')],check=True,stdout=subprocess.DEVNULL)
     property_data=json.loads(audit.read_text());catalog=json.loads((ROOT/'data/proyectos.json').read_text())
+    from euro_details import validate_prices
+    validate_prices(catalog)
     shared=json.loads((ROOT/'data/project-features.json').read_text())['projects'];taxonomy=json.loads((ROOT/'data/amenities.json').read_text())
     reviews=json.loads((ROOT/'data/purchase-stage-verifications.json').read_text())['reviews']
     definitions={f['id']:f for f in taxonomy['filters']};out={};counts=Counter();types={};missing=[]

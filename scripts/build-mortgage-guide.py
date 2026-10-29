@@ -4,6 +4,7 @@ from html import escape as e
 from pathlib import Path
 from corporate_seo import apply_corporate_seo
 from guide_navigation import apply_guide_navigation
+from commercial_origin import apply_origin_links
 from mortgage_guide_references import render_references
 from purchase_stage_links import guide_card, with_css, apply_stage_footer
 ROOT=Path(__file__).resolve().parents[1]
@@ -37,9 +38,8 @@ page=head+header+menu+'''<main id="contenido-principal" data-mortgage-guide>
 <details class="gh-disclosure gh-method"><summary>Ejemplo explicado en UF y pesos ilustrativos</summary><div><p>Una vivienda de 4.000 UF, con pie de 20%, requiere 800 UF de aporte y 3.200 UF de crédito. Con una UF <strong>hipotética de $40.000</strong>, corresponden a $160.000.000 de precio, $32.000.000 de pie y $128.000.000 de financiamiento.</p><p>'''+e(d['workedExample']['publicCopy'])+'''</p><p>Al cargar este ejemplo en el simulador, los equivalentes en pesos se actualizan con la UF oficial disponible; por eso pueden ser distintos de estas cifras ilustrativas.</p></div></details></div></section>
 <section class="gh-section" id="glosario"><div class="gh-wrap gh-bottom-grid"><div><p class="gh-kicker">PALABRAS QUE CONVIENE CONOCER</p><h2>Glosario</h2>'''+glossary+'''</div><div><p class="gh-kicker">DUDAS HABITUALES</p><h2>Preguntas frecuentes</h2>'''+faqs+'''</div></div></section>
 <section class="gh-section gh-sim-section" id="beneficios"><div class="gh-wrap"><div class="gh-benefits"><p class="gh-kicker">BENEFICIOS · REVISADO EL 29/10/2026</p><h2>'''+e(d['currentBenefits']['title'])+'''</h2>'''+prose(d['currentBenefits']['paragraphs'])+'''</div></div></section>
-<section class="gh-section"><div class="gh-wrap"><div class="gh-next"><div><p class="gh-kicker">TU SIGUIENTE PASO</p><h2>Conecta lo aprendido con tu búsqueda.</h2><p>Explora el catálogo o conversa con nosotros sobre tu objetivo. Para solicitar asesoría usarás el formulario habitual, con consentimiento antes de enviar tus datos.</p><p class="gh-help">Puedes usar toda la guía sin completar un formulario. Tus escenarios no se adjuntan a la solicitud.</p></div><div class="gh-actions"><a class="gh-button" href="/proyectos.html">Explorar proyectos</a><a class="gh-button gh-button-secondary" data-guide-advice href="/contacto.html#solicitar-asesoria">Solicitar asesoría hipotecaria</a></div></div></div></section>'''+guide_card()+render_references(d)+'''</main>'''+footer+'''<script type="module" src="/assets/js/mortgage-guide.mjs?v=20261029-1"></script></body></html>'''
+<section class="gh-section"><div class="gh-wrap"><div class="gh-next"><div><p class="gh-kicker">TU SIGUIENTE PASO</p><h2>Conecta lo aprendido con tu búsqueda.</h2><p>Explora el catálogo o conversa con nosotros sobre tu objetivo. Para solicitar asesoría usarás el formulario habitual, con consentimiento antes de enviar tus datos.</p><p class="gh-help">Puedes usar toda la guía sin completar un formulario. Tus escenarios no se adjuntan a la solicitud.</p></div><div class="gh-actions"><a class="gh-button" href="/proyectos.html">Explorar proyectos</a><a class="gh-button gh-button-secondary" data-guide-advice href="/contacto.html?origen=guia-hipotecaria#solicitar-asesoria">Solicitar asesoría hipotecaria</a></div></div></div></section>'''+guide_card()+render_references(d)+'''</main>'''+footer+'''<script type="module" src="/assets/js/mortgage-guide.mjs?v=20261029-euro-1"></script></body></html>'''
 page=apply_stage_footer(with_css(apply_guide_navigation(page)))
 page=re.sub(r'(<a data-guide-nav=""[^>]+href="/guia-hipotecaria.html")',r'\1 aria-current="page"',page)
-(ROOT/'guia-hipotecaria.html').write_text(apply_corporate_seo(page, 'guia-hipotecaria.html'))
+(ROOT/'guia-hipotecaria.html').write_text(apply_corporate_seo(apply_origin_links(page,'guia-hipotecaria'), 'guia-hipotecaria.html'))
 print('Generated guide:',len(page.encode()),'bytes')
-

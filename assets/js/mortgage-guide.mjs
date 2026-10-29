@@ -1,4 +1,4 @@
-import {calculateGuide,parseGuideNumber,guideProjectContext} from './mortgage-guide-engine.mjs?v=20261029-1';
+import {calculateGuide,parseGuideNumber,guideProjectContext} from './mortgage-guide-engine.mjs?v=20261029-euro-1';
 import {loadOfficialUf,UF_CLIENT_REFRESH_MS} from './official-uf.mjs';
 import {getUfStatus} from './mortgage-data.mjs';
 const number=new Intl.NumberFormat('es-CL',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -16,6 +16,7 @@ export function initGuide(root){
     const current=currentUf();target.querySelector('[data-clp]').textContent=value!==null&&current?pesos.format(value*current.valueClp)+' a la UF indicada':value===null?'No se supone costo cero.':'Conversión a pesos pendiente de UF vigente.';
   }
   function render(result,moveFocus=false){
+    for(const a of root.querySelectorAll('[data-guide-advice]')){const url=new URL(a.href,location.origin);url.searchParams.set('origen','simulador');a.href=url.pathname+url.search+url.hash;}
     $('gh-empty').hidden=true;$('gh-results').hidden=false;
     amount('gh-payment',result.monthlyBaseUf);amount('gh-payment-insurance',result.monthlyWithInsuranceUf);amount('gh-down-result',result.downPaymentUf);amount('gh-principal-result',result.principalUf);
     amount('gh-interest-result',result.totalInterestUf);amount('gh-total-base',result.totalBaseUf);amount('gh-initial-result',result.initialKnownUf);amount('gh-total-known',result.totalKnownCreditUf);
@@ -51,11 +52,11 @@ export function initGuide(root){
   $('gh-example').addEventListener('click',()=>{
     // Explicit opt-in example, never a default offer or an altered catalogue price.
     contextRequest++;project=null;$('gh-propertyUf').readOnly=false;$('gh-propertyUf').disabled=false;$('gh-project').hidden=true;$('gh-project-remove').hidden=true;
-    for(const link of root.querySelectorAll('[data-guide-advice]'))link.href='/contacto.html#solicitar-asesoria';
+    for(const link of root.querySelectorAll('[data-guide-advice]'))link.href='/contacto.html?origen=guia-hipotecaria#solicitar-asesoria';
     for(const [key,value] of Object.entries({propertyUf:'4000',downValue:'20',annualRatePercent:'4',years:'20',insuranceUf:'',monthlyFeesUf:'',upfrontFeesUf:''}))$('gh-'+key).value=value;
     $('gh-downMode').value='percent';$('gh-down-label').textContent='Pie · %';$('gh-rateConvention').value='nominal';$('gh-example-note').hidden=false;calculate();
   });
-  function detachProject(){contextRequest++;project=null;$('gh-propertyUf').readOnly=false;$('gh-propertyUf').disabled=false;$('gh-project').hidden=true;$('gh-project-remove').hidden=true;$('gh-propertyUf').readOnly=false;$('gh-propertyUf').value='';for(const a of root.querySelectorAll('[data-guide-advice]'))a.href='/contacto.html#solicitar-asesoria';dirty();}
+  function detachProject(){contextRequest++;project=null;$('gh-propertyUf').readOnly=false;$('gh-propertyUf').disabled=false;$('gh-project').hidden=true;$('gh-project-remove').hidden=true;$('gh-propertyUf').readOnly=false;$('gh-propertyUf').value='';for(const a of root.querySelectorAll('[data-guide-advice]'))a.href='/contacto.html?origen=guia-hipotecaria#solicitar-asesoria';dirty();}
   $('gh-project-remove').addEventListener('click',detachProject);
   $('gh-reset').addEventListener('click',()=>{detachProject();for(const name of fields)$('gh-'+name).value='';$('gh-downMode').value='percent';$('gh-down-label').textContent='Pie · %';$('gh-rateConvention').value='nominal';$('gh-example-note').hidden=true;clearErrors();$('gh-propertyUf').focus();});
   async function refreshUf(){
@@ -73,9 +74,9 @@ export function initGuide(root){
     $('gh-project').hidden=false;$('gh-project').textContent='Comprobando el precio publicado del proyecto…';$('gh-propertyUf').disabled=true;
     fetch('/data/proyectos.json',{cache:'no-store',signal:AbortSignal.timeout(6500)}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(rows=>{
       if(request!==contextRequest)return;project=guideProjectContext(location.search,rows);if(!project)throw Error();
-      $('gh-project').textContent=project.name+' · '+project.developer+'. '+(project.propertyUf===null?'Precio desde por consultar; puedes crear un escenario propio.':'Precio desde vigente de Sollahms. No identifica el precio de una unidad ni asegura financiamiento.');
+      $('gh-project').textContent=project.name+' · '+project.developer+(project.typology?' · '+project.typology:'')+'. '+(project.propertyUf===null?'Precio desde por consultar; puedes crear un escenario propio.':'Precio desde vigente de Sollahms. No identifica el precio de una unidad ni asegura financiamiento.');
       if(project.propertyUf!==null){$('gh-propertyUf').value=String(project.propertyUf);$('gh-propertyUf').readOnly=true;$('gh-project-remove').hidden=false;}
-      for(const a of root.querySelectorAll('[data-guide-advice]'))a.href='/contacto.html?proyecto='+encodeURIComponent(project.slug)+'#solicitar-asesoria';
+      for(const a of root.querySelectorAll('[data-guide-advice]'))a.href='/contacto.html?proyecto='+encodeURIComponent(project.slug)+(project.offerId?'&oferta='+encodeURIComponent(project.offerId):'')+'&origen=guia-hipotecaria#solicitar-asesoria';
     }).catch(()=>{if(request!==contextRequest)return;$('gh-project').textContent='No pudimos comprobar ese proyecto. No se incorporó ningún precio de la URL; puedes ingresar un escenario propio.';}).finally(()=>{$('gh-propertyUf').disabled=false;});
   }
 }

@@ -33,12 +33,17 @@ export function calculateGuide(input){
   }
   return {propertyUf,downPaymentUf,downPaymentPercent:downPaymentUf/propertyUf*100,principalUf,financingPercent:principalUf/propertyUf*100,annualRatePercent,rateConvention,years,months,monthlyRate,monthlyBaseUf,insuranceUf,monthlyFeesUf,upfrontFeesUf,monthlyWithInsuranceUf:insuranceUf===null?null:monthlyBaseUf+insuranceUf,monthlyKnownUf:monthlyBaseUf+(insuranceUf??0)+(monthlyFeesUf??0),totalBaseUf,totalInterestUf,modeledCostsUf,totalKnownCreditUf:principalUf+modeledCostsUf,initialKnownUf:downPaymentUf+(upfrontFeesUf??0),missingCosts,schedule};
 }
-/** Public slug only. Arbitrary URL prices, names and private values are ignored. */
+/** Public slug/offer identifiers only. URL prices, names and private values are ignored. */
 export function guideProjectContext(search,projects){
   if(typeof search!=='string'||search.length>1000||!Array.isArray(projects))return null;
   const q=new URLSearchParams(search);if(q.getAll('proyecto').length!==1)return null;
   const slug=q.get('proyecto');if(!/^[a-z0-9-]{1,100}$/.test(slug))return null;
   const p=projects.find(p=>p.slug===slug);if(!p)return null;
-  const price=typeof p.precioDesdeUF==='number'&&Number.isFinite(p.precioDesdeUF)&&p.precioDesdeUF>=100&&p.precioDesdeUF<=1_000_000?p.precioDesdeUF:null;
-  return {slug:p.slug,name:String(p.nombre),developer:String(p.inmobiliaria),propertyUf:price};
+  if(q.getAll('oferta').length>1)return null;
+  const key=q.get('oferta');
+  const offer=key?p.commercialOffers?.find(o=>o.id===key):null;
+  if(key&&!offer)return null;
+  const value=offer?offer.priceUF:p.precioDesdeUF;
+  const price=typeof value==='number'&&Number.isFinite(value)&&value>=100&&value<=1_000_000?value:null;
+  return {slug:p.slug,name:String(p.nombre),developer:String(p.inmobiliaria),propertyUf:price,...(offer?{offerId:offer.id,typology:offer.label,propertyType:offer.propertyType}:{})};
 }

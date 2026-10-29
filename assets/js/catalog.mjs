@@ -1,6 +1,8 @@
-import {priceFromLabel,validPrice,projectOffer as selectedOffer,projectFacts,filterAndSort,VIEW_KEY} from './catalog-model.mjs?v=20261029-stage-1';
-import {createFilterControls} from './catalog-filter-controls.mjs?v=20261029-stage-1';
-import {defaults,matchedLabels} from './catalog-filter-engine.mjs?v=20261029-stage-1';
+import {publicOrigin} from './commercial-context.mjs?v=20261029-euro-1';
+import {priceFromLabel,validPrice,projectOffer as selectedOffer,projectFacts,filterAndSort,VIEW_KEY} from './catalog-model.mjs?v=20261029-euro-1';
+import {createFilterControls} from './catalog-filter-controls.mjs?v=20261029-euro-1';
+import {defaults,matchedLabels} from './catalog-filter-engine.mjs?v=20261029-euro-1';
+const entryOrigin=publicOrigin(location.search,null);
 const $=id=>document.getElementById(id);
 const controls={assetType:$('asset-type'),sortOrder:$('sort-order')};
 const grid=$('project-grid'),count=$('project-count'),message=$('catalog-message');
@@ -14,7 +16,7 @@ function ensureMap(){
   if(mapInstance){mapInstance.show();mapInstance.update(mapResults,{assetType:controls.assetType.value,filters:values()});return;}
   if(mapPromise)return;
   mapHost.setAttribute('aria-busy','true');mapHost.replaceChildren(element('p','Cargando mapa…','catalog-map-status'));
-  mapPromise=import('./catalog-map.mjs?v=20261029-stage-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
+  mapPromise=import('./catalog-map.mjs?v=20261029-euro-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost,origin:entryOrigin})).then(instance=>{
     mapInstance=instance;if(view==='map'){instance.show();instance.update(mapResults,{assetType:controls.assetType.value,filters:values()});}else instance.hide();
   }).catch(error=>{
     mapHost.setAttribute('aria-busy','false');const note=element('p','El mapa no pudo cargar. Puedes seguir explorando todos los resultados en Tarjetas o Listado.');note.setAttribute('role','status');
@@ -46,24 +48,24 @@ function card(project){
   identity.append(title,element('p',[project.comuna,project.region].filter(Boolean).join(' · '),'catalog-location'));
   if(project.inmobiliaria)identity.append(element('p',project.inmobiliaria,'catalog-builder'));
   summary.append(identity);
-  const facts=projectFacts(project,controls.assetType.value);
+  const facts=projectFacts(project,controls.assetType.value||(values().propertyType==='local'?'Comercial':''));
   if(facts.length){const dl=element('dl',undefined,'catalog-facts');for(const fact of facts){const row=element('div');row.append(element('dt',fact.label),element('dd',fact.value));dl.append(row);}summary.append(dl);}
   const matches=matchedLabels(project,values());
   if(matches.length){const badges=element('ul',undefined,'cf-match-list');badges.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))badges.append(element('li',label));if(matches.length>3)badges.append(element('li','+'+(matches.length-3)+' coincidencias'));summary.append(badges);}
   group.append(cover,summary);article.append(group);
   // Action area is deliberately outside the opacity group; finance controls stay static too.
   const body=element('div',undefined,'catalog-card-body');body.dataset.scrollStatic='';
-  const actions=element('div',undefined,'catalog-actions'),price=element('div',undefined,'catalog-price');const offer=selectedOffer(project);
+  const actions=element('div',undefined,'catalog-actions'),price=element('div',undefined,'catalog-price');const offer=selectedOffer(project,values());
   if(validPrice(offer.value)){
     price.append(element('p',priceFromLabel(offer.value,project.precioDecimales),'catalog-price-value'));
     if(offer.typology)price.append(element('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));
   }else price.append(element('p',priceFromLabel(null),'catalog-price-unavailable'));
   actions.append(price);
   if(typeof project.detalleUrl==='string'&&/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl)){
-    const link=element('a','Ver detalles','catalog-details-link');link.href=project.detalleUrl;link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
+    const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local')?'&oferta=local':'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
   }
   body.append(actions);article.append(body);
-  if(!(project.preciosPorTipologia&&controls.assetType.value==='Comercial'))capacitySearch?.decorateCard(article,project);
+  if(!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
   const financial=body.querySelector('.capacity-result');
   if(financial){
     // Review dates remain in the source data; the financial scenario keeps all amounts/conditions.
@@ -90,7 +92,7 @@ async function load(){
     const data=await response.json();if(!Array.isArray(data)||new Set(data.map(p=>p.slug)).size!==data.length)throw Error('catalogue identity');
     data.forEach(project=>{if(!project||typeof project.slug!=='string'||typeof project.nombre!=='string'||!/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl))throw Error('catalogue identity');});
     let index={projects:{},filters:[],typologies:[]};
-    try{const response=await fetch('/data/catalog-facets.json?v=20261029-stage-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
+    try{const response=await fetch('/data/catalog-facets.json?v=20261029-euro-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Los filtros por características no pudieron cargar. Puedes seguir buscando por ubicación, nombre y precio.';}
     projects=data.map(p=>({...p,_facets:index.projects[p.slug]??{assetTypes:p.tiposActivos??[p.tipoActivo].filter(Boolean),states:[p.estado].filter(Boolean)}}));
     filterControls=createFilterControls({projects,index,onChange:render,getView:()=>view,setView:next=>{view=next;applyView();}});applyView();render();
