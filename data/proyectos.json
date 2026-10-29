@@ -3775,32 +3775,36 @@
     "inmobiliaria": "Crescer",
     "comuna": "Conchalí",
     "region": "Región Metropolitana",
-    "direccion": "Teniente Yavar 1733",
-    "estado": null,
-    "entrega": null,
+    "direccion": "Teniente Yávar 1733",
+    "estado": "En recepción final",
+    "entrega": "Inmediata",
     "tipologias": [
       "Estudio",
       "1 dormitorio",
-      "2 dormitorios"
+      "2 dormitorios",
+      "3 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2360.1,
     "detalleUrl": "/don-tomas.html",
-    "descripcionLarga": "Proyecto de Crescer en Teniente Yavar 1733, Conchalí, con modelos estudio, 1 y 2 dormitorios. El proyecto contempla 8 pisos y 274 departamentos, salas de estudio, jardín y juegos infantiles.",
+    "descripcionLarga": "Don Tomás es un edificio residencial de ocho pisos y 274 departamentos en Conchalí. Su arquitectura incorpora una escalera vidriada hacia el patio interior, un concepto completamente eléctrico y una altura interior informada de 2,4 metros. Ofrece estudios y departamentos de uno, dos y tres dormitorios, con distintas distribuciones para comparar. Su ubicación en Teniente Yávar 1733 conecta con Avenida Independencia y el entorno de las estaciones Conchalí y Vivaceta. Los espacios comunes incluyen quinchos, salón multiuso, gimnasio, juegos infantiles, lavandería y bicicleteros. La distribución, las superficies y las inclusiones se revisan según modelo al cotizar.",
     "mapQuery": "Teniente Yavar 1733, Conchalí, Región Metropolitana, Chile",
     "amenities": [
       "Gimnasio",
-      "Sala multiuso",
+      "Salón multiuso",
       "Lavandería",
-      "Lobby",
+      "Hall de acceso y lobby",
       "Bicicleteros",
       "Jardín",
       "Salas de estudio y trabajo",
       "Juegos infantiles",
-      "Quincho"
+      "Quinchos",
+      "Estacionamientos de visitas",
+      "Escalera vidriada",
+      "Patio interior"
     ],
     "superficieDesdeM2": null,
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-29",
       "fuente": "https://crescer.cl/project/dontomas",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -3808,15 +3812,48 @@
         "comuna",
         "descripcionLarga",
         "direccion",
+        "entrega",
+        "estado",
         "inmobiliaria",
         "mapQuery",
         "nombre",
+        "precioDesdeUF",
         "region",
+        "tipoActivo",
         "tipologias"
-      ]
+      ],
+      "fuentePrecios": "data/crescer-commercial.json",
+      "fuentePlanos": "data/crescer-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/01527c6b21cd6208b228e978.webp",
-    "imagenAlt": "Imagen oficial de Don Tomás"
+    "imagenAlt": "Imagen oficial de Don Tomás",
+    "precioDecimales": 2,
+    "preciosPorTipologia": [
+      {
+        "tipologia": "Estudio",
+        "precioDesdeUF": 2360.1
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 3292.89
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3292.89
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 3292.89
+      }
+    ],
+    "tipoActivo": "Residencial",
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "file": "data/crescer-commercial.json",
+      "date": "2026-10-29"
+    }
   },
   {
     "slug": "plaza-las-condes",
@@ -4139,30 +4176,31 @@
     "comuna": "Santiago",
     "region": "Región Metropolitana",
     "direccion": "Domeyko 1950",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "Estudio",
       "1 dormitorio",
       "2 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2817.14,
     "detalleUrl": "/don-rafael.html",
-    "descripcionLarga": "Proyecto de Crescer en Domeyko 1950, Santiago, con modelos estudio, 1 y 2 dormitorios. El edificio considera 9 pisos y 108 departamentos, terraza, gimnasio, lavandería y bicicleteros.",
+    "descripcionLarga": "Don Rafael es un edificio residencial de nueve pisos y 108 departamentos, ubicado en Domeyko 1950, Santiago, en el sector de la esquina con O. Edwards. Contempla estudios y departamentos de uno y dos dormitorios, junto con espacios comunes para el encuentro y las actividades cotidianas. El entorno combina vida residencial, actividad universitaria y servicios urbanos, con acceso al sector de Metro Toesca, establecimientos educacionales, comercios y Parque O’Higgins. La terraza en altura y el quincho del piso 9 complementan una propuesta para quienes buscan vivienda o evalúan una inversión, con condiciones y disponibilidad por confirmar al cotizar.",
     "mapQuery": "Domeyko 1950, Santiago, Región Metropolitana, Chile",
     "amenities": [
-      "Sala multiuso",
+      "Salón multiuso",
       "Lavandería",
-      "Lobby",
+      "Hall de acceso y lobby",
       "Gimnasio",
       "Bicicleteros",
-      "Quincho",
+      "Quincho en piso 9",
       "Estacionamientos",
-      "Terraza"
+      "Terraza común en altura",
+      "Estacionamientos de visitas"
     ],
     "superficieDesdeM2": null,
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-29",
       "fuente": "https://crescer.cl/project/donrafael",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -4175,12 +4213,39 @@
         "inmobiliaria",
         "mapQuery",
         "nombre",
+        "precioDesdeUF",
         "region",
+        "tipoActivo",
         "tipologias"
-      ]
+      ],
+      "fuentePrecios": "data/crescer-commercial.json",
+      "fuentePlanos": "data/crescer-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/da444bc17a0bc0fa25d98d27.webp",
-    "imagenAlt": "Imagen oficial de Don Rafael"
+    "imagenAlt": "Imagen oficial de Don Rafael",
+    "precioDecimales": 2,
+    "preciosPorTipologia": [
+      {
+        "tipologia": "Estudio",
+        "precioDesdeUF": 2817.14
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 3668.54
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 4985.77
+      }
+    ],
+    "tipoActivo": "Residencial",
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "file": "data/crescer-commercial.json",
+      "date": "2026-10-29"
+    }
   },
   {
     "slug": "terrazzo",

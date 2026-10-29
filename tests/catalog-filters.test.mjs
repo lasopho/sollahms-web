@@ -12,7 +12,7 @@ const options=facetOptions(projects,index),state=patch=>({...defaults(),...patch
 const fixture=(slug,variants,features=[],price=3000)=>({slug,nombre:slug,comuna:'Concepción',region:'Biobío',inmobiliaria:'Ejemplo',precioDesdeUF:price,_facets:{propertyTypes:['departamento'],variants,features:features.map(id=>({id,label:id,scope:'project'})),delivery:{year:2027},states:['En construcción'],assetTypes:['Residencial']}});
 test('no filters retain all projects, owner amounts, order and unknown data',()=>{
  const before=JSON.stringify(projects);assert.equal(filter(projects,defaults()).length,131);assert.deepEqual(filter(projects,defaults()).map(p=>p.slug),catalogue.map(p=>p.slug));assert.equal(JSON.stringify(projects),before);
- assert.equal(filter(projects,state({minPriceInput:'0'})).length,93);assert.equal(filter(projects,state({maxPriceInput:'0'})).length,0);
+ assert.equal(filter(projects,state({minPriceInput:'0'})).length,projects.filter(p=>p.precioDesdeUF!=null).length);assert.equal(filter(projects,state({maxPriceInput:'0'})).length,0);
 });
 test('categories intersect; selections within amenities use OR or explicit ALL',()=>{
  const a=fixture('A',[],['piscina']),b=fixture('B',[],['gimnasio']),c=fixture('C',[],['piscina','gimnasio']),unknown=fixture('unknown',[]);
@@ -73,7 +73,7 @@ test('projection is complete without unit inventory, empty facets, generated abs
  assert.ok(!options.states.includes('Venta en verde'));assert.ok(options.states.includes('En verde'));
  assert.ok(filter(projects,state({search:'casa'})).some(p=>p.slug==='endemico'));
  assert.ok(index.typologies.every(t=>!t.label.startsWith(' · ')));
- for(const p of Object.values(index.projects))for(const v of p.variants)for(const [metric,amount] of Object.entries(v.areas))assert.ok(['util','interior','total','terreno','terraza','jardin'].includes(metric)&&Number.isFinite(amount)&&amount>0);
+ for(const p of Object.values(index.projects))for(const v of p.variants)for(const [metric,amount] of Object.entries(v.areas))assert.ok(['util','interior','total','departamento','terreno','terraza','jardin'].includes(metric)&&Number.isFinite(amount)&&amount>0);
 });
 test('current catalogue filtering stays responsive without network or mutation',()=>{
  const start=performance.now();for(let i=0;i<200;i++)filter(projects,state({bedrooms:'2',amenities:['piscina'],maxPriceInput:'4500',sortOrder:'price-asc'}));

@@ -1,15 +1,15 @@
 {
   "summary": {
     "projects": 131,
-    "filters": 20,
-    "knownPrices": 93,
-    "pendingPrices": 38,
+    "filters": 21,
+    "knownPrices": 95,
+    "pendingPrices": 36,
     "projectsWithFeatures": 114,
-    "projectsWithTypedAreas": 54,
+    "projectsWithTypedAreas": 56,
     "projectsWithBathrooms": 115,
-    "projectsWithDelivery": 80,
-    "publicBytes": 151956,
-    "sha256": "7fc1ffe4601b677d51dfe511c540a668f514cc5f8249e4c015023835c96737b2"
+    "projectsWithDelivery": 81,
+    "publicBytes": 156225,
+    "sha256": "919bb89dc3ef4ccaa8178ae846a66c5ebf2c1909d3f6740fd799f74b61b60935"
   },
   "filters": [
     {
@@ -108,7 +108,7 @@
       "label": "Estacionamientos",
       "group": "amenities",
       "icon": "parking",
-      "count": 5
+      "count": 6
     },
     {
       "id": "bodegas",
@@ -143,7 +143,7 @@
       "label": "Terraza privada",
       "group": "features",
       "icon": "terrace",
-      "count": 41
+      "count": 43
     },
     {
       "id": "jardin-privado",
@@ -151,6 +151,13 @@
       "group": "features",
       "icon": "garden",
       "count": 2
+    },
+    {
+      "id": "terraza-comun",
+      "label": "Terraza común",
+      "group": "amenities",
+      "definition": "Terraza compartida documentada; no supone vista panorámica ni espacio privado.",
+      "count": 1
     }
   ],
   "pending": [
@@ -1208,17 +1215,14 @@
     {
       "slug": "don-tomas",
       "name": "Don Tomás",
-      "pricePending": true,
+      "pricePending": false,
       "amenitiesUnknown": false,
       "propertyTypeUnknown": false,
-      "deliveryUnknown": true,
-      "stateUnknown": true,
-      "typedAreaUnknown": true,
+      "deliveryUnknown": false,
+      "stateUnknown": false,
+      "typedAreaUnknown": false,
       "bathroomsUnknown": false,
       "notes": [
-        "No exact typed area for a filterable variant; ranges retained separately.",
-        "Delivery date/year unconfirmed; historical dates excluded.",
-        "No linked private terrace affirmation; common rooftop excluded.",
         "No linked private garden/patio affirmation; communal green areas excluded."
       ]
     },
@@ -1321,16 +1325,14 @@
     {
       "slug": "don-rafael",
       "name": "Don Rafael",
-      "pricePending": true,
+      "pricePending": false,
       "amenitiesUnknown": false,
       "propertyTypeUnknown": false,
       "deliveryUnknown": false,
       "stateUnknown": false,
-      "typedAreaUnknown": true,
+      "typedAreaUnknown": false,
       "bathroomsUnknown": false,
       "notes": [
-        "No exact typed area for a filterable variant; ranges retained separately.",
-        "No linked private terrace affirmation; common rooftop excluded.",
         "No linked private garden/patio affirmation; communal green areas excluded."
       ]
     },

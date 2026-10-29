@@ -1,0 +1,24 @@
+/* Reusable brochure models and owner offers; inherits the site's visual tokens. */
+.pb-offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1.25rem;margin:1.5rem 0}
+.pb-offer,.pb-plan{border:1px solid var(--s-line);border-radius:var(--s-radius);padding:1.5rem;background:var(--s-white);min-width:0}
+.pb-offer{display:flex;flex-direction:column;gap:.6rem}
+.pb-offer h3,.pb-plan h3{margin:0;font:600 1.1rem/1.5 Manrope,sans-serif;color:var(--s-green)}
+.pb-offer p{margin:0;color:var(--s-muted)}
+.pb-offer .pb-price{font:600 1.5rem/1.4 Manrope,sans-serif;color:var(--s-green);margin:.5rem 0}
+.pb-offer .button{margin-top:auto;white-space:normal;text-align:center}
+.pb-note{font-size:.86rem;line-height:1.65;color:var(--s-muted);max-width:90ch}
+.pb-plan-group{margin:1.5rem 0;scroll-margin-top:calc(var(--pj-header-height,80px) + 90px)}
+.pb-plan-group>summary{padding:1rem 0;font:600 1rem/1.5 Manrope,sans-serif;border-bottom:1px solid var(--s-line);cursor:pointer}
+.pb-plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:1.5rem}
+.pb-plan>a:first-of-type{display:block;margin:1rem 0}
+.pb-plan img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;transform:none}
+.pb-plan .pb-model{border-top:1px solid var(--s-line);padding:1rem 0 0;margin-top:1rem}
+.pb-plan h4{margin:.3rem 0;font-size:.95rem}
+.pb-plan dl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3rem 1rem;margin:.8rem 0;font-size:.87rem}
+.pb-plan dt{color:var(--s-muted)}
+.pb-plan dd{margin:0;text-align:right;font-weight:600}
+.pb-selection{padding:1rem;border:1px solid var(--s-line);border-radius:var(--s-radius);background:var(--s-soft);margin:1rem 0}
+.pb-selection p{font-weight:600;margin:0 0 .5rem}
+.pb-selection button{padding:.6rem 1rem;min-height:44px;border:1px solid var(--s-field-line);border-radius:var(--s-radius);color:var(--s-green);background:var(--s-white);cursor:pointer}
+@media(max-width:640px){.pb-offers,.pb-plans{grid-template-columns:1fr;gap:1rem}.pb-offer,.pb-plan{padding:1.25rem}.pb-plan dl{gap:.3rem .7rem;font-size:.82rem}}
+@media print{.pb-plan-group::details-content{content-visibility:visible}.pb-plan{break-inside:avoid}}

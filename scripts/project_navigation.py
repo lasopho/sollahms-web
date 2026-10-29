@@ -22,10 +22,12 @@ PENDING = re.compile(r'^(?:por confirmar|consultar precio|consultar valor|pendie
 def fragment(value):return BeautifulSoup(value,'html.parser')
 def text(node):return node.get_text(' ',strip=True) if node else ''
 def escape(value):return html.escape(str(value),quote=True)
-def price_from(value):
+def price_from(value,minimum_decimals=0):
     if not isinstance(value,(int,float)) or isinstance(value,bool) or not math.isfinite(value) or value<=0:
         return 'Desde: consultar precio'
-    n=f'{value:,.2f}'.rstrip('0').rstrip('.').replace(',','_').replace('.',',').replace('_','.')
+    n=f'{value:,.2f}'
+    if minimum_decimals!=2:n=n.rstrip('0').rstrip('.')
+    n=n.replace(',','_').replace('.',',').replace('_','.')
     return 'Desde UF '+n
 
 def section(soup,id_,title):
@@ -95,7 +97,7 @@ def apply_navigation(page,project):
         market=fragment('<div class="ci-market" data-scroll-static><strong></strong></div>').div
         hero.select_one('.ci-details').insert_after(market)
     if not market.strong:market.append(soup.new_tag('strong'))
-    market.strong.clear();market.strong.string=price_from(project.get('precioDesdeUF'))
+    market.strong.clear();market.strong.string=price_from(project.get('precioDesdeUF'),project.get('precioDecimales',0))
     market['data-reference-price']=str(project['precioDesdeUF']) if project.get('precioDesdeUF') else ''
     for label in market.select('.price-label'):
         if text(label).casefold() in ('precio desde','desde','precio'):label.decompose()
@@ -153,7 +155,7 @@ def apply_navigation(page,project):
         dd=dt.find_next_sibling('dd')
         if dd and PENDING.fullmatch(text(dd)) and 'precio' not in text(dt).casefold():
             if dt.parent.name=='div' and len(dt.parent.find_all('dt',recursive=False))==1:dt.parent.decompose()
-        elif dd and 'precio desde' in text(dt).casefold():dd.clear();dd.string=price_from(project.get('precioDesdeUF'))
+        elif dd and 'precio desde' in text(dt).casefold():dd.clear();dd.string=price_from(project.get('precioDesdeUF'),project.get('precioDecimales',0))
     for child in list(content.find_all(recursive=False)):
         if child is features:continue
         title=text(child.find('h2',recursive=False))

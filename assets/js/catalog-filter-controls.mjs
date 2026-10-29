@@ -1,9 +1,9 @@
 import {defaults,FILTER_STORAGE,sanitizeState,readQuery,writeQuery,safePublicState,rangeIssue} from './catalog-filter-engine.mjs?v=20261029-filters-1';
-import {assetTypes,projectStates,VIEW_KEY,SESSION_KEY} from './catalog-model.mjs?v=20261029-filters-1';
+import {assetTypes,projectStates,VIEW_KEY,SESSION_KEY} from './catalog-model.mjs?v=20261029-crescer-1';
 const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
 const unique=values=>[...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'es-CL',{numeric:true}));
 const propertyLabels={departamento:'Departamento',casa:'Casa',terreno:'Terreno o parcela',local:'Local comercial',oficina:'Oficina'};
-const areaLabels={util:'Útil',interior:'Interior',total:'Total',terreno:'Terreno',terraza:'Terraza',jardin:'Jardín privado'};
+const areaLabels={util:'Útil',interior:'Interior',total:'Total',departamento:'Departamento (según plano)',terreno:'Terreno',terraza:'Terraza',jardin:'Jardín privado'};
 const arrayFields=['amenities','features','developers','typologies'];
 const controlIds={search:'search',region:'region',commune:'commune',minPriceInput:'min-price',maxPriceInput:'max-price',propertyType:'property-type',bedrooms:'bedrooms',delivery:'delivery',bathrooms:'bathrooms',areaType:'area-type',minArea:'min-area',maxArea:'max-area',state:'state',assetType:'asset-type',sortOrder:'sort-order'};
 const captions={search:'Búsqueda',region:'Región',commune:'Comuna',minPriceInput:'Desde UF',maxPriceInput:'Hasta UF',propertyType:'Propiedad',bedrooms:'Dormitorios',delivery:'Entrega',bathrooms:'Baños',minArea:'Desde m²',maxArea:'Hasta m²',state:'Estado',assetType:'Uso',amenities:'Amenity',features:'Vivienda',developers:'Inmobiliaria',typologies:'Tipología'};

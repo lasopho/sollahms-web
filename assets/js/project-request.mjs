@@ -2,7 +2,7 @@ import {validateCommercialFields, normalizedCommercialFields, focusCommercialFie
 import { createFormOperation } from './form-operation.mjs';
 import { resolveProjectIdentity } from './project-identity.mjs';
 import { bindRutField } from './rut-field.mjs?v=20261026-required-1';
-import { priceFromLabel } from './catalog-model.mjs?v=20261029-structure-1';
+import { priceFromLabel } from './catalog-model.mjs?v=20261029-crescer-1';
 
 /** Use the existing advisory contract; no new destination or provider fields. */
 export function composeProjectRequest({values,project,intent,startedAt}) {
@@ -15,7 +15,7 @@ export function composeProjectRequest({values,project,intent,startedAt}) {
     'Ficha de origen: https://sollahms.cl'+project.detalleUrl];
   if(project.nombre)lines.push('Proyecto: '+project.nombre);
   if(project.inmobiliaria)lines.push('Inmobiliaria: '+project.inmobiliaria);
-  if(Object.hasOwn(project,'precioDesdeUF'))lines.push('Referencia del proyecto: '+priceFromLabel(project.precioDesdeUF)+'. No es el precio definitivo de una unidad.');
+  if(Object.hasOwn(project,'precioDesdeUF'))lines.push('Referencia del proyecto: '+priceFromLabel(project.precioDesdeUF,project.precioDecimales)+'. No es el precio definitivo de una unidad.');
   if (intent === 'llamada' && time) lines.push('Horario preferido (no es una reserva): '+time);
   if (message) lines.push('Mensaje del visitante: '+message);
   const mensaje=lines.join('\n');

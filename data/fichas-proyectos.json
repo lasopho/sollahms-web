@@ -16989,9 +16989,9 @@
   {
     "slug": "don-tomas",
     "sourceUrl": "https://crescer.cl/project/dontomas",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "La página oficial contiene campos de plantilla inconsistentes (precio Venta con sufijo /month, superficie global sin tipo y amenidades genéricas). Se conservan dirección, modelos y equipamiento descritos en texto específico; precio y superficies requieren cotización.",
+    "sourceNotes": "Precios, entrega y estado proporcionados por Sollahms. PDF revisados completos. Superficies con denominación original y sin inferir stock. Ver data/crescer-brochures.json para evidencia y contradicciones.",
     "sourceEvidence": [
       "Teniente Yavar 1733, Santiago, Chile dontomas | Crescer Don Tomás Teniente Yavar 1733, Santiago, Chile Comuna de Conchalí Venta Desde 1925 UF /month Segundo semestre 2025 Piezas 2 Baños 2 Area 34,5 m2 Estacionamientos 1 Piezas 2 Baños 2 Area 34,5 m2 Estacionamientos 1 Piezas 2 Baños 2 Area 34,5 m2 E"
     ],
@@ -17000,10 +17000,14 @@
       "comuna",
       "descripcionLarga",
       "direccion",
+      "entrega",
+      "estado",
       "inmobiliaria",
       "mapQuery",
       "nombre",
+      "precioDesdeUF",
       "region",
+      "tipoActivo",
       "tipologias"
     ],
     "updates": {
@@ -17011,32 +17015,65 @@
       "inmobiliaria": "Crescer",
       "comuna": "Conchalí",
       "region": "Región Metropolitana",
-      "direccion": "Teniente Yavar 1733",
+      "direccion": "Teniente Yávar 1733",
       "tipologias": [
         "Estudio",
         "1 dormitorio",
-        "2 dormitorios"
+        "2 dormitorios",
+        "3 dormitorios"
       ],
       "mapQuery": "Teniente Yavar 1733, Conchalí, Región Metropolitana, Chile",
       "amenities": [
         "Gimnasio",
-        "Sala multiuso",
+        "Salón multiuso",
         "Lavandería",
-        "Lobby",
+        "Hall de acceso y lobby",
         "Bicicleteros",
         "Jardín",
         "Salas de estudio y trabajo",
         "Juegos infantiles",
-        "Quincho"
+        "Quinchos",
+        "Estacionamientos de visitas",
+        "Escalera vidriada",
+        "Patio interior"
       ],
-      "descripcionLarga": "Proyecto de Crescer en Teniente Yavar 1733, Conchalí, con modelos estudio, 1 y 2 dormitorios. El proyecto contempla 8 pisos y 274 departamentos, salas de estudio, jardín y juegos infantiles."
+      "descripcionLarga": "Don Tomás es un edificio residencial de ocho pisos y 274 departamentos en Conchalí. Su arquitectura incorpora una escalera vidriada hacia el patio interior, un concepto completamente eléctrico y una altura interior informada de 2,4 metros. Ofrece estudios y departamentos de uno, dos y tres dormitorios, con distintas distribuciones para comparar. Su ubicación en Teniente Yávar 1733 conecta con Avenida Independencia y el entorno de las estaciones Conchalí y Vivaceta. Los espacios comunes incluyen quinchos, salón multiuso, gimnasio, juegos infantiles, lavandería y bicicleteros. La distribución, las superficies y las inclusiones se revisan según modelo al cotizar.",
+      "precioDesdeUF": 2360.1,
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 2,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "Estudio",
+          "precioDesdeUF": 2360.1
+        },
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": 3292.89
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3292.89
+        },
+        {
+          "tipologia": "3 dormitorios",
+          "precioDesdeUF": 3292.89
+        }
+      ],
+      "estadoInformado": "En recepción final",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/crescer-commercial.json",
+        "date": "2026-10-29"
+      }
     },
     "specs": {
       "utilM2": null,
       "totalM2": null,
       "terrenoM2": null,
-      "dormitorios": "Estudio; 1–2",
-      "banos": "1–2"
+      "dormitorios": "Estudio / 1 dormitorio / 2 dormitorios / 3 dormitorios",
+      "banos": "1 a 2"
     },
     "images": [
       {
@@ -17066,12 +17103,10 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Entrega actual: web aún indica Segundo semestre 2025",
-      "Superficie útil",
-      "Superficie total",
-      "Recorrido virtual oficial específico no localizado",
-      "Precio vigente y disponibilidad",
-      "Fecha de entrega"
+      "Disponibilidad e inclusiones por unidad",
+      "Superficie útil no publicada",
+      "Superficie total con terraza no publicada",
+      "El propietario informa UF 3.292,89 para 1, 2 y 3 dormitorios. Conservar los tres valores; conviene confirmar la coincidencia comercial."
     ],
     "reviewedOriginal": {
       "comuna": "Conchalí",
@@ -17104,6 +17139,1885 @@
         "url": "https://cdn.prod.website-files.com/6555276feb3575fd21fad12a/65ea307dbe18a30398ee3393_Render%201D1B%20Don%20Toma%CC%81s.jpg",
         "alt": "Imagen oficial de Don Tomás",
         "sourceUrl": "https://crescer.cl/project/dontomas"
+      }
+    ],
+    "historicalSourceNotes": "La página oficial contiene campos de plantilla inconsistentes (precio Venta con sufijo /month, superficie global sin tipo y amenidades genéricas). Se conservan dirección, modelos y equipamiento descritos en texto específico; precio y superficies requieren cotización.",
+    "brochureModels": [
+      {
+        "id": "don-tomas-b4",
+        "page": 5,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 5,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D007"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "37.83",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "37.39",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "B4",
+        "label": "Tipo B4",
+        "printedName": "TIPO B4",
+        "printedTypology": "1 DORMITORIO / 1 BAÑO",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": "Piso 0",
+        "floors": [
+          0
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "37.39",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": 1,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "37.83",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "37.39",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "37.39",
+          "printed": "37.39",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-c1",
+        "page": 5,
+        "position": "middle",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 5,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "middle"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D020"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "42.72",
+        "shaftM2": "-0.35",
+        "departmentTotalM2": "42.37",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "C1",
+        "label": "Tipo C1",
+        "printedName": "TIPO C1",
+        "printedTypology": "2 DORMITORIO / 1 BAÑO",
+        "typology": "2d-1b",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floorLabel": "Piso 0",
+        "floors": [
+          0
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "42.37",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "middle"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "middle"
+            }
+          },
+          "printedBathrooms": 1,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "42.72",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.35",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "42.37",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "42.37",
+          "printed": "42.37",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-b2",
+        "page": 5,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 5,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D024"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "33.44",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "33.00",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "B2",
+        "label": "Tipo B2",
+        "printedName": "TIPO B2",
+        "printedTypology": "1 DORMITORIO / 1 BAÑO",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": "Piso 0",
+        "floors": [
+          0
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "33.00",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": 1,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "33.44",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "33.00",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "33.00",
+          "printed": "33.00",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-a8",
+        "page": 6,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 6,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D102",
+          "D103"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "34.05",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "33.61",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "multiple_references_one_model",
+            "severity": "note",
+            "message": "Una sola planta Tipo A8 lleva dos referencias, D102 y D103. No duplicar el modelo."
+          },
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "A8",
+        "label": "Tipo A8",
+        "printedName": "TIPO A8",
+        "printedTypology": "ESTUDIO",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": "Piso 1",
+        "floors": [
+          1
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "33.61",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_bathroom_in_plan",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "34.05",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "33.61",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "33.61",
+          "printed": "33.61",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-c3",
+        "page": 6,
+        "position": "middle",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 6,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "middle"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D106"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "57.64",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "57.20",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "C3",
+        "label": "Tipo C3",
+        "printedName": "TIPO C3",
+        "printedTypology": "2 DORMITORIOS / 2 BAÑOS",
+        "typology": "2d-2b",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "floorLabel": "Piso 1",
+        "floors": [
+          1
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "57.20",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "middle"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "middle"
+            }
+          },
+          "printedBathrooms": 2,
+          "visualBathrooms": 2
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "57.64",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "57.20",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "57.20",
+          "printed": "57.20",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-a6",
+        "page": 6,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 6,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D108"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "26.09",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "25.65",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "A6",
+        "label": "Tipo A6",
+        "printedName": "TIPO A6",
+        "printedTypology": "ESTUDIO",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": "Piso 1",
+        "floors": [
+          1
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "25.65",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_bathroom_in_plan",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "26.09",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "25.65",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "25.65",
+          "printed": "25.65",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-e1",
+        "page": 7,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 7,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D128"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "64.86",
+        "shaftM2": "-0.65",
+        "departmentTotalM2": "64.21",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "E1",
+        "label": "Tipo E1",
+        "printedName": "TIPO E1",
+        "printedTypology": "3 DORMITORIOS/ 2 BAÑOS",
+        "typology": "3d-2b",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "floorLabel": "Piso 1",
+        "floors": [
+          1
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "64.21",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 7,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 7,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": 2,
+          "visualBathrooms": 2
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "64.86",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.65",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "64.21",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "64.21",
+          "printed": "64.21",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-c8",
+        "page": 7,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 7,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D133"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "48.46",
+        "shaftM2": "-0.35",
+        "departmentTotalM2": "48.11",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "C8",
+        "label": "Tipo C8",
+        "printedName": "TIPO C8",
+        "printedTypology": "2 DORMITORIOS/ 1 BAÑOS",
+        "typology": "2d-1b",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "floorLabel": "Piso 1",
+        "floors": [
+          1
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "48.11",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 7,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 7,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": 1,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "48.46",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.35",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "48.11",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "48.11",
+          "printed": "48.11",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-c6",
+        "page": 8,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 8,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D207"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "43.99",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "43.55",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "C6",
+        "label": "Tipo C6",
+        "printedName": "TIPO C6",
+        "printedTypology": "2 DORMITORIOS / 2 BAÑOS",
+        "typology": "2d-2b",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "floorLabel": "Piso 2",
+        "floors": [
+          2
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "43.55",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 8,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 8,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": 2,
+          "visualBathrooms": 2
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "43.99",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "43.55",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "43.55",
+          "printed": "43.55",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-a2",
+        "page": 8,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 8,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D227"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "30.37",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "29.93",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "A2",
+        "label": "Tipo A2",
+        "printedName": "TIPO A2",
+        "printedTypology": "ESTUDIO",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": "Piso 2",
+        "floors": [
+          2
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "29.93",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 8,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_bathroom_in_plan",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 8,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "30.37",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0.44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "29.93",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "29.93",
+          "printed": "29.93",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-b5",
+        "page": 9,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 9,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D321"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "33.66",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "33.22",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "1.50",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": "B5",
+        "label": "Tipo B5",
+        "printedName": "TIPO B5",
+        "printedTypology": "1 DORMITORIO 1 BAÑO",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": "Piso 3",
+        "floors": [
+          3
+        ],
+        "privateTerrace": true,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "33.22",
+          "terraza": "1.50"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 9,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 9,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": 1,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "33,66",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0,44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "33,22",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "1,50",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "33.22",
+          "printed": "33.22",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-a25",
+        "page": 9,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 9,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D323"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "28.74",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "28.30",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "1.50",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": "A25",
+        "label": "Tipo A25",
+        "printedName": "TIPO A25",
+        "printedTypology": "ESTUDIO",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": "Piso 3",
+        "floors": [
+          3
+        ],
+        "privateTerrace": true,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "28.30",
+          "terraza": "1.50"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 9,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_bathroom_in_plan",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 9,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "28,74",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0,44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "28,30",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "1,50",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "28.30",
+          "printed": "28.30",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-b9",
+        "page": 10,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 10,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D416"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "31.89",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "31.45",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "1.50",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": "B9",
+        "label": "Tipo B9",
+        "printedName": "TIPO B9",
+        "printedTypology": "1 DORMITORIO 1 BAÑO",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": "Pisos 4 al 8",
+        "floors": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "privateTerrace": true,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "31.45",
+          "terraza": "1.50"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": 1,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "31,89",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0,44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "31,45",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "1,50",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "31.45",
+          "printed": "31.45",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-b3",
+        "page": 10,
+        "position": "middle",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 10,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "middle"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D425"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "27.73",
+        "shaftM2": "-0.57",
+        "departmentTotalM2": "27.16",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "B3",
+        "label": "Tipo B3",
+        "printedName": "TIPO B3",
+        "printedTypology": "1 DORMITORIO 1 BAÑO",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": "Pisos 4 al 8",
+        "floors": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "27.16",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "middle"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "middle"
+            }
+          },
+          "printedBathrooms": 1,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "27,73",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0,57",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "27,16",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "27.16",
+          "printed": "27.16",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-a10",
+        "page": 10,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 10,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D427"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "26.01",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "25.57",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "A10",
+        "label": "Tipo A10",
+        "printedName": "TIPO A10",
+        "printedTypology": "ESTUDIO",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": "Pisos 4 al 8",
+        "floors": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "25.57",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_bathroom_in_plan",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "26,01",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0,44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "25,57",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "25.57",
+          "printed": "25.57",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
+      },
+      {
+        "id": "don-tomas-b10",
+        "page": 11,
+        "position": "single",
+        "source": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 11,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "single"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Tomás.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "D819"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": "33.97",
+        "shaftM2": "-0.44",
+        "departmentTotalM2": "33.53",
+        "usefulM2": null,
+        "interiorM2": null,
+        "terraceM2": "0",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "explicit_zero_terrace",
+            "severity": "note",
+            "message": "TERRAZA figura expresamente como 0; no implica patio o jardín privado."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": "B10",
+        "label": "Tipo B10",
+        "printedName": "TIPO B10",
+        "printedTypology": "1 DORMITORIO 1 BAÑO",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": "Pisos 4 al 8",
+        "floors": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "privateTerrace": false,
+        "areaMetricPolicy": "TOTAL DEPARTAMENTO is its own metric; do not relabel useful/interior/overall total or add terrace",
+        "filterAreas": {
+          "departamento": "33.53",
+          "terraza": "0"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 11,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "single"
+            }
+          },
+          "bathrooms": {
+            "basis": "printed_numeric_room_count",
+            "source": {
+              "filename": "Crescer - Don Tomás.pdf",
+              "page": 11,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "single"
+            }
+          },
+          "printedBathrooms": 1,
+          "visualBathrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "DEPARTAMENTO",
+            "value": "33,97",
+            "unit": "m2"
+          },
+          {
+            "label": "SHAFT",
+            "value": "-0,44",
+            "unit": "m2"
+          },
+          {
+            "label": "TOTAL DEPARTAMENTO",
+            "value": "33,53",
+            "unit": "m2"
+          },
+          {
+            "label": "TERRAZA",
+            "value": "0",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "expression": "DEPARTAMENTO + signed SHAFT compared with printed TOTAL DEPARTAMENTO",
+          "calculatedForQAOnly": "33.53",
+          "printed": "33.53",
+          "deltaM2": "0.00",
+          "matches": true,
+          "publicationRule": "Use printed TOTAL DEPARTAMENTO; QA calculation is not another published area."
+        }
       }
     ]
   },
@@ -22327,9 +24241,9 @@
   {
     "slug": "don-rafael",
     "sourceUrl": "https://crescer.cl/project/donrafael",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "La página oficial contiene campos de plantilla inconsistentes (precio Venta con sufijo /month, superficie global sin tipo y amenidades genéricas). Se conservan dirección, modelos y equipamiento descritos en texto específico; precio y superficies requieren cotización.",
+    "sourceNotes": "Precios, entrega y estado proporcionados por Sollahms. PDF revisados completos. Superficies con denominación original y sin inferir stock. Ver data/crescer-brochures.json para evidencia y contradicciones.",
     "sourceEvidence": [
       "Domeyko 1950, Santiago, Chile donrafael | Crescer Don Rafael Domeyko 1950, Santiago, Chile Comuna Santiago Venta Desde 2160 UF /month Inmediata Piezas 2 Baños 1 Area 25,6 m2 Estacionamientos 1 Piezas 2 Baños 1 Area 25,6 m2 Estacionamientos 1 Piezas 2 Baños 1 Area 25,6 m2 Estacionamientos 1 Piezas 2"
     ],
@@ -22343,7 +24257,9 @@
       "inmobiliaria",
       "mapQuery",
       "nombre",
+      "precioDesdeUF",
       "region",
+      "tipoActivo",
       "tipologias"
     ],
     "updates": {
@@ -22358,25 +24274,49 @@
         "2 dormitorios"
       ],
       "mapQuery": "Domeyko 1950, Santiago, Región Metropolitana, Chile",
-      "estado": "Entrega inmediata",
+      "estado": "En recepción final",
       "entrega": "Inmediata",
       "amenities": [
-        "Sala multiuso",
+        "Salón multiuso",
         "Lavandería",
-        "Lobby",
+        "Hall de acceso y lobby",
         "Gimnasio",
         "Bicicleteros",
-        "Quincho",
+        "Quincho en piso 9",
         "Estacionamientos",
-        "Terraza"
+        "Terraza común en altura",
+        "Estacionamientos de visitas"
       ],
-      "descripcionLarga": "Proyecto de Crescer en Domeyko 1950, Santiago, con modelos estudio, 1 y 2 dormitorios. El edificio considera 9 pisos y 108 departamentos, terraza, gimnasio, lavandería y bicicleteros."
+      "descripcionLarga": "Don Rafael es un edificio residencial de nueve pisos y 108 departamentos, ubicado en Domeyko 1950, Santiago, en el sector de la esquina con O. Edwards. Contempla estudios y departamentos de uno y dos dormitorios, junto con espacios comunes para el encuentro y las actividades cotidianas. El entorno combina vida residencial, actividad universitaria y servicios urbanos, con acceso al sector de Metro Toesca, establecimientos educacionales, comercios y Parque O’Higgins. La terraza en altura y el quincho del piso 9 complementan una propuesta para quienes buscan vivienda o evalúan una inversión, con condiciones y disponibilidad por confirmar al cotizar.",
+      "precioDesdeUF": 2817.14,
+      "tipoActivo": "Residencial",
+      "precioDecimales": 2,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "Estudio",
+          "precioDesdeUF": 2817.14
+        },
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": 3668.54
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 4985.77
+        }
+      ],
+      "estadoInformado": "En recepción final",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/crescer-commercial.json",
+        "date": "2026-10-29"
+      }
     },
     "specs": {
       "utilM2": null,
       "totalM2": null,
       "terrenoM2": null,
-      "dormitorios": "Estudio; 1–2",
+      "dormitorios": "Estudio / 1 dormitorio / 2 dormitorios",
       "banos": "1"
     },
     "images": [
@@ -22415,10 +24355,10 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Superficie útil",
-      "Superficie total",
-      "Recorrido virtual oficial específico no localizado",
-      "Precio vigente y disponibilidad"
+      "Disponibilidad e inclusiones por unidad",
+      "Superficie útil no publicada",
+      "Superficie total con terraza no publicada",
+      "La planta dibuja dos recintos separados rotulados DORMITORIO y un BAÑO, mientras el título dice ESTUDIO. Las superficies 18,56 y 5,50 repiten exactamente las de la planta izquierda. No se puede verificar si el error está en título, superficies o asociación de dibujo."
     ],
     "reviewedOriginal": {
       "comuna": "Santiago",
@@ -22455,6 +24395,1593 @@
         "url": "https://cdn.prod.website-files.com/6555276feb3575fd21fad12a/6654b90c903e81efea39663c_DF9.jpg",
         "alt": "Imagen oficial de Don Rafael",
         "sourceUrl": "https://crescer.cl/project/donrafael"
+      }
+    ],
+    "historicalSourceNotes": "La página oficial contiene campos de plantilla inconsistentes (precio Venta con sufijo /month, superficie global sin tipo y amenidades genéricas). Se conservan dirección, modelos y equipamiento descritos en texto específico; precio y superficies requieren cotización.",
+    "brochureModels": [
+      {
+        "id": "don-rafael-p05-left",
+        "page": 5,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 5,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "201-801"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "28.77",
+        "terraceM2": "3.59",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "1 dormitorio · 1 baño · lámina 5, izquierda",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE DEPARTAMENTO 201 AL 801",
+        "printedFooter": "Departamento 201-801",
+        "printedTypology": "Departamento",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "28.77",
+          "terraza": "3.59"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "visually_counted_separate_rooms_labeled_DORMITORIO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "28,77",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "3,59",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p05-right",
+        "page": 5,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 5,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "202-802"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "19.14",
+        "terraceM2": "5.07",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 5, derecha",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 202 AL 802",
+        "printedFooter": "Departamento 202-802",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "19.14",
+          "terraza": "5.07"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 5,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "19,14",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "5,07",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p06-left",
+        "page": 6,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 6,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "203-803"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "19.14",
+        "terraceM2": "5.02",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 6, izquierda",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 203 AL 803",
+        "printedFooter": "Departamento 203-803",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "19.14",
+          "terraza": "5.02"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "19,14",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "5,02",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p06-right",
+        "page": 6,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 6,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "204-804"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "19.14",
+        "terraceM2": "5.07",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 6, derecha",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 204 AL 804",
+        "printedFooter": "Departamento 204-804",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "19.14",
+          "terraza": "5.07"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 6,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "19,14",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "5,07",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p07-left",
+        "page": 7,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 7,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "205-805"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "28.52",
+        "terraceM2": "3.46",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "1 dormitorio · 1 baño · lámina 7, izquierda",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE DEPARTAMENTO 205 AL 805",
+        "printedFooter": "Departamento 205-805",
+        "printedTypology": "Departamento",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "28.52",
+          "terraza": "3.46"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "visually_counted_separate_rooms_labeled_DORMITORIO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 7,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 7,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "28,52",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "3,46",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p07-right",
+        "page": 7,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 7,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "206-806"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "30.06",
+        "terraceM2": "3.41",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "1 dormitorio · 1 baño · lámina 7, derecha",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE DEPARTAMENTO 206 AL 806",
+        "printedFooter": "Departamento 206-806",
+        "printedTypology": "Departamento",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "30.06",
+          "terraza": "3.41"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "visually_counted_separate_rooms_labeled_DORMITORIO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 7,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 7,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "30,06",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "3,41",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p08-left",
+        "page": 8,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 8,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "207-807"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "29.28",
+        "terraceM2": "1.75",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "1 dormitorio · 1 baño · lámina 8, izquierda",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE DEPTO. 207 AL 807",
+        "printedFooter": "Departamento 207-807",
+        "printedTypology": "Departamento",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "29.28",
+          "terraza": "1.75"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "visually_counted_separate_rooms_labeled_DORMITORIO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 8,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 8,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "29,28",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "1,75",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p08-right",
+        "page": 8,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 8,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "208-808"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "27.74",
+        "terraceM2": "1.78",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "1 dormitorio · 1 baño · lámina 8, derecha",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE DEPTO. 208 AL 808",
+        "printedFooter": "Departamento 208-808",
+        "printedTypology": "Departamento",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "27.74",
+          "terraza": "1.78"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "visually_counted_separate_rooms_labeled_DORMITORIO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 8,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 8,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "27,74",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "1,78",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p09-left",
+        "page": 9,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 9,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "209-809"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "18.59",
+        "terraceM2": "2.57",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 9, izquierda",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 209 AL 809",
+        "printedFooter": "Departamento 209-809",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "18.59",
+          "terraza": "2.57"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 9,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 9,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "18,59",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "2,57",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p09-right",
+        "page": 9,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 9,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "210-810"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "18.59",
+        "terraceM2": "2.57",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [
+          {
+            "code": "reference_title_footer_mismatch",
+            "severity": "warning",
+            "message": "El título técnico dice 210 AL 210; el pie dice Departamento 210-810. Se conservan ambas denominaciones sin corregir el documento.",
+            "printedTitleReference": "210 AL 210",
+            "printedFooterReference": "210-810",
+            "affectsNumericModelCoherence": false
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 9, derecha",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 210 AL 210",
+        "printedFooter": "Departamento 210-810",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "18.59",
+          "terraza": "2.57"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 9,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 9,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "18,59",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "2,57",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p10-left",
+        "page": 10,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 10,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "211-811"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "18.30",
+        "terraceM2": "2.57",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 10, izquierda",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 211 AL 811",
+        "printedFooter": "Departamento 211-811",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "18.30",
+          "terraza": "2.57"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "18,30",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "2,57",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p10-right",
+        "page": 10,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 10,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "212-812"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "27.49",
+        "terraceM2": "1.78",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "1 dormitorio · 1 baño · lámina 10, derecha",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE DEPARTAMENTO 212 AL 812",
+        "printedFooter": "Departamento 212-812",
+        "printedTypology": "Departamento",
+        "typology": "1d-1b",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "27.49",
+          "terraza": "1.78"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "visually_counted_separate_rooms_labeled_DORMITORIO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 10,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 1
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "27,49",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "1,78",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p11-left",
+        "page": 11,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 11,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "313-813"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "22.03",
+        "terraceM2": "5.27",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 11, izquierda",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 313 AL 813",
+        "printedFooter": "Departamento 313-813",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "22.03",
+          "terraza": "5.27"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 11,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 11,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "22,03",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "5,27",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p11-right",
+        "page": 11,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 11,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "314-814"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "17.92",
+        "terraceM2": "5.77",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 11, derecha",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 314 AL 814",
+        "printedFooter": "Departamento 314-814",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "17.92",
+          "terraza": "5.77"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 11,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 11,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "17,92",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "5,77",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p12-left",
+        "page": 12,
+        "position": "left",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 12,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "left"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "315-815"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "18.56",
+        "terraceM2": "5.50",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": true,
+        "classificationStatus": "verified",
+        "issues": [],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Estudio · lámina 12, izquierda",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 315 AL 815",
+        "printedFooter": "Departamento 315-815",
+        "printedTypology": "Estudio",
+        "typology": "studio",
+        "bedrooms": 0,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {
+          "interior": "18.56",
+          "terraza": "5.50"
+        },
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "printed_estudio_normalized_to_zero_bedrooms",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 12,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 12,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "left"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 0
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "18,56",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "5,50",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        }
+      },
+      {
+        "id": "don-rafael-p12-right",
+        "page": 12,
+        "position": "right",
+        "source": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 12,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review",
+          "position": "right"
+        },
+        "propertyType": "departamento",
+        "propertyTypeEvidence": {
+          "filename": "Crescer - Don Rafael.pdf",
+          "page": 2,
+          "pageNumbering": "PDF, 1-based",
+          "method": "text_and_visual_review"
+        },
+        "scope": "model",
+        "referenceNumbers": [
+          "316-816"
+        ],
+        "referenceNumbersUsage": "internal_document_reference_only; not inventory or availability; do not expand ranges into units",
+        "departmentM2": null,
+        "shaftM2": null,
+        "departmentTotalM2": null,
+        "usefulM2": null,
+        "interiorM2": "18.56",
+        "terraceM2": "5.50",
+        "totalM2": null,
+        "gardenM2": null,
+        "patioM2": null,
+        "landM2": null,
+        "privateGarden": null,
+        "privatePatio": null,
+        "filterEligible": false,
+        "classificationStatus": "conflict",
+        "issues": [
+          {
+            "code": "typology_and_area_association_conflict",
+            "severity": "blocking",
+            "message": "La planta dibuja dos recintos separados rotulados DORMITORIO y un BAÑO, mientras el título dice ESTUDIO. Las superficies 18,56 y 5,50 repiten exactamente las de la planta izquierda. No se puede verificar si el error está en título, superficies o asociación de dibujo.",
+            "excludedFromCoherentFilters": true,
+            "publicationRule": "Mostrar como lámina documental con advertencia, sin asignar estas superficies a Estudio ni a 2D1B."
+          }
+        ],
+        "visuallyReviewed": true,
+        "code": null,
+        "label": "Planta con datos por confirmar · lámina 12, derecha",
+        "labelIsEditorial": true,
+        "printedName": "PLANTA DE ESTUDIO 316 AL 816",
+        "printedFooter": "Departamento 316-816",
+        "printedTypology": "Estudio",
+        "typology": null,
+        "bedrooms": null,
+        "bathrooms": 1,
+        "floorLabel": null,
+        "floors": null,
+        "privateTerrace": true,
+        "areaMetricPolicy": "SUP. INTERIOR and SUP. TERRAZA are separate. No useful or total area printed; do not calculate a total for publication.",
+        "filterAreas": {},
+        "roomEvidence": {
+          "bedrooms": {
+            "basis": "conflict_between_title_and_visual_plan",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 12,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "bathrooms": {
+            "basis": "visually_counted_room_labeled_BAÑO",
+            "source": {
+              "filename": "Crescer - Don Rafael.pdf",
+              "page": 12,
+              "pageNumbering": "PDF, 1-based",
+              "method": "text_and_visual_review",
+              "position": "right"
+            }
+          },
+          "printedBathrooms": null,
+          "visualBathrooms": 1,
+          "visualBedrooms": 2
+        },
+        "printedAreas": [
+          {
+            "label": "SUP. INTERIOR",
+            "value": "18,56",
+            "unit": "m2"
+          },
+          {
+            "label": "SUP. TERRAZA",
+            "value": "5,50",
+            "unit": "m2"
+          }
+        ],
+        "arithmeticAudit": {
+          "status": "not_applicable",
+          "reason": "No total is printed to compare against interior plus terrace."
+        },
+        "visualTypology": "2d-1b",
+        "printedAreaAssociationStatus": "unresolved"
       }
     ]
   },

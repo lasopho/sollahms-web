@@ -1,5 +1,5 @@
-import {priceFromLabel,validPrice,projectOffer as selectedOffer,projectFacts,filterAndSort,VIEW_KEY} from './catalog-model.mjs?v=20261029-filters-1';
-import {createFilterControls} from './catalog-filter-controls.mjs?v=20261029-filters-1';
+import {priceFromLabel,validPrice,projectOffer as selectedOffer,projectFacts,filterAndSort,VIEW_KEY} from './catalog-model.mjs?v=20261029-crescer-1';
+import {createFilterControls} from './catalog-filter-controls.mjs?v=20261029-crescer-1';
 import {defaults,matchedLabels} from './catalog-filter-engine.mjs?v=20261029-filters-1';
 const $=id=>document.getElementById(id);
 const controls={assetType:$('asset-type'),sortOrder:$('sort-order')};
@@ -14,7 +14,7 @@ function ensureMap(){
   if(mapInstance){mapInstance.show();mapInstance.update(mapResults,{assetType:controls.assetType.value,filters:values()});return;}
   if(mapPromise)return;
   mapHost.setAttribute('aria-busy','true');mapHost.replaceChildren(element('p','Cargando mapa…','catalog-map-status'));
-  mapPromise=import('./catalog-map.mjs?v=20261029-filters-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
+  mapPromise=import('./catalog-map.mjs?v=20261029-crescer-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
     mapInstance=instance;if(view==='map'){instance.show();instance.update(mapResults,{assetType:controls.assetType.value,filters:values()});}else instance.hide();
   }).catch(error=>{
     mapHost.setAttribute('aria-busy','false');const note=element('p','El mapa no pudo cargar. Puedes seguir explorando todos los resultados en Tarjetas o Listado.');note.setAttribute('role','status');
@@ -55,7 +55,7 @@ function card(project){
   const body=element('div',undefined,'catalog-card-body');body.dataset.scrollStatic='';
   const actions=element('div',undefined,'catalog-actions'),price=element('div',undefined,'catalog-price');const offer=selectedOffer(project);
   if(validPrice(offer.value)){
-    price.append(element('p',priceFromLabel(offer.value),'catalog-price-value'));
+    price.append(element('p',priceFromLabel(offer.value,project.precioDecimales),'catalog-price-value'));
     if(offer.typology)price.append(element('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));
   }else price.append(element('p',priceFromLabel(null),'catalog-price-unavailable'));
   actions.append(price);

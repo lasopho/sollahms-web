@@ -23,7 +23,7 @@ class NavigationTests(unittest.TestCase):
                 self.assertTrue(s.select_one('#resumen h1'));self.assertTrue(s.select_one('#resumen .ci-visual img'))
                 self.assertTrue(s.select_one('#resumen .jn-summary-description'))
                 self.assertTrue(s.select_one('#resumen a[data-request-intent="cotizacion"]'))
-                self.assertEqual(s.select_one('.ci-market strong').get_text(' ',strip=True),price_from(p.get('precioDesdeUF')))
+                self.assertEqual(s.select_one('.ci-market strong').get_text(' ',strip=True),price_from(p.get('precioDesdeUF'),p.get('precioDecimales',0)))
                 self.assertTrue(s.select('#caracteristicas dt,#caracteristicas .am-item'))
                 self.assertTrue(s.select('#galeria img'))
                 if 'Planos' in names:self.assertTrue(valid_plans(s.find(id=links[names.index('Planos')]['href'][1:])))
@@ -53,7 +53,7 @@ class NavigationTests(unittest.TestCase):
 
     def test_known_and_pending_price_contract(self):
         projects=json.loads((ROOT/'data/proyectos.json').read_text())
-        self.assertEqual(sum(p.get('precioDesdeUF') is None for p in projects),38)
+        self.assertEqual(sum(p.get('precioDesdeUF') is None for p in projects),36)
         self.assertEqual(price_from(None),'Desde: consultar precio')
         self.assertEqual(price_from(2784),'Desde UF 2.784')
         self.assertEqual(price_from(2784.5),'Desde UF 2.784,5')
