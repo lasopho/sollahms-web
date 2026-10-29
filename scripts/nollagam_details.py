@@ -4,6 +4,7 @@ from pathlib import Path
 from collections import defaultdict
 from bs4 import BeautifulSoup
 from project_image_labels import apply_image_label_policy
+from project_navigation import apply_navigation
 from project_amenities import apply_amenities
 ROOT=Path(__file__).resolve().parents[1]
 CSS='/assets/css/nollagam-detail.css?v=20261028-1'
@@ -147,7 +148,7 @@ def apply_nollagam(page,project):
     page=re.sub(r'<main\b[^>]*>.*?</main>',lambda _:str(main),page,count=1,flags=re.S)
     if CSS not in page:page=page.replace('<link rel="stylesheet" href="/assets/css/sollahms-theme.css',f'<link rel="stylesheet" href="{CSS}">\n<link rel="stylesheet" href="/assets/css/sollahms-theme.css',1)
     if JS not in page:page=page.replace('</head>',f'<script type="module" src="{JS}"></script>\n</head>',1)
-    return apply_image_label_policy(apply_amenities(page, project))
+    return apply_image_label_policy(apply_navigation(apply_amenities(page, project), project))
 
 def update_all():
     configs=read('data/nollagam-commercial.json')['projects'];facts=read('data/nollagam-brochures.json')['projects'];media=read('data/nollagam-media.json')['projects']

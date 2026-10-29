@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 STYLE = '/assets/css/project-journey.css?v=20261026-1'
-SCRIPT = '/assets/js/project-request.mjs?v=20261026-required-1'
+SCRIPT = '/assets/js/project-request.mjs?v=20261029-structure-1'
 UNKNOWN = re.compile(r'confirmar|consultar|pendiente|no disponible', re.I)
 
 def fragment(value):

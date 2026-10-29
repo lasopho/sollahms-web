@@ -45,7 +45,9 @@
     "track": "<path d=\"M2 17c5-13 5 7 10-6s7 4 10-5M2 22c5-13 5 7 10-6s7 4 10-5\"/>",
     "chair": "<path d=\"m3 7 6 10h12M6 12l3 10M19 17l2 5M10 17l7-5h5\"/><circle cx=\"6\" cy=\"4\" r=\"2\"/>",
     "theater": "<path d=\"M2 4h20v16H2ZM7 4v9L2 16M17 4v9l5 3M6 20h12M8 17h8M10 14h4\"/>",
-    "information": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 11v7M12 6v1\"/>"
+    "information": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 11v7M12 6v1\"/>",
+    "wall": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1\"/><path d=\"M3 9h18M3 15h18M9 3v6M15 9v6M9 15v6\"/>",
+    "recycle": "<path d=\"m9 6 3-4 5 9M13 10l4 1 1-4M20 15l2 5H12M15 17l-3 3 3 3M7 20H2L7 9M4 10l3-1 2 4\"/>"
   },
   "labels": [
     {
@@ -1397,6 +1399,466 @@
       "source": "Piscina panorámica templada y terrazas panorámicas",
       "label": "Piscina panorámica templada y terrazas panorámicas",
       "icon": "pool"
+    },
+    {
+      "source": "12 pisos",
+      "label": "12 pisos",
+      "icon": "office"
+    },
+    {
+      "source": "195 departamentos",
+      "label": "195 departamentos",
+      "icon": "office"
+    },
+    {
+      "source": "257 departamentos",
+      "label": "257 departamentos",
+      "icon": "office"
+    },
+    {
+      "source": "292 departamentos",
+      "label": "292 departamentos",
+      "icon": "office"
+    },
+    {
+      "source": "3 quinchos",
+      "label": "3 quinchos",
+      "icon": "bbq"
+    },
+    {
+      "source": "4 quinchos",
+      "label": "4 quinchos",
+      "icon": "bbq"
+    },
+    {
+      "source": "5 quinchos",
+      "label": "5 quinchos",
+      "icon": "bbq"
+    },
+    {
+      "source": "9 pisos",
+      "label": "9 pisos",
+      "icon": "office"
+    },
+    {
+      "source": "Baño de mascotas",
+      "label": "Baño de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Baño principal con ducha in situ y shower door",
+      "label": "Baño principal con ducha in situ y shower door",
+      "icon": "shower"
+    },
+    {
+      "source": "Baño y área para mascotas",
+      "label": "Baño y área para mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Baños con muros de cerámica.",
+      "label": "Baños con muros de cerámica",
+      "icon": "shower"
+    },
+    {
+      "source": "Baños con muros de porcelanato Statuario.",
+      "label": "Baños con muros de porcelanato Statuario",
+      "icon": "shower"
+    },
+    {
+      "source": "Baños con pisos y muros de cerámica",
+      "label": "Baños con pisos y muros de cerámica",
+      "icon": "shower"
+    },
+    {
+      "source": "Baños con pisos y muros de cerámica.",
+      "label": "Baños con pisos y muros de cerámica",
+      "icon": "shower"
+    },
+    {
+      "source": "Baños principales con receptáculo de ducha y shower door",
+      "label": "Baños principales con receptáculo de ducha y shower door",
+      "icon": "shower"
+    },
+    {
+      "source": "Campana, horno y encimera de 2 o 3 platos",
+      "label": "Campana, horno y encimera de 2 o 3 platos",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Chapa con control de acceso digital",
+      "label": "Chapa con control de acceso digital",
+      "icon": "digital"
+    },
+    {
+      "source": "Chapa con control de acceso digital a los departamentos",
+      "label": "Chapa con control de acceso digital a los departamentos",
+      "icon": "digital"
+    },
+    {
+      "source": "Chapa con control de acceso digital en departamentos",
+      "label": "Chapa con control de acceso digital en departamentos",
+      "icon": "digital"
+    },
+    {
+      "source": "Chapas de seguridad con tarjeta y clave",
+      "label": "Chapas de seguridad con tarjeta y clave",
+      "icon": "digital"
+    },
+    {
+      "source": "Cinco edificios bajos de cuatro pisos.",
+      "label": "Cinco edificios bajos de cuatro pisos",
+      "icon": "office"
+    },
+    {
+      "source": "Clubhouse y quinchos.",
+      "label": "Clubhouse y quinchos",
+      "icon": "bbq"
+    },
+    {
+      "source": "Cocina con campana retráctil, horno eléctrico, encimera vitrocerámica y cubierta de cuarzo",
+      "label": "Cocina con campana retráctil, horno eléctrico, encimera vitrocerámica y cubierta de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocina con campana retráctil, horno eléctrico, encimera vitrocerámica y cubierta de cuarzo.",
+      "label": "Cocina con campana retráctil, horno eléctrico, encimera vitrocerámica y cubierta de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocinas con cubiertas de cuarzo",
+      "label": "Cocinas con cubiertas de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocinas con encimera, campana y horno",
+      "label": "Cocinas con encimera, campana y horno",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Conjunto residencial con edificios y jardín interior, mostrado en las fotografías del brochure.",
+      "label": "Conjunto residencial con edificios y jardín interior, mostrado en las fotografías del brochure",
+      "icon": "office"
+    },
+    {
+      "source": "Control de acceso con tarjeta y clave",
+      "label": "Control de acceso con tarjeta y clave",
+      "icon": "digital"
+    },
+    {
+      "source": "Cubierta de cocina de cuarzo",
+      "label": "Cubierta de cocina de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cubiertas de cocina de cuarzo",
+      "label": "Cubiertas de cocina de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cubiertas de cuarzo",
+      "label": "Cubiertas de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cubiertas de cuarzo en cocinas",
+      "label": "Cubiertas de cuarzo en cocinas",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Departamentos 100% termopanel",
+      "label": "Departamentos 100% termopanel",
+      "icon": "window"
+    },
+    {
+      "source": "Departamentos de 1, 2 y 3 dormitorios.",
+      "label": "Departamentos de 1, 2 y 3 dormitorios",
+      "icon": "office"
+    },
+    {
+      "source": "Departamentos de 2 y 3 dormitorios con grandes terrazas.",
+      "label": "Departamentos de 2 y 3 dormitorios con grandes terrazas",
+      "icon": "office"
+    },
+    {
+      "source": "Departamentos estudio, de uno y dos dormitorios",
+      "label": "Departamentos estudio, de uno y dos dormitorios",
+      "icon": "office"
+    },
+    {
+      "source": "Ducha con shower door en baño principal y tina en segundo baño, según tipología",
+      "label": "Ducha con shower door en baño principal y tina en segundo baño, según tipología",
+      "icon": "shower"
+    },
+    {
+      "source": "Edificio residencial con terrazas y espacios comunes, mostrado en las fotografías del brochure.",
+      "label": "Edificio residencial con terrazas y espacios comunes, mostrado en las fotografías del brochure",
+      "icon": "office"
+    },
+    {
+      "source": "Espacio de quincho equipado mostrado en el brochure.",
+      "label": "Espacio de quincho equipado mostrado en el brochure",
+      "icon": "bbq"
+    },
+    {
+      "source": "Espacio e-commerce",
+      "label": "E-commerce / Mail Room",
+      "icon": "mail"
+    },
+    {
+      "source": "Espacios al aire libre",
+      "label": "Espacios al aire libre",
+      "icon": "garden"
+    },
+    {
+      "source": "Estudios, 1D+1B y 2D+2B",
+      "label": "Estudios, 1D+1B y 2D+2B",
+      "icon": "office"
+    },
+    {
+      "source": "Estudios, 1D+1B, 2D+1B y 2D+2B",
+      "label": "Estudios, 1D+1B, 2D+1B y 2D+2B",
+      "icon": "office"
+    },
+    {
+      "source": "Family & Social Club",
+      "label": "Family & Social Club",
+      "icon": "social"
+    },
+    {
+      "source": "Family Room",
+      "label": "Family Room",
+      "icon": "social"
+    },
+    {
+      "source": "Family room",
+      "label": "Family Room",
+      "icon": "social"
+    },
+    {
+      "source": "Gimnasio mostrado en el brochure.",
+      "label": "Gimnasio mostrado en el brochure",
+      "icon": "fitness"
+    },
+    {
+      "source": "Gres porcelánico en baños y terrazas",
+      "label": "Gres porcelánico en baños y terrazas",
+      "icon": "floor"
+    },
+    {
+      "source": "Hall de doble altura",
+      "label": "Hall de acceso de doble altura",
+      "icon": "lobby"
+    },
+    {
+      "source": "Kit de cocina",
+      "label": "Kit de cocina",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Kit de cocina eléctrico: campana, horno y encimera de 2 o 3 platos según tipo de departamento",
+      "label": "Kit de cocina eléctrico: campana, horno y encimera de 2 o 3 platos según tipo de departamento",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Kit de cocina: encimera, campana y horno",
+      "label": "Kit de cocina: encimera, campana y horno",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Lavandería con cowork",
+      "label": "Lavandería con cowork",
+      "icon": "wash"
+    },
+    {
+      "source": "Lavandería con juegos y cowork",
+      "label": "Lavandería con juegos y cowork",
+      "icon": "wash"
+    },
+    {
+      "source": "Muros con papel mural",
+      "label": "Muros con papel mural",
+      "icon": "wall"
+    },
+    {
+      "source": "Muros con papel mural, pintura y cerámicos según recinto",
+      "label": "Muros con papel mural, pintura y cerámicos según recinto",
+      "icon": "wall"
+    },
+    {
+      "source": "Muros con papel, pintura y cerámicos",
+      "label": "Muros con papel, pintura y cerámicos",
+      "icon": "wall"
+    },
+    {
+      "source": "Papel mural en estar, dormitorios y pasillos",
+      "label": "Papel mural en estar, dormitorios y pasillos",
+      "icon": "wall"
+    },
+    {
+      "source": "Parque central de 20.000 m².",
+      "label": "Parque central de 20.000 m²",
+      "icon": "garden"
+    },
+    {
+      "source": "Pet & Spa Zone",
+      "label": "Pet & Spa Zone",
+      "icon": "pets"
+    },
+    {
+      "source": "Pet friendly",
+      "label": "Pet friendly",
+      "icon": "pets"
+    },
+    {
+      "source": "Pintura en muros",
+      "label": "Pintura en muros",
+      "icon": "wall"
+    },
+    {
+      "source": "Piscina con terraza.",
+      "label": "Piscina con terraza",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina en primer piso",
+      "label": "Piscina en primer piso",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina y espacios comunes mostrados en el brochure.",
+      "label": "Piscina y espacios comunes mostrados en el brochure",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina y plaza interior",
+      "label": "Piscina y plaza interior",
+      "icon": "pool"
+    },
+    {
+      "source": "Piso de porcelanato Springwood Natural en todo el departamento.",
+      "label": "Piso de porcelanato Springwood Natural en todo el departamento",
+      "icon": "floor"
+    },
+    {
+      "source": "Piso fotolaminado en el departamento",
+      "label": "Piso fotolaminado en el departamento",
+      "icon": "floor"
+    },
+    {
+      "source": "Piso fotolaminado en todo el departamento.",
+      "label": "Piso fotolaminado en todo el departamento",
+      "icon": "floor"
+    },
+    {
+      "source": "Piso porcelanato en baños",
+      "label": "Piso porcelanato en baños",
+      "icon": "floor"
+    },
+    {
+      "source": "Piso vinílico SPC en todo el departamento.",
+      "label": "Piso vinílico SPC en todo el departamento",
+      "icon": "floor"
+    },
+    {
+      "source": "Piso vinílico en estar, dormitorios y cocina",
+      "label": "Piso vinílico en estar, dormitorios y cocina",
+      "icon": "floor"
+    },
+    {
+      "source": "Pisos SPC y gres porcelánico",
+      "label": "Pisos SPC y gres porcelánico",
+      "icon": "floor"
+    },
+    {
+      "source": "Pisos SPC y gres porcelánico según recinto",
+      "label": "Pisos SPC y gres porcelánico según recinto",
+      "icon": "floor"
+    },
+    {
+      "source": "Pisos vinílicos excepto terrazas y baños",
+      "label": "Pisos vinílicos excepto terrazas y baños",
+      "icon": "floor"
+    },
+    {
+      "source": "Quincho en rooftop",
+      "label": "Quincho en azotea",
+      "icon": "bbq"
+    },
+    {
+      "source": "Sala de estar y comedor comunes.",
+      "label": "Sala de estar y comedor comunes",
+      "icon": "social"
+    },
+    {
+      "source": "Sala multiuso gourmet",
+      "label": "Sala multiuso gourmet",
+      "icon": "social"
+    },
+    {
+      "source": "Sala multiuso tipo bar",
+      "label": "Sala multiuso tipo bar",
+      "icon": "bar"
+    },
+    {
+      "source": "Sky Bar y quincho",
+      "label": "Sky Bar y quincho",
+      "icon": "bbq"
+    },
+    {
+      "source": "Social Club",
+      "label": "Social Club",
+      "icon": "social"
+    },
+    {
+      "source": "Terraza rooftop",
+      "label": "Terraza en azotea",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terrazas con barandas de cristal",
+      "label": "Terrazas con barandas de cristal",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terrazas con barandas de cristal.",
+      "label": "Terrazas con barandas de cristal",
+      "icon": "terrace"
+    },
+    {
+      "source": "Tipologías estudio, 1 dormitorio y 2 dormitorios.",
+      "label": "Tipologías estudio, 1 dormitorio y 2 dormitorios",
+      "icon": "office"
+    },
+    {
+      "source": "Ventanales de PVC termopanel",
+      "label": "Ventanales de PVC termopanel",
+      "icon": "window"
+    },
+    {
+      "source": "Ventanas de PVC con termopanel.",
+      "label": "Ventanas de PVC con termopanel",
+      "icon": "window"
+    },
+    {
+      "source": "Ventanas termopanel con perfil color grafito",
+      "label": "Ventanas termopanel con perfil color grafito",
+      "icon": "window"
+    },
+    {
+      "source": "Zona de reciclaje",
+      "label": "Zona de reciclaje",
+      "icon": "recycle"
+    },
+    {
+      "source": "Área para mascotas",
+      "label": "Área de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Áreas verdes, senderos, plazas y caniles.",
+      "label": "Áreas verdes, senderos, plazas y caniles",
+      "icon": "garden"
     }
   ],
   "projectConsolidations": {

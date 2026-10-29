@@ -30,29 +30,8 @@ def image(asset, caption, hero=False, plan=False):
     position = ' style="object-position:' + esc(asset['objectPosition']) + '"' if hero and asset.get('objectPosition') else ''
     return '<img ' + ('class="hero-image" ' if hero else '') + 'src="' + esc(asset['localPath']) + '" srcset="' + srcset + '" sizes="' + sizes + '" alt="' + esc(caption) + '" width="' + str(asset['width']) + '" height="' + str(asset['height']) + '"' + position + ' ' + ('fetchpriority="high"' if hero else 'loading="lazy"') + ' decoding="async">'
 
-def render(record):
-    name, slug, loc = record['name'], record['slug'], record['location']
-    hero = next(i for i in record['images'] if i['localPath'] == record['cover'])
-    commercial = record['commercial']
-    location = ', '.join([loc['address'], loc['commune']])
-    overview = '<p class="lead">' + esc(record['description'].replace('El brochure presenta', 'El proyecto presenta')) + '</p>'
-    for key, title in [('architecture', 'Arquitectura'), ('connectivity', 'Entorno y conectividad')]:
-        if record.get(key): overview += '<h3>' + title + '</h3>' + facts(record[key])
-    cells = [('Inmobiliaria', 'Inmobiliaria León'), ('Dirección', loc['address']), ('Comuna', loc['commune']), ('Región', loc['region']), ('Tipologías', ', '.join(dict.fromkeys(typology(m) for m in record['models'])))]
-    for key, label in [('estado', 'Estado comercial'), ('entrega', 'Entrega')]:
-        if commercial.get(key): cells.append((label, commercial[key]))
-    specs = ''.join('<div><dt>' + esc(label) + '</dt><dd>' + esc(value) + '</dd></div>' for label, value in cells)
-    gallery = '<p>Imágenes referenciales del proyecto. Selecciona una imagen para ampliarla.</p>'
-    selected = set()
-    for kind, title in [('facade', 'Fachada y arquitectura'), ('common', 'Áreas comunes'), ('interior', 'Interiores'), ('other', 'Otros espacios')]:
-        assets = [i for i in record['images'] if (i.get('kind') == kind if kind != 'other' else i['localPath'] not in selected)]
-        if not assets: continue
-        gallery += '<h3>' + title + '</h3><div class="gallery-grid">'
-        for asset in assets:
-            selected.add(asset['localPath'])
-            caption = asset['caption']
-            gallery += '<figure data-source-page="' + str(asset['sourcePage']) + '"><a href="' + esc(asset['localPath']) + '" target="_blank" rel="noopener noreferrer" aria-label="Ampliar ' + esc(caption) + '">' + image(asset, caption) + '</a><figcaption>' + esc(caption) + '</figcaption></figure>'
-        gallery += '</div>'
+def render_plans(record):
+    name = record['name']
     plans = '<section id="planos" class="detail-section"><p class="eyebrow">Diseño y distribución</p><h2>Tipologías, planos y superficies</h2><p>Planos de referencia. Las superficies se conservan por modelo y no acreditan disponibilidad actual.</p><div class="leon-models">'
     surface_plans = reviewed_surface_plans(record)
     for model in record['models']:
@@ -84,6 +63,32 @@ def render(record):
             if row.get('notes'): plans += '<tr><td colspan="3">' + esc(' '.join(row['notes'])) + '</td></tr>'
         plans += '</tbody></table></article>'
     plans += '</section>'
+    return plans
+
+def render(record):
+    name, slug, loc = record['name'], record['slug'], record['location']
+    hero = next(i for i in record['images'] if i['localPath'] == record['cover'])
+    commercial = record['commercial']
+    location = ', '.join([loc['address'], loc['commune']])
+    overview = '<p class="lead">' + esc(record['description'].replace('El brochure presenta', 'El proyecto presenta')) + '</p>'
+    for key, title in [('architecture', 'Arquitectura'), ('connectivity', 'Entorno y conectividad')]:
+        if record.get(key): overview += '<h3>' + title + '</h3>' + facts(record[key])
+    cells = [('Inmobiliaria', 'Inmobiliaria León'), ('Dirección', loc['address']), ('Comuna', loc['commune']), ('Región', loc['region']), ('Tipologías', ', '.join(dict.fromkeys(typology(m) for m in record['models'])))]
+    for key, label in [('estado', 'Estado comercial'), ('entrega', 'Entrega')]:
+        if commercial.get(key): cells.append((label, commercial[key]))
+    specs = ''.join('<div><dt>' + esc(label) + '</dt><dd>' + esc(value) + '</dd></div>' for label, value in cells)
+    gallery = '<p>Imágenes referenciales del proyecto. Selecciona una imagen para ampliarla.</p>'
+    selected = set()
+    for kind, title in [('facade', 'Fachada y arquitectura'), ('common', 'Áreas comunes'), ('interior', 'Interiores'), ('other', 'Otros espacios')]:
+        assets = [i for i in record['images'] if (i.get('kind') == kind if kind != 'other' else i['localPath'] not in selected)]
+        if not assets: continue
+        gallery += '<h3>' + title + '</h3><div class="gallery-grid">'
+        for asset in assets:
+            selected.add(asset['localPath'])
+            caption = asset['caption']
+            gallery += '<figure data-source-page="' + str(asset['sourcePage']) + '"><a href="' + esc(asset['localPath']) + '" target="_blank" rel="noopener noreferrer" aria-label="Ampliar ' + esc(caption) + '">' + image(asset, caption) + '</a><figcaption>' + esc(caption) + '</figcaption></figure>'
+        gallery += '</div>'
+    plans = render_plans(record)
     amenities = facts(record.get('amenities', [])) if record.get('amenities') else '<p>Consulta el equipamiento del proyecto.</p>'
     if record.get('finishes'): amenities += '<h3>Terminaciones y equipamiento</h3>' + facts(record['finishes'])
     tours = ''.join('<article class="tour-card"><h3>' + esc(tour.get('title', 'Recorrido virtual oficial')) + '</h3><a class="button button-outline" href="' + esc(tour['url']) + '" target="_blank" rel="noopener noreferrer">Abrir recorrido oficial ↗</a></article>' for tour in record.get('virtualTours', []))

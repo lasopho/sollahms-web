@@ -1,4 +1,4 @@
-import {normalize,validPrice,stages,projectStates,selectedOffer,projectFacts,filterAndSort,validFilterState,safeReturnFilters,validView,VIEW_KEY,FILTER_KEY,SESSION_KEY} from './catalog-model.mjs';
+import {priceFromLabel,normalize,validPrice,stages,projectStates,selectedOffer,projectFacts,filterAndSort,validFilterState,safeReturnFilters,validView,VIEW_KEY,FILTER_KEY,SESSION_KEY} from './catalog-model.mjs?v=20261029-structure-1';
 
 const $=id=>document.getElementById(id);
 const controls={search:$('search'),assetType:$('asset-type'),region:$('region'),commune:$('commune'),state:$('state'),maxPriceInput:$('max-price'),sortOrder:$('sort-order')};
@@ -42,7 +42,7 @@ function ensureMap(){
   if(mapInstance){mapInstance.show();mapInstance.update(mapResults,{assetType:controls.assetType.value});return;}
   if(mapPromise)return;
   mapHost.setAttribute('aria-busy','true');mapHost.replaceChildren(element('p','Cargando mapa…','catalog-map-status'));
-  mapPromise=import('./catalog-map.mjs').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
+  mapPromise=import('./catalog-map.mjs?v=20261029-structure-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
     mapInstance=instance;if(view==='map'){instance.show();instance.update(mapResults,{assetType:controls.assetType.value});}else instance.hide();
   }).catch(error=>{
     mapHost.setAttribute('aria-busy','false');const note=element('p','El mapa no pudo cargar. Puedes seguir explorando todos los resultados en Tarjetas o Listado.');note.setAttribute('role','status');
@@ -81,9 +81,9 @@ function card(project){
   const body=element('div',undefined,'catalog-card-body');body.dataset.scrollStatic='';
   const actions=element('div',undefined,'catalog-actions'),price=element('div',undefined,'catalog-price');const offer=selectedOffer(project,controls.assetType.value);
   if(validPrice(offer.value)){
-    price.append(element('p','Desde UF '+formatPrice(offer.value),'catalog-price-value'));
+    price.append(element('p',priceFromLabel(offer.value),'catalog-price-value'));
     if(offer.typology)price.append(element('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));
-  }else price.append(element('p','Consultar precio','catalog-price-unavailable'));
+  }else price.append(element('p',priceFromLabel(null),'catalog-price-unavailable'));
   actions.append(price);
   if(typeof project.detalleUrl==='string'&&/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl)){
     const link=element('a','Ver detalles','catalog-details-link');link.href=project.detalleUrl;link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);

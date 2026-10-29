@@ -125,7 +125,7 @@ def apply_amenities(page, project=None):
             items.append({'label':source,'description':description.get_text(' ',strip=True) if description else ''})
         block = touch(ul)
         ul.replace_with(BeautifulSoup(render_items(items,kind),'html.parser').ul)
-        if kind == 'amenities' and block.get('id') in ('equipamiento','caracteristicas'):
+        if kind == 'amenities' and block.get('id') in ('equipamiento','caracteristicas') and block.get('data-nav-section') != 'caracteristicas':
             h2 = block.find('h2', recursive=False)
             if h2:
                 h2.string = 'Equipamiento y áreas comunes'
@@ -149,10 +149,12 @@ def apply_amenities(page, project=None):
     for section in soup.main.select('#equipamiento'):
         block = touch(section)
         heading = block.find('h2',recursive=False)
-        if heading:
+        if heading and block.get('data-nav-section') != 'caracteristicas':
             heading.string = 'Equipamiento y áreas comunes'
 
     for block in blocks.values():
+        if block.get('data-nav-section') == 'caracteristicas':
+            continue
         if block.get('id') in ('equipamiento','caracteristicas') or block.find('h2',string='Equipamiento y áreas comunes'):
             eyebrow = block.find('p',class_='eyebrow',recursive=False)
             if not eyebrow:

@@ -10,12 +10,13 @@ import re
 from pathlib import Path
 from bs4 import BeautifulSoup
 from project_image_labels import apply_image_label_policy
+from project_navigation import apply_navigation
 from project_amenities import apply_amenities, icon
 
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = 'plaza-las-condes'
 CSS = '/assets/css/plaza-las-condes.css?v=20261028-1'
-JS = '/assets/js/plaza-las-condes.mjs?v=20261028-1'
+JS = '/assets/js/plaza-las-condes.mjs?v=20261029-structure-1'
 DESCRIPTION = 'Plaza Las Condes de Sento, en Avenida Las Condes 7083. Conoce sus áreas comunes, terminaciones, planos y unidades, y solicita una cotización con Sollahms.'
 
 def esc(value):
@@ -113,7 +114,7 @@ def apply_plaza_las_condes(page, project):
         page = page.replace(marker,f'<link rel="stylesheet" href="{CSS}">\n'+marker,1)
     if JS not in page:
         page = page.replace('</head>',f'<script type="module" src="{JS}"></script>\n</head>',1)
-    return apply_image_label_policy(apply_amenities(page, project))
+    return apply_image_label_policy(apply_navigation(apply_amenities(page, project), project))
 
 if __name__ == '__main__':
     file=ROOT/(SLUG+'.html')

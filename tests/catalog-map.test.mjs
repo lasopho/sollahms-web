@@ -37,7 +37,7 @@ test('return map state accepts only finite coordinates, zoom and a public projec
 });
 test('map code keeps provider access lazy and separate from forms, scrolling and static fallbacks',()=>{
  const html=fs.readFileSync(new URL('../proyectos.html',import.meta.url),'utf8'),ui=fs.readFileSync(new URL('../assets/js/catalog.mjs',import.meta.url),'utf8'),map=fs.readFileSync(new URL('../assets/js/catalog-map.mjs',import.meta.url),'utf8');
- assert.ok(!/<script[^>]+leaflet|<link[^>]+leaflet|tile\.openstreetmap/.test(html));assert.ok(ui.includes("import('./catalog-map.mjs')"));
+ assert.ok(!/<script[^>]+leaflet|<link[^>]+leaflet|tile\.openstreetmap/.test(html));assert.match(ui,/import\('\.\/catalog-map\.mjs(?:\?[^']+)?'\)/);
  assert.ok(html.includes('id="catalog-map" class="catalog-map" data-scroll-static=""'));assert.ok(map.includes('scrollWheelZoom:false'));assert.ok(map.includes('touchZoom:false'));assert.ok(map.includes('keepBuffer:0'));
  assert.ok(!/navigator\.geolocation|nominatim\.openstreetmap|api\/(advisory|contact)/.test(map));assert.ok(ui.includes('Continuar en Listado'));assert.ok(map.includes("tiles.on('tileerror'"));
  assert.ok(!/map\.on\(['"](?:move|moveend)['"].*fitAll/.test(map));

@@ -29,7 +29,8 @@ test('missing identity, invalid RUT and message overflow still fail before trans
   for(const field of ['nombre','rut','correo','telefono'])assert.ok(validateProjectRequest({...person,[field]:'',mensaje:withSelectedUnit(person.mensaje,'213')},'cotizacion')[field]);
   assert.ok(validateProjectRequest({...person,rut:'12345678-0'},'cotizacion').rut);
   const tooLong=withSelectedUnit('x'.repeat(1600),'313');assert.ok(validateProjectRequest({...person,mensaje:tooLong},'cotizacion').mensaje);
-  assert.equal(withSelectedUnit('Consulta sin unidad','unverified'),'Consulta sin unidad');
+  assert.equal(withSelectedUnit('Consulta sin unidad','<unverified>'),'Consulta sin unidad');
+  assert.match(withSelectedUnit('Consulta','A-101'),/A-101.*existencia y disponibilidad por confirmar/);
 });
 
 test('switching, clearing and resetting unit context preserves the typed message',()=>{

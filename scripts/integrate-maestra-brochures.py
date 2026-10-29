@@ -6,6 +6,7 @@ No downloaded brochure, internal file or source manifest belongs in the public b
 """
 from project_image_labels import apply_image_label_policy
 from project_amenities import apply_amenities
+from project_navigation import apply_navigation
 import argparse, collections, hashlib, html, io, json, re
 from pathlib import Path
 import fitz
@@ -143,7 +144,7 @@ def main():
    text=text.replace('<a href="#galeria">Galería</a>','<a href="#galeria">Galería</a><a href="#planos">Planos</a>',1)
   theme=re.search(r'<link[^>]*href="/assets/css/sollahms-theme.css[^>]*>',text);assert theme
   text=text[:theme.start()]+'<link rel="stylesheet" href="/assets/css/brochure-media.css?v=20261025-maestra-1">\n'+text[theme.start():]
-  path.write_text(apply_image_label_policy(apply_amenities(text)))
+  path.write_text(apply_image_label_policy(apply_navigation(apply_amenities(text,catalog[slug]),catalog[slug])))
  # Only cover/alt fields change in the live catalogue. All other fields are retained.
  (ROOT/'data/proyectos.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
  internal=json.loads((ROOT/'data/fichas-proyectos.json').read_text())

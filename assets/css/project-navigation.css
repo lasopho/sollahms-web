@@ -1,0 +1,30 @@
+/* One navigation system; real content controls optional entries. */
+html:has([data-project-navigation]) { scroll-padding-top:0;scroll-behavior:smooth; }
+[data-commercial-journey] .pj-nav { z-index:19; }
+[data-project-navigation] > .container { scroll-padding-inline:1rem; }
+[data-project-navigation] a { position:relative;min-height:48px;display:flex;align-items:center; }
+[data-project-navigation] a[aria-current="location"]::after { content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--s-gold-ink); }
+[data-commercial-journey] [id] { scroll-margin-top:calc(var(--pj-header-height,80px) + var(--pj-nav-height,60px) + 18px); }
+[data-commercial-journey] #resumen { scroll-margin-top:var(--pj-header-height,80px); }
+html[data-project-header="b"] .ci-copy .jn-summary-description { font:400 .9rem/1.7 Inter,sans-serif;color:var(--s-on-dark);margin:1.2rem 0 0;max-width:64ch; }
+.pj-content .jn-features > h2 { margin-bottom:1.5rem; }
+.pj-content .jn-subsection { margin:1.75rem 0 0;padding:1.5rem 0 0;border:0;border-top:1px solid var(--s-line);background:transparent;box-shadow:none; }
+.pj-content .jn-subsection > h3 { font:600 1.2rem/1.4 Manrope,sans-serif;letter-spacing:-.02em;margin:0 0 1rem;color:var(--s-green); }
+.pj-content .jn-source-note,.pj-content .jn-context-list { font:400 1rem/1.75 Inter,sans-serif;color:var(--s-muted); }
+.jn-context-list { padding-left:1.2rem;max-width:80ch; }
+.jn-context-list li+li { margin-top:.75rem; }
+.jn-unit-interest { margin:1rem 0; }
+.jn-unit-interest label { display:block; }
+.jn-unit-interest p { font-size:.8rem;line-height:1.6; }
+.jn-reviewed-plans .sento-models,.jn-reviewed-plans .leon-models { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem; }
+.jn-reviewed-plans article { min-width:0;border-top:1px solid var(--s-line);padding-top:1.25rem; }
+.jn-reviewed-plans article h3 { font:600 1.05rem/1.5 Manrope,sans-serif;color:var(--s-green); }
+.jn-reviewed-plans article > a { display:block;background:var(--s-white); }
+.jn-reviewed-plans article img { display:block;width:100%;height:auto;max-height:480px;object-fit:contain;margin:auto; }
+.jn-reviewed-plans .sento-areas,.jn-reviewed-plans .leon-areas { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0; }
+.jn-reviewed-plans dt { font:400 .75rem/1.6 Inter,sans-serif;color:var(--s-muted); }
+.jn-reviewed-plans dd { margin:.25rem 0 0;font:600 .9rem/1.5 Manrope,sans-serif;color:var(--s-green); }
+.jn-reviewed-plans .sento-consumer-note,.jn-reviewed-plans .leon-source-note { font:400 .85rem/1.7 Inter,sans-serif;color:var(--s-muted); }
+.jn-legacy-target { display:block; }
+@media(max-width:700px) { [data-project-navigation] a { min-height:48px; } .pj-content .jn-subsection { padding-top:1.25rem; } .jn-reviewed-plans .sento-models,.jn-reviewed-plans .leon-models { grid-template-columns:minmax(0,1fr); } }
+@media(prefers-reduced-motion:reduce) { html:has([data-project-navigation]) { scroll-behavior:auto; } }

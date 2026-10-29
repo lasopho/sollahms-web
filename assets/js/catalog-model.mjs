@@ -1,6 +1,7 @@
 // Public catalogue facts only. This module never changes source records.
 export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
 export const validPrice = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
+export const priceFromLabel = value => validPrice(value) ? 'Desde UF '+value.toLocaleString('es-CL',{maximumFractionDigits:2}) : 'Desde: consultar precio';
 export const stages = project => project.inmobiliaria === 'Ecasa' && Array.isArray(project.etapasComerciales) && project.etapasComerciales.length > 1
   ? project.etapasComerciales : Array.isArray(project.etapas) ? project.etapas : [];
 export const commercialReference = project => project.inmobiliaria === 'Ecasa' && stages(project).length > 1
