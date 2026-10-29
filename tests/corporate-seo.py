@@ -20,6 +20,10 @@ for item in manifest:
 paths={x['file'].removeprefix('release/static/') for x in manifest if x['file'].startswith('release/static/')}
 forms=lambda s:re.findall(r'<form\b.*?</form>',s,re.S)
 scripts=lambda s:[v for v in re.findall(r'<script\b.*?</script>',s,re.S) if 'application/ld+json' not in v]
+# A legacy closing </link> may make html.parser attach following JSON-LD to
+# a void link element. Compare stylesheet attributes and style text, not that
+# parser-created descendant tree; the browser treats link as a void element.
+styles=lambda soup:[(x.name,dict(x.attrs),x.string if x.name=='style' else None) for x in soup.select('link[rel=stylesheet],style') if x.get('id')!='corporate-seo-layout']
 headings=[];titles=[];descs=[];new_broken=[];existing_broken=[]
 for name in PAGES:
  text=(ROOT/name).read_text();old=(BASE/name).read_text();s=BeautifulSoup(text,'html.parser');o=BeautifulSoup(old,'html.parser')
@@ -32,7 +36,7 @@ for name in PAGES:
  check(name+' forms unchanged',forms(old)==forms(text))
  check(name+' scripts unchanged',scripts(old)==scripts(text))
  check(name+' all images unchanged',[str(x) for x in o.find_all('img')]==[str(x) for x in s.find_all('img')])
- check(name+' original styles unchanged',[str(x) for x in o.select('link[rel=stylesheet],style')]==[str(x) for x in s.select('link[rel=stylesheet],style') if x.get('id')!='corporate-seo-layout'])
+ check(name+' original styles unchanged',styles(o)==styles(s))
  check(name+' metadata idempotent',apply_corporate_seo(text,name)==text)
  check(name+' no duplicate ids',len(s.select('[id]'))==len({x['id'] for x in s.select('[id]')}))
  check(name+' navigation unchanged',str(o.header)==str(s.header) and str(o.footer)==str(s.footer))
