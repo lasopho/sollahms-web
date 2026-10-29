@@ -15,6 +15,7 @@ from plaza_las_condes import apply_plaza_las_condes
 from project_image_labels import apply_image_label_policy
 from nollagam_details import apply_nollagam
 from crescer_details import apply_crescer
+from euro_details import apply_euro
 from project_navigation import apply_navigation
 from project_amenities import apply_amenities
 from guide_navigation import apply_guide_navigation
@@ -109,4 +110,5 @@ def _finalize_project(page, project):
     page = apply_plaza_las_condes(page, project)
     page = apply_nollagam(page, project)
     page = apply_crescer(page, project)
+    page = apply_euro(page, project)
     return apply_stage_project(apply_guide_navigation(apply_image_label_policy(apply_navigation(apply_amenities(page, project), project)), project), project)

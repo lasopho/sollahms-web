@@ -66,6 +66,7 @@ class Audit:
                 delivery['precision']='semester' if 'semestre' in text else 'quarter' if 'trimestre' in text else 'month' if re.search('enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre',text) else 'year' if year else 'immediate' if delivery['immediate'] else 'delivered' if 'entregado' in text else 'unspecified'
             state=p.get('estado');stateok=bool(state and ('estado' in known or 'estado' in f['verifiedFields'] and f.get('updates',{}).get('estado')==state))
             if p['inmobiliaria']=='Norte Verde' and 'estado' not in known:stateok=False
+            if p.get('stageConflict'):stateok=False
             row={'name':p['nombre'],'developer':p['inmobiliaria'],'developerEvidence':evidence('data/proyectos.json',i,'inmobiliaria'),'propertyTypes':[],'propertyTypeEvidence':[],'variants':[],'delivery':delivery,'status':{'label':state,'key':statusmap.get(normalize(state)) if stateok else None,'confirmed':stateok,'evidence':evidence('data/proyectos.json',i,'estado') if state else None},'referenceStageSlug':p.get('etapaReferenciaSlug'),'catalogTypologies':{'labels':p.get('tipologias',[]),'evidence':evidence('data/proyectos.json',i,'tipologias') if 'tipologias' in p else None,'verified':bool('tipologias' in known or p.get('commercialSource',{}).get('type')=='owner-supplied')},'aggregateEvidence':{'specs':f['specs'],'evidence':evidence('data/fichas-proyectos.json',j,'specs',url=f['sourceUrl']),'combineAsModel':False,'surfaceSinceExcluded':p.get('superficieDesdeM2'),'surfaceSinceReason':'Unlabelled catalogue minimum is not interchangeable with useful, total, interior or land.'},'excluded':[],'pending':[]}
             if label and not confirmed:row['excluded'].append({'field':'delivery','value':label,'reason':'Current same-product delivery unverified or explicitly pending; historical brochure dates excluded.'})
             if state and not stateok:row['excluded'].append({'field':'status','value':state,'reason':'Reported catalogue state lacks current matching certification; owner commercial source does not certify reception/stock.'})
@@ -102,6 +103,12 @@ class Audit:
                 kind='util' if 'util' in normalize(m.get('interior_label','')) else 'interior'
                 self.add(slug,variant(m['id'],m['name'],'departamento',m['beds'],m['baths'],{kind:m.get('interior'),'total':m.get('total'),'terraza':m.get('terrace'),'jardin':m.get('garden')},evidence('data/nollagam-brochures.json','projects',slug,'models',j,pages=[m['page']]),floors=m.get('floors'),limitations=m.get('issues',[]),sourceKind='printed_model_variant',availability='not_inferred',historicalStampIgnored=bool(m.get('historical_sold_out_stamp'))),'Nollagam variants')
     def brochure_models(self):
+        for slug,p in self.load('data/euro-brochures.json')['projects'].items():
+            for j,m in enumerate(p['variants']):
+                areas={a['metric']:a['value'] for a in m['areas'] if m['filterEligibility']['areas'] and not a.get('average')}
+                self.add(slug,variant('euro-'+m['id'],m['sourceLabel'],'departamento',m['bedrooms'],m['bathrooms'],areas,evidence('data/euro-brochures.json','projects',slug,'variants',j,pages=[m['sourcePage']]),limitations=m['notes'],sourceKind='audited_brochure_model',availability='not_inferred'),'Euro reviewed models')
+        for j,m in enumerate(self.load('data/euro-official-review.json')['diagonalVicuna']['variants']):
+            self.add('diagonal-vicuna',variant(m['id'],m['label'],'departamento',m['bedrooms'],m['bathrooms'],m['areas'],evidence('data/euro-official-review.json','diagonalVicuna','variants',j,url='https://www.euroinmobiliaria.cl/proyectos/diagonal-vicuna'),sourceKind='official_project_model',availability='not_inferred'),'Euro official models')
         for slug,p in self.load('data/crescer-brochures.json')['projects'].items():
             for j,m in enumerate(p['models']):
                 proof=evidence('data/crescer-brochures.json','projects',slug,'models',j,pages=[m['page']])

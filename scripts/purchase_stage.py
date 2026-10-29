@@ -10,6 +10,8 @@ def classify(project,facts,reviews):
     status=facts.get('status',{}); key=status.get('key') if status.get('confirmed') else None
     raw=fold(project.get('estado')); proof=status.get('evidence'); ref=project.get('etapaReferenciaSlug')
     row={'mode':None,'eligible':False,'reason':'Etapa pendiente de confirmar','referenceStage':ref}
+    if project.get('stageConflict'):
+        return {**row,'reason':project['stageConflict']['reason']}
     if 'recepcion' in raw:
         return {**row,'reason':'Recepción final pendiente: no equivale a entrega inmediata'}
     if key in ['vendido','sin-unidades'] or raw in ['vendido','sin unidades disponibles']:

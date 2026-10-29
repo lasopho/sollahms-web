@@ -1,5 +1,6 @@
-import {matchedLabels,defaults} from './catalog-filter-engine.mjs?v=20261029-filters-1';
-import {priceFromLabel,projectOffer as selectedOffer,projectFacts,validPrice} from './catalog-model.mjs?v=20261029-crescer-1';
+import {publicOrigin} from './commercial-context.mjs?v=20261029-euro-1';
+import {matchedLabels,defaults} from './catalog-filter-engine.mjs?v=20261029-euro-1';
+import {priceFromLabel,projectOffer as selectedOffer,projectFacts,validPrice} from './catalog-model.mjs?v=20261029-euro-1';
 import {locateProjects,locationGroups,clusterLocations,validMapState,MAP_STATE_KEY} from './catalog-map-model.mjs';
 const el=(tag,text,classes)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(classes)node.className=classes;return node;};
 const price=value=>new Intl.NumberFormat('es-CL',{maximumFractionDigits:2,minimumFractionDigits:Number.isInteger(value)?0:2}).format(value);
@@ -64,9 +65,9 @@ export async function createCatalogMap({host,onAlternative}){
     const p=row.project;selectionStatus.textContent=announce?'Seleccionado: '+p.nombre:'';
     const figure=el('div',undefined,'catalog-map-image');if(p.imagenPrincipal){const image=el('img');image.src=p.imagenPrincipal;image.alt=p.imagenAlt||'Imagen del proyecto '+p.nombre;image.width=480;image.height=300;image.decoding='async';image.addEventListener('error',()=>figure.replaceChildren(el('span','Imagen no disponible')),{once:true});figure.append(image);}
     const title=el('h2',p.nombre),location=el('p',[p.comuna,p.region].filter(Boolean).join(' · '),'catalog-location');
-    const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type)){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
-    const offer=selectedOffer(p),amount=el('p',priceFromLabel(offer.value,p.precioDecimales),'catalog-price-value');
-    const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl;link.setAttribute('aria-label','Ver ficha de '+p.nombre);
+    const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type||(filterState.propertyType==='local'?'Comercial':''))){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
+    const offer=selectedOffer(p,filterState),amount=el('p',priceFromLabel(offer.value,p.precioDecimales),'catalog-price-value');
+    const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+publicOrigin(location.search,'buscador')+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local')?'&oferta=local':'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
     detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
     const matches=matchedLabels(p,filterState);if(matches.length){const list=el('ul',undefined,'cf-match-list');list.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))list.append(el('li',label));detail.append(list);}
     if(reveal){map.setView([row.location.lat,row.location.lng],Math.max(15,map.getZoom()),{animate:false});}

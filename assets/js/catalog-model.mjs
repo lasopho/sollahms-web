@@ -1,4 +1,5 @@
-import {advancedFilterAndSort} from './catalog-filter-engine.mjs?v=20261029-stage-1';
+import {advancedFilterAndSort} from './catalog-filter-engine.mjs?v=20261029-euro-1';
+import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
 // Public catalogue facts only. This module never changes source records.
 export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
 export const validPrice = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
@@ -23,7 +24,7 @@ export function selectedOffer(project, selectedType='') {
   const lowest=offers.reduce((best,row)=>!best||row.precioDesdeUF<best.precioDesdeUF?row:best,null);
   return {value:lowest?.precioDesdeUF??null,typology:lowest?.tipologia??null};
 }
-export const projectOffer=project=>({value:validPrice(project.precioDesdeUF)?project.precioDesdeUF:null,typology:project.precioDesdeTipologia??null});
+export const projectOffer=(project,state={})=>catalogReference(project,state);
 export const searchableValues = project => [...['nombre','inmobiliaria','comuna','region','direccion','slug'].map(key=>project[key]),...stages(project).map(stage=>stage.nombre)];
 export function filterAndSort(projects, filters={}) {
   if(filters.version===2)return advancedFilterAndSort(projects,filters);

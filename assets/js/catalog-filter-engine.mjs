@@ -1,3 +1,4 @@
+import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
 /** Pure, bounded filtering of documented project facts. Unknown is never false. */
 export const fold=value=>String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es-CL');
 export const FILTER_VERSION=2;
@@ -47,12 +48,12 @@ export function advancedFilterAndSort(projects,input={}){
       &&(!s.assetType||(f.assetTypes??[]).includes(s.assetType))
       &&(!s.purchaseModes.length||(f.purchaseStage?.eligible===true&&s.purchaseModes.includes(f.purchaseStage.mode)))
       &&(!s.delivery||(s.delivery==='inmediata'?f.delivery?.immediate===true:String(f.delivery?.year)===s.delivery))
-      &&inRange(p.precioDesdeUF>0?p.precioDesdeUF:null,s.minPriceInput,s.maxPriceInput)&&matchesVariant(p,s)
+      &&inRange(catalogReference(p,s).value,s.minPriceInput,s.maxPriceInput)&&matchesVariant(p,s)
       &&selectedMatch(ids,s.amenities,s.amenitiesAll)&&selectedMatch(ids,s.features,s.featuresAll)
       &&(!words.length||words.every(w=>fold(keywords(p,s)).includes(w)));
   });
   if(s.sortOrder==='price-asc'||s.sortOrder==='price-desc')rows.sort((a,b)=>{
-    const av=a.precioDesdeUF,bv=b.precioDesdeUF,ak=validNumber(av)&&av>0,bk=validNumber(bv)&&bv>0;
+    const av=catalogReference(a,s).value,bv=catalogReference(b,s).value,ak=validNumber(av)&&av>0,bk=validNumber(bv)&&bv>0;
     return !ak||!bk?ak?-1:bk?1:0:(s.sortOrder==='price-asc'?1:-1)*(av-bv);
   });
   if(s.sortOrder==='delivery')rows.sort((a,b)=>deliveryRank(a)-deliveryRank(b));

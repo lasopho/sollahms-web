@@ -4226,23 +4226,24 @@
   {
     "slug": "independencia-4745",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/independencia-4745",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Independencia 4745",
@@ -4251,22 +4252,74 @@
       "region": "Región Metropolitana",
       "direccion": "Independencia 4745",
       "mapQuery": "Independencia 4745, Conchalí, Región Metropolitana, Chile",
-      "estado": "Entrega inmediata",
-      "entrega": "Entrega inmediata",
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
       "tipologias": [
-        "2 dormitorios"
+        "1 dormitorio",
+        "2 dormitorios",
+        "Local"
       ],
-      "precioDesdeUF": 3135,
+      "precioDesdeUF": 3146.65,
       "amenities": [
         "Lavandería",
         "Bicicleteros",
         "Gimnasio",
         "Piscina",
-        "Sala multiuso",
-        "Salón infantil"
+        "Salón multiuso",
+        "Salón infantil",
+        "Quinchos"
       ],
       "superficieDesdeM2": 40.0,
-      "descripcionLarga": "Independencia 4745 es un proyecto de Euro ubicado en Independencia 4745, Conchalí. La ficha oficial publica departamentos de 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye lavandería, bicicleteros, gimnasio, piscina, sala multiuso."
+      "descripcionLarga": "Edificio residencial en Conchalí con departamentos de uno y dos dormitorios, piscina, quinchos y espacios familiares. El brochure describe departamentos; no documenta las características del local comercial. Entrega informada: Inmediata. Estado comercial informado: En recepción final.",
+      "tipoActivo": "Mixto",
+      "precioDecimales": 2,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": null
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3146.65
+        },
+        {
+          "tipologia": "Local",
+          "precioDesdeUF": 8440.85
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": null,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3146.65,
+          "priceDecimals": 2
+        },
+        {
+          "id": "local",
+          "bedrooms": null,
+          "label": "Local comercial",
+          "propertyType": "local",
+          "priceUF": 8440.85,
+          "priceDecimals": 2
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En recepción final"
     },
     "specs": {
       "utilM2": "40 a 52",
@@ -4338,7 +4391,12 @@
         }
       }
     ],
-    "pendingFields": [],
+    "pendingFields": [
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "No hay planos ni superficies del local comercial.",
+      "Las terminaciones, dormitorios, baños y amenities documentados aplican a departamentos, no automáticamente al local.",
+      "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
+    ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
       "excerpt": "Independencia 4745 · Independencia 4745 · Entrega inmediata · desde UF 3135"
@@ -4387,7 +4445,37 @@
         "alt": "Imagen oficial de Independencia 4745",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/independencia-4745"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "nombre": "Independencia 4745",
+        "inmobiliaria": "Euro",
+        "comuna": "Conchalí",
+        "region": "Región Metropolitana",
+        "direccion": "Independencia 4745",
+        "mapQuery": "Independencia 4745, Conchalí, Región Metropolitana, Chile",
+        "estado": "Entrega inmediata",
+        "entrega": "Entrega inmediata",
+        "tipologias": [
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": 3135,
+        "amenities": [
+          "Lavandería",
+          "Bicicleteros",
+          "Gimnasio",
+          "Piscina",
+          "Sala multiuso",
+          "Salón infantil"
+        ],
+        "superficieDesdeM2": 40.0,
+        "descripcionLarga": "Independencia 4745 es un proyecto de Euro ubicado en Independencia 4745, Conchalí. La ficha oficial publica departamentos de 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye lavandería, bicicleteros, gimnasio, piscina, sala multiuso."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "vistamar",
@@ -8914,23 +9002,24 @@
   {
     "slug": "edificio-don-pepe-154",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/don-pepe-154",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Don Pepe 154",
@@ -8939,16 +9028,61 @@
       "region": "Región Metropolitana",
       "direccion": "Calle Don Pepe N°154",
       "mapQuery": "Calle Don Pepe N°154, La Florida, Región Metropolitana, Chile",
-      "estado": "Entrega futura",
-      "entrega": "1er semestre 2027",
+      "estado": "En blanco",
+      "entrega": "1.er semestre 2028",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "precioDesdeUF": 3285,
-      "amenities": [],
+      "precioDesdeUF": 3306.18,
+      "amenities": [
+        "Piscina",
+        "Quinchos",
+        "Gimnasio",
+        "Salón multiuso",
+        "Sala de niños",
+        "Bicicleteros",
+        "Lavandería"
+      ],
       "superficieDesdeM2": 29.0,
-      "descripcionLarga": "Don Pepe 154 es un proyecto de Euro ubicado en Calle Don Pepe N°154, La Florida. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2027."
+      "descripcionLarga": "Proyecto residencial en La Florida con departamentos de uno y dos dormitorios, espacios para actividades familiares y conexión al entorno de Vicente Valdés. Entrega informada: 1.er semestre 2028. Estado comercial informado: En blanco.",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 2,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": 3306.18
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3562.0
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": 3306.18,
+          "priceDecimals": 2
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3562.0,
+          "priceDecimals": 0
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En blanco"
     },
     "specs": {
       "utilM2": "29 a 48",
@@ -8993,8 +9127,8 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Equipamiento: listado completo pendiente de confirmación",
-      "Recorrido oficial enlazado no disponible: HTTP404"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
     ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
@@ -9052,28 +9186,53 @@
         "alt": "Imagen oficial de Don Pepe 154",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/don-pepe-154"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "nombre": "Don Pepe 154",
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana",
+        "direccion": "Calle Don Pepe N°154",
+        "mapQuery": "Calle Don Pepe N°154, La Florida, Región Metropolitana, Chile",
+        "estado": "Entrega futura",
+        "entrega": "1er semestre 2027",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": 3285,
+        "amenities": [],
+        "superficieDesdeM2": 29.0,
+        "descripcionLarga": "Don Pepe 154 es un proyecto de Euro ubicado en Calle Don Pepe N°154, La Florida. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2027."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "plaza-de-lourdes",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/plaza-de-lourdes",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Plaza de Lourdes",
@@ -9082,17 +9241,77 @@
       "region": "Región Metropolitana",
       "direccion": "Avda. San Pablo 3770",
       "mapQuery": "Avda. San Pablo 3770, Quinta Normal, Región Metropolitana, Chile",
-      "estado": "Entrega futura",
-      "entrega": "1er semestre 2028",
+      "estado": "En blanco",
+      "entrega": "1.er semestre 2028",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios",
         "3 dormitorios"
       ],
-      "precioDesdeUF": 2733,
-      "amenities": [],
+      "precioDesdeUF": 2647.0,
+      "amenities": [
+        "Plaza interior",
+        "Lavandería",
+        "Bicicleteros",
+        "Gimnasio",
+        "Quinchos",
+        "Piscina",
+        "Salón multiuso",
+        "Juegos infantiles",
+        "Cowork",
+        "Pet Spa"
+      ],
       "superficieDesdeM2": 30.0,
-      "descripcionLarga": "Plaza de Lourdes es un proyecto de Euro ubicado en Avda. San Pablo 3770, Quinta Normal. La ficha oficial publica departamentos de 1 a 3 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2028."
+      "descripcionLarga": "Conjunto residencial de cuatro torres de cinco pisos en San Pablo 3770, Quinta Normal, con departamentos de uno a tres dormitorios y una plaza interior. Entrega informada: 1.er semestre 2028. Estado comercial informado: En blanco.",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 0,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": 2647.0
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3199.0
+        },
+        {
+          "tipologia": "3 dormitorios",
+          "precioDesdeUF": 4276.0
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": 2647.0,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3199.0,
+          "priceDecimals": 0
+        },
+        {
+          "id": "3d",
+          "bedrooms": 3,
+          "label": "3 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 4276.0,
+          "priceDecimals": 0
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En blanco"
     },
     "specs": {
       "utilM2": "30 a 59",
@@ -9137,8 +9356,9 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Equipamiento: listado completo pendiente de confirmación",
-      "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "Dos modelos 3D2B (5C) con igual etiqueta y distinta distribución; distinguir por posición, sin inventar código comercial.",
+      "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
     ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
@@ -9185,28 +9405,54 @@
         "alt": "Imagen oficial de Plaza de Lourdes",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/plaza-de-lourdes"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "nombre": "Plaza de Lourdes",
+        "inmobiliaria": "Euro",
+        "comuna": "Quinta Normal",
+        "region": "Región Metropolitana",
+        "direccion": "Avda. San Pablo 3770",
+        "mapQuery": "Avda. San Pablo 3770, Quinta Normal, Región Metropolitana, Chile",
+        "estado": "Entrega futura",
+        "entrega": "1er semestre 2028",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "precioDesdeUF": 2733,
+        "amenities": [],
+        "superficieDesdeM2": 30.0,
+        "descripcionLarga": "Plaza de Lourdes es un proyecto de Euro ubicado en Avda. San Pablo 3770, Quinta Normal. La ficha oficial publica departamentos de 1 a 3 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2028."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "santa-elena-1670-mbi",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/santa-elena-1670",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Santa Elena 1670",
@@ -9215,23 +9461,61 @@
       "region": "Región Metropolitana",
       "direccion": "Santa Elena 1670",
       "mapQuery": "Santa Elena 1670, Santiago, Región Metropolitana, Chile",
-      "estado": "Entrega inmediata",
-      "entrega": "Entrega inmediata",
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "precioDesdeUF": 2931,
+      "precioDesdeUF": 2920.0,
       "amenities": [
         "Lavandería",
         "Bicicleteros",
         "Gimnasio",
         "Piscina",
-        "Sala multiuso",
-        "Quinchos"
+        "Salón multiuso",
+        "Quinchos",
+        "Juegos infantiles"
       ],
       "superficieDesdeM2": 31.0,
-      "descripcionLarga": "Santa Elena 1670 es un proyecto de Euro ubicado en Santa Elena 1670, Santiago. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye lavandería, bicicleteros, gimnasio, piscina, sala multiuso."
+      "descripcionLarga": "Edificio residencial en Santa Elena 1670, Santiago, con departamentos de uno y dos dormitorios, piscina y equipamiento para ejercicio y recreación. Entrega informada: Inmediata. Estado comercial informado: En recepción final.",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 0,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": 2920.0
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3024.0
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": 2920.0,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3024.0,
+          "priceDecimals": 0
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En recepción final"
     },
     "specs": {
       "utilM2": "31 a 50",
@@ -9303,7 +9587,10 @@
         }
       }
     ],
-    "pendingFields": [],
+    "pendingFields": [
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
+    ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
       "excerpt": "Santa Elena 1670 · Santa Elena 1670 · Entrega inmediata · desde UF 2931"
@@ -9353,7 +9640,38 @@
         "alt": "Imagen oficial de Santa Elena 1670",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/santa-elena-1670"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "nombre": "Santa Elena 1670",
+        "inmobiliaria": "Euro",
+        "comuna": "Santiago",
+        "region": "Región Metropolitana",
+        "direccion": "Santa Elena 1670",
+        "mapQuery": "Santa Elena 1670, Santiago, Región Metropolitana, Chile",
+        "estado": "Entrega inmediata",
+        "entrega": "Entrega inmediata",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": 2931,
+        "amenities": [
+          "Lavandería",
+          "Bicicleteros",
+          "Gimnasio",
+          "Piscina",
+          "Sala multiuso",
+          "Quinchos"
+        ],
+        "superficieDesdeM2": 31.0,
+        "descripcionLarga": "Santa Elena 1670 es un proyecto de Euro ubicado en Santa Elena 1670, Santiago. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye lavandería, bicicleteros, gimnasio, piscina, sala multiuso."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "plaza-quilicura",
@@ -9498,18 +9816,71 @@
   {
     "slug": "mapocho-3521-edificio-a",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/mapocho-3521",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "not_found",
-    "sourceNotes": "La landing oficial histórica Euro–Santander menciona Torre A y unidad 508 A de Mapocho 3521. La promoción venció el 29/08/2025 y presenta una dirección diferente de la ficha vigente. No acredita la equivalencia comercial actual con «Edificio A» del catálogo ni sus datos vigentes. Se mantienen pendientes precio, dirección/acceso, entrega, fotos, recorridos y características propios de la etapa.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "inmobiliaria",
       "comuna",
-      "region"
+      "descripcionLarga",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "nombre",
+      "precioDesdeUF",
+      "region",
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "inmobiliaria": "Euro",
       "comuna": "Quinta Normal",
-      "region": "Región Metropolitana"
+      "region": "Región Metropolitana",
+      "nombre": "Mapocho 3521 - Edificio A",
+      "tipologias": [
+        "2 dormitorios",
+        "3 dormitorios"
+      ],
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
+      "tipoActivo": "Residencial",
+      "descripcionLarga": "Registro comercial separado cuyo brochure adjunto es idéntico al de Mapocho 3521 y no identifica la letra A. Entrega informada: Inmediata. Estado comercial informado: En recepción final.",
+      "precioDesdeUF": 3194.03,
+      "precioDecimales": 2,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3194.03
+        },
+        {
+          "tipologia": "3 dormitorios",
+          "precioDesdeUF": 3324.18
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3194.03,
+          "priceDecimals": 2
+        },
+        {
+          "id": "3d",
+          "bedrooms": 3,
+          "label": "3 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3324.18,
+          "priceDecimals": 2
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En recepción final"
     },
     "specs": {
       "utilM2": null,
@@ -9521,13 +9892,10 @@
     "images": [],
     "virtualTours": [],
     "pendingFields": [
-      "Identidad de la torre o edificio específico",
-      "Dirección específica",
-      "Precio vigente de la torre",
-      "Tipologías y superficies de la torre",
-      "Estado y entrega de la torre",
-      "Fotografías y recorrido propio de la torre",
-      "Equipamiento específico"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "Planos, características y acceso específicos de Edificio A pendientes de confirmar. El folleto recibido es idéntico al del conjunto Mapocho 3521.",
+      "Correspondencia del brochure con Edificio A.",
+      "Características y planos propios del edificio; conservar datos existentes válidos sin inferirlos del PDF duplicado."
     ],
     "sourceEvidence": {
       "location": "Ficha general; nombre del catálogo no figura en el texto",
@@ -9650,7 +10018,18 @@
       "imageNote": "Imágenes oficiales del conjunto Mapocho 3521. No identifican Edificio A ni acreditan una unidad disponible.",
       "mapQuery": "Rivas Vicuña 1131, Quinta Normal, Región Metropolitana, Chile",
       "mapNote": "Dirección oficial del conjunto Mapocho 3521. El acceso específico de Edificio A no está confirmado; Google Maps determina el marcador a partir de esta dirección."
-    }
+    },
+    "historicalSourceNotes": "La landing oficial histórica Euro–Santander menciona Torre A y unidad 508 A de Mapocho 3521. La promoción venció el 29/08/2025 y presenta una dirección diferente de la ficha vigente. No acredita la equivalencia comercial actual con «Edificio A» del catálogo ni sus datos vigentes. Se mantienen pendientes precio, dirección/acceso, entrega, fotos, recorridos y características propios de la etapa.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "inmobiliaria": "Euro",
+        "comuna": "Quinta Normal",
+        "region": "Región Metropolitana"
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "edificio-lira-622",
@@ -10037,23 +10416,24 @@
   {
     "slug": "entre-vicunas",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/entre-vicunas",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Entre Vicuñas",
@@ -10062,18 +10442,62 @@
       "region": "Región Metropolitana",
       "direccion": "Vicuña Mackenna 5970",
       "mapQuery": "Vicuña Mackenna 5970, La Florida, Región Metropolitana, Chile",
-      "estado": "Entrega futura",
-      "entrega": "1er semestre 2027",
+      "estado": "En blanco",
+      "entrega": "1.er semestre 2027",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "precioDesdeUF": 3093,
+      "precioDesdeUF": 3098.0,
       "amenities": [
-        "Áreas verdes"
+        "Áreas verdes",
+        "Lavandería",
+        "Bicicleteros",
+        "Gimnasio",
+        "Quinchos",
+        "Salón multiuso",
+        "Lockers",
+        "Camarines"
       ],
       "superficieDesdeM2": 28.0,
-      "descripcionLarga": "Entre Vicuñas es un proyecto de Euro ubicado en Vicuña Mackenna 5970, La Florida. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2027. Su equipamiento incluye áreas verdes."
+      "descripcionLarga": "Edificio residencial en La Florida, en Vicuña Mackenna 5970, con departamentos de uno y dos dormitorios y espacios comunes para trabajo, ejercicio y encuentro. Entrega informada: 1.er semestre 2027. Estado comercial informado: En blanco.",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 0,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": 3098.0
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3696.0
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": 3098.0,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3696.0,
+          "priceDecimals": 0
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En blanco"
     },
     "specs": {
       "utilM2": "28 a 53",
@@ -10118,7 +10542,9 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "Los dos modelos de un dormitorio tienen la misma etiqueta impresa y distribuciones distintas; distinguirlos por página, no inventar códigos comerciales.",
+      "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
     ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
@@ -10169,7 +10595,33 @@
         "alt": "Imagen oficial de Entre Vicuñas",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/entre-vicunas"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "nombre": "Entre Vicuñas",
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana",
+        "direccion": "Vicuña Mackenna 5970",
+        "mapQuery": "Vicuña Mackenna 5970, La Florida, Región Metropolitana, Chile",
+        "estado": "Entrega futura",
+        "entrega": "1er semestre 2027",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": 3093,
+        "amenities": [
+          "Áreas verdes"
+        ],
+        "superficieDesdeM2": 28.0,
+        "descripcionLarga": "Entre Vicuñas es un proyecto de Euro ubicado en Vicuña Mackenna 5970, La Florida. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2027. Su equipamiento incluye áreas verdes."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "lomas-de-puyai",
@@ -11501,18 +11953,75 @@
   {
     "slug": "froilan-roa-5731-torre-norte",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "not_found",
-    "sourceNotes": "La ficha oficial actual describe Froilán Roa 5731 de forma general. No identifica la subdivisión Froilán Roa 5731 - Torre Norte; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio. Reauditoría del 09/10/2026: el brochure oficial muestra dos torres sin identificar Norte/Sur; el avance de obras y la documentación oficial tampoco distinguen etapas. No se publican datos generales como propios de una torre.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "inmobiliaria",
       "comuna",
-      "region"
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "inmobiliaria": "Euro",
       "comuna": "La Florida",
-      "region": "Región Metropolitana"
+      "region": "Región Metropolitana",
+      "nombre": "Froilán Roa 5731 - Torre Norte",
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios"
+      ],
+      "estado": "En blanco",
+      "entrega": "1.er semestre 2027",
+      "tipoActivo": "Residencial",
+      "descripcionLarga": "Froilán Roa 5731 - Torre Norte es un proyecto de departamentos de Euro en La Florida. La información de esta ficha corresponde a la torre indicada. Entrega informada: 1.er semestre 2027. Estado comercial informado: En blanco.",
+      "direccion": "Froilán Roa 5731",
+      "mapQuery": "Froilán Roa 5731, La Florida, Región Metropolitana, Chile",
+      "precioDesdeUF": 3145.0,
+      "precioDecimales": 0,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": 3145.0
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3414.0
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": 3145.0,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3414.0,
+          "priceDecimals": 0
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En blanco"
     },
     "specs": {
       "utilM2": null,
@@ -11524,13 +12033,8 @@
     "images": [],
     "virtualTours": [],
     "pendingFields": [
-      "Identidad de la torre o edificio específico",
-      "Dirección específica",
-      "Precio vigente de la torre",
-      "Tipologías y superficies de la torre",
-      "Estado y entrega de la torre",
-      "Fotografías y recorrido propio de la torre",
-      "Equipamiento específico"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "Planos, superficies y equipamiento específicos de esta torre pendientes de confirmación."
     ],
     "sourceEvidence": {
       "location": "Ficha general; nombre del catálogo no figura en el texto",
@@ -11636,28 +12140,40 @@
       "imageNote": "Representaciones oficiales del conjunto Froilán Roa 5731. La fuente no identifica las torres Norte y Sur ni una unidad disponible.",
       "mapQuery": "Froilán Roa 5731, La Florida, Región Metropolitana, Chile",
       "mapNote": "Dirección oficial del conjunto Froilán Roa 5731. El acceso de cada torre sigue pendiente; el marcador de Google Maps se genera por búsqueda de dirección."
-    }
+    },
+    "historicalSourceNotes": "La ficha oficial actual describe Froilán Roa 5731 de forma general. No identifica la subdivisión Froilán Roa 5731 - Torre Norte; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio. Reauditoría del 09/10/2026: el brochure oficial muestra dos torres sin identificar Norte/Sur; el avance de obras y la documentación oficial tampoco distinguen etapas. No se publican datos generales como propios de una torre.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana"
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "rosas-1444",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/rosas-1444",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Rosas 1444",
@@ -11666,21 +12182,64 @@
       "region": "Región Metropolitana",
       "direccion": "Rosas 1438",
       "mapQuery": "Rosas 1438, Santiago, Región Metropolitana, Chile",
-      "estado": "Entrega inmediata",
-      "entrega": "Entrega inmediata",
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "precioDesdeUF": 3063,
+      "precioDesdeUF": 4141.63,
       "amenities": [
         "Lavandería",
         "Bicicleteros",
         "Piscina",
-        "Quinchos"
+        "Quinchos",
+        "Piscina panorámica",
+        "Salón multiuso",
+        "Gimnasio equipado",
+        "Sala de niños",
+        "Juegos infantiles exteriores",
+        "Pet Spa"
       ],
       "superficieDesdeM2": 31.0,
-      "descripcionLarga": "Rosas 1444 es un proyecto de Euro ubicado en Rosas 1438, Santiago. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye lavandería, bicicleteros, piscina, quinchos."
+      "descripcionLarga": "Edificio de 24 pisos en Rosas 1444, Santiago, con departamentos de uno y dos dormitorios, piscina panorámica y espacios infantiles y de encuentro. Entrega informada: Inmediata. Estado comercial informado: En recepción final.",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 2,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": null
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 4141.63
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": null,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 4141.63,
+          "priceDecimals": 2
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En recepción final"
     },
     "specs": {
       "utilM2": "31 a 50",
@@ -11725,7 +12284,9 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Recorrido oficial enlazado no disponible: HTTP404"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "El brochure no documenta cortinas roller ni iluminación LED; no asignarlas solo por aparecer en otros proyectos Euro.",
+      "Precio actual de tipología de un dormitorio no proporcionado por Sollahms."
     ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
@@ -11783,28 +12344,58 @@
         "alt": "Imagen oficial de Rosas 1444",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/rosas-1444"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "nombre": "Rosas 1444",
+        "inmobiliaria": "Euro",
+        "comuna": "Santiago",
+        "region": "Región Metropolitana",
+        "direccion": "Rosas 1438",
+        "mapQuery": "Rosas 1438, Santiago, Región Metropolitana, Chile",
+        "estado": "Entrega inmediata",
+        "entrega": "Entrega inmediata",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": 3063,
+        "amenities": [
+          "Lavandería",
+          "Bicicleteros",
+          "Piscina",
+          "Quinchos"
+        ],
+        "superficieDesdeM2": 31.0,
+        "descripcionLarga": "Rosas 1444 es un proyecto de Euro ubicado en Rosas 1438, Santiago. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye lavandería, bicicleteros, piscina, quinchos."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "guillermo-mann-1401",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/guillermo-mann-1401",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. Hay una discrepancia de rótulo: un modelo dice1 dormitorio pero la fila dormitorios y el JSON oficial dicen2; su Matterport se titula Guillermo Mann2d-1b. Se requiere confirmación comercial de esa unidad.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Guillermo Mann 1401",
@@ -11813,19 +12404,64 @@
       "region": "Región Metropolitana",
       "direccion": "Guillermo Mann 1401",
       "mapQuery": "Guillermo Mann 1401, Ñuñoa, Región Metropolitana, Chile",
-      "estado": "Entrega inmediata",
-      "entrega": "Entrega inmediata",
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
       "tipologias": [
+        "1 dormitorio",
         "2 dormitorios"
       ],
-      "precioDesdeUF": 3461,
+      "precioDesdeUF": 3998.31,
       "amenities": [
         "Bicicleteros",
         "Piscina",
-        "Cowork"
+        "Cowork",
+        "Quinchos panorámicos abiertos",
+        "Salones multiuso",
+        "Gimnasio equipado",
+        "Sala de niños",
+        "Juegos infantiles",
+        "Terrazas comunes",
+        "Lavandería"
       ],
       "superficieDesdeM2": 31.0,
-      "descripcionLarga": "Guillermo Mann 1401 es un proyecto de Euro ubicado en Guillermo Mann 1401, Ñuñoa. La ficha oficial publica departamentos de 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye bicicleteros, piscina, cowork."
+      "descripcionLarga": "Proyecto residencial en Guillermo Mann 1401, Ñuñoa, con departamentos de uno y dos dormitorios, piscina, terrazas y espacios de recreación interior y exterior. Entrega informada: Inmediata. Estado comercial informado: En recepción final.",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 2,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": null
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3998.31
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": null,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3998.31,
+          "priceDecimals": 2
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En recepción final"
     },
     "specs": {
       "utilM2": "31 a 55",
@@ -11898,7 +12534,9 @@
       }
     ],
     "pendingFields": [
-      "Rótulo de dormitorios del modelo de entrada: ficha oficial inconsistente"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "Dos distribuciones distintas en p11 comparten etiqueta 2D1B (4C); identificarlas por posición izquierda/derecha, sin inventar códigos comerciales.",
+      "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
     ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
@@ -11948,23 +12586,107 @@
         "alt": "Imagen oficial de Guillermo Mann 1401",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/guillermo-mann-1401"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. Hay una discrepancia de rótulo: un modelo dice1 dormitorio pero la fila dormitorios y el JSON oficial dicen2; su Matterport se titula Guillermo Mann2d-1b. Se requiere confirmación comercial de esa unidad.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "nombre": "Guillermo Mann 1401",
+        "inmobiliaria": "Euro",
+        "comuna": "Ñuñoa",
+        "region": "Región Metropolitana",
+        "direccion": "Guillermo Mann 1401",
+        "mapQuery": "Guillermo Mann 1401, Ñuñoa, Región Metropolitana, Chile",
+        "estado": "Entrega inmediata",
+        "entrega": "Entrega inmediata",
+        "tipologias": [
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": 3461,
+        "amenities": [
+          "Bicicleteros",
+          "Piscina",
+          "Cowork"
+        ],
+        "superficieDesdeM2": 31.0,
+        "descripcionLarga": "Guillermo Mann 1401 es un proyecto de Euro ubicado en Guillermo Mann 1401, Ñuñoa. La ficha oficial publica departamentos de 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye bicicleteros, piscina, cowork."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "froilan-roa-5731-torre-sur",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "not_found",
-    "sourceNotes": "La ficha oficial actual describe Froilán Roa 5731 de forma general. No identifica la subdivisión Froilán Roa 5731 - Torre Sur; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio. Reauditoría del 09/10/2026: el brochure oficial muestra dos torres sin identificar Norte/Sur; el avance de obras y la documentación oficial tampoco distinguen etapas. No se publican datos generales como propios de una torre.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "inmobiliaria",
       "comuna",
-      "region"
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "inmobiliaria": "Euro",
       "comuna": "La Florida",
-      "region": "Región Metropolitana"
+      "region": "Región Metropolitana",
+      "nombre": "Froilán Roa 5731 - Torre Sur",
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios"
+      ],
+      "estado": "En blanco",
+      "entrega": "1.er semestre 2027",
+      "tipoActivo": "Residencial",
+      "descripcionLarga": "Froilán Roa 5731 - Torre Sur es un proyecto de departamentos de Euro en La Florida. La información de esta ficha corresponde a la torre indicada. Entrega informada: 1.er semestre 2027. Estado comercial informado: En blanco.",
+      "direccion": "Froilán Roa 5731",
+      "mapQuery": "Froilán Roa 5731, La Florida, Región Metropolitana, Chile",
+      "precioDesdeUF": 3216.0,
+      "precioDecimales": 0,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": 3216.0
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3294.0
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": 3216.0,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3294.0,
+          "priceDecimals": 0
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En blanco"
     },
     "specs": {
       "utilM2": null,
@@ -11976,13 +12698,8 @@
     "images": [],
     "virtualTours": [],
     "pendingFields": [
-      "Identidad de la torre o edificio específico",
-      "Dirección específica",
-      "Precio vigente de la torre",
-      "Tipologías y superficies de la torre",
-      "Estado y entrega de la torre",
-      "Fotografías y recorrido propio de la torre",
-      "Equipamiento específico"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "Planos, superficies y equipamiento específicos de esta torre pendientes de confirmación."
     ],
     "sourceEvidence": {
       "location": "Ficha general; nombre del catálogo no figura en el texto",
@@ -12088,7 +12805,18 @@
       "imageNote": "Representaciones oficiales del conjunto Froilán Roa 5731. La fuente no identifica las torres Norte y Sur ni una unidad disponible.",
       "mapQuery": "Froilán Roa 5731, La Florida, Región Metropolitana, Chile",
       "mapNote": "Dirección oficial del conjunto Froilán Roa 5731. El acceso de cada torre sigue pendiente; el marcador de Google Maps se genera por búsqueda de dirección."
-    }
+    },
+    "historicalSourceNotes": "La ficha oficial actual describe Froilán Roa 5731 de forma general. No identifica la subdivisión Froilán Roa 5731 - Torre Sur; no se atribuyen precios, superficies, imágenes ni recorridos del conjunto a esta torre o edificio. Reauditoría del 09/10/2026: el brochure oficial muestra dos torres sin identificar Norte/Sur; el avance de obras y la documentación oficial tampoco distinguen etapas. No se publican datos generales como propios de una torre.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana"
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "edificio-san-francisco-1204",
@@ -21994,23 +22722,24 @@
   {
     "slug": "mapocho-3521",
     "sourceUrl": "https://euroinmobiliaria.cl/proyectos/mapocho-3521",
-    "checkedAt": "2026-10-10",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional. Revisión del 10/10/2026 en la fuente oficial entregada: se confirman desde UF 2.994, dirección Rivas Vicuña 1131, entrega inmediata y modelos actuales de 2 a 3 dormitorios. Se completan salón infantil, patio exterior y dos imágenes oficiales sin reemplazar las existentes. El precio publicado incorpora descuento máximo para la tipología seleccionada y excluye estacionamiento y bodega; disponibilidad y condiciones deben confirmarse. El antiguo enlace de recorrido sigue respondiendo HTTP 404.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "precioDesdeUF",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Mapocho 3521",
@@ -22019,13 +22748,14 @@
       "region": "Región Metropolitana",
       "direccion": "Rivas Vicuña 1131",
       "mapQuery": "Rivas Vicuña 1131, Quinta Normal, Región Metropolitana, Chile",
-      "estado": "Entrega inmediata",
-      "entrega": "Entrega inmediata",
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
       "tipologias": [
+        "1 dormitorio",
         "2 dormitorios",
         "3 dormitorios"
       ],
-      "precioDesdeUF": 2994,
+      "precioDesdeUF": 3092.0,
       "amenities": [
         "Bicicleteros",
         "Piscina",
@@ -22033,10 +22763,65 @@
         "Cowork",
         "Áreas verdes",
         "Salón infantil",
-        "Patio exterior"
+        "Patio exterior",
+        "Quincho cerrado con terraza",
+        "Gimnasio Youtrain",
+        "Plaza interior",
+        "Salón multiuso",
+        "Juegos infantiles exteriores",
+        "Lavandería"
       ],
       "superficieDesdeM2": 38.0,
-      "descripcionLarga": "Mapocho 3521 es un proyecto de Euro ubicado en Rivas Vicuña 1131, Quinta Normal. La ficha oficial publica departamentos de 2 a 3 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye bicicleteros, piscina, quinchos, cowork, áreas verdes."
+      "descripcionLarga": "Brochure de Mapocho 3521 en Quinta Normal, con departamentos de uno a tres dormitorios y espacios comunes para recreación, trabajo y encuentro. El documento no identifica un edificio por letra. Entrega informada: Inmediata. Estado comercial informado: En recepción final.",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 0,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": null
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": 3092.0
+        },
+        {
+          "tipologia": "3 dormitorios",
+          "precioDesdeUF": 3246.0
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": null,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3092.0,
+          "priceDecimals": 0
+        },
+        {
+          "id": "3d",
+          "bedrooms": 3,
+          "label": "3 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": 3246.0,
+          "priceDecimals": 0
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "confirmed"
+      },
+      "estadoInformado": "En recepción final"
     },
     "specs": {
       "utilM2": "38 a 52",
@@ -22097,7 +22882,7 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Recorrido oficial enlazado no disponible: HTTP404"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar"
     ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; equipamiento y galería oficial",
@@ -22156,7 +22941,39 @@
         "alt": "Imagen oficial de Mapocho 3521",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/mapocho-3521"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional. Revisión del 10/10/2026 en la fuente oficial entregada: se confirman desde UF 2.994, dirección Rivas Vicuña 1131, entrega inmediata y modelos actuales de 2 a 3 dormitorios. Se completan salón infantil, patio exterior y dos imágenes oficiales sin reemplazar las existentes. El precio publicado incorpora descuento máximo para la tipología seleccionada y excluye estacionamiento y bodega; disponibilidad y condiciones deben confirmarse. El antiguo enlace de recorrido sigue respondiendo HTTP 404.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-10",
+      "updates": {
+        "nombre": "Mapocho 3521",
+        "inmobiliaria": "Euro",
+        "comuna": "Quinta Normal",
+        "region": "Región Metropolitana",
+        "direccion": "Rivas Vicuña 1131",
+        "mapQuery": "Rivas Vicuña 1131, Quinta Normal, Región Metropolitana, Chile",
+        "estado": "Entrega inmediata",
+        "entrega": "Entrega inmediata",
+        "tipologias": [
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "precioDesdeUF": 2994,
+        "amenities": [
+          "Bicicleteros",
+          "Piscina",
+          "Quinchos",
+          "Cowork",
+          "Áreas verdes",
+          "Salón infantil",
+          "Patio exterior"
+        ],
+        "superficieDesdeM2": 38.0,
+        "descripcionLarga": "Mapocho 3521 es un proyecto de Euro ubicado en Rivas Vicuña 1131, Quinta Normal. La ficha oficial publica departamentos de 2 a 3 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye bicicleteros, piscina, quinchos, cowork, áreas verdes."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "jofre-135",
@@ -50575,23 +51392,23 @@
   {
     "slug": "diagonal-vicuna",
     "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/diagonal-vicuna",
-    "checkedAt": "2026-10-09",
+    "checkedAt": "2026-10-29",
     "sourceStatus": "verified",
-    "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional.",
+    "sourceNotes": "Departamentos documentados para este registro. Precios, entrega y estado comercial según fuente Sollahms del 29/10/2026. Los antecedentes de brochure no confirman stock. Ver fuentes Euro centralizadas para métricas y discrepancias.",
     "verifiedFields": [
-      "nombre",
-      "inmobiliaria",
-      "comuna",
-      "region",
-      "direccion",
-      "mapQuery",
-      "estado",
-      "entrega",
-      "tipologias",
-      "precioDesdeUF",
       "amenities",
+      "comuna",
+      "descripcionLarga",
+      "direccion",
+      "entrega",
+      "estado",
+      "inmobiliaria",
+      "mapQuery",
+      "nombre",
+      "region",
       "superficieDesdeM2",
-      "descripcionLarga"
+      "tipoActivo",
+      "tipologias"
     ],
     "updates": {
       "nombre": "Diagonal Vicuña",
@@ -50600,24 +51417,65 @@
       "region": "Región Metropolitana",
       "direccion": "Santa Elena 2000",
       "mapQuery": "Santa Elena 2000, Santiago, Región Metropolitana, Chile",
-      "estado": "Entrega futura",
-      "entrega": "1er semestre 2027",
+      "estado": "En blanco",
+      "entrega": "1.er semestre 2027",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "precioDesdeUF": 3184,
+      "precioDesdeUF": null,
       "amenities": [
         "Lavandería",
         "Bicicleteros",
         "Gimnasio",
         "Piscina",
-        "Sala multiuso",
+        "Salón multiuso",
         "Quinchos",
-        "Cowork"
+        "Cowork",
+        "Plaza interior",
+        "Juegos infantiles",
+        "Pet Spa",
+        "Sala de niños"
       ],
       "superficieDesdeM2": 32.0,
-      "descripcionLarga": "Diagonal Vicuña es un proyecto de Euro ubicado en Santa Elena 2000, Santiago. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2027. Su equipamiento incluye lavandería, bicicleteros, gimnasio, piscina, sala multiuso."
+      "descripcionLarga": "Diagonal Vicuña es un proyecto de departamentos de Euro en Santiago. Combina departamentos de uno y dos dormitorios con espacios comunes de recreación y trabajo. Entrega informada: 1.er semestre 2027. Estado comercial informado: En blanco.",
+      "tipoActivo": "Residencial",
+      "precioDecimales": 0,
+      "preciosPorTipologia": [
+        {
+          "tipologia": "1 dormitorio",
+          "precioDesdeUF": null
+        },
+        {
+          "tipologia": "2 dormitorios",
+          "precioDesdeUF": null
+        }
+      ],
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "bedrooms": 1,
+          "label": "1 dormitorio",
+          "propertyType": "departamento",
+          "priceUF": null,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "bedrooms": 2,
+          "label": "2 dormitorios",
+          "propertyType": "departamento",
+          "priceUF": null,
+          "priceDecimals": 0
+        }
+      ],
+      "commercialSource": {
+        "type": "owner-supplied",
+        "file": "data/euro-commercial.json",
+        "date": "2026-10-29",
+        "priceStatus": "pending"
+      },
+      "estadoInformado": "En blanco"
     },
     "specs": {
       "utilM2": "32 a 57",
@@ -50662,7 +51520,8 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Recorrido oficial enlazado no disponible: HTTP404"
+      "Disponibilidad, inclusiones y condiciones de la unidad al cotizar",
+      "Precio desde pendiente de confirmación comercial Sollahms"
     ],
     "sourceEvidence": {
       "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
@@ -50720,7 +51579,39 @@
         "alt": "Imagen oficial de Diagonal Vicuña",
         "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/diagonal-vicuna"
       }
-    ]
+    ],
+    "historicalSourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional.",
+    "preEuroReview": {
+      "checkedAt": "2026-10-09",
+      "updates": {
+        "nombre": "Diagonal Vicuña",
+        "inmobiliaria": "Euro",
+        "comuna": "Santiago",
+        "region": "Región Metropolitana",
+        "direccion": "Santa Elena 2000",
+        "mapQuery": "Santa Elena 2000, Santiago, Región Metropolitana, Chile",
+        "estado": "Entrega futura",
+        "entrega": "1er semestre 2027",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": 3184,
+        "amenities": [
+          "Lavandería",
+          "Bicicleteros",
+          "Gimnasio",
+          "Piscina",
+          "Sala multiuso",
+          "Quinchos",
+          "Cowork"
+        ],
+        "superficieDesdeM2": 32.0,
+        "descripcionLarga": "Diagonal Vicuña es un proyecto de Euro ubicado en Santa Elena 2000, Santiago. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2027. Su equipamiento incluye lavandería, bicicleteros, gimnasio, piscina, sala multiuso."
+      }
+    },
+    "euroBrochureSource": "data/euro-brochures.json",
+    "euroOfficialReview": "data/euro-official-review.json"
   },
   {
     "slug": "vista-portugal",

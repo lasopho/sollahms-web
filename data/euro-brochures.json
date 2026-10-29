@@ -1,0 +1,2779 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-29",
+  "policy": {
+    "prices": "No se importan precios, rentas, descuentos o garantías de los PDF. Los precios autorizados se mantienen en una fuente comercial separada.",
+    "availability": "Los conteos corresponden al diseño del proyecto; no constituyen inventario ni disponibilidad.",
+    "unknowns": "null significa no confirmado; nunca ausencia.",
+    "surfaceMetrics": "Solo Mapocho y Rosas tienen superficies rotuladas: total aproximada; Mapocho además promedio. Ningún PDF desglosa útil/interior/terraza.",
+    "duplicateSource": "Mapocho3521 y EdificioA son archivos byte-identical, sin letra de edificio en el contenido."
+  },
+  "projects": {
+    "edificio-don-pepe-154": {
+      "slug": "edificio-don-pepe-154",
+      "source": {
+        "filename": "Euro - Edificio Don Pepe 154.pdf",
+        "sha256": "36252a3f643df3c9e9089734be4cb9f6d8b28487f59ae378c9dd5e96e3320312",
+        "pageCount": 13,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "project-matched",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+      },
+      "description": "Proyecto residencial en La Florida con departamentos de uno y dos dormitorios, espacios para actividades familiares y conexión al entorno de Vicente Valdés.",
+      "buildingFacts": [
+        {
+          "label": "Pisos",
+          "value": 20,
+          "sourcePage": 4
+        },
+        {
+          "label": "Departamentos del proyecto",
+          "value": 293,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño, no disponibilidad actual."
+        },
+        {
+          "label": "Estacionamientos del proyecto",
+          "value": 49,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        },
+        {
+          "label": "Bodegas del proyecto",
+          "value": 18,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        }
+      ],
+      "amenities": [
+        {
+          "label": "Piscina",
+          "sourcePage": 7
+        },
+        {
+          "label": "Quinchos",
+          "sourcePage": 7
+        },
+        {
+          "label": "Gimnasio",
+          "sourcePage": 7
+        },
+        {
+          "label": "Salón multiuso",
+          "sourcePage": 7
+        },
+        {
+          "label": "Sala de niños",
+          "sourcePage": 7
+        },
+        {
+          "label": "Bicicleteros",
+          "sourcePage": 7
+        },
+        {
+          "label": "Lavandería",
+          "sourcePage": 7
+        }
+      ],
+      "finishes": [
+        {
+          "label": "Ventanas PVC termopanel",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cocina equipada con encimera vitrocerámica, horno eléctrico y campana",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cubierta de granito",
+          "sourcePage": 6
+        },
+        {
+          "label": "Piso vinílico SPC",
+          "sourcePage": 6
+        },
+        {
+          "label": "Conexión para lavadora",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cortinas roller",
+          "sourcePage": 6
+        },
+        {
+          "label": "Iluminación LED",
+          "sourcePage": 6
+        }
+      ],
+      "technology": [
+        {
+          "label": "Alarma de seguridad en la puerta de acceso",
+          "sourcePage": 6
+        }
+      ],
+      "connectivity": [
+        {
+          "label": "Cercanía al Metro Vicente Valdés",
+          "sourcePage": 5
+        },
+        {
+          "label": "Supermercados, comercio, colegios, centros comerciales, restaurantes y minimarkets en el entorno",
+          "sourcePage": 5
+        }
+      ],
+      "variants": [
+        {
+          "id": "p09-single",
+          "sourcePage": 9,
+          "sourcePosition": "single",
+          "sourceLabel": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/edificio-don-pepe-154/plan-p09.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p10-single",
+          "sourcePage": 10,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/edificio-don-pepe-154/plan-p10.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p11-single",
+          "sourcePage": 11,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/edificio-don-pepe-154/plan-p11.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p12-single",
+          "sourcePage": 12,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/edificio-don-pepe-154/plan-p12.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        }
+      ],
+      "conflicts": [],
+      "historicalOnly": [
+        {
+          "sourcePage": 4,
+          "label": "Entrega futura",
+          "reason": "Estado sin fecha en brochure; utilizar fecha comercial vigente entregada por Sollahms."
+        }
+      ],
+      "legalNotices": [],
+      "unknowns": [
+        "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
+      ],
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "entre-vicunas": {
+      "slug": "entre-vicunas",
+      "source": {
+        "filename": "Euro - Entre Vicuñas.pdf",
+        "sha256": "4ab94dd55d0ca6277c991eb393a49ff4a374d49850364ff894c6875cd170da2f",
+        "pageCount": 13,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "project-matched",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+      },
+      "description": "Edificio residencial en La Florida, en Vicuña Mackenna 5970, con departamentos de uno y dos dormitorios y espacios comunes para trabajo, ejercicio y encuentro.",
+      "buildingFacts": [
+        {
+          "label": "Pisos",
+          "value": 11,
+          "sourcePage": 4
+        },
+        {
+          "label": "Departamentos del proyecto",
+          "value": 222,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño, no disponibilidad actual."
+        }
+      ],
+      "amenities": [
+        {
+          "label": "Lavandería",
+          "sourcePage": 7
+        },
+        {
+          "label": "Bicicleteros",
+          "sourcePage": 7
+        },
+        {
+          "label": "Gimnasio",
+          "sourcePage": 7
+        },
+        {
+          "label": "Quinchos",
+          "sourcePage": 7
+        },
+        {
+          "label": "Salón multiuso",
+          "sourcePage": 7
+        },
+        {
+          "label": "Lockers",
+          "sourcePage": 7
+        },
+        {
+          "label": "Camarines",
+          "sourcePage": 7
+        }
+      ],
+      "finishes": [
+        {
+          "label": "Ventanas PVC termopanel",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cocina equipada con encimera vitrocerámica, horno eléctrico y campana",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cubierta de granito",
+          "sourcePage": 6
+        },
+        {
+          "label": "Piso vinílico SPC",
+          "sourcePage": 6
+        },
+        {
+          "label": "Conexión para lavadora",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cortinas roller",
+          "sourcePage": 6
+        },
+        {
+          "label": "Iluminación LED",
+          "sourcePage": 6
+        }
+      ],
+      "technology": [
+        {
+          "label": "Alarma de seguridad en la puerta de acceso",
+          "sourcePage": 6
+        }
+      ],
+      "connectivity": [
+        {
+          "label": "Vicuña Mackenna 5970",
+          "sourcePage": 5
+        },
+        {
+          "label": "Cercanía a Mall Florida Center, Metro Pedrero y Metro Mirador",
+          "sourcePage": 5
+        },
+        {
+          "label": "Comercio, bancos, cafeterías, restaurantes, centros de salud, hospitales y supermercados en el entorno",
+          "sourcePage": 5
+        },
+        {
+          "label": "Cercanía al Estadio Monumental",
+          "sourcePage": 5
+        }
+      ],
+      "variants": [
+        {
+          "id": "p09-left",
+          "sourcePage": 9,
+          "sourcePosition": "left",
+          "sourceLabel": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/entre-vicunas/plan-p09.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p09-right",
+          "sourcePage": 9,
+          "sourcePosition": "right",
+          "sourceLabel": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/entre-vicunas/plan-p09.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p10-single",
+          "sourcePage": 10,
+          "sourcePosition": "single",
+          "sourceLabel": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/entre-vicunas/plan-p10.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p11-single",
+          "sourcePage": 11,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 2 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/entre-vicunas/plan-p11.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p12-single",
+          "sourcePage": 12,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/entre-vicunas/plan-p12.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        }
+      ],
+      "conflicts": [],
+      "historicalOnly": [
+        {
+          "sourcePage": 4,
+          "label": "Segundo semestre de 2026",
+          "reason": "Fecha histórica; instrucción comercial actual indica primer semestre de 2027."
+        }
+      ],
+      "legalNotices": [],
+      "unknowns": [
+        "Los dos modelos de un dormitorio tienen la misma etiqueta impresa y distribuciones distintas; distinguirlos por página, no inventar códigos comerciales.",
+        "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
+      ],
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "guillermo-mann-1401": {
+      "slug": "guillermo-mann-1401",
+      "source": {
+        "filename": "Euro - Guillermo Mann 1401.pdf",
+        "sha256": "169e5f2152d85f604a7d8e53218993c6d438fd569140ad55f49d8bd7fed78639",
+        "pageCount": 14,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "project-matched",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+      },
+      "description": "Proyecto residencial en Guillermo Mann 1401, Ñuñoa, con departamentos de uno y dos dormitorios, piscina, terrazas y espacios de recreación interior y exterior.",
+      "buildingFacts": [
+        {
+          "label": "Pisos",
+          "value": 13,
+          "sourcePage": 4
+        },
+        {
+          "label": "Departamentos del proyecto",
+          "value": 239,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño, no disponibilidad actual."
+        },
+        {
+          "label": "Estacionamientos del proyecto",
+          "value": 148,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        },
+        {
+          "label": "Bodegas del proyecto",
+          "value": 80,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        }
+      ],
+      "amenities": [
+        {
+          "label": "Piscina",
+          "sourcePage": 7
+        },
+        {
+          "label": "Quinchos panorámicos abiertos",
+          "sourcePage": 7
+        },
+        {
+          "label": "Salones multiuso",
+          "sourcePage": 7
+        },
+        {
+          "label": "Gimnasio equipado",
+          "sourcePage": 7
+        },
+        {
+          "label": "Sala de niños",
+          "sourcePage": 7
+        },
+        {
+          "label": "Juegos infantiles",
+          "sourcePage": 7
+        },
+        {
+          "label": "Terrazas comunes",
+          "sourcePage": 7
+        },
+        {
+          "label": "Lavandería",
+          "sourcePage": 7
+        },
+        {
+          "label": "Bicicleteros",
+          "sourcePage": 7
+        }
+      ],
+      "finishes": [
+        {
+          "label": "Ventanas PVC termopanel",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cocina equipada con encimera vitrocerámica, horno eléctrico y campana",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cubierta de granito",
+          "sourcePage": 6
+        },
+        {
+          "label": "Piso porcelanato",
+          "sourcePage": 6
+        },
+        {
+          "label": "Conexión para lavadora",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cortinas roller",
+          "sourcePage": 6
+        },
+        {
+          "label": "Iluminación LED",
+          "sourcePage": 6
+        }
+      ],
+      "technology": [
+        {
+          "label": "Alarma de seguridad en la puerta de acceso",
+          "sourcePage": 6
+        },
+        {
+          "label": "Vigilancia por circuito cerrado",
+          "sourcePage": 7
+        }
+      ],
+      "connectivity": [
+        {
+          "label": "Cercanía a Metro Ñuble y Metro Rodrigo de Araya",
+          "sourcePage": 5
+        },
+        {
+          "label": "Comercio, bancos, cafeterías, restaurantes y centros de salud en el entorno",
+          "sourcePage": 5
+        },
+        {
+          "label": "Cercanía al Estadio Nacional y a la 33.ª Comisaría de Ñuñoa",
+          "sourcePage": 5
+        }
+      ],
+      "variants": [
+        {
+          "id": "p10-left",
+          "sourcePage": 10,
+          "sourcePosition": "left",
+          "sourceLabel": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/guillermo-mann-1401/plan-p10.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p10-right",
+          "sourcePage": 10,
+          "sourcePosition": "right",
+          "sourceLabel": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/guillermo-mann-1401/plan-p10.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p11-left",
+          "sourcePage": 11,
+          "sourcePosition": "left",
+          "sourceLabel": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/guillermo-mann-1401/plan-p11.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p11-right",
+          "sourcePage": 11,
+          "sourcePosition": "right",
+          "sourceLabel": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/guillermo-mann-1401/plan-p11.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p12-left",
+          "sourcePage": 12,
+          "sourcePosition": "left",
+          "sourceLabel": "2 DORM + 2 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/guillermo-mann-1401/plan-p12.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p12-right",
+          "sourcePage": 12,
+          "sourcePosition": "right",
+          "sourceLabel": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/guillermo-mann-1401/plan-p12.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p13-single",
+          "sourcePage": 13,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 1 BAÑO (KC)",
+          "modelCode": "KC",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": null,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/guillermo-mann-1401/plan-p13.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": false,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "La etiqueta impresa dice 1 baño; el dibujo muestra dos. Cantidad de baños pendiente de confirmación, excluida del filtro.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        }
+      ],
+      "conflicts": [
+        {
+          "sourcePages": [
+            2,
+            4,
+            5
+          ],
+          "field": "comuna",
+          "observed": "Páginas 2 y 4: Ñuñoa. Página 5: Santiago Centro.",
+          "resolution": "Conservar Ñuñoa, respaldado por instrucción comercial actual; no trasladar mapa o filtro a Santiago."
+        },
+        {
+          "sourcePages": [
+            13
+          ],
+          "field": "bathrooms",
+          "observed": "Etiqueta 2 DORM + 1 BAÑO (KC), pero dibujo presenta dos baños con WC, lavamanos y tina.",
+          "resolution": "Conservar etiqueta impresa y dibujo; baños normalizados null, no elegible para filtro por baños hasta aclaración."
+        }
+      ],
+      "historicalOnly": [
+        {
+          "sourcePage": 4,
+          "label": "Segundo semestre de 2025",
+          "reason": "Fecha histórica; instrucción actual separa entrega indicada Inmediata de estado En recepción final."
+        }
+      ],
+      "legalNotices": [],
+      "unknowns": [
+        "Dos distribuciones distintas en p11 comparten etiqueta 2D1B (4C); identificarlas por posición izquierda/derecha, sin inventar códigos comerciales.",
+        "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
+      ],
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "independencia-4745": {
+      "slug": "independencia-4745",
+      "source": {
+        "filename": "Euro - Independencia 4745.pdf",
+        "sha256": "6e1549e5c9c0a021633d8185a9a455241f33792dc4a1765b7be7eb44748aaaf0",
+        "pageCount": 14,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "project-matched",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+      },
+      "description": "Edificio residencial en Conchalí con departamentos de uno y dos dormitorios, piscina, quinchos y espacios familiares. El brochure describe departamentos; no documenta las características del local comercial.",
+      "buildingFacts": [
+        {
+          "label": "Pisos",
+          "value": 12,
+          "sourcePage": 4
+        },
+        {
+          "label": "Departamentos del proyecto",
+          "value": 292,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño, no disponibilidad actual."
+        },
+        {
+          "label": "Estacionamientos del proyecto",
+          "value": 97,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        },
+        {
+          "label": "Bodegas del proyecto",
+          "value": 91,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        }
+      ],
+      "amenities": [
+        {
+          "label": "Piscina",
+          "sourcePage": 7
+        },
+        {
+          "label": "Quinchos",
+          "sourcePage": 7
+        },
+        {
+          "label": "Gimnasio",
+          "sourcePage": 7
+        },
+        {
+          "label": "Salón multiuso",
+          "sourcePage": 7
+        },
+        {
+          "label": "Sala de niños",
+          "sourcePage": 7
+        },
+        {
+          "label": "Bicicleteros",
+          "sourcePage": 7
+        },
+        {
+          "label": "Lavandería",
+          "sourcePage": 7
+        }
+      ],
+      "finishes": [
+        {
+          "label": "Ventanas PVC termopanel",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cocina equipada con encimera vitrocerámica, horno eléctrico y campana",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cubierta de granito",
+          "sourcePage": 6
+        },
+        {
+          "label": "Piso vinílico SPC",
+          "sourcePage": 6
+        },
+        {
+          "label": "Conexión para lavadora",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cortinas roller",
+          "sourcePage": 6
+        },
+        {
+          "label": "Iluminación LED",
+          "sourcePage": 6
+        }
+      ],
+      "technology": [
+        {
+          "label": "Alarma de seguridad en la puerta de acceso",
+          "sourcePage": 6
+        }
+      ],
+      "connectivity": [
+        {
+          "label": "Cercanía al Metro Vivaceta",
+          "sourcePage": 5
+        },
+        {
+          "label": "Supermercados, comercio, colegios, centros comerciales, restaurantes y estaciones de servicio en el entorno",
+          "sourcePage": 5
+        }
+      ],
+      "variants": [
+        {
+          "id": "p09-single",
+          "sourcePage": 9,
+          "sourcePosition": "single",
+          "sourceLabel": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/independencia-4745/plan-p09.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p10-single",
+          "sourcePage": 10,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/independencia-4745/plan-p10.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p11-single",
+          "sourcePage": 11,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/independencia-4745/plan-p11.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p12-single",
+          "sourcePage": 12,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 2 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/independencia-4745/plan-p12.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p13-single",
+          "sourcePage": 13,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/independencia-4745/plan-p13.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        }
+      ],
+      "conflicts": [
+        {
+          "sourcePages": [
+            2,
+            4,
+            5
+          ],
+          "field": "direccion",
+          "observed": "Portada y ficha: Independencia 4745. Página de ubicación: Independencia 4749.",
+          "resolution": "No corregir numeración ni mapa automáticamente. Conservar el dato vigente validado y registrar discrepancia."
+        }
+      ],
+      "historicalOnly": [
+        {
+          "sourcePage": 4,
+          "label": "Entrega futura",
+          "reason": "Antecedente sin fecha; no reemplaza estado y entrega comerciales actuales."
+        }
+      ],
+      "legalNotices": [],
+      "unknowns": [
+        "No hay planos ni superficies del local comercial.",
+        "Las terminaciones, dormitorios, baños y amenities documentados aplican a departamentos, no automáticamente al local.",
+        "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
+      ],
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "mapocho-3521": {
+      "slug": "mapocho-3521",
+      "source": {
+        "filename": "Euro - Mapocho 3521.pdf",
+        "sha256": "5ff8f1dd1d3ae83bee4f6ce0b4d42f0ffb209166045abeabfc1f2ff5a14b4e98",
+        "pageCount": 18,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "generic-project-only",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "El PDF nombra Mapocho 3521 sin letra de edificio. Contenido aplicable al registro genérico únicamente con advertencia documental; no identifica ni valida su correspondencia con Edificio A u otra torre."
+      },
+      "description": "Brochure de Mapocho 3521 en Quinta Normal, con departamentos de uno a tres dormitorios y espacios comunes para recreación, trabajo y encuentro. El documento no identifica un edificio por letra.",
+      "buildingFacts": [
+        {
+          "label": "Pisos",
+          "value": 24,
+          "sourcePage": 6
+        },
+        {
+          "label": "Departamentos del proyecto",
+          "value": 229,
+          "sourcePage": 6,
+          "note": "Cantidad de diseño, no disponibilidad actual."
+        },
+        {
+          "label": "Estacionamientos del proyecto",
+          "value": 54,
+          "sourcePage": 6,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        },
+        {
+          "label": "Bodegas del proyecto",
+          "value": 142,
+          "sourcePage": 6,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        }
+      ],
+      "amenities": [
+        {
+          "label": "Piscina",
+          "sourcePage": 11
+        },
+        {
+          "label": "2 quinchos",
+          "sourcePage": 11
+        },
+        {
+          "label": "Quincho cerrado con terraza",
+          "sourcePage": 11
+        },
+        {
+          "label": "Gimnasio Youtrain",
+          "sourcePage": 11
+        },
+        {
+          "label": "Plaza interior",
+          "sourcePage": 11
+        },
+        {
+          "label": "Salón multiuso",
+          "sourcePage": 11
+        },
+        {
+          "label": "Cowork",
+          "sourcePage": 11
+        },
+        {
+          "label": "Sala de niños",
+          "sourcePage": 11
+        },
+        {
+          "label": "Juegos infantiles exteriores",
+          "sourcePage": 11
+        },
+        {
+          "label": "Bicicleteros",
+          "sourcePage": 11
+        },
+        {
+          "label": "Lavandería",
+          "sourcePage": 11
+        }
+      ],
+      "finishes": [
+        {
+          "label": "Ventanas de PVC blanco con termopanel",
+          "sourcePage": 8
+        },
+        {
+          "label": "Cocina equipada con encimera vitrocerámica, horno eléctrico y campana",
+          "sourcePage": 8
+        },
+        {
+          "label": "Cubierta de granito",
+          "sourcePage": 8
+        },
+        {
+          "label": "Piso gres porcelanato en todo el departamento",
+          "sourcePage": 8
+        },
+        {
+          "label": "Espacio para instalación de lavadora",
+          "sourcePage": 8
+        },
+        {
+          "label": "Cortinas roller",
+          "sourcePage": 8
+        },
+        {
+          "label": "Iluminación LED",
+          "sourcePage": 8
+        }
+      ],
+      "technology": [
+        {
+          "label": "Alarma en todos los departamentos",
+          "sourcePage": 8
+        },
+        {
+          "label": "Ascensores Mitsubishi",
+          "sourcePage": 10
+        },
+        {
+          "label": "Caldera para generación de agua caliente",
+          "sourcePage": 10
+        },
+        {
+          "label": "Accesos controlados con torniquetes y sistema biométrico en espacios comunes",
+          "sourcePage": 10
+        }
+      ],
+      "connectivity": [
+        {
+          "label": "Barrio Mapocho, Quinta Normal",
+          "sourcePage": 7
+        },
+        {
+          "label": "Supermercados y comercio de barrio en el entorno",
+          "sourcePage": 7
+        }
+      ],
+      "variants": [
+        {
+          "id": "p13-left",
+          "sourcePage": 13,
+          "sourcePosition": "left",
+          "sourceLabel": "1 DORM + 1 BAÑO (2C)",
+          "modelCode": "2C",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 30,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 13,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/mapocho-3521/plan-p13.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p13-right",
+          "sourcePage": 13,
+          "sourcePosition": "right",
+          "sourceLabel": "2 DORMS + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 40,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 13,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/mapocho-3521/plan-p13.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p14-left",
+          "sourcePage": 14,
+          "sourcePosition": "left",
+          "sourceLabel": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 44,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 14,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/mapocho-3521/plan-p14.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p14-right",
+          "sourcePage": 14,
+          "sourcePosition": "right",
+          "sourceLabel": "3 DORMS + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 47,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 14,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/mapocho-3521/plan-p14.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p15-single",
+          "sourcePage": 15,
+          "sourcePosition": "single",
+          "sourceLabel": "3 DORM + 2 BAÑO (4C) (KA)",
+          "modelCode": "4C-KA",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 54,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 15,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/mapocho-3521/plan-p15.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p16-single",
+          "sourcePage": 16,
+          "sourcePosition": "single",
+          "sourceLabel": "3 DORM + 2 BAÑO (4C) (KC)",
+          "modelCode": "4C-KC",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 54,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 16,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/mapocho-3521/plan-p16.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        }
+      ],
+      "conflicts": [
+        {
+          "sourcePages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "field": "buildingIdentity",
+          "observed": "Documento idéntico al archivo nombrado Edificio A; ninguna página identifica A/B/C.",
+          "resolution": "No fusionar registros ni asignar automáticamente planos, conteos o imágenes específicos a Edificio A."
+        }
+      ],
+      "historicalOnly": [
+        {
+          "sourcePage": 6,
+          "label": "En construcción / Julio de 2024",
+          "reason": "Estado y fecha históricos; no sustituyen la instrucción comercial actual."
+        },
+        {
+          "sourcePage": 3,
+          "label": "Plusvalía, vacancia y cap rate de la presentación comercial",
+          "reason": "No reutilizar como proyección, garantía ni dato vigente."
+        },
+        {
+          "sourcePage": 7,
+          "label": "Próxima estación Matucana de futura Línea 7",
+          "reason": "Infraestructura futura mencionada en documento histórico; requiere fuente actual antes de afirmar estado o distancia."
+        },
+        {
+          "sourcePage": 2,
+          "label": "Ranking TOCTOC 2022 y trayectoria del holding",
+          "reason": "Antecedente corporativo histórico, no necesario para ficha actual."
+        }
+      ],
+      "legalNotices": [
+        {
+          "sourcePages": [
+            5,
+            6,
+            8,
+            9,
+            11,
+            12
+          ],
+          "text": "IMÁGENES REFERENCIALES DE PROYECTO EN CONSTRUCCIÓN",
+          "handling": "Preservar texto ya incrustado en el original; no agregar nuevas etiquetas genéricas superpuestas."
+        }
+      ],
+      "unknowns": [],
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "mapocho-3521-edificio-a": {
+      "slug": "mapocho-3521-edificio-a",
+      "source": {
+        "filename": "Euro - Mapocho 3521 - Edificio A.pdf",
+        "sha256": "5ff8f1dd1d3ae83bee4f6ce0b4d42f0ffb209166045abeabfc1f2ff5a14b4e98",
+        "pageCount": 18,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "unresolved-building",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "No incorporar planos, imágenes, conteos o características específicos de edificio a partir del nombre del archivo. Requiere prueba independiente de correspondencia."
+      },
+      "description": "Registro comercial separado cuyo brochure adjunto es idéntico al de Mapocho 3521 y no identifica la letra A.",
+      "buildingFacts": [],
+      "amenities": [],
+      "finishes": [],
+      "technology": [],
+      "connectivity": [],
+      "variants": [],
+      "conflicts": [
+        {
+          "sourcePages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "field": "buildingIdentity",
+          "observed": "Documento idéntico al archivo nombrado Edificio A; ninguna página identifica A/B/C.",
+          "resolution": "No fusionar registros ni asignar automáticamente planos, conteos o imágenes específicos a Edificio A."
+        }
+      ],
+      "historicalOnly": [],
+      "legalNotices": [],
+      "unknowns": [
+        "Correspondencia del brochure con Edificio A.",
+        "Características y planos propios del edificio; conservar datos existentes válidos sin inferirlos del PDF duplicado."
+      ],
+      "duplicateOf": "mapocho-3521",
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    "plaza-de-lourdes": {
+      "slug": "plaza-de-lourdes",
+      "source": {
+        "filename": "Euro - Plaza de Lourdes.pdf",
+        "sha256": "0a5825607747fe69709e0b2a9c99114fcc964a3c9bdc07d5aaf088b3f4e241b3",
+        "pageCount": 5,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "project-matched",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+      },
+      "description": "Conjunto residencial de cuatro torres de cinco pisos en San Pablo 3770, Quinta Normal, con departamentos de uno a tres dormitorios y una plaza interior.",
+      "buildingFacts": [
+        {
+          "label": "Pisos",
+          "value": 5,
+          "sourcePage": 2,
+          "note": "Cinco pisos por torre, cuatro torres según brochure."
+        },
+        {
+          "label": "Departamentos del proyecto",
+          "value": 297,
+          "sourcePage": 2,
+          "note": "Cantidad de diseño, no disponibilidad actual."
+        },
+        {
+          "label": "Estacionamientos del proyecto",
+          "value": 150,
+          "sourcePage": 2,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        },
+        {
+          "label": "Bodegas del proyecto",
+          "value": 116,
+          "sourcePage": 2,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        },
+        {
+          "label": "Torres",
+          "value": 4,
+          "sourcePage": 2
+        }
+      ],
+      "amenities": [
+        {
+          "label": "Plaza interior",
+          "sourcePage": 4
+        },
+        {
+          "label": "Lavandería",
+          "sourcePage": 4
+        },
+        {
+          "label": "Bicicleteros",
+          "sourcePage": 4
+        },
+        {
+          "label": "Gimnasio",
+          "sourcePage": 4
+        },
+        {
+          "label": "Quinchos",
+          "sourcePage": 4
+        },
+        {
+          "label": "Piscina",
+          "sourcePage": 4
+        },
+        {
+          "label": "Salón multiuso",
+          "sourcePage": 4
+        },
+        {
+          "label": "Juegos infantiles",
+          "sourcePage": 4
+        },
+        {
+          "label": "Cowork",
+          "sourcePage": 4
+        },
+        {
+          "label": "Pet Spa",
+          "sourcePage": 4
+        }
+      ],
+      "finishes": [
+        {
+          "label": "Ventanas PVC termopanel",
+          "sourcePage": 3
+        },
+        {
+          "label": "Cocina equipada con encimera vitrocerámica, horno eléctrico y campana",
+          "sourcePage": 3
+        },
+        {
+          "label": "Cubierta de granito",
+          "sourcePage": 3
+        },
+        {
+          "label": "Piso vinílico SPC",
+          "sourcePage": 3
+        },
+        {
+          "label": "Conexión para lavadora",
+          "sourcePage": 3
+        },
+        {
+          "label": "Cortinas roller",
+          "sourcePage": 3
+        },
+        {
+          "label": "Iluminación LED",
+          "sourcePage": 3
+        }
+      ],
+      "technology": [
+        {
+          "label": "Alarma de seguridad en la puerta de acceso",
+          "sourcePage": 3
+        }
+      ],
+      "connectivity": [
+        {
+          "label": "San Pablo 3770, Quinta Normal",
+          "sourcePage": 1
+        },
+        {
+          "label": "Cercanía al Metro Gruta de Lourdes (Línea 5)",
+          "sourcePage": 1
+        },
+        {
+          "label": "Frente a la Gruta de Lourdes",
+          "sourcePage": 2
+        },
+        {
+          "label": "Cercanía al Parque Quinta Normal, Museo de Historia Natural, Museo Ferroviario y Museo de la Memoria",
+          "sourcePage": 2
+        },
+        {
+          "label": "Supermercados, minimarkets, centros de salud, educación y restaurantes en el entorno",
+          "sourcePage": 2
+        }
+      ],
+      "variants": [
+        {
+          "id": "p05-top-left",
+          "sourcePage": 5,
+          "sourcePosition": "top-left",
+          "sourceLabel": "1 Dormitorio + 1 Baño",
+          "modelCode": null,
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/plaza-de-lourdes/plan-p05.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p05-top-middle",
+          "sourcePage": 5,
+          "sourcePosition": "top-middle",
+          "sourceLabel": "2 Dormitorios + 1 Baño (3C)",
+          "modelCode": "3C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/plaza-de-lourdes/plan-p05.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p05-top-right",
+          "sourcePage": 5,
+          "sourcePosition": "top-right",
+          "sourceLabel": "2 Dormitorios + 2 Baños (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/plaza-de-lourdes/plan-p05.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p05-bottom-left",
+          "sourcePage": 5,
+          "sourcePosition": "bottom-left",
+          "sourceLabel": "2 Dormitorios + 2 Baños (M)",
+          "modelCode": "M",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/plaza-de-lourdes/plan-p05.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p05-bottom-middle",
+          "sourcePage": 5,
+          "sourcePosition": "bottom-middle",
+          "sourceLabel": "3 Dormitorios + 2 Baños (5C)",
+          "modelCode": "5C",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/plaza-de-lourdes/plan-p05.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p05-bottom-right",
+          "sourcePage": 5,
+          "sourcePosition": "bottom-right",
+          "sourceLabel": "3 Dormitorios + 2 Baños (5C)",
+          "modelCode": "5C",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/plaza-de-lourdes/plan-p05.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        }
+      ],
+      "conflicts": [],
+      "historicalOnly": [
+        {
+          "sourcePage": 1,
+          "label": "Campaña de arriendo y administración gratuita",
+          "reason": "No reproducir como promoción vigente ni promesa. No se conserva precio de arriendo ni garantía en datos comerciales actuales."
+        }
+      ],
+      "legalNotices": [],
+      "unknowns": [
+        "Dos modelos 3D2B (5C) con igual etiqueta y distinta distribución; distinguir por posición, sin inventar código comercial.",
+        "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
+      ],
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "rosas-1444": {
+      "slug": "rosas-1444",
+      "source": {
+        "filename": "Euro - Rosas 1444.pdf",
+        "sha256": "61debe5d5ca34c2a8b8a62d16e7568c59b87881f112bf0fada5163104973e94b",
+        "pageCount": 12,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "project-matched",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+      },
+      "description": "Edificio de 24 pisos en Rosas 1444, Santiago, con departamentos de uno y dos dormitorios, piscina panorámica y espacios infantiles y de encuentro.",
+      "buildingFacts": [
+        {
+          "label": "Pisos",
+          "value": 24,
+          "sourcePage": 4
+        },
+        {
+          "label": "Departamentos del proyecto",
+          "value": 348,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño, no disponibilidad actual."
+        },
+        {
+          "label": "Estacionamientos del proyecto",
+          "value": 164,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        },
+        {
+          "label": "Bodegas del proyecto",
+          "value": 219,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        }
+      ],
+      "amenities": [
+        {
+          "label": "Piscina panorámica",
+          "sourcePage": 7
+        },
+        {
+          "label": "Salón multiuso",
+          "sourcePage": 7
+        },
+        {
+          "label": "Quinchos",
+          "sourcePage": 7
+        },
+        {
+          "label": "Gimnasio equipado",
+          "sourcePage": 7
+        },
+        {
+          "label": "Sala de niños",
+          "sourcePage": 7
+        },
+        {
+          "label": "Juegos infantiles exteriores",
+          "sourcePage": 7
+        },
+        {
+          "label": "Pet Spa",
+          "sourcePage": 7
+        }
+      ],
+      "finishes": [
+        {
+          "label": "Ventanas en marco de PVC con vidrio termopanel",
+          "sourcePage": 6,
+          "evidenceMethod": "Visual: texto rotulado dentro de la imagen; no aparece en la extracción de texto."
+        },
+        {
+          "label": "Cocina equipada con encimera vitrocerámica, horno eléctrico y campana",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cubierta de granito",
+          "sourcePage": 6,
+          "evidenceMethod": "Visual: texto rotulado dentro de la imagen; no aparece en la extracción de texto."
+        },
+        {
+          "label": "Piso gres porcelanato",
+          "sourcePage": 6
+        },
+        {
+          "label": "Conexión para lavadora",
+          "sourcePage": 6
+        }
+      ],
+      "technology": [
+        {
+          "label": "Alarma de seguridad en la puerta de acceso",
+          "sourcePage": 6
+        }
+      ],
+      "connectivity": [
+        {
+          "label": "Rosas 1444, Santiago",
+          "sourcePage": 4
+        },
+        {
+          "label": "Cercanía a Metro Santa Ana y Autopista Central",
+          "sourcePage": 5
+        },
+        {
+          "label": "Áreas verdes, hospitales, centros médicos, ciclovías, centros deportivos, colegios y universidades en el entorno",
+          "sourcePage": 5
+        }
+      ],
+      "variants": [
+        {
+          "id": "p09-left",
+          "sourcePage": 9,
+          "sourcePosition": "left",
+          "sourceLabel": "1 DORMITORIO + 1 BAÑO",
+          "modelCode": null,
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 31.07,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 9,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/rosas-1444/plan-p09.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p09-right",
+          "sourcePage": 9,
+          "sourcePosition": "right",
+          "sourceLabel": "2 DORMITORIOS + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 42.26,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 9,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/rosas-1444/plan-p09.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p10-left",
+          "sourcePage": 10,
+          "sourcePosition": "left",
+          "sourceLabel": "2 DORMITORIOS + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 46.93,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 10,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/rosas-1444/plan-p10.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p10-right",
+          "sourcePage": 10,
+          "sourcePosition": "right",
+          "sourceLabel": "2 DORMITORIOS + 2 BAÑOS (MARIPOSA)",
+          "modelCode": "MARIPOSA",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 51.78,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 10,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/rosas-1444/plan-p10.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p11-single",
+          "sourcePage": 11,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORMITORIOS + 2 BAÑOS (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 58.47,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 11,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/rosas-1444/plan-p11.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": true
+          },
+          "notes": [
+            "El plano incorpora rótulo Cocina cerrada.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        }
+      ],
+      "conflicts": [],
+      "historicalOnly": [
+        {
+          "sourcePage": 4,
+          "label": "Entrega inmediata",
+          "reason": "El estado legal/comercial vigente se determina por la instrucción de Sollahms y verificación actual, no por esta frase histórica."
+        }
+      ],
+      "legalNotices": [
+        {
+          "sourcePages": [
+            8
+          ],
+          "text": "Imágenes aquí representadas son de carácter referencial por lo que podrían no representar el resultado final del proyecto (Art 18 Ley Nº 19 472)",
+          "handling": "Preservar el aviso original al reutilizar esta página/material; no interpretar como validación legal independiente."
+        }
+      ],
+      "unknowns": [
+        "El brochure no documenta cortinas roller ni iluminación LED; no asignarlas solo por aparecer en otros proyectos Euro.",
+        "Precio actual de tipología de un dormitorio no proporcionado por Sollahms."
+      ],
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "santa-elena-1670-mbi": {
+      "slug": "santa-elena-1670-mbi",
+      "source": {
+        "filename": "Euro - Santa Elena 1670 MBI.pdf",
+        "sha256": "e80b50eee121361e9464904216074f45ca39afab737b5e6f4022da7e4b6a5ee6",
+        "pageCount": 13,
+        "documentDate": null,
+        "reviewedAt": "2026-10-29",
+        "reviewMethod": "All pages text-extracted and visually reviewed; detailed inspection of plan layouts and raster-only specification labels. Identical Mapocho duplicates reviewed once after byte identity verification."
+      },
+      "applicability": {
+        "status": "project-matched",
+        "propertyTypes": [
+          "departamento"
+        ],
+        "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+      },
+      "description": "Edificio residencial en Santa Elena 1670, Santiago, con departamentos de uno y dos dormitorios, piscina y equipamiento para ejercicio y recreación.",
+      "buildingFacts": [
+        {
+          "label": "Pisos",
+          "value": 15,
+          "sourcePage": 4
+        },
+        {
+          "label": "Departamentos del proyecto",
+          "value": 219,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño, no disponibilidad actual."
+        },
+        {
+          "label": "Estacionamientos del proyecto",
+          "value": 111,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        },
+        {
+          "label": "Bodegas del proyecto",
+          "value": 31,
+          "sourcePage": 4,
+          "note": "Cantidad de diseño; no implica inclusión con un departamento."
+        }
+      ],
+      "amenities": [
+        {
+          "label": "Piscina",
+          "sourcePage": 7
+        },
+        {
+          "label": "Quinchos",
+          "sourcePage": 7
+        },
+        {
+          "label": "Gimnasio",
+          "sourcePage": 7
+        },
+        {
+          "label": "Juegos infantiles",
+          "sourcePage": 7
+        },
+        {
+          "label": "Lavandería",
+          "sourcePage": 7
+        }
+      ],
+      "finishes": [
+        {
+          "label": "Ventanas PVC termopanel",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cocina equipada con encimera vitrocerámica, horno eléctrico y campana",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cubierta de granito",
+          "sourcePage": 6
+        },
+        {
+          "label": "Piso gres porcelanato",
+          "sourcePage": 6
+        },
+        {
+          "label": "Conexión para lavadora",
+          "sourcePage": 6
+        },
+        {
+          "label": "Cortinas roller",
+          "sourcePage": 6
+        },
+        {
+          "label": "Iluminación LED",
+          "sourcePage": 6
+        }
+      ],
+      "technology": [
+        {
+          "label": "Alarma de seguridad en la puerta de acceso",
+          "sourcePage": 6
+        }
+      ],
+      "connectivity": [
+        {
+          "label": "Cercanía al Metro Ñuble",
+          "sourcePage": 5
+        },
+        {
+          "label": "Supermercados, minimarkets, jardín infantil, ferreterías, restaurantes, estaciones de servicio y parques en el entorno",
+          "sourcePage": 5
+        }
+      ],
+      "variants": [
+        {
+          "id": "p09-single",
+          "sourcePage": 9,
+          "sourcePosition": "single",
+          "sourceLabel": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/santa-elena-1670-mbi/plan-p09.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p10-single",
+          "sourcePage": 10,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/santa-elena-1670-mbi/plan-p10.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p11-single",
+          "sourcePage": 11,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "printedBathrooms": 1,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/santa-elena-1670-mbi/plan-p11.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        },
+        {
+          "id": "p12-single",
+          "sourcePage": 12,
+          "sourcePosition": "single",
+          "sourceLabel": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "printedBathrooms": 2,
+          "areas": [],
+          "terraceAreaM2": null,
+          "interiorAreaM2": null,
+          "usefulAreaM2": null,
+          "currentAvailability": null,
+          "priceUF": null,
+          "fullPlanPage": "/assets/euro/santa-elena-1670-mbi/plan-p12.webp",
+          "filterEligibility": {
+            "bedrooms": true,
+            "bathrooms": true,
+            "areas": false
+          },
+          "notes": [
+            "El brochure no indica superficies para este modelo; no calcularlas a partir del dibujo.",
+            "No inferir una terraza privada o su superficie desde la sola representación gráfica sin rótulo verificable."
+          ],
+          "privateTerrace": null,
+          "privateGarden": null
+        }
+      ],
+      "conflicts": [
+        {
+          "sourcePages": [
+            2,
+            4,
+            5
+          ],
+          "field": "direccion",
+          "observed": "El PDF identifica Santa Elena 1670; instrucción señala discrepancia con captura comercial 1668.",
+          "resolution": "Conservar dato validado y documentar conflicto; no mover mapa sin prueba."
+        }
+      ],
+      "historicalOnly": [
+        {
+          "sourcePage": 4,
+          "label": "Entrega inmediata",
+          "reason": "No equivale por sí sola a confirmación jurídica de entrega actual; separar de En recepción final indicado comercialmente."
+        }
+      ],
+      "legalNotices": [],
+      "unknowns": [
+        "No se imprimen superficies interiores, útiles, totales o de terrazas para los modelos del brochure."
+      ],
+      "reviewedPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    }
+  }
+}

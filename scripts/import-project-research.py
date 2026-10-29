@@ -23,6 +23,10 @@ def main():
     original = {p['slug']: p for p in json.loads(original_path.read_text())}
     incoming = json.loads(args.input.read_text())
     by_slug = {r['slug']: r for r in incoming}
+    euro=json.loads((ROOT/'data/euro-commercial.json').read_text())['projects']
+    for slug,record in by_slug.items():
+        if slug in euro and 'precioDesdeUF' in record.get('updates',{}):
+            assert record['updates']['precioDesdeUF']==euro[slug]['projectFromUF'], 'Automatic import cannot overwrite Euro owner prices; update data/euro-commercial.json only with an explicit owner instruction.'
     assert len(incoming) == len(by_slug), 'Duplicate slugs in research batch'
     assert set(by_slug) <= {p['slug'] for p in projects}, 'Research changes catalogue membership'
     asset_manifest = json.loads((args.image_cache / 'manifest.json').read_text()) if args.image_cache else {}
@@ -60,6 +64,10 @@ def main():
         verified = set(research['verifiedFields'])
         updates = research.get('updates', {})
         for key in COMMERCIAL:
+            if key == 'precioDesdeUF' and project['slug'] in euro:
+                project[key] = euro[project['slug']]['projectFromUF']
+                research.setdefault('updates', {})[key] = project[key]
+                continue
             if key in verified:
                 project[key] = updates.get(key, original[project['slug']].get(key))
             elif key == 'tipologias' or key == 'amenities':

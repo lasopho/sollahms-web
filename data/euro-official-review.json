@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29",
+  "method": "Primary official Euro sources retrieved through web search/open; local existing provenance reviewed. No commercial prices imported from external sources.",
+  "sources": [
+    {"id":"euro-progress-202609","url":"https://landing.euroinmobiliaria.cl/avancedeobras","title":"Avance de obras","publishedPeriod":"2026-09","retrieval":"opened successfully","webRef":"turn55view2"},
+    {"id":"diagonal-group-news","url":"https://grupoeuro.cl/diagonal-vicuna-vivir-bien-en-el-lugar-correcto/","title":"Diagonal Vicuña: vivir bien, en el lugar correcto","publishedPeriod":"2026-08 approximately (search metadata: 2 months ago)","retrieval":"official indexed text; direct open timed out","webRef":"turn59search5"},
+    {"id":"diagonal-project","url":"https://www.euroinmobiliaria.cl/proyectos/diagonal-vicuna","title":"Diagonal Vicuña","retrieval":"official indexed text; direct open returned406","webRef":"turn56search0"},
+    {"id":"froilan-project","url":"https://euroinmobiliaria.cl/proyectos/froilan-roa-5731","title":"Froilán Roa 5731","retrieval":"official indexed text; direct open returned406","webRef":"turn62search1"},
+    {"id":"euro-black-2026","url":"https://landing.euroinmobiliaria.cl/black-inmobiliario-2026","title":"Black Inmobiliario2026","retrieval":"opened successfully; use identities only, no prices/promotions","webRef":"turn63view0"},
+    {"id":"euro-santander-history","url":"https://landing.euroinmobiliaria.cl/bancasantander","title":"Euro-Santander historical campaign","retrieval":"opened successfully; promotion deadline2025-08-29; use historical subdivision evidence only","webRef":"turn62view0"},
+    {"id":"independencia-project","url":"https://euroinmobiliaria.cl/proyectos/independencia-4745","title":"Independencia4745","retrieval":"official indexed text","webRef":"turn58search0"},
+    {"id":"santa-elena-project","url":"https://www.euroinmobiliaria.cl/proyectos/santa-elena-1670","title":"Santa Elena1670","retrieval":"official indexed text","webRef":"turn58search1"},
+    {"id":"mapocho-project","url":"https://euroinmobiliaria.cl/proyectos/mapocho-3521","title":"Mapocho3521","retrieval":"official indexed text; direct open timed out","webRef":"turn58search2"},
+    {"id":"euro-catalogue","url":"https://www.euroinmobiliaria.cl/proyectos","title":"Catálogo oficial Euro","retrieval":"official indexed text","webRef":"turn58search3"}
+  ],
+  "stageReview": [
+    {"slug":"diagonal-vicuna","ownerReportedStatus":"En blanco","ownerDelivery":"1.er semestre2027","officialConstructionStage":"Obras civiles sobre cota0","officialProgressPercent":91,"officialDelivery":"1.er semestre2027","sourceIds":["euro-progress-202609","diagonal-group-news"],"scope":"exact project; news also distinguishes its Norte/Sur construction","stageConflict":"direct","recommendedGuideEligibility":false,"reason":"Official report establishes construction already underway, contradicting pre-construction interpretation. Preserve owner-reported label separately; do not silently change to verde."},
+    {"slug":"froilan-roa-5731-torre-norte","ownerReportedStatus":"En blanco","ownerDelivery":"1.er semestre2027","officialConstructionStage":"Obras civiles sobre cota0","officialProgressPercent":45,"officialDelivery":"2.do semestre2027","sourceIds":["euro-progress-202609","froilan-project"],"scope":"whole Froilán Roa complex, no tower-specific progress","stageConflict":"scope unresolved; general construction conflicts with blanket pre-construction claim","recommendedGuideEligibility":false,"reason":"Do not attribute whole-complex stage/date to Norte. Keep owner date with documented discrepancy; tower construction stage requires confirmation."},
+    {"slug":"froilan-roa-5731-torre-sur","ownerReportedStatus":"En blanco","ownerDelivery":"1.er semestre2027","officialConstructionStage":"Obras civiles sobre cota0","officialProgressPercent":45,"officialDelivery":"2.do semestre2027","sourceIds":["euro-progress-202609","froilan-project"],"scope":"whole Froilán Roa complex, no tower-specific progress","stageConflict":"scope unresolved; general construction conflicts with blanket pre-construction claim","recommendedGuideEligibility":false,"reason":"Do not attribute whole-complex stage/date to Sur. Keep owner date with documented discrepancy; tower construction stage requires confirmation."},
+    {"slug":"entre-vicunas","ownerReportedStatus":"En blanco","ownerDelivery":"1.er semestre2027","officialConstructionStage":"Obras previas","officialProgressPercent":22,"officialDelivery":"1.er semestre2027","sourceIds":["euro-progress-202609"],"scope":"exact project","stageConflict":"not conclusively established by wording obras previas","recommendedGuideEligibility":null,"reason":"Owner label can be preserved; official preliminary works does not conclusively establish building construction commencement. Do not infer verde from percentage."},
+    {"slug":"edificio-don-pepe-154","ownerReportedStatus":"En blanco","ownerDelivery":"1.er semestre2028","officialConstructionStage":"Obras previas","officialProgressPercent":12,"officialDelivery":"2.do semestre2027","sourceIds":["euro-progress-202609"],"scope":"Don Pepe154; source logo explicitly154","stageConflict":"not conclusively established by wording obras previas","recommendedGuideEligibility":null,"reason":"Keep owner2028 delivery; official progress report2027 and official catalogue1S2027 disagree. No inferred construction stage from date/percentage."},
+    {"slug":"plaza-de-lourdes","ownerReportedStatus":"En blanco","ownerDelivery":"1.er semestre2028","officialConstructionStage":"Obras previas","officialProgressPercent":9,"officialDelivery":"1.er semestre2028","sourceIds":["euro-progress-202609"],"scope":"exact project","stageConflict":"not conclusively established by wording obras previas","recommendedGuideEligibility":null,"reason":"Owner label can be preserved; preliminary works alone does not prove building construction start."}
+  ],
+  "diagonalVicuna": {
+    "slug":"diagonal-vicuna",
+    "sourceIds":["diagonal-project","diagonal-group-news"],
+    "address":"Santa Elena2000, Santiago",
+    "floors":16,
+    "towerCount":2,
+    "floorsSourceId":"diagonal-group-news",
+    "propertyType":"departamento",
+    "features":["Piso vinílico SPC","Horno eléctrico","Campana","Cortinas roller","Iluminación LED","Encimera vitrocerámica"],
+    "amenities":["Plaza interior","Lavandería","Bicicleteros","Gimnasio","Quinchos","Piscina","Sala multiuso","Juegos infantiles","Pet Spa","Cowork","Sala de niños"],
+    "variants":[
+      {"id":"diagonal-web-1d1b","label":"1 dorm1 baño","bedrooms":1,"bathrooms":1,"areas":{"util":32,"total":34},"terraceArea":null},
+      {"id":"diagonal-web-2d1b-3c","label":"2 dorm1 baño (3c)","bedrooms":2,"bathrooms":1,"areas":{"util":42,"total":45},"terraceArea":null},
+      {"id":"diagonal-web-2d1b-4c","label":"2 dorm1 baño (4c)","bedrooms":2,"bathrooms":1,"areas":{"util":45,"total":48},"terraceArea":null},
+      {"id":"diagonal-web-mariposa","label":"Mariposa","bedrooms":2,"bathrooms":2,"areas":{"util":49,"total":51},"terraceArea":null},
+      {"id":"diagonal-web-2d2b","label":"2 dorm2 baños","bedrooms":2,"bathrooms":2,"areas":{"util":57,"total":59},"terraceArea":null}
+    ],
+    "modelScope":"Generic current project webpage; no unit availability, no tower assignment, no terrace inferred by subtraction.",
+    "priceReview":{"baselineUF":3184,"baselineVerifiedAt":"2026-10-09","baselineSource":"data/fichas-proyectos.json sourceNotes and updates; data/proyectos.json verificacion","baselineOrigin":"Euro official published discounted campaign, not owner-supplied screenshot","originalOwnerCatalogPrice":null,"explicitOwnerAuthorizationLocated":false,"decisionRecommendation":"Consultar precio; preserve3184 only as historical external provenance pending Sollahms commercial confirmation.","searchedEvidence":"docs/*.md, existing price/commercial/owner/original data, verification source record. No evidence of explicit owner approval found."},
+    "media":"Keep existing six verified official images. Brochure download is mentioned on official page but direct page/PDF retrieval unavailable in this research; no new plan image claimed."
+  },
+  "froilanRoa": {
+    "identitiesConfirmedBy":"euro-black-2026",
+    "towerNorthImage":"https://landing.euroinmobiliaria.cl/hs-fs/hubfs/black-2026/black26-froilan-roa-tn.jpg?width=900&height=600&name=black26-froilan-roa-tn.jpg",
+    "towerSouthImage":"https://landing.euroinmobiliaria.cl/hs-fs/hubfs/black-2026/black26-froilan-roa-ts.jpg?width=900&height=600&name=black26-froilan-roa-ts.jpg",
+    "existingImageProvenance":"docs/project-photos-20261025/image-provenance.json",
+    "scope":"Official page has separate TN/TS cards and distinct images; generic project page and brochure do not map amenities or models to those towers.",
+    "existingBrochureUrl":"https://euroinmobiliaria.cl/storage/219/Brochure-Froilan-Roa.pdf",
+    "brochureRetrieval":"Web open inaccessible. Prior2026-10-09 audit explicitly records no Norte/Sur identification in the official brochure.",
+    "recommendation":"Keep each existing tower image and owner typologies/prices; retain generic context as explicitly whole-complex only. Do not copy generic plans, bathrooms, areas or amenities into tower-filter eligibility. No new tower-specific document was found.",
+    "generalFeaturesOnly":["Piso vinílico SPC","Campana","Horno eléctrico","Cortinas roller","Iluminación LED","Ventanas termopanel","Cubiertas de granito"],
+    "generalAmenitiesOnly":["Lavandería","Bicicleteros","Gimnasio","Quinchos","Piscina","Sala multiuso","Pet Spa","Cowork","Salón infantil"]
+  },
+  "identityAndAddressReview": [
+    {"slugs":["mapocho-3521","mapocho-3521-edificio-a"],"sourceIds":["euro-santander-history","euro-black-2026","mapocho-project"],"finding":"Historical official campaign distinguishes TorreA/B, while Black2026 distinguishes TN/TS. No verified mapping between letter and compass labels, nor identification of generic Sollahms record as B. Two supplied brochures are byte-identical and generic.","decision":"Keep two commercial records. No new generic models/media assigned to EdificioA. Preserve current verified generic address Rivas Vicuña1131; A access remains unverified. Do not use obsolete campaign address Rivas Vicuñas3121."},
+    {"slugs":["independencia-4745"],"sourceIds":["independencia-project","euro-catalogue"],"finding":"Official current project address and catalogue agree on Independencia4745, Conchalí; supplied brochure connectivity has4749.","decision":"Preserve4745 and existing map. No independent evidence4749 is official access."},
+    {"slugs":["santa-elena-1670-mbi"],"sourceIds":["santa-elena-project","euro-catalogue"],"finding":"Official current project/catalogue identify Santa Elena1670, Santiago. Owner screenshot says1668. No official source located confirming1668 as legal access.","decision":"Preserve verified1670 and existing map; keep1668 as unresolved owner-reported alternate address, not silently corrected map."},
+    {"slugs":["guillermo-mann-1401"],"sourceIds":["euro-catalogue","euro-progress-202609"],"finding":"Official catalogue and landing identify Guillermo Mann1401 in Ñuñoa.","decision":"KeepÑuñoa. Brochure SantiagoCentro label does not override address/commune."},
+    {"slugs":["rosas-1444"],"sourceIds":["euro-catalogue"],"finding":"Official current catalogue address Rosas1438 while project name/owner screenshot useRosas1444.","decision":"Preserve existing verified address1438 and map unless independent official access documentation changes it; retain project name1444."}
+  ],
+  "exclusions":["All new external prices and discounts","Rent guarantees and administration campaigns","Plusvalía/vacancy/rental forecasts","Tower amenities or model assignments lacking explicit scope","Unverified direct brochure downloads","Automatic legal delivery-immediate classification"],
+  "limitations":["Search-index text is available for official project pages, but direct page opens frequently return406 or timeout.","No new PDF downloaded or plan-image inspected for Diagonal/Froilán in this bounded task.","Construction progress is datedSeptember2026, not a live real-time site inspection.","No legal cadastral/access certificate was obtained for conflicting addresses."]
+}

@@ -12,7 +12,7 @@ form.addEventListener('submit',event=>{
   $('ps-warnings').replaceChildren(...r.warnings.map(t=>el('p',t,'ps-warning')));
   $('ps-context').textContent=r.context;
   $('ps-result-cards').replaceChildren(...r.modes.map(mode=>{const card=el('article',null,'ps-result-card');card.append(el('h4',labels[mode]),el('p',risk[mode][0]),el('p',risk[mode][1]));const link=el('a','Revisar ventajas y riesgos');link.href='#'+mode;link.setAttribute('aria-label','Revisar ventajas y riesgos de '+labels[mode].toLowerCase());card.append(link);return card;}));
-  $('ps-projects').href=catalogUrl(r.modes);result.hidden=false;$('ps-result-title').focus();result.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});$('ps-status').textContent='Orientación disponible. '+r.modes.map(m=>labels[m]).join(', ')+'.';
+  $('ps-projects').href=catalogUrl(r.modes)+'&origen=guia-etapas';result.hidden=false;$('ps-result-title').focus();result.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});$('ps-status').textContent='Orientación disponible. '+r.modes.map(m=>labels[m]).join(', ')+'.';
 });
 form.addEventListener('change',update);
 form.addEventListener('reset',()=>{queueMicrotask(()=>{update();form.querySelector('input').focus();});});

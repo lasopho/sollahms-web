@@ -234,6 +234,8 @@ def main():
     parser.add_argument('--branch', default='codex/fichas-proyectos-completas', help='Working branch for the generated ledger')
     args = parser.parse_args()
     projects = json.loads((ROOT / 'data/proyectos.json').read_text())
+    from euro_details import validate_prices
+    validate_prices(projects)
     retired = json.loads((ROOT / 'data/retired-projects.json').read_text())['projects']
     assert not {row['slug'] for row in retired} & {row['slug'] for row in projects}, 'Retired project cannot be regenerated'
     records = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())

@@ -2,6 +2,7 @@ import {validateCommercialFields, normalizedCommercialFields, focusCommercialFie
 import { createFormOperation } from './form-operation.mjs';
 import { resolveProjectIdentity } from './project-identity.mjs';
 import { bindRutField } from './rut-field.mjs?v=20261026-required-1';
+import {adviceContext} from './commercial-context.mjs?v=20261029-euro-1';
 
 const form = document.getElementById('advisory-form');
 if (form) {
@@ -44,6 +45,10 @@ if (form) {
       const data=Object.fromEntries(new FormData(form));data.consent=inputs.consent.checked;data.startedAt=startedAt;
       Object.assign(data,normalizedCommercialFields(data));data.solicitud='asesoria';
       if(project)data.proyecto=project.bodyProjectSlug;
+      if(query.has('origen')||query.has('oferta')){
+        data.mensaje=adviceContext(project,location.search,data.mensaje);
+        if(data.mensaje.length>2000)throw Error('Reduce el mensaje antes de enviar.');
+      }
       const attempt=await operation.prepare(data);
       // Freeze inputs until the result arrives, without losing their values on failure.
       fields.disabled=true;
