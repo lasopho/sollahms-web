@@ -19,6 +19,9 @@ scripts=lambda s:[v for v in re.findall(r'<script\b.*?</script>',s,re.S) if 'app
 headings=[];titles=[];descs=[];new_broken=[];existing_broken=[]
 for name in PAGES:
  text=(ROOT/name).read_text();old=(BASE/name).read_text();s=BeautifulSoup(text,'html.parser');o=BeautifulSoup(old,'html.parser')
+ # Compare the same approved wordmark with its contrast variant corrected only in comparator footer.
+ if name=='comparador-hipotecario.html':
+  o.select_one('footer .brand img')['src']='/assets/branding/sollahms-logo.svg'
  url='https://sollahms.cl/'+('' if name=='index.html' else name)
  check(name+' canonical',len(s.select('link[rel=canonical]'))==1 and s.select_one('link[rel=canonical]')['href']==url)
  check(name+' h1',len(s.find_all('h1'))==1 and bool(s.h1.get_text(strip=True)))
