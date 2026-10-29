@@ -1,6 +1,6 @@
 # Euro: actualización integral — 29 de octubre de 2026
 
-Estado: versión preparada; verificación visual y publicación pendientes. Este encabezado se actualizará con el despliegue verificado.
+Estado: **publicado y verificado en https://sollahms.cl/**. Producción `dpl_2ZVBbbzPnRAHfnDeFCaAaywgaDuY`, fuente `da064d6433d9099af4b3e5df892f4db23997ad5c`. Las 12 fichas públicas coinciden con el paquete probado.
 
 ## Alcance y precios
 
@@ -123,8 +123,17 @@ Los nueve PDFs y las dos capturas suministradas por el propietario; sus hashes y
 - Preservación estática de los 12 proyectos, otros 119 registros, imágenes previas, formularios, enlaces locales, IDs, canonical y coordenadas: `preservation.json`.
 - Validación de dimensiones, decodificación y hash de los 153 derivados de trabajo; 111 recursos finales publicados, sin los 42 recortes opcionales: `asset-validation.json`.
 - Cuatro pruebas antiguas de `project-identity.test.mjs` también fallan en la línea base: expectativas históricas del catálogo Ecasa y del contacto/configuración. No se contabilizan como aprobadas.
-- La revisión visual y el despliegue se documentarán en el acta final. No se enviaron solicitudes comerciales reales durante las pruebas.
+- 24 comprobaciones de las 12 fichas a 1366 y 390 px: encabezado/precio/formulario presentes, sin desbordamientos ni imágenes rotas detectadas. Revisión visual de planos a 768 px y de la comparación en escritorio. Ver `browser-layouts.json`.
+- Probados en navegador: filtro de planos, comparación de dos láminas y cierre con Escape; selección de local para cotización; rechazo de formulario vacío sin envío; precio local exacto en Tarjetas/Listado/Mapa; transferencia de UF 8.440,85 al simulador, precio bloqueado, tasa editable y seguros desconocidos; cálculo educativo y origen del enlace de asesoría.
+- Guía de etapas: resultado en blanco → catálogo compartido → fichas; sólo Don Pepe, Plaza de Lourdes y Entre Vicuñas de los 12 Euro son elegibles. El origen se conserva al cambiar de vista y en el mapa.
+- Siete imágenes nuevas de la galería Don Pepe cargaron tras abrirla. WebP con dimensiones explícitas y carga diferida; miniaturas de planos para evitar cargar las láminas grandes inicialmente. Los 111 recursos suman 12,93 MiB distribuidos entre las fichas; no se cargan juntos. No se ejecutó Lighthouse ni se atribuye una puntuación de rendimiento.
+- Prueba aislada del importador: preserva los 12 precios desde si una investigación no trae precio y rechaza un precio de campaña distinto. Ver `import-protection.json`.
+- 17 comprobaciones HTTP públicas aprobadas: 12 fichas idénticas al paquete, catálogo de datos, dos scripts, sitemap y Patio Brasil retirado con HTTP 410. Ver `public-verification.json`.
+- No se enviaron solicitudes comerciales reales. Las pruebas de transporte son aisladas y la comprobación visual utiliza validación vacía; no se certifica entrega real al buzón mediante una solicitud de prueba.
+- Sin errores de consola observados en los recorridos revisados. Las capturas de producción están en `desktop-comparison.jpg` y `mobile-plans.jpg`.
 
 ## Publicación y reversión
 
-Pendiente del resultado de la revisión visual. Línea base recuperable: `dpl_CwKecmoAPWkxhdbheFWEWfx3nntF`. El paquete no cambia DNS, proveedores, credenciales ni funciones.
+Producción lista y alias público verificado. El despliegue de prueba final `dpl_EYDnZmv71zeMASAgAWbUgCTdGemW` y producción verificaron los mismos 1.621 archivos del artefacto, con SHA-256 `7843e3a6264501ccc94ab7fbb7e90e761adebb4129ad560b3ea25a8e19d83107`. El paquete se conserva en la rama `codex/euro-brochures-20261029`; la publicación automática está desactivada para esa rama y main.
+
+Línea base recuperable: `dpl_CwKecmoAPWkxhdbheFWEWfx3nntF`. En caso de regresión se puede restaurar ese despliegue anterior desde el proyecto Vercel existente. No se modificaron DNS, proveedores, credenciales ni código de funciones. La transformación del paquete mantiene el retiro de Patio Brasil y sincroniza los 12 Euro junto con los nueve registros previamente autorizados para el catálogo de contacto. Acta: `release.json`.
