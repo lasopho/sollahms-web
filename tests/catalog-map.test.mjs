@@ -7,8 +7,8 @@ import {locateProjects,locationGroups,clusterLocations,validMapState} from '../a
 import {filterAndSort,validView} from '../assets/js/catalog-model.mjs';
 
 test('mapping never drops or duplicates a catalogue record; every admitted point matches its source identity',()=>{
- const result=locateProjects(projects,registry);assert.equal(result.located.length+result.pending.length,132);
- assert.equal(new Set([...result.located.map(x=>x.project.slug),...result.pending.map(x=>x.slug)]).size,132);
+ const result=locateProjects(projects,registry);assert.equal(result.located.length+result.pending.length,131);
+ assert.equal(new Set([...result.located.map(x=>x.project.slug),...result.pending.map(x=>x.slug)]).size,131);
  assert.ok(result.located.length>20);for(const row of result.located){assert.equal(row.location.status,'verified');assert.equal(row.project.direccion,row.location.address);assert.equal(row.project.comuna,row.location.commune);assert.ok(row.location.source.startsWith('https://'));}
  const fake={locations:{[projects[0].slug]:{status:'verified',lat:-33,lng:-70,address:'different',commune:projects[0].comuna}}};assert.equal(locateProjects([projects[0]],fake).located.length,0);
 });

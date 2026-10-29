@@ -157,6 +157,8 @@ if(leonReview){
 const catalogueSource = await readFile(join(root, 'data/proyectos.json'));
 let catalogueOutput = catalogueSource;
 const sourceProjects = JSON.parse(catalogueSource);
+const retiredProjects = JSON.parse(await readFile(join(root, 'data/retired-projects.json'), 'utf8')).projects;
+if(sourceProjects.some(p=>retiredProjects.some(r=>r.slug===p.slug)))throw new Error('Retired project cannot be published');
 if (sentoReview) assertSentoCatalogue(sourceProjects, sentoReview);
 assertBrochureCatalogue(sourceProjects);
 const [qualityBytes, researchBytes, officialBytes] = await Promise.all([
@@ -223,7 +225,7 @@ for (const image of imageQuality.images.values()) {
     throw new Error('Ecasa image quality source bytes differ from review: ' + image.localPath);
   }
 }
-const approvedPages = new Set([...BROCHURE_PUBLIC_PAGES, ...sourceProjects.map(project => project.slug + '.html')]);
+const approvedPages = new Set(['410.html', ...BROCHURE_PUBLIC_PAGES, ...sourceProjects.map(project => project.slug + '.html')]);
 const pages = (await readdir(root)).filter(name => name.endsWith('.html'));
 if (pages.some(name => !approvedPages.has(name))) {
   throw new Error('Unapproved candidate pages and retired routes must remain outside the deployment');

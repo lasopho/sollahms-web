@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import projects from '../data/proyectos.json' with {type:'json'};
 import {filterAndSort,selectedOffer,validPrice,projectFacts,assetTypes,safeReturnFilters,validFilterState,validView} from '../assets/js/catalog-model.mjs';
 const defaults={version:1,search:'',assetType:'',region:'',commune:'',state:'',maxPriceInput:'',sortOrder:'original'};
-test('all 132 source records and original ordering survive without mutation or duplicates',()=>{
+test('all 131 source records and original ordering survive without mutation or duplicates',()=>{
  const before=JSON.stringify(projects),rows=filterAndSort(projects,defaults);
- assert.equal(rows.length,132);assert.equal(new Set(rows.map(p=>p.slug)).size,132);assert.deepEqual(rows.map(p=>p.slug),projects.map(p=>p.slug));
+ assert.equal(rows.length,131);assert.equal(new Set(rows.map(p=>p.slug)).size,131);assert.deepEqual(rows.map(p=>p.slug),projects.map(p=>p.slug));
  assert.equal(JSON.stringify(projects),before);
 });
 test('both numeric directions preserve stable ties, decimals and unknown prices last',()=>{

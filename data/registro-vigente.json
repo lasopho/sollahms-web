@@ -5,14 +5,14 @@
   "sourceCommit": "fa5f5a8403632899af097338f23c2f9fa4f0812f",
   "scope": "Identidades y DOM del commit fuente; no certifica vigencia comercial, derechos ni publicación.",
   "sourceSha256": {
-    "data/proyectos.json": "f2b28fbeff15c532f2277f6aee5c271837b724506546f0c490925476d5c46801",
-    "data/fichas-proyectos.json": "2aab2655ea5fd03a63545f954ea898d7f98a5ab223b89c17057b3e51348958de",
-    "data/registro-fichas.json": "c00c1204b363ec751e20ecd0e99180b0975c368c148bc5f9f65f13b5c735b17c",
-    "lib/project-context.mjs": "9eedfa6a2e02b0715a13bff679d47a28bd8e1bd18d97d4c0c431994c67c2dabe",
-    "sitemap.xml": "3d1b80373109799af130bde6fc9ae7802440539c224a4083bb970cd21b5a55f4"
+    "data/proyectos.json": "f1afb8a31280c90761160553e55e4d0bb14727af03165059ae85def81bfcc085",
+    "data/fichas-proyectos.json": "ef2d1055548fce395c17363a60a8d1c94144e4f72556d3176bfbe40bc98d1ea4",
+    "data/registro-fichas.json": "9c505f3b4abee568cee79ec11f6407853b03eb773295c76ce67347ab8aefae7d",
+    "lib/project-context.mjs": "70c0278e4002a0bf98d1226c1fde097d59656c318814f822999ffb4936327f0d",
+    "sitemap.xml": "193d26163a10c16733fa50ffe380237ef6f64bb2f865cc13d1d70051bd069e4d"
   },
   "summary": {
-    "projects": 132,
+    "projects": 131,
     "developers": {
       "AJ Urbana": 5,
       "Crescer": 2,
@@ -25,34 +25,34 @@
       "Nollagam": 7,
       "Norte Verde": 18,
       "Sento": 7,
-      "Sudamericana": 2,
+      "Sudamericana": 1,
       "Vesant": 1
     },
-    "htmlFiles": 132,
-    "withHistoricalPending": 124,
+    "htmlFiles": 131,
+    "withHistoricalPending": 123,
     "withPlanImages": 5,
-    "withoutPlanImages": 127,
-    "withMaps": 117,
-    "mapIframes": 119
+    "withoutPlanImages": 126,
+    "withMaps": 116,
+    "mapIframes": 118
   },
   "slugComparisons": {
     "research": {
-      "count": 132,
+      "count": 131,
       "missing": [],
       "extra": []
     },
     "register": {
-      "count": 132,
+      "count": 131,
       "missing": [],
       "extra": []
     },
     "formContext": {
-      "count": 132,
+      "count": 131,
       "missing": [],
       "extra": []
     },
     "sitemap": {
-      "count": 132,
+      "count": 131,
       "missing": [],
       "extra": []
     }
@@ -2686,27 +2686,6 @@
       ]
     },
     {
-      "slug": "patio-brasil",
-      "name": "Patio Brasil",
-      "developer": "Sudamericana",
-      "detailUrl": "/patio-brasil.html",
-      "htmlPresent": true,
-      "retainedReviewDate": "2026-10-09",
-      "retainedSource": "https://isudamericana.cl/proyectos/patio-brasil/",
-      "historicalPending": [
-        "Superficie útil",
-        "Superficie total",
-        "Baños",
-        "Existencia de recorrido virtual oficial",
-        "Recorrido virtual oficial específico no localizado"
-      ],
-      "htmlImages": 5,
-      "htmlPlanImages": 0,
-      "htmlMaps": [
-        "https://www.google.com/maps?output=embed&q=Avenida+Brasil+697%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile"
-      ]
-    },
-    {
       "slug": "los-alerces",
       "name": "Los Alerces",
       "developer": "Ingevec",
@@ -2783,5 +2762,13 @@
         "https://www.google.com/maps?output=embed&q=Del+Rosario+esquina+Mirador%2C+Puerto+Varas%2C+Los+Lagos%2C+Chile"
       ]
     }
-  ]
+  ],
+  "retirementUpdate": {
+    "checkedOn": "2026-10-28",
+    "baselinePublishedCommit": "894ca8b3d6159de43e35328061ca143ca90674c4",
+    "removedSlugs": [
+      "patio-brasil"
+    ],
+    "source": "Owner instruction; other records unchanged"
+  }
 }

@@ -1,0 +1,41 @@
+✔ existing callers without a project keep the original backend payload (8.069605ms)
+✔ a known project forwards its trusted catalogue name with its slug (1.800545ms)
+✔ unknown and inherited project names are rejected without backend requests (3.59418ms)
+✔ malformed project types are rejected without backend requests (1.869289ms)
+✔ adding optional project context does not weaken required fields or accepted keys (0.939001ms)
+✔ a backend failure remains an error with and without project context (2.061773ms)
+✔ mapping never drops or duplicates a catalogue record; every admitted point matches its source identity (1.510409ms)
+✔ same-coordinate towers stay at one true point and remain individually selectable (1.495026ms)
+✔ screen clustering combines near points at a wide view, separates on zoom and never mutates their coordinates (0.457177ms)
+✔ map filters and ordering are the same exact catalogue result set (4.752411ms)
+✔ return map state accepts only finite coordinates, zoom and a public project slug (0.315464ms)
+✔ map code keeps provider access lazy and separate from forms, scrolling and static fallbacks (0.788555ms)
+✔ all 131 source records and original ordering survive without mutation or duplicates (3.578307ms)
+✔ both numeric directions preserve stable ties, decimals and unknown prices last (5.585982ms)
+✔ search covers names, communes and developers with accent-insensitive matching (8.108172ms)
+✔ combined filters and maximum price exclude unavailable amounts, never use zero (0.344488ms)
+✔ mixed and commercial offers keep the exact selected typology and decimal amount (0.753001ms)
+✔ facts distinguish reception state from delivery and do not fill absent data (0.375595ms)
+✔ return state is bounded to catalogue values; view persists only as an enum (1.807696ms)
+✔ real-name characters, diverse email providers and local/international phone formats (5.714116ms)
+✔ each missing or malformed field is rejected by both actual API handlers before transport (20.690928ms)
+✔ correction preserves all four normalized fields in existing destination without PII in acknowledgement (2.520166ms)
+✔ all advisory intents retain the four fields and no obsolete selector can bypass required data (1.665443ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 196.484269
+✔ retirement applies to search, all map results and contact contexts, while Sudamericana remains (4.373432ms)
+✔ frozen output retirement preserves other server records and every existing route (15.4499ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 125.461346

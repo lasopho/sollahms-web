@@ -48,3 +48,6 @@ Apply `scripts/plaza_las_condes.py` after shared generators for this slug only. 
 
 # Image-label policy (2026-10-28)
 The owner requires no visible generic Render referencial / Imagen referencial badges or equivalent image-type captions on any fiche. Use scripts/project_image_labels.py as the final static rendering step, including project-specific overrides and gallery importers. Preserve descriptive scene captions, all alt/ARIA text, source provenance, original media and watermarks, plan information, substantive commercial notices, and motion. Never hide labels with CSS or reclassify a render as a photograph.
+
+# Patio Brasil public retirement (2026-10-28)
+Patio Brasil (Sudamericana, Avenida Brasil 697) is retired by explicit owner instruction. The live catalogue has 131 projects; Novo Catedral and Sudamericana remain. Do not restore the retired row, card, map pin, form context, sitemap entry or HTML fiche from historical records. Keep history and original media recoverable. Preserve HTTP 410 for /patio-brasil, /patio-brasil.html and their trailing-slash variants through scripts/apply-project-retirements.mjs when packaging a release; no unrelated redirect or automatic service activation. Use the frozen artifact manifest in docs/patio-brasil-retirement-20261028 as the release baseline.

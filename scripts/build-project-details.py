@@ -234,6 +234,8 @@ def main():
     parser.add_argument('--branch', default='codex/fichas-proyectos-completas', help='Working branch for the generated ledger')
     args = parser.parse_args()
     projects = json.loads((ROOT / 'data/proyectos.json').read_text())
+    retired = json.loads((ROOT / 'data/retired-projects.json').read_text())['projects']
+    assert not {row['slug'] for row in retired} & {row['slug'] for row in projects}, 'Retired project cannot be regenerated'
     records = json.loads((ROOT / 'data/fichas-proyectos.json').read_text())
     by_slug = {r['slug']: r for r in records}
     previous_ledger_path = ROOT / 'data/registro-fichas.json'
