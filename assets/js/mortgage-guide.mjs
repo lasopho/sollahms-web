@@ -37,7 +37,7 @@ export function initGuide(root){
       last=calculateGuide(input);render(last,true);
     }catch(error){
       $('gh-results').hidden=true;$('gh-empty').hidden=false;$('gh-error').hidden=false;$('gh-error').textContent=error.message||'Revisa los datos ingresados.';
-      const field=fields.includes(error.field)?error.field:null;if(field){$('gh-'+field).setAttribute('aria-invalid','true');$('gh-'+field+'-error').textContent=error.message;$('gh-'+field).focus();}else $('gh-error').focus();
+      const field=fields.includes(error.field)?error.field:null;if(field){$('gh-'+field).setAttribute('aria-invalid','true');$('gh-'+field+'-error').textContent=error.message;const disclosure=$('gh-'+field).closest('details');if(disclosure)disclosure.open=true;$('gh-'+field).focus();}else $('gh-error').focus();
     }
   }
   function modeChanged(){

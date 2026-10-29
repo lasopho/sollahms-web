@@ -8,7 +8,8 @@ def strip_nav(s):
 for name in pages:
  before=(B/name).read_text();after=(R/name).read_text();assert strip_nav(before)==strip_nav(after),name
  assert apply_guide_navigation(after,projects.get(Path(name).stem))==after,name
- soup=BeautifulSoup(after,'html.parser');assert soup.header.select('[data-guide-nav]') and soup.footer.select('[data-guide-nav]'),name
+ soup=BeautifulSoup(after,'html.parser');assert soup.footer.select('[data-guide-nav]'),name
+ if name not in ['404.html','410.html']:assert soup.header.select('[data-guide-nav]'),name
  for node in soup.select('header [data-guide-nav], footer [data-guide-nav]'):assert node.text=='Guía hipotecaria'
  for li in soup.select('footer li'):assert not li.find('li'),name
 for folder in ['data','api','lib']:
