@@ -25,7 +25,7 @@ for name in PAGES:
  check(name+' forms unchanged',forms(old)==forms(text))
  check(name+' scripts unchanged',scripts(old)==scripts(text))
  check(name+' all images unchanged',[str(x) for x in o.find_all('img')]==[str(x) for x in s.find_all('img')])
- check(name+' styles unchanged',[str(x) for x in o.select('link[rel=stylesheet],style')]==[str(x) for x in s.select('link[rel=stylesheet],style')])
+ check(name+' original styles unchanged',[str(x) for x in o.select('link[rel=stylesheet],style')]==[str(x) for x in s.select('link[rel=stylesheet],style') if x.get('id')!='corporate-seo-layout'])
  check(name+' metadata idempotent',apply_corporate_seo(text,name)==text)
  check(name+' no duplicate ids',len(s.select('[id]'))==len({x['id'] for x in s.select('[id]')}))
  check(name+' navigation unchanged',str(o.header)==str(s.header) and str(o.footer)==str(s.footer))

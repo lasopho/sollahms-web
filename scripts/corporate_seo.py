@@ -36,6 +36,8 @@ def apply_corporate_seo(html, filename):
         raise ValueError('Page outside the corporate SEO allowlist: ' + filename)
     page = config['pages'][filename]
     metadata = Metadata(html).values
+    if filename == 'comparador-hipotecario.html' and 'id="corporate-seo-layout"' not in html:
+        html = html.replace('</head>', '<style id="corporate-seo-layout">\n.footer-inner > div { flex-wrap: wrap; min-width: 0; max-width: 100%; }\n</style>\n</head>', 1)
     url = ORIGIN + ('/' if filename == 'index.html' else '/' + filename)
     title = page.get('title') or unescape(re.search(r'<title>(.*?)</title>', html, re.S)[1])
     description = page.get('description') or metadata['description']

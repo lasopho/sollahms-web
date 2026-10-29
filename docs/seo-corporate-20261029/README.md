@@ -8,7 +8,7 @@ Producción comprobada: `dpl_CwKecmoAPWkxhdbheFWEWfx3nntF`, código `1369697b2db
 
 Ocho páginas auditadas y optimizadas: portada, contacto, agenda-asesoria, guia-hipotecaria, comparador-hipotecario, cuando-comprar-propiedad, trabaja-con-nosotros y privacidad. La última recibe únicamente metadatos estructurados: su texto legal permanece idéntico. Las dos guías conservan todo su texto educativo, herramientas y sección final de fuentes.
 
-Excluidos: `/proyectos.html`, las 131 fichas activas y todos sus datos, medios, mapas, precios y metadatos. No se modifican sus entradas de sitemap ni permisos de rastreo. Las imágenes, CSS, scripts funcionales y formularios de las ocho páginas también se conservan. Se mantienen los enlaces de Guía hipotecaria incorporados en la versión vigente junto con Expertise, Asset Portafolio y Contacto.
+Excluidos: `/proyectos.html`, las 131 fichas activas y todos sus datos, medios, mapas, precios y metadatos. No se modifican sus entradas de sitemap ni permisos de rastreo. Las imágenes, CSS compartidos, scripts funcionales y formularios de las ocho páginas también se conservan. Se agrega una única regla local al comparador para que los enlaces de su pie puedan envolver y no desbordar en móvil. Se mantienen los enlaces de Guía hipotecaria incorporados en la versión vigente junto con Expertise, Asset Portafolio y Contacto.
 
 ## Auditoría inicial y cambios justificados
 
@@ -17,6 +17,7 @@ Las ocho páginas dan HTTP200, canonical correcto, H1 único, descripción y tí
 Se corrigen brechas concretas:
 
 - Contacto y agenda tenían introducciones casi iguales. Ahora contacto explica consultas concretas; asesoría explica objetivos, comparación de antecedentes y coordinación, sin prometer cita confirmada ni crédito.
+- El pie del comparador no envolvía sus enlaces y desbordaba en móvil. Una regla local de flex-wrap lo corrige sin afectar otras páginas.
 - H1 del comparador genérico: ahora identifica el dividendo hipotecario en UF. La explicación enlaza a la guía sin tocar cálculos.
 - Expertise precisa el servicio para compradores e inversionistas. El bloque de preparación y la respuesta sobre etapas enlazan naturalmente a las guías existentes. Se conservan el título, H1 y descripción SEO ya pertinentes de la portada y las tres tarjetas comerciales.
 - Títulos de guía, comparador y colaboración distinguen su intención. Guías completan metadatos sociales con la misma imagen aprobada, sin alterar su composición.
