@@ -61,3 +61,16 @@ desde fuentes históricas. Conserva la sincronización del catálogo de contacto
 la retirada HTTP 410 de Patio Brasil, las rutas y la protección de despliegues.
 `deployment-files.json` es el nuevo manifiesto reproducible; `release.json`
 registra las verificaciones y los identificadores finales de despliegue.
+
+## Verificación final
+
+Publicado en https://sollahms.cl con el mismo hash del artefacto de vista previa.
+Se aprobaron 6 pruebas Python y 26 pruebas Node, además del cotejo automático
+de las 131 fichas. La revisión visual cubrió las estructuras estándar, featured,
+Plaza, Almagro, Ecasa, Nollagam y secciones pendientes; tamaños de 320, 390,
+768 y 1440 px, sin desbordes ni deformación de íconos.
+
+- [Listado de las 131 fichas ajustadas](fichas-ajustadas.md)
+- [Registro responsive](responsive.json)
+- [Registro de publicación](release.json)
+- [Captura de la sección publicada](public-amenities.jpg)
