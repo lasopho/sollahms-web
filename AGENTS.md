@@ -45,3 +45,6 @@ Preserve data/project-cover-overrides.json through project_cover.py and the cata
 
 # Plaza Las Condes verified fiche (2026-10-28)
 Apply `scripts/plaza_las_condes.py` after shared generators for this slug only. Preserve the verified project address at Avenida Las Condes 7083, separate sales office, nine plans, unit-specific quote context, and `data/plaza-las-condes-verified.json` provenance. The latest owner instruction requires their supplied list prices: unit 213 = UF 11,119 and unit 313 = UF 11,073. Do not replace these with Sento website campaign prices or calculate discounts. Keep the catalogue/header minimum at UF 11,073. Never infer stock or restore conflicting model surfaces without current evidence.
+
+# Image-label policy (2026-10-28)
+The owner requires no visible generic Render referencial / Imagen referencial badges or equivalent image-type captions on any fiche. Use scripts/project_image_labels.py as the final static rendering step, including project-specific overrides and gallery importers. Preserve descriptive scene captions, all alt/ARIA text, source provenance, original media and watermarks, plan information, substantive commercial notices, and motion. Never hide labels with CSS or reclassify a render as a photograph.

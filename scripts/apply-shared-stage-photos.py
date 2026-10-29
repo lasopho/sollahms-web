@@ -1,4 +1,5 @@
 """Apply owner-confirmed shared-stage project images without changing commercial data."""
+from project_image_labels import apply_image_label_policy
 import argparse
 import hashlib
 import html
@@ -107,7 +108,7 @@ def apply(root, supplied_pdf, official_pdf):
         gallery = '<section id="galeria" class="detail-section" aria-labelledby="project-gallery-heading"><p class="eyebrow">Imágenes del proyecto</p><h2 id="project-gallery-heading">Galería del proyecto</h2><p class="image-credit">' + note + '</p><div class="gallery-grid brochure-gallery">' + ''.join(figures) + '</div></section>'
         content, count = re.subn(r'<section id="galeria".*?</section>', lambda m: gallery, content, count=1, flags=re.S)
         assert count == 1, slug
-        page.write_text(content)
+        page.write_text(apply_image_label_policy(content))
         record['name'] = projects[slug]['nombre']
         record['url'] = 'https://sollahms.cl/' + slug + '.html'
 

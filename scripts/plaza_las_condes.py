@@ -9,6 +9,7 @@ import json
 import re
 from pathlib import Path
 from bs4 import BeautifulSoup
+from project_image_labels import apply_image_label_policy
 
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = 'plaza-las-condes'
@@ -125,7 +126,7 @@ def apply_plaza_las_condes(page, project):
         page = page.replace(marker,f'<link rel="stylesheet" href="{CSS}">\n'+marker,1)
     if JS not in page:
         page = page.replace('</head>',f'<script type="module" src="{JS}"></script>\n</head>',1)
-    return page
+    return apply_image_label_policy(page)
 
 if __name__ == '__main__':
     file=ROOT/(SLUG+'.html')
