@@ -38,3 +38,7 @@ Se mantienen los valores impresos con observaciones visibles; no se corrigen sin
 - El paquete congelado verifica SHA-256 de todos sus archivos, conserva funciones/configuración de producción y actualiza sólo siete filas del catálogo interno de contact. La carpeta qa y sus recursos nunca se incluyen en el manifiesto ni el commit.
 
 La evidencia técnica está en preservation.json y regression.txt. La publicación usa la rama codex/nollagam-complete-20261028, sin modificar main ni habilitar despliegues automáticos.
+
+## Publicación confirmada
+
+Producción READY: dpl_9kbRpjdiAbNWRn2totAsKrJFGAzY, enlazada a https://sollahms.cl. Siete URL públicas verificadas; catálogo con 131 registros, orden de precios correcto y cinco resultados Nollagam al filtrar hasta UF 3.900. Los 1.359 archivos del paquete validado comparten la misma huella de salida entre preview y producción. Ver release.json y public-prices.jpg.
