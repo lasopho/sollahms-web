@@ -29,7 +29,7 @@ def plans_html(slug,facts,media):
     for asset in media['plans']:
         page=asset['page'];models=[m for m in facts['models'] if m['page']==page]
         illustrated=asset['kind']=='illustrated'
-        key='ilustrados' if illustrated else group_key(models)
+        key='ilustrados' if illustrated else 'revision' if any(not m['filterEligible'] for m in models) else group_key(models)
         title='Lámina '+str(page)
         body=''
         for model in models:
@@ -58,7 +58,7 @@ def plans_html(slug,facts,media):
     content='<p>Compara las distribuciones documentadas y amplía cada lámina para revisar sus medidas. Las referencias de los planos no constituyen un inventario ni confirman disponibilidad.</p><p class="pb-note">'+note+'</p>'
     if slug=='don-rafael':content+='<p class="pb-note">La tipología de 2 dormitorios y 1 baño está documentada en la presentación del proyecto. Su plano técnico en la lámina 12 tiene datos contradictorios; sus superficies quedan por confirmar.</p>'
     for index,(key,cards) in enumerate(groups.items()):
-        label='Distribuciones ilustradas' if key=='ilustrados' else ' / '.join(typ(int(n)) for n in key.split('-'))
+        label='Distribuciones ilustradas' if key=='ilustrados' else 'Estudio y distribución de 2 dormitorios por confirmar' if key=='revision' else ' / '.join(typ(int(n)) for n in key.split('-'))
         content+=f'<details class="pb-plan-group" id="planos-{key}"'+(' open' if index==0 else '')+f'><summary data-scroll-static>{label} · {len(cards)} '+('lámina' if len(cards)==1 else 'láminas')+'</summary><div class="pb-plans">'+''.join(cards)+'</div></details>'
     content+=f'<a class="pj-text-link" href="/assets/brochures/crescer/{slug}.pdf" target="_blank" rel="noopener noreferrer">Ver folleto original completo ↗</a>'
     return '<section id="planos" class="detail-section pj-block"><p class="eyebrow">Distribuciones documentadas</p><h2>Planos</h2>'+content+'</section>',targets
@@ -90,7 +90,7 @@ def apply_crescer(page,project):
     main.select_one('#caracteristicas').insert_after(fragment(plans))
     cards=[]
     for offer in offers_for(c):
-        b=offer['bedrooms'];target=targets.get(b,'planos-0' if slug=='don-rafael' else 'planos')
+        b=offer['bedrooms'];target=targets.get(b,'planos-revision' if slug=='don-rafael' else 'planos')
         cards.append(f'<article class="pb-offer"><h3>{offer["label"]}</h3><strong class="pb-price">{price_from(offer["priceUF"],2)}</strong><a class="pj-text-link" href="#{target}" data-brochure-plan-group="{target}">Ver planos</a><a class="button button-green" href="#solicitar-cotizacion" data-request-intent="cotizacion" data-brochure-type="{b}">Solicitar cotización</a></article>')
     overview.append(fragment('<div data-brochure-content><h3>Tipologías y precios desde</h3><div class="pb-offers" data-scroll-static>'+''.join(cards)+'</div><p class="pb-note">Valores proporcionados a Sollahms por tipología. No corresponden a una unidad específica. Disponibilidad, estacionamientos, bodegas e inclusiones se confirman al cotizar.</p></div>'))
     features=main.find(id='caracteristicas');dl=features.find('dl',recursive=False)
