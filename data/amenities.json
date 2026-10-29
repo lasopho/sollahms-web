@@ -1,0 +1,1414 @@
+{
+  "version": 1,
+  "icons": {
+    "social": "<path d=\"M4 11h16v9H4zM7 11V6h10v5M8 15h8\"/>",
+    "roof": "<path d=\"m3 11 9-7 9 7M6 11v9h12v-9M9 16h6\"/>",
+    "pool": "<path d=\"M3 17q3-3 6 0t6 0t6 0M3 21q3-3 6 0t6 0t6 0M8 14V5q0-3 4-3M14 14V5q0-3 4-3M8 7h6M8 11h6\"/>",
+    "coffee": "<path d=\"M4 8h12v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM16 9h2a3 3 0 0 1 0 6h-2M7 3v2M12 3v2\"/>",
+    "mail": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"1\"/><path d=\"m3 6 9 7 9-7\"/>",
+    "bike": "<circle cx=\"6\" cy=\"16\" r=\"4\"/><circle cx=\"18\" cy=\"16\" r=\"4\"/><path d=\"m6 16 5-9 7 9M8 7h5M14 4h3l1 4M6 16h8L9 7\"/>",
+    "wash": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"1\"/><circle cx=\"12\" cy=\"14\" r=\"5\"/><path d=\"M7 6h1M11 6h5M8 15q4-4 8 0\"/>",
+    "parking": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1\"/><path d=\"M9 18V7h4a3 3 0 0 1 0 6H9\"/>",
+    "lobby": "<path d=\"M3 21h18M5 21V3h14v18M9 21V7h6v14M12 13h1\"/>",
+    "bbq": "<path d=\"M4 10h16a8 8 0 0 1-16 0ZM8 17l-3 5M16 17l3 5M7 20h10M8 7V3M12 7V2M16 7V3\"/>",
+    "fitness": "<path d=\"M7 12h10M3 8v8M7 6v12M17 6v12M21 8v8M3 12h4M17 12h4\"/>",
+    "work": "<rect x=\"4\" y=\"3\" width=\"16\" height=\"12\" rx=\"1\"/><path d=\"M2 20h20M8 15l-1 5M16 15l1 5M8 7h8\"/>",
+    "pets": "<path d=\"M7 15q5-8 10 0c5 7-3 6-5 4-2 2-10 3-5-4Z\"/><ellipse cx=\"4\" cy=\"10\" rx=\"2\" ry=\"3\"/><ellipse cx=\"9\" cy=\"5\" rx=\"2\" ry=\"3\"/><ellipse cx=\"15\" cy=\"5\" rx=\"2\" ry=\"3\"/><ellipse cx=\"20\" cy=\"10\" rx=\"2\" ry=\"3\"/>",
+    "garden": "<path d=\"M12 22V10M12 15C2 15 2 7 3 3c7 0 11 3 9 12ZM12 19c0-8 4-12 10-12 0 7-3 12-10 12Z\"/>",
+    "play": "<path d=\"m3 21 4-18h10l4 18M6 7h12M12 7v9M9 16h6v3H9z\"/>",
+    "games": "<path d=\"M8 7h8c4 0 7 12 4 13-2 1-4-4-6-4h-4c-2 0-4 5-6 4C1 19 4 7 8 7ZM8 10v5M5.5 12.5h5M16 11h.1M18 14h.1M12 7V3\"/>",
+    "security": "<path d=\"m12 2 8 3v7c0 5-5 9-8 10-3-1-8-5-8-10V5ZM8 12l3 3 5-6\"/>",
+    "camera": "<path d=\"m3 5 16 4-2 7L1 12ZM7 14l-1 5h8M18 12h4v5M10 5l1-3\"/>",
+    "concierge": "<path d=\"M3 17h18M5 17v-3a7 7 0 0 1 14 0v3M12 7V3M9 3h6M3 21h18\"/>",
+    "digital": "<rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"1\"/><path d=\"M9 6h6M9 10h.1M12 10h.1M15 10h.1M9 13h.1M12 13h.1M15 13h.1M9 18h6\"/>",
+    "bar": "<path d=\"m4 3 8 10 8-10ZM12 13v8M7 21h10M7 7h10\"/>",
+    "terrace": "<path d=\"M2 12 12 3l10 9ZM12 12v9M8 21h8M3 16v5M21 16v5M2 16h5M17 16h5\"/>",
+    "spa": "<path d=\"M4 14h16v2a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6ZM7 2c-4 4 4 4 0 8M12 2c-4 4 4 4 0 8M17 2c-4 4 4 4 0 8\"/>",
+    "storage": "<path d=\"m3 7 9-5 9 5v11l-9 4-9-4ZM3 7l9 5 9-5M12 12v10M7 5l9 5\"/>",
+    "office": "<path d=\"M3 22V2h18v20ZM7 6h2M15 6h2M7 10h2M15 10h2M7 14h2M15 14h2M10 22v-4h4v4\"/>",
+    "elevator": "<rect x=\"3\" y=\"2\" width=\"18\" height=\"20\" rx=\"1\"/><path d=\"M6 22V10h12v12M12 10v12M7 6l2-2 2 2M14 4l2 2 2-2\"/>",
+    "water": "<path d=\"M12 2S4 11 4 16a8 8 0 0 0 16 0c0-5-8-14-8-14ZM8 16a4 4 0 0 0 4 4\"/>",
+    "energy": "<path d=\"M14 2 4 14h7l-1 8 10-12h-7Z\"/>",
+    "kitchen": "<path d=\"M3 10h18v12H3ZM3 10V4h18v6M3 16h18M12 10v12M6 13h2M16 13h2M6 7h3M15 7h3\"/>",
+    "window": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1\"/><path d=\"M12 3v18M3 12h18M6 9l3-3M15 18l3-3\"/>",
+    "floor": "<path d=\"m12 2 10 10-10 10L2 12ZM7 7l10 10M17 7 7 17M2 12h20\"/>",
+    "curtains": "<path d=\"M2 3h20M4 3v18l6-3V3M20 3v18l-6-3V3M4 13h6M14 13h6\"/>",
+    "light": "<path d=\"M8 16c0-3-3-3-3-7a7 7 0 0 1 14 0c0 4-3 4-3 7ZM8 19h8M10 22h4M10 16v-5M14 16v-5M10 11h4\"/>",
+    "tv": "<rect x=\"2\" y=\"5\" width=\"20\" height=\"13\" rx=\"1\"/><path d=\"M8 22h8M12 18v4M8 2l4 3 4-3\"/>",
+    "shower": "<path d=\"M5 22V7a5 5 0 0 1 10 0M11 11a4 4 0 0 1 8 0ZM12 14v2M15 14v2M18 14v2M12 19v2M15 19v2M18 19v2\"/>",
+    "fridge": "<rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"1\"/><path d=\"M6 9h12M9 5v1M9 12v4\"/>",
+    "fire": "<path d=\"M13 2c1 6 7 7 7 13a8 8 0 0 1-16 0c0-4 3-6 4-8 0 4 2 5 3 5 2-3 2-6 2-10ZM12 14c-5 5-3 8 0 8s5-3 0-8Z\"/>",
+    "wifi": "<path d=\"M2 8a16 16 0 0 1 20 0M5 12a11 11 0 0 1 14 0M8 16a6 6 0 0 1 8 0\"/><circle cx=\"12\" cy=\"20\" r=\"1\"/>",
+    "beach": "<path d=\"M2 11a10 10 0 0 1 20 0c-3-3-5-3-10 0-5-3-7-3-10 0ZM12 11v8M2 21q5-4 10-1t10 0\"/>",
+    "view": "<path d=\"M2 19 8 8l5 8 4-6 5 9ZM5 22h14\"/><circle cx=\"17\" cy=\"5\" r=\"3\"/>",
+    "surf": "<path d=\"M7 20C1 8 13 1 19 2c1 6-6 18-12 18ZM7 20 17 4M2 22q3-3 6-1t6 0t7-1\"/>",
+    "track": "<path d=\"M2 17c5-13 5 7 10-6s7 4 10-5M2 22c5-13 5 7 10-6s7 4 10-5\"/>",
+    "chair": "<path d=\"m3 7 6 10h12M6 12l3 10M19 17l2 5M10 17l7-5h5\"/><circle cx=\"6\" cy=\"4\" r=\"2\"/>",
+    "theater": "<path d=\"M2 4h20v16H2ZM7 4v9L2 16M17 4v9l5 3M6 20h12M8 17h8M10 14h4\"/>",
+    "information": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 11v7M12 6v1\"/>"
+  },
+  "labels": [
+    {
+      "source": "2 quinchos en azotea",
+      "label": "2 quinchos en azotea",
+      "icon": "bbq"
+    },
+    {
+      "source": "285 unidades referenciales; no representa disponibilidad actual",
+      "label": "285 unidades referenciales; no representa disponibilidad actual",
+      "icon": "information"
+    },
+    {
+      "source": "4 quinchos panorámicos",
+      "label": "4 quinchos panorámicos",
+      "icon": "bbq"
+    },
+    {
+      "source": "ACCESO A LA PLAYA",
+      "label": "Acceso a la playa",
+      "icon": "beach"
+    },
+    {
+      "source": "AMPLIA PISCINA",
+      "label": "Piscina amplia",
+      "icon": "pool"
+    },
+    {
+      "source": "Acceso controlado",
+      "label": "Accesos controlados",
+      "icon": "security"
+    },
+    {
+      "source": "Acceso controlado por CCTV",
+      "label": "Accesos controlados por CCTV",
+      "icon": "camera"
+    },
+    {
+      "source": "Acceso de doble seguridad automatizado",
+      "label": "Acceso de doble seguridad automatizado",
+      "icon": "security"
+    },
+    {
+      "source": "Acceso digital Cerradura digital en la puerta de acceso del departamento.",
+      "label": "Acceso digital",
+      "icon": "digital"
+    },
+    {
+      "source": "Accesos controlados",
+      "label": "Accesos controlados",
+      "icon": "security"
+    },
+    {
+      "source": "Accesos controlados por CCTV",
+      "label": "Accesos controlados por CCTV",
+      "icon": "camera"
+    },
+    {
+      "source": "Agua caliente con termo eléctrico o calefón, según unidad",
+      "label": "Agua caliente con termo eléctrico o calefón, según unidad",
+      "icon": "water"
+    },
+    {
+      "source": "Agua caliente individual",
+      "label": "Agua caliente individual",
+      "icon": "water"
+    },
+    {
+      "source": "Agua caliente individual con calefón de tiro forzado",
+      "label": "Agua caliente individual con calefón de tiro forzado",
+      "icon": "water"
+    },
+    {
+      "source": "Agua caliente individual con termo eléctrico",
+      "label": "Agua caliente individual con termo eléctrico",
+      "icon": "water"
+    },
+    {
+      "source": "Agua por puntera individual",
+      "label": "Agua por puntera individual",
+      "icon": "water"
+    },
+    {
+      "source": "Anfiteatro",
+      "label": "Anfiteatro",
+      "icon": "theater"
+    },
+    {
+      "source": "Ascensor de parking y oficina de administración independiente",
+      "label": "Ascensor de parking y oficina de administración independiente",
+      "icon": "elevator"
+    },
+    {
+      "source": "Ascensores Heavenward–Mitsubishi",
+      "label": "Ascensores Heavenward–Mitsubishi",
+      "icon": "elevator"
+    },
+    {
+      "source": "Ascensores con tarjeta de residente",
+      "label": "Ascensores con tarjeta de residente",
+      "icon": "elevator"
+    },
+    {
+      "source": "Ascensores, central de agua caliente y CCTV",
+      "label": "Ascensores, central de agua caliente y CCTV",
+      "icon": "elevator"
+    },
+    {
+      "source": "Audio y WiFi en áreas comunes; confirma las condiciones al consultar",
+      "label": "Audio y WiFi en áreas comunes; confirma las condiciones al consultar",
+      "icon": "wifi"
+    },
+    {
+      "source": "BBQ Rooftop",
+      "label": "Quinchos en azotea",
+      "icon": "bbq"
+    },
+    {
+      "source": "Bar Zone",
+      "label": "Bar Zone",
+      "icon": "bar"
+    },
+    {
+      "source": "Baño principal Ducha en obra según unidad y especificación vigente.",
+      "label": "Baño principal",
+      "icon": "shower"
+    },
+    {
+      "source": "Bicicletero",
+      "label": "Bicicleteros",
+      "icon": "bike"
+    },
+    {
+      "source": "Bicicletero con taller",
+      "label": "Bicicletero con taller",
+      "icon": "bike"
+    },
+    {
+      "source": "Bicicleteros",
+      "label": "Bicicleteros",
+      "icon": "bike"
+    },
+    {
+      "source": "Bicicleteros comunes",
+      "label": "Bicicleteros comunes",
+      "icon": "bike"
+    },
+    {
+      "source": "Bicicleteros comunes cerrados",
+      "label": "Bicicleteros comunes cerrados",
+      "icon": "bike"
+    },
+    {
+      "source": "Bike Parking",
+      "label": "Bicicleteros",
+      "icon": "bike"
+    },
+    {
+      "source": "Bodega E-commerce",
+      "label": "Bodega de encomiendas",
+      "icon": "mail"
+    },
+    {
+      "source": "Bodega Encomiendas",
+      "label": "Bodega de encomiendas",
+      "icon": "mail"
+    },
+    {
+      "source": "Bodega de encomiendas",
+      "label": "Bodega de encomiendas",
+      "icon": "mail"
+    },
+    {
+      "source": "Bodega de encomiendas y lockers QR",
+      "label": "Bodega de encomiendas y lockers QR",
+      "icon": "mail"
+    },
+    {
+      "source": "Bodega de maletas",
+      "label": "Bodega de maletas",
+      "icon": "storage"
+    },
+    {
+      "source": "Bodega de mudanzas",
+      "label": "Bodega de mudanzas",
+      "icon": "storage"
+    },
+    {
+      "source": "Bodega de mudanzas y oficina de administración",
+      "label": "Bodega de mudanzas y oficina de administración",
+      "icon": "office"
+    },
+    {
+      "source": "Bodega e-commerce",
+      "label": "Bodega de encomiendas",
+      "icon": "mail"
+    },
+    {
+      "source": "Bodega náutica",
+      "label": "Bodega náutica",
+      "icon": "storage"
+    },
+    {
+      "source": "Bodegas",
+      "label": "Bodegas",
+      "icon": "storage"
+    },
+    {
+      "source": "CCTV",
+      "label": "CCTV",
+      "icon": "camera"
+    },
+    {
+      "source": "CCTV conectado a conserjería y administración",
+      "label": "CCTV conectado a conserjería y administración",
+      "icon": "camera"
+    },
+    {
+      "source": "Cafetería",
+      "label": "Cafetería",
+      "icon": "coffee"
+    },
+    {
+      "source": "Calistenia",
+      "label": "Calistenia",
+      "icon": "fitness"
+    },
+    {
+      "source": "Central de agua caliente a gas natural",
+      "label": "Central de agua caliente a gas natural",
+      "icon": "water"
+    },
+    {
+      "source": "Central de agua caliente a gas natural, ascensores y CCTV",
+      "label": "Central de agua caliente a gas natural, ascensores y CCTV",
+      "icon": "elevator"
+    },
+    {
+      "source": "Central de agua caliente, ascensores y CCTV",
+      "label": "Central de agua caliente, ascensores y CCTV",
+      "icon": "elevator"
+    },
+    {
+      "source": "Cerradura electrónica",
+      "label": "Cerradura electrónica",
+      "icon": "digital"
+    },
+    {
+      "source": "Cerradura electrónica con control por tarjeta",
+      "label": "Cerradura electrónica con control por tarjeta",
+      "icon": "digital"
+    },
+    {
+      "source": "Cerradura electrónica con tarjeta",
+      "label": "Cerradura electrónica con tarjeta",
+      "icon": "digital"
+    },
+    {
+      "source": "Cerradura para renta corta",
+      "label": "Cerradura para renta corta",
+      "icon": "digital"
+    },
+    {
+      "source": "Circuito cerrado",
+      "label": "Circuito cerrado",
+      "icon": "camera"
+    },
+    {
+      "source": "Circuito eléctrico individual para estufa eléctrica",
+      "label": "Circuito eléctrico individual para estufa eléctrica",
+      "icon": "energy"
+    },
+    {
+      "source": "Circuito eléctrico para aire acondicionado en modelos 1D 1B con terraza señalados; el equipo no está incluido.",
+      "label": "Circuito eléctrico para aire acondicionado en modelos 1D 1B con terraza señalados; el equipo no está incluido.",
+      "icon": "terrace"
+    },
+    {
+      "source": "Circuito individual para estufa eléctrica",
+      "label": "Circuito individual para estufa eléctrica",
+      "icon": "energy"
+    },
+    {
+      "source": "Cocina americana amoblada con cubierta de cuarzo",
+      "label": "Cocina americana amoblada con cubierta de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocina con cubierta de cuarzo",
+      "label": "Cocina con cubierta de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocina con cubierta de cuarzo blanco",
+      "label": "Cocina con cubierta de cuarzo blanco",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocina equipada Horno, campana, encimera de dos o tres platos y microondas, según tipología.",
+      "label": "Cocina equipada",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocina full electric amoblada",
+      "label": "Cocina full electric amoblada",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocinas full electric con refrigerador apanelado no frost, encimera y horno",
+      "label": "Cocinas full electric con refrigerador apanelado no frost, encimera y horno",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cocinas integradas full electric con refrigerador apanelado no frost, encimera y horno",
+      "label": "Cocinas integradas full electric con refrigerador apanelado no frost, encimera y horno",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Coffee & Work",
+      "label": "Coffee & Work",
+      "icon": "work"
+    },
+    {
+      "source": "Conexión para lavadora según modelo",
+      "label": "Conexión para lavadora según modelo",
+      "icon": "wash"
+    },
+    {
+      "source": "Conserje Virtual",
+      "label": "Conserjería virtual",
+      "icon": "concierge"
+    },
+    {
+      "source": "Conserjería 24 horas",
+      "label": "Conserjería 24 horas",
+      "icon": "concierge"
+    },
+    {
+      "source": "Conserjería Virtual",
+      "label": "Conserjería virtual",
+      "icon": "concierge"
+    },
+    {
+      "source": "Conserjería las 24 hrs.",
+      "label": "Conserjería 24 horas",
+      "icon": "concierge"
+    },
+    {
+      "source": "Consulta las terminaciones disponibles para la unidad que te interesa.",
+      "label": "Consulta las terminaciones disponibles para la unidad que te interesa.",
+      "icon": "information"
+    },
+    {
+      "source": "Control de Acceso Digital",
+      "label": "Control de acceso digital",
+      "icon": "digital"
+    },
+    {
+      "source": "Cortinas roller",
+      "label": "Cortinas roller",
+      "icon": "curtains"
+    },
+    {
+      "source": "Cortinas roller y blackout en dormitorios",
+      "label": "Cortinas roller y blackout en dormitorios",
+      "icon": "curtains"
+    },
+    {
+      "source": "Cortinas roller, blackout en dormitorios",
+      "label": "Cortinas roller, blackout en dormitorios",
+      "icon": "curtains"
+    },
+    {
+      "source": "Cowork",
+      "label": "Cowork",
+      "icon": "work"
+    },
+    {
+      "source": "Cowork abierto y cubículos",
+      "label": "Cowork abierto y cubículos",
+      "icon": "work"
+    },
+    {
+      "source": "Cubierta de cuarzo blanco",
+      "label": "Cubierta de cuarzo blanco",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cubierta de cuarzo blanco y secador de platos",
+      "label": "Cubierta de cuarzo blanco y secador de platos",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cubierta de granito en cocina",
+      "label": "Cubierta de granito en cocina",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cubierta de granito en cocinas",
+      "label": "Cubierta de granito en cocinas",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cubiertas de cuarzo En la cocina, según las especificaciones de Sento.",
+      "label": "Cubiertas de cuarzo",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Cubiertas de cuarzo blanco",
+      "label": "Cubiertas de cuarzo blanco",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Dos piscinas",
+      "label": "Dos piscinas",
+      "icon": "pool"
+    },
+    {
+      "source": "Dos quinchos",
+      "label": "Dos quinchos",
+      "icon": "bbq"
+    },
+    {
+      "source": "Dos salas gourmet",
+      "label": "Dos salones gourmet",
+      "icon": "social"
+    },
+    {
+      "source": "Dos salas multiuso",
+      "label": "Dos salas multiuso",
+      "icon": "social"
+    },
+    {
+      "source": "Dos saunas",
+      "label": "Dos saunas",
+      "icon": "spa"
+    },
+    {
+      "source": "E-Lockers",
+      "label": "Lockers electrónicos",
+      "icon": "mail"
+    },
+    {
+      "source": "E-commerce",
+      "label": "E-commerce / Mail Room",
+      "icon": "mail"
+    },
+    {
+      "source": "E-commerce / Mail Room",
+      "label": "E-commerce / Mail Room",
+      "icon": "mail"
+    },
+    {
+      "source": "E-lockers",
+      "label": "Lockers electrónicos",
+      "icon": "mail"
+    },
+    {
+      "source": "Enchufe de fuerza para estufa eléctrica",
+      "label": "Enchufe de fuerza para estufa eléctrica",
+      "icon": "energy"
+    },
+    {
+      "source": "Enchufe para estufa eléctrica",
+      "label": "Enchufe para estufa eléctrica",
+      "icon": "energy"
+    },
+    {
+      "source": "Encimera eléctrica o a gas, según especificación",
+      "label": "Encimera eléctrica o a gas, según especificación",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Encimera eléctrica, horno y campana",
+      "label": "Encimera eléctrica, horno y campana",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Encimera vitrocerámica, horno y campana",
+      "label": "Encimera vitrocerámica, horno y campana",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Encimera, horno y campana",
+      "label": "Encimera, horno y campana",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Energía eléctrica aérea",
+      "label": "Energía eléctrica aérea",
+      "icon": "energy"
+    },
+    {
+      "source": "Espacio Cowork",
+      "label": "Cowork",
+      "icon": "work"
+    },
+    {
+      "source": "Estacionamiento de bicicletas",
+      "label": "Bicicleteros",
+      "icon": "bike"
+    },
+    {
+      "source": "Estacionamientos",
+      "label": "Estacionamientos",
+      "icon": "parking"
+    },
+    {
+      "source": "Estacionamientos de visitas",
+      "label": "Estacionamientos de visitas",
+      "icon": "parking"
+    },
+    {
+      "source": "Family & Social Club y Salón Lounge",
+      "label": "Family & Social Club y Salón Lounge",
+      "icon": "social"
+    },
+    {
+      "source": "Fun Zone",
+      "label": "Zona de entretenimiento",
+      "icon": "games"
+    },
+    {
+      "source": "Game Room",
+      "label": "Salón de juegos",
+      "icon": "games"
+    },
+    {
+      "source": "Gimnasio",
+      "label": "Gimnasio",
+      "icon": "fitness"
+    },
+    {
+      "source": "Gimnasio equipado",
+      "label": "Gimnasio equipado",
+      "icon": "fitness"
+    },
+    {
+      "source": "Gimnasio exterior",
+      "label": "Gimnasio exterior",
+      "icon": "fitness"
+    },
+    {
+      "source": "Gimnasio y pilates",
+      "label": "Gimnasio y pilates",
+      "icon": "fitness"
+    },
+    {
+      "source": "Gres porcelánico en el departamento",
+      "label": "Gres porcelánico en el departamento",
+      "icon": "floor"
+    },
+    {
+      "source": "Hall",
+      "label": "Hall de acceso y lobby",
+      "icon": "lobby"
+    },
+    {
+      "source": "Hall de acceso",
+      "label": "Hall de acceso y lobby",
+      "icon": "lobby"
+    },
+    {
+      "source": "Hall de acceso con conserjería virtual",
+      "label": "Hall de acceso con conserjería virtual",
+      "icon": "lobby"
+    },
+    {
+      "source": "Hall de acceso controlado",
+      "label": "Hall de acceso controlado",
+      "icon": "lobby"
+    },
+    {
+      "source": "Hall de acceso de doble altura",
+      "label": "Hall de acceso de doble altura",
+      "icon": "lobby"
+    },
+    {
+      "source": "Hall de acceso doble altura",
+      "label": "Hall de acceso de doble altura",
+      "icon": "lobby"
+    },
+    {
+      "source": "Hall de acceso doble altura con Conserjería Virtual",
+      "label": "Hall de acceso de doble altura con conserjería virtual",
+      "icon": "lobby"
+    },
+    {
+      "source": "Hall de acceso y lobby",
+      "label": "Hall de acceso y lobby",
+      "icon": "lobby"
+    },
+    {
+      "source": "Hidromasaje",
+      "label": "Hidromasaje",
+      "icon": "spa"
+    },
+    {
+      "source": "Horno y campana",
+      "label": "Horno y campana",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Horno, microondas, lavavajillas panelable, encimera y campana Franke, Cubierta de cocina ultracompacto con terminación travertino, Grifería de cocina Paini (Italia), Grifería del baño principal Hansgrohe (Alemania), Puertas enchapadas en madera de encina",
+      "label": "Horno, microondas, lavavajillas panelable, encimera y campana Franke, Cubierta de cocina ultracompacto con terminación travertino, Grifería de cocina Paini (Italia), Grifería del baño principal Hansgrohe (Alemania), Puertas enchapadas en madera de encina",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Instalación para lavadora",
+      "label": "Instalación para lavadora",
+      "icon": "wash"
+    },
+    {
+      "source": "Jardín",
+      "label": "Jardín",
+      "icon": "garden"
+    },
+    {
+      "source": "Jardín fotovoltaico",
+      "label": "Jardín fotovoltaico",
+      "icon": "garden"
+    },
+    {
+      "source": "Jardín interior",
+      "label": "Jardín interior",
+      "icon": "garden"
+    },
+    {
+      "source": "Juegos infantiles",
+      "label": "Juegos infantiles",
+      "icon": "play"
+    },
+    {
+      "source": "Kids Zone",
+      "label": "Zona infantil",
+      "icon": "play"
+    },
+    {
+      "source": "Laundry Room",
+      "label": "Lavandería",
+      "icon": "wash"
+    },
+    {
+      "source": "Lavandería",
+      "label": "Lavandería",
+      "icon": "wash"
+    },
+    {
+      "source": "Lavandería equipada",
+      "label": "Lavandería equipada",
+      "icon": "wash"
+    },
+    {
+      "source": "Lavapet",
+      "label": "Lavado de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Lobby",
+      "label": "Hall de acceso y lobby",
+      "icon": "lobby"
+    },
+    {
+      "source": "Lockers con QR",
+      "label": "Lockers con QR",
+      "icon": "mail"
+    },
+    {
+      "source": "Lounge",
+      "label": "Lounge",
+      "icon": "social"
+    },
+    {
+      "source": "Lounge & Bar",
+      "label": "Lounge & Bar",
+      "icon": "social"
+    },
+    {
+      "source": "Lounge & Wine Bar",
+      "label": "Lounge & Wine Bar",
+      "icon": "social"
+    },
+    {
+      "source": "Lounge exterior",
+      "label": "Lounge exterior",
+      "icon": "social"
+    },
+    {
+      "source": "Lounge y patios interiores",
+      "label": "Lounge y patios interiores",
+      "icon": "social"
+    },
+    {
+      "source": "Luminarias LED",
+      "label": "Luminarias LED",
+      "icon": "light"
+    },
+    {
+      "source": "Luminarias LED y soporte para TV",
+      "label": "Luminarias LED y soporte para TV",
+      "icon": "light"
+    },
+    {
+      "source": "Magnéticos en ventanas de departamentos de pisos 2 y 3",
+      "label": "Magnéticos en ventanas de departamentos de pisos 2 y 3",
+      "icon": "security"
+    },
+    {
+      "source": "Objetoteca",
+      "label": "Objetoteca",
+      "icon": "storage"
+    },
+    {
+      "source": "Oficina Property Management",
+      "label": "Oficina Property Management",
+      "icon": "office"
+    },
+    {
+      "source": "Oficina de administración del arriendo",
+      "label": "Oficina de administración del arriendo",
+      "icon": "office"
+    },
+    {
+      "source": "Opción de instalación de lavadora",
+      "label": "Opción de instalación de lavadora",
+      "icon": "wash"
+    },
+    {
+      "source": "Opción de instalar lavadora en departamentos 1D 1B, salvo línea 9.",
+      "label": "Opción de instalar lavadora en departamentos 1D 1B, salvo línea 9.",
+      "icon": "wash"
+    },
+    {
+      "source": "PARQUE PRIVADO",
+      "label": "Parque privado",
+      "icon": "garden"
+    },
+    {
+      "source": "PISCINA",
+      "label": "Piscina",
+      "icon": "pool"
+    },
+    {
+      "source": "Patio de actividades",
+      "label": "Patio de actividades",
+      "icon": "garden"
+    },
+    {
+      "source": "Patio de mascotas",
+      "label": "Patio de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Patio exterior",
+      "label": "Patio exterior",
+      "icon": "garden"
+    },
+    {
+      "source": "Patio interior",
+      "label": "Patio interior",
+      "icon": "garden"
+    },
+    {
+      "source": "Patio y lavado de mascotas",
+      "label": "Patio y lavado de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Pet Spa",
+      "label": "Spa de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Pet Zone",
+      "label": "Área de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Pet spa",
+      "label": "Spa de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Pet zone",
+      "label": "Área de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Piscina",
+      "label": "Piscina",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina con vista Av. del Mar",
+      "label": "Piscina con vista Av. del Mar",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina con vista panorámica",
+      "label": "Piscina con vista panorámica",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina en azotea",
+      "label": "Piscina en azotea",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina panorámica",
+      "label": "Piscina panorámica",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina panorámica en azotea",
+      "label": "Piscina panorámica en azotea",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina panorámica en azotea con terraza",
+      "label": "Piscina panorámica en azotea con terraza",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina panorámica templada",
+      "label": "Piscina panorámica templada",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina temperada",
+      "label": "Piscina temperada",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina temperada & Wellness",
+      "label": "Piscina temperada & Wellness",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina templada",
+      "label": "Piscina templada",
+      "icon": "pool"
+    },
+    {
+      "source": "Piscina templada y terrazas panorámicas",
+      "label": "Piscina templada y terrazas panorámicas",
+      "icon": "pool"
+    },
+    {
+      "source": "Piso de porcelanato",
+      "label": "Piso de porcelanato",
+      "icon": "floor"
+    },
+    {
+      "source": "Piso fotolaminado",
+      "label": "Piso fotolaminado",
+      "icon": "floor"
+    },
+    {
+      "source": "Piso vinílico",
+      "label": "Piso vinílico",
+      "icon": "floor"
+    },
+    {
+      "source": "Piso vinílico y ventanas termopanel con marco PVC",
+      "label": "Piso vinílico y ventanas termopanel con marco PVC",
+      "icon": "floor"
+    },
+    {
+      "source": "Pisos por recinto SPC y porcelanato, según especificación.",
+      "label": "Pisos por recinto",
+      "icon": "floor"
+    },
+    {
+      "source": "Pisos vinílicos",
+      "label": "Pisos vinílicos",
+      "icon": "floor"
+    },
+    {
+      "source": "Plaza Elevada",
+      "label": "Plaza elevada",
+      "icon": "terrace"
+    },
+    {
+      "source": "Plaza Exterior",
+      "label": "Plaza exterior",
+      "icon": "garden"
+    },
+    {
+      "source": "Plaza elevada",
+      "label": "Plaza elevada",
+      "icon": "terrace"
+    },
+    {
+      "source": "Plazas y áreas verdes",
+      "label": "Plazas y áreas verdes",
+      "icon": "garden"
+    },
+    {
+      "source": "Pool bar",
+      "label": "Pool bar",
+      "icon": "bar"
+    },
+    {
+      "source": "Porcelanato en hall, cocina, living-comedor y dormitorios",
+      "label": "Porcelanato en hall, cocina, living-comedor y dormitorios",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Pump track",
+      "label": "Pump track",
+      "icon": "track"
+    },
+    {
+      "source": "Quincho",
+      "label": "Quincho",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quincho Panorámico",
+      "label": "Quincho panorámico",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quincho con vista panorámica",
+      "label": "Quincho con vista panorámica",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quincho techado",
+      "label": "Quincho techado",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quincho techado interior",
+      "label": "Quincho techado interior",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quinchos",
+      "label": "Quinchos",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quinchos con terraza panorámicas",
+      "label": "Quinchos con terrazas panorámicas",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quinchos en azotea",
+      "label": "Quinchos en azotea",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quinchos en rooftop",
+      "label": "Quinchos en azotea",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quinchos panorámicos",
+      "label": "Quinchos panorámicos",
+      "icon": "bbq"
+    },
+    {
+      "source": "Quinchos, terrazas y Sky Bar",
+      "label": "Quinchos, terrazas y Sky Bar",
+      "icon": "roof"
+    },
+    {
+      "source": "Quinchos; cantidad pendiente de confirmación",
+      "label": "Quinchos; cantidad pendiente de confirmación",
+      "icon": "bbq"
+    },
+    {
+      "source": "Receptáculo con showerdoor",
+      "label": "Receptáculo con showerdoor",
+      "icon": "shower"
+    },
+    {
+      "source": "Refrigerador apanelado",
+      "label": "Refrigerador apanelado",
+      "icon": "fridge"
+    },
+    {
+      "source": "Refrigerador apanelado y cortinas roller",
+      "label": "Refrigerador apanelado y cortinas roller",
+      "icon": "curtains"
+    },
+    {
+      "source": "Rol propio",
+      "label": "Rol propio",
+      "icon": "information"
+    },
+    {
+      "source": "Rooftop con piscina temperada y jacuzzi",
+      "label": "Rooftop con piscina temperada y jacuzzi",
+      "icon": "pool"
+    },
+    {
+      "source": "SALÓN GOURMET",
+      "label": "Salón gourmet",
+      "icon": "social"
+    },
+    {
+      "source": "SOCIAL LOUNGE",
+      "label": "Salón lounge",
+      "icon": "social"
+    },
+    {
+      "source": "Sala CoWork",
+      "label": "Cowork",
+      "icon": "work"
+    },
+    {
+      "source": "Sala Cowork",
+      "label": "Cowork",
+      "icon": "work"
+    },
+    {
+      "source": "Sala E-commerce",
+      "label": "E-commerce / Mail Room",
+      "icon": "mail"
+    },
+    {
+      "source": "Sala Property Manager",
+      "label": "Sala Property Manager",
+      "icon": "office"
+    },
+    {
+      "source": "Sala común",
+      "label": "Salón multiuso",
+      "icon": "social"
+    },
+    {
+      "source": "Sala cowork",
+      "label": "Cowork",
+      "icon": "work"
+    },
+    {
+      "source": "Sala de estudio",
+      "label": "Sala de estudio",
+      "icon": "work"
+    },
+    {
+      "source": "Sala de eventos",
+      "label": "Salón de eventos",
+      "icon": "social"
+    },
+    {
+      "source": "Sala de juegos",
+      "label": "Salón de juegos",
+      "icon": "games"
+    },
+    {
+      "source": "Sala de lavado de mascotas",
+      "label": "Sala de lavado de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Sala e-commerce",
+      "label": "E-commerce / Mail Room",
+      "icon": "mail"
+    },
+    {
+      "source": "Sala e-commerce con refrigerador",
+      "label": "E-commerce / Mail Room con refrigerador",
+      "icon": "mail"
+    },
+    {
+      "source": "Sala gourmet",
+      "label": "Salón gourmet",
+      "icon": "social"
+    },
+    {
+      "source": "Sala multiuso",
+      "label": "Salón multiuso",
+      "icon": "social"
+    },
+    {
+      "source": "Salas de ejercicio",
+      "label": "Salas de ejercicio",
+      "icon": "fitness"
+    },
+    {
+      "source": "Salas de estudio y trabajo",
+      "label": "Salas de estudio y trabajo",
+      "icon": "work"
+    },
+    {
+      "source": "Salones multiuso",
+      "label": "Salones multiuso",
+      "icon": "social"
+    },
+    {
+      "source": "Salón E-commerce",
+      "label": "E-commerce / Mail Room",
+      "icon": "mail"
+    },
+    {
+      "source": "Salón Gourmet",
+      "label": "Salón gourmet",
+      "icon": "social"
+    },
+    {
+      "source": "Salón Multiuso con vista panorámica",
+      "label": "Salón multiuso con vista panorámica",
+      "icon": "social"
+    },
+    {
+      "source": "Salón de Eventos",
+      "label": "Salón de eventos",
+      "icon": "social"
+    },
+    {
+      "source": "Salón de juegos",
+      "label": "Salón de juegos",
+      "icon": "games"
+    },
+    {
+      "source": "Salón gourmet",
+      "label": "Salón gourmet",
+      "icon": "social"
+    },
+    {
+      "source": "Salón infantil",
+      "label": "Salón infantil",
+      "icon": "play"
+    },
+    {
+      "source": "Salón multiuso",
+      "label": "Salón multiuso",
+      "icon": "social"
+    },
+    {
+      "source": "Sauna",
+      "label": "Sauna",
+      "icon": "spa"
+    },
+    {
+      "source": "Secador de platos",
+      "label": "Secador de platos",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Secaplatos mural",
+      "label": "Secaplatos mural",
+      "icon": "kitchen"
+    },
+    {
+      "source": "Sistema de control de incendios",
+      "label": "Sistema de control de incendios",
+      "icon": "fire"
+    },
+    {
+      "source": "Sky Bar",
+      "label": "Sky Bar",
+      "icon": "bar"
+    },
+    {
+      "source": "Sky bar",
+      "label": "Sky Bar",
+      "icon": "bar"
+    },
+    {
+      "source": "Skybar",
+      "label": "Sky Bar",
+      "icon": "bar"
+    },
+    {
+      "source": "Soporte para TV",
+      "label": "Soporte para TV",
+      "icon": "tv"
+    },
+    {
+      "source": "Soporte para TV y luminarias",
+      "label": "Soporte para TV y luminarias",
+      "icon": "light"
+    },
+    {
+      "source": "Soporte para TV y luminarias LED",
+      "label": "Soporte para TV y luminarias LED",
+      "icon": "light"
+    },
+    {
+      "source": "Sport Bar",
+      "label": "Sport bar",
+      "icon": "bar"
+    },
+    {
+      "source": "Sport bar",
+      "label": "Sport bar",
+      "icon": "bar"
+    },
+    {
+      "source": "Terraza",
+      "label": "Terraza",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terraza con quincho",
+      "label": "Terraza con quincho",
+      "icon": "bbq"
+    },
+    {
+      "source": "Terraza con quincho en azotea",
+      "label": "Terraza con quincho en azotea",
+      "icon": "bbq"
+    },
+    {
+      "source": "Terraza con vista panorámica",
+      "label": "Terraza con vista panorámica",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terraza elevada",
+      "label": "Terraza elevada",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terraza interior",
+      "label": "Terraza interior",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terraza lounge",
+      "label": "Terraza lounge",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terraza verde",
+      "label": "Terraza verde",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terrazas",
+      "label": "Terrazas",
+      "icon": "terrace"
+    },
+    {
+      "source": "Terrazas con barandas vidriadas",
+      "label": "Terrazas con barandas vidriadas",
+      "icon": "bar"
+    },
+    {
+      "source": "Terrazas según modelo",
+      "label": "Terrazas según modelo",
+      "icon": "terrace"
+    },
+    {
+      "source": "Tipologías Home Estudio y 1D 1B",
+      "label": "Tipologías Home Estudio y 1D 1B",
+      "icon": "information"
+    },
+    {
+      "source": "Training Zone",
+      "label": "Zona de entrenamiento",
+      "icon": "fitness"
+    },
+    {
+      "source": "VISTAS PANORÁMICAS",
+      "label": "Vistas panorámicas",
+      "icon": "view"
+    },
+    {
+      "source": "Ventanales de aluminio blanco",
+      "label": "Ventanales de aluminio blanco",
+      "icon": "window"
+    },
+    {
+      "source": "Ventanas termopanel",
+      "label": "Ventanas termopanel",
+      "icon": "window"
+    },
+    {
+      "source": "Ventanas termopanel Marcos de PVC y doble vidrio.",
+      "label": "Ventanas termopanel",
+      "icon": "window"
+    },
+    {
+      "source": "Ventanas termopanel con marco de PVC",
+      "label": "Ventanas termopanel con marco de PVC",
+      "icon": "window"
+    },
+    {
+      "source": "Wifi Primer Piso",
+      "label": "Wifi en primer piso",
+      "icon": "floor"
+    },
+    {
+      "source": "ZONA DE DEPORTE",
+      "label": "Zona de deportes",
+      "icon": "fitness"
+    },
+    {
+      "source": "ZONA DE REPOSERAS",
+      "label": "Zona de reposeras",
+      "icon": "chair"
+    },
+    {
+      "source": "ZONA DE SPA",
+      "label": "Zona de spa",
+      "icon": "spa"
+    },
+    {
+      "source": "ZONA DE SURF",
+      "label": "Zona de surf",
+      "icon": "surf"
+    },
+    {
+      "source": "ZONA PET",
+      "label": "Área de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Zona de ejercicios",
+      "label": "Zona de ejercicios",
+      "icon": "fitness"
+    },
+    {
+      "source": "Zona de juegos infantiles",
+      "label": "Zona de juegos infantiles",
+      "icon": "play"
+    },
+    {
+      "source": "quinchos panorámicos",
+      "label": "Quinchos panorámicos",
+      "icon": "bbq"
+    },
+    {
+      "source": "Área de mascotas",
+      "label": "Área de mascotas",
+      "icon": "pets"
+    },
+    {
+      "source": "Área verde en Plaza Elevada",
+      "label": "Área verde en plaza elevada",
+      "icon": "terrace"
+    },
+    {
+      "source": "Áreas comunes amobladas con audio y Wifi",
+      "label": "Áreas comunes amobladas con audio y wifi",
+      "icon": "wifi"
+    },
+    {
+      "source": "Áreas verdes",
+      "label": "Áreas verdes",
+      "icon": "garden"
+    },
+    {
+      "source": "Piscina panorámica templada y terrazas panorámicas",
+      "label": "Piscina panorámica templada y terrazas panorámicas",
+      "icon": "pool"
+    }
+  ],
+  "projectConsolidations": {
+    "monjitas-690": {
+      "Piscina panorámica templada": "Piscina templada y terrazas panorámicas",
+      "Quinchos": "Quinchos; cantidad pendiente de confirmación",
+      "Sala gourmet": "Dos salas gourmet",
+      "Cowork": "Cowork abierto y cubículos",
+      "Lounge": "Lounge y patios interiores",
+      "Gimnasio": "Gimnasio y pilates",
+      "Patio de mascotas": "Patio y lavado de mascotas",
+      "Bicicleteros": "Bicicletero con taller"
+    }
+  }
+}

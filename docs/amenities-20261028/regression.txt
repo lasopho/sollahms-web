@@ -1,0 +1,39 @@
+......
+----------------------------------------------------------------------
+Ran 6 tests in 3.220s
+
+OK
+✔ edificio-liverpool: prices, filters and isolated request context (20.29159ms)
+✔ barrio-zenteno: prices, filters and isolated request context (1.203999ms)
+✔ alto-goycolea: prices, filters and isolated request context (1.042887ms)
+✔ edificio-santa-maria: prices, filters and isolated request context (0.883808ms)
+✔ eleuterio-ramirez: prices, filters and isolated request context (0.663186ms)
+✔ costanera-coquimbo-a: prices, filters and isolated request context (0.645971ms)
+✔ costanera-coquimbo-b: prices, filters and isolated request context (1.056487ms)
+✔ selected unit and all contact fields reach the existing destination in isolation (13.270139ms)
+✔ missing identity, invalid RUT and message overflow still fail before transport (0.342585ms)
+✔ switching, clearing and resetting unit context preserves the typed message (1.280354ms)
+✔ all live projects retain a server-recognized identity and canonical origin (79.132989ms)
+✔ explicit commercial stages stay associated with their own published context (7.588542ms)
+✔ call retains all four fields; time is explicitly a preference (0.982356ms)
+✔ obsolete channel preference cannot exclude either contact field (0.30611ms)
+✔ optional goal/message/time may be omitted (0.235063ms)
+✔ all four contact fields and consent are required (0.474844ms)
+✔ server validation and preview protections still reject without sending (2.564112ms)
+✔ an uncertain result cannot be presented as successful delivery (0.635776ms)
+✔ retry keeps identity and payload; changing intent after uncertainty is blocked (8.379761ms)
+✔ bounded message cannot overflow the existing contract (0.523377ms)
+✔ retirement applies to search, all map results and contact contexts, while Sudamericana remains (7.009422ms)
+✔ frozen output retirement preserves other server records and every existing route (26.871236ms)
+✔ real-name characters, diverse email providers and local/international phone formats (6.208429ms)
+✔ each missing or malformed field is rejected by both actual API handlers before transport (23.730116ms)
+✔ correction preserves all four normalized fields in existing destination without PII in acknowledgement (2.218213ms)
+✔ all advisory intents retain the four fields and no obsolete selector can bypass required data (1.856129ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 240.255027

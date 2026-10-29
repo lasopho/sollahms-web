@@ -1,0 +1,16 @@
+/* Shared static amenity system. Geometry follows the approved Plaza reference. */
+.pj-content .am-section > .eyebrow { margin:0 0 .65rem; }
+.pj-content .am-section > h2 { margin:0 0 1.25rem; }
+.pj-content .am-section > p:not(.eyebrow),
+.pj-content .am-section .am-prose { font-family:Inter,sans-serif;font-size:1rem;line-height:1.75;color:var(--s-muted); }
+.pj-content .am-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem 2rem;list-style:none;margin:1.75rem 0;padding:0; }
+.pj-content .am-grid > .am-item { display:flex;align-items:flex-start;gap:.85rem;min-width:0;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--s-green);font:400 1rem/1.6 Inter,sans-serif; }
+.pj-content .am-grid > .am-item::before,.pj-content .am-grid > .am-item::after { content:none;display:none; }
+.pj-content .am-item > .am-icon { display:block;width:26px;height:26px;min-width:26px;flex:0 0 26px;margin:0;color:var(--s-green);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round; }
+.pj-content .am-copy { display:block;min-width:0;overflow-wrap:break-word; }
+.pj-content .am-label { display:block;color:var(--s-green);font:inherit; }
+.pj-content .am-description { display:block;margin-top:.3rem;color:var(--s-muted);font:400 .9rem/1.65 Inter,sans-serif; }
+.pj-content .am-section h3 { margin:1.75rem 0 .75rem;color:var(--s-green);font:600 1.1rem/1.4 Manrope,sans-serif; }
+@media(max-width:900px) { .pj-content .am-grid { grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem 1.5rem; } }
+@media(max-width:520px) { .pj-content .am-grid { grid-template-columns:minmax(0,1fr);gap:1.25rem;margin:1.5rem 0; } }
+@media print { .pj-content .am-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .am-item { break-inside:avoid; } }

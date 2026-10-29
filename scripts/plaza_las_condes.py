@@ -10,6 +10,7 @@ import re
 from pathlib import Path
 from bs4 import BeautifulSoup
 from project_image_labels import apply_image_label_policy
+from project_amenities import apply_amenities, icon
 
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = 'plaza-las-condes'
@@ -25,20 +26,6 @@ def number(value):
 
 def section(id_, eyebrow, title, body):
     return f'<section class="detail-section pj-block" id="{id_}" aria-labelledby="{id_}-heading"><p class="eyebrow">{eyebrow}</p><h2 id="{id_}-heading">{title}</h2>{body}</section>'
-
-def icon(kind):
-    paths = {
-        'social': '<path d="M4 11h16v9H4zM7 11V6h10v5M8 15h8"/>',
-        'roof': '<path d="m3 11 9-7 9 7M6 11v9h12v-9M9 16h6"/>',
-        'pool': '<path d="M3 17q3-3 6 0t6 0t6 0M3 21q3-3 6 0t6 0t6 0M8 14V5q0-3 4-3M14 14V5q0-3 4-3M8 7h6M8 11h6"/>',
-        'coffee': '<path d="M4 8h12v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4zM16 9h2a3 3 0 0 1 0 6h-2M7 3v2M12 3v2"/>',
-        'mail': '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/>',
-        'bike': '<circle cx="6" cy="16" r="4"/><circle cx="18" cy="16" r="4"/><path d="m6 16 5-9 7 9M8 7h5M14 4h3l1 4M6 16h8L9 7"/>',
-        'wash': '<rect x="4" y="2" width="16" height="20" rx="1"/><circle cx="12" cy="14" r="5"/><path d="M7 6h1M11 6h5M8 15q4-4 8 0"/>',
-        'parking': '<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 18V7h4a3 3 0 0 1 0 6H9"/>',
-        'lobby': '<path d="M3 21h18M5 21V3h14v18M9 21V7h6v14M12 13h1"/>',
-    }
-    return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{paths[kind]}</svg>'
 
 def render_content(record, original_gallery):
     overview = section('proyecto', 'El proyecto', 'Vida urbana, con la cordillera de fondo', '''
@@ -126,7 +113,7 @@ def apply_plaza_las_condes(page, project):
         page = page.replace(marker,f'<link rel="stylesheet" href="{CSS}">\n'+marker,1)
     if JS not in page:
         page = page.replace('</head>',f'<script type="module" src="{JS}"></script>\n</head>',1)
-    return apply_image_label_policy(page)
+    return apply_image_label_policy(apply_amenities(page, project))
 
 if __name__ == '__main__':
     file=ROOT/(SLUG+'.html')
