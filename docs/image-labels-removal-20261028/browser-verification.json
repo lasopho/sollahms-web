@@ -1,0 +1,62 @@
+{
+  "candidate": "894ca8b3d6159de43e35328061ca143ca90674c4",
+  "previewDeployment": "dpl_BgXju1fd6KcNSPzRBH4yDfgyvpZv",
+  "browser": "Chrome",
+  "checks": [
+    {
+      "page": "plaza-las-condes",
+      "viewport": "1440 desktop",
+      "checks": [
+        "no labels or empty captions",
+        "12 images after expanding gallery",
+        "unit 213 quotation context retained",
+        "four required commercial fields plus consent",
+        "no page overflow"
+      ]
+    },
+    {
+      "page": "pintor-cicarelli-i",
+      "viewport": "1440 desktop and 390x844 mobile",
+      "checks": [
+        "gallery expands",
+        "original photographs and brochure renders load",
+        "descriptive captions and accessibility text retained",
+        "no page overflow"
+      ]
+    },
+    {
+      "page": "plaza-las-condes",
+      "viewport": "768x1024 tablet and 390x844 mobile",
+      "checks": [
+        "header badge removed",
+        "owner list prices unchanged",
+        "no page overflow",
+        "compact gallery layout"
+      ]
+    },
+    {
+      "page": "edificio-vista-amunategui",
+      "viewport": "1440 desktop",
+      "checks": [
+        "descriptive captions clean",
+        "gallery composition preserved",
+        "no page overflow"
+      ]
+    }
+  ],
+  "realFormSubmissions": 0,
+  "publicChecks": [
+    {
+      "page": "https://sollahms.cl/plaza-las-condes.html#galeria",
+      "viewport": "1440 desktop",
+      "cleanGallery": true,
+      "noOverflow": true
+    },
+    {
+      "page": "https://sollahms.cl/pintor-cicarelli-i.html#galeria",
+      "viewport": "390x844 mobile",
+      "cleanCaptions": true,
+      "noOverflow": true
+    }
+  ]
+}

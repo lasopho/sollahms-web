@@ -41,3 +41,5 @@ Public release IDs, browser observations and public HTTP verification are record
 alongside this file after the candidate passes review.
 
 Visual QA additionally found redundant gallery introductions. Removed 19 generic notice paragraphs. Six project-identification notes retain their tower/stage or mixed-use distinctions without generic render labels. Separate plan/commercial notices remain unchanged.
+
+Published code: `894ca8b3d6159de43e35328061ca143ca90674c4`. Production deployment: `dpl_5c9PEZh5zgpi61DV1CgM91SYRHM7`. All 143 public HTTP checks passed, including all 132 current fiches, preserved non-fiche resources and UF. Desktop/tablet/mobile review is recorded in browser-verification.json. The custom domain resolves to this deployment; main and Vercel protection settings were rechecked unchanged.
