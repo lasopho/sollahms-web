@@ -39,7 +39,7 @@ Modificar los textos en `purchase-stage-content.json` y ejecutar `python scripts
 - Navegación local y anclas, un H1 por guía, IDs únicos, fuentes al final, 8 FAQ y 8 filas comparativas.
 - Publicación mediante paquete congelado: funciones, datos comerciales, ruta retirada Patio Brasil410 y sincronización de nueve registros de servidor conservados. Despliegues automáticos desactivados.
 
-Los resultados de interfaz, capturas y constancia de producción se agregan al cerrar la verificación.
+Interfaz revisada en 1440×1000, 768×1024 y 390×844: sin desbordamiento general; navegación móvil, tabla desplazable por teclado, FAQ, orientador, URL con múltiples modalidades, cuatro resultados inmediatos en las tres vistas, 21 resultados blanco/verde, enlaces a fichas y a la guía, y simulador existente. Se ajustaron legibilidad en tablet, contraste y área de activación de enlaces contextuales. No se enviaron leads reales. Ver `ui-verification.json` y constancia de producción.
 
 ## Fuentes y límites
 
@@ -48,3 +48,7 @@ SERNAC (contratos preparatorios, compromisos de entrega, desistimiento y derecho
 El régimen de anticipos del art. 138 bis tiene alternativas y exclusiones; no se promete restitución automática ante cualquier desistimiento. La recepción municipal pendiente no equivale a entrega inmediata; la norma contempla regímenes específicos de habilitación. El rechazo de crédito requiere revisar causas, contrato y derechos del consumidor.
 
 Las fuentes fueron contrastadas en resultados y documentos oficiales. El acceso automatizado directo de algunas páginas SERNAC agotó el tiempo de respuesta; los enlaces están indexados oficialmente, pero no se afirma comprobación HTTP completa de esos servidores externos.
+
+## Publicación
+
+Producción autorizada tras la verificación. Commit de implementación: `1369697b2dbd1c9d614ec1ad8a62c7cd715c32a7`, rama `codex/purchase-stage-guide-20261029`. Despliegue: `dpl_CwKecmoAPWkxhdbheFWEWfx3nntF`. El paquete de producción debe coincidir con el preview final `dpl_et4bufFsTsv3wmWPp2SC5XhkwKQt`; huella esperada `4471f98caeb988815818d36eb6052fa5baa3059eaab0cc75137ade2eee15244b`. Constancia y comprobaciones públicas en `production.json`. Main permanece sin modificar.
