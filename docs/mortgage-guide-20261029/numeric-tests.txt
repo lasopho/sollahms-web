@@ -1,0 +1,38 @@
+✔ pie, capital y financiamiento conservan el valor de la propiedad (1.242817ms)
+✔ convención nominal mensual y efectiva anual se convierten explícitamente (1.32429ms)
+✔ contraste independiente contra anualidad conocida y resultado publicado CMF (0.273281ms)
+✔ amortización iterativa independiente liquida el capital y concilia intereses (8.433593ms)
+✔ tasa cero y casi cero son estables, sin división por cero (0.185138ms)
+✔ más plazo reduce dividendo pero aumenta intereses; más tasa aumenta ambos (0.208022ms)
+✔ conversión UF/CLP mantiene decimales y no estima valores UF futuros (0.604689ms)
+✔ rechaza datos faltantes, no finitos, tipos implícitos, límites y plazos fraccionarios (0.623057ms)
+✔ Decimal reference: UF3200, nominal4%, 240 payments (1.425712ms)
+✔ Three input modes match; changing financing changes principal (0.390016ms)
+✔ Zero, small and effective rates; full cash (0.368834ms)
+✔ Schedule reconciles principal and interest without intermediate rounding (1.666764ms)
+✔ Unknown is not zero; each cost counted once; initial excludes credit (0.314903ms)
+✔ Rejects unsafe, ambiguous and out-of-range numbers (0.791209ms)
+✔ Context trusts only current catalogue and a unique registered slug (0.338689ms)
+✔ SII exact Chilean decimal/day/month/year and annual table agree (3.592458ms)
+✔ strict parser rejects ambiguous tables, wrong year/month/day, missing values and injected markup (0.803507ms)
+✔ bounded streaming refuses oversized, non-HTML, redirect and invalid UTF-8 sources (20.094576ms)
+✔ single-flight and same-day cache preserve official source allowlist and no paid credentials (3.055331ms)
+✔ success cache expires and a fetch error never makes stale UF current (2.07607ms)
+✔ timeout aborts, releases concurrency and recovers after short failure cooldown (11.340602ms)
+✔ empty/invalid upstream data recovers without poisoning the successful cache (1.026232ms)
+✔ America/Santiago midnight, DST and year boundary invalidate previous-date cache (4.329326ms)
+✔ a request crossing midnight fails closed and the new day can recover immediately (1.263008ms)
+✔ public endpoint is read-only, rejects arbitrary dates/URLs, uncacheable and exposes no upstream error details (2.640006ms)
+✔ endpoint refuses stale/future/invalid values even from an injected resolver (1.641287ms)
+✔ client loads official current UF without bank references and never transmits income or savings (0.595865ms)
+✔ client blocks stale, future, malformed and foreign UF and recovers on a new request (2.836563ms)
+✔ client accepts a verified same-day snapshot during outages, but cannot carry it across midnight (0.567423ms)
+✔ a synchronous fetch failure cannot leave a permanent in-flight lock (0.75191ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 144.327629

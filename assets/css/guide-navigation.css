@@ -1,0 +1,13 @@
+/* The fourth approved menu item uses the existing menu at tablet widths. */
+@media(min-width:768px) and (max-width:1050px){
+ header .hidden.md\:flex{display:none!important}
+ header button[aria-controls="mobile-menu"].md\:hidden{display:inline-flex!important}
+ header #mobile-menu.md\:hidden:not(.hidden){display:block!important}
+ header #mobile-menu.md\:hidden.hidden{display:none!important}
+}
+@media(min-width:768px) and (max-width:1050px){
+ .site-header .desktop-nav{display:none!important}
+ .site-header .menu-toggle{display:inline-flex!important}
+ .site-header .mobile-menu:not([hidden]){display:flex!important;flex-direction:column}
+}
+header [data-guide-nav]{white-space:nowrap}

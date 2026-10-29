@@ -4,7 +4,8 @@ The owner requires these exact homepage header menu labels, in this order, on de
 
 1. `Expertise` → `#expertise` (the homepage services section).
 2. `Asset Portafolio` → `/proyectos.html`.
-3. `Contacto` → `/contacto.html`.
+3. `Guía hipotecaria` → `/guia-hipotecaria.html`.
+4. `Contacto` → `/contacto.html`.
 
 Preserve the literal spelling `Asset Portafolio` in future improvements; do not translate or rename these labels unless the owner explicitly requests it. Preserve the existing advisory button and destinations. This constraint concerns the homepage header navigation; it does not request renaming body or footer copy.
 
@@ -70,3 +71,6 @@ Preserve all three views, capacity search, photos, motion, contact protections a
 
 # Crescer brochures and owner prices (2026-10-29)
 For Don Tomás and Don Rafael, run scripts/crescer_details.py after shared content generators. Preserve data/crescer-commercial.json owner prices with two decimals, data/crescer-brochures.json exact labels and the scoped asset manifest. Don Tomás Total departamento is a distinct metric, never useful/interior/total-with-terrace; Rafael p12 right is contradictory and excluded from surface filters. Keep all 24 full plan pages, original PDF notices, four added images, existing covers/photos, global amenities and unchanged lead transport. The new frozen baseline is docs/crescer-20261029/deployment-files.json; preserve all functions, Patio Brasil410 and the nine-record contact catalogue synchronization. Other129fiches remain unchanged.
+
+# Mortgage education (2026-10-29)
+The owner added Guía hipotecaria to main desktop/mobile navigation and footer. Preserve existing other labels/actions. Use scripts/guide_navigation.py for generated pages. Fiche guide links pass only a verified public project slug; mortgage-guide.mjs resolves current precioDesdeUF and never overwrites commercial data. Content comes from data/mortgage-guide-content.json through scripts/build-mortgage-guide.py; isolated CSS/controller and mortgage-guide-engine.mjs reuse the official UF service. Never persist or transmit calculator values; advisory uses existing contact page and consent. Blank costs are unknown, zero is explicit. No default bank rate, eligibility verdict, CAE/CTC substitute, stale UF conversion or external dependency. Review dated regulations/benefits before publishing; DS42 replacement needs review before 2027-02-28. Use docs/mortgage-guide-20261029/deployment-files.json as latest frozen release baseline; preserve all functions, Patio Brasil410 and nine-row contact catalogue synchronization. Keep main and working branch auto-deployment disabled.

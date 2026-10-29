@@ -1,0 +1,155 @@
+✖ email-only request reaches authorized payload in controlled receiver (8.123694ms)
+✖ phone-only accepts no email and omits reply_to (2.300556ms)
+✖ same key and payload across handler instances is a single received message (1.947786ms)
+✔ empty name (0.741884ms)
+✔ invalid email (0.406611ms)
+✔ invalid phone (0.452059ms)
+✔ missing consent (0.335183ms)
+✔ sensitive field rejected (0.562905ms)
+✔ unknown project (0.448233ms)
+✔ honeypot (0.336796ms)
+✔ fast spam (0.286371ms)
+✔ unknown goal (0.43976ms)
+✔ both contacts (0.287502ms)
+✔ cross-origin request blocked (0.49283ms)
+✖ preview and missing/other delivery configuration never call a provider (0.439621ms)
+✖ provider rejection, missing acknowledgement and timeout cannot report success (0.562415ms)
+✖ input HTML is escaped and no body enters subject (0.547472ms)
+✔ oversized body rejected before transport (0.644759ms)
+✔ client operation survives retries without retaining personal data in storage (12.507279ms)
+✖ project context uses only server-owned published names (0.791659ms)
+✔ real-name characters, diverse email providers and local/international phone formats (6.919771ms)
+✔ each missing or malformed field is rejected by both actual API handlers before transport (30.849835ms)
+✔ correction preserves all four normalized fields in existing destination without PII in acknowledgement (1.959383ms)
+✔ all advisory intents retain the four fields and no obsolete selector can bypass required data (3.882352ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 17
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 195.706823
+
+✖ failing tests:
+
+test at tests/advisory.test.mjs:34:1
+✖ email-only request reaches authorized payload in controlled receiver (8.123694ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/37e7e8efbf4f/mortgage-guide-source/tests/advisory.test.mjs:35:67)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/advisory.test.mjs:38:1
+✖ phone-only accepts no email and omits reply_to (2.300556ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/37e7e8efbf4f/mortgage-guide-source/tests/advisory.test.mjs:39:129)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/advisory.test.mjs:41:1
+✖ same key and payload across handler instances is a single received message (1.947786ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   400,
+  +   400
+  -   200,
+  -   200
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/37e7e8efbf4f/mortgage-guide-source/tests/advisory.test.mjs:43:124)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 400, 400 ],
+    expected: [ 200, 200 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/advisory.test.mjs:48:1
+✖ preview and missing/other delivery configuration never call a provider (0.439621ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 503
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/37e7e8efbf4f/mortgage-guide-source/tests/advisory.test.mjs:49:213)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/advisory.test.mjs:51:1
+✖ provider rejection, missing acknowledgement and timeout cannot report success (0.562415ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 502
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/37e7e8efbf4f/mortgage-guide-source/tests/advisory.test.mjs:52:225)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 502,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/advisory.test.mjs:54:1
+✖ input HTML is escaped and no body enters subject (0.547472ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'payload')
+      at TestContext.<anonymous> (file:///workspace/scratch/37e7e8efbf4f/mortgage-guide-source/tests/advisory.test.mjs:54:242)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/advisory.test.mjs:60:1
+✖ project context uses only server-owned published names (0.791659ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  400 !== 200
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/37e7e8efbf4f/mortgage-guide-source/tests/advisory.test.mjs:60:128)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 400,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
