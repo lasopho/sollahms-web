@@ -66,3 +66,27 @@ No informado significa desconocido: sin ese filtro, el proyecto sigue apareciend
 52 pruebas Node aprobadas cubren filtros, URL, rangos, datos desconocidos, vinculación de modelos, alcance comercial, precios del propietario, mapas, cotización, retiro de Patio Brasil y los cuatro campos obligatorios. Se aprobaron seis pruebas del componente de amenities y tres del registro compartido. Las verificaciones de formularios usan transporte simulado; no se enviaron leads reales.
 
 `preservation.json` verifica 139 archivos idénticos, incluidas las 131 fichas, catálogo/precios, portada y código visual/formularios. `packaging.json` verifica la preservación de todos los demás registros del artefacto, incluidas las funciones, HTTP 410 de Patio Brasil y sincronización de Nollagam. La revisión de navegador y publicación se registra en `responsive.json` y `release.json`.
+
+## Publicación confirmada
+
+Publicado el 29 de octubre de 2026 en [Sollahms — Catálogo inmobiliario](https://sollahms.cl/proyectos.html).
+El despliegue `dpl_24fFPj7gmpr41spEjfj9JpRN3rJY` está READY y asignado a los dominios actuales.
+Vista previa y producción comparten exactamente 1.438 archivos verificados y el artefacto SHA-256
+`1bcee2cbb897c0a850d3a2e5ae6ca7fb9386b34c9dc5bc3acb2e0a3c504c812d`.
+Fuente: commit `ddcc097dd9daebbe26ede8f0383ad435dab83fd6`; rama `codex/advanced-project-filters-20261029`.
+Main se conserva en `86e200ec191b38af355061e21bc0fc1e549cce3b`, con publicación automática desactivada.
+
+Se cotejaron cinco archivos públicos exactos: catálogo HTML, índice de filtros, datos/precios,
+módulo compartido y ficha Plaza Las Condes. Patio Brasil sigue respondiendo HTTP 410.
+La búsqueda pública Santiago + departamento + 2 dormitorios + hasta UF 4.500 + piscina y gimnasio
+devuelve los mismos cuatro proyectos revisados. Las pruebas de interfaz cubren 320/390/768/1440 px,
+regreso desde ficha, tres vistas, filtros OR/AND, superficies tipadas, rangos inválidos, estados vacíos,
+entrega por año, inmobiliarias múltiples, búsqueda textual y apertura del buscador por renta.
+No hubo errores de consola observados ni envíos reales de cotización.
+
+- [Registro de publicación y cotejo público](release.json)
+- [Pruebas de interfaz y responsive](responsive.json)
+- [Cobertura y pendientes por proyecto](coverage.json)
+- [Captura pública de escritorio](public-catalog-desktop.jpg)
+- [Captura pública de móvil](public-catalog-mobile.jpg)
+- [Panel avanzado publicado](public-advanced-filters.jpg)

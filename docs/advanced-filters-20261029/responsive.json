@@ -1,0 +1,118 @@
+{
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "horizontalOverflow": false,
+      "primaryColumns": 3,
+      "advancedColumns": 2
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "horizontalOverflow": false,
+      "panelClosesOnResults": true
+    },
+    {
+      "width": 320,
+      "height": 760,
+      "horizontalOverflow": false,
+      "controlOverflow": [],
+      "primaryColumns": 2,
+      "advancedColumns": 1,
+      "observedCheckboxTargetHeight": 56.13
+    }
+  ],
+  "interactions": [
+    {
+      "case": "Santiago + departamento + 2D + hasta UF4500",
+      "count": 17
+    },
+    {
+      "case": "Previous + piscina OR gimnasio",
+      "count": 12
+    },
+    {
+      "case": "Previous + piscina AND gimnasio",
+      "count": 4,
+      "orderedSlugs": [
+        "vista-portugal",
+        "santa-elena-1670-mbi",
+        "diagonal-vicuna",
+        "matta-016"
+      ],
+      "ownerPrices": [
+        2616,
+        2931,
+        3184,
+        3314
+      ]
+    },
+    {
+      "case": "Same search in cards/list/map",
+      "count": 4,
+      "mapLocated": 4
+    },
+    {
+      "case": "Open Vista Portugal and Back",
+      "filtersPreserved": true,
+      "sort": "price-asc",
+      "view": "list"
+    },
+    {
+      "case": "Concepcion + piscina",
+      "count": 0,
+      "guidanceAndModifyButton": true,
+      "mobilePanelClosed": true
+    },
+    {
+      "case": "Remove Piscina chip",
+      "count": 5
+    },
+    {
+      "case": "Price minimum5000/maximum3000",
+      "count": 0,
+      "rangeMessage": true
+    },
+    {
+      "case": "Keywords piscina Santiago",
+      "count": 16,
+      "urlPersisted": true
+    },
+    {
+      "case": "Delivery2027",
+      "count": 8
+    },
+    {
+      "case": "Casa3D + Interior100..110",
+      "count": 1,
+      "slug": "endemico"
+    },
+    {
+      "case": "Same search with Util100..110",
+      "count": 0
+    },
+    {
+      "case": "Sento OR Leon",
+      "count": 12
+    },
+    {
+      "case": "Capacity form expands",
+      "fieldsAvailable": true,
+      "personalOrFinancialInputsSubmitted": false
+    }
+  ],
+  "consoleErrors": [],
+  "browser": "Connected browser on protected deployment",
+  "automatedTests": {
+    "nodePassed": 52,
+    "amenityPythonPassed": 6,
+    "sharedFeaturePythonPassed": 3
+  },
+  "noLeadsSent": true
+}
