@@ -68,3 +68,12 @@
 .gh-next .gh-kicker,.gh-next .gh-help{color:var(--s-on-dark)}
 
 #gh-results{scroll-margin-top:104px}
+
+/* Final, quiet reference block; no institutional branding or card treatment. */
+.gh-references{padding:40px 0 44px;border-top:1px solid var(--s-line);color:var(--s-muted);font-size:.875rem;line-height:1.7;scroll-margin-top:104px}
+.gh-page .gh-references h2{font-size:1.2rem;letter-spacing:normal;line-height:1.4;margin-bottom:16px}
+.gh-references p{max-width:110ch;margin-bottom:14px}.gh-references a{color:var(--s-green);overflow-wrap:anywhere}
+.gh-reference-list{list-style:none;padding:0;margin:20px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px 32px}
+.gh-reference-list li{min-width:0}.gh-reference-list span{display:block;font-size:.8rem;margin-top:2px}
+.gh-reference-date{font-size:.8rem;margin-bottom:0!important}#herramientas-oficiales{scroll-margin-top:104px}
+@media(max-width:760px){.gh-reference-list{grid-template-columns:1fr;gap:14px}.gh-references{padding-block:32px}}
