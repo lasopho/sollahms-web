@@ -24,7 +24,7 @@ async function styles(url,id){
     const theme=document.querySelector('link[href*="sollahms-theme.css"]');document.head.insertBefore(link,theme);
   });
 }
-export async function createCatalogMap({host,onAlternative}){
+export async function createCatalogMap({host,onAlternative,origin=null}){
   const [L,registry,provider]=await Promise.all([leaflet(),json('/data/project-locations.json'),json('/data/map-provider.json'),styles('/assets/vendor/leaflet-1.9.4/leaflet.css','catalog-leaflet-style'),styles('/assets/css/catalog-map.css','catalog-map-style')]);
   if(!registry.locations||!/^https:\/\/tile\.openstreetmap\.org\/\{z\}\/\{x\}\/\{y\}\.png$/.test(provider.tileUrl))throw Error('map-config');
   host.replaceChildren();host.setAttribute('aria-busy','false');
@@ -67,7 +67,7 @@ export async function createCatalogMap({host,onAlternative}){
     const title=el('h2',p.nombre),location=el('p',[p.comuna,p.region].filter(Boolean).join(' · '),'catalog-location');
     const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type||(filterState.propertyType==='local'?'Comercial':''))){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
     const offer=selectedOffer(p,filterState),amount=el('p',priceFromLabel(offer.value,p.precioDecimales),'catalog-price-value');
-    const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+publicOrigin(location.search,'buscador')+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local')?'&oferta=local':'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
+    const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(location.search,'buscador'))+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local')?'&oferta=local':'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
     detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
     const matches=matchedLabels(p,filterState);if(matches.length){const list=el('ul',undefined,'cf-match-list');list.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))list.append(el('li',label));detail.append(list);}
     if(reveal){map.setView([row.location.lat,row.location.lng],Math.max(15,map.getZoom()),{animate:false});}
