@@ -77,3 +77,7 @@ The owner added Guía hipotecaria to main desktop/mobile navigation and footer. 
 
 # Final mortgage references (2026-10-29)
 The owner requires one quiet «Fuentes y referencias» section at the very end of the guide, immediately before its general footer. Use scripts/mortgage_guide_references.py with data/mortgage-guide-content.json.references; preserve per-topic sourceIds internally but do not render repetitive institutional citations. Keep exact owner attribution/independence copy, dated variable-value sources, and any future legally required individual credit. Own calculations must not be attributed to CMF. New frozen baseline: docs/mortgage-references-20261029/deployment-files.json. This presentation change applies only to the guide; all financial/form scripts and other pages remain unchanged.
+
+
+# Corporate SEO scope (2026-10-29)
+Use data/corporate-seo.json and scripts/corporate_seo.py as the final metadata step for its eight allowlisted pages only. The two educational generators already call it. Preserve existing Organization/WebSite/Service identities on the homepage and reuse their persistent IDs. Never apply the helper to catalogue or fiches; this task explicitly excludes those pages. Keep forms, financial scripts, sources, motion and social artwork intact. Do not add invented sameAs, physical locations, reviews, job vacancies or AI-only markup. See docs/seo-corporate-20261029/README.md. This candidate is preview-only until the owner explicitly authorizes publication; recheck production before promotion.

@@ -1,0 +1,43 @@
+{
+  "reviewedAt": "2026-10-29",
+  "scope": "Corporate and educational pages only; catalogue, fiches and commercial data excluded.",
+  "pages": {
+    "index.html": {"type": "WebPage"},
+    "contacto.html": {
+      "type": "ContactPage", "fragment": "#contact",
+      "description": "Contacta a Sollahms para consultar por una propiedad o recibir orientación inmobiliaria en Chile. Cuéntanos tu interés y coordinaremos el siguiente paso.",
+      "topics": ["Consultas inmobiliarias en Chile"], "service": true
+    },
+    "agenda-asesoria.html": {
+      "type": "ContactPage", "fragment": "#contact",
+      "description": "Solicita asesoría para comprar o invertir en propiedades en Chile. Revisa con Sollahms tus objetivos, ubicaciones y alternativas antes de decidir.",
+      "topics": ["Asesoría para comprar o invertir en propiedades en Chile"], "service": true
+    },
+    "guia-hipotecaria.html": {
+      "type": "WebPage",
+      "title": "Guía hipotecaria en Chile: pie, dividendo y costos | Sollahms",
+      "topics": ["Crédito hipotecario en Chile", "Pie y dividendo", "Tasas, CAE, seguros y gastos operacionales"],
+      "related": ["/comparador-hipotecario.html", "/cuando-comprar-propiedad.html"]
+    },
+    "comparador-hipotecario.html": {
+      "type": "WebPage",
+      "title": "Comparador hipotecario en UF: estima tu dividendo | Sollahms",
+      "description": "Estima tu dividendo hipotecario en UF y compara escenarios de pie, tasa y plazo. Herramienta educativa para evaluar financiamiento en Chile, sin aprobación bancaria.",
+      "topics": ["Simulación de dividendos hipotecarios en UF", "Comparación de escenarios de financiamiento"],
+      "related": ["/guia-hipotecaria.html", "/agenda-asesoria.html"]
+    },
+    "cuando-comprar-propiedad.html": {
+      "type": "WebPage",
+      "topics": ["Compra de vivienda en blanco, en verde y con entrega inmediata en Chile"],
+      "related": ["/guia-hipotecaria.html", "/contacto.html"]
+    },
+    "trabaja-con-nosotros.html": {
+      "type": "ContactPage",
+      "title": "Colabora con Sollahms: inmobiliarias y postulaciones",
+      "topics": ["Colaboración comercial con inmobiliarias", "Postulaciones espontáneas"]
+    },
+    "privacidad.html": {
+      "type": "WebPage", "topics": ["Privacidad y tratamiento de datos personales en Sollahms"]
+    }
+  }
+}
