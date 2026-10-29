@@ -779,13 +779,13 @@
     "comuna": "Coquimbo",
     "region": "Coquimbo",
     "direccion": "Av. Costanera 3300",
-    "estado": "Entrega futura",
-    "entrega": "2027",
+    "estado": "En blanco",
+    "entrega": "Primer semestre de 2027",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": 3789,
+    "precioDesdeUF": 4210,
     "detalleUrl": "/costanera-coquimbo-a.html",
     "amenities": [
       "Hall de acceso controlado",
@@ -796,11 +796,11 @@
       "Quinchos",
       "Cowork"
     ],
-    "descripcionLarga": "Costanera Coquimbo Edificio A es un proyecto de Nollagam ubicado en Av. Costanera 3300, Coquimbo. Sus modelos publicados incluyen 2 dormitorios, 3 dormitorios, con entrega anunciada para 2027. El equipamiento considera hall de acceso controlado, juegos infantiles, plazas y áreas verdes, piscina, salones multiuso.",
+    "descripcionLarga": "Costanera Coquimbo Edificio A se emplaza en Avenida Costanera 3300, frente al borde costero de Peñuelas. Su ubicación permite llegar a la playa cruzando la avenida y conecta con Coquimbo, La Serena y Ruta 5. El edificio de veintidós pisos contempla departamentos de dos y tres dormitorios, terrazas con barandas vidriadas y cocinas full electric. Los planos distinguen superficies según modelo y piso. Las vistas al mar dependen de la orientación, altura y unidad; la entrega estimada corresponde al primer semestre de 2027.",
     "superficieDesdeM2": 61.41,
     "mapQuery": "Av. Costanera 3300, Coquimbo, Chile",
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-28",
       "fuente": "https://nollagam.cl/nuestros-proyectos/costanera-coquimbo-edificio-a/",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -817,10 +817,24 @@
         "superficieDesdeM2",
         "descripcionLarga",
         "nombre"
-      ]
+      ],
+      "fuentePrecios": "data/nollagam-commercial.json",
+      "fuentePlanos": "data/nollagam-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/08bb01c3207cbe3ecb615f03.webp",
-    "imagenAlt": "Imagen oficial de Costanera Coquimbo Edificio A"
+    "imagenAlt": "Fachada de costanera coquimbo a",
+    "preciosPorTipologia": [
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 4210
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 5070
+      }
+    ],
+    "estadoInformado": "En blanco"
   },
   {
     "slug": "costanera-coquimbo-b",
@@ -829,13 +843,13 @@
     "comuna": "Coquimbo",
     "region": "Coquimbo",
     "direccion": "Av. Costanera 3300",
-    "estado": "Entrega futura",
-    "entrega": "2028",
+    "estado": "En blanco",
+    "entrega": "Primer semestre de 2028",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": 3492,
+    "precioDesdeUF": 3880,
     "detalleUrl": "/costanera-coquimbo-b.html",
     "amenities": [
       "Hall de acceso controlado",
@@ -847,11 +861,11 @@
       "Bicicletero",
       "Cowork"
     ],
-    "descripcionLarga": "Costanera Coquimbo Edificio B es un proyecto de Nollagam ubicado en Av. Costanera 3300, Coquimbo. Sus modelos publicados incluyen 2 dormitorios, 3 dormitorios, con entrega anunciada para 2028. El equipamiento considera hall de acceso controlado, juegos infantiles, plazas y áreas verdes, piscina, salones multiuso.",
+    "descripcionLarga": "Costanera Coquimbo Edificio B forma parte del condominio en Avenida Costanera 3300, frente al mar en Peñuelas. La playa, los servicios del sector y la conexión con Coquimbo, La Serena y Ruta 5 acompañan su propuesta residencial. Sus veintidós pisos contemplan departamentos de dos y tres dormitorios con terrazas y cocinas full electric. Cada plano identifica las superficies que corresponden a su piso y modelo. Las vistas al mar varían según unidad; este edificio tiene entrega estimada para el primer semestre de 2028.",
     "superficieDesdeM2": 61.52,
     "mapQuery": "Av. Costanera 3300, Coquimbo, Chile",
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-28",
       "fuente": "https://nollagam.cl/nuestros-proyectos/costanera-coquimbo-edificio-b/",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -868,10 +882,24 @@
         "superficieDesdeM2",
         "descripcionLarga",
         "nombre"
-      ]
+      ],
+      "fuentePrecios": "data/nollagam-commercial.json",
+      "fuentePlanos": "data/nollagam-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/3e0a13aaa6bfac75dba2efad.webp",
-    "imagenAlt": "Imagen oficial de Costanera Coquimbo Edificio B"
+    "imagenAlt": "Fachada de costanera coquimbo b",
+    "preciosPorTipologia": [
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3880
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 5460
+      }
+    ],
+    "estadoInformado": "En blanco"
   },
   {
     "slug": "edificio-ecuador",
@@ -1243,17 +1271,21 @@
     "estado": "Entrega inmediata",
     "entrega": "Inmediata",
     "tipologias": [
+      "1 dormitorio",
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": 2781,
+    "precioDesdeUF": 3090,
     "detalleUrl": "/edificio-santa-maria.html",
-    "amenities": [],
-    "descripcionLarga": "Edificio Santa María es un proyecto de Nollagam ubicado en Capitán Bynon 1277, Independencia. Sus modelos publicados incluyen 2 dormitorios, 3 dormitorios, con entrega inmediata.",
-    "superficieDesdeM2": 47.67,
+    "amenities": [
+      "Estacionamientos",
+      "Bodegas"
+    ],
+    "descripcionLarga": "Edificio Santa María se encuentra en Capitán Bynon 1277, Independencia, junto al entorno de Fermín Vivaceta y Domingo Santa María. Su ubicación permite acceder a Metro Hospitales, transporte público, comercio y servicios, con conexión hacia Autopista Central. Sus doce pisos reúnen departamentos de uno, dos y tres dormitorios, con distintas distribuciones y terrazas. Las cocinas americanas integran el espacio social y los planos permiten comparar opciones de uno o dos baños. El proyecto contempla estacionamientos y bodegas; consulta sus condiciones al cotizar.",
+    "superficieDesdeM2": 33.09,
     "mapQuery": "Capitán Bynon 1277, Independencia, Chile",
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-28",
       "fuente": "https://nollagam.cl/nuestros-proyectos/santa-maria/",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -1270,10 +1302,28 @@
         "superficieDesdeM2",
         "descripcionLarga",
         "nombre"
-      ]
+      ],
+      "fuentePrecios": "data/nollagam-commercial.json",
+      "fuentePlanos": "data/nollagam-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
     },
-    "imagenPrincipal": "/assets/propiedades/catalogo/51485e540d58d3ed72a80492.webp",
-    "imagenAlt": "Imagen oficial de Edificio Santa María"
+    "imagenPrincipal": "/assets/propiedades/nollagam-20261028/edificio-santa-maria/fachada.webp",
+    "imagenAlt": "Fachada de edificio santa maria",
+    "preciosPorTipologia": [
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 3090
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3355
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 4029
+      }
+    ],
+    "estadoInformado": "En recepción final"
   },
   {
     "slug": "plaza-cervantes-b",
@@ -4800,9 +4850,11 @@
     "entrega": "Inmediata",
     "tipologias": [
       "2 dormitorios",
-      "3 dormitorios"
+      "3 dormitorios",
+      "Estudio",
+      "1 dormitorio"
     ],
-    "precioDesdeUF": 3672,
+    "precioDesdeUF": 4151,
     "detalleUrl": "/edificio-liverpool.html",
     "amenities": [
       "Hall de acceso controlado",
@@ -4812,11 +4864,11 @@
       "Quinchos",
       "Bicicletero"
     ],
-    "descripcionLarga": "Edificio Liverpool es un proyecto de Nollagam ubicado en Inglaterra 60, La Florida. Sus modelos publicados incluyen 2 dormitorios, 3 dormitorios, con entrega inmediata. El equipamiento considera hall de acceso controlado, plazas y áreas verdes, piscina, salones multiuso, quinchos.",
-    "superficieDesdeM2": 53.41,
+    "descripcionLarga": "En Inglaterra 60, Liverpool combina un edificio de ocho pisos con la conectividad de La Florida. Su cercanía a Metro Mirador y al eje Vicuña Mackenna facilita el acceso a transporte, comercio, servicios de salud y educación. Las distribuciones documentadas abarcan estudios y departamentos de uno, dos y tres dormitorios. Sus cocinas integradas y terrazas, según modelo, se complementan con piscina, áreas verdes y espacios para compartir. Compara cada plano para elegir la distribución que se ajuste a tu día a día.",
+    "superficieDesdeM2": 27.13,
     "mapQuery": "Inglaterra 60, La Florida, Chile",
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-28",
       "fuente": "https://nollagam.cl/nuestros-proyectos/liverpool/",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -4833,10 +4885,32 @@
         "superficieDesdeM2",
         "descripcionLarga",
         "nombre"
-      ]
+      ],
+      "fuentePrecios": "data/nollagam-commercial.json",
+      "fuentePlanos": "data/nollagam-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
     },
-    "imagenPrincipal": "/assets/propiedades/catalogo/e76b9b4de259af6603696530.webp",
-    "imagenAlt": "Imagen oficial de Edificio Liverpool"
+    "imagenPrincipal": "/assets/propiedades/nollagam-20261028/edificio-liverpool/fachada.webp",
+    "imagenAlt": "Fachada de edificio liverpool",
+    "preciosPorTipologia": [
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 4151
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 4457
+      },
+      {
+        "tipologia": "Estudio",
+        "precioDesdeUF": null
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": null
+      }
+    ],
+    "estadoInformado": "En recepción final"
   },
   {
     "slug": "mirador-la-florida",
@@ -4885,24 +4959,32 @@
     "estado": "Entrega inmediata",
     "entrega": "Inmediata",
     "tipologias": [
-      "2 dormitorios"
+      "Estudio",
+      "1 dormitorio",
+      "2 dormitorios",
+      "3 dormitorios"
     ],
-    "precioDesdeUF": 2304,
+    "precioDesdeUF": 2264,
     "amenities": [
       "Hall de acceso controlado",
       "Juegos infantiles",
-      "Salones multiuso",
-      "Quinchos",
-      "Bicicletero"
+      "Bicicletero",
+      "Dos quinchos",
+      "Dos salas multiuso",
+      "Sala de estudio",
+      "Lavandería",
+      "Estacionamientos de visitas",
+      "Estacionamientos",
+      "Bodegas"
     ],
     "mapQuery": "Goycolea 720, La Cisterna, Chile",
-    "descripcionLarga": "Alto Goycolea es un proyecto de Nollagam ubicado en Goycolea 720, La Cisterna. Sus modelos publicados incluyen 2 dormitorios, con entrega inmediata. El equipamiento considera hall de acceso controlado, juegos infantiles, salones multiuso, quinchos, bicicletero.",
-    "superficieDesdeM2": 45.83,
-    "imagenPrincipal": "/assets/propiedades/catalogo/b58e45ae883d3045335c933c.webp",
-    "imagenAlt": "Imagen oficial de Alto Goycolea",
+    "descripcionLarga": "Alto Goycolea se emplaza en Goycolea 720, en La Cisterna, próximo al eje Gran Avenida y Vespucio Sur. La cercanía a Metro La Cisterna y su estación intermodal conecta el proyecto con distintas opciones de transporte y servicios. El edificio de doce pisos ofrece distribuciones desde estudio hasta tres dormitorios documentadas en sus planos. Dos salas multiuso, sala de estudio, lavandería y juegos infantiles complementan la vida cotidiana. Los modelos permiten comparar cocinas integradas, dormitorios y terrazas con superficies propias de cada distribución.",
+    "superficieDesdeM2": 23.31,
+    "imagenPrincipal": "/assets/propiedades/nollagam-20261028/alto-goycolea/fachada.webp",
+    "imagenAlt": "Fachada de alto goycolea",
     "detalleUrl": "/alto-goycolea.html",
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-28",
       "fuente": "https://nollagam.cl/nuestros-proyectos/alto-goycolea/",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -4919,8 +5001,30 @@
         "superficieDesdeM2",
         "descripcionLarga",
         "nombre"
-      ]
-    }
+      ],
+      "fuentePrecios": "data/nollagam-commercial.json",
+      "fuentePlanos": "data/nollagam-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
+    },
+    "preciosPorTipologia": [
+      {
+        "tipologia": "Estudio",
+        "precioDesdeUF": 2264
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 2601
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 2886
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": null
+      }
+    ],
+    "estadoInformado": "En recepción final"
   },
   {
     "slug": "eleuterio-ramirez",
@@ -4932,11 +5036,11 @@
     "estado": "Entrega inmediata",
     "entrega": "Inmediata",
     "tipologias": [
-      "1 dormitorio",
       "2 dormitorios",
-      "3 dormitorios"
+      "3 dormitorios",
+      "1 dormitorio"
     ],
-    "precioDesdeUF": 2340,
+    "precioDesdeUF": 3825,
     "detalleUrl": "/eleuterio-ramirez.html",
     "amenities": [
       "Hall de acceso controlado",
@@ -4947,11 +5051,11 @@
       "Cowork",
       "Bicicletero"
     ],
-    "descripcionLarga": "Eleuterio Ramírez es un proyecto de Nollagam ubicado en Eleuterio Ramírez 951, San Bernardo. Sus modelos publicados incluyen 1 dormitorio, 2 dormitorios, 3 dormitorios, con entrega inmediata. El equipamiento considera hall de acceso controlado, juegos infantiles, piscina, salones multiuso, quinchos.",
+    "descripcionLarga": "Condominio Eleuterio Ramírez está ubicado en Eleuterio Ramírez 951, San Bernardo. Un edificio de nueve pisos cercano a las estaciones de tren San Bernardo y Maestranza, al centro de la comuna, comercio, servicios y espacios culturales. Sus modelos de uno, dos y tres dormitorios permiten comparar distintas superficies y distribuciones. Algunas unidades de primer piso incorporan jardín privado, identificado por separado en sus planos. La piscina, los quinchos, el cowork y las áreas de encuentro amplían las opciones para disfrutar del condominio.",
     "superficieDesdeM2": 33.74,
     "mapQuery": "Eleuterio Ramírez 951, San Bernardo, Chile",
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-28",
       "fuente": "https://nollagam.cl/nuestros-proyectos/eleuterio-ramirez/",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -4968,10 +5072,28 @@
         "superficieDesdeM2",
         "descripcionLarga",
         "nombre"
-      ]
+      ],
+      "fuentePrecios": "data/nollagam-commercial.json",
+      "fuentePlanos": "data/nollagam-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
     },
-    "imagenPrincipal": "/assets/propiedades/catalogo/8f7588296a00a16b5be00dd2.webp",
-    "imagenAlt": "Imagen oficial de Eleuterio Ramírez"
+    "imagenPrincipal": "/assets/propiedades/catalogo/068433335026e06c76cac5c5.webp",
+    "imagenAlt": "Fachada de eleuterio ramirez",
+    "preciosPorTipologia": [
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3825
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 4400
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": null
+      }
+    ],
+    "estadoInformado": "En recepción final"
   },
   {
     "slug": "barrio-zenteno",
@@ -4985,23 +5107,26 @@
     "tipologias": [
       "1 dormitorio",
       "2 dormitorios",
-      "3 dormitorios"
+      "3 dormitorios",
+      "Estudio"
     ],
-    "precioDesdeUF": 2525,
+    "precioDesdeUF": 2784,
     "amenities": [
       "Hall de acceso controlado",
       "Salones multiuso",
       "Quinchos",
-      "Bicicletero"
+      "Bicicletero",
+      "Estacionamientos",
+      "Bodegas"
     ],
     "mapQuery": "Zenteno 1276, Santiago, Chile",
-    "descripcionLarga": "Barrio Zenteno es un proyecto de Nollagam ubicado en Zenteno 1276, Santiago. Sus modelos publicados incluyen 1 dormitorio, 2 dormitorios, 3 dormitorios, con entrega inmediata. El equipamiento considera hall de acceso controlado, salones multiuso, quinchos, bicicletero.",
-    "superficieDesdeM2": 31.12,
-    "imagenPrincipal": "/assets/propiedades/catalogo/6f9c920af43163c2477cb62a.webp",
-    "imagenAlt": "Imagen oficial de Barrio Zenteno",
+    "descripcionLarga": "Barrio Zenteno se ubica en Zenteno 1276, en el barrio Matta de Santiago. Un edificio de siete pisos cercano a Metro Matta, Metro Parque O’Higgins y al transporte del eje Matta, con comercio, supermercados, educación y áreas verdes en su entorno. El proyecto reúne estudios y departamentos de uno, dos y tres dormitorios. Las cocinas americanas integran los espacios de uso diario; sus distintos planos permiten comparar superficies, terrazas y alternativas de uno o dos baños. Incluye estacionamientos y bodegas, cuyas condiciones se consultan por separado.",
+    "superficieDesdeM2": 21.61,
+    "imagenPrincipal": "/assets/propiedades/nollagam-20261028/barrio-zenteno/fachada.webp",
+    "imagenAlt": "Fachada de barrio zenteno",
     "detalleUrl": "/barrio-zenteno.html",
     "verificacion": {
-      "fecha": "2026-10-09",
+      "fecha": "2026-10-28",
       "fuente": "https://nollagam.cl/nuestros-proyectos/barrio-zenteno/",
       "estadoFuente": "verified",
       "camposVerificados": [
@@ -5018,8 +5143,30 @@
         "superficieDesdeM2",
         "descripcionLarga",
         "nombre"
-      ]
-    }
+      ],
+      "fuentePrecios": "data/nollagam-commercial.json",
+      "fuentePlanos": "data/nollagam-brochures.json",
+      "disponibilidad": "Por confirmar; planos documentales"
+    },
+    "preciosPorTipologia": [
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 2784
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3202
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 3508
+      },
+      {
+        "tipologia": "Estudio",
+        "precioDesdeUF": null
+      }
+    ],
+    "estadoInformado": "En recepción final"
   },
   {
     "slug": "urban-la-florida",

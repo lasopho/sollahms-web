@@ -1,0 +1,46 @@
+✔ all 131 source records and original ordering survive without mutation or duplicates (4.868745ms)
+✔ both numeric directions preserve stable ties, decimals and unknown prices last (3.357475ms)
+✔ search covers names, communes and developers with accent-insensitive matching (11.275912ms)
+✔ combined filters and maximum price exclude unavailable amounts, never use zero (0.556005ms)
+✔ mixed and commercial offers keep the exact selected typology and decimal amount (1.13164ms)
+✔ facts distinguish reception state from delivery and do not fill absent data (0.47965ms)
+✔ return state is bounded to catalogue values; view persists only as an enum (2.731213ms)
+✔ decimal and K verifier branches; canonical and display formats (1.533133ms)
+✔ both server routes receive normalized required RUT in authorized email body only (18.875751ms)
+✔ server invalid RUT is rejected without transport, value echo or loss of caller data (6.112754ms)
+✔ quote and call require RUT and retain both contact channels (1.177399ms)
+✔ mortgage receives RUT with its existing simulation and never launches CRM or a credit lookup (8.131197ms)
+✔ RUT does not bypass consent, origin, preview, key or channel protections (7.78019ms)
+✔ retries retain fingerprint without retaining raw personal fields in browser storage (9.877851ms)
+✔ field normalizes on blur, flags invalid verifier and clears errors while editing (0.495895ms)
+✔ edificio-liverpool: prices, filters and isolated request context (30.208808ms)
+✔ barrio-zenteno: prices, filters and isolated request context (0.932691ms)
+✔ alto-goycolea: prices, filters and isolated request context (0.489806ms)
+✔ edificio-santa-maria: prices, filters and isolated request context (0.536136ms)
+✔ eleuterio-ramirez: prices, filters and isolated request context (0.582936ms)
+✔ costanera-coquimbo-a: prices, filters and isolated request context (0.388594ms)
+✔ costanera-coquimbo-b: prices, filters and isolated request context (0.642666ms)
+✔ all live projects retain a server-recognized identity and canonical origin (88.821732ms)
+✔ explicit commercial stages stay associated with their own published context (5.939038ms)
+✔ call retains all four fields; time is explicitly a preference (0.537808ms)
+✔ obsolete channel preference cannot exclude either contact field (0.160562ms)
+✔ optional goal/message/time may be omitted (1.059421ms)
+✔ all four contact fields and consent are required (0.362985ms)
+✔ server validation and preview protections still reject without sending (1.355807ms)
+✔ an uncertain result cannot be presented as successful delivery (0.482415ms)
+✔ retry keeps identity and payload; changing intent after uncertainty is blocked (8.625184ms)
+✔ bounded message cannot overflow the existing contract (0.516115ms)
+✔ retirement applies to search, all map results and contact contexts, while Sudamericana remains (16.557077ms)
+✔ frozen output retirement preserves other server records and every existing route (19.03485ms)
+✔ real-name characters, diverse email providers and local/international phone formats (5.782217ms)
+✔ each missing or malformed field is rejected by both actual API handlers before transport (23.030483ms)
+✔ correction preserves all four normalized fields in existing destination without PII in acknowledgement (2.833017ms)
+✔ all advisory intents retain the four fields and no obsolete selector can bypass required data (1.890301ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 247.54747

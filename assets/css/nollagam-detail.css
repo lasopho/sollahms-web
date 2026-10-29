@@ -1,0 +1,24 @@
+/* Scoped additions; shared hero, gradient, motion and forms keep their owners. */
+[data-nollagam-detail] .ng-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px}
+[data-nollagam-detail] .ng-type,[data-nollagam-detail] .ng-plan{background:var(--s-white);border:1px solid var(--s-line);border-radius:var(--s-radius,8px);padding:24px;min-width:0}
+[data-nollagam-detail] .ng-type{display:flex;flex-direction:column;gap:8px}
+[data-nollagam-detail] .ng-type h3,[data-nollagam-detail] .ng-plan h3{margin:0 0 8px}
+[data-nollagam-detail] .ng-type p{margin:0;color:var(--s-muted)}
+[data-nollagam-detail] .ng-price{font-family:Manrope,Arial,sans-serif;font-size:1.55rem;line-height:1.4;margin:8px 0;color:var(--s-green)}
+[data-nollagam-detail] .ng-type .button{margin-top:auto;text-align:center;white-space:normal}
+[data-nollagam-detail] .ng-note{font-size:.85rem;color:var(--s-muted);margin-top:16px;max-width:85ch}
+[data-nollagam-detail] .ng-plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
+[data-nollagam-detail] .ng-plan a.ng-plan-image{display:block;background:var(--s-white);border:1px solid var(--s-line);border-radius:var(--s-radius,8px)}
+[data-nollagam-detail] .ng-plan img{display:block;object-fit:contain;width:100%;height:auto;max-height:none;transform:none}
+[data-nollagam-detail] .ng-plan dl{display:grid;grid-template-columns:1fr auto;gap:4px 16px;margin:16px 0}
+[data-nollagam-detail] .ng-plan dt{color:var(--s-muted);font-size:.88rem}
+[data-nollagam-detail] .ng-plan dd{margin:0;text-align:right;font-weight:600}
+[data-nollagam-detail] .ng-plan .ng-model-ref{font-size:.8rem;color:var(--s-muted);overflow-wrap:anywhere}
+[data-nollagam-detail] .ng-plan-group{scroll-margin-top:calc(var(--pj-header-height,80px) + 80px);margin:16px 0}
+[data-nollagam-detail] .ng-plan-group>summary{font-family:Manrope,Arial,sans-serif;font-weight:700;padding:20px 0;cursor:pointer;border-bottom:1px solid var(--s-line)}
+[data-nollagam-detail] .ng-selection{padding:16px;border:1px solid var(--s-line);background:var(--s-soft);border-radius:var(--s-radius,8px);margin:16px 0}
+[data-nollagam-detail] .ng-selection p{margin-bottom:8px;font-weight:600}
+[data-nollagam-detail] .ng-selection button{background:var(--s-white);border:1px solid var(--s-field-line);color:var(--s-green);padding:8px 12px;border-radius:var(--s-radius,8px);cursor:pointer;min-height:44px}
+@media(max-width:960px){[data-nollagam-detail] .ng-types{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){[data-nollagam-detail] .ng-types,[data-nollagam-detail] .ng-plan-grid{grid-template-columns:1fr;gap:16px}[data-nollagam-detail] .ng-type,[data-nollagam-detail] .ng-plan{padding:20px}[data-nollagam-detail] .ng-plan dd{font-size:.9rem}}
+@media print{[data-nollagam-detail] .ng-plan-group::details-content{content-visibility:visible}}
