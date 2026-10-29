@@ -1,49 +1,21 @@
-import {priceFromLabel,normalize,validPrice,stages,projectStates,selectedOffer,projectFacts,filterAndSort,validFilterState,safeReturnFilters,validView,VIEW_KEY,FILTER_KEY,SESSION_KEY} from './catalog-model.mjs?v=20261029-structure-1';
-
+import {priceFromLabel,validPrice,projectOffer as selectedOffer,projectFacts,filterAndSort,VIEW_KEY} from './catalog-model.mjs?v=20261029-filters-1';
+import {createFilterControls} from './catalog-filter-controls.mjs?v=20261029-filters-1';
+import {defaults,matchedLabels} from './catalog-filter-engine.mjs?v=20261029-filters-1';
 const $=id=>document.getElementById(id);
-const controls={search:$('search'),assetType:$('asset-type'),region:$('region'),commune:$('commune'),state:$('state'),maxPriceInput:$('max-price'),sortOrder:$('sort-order')};
-const grid=$('project-grid'),form=$('catalog-filters'),count=$('project-count'),message=$('catalog-message');
+const controls={assetType:$('asset-type'),sortOrder:$('sort-order')};
+const grid=$('project-grid'),count=$('project-count'),message=$('catalog-message');
 const viewButtons=[...document.querySelectorAll('[data-catalog-view]')];
-let projects=[],capacitySearch=null,view='cards',mapInstance=null,mapPromise=null,mapResults=[];
+let projects=[],capacitySearch=null,view='cards',mapInstance=null,mapPromise=null,mapResults=[],filterControls=null;
 const mapHost=$('catalog-map');
 const element=(tag,text,classes)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(classes)e.className=classes;return e;};
-const formatPrice=value=>new Intl.NumberFormat('es-CL',{minimumFractionDigits:Number.isInteger(value)?0:2,maximumFractionDigits:2}).format(value);
-const values=()=>Object.fromEntries(Object.entries(controls).map(([key,control])=>[key,control.value]));
-function appendOptions(select,values){
-  const seen=new Set();
-  values.filter(v=>typeof v==='string'&&v.length).sort((a,b)=>a.localeCompare(b,'es-CL')).forEach(value=>{
-    if(seen.has(normalize(value)))return;seen.add(normalize(value));select.append(new Option(value,value));
-  });
-}
-function updateCommunes(){
-  const selected=controls.commune.value;controls.commune.replaceChildren(new Option('Todas las comunas',''));
-  appendOptions(controls.commune,projects.filter(p=>!controls.region.value||p.region===controls.region.value).map(p=>p.comuna));
-  if([...controls.commune.options].some(o=>o.value===selected))controls.commune.value=selected;
-}
-function restore(){
-  let saved,preferred;
-  try{saved=history.state?.[FILTER_KEY];preferred=history.state?.[VIEW_KEY];}catch{}
-  if(!validFilterState(saved))try{saved=JSON.parse(sessionStorage.getItem(SESSION_KEY));}catch{}
-  if(validFilterState(saved)){
-    const set=(key,fallback='')=>{const c=controls[key];c.value=[...c.options].some(o=>o.value===saved[key])?saved[key]:fallback;};
-    controls.search.value=saved.search;set('assetType');set('region');updateCommunes();set('commune');set('state');controls.maxPriceInput.value=saved.maxPriceInput;set('sortOrder','original');
-    $('catalog-more').open=!!(controls.assetType.value||controls.state.value);
-  }
-  if(!validView(preferred))try{preferred=localStorage.getItem(VIEW_KEY);}catch{}
-  view=validView(preferred)?preferred:'cards';applyView();
-}
-function remember(){
-  const state={version:1,...values()};
-  try{const previous=history.state;const next=previous&&typeof previous==='object'&&!Array.isArray(previous)?{...previous}:{};
-    if(validFilterState(state))next[FILTER_KEY]=state;else delete next[FILTER_KEY];next[VIEW_KEY]=view;history.replaceState(next,'');}catch{}
-  try{const safe=safeReturnFilters(state,projects);if(safe)sessionStorage.setItem(SESSION_KEY,JSON.stringify(safe));else sessionStorage.removeItem(SESSION_KEY);}catch{}
-}
+const values=()=>filterControls?.values()??defaults();
+const remember=()=>filterControls?.remember();
 function ensureMap(){
-  if(mapInstance){mapInstance.show();mapInstance.update(mapResults,{assetType:controls.assetType.value});return;}
+  if(mapInstance){mapInstance.show();mapInstance.update(mapResults,{assetType:controls.assetType.value,filters:values()});return;}
   if(mapPromise)return;
   mapHost.setAttribute('aria-busy','true');mapHost.replaceChildren(element('p','Cargando mapa…','catalog-map-status'));
-  mapPromise=import('./catalog-map.mjs?v=20261029-structure-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
-    mapInstance=instance;if(view==='map'){instance.show();instance.update(mapResults,{assetType:controls.assetType.value});}else instance.hide();
+  mapPromise=import('./catalog-map.mjs?v=20261029-filters-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost})).then(instance=>{
+    mapInstance=instance;if(view==='map'){instance.show();instance.update(mapResults,{assetType:controls.assetType.value,filters:values()});}else instance.hide();
   }).catch(error=>{
     mapHost.setAttribute('aria-busy','false');const note=element('p','El mapa no pudo cargar. Puedes seguir explorando todos los resultados en Tarjetas o Listado.');note.setAttribute('role','status');
     const fallback=element('button','Continuar en Listado','catalog-text-button');fallback.type='button';fallback.addEventListener('click',()=>viewButtons.find(b=>b.dataset.catalogView==='list').click());mapHost.replaceChildren(note,fallback);
@@ -76,10 +48,12 @@ function card(project){
   summary.append(identity);
   const facts=projectFacts(project,controls.assetType.value);
   if(facts.length){const dl=element('dl',undefined,'catalog-facts');for(const fact of facts){const row=element('div');row.append(element('dt',fact.label),element('dd',fact.value));dl.append(row);}summary.append(dl);}
+  const matches=matchedLabels(project,values());
+  if(matches.length){const badges=element('ul',undefined,'cf-match-list');badges.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))badges.append(element('li',label));if(matches.length>3)badges.append(element('li','+'+(matches.length-3)+' coincidencias'));summary.append(badges);}
   group.append(cover,summary);article.append(group);
   // Action area is deliberately outside the opacity group; finance controls stay static too.
   const body=element('div',undefined,'catalog-card-body');body.dataset.scrollStatic='';
-  const actions=element('div',undefined,'catalog-actions'),price=element('div',undefined,'catalog-price');const offer=selectedOffer(project,controls.assetType.value);
+  const actions=element('div',undefined,'catalog-actions'),price=element('div',undefined,'catalog-price');const offer=selectedOffer(project);
   if(validPrice(offer.value)){
     price.append(element('p',priceFromLabel(offer.value),'catalog-price-value'));
     if(offer.typology)price.append(element('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));
@@ -99,41 +73,29 @@ function card(project){
   }
   return article;
 }
-function appliedFilters(){
-  const container=$('applied-filters');container.replaceChildren();
-  const labels={search:'Búsqueda',assetType:'Tipo',region:'Región',commune:'Comuna',state:'Estado',maxPriceInput:'Máximo UF'};
-  for(const [key,label] of Object.entries(labels))if(controls[key].value){
-    const button=element('button',label+': '+controls[key].value+' ×','catalog-filter-tag');button.type='button';button.setAttribute('aria-label','Quitar filtro '+label+': '+controls[key].value);
-    button.addEventListener('click',()=>{controls[key].value='';if(key==='region')updateCommunes();render();controls[key].focus({preventScroll:true});});container.append(button);
-  }
-  container.hidden=!container.children.length;
-  const active=Number(!!controls.assetType.value)+Number(!!controls.state.value);$('catalog-more-count').textContent=active?' ('+active+')':'';
-}
 function render(){
   const sorted=filterAndSort(projects,values());
   if(controls.sortOrder.value==='original')capacitySearch?.sortProjects(sorted);
   mapResults=sorted;
-  if(view==='map'){grid.replaceChildren();if(mapInstance)mapInstance.update(sorted,{assetType:controls.assetType.value});else ensureMap();}
+  if(view==='map'){grid.replaceChildren();if(mapInstance)mapInstance.update(sorted,{assetType:controls.assetType.value,filters:values()});else ensureMap();}
   else grid.replaceChildren(...sorted.map(card));
   count.textContent=sorted.length===projects.length?projects.length+' proyectos':sorted.length+' de '+projects.length+' proyectos';
-  message.textContent=sorted.length?'':'No encontramos propiedades con esos filtros. Prueba otra ubicación o amplía el precio máximo.';
+  message.textContent=filterControls?.issue()||(sorted.length?'':'No encontramos coincidencias documentadas con esta combinación. Puedes quitar una característica, ampliar el rango o modificar la ubicación.');
   $('catalog-feedback').hidden=!!sorted.length;$('empty-reset').hidden=!!sorted.length;
-  appliedFilters();remember();
+  filterControls?.updateCount(sorted.length);remember();
 }
-function clearFilters(){form.reset();updateCommunes();$('catalog-more').open=false;render();controls.search.focus({preventScroll:true});}
-form.addEventListener('submit',e=>e.preventDefault());
-controls.search.addEventListener('input',render);controls.maxPriceInput.addEventListener('input',render);
-controls.region.addEventListener('change',()=>{updateCommunes();render();});
-for(const key of ['assetType','commune','state','sortOrder'])controls[key].addEventListener('change',render);
-$('clear-filters').addEventListener('click',clearFilters);$('empty-reset').addEventListener('click',clearFilters);
 async function load(){
   try{
     const response=await fetch('/data/proyectos.json',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('catalogue unavailable');
     const data=await response.json();if(!Array.isArray(data)||new Set(data.map(p=>p.slug)).size!==data.length)throw Error('catalogue identity');
     data.forEach(project=>{if(!project||typeof project.slug!=='string'||typeof project.nombre!=='string'||!/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl))throw Error('catalogue identity');});
-    projects=data;appendOptions(controls.region,projects.map(p=>p.region));appendOptions(controls.state,projects.flatMap(projectStates));updateCommunes();restore();render();
+    let index={projects:{},filters:[],typologies:[]};
+    try{const response=await fetch('/data/catalog-facets.json?v=20261029-filters-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
+    catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Los filtros por características no pudieron cargar. Puedes seguir buscando por ubicación, nombre y precio.';}
+    projects=data.map(p=>({...p,_facets:index.projects[p.slug]??{assetTypes:p.tiposActivos??[p.tipoActivo].filter(Boolean),states:[p.estado].filter(Boolean)}}));
+    filterControls=createFilterControls({projects,index,onChange:render,getView:()=>view,setView:next=>{view=next;applyView();}});applyView();render();
     $('catalog-static-directory').hidden=true;
-    [...Object.values(controls),$('clear-filters'),...viewButtons].forEach(c=>c.disabled=false);
+    viewButtons.forEach(c=>c.disabled=false);
     import('/assets/js/purchase-capacity-ui.mjs').then(({initializeCapacitySearch})=>{capacitySearch=initializeCapacitySearch({projects,onChange:render});$('capacity-toggle').disabled=false;}).catch(()=>{$('capacity-summary').textContent='El buscador financiero no pudo cargar. Puedes seguir utilizando los filtros del catálogo.';});
   }catch(error){
     grid.replaceChildren();count.textContent='';$('catalog-feedback').hidden=false;$('empty-reset').hidden=true;

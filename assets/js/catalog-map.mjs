@@ -1,4 +1,5 @@
-import {priceFromLabel,selectedOffer,projectFacts,validPrice} from './catalog-model.mjs?v=20261029-structure-1';
+import {matchedLabels,defaults} from './catalog-filter-engine.mjs?v=20261029-filters-1';
+import {priceFromLabel,projectOffer as selectedOffer,projectFacts,validPrice} from './catalog-model.mjs?v=20261029-filters-1';
 import {locateProjects,locationGroups,clusterLocations,validMapState,MAP_STATE_KEY} from './catalog-map-model.mjs';
 const el=(tag,text,classes)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(classes)node.className=classes;return node;};
 const price=value=>new Intl.NumberFormat('es-CL',{maximumFractionDigits:2,minimumFractionDigits:Number.isInteger(value)?0:2}).format(value);
@@ -50,7 +51,7 @@ export async function createCatalogMap({host,onAlternative}){
   const tiles=L.tileLayer(provider.tileUrl,{attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',maxZoom:19,keepBuffer:0,updateWhenIdle:true,updateWhenZooming:false,noWrap:true,referrerPolicy:'strict-origin-when-cross-origin'}).addTo(map);
   tiles.on('tileerror',()=>{tileError.hidden=false;});
   const markers=L.layerGroup().addTo(map);
-  let rows=[],locations=[],selected=null,type='',initial=true,active=true,currentKey='',restored=null;
+  let rows=[],locations=[],selected=null,type='',initial=true,active=true,currentKey='',restored=null,filterState=defaults();
   try{const v=JSON.parse(sessionStorage.getItem(MAP_STATE_KEY));if(validMapState(v))restored=v;}catch{}
   function remember(){if(!map._loaded)return;const c=map.getCenter(),v={version:1,lat:c.lat,lng:c.lng,zoom:map.getZoom(),selected};if(validMapState(v))try{sessionStorage.setItem(MAP_STATE_KEY,JSON.stringify(v));}catch{}}
   function togglePan(enabled){enabled?map.dragging.enable():map.dragging.disable();panToggle.setAttribute('aria-pressed',String(enabled));panToggle.textContent=enabled?'Desactivar movimiento del mapa':'Activar movimiento del mapa';canvas.classList.toggle('map-pan-enabled',enabled);}
@@ -64,9 +65,10 @@ export async function createCatalogMap({host,onAlternative}){
     const figure=el('div',undefined,'catalog-map-image');if(p.imagenPrincipal){const image=el('img');image.src=p.imagenPrincipal;image.alt=p.imagenAlt||'Imagen del proyecto '+p.nombre;image.width=480;image.height=300;image.decoding='async';image.addEventListener('error',()=>figure.replaceChildren(el('span','Imagen no disponible')),{once:true});figure.append(image);}
     const title=el('h2',p.nombre),location=el('p',[p.comuna,p.region].filter(Boolean).join(' · '),'catalog-location');
     const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type)){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
-    const offer=selectedOffer(p,type),amount=el('p',priceFromLabel(offer.value),'catalog-price-value');
+    const offer=selectedOffer(p),amount=el('p',priceFromLabel(offer.value),'catalog-price-value');
     const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl;link.setAttribute('aria-label','Ver ficha de '+p.nombre);
     detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
+    const matches=matchedLabels(p,filterState);if(matches.length){const list=el('ul',undefined,'cf-match-list');list.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))list.append(el('li',label));detail.append(list);}
     if(reveal){map.setView([row.location.lat,row.location.lng],Math.max(15,map.getZoom()),{animate:false});}
     redraw();remember();
   }
@@ -100,7 +102,7 @@ export async function createCatalogMap({host,onAlternative}){
   select.addEventListener('change',()=>{nearby.hidden=true;showSelection(select.value,{reveal:true});});
   map.on('moveend',()=>{redraw();remember();});
   function update(projects,options={}){
-    type=options.assetType||'';const result=locateProjects(projects,registry);rows=result.located;locations=locationGroups(rows);
+    type=options.assetType||'';filterState=options.filters??defaults();const result=locateProjects(projects,registry);rows=result.located;locations=locationGroups(rows);
     const key=projects.map(p=>p.slug).join('|')+'|'+type;
     status.textContent=rows.length+' de '+projects.length+' resultados disponibles en el mapa';
     note.textContent=result.pending.length?result.pending.length+' '+(result.pending.length===1?'proyecto conserva':'proyectos conservan')+' su ficha en Tarjetas y Listado. Sus coordenadas están pendientes de verificación.':'';note.hidden=!result.pending.length;

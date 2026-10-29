@@ -1,0 +1,37 @@
+<form id="catalog-filters" role="search" aria-label="Filtros del catálogo">
+  <div class="cf-search"><label for="search">Busca tu próximo proyecto</label><input id="search" type="search" class="catalog-control" placeholder="Nombre, comuna, inmobiliaria o característica" maxlength="200" autocomplete="off" disabled></div>
+  <details id="catalog-options" class="cf-options" open>
+    <summary>Filtros<span id="catalog-filter-count"></span></summary>
+    <div class="catalog-filters cf-primary">
+      <div><label for="region">Región</label><select id="region" class="catalog-control" disabled><option value="">Todas</option></select></div>
+      <div><label for="commune">Comuna</label><select id="commune" class="catalog-control" disabled><option value="">Todas</option></select></div>
+      <div><label for="property-type">Tipo de propiedad</label><select id="property-type" class="catalog-control" disabled><option value="">Todas</option></select></div>
+      <div><label for="bedrooms">Dormitorios</label><select id="bedrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
+      <fieldset class="cf-price"><legend>Precio desde del proyecto · UF</legend><div class="cf-range"><div><label for="min-price">Mínimo UF</label><input id="min-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin mínimo" disabled></div><div><label for="max-price">Máximo UF</label><input id="max-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin máximo" disabled></div></div></fieldset>
+      <div><label for="delivery">Entrega</label><select id="delivery" class="catalog-control" disabled><option value="">Cualquier entrega</option></select></div>
+    </div>
+    <p class="cf-hint">El precio desde corresponde al proyecto. El valor y la disponibilidad de cada tipología se confirman al cotizar.</p>
+    <details class="catalog-more cf-advanced" id="catalog-more">
+      <summary>Más filtros<span id="catalog-more-count"></span></summary>
+      <p class="cf-hint">Mostramos coincidencias documentadas. Un dato sin informar no significa que el proyecto no tenga esa característica.</p>
+      <p id="advanced-data-status" class="cf-hint" hidden></p>
+      <div class="cf-groups">
+        <fieldset class="cf-group"><legend>Distribución y superficies</legend><div class="cf-distribution">
+          <div><label for="bathrooms">Baños</label><select id="bathrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
+          <div><label for="area-type">Tipo de superficie</label><select id="area-type" class="catalog-control" disabled><option value="util">Útil</option></select></div>
+          <div><label for="min-area">Superficie mínima · m²</label><input id="min-area" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin mínimo" disabled></div>
+          <div><label for="max-area">Superficie máxima · m²</label><input id="max-area" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin máximo" disabled></div>
+        </div><p class="cf-hint">Dormitorios, baños y superficie deben coincidir en un mismo modelo documentado. Las superficies útiles, interiores, totales y de terreno se comparan por separado.</p></fieldset>
+        <fieldset class="cf-group"><legend>Tipologías documentadas</legend><p class="cf-hint">Coincidir con cualquiera de las seleccionadas.</p><div id="filter-typologies" class="cf-choices"></div></fieldset>
+        <fieldset class="cf-group"><legend>Amenities y espacios comunes</legend><p class="cf-hint">Por defecto, coincide con cualquiera de las seleccionadas.</p><label class="cf-all"><input id="amenities-all" type="checkbox" disabled> Debe incluir todas</label><div id="filter-amenities" class="cf-choices"></div></fieldset>
+        <fieldset class="cf-group"><legend>Características de la vivienda</legend><p class="cf-hint">Por defecto, coincide con cualquiera de las seleccionadas.</p><label class="cf-all"><input id="features-all" type="checkbox" disabled> Debe incluir todas</label><div id="filter-features" class="cf-choices"></div></fieldset>
+        <fieldset class="cf-group"><legend>Estado comercial y uso</legend><div class="cf-distribution"><div><label for="state">Estado comercial</label><select id="state" class="catalog-control" disabled><option value="">Todos</option></select></div><div><label for="asset-type">Tipo de activo</label><select id="asset-type" class="catalog-control" disabled><option value="">Todos</option></select></div></div><p class="cf-hint">El estado comercial es distinto del año de entrega.</p></fieldset>
+        <fieldset class="cf-group"><legend>Inmobiliarias</legend><p class="cf-hint">Puedes elegir más de una.</p><div id="filter-developers" class="cf-choices"></div></fieldset>
+      </div>
+      <div class="cf-panel-actions"><button type="button" class="cf-results-button" data-show-results disabled>Ver proyectos</button></div>
+    </details>
+    <div class="cf-mobile-results"><button type="button" class="cf-results-button" data-show-results disabled>Ver proyectos</button></div>
+  </details>
+  <div class="catalog-filter-actions"><button id="clear-filters" type="button" class="catalog-text-button" disabled>Limpiar filtros</button><p id="filter-range-error" class="cf-range-error" role="status" tabindex="-1" hidden></p></div>
+  <div id="applied-filters" class="catalog-applied" aria-label="Filtros aplicados" hidden></div>
+</form>

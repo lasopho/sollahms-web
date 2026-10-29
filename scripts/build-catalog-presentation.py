@@ -19,6 +19,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--check',action='store_true');args=parser.parse_args()
     projects=json.loads((ROOT/'data/proyectos.json').read_text());path=ROOT/'proyectos.html';before=path.read_text()
     after,count=re.subn(r'<!--CATALOG_DIRECTORY_START-->[\s\S]*?<!--CATALOG_DIRECTORY_END-->',lambda _:directory(projects),before);assert count==1
+    controls=(ROOT/'templates/catalog-filters.html').read_text().strip()
+    after,count=re.subn(r'<form\b[^>]*id="catalog-filters"[^>]*>[\s\S]*?</form>',lambda _:controls,after);assert count==1
     if args.check:assert after==before,'Run build-catalog-presentation.py to refresh the directory'
     else:path.write_text(after)
     print(json.dumps({'projects':len(projects),'newAssets':0,'check':args.check}))

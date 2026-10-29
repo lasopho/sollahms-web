@@ -47,6 +47,7 @@
 <meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v3.png">
 <meta name="twitter:image:alt" content="Sollahms — información y asesoría inmobiliaria">
 <link rel="stylesheet" href="/assets/css/project-photos.css?v=20261025-visual-1">
+<link rel="stylesheet" href="/assets/css/catalog-filters.css?v=20261029-filters-1">
 <link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
 <script src="/assets/js/scroll-presence.js?v=20261026-3" defer></script>
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
@@ -123,20 +124,41 @@
 
 <div class="catalog-explore" data-scroll-static="">
 <form id="catalog-filters" role="search" aria-label="Filtros del catálogo">
-<div class="catalog-filters">
-<div class="catalog-search-field"><label for="search">Buscar</label><input class="catalog-control" id="search" type="search" maxlength="200" placeholder="Nombre, comuna o inmobiliaria" autocomplete="off" disabled></div>
-<div><label for="region">Región</label><select class="catalog-control" id="region" disabled><option value="">Todas las regiones</option></select></div>
-<div><label for="commune">Comuna</label><select class="catalog-control" id="commune" disabled><option value="">Todas las comunas</option></select></div>
-<div><label for="max-price">Precio máximo UF</label><input class="catalog-control" id="max-price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sin máximo" disabled></div>
-</div>
-<div class="catalog-filter-actions">
-<details id="catalog-more" class="catalog-more"><summary>Más filtros<span id="catalog-more-count"></span></summary><div class="catalog-secondary">
-<div><label for="asset-type">Tipo de activo</label><select class="catalog-control" id="asset-type" disabled><option value="">Todos</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option><option value="Mixto">Mixto</option><option value="Terreno">Terreno</option></select></div>
-<div><label for="state">Estado</label><select class="catalog-control" id="state" disabled><option value="">Todos los estados</option></select></div>
-</div></details>
-<button id="clear-filters" class="catalog-text-button" type="button" disabled>Limpiar filtros</button>
-</div>
-<div id="applied-filters" class="catalog-applied" aria-label="Filtros aplicados" hidden></div>
+  <div class="cf-search"><label for="search">Busca tu próximo proyecto</label><input id="search" type="search" class="catalog-control" placeholder="Nombre, comuna, inmobiliaria o característica" maxlength="200" autocomplete="off" disabled></div>
+  <details id="catalog-options" class="cf-options" open>
+    <summary>Filtros<span id="catalog-filter-count"></span></summary>
+    <div class="catalog-filters cf-primary">
+      <div><label for="region">Región</label><select id="region" class="catalog-control" disabled><option value="">Todas</option></select></div>
+      <div><label for="commune">Comuna</label><select id="commune" class="catalog-control" disabled><option value="">Todas</option></select></div>
+      <div><label for="property-type">Tipo de propiedad</label><select id="property-type" class="catalog-control" disabled><option value="">Todas</option></select></div>
+      <div><label for="bedrooms">Dormitorios</label><select id="bedrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
+      <fieldset class="cf-price"><legend>Precio desde del proyecto · UF</legend><div class="cf-range"><div><label for="min-price">Mínimo UF</label><input id="min-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin mínimo" disabled></div><div><label for="max-price">Máximo UF</label><input id="max-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin máximo" disabled></div></div></fieldset>
+      <div><label for="delivery">Entrega</label><select id="delivery" class="catalog-control" disabled><option value="">Cualquier entrega</option></select></div>
+    </div>
+    <p class="cf-hint">El precio desde corresponde al proyecto. El valor y la disponibilidad de cada tipología se confirman al cotizar.</p>
+    <details class="catalog-more cf-advanced" id="catalog-more">
+      <summary>Más filtros<span id="catalog-more-count"></span></summary>
+      <p class="cf-hint">Mostramos coincidencias documentadas. Un dato sin informar no significa que el proyecto no tenga esa característica.</p>
+      <p id="advanced-data-status" class="cf-hint" hidden></p>
+      <div class="cf-groups">
+        <fieldset class="cf-group"><legend>Distribución y superficies</legend><div class="cf-distribution">
+          <div><label for="bathrooms">Baños</label><select id="bathrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
+          <div><label for="area-type">Tipo de superficie</label><select id="area-type" class="catalog-control" disabled><option value="util">Útil</option></select></div>
+          <div><label for="min-area">Superficie mínima · m²</label><input id="min-area" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin mínimo" disabled></div>
+          <div><label for="max-area">Superficie máxima · m²</label><input id="max-area" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin máximo" disabled></div>
+        </div><p class="cf-hint">Dormitorios, baños y superficie deben coincidir en un mismo modelo documentado. Las superficies útiles, interiores, totales y de terreno se comparan por separado.</p></fieldset>
+        <fieldset class="cf-group"><legend>Tipologías documentadas</legend><p class="cf-hint">Coincidir con cualquiera de las seleccionadas.</p><div id="filter-typologies" class="cf-choices"></div></fieldset>
+        <fieldset class="cf-group"><legend>Amenities y espacios comunes</legend><p class="cf-hint">Por defecto, coincide con cualquiera de las seleccionadas.</p><label class="cf-all"><input id="amenities-all" type="checkbox" disabled> Debe incluir todas</label><div id="filter-amenities" class="cf-choices"></div></fieldset>
+        <fieldset class="cf-group"><legend>Características de la vivienda</legend><p class="cf-hint">Por defecto, coincide con cualquiera de las seleccionadas.</p><label class="cf-all"><input id="features-all" type="checkbox" disabled> Debe incluir todas</label><div id="filter-features" class="cf-choices"></div></fieldset>
+        <fieldset class="cf-group"><legend>Estado comercial y uso</legend><div class="cf-distribution"><div><label for="state">Estado comercial</label><select id="state" class="catalog-control" disabled><option value="">Todos</option></select></div><div><label for="asset-type">Tipo de activo</label><select id="asset-type" class="catalog-control" disabled><option value="">Todos</option></select></div></div><p class="cf-hint">El estado comercial es distinto del año de entrega.</p></fieldset>
+        <fieldset class="cf-group"><legend>Inmobiliarias</legend><p class="cf-hint">Puedes elegir más de una.</p><div id="filter-developers" class="cf-choices"></div></fieldset>
+      </div>
+      <div class="cf-panel-actions"><button type="button" class="cf-results-button" data-show-results disabled>Ver proyectos</button></div>
+    </details>
+    <div class="cf-mobile-results"><button type="button" class="cf-results-button" data-show-results disabled>Ver proyectos</button></div>
+  </details>
+  <div class="catalog-filter-actions"><button id="clear-filters" type="button" class="catalog-text-button" disabled>Limpiar filtros</button><p id="filter-range-error" class="cf-range-error" role="status" tabindex="-1" hidden></p></div>
+  <div id="applied-filters" class="catalog-applied" aria-label="Filtros aplicados" hidden></div>
 </form>
 <section class="capacity-search" aria-labelledby="capacity-title">
 <div class="capacity-intro"><div><h2 id="capacity-title">Encuentra tu propiedad según tu renta</h2><p>Explora un escenario de compra con tu renta, ahorro y un pie estimado. Puedes seguir usando el catálogo sin ingresar datos financieros.</p></div><button class="capacity-button" id="capacity-toggle" type="button" aria-expanded="false" aria-controls="capacity-form" disabled>Buscar según mi renta</button></div>
@@ -161,11 +183,11 @@
 </form><p id="capacity-summary" class="capacity-summary" role="status" aria-live="polite"></p>
 </section>
 <div class="catalog-toolbar">
-<p id="project-count" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
+<p id="project-count" tabindex="-1" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
 <div class="catalog-view" role="group" aria-label="Vista del catálogo"><button type="button" data-catalog-view="cards" aria-pressed="true" disabled>Tarjetas</button><button type="button" data-catalog-view="list" aria-pressed="false" disabled>Listado</button><button type="button" data-catalog-view="map" aria-pressed="false" disabled>Mapa</button></div>
-<div class="catalog-sort"><label for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" form="catalog-filters" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option></select></div>
+<div class="catalog-sort"><label for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" form="catalog-filters" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option><option value="delivery">Entrega informada</option><option value="relevance">Coincidencia con búsqueda</option><option value="name">Nombre: A–Z</option></select></div>
 </div>
-<div id="catalog-feedback" class="catalog-feedback" hidden><p id="catalog-message" role="status" aria-live="polite" aria-atomic="true"></p><button id="empty-reset" class="catalog-text-button" type="button" hidden>Limpiar filtros y ver todos</button></div>
+<div id="catalog-feedback" class="catalog-feedback" hidden><p id="catalog-message" role="status" aria-live="polite" aria-atomic="true"></p><button type="button" id="modify-search" class="catalog-text-button">Modificar búsqueda</button><button id="empty-reset" class="catalog-text-button" type="button" hidden>Limpiar filtros y ver todos</button></div>
 </div>
 <section id="catalog-map" class="catalog-map" data-scroll-static="" aria-label="Mapa del catálogo" hidden></section>
 <div id="project-grid" class="catalog-grid" data-view="cards" aria-busy="true"></div>
@@ -340,6 +362,6 @@
 <p class="text-[10px] text-slate-400 font-mono tracking-widest text-center">PRECISION • TRANSPARENCY • STRATEGY</p>
 </div>
 </footer>
-<script type="module" src="/assets/js/catalog.mjs?v=20261029-structure-1"></script>
+<script type="module" src="/assets/js/catalog.mjs?v=20261029-filters-1"></script>
 </body>
 </html>

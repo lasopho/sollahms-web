@@ -16,6 +16,12 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 CSS = '/assets/css/project-amenities.css?v=20261029-1'
 CATALOG = json.loads((ROOT / 'data/amenities.json').read_text())
+FEATURE_PATH = ROOT / 'data/project-features.json'
+FEATURE_REGISTRY = json.loads(FEATURE_PATH.read_text()).get('projects',{}) if FEATURE_PATH.exists() else {}
+
+def project_feature_groups(slug):
+    """One authoring source for both fiches and the generated search index."""
+    return FEATURE_REGISTRY.get(slug,{}).get('groups',[])
 
 def key(value):
     return re.sub(r'\s+', ' ', unicodedata.normalize('NFKC', value)).strip().casefold()
@@ -88,6 +94,8 @@ def apply_amenities(page, project=None):
         return page
     ranges = SourceRanges(page)
     blocks = {}
+    central={(g['sectionId'],g['ordinal']):g for g in project_feature_groups(project.get('slug'))}
+    group_counts={}
     def touch(node):
         block = node if 'pj-block' in node.get('class', []) else node.find_parent(class_='pj-block')
         block = block or node.find_parent('section') or node
@@ -123,6 +131,13 @@ def apply_amenities(page, project=None):
             source = label.get_text(' ', strip=True) if label else li.get_text(' ', strip=True)
             description = li.select_one('.am-description') if label else li.find('span') if li.find('strong') else None
             items.append({'label':source,'description':description.get_text(' ',strip=True) if description else ''})
+        owner=ul.find_parent(lambda n:n.get('id') is not None)
+        section_id=owner.get('id') if owner else ''
+        ordinal=group_counts.get(section_id,0);group_counts[section_id]=ordinal+1
+        shared=central.get((section_id,ordinal))
+        if shared is not None:
+            items=[{'label':row['label'],'description':row.get('description','')} for row in shared['items']]
+            kind=shared['kind']
         block = touch(ul)
         ul.replace_with(BeautifulSoup(render_items(items,kind),'html.parser').ul)
         if kind == 'amenities' and block.get('id') in ('equipamiento','caracteristicas') and block.get('data-nav-section') != 'caracteristicas':
@@ -130,6 +145,15 @@ def apply_amenities(page, project=None):
             if h2:
                 h2.string = 'Equipamiento y áreas comunes'
 
+    for (section_id,ordinal),group in central.items():
+        if ordinal < group_counts.get(section_id,0):continue
+        section=soup.find(id=section_id)
+        if not section:raise ValueError('Missing feature group section: '+section_id)
+        if not group['items']:continue
+        touch(section)
+        for pending in section.select('.pending-panel,.missing-note'):pending.decompose()
+        section.append(BeautifulSoup(render_items(group['items'],group['kind']),'html.parser').ul)
+    prose_records=iter(FEATURE_REGISTRY.get(project.get('slug'),{}).get('prose',[]))
     for heading in list(soup.main.find_all('h2')):
         title = heading.get_text(' ',strip=True)
         if title == 'Espacios y servicios':
@@ -144,6 +168,9 @@ def apply_amenities(page, project=None):
             if para:
                 touch(para)
                 para['class'] = list(dict.fromkeys([*para.get('class',[]),'am-prose']))
+                shared_prose=next(prose_records,None)
+                if shared_prose and para.get_text(' ',strip=True)!=shared_prose['text']:
+                    para.string=shared_prose['text']
 
     # Pending sections remain pending: never fabricate a list from other projects.
     for section in soup.main.select('#equipamiento'):
