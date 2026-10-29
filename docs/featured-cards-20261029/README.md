@@ -17,3 +17,12 @@ The homepage helper is also called by build-catalog-presentation.py; the scoped 
 
 ## Release
 Baseline/rollback: dpl_Atu9RTqZT7ShuPDpmfuK4yGqQxN8, code bd59851b736892f3aaa01989b6b3c4c570a0a00d; source/evidence HEAD debe70b10d89adff8f249a0c66b41fc7b3840d92. Rollback through authorized Vercel request_rollback(projectId prj_URomRRU0MAy4etGKP5gWv3Qv4DGH, deploymentId baseline, teamId team_A9VNIW2f2K1IJpd2pGdvDmEN). Current release status/evidence to be appended after validation and promotion.
+
+## Published result
+- Code97324f829c0060b684180541edbdff1114cd5922; production deployment dpl_BT3YKrnog5mFZXdmJd8QNSBhcir8, READY, project-wrapp-n97ogmvm2-lsandoval2-8260s-projects.vercel.app; verified alias sollahms.cl. Promoted only after baseline alias recheck.
+- Build verified1621runtime inputs; output aggregate SHA2568e7d553aa767be9b1af74ee6dc1a96ddb2440f1a955401aa293ab00ea09c004d. Existing21-row server synchronization and retirement transformations unchanged.
+-185 static/source preservation checks;10 existing catalogue-filter tests;15 public HTTP checks. Exact staged/public overlay bytes, original Plaza fiche,131catalogue identities and all owner prices preserved. UF2026-10-29 CLP41,237.01. No errors/fatal runtime logs found at release check; no failed promotion aliases.
+- Chrome visual check at desktop1200px and mobile390px iframe viewport (375px content width excluding scrollbar), plus live public full browser. No horizontal overflow; cards/images/text/owner prices/CTA destinations checked. Both Ver detalles links opened correct h1/quote anchors; INN area section verified. This is responsive browser validation, not a physical phone test. Existing CSS/scripts retained byte-for-byte. Screenshots are real browser captures, not mockups.
+- Responsive harness exists only in protected QA preview dpl_pXz9tPAmYHjmppubVAaiSjzxkiiT; the final production candidate excludes it and returns404. All application file bytes are identical between QA and staged/public production.
+- main verified unchanged at86e200ec191b38af355061e21bc0fc1e549cce3b; main and branch deployment flags false; project live false, SSO preserved. No forms/messages submitted.
+- Remaining technical caveats: Plaza B5/C2/C4 conflicting areas remain excluded; typologies do not certify availability. INN aggregate total remains pending because some printed totals include extra private space. Useful area is verified; no garden size calculated and no source campaign price imported.
