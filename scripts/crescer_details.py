@@ -124,10 +124,13 @@ def apply_crescer(page,project):
 
 def update_all():
     configs=read('data/crescer-commercial.json')['projects'];facts=read('data/crescer-brochures.json')['projects'];projects=read('data/proyectos.json');research=read('data/fichas-proyectos.json');features=read('data/project-features.json')
+    locations=read('data/project-locations.json')
     for p in projects:
         slug=p['slug']
         if slug not in configs:continue
         c=configs[slug];f=facts[slug];r=next(r for r in research if r['slug']==slug)
+        # Same verified building; normalize spelling without moving either pin.
+        locations['locations'][slug]['address']=c['address']
         p.update({'precioDesdeUF':c['projectFromUF'],'precioDecimales':2,'preciosPorTipologia':[{'tipologia':o['label'],'precioDesdeUF':o['priceUF']} for o in offers_for(c)],'tipologias':[o['label'] for o in offers_for(c)],'tipoActivo':'Residencial','estado':c['state'],'estadoInformado':c['state'],'entrega':c['delivery'],'direccion':c['address'],'descripcionLarga':c['description']+' '+c['detail'],'commercialSource':{'type':'owner-supplied','file':'data/crescer-commercial.json','date':'2026-10-29'}})
         group=features['projects'][slug]['groups'][0];items=group['items']
         replacements={'Quincho':'Quinchos'} if slug=='don-tomas' else {'Quincho':'Quincho en piso 9','Terraza':'Terraza común en altura'}
@@ -151,6 +154,7 @@ def update_all():
         r['brochureModels']=f['models'];r['specs'].update({'dormitorios':' / '.join(p['tipologias']),'banos':'1 a 2' if slug=='don-tomas' else '1','utilM2':None,'totalM2':None})
         r['pendingFields']=['Disponibilidad e inclusiones por unidad','Superficie útil no publicada','Superficie total con terraza no publicada']+c.get('confirmationNotes',[])+[issue_text(i) for m in f['models'] if not m['filterEligible'] for i in m['issues']]
     write('data/proyectos.json',projects);write('data/fichas-proyectos.json',research);write('data/project-features.json',features)
+    write('data/project-locations.json',locations)
     project_amenities.FEATURE_REGISTRY=features['projects']
     for p in projects:
         if p['slug'] in configs:

@@ -4,9 +4,15 @@ import fs from 'node:fs';
 import {brochureSelectionMessage} from '../assets/js/project-brochure.mjs';
 import {priceFromLabel} from '../assets/js/catalog-model.mjs';
 import {advancedFilterAndSort,defaults} from '../assets/js/catalog-filter-engine.mjs';
+import {locateProjects} from '../assets/js/catalog-map-model.mjs';
 const read=name=>JSON.parse(fs.readFileSync(new URL('../data/'+name,import.meta.url),'utf8'));
 const commercial=read('crescer-commercial.json').projects,index=read('catalog-facets.json');
 const projects=read('proyectos.json').map(p=>({...p,_facets:index.projects[p.slug]}));
+test('both Crescer buildings retain their verified map coordinates after address normalization',()=>{
+ const result=locateProjects(projects.filter(p=>p.inmobiliaria==='Crescer'),read('project-locations.json'));
+ assert.equal(result.pending.length,0);assert.equal(result.located.length,2);
+ for(const {project,location} of result.located)assert.deepEqual([location.lat,location.lng],project.slug==='don-tomas'?[-33.3915724,-70.6732931]:[-33.4561487,-70.6620263]);
+});
 test('two decimals are presentation only and other formats remain unchanged',()=>{
  assert.equal(priceFromLabel(2360.1,2),'Desde UF 2.360,10');assert.equal(priceFromLabel(3292.89,2),'Desde UF 3.292,89');assert.equal(priceFromLabel(3000),'Desde UF 3.000');
 });

@@ -3,7 +3,7 @@ import hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];DOCS=ROOT/'docs/crescer-20261029';BRANCH='codex/crescer-brochures-20261029'
 base=json.loads((ROOT/'docs/advanced-filters-20261029/deployment-files.json').read_text());files={x['file']:x for x in base};hashes=json.loads(files['release-hashes.json']['data'])
-paths=['don-tomas.html','don-rafael.html','proyectos.html','data/proyectos.json','data/catalog-facets.json','assets/css/project-brochure.css','assets/js/project-brochure.mjs','assets/js/project-request.mjs','assets/js/catalog.mjs','assets/js/catalog-model.mjs','assets/js/catalog-map.mjs','assets/js/catalog-filter-controls.mjs']
+paths=['don-tomas.html','don-rafael.html','proyectos.html','data/proyectos.json','data/project-locations.json','data/catalog-facets.json','assets/css/project-brochure.css','assets/js/project-brochure.mjs','assets/js/project-request.mjs','assets/js/catalog.mjs','assets/js/catalog-model.mjs','assets/js/catalog-map.mjs','assets/js/catalog-filter-controls.mjs']
 for path in ['data/amenities.json','data/project-features.json','data/fichas-proyectos.json']:
     if 'release/static/'+path in files:paths.append(path)
 for path in paths:
