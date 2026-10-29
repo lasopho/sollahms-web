@@ -61,3 +61,10 @@
 @media(max-width:420px){.gh-fields{grid-template-columns:1fr}.gh-actions .gh-button{width:100%}.gh-example-price{font-size:2.2rem!important}.gh-result-grid{grid-template-columns:1fr}.gh-module summary strong{font-size:1rem}}
 @media(prefers-reduced-motion:reduce){.gh-page *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media print{.gh-local-nav,.gh-actions,.gh-inline-button,#gh-inputs{display:none}.gh-section{padding:24px 0}.gh-module::details-content{content-visibility:visible}.gh-hero,.gh-next{background:white!important;color:#003229}.gh-hero h1,.gh-next h2{color:#003229}.gh-simulator,.gh-learning,.gh-bottom-grid{display:block}.gh-panel{break-inside:avoid}}
+.gh-page .home-skip-link{position:absolute;left:16px;top:-100px;z-index:100;padding:12px 20px;background:var(--s-white);color:var(--s-green);border:2px solid var(--s-green)}
+.gh-page .home-skip-link:focus{top:8px}
+.gh-hero .gh-example h2{font-size:1.65rem;line-height:1.25}
+.gh-hero .gh-example p.gh-example-price{font:600 2.7rem/1.2 Manrope,sans-serif;margin:20px 0 24px}
+.gh-next .gh-kicker,.gh-next .gh-help{color:var(--s-on-dark)}
+
+#gh-results{scroll-margin-top:104px}

@@ -28,7 +28,7 @@ export function initGuide(root){
     const body=$('gh-schedule');body.replaceChildren();
     for(const row of result.schedule){const tr=document.createElement('tr');for(const [i,value] of [row.year,row.principalUf,row.interestUf,row.balanceUf].entries()){const cell=document.createElement(i===0?'th':'td');if(i===0)cell.scope='row';cell.textContent=i===0?String(value):number.format(value);tr.append(cell);}body.append(tr);}
     $('gh-status').textContent='Escenario calculado: dividendo base '+formatAmount(result.monthlyBaseUf)+' mensuales. Referencial, sin evaluación bancaria.';
-    if(moveFocus)$('gh-results').focus({preventScroll:false});
+    if(moveFocus){$('gh-results').focus({preventScroll:true});$('gh-results').scrollIntoView({block:'start'});}
   }
   function calculate(){
     clearErrors();last=null;const input={downMode:$('gh-downMode').value,rateConvention:$('gh-rateConvention').value};
