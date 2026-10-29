@@ -189,10 +189,15 @@ def apply_euro(page,p):
  features=main.find(id='caracteristicas')
  top=features.find('dl',recursive=False)
  if top:
+  for dt in top.find_all('dt'):
+   if dt.get_text(' ',strip=True)=='Tipologías disponibles':dt.string='Tipologías documentadas'
   existing={dt.get_text(' ',strip=True) for dt in top.find_all('dt')}
-  for key,value in [('Estado',c['state']),('Entrega',c['delivery']),('Tipologías disponibles',' · '.join(p['tipologias']))]:
+  for key,value in [('Estado',c['state']),('Entrega',c['delivery']),('Tipologías documentadas',' · '.join(p['tipologias']))]:
    if key not in existing:top.append(frag('<div><dt>'+key+'</dt><dd>'+esc(value)+'</dd></div>'))
- for key,val in [('Estado',c['state']),('Entrega',c['delivery']),('Tipologías disponibles',' · '.join(p['tipologias'])),('Tipologías',' · '.join(p['tipologias'])),('Precio desde',price_from(p['precioDesdeUF'],p['precioDecimales']))]:set_fact(main,key,val)
+ bedrooms=sorted({o['bedrooms'] for o in p['commercialOffers'] if o['bedrooms'] is not None})
+ for key,val in [('Estado',c['state']),('Entrega',c['delivery']),('Tipologías documentadas',' · '.join(p['tipologias'])),('Tipologías',' · '.join(p['tipologias'])),('Dormitorios',' · '.join(map(str,bedrooms))),('Precio desde',price_from(p['precioDesdeUF'],p['precioDecimales']))]:set_fact(main,key,val)
+ if top and b.get('variants') and any(not m['areas'] for m in b['variants']) and any('Superficie' in dt.get_text() for dt in top.find_all('dt')):
+  top.insert_after(frag('<p class="pb-note" data-euro-content>Las superficies del resumen corresponden a antecedentes publicados del proyecto; no asignan superficie a cada modelo. Revisa los datos de cada plano.</p>'))
  for group in project_amenities.project_feature_groups(slug):
   if not main.find(id=group['sectionId']):features.append(frag(f'<section id="{group["sectionId"]}" class="jn-subsection am-section"><h3>{"Terminaciones y tecnología" if group["kind"]=="finishes" else "Equipamiento y áreas comunes"}</h3></section>'))
  if b.get('buildingFacts'):
