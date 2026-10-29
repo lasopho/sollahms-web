@@ -68,7 +68,13 @@ def apply_crescer(page,project):
     if slug not in commercials:return page
     c=commercials[slug];facts=read('data/crescer-brochures.json')['projects'][slug];media=read('docs/crescer-20261029/asset-manifest.json')['projects'][slug]
     soup=fragment(page);main=soup.main;main['data-project-brochure']=VERSION
-    main.select_one('.jn-summary-description').string=c['description']
+    description=main.select_one('.jn-summary-description')
+    if not description:
+        description=fragment('<p class="jn-summary-description"></p>').p
+        main.select_one('.ci-action').insert_after(description)
+        old_lead=main.select_one('#proyecto > .lead')
+        if old_lead:old_lead.decompose()
+    description.string=c['description']
     main.select_one('.ci-details').clear()
     main.select_one('.ci-details').append(fragment('<p>Residencial · '+esc(' · '.join(typ(int(n)) for n in c['prices']))+'</p><p>Entrega informada: Inmediata · En recepción final</p>'))
     note=main.select_one('.ci-market .price-note')

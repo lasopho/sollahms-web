@@ -38,6 +38,14 @@ class CrescerTests(unittest.TestCase):
         for p in read('data/proyectos.json'):
             page=(ROOT/p['detalleUrl'][1:]).read_text()
             self.assertEqual(apply_crescer(page,p),page,p['slug'])
+    def test_new_shared_header_can_receive_brochure_enrichment(self):
+        for p in read('data/proyectos.json'):
+            if p['slug'] not in ['don-tomas','don-rafael']:continue
+            s=BeautifulSoup((ROOT/p['detalleUrl'][1:]).read_text(),'html.parser')
+            s.select_one('.jn-summary-description').decompose()
+            rendered=BeautifulSoup(apply_crescer(str(s),p),'html.parser')
+            self.assertIn(p['nombre'],rendered.select_one('.jn-summary-description').get_text())
+            self.assertEqual(len(rendered.select('.pb-plan')),12)
     def test_scoped_catalogue_fiches_and_existing_photos(self):
         base=ROOT.parent/'advanced-filters-source'
         if not base.exists():self.skipTest('Local release baseline not materialized')
