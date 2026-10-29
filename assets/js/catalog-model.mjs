@@ -44,7 +44,7 @@ export function filterAndSort(projects, filters={}) {
 }
 export function projectFacts(project, selectedType='') {
   const facts=[];
-  const typologies=(project.tipologias??[]).filter(t=>!project.preciosPorTipologia||(selectedType==='Comercial'?t==='Local':selectedType==='Residencial'?t!=='Local':true));
+  const typologies=(project.tipologias?.length?project.tipologias:project._facets?.typologyLabels??[]).filter(t=>!project.preciosPorTipologia||(selectedType==='Comercial'?t==='Local':selectedType==='Residencial'?t!=='Local':true));
   if(typologies.length)facts.push({label:typologies.some(t=>/^Parcelas/.test(t))?'Terreno':'Tipologías',value:typologies.join(' · ')});
   const delivery=project._facets?project._facets.delivery?.label:project.entrega, state=project.estado;
   const duplicateDelivery=delivery&&[normalize(delivery),normalize('Entrega '+delivery)].includes(normalize(state));
