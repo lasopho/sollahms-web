@@ -23,6 +23,9 @@ def main():
     original = {p['slug']: p for p in json.loads(original_path.read_text())}
     incoming = json.loads(args.input.read_text())
     by_slug = {r['slug']: r for r in incoming}
+    from leon_commercial import guard_import, authorized, OWNER_FIELDS
+    for project in projects:
+        if project['slug'] in by_slug: guard_import(project, by_slug[project['slug']])
     euro=json.loads((ROOT/'data/euro-commercial.json').read_text())['projects']
     for slug,record in by_slug.items():
         if slug in euro and 'precioDesdeUF' in record.get('updates',{}):
@@ -37,7 +40,7 @@ def main():
     for research in incoming:
         assert research.get('checkedAt') == '2026-10-09', 'Explicit review date required'
         assert research.get('sourceStatus') in {'verified', 'unavailable', 'not_found'}, 'Research still in progress'
-        assert set(research.get('updates', {})) <= FIELDS, 'Unexpected fields in updates'
+        assert set(research.get('updates', {})) <= FIELDS | set(OWNER_FIELDS), 'Unexpected fields in updates'
         assert isinstance(research.get('verifiedFields'), list)
         research['reviewedOriginal'] = {key: original[research['slug']].get(key) for key in FIELDS if key in original[research['slug']]}
         research['originalImages'] = research.get('images', [])
@@ -79,7 +82,8 @@ def main():
         for key in (FIELDS - COMMERCIAL):
             if key in verified and key in updates and updates[key] is not None:
                 project[key] = updates[key]
-        project['verificacion'] = {'fecha': research['checkedAt'], 'fuente': research.get('sourceUrl'), 'estadoFuente': research['sourceStatus'], 'camposVerificados': research['verifiedFields']}
+        if not authorized(project):
+            project['verificacion'] = {'fecha': research['checkedAt'], 'fuente': research.get('sourceUrl'), 'estadoFuente': research['sourceStatus'], 'camposVerificados': research['verifiedFields']}
     records = [by_slug.get(record['slug'], record) for record in records]
     (ROOT / 'data/proyectos.json').write_text(json.dumps(projects, ensure_ascii=False, indent=2) + '\n')
     (ROOT / 'data/fichas-proyectos.json').write_text(json.dumps(records, ensure_ascii=False, indent=2) + '\n')

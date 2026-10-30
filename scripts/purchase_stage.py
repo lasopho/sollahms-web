@@ -8,6 +8,9 @@ ROOT=Path(__file__).resolve().parents[1]
 def fold(v):return ''.join(c for c in unicodedata.normalize('NFD',str(v or '')).lower() if not unicodedata.combining(c))
 def classify(project,facts,reviews):
     status=facts.get('status',{}); key=status.get('key') if status.get('confirmed') else None
+    from leon_commercial import authorized
+    if authorized(project):
+        key={'En blanco':'en-blanco','En verde':'en-verde','En recepción final':'en-recepcion-final'}.get(project['estado'])
     raw=fold(project.get('estado')); proof=status.get('evidence'); ref=project.get('etapaReferenciaSlug')
     row={'mode':None,'eligible':False,'reason':'Etapa pendiente de confirmar','referenceStage':ref}
     if project.get('stageConflict'):

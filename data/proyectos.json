@@ -144,7 +144,7 @@
     "nombre": "Edificio B.Come — Concepción",
     "inmobiliaria": "León",
     "detalleUrl": "/bcome.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2930,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/bcome-01.webp",
     "imagenAlt": "Render referencial: fachada del edificio de Edificio B.Come — Concepción",
@@ -156,12 +156,64 @@
       "2 dormitorios"
     ],
     "verificacion": {
-      "estadoFuente": "public_subset",
+      "estadoFuente": "verified",
       "camposVerificados": [
         "comuna",
         "direccion",
-        "tipologias"
-      ]
+        "tipologias",
+        "precioDesdeUF",
+        "precioDesdeTipologia",
+        "commercialOffers",
+        "catalogPricePolicy",
+        "estado",
+        "entrega",
+        "region",
+        "tipoActivo",
+        "mapQuery",
+        "commercialSource"
+      ],
+      "fecha": "2026-10-30",
+      "fuente": "https://sollahms.cl/bcome.html"
+    },
+    "precioDesdeTipologia": "Estudio",
+    "commercialOffers": [
+      {
+        "id": "0d",
+        "label": "Estudio",
+        "bedrooms": 0,
+        "propertyType": "departamento",
+        "priceUF": 2930,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3441,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 3855,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "estado": "En verde",
+    "entrega": "1.er semestre 2027",
+    "region": "Biobío",
+    "tipoActivo": "Residencial",
+    "mapQuery": "Paicaví 1485, Concepción, Región del Biobío, Chile",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
     }
   },
   {
@@ -7598,30 +7650,60 @@
     "nombre": "Condominio Uruguay",
     "inmobiliaria": "León",
     "detalleUrl": "/condominio-uruguay.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 4433,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/condominio-uruguay-01.webp",
     "imagenAlt": "Fotografía: edificios y jardines del condominio de Condominio Uruguay",
     "comuna": "La Florida",
     "region": "Región Metropolitana",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "tipologias": [
       "1 dormitorio",
       "2 dormitorios"
     ],
     "verificacion": {
-      "estadoFuente": "public_subset",
+      "estadoFuente": "verified",
       "camposVerificados": [
         "comuna",
         "region",
         "estado",
         "tipologias",
         "direccion",
-        "mapQuery"
-      ]
+        "mapQuery",
+        "precioDesdeUF",
+        "precioDesdeTipologia",
+        "commercialOffers",
+        "catalogPricePolicy",
+        "entrega",
+        "tipoActivo",
+        "commercialSource"
+      ],
+      "fecha": "2026-10-30",
+      "fuente": "https://sollahms.cl/condominio-uruguay.html"
     },
     "direccion": "Uruguay 8866",
-    "mapQuery": "Uruguay 8866, La Florida, Región Metropolitana, Chile"
+    "mapQuery": "Uruguay 8866, La Florida, Región Metropolitana, Chile",
+    "precioDesdeTipologia": "2 dormitorios",
+    "commercialOffers": [
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 4433,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "entrega": "Inmediata",
+    "tipoActivo": "Residencial",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
+    }
   },
   {
     "slug": "enlace-mackenna",
@@ -7966,7 +8048,7 @@
     "nombre": "Condominio Gregorio de la Fuente",
     "inmobiliaria": "León",
     "detalleUrl": "/gregorio-de-la-fuente-a.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 3349,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/shared-stages-20261025/gregorio-de-la-fuente-a-01.webp",
     "imagenAlt": "Fotografía: fachada y acceso junto a la piscina de Condominio Gregorio de la Fuente",
@@ -7980,19 +8062,67 @@
     ],
     "mapQuery": "Gregorio de la Fuente 3011, Macul, Región Metropolitana, Chile",
     "verificacion": {
-      "estadoFuente": "public_subset",
+      "estadoFuente": "verified",
       "camposVerificados": [
         "comuna",
         "region",
         "direccion",
         "tipologias",
-        "mapQuery"
-      ]
+        "mapQuery",
+        "precioDesdeUF",
+        "precioDesdeTipologia",
+        "commercialOffers",
+        "catalogPricePolicy",
+        "estado",
+        "entrega",
+        "tipoActivo",
+        "commercialSource"
+      ],
+      "fecha": "2026-10-30",
+      "fuente": "https://sollahms.cl/gregorio-de-la-fuente-a.html"
     },
     "addressVerification": {
       "source": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
       "publisher": "Inmobiliaria León",
       "checkedOn": "2026-10-26"
+    },
+    "precioDesdeTipologia": "1 dormitorio",
+    "commercialOffers": [
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3349,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 5048,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 6510,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "estado": "En recepción final",
+    "entrega": "Inmediata",
+    "tipoActivo": "Residencial",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
     }
   },
   {
@@ -8124,7 +8254,7 @@
     "nombre": "Condominio Parque Don Lautaro",
     "inmobiliaria": "León",
     "detalleUrl": "/condominio-parque-don-lautaro.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 7778,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/condominio-parque-don-lautaro-01.webp",
     "imagenAlt": "Render referencial: edificios y parque central de Condominio Parque Don Lautaro",
@@ -8137,14 +8267,54 @@
     ],
     "mapQuery": "Av. Consistorial 6501, Peñalolén, Región Metropolitana, Chile",
     "verificacion": {
-      "estadoFuente": "public_subset",
+      "estadoFuente": "verified",
       "camposVerificados": [
         "comuna",
         "region",
         "direccion",
         "tipologias",
-        "mapQuery"
-      ]
+        "mapQuery",
+        "precioDesdeUF",
+        "precioDesdeTipologia",
+        "commercialOffers",
+        "catalogPricePolicy",
+        "estado",
+        "entrega",
+        "tipoActivo",
+        "commercialSource"
+      ],
+      "fecha": "2026-10-30",
+      "fuente": "https://sollahms.cl/condominio-parque-don-lautaro.html"
+    },
+    "precioDesdeTipologia": "2 dormitorios",
+    "commercialOffers": [
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 7778,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 8611,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "estado": "En blanco",
+    "entrega": "Octubre 2028",
+    "tipoActivo": "Residencial",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
     }
   },
   {
@@ -9476,31 +9646,69 @@
     "nombre": "Condominio Jardines de Ramón Cruz",
     "inmobiliaria": "León",
     "detalleUrl": "/jardines-de-ramon-cruz.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 5044,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/jardines-de-ramon-cruz-05.webp",
     "imagenAlt": "Fotografía: salón de uso común de Condominio Jardines de Ramón Cruz",
     "comuna": "Macul",
     "region": "Región Metropolitana",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "tipologias": [
       "1 dormitorio",
       "2 dormitorios",
       "3 dormitorios"
     ],
     "verificacion": {
-      "estadoFuente": "public_subset",
+      "estadoFuente": "verified",
       "camposVerificados": [
         "comuna",
         "region",
         "estado",
         "tipologias",
         "direccion",
-        "mapQuery"
-      ]
+        "mapQuery",
+        "precioDesdeUF",
+        "precioDesdeTipologia",
+        "commercialOffers",
+        "catalogPricePolicy",
+        "entrega",
+        "tipoActivo",
+        "commercialSource"
+      ],
+      "fecha": "2026-10-30",
+      "fuente": "https://sollahms.cl/jardines-de-ramon-cruz.html"
     },
-    "direccion": "Ramón Cruz Montt 3291",
-    "mapQuery": "Ramón Cruz Montt 3291, Macul, Región Metropolitana, Chile"
+    "direccion": "Ramón Cruz 3291",
+    "mapQuery": "Ramón Cruz 3291, Macul, Región Metropolitana, Chile",
+    "precioDesdeTipologia": "2 dormitorios",
+    "commercialOffers": [
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 5044,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 5600,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "entrega": "Inmediata",
+    "tipoActivo": "Residencial",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
+    }
   },
   {
     "slug": "vitro",

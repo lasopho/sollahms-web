@@ -79,6 +79,8 @@ def main():
     data=sync_aj(data,catalog)
     from sento_commercial import sync_facets as sync_sento
     data=sync_sento(data,catalog)
+    from leon_commercial import sync_facets as sync_leon
+    data=sync_leon(data,catalog)
     rendered=json.dumps(data,ensure_ascii=False,separators=(',',':'))+'\n';path=ROOT/'data/catalog-facets.json'
     if args.check:assert path.read_text()==rendered,'Regenerate catalogue facets'
     else:path.write_text(rendered)
@@ -86,3 +88,4 @@ def main():
     (docs/'coverage.json').write_text(json.dumps({'summary':summary,'filters':filters,'pending':missing},ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(summary))
 if __name__=='__main__':main()
+

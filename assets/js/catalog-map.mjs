@@ -1,3 +1,4 @@
+import {leonCatalogOfferId} from './project-offers.mjs?v=20261030-leon';
 import {publicOrigin} from './commercial-context.mjs?v=20261029-euro-1';
 import {matchedLabels,defaults} from './catalog-filter-engine.mjs?v=20261029-euro-1';
 import {priceFromLabel,projectOffer as selectedOffer,projectFacts,validPrice} from './catalog-model.mjs?v=20261029-euro-1';
@@ -67,7 +68,7 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
     const title=el('h2',p.nombre),location=el('p',[p.comuna,p.region].filter(Boolean).join(' · '),'catalog-location');
     const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type||(filterState.propertyType==='local'?'Comercial':''))){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
     const offer=selectedOffer(p,filterState),amount=el('p',priceFromLabel(offer.value,p.precioDecimales),'catalog-price-value');
-    const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(location.search,'buscador'))+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(p.inmobiliaria)&&/^[012]$/.test(filterState.bedrooms)&&p.commercialOffers?.some(o=>o.id===filterState.bedrooms+'d')?'&oferta='+filterState.bedrooms+'d':'')+(p._ecasaStageNumber?'#etapa-'+p._ecasaStageNumber:'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
+    const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(location.search,'buscador'))+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(p.inmobiliaria)&&/^[012]$/.test(filterState.bedrooms)&&p.commercialOffers?.some(o=>o.id===filterState.bedrooms+'d')?'&oferta='+filterState.bedrooms+'d':'')+(leonCatalogOfferId(p,filterState)?'&oferta='+leonCatalogOfferId(p,filterState):'')+(p._ecasaStageNumber?'#etapa-'+p._ecasaStageNumber:'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
     detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
     const matches=matchedLabels(p,filterState);if(matches.length){const list=el('ul',undefined,'cf-match-list');list.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))list.append(el('li',label));detail.append(list);}
     if(reveal){map.setView([row.location.lat,row.location.lng],Math.max(15,map.getZoom()),{animate:false});}
@@ -121,3 +122,4 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
   }
   return {update,show(){active=true;map.invalidateSize({pan:false});redraw();},hide(){remember();active=false;}};
 }
+
