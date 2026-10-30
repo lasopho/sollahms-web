@@ -38,7 +38,8 @@ def apply_home(page):
         if f.get('description'):
             block,n=re.subn(r'(<p class="text-sm text-secondary leading-relaxed mb-6">)[^<]*(</p>)',lambda m:m[1]+html.escape(f['description'])+m[2],block);assert n==1
         page=page[:start]+block+page[end:]
-    return page
+    from featured_card_layout import apply_featured_layout
+    return apply_featured_layout(page)
 def apply_fiche(page,project):
     if project['slug']!='inn-puerto-chico':return page
     f=next(x for x in read('data/fichas-proyectos.json') if x['slug']==project['slug'])
