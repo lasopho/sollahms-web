@@ -1,5 +1,6 @@
 """Scoped AJ Urbana rendering from the authoritative central catalogue."""
 import json,re,html,copy
+from urllib.parse import quote_plus,quote
 from pathlib import Path
 from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1]
@@ -25,7 +26,7 @@ def apply_aj(page,p):
  # Only replace the owner-corrected street number, including existing map queries.
  for old,new in [('San Martín 74','San Martín 70'),('Amunátegui 745','Amunátegui 743')]:
   if new==p['direccion']:
-   page=page.replace(old,new).replace(old.replace(' ','+'),new.replace(' ','+')).replace(old.replace(' ','%20'),new.replace(' ','%20'))
+   page=page.replace(old,new).replace(quote_plus(old),quote_plus(new)).replace(quote(old),quote(new))
  m=re.search(r'<main\b[^>]*>.*?</main>',page,re.S);s=BeautifulSoup(m[0],'html.parser');main=s.main
  for node in main.select('[data-aj-commercial]'):node.decompose()
  main.select_one('.ci-market strong').string=price(p['precioDesdeUF'])
@@ -35,6 +36,7 @@ def apply_aj(page,p):
   key=dt.get_text(' ',strip=True);dd=dt.find_next_sibling('dd')
   vals={'Precio desde':price(p['precioDesdeUF']),'Estado':p['estado'],'Entrega':p['entrega']}
   if key in vals:dd.string=vals[key];found.add(key)
+ if 'Estado' not in found:dl.append(BeautifulSoup('<div><dt>Estado</dt><dd>'+p['estado']+'</dd></div>','html.parser'))
  if 'Entrega' not in found:dl.append(BeautifulSoup('<div><dt>Entrega</dt><dd>'+p['entrega']+'</dd></div>','html.parser'))
  rows=[]
  for o in p['commercialOffers']:
