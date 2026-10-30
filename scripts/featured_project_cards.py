@@ -21,8 +21,8 @@ def facts():
     useful=[m['usefulM2'] for m in fiches['inn-puerto-chico']['officialSurfaceModels']['records']]
     assert totals and useful and all(n>0 for n in totals+useful)
     return {
-      'plaza-las-condes':{'typologies':typologies(projects['plaza-las-condes']['tipologias']),'surfaceLabel':'Total según planos','surface':f'{fmt(min(totals))}–{fmt(max(totals))} m²','description':projects['plaza-las-condes']['descripcionCorta']},
-      'inn-puerto-chico':{'typologies':typologies(projects['inn-puerto-chico']['tipologias']), 'surfaceLabel':'Útil aprox.','surface':f'{fmt(min(useful))}–{fmt(max(useful))} m²'}}
+      'plaza-las-condes':{'typologies':typologies(projects['plaza-las-condes']['tipologias']),'surfaceLabel':'Total según planos','surfaceFrom':f'Desde {fmt(min(totals))} m²','surface':f'{fmt(min(totals))}–{fmt(max(totals))} m²','description':projects['plaza-las-condes']['descripcionCorta']},
+      'inn-puerto-chico':{'typologies':typologies(projects['inn-puerto-chico']['tipologias']), 'surfaceLabel':'Útil aprox.','surfaceFrom':f'Desde {fmt(min(useful))} m²','surface':f'{fmt(min(useful))}–{fmt(max(useful))} m²'}}
 def apply_home(page):
     data=facts()
     for number,slug in [(2,'inn-puerto-chico'),(3,'plaza-las-condes')]:
@@ -34,7 +34,7 @@ def apply_home(page):
         pattern=r'(<span class="block text-\[10px\] uppercase text-slate-400 font-bold">)(?:Tipologías|Tipologías del proyecto)(</span><span class="font-mono text-sm font-bold">)[^<]*(</span>)'
         block,n=re.subn(pattern,lambda m:m[1]+'Tipologías del proyecto'+m[2]+html.escape(f['typologies'])+m[3],block);assert n==1
         pattern=r'(<span class="block text-\[10px\] uppercase text-slate-400 font-bold">)(?:Superficie|Total según planos|Útil aprox\.)(</span><span class="font-mono text-sm font-bold text-primary">)[^<]*(</span>)'
-        block,n=re.subn(pattern,lambda m:m[1]+f['surfaceLabel']+m[2]+f['surface']+m[3],block);assert n==1
+        block,n=re.subn(pattern,lambda m:m[1]+f['surfaceLabel']+m[2]+f['surfaceFrom']+m[3],block);assert n==1
         if f.get('description'):
             block,n=re.subn(r'(<p class="text-sm text-secondary leading-relaxed mb-6">)[^<]*(</p>)',lambda m:m[1]+html.escape(f['description'])+m[2],block);assert n==1
         page=page[:start]+block+page[end:]
