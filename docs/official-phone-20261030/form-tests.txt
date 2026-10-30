@@ -1,0 +1,33 @@
+✔ inmobiliaria: all normalized data, type, origin and consent reach isolated HTTP receiver (46.832298ms)
+✔ inmobiliaria: email OR phone is enough, both optional individually (21.690768ms)
+✔ inmobiliaria: no channel, malformed supplied contact and missing consent fail before transport (4.163528ms)
+✔ persona: all normalized data, type, origin and consent reach isolated HTTP receiver (3.504713ms)
+✔ persona: email OR phone is enough, both optional individually (8.138192ms)
+✔ persona: no channel, malformed supplied contact and missing consent fail before transport (2.789831ms)
+✔ same operation across instances/retries deduplicates; changed body conflicts (9.124942ms)
+✔ request shape, honeypot, timing, origin, size and methods are protected (4.155806ms)
+✔ preview and misconfigured channel fail closed without provider (1.670607ms)
+✔ timeout, rejection, malformed/missing provider acknowledgement never claim delivery (2.189829ms)
+✔ operation state stores no personal fields; uncertain retries preserve original request (5.960156ms)
+✔ all live projects retain a server-recognized identity and canonical origin (180.183587ms)
+✔ explicit commercial stages stay associated with their own published context (16.325242ms)
+✔ call retains all four fields; time is explicitly a preference (1.058285ms)
+✔ obsolete channel preference cannot exclude either contact field (0.342768ms)
+✔ optional goal/message/time may be omitted (0.319147ms)
+✔ all four contact fields and consent are required (1.521575ms)
+✔ server validation and preview protections still reject without sending (2.384947ms)
+✔ an uncertain result cannot be presented as successful delivery (1.187033ms)
+✔ retry keeps identity and payload; changing intent after uncertainty is blocked (10.757555ms)
+✔ bounded message cannot overflow the existing contract (1.76892ms)
+✔ real-name characters, diverse email providers and local/international phone formats (13.01072ms)
+✔ each missing or malformed field is rejected by both actual API handlers before transport (31.694292ms)
+✔ correction preserves all four normalized fields in existing destination without PII in acknowledgement (3.548235ms)
+✔ all advisory intents retain the four fields and no obsolete selector can bypass required data (2.506925ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 412.311583
