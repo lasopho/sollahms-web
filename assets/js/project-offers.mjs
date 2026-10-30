@@ -5,6 +5,17 @@ export function publicOffer(project,key){
   return project?.commercialOffers?.find(o=>o.id===key)??null;
 }
 export function catalogReference(project,state={}){
+  if(project.inmobiliaria==='Ecasa'&&project.commercialSource?.date==='2026-10-30'){
+    const commercial=state.assetType==='Comercial'||state.propertyType==='local';
+    const beds=state.bedrooms,types=state.typologies??[];
+    const offers=(project.commercialOffers??[]).filter(o=>(commercial?o.propertyType==='local':o.propertyType!=='local')
+      &&(!state.propertyType||o.propertyType===state.propertyType)
+      &&(!beds||(beds.endsWith('+')?o.bedrooms>=Number(beds.slice(0,-1)):o.bedrooms===Number(beds)))
+      &&(!types.length||types.some(t=>t.split('-')[0]===(o.bedrooms===0?'estudio':o.bedrooms+'d')))
+      &&validOfferPrice(o.priceUF));
+    const best=offers.reduce((a,b)=>!a||b.priceUF<a.priceUF?b:a,null);
+    return {value:best?.priceUF??null,typology:best?.label??null};
+  }
   const commercial=state.assetType==='Comercial'||state.propertyType==='local';
   if(project.catalogPricePolicy==='by-product'&&commercial){
     const offer=publicOffer(project,'local');

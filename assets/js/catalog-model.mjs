@@ -7,7 +7,7 @@ export const priceFromLabel = (value,decimals=0) => validPrice(value) ? 'Desde U
 export const stages = project => project.inmobiliaria === 'Ecasa' && Array.isArray(project.etapasComerciales) && project.etapasComerciales.length > 1
   ? project.etapasComerciales : Array.isArray(project.etapas) ? project.etapas : [];
 export const commercialReference = project => project.inmobiliaria === 'Ecasa' && stages(project).length > 1
-  ? stages(project).find(stage => stage.slug === project.etapaReferenciaSlug) : null;
+  ? stages(project).find(stage => stage.slug === (project._ecasaStageSlug??project.etapaReferenciaSlug)) : null;
 export const projectStates = project => [project.estado, ...stages(project).map(stage => stage.estado)].filter(value => typeof value === 'string' && value.length);
 export function assetTypes(project) {
   const explicit=[...(project.tiposActivos??[]),project.tipoActivo].filter(Boolean);

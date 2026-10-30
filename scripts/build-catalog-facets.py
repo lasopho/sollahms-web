@@ -73,6 +73,8 @@ def main():
     filters=[{**f,'count':counts[id_]} for id_,f in definitions.items() if counts[id_]>0]
     typologies=[{'id':id_,'label':label,'count':sum(any(v.get('typology')==id_ for v in p['variants']) for p in out.values())} for id_,label in sorted(types.items())]
     data={'schemaVersion':1,'projects':out,'filters':filters,'typologies':typologies,'policy':'Documented project/model characteristics; no stock or unit inventory. Missing values are unknown.'}
+    from ecasa_commercial import sync_facets
+    data=sync_facets(data,catalog)
     rendered=json.dumps(data,ensure_ascii=False,separators=(',',':'))+'\n';path=ROOT/'data/catalog-facets.json'
     if args.check:assert path.read_text()==rendered,'Regenerate catalogue facets'
     else:path.write_text(rendered)

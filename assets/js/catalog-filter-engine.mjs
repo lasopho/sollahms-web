@@ -40,7 +40,16 @@ export function searchTokens(query){return fold(query).trim().split(/\s+/).filte
 export function advancedFilterAndSort(projects,input={}){
   const s={...defaults(),...input};if(rangeIssue(s))return [];
   const words=searchTokens(s.search);
-  const rows=projects.filter(p=>{
+  // ECasa stages are independent candidates; one best matching stage per existing card.
+  const candidates=projects.flatMap(p=>{
+    if(p.inmobiliaria!=='Ecasa'||!p._facets?.stages)return [p];
+    const stages=[...p.etapasComerciales].sort((a,b)=>(a.slug===p.etapaReferenciaSlug?-1:0)-(b.slug===p.etapaReferenciaSlug?-1:0));
+    return stages.map(t=>({...p,...t,slug:p.slug,detalleUrl:p.detalleUrl,
+      imagenPrincipal:p.imagenPrincipal,imagenAlt:p.imagenAlt,
+      _ecasaStageNumber:t.etapa??Number(t.detalleUrl.split('#etapa-')[1]),
+      _ecasaStageSlug:t.slug,_facets:p._facets.stages[t.slug]}));
+  });
+  const rows=candidates.filter(p=>{
     const f=p._facets??{},ids=eligibleFeatures(p,s);
     return (!s.region||p.region===s.region)&&(!s.commune||p.comuna===s.commune)
       &&(!s.developers.length||s.developers.includes(p.inmobiliaria))
@@ -59,7 +68,7 @@ export function advancedFilterAndSort(projects,input={}){
   if(s.sortOrder==='delivery')rows.sort((a,b)=>deliveryRank(a)-deliveryRank(b));
   if(s.sortOrder==='name')rows.sort((a,b)=>a.nombre.localeCompare(b.nombre,'es-CL'));
   if(s.sortOrder==='relevance'&&words.length)rows.sort((a,b)=>relevance(b,words)-relevance(a,words));
-  return rows;
+  return rows.filter((p,i,a)=>a.findIndex(x=>x.slug===p.slug)===i);
 }
 const deliveryRank=p=>p._facets?.delivery?.immediate?0:p._facets?.delivery?.year??9999;
 const relevance=(p,words)=>words.reduce((n,w)=>n+(fold(p.nombre).includes(w)?3:0)+(fold(p.comuna).includes(w)?2:0)+(fold(p.inmobiliaria).includes(w)?1:0),0);

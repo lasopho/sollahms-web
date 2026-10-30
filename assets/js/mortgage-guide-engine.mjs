@@ -38,7 +38,11 @@ export function guideProjectContext(search,projects){
   if(typeof search!=='string'||search.length>1000||!Array.isArray(projects))return null;
   const q=new URLSearchParams(search);if(q.getAll('proyecto').length!==1)return null;
   const slug=q.get('proyecto');if(!/^[a-z0-9-]{1,100}$/.test(slug))return null;
-  const p=projects.find(p=>p.slug===slug);if(!p)return null;
+  let p=projects.find(p=>p.slug===slug);
+  if(!p){const matches=projects.filter(x=>x.inmobiliaria==='Ecasa').flatMap(x=>(x.etapasComerciales??[]).filter(t=>t.slug===slug));if(matches.length===1)p=matches[0];}
+  if(!p)return null;
+  if(q.has('etapa')){if(q.getAll('etapa').length!==1||!/^\d{1,2}$/.test(q.get('etapa')))return null;
+    p=p.etapasComerciales?.find(t=>Number(t.etapa??t.detalleUrl?.split('#etapa-')[1])===Number(q.get('etapa')));if(!p)return null;}
   if(q.getAll('oferta').length>1)return null;
   const key=q.get('oferta');
   const offer=key?p.commercialOffers?.find(o=>o.id===key):null;

@@ -82,6 +82,7 @@ function initializeProjectRequest(form) {
   modes.forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.requestMode)));
   document.addEventListener('click',event=>{
     const a=event.target.closest('a[data-request-intent]');if(!a)return;
+    if(a.dataset.requestStage&&panel.dataset.projectSlug&&catalogue){stage=a.dataset.requestStage;resolve();}
     setMode(a.dataset.requestIntent);
     if(!completed&&!sending)inputs.nombre.focus({preventScroll:true});
   });

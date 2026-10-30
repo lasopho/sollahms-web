@@ -272,15 +272,15 @@
     "comuna": "Arica",
     "region": "Arica y Parinacota",
     "direccion": "Presbítero Ramírez 110",
-    "estado": "En construcción",
-    "entrega": null,
+    "estado": "En verde",
+    "entrega": "Segundo semestre de 2027",
     "tipologias": [
       "Estudio",
       "1 dormitorio",
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 3100,
     "detalleUrl": "/nucleo-costanera.html",
     "descripcionLarga": "Proyecto de Ecasa en Presbítero Ramírez 110, Arica. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Salón Gourmet, Skybar, Quincho Panorámico.",
     "mapQuery": "Presbítero Ramírez 110, Arica, Arica y Parinacota, Chile",
@@ -306,7 +306,9 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF",
+        "entrega"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/10a2ce6fe3d7d8c64b07e502.webp",
@@ -320,15 +322,15 @@
         "comuna": "Arica",
         "region": "Arica y Parinacota",
         "direccion": "Presbítero Ramírez 110",
-        "estado": "En construcción",
-        "entrega": null,
+        "estado": "En verde",
+        "entrega": "Segundo semestre de 2027",
         "tipologias": [
           "Estudio",
           "1 dormitorio",
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 3100,
         "detalleUrl": "/nucleo-costanera.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Presbítero Ramírez 110, Arica. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Salón Gourmet, Skybar, Quincho Panorámico.",
         "mapQuery": "Presbítero Ramírez 110, Arica, Arica y Parinacota, Chile",
@@ -354,7 +356,9 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/10a2ce6fe3d7d8c64b07e502.webp",
@@ -372,7 +376,58 @@
             "nombre": "Núcleo Costanera 2",
             "etapa": 2
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 3100,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 3840,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 5520,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 3100
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 3840
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 5520
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "1 dormitorio"
       },
       {
         "slug": "nucleo-costanera-2",
@@ -381,10 +436,14 @@
         "comuna": "Arica",
         "region": "Arica y Parinacota",
         "direccion": null,
-        "estado": null,
-        "entrega": null,
-        "tipologias": [],
-        "precioDesdeUF": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "precioDesdeUF": 3100,
         "detalleUrl": "/nucleo-costanera.html#etapa-2",
         "descripcionLarga": null,
         "mapQuery": null,
@@ -404,7 +463,11 @@
             "proyectoMatrizSlug",
             "etapa",
             "comuna",
-            "region"
+            "region",
+            "tipologias",
+            "estado",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "etapasRelacionadas": [
@@ -418,9 +481,111 @@
             "nombre": "Núcleo Costanera 2",
             "etapa": 2
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 3100,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 3920,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 5600,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 3100
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 3920
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 5600
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "1 dormitorio"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3100,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 3840,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 5520,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 3100
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3840
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 5520
+      }
+    ],
+    "estadoInformado": "En verde",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "1 dormitorio"
   },
   {
     "slug": "wayra",
@@ -429,13 +594,13 @@
     "comuna": "Arica",
     "region": "Arica y Parinacota",
     "direccion": "Avenida Ing. Raúl Pey Casado 2125",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 7300,
     "detalleUrl": "/wayra.html",
     "descripcionLarga": "Proyecto de Ecasa en Avenida Ing. Raúl Pey Casado 2125, Arica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen ZONA DE SPA, SALÓN GOURMET, ZONA DE SURF, PISCINA, ACCESO A LA PLAYA.",
     "mapQuery": "Avenida Ing. Raúl Pey Casado 2125, Arica, Arica y Parinacota, Chile",
@@ -463,7 +628,8 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/86736ec898fe7c3502644dbf.webp",
@@ -477,13 +643,13 @@
         "comuna": "Arica",
         "region": "Arica y Parinacota",
         "direccion": "Avenida Ing. Raúl Pey Casado 2125",
-        "estado": "Entrega inmediata",
+        "estado": "En recepción final",
         "entrega": "Inmediata",
         "tipologias": [
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 7300,
         "detalleUrl": "/wayra.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Avenida Ing. Raúl Pey Casado 2125, Arica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen ZONA DE SPA, SALÓN GOURMET, ZONA DE SURF, PISCINA, ACCESO A LA PLAYA.",
         "mapQuery": "Avenida Ing. Raúl Pey Casado 2125, Arica, Arica y Parinacota, Chile",
@@ -511,13 +677,92 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/86736ec898fe7c3502644dbf.webp",
-        "imagenAlt": "Imagen oficial de Wayra"
+        "imagenAlt": "Imagen oficial de Wayra",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 7300,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 8300,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 7300
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 8300
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "2 dormitorios"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 7300,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 8300,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 7300
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 8300
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "2 dormitorios"
   },
   {
     "slug": "lamara",
@@ -526,13 +771,13 @@
     "comuna": "Arica",
     "region": "Arica y Parinacota",
     "direccion": "Avenida Ing. Raúl Pey Casado 2125",
-    "estado": "En construcción",
-    "entrega": null,
+    "estado": "En verde",
+    "entrega": "Entrega futura",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 4540,
     "detalleUrl": "/lamara.html",
     "descripcionLarga": "Proyecto de Ecasa en Avenida Ing. Raúl Pey Casado 2125, Arica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Salón Gourmet, Gimnasio, Juegos infantiles.",
     "mapQuery": "Avenida Ing. Raúl Pey Casado 2125, Arica, Arica y Parinacota, Chile",
@@ -562,7 +807,9 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF",
+        "entrega"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/186c46197a6759ea10ab3834.webp",
@@ -576,13 +823,13 @@
         "comuna": "Arica",
         "region": "Arica y Parinacota",
         "direccion": "Avenida Ing. Raúl Pey Casado 2125",
-        "estado": "En construcción",
-        "entrega": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
         "tipologias": [
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 4540,
         "detalleUrl": "/lamara.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Avenida Ing. Raúl Pey Casado 2125, Arica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Salón Gourmet, Gimnasio, Juegos infantiles.",
         "mapQuery": "Avenida Ing. Raúl Pey Casado 2125, Arica, Arica y Parinacota, Chile",
@@ -612,13 +859,93 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/186c46197a6759ea10ab3834.webp",
-        "imagenAlt": "Imagen oficial de Lamara"
+        "imagenAlt": "Imagen oficial de Lamara",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 4540,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 7510,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 4540
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 7510
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "2 dormitorios"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 4540,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 7510,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 4540
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 7510
+      }
+    ],
+    "estadoInformado": "En verde",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "2 dormitorios"
   },
   {
     "slug": "alto-buzeta",
@@ -1185,12 +1512,13 @@
     "comuna": "Independencia",
     "region": "Región Metropolitana",
     "direccion": "Bezanilla 1278",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
-      "2 dormitorios"
+      "2 dormitorios",
+      "1 dormitorio"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2620,
     "detalleUrl": "/edificio-bezanilla.html",
     "descripcionLarga": "Proyecto de Ecasa en Bezanilla 1278, Independencia. La ficha oficial publica 2 dormitorios. Sus espacios comunes incluyen Quinchos, Gimnasio, Salón Gourmet, Bodega Encomiendas.",
     "mapQuery": "Bezanilla 1278, Independencia, Región Metropolitana, Chile",
@@ -1217,7 +1545,8 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/63de1adf5135caf4fc4c964d.webp",
@@ -1231,12 +1560,13 @@
         "comuna": "Independencia",
         "region": "Región Metropolitana",
         "direccion": "Bezanilla 1278",
-        "estado": "Entrega inmediata",
+        "estado": "En recepción final",
         "entrega": "Inmediata",
         "tipologias": [
-          "2 dormitorios"
+          "2 dormitorios",
+          "1 dormitorio"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 2620,
         "detalleUrl": "/edificio-bezanilla.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Bezanilla 1278, Independencia. La ficha oficial publica 2 dormitorios. Sus espacios comunes incluyen Quinchos, Gimnasio, Salón Gourmet, Bodega Encomiendas.",
         "mapQuery": "Bezanilla 1278, Independencia, Región Metropolitana, Chile",
@@ -1263,13 +1593,92 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/63de1adf5135caf4fc4c964d.webp",
-        "imagenAlt": "Imagen oficial de Edificio Bezanilla"
+        "imagenAlt": "Imagen oficial de Edificio Bezanilla",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 2620,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 3570,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 2620
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 3570
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "1 dormitorio"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 2620,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 3570,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 2620
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3570
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "1 dormitorio"
   },
   {
     "slug": "jardines-de-alvarado",
@@ -1526,10 +1935,12 @@
     "comuna": "Pichilemu",
     "region": "O'Higgins",
     "direccion": null,
-    "estado": "Sin unidades disponibles",
-    "entrega": null,
-    "tipologias": [],
-    "precioDesdeUF": null,
+    "estado": "En recepción final",
+    "entrega": "Inmediata",
+    "tipologias": [
+      "4 dormitorios"
+    ],
+    "precioDesdeUF": 11343,
     "detalleUrl": "/endemico.html",
     "descripcionLarga": "Condominio frente a la playa en Pichilemu, con acceso a áreas verdes, piscinas, saunas y pump track. El sitio oficial presenta casas de 2 a 4 dormitorios y actualmente señala todos los modelos sin unidades disponibles.",
     "mapQuery": null,
@@ -1553,7 +1964,10 @@
         "estado",
         "nombre",
         "region",
-        "inmobiliaria"
+        "inmobiliaria",
+        "precioDesdeUF",
+        "entrega",
+        "tipologias"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/2b22212f50bd2d3577662f18.webp",
@@ -1567,10 +1981,12 @@
         "comuna": "Pichilemu",
         "region": "O'Higgins",
         "direccion": null,
-        "estado": "Sin unidades disponibles",
-        "entrega": null,
-        "tipologias": [],
-        "precioDesdeUF": null,
+        "estado": "En recepción final",
+        "entrega": "Inmediata",
+        "tipologias": [
+          "4 dormitorios"
+        ],
+        "precioDesdeUF": 11343,
         "detalleUrl": "/endemico.html#etapa-1",
         "descripcionLarga": "Condominio frente a la playa en Pichilemu, con acceso a áreas verdes, piscinas, saunas y pump track. El sitio oficial presenta casas de 2 a 4 dormitorios y actualmente señala todos los modelos sin unidades disponibles.",
         "mapQuery": null,
@@ -1594,13 +2010,70 @@
             "estado",
             "nombre",
             "region",
-            "inmobiliaria"
+            "inmobiliaria",
+            "tipologias",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/2b22212f50bd2d3577662f18.webp",
-        "imagenAlt": "Imagen oficial de Endémico Pichilemu"
+        "imagenAlt": "Imagen oficial de Endémico Pichilemu",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "4d",
+            "label": "4 dormitorios",
+            "bedrooms": 4,
+            "propertyType": "casa",
+            "priceUF": 11343,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "4 dormitorios",
+            "precioDesdeUF": 11343
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "4 dormitorios"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "4d",
+        "label": "4 dormitorios",
+        "bedrooms": 4,
+        "propertyType": "casa",
+        "priceUF": 11343,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "4 dormitorios",
+        "precioDesdeUF": 11343
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "4 dormitorios"
   },
   {
     "slug": "playa-penuelas",
@@ -2589,13 +3062,13 @@
     "comuna": "Papudo",
     "region": "Valparaíso",
     "direccion": "Paseo Punta Puyai 1600",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 5260,
     "detalleUrl": "/lomas-de-puyai.html",
     "descripcionLarga": "Proyecto de Ecasa en Paseo Punta Puyai 1600, Papudo. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Bicicleteros, Juegos infantiles.",
     "mapQuery": "Paseo Punta Puyai 1600, Papudo, Valparaíso, Chile",
@@ -2623,7 +3096,8 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/631c41f5f80e53b3e145ecd4.webp",
@@ -2637,13 +3111,13 @@
         "comuna": "Papudo",
         "region": "Valparaíso",
         "direccion": "Paseo Punta Puyai 1600",
-        "estado": "Entrega inmediata",
+        "estado": "En recepción final",
         "entrega": "Inmediata",
         "tipologias": [
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 5260,
         "detalleUrl": "/lomas-de-puyai.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Paseo Punta Puyai 1600, Papudo. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Bicicleteros, Juegos infantiles.",
         "mapQuery": "Paseo Punta Puyai 1600, Papudo, Valparaíso, Chile",
@@ -2671,7 +3145,8 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/a280b021758d64582b300406.webp",
@@ -2689,7 +3164,34 @@
             "nombre": "Lomas de Puyai 3",
             "etapa": 3
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 5260,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 5260
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "3 dormitorios"
       },
       {
         "slug": "lomas-de-puyai-3",
@@ -2698,10 +3200,13 @@
         "comuna": "Papudo",
         "region": "Valparaíso",
         "direccion": null,
-        "estado": null,
-        "entrega": null,
-        "tipologias": [],
-        "precioDesdeUF": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
+        "tipologias": [
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "precioDesdeUF": 4220,
         "detalleUrl": "/lomas-de-puyai.html#etapa-3",
         "descripcionLarga": null,
         "mapQuery": null,
@@ -2715,7 +3220,11 @@
             "nombre",
             "inmobiliaria",
             "comuna",
-            "region"
+            "region",
+            "tipologias",
+            "estado",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": null,
@@ -2733,9 +3242,75 @@
             "nombre": "Lomas de Puyai 3",
             "etapa": 3
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 4220,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 5040,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 4220
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 5040
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "2 dormitorios"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 5260,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 5260
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "3 dormitorios"
   },
   {
     "slug": "ferroparque",
@@ -2744,13 +3319,14 @@
     "comuna": "Temuco",
     "region": "La Araucanía",
     "direccion": "Pasaje Bascuñán Santa María 0699",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "2 dormitorios",
-      "3 dormitorios"
+      "3 dormitorios",
+      "1 dormitorio"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2360,
     "detalleUrl": "/ferroparque.html",
     "descripcionLarga": "Proyecto de Ecasa en Pasaje Bascuñán Santa María 0699, Temuco. La ficha oficial publica 2 dormitorios, 3 dormitorios. ",
     "mapQuery": "Pasaje Bascuñán Santa María 0699, Temuco, La Araucanía, Chile",
@@ -2771,7 +3347,8 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/91ff04bbcf904896681228e0.webp",
@@ -2785,13 +3362,14 @@
         "comuna": "Temuco",
         "region": "La Araucanía",
         "direccion": "Pasaje Bascuñán Santa María 0699",
-        "estado": "Entrega inmediata",
+        "estado": "En recepción final",
         "entrega": "Inmediata",
         "tipologias": [
           "2 dormitorios",
-          "3 dormitorios"
+          "3 dormitorios",
+          "1 dormitorio"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 2360,
         "detalleUrl": "/ferroparque.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Pasaje Bascuñán Santa María 0699, Temuco. La ficha oficial publica 2 dormitorios, 3 dormitorios. ",
         "mapQuery": "Pasaje Bascuñán Santa María 0699, Temuco, La Araucanía, Chile",
@@ -2812,7 +3390,8 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/91ff04bbcf904896681228e0.webp",
@@ -2830,7 +3409,58 @@
             "nombre": "Ferroparque 2",
             "etapa": 2
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 2360,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 3500,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 3510,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 2360
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 3500
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 3510
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "1 dormitorio"
       },
       {
         "slug": "ferroparque-2",
@@ -2839,14 +3469,14 @@
         "comuna": "Temuco",
         "region": "La Araucanía",
         "direccion": "Av. Bascuñán Santa María 0699",
-        "estado": "Lanzamiento",
-        "entrega": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
         "tipologias": [
           "Estudio",
           "1 dormitorio",
           "2 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 2240,
         "detalleUrl": "/ferroparque.html#etapa-2",
         "descripcionLarga": "Proyecto de Ecasa en Av. Bascuñán Santa María 0699, Temuco. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Gimnasio, Pet Zone.",
         "mapQuery": "Av. Bascuñán Santa María 0699, Temuco, La Araucanía, Chile",
@@ -2873,7 +3503,9 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/b8dccb67ec6fec7cc2a6e011.webp",
@@ -2891,9 +3523,111 @@
             "nombre": "Ferroparque 2",
             "etapa": 2
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "0d",
+            "label": "Estudio",
+            "bedrooms": 0,
+            "propertyType": "departamento",
+            "priceUF": 2240,
+            "priceDecimals": 0
+          },
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 2740,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 2980,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "Estudio",
+            "precioDesdeUF": 2240
+          },
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 2740
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 2980
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "Estudio"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 2360,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 3500,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 3510,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 2360
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3500
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 3510
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "1 dormitorio"
   },
   {
     "slug": "froilan-roa-5731-torre-norte",
@@ -3324,13 +4058,13 @@
     "comuna": "Coquimbo",
     "region": "Coquimbo",
     "direccion": "Los Lagos 910",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 5700,
     "detalleUrl": "/cumbres-de-penuelas.html",
     "descripcionLarga": "Proyecto de Ecasa en Los Lagos 910, Coquimbo. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Juegos infantiles, Salón Gourmet, quinchos panorámicos.",
     "mapQuery": "Los Lagos 910, Coquimbo, Coquimbo, Chile",
@@ -3358,7 +4092,8 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/1dc3c6c30a31dea5f786d885.webp",
@@ -3372,13 +4107,13 @@
         "comuna": "Coquimbo",
         "region": "Coquimbo",
         "direccion": "Los Lagos 910",
-        "estado": "Entrega inmediata",
+        "estado": "En recepción final",
         "entrega": "Inmediata",
         "tipologias": [
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 5700,
         "detalleUrl": "/cumbres-de-penuelas.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Los Lagos 910, Coquimbo. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Juegos infantiles, Salón Gourmet, quinchos panorámicos.",
         "mapQuery": "Los Lagos 910, Coquimbo, Coquimbo, Chile",
@@ -3406,13 +4141,68 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/1dc3c6c30a31dea5f786d885.webp",
-        "imagenAlt": "Imagen oficial de Cumbres de Peñuelas"
+        "imagenAlt": "Imagen oficial de Cumbres de Peñuelas",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 5700,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 5700
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "3 dormitorios"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 5700,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 5700
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "3 dormitorios"
   },
   {
     "slug": "edificio-baum",
@@ -5071,14 +5861,14 @@
     "comuna": "La Cisterna",
     "region": "Región Metropolitana",
     "direccion": "Victoria 7997",
-    "estado": "Lanzamiento",
-    "entrega": null,
+    "estado": "En blanco",
+    "entrega": "Entrega futura",
     "tipologias": [
       "Estudio",
       "1 dormitorio",
       "2 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2410,
     "detalleUrl": "/espacio-victoria.html",
     "descripcionLarga": "Proyecto de Ecasa en Victoria 7997, La Cisterna. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Gimnasio, quinchos panorámicos, SOCIAL LOUNGE.",
     "mapQuery": "Victoria 7997, La Cisterna, Región Metropolitana, Chile",
@@ -5103,7 +5893,9 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF",
+        "entrega"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/78962ee5e6d3bd6c53790fc3.webp",
@@ -5117,14 +5909,14 @@
         "comuna": "La Cisterna",
         "region": "Región Metropolitana",
         "direccion": "Victoria 7997",
-        "estado": "Lanzamiento",
-        "entrega": null,
+        "estado": "En blanco",
+        "entrega": "Entrega futura",
         "tipologias": [
           "Estudio",
           "1 dormitorio",
           "2 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 2410,
         "detalleUrl": "/espacio-victoria.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Victoria 7997, La Cisterna. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Gimnasio, quinchos panorámicos, SOCIAL LOUNGE.",
         "mapQuery": "Victoria 7997, La Cisterna, Región Metropolitana, Chile",
@@ -5149,13 +5941,117 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/78962ee5e6d3bd6c53790fc3.webp",
-        "imagenAlt": "Imagen oficial de Espacio Victoria"
+        "imagenAlt": "Imagen oficial de Espacio Victoria",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "0d",
+            "label": "Estudio",
+            "bedrooms": 0,
+            "propertyType": "departamento",
+            "priceUF": 2410,
+            "priceDecimals": 0
+          },
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 2890,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 3260,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "Estudio",
+            "precioDesdeUF": 2410
+          },
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 2890
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 3260
+          }
+        ],
+        "estadoInformado": "En blanco",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "Estudio"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "0d",
+        "label": "Estudio",
+        "bedrooms": 0,
+        "propertyType": "departamento",
+        "priceUF": 2410,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 2890,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 3260,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "Estudio",
+        "precioDesdeUF": 2410
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 2890
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3260
+      }
+    ],
+    "estadoInformado": "En blanco",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "Estudio"
   },
   {
     "slug": "terratolten",
@@ -5164,13 +6060,13 @@
     "comuna": "Villarrica",
     "region": "La Araucanía",
     "direccion": "Beato Adolfo Kolping 685",
-    "estado": "En construcción",
-    "entrega": null,
+    "estado": "En verde",
+    "entrega": "Entrega futura",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": 2390,
+    "precioDesdeUF": 2780,
     "detalleUrl": "/terratolten.html",
     "descripcionLarga": "Proyecto de Ecasa en Beato Adolfo Kolping 685, Villarrica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Gimnasio.",
     "mapQuery": "Beato Adolfo Kolping 685, Villarrica, La Araucanía, Chile",
@@ -5197,7 +6093,8 @@
         "precioDesdeUF",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "entrega"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/1a51a3df930e14e3c6440c9a.webp",
@@ -5211,13 +6108,13 @@
         "comuna": "Villarrica",
         "region": "La Araucanía",
         "direccion": "Beato Adolfo Kolping 685",
-        "estado": "Entrega inmediata",
-        "entrega": "Inmediata",
+        "estado": "En verde",
+        "entrega": "Próxima entrega",
         "tipologias": [
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 3750,
         "detalleUrl": "/terratolten.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Beato Adolfo Kolping 685, Villarrica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Juegos infantiles, Bicicleteros.",
         "mapQuery": "Beato Adolfo Kolping 685, Villarrica, La Araucanía, Chile",
@@ -5245,7 +6142,8 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/4947617ecd885a17aa405c6c.webp",
@@ -5268,7 +6166,46 @@
             "nombre": "Terratoltén 3",
             "etapa": 3
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 3750,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 4370,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 3750
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 4370
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "2 dormitorios"
       },
       {
         "slug": "terratolten-2",
@@ -5277,8 +6214,8 @@
         "comuna": "Villarrica",
         "region": "La Araucanía",
         "direccion": null,
-        "estado": null,
-        "entrega": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
         "tipologias": [],
         "precioDesdeUF": null,
         "detalleUrl": "/terratolten.html#etapa-2",
@@ -5300,7 +6237,10 @@
             "proyectoMatrizSlug",
             "etapa",
             "comuna",
-            "region"
+            "region",
+            "tipologias",
+            "estado",
+            "entrega"
           ]
         },
         "etapasRelacionadas": [
@@ -5319,7 +6259,20 @@
             "nombre": "Terratoltén 3",
             "etapa": 3
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [],
+        "preciosPorTipologia": [],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "pending",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": null
       },
       {
         "slug": "terratolten-3",
@@ -5328,13 +6281,13 @@
         "comuna": "Villarrica",
         "region": "La Araucanía",
         "direccion": "Beato Adolfo Kolping 685",
-        "estado": "En construcción",
-        "entrega": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
         "tipologias": [
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": 2390,
+        "precioDesdeUF": 2780,
         "detalleUrl": "/terratolten.html#etapa-3",
         "descripcionLarga": "Proyecto de Ecasa en Beato Adolfo Kolping 685, Villarrica. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Áreas verdes, Quinchos, Gimnasio.",
         "mapQuery": "Beato Adolfo Kolping 685, Villarrica, La Araucanía, Chile",
@@ -5361,7 +6314,8 @@
             "precioDesdeUF",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "entrega"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/1a51a3df930e14e3c6440c9a.webp",
@@ -5384,10 +6338,88 @@
             "nombre": "Terratoltén 3",
             "etapa": 3
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 2780,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 3840,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 2780
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 3840
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "2 dormitorios"
       }
     ],
-    "imagenEtapa": "Etapa 3"
+    "imagenEtapa": "Etapa 3",
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 2780,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 3840,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 2780
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 3840
+      }
+    ],
+    "estadoInformado": "En verde",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "2 dormitorios"
   },
   {
     "slug": "pintor-cicarelli-iii",
@@ -5828,13 +6860,14 @@
     "comuna": "La Florida",
     "region": "Región Metropolitana",
     "direccion": "Vicuña Mackenna 7189",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "1 dormitorio",
-      "2 dormitorios"
+      "2 dormitorios",
+      "Estudio"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 3240,
     "detalleUrl": "/urban-la-florida.html",
     "descripcionLarga": "Proyecto de Ecasa en Vicuña Mackenna 7189, La Florida. La ficha oficial publica 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Gimnasio, Lavandería, Salón Gourmet.",
     "mapQuery": "Vicuña Mackenna 7189, La Florida, Región Metropolitana, Chile",
@@ -5865,7 +6898,8 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/d4383ce2177fa1d40cc42d17.webp",
@@ -5879,13 +6913,14 @@
         "comuna": "La Florida",
         "region": "Región Metropolitana",
         "direccion": "Vicuña Mackenna 7189",
-        "estado": "Entrega inmediata",
+        "estado": "En recepción final",
         "entrega": "Inmediata",
         "tipologias": [
           "1 dormitorio",
-          "2 dormitorios"
+          "2 dormitorios",
+          "Estudio"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 3240,
         "detalleUrl": "/urban-la-florida.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Vicuña Mackenna 7189, La Florida. La ficha oficial publica 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Gimnasio, Lavandería, Salón Gourmet.",
         "mapQuery": "Vicuña Mackenna 7189, La Florida, Región Metropolitana, Chile",
@@ -5916,13 +6951,116 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/d4383ce2177fa1d40cc42d17.webp",
-        "imagenAlt": "Imagen oficial de Urban La Florida"
+        "imagenAlt": "Imagen oficial de Urban La Florida",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "0d",
+            "label": "Estudio",
+            "bedrooms": 0,
+            "propertyType": "departamento",
+            "priceUF": 4400,
+            "priceDecimals": 0
+          },
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 3240,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 4230,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "Estudio",
+            "precioDesdeUF": 4400
+          },
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 3240
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 4230
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "1 dormitorio"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "0d",
+        "label": "Estudio",
+        "bedrooms": 0,
+        "propertyType": "departamento",
+        "priceUF": 4400,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3240,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 4230,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "Estudio",
+        "precioDesdeUF": 4400
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 3240
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 4230
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "1 dormitorio"
   },
   {
     "slug": "vicuna-mackenna-6896",
@@ -6043,14 +7181,14 @@
     "comuna": "La Florida",
     "region": "Región Metropolitana",
     "direccion": "Pichidegua 6422",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "Estudio",
       "1 dormitorio",
       "2 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2350,
     "detalleUrl": "/aires-la-florida-2.html",
     "descripcionLarga": "Proyecto de Ecasa en Pichidegua 6422, La Florida. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Piscina, Salón Gourmet, Bicicleteros, Gimnasio.",
     "mapQuery": "Pichidegua 6422, La Florida, Región Metropolitana, Chile",
@@ -6077,7 +7215,8 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/ba038d077a5722e8b76f0838.webp",
@@ -6091,14 +7230,14 @@
         "comuna": "La Florida",
         "region": "Región Metropolitana",
         "direccion": "Pichidegua 6422",
-        "estado": "Entrega inmediata",
+        "estado": "En recepción final",
         "entrega": "Inmediata",
         "tipologias": [
           "Estudio",
           "1 dormitorio",
           "2 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 2350,
         "detalleUrl": "/aires-la-florida-2.html#etapa-2",
         "descripcionLarga": "Proyecto de Ecasa en Pichidegua 6422, La Florida. La ficha oficial publica Estudio, 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Piscina, Salón Gourmet, Bicicleteros, Gimnasio.",
         "mapQuery": "Pichidegua 6422, La Florida, Región Metropolitana, Chile",
@@ -6125,13 +7264,116 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/ba038d077a5722e8b76f0838.webp",
-        "imagenAlt": "Imagen oficial de Aires La Florida 2"
+        "imagenAlt": "Imagen oficial de Aires La Florida 2",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "0d",
+            "label": "Estudio",
+            "bedrooms": 0,
+            "propertyType": "departamento",
+            "priceUF": 2350,
+            "priceDecimals": 0
+          },
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 3230,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 3600,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "Estudio",
+            "precioDesdeUF": 2350
+          },
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 3230
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 3600
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "Estudio"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "0d",
+        "label": "Estudio",
+        "bedrooms": 0,
+        "propertyType": "departamento",
+        "priceUF": 2350,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3230,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 3600,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "Estudio",
+        "precioDesdeUF": 2350
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 3230
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3600
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "Estudio"
   },
   {
     "slug": "condominio-uruguay",
@@ -6170,13 +7412,14 @@
     "comuna": "San Joaquín",
     "region": "Región Metropolitana",
     "direccion": "Vicuña Mackenna 5889",
-    "estado": "En construcción",
-    "entrega": null,
+    "estado": "En blanco",
+    "entrega": "Entrega futura",
     "tipologias": [
       "1 dormitorio",
-      "2 dormitorios"
+      "2 dormitorios",
+      "Local"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 3260,
     "detalleUrl": "/enlace-mackenna.html",
     "descripcionLarga": "Proyecto de Ecasa en Vicuña Mackenna 5889, San Joaquín. La ficha oficial publica 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Quinchos, Salón Gourmet, Bicicleteros, Gimnasio, Calistenia.",
     "mapQuery": "Vicuña Mackenna 5889, San Joaquín, Región Metropolitana, Chile",
@@ -6203,7 +7446,9 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF",
+        "entrega"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/c009ee5d70d184dc5b01cfc5.webp",
@@ -6217,13 +7462,14 @@
         "comuna": "San Joaquín",
         "region": "Región Metropolitana",
         "direccion": "Vicuña Mackenna 5889",
-        "estado": "En construcción",
-        "entrega": null,
+        "estado": "En blanco",
+        "entrega": "Entrega futura",
         "tipologias": [
           "1 dormitorio",
-          "2 dormitorios"
+          "2 dormitorios",
+          "Local"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 3260,
         "detalleUrl": "/enlace-mackenna.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Vicuña Mackenna 5889, San Joaquín. La ficha oficial publica 1 dormitorio, 2 dormitorios. Sus espacios comunes incluyen Quinchos, Salón Gourmet, Bicicleteros, Gimnasio, Calistenia.",
         "mapQuery": "Vicuña Mackenna 5889, San Joaquín, Región Metropolitana, Chile",
@@ -6250,12 +7496,130 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/c009ee5d70d184dc5b01cfc5.webp",
-        "imagenAlt": "Imagen oficial de Enlace Mackenna"
+        "imagenAlt": "Imagen oficial de Enlace Mackenna",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "local",
+            "label": "Local",
+            "bedrooms": null,
+            "propertyType": "local",
+            "priceUF": 4800,
+            "priceDecimals": 0
+          },
+          {
+            "id": "1d",
+            "label": "1 dormitorio",
+            "bedrooms": 1,
+            "propertyType": "departamento",
+            "priceUF": 3260,
+            "priceDecimals": 0
+          },
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 3570,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "Local",
+            "precioDesdeUF": 4800
+          },
+          {
+            "tipologia": "1 dormitorio",
+            "precioDesdeUF": 3260
+          },
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 3570
+          }
+        ],
+        "estadoInformado": "En blanco",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "1 dormitorio",
+        "catalogPricePolicy": "by-product",
+        "tipoActivo": "Mixto",
+        "tiposActivos": [
+          "Residencial",
+          "Comercial",
+          "Mixto"
+        ]
       }
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "local",
+        "label": "Local",
+        "bedrooms": null,
+        "propertyType": "local",
+        "priceUF": 4800,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3260,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 3570,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "Local",
+        "precioDesdeUF": 4800
+      },
+      {
+        "tipologia": "1 dormitorio",
+        "precioDesdeUF": 3260
+      },
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 3570
+      }
+    ],
+    "estadoInformado": "En blanco",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "catalogPricePolicy": "by-product",
+    "precioDesdeTipologia": "1 dormitorio",
+    "tipoActivo": "Mixto",
+    "tiposActivos": [
+      "Residencial",
+      "Comercial",
+      "Mixto"
     ]
   },
   {
@@ -7086,13 +8450,13 @@
     "comuna": "Huechuraba",
     "region": "Región Metropolitana",
     "direccion": "Av. Los Libertadores 6170",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 4340,
     "detalleUrl": "/conecta-huechuraba.html",
     "descripcionLarga": "Proyecto de Ecasa en Av. Los Libertadores 6170, Huechuraba. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Juegos infantiles, Gimnasio, Salón Gourmet.",
     "mapQuery": "Av. Los Libertadores 6170, Huechuraba, Región Metropolitana, Chile",
@@ -7121,7 +8485,8 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/2daee37667db34d83ff29ccc.webp",
@@ -7135,13 +8500,13 @@
         "comuna": "Huechuraba",
         "region": "Región Metropolitana",
         "direccion": "Av. Los Libertadores 6170",
-        "estado": "Entrega inmediata",
+        "estado": "En recepción final",
         "entrega": "Inmediata",
         "tipologias": [
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 4340,
         "detalleUrl": "/conecta-huechuraba.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Av. Los Libertadores 6170, Huechuraba. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen Piscina, Quinchos, Juegos infantiles, Gimnasio, Salón Gourmet.",
         "mapQuery": "Av. Los Libertadores 6170, Huechuraba, Región Metropolitana, Chile",
@@ -7170,13 +8535,68 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/2daee37667db34d83ff29ccc.webp",
-        "imagenAlt": "Imagen oficial de Conecta Huechuraba"
+        "imagenAlt": "Imagen oficial de Conecta Huechuraba",
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 4340,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 4340
+          }
+        ],
+        "estadoInformado": "En recepción final",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "3 dormitorios"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 4340,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 4340
+      }
+    ],
+    "estadoInformado": "En recepción final",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "3 dormitorios"
   },
   {
     "slug": "bordevivo",
@@ -7303,13 +8723,13 @@
     "comuna": "La Serena",
     "region": "Coquimbo",
     "direccion": "Benito Rebolledo esquina San Joaquín",
-    "estado": "Próxima Entrega",
-    "entrega": null,
+    "estado": "En verde",
+    "entrega": "Entrega futura",
     "tipologias": [
       "2 dormitorios",
       "3 dormitorios"
     ],
-    "precioDesdeUF": null,
+    "precioDesdeUF": 5900,
     "detalleUrl": "/alto-san-joaquin.html",
     "descripcionLarga": "Proyecto de Ecasa en Benito Rebolledo esquina San Joaquín, La Serena. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen PARQUE PRIVADO, ZONA DE SPA, VISTAS PANORÁMICAS, ZONA PET, AMPLIA PISCINA.",
     "mapQuery": "Benito Rebolledo esquina San Joaquín, La Serena, Coquimbo, Chile",
@@ -7336,7 +8756,9 @@
         "nombre",
         "region",
         "superficieDesdeM2",
-        "tipologias"
+        "tipologias",
+        "precioDesdeUF",
+        "entrega"
       ]
     },
     "imagenPrincipal": "/assets/propiedades/catalogo/35362f377694247fd6260156.webp",
@@ -7350,13 +8772,13 @@
         "comuna": "La Serena",
         "region": "Coquimbo",
         "direccion": "Benito Rebolledo esquina San Joaquín",
-        "estado": "Próxima Entrega",
-        "entrega": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
         "tipologias": [
           "2 dormitorios",
           "3 dormitorios"
         ],
-        "precioDesdeUF": null,
+        "precioDesdeUF": 5900,
         "detalleUrl": "/alto-san-joaquin.html#etapa-1",
         "descripcionLarga": "Proyecto de Ecasa en Benito Rebolledo esquina San Joaquín, La Serena. La ficha oficial publica 2 dormitorios, 3 dormitorios. Sus espacios comunes incluyen PARQUE PRIVADO, ZONA DE SPA, VISTAS PANORÁMICAS, ZONA PET, AMPLIA PISCINA.",
         "mapQuery": "Benito Rebolledo esquina San Joaquín, La Serena, Coquimbo, Chile",
@@ -7383,7 +8805,9 @@
             "nombre",
             "region",
             "superficieDesdeM2",
-            "tipologias"
+            "tipologias",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "imagenPrincipal": "/assets/propiedades/catalogo/35362f377694247fd6260156.webp",
@@ -7406,7 +8830,46 @@
             "nombre": "Alto San Joaquín 3",
             "etapa": 3
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 5900,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 9250,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 5900
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 9250
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "2 dormitorios"
       },
       {
         "slug": "alto-san-joaquin-2",
@@ -7415,10 +8878,13 @@
         "comuna": "La Serena",
         "region": "Coquimbo",
         "direccion": null,
-        "estado": null,
-        "entrega": null,
-        "tipologias": [],
-        "precioDesdeUF": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
+        "tipologias": [
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "precioDesdeUF": 5900,
         "detalleUrl": "/alto-san-joaquin.html#etapa-2",
         "descripcionLarga": null,
         "mapQuery": null,
@@ -7438,7 +8904,11 @@
             "proyectoMatrizSlug",
             "etapa",
             "comuna",
-            "region"
+            "region",
+            "tipologias",
+            "estado",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "etapasRelacionadas": [
@@ -7457,7 +8927,46 @@
             "nombre": "Alto San Joaquín 3",
             "etapa": 3
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 5900,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 8300,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 5900
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 8300
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "2 dormitorios"
       },
       {
         "slug": "alto-san-joaquin-3",
@@ -7466,10 +8975,13 @@
         "comuna": "La Serena",
         "region": "Coquimbo",
         "direccion": null,
-        "estado": null,
-        "entrega": null,
-        "tipologias": [],
-        "precioDesdeUF": null,
+        "estado": "En verde",
+        "entrega": "Entrega futura",
+        "tipologias": [
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "precioDesdeUF": 5900,
         "detalleUrl": "/alto-san-joaquin.html#etapa-3",
         "descripcionLarga": null,
         "mapQuery": null,
@@ -7489,7 +9001,11 @@
             "proyectoMatrizSlug",
             "etapa",
             "comuna",
-            "region"
+            "region",
+            "tipologias",
+            "estado",
+            "entrega",
+            "precioDesdeUF"
           ]
         },
         "etapasRelacionadas": [
@@ -7508,9 +9024,87 @@
             "nombre": "Alto San Joaquín 3",
             "etapa": 3
           }
-        ]
+        ],
+        "precioDecimales": 0,
+        "commercialOffers": [
+          {
+            "id": "2d",
+            "label": "2 dormitorios",
+            "bedrooms": 2,
+            "propertyType": "departamento",
+            "priceUF": 5900,
+            "priceDecimals": 0
+          },
+          {
+            "id": "3d",
+            "label": "3 dormitorios",
+            "bedrooms": 3,
+            "propertyType": "departamento",
+            "priceUF": 8300,
+            "priceDecimals": 0
+          }
+        ],
+        "preciosPorTipologia": [
+          {
+            "tipologia": "2 dormitorios",
+            "precioDesdeUF": 5900
+          },
+          {
+            "tipologia": "3 dormitorios",
+            "precioDesdeUF": 8300
+          }
+        ],
+        "estadoInformado": "En verde",
+        "commercialSource": {
+          "type": "owner-supplied",
+          "date": "2026-10-30",
+          "priceStatus": "confirmed",
+          "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+          "priority": "owner-authorized",
+          "priceScope": "typology-not-unit"
+        },
+        "precioDesdeTipologia": "2 dormitorios"
       }
-    ]
+    ],
+    "precioDecimales": 0,
+    "commercialOffers": [
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 5900,
+        "priceDecimals": 0
+      },
+      {
+        "id": "3d",
+        "label": "3 dormitorios",
+        "bedrooms": 3,
+        "propertyType": "departamento",
+        "priceUF": 9250,
+        "priceDecimals": 0
+      }
+    ],
+    "preciosPorTipologia": [
+      {
+        "tipologia": "2 dormitorios",
+        "precioDesdeUF": 5900
+      },
+      {
+        "tipologia": "3 dormitorios",
+        "precioDesdeUF": 9250
+      }
+    ],
+    "estadoInformado": "En verde",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priceStatus": "confirmed",
+      "source": "Capturas comerciales ECasa suministradas por Sollahms; tabla del propietario",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit"
+    },
+    "precioDesdeTipologia": "2 dormitorios"
   },
   {
     "slug": "vista-bulnes",

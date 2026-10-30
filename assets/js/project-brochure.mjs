@@ -3,8 +3,8 @@ const price=value=>'Desde UF '+new Intl.NumberFormat('es-CL',{minimumFractionDig
 export function brochureSelectionMessage(record,key,message=''){
   const text=String(message||''),offer=record?.offers?.find(o=>String(o.id??o.bedrooms)===String(key));
   if(!offer)return text;
-  return ['Proyecto: '+record.name,'Inmobiliaria: '+record.developer,'Tipología seleccionada: '+offer.label,
-    'Tipo de propiedad: '+(offer.propertyType==='local'?'Local comercial':'Departamento'),
+  return ['Proyecto: '+(offer.stageName??record.name),'Inmobiliaria: '+record.developer,'Tipología seleccionada: '+offer.label,
+    'Tipo de propiedad: '+(offer.propertyType==='local'?'Local comercial':offer.propertyType==='casa'?'Casa':'Departamento'),
     'Precio mostrado por tipología: '+(Number.isFinite(offer.priceUF)?price(offer.priceUF):'Consultar valor'),
     'Referencia por tipología; unidad, inclusiones y disponibilidad por confirmar.'].join('\n')+'\n'+text;
 }
@@ -16,7 +16,7 @@ export function initializeBrochure(root){
   const locked=()=>form.hasAttribute('aria-busy')||form.querySelector('fieldset').disabled;
   function select(key){
     const offer=record.offers.find(o=>String(o.id??o.bedrooms)===String(key));selected=offer?String(key):null;
-    panel.hidden=!offer;label.textContent=offer?offer.label+' · '+(Number.isFinite(offer.priceUF)?price(offer.priceUF):'Consultar valor'):'';
+    panel.hidden=!offer;label.textContent=offer?(offer.stageName?offer.stageName+' · ':'')+offer.label+' · '+(Number.isFinite(offer.priceUF)?price(offer.priceUF):'Consultar valor'):'';
     message.maxLength=Math.min(1400,1600-brochureSelectionMessage(record,selected,'').length);
   }
   root.addEventListener('click',event=>{
