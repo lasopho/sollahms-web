@@ -77,6 +77,8 @@ def main():
     data=sync_facets(data,catalog)
     from aj_urbana_commercial import sync_facets as sync_aj
     data=sync_aj(data,catalog)
+    from sento_commercial import sync_facets as sync_sento
+    data=sync_sento(data,catalog)
     rendered=json.dumps(data,ensure_ascii=False,separators=(',',':'))+'\n';path=ROOT/'data/catalog-facets.json'
     if args.check:assert path.read_text()==rendered,'Regenerate catalogue facets'
     else:path.write_text(rendered)

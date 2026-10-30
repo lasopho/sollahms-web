@@ -5,7 +5,8 @@ export function publicOffer(project,key){
   return project?.commercialOffers?.find(o=>o.id===key)??null;
 }
 export function catalogReference(project,state={}){
-  if((project.inmobiliaria==='Ecasa'&&project.commercialSource?.date==='2026-10-30'||project.inmobiliaria==='AJ Urbana'&&project.catalogPricePolicy==='owner-typology')){
+  if((project.inmobiliaria==='Ecasa'&&project.commercialSource?.date==='2026-10-30'||['AJ Urbana','Sento'].includes(project.inmobiliaria)&&project.catalogPricePolicy==='owner-typology')){
+    if(project.slug==='plaza-las-condes'&&!state.bedrooms&&!state.typologies?.length)return {value:project.precioDesdeUF,typology:project.precioDesdeTipologia};
     const commercial=state.assetType==='Comercial'||state.propertyType==='local';
     const beds=state.bedrooms,types=state.typologies??[];
     const offers=(project.commercialOffers??[]).filter(o=>(commercial?o.propertyType==='local':o.propertyType!=='local')

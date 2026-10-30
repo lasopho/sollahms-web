@@ -4965,14 +4965,14 @@
     "nombre": "Domeyko 2055",
     "inmobiliaria": "Sento",
     "detalleUrl": "/domeyko-2055.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2700,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/domeyko-2055-01.webp",
     "imagenAlt": "Render referencial: fachada del edificio de Domeyko 2055",
     "comuna": "Santiago",
     "region": "Región Metropolitana",
     "direccion": "Domeyko 2055",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "Estudio",
@@ -4991,7 +4991,42 @@
         "tipologias",
         "mapQuery"
       ]
-    }
+    },
+    "commercialOffers": [
+      {
+        "id": "0d",
+        "label": "Estudio",
+        "bedrooms": 0,
+        "propertyType": "departamento",
+        "priceUF": 2700,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3193,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 4112,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Captura comercial Sento 30/10/2026 19:48:04 y tabla autorizada por Sollahms"
+    },
+    "precioDesdeTipologia": "Estudio"
   },
   {
     "slug": "vergara-domeyko",
@@ -5291,7 +5326,7 @@
     "comuna": "Las Condes",
     "region": "Región Metropolitana",
     "direccion": "Avenida Las Condes 7083",
-    "estado": "Próxima entrega",
+    "estado": "En verde",
     "mapQuery": "Avenida Las Condes 7083, Las Condes, Región Metropolitana, Chile",
     "verificacion": {
       "estadoFuente": "public_subset",
@@ -5321,7 +5356,27 @@
       "condiciones": "Sin descuento calculado. Confirmar disponibilidad, inclusiones y condiciones al cotizar."
     },
     "descripcionCorta": "Edificio de 10 pisos más azotea, con piscina, Sky Bar y espacios para compartir, cerca del Metro Hernando de Magallanes.",
-    "descripcionCortaFuente": "data/plaza-las-condes-verified.json"
+    "descripcionCortaFuente": "data/plaza-las-condes-verified.json",
+    "commercialOffers": [
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 11119,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "entrega": "Diciembre 2026",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Captura comercial Sento 30/10/2026 19:48:04 y tabla autorizada por Sollahms",
+      "conflict": "UF11119 corresponde al nuevo valor por tipología2D; se conserva mínimo de listaUF11073 autorizado anteriormente paraunidad313. No consta revocación."
+    }
   },
   {
     "slug": "mapocho-3521",
@@ -5438,15 +5493,15 @@
     "nombre": "Jofré 157",
     "inmobiliaria": "Sento",
     "detalleUrl": "/jofre-135.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 3969,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/jofre-135-01.webp",
     "imagenAlt": "Render referencial: fachada del edificio de Jofré 157",
     "comuna": "Santiago",
     "region": "Región Metropolitana",
     "direccion": "Jofré 157",
-    "estado": "Vendido",
-    "entrega": "Proyecto entregado",
+    "estado": "En recepción final",
+    "entrega": "Inmediata",
     "tipologias": [
       "Estudio",
       "1 dormitorio",
@@ -5462,7 +5517,26 @@
         "entrega",
         "tipologias"
       ]
-    }
+    },
+    "commercialOffers": [
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3969,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Captura comercial Sento 30/10/2026 19:48:04 y tabla autorizada por Sollahms"
+    },
+    "precioDesdeTipologia": "1 dormitorio"
   },
   {
     "slug": "irarrazaval",
@@ -6710,13 +6784,13 @@
     "nombre": "Mirador La Florida",
     "inmobiliaria": "Sento",
     "detalleUrl": "/mirador-la-florida.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 2978,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/mirador-la-florida-01.webp",
     "imagenAlt": "Render referencial: fachada del edificio de Mirador La Florida",
     "comuna": "La Florida",
     "region": "Región Metropolitana",
-    "estado": "Venta en blanco",
+    "estado": "En blanco",
     "tipologias": [
       "Estudio",
       "1 dormitorio",
@@ -6740,7 +6814,43 @@
       "publisher": "Sento",
       "checkedOn": "2026-10-26",
       "ownerConfirmed": true
-    }
+    },
+    "commercialOffers": [
+      {
+        "id": "0d",
+        "label": "Estudio",
+        "bedrooms": 0,
+        "propertyType": "departamento",
+        "priceUF": 2978,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3561,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 4352,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "entrega": "Primer semestre 2029",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Captura comercial Sento 30/10/2026 19:48:04 y tabla autorizada por Sollahms"
+    },
+    "precioDesdeTipologia": "Estudio"
   },
   {
     "slug": "alto-goycolea",
@@ -8471,14 +8581,14 @@
     "nombre": "Curicó 77",
     "inmobiliaria": "Sento",
     "detalleUrl": "/curico-77.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 3262,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/curico-77-01.webp",
     "imagenAlt": "Render referencial: fachada del edificio de Curicó 77",
     "comuna": "Santiago",
     "region": "Región Metropolitana",
     "direccion": "Curicó 77",
-    "estado": "Venta en verde",
+    "estado": "En blanco",
     "mapQuery": "Curicó 77, Santiago, Región Metropolitana, Chile",
     "verificacion": {
       "estadoFuente": "public_subset",
@@ -8489,21 +8599,62 @@
         "estado",
         "mapQuery"
       ]
-    }
+    },
+    "commercialOffers": [
+      {
+        "id": "0d",
+        "label": "Estudio",
+        "bedrooms": 0,
+        "propertyType": "departamento",
+        "priceUF": 3262,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3778,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 5050,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "entrega": "Enero 2029",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Captura comercial Sento 30/10/2026 19:48:04 y tabla autorizada por Sollahms"
+    },
+    "tipologias": [
+      "Estudio",
+      "1 dormitorio",
+      "2 dormitorios"
+    ],
+    "precioDesdeTipologia": "Estudio"
   },
   {
     "slug": "san-ignacio",
     "nombre": "San Ignacio",
     "inmobiliaria": "Sento",
     "detalleUrl": "/san-ignacio.html",
-    "precioDesdeUF": null,
+    "precioDesdeUF": 3625,
     "superficieDesdeM2": null,
     "imagenPrincipal": "/assets/propiedades/brochures-20261025/san-ignacio-05.webp",
     "imagenAlt": "Fotografía: piscina de San Ignacio",
     "comuna": "Santiago",
     "region": "Región Metropolitana",
     "direccion": "San Ignacio 280",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "tipologias": [
       "Estudio",
@@ -8522,7 +8673,42 @@
         "tipologias",
         "mapQuery"
       ]
-    }
+    },
+    "commercialOffers": [
+      {
+        "id": "0d",
+        "label": "Estudio",
+        "bedrooms": 0,
+        "propertyType": "departamento",
+        "priceUF": 3670,
+        "priceDecimals": 0
+      },
+      {
+        "id": "1d",
+        "label": "1 dormitorio",
+        "bedrooms": 1,
+        "propertyType": "departamento",
+        "priceUF": 3625,
+        "priceDecimals": 0
+      },
+      {
+        "id": "2d",
+        "label": "2 dormitorios",
+        "bedrooms": 2,
+        "propertyType": "departamento",
+        "priceUF": 4495,
+        "priceDecimals": 0
+      }
+    ],
+    "catalogPricePolicy": "owner-typology",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Captura comercial Sento 30/10/2026 19:48:04 y tabla autorizada por Sollahms"
+    },
+    "precioDesdeTipologia": "1 dormitorio"
   },
   {
     "slug": "angamos",
@@ -8536,7 +8722,7 @@
     "comuna": "Santiago",
     "region": "Región Metropolitana",
     "direccion": "Angamos 205",
-    "estado": "Entrega inmediata",
+    "estado": "En recepción final",
     "entrega": "Inmediata",
     "mapQuery": "Angamos 205, Santiago, Región Metropolitana, Chile",
     "verificacion": {
@@ -8549,7 +8735,17 @@
         "entrega",
         "mapQuery"
       ]
-    }
+    },
+    "commercialOffers": [],
+    "catalogPricePolicy": "owner-typology",
+    "commercialSource": {
+      "type": "owner-supplied",
+      "date": "2026-10-30",
+      "priority": "owner-authorized",
+      "priceScope": "typology-not-unit",
+      "source": "Captura comercial Sento 30/10/2026 19:48:04 y tabla autorizada por Sollahms"
+    },
+    "tipologias": []
   },
   {
     "slug": "conecta-huechuraba",
