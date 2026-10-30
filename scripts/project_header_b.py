@@ -119,5 +119,8 @@ def _finalize_project(page, project):
     page = apply_aj(page, project)
     from sento_commercial import apply_sento
     page = apply_sento(page, project)
+    from leon_commercial import apply_leon
+    page = apply_leon(page, project)
     return apply_stage_project(apply_guide_navigation(apply_image_label_policy(apply_navigation(apply_amenities(page, project), project)), project), project)
+
 

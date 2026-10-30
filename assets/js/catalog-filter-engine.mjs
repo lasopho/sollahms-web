@@ -57,7 +57,7 @@ export function advancedFilterAndSort(projects,input={}){
       &&(!s.state||(f.states??[p.estado]).some(x=>fold(x)===fold(s.state)))
       &&(!s.assetType||(f.assetTypes??[]).includes(s.assetType))
       &&(!s.purchaseModes.length||(f.purchaseStage?.eligible===true&&s.purchaseModes.includes(f.purchaseStage.mode)))
-      &&(!s.delivery||(s.delivery==='inmediata'?f.delivery?.immediate===true:String(f.delivery?.year)===s.delivery))
+      &&(!s.delivery||(s.delivery==='inmediata'?(f.delivery?.immediate===true||p.inmobiliaria==='León'&&f.delivery?.reportedImmediate===true):String(f.delivery?.year)===s.delivery))
       &&inRange(catalogReference(p,s).value,s.minPriceInput,s.maxPriceInput)&&matchesVariant(p,s)
       &&selectedMatch(ids,s.amenities,s.amenitiesAll)&&selectedMatch(ids,s.features,s.featuresAll)
       &&(!words.length||words.every(w=>fold(keywords(p,s)).includes(w)));
@@ -105,3 +105,4 @@ export function writeQuery(state,view='cards'){
   if(view!=='cards')params.set('vista',view);return params.toString();
 }
 export function matchedLabels(project,state){const actual=new Set(eligibleFeatures(project,state)),selected=new Set([...state.amenities,...state.features]);return (project._facets?.features??[]).filter(x=>selected.has(x.id)&&actual.has(x.id)).map(x=>x.label);}
+

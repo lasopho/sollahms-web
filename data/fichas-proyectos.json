@@ -460,23 +460,27 @@
       "mapQuery",
       "amenities",
       "imagenPrincipal",
-      "imagenAlt"
+      "imagenAlt",
+      "precioDesdeTipologia",
+      "commercialOffers",
+      "catalogPricePolicy",
+      "commercialSource"
     ],
     "updates": {
       "nombre": "Edificio B.Come — Concepción",
       "inmobiliaria": "León",
       "tipoActivo": "Residencial",
       "comuna": "Concepción",
-      "region": "Región del Biobío",
+      "region": "Biobío",
       "direccion": "Paicaví 1485",
       "estado": "En verde",
-      "entrega": "Consultar fecha de entrega",
+      "entrega": "1.er semestre 2027",
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "precioDesdeUF": 2490,
+      "precioDesdeUF": 2930,
       "detalleUrl": "/bcome.html",
       "descripcionLarga": "Edificio B.Come en Paicaví 1485, Concepción, próximo a Laguna Tres Pascualas. El brochure presenta estudios y departamentos de uno y dos dormitorios, con cocina equipada y conexión a transporte público, ciclovías y servicios del entorno universitario.",
       "mapQuery": "Paicaví 1485, Concepción, Región del Biobío, Chile",
@@ -484,7 +488,42 @@
         "Gimnasio mostrado en el brochure."
       ],
       "imagenPrincipal": "/assets/propiedades/leon/bcome/foto-01.webp",
-      "imagenAlt": "Fachada del Edificio B.Come"
+      "imagenAlt": "Fachada del Edificio B.Come",
+      "precioDesdeTipologia": "Estudio",
+      "commercialOffers": [
+        {
+          "id": "0d",
+          "label": "Estudio",
+          "bedrooms": 0,
+          "propertyType": "departamento",
+          "priceUF": 2930,
+          "priceDecimals": 0
+        },
+        {
+          "id": "1d",
+          "label": "1 dormitorio",
+          "bedrooms": 1,
+          "propertyType": "departamento",
+          "priceUF": 3441,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "label": "2 dormitorios",
+          "bedrooms": 2,
+          "propertyType": "departamento",
+          "priceUF": 3855,
+          "priceDecimals": 0
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
+      }
     },
     "specs": {
       "utilM2": null,
@@ -2107,11 +2146,11 @@
       }
     ],
     "pendingFields": [
-      "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 2.290 como referencia histórica.",
       "Las páginas 7, 8, 9 y 10 no identifican unívocamente la correspondencia entre cada plano y cada fila de superficies. Se conservan las tablas aparte.",
       "El brochure imprime --- para las terrazas de ciertas variantes; se conserva como superficie no informada, sin convertir a cero.",
       "El número de baños de las tipologías estudio no se declara en el encabezado; no se deduce de la imagen.",
-      "Consultar disponibilidad y condiciones comerciales actuales."
+      "Consultar disponibilidad y condiciones comerciales actuales.",
+      "Disponibilidad, precio de unidad e inclusiones por confirmar; los precios autorizados corresponden a tipologías."
     ],
     "commercialEvidence": {
       "precioDesdeUF": 2490,
@@ -2121,7 +2160,36 @@
       "sourceUrl": "https://www.ileon.cl/proyectos/edificio-b-come/",
       "verifiedOn": "2026-10-13",
       "evidence": "La ficha oficial muestra precio desde UF 2,490, estado En verde; no publica conteo verificable de stock ni fecha calendario de entrega."
-    }
+    },
+    "commercialHistory": [
+      {
+        "supersededOn": "2026-10-30",
+        "updates": {
+          "precioDesdeUF": 2490,
+          "precioDesdeTipologia": null,
+          "commercialOffers": null,
+          "catalogPricePolicy": null,
+          "estado": "En verde",
+          "entrega": "Consultar fecha de entrega",
+          "direccion": "Paicaví 1485",
+          "comuna": "Concepción",
+          "region": "Región del Biobío",
+          "tipoActivo": "Residencial",
+          "mapQuery": "Paicaví 1485, Concepción, Región del Biobío, Chile",
+          "commercialSource": null
+        },
+        "pendingFields": [
+          "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 2.290 como referencia histórica.",
+          "Las páginas 7, 8, 9 y 10 no identifican unívocamente la correspondencia entre cada plano y cada fila de superficies. Se conservan las tablas aparte.",
+          "El brochure imprime --- para las terrazas de ciertas variantes; se conserva como superficie no informada, sin convertir a cero.",
+          "El número de baños de las tipologías estudio no se declara en el encabezado; no se deduce de la imagen.",
+          "Consultar disponibilidad y condiciones comerciales actuales."
+        ]
+      }
+    ],
+    "sourceEvidence": [
+      "Sollahms 30/10/2026: precios por tipología y datos comerciales autorizados; prevalecen sobre brochures y campañas. No acreditan stock ni entrega legalmente habilitada."
+    ]
   },
   {
     "slug": "vista-llacolen-a",
@@ -37916,7 +37984,11 @@
       "mapQuery",
       "amenities",
       "imagenPrincipal",
-      "imagenAlt"
+      "imagenAlt",
+      "precioDesdeTipologia",
+      "commercialOffers",
+      "catalogPricePolicy",
+      "commercialSource"
     ],
     "updates": {
       "nombre": "Condominio Uruguay",
@@ -37925,13 +37997,13 @@
       "comuna": "La Florida",
       "region": "Región Metropolitana",
       "direccion": "Uruguay 8866",
-      "estado": "Entrega inmediata",
-      "entrega": "Entrega inmediata",
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "precioDesdeUF": 3698,
+      "precioDesdeUF": 4433,
       "detalleUrl": "/condominio-uruguay.html",
       "descripcionLarga": "Condominio Uruguay se ubica en Uruguay 8866, en un sector residencial de La Florida. El brochure presenta departamentos de 1 y 2 dormitorios, áreas verdes, piscina y espacios para disfrutar al aire libre.",
       "mapQuery": "Uruguay 8866, La Florida, Región Metropolitana, Chile",
@@ -37944,7 +38016,26 @@
         "Pet friendly"
       ],
       "imagenPrincipal": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-1600.webp",
-      "imagenAlt": "Vista del condominio y su jardín interior"
+      "imagenAlt": "Vista del condominio y su jardín interior",
+      "precioDesdeTipologia": "2 dormitorios",
+      "commercialOffers": [
+        {
+          "id": "2d",
+          "label": "2 dormitorios",
+          "bedrooms": 2,
+          "propertyType": "departamento",
+          "priceUF": 4433,
+          "priceDecimals": 0
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
+      }
     },
     "specs": {
       "utilM2": null,
@@ -38501,10 +38592,11 @@
       }
     ],
     "pendingFields": [
-      "El precio documental de UF 2.990 en página 11 se conserva como histórico; la web oficial vigente publica desde UF 3.698.",
       "Las dimensiones del brochure son aproximadas. Confirmar disponibilidad por unidad.",
       "Brochure y ficha web difieren en algunas terminaciones; esta ficha documental reproduce el PDF aportado.",
-      "Consultar disponibilidad y condiciones comerciales actuales."
+      "Consultar disponibilidad y condiciones comerciales actuales.",
+      "Disponibilidad, precio de unidad e inclusiones por confirmar; los precios autorizados corresponden a tipologías.",
+      "Recepción final y habilitación legal para la entrega por confirmar."
     ],
     "commercialEvidence": {
       "precioDesdeUF": 3698,
@@ -38514,7 +38606,35 @@
       "sourceUrl": "https://www.ileon.cl/proyectos/condominio-uruguay/",
       "verifiedOn": "2026-10-13",
       "evidence": "La ficha oficial muestra precio desde UF 3,698, estado Entrega inmediata; no publica conteo verificable de stock ni fecha calendario de entrega."
-    }
+    },
+    "commercialHistory": [
+      {
+        "supersededOn": "2026-10-30",
+        "updates": {
+          "precioDesdeUF": 3698,
+          "precioDesdeTipologia": null,
+          "commercialOffers": null,
+          "catalogPricePolicy": null,
+          "estado": "Entrega inmediata",
+          "entrega": "Entrega inmediata",
+          "direccion": "Uruguay 8866",
+          "comuna": "La Florida",
+          "region": "Región Metropolitana",
+          "tipoActivo": "Residencial",
+          "mapQuery": "Uruguay 8866, La Florida, Región Metropolitana, Chile",
+          "commercialSource": null
+        },
+        "pendingFields": [
+          "El precio documental de UF 2.990 en página 11 se conserva como histórico; la web oficial vigente publica desde UF 3.698.",
+          "Las dimensiones del brochure son aproximadas. Confirmar disponibilidad por unidad.",
+          "Brochure y ficha web difieren en algunas terminaciones; esta ficha documental reproduce el PDF aportado.",
+          "Consultar disponibilidad y condiciones comerciales actuales."
+        ]
+      }
+    ],
+    "sourceEvidence": [
+      "Sollahms 30/10/2026: precios por tipología y datos comerciales autorizados; prevalecen sobre brochures y campañas. No acreditan stock ni entrega legalmente habilitada."
+    ]
   },
   {
     "slug": "enlace-mackenna",
@@ -39509,7 +39629,11 @@
       "mapQuery",
       "amenities",
       "imagenPrincipal",
-      "imagenAlt"
+      "imagenAlt",
+      "precioDesdeTipologia",
+      "commercialOffers",
+      "catalogPricePolicy",
+      "commercialSource"
     ],
     "updates": {
       "nombre": "Condominio Gregorio de la Fuente",
@@ -39518,8 +39642,8 @@
       "comuna": "Macul",
       "region": "Región Metropolitana",
       "direccion": "Gregorio de la Fuente 3011",
-      "estado": "Torre I entrega inmediata · Torre II en verde",
-      "entrega": "Entrega inmediata Torre I · consultar Torre II",
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios",
@@ -39542,6 +39666,41 @@
         "source": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
         "publisher": "Inmobiliaria León",
         "checkedOn": "2026-10-26"
+      },
+      "precioDesdeTipologia": "1 dormitorio",
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "label": "1 dormitorio",
+          "bedrooms": 1,
+          "propertyType": "departamento",
+          "priceUF": 3349,
+          "priceDecimals": 0
+        },
+        {
+          "id": "2d",
+          "label": "2 dormitorios",
+          "bedrooms": 2,
+          "propertyType": "departamento",
+          "priceUF": 5048,
+          "priceDecimals": 0
+        },
+        {
+          "id": "3d",
+          "label": "3 dormitorios",
+          "bedrooms": 3,
+          "propertyType": "departamento",
+          "priceUF": 6510,
+          "priceDecimals": 0
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
       }
     },
     "specs": {
@@ -40390,10 +40549,11 @@
     "virtualTours": [],
     "pendingFields": [
       "El brochure informa 69,6 m² útiles + 11,3 m² de terraza y 70,9 m² totales; la suma no coincide. Valores documentales reproducidos, sujetos a confirmación.",
-      "El precio documental de UF 2.990 y estado En verde en página 11 no representan condiciones actuales: la web distingue Torre I inmediata y Torre II en verde, desde UF 3.349.",
       "No se publica código o letra de modelo: los planos del PDF sólo rotulan dormitorio/baño y Tradicional/Mariposa.",
       "Consultar disponibilidad y condiciones comerciales actuales.",
-      "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
+      "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube.",
+      "Disponibilidad, precio de unidad e inclusiones por confirmar; los precios autorizados corresponden a tipologías.",
+      "Recepción final y habilitación legal para la entrega por confirmar."
     ],
     "commercialEvidence": {
       "precioDesdeUF": 3349,
@@ -40408,7 +40568,36 @@
       "source": "https://www.ileon.cl/proyectos/condominio-gregorio-de-la-fuente/",
       "publisher": "Inmobiliaria León",
       "checkedOn": "2026-10-26"
-    }
+    },
+    "commercialHistory": [
+      {
+        "supersededOn": "2026-10-30",
+        "updates": {
+          "precioDesdeUF": 3349,
+          "precioDesdeTipologia": null,
+          "commercialOffers": null,
+          "catalogPricePolicy": null,
+          "estado": "Torre I entrega inmediata · Torre II en verde",
+          "entrega": "Entrega inmediata Torre I · consultar Torre II",
+          "direccion": "Gregorio de la Fuente 3011",
+          "comuna": "Macul",
+          "region": "Región Metropolitana",
+          "tipoActivo": "Residencial",
+          "mapQuery": "Gregorio de la Fuente 3011, Macul, Región Metropolitana, Chile",
+          "commercialSource": null
+        },
+        "pendingFields": [
+          "El brochure informa 69,6 m² útiles + 11,3 m² de terraza y 70,9 m² totales; la suma no coincide. Valores documentales reproducidos, sujetos a confirmación.",
+          "El precio documental de UF 2.990 y estado En verde en página 11 no representan condiciones actuales: la web distingue Torre I inmediata y Torre II en verde, desde UF 3.349.",
+          "No se publica código o letra de modelo: los planos del PDF sólo rotulan dormitorio/baño y Tradicional/Mariposa.",
+          "Consultar disponibilidad y condiciones comerciales actuales.",
+          "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
+        ]
+      }
+    ],
+    "sourceEvidence": [
+      "Sollahms 30/10/2026: precios por tipología y datos comerciales autorizados; prevalecen sobre brochures y campañas. No acreditan stock ni entrega legalmente habilitada."
+    ]
   },
   {
     "slug": "matta-016",
@@ -40743,7 +40932,11 @@
       "mapQuery",
       "amenities",
       "imagenPrincipal",
-      "imagenAlt"
+      "imagenAlt",
+      "precioDesdeTipologia",
+      "commercialOffers",
+      "catalogPricePolicy",
+      "commercialSource"
     ],
     "updates": {
       "nombre": "Condominio Parque Don Lautaro",
@@ -40752,8 +40945,8 @@
       "comuna": "Peñalolén",
       "region": "Región Metropolitana",
       "direccion": "Av. Consistorial 6501",
-      "estado": "En verde",
-      "entrega": "Consultar fecha de entrega",
+      "estado": "En blanco",
+      "entrega": "Octubre 2028",
       "tipologias": [
         "2 dormitorios",
         "3 dormitorios"
@@ -40769,7 +40962,34 @@
         "Gimnasio mostrado en el brochure."
       ],
       "imagenPrincipal": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01.webp",
-      "imagenAlt": "Edificios bajos y parque central"
+      "imagenAlt": "Edificios bajos y parque central",
+      "precioDesdeTipologia": "2 dormitorios",
+      "commercialOffers": [
+        {
+          "id": "2d",
+          "label": "2 dormitorios",
+          "bedrooms": 2,
+          "propertyType": "departamento",
+          "priceUF": 7778,
+          "priceDecimals": 0
+        },
+        {
+          "id": "3d",
+          "label": "3 dormitorios",
+          "bedrooms": 3,
+          "propertyType": "departamento",
+          "priceUF": 8611,
+          "priceDecimals": 0
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
+      }
     },
     "specs": {
       "utilM2": null,
@@ -41596,8 +41816,8 @@
       }
     ],
     "pendingFields": [
-      "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 6.434 como referencia histórica.",
-      "Consultar disponibilidad y condiciones comerciales actuales."
+      "Consultar disponibilidad y condiciones comerciales actuales.",
+      "Disponibilidad, precio de unidad e inclusiones por confirmar; los precios autorizados corresponden a tipologías."
     ],
     "commercialEvidence": {
       "precioDesdeUF": 7778,
@@ -41607,7 +41827,33 @@
       "sourceUrl": "https://www.ileon.cl/proyectos/condominio-parque-don-lautaro/",
       "verifiedOn": "2026-10-13",
       "evidence": "La ficha oficial muestra precio desde UF 7,778, estado En verde; no publica conteo verificable de stock ni fecha calendario de entrega."
-    }
+    },
+    "commercialHistory": [
+      {
+        "supersededOn": "2026-10-30",
+        "updates": {
+          "precioDesdeUF": 7778,
+          "precioDesdeTipologia": null,
+          "commercialOffers": null,
+          "catalogPricePolicy": null,
+          "estado": "En verde",
+          "entrega": "Consultar fecha de entrega",
+          "direccion": "Av. Consistorial 6501",
+          "comuna": "Peñalolén",
+          "region": "Región Metropolitana",
+          "tipoActivo": "Residencial",
+          "mapQuery": "Av. Consistorial 6501, Peñalolén, Región Metropolitana, Chile",
+          "commercialSource": null
+        },
+        "pendingFields": [
+          "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 6.434 como referencia histórica.",
+          "Consultar disponibilidad y condiciones comerciales actuales."
+        ]
+      }
+    ],
+    "sourceEvidence": [
+      "Sollahms 30/10/2026: precios por tipología y datos comerciales autorizados; prevalecen sobre brochures y campañas. No acreditan stock ni entrega legalmente habilitada."
+    ]
   },
   {
     "slug": "caceres",
@@ -52381,7 +52627,11 @@
       "mapQuery",
       "amenities",
       "imagenPrincipal",
-      "imagenAlt"
+      "imagenAlt",
+      "precioDesdeTipologia",
+      "commercialOffers",
+      "catalogPricePolicy",
+      "commercialSource"
     ],
     "updates": {
       "nombre": "Condominio Jardines de Ramón Cruz",
@@ -52389,25 +52639,52 @@
       "tipoActivo": "Residencial",
       "comuna": "Macul",
       "region": "Región Metropolitana",
-      "direccion": "Ramón Cruz Montt 3291",
-      "estado": "Entrega inmediata",
-      "entrega": "Entrega inmediata",
+      "direccion": "Ramón Cruz 3291",
+      "estado": "En recepción final",
+      "entrega": "Inmediata",
       "tipologias": [
         "1 dormitorio",
         "2 dormitorios",
         "3 dormitorios"
       ],
-      "precioDesdeUF": 3412,
+      "precioDesdeUF": 5044,
       "detalleUrl": "/jardines-de-ramon-cruz.html",
       "descripcionLarga": "Condominio en Ramón Cruz Montt 3291, en el barrio Quilín de Macul. El brochure presenta departamentos de uno, dos y tres dormitorios, terrazas y espacios interiores equipados, en un sector residencial cercano a Metro y servicios.",
-      "mapQuery": "Ramón Cruz Montt 3291, Macul, Región Metropolitana, Chile",
+      "mapQuery": "Ramón Cruz 3291, Macul, Región Metropolitana, Chile",
       "amenities": [
         "Piscina y espacios comunes mostrados en el brochure.",
         "Sala de estar y comedor comunes.",
         "Espacio de quincho equipado mostrado en el brochure."
       ],
       "imagenPrincipal": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial.webp",
-      "imagenAlt": "Fachada de Jardines de Ramón Cruz, fotografía original oficial"
+      "imagenAlt": "Fachada de Jardines de Ramón Cruz, fotografía original oficial",
+      "precioDesdeTipologia": "2 dormitorios",
+      "commercialOffers": [
+        {
+          "id": "2d",
+          "label": "2 dormitorios",
+          "bedrooms": 2,
+          "propertyType": "departamento",
+          "priceUF": 5044,
+          "priceDecimals": 0
+        },
+        {
+          "id": "3d",
+          "label": "3 dormitorios",
+          "bedrooms": 3,
+          "propertyType": "departamento",
+          "priceUF": 5600,
+          "priceDecimals": 0
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Tabla comercial autorizada por Sollahms: actualización de cinco proyectos León, 30/10/2026"
+      }
     },
     "specs": {
       "utilM2": null,
@@ -53711,12 +53988,13 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 2.900 y entrega inmediata como referencia histórica.",
       "Las páginas 9, 10 y 11 no identifican unívocamente la correspondencia entre cada plano y cada fila de superficies. Se conservan las tablas aparte.",
       "Inconsistencia de superficies en página 12: 70,00 + 5,61 no suma el total impreso 77,57 m².",
       "El plano de la página 12 repite la etiqueta Dormitorio 2 en dos habitaciones; el encabezado declara 3 dormitorios. Se conserva el diagrama original.",
       "Consultar disponibilidad y condiciones comerciales actuales.",
-      "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
+      "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube.",
+      "Disponibilidad, precio de unidad e inclusiones por confirmar; los precios autorizados corresponden a tipologías.",
+      "Recepción final y habilitación legal para la entrega por confirmar."
     ],
     "commercialEvidence": {
       "precioDesdeUF": 3412,
@@ -53726,7 +54004,37 @@
       "sourceUrl": "https://www.ileon.cl/proyectos/condominio-jardines-de-ramon-cruz/",
       "verifiedOn": "2026-10-13",
       "evidence": "La ficha oficial muestra precio desde UF 3,412, estado Entrega inmediata; no publica conteo verificable de stock ni fecha calendario de entrega."
-    }
+    },
+    "commercialHistory": [
+      {
+        "supersededOn": "2026-10-30",
+        "updates": {
+          "precioDesdeUF": 3412,
+          "precioDesdeTipologia": null,
+          "commercialOffers": null,
+          "catalogPricePolicy": null,
+          "estado": "Entrega inmediata",
+          "entrega": "Entrega inmediata",
+          "direccion": "Ramón Cruz Montt 3291",
+          "comuna": "Macul",
+          "region": "Región Metropolitana",
+          "tipoActivo": "Residencial",
+          "mapQuery": "Ramón Cruz Montt 3291, Macul, Región Metropolitana, Chile",
+          "commercialSource": null
+        },
+        "pendingFields": [
+          "Confirmar precio, disponibilidad, entrega y promociones actuales; el brochure menciona UF 2.900 y entrega inmediata como referencia histórica.",
+          "Las páginas 9, 10 y 11 no identifican unívocamente la correspondencia entre cada plano y cada fila de superficies. Se conservan las tablas aparte.",
+          "Inconsistencia de superficies en página 12: 70,00 + 5,61 no suma el total impreso 77,57 m².",
+          "El plano de la página 12 repite la etiqueta Dormitorio 2 en dos habitaciones; el encabezado declara 3 dormitorios. Se conserva el diagrama original.",
+          "Consultar disponibilidad y condiciones comerciales actuales.",
+          "No hay URL de tour virtual verificable; el HTML oficial sólo incorpora video de YouTube."
+        ]
+      }
+    ],
+    "sourceEvidence": [
+      "Sollahms 30/10/2026: precios por tipología y datos comerciales autorizados; prevalecen sobre brochures y campañas. No acreditan stock ni entrega legalmente habilitada."
+    ]
   },
   {
     "slug": "vitro",

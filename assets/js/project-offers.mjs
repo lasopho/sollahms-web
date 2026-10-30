@@ -5,7 +5,7 @@ export function publicOffer(project,key){
   return project?.commercialOffers?.find(o=>o.id===key)??null;
 }
 export function catalogReference(project,state={}){
-  if((project.inmobiliaria==='Ecasa'&&project.commercialSource?.date==='2026-10-30'||['AJ Urbana','Sento'].includes(project.inmobiliaria)&&project.catalogPricePolicy==='owner-typology')){
+  if((project.inmobiliaria==='Ecasa'&&project.commercialSource?.date==='2026-10-30'||['AJ Urbana','Sento','León'].includes(project.inmobiliaria)&&project.catalogPricePolicy==='owner-typology')){
     if(project.slug==='plaza-las-condes'&&!state.bedrooms&&!state.typologies?.length)return {value:project.precioDesdeUF,typology:project.precioDesdeTipologia};
     const commercial=state.assetType==='Comercial'||state.propertyType==='local';
     const beds=state.bedrooms,types=state.typologies??[];
@@ -31,4 +31,11 @@ export function selectedPublicContext(search,project){
   if(!key)return {offer:null,propertyType:project.tipoActivo==='Comercial'?'local':null};
   const offer=publicOffer(project,key);
   return offer?{offer,propertyType:offer.propertyType}:null;
+}
+
+/** Carry only a verified public typology identifier from a León filtered result. */
+export function leonCatalogOfferId(project,state={}){
+  if(project.inmobiliaria!=='León'||project.catalogPricePolicy!=='owner-typology'||(!state.bedrooms&&!state.typologies?.length))return null;
+  const ref=catalogReference(project,state);
+  return project.commercialOffers?.find(o=>validOfferPrice(o.priceUF)&&o.priceUF===ref.value&&o.label===ref.typology)?.id??null;
 }

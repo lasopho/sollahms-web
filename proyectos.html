@@ -136,10 +136,10 @@
       <div><label for="commune">Comuna</label><select id="commune" class="catalog-control" disabled><option value="">Todas</option></select></div>
       <div><label for="property-type">Tipo de propiedad</label><select id="property-type" class="catalog-control" disabled><option value="">Todas</option></select></div>
       <div><label for="bedrooms">Dormitorios</label><select id="bedrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
-      <fieldset class="cf-price"><legend>Precio desde del proyecto · UF</legend><div class="cf-range"><div><label for="min-price">Mínimo UF</label><input id="min-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin mínimo" disabled></div><div><label for="max-price">Máximo UF</label><input id="max-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin máximo" disabled></div></div></fieldset>
+      <fieldset class="cf-price"><legend>Precio desde · UF</legend><div class="cf-range"><div><label for="min-price">Mínimo UF</label><input id="min-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin mínimo" disabled></div><div><label for="max-price">Máximo UF</label><input id="max-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin máximo" disabled></div></div></fieldset>
       <div><label for="delivery">Entrega</label><select id="delivery" class="catalog-control" disabled><option value="">Cualquier entrega</option></select></div>
     </div>
-    <p class="cf-hint">El precio desde corresponde al proyecto; las ofertas comerciales identificadas por separado usan el precio de ese producto. Confirma el valor y la disponibilidad al cotizar.</p>
+    <p class="cf-hint">El rango usa el precio desde del proyecto o de la tipología, etapa o producto seleccionado cuando tiene un valor autorizado. Confirma el valor y la disponibilidad al cotizar.</p>
     <details class="catalog-more cf-advanced" id="catalog-more">
       <summary>Más filtros<span id="catalog-more-count"></span></summary>
 <fieldset id="metro-filter-section" class="metro-filters" data-scroll-static><legend>Cercanía al Metro</legend>
@@ -217,7 +217,7 @@
     <li><a href="/distrito-centro.html">Distrito Centro</a> — <span>Desde UF 2.715</span></li>
     <li><a href="/reserva-mayor-2.html">Reserva Mayor 2</a> — <span>Desde UF 2.450</span></li>
     <li><a href="/vista-llacolen-b.html">Vista Llacolén B</a> — <span>Desde UF 3.068</span></li>
-    <li><a href="/bcome.html">Edificio B.Come — Concepción</a> — <span>Desde: consultar precio</span></li>
+    <li><a href="/bcome.html">Edificio B.Come — Concepción</a> — <span>Desde UF 2.930</span></li>
     <li><a href="/vista-llacolen-a.html">Vista Llacolén A</a> — <span>Desde UF 2.505</span></li>
     <li><a href="/campus-llacolen.html">Campus Llacolén</a> — <span>Desde UF 2.529</span></li>
     <li><a href="/nucleo-costanera.html">Núcleo Costanera</a> — <span>Desde UF 3.100</span></li>
@@ -305,14 +305,14 @@
     <li><a href="/vicuna-mackenna-6896.html">Vicuña Mackenna 6896</a> — <span>Desde UF 3.259,49</span></li>
     <li><a href="/vicuna-mackenna-7589.html">Edificio Vicuña Mackenna 7589</a> — <span>Desde UF 3.172</span></li>
     <li><a href="/aires-la-florida-2.html">Aires La Florida 2</a> — <span>Desde UF 2.350</span></li>
-    <li><a href="/condominio-uruguay.html">Condominio Uruguay</a> — <span>Desde: consultar precio</span></li>
+    <li><a href="/condominio-uruguay.html">Condominio Uruguay</a> — <span>Desde UF 4.433</span></li>
     <li><a href="/enlace-mackenna.html">Enlace Mackenna</a> — <span>Desde UF 3.260</span></li>
     <li><a href="/novo-catedral.html">Novo Catedral</a> — <span>Desde UF 2.500</span></li>
     <li><a href="/carmen-marin.html">Carmen Marín</a> — <span>Desde UF 2.932,56</span></li>
-    <li><a href="/gregorio-de-la-fuente-a.html">Condominio Gregorio de la Fuente</a> — <span>Desde: consultar precio</span></li>
+    <li><a href="/gregorio-de-la-fuente-a.html">Condominio Gregorio de la Fuente</a> — <span>Desde UF 3.349</span></li>
     <li><a href="/matta-016.html">Matta 016</a> — <span>Desde UF 3.314</span></li>
     <li><a href="/edificio-plaza-nova.html">Edificio Plaza Nova</a> — <span>Desde UF 2.035,23</span></li>
-    <li><a href="/condominio-parque-don-lautaro.html">Condominio Parque Don Lautaro</a> — <span>Desde: consultar precio</span></li>
+    <li><a href="/condominio-parque-don-lautaro.html">Condominio Parque Don Lautaro</a> — <span>Desde UF 7.778</span></li>
     <li><a href="/caceres.html">Cáceres</a> — <span>Desde UF 2.704</span></li>
     <li><a href="/pintor-cicarelli-i.html">Pintor Cicarelli I</a> — <span>Desde UF 2.920</span></li>
     <li><a href="/pintor-cicarelli-ii.html">Pintor Cicarelli II</a> — <span>Desde UF 2.732</span></li>
@@ -329,7 +329,7 @@
     <li><a href="/mirador-mapocho.html">Mirador Mapocho</a> — <span>Desde UF 2.556</span></li>
     <li><a href="/alto-san-joaquin.html">Alto San Joaquín</a> — <span>Desde UF 5.900</span></li>
     <li><a href="/vista-bulnes.html">Vista Bulnes</a> — <span>Desde UF 3.148,1</span></li>
-    <li><a href="/jardines-de-ramon-cruz.html">Condominio Jardines de Ramón Cruz</a> — <span>Desde: consultar precio</span></li>
+    <li><a href="/jardines-de-ramon-cruz.html">Condominio Jardines de Ramón Cruz</a> — <span>Desde UF 5.044</span></li>
     <li><a href="/vitro.html">Vitro</a> — <span>Desde UF 2.791</span></li>
     <li><a href="/mirador-irarrazaval.html">Mirador Irarrázaval</a> — <span>Desde UF 4.026</span></li>
     <li><a href="/alto-irarrazaval.html">Alto Irarrázaval</a> — <span>Desde UF 4.004</span></li>
@@ -383,3 +383,5 @@
 <script type="module" src="/assets/js/catalog.mjs?v=20261030-metro-1"></script>
 </body>
 </html>
+
+
