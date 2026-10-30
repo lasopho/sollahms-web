@@ -115,5 +115,7 @@ def _finalize_project(page, project):
     page = apply_fiche(page, project)
     from ecasa_commercial import apply_ecasa
     page = apply_ecasa(page, project)
+    from aj_urbana_commercial import apply_aj
+    page = apply_aj(page, project)
     return apply_stage_project(apply_guide_navigation(apply_image_label_policy(apply_navigation(apply_amenities(page, project), project)), project), project)
 

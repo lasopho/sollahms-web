@@ -75,6 +75,8 @@ def main():
     data={'schemaVersion':1,'projects':out,'filters':filters,'typologies':typologies,'policy':'Documented project/model characteristics; no stock or unit inventory. Missing values are unknown.'}
     from ecasa_commercial import sync_facets
     data=sync_facets(data,catalog)
+    from aj_urbana_commercial import sync_facets as sync_aj
+    data=sync_aj(data,catalog)
     rendered=json.dumps(data,ensure_ascii=False,separators=(',',':'))+'\n';path=ROOT/'data/catalog-facets.json'
     if args.check:assert path.read_text()==rendered,'Regenerate catalogue facets'
     else:path.write_text(rendered)

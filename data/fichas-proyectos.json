@@ -8080,7 +8080,8 @@
     "sourceStatus": "verified",
     "sourceNotes": "Ficha oficial accesible en lectura web; consultas directas al servidor responden HTTP 500. Fotos de galería declaradas referenciales de otros proyectos AJU; no se incorporan. El índice confirma inmediata y la ficha aún muestra entrega 2026; plazo comercial debe confirmarse.",
     "sourceEvidence": [
-      "Mapa oficial: Teatinos 750, Santiago. Modelos Home Studio 18,07 m² total y útil; 1D1B 34,68 m² total / 29,72 m² útil. Índice oficial confirma Entrega inmediata, pero ficha muestra Entrega 2026."
+      "Mapa oficial: Teatinos 750, Santiago. Modelos Home Studio 18,07 m² total y útil; 1D1B 34,68 m² total / 29,72 m² útil. Índice oficial confirma Entrega inmediata, pero ficha muestra Entrega 2026.",
+      "Actualización comercial del propietario 30/10/2026: precios por tipología, estado, entrega y dirección. Prevalece sobre campañas e información histórica; no acredita stock."
     ],
     "verifiedFields": [
       "comuna",
@@ -8093,7 +8094,8 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "precioDesdeUF"
     ],
     "updates": {
       "nombre": "Edificio Teatinos 750",
@@ -8106,10 +8108,38 @@
         "Estudio",
         "1 dormitorio"
       ],
-      "estado": "Entrega inmediata",
+      "estado": "En recepción final",
       "entrega": "Inmediata",
       "superficieDesdeM2": 18.07,
-      "descripcionLarga": "Proyecto de AJ Urbana en Teatinos 750, Santiago, con Estudio, 1 dormitorio. La fuente oficial informa entrega inmediata."
+      "descripcionLarga": "Proyecto de AJ Urbana en Teatinos 750, Santiago, con Estudio, 1 dormitorio. La fuente oficial informa entrega inmediata.",
+      "precioDesdeUF": 2491.2,
+      "precioDesdeTipologia": "Estudio",
+      "commercialOffers": [
+        {
+          "id": "0d",
+          "label": "Estudio",
+          "bedrooms": 0,
+          "propertyType": "departamento",
+          "priceUF": 2491.2,
+          "priceDecimals": 1
+        },
+        {
+          "id": "1d",
+          "label": "1 dormitorio",
+          "bedrooms": 1,
+          "propertyType": "departamento",
+          "priceUF": 3315,
+          "priceDecimals": 0
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Captura 2026-10-30 19:32:42 y tabla autorizada por Sollahms"
+      }
     },
     "specs": {
       "utilM2": "18.07–29.72",
@@ -8123,8 +8153,8 @@
     "pendingFields": [
       "Fotografías oficiales propias del proyecto",
       "Recorrido virtual oficial específico no localizado",
-      "Precio vigente y disponibilidad",
-      "Equipamiento y áreas comunes"
+      "Equipamiento y áreas comunes",
+      "Disponibilidad de unidades por confirmar"
     ],
     "reviewedOriginal": {
       "comuna": "Santiago",
@@ -8149,7 +8179,8 @@
     "sourceStatus": "verified",
     "sourceNotes": "Ficha oficial accesible en lectura web; consultas directas al servidor responden HTTP 500. Fotos de galería declaradas referenciales de otros proyectos AJU; no se incorporan. La tabla 2D2B repite dormitorios, baños y superficies del 1D1B: no se publica rango agregado sin verificación.",
     "sourceEvidence": [
-      "Mapa oficial: Amunátegui 745. Home Studio: 23,35 total /19,77 útil; 1D1B: 29,24 total/útil. Tabla 2D2B incorrectamente repite valores del 1D1B; rango completo pendiente."
+      "Mapa oficial: Amunátegui 745. Home Studio: 23,35 total /19,77 útil; 1D1B: 29,24 total/útil. Tabla 2D2B incorrectamente repite valores del 1D1B; rango completo pendiente.",
+      "Actualización comercial del propietario 30/10/2026: precios por tipología, estado, entrega y dirección. Prevalece sobre campañas e información histórica; no acredita stock."
     ],
     "verifiedFields": [
       "comuna",
@@ -8161,23 +8192,60 @@
       "mapQuery",
       "nombre",
       "region",
-      "tipologias"
+      "tipologias",
+      "precioDesdeUF"
     ],
     "updates": {
       "nombre": "Edificio Vista Amunategui",
       "inmobiliaria": "AJ Urbana",
       "comuna": "Santiago",
       "region": "Región Metropolitana",
-      "direccion": "Amunátegui 745",
-      "mapQuery": "Amunátegui 745, Santiago, Región Metropolitana, Chile",
+      "direccion": "Amunátegui 743",
+      "mapQuery": "Amunátegui 743, Santiago, Región Metropolitana, Chile",
       "tipologias": [
         "Estudio",
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "estado": "Entrega inmediata",
+      "estado": "En recepción final",
       "entrega": "Inmediata",
-      "descripcionLarga": "Proyecto de AJ Urbana en Amunátegui 745, Santiago, con Estudio, 1 dormitorio, 2 dormitorios. La fuente oficial informa entrega inmediata."
+      "descripcionLarga": "Proyecto de AJ Urbana en Amunátegui 743, Santiago, con Estudio, 1 dormitorio, 2 dormitorios. La fuente oficial informa entrega inmediata.",
+      "precioDesdeUF": 2596.2,
+      "precioDesdeTipologia": "Estudio",
+      "commercialOffers": [
+        {
+          "id": "0d",
+          "label": "Estudio",
+          "bedrooms": 0,
+          "propertyType": "departamento",
+          "priceUF": 2596.2,
+          "priceDecimals": 1
+        },
+        {
+          "id": "1d",
+          "label": "1 dormitorio",
+          "bedrooms": 1,
+          "propertyType": "departamento",
+          "priceUF": 3308.2,
+          "priceDecimals": 1
+        },
+        {
+          "id": "2d",
+          "label": "2 dormitorios",
+          "bedrooms": 2,
+          "propertyType": "departamento",
+          "priceUF": 3888,
+          "priceDecimals": 0
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Captura 2026-10-30 19:32:42 y tabla autorizada por Sollahms"
+      }
     },
     "specs": {
       "utilM2": null,
@@ -8193,8 +8261,8 @@
       "Superficie total",
       "Fotografías oficiales propias del proyecto",
       "Recorrido virtual oficial específico no localizado",
-      "Precio vigente y disponibilidad",
-      "Equipamiento y áreas comunes"
+      "Equipamiento y áreas comunes",
+      "Disponibilidad de unidades por confirmar"
     ],
     "reviewedOriginal": {
       "comuna": "Santiago",
@@ -9564,7 +9632,8 @@
     "sourceStatus": "verified",
     "sourceNotes": "Ficha oficial accesible en lectura web; consultas directas al servidor responden HTTP 500.  El recorrido enlazado oficialmente no estuvo disponible durante la comprobación del 09-10-2026.",
     "sourceEvidence": [
-      "Mapa oficial señala San Martín 74. Modelo Studio 23,71 total/útil y 1D1B 39,93 total /37,07 útil. Enlaces VER 360 propios SM_D014 y SM_D013."
+      "Mapa oficial señala San Martín 74. Modelo Studio 23,71 total/útil y 1D1B 39,93 total /37,07 útil. Enlaces VER 360 propios SM_D014 y SM_D013.",
+      "Actualización comercial del propietario 30/10/2026: precios por tipología, estado, entrega y dirección. Prevalece sobre campañas e información histórica; no acredita stock."
     ],
     "verifiedFields": [
       "comuna",
@@ -9576,22 +9645,53 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "precioDesdeUF",
+      "entrega"
     ],
     "updates": {
       "nombre": "Downtown San Martín",
       "inmobiliaria": "AJ Urbana",
       "comuna": "Santiago",
       "region": "Región Metropolitana",
-      "direccion": "San Martín 74",
-      "mapQuery": "San Martín 74, Santiago, Región Metropolitana, Chile",
+      "direccion": "San Martín 70",
+      "mapQuery": "San Martín 70, Santiago, Región Metropolitana, Chile",
       "tipologias": [
         "Estudio",
         "1 dormitorio"
       ],
-      "estado": "Venta en verde",
+      "estado": "En verde",
       "superficieDesdeM2": 23.71,
-      "descripcionLarga": "Proyecto de AJ Urbana en San Martín 74, Santiago, con Estudio, 1 dormitorio. La fuente oficial informa venta en verde."
+      "descripcionLarga": "Proyecto de AJ Urbana en San Martín 70, Santiago, con Estudio, 1 dormitorio. La fuente oficial informa venta en verde.",
+      "precioDesdeUF": 2635.3,
+      "precioDesdeTipologia": "Estudio",
+      "commercialOffers": [
+        {
+          "id": "0d",
+          "label": "Estudio",
+          "bedrooms": 0,
+          "propertyType": "departamento",
+          "priceUF": 2635.3,
+          "priceDecimals": 1
+        },
+        {
+          "id": "1d",
+          "label": "1 dormitorio",
+          "bedrooms": 1,
+          "propertyType": "departamento",
+          "priceUF": 3517.7,
+          "priceDecimals": 1
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "entrega": "Primer semestre 2027",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Captura 2026-10-30 19:32:42 y tabla autorizada por Sollahms"
+      }
     },
     "specs": {
       "utilM2": "23.71–37.07",
@@ -9620,10 +9720,9 @@
     ],
     "virtualTours": [],
     "pendingFields": [
-      "Precio vigente y disponibilidad",
-      "Fecha de entrega",
       "Equipamiento y áreas comunes",
-      "Recorrido oficial localizado pero no disponible (dominio no resuelve)"
+      "Recorrido oficial localizado pero no disponible (dominio no resuelve)",
+      "Disponibilidad de unidades por confirmar"
     ],
     "unavailableVirtualTours": [
       {
@@ -9673,7 +9772,8 @@
     "sourceStatus": "verified",
     "sourceNotes": "Ficha oficial accesible en lectura web; consultas directas al servidor responden HTTP 500.  Dirección Morandé 808 respaldada por índice oficial; el mapa embebido de la ficha dice Teatinos 808 y se descarta. Entrega 2026 publicada sin semestre; verificar vigencia.",
     "sourceEvidence": [
-      "Índice oficial: ubicado Morandé 808. Ficha 1D1B 32,64 total/útil; 2D1B 41,94 total /39,47 útil; Entrega 2026. El iframe del sitio oficial apunta erróneamente a Teatinos 808."
+      "Índice oficial: ubicado Morandé 808. Ficha 1D1B 32,64 total/útil; 2D1B 41,94 total /39,47 útil; Entrega 2026. El iframe del sitio oficial apunta erróneamente a Teatinos 808.",
+      "Actualización comercial del propietario 30/10/2026: precios por tipología, estado, entrega y dirección. Prevalece sobre campañas e información histórica; no acredita stock."
     ],
     "verifiedFields": [
       "comuna",
@@ -9685,7 +9785,9 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "precioDesdeUF",
+      "entrega"
     ],
     "updates": {
       "nombre": "Vista Morandé",
@@ -9698,9 +9800,30 @@
         "1 dormitorio",
         "2 dormitorios"
       ],
-      "estado": "Venta en verde",
+      "estado": "En verde",
       "superficieDesdeM2": 32.64,
-      "descripcionLarga": "Proyecto de AJ Urbana en Morandé 808, Santiago, con 1 dormitorio, 2 dormitorios. La fuente oficial informa venta en verde."
+      "descripcionLarga": "Proyecto de AJ Urbana en Morandé 808, Santiago, con 1 dormitorio, 2 dormitorios. La fuente oficial informa venta en verde.",
+      "precioDesdeUF": 3399,
+      "precioDesdeTipologia": "1 dormitorio",
+      "commercialOffers": [
+        {
+          "id": "1d",
+          "label": "1 dormitorio",
+          "bedrooms": 1,
+          "propertyType": "departamento",
+          "priceUF": 3399,
+          "priceDecimals": 0
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "entrega": "Primer semestre 2027",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Captura 2026-10-30 19:32:42 y tabla autorizada por Sollahms"
+      }
     },
     "specs": {
       "utilM2": "32.64–39.47",
@@ -9730,9 +9853,8 @@
     "virtualTours": [],
     "pendingFields": [
       "Recorrido virtual oficial específico no localizado",
-      "Precio vigente y disponibilidad",
-      "Fecha de entrega",
-      "Equipamiento y áreas comunes"
+      "Equipamiento y áreas comunes",
+      "Disponibilidad de unidades por confirmar"
     ],
     "reviewedOriginal": {
       "comuna": "Santiago",
@@ -55018,7 +55140,8 @@
     "sourceStatus": "verified",
     "sourceNotes": "Fuente oficial dedicada enlazada desde AJ Urbana. Superficies aproximadas según aviso legal. Precio, avance y entrega no publicados.",
     "sourceEvidence": [
-      "Modelo Studio: 20,82 m² útil interior / 2,68 m² terraza / 23,50 m² total. Modelo 1D1B: 35,03 m² útil interior / 5,30 m² terraza / 40,33 m² total."
+      "Modelo Studio: 20,82 m² útil interior / 2,68 m² terraza / 23,50 m² total. Modelo 1D1B: 35,03 m² útil interior / 5,30 m² terraza / 40,33 m² total.",
+      "Actualización comercial del propietario 30/10/2026: precios por tipología, estado, entrega y dirección. Prevalece sobre campañas e información histórica; no acredita stock."
     ],
     "verifiedFields": [
       "amenities",
@@ -55030,7 +55153,10 @@
       "nombre",
       "region",
       "superficieDesdeM2",
-      "tipologias"
+      "tipologias",
+      "precioDesdeUF",
+      "estado",
+      "entrega"
     ],
     "updates": {
       "nombre": "Monjitas 690",
@@ -55055,7 +55181,37 @@
         "Patio de mascotas",
         "Bicicleteros"
       ],
-      "descripcionLarga": "Proyecto de AJ Urbana en Monjitas 690, Santiago, con modelos estudio y 1 dormitorio. El sitio oficial presenta piscina panorámica templada, rooftop, quinchos, sala gourmet, cowork, sport bar, gimnasio y patio de mascotas."
+      "descripcionLarga": "Proyecto de AJ Urbana en Monjitas 690, Santiago, con modelos estudio y 1 dormitorio. El sitio oficial presenta piscina panorámica templada, rooftop, quinchos, sala gourmet, cowork, sport bar, gimnasio y patio de mascotas.",
+      "precioDesdeUF": 2645.9,
+      "precioDesdeTipologia": "Estudio",
+      "commercialOffers": [
+        {
+          "id": "0d",
+          "label": "Estudio",
+          "bedrooms": 0,
+          "propertyType": "departamento",
+          "priceUF": 2645.9,
+          "priceDecimals": 1
+        },
+        {
+          "id": "1d",
+          "label": "1 dormitorio",
+          "bedrooms": 1,
+          "propertyType": "departamento",
+          "priceUF": 3351.8,
+          "priceDecimals": 1
+        }
+      ],
+      "catalogPricePolicy": "owner-typology",
+      "estado": "En verde",
+      "entrega": "Primer semestre 2029",
+      "commercialSource": {
+        "type": "owner-supplied",
+        "date": "2026-10-30",
+        "priority": "owner-authorized",
+        "priceScope": "typology-not-unit",
+        "source": "Captura 2026-10-30 19:32:42 y tabla autorizada por Sollahms"
+      }
     },
     "specs": {
       "utilM2": "20.82–35.03",
@@ -55101,8 +55257,7 @@
     "virtualTours": [],
     "pendingFields": [
       "Recorrido virtual oficial específico no localizado",
-      "Precio vigente y disponibilidad",
-      "Fecha de entrega"
+      "Disponibilidad de unidades por confirmar"
     ],
     "reviewedOriginal": {
       "comuna": "Santiago",
