@@ -36,3 +36,9 @@ if(typeof document!=='undefined') {
     update();
   }
 }
+
+// Optional central Metro facts: preserve native fiche navigation and all commercial content.
+if(typeof document!=='undefined'){
+ const locationSection=document.getElementById('ubicacion');
+ if(locationSection&&'IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){observer.disconnect();import('./project-metro.mjs').then(m=>m.showProjectMetro()).catch(()=>{});}},{rootMargin:'300px'});observer.observe(locationSection);}
+}

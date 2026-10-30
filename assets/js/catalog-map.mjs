@@ -1,3 +1,4 @@
+import {metroSummary} from './metro-model.mjs';
 import {publicOrigin} from './commercial-context.mjs?v=20261029-euro-1';
 import {matchedLabels,defaults} from './catalog-filter-engine.mjs?v=20261029-euro-1';
 import {priceFromLabel,projectOffer as selectedOffer,projectFacts,validPrice} from './catalog-model.mjs?v=20261029-euro-1';
@@ -52,6 +53,8 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
   const tiles=L.tileLayer(provider.tileUrl,{attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',maxZoom:19,keepBuffer:0,updateWhenIdle:true,updateWhenZooming:false,noWrap:true,referrerPolicy:'strict-origin-when-cross-origin'}).addTo(map);
   tiles.on('tileerror',()=>{tileError.hidden=false;});
   const markers=L.layerGroup().addTo(map);
+  import('./metro-map.mjs').then(({addMetroLayers})=>addMetroLayers({L,map,host:toolbar,projectsLayer:markers,onStation:id=>window.dispatchEvent(new CustomEvent('catalog-metro-station',{detail:{id}}))})).catch(()=>{const n=el('p','Las capas de Metro no pudieron cargar. El mapa de proyectos sigue disponible.','metro-note');toolbar.append(n);});
+  window.addEventListener('catalog-list-selection',e=>{if(rows.some(r=>r.project.slug===e.detail?.slug))showSelection(e.detail.slug,{reveal:true});});
   let rows=[],locations=[],selected=null,type='',initial=true,active=true,currentKey='',restored=null,filterState=defaults();
   try{const v=JSON.parse(sessionStorage.getItem(MAP_STATE_KEY));if(validMapState(v))restored=v;}catch{}
   function remember(){if(!map._loaded)return;const c=map.getCenter(),v={version:1,lat:c.lat,lng:c.lng,zoom:map.getZoom(),selected};if(validMapState(v))try{sessionStorage.setItem(MAP_STATE_KEY,JSON.stringify(v));}catch{}}
@@ -62,13 +65,13 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
   function showSelection(slug,{reveal=false,announce=true}={}){
     const row=rows.find(r=>r.project.slug===slug);selected=row?slug:null;select.value=selected||'';detail.replaceChildren();
     if(!row){selectionStatus.textContent='Selecciona un marcador o un proyecto para ver su información.';detail.append(el('p','Los grupos muestran cuántos proyectos hay en cada zona. Acércate para explorar sus ubicaciones.','catalog-map-empty'));redraw();remember();return;}
-    const p=row.project;selectionStatus.textContent=announce?'Seleccionado: '+p.nombre:'';
+    window.dispatchEvent(new CustomEvent('catalog-map-selection',{detail:{slug:row.project.slug}}));const p=row.project;selectionStatus.textContent=announce?'Seleccionado: '+p.nombre:'';
     const figure=el('div',undefined,'catalog-map-image');if(p.imagenPrincipal){const image=el('img');image.src=p.imagenPrincipal;image.alt=p.imagenAlt||'Imagen del proyecto '+p.nombre;image.width=480;image.height=300;image.decoding='async';image.addEventListener('error',()=>figure.replaceChildren(el('span','Imagen no disponible')),{once:true});figure.append(image);}
     const title=el('h2',p.nombre),location=el('p',[p.comuna,p.region].filter(Boolean).join(' · '),'catalog-location');
     const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type||(filterState.propertyType==='local'?'Comercial':''))){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
     const offer=selectedOffer(p,filterState),amount=el('p',priceFromLabel(offer.value,p.precioDecimales),'catalog-price-value');
     const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(location.search,'buscador'))+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(p.inmobiliaria)&&/^[012]$/.test(filterState.bedrooms)&&p.commercialOffers?.some(o=>o.id===filterState.bedrooms+'d')?'&oferta='+filterState.bedrooms+'d':'')+(p._ecasaStageNumber?'#etapa-'+p._ecasaStageNumber:'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
-    detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));detail.append(link);
+    detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));const metro=metroSummary(p,filterState);if(metro)detail.append(el('p',metro.station+' · '+metro.lines+' · '+metro.distance,'catalog-metro-summary'));detail.append(link);
     const matches=matchedLabels(p,filterState);if(matches.length){const list=el('ul',undefined,'cf-match-list');list.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))list.append(el('li',label));detail.append(list);}
     if(reveal){map.setView([row.location.lat,row.location.lng],Math.max(15,map.getZoom()),{animate:false});}
     redraw();remember();

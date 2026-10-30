@@ -50,7 +50,7 @@
 <link rel="stylesheet" href="/assets/css/catalog-filters.css?v=20261029-filters-1">
 <link rel="stylesheet" href="/assets/css/guide-navigation.css?v=20261029-1">
 <link rel="stylesheet" href="/assets/css/purchase-stage-entry.css?v=20261029-1">
-<link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
+<link rel="stylesheet" href="/assets/css/metro.css"><link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
 <script src="/assets/js/scroll-presence.js?v=20261026-3" defer></script>
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
 <script src="/assets/js/image-parallax.js?v=20261027-1" defer></script>
@@ -142,6 +142,19 @@
     <p class="cf-hint">El precio desde corresponde al proyecto; las ofertas comerciales identificadas por separado usan el precio de ese producto. Confirma el valor y la disponibilidad al cotizar.</p>
     <details class="catalog-more cf-advanced" id="catalog-more">
       <summary>Más filtros<span id="catalog-more-count"></span></summary>
+<fieldset id="metro-filter-section" class="metro-filters" data-scroll-static><legend>Cercanía al Metro</legend>
+<p class="metro-note">Región Metropolitana · Distancia geográfica en línea recta. No representa metros ni minutos caminando.</p>
+<div class="metro-filter-grid">
+<label>Red de Metro<select id="metro-network" class="catalog-control"><option value="">Sin filtro Metro</option><option value="current">Actual</option><option value="future" disabled>Futura · ubicación pendiente</option></select></label>
+<label>Estación<select id="metro-station" class="catalog-control"></select></label>
+<label>Distancia geográfica máxima<select id="metro-distance" class="catalog-control"><option value="300">300 m</option><option value="500">500 m</option><option value="800">800 m</option><option value="1000" selected>1.000 m</option></select></label>
+<label>Medición<select id="metro-method" class="catalog-control" data-metro-unavailable><option value="geographic">En línea recta</option><option value="walking" disabled>Caminando · pendiente</option></select></label>
+<label>Tiempo caminando<select id="metro-minutes" class="catalog-control" data-metro-unavailable><option value="">Rutas peatonales pendientes</option></select></label>
+<label>Estado futuro<select id="metro-future-state" class="catalog-control" data-metro-unavailable><option value="">Geometrías pendientes</option></select></label>
+</div><fieldset><legend>Líneas · coincide con cualquiera</legend><div id="filter-metroLines" class="metro-line-choices"></div></fieldset>
+<p class="metro-note">Una estación específica tiene prioridad sobre las líneas seleccionadas. Sin estación ni línea, selecciona «Actual» para buscar cualquier estación dentro del radio.</p>
+<details class="metro-sources"><summary>Fuentes, alcance y red futura</summary><p>126 ubicaciones de estaciones, con combinaciones agrupadas, en 7 líneas. Nombres y operación contrastados con Metro el 30/10/2026; coordenadas y trazados: IDE MINVU. Los puntos no identifican accesos peatonales.</p><p>L7 y L9: obras confirmadas. L8: proyecto con RCA favorable. Sus estaciones y recorridos futuros todavía no se filtran ni se dibujan porque falta validar geometrías y accesos.</p><p><a href="https://www.metro.cl/" target="_blank" rel="noopener">Metro de Santiago</a> · <a href="https://geoide.minvu.cl/server2/rest/services/INFORMACION_EXTERNA/Metro/MapServer" target="_blank" rel="noopener">IDE MINVU</a></p></details>
+</fieldset><p id="metro-load-status" role="status" hidden>Los datos de Metro no pudieron cargar. Los demás filtros siguen disponibles.</p>
       <p class="cf-hint">Mostramos coincidencias documentadas. Un dato sin informar no significa que el proyecto no tenga esa característica.</p>
       <p id="advanced-data-status" class="cf-hint" hidden></p>
       <div class="cf-groups"><fieldset class="cf-group"><legend>Modalidad de compra revisada</legend><p class="cf-hint">Coincidir con cualquiera de las seleccionadas. Los proyectos con información pendiente quedan fuera de este filtro.</p><div id="filter-purchaseModes" class="cf-choices"></div></fieldset>
@@ -188,13 +201,13 @@
 </section>
 <div class="catalog-toolbar">
 <p id="project-count" tabindex="-1" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
-<div class="catalog-view" role="group" aria-label="Vista del catálogo"><button type="button" data-catalog-view="cards" aria-pressed="true" disabled>Tarjetas</button><button type="button" data-catalog-view="list" aria-pressed="false" disabled>Listado</button><button type="button" data-catalog-view="map" aria-pressed="false" disabled>Mapa</button></div>
+<div class="catalog-view" role="group" aria-label="Vista del catálogo"><button type="button" data-catalog-view="cards" aria-pressed="true" disabled>Tarjetas</button><button type="button" data-catalog-view="list" aria-pressed="false" disabled>Listado</button><button type="button" data-catalog-view="map" aria-pressed="false" disabled>Mapa</button><button type="button" data-catalog-view="split" aria-pressed="false" disabled>Lista + mapa</button></div>
 <div class="catalog-sort"><label for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" form="catalog-filters" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option><option value="delivery">Entrega informada</option><option value="relevance">Coincidencia con búsqueda</option><option value="name">Nombre: A–Z</option></select></div>
 </div>
 <div id="catalog-feedback" class="catalog-feedback" hidden><p id="catalog-message" role="status" aria-live="polite" aria-atomic="true"></p><button type="button" id="modify-search" class="catalog-text-button">Modificar búsqueda</button><button id="empty-reset" class="catalog-text-button" type="button" hidden>Limpiar filtros y ver todos</button></div>
 </div>
-<section id="catalog-map" class="catalog-map" data-scroll-static="" aria-label="Mapa del catálogo" hidden></section>
-<div id="project-grid" class="catalog-grid" data-view="cards" aria-busy="true"></div>
+<div class="catalog-results-pair"><section id="catalog-map" class="catalog-map" data-scroll-static="" aria-label="Mapa del catálogo" hidden></section>
+<div id="project-grid" class="catalog-grid" data-view="cards" aria-busy="true"></div></div>
 <noscript><p>Puedes explorar las fichas desde el listado siguiente. Los filtros y la búsqueda financiera requieren JavaScript.</p></noscript>
 <!--CATALOG_DIRECTORY_START-->
 <details id="catalog-static-directory" class="catalog-directory">
@@ -367,6 +380,6 @@
 <p class="text-[10px] text-slate-400 font-mono tracking-widest text-center">PRECISION • TRANSPARENCY • STRATEGY</p>
 </div>
 </footer>
-<script type="module" src="/assets/js/catalog.mjs?v=20261029-euro-1"></script>
+<script type="module" src="/assets/js/catalog.mjs?v=20261030-metro-1"></script>
 </body>
 </html>
