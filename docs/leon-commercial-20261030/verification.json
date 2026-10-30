@@ -1,0 +1,184 @@
+{
+  "sourceCommit": "96958031819876b52e17833b4e68a8c23dce7d40",
+  "deployment": "dpl_BZhhRSnpWc3faoDHCByT2p2XzmLa",
+  "previewDeployment": "dpl_6EznWsEgwU96sU2fhxBdG9CAATcM",
+  "rollbackDeployment": "dpl_DqeEbUHFWijsXgRuvCSh4kHAqsuW",
+  "date": "2026-10-30",
+  "primaryTests": {
+    "commercial": 139,
+    "preservation": 344,
+    "financialProjection": 69
+  },
+  "regression": {
+    "sento": 85,
+    "ajUrbana": 77,
+    "ecasa": 194,
+    "catalogueTests": 23
+  },
+  "catalogueCount": 131,
+  "otherProjectsPreserved": 126,
+  "imagesPreserved": 114,
+  "planImagesPreserved": 36,
+  "publicHttp": [
+    {
+      "path": "proyectos.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "condominio-uruguay.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "condominio-parque-don-lautaro.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "bcome.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "gregorio-de-la-fuente-a.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "jardines-de-ramon-cruz.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "data/proyectos.json",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "data/catalog-facets.json",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "data/project-locations.json",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "assets/js/project-offers.mjs",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "assets/js/catalog.mjs",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "assets/js/catalog-map.mjs",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "status": 200,
+      "exact": true
+    }
+  ],
+  "previewHttp": [
+    {
+      "path": "proyectos.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "condominio-uruguay.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "condominio-parque-don-lautaro.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "bcome.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "gregorio-de-la-fuente-a.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "jardines-de-ramon-cruz.html",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "data/proyectos.json",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "data/catalog-facets.json",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "data/project-locations.json",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "assets/js/project-offers.mjs",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "assets/js/catalog.mjs",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "assets/js/catalog-map.mjs",
+      "status": 200,
+      "exact": true
+    },
+    {
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "status": 200,
+      "exact": true
+    }
+  ],
+  "browser": {
+    "desktop": "1440×1000",
+    "tablet": "768×1024",
+    "mobile": "390×950",
+    "mobileContentWidth": 375,
+    "tabletContentWidth": 753,
+    "scenarios": [
+      "5 fiches, 11 prices",
+      "Bcome 2D, max UF4000 → UF3855",
+      "Bcome study, max UF3000 → UF2930",
+      "Cards/list/map same selected price",
+      "Quote context 2d retained",
+      "Guide public property price3855"
+    ],
+    "formsSubmitted": false
+  },
+  "stagedProduction": {
+    "catalogue200Exact": true,
+    "bcome200Exact": true,
+    "contactGetStatus": 405,
+    "patioBrasilStatus": 410,
+    "artifactSha256": "8c0550ae2fbbc57747990829c50112b268bf49024c343a4f1340610f1818c434",
+    "synchronizedContactRows": 53,
+    "otherContactRows": 78
+  },
+  "main": "86e200ec191b38af355061e21bc0fc1e549cce3b",
+  "automaticDeploymentSettings": "unchanged",
+  "errorLogScan": "No error/fatal logs found 2026-10-30 23:22 UTC, last hour"
+}

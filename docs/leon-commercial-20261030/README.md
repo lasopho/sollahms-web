@@ -31,7 +31,7 @@ Los modelos documentados de 1 dormitorio en Uruguay y Jardines no tienen precio 
 - 139 comprobaciones de precios, ubicación, estados, entregas, filtros combinados, orden, oferta y contexto del simulador/cotización.
 - 344 comprobaciones de conservación y bloqueo de sobrescrituras; regeneración focalizada idempotente.
 - 69 comprobaciones de proyección financiera: cinco precios desde, rechazo de datos comerciales incoherentes y vencidos, conservación de las restricciones Sento y ausencia de medios protegidos.
-- Regresión existente: 85 comprobaciones Sento, 77 AJ Urbana, 194 ECasa y diez pruebas del catálogo.
+- Regresión existente: 85 comprobaciones Sento, 77 AJ Urbana, 194 ECasa y 23 pruebas del catálogo, mapa y vistas.
 - Regeneración compartida de las cinco fichas conserva sus once precios. La reconstrucción global de facetas reproduce las cinco proyecciones León; sólo aparecen diferencias preexistentes de orden/null en tres registros ECasa, que no se incluyen en la publicación.
 
 ## Paquete y recuperación
@@ -40,10 +40,63 @@ Base final: producción `dpl_DqeEbUHFWijsXgRuvCSh4kHAqsuW`, código `f6980e3c374
 
 Se reutiliza la rama manual activa `codex/sento-commercial-20261030` mediante avance directo desde el commit de informe vigente. No se fusionan ramas antiguas, no se modifica `main` ni `vercel.json`, ni se cambian los despliegues automáticos. `scripts/package-leon-commercial.py` aplica una lista cerrada de trece archivos públicos y un módulo de proyección de contacto, y conserva los restantes 1.607 archivos runtime. No reconstruye recursos exclusivos de Preview. Se mantienen el retiro HTTP 410 de Patio Brasil y las sincronizaciones comerciales anteriores.
 
-El manifiesto anterior se conserva en `baseline-deployment-files.json`. El deployment base queda disponible para rollback sin reconstrucción. Los identificadores finales y comprobaciones de navegador/publicación se agregan después de validar el candidato.
+El manifiesto anterior se conserva en `baseline-deployment-files.json`. El deployment base queda disponible para rollback sin reconstrucción. Los identificadores finales y comprobaciones públicas constan más abajo y en verification.json.
 
 ## Verificación en navegador antes de la publicación
 
 Chrome real a 1440×1000 y 390×950: cinco fichas con los once precios, sin desbordamientos ni imágenes rotas cargadas. Bcome con Biobío + Concepción + León + Departamento + 2D + máximo UF 4.000 devuelve UF 3.855 en tarjetas, listado y mapa. El enlace mantiene oferta 2d y origen buscador; la cotización conserva la selección y la guía muestra 3855 UF. La conversión UF proviene del servicio existente. No se enviaron formularios ni correos.
 
 El paquete sincroniza 53 registros autorizados del catálogo interno de contacto, conservando los otros 78. Los 126 proyectos ajenos a León mantienen idénticos datos y facetas respecto de la producción Sento.
+
+## Publicación comprobada
+
+- URL: https://sollahms.cl/proyectos.html?inmobiliaria=Le%C3%B3n
+- Código: `96958031819876b52e17833b4e68a8c23dce7d40`.
+- Deployment publicado y READY: `dpl_BZhhRSnpWc3faoDHCByT2p2XzmLa`.
+- Preview validado: `dpl_6EznWsEgwU96sU2fhxBdG9CAATcM`. La promoción directa del preview devolvió 422; se creó un deployment de producción con el mismo paquete congelado, se verificó y se promovió. Ambos builds produjeron el mismo recibo de integridad: `8c0550ae2fbbc57747990829c50112b268bf49024c343a4f1340610f1818c434`.
+- Rollback conservado: `dpl_DqeEbUHFWijsXgRuvCSh4kHAqsuW`, que incluye los cambios recientes de Sento.
+- Trece rutas públicas: HTTP 200 y contenido idéntico al paquete. El dominio resuelve al deployment publicado.
+- Tablet 768×1024: contenido de 753 px sin desbordamiento. Móvil 390×950: 375 px sin desbordamiento.
+- Recorrido público verificado: catálogo/listado/mapa Bcome 2D UF3.855 → ficha con oferta2d → cotización con esa selección → Guía hipotecaria con 3855 UF.
+- GET de contacto devuelve 405, según diseño; no se enviaron formularios. Patio Brasil conserva HTTP 410.
+- Logs error/fatal de la última hora consultados a las 23:22 UTC: sin registros coincidentes.
+- main permanece en `86e200ec191b38af355061e21bc0fc1e549cce3b`; configuración de despliegues automáticos intacta.
+
+## Archivos de implementación
+
+- `AGENTS.md`
+- `assets/js/project-offers.mjs`
+- `assets/js/catalog.mjs`
+- `assets/js/catalog-map.mjs`
+- `assets/js/catalog-filter-engine.mjs`
+- `lib/public-project-view.mjs`
+- `data/proyectos.json`
+- `data/catalog-facets.json`
+- `data/project-locations.json`
+- `data/fichas-proyectos.json`
+- `bcome.html`
+- `condominio-uruguay.html`
+- `gregorio-de-la-fuente-a.html`
+- `condominio-parque-don-lautaro.html`
+- `jardines-de-ramon-cruz.html`
+- `proyectos.html`
+- `scripts/leon_commercial.py`
+- `scripts/package-leon-commercial.py`
+- `scripts/project_header_b.py`
+- `scripts/build-catalog-facets.py`
+- `scripts/purchase_stage.py`
+- `scripts/import-project-research.py`
+- `tests/leon-commercial.test.mjs`
+- `tests/leon-preservation.py`
+- `tests/leon-financial-projection.test.mjs`
+- `docs/leon-commercial-20261030/owner-input.json`
+- `docs/leon-commercial-20261030/baseline-deployment-files.json`
+- `docs/leon-commercial-20261030/deployment-files.json`
+- `docs/leon-commercial-20261030/packaging.json`
+- `docs/leon-commercial-20261030/README.md`
+
+## Capturas públicas
+
+![Ficha Bcome en escritorio](desktop.png)
+
+![Listado con Bcome 2D y UF 3.855 en móvil](mobile.png)
