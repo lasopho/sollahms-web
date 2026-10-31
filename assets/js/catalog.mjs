@@ -66,7 +66,7 @@ function card(project){
   if(typeof project.detalleUrl==='string'&&/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl)){
     const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(project.inmobiliaria)&&/^[012]$/.test(current.bedrooms)&&project.commercialOffers?.some(o=>o.id===current.bedrooms+'d')?'&oferta='+current.bedrooms+'d':'')+(leonCatalogOfferId(project,current)?'&oferta='+leonCatalogOfferId(project,current):'')+(project._ecasaStageNumber?'#etapa-'+project._ecasaStageNumber:'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
   }
-  if(view==='split'){const b=element('button','Ubicar en mapa','catalog-text-button');b.type='button';b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('catalog-list-selection',{detail:{slug:project.slug}})));actions.append(b);}
+  if(view==='split'){const b=element('button','Ubicar en mapa','catalog-text-button');b.type='button';b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('catalog-list-selection',{detail:{slug:project.slug}})));actions.append(b);}
   body.append(actions);article.append(body);
   if(!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
   const financial=body.querySelector('.capacity-result');
@@ -109,7 +109,7 @@ async function load(){
     message.textContent=['TimeoutError','AbortError'].includes(error.name)?'La carga tardó demasiado. Puedes explorar las fichas en el directorio siguiente.':'No pudimos cargar el catálogo. Puedes explorar las fichas en el directorio siguiente.';
   }finally{grid.setAttribute('aria-busy','false');}
 }
-window.addEventListener('catalog-map-selection',e=>{for(const item of grid.querySelectorAll('[data-project]'))item.classList.toggle('is-map-selected',item.dataset.project===e.detail?.slug);});
+window.addEventListener('catalog-map-selection',e=>{for(const item of grid.querySelectorAll('[data-project]')){const selected=item.dataset.project===e.detail?.slug;item.classList.toggle('is-map-selected',selected);item.querySelector('button.catalog-text-button')?.setAttribute('aria-pressed',String(selected));if(selected&&e.detail.revealList&&view==='split'&&innerWidth>=1100){const rect=item.getBoundingClientRect();if(rect.top<100||rect.bottom>innerHeight)item.scrollIntoView({block:'nearest',behavior:'instant'});}}});
 load();
 
 

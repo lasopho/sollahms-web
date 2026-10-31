@@ -65,8 +65,8 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
   fit.addEventListener('click',fitAll);
   function showSelection(slug,{reveal=false,announce=true}={}){
     const row=rows.find(r=>r.project.slug===slug);selected=row?slug:null;select.value=selected||'';detail.replaceChildren();
-    if(!row){selectionStatus.textContent='Selecciona un marcador o un proyecto para ver su información.';detail.append(el('p','Los grupos muestran cuántos proyectos hay en cada zona. Acércate para explorar sus ubicaciones.','catalog-map-empty'));redraw();remember();return;}
-    window.dispatchEvent(new CustomEvent('catalog-map-selection',{detail:{slug:row.project.slug}}));const p=row.project;selectionStatus.textContent=announce?'Seleccionado: '+p.nombre:'';
+    if(!row){window.dispatchEvent(new CustomEvent('catalog-map-selection',{detail:{slug:null,revealList:false}}));selectionStatus.textContent='Selecciona un marcador o un proyecto para ver su información.';detail.append(el('p','Los grupos muestran cuántos proyectos hay en cada zona. Acércate para explorar sus ubicaciones.','catalog-map-empty'));redraw();remember();return;}
+    window.dispatchEvent(new CustomEvent('catalog-map-selection',{detail:{slug:row.project.slug,revealList:!reveal&&announce}}));const p=row.project;selectionStatus.textContent=announce?'Seleccionado: '+p.nombre:'';
     const figure=el('div',undefined,'catalog-map-image');if(p.imagenPrincipal){const image=el('img');image.src=p.imagenPrincipal;image.alt=p.imagenAlt||'Imagen del proyecto '+p.nombre;image.width=480;image.height=300;image.decoding='async';image.addEventListener('error',()=>figure.replaceChildren(el('span','Imagen no disponible')),{once:true});figure.append(image);}
     const title=el('h2',p.nombre),location=el('p',[p.comuna,p.region].filter(Boolean).join(' · '),'catalog-location');
     const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type||(filterState.propertyType==='local'?'Comercial':''))){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
@@ -105,7 +105,8 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
     if(focused){const replacement=[...canvas.querySelectorAll('[data-map-marker]')].find(e=>e.dataset.mapMarker===focused);(replacement||canvas).focus({preventScroll:true});}
   }
   select.addEventListener('change',()=>{nearby.hidden=true;showSelection(select.value,{reveal:true});});
-  map.on('moveend',()=>{redraw();remember();});
+  function updateVisibleCount(){if(!map._loaded)return;const count=rows.filter(r=>map.getBounds().contains([r.location.lat,r.location.lng])).length;status.textContent=rows.length+' ubicados · '+count+' en esta zona';}
+  map.on('moveend',()=>{redraw();remember();updateVisibleCount();});
   function update(projects,options={}){
     type=options.assetType||'';filterState=options.filters??defaults();const result=locateProjects(projects,registry);rows=result.located;locations=locationGroups(rows);
     const key=projects.map(p=>p.slug).join('|')+'|'+type;
@@ -119,9 +120,9 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
     if(initial){initial=false;if(restored){map.setView([restored.lat,restored.lng],restored.zoom,{animate:false});selected=restored.selected;}else if(locations.length)fitAll();else map.setView([-33.45,-70.65],5,{animate:false});}
     else selected=previous;
     if(!rows.some(r=>r.project.slug===selected))selected=null;
-    showSelection(selected,{announce:true});
+    showSelection(selected,{announce:false});
     if(!rows.length)selectionStatus.textContent=projects.length?'No hay ubicaciones verificadas para estos filtros. Explora las fichas en Tarjetas o Listado.':'No hay resultados para estos filtros. Puedes limpiarlos para continuar.';
-    if(active)map.invalidateSize({pan:false});
+    if(active)map.invalidateSize({pan:false});updateVisibleCount();
   }
-  return {update,show(){active=true;map.invalidateSize({pan:false});redraw();},hide(){remember();active=false;}};
+  return {update,show(){active=true;map.invalidateSize({pan:false});redraw();updateVisibleCount();},hide(){remember();active=false;}};
 }
