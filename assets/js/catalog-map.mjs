@@ -55,7 +55,7 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
   tiles.on('tileerror',()=>{tileError.hidden=false;});
   const markers=L.layerGroup().addTo(map);
   import('./metro-map.mjs').then(({addMetroLayers})=>addMetroLayers({L,map,host:toolbar,projectsLayer:markers,onStation:id=>window.dispatchEvent(new CustomEvent('catalog-metro-station',{detail:{id}}))})).catch(()=>{const n=el('p','Las capas de Metro no pudieron cargar. El mapa de proyectos sigue disponible.','metro-note');toolbar.append(n);});
-  window.addEventListener('catalog-list-selection',e=>{if(rows.some(r=>r.project.slug===e.detail?.slug))showSelection(e.detail.slug,{reveal:true});});
+  window.addEventListener('catalog-list-selection',e=>{if(rows.some(r=>r.project.slug===e.detail?.slug)){showSelection(e.detail.slug,{reveal:true});if(innerWidth<1100){canvas.focus({preventScroll:true});host.scrollIntoView({block:'start',behavior:'instant'});}}});
   let rows=[],locations=[],selected=null,type='',initial=true,active=true,currentKey='',restored=null,filterState=defaults();
   try{const v=JSON.parse(sessionStorage.getItem(MAP_STATE_KEY));if(validMapState(v))restored=v;}catch{}
   function remember(){if(!map._loaded)return;const c=map.getCenter(),v={version:1,lat:c.lat,lng:c.lng,zoom:map.getZoom(),selected};if(validMapState(v))try{sessionStorage.setItem(MAP_STATE_KEY,JSON.stringify(v));}catch{}}
