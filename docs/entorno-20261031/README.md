@@ -1,6 +1,6 @@
 # Entorno y desarrollo urbano — revisión del catálogo completo
 
-**Corte: 31 de octubre de 2026. Preparado para revisión; no publicado en producción.**
+**Corte: 31 de octubre de 2026. Publicado en Sollahms.cl por autorización expresa.**
 
 Se concluyó una revisión documental de **131/131 proyectos**, en 10 regiones. El registro público contiene **56 obras verificadas y 74 relaciones**, correspondientes a **59 proyectos**. Las búsquedas se organizaron por comuna y sector, con una evaluación individual de cada dirección.
 
@@ -995,4 +995,4 @@ Los candidatos excluidos y los motivos están en `pendingCandidates` del registr
 
 La URL y el despliegue de esta revisión se registran en [ENTREGA.md](ENTREGA.md). La versión anterior queda documentada en [MUESTRA-INICIAL.md](MUESTRA-INICIAL.md).
 
-No se ha publicado en Sollahms.cl ni se han creado tareas automáticas o revisiones programadas. La producción se mantiene en el despliegue dpl_8rAgvVQSGPF9WbbDHsgeCHV3dkn5 hasta una autorización expresa.
+Publicado por autorización expresa en el despliegue dpl_72BPGbcxhuj55cztQnAJ7fohvcvq. No se crearon tareas automáticas ni revisiones programadas. Véase [publicación y comprobaciones](PUBLICACION.md).
