@@ -9,11 +9,11 @@
     "reserva-mayor-2",
     "vicuna-mackenna-7589"
   ],
-  "projectsWithRelationships": 84,
+  "projectsWithRelationships": 86,
   "outcomes": {
-    "reviewed_verified": 84,
-    "location_blocked": 5,
-    "reviewed_no_verified": 42
+    "reviewed_verified": 86,
+    "reviewed_no_verified": 42,
+    "location_blocked": 3
   },
   "method": "Búsqueda documental por comuna y sector, evaluación individual de dirección y candidatos. No equivale a un inventario universal de inversiones ni a una inspección de terreno.",
   "projects": [
@@ -475,7 +475,24 @@
         "lat": -36.790843,
         "lng": -72.949394,
         "source": "https://www.vesant.cl/proyectos/reserva-mayor-2",
-        "note": "Dirección ausente; coordenadas no habilitan nueva asociación."
+        "note": "Dirección ausente; coordenadas no habilitan nueva asociación.",
+        "additionalVerification": {
+          "projectSlug": "reserva-mayor-2",
+          "reviewedOn": "2026-10-31",
+          "sources": [
+            {
+              "url": "https://www.vesant.cl/proyectos/reserva-mayor-2",
+              "title": "Responsable del proyecto: coordenadas propias publicadas"
+            }
+          ],
+          "projectLocation": {
+            "lat": -36.790843,
+            "lng": -72.949394,
+            "address": null,
+            "commune": "Concepción"
+          },
+          "rationale": "Clave coordenadas propia del proyecto, separada de lista pois: lat -36.790843, lng -72.949394. Identidad Reserva Mayor 2 en página del responsable. Punto de referencia propio del proyecto, no entrada ni deslinde. Se conserva la ausencia de número postal; no se cambia el registro comercial."
+        }
       },
       "queries": [
         "Concepción Las Heras Salas nuevo CESFAM O Higgins 2026",
@@ -535,7 +552,7 @@
         "puente-ferroviario-biobio"
       ],
       "verifiedRelationshipWorkIds": [],
-      "outcome": "location_blocked",
+      "outcome": "reviewed_no_verified",
       "rationale": "El registro y catálogo carecen de dirección. La coordenada aislada no autoriza nuevas distancias o asociaciones. La investigación comunal detecta obras, pero queda bloqueada la comprobación territorial individual hasta verificar el emplazamiento.",
       "pending": [
         "Viaducto Chacabuco: fuente primaria histórica anuncia primer trimestre 2026, contradicho por plazos de prensa posteriores; falta actualización primaria.",
@@ -2377,7 +2394,24 @@
         "lat": -34.452561,
         "lng": -72.029259,
         "source": "https://endemicopichilemu.cl/",
-        "note": "Registro previo con fuente contrastada; no nueva visita ni geocodificación en terreno. Se conserva precisión declarada."
+        "note": "Registro previo con fuente contrastada; no nueva visita ni geocodificación en terreno. Se conserva precisión declarada.",
+        "additionalVerification": {
+          "projectSlug": "endemico",
+          "reviewedOn": "2026-10-31",
+          "sources": [
+            {
+              "url": "https://endemicopichilemu.cl/",
+              "title": "Responsable del proyecto: coordenadas propias publicadas"
+            }
+          ],
+          "projectLocation": {
+            "lat": -34.452561,
+            "lng": -72.029259,
+            "address": null,
+            "commune": "Pichilemu"
+          },
+          "rationale": "Iframe propio de ubicación: maps.google.com/maps?q=-34.452561%2C%20-72.029259 y title con el mismo par; identidad Condominio Endémico Punta Lobos. Punto de referencia propio del proyecto, no entrada ni deslinde. Se conserva la ausencia de número postal; no se cambia el registro comercial."
+        }
       },
       "queries": [
         "site.mop.gob.cl 2026 Pichilemu obras hospital",
@@ -2402,7 +2436,7 @@
         "hospital-pichilemu",
         "alcantarillado-pichilemu-zona-1"
       ],
-      "outcome": "location_blocked",
+      "outcome": "reviewed_no_verified",
       "rationale": "El registro trae coordenadas y fuente del responsable, pero address=null. Se investigó Pichilemu y sus obras sanitarias/hospitalarias; no se vinculan ni calculan distancias mientras falte dirección o deslinde preciso contrastado.",
       "publishedRelationshipIds": [],
       "pending": [
@@ -5377,7 +5411,7 @@
       "candidateWorkIds": [
         "teleferico-bicentenario"
       ],
-      "outcome": "reviewed_no_verified",
+      "outcome": "reviewed_verified",
       "rationale": "Providencia · Los Capitanes 1447: Se contrastaron eje Providencia, Teleférico y CESFAM Alessandri. Sin entradas exactas del teleférico; CESFAM tiene plazo antiguo pendiente de corroborar y no se presenta como operativo. Las inversiones del eje no se atribuyen automáticamente a toda la comuna.",
       "pending": [
         "No se acredita aún relación publicable con distancia y acceso/perímetro preciso."
@@ -5394,7 +5428,38 @@
       "name": "Capitanes",
       "region": "Región Metropolitana",
       "commune": "Providencia",
-      "publishedWorkIds": []
+      "publishedWorkIds": [
+        "cesfam-alessandri-nuevo-edificio"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "cesfam-alessandri-nuevo-edificio"
+        ],
+        "sources": [
+          {
+            "id": "alessandri-cuenta",
+            "title": "Providencia: Cuenta Pública Salud 2025, obras y previsión de apertura",
+            "url": "https://providencia.cl/provi/explora/noticias/salud/cuenta-publica-salud-2025",
+            "date": "2026-04-13"
+          },
+          {
+            "id": "alessandri-observaciones",
+            "title": "Providencia: obra en observaciones finales y autorizaciones pendientes",
+            "url": "https://providencia.cl/provi/explora/noticias/salud/sin-titulo-234140040",
+            "date": "2026-01-09"
+          },
+          {
+            "id": "alessandri-decreto",
+            "title": "Providencia: decreto de comodato, inmueble José Manuel Infante 1485–1495",
+            "url": "https://firma.providencia.cl/dsign/cgi/sdoc.exe/sdoc/document?id=pG%2BRApyODoVrD4%2BPqHjL0A%3D%3D",
+            "date": "2023-06-07"
+          }
+        ],
+        "rationale": [
+          "Proyecto situado en Providencia, al oriente del nuevo edificio municipal de salud, en el mismo sector urbano. La relación es territorial; no asigna población inscrita ni garantiza prestaciones."
+        ]
+      }
     },
     {
       "slug": "edificio-dual-390-lto",
@@ -5443,7 +5508,7 @@
       "candidateWorkIds": [
         "teleferico-bicentenario"
       ],
-      "outcome": "reviewed_no_verified",
+      "outcome": "reviewed_verified",
       "rationale": "Providencia · Av. Luis Thayer Ojeda 390: Se contrastaron eje Providencia, Teleférico y CESFAM Alessandri. Sin entradas exactas del teleférico; CESFAM tiene plazo antiguo pendiente de corroborar y no se presenta como operativo. Las inversiones del eje no se atribuyen automáticamente a toda la comuna.",
       "pending": [
         "No se acredita aún relación publicable con distancia y acceso/perímetro preciso."
@@ -5460,7 +5525,38 @@
       "name": "Edificio Dual 390 LTO",
       "region": "Región Metropolitana",
       "commune": "Providencia",
-      "publishedWorkIds": []
+      "publishedWorkIds": [
+        "metro-linea-8"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "metro-linea-8"
+        ],
+        "sources": [
+          {
+            "id": "l8-rca",
+            "title": "BCN: notificación RCA 20261301132 de 19/05/2026",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1224602",
+            "date": "2026-05-29"
+          },
+          {
+            "id": "l8-trazado",
+            "title": "SEA: descripción del Estudio de Impacto Ambiental",
+            "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536",
+            "date": "2024-07-19"
+          },
+          {
+            "id": "l8-rca-integra",
+            "title": "SEA: RCA íntegra 20261301132, tabla 4.2.3 y planos de accesos E08/E14",
+            "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+            "date": "2026-05-19"
+          }
+        ],
+        "rationale": [
+          "Inmueble en Luis Thayer Ojeda 390, en el mismo sector de Providencia que los futuros accesos E14. Distancia mínima geográfica a acceso Mardoqueo Fernández de aproximadamente 516 m; no al trazado ni a entradas existentes de L1/L6."
+        ]
+      }
     },
     {
       "slug": "edificio-suecia",
@@ -15185,314 +15281,173 @@
     {
       "batch": "center",
       "resolvedPendingIds": [
-        "plaza-artesanos-900",
-        "santiago-carol-urzua"
+        "cesfam-felix-amesti-pending"
       ],
       "stillPending": [
         {
-          "id": "unab-r14",
-          "reason": "Dirección Echaurren174 resuelta, falta geometría inequívoca del edificio nuevo; no usar directorio R14 histórico."
-        },
-        {
-          "id": "nueva-alameda-bandejon-santiago",
-          "reason": "Contratos T1/T2 corroborados; falta polígono o plano georreferenciable del bandejón. Las bases refieren123 planos no recuperados en el contenido consultado."
-        }
-      ]
-    },
-    {
-      "batch": "rmrest",
-      "resolvedPendingIds": [
-        "mapocho-geometria"
-      ],
-      "stillPending": [
-        {
-          "id": "cesfam-alessandri-vigencia",
-          "name": "Nuevo edificio CESFAM Hernán Alessandri",
-          "reviewedOn": "2026-10-31",
+          "id": "unab-r14-geometry",
+          "workId": "unab-r14",
+          "reason": "Plano oficial 2026 y evento institucional confirman Echaurren174 y distinguen el R14 nuevo. El iframe del evento es una búsqueda textual por dirección, no coordenada del edificio. PDF directo403; extracción textual no permite identificar un punto exacto. Se mantiene obra existente sin geometría ni asociación nueva.",
           "sources": [
             {
-              "id": "provi-cuenta2025",
-              "title": "Providencia: cuenta pública salud2025, apertura prevista segundo semestre de 2026",
-              "url": "https://providencia.cl/provi/explora/noticias/salud/cuenta-publica-salud-2025",
-              "date": "2026-04-13"
+              "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+              "date": null
             },
             {
-              "id": "super-salud-alessandri",
-              "title": "Superintendencia de Salud: prestador acreditado en Los Jesuitas 857",
-              "url": "https://www.superdesalud.gob.cl/registro/centro-de-salud-familiar-dr-hernan-alessandri/",
-              "date": "2026-06-19"
-            },
-            {
-              "id": "provi-atencion-octubre",
-              "title": "Providencia: atención especial centros de salud14octubre",
-              "url": "https://providencia.cl/provi/explora/noticias/salud/miercoles-14-de-octubre-atencion-especial-en-los-centros-de-salud-de",
-              "date": "2026-10-13"
+              "url": "https://agenda.unab.cl/evento/inauguracion-exposicion-humanidad-de-clara-murillo/",
+              "date": "2026-09-08"
             }
-          ],
-          "queries": [
-            "CESFAM Hernán Alessandri 2026 nuevo edificio inauguración",
-            "site.saludoriente.cl Alessandri 2026",
-            "site.providencia.cl Alessandri septiembre2026"
-          ],
-          "result": "Nueva evidencia acota el pendiente: abril de 2026 prevé apertura segundo semestre, registro acreditación junio sigue en Los Jesuitas 857. Aviso de 13 de octubre acredita servicio del CESFAM, no traslado al nuevo edificio. No se publica nuevo edificio como operativo.",
-          "nextEvidence": "Autorización sanitaria o anuncio de apertura/traslado que identifique el nuevo inmueble José Manuel Infante 1485–1495."
+          ]
         },
         {
-          "id": "mapocho-geometria-restantes-tramos",
-          "name": "Mapocho Río: restantes cinco tramos y accesos",
-          "reviewedOn": "2026-10-31",
+          "id": "alameda-tramos-geometry",
+          "workId": "nueva-alameda-bandejon-santiago",
+          "reason": "Se conserva documentación de T1/T2 de ronda previa. Página oficial anuncia mapa general, pero responde403 y no se recuperó plano contractual georreferenciable. No convertir toda Alameda en intervención ni interpolar sus extremos.",
           "sources": [
             {
-              "id": "minvu-mapocho-tramo 1-20220914",
-              "title": "MINVU: límites y accesos del tramo 1 de Mapocho Río",
-              "url": "https://www.minvu.gob.cl/noticia/minvu-abre-las-puertas-del-primer-tramo-del-parque-mapocho-rio-que-une-quinta-normal-y-cerro-navia/",
-              "date": "2022-09-14"
+              "url": "https://www.gob.cl/nuevaalameda/",
+              "date": null
             }
-          ],
-          "result": "Se resolvió la localización y relación territorial del tramo 1. El registro público se acota y renombra expresamente a ese tramo; no se declara geometría completa de los seis.",
-          "nextEvidence": "Geometrías completas restantes o accesos contrastados si se incorporan relaciones adicionales."
+          ]
         },
         {
-          "id": "mall-vivo-perimetro-accesos",
-          "name": "Mall Vivo: perímetro aprobado y accesos",
-          "reviewedOn": "2026-10-31",
+          "id": "felix-amesti-apertura",
+          "workId": "cesfam-felix-amesti-reposicion",
+          "reason": "Obra publicable como infraestructura entregada pendiente de habilitación; falta constancia posterior de recepción, autorización sanitaria y apertura. Búsqueda adicional con octubre2026 no aportó prueba primaria de apertura.",
           "sources": [
             {
-              "id": "sea-vivo-dia-20190725",
-              "title": "SEA: DIA Mall Vivo Santiago II, localización y punto representativo",
-              "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=48%2F0f%2Fa60273e4824a6e41fc641e284b088d2622a4",
-              "date": "2019-07-25"
-            },
-            {
-              "id": "sea-vivo-anexo-b",
-              "title": "SEA: anexoB planos y archivos geográficos",
-              "url": "https://seia.sea.gob.cl/archivos/2019/07/25/Anexo_B_Planos_y_archivos_geograficos.rar",
-              "date": "2019-07-25"
-            },
-            {
-              "id": "vivo-eeff20260331",
-              "title": "VIVO: estados financieros al 31-03-2026; situación societaria y cierre del proceso judicial",
-              "url": "https://www.vivospa.cl/wp-content/uploads/2026/05/EEFF-Vivo-SpA-y-filiales-31-03-2026.pdf",
-              "date": "2026-03-31"
-            }
-          ],
-          "result": "Punto representativo primario recuperado y utilizable como referencia explícita. Anexo RAR respondió HTTP 500; huella OSM de aproximadamente 22.494 m² no coincide con 20.775 m² declarados en DIA y se excluye de los cálculos. Estados financieros al 31-03-2026 corroboran continuidad societaria y cierre judicial, sin probar ejecución vigente etapa II.",
-          "nextEvidence": "Plano vigente y accesos oficiales; estado de ejecución actualizado por responsable."
-        },
-        {
-          "id": "pintor-cicarelli-iii-precision",
-          "reason": "Se excluye la asociación adicional por alerta de precisión de ubicación del proyecto; requiere corroboración antes de calcular cercanía."
-        }
-      ]
-    },
-    {
-      "batch": "rmsouth",
-      "resolvedPendingIds": [],
-      "stillPending": [
-        {
-          "id": "cesfam-felix-amesti-pending",
-          "name": "Nuevo CESFAM Félix de Amesti",
-          "reason": "Edificio entregado en junio de 2026, pero faltaban recepción municipal y autorización sanitaria. La ficha general conserva previsión vencida; no clasificar como operativo sin nueva evidencia.",
-          "sources": [
-            {
-              "id": "felix-macul",
-              "title": "Macul: edificio CESFAM entregado, permisos pendientes",
+              "id": "felix-entrega-2026",
+              "title": "Corporación Municipal de Macul: entrega de infraestructura y trámites pendientes",
               "url": "https://www.corpomunimacul.cl/macul-da-un-paso-historico-entregan-la-moderna-infraestructura-del-nuevo-cesfam-felix-de-amesti/",
               "date": "2026-06-01"
             },
             {
-              "id": "felix-red",
-              "title": "Macul: red CESFAM y ubicación de contingencia",
+              "id": "felix-red-salud",
+              "title": "Corporación Municipal de Macul: nuevo recinto y sede de contingencia",
               "url": "https://www.corpomunimacul.cl/red-salud/felix-de-amesti/",
               "date": null
             }
-          ],
-          "reviewedOn": "2026-10-31",
-          "queries": [
-            "site.corpomunimacul.cl \"Félix\" \"2026\" \"inaugur\"",
-            "site.corpomunimacul.cl \"Félix de Amesti\" \"2026\""
-          ],
-          "result": "No se recuperó fuente primaria que acredite apertura del nuevo recinto después de la entrega del edificio; ficha de red conserva dirección de contingencia."
-        },
-        {
-          "id": "baeza-goni-pending",
-          "name": "Reposición CESFAM Baeza Goñi",
-          "reason": "Se localizó nueva licitación 1057972-3-LR25 posterior a la revocada. La ficha recuperada aparece Cerrada; fecha prevista de adjudicación31-03-2026 no demuestra adjudicación. Falta resolución actual o acta de entrega de terreno. La obra no se clasifica cancelada ni en construcción.",
-          "sources": [
-            {
-              "id": "baeza-licitacion",
-              "title": "Mercado Público: licitación Baeza Goñi revocada",
-              "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=eKEyUZitMKI5umkU2YPoSg%3D%3D",
-              "date": "2025-03-07"
-            },
-            {
-              "id": "baeza-nueva-licitacion",
-              "title": "Mercado Público: nueva licitación1057972-3-LR25, estado Cerrada en documento recuperado",
-              "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=ygFxyuyKBUL0XmvxngCMng%3D%3D",
-              "date": "2025-10-02"
-            }
-          ],
-          "reviewedOn": "2026-10-31",
-          "queries": [
-            "\"Baeza Goñi\" \"2026\" \"adjudic\"",
-            "site.ssms.gob.cl \"Baeza\" 2026",
-            "site.saludsanjoaquin.cl \"Baeza\" \"2026\""
           ]
-        },
-        {
-          "id": "parque-cenco-florida-geometry",
-          "name": "Parque Cenco Florida: geometría",
-          "reason": "Se identificó un polígono OSM específico Parque y Boulevard Gastronómico al sureste del centro comercial. Falta contrastar su extensión completa con plano oficial; no se utiliza el mall completo ni se asignan distancias a partir de un límite posiblemente parcial.",
-          "sources": [
-            {
-              "title": "OSM candidata: Parque y Boulevard Gastronómico",
-              "url": "https://www.openstreetmap.org/way/1554646686",
-              "date": "2026-09-02"
-            },
-            {
-              "title": "Cenco presentación corporativa mayo2026, página22: parque conectado al mall",
-              "url": "https://www.cencomalls.com/sites/cencomallscom/files/2026-05/Corporate%20Presentation%201T26%20Cenco%20Malls%20%28ESP%29_0.pdf",
-              "date": "2026-05"
-            }
-          ],
-          "queries": [
-            "\"Parque Cenco Florida\" plano",
-            "\"Parque y Boulevard Gastronómico\" Florida"
-          ],
-          "geometryCandidateFile": "rmsouth-park-candidate.xml"
         }
       ]
     },
     {
       "batch": "regions",
-      "resolvedPendingIds": [
-        "cuatro-esquinas-etapa-1"
-      ],
       "stillPending": [
         {
-          "id": "chinchorro-etapa2-perimetro",
-          "reason": "Referencia sur verificada; falta perímetro completo y accesos."
-        },
-        {
           "id": "olas-de-puyai-geometria",
-          "reason": "SEA confirma intersección, no se obtuvo polígono DIA: descarga HTTP 500 y documento de 34 MB no procesable. Sin relación individual."
+          "reason": "DIA, figuras cartográficas y anexo primario devolvieron HTTP 500 en descargas; no se obtuvo archivo procesable. OSM presenta una rotonda Avenida Punta Puyai con cuatro uniones Marítima, mientras Paseo Punta Puyai conecta por otra rama; sin plano no se selecciona arbitrariamente esquina ni parcela.",
+          "nextEvidence": "DIA página 89 o anexo 4.6/página 44 con datum y vértices; plano aprobado del predio.",
+          "projectSlugs": [
+            "lomas-de-puyai"
+          ]
         },
         {
           "id": "caleta-papudo-geometria",
-          "reason": "No se obtuvo plano DOP. Los nodos OSM hallados son comercios y la carta SUBPESCA es un área marítima de extracción, no la obra."
+          "reason": "Nuevas fuentes verifican contrato y comienzo, pero ninguna identifica coordenadas de obra o acceso. DIRECTEMAR entrega directorio administrativo, no emplazamiento del proyecto.",
+          "nextEvidence": "Planos del contrato SAFI 371304/licitación 1267-7-O124 o concesión marítima individualizada.",
+          "projectSlugs": [
+            "lomas-de-puyai"
+          ]
         },
         {
           "id": "cuatro-esquinas-etapa-1-geometria",
-          "reason": "Contrato y fecha resueltos; falta plano exacto y estado de ejecución específico del tramo."
+          "reason": "Resuelto extremo en San Ramón y constatada actividad material; falta geometría completa. Alto San Joaquín está varios kilómetros al norte y no se probó un acceso o itinerario funcional específico; no se fuerza asociación.",
+          "nextEvidence": "Plano contractual con tramo Rapa Nui–San Ramón y conexiones habilitadas.",
+          "projectSlugs": [
+            "alto-san-joaquin"
+          ]
         }
       ]
     },
     {
-      "batch": "south",
-      "resolvedPendingIds": [],
+      "batch": "root",
       "stillPending": [
         {
-          "workId": "parque-metropolitano-puerto-montt",
-          "reason": "Se revisaron delimitación municipal, licitación de diseño656-12-LQ19 y documentación territorial GORE. No se recuperó plano georreferenciado del terreno de42.841m²; no se convierte el cuadrante de calles en una huella inventada. Se conserva estado aprobado del acuerdo, sin nueva asociación.",
+          "id": "hospital-pichilemu-geometria",
+          "reason": "MOP identifica Camino Antiguo Punta de Lobos2420 y área concesionada28.296,82m2. OSM1361877196 identifica faena pero su huella es mayor; no se usa sin plano del recinto aprobado. Se diferencia del hospital antiguo Errázuriz151.",
           "sources": [
             {
-              "id": "pmet-terreno",
-              "title": "Municipalidad: cuadrante y superficie del parque",
-              "url": "https://www.puertomontt.cl/minvu-confirma-inicio-de-obras-para-el-parque-metropolitano-sebastian-pinera/",
-              "date": "2026-03-26"
-            },
-            {
-              "id": "pmet-diseño",
-              "title": "Mercado Público: diseño656-12-LQ19, no ejecución",
-              "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=Z+9q+ZhBQvynw7F%2FpXr1Hw%3D%3D",
-              "date": "2019-04-04"
+              "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2025/09/Informe-Ejecutivo_Red-O%C2%B4higgins_julio2025.pdf",
+              "title": "DGC: ubicación y superficie concesionada, julio2025"
             }
           ]
         },
         {
-          "workId": "hospital-nuble-integral",
-          "reason": "Se resuelve solamente operación de Imagenología. Apertura integral permanece no comprobada. El micrositio nuevohospital mostró versiones con avisos/fechas contradictorios y campos pendientes de validar, por lo que se excluye como evidencia suficiente de traslado completo.",
-          "sources": [
-            {
-              "id": "nuble-habilitacion-octubre",
-              "title": "Operador hospitalario: estanque oxígeno y autorización pendiente; habilitación progresiva",
-              "url": "https://hospitaldechillan.cl/web/hospital-regional-de-nuble-instala-estanque-de-oxigeno-medicinal-para-su-futura-operacion/",
-              "date": "2026-10-30"
-            },
-            {
-              "id": "nuble-micrositio",
-              "title": "Micrositio oficial de apertura progresiva; información inconsistente consultada",
-              "url": "https://hospitaldechillan.cl/web/nuevohospital/",
-              "date": null
-            }
-          ]
-        },
-        {
-          "workId": "parque-costanera-puerto-varas",
-          "reason": "Resuelto punto documentado de inicio y relaciones. Sigue pendiente plano georreferenciado del tramo completo; no mostrar línea recta como trazado del borde."
-        },
-        {
-          "workId": "cochrane-acceso-oriente",
-          "reason": "Resuelto extremo vial de referencia y relación Bold. Sigue pendiente huella completa y adjudicación; licitación cierra17nov2026 según ficha consultada."
+          "id": "pm-geometria",
+          "reason": "No se obtuvo plano del terreno; mapa OSM no identifica inequívocamente la futura huella. El cuadrante no es sustituto de límites."
         }
       ]
     },
     {
-      "batch": "metro",
+      "batch": "locations",
       "resolvedPendingIds": [],
       "stillPending": [
         {
-          "id": "metro-l7-cal-canto-acceso",
-          "name": "Acceso futuro Cal y Canto Línea 7",
-          "reason": "Fuente oficial del 19 de marzo de 2026 confirma intersección Ismael Valdés Vergara/Paseo Puente en Plaza Prat, pero no entrega coordenada exacta del acceso. La huella OSM de construcción no se utiliza como entrada.",
+          "id": "location-plaza-cervantes",
+          "projectSlug": "plaza-cervantes",
+          "reason": "Las fuentes del responsable identifican ambas torres, pero discrepan entre Chile España 8184 (página y artículo) y 8141 (brochure I/II). Falta una coordenada primaria del conjunto o aclaración documental para admitir el punto heredado de Andrássy sin ambigüedad.",
           "sources": [
             {
-              "title": "Gobierno Santiago: acceso y encuentro de túneles",
-              "url": "https://www.gobiernosantiago.cl/2026/03/19/autoridades-participan-del-encuentro-de-tuneles-en-estacion-cal-y-canto-de-futura-linea-7/",
-              "date": "2026-03-19"
+              "url": "https://maestra.cl/inversion/invertir-en-propiedades/"
+            },
+            {
+              "url": "https://maestra.cl/proyectos/plaza-cervantes-torre-b/"
+            },
+            {
+              "url": "https://maestra.cl/wp-content/uploads/2025/08/Brochure_Plaza_Cervantes-I-y-II.pdf"
             }
-          ]
+          ],
+          "reviewedOn": "2026-10-31"
         },
         {
-          "id": "metro-matucana-acceso-modificado",
-          "name": "Acceso futuro Matucana EFE/Línea 7",
-          "reason": "Consulta de pertinencia del 21 de agosto de 2026 modifica explícitamente la ubicación del acceso. El punto representativo no es una entrada y no se adopta la coordenada histórica. Falta contrastar acceso modificado en plano georreferenciado y su resolución.",
+          "id": "location-mapocho-3521-edificio-a",
+          "projectSlug": "mapocho-3521-edificio-a",
+          "reason": "La página oficial confirma el conjunto Mapocho 3521 / Rivas Vicuña 1131, pero no identifica inequívocamente el edificio A ni su acceso. No se traslada la ubicación de otra etapa.",
           "sources": [
             {
-              "title": "SEA: modificaciones y mejoramientos Estación Matucana",
-              "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2026%2F08%2F21%2F40ef-a32d-4f03-bf67-ae53dcb558d3",
-              "date": "2026-08-21"
+              "url": "https://euroinmobiliaria.cl/proyectos/mapocho-3521"
             }
-          ]
+          ],
+          "reviewedOn": "2026-10-31"
+        },
+        {
+          "id": "location-vicuna-mackenna-7589",
+          "projectSlug": "vicuna-mackenna-7589",
+          "reason": "Permanece una discrepancia material: SEA sitúa el predio en UTM E351520.975 N6289499.169, aproximadamente 3.5 km del punto comercial heredado. Brochure alude a Bellavista/Vicente Valdés, mientras el mapa de la página del responsable está centrado en el área del punto heredado. Los parámetros de centro del iframe no son coordenadas concluyentes de entrada. No se elige ni corrige automáticamente.",
+          "sources": [
+            {
+              "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=53%2F65%2F0f20f48e6ca22ffaca5acd2887a0cb48b0c7"
+            },
+            {
+              "url": "https://ingevecinmobiliaria.cl/proyecto-vicu%C3%B1amackenna7589"
+            },
+            {
+              "url": "https://ingevecinmobiliaria.cl/hubfs/PROYECTOS%20INGEVEC/VICU%C3%91A%20MACKENNA%207589/Brochure_Vicu%C3%B1a7589_2026.pdf?hsLang=es-cl"
+            }
+          ],
+          "reviewedOn": "2026-10-31"
+        },
+        {
+          "id": "location-pintor-cicarelli-iii",
+          "projectSlug": "pintor-cicarelli-iii",
+          "reason": "La separación de aproximadamente 350 m frente a I/II sigue como alerta, no nuevo bloqueo. Documentos generales del conjunto en Pintor Cicarelli 268/Lira 2408 no determinan por sí solos el punto de la torre III. No se sustituye por coordenadas de I/II; faltan plano de etapa y acceso inequívocos.",
+          "sources": [
+            {
+              "url": "https://maestra.cl/proyectos/pintor-cicarelli-iii/"
+            }
+          ],
+          "reviewedOn": "2026-10-31"
         },
         {
           "id": "metro-l8-resto-accesos",
-          "name": "Restantes accesos Línea 8, especialmente Los Leones y Chile España",
-          "reason": "RCA 2026 entrega puntos con encabezados Este/Norte invertidos. E14 difiere de EIA 2024; sin corroboración cartográfica final no se convierte ni publica. Anexos georreferenciados y descripción actualizada respondieron HTTP 500. E08 segundo acceso sí coincide exactamente y se incorpora de forma acotada.",
+          "reason": "E14 Hospital y Mardoqueo ahora corroborados en RCA final. Continúan pendientes restantes accesos, incluido Chile España: una coordenada de estación no se presume entrada.",
           "sources": [
             {
-              "title": "SEA: RCA íntegra",
-              "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
-              "date": "2026-05-19"
-            },
-            {
-              "title": "SEA: Adenda Excepcional y anexos actualizados",
-              "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2026%2F02%2F26%2F3322-c1f5-43da-8ebd-fe325acff706",
-              "date": "2026-02-26"
+              "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069"
             }
-          ]
-        },
-        {
-          "id": "metro-l9-santa-lucia-acceso",
-          "name": "Acceso futuro Santa Lucía Línea 9",
-          "reason": "Observación CMN 2024 solicita replantear acceso junto a Biblioteca Nacional; no acredita ubicación definitiva ni coordenada. Trabajos arqueológicos 2026 no equivalen a acceso de pasajeros. Se mantiene pendiente sin reutilizar entradas de L1.",
-          "sources": [
-            {
-              "title": "CMN: observaciones al EIA Línea 9",
-              "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F01%2F08%2F1ff6-b6db-4205-a0e7-7c07544830c1",
-              "date": "2024-01-08"
-            }
-          ]
+          ],
+          "reviewedOn": "2026-10-31"
         }
       ]
     }

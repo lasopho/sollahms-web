@@ -1,0 +1,63 @@
+{
+  "reviewedOn": "2026-10-31",
+  "queries": [
+    "Olas de Puyai coordenadas UTM SEA DIA",
+    "Caleta Papudo coordenadas plano obras DOP",
+    "Caleta Papudo Balmaceda Errázuriz MOP",
+    "Caleta Papudo plano site:directemar.cl",
+    "Los Arrayanes Rapa Nui San Ramón SERVIU CMN"
+  ],
+  "sourcesRead": [
+    {
+      "url": "https://www.monumentos.gob.cl/sites/default/files/2026-04/20260318%20Acta%20Sesi%C3%B3n%20Ord%20ENV%20F.pdf",
+      "date": "2026-03-18",
+      "title": "CMN: acta18-03-2026, página129, casos250–251 del tramo Rapa Nui–San Ramón"
+    },
+    {
+      "url": "https://proveedores-tecnicos.minvu.gob.cl/construccion-avda-cuatro-esquinas-etapa-i/",
+      "date": null,
+      "title": "MINVU: identificación contractual del tramo Rapa Nui–San Ramón"
+    },
+    {
+      "url": "https://www.dprvalparaiso.dpr.gob.cl/2025/10/21/inician-las-obras-de-construccion-de-la-nueva-caleta-de-pescadores-de-papudo-con-inversion-de-8-mil-200-millones/",
+      "date": "2025-10-21",
+      "title": "Delegación Regional: inicio oficial de obras y contratista"
+    },
+    {
+      "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=5KTiPWFt7OfXDYyVqrryHw%3D%3D",
+      "date": "2024-06-28",
+      "title": "Mercado Público: licitación1267-7-O124, códigoSAFI371304"
+    }
+  ],
+  "downloadAttempts": [
+    {
+      "url": "https://seia.sea.gob.cl/archivos/2026/08/13/DIA_Proyecto_Inmobiliario_Olas_de_Puyai.pdf",
+      "result": "HTTP500 usando descarga completa y petición Range; no se pudo ejecutar pdftotext sobre DIA porque no se recibió PDF. Tamaño34MB sería procesable localmente."
+    },
+    {
+      "url": "https://www.sea.gob.cl/sites/default/files/imce/archivos/2026/Portal%20Ciudadano/10/28_2/image001.png",
+      "result": "HTTP500; figura no recuperada."
+    },
+    {
+      "url": "https://www.sea.gob.cl/sites/default/files/imce/archivos/2026/Portal%20Ciudadano/10/28_2/image002.png",
+      "result": "HTTP500; figura no recuperada."
+    }
+  ],
+  "geometryEvidence": {
+    "arrayanes": "Nodo9818925321 (-29.9542543,-71.2283061) compartido por ways1069815672 (Los Arrayanes) y524548786 (Camino San Ramón). Extremo contractual explicitado por MINVU. No se usa toda la vía OSM porque incluye un tramo anterior.",
+    "olas": "No seleccionada geometría: rotonda Avenida Punta Puyai y cuatro ramas Marítima no bastan para delimitar el predio descrito por SEA.",
+    "papudo": "No se sustituyen obras por ubicación de pescadería, alcaldía marítima o centro de bahía."
+  },
+  "validation": {
+    "newRelationships": 0,
+    "duplicateRelationships": 0,
+    "centralFilesEdited": false,
+    "cmnPdfSHA256": "bc8cac646e744085a22449510c108b21b1a887c3888a20dfb247a850434b00ad",
+    "cmnRelevantPage": 129,
+    "cmnRelevantCases": [
+      250,
+      251
+    ],
+    "statusInference": "El monitoreo y hallazgo documentados del contrato específico evidencian actividad material; no implican recepción ni apertura."
+  }
+}

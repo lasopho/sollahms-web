@@ -1,0 +1,36 @@
+{
+  "reviewedOn": "2026-10-31",
+  "osmDownload": "https://api.openstreetmap.org/api/0.6/map.json?bbox=-70.596,-33.503,-70.592,-33.500",
+  "retainedObject": {
+    "type": "way",
+    "id": 1502059976,
+    "version": 1,
+    "timestamp": "2026-04-21T16:22:35Z"
+  },
+  "primarySources": [
+    {
+      "id": "felix-entrega-2026",
+      "title": "Corporación Municipal de Macul: entrega de infraestructura y trámites pendientes",
+      "url": "https://www.corpomunimacul.cl/macul-da-un-paso-historico-entregan-la-moderna-infraestructura-del-nuevo-cesfam-felix-de-amesti/",
+      "date": "2026-06-01"
+    },
+    {
+      "id": "felix-red-salud",
+      "title": "Corporación Municipal de Macul: nuevo recinto y sede de contingencia",
+      "url": "https://www.corpomunimacul.cl/red-salud/felix-de-amesti/",
+      "date": null
+    }
+  ],
+  "queries": [
+    "site.unab.cl \"Echaurren 174\" mapa",
+    "site.gob.cl/nuevaalameda \"mapa\" kmz",
+    "site.corpomunimacul.cl \"Félix de Amesti\" \"octubre\" \"2026\" inauguración",
+    "\"Nueva Alameda\" \"bandejón\" \"planos\" \"tramo 1\""
+  ],
+  "limitations": [
+    "No operación inferida de amenity=clinic en OSM.",
+    "Sin geocodificación de direcciones no verificadas.",
+    "PDF UNAB y página Gobierno descarga403; se utilizó extracción documental del buscador, insuficiente para georreferenciar.",
+    "Nominatim rechazó acceso en ronda anterior; no se reintentó."
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "cutoff": "2026-10-31",
+  "baseWorks": 59,
+  "works": 61,
+  "baseRelationships": 121,
+  "relationships": 123,
+  "baseProjects": 84,
+  "projects": 86,
+  "newProjectSlugs": [
+    "capitanes",
+    "edificio-dual-390-lto"
+  ],
+  "updatedWorkIds": [
+    "cuatro-esquinas-etapa-1",
+    "caleta-papudo",
+    "parque-metropolitano-puerto-montt",
+    "metro-linea-8"
+  ],
+  "newWorkIds": [
+    "cesfam-felix-amesti-reposicion",
+    "cesfam-alessandri-nuevo-edificio"
+  ],
+  "addedRelationships": [
+    {
+      "workId": "cesfam-alessandri-nuevo-edificio",
+      "projectSlug": "capitanes",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Proyecto situado en Providencia, al oriente del nuevo edificio municipal de salud, en el mismo sector urbano. La relación es territorial; no asigna población inscrita ni garantiza prestaciones.",
+      "benefit": "Cuando se habilite, podría renovar la infraestructura de atención primaria disponible para usuarios inscritos del sector.",
+      "cautions": [
+        "El acceso efectivo requiere cruces urbanos y depende de la inscripción en la red; no se calcula recorrido ni tiempo de viaje."
+      ],
+      "projectLocation": {
+        "lat": -33.4446425,
+        "lng": -70.6128243,
+        "address": "Los Capitanes 1447",
+        "commune": "Providencia"
+      },
+      "distance": "Aprox. 640 m en línea recta · al perímetro cartografiado del nuevo edificio; no a una entrada habilitada"
+    },
+    {
+      "workId": "metro-linea-8",
+      "projectSlug": "edificio-dual-390-lto",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Inmueble en Luis Thayer Ojeda 390, en el mismo sector de Providencia que los futuros accesos E14. Distancia mínima geográfica a acceso Mardoqueo Fernández de aproximadamente 516 m; no al trazado ni a entradas existentes de L1/L6.",
+      "benefit": "Si se ejecuta y habilita, la futura Línea 8 podría ampliar las conexiones ferroviarias disponibles en el sector.",
+      "cautions": [
+        "La distancia es en línea recta: no acredita itinerario caminable, tiempo de viaje ni accesibilidad universal. Deben verificarse cruces y continuidad de veredas.",
+        "La obra podría generar ruido, desvíos y molestias durante su construcción; no se atribuyen aumentos de valor al inmueble."
+      ],
+      "projectLocation": {
+        "lat": -33.421994,
+        "lng": -70.600927,
+        "address": "Av. Luis Thayer Ojeda 390",
+        "commune": "Providencia"
+      },
+      "distance": "Aprox. 520 m en línea recta · al acceso futuro documentado más cercano de Línea 8; no a un acceso habilitado"
+    }
+  ],
+  "reviews": [
+    {
+      "batch": "center",
+      "resolvedPendingIds": [
+        "cesfam-felix-amesti-pending"
+      ],
+      "stillPending": [
+        {
+          "id": "unab-r14-geometry",
+          "workId": "unab-r14",
+          "reason": "Plano oficial 2026 y evento institucional confirman Echaurren174 y distinguen el R14 nuevo. El iframe del evento es una búsqueda textual por dirección, no coordenada del edificio. PDF directo403; extracción textual no permite identificar un punto exacto. Se mantiene obra existente sin geometría ni asociación nueva.",
+          "sources": [
+            {
+              "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+              "date": null
+            },
+            {
+              "url": "https://agenda.unab.cl/evento/inauguracion-exposicion-humanidad-de-clara-murillo/",
+              "date": "2026-09-08"
+            }
+          ]
+        },
+        {
+          "id": "alameda-tramos-geometry",
+          "workId": "nueva-alameda-bandejon-santiago",
+          "reason": "Se conserva documentación de T1/T2 de ronda previa. Página oficial anuncia mapa general, pero responde403 y no se recuperó plano contractual georreferenciable. No convertir toda Alameda en intervención ni interpolar sus extremos.",
+          "sources": [
+            {
+              "url": "https://www.gob.cl/nuevaalameda/",
+              "date": null
+            }
+          ]
+        },
+        {
+          "id": "felix-amesti-apertura",
+          "workId": "cesfam-felix-amesti-reposicion",
+          "reason": "Obra publicable como infraestructura entregada pendiente de habilitación; falta constancia posterior de recepción, autorización sanitaria y apertura. Búsqueda adicional con octubre2026 no aportó prueba primaria de apertura.",
+          "sources": [
+            {
+              "id": "felix-entrega-2026",
+              "title": "Corporación Municipal de Macul: entrega de infraestructura y trámites pendientes",
+              "url": "https://www.corpomunimacul.cl/macul-da-un-paso-historico-entregan-la-moderna-infraestructura-del-nuevo-cesfam-felix-de-amesti/",
+              "date": "2026-06-01"
+            },
+            {
+              "id": "felix-red-salud",
+              "title": "Corporación Municipal de Macul: nuevo recinto y sede de contingencia",
+              "url": "https://www.corpomunimacul.cl/red-salud/felix-de-amesti/",
+              "date": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch": "regions",
+      "stillPending": [
+        {
+          "id": "olas-de-puyai-geometria",
+          "reason": "DIA, figuras cartográficas y anexo primario devolvieron HTTP 500 en descargas; no se obtuvo archivo procesable. OSM presenta una rotonda Avenida Punta Puyai con cuatro uniones Marítima, mientras Paseo Punta Puyai conecta por otra rama; sin plano no se selecciona arbitrariamente esquina ni parcela.",
+          "nextEvidence": "DIA página 89 o anexo 4.6/página 44 con datum y vértices; plano aprobado del predio.",
+          "projectSlugs": [
+            "lomas-de-puyai"
+          ]
+        },
+        {
+          "id": "caleta-papudo-geometria",
+          "reason": "Nuevas fuentes verifican contrato y comienzo, pero ninguna identifica coordenadas de obra o acceso. DIRECTEMAR entrega directorio administrativo, no emplazamiento del proyecto.",
+          "nextEvidence": "Planos del contrato SAFI 371304/licitación 1267-7-O124 o concesión marítima individualizada.",
+          "projectSlugs": [
+            "lomas-de-puyai"
+          ]
+        },
+        {
+          "id": "cuatro-esquinas-etapa-1-geometria",
+          "reason": "Resuelto extremo en San Ramón y constatada actividad material; falta geometría completa. Alto San Joaquín está varios kilómetros al norte y no se probó un acceso o itinerario funcional específico; no se fuerza asociación.",
+          "nextEvidence": "Plano contractual con tramo Rapa Nui–San Ramón y conexiones habilitadas.",
+          "projectSlugs": [
+            "alto-san-joaquin"
+          ]
+        }
+      ]
+    },
+    {
+      "batch": "root",
+      "stillPending": [
+        {
+          "id": "hospital-pichilemu-geometria",
+          "reason": "MOP identifica Camino Antiguo Punta de Lobos2420 y área concesionada28.296,82m2. OSM1361877196 identifica faena pero su huella es mayor; no se usa sin plano del recinto aprobado. Se diferencia del hospital antiguo Errázuriz151.",
+          "sources": [
+            {
+              "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2025/09/Informe-Ejecutivo_Red-O%C2%B4higgins_julio2025.pdf",
+              "title": "DGC: ubicación y superficie concesionada, julio2025"
+            }
+          ]
+        },
+        {
+          "id": "pm-geometria",
+          "reason": "No se obtuvo plano del terreno; mapa OSM no identifica inequívocamente la futura huella. El cuadrante no es sustituto de límites."
+        }
+      ]
+    },
+    {
+      "batch": "locations",
+      "resolvedPendingIds": [],
+      "stillPending": [
+        {
+          "id": "location-plaza-cervantes",
+          "projectSlug": "plaza-cervantes",
+          "reason": "Las fuentes del responsable identifican ambas torres, pero discrepan entre Chile España 8184 (página y artículo) y 8141 (brochure I/II). Falta una coordenada primaria del conjunto o aclaración documental para admitir el punto heredado de Andrássy sin ambigüedad.",
+          "sources": [
+            {
+              "url": "https://maestra.cl/inversion/invertir-en-propiedades/"
+            },
+            {
+              "url": "https://maestra.cl/proyectos/plaza-cervantes-torre-b/"
+            },
+            {
+              "url": "https://maestra.cl/wp-content/uploads/2025/08/Brochure_Plaza_Cervantes-I-y-II.pdf"
+            }
+          ],
+          "reviewedOn": "2026-10-31"
+        },
+        {
+          "id": "location-mapocho-3521-edificio-a",
+          "projectSlug": "mapocho-3521-edificio-a",
+          "reason": "La página oficial confirma el conjunto Mapocho 3521 / Rivas Vicuña 1131, pero no identifica inequívocamente el edificio A ni su acceso. No se traslada la ubicación de otra etapa.",
+          "sources": [
+            {
+              "url": "https://euroinmobiliaria.cl/proyectos/mapocho-3521"
+            }
+          ],
+          "reviewedOn": "2026-10-31"
+        },
+        {
+          "id": "location-vicuna-mackenna-7589",
+          "projectSlug": "vicuna-mackenna-7589",
+          "reason": "Permanece una discrepancia material: SEA sitúa el predio en UTM E351520.975 N6289499.169, aproximadamente 3.5 km del punto comercial heredado. Brochure alude a Bellavista/Vicente Valdés, mientras el mapa de la página del responsable está centrado en el área del punto heredado. Los parámetros de centro del iframe no son coordenadas concluyentes de entrada. No se elige ni corrige automáticamente.",
+          "sources": [
+            {
+              "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=53%2F65%2F0f20f48e6ca22ffaca5acd2887a0cb48b0c7"
+            },
+            {
+              "url": "https://ingevecinmobiliaria.cl/proyecto-vicu%C3%B1amackenna7589"
+            },
+            {
+              "url": "https://ingevecinmobiliaria.cl/hubfs/PROYECTOS%20INGEVEC/VICU%C3%91A%20MACKENNA%207589/Brochure_Vicu%C3%B1a7589_2026.pdf?hsLang=es-cl"
+            }
+          ],
+          "reviewedOn": "2026-10-31"
+        },
+        {
+          "id": "location-pintor-cicarelli-iii",
+          "projectSlug": "pintor-cicarelli-iii",
+          "reason": "La separación de aproximadamente 350 m frente a I/II sigue como alerta, no nuevo bloqueo. Documentos generales del conjunto en Pintor Cicarelli 268/Lira 2408 no determinan por sí solos el punto de la torre III. No se sustituye por coordenadas de I/II; faltan plano de etapa y acceso inequívocos.",
+          "sources": [
+            {
+              "url": "https://maestra.cl/proyectos/pintor-cicarelli-iii/"
+            }
+          ],
+          "reviewedOn": "2026-10-31"
+        },
+        {
+          "id": "metro-l8-resto-accesos",
+          "reason": "E14 Hospital y Mardoqueo ahora corroborados en RCA final. Continúan pendientes restantes accesos, incluido Chile España: una coordenada de estación no se presume entrada.",
+          "sources": [
+            {
+              "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069"
+            }
+          ],
+          "reviewedOn": "2026-10-31"
+        }
+      ]
+    }
+  ]
+}

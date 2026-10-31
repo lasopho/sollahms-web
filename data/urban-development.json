@@ -601,7 +601,7 @@
       "informationDate": "2026-05-29",
       "reviewedOn": "2026-10-31",
       "responsible": "Metro de Santiago / SEA Región Metropolitana",
-      "locationText": "Corredor proyectado Providencia–Puente Alto. El mapa muestra únicamente el segundo acceso futuro E08 en Macul/Quilín, no todas las estaciones.",
+      "locationText": "Corredor proyectado Providencia–Puente Alto. Se representan sólo tres accesos futuros documentados: E08 segundo acceso y E14 Hospital/Mardoqueo Fernández, no toda la línea.",
       "description": "Proyecto con calificación ambiental favorable. Esa aprobación no acredita financiamiento ni inicio de construcción.",
       "benefit": "Podría ampliar la conexión ferroviaria del sector suroriente si se ejecuta.",
       "sources": [
@@ -619,7 +619,7 @@
         },
         {
           "id": "l8-rca-integra",
-          "title": "SEA: RCA íntegra 20261301132, tabla 4.2.3 y descripción de accesos E08",
+          "title": "SEA: RCA íntegra 20261301132, tabla 4.2.3 y planos de accesos E08/E14",
           "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
           "date": "2026-05-19"
         }
@@ -632,22 +632,32 @@
       "uncertainties": [
         "Financiamiento y cronograma de ejecución pendientes de corroboración primaria actual.",
         "Las Condes incluye obras subterráneas de maniobra; no implica una estación de pasajeros en esa comuna.",
-        "Sólo se georreferencia el segundo acceso E08 verificado documentalmente. Los restantes accesos requieren corroboración; la geometría no representa toda la línea.",
-        "El acceso es futuro y no habilitado; la RCA no confirma financiamiento ni ejecución. El diseño y la accesibilidad efectiva pueden cambiar."
+        "El acceso es futuro y no habilitado; la RCA no confirma financiamiento ni ejecución. El diseño y la accesibilidad efectiva pueden cambiar.",
+        "Sólo se verificaron tres accesos futuros; las demás estaciones y entradas de la línea no se representan. Los puntos corresponden al diseño ambiental aprobado, sujeto a cambios posteriores."
       ],
       "geometry": {
-        "type": "Point",
+        "type": "MultiPoint",
         "coordinates": [
-          -70.59885838097455,
-          -33.48545228053129
+          [
+            -70.59885838097455,
+            -33.48545228053129
+          ],
+          [
+            -70.60557312264963,
+            -33.41944151946225
+          ],
+          [
+            -70.60678505265963,
+            -33.421013055772406
+          ]
         ]
       },
       "geometrySource": {
-        "title": "SEA: EIA, coordenada E08 segundo acceso, contrastada con RCA 2026 tabla 4.2.3 y descripción del acceso oriente",
-        "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536"
+        "title": "SEA: RCA final 20261301132, tabla 4.2.3 y planos de accesos E14; control E08 con EIA",
+        "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069"
       },
       "geometryRole": "entrance",
-      "geometryLabel": "al segundo acceso futuro E08 (Macul/Quilín), documentado en la RCA; no habilitado",
+      "geometryLabel": "al acceso futuro documentado más cercano de Línea 8; no a un acceso habilitado",
       "publish": true,
       "accessReferences": [
         {
@@ -667,6 +677,50 @@
           ],
           "coordinateRole": "Punto oficial del acceso futuro; no posición de andén ni pique de ventilación",
           "validation": "La coordenada geográfica EIA corresponde a UTM WGS84 huso 19S E 351457 N 6293750, idéntica al par numérico de RCA 2026. RCA tabla 4.2.3 intercambia encabezados Este/Norte; se publica la coordenada geográfica directa del EIA, corroborada con la descripción RCA de acceso oriente en Quilín, no una coordenada obtenida de una imagen."
+        },
+        {
+          "id": "l8-e14-hospital",
+          "name": "E14 Los Leones · acceso futuro Hospital",
+          "coordinates": [
+            -70.60557312264963,
+            -33.41944151946225
+          ],
+          "source": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalSource": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalPages": [
+            6,
+            41,
+            42
+          ],
+          "coordinateRole": "Punto oficial de acceso permanente futuro; no centro de estación, ventilación ni instalación auxiliar de faenas",
+          "originalCoordinates": {
+            "crs": "EPSG:32719",
+            "easting": 350720,
+            "northing": 6301060
+          },
+          "validation": "RCA final tabla 4.2.3 identifica expresamente el acceso. Encabezados Este/Norte invertidos en la tabla: se interpreta el par según UTM WGS84 huso 19 Sur declarado; el control E08 coincide con coordenada geográfica explícita del EIA. Transformación EPSG:32719→4326 mediante pyproj 3.8.0, always_xy=True, contrastada con cálculo independiente. Planos de accesos en página 42 y texto de obras intermodales en página 41 corroboran Hospital/Providencia y Mardoqueo/Nueva Providencia. No se extrajeron coordenadas de una imagen."
+        },
+        {
+          "id": "l8-e14-mardoqueo",
+          "name": "E14 Los Leones · acceso futuro Mardoqueo Fernández",
+          "coordinates": [
+            -70.60678505265963,
+            -33.421013055772406
+          ],
+          "source": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalSource": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalPages": [
+            6,
+            41,
+            42
+          ],
+          "coordinateRole": "Punto oficial de acceso permanente futuro; no centro de estación, ventilación ni instalación auxiliar de faenas",
+          "originalCoordinates": {
+            "crs": "EPSG:32719",
+            "easting": 350610,
+            "northing": 6300884
+          },
+          "validation": "RCA final tabla 4.2.3 identifica expresamente el acceso. Encabezados Este/Norte invertidos en la tabla: se interpreta el par según UTM WGS84 huso 19 Sur declarado; el control E08 coincide con coordenada geográfica explícita del EIA. Transformación EPSG:32719→4326 mediante pyproj 3.8.0, always_xy=True, contrastada con cálculo independiente. Planos de accesos en página 42 y texto de obras intermodales en página 41 corroboran Hospital/Providencia y Mardoqueo/Nueva Providencia. No se extrajeron coordenadas de una imagen."
         }
       ]
     },
@@ -2101,7 +2155,7 @@
         "Puerto Montt"
       ],
       "status": "approved",
-      "statusDetail": "Acuerdo de cofinanciamiento firmado; construcción no acreditada",
+      "statusDetail": "Acuerdo de cofinanciamiento firmado y aporte regional aprobado; inicio de construcción no acreditado",
       "informationDate": "2026-09-28",
       "reviewedOn": "2026-10-31",
       "responsible": "MINVU / Gobierno Regional Los Lagos / Municipalidad Puerto Montt",
@@ -2114,6 +2168,12 @@
           "title": "MINVU: acuerdo de cofinanciamiento Parque Metropolitano",
           "url": "https://www.minvu.gob.cl/noticia/minvu-gore-los-lagos-y-municipios-acuerdan-forma-de-financiamiento-para-materializar-parques-metropolitano-de-puerto-montt-y-la-toma-de-rio-negro/",
           "date": "2026-09-28"
+        },
+        {
+          "id": "pm-core-20260810",
+          "title": "GORE Los Lagos: aprobación del aporte regional de $4 mil millones",
+          "url": "https://goreloslagos.cl/index.php/noticias/2026-08-10/gobernador-alejandro-santana-impulsa-aporte-de-4-mil-millones-para-el-parque-metropolitano-de-puerto-montt",
+          "date": "2026-08-10"
         }
       ],
       "estimatedStart": null,
@@ -2123,7 +2183,8 @@
       ],
       "uncertainties": [
         "La aprobación registrada corresponde al acuerdo de cofinanciamiento firmado; no acredita por sí sola transferencia presupuestaria, adjudicación ni inicio de obra.",
-        "Falta geometría precisa y accesos para relacionarlo con fichas."
+        "Falta geometría precisa y accesos para relacionarlo con fichas.",
+        "El aporte regional aprobado no prueba por sí solo la transferencia del presupuesto completo. Se mantiene pendiente el plano georreferenciado; las calles del entorno no se convierten en un perímetro inventado."
       ],
       "geometry": null,
       "geometrySource": null,
@@ -2665,7 +2726,7 @@
         "Papudo"
       ],
       "status": "construction",
-      "statusDetail": "",
+      "statusDetail": "Construcción confirmada por DOP en junio de 2026; inicio oficial informado por Delegación Presidencial el 21-10-2025. Contratista: Ingeniería y Construcción Harcha Ltda.",
       "informationDate": "2026-06-23",
       "reviewedOn": "2026-10-31",
       "responsible": "Dirección de Obras Portuarias, MOP",
@@ -2678,6 +2739,18 @@
           "title": "DOP: avance de obras marítimas y terrestres Caleta Papudo",
           "url": "https://dop.mop.gob.cl/2026/06/23/obras-de-nueva-infraestructura-portuaria-para-la-caleta-de-papudo-alcanzan-el-47-por-ciento-de-avance/",
           "date": "2026-06-23"
+        },
+        {
+          "id": "papudo-inicio-dpr",
+          "title": "Delegación Regional: inicio oficial de obras y contratista",
+          "url": "https://www.dprvalparaiso.dpr.gob.cl/2025/10/21/inician-las-obras-de-construccion-de-la-nueva-caleta-de-pescadores-de-papudo-con-inversion-de-8-mil-200-millones/",
+          "date": "2025-10-21"
+        },
+        {
+          "id": "papudo-mp-contrato",
+          "title": "Mercado Público: licitación 1267-7-O124, código SAFI 371304",
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=5KTiPWFt7OfXDYyVqrryHw%3D%3D",
+          "date": "2024-06-28"
         }
       ],
       "estimatedStart": null,
@@ -6789,8 +6862,8 @@
         "La Serena"
       ],
       "status": "awarded",
-      "statusDetail": "Contrato 894863-84-O125 adjudicado el 19-12-2025. No se atribuye a este contrato el avance de otros tramos.",
-      "informationDate": "2025-12-19",
+      "statusDetail": "Contrato adjudicado; CMN documenta informes paleontológicos y un hallazgo asociado. No se acredita con esta acta el inicio formal de construcción ni la apertura.",
+      "informationDate": "2026-03-18",
       "reviewedOn": "2026-10-31",
       "responsible": "SERVIU Región de Coquimbo",
       "locationText": "Calle Los Arrayanes entre Avenida Parque Nacional Rapa Nui y Camino San Ramón, La Serena",
@@ -6802,6 +6875,18 @@
           "title": "Mercado Público: contrato 894863-84-O125 adjudicado",
           "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=aBK5RHnEiwyc3CERSV2BGg%3D%3D",
           "date": "2025-12-19"
+        },
+        {
+          "id": "arrayanes-cmn-mar2026",
+          "title": "CMN: acta 18-03-2026, página 129, casos 250–251 del tramo Rapa Nui–San Ramón",
+          "url": "https://www.monumentos.gob.cl/sites/default/files/2026-04/20260318%20Acta%20Sesi%C3%B3n%20Ord%20ENV%20F.pdf",
+          "date": "2026-03-18"
+        },
+        {
+          "id": "arrayanes-minvu-tramo",
+          "title": "MINVU: identificación contractual del tramo Rapa Nui–San Ramón",
+          "url": "https://proveedores-tecnicos.minvu.gob.cl/construccion-avda-cuatro-esquinas-etapa-i/",
+          "date": null
         }
       ],
       "estimatedStart": null,
@@ -6810,14 +6895,23 @@
         "Las faenas podrían producir desvíos, polvo y ruido."
       ],
       "uncertainties": [
-        "No se verificó la geometría exacta del contrato ni su apertura.",
-        "El acuerdo CORE 15833 de 10-03-2026 habla de obras del programa general, sin demostrar qué segmento de este contrato se ejecutaba.",
-        "No confundir con el tramo Claude Debussy–Rapa Nui ni con una asesoría de inspección declarada desierta."
+        "Se representa únicamente el extremo del contrato en Camino San Ramón; no su eje completo ni un acceso residencial.",
+        "Pendientes plano contractual y fecha de apertura. El monitoreo documentado no permite inferir porcentaje de avance.",
+        "El monitoreo y hallazgo demuestran actividad técnica, pero no se convierten por inferencia en una certificación de inicio de obras. Se conserva el estado adjudicado."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2283061,
+          -29.9542543
+        ]
+      },
+      "geometrySource": {
+        "title": "OpenStreetMap nodo 9818925321, compartido por Los Arrayanes y Camino San Ramón, extremo definido por MINVU",
+        "url": "https://www.openstreetmap.org/node/9818925321"
+      },
+      "geometryRole": "reference_endpoint",
+      "geometryLabel": "al cruce Los Arrayanes–Camino San Ramón, extremo de referencia; no al tramo completo",
       "publish": true
     },
     {
@@ -6920,6 +7014,220 @@
         "title": "OpenStreetMap: Hospital Regional de Ñuble, way342881682; identidad contrastada con operador y calles",
         "url": "https://www.openstreetmap.org/way/342881682"
       },
+      "publish": true
+    },
+    {
+      "id": "cesfam-felix-amesti-reposicion",
+      "name": "Reposición CESFAM Dr. Félix de Amesti",
+      "type": "Salud",
+      "region": "Región Metropolitana",
+      "communes": [
+        "Macul"
+      ],
+      "status": "construction",
+      "statusDetail": "Infraestructura entregada el 1 de junio de 2026; la fuente informa recepción municipal y autorización sanitaria pendientes. Apertura no verificada.",
+      "informationDate": "2026-06-01",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Servicio de Salud Metropolitano Oriente / Municipalidad y Corporación Municipal de Macul",
+      "locationText": "El Líbano esquina avenida Macul; cartografía OSM identifica el recinto en avenida El Líbano 5557.",
+      "description": "Reposición del recinto de atención primaria. La entrega material del edificio no acredita su funcionamiento.",
+      "benefit": "Una vez habilitado, podría mejorar las condiciones de atención de las personas inscritas.",
+      "sources": [
+        {
+          "id": "felix-entrega-2026",
+          "title": "Corporación Municipal de Macul: entrega de infraestructura y trámites pendientes",
+          "url": "https://www.corpomunimacul.cl/macul-da-un-paso-historico-entregan-la-moderna-infraestructura-del-nuevo-cesfam-felix-de-amesti/",
+          "date": "2026-06-01"
+        },
+        {
+          "id": "felix-red-salud",
+          "title": "Corporación Municipal de Macul: nuevo recinto y sede de contingencia",
+          "url": "https://www.corpomunimacul.cl/red-salud/felix-de-amesti/",
+          "date": null
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "La atención requiere inscripción y condiciones de acceso del establecimiento; cercanía no equivale a cobertura garantizada.",
+        "La habilitación y futura actividad pueden generar movimientos de vehículos y mayor intensidad de uso."
+      ],
+      "uncertainties": [
+        "La página general mantiene una previsión del primer semestre de 2026, vencida al corte; no se publica como fecha futura.",
+        "Las Torcazas 5570 corresponde al recinto temporal y no a esta geometría.",
+        "La geometría representa el recinto cartografiado, no un acceso público ni una verificación del edificio construido. OSM contiene el nombre con errata «Feliz de Amesti»; identidad contrastada mediante dirección y cruce oficial."
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.5941534,
+              -33.501818
+            ],
+            [
+              -70.5940416,
+              -33.5017677
+            ],
+            [
+              -70.593935,
+              -33.5017102
+            ],
+            [
+              -70.5938342,
+              -33.5016458
+            ],
+            [
+              -70.5937359,
+              -33.5015715
+            ],
+            [
+              -70.5936454,
+              -33.5014907
+            ],
+            [
+              -70.5935633,
+              -33.5014038
+            ],
+            [
+              -70.5934902,
+              -33.5013116
+            ],
+            [
+              -70.5934266,
+              -33.5012146
+            ],
+            [
+              -70.5933729,
+              -33.5011134
+            ],
+            [
+              -70.5933219,
+              -33.5009614
+            ],
+            [
+              -70.5943053,
+              -33.5014872
+            ],
+            [
+              -70.594438,
+              -33.5015517
+            ],
+            [
+              -70.5942164,
+              -33.5018459
+            ],
+            [
+              -70.5941534,
+              -33.501818
+            ]
+          ]
+        ]
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "perímetro cartográfico del recinto de reposición; no es un acceso",
+      "geometrySource": {
+        "title": "OpenStreetMap: recinto CESFAM, El Líbano 5557, way1502059976; dirección y cruce contrastados con operador",
+        "url": "https://www.openstreetmap.org/way/1502059976"
+      },
+      "publish": true
+    },
+    {
+      "id": "cesfam-alessandri-nuevo-edificio",
+      "name": "Nuevo edificio CESFAM Dr. Hernán Alessandri",
+      "type": "Salud",
+      "region": "Región Metropolitana",
+      "communes": [
+        "Providencia"
+      ],
+      "status": "construction",
+      "statusDetail": "Etapa final y autorizaciones pendientes según últimas fuentes específicas; apertura del nuevo edificio no corroborada",
+      "informationDate": "2026-04-13",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Servicio de Salud Metropolitano Oriente / Municipalidad de Providencia",
+      "locationText": "José Manuel Infante 1485–1495, adyacente al CESFAM existente en Los Jesuitas. Se cartografía el edificio nuevo de tres pisos.",
+      "description": "Reposición del centro de salud en un nuevo edificio. La información municipal documenta obras y previsión de apertura, pero no acredita que el nuevo inmueble esté atendiendo.",
+      "benefit": "Podría renovar la infraestructura de atención primaria para usuarios inscritos cuando esté autorizado y habilitado.",
+      "sources": [
+        {
+          "id": "alessandri-cuenta",
+          "title": "Providencia: Cuenta Pública Salud 2025, obras y previsión de apertura",
+          "url": "https://providencia.cl/provi/explora/noticias/salud/cuenta-publica-salud-2025",
+          "date": "2026-04-13"
+        },
+        {
+          "id": "alessandri-observaciones",
+          "title": "Providencia: obra en observaciones finales y autorizaciones pendientes",
+          "url": "https://providencia.cl/provi/explora/noticias/salud/sin-titulo-234140040",
+          "date": "2026-01-09"
+        },
+        {
+          "id": "alessandri-decreto",
+          "title": "Providencia: decreto de comodato, inmueble José Manuel Infante 1485–1495",
+          "url": "https://firma.providencia.cl/dsign/cgi/sdoc.exe/sdoc/document?id=pG%2BRApyODoVrD4%2BPqHjL0A%3D%3D",
+          "date": "2023-06-07"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "La cercanía no garantiza inscripción ni acceso automático a prestaciones; deben cumplirse las condiciones de la red de salud.",
+        "La terminación de obras y el traslado podrían generar molestias y cambios de circulación en el entorno."
+      ],
+      "uncertainties": [
+        "En abril se preveía apertura durante el segundo semestre de 2026; no se comprobó su cumplimiento al corte.",
+        "La actividad del CESFAM existente en Los Jesuitas no demuestra la apertura del nuevo edificio.",
+        "El perímetro OSM se contrasta con la dirección oficial, la ubicación adyacente y los tres pisos documentados; no representa una entrada ni un levantamiento catastral."
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.620055,
+              -33.4447833
+            ],
+            [
+              -70.6199485,
+              -33.444761
+            ],
+            [
+              -70.6199593,
+              -33.4447251
+            ],
+            [
+              -70.6198383,
+              -33.4446998
+            ],
+            [
+              -70.619826,
+              -33.4447405
+            ],
+            [
+              -70.619719,
+              -33.4447181
+            ],
+            [
+              -70.6198049,
+              -33.4444324
+            ],
+            [
+              -70.6201394,
+              -33.4445025
+            ],
+            [
+              -70.620055,
+              -33.4447833
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "OpenStreetMap: edificio hospitalario de tres pisos, José Manuel Infante, dentro del recinto CESFAM Alessandri",
+        "url": "https://www.openstreetmap.org/way/1434127762"
+      },
+      "geometryRole": "building_perimeter",
+      "geometryLabel": "al perímetro cartografiado del nuevo edificio; no a una entrada habilitada",
       "publish": true
     }
   ],
@@ -9080,25 +9388,94 @@
         "address": "Ramón Cruz 3291",
         "commune": "Macul"
       }
+    },
+    {
+      "workId": "cesfam-alessandri-nuevo-edificio",
+      "projectSlug": "capitanes",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Proyecto situado en Providencia, al oriente del nuevo edificio municipal de salud, en el mismo sector urbano. La relación es territorial; no asigna población inscrita ni garantiza prestaciones.",
+      "benefit": "Cuando se habilite, podría renovar la infraestructura de atención primaria disponible para usuarios inscritos del sector.",
+      "cautions": [
+        "El acceso efectivo requiere cruces urbanos y depende de la inscripción en la red; no se calcula recorrido ni tiempo de viaje."
+      ],
+      "projectLocation": {
+        "lat": -33.4446425,
+        "lng": -70.6128243,
+        "address": "Los Capitanes 1447",
+        "commune": "Providencia"
+      }
+    },
+    {
+      "workId": "metro-linea-8",
+      "projectSlug": "edificio-dual-390-lto",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Inmueble en Luis Thayer Ojeda 390, en el mismo sector de Providencia que los futuros accesos E14. Distancia mínima geográfica a acceso Mardoqueo Fernández de aproximadamente 516 m; no al trazado ni a entradas existentes de L1/L6.",
+      "benefit": "Si se ejecuta y habilita, la futura Línea 8 podría ampliar las conexiones ferroviarias disponibles en el sector.",
+      "cautions": [
+        "La distancia es en línea recta: no acredita itinerario caminable, tiempo de viaje ni accesibilidad universal. Deben verificarse cruces y continuidad de veredas.",
+        "La obra podría generar ruido, desvíos y molestias durante su construcción; no se atribuyen aumentos de valor al inmueble."
+      ],
+      "projectLocation": {
+        "lat": -33.421994,
+        "lng": -70.600927,
+        "address": "Av. Luis Thayer Ojeda 390",
+        "commune": "Providencia"
+      }
     }
   ],
   "research": {
     "totalProjects": 131,
     "reviewedProjects": 131,
     "blockedProjectSlugs": [
-      "endemico",
       "mapocho-3521-edificio-a",
       "plaza-cervantes",
-      "reserva-mayor-2",
       "vicuna-mackenna-7589"
     ],
-    "projectsWithRelationships": 84,
+    "projectsWithRelationships": 86,
     "outcomes": {
-      "reviewed_verified": 84,
-      "location_blocked": 5,
-      "reviewed_no_verified": 42
+      "reviewed_verified": 86,
+      "reviewed_no_verified": 42,
+      "location_blocked": 3
     },
     "method": "Búsqueda documental por comuna y sector, evaluación individual de dirección y candidatos. No equivale a un inventario universal de inversiones ni a una inspección de terreno.",
-    "supplementaryReview": "2026-10-31: fuentes adicionales, coordenadas y asociaciones; ver docs/entorno-ampliacion-20261031."
+    "supplementaryReview": "2026-10-31: fuentes adicionales, coordenadas y asociaciones; ver docs/entorno-ronda3-20261031.",
+    "locationVerifications": [
+      {
+        "projectSlug": "reserva-mayor-2",
+        "reviewedOn": "2026-10-31",
+        "sources": [
+          {
+            "url": "https://www.vesant.cl/proyectos/reserva-mayor-2",
+            "title": "Responsable del proyecto: coordenadas propias publicadas"
+          }
+        ],
+        "projectLocation": {
+          "lat": -36.790843,
+          "lng": -72.949394,
+          "address": null,
+          "commune": "Concepción"
+        },
+        "rationale": "Clave coordenadas propia del proyecto, separada de lista pois: lat -36.790843, lng -72.949394. Identidad Reserva Mayor 2 en página del responsable. Punto de referencia propio del proyecto, no entrada ni deslinde. Se conserva la ausencia de número postal; no se cambia el registro comercial."
+      },
+      {
+        "projectSlug": "endemico",
+        "reviewedOn": "2026-10-31",
+        "sources": [
+          {
+            "url": "https://endemicopichilemu.cl/",
+            "title": "Responsable del proyecto: coordenadas propias publicadas"
+          }
+        ],
+        "projectLocation": {
+          "lat": -34.452561,
+          "lng": -72.029259,
+          "address": null,
+          "commune": "Pichilemu"
+        },
+        "rationale": "Iframe propio de ubicación: maps.google.com/maps?q=-34.452561%2C%20-72.029259 y title con el mismo par; identidad Condominio Endémico Punta Lobos. Punto de referencia propio del proyecto, no entrada ni deslinde. Se conserva la ausencia de número postal; no se cambia el registro comercial."
+      }
+    ]
   }
 }

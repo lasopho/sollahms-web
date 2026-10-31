@@ -9,7 +9,7 @@ Corte: 2026-10-31. Incluye ampliación en revisión; producción conserva la ver
 | Núcleo Costanera | Arica y Parinacota / Arica | Con obras asociadas | Borde costero Playa Chinchorro · segunda etapa |
 | Campus Llacolén | Biobío / Concepción | Con obras asociadas | Nuevo Puente Ferroviario Biobío; Nuevo CESFAM O’Higgins |
 | Edificio B.Come — Concepción | Biobío / Concepción | Con obras asociadas | Nuevo CESFAM O’Higgins |
-| Reserva Mayor 2 | Biobío / Concepción | Ubicación pendiente | — |
+| Reserva Mayor 2 | Biobío / Concepción | Sin asociación admitida | — |
 | Vista Llacolén A | Biobío / Concepción | Con obras asociadas | Nuevo Puente Ferroviario Biobío; Nuevo CESFAM O’Higgins |
 | Vista Llacolén B | Biobío / Concepción | Con obras asociadas | Nuevo Puente Ferroviario Biobío; Nuevo CESFAM O’Higgins |
 | Costanera Coquimbo Edificio A | Coquimbo / Coquimbo | Con obras asociadas | Nuevo Hospital San Pablo de Coquimbo |
@@ -30,7 +30,7 @@ Corte: 2026-10-31. Incluye ampliación en revisión; producción conserva la ver
 | Edificio Índigo | Los Lagos / Puerto Varas | Con obras asociadas | Tren Llanquihue–Puerto Montt · Puerto Varas; Nuevo Hospital de Puerto Varas; Parque Costanera · Playa Urbana Puerto Varas |
 | INN Puerto Chico | Los Lagos / Puerto Varas | Con obras asociadas | Tren Llanquihue–Puerto Montt · Puerto Varas; Nuevo Hospital de Puerto Varas; Parque Costanera · Playa Urbana Puerto Varas |
 | Edificio Bold | Los Ríos / Valdivia | Con obras asociadas | Puente Cochrane · acceso vial oriente |
-| Endémico | O'Higgins / Pichilemu | Ubicación pendiente | — |
+| Endémico | O'Higgins / Pichilemu | Sin asociación admitida | — |
 | Cáceres | O'Higgins / Rancagua | Con obras asociadas | Ampliación Cenco Rancagua |
 | Alto Buzeta | Región Metropolitana / Cerrillos | Sin asociación admitida | — |
 | Don Tomás | Región Metropolitana / Conchalí | Sin asociación admitida | — |
@@ -70,8 +70,8 @@ Corte: 2026-10-31. Incluye ampliación en revisión; producción conserva la ver
 | Condominio Gregorio de la Fuente | Región Metropolitana / Macul | Con obras asociadas | Línea 8 de Metro; Mejoramiento Parque Castillo Urizar |
 | Condominio Jardines de Ramón Cruz | Región Metropolitana / Macul | Con obras asociadas | Línea 8 de Metro |
 | Condominio Parque Don Lautaro | Región Metropolitana / Peñalolén | Sin asociación admitida | — |
-| Capitanes | Región Metropolitana / Providencia | Sin asociación admitida | — |
-| Edificio Dual 390 LTO | Región Metropolitana / Providencia | Sin asociación admitida | — |
+| Capitanes | Región Metropolitana / Providencia | Con obras asociadas | Nuevo edificio CESFAM Dr. Hernán Alessandri |
+| Edificio Dual 390 LTO | Región Metropolitana / Providencia | Con obras asociadas | Línea 8 de Metro |
 | Edificio Suecia | Región Metropolitana / Providencia | Sin asociación admitida | — |
 | Plaza Quilicura | Región Metropolitana / Quilicura | Sin asociación admitida | — |
 | Mapocho 3521 | Región Metropolitana / Quinta Normal | Con obras asociadas | Parque Mapocho Río · tramo 1 |

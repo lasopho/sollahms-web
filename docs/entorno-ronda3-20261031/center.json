@@ -1,0 +1,185 @@
+{
+  "reviewedOn": "2026-10-31",
+  "cutoff": "2026-10-31",
+  "updatedWorks": [],
+  "newWorks": [
+    {
+      "id": "cesfam-felix-amesti-reposicion",
+      "name": "Reposición CESFAM Dr. Félix de Amesti",
+      "type": "Salud",
+      "region": "Región Metropolitana",
+      "communes": [
+        "Macul"
+      ],
+      "status": "construction",
+      "statusDetail": "Infraestructura entregada el 1 de junio de 2026; la fuente informa recepción municipal y autorización sanitaria pendientes. Apertura no verificada.",
+      "informationDate": "2026-06-01",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Servicio de Salud Metropolitano Oriente / Municipalidad y Corporación Municipal de Macul",
+      "locationText": "El Líbano esquina avenida Macul; cartografía OSM identifica el recinto en avenida El Líbano 5557.",
+      "description": "Reposición del recinto de atención primaria. La entrega material del edificio no acredita su funcionamiento.",
+      "benefit": "Una vez habilitado, podría mejorar las condiciones de atención de las personas inscritas.",
+      "sources": [
+        {
+          "id": "felix-entrega-2026",
+          "title": "Corporación Municipal de Macul: entrega de infraestructura y trámites pendientes",
+          "url": "https://www.corpomunimacul.cl/macul-da-un-paso-historico-entregan-la-moderna-infraestructura-del-nuevo-cesfam-felix-de-amesti/",
+          "date": "2026-06-01"
+        },
+        {
+          "id": "felix-red-salud",
+          "title": "Corporación Municipal de Macul: nuevo recinto y sede de contingencia",
+          "url": "https://www.corpomunimacul.cl/red-salud/felix-de-amesti/",
+          "date": null
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "La atención requiere inscripción y condiciones de acceso del establecimiento; cercanía no equivale a cobertura garantizada.",
+        "La habilitación y futura actividad pueden generar movimientos de vehículos y mayor intensidad de uso."
+      ],
+      "uncertainties": [
+        "La página general mantiene una previsión del primer semestre de 2026, vencida al corte; no se publica como fecha futura.",
+        "Las Torcazas 5570 corresponde al recinto temporal y no a esta geometría.",
+        "La geometría representa el recinto cartografiado, no un acceso público ni una verificación del edificio construido. OSM contiene el nombre con errata «Feliz de Amesti»; identidad contrastada mediante dirección y cruce oficial."
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.5941534,
+              -33.501818
+            ],
+            [
+              -70.5940416,
+              -33.5017677
+            ],
+            [
+              -70.593935,
+              -33.5017102
+            ],
+            [
+              -70.5938342,
+              -33.5016458
+            ],
+            [
+              -70.5937359,
+              -33.5015715
+            ],
+            [
+              -70.5936454,
+              -33.5014907
+            ],
+            [
+              -70.5935633,
+              -33.5014038
+            ],
+            [
+              -70.5934902,
+              -33.5013116
+            ],
+            [
+              -70.5934266,
+              -33.5012146
+            ],
+            [
+              -70.5933729,
+              -33.5011134
+            ],
+            [
+              -70.5933219,
+              -33.5009614
+            ],
+            [
+              -70.5943053,
+              -33.5014872
+            ],
+            [
+              -70.594438,
+              -33.5015517
+            ],
+            [
+              -70.5942164,
+              -33.5018459
+            ],
+            [
+              -70.5941534,
+              -33.501818
+            ]
+          ]
+        ]
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "perímetro cartográfico del recinto de reposición; no es un acceso",
+      "geometrySource": {
+        "title": "OpenStreetMap: recinto CESFAM, El Líbano 5557, way1502059976; dirección y cruce contrastados con operador",
+        "url": "https://www.openstreetmap.org/way/1502059976"
+      },
+      "publish": true
+    }
+  ],
+  "relationships": [],
+  "resolvedPendingIds": [
+    "cesfam-felix-amesti-pending"
+  ],
+  "stillPending": [
+    {
+      "id": "unab-r14-geometry",
+      "workId": "unab-r14",
+      "reason": "Plano oficial 2026 y evento institucional confirman Echaurren174 y distinguen el R14 nuevo. El iframe del evento es una búsqueda textual por dirección, no coordenada del edificio. PDF directo403; extracción textual no permite identificar un punto exacto. Se mantiene obra existente sin geometría ni asociación nueva.",
+      "sources": [
+        {
+          "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+          "date": null
+        },
+        {
+          "url": "https://agenda.unab.cl/evento/inauguracion-exposicion-humanidad-de-clara-murillo/",
+          "date": "2026-09-08"
+        }
+      ]
+    },
+    {
+      "id": "alameda-tramos-geometry",
+      "workId": "nueva-alameda-bandejon-santiago",
+      "reason": "Se conserva documentación de T1/T2 de ronda previa. Página oficial anuncia mapa general, pero responde403 y no se recuperó plano contractual georreferenciable. No convertir toda Alameda en intervención ni interpolar sus extremos.",
+      "sources": [
+        {
+          "url": "https://www.gob.cl/nuevaalameda/",
+          "date": null
+        }
+      ]
+    },
+    {
+      "id": "felix-amesti-apertura",
+      "workId": "cesfam-felix-amesti-reposicion",
+      "reason": "Obra publicable como infraestructura entregada pendiente de habilitación; falta constancia posterior de recepción, autorización sanitaria y apertura. Búsqueda adicional con octubre2026 no aportó prueba primaria de apertura.",
+      "sources": [
+        {
+          "id": "felix-entrega-2026",
+          "title": "Corporación Municipal de Macul: entrega de infraestructura y trámites pendientes",
+          "url": "https://www.corpomunimacul.cl/macul-da-un-paso-historico-entregan-la-moderna-infraestructura-del-nuevo-cesfam-felix-de-amesti/",
+          "date": "2026-06-01"
+        },
+        {
+          "id": "felix-red-salud",
+          "title": "Corporación Municipal de Macul: nuevo recinto y sede de contingencia",
+          "url": "https://www.corpomunimacul.cl/red-salud/felix-de-amesti/",
+          "date": null
+        }
+      ]
+    }
+  ],
+  "associationReview": {
+    "reason": "Los cinco proyectos más próximos son de La Florida, a aproximadamente1,5–1,8km del entorno del recinto. No se demuestra una conexión funcional nueva suficiente; no se agregan asociaciones por simple proximidad. No se promete inscripción ni prestaciones domiciliarias.",
+    "slugs": [
+      "edificio-mood",
+      "el-aromo",
+      "aires-la-florida-2",
+      "entre-vicunas",
+      "edificio-baum"
+    ]
+  },
+  "reviewNote": "Ronda documental adicional dentro del mismo corte31octubre2026, no cambio de hora de datos. Nuevas fuentes/archivo cartográfico descritos en evidencia; pendientes no se fuerzan."
+}

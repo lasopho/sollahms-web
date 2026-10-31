@@ -1,0 +1,105 @@
+{
+  "checkedOn": "2026-10-31",
+  "commercialEdits": false,
+  "registryEdits": false,
+  "recommendations": [
+    {
+      "projectSlug": "reserva-mayor-2",
+      "recommendation": "unblock_for_urban_only",
+      "coordinatesUnchanged": true,
+      "coordinates": [
+        -72.949394,
+        -36.790843
+      ],
+      "address": null,
+      "precision": "project_reference",
+      "source": "https://www.vesant.cl/proyectos/reserva-mayor-2",
+      "sourceDate": null,
+      "checkedOn": "2026-10-31",
+      "inheritedRegistryCheckedOn": "2026-10-26",
+      "evidence": "Clave coordenadas propia del proyecto, separada de lista pois: lat -36.790843, lng -72.949394. Identidad Reserva Mayor 2 en página del responsable.",
+      "evidenceFile": "location-sources/reserva.html",
+      "sha256": "a1dd4f6f54b93f7bce1b55880b1f015e0acfcd425cb2cdc9840e24354c1d77d2",
+      "limits": "Punto publicado por responsable para el proyecto; no se afirma posición exacta de puerta ni deslinde. No se inventa número postal. No hay relación nueva con obra georreferenciada verificada en esta revisión."
+    },
+    {
+      "projectSlug": "endemico",
+      "recommendation": "unblock_for_urban_only",
+      "coordinatesUnchanged": true,
+      "coordinates": [
+        -72.029259,
+        -34.452561
+      ],
+      "address": null,
+      "precision": "project_reference",
+      "source": "https://endemicopichilemu.cl/",
+      "sourceDate": null,
+      "checkedOn": "2026-10-31",
+      "inheritedRegistryCheckedOn": "2026-10-26",
+      "evidence": "Iframe propio de ubicación: maps.google.com/maps?q=-34.452561%2C%20-72.029259 y title con el mismo par; identidad Condominio Endémico Punta Lobos.",
+      "evidenceFile": "location-sources/endemico.html",
+      "sha256": "515a39ec72e8e174909e59272dcff9f897c21fbccdbd4dfb691fefb03ccf21c1",
+      "limits": "Punto publicado por responsable para el proyecto; no se afirma posición exacta de puerta ni deslinde. No se inventa número postal. No hay relación nueva con obra georreferenciada verificada en esta revisión."
+    }
+  ],
+  "keepBlocked": [
+    {
+      "id": "location-plaza-cervantes",
+      "projectSlug": "plaza-cervantes",
+      "reason": "Las fuentes del responsable identifican ambas torres, pero discrepan entre Chile España 8184 (página y artículo) y 8141 (brochure I/II). Falta una coordenada primaria del conjunto o aclaración documental para admitir el punto heredado de Andrássy sin ambigüedad.",
+      "sources": [
+        {
+          "url": "https://maestra.cl/inversion/invertir-en-propiedades/"
+        },
+        {
+          "url": "https://maestra.cl/proyectos/plaza-cervantes-torre-b/"
+        },
+        {
+          "url": "https://maestra.cl/wp-content/uploads/2025/08/Brochure_Plaza_Cervantes-I-y-II.pdf"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    },
+    {
+      "id": "location-mapocho-3521-edificio-a",
+      "projectSlug": "mapocho-3521-edificio-a",
+      "reason": "La página oficial confirma el conjunto Mapocho 3521 / Rivas Vicuña 1131, pero no identifica inequívocamente el edificio A ni su acceso. No se traslada la ubicación de otra etapa.",
+      "sources": [
+        {
+          "url": "https://euroinmobiliaria.cl/proyectos/mapocho-3521"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    },
+    {
+      "id": "location-vicuna-mackenna-7589",
+      "projectSlug": "vicuna-mackenna-7589",
+      "reason": "Permanece una discrepancia material: SEA sitúa el predio en UTM E351520.975 N6289499.169, aproximadamente 3.5 km del punto comercial heredado. Brochure alude a Bellavista/Vicente Valdés, mientras el mapa de la página del responsable está centrado en el área del punto heredado. Los parámetros de centro del iframe no son coordenadas concluyentes de entrada. No se elige ni corrige automáticamente.",
+      "sources": [
+        {
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=53%2F65%2F0f20f48e6ca22ffaca5acd2887a0cb48b0c7"
+        },
+        {
+          "url": "https://ingevecinmobiliaria.cl/proyecto-vicu%C3%B1amackenna7589"
+        },
+        {
+          "url": "https://ingevecinmobiliaria.cl/hubfs/PROYECTOS%20INGEVEC/VICU%C3%91A%20MACKENNA%207589/Brochure_Vicu%C3%B1a7589_2026.pdf?hsLang=es-cl"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    }
+  ],
+  "retainAlertOnly": [
+    {
+      "id": "location-pintor-cicarelli-iii",
+      "projectSlug": "pintor-cicarelli-iii",
+      "reason": "La separación de aproximadamente 350 m frente a I/II sigue como alerta, no nuevo bloqueo. Documentos generales del conjunto en Pintor Cicarelli 268/Lira 2408 no determinan por sí solos el punto de la torre III. No se sustituye por coordenadas de I/II; faltan plano de etapa y acceso inequívocos.",
+      "sources": [
+        {
+          "url": "https://maestra.cl/proyectos/pintor-cicarelli-iii/"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    }
+  ]
+}

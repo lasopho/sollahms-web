@@ -138,7 +138,7 @@
     },
     "distanceM": 841.3387473437966,
     "method": "haversine",
-    "targetLabel": "al segundo acceso futuro E08 (Macul/Quilín), documentado en la RCA; no habilitado"
+    "targetLabel": "al acceso futuro documentado más cercano de Línea 8; no a un acceso habilitado"
   },
   {
     "workId": "metro-linea-8",
@@ -159,7 +159,28 @@
     },
     "distanceM": 1240.5130022822896,
     "method": "haversine",
-    "targetLabel": "al segundo acceso futuro E08 (Macul/Quilín), documentado en la RCA; no habilitado"
+    "targetLabel": "al acceso futuro documentado más cercano de Línea 8; no a un acceso habilitado"
+  },
+  {
+    "workId": "metro-linea-8",
+    "projectSlug": "edificio-dual-390-lto",
+    "reviewed": true,
+    "reviewedOn": "2026-10-31",
+    "rationale": "Inmueble en Luis Thayer Ojeda 390, en el mismo sector de Providencia que los futuros accesos E14. Distancia mínima geográfica a acceso Mardoqueo Fernández de aproximadamente 516 m; no al trazado ni a entradas existentes de L1/L6.",
+    "benefit": "Si se ejecuta y habilita, la futura Línea 8 podría ampliar las conexiones ferroviarias disponibles en el sector.",
+    "cautions": [
+      "La distancia es en línea recta: no acredita itinerario caminable, tiempo de viaje ni accesibilidad universal. Deben verificarse cruces y continuidad de veredas.",
+      "La obra podría generar ruido, desvíos y molestias durante su construcción; no se atribuyen aumentos de valor al inmueble."
+    ],
+    "projectLocation": {
+      "lat": -33.421994,
+      "lng": -70.600927,
+      "address": "Av. Luis Thayer Ojeda 390",
+      "commune": "Providencia"
+    },
+    "distanceM": 516.2268464169401,
+    "method": "haversine",
+    "targetLabel": "al acceso futuro documentado más cercano de Línea 8; no a un acceso habilitado"
   },
   {
     "workId": "hospital-coquimbo",
@@ -2518,5 +2539,25 @@
     "distanceM": 796.7885933724755,
     "method": "haversine",
     "targetLabel": "perímetro del nuevo recinto hospitalario que aloja Imagenología; no es la puerta del servicio"
+  },
+  {
+    "workId": "cesfam-alessandri-nuevo-edificio",
+    "projectSlug": "capitanes",
+    "reviewed": true,
+    "reviewedOn": "2026-10-31",
+    "rationale": "Proyecto situado en Providencia, al oriente del nuevo edificio municipal de salud, en el mismo sector urbano. La relación es territorial; no asigna población inscrita ni garantiza prestaciones.",
+    "benefit": "Cuando se habilite, podría renovar la infraestructura de atención primaria disponible para usuarios inscritos del sector.",
+    "cautions": [
+      "El acceso efectivo requiere cruces urbanos y depende de la inscripción en la red; no se calcula recorrido ni tiempo de viaje."
+    ],
+    "projectLocation": {
+      "lat": -33.4446425,
+      "lng": -70.6128243,
+      "address": "Los Capitanes 1447",
+      "commune": "Providencia"
+    },
+    "distanceM": 639.7676538287913,
+    "method": "haversine",
+    "targetLabel": "al perímetro cartografiado del nuevo edificio; no a una entrada habilitada"
   }
 ]

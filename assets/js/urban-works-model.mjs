@@ -22,6 +22,11 @@ export function geometryDistance(location,geometry) {
   if(!geometry)return null;
   const point=c=>({lng:c?.[0],lat:c?.[1]});
   if(geometry.type==='Point')return haversine(location,point(geometry.coordinates));
+  if(geometry.type==='MultiPoint'){
+    if(!Array.isArray(geometry.coordinates)||!geometry.coordinates.length)return null;
+    const distances=geometry.coordinates.map(c=>haversine(location,point(c)));
+    return distances.every(Number.isFinite)?Math.min(...distances):null;
+  }
   const paths=geometry.type==='LineString'?[geometry.coordinates]:['MultiLineString','Polygon'].includes(geometry.type)?geometry.coordinates:geometry.type==='MultiPolygon'?geometry.coordinates.flat():[];
   const distances=paths.flatMap(path=>path.slice(1).map((b,i)=>segmentDistance(location,point(path[i]),point(b)))).filter(Number.isFinite);
   return distances.length?Math.min(...distances):null;
@@ -42,7 +47,13 @@ export function relationshipsFor(data,workId) {
     if(!row||data.research?.blockedProjectSlugs?.includes(r.projectSlug)||seen.has(r.projectSlug)||!r.rationale||!r.benefit)return [];
     // Changed source locations invalidate an individually reviewed relationship.
     const expected=r.projectLocation;
-    if(!expected||typeof expected.address!=='string'||!expected.address.trim()||expected.lat!==row.location.lat||expected.lng!==row.location.lng||expected.address!==row.location.address||expected.commune!==row.location.commune)return [];
+    if(!expected||expected.lat!==row.location.lat||expected.lng!==row.location.lng||expected.address!==row.location.address||expected.commune!==row.location.commune)return [];
+    const postalAddress=typeof expected.address==='string'&&expected.address.trim();
+    const coordinateEvidence=expected.address===null&&data.research?.locationVerifications?.some(v=>
+      v.projectSlug===r.projectSlug&&/^\d{4}-\d{2}-\d{2}$/.test(v.reviewedOn)&&v.reviewedOn<=data.cutoff&&v.rationale&&
+      v.sources?.length&&v.sources.every(s=>safeSource(s.url))&&
+      ['lat','lng','address','commune'].every(k=>v.projectLocation?.[k]===expected[k]));
+    if(!postalAddress&&!coordinateEvidence)return [];
     const distanceM=geometryDistance(row.location,work.geometry);
     if(!Number.isFinite(distanceM))return [];
     seen.add(r.projectSlug);

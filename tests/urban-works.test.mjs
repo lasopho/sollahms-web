@@ -62,3 +62,25 @@ test('multipolygon distances use the closest perimeter, not a map center',()=>{
  assert.equal(geometryDistance({lat:-33,lng:-70},multi),geometryDistance({lat:-33,lng:-70},polygon));
  assert.ok(geometryDistance({lat:-33,lng:-70},multi)<.001);
 });
+test('multiple entrance points use the closest valid coordinate and fail closed',()=>{
+ const p={lat:-33,lng:-70};
+ assert.equal(geometryDistance(p,{type:'MultiPoint',coordinates:[[-70,-34],[-70,-33]]}),0);
+ assert.equal(geometryDistance(p,{type:'MultiPoint',coordinates:[[-70,-33],[NaN,-34]]}),null);
+ assert.equal(geometryDistance(p,{type:'MultiPoint',coordinates:[]}),null);
+ const w=data.works.find(w=>w.id==='metro-linea-8');
+ for(const rel of relationshipsFor(data,w.id)){
+  assert.equal(rel.distanceM,Math.min(...w.accessReferences.map(a=>haversine(rel.projectLocation,{lng:a.coordinates[0],lat:a.coordinates[1]}))));
+ }
+});
+test('missing postal number requires independently reviewed coordinate evidence',()=>{
+ const c=structuredClone(data),id='tren-puerto-varas',slug='endemico';
+ const loc=c.locations.locations[slug];
+ c.relationships.push({...c.relationships[0],workId:id,projectSlug:slug,projectLocation:{lat:loc.lat,lng:loc.lng,address:null,commune:loc.commune}});
+ assert.equal(relationshipsFor(c,id).some(r=>r.projectSlug===slug),true);
+ const missing=structuredClone(c);missing.research.locationVerifications=[];
+ assert.equal(relationshipsFor(missing,id).some(r=>r.projectSlug===slug),false);
+ const stale=structuredClone(c);stale.research.locationVerifications.find(v=>v.projectSlug===slug).projectLocation.lat+=.01;
+ assert.equal(relationshipsFor(stale,id).some(r=>r.projectSlug===slug),false);
+ const future=structuredClone(c);future.research.locationVerifications.find(v=>v.projectSlug===slug).reviewedOn='2027-01-01';
+ assert.equal(relationshipsFor(future,id).some(r=>r.projectSlug===slug),false);
+});

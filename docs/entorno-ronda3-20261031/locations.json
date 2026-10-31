@@ -1,0 +1,274 @@
+{
+  "reviewedOn": "2026-10-31",
+  "updatedWorks": [
+    {
+      "id": "metro-linea-8",
+      "name": "Línea 8 de Metro",
+      "type": "Metro y trenes",
+      "region": "Región Metropolitana",
+      "communes": [
+        "Providencia",
+        "Ñuñoa",
+        "Macul",
+        "Peñalolén",
+        "La Florida",
+        "Puente Alto",
+        "Las Condes"
+      ],
+      "status": "approved",
+      "statusDetail": "Calificación ambiental favorable; ejecución no confirmada en este registro",
+      "informationDate": "2026-05-29",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Metro de Santiago / SEA Región Metropolitana",
+      "locationText": "Corredor proyectado Providencia–Puente Alto. Se representan sólo tres accesos futuros documentados: E08 segundo acceso y E14 Hospital/Mardoqueo Fernández, no toda la línea.",
+      "description": "Proyecto con calificación ambiental favorable. Esa aprobación no acredita financiamiento ni inicio de construcción.",
+      "benefit": "Podría ampliar la conexión ferroviaria del sector suroriente si se ejecuta.",
+      "sources": [
+        {
+          "id": "l8-rca",
+          "title": "BCN: notificación RCA 20261301132 de 19/05/2026",
+          "url": "https://www.bcn.cl/leychile/navegar?idNorma=1224602",
+          "date": "2026-05-29"
+        },
+        {
+          "id": "l8-trazado",
+          "title": "SEA: descripción del Estudio de Impacto Ambiental",
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536",
+          "date": "2024-07-19"
+        },
+        {
+          "id": "l8-rca-integra",
+          "title": "SEA: RCA íntegra 20261301132, tabla 4.2.3 y planos de accesos E08/E14",
+          "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "date": "2026-05-19"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "La eventual construcción podría generar molestias temporales. No se atribuyen efectos a una vivienda específica."
+      ],
+      "uncertainties": [
+        "Financiamiento y cronograma de ejecución pendientes de corroboración primaria actual.",
+        "Las Condes incluye obras subterráneas de maniobra; no implica una estación de pasajeros en esa comuna.",
+        "El acceso es futuro y no habilitado; la RCA no confirma financiamiento ni ejecución. El diseño y la accesibilidad efectiva pueden cambiar.",
+        "Sólo se verificaron tres accesos futuros; las demás estaciones y entradas de la línea no se representan. Los puntos corresponden al diseño ambiental aprobado, sujeto a cambios posteriores."
+      ],
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            -70.59885838097455,
+            -33.48545228053129
+          ],
+          [
+            -70.60557312264963,
+            -33.41944151946225
+          ],
+          [
+            -70.60678505265963,
+            -33.421013055772406
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "SEA: RCA final 20261301132, tabla 4.2.3 y planos de accesos E14; control E08 con EIA",
+        "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069"
+      },
+      "geometryRole": "entrance",
+      "geometryLabel": "al acceso futuro documentado más cercano de Línea 8; no a un acceso habilitado",
+      "publish": true,
+      "accessReferences": [
+        {
+          "id": "l8-e08-oriente",
+          "name": "E08 Punta de Rieles/Quilín · segundo acceso, lado oriente de Macul",
+          "coordinates": [
+            -70.59885838097455,
+            -33.48545228053129
+          ],
+          "source": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536",
+          "approvalSource": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalPages": [
+            5,
+            29,
+            30,
+            38
+          ],
+          "coordinateRole": "Punto oficial del acceso futuro; no posición de andén ni pique de ventilación",
+          "validation": "La coordenada geográfica EIA corresponde a UTM WGS84 huso 19S E 351457 N 6293750, idéntica al par numérico de RCA 2026. RCA tabla 4.2.3 intercambia encabezados Este/Norte; se publica la coordenada geográfica directa del EIA, corroborada con la descripción RCA de acceso oriente en Quilín, no una coordenada obtenida de una imagen."
+        },
+        {
+          "id": "l8-e14-hospital",
+          "name": "E14 Los Leones · acceso futuro Hospital",
+          "coordinates": [
+            -70.60557312264963,
+            -33.41944151946225
+          ],
+          "source": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalSource": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalPages": [
+            6,
+            41,
+            42
+          ],
+          "coordinateRole": "Punto oficial de acceso permanente futuro; no centro de estación, ventilación ni instalación auxiliar de faenas",
+          "originalCoordinates": {
+            "crs": "EPSG:32719",
+            "easting": 350720,
+            "northing": 6301060
+          },
+          "validation": "RCA final tabla 4.2.3 identifica expresamente el acceso. Encabezados Este/Norte invertidos en la tabla: se interpreta el par según UTM WGS84 huso 19 Sur declarado; el control E08 coincide con coordenada geográfica explícita del EIA. Transformación EPSG:32719→4326 mediante pyproj 3.8.0, always_xy=True, contrastada con cálculo independiente. Planos de accesos en página 42 y texto de obras intermodales en página 41 corroboran Hospital/Providencia y Mardoqueo/Nueva Providencia. No se extrajeron coordenadas de una imagen."
+        },
+        {
+          "id": "l8-e14-mardoqueo",
+          "name": "E14 Los Leones · acceso futuro Mardoqueo Fernández",
+          "coordinates": [
+            -70.60678505265963,
+            -33.421013055772406
+          ],
+          "source": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalSource": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalPages": [
+            6,
+            41,
+            42
+          ],
+          "coordinateRole": "Punto oficial de acceso permanente futuro; no centro de estación, ventilación ni instalación auxiliar de faenas",
+          "originalCoordinates": {
+            "crs": "EPSG:32719",
+            "easting": 350610,
+            "northing": 6300884
+          },
+          "validation": "RCA final tabla 4.2.3 identifica expresamente el acceso. Encabezados Este/Norte invertidos en la tabla: se interpreta el par según UTM WGS84 huso 19 Sur declarado; el control E08 coincide con coordenada geográfica explícita del EIA. Transformación EPSG:32719→4326 mediante pyproj 3.8.0, always_xy=True, contrastada con cálculo independiente. Planos de accesos en página 42 y texto de obras intermodales en página 41 corroboran Hospital/Providencia y Mardoqueo/Nueva Providencia. No se extrajeron coordenadas de una imagen."
+        }
+      ]
+    }
+  ],
+  "newWorks": [],
+  "relationships": [
+    {
+      "workId": "metro-linea-8",
+      "projectSlug": "edificio-dual-390-lto",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Inmueble en Luis Thayer Ojeda 390, en el mismo sector de Providencia que los futuros accesos E14. Distancia mínima geográfica a acceso Mardoqueo Fernández de aproximadamente 516 m; no al trazado ni a entradas existentes de L1/L6.",
+      "benefit": "Si se ejecuta y habilita, la futura Línea 8 podría ampliar las conexiones ferroviarias disponibles en el sector.",
+      "cautions": [
+        "La distancia es en línea recta: no acredita itinerario caminable, tiempo de viaje ni accesibilidad universal. Deben verificarse cruces y continuidad de veredas.",
+        "La obra podría generar ruido, desvíos y molestias durante su construcción; no se atribuyen aumentos de valor al inmueble."
+      ],
+      "projectLocation": {
+        "lat": -33.421994,
+        "lng": -70.600927,
+        "address": "Av. Luis Thayer Ojeda 390",
+        "commune": "Providencia"
+      }
+    }
+  ],
+  "resolvedPendingIds": [],
+  "stillPending": [
+    {
+      "id": "location-plaza-cervantes",
+      "projectSlug": "plaza-cervantes",
+      "reason": "Las fuentes del responsable identifican ambas torres, pero discrepan entre Chile España 8184 (página y artículo) y 8141 (brochure I/II). Falta una coordenada primaria del conjunto o aclaración documental para admitir el punto heredado de Andrássy sin ambigüedad.",
+      "sources": [
+        {
+          "url": "https://maestra.cl/inversion/invertir-en-propiedades/"
+        },
+        {
+          "url": "https://maestra.cl/proyectos/plaza-cervantes-torre-b/"
+        },
+        {
+          "url": "https://maestra.cl/wp-content/uploads/2025/08/Brochure_Plaza_Cervantes-I-y-II.pdf"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    },
+    {
+      "id": "location-mapocho-3521-edificio-a",
+      "projectSlug": "mapocho-3521-edificio-a",
+      "reason": "La página oficial confirma el conjunto Mapocho 3521 / Rivas Vicuña 1131, pero no identifica inequívocamente el edificio A ni su acceso. No se traslada la ubicación de otra etapa.",
+      "sources": [
+        {
+          "url": "https://euroinmobiliaria.cl/proyectos/mapocho-3521"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    },
+    {
+      "id": "location-vicuna-mackenna-7589",
+      "projectSlug": "vicuna-mackenna-7589",
+      "reason": "Permanece una discrepancia material: SEA sitúa el predio en UTM E351520.975 N6289499.169, aproximadamente 3.5 km del punto comercial heredado. Brochure alude a Bellavista/Vicente Valdés, mientras el mapa de la página del responsable está centrado en el área del punto heredado. Los parámetros de centro del iframe no son coordenadas concluyentes de entrada. No se elige ni corrige automáticamente.",
+      "sources": [
+        {
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=53%2F65%2F0f20f48e6ca22ffaca5acd2887a0cb48b0c7"
+        },
+        {
+          "url": "https://ingevecinmobiliaria.cl/proyecto-vicu%C3%B1amackenna7589"
+        },
+        {
+          "url": "https://ingevecinmobiliaria.cl/hubfs/PROYECTOS%20INGEVEC/VICU%C3%91A%20MACKENNA%207589/Brochure_Vicu%C3%B1a7589_2026.pdf?hsLang=es-cl"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    },
+    {
+      "id": "location-pintor-cicarelli-iii",
+      "projectSlug": "pintor-cicarelli-iii",
+      "reason": "La separación de aproximadamente 350 m frente a I/II sigue como alerta, no nuevo bloqueo. Documentos generales del conjunto en Pintor Cicarelli 268/Lira 2408 no determinan por sí solos el punto de la torre III. No se sustituye por coordenadas de I/II; faltan plano de etapa y acceso inequívocos.",
+      "sources": [
+        {
+          "url": "https://maestra.cl/proyectos/pintor-cicarelli-iii/"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    },
+    {
+      "id": "metro-l8-resto-accesos",
+      "reason": "E14 Hospital y Mardoqueo ahora corroborados en RCA final. Continúan pendientes restantes accesos, incluido Chile España: una coordenada de estación no se presume entrada.",
+      "sources": [
+        {
+          "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069"
+        }
+      ],
+      "reviewedOn": "2026-10-31"
+    }
+  ],
+  "partialResolution": "Se añaden dos accesos E14 a la misma obra Línea 8 y una relación nueva; E08 y sus relaciones anteriores se conservan. No cerrar globalmente pendiente de todos los accesos L8.",
+  "locationVerifications": [
+    {
+      "projectSlug": "reserva-mayor-2",
+      "reviewedOn": "2026-10-31",
+      "sources": [
+        {
+          "url": "https://www.vesant.cl/proyectos/reserva-mayor-2",
+          "title": "Responsable del proyecto: coordenadas propias publicadas"
+        }
+      ],
+      "projectLocation": {
+        "lat": -36.790843,
+        "lng": -72.949394,
+        "address": null,
+        "commune": "Concepción"
+      },
+      "rationale": "Clave coordenadas propia del proyecto, separada de lista pois: lat -36.790843, lng -72.949394. Identidad Reserva Mayor 2 en página del responsable. Punto de referencia propio del proyecto, no entrada ni deslinde. Se conserva la ausencia de número postal; no se cambia el registro comercial."
+    },
+    {
+      "projectSlug": "endemico",
+      "reviewedOn": "2026-10-31",
+      "sources": [
+        {
+          "url": "https://endemicopichilemu.cl/",
+          "title": "Responsable del proyecto: coordenadas propias publicadas"
+        }
+      ],
+      "projectLocation": {
+        "lat": -34.452561,
+        "lng": -72.029259,
+        "address": null,
+        "commune": "Pichilemu"
+      },
+      "rationale": "Iframe propio de ubicación: maps.google.com/maps?q=-34.452561%2C%20-72.029259 y title con el mismo par; identidad Condominio Endémico Punta Lobos. Punto de referencia propio del proyecto, no entrada ni deslinde. Se conserva la ausencia de número postal; no se cambia el registro comercial."
+    }
+  ]
+}
