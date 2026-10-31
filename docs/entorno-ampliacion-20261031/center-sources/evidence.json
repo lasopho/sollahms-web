@@ -1,0 +1,31 @@
+{
+  "cutoff": "2026-10-31",
+  "newEvidence": [
+    {
+      "workId": "plaza-artesanos-900",
+      "identity": "Plaza OSM649332284 coincidente con nombre municipal y capilla Angamos358; fotografía de autor con coordenadas se utilizó sólo como pista para acotar consulta, no como geometría.",
+      "geometryVersion": 2,
+      "geometryTimestamp": "2020-07-08T00:46:04Z",
+      "fetchUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=-70.639,-33.448,-70.637,-33.4465"
+    },
+    {
+      "workId": "carol-urzua-boxes-salud",
+      "identity": "OSM449613939 nombra centro CarolUrzúa y AvenidaSantaRosa; municipio confirma SantaRosa1727 y operación específica23sept.",
+      "geometryVersion": 2,
+      "geometryTimestamp": "2016-11-04T23:50:01Z",
+      "fetchUrl": "https://api.openstreetmap.org/api/0.6/way/449613939/full.json"
+    },
+    {
+      "workId": "unab-r14",
+      "identity": "Plano2026+evento8sept distinguen nuevo R14 Echaurren174 de directorio histórico AbdónCifuentes115. OSMsectordescargado carece identificación inequívoca; no se selecciona parcela por vecindad."
+    },
+    {
+      "workId": "nueva-alameda-bandejon-santiago",
+      "identity": "MercadoPúblico adjudicación T1 24feb2026 y T2 25feb2026. Estado constructivo respaldado por GORE29oct. Geometría no deducida desde calzada."
+    }
+  ],
+  "toolLimitations": [
+    "Geocodificador Nominatim rechazó consultas con HTTP403 y política deuso; se suspendieron búsquedas allí. Para dosidentidades se utilizó la API de datos OSM primaria por objeto conocido o polígono acotado.",
+    "No se modificó OSM ni datos comerciales."
+  ]
+}

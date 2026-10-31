@@ -46,7 +46,11 @@ test('changed project address/coordinate and unreviewed relations fail closed',(
 test('track geometry and future station centers cannot create rail proximity',()=>{
  const copy=structuredClone(data);copy.works.find(w=>w.id==='tren-puerto-varas').geometryRole='track';
  assert.equal(relationshipsFor(copy,'tren-puerto-varas').length,0);
- for(const id of ['metro-linea-7','metro-linea-8','linea-9-santa-rosa-alameda'])assert.equal(relationshipsFor(data,id).length,0);
+ for(const id of ['metro-linea-7','metro-linea-8','linea-9-santa-rosa-alameda']){
+  const w=data.works.find(w=>w.id===id);
+  if(!w.geometry)assert.equal(relationshipsFor(data,id).length,0);
+  else {assert.equal(w.geometryRole,'entrance');assert.ok(w.geometrySource.url);}
+ }
 });
 test('disputed project locations cannot create new proximity claims',()=>{
  const copy=structuredClone(data);copy.research={blockedProjectSlugs:['edificio-nordico']};

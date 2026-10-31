@@ -1,0 +1,189 @@
+{
+  "reviewedOn": "2026-10-31",
+  "updatedWorks": [
+    {
+      "id": "metro-linea-8",
+      "name": "Línea 8 de Metro",
+      "type": "Metro y trenes",
+      "region": "Región Metropolitana",
+      "communes": [
+        "Providencia",
+        "Ñuñoa",
+        "Macul",
+        "Peñalolén",
+        "La Florida",
+        "Puente Alto",
+        "Las Condes"
+      ],
+      "status": "approved",
+      "statusDetail": "Calificación ambiental favorable; ejecución no confirmada en este registro",
+      "informationDate": "2026-05-29",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Metro de Santiago / SEA Región Metropolitana",
+      "locationText": "Corredor proyectado Providencia–Puente Alto. El mapa muestra únicamente el segundo acceso futuro E08 en Macul/Quilín, no todas las estaciones.",
+      "description": "Proyecto con calificación ambiental favorable. Esa aprobación no acredita financiamiento ni inicio de construcción.",
+      "benefit": "Podría ampliar la conexión ferroviaria del sector suroriente si se ejecuta.",
+      "sources": [
+        {
+          "id": "l8-rca",
+          "title": "BCN: notificación RCA 20261301132 de 19/05/2026",
+          "url": "https://www.bcn.cl/leychile/navegar?idNorma=1224602",
+          "date": "2026-05-29"
+        },
+        {
+          "id": "l8-trazado",
+          "title": "SEA: descripción del Estudio de Impacto Ambiental",
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536",
+          "date": "2024-07-19"
+        },
+        {
+          "id": "l8-rca-integra",
+          "title": "SEA: RCA íntegra 20261301132, tabla 4.2.3 y descripción de accesos E08",
+          "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "date": "2026-05-19"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "La eventual construcción podría generar molestias temporales. No se atribuyen efectos a una vivienda específica."
+      ],
+      "uncertainties": [
+        "Financiamiento y cronograma de ejecución pendientes de corroboración primaria actual.",
+        "Las Condes incluye obras subterráneas de maniobra; no implica una estación de pasajeros en esa comuna.",
+        "Sólo se georreferencia el segundo acceso E08 verificado documentalmente. Los restantes accesos requieren corroboración; la geometría no representa toda la línea.",
+        "El acceso es futuro y no habilitado; la RCA no confirma financiamiento ni ejecución. El diseño y la accesibilidad efectiva pueden cambiar."
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.59885838097455,
+          -33.48545228053129
+        ]
+      },
+      "geometrySource": {
+        "title": "SEA: EIA, coordenada E08 segundo acceso, contrastada con RCA 2026 tabla 4.2.3 y descripción del acceso oriente",
+        "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536"
+      },
+      "geometryRole": "entrance",
+      "geometryLabel": "al segundo acceso futuro E08 (Macul/Quilín), documentado en la RCA; no habilitado",
+      "publish": true,
+      "accessReferences": [
+        {
+          "id": "l8-e08-oriente",
+          "name": "E08 Punta de Rieles/Quilín · segundo acceso, lado oriente de Macul",
+          "coordinates": [
+            -70.59885838097455,
+            -33.48545228053129
+          ],
+          "source": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536",
+          "approvalSource": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalPages": [
+            5,
+            29,
+            30,
+            38
+          ],
+          "coordinateRole": "Punto oficial del acceso futuro; no posición de andén ni pique de ventilación",
+          "validation": "La coordenada geográfica EIA corresponde a UTM WGS84 huso 19S E 351457 N 6293750, idéntica al par numérico de RCA 2026. RCA tabla 4.2.3 intercambia encabezados Este/Norte; se publica la coordenada geográfica directa del EIA, corroborada con la descripción RCA de acceso oriente en Quilín, no una coordenada obtenida de una imagen."
+        }
+      ]
+    }
+  ],
+  "newWorks": [],
+  "relationships": [
+    {
+      "workId": "metro-linea-8",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Proyecto al norponiente del acceso E08 documentado, dentro del sector Macul/Quilín. La relación se mide al acceso futuro, no al trazado subterráneo.",
+      "benefit": "Si se ejecuta y habilita, este acceso podría ampliar las alternativas de transporte del sector. La ejecución no está confirmada en este registro.",
+      "cautions": [
+        "Av. Macul separa el inmueble del acceso oriente; deben verificarse cruces habilitados y continuidad de veredas. No se establece ruta peatonal.",
+        "La construcción eventual podría implicar desvíos y molestias temporales; no se atribuye un aumento de valor a la vivienda."
+      ],
+      "projectLocation": {
+        "lat": -33.4781519,
+        "lng": -70.6012424,
+        "address": "Gregorio de la Fuente 3011",
+        "commune": "Macul"
+      }
+    },
+    {
+      "workId": "metro-linea-8",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Proyecto del sector Ramón Cruz/Quilín al oriente del acceso E08 documentado. Distancia geográfica al acceso futuro, sin inferir recorrido caminable.",
+      "benefit": "Si se ejecuta y habilita, este acceso podría ampliar las alternativas de transporte del sector. La ejecución no está confirmada en este registro.",
+      "cautions": [
+        "Las manzanas y cruces del sector pueden aumentar el recorrido respecto de la línea recta; no se verificó accesibilidad universal ni tiempo de viaje.",
+        "La construcción eventual podría implicar desvíos y molestias temporales; no se atribuye un aumento de valor a la vivienda."
+      ],
+      "projectLocation": {
+        "lat": -33.4857091,
+        "lng": -70.5854856,
+        "address": "Ramón Cruz 3291",
+        "commune": "Macul"
+      }
+    }
+  ],
+  "resolvedPendingIds": [],
+  "stillPending": [
+    {
+      "id": "metro-l7-cal-canto-acceso",
+      "name": "Acceso futuro Cal y Canto Línea 7",
+      "reason": "Fuente oficial del 19 de marzo de 2026 confirma intersección Ismael Valdés Vergara/Paseo Puente en Plaza Prat, pero no entrega coordenada exacta del acceso. La huella OSM de construcción no se utiliza como entrada.",
+      "sources": [
+        {
+          "title": "Gobierno Santiago: acceso y encuentro de túneles",
+          "url": "https://www.gobiernosantiago.cl/2026/03/19/autoridades-participan-del-encuentro-de-tuneles-en-estacion-cal-y-canto-de-futura-linea-7/",
+          "date": "2026-03-19"
+        }
+      ]
+    },
+    {
+      "id": "metro-matucana-acceso-modificado",
+      "name": "Acceso futuro Matucana EFE/Línea 7",
+      "reason": "Consulta de pertinencia del 21 de agosto de 2026 modifica explícitamente la ubicación del acceso. El punto representativo no es una entrada y no se adopta la coordenada histórica. Falta contrastar acceso modificado en plano georreferenciado y su resolución.",
+      "sources": [
+        {
+          "title": "SEA: modificaciones y mejoramientos Estación Matucana",
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2026%2F08%2F21%2F40ef-a32d-4f03-bf67-ae53dcb558d3",
+          "date": "2026-08-21"
+        }
+      ]
+    },
+    {
+      "id": "metro-l8-resto-accesos",
+      "name": "Restantes accesos Línea 8, especialmente Los Leones y Chile España",
+      "reason": "RCA 2026 entrega puntos con encabezados Este/Norte invertidos. E14 difiere de EIA 2024; sin corroboración cartográfica final no se convierte ni publica. Anexos georreferenciados y descripción actualizada respondieron HTTP 500. E08 segundo acceso sí coincide exactamente y se incorpora de forma acotada.",
+      "sources": [
+        {
+          "title": "SEA: RCA íntegra",
+          "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "date": "2026-05-19"
+        },
+        {
+          "title": "SEA: Adenda Excepcional y anexos actualizados",
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2026%2F02%2F26%2F3322-c1f5-43da-8ebd-fe325acff706",
+          "date": "2026-02-26"
+        }
+      ]
+    },
+    {
+      "id": "metro-l9-santa-lucia-acceso",
+      "name": "Acceso futuro Santa Lucía Línea 9",
+      "reason": "Observación CMN 2024 solicita replantear acceso junto a Biblioteca Nacional; no acredita ubicación definitiva ni coordenada. Trabajos arqueológicos 2026 no equivalen a acceso de pasajeros. Se mantiene pendiente sin reutilizar entradas de L1.",
+      "sources": [
+        {
+          "title": "CMN: observaciones al EIA Línea 9",
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F01%2F08%2F1ff6-b6db-4205-a0e7-7c07544830c1",
+          "date": "2024-01-08"
+        }
+      ]
+    }
+  ],
+  "partialResolution": "Línea 8: admitido un acceso futuro E08 con coincidencia exacta EIA–RCA; no se cierra la verificación de toda la línea."
+}

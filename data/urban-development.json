@@ -601,7 +601,7 @@
       "informationDate": "2026-05-29",
       "reviewedOn": "2026-10-31",
       "responsible": "Metro de Santiago / SEA Región Metropolitana",
-      "locationText": "Trazado proyectado entre Providencia y Puente Alto; cola de maniobras en Las Condes",
+      "locationText": "Corredor proyectado Providencia–Puente Alto. El mapa muestra únicamente el segundo acceso futuro E08 en Macul/Quilín, no todas las estaciones.",
       "description": "Proyecto con calificación ambiental favorable. Esa aprobación no acredita financiamiento ni inicio de construcción.",
       "benefit": "Podría ampliar la conexión ferroviaria del sector suroriente si se ejecuta.",
       "sources": [
@@ -616,6 +616,12 @@
           "title": "SEA: descripción del Estudio de Impacto Ambiental",
           "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536",
           "date": "2024-07-19"
+        },
+        {
+          "id": "l8-rca-integra",
+          "title": "SEA: RCA íntegra 20261301132, tabla 4.2.3 y descripción de accesos E08",
+          "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "date": "2026-05-19"
         }
       ],
       "estimatedStart": null,
@@ -626,13 +632,43 @@
       "uncertainties": [
         "Financiamiento y cronograma de ejecución pendientes de corroboración primaria actual.",
         "Las Condes incluye obras subterráneas de maniobra; no implica una estación de pasajeros en esa comuna.",
-        "No se publican distancias a estaciones futuras sin accesos precisos verificados."
+        "Sólo se georreferencia el segundo acceso E08 verificado documentalmente. Los restantes accesos requieren corroboración; la geometría no representa toda la línea.",
+        "El acceso es futuro y no habilitado; la RCA no confirma financiamiento ni ejecución. El diseño y la accesibilidad efectiva pueden cambiar."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
-      "publish": true
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.59885838097455,
+          -33.48545228053129
+        ]
+      },
+      "geometrySource": {
+        "title": "SEA: EIA, coordenada E08 segundo acceso, contrastada con RCA 2026 tabla 4.2.3 y descripción del acceso oriente",
+        "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536"
+      },
+      "geometryRole": "entrance",
+      "geometryLabel": "al segundo acceso futuro E08 (Macul/Quilín), documentado en la RCA; no habilitado",
+      "publish": true,
+      "accessReferences": [
+        {
+          "id": "l8-e08-oriente",
+          "name": "E08 Punta de Rieles/Quilín · segundo acceso, lado oriente de Macul",
+          "coordinates": [
+            -70.59885838097455,
+            -33.48545228053129
+          ],
+          "source": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=2024%2F07%2F19%2Ff085-758d-4dd5-b87c-58e20cd71536",
+          "approvalSource": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069",
+          "approvalPages": [
+            5,
+            29,
+            30,
+            38
+          ],
+          "coordinateRole": "Punto oficial del acceso futuro; no posición de andén ni pique de ventilación",
+          "validation": "La coordenada geográfica EIA corresponde a UTM WGS84 huso 19S E 351457 N 6293750, idéntica al par numérico de RCA 2026. RCA tabla 4.2.3 intercambia encabezados Este/Norte; se publica la coordenada geográfica directa del EIA, corroborada con la descripción RCA de acceso oriente en Quilín, no una coordenada obtenida de una imagen."
+        }
+      ]
     },
     {
       "id": "linea-9-santa-rosa-alameda",
@@ -1038,7 +1074,8 @@
         "Considerar afluencia de visitantes y actividad recreativa; no se midieron efectos sobre cada vivienda."
       ],
       "uncertainties": [
-        "Falta delimitar cartográficamente el tramo exacto y sus accesos. No asociar automáticamente todo Playa Chinchorro ni usar centro de playa como coordenada."
+        "El punto es el cruce vial de referencia del extremo sur documentado, no el perímetro completo ni un acceso habilitado.",
+        "Faltan el plano completo y los accesos. La distancia no indica que el edificio esté frente al tramo renovado."
       ],
       "sources": [
         {
@@ -1052,13 +1089,28 @@
           "title": "DOP: descripción del tramo intervenido",
           "url": "https://dop.mop.gob.cl/2026/04/07/dop-impulsa-conservacion-integral-del-borde-costero-de-playa-chinchorro-en-arica-para-reforzar-seguridad-y-estandar-urbano/",
           "date": "2026-04-07"
+        },
+        {
+          "id": "chinchorro-mp-cruce",
+          "title": "Mercado Público 1262-17-O124: visita en Buenos Aires con Raúl Pey",
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=BoP%2FcrHG1uNRDCVBZ61ItQ%3D%3D",
+          "date": "2024-12-27"
         }
       ],
-      "geometry": null,
-      "geometrySource": null,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3039561,
+          -18.4619534
+        ]
+      },
+      "geometrySource": {
+        "title": "OpenStreetMap nodo 976097643, cruce contrastado con DOP y licitación 1262-17-O124",
+        "url": "https://www.openstreetmap.org/node/976097643"
+      },
       "publish": true,
-      "geometryRole": null,
-      "geometryLabel": null
+      "geometryRole": "reference_endpoint",
+      "geometryLabel": "al cruce Buenos Aires–Raúl Pey, referencia del extremo sur; no al acceso del paseo"
     },
     {
       "id": "parque-costanera-puerto-montt",
@@ -1906,7 +1958,7 @@
       "informationDate": "2026-10-15",
       "reviewedOn": "2026-10-31",
       "responsible": "Minsal / Servicio de Salud del Reloncaví / Dirección General de Concesiones",
-      "locationText": "Ruta5, acceso sur de Puerto Varas",
+      "locationText": "Av. Padre José Neudorfer, vereda oriente, al sur de Las Bandurrias. Predio rol1404-132.",
       "description": "Hospital en construcción confirmado por el Plan de Inversiones Minsal.",
       "benefit": "Podría ampliar la oferta hospitalaria local cuando obtenga las autorizaciones y comience a atender.",
       "sources": [
@@ -1921,6 +1973,12 @@
           "title": "El Heraldo Austral: visita del Servicio de Salud a las obras (apoyo)",
           "url": "https://eha.cl/noticia/local/servicio-de-salud-del-reloncavi-constata-avance-del-55-en-construccion-del-hospital-puerto-varas",
           "date": "2026-10-15"
+        },
+        {
+          "id": "hospital-pv-rca-geometry",
+          "title": "SEA: RCA115/2020, ubicación y cinco vértices del recinto, p4",
+          "url": "https://firma.sea.gob.cl/publicaciones/72/f8/2148881741.pdf",
+          "date": "2020-11-09"
         }
       ],
       "estimatedStart": null,
@@ -1930,13 +1988,46 @@
       ],
       "uncertainties": [
         "La fuente primaria informa avance a septiembre2026, sin día específico. La fecha de información corresponde al apoyo periodístico del15octubre sobre visita del Servicio de Salud.",
-        "No se verificó geometría ni accesos futuros; no se asignan distancias.",
-        "No se publica una fecha de apertura; avances constructivos no equivalen a habilitación sanitaria."
+        "No se publica una fecha de apertura; avances constructivos no equivalen a habilitación sanitaria.",
+        "La medición usa el recinto aprobado; no identifica un acceso público operativo ni un recorrido peatonal."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.98670375668898,
+              -41.33116990936655
+            ],
+            [
+              -72.98345942715855,
+              -41.33107832434935
+            ],
+            [
+              -72.98367846064596,
+              -41.32947409878067
+            ],
+            [
+              -72.98578773559848,
+              -41.32953377835321
+            ],
+            [
+              -72.98593012807054,
+              -41.32959795103514
+            ],
+            [
+              -72.98670375668898,
+              -41.33116990936655
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "SEA: RCA115/2020, tabla4.2 y plano página4; vértices UTM WGS84 huso18S convertidos a WGS84",
+        "url": "https://firma.sea.gob.cl/publicaciones/72/f8/2148881741.pdf"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "perímetro del recinto hospitalario aprobado en RCA; no es distancia a una entrada",
       "publish": true
     },
     {
@@ -1967,6 +2058,12 @@
           "title": "Municipalidad Puerto Varas: inicio de obras y restricciones de uso",
           "url": "https://www.ptovaras.cl/noticias/puerto-varas-inicia-historica-transformacion-de-su-borde-lacustre-con-inversion-de-9700-millones",
           "date": "2026-07"
+        },
+        {
+          "id": "costanera-pv-extremos",
+          "title": "DOP: extremos de intervención y adjudicación",
+          "url": "https://dop.mop.gob.cl/2026/05/07/contraloria-dio-el-visto-bueno-para-la-adjudicacion-del-proyecto-de-mejoramiento-de-la-costanera-de-puerto-varas/",
+          "date": "2026-05-07"
         }
       ],
       "estimatedStart": "Inicio contractual:6mayo2026; entrega de terreno:15junio2026 (DOP).",
@@ -1977,12 +2074,22 @@
       ],
       "uncertainties": [
         "Tramo y accesos no vectorizados con precisión suficiente: sin marcador ni relaciones calculadas.",
-        "No se convierte el plazo contractual en una fecha garantizada de apertura."
+        "No se convierte el plazo contractual en una fecha garantizada de apertura.",
+        "Se georreferencia solamente el extremo inicial documentado, no se dibuja un polígono de obras ni se interpreta como un acceso actualmente habilitado."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.9719816,
+          -41.3251885
+        ]
+      },
+      "geometrySource": {
+        "title": "DOP identifica Punta Diamantes en Pérez Rosales/Imperial; nodo OSM2747295009 de la intersección",
+        "url": "https://www.openstreetmap.org/node/2747295009"
+      },
+      "geometryRole": "intersection-reference",
+      "geometryLabel": "esquina Vicente Pérez Rosales/Imperial, referencia al inicio del tramo; no es distancia al punto más cercano del parque",
       "publish": true
     },
     {
@@ -2037,7 +2144,7 @@
       "informationDate": "2026-07-23",
       "reviewedOn": "2026-10-31",
       "responsible": "SERVIU Los Ríos",
-      "locationText": "Acceso oriente del futuro Puente Cochrane, sector Valdivia centro–Barrios Bajos",
+      "locationText": "Calle Cochrane hasta Serrano, sector Barrios Bajos, Valdivia. El punto representa el extremo vial oriente.",
       "description": "Licitación5751-25-O126 para obras viales del acceso oriente.",
       "benefit": "Podría contribuir a la conexión con Isla Teja si se materializa el conjunto de obras.",
       "sources": [
@@ -2052,6 +2159,12 @@
           "title": "DPR Los Ríos: sondajes de diseño y contratos complementarios",
           "url": "https://dprlosrios.dpr.gob.cl/noticias/autoridades-regionales-anuncian-inicio-de-sondajes-geotecnicos-para-el-puente-cochrane-en-valdivia/",
           "date": "2026-02-26"
+        },
+        {
+          "id": "cochrane-senado-alcance",
+          "title": "MOP/MINVU ante Comisión de Obras Públicas del Senado: ámbito de acceso oriente, p6",
+          "url": "https://microservicio-documentos.senado.cl/v1/archivos/0dc3f84f-9fe7-4d10-a9a0-460c14277333?includeContent=true",
+          "date": "2025-08-21"
         }
       ],
       "estimatedStart": null,
@@ -2062,12 +2175,21 @@
       "uncertainties": [
         "El puente principal está sujeto a actualización de ingeniería; licitar un acceso no confirma construcción de todo el puente.",
         "Mercado Público muestra cierre17noviembre2026; fechas futuras de adjudicación son programadas, no hechos cumplidos.",
-        "Sin geometría contractual precisa no se calculan distancias desde Chacabuco637."
+        "Ámbito vial documentado por MOP/MINVU; el punto es una intersección de referencia, no la huella total de la futura obra."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.2462502,
+          -39.8192744
+        ]
+      },
+      "geometrySource": {
+        "title": "OSM nodo1194228688, intersección de ways103425264 Serrano y28199236 Lord Cochrane",
+        "url": "https://www.openstreetmap.org/node/1194228688"
+      },
+      "geometryRole": "intersection-reference",
+      "geometryLabel": "esquina Lord Cochrane/Serrano, extremo oriente documentado; no es el puente ni su acceso fluvial",
       "publish": true
     },
     {
@@ -2374,7 +2496,7 @@
       "informationDate": "2026-06-08",
       "reviewedOn": "2026-10-31",
       "responsible": "Municipalidad de La Serena / Gobierno Regional de Coquimbo",
-      "locationText": "Sector San Joaquín, suroriente de La Serena",
+      "locationText": "Dos sectores entre Alberto Arenas, Francisco Ariztía, Los Perales, Rodolfo Wagenknecht y Rafael Varela, La Serena",
       "description": "Parque con áreas verdes y equipamiento recreativo cuya primera piedra y construcción fueron informadas por GORE.",
       "benefit": "Podría ampliar los espacios de recreación del sector cuando esté habilitado.",
       "sources": [
@@ -2383,6 +2505,18 @@
           "title": "GORE: inicio de construcción del Parque Recreativo San Joaquín",
           "url": "https://www.gorecoquimbo.cl/vecinos-celebran-el-inicio-de-la-construccion-del-parque-recreativo-san",
           "date": "2026-06-08"
+        },
+        {
+          "id": "sanjoaquin-limites",
+          "title": "GORE: límites y dos sectores del parque",
+          "url": "https://www.gorecoquimbo.cl/noticias/aprueban-6-mil-millones-para-la-construccion-del-parque-recreativo-san",
+          "date": null
+        },
+        {
+          "id": "sanjoaquin-osm-sector2",
+          "title": "OpenStreetMap: segundo sector cartografiado",
+          "url": "https://www.openstreetmap.org/way/608482989",
+          "date": null
         }
       ],
       "estimatedStart": null,
@@ -2391,12 +2525,96 @@
         "Faenas y futura concentración de actividades pueden modificar ruido y circulación."
       ],
       "uncertainties": [
-        "Falta un polígono y accesos públicos contrastados para calcular distancias individuales. La duración de 480 días no se convierte en fecha de apertura."
+        "Perímetros OSM contrastados con la localización oficial; no representan accesos peatonales verificados.",
+        "No se usa la apertura 2028 de OSM: la duración oficial de 480 días no fija una inauguración."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -71.2433308,
+                -29.9312422
+              ],
+              [
+                -71.2433308,
+                -29.9312022
+              ],
+              [
+                -71.2433524,
+                -29.9311701
+              ],
+              [
+                -71.2435712,
+                -29.9311354
+              ],
+              [
+                -71.2436089,
+                -29.93116
+              ],
+              [
+                -71.2443801,
+                -29.9326572
+              ],
+              [
+                -71.2449279,
+                -29.9337035
+              ],
+              [
+                -71.2448898,
+                -29.9337654
+              ],
+              [
+                -71.2446539,
+                -29.9338635
+              ],
+              [
+                -71.2440602,
+                -29.9341102
+              ],
+              [
+                -71.2433308,
+                -29.9312422
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -71.2438913,
+                -29.9338487
+              ],
+              [
+                -71.2439555,
+                -29.9341468
+              ],
+              [
+                -71.242276,
+                -29.934806
+              ],
+              [
+                -71.242181,
+                -29.9347932
+              ],
+              [
+                -71.2419643,
+                -29.9342254
+              ],
+              [
+                -71.2438913,
+                -29.9338487
+              ]
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "OpenStreetMap: sectores 608480875 y 608482989, contrastados con calles delimitantes de GORE",
+        "url": "https://www.openstreetmap.org/way/608480875"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "al perímetro cartografiado de los dos sectores del parque; acceso pendiente",
       "publish": true
     },
     {
@@ -4137,6 +4355,24 @@
           "title": "GORE: avance bandejón central Alameda",
           "url": "https://www.gobiernosantiago.cl/2026/10/29/proyecto-nueva-alameda-avanza-en-la-renovacion-del-bandejon-central-con-espacios-mas-seguros-verdes-y-accesibles/",
           "date": "2026-10-29"
+        },
+        {
+          "id": "alameda-t1-contrato",
+          "title": "Mercado Público: adjudicación tramo1, ID1164956-42-O125",
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=T49hqP1GzQEqnewkdLWX8Q%3D%3D",
+          "date": "2026-02-24"
+        },
+        {
+          "id": "alameda-t2-contrato",
+          "title": "Mercado Público: adjudicación tramo2, ID1164956-43-O125",
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=XE7iSyvL6xuwrD1psxbmFw%3D%3D",
+          "date": "2026-02-25"
+        },
+        {
+          "id": "alameda-t2-bases",
+          "title": "SERVIU: bases que identifican planos del tramo2",
+          "url": "https://documentos.minvu.cl/server/api/core/bitstreams/3878f522-cd68-4800-bd04-bb36af154b51/content",
+          "date": "2025-08-29"
         }
       ],
       "estimatedStart": "Abril de 2026, según GORE",
@@ -4146,7 +4382,7 @@
       ],
       "uncertainties": [
         "No incluye el tercer tramo de Estación Central como obra iniciada.",
-        "Falta geometría del bandejón intervenido para distancias individuales."
+        "La documentación consultada identifica el contrato y sus planos, pero no entrega una geometría recuperable del bandejón intervenido. No se usa el eje de toda la avenida como sustituto."
       ],
       "geometry": null,
       "publish": true
@@ -4164,7 +4400,7 @@
       "informationDate": "2026-04-06",
       "reviewedOn": "2026-10-31",
       "responsible": "Universidad Andrés Bello",
-      "locationText": "Intersección Echaurren y Sazié",
+      "locationText": "Nuevo edificio R14, Echaurren 174, sector Echaurren con Sazié",
       "description": "Edificio universitario inaugurado en abril de 2026.",
       "benefit": "Amplía el equipamiento universitario del barrio República.",
       "sources": [
@@ -4173,6 +4409,24 @@
           "title": "UNAB: inauguración edificio R14",
           "url": "https://noticias.unab.cl/campus-republica-suma-un-nuevo-hito-con-la-inauguracion-del-edificio-r14/",
           "date": "2026-04-06"
+        },
+        {
+          "id": "unab-plano-2026",
+          "title": "UNAB: plano Campus República 2026",
+          "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+          "date": "2026-02"
+        },
+        {
+          "id": "unab-r14-cultura",
+          "title": "UNAB Cultura: actividad septiembre 2026 en Echaurren 174",
+          "url": "https://cultura.unab.cl/evento/inauguracion-exposicionhumanidad/",
+          "date": "2026-09-08"
+        },
+        {
+          "id": "unab-directorio-conflicto",
+          "title": "UNAB: directorio con dirección histórica distinta",
+          "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
+          "date": null
         }
       ],
       "estimatedStart": null,
@@ -4181,7 +4435,8 @@
         "Uso sujeto a reglas universitarias; considerar flujos de estudiantes y actividad urbana."
       ],
       "uncertainties": [
-        "No se verificó huella y acceso del edificio R14; no se asignan distancias."
+        "El directorio general conserva R14 en Abdón Cifuentes115; se prioriza el plano2026 que identifica R14 Nuevo y la actividad de septiembre en Echaurren174.",
+        "Dirección resuelta documentalmente, pero no se verificó una huella o acceso inequívoco del nuevo edificio; continúa sin marcador ni distancia."
       ],
       "geometry": null,
       "publish": true
@@ -4199,7 +4454,7 @@
       "informationDate": "2026-09-01",
       "reviewedOn": "2026-10-31",
       "responsible": "Municipalidad de Santiago",
-      "locationText": "Plaza Artesanos del 900, barrio Santa Isabel",
+      "locationText": "Plaza de los Artesanos del 900, Angamos, entre Marín y Santa Victoria, Santiago",
       "description": "Actualización de diseño con participación vecinal.",
       "benefit": "Podría mejorar juegos y permanencia en el barrio Santa Isabel.",
       "sources": [
@@ -4208,6 +4463,12 @@
           "title": "Municipalidad: propuesta Plaza Artesanos del 900",
           "url": "https://www.munistgo.cl/mas-areas-verdes-juegos-y-espacios-de-encuentro-contempla-renovacion-de-plaza-artesanos-del-900/",
           "date": "2026-09-01"
+        },
+        {
+          "id": "artesanos-ubicacion",
+          "title": "Patrimonio Urbano: capilla de plaza Artesanos, Angamos 358",
+          "url": "https://www.patrimoniourbano.cl/inmuebles-y-zonas-patrimoniales/region-metropolitana/",
+          "date": null
         }
       ],
       "estimatedStart": null,
@@ -4216,10 +4477,51 @@
         "Las obras pueden generar cierres parciales, ruido o cambios de circulación; no se han medido efectos en viviendas."
       ],
       "uncertainties": [
-        "No se acreditan contratación ni inicio; coordenadas del recinto pendientes."
+        "El polígono es el de la plaza existente; no delimita cada partida de la intervención propuesta.",
+        "Se mantiene diseño en revisión: no se acreditan contratación ni inicio."
       ],
-      "geometry": null,
-      "publish": true
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.6383066,
+              -33.4470609
+            ],
+            [
+              -70.6380978,
+              -33.447013
+            ],
+            [
+              -70.6380711,
+              -33.4470938
+            ],
+            [
+              -70.6377457,
+              -33.447019
+            ],
+            [
+              -70.6376775,
+              -33.4472256
+            ],
+            [
+              -70.6382117,
+              -33.4473483
+            ],
+            [
+              -70.6383066,
+              -33.4470609
+            ]
+          ]
+        ]
+      },
+      "publish": true,
+      "geometrySource": {
+        "title": "OpenStreetMap way 649332284, ODbL 1.0; identidad contrastada con fuente municipal",
+        "url": "https://www.openstreetmap.org/way/649332284"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "al perímetro de la plaza existente; no a futuras faenas"
     },
     {
       "id": "bandera-recuperacion-buses",
@@ -4470,7 +4772,7 @@
       "informationDate": "2026-08-05",
       "reviewedOn": "2026-10-31",
       "responsible": "Cenco Malls",
-      "locationText": "Recinto Cenco Florida; emplazamiento específico pendiente",
+      "locationText": "Terreno de Torre Multifamily Cenco Florida, borde norte del complejo hacia avenida Departamental, La Florida",
       "description": "Proyecto de uso residencial asociado al centro comercial, con obras iniciadas según el responsable.",
       "benefit": "Añade uso residencial al complejo y podría modificar la intensidad de actividad local.",
       "sources": [
@@ -4489,12 +4791,41 @@
       ],
       "uncertainties": [
         "No confundir con el proyecto de Mallplaza y Salfacorp.",
-        "No se verificó una geometría precisa de la intervención; no se calcula distancia ni se asigna cercanía a una ficha."
+        "La geometría colaborativa identifica el perímetro del recinto específico; no acredita límites contractuales ni accesos habilitados. El estado procede de la fuente oficial, no de etiquetas OSM."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.6075819,
+              -33.5087536
+            ],
+            [
+              -70.6073201,
+              -33.5094986
+            ],
+            [
+              -70.6063834,
+              -33.5096014
+            ],
+            [
+              -70.6062571,
+              -33.5088564
+            ],
+            [
+              -70.6075819,
+              -33.5087536
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "OpenStreetMap: huella individual identificada por nombre, way 1293291025",
+        "url": "https://www.openstreetmap.org/way/1293291025"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "al perímetro del terreno multifamily; no a un acceso",
       "publish": true
     },
     {
@@ -4624,12 +4955,73 @@
       ],
       "uncertainties": [
         "Es equipamiento de acceso institucional, no un servicio abierto automáticamente a residentes.",
-        "No se verificó una geometría precisa de la intervención; no se calcula distancia ni se asigna cercanía a una ficha."
+        "La geometría colaborativa identifica el perímetro del recinto específico; no acredita límites contractuales ni accesos habilitados. El estado procede de la fuente oficial, no de etiquetas OSM."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.6143719,
+              -33.4988004
+            ],
+            [
+              -70.6143637,
+              -33.4988995
+            ],
+            [
+              -70.6143603,
+              -33.498941
+            ],
+            [
+              -70.6143522,
+              -33.4990367
+            ],
+            [
+              -70.6143514,
+              -33.4990481
+            ],
+            [
+              -70.6143502,
+              -33.4990553
+            ],
+            [
+              -70.6143442,
+              -33.4991117
+            ],
+            [
+              -70.6143398,
+              -33.4991492
+            ],
+            [
+              -70.6135859,
+              -33.499087
+            ],
+            [
+              -70.6136112,
+              -33.4988771
+            ],
+            [
+              -70.6135374,
+              -33.4988709
+            ],
+            [
+              -70.6135519,
+              -33.4987506
+            ],
+            [
+              -70.6143719,
+              -33.4988004
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "OpenStreetMap: huella individual identificada por nombre, way 157759666",
+        "url": "https://www.openstreetmap.org/way/157759666"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "a la huella del edificio Escuela de Construcción Civil; no al acceso al campus",
       "publish": true
     },
     {
@@ -5506,20 +5898,19 @@
     },
     {
       "id": "parque-mapocho-rio",
-      "name": "Parque Mapocho Río",
+      "name": "Parque Mapocho Río · tramo 1",
       "type": "Parques y espacio público",
       "region": "Región Metropolitana",
       "communes": [
-        "Quinta Normal",
-        "Cerro Navia"
+        "Quinta Normal"
       ],
       "status": "operational",
-      "statusDetail": "Apertura total de sus seis etapas documentada por MINVU.",
+      "statusDetail": "Tramo 1 abierto en septiembre de 2022; MINVU documentó la apertura total del parque en marzo de 2025.",
       "informationDate": "2025-03-04",
       "reviewedOn": "2026-10-31",
       "responsible": "MINVU / SERVIU Metropolitano",
-      "locationText": "Ribera sur del Mapocho, Quinta Normal y Cerro Navia",
-      "description": "Parque lineal con áreas verdes y equipamiento recreativo.",
+      "locationText": "Ribera sur del Mapocho, entre el poniente del Parque de la Familia y avenida Los Suspiros; accesos documentados Pasaje 9, Félix Bulnes y Gonzalo Bulnes.",
+      "description": "Primer tramo del parque lineal, entre el poniente del Parque de la Familia y avenida Los Suspiros. La geometría y las distancias de este registro corresponden sólo a este tramo.",
       "benefit": "Amplía la oferta de espacios públicos en la ribera sur.",
       "sources": [
         {
@@ -5527,6 +5918,12 @@
           "title": "MINVU: apertura de los últimos tramos de Mapocho Río",
           "url": "https://www.minvu.gob.cl/noticia/gobierno-entrega-parque-mapocho-rio-a-la-ciudadania-tras-inauguracion-de-ultima-etapa-en-cerro-navia/",
           "date": "2025-03-04"
+        },
+        {
+          "id": "minvu-mapocho-tramo1-20220914",
+          "title": "MINVU: límites y accesos del tramo 1 de Mapocho Río",
+          "url": "https://www.minvu.gob.cl/noticia/minvu-abre-las-puertas-del-primer-tramo-del-parque-mapocho-rio-que-une-quinta-normal-y-cerro-navia/",
+          "date": "2022-09-14"
         }
       ],
       "estimatedStart": null,
@@ -5535,12 +5932,334 @@
         "El río y las autopistas condicionan los recorridos; compartir ribera o comuna no acredita acceso directo."
       ],
       "uncertainties": [
-        "Sólo se recuperó cartografía de un tramo; no se utiliza como perímetro de todo el parque ni se fuerza asociación desde Quinta Normal o Renca."
+        "Esta geometría no representa los restantes cinco tramos ni acredita recorridos desde viviendas.",
+        "Accesos descritos por MINVU en 2022; horarios y condiciones de entrada deben consultarse con el operador."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.6963669,
+              -33.4139654
+            ],
+            [
+              -70.6959298,
+              -33.4142229
+            ],
+            [
+              -70.695806,
+              -33.4143436
+            ],
+            [
+              -70.6953235,
+              -33.414633
+            ],
+            [
+              -70.6948278,
+              -33.4149448
+            ],
+            [
+              -70.6948009,
+              -33.4150436
+            ],
+            [
+              -70.6943934,
+              -33.4152941
+            ],
+            [
+              -70.6941502,
+              -33.4153474
+            ],
+            [
+              -70.693908,
+              -33.4154869
+            ],
+            [
+              -70.6935798,
+              -33.4156761
+            ],
+            [
+              -70.6934394,
+              -33.4158009
+            ],
+            [
+              -70.6933376,
+              -33.4158974
+            ],
+            [
+              -70.6932756,
+              -33.4159702
+            ],
+            [
+              -70.6932354,
+              -33.4160316
+            ],
+            [
+              -70.6931437,
+              -33.4159907
+            ],
+            [
+              -70.6931077,
+              -33.4159747
+            ],
+            [
+              -70.6931824,
+              -33.4158896
+            ],
+            [
+              -70.6937042,
+              -33.415245
+            ],
+            [
+              -70.693994,
+              -33.4148913
+            ],
+            [
+              -70.6946502,
+              -33.4143373
+            ],
+            [
+              -70.6948424,
+              -33.4141976
+            ],
+            [
+              -70.6952424,
+              -33.4139341
+            ],
+            [
+              -70.6952767,
+              -33.4139137
+            ],
+            [
+              -70.6954499,
+              -33.4138105
+            ],
+            [
+              -70.6956619,
+              -33.4136925
+            ],
+            [
+              -70.6978072,
+              -33.4124472
+            ],
+            [
+              -70.698548,
+              -33.4118648
+            ],
+            [
+              -70.6990849,
+              -33.4114282
+            ],
+            [
+              -70.6998,
+              -33.4108365
+            ],
+            [
+              -70.7003663,
+              -33.4104473
+            ],
+            [
+              -70.7008541,
+              -33.4101343
+            ],
+            [
+              -70.7014382,
+              -33.4097673
+            ],
+            [
+              -70.7022201,
+              -33.4093385
+            ],
+            [
+              -70.7027119,
+              -33.4090685
+            ],
+            [
+              -70.7033107,
+              -33.4087942
+            ],
+            [
+              -70.7035157,
+              -33.4086996
+            ],
+            [
+              -70.7038643,
+              -33.4085434
+            ],
+            [
+              -70.7039959,
+              -33.4084923
+            ],
+            [
+              -70.7041417,
+              -33.4084458
+            ],
+            [
+              -70.7042706,
+              -33.4084076
+            ],
+            [
+              -70.7043859,
+              -33.4083842
+            ],
+            [
+              -70.7045187,
+              -33.408354
+            ],
+            [
+              -70.7046533,
+              -33.4083304
+            ],
+            [
+              -70.7047894,
+              -33.4083134
+            ],
+            [
+              -70.7049265,
+              -33.408303
+            ],
+            [
+              -70.705064,
+              -33.4082994
+            ],
+            [
+              -70.7052016,
+              -33.4083025
+            ],
+            [
+              -70.7052123,
+              -33.4083067
+            ],
+            [
+              -70.7052157,
+              -33.4083668
+            ],
+            [
+              -70.7052177,
+              -33.4084027
+            ],
+            [
+              -70.7052294,
+              -33.4086119
+            ],
+            [
+              -70.7049675,
+              -33.408656
+            ],
+            [
+              -70.7043937,
+              -33.408753
+            ],
+            [
+              -70.7037727,
+              -33.4088662
+            ],
+            [
+              -70.7033972,
+              -33.4089442
+            ],
+            [
+              -70.7029351,
+              -33.4091433
+            ],
+            [
+              -70.7026686,
+              -33.4093115
+            ],
+            [
+              -70.7020592,
+              -33.4097844
+            ],
+            [
+              -70.7017496,
+              -33.4099908
+            ],
+            [
+              -70.7015363,
+              -33.4100119
+            ],
+            [
+              -70.7012746,
+              -33.4101855
+            ],
+            [
+              -70.7011567,
+              -33.4102637
+            ],
+            [
+              -70.7009347,
+              -33.4105499
+            ],
+            [
+              -70.7000643,
+              -33.4110793
+            ],
+            [
+              -70.6993841,
+              -33.411497
+            ],
+            [
+              -70.6989541,
+              -33.411819
+            ],
+            [
+              -70.6988316,
+              -33.411962
+            ],
+            [
+              -70.6983329,
+              -33.4124475
+            ],
+            [
+              -70.6981284,
+              -33.4124945
+            ],
+            [
+              -70.6980267,
+              -33.4126155
+            ],
+            [
+              -70.6977478,
+              -33.4129473
+            ],
+            [
+              -70.6977085,
+              -33.4131597
+            ],
+            [
+              -70.6973249,
+              -33.4134
+            ],
+            [
+              -70.6971474,
+              -33.4133535
+            ],
+            [
+              -70.6968138,
+              -33.4135559
+            ],
+            [
+              -70.6964012,
+              -33.4138062
+            ],
+            [
+              -70.6963934,
+              -33.4139278
+            ],
+            [
+              -70.6963669,
+              -33.4139654
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "OSM: Parque Mapocho Río Tramo 1, way 1100975303 (ODbL 1.0)",
+        "url": "https://www.openstreetmap.org/way/1100975303"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "al perímetro del tramo 1 del parque; no al acceso",
       "publish": true
     },
     {
@@ -5635,7 +6354,7 @@
       "informationDate": "2026-10-30",
       "reviewedOn": "2026-10-31",
       "responsible": "Municipalidad de Independencia / Autopista Central / DGC MOP",
-      "locationText": "Avenida Fermín Vivaceta, Independencia",
+      "locationText": "Fermín Vivaceta con Aníbal Pinto, Independencia",
       "description": "Renovación de espacio comunitario con senderos, equipamiento inclusivo y áreas de recreación.",
       "benefit": "Podría mejorar las condiciones de uso recreativo del parque al terminar la intervención.",
       "sources": [
@@ -5650,6 +6369,12 @@
           "title": "VíasChile: inicio de obras de renovación Parque El Trébol",
           "url": "https://www.viaschile.cl/municipalidad-de-independencia-autopista-central-y-direccion-general-de-concesiones-inician-obras-para-renovar-el-parque-el-trebol/",
           "date": "2026-10-30"
+        },
+        {
+          "id": "independencia-trebol-localizacion-20230829",
+          "title": "Municipalidad: Plaza El Trébol en Aníbal Pinto con Fermín Vivaceta",
+          "url": "https://www.independencia.cl/con-jornada-infantil-en-la-plaza-el-trebol-se-da-por-finalizado-el-mes-de-la-ninez-en-independencia/",
+          "date": "2023-08-29"
         }
       ],
       "estimatedStart": "Inicio informado el 30-10-2026",
@@ -5658,12 +6383,106 @@
         "Durante las faenas puede haber restricciones de acceso, polvo y ruido."
       ],
       "uncertainties": [
-        "La fuente no fija un polígono o acceso preciso; no se confunde con la Plazoleta El Trébol de Santiago."
+        "La huella OSM corresponde al parque existente; no constituye el plano de obras ni permite confirmar futuros accesos.",
+        "El cálculo cartográfico del parque ronda 1,71 ha y el anuncio de intervención indica aproximadamente 1,8 ha; la distancia se presenta como aproximada."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.6602581,
+              -33.4291911
+            ],
+            [
+              -70.6600372,
+              -33.4292384
+            ],
+            [
+              -70.6597784,
+              -33.4292438
+            ],
+            [
+              -70.6596327,
+              -33.4292373
+            ],
+            [
+              -70.6594933,
+              -33.4292239
+            ],
+            [
+              -70.6593469,
+              -33.4292095
+            ],
+            [
+              -70.6592431,
+              -33.4291948
+            ],
+            [
+              -70.6591209,
+              -33.4291856
+            ],
+            [
+              -70.6589472,
+              -33.429189
+            ],
+            [
+              -70.6588173,
+              -33.429202
+            ],
+            [
+              -70.6588929,
+              -33.4290956
+            ],
+            [
+              -70.6592608,
+              -33.4278279
+            ],
+            [
+              -70.6598127,
+              -33.4279446
+            ],
+            [
+              -70.6602202,
+              -33.4280469
+            ],
+            [
+              -70.660408,
+              -33.4281199
+            ],
+            [
+              -70.6605092,
+              -33.4281793
+            ],
+            [
+              -70.6603109,
+              -33.4287021
+            ],
+            [
+              -70.6602748,
+              -33.4288125
+            ],
+            [
+              -70.660266,
+              -33.4289414
+            ],
+            [
+              -70.6602571,
+              -33.4290663
+            ],
+            [
+              -70.6602581,
+              -33.4291911
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "OSM: Plaza El Trébol way 323631581, huella del parque contrastada con localización municipal (ODbL 1.0)",
+        "url": "https://www.openstreetmap.org/way/323631581"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "al perímetro cartografiado del parque; no al acceso",
       "publish": true
     },
     {
@@ -5714,11 +6533,11 @@
         "Ñuñoa"
       ],
       "status": "approved",
-      "statusDetail": "RCA favorable N°202213001571, de 06-10-2022; aprobación respaldada por fallo informado el 06-06-2025.",
-      "informationDate": "2025-06-06",
+      "statusDetail": "RCA favorable N° 202213001571; estados financieros al 31-03-2026 informan cierre de la controversia judicial en julio de 2025. No se acredita ejecución vigente de la etapa II.",
+      "informationDate": "2026-03-31",
       "reviewedOn": "2026-10-31",
       "responsible": "Inmobiliaria Vivo Santiago SpA",
-      "locationText": "Avenida Vicuña Mackenna, sector estación Ñuble",
+      "locationText": "Av. Vicuña Mackenna 1958–1962–1966, predio entre Carlos Dittborn y líneas 5 y 6 de Metro; localización declarada en DIA.",
       "description": "Proyecto de centro comercial y usos complementarios evaluado ambientalmente.",
       "benefit": "Si se ejecuta, podría incorporar comercio y servicios al sector.",
       "sources": [
@@ -5733,6 +6552,18 @@
           "title": "Responsable: proyecto Vivo Santiago",
           "url": "https://www.vivosantiago.cl/",
           "date": null
+        },
+        {
+          "id": "sea-vivo-dia-20190725",
+          "title": "SEA: DIA Mall Vivo Santiago II, localización y punto representativo",
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=48%2F0f%2Fa60273e4824a6e41fc641e284b088d2622a4",
+          "date": "2019-07-25"
+        },
+        {
+          "id": "vivo-eeff20260331",
+          "title": "VIVO: estados financieros al 31-03-2026; situación societaria y cierre del proceso judicial",
+          "url": "https://www.vivospa.cl/wp-content/uploads/2026/05/EEFF-Vivo-SpA-y-filiales-31-03-2026.pdf",
+          "date": "2026-03-31"
         }
       ],
       "estimatedStart": null,
@@ -5742,12 +6573,24 @@
       ],
       "uncertainties": [
         "La aprobación ambiental no confirma financiación ni construcción actual.",
-        "No se publican fechas de apertura ni distancias sin perímetro validado."
+        "El punto de la DIA ubica el proyecto, pero no es un acceso ni delimita el predio; no acredita recorrido peatonal.",
+        "La huella OSM hallada difiere del área predial declarada. No se usa como límite aprobado ni se adoptan sus etiquetas de construcción o apertura 2030.",
+        "No se confirma fecha de apertura; el calendario de inicio de la DIA de 2019 es histórico y no se publica como vigente.",
+        "Los estados financieros reconocen obras realizadas hasta julio de 2025 sin acreditar avance material actual de la etapa II; no se reclasifica automáticamente como construcción ni financiamiento completo."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.62517028858106,
+          -33.4686155624089
+        ]
+      },
+      "geometrySource": {
+        "title": "SEA: punto representativo declarado en DIA Mall Vivo Santiago Etapa II",
+        "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=48%2F0f%2Fa60273e4824a6e41fc641e284b088d2622a4"
+      },
+      "geometryRole": "reference-point",
+      "geometryLabel": "al punto representativo declarado en la DIA; no al acceso ni al límite del predio",
       "publish": true
     },
     {
@@ -5831,6 +6674,252 @@
       "geometrySource": null,
       "geometryRole": null,
       "geometryLabel": null,
+      "publish": true
+    },
+    {
+      "id": "carol-urzua-boxes-salud",
+      "name": "Centro Carol Urzúa · nuevos boxes de atención",
+      "type": "Salud",
+      "region": "Región Metropolitana",
+      "communes": [
+        "Santiago"
+      ],
+      "status": "operational",
+      "statusDetail": "Cuatro boxes operativos; no corresponde a la reposición completa del CESFAM.",
+      "informationDate": "2026-09-23",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Municipalidad de Santiago / Dirección de Salud / CESFAM Padre Orellana",
+      "locationText": "Centro Comunitario Carol Urzúa, Santa Rosa 1727",
+      "description": "Habilitación de cuatro boxes para psicología y trabajo social en el segundo piso del centro.",
+      "benefit": "Amplía espacios de atención psicosocial para usuarios inscritos en el CESFAM Padre Orellana.",
+      "sources": [
+        {
+          "id": "carol-operacion",
+          "title": "Municipalidad: habilitación de nuevos boxes",
+          "url": "https://www.munistgo.cl/centro-comunitario-carol-urzua-habilita-nuevos-espacios-para-ampliar-la-atencion-de-salud/",
+          "date": "2026-09-23"
+        },
+        {
+          "id": "carol-direccion",
+          "title": "Municipalidad: dirección del recinto Carol Urzúa",
+          "url": "https://www.municipalidaddesantiago.cl/deporte/",
+          "date": null
+        },
+        {
+          "id": "carol-plan",
+          "title": "Dirección de Salud: Plan de Salud 2025, domicilio del CESFAM",
+          "url": "https://documentos.munistgo.cl/wp-content/uploads/2025/10/PLAN-DE-SALUD-2025.pdf",
+          "date": null
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "La cercanía no garantiza inscripción ni acceso a prestaciones; confirmar condiciones con la red municipal.",
+        "El recinto mantiene otros sectores en habilitación; no se presenta como finalización de toda la intervención."
+      ],
+      "uncertainties": [
+        "Cartografía del edificio existente, no del interior del segundo piso ni de la entrada específica a los boxes."
+      ],
+      "publish": true,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.6425275,
+              -33.4683059
+            ],
+            [
+              -70.6425739,
+              -33.4677246
+            ],
+            [
+              -70.6426767,
+              -33.4677303
+            ],
+            [
+              -70.6426704,
+              -33.4678099
+            ],
+            [
+              -70.6426476,
+              -33.4678617
+            ],
+            [
+              -70.6426438,
+              -33.46791
+            ],
+            [
+              -70.6429318,
+              -33.467926
+            ],
+            [
+              -70.6429086,
+              -33.4682169
+            ],
+            [
+              -70.6426389,
+              -33.468202
+            ],
+            [
+              -70.6426302,
+              -33.4683116
+            ],
+            [
+              -70.6425275,
+              -33.4683059
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "OpenStreetMap way 449613939, ODbL 1.0; identidad contrastada con fuente municipal",
+        "url": "https://www.openstreetmap.org/way/449613939"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "al perímetro del centro comunitario; no a los boxes ni al acceso"
+    },
+    {
+      "id": "cuatro-esquinas-etapa-1",
+      "name": "Cuatro Esquinas etapa I · Los Arrayanes entre Rapa Nui y San Ramón",
+      "type": "Puentes y vialidad",
+      "region": "Coquimbo",
+      "communes": [
+        "La Serena"
+      ],
+      "status": "awarded",
+      "statusDetail": "Contrato 894863-84-O125 adjudicado el 19-12-2025. No se atribuye a este contrato el avance de otros tramos.",
+      "informationDate": "2025-12-19",
+      "reviewedOn": "2026-10-31",
+      "responsible": "SERVIU Región de Coquimbo",
+      "locationText": "Calle Los Arrayanes entre Avenida Parque Nacional Rapa Nui y Camino San Ramón, La Serena",
+      "description": "Contrato de obra del programa Cuatro Esquinas etapa I cuyo alcance licitado identifica este segmento de Los Arrayanes.",
+      "benefit": "Podría mejorar la continuidad vial del sector cuando esté habilitado.",
+      "sources": [
+        {
+          "id": "cuatro-mp",
+          "title": "Mercado Público: contrato 894863-84-O125 adjudicado",
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=aBK5RHnEiwyc3CERSV2BGg%3D%3D",
+          "date": "2025-12-19"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "Las faenas podrían producir desvíos, polvo y ruido."
+      ],
+      "uncertainties": [
+        "No se verificó la geometría exacta del contrato ni su apertura.",
+        "El acuerdo CORE 15833 de 10-03-2026 habla de obras del programa general, sin demostrar qué segmento de este contrato se ejecutaba.",
+        "No confundir con el tramo Claude Debussy–Rapa Nui ni con una asesoría de inspección declarada desierta."
+      ],
+      "geometry": null,
+      "geometrySource": null,
+      "geometryRole": null,
+      "geometryLabel": null,
+      "publish": true
+    },
+    {
+      "id": "hospital-nuble-imagenologia",
+      "name": "Hospital Regional de Ñuble · Servicio de Imagenología",
+      "type": "Salud",
+      "region": "Ñuble",
+      "communes": [
+        "Chillán"
+      ],
+      "status": "operational",
+      "statusDetail": "Operativo solamente el Servicio de Imagenología publicado por el hospital; no se afirma apertura integral del recinto.",
+      "informationDate": "2026-10-30",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Servicio de Salud Ñuble / Hospital Clínico Herminda Martín",
+      "locationText": "Nuevo Hospital Regional, O’Higgins1651, Chillán. El operador informa ingreso de Imagenología por Rosauro Acuña.",
+      "description": "Servicio de apoyo diagnóstico habilitado dentro del nuevo hospital, con atención programada e indicación médica. La puesta en marcha del conjunto continúa por etapas.",
+      "benefit": "Amplía la disponibilidad regional de exámenes diagnósticos para usuarios de la red pública con indicación y citación.",
+      "sources": [
+        {
+          "id": "nuble-imagenologia-inauguracion",
+          "title": "Hospital Clínico Herminda Martín: apertura del primer servicio del nuevo hospital",
+          "url": "https://hospitaldechillan.cl/web/un-hito-para-la-salud-de-nuble-entra-en-funcionamiento-el-primer-servicio-del-nuevo-hospital-regional/",
+          "date": "2025-10-15"
+        },
+        {
+          "id": "nuble-imagenologia-ubicacion",
+          "title": "Operador hospitalario: Imagenología, atención y acceso por Rosauro Acuña",
+          "url": "https://hospitaldechillan.cl/web/imagenologia/",
+          "date": null
+        },
+        {
+          "id": "nuble-habilitacion-octubre",
+          "title": "Operador hospitalario: estanque oxígeno y autorización pendiente; habilitación progresiva",
+          "url": "https://hospitaldechillan.cl/web/hospital-regional-de-nuble-instala-estanque-de-oxigeno-medicinal-para-su-futura-operacion/",
+          "date": "2026-10-30"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "La publicación no acredita urgencias ni hospitalización operativas en todo el nuevo recinto.",
+        "La cercanía no garantiza una prestación: se requiere indicación médica y citación."
+      ],
+      "uncertainties": [
+        "Se mide al perímetro del recinto hospitalario, no a la puerta o sala de Imagenología.",
+        "El operador indica O’Higgins1651; OSM registra1679 para el mismo recinto. Se prioriza la dirección del operador y se conserva la diferencia como advertencia cartográfica.",
+        "La nota del30octubre informa habilitación del sistema de oxígeno aún sujeta a autorización sanitaria; no se publica fecha de apertura integral."
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.1197775,
+              -36.6194034
+            ],
+            [
+              -72.1184163,
+              -36.6206625
+            ],
+            [
+              -72.1182019,
+              -36.6207042
+            ],
+            [
+              -72.117753,
+              -36.6203987
+            ],
+            [
+              -72.1175632,
+              -36.6202464
+            ],
+            [
+              -72.1159366,
+              -36.6191193
+            ],
+            [
+              -72.1174065,
+              -36.6177243
+            ],
+            [
+              -72.1188522,
+              -36.6187402
+            ],
+            [
+              -72.1193086,
+              -36.6190759
+            ],
+            [
+              -72.1197775,
+              -36.6194034
+            ]
+          ]
+        ]
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "perímetro del nuevo recinto hospitalario que aloja Imagenología; no es la puerta del servicio",
+      "geometrySource": {
+        "title": "OpenStreetMap: Hospital Regional de Ñuble, way342881682; identidad contrastada con operador y calles",
+        "url": "https://www.openstreetmap.org/way/342881682"
+      },
       "publish": true
     }
   ],
@@ -7136,6 +8225,861 @@
         "address": "Avda. Vicuña Mackenna 1432",
         "commune": "Ñuñoa"
       }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "diagonal-paraguay",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Diagonal Paraguay 240, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.4428821,
+        "lng": -70.6369228,
+        "address": "Diagonal Paraguay 240",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "edificio-argomedo",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Argomedo 382, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.4501836,
+        "lng": -70.6377222,
+        "address": "Argomedo 382",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "edificio-living-town",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Eyzaguirre 590, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.4515517,
+        "lng": -70.6423223,
+        "address": "Eyzaguirre 590",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "vista-portugal",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Portugal 755, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.4522052,
+        "lng": -70.6344392,
+        "address": "Portugal 755",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "jofre-135",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Jofré 157, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.4445304,
+        "lng": -70.6349431,
+        "address": "Jofré 157",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "carmen-marin",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Calle Carmen 318, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.44773,
+        "lng": -70.6420988,
+        "address": "Calle Carmen 318",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "curico-77",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Curicó 77, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.4436569,
+        "lng": -70.6345946,
+        "address": "Curicó 77",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "angamos",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Angamos 205, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.4458481,
+        "lng": -70.6389369,
+        "address": "Angamos 205",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "edificio-lira-622",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Calle Lira 622, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.4506,
+        "lng": -70.638433,
+        "address": "Calle Lira 622",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "tocornal",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde Manuel Antonio Tocornal 678, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.451998,
+        "lng": -70.639441,
+        "address": "Manuel Antonio Tocornal 678",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "plaza-artesanos-900",
+      "projectSlug": "bordevivo",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Desde San Isidro 513, la plaza existente es equipamiento barrial próximo dentro del sector Santa Isabel/San Borja. La propuesta se refiere al recinto identificado por nombre y su ermita, no a un centro comunal genérico.",
+      "benefit": "La propuesta podría mejorar las opciones recreativas del barrio si se ejecuta.",
+      "cautions": [
+        "Obra en evaluación; ejecución y calendario no confirmados.",
+        "Distancia al perímetro de la plaza, no recorrido: verificar cruces y continuidad de veredas."
+      ],
+      "projectLocation": {
+        "lat": -33.450544,
+        "lng": -70.643058,
+        "address": "San Isidro 513",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "carol-urzua-boxes-salud",
+      "projectSlug": "barrio-zenteno",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Zenteno 1276 se encuentra en el entorno urbano Matta/Franklin del centro Santa Rosa 1727. Se informa cercanía territorial a un servicio de escala barrial, sin afirmar asignación sanitaria a esta dirección.",
+      "benefit": "Amplía espacios de atención psicosocial para usuarios inscritos en el CESFAM Padre Orellana.",
+      "cautions": [
+        "Requiere inscripción y coordinación de atención; proximidad no equivale a cobertura sanitaria asignada.",
+        "Distancia geográfica al edificio; revisar cruces del eje Santa Rosa y accesos efectivos, sin tiempos estimados."
+      ],
+      "projectLocation": {
+        "lat": -33.4620419,
+        "lng": -70.6502997,
+        "address": "Zenteno 1276",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "carol-urzua-boxes-salud",
+      "projectSlug": "centenario-1",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Centenario 1151 se encuentra en el entorno urbano Matta/Franklin del centro Santa Rosa 1727. Se informa cercanía territorial a un servicio de escala barrial, sin afirmar asignación sanitaria a esta dirección.",
+      "benefit": "Amplía espacios de atención psicosocial para usuarios inscritos en el CESFAM Padre Orellana.",
+      "cautions": [
+        "Requiere inscripción y coordinación de atención; proximidad no equivale a cobertura sanitaria asignada.",
+        "Distancia geográfica al edificio; revisar cruces del eje Santa Rosa y accesos efectivos, sin tiempos estimados."
+      ],
+      "projectLocation": {
+        "lat": -33.4762806,
+        "lng": -70.6484855,
+        "address": "Centenario 1151",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "carol-urzua-boxes-salud",
+      "projectSlug": "edificio-san-francisco-1204",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Calle San Francisco 1204, esquina Marina de Gaette se encuentra en el entorno urbano Matta/Franklin del centro Santa Rosa 1727. Se informa cercanía territorial a un servicio de escala barrial, sin afirmar asignación sanitaria a esta dirección.",
+      "benefit": "Amplía espacios de atención psicosocial para usuarios inscritos en el CESFAM Padre Orellana.",
+      "cautions": [
+        "Requiere inscripción y coordinación de atención; proximidad no equivale a cobertura sanitaria asignada.",
+        "Distancia geográfica al edificio; revisar cruces del eje Santa Rosa y accesos efectivos, sin tiempos estimados."
+      ],
+      "projectLocation": {
+        "lat": -33.460969,
+        "lng": -70.644888,
+        "address": "Calle San Francisco 1204, esquina Marina de Gaette",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "parque-el-trebol-independencia",
+      "projectSlug": "vivaceta",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Av. Fermín Vivaceta 864, Independencia: entorno urbano al norte del parque documentado en Vivaceta/Aníbal Pinto, sin cruce del río Mapocho. Distancia al perímetro cartografiado, no recorrido.",
+      "benefit": "La renovación podría ampliar las posibilidades de recreación del sector cuando termine.",
+      "cautions": [
+        "Revisar cruces de Vivaceta y acceso habilitado; el parque está en obras y no se garantiza uso actual.",
+        "Ruido, polvo y cierres temporales durante construcción; no se estimaron tiempos caminando."
+      ],
+      "projectLocation": {
+        "lat": -33.4222966,
+        "lng": -70.6627414,
+        "address": "Av. Fermín Vivaceta 864",
+        "commune": "Independencia"
+      }
+    },
+    {
+      "workId": "parque-el-trebol-independencia",
+      "projectSlug": "edificio-bezanilla",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Bezanilla 1278, Independencia: entorno urbano al norte del parque documentado en Vivaceta/Aníbal Pinto, sin cruce del río Mapocho. Distancia al perímetro cartografiado, no recorrido.",
+      "benefit": "La renovación podría ampliar las posibilidades de recreación del sector cuando termine.",
+      "cautions": [
+        "Revisar cruces de Vivaceta y acceso habilitado; el parque está en obras y no se garantiza uso actual.",
+        "Ruido, polvo y cierres temporales durante construcción; no se estimaron tiempos caminando."
+      ],
+      "projectLocation": {
+        "lat": -33.417717,
+        "lng": -70.657393,
+        "address": "Bezanilla 1278",
+        "commune": "Independencia"
+      }
+    },
+    {
+      "workId": "parque-el-trebol-independencia",
+      "projectSlug": "edificio-santa-maria",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Capitán Bynon 1277, Independencia: entorno urbano al norte del parque documentado en Vivaceta/Aníbal Pinto, sin cruce del río Mapocho. Distancia al perímetro cartografiado, no recorrido.",
+      "benefit": "La renovación podría ampliar las posibilidades de recreación del sector cuando termine.",
+      "cautions": [
+        "Revisar cruces de Vivaceta y acceso habilitado; el parque está en obras y no se garantiza uso actual.",
+        "Ruido, polvo y cierres temporales durante construcción; no se estimaron tiempos caminando."
+      ],
+      "projectLocation": {
+        "lat": -33.4158742,
+        "lng": -70.6653563,
+        "address": "Capitán Bynon 1277",
+        "commune": "Independencia"
+      }
+    },
+    {
+      "workId": "parque-mapocho-rio",
+      "projectSlug": "mirador-mapocho",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Mapocho 3951, Quinta Normal: proyecto y tramo 1 se ubican al sur del río; relación territorial con parque de escala comunal. El cálculo al perímetro no representa un acceso cercano.",
+      "benefit": "El tramo 1 ofrece equipamiento recreativo y áreas verdes en el sector norte de Quinta Normal.",
+      "cautions": [
+        "Distancia territorial de alrededor de dos kilómetros; no se presenta como parque a pasos ni acceso directo.",
+        "Revisar conexión con Costanera Sur y los ingresos controlados. No se midieron cruces, veredas ni recorrido peatonal."
+      ],
+      "projectLocation": {
+        "lat": -33.4323135,
+        "lng": -70.6890597,
+        "address": "Mapocho 3951",
+        "commune": "Quinta Normal"
+      }
+    },
+    {
+      "workId": "parque-mapocho-rio",
+      "projectSlug": "mapocho-3521",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Rivas Vicuña 1131, Quinta Normal: proyecto y tramo 1 se ubican al sur del río; relación territorial con parque de escala comunal. El cálculo al perímetro no representa un acceso cercano.",
+      "benefit": "El tramo 1 ofrece equipamiento recreativo y áreas verdes en el sector norte de Quinta Normal.",
+      "cautions": [
+        "Distancia territorial de alrededor de dos kilómetros; no se presenta como parque a pasos ni acceso directo.",
+        "Revisar conexión con Costanera Sur y los ingresos controlados. No se midieron cruces, veredas ni recorrido peatonal."
+      ],
+      "projectLocation": {
+        "lat": -33.432922,
+        "lng": -70.68255,
+        "address": "Rivas Vicuña 1131",
+        "commune": "Quinta Normal"
+      }
+    },
+    {
+      "workId": "mall-vivo-santiago-etapa-ii",
+      "projectSlug": "santa-elena-1670-mbi",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Santa Elena 1670: relación territorial con el proyecto comercial del sector Ñuble (poniente de Vicuña Mackenna). Se mide exclusivamente al punto representativo primario de la DIA, no a una entrada.",
+      "benefit": "Si se ejecuta, podría incorporar comercio y servicios al entorno de Ñuble; su ejecución no está confirmada en este registro.",
+      "cautions": [
+        "No se acredita acceso directo ni operación del centro comercial. Verificar cruces de Vicuña Mackenna, vías ferroviarias y pasos de Carlos Dittborn.",
+        "Posibles obras, carga vehicular y ruido deberán evaluarse según ejecución efectiva; no se atribuyen efectos medidos ni plusvalía."
+      ],
+      "projectLocation": {
+        "lat": -33.4659992,
+        "lng": -70.6282044,
+        "address": "Santa Elena 1670",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "mall-vivo-santiago-etapa-ii",
+      "projectSlug": "guillermo-mann-1401",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Guillermo Mann 1401: relación territorial con el proyecto comercial del sector Ñuble (sector oriente de Vicuña Mackenna). Se mide exclusivamente al punto representativo primario de la DIA, no a una entrada.",
+      "benefit": "Si se ejecuta, podría incorporar comercio y servicios al entorno de Ñuble; su ejecución no está confirmada en este registro.",
+      "cautions": [
+        "No se acredita acceso directo ni operación del centro comercial. Verificar cruces de Vicuña Mackenna, vías ferroviarias y pasos de Carlos Dittborn.",
+        "Posibles obras, carga vehicular y ruido deberán evaluarse según ejecución efectiva; no se atribuyen efectos medidos ni plusvalía."
+      ],
+      "projectLocation": {
+        "lat": -33.4713045,
+        "lng": -70.6185874,
+        "address": "Guillermo Mann 1401",
+        "commune": "Ñuñoa"
+      }
+    },
+    {
+      "workId": "mall-vivo-santiago-etapa-ii",
+      "projectSlug": "diagonal-vicuna",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Santa Elena 2000: relación territorial con el proyecto comercial del sector Ñuble (poniente de Vicuña Mackenna). Se mide exclusivamente al punto representativo primario de la DIA, no a una entrada.",
+      "benefit": "Si se ejecuta, podría incorporar comercio y servicios al entorno de Ñuble; su ejecución no está confirmada en este registro.",
+      "cautions": [
+        "No se acredita acceso directo ni operación del centro comercial. Verificar cruces de Vicuña Mackenna, vías ferroviarias y pasos de Carlos Dittborn.",
+        "Posibles obras, carga vehicular y ruido deberán evaluarse según ejecución efectiva; no se atribuyen efectos medidos ni plusvalía."
+      ],
+      "projectLocation": {
+        "lat": -33.4700674,
+        "lng": -70.6270063,
+        "address": "Santa Elena 2000",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "mall-vivo-santiago-etapa-ii",
+      "projectSlug": "own",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "San Eugenio 567: relación territorial con el proyecto comercial del sector Ñuble (poniente de Vicuña Mackenna). Se mide exclusivamente al punto representativo primario de la DIA, no a una entrada.",
+      "benefit": "Si se ejecuta, podría incorporar comercio y servicios al entorno de Ñuble; su ejecución no está confirmada en este registro.",
+      "cautions": [
+        "No se acredita acceso directo ni operación del centro comercial. Verificar cruces de Vicuña Mackenna, vías ferroviarias y pasos de Carlos Dittborn.",
+        "Posibles obras, carga vehicular y ruido deberán evaluarse según ejecución efectiva; no se atribuyen efectos medidos ni plusvalía."
+      ],
+      "projectLocation": {
+        "lat": -33.4575019,
+        "lng": -70.6270959,
+        "address": "San Eugenio 567",
+        "commune": "Ñuñoa"
+      }
+    },
+    {
+      "workId": "mall-vivo-santiago-etapa-ii",
+      "projectSlug": "pintor-cicarelli-i",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Pintor Cicarelli 288: relación territorial con el proyecto comercial del sector Ñuble (poniente de Vicuña Mackenna). Se mide exclusivamente al punto representativo primario de la DIA, no a una entrada.",
+      "benefit": "Si se ejecuta, podría incorporar comercio y servicios al entorno de Ñuble; su ejecución no está confirmada en este registro.",
+      "cautions": [
+        "No se acredita acceso directo ni operación del centro comercial. Verificar cruces de Vicuña Mackenna, vías ferroviarias y pasos de Carlos Dittborn.",
+        "Posibles obras, carga vehicular y ruido deberán evaluarse según ejecución efectiva; no se atribuyen efectos medidos ni plusvalía."
+      ],
+      "projectLocation": {
+        "lat": -33.476295,
+        "lng": -70.630036,
+        "address": "Pintor Cicarelli 288",
+        "commune": "San Joaquín"
+      }
+    },
+    {
+      "workId": "mall-vivo-santiago-etapa-ii",
+      "projectSlug": "pintor-cicarelli-ii",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Pintor Cicarelli 278: relación territorial con el proyecto comercial del sector Ñuble (poniente de Vicuña Mackenna). Se mide exclusivamente al punto representativo primario de la DIA, no a una entrada.",
+      "benefit": "Si se ejecuta, podría incorporar comercio y servicios al entorno de Ñuble; su ejecución no está confirmada en este registro.",
+      "cautions": [
+        "No se acredita acceso directo ni operación del centro comercial. Verificar cruces de Vicuña Mackenna, vías ferroviarias y pasos de Carlos Dittborn.",
+        "Posibles obras, carga vehicular y ruido deberán evaluarse según ejecución efectiva; no se atribuyen efectos medidos ni plusvalía."
+      ],
+      "projectLocation": {
+        "lat": -33.476109,
+        "lng": -70.62976,
+        "address": "Pintor Cicarelli 278",
+        "commune": "San Joaquín"
+      }
+    },
+    {
+      "workId": "mall-vivo-santiago-etapa-ii",
+      "projectSlug": "vitro",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Zañartu 980: relación territorial con el proyecto comercial del sector Ñuble (sector oriente de Vicuña Mackenna). Se mide exclusivamente al punto representativo primario de la DIA, no a una entrada.",
+      "benefit": "Si se ejecuta, podría incorporar comercio y servicios al entorno de Ñuble; su ejecución no está confirmada en este registro.",
+      "cautions": [
+        "No se acredita acceso directo ni operación del centro comercial. Verificar cruces de Vicuña Mackenna, vías ferroviarias y pasos de Carlos Dittborn.",
+        "Posibles obras, carga vehicular y ruido deberán evaluarse según ejecución efectiva; no se atribuyen efectos medidos ni plusvalía."
+      ],
+      "projectLocation": {
+        "lat": -33.472889,
+        "lng": -70.62207,
+        "address": "Zañartu 980",
+        "commune": "Ñuñoa"
+      }
+    },
+    {
+      "workId": "mall-vivo-santiago-etapa-ii",
+      "projectSlug": "vicuna-mackenna-1432",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Avda. Vicuña Mackenna 1432: relación territorial con el proyecto comercial del sector Ñuble (poniente de Vicuña Mackenna). Se mide exclusivamente al punto representativo primario de la DIA, no a una entrada.",
+      "benefit": "Si se ejecuta, podría incorporar comercio y servicios al entorno de Ñuble; su ejecución no está confirmada en este registro.",
+      "cautions": [
+        "No se acredita acceso directo ni operación del centro comercial. Verificar cruces de Vicuña Mackenna, vías ferroviarias y pasos de Carlos Dittborn.",
+        "Posibles obras, carga vehicular y ruido deberán evaluarse según ejecución efectiva; no se atribuyen efectos medidos ni plusvalía."
+      ],
+      "projectLocation": {
+        "lat": -33.460913,
+        "lng": -70.628035,
+        "address": "Avda. Vicuña Mackenna 1432",
+        "commune": "Ñuñoa"
+      }
+    },
+    {
+      "workId": "multifamily-cenco-florida",
+      "projectSlug": "vima",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Vivienda dentro del entorno inmediato del terreno multifamily de Cenco Florida. Su obra y mayor intensidad residencial son pertinentes para evaluar cambios locales, sin atribuir beneficios comerciales a la vivienda.",
+      "benefit": "El nuevo uso residencial podría aumentar la actividad y demanda de servicios del sector.",
+      "cautions": [
+        "La obra puede generar ruido y tránsito de construcción.",
+        "Distancia en línea recta al perímetro; no representa recorrido ni tiempo. Avenida Vicuña Mackenna y cruces del sector pueden limitar conexiones peatonales.",
+        "No se acredita un efecto sobre el valor del inmueble ni libre acceso a servicios privados."
+      ],
+      "projectLocation": {
+        "lat": -33.5105151,
+        "lng": -70.611226,
+        "address": "Vicuña Mackenna 5908",
+        "commune": "La Florida"
+      }
+    },
+    {
+      "workId": "multifamily-cenco-florida",
+      "projectSlug": "aires-la-florida-2",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Vivienda dentro del entorno inmediato del terreno multifamily de Cenco Florida. Su obra y mayor intensidad residencial son pertinentes para evaluar cambios locales, sin atribuir beneficios comerciales a la vivienda.",
+      "benefit": "El nuevo uso residencial podría aumentar la actividad y demanda de servicios del sector.",
+      "cautions": [
+        "La obra puede generar ruido y tránsito de construcción.",
+        "Distancia en línea recta al perímetro; no representa recorrido ni tiempo. Avenida Vicuña Mackenna y cruces del sector pueden limitar conexiones peatonales.",
+        "No se acredita un efecto sobre el valor del inmueble ni libre acceso a servicios privados."
+      ],
+      "projectLocation": {
+        "lat": -33.512908,
+        "lng": -70.604642,
+        "address": "Pichidegua 6422",
+        "commune": "La Florida"
+      }
+    },
+    {
+      "workId": "multifamily-cenco-florida",
+      "projectSlug": "enlace-mackenna",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Vivienda dentro del entorno inmediato del terreno multifamily de Cenco Florida. Su obra y mayor intensidad residencial son pertinentes para evaluar cambios locales, sin atribuir beneficios comerciales a la vivienda.",
+      "benefit": "El nuevo uso residencial podría aumentar la actividad y demanda de servicios del sector.",
+      "cautions": [
+        "La obra puede generar ruido y tránsito de construcción.",
+        "Distancia en línea recta al perímetro; no representa recorrido ni tiempo. Avenida Vicuña Mackenna y cruces del sector pueden limitar conexiones peatonales.",
+        "No se acredita un efecto sobre el valor del inmueble ni libre acceso a servicios privados."
+      ],
+      "projectLocation": {
+        "lat": -33.509979,
+        "lng": -70.612225,
+        "address": "Vicuña Mackenna 5889",
+        "commune": "San Joaquín"
+      }
+    },
+    {
+      "workId": "multifamily-cenco-florida",
+      "projectSlug": "entre-vicunas",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Vivienda dentro del entorno inmediato del terreno multifamily de Cenco Florida. Su obra y mayor intensidad residencial son pertinentes para evaluar cambios locales, sin atribuir beneficios comerciales a la vivienda.",
+      "benefit": "El nuevo uso residencial podría aumentar la actividad y demanda de servicios del sector.",
+      "cautions": [
+        "La obra puede generar ruido y tránsito de construcción.",
+        "Distancia en línea recta al perímetro; no representa recorrido ni tiempo. Avenida Vicuña Mackenna y cruces del sector pueden limitar conexiones peatonales.",
+        "No se acredita un efecto sobre el valor del inmueble ni libre acceso a servicios privados."
+      ],
+      "projectLocation": {
+        "lat": -33.509693,
+        "lng": -70.610467,
+        "address": "Vicuña Mackenna 5970",
+        "commune": "La Florida"
+      }
+    },
+    {
+      "workId": "multifamily-cenco-florida",
+      "projectSlug": "edificio-liverpool",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Vivienda dentro del entorno inmediato del terreno multifamily de Cenco Florida. Su obra y mayor intensidad residencial son pertinentes para evaluar cambios locales, sin atribuir beneficios comerciales a la vivienda.",
+      "benefit": "El nuevo uso residencial podría aumentar la actividad y demanda de servicios del sector.",
+      "cautions": [
+        "La obra puede generar ruido y tránsito de construcción.",
+        "Distancia en línea recta al perímetro; no representa recorrido ni tiempo. Avenida Vicuña Mackenna y cruces del sector pueden limitar conexiones peatonales.",
+        "No se acredita un efecto sobre el valor del inmueble ni libre acceso a servicios privados."
+      ],
+      "projectLocation": {
+        "lat": -33.515508,
+        "lng": -70.608732,
+        "address": "Inglaterra 60",
+        "commune": "La Florida"
+      }
+    },
+    {
+      "workId": "multifamily-cenco-florida",
+      "projectSlug": "mirador-la-florida",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Vivienda dentro del entorno inmediato del terreno multifamily de Cenco Florida. Su obra y mayor intensidad residencial son pertinentes para evaluar cambios locales, sin atribuir beneficios comerciales a la vivienda.",
+      "benefit": "El nuevo uso residencial podría aumentar la actividad y demanda de servicios del sector.",
+      "cautions": [
+        "La obra puede generar ruido y tránsito de construcción.",
+        "Distancia en línea recta al perímetro; no representa recorrido ni tiempo. Avenida Vicuña Mackenna y cruces del sector pueden limitar conexiones peatonales.",
+        "No se acredita un efecto sobre el valor del inmueble ni libre acceso a servicios privados."
+      ],
+      "projectLocation": {
+        "lat": -33.5118008,
+        "lng": -70.6099463,
+        "address": "Eugenia 8",
+        "commune": "La Florida"
+      }
+    },
+    {
+      "workId": "parque-san-joaquin-serena",
+      "projectSlug": "alto-san-joaquin",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Proyecto y parque se sitúan en el sector San Joaquín; distancia calculada al perímetro cartografiado de los dos sectores, contrastado con límites oficiales.",
+      "benefit": "Podría ampliar las alternativas de recreación del sector una vez habilitado.",
+      "cautions": [
+        "No se ha verificado recorrido ni acceso; las calles y el relieve pueden alterar la distancia real.",
+        "Durante las obras puede haber ruido, polvo y circulación de maquinaria."
+      ],
+      "projectLocation": {
+        "lat": -29.921731,
+        "lng": -71.243897,
+        "address": "Benito Rebolledo esquina San Joaquín",
+        "commune": "La Serena"
+      }
+    },
+    {
+      "workId": "chinchorro-etapa2",
+      "projectSlug": "nucleo-costanera",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El proyecto está al sur del tramo, en el mismo corredor costero de Arica. DOP fija Buenos Aires como límite sur; se mide sólo al cruce Buenos Aires–Raúl Pey identificado en OSM y en la licitación.",
+      "benefit": "La renovación ofrece espacios de paseo y recreación en el corredor costero al norte del proyecto.",
+      "cautions": [
+        "La cifra es hasta el cruce de referencia del extremo sur, no una distancia mínima a toda la obra ni a un acceso.",
+        "No se ha verificado recorrido peatonal, cruces ni accesibilidad desde el edificio.",
+        "Puede haber mayor afluencia y actividad recreativa."
+      ],
+      "projectLocation": {
+        "lat": -18.467667,
+        "lng": -70.307266,
+        "address": "Presbítero Ramírez 110",
+        "commune": "Arica"
+      }
+    },
+    {
+      "workId": "chinchorro-etapa2",
+      "projectSlug": "wayra",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El proyecto está al sur del tramo, en el mismo corredor costero de Arica. DOP fija Buenos Aires como límite sur; se mide sólo al cruce Buenos Aires–Raúl Pey identificado en OSM y en la licitación.",
+      "benefit": "La renovación ofrece espacios de paseo y recreación en el corredor costero al norte del proyecto.",
+      "cautions": [
+        "La cifra es hasta el cruce de referencia del extremo sur, no una distancia mínima a toda la obra ni a un acceso.",
+        "No se ha verificado recorrido peatonal, cruces ni accesibilidad desde el edificio.",
+        "Puede haber mayor afluencia y actividad recreativa."
+      ],
+      "projectLocation": {
+        "lat": -18.466732,
+        "lng": -70.307481,
+        "address": "Avenida Ing. Raúl Pey Casado 2125",
+        "commune": "Arica"
+      }
+    },
+    {
+      "workId": "chinchorro-etapa2",
+      "projectSlug": "lamara",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El proyecto está al sur del tramo, en el mismo corredor costero de Arica. DOP fija Buenos Aires como límite sur; se mide sólo al cruce Buenos Aires–Raúl Pey identificado en OSM y en la licitación.",
+      "benefit": "La renovación ofrece espacios de paseo y recreación en el corredor costero al norte del proyecto.",
+      "cautions": [
+        "La cifra es hasta el cruce de referencia del extremo sur, no una distancia mínima a toda la obra ni a un acceso.",
+        "No se ha verificado recorrido peatonal, cruces ni accesibilidad desde el edificio.",
+        "Puede haber mayor afluencia y actividad recreativa."
+      ],
+      "projectLocation": {
+        "lat": -18.465752,
+        "lng": -70.30626,
+        "address": "Avenida Ing. Raúl Pey Casado 2125",
+        "commune": "Arica"
+      }
+    },
+    {
+      "workId": "hospital-puerto-varas",
+      "projectSlug": "inn-puerto-chico",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los inmuebles se ubican en el área urbana de Puerto Varas, parte del ámbito asistencial documentado. Se mide al predio hospitalario exacto de la RCA, sin usar el centro de la comuna.",
+      "benefit": "Podría ampliar la oferta hospitalaria de Puerto Varas cuando sea habilitado para atender.",
+      "cautions": [
+        "Obra en construcción: la cercanía no garantiza acceso a prestaciones ni una fecha de apertura.",
+        "Distancia en línea recta al recinto; acceso proyectado por Padre José Neudorfer/Las Bandurrias, sin recorrido ni tiempo calculado."
+      ],
+      "projectLocation": {
+        "lat": -41.3260186,
+        "lng": -72.9704819,
+        "address": "Vicente Pérez Rosales 991",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "hospital-puerto-varas",
+      "projectSlug": "edificio-indigo",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los inmuebles se ubican en el área urbana de Puerto Varas, parte del ámbito asistencial documentado. Se mide al predio hospitalario exacto de la RCA, sin usar el centro de la comuna.",
+      "benefit": "Podría ampliar la oferta hospitalaria de Puerto Varas cuando sea habilitado para atender.",
+      "cautions": [
+        "Obra en construcción: la cercanía no garantiza acceso a prestaciones ni una fecha de apertura.",
+        "Distancia en línea recta al recinto; acceso proyectado por Padre José Neudorfer/Las Bandurrias, sin recorrido ni tiempo calculado."
+      ],
+      "projectLocation": {
+        "lat": -41.3238301,
+        "lng": -72.9743099,
+        "address": "Imperial 645",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "hospital-puerto-varas",
+      "projectSlug": "edificio-nordico",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los inmuebles se ubican en el área urbana de Puerto Varas, parte del ámbito asistencial documentado. Se mide al predio hospitalario exacto de la RCA, sin usar el centro de la comuna.",
+      "benefit": "Podría ampliar la oferta hospitalaria de Puerto Varas cuando sea habilitado para atender.",
+      "cautions": [
+        "Obra en construcción: la cercanía no garantiza acceso a prestaciones ni una fecha de apertura.",
+        "Distancia en línea recta al recinto; acceso proyectado por Padre José Neudorfer/Las Bandurrias, sin recorrido ni tiempo calculado."
+      ],
+      "projectLocation": {
+        "lat": -41.3196546,
+        "lng": -72.9811797,
+        "address": "Del Rosario esquina Mirador",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "parque-costanera-puerto-varas",
+      "projectSlug": "inn-puerto-chico",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los proyectos están en Puerto Varas junto al eje Imperial y su conexión central. La DOP identifica expresamente la esquina Imperial/Pérez Rosales como comienzo de la intervención. Distancia al extremo inicial, no al tramo más próximo.",
+      "benefit": "Podría mejorar el espacio público y los accesos a la playa urbana del sector.",
+      "cautions": [
+        "Durante la construcción puede haber cierres, ruido y restricciones al borde lacustre.",
+        "Medición en línea recta a la esquina de referencia; no acredita una ruta peatonal abierta."
+      ],
+      "projectLocation": {
+        "lat": -41.3260186,
+        "lng": -72.9704819,
+        "address": "Vicente Pérez Rosales 991",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "parque-costanera-puerto-varas",
+      "projectSlug": "edificio-indigo",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los proyectos están en Puerto Varas junto al eje Imperial y su conexión central. La DOP identifica expresamente la esquina Imperial/Pérez Rosales como comienzo de la intervención. Distancia al extremo inicial, no al tramo más próximo.",
+      "benefit": "Podría mejorar el espacio público y los accesos a la playa urbana del sector.",
+      "cautions": [
+        "Durante la construcción puede haber cierres, ruido y restricciones al borde lacustre.",
+        "Medición en línea recta a la esquina de referencia; no acredita una ruta peatonal abierta."
+      ],
+      "projectLocation": {
+        "lat": -41.3238301,
+        "lng": -72.9743099,
+        "address": "Imperial 645",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "parque-costanera-puerto-varas",
+      "projectSlug": "edificio-nordico",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los proyectos están en Puerto Varas junto al eje Imperial y su conexión central. La DOP identifica expresamente la esquina Imperial/Pérez Rosales como comienzo de la intervención. Distancia al extremo inicial, no al tramo más próximo.",
+      "benefit": "Podría mejorar el espacio público y los accesos a la playa urbana del sector.",
+      "cautions": [
+        "Durante la construcción puede haber cierres, ruido y restricciones al borde lacustre.",
+        "Medición en línea recta a la esquina de referencia; no acredita una ruta peatonal abierta."
+      ],
+      "projectLocation": {
+        "lat": -41.3196546,
+        "lng": -72.9811797,
+        "address": "Del Rosario esquina Mirador",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "cochrane-acceso-oriente",
+      "projectSlug": "edificio-bold",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Chacabuco637 pertenece a la malla del centro de Valdivia, al norte del extremo Lord Cochrane/Serrano del acceso vial proyectado. Se verifica el extremo del contrato, no se supone un puente construido ni una conexión habilitada a Isla Teja.",
+      "benefit": "Si se ejecuta, podría mejorar la vialidad del sector hacia el futuro cruce Cochrane.",
+      "cautions": [
+        "Licitación no equivale a adjudicación o construcción; el puente principal tiene un proceso separado.",
+        "Posibles desvíos y tránsito de faenas si comienzan los trabajos. No se calculó recorrido ni tiempo."
+      ],
+      "projectLocation": {
+        "lat": -39.813949,
+        "lng": -73.240792,
+        "address": "Chacabuco 637",
+        "commune": "Valdivia"
+      }
+    },
+    {
+      "workId": "hospital-nuble-imagenologia",
+      "projectSlug": "distrito-centro",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "O’Higgins1125 y el nuevo recinto de O’Higgins1651 se sitúan en el mismo eje urbano. Se contrastó la huella del hospital con la dirección del operador; la prestación verificada se limita a Imagenología.",
+      "benefit": "Ofrece un servicio de diagnóstico por imágenes en el eje O’Higgins, sujeto a indicación y citación de la red pública.",
+      "cautions": [
+        "La distancia es al recinto, no al ingreso del servicio por Rosauro Acuña.",
+        "No se afirma que todo el hospital esté operativo ni se estima tiempo caminando."
+      ],
+      "projectLocation": {
+        "lat": -36.6125938,
+        "lng": -72.1111741,
+        "address": "O´Higgins 1125",
+        "commune": "Chillán"
+      }
+    },
+    {
+      "workId": "metro-linea-8",
+      "projectSlug": "gregorio-de-la-fuente-a",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Proyecto al norponiente del acceso E08 documentado, dentro del sector Macul/Quilín. La relación se mide al acceso futuro, no al trazado subterráneo.",
+      "benefit": "Si se ejecuta y habilita, este acceso podría ampliar las alternativas de transporte del sector. La ejecución no está confirmada en este registro.",
+      "cautions": [
+        "Av. Macul separa el inmueble del acceso oriente; deben verificarse cruces habilitados y continuidad de veredas. No se establece ruta peatonal.",
+        "La construcción eventual podría implicar desvíos y molestias temporales; no se atribuye un aumento de valor a la vivienda."
+      ],
+      "projectLocation": {
+        "lat": -33.4781519,
+        "lng": -70.6012424,
+        "address": "Gregorio de la Fuente 3011",
+        "commune": "Macul"
+      }
+    },
+    {
+      "workId": "metro-linea-8",
+      "projectSlug": "jardines-de-ramon-cruz",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Proyecto del sector Ramón Cruz/Quilín al oriente del acceso E08 documentado. Distancia geográfica al acceso futuro, sin inferir recorrido caminable.",
+      "benefit": "Si se ejecuta y habilita, este acceso podría ampliar las alternativas de transporte del sector. La ejecución no está confirmada en este registro.",
+      "cautions": [
+        "Las manzanas y cruces del sector pueden aumentar el recorrido respecto de la línea recta; no se verificó accesibilidad universal ni tiempo de viaje.",
+        "La construcción eventual podría implicar desvíos y molestias temporales; no se atribuye un aumento de valor a la vivienda."
+      ],
+      "projectLocation": {
+        "lat": -33.4857091,
+        "lng": -70.5854856,
+        "address": "Ramón Cruz 3291",
+        "commune": "Macul"
+      }
     }
   ],
   "research": {
@@ -7148,12 +9092,13 @@
       "reserva-mayor-2",
       "vicuna-mackenna-7589"
     ],
-    "projectsWithRelationships": 59,
+    "projectsWithRelationships": 84,
     "outcomes": {
-      "reviewed_no_verified": 67,
-      "reviewed_verified": 59,
-      "location_blocked": 5
+      "reviewed_verified": 84,
+      "location_blocked": 5,
+      "reviewed_no_verified": 42
     },
-    "method": "Búsqueda documental por comuna y sector, evaluación individual de dirección y candidatos. No equivale a un inventario universal de inversiones ni a una inspección de terreno."
+    "method": "Búsqueda documental por comuna y sector, evaluación individual de dirección y candidatos. No equivale a un inventario universal de inversiones ni a una inspección de terreno.",
+    "supplementaryReview": "2026-10-31: fuentes adicionales, coordenadas y asociaciones; ver docs/entorno-ampliacion-20261031."
   }
 }

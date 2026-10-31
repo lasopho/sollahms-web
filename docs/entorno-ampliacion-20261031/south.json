@@ -1,0 +1,509 @@
+{
+  "updatedWorks": [
+    {
+      "id": "hospital-puerto-varas",
+      "name": "Nuevo Hospital de Puerto Varas",
+      "type": "Salud",
+      "region": "Los Lagos",
+      "communes": [
+        "Puerto Varas"
+      ],
+      "status": "construction",
+      "statusDetail": "",
+      "informationDate": "2026-10-15",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Minsal / Servicio de Salud del Reloncaví / Dirección General de Concesiones",
+      "locationText": "Av. Padre José Neudorfer, vereda oriente, al sur de Las Bandurrias. Predio rol1404-132.",
+      "description": "Hospital en construcción confirmado por el Plan de Inversiones Minsal.",
+      "benefit": "Podría ampliar la oferta hospitalaria local cuando obtenga las autorizaciones y comience a atender.",
+      "sources": [
+        {
+          "id": "hospital-pv-minsal",
+          "title": "Minsal: construcción Hospital Puerto Varas, avance septiembre2026",
+          "url": "https://plandeinversionesensalud.minsal.cl/hospital-de-puerto-varas/",
+          "date": "2026-09"
+        },
+        {
+          "id": "hospital-pv-visita",
+          "title": "El Heraldo Austral: visita del Servicio de Salud a las obras (apoyo)",
+          "url": "https://eha.cl/noticia/local/servicio-de-salud-del-reloncavi-constata-avance-del-55-en-construccion-del-hospital-puerto-varas",
+          "date": "2026-10-15"
+        },
+        {
+          "id": "hospital-pv-rca-geometry",
+          "title": "SEA: RCA115/2020, ubicación y cinco vértices del recinto, p4",
+          "url": "https://firma.sea.gob.cl/publicaciones/72/f8/2148881741.pdf",
+          "date": "2020-11-09"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "Las obras pueden generar tránsito de faenas y alteraciones locales."
+      ],
+      "uncertainties": [
+        "La fuente primaria informa avance a septiembre2026, sin día específico. La fecha de información corresponde al apoyo periodístico del15octubre sobre visita del Servicio de Salud.",
+        "No se publica una fecha de apertura; avances constructivos no equivalen a habilitación sanitaria.",
+        "La medición usa el recinto aprobado; no identifica un acceso público operativo ni un recorrido peatonal."
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.98670375668898,
+              -41.33116990936655
+            ],
+            [
+              -72.98345942715855,
+              -41.33107832434935
+            ],
+            [
+              -72.98367846064596,
+              -41.32947409878067
+            ],
+            [
+              -72.98578773559848,
+              -41.32953377835321
+            ],
+            [
+              -72.98593012807054,
+              -41.32959795103514
+            ],
+            [
+              -72.98670375668898,
+              -41.33116990936655
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "title": "SEA: RCA115/2020, tabla4.2 y plano página4; vértices UTM WGS84 huso18S convertidos a WGS84",
+        "url": "https://firma.sea.gob.cl/publicaciones/72/f8/2148881741.pdf"
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "perímetro del recinto hospitalario aprobado en RCA; no es distancia a una entrada",
+      "publish": true
+    },
+    {
+      "id": "parque-costanera-puerto-varas",
+      "name": "Parque Costanera · Playa Urbana Puerto Varas",
+      "type": "Parques y espacio público",
+      "region": "Los Lagos",
+      "communes": [
+        "Puerto Varas"
+      ],
+      "status": "construction",
+      "statusDetail": "",
+      "informationDate": "2026-07-13",
+      "reviewedOn": "2026-10-31",
+      "responsible": "MOP / Dirección de Obras Portuarias / Constructora BAPER S.A.",
+      "locationText": "Entre Punta de Diamantes y humedal Marina Sur, borde de Avenida Vicente Pérez Rosales",
+      "description": "Recuperación del borde lacustre con paseos, miradores y accesos a la playa.",
+      "benefit": "Podría ampliar el espacio público y la accesibilidad del borde lacustre.",
+      "sources": [
+        {
+          "id": "costanera-pv-inicio",
+          "title": "DOP: inicio de construcción Parque Costanera Puerto Varas",
+          "url": "https://dop.mop.gob.cl/2026/07/13/mop-da-inicio-a-la-construccion-del-nuevo-parque-costanera-en-puerto-varas/",
+          "date": "2026-07-13"
+        },
+        {
+          "id": "costanera-pv-cierres",
+          "title": "Municipalidad Puerto Varas: inicio de obras y restricciones de uso",
+          "url": "https://www.ptovaras.cl/noticias/puerto-varas-inicia-historica-transformacion-de-su-borde-lacustre-con-inversion-de-9700-millones",
+          "date": "2026-07"
+        },
+        {
+          "id": "costanera-pv-extremos",
+          "title": "DOP: extremos de intervención y adjudicación",
+          "url": "https://dop.mop.gob.cl/2026/05/07/contraloria-dio-el-visto-bueno-para-la-adjudicacion-del-proyecto-de-mejoramiento-de-la-costanera-de-puerto-varas/",
+          "date": "2026-05-07"
+        }
+      ],
+      "estimatedStart": "Inicio contractual:6mayo2026; entrega de terreno:15junio2026 (DOP).",
+      "estimatedEnd": null,
+      "cautions": [
+        "Durante las faenas hay cierres de acera y restricciones de acceso a la playa en sectores intervenidos.",
+        "La circulación vial se informa mantenida, sujeta a cambios de obra."
+      ],
+      "uncertainties": [
+        "Tramo y accesos no vectorizados con precisión suficiente: sin marcador ni relaciones calculadas.",
+        "No se convierte el plazo contractual en una fecha garantizada de apertura.",
+        "Se georreferencia solamente el extremo inicial documentado, no se dibuja un polígono de obras ni se interpreta como un acceso actualmente habilitado."
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.9719816,
+          -41.3251885
+        ]
+      },
+      "geometrySource": {
+        "title": "DOP identifica Punta Diamantes en Pérez Rosales/Imperial; nodo OSM2747295009 de la intersección",
+        "url": "https://www.openstreetmap.org/node/2747295009"
+      },
+      "geometryRole": "intersection-reference",
+      "geometryLabel": "esquina Vicente Pérez Rosales/Imperial, referencia al inicio del tramo; no es distancia al punto más cercano del parque",
+      "publish": true
+    },
+    {
+      "id": "cochrane-acceso-oriente",
+      "name": "Puente Cochrane · acceso vial oriente",
+      "type": "Puentes y vialidad",
+      "region": "Los Ríos",
+      "communes": [
+        "Valdivia"
+      ],
+      "status": "tender",
+      "statusDetail": "Acceso oriente en licitación; no el puente completo",
+      "informationDate": "2026-07-23",
+      "reviewedOn": "2026-10-31",
+      "responsible": "SERVIU Los Ríos",
+      "locationText": "Calle Cochrane hasta Serrano, sector Barrios Bajos, Valdivia. El punto representa el extremo vial oriente.",
+      "description": "Licitación5751-25-O126 para obras viales del acceso oriente.",
+      "benefit": "Podría contribuir a la conexión con Isla Teja si se materializa el conjunto de obras.",
+      "sources": [
+        {
+          "id": "cochrane-licitacion",
+          "title": "Mercado Público: licitación 5751-25-O126 acceso oriente",
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=WXMAH3ZWCTOe2aFFuPIWig%3D%3D",
+          "date": "2026-07-23"
+        },
+        {
+          "id": "cochrane-estudio",
+          "title": "DPR Los Ríos: sondajes de diseño y contratos complementarios",
+          "url": "https://dprlosrios.dpr.gob.cl/noticias/autoridades-regionales-anuncian-inicio-de-sondajes-geotecnicos-para-el-puente-cochrane-en-valdivia/",
+          "date": "2026-02-26"
+        },
+        {
+          "id": "cochrane-senado-alcance",
+          "title": "MOP/MINVU ante Comisión de Obras Públicas del Senado: ámbito de acceso oriente, p6",
+          "url": "https://microservicio-documentos.senado.cl/v1/archivos/0dc3f84f-9fe7-4d10-a9a0-460c14277333?includeContent=true",
+          "date": "2025-08-21"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "Futuras obras podrían generar desvíos y tránsito en Barrios Bajos."
+      ],
+      "uncertainties": [
+        "El puente principal está sujeto a actualización de ingeniería; licitar un acceso no confirma construcción de todo el puente.",
+        "Mercado Público muestra cierre17noviembre2026; fechas futuras de adjudicación son programadas, no hechos cumplidos.",
+        "Ámbito vial documentado por MOP/MINVU; el punto es una intersección de referencia, no la huella total de la futura obra."
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.2462502,
+          -39.8192744
+        ]
+      },
+      "geometrySource": {
+        "title": "OSM nodo1194228688, intersección de ways103425264 Serrano y28199236 Lord Cochrane",
+        "url": "https://www.openstreetmap.org/node/1194228688"
+      },
+      "geometryRole": "intersection-reference",
+      "geometryLabel": "esquina Lord Cochrane/Serrano, extremo oriente documentado; no es el puente ni su acceso fluvial",
+      "publish": true
+    }
+  ],
+  "newWorks": [
+    {
+      "id": "hospital-nuble-imagenologia",
+      "name": "Hospital Regional de Ñuble · Servicio de Imagenología",
+      "type": "Salud",
+      "region": "Ñuble",
+      "communes": [
+        "Chillán"
+      ],
+      "status": "operational",
+      "statusDetail": "Operativo solamente el Servicio de Imagenología publicado por el hospital; no se afirma apertura integral del recinto.",
+      "informationDate": "2026-10-30",
+      "reviewedOn": "2026-10-31",
+      "responsible": "Servicio de Salud Ñuble / Hospital Clínico Herminda Martín",
+      "locationText": "Nuevo Hospital Regional, O’Higgins1651, Chillán. El operador informa ingreso de Imagenología por Rosauro Acuña.",
+      "description": "Servicio de apoyo diagnóstico habilitado dentro del nuevo hospital, con atención programada e indicación médica. La puesta en marcha del conjunto continúa por etapas.",
+      "benefit": "Amplía la disponibilidad regional de exámenes diagnósticos para usuarios de la red pública con indicación y citación.",
+      "sources": [
+        {
+          "id": "nuble-imagenologia-inauguracion",
+          "title": "Hospital Clínico Herminda Martín: apertura del primer servicio del nuevo hospital",
+          "url": "https://hospitaldechillan.cl/web/un-hito-para-la-salud-de-nuble-entra-en-funcionamiento-el-primer-servicio-del-nuevo-hospital-regional/",
+          "date": "2025-10-15"
+        },
+        {
+          "id": "nuble-imagenologia-ubicacion",
+          "title": "Operador hospitalario: Imagenología, atención y acceso por Rosauro Acuña",
+          "url": "https://hospitaldechillan.cl/web/imagenologia/",
+          "date": null
+        },
+        {
+          "id": "nuble-habilitacion-octubre",
+          "title": "Operador hospitalario: estanque oxígeno y autorización pendiente; habilitación progresiva",
+          "url": "https://hospitaldechillan.cl/web/hospital-regional-de-nuble-instala-estanque-de-oxigeno-medicinal-para-su-futura-operacion/",
+          "date": "2026-10-30"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "cautions": [
+        "La publicación no acredita urgencias ni hospitalización operativas en todo el nuevo recinto.",
+        "La cercanía no garantiza una prestación: se requiere indicación médica y citación."
+      ],
+      "uncertainties": [
+        "Se mide al perímetro del recinto hospitalario, no a la puerta o sala de Imagenología.",
+        "El operador indica O’Higgins1651; OSM registra1679 para el mismo recinto. Se prioriza la dirección del operador y se conserva la diferencia como advertencia cartográfica.",
+        "La nota del30octubre informa habilitación del sistema de oxígeno aún sujeta a autorización sanitaria; no se publica fecha de apertura integral."
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.1197775,
+              -36.6194034
+            ],
+            [
+              -72.1184163,
+              -36.6206625
+            ],
+            [
+              -72.1182019,
+              -36.6207042
+            ],
+            [
+              -72.117753,
+              -36.6203987
+            ],
+            [
+              -72.1175632,
+              -36.6202464
+            ],
+            [
+              -72.1159366,
+              -36.6191193
+            ],
+            [
+              -72.1174065,
+              -36.6177243
+            ],
+            [
+              -72.1188522,
+              -36.6187402
+            ],
+            [
+              -72.1193086,
+              -36.6190759
+            ],
+            [
+              -72.1197775,
+              -36.6194034
+            ]
+          ]
+        ]
+      },
+      "geometryRole": "footprint",
+      "geometryLabel": "perímetro del nuevo recinto hospitalario que aloja Imagenología; no es la puerta del servicio",
+      "geometrySource": {
+        "title": "OpenStreetMap: Hospital Regional de Ñuble, way342881682; identidad contrastada con operador y calles",
+        "url": "https://www.openstreetmap.org/way/342881682"
+      },
+      "publish": true
+    }
+  ],
+  "relationships": [
+    {
+      "workId": "hospital-puerto-varas",
+      "projectSlug": "inn-puerto-chico",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los inmuebles se ubican en el área urbana de Puerto Varas, parte del ámbito asistencial documentado. Se mide al predio hospitalario exacto de la RCA, sin usar el centro de la comuna.",
+      "benefit": "Podría ampliar la oferta hospitalaria de Puerto Varas cuando sea habilitado para atender.",
+      "cautions": [
+        "Obra en construcción: la cercanía no garantiza acceso a prestaciones ni una fecha de apertura.",
+        "Distancia en línea recta al recinto; acceso proyectado por Padre José Neudorfer/Las Bandurrias, sin recorrido ni tiempo calculado."
+      ],
+      "projectLocation": {
+        "lat": -41.3260186,
+        "lng": -72.9704819,
+        "address": "Vicente Pérez Rosales 991",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "hospital-puerto-varas",
+      "projectSlug": "edificio-indigo",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los inmuebles se ubican en el área urbana de Puerto Varas, parte del ámbito asistencial documentado. Se mide al predio hospitalario exacto de la RCA, sin usar el centro de la comuna.",
+      "benefit": "Podría ampliar la oferta hospitalaria de Puerto Varas cuando sea habilitado para atender.",
+      "cautions": [
+        "Obra en construcción: la cercanía no garantiza acceso a prestaciones ni una fecha de apertura.",
+        "Distancia en línea recta al recinto; acceso proyectado por Padre José Neudorfer/Las Bandurrias, sin recorrido ni tiempo calculado."
+      ],
+      "projectLocation": {
+        "lat": -41.3238301,
+        "lng": -72.9743099,
+        "address": "Imperial 645",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "hospital-puerto-varas",
+      "projectSlug": "edificio-nordico",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los inmuebles se ubican en el área urbana de Puerto Varas, parte del ámbito asistencial documentado. Se mide al predio hospitalario exacto de la RCA, sin usar el centro de la comuna.",
+      "benefit": "Podría ampliar la oferta hospitalaria de Puerto Varas cuando sea habilitado para atender.",
+      "cautions": [
+        "Obra en construcción: la cercanía no garantiza acceso a prestaciones ni una fecha de apertura.",
+        "Distancia en línea recta al recinto; acceso proyectado por Padre José Neudorfer/Las Bandurrias, sin recorrido ni tiempo calculado."
+      ],
+      "projectLocation": {
+        "lat": -41.3196546,
+        "lng": -72.9811797,
+        "address": "Del Rosario esquina Mirador",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "parque-costanera-puerto-varas",
+      "projectSlug": "inn-puerto-chico",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los proyectos están en Puerto Varas junto al eje Imperial y su conexión central. La DOP identifica expresamente la esquina Imperial/Pérez Rosales como comienzo de la intervención. Distancia al extremo inicial, no al tramo más próximo.",
+      "benefit": "Podría mejorar el espacio público y los accesos a la playa urbana del sector.",
+      "cautions": [
+        "Durante la construcción puede haber cierres, ruido y restricciones al borde lacustre.",
+        "Medición en línea recta a la esquina de referencia; no acredita una ruta peatonal abierta."
+      ],
+      "projectLocation": {
+        "lat": -41.3260186,
+        "lng": -72.9704819,
+        "address": "Vicente Pérez Rosales 991",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "parque-costanera-puerto-varas",
+      "projectSlug": "edificio-indigo",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los proyectos están en Puerto Varas junto al eje Imperial y su conexión central. La DOP identifica expresamente la esquina Imperial/Pérez Rosales como comienzo de la intervención. Distancia al extremo inicial, no al tramo más próximo.",
+      "benefit": "Podría mejorar el espacio público y los accesos a la playa urbana del sector.",
+      "cautions": [
+        "Durante la construcción puede haber cierres, ruido y restricciones al borde lacustre.",
+        "Medición en línea recta a la esquina de referencia; no acredita una ruta peatonal abierta."
+      ],
+      "projectLocation": {
+        "lat": -41.3238301,
+        "lng": -72.9743099,
+        "address": "Imperial 645",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "parque-costanera-puerto-varas",
+      "projectSlug": "edificio-nordico",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Los proyectos están en Puerto Varas junto al eje Imperial y su conexión central. La DOP identifica expresamente la esquina Imperial/Pérez Rosales como comienzo de la intervención. Distancia al extremo inicial, no al tramo más próximo.",
+      "benefit": "Podría mejorar el espacio público y los accesos a la playa urbana del sector.",
+      "cautions": [
+        "Durante la construcción puede haber cierres, ruido y restricciones al borde lacustre.",
+        "Medición en línea recta a la esquina de referencia; no acredita una ruta peatonal abierta."
+      ],
+      "projectLocation": {
+        "lat": -41.3196546,
+        "lng": -72.9811797,
+        "address": "Del Rosario esquina Mirador",
+        "commune": "Puerto Varas"
+      }
+    },
+    {
+      "workId": "cochrane-acceso-oriente",
+      "projectSlug": "edificio-bold",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "Chacabuco637 pertenece a la malla del centro de Valdivia, al norte del extremo Lord Cochrane/Serrano del acceso vial proyectado. Se verifica el extremo del contrato, no se supone un puente construido ni una conexión habilitada a Isla Teja.",
+      "benefit": "Si se ejecuta, podría mejorar la vialidad del sector hacia el futuro cruce Cochrane.",
+      "cautions": [
+        "Licitación no equivale a adjudicación o construcción; el puente principal tiene un proceso separado.",
+        "Posibles desvíos y tránsito de faenas si comienzan los trabajos. No se calculó recorrido ni tiempo."
+      ],
+      "projectLocation": {
+        "lat": -39.813949,
+        "lng": -73.240792,
+        "address": "Chacabuco 637",
+        "commune": "Valdivia"
+      }
+    },
+    {
+      "workId": "hospital-nuble-imagenologia",
+      "projectSlug": "distrito-centro",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "O’Higgins1125 y el nuevo recinto de O’Higgins1651 se sitúan en el mismo eje urbano. Se contrastó la huella del hospital con la dirección del operador; la prestación verificada se limita a Imagenología.",
+      "benefit": "Ofrece un servicio de diagnóstico por imágenes en el eje O’Higgins, sujeto a indicación y citación de la red pública.",
+      "cautions": [
+        "La distancia es al recinto, no al ingreso del servicio por Rosauro Acuña.",
+        "No se afirma que todo el hospital esté operativo ni se estima tiempo caminando."
+      ],
+      "projectLocation": {
+        "lat": -36.6125938,
+        "lng": -72.1111741,
+        "address": "O´Higgins 1125",
+        "commune": "Chillán"
+      }
+    }
+  ],
+  "resolvedPendingIds": [],
+  "stillPending": [
+    {
+      "workId": "parque-metropolitano-puerto-montt",
+      "reason": "Se revisaron delimitación municipal, licitación de diseño656-12-LQ19 y documentación territorial GORE. No se recuperó plano georreferenciado del terreno de42.841m²; no se convierte el cuadrante de calles en una huella inventada. Se conserva estado aprobado del acuerdo, sin nueva asociación.",
+      "sources": [
+        {
+          "id": "pmet-terreno",
+          "title": "Municipalidad: cuadrante y superficie del parque",
+          "url": "https://www.puertomontt.cl/minvu-confirma-inicio-de-obras-para-el-parque-metropolitano-sebastian-pinera/",
+          "date": "2026-03-26"
+        },
+        {
+          "id": "pmet-diseño",
+          "title": "Mercado Público: diseño656-12-LQ19, no ejecución",
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=Z+9q+ZhBQvynw7F%2FpXr1Hw%3D%3D",
+          "date": "2019-04-04"
+        }
+      ]
+    },
+    {
+      "workId": "hospital-nuble-integral",
+      "reason": "Se resuelve solamente operación de Imagenología. Apertura integral permanece no comprobada. El micrositio nuevohospital mostró versiones con avisos/fechas contradictorios y campos pendientes de validar, por lo que se excluye como evidencia suficiente de traslado completo.",
+      "sources": [
+        {
+          "id": "nuble-habilitacion-octubre",
+          "title": "Operador hospitalario: estanque oxígeno y autorización pendiente; habilitación progresiva",
+          "url": "https://hospitaldechillan.cl/web/hospital-regional-de-nuble-instala-estanque-de-oxigeno-medicinal-para-su-futura-operacion/",
+          "date": "2026-10-30"
+        },
+        {
+          "id": "nuble-micrositio",
+          "title": "Micrositio oficial de apertura progresiva; información inconsistente consultada",
+          "url": "https://hospitaldechillan.cl/web/nuevohospital/",
+          "date": null
+        }
+      ]
+    },
+    {
+      "workId": "parque-costanera-puerto-varas",
+      "reason": "Resuelto punto documentado de inicio y relaciones. Sigue pendiente plano georreferenciado del tramo completo; no mostrar línea recta como trazado del borde."
+    },
+    {
+      "workId": "cochrane-acceso-oriente",
+      "reason": "Resuelto extremo vial de referencia y relación Bold. Sigue pendiente huella completa y adjudicación; licitación cierra17nov2026 según ficha consultada."
+    }
+  ]
+}

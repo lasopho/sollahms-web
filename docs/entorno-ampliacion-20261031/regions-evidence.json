@@ -1,0 +1,148 @@
+{
+  "reviewedOn": "2026-10-31",
+  "scope": "Cinco candidatos regionales priorizados; ampliación de geometrías y precisión documental. Sin cambios comerciales ni publicación en producción.",
+  "results": [
+    {
+      "id": "parque-san-joaquin-serena",
+      "queries": [
+        "Parque Recreativo San Joaquín La Serena límites Alberto Arenas Francisco Ariztía",
+        "OSM Parque Recreativo San Joaquín polígonos"
+      ],
+      "additionalSources": [
+        {
+          "url": "https://www.gorecoquimbo.cl/noticias/aprueban-6-mil-millones-para-la-construccion-del-parque-recreativo-san",
+          "date": null,
+          "use": "Identidad, cinco calles delimitantes y dos sectores; no usar como estado actual."
+        },
+        {
+          "url": "https://transparencia.laserena.cl/documentos/doc_34_992_13052025013001.pdf",
+          "date": "2025-05-12",
+          "use": "Antecedente técnico de licitación anterior; no acredita contrato actual."
+        },
+        {
+          "url": "https://api.openstreetmap.org/api/0.6/way/608480875/full",
+          "date": "2026-10-31",
+          "use": "Primer perímetro con identidad nominal explícita."
+        },
+        {
+          "url": "https://api.openstreetmap.org/api/0.6/way/608482989/full",
+          "date": "2026-10-31",
+          "use": "Segundo perímetro con identidad nominal explícita."
+        }
+      ],
+      "result": "Dos polígonos OSM contrastados con delimitación GORE. Relación Alto San Joaquín a 1046 m del perímetro. Geometría MultiPolygon soportada por modelo actual. No acceso ni recorrido. Se descarta opening_date=2028 de OSM como plazo oficial."
+    },
+    {
+      "id": "chinchorro-etapa2",
+      "queries": [
+        "DOP Chinchorro etapa 2 Buenos Aires Las Machas",
+        "Mercado Público1262-17-O124 visita Buenos Aires Raúl Pey",
+        "OSM intersección Buenos Aires Ingeniero Raúl Pey Casado"
+      ],
+      "additionalSources": [
+        {
+          "url": "https://dop.mop.gob.cl/2026/04/07/dop-impulsa-conservacion-integral-del-borde-costero-de-playa-chinchorro-en-arica-para-reforzar-seguridad-y-estandar-urbano/",
+          "date": "2026-04-07",
+          "use": "Extremo sur en Buenos Aires; extremo norte conexión Las Machas."
+        },
+        {
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=BoP%2FcrHG1uNRDCVBZ61ItQ%3D%3D",
+          "date": "2024-12-27",
+          "use": "Visita técnica en cruce Buenos Aires–Raúl Pey; publicación27-12-2024, no se usa para estado operativo."
+        },
+        {
+          "url": "https://api.openstreetmap.org/api/0.6/node/976097643",
+          "date": "2026-10-31",
+          "use": "Cruce exacto compartido por vías83854741/83854782/1313888591, archivos conservados."
+        }
+      ],
+      "result": "Punto de referencia del extremo sur, explícitamente distinto del perímetro completo y de un acceso. Núcleo Costanera725 m, Wayra649 m, Lamara487 m al cruce. Se descarta centro de playa y paseo OSM339435275 completo porque excede el límite sur. No se supone que las fachadas estén frente a la etapa2. Estado operativo16-09-2026 retenido desde fuente DOP previa."
+    },
+    {
+      "id": "olas-de-puyai",
+      "queries": [
+        "Olas de Puyai DIA coordenadas2169294195",
+        "SEA Olas de Puyai anexos localización"
+      ],
+      "additionalSources": [
+        {
+          "url": "https://www.sea.gob.cl/portal-de-participacion-ciudadana-y-consulta-indigena/proyecto/proyecto-inmobiliario-olas-de-puyai",
+          "date": null,
+          "use": "Ubicación nominal y enlaces al expediente."
+        },
+        {
+          "url": "https://seia.sea.gob.cl/archivos/2026/08/13/DIA_Proyecto_Inmobiliario_Olas_de_Puyai.pdf",
+          "date": "2026-08-13",
+          "use": "Intento de lectura fallido: web indica34.731.237 bytes demasiado grande; descarga devuelve HTTP500. No extraídas coordenadas."
+        },
+        {
+          "url": "https://seia.sea.gob.cl/archivos/2026/08/13/07_Inexistencia_ECC_Art_11.pdf",
+          "date": "2026-08-13",
+          "use": "Intento de lectura no accesible."
+        },
+        {
+          "url": "https://www.sea.gob.cl/participacion-ciudadana-y-consulta-indigena/actividades/2169966188",
+          "date": null,
+          "use": "Reunión futura3-11-2026 en Av.Marítima850; no es coordenada del predio ni evento ocurrido."
+        }
+      ],
+      "result": "Pendiente polígono. Sin relación a Lomas de Puyai. Sigue en evaluación; no RCA ni ejecución verificadas. Coordenadas de sede de reunión descartadas."
+    },
+    {
+      "id": "caleta-papudo",
+      "queries": [
+        "Caleta Papudo DOP obras coordenadas plano",
+        "Caleta Papudo OSM muelle puerto",
+        "Subpesca Papudo coordenadas"
+      ],
+      "additionalSources": [
+        {
+          "url": "https://dop.mop.gob.cl/2026/06/23/obras-de-nueva-infraestructura-portuaria-para-la-caleta-de-papudo-alcanzan-el-47-por-ciento-de-avance/",
+          "date": "2026-06-23",
+          "use": "Se retiene construcción y término estimado de obras enero2027, distinto de inauguración."
+        },
+        {
+          "url": "https://www.subpesca.cl/portal/616/articles-5901_documento.pdf",
+          "date": null,
+          "use": "Descartado: delimita área marítima de extracción, no polígono de obras."
+        },
+        {
+          "url": "https://api.openstreetmap.org/api/0.6/map?bbox=-71.455,-32.512,-71.44,-32.499",
+          "date": "2026-10-31",
+          "use": "Barrido no encontró perímetro inequívoco de obra. Nodos5189559722 y958857872 corresponden a comercios, descartados."
+        }
+      ],
+      "result": "No relación a Lomas de Puyai. Falta perímetro DOP y acceso; no se utiliza bahía ni comercio como sustituto."
+    },
+    {
+      "id": "cuatro-esquinas-etapa-1",
+      "queries": [
+        "Cuatro Esquinas etapa I Los Arrayanes Rapa Nui San Ramón licitación",
+        "Cuatro Esquinas CORE15833 Los Arrayanes obras"
+      ],
+      "additionalSources": [
+        {
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=aBK5RHnEiwyc3CERSV2BGg%3D%3D",
+          "date": "2025-12-19",
+          "use": "ID894863-84-O125; adjudicación19-12-2025 10:34:32; tramo explícito Rapa Nui–San Ramón."
+        },
+        {
+          "url": "https://acuerdos.corecoquimbo.cl/acuerdos/acuerdo/10181",
+          "date": "2026-03-10",
+          "use": "CORE15833 confirma ejecución del programa general; no asigna avance al contrato específico."
+        },
+        {
+          "url": "https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=0d0GBWlJHlrnPpLi%2FTS%2FYQ%3D%3D",
+          "date": null,
+          "use": "Asesoría de inspección desierta; no equivale a obra desierta."
+        },
+        {
+          "url": "https://snifa.sma.gob.cl/General/Descargar/20913005785",
+          "date": null,
+          "use": "Resultado indexado sugiere fiscalización; apertura devuelve Error al procesar la solicitud. No usado para geometría ni estado."
+        }
+      ],
+      "result": "Se publica sólo contrato adjudicado y segmento probado, sin coordenada ni asociación. Pendiente original resuelto en su fecha/estado; se conserva pendiente geográfico específico."
+    }
+  ]
+}
