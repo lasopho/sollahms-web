@@ -11,3 +11,11 @@ UNAB se mide al cruce Echaurren/Sazié identificado oficialmente. Túnel Lo Ruiz
 Teleférico actualizado con informe DGC de agosto de 2026; conserva pendientes los accesos. Hospital Pichilemu cuenta ahora con plano histórico, pero diferencias de dirección y superficie impiden usarlo como perímetro vigente. Parque Metropolitano Puerto Montt continúa sin huella verificada. No se han resuelto por aproximación los demás pendientes previos.
 
 Fuentes y distancias: [README.md](README.md). Evidencia adicional: root-evidence.md, rmrest-evidence.json y south-evidence.md. La revisión no equivale a un inventario exhaustivo. No se programaron actualizaciones.
+
+## Vista previa comprobada
+
+https://project-wrapp-ae9pijwki-lsandoval2-8260s-projects.vercel.app/entorno-desarrollo-urbano.html
+
+Vercel READY: dpl_AcRiVyi5kJwDdLQPic5KEfaheDZ6. Código: 37c616fd07c38aab12e7e00cae6c2043ee4dbcd1. Navegador comprobó los filtros Quilicura y Santiago/Educación, las ocho relaciones en el listado, las fichas Plaza Quilicura y Domeyko 2055 y las geometrías filtradas. La cartografía base externa puede demorar en cargar; los puntos y el listado conservan su funcionamiento. Esta ronda no cambió la interfaz ni repitió la revisión móvil de la ronda anterior.
+
+![Ficha ampliada](preview.jpg)
