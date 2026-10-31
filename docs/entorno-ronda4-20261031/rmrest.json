@@ -1,0 +1,149 @@
+{
+  "updatedWorks": [
+    {
+      "id": "tunel-lo-ruiz",
+      "name": "Túnel Lo Ruiz",
+      "type": "Puentes y vialidad",
+      "region": "Región Metropolitana",
+      "communes": [
+        "Renca",
+        "Quilicura"
+      ],
+      "status": "construction",
+      "statusDetail": "Obras en ejecución documentadas por MOP.",
+      "informationDate": "2026-08-19",
+      "reviewedOn": "2026-10-31",
+      "responsible": "MOP / Autopista Central",
+      "locationText": "Cerro Lo Ruiz y conexiones viales del Nudo Quilicura",
+      "description": "Dos túneles y conexiones a la red vial metropolitana.",
+      "benefit": "Podría modificar la conexión vial del sector del Nudo Quilicura; el efecto depende de los accesos y recorridos.",
+      "sources": [
+        {
+          "id": "mop-loruiz-20260819",
+          "title": "MOP: construcción del Túnel Lo Ruiz",
+          "url": "https://www.mop.gob.cl/construccion-de-tunel-lo-ruiz-que-va-a-descongestionar-el-nudo-quilicura-ya-tiene-un-20-de-avance/",
+          "date": "2026-08-19"
+        },
+        {
+          "id": "sea-rca-loruiz-279-2020",
+          "title": "SEA: RCA 279/2020, tabla 3, página 9: vértices del nuevo enlace Américo Vespucio",
+          "url": "https://firma.sea.gob.cl/publicaciones/9b/f3/2146714981.pdf",
+          "date": "2020-05-27"
+        }
+      ],
+      "estimatedStart": null,
+      "estimatedEnd": "Mediados de 2029, estimación MOP de 19-08-2026; sujeta a cambios.",
+      "cautions": [
+        "Considerar desvíos, ruido de faenas y tránsito de carga."
+      ],
+      "uncertainties": [
+        "El marcador corresponde a un vértice documentado del enlace, no al acceso vehicular ni al perímetro completo. La distancia es a esa referencia y no representa el punto más próximo de las obras.",
+        "Cartografía aprobada en 2020 contrastada con la descripción MOP de agosto de 2026; quedan pendientes eventuales ajustes del diseño de detalle.",
+        "No se han validado recorridos desde las viviendas ni ahorros de tiempo."
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.70986128710936,
+          -33.37246952815886
+        ]
+      },
+      "geometrySource": {
+        "title": "SEA: RCA 279/2020, tabla 3, página 9",
+        "url": "https://firma.sea.gob.cl/publicaciones/9b/f3/2146714981.pdf"
+      },
+      "geometryRole": "reference-point",
+      "geometryLabel": "Vértice de referencia del nuevo enlace Américo Vespucio (RCA 279/2020; no es un acceso)",
+      "publish": true
+    },
+    {
+      "id": "teleferico-bicentenario",
+      "name": "Teleférico Bicentenario",
+      "type": "Transporte público",
+      "region": "Región Metropolitana",
+      "communes": [
+        "Providencia",
+        "Las Condes",
+        "Vitacura",
+        "Huechuraba"
+      ],
+      "status": "construction",
+      "statusDetail": "DGC documenta construcción en agosto de 2026; aún no está operativo.",
+      "informationDate": "2026-06-18",
+      "reviewedOn": "2026-10-31",
+      "responsible": "MOP / Dirección General de Concesiones",
+      "locationText": "Canal San Carlos–Parque Metropolitano–Ciudad Empresarial",
+      "description": "Sistema de transporte por cable en construcción.",
+      "benefit": "Podría aportar una conexión entre Providencia y Ciudad Empresarial cuando sea habilitado.",
+      "sources": [
+        {
+          "id": "mop-teleferico-20260618",
+          "title": "MOP: instalación de cabinas del Teleférico Bicentenario",
+          "url": "https://www.mop.gob.cl/comienza-instalacion-de-las-121-cabinas-de-pasajeros-del-teleferico-bicentenario-que-entrara-en-operacion-en-2027/",
+          "date": "2026-06-18"
+        },
+        {
+          "id": "dgc-teleferico-agosto2026",
+          "title": "DGC: informe ejecutivo Teleférico Bicentenario, agosto de 2026",
+          "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2026/10/Informe-Ejecutivo_Teleferico-Bicentenario-agosto2026.pdf",
+          "date": "2026-08"
+        }
+      ],
+      "estimatedStart": "14 de octubre de 2024, según informe DGC de agosto de 2026.",
+      "estimatedEnd": "Puesta en servicio definitiva estimada para el segundo trimestre de 2027, según DGC de agosto de 2026; sujeta a cambios.",
+      "cautions": [
+        "Las obras y accesos pueden alterar tránsito y circulación peatonal."
+      ],
+      "uncertainties": [
+        "No se validaron coordenadas de accesos; no se asocia por compartir comuna.",
+        "Conecta Huechuraba se ubica en Los Libertadores, no en Ciudad Empresarial.",
+        "El informe DGC de agosto de 2026 estima servicio definitivo en el segundo trimestre de 2027; la noticia MOP de junio anunciaba operación en el primero. Son hitos y fechas distintos, no una fecha garantizada."
+      ],
+      "geometry": null,
+      "geometrySource": null,
+      "geometryRole": null,
+      "geometryLabel": null,
+      "publish": true,
+      "informationDateBasis": "Noticia MOP del 18-06-2026 complementada por informe DGC de agosto de 2026 (fecha con precisión mensual)."
+    }
+  ],
+  "newWorks": [],
+  "relationships": [
+    {
+      "workId": "tunel-lo-ruiz",
+      "projectSlug": "plaza-quilicura",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El proyecto está verificado en Américo Vespucio 1456 y el nuevo enlace modifica ese corredor. La relación se limita a su entorno vial; distancia geográfica al vértice documentado del enlace, no a una entrada.",
+      "benefit": "Podría modificar la conectividad del corredor Américo Vespucio al incorporar su conexión con General Velásquez; el efecto depende de los enlaces y recorridos utilizados.",
+      "cautions": [
+        "Autopista y cerro son barreras físicas. No se verificó recorrido ni acceso directo desde la vivienda.",
+        "Las faenas pueden ocasionar desvíos, ruido y tránsito de carga."
+      ],
+      "projectLocation": {
+        "lat": -33.372262,
+        "lng": -70.729264,
+        "address": "Américo Vespucio 1456",
+        "commune": "Quilicura"
+      }
+    }
+  ],
+  "stillPending": [
+    {
+      "workId": "teleferico-bicentenario",
+      "reason": "Informe reciente confirma emplazamiento general y escaleras en construcción; no ofrece coordenadas inequívocas del ingreso peatonal. No se asignan estaciones centrales como accesos ni relación a Conecta Huechuraba por comuna.",
+      "sources": [
+        "https://concesiones.mop.gob.cl/uploads/sites/4/2026/10/Informe-Ejecutivo_Teleferico-Bicentenario-agosto2026.pdf",
+        "https://concesiones.mop.gob.cl/project/concesion-teleferico-bicentenario/"
+      ]
+    },
+    {
+      "workId": "tunel-lo-ruiz",
+      "reason": "Conecta Huechuraba está a 2772 m de la referencia y Vista Costanera a 6277 m; no se acredita recorrido funcional local suficiente para añadirlos. No hay proyecto Lampa en el registro revisado. Ajustes posteriores del diseño del enlace y cartografía completa siguen pendientes.",
+      "sources": [
+        "https://firma.sea.gob.cl/publicaciones/9b/f3/2146714981.pdf",
+        "https://www.mop.gob.cl/construccion-de-tunel-lo-ruiz-que-va-a-descongestionar-el-nudo-quilicura-ya-tiene-un-20-de-avance/"
+      ]
+    }
+  ]
+}

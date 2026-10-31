@@ -9,10 +9,10 @@
     "reserva-mayor-2",
     "vicuna-mackenna-7589"
   ],
-  "projectsWithRelationships": 86,
+  "projectsWithRelationships": 90,
   "outcomes": {
-    "reviewed_verified": 86,
-    "reviewed_no_verified": 42,
+    "reviewed_verified": 90,
+    "reviewed_no_verified": 38,
     "location_blocked": 3
   },
   "method": "Búsqueda documental por comuna y sector, evaluación individual de dirección y candidatos. No equivale a un inventario universal de inversiones ni a una inspección de terreno.",
@@ -5664,7 +5664,7 @@
         "tunel-lo-ruiz",
         "hospital-zona-norte-terreno"
       ],
-      "outcome": "reviewed_no_verified",
+      "outcome": "reviewed_verified",
       "rationale": "Quilicura · Américo Vespucio 1456: Américo Vespucio1456 se revisó frente a conexiones del Nudo Quilicura; no se dispone de accesos y trazado aprobados para distancia. Pavimentación es un suministro comunal sin calles precisas. Ampliaciones comerciales quedan como candidatos no corroborados.",
       "pending": [
         "No se acredita aún relación publicable con distancia y acceso/perímetro preciso."
@@ -5681,7 +5681,32 @@
       "name": "Plaza Quilicura",
       "region": "Región Metropolitana",
       "commune": "Quilicura",
-      "publishedWorkIds": []
+      "publishedWorkIds": [
+        "tunel-lo-ruiz"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "tunel-lo-ruiz"
+        ],
+        "sources": [
+          {
+            "id": "mop-loruiz-20260819",
+            "title": "MOP: construcción del Túnel Lo Ruiz",
+            "url": "https://www.mop.gob.cl/construccion-de-tunel-lo-ruiz-que-va-a-descongestionar-el-nudo-quilicura-ya-tiene-un-20-de-avance/",
+            "date": "2026-08-19"
+          },
+          {
+            "id": "sea-rca-loruiz-279-2020",
+            "title": "SEA: RCA 279/2020, tabla 3, página 9: vértices del nuevo enlace Américo Vespucio",
+            "url": "https://firma.sea.gob.cl/publicaciones/9b/f3/2146714981.pdf",
+            "date": "2020-05-27"
+          }
+        ],
+        "rationale": [
+          "El proyecto está verificado en Américo Vespucio 1456 y el nuevo enlace modifica ese corredor. La relación se limita a su entorno vial; distancia geográfica al vértice documentado del enlace, no a una entrada."
+        ]
+      }
     },
     {
       "slug": "mapocho-3521",
@@ -6679,8 +6704,56 @@
       "commune": "Santiago",
       "publishedWorkIds": [
         "parque-portales-mejoramiento",
-        "cesfam-erasmo-escala"
-      ]
+        "cesfam-erasmo-escala",
+        "unab-r14"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "unab-r14"
+        ],
+        "sources": [
+          {
+            "id": "unab",
+            "title": "UNAB: inauguración edificio R14",
+            "url": "https://noticias.unab.cl/campus-republica-suma-un-nuevo-hito-con-la-inauguracion-del-edificio-r14/",
+            "date": "2026-04-06"
+          },
+          {
+            "id": "unab-plano-2026",
+            "title": "UNAB: plano Campus República 2026",
+            "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+            "date": "2026-02"
+          },
+          {
+            "id": "unab-r14-cultura",
+            "title": "UNAB Cultura: actividad septiembre 2026 en Echaurren 174",
+            "url": "https://cultura.unab.cl/evento/inauguracion-exposicionhumanidad/",
+            "date": "2026-09-08"
+          },
+          {
+            "id": "unab-directorio-conflicto",
+            "title": "UNAB: directorio con dirección histórica distinta",
+            "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
+            "date": null
+          },
+          {
+            "id": "unab-operacion-oct2026",
+            "title": "UNAB: actividades de octubre en R14, Echaurren174",
+            "url": "https://agenda.unab.cl/evento/seminario-cartografias-criticas-del-presente-dialogos-entre-filosofia-geografia-y-ciencias-sociales/",
+            "date": null
+          },
+          {
+            "id": "unab-certificacion",
+            "title": "CES: ficha del edificio UNAB Echaurren, mandante y certificación",
+            "url": "https://www.certificacionsustentable.cl/edificio-unab-echaurren/",
+            "date": "2026-04-13"
+          }
+        ],
+        "rationale": [
+          "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada."
+        ]
+      }
     },
     {
       "slug": "angamos",
@@ -8451,7 +8524,7 @@
         "unab-r14",
         "nueva-alameda-bandejon-santiago"
       ],
-      "outcome": "reviewed_no_verified",
+      "outcome": "reviewed_verified",
       "rationale": "Se revisó Domeyko 2055, sector Poniente / Yungay / República. No se admite una asociación individual con la evidencia reunida; el recinto cartografiado más próximo evaluado fue parque-almagro-mejoramiento a 789 m geográficos. La distancia sola no acredita pertinencia ni acceso. Las iniciativas sin geometría se mantienen como contexto o pendiente, sin inventar cercanía. La cercanía geométrica a Almagro cruza el corredor Manuel Rodríguez/Autopista Central; no se validaron pasos peatonales. UNAB R14 queda sin huella precisa.",
       "geometryScreening": [
         {
@@ -8501,7 +8574,56 @@
       "name": "Domeyko 2055",
       "region": "Región Metropolitana",
       "commune": "Santiago",
-      "publishedWorkIds": []
+      "publishedWorkIds": [
+        "unab-r14"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "unab-r14"
+        ],
+        "sources": [
+          {
+            "id": "unab",
+            "title": "UNAB: inauguración edificio R14",
+            "url": "https://noticias.unab.cl/campus-republica-suma-un-nuevo-hito-con-la-inauguracion-del-edificio-r14/",
+            "date": "2026-04-06"
+          },
+          {
+            "id": "unab-plano-2026",
+            "title": "UNAB: plano Campus República 2026",
+            "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+            "date": "2026-02"
+          },
+          {
+            "id": "unab-r14-cultura",
+            "title": "UNAB Cultura: actividad septiembre 2026 en Echaurren 174",
+            "url": "https://cultura.unab.cl/evento/inauguracion-exposicionhumanidad/",
+            "date": "2026-09-08"
+          },
+          {
+            "id": "unab-directorio-conflicto",
+            "title": "UNAB: directorio con dirección histórica distinta",
+            "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
+            "date": null
+          },
+          {
+            "id": "unab-operacion-oct2026",
+            "title": "UNAB: actividades de octubre en R14, Echaurren174",
+            "url": "https://agenda.unab.cl/evento/seminario-cartografias-criticas-del-presente-dialogos-entre-filosofia-geografia-y-ciencias-sociales/",
+            "date": null
+          },
+          {
+            "id": "unab-certificacion",
+            "title": "CES: ficha del edificio UNAB Echaurren, mandante y certificación",
+            "url": "https://www.certificacionsustentable.cl/edificio-unab-echaurren/",
+            "date": "2026-04-13"
+          }
+        ],
+        "rationale": [
+          "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada."
+        ]
+      }
     },
     {
       "slug": "don-ignacio",
@@ -8679,8 +8801,56 @@
       "region": "Región Metropolitana",
       "commune": "Santiago",
       "publishedWorkIds": [
-        "parque-almagro-mejoramiento"
-      ]
+        "parque-almagro-mejoramiento",
+        "unab-r14"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "unab-r14"
+        ],
+        "sources": [
+          {
+            "id": "unab",
+            "title": "UNAB: inauguración edificio R14",
+            "url": "https://noticias.unab.cl/campus-republica-suma-un-nuevo-hito-con-la-inauguracion-del-edificio-r14/",
+            "date": "2026-04-06"
+          },
+          {
+            "id": "unab-plano-2026",
+            "title": "UNAB: plano Campus República 2026",
+            "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+            "date": "2026-02"
+          },
+          {
+            "id": "unab-r14-cultura",
+            "title": "UNAB Cultura: actividad septiembre 2026 en Echaurren 174",
+            "url": "https://cultura.unab.cl/evento/inauguracion-exposicionhumanidad/",
+            "date": "2026-09-08"
+          },
+          {
+            "id": "unab-directorio-conflicto",
+            "title": "UNAB: directorio con dirección histórica distinta",
+            "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
+            "date": null
+          },
+          {
+            "id": "unab-operacion-oct2026",
+            "title": "UNAB: actividades de octubre en R14, Echaurren174",
+            "url": "https://agenda.unab.cl/evento/seminario-cartografias-criticas-del-presente-dialogos-entre-filosofia-geografia-y-ciencias-sociales/",
+            "date": null
+          },
+          {
+            "id": "unab-certificacion",
+            "title": "CES: ficha del edificio UNAB Echaurren, mandante y certificación",
+            "url": "https://www.certificacionsustentable.cl/edificio-unab-echaurren/",
+            "date": "2026-04-13"
+          }
+        ],
+        "rationale": [
+          "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada."
+        ]
+      }
     },
     {
       "slug": "don-rafael",
@@ -8804,7 +8974,7 @@
         "unab-r14",
         "nueva-alameda-bandejon-santiago"
       ],
-      "outcome": "reviewed_no_verified",
+      "outcome": "reviewed_verified",
       "rationale": "Se revisó Domeyko 1950, sector Poniente / Yungay / República. No se admite una asociación individual con la evidencia reunida; el recinto cartografiado más próximo evaluado fue parque-almagro-mejoramiento a 682 m geográficos. La distancia sola no acredita pertinencia ni acceso. Las iniciativas sin geometría se mantienen como contexto o pendiente, sin inventar cercanía. La conexión hacia Almagro requiere cruzar el corredor Manuel Rodríguez/Autopista Central; no se aceptó una relación sólo por sus 682 m geográficos.",
       "geometryScreening": [
         {
@@ -8854,7 +9024,56 @@
       "name": "Don Rafael",
       "region": "Región Metropolitana",
       "commune": "Santiago",
-      "publishedWorkIds": []
+      "publishedWorkIds": [
+        "unab-r14"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "unab-r14"
+        ],
+        "sources": [
+          {
+            "id": "unab",
+            "title": "UNAB: inauguración edificio R14",
+            "url": "https://noticias.unab.cl/campus-republica-suma-un-nuevo-hito-con-la-inauguracion-del-edificio-r14/",
+            "date": "2026-04-06"
+          },
+          {
+            "id": "unab-plano-2026",
+            "title": "UNAB: plano Campus República 2026",
+            "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+            "date": "2026-02"
+          },
+          {
+            "id": "unab-r14-cultura",
+            "title": "UNAB Cultura: actividad septiembre 2026 en Echaurren 174",
+            "url": "https://cultura.unab.cl/evento/inauguracion-exposicionhumanidad/",
+            "date": "2026-09-08"
+          },
+          {
+            "id": "unab-directorio-conflicto",
+            "title": "UNAB: directorio con dirección histórica distinta",
+            "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
+            "date": null
+          },
+          {
+            "id": "unab-operacion-oct2026",
+            "title": "UNAB: actividades de octubre en R14, Echaurren174",
+            "url": "https://agenda.unab.cl/evento/seminario-cartografias-criticas-del-presente-dialogos-entre-filosofia-geografia-y-ciencias-sociales/",
+            "date": null
+          },
+          {
+            "id": "unab-certificacion",
+            "title": "CES: ficha del edificio UNAB Echaurren, mandante y certificación",
+            "url": "https://www.certificacionsustentable.cl/edificio-unab-echaurren/",
+            "date": "2026-04-13"
+          }
+        ],
+        "rationale": [
+          "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada."
+        ]
+      }
     },
     {
       "slug": "downtown-san-martin",
@@ -12364,8 +12583,56 @@
       "region": "Región Metropolitana",
       "commune": "Santiago",
       "publishedWorkIds": [
-        "parque-almagro-mejoramiento"
-      ]
+        "parque-almagro-mejoramiento",
+        "unab-r14"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "unab-r14"
+        ],
+        "sources": [
+          {
+            "id": "unab",
+            "title": "UNAB: inauguración edificio R14",
+            "url": "https://noticias.unab.cl/campus-republica-suma-un-nuevo-hito-con-la-inauguracion-del-edificio-r14/",
+            "date": "2026-04-06"
+          },
+          {
+            "id": "unab-plano-2026",
+            "title": "UNAB: plano Campus República 2026",
+            "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+            "date": "2026-02"
+          },
+          {
+            "id": "unab-r14-cultura",
+            "title": "UNAB Cultura: actividad septiembre 2026 en Echaurren 174",
+            "url": "https://cultura.unab.cl/evento/inauguracion-exposicionhumanidad/",
+            "date": "2026-09-08"
+          },
+          {
+            "id": "unab-directorio-conflicto",
+            "title": "UNAB: directorio con dirección histórica distinta",
+            "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
+            "date": null
+          },
+          {
+            "id": "unab-operacion-oct2026",
+            "title": "UNAB: actividades de octubre en R14, Echaurren174",
+            "url": "https://agenda.unab.cl/evento/seminario-cartografias-criticas-del-presente-dialogos-entre-filosofia-geografia-y-ciencias-sociales/",
+            "date": null
+          },
+          {
+            "id": "unab-certificacion",
+            "title": "CES: ficha del edificio UNAB Echaurren, mandante y certificación",
+            "url": "https://www.certificacionsustentable.cl/edificio-unab-echaurren/",
+            "date": "2026-04-13"
+          }
+        ],
+        "rationale": [
+          "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada."
+        ]
+      }
     },
     {
       "slug": "santa-elena-1670-mbi",
@@ -12755,8 +13022,56 @@
       "region": "Región Metropolitana",
       "commune": "Santiago",
       "publishedWorkIds": [
-        "cesfam-erasmo-escala"
-      ]
+        "cesfam-erasmo-escala",
+        "unab-r14"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "unab-r14"
+        ],
+        "sources": [
+          {
+            "id": "unab",
+            "title": "UNAB: inauguración edificio R14",
+            "url": "https://noticias.unab.cl/campus-republica-suma-un-nuevo-hito-con-la-inauguracion-del-edificio-r14/",
+            "date": "2026-04-06"
+          },
+          {
+            "id": "unab-plano-2026",
+            "title": "UNAB: plano Campus República 2026",
+            "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+            "date": "2026-02"
+          },
+          {
+            "id": "unab-r14-cultura",
+            "title": "UNAB Cultura: actividad septiembre 2026 en Echaurren 174",
+            "url": "https://cultura.unab.cl/evento/inauguracion-exposicionhumanidad/",
+            "date": "2026-09-08"
+          },
+          {
+            "id": "unab-directorio-conflicto",
+            "title": "UNAB: directorio con dirección histórica distinta",
+            "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
+            "date": null
+          },
+          {
+            "id": "unab-operacion-oct2026",
+            "title": "UNAB: actividades de octubre en R14, Echaurren174",
+            "url": "https://agenda.unab.cl/evento/seminario-cartografias-criticas-del-presente-dialogos-entre-filosofia-geografia-y-ciencias-sociales/",
+            "date": null
+          },
+          {
+            "id": "unab-certificacion",
+            "title": "CES: ficha del edificio UNAB Echaurren, mandante y certificación",
+            "url": "https://www.certificacionsustentable.cl/edificio-unab-echaurren/",
+            "date": "2026-04-13"
+          }
+        ],
+        "rationale": [
+          "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada."
+        ]
+      }
     },
     {
       "slug": "tocornal",
@@ -13083,7 +13398,7 @@
         "unab-r14",
         "nueva-alameda-bandejon-santiago"
       ],
-      "outcome": "reviewed_no_verified",
+      "outcome": "reviewed_verified",
       "rationale": "Se revisó Calle Vergara 701, sector Poniente / Yungay / República. No se admite una asociación individual con la evidencia reunida; el recinto cartografiado más próximo evaluado fue parque-almagro-mejoramiento a 602 m geográficos. La distancia sola no acredita pertinencia ni acceso. Las iniciativas sin geometría se mantienen como contexto o pendiente, sin inventar cercanía. La distancia a Almagro cruza el corredor Manuel Rodríguez/Autopista Central; no se evaluó un recorrido habilitado.",
       "geometryScreening": [
         {
@@ -13133,7 +13448,56 @@
       "name": "Vergara Domeyko",
       "region": "Región Metropolitana",
       "commune": "Santiago",
-      "publishedWorkIds": []
+      "publishedWorkIds": [
+        "unab-r14"
+      ],
+      "supplementaryReview": {
+        "reviewedOn": "2026-10-31",
+        "addedWorkIds": [
+          "unab-r14"
+        ],
+        "sources": [
+          {
+            "id": "unab",
+            "title": "UNAB: inauguración edificio R14",
+            "url": "https://noticias.unab.cl/campus-republica-suma-un-nuevo-hito-con-la-inauguracion-del-edificio-r14/",
+            "date": "2026-04-06"
+          },
+          {
+            "id": "unab-plano-2026",
+            "title": "UNAB: plano Campus República 2026",
+            "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
+            "date": "2026-02"
+          },
+          {
+            "id": "unab-r14-cultura",
+            "title": "UNAB Cultura: actividad septiembre 2026 en Echaurren 174",
+            "url": "https://cultura.unab.cl/evento/inauguracion-exposicionhumanidad/",
+            "date": "2026-09-08"
+          },
+          {
+            "id": "unab-directorio-conflicto",
+            "title": "UNAB: directorio con dirección histórica distinta",
+            "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
+            "date": null
+          },
+          {
+            "id": "unab-operacion-oct2026",
+            "title": "UNAB: actividades de octubre en R14, Echaurren174",
+            "url": "https://agenda.unab.cl/evento/seminario-cartografias-criticas-del-presente-dialogos-entre-filosofia-geografia-y-ciencias-sociales/",
+            "date": null
+          },
+          {
+            "id": "unab-certificacion",
+            "title": "CES: ficha del edificio UNAB Echaurren, mandante y certificación",
+            "url": "https://www.certificacionsustentable.cl/edificio-unab-echaurren/",
+            "date": "2026-04-13"
+          }
+        ],
+        "rationale": [
+          "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada."
+        ]
+      }
     },
     {
       "slug": "vista-bulnes",
@@ -15279,175 +15643,89 @@
   ],
   "supplementaryReviews": [
     {
-      "batch": "center",
-      "resolvedPendingIds": [
-        "cesfam-felix-amesti-pending"
-      ],
-      "stillPending": [
-        {
-          "id": "unab-r14-geometry",
-          "workId": "unab-r14",
-          "reason": "Plano oficial 2026 y evento institucional confirman Echaurren174 y distinguen el R14 nuevo. El iframe del evento es una búsqueda textual por dirección, no coordenada del edificio. PDF directo403; extracción textual no permite identificar un punto exacto. Se mantiene obra existente sin geometría ni asociación nueva.",
-          "sources": [
-            {
-              "url": "https://www.unab.cl/assets/uploads/2026/02/Plano-UNAB-Republica-2026.pdf",
-              "date": null
-            },
-            {
-              "url": "https://agenda.unab.cl/evento/inauguracion-exposicion-humanidad-de-clara-murillo/",
-              "date": "2026-09-08"
-            }
-          ]
-        },
-        {
-          "id": "alameda-tramos-geometry",
-          "workId": "nueva-alameda-bandejon-santiago",
-          "reason": "Se conserva documentación de T1/T2 de ronda previa. Página oficial anuncia mapa general, pero responde403 y no se recuperó plano contractual georreferenciable. No convertir toda Alameda en intervención ni interpolar sus extremos.",
-          "sources": [
-            {
-              "url": "https://www.gob.cl/nuevaalameda/",
-              "date": null
-            }
-          ]
-        },
-        {
-          "id": "felix-amesti-apertura",
-          "workId": "cesfam-felix-amesti-reposicion",
-          "reason": "Obra publicable como infraestructura entregada pendiente de habilitación; falta constancia posterior de recepción, autorización sanitaria y apertura. Búsqueda adicional con octubre2026 no aportó prueba primaria de apertura.",
-          "sources": [
-            {
-              "id": "felix-entrega-2026",
-              "title": "Corporación Municipal de Macul: entrega de infraestructura y trámites pendientes",
-              "url": "https://www.corpomunimacul.cl/macul-da-un-paso-historico-entregan-la-moderna-infraestructura-del-nuevo-cesfam-felix-de-amesti/",
-              "date": "2026-06-01"
-            },
-            {
-              "id": "felix-red-salud",
-              "title": "Corporación Municipal de Macul: nuevo recinto y sede de contingencia",
-              "url": "https://www.corpomunimacul.cl/red-salud/felix-de-amesti/",
-              "date": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "batch": "regions",
-      "stillPending": [
-        {
-          "id": "olas-de-puyai-geometria",
-          "reason": "DIA, figuras cartográficas y anexo primario devolvieron HTTP 500 en descargas; no se obtuvo archivo procesable. OSM presenta una rotonda Avenida Punta Puyai con cuatro uniones Marítima, mientras Paseo Punta Puyai conecta por otra rama; sin plano no se selecciona arbitrariamente esquina ni parcela.",
-          "nextEvidence": "DIA página 89 o anexo 4.6/página 44 con datum y vértices; plano aprobado del predio.",
-          "projectSlugs": [
-            "lomas-de-puyai"
-          ]
-        },
-        {
-          "id": "caleta-papudo-geometria",
-          "reason": "Nuevas fuentes verifican contrato y comienzo, pero ninguna identifica coordenadas de obra o acceso. DIRECTEMAR entrega directorio administrativo, no emplazamiento del proyecto.",
-          "nextEvidence": "Planos del contrato SAFI 371304/licitación 1267-7-O124 o concesión marítima individualizada.",
-          "projectSlugs": [
-            "lomas-de-puyai"
-          ]
-        },
-        {
-          "id": "cuatro-esquinas-etapa-1-geometria",
-          "reason": "Resuelto extremo en San Ramón y constatada actividad material; falta geometría completa. Alto San Joaquín está varios kilómetros al norte y no se probó un acceso o itinerario funcional específico; no se fuerza asociación.",
-          "nextEvidence": "Plano contractual con tramo Rapa Nui–San Ramón y conexiones habilitadas.",
-          "projectSlugs": [
-            "alto-san-joaquin"
-          ]
-        }
-      ]
-    },
-    {
       "batch": "root",
       "stillPending": [
         {
-          "id": "hospital-pichilemu-geometria",
-          "reason": "MOP identifica Camino Antiguo Punta de Lobos2420 y área concesionada28.296,82m2. OSM1361877196 identifica faena pero su huella es mayor; no se usa sin plano del recinto aprobado. Se diferencia del hospital antiguo Errázuriz151.",
-          "sources": [
-            {
-              "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2025/09/Informe-Ejecutivo_Red-O%C2%B4higgins_julio2025.pdf",
-              "title": "DGC: ubicación y superficie concesionada, julio2025"
-            }
-          ]
-        },
-        {
-          "id": "pm-geometria",
-          "reason": "No se obtuvo plano del terreno; mapa OSM no identifica inequívocamente la futura huella. El cuadrante no es sustituto de límites."
+          "id": "unab-r14-footprint",
+          "reason": "Resuelta referencia territorial al cruce oficial; continúa pendiente huella o entrada del edificio."
         }
       ]
     },
     {
-      "batch": "locations",
-      "resolvedPendingIds": [],
+      "batch": "rmrest",
       "stillPending": [
         {
-          "id": "location-plaza-cervantes",
-          "projectSlug": "plaza-cervantes",
-          "reason": "Las fuentes del responsable identifican ambas torres, pero discrepan entre Chile España 8184 (página y artículo) y 8141 (brochure I/II). Falta una coordenada primaria del conjunto o aclaración documental para admitir el punto heredado de Andrássy sin ambigüedad.",
+          "workId": "teleferico-bicentenario",
+          "reason": "Informe reciente confirma emplazamiento general y escaleras en construcción; no ofrece coordenadas inequívocas del ingreso peatonal. No se asignan estaciones centrales como accesos ni relación a Conecta Huechuraba por comuna.",
           "sources": [
-            {
-              "url": "https://maestra.cl/inversion/invertir-en-propiedades/"
-            },
-            {
-              "url": "https://maestra.cl/proyectos/plaza-cervantes-torre-b/"
-            },
-            {
-              "url": "https://maestra.cl/wp-content/uploads/2025/08/Brochure_Plaza_Cervantes-I-y-II.pdf"
-            }
-          ],
-          "reviewedOn": "2026-10-31"
+            "https://concesiones.mop.gob.cl/uploads/sites/4/2026/10/Informe-Ejecutivo_Teleferico-Bicentenario-agosto2026.pdf",
+            "https://concesiones.mop.gob.cl/project/concesion-teleferico-bicentenario/"
+          ]
         },
         {
-          "id": "location-mapocho-3521-edificio-a",
-          "projectSlug": "mapocho-3521-edificio-a",
-          "reason": "La página oficial confirma el conjunto Mapocho 3521 / Rivas Vicuña 1131, pero no identifica inequívocamente el edificio A ni su acceso. No se traslada la ubicación de otra etapa.",
+          "workId": "tunel-lo-ruiz",
+          "reason": "Conecta Huechuraba está a 2772 m de la referencia y Vista Costanera a 6277 m; no se acredita recorrido funcional local suficiente para añadirlos. No hay proyecto Lampa en el registro revisado. Ajustes posteriores del diseño del enlace y cartografía completa siguen pendientes.",
           "sources": [
-            {
-              "url": "https://euroinmobiliaria.cl/proyectos/mapocho-3521"
-            }
-          ],
-          "reviewedOn": "2026-10-31"
-        },
+            "https://firma.sea.gob.cl/publicaciones/9b/f3/2146714981.pdf",
+            "https://www.mop.gob.cl/construccion-de-tunel-lo-ruiz-que-va-a-descongestionar-el-nudo-quilicura-ya-tiene-un-20-de-avance/"
+          ]
+        }
+      ]
+    },
+    {
+      "batch": "south",
+      "stillPending": [
         {
-          "id": "location-vicuna-mackenna-7589",
-          "projectSlug": "vicuna-mackenna-7589",
-          "reason": "Permanece una discrepancia material: SEA sitúa el predio en UTM E351520.975 N6289499.169, aproximadamente 3.5 km del punto comercial heredado. Brochure alude a Bellavista/Vicente Valdés, mientras el mapa de la página del responsable está centrado en el área del punto heredado. Los parámetros de centro del iframe no son coordenadas concluyentes de entrada. No se elige ni corrige automáticamente.",
+          "workId": "hospital-pichilemu",
+          "projectSlugs": [
+            "endemico"
+          ],
+          "reason": "Recuperado plano primario y tabla de15pares geográficos del proyecto2021, pero no resolución2024 ni documento que vincule inequívocamente sus límites con la concesión vigente. Diferencia de superficie y numeración; no seleccionar vértice o centro antiguo como punto actual. Endémico se sitúa aproximadamente5,5km al sur de ese terreno histórico: cualquier asociación futura debe justificar servicio comunal, no cercanía inmediata.",
           "sources": [
             {
-              "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=53%2F65%2F0f20f48e6ca22ffaca5acd2887a0cb48b0c7"
+              "id": "pichilemu-sea-historico2021",
+              "title": "SEA: Normalización Hospital Pichilemu, expediente PERTI-2021-134, plano y coordenadas históricas pp3–4",
+              "url": "https://pertinencia.sea.gob.cl/sea-pertinence-web/services/public/document/5EAD2D96-AFCF-4DEA-85F5-6F39DCCA97E6",
+              "date": "2021"
             },
             {
-              "url": "https://ingevecinmobiliaria.cl/proyecto-vicu%C3%B1amackenna7589"
+              "id": "pichilemu-contrato-direccion",
+              "title": "MOP: decreto de adjudicación publicado en Diario Oficial, dirección del nuevo Hospital Pichilemu",
+              "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2025/03/Publicacion-Diario-Oficial-Decreto-de-Adjudicacion-ROhiggins.pdf",
+              "date": "2024-03-22"
             },
             {
-              "url": "https://ingevecinmobiliaria.cl/hubfs/PROYECTOS%20INGEVEC/VICU%C3%91A%20MACKENNA%207589/Brochure_Vicu%C3%B1a7589_2026.pdf?hsLang=es-cl"
+              "id": "pichilemu-mop-julio25",
+              "title": "DGC: informe julio2025, pertinencia202406101324 de14agosto2024 y dirección contractual",
+              "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2025/09/Informe-Ejecutivo_Red-O%C2%B4higgins_julio2025.pdf",
+              "date": "2025-07"
             }
           ],
-          "reviewedOn": "2026-10-31"
+          "nextEvidence": "Resolución202406101324 del14agosto2024 y anexos de ubicación, o plano vigente del área concesionada con punto georreferenciado."
         },
         {
-          "id": "location-pintor-cicarelli-iii",
-          "projectSlug": "pintor-cicarelli-iii",
-          "reason": "La separación de aproximadamente 350 m frente a I/II sigue como alerta, no nuevo bloqueo. Documentos generales del conjunto en Pintor Cicarelli 268/Lira 2408 no determinan por sí solos el punto de la torre III. No se sustituye por coordenadas de I/II; faltan plano de etapa y acceso inequívocos.",
+          "workId": "parque-metropolitano-puerto-montt",
+          "projectSlugs": [
+            "serrano-torre-a",
+            "vista-reloncavi",
+            "parque-germania"
+          ],
+          "reason": "Búsqueda adicional por nombre, proyectista Duarte, planos, coordenadas y KMZ. Fuentes primarias recuperadas corroboran terreno42.841m², aporte regional y acuerdo; no entregan coordenadas de acceso ni huella. No se usa centro del cuadrante vial o terreno adyacente como sustituto.",
           "sources": [
             {
-              "url": "https://maestra.cl/proyectos/pintor-cicarelli-iii/"
-            }
-          ],
-          "reviewedOn": "2026-10-31"
-        },
-        {
-          "id": "metro-l8-resto-accesos",
-          "reason": "E14 Hospital y Mardoqueo ahora corroborados en RCA final. Continúan pendientes restantes accesos, incluido Chile España: una coordenada de estación no se presume entrada.",
-          "sources": [
+              "id": "pmet-core-aporte",
+              "title": "GORE Los Lagos: aporte regional aprobado de4mil millones, terreno fiscal42.841m²",
+              "url": "https://goreloslagos.cl/index.php/noticias/2026-08-10/gobernador-alejandro-santana-impulsa-aporte-de-4-mil-millones-para-el-parque-metropolitano-de-puerto-montt",
+              "date": "2026-08-10"
+            },
             {
-              "url": "https://firma.sea.gob.cl/publicaciones/2026/05/20/1779312740_2168532069"
+              "id": "pmet-municipio-rs",
+              "title": "Municipalidad: recursos regionales, RS y antecedentes del proyecto",
+              "url": "https://www.puertomontt.cl/consejo-regional-aprobo-recursos-para-construccion-del-parque-metropolitano/",
+              "date": "2026-08-05"
             }
           ],
-          "reviewedOn": "2026-10-31"
+          "nextEvidence": "Plano del proyecto SERVIU/Duarte o cartografía oficial que identifique el terreno y sus accesos de forma georreferenciada."
         }
       ]
     }

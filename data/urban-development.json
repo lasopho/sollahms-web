@@ -2691,7 +2691,7 @@
       "informationDate": "2026-09-24",
       "reviewedOn": "2026-10-31",
       "responsible": "MOP / Minsal / Hospitales Red O’Higgins",
-      "locationText": "Comuna de Pichilemu; nuevo recinto concesionado",
+      "locationText": "Camino Antiguo Punta de Lobos2420, Pichilemu, según decreto de adjudicación del22marzo2024.",
       "description": "Hospital en construcción, con obra gruesa y avance documentados por MOP en septiembre de 2026.",
       "benefit": "Podría ampliar y renovar la atención hospitalaria de la provincia.",
       "sources": [
@@ -2700,6 +2700,24 @@
           "title": "MOP: avance de construcción del nuevo Hospital de Pichilemu",
           "url": "https://www.mop.gob.cl/mas-de-un-30-de-avance-tiene-construccion-de-nuevo-hospital-de-pichilemu-que-atendera-a-mas-de-70-mil-personas/",
           "date": "2026-09-24"
+        },
+        {
+          "id": "pichilemu-contrato-direccion",
+          "title": "MOP: decreto de adjudicación publicado en Diario Oficial, dirección del nuevo Hospital Pichilemu",
+          "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2025/03/Publicacion-Diario-Oficial-Decreto-de-Adjudicacion-ROhiggins.pdf",
+          "date": "2024-03-22"
+        },
+        {
+          "id": "pichilemu-mop-julio25",
+          "title": "DGC: informe julio2025, pertinencia202406101324 de14agosto2024 y dirección contractual",
+          "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2025/09/Informe-Ejecutivo_Red-O%C2%B4higgins_julio2025.pdf",
+          "date": "2025-07"
+        },
+        {
+          "id": "pichilemu-sea-historico2021",
+          "title": "SEA: Normalización Hospital Pichilemu, expediente PERTI-2021-134, plano y coordenadas históricas pp3–4",
+          "url": "https://pertinencia.sea.gob.cl/sea-pertinence-web/services/public/document/5EAD2D96-AFCF-4DEA-85F5-6F39DCCA97E6",
+          "date": "2021"
         }
       ],
       "estimatedStart": "Noviembre de 2025, según MOP",
@@ -2709,7 +2727,8 @@
       ],
       "uncertainties": [
         "No se dispone de coordenadas de accesos verificadas en este registro.",
-        "La meta de operación 2028 está sujeta a avance, recepción y habilitación."
+        "La meta de operación 2028 está sujeta a avance, recepción y habilitación.",
+        "La resolución SEA de2021 presenta un predio de31.331,97m² en Camino Antiguo Punta de Lobos2520/Hernando de Magallanes2449; falta reconciliar ese plano con la numeración y área concesionada posteriores. No se reutiliza su perímetro como si fuera la obra vigente."
       ],
       "geometry": null,
       "geometrySource": null,
@@ -4473,7 +4492,7 @@
       "informationDate": "2026-04-06",
       "reviewedOn": "2026-10-31",
       "responsible": "Universidad Andrés Bello",
-      "locationText": "Nuevo edificio R14, Echaurren 174, sector Echaurren con Sazié",
+      "locationText": "Nuevo R14, Echaurren174. El punto representa el cruce Echaurren/Sazié indicado por UNAB en su inauguración, no el antiguo R14 de Abdón Cifuentes.",
       "description": "Edificio universitario inaugurado en abril de 2026.",
       "benefit": "Amplía el equipamiento universitario del barrio República.",
       "sources": [
@@ -4500,6 +4519,18 @@
           "title": "UNAB: directorio con dirección histórica distinta",
           "url": "https://infraestructura.unab.cl/campus-unab/campus-republica/",
           "date": null
+        },
+        {
+          "id": "unab-operacion-oct2026",
+          "title": "UNAB: actividades de octubre en R14, Echaurren174",
+          "url": "https://agenda.unab.cl/evento/seminario-cartografias-criticas-del-presente-dialogos-entre-filosofia-geografia-y-ciencias-sociales/",
+          "date": null
+        },
+        {
+          "id": "unab-certificacion",
+          "title": "CES: ficha del edificio UNAB Echaurren, mandante y certificación",
+          "url": "https://www.certificacionsustentable.cl/edificio-unab-echaurren/",
+          "date": "2026-04-13"
         }
       ],
       "estimatedStart": null,
@@ -4509,10 +4540,22 @@
       ],
       "uncertainties": [
         "El directorio general conserva R14 en Abdón Cifuentes115; se prioriza el plano2026 que identifica R14 Nuevo y la actividad de septiembre en Echaurren174.",
-        "Dirección resuelta documentalmente, pero no se verificó una huella o acceso inequívoco del nuevo edificio; continúa sin marcador ni distancia."
+        "No se recuperó la huella georreferenciada del edificio. La referencia al cruce permite medir una relación territorial explícita, sin presentar el punto como entrada ni como distancia mínima al inmueble."
       ],
-      "geometry": null,
-      "publish": true
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.666403,
+          -33.450771
+        ]
+      },
+      "publish": true,
+      "geometryRole": "reference_intersection",
+      "geometrySource": {
+        "title": "OpenStreetMap: cruce Echaurren/Sazié citado por UNAB para el edificio R14",
+        "url": "https://www.openstreetmap.org/node/141061531"
+      },
+      "geometryLabel": "al cruce Echaurren/Sazié documentado por UNAB; no a la puerta ni al perímetro del edificio"
     },
     {
       "id": "plaza-artesanos-900",
@@ -6342,10 +6385,12 @@
       "region": "Región Metropolitana",
       "communes": [
         "Providencia",
+        "Las Condes",
+        "Vitacura",
         "Huechuraba"
       ],
       "status": "construction",
-      "statusDetail": "Instalación de cabinas documentada por MOP.",
+      "statusDetail": "DGC documenta construcción en agosto de 2026; aún no está operativo.",
       "informationDate": "2026-06-18",
       "reviewedOn": "2026-10-31",
       "responsible": "MOP / Dirección General de Concesiones",
@@ -6358,22 +6403,30 @@
           "title": "MOP: instalación de cabinas del Teleférico Bicentenario",
           "url": "https://www.mop.gob.cl/comienza-instalacion-de-las-121-cabinas-de-pasajeros-del-teleferico-bicentenario-que-entrara-en-operacion-en-2027/",
           "date": "2026-06-18"
+        },
+        {
+          "id": "dgc-teleferico-agosto2026",
+          "title": "DGC: informe ejecutivo Teleférico Bicentenario, agosto de 2026",
+          "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2026/10/Informe-Ejecutivo_Teleferico-Bicentenario-agosto2026.pdf",
+          "date": "2026-08"
         }
       ],
-      "estimatedStart": null,
-      "estimatedEnd": "Primer trimestre de 2027, estimación MOP de 18-06-2026; sujeta a cambios.",
+      "estimatedStart": "14 de octubre de 2024, según informe DGC de agosto de 2026.",
+      "estimatedEnd": "Puesta en servicio definitiva estimada para el segundo trimestre de 2027, según DGC de agosto de 2026; sujeta a cambios.",
       "cautions": [
         "Las obras y accesos pueden alterar tránsito y circulación peatonal."
       ],
       "uncertainties": [
         "No se validaron coordenadas de accesos; no se asocia por compartir comuna.",
-        "Conecta Huechuraba se ubica en Los Libertadores, no en Ciudad Empresarial."
+        "Conecta Huechuraba se ubica en Los Libertadores, no en Ciudad Empresarial.",
+        "El informe DGC de agosto de 2026 estima servicio definitivo en el segundo trimestre de 2027; la noticia MOP de junio anunciaba operación en el primero. Son hitos y fechas distintos, no una fecha garantizada."
       ],
       "geometry": null,
       "geometrySource": null,
       "geometryRole": null,
       "geometryLabel": null,
-      "publish": true
+      "publish": true,
+      "informationDateBasis": "Noticia MOP del 18-06-2026 complementada por informe DGC de agosto de 2026 (fecha con precisión mensual)."
     },
     {
       "id": "tunel-lo-ruiz",
@@ -6398,6 +6451,12 @@
           "title": "MOP: construcción del Túnel Lo Ruiz",
           "url": "https://www.mop.gob.cl/construccion-de-tunel-lo-ruiz-que-va-a-descongestionar-el-nudo-quilicura-ya-tiene-un-20-de-avance/",
           "date": "2026-08-19"
+        },
+        {
+          "id": "sea-rca-loruiz-279-2020",
+          "title": "SEA: RCA 279/2020, tabla 3, página 9: vértices del nuevo enlace Américo Vespucio",
+          "url": "https://firma.sea.gob.cl/publicaciones/9b/f3/2146714981.pdf",
+          "date": "2020-05-27"
         }
       ],
       "estimatedStart": null,
@@ -6406,12 +6465,23 @@
         "Considerar desvíos, ruido de faenas y tránsito de carga."
       ],
       "uncertainties": [
-        "Sin cartografía completa de enlaces validada; no se atribuye una distancia desde viviendas ni se garantizan menores tiempos."
+        "El marcador corresponde a un vértice documentado del enlace, no al acceso vehicular ni al perímetro completo. La distancia es a esa referencia y no representa el punto más próximo de las obras.",
+        "Cartografía aprobada en 2020 contrastada con la descripción MOP de agosto de 2026; quedan pendientes eventuales ajustes del diseño de detalle.",
+        "No se han validado recorridos desde las viviendas ni ahorros de tiempo."
       ],
-      "geometry": null,
-      "geometrySource": null,
-      "geometryRole": null,
-      "geometryLabel": null,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.70986128710936,
+          -33.37246952815886
+        ]
+      },
+      "geometrySource": {
+        "title": "SEA: RCA 279/2020, tabla 3, página 9",
+        "url": "https://firma.sea.gob.cl/publicaciones/9b/f3/2146714981.pdf"
+      },
+      "geometryRole": "reference-point",
+      "geometryLabel": "Vértice de referencia del nuevo enlace Américo Vespucio (RCA 279/2020; no es un acceso)",
       "publish": true
     },
     {
@@ -9423,6 +9493,150 @@
         "address": "Av. Luis Thayer Ojeda 390",
         "commune": "Providencia"
       }
+    },
+    {
+      "workId": "unab-r14",
+      "projectSlug": "abdon-cifuentes",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada.",
+      "benefit": "El edificio operativo amplía la infraestructura académica del barrio para su comunidad universitaria y puede aumentar la actividad local.",
+      "cautions": [
+        "La actividad universitaria puede incrementar flujos peatonales y tránsito en horarios de clases.",
+        "La infraestructura no es de libre acceso por vivir cerca; no se verificó ruta peatonal ni tiempo de traslado."
+      ],
+      "projectLocation": {
+        "lat": -33.449246,
+        "lng": -70.665677,
+        "address": "Abdón Cifuentes 90",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "unab-r14",
+      "projectSlug": "terrazzo",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada.",
+      "benefit": "El edificio operativo amplía la infraestructura académica del barrio para su comunidad universitaria y puede aumentar la actividad local.",
+      "cautions": [
+        "La actividad universitaria puede incrementar flujos peatonales y tránsito en horarios de clases.",
+        "La infraestructura no es de libre acceso por vivir cerca; no se verificó ruta peatonal ni tiempo de traslado."
+      ],
+      "projectLocation": {
+        "lat": -33.4541834,
+        "lng": -70.6690767,
+        "address": "Av. España 442",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "unab-r14",
+      "projectSlug": "domeyko-2055",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada.",
+      "benefit": "El edificio operativo amplía la infraestructura académica del barrio para su comunidad universitaria y puede aumentar la actividad local.",
+      "cautions": [
+        "La actividad universitaria puede incrementar flujos peatonales y tránsito en horarios de clases.",
+        "La infraestructura no es de libre acceso por vivir cerca; no se verificó ruta peatonal ni tiempo de traslado."
+      ],
+      "projectLocation": {
+        "lat": -33.4560545,
+        "lng": -70.6634419,
+        "address": "Domeyko 2055",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "unab-r14",
+      "projectSlug": "vergara-domeyko",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada.",
+      "benefit": "El edificio operativo amplía la infraestructura académica del barrio para su comunidad universitaria y puede aumentar la actividad local.",
+      "cautions": [
+        "La actividad universitaria puede incrementar flujos peatonales y tránsito en horarios de clases.",
+        "La infraestructura no es de libre acceso por vivir cerca; no se verificó ruta peatonal ni tiempo de traslado."
+      ],
+      "projectLocation": {
+        "lat": -33.455621,
+        "lng": -70.661402,
+        "address": "Calle Vergara 701",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "unab-r14",
+      "projectSlug": "don-rafael",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada.",
+      "benefit": "El edificio operativo amplía la infraestructura académica del barrio para su comunidad universitaria y puede aumentar la actividad local.",
+      "cautions": [
+        "La actividad universitaria puede incrementar flujos peatonales y tránsito en horarios de clases.",
+        "La infraestructura no es de libre acceso por vivir cerca; no se verificó ruta peatonal ni tiempo de traslado."
+      ],
+      "projectLocation": {
+        "lat": -33.4561487,
+        "lng": -70.6620263,
+        "address": "Domeyko 1950",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "unab-r14",
+      "projectSlug": "don-ignacio",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada.",
+      "benefit": "El edificio operativo amplía la infraestructura académica del barrio para su comunidad universitaria y puede aumentar la actividad local.",
+      "cautions": [
+        "La actividad universitaria puede incrementar flujos peatonales y tránsito en horarios de clases.",
+        "La infraestructura no es de libre acceso por vivir cerca; no se verificó ruta peatonal ni tiempo de traslado."
+      ],
+      "projectLocation": {
+        "lat": -33.45531,
+        "lng": -70.65838,
+        "address": "Av. Manuel Rodríguez 701",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "unab-r14",
+      "projectSlug": "san-ignacio",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El inmueble pertenece al entorno urbano República/Sazié/Domeyko del nuevo edificio universitario. Se mide al cruce citado por el responsable, no se deduce un acceso desde una dirección aproximada.",
+      "benefit": "El edificio operativo amplía la infraestructura académica del barrio para su comunidad universitaria y puede aumentar la actividad local.",
+      "cautions": [
+        "La actividad universitaria puede incrementar flujos peatonales y tránsito en horarios de clases.",
+        "La infraestructura no es de libre acceso por vivir cerca; no se verificó ruta peatonal ni tiempo de traslado."
+      ],
+      "projectLocation": {
+        "lat": -33.4499846,
+        "lng": -70.6564112,
+        "address": "San Ignacio 280",
+        "commune": "Santiago"
+      }
+    },
+    {
+      "workId": "tunel-lo-ruiz",
+      "projectSlug": "plaza-quilicura",
+      "reviewed": true,
+      "reviewedOn": "2026-10-31",
+      "rationale": "El proyecto está verificado en Américo Vespucio 1456 y el nuevo enlace modifica ese corredor. La relación se limita a su entorno vial; distancia geográfica al vértice documentado del enlace, no a una entrada.",
+      "benefit": "Podría modificar la conectividad del corredor Américo Vespucio al incorporar su conexión con General Velásquez; el efecto depende de los enlaces y recorridos utilizados.",
+      "cautions": [
+        "Autopista y cerro son barreras físicas. No se verificó recorrido ni acceso directo desde la vivienda.",
+        "Las faenas pueden ocasionar desvíos, ruido y tránsito de carga."
+      ],
+      "projectLocation": {
+        "lat": -33.372262,
+        "lng": -70.729264,
+        "address": "Américo Vespucio 1456",
+        "commune": "Quilicura"
+      }
     }
   ],
   "research": {
@@ -9433,14 +9647,14 @@
       "plaza-cervantes",
       "vicuna-mackenna-7589"
     ],
-    "projectsWithRelationships": 86,
+    "projectsWithRelationships": 90,
     "outcomes": {
-      "reviewed_verified": 86,
-      "reviewed_no_verified": 42,
+      "reviewed_verified": 90,
+      "reviewed_no_verified": 38,
       "location_blocked": 3
     },
     "method": "Búsqueda documental por comuna y sector, evaluación individual de dirección y candidatos. No equivale a un inventario universal de inversiones ni a una inspección de terreno.",
-    "supplementaryReview": "2026-10-31: fuentes adicionales, coordenadas y asociaciones; ver docs/entorno-ronda3-20261031.",
+    "supplementaryReview": "2026-10-31: fuentes adicionales, coordenadas y asociaciones; ver docs/entorno-ronda4-20261031.",
     "locationVerifications": [
       {
         "projectSlug": "reserva-mayor-2",

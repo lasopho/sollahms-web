@@ -73,7 +73,7 @@ Corte: 2026-10-31. Incluye ampliación en revisión; producción conserva la ver
 | Capitanes | Región Metropolitana / Providencia | Con obras asociadas | Nuevo edificio CESFAM Dr. Hernán Alessandri |
 | Edificio Dual 390 LTO | Región Metropolitana / Providencia | Con obras asociadas | Línea 8 de Metro |
 | Edificio Suecia | Región Metropolitana / Providencia | Sin asociación admitida | — |
-| Plaza Quilicura | Región Metropolitana / Quilicura | Sin asociación admitida | — |
+| Plaza Quilicura | Región Metropolitana / Quilicura | Con obras asociadas | Túnel Lo Ruiz |
 | Mapocho 3521 | Región Metropolitana / Quinta Normal | Con obras asociadas | Parque Mapocho Río · tramo 1 |
 | Mapocho 3521 - Edificio A | Región Metropolitana / Quinta Normal | Ubicación pendiente | — |
 | Mirador Mapocho | Región Metropolitana / Quinta Normal | Con obras asociadas | Parque Mapocho Río · tramo 1 |
@@ -85,7 +85,7 @@ Corte: 2026-10-31. Incluye ampliación en revisión; producción conserva la ver
 | Pintor Cicarelli I | Región Metropolitana / San Joaquín | Con obras asociadas | Mall Vivo Santiago · etapa II |
 | Pintor Cicarelli II | Región Metropolitana / San Joaquín | Con obras asociadas | Mall Vivo Santiago · etapa II |
 | Pintor Cicarelli III | Región Metropolitana / San Joaquín | Sin asociación admitida | — |
-| Abdón Cifuentes | Región Metropolitana / Santiago | Con obras asociadas | Mejoramiento Parque Portales; Nuevo CESFAM Erasmo Escala |
+| Abdón Cifuentes | Región Metropolitana / Santiago | Con obras asociadas | Mejoramiento Parque Portales; Nuevo CESFAM Erasmo Escala; UNAB Campus República · edificio R14 |
 | Angamos 205 | Región Metropolitana / Santiago | Con obras asociadas | NIDO Lucía · torre y laboratorios operativos; Renovación propuesta Plaza Artesanos del 900 |
 | Barrio Zenteno | Región Metropolitana / Santiago | Con obras asociadas | Centro Carol Urzúa · nuevos boxes de atención |
 | Bordevivo | Región Metropolitana / Santiago | Con obras asociadas | Proyecto de mejoramiento Parque Almagro; NIDO Lucía · torre y laboratorios operativos; Renovación propuesta Plaza Artesanos del 900 |
@@ -94,9 +94,9 @@ Corte: 2026-10-31. Incluye ampliación en revisión; producción conserva la ver
 | Curicó 77 | Región Metropolitana / Santiago | Con obras asociadas | NIDO Lucía · torre y laboratorios operativos; Renovación propuesta Plaza Artesanos del 900 |
 | Diagonal Paraguay | Región Metropolitana / Santiago | Con obras asociadas | NIDO Lucía · torre y laboratorios operativos; Renovación propuesta Plaza Artesanos del 900 |
 | Diagonal Vicuña | Región Metropolitana / Santiago | Con obras asociadas | Mall Vivo Santiago · etapa II |
-| Domeyko 2055 | Región Metropolitana / Santiago | Sin asociación admitida | — |
-| Don Ignacio | Región Metropolitana / Santiago | Con obras asociadas | Proyecto de mejoramiento Parque Almagro |
-| Don Rafael | Región Metropolitana / Santiago | Sin asociación admitida | — |
+| Domeyko 2055 | Región Metropolitana / Santiago | Con obras asociadas | UNAB Campus República · edificio R14 |
+| Don Ignacio | Región Metropolitana / Santiago | Con obras asociadas | Proyecto de mejoramiento Parque Almagro; UNAB Campus República · edificio R14 |
+| Don Rafael | Región Metropolitana / Santiago | Con obras asociadas | UNAB Campus República · edificio R14 |
 | Downtown San Martín | Región Metropolitana / Santiago | Sin asociación admitida | — |
 | Edificio Argomedo | Región Metropolitana / Santiago | Con obras asociadas | NIDO Lucía · torre y laboratorios operativos; Renovación propuesta Plaza Artesanos del 900 |
 | Edificio Lira 622 | Región Metropolitana / Santiago | Con obras asociadas | NIDO Lucía · torre y laboratorios operativos; Renovación propuesta Plaza Artesanos del 900 |
@@ -115,11 +115,11 @@ Corte: 2026-10-31. Incluye ampliación en revisión; producción conserva la ver
 | Parque Quinta | Región Metropolitana / Santiago | Con obras asociadas | Mejoramiento Parque Portales |
 | Quintavista | Región Metropolitana / Santiago | Con obras asociadas | Mejoramiento Parque Portales; Nuevo CESFAM Erasmo Escala |
 | Rosas 1444 | Región Metropolitana / Santiago | Con obras asociadas | Proyecto de mejoramiento Parque Forestal |
-| San Ignacio | Región Metropolitana / Santiago | Con obras asociadas | Proyecto de mejoramiento Parque Almagro |
+| San Ignacio | Región Metropolitana / Santiago | Con obras asociadas | Proyecto de mejoramiento Parque Almagro; UNAB Campus República · edificio R14 |
 | Santa Elena 1670 | Región Metropolitana / Santiago | Con obras asociadas | Mall Vivo Santiago · etapa II |
-| Terrazzo | Región Metropolitana / Santiago | Con obras asociadas | Nuevo CESFAM Erasmo Escala |
+| Terrazzo | Región Metropolitana / Santiago | Con obras asociadas | Nuevo CESFAM Erasmo Escala; UNAB Campus República · edificio R14 |
 | Tocornal | Región Metropolitana / Santiago | Con obras asociadas | NIDO Lucía · torre y laboratorios operativos; Renovación propuesta Plaza Artesanos del 900 |
-| Vergara Domeyko | Región Metropolitana / Santiago | Sin asociación admitida | — |
+| Vergara Domeyko | Región Metropolitana / Santiago | Con obras asociadas | UNAB Campus República · edificio R14 |
 | Vista Bulnes | Región Metropolitana / Santiago | Con obras asociadas | Proyecto de mejoramiento Parque Almagro; NIDO Lucía · torre y laboratorios operativos |
 | Vista Morandé | Región Metropolitana / Santiago | Con obras asociadas | Proyecto de mejoramiento Parque Forestal |
 | Vista Portugal | Región Metropolitana / Santiago | Con obras asociadas | Renovación propuesta Plaza Artesanos del 900 |
