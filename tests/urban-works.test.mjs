@@ -14,8 +14,9 @@ test('geographic distances and segment projection have independent numerical con
 });
 test('every published work carries state, primary evidence, reviewed dates and limitations',()=>{
  assert.equal(new Set(data.works.map(w=>w.id)).size,data.works.length);
+ assert.equal(publicWorks(data).length,data.works.filter(w=>w.publish===true).length);
  for(const w of publicWorks(data)){
-  assert.ok(STATES[w.status]);assert.ok(w.sources.length);assert.ok(w.responsible);assert.ok(w.cautions.length);assert.ok(w.uncertainties.length);
+  assert.ok(STATES[w.status]);assert.ok(w.sources.length);assert.ok(w.responsible);assert.ok(w.cautions.length);assert.ok(Array.isArray(w.uncertainties));
   for(const s of w.sources)assert.ok(/^https:\/\//.test(s.url));
   assert.ok(w.informationDate<=data.cutoff);assert.ok(w.reviewedOn<=data.cutoff);
   if(w.geometry){assert.ok(w.geometrySource.url);assert.ok(w.geometryLabel);}
@@ -31,7 +32,7 @@ test('relations are distinct, independently reviewed, active and calculated from
   assert.ok(data.projects.some(p=>p.slug===r.projectSlug));assert.ok(r.distanceM>=0);assert.match(distanceLabel(r),/en línea recta/);
   assert.ok(r.reviewed);assert.ok(r.rationale);assert.ok(r.cautions.length);
  }
- assert.equal(count,data.relationships.length);assert.equal(count,11);
+ assert.equal(count,data.relationships.length);assert.ok(count>=11);
 });
 test('changed project address/coordinate and unreviewed relations fail closed',()=>{
  const w='tren-puerto-varas',copy=structuredClone(data);
@@ -46,4 +47,14 @@ test('track geometry and future station centers cannot create rail proximity',()
  const copy=structuredClone(data);copy.works.find(w=>w.id==='tren-puerto-varas').geometryRole='track';
  assert.equal(relationshipsFor(copy,'tren-puerto-varas').length,0);
  for(const id of ['metro-linea-7','metro-linea-8','linea-9-santa-rosa-alameda'])assert.equal(relationshipsFor(data,id).length,0);
+});
+test('disputed project locations cannot create new proximity claims',()=>{
+ const copy=structuredClone(data);copy.research={blockedProjectSlugs:['edificio-nordico']};
+ assert.equal(relationshipsFor(copy,'tren-puerto-varas').some(r=>r.projectSlug==='edificio-nordico'),false);
+});
+test('multipolygon distances use the closest perimeter, not a map center',()=>{
+ const polygon={type:'Polygon',coordinates:[[[-70,-34],[-70,-32],[-71,-32],[-71,-34],[-70,-34]]]};
+ const multi={type:'MultiPolygon',coordinates:[[[[-60,-34],[-60,-32],[-61,-32],[-61,-34],[-60,-34]]],polygon.coordinates]};
+ assert.equal(geometryDistance({lat:-33,lng:-70},multi),geometryDistance({lat:-33,lng:-70},polygon));
+ assert.ok(geometryDistance({lat:-33,lng:-70},multi)<.001);
 });

@@ -22,6 +22,7 @@ export async function showProjectUrbanWorks(){
       for(const source of work.sources){if(!safeSource(source.url))continue;const a=el('a',source.title+(source.date?' · '+source.date:''));a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';detail.append(a,el('br'));}
       if(work.geometrySource){const a=el('a','Fuente cartográfica: '+work.geometrySource.title);a.href=work.geometrySource.url;a.target='_blank';a.rel='noopener noreferrer';detail.append(a);}
       article.append(el('small','Información: '+work.informationDate+' · Revisión: '+work.reviewedOn));
+      if(work.informationDateBasis)article.append(el('small',work.informationDateBasis));
       const first=work.sources[0];if(safeSource(first.url)){const source=el('a','Fuente: '+first.title);source.href=first.url;source.target='_blank';source.rel='noopener noreferrer';article.append(source);}
       article.append(detail);
       section.append(article);

@@ -22,13 +22,13 @@ export function geometryDistance(location,geometry) {
   if(!geometry)return null;
   const point=c=>({lng:c?.[0],lat:c?.[1]});
   if(geometry.type==='Point')return haversine(location,point(geometry.coordinates));
-  const paths=geometry.type==='LineString'?[geometry.coordinates]:['MultiLineString','Polygon'].includes(geometry.type)?geometry.coordinates:[];
+  const paths=geometry.type==='LineString'?[geometry.coordinates]:['MultiLineString','Polygon'].includes(geometry.type)?geometry.coordinates:geometry.type==='MultiPolygon'?geometry.coordinates.flat():[];
   const distances=paths.flatMap(path=>path.slice(1).map((b,i)=>segmentDistance(location,point(path[i]),point(b)))).filter(Number.isFinite);
   return distances.length?Math.min(...distances):null;
 }
 export const safeSource=url=>{try{return new URL(url).protocol==='https:';}catch{return false;}};
 export function publicWorks(data) {
-  return data.works.filter(w=>w.publish===true && STATES[w.status] && w.sources?.length && w.sources.every(s=>safeSource(s.url)) && /^\d{4}-\d{2}-\d{2}$/.test(w.informationDate) && w.informationDate<=data.cutoff && w.reviewedOn<=data.cutoff);
+  return data.works.filter(w=>w.publish===true && STATES[w.status] && w.sources?.length && w.sources.every(s=>safeSource(s.url)) && /^\d{4}-\d{2}-\d{2}$/.test(w.informationDate) && /^\d{4}-\d{2}-\d{2}$/.test(w.reviewedOn) && w.informationDate<=data.cutoff && w.reviewedOn<=data.cutoff);
 }
 export function relationshipsFor(data,workId) {
   const work=publicWorks(data).find(w=>w.id===workId);
@@ -39,10 +39,10 @@ export function relationshipsFor(data,workId) {
   const seen=new Set();
   return data.relationships.filter(r=>r.workId===workId&&r.reviewed===true).flatMap(r=>{
     const row=verified.get(r.projectSlug);
-    if(!row||seen.has(r.projectSlug)||!r.rationale||!r.benefit)return [];
+    if(!row||data.research?.blockedProjectSlugs?.includes(r.projectSlug)||seen.has(r.projectSlug)||!r.rationale||!r.benefit)return [];
     // Changed source locations invalidate an individually reviewed relationship.
     const expected=r.projectLocation;
-    if(!expected||expected.lat!==row.location.lat||expected.lng!==row.location.lng||expected.address!==row.location.address||expected.commune!==row.location.commune)return [];
+    if(!expected||typeof expected.address!=='string'||!expected.address.trim()||expected.lat!==row.location.lat||expected.lng!==row.location.lng||expected.address!==row.location.address||expected.commune!==row.location.commune)return [];
     const distanceM=geometryDistance(row.location,work.geometry);
     if(!Number.isFinite(distanceM))return [];
     seen.add(r.projectSlug);

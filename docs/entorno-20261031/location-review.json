@@ -1,0 +1,2171 @@
+{
+  "reviewedOn": "2026-10-31",
+  "total": 131,
+  "outcomes": {
+    "inherited_verified": 126,
+    "blocked": 5
+  },
+  "method": "Auditoría de integridad de los 131 registros existentes contra catálogo vigente: slugs, dirección, comuna, estado, fuente, fechas, coordenadas, duplicados y plausibilidad territorial. Revisión web focalizada de anomalías; no refetch sistemático de 131 fuentes ni nueva verificación de todas las coordenadas.",
+  "blockedProjectSlugs": [
+    "reserva-mayor-2",
+    "endemico",
+    "plaza-cervantes",
+    "mapocho-3521-edificio-a",
+    "vicuna-mackenna-7589"
+  ],
+  "projects": [
+    {
+      "slug": "distrito-centro",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/147109713",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -36.6125938,
+        "lng": -72.1111741
+      },
+      "address": "O´Higgins 1125",
+      "commune": "Chillán",
+      "alerts": []
+    },
+    {
+      "slug": "reserva-mayor-2",
+      "outcome": "blocked",
+      "reason": "Dirección precisa ausente (null) tanto en catálogo como en registro de ubicaciones; no usar la coincidencia de dos valores nulos como validación de dirección.",
+      "source": "https://www.vesant.cl/proyectos/reserva-mayor-2",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -36.790843,
+        "lng": -72.949394
+      },
+      "address": null,
+      "commune": "Concepción",
+      "alerts": []
+    },
+    {
+      "slug": "vista-llacolen-b",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2130",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -36.825548,
+        "lng": -73.060514
+      },
+      "address": "Las Heras Poniente 77",
+      "commune": "Concepción",
+      "alerts": [
+        "Coordenada compartida con vista-llacolen-a. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "bcome",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://myv.enlaceinmobiliario.cl/concepcion/departamento/b-come-concepcion/8687",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -36.81340773057336,
+        "lng": -73.04912567138673
+      },
+      "address": "Paicaví 1485",
+      "commune": "Concepción",
+      "alerts": []
+    },
+    {
+      "slug": "vista-llacolen-a",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2130",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -36.825548,
+        "lng": -73.060514
+      },
+      "address": "Las Heras Poniente 77",
+      "commune": "Concepción",
+      "alerts": [
+        "Coordenada compartida con vista-llacolen-b. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "campus-llacolen",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.enlaceinmobiliario.cl/biobio/concepcion/departamento/campus-llacolen/9753/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -36.8280426883823,
+        "lng": -73.0620861053467
+      },
+      "address": "Av. Padre Hurtado 830",
+      "commune": "Concepción",
+      "alerts": []
+    },
+    {
+      "slug": "nucleo-costanera",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/nucleo-costanera",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -18.467667,
+        "lng": -70.307266
+      },
+      "address": "Presbítero Ramírez 110",
+      "commune": "Arica",
+      "alerts": []
+    },
+    {
+      "slug": "wayra",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/wayra",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -18.466732,
+        "lng": -70.307481
+      },
+      "address": "Avenida Ing. Raúl Pey Casado 2125",
+      "commune": "Arica",
+      "alerts": []
+    },
+    {
+      "slug": "lamara",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/lamara",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -18.465752,
+        "lng": -70.30626
+      },
+      "address": "Avenida Ing. Raúl Pey Casado 2125",
+      "commune": "Arica",
+      "alerts": []
+    },
+    {
+      "slug": "alto-buzeta",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2123",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.481675,
+        "lng": -70.691112
+      },
+      "address": "Avenida Cinco 2951",
+      "commune": "Cerrillos",
+      "alerts": []
+    },
+    {
+      "slug": "independencia-4745",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1506959924",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.3855345,
+        "lng": -70.6785758
+      },
+      "address": "Independencia 4745",
+      "commune": "Conchalí",
+      "alerts": []
+    },
+    {
+      "slug": "vistamar",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2126",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.963534,
+        "lng": -71.329411
+      },
+      "address": "Baquedano 802",
+      "commune": "Coquimbo",
+      "alerts": []
+    },
+    {
+      "slug": "costanera-coquimbo-a",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://nollagam.cl/nuestros-proyectos/costanera-coquimbo-edificio-a/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.958124,
+        "lng": -71.3109755
+      },
+      "address": "Av. Costanera 3300",
+      "commune": "Coquimbo",
+      "alerts": [
+        "Coordenada compartida con costanera-coquimbo-b. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "costanera-coquimbo-b",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://nollagam.cl/nuestros-proyectos/costanera-coquimbo-edificio-b/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.958124,
+        "lng": -71.3109755
+      },
+      "address": "Av. Costanera 3300",
+      "commune": "Coquimbo",
+      "alerts": [
+        "Coordenada compartida con costanera-coquimbo-a. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "edificio-ecuador",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/254842029",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4520869,
+        "lng": -70.6942589
+      },
+      "address": "Coronel Godoy 0157, esquina Av. Ecuador",
+      "commune": "Estación Central",
+      "alerts": []
+    },
+    {
+      "slug": "coronel-godoy",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/110772207",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4522555,
+        "lng": -70.6945581
+      },
+      "address": "Av. Ecuador 4226",
+      "commune": "Estación Central",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-indi",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/110308797",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4070436,
+        "lng": -70.6658714
+      },
+      "address": "Vallenar 2070, esquina Hipódromo",
+      "commune": "Independencia",
+      "alerts": []
+    },
+    {
+      "slug": "vivaceta",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/109410208",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4222966,
+        "lng": -70.6627414
+      },
+      "address": "Av. Fermín Vivaceta 864",
+      "commune": "Independencia",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-bezanilla",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/edificio-bezanilla",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.417717,
+        "lng": -70.657393
+      },
+      "address": "Bezanilla 1278",
+      "commune": "Independencia",
+      "alerts": []
+    },
+    {
+      "slug": "jardines-de-alvarado",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/1262490634",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4047993,
+        "lng": -70.673213
+      },
+      "address": "Coronel Alvarado 2505",
+      "commune": "Independencia",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-santa-maria",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://nollagam.cl/nuestros-proyectos/santa-maria/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4158742,
+        "lng": -70.6653563
+      },
+      "address": "Capitán Bynon 1277",
+      "commune": "Independencia",
+      "alerts": []
+    },
+    {
+      "slug": "plaza-cervantes-b",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2111",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.525775,
+        "lng": -70.672085
+      },
+      "address": "Chile España 8184",
+      "commune": "La Cisterna",
+      "alerts": [
+        "Coordenada compartida con plaza-cervantes. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "edificio-teatinos-750",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112504929",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4350556,
+        "lng": -70.6559584
+      },
+      "address": "Teatinos 750",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-vista-amunategui",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112504790",
+      "sourceCheckedOn": "2026-10-30",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4353189,
+        "lng": -70.6571591
+      },
+      "address": "Amunátegui 743",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "endemico",
+      "outcome": "blocked",
+      "reason": "Dirección precisa ausente (null) tanto en catálogo como en registro de ubicaciones; no usar la coincidencia de dos valores nulos como validación de dirección.",
+      "source": "https://endemicopichilemu.cl/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -34.452561,
+        "lng": -72.029259
+      },
+      "address": null,
+      "commune": "Pichilemu",
+      "alerts": []
+    },
+    {
+      "slug": "playa-penuelas",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.sjgroup.cl/proyectos/detalle/edificio-playa-penuelas",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.9478381,
+        "lng": -71.2906199
+      },
+      "address": "Av. Peñuelas 118",
+      "commune": "Coquimbo",
+      "alerts": []
+    },
+    {
+      "slug": "serrano-torre-a",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2116",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -41.471978,
+        "lng": -72.92662
+      },
+      "address": "Serrano 53",
+      "commune": "Puerto Montt",
+      "alerts": []
+    },
+    {
+      "slug": "plaza-cervantes",
+      "outcome": "blocked",
+      "reason": "Dirección precisa ausente (null) tanto en catálogo como en registro de ubicaciones; no usar la coincidencia de dos valores nulos como validación de dirección.",
+      "source": "https://andrassy.cl/propiedad/2102",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.525775,
+        "lng": -70.672085
+      },
+      "address": null,
+      "commune": "La Cisterna",
+      "alerts": [
+        "Coordenada compartida con plaza-cervantes-b. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "vista-costanera",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/1263631912",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4218599,
+        "lng": -70.677109
+      },
+      "address": "Juana Atala de Hirmas 601",
+      "commune": "Renca",
+      "alerts": []
+    },
+    {
+      "slug": "vista-reloncavi",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2121",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -41.472684,
+        "lng": -72.927886
+      },
+      "address": "Francisco Bilbao 85",
+      "commune": "Puerto Montt",
+      "alerts": []
+    },
+    {
+      "slug": "downtown-san-martin",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112503442",
+      "sourceCheckedOn": "2026-10-30",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4432793,
+        "lng": -70.6577074
+      },
+      "address": "San Martín 70",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "vista-morande",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112504733",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4342126,
+        "lng": -70.6546449
+      },
+      "address": "Morandé 808",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-don-pepe-154",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1832",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.527206,
+        "lng": -70.598511
+      },
+      "address": "Calle Don Pepe N°154",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "plaza-de-lourdes",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1836",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.437199,
+        "lng": -70.686503
+      },
+      "address": "Avda. San Pablo 3770",
+      "commune": "Quinta Normal",
+      "alerts": []
+    },
+    {
+      "slug": "santa-elena-1670-mbi",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/108389080",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4659992,
+        "lng": -70.6282044
+      },
+      "address": "Santa Elena 1670",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "plaza-quilicura",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2112",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.372262,
+        "lng": -70.729264
+      },
+      "address": "Américo Vespucio 1456",
+      "commune": "Quilicura",
+      "alerts": []
+    },
+    {
+      "slug": "mapocho-3521-edificio-a",
+      "outcome": "blocked",
+      "reason": "Dirección precisa ausente (null) tanto en catálogo como en registro de ubicaciones; no usar la coincidencia de dos valores nulos como validación de dirección.",
+      "source": "https://andrassy.cl/propiedad/1856",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.432922,
+        "lng": -70.68255
+      },
+      "address": null,
+      "commune": "Quinta Normal",
+      "alerts": [
+        "Coordenada compartida con mapocho-3521. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "edificio-lira-622",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2191",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4506,
+        "lng": -70.638433
+      },
+      "address": "Calle Lira 622",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-dual-390-lto",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2214",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.421994,
+        "lng": -70.600927
+      },
+      "address": "Av. Luis Thayer Ojeda 390",
+      "commune": "Providencia",
+      "alerts": []
+    },
+    {
+      "slug": "entre-vicunas",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1839",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.509693,
+        "lng": -70.610467
+      },
+      "address": "Vicuña Mackenna 5970",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "lomas-de-puyai",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/lomas-de-puyai",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -32.502155,
+        "lng": -71.426027
+      },
+      "address": "Paseo Punta Puyai 1600",
+      "commune": "Papudo",
+      "alerts": []
+    },
+    {
+      "slug": "ferroparque",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/ferroparque",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -38.72781,
+        "lng": -72.57259
+      },
+      "address": "Pasaje Bascuñán Santa María 0699",
+      "commune": "Temuco",
+      "alerts": []
+    },
+    {
+      "slug": "froilan-roa-5731-torre-norte",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1862",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.522688,
+        "lng": -70.598714
+      },
+      "address": "Froilán Roa 5731",
+      "commune": "La Florida",
+      "alerts": [
+        "Coordenada compartida con froilan-roa-5731-torre-sur. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "rosas-1444",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112504909",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4358199,
+        "lng": -70.6575876
+      },
+      "address": "Rosas 1438",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "guillermo-mann-1401",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1412630057",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4713045,
+        "lng": -70.6185874
+      },
+      "address": "Guillermo Mann 1401",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "froilan-roa-5731-torre-sur",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1862",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.522688,
+        "lng": -70.598714
+      },
+      "address": "Froilán Roa 5731",
+      "commune": "La Florida",
+      "alerts": [
+        "Coordenada compartida con froilan-roa-5731-torre-norte. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "edificio-san-francisco-1204",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2211",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.460969,
+        "lng": -70.644888
+      },
+      "address": "Calle San Francisco 1204, esquina Marina de Gaette",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "cumbres-de-penuelas",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/cumbres-de-pe%C3%B1uelas",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.951288,
+        "lng": -71.281634
+      },
+      "address": "Los Lagos 910",
+      "commune": "Coquimbo",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-baum",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2069",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.514607,
+        "lng": -70.598308
+      },
+      "address": "El Canelo 6750",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "diagonal-paraguay",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112584705",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4428821,
+        "lng": -70.6369228
+      },
+      "address": "Diagonal Paraguay 240",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/8920034796",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -41.3260186,
+        "lng": -72.9704819
+      },
+      "address": "Vicente Pérez Rosales 991",
+      "commune": "Puerto Varas",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-suecia",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1357912856",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4406666,
+        "lng": -70.6013648
+      },
+      "address": "Tranquila 2323, esquina Suecia",
+      "commune": "Providencia",
+      "alerts": []
+    },
+    {
+      "slug": "capitanes",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112592446",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4446425,
+        "lng": -70.6128243
+      },
+      "address": "Los Capitanes 1447",
+      "commune": "Providencia",
+      "alerts": []
+    },
+    {
+      "slug": "parque-germania",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2074",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -41.471323,
+        "lng": -72.93394
+      },
+      "address": "Diagonal Germania 200",
+      "commune": "Puerto Montt",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-argomedo",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112584130",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4501836,
+        "lng": -70.6377222
+      },
+      "address": "Argomedo 382",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-mood",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/109274872",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.51537,
+        "lng": -70.5922483
+      },
+      "address": "Av. Américo Vespucio 6630",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-indigo",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/8920046215",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -41.3238301,
+        "lng": -72.9743099
+      },
+      "address": "Imperial 645",
+      "commune": "Puerto Varas",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-verne",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.sjgroup.cl/proyectos/detalle/edificio-verne",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.9647506,
+        "lng": -71.3358452
+      },
+      "address": "Av. Videla 810",
+      "commune": "Coquimbo",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-santo",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/14026864101",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4504307,
+        "lng": -70.6503357
+      },
+      "address": "Cóndor 1071, esquina San Diego",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-living-town",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112584173",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4515517,
+        "lng": -70.6423223
+      },
+      "address": "Eyzaguirre 590",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-bold",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2093",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -39.813949,
+        "lng": -73.240792
+      },
+      "address": "Chacabuco 637",
+      "commune": "Valdivia",
+      "alerts": []
+    },
+    {
+      "slug": "domeyko-2055",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/11089610670",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4560545,
+        "lng": -70.6634419
+      },
+      "address": "Domeyko 2055",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "vergara-domeyko",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2205",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.455621,
+        "lng": -70.661402
+      },
+      "address": "Calle Vergara 701",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "parque-panama",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2200",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.433841,
+        "lng": -70.66845
+      },
+      "address": "Av. Martínez de Rozas 2262",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "playa-serena",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1553894545",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.9261235,
+        "lng": -71.2780966
+      },
+      "address": "Avenida del Mar 3500",
+      "commune": "La Serena",
+      "alerts": []
+    },
+    {
+      "slug": "don-tomas",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1273968979",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.3915724,
+        "lng": -70.6732931
+      },
+      "address": "Teniente Yávar 1733",
+      "commune": "Conchalí",
+      "alerts": []
+    },
+    {
+      "slug": "plaza-las-condes",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://sento.cl/proyectos/plaza-las-condes-7083/",
+      "sourceCheckedOn": "2026-10-28",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4052083,
+        "lng": -70.5576861
+      },
+      "address": "Avenida Las Condes 7083",
+      "commune": "Las Condes",
+      "alerts": []
+    },
+    {
+      "slug": "mapocho-3521",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1856",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.432922,
+        "lng": -70.68255
+      },
+      "address": "Rivas Vicuña 1131",
+      "commune": "Quinta Normal",
+      "alerts": [
+        "Coordenada compartida con mapocho-3521-edificio-a. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "jofre-135",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112584650",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4445304,
+        "lng": -70.6349431
+      },
+      "address": "Jofré 157",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "irarrazaval",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1204053901",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4532803,
+        "lng": -70.6105436
+      },
+      "address": "Irarrázaval 1970",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "parque-quinta",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2204",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.43924,
+        "lng": -70.688582
+      },
+      "address": "Calle Santo Domingo 3916",
+      "commune": "Santiago",
+      "alerts": [
+        "Denominación comunal Santiago conservada según fuente del desarrollador Norte Verde. Se descartó corregir a Quinta Normal basándose sólo en portales secundarios."
+      ],
+      "additionalSources": [
+        {
+          "url": "https://norte-verde.cl/proyecto/parque-quinta/",
+          "title": "Desarrollador: Santo Domingo 3916, Santiago Centro",
+          "date": null
+        }
+      ]
+    },
+    {
+      "slug": "quintavista",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.bestplacetolive.com/proyecto-detalle/quinta-vista-norte-verde",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4391286,
+        "lng": -70.6869348
+      },
+      "address": "Av. Santo Domingo 3810",
+      "commune": "Santiago",
+      "alerts": [
+        "Denominación comunal Santiago conservada según fuente del desarrollador Norte Verde. Se descartó corregir a Quinta Normal basándose sólo en portales secundarios."
+      ],
+      "additionalSources": [
+        {
+          "url": "https://norte-verde.cl/wp-content/uploads/2025/04/NV_Memoria_2024.pdf",
+          "title": "Norte Verde: memoria 2024, página 123, Santo Domingo 3810 Santiago",
+          "date": "2025-04"
+        }
+      ]
+    },
+    {
+      "slug": "don-rafael",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1036659827",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4561487,
+        "lng": -70.6620263
+      },
+      "address": "Domeyko 1950",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "terrazzo",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/108588480",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4541834,
+        "lng": -70.6690767
+      },
+      "address": "Av. España 442",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "vima",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/108247732",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.5105151,
+        "lng": -70.611226
+      },
+      "address": "Vicuña Mackenna 5908",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "los-lilenes",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2005",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.5179,
+        "lng": -70.60404
+      },
+      "address": "Vicuña Mackenna Poniente 6988",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "nueva-esmeralda",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1422683501",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.517356,
+        "lng": -70.6563259
+      },
+      "address": "Esmeralda 6548",
+      "commune": "La Cisterna",
+      "alerts": []
+    },
+    {
+      "slug": "el-aromo",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/109274873",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.5164976,
+        "lng": -70.5932076
+      },
+      "address": "Américo Vespucio 6750",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "espacio-victoria",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/espacio-victoria",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.528799,
+        "lng": -70.651056
+      },
+      "address": "Victoria 7997",
+      "commune": "La Cisterna",
+      "alerts": []
+    },
+    {
+      "slug": "terratolten",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/terratolten-3",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -39.274644,
+        "lng": -72.244919
+      },
+      "address": "Beato Adolfo Kolping 685",
+      "commune": "Villarrica",
+      "alerts": []
+    },
+    {
+      "slug": "pintor-cicarelli-iii",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.enlaceinmobiliario.cl/metropolitano/san-joaquin/departamento/pintor-cicarelli-iii/9752/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.47705741215315,
+        "lng": -70.63346385955812
+      },
+      "address": "Pintor Cicarelli 268",
+      "commune": "San Joaquín",
+      "alerts": [
+        "El pin de Enlace se encuentra a unos 330 m del grupo I/II pese numeración 268/278/288. Es una alerta cartográfica, no prueba de error: el expediente ambiental describe un conjunto de tres edificios y frente por Lira 2408. No trasladar ni fusionar puntos de etapas sin plano de emplazamiento."
+      ]
+    },
+    {
+      "slug": "trinidad-iii",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2117",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.539824,
+        "lng": -70.683266
+      },
+      "address": "Avenida Lo Espejo 01173",
+      "commune": "La Cisterna",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-liverpool",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2167",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.515508,
+        "lng": -70.608732
+      },
+      "address": "Inglaterra 60",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "mirador-la-florida",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.google.com/maps/place/Eugenia+8,+La+Florida,+Regi%C3%B3n+Metropolitana/@-33.5118008,-70.6099463,17z/data=!4m6!3m5!1s0x9662d071d5cc1b81:0x94161982506d1215!8m2!3d-33.5118008!4d-70.6099463!16s%2Fg%2F11mv_ydh3v",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.5118008,
+        "lng": -70.6099463
+      },
+      "address": "Eugenia 8",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "alto-goycolea",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2160",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.541353,
+        "lng": -70.656073
+      },
+      "address": "Goycolea 720",
+      "commune": "La Cisterna",
+      "alerts": []
+    },
+    {
+      "slug": "eleuterio-ramirez",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1558366779",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.6018107,
+        "lng": -70.6989636
+      },
+      "address": "Eleuterio Ramírez 951",
+      "commune": "San Bernardo",
+      "alerts": []
+    },
+    {
+      "slug": "barrio-zenteno",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://nollagam.cl/nuestros-proyectos/barrio-zenteno/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4620419,
+        "lng": -70.6502997
+      },
+      "address": "Zenteno 1276",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "urban-la-florida",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/urban-la-florida",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.520383,
+        "lng": -70.602105
+      },
+      "address": "Vicuña Mackenna 7189",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "vicuna-mackenna-6896",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/1251605017",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.5178217,
+        "lng": -70.6043802
+      },
+      "address": "Vicuña Mackenna 6896",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "vicuna-mackenna-7589",
+      "outcome": "blocked",
+      "reason": "La coordenada heredada está aproximadamente 3,5 km al noroeste del emplazamiento descrito por SEA para Av. Vicuña Mackenna 7585–7589. La tabla oficial identifica centroide UTM WGS84 huso 19S E351520,975 N6289499,169 (conversión de auditoría ≈-33.523787,-70.598875); mantener nuevas asociaciones bloqueadas hasta corregir el registro con revisión expresa.",
+      "source": "https://andrassy.cl/propiedad/2017",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.495994,
+        "lng": -70.616895
+      },
+      "address": "Av. Vicuña Mackenna 7589",
+      "commune": "La Florida",
+      "alerts": [],
+      "additionalSources": [
+        {
+          "url": "https://infofirma.sea.gob.cl/DocumentosSEA/MostrarDocumento?docId=53%2F65%2F0f20f48e6ca22ffaca5acd2887a0cb48b0c7",
+          "title": "SEA: tabla de coordenadas emplazamiento Vicuña Mackenna 7585–7589",
+          "date": null
+        },
+        {
+          "url": "https://ingevecinmobiliaria.cl/proyecto-vicu%C3%B1amackenna7589",
+          "title": "Ingevec: ubicación del proyecto y entorno Vicente Valdés",
+          "date": null
+        }
+      ]
+    },
+    {
+      "slug": "aires-la-florida-2",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/aires-la-florida-2",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.512908,
+        "lng": -70.604642
+      },
+      "address": "Pichidegua 6422",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "condominio-uruguay",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.enlaceinmobiliario.cl/metropolitano/la-florida/departamento/condominio-uruguay/6153/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.53416895325055,
+        "lng": -70.58415412902833
+      },
+      "address": "Uruguay 8866",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "enlace-mackenna",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/enlace-mackenna",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.509979,
+        "lng": -70.612225
+      },
+      "address": "Vicuña Mackenna 5889",
+      "commune": "San Joaquín",
+      "alerts": []
+    },
+    {
+      "slug": "novo-catedral",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://isudamericana.cl/proyectos/novo-catedral/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4383975,
+        "lng": -70.6616676
+      },
+      "address": "Catedral 1743",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "carmen-marin",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112583997",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.44773,
+        "lng": -70.6420988
+      },
+      "address": "Calle Carmen 318",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "gregorio-de-la-fuente-a",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.myway.cl/proyectos/gregorio1-macul",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4781519,
+        "lng": -70.6012424
+      },
+      "address": "Gregorio de la Fuente 3011",
+      "commune": "Macul",
+      "alerts": []
+    },
+    {
+      "slug": "matta-016",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2009",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.455541,
+        "lng": -70.629718
+      },
+      "address": "Av. Manuel Antonio Matta 16",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-plaza-nova",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2210",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.454121,
+        "lng": -70.653216
+      },
+      "address": "Calle Roberto Espinoza 670",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "condominio-parque-don-lautaro",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.enlaceinmobiliario.cl/metropolitano/penalolen/departamento/condominio-don-lautaro/8915/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.50361395670536,
+        "lng": -70.5535125732422
+      },
+      "address": "Av. Consistorial 6501",
+      "commune": "Peñalolén",
+      "alerts": []
+    },
+    {
+      "slug": "caceres",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2136",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -34.1676,
+        "lng": -70.737163
+      },
+      "address": "Oficial Agustín Almarza 124",
+      "commune": "Rancagua",
+      "alerts": []
+    },
+    {
+      "slug": "pintor-cicarelli-i",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2106",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.476295,
+        "lng": -70.630036
+      },
+      "address": "Pintor Cicarelli 288",
+      "commune": "San Joaquín",
+      "alerts": []
+    },
+    {
+      "slug": "pintor-cicarelli-ii",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2109",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.476109,
+        "lng": -70.62976
+      },
+      "address": "Pintor Cicarelli 278",
+      "commune": "San Joaquín",
+      "alerts": []
+    },
+    {
+      "slug": "edif-origen-atacama-3008",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2195",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.431627,
+        "lng": -70.677676
+      },
+      "address": "Calle Maipú 1196",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "abdon-cifuentes",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2027",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.449246,
+        "lng": -70.665677
+      },
+      "address": "Abdón Cifuentes 90",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "don-ignacio",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2323",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.45531,
+        "lng": -70.65838
+      },
+      "address": "Av. Manuel Rodríguez 701",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "tocornal",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2025",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.451998,
+        "lng": -70.639441
+      },
+      "address": "Manuel Antonio Tocornal 678",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "centenario-1",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/1154369481",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4762806,
+        "lng": -70.6484855
+      },
+      "address": "Centenario 1151",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "curico-77",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112584661",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4436569,
+        "lng": -70.6345946
+      },
+      "address": "Curicó 77",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "san-ignacio",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112466398",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4499846,
+        "lng": -70.6564112
+      },
+      "address": "San Ignacio 280",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "angamos",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112584191",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4458481,
+        "lng": -70.6389369
+      },
+      "address": "Angamos 205",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "conecta-huechuraba",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/conecta-huechuraba",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.366452,
+        "lng": -70.680894
+      },
+      "address": "Av. Los Libertadores 6170",
+      "commune": "Huechuraba",
+      "alerts": []
+    },
+    {
+      "slug": "bordevivo",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2219",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.450544,
+        "lng": -70.643058
+      },
+      "address": "San Isidro 513",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "mirador-mapocho",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/111743013",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4323135,
+        "lng": -70.6890597
+      },
+      "address": "Mapocho 3951",
+      "commune": "Quinta Normal",
+      "alerts": []
+    },
+    {
+      "slug": "alto-san-joaquin",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://ecasa.cl/proyecto/alto-san-joaquin",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.921731,
+        "lng": -71.243897
+      },
+      "address": "Benito Rebolledo esquina San Joaquín",
+      "commune": "La Serena",
+      "alerts": []
+    },
+    {
+      "slug": "vista-bulnes",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/215",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.450705,
+        "lng": -70.65134
+      },
+      "address": "Calle Cóndor 1152",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "jardines-de-ramon-cruz",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/109327052",
+      "sourceCheckedOn": "2026-10-30",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4857091,
+        "lng": -70.5854856
+      },
+      "address": "Ramón Cruz 3291",
+      "commune": "Macul",
+      "alerts": []
+    },
+    {
+      "slug": "vitro",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1848",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.472889,
+        "lng": -70.62207
+      },
+      "address": "Zañartu 980",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "mirador-irarrazaval",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/2327",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.453714,
+        "lng": -70.618802
+      },
+      "address": "Obispo Orrego 40",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "alto-irarrazaval",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1876",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.454286,
+        "lng": -70.606875
+      },
+      "address": "Avda. Irarrázaval 2325",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "jose-pedro-alessandri",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/966338882",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.468437,
+        "lng": -70.597749
+      },
+      "address": "Avda. José Pedro Alessandri 1498",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "vicuna-mackenna-1432",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://andrassy.cl/propiedad/1826",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.460913,
+        "lng": -70.628035
+      },
+      "address": "Avda. Vicuña Mackenna 1432",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "vicente-valdes",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/109272618",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.5263964,
+        "lng": -70.5955453
+      },
+      "address": "Vicente Valdés 86",
+      "commune": "La Florida",
+      "alerts": []
+    },
+    {
+      "slug": "diagonal-vicuna",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/1242344195",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4700674,
+        "lng": -70.6270063
+      },
+      "address": "Santa Elena 2000",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "vista-portugal",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112584256",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4522052,
+        "lng": -70.6344392
+      },
+      "address": "Portugal 755",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "marina-pacifico",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.google.com/maps/place/Marina+Pac%C3%ADfico/@-29.9643728,-71.3227808,14z/data=!4m10!1m2!2m1!1sLos+Pescadores+5121,+Coquimbo,+Chile!3m6!1s0x9691c90071e5b55b:0x1051b26209fb8827!8m2!3d-29.9476744!4d-71.2898966!16s%2Fg%2F11mksvp_1r",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -29.9476744,
+        "lng": -71.2898966
+      },
+      "address": "Av. Los Pescadores 5121",
+      "commune": "Coquimbo",
+      "alerts": []
+    },
+    {
+      "slug": "nova-parque",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://rglpropiedades.cl/property/edificio-nova-parque-san-joaquin/",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4884489,
+        "lng": -70.6184906
+      },
+      "address": "Vicuña Mackenna 3747",
+      "commune": "San Joaquín",
+      "alerts": []
+    },
+    {
+      "slug": "own",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/10014411524",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4575019,
+        "lng": -70.6270959
+      },
+      "address": "San Eugenio 567",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "monjitas-690",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/112603605",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.4369916,
+        "lng": -70.646913
+      },
+      "address": "Monjitas 690",
+      "commune": "Santiago",
+      "alerts": []
+    },
+    {
+      "slug": "los-alerces",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/108654793",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.470933,
+        "lng": -70.5974888
+      },
+      "address": "Los Alerces 3254",
+      "commune": "Ñuñoa",
+      "alerts": []
+    },
+    {
+      "slug": "valle-los-ingleses-iii",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/way/924954805",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -33.0551676,
+        "lng": -71.5892983
+      },
+      "address": "Camino Los Ingleses 715",
+      "commune": "Valparaíso",
+      "alerts": []
+    },
+    {
+      "slug": "edificio-nordico",
+      "outcome": "inherited_verified",
+      "reason": "Integridad del registro heredado comprobada: identidad, dirección no vacía, comuna y coordenadas coinciden con catálogo; fuente HTTPS y fecha de origen conservadas. No equivale a nueva geocodificación ni inspección de terreno.",
+      "source": "https://www.openstreetmap.org/node/267739921",
+      "sourceCheckedOn": "2026-10-26",
+      "checkedOn": "2026-10-31",
+      "coordinate": {
+        "lat": -41.3196546,
+        "lng": -72.9811797
+      },
+      "address": "Del Rosario esquina Mirador",
+      "commune": "Puerto Varas",
+      "alerts": []
+    }
+  ],
+  "anomalies": [
+    {
+      "slug": "reserva-mayor-2",
+      "blocking": true,
+      "reasons": [
+        "Dirección precisa ausente (null) tanto en catálogo como en registro de ubicaciones; no usar la coincidencia de dos valores nulos como validación de dirección."
+      ],
+      "alerts": []
+    },
+    {
+      "slug": "vista-llacolen-b",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Coordenada compartida con vista-llacolen-a. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "vista-llacolen-a",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Coordenada compartida con vista-llacolen-b. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "costanera-coquimbo-a",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Coordenada compartida con costanera-coquimbo-b. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "costanera-coquimbo-b",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Coordenada compartida con costanera-coquimbo-a. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "plaza-cervantes-b",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Coordenada compartida con plaza-cervantes. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "endemico",
+      "blocking": true,
+      "reasons": [
+        "Dirección precisa ausente (null) tanto en catálogo como en registro de ubicaciones; no usar la coincidencia de dos valores nulos como validación de dirección."
+      ],
+      "alerts": []
+    },
+    {
+      "slug": "plaza-cervantes",
+      "blocking": true,
+      "reasons": [
+        "Dirección precisa ausente (null) tanto en catálogo como en registro de ubicaciones; no usar la coincidencia de dos valores nulos como validación de dirección."
+      ],
+      "alerts": [
+        "Coordenada compartida con plaza-cervantes-b. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "mapocho-3521-edificio-a",
+      "blocking": true,
+      "reasons": [
+        "Dirección precisa ausente (null) tanto en catálogo como en registro de ubicaciones; no usar la coincidencia de dos valores nulos como validación de dirección."
+      ],
+      "alerts": [
+        "Coordenada compartida con mapocho-3521. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "froilan-roa-5731-torre-norte",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Coordenada compartida con froilan-roa-5731-torre-sur. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "froilan-roa-5731-torre-sur",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Coordenada compartida con froilan-roa-5731-torre-norte. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "mapocho-3521",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Coordenada compartida con mapocho-3521-edificio-a. Identidades de etapa/torre conservadas; no constituye duplicación de obra y no se fusionan fichas."
+      ]
+    },
+    {
+      "slug": "parque-quinta",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Denominación comunal Santiago conservada según fuente del desarrollador Norte Verde. Se descartó corregir a Quinta Normal basándose sólo en portales secundarios."
+      ]
+    },
+    {
+      "slug": "quintavista",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "Denominación comunal Santiago conservada según fuente del desarrollador Norte Verde. Se descartó corregir a Quinta Normal basándose sólo en portales secundarios."
+      ]
+    },
+    {
+      "slug": "pintor-cicarelli-iii",
+      "blocking": false,
+      "reasons": [],
+      "alerts": [
+        "El pin de Enlace se encuentra a unos 330 m del grupo I/II pese numeración 268/278/288. Es una alerta cartográfica, no prueba de error: el expediente ambiental describe un conjunto de tres edificios y frente por Lira 2408. No trasladar ni fusionar puntos de etapas sin plano de emplazamiento."
+      ]
+    },
+    {
+      "slug": "vicuna-mackenna-7589",
+      "blocking": true,
+      "reasons": [
+        "La coordenada heredada está aproximadamente 3,5 km al noroeste del emplazamiento descrito por SEA para Av. Vicuña Mackenna 7585–7589. La tabla oficial identifica centroide UTM WGS84 huso 19S E351520,975 N6289499,169 (conversión de auditoría ≈-33.523787,-70.598875); mantener nuevas asociaciones bloqueadas hasta corregir el registro con revisión expresa."
+      ],
+      "alerts": []
+    }
+  ],
+  "commercialDataChanged": false,
+  "sourcesChanged": false
+}

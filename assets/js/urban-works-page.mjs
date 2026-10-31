@@ -17,7 +17,7 @@ function options(key,values){
   sort(values).forEach(value=>controls[key].append(new Option(key==='estado'?statusLabel(value):value,value)));
   if([...controls[key].options].some(o=>o.value===current))controls[key].value=current;
 }
-function updateCommunes(){options('comuna',works.filter(w=>!controls.region.value||w.region===controls.region.value).flatMap(w=>w.communes||[]));}
+function updateCommunes(){options('comuna',[...works.filter(w=>!controls.region.value||w.region===controls.region.value).flatMap(w=>w.communes||[]),...data.projects.filter(p=>!controls.region.value||p.region===controls.region.value).map(p=>p.comuna)]);}
 function writeUrl(){
   const url=new URL(location.href);for(const [key,value] of Object.entries(state()))value?url.searchParams.set(key,value):url.searchParams.delete(key);
   projectScope?url.searchParams.set('proyecto',projectScope):url.searchParams.delete('proyecto');
@@ -76,6 +76,7 @@ function card(work){
   if(work.benefit)article.append(node('p',work.benefit,'uw-benefit'));
   if(work.estimatedEnd)article.append(node('p','Fecha estimada: '+date(work.estimatedEnd),'uw-card-meta'));
   article.append(node('p','Información: '+date(work.informationDate)+' · Revisada: '+date(work.reviewedOn),'uw-card-meta'));
+  if(work.informationDateBasis)article.append(node('p',work.informationDateBasis,'uw-card-meta'));
   const primary=work.sources?.find(source=>external(source.url));
   if(primary){const p=node('p',undefined,'uw-card-meta'),a=node('a','Consultar fuente oficial');a.href=external(primary.url);a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label','Consultar fuente: '+primary.title);p.append(a);article.append(p);}
   article.append(related(work));
@@ -168,8 +169,9 @@ byId('uw-reset').addEventListener('click',()=>{Object.values(controls).forEach(c
 window.addEventListener('popstate',()=>{if(data){restoreUrl();render();}});
 try{
   data=await loadUrbanData();works=publicWorks(data);
-  options('region',works.map(w=>w.region));options('tipo',works.map(w=>w.type));options('estado',works.map(w=>w.status));updateCommunes();restoreUrl();render();
+  options('region',[...works.map(w=>w.region),...data.projects.map(p=>p.region)]);options('tipo',works.map(w=>w.type));options('estado',works.map(w=>w.status));updateCommunes();restoreUrl();render();
   byId('uw-cutoff').textContent='Investigación al '+date(data.cutoff);
+  if(data.research)byId('uw-coverage').textContent=data.research.reviewedProjects+' de '+data.research.totalProjects+' proyectos revisados documentalmente. Las asociaciones requieren ubicación suficiente; esta revisión no garantiza identificar todas las inversiones existentes.';
   [...Object.values(controls),byId('uw-reset'),byId('uw-map-toggle')].forEach(c=>c.disabled=false);
   if(selected){byId('obra-'+selected)?.querySelector(':scope > .uw-details')?.setAttribute('open','');}
 }catch{byId('uw-count').textContent='No pudimos cargar la información de obras.';byId('uw-empty').textContent='Intenta recargar esta página. El catálogo inmobiliario sigue disponible.';byId('uw-empty').hidden=false;}

@@ -1,37 +1,41 @@
-200 combined filters: 161.3ms
-✔ no filters retain all projects, owner amounts, order and unknown data (20.614621ms)
-✔ categories intersect; selections within amenities use OR or explicit ALL (0.483026ms)
-✔ bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option (5.285096ms)
-✔ exact ranges are inclusive and invalid ranges never broaden results (1.164193ms)
-✔ project desde stays authoritative regardless of selected property or old typology prices (0.473972ms)
-✔ residential-only common spaces do not become local amenities; stage references remain separate (0.558221ms)
-✔ keywords include only registered features; sorting is deterministic with unknowns last (27.210492ms)
-✔ URL round trip is bounded, shareable, uses allowlists and excludes unrelated or private state (5.570759ms)
-✔ projection is complete without unit inventory, empty facets, generated absences or schema drift (15.832834ms)
-✔ current catalogue filtering stays responsive without network or mutation (162.726141ms)
-✔ mapping never drops or duplicates a catalogue record; every admitted point matches its source identity (15.077719ms)
-✔ same-coordinate towers stay at one true point and remain individually selectable (8.527115ms)
-✔ screen clustering combines near points at a wide view, separates on zoom and never mutates their coordinates (0.544583ms)
-✔ map filters and ordering are the same exact catalogue result set (63.396918ms)
-✔ return map state accepts only finite coordinates, zoom and a public project slug (0.513186ms)
-✔ map code keeps provider access lazy and separate from forms, scrolling and static fallbacks (11.627735ms)
-✔ all 131 source records and original ordering survive without mutation or duplicates (21.70861ms)
-✔ both numeric directions preserve stable ties, decimals and unknown prices last (14.034746ms)
-✔ search covers names, communes and developers with accent-insensitive matching (43.929825ms)
-✔ combined filters and maximum price exclude unavailable amounts, never use zero (1.299212ms)
-✔ mixed and commercial offers keep the exact selected typology and decimal amount (1.879701ms)
-✔ facts distinguish reception state from delivery and do not fill absent data (4.390028ms)
-✔ return state is bounded to catalogue values; view persists only as an enum (7.305982ms)
-✔ geographic distances and segment projection have independent numerical controls (1.408704ms)
-✔ every published work carries state, primary evidence, reviewed dates and limitations (0.773676ms)
-✔ relations are distinct, independently reviewed, active and calculated from retained locations (31.467218ms)
-✔ changed project address/coordinate and unreviewed relations fail closed (9.699824ms)
-✔ track geometry and future station centers cannot create rail proximity (3.045907ms)
-ℹ tests 28
+200 combined filters: 74.7ms
+✔ no filters retain all projects, owner amounts, order and unknown data (20.738607ms)
+✔ categories intersect; selections within amenities use OR or explicit ALL (0.664111ms)
+✔ bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option (0.688086ms)
+✔ exact ranges are inclusive and invalid ranges never broaden results (0.336912ms)
+✔ project desde stays authoritative regardless of selected property or old typology prices (0.31541ms)
+✔ residential-only common spaces do not become local amenities; stage references remain separate (0.309451ms)
+✔ keywords include only registered features; sorting is deterministic with unknowns last (8.068392ms)
+✔ URL round trip is bounded, shareable, uses allowlists and excludes unrelated or private state (2.914687ms)
+✔ projection is complete without unit inventory, empty facets, generated absences or schema drift (6.539954ms)
+✔ current catalogue filtering stays responsive without network or mutation (75.837994ms)
+✔ mapping never drops or duplicates a catalogue record; every admitted point matches its source identity (1.621859ms)
+✔ same-coordinate towers stay at one true point and remain individually selectable (0.99931ms)
+✔ screen clustering combines near points at a wide view, separates on zoom and never mutates their coordinates (0.265796ms)
+✔ map filters and ordering are the same exact catalogue result set (5.023601ms)
+✔ return map state accepts only finite coordinates, zoom and a public project slug (0.338034ms)
+✔ map code keeps provider access lazy and separate from forms, scrolling and static fallbacks (1.034112ms)
+✔ all 131 source records and original ordering survive without mutation or duplicates (5.00256ms)
+✔ both numeric directions preserve stable ties, decimals and unknown prices last (8.533941ms)
+✔ search covers names, communes and developers with accent-insensitive matching (13.446422ms)
+✔ combined filters and maximum price exclude unavailable amounts, never use zero (0.603891ms)
+✔ mixed and commercial offers keep the exact selected typology and decimal amount (1.239358ms)
+✔ facts distinguish reception state from delivery and do not fill absent data (0.400066ms)
+✔ return state is bounded to catalogue values; view persists only as an enum (2.699656ms)
+✔ each active project has exactly one completed documentary review (3.029769ms)
+✔ review report and runtime publish exactly the same project relationships (29.577833ms)
+✔ geographic distances and segment projection have independent numerical controls (2.212159ms)
+✔ every published work carries state, primary evidence, reviewed dates and limitations (2.092971ms)
+✔ relations are distinct, independently reviewed, active and calculated from retained locations (54.570399ms)
+✔ changed project address/coordinate and unreviewed relations fail closed (13.244176ms)
+✔ track geometry and future station centers cannot create rail proximity (8.965681ms)
+✔ disputed project locations cannot create new proximity claims (4.568452ms)
+✔ multipolygon distances use the closest perimeter, not a map center (0.275401ms)
+ℹ tests 32
 ℹ suites 0
-ℹ pass 28
+ℹ pass 32
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 710.143231
+ℹ duration_ms 247.772711

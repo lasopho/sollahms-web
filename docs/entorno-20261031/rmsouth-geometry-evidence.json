@@ -1,0 +1,34 @@
+{
+  "reviewedOn": "2026-10-31",
+  "method": "OSM map API, retained referenced nodes and reviewed ways only; no coordinate interpolation. Same archived way geometry is used for calculation.",
+  "osmLicense": "ODbL1.0",
+  "queries": [
+    {
+      "endpoint": "https://overpass-api.de/api/interpreter",
+      "result": "HTTP406; not used"
+    },
+    {
+      "endpoint": "https://www.openstreetmap.org/api/0.6/map?bbox=-70.674,-33.534,-70.667,-33.527",
+      "file": "rmsouth-sar-osm.xml"
+    },
+    {
+      "endpoint": "https://www.openstreetmap.org/api/0.6/map?bbox=-70.673,-33.547,-70.662,-33.534",
+      "file": "rmsouth-frei-osm.xml",
+      "result": "Old Ossa140 CESFAM excluded"
+    },
+    {
+      "endpoint": "https://www.openstreetmap.org/api/0.6/map?bbox=-70.662,-33.540,-70.653,-33.532",
+      "file": "rmsouth-frei-east-osm.xml",
+      "result": "New BomberoEncalada375 matches primary address"
+    },
+    {
+      "endpoint": "https://www.openstreetmap.org/api/0.6/map?bbox=-70.616,-33.491,-70.600,-33.479",
+      "file": "rmsouth-urizar-osm.xml"
+    },
+    {
+      "endpoint": "https://www.openstreetmap.org/api/0.6/map?bbox=-70.611,-33.479,-70.608,-33.476",
+      "file": "rmsouth-urizar-north-osm.xml",
+      "result": "LosEspinos north and Quilín south match CORE delimitation"
+    }
+  ]
+}
