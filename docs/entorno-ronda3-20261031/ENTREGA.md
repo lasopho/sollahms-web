@@ -25,3 +25,11 @@ Se conserva la navegación y diseño existente. El paquete retiene funciones y r
 - Apertura de los nuevos CESFAM no comprobada. No se les atribuyen prestaciones operativas.
 
 Fuentes, consultas y decisiones: README.md y los archivos center.json, regions.json, root.json, locations.json y location-recommendations.json. Las geometrías OSM son cartografía auxiliar contrastada, no planos catastrales. No se estiman recorridos ni tiempos de viaje. No se programaron actualizaciones.
+
+## Entrega comprobada
+
+Vista previa: https://project-wrapp-ld1qnut8l-lsandoval2-8260s-projects.vercel.app/entorno-desarrollo-urbano.html
+
+Vercel READY dpl_9DyDqDUD4Z5pusqGnHMuYBU6tAfJ; código d05f0a3629c41524db82393ca2714475a93f613f. Navegador comprobó filtro por proyecto, ficha Dual390 con520m y ficha Capitanes con640m; versión alojada comprobada con filtros Providencia/Salud y explicación expandida. Producción conserva dpl_72BPGbcxhuj55cztQnAJ7fohvcvq.
+
+![Evidencia de revisión](preview.jpg)
