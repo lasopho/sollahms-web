@@ -110,3 +110,10 @@ The metro-preview branch is preview-only, never promote without new owner approv
 
 # Metro production source update (2026-10-31)
 The owner's subsequent explicit authorization permits production publication. It supersedes the prior preview-only restriction. Runtime station coordinates and geometries now use OpenStreetMap ODbL, not MINVU. Preserve attribution and derived JSON downloads. build-metro-network.py invokes replace-metro-osm.py using archived OSM sources. Geographic-only limits and all commercial protections remain. Current frozen baseline and rollback: docs/metro-20261030/RELEASE-20261031.md and deployment-files.json.
+
+
+# Centro de Orientación published integration (2026-10-31)
+
+Preserve centro-orientacion.html and its isolated orientacion.css/orientacion.mjs/orientation-engine.mjs tools. Financial calculations reuse the shared engine and official UF service, never persist or transmit scenarios, and dated benefit rules fail closed after their review window. Use the official outlined logo, final shared theme, deferred scroll helper and static financial/control surfaces. Orientation contact requires Nombre completo, RUT, Correo electrónico and Teléfono using the existing shared commercial-fields/rut-field modules, explicit consent and idempotency. api/orientation-contact.mjs delegates to the existing contact factory; preserve all origin/timing/size/Preview/provider guards. Never send real forms while testing. Run node tests/orientation-20261031.mjs.
+
+The new frozen public overlay baseline is docs/centro-orientacion-20261031/deployment-files.json after this release is published. It preserves the prior 131-project catalogue, every fiche, Metro, urban works and Patio Brasil 410. Existing HTML changes are additive center links on the homepage and comparator plus the sitemap route; preserve the exact approved homepage menu. Runtime contact bundles use the exact already-public catalogue instead of exporting private baseline dependencies; provider configuration and request-only booking policy remain unchanged. Keep main and the current manual branch automatic deployment settings unchanged.
