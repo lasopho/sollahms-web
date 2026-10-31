@@ -146,7 +146,7 @@ La página general del nuevo hospital de Ñuble presenta contenido incoherente y
 
 La página general incorpora listado y mapa vinculados, filtros por región, comuna, tipo y estado, y enlaces a proyectos relacionados. Los estados se distinguen mediante texto y señales visuales. Se mantiene la identidad de Sollahms y la lectura móvil. Las obras sin coordenadas aparecen en el listado con su limitación, sin marcadores ficticios.
 
-Comprobaciones reportadas por el agente integrador:
+Comprobaciones realizadas:
 
 - **28 pruebas unitarias aprobadas**, incluyendo controles numéricos de distancia, validez de evidencia, integridad de relaciones y comportamiento de los datos compartidos.
 - Revisión en navegador de escritorio y de vista móvil de 390 px mediante iframe; comprobación adicional de ausencia de desbordamiento horizontal a 375 px.
@@ -157,6 +157,10 @@ Estas comprobaciones no equivalen a una auditoría exhaustiva de todos los recor
 
 ## Vista previa y entrega
 
-**Enlace de vista previa: pendiente de completar por el agente integrador.** No se inventa una URL ni se indica una publicación no realizada. La ruta de la nueva página es `/entorno-desarrollo-urbano.html`.
+**[Vista previa funcional](https://project-wrapp-7zvk19r3u-lsandoval2-8260s-projects.vercel.app/entorno-desarrollo-urbano.html)**. Despliegue `dpl_nXMBV4LiLDfN5qUcvrbKQinhT6PD`, estado READY, sin alias de producción. El enlace permanente está protegido por Vercel; se entregó además un enlace temporal de revisión en la conversación.
+
+Se verificó en el despliegue remoto la carga de las nueve obras y el filtro Los Lagos, con una obra y sus tres proyectos relacionados. La producción continúa en `dpl_8rAgvVQSGPF9WbbDHsgeCHV3dkn5`, commit `c9b66b6e9ff44bf7eb91ff9502f1e858438856f8`. Código de la vista previa: `1a2fa813e26e5200bfa0ad12ae0319bd848acf60`.
+
+![Vista previa de escritorio](preview-desktop.png)
 
 Los datos y la implementación quedan preparados para revisión. La extensión exhaustiva al catálogo y los pendientes documentales continúan abiertos. No se ha publicado en producción ni se han creado tareas automáticas o revisiones programadas. Las actualizaciones se realizarán únicamente cuando el usuario las solicite.
