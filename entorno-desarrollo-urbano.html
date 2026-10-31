@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Entorno y desarrollo urbano | Sollahms</title>
+  <meta name="description" content="Explora obras e infraestructura con fuentes verificadas, conoce su estado y consulta su relación con los proyectos inmobiliarios de Sollahms.">
+  <link rel="icon" href="/assets/branding/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/sollahms-brand.css">
+  <link rel="stylesheet" href="/assets/css/urban-works.css">
+  <link rel="stylesheet" href="/assets/css/sollahms-theme.css">
+  <script src="/assets/js/scroll-presence.js" defer></script>
+  <script type="module" src="/assets/js/urban-works-page.mjs"></script>
+</head>
+<body class="urban-works-page">
+  <a class="uw-skip" href="#contenido-principal">Saltar al contenido</a>
+  <header class="uw-header" data-scroll-static>
+    <nav class="uw-header-inner" aria-label="Navegación principal">
+      <a class="sollahms-brand" href="/" aria-label="Sollahms"><img class="sollahms-brand__image" src="/assets/branding/sollahms-logo.svg" width="114" height="22" alt="" decoding="async"></a>
+      <div class="uw-navigation"><a href="/#expertise">Expertise</a><a href="/proyectos.html">Asset Portafolio</a><a href="/contacto.html">Contacto</a></div>
+      <a class="uw-advisory" href="/agenda-asesoria.html">Agendar asesoría</a>
+    </nav>
+  </header>
+  <main id="contenido-principal">
+    <section class="uw-hero">
+      <div class="uw-container">
+        <nav aria-label="Ruta de navegación" class="uw-breadcrumb"><a href="/proyectos.html">Asset Portafolio</a><span aria-hidden="true">/</span><span>Entorno</span></nav>
+        <p class="uw-eyebrow">EL CONTEXTO TAMBIÉN IMPORTA</p>
+        <h1>Entorno y<br>desarrollo urbano</h1>
+        <p class="uw-intro">Conoce qué está cambiando alrededor de los proyectos. Obras, servicios y conexiones, con su estado y las fuentes para evaluarlos.</p>
+        <div class="uw-hero-meta" data-scroll-static><span>Vista previa para revisión</span><span id="uw-cutoff">Investigación al 31 de octubre de 2026</span></div>
+        <p class="uw-sample-note" data-scroll-static>Muestra inicial de investigación; no es un inventario exhaustivo.</p>
+      </div>
+    </section>
+    <div class="uw-container uw-content">
+      <aside class="uw-editorial-note" aria-label="Alcance de la información"><p><strong>Una obra puede cambiar un sector.</strong> Su efecto depende de los accesos, el estado de ejecución y las condiciones del entorno. No implica una plusvalía ni una rentabilidad garantizada.</p></aside>
+      <form id="uw-filters" class="uw-filters" aria-label="Filtrar obras" data-scroll-static>
+        <div><label for="uw-region">Región</label><select id="uw-region" name="region" disabled><option value="">Todas las regiones</option></select></div>
+        <div><label for="uw-commune">Comuna</label><select id="uw-commune" name="comuna" disabled><option value="">Todas las comunas</option></select></div>
+        <div><label for="uw-type">Tipo de obra</label><select id="uw-type" name="tipo" disabled><option value="">Todos los tipos</option></select></div>
+        <div><label for="uw-state">Estado</label><select id="uw-state" name="estado" disabled><option value="">Todos los estados</option></select></div>
+        <button id="uw-reset" type="button" class="uw-text-button" disabled>Limpiar filtros</button>
+      </form>
+      <div id="uw-project-scope" class="uw-project-scope" hidden data-scroll-static></div>
+      <div class="uw-results-bar" data-scroll-static><p id="uw-count" role="status" aria-live="polite">Cargando obras verificadas…</p><button id="uw-map-toggle" class="uw-button" type="button" aria-expanded="false" aria-controls="uw-map-panel" disabled>Ver mapa</button></div>
+      <div id="uw-results-layout" class="uw-results-layout">
+        <section aria-label="Obras verificadas" class="uw-list-column"><div id="uw-list" class="uw-list" aria-busy="true"></div><p id="uw-empty" class="uw-empty" hidden>No hay obras que coincidan con estos filtros. Puedes ampliar la búsqueda.</p></section>
+        <aside id="uw-map-panel" class="uw-map-panel" aria-label="Mapa de obras" hidden data-scroll-static>
+          <div class="uw-map-toolbar"><h2>Ubicaciones verificadas</h2><button id="uw-fit" type="button" class="uw-text-button">Ver resultados</button></div>
+          <p id="uw-map-status" class="uw-small" role="status">El mapa muestra únicamente ubicaciones con respaldo geográfico.</p>
+          <div id="uw-map" class="uw-map" role="region" aria-label="Mapa interactivo. Usa más y menos para acercar o alejar, y las flechas para desplazarte."></div>
+          <p id="uw-map-error" class="uw-map-error" role="status" hidden></p>
+          <div class="uw-map-tools"><button id="uw-pan" type="button" class="uw-text-button" aria-pressed="false">Activar movimiento del mapa</button><button id="uw-basemap" type="button" class="uw-text-button" aria-pressed="true" aria-controls="uw-map" disabled>Ocultar mapa base</button></div>
+          <p id="uw-basemap-status" class="uw-map-note" role="status" aria-live="polite" hidden>Fondo cartográfico oculto; se conservan obras y proyectos.</p>
+          <p class="uw-map-note">Los trazados no representan recorridos desde una vivienda. La distancia en línea recta no considera cruces, barreras ni accesos peatonales.</p>
+          <div class="uw-map-legend" aria-label="Leyenda"><span><i class="uw-legend-line uw-operational"></i>Operativa</span><span><i class="uw-legend-line uw-construction"></i>En construcción</span><span><i class="uw-legend-line uw-proposed"></i>Otras etapas</span><span><i class="uw-legend-project"></i>Proyecto relacionado</span></div>
+        </aside>
+      </div>
+      <noscript><p class="uw-empty">Activa JavaScript para consultar las obras, aplicar filtros y utilizar el mapa. Puedes seguir explorando el <a href="/proyectos.html">catálogo inmobiliario</a>.</p></noscript>
+      <section class="uw-method" aria-labelledby="uw-method-title"><div><p class="uw-eyebrow">CÓMO LEER ESTA INFORMACIÓN</p><h2 id="uw-method-title">Fuentes claras.<br>Expectativas informadas.</h2></div><div><p>Una aprobación ambiental no equivale a financiamiento ni al inicio de construcción. Las fechas estimadas pueden cambiar y se presentan sólo cuando cuentan con respaldo.</p><p>Las relaciones con proyectos se incorporan después de revisar su ubicación. Cuando no existe una coordenada suficientemente precisa, la obra permanece sin marcador ni distancia. Una ficha sin obras asociadas no significa que no existan inversiones en su entorno.</p><p>Las molestias indicadas son aspectos a considerar; no constituyen una medición del efecto sobre una vivienda. Las actualizaciones se realizan mediante una nueva revisión documental.</p></div></section>
+    </div>
+  </main>
+  <footer class="uw-footer" data-scroll-static><div class="uw-container"><a class="sollahms-brand" href="/" aria-label="Sollahms"><img class="sollahms-brand__image" src="/assets/branding/sollahms-logo.svg" width="114" height="22" alt="" loading="lazy"></a><nav aria-label="Enlaces complementarios"><a href="/proyectos.html">Asset Portafolio</a><a href="/guia-hipotecaria.html">Guía hipotecaria</a><a href="/contacto.html">Contacto</a></nav><p>Información de contexto para tomar decisiones informadas.</p></div></footer>
+</body>
+</html>

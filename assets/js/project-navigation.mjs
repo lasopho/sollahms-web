@@ -5,6 +5,15 @@ export function activeSection(positions, threshold) {
   return active;
 }
 
+// Reviewed infrastructure is optional and uses the shared evidence registry.
+if(typeof document!=='undefined'){
+ const target=document.getElementById('ubicacion');
+ const load=()=>import('./project-urban-works.mjs').then(m=>m.showProjectUrbanWorks()).catch(()=>{});
+ if(target&&location.hash==='#entorno-obras')load();
+ else if(target&&'IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){observer.disconnect();load();}},{rootMargin:'300px'});observer.observe(target);}
+ else if(target)load();
+}
+
 if(typeof document!=='undefined') {
   const nav=document.querySelector('[data-project-navigation]');
   if(nav) {

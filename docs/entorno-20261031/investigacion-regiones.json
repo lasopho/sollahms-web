@@ -1,0 +1,89 @@
+{
+  "reviewedAt": "2026-10-31",
+  "records": [
+    {
+      "id": "puente-industrial",
+      "name": "Puente Industrial",
+      "state": "operativa",
+      "stateDate": "2026-09-07",
+      "stateSource": "https://www.puenteindustrial.cl/puente-industrial-cumple-su-primer-ano-de-operaciones-redisenando-la-conectividad-vial-en-el-gran-concepcion/",
+      "officialSource": "https://concesiones.mop.gob.cl/project/concesion-vial-puente-industrial/",
+      "geometryFile": "puente-industrial-oficial.geojson",
+      "geometryDescription": "Trazado de mapa enlazado por DGC; no accesos ni itinerarios",
+      "limitations": [
+        "Peaje vigente; no publicar tarifas sin nueva consulta",
+        "Ficha MOP genérica sigue señalando construcción: desfase frente evidencia operación 2026",
+        "No inferir proximidad por comuna"
+      ]
+    },
+    {
+      "id": "puente-ferroviario-biobio",
+      "name": "Nuevo Puente Ferroviario Biobío",
+      "state": "operativa",
+      "stateDate": "2025-11-11",
+      "stateSource": "https://mtt.gov.cl/archivos/38592",
+      "locationSource": "https://seia.sea.gob.cl/expediente/ficha/fichaPrincipal.php?id_expediente=2143540297",
+      "geometryFile": "puente-ferroviario-osm.geojson",
+      "geometryDescription": "Huella estructura en OSM, no acceso",
+      "potentialChange": "Refuerza capacidad y continuidad del cruce ferroviario regional; el acceso al servicio depende de estaciones.",
+      "limitations": [
+        "No acceso peatonal público; pasillos son de mantenimiento y evacuación",
+        "Ruido y vibraciones como aspectos a evaluar, no afectación medida",
+        "Una distancia a estructura no significa distancia al tren"
+      ]
+    },
+    {
+      "id": "tren-llanquihue-puerto-montt",
+      "name": "Tren Llanquihue–Puerto Montt / estación Puerto Varas",
+      "state": "operativa",
+      "stateDate": "2026-09-09",
+      "stateSource": "https://loslagos.transporteinforma.cl/noticias/anuncian-puesta-en-marcha-del-tren-llanquihue-puerto-montt/",
+      "openingDate": "2025-04-29",
+      "openingSource": "https://interior.gob.cl/noticias/2025/04/29/presidente-boric-inaugura-tren-puerto-montt-llanquihue-junto-a-ministros-elizalde-y-munoz/",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.9841971,
+          -41.3132339
+        ]
+      },
+      "geometrySource": "https://www.openstreetmap.org/node/8787773125",
+      "buildingSource": "https://www.openstreetmap.org/way/293126469",
+      "geometryEvidence": "Node entrance=main pertenece a edificio building=train_station operator=EFE Sur",
+      "geometrySourceDate": "2024-10-15",
+      "geometryFile": "puerto-varas-estacion-osm.xml",
+      "limitations": [
+        "Acceso cartografiado OSM: comprobación de terreno pendiente",
+        "No equivale a tiempo caminando ni recorrido seguro",
+        "No aplicar horarios verano a temporada vigente"
+      ]
+    },
+    {
+      "id": "hospital-nuble",
+      "name": "Hospital Regional de Ñuble",
+      "publication": "pending",
+      "address": "Av. O’Higgins 1651 con Rosauro Acuña, Chillán",
+      "addressSource": "https://plandeinversionesensalud.minsal.cl/hospital-de-nuble/",
+      "stateDetail": "Habilitación y apertura progresiva; no confirmada operación completa",
+      "stateSource": "https://www.minsal.cl/subsecretario-de-redes-asistenciales-destaca-avances-y-fortalecimiento-de-la-red-publica-de-salud-en-nuble/",
+      "latestSource": "https://hospitaldechillan.cl/web/hospital-regional-de-nuble-instala-estanque-de-oxigeno-medicinal-para-su-futura-operacion/",
+      "latestDate": "2026-10-30",
+      "limitations": [
+        "Landing nuevohospital contiene aviso incoherente y atención desde septiembre contradictoria con otras noticias; excluir esa afirmación",
+        "OSM way342881682 numera 1679 frente 1651 oficial; dirección oficial prevalece",
+        "No forzar categoría operativa ni en construcción"
+      ]
+    },
+    {
+      "id": "parque-costanera-concepcion",
+      "name": "Mejoramiento y ampliación Parque Costanera Concepción",
+      "publication": "pending",
+      "stateDetail": "Prensa informa anteproyecto etapa 3 en agosto 2026; falta fuente primaria reciente",
+      "leadSource": "https://www.radioudec.cl/minvu-avanza-en-nuevo-parque-costanera-como-pieza-clave-de-la-transformacion-del-borde-del-rio-biobio/",
+      "limitations": [
+        "No confundir con parque costanera Puerto Montt ni proyecto habitacional Hualpén",
+        "No publicar inicio o financiamiento de construcción basado en anteproyecto"
+      ]
+    }
+  ]
+}

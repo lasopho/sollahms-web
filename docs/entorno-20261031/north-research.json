@@ -1,0 +1,401 @@
+{
+  "cutoff": "2026-10-31",
+  "works": [
+    {
+      "id": "hospital-coquimbo",
+      "name": "Nuevo Hospital San Pablo de Coquimbo",
+      "description": "Nuevo recinto hospitalario de alta complejidad en el sector La Cantera.",
+      "type": "Salud",
+      "region": "Coquimbo",
+      "communes": [
+        "Coquimbo"
+      ],
+      "status": "construction",
+      "statusDetail": "Construcción confirmada por informe ejecutivo DGC de agosto de 2026.",
+      "responsible": "Minsal / Servicio de Salud Coquimbo / Dirección General de Concesiones MOP / Sociedad Concesionaria Hospital Coquimbo S.A.",
+      "locationText": "Sector La Cantera, Coquimbo; numeración oficial contradictoria: Minsal 2379, DGC 2370.",
+      "informationDate": "2026-08-31",
+      "reviewedOn": "2026-10-31",
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "benefit": "Podría ampliar la disponibilidad de atención hospitalaria de alta complejidad en Coquimbo.",
+      "cautions": [
+        "Durante las faenas deben considerarse eventuales ruidos y tránsito de construcción.",
+        "La cercanía al recinto no demuestra un acceso peatonal ni tiempo de viaje; revisar conexiones viales y cruces."
+      ],
+      "uncertainties": [
+        "El informe DGC de agosto de 2026 registra puesta en servicio provisoria contractual máxima 07-02-2028. Existe discrepancia D12-2026-39 en trámite; no se presenta esa fecha como apertura garantizada.",
+        "Minsal publica La Cantera 2379 y DGC La Cantera 2370; se utiliza el polígono cartográfico del recinto, no una dirección geocodificada por número.",
+        "Los porcentajes y fechas de inicio publicados por Minsal, DGC y Servicio de Salud difieren; se omiten del contenido público.",
+        "El polígono OSM fue revisado como ubicación de la construcción; su etiqueta histórica opening_date=2027 no se usa para el estado ni calendario."
+      ],
+      "sources": [
+        {
+          "id": "hcoq-dgc",
+          "title": "Informe ejecutivo DGC, agosto 2026",
+          "url": "https://concesiones.mop.gob.cl/uploads/sites/4/2026/10/Informe-Ejecutivo_Hospital-Coquimbo-agosto2026.pdf",
+          "date": "2026-08"
+        },
+        {
+          "id": "hcoq-minsal",
+          "title": "Plan de Inversiones Minsal",
+          "url": "https://plandeinversionesensalud.minsal.cl/hospital-san-pablo-de-coquimbo-ii-etapa/",
+          "date": "2026-09"
+        },
+        {
+          "id": "hcoq-panel",
+          "title": "Panel Técnico: discrepancia D12-2026-39",
+          "url": "https://www.panelconcesiones.cl/noticias/ver/comunicado-discrepancia-d12-2026-39",
+          "date": "2026-10-23"
+        }
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.2863261,
+              -29.9748801
+            ],
+            [
+              -71.2879979,
+              -29.9746077
+            ],
+            [
+              -71.2886333,
+              -29.9744772
+            ],
+            [
+              -71.2889489,
+              -29.9743589
+            ],
+            [
+              -71.2890398,
+              -29.974561
+            ],
+            [
+              -71.2899524,
+              -29.9765261
+            ],
+            [
+              -71.2870622,
+              -29.9769674
+            ],
+            [
+              -71.2868578,
+              -29.9764345
+            ],
+            [
+              -71.2863261,
+              -29.9748801
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "url": "https://www.openstreetmap.org/way/1125463653",
+        "title": "OpenStreetMap: polígono Construcción Nuevo Hospital de Alta Complejidad de Coquimbo (ODbL 1.0)",
+        "checkedOn": "2026-10-31",
+        "precision": "Perímetro cartografiado del terreno, no acceso"
+      },
+      "publish": true,
+      "relationshipCandidates": [
+        "cumbres-de-penuelas",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "playa-penuelas",
+        "marina-pacifico"
+      ],
+      "relationshipReview": "Candidatos por distancia al perímetro inferior a3km, no asociaciones aprobadas automáticamente. Equipamiento comunal de alta complejidad; revisar conexiones reales antes de clasificar cercanía funcional."
+    },
+    {
+      "id": "parque-cerro-grande",
+      "name": "Parque Urbano Cerro Grande",
+      "description": "Parque público con espacios recreativos y educación ambiental en La Serena.",
+      "type": "Parques y espacio público",
+      "region": "Coquimbo",
+      "communes": [
+        "La Serena"
+      ],
+      "status": "operational",
+      "statusDetail": "Apertura documentada en septiembre2025; actividades del operador CEAZA corroboradas en septiembre2026.",
+      "responsible": "MINVU / SERVIU / Municipalidad de La Serena; Centro de Educación Ambiental CEAZA",
+      "locationText": "Cerro Grande, La Serena; acceso sector Avenida Cuatro Esquinas.",
+      "informationDate": "2026-09-23",
+      "reviewedOn": "2026-10-31",
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "benefit": "Ofrece espacios para recreación y educación ambiental.",
+      "cautions": [
+        "La cercanía al perímetro no determina acceso habilitado; parte del cerro presenta pendientes.",
+        "Mayor afluencia de visitantes y necesidades de conservación son aspectos a considerar, no efectos medidos en viviendas."
+      ],
+      "uncertainties": [
+        "No se validó un acceso público concreto para calcular recorrido. El único portón etiquetado en el polígono OSM es privado/cerrado y se excluye como acceso.",
+        "El proyecto del catálogo más próximo, Alto San Joaquín, queda a más de3.7km del polígono; no se aprueba asociación de cercanía en esta muestra."
+      ],
+      "sources": [
+        {
+          "id": "cerro-apertura",
+          "title": "Delegación Presidencial Coquimbo: apertura",
+          "url": "https://www.dprcoquimbo.dpr.gob.cl/2025/09/26/nuevo-parque-urbano-cerro-grande-abre-sus-puertas/",
+          "date": "2025-09-26"
+        },
+        {
+          "id": "cerro-ceaza",
+          "title": "CEAZA: actividades y funcionamiento en2026",
+          "url": "https://www.ceaza.cl/2026/09/23/centro-de-educacion-ambiental-ceaza-reune-a-927-participantes-durante-su-primer-semestre-de-actividades-en-cerro-grande/",
+          "date": "2026-09-23"
+        }
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.2166253,
+              -29.9509752
+            ],
+            [
+              -71.2166307,
+              -29.9508473
+            ],
+            [
+              -71.2167433,
+              -29.9507613
+            ],
+            [
+              -71.216856,
+              -29.9504871
+            ],
+            [
+              -71.2169043,
+              -29.9500827
+            ],
+            [
+              -71.216915,
+              -29.9497411
+            ],
+            [
+              -71.2169794,
+              -29.9495436
+            ],
+            [
+              -71.2169767,
+              -29.949267
+            ],
+            [
+              -71.2170303,
+              -29.9489602
+            ],
+            [
+              -71.2170115,
+              -29.9489021
+            ],
+            [
+              -71.2169525,
+              -29.9485605
+            ],
+            [
+              -71.2169713,
+              -29.9483583
+            ],
+            [
+              -71.2167111,
+              -29.947768
+            ],
+            [
+              -71.2168077,
+              -29.9475681
+            ],
+            [
+              -71.2177652,
+              -29.9468337
+            ],
+            [
+              -71.2179503,
+              -29.9470498
+            ],
+            [
+              -71.2181756,
+              -29.9471335
+            ],
+            [
+              -71.2184224,
+              -29.9472683
+            ],
+            [
+              -71.2185806,
+              -29.9472985
+            ],
+            [
+              -71.2191412,
+              -29.9473729
+            ],
+            [
+              -71.2192512,
+              -29.9476587
+            ],
+            [
+              -71.2193773,
+              -29.9478795
+            ],
+            [
+              -71.219565,
+              -29.9479771
+            ],
+            [
+              -71.2196321,
+              -29.9480236
+            ],
+            [
+              -71.2196616,
+              -29.9480538
+            ],
+            [
+              -71.219742,
+              -29.9481236
+            ],
+            [
+              -71.219683,
+              -29.94817
+            ],
+            [
+              -71.2195248,
+              -29.9483839
+            ],
+            [
+              -71.2189481,
+              -29.9487511
+            ],
+            [
+              -71.2188489,
+              -29.9486767
+            ],
+            [
+              -71.2186557,
+              -29.9489532
+            ],
+            [
+              -71.2186048,
+              -29.9489951
+            ],
+            [
+              -71.2183339,
+              -29.9494924
+            ],
+            [
+              -71.2182185,
+              -29.9497527
+            ],
+            [
+              -71.2181059,
+              -29.9500037
+            ],
+            [
+              -71.2180388,
+              -29.9501269
+            ],
+            [
+              -71.2180683,
+              -29.9502687
+            ],
+            [
+              -71.2181059,
+              -29.9504685
+            ],
+            [
+              -71.2181247,
+              -29.9506335
+            ],
+            [
+              -71.2181139,
+              -29.9507962
+            ],
+            [
+              -71.2181218,
+              -29.9509148
+            ],
+            [
+              -71.2181062,
+              -29.9509475
+            ],
+            [
+              -71.2180711,
+              -29.9509795
+            ],
+            [
+              -71.2177447,
+              -29.9509661
+            ],
+            [
+              -71.2175825,
+              -29.9509584
+            ],
+            [
+              -71.2166253,
+              -29.9509752
+            ]
+          ]
+        ]
+      },
+      "geometrySource": {
+        "url": "https://www.openstreetmap.org/way/1214567323",
+        "title": "OpenStreetMap: polígono Parque Urbano Cerro Grande (ODbL 1.0)",
+        "checkedOn": "2026-10-31",
+        "precision": "Perímetro cartografiado, no acceso"
+      },
+      "publish": true,
+      "relationshipCandidates": []
+    },
+    {
+      "id": "chinchorro-etapa2",
+      "name": "Borde costero Playa Chinchorro · segunda etapa",
+      "description": "Conservación de paseo costero, pavimentos, iluminación y equipamiento recreativo.",
+      "type": "Parques y espacio público",
+      "region": "Arica y Parinacota",
+      "communes": [
+        "Arica"
+      ],
+      "status": "operational",
+      "statusDetail": "Inauguración confirmada por DOP el16-09-2026.",
+      "responsible": "Dirección de Obras Portuarias, MOP",
+      "locationText": "Paseo costero entre calle Buenos Aires y conexión con mejoramiento de Playa Las Machas.",
+      "informationDate": "2026-09-16",
+      "reviewedOn": "2026-10-31",
+      "estimatedStart": null,
+      "estimatedEnd": null,
+      "benefit": "Renueva espacios peatonales y recreativos del borde costero norte.",
+      "cautions": [
+        "Considerar afluencia de visitantes y actividad recreativa; no se midieron efectos sobre cada vivienda."
+      ],
+      "uncertainties": [
+        "Falta delimitar cartográficamente el tramo exacto y sus accesos. No asociar automáticamente todo Playa Chinchorro ni usar centro de playa como coordenada."
+      ],
+      "sources": [
+        {
+          "id": "chinchorro-dop",
+          "title": "DOP: inauguración segunda etapa",
+          "url": "https://dop.mop.gob.cl/2026/09/16/mop-inaugura-renovacion-de-13-kilometros-del-borde-costero-de-playa-chinchorro-de-arica-con-inversion-que-supera-los-4-mil-millones/",
+          "date": "2026-09-16"
+        },
+        {
+          "id": "chinchorro-tramo",
+          "title": "DOP: descripción del tramo intervenido",
+          "url": "https://dop.mop.gob.cl/2026/04/07/dop-impulsa-conservacion-integral-del-borde-costero-de-playa-chinchorro-en-arica-para-reforzar-seguridad-y-estandar-urbano/",
+          "date": "2026-04-07"
+        }
+      ],
+      "geometry": null,
+      "geometrySource": null,
+      "publish": true,
+      "relationshipCandidates": [
+        "nucleo-costanera",
+        "wayra",
+        "lamara"
+      ],
+      "relationshipReview": "Pendiente de coordenadas y delimitación del tramo; no asociar todavía."
+    }
+  ],
+  "coverage": "Muestra acotada Coquimbo y Arica. Valparaíso no investigado en profundidad. Ninguna asociación aprobada por este subtrabajo."
+}
