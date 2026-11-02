@@ -1,5 +1,13 @@
 # Recuperación CRM 360 y Sollahms — 2 de noviembre de 2026
 
+## Estado vigente
+
+La outbox PostgreSQL, receptor transaccional y conexión de los tres formularios están implementados y verificados con datos sintéticos. No repetir el plan inicial de este documento. Consultar [operación de la integración](OPERACION_INTEGRACION.md) y `docs/INTEGRACION_SOLLAHMS_PERSISTENTE_2026_11_02.md` en CRM.
+
+La integración permanece desactivada por defecto y no está en producción. El CI Git local aprobó 424 Node y 216 Python; los 26 casos de publicación con materiales privados siguen pendientes. La siguiente validación es una Preview aislada autorizada, después de revisar accesos, secretos, roles y mapas de proyecto.
+
+## Registro inicial (histórico)
+
 ## Estado recuperado
 
 Main CRM continúa en f73f56d1e9bf9f6c99df45e53d600ec406705de3. Los avances posteriores se recuperaron desde la rama cloud, f0d865022c047dbc54d8a9e384cb574fc5acedbd, sin integrarla en main. Nueva rama: codex/sollahms-integracion-2026-11-02.
@@ -29,7 +37,7 @@ Sollahms incorpora lib/crm-delivery.mjs: recepción solamente tras confirmación
 
 Git HTTPS funciona en ambos repositorios. La consulta de Actions por REST devuelve Forbidden; no hay conectores de Vercel/Supabase/GitHub disponibles en las herramientas actuales, ni secretos o identidades cloud configurados. No se pudo auditar cuentas, desplegar una vista previa alojada ni verificar CI remoto. No se cambiaron políticas para sortearlo.
 
-## Reanudación precisa
+## Plan inicial — superado por la continuación persistente
 
 1. Implementar y ensayar el store outbox PostgreSQL persistente, con fingerprint, unicidad por solicitud, claim con lease/fencing, backoff limitado, dead letters y recuperación tras reinicio. No usar SQLite efímero en Vercel.
 2. Implementar la recepción transaccional CRM: ledger, resolución de identidad dentro de la organización, solicitud/interés por proyecto sin sobrescribir anteriores, caso ambiguo, historial, aviso interno y seguimiento. Confirmar recorded solamente después del commit.

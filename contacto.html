@@ -288,7 +288,7 @@ import { createFormOperation } from '/assets/js/form-operation.mjs';
             operation.complete();
             form.reset();
             showRutError('');
-            status.textContent = 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.';
+            status.textContent = result.crm?.delivery === 'pending' ? 'Solicitud recibida de forma segura. Su registro en el CRM está pendiente de procesamiento.' : result.emailDelivery ? 'Solicitud recibida de forma segura. No pudimos confirmar el aviso por correo.' : 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.';
         } catch (error) {
             operation.uncertain();
             status.textContent = error.message || 'No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.';

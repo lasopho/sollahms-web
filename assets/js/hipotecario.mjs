@@ -483,7 +483,7 @@ $('lead-form').addEventListener('submit', async event => {
     contactOperation.complete();
     $('lead-form').reset();
     startedAt = Date.now();
-    $('lead-status').textContent = 'Solicitud enviada correctamente. Sollahms se pondrá en contacto contigo para conversar sobre tu financiamiento.';
+    $('lead-status').textContent = body.crm?.delivery === 'pending' ? 'Solicitud recibida de forma segura. Su registro en el CRM está pendiente de procesamiento.' : body.emailDelivery ? 'Solicitud recibida de forma segura. No pudimos confirmar el aviso por correo.' : 'Solicitud enviada correctamente. Sollahms se pondrá en contacto contigo para conversar sobre tu financiamiento.';
   } catch (error) {
     contactOperation.uncertain();
     $('lead-status').textContent = ['TimeoutError', 'TypeError'].includes(error.name) ? 'El envío no pudo confirmarse. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.' : error.message || 'No pudimos confirmar el envío. Escribe a contacto@sollahms.cl.';

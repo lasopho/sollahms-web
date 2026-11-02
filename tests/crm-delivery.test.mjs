@@ -7,3 +7,10 @@ function fixture(transport){const rows=new Map();return{rows,options:{key,transp
 test('Receiving never invokes transport and rejects a non-durable acknowledgement',async()=>{let calls=0;const f=fixture(async()=>{calls++;});const delivery=createCrmDelivery(f.options);assert.equal((await delivery.receive(event())).delivery,'pending');assert.equal(calls,0);f.options.store.put=async()=>({durable:false});await assert.rejects(createCrmDelivery(f.options).receive(event()));});
 test('Restarted delivery retries outages with the same request id and signs exact bytes',async()=>{let online=false;const f=fixture(async({body,headers})=>{const expected='v1='+createHmac('sha256',key).update(headers['X-Sollahms-Timestamp']+'.').update(body).digest('hex');assert.equal(headers['X-Sollahms-Signature'],expected);if(!online)throw new Error('Synthetic outage');return{requestId:JSON.parse(body).requestId,state:'recorded'};});const e=event();const first=createCrmDelivery(f.options);await first.receive(e);assert.equal((await first.tick()).state,'pending');online=true;assert.equal((await createCrmDelivery(f.options).tick()).state,'recorded');assert.equal(f.rows.size,1);});
 test('A successful HTTP call without matching CRM receipt never marks delivery complete',async()=>{const f=fixture(async()=>({ok:true,state:'recorded',requestId:randomUUID()}));const d=createCrmDelivery(f.options);await d.receive(event());assert.equal((await d.tick()).state,'pending');});
+
+test('Delivery worker schedules automatically, coalesces manual ticks and drains on close',async()=>{
+ const {createDeliveryWorker}=await import('../lib/crm-delivery.mjs');
+ let calls=0,finish,next,cleared=0;
+ const worker=createDeliveryWorker({delivery:{tick(){calls++;return new Promise(r=>{finish=r;});}},setTimer(fn){next=fn;return 7;},clearTimer(){cleared++;}});
+ worker.start();const manual=worker.runOnce();assert.equal(calls,1);finish({state:'pending'});await manual;await Promise.resolve();assert.equal(typeof next,'function');await worker.close();assert.equal(cleared,1);await assert.rejects(worker.runOnce());
+});

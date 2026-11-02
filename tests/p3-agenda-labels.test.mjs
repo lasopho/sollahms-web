@@ -4,12 +4,12 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { isP3AgendaLabelSuccessor, restoreP3AgendaLabels } from './p3-agenda-labels-scope.mjs';
-import { restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
+import { restoreP1IdempotencyFile, restoreCrmSuccessor } from './p1-idempotency-preservation.mjs';
 import { isP3AgendaVisibilitySuccessor, restoreP3AgendaVisibility } from './p3-agenda-visibility-scope.mjs';
 
 const ROOT = new URL('../', import.meta.url);
 const FILE = 'agenda-asesoria.html';
-const source = readFileSync(new URL(FILE, ROOT));
+const source = restoreCrmSuccessor(FILE,readFileSync(new URL(FILE, ROOT)));
 const actual = isP3AgendaVisibilitySuccessor(FILE, source) ? restoreP3AgendaVisibility(FILE, source) : source;
 const html = actual.toString('utf8');
 const original = execFileSync('git', ['show', 'e3b66f806ebdbc032b704f9bf53ea0f33df7cb2a:' + FILE], { cwd: ROOT });

@@ -5,11 +5,11 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { isP3AgendaVisibilitySuccessor, restoreP3AgendaVisibility } from './p3-agenda-visibility-scope.mjs';
 import { restoreP3AgendaLabels } from './p3-agenda-labels-scope.mjs';
-import { restoreP1IdempotencyFile } from './p1-idempotency-preservation.mjs';
+import { restoreP1IdempotencyFile, restoreCrmSuccessor } from './p1-idempotency-preservation.mjs';
 
 const ROOT = new URL('../', import.meta.url);
 const FILE = 'agenda-asesoria.html';
-const actual = readFileSync(new URL(FILE, ROOT));
+const actual = restoreCrmSuccessor(FILE,readFileSync(new URL(FILE, ROOT)));
 const html = actual.toString('utf8');
 const before = execFileSync('git', ['show', 'b03668dfe593fadabf995ee45283c729618a19aa:' + FILE], { cwd: ROOT });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');

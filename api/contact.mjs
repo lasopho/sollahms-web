@@ -1,3 +1,5 @@
+import { configuredCrmDelivery } from '../lib/crm-runtime.mjs';
+import { crmFormEvent } from '../lib/crm-form-event.mjs';
 import dataset from '../data/hipotecario.json' with { type: 'json' };
 import catalogue from '../data/proyectos.json' with { type: 'json' };
 import { normalizeRut, RUT_ERROR } from '../assets/js/rut.mjs';
@@ -97,7 +99,7 @@ function validate(body, projectIndex) {
 }
 
 export function createContactHandler({
-  mortgageDataset = dataset, projectDataset = catalogue, now = Date.now,
+  mortgageDataset = dataset, projectDataset = catalogue, now = Date.now, crmDelivery = configuredCrmDelivery(),
   fetchImpl = (...args) => fetch(...args), getApiKey = () => process.env.RESEND_API_KEY,
   getEnvironment = () => process.env.VERCEL_ENV,
   resolveUf = () => officialUf.resolve(),
@@ -147,7 +149,13 @@ export function createContactHandler({
       if (getEnvironment() === 'preview') return json({ ok: false, code: 'preview_read_only', error: 'La vista previa no envía mensajes reales. Puedes revisar el formulario sin contactar al equipo.' }, 503);
       const operation = readOperationKey(request, receivedAt);
       if (operation.error) return json(operation.error, operation.status);
+      let crmReceipt;
+      if (crmDelivery) {
+        try { crmReceipt = await crmDelivery.receive(crmFormEvent({request,operation,fields,project:validated.project,mortgage:body.mortgage,kind:mortgageLead?'mortgage':'contact'})); }
+        catch { return json({ok:false,code:'crm_reception_unconfirmed',error:'No pudimos guardar la solicitud. Conserva los mismos datos al reintentar.'},503); }
+      }
       const key = getApiKey()?.trim();
+      if (!key && crmReceipt) return json({ok:true,crm:crmReceipt,emailDelivery:'unavailable'},202);
       if (!key) return json({ error: 'No pudimos enviar el mensaje. Inténtalo más tarde.' }, 503);
       // The server owns CLP conversion too; a visitor never supplies a UF rate.
       // A same-day verified snapshot is safe. If stale, fetch today's official UF.
@@ -194,6 +202,7 @@ export function createContactHandler({
           body: JSON.stringify(email),
           signal: AbortSignal.timeout(10_000),
         });
+        if (response.status === 409 && crmReceipt) return json({ok:true,crm:crmReceipt,emailDelivery:'unconfirmed'},202);
         if (response.status === 409) {
           const conflict = await response.json().catch(() => ({}));
           if (conflict.name === 'concurrent_idempotent_requests') return json({ ok: false, code: 'contact_in_progress', retry: true, error: 'La solicitud está en curso. Espera un momento y vuelve a confirmar con los mismos datos.' }, 409, { 'Retry-After': '2' });
@@ -202,8 +211,9 @@ export function createContactHandler({
         if (!response.ok) throw new Error('Email provider rejected request');
         const accepted = await response.json();
         if (!accepted || typeof accepted.id !== 'string' || !accepted.id.trim()) throw new Error('Email provider did not confirm acceptance');
-        return json({ ok: true }, 200);
+        return json({ ok: true, ...(crmReceipt ? {crm:crmReceipt} : {}) }, 200);
       } catch {
+        if (crmReceipt) return json({ok:true,crm:crmReceipt,emailDelivery:'unconfirmed'},202);
         return json({ code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.' }, 502);
       }
     },
