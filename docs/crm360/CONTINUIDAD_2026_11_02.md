@@ -6,6 +6,8 @@ La outbox PostgreSQL, receptor transaccional y conexión de los tres formularios
 
 La integración permanece desactivada por defecto y no está en producción. El CI Git local aprobó 424 Node y 216 Python; los 26 casos de publicación con materiales privados siguen pendientes. La siguiente validación es una Preview aislada autorizada, después de revisar accesos, secretos, roles y mapas de proyecto.
 
+Publicación verificada: código CRM `ef6e6e1ef87911d2058b913c14405661d8aa97d0` y Sollahms `600bf3dc90d571ac22596054bb3ee9bdc91e1b99`, en las ramas de integración existentes. Los intentos de crear PR y consultar Actions fallaron por el proxy; CI remoto no verificado. No repetir la implementación ni inferir operación productiva a partir de las pruebas sintéticas.
+
 ## Registro inicial (histórico)
 
 ## Estado recuperado
