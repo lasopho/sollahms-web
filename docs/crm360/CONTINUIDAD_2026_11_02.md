@@ -1,16 +1,16 @@
-# Recuperación CRM 360 y Sollahms — 2 de noviembre de 2026
-
-## Continuación vigente: composición de preview
-
-Continuación en `codex/cloud-preview-2026-11-02` (CRM) y `codex/crm360-preview-2026-11-02` (Sollahms), preservando las ramas anteriores. Leer `docs/PREVIEW_PRIVADA_SOLLAHMS_2026_11_02.md` del CRM antes de intervenir. Composición PostgreSQL, dashboard/Growth, worker, mapa sintético y artefacto de desarrollo preparados; todavía sin URL alojada. El inventario declara explícitamente las rutas heredadas pendientes. Los 26 casos protegidos se intentaron: 25 fallos por materiales ausentes y un skip nativo, ninguno aprobado. No repetir estas implementaciones ni presentar las pruebas locales como operación productiva.
+# Continuidad CRM 360 + Sollahms — 2 de noviembre de 2026
 
 ## Estado vigente
 
-La outbox PostgreSQL, receptor transaccional y conexión de los tres formularios están implementados y verificados con datos sintéticos. No repetir el plan inicial de este documento. Consultar [operación de la integración](OPERACION_INTEGRACION.md) y `docs/INTEGRACION_SOLLAHMS_PERSISTENTE_2026_11_02.md` en CRM.
+Continuar en `codex/crm360-preview-2026-11-02` (Sollahms) y `codex/cloud-preview-2026-11-02` (CRM), conservando ramas anteriores. No reconstruir outbox/receptor, los tres formularios ni los adaptadores duales ya probados. Leer [preparación de preview](PREVIEW_PREPARACION_2026_11_02.md), [operación de integración](OPERACION_INTEGRACION.md) y el informe/evidencia vigente de CRM.
 
-La integración permanece desactivada por defecto y no está en producción. El CI Git local aprobó 424 Node y 216 Python; los 26 casos de publicación con materiales privados siguen pendientes. La siguiente validación es una Preview aislada autorizada, después de revisar accesos, secretos, roles y mapas de proyecto.
+Sollahms aprobó 424 Node y 216 Python en la suite Git; se repitió la integración completa con datos sintéticos y registros CRM verificables. La publicación protegida se intentó: 25 fallos y un skip nativo, cero aprobados; materiales ausentes y guarda de rama mantienen bloqueado el artefacto publicable. No alterar esos controles.
 
-Publicación verificada: código CRM `ef6e6e1ef87911d2058b913c14405661d8aa97d0` y Sollahms `600bf3dc90d571ac22596054bb3ee9bdc91e1b99`, en las ramas de integración existentes. Los intentos de crear PR y consultar Actions fallaron por el proxy; CI remoto no verificado. No repetir la implementación ni inferir operación productiva a partir de las pruebas sintéticas.
+CRM amplía persistencia dual para importaciones, Growth completo de simulación, asistente/transcripciones e integraciones simuladas. Inventario: 82 puertos, dos exclusiones intencionales, cero patrones pendientes. Worker/API/backup y artefacto están preparados; no instalados en un host permanente. No hay URL alojada, Supabase activo ni CI remoto verificable. Main y ramas de integración originales no se modifican.
+
+Git publica correctamente; REST/GraphQL fallan en el proxy antes de GitHub. Hace falta una sola habilitación consolidada de acceso a host/PostgreSQL/Auth de desarrollo, secretos por gestor, materiales protegidos/autorización de rama y API GitHub. Producción, costos, datos reales, comunicaciones y merge siguen sin autorizar.
+
+Los antecedentes siguientes documentan etapas anteriores y no sustituyen el estado vigente.
 
 ## Registro inicial (histórico)
 
