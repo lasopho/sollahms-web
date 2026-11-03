@@ -1,0 +1,22 @@
+[Unit]
+Description=Sollahms isolated authenticated outbox tick
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=sollahms-preview-scheduler
+Group=sollahms-preview-scheduler
+WorkingDirectory=/opt/sollahms-preview/current
+Environment=NODE_ENV=development
+Environment=EMAIL_MODE=simulation
+Environment=CRM_PREVIEW_MODE=isolated
+EnvironmentFile=/etc/sollahms-preview/scheduler.env
+ExecStart=/usr/bin/node scripts/preview-deliver-once.mjs
+TimeoutStartSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectProc=invisible
+UMask=0077

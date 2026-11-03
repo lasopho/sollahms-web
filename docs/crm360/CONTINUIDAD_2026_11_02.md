@@ -1,6 +1,10 @@
 # Continuidad CRM 360 + Sollahms — 2 de noviembre de 2026
 
-## Estado vigente
+## Continuación vigente: 3 de noviembre
+
+Leer primero [la revisión de PR y preview](PREVIEW_REVISION_2026_11_03.md). Continuar en `codex/crm360-integracion-2026-11-02`, rama del PR borrador #13. La rama snapshot de preview conserva 713a0a1 y ya fue incorporada por fast-forward; no volver a trabajar sobre ese snapshot perdiendo estos avances. PR #3 CRM continúa en su rama `codex/sollahms-integracion-2026-11-02`.
+
+## Estado anterior: 2 de noviembre
 
 Continuar en `codex/crm360-preview-2026-11-02` (Sollahms) y `codex/cloud-preview-2026-11-02` (CRM), conservando ramas anteriores. No reconstruir outbox/receptor, los tres formularios ni los adaptadores duales ya probados. Leer [preparación de preview](PREVIEW_PREPARACION_2026_11_02.md), [operación de integración](OPERACION_INTEGRACION.md) y el informe/evidencia vigente de CRM.
 

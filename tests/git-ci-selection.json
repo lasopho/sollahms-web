@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 424,
+  "expectedGitNodeTests": 430,
   "expectedReleaseOnlyCases": 26,
   "expectedPythonFixtureTests": 216,
   "fullFiles": [
@@ -294,6 +294,14 @@
         "Every commercial form has a server endpoint; calculators/search remain private and active project links resolve",
         "Only the exact reviewed CRM source delta can be projected for historical guards"
       ]
+    },
+    {
+      "file": "tests/preview-media-recovery.test.mjs",
+      "reason": "Synthetic local Git repositories verify exact media recovery without private originals, providers or publication."
+    },
+    {
+      "file": "tests/preview-scheduler.test.mjs",
+      "reason": "Offline synthetic transports prove authenticated bounded scheduler requests and refusal of production or insecure targets."
     }
   ],
   "selectedSuites": [
