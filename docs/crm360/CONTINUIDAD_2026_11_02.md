@@ -1,6 +1,10 @@
 # Continuidad CRM 360 + Sollahms — 2 de noviembre de 2026
 
-## Continuación vigente: 3 de noviembre
+## Continuación vigente: staging SSO
+
+Leer primero [staging SSO y acceso operativo](STAGING_SSO_2026_11_03.md). El propietario confirmó READY/SSO de project-wrapp; el ejecutor todavía no dispone de esas conexiones. Scheduler reforzado contra HTML 200/SSO, redirects, recibos inválidos y origen no revisado; nuevo plan offline para recuperar 262 archivos desde artefactos/paquete fuente existentes antes de pedir otra aportación. Mantener separados infraestructura, DB, identidades y secretos de CRM/Sollahms. No tocar los 26 controles ni producción.
+
+## Etapa anterior: revisión de PR
 
 Leer primero [la revisión de PR y preview](PREVIEW_REVISION_2026_11_03.md). Continuar en `codex/crm360-integracion-2026-11-02`, rama del PR borrador #13. La rama snapshot de preview conserva 713a0a1 y ya fue incorporada por fast-forward; no volver a trabajar sobre ese snapshot perdiendo estos avances. PR #3 CRM continúa en su rama `codex/sollahms-integracion-2026-11-02`.
 
