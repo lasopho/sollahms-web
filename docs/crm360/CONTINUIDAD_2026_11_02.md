@@ -1,5 +1,9 @@
 # Recuperación CRM 360 y Sollahms — 2 de noviembre de 2026
 
+## Continuación vigente: composición de preview
+
+Continuación en `codex/cloud-preview-2026-11-02` (CRM) y `codex/crm360-preview-2026-11-02` (Sollahms), preservando las ramas anteriores. Leer `docs/PREVIEW_PRIVADA_SOLLAHMS_2026_11_02.md` del CRM antes de intervenir. Composición PostgreSQL, dashboard/Growth, worker, mapa sintético y artefacto de desarrollo preparados; todavía sin URL alojada. El inventario declara explícitamente las rutas heredadas pendientes. Los 26 casos protegidos se intentaron: 25 fallos por materiales ausentes y un skip nativo, ninguno aprobado. No repetir estas implementaciones ni presentar las pruebas locales como operación productiva.
+
 ## Estado vigente
 
 La outbox PostgreSQL, receptor transaccional y conexión de los tres formularios están implementados y verificados con datos sintéticos. No repetir el plan inicial de este documento. Consultar [operación de la integración](OPERACION_INTEGRACION.md) y `docs/INTEGRACION_SOLLAHMS_PERSISTENTE_2026_11_02.md` en CRM.

@@ -7,7 +7,8 @@
   },
   "scripts": {
     "test": "python scripts/run-git-ci.py --cloud-stdio",
-    "test:release": "node --test --test-concurrency=2 --test-reporter=spec tests/*.test.mjs"
+    "test:release": "node --test --test-concurrency=2 --test-reporter=spec tests/*.test.mjs",
+    "preview:readiness": "node scripts/preview-readiness.mjs"
   },
   "dependencies": {
     "pg": "8.16.3"
