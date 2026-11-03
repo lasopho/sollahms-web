@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "checkScope": "git-checkout-regression-not-release-build",
-  "expectedGitNodeTests": 411,
+  "expectedGitNodeTests": 433,
   "expectedReleaseOnlyCases": 26,
   "expectedPythonFixtureTests": 216,
   "fullFiles": [
@@ -111,7 +111,7 @@
       "cases": [
         "a synthetic reviewed Leben fixture selects only the twelve existing identities and grants protected review",
         "missing original review, altered sources, rejected/upscaled media and foreign paths fail closed",
-        "Nórdico can extend the frozen catalogue once without changing any commercial baseline field",
+        "N\u00f3rdico can extend the frozen catalogue once without changing any commercial baseline field",
         "shared headers bind fourteen Leben fiches without changing catalogue objects or the twelve PDF selection",
         "shared header configuration rejects foreign photographs, rejected private images, incomplete identities and invalid geometry"
       ]
@@ -191,8 +191,8 @@
       "cases": [
         "P2 catalogue generation is reproducible and preserves all 134 source objects",
         "CAT-005 every priced and unpriced card gives its retained review date and qualified detail link",
-        "CAT-005 Sento and Nórdico retain units, discounts and exclusions without treating them as fresh offers",
-        "CAT-005 uncertain dates and changed quotes cannot inherit a fresh date or Nórdico unit condition",
+        "CAT-005 Sento and N\u00f3rdico retain units, discounts and exclusions without treating them as fresh offers",
+        "CAT-005 uncertain dates and changed quotes cannot inherit a fresh date or N\u00f3rdico unit condition",
         "catalogue search, unknown-price filtering, ordering and reset still operate on current data",
         "PERF-001 five cover source sets exactly match their own reviewed existing images and retain the original",
         "PERF-001 responsive cards keep lazy loading, original src and detail access while other covers keep fallback behavior",
@@ -200,7 +200,7 @@
         "SEO-001 the initial HTML contains exactly the same 134 public identity links without commercial or private content",
         "SEO-001 the static directory remains available after failed fetch and is hidden only after current cards render",
         "P2 exact test-only projection rejects lost identity notices, altered prices, links, srcsets and appended bytes",
-        "catalogue improvements preserve every publication control and do not convert protected León media into public rights"
+        "catalogue improvements preserve every publication control and do not convert protected Le\u00f3n media into public rights"
       ]
     },
     {
@@ -261,6 +261,47 @@
         "booking visibility successor preserves every prior byte outside the three-line CSS rule and retains frozen label and FUN guards",
         "booking visibility scope rejects altered offsets, broader selectors, script and source mutations without bypassing prior guards"
       ]
+    },
+    {
+      "file": "tests/crm-delivery.test.mjs",
+      "cases": [
+        "Receiving never invokes transport and rejects a non-durable acknowledgement",
+        "Restarted delivery retries outages with the same request id and signs exact bytes",
+        "A successful HTTP call without matching CRM receipt never marks delivery complete",
+        "Delivery worker schedules automatically, coalesces manual ticks and drains on close"
+      ]
+    },
+    {
+      "file": "tests/crm-form-event.test.mjs",
+      "cases": [
+        "Attribution strips query secrets and preserves only explicit UTMs without inventing financial or marketing data",
+        "Configured contact delivery acknowledges durable reception and leaves Resend contract intact",
+        "Unavailable durable reception prevents success and does not send Resend",
+        "Durably received leads remain accepted when the independent email outcome is unavailable"
+      ]
+    },
+    {
+      "file": "tests/crm-runtime.test.mjs",
+      "cases": [
+        "Unconfigured integration performs no credential discovery or connection",
+        "Configured runtime loads once lazily and requires verified TLS for durable writes",
+        "Scheduler rejects unauthorized requests and never starts transport on GET"
+      ]
+    },
+    {
+      "file": "tests/crm-forms-inventory.test.mjs",
+      "cases": [
+        "Every commercial form has a server endpoint; calculators/search remain private and active project links resolve",
+        "Only the exact reviewed CRM source delta can be projected for historical guards"
+      ]
+    },
+    {
+      "file": "tests/preview-media-recovery.test.mjs",
+      "reason": "Synthetic local Git repositories verify exact media recovery without private originals, providers or publication."
+    },
+    {
+      "file": "tests/preview-scheduler.test.mjs",
+      "reason": "Offline synthetic transports prove authenticated bounded scheduler requests and refusal of production or insecure targets."
     }
   ],
   "selectedSuites": [
@@ -275,7 +316,7 @@
         "all 78 plans preserve readable local images, internal hashes, enlargement links and unique model identification",
         "33 candidates are reviewed, selected renders have provenance and no existing official photograph is deleted",
         "documented equipment has page provenance; five public fallback pages preserve maps, tours, navigation and forms exactly",
-        "brochure models do not create catalogue prices or alter A–E financial classification and verified surface minima",
+        "brochure models do not create catalogue prices or alter A\u2013E financial classification and verified surface minima",
         "contact regression rejects synthetic brochure-derived catalogue amounts for all five identities without sending messages"
       ],
       "releaseRequired": [
@@ -334,7 +375,7 @@
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
-          "name": "new source bindings and Vicuña stage identifiers cannot be reassigned through the packaging manifest",
+          "name": "new source bindings and Vicu\u00f1a stage identifiers cannot be reassigned through the packaging manifest",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
@@ -385,7 +426,7 @@
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         },
         {
-          "name": "Vicuña Mackenna retains six independent plans and its exact prior stage-source assignment",
+          "name": "Vicu\u00f1a Mackenna retains six independent plans and its exact prior stage-source assignment",
           "reason": "Requires actual approved Ingevec derivatives or a packaging fixture that copies them; mandatory in private release validation."
         }
       ]
@@ -396,7 +437,7 @@
       "cases": [
         "eight originals enrich exactly seven of the 136 fichas while non-Ecasa financial data remain exact",
         "all 27 distributions reproduce independent printed surfaces and visible room counts without stock assumptions",
-        "Vicuña Mackenna keeps six unique plans grouped by stage with stage-specific source documents",
+        "Vicu\u00f1a Mackenna keeps six unique plans grouped by stage with stage-specific source documents",
         "seven enriched fichas retain SEO, contextual financial/contact actions, maps and tours without visible audit labels"
       ],
       "releaseRequired": [
@@ -492,16 +533,16 @@
       "file": "tests/leon-main-integration.test.mjs",
       "reason": "Five Git-only cases independently validate immutable main141 evidence, the separately authorized134 composition, narrow history, exact current developer preservation, negative successor/route/gate mutations. One310-resource case needs five private original PDFs.",
       "cases": [
-        "the immutable 141-project León main guard and the separately approved 134-project composition both remain exact",
-        "historical projection rejects wrong León data and retains other developer checks",
+        "the immutable 141-project Le\u00f3n main guard and the separately approved 134-project composition both remain exact",
+        "historical projection rejects wrong Le\u00f3n data and retains other developer checks",
         "main and integration automatic deploy gates remain disabled",
-        "León predecessor projection preserves all 129 foreign current objects and is idempotent without restoring public retirements",
-        "strict León history rejects changed successor payloads, borrowed HTML and enabled gates instead of returning a foreign snapshot"
+        "Le\u00f3n predecessor projection preserves all 129 foreign current objects and is idempotent without restoring public retirements",
+        "strict Le\u00f3n history rejects changed successor payloads, borrowed HTML and enabled gates instead of returning a foreign snapshot"
       ],
       "releaseRequired": [
         {
           "name": "all 310 original media and 36 individually bound plans retain their verified payloads",
-          "reason": "Requires five private original León PDFs and the complete existing Ecasa/Leben/AJ/Ingevec protected resource batch for assertLeonCombinedScope; tracked-only row/HTML/media guards remain in five Git cases."
+          "reason": "Requires five private original Le\u00f3n PDFs and the complete existing Ecasa/Leben/AJ/Ingevec protected resource batch for assertLeonCombinedScope; tracked-only row/HTML/media guards remain in five Git cases."
         }
       ]
     }

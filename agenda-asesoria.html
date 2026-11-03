@@ -405,6 +405,7 @@ import { createFormOperation } from '/assets/js/form-operation.mjs';
                 details.hidden = true;
                 personalInputs.forEach(name => { form.elements.namedItem(name).disabled = true; });
                 status.textContent = `Tu asesoría quedó reservada para el ${formatBookingDate(checkedSlot.date)} a las ${checkedSlot.time}. Recibirás una invitación de Google Calendar en tu correo.`;
+                if (result.crm?.delivery === 'pending') status.textContent += ' El registro comercial en el CRM está pendiente de procesamiento.';
                 status.focus();
             } else {
                 status.textContent = result.error || 'No pudimos confirmar la reserva. No la repitas; escribe a contacto@sollahms.cl para verificarla.';

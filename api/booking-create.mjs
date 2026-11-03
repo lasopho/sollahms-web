@@ -1,8 +1,10 @@
+import { configuredCrmDelivery } from '../lib/crm-runtime.mjs';
+import { crmFormEvent } from '../lib/crm-form-event.mjs';
 import { callBookingBackend, hasOnlyKeys, isSlotUnavailable, json, readJson, validatePerson, validateSlot } from '../lib/booking-server.mjs';
 import { projects, projectAliases, projectStages } from '../lib/project-context.mjs';
 import { createOperationLedger, readOperationKey } from '../lib/form-operation-server.mjs';
 
-export function createBookingHandler({ callBackend = callBookingBackend, now = Date.now, getEnvironment = () => process.env.VERCEL_ENV, ledger = createOperationLedger({ now }) } = {}) {
+export function createBookingHandler({ callBackend = callBookingBackend, now = Date.now, getEnvironment = () => process.env.VERCEL_ENV, crmDelivery = configuredCrmDelivery(), ledger = createOperationLedger({ now }) } = {}) {
 return {
   async fetch(request) {
     const parsed = await readJson(request);
@@ -35,6 +37,11 @@ return {
     const operation = readOperationKey(request, now());
     if (operation.error) return json({ ok: false, ...operation.error }, operation.status);
 
+    let crmReceipt;
+    if (crmDelivery) {
+      try { crmReceipt = await crmDelivery.receive(crmFormEvent({request,operation,fields:{nombre:[person.nombre,person.apellido].filter(Boolean).join(' '),correo:person.correo,telefono:person.telefono,mensaje:`Solicitud de asesoría: ${body.date} ${body.time}`, ...(hasProject?{proyecto:body.proyecto,nombreProyecto:project.name}:{})},project,kind:'booking'})); }
+      catch { return json({ok:false,code:'crm_reception_unconfirmed',error:'No pudimos guardar la solicitud. Conserva los mismos datos al reintentar.'},503); }
+    }
     const projectContext = hasProject ? { proyecto: body.proyecto, nombreProyecto: project.name } : {};
     // The private Apps Script contract cannot yet be inspected. Preserve its
     // legacy body exactly; operationId propagation and atomic storage remain
@@ -50,7 +57,7 @@ return {
       if (result.status < 200 || result.status >= 300 || result.body.ok !== true || result.body.booked !== true || result.body.available !== true) return unknown;
       return { status: 200, body: { ok: true, booked: true } };
     });
-    return json(outcome.body, outcome.status);
+    return json({ ...outcome.body, ...(crmReceipt ? {crm:crmReceipt} : {}) }, outcome.status);
   },
 };
 }

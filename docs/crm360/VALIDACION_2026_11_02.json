@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-02",
+  "scope": "Synthetic local integration; not remote CI or production",
+  "baseCommits": {
+    "crm": "d735c556e0867797c4f1f617c512bd8a3e0071f6",
+    "sollahms": "8efbb5f5063584fec353db9346b98cabaa28c70f"
+  },
+  "crm": {
+    "generalPassed": 404,
+    "postgresPassed": 103,
+    "browserPassed": 4,
+    "typecheck": true,
+    "build": true
+  },
+  "sollahmsGit": {
+    "node": {
+      "tests": 424,
+      "pass": 424,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "pythonPassed": 216,
+    "releaseOnlyNotRun": 26
+  },
+  "integration": {
+    "commercialForms": 3,
+    "desktopMobileFlows": 6,
+    "verifiedProjectContexts": 137,
+    "durableIdempotency": true,
+    "leaseFencing": true,
+    "postgresRestart": true,
+    "automaticRetry": true,
+    "lostResponseRecovery": true,
+    "encryptedBackupAndRestore": true,
+    "publicCrmTablesRestored": 52
+  },
+  "productionAudit": {
+    "crmKnownVulnerabilities": 0,
+    "sollahmsKnownVulnerabilities": 0
+  },
+  "remote": {
+    "githubApi": "CONNECT rejected by environment proxy with 403; token permissions not assessed",
+    "actionsVerified": false,
+    "productionDeployed": false,
+    "realProvidersEnabled": false,
+    "sourceCommitsPublishedAndVerified": true,
+    "prCreationAttempt": "Both draft creation attempts rejected by environment proxy before GitHub; no successful creation verified",
+    "actionsQueryAttempt": "Both branch run queries rejected by environment proxy; no remote result verified"
+  },
+  "verifiedSourceCommits": {
+    "crm": "ef6e6e1ef87911d2058b913c14405661d8aa97d0",
+    "sollahms": "600bf3dc90d571ac22596054bb3ee9bdc91e1b99"
+  }
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=Sollahms isolated outbox polling schedule
+
+[Timer]
+OnBootSec=15
+OnUnitActiveSec=10
+RandomizedDelaySec=1
+Unit=sollahms-preview-outbox.service
+
+[Install]
+WantedBy=timers.target

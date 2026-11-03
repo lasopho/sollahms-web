@@ -1,0 +1,13 @@
+# Preparación de preview — 2 de noviembre de 2026
+
+Se conserva la integración persistente de los tres formularios, Resend, catálogo y configuración Vercel. `npm run preview:readiness` es un preflight de solo lectura, sin bypass: examina 735 referencias en los manifiestos, 394 ausentes; no certifica permisos ni el resto del sitio.
+
+Los 26 casos protegidos se intentaron por nombre literal: 25 fallaron por materiales ausentes, uno se omitió por su guarda nativa y ninguno aprobó. El empaquetado real de esta rama, sin simular otra, fue rechazado con `Unexpected branch for this review build`. El build alojable no está autorizado ni validado. No sustituir materiales por placeholders ni modificar hashes, vercel.json o guardas. La suite Git independiente **aprobó 424 pruebas Node y 216 Python**; no constituye validación de publicación.
+
+El CRM en `codex/cloud-preview-2026-11-02` amplía la composición PostgreSQL existente: importaciones duraderas, captura/creativos/demo Growth, propuestas de asistente/transcripciones e integraciones simuladas, además de sesiones, dashboard, clientes, DeepSales, agenda, cotizaciones y bandeja. Inventario: 82 puertos y dos rutas deliberadamente excluidas (setup local/Meta real), ningún patrón sin resolver; no equivale a certificación completa del negocio. Se mantienen 52 tablas y nueve migraciones previas; una décima añade cursores de historial. Worker, respaldo horario y artefacto se preparan sin activarlos. Leer `docs/PREVIEW_PRIVADA_SOLLAHMS_2026_11_02.md` y su evidencia JSON en CRM antes de continuar.
+
+La integración se volvió a verificar con datos sintéticos: seis recorridos escritorio/móvil, 137 contextos, filas CRM verificables, concurrencia, reintentos, reinicio PostgreSQL y restauración cifrada de CRM/Auth/estado privado/outbox. No se enviaron mensajes ni se conectó un proveedor real.
+
+**No hay preview alojada ni pruebas contra un host permanente.** Faltan acceso autorizado al host/PostgreSQL/Auth de desarrollo y secretos por gestor, materiales protegidos y autorización de publicación de rama por el flujo existente. Git permite publicar; api.github.com continúa bloqueado en CONNECT del proxy antes de llegar a GitHub. No inferir token defectuoso, PR creado o CI remoto aprobado.
+
+Implementación ampliada CRM: `87024865ee8c2e8043612fbc48a9c8d9720dfab3`. Validación final: 435 generales, 131 PostgreSQL, cuatro recorridos SQLite y seis recorridos integrados, además de TypeScript/build/formato. Los dos recorridos PostgreSQL de composición están incluidos en las 131 pruebas. Consultar la evidencia de CRM para el artefacto y las limitaciones.

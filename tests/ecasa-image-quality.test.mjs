@@ -1,5 +1,6 @@
 import { projectSentoFile } from './sento-preservation.mjs';
 import { readPreLeonFile } from './leon-main-preservation.mjs';
+import { LEON_RETIRED_SLUGS } from '../scripts/leon-main-publication.mjs';
 import { assertPreservedSource, originalLebenHtml } from './leben-preservation.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -188,7 +189,14 @@ test('every non-Ecasa HTML string is unchanged by the quality transform in both 
 
 test('real private packaging publishes 395 selected resources, keeps 74 Ecasa plans and excludes four source photographs',()=>{
   const fixture=mkdtempSync(join(tmpdir(),'sollahms-quality-release-'));
-  const copy=path=>{const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});copyFileSync(resolve(ROOT,path),target);};
+  const copy=path=>{
+    const target=join(fixture,path);mkdirSync(dirname(target),{recursive:true});
+    // Historical fixture only: the preservation helper asserts that the public
+    // route is absent and its archived bytes equal the pinned main baseline.
+    // Never recreate retired pages in ROOT or substitute missing media.
+    if(LEON_RETIRED_SLUGS.some(slug=>path===slug+'.html'))writeFileSync(target,readPreLeonFile(path));
+    else writeFileSync(target,projectSentoFile(path,read(path)));
+  };
   try {
     cpSync(resolve(ROOT,'assets'),join(fixture,'assets'),{recursive:true});
     for(const path of ['scripts/package-vercel.mjs','scripts/ecasa-publication.mjs','scripts/ecasa-image-quality.mjs','scripts/brochure-publication.mjs', 'scripts/leben-publication.mjs',
