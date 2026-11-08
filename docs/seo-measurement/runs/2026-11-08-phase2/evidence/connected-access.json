@@ -1,0 +1,52 @@
+{
+  "project": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "live": false,
+    "ssoProtection": {
+      "enabled": true,
+      "deploymentType": "all_except_custom_domains"
+    },
+    "latestDeployment": {
+      "id": "dpl_5ReP6rLckXZ7nonSTE7Qu79gesiZ",
+      "url": "project-wrapp-p7ejie7l0-lsandoval2-8260s-projects.vercel.app",
+      "createdAt": 1794142588798,
+      "readyState": "READY",
+      "target": "production"
+    }
+  },
+  "access": {
+    "observations_current": true,
+    "network_state": "enforced",
+    "secrets_configured": 0,
+    "outbound_identity_count": 0,
+    "gsc_bing_connector_discovered": false
+  },
+  "analytics_queries": [
+    {
+      "message": "Vercel API request failed (400: bad_request).",
+      "recovery": "Check the API message, arguments, target team and resource state. Correct the request before retrying.",
+      "remediation": {
+        "actor": "agent",
+        "action": "correct_request"
+      },
+      "status": 400,
+      "code": "bad_request",
+      "operation": "POST /v2/observability/query",
+      "requestId": "iad1:gru1:iad1:sfo1::zgn5w-1794146171517-0af10fd9d6a8"
+    },
+    {
+      "message": "Vercel API request failed (400: bad_request).",
+      "recovery": "Check the API message, arguments, target team and resource state. Correct the request before retrying.",
+      "remediation": {
+        "actor": "agent",
+        "action": "correct_request"
+      },
+      "status": 400,
+      "code": "bad_request",
+      "operation": "POST /v2/observability/query",
+      "requestId": "iad1:gru1:iad1:sfo1::wwhfs-1794146338712-fe7d6f005e60"
+    }
+  ],
+  "note": "Las consultas de analítica fallaron con 400; no prueban ni ausencia de tráfico ni que Analytics esté desactivado."
+}
