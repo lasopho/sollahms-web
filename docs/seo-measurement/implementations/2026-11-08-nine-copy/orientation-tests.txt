@@ -1,0 +1,26 @@
+✔ budget is the minimum of independent savings and monthly-payment constraints (4.646432ms)
+✔ zero-rate inversion agrees with independent capital-over-months arithmetic (1.756907ms)
+✔ zero savings and debt beyond the budget fail safely without NaN (0.2369ms)
+✔ budget rejects malformed, negative, nonfinite, wrong conventions and fractional month inputs (0.696018ms)
+✔ greater debt cannot increase affordability and greater savings cannot lower it (0.196775ms)
+✔ quote comparison matches engine and treats negative differences and zero rate correctly (0.219485ms)
+✔ benefit guide uses revised 6000 UF boundary and never grants eligibility (1.404527ms)
+✔ used housing, early promises, novations and unknown conditions remain distinct (0.316334ms)
+✔ benefit freshness fails closed before review, after expiry and after programme end (0.19532ms)
+✔ benefit dates reject nonexistent, future and malformed calendar dates (0.383538ms)
+✔ checklist sanitization accepts only unique known IDs and journey routes are local (0.869902ms)
+✔ orientation endpoint requires positive consent and timing before transport (51.633657ms)
+✔ orientation endpoint inherits Preview read-only and never reads credentials (8.726422ms)
+✔ orientation endpoint rejects cross origin, non JSON, wrong methods and malformed bodies (5.66132ms)
+✔ orientation endpoint rejects financial context and unknown fields (4.195511ms)
+✔ orientation endpoint delegates synthetic success with the existing idempotency key (6.433267ms)
+✔ new page and endpoint contain explicit consent, no inline scripts and shared mathematics (1.300068ms)
+✔ current four-field commercial policy rejects missing or invalid identification without transport (5.566108ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 290.10037

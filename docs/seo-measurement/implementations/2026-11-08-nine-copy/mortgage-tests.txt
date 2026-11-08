@@ -1,0 +1,28 @@
+✔ dataset de producción tiene fuente UF, instituciones y esquema estricto válidos (14.917625ms)
+✔ cálculos reproducen el escenario publicado CMF y preservan el conflicto Banco de Chile (9.729225ms)
+✔ esquema exige fuentes y fechas independientes, ámbitos y convenciones explícitas (3.980325ms)
+✔ notas institucionales son opcionales y acotadas; otros campos permanecen estrictos (1.744607ms)
+✔ UF vigente, antigua, futura o inválida y límite del día chileno (33.92556ms)
+✔ vigencia técnica de 7 días y publicación de 30 días no se confunden (0.923649ms)
+✔ escenario CMF nunca se escala a capital, pie, plazo o ubicación diferente (1.614605ms)
+✔ condiciones oficiales con rango respetan monto y LTV; CAE no se extrapola (0.324494ms)
+✔ seguros, costo contractual y coste financiero son magnitudes distintas (0.823429ms)
+✔ un coste completo inferior a los dividendos financieros no puede publicarse ni compararse (1.02113ms)
+✔ ranking no muta resultados, pone costes ausentes al final y agrupa cobertura CAE (1.366329ms)
+✔ orden de tasas usa anual efectiva equivalente cuando la convención difiere (0.2536ms)
+✔ pie, capital y financiamiento conservan el valor de la propiedad (3.175157ms)
+✔ convención nominal mensual y efectiva anual se convierten explícitamente (0.335758ms)
+✔ contraste independiente contra anualidad conocida y resultado publicado CMF (0.705941ms)
+✔ amortización iterativa independiente liquida el capital y concilia intereses (15.766513ms)
+✔ tasa cero y casi cero son estables, sin división por cero (0.287591ms)
+✔ más plazo reduce dividendo pero aumenta intereses; más tasa aumenta ambos (0.370505ms)
+✔ conversión UF/CLP mantiene decimales y no estima valores UF futuros (1.833545ms)
+✔ rechaza datos faltantes, no finitos, tipos implícitos, límites y plazos fraccionarios (1.120776ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 186.276902

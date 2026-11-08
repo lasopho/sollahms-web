@@ -1,0 +1,105 @@
+{
+  "validated_at": "2026-11-08T20:27:42.192878+00:00",
+  "base_commit": "87108f3fc6d10994d456388c106e79a5b538bffc",
+  "branch": "codex/seo-medicion-20261108",
+  "proposals": {
+    "H01": "applied_once",
+    "H02": "applied_once",
+    "H03": "applied_once",
+    "O01": "applied_once",
+    "O02": "applied_once",
+    "G01": "applied_once",
+    "C01": "applied_once",
+    "C02": "applied_once",
+    "C03": "applied_once"
+  },
+  "source_files_modified": [
+    "centro-orientacion.html",
+    "comparador-hipotecario.html",
+    "guia-hipotecaria.html",
+    "index.html",
+    "scripts/build-mortgage-guide.py"
+  ],
+  "specific_tests": [
+    "tests/test_seo_nine_copy.py",
+    "tests/seo-nine-copy-browser.py"
+  ],
+  "branch_and_main_automatic_deployment_disabled": true,
+  "deployment_config_unchanged": true,
+  "project_live_observed": false,
+  "public_source_matches_review_baseline_before_editing": true,
+  "page_preservation": "Undoing only approved text/markup changes restores exact baseline; scripts/styles/schema/contact/data unchanged.",
+  "specific_static_checks_passed": 8,
+  "existing_checks_passed": 48,
+  "browser_local_loads": 16,
+  "paired_comparisons_passed": 8,
+  "native_invalid_commercial_forms_checked": 12,
+  "screenshots": [
+    "desktop-H02-home-hero.png",
+    "desktop-H03-home-process.png",
+    "desktop-O01-orientation-ruta.png",
+    "desktop-O02-orientation-cotizaciones.png",
+    "desktop-G01-guide-next.png",
+    "desktop-C01-comparator-intro.png",
+    "desktop-C02-comparator-down-help.png",
+    "desktop-C03-comparator-lead-intro.png",
+    "mobile-H02-home-hero.png",
+    "mobile-H03-home-process.png",
+    "mobile-O01-orientation-ruta.png",
+    "mobile-O02-orientation-cotizaciones.png",
+    "mobile-G01-guide-next.png",
+    "mobile-C01-comparator-intro.png",
+    "mobile-C02-comparator-down-help.png",
+    "mobile-C03-comparator-lead-intro.png"
+  ],
+  "new_javascript_exceptions": 0,
+  "horizontal_overflows": 0,
+  "before_after_calculation_results_identical": true,
+  "form_control_consent_contact_fingerprints_identical": true,
+  "external_font_warning": "Same deliberately blocked Google font in baseline/candidate; no new application error.",
+  "post_requests_to_static_server": 0,
+  "real_submissions": 0,
+  "remote_browser_requests_permitted": 0,
+  "uf_get_fixtures": 12,
+  "generation_api_calls": 0,
+  "lab_activation_or_writes": 0,
+  "metrics_access_attempts": 0,
+  "project_fiches_modified_or_reviewed": 0,
+  "other_pages_modified": 0,
+  "production_pages_still_unchanged": [
+    {
+      "url": "https://sollahms.cl/",
+      "status": 200,
+      "sha256": "2347ce6574671d599505a9c63ef1263d0e464ca93596396138d79d4046829928",
+      "matches_published_review_baseline": true,
+      "checked_at": "2026-11-08T20:27:41.483216+00:00"
+    },
+    {
+      "url": "https://sollahms.cl/centro-orientacion.html",
+      "status": 200,
+      "sha256": "adf54bd3956beb68e0840b20c916384c1cc8a6af6be85c463b85905d05a5357c",
+      "matches_published_review_baseline": true,
+      "checked_at": "2026-11-08T20:27:41.811870+00:00"
+    },
+    {
+      "url": "https://sollahms.cl/guia-hipotecaria.html",
+      "status": 200,
+      "sha256": "651a25d181f3af8f582e7578f717006a28530825e7e0436003008aaedb1e8e6d",
+      "matches_published_review_baseline": true,
+      "checked_at": "2026-11-08T20:27:42.018390+00:00"
+    },
+    {
+      "url": "https://sollahms.cl/comparador-hipotecario.html",
+      "status": 200,
+      "sha256": "35b7d59be0f797db5d1816626cb8920b76ef4541c5134680c112eef788669ffc",
+      "matches_published_review_baseline": true,
+      "checked_at": "2026-11-08T20:27:42.192859+00:00"
+    }
+  ],
+  "deployments_or_promotions_executed": 0,
+  "main_merges": 0,
+  "pending_before_publish": [
+    "Owner review and explicit publication authorization",
+    "Prepare current frozen release candidate through existing authorized packaging flow; no build/deployment performed here"
+  ]
+}
