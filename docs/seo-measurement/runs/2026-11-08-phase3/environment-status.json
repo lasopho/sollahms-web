@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-08T15:23:21.222Z",
+  "environment_id": "ccarenv_b64_Y2NhcmVudl9jNTkxZmRhNzIyYTg4MTkxODEzNDI4YjUyNzc4MTA4OA",
+  "observations_current": true,
+  "network_policy": {
+    "state": "enforced",
+    "mode": "restricted",
+    "allowed_hosts": [
+      "sdmntprbrazilsouth.oaiusercontent.com",
+      "sollahms.cl"
+    ]
+  },
+  "secret_count": 0,
+  "identity_count": 0,
+  "runtime_variable_names": [],
+  "capabilities": [
+    {
+      "remote_desktop": {
+        "enabled": true,
+        "state": "unknown",
+        "description": "This environment supports a shared desktop and browser. In on-demand mode, use the desktop's NodeREPL js tool for your first action if it is available. A valid call such as js({\"code\":\"1 + 1\"}) starts the runtime. Connecting an authorized desktop viewer also starts it. Tool discovery and status polling leave it idle. To show the desktop in the Codex side panel, call open_in_codex with the cloud-desktop target if offered."
+      }
+    }
+  ]
+}

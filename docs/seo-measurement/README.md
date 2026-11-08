@@ -1,6 +1,8 @@
 # Medición SEO y visibilidad en IA de Sollahms
 
-**Último avance:** [fase 2 — 8 de noviembre de 2026](runs/2026-11-08-phase2/report.md).
+**Último avance:** [fase 3 — 8 de noviembre de 2026](runs/2026-11-08-phase3/report.md).
+
+**Continuidad:** no se encontraron insumos nuevos; la línea base real sigue pendiente. Se conservan fase 2, importadores, pruebas históricas y protocolo de 180 ejecuciones. Antes de reutilizar propuestas, aplicar la [corrección de Condominio Uruguay: La Florida, no Ñuñoa](runs/2026-11-08-phase3/editorial-correction.json).
 **Estado:** sistema offline preparado; indexación, tráfico, posiciones, citas y conversiones todavía no medidos con fuentes privadas. `null` significa desconocido, no cero.
 
 La rama `codex/seo-medicion-20261108` parte de `d7e98eb61edc3b8577b0fe7ec189e7c0ad7e0d53`, fuente de la producción identificada. No fusionar a main ni desplegar este trabajo. La única diferencia de configuración es `git.deploymentEnabled["codex/seo-medicion-20261108"]=false`, para impedir despliegues automáticos de esta rama. No se modifican HTML, datos del catálogo, precios, formularios, scripts públicos, funciones ni paquetes de publicación. No ejecutar el packager histórico para este trabajo.
