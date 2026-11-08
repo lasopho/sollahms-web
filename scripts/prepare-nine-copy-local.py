@@ -6,6 +6,7 @@ The original production builder is copied unchanged; this is only an orchestrato
 All runtime files and archives remain outside Git. Does not regenerate any page.
 """
 import argparse
+from datetime import datetime, timezone
 import gzip
 import hashlib
 import json
@@ -38,6 +39,7 @@ def require(condition, message):
 
 
 def inventory(root):
+    require(root.is_dir() and not root.is_symlink(), f'Regular runtime directory required: {root}')
     files = {}
     for path in sorted(root.rglob('*')):
         require(not path.is_symlink(), f'Symlink forbidden: {path}')
@@ -72,14 +74,122 @@ def validate_source(source):
     return expected
 
 
+def validate_work_inputs(work, expected):
+    for label in ['baseline', 'candidate']:
+        target = work / label
+        hashes = dict(expected)
+        if label == 'candidate':
+            hashes.update({'static/' + name: pair[1] for name, pair in PAGES.items()})
+        require(not (target / BUILDER).is_symlink() and sha(target / BUILDER) == BUILDER_SHA256,
+                f'{label} production builder bytes differ')
+        registry = target / 'orientation-output-hashes.json'
+        require(not registry.is_symlink() and json.loads(registry.read_text()) == hashes,
+                f'{label} input hash registry changed')
+        require(inventory(target / 'release') == hashes, f'{label} production inputs changed')
+
+
+def verify_outputs(work, expected):
+    base = inventory(work / 'baseline/.vercel/output')
+    candidate = inventory(work / 'candidate/.vercel/output')
+    require(base.keys() == candidate.keys() == expected.keys(), 'Packaged path set changed')
+    changed = sorted(p for p in base if base[p] != candidate[p])
+    require(changed == sorted('static/' + p for p in PAGES), 'Packaged changes exceed the four approved HTML files')
+    require(all(base[p] == expected[p] for p in base if p != 'config.json'), 'Builder changed original production runtime bytes')
+    require(all(candidate['static/' + name] == pair[1] for name, pair in PAGES.items()), 'Approved copy lost during build')
+    return base, candidate, changed
+
+
+def archive_output(work, candidate):
+    archive = work / 'sollahms-nine-copy.vercel-output.tar.gz'
+    require(not archive.exists(), 'Artifact already exists; do not overwrite it')
+    with archive.open('wb') as raw, gzip.GzipFile(filename='', mode='wb', fileobj=raw, mtime=0) as compressed, tarfile.open(fileobj=compressed, mode='w') as tar:
+        root = work / 'candidate/.vercel/output'
+        for name in sorted(candidate):
+            path = root / name
+            info = tar.gettarinfo(str(path), '.vercel/output/' + name)
+            info.uid = info.gid = info.mtime = 0
+            info.uname = info.gname = ''
+            with path.open('rb') as data:
+                tar.addfile(info, data)
+    with tarfile.open(archive) as tar:
+        archived = {member.name.removeprefix('.vercel/output/'): hashlib.sha256(tar.extractfile(member).read()).hexdigest() for member in tar.getmembers() if member.isfile()}
+    require(archived == candidate, 'Archived bytes differ from tested package')
+    return archive
+
+
+def validate_browser_qa(path, work, summary):
+    require(path.is_file() and not path.is_symlink(), 'Browser QA results file is required')
+    report = json.loads(path.read_text())
+    require(isinstance(report, dict) and report.get('passed') is True, 'Browser QA has not passed')
+    roots = {label: str(work / label / '.vercel/output/static') for label in ['baseline', 'candidate']}
+    require(report.get('sourceMode') == 'packaged-static' and report.get('staticRoots') == roots,
+            'Browser QA must use these exact packaged static roots')
+    require(report.get('htmlSha256') == {
+        label: {name: pair[index] for name, pair in PAGES.items()}
+        for index, label in enumerate(['baseline', 'candidate'])}, 'Browser QA HTML hashes differ')
+    isolation = report.get('isolation', {})
+    require(isolation.get('localStaticOnly') is True and isolation.get('realSubmissions') is False,
+            'Browser QA must isolate providers and real submissions')
+    started = datetime.fromisoformat(report.get('startedAtUtc', ''))
+    completed = datetime.fromisoformat(report.get('completedAtUtc', ''))
+    built = datetime.fromisoformat(summary['build_completed_at_utc'])
+    require(all(stamp.tzinfo is not None for stamp in [started, completed, built]) and built <= started <= completed,
+            'Browser QA must finish after this build')
+    checks = ['completed', 'passed', 'numbersIdentical', 'initialFormsControlsConsentContactIdentical',
+              'exercisedFormsControlsConsentContactIdentical', 'noNewPageErrors', 'consoleErrorsIdentical',
+              'remoteResourcesBlockedIdentically', 'noInitialHorizontalOverflow',
+              'noExercisedHorizontalOverflow', 'emptyCommercialFormsInvalid']
+    comparisons = report.get('comparisons', [])
+    require(len(comparisons) == 8 and {(row.get('viewport'), row.get('page')) for row in comparisons}
+            == {(viewport, name) for viewport in ['desktop', 'mobile'] for name in PAGES}
+            and all(all(row.get(key) is True for key in checks) for row in comparisons),
+            'Browser QA requires all eight complete, passing paired comparisons')
+    cases = report.get('cases', [])
+    viewports = [(1440, 1000), (390, 844)]
+    require(len(cases) == 16 and all(row.get('completed') is True for row in cases)
+            and {(row.get('page'), row.get('version'), row.get('viewport', {}).get('width'),
+                  row.get('viewport', {}).get('height')) for row in cases}
+            == {(name, label, width, height) for name in PAGES for label in roots for width, height in viewports},
+            'Browser QA requires all sixteen packaged desktop/mobile cases')
+    return {'results': str(path), 'sha256': sha(path), 'passed': True, 'completed_at_utc': report['completedAtUtc']}
+
+
+def finalize(source, work, qa):
+    expected = validate_source(source)
+    validate_work_inputs(work, expected)
+    base, candidate, changed = verify_outputs(work, expected)
+    require(json.loads((work / 'package-inventory.json').read_text()) == {'baseline': base, 'candidate': candidate},
+            'Packaged bytes changed since the paired build')
+    summary = json.loads((work / 'summary.json').read_text())
+    require(summary.get('status') == 'built_requires_browser_qa' and summary.get('production_deployment') == DEPLOYMENT,
+            'Finalization requires an unarchived build-only result')
+    for label in ['baseline', 'candidate']:
+        log = json.loads((work / (label + '-build.json')).read_text())
+        require(log == summary['builds'][label] and log.get('command') == ['node', BUILDER]
+                and log.get('exit_code') == 0, f'{label} certified build did not pass')
+    qa_result = validate_browser_qa(qa, work, summary)
+    archive = archive_output(work, candidate)
+    summary.update({'status': 'built_browser_qa_passed_requires_owner_authorization',
+                    'artifact': str(archive), 'artifact_sha256': sha(archive), 'browser_qa': qa_result})
+    (work / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
+    return summary
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-root', type=Path, required=True)
     parser.add_argument('--work-dir', type=Path, required=True)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--build-only', action='store_true', help='Build and verify paired trees without creating an archive')
+    mode.add_argument('--finalize-after-qa', type=Path, metavar='RESULTS_JSON', help='Verify existing paired build and packaged browser QA, then archive')
     args = parser.parse_args()
     source, work = args.source_root.resolve(), args.work_dir.resolve()
-    require(not work.exists(), 'Work directory must be new')
     require(not work.is_relative_to(REPO) and not work.is_relative_to(source), 'Keep runtime artifacts outside the repository and source export')
+    if args.finalize_after_qa is not None:
+        require(work.is_dir(), 'Finalization requires an existing build work directory')
+        print(json.dumps(finalize(source, work, args.finalize_after_qa.resolve()), indent=2))
+        return
+    require(not work.exists(), 'Work directory must be new')
     expected = validate_source(source)  # Fail before creating any output if incomplete.
     work.mkdir(parents=True)
     logs = {}
@@ -100,30 +210,17 @@ def main():
         logs[label] = {'command': ['node', BUILDER], 'exit_code': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr}
         (work / (label + '-build.json')).write_text(json.dumps(logs[label], indent=2) + '\n')
         require(result.returncode == 0, f'{label} build failed; no artifact is ready')
-    base = inventory(work / 'baseline/.vercel/output')
-    candidate = inventory(work / 'candidate/.vercel/output')
-    require(base.keys() == candidate.keys() == expected.keys(), 'Packaged path set changed')
-    changed = sorted(p for p in base if base[p] != candidate[p])
-    require(changed == sorted('static/' + p for p in PAGES), 'Packaged changes exceed the four approved HTML files')
-    require(all(base[p] == expected[p] for p in base if p != 'config.json'), 'Builder changed original production runtime bytes')
-    require(all(candidate['static/' + name] == pair[1] for name, pair in PAGES.items()), 'Approved copy lost during build')
-    archive = work / 'sollahms-nine-copy.vercel-output.tar.gz'
-    with archive.open('wb') as raw, gzip.GzipFile(filename='', mode='wb', fileobj=raw, mtime=0) as compressed, tarfile.open(fileobj=compressed, mode='w') as tar:
-        root = work / 'candidate/.vercel/output'
-        for name in sorted(candidate):
-            path = root / name
-            info = tar.gettarinfo(str(path), '.vercel/output/' + name)
-            info.uid = info.gid = info.mtime = 0
-            info.uname = info.gname = ''
-            with path.open('rb') as data:
-                tar.addfile(info, data)
-    with tarfile.open(archive) as tar:
-        archived = {member.name.removeprefix('.vercel/output/'): hashlib.sha256(tar.extractfile(member).read()).hexdigest() for member in tar.getmembers() if member.isfile()}
-    require(archived == candidate, 'Archived bytes differ from tested package')
-    summary = {'status': 'built_requires_browser_qa_and_owner_authorization', 'production_deployment': DEPLOYMENT,
-               'artifact': str(archive), 'artifact_sha256': sha(archive), 'files': len(candidate), 'changed': changed,
+    validate_work_inputs(work, expected)
+    base, candidate, changed = verify_outputs(work, expected)
+    summary = {'status': 'built_requires_browser_qa' if args.build_only else 'built_requires_browser_qa_and_owner_authorization',
+               'production_deployment': DEPLOYMENT, 'artifact': None, 'artifact_sha256': None,
+               'build_completed_at_utc': datetime.now(timezone.utc).isoformat(),
+               'files': len(candidate), 'changed': changed,
                'unchanged_functions': sum(p.startswith('functions/') for p in base), 'builder': BUILDER, 'builds': logs,
                'baseline_static': str(work / 'baseline/.vercel/output/static'), 'candidate_static': str(work / 'candidate/.vercel/output/static')}
+    if not args.build_only:
+        archive = archive_output(work, candidate)
+        summary.update({'artifact': str(archive), 'artifact_sha256': sha(archive)})
     (work / 'package-inventory.json').write_text(json.dumps({'baseline': base, 'candidate': candidate}, indent=2) + '\n')
     (work / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
     print(json.dumps(summary, indent=2))

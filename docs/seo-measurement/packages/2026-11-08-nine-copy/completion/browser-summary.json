@@ -1,0 +1,114 @@
+{
+  "status": "passed_local_package_qa",
+  "startedAtUtc": "2026-11-08T23:10:00.702199+00:00",
+  "completedAtUtc": "2026-11-08T23:10:38.308002+00:00",
+  "sourceMode": "packaged-static",
+  "staticRoots": {
+    "baseline": "/workspace/work/publish-nine-copy-20261108/build-local/baseline/.vercel/output/static",
+    "candidate": "/workspace/work/publish-nine-copy-20261108/build-local/candidate/.vercel/output/static"
+  },
+  "browserExitCode": 0,
+  "cases": 16,
+  "completedCases": 16,
+  "comparisons": 8,
+  "passedComparisons": 8,
+  "candidateScreenshots": 16,
+  "screenshotsVisuallyReviewed": 16,
+  "nativeCommercialFormChecks": 12,
+  "pageErrors": 0,
+  "consoleErrors": 4,
+  "failedLocalResponses": 0,
+  "interceptedApiRequests": 12,
+  "apiMethodsAndPaths": {
+    "GET /api/uf": 12
+  },
+  "serverPostRequests": 0,
+  "blockedRemoteRequests": 4,
+  "visualFinding": "All 16 candidate desktop/mobile captures reviewed. Approved copy is readable and wraps within the viewport; no copy clipping, overlap or new horizontal overflow. Some existing comparator symbols render as square glyphs in this isolated environment; the external Google font stylesheet is deliberately blocked and console signatures are identical in baseline and candidate. External production rendering is not certified.",
+  "scopeLimitations": [
+    "Only four allowed pages navigated; project fichas not reviewed.",
+    "UF is the null fixture; no live official value certified.",
+    "No submissions made and no external provider functionality certified."
+  ],
+  "evidence": {
+    "results": "/workspace/work/publish-nine-copy-20261108/qa-package.local/results.json",
+    "resultsSha256": "027257b122a59c1e029bd369745b578cf48c718e63303383d64d9713695e06a3",
+    "runLog": "/workspace/work/publish-nine-copy-20261108/qa-package-run.log"
+  },
+  "fixtures_are_synthetic_not_current_offers": true,
+  "fixture_results": {
+    "comparator_monthly_uf": "20,09",
+    "guide_monthly_uf": "19,39",
+    "guide_amortization_rows": 20,
+    "orientation_budget_uf": "2.269,74",
+    "quote_a_monthly_uf": "8",
+    "quote_b_monthly_uf": "14,03"
+  },
+  "completed_at_santiago": "2026-11-08T20:10:38.308002-03:00",
+  "capture_inventory": [
+    {
+      "file": "desktop-C01-comparator-intro.png",
+      "sha256": "375950a03f9576b45eb716c6d9265982b5327c39df0bc1a81de42406f246d0c2"
+    },
+    {
+      "file": "desktop-C02-comparator-down-help.png",
+      "sha256": "5d4e2dc1e03d863f6b95509813adf6f6b6068da94d2f1c0e4b748acfa7568983"
+    },
+    {
+      "file": "desktop-C03-comparator-lead-intro.png",
+      "sha256": "4353c0bb2282eb2c8f2070fac4cc7c8e62ad752dfdd944b66fdb0e0a422783cb"
+    },
+    {
+      "file": "desktop-G01-guide-next.png",
+      "sha256": "fee29a4fa30e542fdae29f85ccec3ef5ee68beb291165ab0a61c04addcaad9e6"
+    },
+    {
+      "file": "desktop-H02-home-hero.png",
+      "sha256": "285304b57ba1f02d61ad0a3d2050a745da014ef8cd67f0b24d3892fbffc37e8b"
+    },
+    {
+      "file": "desktop-H03-home-process.png",
+      "sha256": "88c47270614b73a991a9897049c908ed9bce3a1205b1760eb812b96d680b12ec"
+    },
+    {
+      "file": "desktop-O01-orientation-ruta.png",
+      "sha256": "16779e47c6698dbf487e5741f1288ef4bffbaede7e2a2e52cdcea962952a64b2"
+    },
+    {
+      "file": "desktop-O02-orientation-cotizaciones.png",
+      "sha256": "a73832cd780c58262814c9814271b2d7ed54b5772fecea6a7f1885fb13cdd42a"
+    },
+    {
+      "file": "mobile-C01-comparator-intro.png",
+      "sha256": "2bf5fa8b5e5cd79e01a9d5f0a8a15a464dce6c2a2db65ff85f97f64c1e22d60f"
+    },
+    {
+      "file": "mobile-C02-comparator-down-help.png",
+      "sha256": "a8e78d9de627819352db8423defe22beff10e76a76a54b9891c10a91e6f23a6e"
+    },
+    {
+      "file": "mobile-C03-comparator-lead-intro.png",
+      "sha256": "cafe1951736f6e1afe42cbacc3a3d0adf7afb847e742ee8b9d3b5e5bb0f1495c"
+    },
+    {
+      "file": "mobile-G01-guide-next.png",
+      "sha256": "5acfb9c078d102ef997bc99690d93afb39a1250b63660f3cb36cdff6459b51f9"
+    },
+    {
+      "file": "mobile-H02-home-hero.png",
+      "sha256": "22164f56efa59f526d5e8eee950664d20b2be11dd89cc73a689fe60848a8d0d6"
+    },
+    {
+      "file": "mobile-H03-home-process.png",
+      "sha256": "bdce2775e4ac2ebdd0c066bab31dd3f0d7d3f5f47226d75107a6b370403d9df5"
+    },
+    {
+      "file": "mobile-O01-orientation-ruta.png",
+      "sha256": "187ebe6941735753273df07ff0ff20aeacb18d245169590f578fed770c8d8662"
+    },
+    {
+      "file": "mobile-O02-orientation-cotizaciones.png",
+      "sha256": "1cd72c830622d5e48acf565da2bcd4b4bbfde5012d4c33f1e62538e992d634cc"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "status": "passed",
+  "checkedAtUtc": "2026-11-08T23:11:15.290121+00:00",
+  "productionBase": "dpl_5ReP6rLckXZ7nonSTE7Qu79gesiZ",
+  "verificationMode": "local paired packaged output; no network, no builder invocation, no external-service certification",
+  "sourceRegistrySha256": "9dd43786ed065db694712cdaed938362035aaef2c5a8f368d11a8c0b571a94a8",
+  "packagedFilesPerTree": 1648,
+  "sameRuntimePaths": true,
+  "changedRuntimePaths": [
+    "static/centro-orientacion.html",
+    "static/comparador-hipotecario.html",
+    "static/guia-hipotecaria.html",
+    "static/index.html"
+  ],
+  "unchangedRuntimeFiles": 1644,
+  "functions": {
+    "files": 57,
+    "allHashesPreserved": true
+  },
+  "static": {
+    "files": 1590,
+    "unchangedFiles": 1586,
+    "allOtherHashesPreserved": true
+  },
+  "individualProjectPages": {
+    "files": 131,
+    "verification": "path presence and byte hashes only; no HTML parsing or content review",
+    "allHashesPreserved": true
+  },
+  "productionEntorno": {
+    "path": "static/entorno-desarrollo-urbano.html",
+    "sha256": "ce52dfdc9a432e987f059ee75d438d667edcd5b273ed6216e3b66e07d75c404b",
+    "preservedFromCertifiedProductionRatherThanGitD7": true
+  },
+  "configuration": {
+    "inputSha1": "0e51cb57914c40cd4fa14f7bdff3894fd375dbc1",
+    "inputSha256": "0440b96a1986452092e2249bc9c6f86b86788c979ff4296f4618b1c125dbe985",
+    "pairedOutputSha256": "ef32ad5c7a069d7de482a7a92f5022a0c852cd0b9b896a735a48bd12bae71f05",
+    "pairedOutputBytesIdentical": true,
+    "outputMatchesUnchangedCertifiedBuilderTransform": true,
+    "originalRoutesPreservedInOrder": true,
+    "originalRouteCount": 24,
+    "outputRouteCount": 26,
+    "existing410RetirementAnd308OrientationGuardsPassed": true
+  },
+  "approvedCopy": {
+    "ids": [
+      "H01",
+      "H02",
+      "H03",
+      "O01",
+      "O02",
+      "G01",
+      "C01",
+      "C02",
+      "C03"
+    ],
+    "uniqueApprovedFragmentsAndExactInverseRestorationPassed": true,
+    "g01PresentOnceAfterConstruction": true,
+    "g01BeforeExistingGuideActions": true,
+    "packagedExistingTestsPassed": 6,
+    "testNames": [
+      "test_approved_changes_are_unique_and_every_other_page_byte_is_preserved",
+      "test_baseline_matches_the_four_published_snapshots",
+      "test_titles_h1_schema_styles_scripts_and_canonical_are_identical",
+      "test_only_the_home_description_meta_changes",
+      "test_all_form_control_attributes_and_consent_fragments_are_identical",
+      "test_original_links_are_preserved_except_one_educational_label"
+    ],
+    "originalEducationalLinksPreserved": true,
+    "educationalAdditionsHaveExistingPackagedDestinations": true,
+    "originalFormControlAttributesAndConsentPreserved": true,
+    "titlesH1SchemaStylesScriptsAndCanonicalsPreserved": true,
+    "onlyApprovedHomeMetaDescriptionChanges": true
+  },
+  "noAddedPrivateInternalRuntimePaths": true,
+  "artifactArchiveCheck": "Completed afterwards; see artifact-verification.json",
+  "externalServiceBehavior": "not certified by this static integrity check",
+  "publicPageHashes": {
+    "static/centro-orientacion.html": {
+      "baseline": "adf54bd3956beb68e0840b20c916384c1cc8a6af6be85c463b85905d05a5357c",
+      "candidate": "2a7eacf5f5e335e89910f0a461f8904befd87033d3a937260b782c97c6a7d6d4"
+    },
+    "static/comparador-hipotecario.html": {
+      "baseline": "35b7d59be0f797db5d1816626cb8920b76ef4541c5134680c112eef788669ffc",
+      "candidate": "3b3635e7098cea83b84c486eb091b0c0116e33647412c852f40bd17e163e7b02"
+    },
+    "static/guia-hipotecaria.html": {
+      "baseline": "651a25d181f3af8f582e7578f717006a28530825e7e0436003008aaedb1e8e6d",
+      "candidate": "b86208c5b19380be10af60855efeb810625b867313d05514de8389584eaa9178"
+    },
+    "static/index.html": {
+      "baseline": "2347ce6574671d599505a9c63ef1263d0e464ca93596396138d79d4046829928",
+      "candidate": "5814adbcb6733a3ff705bff11804ca46757b74ed079ca67e294151887be49d7e"
+    }
+  }
+}

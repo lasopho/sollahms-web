@@ -1,5 +1,7 @@
 # Preparación local de la publicación de nueve mejoras
 
+> **Continuidad:** el archivo faltante se recibió y verificó; la construcción y el QA local del artefacto están completados. Estado actual y huella en [completion/report.md](completion/report.md). El informe siguiente se conserva como evidencia histórica del bloqueo previo.
+
 **8 de noviembre de 2026, UTC. Rama:** `codex/seo-medicion-20261108`.
 **Cambios aprobados conservados:** `ad84faac50cfa434fdcfaadbd0a139fbd6e5ab0d`.
 **Estado: bloqueado por un archivo fuente exacto; paquete NO listo.** No hay artefacto publicable ni SHA-256 de artefacto para autorizar.

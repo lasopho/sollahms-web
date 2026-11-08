@@ -1,0 +1,44 @@
+{
+  "status": "built_browser_qa_passed_requires_owner_authorization",
+  "production_deployment": "dpl_5ReP6rLckXZ7nonSTE7Qu79gesiZ",
+  "artifact": "/workspace/work/publish-nine-copy-20261108/build-local/sollahms-nine-copy.vercel-output.tar.gz",
+  "artifact_sha256": "17f4496b411f779029494de4c6757c30cca41f8547992333f1e76523444c035d",
+  "build_completed_at_utc": "2026-11-08T23:09:47.614942+00:00",
+  "files": 1648,
+  "changed": [
+    "static/centro-orientacion.html",
+    "static/comparador-hipotecario.html",
+    "static/guia-hipotecaria.html",
+    "static/index.html"
+  ],
+  "unchanged_functions": 57,
+  "builder": "prepare-orientation-production.mjs",
+  "builds": {
+    "baseline": {
+      "command": [
+        "node",
+        "prepare-orientation-production.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"verifiedReleaseFiles\":1648,\"activeProjects\":131,\"priorRetirementPreserved\":true,\"privateContactBaselinesIncluded\":false}\n",
+      "stderr": ""
+    },
+    "candidate": {
+      "command": [
+        "node",
+        "prepare-orientation-production.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"verifiedReleaseFiles\":1648,\"activeProjects\":131,\"priorRetirementPreserved\":true,\"privateContactBaselinesIncluded\":false}\n",
+      "stderr": ""
+    }
+  },
+  "baseline_static": "/workspace/work/publish-nine-copy-20261108/build-local/baseline/.vercel/output/static",
+  "candidate_static": "/workspace/work/publish-nine-copy-20261108/build-local/candidate/.vercel/output/static",
+  "browser_qa": {
+    "results": "/workspace/work/publish-nine-copy-20261108/qa-package.local/results.json",
+    "sha256": "027257b122a59c1e029bd369745b578cf48c718e63303383d64d9713695e06a3",
+    "passed": true,
+    "completed_at_utc": "2026-11-08T23:10:38.308002+00:00"
+  }
+}
