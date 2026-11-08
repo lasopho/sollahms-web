@@ -12,6 +12,8 @@ import { brochurePublication, assertBrochureCatalogue, BROCHURE_INGEVEC_SLUGS,
   brochureFingerprint } from './brochure-publication.mjs';
 import { lebenPublication, validateLebenReview, validateLebenHeaders, assertLebenBuildEnvironment, LEBEN_MANIFEST, LEBEN_MEDIA_FOLDER, LEBEN_HEADER_CONFIG, LEBEN_HEADER_CSS } from './leben-publication.mjs';
 
+import { applyCommercialContact } from './commercial-contact.mjs';
+
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'dist');
 const preview = process.env.VERCEL_ENV === 'preview';
@@ -459,6 +461,7 @@ for (const name of pages) {
     html = html.replace(/class="project-hero([^"]*)"/, 'class="project-hero$1 nv-hero"');
     html = html.replace('</head>', '<link rel="stylesheet" href="/assets/css/norte-verde-hero-variants.css?v=20261014"><script src="/assets/js/norte-verde-hero-variants.js?v=20261014"></script></head>');
   }
+  html = applyCommercialContact(html, sourceProjects.find(project => project.slug + '.html' === name)?.nombre);
   await writeFile(join(output, name), html);
 }
 await cp(join(root, 'assets'), join(output, 'assets'), { recursive: true,
