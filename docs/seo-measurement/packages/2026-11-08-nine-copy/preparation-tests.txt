@@ -1,0 +1,19 @@
+Registro de comprobaciones locales nuevas (8 de noviembre de 2026, UTC).
+
+python -m unittest discover -s tests -p test_seo_nine_copy_browser_inputs.py -v
+Resultado observado: 6 pruebas aprobadas, 1.027 s.
+- Argumentos por defecto preservados.
+- Árboles empaquetados obligatoriamente pareados; salida requerida.
+- Rechazo de evidencias existentes e históricas.
+- Rechazo de evidencias dentro de ambos árboles públicos.
+- Validación de argumentos sin crear salida.
+- Dos servidores HTTP locales sirven sus propios bytes de recursos.
+
+py_compile: scripts/prepare-nine-copy-local.py, tests/seo-nine-copy-browser.py, tests/test_seo_nine_copy_browser_inputs.py: aprobado.
+
+Preflight con la recuperación real: código 2 esperado; solo config.json ausente; sin extras ni hash_mismatch; ningún directorio de build creado. Ver preflight-result.json.
+Constructor original: código 1 esperado antes de crear .vercel/output, por diferencia en conjunto de archivos. Ver builder-negative-result.json.
+
+Preservación: diff vacío desde ad84faac para las cuatro páginas, generador de guía y vercel.json; ver preservation.json.
+
+No es una validación funcional ni visual de un paquete completo. No hubo navegador, APIs ni proveedores en estas seis pruebas; solo dos GET de recursos a localhost.

@@ -1,0 +1,16 @@
+{
+  "observed_at": "2026-11-08T20:48:02.846230+00:00",
+  "command": [
+    "python",
+    "scripts/prepare-nine-copy-local.py",
+    "--source-root",
+    "/workspace/work/publish-nine-copy-20261108/recovery.local/src",
+    "--work-dir",
+    "/workspace/work/publish-nine-copy-20261108/build-local"
+  ],
+  "exit_code": 2,
+  "stdout": "{\"status\": \"blocked_no_artifact_ready\", \"error\": \"{\\\"missing\\\": [\\\"config.json\\\"], \\\"extra\\\": [], \\\"hash_mismatch\\\": []}\"}\n",
+  "stderr": "",
+  "work_dir_created": false,
+  "artifact_ready": false
+}

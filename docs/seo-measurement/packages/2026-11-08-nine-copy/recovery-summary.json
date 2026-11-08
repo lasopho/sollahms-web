@@ -1,0 +1,86 @@
+{
+  "productionDeployment": "dpl_5ReP6rLckXZ7nonSTE7Qu79gesiZ",
+  "registry": {
+    "sha1": "724094619180f7e3afac95bb96f4dffae1e2d495",
+    "sha256": "9dd43786ed065db694712cdaed938362035aaef2c5a8f368d11a8c0b571a94a8",
+    "size": 218817,
+    "entries": 1648,
+    "matchesProviderUIDExactly": true
+  },
+  "builder": {
+    "file": "prepare-orientation-production.mjs",
+    "sha1": "003dad8371b1fa7b78c310b1c7e26536b90cc774",
+    "sha256": "b8c4f84614ca6ed942973811ae2a6f264d13053929f7a49bd06bb7a4fbfcaff0",
+    "size": 2549,
+    "matchesProviderUIDExactly": true
+  },
+  "frozenSourceManifest": {
+    "path": "docs/centro-orientacion-20261031/deployment-files.json",
+    "sha256": "95d51976cc293518fb5ba668a1a931a3c40555f714448b2eb60d8ea032bcd346",
+    "role": "content-addressed recovery dictionary, not assumed production baseline"
+  },
+  "htmlRecovery": {
+    "paths": 144,
+    "d7SourceBytesDifferFromCertifiedProduction": [
+      "static/entorno-desarrollo-urbano.html"
+    ],
+    "contentReview": false
+  },
+  "runtimeFilesRecovered": 1647,
+  "runtimeFilesMissing": 1,
+  "missing": [
+    {
+      "path": "release/config.json",
+      "expectedSha256": "0440b96a1986452092e2249bc9c6f86b86788c979ff4296f4618b1c125dbe985",
+      "expectedSha1": "0e51cb57914c40cd4fa14f7bdff3894fd375dbc1",
+      "reason": "Exact authenticated source bytes unavailable locally; truncated provider response is not used."
+    }
+  ],
+  "builder_negative_check": "builder-negative-result.json",
+  "public_four": [
+    {
+      "url": "https://sollahms.cl/",
+      "observed_at": "2026-11-08T20:43:41.684896+00:00",
+      "status": 200,
+      "sha256": "2347ce6574671d599505a9c63ef1263d0e464ca93596396138d79d4046829928",
+      "bytes": 57861,
+      "etag": "\"8b589fdb0400e8d4025a22b9ae02d7b7\"",
+      "matches_pre_nine_copy_base": true
+    },
+    {
+      "url": "https://sollahms.cl/centro-orientacion.html",
+      "observed_at": "2026-11-08T20:43:41.953850+00:00",
+      "status": 200,
+      "sha256": "adf54bd3956beb68e0840b20c916384c1cc8a6af6be85c463b85905d05a5357c",
+      "bytes": 23273,
+      "etag": "\"c57ad66c9b76812cc870bfb32dacf448\"",
+      "matches_pre_nine_copy_base": true
+    },
+    {
+      "url": "https://sollahms.cl/guia-hipotecaria.html",
+      "observed_at": "2026-11-08T20:43:42.123628+00:00",
+      "status": 200,
+      "sha256": "651a25d181f3af8f582e7578f717006a28530825e7e0436003008aaedb1e8e6d",
+      "bytes": 44488,
+      "etag": "\"80340ec00d17e5eb9cddcb34b217f1ab\"",
+      "matches_pre_nine_copy_base": true
+    },
+    {
+      "url": "https://sollahms.cl/comparador-hipotecario.html",
+      "observed_at": "2026-11-08T20:43:42.342691+00:00",
+      "status": 200,
+      "sha256": "35b7d59be0f797db5d1816626cb8920b76ef4541c5134680c112eef788669ffc",
+      "bytes": 23124,
+      "etag": "\"c2b0339f21a1399fcaefe2c13b73e369\"",
+      "matches_pre_nine_copy_base": true
+    }
+  ],
+  "artifact": null,
+  "artifact_sha256": null,
+  "status": "blocked_missing_exact_production_config",
+  "offlineMaterializationExternalRequests": false,
+  "builderExecution": {
+    "successful_build": false,
+    "negative_check": "builder-negative-result.json"
+  }
+}

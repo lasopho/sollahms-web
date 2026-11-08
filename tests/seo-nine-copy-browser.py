@@ -2,15 +2,20 @@
 
 No deployment, credentials, provider traffic, real leads or project navigation.
 Run: python tests/seo-nine-copy-browser.py
+Packaged input: add --baseline-static-root PATH --candidate-static-root PATH
+and --output PATH (a new evidence directory outside both static trees).
 """
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import math
 import mimetypes
+import shlex
 import subprocess
+import sys
 import threading
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -23,6 +28,7 @@ from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "87108f3fc6d10994d456388c106e79a5b538bffc"
 OUTPUT = ROOT / "docs/seo-measurement/implementations/2026-11-08-nine-copy/browser"
+HISTORICAL_OUTPUT = OUTPUT
 PAGES = ("index.html", "centro-orientacion.html", "guia-hipotecaria.html", "comparador-hipotecario.html")
 VIEWPORTS = {"desktop": {"width": 1440, "height": 1000}, "mobile": {"width": 390, "height": 844}}
 BUDGET = {"income": 2000000, "debt": 100000, "savings": 20000000,
@@ -36,7 +42,8 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
-def handler_for(html, journal):
+def handler_for(html, journal, static_root=ROOT):
+    static_root = static_root.resolve()
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *_):
             pass
@@ -53,8 +60,8 @@ def handler_for(html, journal):
             if page_name in html:
                 data, content_type = html[page_name], "text/html; charset=utf-8"
             elif path.startswith("/assets/") or path == "/data/hipotecario.json":
-                target = (ROOT / path.lstrip("/")).resolve()
-                if not target.is_relative_to(ROOT) or not target.is_file():
+                target = (static_root / path.lstrip("/")).resolve()
+                if not target.is_relative_to(static_root) or not target.is_file():
                     self.send_error(404)
                     return
                 data = target.read_bytes()
@@ -233,16 +240,56 @@ def run_case(browser, origin, label, viewport_name, filename):
     return result
 
 
-def main():
+def parse_arguments(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--baseline-static-root", type=Path)
+    parser.add_argument("--candidate-static-root", type=Path)
+    parser.add_argument("--output", type=Path)
+    args = parser.parse_args(argv)
+    roots = (args.baseline_static_root, args.candidate_static_root)
+    if any(root is not None for root in roots):
+        if not all(root is not None for root in roots):
+            parser.error("--baseline-static-root and --candidate-static-root must be supplied together")
+        if args.output is None:
+            parser.error("Packaged input requires --output to preserve historical evidence")
+        args.baseline_static_root, args.candidate_static_root = (root.resolve() for root in roots)
+        if args.baseline_static_root == args.candidate_static_root:
+            parser.error("Baseline and candidate static roots must be distinct")
+        for root in (args.baseline_static_root, args.candidate_static_root):
+            if not root.is_dir() or any(not (root / name).is_file() for name in PAGES):
+                parser.error(f"Static root must contain all four reviewed pages: {root}")
+        output = args.output.resolve()
+        if output == HISTORICAL_OUTPUT.resolve():
+            parser.error("Packaged input must not overwrite the historical browser evidence")
+        if output.exists():
+            parser.error("Packaged input requires a new evidence output path; it must not already exist")
+        if any(output.is_relative_to(root) for root in (args.baseline_static_root, args.candidate_static_root)):
+            parser.error("Evidence output must be outside both public static trees")
+    return args
+
+
+def main(argv=None):
+    global OUTPUT
+    args = parse_arguments(argv)
+    OUTPUT = args.output.resolve() if args.output is not None else HISTORICAL_OUTPUT
+    packaged = args.baseline_static_root is not None
+    static_roots = {"baseline": args.baseline_static_root or ROOT,
+                    "candidate": args.candidate_static_root or ROOT}
+    if packaged:
+        baseline = {name: (static_roots["baseline"] / name).read_bytes() for name in PAGES}
+    else:
+        baseline = {name: subprocess.check_output(["git", "show", f"{BASE}:{name}"], cwd=ROOT) for name in PAGES}
+    candidate = {name: (static_roots["candidate"] / name).read_bytes() for name in PAGES}
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    baseline = {name: subprocess.check_output(["git", "show", f"{BASE}:{name}"], cwd=ROOT) for name in PAGES}
-    candidate = {name: (ROOT / name).read_bytes() for name in PAGES}
     journal = {"baseline": [], "candidate": []}
-    servers = {label: ThreadingHTTPServer(("127.0.0.1", 0), handler_for(html, journal[label])) for label, html in (("baseline", baseline), ("candidate", candidate))}
+    servers = {label: ThreadingHTTPServer(("127.0.0.1", 0), handler_for(html, journal[label], static_roots[label])) for label, html in (("baseline", baseline), ("candidate", candidate))}
     for server in servers.values():
         threading.Thread(target=server.serve_forever, daemon=True).start()
-    report = {"startedAtUtc": datetime.now(timezone.utc).isoformat(), "baseCommit": BASE,
-              "command": "python tests/seo-nine-copy-browser.py", "chromiumExecutable": "/usr/bin/chromium",
+    report = {"startedAtUtc": datetime.now(timezone.utc).isoformat(), "baseCommit": None if packaged else BASE,
+              "sourceMode": "packaged-static" if packaged else "repository",
+              "baselineLabel": str(static_roots["baseline"]) if packaged else BASE,
+              "staticRoots": {label: str(root) for label, root in static_roots.items()},
+              "command": shlex.join(["python", "tests/seo-nine-copy-browser.py", *(sys.argv[1:] if argv is None else argv)]), "chromiumExecutable": "/usr/bin/chromium",
               "isolation": {"localStaticOnly": True, "ufFixture": {"uf": None}, "otherApi": "503 preview_read_only", "realSubmissions": False,
                             "fixturesAreMeasurement": False, "screenshots": "Actual retained styles and scroll-presence, viewport captures; no CSS injection."},
               "inputs": {"comparator": {"propertyUf":4000,"downPaymentPercent":20,"years":20,"annualRatePercent":4.5,"rateConvention":"effective"}, "guide": {"propertyUf":4000,"downValue":20,"annualRatePercent":4,"rateConvention":"nominal","years":20}, "budget":BUDGET,"quotes":QUOTES},
