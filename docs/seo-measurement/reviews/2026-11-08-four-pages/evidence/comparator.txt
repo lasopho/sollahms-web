@@ -1,0 +1,108 @@
+a [] Saltar al contenido -> #contenido-principal
+a [] Expertise -> /#expertise
+a [] Asset Portafolio -> /proyectos.html
+a [] Guía hipotecaria -> /guia-hipotecaria.html
+a [] Contacto -> /contacto.html
+a [] Agendar Asesoría -> /agenda-asesoria.html
+a [mobile-menu] Expertise -> /#expertise
+a [mobile-menu] Asset Portafolio -> /proyectos.html
+a [mobile-menu] Guía hipotecaria -> /guia-hipotecaria.html
+a [mobile-menu] Contacto -> /contacto.html
+p [contenido-principal] FINANCIAMIENTO CON PERSPECTIVA
+h1 [contenido-principal] Compara tu dividendo hipotecario en UF.
+p [contenido-principal] Explora cómo cambia tu dividendo según el pie, la tasa y el plazo. Si necesitas repasar conceptos, consulta la guía hipotecaria .
+a [contenido-principal] guía hipotecaria -> /guia-hipotecaria.html
+li [contenido-principal] 01 Simula
+li [contenido-principal] 02 Compara
+li [contenido-principal] 03 Conversemos
+p [project-context] TU PROYECTO DE ORIGEN
+a [project-detail] Volver a la ficha ↗ -> /proyectos.html
+a [project-source] Ver fuente del precio ↗ -> /proyectos.html
+p [contenido-principal] TU PUNTO DE PARTIDA
+h2 [simulation-title] Diseña tu financiamiento
+p [contenido-principal] Simula libremente, sin entregar datos personales.
+p [simulation-unavailable] La simulación necesita JavaScript. Puedes solicitar asesoría por correo a contacto@sollahms.cl o por teléfono al +56 9 4850 2440 .
+a [simulation-unavailable] contacto@sollahms.cl -> mailto:contacto@sollahms.cl
+a [simulation-unavailable] +56 9 4850 2440 -> https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.
+label [simulation-fields] Valor de la propiedad UF
+p [property-help] Entre 100 y 1.000.000 UF.
+legend [simulation-fields] Pie de la propiedad
+button [down-presets] 10%
+button [down-presets] 15%
+button [down-presets] 20%
+button [down-presets] Otro
+label [simulation-fields] Pie personalizado (%)
+p [simulation-fields] Las condiciones de cada banco determinan el pie mínimo.
+label [simulation-fields] Plazo del crédito
+label [custom-years-field] Años (5 a 40)
+label [simulation-fields] Tasa de interés anual %
+p [rate-help] Usa la tasa de tu cotización o elige una alternativa verificada abajo. Una tasa ingresada por ti es referencial.
+summary [simulation-fields] Convención de tasa y ubicación
+label [simulation-fields] Cómo está expresada la tasa
+p [simulation-fields] Si tu cotización no lo indica, confirma la convención con la institución.
+label [simulation-fields] Ubicación de la propiedad
+p [location-help] La comparación CMF aplica a su escenario de Santiago y 75% de financiamiento.
+button [simulation-fields] Calcular dividendo ↗
+p [result-panel] TU ESCENARIO
+h2 [result-panel] Una mirada a tus números
+p [result-kind] Completa una tasa o selecciona una alternativa para calcular.
+p [result-panel] Dividendo financiero mensual
+p [monthly-clp] El equivalente en pesos aparecerá aquí.
+p [result-panel] Capital e intereses. Seguros y gastos se muestran por separado.
+p [result-panel] ● Tu pie ● Financiamiento
+button [lead-open] Quiero que me contacten ↗
+p [result-panel] Estimación orientativa, sujeta a evaluación. Los montos futuros en pesos varían con la UF.
+p [contenido-principal] EXPLORA LAS ALTERNATIVAS
+h2 [comparison-title] Compara con contexto.
+p [contenido-principal] Cada tasa tiene condiciones. Aquí verás su fuente, vigencia y alcance.
+label [contenido-principal] Ordenar alternativas
+p [comparison-status] Cargando alternativas verificadas…
+button [verified-scenario] Explorar el escenario verificado de la CMF ↗
+h3 [detail-title] Detalle de la alternativa
+button [detail-contact] Quiero que me contacten
+summary [contenido-principal] Instituciones y fuentes oficiales consultadas
+p [contenido-principal] Un enlace oficial no implica que exista una oferta comparable publicada. Las campañas y cotizaciones personales requieren revisar sus condiciones.
+p [lead-section] TU SIGUIENTE PASO
+h2 [lead-title] Conversemos sobre tu financiamiento.
+p [lead-section] Puedes solicitar que un asesor revise estos números junto con tus datos para evaluar el próximo paso.
+p [lead-section] No necesitas compartir información bancaria ni credenciales.
+label [lead-fields-controls] Sitio web
+p [lead-required] Nombre completo, RUT, correo electrónico y teléfono son obligatorios.
+label [lead-fields-controls] Nombre completo
+label [lead-fields-controls] RUT
+p [lead-rut-help] Para identificarte y dar continuidad a tu evaluación.
+label [lead-fields-controls] Correo electrónico
+label [lead-fields-controls] Teléfono
+p [phone-help] En Chile, escribe 9 dígitos. Para otro país, incluye + y su código.
+label [lead-fields-controls] Comentario opcional
+label [lead-fields-controls] Autorizo a Sollahms a tratar mis datos y esta simulación para responder mi solicitud de asesoría e identificarme y dar continuidad a la evaluación solicitada, según su política de privacidad .
+a [lead-fields-controls] política de privacidad -> /privacidad.html
+button [lead-submit] Solicitar asesoría
+p [lead-fields-controls] También puedes escribir a contacto@sollahms.cl .
+a [lead-fields-controls] contacto@sollahms.cl -> mailto:contacto@sollahms.cl
+p [contenido-principal] INFORMACIÓN PARA DECIDIR
+h2 [method-title] Lo que considera tu simulación
+summary [contenido-principal] ¿Cómo calculamos el dividendo?
+p [contenido-principal] Usamos amortización de cuotas constantes en UF: dividendo = capital × i / (1 − (1 + i) −n ), donde i es la tasa mensual y n el número de meses. Con tasa cero, capital / n. Una tasa nominal anual convertible mensualmente se divide por 12; una tasa anual efectiva se convierte con (1 + tasa anual) 1/12 − 1.
+summary [contenido-principal] ¿Qué gastos están incluidos?
+p [contenido-principal] El dividendo financiero contiene capital e intereses. Los seguros, gastos operacionales, impuestos e inscripciones sólo se agregan cuando la fuente los verifica para el mismo escenario. La suma de dividendos financieros no equivale al costo total con todos los gastos. El pie se informa por separado.
+summary [contenido-principal] ¿Por qué puede no aparecer un banco?
+p [contenido-principal] La información puede estar vencida, pendiente de verificación o no aplicar a tu monto, pie, plazo o ubicación. No extrapolamos CAE ni campañas a otros perfiles. Puedes simular con una tasa de tu cotización y solicitar asesoría igualmente.
+summary [contenido-principal] ¿Cómo se convierte a pesos?
+p [uf-method] Se utiliza una UF con fecha y fuente identificadas. El equivalente es una referencia para esa fecha, no una proyección de pagos futuros en pesos.
+p [contenido-principal] Consultar UF en SII ↗ · Consultar simulador CMF ↗
+a [contenido-principal] Consultar UF en SII ↗ -> https://www.sii.cl/valores_y_fechas/uf/uf2026.htm
+a [contenido-principal] Consultar simulador CMF ↗ -> https://servicios.cmfchile.cl/simuladorhipotecario
+p [contenido-principal] Activa JavaScript para realizar cálculos. Puedes solicitar asesoría en Contacto o consultar el simulador de la CMF .
+a [contenido-principal] Contacto -> /contacto.html
+a [contenido-principal] simulador de la CMF -> https://servicios.cmfchile.cl/simuladorhipotecario
+p [contenido-principal] Planifica tu compra con nuestras herramientas educativas.
+a [contenido-principal] Abrir el Centro de Orientación Inmobiliaria → -> /centro-orientacion.html
+a [] Asset Portafolio -> /proyectos.html
+a [] Guía hipotecaria -> /guia-hipotecaria.html
+a [] Cuándo comprar -> /cuando-comprar-propiedad.html
+a [] Contacto -> /contacto.html
+a [] Trabaja con nosotros -> /trabaja-con-nosotros.html
+a [] WhatsApp: +56 9 4850 2440 -> https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.
+a [] Privacidad -> /privacidad.html
+p [] © 2026 Sollahms

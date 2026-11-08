@@ -1,0 +1,163 @@
+a [] Saltar al contenido -> #contenido-principal
+a [] Sollahms . -> /
+a [] Portafolio -> /proyectos.html
+a [] Comparador -> /comparador-hipotecario.html
+a [] Conversemos → -> #asesoria
+p [contenido-principal] CENTRO DE ORIENTACIÓN INMOBILIARIA
+h1 [contenido-principal] Tu próximo hogar. Una decisión informada.
+p [contenido-principal] De las primeras preguntas a la entrega de llaves. Ordena tus números, entiende tus opciones y avanza a tu ritmo.
+a [contenido-principal] Encontrar mi punto de partida → -> #ruta
+a [contenido-principal] Ver el proceso de compra → -> #recorrido
+p [contenido-principal] Herramientas gratuitas · Sin registro para explorar
+p [contenido-principal] DE LA IDEA A LAS LLAVES
+a [contenido-principal] Prepara tu checklist → -> #checklist
+a [contenido-principal] Presupuesto -> #presupuesto
+a [contenido-principal] Cotizaciones -> #cotizaciones
+a [contenido-principal] Subsidios y FOGAES -> #beneficios
+a [contenido-principal] Checklist -> #checklist
+a [contenido-principal] Paso a paso -> #recorrido
+a [contenido-principal] Preguntas -> #preguntas
+p [ruta] EMPIEZA DONDE ESTÁS
+h2 [ruta] ¿Qué necesitas resolver hoy?
+p [ruta] No necesitas tener todas las respuestas para dar el siguiente paso.
+a [ruta] 01 / NÚMEROS ¿Cuánto puedo destinar? Explora cómo se relacionan tu ahorro, renta y dividendo. Orientar mi presupuesto → -> #presupuesto
+h3 [ruta] ¿Cuánto puedo destinar?
+p [ruta] Explora cómo se relacionan tu ahorro, renta y dividendo.
+a [ruta] 02 / OPORTUNIDADES ¿Hay beneficios para mí? Distingue subsidio habitacional, subsidio a la tasa y garantía. Entender mis opciones → -> #beneficios
+h3 [ruta] ¿Hay beneficios para mí?
+p [ruta] Distingue subsidio habitacional, subsidio a la tasa y garantía.
+a [ruta] 03 / DECISIÓN ¿Cómo sigue la compra? Revisa los hitos y prepara las preguntas que importan. Recorrer el proceso → -> #recorrido
+h3 [ruta] ¿Cómo sigue la compra?
+p [ruta] Revisa los hitos y prepara las preguntas que importan.
+p [presupuesto] 01 / PLANIFICA
+h2 [presupuesto] Un presupuesto que parta de ti.
+p [presupuesto] Explora un precio de vivienda limitado por tu pie y dividendo. Usa montos combinados si deseas complementar renta.
+h3 [budget-form] Tu escenario
+label [budget-form] Renta líquida mensual total (CLP)
+label [budget-form] Cuotas mensuales de deudas (CLP)
+label [budget-form] Ahorro disponible para el pie (CLP)
+label [budget-form] Ahorro adicional mensual (CLP)
+label [budget-form] Meses hasta la compra
+label [budget-form] Criterio de carga total 25% de la renta 30% de la renta
+label [budget-form] Pie (%)
+label [budget-form] Plazo (años)
+label [budget-form] Tasa anual de tu cotización (%)
+label [budget-form] Convención de la tasa Anual efectiva Nominal anual / 12
+p [uf-status] Consultando UF oficial…
+label [budget-form] UF para este escenario (CLP)
+p [uf-help] Si la UF oficial no está disponible, puedes ingresar un valor manual. Una referencia manual no se presenta como UF vigente.
+button [refresh-uf] Consultar UF oficial otra vez
+p [budget-help] Presupuesto mensual = renta × criterio − deudas, con mínimo cero. 25% y 30% son supuestos de exploración. Seguros, gastos operacionales y reserva de emergencia no están incluidos: descuéntalos de tu ahorro antes de calcular. La renta complementada requiere evaluación de la institución.
+button [budget-form] Explorar mi presupuesto →
+p [presupuesto] TU PUNTO DE PARTIDA
+h3 [presupuesto] Primero los números. Después, las alternativas.
+p [budget-result] Completa tu escenario para explorar un precio máximo referencial en UF y ver qué variable limita tu presupuesto.
+p [presupuesto] No representa aprobación ni recomendación de crédito. Se mantiene fija la UF de referencia, sin rentabilidad ni predicción de su valor futuro.
+a [presupuesto] Buscar proyectos con mis parámetros → -> /proyectos.html#capacity-title
+p [presupuesto] La búsqueda financiera existente permite volver a ingresar y evaluar tus parámetros. Tus rentas y ahorros no se guardan ni se transfieren.
+p [cotizaciones] 02 / COMPARA
+h2 [cotizaciones] Mismo escenario. Dos cotizaciones.
+p [cotizaciones] Compara el efecto financiero de dos tasas. Solicita CAE, seguros y gastos para contrastar el costo completo.
+label [quotes-form] Precio de la vivienda (UF)
+label [quotes-form] Pie (%)
+label [quotes-form] Plazo (años)
+label [quotes-form] Convención común Anual efectiva Nominal anual / 12
+label [quotes-form] Tasa anual cotización A (%)
+label [quotes-form] Tasa anual cotización B (%)
+p [quotes-form] Ingresa tasas con la misma convención. No restamos automáticamente un beneficio ni presentamos tasas comerciales. El resultado contiene sólo capital e intereses.
+button [quotes-form] Comparar tasas →
+h3 [quotes-result] Lo que debes pedir por escrito
+li [quotes-result] Tasa y convención, monto, pie y plazo.
+li [quotes-result] CAE y costo total del crédito para ese escenario.
+li [quotes-result] Seguros, gastos operacionales, condiciones y vigencia.
+li [quotes-result] Tasa final con beneficios, sin duplicar descuentos.
+a [cotizaciones] Abrir simulador y referencias verificadas → -> /comparador-hipotecario.html
+p [cotizaciones] El comparador existente conserva sus controles de fuente, escenario y vigencia. Una referencia vencida no se convierte en una oferta actual.
+p [beneficios] 03 / ENTIENDE TUS OPCIONES
+h2 [beneficios] Tres apoyos. Distintas funciones.
+p [beneficios] Una garantía no paga el pie ni extingue tu deuda. Un subsidio habitacional y una rebaja de tasa actúan de maneras distintas.
+h3 [beneficios] Subsidio habitacional
+p [beneficios] DS1 y DS19 tienen requisitos, modalidades y cupos propios. Revisa el llamado, el proyecto y tu situación con MINVU o SERVIU.
+a [beneficios] Conocer DS1 → -> https://www.minvu.gob.cl/beneficio/vivienda/subsidio-habitacional-para-comprar-una-vivienda-de-hasta-2200-uf-ds1/
+a [beneficios] Conocer DS19 → -> https://www.minvu.gob.cl/beneficio/vivienda/subsidio-de-integracion-social-y-territorial-ds19/
+h3 [beneficios] Subsidio a la tasa
+p [beneficios] Reduce el interés del crédito bajo las reglas del programa. Pide la tasa final en tu cotización; no apliques otro descuento si ya está incluido.
+a [beneficios] Consultar MINVU → -> https://www.minvu.gob.cl/fogaes/
+h3 [beneficios] Garantía FOGAES
+p [beneficios] Respalda parte del financiamiento ante la institución. No sustituye la evaluación bancaria ni te libera de pagar el crédito.
+a [beneficios] Revisar la ampliación oficial → -> https://fogaes.cl/sitio/2026/08/19/diario-oficial-publica-ley-n-21-836-que-extiende-y-aumenta-cobertura-de-subsidio-a-la-tasa-de-interes-hipotecaria/
+h3 [benefit-form] Contrasta condiciones generales
+label [benefit-form] Precio de la vivienda (UF)
+label [benefit-form] Tipo de vivienda Por confirmar Nueva Usada
+label [benefit-form] Fecha de promesa (opcional)
+label [benefit-form] ¿Es novación de un crédito existente? Por confirmar No, es un crédito nuevo Sí
+p [promise-help] No ingreses una fecha supuesta. Sin promesa o con antecedentes pendientes, el resultado requiere revisión.
+button [benefit-form] Orientar mi consulta →
+p [beneficios] REVISIÓN: 31 OCT 2026
+h3 [beneficios] Qué cambió en FOGAES
+p [beneficios] La ampliación contempla vivienda nueva de hasta 6.000 UF y un plazo hasta el 31 de mayo de 2028, sujeto a cupos. La garantía y el subsidio a la tasa requieren confirmación de la entidad.
+p [beneficios] La guía contrasta precio, condición de nueva, promesa desde el 31 de diciembre de 2024 y ausencia de novación. La institución verifica las demás condiciones personales, legales y crediticias.
+p [benefit-freshness] Reglas revisadas al 31 de octubre de 2026. Próxima revisión: 30 de noviembre de 2026. Después de esa fecha se suspende la orientación automática.
+a [beneficios] Ley 21.748, texto modificado → -> https://www.bcn.cl/leychile/Navegar?idNorma=1213759&idVersion=2026-08-17
+summary [beneficios] ¿Y el nuevo Tramo 4.000?
+p [beneficios] MINVU informa una nueva alternativa DS1 con límites y aportes según región. El llamado de noviembre de 2026 exige ahorro acreditado al 30 de octubre. Consulta fechas, ahorro, características de la vivienda y requisitos completos; esta herramienta no asigna subsidios.
+a [beneficios] Revisar el llamado oficial → -> https://www.minvu.gob.cl/tramo-4000/
+p [beneficios] No confirmamos beneficios para proyectos del catálogo sin una verificación específica de la unidad.
+p [checklist] 04 / PREPÁRATE
+h2 [checklist] Tu checklist de compra.
+p [checklist] Marca lo que ya revisaste. Úsalo como guía de preguntas, no como certificación legal.
+p [check-count] 0 de 8 puntos revisados
+label [checklist] Guardar sólo mis marcas en este dispositivo
+button [reset-checklist] Borrar mis marcas
+button [download-checklist] Descargar checklist (.txt) ↓
+p [check-storage] Las marcas permanecen sólo durante esta visita salvo que elijas guardarlas. No se guardan documentos ni datos de tus cálculos.
+p [recorrido] 05 / PASO A PASO
+h2 [recorrido] De la primera idea a tus llaves.
+p [recorrido] Una ruta para anticipar decisiones y hacer mejores preguntas.
+a [journey-action] Explorar mi presupuesto -> #presupuesto
+button [journey-prev] ← Anterior
+button [journey-next] Siguiente →
+p [recorrido] El orden puede variar según la operación. Confirma los hitos y responsabilidades en tus contratos.
+p [preguntas] SIN LETRA CHICA
+h2 [preguntas] Entiende lo que estás comparando.
+summary [preguntas] ¿Qué diferencia hay entre tasa, CAE y costo total?
+p [preguntas] La tasa remunera el capital prestado. La CAE resume el costo anual del crédito con los cargos que corresponde incorporar. El costo total expresa el monto total a pagar. Compara ofertas bajo el mismo escenario y verifica qué cargos contempla cada documento.
+summary [preguntas] ¿Qué cambia si el crédito está en UF?
+p [preguntas] La cuota financiera puede mantenerse en UF mientras su equivalente en pesos varía. Los pesos que mostramos usan una referencia explícita; no proyectan cuánto valdrá la UF en cada pago futuro.
+summary [preguntas] ¿Qué gastos debo reservar además del pie?
+p [preguntas] Pide por escrito tasación, estudio de títulos, notaría, impuestos, inscripción y seguros aplicables. Considera mudanza, gastos comunes y una reserva de emergencia. Los montos dependen de tu operación; no se incluyen automáticamente en los cálculos.
+summary [preguntas] ¿Una preevaluación asegura el crédito?
+p [preguntas] No. La aprobación depende de antecedentes, políticas de la institución, tasación, títulos, seguros y condiciones del financiamiento. Evita compromisos sin entender qué ocurre si el financiamiento no se aprueba.
+summary [preguntas] ¿Qué debo revisar en una promesa?
+p [preguntas] Precio y unidad, plazos, multas, devoluciones y condiciones de financiamiento. Pide asesoría independiente antes de firmar. Para inmuebles en construcción, consulta las garantías de anticipos y las condiciones aplicables a tu contrato.
+summary [preguntas] ¿Qué significa precio “desde”?
+p [preguntas] Es una referencia comercial y puede corresponder a una unidad o condición específica. Solicita disponibilidad y cotización de la unidad, incluidos estacionamiento, bodega y condiciones de pago. Estas herramientas no modifican precios ni stock.
+p [preguntas] Fuentes educativas: CMF · SII · Ley General de Urbanismo y Construcciones . Orientación general; la revisión de tu operación requiere profesionales responsables.
+a [preguntas] CMF -> https://servicios.cmfchile.cl/simuladorhipotecario
+a [preguntas] SII -> https://www.sii.cl/valores_y_fechas/uf/uf2026.htm
+a [preguntas] Ley General de Urbanismo y Construcciones -> https://www.bcn.cl/leychile/navegar?idNorma=2299
+p [asesoria] EL SIGUIENTE PASO ES UNA CONVERSACIÓN
+h2 [asesoria] Con tus preguntas, avanzamos contigo.
+p [asesoria] Elige tu tema y cuéntanos qué necesitas resolver. No necesitas enviar documentos ni compartir credenciales.
+p [asesoria] Los cálculos y las marcas del checklist no se adjuntan a tu mensaje.
+a [asesoria] Prefiero agendar una asesoría → -> /agenda-asesoria.html
+p [asesoria] También puedes usar Contacto o escribir a contacto@sollahms.cl .
+a [asesoria] Contacto -> /contacto.html
+a [asesoria] contacto@sollahms.cl -> mailto:contacto@sollahms.cl
+label [orientation-contact] Sitio web
+label [orientation-contact] Nombre completo
+label [orientation-contact] RUT
+label [orientation-contact] Correo electrónico
+label [orientation-contact] Teléfono
+label [orientation-contact] Quiero orientación sobre Mi proceso de compra Presupuesto y ahorro Crédito hipotecario Subsidios y FOGAES
+label [orientation-contact] Tu consulta
+label [orientation-contact] Autorizo el tratamiento de mis datos para responder esta solicitud, según la política de privacidad de Sollahms.
+a [orientation-contact] política de privacidad -> /privacidad.html
+button [orientation-contact] Solicitar orientación →
+p [contenido-principal] Activa JavaScript para usar las herramientas interactivas. La información y los enlaces siguen disponibles. Puedes solicitar orientación en Contacto .
+a [contenido-principal] Contacto -> /contacto.html
+a [] WhatsApp: +56 9 4850 2440 -> https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.
+a [] Guía hipotecaria -> /guia-hipotecaria.html
+p [] Decisiones informadas. Proyectos con sentido.
+a [] Privacidad -> /privacidad.html
+a [] Volver arriba ↑ -> #contenido-principal
