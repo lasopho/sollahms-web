@@ -1,30 +1,19 @@
-# Coordinación con Sollahms AI Lab
+# Coordinación con Sollahms AI Lab — alcance corporativo vigente
 
-La revisión inicial de la auditoría miró main del Lab, que contenía solo README y configuración. Esta fase recuperó la rama `work` en `3435668fb6a1bb393f34665288e76fe23676bdb0` y el [PR borrador #1](https://github.com/lasopho/sollahms-ai-lab/pull/1). Allí ya existe generación y revisión editorial, deduplicación, estado SQLite y exportaciones; sus métricas locales no son métricas SEO externas. El PR declara 104 pruebas y cero llamadas API reales: es antecedente del Lab, no validación ejecutada por esta fase.
+**Desde el 8/11/2026 quedan revocados para uso estratégico todos los traspasos relacionados con fichas individuales.** Esto incluye las ocho oportunidades de fase 2 y el delta de Condominio Uruguay de fase 3, aunque su corrección factual se conserve como historia. No deben importarse, generarse, revisarse para posicionamiento ni publicarse mediante el Lab.
 
-La guía `docs/PHASE2_GUIDE.md` y `sollahms_ai_lab/editorial_spec.py` se consultaron para no crear un segundo flujo editorial. El generador trabaja sobre paquetes internos y su aprobación no habilita publicación. El primer paquete de compra en verde existe; no crear otro artículo con el mismo propósito que ese paquete o que `cuando-comprar-propiedad.html` sin revisar el inventario editorial privado.
+La política activa es [active-policy.json](active-policy.json). Solo pueden coordinarse oportunidades sobre páginas corporativas, educativas, herramientas, entorno urbano y navegación incluidas en [scope-v2.json](scope-v2.json). No se solicita inventario comercial para priorizarlas.
 
-## Reparto de responsabilidades
+## Funciones que se reutilizan
 
-| Actividad | Responsable del registro |
-|---|---|
-| Importar GSC/Bing, comparar periodos y conservar evidencia | Sollahms Web, `docs/seo-measurement` |
-| Observar respuestas reales de buscadores/IA | Protocolo de medición; nunca datos sintéticos del Lab |
-| Preparar/revisar redacción y fuentes de oportunidades aceptadas | Flujo editorial existente del Lab |
-| Validar hechos de cada proyecto, stock y condiciones actuales | Responsable comercial, contra sus antecedentes |
-| Aprobar una intervención/publicación | Propietario; esta fase no concede autorización |
+El Lab ya tiene flujo editorial, revisión, deduplicación, estado privado y exportaciones. La referencia leída en fase 2 fue su rama `work`, commit `3435668fb6a1bb393f34665288e76fe23676bdb0`, [PR borrador #1](https://github.com/lasopho/sollahms-ai-lab/pull/1). Es antecedente histórico, no una comprobación nueva del estado del Lab. No se necesita otro generador ni llamadas API para corregir este alcance.
 
-## Entrega preparada
+## Contrato de coordinación
 
-`runs/2026-11-08-phase2/ai-lab-handoff.json` contiene ocho oportunidades sobre URL existentes, evidencia, título/meta propuestos, límites y campos de rendimiento nulos. Es un **contrato de traspaso de oportunidades**, no un spec nativo de generación ni una importación ejecutada. No se llamó al Lab ni se crearon borradores en su base privada.
+1. Comprobar que la URL/intención corresponde al alcance incluido y no a una ficha, alias o proyecto individual. Ante duda, detener el traspaso hasta clasificar.
+2. Buscar la intención y URL en el inventario editorial existente del Lab. Reutilizar el paquete correspondiente, especialmente en temas de compra en verde, para evitar duplicación.
+3. Adjuntar únicamente evidencia y métricas del segmento incluido con periodo/filtros, o declarar que todavía no están medidas. No usar estadísticas globales como justificación exclusiva.
+4. Preparar/revisar mejoras del contenido existente: identidad y asesoría, orientación, educación hipotecaria, beneficios, inversión, decisiones y entorno. Verificar fuentes y actualidad; no inventar condiciones de crédito, independencia corporativa o resultados.
+5. Conservar ID/versión, revisión humana y estado interno. Aprobar un borrador no autoriza publicar en Sollahms.cl; `publication_allowed=false` hasta autorización explícita posterior.
 
-Para cada oportunidad, el operador del Lab debe:
-
-1. Comprobar el último avance de `work` y buscar paquetes existentes por URL/intención antes de crear trabajo.
-2. Reutilizar la revisión/paquete existente cuando corresponda; conservar ID/versión y opportunity_id en el registro de traspaso de Web.
-3. Registrar hechos propios con derechos confirmados y referencias revisadas. No convertir `verified_on` en una verificación automática ni fechas comerciales de octubre en stock actual.
-4. Proponer edición de la página existente, no un artículo duplicado ni páginas por comuna. No copiar las propuestas directamente a producción.
-5. Devolver ID del paquete, versión, revisión humana, fuentes pendientes y estado de aprobación interna. Mantener `publication_allowed=false`.
-6. Después de una futura publicación autorizada, registrar fecha, URL y cambios para comparar ventanas equivalentes; no atribuir causalidad a una sola variación de CTR.
-
-No se modificó el repositorio del Lab, su presupuesto, sus modelos, su cola, la API ni sus controles de coste. No se emitieron mensajes/comentarios en su PR. Esto evita consumo o generación duplicados y deja el trabajo coordinable sin depender de una sesión compartida.
+El nuevo [registro de coordinación](runs/2026-11-08-scope-v2/ai-lab-policy.json) cancela la elegibilidad de los contratos históricos y propone áreas incluidas sin ejecutar generación. El repositorio del Lab, sus paquetes, colas, API y presupuesto no se modifican en esta corrección. No se envían comentarios ni notificaciones a otras personas.

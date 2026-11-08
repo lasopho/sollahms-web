@@ -1,3 +1,13 @@
+# Permanent SEO/GEO strategic scope (2026-11-08)
+
+The owner's current instruction permanently excludes **all individual real-estate project fichas** from SEO/GEO strategy, opportunity selection, content optimization, prioritization and AI-search result evaluation. This includes the eight historical candidates, future fichas, aliases and retired project routes. Preserve their functionality and technical access: do not delete, noindex, edit or otherwise harm them to implement this exclusion.
+
+For SEO/GEO work, start with `docs/seo-measurement/active-policy.json`, its versioned scope registry and the latest report. Prior phase reports, candidate proposals, stock requirements and project-fiche Lab handoffs are historical evidence only; they do not authorize future tasks. Inventory confirmation is **not** a prerequisite for SEO/GEO priorities. Never transfer project-fiche opportunities or their historical corrections to Sollahms AI Lab. Coordinate only included corporate, educational, tools, urban-development and general-navigation content through the Lab's existing editorial workflow.
+
+Measure the included page segment separately from unfiltered domain totals. A global GSC/Bing report is not scoped performance. Unknown URLs stay unclassified and outside scoped calculations until reviewed; absence from a project list does not imply inclusion. Use the offline scope guards and versioned IA protocol for new work. Keep the v1 plan of 180 tests and all phase evidence unchanged as history. Do not repeat certified technical audits for a strategic-scope correction.
+
+This scope instruction does not authorize production deployment, branch merges, public page or form changes, price changes or new API spending. Existing implementation-specific helpers and commercial safeguards below remain intact; this wider strategic scope does not expand those helpers automatically.
+
 # Approved homepage navigation
 
 The owner requires these exact homepage header menu labels, in this order, on desktop and mobile:

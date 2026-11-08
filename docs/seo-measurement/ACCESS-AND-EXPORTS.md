@@ -1,44 +1,31 @@
-# Accesos y exportaciones
+# Accesos y exportaciones — alcance corporativo vigente
 
-## Estado observado el 8/11/2026
+**Política activa:** [scope-v2.json](scope-v2.json). No se solicita inventario comercial ni inspecciones estratégicas de fichas individuales.
 
-Se buscaron herramientas disponibles: no hay conector específico de Google Search Console ni Bing Webmaster Tools. El entorno informa cero secretos y cero identidades salientes configuradas. Esto demuestra falta de integración utilizable **en esta sesión**, no inexistencia de propiedades del propietario. No se buscaron ni copiaron contraseñas.
+## Estado heredado, sin reintentos innecesarios
 
-Las solicitudes a `search.google.com`, `www.bing.com`, `chatgpt.com`, `gemini.google.com`, `www.perplexity.ai` y la búsqueda de Google fallaron en el túnel del proxy con 403. No son bloqueos del dominio Sollahms. La ausencia de un controlador de navegador conectado utilizable impide reutilizar sesiones personales; no se afirma haber entrado en las cuentas.
+Fases 2/3 no encontraron un conector utilizable de GSC/Bing ni exportaciones nuevas; las solicitudes a sus interfaces y a plataformas IA fallaron con 403 del proxy. Las consultas de Analytics devolvieron 400. Estos son antecedentes de acceso, no pruebas de tráfico cero o indexación ausente. No se repiten solicitudes fallidas ni auditorías técnicas en esta corrección. La evidencia completa permanece en los runs históricos.
 
-Vercel sí está conectado para leer proyecto/deployment. Dos intentos de consulta de `vercel.analytics_pageview.count` devolvieron 400; la CLI no está instalada. Son un fallo de consulta, no prueba de Analytics desactivado ni de tráfico cero. La evidencia del 29/10 informaba `web_analytics_not_enabled`; no se presenta ese antecedente como estado confirmado hoy. No se activó rastreo.
+## Recurso mínimo por motor
 
-## Vía mínima recomendada: exportaciones desde una cuenta existente
+Desde una cuenta ya autorizada y la propiedad existente que cubra `sollahms.cl`, exportar:
 
-El propietario u operador que ya tenga acceso puede exportar los informes. No se necesita crear otra propiedad, verificar dominio, enviar sitemap, configurar IndexNow, dar acceso de administrador ni compartir credenciales para esta vía.
+1. Rendimiento **filtrado a las 11 URL exactas incluidas**: fechas, páginas y consultas; países/dispositivos si están disponibles. Conservar vista general del dominio solo como contexto no filtrado, en un archivo y serie distintos.
+2. Procedencia completa: propiedad, fuente, periodo, zona del informe, último día completo disponible, filtros realmente aplicados, definición de posición, idioma/locale, fecha/hora de extracción y limitaciones de filas/datos.
+3. Evidencia del filtro nativo de páginas y su revisión. Si el motor solo entrega totales globales o tablas parciales, declararlo: no llamar a esas cifras “resultados corporativos exclusivos”. [Procedimiento de segmentación](SEGMENTATION-v2.md).
+4. Estado del sitemap existente e inspecciones/cobertura de **páginas incluidas**. No crear otra propiedad, reenviar sitemap, solicitar indexación ni instalar IndexNow como efecto de esta tarea. Las fichas pueden aparecer en informes generales originales, pero no se evalúan estratégicamente.
+5. Para 30 contra 30: 60 fechas completas consecutivas del segmento. Para 90 contra 90: 180. Con menos cobertura, importar lo disponible y conservar comparación no disponible sin rellenar ceros.
 
-### Google Search Console
+No hace falta contraseña, otra propiedad, un nuevo servicio o permisos de administrador para la vía de exportaciones. Si se elige acceso interactivo/API después, usar una sesión/identidad autorizada con lectura, gestor seguro de credenciales y acceso de red apropiado al servicio. No deducir acceso a un producto de consumo de IA de disponer de una API de generación.
 
-1. Seleccionar la propiedad de dominio que cubra Sollahms o, si ya existe, la propiedad de prefijo exacto `https://sollahms.cl/`. Registrar cuál; no mezclar propiedades.
-2. Rendimiento → resultados de búsqueda: tipo Web; últimos 180 días completos disponibles como mínimo, finalizando en el último día consolidado. Si los datos todavía no están completos, retroceder el cierre. Registrar filtros, tipo de búsqueda, zona del informe y fecha de extracción. GSC usa su propia zona de informe, habitualmente Pacific Time; no convertir filas diarias a hora chilena.
-3. Exportar CSV de Fechas, Consultas, Páginas, Países y Dispositivos con clics, impresiones, CTR y posición media. Conservar el paquete completo. Exportar total y Chile por separado si se necesitan ambos; nunca sumarlos. No sumar tablas de dimensiones entre sí.
-4. Indexación → Páginas: exportar totales, evolución y motivos de no indexación; conservar listas de ejemplos identificadas como parciales. Sitemaps: registrar la entrada existente, último procesamiento, estado y URL descubiertas. No volver a enviarla sin evidencia de necesidad.
-5. Inspección de URL de portada, catálogo, guías, orientación y ocho candidatas: guardar veredicto, rastreo, canonical declarado/seleccionado y motivo si existe. No solicitar indexación en esta fase.
-6. Registrar limitaciones: consultas anonimizadas, filas truncadas, muestreo/ejemplos y retardo. Menos historia significa comparación no disponible; no rellenar ceros anteriores al alta de la propiedad.
+## Importación y conservación
 
-### Bing Webmaster Tools
+Reutilizar `scripts/seo_measurement.py` y los formatos históricos de rendimiento/indexación para normalizar el original; después aplicar las guardas de `scripts/seo_scope.py`. Los manifiestos de `templates/` son ejemplos históricos, no evidencia de extracción ni del nuevo filtro. Agregar la prueba de segmentación real para obtener métricas exclusivas.
 
-1. Seleccionar el sitio existente `https://sollahms.cl/`. No importarlo de Google otra vez.
-2. Exportar Search Performance por fecha, consulta y página para los mismos periodos completos que Bing permita; guardar país/dispositivo si el informe los expone.
-3. Registrar definición de posición, cobertura y filtros. No sustituir posición de clic por posición de impresión ni comparar ambas como si fueran la misma serie.
-4. Exportar Site Explorer/URL Inspection e informe de sitemap existente: estado, último rastreo, exclusiones y canonical cuando esté informado.
-5. Revisar IndexNow existente y sus envíos solo si la interfaz los muestra. Hoy su configuración queda **no verificada**, no se instala ni envía nada.
-6. Si la cuenta ofrece AI Performance, exportar citas, páginas y consultas de fundamentación con las definiciones mostradas. Mantenerlo separado de rendimiento orgánico, visitas y de pruebas manuales en otras IA. Su disponibilidad no se presupone.
+Conservar originales y sus hashes en `.local/` ignorado o almacenamiento privado autorizado. Publicar solo resúmenes revisados sin consultas sensibles, cookies, tokens o datos de personas. Un hash no certifica la autenticidad de un informe; registrar su obtención autorizada y filtros verificables. No sumar tablas de páginas/consultas como si fueran los totales de propiedad.
 
-## Vía interactiva o API, si se elige después
+## Captación y IA
 
-- Sesión del propietario ya autorizada o identidad designada por él con lectura en la propiedad existente. Para GSC, informes con usuario restringido donde esté permitido; para operaciones de inspección, la cuenta debe tener el permiso que esa propiedad/API exija. La alternativa de exportar desde la cuenta actual evita elevar permisos.
-- API GSC: OAuth autorizado por esa cuenta con alcance `https://www.googleapis.com/auth/webmasters.readonly`; no se configura aquí ni se solicita una contraseña. Credenciales únicamente en el gestor seguro del entorno, nunca GitHub/chat. Bing: sesión o API de lectura autorizada según el mecanismo ya existente; no generar nuevas claves sin necesidad.
-- El entorno requeriría acceso de red aditivo a los hosts del servicio elegido: `search.google.com` y sus hosts de autenticación para interfaz, `searchconsole.googleapis.com`/`www.googleapis.com` y OAuth si se usa API; `www.bing.com` y los hosts de inicio de sesión que realmente utilice la cuenta. La lista actual debe preservarse. No se amplió la red en esta fase porque las exportaciones son una alternativa suficiente.
-- Para las pruebas IA se necesitan interfaces accesibles y sesiones válidas cuando sean requeridas. Tener una API de generación no acredita acceso a ChatGPT Search, Gemini de consumo o sus resultados de búsqueda.
+Para negocio: totales agregados de solicitudes/contactos atribuibles a páginas incluidas, periodo y método de atribución; sin información personal. No se requieren confirmaciones de stock ni datos de unidades.
 
-## Archivos mínimos para desbloquear la medición
-
-Por motor: serie diaria de hasta 180 días completos, tabla de páginas, tabla de consultas y registro de filtros/periodo/propiedad. Para confirmar indexación: exportaciones de cobertura y evidencia de inspección por URL. Para medir negocio: totales agregados de contactos aceptados/cualificados por origen y periodo desde la herramienta ya existente; sin nombres, RUT, email o teléfonos.
-
-La falta de estos recursos bloquea cifras verificadas y prioridad por demanda, pero no bloquea el importador, las propuestas ni el protocolo preparados.
+Para IA: acceso directo legítimo a la plataforma/modalidad, respuesta original y fuentes. Usar [protocolo v2](AI-PROTOCOL-v2.md); no evaluar proyectos individuales ni consumir API para simular ChatGPT Search. Si no hay acceso o evidencia suficiente, las métricas permanecen desconocidas.
