@@ -1,5 +1,7 @@
 # Paquete local construido y comprobado — sin publicación
 
+> **Continuidad:** el propietario ya autorizó expresamente esta huella. El estado operativo actual de esa publicación y su bloqueo de acceso están en [publication/report.md](../publication/report.md). No volver a solicitar autorización para el mismo artefacto mientras se mantengan sus condiciones.
+
 **8 de noviembre de 2026, America/Santiago.** El bloqueo de `release/config.json` quedó resuelto. Las fuentes privadas y el adjunto permanecen fuera de GitHub. No se desplegó, publicó, fusionó ni modificó ninguna protección.
 
 ## Archivo original recuperado

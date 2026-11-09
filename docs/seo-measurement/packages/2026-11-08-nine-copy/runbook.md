@@ -1,6 +1,6 @@
 # Continuación local, publicación y reversión
 
-Estado actual: archivo original recibido y validado; paquete construido y comprobado localmente, pendiente de autorización. Véanse [resultado y SHA-256 concretos](completion/report.md). Este procedimiento no autoriza ninguna publicación. Las instrucciones siguientes permiten reproducir la preparación desde las fuentes privadas completas.
+Estado actual: paquete comprobado localmente y **publicación del artefacto exacto autorizada por el propietario**. La ejecución está bloqueada antes de crear el candidato por el canal disponible; véase [publication/report.md](publication/report.md). La autorización vigente permite producción sin dominios, QA protegido, activación de los dos alias indicados y reversión condicionada, conservando los demás límites. Las instrucciones de reconstrucción siguientes son históricas/reproducibles: **no reconstruir otra versión bajo la autorización del artefacto actual**.
 
 ## 1. Completar la fuente exacta
 
@@ -55,18 +55,18 @@ El cierre revalida entradas, inventarios y el QA de esos árboles exactos; crea 
 
 ## 4. Preparar la autorización de la versión concreta
 
-El [informe de cierre](completion/report.md) ya registra artefacto, tamaño, SHA-256, base, inventario y resultados nuevos de QA. **Detenerse para la autorización explícita del propietario sobre esa huella.** Cualquier reproducción nueva requiere su propia comprobación y registro antes de solicitar autorización.
+El [informe de cierre](completion/report.md) registra artefacto, tamaño, SHA-256, base, inventario y resultados nuevos de QA. **La autorización explícita de esa huella ya fue recibida; no volver a pedirla si se conservan las condiciones.** Cualquier reproducción diferente queda fuera de esa autorización.
 
 ## 5. Publicación futura — NO ejecutada
 
 Tras autorización, reconfirmar base, proyecto y huella; extraer el artefacto en una carpeta aislada y verificar su inventario. Emplear el flujo manual de artefacto explícito/Build Output API ya utilizado por el proyecto, con las funciones y rutas conservadas y configuración de proveedor existente. No publicar el checkout completo ni un manifiesto histórico por defecto. No subir documentación, credenciales, `.local`, capturas o exports.
 
-El proyecto de destino es `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH` del equipo `team_A9VNIW2f2K1IJpd2pGdvDmEN`. La operación concreta de crear/publicar/promover el artefacto y asignar dominios queda **diferida**: no se ejecutó ningún comando o mutación de Vercel. El nuevo ID de despliegue solo podrá registrarse cuando se autorice y realice esa operación. Mantener intactas protecciones y despliegues automáticos.
+El proyecto de destino es `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH` del equipo `team_A9VNIW2f2K1IJpd2pGdvDmEN`. Crear producción **sin asignar dominios** mediante `--prebuilt --prod --skip-domain` o equivalente realmente disponible; esperar READY y comprobar el candidato con acceso autorizado existente. Reconfirmar después que ambos dominios siguen en la base. Activar solo el mismo despliegue comprobado mediante asignación individual de `sollahms.cl` y `www.sollahms.cl`; no efectuar promoción general que pueda mover otros alias. La autorización existe, pero todavía no se ha creado el candidato por el bloqueo documentado. Mantener intactas protecciones y despliegues automáticos.
 
 Después de la publicación autorizada: comprobar alias efectivos, bytes de las cuatro páginas, recursos, redirecciones/cabeceras y servicios externos mediante el procedimiento permitido, interceptando cualquier envío de prueba hasta que exista autorización específica para una verificación real de contacto. No afirmar entrega de correos/CRM, reservas ni UF a partir de fixtures locales.
 
 ## 6. Reversión futura — NO ejecutada
 
-Conservar `dpl_5ReP6rLckXZ7nonSTE7Qu79gesiZ` como destino de reversión mientras siga siendo la base. Si una publicación posterior autorizada presenta una regresión, el operador autorizado puede restaurar esa publicación anterior mediante el mecanismo de rollback/promoción manual del proyecto, sin reconstruir desde `main` y sin cambiar servicios o protecciones. Confirmar los alias y respuestas HTTP después de revertir. Si cambió la base antes de publicar, actualizar también este destino con evidencia.
+Conservar `dpl_5ReP6rLckXZ7nonSTE7Qu79gesiZ` como destino de reversión mientras siga siendo la base. Si esta publicación presenta una regresión atribuible, comprobar primero que sigue siendo la activa y restaurar únicamente los dos alias autorizados a la base, sin reconstruir desde `main`, mover otros destinos ni cambiar servicios o protecciones. Confirmar los alias y respuestas HTTP después de revertir. Si cambió la base antes de publicar, detenerse para no sobrescribir esa intervención.
 
 No se realizó rollback, promoción, cambio de alias, dominio, configuración ni ningún despliegue de preview o producción durante esta preparación.

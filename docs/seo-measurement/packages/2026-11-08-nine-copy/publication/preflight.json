@@ -1,0 +1,47 @@
+{
+  "recorded_at_santiago": "2026-11-08T21:06:46.360891-03:00",
+  "state": "blocked_before_deployment",
+  "authorization_received": true,
+  "authorization_attachment_sha256": "266d04b9f40ba2fa901652683358cc13ea9030f808872f1af5cd58cb1627cb3d",
+  "authorization_scope": "Exact artifact only; stage production without assigning domains, verify protected candidate, then assign only sollahms.cl and www.sollahms.cl; conditional rollback to documented base",
+  "authorized_artifact": {
+    "path": "/workspace/work/publish-nine-copy-20261108/build-local/sollahms-nine-copy.vercel-output.tar.gz",
+    "bytes": 211687360,
+    "sha256": "17f4496b411f779029494de4c6757c30cca41f8547992333f1e76523444c035d",
+    "matches_authorized_size_and_sha256": true
+  },
+  "private_extraction": "/workspace/work/publish-nine-copy-20261108/publish-9597b21.local/artifact",
+  "extracted_files": 1648,
+  "all_extracted_hashes_match_authorized_inventory": true,
+  "cli": {
+    "version": "65.11.0",
+    "path": "/workspace/work/publish-nine-copy-20261108/publish-9597b21.local/tooling/node_modules/.bin/vercel",
+    "installation": "private workspace; pinned package; install scripts disabled; no repository dependency change",
+    "version_help_exit_code": 0,
+    "deploy_help_exit_code": 0,
+    "prebuilt_prod_skip_domain_project_flags_confirmed": true,
+    "auth_readiness_exit_code": 1,
+    "auth_readiness": "Logged out",
+    "task_credential_present": false
+  },
+  "capability_block": {
+    "mcp_create_deployment_exposes_autoAssignCustomDomains": false,
+    "project_read_returns_autoAssignCustomDomains": false,
+    "live_false_not_used_as_alias_assignment_guarantee": true,
+    "direct_execution_authentication_available": false,
+    "api_vercel_network_allowed": false,
+    "candidate_vercel_app_network_allowed": false,
+    "protected_url_connector_may_create_share_bypass": true
+  },
+  "new_deployment_id": null,
+  "deployments_created": 0,
+  "files_uploaded_to_vercel": 0,
+  "aliases_changed": 0,
+  "protection_or_project_configuration_changed": false,
+  "rollback_executed": false,
+  "remote_candidate_checks_executed": false,
+  "post_activation_checks_executed": false,
+  "public_sources_or_formulas_changed": false,
+  "production_base": "dpl_5ReP6rLckXZ7nonSTE7Qu79gesiZ",
+  "authorization_remains_valid_for_same_artifact_if_base_unchanged": true
+}
