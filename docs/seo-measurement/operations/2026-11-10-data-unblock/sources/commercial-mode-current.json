@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-11-10T03:07:13.371404+00:00",
+  "operation": "Read project production configuration only; no delivery or customer query",
+  "metadata_status": 200,
+  "selected_variable": "CONTACT_DELIVERY_MODE",
+  "matching_production_entries": 1,
+  "mode": "resend",
+  "mode_access_status": 200,
+  "secret_values_read": false,
+  "configuration_changed": false,
+  "provider_delivery_confirmed": false,
+  "attribution_aggregate_confirmed": false,
+  "limitation": "Project config is not proof of deployment runtime, accepted requests, CRM operation or historical attribution.",
+  "metadata_updated_at": 1792794989226,
+  "mode_recognized": true,
+  "project_id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "team_id": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "api_host": "https://api.vercel.com",
+  "read_routes": [
+    {
+      "method": "GET",
+      "path": "/v10/projects/{project_id}/env",
+      "decrypt": false,
+      "retained": "selected production variable name/id in memory; no values saved"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/projects/{project_id}/env/{selected_CONTACT_DELIVERY_MODE_id}",
+      "decrypt": true,
+      "retained": "allowlisted nonsecret enum only; no other variable values requested"
+    }
+  ]
+}

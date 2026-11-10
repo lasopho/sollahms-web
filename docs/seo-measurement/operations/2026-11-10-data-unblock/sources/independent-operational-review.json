@@ -1,0 +1,52 @@
+{
+  "reviewed_at_utc": "2026-11-10T03:10:55.179883+00:00",
+  "review_scope": "Operational kit only; existing gap audit not repeated",
+  "checks": {
+    "json_parse": {
+      "count": 9,
+      "pass": true
+    },
+    "csv_header_unique_and_row_shapes": {
+      "rows": {
+        "included-urls.csv": 11,
+        "ai-wave-1-operations.csv": 60,
+        "ai-prompts-v2.csv": 12,
+        "templates/url-inspection-intake.csv": 0,
+        "templates/business-aggregate-template.csv": 0,
+        "templates/ai-sources-template.csv": 0,
+        "templates/corporate-assets-confirmation.csv": 6,
+        "templates/received-files.csv": 0,
+        "templates/ai-observations-v2.csv": 0
+      },
+      "pass": true
+    },
+    "original_60_operations_byte_identical": true,
+    "original_prompt_v2_byte_identical": true,
+    "60_exact_pairs_no_brand_added": true,
+    "observation_template_original_header_only": true,
+    "business_template_no_measurement_rows": true,
+    "exact_11_included_urls": true,
+    "corporate_asset_candidates_unknown": true,
+    "personal_linkedin_reference_distinguished": true,
+    "actual_properties_not_invented": true,
+    "ai_results_unknown_no_completed_claim": true,
+    "local_markdown_links": {
+      "checked": 22,
+      "missing": [],
+      "pass": true
+    },
+    "gsc_regex_exact_allowlist_semantics": true,
+    "previous_audit_unchanged": true,
+    "bounded_secret_scan": {
+      "hits": [],
+      "pass": true
+    }
+  },
+  "findings": [],
+  "semantic_review": "Read root guide and Google/Bing/IA/business appendices; no material claim inconsistency found. Config resend is limited to project settings, not production runtime, CRM operation or attribution. GSC/Bing property/control/metrics and IA remain unobserved until real return evidence.",
+  "limitations": [
+    "No source accounts or consumer UI used by review; documentation-backed instructions remain conditional on actual account UI.",
+    "Root is still producing validation and ZIP, so packaging/final staged diff and push verification remain parent checks."
+  ],
+  "old_tests_repeated": false
+}

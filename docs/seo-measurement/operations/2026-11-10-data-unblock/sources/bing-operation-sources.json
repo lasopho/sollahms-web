@@ -1,0 +1,58 @@
+{
+  "purpose": "Focused official UI-operational verification only; not a new Sollahms audit or account read.",
+  "recorded_at_utc": "2026-11-10T03:05:43.820Z",
+  "user_date": "2026-11-10 America/Santiago",
+  "retrieval_tool": "search_service_web_run",
+  "sources": [
+    {
+      "id": "bing-history16",
+      "url": "https://blogs.bing.com/webmaster/2024/10/Bing-Webmaster-Tools-Extends-Search-Performance-Data-to-16-Months/",
+      "published": "2024-10-16",
+      "supports": "Search Performance extended to16months; actual account coverage must be observed."
+    },
+    {
+      "id": "bing-history-reaffirmation",
+      "url": "https://blogs.bing.com/webmaster/2025/3/Supercharge-Your-Search-Performance-with-Bing-Webmaster-Tools/",
+      "published": "2025-03-18",
+      "supports": "16months reaffirmed; date-filter UI improved."
+    },
+    {
+      "id": "bing-search-performance",
+      "url": "https://www.bing.com/webmasters/help/search-performance-c680da36",
+      "supports": "Download CSV, Pages/Keywords drilldown, tables differ from graph; help text still6months and source descriptions inconsistent."
+    },
+    {
+      "id": "bing-navigation",
+      "url": "https://www2.bing.com/webmasters/help/refreshed-webmaster-tools-7c7d2533",
+      "supports": "Existing UI modules Search Performance, URLInspection, SiteExplorer,Sitemaps,IndexNow."
+    },
+    {
+      "id": "bing-url-inspection",
+      "url": "https://www.bing.com/webmasters/help/URL-Inspection-55a30305",
+      "supports": "Index-state cards distinct from LiveURL and request-indexing actions."
+    },
+    {
+      "id": "bing-site-explorer",
+      "url": "https://blogs.bing.com/webmaster/2024/1/Mastering-Website-Management-with-Site-Explorer/",
+      "published": "2024-01-25",
+      "supports": "URL/folder statuses and filters; restrict operation to11allowlistedURLs."
+    },
+    {
+      "id": "bing-indexnow",
+      "url": "https://www.bing.com/webmasters/help/indexnow-0z209wby",
+      "supports": "Existing submissions/sources/status, View complete report, Download allCSV; unspecified submission timestamps defaultUTC. No setup recommended."
+    },
+    {
+      "id": "bing-topics",
+      "url": "https://blogs.bing.com/webmaster/2026/10/introducing-topics-portfolio-beta-in-ai-performance/",
+      "published": "2026-10-13",
+      "supports": "AI Performance > Topics next to Citations&Pages if sufficient data;1/2/3monthwindows and directional approximate metrics."
+    }
+  ],
+  "account_data_observed": false,
+  "ui_limits": "Exact labels/export controls are documentation-backed where stated and conditional otherwise; actual account availability, period coverage, permission and native timezone remain unobserved.",
+  "documentation_conflicts": [
+    "Old Search Performance help still states6months; official Oct2024+Mar2025 announcements document16. Preserve actual UI bounds.",
+    "Search Performance help source/position descriptions are inconsistent; preserve literal selected vertical and metric labels without inferring comparability."
+  ]
+}
