@@ -1,0 +1,978 @@
+{
+  "observed_at_utc": "2026-11-10T02:48:05.304111+00:00",
+  "repository": "lasopho/sollahms-web",
+  "source_commit": "b6720089822ba2185b040d0ddebe2fa1abe1560d",
+  "scope_id": "corporate-education-v2",
+  "classification": "source_code_inventory_not_live_traffic_measurement",
+  "production_from_main": false,
+  "current_scan": {
+    "paths": [
+      "index.html",
+      "proyectos.html",
+      "agenda-asesoria.html",
+      "contacto.html",
+      "privacidad.html",
+      "comparador-hipotecario.html",
+      "trabaja-con-nosotros.html",
+      "guia-hipotecaria.html",
+      "cuando-comprar-propiedad.html",
+      "centro-orientacion.html",
+      "entorno-desarrollo-urbano.html",
+      "api",
+      "lib",
+      "assets/js",
+      ".env.example",
+      "vercel.json"
+    ],
+    "files_scanned": 77,
+    "included_html_count": 11,
+    "individual_fiche_html_scanned": false,
+    "patterns": {
+      "gsc_verification": "google-site-verification|searchconsole\\.googleapis|searchconsole\\.google|webmasters\\.googleapis",
+      "bing_verification": "msvalidate\\.01|BingSiteAuth|bing\\.com/webmaster/api",
+      "ga_gtm": "googletagmanager\\.com|google-analytics\\.com|gtag\\(|dataLayer|(?-i:\\bGTM-[A-Z0-9]+\\b|\\bG-[A-Z0-9]{6,}\\b)|\\bUA-\\d+-\\d+\\b|GoogleAnalyticsObject|_gaq\\b|google-analytics\\.com/(?:analytics|ga)\\.js",
+      "clarity": "clarity\\.ms|clarity\\(",
+      "vercel_analytics": "@vercel/analytics|/_vercel/insights|va\\.vercel-scripts|vercel\\.analytics",
+      "vercel_speed_insights": "@vercel/speed-insights|/_vercel/speed-insights",
+      "plausible": "plausible\\.io|plausible\\(",
+      "matomo": "matomo|_paq",
+      "umami": "umami\\.is|umami\\.|data-website-id",
+      "posthog": "posthog",
+      "ad_pixels": "connect\\.facebook\\.net|fbq\\(|ttq\\(|analytics\\.tiktok|snaptr\\(|lintrk\\(|\\bAW-\\d+\\b|linkedin_partner_id|pintrk\\(|rdt\\(",
+      "indexnow": "indexnow",
+      "utm_referrer_landing": "utm_source|utm_medium|utm_campaign|utm_content|utm_term|document\\.referrer|landing_page|landingPage|referrerHostname",
+      "own_origin_context": "publicOrigin|Origen de la consulta|origen.*simulador",
+      "other_analytics": "mixpanel|amplitude|rudderstack|segment\\.com|analytics\\.load\\("
+    },
+    "matches": {
+      "gsc_verification": [],
+      "bing_verification": [],
+      "ga_gtm": [],
+      "clarity": [],
+      "vercel_analytics": [],
+      "vercel_speed_insights": [],
+      "plausible": [],
+      "matomo": [],
+      "umami": [],
+      "posthog": [],
+      "ad_pixels": [],
+      "indexnow": [],
+      "utm_referrer_landing": [],
+      "own_origin_context": [
+        {
+          "path": "assets/js/catalog-map.mjs",
+          "lines": [
+            3,
+            74
+          ]
+        },
+        {
+          "path": "assets/js/catalog.mjs",
+          "lines": [
+            3,
+            7
+          ]
+        },
+        {
+          "path": "assets/js/commercial-context.mjs",
+          "lines": [
+            4,
+            7,
+            10
+          ]
+        },
+        {
+          "path": "assets/js/mortgage-guide.mjs",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "path": "assets/js/project-request.mjs",
+          "lines": [
+            6,
+            51,
+            106
+          ]
+        },
+        {
+          "path": "cuando-comprar-propiedad.html",
+          "lines": [
+            110
+          ]
+        },
+        {
+          "path": "guia-hipotecaria.html",
+          "lines": [
+            141
+          ]
+        }
+      ],
+      "other_analytics": [
+        {
+          "path": "assets/js/image-parallax.js",
+          "lines": [
+            54,
+            55,
+            56,
+            79
+          ]
+        }
+      ]
+    },
+    "file_fingerprints": [
+      {
+        "path": ".env.example",
+        "bytes": 291,
+        "sha256": "155718cef8a7fd09fb0fea1efdf6d12957239e6e1604c07168acf129a047ddff"
+      },
+      {
+        "path": "agenda-asesoria.html",
+        "bytes": 15737,
+        "sha256": "df7797466eaefc0f4dd3406439e1ce43edc3e81f4de486f285cfac5c0ba93ffd"
+      },
+      {
+        "path": "api/advisory.mjs",
+        "bytes": 7463,
+        "sha256": "68c965f620090885ffdebe41750e47611c90de33f5f27368ad1dcd0d8ee869c9"
+      },
+      {
+        "path": "api/booking-availability.mjs",
+        "bytes": 1088,
+        "sha256": "544b8422b9976cb341b60ab156fa5b97a94f97f1c95ccd866d97015bc5415e2d"
+      },
+      {
+        "path": "api/booking-create.mjs",
+        "bytes": 3768,
+        "sha256": "c297382256eb9b426248a07757ab493ab8bf2c2dbb8232e2569e921e1fe854d5"
+      },
+      {
+        "path": "api/collaboration.mjs",
+        "bytes": 5602,
+        "sha256": "806719c9dfe32636c8c87e7893c6dfe7ea58e4f532606899401d61fdc5b6c3c4"
+      },
+      {
+        "path": "api/contact.mjs",
+        "bytes": 16523,
+        "sha256": "ebd9918fa8e0711216f363ea15f65698534ebbf98b868c5981264b51a3363382"
+      },
+      {
+        "path": "api/orientation-contact.mjs",
+        "bytes": 2097,
+        "sha256": "da567819b6199ae30d8d917788fc64ad58f5304dc30d990da74a328f6953eb87"
+      },
+      {
+        "path": "api/uf.mjs",
+        "bytes": 1357,
+        "sha256": "888a398a105f8deb659b70dd1fd0ed7ab40349fb059e3ce28f41192ea7881c68"
+      },
+      {
+        "path": "assets/js/advisory.mjs",
+        "bytes": 5835,
+        "sha256": "cd16e54aa3b1c74a370c254c466dac2ad2e17505e3291b6822842d9623d8553e"
+      },
+      {
+        "path": "assets/js/catalog-filter-controls.mjs",
+        "bytes": 13579,
+        "sha256": "e84dd98bed4119d67657c28701414f52c644ba8cdc68e0bb586855628ccb5428"
+      },
+      {
+        "path": "assets/js/catalog-filter-engine.mjs",
+        "bytes": 10934,
+        "sha256": "3beb5362c8e43dcc81e27bf46289ec9f4ae2a2f960776da5786a73d8e569984c"
+      },
+      {
+        "path": "assets/js/catalog-map-model.mjs",
+        "bytes": 1960,
+        "sha256": "b87606ce03319ced464486b73f1e1373a2a3b48a129317d29c55c1403718af88"
+      },
+      {
+        "path": "assets/js/catalog-map.mjs",
+        "bytes": 16405,
+        "sha256": "fd1b98d4dc1081bb20178bc9f8428e91c82f0b95426b7f68827a895948e54763"
+      },
+      {
+        "path": "assets/js/catalog-model.mjs",
+        "bytes": 6573,
+        "sha256": "de61cb45f6306bdcded641b11db6142e6d347860c35d0afeeda79d509fadd797"
+      },
+      {
+        "path": "assets/js/catalog.mjs",
+        "bytes": 12607,
+        "sha256": "e6705a855d4d7f20ccf838b9170342e45fd7ed64e98d9f95f67dd982799ed735"
+      },
+      {
+        "path": "assets/js/clp-input.mjs",
+        "bytes": 1013,
+        "sha256": "f8692083d247090aa5b832b48e015a7ce0793580f830290c4f5532766d804a72"
+      },
+      {
+        "path": "assets/js/collaboration-fields.mjs",
+        "bytes": 1795,
+        "sha256": "53e12fb5ad6ca89ef943622466160ba81309b5d3f3732e89671bc0236622899e"
+      },
+      {
+        "path": "assets/js/collaboration.mjs",
+        "bytes": 4587,
+        "sha256": "18784489fcdbaad65b0b257757b3358838753651dec3f7e88be3716482ad3ff0"
+      },
+      {
+        "path": "assets/js/commercial-context.mjs",
+        "bytes": 1516,
+        "sha256": "8b443fad057263bf53aaf16df0dc1d72b4caa8aa15f42f2bbceea6099ca22322"
+      },
+      {
+        "path": "assets/js/commercial-fields.mjs",
+        "bytes": 2651,
+        "sha256": "d18d861c947eb29bc417591626dc83c69fa671c5a59da050cc08c3db7252ffac"
+      },
+      {
+        "path": "assets/js/ecasa-stages.js",
+        "bytes": 705,
+        "sha256": "a3af096a0363fb21166ed6333fb90d48a58fdde173b8ed88dc49a73cdab6d63b"
+      },
+      {
+        "path": "assets/js/form-operation.mjs",
+        "bytes": 4208,
+        "sha256": "187042e1039d7e64c5cf8e14b3f007e8f2e11142ed7d50a80d677cee1b97c4b4"
+      },
+      {
+        "path": "assets/js/hipotecario.mjs",
+        "bytes": 33931,
+        "sha256": "9453776ed125183c9eaa05857846c0a1117fdf98bd655b39a4fb42a42cca4401"
+      },
+      {
+        "path": "assets/js/image-parallax.js",
+        "bytes": 6704,
+        "sha256": "94bca73576ae856e5876d9f4aae118e9afe626fe3c815d3321e4851481fafa24"
+      },
+      {
+        "path": "assets/js/metro-map.mjs",
+        "bytes": 4881,
+        "sha256": "4cab044042505c1ecc361b9969fcc6b5cca707b614a7959f2a124054b3397ccb"
+      },
+      {
+        "path": "assets/js/metro-model.mjs",
+        "bytes": 2635,
+        "sha256": "99f29eaff955296eec46072b309cdee7f277e856c9206f2f9387aac22cec6512"
+      },
+      {
+        "path": "assets/js/mortgage-data.mjs",
+        "bytes": 18742,
+        "sha256": "a6b489a33f8eaf5fb68a424dd55f2f705b52048fa6bd42d2f52cb2ffa9e8ce3c"
+      },
+      {
+        "path": "assets/js/mortgage-engine.mjs",
+        "bytes": 3496,
+        "sha256": "f676775b6d5004f1810cec5273a8875479b062d3462fce0e41f85c6c98821b85"
+      },
+      {
+        "path": "assets/js/mortgage-guide-engine.mjs",
+        "bytes": 5183,
+        "sha256": "a898585542d40656b43ae8399bab3e785e2a22510e1f3c74ec0dbd148dc66371"
+      },
+      {
+        "path": "assets/js/mortgage-guide.mjs",
+        "bytes": 10345,
+        "sha256": "4eeab784d8ed3e12fb6d0a293ef4a3bc96366abf09db82705a62e26d49447c03"
+      },
+      {
+        "path": "assets/js/mortgage-handoff.mjs",
+        "bytes": 2283,
+        "sha256": "923aa6125888914f4bb04dc8a33fe00d06c3cfd2dacad0ec8515888cd86e178e"
+      },
+      {
+        "path": "assets/js/nollagam-detail.mjs",
+        "bytes": 2502,
+        "sha256": "7bd688d9840224968cfd87eab27a3f84e70941306ec3ec8a7065694b1dcd41a1"
+      },
+      {
+        "path": "assets/js/norte-verde-hero-variants.js",
+        "bytes": 2130,
+        "sha256": "559f0c32a97f42ab965f9cb959711d6595d40411809ee71b22151287b9961b4f"
+      },
+      {
+        "path": "assets/js/official-uf.mjs",
+        "bytes": 868,
+        "sha256": "b87fe997a59b32af8160801930ae857bf4b1e9e0fe6b7d03a9f699dd72d43674"
+      },
+      {
+        "path": "assets/js/orientacion.mjs",
+        "bytes": 14459,
+        "sha256": "c6ad7b0a462cd7d26e61743363ac432383ef682585d3e5da320352639b02c8ec"
+      },
+      {
+        "path": "assets/js/orientation-engine.mjs",
+        "bytes": 7661,
+        "sha256": "f2cced4ce11a3b0e2e82b9021e2986e3a96f44ca0f75de3ba25e4f8bb793a6ab"
+      },
+      {
+        "path": "assets/js/plaza-las-condes.mjs",
+        "bytes": 2710,
+        "sha256": "a41c16eaa133170deeb2ef9464b8e009cada0f109d11a19d43f0b630b29fd0ff"
+      },
+      {
+        "path": "assets/js/project-brochure.mjs",
+        "bytes": 4384,
+        "sha256": "135b896025b095484e84c670122cae2e694676b92c84494c3ce7f81f57201109"
+      },
+      {
+        "path": "assets/js/project-detail.js",
+        "bytes": 1043,
+        "sha256": "af939cd7ad43533b6e461e95b799a474327e0f993a05da6e6871208b28c957ab"
+      },
+      {
+        "path": "assets/js/project-embeds.js",
+        "bytes": 3200,
+        "sha256": "e16d317f306c10880e9d8d8655a0c05ef486a76b186b0adcf03c658cbc8bb229"
+      },
+      {
+        "path": "assets/js/project-finance.mjs",
+        "bytes": 5214,
+        "sha256": "a49958fd5020206c6152bf48c03ab3ae3de3039c27f3abc04b1eaf8fbfb7376a"
+      },
+      {
+        "path": "assets/js/project-identity.mjs",
+        "bytes": 4009,
+        "sha256": "86395bb47c4fba999d62dbb905c8c0fbdc30a1efc865b741ad102d48968babeb"
+      },
+      {
+        "path": "assets/js/project-media-state.js",
+        "bytes": 7057,
+        "sha256": "3dd7e7f87c5bea704c2a6e931de8a800289d50ffcd1a68a1c13364f29ed95b41"
+      },
+      {
+        "path": "assets/js/project-metro.mjs",
+        "bytes": 1644,
+        "sha256": "15c64c7ea62041f314420c5fb1c3351c7c6fc5711fbfe60de2a14497e524578c"
+      },
+      {
+        "path": "assets/js/project-navigation.mjs",
+        "bytes": 3157,
+        "sha256": "79c1d422a4736233da9c89e2ea2f990666d78782aeee46816f67e332a775bd96"
+      },
+      {
+        "path": "assets/js/project-offers.mjs",
+        "bytes": 2714,
+        "sha256": "4842c8eba277bdcdb05e464bcd8b85732878ec250702ca0bd2b435beba36e81b"
+      },
+      {
+        "path": "assets/js/project-request.mjs",
+        "bytes": 9751,
+        "sha256": "6918b634c257fe8fc3302c8252ef41dd7d9ab94b6a5d0426ee9171eecdf6137b"
+      },
+      {
+        "path": "assets/js/project-urban-works.mjs",
+        "bytes": 3352,
+        "sha256": "05bec1aff3bd56945876405c937e82af7e133036e3ada6a910d33b203a55fb60"
+      },
+      {
+        "path": "assets/js/purchase-capacity-ui.mjs",
+        "bytes": 14872,
+        "sha256": "2a73b95ed500f2a3c05902d3e4042b40c371583fceee6658d43cfe3c0df69fa8"
+      },
+      {
+        "path": "assets/js/purchase-capacity.mjs",
+        "bytes": 9200,
+        "sha256": "26ab74149300e08a557b3266b531b553b619d661ec03988e8009291688e4635d"
+      },
+      {
+        "path": "assets/js/purchase-stage-engine.mjs",
+        "bytes": 3786,
+        "sha256": "fd032618358497141a0ce2d7df2d8161b5a05642b7646ebb681a61f30af2b8ec"
+      },
+      {
+        "path": "assets/js/purchase-stage-guide.mjs",
+        "bytes": 3109,
+        "sha256": "174a79df7ed66db84d4c65729700002da40395f09bf6e45b05853d087bee7f53"
+      },
+      {
+        "path": "assets/js/rut-field.mjs",
+        "bytes": 1033,
+        "sha256": "336bc1dedc6098b3777778be2074171d9925b25e9904c74da86c337852de96f9"
+      },
+      {
+        "path": "assets/js/rut.mjs",
+        "bytes": 1543,
+        "sha256": "912ed456c88adef10a9cd6ee44aa742fd1387eef8d219413e10d564119bf94a2"
+      },
+      {
+        "path": "assets/js/scroll-presence.js",
+        "bytes": 7254,
+        "sha256": "6d6f2be8832ff56ae6c3ba6d7e450b4b83c8dab2fbac834edc45cb37f9371f5d"
+      },
+      {
+        "path": "assets/js/urban-works-model.mjs",
+        "bytes": 5443,
+        "sha256": "10436e007e6e0a4935442bdc4e15bfbb267c4c8eba8051cd3c1c9b8e62fa38cc"
+      },
+      {
+        "path": "assets/js/urban-works-page.mjs",
+        "bytes": 17192,
+        "sha256": "240255c5f2e1b8a4f8c3025d7ccbec7704b4c1e4f7910569f4410d42114bfa32"
+      },
+      {
+        "path": "centro-orientacion.html",
+        "bytes": 23601,
+        "sha256": "2a7eacf5f5e335e89910f0a461f8904befd87033d3a937260b782c97c6a7d6d4"
+      },
+      {
+        "path": "comparador-hipotecario.html",
+        "bytes": 23452,
+        "sha256": "3b3635e7098cea83b84c486eb091b0c0116e33647412c852f40bd17e163e7b02"
+      },
+      {
+        "path": "contacto.html",
+        "bytes": 15642,
+        "sha256": "e1ab5371b8212ec79917dea7732f66ed2775505f3b3bf6a93442fc4604bfe2dd"
+      },
+      {
+        "path": "cuando-comprar-propiedad.html",
+        "bytes": 33927,
+        "sha256": "1ca73bcce10ab26a662f757475965a6dd7da21aa9d659f56bd7dc2865eecafd1"
+      },
+      {
+        "path": "entorno-desarrollo-urbano.html",
+        "bytes": 8147,
+        "sha256": "0f229a977f3da8088f1ceb394c131476061b089a88c3284a4516afc0f4845b9c"
+      },
+      {
+        "path": "guia-hipotecaria.html",
+        "bytes": 44687,
+        "sha256": "b86208c5b19380be10af60855efeb810625b867313d05514de8389584eaa9178"
+      },
+      {
+        "path": "index.html",
+        "bytes": 57894,
+        "sha256": "5814adbcb6733a3ff705bff11804ca46757b74ed079ca67e294151887be49d7e"
+      },
+      {
+        "path": "lib/booking-publication-policy.mjs",
+        "bytes": 650,
+        "sha256": "cf8e9d1659eef916029e60d653362a9c29fe1110cfa358064a1d1ff1c4aa6fd6"
+      },
+      {
+        "path": "lib/booking-server.mjs",
+        "bytes": 5304,
+        "sha256": "27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4"
+      },
+      {
+        "path": "lib/crm-lead-client.mjs",
+        "bytes": 4532,
+        "sha256": "d5d44f1a3948013bf53cbeae62c48ec5e505dc4fcf334d486a5430a4ca4e1d00"
+      },
+      {
+        "path": "lib/form-operation-server.mjs",
+        "bytes": 3105,
+        "sha256": "6d4f74b31f78dcd405c0342c1d38b972703966cb0a45b6dd41c9fd196d16bf2a"
+      },
+      {
+        "path": "lib/mortgage-lead.mjs",
+        "bytes": 9911,
+        "sha256": "6c9db90b59e4dbe679997c10e9b16c58c35e08b6b9c196a0c36ad4f1ee07814c"
+      },
+      {
+        "path": "lib/official-uf.mjs",
+        "bytes": 6218,
+        "sha256": "5a43c18d17301ba8dac4466f874e99832cdc6df775efbb8ab8fb524bc4024b21"
+      },
+      {
+        "path": "lib/project-context.mjs",
+        "bytes": 18094,
+        "sha256": "70c0278e4002a0bf98d1226c1fde097d59656c318814f822999ffb4936327f0d"
+      },
+      {
+        "path": "lib/public-project-view.mjs",
+        "bytes": 6813,
+        "sha256": "60e409d4b75606851b45cc92dcb05f10e2b6ddec0ffc2b9e57629ed2963a0266"
+      },
+      {
+        "path": "privacidad.html",
+        "bytes": 24068,
+        "sha256": "0dd567b9a41e0d0bc46609b1e7a26a992a899b416f7f5346996743b310e91ccd"
+      },
+      {
+        "path": "proyectos.html",
+        "bytes": 42012,
+        "sha256": "0cc6853fed1571aaeaf8438ae83723f8420a406df64b409ac860b7fc3971d89f"
+      },
+      {
+        "path": "trabaja-con-nosotros.html",
+        "bytes": 17723,
+        "sha256": "06029e90d08aae864037f7bfb482355f516f5449a4e5a57d1bc0cbbcfd619781"
+      },
+      {
+        "path": "vercel.json",
+        "bytes": 3380,
+        "sha256": "4dd24715e578bc2f23fab2fe0933471d4402e1da4383eb62b56316c3db17854a"
+      }
+    ]
+  },
+  "history_scan": {
+    "command": "git rev-list --objects --all -- <11 included HTML> api lib assets/js .env.example vercel.json; read unique blobs through git cat-file --batch",
+    "refs_scanned": 246,
+    "unique_source_blobs_scanned": 703,
+    "matches": {
+      "gsc_verification": [],
+      "bing_verification": [],
+      "ga_gtm": [],
+      "clarity": [],
+      "vercel_analytics": [],
+      "vercel_speed_insights": [],
+      "plausible": [],
+      "matomo": [],
+      "umami": [],
+      "posthog": [],
+      "ad_pixels": [],
+      "indexnow": [],
+      "utm_referrer_landing": [
+        {
+          "path_at_object_listing": "lib/crm-form-event.mjs",
+          "blob_sha1": "cbb26a0c5747044ffe49ce855004d6cabe220b44",
+          "lines": [
+            9
+          ]
+        }
+      ],
+      "own_origin_context": [
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "8b2d5cdcf2e26f1c3727bfb899afa233f1617492",
+          "lines": [
+            3,
+            74
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "3a4a0530931573a76a23aac2e4bd948d859a0051",
+          "lines": [
+            3,
+            7
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/commercial-context.mjs",
+          "blob_sha1": "d27d308db31798c7e932bc64efe343b231c7b195",
+          "lines": [
+            4,
+            7,
+            10
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/mortgage-guide.mjs",
+          "blob_sha1": "ad4b7b48bf17d436d0df624fa3ae5d799e8b7887",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/project-request.mjs",
+          "blob_sha1": "ec27079667abd6b0892b15ac0669ec03c2e4033d",
+          "lines": [
+            6,
+            51,
+            106
+          ]
+        },
+        {
+          "path_at_object_listing": "cuando-comprar-propiedad.html",
+          "blob_sha1": "a26ccf0b636d5963a6872e82e4f26ecac0134460",
+          "lines": [
+            110
+          ]
+        },
+        {
+          "path_at_object_listing": "guia-hipotecaria.html",
+          "blob_sha1": "00fc4f244f1fc043ac76a441ae499e27da44a958",
+          "lines": [
+            141
+          ]
+        },
+        {
+          "path_at_object_listing": "guia-hipotecaria.html",
+          "blob_sha1": "57f9ba43faa005481d8212cfb3682f964338a216",
+          "lines": [
+            141
+          ]
+        },
+        {
+          "path_at_object_listing": "cuando-comprar-propiedad.html",
+          "blob_sha1": "9156935c2f472dff7599279828276a29deea6768",
+          "lines": [
+            110
+          ]
+        },
+        {
+          "path_at_object_listing": "guia-hipotecaria.html",
+          "blob_sha1": "9a8f1781355e95ed51169970635eed5399f8acb1",
+          "lines": [
+            141
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "03ca4190ae6208d6e0b716aa0ddca5758ae9ae13",
+          "lines": [
+            3,
+            74
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "2ad11fc921e5fcb09c22ddee4ca841811f7b02a2",
+          "lines": [
+            3,
+            74
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "770c9aad987898b5bba5c544e2e87b3da80fccd3",
+          "lines": [
+            3,
+            7
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "f6433c05fc7bdea7f5f538359b01f15461c4ee38",
+          "lines": [
+            2,
+            71
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "89953fbd2abcac100f34684ce99b07cc4bdbd06b",
+          "lines": [
+            2,
+            6
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "f93d4b1c38e96a6d9f21cc3253ca8de8cf53d74c",
+          "lines": [
+            2,
+            73
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "ec9b513923b2b5419563e70c9b3ec3973981e724",
+          "lines": [
+            2,
+            6
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "31f979acaedb82d75412f59625a7ad5d14f95ed9",
+          "lines": [
+            1,
+            70
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "30caa45c8dddcb72027643a9eec5848c36267406",
+          "lines": [
+            1,
+            5
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "1d14f972f6798c8a61c7c18f895ac8ba2f8beb0b",
+          "lines": [
+            1,
+            70
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "d647cb1fcf6d0d7f4c7089072dcd7666978ad610",
+          "lines": [
+            1,
+            5
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "da37c420a0e654e65542e464b9b71ec0730043de",
+          "lines": [
+            1,
+            70
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "04c88802670dc8ea6f210aaa8b2e11deadc1405a",
+          "lines": [
+            1,
+            5
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "54a86fdb748f996eca3c22c1788f6638ad653793",
+          "lines": [
+            1,
+            70
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "b4b647b7ef3eab602072a1879cdf30b32c8828bc",
+          "lines": [
+            1,
+            5
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/project-request.mjs",
+          "blob_sha1": "b480dc4c7d2e0e60af5a6f76ddf7f371c6cea74b",
+          "lines": [
+            6,
+            51,
+            105
+          ]
+        },
+        {
+          "path_at_object_listing": "cuando-comprar-propiedad.html",
+          "blob_sha1": "cfd60c3f7a67769af08f74fa5b58de46b90aee75",
+          "lines": [
+            61
+          ]
+        },
+        {
+          "path_at_object_listing": "guia-hipotecaria.html",
+          "blob_sha1": "4e6eed139b121777b42bb5805d82d72ef416174c",
+          "lines": [
+            84
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog-map.mjs",
+          "blob_sha1": "b5131a93311c0d7539043bce5d2392f6e0f6cd9c",
+          "lines": [
+            1,
+            70
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/catalog.mjs",
+          "blob_sha1": "1817b66e7b619f0c36987a02b254ee5bf9d4d2d0",
+          "lines": [
+            1,
+            64
+          ]
+        },
+        {
+          "path_at_object_listing": "guia-hipotecaria.html",
+          "blob_sha1": "fbc876ac6809ab043b1b9a7036751fc69f679447",
+          "lines": [
+            84
+          ]
+        }
+      ],
+      "other_analytics": [
+        {
+          "path_at_object_listing": "assets/js/image-parallax.js",
+          "blob_sha1": "353a41a82798a78f62becf7c4dbcd9108ec81729",
+          "lines": [
+            54,
+            55,
+            56,
+            79
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/image-parallax.js",
+          "blob_sha1": "6ae3d5bd105812b4e8109f3868bafff2fd0eb76a",
+          "lines": [
+            49,
+            50,
+            51,
+            74
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/image-parallax.js",
+          "blob_sha1": "002dec8b1ed7b11323358a92127b9f01afb19c4a",
+          "lines": [
+            44,
+            45,
+            46,
+            69
+          ]
+        },
+        {
+          "path_at_object_listing": "assets/js/image-parallax.js",
+          "blob_sha1": "42c753bbb5e5ce0935366d5b78a1e8a5402dc53f",
+          "lines": [
+            41,
+            42,
+            43,
+            64
+          ]
+        }
+      ]
+    },
+    "limitations": [
+      "Only refs fetched and locally reachable commits; deleted/unreachable remote history and private systems are outside scan.",
+      "Matched source configuration is not proof of deployed or enabled integration.",
+      "No individual project HTML or private lead records read."
+    ]
+  },
+  "commercial_findings": [
+    {
+      "id": "C01",
+      "status": "confirmed",
+      "finding": "Included contacto/agenda forms use /api/advisory and Resend; success requires providerAccepted true and deliveryConfirmed false. No delivery or qualification is certified.",
+      "sources": [
+        "contacto.html:176",
+        "agenda-asesoria.html:176",
+        "assets/js/advisory.mjs:55",
+        "assets/js/advisory.mjs:62",
+        "api/advisory.mjs:46",
+        "api/advisory.mjs:63"
+      ]
+    },
+    {
+      "id": "C02",
+      "status": "confirmed",
+      "finding": "Orientation and mortgage comparator use contact handler with explicit crm/resend modes. CRM persisted response proves protocol receipt only; active production mode is outside source-only evidence.",
+      "sources": [
+        "api/contact.mjs:137",
+        "api/contact.mjs:160",
+        "api/contact.mjs:165",
+        "api/contact.mjs:208",
+        "lib/crm-lead-client.mjs:101",
+        "assets/js/orientacion.mjs:156",
+        "assets/js/hipotecario.mjs:493"
+      ]
+    },
+    {
+      "id": "C03",
+      "status": "confirmed",
+      "finding": "Bounded own-journey origin names may be added to advisory message; this is not organic source/medium or original session landing page.",
+      "sources": [
+        "assets/js/commercial-context.mjs:3",
+        "assets/js/commercial-context.mjs:8",
+        "assets/js/advisory.mjs:48",
+        "assets/js/mortgage-guide.mjs:19"
+      ]
+    },
+    {
+      "id": "C04",
+      "status": "confirmed",
+      "finding": "Historical CRM outbox branch contains UTM fields extracted from same-origin Referer URL and submission page. It does not prove first landing tracking, current deployment, durable live data or source-medium reporting.",
+      "sources": [
+        "origin/codex/crm360-integracion-2026-11-02:lib/crm-form-event.mjs:5",
+        "origin/codex/crm360-integracion-2026-11-02:lib/crm-form-event.mjs:7",
+        "origin/codex/crm360-integracion-2026-11-02:sql/crm-outbox.sql",
+        "origin/codex/crm360-integracion-2026-11-02:docs/crm360/OPERACION_INTEGRACION.md"
+      ]
+    },
+    {
+      "id": "C05",
+      "status": "observed_partially",
+      "finding": "WhatsApp links are present in included HTML; no matched click instrumentation in scanned current source. This cannot establish absence in private WhatsApp/CRM tools.",
+      "sources": [
+        "contacto.html:170",
+        "centro-orientacion.html:57",
+        "comparador-hipotecario.html:188"
+      ]
+    },
+    {
+      "id": "C06",
+      "status": "confirmed",
+      "finding": "Existing published-package booking policy is request-only; legacy booking backend code does not establish a confirmed appointment or a commercial conversion.",
+      "sources": [
+        "lib/booking-publication-policy.mjs:1",
+        "docs/seo-measurement/packages/2026-11-08-nine-copy/completion/report.md:70",
+        "docs/seo-measurement/runs/2026-11-09-post-publication-t0/conversions.json"
+      ]
+    },
+    {
+      "id": "C07",
+      "status": "not_measured",
+      "finding": "No aggregate real traffic, source-attributed qualified contacts or confirmed commercial conversions are supplied by source code. Counts remain null.",
+      "sources": [
+        "docs/seo-measurement/runs/2026-11-09-post-publication-t0/conversions.json"
+      ]
+    }
+  ],
+  "metric_values": {
+    "sessions": null,
+    "organic_traffic": null,
+    "whatsapp_clicks": null,
+    "submitted_requests": null,
+    "accepted_requests": null,
+    "qualified_contacts": null,
+    "confirmed_bookings_or_sales": null
+  },
+  "no_personal_lead_data_read": true,
+  "no_production_mutations": true,
+  "historical_materials": [
+    {
+      "git_ref_path": "origin/codex/crm360-integracion-2026-11-02:docs/crm360/CONTINUIDAD_2026_11_02.md",
+      "blob_sha1": "d613218dfdaa6ca8c9a0a9cfa7905a4cea4bda1d"
+    },
+    {
+      "git_ref_path": "origin/codex/crm360-integracion-2026-11-02:docs/crm360/OPERACION_INTEGRACION.md",
+      "blob_sha1": "b32c5b50a469a81b66c2cef1009a5699bbcf4139"
+    },
+    {
+      "git_ref_path": "origin/codex/crm360-integracion-2026-11-02:docs/crm360/PREVIEW_REVISION_2026_11_03.md",
+      "blob_sha1": "7aaaf202fcd1c248ce428708ff3e636d394a4e79"
+    },
+    {
+      "git_ref_path": "origin/codex/crm360-integracion-2026-11-02:lib/crm-form-event.mjs",
+      "blob_sha1": "cbb26a0c5747044ffe49ce855004d6cabe220b44"
+    },
+    {
+      "git_ref_path": "origin/codex/crm360-integracion-2026-11-02:sql/crm-outbox.sql",
+      "blob_sha1": "e7749e25857cf7cad555c01a46724073dd1fb8cd"
+    }
+  ],
+  "related_private_repository_documentation": {
+    "access": "authorized GitHub connector, technical structure only",
+    "repository": "lasopho/crm360-inmobiliario",
+    "branch": "codex/sollahms-integracion-2026-11-02",
+    "documents": [
+      {
+        "path": "docs/INTEGRACION_SOLLAHMS_PERSISTENTE_2026_11_02.md",
+        "blob_sha1": "444776ec885eeb851bc24985cf0ca879823d9923"
+      },
+      {
+        "path": "docs/REVISION_PREVIEW_2026_11_03.md",
+        "blob_sha1": "b111bbabe76e66414d2bcaaf0e821d9484fb74f1"
+      }
+    ],
+    "finding": "Technical documentation confirms prepared persistent integration and synthetic historical verification, explicitly distinct from hosted operation at those dates. Current commercial aggregates remain unmeasured.",
+    "private_response_originals_retained": false,
+    "personal_records_queried": false
+  },
+  "live_readback_evidence": [
+    "dns-verification-sanitized.json",
+    "vercel-env-names-only.json",
+    "vercel-web-analytics-status.json",
+    "vercel-observability-aggregate.json",
+    "external-live-measurement-markers.json"
+  ],
+  "no_analytics_installation_recommended_from_source_scan_alone": true,
+  "manual_match_review": [
+    {
+      "pattern_group": "other_analytics",
+      "matched_token": "amplitude",
+      "current_path": "assets/js/image-parallax.js",
+      "history_blob_count": 4,
+      "classification": "false_positive_for_analytics_product",
+      "reason": "Variable amplitude controls visual parallax displacement; no Amplitude analytics import, endpoint, initialization or track event."
+    }
+  ]
+}

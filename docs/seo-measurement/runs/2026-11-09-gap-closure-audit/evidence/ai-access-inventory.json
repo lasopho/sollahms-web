@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-11-10 02:47:12 UTC",
+  "kind": "consumer_surface_access_inventory_not_product_execution",
+  "environment": {
+    "environment_id": "ccarenv_b64_Y2NhcmVudl9lNjViOTcyNjBkZjg4MTkxYjk4MDBlMTIzOWNiMTFkNw",
+    "observed_phase": "running",
+    "observations_current": true,
+    "connectivity": "connected",
+    "network_policy_state": "enforced",
+    "desktop_enabled": true,
+    "desktop_state": "unknown"
+  },
+  "discovery": {
+    "tool_count": 572,
+    "exact_browser_or_desktop_control_tools": [],
+    "related_metadata_tools": [
+      "mcp__codex_apps__automations_create",
+      "mcp__codex_apps__automations_list",
+      "mcp__codex_apps__automations_peek",
+      "mcp__codex_apps__automations_run_now",
+      "mcp__codex_apps__automations_update",
+      "mcp__codex_apps__chatgpt_space_execute_artifact_code",
+      "mcp__codex_apps__chatgpt_space_inspect_artifact",
+      "mcp__codex_apps__chatgpt_space_upload_artifact_images",
+      "mcp__codex_apps__cloud_environment_environment_status",
+      "mcp__codex_apps__vercel_aggregate_events",
+      "mcp__codex_apps__vercel_aggregate_pageviews",
+      "mcp__codex_apps__vercel_authorize_team_access",
+      "mcp__codex_apps__vercel_authorize_team_sso",
+      "mcp__codex_apps__vercel_count_events",
+      "mcp__codex_apps__vercel_count_pageviews"
+    ],
+    "query": "js/list_tabs/get_tab_context/open_in_codex/handoff/cua_repl/node_repl/browser tab or navigation names"
+  },
+  "supported_consumer_tools_available": false,
+  "product_requests_attempted": 0,
+  "blocked_reason": "No callable Browser js, CUA desktop js, tab control or handoff tool is exposed in this session. Desktop enabled with unknown state does not establish a connected controllable browser.",
+  "secondary_constraint": "Current enforced allowlist contains no consumer AI/search domains. No HTTP consumer probes repeated; no network policy changed.",
+  "account_state": "unknown_not_inspected",
+  "effective_country": "unknown_not_inspected",
+  "personalization": "unknown_not_inspected",
+  "model": "not_observed",
+  "not_inferred": [
+    "No conclusion that platform accounts or integrations do not exist",
+    "No observed absence of Sollahms",
+    "No observed AI Overview unavailability for a specific query"
+  ],
+  "skills_read": [
+    "skill://plugin_connector_1p_51c1ba70f47481919149861084681943/control-browser/SKILL.md",
+    "skill://plugin_connector_1p_c5b7d5df5d7081918f2c4be5a633ed5d/cloud-desktop/SKILL.md"
+  ],
+  "historical_evidence_reused": "../../2026-11-09-post-publication-t0/evidence/access-availability.json",
+  "no_api_substitution": true,
+  "no_generic_search_substitution": true,
+  "no_ai_credits_consumed": true
+}

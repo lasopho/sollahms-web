@@ -1,0 +1,72 @@
+{
+  "checked_at": "2026-11-10T02:47:44.378794+00:00",
+  "method": "GET",
+  "endpoint": "/v10/projects/prj_URomRRU0MAy4etGKP5gWv3Qv4DGH/env",
+  "parameters": {
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "decrypt": "false"
+  },
+  "status": 200,
+  "variables": [
+    {
+      "key": "CONTACT_DELIVERY_MODE",
+      "target": [
+        "production"
+      ],
+      "type": "encrypted",
+      "createdAt": 1792794989226,
+      "updatedAt": 1792794989226
+    },
+    {
+      "key": "BOOKING_SECRET",
+      "target": [
+        "production"
+      ],
+      "type": "sensitive",
+      "createdAt": 1790556721916,
+      "updatedAt": 1790646396067
+    },
+    {
+      "key": "BOOKING_SECRET",
+      "target": [
+        "preview"
+      ],
+      "type": "sensitive",
+      "createdAt": 1790556721916,
+      "updatedAt": 1790646367761
+    },
+    {
+      "key": "BOOKING_SECRET",
+      "target": [
+        "development"
+      ],
+      "type": "sensitive",
+      "createdAt": 1790556721916,
+      "updatedAt": 1790646428919
+    },
+    {
+      "key": "BOOKING_BACKEND_URL",
+      "target": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "encrypted",
+      "createdAt": 1790556631676,
+      "updatedAt": 1790556659333
+    },
+    {
+      "key": "RESEND_API_KEY",
+      "target": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "sensitive",
+      "createdAt": 1790531667686,
+      "updatedAt": 1790532205889
+    }
+  ],
+  "values_retained": false,
+  "error_code": null
+}

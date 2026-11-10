@@ -1,0 +1,71 @@
+{
+  "validated_at_utc": "2026-11-10T02:55:59.163478+00:00",
+  "base_commit": "b6720089822ba2185b040d0ddebe2fa1abe1560d",
+  "branch": "codex/seo-medicion-20261108",
+  "run_path": "docs/seo-measurement/runs/2026-11-09-gap-closure-audit",
+  "scope_id": "corporate-education-v2",
+  "status": "pass_precommit",
+  "checks": {
+    "required_deliverables_present": true,
+    "only_new_run_changed": true,
+    "target_branch": true,
+    "auto_deployment_disabled": true,
+    "all_json_valid": true,
+    "markdown_local_links_resolve": true,
+    "missing_local_links": [],
+    "scope_exactly_11": true,
+    "ai_actual_observation_rows": 0,
+    "ai_60_exact_first_wave_slots": true,
+    "ai_unknown_visibility_is_null": true,
+    "plan_protocol_scope_unchanged": true,
+    "web_analytics_checked_once_no_zero": true,
+    "observability_summary_129_truncation_38": true,
+    "observability_strict_page_path_filter": true,
+    "production_aliases_unchanged": true,
+    "no_new_candidates_or_deployments": true,
+    "18_sources_15_metric_needs": true,
+    "no_secret_patterns": true,
+    "privacy_pattern_hits": [],
+    "no_private_original_archives": true,
+    "diff_whitespace_clean": true
+  },
+  "json_files_checked": 35,
+  "markdown_local_links_checked": 98,
+  "evidence_files_hashed": 46,
+  "offline_tests": {
+    "scope": {
+      "passed": 12,
+      "failed": 0,
+      "command": "python -m unittest discover -s tests -p test_seo_scope.py -v",
+      "log": "evidence/offline-scope-tests.txt"
+    },
+    "importer": {
+      "passed": 13,
+      "failed": 0,
+      "command": "python -m unittest discover -s tests -p test_seo_measurement.py -v",
+      "log": "evidence/offline-importer-tests.txt"
+    },
+    "note": "Existing tests, synthetic fixtures; no ranking or traffic measurement."
+  },
+  "ai_guard": "evidence/ai-access-validation.json",
+  "external_checks": "evidence/external-validation.json",
+  "independent_review": "evidence/independent-review.json",
+  "production_readback": "evidence/production-final-before-commit.json",
+  "source_preservation": "All tracked files outside this new run unchanged relative to exact T0 commit; includes all prior runs, code, forms, fiches, policy, scopes and protocols.",
+  "privacy": "No secrets/cookies/lead records/private-account originals versioned. Public business contact and public brand-related source URLs are intentional; private technical docs only summarized.",
+  "limits": [
+    "Consumer IA access blocked; no actual observations.",
+    "No GSC/Bing account data; technical DNS records only.",
+    "Observability is HTTP requests with truncated series, no visitor/orgánico/conversion inference.",
+    "Plan/cost contractual not accredited.",
+    "No full professional backlink dataset."
+  ],
+  "git_delivery": "Commit SHA and push receipt supplied after successful commit/push; this file does not predict a future SHA.",
+  "production_modified": false,
+  "individual_fiches_audited": false,
+  "metrics_missing_imputed_to_zero": false,
+  "generic_search_as_gsc_bing": false,
+  "api_as_consumer_ai": false,
+  "new_automations": false,
+  "new_instrumentation": false
+}

@@ -1,0 +1,147 @@
+{
+  "schema_version": 2,
+  "kind": "scoped_ai_summary",
+  "original_csv_sha256": "9071e5ef8fc2d9064944d74263445d571601b7c421140d4a01bf4041cc317b92",
+  "measurement_scope": {
+    "scope_id": "corporate-education-v2",
+    "scope_sha256": "e64a231c622a5f6dc8ae7b09dbf2a4c3f83e1f44d139e75b4e1a4d08492a592b"
+  },
+  "groups": [],
+  "note": "Frecuencias condicionadas del protocolo v2, no ranking general. Solo menciones y recomendaciones corporativas y URL incluidas. Contexto unclear o referencias positivas sin URL clasificable no equivalen a ausencia y se excluyen del denominador correspondiente; pruebas no ejecutadas no puntúan.",
+  "run_id": "2026-11-09-gap-closure-audit",
+  "checked_at_utc": "2026-11-10T02:47:12Z",
+  "status": "blocked_no_consumer_ui_execution",
+  "planned_v2_slots": 180,
+  "planned_first_wave_slots": 60,
+  "first_wave_slots_blocked_by_access": 60,
+  "product_requests_attempted": 0,
+  "executed_observations": 0,
+  "not_executed_future_repetition_slots": 120,
+  "unknown_metric_policy": "No consumer response was observed. Mention/link/citation/recommendation counts and rates remain null; execution counts of zero are operational facts, not visibility results.",
+  "counts": {
+    "mention": null,
+    "link": null,
+    "citation": null,
+    "recommendation": null
+  },
+  "rates": {
+    "mention": null,
+    "link": null,
+    "citation": null,
+    "recommendation": null
+  },
+  "first_valid_access_at": null,
+  "day_offsets_anchor": "First valid consumer execution, not publication T0 or this blocked audit",
+  "platforms": [
+    {
+      "platform": "chatgpt_search",
+      "status": "blocked",
+      "product_requests_attempted": 0,
+      "executed_observations": 0,
+      "first_wave_slots_blocked_by_access": 12,
+      "mention_rate": null,
+      "link_rate": null,
+      "citation_rate": null,
+      "recommendation_rate": null,
+      "effective_location": null,
+      "account_type": null,
+      "personalization": null,
+      "model": null,
+      "search_active": null
+    },
+    {
+      "platform": "gemini",
+      "status": "blocked",
+      "product_requests_attempted": 0,
+      "executed_observations": 0,
+      "first_wave_slots_blocked_by_access": 12,
+      "mention_rate": null,
+      "link_rate": null,
+      "citation_rate": null,
+      "recommendation_rate": null,
+      "effective_location": null,
+      "account_type": null,
+      "personalization": null,
+      "model": null,
+      "search_active": null
+    },
+    {
+      "platform": "perplexity",
+      "status": "blocked",
+      "product_requests_attempted": 0,
+      "executed_observations": 0,
+      "first_wave_slots_blocked_by_access": 12,
+      "mention_rate": null,
+      "link_rate": null,
+      "citation_rate": null,
+      "recommendation_rate": null,
+      "effective_location": null,
+      "account_type": null,
+      "personalization": null,
+      "model": null,
+      "search_active": null
+    },
+    {
+      "platform": "google_ai_overviews",
+      "status": "blocked",
+      "product_requests_attempted": 0,
+      "executed_observations": 0,
+      "first_wave_slots_blocked_by_access": 12,
+      "mention_rate": null,
+      "link_rate": null,
+      "citation_rate": null,
+      "recommendation_rate": null,
+      "effective_location": null,
+      "account_type": null,
+      "personalization": null,
+      "model": null,
+      "search_active": null
+    },
+    {
+      "platform": "google_ai_mode",
+      "status": "blocked",
+      "product_requests_attempted": 0,
+      "executed_observations": 0,
+      "first_wave_slots_blocked_by_access": 12,
+      "mention_rate": null,
+      "link_rate": null,
+      "citation_rate": null,
+      "recommendation_rate": null,
+      "effective_location": null,
+      "account_type": null,
+      "personalization": null,
+      "model": null,
+      "search_active": null
+    }
+  ],
+  "sources": [
+    {
+      "path": "../../ai-prompts-v2.csv",
+      "sha256": "ecac1f5c481aaf448c2f70ee26b0d6e8cc2300c0d53e05dc0d093e6e7fa78c6b"
+    },
+    {
+      "path": "../../ai-test-plan-v2.csv",
+      "sha256": "af7a2606153bcde4caebc3ed47f50a3cf06ce95cf336987b9f8455f93d66da94"
+    },
+    {
+      "path": "../../AI-PROTOCOL-v2.md",
+      "sha256": "a4f6702e5345c60b20a5ee5e6a11b177cc1bef4b3982cfc7b5571e0b447848d3"
+    },
+    {
+      "path": "ai-wave-1.csv",
+      "sha256": "9071e5ef8fc2d9064944d74263445d571601b7c421140d4a01bf4041cc317b92"
+    },
+    {
+      "path": "evidence/ai-access-inventory.json",
+      "sha256": "0c9649ae1228d9fe5808e921b7719506dbc3b86b29c17c7e0e67fe7974606ce9"
+    }
+  ],
+  "guard_output": "evidence/ai-access-guard-summary.json",
+  "original_plan_unchanged": true,
+  "manual_operation_package": "ai-manual-operation.md",
+  "slot_register": "ai-wave-1-operations.csv",
+  "methodological_limit": "The 60 blocked slots are planned operations prevented by session access, not 60 product requests. Product-level availability and account state were not tested. AI Overviews unavailable is not assigned without an actual search.",
+  "api_or_generic_search_substitution": false,
+  "ai_credits_consumed": false,
+  "production_modified": false
+}

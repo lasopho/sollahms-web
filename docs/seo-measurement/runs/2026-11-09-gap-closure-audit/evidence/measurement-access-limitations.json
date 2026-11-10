@@ -1,0 +1,72 @@
+{
+  "checked_at_utc": "2026-11-10T02:53:26.127Z",
+  "scope_id": "corporate-education-v2",
+  "gsc_bing_ga_connector_discovery": {
+    "matching_tools": [],
+    "interpretation": "No matching callable analytics/Search Console/Webmaster connector in this session; existing organizational integrations not ruled out."
+  },
+  "consumer_access": "evidence/ai-access-inventory.json",
+  "observability": {
+    "connector_schema": "returned metric list; truncated seven items, not all dimensions exposed",
+    "query_attempts": 2,
+    "first_attempt": {
+      "status": 400,
+      "reason": "Wrong project scope shape and count aggregation; not data or absence."
+    },
+    "corrected_attempt": {
+      "status": 200,
+      "scope": {
+        "type": "project",
+        "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+        "projectIds": [
+          "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+        ]
+      },
+      "aggregation": "sum",
+      "result": "Provider summary129 HTTP requests; series truncated38rows."
+    },
+    "direct_environment_api": {
+      "requests": [
+        {
+          "endpoint": "GET /v2/observability/schema/vercel.request.count",
+          "status": 404,
+          "code": "not_found"
+        },
+        {
+          "endpoint": "GET /v2/observability/schema",
+          "status": 404,
+          "code": "not_found"
+        },
+        {
+          "endpoint": "GET /v2/teams/team_A9VNIW2f2K1IJpd2pGdvDmEN",
+          "status": 403
+        }
+      ],
+      "interpretation": "These routes/credentials did not expose data; do not infer service absence. Connector aggregate succeeded."
+    }
+  },
+  "team_plan": {
+    "connector_fields": "name/slug/id/saml; no billing entitlement returned",
+    "plan": null,
+    "contractual_cost": null
+  },
+  "web_analytics": {
+    "required_provider_requests": 1,
+    "status": 400,
+    "code": "web_analytics_not_enabled",
+    "further_requests": 0,
+    "configuration_changed": false
+  },
+  "dns": {
+    "channel": "Vercel control-plane DNS records, not authoritative resolver",
+    "records_returned": 14,
+    "next_page": null,
+    "property_state": null
+  },
+  "privacy": {
+    "raw_private_account_responses_versioned": false,
+    "individual_logs_queried": false,
+    "lead_rows_queried": false,
+    "env_values_retained": false
+  }
+}

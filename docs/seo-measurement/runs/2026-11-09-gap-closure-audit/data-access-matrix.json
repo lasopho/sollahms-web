@@ -1,0 +1,423 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-10T02:55:18.368802+00:00",
+  "measurement_scope_id": "corporate-education-v2",
+  "status_vocabulary": [
+    "confirmado",
+    "observado parcialmente",
+    "inferido",
+    "no medido",
+    "bloqueado"
+  ],
+  "null_policy": "Unknown metric/property/period stays null; false available means no measured data in this audit, not value0 or organizational nonexistence.",
+  "sources": [
+    {
+      "source": "Google Search Console",
+      "exists": null,
+      "access_real": "Sin conector GSC, identidad de lectura ni interfaz controlable en esta sesión",
+      "data_available": null,
+      "period": null,
+      "quality": "TXT Google de verificación confirmado; no acredita propiedad GSC activa",
+      "block": "No se puede abrir selector de propiedades ni consultar informes",
+      "next_action": "Reutilizar propiedad existente confirmada por titular: preferir sc-domain:sollahms.cl si ya existe; alternativamente https://sollahms.cl/. Obtener lectura o export mínimo; no crear propiedad",
+      "evidence": [
+        "evidence/dns-verification-sanitized.json",
+        "evidence/drive/drive-conclusions.json",
+        "evidence/code-analytics-inventory.json",
+        "../../SEGMENTATION-v2.md"
+      ],
+      "status": "bloqueado"
+    },
+    {
+      "source": "Bing Webmaster Tools",
+      "exists": null,
+      "access_real": "Sin conector BWT, identidad de lectura ni interfaz controlable",
+      "data_available": null,
+      "period": null,
+      "quality": "CNAME verify.bing.com y comentario de cuenta corporativa fechados 25/10; no acredita rendimiento",
+      "block": "Propiedad activa, sitemap enviado, Search Performance, URL Inspection y Site Explorer sin acceso",
+      "next_action": "Recuperar cuenta corporativa asociada al registro de verificación, confirmar propiedad existente https://sollahms.cl/ y exportar informes; comprobar IndexNow existente sin reconfigurar",
+      "evidence": [
+        "evidence/dns-verification-sanitized.json",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "bloqueado"
+    },
+    {
+      "source": "Bing AI Performance / Topics Portfolio",
+      "exists": null,
+      "access_real": "Disponibilidad en producto documentada; disponibilidad para cuenta Sollahms desconocida",
+      "data_available": null,
+      "period": null,
+      "quality": "Fuente oficial actual; no datos de Sollahms",
+      "block": "Sin acceso a cuenta; funcionalidad beta depende de datos suficientes",
+      "next_action": "Al acceder a BWT revisar Citations & Pages y Topics Portfolio si se ofrece; export por URL incluida y fecha; mantener separado del protocolo consumidor",
+      "evidence": [
+        "official-measurement-sources.json"
+      ],
+      "status": "no medido"
+    },
+    {
+      "source": "Vercel Web Analytics",
+      "exists": null,
+      "access_real": "Una petición GET autorizada devolvió 400 web_analytics_not_enabled",
+      "data_available": null,
+      "period": null,
+      "quality": "Confirmación directa del estado; no implica cero tráfico",
+      "block": "Servicio no habilitado para proyecto; webAnalytics.id por sí solo no acredita habilitación",
+      "next_action": "No habilitar. Considerar solo después de matrices y revisión de cuentas existentes",
+      "evidence": [
+        "evidence/vercel-web-analytics-status.json",
+        "evidence/vercel-project-sanitized.json"
+      ],
+      "status": "confirmado",
+      "enabled": false
+    },
+    {
+      "source": "Vercel Observability",
+      "exists": true,
+      "access_real": "Consulta agregada legítima exitosa por conector",
+      "data_available": {
+        "metric": "vercel.request.count",
+        "aggregation": "sum",
+        "http_requests": 129,
+        "measurement_scope_id": "corporate-education-v2",
+        "filters": "production y coincidencia exacta de 11 requestPath",
+        "human_visits": null,
+        "organic_visits": null,
+        "conversions": null
+      },
+      "period": {
+        "start_utc": "2026-11-09T03:00:00Z",
+        "end_utc": "2026-11-10T02:00:00Z",
+        "complete_day": false,
+        "timezone_output": "UTC"
+      },
+      "quality": "Agregado HTTP del segmento; puede incluir bots, QA y solicitudes repetidas. Serie recibida truncada 38 filas; summary129 retenido",
+      "block": "Retención/finalización y plan no certificados; no reconstruir huecos ni atribuir tráfico orgánico",
+      "next_action": "Usar como señal operativa; no sustituir GSC, sesiones ni conversiones. Exportar serie completa solo si una revisión futura la necesita",
+      "evidence": [
+        "evidence/vercel-observability-aggregate.json",
+        "evidence/vercel-observability-configuration.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Vercel Speed Insights",
+      "exists": null,
+      "access_real": "Metadato de proyecto leído",
+      "data_available": {
+        "hasData": false,
+        "performance_metrics": null
+      },
+      "period": null,
+      "quality": "hasData:false confirma ese metadato; no certifica estado de instalación ni rendimiento",
+      "block": "Sin serie CWV medida",
+      "next_action": "Mantener desconocidas métricas; no activar",
+      "evidence": [
+        "evidence/vercel-project-sanitized.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Google Analytics / GA4",
+      "exists": null,
+      "access_real": "Código actual e histórico y Drive revisados; sin acceso a cuenta del proveedor",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin firma detectada en archivos y blobs del inventario; ausencia acotada al escaneo",
+      "block": "Cuentas históricas/organizacionales y ejecución dinámica no acreditadas",
+      "next_action": "Pedir identificación/export de cuenta existente si el titular dispone; no instalar por inferencia",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Google Tag Manager",
+      "exists": null,
+      "access_real": "Código actual e histórico y Drive revisados; sin acceso a cuenta del proveedor",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin firma detectada en archivos y blobs del inventario; ausencia acotada al escaneo",
+      "block": "Cuentas históricas/organizacionales y ejecución dinámica no acreditadas",
+      "next_action": "Pedir identificación/export de cuenta existente si el titular dispone; no instalar por inferencia",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Microsoft Clarity",
+      "exists": null,
+      "access_real": "Código actual e histórico y Drive revisados; sin acceso a cuenta del proveedor",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin firma detectada en archivos y blobs del inventario; ausencia acotada al escaneo",
+      "block": "Cuentas históricas/organizacionales y ejecución dinámica no acreditadas",
+      "next_action": "Pedir identificación/export de cuenta existente si el titular dispone; no instalar por inferencia",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Plausible",
+      "exists": null,
+      "access_real": "Código actual e histórico y Drive revisados; sin acceso a cuenta del proveedor",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin firma detectada en archivos y blobs del inventario; ausencia acotada al escaneo",
+      "block": "Cuentas históricas/organizacionales y ejecución dinámica no acreditadas",
+      "next_action": "Pedir identificación/export de cuenta existente si el titular dispone; no instalar por inferencia",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Matomo",
+      "exists": null,
+      "access_real": "Código actual e histórico y Drive revisados; sin acceso a cuenta del proveedor",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin firma detectada en archivos y blobs del inventario; ausencia acotada al escaneo",
+      "block": "Cuentas históricas/organizacionales y ejecución dinámica no acreditadas",
+      "next_action": "Pedir identificación/export de cuenta existente si el titular dispone; no instalar por inferencia",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Umami",
+      "exists": null,
+      "access_real": "Código actual e histórico y Drive revisados; sin acceso a cuenta del proveedor",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin firma detectada en archivos y blobs del inventario; ausencia acotada al escaneo",
+      "block": "Cuentas históricas/organizacionales y ejecución dinámica no acreditadas",
+      "next_action": "Pedir identificación/export de cuenta existente si el titular dispone; no instalar por inferencia",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "PostHog",
+      "exists": null,
+      "access_real": "Código actual e histórico y Drive revisados; sin acceso a cuenta del proveedor",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin firma detectada en archivos y blobs del inventario; ausencia acotada al escaneo",
+      "block": "Cuentas históricas/organizacionales y ejecución dinámica no acreditadas",
+      "next_action": "Pedir identificación/export de cuenta existente si el titular dispone; no instalar por inferencia",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Pixels publicitarios / otros trackers",
+      "exists": null,
+      "access_real": "Código actual e histórico y Drive revisados; sin acceso a cuenta del proveedor",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin firma detectada en archivos y blobs del inventario; ausencia acotada al escaneo",
+      "block": "Cuentas históricas/organizacionales y ejecución dinámica no acreditadas",
+      "next_action": "Pedir identificación/export de cuenta existente si el titular dispone; no instalar por inferencia",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/drive/drive-conclusions.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "IndexNow",
+      "exists": null,
+      "access_real": "Escaneo código/historia de alcance y documentación",
+      "data_available": null,
+      "period": null,
+      "quality": "Sin integración identificada en cobertura revisada",
+      "block": "Configuración externa y cuenta Bing no verificadas",
+      "next_action": "Consultar estado existente en BWT antes de cualquier propuesta; no configurar ni notificar URLs",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json"
+      ],
+      "status": "no medido"
+    },
+    {
+      "source": "CRM / outbox y atribución propia",
+      "exists": true,
+      "access_real": "Lectura de estructura de código y documentación; sin acceso a filas de clientes",
+      "data_available": null,
+      "period": null,
+      "quality": "Integración preparada confirmada. UTM y página remitente en rama CRM histórica; no equivale landing inicial ni estado productivo",
+      "block": "Sin informe agregado acreditado; activación y recepción comercial actuales desconocidas",
+      "next_action": "Obtener export agregado por periodo, etapa y página incluida, sin nombres/RUT/emails/teléfonos ni identificadores de personas",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json",
+        "evidence/vercel-env-names-only.json"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Formularios / Resend / reservas",
+      "exists": true,
+      "access_real": "Lectura de código y nombres de variables; sin valores ni buzones",
+      "data_available": null,
+      "period": null,
+      "quality": "Envío/aceptación técnica diferenciados de persistencia y cualificación; recursos BOOKING/RESEND presentes",
+      "block": "No hay informe agregado de embudo ni acceso a runtime remoto de reservas",
+      "next_action": "Usar agregados existentes del proveedor/CRM con definiciones y filtros; no probar formularios reales",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/vercel-env-names-only.json",
+        "evidence/drive/drive-findings.md"
+      ],
+      "status": "observado parcialmente"
+    },
+    {
+      "source": "Clic WhatsApp",
+      "exists": true,
+      "access_real": "CTA y estructura pública/código; sin contador de clics acreditado",
+      "data_available": null,
+      "period": null,
+      "quality": "La existencia del enlace no demuestra medición de clics",
+      "block": "Sin eventos/export agregados",
+      "next_action": "No contabilizar clic ni lead desde href; buscar contador existente en cuenta antes de instrumentar",
+      "evidence": [
+        "analytics-inventory.md",
+        "evidence/code-analytics-inventory.json"
+      ],
+      "status": "no medido"
+    }
+  ],
+  "required_metrics": [
+    {
+      "metric": "Indexación por URL / Google canonical",
+      "current_source": "GSC URL Inspection / Pages",
+      "available": false,
+      "valid_substitute": "HTTP200 solo prueba acceso, no indexación",
+      "necessary_action": "Export estado por las 11 URL, fecha, canonical usuario/motor y razón"
+    },
+    {
+      "metric": "Impresiones, clics, CTR, posición Google",
+      "current_source": "GSC Performance",
+      "available": false,
+      "valid_substitute": "Ningún sustituto público válido",
+      "necessary_action": "Export diario y cortes página/consulta/país/dispositivo con filtros y cobertura"
+    },
+    {
+      "metric": "Indexación, crawling y descubrimiento Bing",
+      "current_source": "BWT URL Inspection / Site Explorer",
+      "available": false,
+      "valid_substitute": "DNS/HTTP no prueban indexación",
+      "necessary_action": "Export por URL y razón de exclusión/canonical/crawl"
+    },
+    {
+      "metric": "Impresiones, clics, CTR, posición Bing",
+      "current_source": "BWT Search Performance",
+      "available": false,
+      "valid_substitute": "Ningún sustituto público válido",
+      "necessary_action": "Export nativo, fechas, filtros, zona y cobertura; no mezclar definición con Google"
+    },
+    {
+      "metric": "Solicitudes HTTP del segmento",
+      "current_source": "Vercel Observability",
+      "available": true,
+      "valid_substitute": "Señal operativa válida únicamente de solicitudes HTTP",
+      "necessary_action": "Conservar summary129, filtro exacto, ventana parcial y truncación; no tratar como visitas"
+    },
+    {
+      "metric": "Visitas humanas, entrada y referrer",
+      "current_source": "Ninguna fuente acreditada de analítica de visitantes",
+      "available": false,
+      "valid_substitute": "Observability no equivale a sesiones ni landing de visita",
+      "necessary_action": "Recuperar cuenta/export de analítica existente; evaluar propuesta si falta real"
+    },
+    {
+      "metric": "UTM/source-medium orgánico por conversión",
+      "current_source": "Rama CRM: UTM y attribution.page preparados",
+      "available": false,
+      "valid_substitute": "Origen interno de herramienta es contexto, no canal orgánico",
+      "necessary_action": "Export agregado del sistema efectivo con origen/landing si existen; no inferir desde rama"
+    },
+    {
+      "metric": "Formulario enviado",
+      "current_source": "Estructura frontend",
+      "available": false,
+      "valid_substitute": "Intención/envío no es aceptación del proveedor",
+      "necessary_action": "Contador agregado con definición de evento y periodo"
+    },
+    {
+      "metric": "Formulario aceptado / persistido",
+      "current_source": "Contrato de proveedor y cliente CRM",
+      "available": false,
+      "valid_substitute": "providerAccepted no equivale persisted ni lead cualificado",
+      "necessary_action": "Agregados separados de aceptación técnica y persistencia durable"
+    },
+    {
+      "metric": "Clic WhatsApp",
+      "current_source": "CTA existente sin contador acreditado",
+      "available": false,
+      "valid_substitute": "Ninguno: abrir enlace no es contacto confirmado",
+      "necessary_action": "Recuperar evento agregado existente, sin modificar el CTA"
+    },
+    {
+      "metric": "Contacto cualificado",
+      "current_source": "Estado comercial CRM no leído",
+      "available": false,
+      "valid_substitute": "Ni clic ni correo aceptado sustituyen cualificación",
+      "necessary_action": "Agregado por etapa, página y canal; regla de cualificación explícita"
+    },
+    {
+      "metric": "Reserva/conversión comercial",
+      "current_source": "Backend reservas/CRM preparado",
+      "available": false,
+      "valid_substitute": "Solicitud de horario no equivale reserva confirmada",
+      "necessary_action": "Export agregado con estado y periodo; sin datos personales"
+    },
+    {
+      "metric": "Mención/enlace/cita/recomendación IA v2",
+      "current_source": "Cinco productos consumidores",
+      "available": false,
+      "valid_substitute": "Búsqueda genérica y APIs no son sustitutos",
+      "necessary_action": "Ejecutar manual de este run o habilitar control legítimo del producto"
+    },
+    {
+      "metric": "Citas Bing IA",
+      "current_source": "BWT AI Performance si cuenta lo ofrece",
+      "available": false,
+      "valid_substitute": "Es complementario, no sustituye ola consumidor v2",
+      "necessary_action": "Export URLs/citas/grounding queries y condiciones nativas"
+    },
+    {
+      "metric": "Backlinks y dominios de referencia completos",
+      "current_source": "Herramienta profesional no disponible",
+      "available": false,
+      "valid_substitute": "Muestras públicas solo descubren presencia",
+      "necessary_action": "Export existente de proveedor profesional si disponible; no comprar herramienta ahora"
+    }
+  ],
+  "domain_unfiltered_metrics": null,
+  "recommendation_order": "Both matrices completed before evaluating installation; no instrumentation enabled."
+}

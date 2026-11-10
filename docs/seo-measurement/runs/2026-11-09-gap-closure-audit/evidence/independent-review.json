@@ -1,0 +1,47 @@
+{
+  "reviewed_at_utc": "2026-11-10T02:52:14.564925+00:00",
+  "review_scope": "Independent review of audit deliverables; no production activity",
+  "tests": {
+    "scope": {
+      "passed": 12,
+      "failed": 0,
+      "log": "evidence/offline-scope-tests.txt"
+    },
+    "importer": {
+      "passed": 13,
+      "failed": 0,
+      "log": "evidence/offline-importer-tests.txt"
+    },
+    "fixture_note": "Synthetic fixtures; not observed Sollahms performance"
+  },
+  "checks": {
+    "json_syntax": "pass",
+    "markdown_relative_links": "pass at review time",
+    "code_source_sha256": {
+      "checked": 77,
+      "mismatches": []
+    },
+    "drive_sanitized_hashes": {
+      "checked": 7,
+      "mismatches": []
+    },
+    "ai_csv_observations": 0,
+    "ai_operation_slots": 60,
+    "ai_sources_hashes": "pass five entries",
+    "ai_visibility_nulls": "pass",
+    "observability_summary": 129,
+    "observability_series_truncation": 38,
+    "http_requests_not_visits": "pass explicitly delimited",
+    "transition_day_not_used_for_before_after": "pass",
+    "dns_not_active_property_proof": "pass",
+    "no_private_source_originals": "pass reviewed metadata/sanitized summaries only",
+    "no_secret_or_lead_pii_patterns": "pass; public commercial phone and public profile URLs intentionally in external audit",
+    "individual_fiche_html_not_audited": "pass source inventory and live allowlist",
+    "tracked_diff_outside_new_run": "none at review time"
+  },
+  "findings": [],
+  "limitations": [
+    "Root report/official source list/validation were still being completed when review began. Final diff/production readback/commit/push remain root checks.",
+    "Privacy pattern inspection is bounded; does not certify organizational accounts or data absence."
+  ]
+}

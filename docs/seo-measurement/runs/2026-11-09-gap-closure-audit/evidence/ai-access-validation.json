@@ -1,0 +1,21 @@
+{
+  "checked_at_utc": "2026-11-10T02:47:12Z",
+  "validation_kind": "offline_ai_package_validation",
+  "checks": {
+    "observations_csv_header_exact_v2": true,
+    "observations_csv_data_rows": 0,
+    "operations_first_wave_rows": 60,
+    "unique_platform_prompt_pairs": 60,
+    "prompts_exactly_match_v2": true,
+    "prompts_contain_no_sollahms_brand": true,
+    "blocked_operations_have_no_product_attempt": true,
+    "all_visibility_rates_null": true,
+    "protocol_v2_byte_preserved_from_t0": true,
+    "prompts_v2_byte_preserved_from_t0": true,
+    "plan_v2_byte_preserved_from_t0": true,
+    "existing_scope_guard_command_passed": true
+  },
+  "scope_guard_output": "ai-access-guard-summary.json",
+  "evidence_caveat": "These are offline structural validations, not consumer AI visibility measurements.",
+  "privacy_rule": "Current user prohibition on saving private account responses overrides historical protocol local-original guidance."
+}

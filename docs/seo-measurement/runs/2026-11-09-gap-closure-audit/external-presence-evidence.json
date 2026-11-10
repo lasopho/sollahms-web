@@ -1,0 +1,302 @@
+{
+  "audit_id": "sollahms-gap-closure-external-presence-20261109",
+  "scope_id": "corporate-education-v2",
+  "observed_at_utc": "2026-11-10T02:48:50Z",
+  "observed_at_santiago": "2026-11-09T23:48:50-03:00",
+  "method": {
+    "prior_work_recovered_first": true,
+    "public_search_provider": "search_service_web_run",
+    "direct_google_bing_serp": false,
+    "ai_consumer_measurement": false,
+    "professional_backlink_dataset_available_in_this_tool_surface": false,
+    "fiche_pages_requested": 0,
+    "public_allowlisted_pages_requested": 11,
+    "external_accounts_modified": false
+  },
+  "prior_work": [
+    {
+      "id": "H01",
+      "path": "docs/home-seo-20261025/research-and-decisions.md",
+      "date": "2026-10-25",
+      "status": "already_done_current_with_historical_limits",
+      "reused": "Brand/commercial intent research; Activo Más/Propital/Urbani/BlackRock examples; intentional omission of unverified profiles/address/reviews; no official ranking data.",
+      "sha256": "6c7f6765217730b45bd993381c81b1b9f33e02d9028d90da595c2523a99ccc52"
+    },
+    {
+      "id": "H02",
+      "path": "docs/seo-corporate-20261029/README.md",
+      "date": "2026-10-29",
+      "status": "already_done_current_with_historical_limits",
+      "reused": "Commercial/educational intent map; Tinsa/RGL/Arma Tu Patrimonio/Lucas Finanzas/ICARIA; personal LinkedIn profile found but corporate ownership not established; persistent entity graph and no invented sameAs.",
+      "sha256": "950deef6533e744fd30870d1f03541f474ae73b9594f5b3494738d85f4fd7c57"
+    },
+    {
+      "id": "H03",
+      "path": "docs/seo-measurement/reviews/2026-11-08-four-pages/lab-reuse.md",
+      "date": "2026-11-08",
+      "status": "current",
+      "reused": "AI Lab synthetic first editorial package for buying off-plan already recovered; no duplicate new content or Lab activation.",
+      "sha256": "0270ec64e2b7a583ed2c2225613641792a69a595954f4299ea58f14edbb42fef"
+    },
+    {
+      "id": "H04",
+      "path": "docs/seo-measurement/runs/2026-11-09-post-publication-t0/publication.json",
+      "date": "2026-11-09",
+      "status": "current",
+      "reused": "Frozen production identity and 11-page scope; HEAD/main not treated as live.",
+      "sha256": "8fcada04758ccbe84fbfcbaaf55b0ae2103e2f2adb2617284e63a0391a788731"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "evidence/external-search-samples.json",
+      "role": "14 individually attributable reproducible queries; queries, URLs, timestamps, empty results and search limits",
+      "sha256": "ea2dbb0a4f7bb0e5e8be5bbd0c2a3e16790e83502826abaedf0cc031a438c0d4"
+    },
+    {
+      "path": "evidence/external-entity-live.json",
+      "role": "11 live allowlisted HTML hashes, entity graph, public business contact and included-page/official-source links",
+      "sha256": "5dbb9bcda3718047f855e7ae63c0529f661f3d2ff9979550449813c8d20a2188"
+    },
+    {
+      "path": "evidence/external-live-measurement-markers.json",
+      "role": "Supplemental script sources and verification/analytics marker booleans; no tokens",
+      "sha256": "527b2bffbe7fbb88eb8caf6ab9eeab1d474538ea5878fa545c7fc92c855f9159"
+    },
+    {
+      "path": "evidence/external-urban-source-inventory.json",
+      "role": "Public runtime source URLs and 56 work evidence review dates; no project relationship extraction",
+      "sha256": "555023206ec3b1a728bbd9b571d90e84fc4828a1b526a6890c30cbfa41d162d5"
+    }
+  ],
+  "findings": [
+    {
+      "id": "EXT01",
+      "url": "https://sollahms.cl/",
+      "classification": "owned",
+      "status": "confirmed",
+      "evidence": "Live response entity extraction; Organization/WebSite/WebPage/Service share persistent IDs; public domain/name/logo/business phone/Chile area present.",
+      "ownership": "project publication record plus public domain",
+      "independent_earned": false,
+      "backlink_to_domain": null
+    },
+    {
+      "id": "EXT02",
+      "url": "https://cl.linkedin.com/in/luissandovalo",
+      "classification": "unverifiable_corporate_ownership",
+      "status": "partially_observed",
+      "source_type": "personal_social_profile",
+      "evidence": "Exact-brand search returns profile headline referencing Sollahms; direct open returned HTTP999, not an authenticated full profile inspection. Same profile was recorded 2026-10-29.",
+      "corporate_account_control": null,
+      "independent_earned": false,
+      "backlink_to_domain": null,
+      "source_query_ids": [
+        "Q01",
+        "Q03",
+        "Q07",
+        "Q08",
+        "Q10",
+        "Q14"
+      ],
+      "failure": "Direct open via search tool: (999) Unknown Status Code"
+    },
+    {
+      "id": "EXT03",
+      "url": "https://es.linkedin.com/posts/urbani_los-10-mejores-portales-inmobiliarios-en-activity-7369767395797782528-5jLF",
+      "classification": "third_party_hosted_self_identification",
+      "status": "confirmed",
+      "public_excerpt": "Fundador de Sollahms Gestión Inmobiliaria",
+      "evidence": "Public open lines34–40: company reference is commenter's profile headline under an Urbani post; the post is not an independent editorial recommendation of Sollahms.",
+      "independent_earned": false,
+      "backlink_to_domain": null,
+      "source_query_ids": [
+        "Q01",
+        "Q03",
+        "Q07",
+        "Q08",
+        "Q10"
+      ],
+      "content_relative_date_as_displayed": "1 año",
+      "publication_date_verified": null
+    },
+    {
+      "id": "EXT04",
+      "url": "https://es.linkedin.com/posts/sebasti%C3%A1n-quiroz-bugue%C3%B1o-621808127_liderazgo-trabajoenequipo-desarrolloprofesional-activity-7448147731279245312-4ubO",
+      "classification": "third_party_hosted_self_identification",
+      "status": "confirmed",
+      "evidence": "Public open lines68–73: same profile headline occurs in comments on a professional leadership post. It is not an independent review, company certification or endorsement.",
+      "independent_earned": false,
+      "backlink_to_domain": null,
+      "source_query_ids": [
+        "Q01",
+        "Q03",
+        "Q07",
+        "Q08",
+        "Q10"
+      ],
+      "content_relative_date_as_displayed": "7 meses",
+      "publication_date_verified": null
+    },
+    {
+      "id": "EXT05",
+      "url": "https://www.linkedin.com/pub/dir/Andres%2BLuis/%2B/cl-0-Chili-",
+      "classification": "directory_aggregator_duplicate",
+      "status": "partially_observed",
+      "evidence": "Search result repeats the personal profile/headline in an autogenerated people directory; direct open HTTP999. Not a separate corporate listing or independent authority.",
+      "duplicate_of": "EXT02",
+      "independent_earned": false,
+      "backlink_to_domain": null,
+      "source_query_ids": [
+        "Q01",
+        "Q03",
+        "Q07",
+        "Q08",
+        "Q10"
+      ],
+      "failure": "Direct open via search tool: (999) Unknown Status Code"
+    },
+    {
+      "id": "EXT06",
+      "url": "https://cl.linkedin.com/pub/dir/Luiz/Sandoval/cl-0-Chile",
+      "classification": "directory_aggregator_duplicate",
+      "status": "partially_observed",
+      "evidence": "Search result repeats the same personal profile/headline in another people directory; direct open HTTP999.",
+      "duplicate_of": "EXT02",
+      "independent_earned": false,
+      "backlink_to_domain": null,
+      "source_query_ids": [
+        "Q01",
+        "Q03",
+        "Q07",
+        "Q08",
+        "Q10"
+      ],
+      "failure": "Direct open via search tool: (999) Unknown Status Code"
+    }
+  ],
+  "entity_consistency": {
+    "status": "partially_observed",
+    "confirmed_owned_name": "Sollahms",
+    "external_name_variant": "Sollahms Gestión Inmobiliaria",
+    "name_variant_interpretation": "Descriptive extension in a self-identified personal profile, not a proven conflict or legal corporate name.",
+    "canonical_domain": "https://sollahms.cl/",
+    "public_business_whatsapp": "+56948502440",
+    "business_phone_consistent_across_11_whatsapp_links": true,
+    "external_business_phone_comparison": null,
+    "social_corporate_profiles_verified": null,
+    "sameAs_in_11_live_static_html": false,
+    "home_graph_ids": [
+      "https://sollahms.cl/#organization",
+      "https://sollahms.cl/#website",
+      "https://sollahms.cl/#webpage",
+      "https://sollahms.cl/#asesoria-inmobiliaria"
+    ],
+    "pages_with_json_ld": 9,
+    "pages_without_json_ld_in_live_static_html": [
+      "https://sollahms.cl/centro-orientacion.html",
+      "https://sollahms.cl/entorno-desarrollo-urbano.html"
+    ],
+    "catalogue_graph_note": "CollectionPage publisher uses inline Organization name/url rather than the persistent organization @id; no contradictory entity facts observed.",
+    "address_company_size_credentials_independence_inferred": false,
+    "actual_proven_external_contact_conflicts": [],
+    "interpretation_limit": "No matching external corporate phone/domain was exposed in the reviewed sources. That is unavailable comparison, not global consistency certification."
+  },
+  "nonbrand_discovery": {
+    "query_ids": [
+      "Q12",
+      "Q13"
+    ],
+    "overlap_with_prior_research": [
+      "Arma Tu Patrimonio",
+      "Lucas Finanzas",
+      "RGL"
+    ],
+    "additional_discovered_sources": [
+      "CAU Capital",
+      "Asciende Ya",
+      "Plus Property",
+      "BE Property",
+      "Crece Inmobiliario",
+      "Valorízate",
+      "RF Capital",
+      "CMF Educa",
+      "siniva.cl",
+      "tulugar.com"
+    ],
+    "interpretation": "Sampled competing/source URLs; no volumes, difficulty, stable Google/Bing positions or market-share metric inferred. No competitor projects audited."
+  },
+  "gaps": [
+    {
+      "classification": "already_covered",
+      "item": "Clear owned identity/service/audience/Chile and corporate educational navigation; existing structured entity graph and source-backed tools.",
+      "evidence_ids": [
+        "EXT01",
+        "H01",
+        "H02"
+      ]
+    },
+    {
+      "classification": "requires_update_when_evidence_changes",
+      "item": "Revalidate corporate control/current URL before any future social identity link or sameAs proposal; do not reuse personal-profile or directory URLs as corporate identity.",
+      "evidence_ids": [
+        "EXT02",
+        "EXT05",
+        "EXT06"
+      ]
+    },
+    {
+      "classification": "real_observed_absence_bounded",
+      "item": "No sameAs or outgoing standard social profile links in these 11 captured static HTML pages; no JSON-LD script in Centro/Entorno. These are bounded source observations, not proof of indexing or AI failure.",
+      "evidence_file": "evidence/external-entity-live.json"
+    },
+    {
+      "classification": "authority_opportunity",
+      "item": "Earned technical/educational contribution or attributable collaboration with relevant established industry/education sources, only after confirming real relationships and material. Existing comment-headline occurrences do not provide that evidence.",
+      "evidence_ids": [
+        "EXT03",
+        "EXT04"
+      ]
+    },
+    {
+      "classification": "distribution_opportunity",
+      "item": "Use verified existing controlled business channels, if supplied, to distribute already-published educational tools and correct identity details. No new content/profile creation in this task.",
+      "evidence_ids": [
+        "H01",
+        "H02"
+      ]
+    },
+    {
+      "classification": "unverifiable_with_current_tools",
+      "item": "Global corporate-social account inventory, independent media/association coverage, backlink counts/quality/history, and exact Google/Bing brand SERP positions remain unknown.",
+      "metric_values": null
+    }
+  ],
+  "official_guidance": [
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/organization",
+      "retrieved_at_utc": "2026-11-10T02:48:50Z",
+      "status": "confirmed",
+      "supports": "Use factual organization data; sameAs describes an applicable external page about the organization; results not guaranteed."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "retrieved_at_utc": "2026-11-10T02:48:50Z",
+      "status": "confirmed",
+      "supports": "Google says no special AI schema/files required and ignores llms.txt for Google Search; ordinary SEO remains applicable. This is not a claim about ChatGPT behavior."
+    }
+  ],
+  "important_limits": [
+    "No professional backlink dataset or authenticated social-account control was available; search is not a backlink audit.",
+    "No Google/Bing performance, official indexation or AI consumer result is derived from these public searches.",
+    "Empty brand/domain/Instagram/Facebook queries are search-bounded and do not prove global absence.",
+    "No finding was certified as outdated solely because a relative date was old; no real outdated corporate fact was proven.",
+    "No production files, schemas, profiles, backlinks, sitemaps, forms or deployment settings were changed."
+  ],
+  "actions_taken": {
+    "public_reads_only": true,
+    "production_mutations": false,
+    "new_schema_or_content": false,
+    "external_profile_creation": false,
+    "backlink_creation": false
+  }
+}

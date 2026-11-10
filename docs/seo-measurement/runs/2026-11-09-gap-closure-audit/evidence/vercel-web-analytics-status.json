@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-10T02:47:44.168865+00:00",
+  "method": "GET",
+  "endpoint": "/v1/query/web-analytics/visits/aggregate",
+  "parameters": {
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "by": [
+      "day",
+      "requestPath"
+    ],
+    "filter": "environment eq 'production' and requestPath in ('/','/proyectos.html','/agenda-asesoria.html','/contacto.html','/privacidad.html','/comparador-hipotecario.html','/trabaja-con-nosotros.html','/guia-hipotecaria.html','/cuando-comprar-propiedad.html','/centro-orientacion.html','/entorno-desarrollo-urbano.html')",
+    "since": "2026-10-10T03:00:00.000Z",
+    "until": "2026-11-09T02:59:59.999Z",
+    "limit": 100
+  },
+  "status": 400,
+  "provider_requests": 1,
+  "error": {
+    "code": "web_analytics_not_enabled",
+    "message": "Web Analytics is not enabled for this project"
+  },
+  "metrics": null,
+  "coverage": null,
+  "timezone": null,
+  "configuration_changed": false,
+  "interpretation": "Failure/absence of enabled service is not zero traffic."
+}
