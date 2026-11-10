@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-11-10T00:44:14.666Z",
+  "availableTools": {
+    "googleSearchConsole": false,
+    "bingWebmasterTools": false,
+    "googleAnalytics": false,
+    "directConsumerBrowserTools": false,
+    "vercelAnalytics": true,
+    "googleDriveSearch": true
+  },
+  "environment": {
+    "observationsCurrent": true,
+    "policyEnforced": true,
+    "measurementIdentityAvailable": false,
+    "newVercelReadRouteAndCredentialReady": true,
+    "searchAndConsumerDomainsNewlyAllowed": false
+  },
+  "drive": {
+    "queriesPerformed": 1,
+    "query": "sollahms",
+    "metadataResults": 8,
+    "identifiedMeasurementExports": 0,
+    "rawMetadataKeptOutOfRepository": true,
+    "limitation": "Only this targeted search and local inboxes were inspected; not an exhaustive claim about all private account files."
+  },
+  "analytics": {
+    "newCondition": "Vercel API network route and authorized credential now available; phase3 had no configured secrets.",
+    "localValidationRejections": 1,
+    "localValidationCorrection": "Unsupported limit1000 rejected before provider call; corrected to provider maximum100.",
+    "providerRequests": 1,
+    "operation": "GET /v1/query/web-analytics/visits/aggregate",
+    "status": 400,
+    "code": "web_analytics_not_enabled",
+    "message": "Web Analytics is not enabled for this project",
+    "metrics": null,
+    "changedConfiguration": false,
+    "furtherAttempts": 0,
+    "request": {
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+      "by": [
+        "day",
+        "requestPath"
+      ],
+      "filter": "environment eq 'production' and requestPath in ('/','/proyectos.html','/agenda-asesoria.html','/contacto.html','/privacidad.html','/comparador-hipotecario.html','/trabaja-con-nosotros.html','/guia-hipotecaria.html','/cuando-comprar-propiedad.html','/centro-orientacion.html','/entorno-desarrollo-urbano.html')",
+      "since": "2026-10-10T03:00:00.000Z",
+      "until": "2026-11-09T02:59:59.999Z",
+      "limit": 100
+    },
+    "returnedSourceTimezone": null,
+    "returnedCoverage": null,
+    "periodNote": "Request instants only. No provider report/date labels or coverage were returned; day grouping may adjust bounds and is not certified as Santiago report coverage."
+  },
+  "production": {
+    "checkedAt": "2026-11-10T00:44:14.666Z",
+    "aliases": [
+      {
+        "alias": "sollahms.cl",
+        "deploymentId": "dpl_655iVXDar2r8kipVSLhAtGCPYbT4",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "redirectStatusCode": null
+      },
+      {
+        "alias": "www.sollahms.cl",
+        "deploymentId": "dpl_655iVXDar2r8kipVSLhAtGCPYbT4",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308
+      }
+    ]
+  },
+  "noRequestsRepeated": [
+    "Google Search Console",
+    "Bing Webmaster Tools",
+    "ChatGPT Search",
+    "Gemini",
+    "Perplexity",
+    "Google AI Overviews",
+    "Google AI Mode"
+  ],
+  "historicalAccessEvidence": "../../2026-11-08-phase2/evidence/access-probes.json"
+}

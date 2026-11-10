@@ -1,0 +1,130 @@
+{
+  "scope_id": "corporate-education-v2",
+  "t0": {
+    "local": "2026-11-09T20:11:23-03:00",
+    "timezone": "America/Santiago",
+    "utc": "2026-11-09T23:11:23Z",
+    "instant_classification": "timestamps strictly earlier than T0 are pre; strictly later post; T0 itself publication event",
+    "date_reporting_rule": "2026-11-09 is the change day. Exclude it from complete-date before/after windows. Do not label its pre-T0 portion as a full pre day or post-T0 portion as a full post day."
+  },
+  "checkpoints": [
+    {
+      "label": "T+7",
+      "scheduled_observation_local": "2026-11-16T20:11:23-03:00",
+      "last_calendar_complete_date_santiago": "2026-11-15",
+      "maximum_calendar_complete_post_dates_santiago": 6,
+      "potential_post_date_range": [
+        "2026-11-10",
+        "2026-11-15"
+      ],
+      "actual_source_complete_coverage": null
+    },
+    {
+      "label": "T+14",
+      "scheduled_observation_local": "2026-11-23T20:11:23-03:00",
+      "last_calendar_complete_date_santiago": "2026-11-22",
+      "maximum_calendar_complete_post_dates_santiago": 13,
+      "potential_post_date_range": [
+        "2026-11-10",
+        "2026-11-22"
+      ],
+      "actual_source_complete_coverage": null
+    },
+    {
+      "label": "T+28",
+      "scheduled_observation_local": "2026-12-07T20:11:23-03:00",
+      "last_calendar_complete_date_santiago": "2026-12-06",
+      "maximum_calendar_complete_post_dates_santiago": 27,
+      "potential_post_date_range": [
+        "2026-11-10",
+        "2026-12-06"
+      ],
+      "actual_source_complete_coverage": null
+    }
+  ],
+  "reference_candidates_not_measurements": [
+    {
+      "label": "30_complete_pre_vs_30_complete_post",
+      "pre_start": "2026-10-10",
+      "pre_end": "2026-11-08",
+      "excluded_change_date": "2026-11-09",
+      "post_start": "2026-11-10",
+      "post_end": "2026-12-09",
+      "complete_dates_required": 60,
+      "calendar_span_dates_including_excluded_change_day": 61,
+      "earliest_calendar_time_all_post_days_have_ended": "2026-12-10T00:00:00-03:00",
+      "actual_coverage": null,
+      "comparison_result": null,
+      "eligibility": "Not currently measurable. Needs real source dates, exact included-page filter and same property/country/device/metric/timezone. Provider finality may lag end of calendar day."
+    },
+    {
+      "label": "90_complete_pre_vs_90_complete_post",
+      "pre_start": "2026-08-11",
+      "pre_end": "2026-11-08",
+      "excluded_change_date": "2026-11-09",
+      "post_start": "2026-11-10",
+      "post_end": "2027-02-07",
+      "complete_dates_required": 180,
+      "calendar_span_dates_including_excluded_change_day": 181,
+      "earliest_calendar_time_all_post_days_have_ended": "2027-02-08T00:00:00-03:00",
+      "actual_coverage": null,
+      "comparison_result": null,
+      "eligibility": "Not currently measurable. Calendar plan is not a forecast of statistical significance or provider availability."
+    }
+  ],
+  "source_dates": {
+    "google_search_console": {
+      "standard_daily_date_basis": "Pacific Time / America/Los_Angeles; retain provider-native literal dates and confirm manifest for the actual export",
+      "t0_in_pacific_for_boundary_reasoning_only": "2026-11-09T15:11:23-08:00",
+      "change_date_in_standard_daily_report": "2026-11-09",
+      "last_full_pre_date_if_standard_basis_confirmed": "2026-11-08",
+      "first_full_post_date_if_standard_basis_confirmed": "2026-11-10",
+      "do_not": "Do not transform exported date labels into Santiago dates, split daily aggregate rows by assumed hourly traffic, or mix daily timezones. Source completeness/finality is unknown until export."
+    },
+    "bing": {
+      "timezone": null,
+      "complete_date_cutoffs": null,
+      "required_evidence": "Timezone/date definition, exact property and final complete day from real Bing export or authorized interface. Apply T0 in that source basis only after those facts are known."
+    },
+    "analytics_and_conversions": {
+      "property_timezone": null,
+      "coverage": null,
+      "rule": "Use existing property's timezone; distinguish timestamped events from date aggregates. Do not adopt host timezone."
+    }
+  },
+  "existing_guard_compatibility": {
+    "source": "scripts/seo_measurement.py compare constructs adjacent current and previous date windows; seo_scope.py wraps it with scope proof",
+    "guard_requirement": "60 consecutive complete source dates for adjacent 30-vs-30; 180 for adjacent 90-vs-90. Keep unchanged.",
+    "t0_gap_conflict": "Pre/post candidates above exclude change day, so they are not adjacent. Feeding them directly to existing compare would include change day or fail missing coverage; do not bypass completeness guard or fabricate that day.",
+    "current_action": "Record both planned windows separately with null results. Reuse import-performance, segment and bind-daily for real data. When coverage exists, review an explicit change-day-aware comparison path before computing the publication delta; do not present the generic adjacent-window output as T0 attribution. No importer rebuild is needed in this run."
+  },
+  "ia_protocol_v2": {
+    "planned_slots": 180,
+    "design": "12 prompts x 5 consumer surfaces x 3 distinct dates",
+    "offset_origin": "first legitimate valid consumer-interface access, not publication T0",
+    "offset_days": [
+      0,
+      7,
+      14
+    ],
+    "t0_checkpoint_use": "Review access and evidence status at publication T+7/14/28; do not silently rewrite the v2 plan's origin or execute blocked slots.",
+    "unmeasured_value": null,
+    "zero_denominator_rates": null,
+    "restrictions": "No brand in prompts, no project-fiche scoring, no generation API substitute, no AI Lab generation, no claim from one isolated output."
+  },
+  "null_policy": {
+    "actual_historical_days": null,
+    "actual_post_days": null,
+    "impressions": null,
+    "clicks": null,
+    "ctr": null,
+    "average_position": null,
+    "growth_percentage": null,
+    "causal_attribution": null,
+    "note": "Calendar candidate counts are not actual data coverage. Lack of source access/export yields unknown, not zero."
+  },
+  "document_type": "planned_windows_not_measurement",
+  "automatic_tasks_created": false,
+  "source_zone_application": "Calendar candidates are in Santiago only. Use native GSC daily dates unchanged (standard PT, verify actual export). Bing/Analytics dates and boundary derivation stay unbound until native timezone is documented. Do not infer source completeness from Santiago midnight.",
+  "observation_controls_managed_externally": true
+}

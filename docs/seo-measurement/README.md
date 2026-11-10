@@ -1,7 +1,11 @@
 # Medición SEO y GEO de Sollahms — continuidad vigente
 
 **Política activa:** [active-policy.json](active-policy.json), alcance `corporate-education-v2`.
-**Último informe:** [corrección permanente del alcance — 8/11/2026](runs/2026-11-08-scope-v2/report.md).
+**Último informe:** [T0 post-publicación — 9/11/2026](runs/2026-11-09-post-publication-t0/report.md).
+
+**Producción vigente:** `dpl_655iVXDar2r8kipVSLhAtGCPYbT4`, publicada y verificada el **09/11/2026 20:11:23 America/Santiago**. [Registro formal](runs/2026-11-09-post-publication-t0/publication.json). No inferir producción desde `main` ni desde los estados de pausa de informes históricos.
+
+**Estado de medición:** cambio publicado y verificado; impacto SEO/GEO todavía no medido. [T0 y ventanas](runs/2026-11-09-post-publication-t0/temporal-plan.json); [recursos pendientes](runs/2026-11-09-post-publication-t0/NEXT-IMPORT.md).
 
 Todas las fichas individuales de proyectos quedan excluidas permanentemente de estrategia, auditorías estratégicas, oportunidades, optimización, prioridades y evaluación de resultados de IA. Se preserva su funcionamiento técnico. Las ocho candidatas de fases 2/3 y sus traspasos/correcciones al Lab dejan de ser tareas activas. No se requiere confirmación de inventario para priorizar SEO/GEO.
 
