@@ -1,0 +1,120 @@
+{
+  "record": "Attribution preview gates — 2026-11-11",
+  "baseCommit": "6d818f38a26e21e7e5a7a518fb986aa962111f8c",
+  "branch": "codex/attribution-first-party-20261111",
+  "priorDeployment": "dpl_47hdEYK2Gz7Z9qLaE3ahoAwR4yPa",
+  "deployment": "dpl_dsduPwMeC8xbVBMwkX8xwMzp3L6M",
+  "url": "https://project-wrapp-k1nd0u2z9-lsandoval2-8260s-projects.vercel.app",
+  "target": "preview",
+  "state": "READY",
+  "runtimeChanged": false,
+  "sourceFiles": 1661,
+  "verifiedRuntimeFiles": 1658,
+  "previewEnv": {
+    "key": "CONTACT_DELIVERY_MODE",
+    "value": "resend",
+    "target": [
+      "preview"
+    ],
+    "id": "a5xNTMBCIGj1Er1R"
+  },
+  "existingEnvMetadataPreserved": true,
+  "resendKey": {
+    "preexistingPreviewAssignment": true,
+    "valueRead": false,
+    "added": false,
+    "copied": false,
+    "modified": false
+  },
+  "production": {
+    "apex": "dpl_3LEibLxqAhX4bgak99HKNXNyhXuW",
+    "www": "dpl_3LEibLxqAhX4bgak99HKNXNyhXuW",
+    "variablesModified": false
+  },
+  "tests": {
+    "existing": 73,
+    "added": 3,
+    "passed": 76,
+    "failed": 0
+  },
+  "browser": {
+    "formsUiAndPreviewGuardPassed": 7,
+    "totalForms": 7,
+    "acquisitionStorageObserved": false,
+    "storageScenarios": {
+      "direct": "blocked",
+      "utmNavigation": "blocked",
+      "controlledReferrer": "blocked"
+    },
+    "realEmailsSent": 0,
+    "consoleErrorsObserved": 0
+  },
+  "resendPlan": "no confirmado",
+  "privacyReview": "revisión jurídica/privacidad pendiente",
+  "candidateReadyForReleaseReview": false,
+  "releaseGate": "blocked_browser_acquisition_observation",
+  "build": [
+    {
+      "date": 1794426921450,
+      "text": "Running build in Washington, D.C., USA (East) – iad1"
+    },
+    {
+      "date": 1794426921450,
+      "text": "Build machine configuration: 4 cores, 8 GB (Standard Build Machine)"
+    },
+    {
+      "date": 1794426921461,
+      "text": "Retrieving list of deployment files..."
+    },
+    {
+      "date": 1794426921479,
+      "text": "Skipping build cache, deployment was triggered without cache."
+    },
+    {
+      "date": 1794426921912,
+      "text": "Downloading 1661 deployment files..."
+    },
+    {
+      "date": 1794426924197,
+      "text": "Running \"vercel build\""
+    },
+    {
+      "date": 1794426924205,
+      "text": "Vercel CLI 65.14.0"
+    },
+    {
+      "date": 1794426924987,
+      "text": "Skipping \"install\" command..."
+    },
+    {
+      "date": 1794426925589,
+      "text": "{\"previewOnly\":true,\"verifiedRuntimeFiles\":1658,\"configUnchanged\":true,\"providersReadOnlyInPreview\":true}"
+    },
+    {
+      "date": 1794426927371,
+      "text": "Build Completed in /vercel/output [2s]"
+    },
+    {
+      "date": 1794426927390,
+      "text": "Deploying outputs..."
+    },
+    {
+      "date": 1794426935242,
+      "text": "Deployment completed"
+    },
+    {
+      "date": 1794426935247,
+      "text": "Creating build cache..."
+    },
+    {
+      "date": 1794426935833,
+      "text": "Skipping cache upload because no files were prepared"
+    }
+  ],
+  "previewProtection": {
+    "unauthenticatedStatus": 302,
+    "redirectOrigin": "https://vercel.com",
+    "robots": "noindex",
+    "protectionUnchanged": true
+  }
+}
