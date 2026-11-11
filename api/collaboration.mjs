@@ -1,8 +1,9 @@
+import { requestAcquisition, acquisitionTags } from '../lib/acquisition-server.mjs';
 import {validateCollaboration, normalizeCollaboration, collaborationLines, COLLABORATION_TYPES} from '../assets/js/collaboration-fields.mjs';
 import { readOperationKey } from '../lib/form-operation-server.mjs';
 
 
-const allowed = new Set(['tipo','correo','telefono','consent','website','startedAt']);
+const allowed = new Set(['tipo','correo','telefono','consent','website','startedAt','acquisition']);
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
 const escape = value => value.replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
 const uncertain = () => json({ ok: false, code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Tus datos siguen aquí. Reintenta sin cambiarlos o escribe a contacto@sollahms.cl para verificar la solicitud.' }, 502);
@@ -24,7 +25,7 @@ export function createCollaborationHandler({ fetchImpl = (...args) => fetch(...a
       const bytes = new Uint8Array(size); let offset = 0; for (const chunk of chunks) { bytes.set(chunk,offset); offset += chunk.length; }
       body = JSON.parse(new TextDecoder('utf-8', {fatal:true}).decode(bytes));
     } catch { return json({ error: 'No pudimos leer la solicitud. Revisa el formulario.' }, 400); }
-    if (!body || Array.isArray(body) || typeof body !== 'object' || Object.keys(body).some(k => !allowed.has(k)) || Object.entries(body).some(([k,v]) => !['consent','startedAt'].includes(k) && typeof v !== 'string')) return json({ error: 'Revisa los datos del formulario.' }, 400);
+    if (!body || Array.isArray(body) || typeof body !== 'object' || Object.keys(body).some(k => !allowed.has(k)) || Object.entries(body).some(([k,v]) => !['consent','startedAt','acquisition'].includes(k) && typeof v !== 'string')) return json({ error: 'Revisa los datos del formulario.' }, 400);
     if (body.website?.trim()) return json({ error: 'No pudimos validar la solicitud.' }, 400);
     const errors=validateCollaboration(body);
     if (Object.keys(errors).length) return json({ error: 'Revisa los campos indicados.', fieldErrors: errors }, 400);
@@ -39,6 +40,8 @@ export function createCollaborationHandler({ fetchImpl = (...args) => fetch(...a
     const data=normalizeCollaboration(body), lines=collaborationLines(data);
     const subject=COLLABORATION_TYPES[data.tipo];
     const email={from:'Sollahms Web <formularios@forms.sollahms.cl>',to:['contacto@sollahms.cl'],...(data.correo?{reply_to:data.correo}:{}),subject,text:lines.join('\n'),html:'<!doctype html><html lang="es"><body><h1>'+subject+'</h1><p style="white-space:pre-wrap">'+escape(lines.join('\n'))+'</p></body></html>'};
+    const acquisition = requestAcquisition(body.acquisition, operation, request);
+    email.tags = acquisitionTags(acquisition);
     try {
       const response = await fetchImpl('https://api.resend.com/emails', {method:'POST',headers:{Authorization:'Bearer '+getApiKey().trim(),'Content-Type':'application/json','Idempotency-Key':'collaboration/'+operation.key},body:JSON.stringify(email),signal:AbortSignal.timeout(10_000)});
       if (response.status === 409) {
@@ -48,7 +51,9 @@ export function createCollaborationHandler({ fetchImpl = (...args) => fetch(...a
       if (!response.ok) return uncertain();
       const accepted = await response.json();
       if (typeof accepted?.id !== 'string' || !accepted.id.trim()) return uncertain();
-      return json({ok:true,providerAccepted:true,deliveryConfirmed:false});
+      const receipt = json({ok:true,providerAccepted:true,deliveryConfirmed:false});
+      receipt.headers.set('X-Sollahms-Request-Id', acquisition.request_id);
+      return receipt;
     } catch { return uncertain(); }
   }};
 }

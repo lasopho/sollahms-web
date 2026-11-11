@@ -1,3 +1,4 @@
+import { requestAcquisition, acquisitionTags } from '../lib/acquisition-server.mjs';
 import dataset from '../data/hipotecario.json' with { type: 'json' };
 import catalogue from '../data/proyectos.json' with { type: 'json' };
 import {validateCommercialFields, normalizedCommercialFields} from '../assets/js/commercial-fields.mjs';
@@ -5,7 +6,7 @@ import { mortgageSummaryLines, validateMortgageLead, validFormTiming } from '../
 import { createOfficialUfService } from '../lib/official-uf.mjs';
 import { getUfStatus } from '../assets/js/mortgage-data.mjs';
 import { resolveProjectIdentity } from '../assets/js/project-identity.mjs';
-import { operationFingerprint, readOperationKey } from '../lib/form-operation-server.mjs';
+import { readOperationKey } from '../lib/form-operation-server.mjs';
 import { createCrmLeadClient, WEB_CRM_CONSENT } from '../lib/crm-lead-client.mjs';
 // CONTACT_PUBLIC_CATALOGUE_IMPORT_START
 import { projectPublicSafeCatalogue } from '../lib/public-project-view.mjs';
@@ -20,7 +21,7 @@ const JSON_HEADERS = {
   'Cache-Control': 'no-store',
 };
 const TEXT_FIELDS = ['nombre', 'correo', 'telefono', 'rut', 'mensaje', 'website', 'proyecto'];
-const ALLOWED_FIELDS = [...TEXT_FIELDS, 'mortgage', 'consent', 'startedAt'];
+const ALLOWED_FIELDS = [...TEXT_FIELDS, 'mortgage', 'consent', 'startedAt', 'acquisition'];
 
 function json(data, status, extraHeaders = {}) {
   return new Response(JSON.stringify(data), {
@@ -204,6 +205,7 @@ export function createContactHandler({
         }
         return json({ ok: true, persisted: true }, 200);
       }
+      const acquisition = requestAcquisition(body.acquisition, operation, request);
       const key = getApiKey()?.trim();
       if (!key) return json({ error: 'No pudimos enviar el mensaje. Inténtalo más tarde.' }, 503);
       // The server owns CLP conversion too; a visitor never supplies a UF rate.
@@ -237,14 +239,13 @@ export function createContactHandler({
       const email = {
         from: 'Sollahms Web <formularios@forms.sollahms.cl>', to: ['contacto@sollahms.cl'],
         reply_to: correo, subject: safeSubject(asunto), html, text,
+        tags: acquisitionTags(acquisition),
       };
-      // Provider-owned storage deduplicates across serverless instances. Legacy
-      // callers get a business-content key for 24h; changing receipt time or UF
-      // may safely conflict, but must never create a fresh key and another mail.
-      const legacyMortgage = body.mortgage ? { ...body.mortgage } : null;
-      if (legacyMortgage) delete legacyMortgage.simulatedAt;
+      // Current forms preserve their operation token across retries. Legacy callers
+      // without a token receive a UUID and may reuse acquisition.request_id explicitly.
+      // Never derive a new attribution identifier from someone's contact details.
       const idempotencyKey = operation.key ? 'contact/' + operation.key
-        : 'contact/legacy/' + operationFingerprint({ fields, mortgage: legacyMortgage, consent: body.consent ?? null });
+        : 'contact/request/' + acquisition.request_id;
       try {
         const response = await fetchImpl('https://api.resend.com/emails', {
           method: 'POST',
@@ -261,7 +262,7 @@ export function createContactHandler({
         const accepted = await response.json();
         if (!accepted || typeof accepted.id !== 'string' || !accepted.id.trim()) throw new Error('Email provider did not confirm acceptance');
         // CONTACT_PROVIDER_ACCEPTANCE_START
-        return json({ ok: true, providerAccepted: true, deliveryConfirmed: false }, 200);
+        return json({ ok: true, providerAccepted: true, deliveryConfirmed: false }, 200, { 'X-Sollahms-Request-Id': acquisition.request_id });
         // CONTACT_PROVIDER_ACCEPTANCE_END
       } catch {
         return json({ code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Conserva los mismos datos al reintentar o escribe a contacto@sollahms.cl.' }, 502);

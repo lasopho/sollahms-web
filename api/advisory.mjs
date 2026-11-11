@@ -1,10 +1,11 @@
+import { requestAcquisition, acquisitionTags } from '../lib/acquisition-server.mjs';
 import projects from '../data/advisory-projects.json' with { type: 'json' };
 import { readOperationKey } from '../lib/form-operation-server.mjs';
 import {validateCommercialFields, normalizedCommercialFields} from '../assets/js/commercial-fields.mjs';
 
 const requests={asesoria:'Asesoría',informacion:'Información',cotizacion:'Cotización',llamada:'Llamada'};
 const goals = { '': 'Sin especificar', patrimonio: 'Aumentar mi patrimonio', diversificar: 'Diversificar mis inversiones', propiedad: 'Una propiedad en particular', orientacion: 'Aún lo estoy definiendo' };
-const allowed = new Set(['nombre', 'rut', 'medio', 'solicitud', 'correo', 'telefono', 'objetivo', 'mensaje', 'consent', 'website', 'startedAt', 'proyecto']);
+const allowed = new Set(['nombre', 'rut', 'medio', 'solicitud', 'correo', 'telefono', 'objetivo', 'mensaje', 'consent', 'website', 'startedAt','acquisition', 'proyecto']);
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
 const escape = value => value.replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
 const uncertain = () => json({ ok: false, code: 'contact_outcome_unknown', error: 'No pudimos confirmar el envío. Tus datos siguen aquí. Reintenta sin cambiarlos o escribe a contacto@sollahms.cl para verificar la solicitud.' }, 502);
@@ -26,7 +27,7 @@ export function createAdvisoryHandler({ fetchImpl = (...args) => fetch(...args),
       const bytes = new Uint8Array(size); let offset = 0; for (const chunk of chunks) { bytes.set(chunk,offset); offset += chunk.length; }
       body = JSON.parse(new TextDecoder('utf-8', {fatal:true}).decode(bytes));
     } catch { return json({ error: 'No pudimos leer la solicitud. Revisa el formulario.' }, 400); }
-    if (!body || Array.isArray(body) || typeof body !== 'object' || Object.keys(body).some(k => !allowed.has(k)) || Object.entries(body).some(([k,v]) => !['consent','startedAt'].includes(k) && typeof v !== 'string')) return json({ error: 'Revisa los datos del formulario.' }, 400);
+    if (!body || Array.isArray(body) || typeof body !== 'object' || Object.keys(body).some(k => !allowed.has(k)) || Object.entries(body).some(([k,v]) => !['consent','startedAt','acquisition'].includes(k) && typeof v !== 'string')) return json({ error: 'Revisa los datos del formulario.' }, 400);
     if (body.website?.trim()) return json({ error: 'No pudimos validar la solicitud.' }, 400);
     const errors=validateCommercialFields(body);
     const {nombre,rut,correo,telefono}=normalizedCommercialFields(body);
@@ -49,6 +50,8 @@ export function createAdvisoryHandler({ fetchImpl = (...args) => fetch(...args),
     if (body.proyecto) lines.push('Proyecto: '+projectIndex[body.proyecto], 'Identificador: '+body.proyecto);
     lines.push('Mensaje: '+(mensaje || 'Sin mensaje adicional.'), '', 'Consentimiento: autorizado para responder esta solicitud e identificar al interesado y dar continuidad a la evaluación solicitada conforme a la política de privacidad. Sin autorización de marketing.', 'Esta solicitud no reserva una propiedad ni confirma una cita.');
     const email = { from:'Sollahms Web <formularios@forms.sollahms.cl>', to:['contacto@sollahms.cl'], subject:'Solicitud de asesoría desde Sollahms', text:lines.join('\n'), html:'<!doctype html><html lang="es"><body><h1>Solicitud de asesoría</h1><p style="white-space:pre-wrap">'+escape(lines.slice(2).join('\n'))+'</p></body></html>', reply_to:correo };
+    const acquisition = requestAcquisition(body.acquisition, operation, request);
+    email.tags = acquisitionTags(acquisition);
     try {
       const response = await fetchImpl('https://api.resend.com/emails', {method:'POST',headers:{Authorization:'Bearer '+getApiKey().trim(),'Content-Type':'application/json','Idempotency-Key':'advisory/'+operation.key},body:JSON.stringify(email),signal:AbortSignal.timeout(10_000)});
       if (response.status === 409) {
@@ -58,7 +61,9 @@ export function createAdvisoryHandler({ fetchImpl = (...args) => fetch(...args),
       if (!response.ok) return uncertain();
       const accepted = await response.json();
       if (typeof accepted?.id !== 'string' || !accepted.id.trim()) return uncertain();
-      return json({ok:true,providerAccepted:true,deliveryConfirmed:false});
+      const receipt = json({ok:true,providerAccepted:true,deliveryConfirmed:false});
+      receipt.headers.set('X-Sollahms-Request-Id', acquisition.request_id);
+      return receipt;
     } catch { return uncertain(); }
   }};
 }

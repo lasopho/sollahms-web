@@ -1,0 +1,74 @@
+{
+  "automatedTests": 73,
+  "passed": 73,
+  "failed": 0,
+  "suites": [
+    "acquisition.test.mjs",
+    "orientation-20261031.mjs",
+    "required-commercial-fields.test.mjs",
+    "project-request.test.mjs",
+    "collaboration.test.mjs"
+  ],
+  "realEmailsSent": 0,
+  "crmActivated": false,
+  "localBrowserStatus": "blocked before launching Chromium: process_singleton socket Operation not permitted",
+  "browserTestScript": "tests/acquisition-browser.mjs",
+  "previewStatus": "READY",
+  "productionDeployment": "dpl_3LEibLxqAhX4bgak99HKNXNyhXuW",
+  "previewDeployment": "dpl_47hdEYK2Gz7Z9qLaE3ahoAwR4yPa",
+  "previewUrl": "https://project-wrapp-kfp307bu9-lsandoval2-8260s-projects.vercel.app",
+  "previewUnauthenticatedStatus": 302,
+  "previewUnauthenticatedRedirect": "https://vercel.com/sso-api",
+  "verifiedRuntimeFilesAtBuild": 1658,
+  "productionAliasesUnchanged": [
+    "sollahms.cl",
+    "www.sollahms.cl"
+  ],
+  "browserFormsReviewed": 7,
+  "browserAcquisitionStorageInspection": "not observed; capture/replay verified by automated module tests",
+  "realProviderAcceptance": "not tested",
+  "browserCases": [
+    {
+      "path": "/",
+      "form": "advisory",
+      "observed": "preview_read_only",
+      "synthetic": true
+    },
+    {
+      "path": "/contacto.html",
+      "form": "advisory",
+      "observed": "preview_read_only",
+      "synthetic": true
+    },
+    {
+      "path": "/agenda-asesoria.html",
+      "form": "advisory",
+      "observed": "preview_read_only",
+      "synthetic": true
+    },
+    {
+      "path": "/trabaja-con-nosotros.html",
+      "form": "inmobiliaria",
+      "observed": "preview_read_only",
+      "synthetic": true
+    },
+    {
+      "path": "/trabaja-con-nosotros.html",
+      "form": "persona",
+      "observed": "preview_read_only",
+      "synthetic": true
+    },
+    {
+      "path": "/centro-orientacion.html",
+      "form": "orientation-contact",
+      "observed": "contact_configuration_unavailable",
+      "synthetic": true
+    },
+    {
+      "path": "/comparador-hipotecario.html",
+      "form": "mortgage-contact",
+      "observed": "contact_configuration_unavailable",
+      "synthetic": true
+    }
+  ]
+}
