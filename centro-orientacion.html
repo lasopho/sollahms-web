@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://sollahms.cl/centro-orientacion.html">
 <link rel="icon" type="image/svg+xml" href="/assets/branding/favicon.svg">
 
-<link rel="stylesheet" href="/assets/css/orientacion.css"><link rel="stylesheet" href="/assets/css/sollahms-brand.css"><link rel="stylesheet" href="/assets/css/sollahms-theme.css"><script defer src="/assets/js/scroll-presence.js"></script><script type="module" src="/assets/js/orientacion.mjs"></script>
+<link rel="stylesheet" href="/assets/css/orientacion.css"><link rel="stylesheet" href="/assets/css/sollahms-brand.css"><link rel="stylesheet" href="/assets/css/sollahms-theme.css"><script defer src="/assets/js/scroll-presence.js"></script><script defer src="/assets/js/project-detail.js"></script><script type="module" src="/assets/js/orientacion.mjs"></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sollahms">
 <meta property="og:locale" content="es_CL">
@@ -28,7 +28,29 @@
 </head>
 <body>
 <a class="skip" href="#contenido-principal">Saltar al contenido</a>
-<header class="header"><nav class="wrap nav" aria-label="Navegación principal"><a href="/" class="brand">Sollahms<span>.</span></a><div class="nav-links"><a href="/proyectos.html">Portafolio</a><a href="/comparador-hipotecario.html">Comparador</a><a href="#asesoria" class="button small">Conversemos →</a></div></nav></header>
+<header id="orientation-header" class="header" data-scroll-static>
+<nav class="wrap orientation-header__bar" aria-label="Navegación principal">
+<a class="sollahms-brand" href="/" aria-label="Sollahms"><img class="sollahms-brand__image" src="/assets/branding/sollahms-logo.svg" width="114" height="22" alt="" decoding="async"></a>
+<div class="orientation-header__links">
+<a href="/#expertise">Expertise</a>
+<a href="/proyectos.html">Asset Portafolio</a>
+<a href="/guia-hipotecaria.html">Guía hipotecaria</a>
+<a href="/contacto.html">Contacto</a>
+</div>
+<div class="orientation-header__actions">
+<a class="orientation-header__advisory" href="#asesoria">Solicitar asesoría <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></a>
+<button type="button" class="menu-toggle" aria-label="Abrir menú de navegación" aria-controls="mobile-menu" aria-expanded="false"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+</div>
+</nav>
+<div id="mobile-menu" hidden>
+<nav class="wrap orientation-header__mobile" aria-label="Navegación móvil">
+<a href="/#expertise">Expertise</a>
+<a href="/proyectos.html">Asset Portafolio</a>
+<a href="/guia-hipotecaria.html">Guía hipotecaria</a>
+<a href="/contacto.html">Contacto</a>
+</nav>
+</div>
+</header>
 <main id="contenido-principal" tabindex="-1" data-scroll-static>
 <section class="hero"><div class="wrap hero-grid"><div><p class="eyebrow">CENTRO DE ORIENTACIÓN INMOBILIARIA</p><h1>Tu próximo hogar.<br><em>Una decisión informada.</em></h1><p class="intro">De las primeras preguntas a la entrega de llaves. Ordena tus números, entiende tus opciones y avanza a tu ritmo.</p><div class="actions"><a class="button gold" href="#ruta">Encontrar mi punto de partida →</a><a class="text-link" href="#recorrido">Ver el proceso de compra →</a></div><p class="hero-note">Herramientas gratuitas · Sin registro para explorar</p></div><aside class="map" aria-label="Tu ruta de compra"><p class="eyebrow">DE LA IDEA A LAS LLAVES</p><div class="map-row"><span>01</span><div><strong>Entiende tu presupuesto</strong><small>Un punto de partida realista</small></div></div><div class="map-row"><span>02</span><div><strong>Explora y compara</strong><small>Vivienda, crédito y beneficios</small></div></div><div class="map-row"><span>03</span><div><strong>Compra con preparación</strong><small>Documentos, firma y entrega</small></div></div><a href="#checklist">Prepara tu checklist <span aria-hidden="true">→</span></a></aside></div></section>
 <nav class="section-nav wrap" aria-label="Herramientas del centro"><a href="#presupuesto">Presupuesto</a><a href="#cotizaciones">Cotizaciones</a><a href="#beneficios">Subsidios y FOGAES</a><a href="#checklist">Checklist</a><a href="#recorrido">Paso a paso</a><a href="#preguntas">Preguntas</a></nav>

@@ -28,3 +28,32 @@ fieldset{border:0;padding:0;margin:0;min-inline-size:0}fieldset[disabled]{opacit
  #orientation-footer .orientation-footer__bottom{flex-direction:column;align-items:flex-start;gap:12px;margin-top:32px}
 }
 @media print{#orientation-footer{display:none!important}}
+
+/* Header typography is isolated so the educational content and footer keep their metrics. */
+@font-face{font-family:'Sollahms Header Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url('/assets/fonts/home/manrope-latin-variable.woff2') format('woff2')}
+@font-face{font-family:'Sollahms Header Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/home/inter-latin-variable.woff2') format('woff2')}
+#orientation-header{background:color-mix(in srgb,var(--s-white) 90%,transparent);border:0;backdrop-filter:blur(12px);box-shadow:var(--s-shadow-header)}
+#orientation-header .orientation-header__bar{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:80px}
+#orientation-header .orientation-header__links{display:flex;align-items:center;gap:32px}
+#orientation-header a:not(.sollahms-brand){font-family:'Sollahms Header Manrope','Manrope',Arial,sans-serif;font-weight:700;letter-spacing:-.025em;text-decoration:none}
+#orientation-header .orientation-header__links a{color:var(--s-muted);font-size:16px;line-height:1.5;white-space:nowrap}
+#orientation-header .orientation-header__links a:hover{color:var(--s-green)}
+#orientation-header .orientation-header__actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+#orientation-header a.orientation-header__advisory{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:8px 24px;border-radius:var(--s-radius);background:var(--s-gold);color:var(--s-green);font-family:'Sollahms Header Inter','Inter',Arial,sans-serif;font-size:16px;line-height:1.5;white-space:nowrap;transition:background var(--s-duration) var(--s-ease)}
+#orientation-header .orientation-header__advisory:hover{background:var(--s-gold-hover)}
+#orientation-header .orientation-header__advisory svg{width:18px;height:18px;flex-shrink:0}
+#orientation-header .menu-toggle{display:none;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;padding:10px;border:0;border-radius:var(--s-radius);background:transparent;color:var(--s-green)}
+#orientation-header .menu-toggle svg{width:24px;height:24px}
+#orientation-header .menu-toggle:hover{background:var(--s-soft)}
+#orientation-header #mobile-menu{position:absolute;top:100%;left:0;right:0;background:var(--s-white);border-top:1px solid var(--s-line);box-shadow:var(--s-shadow-header);max-height:calc(100dvh - 80px);overflow-y:auto}
+#orientation-header .orientation-header__mobile{display:flex;flex-direction:column;padding:12px 0}
+#orientation-header .orientation-header__mobile a{display:block;padding:12px 16px;border-radius:var(--s-radius);color:var(--s-green);font-size:16px;line-height:1.5}
+#orientation-header .orientation-header__mobile a:hover{background:var(--s-soft)}
+@media(max-width:900px){
+ #orientation-header .orientation-header__bar{gap:8px}
+ #orientation-header .orientation-header__links{display:none}
+ #orientation-header .menu-toggle{display:inline-flex}
+ #orientation-header a.orientation-header__advisory{padding:8px;font-size:12px}
+ #orientation-header .orientation-header__advisory svg{display:none}
+}
+@media(min-width:901px){#orientation-header #mobile-menu{display:none}}
