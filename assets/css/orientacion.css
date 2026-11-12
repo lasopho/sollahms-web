@@ -5,3 +5,26 @@ fieldset{border:0;padding:0;margin:0;min-inline-size:0}fieldset[disabled]{opacit
 
 .commercial-fields{grid-template-columns:1fr}.commercial-fields>p{margin-top:-12px;color:var(--s-error,#994025)}.panel,.route-card,.check-card,.button,input,select,textarea{border-radius:8px}.hero{background:var(--s-hero,var(--green))}.button:disabled{opacity:1;background:var(--s-disabled,#EDF0ED);color:var(--s-muted,#4B6059)}.header{background:var(--s-canvas,#F8F9FF)}
 #budget-result{background:var(--s-soft,#EEF3EE);color:var(--s-green,#003229)}#journey-prev:disabled{background:var(--s-disabled,#EDF0ED);color:var(--s-muted,#4B6059)}
+
+/* Centro de Orientación footer only; shared theme and section gutters stay intact. */
+#orientation-footer{background:var(--s-soft);color:var(--s-green)}
+#orientation-footer .orientation-footer__transition{height:96px;background:var(--s-hero)}
+#orientation-footer .orientation-footer__columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;padding-top:64px}
+#orientation-footer .orientation-footer__brand>p{margin:24px 0 16px;font-size:14px;color:var(--s-muted)}
+#orientation-footer address{display:grid;gap:8px;font-style:normal}
+#orientation-footer h2{margin:0 0 20px;font:600 14px/1.5 'Inter',Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+#orientation-footer ul{display:grid;gap:8px;list-style:none;margin:0;padding:0}
+#orientation-footer li{margin:0;padding:0}
+#orientation-footer a:not(.sollahms-brand){display:block;width:fit-content;max-width:100%;font-size:14px;line-height:1.7;overflow-wrap:anywhere}
+#orientation-footer nav a{color:var(--s-muted);text-decoration:none}
+#orientation-footer a:hover{color:var(--s-green-hover);text-decoration:underline}
+#orientation-footer .orientation-footer__bottom{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:56px;padding:24px 0 32px;border-top:1px solid var(--s-line);color:var(--s-muted)}
+#orientation-footer small{font-size:13px}
+@media(max-width:700px){
+ #orientation-footer .orientation-footer__transition{height:72px}
+ #orientation-footer .orientation-footer__columns{grid-template-columns:minmax(0,1fr);gap:32px;padding-top:40px}
+ #orientation-footer .orientation-footer__brand>p{margin-top:20px}
+ #orientation-footer h2{margin-bottom:16px}
+ #orientation-footer .orientation-footer__bottom{flex-direction:column;align-items:flex-start;gap:12px;margin-top:32px}
+}
+@media print{#orientation-footer{display:none!important}}
