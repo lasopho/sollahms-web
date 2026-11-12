@@ -38,7 +38,20 @@ def render(text, config, project_name=None):
     url = target['whatsapp'] + '?text=' + quote(message, safe='')
     text = text.replace('href="' + target['tel'] + '"', 'href="' + url + '"')
     text = text.replace("href='" + target['tel'] + "'", 'href="' + url + '"')
-    if '<footer' in text and 'data-sollahms-whatsapp' not in text:
+    footer = re.search(r'<footer\b[^>]*>.*?</footer>', text, re.S)
+    has_footer_contact = False
+    if footer:
+        # Keep an authored footer contact (including its message) and remove
+        # only the duplicate inserted by this helper beside the section links.
+        without_generated = re.sub(
+            r'<a\b(?=[^>]*\bdata-sollahms-whatsapp(?:[\s=>]))[^>]*>.*?</a>',
+            '', footer[0], flags=re.S)
+        has_footer_contact = bool(re.search(
+            r'<a\b[^>]*href=[\"\x27]' + re.escape(target['whatsapp'])
+            + r'(?:\?[^\"\x27]*)?[\"\x27]', without_generated))
+        if has_footer_contact:
+            text = text[:footer.start()] + without_generated + text[footer.end():]
+    if footer and not has_footer_contact and 'data-sollahms-whatsapp' not in text:
         link = f'<a data-sollahms-whatsapp href="{url}">WhatsApp: {target["visible"]}</a>'
         # Add beside the existing footer links without changing their container.
         pattern = r'(<a\b[^>]*href=[\"\x27]/trabaja-con-nosotros.html[^>]*>.*?</a>)'
