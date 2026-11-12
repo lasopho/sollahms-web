@@ -5,3 +5,57 @@ fieldset{border:0;padding:0;margin:0;min-inline-size:0}fieldset[disabled]{opacit
 
 .commercial-fields{grid-template-columns:1fr}.commercial-fields>p{margin-top:-12px;color:var(--s-error,#994025)}.panel,.route-card,.check-card,.button,input,select,textarea{border-radius:8px}.hero{background:var(--s-hero,var(--green))}.button:disabled{opacity:1;background:var(--s-disabled,#EDF0ED);color:var(--s-muted,#4B6059)}.header{background:var(--s-canvas,#F8F9FF)}
 #budget-result{background:var(--s-soft,#EEF3EE);color:var(--s-green,#003229)}#journey-prev:disabled{background:var(--s-disabled,#EDF0ED);color:var(--s-muted,#4B6059)}
+
+/* Centro de Orientación footer only; shared theme and section gutters stay intact. */
+#orientation-footer{background:var(--s-soft);color:var(--s-green)}
+#orientation-footer .orientation-footer__transition{height:96px;background:var(--s-hero)}
+#orientation-footer .orientation-footer__columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;padding-top:64px}
+#orientation-footer .orientation-footer__brand>p{margin:24px 0 16px;font-size:14px;color:var(--s-muted)}
+#orientation-footer address{display:grid;gap:8px;font-style:normal}
+#orientation-footer h2{margin:0 0 20px;font:600 14px/1.5 'Inter',Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+#orientation-footer ul{display:grid;gap:8px;list-style:none;margin:0;padding:0}
+#orientation-footer li{margin:0;padding:0}
+#orientation-footer a:not(.sollahms-brand){display:block;width:fit-content;max-width:100%;font-size:14px;line-height:1.7;overflow-wrap:anywhere}
+#orientation-footer nav a{color:var(--s-muted);text-decoration:none}
+#orientation-footer a:hover{color:var(--s-green-hover);text-decoration:underline}
+#orientation-footer .orientation-footer__bottom{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:56px;padding:24px 0 32px;border-top:1px solid var(--s-line);color:var(--s-muted)}
+#orientation-footer small{font-size:13px}
+@media(max-width:700px){
+ #orientation-footer .orientation-footer__transition{height:72px}
+ #orientation-footer .orientation-footer__columns{grid-template-columns:minmax(0,1fr);gap:32px;padding-top:40px}
+ #orientation-footer .orientation-footer__brand>p{margin-top:20px}
+ #orientation-footer h2{margin-bottom:16px}
+ #orientation-footer .orientation-footer__bottom{flex-direction:column;align-items:flex-start;gap:12px;margin-top:32px}
+}
+@media print{#orientation-footer{display:none!important}}
+
+/* Header typography is isolated so the educational content and footer keep their metrics. */
+@font-face{font-family:'Sollahms Header Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url('/assets/fonts/home/manrope-latin-variable.woff2') format('woff2')}
+@font-face{font-family:'Sollahms Header Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/home/inter-latin-variable.woff2') format('woff2')}
+#orientation-header{background:var(--s-white);border:0;backdrop-filter:blur(12px);box-shadow:var(--s-shadow-header)}
+#orientation-header .orientation-header__bar{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:80px;width:100%;max-width:1280px;padding:0 32px}
+#orientation-header .orientation-header__links{display:flex;align-items:center;gap:32px}
+#orientation-header a:not(.sollahms-brand){font-family:'Sollahms Header Manrope','Manrope',Arial,sans-serif;font-weight:700;letter-spacing:-.025em;text-decoration:none}
+#orientation-header .orientation-header__links a{color:var(--s-muted);font-size:16px;line-height:1.5;white-space:nowrap}
+#orientation-header .orientation-header__links a:hover{color:var(--s-green)}
+#orientation-header .orientation-header__actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+#orientation-header a.orientation-header__advisory{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:8px 24px;border-radius:var(--s-radius);background:var(--s-gold);color:var(--s-green);font-family:'Sollahms Header Inter','Inter',Arial,sans-serif;font-size:16px;line-height:1.5;white-space:nowrap;transition:background var(--s-duration) var(--s-ease)}
+#orientation-header .orientation-header__advisory:hover{background:var(--s-gold-hover)}
+#orientation-header .orientation-header__advisory svg{width:18px;height:18px;flex-shrink:0}
+#orientation-header .menu-toggle{display:none;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;padding:10px;border:0;border-radius:var(--s-radius);background:transparent;color:var(--s-green)}
+#orientation-header .menu-toggle svg{width:24px;height:24px}
+#orientation-header .menu-toggle:hover{background:var(--s-soft)}
+#orientation-header #mobile-menu{position:absolute;top:100%;left:0;right:0;background:var(--s-white);border-top:1px solid var(--s-line);box-shadow:var(--s-shadow-header);max-height:calc(100dvh - 80px);overflow-y:auto}
+#orientation-header .orientation-header__mobile{display:flex;flex-direction:column;padding:12px 0}
+#orientation-header .orientation-header__mobile a{display:block;padding:12px 16px;border-radius:var(--s-radius);color:var(--s-green);font-size:16px;line-height:1.5}
+#orientation-header .orientation-header__mobile a:hover{background:var(--s-soft)}
+@media(max-width:900px){
+ #orientation-header .orientation-header__bar{gap:8px;padding:0 16px}
+ #orientation-header .orientation-header__links{display:none}
+ #orientation-header .menu-toggle{display:inline-flex}
+ #orientation-header a.orientation-header__advisory{padding:8px;font-size:12px;min-height:32px}
+ #orientation-header .orientation-header__advisory svg{display:none}
+}
+@media(min-width:901px){#orientation-header #mobile-menu{display:none}}
+
+@media(max-width:360px){#orientation-header .orientation-header__bar{padding-inline:12px}}
