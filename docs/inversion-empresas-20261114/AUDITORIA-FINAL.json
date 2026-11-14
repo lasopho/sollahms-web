@@ -1,0 +1,200 @@
+{
+  "audited_at": "2026-11-14T23:31:47.948826+00:00",
+  "timezone": "America/Santiago",
+  "pr": 18,
+  "base": "9afbd74cd1793533aed8f96de34d273f1ea19cd8",
+  "initial_head": "c835b2dedec7f4a2e9e89e5de84aa3b5b6a1edda",
+  "code_commit": "71faee3e39c5a8b205e7cd1adb77e974a5065f4b",
+  "deployment": "dpl_5KJRt5igHedhn2JvEnPtgQyG2GQU",
+  "preview": "https://project-wrapp-4l16q20uc-lsandoval2-8260s-projects.vercel.app/inversion-inmobiliaria-empresas.html",
+  "production_unchanged": "dpl_AZw6TnXFbk8P3DdGPqvo8YGrzrB9",
+  "node_tests": 28,
+  "node_failures": 0,
+  "prior_tests": 23,
+  "added_precision_tests": 5,
+  "static_checks": "PASS",
+  "browser_cases": [
+    {
+      "debt": "0,005 UF",
+      "equity": "0,005 UF",
+      "error": "",
+      "invalid": [],
+      "percent": "50",
+      "price": "0.01"
+    },
+    {
+      "debt": "0,000001 UF",
+      "equity": "0,009999 UF",
+      "error": "",
+      "invalid": [],
+      "percent": "0.01",
+      "price": "0.01"
+    },
+    {
+      "debt": "80.000.000 UF",
+      "equity": "20.000.000 UF",
+      "error": "",
+      "invalid": [],
+      "percent": "80",
+      "price": "100000000"
+    },
+    {
+      "debt": "0 UF",
+      "equity": "5.000 UF",
+      "error": "",
+      "invalid": [],
+      "percent": "0",
+      "price": "5000"
+    },
+    {
+      "debt": "4.000 UF",
+      "equity": "1.000 UF",
+      "error": "",
+      "invalid": [],
+      "percent": "80",
+      "price": "5000"
+    },
+    {
+      "debt": "—",
+      "equity": "—",
+      "error": "Ingresa un porcentaje entre 0 y 80, con hasta dos decimales.",
+      "invalid": [
+        "empresa-porcentaje"
+      ],
+      "percent": "80.01",
+      "price": "5000"
+    },
+    {
+      "debt": "—",
+      "equity": "—",
+      "error": "Ingresa un porcentaje entre 0 y 80, con hasta dos decimales.",
+      "invalid": [
+        "empresa-porcentaje"
+      ],
+      "percent": "100",
+      "price": "5000"
+    },
+    {
+      "debt": "—",
+      "equity": "—",
+      "error": "Ingresa un precio entre 0,01 y 100.000.000 UF, con hasta dos decimales.",
+      "invalid": [
+        "empresa-precio"
+      ],
+      "percent": "70",
+      "price": "0"
+    },
+    {
+      "debt": "—",
+      "equity": "—",
+      "error": "Ingresa un precio entre 0,01 y 100.000.000 UF, con hasta dos decimales.",
+      "invalid": [
+        "empresa-precio"
+      ],
+      "percent": "70",
+      "price": "100000000.01"
+    },
+    {
+      "debt": "—",
+      "equity": "—",
+      "error": "Ingresa un precio entre 0,01 y 100.000.000 UF, con hasta dos decimales.",
+      "invalid": [
+        "empresa-precio"
+      ],
+      "percent": "70",
+      "price": "0.001"
+    },
+    {
+      "debt": "—",
+      "equity": "—",
+      "error": "Ingresa un porcentaje entre 0 y 80, con hasta dos decimales.",
+      "invalid": [
+        "empresa-porcentaje"
+      ],
+      "percent": "33.333",
+      "price": "5000"
+    },
+    {
+      "debt": "—",
+      "equity": "—",
+      "error": "Ingresa un precio entre 0,01 y 100.000.000 UF, con hasta dos decimales.",
+      "invalid": [
+        "empresa-precio"
+      ],
+      "percent": "70",
+      "price": ""
+    },
+    {
+      "debt": "—",
+      "equity": "—",
+      "error": "Ingresa un porcentaje entre 0 y 80, con hasta dos decimales.",
+      "invalid": [
+        "empresa-porcentaje"
+      ],
+      "percent": "",
+      "price": "5000"
+    }
+  ],
+  "browser_widths": [
+    {
+      "viewport": 320,
+      "client": 305,
+      "scroll": 305
+    },
+    {
+      "viewport": 390,
+      "client": 375,
+      "scroll": 375
+    },
+    {
+      "viewport": 1440,
+      "client": 1425,
+      "scroll": 1425
+    }
+  ],
+  "keyboard": {
+    "tab_price_to_percentage": true,
+    "details_enter_and_space": true,
+    "table_arrow_right_scrollLeft": 40
+  },
+  "http": {
+    "status": 200,
+    "html_identical": true,
+    "all_four_runtime_identical": true,
+    "x_robots_tag": "noindex"
+  },
+  "preservation": {
+    "tracked_base_files": 3945,
+    "runtime_base_files": 1649,
+    "runtime_new_files": 4,
+    "baseline_pages": 11,
+    "existing_modified": []
+  },
+  "form": {
+    "disabled": true,
+    "form_element": false,
+    "synthetic_local_handler_cases": 3,
+    "network_calls": 0,
+    "end_to_end_delivery": "NOT TESTED / INACTIVE",
+    "consent_receipt": "NOT TESTED / INACTIVE"
+  },
+  "assistive_technology": {
+    "dom_labels_live_region_alert_verified": true,
+    "real_screen_reader": "NOT TESTED"
+  },
+  "limitations": [
+    "No WCAG certification or assistive-technology user study",
+    "No current Lighthouse run",
+    "No active commercial form QA",
+    "Private noindex retained; public indexability needs separately authorized release preparation"
+  ],
+  "verdict": "APTO PARA SOLICITAR AUTORIZACIÓN DE PUBLICACIÓN",
+  "verdict_scope": "Página educativa con formulario desactivado. No autoriza ni certifica recepción comercial.",
+  "runtime_sha256": {
+    "inversion-inmobiliaria-empresas.html": "b4a31efd4119fb45068b3a799c0d37b3155bc0b703aecfc629e6b1f33c3c60d9",
+    "assets/css/inversion-empresas.css": "3bc49175932b9b9843d036fc79a5b5eb419a5067ebfc65506f859fa349a0f7af",
+    "assets/js/inversion-empresas.mjs": "fc5c560c1c4f74e4e8b9172b27b587e5ccf5e13a5ce8f20dacd9e0006cff7c5e",
+    "assets/js/inversion-empresas-engine.mjs": "4f86ca1d5d51959dd1f1cf8e167adfbe63f247421182b34b8bb93da63ef144d0"
+  },
+  "base_manifest_sha256": "ce639e1c890a51cf0caabfc1dcecfa6ae80a07e42b85271cab017dfb106e5d6d"
+}
