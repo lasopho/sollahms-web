@@ -18,6 +18,23 @@
     /* FORM_PROGRESSIVE_CONTACT_STYLE_START */
     .contact-form-fields { min-width: 0; margin: 0; padding: 0; border: 0; }
     /* FORM_PROGRESSIVE_CONTACT_STYLE_END */
+
+    /* Corporate footer: scoped to this page only. */
+    #collaboration-footer { background: var(--s-soft); padding: 64px 0 48px; color: var(--s-muted); font: 400 14px/1.625 'Inter', sans-serif; }
+    #collaboration-footer .collaboration-footer__columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    #collaboration-footer .sollahms-brand { margin-bottom: 16px; }
+    #collaboration-footer p { margin: 0; }
+    #collaboration-footer .collaboration-footer__copyright { letter-spacing: .025em; }
+    #collaboration-footer .home-seo-footer-about { margin-top: 16px; }
+    #collaboration-footer h2 { margin: 0 0 16px; color: var(--s-green); font: 600 14px/20px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .1em; }
+    #collaboration-footer ul { list-style: none; margin: 0; padding: 0; }
+    #collaboration-footer li + li { margin-top: 8px; }
+    #collaboration-footer nav a { color: var(--s-muted); letter-spacing: .025em; }
+    #collaboration-footer nav a:hover { color: var(--s-green-hover); }
+    #collaboration-footer .home-seo-contact { margin-top: 16px; }
+    @media (max-width: 767px) {
+      #collaboration-footer .collaboration-footer__columns { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 0 24px; }
+    }
 </style>
 <meta content="website" property="og:type"/>
 <meta content="Sollahms" property="og:site_name"/>
@@ -145,18 +162,28 @@
 <div class="collaboration-layout"><div class="collaboration-context"><p class="advisory-eyebrow">PERSONAS Y TALENTO</p><h2 id="title-persona">Postulación espontánea</h2><p>Déjanos tu contacto para presentar tu interés en trabajar o colaborar con Sollahms.</p><ol class="advisory-next"><li><span>01</span>Déjanos un correo electrónico o un teléfono.</li><li><span>02</span>Revisaremos tu interés en colaborar.</li><li><span>03</span>Podremos contactarte para conocer cómo te gustaría colaborar.</li></ol><p class="collaboration-note">Esta es una postulación espontánea. No corresponde a una vacante anunciada ni garantiza entrevista o contratación.</p></div>
 <div class="advisory-panel collaboration-panel"><h3>¿Cómo te contactamos?</h3><p class="advisory-form-intro">Basta con un correo electrónico o un teléfono. No necesitas completar ambos.</p>
 <form action="/api/collaboration" aria-describedby="persona-use" aria-labelledby="title-persona" data-collaboration-form="persona" method="post" novalidate=""><fieldset disabled=""><legend class="sr-only">Contacto para la postulación</legend><div aria-hidden="true" class="advisory-trap"><label for="persona-website">Deja este campo vacío</label><input autocomplete="off" id="persona-website" name="website" tabindex="-1"/></div><div class="collaboration-fields"><div class="advisory-field"><label for="persona-correo">Correo electrónico</label><input aria-describedby=" persona-correo-error" autocapitalize="none" autocomplete="email" id="persona-correo" maxlength="254" name="correo" spellcheck="false" type="email"/><p class="advisory-error" hidden="" id="persona-correo-error"></p></div><div class="advisory-field"><label for="persona-telefono">Teléfono</label><input aria-describedby="persona-telefono-help persona-telefono-error" autocomplete="tel" id="persona-telefono" inputmode="tel" maxlength="30" name="telefono" type="tel"/><p class="advisory-help" id="persona-telefono-help">En Chile, 9 dígitos. Para otro país, incluye + y el código de país.</p><p class="advisory-error" hidden="" id="persona-telefono-error"></p></div></div>
-<label class="advisory-consent"><input aria-describedby="persona-consent-error" id="persona-consent" name="consent" required="" type="checkbox"/><span>Autorizo a Sollahms a usar mi contacto para responder sobre mi interés en trabajar o colaborar, según la <a href="/privacidad.html" rel="noopener" target="_blank">política de privacidad</a>.</span></label><p class="advisory-error" hidden="" id="persona-consent-error"></p><p class="advisory-help" id="persona-use">Usaremos esta información para atender esta solicitud. La autorización no incluye campañas de marketing.</p><button class="advisory-submit" type="submit">Enviar mi postulación</button></fieldset><p aria-atomic="true" aria-live="polite" class="advisory-status" role="status" tabindex="-1"></p></form></div></div></section></div></main><footer class="bg-slate-100 border-t border-slate-200">
-<div class="max-w-7xl mx-auto px-6 md:px-8 py-10 flex flex-col sm:flex-row justify-between gap-5">
-<a aria-label="Sollahms" class="text-lg font-bold text-emerald-950 sollahms-brand" href="/"><img alt="" class="sollahms-brand__image" decoding="async" height="22" src="/assets/branding/sollahms-logo.svg" width="114"/></a>
-<div class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
-<a class="hover:text-emerald-900" href="/#expertise">Servicios</a>
-<a class="hover:text-emerald-900" href="/#portfolio">Asset Portafolio</a>
-<a data-guide-nav="" class="hover:text-emerald-900" href="/guia-hipotecaria.html">Guía hipotecaria</a>
-<a data-purchase-guide-footer="" class="hover:text-emerald-900" href="/cuando-comprar-propiedad.html">Cuándo comprar</a>
-<a class="hover:text-emerald-900" href="/contacto.html">Contacto</a>
-<a class="hover:text-emerald-900" href="/trabaja-con-nosotros.html">Trabaja con nosotros</a><a data-sollahms-whatsapp href="https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.">WhatsApp: +56 9 4850 2440</a>
-<a class="hover:text-emerald-900" href="/privacidad.html">Privacidad</a>
+<label class="advisory-consent"><input aria-describedby="persona-consent-error" id="persona-consent" name="consent" required="" type="checkbox"/><span>Autorizo a Sollahms a usar mi contacto para responder sobre mi interés en trabajar o colaborar, según la <a href="/privacidad.html" rel="noopener" target="_blank">política de privacidad</a>.</span></label><p class="advisory-error" hidden="" id="persona-consent-error"></p><p class="advisory-help" id="persona-use">Usaremos esta información para atender esta solicitud. La autorización no incluye campañas de marketing.</p><button class="advisory-submit" type="submit">Enviar mi postulación</button></fieldset><p aria-atomic="true" aria-live="polite" class="advisory-status" role="status" tabindex="-1"></p></form></div></div></section></div></main><footer id="collaboration-footer" data-scroll-static>
+<div class="collaboration-footer__columns">
+<div>
+<a aria-label="Sollahms" class="sollahms-brand" href="/"><img alt="" class="sollahms-brand__image" decoding="async" height="22" src="/assets/branding/sollahms-logo.svg" width="114"/></a>
+<p class="collaboration-footer__copyright">© 2026 Sollahms. Todos los derechos reservados.</p>
+<p class="home-seo-footer-about">Asesoría e inversión inmobiliaria en Chile.</p>
+<address class="home-seo-contact"><a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a><a data-sollahms-whatsapp href="https://wa.me/56948502440">+56 9 4850 2440</a></address>
 </div>
-<p class="text-sm text-slate-600">© 2026 Sollahms. Todos los derechos reservados.</p>
+<nav aria-labelledby="collaboration-footer-sections">
+<h2 id="collaboration-footer-sections">Secciones</h2>
+<ul>
+<li><a href="/#expertise">Servicios</a></li>
+<li><a href="/#portfolio">Asset Portafolio</a></li>
+<li><a data-guide-nav="" href="/guia-hipotecaria.html">Guía hipotecaria</a></li>
+<li><a data-purchase-guide-footer="" href="/cuando-comprar-propiedad.html">Cuándo comprar</a></li>
+<li><a href="/contacto.html">Contacto</a></li>
+<li><a href="/trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
+</ul>
+</nav>
+<nav aria-labelledby="collaboration-footer-legal">
+<h2 id="collaboration-footer-legal">Legal</h2>
+<ul><li><a href="/privacidad.html">Privacidad</a></li></ul>
+</nav>
 </div>
 </footer><script src="/assets/js/collaboration.mjs?v=20261026-contact-only-1" type="module"></script></body></html>
