@@ -9,7 +9,7 @@ function update() {
   price.removeAttribute('aria-invalid'); percent.removeAttribute('aria-invalid');
   try {
     for (const field of [price, percent]) {
-      if (field.value.trim() === '' || !field.validity.valid) { field.setAttribute('aria-invalid', 'true'); throw new RangeError(field === price ? 'Ingresa un precio entre 0,01 y 100.000.000 UF, con hasta dos decimales.' : 'Ingresa un porcentaje entre 0 y 100, con hasta dos decimales.'); }
+      if (field.value.trim() === '' || !field.validity.valid) { field.setAttribute('aria-invalid', 'true'); throw new RangeError(field === price ? 'Ingresa un precio entre 0,01 y 100.000.000 UF, con hasta dos decimales.' : 'Ingresa un porcentaje entre 0 y 80, con hasta dos decimales.'); }
     }
     const result = splitCapital(price.valueAsNumber, percent.valueAsNumber);
     equity.textContent = format.format(result.equity) + ' UF'; debt.textContent = format.format(result.debt) + ' UF';

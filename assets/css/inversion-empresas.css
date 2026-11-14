@@ -20,3 +20,7 @@
     @media (max-width: 767px) {
       #collaboration-footer .collaboration-footer__columns { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 0 24px; }
     }
+
+/* Guided reading: visible essentials, optional detail, stable reading surfaces. */
+.empresas>section{scroll-margin-top:96px}.empresa-toc a{display:flex;align-items:center;gap:8px;min-height:44px;text-decoration:none!important;font-weight:600}.empresa-toc a span{font-size:.75rem;color:var(--s-gold-ink)}.empresas p{max-width:75ch}.empresas .finance-overview{grid-template-columns:repeat(2,minmax(0,1fr))}.empresas .decision-detail{background:var(--s-white);border:1px solid var(--s-line);border-radius:8px;padding:16px 24px;margin:24px 0}.decision-detail>summary{color:var(--s-green)}.empresas .decision-detail .table-scroll{margin-bottom:0}.capital-reading{margin-top:24px!important;font-weight:600}.capital-results p{margin-bottom:32px}.capital-results p:last-child{margin-bottom:0}
+@media(max-width:767px){.empresa-toc{display:grid;gap:8px}.empresas .finance-overview{grid-template-columns:1fr}.empresas .decision-detail{padding:16px}.empresas .decision-detail .table-scroll{margin-top:16px}}
