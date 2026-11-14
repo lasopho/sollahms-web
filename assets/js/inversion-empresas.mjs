@@ -4,7 +4,8 @@ const percent = document.getElementById('empresa-porcentaje');
 const error = document.getElementById('capital-error');
 const equity = document.getElementById('capital-propio');
 const debt = document.getElementById('capital-deuda');
-const format = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 });
+// Two decimals in price and percentage require up to six in the split amounts.
+const format = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 6 });
 function update() {
   price.removeAttribute('aria-invalid'); percent.removeAttribute('aria-invalid');
   try {
