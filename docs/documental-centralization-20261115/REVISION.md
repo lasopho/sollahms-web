@@ -98,3 +98,8 @@ No se publicó, no se fusionó ningún PR y no se ejecutaron intervenciones de i
 ![Bloque tributario abreviado](docFinalTax.png)
 
 ![Pie corporativo móvil](docFooterMobile.png)
+
+
+## Seguimiento de las ocho pendientes — 15/11/2026
+
+La sección anterior conserva el estado histórico de la primera revisión. El estado actualizado es 139 referencias recuperadas y una con acceso directo restringido (MTT), con tratamiento explícito. Véase [RESOLUCION-OCHO-FUENTES.md](RESOLUCION-OCHO-FUENTES.md), resolution-eight.json y el QA posterior del preview. No se modifica producción.
