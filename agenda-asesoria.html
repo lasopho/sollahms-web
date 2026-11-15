@@ -76,10 +76,11 @@
 <link rel="stylesheet" href="/assets/css/home-seo.css?v=20261025-visual-1">
 <link rel="stylesheet" href="/assets/css/advisory.css?v=20261026-required-1">
 <link rel="stylesheet" href="/assets/css/guide-navigation.css?v=20261029-1">
+<link rel="stylesheet" href="/assets/css/agenda-coverage.css">
 <link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
 <script src="/assets/js/scroll-presence.js?v=20261026-3" defer></script>
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
-</head>
+<link rel="stylesheet" href="/assets/css/expertise-navigation.css"><script defer src="/assets/js/expertise-navigation.js"></script></head>
 <body class="advisory-page bg-surface text-on-surface antialiased">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
   Saltar al contenido
@@ -88,13 +89,13 @@
 <nav class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between gap-2 md:gap-x-6" aria-label="Navegación principal">
 <a class="text-2xl font-black tracking-tighter text-emerald-950 sollahms-brand" href="/" aria-label="Sollahms"><img class="sollahms-brand__image" src="/assets/branding/sollahms-logo.svg" width="114" height="22" alt="" decoding="async"></a>
 <div class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#expertise">Expertise</a>
+<div class="expertise-nav-entry"><a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/#expertise">Expertise</a><details class="expertise-disclosure"><summary aria-label="Opciones de Expertise"><svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="expertise-submenu"><a href="/inversion-inmobiliaria-empresas.html">Inversión Inmobiliaria para Empresas</a></div></details></div>
 <a class="text-slate-600 hover:text-emerald-900 transition-colors font-headline font-bold tracking-tight" href="/proyectos.html">Asset Portafolio</a>
 <a data-guide-nav="" class="text-emerald-950 font-headline font-bold tracking-tight" href="/guia-hipotecaria.html">Guía hipotecaria</a>
 <a class="text-emerald-950 font-headline font-bold tracking-tight" href="/contacto.html">Contacto</a>
 </div>
 <div class="flex items-center gap-2 md:gap-0">
-<a class="bg-tertiary-fixed text-on-tertiary-fixed px-2 md:px-6 py-2 hover:bg-tertiary-fixed-dim transition-colors font-bold tracking-tight rounded-lg flex items-center gap-2 text-xs md:text-base whitespace-nowrap" href="/agenda-asesoria.html">Solicitar asesoría </a>
+<a class="bg-tertiary-fixed text-on-tertiary-fixed px-2 md:px-6 py-2 hover:bg-tertiary-fixed-dim transition-colors font-bold tracking-tight rounded-lg flex items-center gap-2 text-xs md:text-base whitespace-nowrap" href="#solicitar-asesoria">Solicitar asesoría </a>
 <button type="button" class="md:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-emerald-950 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" aria-label="Abrir menú de navegación" aria-controls="mobile-menu" aria-expanded="false">
 <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
 </button>
@@ -102,7 +103,7 @@
 </nav>
 <div id="mobile-menu" class="hidden md:hidden absolute top-full inset-x-0 bg-white shadow-lg border-t border-slate-200">
 <nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col" aria-label="Navegación móvil">
-<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a>
+<div class="expertise-nav-entry"><a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a><details class="expertise-disclosure"><summary aria-label="Opciones de Expertise"><svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 6 4 4 4-4"/></svg></summary><div class="expertise-submenu"><a href="/inversion-inmobiliaria-empresas.html">Inversión Inmobiliaria para Empresas</a></div></details></div>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html">Asset Portafolio</a>
 <a data-guide-nav="" class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/guia-hipotecaria.html">Guía hipotecaria</a>
 <a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/contacto.html">Contacto</a>
@@ -139,7 +140,18 @@
     });
 })();
 </script>
-<main id="contenido-principal"><section class="advisory-page-heading"><div><p class="advisory-eyebrow">ASESORÍA INMOBILIARIA EN CHILE</p><h1>Asesoría para comprar o invertir</h1><p>Evalúa propiedades en Chile según tus objetivos de vivienda, patrimonio o diversificación. Solicita una conversación con Sollahms para ordenar tu próximo paso.</p><a class="advisory-jump" href="#solicitar-asesoria">Ir al formulario ↓</a></div></section><section class="advisory-section"><div class="advisory-layout"><div class="advisory-copy"><p class="advisory-eyebrow">UN PRIMER PASO CLARO</p><h2>¿Qué revisaremos contigo?</h2><p>Partimos de tu objetivo y las ubicaciones que te interesan. Revisamos características, condiciones comerciales y antecedentes de las alternativas para identificar qué falta confirmar antes de decidir.</p><ol class="advisory-next"><li><span>01</span>Cuéntanos tu objetivo y cómo contactarte.</li><li><span>02</span>Revisamos el contexto y las alternativas que te interesan.</li><li><span>03</span>Coordinamos una conversación y los antecedentes que conviene revisar.</li></ol><p class="advisory-help">Esta solicitud no confirma una cita ni una aprobación de financiamiento. Puedes preparar tus dudas con la <a href="/guia-hipotecaria.html">guía hipotecaria</a>.</p><address><a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a><a href="https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.">+56 9 4850 2440</a></address></div><div class="advisory-panel" id="solicitar-asesoria">
+<main id="contenido-principal"><section class="advisory-page-heading"><div><p class="advisory-eyebrow">ASESORÍA INMOBILIARIA EN CHILE</p><h1>Asesoría para comprar o invertir</h1><p>Evalúa propiedades en Chile según tus objetivos de vivienda, patrimonio o diversificación. Solicita una conversación con Sollahms para ordenar tu próximo paso.</p><a class="advisory-jump" href="#solicitar-asesoria">Ir al formulario ↓</a></div></section><section class="advisory-section"><div class="advisory-layout"><div class="advisory-copy"><p class="advisory-eyebrow">UN PRIMER PASO CLARO</p><h2>¿Qué revisaremos contigo?</h2><p>Partimos de tu objetivo y las ubicaciones que te interesan. Te ayudamos a comparar ubicación, características, precio y condiciones comerciales de los proyectos, y revisamos sus antecedentes para identificar qué falta confirmar antes de decidir.</p><p>No necesitas tener una propiedad elegida para consultar. Completa el <a href="#solicitar-asesoria">formulario de esta página</a> o escríbenos por <a href="https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.">WhatsApp al +56 9 4850 2440</a>. En el primer contacto conoceremos tu objetivo y coordinaremos el siguiente paso.</p><ol class="advisory-next"><li><span>01</span>Cuéntanos tu objetivo y cómo contactarte.</li><li><span>02</span>Revisamos el contexto y las alternativas que te interesan.</li><li><span>03</span>Coordinamos una conversación y los antecedentes que conviene revisar.</li></ol><p class="advisory-help">Esta solicitud no confirma una cita ni una aprobación de financiamiento. Puedes preparar tus dudas con la <a href="/guia-hipotecaria.html">guía hipotecaria</a>.</p><address><a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a><a href="https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.">+56 9 4850 2440</a></address><!-- AGENDA_COVERAGE_START -->
+<section class="agenda-coverage" aria-labelledby="agenda-coverage-title"><p class="advisory-eyebrow">UBICACIÓN DE LOS PROYECTOS PUBLICADOS</p><h2 id="agenda-coverage-title">¿Dónde puedes comparar proyectos?</h2><p>Puedes explorar <a href="/proyectos.html">nuestro catálogo</a> por comuna y solicitar una asesoría para comparar los proyectos que te interesen. El precio y la disponibilidad se confirman al cotizar.</p><div class="agenda-regions"><section class="agenda-region"><h3>Arica y Parinacota</h3><ul><li>Arica</li></ul></section>
+<section class="agenda-region"><h3>Coquimbo</h3><ul><li>Coquimbo</li><li>La Serena</li></ul></section>
+<section class="agenda-region"><h3>Valparaíso</h3><ul><li>Papudo</li><li>Valparaíso</li></ul></section>
+<section class="agenda-region"><h3>Región Metropolitana</h3><ul><li>Cerrillos</li><li>Conchalí</li><li>Estación Central</li><li>Huechuraba</li><li>Independencia</li><li>La Cisterna</li><li>La Florida</li><li>Las Condes</li><li>Macul</li><li>Ñuñoa</li><li>Peñalolén</li><li>Providencia</li><li>Quilicura</li><li>Quinta Normal</li><li>Renca</li><li>San Bernardo</li><li>San Joaquín</li><li>Santiago (comuna)</li></ul></section>
+<section class="agenda-region"><h3>O&#39;Higgins</h3><ul><li>Pichilemu</li><li>Rancagua</li></ul></section>
+<section class="agenda-region"><h3>Ñuble</h3><ul><li>Chillán</li></ul></section>
+<section class="agenda-region"><h3>Biobío</h3><ul><li>Concepción</li></ul></section>
+<section class="agenda-region"><h3>La Araucanía</h3><ul><li>Temuco</li><li>Villarrica</li></ul></section>
+<section class="agenda-region"><h3>Los Ríos</h3><ul><li>Valdivia</li></ul></section>
+<section class="agenda-region"><h3>Los Lagos</h3><ul><li>Puerto Montt</li><li>Puerto Varas</li></ul></section></div><p class="advisory-help">Estas son las ubicaciones de los proyectos publicados en el catálogo. La lista no indica oficinas ni atención presencial, ni implica que haya proyectos en todas las comunas de cada región.</p><a class="advisory-jump" href="#solicitar-asesoria">Solicitar asesoría ↓</a></section>
+<!-- AGENDA_COVERAGE_END --></div><div class="advisory-panel" id="solicitar-asesoria">
 <h2 id="advisory-form-title">Solicitar asesoría</h2>
 <p class="advisory-form-intro">Completa tus datos para que podamos responder tu solicitud.</p>
 <p id="advisory-project-context" class="advisory-context" hidden></p>
@@ -162,7 +174,7 @@
 <div class="max-w-7xl mx-auto px-6 md:px-8 py-10 flex flex-col sm:flex-row justify-between gap-5">
 <a class="text-lg font-bold text-emerald-950 sollahms-brand" href="/" aria-label="Sollahms"><img class="sollahms-brand__image" src="/assets/branding/sollahms-logo.svg" width="114" height="22" alt="" decoding="async"></a>
 <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
-<a class="hover:text-emerald-900" href="/#expertise">Servicios</a>
+<a class="hover:text-emerald-900" href="/#expertise">Expertise</a>
 <a class="hover:text-emerald-900" href="/#portfolio">Asset Portafolio</a>
 <a data-guide-nav="" class="hover:text-emerald-900" href="/guia-hipotecaria.html">Guía hipotecaria</a>
 <a data-purchase-guide-footer="" class="hover:text-emerald-900" href="/cuando-comprar-propiedad.html">Cuándo comprar</a>
