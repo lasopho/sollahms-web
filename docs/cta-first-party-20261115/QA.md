@@ -1,6 +1,6 @@
 # QA y entrega del laboratorio privado — 15/11/2026
 
-> Las revisiones históricas se conservan. El estado vigente se consolida al final: exportación JSON aprobada y lectura de la importación confirmada; captura visual de Google Sheets, duplicación nativa y reinicio completo pendientes.
+> Las revisiones históricas se conservan. El estado vigente se consolida al final: exportación JSON aprobada y lectura de la importación confirmada; captura visual de Google Sheets pendiente; alcance observado de duplicación y recuperación tras reinicio documentado en la última sección.
 
 Cierre: 15/11/2026 00:35:45 America/Santiago (03:35:45 UTC).
 Código: `ef6b2df3a87729dae441581a7ee78719832dc8fd`.
@@ -235,3 +235,61 @@ Pendientes sin cambios:
 3. Reinicio completo de Chrome, previa captura de sesiones, eventos y cola.
 
 No se ejecutaron nuevas pruebas de duplicación/reinicio ni se repitieron las 40/14/7 anteriores. No se borraron datos ni se cerró Chrome. QA general parcial. PR23 abierto y en borrador; código, deployment, producción y T0 sin modificaciones.
+
+
+## QA manual de Chrome — 15/11/2026, cierre documental 12:39 America/Santiago (UTC−03:00)
+
+Entorno: Chrome 157.0.0.0, UA macOS 10.15.7. Código de referencia `180f621630f70e34da5207ed924d0cf5f3499dc2`; preview privado vigente indicado arriba. Evidencia combinada: capturas del propietario en esta conversación y lectura directa de la interfaz tras su confirmación «chrome reinicado». El cierre del proceso fue confirmado por el propietario; no se observó desde el sistema operativo.
+
+### Duplicación nativa: alcance observado
+
+Las capturas del recorrido coordinado mediante clic derecho → Duplicar muestran:
+
+- Original: sesión abreviada `60dc48d8`, CTA `tax_advisory_main`, lock adquirido.
+- Segunda pestaña: sesión `8cee12dc`, CTA ninguno, lock adquirido.
+- Original posteriormente: conserva `60dc48d8` y su CTA; el panel muestra dos sesiones, una visita, un clic main, una agenda atribuida y un evento no atribuible. No se duplicó la atribución original.
+- Tras actualizar el panel, los conteos permanecen iguales. La captura por sí sola no certifica el cierre efectivo de la segunda pestaña ni una inspección global de todos los Web Locks.
+
+**APROBADO el aislamiento y la ausencia de inflación en el alcance visible del recorrido manual.** No se sustituye por simulación la acción nativa coordinada con el propietario. No se certifica una matriz adicional de recarga, atrás, expiración y cierre de la copia que no quedó documentada de forma concluyente.
+
+Evidencias originales: capturas adjuntas de agenda original y segunda pestaña, original posterior y panel antes/después de actualizar, conservadas en la conversación. No se añaden archivos al repositorio.
+
+### Reinicio y recuperación de cola
+
+Antes del cierre, las capturas muestran sesión original activa y un pendiente. Tras el reinicio se leyó el panel antes de accionar cualquier reintento. Luego se pulsó una sola vez **Reconectar y reintentar**.
+
+| Dato visible | Antes del cierre | Tras reiniciar, antes del reintento | Después del reintento |
+| --- | --- | --- | --- |
+| Sesión activa | 60dc48d8 | Sin sesión | Sin sesión |
+| CTA activo | tax_advisory_main | Ninguno | Ninguno |
+| Lock del panel | Adquirido | Libre | Libre |
+| Muestra histórica | 2 sesiones | 2 sesiones | 2 sesiones |
+| Cola pendiente | 1 | 1 | 0 |
+| Visitas / clics / agendas atribuidas | 1 / 1 / 1 | 1 / 1 / 1 | 1 / 1 / 1 |
+| Inicios / aceptaciones / entregas | 0 / 0 / 0 | 0 / 0 / 0 | 0 / 0 / 0 |
+| No atribuibles / secuencias sin respaldo | 1 / 0 | 1 / 0 | 1 / 0 |
+| Tasas | NO DISPONIBLE | NO DISPONIBLE | NO DISPONIBLE |
+
+Mensaje final observado: **«Cola conciliada; reintentos deduplicados.»** Clics por enlace: header 0, main 1, footer 0. La guía restaurada también muestra sin sesión, CTA ninguno y lock libre.
+
+Cohorte seleccionada: «Recorrido manual sintético · cobertura no certificada»; ventana visible 15/11/2026 10:09:41 a 16/11/2026 10:09:41 America/Santiago, `from=1794748181909`, `to=1794834581909`. El término de la ventana no representa un evento futuro. Eventos faltantes no determinables, cobertura incompleta: no se calculan porcentajes.
+
+**APROBADA la persistencia funcional de los datos locales y del pendiente, y su conciliación sin inflación en este reinicio.** La evidencia procede del panel respaldado por IndexedDB; no se afirma una inspección exhaustiva de registros internos. Se distingue persistencia histórica de continuidad de sesión: los agregados y la cola sobrevivieron, pero ninguna sesión o atribución quedó activa en las páginas inspeccionadas.
+
+Limitaciones:
+
+- Habían transcurrido más de 30 minutos desde las capturas previas. No se aisló si la ausencia de sesión deriva de expiración, de restauración de sessionStorage o de ambos. No se afirma que Chrome siempre elimine sessionStorage al reiniciar.
+- Lock libre es el diagnóstico de las páginas observadas, no una consulta exhaustiva de locks del navegador.
+- No se ensayó un cierre inesperado/crash ni pérdida total del almacenamiento. No se promete recuperar datos eliminados por Chrome.
+- El reintento vació la cola sin aumentar métricas únicas. Esto demuestra ausencia de inflación en estos indicadores; no constituye un recuento independiente de todos los registros internos.
+- Captura directa posterior obtenida del panel con cola 0 y mensaje de conciliación; evidencia visual en la conversación. No se fabricaron capturas.
+
+### Estado y recomendación vigente
+
+- Exportación real e importación leída mediante conexión autorizada: resultados previos conservados; diferencia decimal documentada; NO DISPONIBLE en el archivo original sigue NO APLICA.
+- Duplicación nativa: aislamiento y atribución observados satisfactorios; límites del procedimiento indicados arriba.
+- Reinicio completo confirmado por el propietario: persistencia y recuperación verificadas directamente, con alcance limitado.
+- **Captura e inspección visual de Google Sheets: PENDIENTE/BLOQUEADA por «Necesitas acceso».** No se solicitó acceso ni se modificaron permisos.
+- 40 pruebas Node, 14 IndexedDB y 7 Web Locks: **históricas, NO repetidas**.
+
+QA general permanece parcial para revisión; no se certifica compatibilidad universal ni se autoriza seguimiento comercial real. Único archivo actualizado: QA.md. Sin cambios de código, deployment, producción, T0, Resend, CRM o PR18–22. No se borraron datos locales. PR23 permanece abierto y en borrador, sin fusionar. Las referencias históricas de producción anteriores no se presentan como una nueva comprobación de su estado actual. Solicitar revisión del propietario.
