@@ -4,7 +4,7 @@ Continúa en `lasopho/sollahms-web`, rama `codex/eliminar-recorridos-global-2026
 
 Estado técnico verificado el 15/11/2026, America/Santiago:
 - Base reciente: `codex/agenda-regions-responsive-20261115`, commit `c2e1965ced736d46917a1bee286456cb937d58fe`. `main` está desactualizado respecto de las fichas productivas; no lo uses para reconstruirlas.
-- Implementación: `49476ea5f45b6eb9778b9f780d82e2c86720e0c3`. Prevención adicional y evidencias definitivas: `a64cbfb762e7b2df157eedb1f1fdc136baf2031f`. Consulta el HEAD remoto para el cierre documental posterior; conserva cambios ajenos.
+- Implementación: `49476ea5f45b6eb9778b9f780d82e2c86720e0c3`. Prevención adicional y evidencias definitivas: `a64cbfb762e7b2df157eedb1f1fdc136baf2031f`. Cierre documental inicial: `26a413367729debc40b88029663b8cbd68f9797f`. Verifica el HEAD remoto para actualizaciones documentales posteriores; conserva cambios ajenos.
 - Las 131 fichas originales coincidieron byte por byte con producción. Se retiraron 49 secciones, 73 iframes y 74 enlaces de recorridos. Cambian 64 fichas, dos CSS y los controles de generación/migración. No repitas la eliminación ni importes generadores históricos sobre los archivos actuales.
 - Fotografías, galerías, planos, videos promocionales, formularios, mapas, precios, metadatos, JSON-LD y enlaces sobrevivientes tienen comparación de preservación independiente. `#etapa-2` de Núcleo Costanera se conservó.
 - Pasan cinco pruebas Python, tres Node y 393 comprobaciones Chromium en 131 fichas a 1440/768/390 px. Cero recorridos, errores JavaScript, overflow, secciones vacías e imágenes rotas. Hay 27 capturas. El entorno bloqueó Google Maps en 351 vistas; sus iframes se preservaron, pero no se certificó su carga externa. No se enviaron formularios.

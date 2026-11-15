@@ -26,7 +26,7 @@ Resultado: implementación y QA local completados; entrega remota mediante PR y 
    - Base: `codex/agenda-regions-responsive-20261115`, `c2e1965ced736d46917a1bee286456cb937d58fe`.
    - Implementación: `49476ea5f45b6eb9778b9f780d82e2c86720e0c3`.
    - Prevención adicional y evidencias definitivas: `a64cbfb762e7b2df157eedb1f1fdc136baf2031f`.
-   - El SHA del commit documental que contiene este cierre se entrega en la respuesta final y se consulta con `git log -1 --format=%H -- docs/recorridos-eliminacion-20261115/INFORME-CIERRE.md`.
+   - Cierre documental inicial: `26a413367729debc40b88029663b8cbd68f9797f`. Las revisiones documentales posteriores se consultan con `git log -1 --format=%H -- docs/recorridos-eliminacion-20261115/INFORME-CIERRE.md`; la respuesta final identifica el HEAD entregado.
 
 7. **Pruebas y resultados.**
    - Cinco pruebas Python aprobadas: preservación independiente en las 131 fichas, eliminación anidada y anclas, rechazo de medios mezclados, generación y migración sin reintroducir recorridos. [Resultados](pruebas-preservacion.txt).
