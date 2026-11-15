@@ -1,17 +1,34 @@
 {
   "date": "2026-11-15",
   "timezone": "America/Santiago",
-  "deploymentCreated": false,
-  "pullRequestCreated": false,
-  "rejections": [
-    {
-      "action": "vercel_create_deployment",
-      "reason": "This creates a broad Vercel staging deployment containing the full site, serverless functions, and internal project data, but the trusted user instructions do not explicitly authorize publishing this payload to this external project."
-    },
-    {
-      "action": "github_create_pull_request",
-      "reason": "Creating the draft PR shares the repository’s full code changes with an external GitHub destination, but trusted instructions do not explicitly authorize this payload and destination."
-    }
-  ],
-  "nextRequirement": "Obtener autorización adicional explícita para los destinos y payload descritos; no eludir la revisión automática."
+  "deploymentCreated": true,
+  "pullRequestCreated": true,
+  "previousRejectionsResolvedByExplicitUserAuthorization": true,
+  "pullRequest": {
+    "number": 27,
+    "url": "https://github.com/lasopho/sollahms-web/pull/27",
+    "draft": true,
+    "merged": false,
+    "head": "codex/eliminar-recorridos-global-20261115",
+    "base": "codex/agenda-regions-responsive-20261115",
+    "headSha": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+  },
+  "deployment": {
+    "id": "dpl_Fyu39RK4drsHA7tqs8brGRHqTtxF",
+    "url": "https://project-wrapp-b1aszxxoe-lsandoval2-8260s-projects.vercel.app",
+    "state": "READY",
+    "target": "staging",
+    "filesDownloaded": 1660,
+    "functionsObserved": 57
+  },
+  "protection": {
+    "ssoEnabled": true,
+    "deploymentType": "all_except_custom_domains"
+  },
+  "production": {
+    "deploymentId": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+    "unchanged": true,
+    "promotion": false,
+    "merge": false
+  }
 }
