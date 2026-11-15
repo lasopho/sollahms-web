@@ -111,3 +111,7 @@ La rama remota sigue en `a7d68bb890fe770b3771e7df4848116e7128f76a`. Una conexió
 ## Revalidación — 15/11/2026, 19:38:58 America/Santiago
 
 Una conexión nueva continúa bloqueada por CONNECT 403; la política efectiva sigue en revisión 1 sin el hostname autorizado. PR Draft, Preview READY, SSO y ambos aliases productivos permanecen sin cambios. No se repitieron pruebas certificadas ni se publicó. [Cierre y evidencia](release-20261115T191251/REVALIDACION-193858.md). Es necesario aplicar la regla de red en la infraestructura del entorno activo para continuar.
+
+## Acceso — 2026-11-15T19:45:35.683607-03:00
+
+CONNECT 403 persiste; revisión efectiva 1. Sin nuevas pruebas de QA ni cambios runtime. [Cierre y evidencia](acceso-20261115T194535/INFORME-CIERRE.md). La siguiente etapa depende de aplicar el permiso de red al entorno activo.

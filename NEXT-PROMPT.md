@@ -1,27 +1,25 @@
-# Continuidad — acceso efectivo, QA y publicación condicionada de Sollahms
+# Continuidad — requisito de acceso pendiente para Sollahms
 
-Continúa en `lasopho/sollahms-web`, rama `codex/eliminar-recorridos-global-20261115`, PR #27 Draft. Lee AGENTS.md y, bajo `docs/recorridos-eliminacion-20261115/`, INFORME-CIERRE.md, release-20261115T191251/INFORME-CIERRE.md, AUTORIZACION-ALCANCE.md y REVALIDACION-193858.md de ese directorio. El prompt detallado anterior quedó archivado allí. Verifica HEAD y conserva cambios ajenos. Este prompt no autoriza su ejecución automática.
+Continúa en `lasopho/sollahms-web`, rama `codex/eliminar-recorridos-global-20261115`. Lee AGENTS.md, docs/recorridos-eliminacion-20261115/INFORME-CIERRE.md, release-20261115T191251/INFORME-CIERRE.md y AUTORIZACION-ALCANCE.md de ese directorio. Último cierre: docs/recorridos-eliminacion-20261115/acceso-20261115T194535/INFORME-CIERRE.md. El prompt detallado anterior está archivado allí. Este prompt no se ejecuta automáticamente.
 
-El propietario ya autorizó corrección, Previews, QA completo, Production sin dominios y publicación/promoción final condicionada a superar todos los controles. No solicitar nuevamente esa autorización.
+El propietario autorizó corrección, QA, Production sin dominios y publicación/promoción final tras superar todos los controles. Esa autorización permanece vigente.
 
-Estado revalidado el 15/11/2026, 19:38:58 America/Santiago:
-- PR https://github.com/lasopho/sollahms-web/pull/27, Draft, base `codex/agenda-regions-responsive-20261115`, SHA `c2e1965ced736d46917a1bee286456cb937d58fe`.
-- HEAD recibido `ea7c5ad7221de862d8725847ebf580d134d3ce14`; runtime `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`; hito prebuilt y runner `23de970853a2d2e1235cd9cf71addecefc7caa70`. Los commits siguientes sólo documentan revalidación.
-- Preview prebuilt READY `dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi`: https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/ . Siete `/api/...` registrados como lambdas; ejecución remota pendiente.
-- Vercel `project-wrapp`, proyecto `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`, equipo `team_A9VNIW2f2K1IJpd2pGdvDmEN`, slug `lsandoval2-8260s-projects`. SSO `all_except_custom_domains` conservado.
-- Producción y ambos aliases siguen en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`; SHA Git desconocido. No hay Production nuevo ni publicación final.
+Estado de acceso a 2026-11-15T19:45:35.683607-03:00: política efectiva revisión 1, hostname excluido y nuevo vercel curl autenticado con CONNECT 403/HTTP 000. Debe aplicarse el permiso en la infraestructura del entorno activo. No eludir políticas, desactivar SSO ni crear enlaces temporales de compartición. Repetir el prompt no aplica un cambio de red.
 
-Reutiliza lo completado: salida `/workspace/work/tour-release/preview/.vercel/output`, 1.660 archivos, 66 cambios y 1.594 preservados; siete bundles y 57 archivos de funciones. Inventario SHA-256 `f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0`. Pasaron 1.603 GET locales y siete imports/rechazos. No repetir eliminación, generadores históricos, empaquetado ni pruebas certificadas sin cambios.
+Referencias técnicas:
+- HEAD recibido `6a59b9eb36920f35e823056c888962e3e8dd8ad6`; runtime `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`; evidencia prebuilt/runner `23de970853a2d2e1235cd9cf71addecefc7caa70`.
+- PR #27 Draft: https://github.com/lasopho/sollahms-web/pull/27 ; base codex/agenda-regions-responsive-20261115, SHA c2e1965ced736d46917a1bee286456cb937d58fe.
+- Preview prebuilt dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi: https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/
+- Vercel project-wrapp, proyecto prj_URomRRU0MAy4etGKP5gWv3Qv4DGH, equipo team_A9VNIW2f2K1IJpd2pGdvDmEN. SSO all_except_custom_domains.
+- Producción de referencia dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN; no se publicó una nueva versión.
 
-Bloqueo actual: el entorno activo sigue en revisión efectiva 1 y no permite el hostname de Preview. Un nuevo vercel curl autenticado devuelve CONNECT 403 y HTTP 000. La sesión CLI existe; no es falta de autorización del propietario. Debe aplicarse acceso HTTPS real al ejecutor, sin eludir la política, desactivar SSO, divulgar secretos ni crear enlaces temporales de compartición. La vía del conector que crea esos enlaces fue rechazada automáticamente anteriormente.
+Reutilizar salida /workspace/work/tour-release/preview/.vercel/output: 1660 archivos, 66 cambios, 1594 preservados, siete bundles/57 archivos. Inventario SHA256 f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0. CLI 65.14.0 y sesión XDG existen bajo /workspace/work/tour-release; receta exacta en el prompt archivado. No copiar autenticación ni pedir tokens. No repetir eliminación, empaquetado o pruebas certificadas sin cambios.
 
-La CLI 65.14.0 usa caché `/workspace/work/tour-release/npm-cache` y sesión en los directorios XDG de `/workspace/work/tour-release/`. La receta exacta está en NEXT-PROMPT-anterior-193435.md. No copiar autenticación a Git ni pedir tokens. Reautenticar normalmente sólo si whoami indica sesión ausente.
+Siguientes pasos:
+1. Comprobar acceso efectivo al hostname. Si sigue CONNECT 403, informar bloqueo sin ejecutar etapas dependientes ni atribuir QA completado.
+2. Con acceso, revalidar HEAD, PR Draft, Preview READY, SSO y ambos aliases productivos, preservando cambios posteriores.
+3. Verificar portada, 131 rutas originales, recursos, siete endpoints con métodos seguros y protección de fuentes internas. Completar 524 controles remotos a 1440/768/390/320 con tests/qa-project-tour-removal.mjs y evidencias nuevas. Revisar medios, planos, formularios, WhatsApp, mapas, consola y composición. No enviar leads, reservas, correos ni operaciones CRM/Resend.
+4. Sólo tras aprobar todo, preparar los mismos bytes en Production aislado, desplegar oficialmente con --prebuilt --environment=production --skip-domain, verificar ese Production y promover exclusivamente su ID. Comprobar HTTP/HTTPS de ambos dominios y conservar el deployment anterior. No promover directamente la Preview.
+5. Actualizar PR y cierre tras hitos; mantener Draft mientras falte QA; preservar historia y entregar NEXT-PROMPT.md íntegro.
 
-Pasos:
-1. Comprueba si cambió efectivamente la política y prueba una conexión nueva a la Preview. Si sigue CONNECT 403, informa ese bloqueo; no atribuyas controles remotos completados ni recrees deployments.
-2. Con acceso, verifica `/`, las 131 rutas originales, assets, siete endpoints con métodos seguros y que config/fuentes internas no estén expuestas. No aceptar /static/ como ruta alternativa.
-3. Ejecuta las 524 combinaciones de 131 fichas a 1440/768/390/320 con el runner `tests/qa-project-tour-removal.mjs`, QA_REQUIRE_REMOTE=1 y evidencias nuevas. Revisa medios, planos, formularios, WhatsApp, mapas, navegación, consola y composición. Prioriza INN, Bcome, Núcleo Costanera, Plaza Las Condes, Bordevivo y Distrito Centro. No enviar leads, reservas, correos ni operaciones CRM/Resend.
-4. Tras aprobar todo: revisar PR y producción actual, preservar cambios posteriores, preparar los mismos bytes en Production aislado y desplegar oficialmente con `--prebuilt --environment=production --skip-domain`. Verificar ese Production y sus funciones antes de promoverlo; no promover directamente la Preview. Comprobar HTTP/HTTPS de ambos dominios y conservar el deployment previo para recuperación.
-5. Actualiza PR y cierre tras hitos, conserva historia, genera NEXT-PROMPT.md y entrega enlaces, SHA y prompt íntegro. Mantén Draft mientras falte QA; no fusionar por defecto.
-
-Protecciones: sin cambios comerciales, CRM, AI Lab, proveedores, credenciales del sitio, sitemap o páginas ajenas; sin gastos ni ampliación de alcance. La publicación sólo se acepta con las 131 fichas, cuatro anchos, siete funciones, preservación y ambos dominios comprobados. Estado actual: 0/131 fichas y 0/524 combinaciones remotas; intervención parcial, no publicada.
+Protecciones: sin cambios comerciales, CRM, AI Lab, proveedores, credenciales del sitio, sitemap o páginas ajenas; sin gastos ni ampliación de alcance. Aceptación: 131 fichas, cuatro anchos, siete funciones y preservación comprobados, publicación y ambos dominios verificados. Hasta entonces, resultado parcial: 0/524 controles remotos y sin publicación.
