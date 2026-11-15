@@ -103,3 +103,7 @@ La autorización integral permite continuar hasta publicación tras superar todo
 Pasaron 1.603 GET locales desde la salida ensamblada y siete imports/rechazos de funciones, sin llamadas externas. La CLI ya está autenticada por el acceso normal completado por el usuario. El proxy del ejecutor sigue rechazando el hostname nuevo con CONNECT 403: QA remoto 0/131 y 0/524, sin preparación ni publicación Production. PR #27 sigue Draft; SSO y ambos aliases productivos se conservan. No se confunde registro/READY con aprobación funcional.
 
 [Cierre de este hito, autorización, pruebas y pendientes](release-20261115T191251/INFORME-CIERRE.md). Evidencias y runner en commit `23de970853a2d2e1235cd9cf71addecefc7caa70`. La autorización integral permanece vigente; falta acceso efectivo del entorno para completar los controles antes de publicar.
+
+## Revalidación — 15/11/2026, 19:34:35 America/Santiago
+
+La rama remota sigue en `a7d68bb890fe770b3771e7df4848116e7128f76a`. Una conexión nueva mediante CLI autenticada continúa bloqueada por CONNECT 403; el entorno conserva revisión efectiva 1 sin el hostname de la Preview. PR Draft, Preview READY y SSO se conservan; producción y ambos aliases siguen en el deployment anterior. No se repitieron empaquetado ni QA histórico, ni hubo cambios runtime o publicación. [Cierre de revalidación y evidencia](release-20261115T191251/REVALIDACION-193435.md). La siguiente acción depende de aplicar el acceso real al entorno activo.
