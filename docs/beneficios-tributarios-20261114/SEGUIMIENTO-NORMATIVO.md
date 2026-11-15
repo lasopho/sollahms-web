@@ -112,7 +112,7 @@ Base legal: art.10N°2 letraF y octavo transitorio. Resolución general de forma
 
 ### Textos para revisión posterior
 
-1. **iva2026, aclaración opcional:** «El terreno tiene tratamiento separado: el artículo2N°1 del DL825 lo declara no afecto a IVA. La exención transitoria examinada corresponde a ventas de viviendas construidas que normalmente estarían afectas; no es una nueva exención general de terrenos».
+1. **iva2026, precisión propuesta:** «Deben distinguirse tres reglas: el artículo 2 N.º 1 del DL 825 declara los terrenos no afectos a IVA; esto no exime toda operación inmobiliaria que incluya terreno. En una venta de inmueble gravada, el artículo 17 determina la base imponible deduciendo del precio contractual el valor de adquisición del terreno incluido, total o proporcional, con el reajuste legal y conforme a las reglas aplicables. Esa deducción no convierte la operación completa en exenta ni supone dos ventas independientes. Por su parte, el artículo cuarto transitorio de la Ley 21.850 permite optar por una exención temporal para determinadas ventas de viviendas nuevas que, conforme al régimen general, estarían gravadas, siempre que cumplan los requisitos legales. La no afectación del terreno, la determinación de la base imponible y esta exención transitoria son conceptos distintos».
 2. **mayores2027, renovación:** «La ley contempla una declaración jurada anual y remite su plazo y forma a resolución del SII. La noticia del11/11/2026 y la FAQ actualizada el06/11/2026 indican solicitud inicial y continuidad mientras se cumplan requisitos. No se ha localizado en esta revisión el acto general que concilie ambas indicaciones. Confirmar el procedimiento vigente antes de asumir que no habrá nuevas declaraciones».
 3. **mayores2027, convenio:** «La FAQ del SII sobre deuda de contribuciones2025 señala que un convenio que comprenda toda esa deuda, con cuotas al día, permite considerarla al día para solicitar el beneficio, sujeto a los demás requisitos. Es orientación administrativa informativa; no implica condonación ni acredita por sí sola la exención».
 4. **mayores2027, fallecimiento:** «La ley contempla reglas particulares de continuidad para la sucesión y el cónyuge o conviviente civil sobreviviente; deben revisarse el estado de adjudicación, residencia, edad y venta. Esta continuidad es distinta de la excepción del25% de derechos heredados».
@@ -135,3 +135,32 @@ No es necesario cambiar hoy las fechas de verificación en HTML o JSON: este inf
 ## 8. Registro de alcance
 
 Único archivo creado por este seguimiento: `docs/beneficios-tributarios-20261114/SEGUIMIENTO-NORMATIVO.md`. Sin cambios a HTML/CSS/JS, MATRIZ.md, matriz-beneficios.json, otros documentos originales, deployment o configuración. No se ejecutaron pruebas técnicas ni navegador, formularios, indexación o T0 público. PR19 se comprobó abierto, borrador y no fusionado. Producción consultada en Vercel permanece en `dpl_5XmA5bbvmsDyttpgwC3sZf8jKtFk` (SHA `700c96b0868af9ef648be90d7754192041e5f383`); no se ejecutaron operaciones de despliegue ni promoción. Se solicita revisión del usuario de este informe, no autorización de publicación.
+
+
+## 9. Ajuste documental final — precisión de iva2026
+
+**Fecha de revisión:** 2026-11-14T22:17:13-03:00 — America/Santiago.
+
+**Alcance:** exclusivamente la propuesta editorial de `iva2026` de este informe. No se aplica a la página ni a las matrices. Las otras quince fichas y los pendientes administrativos conservan su estado; la publicación continúa bloqueada.
+
+### Redacción anterior
+
+1. **iva2026, aclaración opcional:** «El terreno tiene tratamiento separado: el artículo2N°1 del DL825 lo declara no afecto a IVA. La exención transitoria examinada corresponde a ventas de viviendas construidas que normalmente estarían afectas; no es una nueva exención general de terrenos».
+
+### Nueva propuesta
+
+La nueva redacción íntegra figura en el punto 1 de «Textos para revisión posterior» de la sección 6. Sustituye únicamente el texto anterior y separa expresamente no afectación, base imponible y exención transitoria.
+
+### Fundamento y fuentes oficiales
+
+| Norma y fuente | Precisión que sustenta |
+| --- | --- |
+| [DL 825, artículo 2 N.º 1 — BCN](https://www.bcn.cl/leychile/navegar?idNorma=6369) | No afectación de terrenos; no implica que toda operación que los incluya quede exenta. Corroboración administrativa en Circular 37, sección II.1.1. |
+| [DL 825, artículo 17 — BCN](https://www.bcn.cl/leychile/navegar?idNorma=6369) y [Circular SII 37, de 20/05/2020](https://www.sii.cl/normativa_legislacion/circulares/2020/circu37.pdf), secciones II.1.1 y II.3.2 | Deducción del valor de adquisición del terreno, total o proporcional y reajustado, en la base imponible de ventas gravadas. No equivale a una exención de la operación. |
+| [Ley 21.850, artículo cuarto transitorio — BCN, versión 17/10/2026](https://www.bcn.cl/leychile/navegar?idNorma=1229250&idVersion=2026-10-17) | Opción de exención temporal sujeta a requisitos copulativos para ventas de viviendas nuevas que normalmente estarían gravadas. Es un fundamento distinto de las reglas anteriores. |
+
+**Justificación jurídica:** la redacción anterior omitía el mecanismo de base imponible del artículo 17. Su incorporación evita confundir la no afectación del terreno con una exención general de la compraventa. La Circular 37 trata la venta del inmueble construido como una operación, sin separar ficticiamente dos ventas. La expresión «conforme a las reglas aplicables» preserva la alternativa legal de avalúo fiscal y las reglas especiales que correspondan a la operación; esta propuesta no es una fórmula universal de cálculo.
+
+**Control documental:** se conserva la distinción entre ley y actos administrativos pendientes del informe original. Este ajuste no acredita nuevas circulares definitivas ni altera fechas de vigencia. La consulta de BCN al DL 825 en esta sesión devolvió una página sin articulado extraíble; su contenido pertinente se corroboró mediante la Circular 37 del SII, que reproduce los artículos, y la consulta previa registrada en este informe. El artículo cuarto transitorio de la Ley 21.850 fue consultado directamente en BCN.
+
+**Verificación:** sustitución de un único párrafo editorial y adición de este registro antes/después; sin cambios a código, matrices, CORRECCIONES.md, despliegues o configuración. No se repiten pruebas técnicas.
