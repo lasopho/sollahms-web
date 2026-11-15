@@ -299,3 +299,115 @@ Los escenarios bajo/medio/alto de la sección8 se mantienen como estimaciones, n
 Revisar dirección técnica, custodia, presupuesto y privacidad. Una autorización posterior deberá identificar **etapa, recurso, acciones, datos exclusivamente sintéticos y máximo de gasto**, distinguiendo desarrollo local, creación de recurso, DDL, despliegue privado e integración. No agrupar todas esas acciones bajo «aprobar diseño».
 
 Hasta entonces no iniciar código, servicios, tablas, endpoints, credenciales, conexiones, deployments ni medición. PR23 abierto y en borrador. Esta revisión modifica exclusivamente DISENO-INFRAESTRUCTURA.md; QA.md y sus evidencias se preservan sin cambios.
+
+
+## 14. Revisión final documental — condiciones previas a implementación
+
+15/11/2026, America/Santiago. Base revisada: `9ccb173965e81c3b0f6a3e7e66056f3b0536eb1f`. La dirección API Vercel + PostgreSQL exclusivo está aprobada **para continuar evaluando**, no para crear recursos o activar captura. Esta sección precisa las anteriores; parámetros numéricos nuevos son propuestas de ensayo, no configuración vigente.
+
+### 14.1 Emisión y uso de capacidades
+
+La capacidad acredita permiso acotado de ingesta, nunca identidad humana. Un bot puede obtenerla; un token firmado no corrige una XSS ni impide su robo.
+
+- Emisión solo por POST same-origin, con tamaño acotado, versión/entorno permitidos y límite distribuido **también en el emisor**, antes de firmar. Sin dependencia de document.referrer.
+- Propuesta inicial: 5 emisiones/minuto por señal efímera de riesgo y 100/minuto globales para etapa sintética; 60 peticiones/minuto por capacidad y tope de eventos/capacidad. Ajustar a ensayo, no extrapolar esos límites a producción.
+- La señal de riesgo puede usar IP solo transitoriamente en borde si se aprueba privacidad; no persistirla ni convertirla en identidad. Sin esa señal, aplicar límite global más estricto y reconocer menor resistencia a generación masiva de sesiones.
+- Contador central atómico, presupuesto diario de emisiones/eventos y límite de conexiones. Si el limitador falla, cerrar ingesta analítica; la agenda y formularios siguen funcionando.
+- Claims mínimos: issuer, audience, environment, session_id, jti, issued_at, expires_at, versión y generación de token. Firma con algoritmo permitido y clave de servidor versionada; TTL propuesto5min, nunca superior a la sesión. No tokens en URL, logs, exportación ni almacenamiento persistente de larga duración.
+- Renovación consume cuota y exige sesión vigente, generación activa y actividad reciente validada. Rotación atómica invalida generación anterior; reintentos usan la capacidad vigente sin cambiar event_id. El cliente recupera ACK perdido por deduplicación.
+- Una capacidad multi-evento **es reutilizable dentro de su alcance**: no se promete token de un solo uso. Se impide reutilización después de vencimiento/revocación, en otro entorno o para eventos server-only. Replay de un evento idéntico no añade efecto; mismo ID/secuencia con otro contenido se rechaza. Tokens robados vigentes pueden generar eventos falsos dentro de cuota: riesgo residual explícito.
+- Eventos fuera de orden dentro de ventana se concilian sin inventar pasos. Huecos, discrepancias, contexto expirado o token rechazado dejan atribución/cobertura desconocida; nunca se asigna un CTA por aproximación.
+- Detección de ráfagas y patrones imposibles produce cuarentena o descarte con contador agregado. No usar fingerprint, CAPTCHA comercial ni proveedor antibot adicional sin aprobación específica.
+
+### 14.2 Procedimiento de dimensionamiento PostgreSQL
+
+No se ejecuta SQL ni se cambia configuración. El procedimiento para el futuro candidato será:
+
+1. Obtener evidencia sanitizada del recurso exclusivo: compute, max_connections efectivo M, conexiones reservadas por plataforma/Auth/administración R, límite de clientes pooler P, pools por rol y consumo pico. No asumir valores del CRM.
+2. Definir margen H y presupuesto backend B=M−R−H. Asegurar suma de máximos de pools por rol más conexiones directas ≤B. Ejemplo puramente didáctico: M100, R30, H20 deja B50; no son límites observados de Supabase.
+3. Fijar límites separados para ingest, reconciler, reporter y retention. El pool por proceso multiplicado por instancias puede exceder el presupuesto: limitar simultáneamente instancias, clientes y concurrencia global, no solo conexiones locales.
+4. Modelar pico de llegadas, duración de transacción y consultas por lote. Estimar concurrencia con tasa pico×duración; contrastar con ensayo sintético antes de aprobar tamaño. El escenario de volumen mensual no demuestra capacidad de ráfaga.
+5. Propuesta de ensayo: adquirir conexión≤500ms, consulta ingesta≤1s, transacción≤2s, reporte≤3s y respuesta Analytics≤3s. Consultas parametrizadas, rango de reporte≤31d, páginas≤1.000filas y lotes≤20eventos; exportar agregados. No consultas sin límites ni transacciones abiertas esperando proveedor.
+6. Ante saturación: 429/503 reintentable, backoff con jitter y cola acotada. Circuit breaker analítico abre tras umbral de fallos; recuperación half-open con pocas sondas y drenaje limitado. No aumentar pools automáticamente ni reiniciar la base compartiendo impacto con operaciones.
+7. Probar timeout, pool agotado, consulta lenta y pérdida tras commit. Registrar p95/p99, errores, conexiones pico, backlog y recuperación sin duplicados. Aprobar capacidad solo después de evidencia; reservar capacidad para purga y conciliación.
+
+El límite de conexiones no se deduce de ACTIVE_HEALTHY. Pooling por transacción exige revisar compatibilidad de driver y estado de sesión. Ningún worker analítico puede consumir conexiones o secretos CRM.
+
+### 14.3 Privacidad y responsabilidad pendientes
+
+Finalidad exclusiva: evaluar el recorrido comercial y la calidad de entrega del canal, sin perfilar personas ni crear CRM. Sesiones, request_ref y correlaciones son **datos seudónimos potencialmente vinculables**, no anonimato garantizado.
+
+La entidad responsable, representante, custodio y suplente quedan por designar. Vercel y proveedor PostgreSQL serían encargados/proveedores sujetos a contratos y evaluación; Resend conserva su finalidad operacional independiente. Revisar regiones, subencargados y transferencias internacionales antes del piloto; el alojamiento estadounidense observado no es autorización de transferencia.
+
+La base habilitante debe fijarse mediante revisión competente para cada finalidad; no extender automáticamente consentimiento de contacto a Analytics. Aprobar aviso, canal de derechos, procedimiento de identificación proporcional, acceso/rectificación/supresión/oposición y otros derechos aplicables. No añadir datos personales a Analytics para facilitar su búsqueda.
+
+Retenciones30/90d, tombstones31d, cola24h y backups7d siguen propuestas. Una supresión debe abarcar eventos, vínculos, jobs, caches y exportaciones bajo control; agregados solo pueden conservarse si su tratamiento es admisible y el riesgo de reidentificación está resuelto. En backups no editables, restringir acceso hasta caducidad y reaplicar registro de borrados antes de restaurar servicio. No certificar eliminación completa mientras existan copias recuperables fuera del plazo aprobado.
+
+### 14.4 Recibos Resend: protocolo futuro
+
+1. Ruta aislada, cuerpo crudo limitado, secreto propio del entorno; verificar firma mediante SDK oficial fijado y headers de ID/timestamp/firma antes de interpretar campos.
+2. Verificar frescura del timestamp de **entrega del webhook**, con tolerancia de la biblioteca revisada y reloj confiable. No confundirlo con la fecha del evento: un evento antiguo puede llegar legítimamente en un reintento firmado nuevo.
+3. Persistir de forma atómica una proyección mínima y deduplicar por proveedor+ID de mensaje webhook; conservar digest y detectar conflicto de contenido. No guardar destinatarios/cuerpos/headers sensibles. Responder éxito después del commit, no antes.
+4. Verificar además unicidad semántica por mensaje operacional y tipo, para replays o recibos equivalentes con otro ID. La firma sola no impide repetición.
+5. Entrega sin aceptación correlacionada queda huérfana, fuera de numeradores. Conciliar con registro operacional confiable; el navegador no puede aportar prueba de aceptación.
+6. Recibos tardíos dentro de retención actualizan la cohorte original con fecha de revisión. Fuera de horizonte, no resucitar datos eliminados: contabilizar tardanza no atribuible y documentar limitación.
+7. Si falla base, devolver error para reintento; si se agota la ventana del proveedor, marcar desconocido y conciliar mediante procedimiento autorizado. Nunca deducir entrega del silencio, de HTTP200 o de ausencia de rebote.
+8. Caída tras aceptación del envío y antes de correlación: resultado analítico desconocido; no repetir envío con nueva clave. No hay transacción distribuida automática.
+9. La confirmación acredita servidor destinatario, no lectura, atención o venta. Mantener fallos, rebotes y retrasos como estados distintos.
+
+Fuentes oficiales consultadas: [firmas](https://resend.com/docs/webhooks/verify-webhooks-requests) y [reintentos/replays](https://resend.com/docs/webhooks/retries-and-replays). Resend documenta reintentos y posible deshabilitación ante fallos persistentes; no suponer reintentos ilimitados. Ninguna conexión, webhook, replay o correo se ejecutó.
+
+### 14.5 Pruebas obligatorias de continuidad comercial — NO ejecutadas
+
+Aplicar en futuro entorno sintético autorizado, comparando con flujo operacional sin Analytics. Son pruebas nuevas del acoplamiento futuro; no repetición de las40/14/7 históricas.
+
+| Fallo inducido | Invariante exigida | Evidencia |
+| --- | --- | --- |
+| Script Analytics bloqueado o excepción | Agenda carga y formulario inicializa | DOM/controles accesibles y sin dependencia del módulo analítico |
+| Emisión de capacidad caída, 429 o token inválido | Formulario inicia y admite datos válidos | Operación sin contexto analítico; cobertura desconocida |
+| DNS/red Analytics caída o timeout | Envío válido no espera Analytics | Orden de llamadas y respuesta operacional preservada |
+| PostgreSQL agotado o caído | Solicitud comercial conserva su resultado | Respuesta del proveedor simulado y ausencia de dependencia de DB analítica |
+| Cola llena, IndexedDB denegado o cuota local | No bloquea validación ni submit | Error analítico aislado; mensaje comercial intacto |
+| ACK perdido y reintentos simultáneos | No duplica envío comercial | Misma idempotencia operacional; efectos analíticos deduplicados |
+| Firma webhook inválida o proveedor sin entrega | Respuesta de aceptación no se transforma en error | Estado analítico desconocido/pendiente, nunca entrega ficticia |
+| Corte por presupuesto o circuito abierto | Sitio, agenda y formulario siguen disponibles | Corte limitado a rutas Analytics, sin pausa global de Vercel |
+| Reinicio de worker o proyección fallida | No retracta aceptación ni genera otro correo | Conciliación posterior y reporte de cobertura |
+
+Criterio: cargar, iniciar, enviar solicitud válida y recibir respuesta operacional correcta en todos los fallos exclusivamente analíticos. No introducir await de Analytics en la cadena de submit, validación dependiente de token analítico ni transacción comercial condicionada a su base. Si el propio canal operacional falla, preservar su respuesta de incertidumbre; Analytics no debe convertirla en éxito.
+
+### 14.6 Presupuesto: clasificación explícita
+
+| Categoría | Estado |
+| --- | --- |
+| Tarifas públicas de proveedores | Verificadas en fuentes y fecha de sección8; no equivalen a factura contratada |
+| Muestra de cargos Vercel | Observada con discrepancia temporal, no conciliada; no extrapolar |
+| Volúmenes, latencias, almacenamiento y subtotales | Estimaciones reproducibles, no mediciones |
+| Cuotas remanentes, plan Vercel y concurrencia efectiva | No verificadas |
+| Topes60/75/150USD mensuales | Propuestas, no autorización de gasto |
+| PITR, copia independiente, Auth especial, SMS/SAML, antibot, logs ampliados, impuestos y región distinta | No incluidos o pendientes de cotización explícita |
+| Riesgos | Consumo compartido, cambios de tarifas, ataques, cargos tardíos, backups y reintentos |
+
+El corte propuesto no garantiza techo financiero absoluto. Elegir límites técnicos, reserva de conciliación y alertas antes de presupuestar; no activar auto-upgrades. La primera etapa sintética no hereda aprobación de60USD por ser escenario bajo: debe fijarse su propio presupuesto, incluso si se exige gasto adicional cero.
+
+### 14.7 Autorizaciones independientes y puerta de etapa1
+
+Esta tabla separa publicación de activación real y PostgreSQL de infraestructura general. Todas pendientes de autorización expresa de ejecución.
+
+| Área | Decisión que debe quedar escrita |
+| --- | --- |
+| Infraestructura | Proveedor, recurso/entorno/región y acciones de creación o reutilización permitidas |
+| PostgreSQL | Instancia exclusiva, DDL/roles autorizados, cuotas, pooling y backup |
+| Seguridad | Custodios, secretos, controles y pruebas negativas autorizadas |
+| Privacidad | Responsable, base habilitante, información, encargados y derechos |
+| Retención | Plazos por soporte, purga, copias y restauración |
+| Resend | Conexión de prueba, webhook, destinatarios/volumen; producción requiere aprobación distinta |
+| CRM | Mantener desconectado; cualquier integración futura exige proyecto y autorización propios |
+| Presupuesto | Tope de etapa, rubros, duración, alertas y tratamiento de excedentes |
+| Publicación | Candidato, dominio/entorno, SHA y rollback específicos |
+| Activación real | Población, finalidad, período, alcance y aprobación de captura de visitantes |
+
+**Para autorizar etapa1 sintética:** identificar recurso aislado o autorizar desarrollo local sin recurso remoto; fijar acciones permitidas (código, tablas, secretos, preview no se presumen), presupuesto, responsables y datos exclusivamente sintéticos. Exigir contrato cerrado, rechazo de PII/eventos server-only, deduplicación, saturación controlada y continuidad comercial con proveedor simulado. Resend y CRM siguen desconectados; no requiere envíos reales para aprobar esa etapa.
+
+Riesgos residuales: automatización que obtiene capacidades, tokens robados, datos perdidos antes de ingesta, recibos fuera de retención, costos tardíos y límites de restauración. No hay garantía de cobertura total ni de identidad humana.
+
+**Recomendación final:** diseño listo para revisión de decisiones y delimitación de una etapa sintética; no listo para activación productiva. No declarar cerrado QA general: Sheets visual continúa bloqueada. Esta actualización únicamente modifica este documento, preserva código, deployment, producción, SEO/GEO y T0, y no fusiona PR23.
