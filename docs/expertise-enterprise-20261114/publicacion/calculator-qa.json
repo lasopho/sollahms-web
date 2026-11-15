@@ -1,0 +1,10 @@
+[
+  {
+    "type": "text",
+    "text": "[\"1.000 UF\",\"4.000 UF\"]"
+  },
+  {
+    "type": "text",
+    "text": "03 / CALCULA TU APORTE\n  - heading \"¿Cuánto necesitas aportar?\" [level=2]\n  - paragraph: Elige un precio y un porcentaje hipotético. Este cálculo muestra solo cómo se divide el precio entre aporte propio y deuda; no determina cuánto te prestaría un banco.\n  - generic: Valor de la propiedad (UF)\n  - spinbutton \"Valor de la propiedad (UF)\": \"5000\"\n  - generic: Financiamiento supuesto (máximo 80%)\n  - spinbutton \"Financiamiento supuesto (máximo 80%)\" [active]: \"81\"\n  - paragraph: Puedes explorar de 0% a 80% de financiamiento supuesto. El 80% es el límite de este ejemplo educativo, no una condición ofrecida por un banco.\n  - alert: Ingresa un porcentaje entre 0 y 80, con hasta dos decimales.\n  - paragraph:\n    - text: Capital propio para el precio\n    - status: —\n  - paragraph:\n    - text: Financiamiento supuesto\n    - status: —\n  - paragraph: Con un supuesto de 80%, aportas el 20% del precio. Necesitarás recursos adicionales para los costos de la operación.\n  - paragraph: Ejemplo educativo. No constituye una oferta de financiamiento ni una evaluación crediticia. No incluye intereses, seguros, impuestos ni gastos operacionales.\n  - generic \"Cómo se calcula este ejemplo\"\n  - paragraph: No convertimos UF a pesos. Los valores se calculan en tu navegador, no se guardan ni se envían. Este aporte al precio no corresponde al concepto tributario de capital propio.\n  - paragraph: "
+  }
+]
