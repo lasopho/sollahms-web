@@ -66,3 +66,11 @@ El usuario otorgó autorización explícita para crear el PR en borrador y despl
 - Producción se volvió a consultar y continúa en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`, estado READY, target production. No se modificaron producción, dominios ni configuración de protección. No hubo merge ni promoción.
 
 **Estado:** implementación y QA local completados; PR Draft creado; Preview privada READY con SSO configurado. Pendiente: revisión visual/HTTP autenticada de la Preview y eventual feedback del usuario. La autorización recibida no incluye merge, producción ni promoción.
+
+## QA final de Preview — 15/11/2026, 17:37–17:45 America/Santiago
+
+La auditoría autenticada de fuentes verifica 1.660/1.660 hashes del deployment `dpl_Fyu39RK4drsHA7tqs8brGRHqTtxF` frente al candidato. Las 131 fichas coinciden con la rama y están sin recorridos; ninguna de sus 1.119 rutas locales de recursos falta. Se conservan formularios, WhatsApp, imágenes, planos y mapas en las fuentes. Los 57 archivos de funciones corresponden a **7 bundles**, corrigiendo el recuento del addendum anterior.
+
+**QA visual remoto pendiente:** el proxy excluye el hostname de Preview y Chromium reproduce `ERR_TUNNEL_CONNECTION_FAILED`. No se inspeccionó visualmente ninguna ficha remota ni se comprobaron los 320 px. Las 393 comprobaciones y capturas previas se reutilizan sólo como evidencia histórica. SSO permanece configurado; PR #27 Draft y producción en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`. No hubo cambios runtime, reconstrucción, promoción ni merge.
+
+[Informe completo y pendientes](qa-preview-20261115T173733/INFORME-QA-FINAL.md). Evidencias en commit `1933a086f29086fa45883b18176fdb2fe88fdf30`. El siguiente paso es disponer de acceso de red y autenticación permitidos para esa URL y completar el QA remoto, sin pedir otra vez las autorizaciones históricas ya resueltas.
