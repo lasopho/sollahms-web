@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-11-15T17:50:32-03:00",
+  "headBeforeCheck": "cfecd02aa0bf5a04dbfec5975d7c7716db32a941",
+  "pr": {
+    "number": 27,
+    "draft": true,
+    "merged": false
+  },
+  "deployment": {
+    "id": "dpl_Fyu39RK4drsHA7tqs8brGRHqTtxF",
+    "state": "READY",
+    "runtime": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+  },
+  "sso": {
+    "enabled": true,
+    "deploymentType": "all_except_custom_domains"
+  },
+  "production": [
+    {
+      "alias": "www.sollahms.cl",
+      "deploymentId": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN"
+    },
+    {
+      "alias": "sollahms.cl",
+      "deploymentId": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN"
+    }
+  ],
+  "access": {
+    "target": "project-wrapp-b1aszxxoe-lsandoval2-8260s-projects.vercel.app",
+    "hostnameAllowed": false,
+    "credentialScopedToTarget": false,
+    "networkPolicyState": "enforced",
+    "error": "Tunnel connection failed: 403 Forbidden",
+    "credentialsSent": false
+  },
+  "newRemoteVisualFiches": 0,
+  "newResponsiveChecks": 0,
+  "repeatedSourceAudits": 0,
+  "repeatedHistoricalTests": 0,
+  "runtimeModified": false
+}

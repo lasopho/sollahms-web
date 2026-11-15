@@ -74,3 +74,7 @@ La auditoría autenticada de fuentes verifica 1.660/1.660 hashes del deployment 
 **QA visual remoto pendiente:** el proxy excluye el hostname de Preview y Chromium reproduce `ERR_TUNNEL_CONNECTION_FAILED`. No se inspeccionó visualmente ninguna ficha remota ni se comprobaron los 320 px. Las 393 comprobaciones y capturas previas se reutilizan sólo como evidencia histórica. SSO permanece configurado; PR #27 Draft y producción en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`. No hubo cambios runtime, reconstrucción, promoción ni merge.
 
 [Informe completo y pendientes](qa-preview-20261115T173733/INFORME-QA-FINAL.md). Evidencias en commit `1933a086f29086fa45883b18176fdb2fe88fdf30`. El siguiente paso es disponer de acceso de red y autenticación permitidos para esa URL y completar el QA remoto, sin pedir otra vez las autorizaciones históricas ya resueltas.
+
+## Revalidación de acceso — 15/11/2026, 17:50:32 America/Santiago
+
+El hostname de Preview sigue excluido del entorno y un nuevo GET reproduce CONNECT 403. PR #27 continúa Draft, Preview READY y SSO habilitado; ambos aliases de producción siguen en el deployment esperado. No se repitieron auditorías ni QA histórico ni se modificó runtime. Se solicitó al propietario del entorno habilitar acceso HTTPS y autenticación permitidos para esa URL. [Cierre de revalidación y evidencias](qa-preview-20261115T173733/REVALIDACION-175032.md). El QA visual remoto, incluidos 320 px, permanece pendiente.
