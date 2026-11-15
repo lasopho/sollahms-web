@@ -13,5 +13,5 @@ assert.deepEqual(additions,['release/static/assets/css/beneficios-tributarios.cs
 const html=readFileSync('release/static/beneficios-tributarios-inmobiliarios.html','utf8');
 assert.ok(html.includes('noindex, nofollow'));assert.ok(!/<form[\s>]/i.test(html));
 const files=[];function scan(dir){for(const n of readdirSync(dir)){const p=join(dir,n),s=lstatSync(p);assert.ok(!s.isSymbolicLink());if(s.isDirectory())scan(p);else files.push(p);}}scan('release');assert.deepEqual(files.sort(),manifest.map(x=>x.file).sort());
-for(const x of manifest){const b=readFileSync(x.file);assert.equal(createHash('sha1').update(b).digest('hex'),x.sha,x.file);assert.equal(b.length,x.size,x.file);const to='.vercel/output/'+x.file.slice(8);mkdirSync(dirname(to),{recursive:true});copyFileSync(x.file,to);}
+for(const x of manifest){const b=readFileSync(x.file);assert.equal(createHash('sha1').update(b).digest('hex'),x.sha,x.file);if(x.size!==undefined)assert.equal(b.length,x.size,x.file);const to='.vercel/output/'+x.file.slice(8);mkdirSync(dirname(to),{recursive:true});copyFileSync(x.file,to);}
 console.log(JSON.stringify({previewOnly:true,files:manifest.length,preserved:base.length,additions,formsAdded:0}));
