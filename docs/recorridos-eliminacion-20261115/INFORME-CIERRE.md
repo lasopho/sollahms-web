@@ -52,3 +52,17 @@ Resultado: implementación y QA local completados; entrega remota mediante PR y 
 9. **URL de Preview.** No disponible: no existe un deployment de esta tarea. No se sustituye por una Preview histórica ni por el sitio productivo. La protección SSO existente del proyecto es `all_except_custom_domains`; se debe conservar al crear la Preview autorizada.
 
 10. **Próxima acción recomendada.** Autorizar explícitamente ambos destinos y el alcance del paquete descritos en `solicitud-aprobacion.json`. La revisión automática exige esa confirmación adicional antes de reintentar. Después se podrá crear el PR en borrador y la Preview privada, validar su entrega y actualizar el cierre. Publicar, promover, fusionar a `main`, cambiar dominios, pagar servicios o modificar credenciales sigue requiriendo autorización separada.
+
+
+## Addendum de entrega autorizada — 15 de noviembre de 2026
+
+El usuario otorgó autorización explícita para crear el PR en borrador y desplegar el paquete completo exclusivamente como Preview privada en el proyecto Vercel indicado. Las dos operaciones se completaron:
+
+- **PR:** [#27 — Eliminar recorridos virtuales de las fichas de proyectos](https://github.com/lasopho/sollahms-web/pull/27). Estado: abierto, **Draft**, no fusionado. Base: `codex/agenda-regions-responsive-20261115` (`c2e1965ced736d46917a1bee286456cb937d58fe`). Head de runtime: `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`. GitHub reporta 117 archivos en el diff del PR.
+- **Vercel:** deployment `dpl_Fyu39RK4drsHA7tqs8brGRHqTtxF`, URL [Preview privada](https://project-wrapp-b1aszxxoe-lsandoval2-8260s-projects.vercel.app/), proyecto `project-wrapp`, ID `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`, equipo `team_A9VNIW2f2K1IJpd2pGdvDmEN`. Estado **READY**, target `staging`, sin dominios personalizados ni alias de producción. Metadata de commit: rama `codex/eliminar-recorridos-global-20261115`, SHA `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`.
+- El registro de build confirma **1.660 archivos de deployment descargados** y deployment completado. La inspección del árbol de deployment confirma **57 bundles de funciones** y `config.json`; la respuesta del árbol fue truncada por el límite del conector, por lo que no se usa como recuento exhaustivo de todos los nodos.
+- La configuración del proyecto fue releída después del despliegue: SSO habilitado con `all_except_custom_domains`. La URL de deployment es un hostname `vercel.app`, no un dominio personalizado. La protección de acceso está configurada; no se logró verificar una sesión HTTP autenticada desde esta herramienta, por lo que el acceso visual del usuario sigue pendiente.
+- La lectura directa de la URL mediante la herramienta web no fue accesible. No se afirma un QA HTTP/browser de la Preview. Las pruebas locales anteriores se mantienen como evidencia, pero no sustituyen la revisión de la URL desplegada.
+- Producción se volvió a consultar y continúa en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`, estado READY, target production. No se modificaron producción, dominios ni configuración de protección. No hubo merge ni promoción.
+
+**Estado:** implementación y QA local completados; PR Draft creado; Preview privada READY con SSO configurado. Pendiente: revisión visual/HTTP autenticada de la Preview y eventual feedback del usuario. La autorización recibida no incluye merge, producción ni promoción.
