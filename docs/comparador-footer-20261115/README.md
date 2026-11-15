@@ -1,6 +1,6 @@
 # Pie corporativo del Comparador Hipotecario
 
-Estado actualizado: QA responsive exacto aprobado en 1440, 768, 390 y 320 px sobre el mismo deployment. Candidato técnicamente apto para solicitar autorización de publicación. No publicado ni fusionado. Véase [QA responsive final](RESPONSIVE-QA.md).
+Estado actualizado: publicado y verificado en producción el 15/11/2026 a las 10:16:10.904 America/Santiago, con autorización expresa. PR #24 abierto en borrador, sin fusionar. Véase [acta de publicación](PUBLICACION.md) y [QA responsive aprobado](RESPONSIVE-QA.md).
 
 La revisión parcial y las limitaciones anteriores se conservan abajo como historial; quedaron resueltas mediante el navegador Chrome conectado y su control de viewport.
 
