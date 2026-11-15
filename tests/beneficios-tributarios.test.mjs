@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {relevantTopics} from '../assets/js/beneficios-tributarios-engine.mjs';
+const s={buyer:'persona',goal:'vivienda',condition:'nueva',mortgage:'si',count:'0',dfl:'si'};
+test('vivienda personal financiada: interés y DFL2 sin arrendamiento supuesto',()=>{const r=relevantTopics(s);assert.ok(r.ids.includes('intereses'));assert.ok(r.ids.includes('dfl'));assert.ok(!r.ids.includes('arriendo'));assert.ok(!r.ids.includes('credito21631'));});
+test('sociedad para uso privado: advertencia y no franquicias personales',()=>{const r=relevantTopics({...s,buyer:'empresa'});assert.ok(r.ids.includes('uso-personal'));for(const x of ['intereses','dfl','venta','mayores2027'])assert.ok(!r.ids.includes(x));});
+test('vivienda usada sin crédito ni DFL2 no recibe opciones incompatibles',()=>{const r=relevantTopics({...s,condition:'usada',mortgage:'no',dfl:'no',goal:'arriendo'});for(const x of ['iva2026','intereses','dfl','dfl2027'])assert.ok(!r.ids.includes(x));assert.ok(r.ids.includes('arriendo'));});
+test('oficina no recibe beneficios habitacionales',()=>{const r=relevantTopics({...s,goal:'empresa'});for(const x of ['intereses','dfl','dfl2027','iva2026','mayores2027'])assert.ok(!r.ids.includes(x));});
+test('cantidad total no decide orden DFL2',()=>{const r=relevantTopics({...s,count:'3',goal:'arriendo'});assert.ok(r.message.includes('no permite decidir'));assert.ok(r.ids.includes('dfl2027'));});
+test('1080 combinaciones devuelven solo temas existentes sin históricos automáticos',()=>{const matrix=JSON.parse(readFileSync(new URL('../docs/beneficios-tributarios-20261114/matriz-beneficios.json',import.meta.url)));const ids=new Set(matrix.benefits.map(x=>x.id));let n=0;for(const buyer of ['persona','empresa'])for(const goal of ['vivienda','arriendo','patrimonio','empresa'])for(const condition of ['nueva','usada','unknown'])for(const mortgage of ['si','no','unknown'])for(const count of ['0','1','2','3','unknown'])for(const dfl of ['si','no','unknown']){const r=relevantTopics({buyer,goal,condition,mortgage,count,dfl});assert.ok(r.ids.every(x=>ids.has(x)));assert.equal(new Set(r.ids).size,r.ids.length);assert.ok(!r.ids.includes('credito21631'));assert.ok(!r.ids.includes('restitucion'));n++;}assert.equal(n,1080);});
