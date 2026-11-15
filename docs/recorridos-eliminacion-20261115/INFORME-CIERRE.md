@@ -115,3 +115,7 @@ Una conexión nueva continúa bloqueada por CONNECT 403; la política efectiva s
 ## Acceso — 2026-11-15T19:45:35.683607-03:00
 
 CONNECT 403 persiste; revisión efectiva 1. Sin nuevas pruebas de QA ni cambios runtime. [Cierre y evidencia](acceso-20261115T194535/INFORME-CIERRE.md). La siguiente etapa depende de aplicar el permiso de red al entorno activo.
+
+## Acceso pendiente — 2026-11-15T19:48:22.506851-03:00
+
+CONNECT 403 persiste. La red efectiva del ejecutor continúa en revisión 1 sin el hostname. Sin repetición de QA ni cambios runtime/publicación. [Cierre y evidencia](continuidad-bloqueada-20261115T194822/INFORME-CIERRE.md). El requisito pendiente es administrativo en el entorno activo de Codex.
