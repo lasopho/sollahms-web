@@ -78,3 +78,9 @@ La auditoría autenticada de fuentes verifica 1.660/1.660 hashes del deployment 
 ## Revalidación de acceso — 15/11/2026, 17:50:32 America/Santiago
 
 El hostname de Preview sigue excluido del entorno y un nuevo GET reproduce CONNECT 403. PR #27 continúa Draft, Preview READY y SSO habilitado; ambos aliases de producción siguen en el deployment esperado. No se repitieron auditorías ni QA histórico ni se modificó runtime. Se solicitó al propietario del entorno habilitar acceso HTTPS y autenticación permitidos para esa URL. [Cierre de revalidación y evidencias](qa-preview-20261115T173733/REVALIDACION-175032.md). El QA visual remoto, incluidos 320 px, permanece pendiente.
+
+## QA Chrome — 2026-11-15 18:22:44 America/Santiago
+
+**Preview NO aprobada: fallo de empaquetado confirmado.** Chrome alcanza el hostname; portada y /inn-puerto-chico.html devuelven 404. Resources enumera 1.660 Static Assets, incluyendo funciones; /static/inn-puerto-chico.html muestra HTML sin estilos/imágenes y formulario deshabilitado. La auditoría histórica de hashes no certifica enrutamiento ni funciones registradas.
+
+Una ficha inspeccionada parcialmente para diagnóstico; **0/131 con QA completo**, cero controles responsive nuevos. Las 393 comprobaciones permanecen históricas. PR Draft, Preview READY y SSO habilitado; ambos aliases productivos siguen en dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN. Sin reconstrucción, reemplazo ni cambios runtime. [Informe, capturas y propuesta mínima](qa-preview-chrome-20261115T182244/INFORME-QA.md). La siguiente etapa debe resolver la ingestión correcta de Build Output API antes de reanudar QA. No se atribuye a un defecto de eliminación de recorridos ni al proxy anterior.
