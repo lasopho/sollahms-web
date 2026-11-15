@@ -96,3 +96,10 @@ Se preparó una salida aislada con 1.660/1.660 hashes y tamaños iguales al cand
 ## Continuidad integral autorizada — 2026-11-15T18:56:31-03:00
 
 El propietario autorizó corrección, QA y publicación condicionada a todos los controles. CLI 65.14.0 y 1.660 archivos preparados verificados. Login interrumpido por bloqueo de red a api.vercel.com; whoami sigue loggedIn:false. No hay nuevo deployment ni publicación. Ambos dominios conservan dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN. Ver [informe de continuidad](continuidad-autorizada-20261115/INFORME-BLOQUEO.md). No solicitar nuevamente autorización de publicación.
+# Hito vigente — nueva Preview prebuilt y publicación condicionada, 15/11/2026
+
+La autorización integral permite continuar hasta publicación tras superar todos los controles. Se creó mediante CLI oficial 65.14.0 la nueva Preview `dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi`, [URL privada](https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/), READY y prebuilt. La API registra siete `/api/...` como lambdas y las 1.660 fuentes coinciden con el candidato. La Preview defectuosa anterior queda como referencia no aprobada.
+
+Pasaron 1.603 GET locales desde la salida ensamblada y siete imports/rechazos de funciones, sin llamadas externas. La CLI ya está autenticada por el acceso normal completado por el usuario. El proxy del ejecutor sigue rechazando el hostname nuevo con CONNECT 403: QA remoto 0/131 y 0/524, sin preparación ni publicación Production. PR #27 sigue Draft; SSO y ambos aliases productivos se conservan. No se confunde registro/READY con aprobación funcional.
+
+[Cierre de este hito, autorización, pruebas y pendientes](release-20261115T191251/INFORME-CIERRE.md). Evidencias y runner en commit `23de970853a2d2e1235cd9cf71addecefc7caa70`. La autorización integral permanece vigente; falta acceso efectivo del entorno para completar los controles antes de publicar.
