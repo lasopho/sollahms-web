@@ -232,3 +232,70 @@ Consultadas15/11/2026. Valores de cuenta obtenidos mediante operaciones de lectu
 - [Supabase changelog](https://supabase.com/changelog.md): cambios de CLI/SDK requieren revisión al implementar; no se ejecutó CLI de Supabase.
 
 Solo se añade este documento. Sin tablas, endpoints, credenciales, servicios, envíos, gastos contratados, deployments, seguimiento real, modificaciones de formularios/producción/SEO/GEO/T0 ni fusión.
+
+
+## 13. Consolidación de continuidad y decisiones de aprobación — 15/11/2026
+
+Esta actualización parte del diseño documental `7dc61b8bd058026d83064e256a290484b2174057`, posterior al SHA de QA `1cfe9fe013c49d7323faa9a4b7565aa875ce2a44` indicado como referencia. Conserva ambos y la consolidación arquitectónica; no vuelve a una rama histórica.
+
+### Estado del QA observado
+
+Se conservan las 40 pruebas Node, 14 IndexedDB y 7 Web Locks anteriores, exportación real, importación/lectura Sheets, duplicación nativa coordinada y recuperación tras reinicio. **No se repitieron.** La ausencia de inflación se limita al recorrido observado. No se declara cobertura universal ni auditoría exhaustiva de almacenamiento.
+
+Sheets visual sigue **PENDIENTE/BLOQUEADA**. La diferencia decimal y las limitaciones causales de la sesión tras reinicio permanecen. **QA general NO cerrado.** El cierre documental de resultados observados no autoriza implementación, publicación ni seguimiento.
+
+### Condiciones de infraestructura que faltan acreditar
+
+Se reutilizan las lecturas del inventario de este mismo día, con su procedencia. No se repitió inventario remoto ni se presentan como consultas nuevas. Proyecto Supabase activo/Free y Vercel existente son recursos identificados, no recursos Analytics autorizados.
+
+| Condición | Evidencia actual | Pendiente verificable |
+| --- | --- | --- |
+| Recurso exclusivo | No existe recurso Analytics confirmado | Identidad, región, entorno y separación física respecto de CRM |
+| Cuotas | Plan público y escenarios documentados | Uso actual, saldo disponible y cargas de otros proyectos |
+| Conexiones | Documentación oficial revisada; sin configuración efectiva | max_connections, clientes del pooler, pools por rol y reserva de plataforma |
+| Custodia | Sin responsable/suplente formalizados | Responsable de claves, revocación y recuperación; sin compartir secretos en documentos |
+| Accesos | Lectura documental/metadata disponible | Matriz efectiva de roles mínimos y autorización de pruebas; no equivale a permiso DDL |
+| Backups | Capacidades del plan, no restore del futuro recurso | Destino, cifrado, retención, RPO/RTO y ensayo aislado aprobado |
+| Facturación | Discrepancia temporal Vercel conservada | Conciliación de período y plan contratado antes de afirmar costo incremental |
+| Resend | Contrato documentado, sin conexión | Canal, recibos, custodio, prueba autorizada y presupuesto |
+| CRM360 | Fuera de dependencia Analytics | Ninguna conexión necesaria; un proyecto futuro separado exigiría autorización |
+
+### Límite de conexiones y presión de carga
+
+La [documentación oficial de conexiones](https://supabase.com/docs/guides/database/connection-management), consultada el 15/11/2026, distingue conexiones directas y tamaño de pool; el pool se aplica por rol. Por tanto, separar roles sin sumar sus pools puede agotar PostgreSQL. Los límites efectivos del recurso no se infieren del estado ACTIVE_HEALTHY ni de la tabla de compute.
+
+Diseño propuesto: presupuestar suma de conexiones backend de ingest/reconciler/reporter/retention, más Auth, herramientas administrativas y reserva de plataforma. Mantener ese total por debajo del máximo efectivo verificado, con margen aprobado. Limitar también clientes de pooler e instancias/concurrencia de funciones. No confundir solicitudes por segundo con conexiones simultáneas ni multiplicar el pool máximo por cada función.
+
+Antes de implementar, documentar Cmax, reserva, pools por rol, límite de clientes y pico medido; sin estos valores el dimensionamiento permanece **NO CERTIFICADO**. Evitar consultas abiertas de pg_stat_activity que puedan exponer texto sensible en el contexto del bloqueo060. Solo estadísticas sanitizadas y procedimientos previamente autorizados. No se ejecutó SQL ni se cambió pooling.
+
+Usar transacciones cortas, timeout de adquisición y de consulta, cola acotada y rechazo reintentable al saturarse. Confirmar compatibilidad del driver con el modo de pooling antes de fijarlo. Un esquema propio dentro de la base CRM no cumple la separación exclusiva recomendada: los esquemas analytics/restricted descritos se alojarían en una instancia Analytics separada.
+
+### Invariante: fallo analítico no bloquea solicitud comercial
+
+El envío operacional no espera disponibilidad del receptor analítico. Contexto ausente, expirado, manipulado o receptor caído implica solicitud sin atribución; no rechazo de un formulario comercial válido. Los rechazos operacionales legítimos del formulario se mantienen.
+
+La proyección analítica se prepara fuera del resultado comercial, con cola durable cuando exista y autorización para ello. Si no puede registrarse evidencia, estado analítico desconocido/cobertura incompleta: nunca convertirlo en fallo comercial ni inventar aceptación. Una caída analítica tampoco debe originar otro envío. La implementación futura exige pruebas específicas de esta invariante y cambios operacionales explícitamente aprobados.
+
+### Matriz de autorización expresa
+
+Todas las filas siguientes están **PENDIENTES**. La autorización actual permite únicamente documentación.
+
+| Decisión | Propuesta revisable | Evidencia necesaria para aprobar | Lo que no autoriza aprobar esa fila |
+| --- | --- | --- | --- |
+| Infraestructura | API Vercel y PostgreSQL exclusivo | Recurso/región/entornos y responsables | Publicación o uso de CRM |
+| Almacenamiento | Esquemas separados, transacciones y backup | Capacidad, conexiones, aislamiento y restore | Captura real de visitantes |
+| Seguridad | Roles mínimos, MFA, firmas, límites y corte | Modelo de amenazas y plan de aceptación | Acceso general a cuentas o secretos |
+| Privacidad | Datos mínimos y finalidad específica | Base habilitante, información, encargados y derechos revisados | Presumir consentimiento del formulario |
+| Retención | 30d eventos, 90d agregados; respaldos definidos | Plazos aprobados para todas las copias y borrado verificable | Retención indefinida |
+| Resend | Adaptador y webhook autenticado | Canal de prueba, volumen, secretos custodiados y criterio de entrega | Envíos reales o cambio de formularios sin alcance adicional |
+| CRM360 | Mantener desconectado | Solo si futura necesidad independiente se justifica | Acceso a contactos por aprobar Analytics |
+| Costos | Topes orientativos60/75/150USD por escenario | Cuotas remanentes, facturación conciliada y rubros pendientes | Gastos inmediatos o ampliación automática |
+| Publicación | Piloto limitado, después de candidato aprobado | SHA, diff, QA, rollback, duración y seguimiento autorizados | Activación general posterior |
+
+Los escenarios bajo/medio/alto de la sección8 se mantienen como estimaciones, no compromisos de factura. El corte debe actuar exclusivamente sobre Analytics, con reserva para conciliación y borrado; ni saldo bajo ni cola saturada justifican detener formularios o el sitio. Alertas no garantizan un techo absoluto ante retraso de facturación.
+
+### Puerta siguiente
+
+Revisar dirección técnica, custodia, presupuesto y privacidad. Una autorización posterior deberá identificar **etapa, recurso, acciones, datos exclusivamente sintéticos y máximo de gasto**, distinguiendo desarrollo local, creación de recurso, DDL, despliegue privado e integración. No agrupar todas esas acciones bajo «aprobar diseño».
+
+Hasta entonces no iniciar código, servicios, tablas, endpoints, credenciales, conexiones, deployments ni medición. PR23 abierto y en borrador. Esta revisión modifica exclusivamente DISENO-INFRAESTRUCTURA.md; QA.md y sus evidencias se preservan sin cambios.
