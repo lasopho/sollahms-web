@@ -149,3 +149,13 @@ Justificación: Precisar copropiedad, obligaciones y exclusiones; diferenciar le
 **Corregido:** ['reforma', 'mayores', 'guia-mayores', 'resoluciones2026']
 
 Fuentes: [1](https://www.bcn.cl/leychile/navegar?idNorma=1229250), [2](https://www.sii.cl/noticias/2026/111126noti01pcr.htm), [3](https://www.sii.cl/servicios_online/docs/guia_declaracion_vivienda_principal.pdf), [4](https://www.sii.cl/normativa_legislacion/resoluciones/2026/res_ind2026.htm)
+
+## Resultado final del candidato
+
+Código desplegado: `2812a774a52e7c736b0b5ec65b15ad50a829fee8`.
+Deployment privado READY: `dpl_EJiKJo2eyaahtFXwML3Q9Ez3v3Z2`.
+[Revisar vista previa](https://project-wrapp-qwuahxqpw-lsandoval2-8260s-projects.vercel.app/beneficios-tributarios-inmobiliarios.html).
+
+Chrome 320/390/768/1440: sin desbordamiento horizontal observado; seis fichas corregidas abiertas, persona/empresa y restaurar16 temas comprobados; teclado Enter/foco visibles, controles etiquetados, sin IDs duplicados ni advertencias/errores en consola. Build verificó1653 archivos históricos intactos y1657 runtime totales. Evidencia: correcciones-qa-final.json y capturas correcciones-{ancho}.jpg. Producción se comprobó nuevamente y sigue en dpl_5XmA5bbvmsDyttpgwC3sZf8jKtFk. SSO/noindex conservados. Alias automático únicamente preview project-wrapp-lsandoval2-8260s-projects.vercel.app; no dominio productivo asignado.
+
+**Se solicita revisión del candidato; la publicación continúa bloqueada por los pendientes documentales descritos.** No fusionar ni promover.
