@@ -138,3 +138,50 @@ Permanecen pendientes exactamente las tres validaciones de cierre:
 La recepción del JSON no certifica por sí misma ninguna de estas tres pruebas. Se mantiene QA parcial y laboratorio exclusivamente sintético, sin autorización de medición real ni publicación.
 
 Único archivo modificado en esta actualización: `docs/cta-first-party-20261115/QA.md`. Sin cambios de código, deployment, producción, T0, Resend o CRM 360. PR #23 abierto y en borrador, sin fusionar.
+
+
+## Importación efectiva en Google Sheets — 15/11/2026 09:36:00 America/Santiago
+
+**Resultado: importación real realizada; validación global PARCIAL.** No se cierra QA general.
+
+### Origen y procedimiento
+
+Se recuperó el archivo realmente adjuntado por el propietario, `cta-sintetico-agregado.json`, sin reconstruirlo desde el panel. UTF-8 válido, 943 bytes. SHA-256 antes y después: `891e517feeb72c661d3528748e06480588c82ac30039d881b57a353b35bc2919`; original intacto.
+
+Se convirtió una copia a CSV UTF-8 con BOM, aplanando exclusivamente los 32 campos escalares agregados. Tres columnas: Campo JSON, Valor original, Tipo; 33 filas incluyendo encabezado. No se añadieron identificadores ni datos personales. Se importó mediante conversión nativa de Drive (converted=true, MIME application/vnd.google-apps.spreadsheet) y se releyó A1:C33 desde Google Sheets.
+
+Aplicación: **Google Sheets web**, versión de servicio no expuesta por la API; no se inventa número de versión. Chrome de la revisión previa: 157.0.0.0. Hoja importada con locale en_GB y zona America/Los_Angeles; los timestamps se mantienen como milisegundos Unix, sin conversión dependiente de esa zona.
+
+[Hoja de prueba con el agregado importado](https://docs.google.com/spreadsheets/d/1JzLhbqyhStD0zutLOiHW-f2mOni1Nr1unR-h96j2984/edit).
+
+### Resultados de lectura efectiva
+
+| Comprobación | Resultado |
+| --- | --- |
+| Encabezados y estructura | 3 columnas correctas y 32 campos agregados recuperados |
+| synthetic / coverage | true / Completa: fixture sintético cerrado |
+| sample | 3 |
+| missing / unexpected / changed / pending / unattributable / broken | Todos 0 |
+| Conteos guía / clic / agenda / inicio / aceptación / entrega | 3 / 3 / 3 / 3 / 2 / 1 |
+| CTA header / main / footer | 1 / 1 / 1 |
+| Numeradores y denominadores | CTR 3/3; guía 2/3; clic 2/3; entrega 1/2, todos exactos |
+| Fechas de origen | from 1794744315034 y to 1794744315050, exactos |
+| Lectura temporal de referencia | 15/11/2026 09:05:15.034 a 09:05:15.050 America/Santiago (UTC−03:00) |
+| PII / UUID | Sin datos personales ni UUID de sesión o solicitud en los campos importados |
+| NO DISPONIBLE | NO APLICA a este archivo: no contiene null ni ese marcador. No se añadieron valores artificiales para darlo por probado |
+
+### Precisión y captura pendientes
+
+**Hallazgo bajo: precisión decimal.** En ambas conversiones (guía y clic), JSON contiene 66.66666666666667; Google Sheets devuelve 66.6666666666666. Diferencia aproximada 7,1×10⁻¹⁴ puntos porcentuales. Ambos redondean a 66,67%, pero no existe igualdad exacta del valor original. CTR 100 y entrega 50 se conservan exactos. No se declara ausencia total de alteraciones numéricas. Para conservación decimal estricta se requiere un control textual adicional en una copia de prueba; no se alteró el archivo original ni el laboratorio.
+
+**Captura de la hoja no obtenida:** al abrir la URL en Chrome, la cuenta lsandoval@sollahms.cl mostró «Necesitas acceso». La importación y lectura mediante la cuenta conectada sí fueron efectivas, pero no sustituyen inspección visual. No se solicitaron permisos, no se cambió la compartición ni se eludió la restricción. Se deja la hoja para que el propietario la abra con la cuenta autorizada y pueda completarse la captura y revisión visual. No se presenta una imagen reconstruida como captura de Google Sheets.
+
+### Estado consolidado
+
+- Exportación real JSON: APROBADA, sin repetirla.
+- Importación en hoja: REALIZADA; cierre PARCIAL por captura/revisión visual pendiente y precisión decimal documentada. Caso NO DISPONIBLE no cubierto por el adjunto.
+- Duplicación nativa Chrome: PENDIENTE.
+- Reinicio completo del navegador: PENDIENTE.
+- 40 pruebas Node, 14 IndexedDB y 7 Web Locks: evidencia anterior conservada, NO repetidas.
+
+Único archivo del repositorio actualizado: QA.md. Sin cambios de código, deployment, producción, formularios, guía tributaria, CTA o T0. Sin conexión Resend/CRM ni fusión. PR23 permanece abierto en borrador. No autoriza medición comercial real.
