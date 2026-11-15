@@ -101,6 +101,17 @@
       #contact-footer .contact-footer__columns { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 0 24px; }
     }
 </style>
+<style id="contact-selector-responsive">
+    /* Keep the native indicator and full prompt within the narrow mobile field. */
+    @media (max-width: 359px) {
+      #advisory-goal {
+        appearance: auto;
+        font-size: .875rem;
+        line-height: 1.5rem;
+        padding-inline: .25rem;
+      }
+    }
+</style>
 </head>
 <body class="advisory-page bg-surface text-on-surface antialiased">
 <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
