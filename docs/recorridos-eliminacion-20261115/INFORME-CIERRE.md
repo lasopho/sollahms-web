@@ -107,3 +107,7 @@ Pasaron 1.603 GET locales desde la salida ensamblada y siete imports/rechazos de
 ## Revalidación — 15/11/2026, 19:34:35 America/Santiago
 
 La rama remota sigue en `a7d68bb890fe770b3771e7df4848116e7128f76a`. Una conexión nueva mediante CLI autenticada continúa bloqueada por CONNECT 403; el entorno conserva revisión efectiva 1 sin el hostname de la Preview. PR Draft, Preview READY y SSO se conservan; producción y ambos aliases siguen en el deployment anterior. No se repitieron empaquetado ni QA histórico, ni hubo cambios runtime o publicación. [Cierre de revalidación y evidencia](release-20261115T191251/REVALIDACION-193435.md). La siguiente acción depende de aplicar el acceso real al entorno activo.
+
+## Revalidación — 15/11/2026, 19:38:58 America/Santiago
+
+Una conexión nueva continúa bloqueada por CONNECT 403; la política efectiva sigue en revisión 1 sin el hostname autorizado. PR Draft, Preview READY, SSO y ambos aliases productivos permanecen sin cambios. No se repitieron pruebas certificadas ni se publicó. [Cierre y evidencia](release-20261115T191251/REVALIDACION-193858.md). Es necesario aplicar la regla de red en la infraestructura del entorno activo para continuar.

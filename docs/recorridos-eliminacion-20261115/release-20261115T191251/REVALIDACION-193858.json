@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-11-15T19:38:58-03:00",
+  "pr": {
+    "number": 27,
+    "draft": true,
+    "merged": false,
+    "head": "ea7c5ad7221de862d8725847ebf580d134d3ce14"
+  },
+  "preview": {
+    "id": "dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi",
+    "state": "READY"
+  },
+  "sso": {
+    "enabled": true,
+    "deploymentType": "all_except_custom_domains"
+  },
+  "production": [
+    {
+      "domain": "www.sollahms.cl",
+      "deployment": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN"
+    },
+    {
+      "domain": "sollahms.cl",
+      "deployment": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN"
+    }
+  ],
+  "environment": {
+    "id": "ccarenv_b64_Y2NhcmVudl8yYWI2NTUyMWZlN2M4MTkxOWQ3MWI5OGExYmI0ZDQ3ZA",
+    "revision": "1",
+    "state": "enforced",
+    "previewHostnameAllowed": false
+  },
+  "request": {
+    "client": "authenticated Vercel CLI 65.14.0 curl",
+    "httpCode": 0,
+    "error": "CONNECT tunnel failed, response 403"
+  },
+  "remoteFichesCompleted": 0,
+  "remoteViewportChecksCompleted": 0,
+  "runtimeChanges": 0,
+  "newDeployments": 0,
+  "published": false
+}

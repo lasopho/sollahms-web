@@ -1,12 +1,12 @@
 # Continuidad — acceso efectivo, QA y publicación condicionada de Sollahms
 
-Continúa en `lasopho/sollahms-web`, rama `codex/eliminar-recorridos-global-20261115`, PR #27 Draft. Lee AGENTS.md y, bajo `docs/recorridos-eliminacion-20261115/`, INFORME-CIERRE.md, release-20261115T191251/INFORME-CIERRE.md, AUTORIZACION-ALCANCE.md y REVALIDACION-193435.md de ese directorio. El prompt detallado anterior quedó archivado allí. Verifica HEAD y conserva cambios ajenos. Este prompt no autoriza su ejecución automática.
+Continúa en `lasopho/sollahms-web`, rama `codex/eliminar-recorridos-global-20261115`, PR #27 Draft. Lee AGENTS.md y, bajo `docs/recorridos-eliminacion-20261115/`, INFORME-CIERRE.md, release-20261115T191251/INFORME-CIERRE.md, AUTORIZACION-ALCANCE.md y REVALIDACION-193858.md de ese directorio. El prompt detallado anterior quedó archivado allí. Verifica HEAD y conserva cambios ajenos. Este prompt no autoriza su ejecución automática.
 
 El propietario ya autorizó corrección, Previews, QA completo, Production sin dominios y publicación/promoción final condicionada a superar todos los controles. No solicitar nuevamente esa autorización.
 
-Estado revalidado el 15/11/2026, 19:34:35 America/Santiago:
+Estado revalidado el 15/11/2026, 19:38:58 America/Santiago:
 - PR https://github.com/lasopho/sollahms-web/pull/27, Draft, base `codex/agenda-regions-responsive-20261115`, SHA `c2e1965ced736d46917a1bee286456cb937d58fe`.
-- HEAD recibido `a7d68bb890fe770b3771e7df4848116e7128f76a`; runtime `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`; hito prebuilt y runner `23de970853a2d2e1235cd9cf71addecefc7caa70`. Los commits siguientes sólo documentan revalidación.
+- HEAD recibido `ea7c5ad7221de862d8725847ebf580d134d3ce14`; runtime `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`; hito prebuilt y runner `23de970853a2d2e1235cd9cf71addecefc7caa70`. Los commits siguientes sólo documentan revalidación.
 - Preview prebuilt READY `dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi`: https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/ . Siete `/api/...` registrados como lambdas; ejecución remota pendiente.
 - Vercel `project-wrapp`, proyecto `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`, equipo `team_A9VNIW2f2K1IJpd2pGdvDmEN`, slug `lsandoval2-8260s-projects`. SSO `all_except_custom_domains` conservado.
 - Producción y ambos aliases siguen en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`; SHA Git desconocido. No hay Production nuevo ni publicación final.
