@@ -218,3 +218,20 @@ Quedan pendientes:
 3. Reinicio completo del navegador.
 
 **QA general permanece parcial y abierto.** Las 40 pruebas Node, 14 IndexedDB y 7 Web Locks se conservan como resultados anteriores, sin repetirlas. PR #23 confirmado abierto y en borrador antes de esta actualización. Único archivo modificado: `docs/cta-first-party-20261115/QA.md`. Código, deployment y producción sin cambios; no se activa seguimiento real ni se conectan Resend/CRM 360.
+
+
+## QA manual final — bloqueo visual confirmado por captura del propietario
+
+Evidencia recibida: `Captura de pantalla 2026-11-15 a la(s) 9.55.33 a.m..png`, adjunta en la conversación. Fecha/hora nominal del archivo: 15/11/2026 09:55:33, contexto America/Santiago; no se presenta como timestamp extraído de Google Sheets.
+
+La imagen muestra Google Hojas de cálculo con **«Necesitas acceso»**, la cuenta **lsandoval@sollahms.cl**, y el botón «Solicitar acceso». No muestra celdas de la hoja. La captura es evidencia real del bloqueo, **no una captura de la importación ni una inspección visual aprobada**. La lectura autorizada de datos anterior permanece confirmada y separada de este resultado.
+
+Se detiene la fase visual conforme a la instrucción del propietario. No se pulsó «Solicitar acceso», no se enviaron mensajes ni se cambiaron permisos o compartición. La captura original permanece en la conversación; no se añade ningún archivo al repositorio aparte de la actualización de QA.md.
+
+Pendientes sin cambios:
+
+1. Captura e inspección visual de Google Sheets con una cuenta que tenga acceso.
+2. Duplicación nativa de Chrome.
+3. Reinicio completo de Chrome, previa captura de sesiones, eventos y cola.
+
+No se ejecutaron nuevas pruebas de duplicación/reinicio ni se repitieron las 40/14/7 anteriores. No se borraron datos ni se cerró Chrome. QA general parcial. PR23 abierto y en borrador; código, deployment, producción y T0 sin modificaciones.
