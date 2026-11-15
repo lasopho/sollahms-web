@@ -31,3 +31,19 @@ Autorizado: lecturas, verificaciones, correcciones acotadas para eliminar recorr
 Requiere autorización separada: producción, promoción, merge a main, dominios, gastos, credenciales, cambios comerciales o ampliación de alcance. Protege CRM 360, AI Lab, Resend, atribución first-party, formularios, catálogo salvo accesos a recorridos, páginas corporativas/educativas, sitemap y SEO/GEO.
 
 Aceptación: 131 fichas sin recorridos ni referencias funcionales; medios, planos, datos comerciales y contactos preservados; QA transparente; PR en borrador y Preview privada realmente existentes y verificados; producción intacta. No declares terminado el objetivo mientras falten PR o Preview.
+
+
+## Estado actualizado — 15/11/2026
+
+La autorización adicional fue recibida y las entregas externas se completaron. Esta actualización prevalece sobre las notas históricas de bloqueo anteriores:
+
+- PR [#27](https://github.com/lasopho/sollahms-web/pull/27), abierto en estado Draft, head `codex/eliminar-recorridos-global-20261115`, base `codex/agenda-regions-responsive-20261115`, head runtime `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`. No fusionar.
+- Preview Vercel READY: [https://project-wrapp-b1aszxxoe-lsandoval2-8260s-projects.vercel.app/](https://project-wrapp-b1aszxxoe-lsandoval2-8260s-projects.vercel.app/), deployment `dpl_Fyu39RK4drsHA7tqs8brGRHqTtxF`, target `staging`. Build log confirma descarga de 1.660 archivos; el árbol inspeccionado contiene 57 bundles de funciones y `config.json`.
+- SSO del proyecto comprobado activo: `all_except_custom_domains`. La URL usa hostname `vercel.app`; la revisión HTTP autenticada no pudo completarse desde el conector web. El usuario debe realizar la inspección visual en la URL privada.
+- Producción permanece en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`; sin promoción, merge, dominio ni cambios productivos.
+
+### Próximos pasos
+1. Pedir al usuario revisar la Preview privada y reportar cualquier diferencia visual o funcional.
+2. Si hay observaciones, inspeccionar sólo los elementos reportados, preservar el resto y preparar un nuevo candidato/Preview con trazabilidad. No publicar.
+3. Mantener PR #27 en Draft hasta que el usuario revise y decida. Merge, producción y promoción requieren autorización separada.
+4. Si no hay observaciones, entregar resumen final y esperar decisión del usuario; no fusionar automáticamente.
