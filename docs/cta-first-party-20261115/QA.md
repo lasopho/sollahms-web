@@ -1,6 +1,6 @@
 # QA y entrega del laboratorio privado — 15/11/2026
 
-> Las revisiones históricas se conservan. La actualización de exportación real al final establece el estado vigente: JSON aprobado; importación en hoja de cálculo, duplicación nativa y reinicio completo pendientes.
+> Las revisiones históricas se conservan. El estado vigente se consolida al final: exportación JSON aprobada y lectura de la importación confirmada; captura visual de Google Sheets, duplicación nativa y reinicio completo pendientes.
 
 Cierre: 15/11/2026 00:35:45 America/Santiago (03:35:45 UTC).
 Código: `ef6b2df3a87729dae441581a7ee78719832dc8fd`.
@@ -185,3 +185,36 @@ Aplicación: **Google Sheets web**, versión de servicio no expuesta por la API;
 - 40 pruebas Node, 14 IndexedDB y 7 Web Locks: evidencia anterior conservada, NO repetidas.
 
 Único archivo del repositorio actualizado: QA.md. Sin cambios de código, deployment, producción, formularios, guía tributaria, CTA o T0. Sin conexión Resend/CRM ni fusión. PR23 permanece abierto en borrador. No autoriza medición comercial real.
+
+
+## Consolidación de revisión Google Sheets — 15/11/2026 09:48:07 America/Santiago
+
+Actualización exclusivamente documental con la nueva evidencia confirmada por el propietario y la lectura directa previa mediante la conexión autorizada. No se repitieron la importación ni las pruebas 40/14/7.
+
+[Hoja verificada](https://docs.google.com/spreadsheets/d/1JzLhbqyhStD0zutLOiHW-f2mOni1Nr1unR-h96j2984/edit). La nueva comunicación indica **A1** como referencia. La verificación de los 32 campos se sustenta en la lectura completa **A1:C33** ya registrada arriba; no se atribuye a la lectura de una única celda la comprobación de todo el agregado.
+
+### Datos confirmados mediante conexión autorizada
+
+- Tres columnas y 32 campos agregados, con tres sesiones sintéticas.
+- Conteos, numeradores, denominadores y timestamps Unix conservados.
+- Sin información personal ni UUID en el agregado.
+- Archivo JSON original intacto.
+- Importación efectiva y lectura de datos: **CONFIRMADAS**, con la observación de precisión que sigue. Esto no equivale a inspección visual completada.
+
+### Observación de precisión
+
+JSON original: `66.66666666666667`. Lectura Google Sheets: `66.6666666666666`. Ambos redondean a **66,67%**, pero **no son exactamente iguales**. Se registra como observación de precisión, sin afirmar conservación decimal exacta. Los resultados corresponden exclusivamente al fixture sintético, no a métricas comerciales reales.
+
+**NO DISPONIBLE: NO APLICA.** El marcador no aparece en el archivo original; su conservación no se clasifica como aprobada ni se inventa un caso de prueba.
+
+### Inspección visual y pendientes vigentes
+
+La apertura visual en Chrome con `lsandoval@sollahms.cl` continúa reportada como «Necesitas acceso». La conexión autorizada permitió leer los datos, pero no completa la inspección visual. **No hay captura de la hoja validada.** No se cambiaron permisos ni se compartió públicamente la hoja; no se fabricaron capturas.
+
+Quedan pendientes:
+
+1. Captura e inspección visual de Google Sheets.
+2. Duplicación nativa de Chrome.
+3. Reinicio completo del navegador.
+
+**QA general permanece parcial y abierto.** Las 40 pruebas Node, 14 IndexedDB y 7 Web Locks se conservan como resultados anteriores, sin repetirlas. PR #23 confirmado abierto y en borrador antes de esta actualización. Único archivo modificado: `docs/cta-first-party-20261115/QA.md`. Código, deployment y producción sin cambios; no se activa seguimiento real ni se conectan Resend/CRM 360.
