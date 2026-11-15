@@ -1,7 +1,10 @@
 {
-  "status": "pending-additional-explicit-authorization",
+  "status": "authorized-and-executed",
+  "authorization": "Explicit user authorization in conversation on 2026-11-15",
   "pullRequest": {
     "repository": "lasopho/sollahms-web",
+    "number": 27,
+    "url": "https://github.com/lasopho/sollahms-web/pull/27",
     "draft": true,
     "head": "codex/eliminar-recorridos-global-20261115",
     "base": "codex/agenda-regions-responsive-20261115",
@@ -11,18 +14,18 @@
     "project": "project-wrapp",
     "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
     "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "deploymentId": "dpl_Fyu39RK4drsHA7tqs8brGRHqTtxF",
+    "url": "https://project-wrapp-b1aszxxoe-lsandoval2-8260s-projects.vercel.app",
     "target": "staging",
-    "environment": "preview",
+    "state": "READY",
     "protection": "SSO all_except_custom_domains",
     "runtimeFiles": 1660,
-    "changedRuntimeFiles": 66,
-    "unchangedRuntimeFiles": 1594,
-    "unchangedFunctionFiles": 57,
-    "payload": "Paquete completo del sitio publicado, incluidas sus funciones y datos existentes, con sólo los 66 cambios del manifiesto candidato.",
-    "baselineDeployment": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
-    "candidateManifest": "candidate-manifest.json",
-    "builder": "prepare-preview.mjs",
+    "functionsObserved": 57,
     "productionAuthorized": false,
     "domainChangesAuthorized": false
+  },
+  "production": {
+    "deploymentId": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+    "unchanged": true
   }
 }
