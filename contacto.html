@@ -76,6 +76,49 @@
 <link rel="stylesheet" href="/assets/css/home-seo.css?v=20261025-visual-1">
 <link rel="stylesheet" href="/assets/css/advisory.css?v=20261026-required-1">
 <link rel="stylesheet" href="/assets/css/guide-navigation.css?v=20261029-1">
+<style id="contact-footer-style">
+    /* Approved corporate footer, isolated to this page. */
+    #contact-footer { background: var(--s-soft); padding: 64px 0 48px; color: var(--s-muted); font: 400 14px/1.625 'Inter', sans-serif; }
+    #contact-footer .contact-footer__columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    #contact-footer .sollahms-brand { margin-bottom: 16px; }
+    #contact-footer p { margin: 0; }
+    #contact-footer .contact-footer__copyright { letter-spacing: .025em; }
+    #contact-footer .home-seo-footer-about { margin-top: 16px; }
+    #contact-footer h2 { margin: 0 0 16px; color: var(--s-green); font: 600 14px/20px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .1em; }
+    #contact-footer ul { list-style: none; margin: 0; padding: 0; }
+    #contact-footer li + li { margin-top: 8px; }
+    #contact-footer nav a { text-decoration: none; color: var(--s-muted); letter-spacing: .025em; }
+    #contact-footer nav a:hover { color: var(--s-green-hover); }
+    #contact-footer .home-seo-footer-about { line-height: 1.7; }
+    #contact-footer .home-seo-contact { display: grid; gap: 8px; margin-top: 16px; font-style: normal; color: var(--s-green); overflow-wrap: anywhere; }
+    #contact-footer .home-seo-contact a { text-decoration: underline; text-underline-offset: .2em; }
+    #contact-footer a:focus-visible { outline: 3px solid var(--s-gold-ink); outline-offset: 5px; }
+    @media (max-width: 767px) {
+      #contact-footer .contact-footer__columns { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 0 24px; }
+    }
+</style>
+<style id="contact-coverage-style">
+#contact-coverage { background: var(--s-section); color: var(--s-green); padding: 0 32px 80px; }
+#contact-coverage .contact-coverage__inner { max-width: 1160px; margin: 0 auto; padding-top: 40px; border-top: 1px solid var(--s-line); }
+#contact-coverage h2 { font: 600 clamp(1.65rem, 2.4vw, 2rem)/1.2 Manrope, sans-serif; letter-spacing: -.035em; margin: 0 0 28px; }
+#contact-coverage .contact-coverage__regions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+#contact-coverage .contact-coverage__region { min-width: 0; padding: 24px; background: var(--s-white); border: 1px solid var(--s-line); border-radius: var(--s-radius); }
+#contact-coverage h3 { font: 600 1rem/1.5 Inter, sans-serif; margin: 0 0 12px; }
+#contact-coverage ul { list-style: none; padding: 0; margin: 0; font: 400 .9375rem/1.65 Inter, sans-serif; color: var(--s-muted); }
+#contact-coverage li { break-inside: avoid; margin: 0 0 4px; overflow-wrap: anywhere; }
+#contact-coverage .contact-coverage__region--metropolitana { grid-column: 1 / -1; }
+#contact-coverage .contact-coverage__region--metropolitana ul { columns: 5; column-gap: 24px; }
+@media (max-width: 1023px) {
+  #contact-coverage .contact-coverage__regions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #contact-coverage .contact-coverage__region--metropolitana ul { columns: 3; }
+}
+@media (max-width: 599px) {
+  #contact-coverage { padding: 0 20px 48px; }
+  #contact-coverage .contact-coverage__regions { grid-template-columns: minmax(0, 1fr); }
+  #contact-coverage .contact-coverage__region { padding: 20px; }
+  #contact-coverage .contact-coverage__region--metropolitana ul { columns: 1; }
+}
+</style>
 <link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
 <script src="/assets/js/scroll-presence.js?v=20261026-3" defer></script>
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
@@ -158,19 +201,47 @@
 <button class="advisory-submit" type="submit">Solicitar asesoría</button>
 </fieldset>
 <p aria-atomic="true" aria-live="polite" class="advisory-status" id="advisory-status" role="status" tabindex="-1"></p>
-</form></div></div></section></main><footer class="bg-slate-100 border-t border-slate-200">
-<div class="max-w-7xl mx-auto px-6 md:px-8 py-10 flex flex-col sm:flex-row justify-between gap-5">
-<a class="text-lg font-bold text-emerald-950 sollahms-brand" href="/" aria-label="Sollahms"><img class="sollahms-brand__image" src="/assets/branding/sollahms-logo.svg" width="114" height="22" alt="" decoding="async"></a>
-<div class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
-<a class="hover:text-emerald-900" href="/#expertise">Expertise</a>
-<a class="hover:text-emerald-900" href="/#portfolio">Asset Portafolio</a>
-<a data-guide-nav="" class="hover:text-emerald-900" href="/guia-hipotecaria.html">Guía hipotecaria</a>
-<a data-purchase-guide-footer="" class="hover:text-emerald-900" href="/cuando-comprar-propiedad.html">Cuándo comprar</a>
-<a class="hover:text-emerald-900" href="/contacto.html">Contacto</a>
-<a class="hover:text-emerald-900" href="/trabaja-con-nosotros.html">Trabaja con nosotros</a><a data-sollahms-whatsapp href="https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.">WhatsApp: +56 9 4850 2440</a>
-<span data-documental-legal style="display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:12px;max-width:100%"><strong>Legal</strong><a class="hover:text-emerald-900" href="/privacidad.html">Privacidad</a><a href="/fuentes-respaldo-documental.html">Fuentes y respaldo documental</a></span>
+</form></div></div></section>
+<section id="contact-coverage" aria-labelledby="contact-coverage-title" data-scroll-static>
+<div class="contact-coverage__inner">
+<h2 id="contact-coverage-title">Cobertura territorial</h2>
+<div class="contact-coverage__regions">
+<article class="contact-coverage__region"><h3>Arica y Parinacota</h3><ul><li>Arica</li></ul></article>
+<article class="contact-coverage__region"><h3>Coquimbo</h3><ul><li>Coquimbo</li><li>La Serena</li></ul></article>
+<article class="contact-coverage__region"><h3>Valparaíso</h3><ul><li>Papudo</li><li>Valparaíso</li></ul></article>
+<article class="contact-coverage__region contact-coverage__region--metropolitana"><h3>Región Metropolitana</h3><ul><li>Cerrillos</li><li>Conchalí</li><li>Estación Central</li><li>Huechuraba</li><li>Independencia</li><li>La Cisterna</li><li>La Florida</li><li>Las Condes</li><li>Macul</li><li>Ñuñoa</li><li>Peñalolén</li><li>Providencia</li><li>Quilicura</li><li>Quinta Normal</li><li>Renca</li><li>San Bernardo</li><li>San Joaquín</li><li>Santiago (comuna)</li></ul></article>
+<article class="contact-coverage__region"><h3>O&#x27;Higgins</h3><ul><li>Pichilemu</li><li>Rancagua</li></ul></article>
+<article class="contact-coverage__region"><h3>Ñuble</h3><ul><li>Chillán</li></ul></article>
+<article class="contact-coverage__region"><h3>Biobío</h3><ul><li>Concepción</li></ul></article>
+<article class="contact-coverage__region"><h3>La Araucanía</h3><ul><li>Temuco</li><li>Villarrica</li></ul></article>
+<article class="contact-coverage__region"><h3>Los Ríos</h3><ul><li>Valdivia</li></ul></article>
+<article class="contact-coverage__region"><h3>Los Lagos</h3><ul><li>Puerto Montt</li><li>Puerto Varas</li></ul></article>
 </div>
-<p class="text-sm text-slate-600">© 2026 Sollahms. Todos los derechos reservados.</p>
+</div>
+</section>
+</main><footer id="contact-footer" data-scroll-static>
+<div class="contact-footer__columns">
+<div>
+<a aria-label="Sollahms" class="sollahms-brand" href="/"><img alt="" class="sollahms-brand__image" decoding="async" height="22" src="/assets/branding/sollahms-logo.svg" width="114"/></a>
+<p class="contact-footer__copyright">© 2026 Sollahms. Todos los derechos reservados.</p>
+<p class="home-seo-footer-about">Asesoría e inversión inmobiliaria en Chile.</p>
+<address class="home-seo-contact"><a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a><a data-sollahms-whatsapp href="https://wa.me/56948502440">+56 9 4850 2440</a></address>
+</div>
+<nav aria-labelledby="contact-footer-sections">
+<h2 id="contact-footer-sections">Secciones</h2>
+<ul>
+<li><a href="/#expertise">Expertise</a></li>
+<li><a href="/proyectos.html">Asset Portafolio</a></li>
+<li><a data-guide-nav="" href="/guia-hipotecaria.html">Guía hipotecaria</a></li>
+<li><a data-purchase-guide-footer="" href="/cuando-comprar-propiedad.html">Cuándo comprar</a></li>
+<li><a href="/contacto.html">Contacto</a></li>
+<li><a href="/trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
+</ul>
+</nav>
+<nav aria-labelledby="contact-footer-legal">
+<h2 id="contact-footer-legal">Legal</h2>
+<ul><li><a href="/privacidad.html">Privacidad</a></li><li><a href="/fuentes-respaldo-documental.html">Fuentes y respaldo documental</a></li></ul>
+</nav>
 </div>
 </footer>
 <script type="module" src="/assets/js/advisory.mjs?v=20261029-euro-1"></script>
