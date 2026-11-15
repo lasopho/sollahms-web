@@ -92,3 +92,7 @@ Una ficha inspeccionada parcialmente para diagnóstico; **0/131 con QA completo*
 Se preparó una salida aislada con 1.660/1.660 hashes y tamaños iguales al candidato: 66 cambios autorizados, 1.594 preservados, 1.602 estáticos, 57 archivos en siete bundles y config v3 intacto. Inventario canónico SHA-256 `f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0`. Pasaron 1.603 GET locales de bytes/rutas, tres pruebas de integridad negativas y siete imports/pruebas de rechazo, con cero intentos externos. No son QA remoto ni registro real en Vercel.
 
 [Diagnóstico, límites y evidencias](packaging-20261115/INFORME-DIAGNOSTICO.md). [Prompt completo para la futura etapa autorizada](packaging-20261115/NEXT-PROMPT-CORRECCION.md). Sin nuevo deployment, reconstrucción de fichas, merge, promoción, cambios runtime/productivos ni envío comercial. PR #27 Draft, SSO conservado y ambos aliases productivos en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`. La autorización para una nueva Preview correctiva sigue pendiente.
+
+## Continuidad integral autorizada — 2026-11-15T18:56:31-03:00
+
+El propietario autorizó corrección, QA y publicación condicionada a todos los controles. CLI 65.14.0 y 1.660 archivos preparados verificados. Login interrumpido por bloqueo de red a api.vercel.com; whoami sigue loggedIn:false. No hay nuevo deployment ni publicación. Ambos dominios conservan dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN. Ver [informe de continuidad](continuidad-autorizada-20261115/INFORME-BLOQUEO.md). No solicitar nuevamente autorización de publicación.
