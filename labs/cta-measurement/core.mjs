@@ -23,13 +23,13 @@ export function event(state,type,{run,now,uuid,cta=null,request=null,receipt=nul
 }
 export function semantic(e){return [e.run,e.session,e.type,e.cta||'',e.request||''].join(':');}
 export function reconcile(e,proof){
- validate(e);if(!['advisory_accepted','advisory_delivered'].includes(e.type))return true;
+ validate(e);if(!['advisory_accepted','advisory_delivered'].includes(e.type)){if(proof!==null&&proof!==undefined)throw Error('Comprobante no permitido');return true;}
  // proof comes only from the isolated synthetic receipt driver, never HTTP 200 or form data.
  const kind=e.type==='advisory_accepted'?'accepted':'delivered';
  if(!proof||Object.keys(proof).some(k=>!['synthetic','source','kind','id','request','session','run','cta','at'].includes(k))||proof.synthetic!==true||proof.source!=='fixture-provider-v1'||proof.kind!==kind||proof.id!==e.receipt||proof.request!==e.request||proof.session!==e.session||proof.run!==e.run||proof.cta!==e.cta||proof.at!==e.at)throw Error('Comprobante no conciliado');
  return true;
 }
-export function aggregate(events,{run,from,to,expected=null,pending=0}={}){
+export function aggregate(events,{run,from,to,expected=null,expectedPayloads=null,pending=0}={}){
  const valid=events.map(validate).filter(e=>e.run===run&&e.at>=from&&e.at<to).sort((a,b)=>a.at-b.at||a.seq-b.seq);
  const seen=new Set(),rows=valid.filter(e=>{const k=semantic(e);if(seen.has(k))return false;seen.add(k);return true;});
  const sessions=new Map();for(const e of rows){if(!sessions.has(e.session))sessions.set(e.session,[]);sessions.get(e.session).push(e);}
@@ -43,9 +43,12 @@ export function aggregate(events,{run,from,to,expected=null,pending=0}={}){
  }
  const missing=expected?expected.filter(id=>!valid.some(e=>e.id===id)).length:null;
  const unexpected=expected?valid.filter(e=>!expected.includes(e.id)).length:0;
- const complete=!!expected&&missing===0&&unexpected===0&&pending===0&&broken===0&&unattributable===0;
+ const changed=expectedPayloads?valid.filter(e=>expectedPayloads[e.id]!==fingerprint(e)).length:0;
+ const complete=!!expected&&!!expectedPayloads&&changed===0&&missing===0&&unexpected===0&&pending===0&&broken===0&&unattributable===0;
  const n=Object.fromEntries(Object.entries(counts).map(([k,v])=>[k,v.size]));
  const acceptedSessions=new Set(rows.filter(e=>e.type==='advisory_accepted'&&counts.advisory_accepted.has(e.request)).map(e=>e.session)).size;
  const rate=(numerator,denominator)=>({numerator,denominator,value:complete&&denominator>0?100*numerator/denominator:null});
- return {synthetic:true,from,to,sample:sessions.size,coverage:complete?'Completa: fixture sintético cerrado':'Incompleta o no certificada',missing,unexpected,pending,unattributable,broken,counts:n,clicks:Object.fromEntries(Object.entries(clicks).map(([k,v])=>[k,v.size])),rates:{ctr:rate(n.tax_advisory_click,n.guide_view),guide_conversion:rate(acceptedSessions,n.guide_view),click_conversion:rate(acceptedSessions,n.tax_advisory_click),delivery:rate(n.advisory_delivered,n.advisory_accepted)}};
+ return {synthetic:true,from,to,sample:sessions.size,coverage:complete?'Completa: fixture sintético cerrado':'Incompleta o no certificada',missing,unexpected,changed,pending,unattributable,broken,counts:n,clicks:Object.fromEntries(Object.entries(clicks).map(([k,v])=>[k,v.size])),rates:{ctr:rate(n.tax_advisory_click,n.guide_view),guide_conversion:rate(acceptedSessions,n.guide_view),click_conversion:rate(acceptedSessions,n.tax_advisory_click),delivery:rate(n.advisory_delivered,n.advisory_accepted)}};
 }
+
+export function fingerprint(e){validate(e);return JSON.stringify(Object.fromEntries(fields.map(k=>[k,e[k]])));}

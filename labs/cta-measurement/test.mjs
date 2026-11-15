@@ -1,12 +1,12 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {randomUUID as uuid} from 'node:crypto';
 import {validate,event,session,TTL,aggregate,reconcile,semantic} from './core.mjs';import {canonical,receiptFor} from './fixtures.mjs';
 const fixture=()=>canonical(uuid,10000);
-function report(f,events=f.events){return aggregate(events.map(x=>x.e),{run:f.run.id,from:f.run.from,to:f.run.to,expected:f.run.expected});}
+function report(f,events=f.events){return aggregate(events.map(x=>x.e),{run:f.run.id,from:f.run.from,to:f.run.to,expected:f.run.expected,expectedPayloads:f.run.expectedPayloads});}
 test('cohorte: 3 visitas, 3 clics, 2 aceptadas y 1 entrega',()=>{const m=report(fixture());assert.equal(m.counts.guide_view,3);assert.equal(m.counts.advisory_accepted,2);assert.equal(m.counts.advisory_delivered,1);assert.equal(m.rates.delivery.value,50);assert.equal(m.rates.guide_conversion.numerator,2);});
 test('los tres CTA son distintos, incluido footer',()=>assert.deepEqual(Object.values(report(fixture()).clicks),[1,1,1]));
 test('duplicados no inflan conteos',()=>{const f=fixture();assert.deepEqual(report(f,[...f.events,...f.events]),report(f));});
 test('evento perdido bloquea todas las tasas',()=>{const f=fixture();const m=report(f,f.events.slice(1));assert.equal(m.missing,1);assert.ok(Object.values(m.rates).every(r=>r.value===null));});
-test('cola pendiente bloquea tasas',()=>{const f=fixture();assert.equal(aggregate(f.events.map(x=>x.e),{run:f.run.id,from:f.run.from,to:f.run.to,expected:f.run.expected,pending:1}).rates.ctr.value,null);});
+test('cola pendiente bloquea tasas',()=>{const f=fixture();assert.equal(aggregate(f.events.map(x=>x.e),{run:f.run.id,from:f.run.from,to:f.run.to,expected:f.run.expected,expectedPayloads:f.run.expectedPayloads,pending:1}).rates.ctr.value,null);});
 test('cobertura manual no certificada',()=>{const f=fixture();assert.equal(aggregate(f.events.map(x=>x.e),{run:f.run.id,from:0,to:999999}).rates.ctr.value,null);});
 test('denominador vacío no produce 0%',()=>{assert.equal(aggregate([],{run:uuid(),from:0,to:9,expected:[]}).rates.ctr.value,null);});
 test('expira exactamente en 30 minutos',()=>{const s=session(null,1,uuid);assert.equal(session(s,TTL,uuid).id,s.id);assert.notEqual(session(s,TTL+1,uuid).id,s.id);});
@@ -26,3 +26,11 @@ test('rechazo e incompleto no son eventos de aceptación',()=>{const f=fixture()
 test('eventos fuera del período no cuentan',()=>{const f=fixture();assert.equal(aggregate(f.events.map(x=>x.e),{run:f.run.id,from:0,to:1}).sample,0);});
 test('identidad operacional no está en identidad analítica',()=>{const f=fixture();assert.ok(f.events.every(x=>!Object.hasOwn(x.e,'operation_key')));});
 test('reintento con mismo evento conserva clave semántica',()=>{const f=fixture();assert.equal(semantic(f.events[0].e),semantic(structuredClone(f.events[0].e)));});
+import {fingerprint} from './core.mjs';import {exportData,csv,tabular} from './export.mjs';
+test('manipulación válida con mismo ID bloquea porcentajes',()=>{const f=fixture();const rows=structuredClone(f.events);rows[1].e.cta='tax_advisory_footer';assert.ok(report(f,rows).changed>0);assert.equal(report(f,rows).rates.ctr.value,null);});
+test('manifiesto solo IDs no certifica integridad',()=>{const f=fixture();assert.equal(aggregate(f.events.map(x=>x.e),{run:f.run.id,from:f.run.from,to:f.run.to,expected:f.run.expected}).rates.ctr.value,null);});
+test('comprobante en vista no puede transportar PII',()=>assert.throws(()=>reconcile(fixture().events[0].e,{correo:'prohibido'})));
+test('aceptación sin entrega no inventa entrega',()=>{const f=fixture(),events=f.events.filter(x=>x.e.type!=='advisory_delivered');f.run.expected=events.map(x=>x.e.id);f.run.expectedPayloads=Object.fromEntries(events.map(x=>[x.e.id,fingerprint(x.e)]));assert.equal(report(f,events).rates.delivery.value,0);assert.equal(report(f,events).counts.advisory_accepted,2);});
+test('exportación solo agregado, sin UUID ni PII',()=>{const m=report(fixture());const d=exportData({...m,session:uuid(),request:uuid(),correo:'prohibido'});const json=JSON.stringify(d);assert.equal(/session|request|correo|[a-f0-9]{8}-[a-f0-9]{4}-/.test(json),false);assert.equal(JSON.parse(json).synthetic,true);});
+test('CSV tiene cuatro métricas y numeradores exportables',()=>{const m=report(fixture());assert.equal(tabular(m).length,4);assert.equal(csv(m).split('\r\n').length,5);assert.ok(csv(m).includes('numerator'));assert.ok(csv(m).includes('"delivery","1","2","50"'));});
+test('exportación mantiene NO DISPONIBLE como null JSON',()=>{const f=fixture();assert.equal(exportData(report(f,f.events.slice(1))).rates.ctr.value,null);});

@@ -1,0 +1,48 @@
+✔ cohorte: 3 visitas, 3 clics, 2 aceptadas y 1 entrega (3.44998ms)
+✔ los tres CTA son distintos, incluido footer (1.28613ms)
+✔ duplicados no inflan conteos (1.541151ms)
+✔ evento perdido bloquea todas las tasas (0.891711ms)
+✔ cola pendiente bloquea tasas (0.715588ms)
+✔ cobertura manual no certificada (1.646888ms)
+✔ denominador vacío no produce 0% (0.115011ms)
+✔ expira exactamente en 30 minutos (0.165307ms)
+✔ actividad renueva última actividad (0.134611ms)
+✔ reloj hacia atrás invalida sesión (0.162463ms)
+✔ pérdida de sesión no hereda CTA (0.150835ms)
+✔ navegación guía→agenda conserva CTA (0.123084ms)
+✔ agenda directa no se atribuye (0.115032ms)
+✔ sesión expirada pierde atribución al llegar (0.079719ms)
+✔ rechaza campo rut (0.344605ms)
+✔ rechaza campo nombre (0.175533ms)
+✔ rechaza campo correo (0.171225ms)
+✔ rechaza campo telefono (0.238556ms)
+✔ rechaza campo mensaje (0.171236ms)
+✔ rechaza campo referrer (0.186107ms)
+✔ rechaza campo ip (0.204315ms)
+✔ rechaza campo fingerprint (0.148521ms)
+✔ rechaza campo tax_answers (0.182483ms)
+✔ rechaza campo operation_key (0.340518ms)
+✔ rechaza datos reales y evento desconocido (0.30831ms)
+✔ aceptación necesita comprobante explícito (0.291966ms)
+✔ aceptación no equivale a entrega (0.265627ms)
+✔ comprobantes deben corresponder a la solicitud y sesión (0.723981ms)
+✔ entrega huérfana no se contabiliza (0.376292ms)
+✔ rechazo e incompleto no son eventos de aceptación (0.250154ms)
+✔ eventos fuera del período no cuentan (0.221931ms)
+✔ identidad operacional no está en identidad analítica (0.568148ms)
+✔ reintento con mismo evento conserva clave semántica (0.255882ms)
+✔ manipulación válida con mismo ID bloquea porcentajes (0.646786ms)
+✔ manifiesto solo IDs no certifica integridad (0.228932ms)
+✔ comprobante en vista no puede transportar PII (0.239718ms)
+✔ aceptación sin entrega no inventa entrega (0.580837ms)
+✔ exportación solo agregado, sin UUID ni PII (1.508542ms)
+✔ CSV tiene cuatro métricas y numeradores exportables (0.627166ms)
+✔ exportación mantiene NO DISPONIBLE como null JSON (0.257885ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 133.937078

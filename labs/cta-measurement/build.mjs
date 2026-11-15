@@ -4,11 +4,11 @@ import assert from 'node:assert/strict';
 const root=resolve(import.meta.dirname,'../..'),src=import.meta.dirname,out=resolve(root,'.vercel/output/static');
 assert.equal(process.env.VERCEL_ENV,'preview','Solo se permite build preview');
 function write(p,b){mkdirSync(dirname(resolve(out,p)),{recursive:true});writeFileSync(resolve(out,p),b);}
-for(const p of ['index.html','agenda.html','app.mjs','core.mjs','store.mjs','fixtures.mjs','lab.css','browser-tests.mjs'])write(p,readFileSync(resolve(src,p)));
+for(const p of ['index.html','agenda.html','app.mjs','core.mjs','store.mjs','fixtures.mjs','lab.css','browser-tests.mjs','ownership.mjs','ownership-tests.mjs','export.mjs'])write(p,readFileSync(resolve(src,p)));
 write('preview-config.mjs','export const previewOnly=true;\n');write('logo.svg',readFileSync(resolve(root,'assets/branding/sollahms-logo.svg')));
 let html=readFileSync(resolve(root,'beneficios-tributarios-inmobiliarios.html'),'utf8');
 assert.ok(html.includes('¿Estás pensando en invertir en una propiedad?'));
-html=html.replace('<body class="tributaria-page">','<body class="tributaria-page" data-page="guide"><div class="lab-banner"><strong>Copia privada · recorrido sintético.</strong> No se registran visitantes reales. <a href="/">Panel de prueba</a><p id="lab-status" role="status"></p></div>');
+html=html.replace('<body class="tributaria-page">','<body class="tributaria-page" data-page="guide"><div class="lab-banner"><strong>Copia privada · recorrido sintético.</strong> No se registran visitantes reales. <a href="/">Panel de prueba</a><p id="session-info"></p><p id="lab-status" role="status"></p></div>');
 html=html.replace(/<meta name="robots"[^>]+>/,'<meta name="robots" content="noindex,nofollow">').replace(/<link rel="canonical"[^>]+>/,'');
 let n=0;const ids=['tax_advisory_header','tax_advisory_main','tax_advisory_footer'];html=html.replace(/href="\/agenda-asesoria.html"/g,()=>`href="/agenda.html" data-cta="${ids[n++]}"`);assert.equal(n,3);
 html=html.replace(/<script[^>]*>[\s\S]*?<\/script>/g,s=>s.includes('beneficios-tributarios.mjs')?s:'');
