@@ -1,0 +1,17 @@
+{
+  "reviewedAt": "2026-11-15T12:12:07Z",
+  "zone": "America/Santiago",
+  "synthetic": true,
+  "qaStorage": [
+    "[{\"name\":\"concurrencia: cola completa\",\"ok\":true},{\"name\":\"reinicio: cola persistida\",\"ok\":true},{\"name\":\"flush concurrente: 15 eventos sin duplicados\",\"ok\":true},{\"name\":\"cola confirmada vacía\",\"ok\":true},{\"name\":\"reintentos deduplicados\",\"ok\":true},{\"name\":\"reinicio: eventos persistidos\",\"ok\":true},{\"name\":\"conciliación persistida: 50% entrega\",\"ok\":true},{\"name\":\"PII rechazada antes de almacenamiento\",\"ok\":true},{\"name\":\"ID confirmado alterado rechazado\",\"ok\":true},{\"name\":\"dos conexiones: una fila por ID\",\"ok\":true},{\"name\":\"interrupción durante flush hace rollback\",\"ok\":true},{\"name\":\"recuperación de operación interrumpida\",\"ok\":true},{\"name\":\"borrado invalida otras conexiones\",\"ok\":true},{\"name\":\"eliminación local completa\",\"ok\":true}]"
+  ],
+  "qaLocks": [
+    "[{\"name\":\"colisión de sesión clonada: UUID independiente\",\"ok\":true},{\"name\":\"colisión borra atribución previa\",\"ok\":true},{\"name\":\"lock original permanece\",\"ok\":true},{\"name\":\"cerrar segundo propietario no libera primero\",\"ok\":true},{\"name\":\"liberación y readquisición\",\"ok\":true},{\"name\":\"recarga lógica readquiere mismo lock\",\"ok\":true},{\"name\":\"sin Web Locks falla cerrado\",\"ok\":true}]"
+  ],
+  "qaTwoTabs": [
+    "{\"first\":\"Sesión sintética: 37468aa6 · CTA: tax_advisory_main · Lock: adquirido · Chrome/UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36\",\"second\":\"Sesión sintética: 0f58d8f1 · CTA: tax_advisory_footer · Lock: adquirido · Chrome/UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36\"}"
+  ],
+  "qaCounters": [
+    "{\"session\":\"Sesión sintética: 0f58d8f1 · CTA: tax_advisory_footer · Lock: adquirido · Chrome/UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36\",\"counts\":\"2\\n\\nVisitas únicas a la guía\\n\\n2\\n\\nSesiones con clic\\n\\n2\\n\\nAgenda atribuida\\n\\n0\\n\\nFormularios iniciados\\n\\n0\\n\\nSolicitudes aceptadas\\n\\n0\\n\\nEntregas confirmadas\",\"ctas\":\"tax_advisory_header: 0 sesiones únicas\\n\\ntax_advisory_main: 1 sesiones únicas\\n\\ntax_advisory_footer: 1 sesiones únicas\"}"
+  ]
+}
