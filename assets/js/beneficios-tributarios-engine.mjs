@@ -10,7 +10,7 @@ export function relevantTopics({buyer,goal,condition,mortgage,count,dfl}) {
   } else {
     ids.add('venta');
     if(housing && mortgage !== 'no') ids.add('intereses');
-    if(housing && dfl !== 'no') ids.add('dfl');
+    if(housing && dfl !== 'no') ids.add('dfl-persona');
     if(goal === 'vivienda') ids.add('mayores2027');
     if(goal === 'empresa') ['activo','gastos','iva'].forEach(x=>ids.add(x));
   }
