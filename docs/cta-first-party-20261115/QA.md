@@ -1,6 +1,6 @@
 # QA y entrega del laboratorio privado — 15/11/2026
 
-> La certificación histórica de abajo se conserva. El seguimiento complementario al final identifica el candidato vigente y las pruebas que todavía no están certificadas.
+> Las revisiones históricas se conservan. La actualización de exportación real al final establece el estado vigente: JSON aprobado; importación en hoja de cálculo, duplicación nativa y reinicio completo pendientes.
 
 Cierre: 15/11/2026 00:35:45 America/Santiago (03:35:45 UTC).
 Código: `ef6b2df3a87729dae441581a7ee78719832dc8fd`.
@@ -97,3 +97,44 @@ Evidencias nuevas: `qa-complementario-evidencias.json`, `export-visible-qa.json`
 
 ![Panel escritorio complementario](panel-escritorio-complementario.jpg)
 ![Panel móvil complementario](panel-movil-complementario.jpg)
+
+
+## Actualización documental — exportación real aprobada
+
+Registro: 15/11/2026 09:30:43 America/Santiago (UTC−03:00).
+
+**Estado: APROBADA la exportación efectiva y posterior inspección del archivo `cta-sintetico-agregado.json`, recibido del propietario.** Fuente de esta actualización: resultado confirmado expresamente por el propietario en la solicitud de registro. No se presenta como una nueva descarga automatizada ni como una nueva inspección independiente ejecutada en este turno. Esta evidencia sustituye el pendiente de descarga efectiva de las revisiones históricas anteriores; sus timeouts se conservan como limitaciones de automatización, no como prueba de fallo de la descarga.
+
+Candidato sin cambios: `180f621630f70e34da5207ed924d0cf5f3499dc2`.
+Deployment sin cambios: `dpl_4HdweiyWVmBtJZbbvbHumXCmCBn6`.
+
+### Evidencia confirmada
+
+- Archivo recibido y abierto: `cta-sintetico-agregado.json`, extensión JSON, **943 bytes**, JSON válido.
+- Fixture sintético cerrado; muestra de tres sesiones.
+- Cero eventos faltantes, inesperados, pendientes, no atribuibles y defectuosos.
+- Agregado sin UUID de sesión o solicitud y sin información personal observada.
+- Conteos y tasas matemáticamente consistentes.
+
+| Métrica exclusivamente sintética | Numerador | Denominador | Resultado |
+| --- | ---: | ---: | ---: |
+| CTR | 3 | 3 | 100% |
+| Conversión guía → aceptación | 2 | 3 | 66,67% |
+| Conversión clic → aceptación | 2 | 3 | 66,67% |
+| Entrega | 1 | 2 | 50% |
+
+Estas cifras corresponden únicamente al fixture; no son visitas, conversiones ni entregas comerciales reales. La aprobación se basa en el archivo efectivamente descargado y recibido, no en la mera generación del objeto JSON visible en el panel. No se inventa hora exacta de descarga ni hash del adjunto.
+
+### Consolidación y pendientes vigentes
+
+Las **40 pruebas Node, 14 IndexedDB y 7 Web Locks** conservan sus resultados anteriores. **No se ejecutaron nuevamente** para esta actualización documental.
+
+Permanecen pendientes exactamente las tres validaciones de cierre:
+
+1. Importación efectiva del archivo exportado en una hoja de cálculo.
+2. Duplicación nativa de Chrome y comprobación visual de sesiones/locks/atribución.
+3. Reinicio completo del navegador y comprobación de persistencia, sesiones y cola.
+
+La recepción del JSON no certifica por sí misma ninguna de estas tres pruebas. Se mantiene QA parcial y laboratorio exclusivamente sintético, sin autorización de medición real ni publicación.
+
+Único archivo modificado en esta actualización: `docs/cta-first-party-20261115/QA.md`. Sin cambios de código, deployment, producción, T0, Resend o CRM 360. PR #23 abierto y en borrador, sin fusionar.
