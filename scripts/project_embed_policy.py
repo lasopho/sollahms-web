@@ -10,6 +10,7 @@ import re
 from urllib.parse import parse_qs, urlencode, urlparse
 
 from virtual_tour_policy import secure_url, virtual_tours_to_render
+from project_tour_removal import remove_project_tours
 
 
 SHARED_STYLESHEET = '<link rel="stylesheet" href="/assets/css/project-embeds.css?v=20261012">'
@@ -238,4 +239,4 @@ def normalize_page_embeds(page, research, featured=False):
         page = page.replace('</head>', host_script + '\n</head>', 1)
     if 'data-embed-src=' in page:
         raise ValueError(research['slug'] + ': an activation loader remains')
-    return add_persistent_embed_alternatives(remove_redundant_map_details(page))
+    return remove_project_tours(add_persistent_embed_alternatives(remove_redundant_map_details(page)))

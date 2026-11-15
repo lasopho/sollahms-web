@@ -91,6 +91,14 @@ class RemovalTests(unittest.TestCase):
         self.assertNotIn('Galería y 360°', generated)
         self.assertTrue(soup.select('#galeria img'))
 
+    def test_legacy_embed_migration_cannot_restore_a_tour(self):
+        from project_embed_policy import normalize_page_embeds
+        research = {row['slug']: row for row in json.loads((ROOT / 'data/fichas-proyectos.json').read_text())}
+        for slug in ['inn-puerto-chico', 'alto-irarrazaval']:
+            original = subprocess.check_output(['git', 'show', BASE + ':' + slug + '.html'], cwd=ROOT).decode()
+            generated = normalize_page_embeds(original, research[slug], featured=slug == 'inn-puerto-chico')
+            self.assertFalse(BeautifulSoup(generated, 'html.parser').select('#recorrido,.tour-card,[data-project-embed="tour"]'))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

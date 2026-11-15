@@ -17,9 +17,12 @@ try {
   for (const width of widths) {
     const queue = [...slugs];
     await Promise.all(Array.from({ length: 4 }, async () => {
-      const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
+      const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce',
+        ignoreHTTPSErrors: true });
       // The existing bypass remains private and is scoped to this exact origin.
-      if (base.startsWith('https:') && process.env.VERCEL_AUTOMATION_BYPASS_SECRET)
+      if (['project-wrapp-9ck5uzboa-lsandoval2-8260s-projects.vercel.app',
+        'project-wrapp-al53w8czs-lsandoval2-8260s-projects.vercel.app'].includes(new URL(base).hostname)
+        && process.env.VERCEL_AUTOMATION_BYPASS_SECRET)
         await context.route(new URL(base).origin + '/**', route => route.continue({ headers: {
           ...route.request().headers(), 'x-vercel-protection-bypass': process.env.VERCEL_AUTOMATION_BYPASS_SECRET
         } }));
@@ -33,6 +36,8 @@ try {
           failedResponses.push({ url: response.url().split('?')[0], status: response.status() }); };
         page.on('pageerror', onError); page.on('requestfailed', onFailure); page.on('response', onResponse);
         const response = await page.goto(base + '/' + slug + '.html', { waitUntil: 'load', timeout: 45000 });
+        // Load the existing lazy images for a complete resource check.
+        await page.evaluate(() => { for (const image of document.images) image.loading = 'eager'; });
         for (const id of ['galeria', 'planos', 'modelos', 'ubicacion', 'solicitar-cotizacion']) {
           const section = page.locator('#' + id).first();
           if (await section.count()) await section.scrollIntoViewIfNeeded();
