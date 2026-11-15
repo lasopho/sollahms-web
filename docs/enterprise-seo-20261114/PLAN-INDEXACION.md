@@ -1,0 +1,14 @@
+# Procedimiento posterior — no ejecutado
+
+Alcance exclusivo: corporate-enterprise-v1, URL https://sollahms.cl/inversion-inmobiliaria-empresas.html. El registro independiente es corporate-enterprise-v1.json; no sustituye active-policy.json ni modifica corporate-education-v2.
+
+1. Solo tras autorización y publicación de la integración, confirmar dominio/deployment, HTTP 200, canonical, ausencia de noindex, sitemap 143 y enlace público. Registrar por separado los instantes reales de incorporación al sitemap y publicación del enlace; no usar el T0 de la página para esos eventos.
+2. Con autorización para acceso a Search Console, seleccionar la propiedad correcta de sollahms.cl e inspeccionar la URL exacta. Registrar si Google la conoce, estado de cobertura, último rastreo, canonical declarada/elegida y sitemap de descubrimiento que la plataforma indique. No inferir descubrimiento de un HTTP 200.
+3. Distinguir informe de índice de prueba en vivo. La prueba en vivo acredita accesibilidad actual, no indexación. Si ya está indexada y no hay error que corregir, no solicitar indexación. Si no está indexada, analizar la causa y realizar prueba en vivo cuando corresponda. No repetir solicitudes por mero transcurso de horas.
+4. Solicitar indexación una sola vez únicamente si procede y existe autorización expresa para esa intervención. Registrar confirmación real, fecha/hora/zona, URL, responsable y evidencia. No reenviar sitemap ni activar validaciones globales. Si hay cuota o error, registrar fallo; no afirmar envío exitoso.
+5. Con autorización para acceso a Bing Webmaster Tools, inspeccionar exclusivamente la URL y registrar descubrimiento, rastreo e indexación observados. No enviar URL ni sitemap sin autorización específica.
+6. Cada intervención tendrá observed_at (America/Santiago y UTC), zona nativa de la fuente, event_type, engine, result, evidence y actor. Si la plataforma solo revela una fecha de rastreo o primera observación, no convertirla en fecha cierta de descubrimiento/indexación. Mantener null para lo desconocido.
+7. Rendimiento: filtrar por URL exacta, separar Google y Bing, país/dispositivo cuando existan y respetar fechas nativas de los informes. GSC diario usa su propia zona; no reasignar sus días a Santiago. Separar día parcial y periodos completos. Registrar última fecha completa disponible. No inventar cero para datos ausentes ni atribuir retroactivamente métricas al nuevo segmento.
+8. GEO: evaluar por separado las seis consultas de GEO-COBERTURA.md cuando se autorice medición. Registrar superficie/modelo, fecha, idioma, localización, consulta literal, respuesta, mención, enlace/cita y evidencia. No simular motores con otra API ni mezclar resultados con las once páginas originales. Una cita no es un lead.
+
+No se accedió ni modificó Search Console o Bing en esta ejecución. Este archivo no crea automatizaciones ni autorizaciones futuras.
