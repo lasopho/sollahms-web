@@ -1,0 +1,36 @@
+{
+  "sso": {
+    "enabled": true,
+    "deploymentType": "all_except_custom_domains"
+  },
+  "productionAliases": [
+    {
+      "domain": "www.sollahms.cl",
+      "deployment": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN"
+    },
+    {
+      "domain": "sollahms.cl",
+      "deployment": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN"
+    }
+  ],
+  "pr": {
+    "number": 27,
+    "draft": true,
+    "merged": false,
+    "headBeforeDocumentation": "75ffecc4d324874f151114ce9eb808aa4367f7fa"
+  },
+  "environment": {
+    "id": "ccarenv_b64_Y2NhcmVudl8yYWI2NTUyMWZlN2M4MTkxOWQ3MWI5OGExYmI0ZDQ3ZA",
+    "revision": "1",
+    "policy": "enforced",
+    "targetHostnameAllowed": false,
+    "networkChangeToolAvailable": false
+  },
+  "requestedNetworkGrantResult": {
+    "network": null,
+    "file_system": null
+  },
+  "diagnosticCaptureMetadata": "No retained records available",
+  "productionPrepared": false,
+  "productionPromoted": false
+}
