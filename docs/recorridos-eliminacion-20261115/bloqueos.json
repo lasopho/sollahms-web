@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-15",
+  "timezone": "America/Santiago",
+  "deploymentCreated": false,
+  "pullRequestCreated": false,
+  "rejections": [
+    {
+      "action": "vercel_create_deployment",
+      "reason": "This creates a broad Vercel staging deployment containing the full site, serverless functions, and internal project data, but the trusted user instructions do not explicitly authorize publishing this payload to this external project."
+    },
+    {
+      "action": "github_create_pull_request",
+      "reason": "Creating the draft PR shares the repository’s full code changes with an external GitHub destination, but trusted instructions do not explicitly authorize this payload and destination."
+    }
+  ],
+  "nextRequirement": "Obtener autorización adicional explícita para los destinos y payload descritos; no eludir la revisión automática."
+}
