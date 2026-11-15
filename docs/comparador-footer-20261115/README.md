@@ -1,6 +1,8 @@
 # Pie corporativo del Comparador Hipotecario
 
-Estado: implementación y preview privada listas; QA responsive exacto pendiente. No autorizar publicación basándose en esta revisión parcial.
+Estado actualizado: QA responsive exacto aprobado en 1440, 768, 390 y 320 px sobre el mismo deployment. Candidato técnicamente apto para solicitar autorización de publicación. No publicado ni fusionado. Véase [QA responsive final](RESPONSIVE-QA.md).
+
+La revisión parcial y las limitaciones anteriores se conservan abajo como historial; quedaron resueltas mediante el navegador Chrome conectado y su control de viewport.
 
 El pie horizontal anterior se reemplaza por el patrón publicado de Trabaja con nosotros, contrastado con la Guía hipotecaria: marca y contacto, Secciones y Legal. Se conserva el destino del catálogo `/proyectos.html`, se añade Expertise como en la referencia, y se conserva Fuentes y respaldo documental. El número aparece una sola vez dentro del pie y apunta exactamente a https://wa.me/56948502440. Correo: contacto@sollahms.cl.
 
