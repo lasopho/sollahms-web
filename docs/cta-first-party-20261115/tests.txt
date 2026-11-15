@@ -1,0 +1,41 @@
+✔ cohorte: 3 visitas, 3 clics, 2 aceptadas y 1 entrega (2.445942ms)
+✔ los tres CTA son distintos, incluido footer (1.675434ms)
+✔ duplicados no inflan conteos (0.602058ms)
+✔ evento perdido bloquea todas las tasas (0.582378ms)
+✔ cola pendiente bloquea tasas (0.522726ms)
+✔ cobertura manual no certificada (0.500171ms)
+✔ denominador vacío no produce 0% (0.163883ms)
+✔ expira exactamente en 30 minutos (0.128749ms)
+✔ actividad renueva última actividad (0.170273ms)
+✔ reloj hacia atrás invalida sesión (0.205617ms)
+✔ pérdida de sesión no hereda CTA (0.13651ms)
+✔ navegación guía→agenda conserva CTA (0.159876ms)
+✔ agenda directa no se atribuye (0.172376ms)
+✔ sesión expirada pierde atribución al llegar (0.109228ms)
+✔ rechaza campo rut (0.469815ms)
+✔ rechaza campo nombre (0.283187ms)
+✔ rechaza campo correo (0.284559ms)
+✔ rechaza campo telefono (0.263567ms)
+✔ rechaza campo mensaje (0.235082ms)
+✔ rechaza campo referrer (0.868059ms)
+✔ rechaza campo ip (0.16245ms)
+✔ rechaza campo fingerprint (0.078672ms)
+✔ rechaza campo tax_answers (0.099213ms)
+✔ rechaza campo operation_key (0.109569ms)
+✔ rechaza datos reales y evento desconocido (0.1942ms)
+✔ aceptación necesita comprobante explícito (0.161679ms)
+✔ aceptación no equivale a entrega (0.109299ms)
+✔ comprobantes deben corresponder a la solicitud y sesión (0.237165ms)
+✔ entrega huérfana no se contabiliza (0.218537ms)
+✔ rechazo e incompleto no son eventos de aceptación (0.18157ms)
+✔ eventos fuera del período no cuentan (0.163913ms)
+✔ identidad operacional no está en identidad analítica (0.11034ms)
+✔ reintento con mismo evento conserva clave semántica (0.106985ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 88.820736

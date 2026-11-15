@@ -1,0 +1,28 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {randomUUID as uuid} from 'node:crypto';
+import {validate,event,session,TTL,aggregate,reconcile,semantic} from './core.mjs';import {canonical,receiptFor} from './fixtures.mjs';
+const fixture=()=>canonical(uuid,10000);
+function report(f,events=f.events){return aggregate(events.map(x=>x.e),{run:f.run.id,from:f.run.from,to:f.run.to,expected:f.run.expected});}
+test('cohorte: 3 visitas, 3 clics, 2 aceptadas y 1 entrega',()=>{const m=report(fixture());assert.equal(m.counts.guide_view,3);assert.equal(m.counts.advisory_accepted,2);assert.equal(m.counts.advisory_delivered,1);assert.equal(m.rates.delivery.value,50);assert.equal(m.rates.guide_conversion.numerator,2);});
+test('los tres CTA son distintos, incluido footer',()=>assert.deepEqual(Object.values(report(fixture()).clicks),[1,1,1]));
+test('duplicados no inflan conteos',()=>{const f=fixture();assert.deepEqual(report(f,[...f.events,...f.events]),report(f));});
+test('evento perdido bloquea todas las tasas',()=>{const f=fixture();const m=report(f,f.events.slice(1));assert.equal(m.missing,1);assert.ok(Object.values(m.rates).every(r=>r.value===null));});
+test('cola pendiente bloquea tasas',()=>{const f=fixture();assert.equal(aggregate(f.events.map(x=>x.e),{run:f.run.id,from:f.run.from,to:f.run.to,expected:f.run.expected,pending:1}).rates.ctr.value,null);});
+test('cobertura manual no certificada',()=>{const f=fixture();assert.equal(aggregate(f.events.map(x=>x.e),{run:f.run.id,from:0,to:999999}).rates.ctr.value,null);});
+test('denominador vacío no produce 0%',()=>{assert.equal(aggregate([],{run:uuid(),from:0,to:9,expected:[]}).rates.ctr.value,null);});
+test('expira exactamente en 30 minutos',()=>{const s=session(null,1,uuid);assert.equal(session(s,TTL,uuid).id,s.id);assert.notEqual(session(s,TTL+1,uuid).id,s.id);});
+test('actividad renueva última actividad',()=>{const s=session(null,1,uuid),next=session(s,1000,uuid);assert.equal(next.id,s.id);assert.equal(next.last,1000);});
+test('reloj hacia atrás invalida sesión',()=>{const s=session(null,100,uuid);assert.notEqual(session(s,99,uuid).id,s.id);});
+test('pérdida de sesión no hereda CTA',()=>{const s=session(null,99,uuid);assert.equal(s.cta,null);});
+test('navegación guía→agenda conserva CTA',()=>{const run=uuid();let a=event(null,'guide_view',{run,now:1,uuid});a=event(a.state,'tax_advisory_click',{run,now:2,uuid,cta:'tax_advisory_footer'});const b=event(a.state,'agenda_view',{run,now:3,uuid});assert.equal(b.event.cta,'tax_advisory_footer');assert.equal(b.event.session,a.event.session);});
+test('agenda directa no se atribuye',()=>{const run=uuid(),a=event(null,'agenda_view',{run,now:1,uuid});const m=aggregate([a.event],{run,from:0,to:2});assert.equal(m.unattributable,1);assert.equal(m.counts.agenda_view,0);});
+test('sesión expirada pierde atribución al llegar',()=>{const run=uuid(),a=event(null,'tax_advisory_click',{run,now:1,uuid,cta:'tax_advisory_main'}),b=event(a.state,'agenda_view',{run,now:TTL+1,uuid});assert.equal(b.event.cta,null);assert.notEqual(a.event.session,b.event.session);});
+for(const prop of ['rut','nombre','correo','telefono','mensaje','referrer','ip','fingerprint','tax_answers','operation_key'])test('rechaza campo '+prop,()=>{const f=fixture();assert.throws(()=>validate({...f.events[0].e,[prop]:'prohibido'}));});
+test('rechaza datos reales y evento desconocido',()=>{const e=fixture().events[0].e;assert.throws(()=>validate({...e,synthetic:false}));assert.throws(()=>validate({...e,type:'sale'}));});
+test('aceptación necesita comprobante explícito',()=>{const e=fixture().events.find(x=>x.e.type==='advisory_accepted').e;assert.throws(()=>reconcile(e,null));assert.throws(()=>reconcile(e,{status:200}));});
+test('aceptación no equivale a entrega',()=>{const f=fixture(),a=f.events.find(x=>x.e.type==='advisory_accepted');assert.throws(()=>reconcile({...a.e,type:'advisory_delivered'},a.proof));});
+test('comprobantes deben corresponder a la solicitud y sesión',()=>{const a=fixture().events.find(x=>x.proof);assert.equal(reconcile(a.e,a.proof),true);assert.throws(()=>reconcile(a.e,{...a.proof,request:uuid()}));assert.throws(()=>reconcile(a.e,{...a.proof,session:uuid()}));});
+test('entrega huérfana no se contabiliza',()=>{const f=fixture();const rows=f.events.filter(x=>x.e.type!=='advisory_accepted');assert.equal(report(f,rows).counts.advisory_delivered,0);});
+test('rechazo e incompleto no son eventos de aceptación',()=>{const f=fixture();const rows=f.events.filter(x=>!['advisory_accepted','advisory_delivered'].includes(x.e.type));assert.equal(report(f,rows).counts.advisory_accepted,0);});
+test('eventos fuera del período no cuentan',()=>{const f=fixture();assert.equal(aggregate(f.events.map(x=>x.e),{run:f.run.id,from:0,to:1}).sample,0);});
+test('identidad operacional no está en identidad analítica',()=>{const f=fixture();assert.ok(f.events.every(x=>!Object.hasOwn(x.e,'operation_key')));});
+test('reintento con mismo evento conserva clave semántica',()=>{const f=fixture();assert.equal(semantic(f.events[0].e),semantic(structuredClone(f.events[0].e)));});
