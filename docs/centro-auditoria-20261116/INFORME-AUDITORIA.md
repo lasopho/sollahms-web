@@ -1,6 +1,8 @@
 # Centro de Orientación — auditoría y mejora
 
-16 de noviembre de 2026 · America/Santiago · Preview privada; publicación productiva pendiente.
+**Estado actualizado:** publicado el 16/11/2026 a las 12:29:56.873, America/Santiago. Deployment `dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR`. [Informe productivo y QA público](production-release-20261116/INFORME-PUBLICACION.md).
+
+El cuerpo siguiente documenta la auditoría y entrega de Preview anterior a la autorización productiva. La copia exacta de aquel informe se conserva en `production-release-20261116/history/INFORME-AUDITORIA-preview.md` y en el commit 42ee1d1.
 
 La página queda corregida y validada en escritorio, notebook, tablet y móvil. El panel «Tu punto de partida» vuelve a tener títulos, ayudas y acción legibles. Los seis pasos conservan sus controles originales, sus nombres y sus eventos. Las tres herramientas incorporan reinicio, y la UF manual queda protegida frente a respuestas tardías.
 
@@ -89,4 +91,4 @@ La verificación remota aprobó 26/26 controles: las 1.660 rutas/SHA1 coinciden 
 
 La primera llamada CLI fue rechazada por usar `--skip-domain` con Preview; no generó deployment. Se confirmó la lista remota vacía, se retiró esa opción y se creó una sola Preview. [preview-validation-attempt.json](preview-validation-attempt.json) conserva ese diagnóstico. No se utilizó `--prod`, `promote`, `--verify`, sharelink ni cambio de protección para este trabajo.
 
-La publicación productiva requiere autorización expresa posterior y nueva conciliación del estado remoto. El [siguiente prompt completo](SIGUIENTE-PROMPT.md) detalla cómo continuar sin repetir pruebas certificadas ni reemplazar Contacto o los recorridos eliminados.
+La autorización productiva posterior ya fue recibida y ejecutada. Se promovió el Production certificado y el QA público aprobó; [informe y recibos](production-release-20261116/INFORME-PUBLICACION.md). El [siguiente prompt vigente](production-release-20261116/SIGUIENTE-PROMPT.md) conserva el cierre y evita repetir una publicación ya completada.

@@ -1,18 +1,17 @@
-# Cierre — Centro de Orientación
+# Centro de Orientación — publicado y verificado
 
-Intervención completada el 16/11/2026 en rama independiente `codex/centro-auditoria-integral-20261116`. La publicación productiva queda pendiente de autorización expresa.
+Publicación completada el **16/11/2026 a las 12:29:56.873, America/Santiago**, con autorización expresa del propietario. No queda una etapa de publicación pendiente.
 
-- [Preview privada READY con SSO](https://project-wrapp-9uq44evdh-lsandoval2-8260s-projects.vercel.app/centro-orientacion.html): `dpl_33R4uenGQAt2cSVUGEJC7VsoF9yS`.
-- [PR #30 en Draft](https://github.com/lasopho/sollahms-web/pull/30), base `codex/contacto-baseline-productivo-20261116`. Sin merge.
-- Implementación: `e9d7393148bf1e209f6a8e2210ed4c5a973ceb41`. HEAD documental: consultar `git log -1 --format=%H -- NEXT-PROMPT.md`; los commits documentales posteriores no cambian el artefacto.
-- Candidato: `ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05`, 1.660 archivos, tres deltas y 1.657 idénticos a Production B9HL.
+- Deployment definitivo: `dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR`, READY, Production.
+- [Centro público](https://sollahms.cl/centro-orientacion.html); www mantiene 308 al dominio canónico. Ambos aliases verificados en HWs.
+- Source SHA: `42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9`; implementación `e9d7393148bf1e209f6a8e2210ed4c5a973ceb41`.
+- [PR #30](https://github.com/lasopho/sollahms-web/pull/30) abierto en Draft, sin merge. Rama `codex/centro-auditoria-integral-20261116`.
+- Inventario publicado SHA256 `ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05`: 1.660 archivos, tres cambios runtime y otros 1.657 idénticos a B9HL.
 
-Se corrigieron contraste del resultado y controles deshabilitados, reinicios, preservación de UF manual, navegación sin saltos y desvanecimiento editorial. Se mejoraron fuentes, agrupación de campos y adaptación a 320 px. Fórmulas y transporte comercial intactos.
+Se copió exclusivamente el artefacto certificado, sin builders ni generadores. Se creó un único Production aislado, se verificó antes de asignar dominios y se promovió exactamente ese mismo ID. Contacto, 131 fichas, recorridos eliminados, siete funciones/57 archivos, configuración v3, CRM 360, Resend y protecciones preservados.
 
-QA final: **78 comprobaciones Chrome sobre Preview**, cinco anchos; **53 pruebas financieras/UF/orientación**, **80 contrastes**, **26 controles remotos**, 15 anclas activadas y fallback sin JavaScript. Todas aprobadas. Cero errores inesperados de consola/JavaScript/recursos, cero overflow y cero envíos comerciales. Capturas antes/después de los cinco anchos guardadas. Las pruebas UF del navegador usan fixtures; adicionalmente un GET real devolvió UF oficial vigente del 16/11/2026.
+Preflight 28/28, integridad aislada 33/33, navegador aislado 48/48, QA público de 190/190 URL y navegador 48/48 en cinco anchos, postpromoción 36/36: todo aprobado. Cero errores inesperados, overflow, formularios comerciales enviados o llamadas a proveedores UF en esta fase. Se conservan los certificados anteriores de Preview y 40 capturas nuevas de la fase productiva.
 
-Los 1.660 SHA1 remotos coinciden con el candidato; siete funciones/57 archivos, Contacto y 131 fichas preservados. Ambos dominios siguen en `dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w`; www mantiene 308. SSO, autodeploy, secretos e integraciones intactos. Sin sharelinks, bypasses ni cambios productivos. El intento CLI rechazado no creó deployment y quedó documentado.
+[Informe productivo completo](production-release-20261116/INFORME-PUBLICACION.md) · [Cierre verificable](production-release-20261116/publication-closure.json) · [Hashes de entrega](production-release-20261116/SHA256SUMS) · [Siguiente prompt completo](production-release-20261116/SIGUIENTE-PROMPT.md).
 
-Limitaciones: no se probaron proveedores mediante envíos reales; la revisión accesible no es certificación WCAG; CMF conserva una redirección HTTPS→HTTP; los controles dinámicos requieren JavaScript. Ninguna es una incidencia funcional/visual bloqueante del candidato. Los fallos iniciales corregidos se archivaron como historia, no como certificado final.
-
-[Informe completo y capturas](INFORME-AUDITORIA.md) · [Manifiesto](candidate-manifest.json) · [Preservación](source-preservation.json) · [QA Preview](preview/results.json) · [QA remota](remote-verification/verification-summary.json) · [Siguiente prompt completo](SIGUIENTE-PROMPT.md).
+El cierre previo de Preview y el prompt de autorización ejecutado están en `production-release-20261116/history/`. Su contenido es histórico; no volver a crear o promover deployments al reanudar.

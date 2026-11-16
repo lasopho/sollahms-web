@@ -1,0 +1,285 @@
+{
+  "verifiedAtUTC": "2026-11-16T15:24:18.379609+00:00",
+  "phase": "preflight",
+  "passed": true,
+  "baselineDeployment": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+  "candidateInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+  "deployment": null,
+  "origin": null,
+  "sourceCommit": null,
+  "checks": [
+    {
+      "check": "candidate_manifest_pin",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "baseline_manifest_pin",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "1660_identical_path_set",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exactly_three_authorized_changes",
+      "pass": true,
+      "detail": [
+        "static/assets/css/orientacion.css",
+        "static/assets/js/orientacion.mjs",
+        "static/centro-orientacion.html"
+      ]
+    },
+    {
+      "check": "1657_preserved_entries",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "local_artifact_all_hashes",
+      "pass": true,
+      "detail": {
+        "files": 1660,
+        "sha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05"
+      }
+    },
+    {
+      "check": "config_v3_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "7_functions_57_files_unchanged",
+      "pass": true,
+      "detail": {
+        "bundles": [
+          "advisory.func",
+          "booking-availability.func",
+          "booking-create.func",
+          "collaboration.func",
+          "contact.func",
+          "orientation-contact.func",
+          "uf.func"
+        ],
+        "files": 57
+      }
+    },
+    {
+      "check": "contacto_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "financial_engine_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_project_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_project_settings_unchanged",
+      "pass": true,
+      "detail": {
+        "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "autoExposeSystemEnvs": true,
+        "nodeVersion": "24.x",
+        "autoAssignCustomDomains": false,
+        "previewDeploymentsDisabled": true,
+        "paused": null,
+        "gitIntegration": {
+          "type": "github",
+          "productionBranch": "main",
+          "repo": "sollahms-web"
+        }
+      }
+    },
+    {
+      "check": "before_repository_automatic_deployments_disabled",
+      "pass": true,
+      "detail": {
+        "main": false,
+        "codex/centro-auditoria-integral-20261116": false,
+        "codex/contacto-baseline-productivo-20261116": false,
+        "codex/eliminar-recorridos-global-20261115": false
+      }
+    },
+    {
+      "check": "before_baseline_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "updatedAt": 1794837289885
+      }
+    },
+    {
+      "check": "before_baseline_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "updatedAt": 1794837289884
+      }
+    },
+    {
+      "check": "before_www_redirect_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "github_heads_and_draft_pr",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "local_head_matches_verified_remote",
+      "pass": true,
+      "detail": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9"
+    },
+    {
+      "check": "runtime_sources_clean",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "latest_production_still_baseline",
+      "pass": true,
+      "detail": [
+        {
+          "id": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+          "state": "READY",
+          "target": "production",
+          "created": 1794836242120,
+          "sourceSha": "534bf362b8960e275f5b8b42b5c786027906a4cb"
+        },
+        {
+          "id": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+          "state": "READY",
+          "target": "production",
+          "created": 1794802137979,
+          "sourceSha": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+        },
+        {
+          "id": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+          "state": "READY",
+          "target": "production",
+          "created": 1794754853864,
+          "sourceSha": null
+        },
+        {
+          "id": "dpl_21xM1afWsRHgbu3Kv2zdikWH3tkJ",
+          "state": "ERROR",
+          "target": "production",
+          "created": 1794754023021,
+          "sourceSha": null
+        },
+        {
+          "id": "dpl_2S4kRYezijcgik4etSnnR3sAY1z6",
+          "state": "READY",
+          "target": "production",
+          "created": 1794748528078,
+          "sourceSha": "6eefd61edf3843cff603c1a2053eb204920270a7"
+        }
+      ]
+    },
+    {
+      "check": "after_project_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_project_settings_unchanged",
+      "pass": true,
+      "detail": {
+        "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "autoExposeSystemEnvs": true,
+        "nodeVersion": "24.x",
+        "autoAssignCustomDomains": false,
+        "previewDeploymentsDisabled": true,
+        "paused": null,
+        "gitIntegration": {
+          "type": "github",
+          "productionBranch": "main",
+          "repo": "sollahms-web"
+        }
+      }
+    },
+    {
+      "check": "after_repository_automatic_deployments_disabled",
+      "pass": true,
+      "detail": {
+        "main": false,
+        "codex/centro-auditoria-integral-20261116": false,
+        "codex/contacto-baseline-productivo-20261116": false,
+        "codex/eliminar-recorridos-global-20261115": false
+      }
+    },
+    {
+      "check": "after_baseline_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "updatedAt": 1794837289885
+      }
+    },
+    {
+      "check": "after_baseline_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "updatedAt": 1794837289884
+      }
+    },
+    {
+      "check": "after_www_redirect_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "project_stable_during_phase",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "aliases_stable_during_phase",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "failures": [],
+  "sourceBodiesDownloaded": 0,
+  "formsSubmitted": 0,
+  "providerLookups": 0,
+  "apiWrites": 0,
+  "buildsOrGenerators": 0,
+  "deploymentsCreatedOrPromoted": 0,
+  "settingsOrCredentialsModified": false,
+  "activeOwnProcessGroups": []
+}

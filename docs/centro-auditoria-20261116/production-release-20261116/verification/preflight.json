@@ -1,0 +1,151 @@
+{
+  "passed": true,
+  "checkedAtUTC": "2026-11-16T15:24:18.379609+00:00",
+  "checkedAt": "2026-11-16T15:24:18.379609+00:00",
+  "localHead": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9",
+  "remoteHead": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9",
+  "baseHead": "dffbd310fe0cb34d952bda493140504ec4e1241c",
+  "pullRequest": {
+    "number": 30,
+    "url": "https://github.com/lasopho/sollahms-web/pull/30",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "head": {
+      "branch": "codex/centro-auditoria-integral-20261116",
+      "sha": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9"
+    },
+    "base": {
+      "branch": "codex/contacto-baseline-productivo-20261116",
+      "sha": "dffbd310fe0cb34d952bda493140504ec4e1241c"
+    }
+  },
+  "baselineDeployment": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+  "candidateInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+  "productionAliases": [
+    {
+      "host": "sollahms.cl",
+      "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794837289885
+    },
+    {
+      "host": "www.sollahms.cl",
+      "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794837289884
+    }
+  ],
+  "project": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoExposeSystemEnvs": true,
+    "nodeVersion": "24.x",
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "paused": null,
+    "gitIntegration": {
+      "type": "github",
+      "productionBranch": "main",
+      "repo": "sollahms-web"
+    }
+  },
+  "artifact": {
+    "candidatePin": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+    "baselinePin": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+    "paths": 1660,
+    "changed": [
+      "static/assets/css/orientacion.css",
+      "static/assets/js/orientacion.mjs",
+      "static/centro-orientacion.html"
+    ],
+    "preserved": 1657,
+    "localOutput": "/private/tmp/sollahms-centro-audit-20261116/.vercel/centro-auditoria-20261116/stage/.vercel/output",
+    "allPathSizeSha1Sha256Match": true,
+    "functions": 7,
+    "functionFiles": 57,
+    "noRebuild": true
+  },
+  "checks": {
+    "candidate_manifest_pin": true,
+    "baseline_manifest_pin": true,
+    "1660_identical_path_set": true,
+    "exactly_three_authorized_changes": true,
+    "1657_preserved_entries": true,
+    "local_artifact_all_hashes": true,
+    "config_v3_unchanged": true,
+    "7_functions_57_files_unchanged": true,
+    "contacto_unchanged": true,
+    "financial_engine_unchanged": true,
+    "before_project_identity": true,
+    "before_project_settings_unchanged": true,
+    "before_repository_automatic_deployments_disabled": true,
+    "before_baseline_alias_sollahms.cl": true,
+    "before_baseline_alias_www.sollahms.cl": true,
+    "before_www_redirect_preserved": true,
+    "github_heads_and_draft_pr": true,
+    "local_head_matches_verified_remote": true,
+    "runtime_sources_clean": true,
+    "latest_production_still_baseline": true,
+    "after_project_identity": true,
+    "after_project_settings_unchanged": true,
+    "after_repository_automatic_deployments_disabled": true,
+    "after_baseline_alias_sollahms.cl": true,
+    "after_baseline_alias_www.sollahms.cl": true,
+    "after_www_redirect_preserved": true,
+    "project_stable_during_phase": true,
+    "aliases_stable_during_phase": true
+  },
+  "recentProductionDeployments": [
+    {
+      "id": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+      "state": "READY",
+      "target": "production",
+      "created": 1794836242120,
+      "sourceSha": "534bf362b8960e275f5b8b42b5c786027906a4cb"
+    },
+    {
+      "id": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+      "state": "READY",
+      "target": "production",
+      "created": 1794802137979,
+      "sourceSha": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+    },
+    {
+      "id": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+      "state": "READY",
+      "target": "production",
+      "created": 1794754853864,
+      "sourceSha": null
+    },
+    {
+      "id": "dpl_21xM1afWsRHgbu3Kv2zdikWH3tkJ",
+      "state": "ERROR",
+      "target": "production",
+      "created": 1794754023021,
+      "sourceSha": null
+    },
+    {
+      "id": "dpl_2S4kRYezijcgik4etSnnR3sAY1z6",
+      "state": "READY",
+      "target": "production",
+      "created": 1794748528078,
+      "sourceSha": "6eefd61edf3843cff603c1a2053eb204920270a7"
+    }
+  ],
+  "summarySha256": "7ebadffe58f04a95f4e3aa9f30638b06f2b5e377eb06f49783413e918f13947b",
+  "settingsModified": false,
+  "credentialsModified": false,
+  "deploymentsCreatedOrPromoted": 0,
+  "apiWrites": 0,
+  "providerLookups": 0,
+  "formsSubmitted": 0,
+  "failures": []
+}

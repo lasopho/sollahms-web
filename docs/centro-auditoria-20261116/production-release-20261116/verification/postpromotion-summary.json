@@ -1,0 +1,307 @@
+{
+  "verifiedAtUTC": "2026-11-16T15:32:13.466593+00:00",
+  "phase": "postpromotion",
+  "passed": true,
+  "baselineDeployment": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+  "candidateInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+  "deployment": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+  "origin": "https://project-wrapp-4tb7ztjjc-lsandoval2-8260s-projects.vercel.app",
+  "sourceCommit": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9",
+  "checks": [
+    {
+      "check": "candidate_manifest_pin",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "baseline_manifest_pin",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "1660_identical_path_set",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "exactly_three_authorized_changes",
+      "pass": true,
+      "detail": [
+        "static/assets/css/orientacion.css",
+        "static/assets/js/orientacion.mjs",
+        "static/centro-orientacion.html"
+      ]
+    },
+    {
+      "check": "1657_preserved_entries",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "local_artifact_all_hashes",
+      "pass": true,
+      "detail": {
+        "files": 1660,
+        "sha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05"
+      }
+    },
+    {
+      "check": "config_v3_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "7_functions_57_files_unchanged",
+      "pass": true,
+      "detail": {
+        "bundles": [
+          "advisory.func",
+          "booking-availability.func",
+          "booking-create.func",
+          "collaboration.func",
+          "contact.func",
+          "orientation-contact.func",
+          "uf.func"
+        ],
+        "files": 57
+      }
+    },
+    {
+      "check": "contacto_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "financial_engine_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_project_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_project_settings_unchanged",
+      "pass": true,
+      "detail": {
+        "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "autoExposeSystemEnvs": true,
+        "nodeVersion": "24.x",
+        "autoAssignCustomDomains": false,
+        "previewDeploymentsDisabled": true,
+        "paused": null,
+        "gitIntegration": {
+          "type": "github",
+          "productionBranch": "main",
+          "repo": "sollahms-web"
+        }
+      }
+    },
+    {
+      "check": "before_repository_automatic_deployments_disabled",
+      "pass": true,
+      "detail": {
+        "main": false,
+        "codex/centro-auditoria-integral-20261116": false,
+        "codex/contacto-baseline-productivo-20261116": false,
+        "codex/eliminar-recorridos-global-20261115": false
+      }
+    },
+    {
+      "check": "before_expected_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "updatedAt": 1794842996857
+      }
+    },
+    {
+      "check": "before_expected_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "updatedAt": 1794842996873
+      }
+    },
+    {
+      "check": "before_www_redirect_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "explicit_isolated_identity_arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "ready_exact_production",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "deployment_project_team",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "deployment_commit_and_pin",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "same_immutable_deployment_promoted_without_rebuild",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "auto_assign_custom_domains_stays_false",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "expected_deployment_aliases",
+      "pass": true,
+      "detail": [
+        "sollhams.cl",
+        "www.sollahms.cl",
+        "sollahms.cl",
+        "project-wrapp.vercel.app",
+        "project-wrapp-lsandoval2-8260s-projects.vercel.app"
+      ]
+    },
+    {
+      "check": "1660_remote_source_paths_sha1",
+      "pass": true,
+      "detail": {
+        "expected": 1660,
+        "remote": 1660,
+        "matched": 1660
+      }
+    },
+    {
+      "check": "seven_registered_functions",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "anonymous_sso_and_tls",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "postpromotion_pr_still_draft_unmerged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "only_one_new_production_created",
+      "pass": true,
+      "detail": [
+        {
+          "id": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+          "state": "READY",
+          "target": "production",
+          "created": 1794842728953,
+          "sourceSha": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9"
+        }
+      ]
+    },
+    {
+      "check": "after_project_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_project_settings_unchanged",
+      "pass": true,
+      "detail": {
+        "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "autoExposeSystemEnvs": true,
+        "nodeVersion": "24.x",
+        "autoAssignCustomDomains": false,
+        "previewDeploymentsDisabled": true,
+        "paused": null,
+        "gitIntegration": {
+          "type": "github",
+          "productionBranch": "main",
+          "repo": "sollahms-web"
+        }
+      }
+    },
+    {
+      "check": "after_repository_automatic_deployments_disabled",
+      "pass": true,
+      "detail": {
+        "main": false,
+        "codex/centro-auditoria-integral-20261116": false,
+        "codex/contacto-baseline-productivo-20261116": false,
+        "codex/eliminar-recorridos-global-20261115": false
+      }
+    },
+    {
+      "check": "after_expected_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "updatedAt": 1794842996857
+      }
+    },
+    {
+      "check": "after_expected_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "updatedAt": 1794842996873
+      }
+    },
+    {
+      "check": "after_www_redirect_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "project_stable_during_phase",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "aliases_stable_during_phase",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "failures": [],
+  "sourceBodiesDownloaded": 0,
+  "formsSubmitted": 0,
+  "providerLookups": 0,
+  "apiWrites": 0,
+  "buildsOrGenerators": 0,
+  "deploymentsCreatedOrPromoted": 0,
+  "settingsOrCredentialsModified": false,
+  "activeOwnProcessGroups": []
+}

@@ -1,0 +1,2670 @@
+{
+  "preparedAt": "2026-11-16T15:31:08.838137+00:00",
+  "deploymentAwaitingRootGo": true,
+  "candidateInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+  "productionRequestsExecuted": 0,
+  "methods": [
+    "GET"
+  ],
+  "maxConcurrency": 4,
+  "maxRedirects": 6,
+  "timeoutSecondsPerRequest": 20,
+  "apiCallsAllowed": false,
+  "formSubmitsAllowed": false,
+  "ufLookupsAllowed": false,
+  "TLSVerificationEnabled": true,
+  "projectFiches": 131,
+  "localFragmentCases": [
+    {
+      "href": "#beneficios",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#checklist",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#contenido-principal",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#cotizaciones",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#preguntas",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#presupuesto",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#recorrido",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#ruta",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/#expertise",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/#portfolio",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/agenda-asesoria.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/beneficios-tributarios-inmobiliarios.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/comparador-hipotecario.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/contacto.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/cuando-comprar-propiedad.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/fuentes-respaldo-documental.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/guia-hipotecaria.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/inversion-inmobiliaria-empresas.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/privacidad.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/proyectos.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/proyectos.html#capacity-title",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/trabaja-con-nosotros.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    }
+  ],
+  "resources": [
+    "/assets/branding/favicon.svg",
+    "/assets/branding/sollahms-logo.svg",
+    "/assets/css/expertise-navigation.css",
+    "/assets/css/orientacion.css",
+    "/assets/css/sollahms-brand.css",
+    "/assets/css/sollahms-theme.css",
+    "/assets/fonts/home/inter-latin-variable.woff2",
+    "/assets/fonts/home/manrope-latin-variable.woff2",
+    "/assets/js/commercial-fields.mjs",
+    "/assets/js/expertise-navigation.js",
+    "/assets/js/form-operation.mjs",
+    "/assets/js/mortgage-data.mjs",
+    "/assets/js/mortgage-engine.mjs",
+    "/assets/js/official-uf.mjs",
+    "/assets/js/orientacion.mjs",
+    "/assets/js/orientation-engine.mjs",
+    "/assets/js/project-detail.js",
+    "/assets/js/project-finance.mjs",
+    "/assets/js/rut-field.mjs",
+    "/assets/js/rut.mjs",
+    "/assets/js/scroll-presence.js"
+  ],
+  "requests": [
+    {
+      "url": "http://sollahms.cl/",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedFile": "static/index.html",
+      "expectedSha256": "b28e03ef77a178c39bd7d8fd2cbf4bfa21b143a267f5fe747d2cf8ddd68df3cf",
+      "expectedBytes": 59370,
+      "canonicalUrl": "https://sollahms.cl/",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://sollahms.cl/centro-orientacion.html",
+      "path": "/centro-orientacion.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/centro-orientacion.html",
+      "expectedSha256": "d9dff77fbbbb166abc11d0fd6b8ab13a2cb24ea7d10896259b799f6a7e64f585",
+      "expectedBytes": 29317,
+      "canonicalUrl": "https://sollahms.cl/centro-orientacion.html",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://sollahms.cl/contacto.html",
+      "path": "/contacto.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/contacto.html",
+      "expectedSha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+      "expectedBytes": 18655,
+      "canonicalUrl": "https://sollahms.cl/contacto.html",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://sollahms.cl/patio-brasil",
+      "path": "/patio-brasil",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://sollahms.cl/patio-brasil.html",
+      "path": "/patio-brasil.html",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil.html",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://sollahms.cl/patio-brasil.html/",
+      "path": "/patio-brasil.html/",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil.html/",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://sollahms.cl/patio-brasil/",
+      "path": "/patio-brasil/",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil/",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://www.sollahms.cl/",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedFile": "static/index.html",
+      "expectedSha256": "b28e03ef77a178c39bd7d8fd2cbf4bfa21b143a267f5fe747d2cf8ddd68df3cf",
+      "expectedBytes": 59370,
+      "canonicalUrl": "https://sollahms.cl/",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://www.sollahms.cl/centro-orientacion.html",
+      "path": "/centro-orientacion.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/centro-orientacion.html",
+      "expectedSha256": "d9dff77fbbbb166abc11d0fd6b8ab13a2cb24ea7d10896259b799f6a7e64f585",
+      "expectedBytes": 29317,
+      "canonicalUrl": "https://sollahms.cl/centro-orientacion.html",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://www.sollahms.cl/contacto.html",
+      "path": "/contacto.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/contacto.html",
+      "expectedSha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+      "expectedBytes": 18655,
+      "canonicalUrl": "https://sollahms.cl/contacto.html",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://www.sollahms.cl/patio-brasil",
+      "path": "/patio-brasil",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://www.sollahms.cl/patio-brasil.html",
+      "path": "/patio-brasil.html",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil.html",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://www.sollahms.cl/patio-brasil.html/",
+      "path": "/patio-brasil.html/",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil.html/",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "http://www.sollahms.cl/patio-brasil/",
+      "path": "/patio-brasil/",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil/",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "https://sollahms.cl/",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedFile": "static/index.html",
+      "expectedSha256": "b28e03ef77a178c39bd7d8fd2cbf4bfa21b143a267f5fe747d2cf8ddd68df3cf",
+      "expectedBytes": 59370,
+      "canonicalUrl": "https://sollahms.cl/",
+      "categories": [
+        "center-local-destination",
+        "center-local-destination",
+        "center-local-destination",
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/abdon-cifuentes.html",
+      "path": "/abdon-cifuentes.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/abdon-cifuentes.html",
+      "expectedSha256": "29c6a5e4e890625a13297add7fe7f20127e2a5b9ce5d98171b7166e855b7022f",
+      "expectedBytes": 21765,
+      "canonicalUrl": "https://sollahms.cl/abdon-cifuentes.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/agenda-asesoria.html",
+      "path": "/agenda-asesoria.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/agenda-asesoria.html",
+      "expectedSha256": "e43b55e509a4ac55a15bd2f935a10f31f23521895f493c1f87932fdf3a73deee",
+      "expectedBytes": 19628,
+      "canonicalUrl": "https://sollahms.cl/agenda-asesoria.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/aires-la-florida-2.html",
+      "path": "/aires-la-florida-2.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/aires-la-florida-2.html",
+      "expectedSha256": "dce88b0111dfa72a8ad1318621630dee7ab7695ba66d6673a1d8d8c1e878cea4",
+      "expectedBytes": 26148,
+      "canonicalUrl": "https://sollahms.cl/aires-la-florida-2.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/alto-buzeta.html",
+      "path": "/alto-buzeta.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/alto-buzeta.html",
+      "expectedSha256": "4d7e8698fe000c843b19836d4b0ab17d697c3d516e11bf642f2684dd53472633",
+      "expectedBytes": 28904,
+      "canonicalUrl": "https://sollahms.cl/alto-buzeta.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/alto-goycolea.html",
+      "path": "/alto-goycolea.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/alto-goycolea.html",
+      "expectedSha256": "a803707f3f70e818c233dd1233fa905501a73a1b254f991f5c5daea661e65104",
+      "expectedBytes": 42506,
+      "canonicalUrl": "https://sollahms.cl/alto-goycolea.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/alto-irarrazaval.html",
+      "path": "/alto-irarrazaval.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/alto-irarrazaval.html",
+      "expectedSha256": "483a0acfa7920968a45166ddb43d53f77f6460bda4d31544c1e307a28615d9ab",
+      "expectedBytes": 21713,
+      "canonicalUrl": "https://sollahms.cl/alto-irarrazaval.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/alto-san-joaquin.html",
+      "path": "/alto-san-joaquin.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/alto-san-joaquin.html",
+      "expectedSha256": "2923bbbaa430ef19f5fe412cb913b09a3e7e3df61b29ebca14609f71aa5f44d6",
+      "expectedBytes": 29303,
+      "canonicalUrl": "https://sollahms.cl/alto-san-joaquin.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/angamos.html",
+      "path": "/angamos.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/angamos.html",
+      "expectedSha256": "d66b97b75cd5ce65f8fd9d5123a5254baa50c3cbe3d86e122de2d4d2c2ccdcf1",
+      "expectedBytes": 38308,
+      "canonicalUrl": "https://sollahms.cl/angamos.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/branding/favicon.svg",
+      "path": "/assets/branding/favicon.svg",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/branding/favicon.svg",
+      "expectedSha256": "90b680bf27eadf3f94634fb47b224a79238a2de2d2fbb819e52af5bbecc2d860",
+      "expectedBytes": 1035,
+      "canonicalUrl": "https://sollahms.cl/assets/branding/favicon.svg",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/branding/sollahms-logo.svg",
+      "path": "/assets/branding/sollahms-logo.svg",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/branding/sollahms-logo.svg",
+      "expectedSha256": "e9dca21983fa1bb2698145211ba69cf7f9d2e07d0edb888bcdaefc10368b4072",
+      "expectedBytes": 4038,
+      "canonicalUrl": "https://sollahms.cl/assets/branding/sollahms-logo.svg",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/css/expertise-navigation.css",
+      "path": "/assets/css/expertise-navigation.css",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/css/expertise-navigation.css",
+      "expectedSha256": "7f751d73af4fd5d5a8dc5b09fea000bb9374a1c4804fbdaf252c7ee7c3460461",
+      "expectedBytes": 1219,
+      "canonicalUrl": "https://sollahms.cl/assets/css/expertise-navigation.css",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/css/orientacion.css",
+      "path": "/assets/css/orientacion.css",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/css/orientacion.css",
+      "expectedSha256": "39140c19c998dc9244c898ededfcf19364f71e4102357db5470943d6e7906ce0",
+      "expectedBytes": 22395,
+      "canonicalUrl": "https://sollahms.cl/assets/css/orientacion.css",
+      "categories": [
+        "certified-overlay",
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/css/sollahms-brand.css",
+      "path": "/assets/css/sollahms-brand.css",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/css/sollahms-brand.css",
+      "expectedSha256": "ef0f3ea49429e071826ddf49d6f1ae63ee9fdce066880ff0d8660f230ff7700d",
+      "expectedBytes": 908,
+      "canonicalUrl": "https://sollahms.cl/assets/css/sollahms-brand.css",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/css/sollahms-theme.css",
+      "path": "/assets/css/sollahms-theme.css",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/css/sollahms-theme.css",
+      "expectedSha256": "8deea86f8dfd46858a7c8fcfbca4d61993a3c9d2375810a51b56a6e77a2b090a",
+      "expectedBytes": 11090,
+      "canonicalUrl": "https://sollahms.cl/assets/css/sollahms-theme.css",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/fonts/home/inter-latin-variable.woff2",
+      "path": "/assets/fonts/home/inter-latin-variable.woff2",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/fonts/home/inter-latin-variable.woff2",
+      "expectedSha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "expectedBytes": 48256,
+      "canonicalUrl": "https://sollahms.cl/assets/fonts/home/inter-latin-variable.woff2",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/fonts/home/manrope-latin-variable.woff2",
+      "path": "/assets/fonts/home/manrope-latin-variable.woff2",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/fonts/home/manrope-latin-variable.woff2",
+      "expectedSha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972",
+      "expectedBytes": 24836,
+      "canonicalUrl": "https://sollahms.cl/assets/fonts/home/manrope-latin-variable.woff2",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/commercial-fields.mjs",
+      "path": "/assets/js/commercial-fields.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/commercial-fields.mjs",
+      "expectedSha256": "d18d861c947eb29bc417591626dc83c69fa671c5a59da050cc08c3db7252ffac",
+      "expectedBytes": 2651,
+      "canonicalUrl": "https://sollahms.cl/assets/js/commercial-fields.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/expertise-navigation.js",
+      "path": "/assets/js/expertise-navigation.js",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/expertise-navigation.js",
+      "expectedSha256": "840d497d8a0279a45ec16610cb6716c8ee0e5a9f59bf132a5e5650b8cea1746d",
+      "expectedBytes": 618,
+      "canonicalUrl": "https://sollahms.cl/assets/js/expertise-navigation.js",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/form-operation.mjs",
+      "path": "/assets/js/form-operation.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/form-operation.mjs",
+      "expectedSha256": "187042e1039d7e64c5cf8e14b3f007e8f2e11142ed7d50a80d677cee1b97c4b4",
+      "expectedBytes": 4208,
+      "canonicalUrl": "https://sollahms.cl/assets/js/form-operation.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/mortgage-data.mjs",
+      "path": "/assets/js/mortgage-data.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/mortgage-data.mjs",
+      "expectedSha256": "a6b489a33f8eaf5fb68a424dd55f2f705b52048fa6bd42d2f52cb2ffa9e8ce3c",
+      "expectedBytes": 18742,
+      "canonicalUrl": "https://sollahms.cl/assets/js/mortgage-data.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/mortgage-engine.mjs",
+      "path": "/assets/js/mortgage-engine.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/mortgage-engine.mjs",
+      "expectedSha256": "f676775b6d5004f1810cec5273a8875479b062d3462fce0e41f85c6c98821b85",
+      "expectedBytes": 3496,
+      "canonicalUrl": "https://sollahms.cl/assets/js/mortgage-engine.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/official-uf.mjs",
+      "path": "/assets/js/official-uf.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/official-uf.mjs",
+      "expectedSha256": "b87fe997a59b32af8160801930ae857bf4b1e9e0fe6b7d03a9f699dd72d43674",
+      "expectedBytes": 868,
+      "canonicalUrl": "https://sollahms.cl/assets/js/official-uf.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/orientacion.mjs",
+      "path": "/assets/js/orientacion.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/orientacion.mjs",
+      "expectedSha256": "2ea9526c043d044d3af8d9a4ebcde4d3809561b591e3a50cae891c9718eb6fee",
+      "expectedBytes": 15924,
+      "canonicalUrl": "https://sollahms.cl/assets/js/orientacion.mjs",
+      "categories": [
+        "certified-overlay",
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/orientation-engine.mjs",
+      "path": "/assets/js/orientation-engine.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/orientation-engine.mjs",
+      "expectedSha256": "f2cced4ce11a3b0e2e82b9021e2986e3a96f44ca0f75de3ba25e4f8bb793a6ab",
+      "expectedBytes": 7661,
+      "canonicalUrl": "https://sollahms.cl/assets/js/orientation-engine.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/project-detail.js",
+      "path": "/assets/js/project-detail.js",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/project-detail.js",
+      "expectedSha256": "af939cd7ad43533b6e461e95b799a474327e0f993a05da6e6871208b28c957ab",
+      "expectedBytes": 1043,
+      "canonicalUrl": "https://sollahms.cl/assets/js/project-detail.js",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/project-finance.mjs",
+      "path": "/assets/js/project-finance.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/project-finance.mjs",
+      "expectedSha256": "a49958fd5020206c6152bf48c03ab3ae3de3039c27f3abc04b1eaf8fbfb7376a",
+      "expectedBytes": 5214,
+      "canonicalUrl": "https://sollahms.cl/assets/js/project-finance.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/rut-field.mjs",
+      "path": "/assets/js/rut-field.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/rut-field.mjs",
+      "expectedSha256": "336bc1dedc6098b3777778be2074171d9925b25e9904c74da86c337852de96f9",
+      "expectedBytes": 1033,
+      "canonicalUrl": "https://sollahms.cl/assets/js/rut-field.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/rut.mjs",
+      "path": "/assets/js/rut.mjs",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/rut.mjs",
+      "expectedSha256": "912ed456c88adef10a9cd6ee44aa742fd1387eef8d219413e10d564119bf94a2",
+      "expectedBytes": 1543,
+      "canonicalUrl": "https://sollahms.cl/assets/js/rut.mjs",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/assets/js/scroll-presence.js",
+      "path": "/assets/js/scroll-presence.js",
+      "expectedStatus": 200,
+      "expectedFile": "static/assets/js/scroll-presence.js",
+      "expectedSha256": "6d6f2be8832ff56ae6c3ba6d7e450b4b83c8dab2fbac834edc45cb37f9371f5d",
+      "expectedBytes": 7254,
+      "canonicalUrl": "https://sollahms.cl/assets/js/scroll-presence.js",
+      "categories": [
+        "center-resource"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/barrio-zenteno.html",
+      "path": "/barrio-zenteno.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/barrio-zenteno.html",
+      "expectedSha256": "ea12b2d40d4f792c44b14da1200079890738559d2ec47a6873348fb4ea6eeba4",
+      "expectedBytes": 52039,
+      "canonicalUrl": "https://sollahms.cl/barrio-zenteno.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/bcome.html",
+      "path": "/bcome.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/bcome.html",
+      "expectedSha256": "57dddce479715c845c4a03de1288c7d0262b7be5e9220777a778f5fb6762268d",
+      "expectedBytes": 37830,
+      "canonicalUrl": "https://sollahms.cl/bcome.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/beneficios-tributarios-inmobiliarios.html",
+      "path": "/beneficios-tributarios-inmobiliarios.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/beneficios-tributarios-inmobiliarios.html",
+      "expectedSha256": "be2d686c02c11ddb5bdd297f5bf245598b18eae45ac825747e0476aca4127044",
+      "expectedBytes": 41371,
+      "canonicalUrl": "https://sollahms.cl/beneficios-tributarios-inmobiliarios.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/bordevivo.html",
+      "path": "/bordevivo.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/bordevivo.html",
+      "expectedSha256": "25e6f4e0a57cefe9c000e978e9bd357b35d062015d3e9b4ff4494ae0ceed352a",
+      "expectedBytes": 25422,
+      "canonicalUrl": "https://sollahms.cl/bordevivo.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/caceres.html",
+      "path": "/caceres.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/caceres.html",
+      "expectedSha256": "c593659420186305304c061b7f8d0ce15f84387ba0aa44c094bcc78a2ab5bb8a",
+      "expectedBytes": 28068,
+      "canonicalUrl": "https://sollahms.cl/caceres.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/campus-llacolen.html",
+      "path": "/campus-llacolen.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/campus-llacolen.html",
+      "expectedSha256": "8c7fe7ba0277a7b52599949f704374da4f42c65218a3ecb0fabffec26dade2df",
+      "expectedBytes": 27308,
+      "canonicalUrl": "https://sollahms.cl/campus-llacolen.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/capitanes.html",
+      "path": "/capitanes.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/capitanes.html",
+      "expectedSha256": "0928210b4264e12458271b4eada0e43e327a5336086bd4650d009f23183ed34e",
+      "expectedBytes": 22807,
+      "canonicalUrl": "https://sollahms.cl/capitanes.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/carmen-marin.html",
+      "path": "/carmen-marin.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/carmen-marin.html",
+      "expectedSha256": "8520cb21e176591ab5a3ba4a89c3d03f498ddc73b6a835393112677193920569",
+      "expectedBytes": 24768,
+      "canonicalUrl": "https://sollahms.cl/carmen-marin.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/centenario-1.html",
+      "path": "/centenario-1.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/centenario-1.html",
+      "expectedSha256": "2098903edbca08d8753fd5a725c522bbbf335485ce450f1ac5057ea34f02e460",
+      "expectedBytes": 23837,
+      "canonicalUrl": "https://sollahms.cl/centenario-1.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/centro-orientacion.html",
+      "path": "/centro-orientacion.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/centro-orientacion.html",
+      "expectedSha256": "d9dff77fbbbb166abc11d0fd6b8ab13a2cb24ea7d10896259b799f6a7e64f585",
+      "expectedBytes": 29317,
+      "canonicalUrl": "https://sollahms.cl/centro-orientacion.html",
+      "categories": [
+        "center",
+        "certified-overlay",
+        "center-local-destination",
+        "center-local-destination",
+        "center-local-destination",
+        "center-local-destination",
+        "center-local-destination",
+        "center-local-destination",
+        "center-local-destination",
+        "center-local-destination",
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/comparador-hipotecario.html",
+      "path": "/comparador-hipotecario.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/comparador-hipotecario.html",
+      "expectedSha256": "00ac7e04a7ea50fe552500ff560efaa115a02daf89cc8272ebb520355811ae93",
+      "expectedBytes": 26962,
+      "canonicalUrl": "https://sollahms.cl/comparador-hipotecario.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/condominio-parque-don-lautaro.html",
+      "path": "/condominio-parque-don-lautaro.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/condominio-parque-don-lautaro.html",
+      "expectedSha256": "08b0aeaf758c70f2a0f7beec2beb8c4c6f1fe30700e37d42182c75de98c73ff8",
+      "expectedBytes": 36040,
+      "canonicalUrl": "https://sollahms.cl/condominio-parque-don-lautaro.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/condominio-uruguay.html",
+      "path": "/condominio-uruguay.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/condominio-uruguay.html",
+      "expectedSha256": "8a4e8e011f9d30c3bb3de4516541640ed1b54997f9eaabc689b9bd5d1615de86",
+      "expectedBytes": 38879,
+      "canonicalUrl": "https://sollahms.cl/condominio-uruguay.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/conecta-huechuraba.html",
+      "path": "/conecta-huechuraba.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/conecta-huechuraba.html",
+      "expectedSha256": "219eb7f474dce7d07ddafc05cd67295f3ce6fa69f62e70b026b21af21cddef20",
+      "expectedBytes": 25699,
+      "canonicalUrl": "https://sollahms.cl/conecta-huechuraba.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/contacto.html",
+      "path": "/contacto.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/contacto.html",
+      "expectedSha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+      "expectedBytes": 18655,
+      "canonicalUrl": "https://sollahms.cl/contacto.html",
+      "categories": [
+        "contacto-preservation",
+        "center-local-destination",
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/coronel-godoy.html",
+      "path": "/coronel-godoy.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/coronel-godoy.html",
+      "expectedSha256": "bbf5f70d4103e2032d71fb81814102be1cc59f9cb4ba089ad98fca16c001dbff",
+      "expectedBytes": 22580,
+      "canonicalUrl": "https://sollahms.cl/coronel-godoy.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/costanera-coquimbo-a.html",
+      "path": "/costanera-coquimbo-a.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/costanera-coquimbo-a.html",
+      "expectedSha256": "755dabbba887ceb4a06466001ebcd31251952c5bf0657e92a0e9960c9ccbd68e",
+      "expectedBytes": 41337,
+      "canonicalUrl": "https://sollahms.cl/costanera-coquimbo-a.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/costanera-coquimbo-b.html",
+      "path": "/costanera-coquimbo-b.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/costanera-coquimbo-b.html",
+      "expectedSha256": "e5206c968d321848399253cfc4643c957869fd2cc844c41a38ca1f92b629c004",
+      "expectedBytes": 41554,
+      "canonicalUrl": "https://sollahms.cl/costanera-coquimbo-b.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/cuando-comprar-propiedad.html",
+      "path": "/cuando-comprar-propiedad.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/cuando-comprar-propiedad.html",
+      "expectedSha256": "276411bb2e684546767a74e9d6eb648db0ef23beb92748577b986d1f38bdf43c",
+      "expectedBytes": 33650,
+      "canonicalUrl": "https://sollahms.cl/cuando-comprar-propiedad.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/cumbres-de-penuelas.html",
+      "path": "/cumbres-de-penuelas.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/cumbres-de-penuelas.html",
+      "expectedSha256": "875e13f7474b4e9d452e6328d56d29460ffa08803997b26ee9a4fd47cef99e68",
+      "expectedBytes": 25199,
+      "canonicalUrl": "https://sollahms.cl/cumbres-de-penuelas.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/curico-77.html",
+      "path": "/curico-77.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/curico-77.html",
+      "expectedSha256": "479bf248fa8968ad855f50b6a5203f1c24abd22f84acb04f7b4a45eee250cc29",
+      "expectedBytes": 37624,
+      "canonicalUrl": "https://sollahms.cl/curico-77.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/diagonal-paraguay.html",
+      "path": "/diagonal-paraguay.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/diagonal-paraguay.html",
+      "expectedSha256": "07034078501aa9562ba37846ef28d229e46173ba9bd291b59decdeb302bc574e",
+      "expectedBytes": 23115,
+      "canonicalUrl": "https://sollahms.cl/diagonal-paraguay.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/diagonal-vicuna.html",
+      "path": "/diagonal-vicuna.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/diagonal-vicuna.html",
+      "expectedSha256": "082ea7d11d3737001f7bba8b4f6efdf3273b2321651d73365b002996642a2156",
+      "expectedBytes": 31399,
+      "canonicalUrl": "https://sollahms.cl/diagonal-vicuna.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/distrito-centro.html",
+      "path": "/distrito-centro.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/distrito-centro.html",
+      "expectedSha256": "efaecd6472f3c717a779cde6b3ecd7075b0c213798965b1a6da069a2dcd36d03",
+      "expectedBytes": 34540,
+      "canonicalUrl": "https://sollahms.cl/distrito-centro.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/domeyko-2055.html",
+      "path": "/domeyko-2055.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/domeyko-2055.html",
+      "expectedSha256": "a099dedbceeb2015fa1da66f3ec7b608e9ed670f6cc3ea9f5bb988896a283337",
+      "expectedBytes": 37293,
+      "canonicalUrl": "https://sollahms.cl/domeyko-2055.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/don-ignacio.html",
+      "path": "/don-ignacio.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/don-ignacio.html",
+      "expectedSha256": "33130e347ac178320c0438ab9ace62e99a05272f209600d562be640d355799e2",
+      "expectedBytes": 23576,
+      "canonicalUrl": "https://sollahms.cl/don-ignacio.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/don-rafael.html",
+      "path": "/don-rafael.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/don-rafael.html",
+      "expectedSha256": "00b6b57a3d2326961b1ee8d3a55715ac535118bbfc9e3bba5411715490412fce",
+      "expectedBytes": 43511,
+      "canonicalUrl": "https://sollahms.cl/don-rafael.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/don-tomas.html",
+      "path": "/don-tomas.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/don-tomas.html",
+      "expectedSha256": "8a8d3ead8aa59f272013946ebcf8d199fafdc96c435e9d10ac340bceedafe0be",
+      "expectedBytes": 45929,
+      "canonicalUrl": "https://sollahms.cl/don-tomas.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/downtown-san-martin.html",
+      "path": "/downtown-san-martin.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/downtown-san-martin.html",
+      "expectedSha256": "3f7036e8d6feb0e9cf70733eeda273cc5e2a795cba716e92e597d7dd71c0eb9e",
+      "expectedBytes": 59332,
+      "canonicalUrl": "https://sollahms.cl/downtown-san-martin.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edif-origen-atacama-3008.html",
+      "path": "/edif-origen-atacama-3008.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edif-origen-atacama-3008.html",
+      "expectedSha256": "22444119700c72823362cbd5e4d7bedc3a22b7b27746ba8e5de6cae589e8bf67",
+      "expectedBytes": 26581,
+      "canonicalUrl": "https://sollahms.cl/edif-origen-atacama-3008.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-argomedo.html",
+      "path": "/edificio-argomedo.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-argomedo.html",
+      "expectedSha256": "19ce590aa44acac99ed0813ab7c4c24939c74c5474895d845274f0a09d740384",
+      "expectedBytes": 22863,
+      "canonicalUrl": "https://sollahms.cl/edificio-argomedo.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-baum.html",
+      "path": "/edificio-baum.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-baum.html",
+      "expectedSha256": "68d4208aacd85864c795f5d650f8ee9748f5846c4e0ce3ce367b54a6181e31fc",
+      "expectedBytes": 26834,
+      "canonicalUrl": "https://sollahms.cl/edificio-baum.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-bezanilla.html",
+      "path": "/edificio-bezanilla.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-bezanilla.html",
+      "expectedSha256": "343b8884096b248db4c9eccdcd18bfac451aac0a75c343cf403855394dd91311",
+      "expectedBytes": 24946,
+      "canonicalUrl": "https://sollahms.cl/edificio-bezanilla.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-bold.html",
+      "path": "/edificio-bold.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-bold.html",
+      "expectedSha256": "21b525ac04cf5285d30768d2d9ab2d1352573dcecd45706fc9c1f5ba16f863e3",
+      "expectedBytes": 22894,
+      "canonicalUrl": "https://sollahms.cl/edificio-bold.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-don-pepe-154.html",
+      "path": "/edificio-don-pepe-154.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-don-pepe-154.html",
+      "expectedSha256": "e24557b04cbf6faaf89f23f1e94631e0c50a81b6806ff2748eb384e3ddd603a8",
+      "expectedBytes": 39156,
+      "canonicalUrl": "https://sollahms.cl/edificio-don-pepe-154.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-dual-390-lto.html",
+      "path": "/edificio-dual-390-lto.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-dual-390-lto.html",
+      "expectedSha256": "55ad863a7494949e62a6483c0715e256e44bc26f57d28ab30cb069a6ccba0b30",
+      "expectedBytes": 23861,
+      "canonicalUrl": "https://sollahms.cl/edificio-dual-390-lto.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-ecuador.html",
+      "path": "/edificio-ecuador.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-ecuador.html",
+      "expectedSha256": "27753df55556a5264af2952f5a3be0585c2784546be288f38e33728843fe6391",
+      "expectedBytes": 23214,
+      "canonicalUrl": "https://sollahms.cl/edificio-ecuador.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-indi.html",
+      "path": "/edificio-indi.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-indi.html",
+      "expectedSha256": "12a44662c27eb4f9e96532d09f55c81d72da12ab71cda5095e771203eff5b2cf",
+      "expectedBytes": 23731,
+      "canonicalUrl": "https://sollahms.cl/edificio-indi.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-indigo.html",
+      "path": "/edificio-indigo.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-indigo.html",
+      "expectedSha256": "36174641aa6ae2fc2797c8ed557caa155f77559752699e27c9ed33367867db6e",
+      "expectedBytes": 22083,
+      "canonicalUrl": "https://sollahms.cl/edificio-indigo.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-lira-622.html",
+      "path": "/edificio-lira-622.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-lira-622.html",
+      "expectedSha256": "aeb96c4650e448b05b57da56dd6d37e21a21615b102df506a7e4260828e3e5d6",
+      "expectedBytes": 24417,
+      "canonicalUrl": "https://sollahms.cl/edificio-lira-622.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-liverpool.html",
+      "path": "/edificio-liverpool.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-liverpool.html",
+      "expectedSha256": "a3389e1a31416a5b50a6b7fd82333969c307def9d2629eac0465f655b6a38df3",
+      "expectedBytes": 46778,
+      "canonicalUrl": "https://sollahms.cl/edificio-liverpool.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-living-town.html",
+      "path": "/edificio-living-town.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-living-town.html",
+      "expectedSha256": "3fb442064ca04c282b362cc64b4855e39d9387c2d77f7b88ab350d022031ba01",
+      "expectedBytes": 23380,
+      "canonicalUrl": "https://sollahms.cl/edificio-living-town.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-mood.html",
+      "path": "/edificio-mood.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-mood.html",
+      "expectedSha256": "eedc5df16fddb3a87b256232d94e01a655bb68e16fdf81b1f0655772106cefaf",
+      "expectedBytes": 24411,
+      "canonicalUrl": "https://sollahms.cl/edificio-mood.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-nordico.html",
+      "path": "/edificio-nordico.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-nordico.html",
+      "expectedSha256": "51ccaff5d5016bb2afb81b615093659b370461f5681d438a71ca44a5a290ce49",
+      "expectedBytes": 24668,
+      "canonicalUrl": "https://sollahms.cl/edificio-nordico.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-plaza-nova.html",
+      "path": "/edificio-plaza-nova.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-plaza-nova.html",
+      "expectedSha256": "e2432b5056cd7745037bdf4ad158d9815e1f6a3e96d1e1e4af4b63f8a280b739",
+      "expectedBytes": 24834,
+      "canonicalUrl": "https://sollahms.cl/edificio-plaza-nova.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-san-francisco-1204.html",
+      "path": "/edificio-san-francisco-1204.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-san-francisco-1204.html",
+      "expectedSha256": "e9c16614c86c22365ba0e27d66fcf7d9c9b3cae1850b0bff600b00891eb5d3b1",
+      "expectedBytes": 24544,
+      "canonicalUrl": "https://sollahms.cl/edificio-san-francisco-1204.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-santa-maria.html",
+      "path": "/edificio-santa-maria.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-santa-maria.html",
+      "expectedSha256": "2fa540d34ff153688179cd06b5d4ad5958286600b9eb3e4e799b51d992584d03",
+      "expectedBytes": 43018,
+      "canonicalUrl": "https://sollahms.cl/edificio-santa-maria.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-santo.html",
+      "path": "/edificio-santo.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-santo.html",
+      "expectedSha256": "fa71e652cacbb3aa31db8628cfb874af5c0e8aefb6aeabd1ccf3a794041b9e5b",
+      "expectedBytes": 23037,
+      "canonicalUrl": "https://sollahms.cl/edificio-santo.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-suecia.html",
+      "path": "/edificio-suecia.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-suecia.html",
+      "expectedSha256": "373b8efda4959908d7250b092480ebf34af75727826e47244b64daf7f8f454f2",
+      "expectedBytes": 29729,
+      "canonicalUrl": "https://sollahms.cl/edificio-suecia.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-teatinos-750.html",
+      "path": "/edificio-teatinos-750.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-teatinos-750.html",
+      "expectedSha256": "e5a7096928e25a72b3bd5403d4208138703ae5bd7451d17b68a9ed3a723934aa",
+      "expectedBytes": 52615,
+      "canonicalUrl": "https://sollahms.cl/edificio-teatinos-750.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-verne.html",
+      "path": "/edificio-verne.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-verne.html",
+      "expectedSha256": "af1fcc6e03ded3e26c39dd6dd005b463d452ac84785749529d3f0fc705364dcf",
+      "expectedBytes": 23450,
+      "canonicalUrl": "https://sollahms.cl/edificio-verne.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/edificio-vista-amunategui.html",
+      "path": "/edificio-vista-amunategui.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/edificio-vista-amunategui.html",
+      "expectedSha256": "06ffdf2944565e940d5b62faf84fee52d98ab166a370eb4eb9647a8a46976988",
+      "expectedBytes": 59340,
+      "canonicalUrl": "https://sollahms.cl/edificio-vista-amunategui.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/el-aromo.html",
+      "path": "/el-aromo.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/el-aromo.html",
+      "expectedSha256": "690c2e85d8f5d0bb29917dd0b3cded10bf898a1cadf66d6f2a9233d8f00ef0f2",
+      "expectedBytes": 21663,
+      "canonicalUrl": "https://sollahms.cl/el-aromo.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/eleuterio-ramirez.html",
+      "path": "/eleuterio-ramirez.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/eleuterio-ramirez.html",
+      "expectedSha256": "4382c8cc84cd4f91841626ee3a2b1d610fcd20f5d9f49d996c77af8e66b4608e",
+      "expectedBytes": 46753,
+      "canonicalUrl": "https://sollahms.cl/eleuterio-ramirez.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/endemico.html",
+      "path": "/endemico.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/endemico.html",
+      "expectedSha256": "a4d77276f22fa5c0a22d7afe71bab18cc84bce7a434f71fd5fc247ebb323cdf1",
+      "expectedBytes": 23902,
+      "canonicalUrl": "https://sollahms.cl/endemico.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/enlace-mackenna.html",
+      "path": "/enlace-mackenna.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/enlace-mackenna.html",
+      "expectedSha256": "5fd0a99255d3c0f9c1c3dfd7d965cd7a0da8084012aaf381fa946366b5cb87d9",
+      "expectedBytes": 26426,
+      "canonicalUrl": "https://sollahms.cl/enlace-mackenna.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/entre-vicunas.html",
+      "path": "/entre-vicunas.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/entre-vicunas.html",
+      "expectedSha256": "85274fc16d2785be46d8bd2a3a3ffe2ef5f5d145b466adec9051f4ed91916912",
+      "expectedBytes": 38725,
+      "canonicalUrl": "https://sollahms.cl/entre-vicunas.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/espacio-victoria.html",
+      "path": "/espacio-victoria.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/espacio-victoria.html",
+      "expectedSha256": "27e5e4b72e23fbaf4d2fe2a68a570a910a22bed0534284efa8a7294809e17b58",
+      "expectedBytes": 25472,
+      "canonicalUrl": "https://sollahms.cl/espacio-victoria.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/ferroparque.html",
+      "path": "/ferroparque.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/ferroparque.html",
+      "expectedSha256": "ab677c6704cefbe7ee428717f2224045edf93dc11e27f153111b27863d498a11",
+      "expectedBytes": 31101,
+      "canonicalUrl": "https://sollahms.cl/ferroparque.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/froilan-roa-5731-torre-norte.html",
+      "path": "/froilan-roa-5731-torre-norte.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/froilan-roa-5731-torre-norte.html",
+      "expectedSha256": "0569bd46b26cc0b385b5b22cb91a55548741048fb75e09be053c2940d1fb9c91",
+      "expectedBytes": 25833,
+      "canonicalUrl": "https://sollahms.cl/froilan-roa-5731-torre-norte.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/froilan-roa-5731-torre-sur.html",
+      "path": "/froilan-roa-5731-torre-sur.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/froilan-roa-5731-torre-sur.html",
+      "expectedSha256": "b33c58211fad5fc3d491ca1eac6d6a0ea7b432afe9f5e187e291c5bf6699cc06",
+      "expectedBytes": 25759,
+      "canonicalUrl": "https://sollahms.cl/froilan-roa-5731-torre-sur.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/fuentes-respaldo-documental.html",
+      "path": "/fuentes-respaldo-documental.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/fuentes-respaldo-documental.html",
+      "expectedSha256": "fc74755cc9c7e7109370314a83ea36551951d88322dcc156b313d2a2e84afb9a",
+      "expectedBytes": 170291,
+      "canonicalUrl": "https://sollahms.cl/fuentes-respaldo-documental.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/gregorio-de-la-fuente-a.html",
+      "path": "/gregorio-de-la-fuente-a.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/gregorio-de-la-fuente-a.html",
+      "expectedSha256": "419cf33118d97b32a326fc4ceceb29bb7a0d96dbe02b6dd1f5a7b3ba702c0e13",
+      "expectedBytes": 42484,
+      "canonicalUrl": "https://sollahms.cl/gregorio-de-la-fuente-a.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/guia-hipotecaria.html",
+      "path": "/guia-hipotecaria.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/guia-hipotecaria.html",
+      "expectedSha256": "afec08166dc705888f585cdf247521be33c192bff140d6614604aa63f2854146",
+      "expectedBytes": 46074,
+      "canonicalUrl": "https://sollahms.cl/guia-hipotecaria.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/guillermo-mann-1401.html",
+      "path": "/guillermo-mann-1401.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/guillermo-mann-1401.html",
+      "expectedSha256": "378ccb0547bb0f6099402a9a22b5281531098338fb2e9633daeefdf59deca46e",
+      "expectedBytes": 41108,
+      "canonicalUrl": "https://sollahms.cl/guillermo-mann-1401.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/independencia-4745.html",
+      "path": "/independencia-4745.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/independencia-4745.html",
+      "expectedSha256": "8fe09cbd7b2f6d9d31a72d8fb97a7452c7f6d675606cfe60a01f7db702f00296",
+      "expectedBytes": 41436,
+      "canonicalUrl": "https://sollahms.cl/independencia-4745.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/inn-puerto-chico.html",
+      "path": "/inn-puerto-chico.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/inn-puerto-chico.html",
+      "expectedSha256": "4cd3f5d6b308dc30d856a1edd0455164ca6140d3c5f29d86f5da5d9348c1f2b3",
+      "expectedBytes": 29373,
+      "canonicalUrl": "https://sollahms.cl/inn-puerto-chico.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/inversion-inmobiliaria-empresas.html",
+      "path": "/inversion-inmobiliaria-empresas.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/inversion-inmobiliaria-empresas.html",
+      "expectedSha256": "a004299de9f6b7696a115a19208cd2ecb3af522ace2875a3d70df78859b73820",
+      "expectedBytes": 32539,
+      "canonicalUrl": "https://sollahms.cl/inversion-inmobiliaria-empresas.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/irarrazaval.html",
+      "path": "/irarrazaval.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/irarrazaval.html",
+      "expectedSha256": "3f004cd7657262877670c8f418e10e8c752396654b9a7e589aba81507bd8dafb",
+      "expectedBytes": 22893,
+      "canonicalUrl": "https://sollahms.cl/irarrazaval.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/jardines-de-alvarado.html",
+      "path": "/jardines-de-alvarado.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/jardines-de-alvarado.html",
+      "expectedSha256": "833290bed94cd357337816cb1ee4ccafff9878376b9b039aabc0a857d508dade",
+      "expectedBytes": 39521,
+      "canonicalUrl": "https://sollahms.cl/jardines-de-alvarado.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/jardines-de-ramon-cruz.html",
+      "path": "/jardines-de-ramon-cruz.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/jardines-de-ramon-cruz.html",
+      "expectedSha256": "470a1778a4be3cf154ebcfb48787cca636137856c52810803ff700032d5717f4",
+      "expectedBytes": 39095,
+      "canonicalUrl": "https://sollahms.cl/jardines-de-ramon-cruz.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/jofre-135.html",
+      "path": "/jofre-135.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/jofre-135.html",
+      "expectedSha256": "ad47c431779dd33f8b1c1f0a089670543ae9d20eeb582a3036a592af5f900639",
+      "expectedBytes": 36090,
+      "canonicalUrl": "https://sollahms.cl/jofre-135.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/jose-pedro-alessandri.html",
+      "path": "/jose-pedro-alessandri.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/jose-pedro-alessandri.html",
+      "expectedSha256": "bf9a27229cc94f2fb0bc786125aea73c8db297803693fb2e4b69ec829bbe13a2",
+      "expectedBytes": 21279,
+      "canonicalUrl": "https://sollahms.cl/jose-pedro-alessandri.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/lamara.html",
+      "path": "/lamara.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/lamara.html",
+      "expectedSha256": "5be8e2a0d474afc3eaec56d432354edee08c6b2485e4eb90758266440291ae94",
+      "expectedBytes": 26127,
+      "canonicalUrl": "https://sollahms.cl/lamara.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/lomas-de-puyai.html",
+      "path": "/lomas-de-puyai.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/lomas-de-puyai.html",
+      "expectedSha256": "25d32a8522962a67a0712818befb9beb872b3e6cebd43e4c7b28f8d678d8a09d",
+      "expectedBytes": 26797,
+      "canonicalUrl": "https://sollahms.cl/lomas-de-puyai.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/los-alerces.html",
+      "path": "/los-alerces.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/los-alerces.html",
+      "expectedSha256": "38c276b215e02c0377393d0cf582ef0eee476b72ff423bc597faabafec9f8b0a",
+      "expectedBytes": 25365,
+      "canonicalUrl": "https://sollahms.cl/los-alerces.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/los-lilenes.html",
+      "path": "/los-lilenes.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/los-lilenes.html",
+      "expectedSha256": "47b6d340b82859152eae8c043a21451c1402c74783dd6dec99bd39e4bd1a32cf",
+      "expectedBytes": 22664,
+      "canonicalUrl": "https://sollahms.cl/los-lilenes.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/mapocho-3521-edificio-a.html",
+      "path": "/mapocho-3521-edificio-a.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/mapocho-3521-edificio-a.html",
+      "expectedSha256": "f4527529e1da4aaeb4802dcabe007beef317fcc9052a8d894ebae86feb6f8b54",
+      "expectedBytes": 29335,
+      "canonicalUrl": "https://sollahms.cl/mapocho-3521-edificio-a.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/mapocho-3521.html",
+      "path": "/mapocho-3521.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/mapocho-3521.html",
+      "expectedSha256": "4f160629db1775a2ca3fc443f2d10fe7164ae202dad8700084e7aa2747a7ef9e",
+      "expectedBytes": 45568,
+      "canonicalUrl": "https://sollahms.cl/mapocho-3521.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/marina-pacifico.html",
+      "path": "/marina-pacifico.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/marina-pacifico.html",
+      "expectedSha256": "103a4558b5b823af1340aa959b3cf12ee533d8a81077ac027c18cc9dd5111998",
+      "expectedBytes": 21281,
+      "canonicalUrl": "https://sollahms.cl/marina-pacifico.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/matta-016.html",
+      "path": "/matta-016.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/matta-016.html",
+      "expectedSha256": "0d289abd223c11a98fd2478bde52b250f9d191cfe09af62b65ade18b91abbf03",
+      "expectedBytes": 23409,
+      "canonicalUrl": "https://sollahms.cl/matta-016.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/mirador-irarrazaval.html",
+      "path": "/mirador-irarrazaval.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/mirador-irarrazaval.html",
+      "expectedSha256": "c423821e268dd877f21e84e3f31d14bf5bcc8fee0c0bb2225060c547b26b9ed9",
+      "expectedBytes": 21233,
+      "canonicalUrl": "https://sollahms.cl/mirador-irarrazaval.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/mirador-la-florida.html",
+      "path": "/mirador-la-florida.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/mirador-la-florida.html",
+      "expectedSha256": "39d224789aaf18f1c278eca21e5da2816a32192f3e91a43b7c57b203b5fcf102",
+      "expectedBytes": 37290,
+      "canonicalUrl": "https://sollahms.cl/mirador-la-florida.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/mirador-mapocho.html",
+      "path": "/mirador-mapocho.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/mirador-mapocho.html",
+      "expectedSha256": "32e5b02c6ab223e6913ee24661f7dc998607b0e846dc4c13ab1cc45588f6375f",
+      "expectedBytes": 30227,
+      "canonicalUrl": "https://sollahms.cl/mirador-mapocho.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/monjitas-690.html",
+      "path": "/monjitas-690.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/monjitas-690.html",
+      "expectedSha256": "8d4163e96854a353ee232d1171d56c367729397036199e9d46d2363f2f172dbd",
+      "expectedBytes": 37819,
+      "canonicalUrl": "https://sollahms.cl/monjitas-690.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/nova-parque.html",
+      "path": "/nova-parque.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/nova-parque.html",
+      "expectedSha256": "2ba94dd360fa16ba8e30574441d4b5f9174d562311bd3c85b3927dcde489f4aa",
+      "expectedBytes": 21022,
+      "canonicalUrl": "https://sollahms.cl/nova-parque.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/novo-catedral.html",
+      "path": "/novo-catedral.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/novo-catedral.html",
+      "expectedSha256": "8dd156260847e3e8b151ffde70e6e638cf11a1b469aebb7e1d7531163cc73258",
+      "expectedBytes": 22965,
+      "canonicalUrl": "https://sollahms.cl/novo-catedral.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/nucleo-costanera.html",
+      "path": "/nucleo-costanera.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/nucleo-costanera.html",
+      "expectedSha256": "f4549e16f8ce80afa450107451046d527c25dde836ae8b61db4e8cecb4d85d7b",
+      "expectedBytes": 28042,
+      "canonicalUrl": "https://sollahms.cl/nucleo-costanera.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/nueva-esmeralda.html",
+      "path": "/nueva-esmeralda.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/nueva-esmeralda.html",
+      "expectedSha256": "c3f7a2ef44d688c4103f09f50ae48c224693c52448ca52a61d59212c44c4db7e",
+      "expectedBytes": 23064,
+      "canonicalUrl": "https://sollahms.cl/nueva-esmeralda.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/own.html",
+      "path": "/own.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/own.html",
+      "expectedSha256": "cf581df10a6b948356efd86462735819637a718db9b3fa4ae6be557a9cf80271",
+      "expectedBytes": 23063,
+      "canonicalUrl": "https://sollahms.cl/own.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/parque-germania.html",
+      "path": "/parque-germania.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/parque-germania.html",
+      "expectedSha256": "67c956efe7340723761df9f82951b4e34ae6d0600e80140e09b95797bd57592d",
+      "expectedBytes": 21756,
+      "canonicalUrl": "https://sollahms.cl/parque-germania.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/parque-panama.html",
+      "path": "/parque-panama.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/parque-panama.html",
+      "expectedSha256": "895204394cfd129e8a751a7b04d354b31b91a37189df8eaade4198c67cbd12d0",
+      "expectedBytes": 25479,
+      "canonicalUrl": "https://sollahms.cl/parque-panama.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/parque-quinta.html",
+      "path": "/parque-quinta.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/parque-quinta.html",
+      "expectedSha256": "7b1fb034160b0b743026bbf7b49d38a9d3986d9ae02e42ab573b105d24dd4c7a",
+      "expectedBytes": 24382,
+      "canonicalUrl": "https://sollahms.cl/parque-quinta.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/patio-brasil",
+      "path": "/patio-brasil",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/patio-brasil.html",
+      "path": "/patio-brasil.html",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil.html",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/patio-brasil.html/",
+      "path": "/patio-brasil.html/",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil.html/",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/patio-brasil/",
+      "path": "/patio-brasil/",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil/",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/pintor-cicarelli-i.html",
+      "path": "/pintor-cicarelli-i.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/pintor-cicarelli-i.html",
+      "expectedSha256": "8d75cbe3317bd929155ee618a77508738ec29a1cbf9fa775b3c71dd77bff9d1d",
+      "expectedBytes": 31204,
+      "canonicalUrl": "https://sollahms.cl/pintor-cicarelli-i.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/pintor-cicarelli-ii.html",
+      "path": "/pintor-cicarelli-ii.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/pintor-cicarelli-ii.html",
+      "expectedSha256": "7db7de4e64dec3064efcbf60e9cd6c963b3d2565da481c329796cee802f59ecc",
+      "expectedBytes": 25168,
+      "canonicalUrl": "https://sollahms.cl/pintor-cicarelli-ii.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/pintor-cicarelli-iii.html",
+      "path": "/pintor-cicarelli-iii.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/pintor-cicarelli-iii.html",
+      "expectedSha256": "09b7aaad7b7cdb3fbe3c73ce7420fd45badbd30deee17fb69153f59ef0dbb9d2",
+      "expectedBytes": 24984,
+      "canonicalUrl": "https://sollahms.cl/pintor-cicarelli-iii.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/playa-penuelas.html",
+      "path": "/playa-penuelas.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/playa-penuelas.html",
+      "expectedSha256": "6e2bae92eec3a34257dbec9fb29530b26826a710ec4ee3f2867e1f9d6a31b02b",
+      "expectedBytes": 23519,
+      "canonicalUrl": "https://sollahms.cl/playa-penuelas.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/playa-serena.html",
+      "path": "/playa-serena.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/playa-serena.html",
+      "expectedSha256": "5c0f25952d3b3ba46f8f65552403c5f07f5ce287d8e40b304f163a843ad99e6a",
+      "expectedBytes": 23320,
+      "canonicalUrl": "https://sollahms.cl/playa-serena.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/plaza-cervantes-b.html",
+      "path": "/plaza-cervantes-b.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/plaza-cervantes-b.html",
+      "expectedSha256": "24d9a711aa7c49dbb5478c31eb4378fe0b4a53fd240227cad6f2a28e52ac90b8",
+      "expectedBytes": 24794,
+      "canonicalUrl": "https://sollahms.cl/plaza-cervantes-b.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/plaza-cervantes.html",
+      "path": "/plaza-cervantes.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/plaza-cervantes.html",
+      "expectedSha256": "ee6066584ebfbd1da752bfc3f69c5140817aa86bf06c72cd153a609aea17ead6",
+      "expectedBytes": 21157,
+      "canonicalUrl": "https://sollahms.cl/plaza-cervantes.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/plaza-de-lourdes.html",
+      "path": "/plaza-de-lourdes.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/plaza-de-lourdes.html",
+      "expectedSha256": "e431919cd65b002eab43f4093e4da27447f4c9419460138c4254aab6ea893f82",
+      "expectedBytes": 37295,
+      "canonicalUrl": "https://sollahms.cl/plaza-de-lourdes.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/plaza-las-condes.html",
+      "path": "/plaza-las-condes.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/plaza-las-condes.html",
+      "expectedSha256": "36b1a392b4d8882eb4a6342b421e2de51cb24c28445c3c0ef16fe3c023db3003",
+      "expectedBytes": 42695,
+      "canonicalUrl": "https://sollahms.cl/plaza-las-condes.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/plaza-quilicura.html",
+      "path": "/plaza-quilicura.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/plaza-quilicura.html",
+      "expectedSha256": "508565cef7a0aba17c62582d5e4caf862c351c7f71f09451f2477e9dbe8598a1",
+      "expectedBytes": 34132,
+      "canonicalUrl": "https://sollahms.cl/plaza-quilicura.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/privacidad.html",
+      "path": "/privacidad.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/privacidad.html",
+      "expectedSha256": "34824fac704ced4791478ad10137fd566d81e7a40523f24977c4c9d616759fe3",
+      "expectedBytes": 25255,
+      "canonicalUrl": "https://sollahms.cl/privacidad.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/proyectos.html",
+      "path": "/proyectos.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/proyectos.html",
+      "expectedSha256": "eed14625dff13fc98ee2b5829243614bfef1e9d61f1276a7f24dd9678ee732cd",
+      "expectedBytes": 42977,
+      "canonicalUrl": "https://sollahms.cl/proyectos.html",
+      "categories": [
+        "center-local-destination",
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/quintavista.html",
+      "path": "/quintavista.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/quintavista.html",
+      "expectedSha256": "6cfe34b2e31e0f74ae2b0600746ae94147a2d14d3d77e8227d64c8253d3d08e4",
+      "expectedBytes": 23673,
+      "canonicalUrl": "https://sollahms.cl/quintavista.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/reserva-mayor-2.html",
+      "path": "/reserva-mayor-2.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/reserva-mayor-2.html",
+      "expectedSha256": "2f9a2b823c12ba8395b8e55b8294db6c62721427fd00d332c6bdd7379c83ed12",
+      "expectedBytes": 21203,
+      "canonicalUrl": "https://sollahms.cl/reserva-mayor-2.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/rosas-1444.html",
+      "path": "/rosas-1444.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/rosas-1444.html",
+      "expectedSha256": "9cc514f878ca150417f0ce4e06817033ee6c6466cfbcb2d79d09ae77ed0a462c",
+      "expectedBytes": 38922,
+      "canonicalUrl": "https://sollahms.cl/rosas-1444.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/san-ignacio.html",
+      "path": "/san-ignacio.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/san-ignacio.html",
+      "expectedSha256": "e7ec2fca88206e1e3d5631cf01398d3e11e66f3f9806ce8ec03e9770eaf21b09",
+      "expectedBytes": 37610,
+      "canonicalUrl": "https://sollahms.cl/san-ignacio.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/santa-elena-1670-mbi.html",
+      "path": "/santa-elena-1670-mbi.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/santa-elena-1670-mbi.html",
+      "expectedSha256": "1adb1dbfa647107df52b4a6d0007078a21173e5395a424cac123c14a816f55d9",
+      "expectedBytes": 40532,
+      "canonicalUrl": "https://sollahms.cl/santa-elena-1670-mbi.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/serrano-torre-a.html",
+      "path": "/serrano-torre-a.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/serrano-torre-a.html",
+      "expectedSha256": "e565786aacca25b5b4ecb021ad339f5e9325099931ef3cf0a1ccd148e6dae6b8",
+      "expectedBytes": 36692,
+      "canonicalUrl": "https://sollahms.cl/serrano-torre-a.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/terratolten.html",
+      "path": "/terratolten.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/terratolten.html",
+      "expectedSha256": "aa18be315af6e08fd70c79ca9970db16b7e5c98f1badb6b8ff3b5fcd4670756d",
+      "expectedBytes": 32311,
+      "canonicalUrl": "https://sollahms.cl/terratolten.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/terrazzo.html",
+      "path": "/terrazzo.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/terrazzo.html",
+      "expectedSha256": "b120d92b207e1880071fa247e17c6318c2514e44dd354aa06933cae5ce1b2008",
+      "expectedBytes": 21646,
+      "canonicalUrl": "https://sollahms.cl/terrazzo.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/tocornal.html",
+      "path": "/tocornal.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/tocornal.html",
+      "expectedSha256": "8e82f22bccff3db7ebeb837da22aeae26deedd34cfc930eb05dee54b1e7eb37e",
+      "expectedBytes": 22018,
+      "canonicalUrl": "https://sollahms.cl/tocornal.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/trabaja-con-nosotros.html",
+      "path": "/trabaja-con-nosotros.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/trabaja-con-nosotros.html",
+      "expectedSha256": "fdcdcc99891b47b29cbee325d657551ccbe1fe4ad957e84781c9eafafae233f1",
+      "expectedBytes": 20080,
+      "canonicalUrl": "https://sollahms.cl/trabaja-con-nosotros.html",
+      "categories": [
+        "center-local-destination"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/trinidad-iii.html",
+      "path": "/trinidad-iii.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/trinidad-iii.html",
+      "expectedSha256": "20077aab8e8806d9d47c39be1c2b9dc1ca0fcbfb1e921b8b04568a4a3ea804fa",
+      "expectedBytes": 32319,
+      "canonicalUrl": "https://sollahms.cl/trinidad-iii.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/urban-la-florida.html",
+      "path": "/urban-la-florida.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/urban-la-florida.html",
+      "expectedSha256": "be9b86bfe01e0283ada930ceb331b78f2ac6ec4fd8a170e0630a412f55dc12f6",
+      "expectedBytes": 27142,
+      "canonicalUrl": "https://sollahms.cl/urban-la-florida.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/valle-los-ingleses-iii.html",
+      "path": "/valle-los-ingleses-iii.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/valle-los-ingleses-iii.html",
+      "expectedSha256": "688267103abc47b69e4974aa8ef190418439b2e3df421f4ec3caf1b0045cb9aa",
+      "expectedBytes": 25161,
+      "canonicalUrl": "https://sollahms.cl/valle-los-ingleses-iii.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vergara-domeyko.html",
+      "path": "/vergara-domeyko.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vergara-domeyko.html",
+      "expectedSha256": "d8d50ede1af23bb0cf6544297a1cde65b8c015572be2310eea7745a9a8bc5b77",
+      "expectedBytes": 25145,
+      "canonicalUrl": "https://sollahms.cl/vergara-domeyko.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vicente-valdes.html",
+      "path": "/vicente-valdes.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vicente-valdes.html",
+      "expectedSha256": "d00391263ae6c412609a64c1fd3e3bd6213b9a3c0e7dcff6be64f89b0a808f23",
+      "expectedBytes": 20967,
+      "canonicalUrl": "https://sollahms.cl/vicente-valdes.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vicuna-mackenna-1432.html",
+      "path": "/vicuna-mackenna-1432.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vicuna-mackenna-1432.html",
+      "expectedSha256": "9226ffd1bf14ed57671ddc3223acfe3d4415510abf10480303ba824d19ed8e7b",
+      "expectedBytes": 22189,
+      "canonicalUrl": "https://sollahms.cl/vicuna-mackenna-1432.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vicuna-mackenna-6896.html",
+      "path": "/vicuna-mackenna-6896.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vicuna-mackenna-6896.html",
+      "expectedSha256": "c631a3bb130811f21fe3ca43ce57cb0375d6e170dd3c32e08f534f0a96bb92dc",
+      "expectedBytes": 24661,
+      "canonicalUrl": "https://sollahms.cl/vicuna-mackenna-6896.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vicuna-mackenna-7589.html",
+      "path": "/vicuna-mackenna-7589.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vicuna-mackenna-7589.html",
+      "expectedSha256": "0beca14237d86bd95be18ed57a1c2f1faa3e0da83ee9ab9a41f9d5b22295abdf",
+      "expectedBytes": 24354,
+      "canonicalUrl": "https://sollahms.cl/vicuna-mackenna-7589.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vima.html",
+      "path": "/vima.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vima.html",
+      "expectedSha256": "4c7092e7549a791bf2508323be9551bf3492be6c9c699ed7aa908c082a34c2c2",
+      "expectedBytes": 21817,
+      "canonicalUrl": "https://sollahms.cl/vima.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vista-bulnes.html",
+      "path": "/vista-bulnes.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vista-bulnes.html",
+      "expectedSha256": "190fcaf44c5204ba2de08d994877b441e69e3e22a74242bfe6531f454eef8e4f",
+      "expectedBytes": 23387,
+      "canonicalUrl": "https://sollahms.cl/vista-bulnes.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vista-costanera.html",
+      "path": "/vista-costanera.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vista-costanera.html",
+      "expectedSha256": "8c36d24080b6a9ed254d3fcd544b5d85442a9de6020368ff235b015a54b79f71",
+      "expectedBytes": 28921,
+      "canonicalUrl": "https://sollahms.cl/vista-costanera.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vista-llacolen-a.html",
+      "path": "/vista-llacolen-a.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vista-llacolen-a.html",
+      "expectedSha256": "51acae4ca89eb1371351adc25adfb5958fb66b842d2b26d82d205f1c269e4ae3",
+      "expectedBytes": 24027,
+      "canonicalUrl": "https://sollahms.cl/vista-llacolen-a.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vista-llacolen-b.html",
+      "path": "/vista-llacolen-b.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vista-llacolen-b.html",
+      "expectedSha256": "e8da29aa1de6cf7fb38eaf2b25e5a69f5a468ce34cf084a7426b1d71c95dd912",
+      "expectedBytes": 27669,
+      "canonicalUrl": "https://sollahms.cl/vista-llacolen-b.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vista-morande.html",
+      "path": "/vista-morande.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vista-morande.html",
+      "expectedSha256": "15bd2c3bdf1a4709d93e2e5be91e8c1c1fab9365e3ec9bd4dc519dadb2e4402c",
+      "expectedBytes": 63935,
+      "canonicalUrl": "https://sollahms.cl/vista-morande.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vista-portugal.html",
+      "path": "/vista-portugal.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vista-portugal.html",
+      "expectedSha256": "32634a7453e987079c0818a127e263c4379b159e646c522d83c14a22d05b953c",
+      "expectedBytes": 23560,
+      "canonicalUrl": "https://sollahms.cl/vista-portugal.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vista-reloncavi.html",
+      "path": "/vista-reloncavi.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vista-reloncavi.html",
+      "expectedSha256": "f1221fd1bfc7de66eb84f9c016478aec9c21a2883615541f73e26c74de44b2ca",
+      "expectedBytes": 27356,
+      "canonicalUrl": "https://sollahms.cl/vista-reloncavi.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vistamar.html",
+      "path": "/vistamar.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vistamar.html",
+      "expectedSha256": "dab9e05c7d72c833db8170143752beebe80f2a949ed3122f0a961fc7ed59889f",
+      "expectedBytes": 32269,
+      "canonicalUrl": "https://sollahms.cl/vistamar.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vitro.html",
+      "path": "/vitro.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vitro.html",
+      "expectedSha256": "99c8fa5bec53d31b48dab46e8f582adec729682ea815ca20fbc481116e83ff90",
+      "expectedBytes": 23424,
+      "canonicalUrl": "https://sollahms.cl/vitro.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/vivaceta.html",
+      "path": "/vivaceta.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/vivaceta.html",
+      "expectedSha256": "2b6b111f5b398d84c709ec5ec6e37f53de24a48bc02a6af28af842fef53daab9",
+      "expectedBytes": 22455,
+      "canonicalUrl": "https://sollahms.cl/vivaceta.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://sollahms.cl/wayra.html",
+      "path": "/wayra.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/wayra.html",
+      "expectedSha256": "9961940cf209b3c205f6f073e2edc6d56d6516a454268ad7c1e6290c8c33b8b3",
+      "expectedBytes": 25267,
+      "canonicalUrl": "https://sollahms.cl/wayra.html",
+      "categories": [
+        "project-fiche"
+      ],
+      "expectFirstRedirect308": false
+    },
+    {
+      "url": "https://www.sollahms.cl/",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedFile": "static/index.html",
+      "expectedSha256": "b28e03ef77a178c39bd7d8fd2cbf4bfa21b143a267f5fe747d2cf8ddd68df3cf",
+      "expectedBytes": 59370,
+      "canonicalUrl": "https://sollahms.cl/",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "https://www.sollahms.cl/centro-orientacion.html",
+      "path": "/centro-orientacion.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/centro-orientacion.html",
+      "expectedSha256": "d9dff77fbbbb166abc11d0fd6b8ab13a2cb24ea7d10896259b799f6a7e64f585",
+      "expectedBytes": 29317,
+      "canonicalUrl": "https://sollahms.cl/centro-orientacion.html",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "https://www.sollahms.cl/contacto.html",
+      "path": "/contacto.html",
+      "expectedStatus": 200,
+      "expectedFile": "static/contacto.html",
+      "expectedSha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+      "expectedBytes": 18655,
+      "canonicalUrl": "https://sollahms.cl/contacto.html",
+      "categories": [
+        "domain-redirect-matrix"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "https://www.sollahms.cl/patio-brasil",
+      "path": "/patio-brasil",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "https://www.sollahms.cl/patio-brasil.html",
+      "path": "/patio-brasil.html",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil.html",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "https://www.sollahms.cl/patio-brasil.html/",
+      "path": "/patio-brasil.html/",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil.html/",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    },
+    {
+      "url": "https://www.sollahms.cl/patio-brasil/",
+      "path": "/patio-brasil/",
+      "expectedStatus": 410,
+      "expectedFile": "static/410.html",
+      "expectedSha256": "9ea862c25e60e5ae2eea171d917fbf744beef40ccd07cf5f32dab3c43b040f2e",
+      "expectedBytes": 4154,
+      "canonicalUrl": "https://sollahms.cl/patio-brasil/",
+      "categories": [
+        "retired-410"
+      ],
+      "expectFirstRedirect308": true
+    }
+  ]
+}
