@@ -1,41 +1,34 @@
-# SOLLAHMS — Contacto publicado y verificado
+# SOLLAHMS — Centro de Orientación publicado y verificado
 
-Objetivo completado el **16/11/2026 a las 10:54:49.885, America/Santiago**. [Contacto público](https://sollahms.cl/contacto.html) ya incorpora el pie corporativo y el selector responsive aprobados. No quedan etapas de publicación pendientes. No crear, reconstruir ni promover otro deployment por el solo hecho de retomar esta conversación.
+Objetivo completado el **16/11/2026 a las 12:29:56.873, America/Santiago**. El [Centro de Orientación público](https://sollahms.cl/centro-orientacion.html) ya sirve el candidato certificado. No crear, reconstruir ni promover otro deployment por el solo hecho de retomar este chat.
 
-- Production vigente: `dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w`.
-- [Hostname inmutable protegido](https://project-wrapp-4l11wr2s0-lsandoval2-8260s-projects.vercel.app/).
-- Ambos aliases apuntan a B9HL; www conserva 308 hacia `sollahms.cl`. Confirmación API a las 10:55:29 Santiago.
-- Source SHA declarado por Production: `534bf362b8960e275f5b8b42b5c786027906a4cb`.
-- Checkpoint QA anterior a promoción: `41577c1fae2f8c10e577a8af5c68d277c515f6bc`.
-- Rama: `codex/contacto-baseline-productivo-20261116`; [PR #29](https://github.com/lasopho/sollahms-web/pull/29) abierto en Draft, sin merge. El HEAD documental final se consulta en GitHub y con `git log -1 --format=%H -- NEXT-PROMPT.md`; conservar cualquier commit posterior.
-- Anterior conservado para recuperación: `dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5`.
+- Production definitivo: `dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR`, READY, prebuilt.
+- [Hostname inmutable protegido](https://project-wrapp-4tb7ztjjc-lsandoval2-8260s-projects.vercel.app/centro-orientacion.html).
+- Ambos aliases apuntan a HWs; www conserva 308 hacia `sollahms.cl`.
+- Source SHA declarado: `42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9`. Implementación: `e9d7393148bf1e209f6a8e2210ed4c5a973ceb41`. Los commits posteriores sólo documentan el cierre: consultar el HEAD remoto real y conservarlos.
+- Rama: `codex/centro-auditoria-integral-20261116`; [PR #30](https://github.com/lasopho/sollahms-web/pull/30) sigue abierto en Draft, sin merge.
+- Anterior conservado: `dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w`. Preview histórica: `dpl_33R4uenGQAt2cSVUGEJC7VsoF9yS`.
 
-Leer `AGENTS.md`, [informe final](docs/contacto-baseline-20261116/INFORME-CIERRE.md), [cierre verificable](docs/contacto-baseline-20261116/production-release-20261116/publication-closure.json) y [prompt completo de continuidad](docs/contacto-baseline-20261116/SIGUIENTE-PROMPT-PUBLICACION.md).
+Leer `AGENTS.md`, [informe productivo](docs/centro-auditoria-20261116/production-release-20261116/INFORME-PUBLICACION.md), [cierre verificable](docs/centro-auditoria-20261116/production-release-20261116/publication-closure.json) y [prompt completo de continuidad](docs/centro-auditoria-20261116/production-release-20261116/SIGUIENTE-PROMPT.md).
 
-## Integridad y resultados
+## Integridad y certificados
 
-Inventario publicado: `de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0`. Contiene 1.660 archivos, un único cambio en `static/contacto.html` y 1.659 idénticos al baseline ByUhr/f98. Permanecen 147 HTML, 131 fichas, 66 cambios de eliminación de recorridos, siete bundles con 57 archivos y config v3. No hubo builders, generadores ni reconstrucción al promover.
+Inventario publicado SHA256 `ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05`: 1.660 archivos, exactamente tres cambios runtime (HTML/CSS/controlador del Centro), otros 1.657 idénticos a B9HL. Contacto mantiene SHA256 `02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1`. Se conservaron las 131 fichas, recorridos eliminados, siete funciones/57 archivos y configuración v3. No se ejecutaron builders, instalación, generadores ni empaquetadores históricos. Se promovió el mismo Production comprobado antes de asignar dominios.
 
-Contacto conserva 18.655 bytes y SHA256 `02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1`. El HTML aprobado es `967d556` de #26/#28, integrado en `e95357f`; `a1f2930` añadió el control manual de esta rama. Encabezado, cuerpo, cuatro campos, RUT, consentimiento, scripts, CRM/Resend, antiabuso, idempotencia, metadatos, WhatsApp y legales están preservados. No se integró cobertura territorial del PR #25.
+- Preflight 28/28; integridad del Production aislado 33/33; Chrome aislado 48/48 en cinco anchos.
+- Público: 190/190 URL, 218 GET, 204 transacciones TLS verificadas y 28 redirecciones 308. Las 131 fichas idénticas y sin recorridos; Contacto, tres overlays, 21 recursos, 23 destinos/fragmentos y Patio Brasil 410 aprobados.
+- Chrome público real: 48/48 en 1440/1024/768/390/320 px, 20 capturas; cero errores inesperados, overflow o recursos fallidos.
+- Postpromoción: 36/36; 1.660 rutas/SHA1, siete funciones, ambos aliases, SSO/configuración y un único Production nuevo.
+- Cero envíos comerciales, eventos submit de Contacto, POST, leads, correos, reservas o escrituras CRM/Resend. UF del navegador utiliza fixtures 503 explícitas; no se hicieron lookups UF reales en esta fase. No se afirma una nueva cifra UF ni entrega real de proveedores.
 
-- Production aislado: 1.660 rutas/SHA1, siete lambdas, 32/32 HTTP y cinco anchos aprobados antes de asignar dominios.
-- Público: **648/648 HTTP PASS**, 1.246 transacciones, 972 TLS válidos, 598 redirects 308, 131 fichas sin recorridos y Patio Brasil 410.
-- Navegador público: **5/5 PASS** en 1440/1024/768/390/320 px, 15 capturas nuevas, teclado por letra/Tab, RUT inválido/válido y consentimiento.
-- Cero formularios enviados, eventos submit, leads, correos, reservas, escrituras CRM/Resend o lookup UF en las fases productivas. No se afirma entrega real de proveedores.
-- Procesos y perfiles propios cerrados; manifiestos verificados. El intento DNS del sandbox no obtuvo ninguna respuesta HTTP y está archivado como problema del harness; la única pasada pública efectiva aprobó todos los casos.
+No repetir los 53 tests financieros, 80 contrastes de Preview ni matrices certificadas por rutina. Repetir sólo ante cambios, discrepancias o un nuevo artefacto/deployment que lo justifique. Los registros originales de Preview son históricos del commit 42ee1d1; el manifiesto vigente de esta fase está en `production-release-20261116/`.
 
-Las 524 comprobaciones públicas de fichas son 131 × cuatro orígenes HTTP/HTTPS, no una nueva matriz responsive. No repetir los 524 controles responsive históricos, las 1.485 rutas o las 202 pruebas funcionales por rutina. Los certificados originales de Preview y sus diagnósticos quedan intactos; un evento DOM vacío de aquella fase histórica no se presenta como un envío productivo.
+## Continuidad
 
-## Límites y reanudación
+La autorización expresa quedó ejecutada completamente; recibos en `authorization.json`, `created.json` y `promotion-confirmed.json` dentro de esa carpeta. No reutilizarla para cambios nuevos o fusiones. El prompt que pedía autorización y el cierre de Preview se conservan en `history/`; no son estado pendiente.
 
-La autorización expresa de Contacto quedó ejecutada completamente. Sus recibos están en `production-release-20261116/authorization.json` y `promotion-confirmed.json`; no reutilizar esta autorización para cambios nuevos o trabajos ajenos. La continuidad anterior y el prompt que pedía autorización están preservados bajo `production-release-20261116/history/` como antecedentes, no como estado vigente.
+SSO `all_except_custom_domains`, autoasignación false, previews automáticas deshabilitadas y reglas manuales false intactas. No se crearon sharelinks/bypasses ni se cambiaron secretos, integraciones o DNS. El hostname inmutable conserva 302 hacia SSO con TLS válido. Los procesos de QA propios se cerraron.
 
-SSO continúa `all_except_custom_domains`. El hostname privado fue comprobado con 302 hacia SSO y TLS válido antes de promover; los ajustes se confirmaron iguales después. Autoasignación automática false, previews automáticas deshabilitadas y reglas de main/nuestra rama/Recorridos false. No se cambiaron secretos, variables, proveedores, protecciones o configuración de otras ramas; no se crearon bypasses ni sharelinks.
+Trabajar sólo en `/private/tmp/sollahms-centro-audit-20261116` o en un checkout nuevo e independiente si falta; no tocar checkouts ajenos. El output publicado está en `.vercel/centro-production-release-20261116/stage/.vercel/output`. Si falta, recuperar los mismos bytes autenticados de HWs y cotejar el manifiesto completo; no reconstruir desde main histórico ni restaurar paquetes B9HL/ByUhr/9zz que reemplacen el Centro publicado.
 
-CLI de publicación: Node 24.22.3 y Vercel 65.16.0. El harness aislado registró Node 24.22.1 y el público Node 24.22.3; las versiones reales se conservaron en sus resúmenes. El runtime de funciones permanece nodejs24.x.
-
-Trabajar solo en `/private/tmp/sollahms-contacto-baseline-20261116` o en otro checkout nuevo e independiente si desaparece. No tocar ni cambiar de rama `/Users/luissandoval/Documents/sollahms-web` o `/Users/luissandoval/Projects/sollahms-publicacion`. Mantener PR #29/#26/#28/#27 en Draft y #25 intacto, sin fusiones por iniciativa propia.
-
-El output publicado está en `.vercel/contacto-production-release-20261116/stage/.vercel/output`; la Preview y el baseline previo siguen bajo `.vercel/contacto-baseline-20261116/`. Si faltan los temporales, clonar la rama remota real y recuperar los mismos bytes mediante API autenticada de fuentes de B9HL, comprobando `candidate-manifest.json` completo. No reconstruir desde main ni publicar paquetes antiguos de 9zz, 6bc o ByUhr que reemplacen el nuevo Contacto.
-
-Cualquier futura intervención debe conciliarse con la producción real del momento y conservar tanto Recorridos como Contacto. Sin un encargo nuevo, informar el cierre y preservar este estado; no hay una publicación adicional que ejecutar.
+Para cualquier trabajo futuro, reconsultar producción real, aliases y HEAD remotos, conciliar cambios posteriores y preservar Centro, Contacto y recorridos eliminados. Sin encargo nuevo, informar el cierre y mantener el sitio intacto. Las reglas de beneficios conservan revisión al 30/11/2026 y suspensión automática posterior; no inferir tasas, valores UF o elegibilidad.

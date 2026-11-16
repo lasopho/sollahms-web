@@ -1,0 +1,112 @@
+{
+  "date": "2026-11-16",
+  "status": "all corrected",
+  "issues": [
+    {
+      "id": "F01",
+      "priority": "high",
+      "title": "Panel de resultados oscuro con texto oscuro",
+      "cause": "Shared .result-panel background overrides page CSS; dark inherited text remains.",
+      "change": "Scoped light surface and explicit hierarchy; shared theme unchanged.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "F02",
+      "priority": "high",
+      "title": "Siguiente deshabilitado casi invisible",
+      "cause": "Light journey disabled text beats shared dark disabled ink on light disabled surface.",
+      "change": "Explicit local disabled states on original controls: 1.19:1 to 5.87:1.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "F03",
+      "priority": "medium",
+      "title": "Desvanecimiento excluido en toda la página",
+      "cause": "data-scroll-static on main excludes all descendants.",
+      "change": "Editorial fades via shared script, static controls/results/links.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "F04",
+      "priority": "medium",
+      "title": "Ausencia de reinicio de herramientas",
+      "cause": "No native reset controls or restoration of initial output.",
+      "change": "Three native resets restore defaults and initial results.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "F05",
+      "priority": "medium",
+      "title": "Respuesta UF tardía puede reclasificar edición manual",
+      "cause": "Comparing only initial/final value misses edit and restore to same value.",
+      "change": "Revision counter preserves manual intervention.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "F06",
+      "priority": "medium",
+      "title": "Foco de etapas desplaza pantalla",
+      "cause": "focus() scrolls heading into view as a side effect.",
+      "change": "focus({preventScroll:true}) and bounded stage index.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "V01",
+      "priority": "medium",
+      "title": "Fuentes corporativas sin registro para contenido",
+      "cause": "Only header font aliases are registered.",
+      "change": "Existing local Inter and Manrope registered for page content.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "V02",
+      "priority": "medium",
+      "title": "Cuarta ruta inicial huérfana",
+      "cause": "Four routes in three-column grid.",
+      "change": "Editorial 2x2 rows, one column on mobile.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "V03",
+      "priority": "medium",
+      "title": "Escenario largo y estrecho en tablet",
+      "cause": "Ungrouped inputs and two narrow tool columns.",
+      "change": "Three numbered groups, stacked panels below900px, responsive metrics.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": false
+    },
+    {
+      "id": "Q01",
+      "priority": "medium",
+      "title": "Reinicio UF inicialmente sobrescrito por Chrome",
+      "cause": "Reset microtask ran before native default field restoration.",
+      "change": "requestAnimationFrame after native reset and before paint; final Preview and focused UF regression pass.",
+      "status": "corrected and verified",
+      "introducedDuringIntervention": true
+    }
+  ],
+  "reportedPreviousControl": {
+    "literalAnterioresPresent": false,
+    "actualControls": "journey-prev / journey-next",
+    "budgetToolStages": 1,
+    "journeyStages": 6,
+    "missingLabelOrEventsReproduced": false,
+    "reproducedDefect": "Disabled final Siguiente contrast1.19:1; original labels/events preserved."
+  },
+  "externalNotes": [
+    {
+      "source": "CMF",
+      "status": "existing external HTTPS to HTTP redirect; final200",
+      "changed": false,
+      "blocking": false
+    }
+  ]
+}

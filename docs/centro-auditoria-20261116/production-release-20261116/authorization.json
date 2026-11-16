@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-16",
+  "timezone": "America/Santiago",
+  "source": "Explicit owner message in this chat after certified Preview delivery",
+  "explicitAuthorization": true,
+  "productionCreationAuthorized": true,
+  "promotionAuthorized": true,
+  "publicQaAuthorized": true,
+  "mergeAuthorized": false,
+  "maximumNewProductionDeployments": 1,
+  "candidateDeployment": "dpl_33R4uenGQAt2cSVUGEJC7VsoF9yS",
+  "candidateInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+  "baselineDeployment": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+  "statement": "Autorización expresa recibida del propietario para publicar Centro de Orientación en producción. Ejecuta ahora la etapa productiva documentada en docs/centro-auditoria-20261116/SIGUIENTE-PROMPT.md. No solicitar nuevamente la autorización productiva: ya fue concedida expresamente.",
+  "authorizedSequence": [
+    "Requery production domains/deployment and verify certified artifact",
+    "Prepare isolated Production through Build Output API from exact certified bytes without builders/generators",
+    "Verify hashes/routes/seven functions/configuration and controls before assigning domains",
+    "Promote exactly the verified deployment to existing production domains",
+    "Run public QA without submitting forms or commercial data",
+    "Update reports and NEXT-PROMPT.md"
+  ],
+  "stopCondition": "If any hash, route, function or control fails, stop publication and document the blocker.",
+  "preserve": ["Contacto", "131 project fiches", "virtual-tour removal", "seven functions", "SSO and existing protections", "PR30 remains unmerged"]
+}

@@ -1,0 +1,249 @@
+{
+  "createdAt": "2026-11-16T14:56:32.191312+00:00",
+  "method": "HTML parser + exact local static file/ID resolution; bounded HTTPS entry-point GET with server redirects followed; no forms, API calls or messages",
+  "anchorCount": 58,
+  "uniqueHtmlHrefs": 34,
+  "dynamicJourneyHrefs": [
+    "#presupuesto",
+    "/proyectos.html",
+    "/comparador-hipotecario.html",
+    "/contacto.html",
+    "#checklist",
+    "#checklist"
+  ],
+  "local": [
+    {
+      "href": "#beneficios",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#checklist",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#contenido-principal",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#cotizaciones",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#preguntas",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#presupuesto",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#recorrido",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "#ruta",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/#expertise",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/#portfolio",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/agenda-asesoria.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/beneficios-tributarios-inmobiliarios.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/comparador-hipotecario.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/contacto.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/cuando-comprar-propiedad.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/fuentes-respaldo-documental.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/guia-hipotecaria.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/inversion-inmobiliaria-empresas.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/privacidad.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/proyectos.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/proyectos.html#capacity-title",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    },
+    {
+      "href": "/trabaja-con-nosotros.html",
+      "fileExists": true,
+      "fragmentExists": true,
+      "result": "PASS"
+    }
+  ],
+  "external": [
+    {
+      "url": "https://fogaes.cl/sitio/2026/08/19/diario-oficial-publica-ley-n-21-836-que-extiende-y-aumenta-cobertura-de-subsidio-a-la-tasa-de-interes-hipotecaria/",
+      "status": 200,
+      "finalUrl": "https://fogaes.cl/sitio/2026/08/19/diario-oficial-publica-ley-n-21-836-que-extiende-y-aumenta-cobertura-de-subsidio-a-la-tasa-de-interes-hipotecaria/",
+      "bytesSampled": 31886,
+      "tlsVerified": true,
+      "result": "PASS"
+    },
+    {
+      "url": "https://servicios.cmfchile.cl/simuladorhipotecario",
+      "status": 200,
+      "finalUrl": "http://servicios.cmfchile.cl/simuladorhipotecario/aplicacion?indice=101.2.1",
+      "bytesSampled": 43019,
+      "tlsVerified": false,
+      "result": "PASS_HTTP_DOWNGRADE",
+      "note": "The preserved CMF HTTPS entry point responds, but its own server redirects to HTTP. This is reported separately and was not treated as end-to-end verified TLS."
+    },
+    {
+      "url": "https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.",
+      "status": 200,
+      "finalUrl": "https://api.whatsapp.com/send/?phone=56948502440&text=Hola%2C+quisiera+recibir+asesor%C3%ADa+inmobiliaria+de+Sollahms+para+encontrar+una+propiedad+seg%C3%BAn+mis+necesidades.&type=phone_number&app_absent=0",
+      "bytesSampled": 231987,
+      "tlsVerified": true,
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.bcn.cl/leychile/Navegar?idNorma=1213759&idVersion=2026-08-17",
+      "status": 200,
+      "finalUrl": "https://www.bcn.cl/leychile/Navegar?idNorma=1213759&idVersion=2026-08-17",
+      "bytesSampled": 9602,
+      "tlsVerified": true,
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=2299",
+      "status": 200,
+      "finalUrl": "https://www.bcn.cl/leychile/navegar?idNorma=2299",
+      "bytesSampled": 9602,
+      "tlsVerified": true,
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.minvu.gob.cl/beneficio/vivienda/subsidio-de-integracion-social-y-territorial-ds19/",
+      "status": 200,
+      "finalUrl": "https://www.minvu.gob.cl/beneficio/vivienda/subsidio-de-integracion-social-y-territorial-ds19/",
+      "bytesSampled": 109053,
+      "tlsVerified": true,
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.minvu.gob.cl/beneficio/vivienda/subsidio-habitacional-para-comprar-una-vivienda-de-hasta-2200-uf-ds1/",
+      "status": 200,
+      "finalUrl": "https://www.minvu.gob.cl/beneficio/vivienda/subsidio-habitacional-para-comprar-una-vivienda-de-hasta-2200-uf-ds1/",
+      "bytesSampled": 66274,
+      "tlsVerified": true,
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.minvu.gob.cl/fogaes/",
+      "status": 200,
+      "finalUrl": "https://www.minvu.gob.cl/fogaes/",
+      "bytesSampled": 51039,
+      "tlsVerified": true,
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.minvu.gob.cl/tramo-4000/",
+      "status": 200,
+      "finalUrl": "https://www.minvu.gob.cl/tramo-4000/",
+      "bytesSampled": 60226,
+      "tlsVerified": true,
+      "result": "PASS"
+    },
+    {
+      "url": "https://www.sii.cl/valores_y_fechas/uf/uf2026.htm",
+      "status": 200,
+      "finalUrl": "https://www.sii.cl/valores_y_fechas/uf/uf2026.htm",
+      "bytesSampled": 55021,
+      "tlsVerified": true,
+      "result": "PASS"
+    }
+  ],
+  "communication": [
+    {
+      "href": "mailto:contacto@sollahms.cl",
+      "result": "VALID_SCHEME_NOT_SENT"
+    }
+  ],
+  "emptyHrefs": [],
+  "localPass": true,
+  "externalSummary": {
+    "PASS": 9,
+    "PASS_HTTP_DOWNGRADE": 1
+  }
+}
