@@ -1,0 +1,1013 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local static preservation against certified ByUhr baseline and existing candidate inventories",
+  "result": "PASS",
+  "baselineDeployment": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+  "baselineRuntimeCommit": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4",
+  "approvedContactoCommit": "967d556730e20ef86bae6ecee11ec6152434c8ae",
+  "htmlCommit": "e95357fffa031dce3ac29a254b49c02e240a997f",
+  "sourceControlCommit": "a1f2930475e23ebb87bac1f8443877b06883fe60",
+  "branch": "codex/contacto-baseline-productivo-20261116",
+  "candidateInventorySha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+  "baselineInventorySha256": "f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0",
+  "checks": {
+    "1660PathsIdentical": true,
+    "oneRuntimeChangeOnlyContacto": true,
+    "1659IdenticalEntries": true,
+    "baselineInventoryCanonicalMatches": true,
+    "candidateInventoryCanonicalMatches": true,
+    "actualBaselineContactoMatchesManifest": true,
+    "actualCandidateContactoMatchesManifest": true,
+    "approvedAndCommittedHtmlExactlySame": true,
+    "staticRegionsIdentical": true,
+    "exactlyTwoApprovedInlineStyles": true,
+    "headWithoutAddedStylesExactlySame": true,
+    "jsonLdUnchangedAndValid": true,
+    "canonicalUnchanged": true,
+    "commercialFieldsAndConsentPreserved": true,
+    "commercialModulesPreserved": true,
+    "57FunctionFilesSameManifestRecords": true,
+    "66TourRemovalChangesRetained": true,
+    "sourceConfigOnlyDisablesNewAutoDeploy": true,
+    "runtimeConfigUnchanged": true,
+    "coverage25Absent": true
+  },
+  "runtimeFiles": 1660,
+  "changedFiles": [
+    "static/contacto.html"
+  ],
+  "identicalFiles": 1659,
+  "contacto": {
+    "baselineBytes": 16829,
+    "baselineSha256": "5c16a5cff747b87b64d3a4bba49d4d0a0c6fc0fbf578bdb3d730e0c6dc209a69",
+    "candidateBytes": 18655,
+    "candidateSha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+    "gitCommitCopies": [
+      {
+        "commit": "967d556730e20ef86bae6ecee11ec6152434c8ae",
+        "bytes": 18655,
+        "sha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+        "byteIdenticalToStage": true
+      },
+      {
+        "commit": "e95357fffa031dce3ac29a254b49c02e240a997f",
+        "bytes": 18655,
+        "sha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+        "byteIdenticalToStage": true
+      },
+      {
+        "commit": "a1f2930475e23ebb87bac1f8443877b06883fe60",
+        "bytes": 18655,
+        "sha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+        "byteIdenticalToStage": true
+      }
+    ]
+  },
+  "regionProofs": {
+    "header": {
+      "byteIdentical": true,
+      "count": 1,
+      "baselineSha256": "63c1e1500f1f39fe9079e7ca4a5e85f38e4064a2f0092de57d39f181fe3cab56",
+      "candidateSha256": "63c1e1500f1f39fe9079e7ca4a5e85f38e4064a2f0092de57d39f181fe3cab56"
+    },
+    "main": {
+      "byteIdentical": true,
+      "count": 1,
+      "baselineSha256": "5dc8ba19cc77d2f512d98e298cfa2789a8ff7a68f2ec0dc9521d9e730ef609cd",
+      "candidateSha256": "5dc8ba19cc77d2f512d98e298cfa2789a8ff7a68f2ec0dc9521d9e730ef609cd"
+    },
+    "forms": {
+      "byteIdentical": true,
+      "count": 1,
+      "baselineSha256": "f68ac212ae56eebdb8fa898bc1ef05c359298549b55b4b8065fef2af6c58d0e7",
+      "candidateSha256": "f68ac212ae56eebdb8fa898bc1ef05c359298549b55b4b8065fef2af6c58d0e7"
+    },
+    "scripts": {
+      "byteIdentical": true,
+      "count": 5,
+      "baselineSha256": "b22f8be3c4fb6db292095db50c1c7f85cc811e80d49fd78bc7ad7dbfabacad34",
+      "candidateSha256": "b22f8be3c4fb6db292095db50c1c7f85cc811e80d49fd78bc7ad7dbfabacad34"
+    },
+    "metas": {
+      "byteIdentical": true,
+      "count": 20,
+      "baselineSha256": "40d8820c3666f2ea5c42493dd18ec050be0ccb1d79f88910fadef5b4bbdc43c7",
+      "candidateSha256": "40d8820c3666f2ea5c42493dd18ec050be0ccb1d79f88910fadef5b4bbdc43c7"
+    },
+    "headLinks": {
+      "byteIdentical": true,
+      "count": 9,
+      "baselineSha256": "7b8e9cb6704fac36b08fba39c95cf3a3fdb2a1ac06cd152193b9ca37447c8e88",
+      "candidateSha256": "7b8e9cb6704fac36b08fba39c95cf3a3fdb2a1ac06cd152193b9ca37447c8e88"
+    },
+    "options": {
+      "byteIdentical": true,
+      "count": 4,
+      "baselineSha256": "d8caf0194cb448183611a45e1845f09e80dd9ca46a9efad0a0e3fd8cfe2a4479",
+      "candidateSha256": "d8caf0194cb448183611a45e1845f09e80dd9ca46a9efad0a0e3fd8cfe2a4479"
+    }
+  },
+  "inlineStyles": [
+    {
+      "id": "contact-footer-style",
+      "count": 1
+    },
+    {
+      "id": "contact-selector-responsive",
+      "count": 1
+    }
+  ],
+  "commercialContract": {
+    "attributesAndReferencesIdentical": true,
+    "fieldOrder": [
+      "nombre",
+      "rut",
+      "correo",
+      "telefono"
+    ],
+    "fourFieldsRequired": true,
+    "consentRequired": true,
+    "rutAttributesPreserved": true
+  },
+  "canonicalUrls": [
+    "https://sollahms.cl/contacto.html"
+  ],
+  "jsonLdBlocks": 1,
+  "commercialDependencies": [
+    {
+      "path": "static/assets/js/advisory.mjs",
+      "present": true,
+      "sameManifestRecord": true,
+      "sha256": "cd16e54aa3b1c74a370c254c466dac2ad2e17505e3291b6822842d9623d8553e"
+    },
+    {
+      "path": "static/assets/js/rut-field.mjs",
+      "present": true,
+      "sameManifestRecord": true,
+      "sha256": "336bc1dedc6098b3777778be2074171d9925b25e9904c74da86c337852de96f9"
+    },
+    {
+      "path": "static/assets/js/commercial-fields.mjs",
+      "present": true,
+      "sameManifestRecord": true,
+      "sha256": "d18d861c947eb29bc417591626dc83c69fa671c5a59da050cc08c3db7252ffac"
+    },
+    {
+      "path": "static/assets/js/form-operation.mjs",
+      "present": true,
+      "sameManifestRecord": true,
+      "sha256": "187042e1039d7e64c5cf8e14b3f007e8f2e11142ed7d50a80d677cee1b97c4b4"
+    }
+  ],
+  "functionFiles": [
+    {
+      "path": "functions/api/advisory.func/.vc-config.json",
+      "size": 287,
+      "sha1": "671a7f1348dc6bc9d258f4cb2a6b5fe75b11a1cb",
+      "sha256": "64f85b53b7e143b455cfc4044acacc9ee3f05c0378a057fb4169780d27e19a94",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/advisory.func/api/advisory.mjs",
+      "size": 7463,
+      "sha1": "9a0222e072b125eebfbfcb536e35871384653ff0",
+      "sha256": "68c965f620090885ffdebe41750e47611c90de33f5f27368ad1dcd0d8ee869c9",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/advisory.func/assets/js/commercial-fields.mjs",
+      "size": 2651,
+      "sha1": "11f01e53cd3e576da12dfc4756ab0564ac01a278",
+      "sha256": "d18d861c947eb29bc417591626dc83c69fa671c5a59da050cc08c3db7252ffac",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/advisory.func/assets/js/rut.mjs",
+      "size": 1543,
+      "sha1": "d972ba8789aa836ec5590e2cf0048e4ad9ca1e66",
+      "sha256": "912ed456c88adef10a9cd6ee44aa742fd1387eef8d219413e10d564119bf94a2",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/advisory.func/data/advisory-projects.json",
+      "size": 5803,
+      "sha1": "fb4f4cd19d1ced3828ed5ab6c235ad1ae3930536",
+      "sha256": "311e5cca0b0b0747bab8a3c7b1e408b3003f18381d60e91cf5f3121100e64796",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/advisory.func/lib/form-operation-server.mjs",
+      "size": 3105,
+      "sha1": "1c79de197a74558a6989f4663438d688f7d29fa0",
+      "sha256": "6d4f74b31f78dcd405c0342c1d38b972703966cb0a45b6dd41c9fd196d16bf2a",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-availability.func/.vc-config.json",
+      "size": 299,
+      "sha1": "7ee0fd4da34b48e89b0bcb2da6da3224b39c0526",
+      "sha256": "d511aeb866b96607f967a6eea3516103cfd70fb7a74dd4575ffebcef9a7192e6",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-availability.func/api/booking-availability.mjs",
+      "size": 1420,
+      "sha1": "a80936043786ee358e936708b24cc7628397ef25",
+      "sha256": "c6098b5d9b31bb138b7f61fdf8a99ea8fc897973a079072ea082b3190cdd1af9",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-availability.func/lib/booking-publication-policy.mjs",
+      "size": 650,
+      "sha1": "ea3fd9fbcfe8cd54cf8c6f8caad40e8af0bbe6a3",
+      "sha256": "cf8e9d1659eef916029e60d653362a9c29fe1110cfa358064a1d1ff1c4aa6fd6",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-availability.func/lib/booking-server.mjs",
+      "size": 5304,
+      "sha1": "074e117080491b0c6f1cdc4b19f9b638e6dd7307",
+      "sha256": "27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-create.func/.vc-config.json",
+      "size": 293,
+      "sha1": "e17d83ae077c5fed0f1e586f9b229c0603640b61",
+      "sha256": "fd3d1894ef08aa226a469e6b6eda7473950032fc223f1c6502d77e90e0b1be3d",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-create.func/api/booking-create.mjs",
+      "size": 3926,
+      "sha1": "6d7db117ea672122dee21b662cb8b505944245f1",
+      "sha256": "87ae18ab7476539fc84fffadea4446e631771f06bc7b2fdb248befa81596ef12",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-create.func/lib/booking-publication-policy.mjs",
+      "size": 650,
+      "sha1": "ea3fd9fbcfe8cd54cf8c6f8caad40e8af0bbe6a3",
+      "sha256": "cf8e9d1659eef916029e60d653362a9c29fe1110cfa358064a1d1ff1c4aa6fd6",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-create.func/lib/booking-server.mjs",
+      "size": 5304,
+      "sha1": "074e117080491b0c6f1cdc4b19f9b638e6dd7307",
+      "sha256": "27963d401a395e5a34cbbe623949e78327bc99b40848ecb828a6f217cbf0ccf4",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-create.func/lib/form-operation-server.mjs",
+      "size": 3105,
+      "sha1": "1c79de197a74558a6989f4663438d688f7d29fa0",
+      "sha256": "6d4f74b31f78dcd405c0342c1d38b972703966cb0a45b6dd41c9fd196d16bf2a",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/booking-create.func/lib/project-context.mjs",
+      "size": 18094,
+      "sha1": "9612a8ddbd004f346b624be1c6e12e2f6d7ef9bf",
+      "sha256": "70c0278e4002a0bf98d1226c1fde097d59656c318814f822999ffb4936327f0d",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/collaboration.func/.vc-config.json",
+      "size": 270,
+      "sha1": "46d25385817cc15de1fa02a088764e965a958ce5",
+      "sha256": "8392205a4ae5052e71007eebdf90dc76625deb58cc873fbb07969c69a1d4e385",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/collaboration.func/api/collaboration.mjs",
+      "size": 5602,
+      "sha1": "2b1f539ca6e54ef4b8114d7659f2b46b3e8e363f",
+      "sha256": "806719c9dfe32636c8c87e7893c6dfe7ea58e4f532606899401d61fdc5b6c3c4",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/collaboration.func/assets/js/collaboration-fields.mjs",
+      "size": 1795,
+      "sha1": "e317b68a0c3fb9835829e2bfe837e15555e5cd31",
+      "sha256": "53e12fb5ad6ca89ef943622466160ba81309b5d3f3732e89671bc0236622899e",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/collaboration.func/assets/js/commercial-fields.mjs",
+      "size": 2651,
+      "sha1": "11f01e53cd3e576da12dfc4756ab0564ac01a278",
+      "sha256": "d18d861c947eb29bc417591626dc83c69fa671c5a59da050cc08c3db7252ffac",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/collaboration.func/assets/js/rut.mjs",
+      "size": 1543,
+      "sha1": "d972ba8789aa836ec5590e2cf0048e4ad9ca1e66",
+      "sha256": "912ed456c88adef10a9cd6ee44aa742fd1387eef8d219413e10d564119bf94a2",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/collaboration.func/lib/form-operation-server.mjs",
+      "size": 3105,
+      "sha1": "1c79de197a74558a6989f4663438d688f7d29fa0",
+      "sha256": "6d4f74b31f78dcd405c0342c1d38b972703966cb0a45b6dd41c9fd196d16bf2a",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/.vc-config.json",
+      "size": 286,
+      "sha1": "44486d27839ba051b613c82639495919d089ad2c",
+      "sha256": "fd7ca5d45b523dda9745ee6c6e519e9b1758765927e939085845f0425365cfef",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/api/contact.mjs",
+      "size": 16411,
+      "sha1": "81d368bb345db8d4b8c52a92697ba63a1a90b34d",
+      "sha256": "ce25910289e5850223156cd9f7224e6a391ea6056c95071fb8c789e04f2d8b36",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/assets/js/commercial-fields.mjs",
+      "size": 2651,
+      "sha1": "11f01e53cd3e576da12dfc4756ab0564ac01a278",
+      "sha256": "d18d861c947eb29bc417591626dc83c69fa671c5a59da050cc08c3db7252ffac",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/assets/js/mortgage-data.mjs",
+      "size": 18742,
+      "sha1": "7a982a8151f38939ac1e6e4a8811cdd2e07064d1",
+      "sha256": "a6b489a33f8eaf5fb68a424dd55f2f705b52048fa6bd42d2f52cb2ffa9e8ce3c",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/assets/js/mortgage-engine.mjs",
+      "size": 3496,
+      "sha1": "604f8598aed8a3323540b548e61ddd0038f85cbb",
+      "sha256": "f676775b6d5004f1810cec5273a8875479b062d3462fce0e41f85c6c98821b85",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/assets/js/project-finance.mjs",
+      "size": 5214,
+      "sha1": "f6d2b424ce490dd9fa27f73b208c7b012d3eb90f",
+      "sha256": "a49958fd5020206c6152bf48c03ab3ae3de3039c27f3abc04b1eaf8fbfb7376a",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/assets/js/project-identity.mjs",
+      "size": 4009,
+      "sha1": "966bf79136d97fd6d2b6f8902955d8e549907f7e",
+      "sha256": "86395bb47c4fba999d62dbb905c8c0fbdc30a1efc865b741ad102d48968babeb",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/assets/js/rut.mjs",
+      "size": 1543,
+      "sha1": "d972ba8789aa836ec5590e2cf0048e4ad9ca1e66",
+      "sha256": "912ed456c88adef10a9cd6ee44aa742fd1387eef8d219413e10d564119bf94a2",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/data/hipotecario.json",
+      "size": 14564,
+      "sha1": "289161a43ebbf88a92fa2eb330a20b8080052480",
+      "sha256": "be3c538c8436c63ab7f54915cad77686e6b91451b7d7bfcdd23478705308a4f0",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/data/proyectos.json",
+      "size": 328016,
+      "sha1": "15cf04b4299c4f2c09587778480aebb3ef1a70f0",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/lib/crm-lead-client.mjs",
+      "size": 4532,
+      "sha1": "fe642f7160f62d80e8808f90d1f590ce23a8e9fd",
+      "sha256": "d5d44f1a3948013bf53cbeae62c48ec5e505dc4fcf334d486a5430a4ca4e1d00",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/lib/form-operation-server.mjs",
+      "size": 3105,
+      "sha1": "1c79de197a74558a6989f4663438d688f7d29fa0",
+      "sha256": "6d4f74b31f78dcd405c0342c1d38b972703966cb0a45b6dd41c9fd196d16bf2a",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/lib/mortgage-lead.mjs",
+      "size": 9911,
+      "sha1": "68fff8dd6b0e8b1c204a1c616938e75cd2e2fe4f",
+      "sha256": "6c9db90b59e4dbe679997c10e9b16c58c35e08b6b9c196a0c36ad4f1ee07814c",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/contact.func/lib/official-uf.mjs",
+      "size": 6218,
+      "sha1": "13d1e67fbc414772a33329a90e2cfba4ac90381a",
+      "sha256": "5a43c18d17301ba8dac4466f874e99832cdc6df775efbb8ab8fb524bc4024b21",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/.vc-config.json",
+      "size": 298,
+      "sha1": "58f3fa97142543738f7433c25ebaec20c3be2773",
+      "sha256": "5f81e2c50a82980016573973e6b5d9ad1f9feda6926fa7b539db990462e39402",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/api/contact.mjs",
+      "size": 16411,
+      "sha1": "81d368bb345db8d4b8c52a92697ba63a1a90b34d",
+      "sha256": "ce25910289e5850223156cd9f7224e6a391ea6056c95071fb8c789e04f2d8b36",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/api/orientation-contact.mjs",
+      "size": 2097,
+      "sha1": "8c624b15ada0da7cf47e0b46614b771963cb1b1d",
+      "sha256": "da567819b6199ae30d8d917788fc64ad58f5304dc30d990da74a328f6953eb87",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/assets/js/commercial-fields.mjs",
+      "size": 2651,
+      "sha1": "11f01e53cd3e576da12dfc4756ab0564ac01a278",
+      "sha256": "d18d861c947eb29bc417591626dc83c69fa671c5a59da050cc08c3db7252ffac",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/assets/js/mortgage-data.mjs",
+      "size": 18742,
+      "sha1": "7a982a8151f38939ac1e6e4a8811cdd2e07064d1",
+      "sha256": "a6b489a33f8eaf5fb68a424dd55f2f705b52048fa6bd42d2f52cb2ffa9e8ce3c",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/assets/js/mortgage-engine.mjs",
+      "size": 3496,
+      "sha1": "604f8598aed8a3323540b548e61ddd0038f85cbb",
+      "sha256": "f676775b6d5004f1810cec5273a8875479b062d3462fce0e41f85c6c98821b85",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/assets/js/project-finance.mjs",
+      "size": 5214,
+      "sha1": "f6d2b424ce490dd9fa27f73b208c7b012d3eb90f",
+      "sha256": "a49958fd5020206c6152bf48c03ab3ae3de3039c27f3abc04b1eaf8fbfb7376a",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/assets/js/project-identity.mjs",
+      "size": 4009,
+      "sha1": "966bf79136d97fd6d2b6f8902955d8e549907f7e",
+      "sha256": "86395bb47c4fba999d62dbb905c8c0fbdc30a1efc865b741ad102d48968babeb",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/assets/js/rut.mjs",
+      "size": 1543,
+      "sha1": "d972ba8789aa836ec5590e2cf0048e4ad9ca1e66",
+      "sha256": "912ed456c88adef10a9cd6ee44aa742fd1387eef8d219413e10d564119bf94a2",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/data/hipotecario.json",
+      "size": 14564,
+      "sha1": "289161a43ebbf88a92fa2eb330a20b8080052480",
+      "sha256": "be3c538c8436c63ab7f54915cad77686e6b91451b7d7bfcdd23478705308a4f0",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/data/proyectos.json",
+      "size": 328016,
+      "sha1": "15cf04b4299c4f2c09587778480aebb3ef1a70f0",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/lib/crm-lead-client.mjs",
+      "size": 4532,
+      "sha1": "fe642f7160f62d80e8808f90d1f590ce23a8e9fd",
+      "sha256": "d5d44f1a3948013bf53cbeae62c48ec5e505dc4fcf334d486a5430a4ca4e1d00",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/lib/form-operation-server.mjs",
+      "size": 3105,
+      "sha1": "1c79de197a74558a6989f4663438d688f7d29fa0",
+      "sha256": "6d4f74b31f78dcd405c0342c1d38b972703966cb0a45b6dd41c9fd196d16bf2a",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/lib/mortgage-lead.mjs",
+      "size": 9911,
+      "sha1": "68fff8dd6b0e8b1c204a1c616938e75cd2e2fe4f",
+      "sha256": "6c9db90b59e4dbe679997c10e9b16c58c35e08b6b9c196a0c36ad4f1ee07814c",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/orientation-contact.func/lib/official-uf.mjs",
+      "size": 6218,
+      "sha1": "13d1e67fbc414772a33329a90e2cfba4ac90381a",
+      "sha256": "5a43c18d17301ba8dac4466f874e99832cdc6df775efbb8ab8fb524bc4024b21",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/uf.func/.vc-config.json",
+      "size": 281,
+      "sha1": "a1a3505508e494004d5ace2e72781565e0ad5802",
+      "sha256": "117873731c39669df084132407cf929f5aac602d6be0d2473f44c647312b34ee",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/uf.func/api/uf.mjs",
+      "size": 1357,
+      "sha1": "31c36a3476880aef3c9b7aafabd56692e26a9343",
+      "sha256": "888a398a105f8deb659b70dd1fd0ed7ab40349fb059e3ce28f41192ea7881c68",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/uf.func/assets/js/mortgage-data.mjs",
+      "size": 18742,
+      "sha1": "7a982a8151f38939ac1e6e4a8811cdd2e07064d1",
+      "sha256": "a6b489a33f8eaf5fb68a424dd55f2f705b52048fa6bd42d2f52cb2ffa9e8ce3c",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/uf.func/assets/js/mortgage-engine.mjs",
+      "size": 3496,
+      "sha1": "604f8598aed8a3323540b548e61ddd0038f85cbb",
+      "sha256": "f676775b6d5004f1810cec5273a8875479b062d3462fce0e41f85c6c98821b85",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/uf.func/assets/js/project-finance.mjs",
+      "size": 5214,
+      "sha1": "f6d2b424ce490dd9fa27f73b208c7b012d3eb90f",
+      "sha256": "a49958fd5020206c6152bf48c03ab3ae3de3039c27f3abc04b1eaf8fbfb7376a",
+      "sameAsBaseline": true
+    },
+    {
+      "path": "functions/api/uf.func/lib/official-uf.mjs",
+      "size": 6218,
+      "sha1": "13d1e67fbc414772a33329a90e2cfba4ac90381a",
+      "sha256": "5a43c18d17301ba8dac4466f874e99832cdc6df775efbb8ab8fb524bc4024b21",
+      "sameAsBaseline": true
+    }
+  ],
+  "retainedTourRemovalFiles": [
+    {
+      "path": "static/plaza-las-condes.html",
+      "retained": true,
+      "sha1": "d0d54a4abae77f7a5e26e506a9f2da1869f51ff2",
+      "sha256": "36b1a392b4d8882eb4a6342b421e2de51cb24c28445c3c0ef16fe3c023db3003"
+    },
+    {
+      "path": "static/jofre-135.html",
+      "retained": true,
+      "sha1": "73b7d73fa063c35e5f7897ac2abcca193d3350f2",
+      "sha256": "ad47c431779dd33f8b1c1f0a089670543ae9d20eeb582a3036a592af5f900639"
+    },
+    {
+      "path": "static/novo-catedral.html",
+      "retained": true,
+      "sha1": "1fda5ec662b5117f38b4d32b43ed17ea7e5ca082",
+      "sha256": "8dd156260847e3e8b151ffde70e6e638cf11a1b469aebb7e1d7531163cc73258"
+    },
+    {
+      "path": "static/lomas-de-puyai.html",
+      "retained": true,
+      "sha1": "c1c36f05e269285683a71fdc7bc4d297bc1ea81c",
+      "sha256": "25d32a8522962a67a0712818befb9beb872b3e6cebd43e4c7b28f8d678d8a09d"
+    },
+    {
+      "path": "static/edificio-baum.html",
+      "retained": true,
+      "sha1": "b2472d51039bb84429d8202e0d2caee1075eb7c6",
+      "sha256": "68d4208aacd85864c795f5d650f8ee9748f5846c4e0ce3ce367b54a6181e31fc"
+    },
+    {
+      "path": "static/inn-puerto-chico.html",
+      "retained": true,
+      "sha1": "341de6344225f25c28b8bfa60d1ff9ecdfabc4a0",
+      "sha256": "4cd3f5d6b308dc30d856a1edd0455164ca6140d3c5f29d86f5da5d9348c1f2b3"
+    },
+    {
+      "path": "static/edificio-indigo.html",
+      "retained": true,
+      "sha1": "cca2ce876f57248f678c4772c7792c6135fd011a",
+      "sha256": "36174641aa6ae2fc2797c8ed557caa155f77559752699e27c9ed33367867db6e"
+    },
+    {
+      "path": "static/guillermo-mann-1401.html",
+      "retained": true,
+      "sha1": "de4c4ed856fce250d229526b9b01ace31c09d065",
+      "sha256": "378ccb0547bb0f6099402a9a22b5281531098338fb2e9633daeefdf59deca46e"
+    },
+    {
+      "path": "static/aires-la-florida-2.html",
+      "retained": true,
+      "sha1": "ddf7a6db08bd8183d55fe74a71ea8747aed7f420",
+      "sha256": "dce88b0111dfa72a8ad1318621630dee7ab7695ba66d6673a1d8d8c1e878cea4"
+    },
+    {
+      "path": "static/cumbres-de-penuelas.html",
+      "retained": true,
+      "sha1": "03f63ede00116fd9edfab3823bed59e8260142da",
+      "sha256": "875e13f7474b4e9d452e6328d56d29460ffa08803997b26ee9a4fd47cef99e68"
+    },
+    {
+      "path": "static/angamos.html",
+      "retained": true,
+      "sha1": "f498ab42ace67079408415ad9a899093d8aad010",
+      "sha256": "d66b97b75cd5ce65f8fd9d5123a5254baa50c3cbe3d86e122de2d4d2c2ccdcf1"
+    },
+    {
+      "path": "static/edificio-santa-maria.html",
+      "retained": true,
+      "sha1": "622bf1497dc79ff8004636db516ff70cfaa6a905",
+      "sha256": "2fa540d34ff153688179cd06b5d4ad5958286600b9eb3e4e799b51d992584d03"
+    },
+    {
+      "path": "static/costanera-coquimbo-a.html",
+      "retained": true,
+      "sha1": "ef13ae3a9ef255fbae7a05117cc69cc71cb6af22",
+      "sha256": "755dabbba887ceb4a06466001ebcd31251952c5bf0657e92a0e9960c9ccbd68e"
+    },
+    {
+      "path": "static/vista-bulnes.html",
+      "retained": true,
+      "sha1": "1c788daece5af967e8754ff39fceb1d178edf4fe",
+      "sha256": "190fcaf44c5204ba2de08d994877b441e69e3e22a74242bfe6531f454eef8e4f"
+    },
+    {
+      "path": "static/alto-san-joaquin.html",
+      "retained": true,
+      "sha1": "91ee65c6e083e92b1c2142ccef8ac15fbf95360b",
+      "sha256": "2923bbbaa430ef19f5fe412cb913b09a3e7e3df61b29ebca14609f71aa5f44d6"
+    },
+    {
+      "path": "static/edificio-bold.html",
+      "retained": true,
+      "sha1": "dd8af8f978beb82bc8e090f05f5269e65b747832",
+      "sha256": "21b525ac04cf5285d30768d2d9ab2d1352573dcecd45706fc9c1f5ba16f863e3"
+    },
+    {
+      "path": "static/edificio-bezanilla.html",
+      "retained": true,
+      "sha1": "0c0444e7f911d4d0520254a630b929667debe55b",
+      "sha256": "343b8884096b248db4c9eccdcd18bfac451aac0a75c343cf403855394dd91311"
+    },
+    {
+      "path": "static/wayra.html",
+      "retained": true,
+      "sha1": "6e1dc83eaeee5c06abb511f600d871a7d346ac20",
+      "sha256": "9961940cf209b3c205f6f073e2edc6d56d6516a454268ad7c1e6290c8c33b8b3"
+    },
+    {
+      "path": "static/vergara-domeyko.html",
+      "retained": true,
+      "sha1": "538840e16cbf9b108fe9963f5e2e3c8e43846729",
+      "sha256": "d8d50ede1af23bb0cf6544297a1cde65b8c015572be2310eea7745a9a8bc5b77"
+    },
+    {
+      "path": "static/vista-llacolen-a.html",
+      "retained": true,
+      "sha1": "14c03e2eeb76fe887e5d60d50683ab801c3a5c66",
+      "sha256": "51acae4ca89eb1371351adc25adfb5958fb66b842d2b26d82d205f1c269e4ae3"
+    },
+    {
+      "path": "static/bordevivo.html",
+      "retained": true,
+      "sha1": "cf1b6c815ce349100ab401526bf5d89e88d6ee0f",
+      "sha256": "25e6f4e0a57cefe9c000e978e9bd357b35d062015d3e9b4ff4494ae0ceed352a"
+    },
+    {
+      "path": "static/parque-quinta.html",
+      "retained": true,
+      "sha1": "b4736086c24958e3eeccc6d9728fd8b61d0d2aac",
+      "sha256": "7b1fb034160b0b743026bbf7b49d38a9d3986d9ae02e42ab573b105d24dd4c7a"
+    },
+    {
+      "path": "static/capitanes.html",
+      "retained": true,
+      "sha1": "d6abdb8d915388f0694488e520d440c719ad7124",
+      "sha256": "0928210b4264e12458271b4eada0e43e327a5336086bd4650d009f23183ed34e"
+    },
+    {
+      "path": "static/parque-panama.html",
+      "retained": true,
+      "sha1": "129742399151aa75c2ca69469f8e9c6fe59d0298",
+      "sha256": "895204394cfd129e8a751a7b04d354b31b91a37189df8eaade4198c67cbd12d0"
+    },
+    {
+      "path": "static/lamara.html",
+      "retained": true,
+      "sha1": "ff6c97b8fbf749072aa298ab4275526ad4d3a765",
+      "sha256": "5be8e2a0d474afc3eaec56d432354edee08c6b2485e4eb90758266440291ae94"
+    },
+    {
+      "path": "static/costanera-coquimbo-b.html",
+      "retained": true,
+      "sha1": "045f974ecffe3b8073d6d36b2e9855fad70f50ec",
+      "sha256": "e5206c968d321848399253cfc4643c957869fd2cc844c41a38ca1f92b629c004"
+    },
+    {
+      "path": "static/edificio-san-francisco-1204.html",
+      "retained": true,
+      "sha1": "d03b1283baf321d5ecdab2c8531f7ac418f433e1",
+      "sha256": "e9c16614c86c22365ba0e27d66fcf7d9c9b3cae1850b0bff600b00891eb5d3b1"
+    },
+    {
+      "path": "static/edificio-suecia.html",
+      "retained": true,
+      "sha1": "02286bd4391bc54a505a3c75565244b924de2820",
+      "sha256": "373b8efda4959908d7250b092480ebf34af75727826e47244b64daf7f8f454f2"
+    },
+    {
+      "path": "static/plaza-cervantes.html",
+      "retained": true,
+      "sha1": "cdc37acc48d1affb95a7636c8e36a80f4f4b8dec",
+      "sha256": "ee6066584ebfbd1da752bfc3f69c5140817aa86bf06c72cd153a609aea17ead6"
+    },
+    {
+      "path": "static/edificio-dual-390-lto.html",
+      "retained": true,
+      "sha1": "5a8bb4d06ddd48758c63911782012e171fdc0301",
+      "sha256": "55ad863a7494949e62a6483c0715e256e44bc26f57d28ab30cb069a6ccba0b30"
+    },
+    {
+      "path": "static/condominio-uruguay.html",
+      "retained": true,
+      "sha1": "848bb0b3818633ff77106631b4213f874c872f4a",
+      "sha256": "8a4e8e011f9d30c3bb3de4516541640ed1b54997f9eaabc689b9bd5d1615de86"
+    },
+    {
+      "path": "static/vicuna-mackenna-1432.html",
+      "retained": true,
+      "sha1": "81e1a13d618cc45c061788278450cb1fc20542c4",
+      "sha256": "9226ffd1bf14ed57671ddc3223acfe3d4415510abf10480303ba824d19ed8e7b"
+    },
+    {
+      "path": "static/espacio-victoria.html",
+      "retained": true,
+      "sha1": "c69907ff47e2df421a0860c3dd7ecedc8682aa2d",
+      "sha256": "27e5e4b72e23fbaf4d2fe2a68a570a910a22bed0534284efa8a7294809e17b58"
+    },
+    {
+      "path": "static/edificio-living-town.html",
+      "retained": true,
+      "sha1": "f2e13d3d384f3cbf73ebfcc14062f2851f7479af",
+      "sha256": "3fb442064ca04c282b362cc64b4855e39d9387c2d77f7b88ab350d022031ba01"
+    },
+    {
+      "path": "static/jardines-de-ramon-cruz.html",
+      "retained": true,
+      "sha1": "f3a79f9a0dbf85c4923585ea6e19928c814c3266",
+      "sha256": "470a1778a4be3cf154ebcfb48787cca636137856c52810803ff700032d5717f4"
+    },
+    {
+      "path": "static/urban-la-florida.html",
+      "retained": true,
+      "sha1": "a38d3c01c7b6b6de3d172598101ee0ce594f541a",
+      "sha256": "be9b86bfe01e0283ada930ceb331b78f2ac6ec4fd8a170e0630a412f55dc12f6"
+    },
+    {
+      "path": "static/santa-elena-1670-mbi.html",
+      "retained": true,
+      "sha1": "60de6883d114a4ee631ed1a039724900649d34e6",
+      "sha256": "1adb1dbfa647107df52b4a6d0007078a21173e5395a424cac123c14a816f55d9"
+    },
+    {
+      "path": "static/edificio-plaza-nova.html",
+      "retained": true,
+      "sha1": "b436895d4589f0c0634da0f4a39e58e8c8d51021",
+      "sha256": "e2432b5056cd7745037bdf4ad158d9815e1f6a3e96d1e1e4af4b63f8a280b739"
+    },
+    {
+      "path": "static/vista-llacolen-b.html",
+      "retained": true,
+      "sha1": "4c721cbf15ffc580c71461a2c32e4c742379533d",
+      "sha256": "e8da29aa1de6cf7fb38eaf2b25e5a69f5a468ce34cf084a7426b1d71c95dd912"
+    },
+    {
+      "path": "static/vicuna-mackenna-6896.html",
+      "retained": true,
+      "sha1": "6f7b179529226b15aaab8a3ecf5879953fd518ef",
+      "sha256": "c631a3bb130811f21fe3ca43ce57cb0375d6e170dd3c32e08f534f0a96bb92dc"
+    },
+    {
+      "path": "static/playa-serena.html",
+      "retained": true,
+      "sha1": "e012ead88e756b8cc8fa7bdb356bd74acaf881d5",
+      "sha256": "5c0f25952d3b3ba46f8f65552403c5f07f5ce287d8e40b304f163a843ad99e6a"
+    },
+    {
+      "path": "static/reserva-mayor-2.html",
+      "retained": true,
+      "sha1": "95b1be04ff5d769b43af0665600aa923482687b8",
+      "sha256": "2f9a2b823c12ba8395b8e55b8294db6c62721427fd00d332c6bdd7379c83ed12"
+    },
+    {
+      "path": "static/bcome.html",
+      "retained": true,
+      "sha1": "5681fb9a667c2dd91d8027295304b72a382630dd",
+      "sha256": "57dddce479715c845c4a03de1288c7d0262b7be5e9220777a778f5fb6762268d"
+    },
+    {
+      "path": "static/edificio-ecuador.html",
+      "retained": true,
+      "sha1": "33395787763cd698655aaffde665c421bcdc28db",
+      "sha256": "27753df55556a5264af2952f5a3be0585c2784546be288f38e33728843fe6391"
+    },
+    {
+      "path": "static/edif-origen-atacama-3008.html",
+      "retained": true,
+      "sha1": "a0db758cd6733fa77a33bd23acce432b56200db7",
+      "sha256": "22444119700c72823362cbd5e4d7bedc3a22b7b27746ba8e5de6cae589e8bf67"
+    },
+    {
+      "path": "static/gregorio-de-la-fuente-a.html",
+      "retained": true,
+      "sha1": "f40c2e9b8c01a9778dc3c8cf889aef2b9b5d6779",
+      "sha256": "419cf33118d97b32a326fc4ceceb29bb7a0d96dbe02b6dd1f5a7b3ba702c0e13"
+    },
+    {
+      "path": "static/condominio-parque-don-lautaro.html",
+      "retained": true,
+      "sha1": "4c6a8d032243aeb6110118b7799ab0970a3ccc5d",
+      "sha256": "08b0aeaf758c70f2a0f7beec2beb8c4c6f1fe30700e37d42182c75de98c73ff8"
+    },
+    {
+      "path": "static/enlace-mackenna.html",
+      "retained": true,
+      "sha1": "cd2c014d9b4d48712585964ae0fdb111067c3585",
+      "sha256": "5fd0a99255d3c0f9c1c3dfd7d965cd7a0da8084012aaf381fa946366b5cb87d9"
+    },
+    {
+      "path": "static/ferroparque.html",
+      "retained": true,
+      "sha1": "fb442140116507a4f5cbd7bfa3f7cd7d15402835",
+      "sha256": "ab677c6704cefbe7ee428717f2224045edf93dc11e27f153111b27863d498a11"
+    },
+    {
+      "path": "static/eleuterio-ramirez.html",
+      "retained": true,
+      "sha1": "b0b53bbacaecdcf8106a09faf7984b7253613841",
+      "sha256": "4382c8cc84cd4f91841626ee3a2b1d610fcd20f5d9f49d996c77af8e66b4608e"
+    },
+    {
+      "path": "static/quintavista.html",
+      "retained": true,
+      "sha1": "1fa207a70176b5842575b0f7611cb295002dedbf",
+      "sha256": "6cfe34b2e31e0f74ae2b0600746ae94147a2d14d3d77e8227d64c8253d3d08e4"
+    },
+    {
+      "path": "static/endemico.html",
+      "retained": true,
+      "sha1": "1773c5a69853c1ca047a5594e3d008c4cc175f49",
+      "sha256": "a4d77276f22fa5c0a22d7afe71bab18cc84bce7a434f71fd5fc247ebb323cdf1"
+    },
+    {
+      "path": "static/independencia-4745.html",
+      "retained": true,
+      "sha1": "c2242291ed9bedb30b5352608c4ea614dbc1260a",
+      "sha256": "8fe09cbd7b2f6d9d31a72d8fb97a7452c7f6d675606cfe60a01f7db702f00296"
+    },
+    {
+      "path": "static/curico-77.html",
+      "retained": true,
+      "sha1": "227936e88eab084114dbb977883548b953c9d953",
+      "sha256": "479bf248fa8968ad855f50b6a5203f1c24abd22f84acb04f7b4a45eee250cc29"
+    },
+    {
+      "path": "static/domeyko-2055.html",
+      "retained": true,
+      "sha1": "923a5bafde484e63dfc152b4ea45f26d3c866b6f",
+      "sha256": "a099dedbceeb2015fa1da66f3ec7b608e9ed670f6cc3ea9f5bb988896a283337"
+    },
+    {
+      "path": "static/edificio-indi.html",
+      "retained": true,
+      "sha1": "6a5af890a791a319174166ad3d8550d3e08f170c",
+      "sha256": "12a44662c27eb4f9e96532d09f55c81d72da12ab71cda5095e771203eff5b2cf"
+    },
+    {
+      "path": "static/san-ignacio.html",
+      "retained": true,
+      "sha1": "2ba797e881c39c9b301cd876455b08cf5d9039bb",
+      "sha256": "e7ec2fca88206e1e3d5631cf01398d3e11e66f3f9806ce8ec03e9770eaf21b09"
+    },
+    {
+      "path": "static/edificio-liverpool.html",
+      "retained": true,
+      "sha1": "0f88e154f023ab127070bc519e038af9cb00428f",
+      "sha256": "a3389e1a31416a5b50a6b7fd82333969c307def9d2629eac0465f655b6a38df3"
+    },
+    {
+      "path": "static/nucleo-costanera.html",
+      "retained": true,
+      "sha1": "e5aae6019d67fa30ae21db70cebf6ecb4a973d1b",
+      "sha256": "f4549e16f8ce80afa450107451046d527c25dde836ae8b61db4e8cecb4d85d7b"
+    },
+    {
+      "path": "static/terratolten.html",
+      "retained": true,
+      "sha1": "844b74e571ef01184f082663782d151b9eda98ef",
+      "sha256": "aa18be315af6e08fd70c79ca9970db16b7e5c98f1badb6b8ff3b5fcd4670756d"
+    },
+    {
+      "path": "static/alto-irarrazaval.html",
+      "retained": true,
+      "sha1": "f67072178754e5b3f419242ddf3d96fe5dffd333",
+      "sha256": "483a0acfa7920968a45166ddb43d53f77f6460bda4d31544c1e307a28615d9ab"
+    },
+    {
+      "path": "static/playa-penuelas.html",
+      "retained": true,
+      "sha1": "644366c0fb475741e86986c457d5e617ff8e3faf",
+      "sha256": "6e2bae92eec3a34257dbec9fb29530b26826a710ec4ee3f2867e1f9d6a31b02b"
+    },
+    {
+      "path": "static/mirador-la-florida.html",
+      "retained": true,
+      "sha1": "371b35434e213a3507613437e1485bd2d304271c",
+      "sha256": "39d224789aaf18f1c278eca21e5da2816a32192f3e91a43b7c57b203b5fcf102"
+    },
+    {
+      "path": "static/barrio-zenteno.html",
+      "retained": true,
+      "sha1": "7c983f63e96cb3aa12671306937bdfd4e93f1aa6",
+      "sha256": "ea12b2d40d4f792c44b14da1200079890738559d2ec47a6873348fb4ea6eeba4"
+    },
+    {
+      "path": "static/assets/css/project-embeds.css",
+      "retained": true,
+      "sha1": "930496e33a735299dd9e2d24a0999f72a2ba89da",
+      "sha256": "9638560a0cd10ef24ba8f6f6c65978107fcdcbebcb3df8ab61b148d9624ff519"
+    },
+    {
+      "path": "static/assets/css/project-detail.css",
+      "retained": true,
+      "sha1": "f7fefb35c84266551127befbc14a8e4fe713e578",
+      "sha256": "c4655c4efe6bff482fbcc2aaf5d0a48f7665dac6be1b778c4ead1f7b299f47d5"
+    }
+  ],
+  "configuration": {
+    "newBranch": "codex/contacto-baseline-productivo-20261116",
+    "branchAutoDeployFlag": false,
+    "onlySourceConfigChangeIsNewFalseBranchFlag": true,
+    "outputConfigManifestIdentical": true,
+    "outputConfigSha256": "ef32ad5c7a069d7de482a7a92f5022a0c852cd0b9b896a735a48bd12bae71f05",
+    "outputConfigBytes": 3916,
+    "projectSettingsMutationPerformedByThisReview": false,
+    "projectSettingsPreservationReportedByParent": true,
+    "remoteProjectSettingsQueriedByThisReview": false
+  },
+  "threeReconciledProductionVersions": [
+    {
+      "path": "assets/js/urban-works-model.mjs",
+      "sameAsBaseline": true,
+      "sha256": "b1ceea00e6c7133a3351e57f736f556422155fa2d59f3752149519b70d6256e1"
+    },
+    {
+      "path": "comparador-hipotecario.html",
+      "sameAsBaseline": true,
+      "sha256": "00ac7e04a7ea50fe552500ff560efaa115a02daf89cc8272ebb520355811ae93"
+    },
+    {
+      "path": "data/urban-development.json",
+      "sameAsBaseline": true,
+      "sha256": "68d39f86fd2019b88cde1c815c006f3056f350ce4a08d2894e33e589c3e82740"
+    }
+  ],
+  "evidence": [
+    "candidate-manifest.json",
+    "contacto-source-contract.json",
+    "recovery/recovered-inventory.json",
+    "recovery/recovery-report.json",
+    "../../AGENTS.md"
+  ],
+  "verificationMethod": {
+    "existingInventoriesReused": true,
+    "all1660BodiesRehashedByThisReview": false,
+    "contactoBodiesReadAndHashedLocally": true,
+    "gitIndexWritten": false,
+    "networkRequests": 0,
+    "buildersExecuted": 0,
+    "historical202TestsRepeated": false,
+    "historical524QaRepeated": false,
+    "providerCallsOrFormSubmissions": 0
+  },
+  "limits": [
+    "Static source and artifact preservation only; browser/API QA is documented separately.",
+    "Identical integration/backend files do not prove secret-value equivalence or real CRM/Resend delivery.",
+    "No claim of byte identity for opaque provider-generated ZIP bundles.",
+    "No Production creation, promotion, publication or merge authorized."
+  ]
+}

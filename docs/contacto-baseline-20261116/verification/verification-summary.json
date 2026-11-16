@@ -1,0 +1,153 @@
+{
+  "deployment": "dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh",
+  "url": "https://project-wrapp-cyqjausfq-lsandoval2-8260s-projects.vercel.app",
+  "verifiedAtUTC": "2026-11-16T13:01:39.420563+00:00",
+  "passed": true,
+  "candidate_inventory_sha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+  "source_commit": "a1f2930475e23ebb87bac1f8443877b06883fe60",
+  "expected_source_files": 1660,
+  "baseline_preserved_files": 1659,
+  "changed_file": "static/contacto.html",
+  "function_bundles": 7,
+  "function_files": 57,
+  "http_authenticated_completed": 32,
+  "anonymous_sso_control_executed": true,
+  "checks": [
+    {
+      "check": "deployment_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "ready_private_preview",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "project_team",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source_commit",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_sso",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_project_team",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "alias": "sollahms.cl",
+        "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+      }
+    },
+    {
+      "check": "before_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "alias": "www.sollahms.cl",
+        "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+      }
+    },
+    {
+      "check": "all_1660_paths_hashes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "seven_registered_functions",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bounded_authenticated_http",
+      "pass": true,
+      "detail": {
+        "requests": 32,
+        "failures": [],
+        "exact_body_responses": 15,
+        "source_plus_exact_observed_toolbar": 9,
+        "safe_method_rejections": 8,
+        "sourceBytesPreserved": true
+      }
+    },
+    {
+      "check": "anonymous_https_sso",
+      "pass": true,
+      "detail": {
+        "status": 302,
+        "location_host": "vercel.com",
+        "ssl_verify_result": 0
+      }
+    },
+    {
+      "check": "after_sso",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_project_team",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "alias": "sollahms.cl",
+        "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+      }
+    },
+    {
+      "check": "after_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "alias": "www.sollahms.cl",
+        "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+      }
+    }
+  ],
+  "failures": [],
+  "full_524_or_1485_repeated": false,
+  "source_bodies_downloaded": 0,
+  "real_forms_submitted": 0,
+  "uf_provider_lookup_attempted": false,
+  "api_writes": 0,
+  "deployments_created_or_promoted": 0,
+  "credentials_or_protections_modified": false,
+  "active_own_process_groups": [],
+  "watchdog_seconds": 55,
+  "sourceBytesPreserved": true,
+  "html_delivery_observation": {
+    "responses": 9,
+    "suffix_bytes": 163,
+    "suffix_sha256": "8ce47ba7bb69eeb6aafc383d550c6789d0c272a44631a06b0b38ea4140fbd8cc",
+    "historical_suffix_sha256": "1ec749d6c1840dd80e5f178a7ebea403951fa9e3bb90e80a4b1be83b311e85cb",
+    "official_context": "https://vercel.com/docs/vercel-toolbar/managing-toolbar",
+    "platform_settings_or_responses_modified": false
+  },
+  "finalization_http_rechecks": {
+    "anonymous_sso": 1,
+    "project_sso_api": 1,
+    "production_alias_api": 2,
+    "main_32_case_http_repeated": false
+  }
+}

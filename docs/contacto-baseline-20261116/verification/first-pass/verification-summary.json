@@ -1,0 +1,234 @@
+{
+  "deployment": "dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh",
+  "url": "https://project-wrapp-cyqjausfq-lsandoval2-8260s-projects.vercel.app",
+  "verifiedAtUTC": "2026-11-16T12:53:42.341350+00:00",
+  "passed": false,
+  "candidate_inventory_sha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+  "source_commit": "a1f2930475e23ebb87bac1f8443877b06883fe60",
+  "expected_source_files": 1660,
+  "baseline_preserved_files": 1659,
+  "changed_file": "static/contacto.html",
+  "function_bundles": 7,
+  "function_files": 57,
+  "http_authenticated_completed": 32,
+  "anonymous_sso_control_executed": true,
+  "checks": [
+    {
+      "check": "deployment_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "ready_private_preview",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "project_team",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source_commit",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_sso",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_project_team",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "alias": "sollahms.cl",
+        "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+      }
+    },
+    {
+      "check": "before_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "alias": "www.sollahms.cl",
+        "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+      }
+    },
+    {
+      "check": "all_1660_paths_hashes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "seven_registered_functions",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bounded_authenticated_http",
+      "pass": false,
+      "detail": {
+        "requests": 32,
+        "failures": [
+          {
+            "path": "/contacto.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/inn-puerto-chico.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/plaza-las-condes.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/bcome.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/nucleo-costanera.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/bordevivo.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/distrito-centro.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/patio-brasil.html",
+            "status": 410,
+            "source_match": "different"
+          }
+        ]
+      }
+    },
+    {
+      "check": "anonymous_https_sso",
+      "pass": true,
+      "detail": {
+        "status": 302,
+        "location_host": "vercel.com",
+        "ssl_verify_result": 0
+      }
+    },
+    {
+      "check": "after_sso",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_project_team",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "alias": "sollahms.cl",
+        "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+      }
+    },
+    {
+      "check": "after_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "alias": "www.sollahms.cl",
+        "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+      }
+    }
+  ],
+  "failures": [
+    {
+      "check": "bounded_authenticated_http",
+      "detail": {
+        "requests": 32,
+        "failures": [
+          {
+            "path": "/contacto.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/inn-puerto-chico.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/plaza-las-condes.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/bcome.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/nucleo-costanera.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/bordevivo.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/distrito-centro.html",
+            "status": 200,
+            "source_match": "different"
+          },
+          {
+            "path": "/patio-brasil.html",
+            "status": 410,
+            "source_match": "different"
+          }
+        ]
+      }
+    }
+  ],
+  "full_524_or_1485_repeated": false,
+  "source_bodies_downloaded": 0,
+  "real_forms_submitted": 0,
+  "uf_provider_lookup_attempted": false,
+  "api_writes": 0,
+  "deployments_created_or_promoted": 0,
+  "credentials_or_protections_modified": false,
+  "active_own_process_groups": [],
+  "watchdog_seconds": 55
+}

@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "recordedDateLocal": "2026-11-16",
+  "timezone": "America/Santiago",
+  "repository": "lasopho/sollahms-web",
+  "checkout": "/private/tmp/sollahms-contacto-baseline-20261116",
+  "baseGitCommit": "98ba61d103059ab488cb85216c9bc95214aee82a",
+  "production": {
+    "deploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+    "readyState": "READY",
+    "target": "production",
+    "runtimeCommit": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4",
+    "project": "project-wrapp",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "verifiedBy": "Parent agent: authenticated Vercel deployment and aliases inspection",
+    "domains": [
+      "sollahms.cl",
+      "www.sollahms.cl"
+    ],
+    "wwwRedirect": {
+      "status": 308,
+      "target": "sollahms.cl"
+    },
+    "identityPolicy": "Use these verified identifiers to resolve the inaccurate references in the initial request. A documentation SHA is not a runtime SHA."
+  },
+  "pullRequests": [
+    {
+      "number": 26,
+      "url": "https://github.com/lasopho/sollahms-web/pull/26",
+      "branch": "codex/contacto-pie-corporativo-20261115",
+      "head": "055787d9a1dadf35217080e46dbdae1c4ccfe78a",
+      "baseBranch": "codex/agenda-regions-responsive-20261115",
+      "baseCommit": "c2e1965ced736d46917a1bee286456cb937d58fe",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "commits": 1,
+      "changedFiles": ["contacto.html"],
+      "scope": "Corporate footer",
+      "newerCommitsObserved": false
+    },
+    {
+      "number": 28,
+      "url": "https://github.com/lasopho/sollahms-web/pull/28",
+      "branch": "codex/contacto-selector-320-20261115",
+      "head": "967d556730e20ef86bae6ecee11ec6152434c8ae",
+      "baseBranch": "codex/contacto-pie-corporativo-20261115",
+      "baseCommit": "055787d9a1dadf35217080e46dbdae1c4ccfe78a",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "commits": 1,
+      "changedFiles": ["contacto.html"],
+      "scope": "Selector CSS below 360 px; retains PR26 footer",
+      "newerCommitsObserved": false
+    },
+    {
+      "number": 27,
+      "url": "https://github.com/lasopho/sollahms-web/pull/27",
+      "branch": "codex/eliminar-recorridos-global-20261115",
+      "head": "98ba61d103059ab488cb85216c9bc95214aee82a",
+      "baseBranch": "codex/agenda-regions-responsive-20261115",
+      "baseCommit": "c2e1965ced736d46917a1bee286456cb937d58fe",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "scope": "Published removal of virtual tours; preserve open Draft after publication",
+      "newerCommitsObserved": false
+    },
+    {
+      "number": 25,
+      "url": "https://github.com/lasopho/sollahms-web/pull/25",
+      "branch": "codex/contacto-cobertura-footer-20261115",
+      "head": "f4249e9fb0b02a55552d17bcca1e03c4b3cffeb9",
+      "baseBranch": "codex/agenda-regions-responsive-20261115",
+      "baseCommit": "c2e1965ced736d46917a1bee286456cb937d58fe",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "commits": 1,
+      "commitCreatedAtUtc": "2026-11-15T16:14:53Z",
+      "changedFiles": ["contacto.html"],
+      "scope": "Corporate footer plus territorial coverage",
+      "coverageRegions": 10,
+      "coverageLocalities": 32,
+      "metropolitanCommunes": 18,
+      "containsPR28SelectorFix": false,
+      "includedInCurrentOverlay": false,
+      "newerCommitsObserved": false,
+      "historicalPublicationStatus": "Blocked integrity audit; preserve historical evidence without reopening PR25"
+    }
+  ],
+  "metadataProvenance": {
+    "readOnlyGithubConnector": [25, 26, 28],
+    "parentConfirmedRemoteHeads": [25, 26, 27, 28],
+    "headAdvancesAfterListedCommitsObserved": false,
+    "noGitOrPullRequestMutation": true
+  },
+  "sourceConciliation": {
+    "contactoBaseComparison": {
+      "from": "c2e1965ced736d46917a1bee286456cb937d58fe",
+      "to": "98ba61d103059ab488cb85216c9bc95214aee82a",
+      "path": "contacto.html",
+      "gitDiffEmpty": true,
+      "verifiedLocallyReadOnly": true
+    },
+    "approvedOverlayCommit": "967d556730e20ef86bae6ecee11ec6152434c8ae",
+    "changedRuntimeFiles": ["contacto.html"],
+    "changedRegions": ["footer", "style#contact-footer-style", "style#contact-selector-responsive"],
+    "baselineSha256": "5c16a5cff747b87b64d3a4bba49d4d0a0c6fc0fbf578bdb3d730e0c6dc209a69",
+    "candidateSha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1",
+    "baselineBytes": 16829,
+    "candidateBytes": 18655,
+    "sourceContract": "contacto-source-contract.json",
+    "coverageBranchIsSiblingOfPR26PR28": true,
+    "coverageIntegrated": false,
+    "runtimeAuthority": "Frozen deployed ByUhr artifact, not a full reconstruction from Git or main",
+    "preservation": {
+      "artifactFiles": 1660,
+      "htmlPages": 147,
+      "activeFiches": 131,
+      "tourRemovalHtmlFiles": 64,
+      "tourRemovalCssFiles": 2,
+      "functionBundles": 7,
+      "functionSourceFiles": 57,
+      "preserveProductionConfigAndResources": true,
+      "preserveReconciledProductionVersions": [
+        "assets/js/urban-works-model.mjs",
+        "comparador-hipotecario.html",
+        "data/urban-development.json"
+      ]
+    }
+  },
+  "otherContactoTask": {
+    "threadId": "01a1e1b2-deec-74b1-863d-9ffc70fea8d4",
+    "title": "Preparar espacio de publicación Sollahms",
+    "lastTurnStatus": "completed",
+    "appThreadStateObserved": "notLoaded",
+    "activeWorkObserved": false,
+    "workspace": "/Users/luissandoval/Projects/sollahms-publicacion",
+    "gitHeadObserved": "967d556730e20ef86bae6ecee11ec6152434c8ae",
+    "detachedHeadObserved": true,
+    "gitCleanObserved": true,
+    "lastDecision": "DENY/ALIASES",
+    "authorizedHistoricalBaseline": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+    "baselineAfterChange": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+    "createdContactoProductionDeployments": 0,
+    "creationReservationConsumed": false,
+    "remoteContactoProductionQaExecuted": false,
+    "historicalPackageManifest": "6bc7f0f3c046bba0bae8c3a8a79c45245417edfd88a7401d2fe39f9386fa763c",
+    "historicalPackageMustNotReplaceByUhr": true,
+    "localEvidence": [
+      "/Users/luissandoval/Projects/sollahms-publicacion/.vercel/production-contacto-20261116/INFORME.txt",
+      "/Users/luissandoval/Projects/sollahms-publicacion/.vercel/production-contacto-20261116/estado-autorizacion.json"
+    ],
+    "crossChatPublicationLockEstablished": false,
+    "messagesSentToOtherChatsForThisConciliation": false
+  },
+  "currentAuthorization": {
+    "source": "New user request as communicated by the parent agent",
+    "privatePreview": true,
+    "previewQaViewportCount": 5,
+    "documentation": true,
+    "separatePublicationPrompt": true,
+    "createProduction": false,
+    "promote": false,
+    "publish": false,
+    "assignProductionDomains": false,
+    "mergePullRequests": false,
+    "modifyCredentialsOrProtections": false,
+    "submitCommercialForms": false,
+    "historical9zzProductionReceiptReused": false,
+    "previewQaCertifiedByThisDocument": false
+  },
+  "preservedCheckouts": [
+    "/Users/luissandoval/Documents/sollahms-web",
+    "/Users/luissandoval/Projects/sollahms-publicacion",
+    "/private/tmp/sollahms-recorridos-20261115-local"
+  ],
+  "documentaryWork": {
+    "agentsRead": true,
+    "filesWrittenByThisSubtask": ["CONCILIACION.md", "coordination.json"],
+    "gitIndexModified": false,
+    "nextPromptModified": false,
+    "applicationModified": false,
+    "buildsOrDeploymentsExecuted": false,
+    "externalMessagesSent": false
+  }
+}

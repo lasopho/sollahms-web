@@ -1,0 +1,49 @@
+{
+  "attempts": [
+    {
+      "requestedAt": "2026-11-16T09:41:32.605111-03:00",
+      "target": "preview",
+      "sourceCommit": "a1f2930475e23ebb87bac1f8443877b06883fe60",
+      "artifactInventorySha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+      "productionAuthorized": false,
+      "state": "failed-check-remote-before-any-retry",
+      "exitCode": 1,
+      "stdoutBytes": 0,
+      "stderrBytes": 124,
+      "diagnostic": "Native CLI rejects --skip-domain for Preview; confirmed by --dry without deployment creation.",
+      "remoteDeploymentsForBranchAfterFailure": 0,
+      "remoteVerifiedBeforeRetry": true
+    },
+    {
+      "requestedAt": "2026-11-16T09:43:27.415157-03:00",
+      "target": "preview",
+      "sourceCommit": "a1f2930475e23ebb87bac1f8443877b06883fe60",
+      "artifactInventorySha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+      "productionAuthorized": false,
+      "state": "created",
+      "completedAt": "2026-11-16T09:43:39.739286-03:00",
+      "deploymentId": "dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh",
+      "url": "https://project-wrapp-cyqjausfq-lsandoval2-8260s-projects.vercel.app",
+      "readyState": "READY",
+      "responseKeys": [
+        "buildMachine",
+        "deploymentApiUrl",
+        "deploymentProtection",
+        "environment",
+        "id",
+        "inspectorUrl",
+        "productionUrl",
+        "readyState",
+        "target",
+        "url"
+      ]
+    }
+  ],
+  "createdDeployments": 1,
+  "runtimeBytesChangedByCorrection": false,
+  "createdDeploymentIds": [
+    "dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh"
+  ],
+  "productionDeploymentsCreated": 0,
+  "closed": true
+}
