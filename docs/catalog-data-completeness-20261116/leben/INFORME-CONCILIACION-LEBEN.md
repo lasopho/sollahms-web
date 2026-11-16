@@ -1,3 +1,5 @@
+> Actualización 2026-11-16: este documento conserva el informe histórico de su fase. Para resultados y pendientes actuales, leer [INFORME-IRIS-LEBEN.md](INFORME-IRIS-LEBEN.md) y las columnas actualizadas de la matriz.
+
 # Leben: recepción y conciliación, fase 2
 
 Estado: **recepción abierta; Leben todavía no conciliada**. Se recibieron una comunicación y cuatro respuestas por campo del bloque 1A. El propietario indica que no tiene respaldo suficiente para confirmar precios vigentes. Por tanto hay **cero valores actuales nuevos, cero campos resueltos, cero discrepancias resueltas y cero registros nuevos listos para incorporación**.

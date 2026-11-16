@@ -1,0 +1,328 @@
+{
+  "version": 1,
+  "review_date": "2026-11-16",
+  "reviewer": "/root/iris_mood_santo_baum_suecia",
+  "mode": "READ-ONLY de auditoría, matrices y manual. Solo este archivo de revisión se escribe fuera del checkout.",
+  "status": "PASS después de corregir dos hallazgos durante la revisión",
+  "open_material_findings": [],
+  "resolved_findings": [
+    {
+      "id": "IR-REVIEW-001",
+      "priority": "P1",
+      "status": "Corregido y verificado",
+      "title": "Año y semestre no publicados no acreditan NO APLICA",
+      "initial_problem": "Se habían generado 16 hechos NO APLICA y cerrado sus campos a partir de la categoría Inmediata en ocho proyectos, sin declaración expresa de no aplicación.",
+      "projects": [
+        "edificio-mood",
+        "edificio-santo",
+        "edificio-suecia",
+        "capitanes",
+        "edificio-bold",
+        "edificio-argomedo",
+        "edificio-indi",
+        "edificio-indigo"
+      ],
+      "source_basis": "Las fichas publican Inmediata; no año ni semestre. El requisito histórico solicita fecha/semestre declarado o NO APLICA expreso.",
+      "correction_verified": "Los 16 hechos inferidos se eliminaron. La categoría entrega se conserva; año y semestre no publicados permanecen pendientes.",
+      "count_effect": "Cierres Iris 54→38; pendientes 314→330. No se atribuye NO APLICA a Iris.",
+      "files": [
+        "leben/iris-20261116/HECHOS-IRIS.csv",
+        "leben/MATRIZ-LEBEN.csv",
+        "leben/iris-20261116/RESUMEN-IRIS.json",
+        "leben/INFORME-IRIS-LEBEN.md"
+      ]
+    },
+    {
+      "id": "IR-REVIEW-002",
+      "priority": "P2",
+      "status": "Corregido y verificado",
+      "title": "Reintegrar tipo Departamento explícito en los planos A",
+      "initial_problem": "28 planos del grupo A tenían graphic_property_type_literal=Departamento en la evidencia entregada, pero tipo_rotulo_grafico había quedado null en la integración.",
+      "scope": {
+        "edificio-mood": 9,
+        "edificio-santo": 1,
+        "edificio-baum": 17,
+        "edificio-suecia": 1
+      },
+      "examples": [
+        "IR-P047: Santo D",
+        "IR-P084: Suecia F"
+      ],
+      "correction_verified": "Los 28 rótulos se integraron en PLANOS-LECTURA-GRAFICA/PLANOS-IRIS y HECHOS tipo_por_modelo. Se mantienen separados del tipo UI vacío y no se generalizan por inferencia.",
+      "count_effect": "Combinado con la eliminación de 16 NA, los campos antes pendientes con información nueva quedan en 170; no son 170 completos."
+    }
+  ],
+  "checks": {
+    "a_units_exactly_compared": 140,
+    "a_unit_value_or_source_mismatches": [],
+    "all_internos_facts": 330,
+    "internos_promoted_to_util_or_interior": [],
+    "mood_numeric_plan_scope_preserved": [
+      {
+        "id_plano": "IR-P030",
+        "scope_as_printed": "DEPTOS 707 - 1707",
+        "units_linked_in_dom": [
+          "907"
+        ],
+        "values": [
+          {
+            "rotulo": "UTIL",
+            "valor_m2": 31.16,
+            "metrica": "util"
+          },
+          {
+            "rotulo": "TERRAZA",
+            "valor_m2": 3.88,
+            "metrica": "terraza"
+          },
+          {
+            "rotulo": "TOTAL",
+            "valor_m2": 35.04,
+            "metrica": "total"
+          }
+        ]
+      },
+      {
+        "id_plano": "IR-P037",
+        "scope_as_printed": "DEPTOS 702 - 1702",
+        "units_linked_in_dom": [
+          "1102",
+          "802"
+        ],
+        "values": [
+          {
+            "rotulo": "UTIL",
+            "valor_m2": 48.75,
+            "metrica": "util"
+          },
+          {
+            "rotulo": "TERRAZA",
+            "valor_m2": 3.82,
+            "metrica": "terraza"
+          },
+          {
+            "rotulo": "TOTAL",
+            "valor_m2": 52.57,
+            "metrica": "total"
+          }
+        ]
+      }
+    ],
+    "mood_scope_conclusion": "Solo 907 para 707–1707 y 1102/802 para 702–1702. Útil/total permanecen parciales; no se completan 1702 ni todas las versiones E/J. Modelo A conserva 1,5D gráfico frente a 2D UI de 303.",
+    "a_graphic_department_labels_preserved": 28,
+    "asset_records_sha256_verified": 210,
+    "asset_sha256_or_missing_file_errors": [],
+    "fact_evidence_paths_missing": [],
+    "fact_ids_unique": true,
+    "inferential_calendar_na_remaining": [],
+    "canonical_fields": 689,
+    "master_rows": 131,
+    "original_columns_preserved": "PASS según subrevisión independiente frente a HEAD;689 filas matriz y131 maestra.",
+    "other_118_projects_preserved": "PASS según subrevisión independiente; columnas Iris vacías y valores históricos sin cambios.",
+    "privacy_textual_scan": "PASS según subrevisión independiente: no candidatos de correo/token/credenciales ni comisiones con valores o atribuciones excluidas.",
+    "manual": "Siete archivos revisados; acceso manual visible, límites de secciones, modelos/unidades, métricas y contradicciones correctamente diferenciados.",
+    "visual_review_marked_records": 210
+  },
+  "final_counts": {
+    "facts_iris": 3213,
+    "prior_pending_fields": 461,
+    "fields_with_new_iris_information_complete_or_partial": 170,
+    "fields_closed_by_iris": 38,
+    "fields_closed_by_catalog_policy": 92,
+    "fields_closed_by_own_instruction": 1,
+    "fields_still_pending": 330,
+    "arithmetic": "461 - 38 - 92 - 1 = 330",
+    "image_source_records": 210,
+    "unit_plan_records": 104,
+    "general_floor_plan_records": 105,
+    "replacement_image_records": 1
+  },
+  "nonblocking_observations": [
+    {
+      "topic": "Conteo de imágenes",
+      "detail": "210 registros de recurso URL conservan 209 contenidos SHA únicos; dos versiones URL Mood H comparten bytes. El conteo 210 es válido como registros de fuente, no como imágenes binarias distintas."
+    },
+    {
+      "topic": "Alcance de esta revisión",
+      "detail": "Contraste exhaustivo inicial de 140 unidades y 78 activos A; validación acumulada de referencias y SHA de 210 registros globales; revisión de controles y manual. La ampliación final verificó 63 plantas adicionales sin repetir su lectura gráfica."
+    }
+  ],
+  "independent_subreview": "/private/tmp/iris-integration-subreview.json",
+  "reviewed_file_hashes": [
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/UNIDADES-IRIS.csv",
+      "sha256": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/HECHOS-IRIS.csv",
+      "sha256": "3be90034891169e7a929053adefab3b28745eb0c8ee12a826316b936a8c2635f"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/PLANOS-LECTURA-GRAFICA.json",
+      "sha256": "b6f0fcd8bd5cb3a55511f540744d2e0f84cfe60aad7b74742e149e69aeeb2d2d"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/PLANOS-IRIS.csv",
+      "sha256": "228a0ed9895ce53d90149a151e049e9c957e74e7a791dd67a31917641dfe2ea3"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/FUENTES-IRIS.csv",
+      "sha256": "3273993a9261e0eaa60307c461e3f04e927920509f4d7b7f47094f9e6697de15"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/MANIFIESTO-EVIDENCIAS.json",
+      "sha256": "0447f333b763613c4422a52d5f0de1251842aa6d9379eca0c825a772f89b12fc"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/CONTRADICCIONES-IRIS.csv",
+      "sha256": "dcc9831ade435821892b7dd04a2ffbb8a4cd1664fa9fc308abc7d86bab5010f6"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/PENDIENTES-POR-CAMPO.csv",
+      "sha256": "43f95785d57489816a70ec196f265567b37a40a64751c6745edffef42fbe1c5b"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/RESUMEN-IRIS.json",
+      "sha256": "ef1b04aacc35b4fdd1389f4e9ba12621dd1419078eeafaf5d7acd0237af05db8"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+      "sha256": "c1f759b18e98c2aecd476175699a20e7052815cd0c38853a2ff6daa6329343b5"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/master/MATRIZ-MAESTRA-131.csv",
+      "sha256": "f3d6af18dd17e4160bc58ea4b37f67f9d0793f239738f8de6dabd577abc0c861"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/INFORME-IRIS-LEBEN.md",
+      "sha256": "57d60db0267f7088b1e675b6f700a57ca5faee7fd61e8ea174221a902772d606"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/continuidad/NEXT-PROMPT.md",
+      "sha256": "fcaeb907c2fbefc9ffa44e54b32cd4c84e9acb96e77c497cb2e4fe7407e7d092"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/iris-operational-manual/ESTRUCTURA-DE-FICHAS.md",
+      "sha256": "8710cdcdbc53549a1581bcdc82802a576bfc912bbf38f4fa96fa3fc0d480c367"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/iris-operational-manual/HISTORIAL-DE-CONSULTAS.md",
+      "sha256": "d5dc89a7339bb04b5678253ae8c5d19dec51400301fa3db26b137c0bbeaa84f0"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/iris-operational-manual/LIMITACIONES-Y-EXCEPCIONES.md",
+      "sha256": "635c23abd5b8aee458a99d35445ffc62b90838924cd3d305daa3c6696004739c"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/iris-operational-manual/MAPA-DE-NAVEGACION.md",
+      "sha256": "57a80b0bd10668561d6602e2f1632df26ebfb6187f52c752c1ba040b34141d95"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/iris-operational-manual/NEXT-PROMPT.md",
+      "sha256": "f6bc1c758b7c505b98f1436ebdff5cdb546bfb01842280b9e8437c00bfe7cb5d"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/iris-operational-manual/PROCEDIMIENTOS-DE-EXTRACCION.md",
+      "sha256": "b45f82f4fe9bf941be708f9c0d909e60d025976ca6961559751e7601046f6649"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/iris-operational-manual/UBICACION-DE-DATOS.md",
+      "sha256": "b8ded828aa41f00eccea0898cc950fa9ee02fcc6dc6986b80c085e88b27371fc"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/PLANTAS-REVISION-FINAL.json",
+      "sha256": "fe971674075bbae8db1c6643030e66a7a6444ab4abf2a1840e1dacbf5eb13390"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/VISTAS-PNG.json",
+      "sha256": "b2c9a4684e0d443d75dafe63c5f6bd7baf3c414557975cc718944ba93d204153"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/VISTAS-PNG.md",
+      "sha256": "c30eeacddf8299ecfe260c189aee0d84645867bbb614145f02a73b5838cd0666"
+    }
+  ],
+  "last_delta_review": {
+    "scope": "Solo delta posterior al PASS: tres lecturas INN y Modelo 8 de unidad 610; sin nueva auditoría ni navegador.",
+    "status": "PASS",
+    "plan_records": [
+      {
+        "id_plano": "IR-P135",
+        "unidades": [
+          "611"
+        ],
+        "sha256": "4359ef9d3c74bac1123bd1ac0c61fcf0b493355ed4bbe2e8c164092738152427",
+        "status": "PASS: revisión marcada, niveles y límites preservados, sin valores gráficos inferidos"
+      },
+      {
+        "id_plano": "IR-P137",
+        "unidades": [
+          "610"
+        ],
+        "sha256": "abbbcd095eba13a86d22a6005b0bb1399b750708bf9e985c4a1cc5f41cd49571",
+        "status": "PASS: revisión marcada, niveles y límites preservados, sin valores gráficos inferidos"
+      },
+      {
+        "id_plano": "IR-P141",
+        "unidades": [
+          "614"
+        ],
+        "sha256": "b6f7c8e6740c29ed5972a3a5901a94a945488f0173c21d7504e552065bb88147",
+        "status": "PASS: revisión marcada, niveles y límites preservados, sin valores gráficos inferidos"
+      }
+    ],
+    "numeric_model_literal": {
+      "unit": "610",
+      "model": "8",
+      "source_description": "Modelo 8",
+      "fact_ids": [
+        "IR-H02548",
+        "IR-H02549"
+      ],
+      "note": "Código y nombre explícitos del modelo separados del identificador de unidad. El plano sigue sin código gráfico ni conteos inferidos."
+    },
+    "counts": {
+      "facts": 3213,
+      "new_information_fields": 170,
+      "iris_closed": 38,
+      "pending": 330,
+      "visual_review_marked": 147,
+      "replacement_images_included": 1
+    },
+    "additional_source": "/private/tmp/iris-C-extra-plan-facts.json",
+    "source_sha256": "8f88d89fedff331e18dd8a5cc9f2569a42b3ecc72f03c1a5e25126dbdd91462d"
+  },
+  "source_closure_delta_review": {
+    "scope": "Solo cierre de fuentes: 63 gráficos generales, conteos, hashes, enlaces y consistencia del manual. Sin navegador ni repetición de lecturas gráficas.",
+    "status": "PASS",
+    "new_graphics": 63,
+    "new_graphics_by_project": {
+      "edificio-living-town": 9,
+      "capitanes": 9,
+      "edificio-bold": 7,
+      "edificio-argomedo": 7,
+      "edificio-indi": 10,
+      "edificio-indigo": 11,
+      "inn-puerto-chico": 10,
+      "edificio-nordico": 0
+    },
+    "records_after_closure": 210,
+    "general_floor_plans": 105,
+    "all_visual_reviews_marked": 210,
+    "manifest_and_plan_records_match": true,
+    "new_image_hash_errors": [],
+    "local_markdown_links_checked": 30,
+    "broken_local_markdown_links": [],
+    "png_derivatives_hash_verified": 6,
+    "new_metric_facts": 0,
+    "counts_unchanged": {
+      "facts": 3213,
+      "new_information_fields": 170,
+      "iris_closed": 38,
+      "pending": 330
+    },
+    "manual_consistency": "105 plantas en once fichas; Nórdico sin sección. Menús B con impresión/brochure/condiciones; Índigo/INN con impresión y dos rótulos Descargar brochure; Nórdico solo impresión; Living Town control oculto no forzado. No se declaran documentos leídos por observar el menú.",
+    "source_file": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/iris-20261116/PLANTAS-REVISION-FINAL.json",
+    "source_sha256": "fe971674075bbae8db1c6643030e66a7a6444ab4abf2a1840e1dacbf5eb13390"
+  }
+}

@@ -1,0 +1,15 @@
+# Continuar Leben: fase 2, recepción abierta
+
+Usar la rama `codex/auditoria-leben-20261116` y checkout `/private/tmp/sollahms-auditoria-leben-20261116`. Base certificada `dd3a688`. Leer INFORME-CONCILIACION-LEBEN.md, recepcion-fase2/PLAN-RECEPCION.json, RESPUESTAS-RECIBIDAS.csv, RECEPCION-POR-CAMPO.csv, matrices y ESTADO-GLOBAL.json. Los hashes/archivos de fase 1 están en historico/fase1-dd3a688; no reauditar los PDF.
+
+55 solicitudes y 461 campos pendientes siguen abiertos. Se presentó B1A: precio desde de Living Town, Mood, Santo y BAUM. COM-F2-001/F022 contiene la respuesta del propietario: no tiene respaldo suficiente para confirmar ninguno como vigente. Los cuatro valores antiguos (3949,3855.33,4023,3843UF) siguen históricos. Hay una comunicación y cuatro respuestas por campo, cero precios actuales/valores confirmados, cero faltantes resueltos. No repetir inmediatamente las mismas preguntas; esperar antecedentes.
+
+Aceptar texto, Excel/CSV, tablas, capturas, PDF o documentos nuevos. La declaración directa Sollahms es fuente válida cuando es precisa. Vincular cada respuesta a ID original/proyecto/campo/modelo/etapa, conservar antes/después y SHA del documento de recepción. Fecha del mensaje no es vigencia de precio. No inferir stock, convertir unidades sin regla explícita ni sustituir precio Sollahms por campañas. No pedir los 11 brochures ya disponibles ni tipo de propiedad de proyecto ya confirmado.
+
+Mantener las seis métricas separadas y vincular dormitorios/baños/superficies al mismo modelo/etapa. No convertir unidades101/204/311 en códigos de modelo. Resolver solo con respaldo las tres discrepancias: Argomedo380/382, IndiHipódromo1816/Vallenar2070 y cubiertaINNcuarzo/ultracompacto travertino. Las otras cuatro diferencias de dirección conservan criterio previo y no generan otra solicitud. Own sigue vendido y fuera de precios. Parque Germania es ESEPE.
+
+Estados de dato: Confirmado documentalmente, Confirmado por propietario, Parcial, Histórico, Contradictorio, Desconocido y No aplicable. Estado de recepción/preparación se conserva por separado. Listo para incorporación exige evidencia y conciliación, sin borrar procedencia. Ningún proyecto ni inmobiliaria se cierra por preparar plantillas o recibir un mensaje sin datos.
+
+El propietario autorizó excluir deployments solo para esta rama y sincronizarla. La exclusión ya está aplicada. Consultar SINCRONIZACION-GITHUB.md y su recibo para conocer el último commit efectivamente verificado remoto. No crear deployments/PR ni cambiar main, otras configuraciones o secretos.
+
+No tocar fuentes productivas, precios publicados, HTML, funciones, CRM360, Resend ni integraciones. No ejecutar generadores/builds de aplicación. Verificar hashes originales antes/después. Mantener 131 slugs y los otros118 proyectos pendientes. No iniciar Euro automáticamente. Usar PROMPT-EURO-CONDICIONADO.md únicamente tras cierre documental Leben explícito y autorización para continuar; los desconocidos pueden conservarse como tales cuando estén identificados y se haya documentado el cierre.

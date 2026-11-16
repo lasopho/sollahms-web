@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "fecha_auditoria": "2026-11-16",
   "timezone": "America/Santiago",
   "base": {
@@ -33,8 +33,8 @@
   },
   "estado_bloques": {
     "Leben": {
-      "estado": "Recepción de antecedentes abierta",
-      "cierre": "No conciliada. Cuatro respuestas sin precios vigentes; ningún campo pendiente resuelto.",
+      "estado": "Investigación Iris documentada; conciliación abierta",
+      "cierre": "No cerrada; consultar cifras actuales en iris, fases anteriores se conservan históricas.",
       "metricas": {
         "fecha_auditoria": "2026-11-16",
         "proyectos_leben_revisados": 13,
@@ -78,9 +78,9 @@
   },
   "por_estado_revision": {
     "Pendiente de auditoría": 118,
-    "Pendientes entregados al propietario": 13
+    "Iris documentado; conciliación abierta": 13
   },
-  "siguiente_paso": "Esperar antecedentes pendientes Leben. No iniciar Euro.",
+  "siguiente_paso": "Conciliar solo pendientes acotados Leben; no repetir datos recuperados ni precios B1A sin nuevos antecedentes. Leer manual operativo. No iniciar otra inmobiliaria.",
   "protecciones": {
     "generadores_aplicacion_ejecutados": 0,
     "deployments_creados": 0,
@@ -118,5 +118,150 @@
     "fuentes_registradas_actuales": 22,
     "fuentes_primarias_fase1": 21,
     "commit_contenido_remoto_verificado": "37ff7a41c2635e8d8e7370b72b9e459dce8522c5"
+  },
+  "iris": {
+    "fecha": "2026-11-16",
+    "proyectos_leben": 13,
+    "fichas_iris_exactas": 12,
+    "busquedas_sin_ficha_exacta": 1,
+    "unidades_dom": 330,
+    "imagenes_originales": 210,
+    "planos_unidad_reales": 104,
+    "imagenes_reemplazo": 1,
+    "plantas_elevaciones": 105,
+    "hechos_iris": 3213,
+    "campos_canonicos": 689,
+    "campos_previamente_pendientes": 461,
+    "campos_previamente_pendientes_con_informacion_nueva_iris": 170,
+    "campos_pendientes_cerrados_por_iris": 38,
+    "campos_pendientes_cerrados_por_politica_catalogo": 92,
+    "campos_pendientes_cerrados_por_brochure_ya_disponible": 0,
+    "campos_requieren_propietario_actualizados": 330,
+    "propuestas_false_catalogo": 99,
+    "precios_sollahms_vigentes_confirmados": 0,
+    "proyectos_otros_pendientes": 118,
+    "catalogo_maestro_filas": 131,
+    "produccion_modificada": false,
+    "por_proyecto": {
+      "edificio-living-town": {
+        "ficha": "https://iris.yapo.cl/proyecto/645?operation=Venta",
+        "unidades": 105,
+        "planos_unidad_reales": 19,
+        "plantas": 9,
+        "campos_con_novedad_iris": 13,
+        "campos_cerrados_por_iris": 4,
+        "campos_requieren_propietario": 20
+      },
+      "edificio-mood": {
+        "ficha": "https://iris.yapo.cl/proyecto/650?operation=Venta",
+        "unidades": 30,
+        "planos_unidad_reales": 17,
+        "plantas": 9,
+        "campos_con_novedad_iris": 15,
+        "campos_cerrados_por_iris": 2,
+        "campos_requieren_propietario": 26
+      },
+      "edificio-santo": {
+        "ficha": "https://iris.yapo.cl/proyecto/640?operation=Venta",
+        "unidades": 1,
+        "planos_unidad_reales": 1,
+        "plantas": 8,
+        "campos_con_novedad_iris": 13,
+        "campos_cerrados_por_iris": 2,
+        "campos_requieren_propietario": 25
+      },
+      "edificio-baum": {
+        "ficha": "https://iris.yapo.cl/proyecto/935?operation=Venta",
+        "unidades": 108,
+        "planos_unidad_reales": 17,
+        "plantas": 11,
+        "campos_con_novedad_iris": 14,
+        "campos_cerrados_por_iris": 4,
+        "campos_requieren_propietario": 21
+      },
+      "edificio-suecia": {
+        "ficha": "https://iris.yapo.cl/proyecto/657?operation=Venta",
+        "unidades": 1,
+        "planos_unidad_reales": 1,
+        "plantas": 14,
+        "campos_con_novedad_iris": 13,
+        "campos_cerrados_por_iris": 2,
+        "campos_requieren_propietario": 24
+      },
+      "capitanes": {
+        "ficha": "https://iris.yapo.cl/proyecto/658?operation=Venta",
+        "unidades": 4,
+        "planos_unidad_reales": 2,
+        "plantas": 9,
+        "campos_con_novedad_iris": 14,
+        "campos_cerrados_por_iris": 4,
+        "campos_requieren_propietario": 22
+      },
+      "edificio-bold": {
+        "ficha": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+        "unidades": 16,
+        "planos_unidad_reales": 8,
+        "plantas": 7,
+        "campos_con_novedad_iris": 14,
+        "campos_cerrados_por_iris": 2,
+        "campos_requieren_propietario": 28
+      },
+      "edificio-argomedo": {
+        "ficha": "https://iris.yapo.cl/proyecto/647?operation=Venta",
+        "unidades": 1,
+        "planos_unidad_reales": 1,
+        "plantas": 7,
+        "campos_con_novedad_iris": 12,
+        "campos_cerrados_por_iris": 2,
+        "campos_requieren_propietario": 26
+      },
+      "edificio-indi": {
+        "ficha": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+        "unidades": 17,
+        "planos_unidad_reales": 8,
+        "plantas": 10,
+        "campos_con_novedad_iris": 12,
+        "campos_cerrados_por_iris": 2,
+        "campos_requieren_propietario": 25
+      },
+      "edificio-indigo": {
+        "ficha": "https://iris.yapo.cl/proyecto/653?operation=Venta",
+        "unidades": 2,
+        "planos_unidad_reales": 2,
+        "plantas": 11,
+        "campos_con_novedad_iris": 12,
+        "campos_cerrados_por_iris": 3,
+        "campos_requieren_propietario": 23
+      },
+      "inn-puerto-chico": {
+        "ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+        "unidades": 36,
+        "planos_unidad_reales": 22,
+        "plantas": 10,
+        "campos_con_novedad_iris": 19,
+        "campos_cerrados_por_iris": 4,
+        "campos_requieren_propietario": 21
+      },
+      "edificio-nordico": {
+        "ficha": "https://iris.yapo.cl/proyecto/1528?operation=Venta",
+        "unidades": 9,
+        "planos_unidad_reales": 6,
+        "plantas": 0,
+        "campos_con_novedad_iris": 19,
+        "campos_cerrados_por_iris": 7,
+        "campos_requieren_propietario": 34
+      },
+      "own": {
+        "ficha": "",
+        "unidades": 0,
+        "planos_unidad_reales": 0,
+        "plantas": 0,
+        "campos_con_novedad_iris": 0,
+        "campos_cerrados_por_iris": 0,
+        "campos_requieren_propietario": 35
+      }
+    },
+    "cierre_por_instruccion_own_vendido": 1,
+    "nuevos_campos_que_requieren_propietario": 0
   }
 }

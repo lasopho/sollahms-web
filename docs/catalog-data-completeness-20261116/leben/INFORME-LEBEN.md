@@ -1,3 +1,5 @@
+> Actualización 2026-11-16: este documento conserva el informe histórico de su fase. Para resultados y pendientes actuales, leer [INFORME-IRIS-LEBEN.md](INFORME-IRIS-LEBEN.md) y las columnas actualizadas de la matriz.
+
 # Leben: auditoría documental y pendientes al 16/11/2026
 
 Auditoría entregada para **13 proyectos Leben** del catálogo local de 131 filas. Se revisaron completos **11 brochures y 82 páginas**, además de fichas, notas y adjuntos históricos del propietario. Se controlaron los hashes de los **12 PDF** disponibles: los 12 coinciden. Parque Germania queda fuera de Leben: su portada acredita ESEPE; solo se revisó su identidad, sin abrir el bloque de esa inmobiliaria.

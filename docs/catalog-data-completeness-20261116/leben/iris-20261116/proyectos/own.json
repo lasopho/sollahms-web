@@ -1,0 +1,114 @@
+{
+  "slug": "own",
+  "nombre_iris": "Own",
+  "inmobiliaria": "No verificada en ficha Iris",
+  "url": "",
+  "fecha_consulta": "2026-11-16",
+  "descripcion": null,
+  "amenities_literal": null,
+  "direccion_iris_solo_identificacion": null,
+  "direccion_sollahms_conservada": "San Eugenio 567",
+  "entrega_literal": null,
+  "secciones_revisadas": [],
+  "limites": [
+    "Las dos coincidencias parciales se rechazaron por título; no se abrió proyecto de otra inmobiliaria.",
+    "No se capturó ficha exacta Own ni planos/amenities de Own.",
+    "No se cambió la condición Sollahms vendido."
+  ],
+  "pisos_plantas_literal": null,
+  "snapshot": "iris-20261116/proyectos/own.json",
+  "busquedas": [
+    {
+      "paso": "Buscar Own en campo de búsqueda y Enter; comparar títulos exactos, no substring",
+      "url": "https://iris.yapo.cl/proyectos?country=7&state=1%2C2%2C3&order=promos%2Cpopularity&search=Own",
+      "resultados_titulos": [
+        "Leben - Edif Living Town",
+        "AJ Urbana - Downtown San Martín"
+      ]
+    },
+    {
+      "paso": "Abrir Filtrar (icono deslizadores) > Estado; leer opciones",
+      "opciones_observadas": [
+        {
+          "etiqueta": "En recepción final",
+          "valor_dom": "1",
+          "inicialmente_seleccionada": true
+        },
+        {
+          "etiqueta": "En verde",
+          "valor_dom": "2",
+          "inicialmente_seleccionada": true
+        },
+        {
+          "etiqueta": "En blanco",
+          "valor_dom": "3",
+          "inicialmente_seleccionada": true
+        },
+        {
+          "etiqueta": "Usado",
+          "valor_dom": "4",
+          "inicialmente_seleccionada": false
+        }
+      ],
+      "observacion": "No existe opción Vendido visible en este grupo; no equivale a filtro de disponibilidad."
+    },
+    {
+      "paso": "Agregar Usado mediante etiqueta UI y cerrar panel",
+      "url": "https://iris.yapo.cl/proyectos?country=7&state=1%2C2%2C3%2C4&order=promos%2Cpopularity&search=Own",
+      "resultados_titulos": [
+        "Leben - Edif Living Town",
+        "AJ Urbana - Downtown San Martín"
+      ]
+    },
+    {
+      "paso": "Desmarcar todas las cuatro etiquetas Estado mediante UI y cerrar panel",
+      "url": "https://iris.yapo.cl/proyectos?country=7&order=promos%2Cpopularity&search=Own",
+      "resultados_titulos": [
+        "Leben - Edif Living Town",
+        "AJ Urbana - Downtown San Martín"
+      ]
+    }
+  ],
+  "resultado": "No se encontró coincidencia exacta Own en las búsquedas UI documentadas. No se concluye ausencia del proyecto ni disponibilidad comercial.",
+  "estado_sollahms": "vendido",
+  "unidades": [],
+  "planos_ids": [],
+  "campos_no_encontrados": [
+    "etapas",
+    "entrega",
+    "anio_entrega",
+    "semestre_entrega",
+    "nombre_modelo",
+    "codigo_modelo",
+    "tipo_por_modelo",
+    "etapa_modelo",
+    "dormitorios",
+    "banos",
+    "superficie_sin_clasificar",
+    "superficie_util",
+    "superficie_interior",
+    "superficie_total",
+    "superficie_terraza",
+    "superficie_jardin",
+    "superficie_terreno",
+    "amenity_salon_multiuso",
+    "amenity_cowork",
+    "amenity_areas_verdes",
+    "amenity_juegos_infantiles",
+    "amenity_mascotas",
+    "amenity_seguridad",
+    "amenity_estacionamientos",
+    "amenity_bodegas",
+    "interior_cocina_equipada",
+    "interior_ventanas_termopanel",
+    "interior_pisos",
+    "interior_iluminacion",
+    "interior_cubiertas",
+    "interior_conexion_lavadora",
+    "interior_tecnologia",
+    "interior_terraza_privada",
+    "interior_jardin_privado",
+    "interior_adicionales"
+  ],
+  "diferencias_ids": []
+}
