@@ -17,7 +17,7 @@ const widths=option('--widths','1440,1024,768,390,320').split(',').map(Number),p
 const phrase=/precision[\s\p{P}\p{S}]*transparency[\s\p{P}\p{S}]*strategy/iu;
 const types={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.woff2':'font/woff2','.woff':'font/woff','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.ico':'image/x-icon','.pdf':'application/pdf'};
 await mkdir(out,{recursive:true});
-const report={startedAt:new Date().toISOString(),root,baseline,origin,deployment,mode:transportModule?'authenticated remote responses rendered in Chrome':'local exact output bytes rendered in Chrome',widths,pages,cases:[],pageErrors:[],failedResources:[],consoleErrors:[],expectedFixtureConsole:[],fontResources:[],blockedExternal:[],apiFixtures:[],blockedMutations:[],requests:[],passed:false};
+const report={startedAt:new Date().toISOString(),root,baseline,origin,deployment,mode:transportModule?'authenticated remote responses rendered in Chrome':'local exact output bytes rendered in Chrome',widths,pages,cases:[],pageErrors:[],failedResources:[],consoleErrors:[],expectedFixtureConsole:[],fontResources:[],administrativeToolbarSuppressed:[],blockedExternal:[],apiFixtures:[],blockedMutations:[],requests:[],passed:false};
 const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
 let transport;
 if(transportModule){assert(deployment,'--deployment is required with --transport');const {nativeTransport}=await import(resolve(transportModule));transport=await nativeTransport({origin,deployment,root:transportRoot});}
@@ -29,6 +29,10 @@ async function contextFor(directory,remote=false){
  await context.route('**/*',async route=>{
   const request=route.request(),u=new URL(request.url());
   if(!['GET','HEAD'].includes(request.method())){report.blockedMutations.push({path:u.pathname,method:request.method()});return route.abort();}
+  if(u.origin==='https://vercel.live'&&u.pathname==='/_next-live/feedback/feedback.js'){
+   report.administrativeToolbarSuppressed.push({path:u.pathname,reason:'Administrative deployment toolbar excluded from site QA; no external request forwarded or platform setting changed'});
+   return route.fulfill({status:204,contentType:'text/javascript',body:''});
+  }
   if(u.origin!==origin){
    if(['fonts.googleapis.com','fonts.gstatic.com'].includes(u.hostname)&&u.protocol==='https:'){
     if(!fontCache.has(u.href))fontCache.set(u.href,(async()=>{const response=await route.fetch({timeout:60000});assert(response.ok(),'Font resource failed '+u.hostname);const body=await response.body();report.fontResources.push({url:u.href,status:response.status(),bytes:body.length,sha256:hash(body),readOnly:true});return {status:response.status(),headers:response.headers(),body};})());

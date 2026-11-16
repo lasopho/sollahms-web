@@ -1,0 +1,143 @@
+{
+  "checkedAt": "2026-11-16T16:04:30.029843+00:00",
+  "passed": true,
+  "deployment": "dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF",
+  "outputInventorySha256": "aabc92d6a5c7c8d345d9a3cc7dd4f45a7fd11c8385c752ddf45e5a2d0f649549",
+  "metadata": {
+    "id": "dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF",
+    "url": "project-wrapp-b4lw8u26z-lsandoval2-8260s-projects.vercel.app",
+    "name": "project-wrapp",
+    "readyState": "READY",
+    "target": null,
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": null,
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "source": "cli",
+    "alias": [],
+    "meta": {
+      "githubCommitSha": "d4d67bc298bbb8e78e7ba91867b49c1e4fd09772",
+      "githubCommitRef": "codex/footer-sin-frase-20261116",
+      "candidateInventorySha256": "aabc92d6a5c7c8d345d9a3cc7dd4f45a7fd11c8385c752ddf45e5a2d0f649549",
+      "baselineDeployment": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR"
+    }
+  },
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "nodeVersion": "24.x",
+    "paused": null
+  },
+  "productionAliases": [
+    {
+      "host": "sollahms.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794842996857
+    },
+    {
+      "host": "www.sollahms.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794842996873
+    },
+    {
+      "host": "sollhams.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794842996858
+    }
+  ],
+  "functions": [
+    "out/api/advisory",
+    "out/api/booking-availability",
+    "out/api/booking-create",
+    "out/api/collaboration",
+    "out/api/contact",
+    "out/api/orientation-contact",
+    "out/api/uf"
+  ],
+  "checks": [
+    {
+      "name": "deployment identity / project / team",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ready and intended environment",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prebuilt artifact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exact source commit and artifact metadata",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "SSO and disabled automatic deployment preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production unchanged: sollahms.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production unchanged: www.sollahms.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production unchanged: sollhams.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "complete remote inventory matches all 1660 paths and SHA1",
+      "passed": true,
+      "detail": {
+        "expected": 1660,
+        "actual": 1660,
+        "matching": 1660
+      }
+    },
+    {
+      "name": "seven functions registered unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "anonymous Preview requires Vercel SSO with valid TLS",
+      "passed": true,
+      "detail": {
+        "status": 302,
+        "locationHost": "vercel.com",
+        "sslVerifyResult": 0,
+        "followedRedirects": false
+      }
+    }
+  ],
+  "fullSourceFileCount": 1660,
+  "functionSourceFiles": 57,
+  "sizeLimitation": "Remote SHA1 content addresses bind the certified local SHA256 and size; explicit remote sizes checked when supplied.",
+  "formsSubmitted": 0,
+  "apiWrites": 0,
+  "promotions": 0
+}

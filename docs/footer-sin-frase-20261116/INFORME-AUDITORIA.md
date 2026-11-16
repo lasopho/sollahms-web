@@ -36,3 +36,7 @@ El [manifiesto completo](candidate-manifest.json) contiene rutas, tamaños, SHA1
 La matriz de navegador cubre ambas páginas en 1440, 1024, 768, 390 y 320 px, con evidencia antes/después. Comprueba ausencia de frase, contenedor y divisor, enlaces y logotipo conservados, destino WhatsApp, alineación, overflow, recursos, consola y motion normal/reducido. La Preview se verifica con lecturas autenticadas reales y cotejo completo de sus 1.660 rutas/SHA1. El acceso anónimo debe redirigir a SSO con TLS válido.
 
 Los resultados definitivos y límites de QA constan en el [informe de cierre](INFORME-CIERRE.md), junto con los informes JSON y las capturas. No se envían formularios o mensajes durante las pruebas. La producción requiere autorización expresa posterior; esta intervención termina en Preview privada y PR Draft.
+
+## Certificación final
+
+Preview `dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF` READY y SSO, artefacto remoto 1.660/1.660 exacto, matriz local 20/20 y comparación remota 20/20 aprobadas. No se modificó producción ni se fusionó ningún PR. [Cierre verificable](completion.json) y [siguiente prompt](SIGUIENTE-PROMPT.md).
