@@ -119,3 +119,8 @@ CONNECT 403 persiste; revisión efectiva 1. Sin nuevas pruebas de QA ni cambios 
 ## Acceso pendiente — 2026-11-15T19:48:22.506851-03:00
 
 CONNECT 403 persiste. La red efectiva del ejecutor continúa en revisión 1 sin el hostname. Sin repetición de QA ni cambios runtime/publicación. [Cierre y evidencia](continuidad-bloqueada-20261115T194822/INFORME-CIERRE.md). El requisito pendiente es administrativo en el entorno activo de Codex.
+
+
+## Continuidad HTTPS/SSO — 15/11/2026, 21:54–21:55 America/Santiago
+
+La nueva conexión efectiva a la Preview respondió HTTP 302 hacia Vercel SSO, con curl exitoso y TLS válido: el bloqueo de red anterior ya no se observa. Google respondió 200 y una URL representativa de mapas llegó a 200 tras redirección en el mismo host. El contenido autenticado de la aplicación sigue inaccesible; no se modificaron SSO ni credenciales ni se crearon bypasses o share links. En el ejecutor nuevo no están la sesión CLI ni la salida congelada documentadas; no se regeneraron. Las evidencias se localizaron y conservaron en GitHub. Esta sesión no ejecutó QA de las 131 fichas/524 combinaciones ni publicó. La autorización de publicación condicionada continúa vigente. Véase [cierre de esta comprobación](https-sso-20261115T215402/INFORME-CIERRE.md) y [evidencia](https-sso-20261115T215402/evidencia.json).
