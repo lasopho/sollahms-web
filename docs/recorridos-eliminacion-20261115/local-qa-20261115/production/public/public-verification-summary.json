@@ -1,0 +1,59 @@
+{
+  "expectedProductionId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+  "result": "PASS",
+  "expectedChecks": 608,
+  "completedChecks": 608,
+  "passedChecks": 608,
+  "failures": [],
+  "counts": {
+    "home": 4,
+    "fiche": 524,
+    "resource": 38,
+    "safe-function": 14,
+    "internal-source-denied": 10,
+    "internal-api-rewrite-without-source": 2,
+    "retired-410": 16
+  },
+  "fichesByOrigin": {
+    "http://sollahms.cl": 131,
+    "http://www.sollahms.cl": 131,
+    "https://sollahms.cl": 131,
+    "https://www.sollahms.cl": 131
+  },
+  "httpTransactionsIncludingRedirects": 1184,
+  "validatedHttpsTransactions": 912,
+  "tlsFailures": 0,
+  "redirectStatusCounts": {
+    "308": 576
+  },
+  "canonicalFinalHosts": [
+    "sollahms.cl"
+  ],
+  "contentMatches": {
+    "exact": 592,
+    "safe-json-or-head": 16
+  },
+  "safeFunctionChecks": 14,
+  "safeFunctionStatusCounts": {
+    "405": 10,
+    "503": 4
+  },
+  "bookingRequestOnly503IsExpected": true,
+  "internalSourceDenialChecks": 12,
+  "internalStatusCounts": {
+    "404": 10,
+    "405": 2
+  },
+  "internalApiMjs405MeansHandlerJsonWithoutSource": true,
+  "patioBrasil410Checks": 16,
+  "patioBrasilAllFinal410": true,
+  "publicUnauthenticated": true,
+  "authHeadersSent": false,
+  "cookiesSentOrStored": false,
+  "formSubmissions": 0,
+  "mutatingRequests": 0,
+  "rawHeadersStored": false,
+  "responseBodiesStored": false,
+  "tlsValidationDisabled": false,
+  "reportSha256": "6df3782d4e2cdcfc984106cd281116831d95ac345ce525d576b1bf4de6b54bbe"
+}

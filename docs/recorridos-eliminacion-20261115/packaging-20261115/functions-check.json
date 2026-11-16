@@ -1,0 +1,50 @@
+{
+  "node": "v24.22.1",
+  "results": [
+    {
+      "endpoint": "/api/advisory",
+      "method": "GET",
+      "status": 405,
+      "importPassed": true
+    },
+    {
+      "endpoint": "/api/booking-availability",
+      "method": "GET",
+      "status": 503,
+      "importPassed": true
+    },
+    {
+      "endpoint": "/api/booking-create",
+      "method": "GET",
+      "status": 503,
+      "importPassed": true
+    },
+    {
+      "endpoint": "/api/collaboration",
+      "method": "GET",
+      "status": 405,
+      "importPassed": true
+    },
+    {
+      "endpoint": "/api/contact",
+      "method": "GET",
+      "status": 405,
+      "importPassed": true
+    },
+    {
+      "endpoint": "/api/orientation-contact",
+      "method": "GET",
+      "status": 405,
+      "importPassed": true
+    },
+    {
+      "endpoint": "/api/uf",
+      "method": "PUT",
+      "status": 405,
+      "importPassed": true
+    }
+  ],
+  "outboundAttempts": 0,
+  "formsSubmitted": 0,
+  "scope": "Imports and early rejection only; not Vercel registration or provider integration."
+}

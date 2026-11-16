@@ -12,6 +12,7 @@ import re
 from pathlib import Path
 from bs4 import BeautifulSoup
 from project_amenities import apply_amenities, render_items
+from project_tour_removal import remove_project_tours
 
 ROOT = Path(__file__).resolve().parents[1]
 CSS = '/assets/css/project-navigation.css?v=20261029-1'
@@ -43,11 +44,6 @@ def demote(node):
 
 def valid_plans(node):
     return bool(node and (node.select('img') or node.select('a[href$=".pdf"]')))
-
-def valid_tour(node):
-    if not node:return False
-    return any(re.match(r'^https://',x.get('src') or x.get('data-src') or x.get('href') or '')
-               for x in node.select('iframe[src],iframe[data-src],a[href]'))
 
 def add_documented_content(soup,project):
     """Source-scoped additions are prepared from audited brochure pointers."""
@@ -85,6 +81,7 @@ def add_documented_content(soup,project):
     return record
 
 def apply_navigation(page,project):
+    page=remove_project_tours(page)
     match=re.search(r'<main\b[^>]*>.*?</main>',page,re.S)
     if not match:raise ValueError('Project main is required: '+project['slug'])
     soup=fragment(match[0]);main=soup.main
@@ -184,11 +181,8 @@ def apply_navigation(page,project):
             image=copy.copy(source);image.attrs.pop('id',None);image.attrs.pop('fetchpriority',None);image['loading']='lazy';link.append(image);figure.append(link);grid.append(figure);gallery.append(grid)
         elif not gallery.select('p'):
             p=soup.new_tag('p');p.string='Consulta las imágenes disponibles del proyecto al solicitar información.';gallery.append(p)
-    tour=main.find(id='recorrido')
-    has_tour=valid_tour(tour)
-    if tour and tour.parent is not gallery:gallery.append(demote(tour.extract()))
     gallery['data-nav-section']='galeria'
-    if gallery.find('h2',recursive=False):gallery.find('h2',recursive=False).string='Galería y 360°' if has_tour else 'Galería'
+    if gallery.find('h2',recursive=False):gallery.find('h2',recursive=False).string='Galería'
 
     location=main.find(id='ubicacion')
     if not location:
@@ -224,7 +218,7 @@ def apply_navigation(page,project):
     links=[('resumen','Resumen'),('caracteristicas','Características')]
     if typology:links.append((typology['id'],'Tipologías'))
     if plan:links.append((plan['id'],'Planos'))
-    links.append(('galeria','Galería y 360°' if has_tour else 'Galería'))
+    links.append(('galeria','Galería'))
     if environment:links.append(('entorno','Entorno'))
     links.extend([('ubicacion','Ubicación'),('solicitar-cotizacion','Cotización')])
     for old in main.select('.pj-nav'):old.decompose()

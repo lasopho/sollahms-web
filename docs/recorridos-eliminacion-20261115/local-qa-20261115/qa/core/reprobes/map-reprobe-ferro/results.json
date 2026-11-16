@@ -1,0 +1,143 @@
+{
+  "origin": "https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app",
+  "readOnly": true,
+  "results": [
+    {
+      "slug": "ferroparque",
+      "width": 1440,
+      "expected": 2,
+      "passed": true,
+      "rpc": [
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:56.560Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:56.560Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:56.580Z",
+          "finished": true
+        },
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:56.617Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:57.001Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:58.930Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:58.932Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:58.951Z",
+          "finished": true
+        },
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:58.986Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:53:59.322Z",
+          "finished": true
+        }
+      ],
+      "blocked": [],
+      "mainVisibility": "visible",
+      "disclosuresOpened": [
+        "etapa-2"
+      ],
+      "mapEvidence": [
+        {
+          "index": 0,
+          "srcOrigin": "https://www.google.com",
+          "title": "Mapa de Av. Bascuñán Santa María 0699, Temuco, La Araucanía, Chile",
+          "hasTitle": true,
+          "geometry": {
+            "width": 1044,
+            "height": 418
+          },
+          "ready": true,
+          "visibility": "visible",
+          "mapWidgets": 2,
+          "canvases": 0,
+          "decodedImages": 43,
+          "decodedTiles": 42,
+          "errorText": false,
+          "textLength": 92,
+          "topLeftAnimations": [],
+          "screenshot": "/private/tmp/sollahms-recorridos-qa/map-reprobe-ferro/map-ferroparque-1440-0.png"
+        },
+        {
+          "index": 1,
+          "srcOrigin": "https://www.google.com",
+          "title": "Mapa de Pasaje Bascuñán Santa María 0699, Temuco, La Araucanía, Chile",
+          "hasTitle": true,
+          "geometry": {
+            "width": 1094,
+            "height": 418
+          },
+          "ready": true,
+          "visibility": "visible",
+          "mapWidgets": 2,
+          "canvases": 0,
+          "decodedImages": 43,
+          "decodedTiles": 42,
+          "errorText": false,
+          "textLength": 92,
+          "topLeftAnimations": [],
+          "screenshot": "/private/tmp/sollahms-recorridos-qa/map-reprobe-ferro/map-ferroparque-1440-1.png"
+        }
+      ],
+      "pendingRpc": [],
+      "at": "2026-11-16T03:54:00.972Z"
+    }
+  ]
+}

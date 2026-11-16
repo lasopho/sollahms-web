@@ -1,0 +1,189 @@
+{
+  "checked_local_timezone": "America/Santiago",
+  "checked_local_interval": "2026-11-15T21:54:02-03:00/2026-11-15T21:55:07-03:00",
+  "preview": "https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/",
+  "deployment": {
+    "id": "dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi",
+    "state": "READY",
+    "target": null,
+    "runtime_commit": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+  },
+  "project": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "team_id": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "sso_enabled": true,
+    "sso_deployment_type": "all_except_custom_domains"
+  },
+  "source": {
+    "repository": "lasopho/sollahms-web",
+    "branch": "codex/eliminar-recorridos-global-20261115",
+    "head_received": "f975a005c4f4330996461d6d71134aaf678f3e26",
+    "pr": 27,
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_merged": false,
+    "base": "codex/agenda-regions-responsive-20261115"
+  },
+  "network_policy": {
+    "observations_current": true,
+    "state": "enforced",
+    "revision": "1",
+    "preview_host_allowed": true,
+    "www_google_com_allowed": true
+  },
+  "observations": {
+    "preview": {
+      "http_code": 302,
+      "url_effective": "https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/",
+      "ssl_verify_result": 0,
+      "time_total": 0.236862,
+      "content_type": "text/plain",
+      "errormsg": null,
+      "exitcode": 0,
+      "url": "https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/",
+      "curl_returncode": 0,
+      "stderr": "",
+      "checked_utc": "2026-11-16T00:54:02.220162+00:00",
+      "safe_headers": [
+        "HTTP/1.1 200 OK",
+        "server: envoy",
+        "HTTP/2 302 ",
+        "content-type: text/plain",
+        "server: envoy",
+        "x-vercel-id: cle1::lqrr9-1794790442193-c6b6f994e43d"
+      ],
+      "title": [],
+      "sso_markers": {
+        "Authentication Required": false,
+        "Vercel Authentication": true,
+        "Log in": false,
+        "SSO": false,
+        "TRUSTED_SOURCES_ENVIRONMENT_MISMATCH": false
+      },
+      "network_markers": {
+        "BLOCK_LIST": false,
+        "denied": false,
+        "blocked": false,
+        "proxy": false,
+        "Forbidden": false
+      },
+      "redirect": {
+        "scheme": "https",
+        "host": "vercel.com",
+        "path": "/sso-api",
+        "query_omitted": true
+      }
+    },
+    "google": {
+      "http_code": 200,
+      "url_effective": "https://www.google.com/",
+      "ssl_verify_result": 0,
+      "time_total": 0.143878,
+      "content_type": "text/html; charset=ISO-8859-1",
+      "errormsg": null,
+      "exitcode": 0,
+      "url": "https://www.google.com/",
+      "curl_returncode": 0,
+      "stderr": "",
+      "checked_utc": "2026-11-16T00:54:02.375896+00:00",
+      "safe_headers": [
+        "HTTP/1.1 200 OK",
+        "server: envoy",
+        "HTTP/2 200 ",
+        "content-type: text/html; charset=ISO-8859-1",
+        "server: envoy"
+      ],
+      "title": [
+        "Google"
+      ],
+      "sso_markers": {
+        "Authentication Required": false,
+        "Vercel Authentication": false,
+        "Log in": false,
+        "SSO": false,
+        "TRUSTED_SOURCES_ENVIRONMENT_MISMATCH": false
+      },
+      "network_markers": {
+        "BLOCK_LIST": false,
+        "denied": false,
+        "blocked": false,
+        "proxy": false,
+        "Forbidden": false
+      }
+    },
+    "google-map": {
+      "http_code": 301,
+      "ssl_verify_result": 0,
+      "time_total": 0.126884,
+      "content_type": "text/html",
+      "errormsg": null,
+      "url": "https://www.google.com/maps?output=embed&q=Abd%C3%B3n+Cifuentes+90%2C+Santiago%2C+Regi%C3%B3n+Metropolitana%2C+Chile",
+      "curl_returncode": 0,
+      "stderr": "",
+      "checked_utc": "2026-11-16T00:54:59.185502+00:00",
+      "title": [],
+      "scope": "HTTPS reachability of representative map embed URL only; browser rendering not verified"
+    },
+    "google-map-final": {
+      "http_code": 200,
+      "ssl_verify_result": 0,
+      "time_total": 0.343187,
+      "content_type": "text/html; charset=UTF-8",
+      "errormsg": null,
+      "url": "https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1sAbd%C3%B3n+Cifuentes+90,+Santiago,+Regi%C3%B3n+Metropolitana,+Chile",
+      "curl_returncode": 0,
+      "stderr": "",
+      "checked_utc": "2026-11-16T00:55:07.145786+00:00",
+      "scope": "HTTPS response after same-host redirect; visual rendering not verified"
+    }
+  },
+  "diagnosis": {
+    "preview_https_reachable": true,
+    "preview_application_access": false,
+    "preview_blocker": "SSO_AUTHENTICATION_REQUIRED",
+    "network_block_detected": false,
+    "google_https_reachable": true,
+    "google_maps_embed_https_reachable": true,
+    "maps_browser_rendering_verified": false
+  },
+  "authentication": {
+    "oidc_available": false,
+    "cli_in_path": false,
+    "documented_cli_session_directory_exists": false,
+    "documented_frozen_output_exists": false,
+    "existing_automation_credential_scope_includes_new_preview": false,
+    "credentials_changed": false,
+    "sso_changed": false,
+    "new_bypasses_or_share_links_created": false
+  },
+  "qa": {
+    "current_remote_fiches_completed": 0,
+    "expected_fiches": 131,
+    "current_remote_responsive_completed": 0,
+    "expected_responsive": 524,
+    "widths": [
+      1440,
+      768,
+      390,
+      320
+    ],
+    "status": "NOT_RUN_SSO_BLOCKED",
+    "local_certified_checks_repeated": false,
+    "application_blocking_defects_assessed": false
+  },
+  "release": {
+    "production_creation_attempted": false,
+    "promotion_attempted": false,
+    "published": false,
+    "prior_production_reference": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+    "production_aliases_rechecked": false
+  },
+  "preservation": {
+    "historical_index": "historial-preservado.json",
+    "historical_files_indexed": 117,
+    "old_prompt_archived": "NEXT-PROMPT-anterior.md",
+    "runtime_edits": 0,
+    "forms_submitted": 0,
+    "commercial_operations": 0
+  }
+}

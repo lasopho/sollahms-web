@@ -1,0 +1,106 @@
+{
+  "audit_date_local": "2026-11-16",
+  "cli_version": "65.16.0",
+  "native_help_flags_confirmed": [
+    "--prebuilt",
+    "--environment production",
+    "--skip-domain",
+    "--meta",
+    "--project",
+    "--scope",
+    "--json"
+  ],
+  "native_help_verify_warning": "--verify creates the project Protection Bypass for Automation secret if missing; omit it.",
+  "implementation_evidence": "Installed official @vercel/cli-support 65.16.0 companion source, plus installed native65.16.0help; no deployment was run.",
+  "project_metadata_read_only": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "name": "project-wrapp",
+    "rootDirectory": null,
+    "autoExposeSystemEnvs": true,
+    "nodeVersion": "24.x",
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "productionBranch": "main"
+  },
+  "output_compatibility": {
+    "files": 1660,
+    "inventory_sha256": "f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0",
+    "builds_json_present": false,
+    "builds_json_required": false,
+    "reason": "getPrebuiltJson catches absent builds.json and returns null; target mismatch is conditional on prebuiltBuild?.target.",
+    "extra_files_required_inside_output": [],
+    "prebuilt_root_layout": ".vercel/output/{config.json,static,functions}",
+    "isolated_release_directory_created": false
+  },
+  "runtime_environment": {
+    "deployment_target": "production",
+    "source_functions_read": "process.env.VERCEL_ENV",
+    "runtime_environment_embedded_in_function_configs": false,
+    "platform_exposes_system_envs": true,
+    "local_env_pull_required": false,
+    "cli_runtime_env_override_required": false,
+    "rule": "Use --environment production; do not override VERCEL_ENV or copy secrets. Production runtime provider behavior must be validated with safe methods and simulation; no real form submissions."
+  },
+  "side_effect_scope": {
+    "autoAssignCustomDomains": false,
+    "sso_or_secret_update_fields_in_reviewed_create_request": false,
+    "protection_secret_creation_path": "verify flag -> verifyDeployment -> getBypassToken -> getOrCreateDeploymentProtectionToken",
+    "verify_must_be_omitted": true,
+    "no_build_pull_link_deploy_or_settings_mutation_executed": true
+  },
+  "evidence": [
+    {
+      "path": "/Users/luissandoval/.npm-global/lib/node_modules/vercel/node_modules/@vercel/cli-support/dist/commands/deploy/index.js",
+      "sha256": "3a1f1ef92041aecf15572417b3700984dc2e89b7d60ca3e5d1aa95464a87a1fd",
+      "snippets": [
+        {
+          "term": "async function getPrebuiltJson",
+          "offset": 12458,
+          "excerpt": "async function getPrebuiltJson(directory){try{return await import_fs_extra.default.readJSON(join(directory,\"builds.json\"))}catch{}return null}import{resolve}from\"path\";var SUPPORTED_PROVIDERS=new Set([\"github\",\"gitlab\",\"bitbucket\"]),defaultDeps={getGitConfigPath,parseGitConfig,fetchProject:(client,project)=>client.fetch(`/v9/projects/${encodeURIComponent(project.id)}`,{accountId:project.accountId}),buildCommand:(client,command)=>withGlobalFlags(client,command,{preserveProject:!0})};async function getGitConnectRecommendation(client,cwd,project,options={}){let{alreadyOffered=!1,fetchedProject,deps=defaultDeps}=options;try{if(project.link||alreadyOffered)return;let gitConfigPath=deps.getGitConfigPath({cwd});if(!gitConfigPath)return;let gitConfig=await deps.parseGitConfig(gitConfigPath),remoteUrls=gitConfig&&pluckRemoteUrls(gitConfig);if(!remoteUrls)return;let remotes=Object.values(remoteUrls),{parseRepoUrl}=await import(\"../../chunks/connect-git-provider-CIRRFPI2.js\");if(!remotes.some(rem"
+        },
+        {
+          "term": "let assumedTarget=target||",
+          "offset": 57204,
+          "excerpt": "let assumedTarget=target||\"preview\";if(prebuiltBuild?.target&&prebuiltBuild.target!==assumedTarget){let specifyTarget=\"\";return prebuiltBuild.target===\"production\"&&(specifyTarget=\" --prod\"),prettyError({message:`The ${param(\"--prebuilt\")} option was used with the target environment \"${assumedTarget}\", but the prebuilt output found in \".vercel/output\" was built with target environment \"${prebuiltBuild.target}\". Please run ${getCommandName(`--prebuilt${specifyTarget}`)}.`,link:\"https://vercel.link/prebuilt-environment-mismatch\"}),1}}let orgSlug=isRemoteLookupSkippedLink(link)?void 0:org.slug,contextName=orgSlug??\"the linked account\",currentTeam=isOwnerLookupUnavailableLink(link)||org.type!==\"team\"?void 0:org.id;if(client.config.currentTeam=currentTeam,rootDirectory&&await validateRootDirectory(cwd,join4(cwd,rootDirectory),project&&orgSlug?`To change your Project Settings, go to https://vercel.com/${orgSlug}/${project.name}/settings`:\"\")===!1)return 1;if(!singleFile&&!parsedArguments.fla"
+        },
+        {
+          "term": "let autoAssignCustomDomains=parsedArguments.flags[\"--skip-domain\"]",
+          "offset": 30168,
+          "excerpt": "let autoAssignCustomDomains=parsedArguments.flags[\"--skip-domain\"]?!1:void 0,createArgs={name,env:deploymentEnv,build:{env:deploymentBuildEnv},forceNew:parsedArguments.flags[\"--force\"],withCache:parsedArguments.flags[\"--with-cache\"],prebuilt:!0,vercelOutputDir:void 0,rootDirectory,quiet,nowConfig:{...localConfig,images:void 0},regions,meta,gitMetadata,deployStamp,target,skipAutoDetectionConfirmation:autoConfirm,noWait,withFullLogs:!1,autoAssignCustomDomains,manual:!0,jsonOutput:asJson,linkedProject:project};(!localConfig.builds||localConfig.builds.length===0)&&(createArgs.projectSettings={sourceFilesOutsideRootDirectory,rootDirectory,...localConfigurationOverrides});let{packageJson}=await(0,import_build_utils2.findPackageJson)(join4(cwd,project?.rootDirectory??\"\"),!0,cwd),nodeVersion;if(packageJson?.engines?.node)try{let{range}=await(0,import_build_utils2.getSupportedNodeVersion)(packageJson.engines.node);nodeVersion=range}catch(error2){error2 instanceof Error&&output_manager_default.w"
+        },
+        {
+          "term": "if(verify){",
+          "offset": 72503,
+          "excerpt": "if(verify){let verifyUrl=anonymousUrl?`https://${anonymousUrl}`:getProductionUrl(deployment)??`https://${deployment.url}`;output_manager_default.spinner(`Loading ${verifyUrl}\\u2026`,0),verification=await verifyDeployment(client,verifyUrl,{project:anonymousLink?void 0:project,org:anonymousLink?void 0:org,protectionEnabled:!!protection?.length}),output_manager_default.stopSpinner(),verification.ok||recordCliError({code:\"verification_failed\"})}if(asJson){output_manager_default.stopSpinner();let deploymentJson={...getDeploymentOutputJson(deployment,client.apiUrl),...anonymousLink?{expiresAt:anonymousLink.expiresAt,claimUrl:anonymousLink.claimUrl}:{},...anonymousUrl?{url:`https://${anonymousUrl}`,inspectorUrl:null,productionUrl:null}:{},...anonymousLink?{}:{deploymentProtection:protection?.map(method=>method.id)??null},...verification?{verification}:{}};if(verification&&!verification.ok){let message=formatVerificationFailure(verification),payload2=client.nonInteractive?{status:AGENT_STATUS."
+        },
+        {
+          "term": "let meta=Object.assign({},parseMeta(localConfig.meta),cliMeta,singleFile?singleFileMeta:{})",
+          "offset": 60829,
+          "excerpt": "let meta=Object.assign({},parseMeta(localConfig.meta),cliMeta,singleFile?singleFileMeta:{}),gitMetadata=singleFile?Promise.resolve(void 0):client.withTrace(\"vc.cli.deploy.git_metadata\",()=>createGitMeta(join4(cwd,project.rootDirectory||\"\"),project));gitMetadata.catch(()=>{});let deploymentEnv=Object.assign({},parseEnv(localConfig.env),parseEnv(parsedArguments.flags[\"--env\"])),deploymentBuildEnv=Object.assign({},parseEnv(localConfig.build&&localConfig.build.env),parseEnv(parsedArguments.flags[\"--build-env\"]));try{await addProcessEnv(log,deploymentEnv),await addProcessEnv(log,deploymentBuildEnv)}catch(err){return error((0,import_error_utils2.errorToString)(err)),1}let regionFlag=(parsedArguments.flags[\"--regions\"]||\"\").split(\",\").map(s=>s.trim()).filter(Boolean),regions=regionFlag.length>0?regionFlag:localConfig.regions,now=new Now({client,currentTeam}),deployStamp=stamp_default(),deployment=null,noWait=!!parsedArguments.flags[\"--no-wait\"],withFullLogs=!!parsedArguments.flags[\"--logs\"],l"
+        }
+      ]
+    },
+    {
+      "path": "/Users/luissandoval/.npm-global/lib/node_modules/vercel/node_modules/@vercel/cli-support/dist/chunks/chunk-4HWRF2GL.js",
+      "sha256": "600b25b5d179ca620572317a588c19ff3c07725e22ba941ed271939c62f52d84",
+      "snippets": [
+        {
+          "term": "async function getBypassToken",
+          "offset": 23169,
+          "excerpt": "async function getBypassToken(client,{id,accountId},org){try{let project=await getProjectByNameOrId(client,id,accountId);return project instanceof ProjectNotFound?null:await getOrCreateDeploymentProtectionToken(client,{status:\"linked\",project,org})}catch(err){return output_manager_default.debug(`Could not get a protection bypass secret: ${err}`),null}}async function readVerification(url,res){let isHtml=(res.headers.get(\"content-type\")??\"\").includes(\"text/html\"),decoder=new TextDecoder,size=0,head=\"\",reader=res.body?.getReader();if(reader)for(;;){let{done,value}=await reader.read();if(done)break;size+=value.byteLength,isHtml&&head.length<TITLE_SEARCH_LENGTH&&(head+=decoder.decode(value,{stream:!0}))}return{url,ok:res.ok,statusCode:res.status,size,title:isHtml?parseTitle(head):null,error:null}}function formatVerificationSummary({statusCode,size,title}){return[statusCode,size===null?null:import_bytes3.default.format(size,{decimalPlaces:1,unitSeparator:\" \"}),title===null?null:`\"${title}\"`]"
+        },
+        {
+          "term": "let requestBody={...nowConfig,env,build,buildMachine,name,project,meta,regions,target:target||void 0,projectSettings,source:\"cli\",actor:agentName,autoAssignCustomDomains}",
+          "offset": 17003,
+          "excerpt": "let requestBody={...nowConfig,env,build,buildMachine,name,project,meta,regions,target:target||void 0,projectSettings,source:\"cli\",actor:agentName,autoAssignCustomDomains};delete requestBody.scope,delete requestBody.github,delete requestBody.public;let deployment=await processDeployment({now:this,path,requestBody,gitMetadata,quiet,force:forceNew,withCache,org,projectName:name,isSettingUpProject,archive,skipAutoDetectionConfirmation,prebuilt,anonymous,vercelOutputDir,rootDirectory,noWait,withFullLogs,bulkRedirectsPath:nowConfig.bulkRedirectsPath,manual,jsonOutput,servePageAtRoot,linkedProject,lookUpLinkedProject,firstDeployment});if(deployment&&deployment.warnings){let sizeExceeded=0,{log,warn}=output_manager_default;deployment.warnings.forEach(warning=>{if(warning.reason===\"size_limit_exceeded\"){let{sha,limit}=warning;warn(`Skipping file ${sha} (size exceeded ${(0,import_bytes2.default)(limit)})`),sizeExceeded++}else warning.reason===\"node_version_not_found\"&&warn(`Requested node versio"
+        }
+      ]
+    }
+  ],
+  "official_docs": [
+    "https://vercel.com/docs/cli/deploy",
+    "https://vercel.com/docs/environment-variables/system-environment-variables"
+  ]
+}
