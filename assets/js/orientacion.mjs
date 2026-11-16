@@ -21,11 +21,34 @@ function invalidate(form, target) {
   // Never leave a result looking current after its inputs change.
   form.addEventListener('input', () => target.replaceChildren(node('p', 'Cambiaste los datos. Vuelve a calcular para actualizar el resultado.', 'help')));
 }
+function bindToolReset(form, target, afterReset) {
+  const initial = [...target.childNodes].map(child => child.cloneNode(true));
+  // Native reset can run a microtask checkpoint before restoring field defaults.
+  // Restore the result and dated UF after that algorithm, before the next paint.
+  form.addEventListener('reset', event => requestAnimationFrame(() => {
+    if (event.defaultPrevented) return;
+    target.replaceChildren(...initial.map(child => child.cloneNode(true)));
+    delete target.dataset.calculated;
+    afterReset?.();
+  }));
+}
 let officialUf = null;
 let manualUf = true;
 let ufLoading = false;
+let ufRevision = 0;
 const budgetForm = $('budget-form');
 const budgetResult = $('budget-result');
+bindToolReset(budgetForm, budgetResult, () => {
+  ufRevision++;
+  if (officialUf?.date === chileDate(new Date())) {
+    $('budget-uf').value = String(officialUf.valueClp);
+    manualUf = false;
+    $('uf-status').textContent = `UF oficial SII: ${clp(officialUf.valueClp)} al ${officialUf.date}.`;
+  } else {
+    manualUf = true;
+    $('uf-status').textContent = ufLoading ? 'Consultando UF oficial…' : 'Ingresa una referencia UF manual o consulta la UF oficial.';
+  }
+});
 async function refreshUf() {
   if(ufLoading) return;
   ufLoading = true;
@@ -33,15 +56,16 @@ async function refreshUf() {
   $('uf-status').textContent = 'Consultando UF oficial…';
   // A manually edited scenario is not overwritten by a late network response.
   const before = $('budget-uf').value;
+  const revision = ufRevision;
   officialUf = document.documentElement.dataset.orientationPreview==='true' ? null : await loadOfficialUf();
-  if (officialUf && $('budget-uf').value === before) {
+  if (officialUf && $('budget-uf').value === before && ufRevision === revision) {
     $('budget-uf').value = String(officialUf.valueClp);
     manualUf = false;
     $('uf-status').textContent = `UF oficial SII: ${clp(officialUf.valueClp)} al ${officialUf.date}.`;
     if (budgetResult.dataset.calculated) budgetResult.replaceChildren(node('p','La UF cambió. Vuelve a calcular tu presupuesto.','help'));
   } else if (officialUf) {
     manualUf = true;
-    $('uf-status').textContent = 'Se conservó tu UF manual. No es una referencia oficial vigente.';
+    $('uf-status').textContent = $('budget-uf').value ? 'Se conservó tu UF manual. No es una referencia oficial vigente.' : 'Ingresa una UF manual o vuelve a consultar para usar la referencia oficial disponible.';
   } else {
     manualUf = true;
     $('uf-status').textContent = 'UF oficial no disponible. Ingresa una referencia manual o vuelve a consultar.';
@@ -49,7 +73,7 @@ async function refreshUf() {
   ufLoading = false; $('refresh-uf').disabled = false;
 }
 $('refresh-uf').addEventListener('click',refreshUf);
-$('budget-uf').addEventListener('input',()=>{manualUf=true;$('uf-status').textContent='UF manual para este escenario. No se presenta como UF oficial vigente.';});
+$('budget-uf').addEventListener('input',()=>{ufRevision++;manualUf=true;$('uf-status').textContent=$('budget-uf').value?'UF manual para este escenario. No se presenta como UF oficial vigente.':'Ingresa una referencia UF manual o consulta la UF oficial.';});
 invalidate(budgetForm,budgetResult);
 budgetForm.addEventListener('submit', event => {
   event.preventDefault(); if(!budgetForm.reportValidity())return;
@@ -68,6 +92,7 @@ budgetForm.addEventListener('submit', event => {
   } catch(error) { budgetResult.replaceChildren(node('p',error.message,'error')); }
 });
 const quotesForm=$('quotes-form'), quotesResult=$('quotes-result');
+bindToolReset(quotesForm,quotesResult);
 invalidate(quotesForm,quotesResult);
 quotesForm.addEventListener('submit',event=>{
   event.preventDefault();if(!quotesForm.reportValidity())return;
@@ -82,6 +107,7 @@ quotesForm.addEventListener('submit',event=>{
   }catch(error){quotesResult.replaceChildren(node('p',error.message,'error'));}
 });
 const benefitForm=$('benefit-form'), benefitResult=$('benefit-result');
+bindToolReset(benefitForm,benefitResult);
 benefitForm.elements.promise.max=chileDate(new Date());
 invalidate(benefitForm,benefitResult);
 if(chileDate(new Date())>BENEFIT_REVIEW.reviewUntil) $('benefit-freshness').textContent='La revisión de las reglas ha vencido. Consulta los enlaces oficiales; la orientación automática está suspendida.';
@@ -123,12 +149,13 @@ $('download-checklist').addEventListener('click',()=>{
 let stage=0;
 for(const [i,item] of JOURNEY.entries()){const li=node('li'),button=node('button',item.title);button.type='button';button.addEventListener('click',()=>showStage(i,true));li.append(button);$('journey-steps').append(li);}
 function showStage(index,focus=false){
+  index=Math.max(0,Math.min(JOURNEY.length-1,index));
   stage=index;const item=JOURNEY[index];
   $('journey-position').textContent=`ETAPA ${index+1} DE ${JOURNEY.length}`;$('journey-title').textContent=item.title;$('journey-text').textContent=item.text;
   $('journey-action').href=item.href;$('journey-action').textContent=item.action+' →';
   [...$('journey-steps').querySelectorAll('button')].forEach((b,i)=>{if(i===index)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
   $('journey-prev').disabled=index===0;$('journey-next').disabled=index===JOURNEY.length-1;
-  if(focus)$('journey-title').focus();
+  if(focus)$('journey-title').focus({preventScroll:true});
 }
 $('journey-prev').addEventListener('click',()=>showStage(Math.max(0,stage-1),true));$('journey-next').addEventListener('click',()=>showStage(Math.min(JOURNEY.length-1,stage+1),true));showStage(0);
 const contactForm=$('orientation-contact'),contactStatus=$('contact-status');
