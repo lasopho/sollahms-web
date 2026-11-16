@@ -17,3 +17,17 @@ Contacto conserva SHA `967d556730e20ef86bae6ecee11ec6152434c8ae`, PR #28 Draft. 
 Los aliases apex y www siguen asociados a `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`. No se creó Production ni se promovió. La autorización integral permanece vigente; Production solo se preparará después de aprobar todos los controles pendientes, manteniendo coordinación con Contacto y el mismo artefacto certificado.
 
 La salida recuperada está en `/private/tmp/sollahms-recorridos-recovery/output`. El script archivado recupera únicamente las fuentes existentes mediante API GET; requiere el inventario certificado `verification-certified.json`, copia de `release-20261115T191251/verification.json`. No sirve para generar otra versión ni autoriza a repetir pruebas ya certificadas.
+
+## Actualización del 16/11/2026 — QA en ejecución
+
+Las 131 rutas HTML ya tienen respuesta HTTP verificada contra la salida certificada. Vercel añade a los HTML un sufijo de feedback de 163 bytes, SHA256 `1ec749d6c1840dd80e5f178a7ebea403951fa9e3bb90e80a4b1be83b311e85cb`. El documento fuente completo permanece como prefijo exacto. El verificador permite exclusivamente ese sufijo observado y conserva intactos tanto el cuerpo HTTP como el artefacto recuperado. [Verificador de evidencia HTTP](verify-http-cache.py).
+
+El inventario de las 131 fuentes exactas confirma 119 mapas, 131 formularios y cero videos publicados. Las siete referencias YouTube internas de Sento ya estaban ausentes del HTML antes de esta intervención y siguen conservadas en investigación no desplegada; no se incorporaron ni se afirma una prueba de reproducción inexistente. [Inventario de medios y comparación anterior](source-media-inventory.json).
+
+La presión de recursos del Mac y los procesos CLI huérfanos de intentos de QA anteriores provocaron timeouts del harness. Se cerraron exclusivamente diez pares Node/Vercel huérfanos tras comprobar su directorio de trabajo, sin tocar procesos ajenos. Se añadió un watchdog de proceso completo y cierre de su grupo; una prueba local nueva confirmó la terminación del padre y un hijo que ignoraba SIGTERM. Se conservaron checkpoints y caché. Estas correcciones pertenecen al harness; el runtime sigue intacto. [Recuperación de recursos](qa-resource-recovery.json).
+
+La composición de las galerías se revisa después de decodificar y pintar las imágenes, evitando aceptar fondos vacíos por una captura prematura. Las consultas de lectura necesarias de Google Maps se distinguen de envíos comerciales; la telemetría opcional bloqueada se registra separadamente de fallos de la aplicación. Continúan la matriz de cuatro anchos y las interacciones de navegación, planos y formularios sin envío.
+
+El PR #27 se actualizó para reflejar acceso efectivo, recuperación y QA pendiente, manteniendo Draft. La comparación remota del hito `864d6bb` confirma un commit exclusivamente documental y Contacto sin cambios posteriores ni archivos compartidos. [Comparación de ramas](github-coordination-864d6bb.json).
+
+La auditoría de CLI confirma que el output certificado no necesita `builds.json` adicional para `--prebuilt`; `--environment=production --skip-domain` permite la etapa aislada posterior al QA. No se usará `--verify`, que puede crear un bypass. No se preparó ni ejecutó Production. [Auditoría de compatibilidad](production-cli-readonly-audit.json).
