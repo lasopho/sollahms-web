@@ -1,0 +1,203 @@
+{
+  "deployment": "dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi",
+  "records": [
+    {
+      "path": "/api/advisory",
+      "method": "GET",
+      "expected": 405,
+      "status": 405,
+      "exit": 0,
+      "pass": true,
+      "bytes": 33,
+      "sha256": "29b2b6080bf977ba877db84d0eb04cd4ede4cfab3c4b29dd71637a8a6c37e3f8",
+      "json_keys": [
+        "error"
+      ],
+      "code": null,
+      "body": {
+        "error": "Método no permitido."
+      }
+    },
+    {
+      "path": "/api/booking-availability",
+      "method": "GET",
+      "expected": 503,
+      "status": 503,
+      "exit": 0,
+      "pass": true,
+      "bytes": 204,
+      "sha256": "baf2d3f4ba4eb406ecc1b43c99890be6c25d2053847e8258db4fe88f08be25d1",
+      "json_keys": [
+        "code",
+        "error",
+        "mode",
+        "ok"
+      ],
+      "code": "booking_not_certified",
+      "body": {
+        "ok": false,
+        "code": "booking_not_certified",
+        "mode": "request-only",
+        "error": "Las reservas automáticas no están habilitadas. Puedes solicitar asesoría en /contacto.html; la consulta no confirma una cita."
+      }
+    },
+    {
+      "path": "/api/booking-create",
+      "method": "GET",
+      "expected": 503,
+      "status": 503,
+      "exit": 0,
+      "pass": true,
+      "bytes": 204,
+      "sha256": "baf2d3f4ba4eb406ecc1b43c99890be6c25d2053847e8258db4fe88f08be25d1",
+      "json_keys": [
+        "code",
+        "error",
+        "mode",
+        "ok"
+      ],
+      "code": "booking_not_certified",
+      "body": {
+        "ok": false,
+        "code": "booking_not_certified",
+        "mode": "request-only",
+        "error": "Las reservas automáticas no están habilitadas. Puedes solicitar asesoría en /contacto.html; la consulta no confirma una cita."
+      }
+    },
+    {
+      "path": "/api/collaboration",
+      "method": "GET",
+      "expected": 405,
+      "status": 405,
+      "exit": 0,
+      "pass": true,
+      "bytes": 33,
+      "sha256": "29b2b6080bf977ba877db84d0eb04cd4ede4cfab3c4b29dd71637a8a6c37e3f8",
+      "json_keys": [
+        "error"
+      ],
+      "code": null,
+      "body": {
+        "error": "Método no permitido."
+      }
+    },
+    {
+      "path": "/api/contact",
+      "method": "GET",
+      "expected": 405,
+      "status": 405,
+      "exit": 0,
+      "pass": true,
+      "bytes": 33,
+      "sha256": "29b2b6080bf977ba877db84d0eb04cd4ede4cfab3c4b29dd71637a8a6c37e3f8",
+      "json_keys": [
+        "error"
+      ],
+      "code": null,
+      "body": {
+        "error": "Método no permitido."
+      }
+    },
+    {
+      "path": "/api/orientation-contact",
+      "method": "GET",
+      "expected": 405,
+      "status": 405,
+      "exit": 0,
+      "pass": true,
+      "bytes": 33,
+      "sha256": "29b2b6080bf977ba877db84d0eb04cd4ede4cfab3c4b29dd71637a8a6c37e3f8",
+      "json_keys": [
+        "error"
+      ],
+      "code": null,
+      "body": {
+        "error": "Método no permitido."
+      }
+    },
+    {
+      "path": "/api/uf",
+      "method": "HEAD",
+      "expected": 405,
+      "status": 405,
+      "exit": 0,
+      "pass": true,
+      "bytes": 543,
+      "sha256": "adba42d2a8dfe02961501fd681791f390ae1e9b0a3bd2407f643c29631921032"
+    },
+    {
+      "path": "/AGENTS.md",
+      "method": "GET",
+      "expected": 404,
+      "status": 404,
+      "exit": 0,
+      "pass": true,
+      "bytes": 4095,
+      "sha256": "f1534cab463669543a2571c36a74c51d7f87113344d8dfd0b6d7c941f413e050"
+    },
+    {
+      "path": "/NEXT-PROMPT.md",
+      "method": "GET",
+      "expected": 404,
+      "status": 404,
+      "exit": 0,
+      "pass": true,
+      "bytes": 4095,
+      "sha256": "f1534cab463669543a2571c36a74c51d7f87113344d8dfd0b6d7c941f413e050"
+    },
+    {
+      "path": "/api/contact.mjs",
+      "method": "GET",
+      "expected": 405,
+      "status": 405,
+      "exit": 0,
+      "pass": true,
+      "bytes": 33,
+      "sha256": "29b2b6080bf977ba877db84d0eb04cd4ede4cfab3c4b29dd71637a8a6c37e3f8",
+      "json_keys": [
+        "error"
+      ],
+      "code": null,
+      "body": {
+        "error": "Método no permitido."
+      },
+      "initial_expected": 404,
+      "classification": "Exact deployed config rewrites ^/api/(.+)(?:\\.(?:mjs))$ to /api/$1; JSON405 invokes the handler and serves no source bytes."
+    },
+    {
+      "path": "/lib/project-context.mjs",
+      "method": "GET",
+      "expected": 404,
+      "status": 404,
+      "exit": 0,
+      "pass": true,
+      "bytes": 4095,
+      "sha256": "f1534cab463669543a2571c36a74c51d7f87113344d8dfd0b6d7c941f413e050"
+    },
+    {
+      "path": "/scripts/prepare-isolated.py",
+      "method": "GET",
+      "expected": 404,
+      "status": 404,
+      "exit": 0,
+      "pass": true,
+      "bytes": 4095,
+      "sha256": "f1534cab463669543a2571c36a74c51d7f87113344d8dfd0b6d7c941f413e050"
+    },
+    {
+      "path": "/.vercel/output/config.json",
+      "method": "GET",
+      "expected": 404,
+      "status": 404,
+      "exit": 0,
+      "pass": true,
+      "bytes": 4095,
+      "sha256": "f1534cab463669543a2571c36a74c51d7f87113344d8dfd0b6d7c941f413e050"
+    }
+  ],
+  "all_pass": true,
+  "mutating_requests": 0,
+  "credentials_logged": false,
+  "scope": "Remote method rejection/request-only behavior and internal-source denial; no provider delivery or commercial writes.",
+  "assertion_correction": "Source denial means no source bytes. Exact deployed config rewrites .mjs API URLs to extensionless runtime handlers. The original 404 expectation was a harness assumption."
+}

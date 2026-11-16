@@ -1,4 +1,22 @@
-# Continuidad — HTTPS operativo; acceso SSO pendiente
+# Continuidad — recuperación local completa; QA remoto en curso
+
+## Hito local vigente — 15/11/2026
+
+Usar exclusivamente `/private/tmp/sollahms-recorridos-20261115-local`, rama `codex/eliminar-recorridos-global-20261115`. HEAD recibido `16480969f0647c0e6df97053d49199b979e17c83`, sin commits remotos posteriores al consultar. No utilizar ni cambiar de rama el checkout original de Documents; Contacto trabaja en `/Users/luissandoval/Projects/sollahms-publicacion`.
+
+Leer [cierre local](docs/recorridos-eliminacion-20261115/local-qa-20261115/INFORME-CIERRE.md). El acceso SSO ya funciona por Chrome y CLI 65.16.0 existente. Preview raíz200; siete endpoints comprobados con métodos seguros. SSO sigue habilitado; no se modificaron credenciales ni se crearon bypasses/sharelinks. No usar conectores de fetch que creen enlaces temporales.
+
+Se recuperaron del deployment correctivo los 1.660 archivos exactos por API autenticada de fuentes, sin build/preparación/generadores: `/private/tmp/sollahms-recorridos-recovery/output`. Hash inventario `f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0`; 66 cambios / 1.594 idénticos; siete bundles / 57 archivos. No repetir preparación, eliminación ni pruebas históricas. [Recuperación](docs/recorridos-eliminacion-20261115/local-qa-20261115/recovery-report.json).
+
+**QA de 524 combinaciones en curso**, no aprobado aún. Smoke INN a 390 px aprobado con mapa real; runners/caché privados en `/private/tmp/sollahms-recorridos-qa` y suplemento en `/private/tmp/sollahms-recorridos-supplement`. Recuperar checkpoints y continuar; no presentar muestras como 131 fichas verificadas. No hay Production nuevo ni promoción. Producción sigue `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`, aliases apex/www confirmados.
+
+PR #27 permanece abierto y Draft. Contacto PR #28, SHA 967d556 y PR #26 modifican únicamente contacto.html, sin intersección textual con #27; coordinar ambos trabajos antes de integrar/publicar y evitar deployments simultáneos. Los nuevos bundles de Contacto no reemplazan los certificados de Recorridos. La autorización integral condicionada sigue vigente, sin pedirla otra vez.
+
+El texto siguiente es contexto histórico de la sesión anterior; sus bloqueos de CLI/SSO/artefactos ya quedaron resueltos localmente. El prompt previo completo se conserva en [archivo](docs/recorridos-eliminacion-20261115/local-qa-20261115/NEXT-PROMPT-anterior.md).
+
+---
+
+## Contexto histórico anterior al acceso local
 
 Continuar la verificación y publicación autorizada de Sollahms. La autorización integral vigente comprende corrección acotada, Previews privadas, QA, Production aislado sin dominios y promoción final sólo después de aprobar todos los controles. No pedirla de nuevo. Conservar SSO y credenciales; no crear bypasses ni enlaces temporales de compartición.
 

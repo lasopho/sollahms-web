@@ -1,0 +1,30 @@
+{
+  "deployment": "dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi",
+  "config_bytes": 3916,
+  "config_sha1": "04e9bcfbdaedafe692af92f3409844151fd82ab3",
+  "config_sha256": "ef32ad5c7a069d7de482a7a92f5022a0c852cd0b9b896a735a48bd12bae71f05",
+  "config_version": 3,
+  "crons": [],
+  "function_bundles": 7,
+  "function_files": 57,
+  "runtime": "nodejs24.x",
+  "embedded_function_environment": {},
+  "source_suffix_route": {
+    "handle": "miss",
+    "src": "^/api/(.+)(?:\\.(?:mjs))$",
+    "dest": "/api/$1",
+    "check": true,
+    "meaning": "The .mjs API suffix maps to the registered function endpoint; a JSON method-rejection response at /api/contact.mjs is execution, not served source."
+  },
+  "safe_remote_method_matrix": [
+    {"endpoint": "/api/advisory", "method": "GET", "expected_status": 405},
+    {"endpoint": "/api/booking-availability", "method": "GET", "expected_status": 503, "policy": "request-only"},
+    {"endpoint": "/api/booking-create", "method": "GET", "expected_status": 503, "policy": "request-only"},
+    {"endpoint": "/api/collaboration", "method": "GET", "expected_status": 405},
+    {"endpoint": "/api/contact", "method": "GET", "expected_status": 405},
+    {"endpoint": "/api/orientation-contact", "method": "GET", "expected_status": 405},
+    {"endpoint": "/api/uf", "method": "HEAD", "expected_status": 405, "guard": "The handler rejects all methods other than GET before service.resolve; no UF provider request."}
+  ],
+  "historical_tests_repeated": false,
+  "new_handlers_executed_by_recovery": false
+}
