@@ -1,0 +1,2646 @@
+{
+  "fecha_auditoria": "2026-11-16",
+  "ambito": "Leben exclusivamente; lectura de implementación y búsqueda documental",
+  "base_local": {
+    "ruta": "/Users/luissandoval/Documents/sollahms-web",
+    "head": "dfa5b5b73173b246fd29921ad3514fa53e4bf0c4",
+    "catalogo_filas": 131,
+    "leben_etiquetado": 14,
+    "leben_excluyendo_parque_germania": 13,
+    "no_vendido_segun_snapshot": 12,
+    "own_vendido_incluido": true,
+    "parque_germania_inmobiliaria_auditada": "ESEPE",
+    "nota": "Catálogo fuente local con cambios sin commit; no se modifica. No afirmar que las 131 filas son ofertas activas."
+  },
+  "base_remota": {
+    "url": "https://github.com/lasopho/sollahms-web/blob/main/data/proyectos.json",
+    "blob_sha": "408adf254b9c84684a8bb01a15962167564475c1",
+    "filas": 134,
+    "leben_etiquetado": 14,
+    "diferencia": "main remoto contiene 134 frente a131 local. El árbol local origin/main apunta al12/10/2026 y no es una prueba del remoto actual. No se verificó el sitio público.",
+    "slugs_ausentes_en_snapshot_local": [
+      "atelier-prat-oficinas",
+      "corrientes-oficinas",
+      "vergara-domeyko"
+    ],
+    "slugs_solo_snapshot_local": []
+  },
+  "archivos_solicitados": [
+    {
+      "archivo": "data/amenities.json",
+      "en_checkout": false,
+      "en_HEAD": false,
+      "historial_referencias_locales": "git log --all --oneline sobre los siete paths sin resultados",
+      "remoto": "404 en lectura directa GitHub default main; 16/11/2026"
+    },
+    {
+      "archivo": "data/project-features.json",
+      "en_checkout": false,
+      "en_HEAD": false,
+      "historial_referencias_locales": "git log --all --oneline sobre los siete paths sin resultados",
+      "remoto": "404 en lectura directa GitHub default main; 16/11/2026"
+    },
+    {
+      "archivo": "data/catalog-facets.json",
+      "en_checkout": false,
+      "en_HEAD": false,
+      "historial_referencias_locales": "git log --all --oneline sobre los siete paths sin resultados",
+      "remoto": "404 en lectura directa GitHub default main; 16/11/2026"
+    },
+    {
+      "archivo": "scripts/catalog_property_facts.py",
+      "en_checkout": false,
+      "en_HEAD": false,
+      "historial_referencias_locales": "git log --all --oneline sobre los siete paths sin resultados",
+      "remoto": "404 en lectura directa GitHub default main; 16/11/2026"
+    },
+    {
+      "archivo": "scripts/build-catalog-facets.py",
+      "en_checkout": false,
+      "en_HEAD": false,
+      "historial_referencias_locales": "git log --all --oneline sobre los siete paths sin resultados",
+      "remoto": "404 en lectura directa GitHub default main; 16/11/2026"
+    },
+    {
+      "archivo": "docs/advanced-filters-20261029/README.md",
+      "en_checkout": false,
+      "en_HEAD": false,
+      "historial_referencias_locales": "git log --all --oneline sobre los siete paths sin resultados",
+      "remoto": "404 en lectura directa GitHub default main; 16/11/2026"
+    },
+    {
+      "archivo": "docs/advanced-filters-20261029/coverage.json",
+      "en_checkout": false,
+      "en_HEAD": false,
+      "historial_referencias_locales": "git log --all --oneline sobre los siete paths sin resultados",
+      "remoto": "404 en lectura directa GitHub default main; 16/11/2026"
+    }
+  ],
+  "implementacion_actual": {
+    "archivo": "proyectos.html",
+    "fuente_datos": "/data/proyectos.json",
+    "controles_lineas": [
+      162,
+      170
+    ],
+    "predicado_lineas": [
+      339,
+      349
+    ],
+    "carga_datos_linea": 384,
+    "controles": [
+      "buscar nombre/inmobiliaria/comuna/región/dirección/slug",
+      "tipo de activo",
+      "región",
+      "comuna",
+      "estado comercial",
+      "precio máximo UF",
+      "orden por precio"
+    ],
+    "precio_semantica": "Numeric finite and <= max. Sin precio se excluye al poner máximo. Orden coloca desconocidos al final. No verifica oferta vigente.",
+    "busqueda_no_usa": [
+      "amenities",
+      "tipologias",
+      "superficies",
+      "fecha de entrega"
+    ],
+    "tipo_activo_default": "project.tipoActivo ?? Residencial",
+    "entrega": "Solo exhibida, sin filtro año ni semestre.",
+    "nota": "Cobertura de datos y cobertura de filtros se reportan separadas; no asignar 0% por falta de datos a un filtro inexistente."
+  },
+  "cobertura": [
+    {
+      "campo": "precio_desde_uf",
+      "filtra_actualmente": true,
+      "fuente": "data/proyectos.json:precioDesdeUF",
+      "proyectos_con_valor_local": 12,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 12,
+      "denominador_no_vendido": 12,
+      "observaciones": "Precio máximo y orden; sin valor el filtro con tope excluye la fila y el orden la deja al final.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "tipo_propiedad",
+      "filtra_actualmente": false,
+      "fuente": "sin campo estructurado",
+      "proyectos_con_valor_local": 0,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 0,
+      "denominador_no_vendido": 12,
+      "observaciones": "No equivale a tipoActivo. Departamentos debe acreditarse con documentos.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "tipo_activo_explicito",
+      "filtra_actualmente": true,
+      "fuente": "data/proyectos.json:tipoActivo",
+      "proyectos_con_valor_local": 0,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 0,
+      "denominador_no_vendido": 12,
+      "observaciones": "El código usa (project.tipoActivo ?? Residencial). Los 13 pasan como Residencial por valor predeterminado, sin campo explícito.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "dormitorios",
+      "filtra_actualmente": false,
+      "fuente": "data/fichas-proyectos.json:specs.dormitorios",
+      "proyectos_con_valor_local": 13,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 12,
+      "denominador_no_vendido": 12,
+      "observaciones": "Rangos textuales del proyecto; no modelos ni oferta de unidades. No existe filtro.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "banos",
+      "filtra_actualmente": false,
+      "fuente": "data/fichas-proyectos.json:specs.banos",
+      "proyectos_con_valor_local": 12,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 11,
+      "denominador_no_vendido": 12,
+      "observaciones": "Indigo y Bold se refieren a una unidad concreta. Nordico solo acredita 1 baño de unidad 101 en fieldEvidence, no en specs.banos. No existe filtro.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "superficie_util_m2",
+      "filtra_actualmente": false,
+      "fuente": "data/fichas-proyectos.json:specs.utilM2",
+      "proyectos_con_valor_local": 0,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 0,
+      "denominador_no_vendido": 12,
+      "observaciones": "Nunca usar superficieDesdeM2 como útil. No existe filtro.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "superficie_total_m2",
+      "filtra_actualmente": false,
+      "fuente": "data/fichas-proyectos.json:specs.totalM2",
+      "proyectos_con_valor_local": 0,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 0,
+      "denominador_no_vendido": 12,
+      "observaciones": "Nunca usar superficieDesdeM2 como total. No existe filtro.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "terraza_m2",
+      "filtra_actualmente": false,
+      "fuente": "sin campo estructurado",
+      "proyectos_con_valor_local": 0,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 0,
+      "denominador_no_vendido": 12,
+      "observaciones": "No existe filtro. Presencia cualitativa no acredita área.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "jardin_privado_m2",
+      "filtra_actualmente": false,
+      "fuente": "sin campo estructurado",
+      "proyectos_con_valor_local": 0,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 0,
+      "denominador_no_vendido": 12,
+      "observaciones": "No existe filtro. Jardín interior de área común no es jardín privado.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "terreno_m2",
+      "filtra_actualmente": false,
+      "fuente": "data/fichas-proyectos.json:specs.terrenoM2",
+      "proyectos_con_valor_local": 0,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 0,
+      "denominador_no_vendido": 12,
+      "observaciones": "No confundir terreno del proyecto con terreno privativo por modelo.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "amenities",
+      "filtra_actualmente": false,
+      "fuente": "data/proyectos.json:amenities",
+      "proyectos_con_valor_local": 13,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 12,
+      "denominador_no_vendido": 12,
+      "observaciones": "Listas disponibles y mostradas en fichas; no las consulta el filtro ni la búsqueda libre.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "entrega",
+      "filtra_actualmente": false,
+      "fuente": "data/proyectos.json:entrega",
+      "proyectos_con_valor_local": 10,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 9,
+      "denominador_no_vendido": 12,
+      "observaciones": "Se muestra en tarjeta. No hay filtro específico ni año/semestre estructurado. Incluye Proyecto entregado de Own.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "estado_comercial",
+      "filtra_actualmente": true,
+      "fuente": "data/proyectos.json:estado",
+      "proyectos_con_valor_local": 13,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 12,
+      "denominador_no_vendido": 12,
+      "observaciones": "Filtro exacto por estado del proyecto o etapas. No excluye Vendido al cargar sin filtros.",
+      "vigencia_comercial_verificada_20261116": false
+    },
+    {
+      "campo": "superficie_general_sin_clasificar",
+      "filtra_actualmente": false,
+      "fuente": "data/proyectos.json:superficieDesdeM2",
+      "proyectos_con_valor_local": 11,
+      "denominador_catalogado": 13,
+      "proyectos_no_vendidos_con_valor": 10,
+      "denominador_no_vendido": 12,
+      "observaciones": "Rango general de encabezado, sin clasificación útil/interior/total. No es cobertura de las métricas requeridas.",
+      "vigencia_comercial_verificada_20261116": false
+    }
+  ],
+  "proyectos": [
+    {
+      "slug": "edificio-indi",
+      "proyecto": "Edificio Indi",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 2560,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "1–2",
+        "banos": "1–2"
+      },
+      "superficie_general_no_clasificada_m2": 31,
+      "estado": "Entrega inmediata",
+      "entrega": "Inmediata",
+      "amenities": [
+        "Lounge & Bar",
+        "Coffee & Work",
+        "Training Zone",
+        "Quinchos panorámicos",
+        "Piscina",
+        "Laundry Room",
+        "Juegos infantiles",
+        "Bike Parking"
+      ],
+      "fuente_url_registrada": "https://indi.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 31–57 m²; no se asigna a ambas categorías. ",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-baum",
+      "proyecto": "Edificio BAUM",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 2844,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "1–2",
+        "banos": "1–2"
+      },
+      "superficie_general_no_clasificada_m2": 33,
+      "estado": "Venta en verde",
+      "entrega": null,
+      "amenities": [
+        "Cowork",
+        "Quinchos en rooftop",
+        "Training Zone",
+        "Piscina",
+        "Juegos infantiles",
+        "Salón gourmet",
+        "Laundry Room",
+        "Pet spa",
+        "Bike Parking",
+        "Bodega e-commerce",
+        "Pet zone",
+        "Áreas verdes",
+        "E-lockers",
+        "Pool bar",
+        "Sky bar"
+      ],
+      "fuente_url_registrada": "https://baum.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 33–58 m²; no se asigna a ambas categorías. ",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 9816,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "2 dormitorios",
+        "3 dormitorios",
+        "4 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "2–4",
+        "banos": "2–4"
+      },
+      "superficie_general_no_clasificada_m2": null,
+      "estado": "Venta en verde",
+      "entrega": "Primer semestre 2027",
+      "amenities": [
+        "Jardín interior",
+        "Bodega náutica",
+        "Rooftop con piscina temperada y jacuzzi",
+        "Training Zone",
+        "Quincho",
+        "Lounge"
+      ],
+      "fuente_url_registrada": "https://innpuertochico.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. La ficha destacada anterior indicaba diciembre 2026 y UF 9.415; actualmente la fuente indica primer semestre 2027 y desde UF 9.816. Superficie 78 m² del catálogo anterior no corroborada como mínimo vigente. Tour hQ8Fm33FqFY asociado expresamente a esta ficha oficial. Terminaciones corroboradas en DOM: Franke, Paini, Hansgrohe, ultracompacto travertino y puertas enchapadas de encina; otros materiales pendientes.",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-suecia",
+      "proyecto": "Edificio Suecia",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 8247,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "2 dormitorios",
+        "3 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "2–3",
+        "banos": "2–3"
+      },
+      "superficie_general_no_clasificada_m2": 74,
+      "estado": "Entrega inmediata",
+      "entrega": "Inmediata",
+      "amenities": [
+        "Lounge & Bar",
+        "Coffee & Work",
+        "Fun Zone",
+        "Training Zone",
+        "Quinchos",
+        "Piscina",
+        "Kids Zone"
+      ],
+      "fuente_url_registrada": "https://suecia.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 74–139 m²; no se asigna a ambas categorías. Dirección oficial Tranquila 2323 difiere de Tranquila 2307 del catálogo anterior. Precio actualizado UF 8.247. Mantener estructura de ficha destacada.",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "capitanes",
+      "proyecto": "Capitanes",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 7662,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "2 dormitorios",
+        "3 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "2–3",
+        "banos": "2–3"
+      },
+      "superficie_general_no_clasificada_m2": 67,
+      "estado": "Entrega inmediata",
+      "entrega": "Inmediata",
+      "amenities": [
+        "Lounge",
+        "Training Zone",
+        "Bike Parking",
+        "Quincho",
+        "Piscina",
+        "Bodega e-commerce"
+      ],
+      "fuente_url_registrada": "https://capitanes.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 67–173 m²; no se asigna a ambas categorías. ",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-argomedo",
+      "proyecto": "Edificio Argomedo",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 3790,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "2 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "2",
+        "banos": "2"
+      },
+      "superficie_general_no_clasificada_m2": null,
+      "estado": "Entrega inmediata",
+      "entrega": "Inmediata",
+      "amenities": [
+        "Coffee & Work",
+        "Bar Zone",
+        "Training Zone",
+        "Laundry Room",
+        "Bike Parking",
+        "2 quinchos en azotea"
+      ],
+      "fuente_url_registrada": "https://edificioargomedo.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 32–49 m²; no se asigna a ambas categorías. Modelos de 1 dormitorio figuran vendidos; modelos disponibles B/C son 2D/2B. Rango superficial del encabezado corresponde al proyecto general, no al mínimo disponible de 2D.",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-mood",
+      "proyecto": "Edificio Mood",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 2750,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "1–2",
+        "banos": "1–2"
+      },
+      "superficie_general_no_clasificada_m2": 30,
+      "estado": "Entrega inmediata",
+      "entrega": "Inmediata",
+      "amenities": [
+        "4 quinchos panorámicos",
+        "Piscina",
+        "Training Zone",
+        "Cowork",
+        "Salón gourmet",
+        "Pet spa",
+        "Laundry Room",
+        "Bike Parking",
+        "Bodega e-commerce"
+      ],
+      "fuente_url_registrada": "https://mood.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 30–48 m²; no se asigna a ambas categorías. ",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-indigo",
+      "proyecto": "Edificio Índigo",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 8905,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "2 dormitorios",
+        "3 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "2–3",
+        "banos": "2 (unidad 311)"
+      },
+      "superficie_general_no_clasificada_m2": 68,
+      "estado": "Entrega inmediata",
+      "entrega": "Inmediata",
+      "amenities": [
+        "Lounge & Wine Bar",
+        "Piscina temperada & Wellness",
+        "Quincho techado interior",
+        "Training Zone"
+      ],
+      "fuente_url_registrada": "https://indigo.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 68–106 m²; no se asigna a ambas categorías. ",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-santo",
+      "proyecto": "Edificio Santo",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 3756,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "2 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "2",
+        "banos": "2"
+      },
+      "superficie_general_no_clasificada_m2": 45,
+      "estado": "Entrega inmediata",
+      "entrega": "Inmediata",
+      "amenities": [
+        "Coffee & Work",
+        "Bar Zone",
+        "Quinchos en azotea",
+        "Training Zone",
+        "Laundry Room",
+        "Bike Parking"
+      ],
+      "fuente_url_registrada": "https://edificiosanto.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 45–50 m²; no se asigna a ambas categorías. ",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-living-town",
+      "proyecto": "Edificio Living Town",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 2812,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "1–2",
+        "banos": "1–2"
+      },
+      "superficie_general_no_clasificada_m2": 31,
+      "estado": "Venta en verde",
+      "entrega": null,
+      "amenities": [
+        "Hall",
+        "Cowork",
+        "Game Room",
+        "BBQ Rooftop",
+        "Salón gourmet",
+        "Training Zone",
+        "Laundry Room"
+      ],
+      "fuente_url_registrada": "https://livingtown.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 31–52 m²; no se asigna a ambas categorías. Fecha septiembre 2027 del catálogo anterior no corroborada actualmente.",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-bold",
+      "proyecto": "Edificio Bold",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 3521,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "1–2",
+        "banos": "1 (unidad 204)"
+      },
+      "superficie_general_no_clasificada_m2": 22,
+      "estado": "Entrega inmediata",
+      "entrega": "Inmediata",
+      "amenities": [
+        "Lounge",
+        "Coffee & Work",
+        "Laundry Room",
+        "Training Zone",
+        "Bike Parking",
+        "Bodega e-commerce"
+      ],
+      "fuente_url_registrada": "https://bold.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 22–64 m²; no se asigna a ambas categorías. ",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "own",
+      "proyecto": "Own",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": false,
+      "precio_desde_uf": null,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "1–2",
+        "banos": "1–2"
+      },
+      "superficie_general_no_clasificada_m2": 47,
+      "estado": "Vendido",
+      "entrega": "Proyecto entregado",
+      "amenities": [
+        "Lounge",
+        "Training Zone",
+        "4 quinchos panorámicos",
+        "Piscina",
+        "Laundry Room",
+        "Bicicleteros",
+        "Bodega e-commerce"
+      ],
+      "fuente_url_registrada": "https://own.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-09",
+      "sourceNotes": "Precio de unidad específica informado actualmente, sujeto a disponibilidad y condiciones de la inmobiliaria. El rango de superficie del encabezado no identifica útil o total: 47–55 m²; no se asigna a ambas categorías. El catálogo vigente de ileben.cl señala PROYECTO VENDIDO; la landing mantiene precio residual UF 4.190. No se publica como oferta disponible.",
+      "priceNote": null,
+      "filtrado_efectivo": {
+        "precio": false,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    },
+    {
+      "slug": "edificio-nordico",
+      "proyecto": "Edificio Nórdico",
+      "inmobiliaria": "Leben",
+      "incluido_en_catalogo": true,
+      "no_vendido_segun_snapshot": true,
+      "precio_desde_uf": 4746,
+      "tipo_activo_explicito": null,
+      "tipo_activo_aplicado_por_codigo": "Residencial",
+      "tipo_propiedad_explicito": null,
+      "tipologias": [
+        "1 dormitorio",
+        "2 dormitorios",
+        "3 dormitorios"
+      ],
+      "specs": {
+        "utilM2": null,
+        "totalM2": null,
+        "terrenoM2": null,
+        "dormitorios": "1–3",
+        "banos": null
+      },
+      "superficie_general_no_clasificada_m2": 42,
+      "estado": "Venta en blanco",
+      "entrega": null,
+      "amenities": [
+        "Quincho techado",
+        "Salón gourmet",
+        "Piscina temperada",
+        "Hidromasaje",
+        "Sauna",
+        "Gimnasio",
+        "Patio interior",
+        "Bicicletero"
+      ],
+      "fuente_url_registrada": "https://nordico.ileben.cl/",
+      "fecha_verificacion_historica": "2026-10-13",
+      "sourceNotes": "Fuente oficial sin brochure ni sección de plantas encontrada. El rango 42–120 m² no distingue superficie útil o total. Desde UF 4.746 corresponde sólo a unidad 101, 1 dormitorio y 1 baño, y excluye estacionamiento y bodega; valor sujeto a confirmación. No inferir características materiales desde renders. La ubicación 360 está asociada al proyecto, pero su funcionamiento y alcance quedan por revisar.",
+      "priceNote": "Desde UF 4.746 para la unidad 101, de 1 dormitorio y 1 baño. No incluye estacionamiento ni bodega. Confirma disponibilidad y condiciones comerciales.",
+      "filtrado_efectivo": {
+        "precio": true,
+        "tipo_activo_default": true,
+        "estado": true,
+        "region": true,
+        "comuna": true,
+        "dormitorios": false,
+        "banos": false,
+        "util": false,
+        "total": false,
+        "terraza": false,
+        "jardin": false,
+        "amenities": false,
+        "entrega": false
+      }
+    }
+  ],
+  "fuentes_huellas": [
+    {
+      "archivo": "proyectos.html",
+      "sha256": "c8c15f965f9d644a6d292c76052c124321eb3d68258ca44707474fb33f58020a"
+    },
+    {
+      "archivo": "data/proyectos.json",
+      "sha256": "8f1c7ea7021cb630c4144fb7612d741d4c472d3534189da7b09e1299580bed78"
+    },
+    {
+      "archivo": "data/fichas-proyectos.json",
+      "sha256": "65d7bd42907f627ffe8cde519c5bb76a9b93db64b774401c9a7042d4551034e3"
+    },
+    {
+      "archivo": "data/brochures-leben.json",
+      "sha256": "3b46eebfac066831ecb8026556d2d4aeca0374ad513e2abb2b9a186c66985919"
+    },
+    {
+      "archivo": "docs/leben-brochures-inventario.md",
+      "sha256": "0eed0a508d1a1c90ef771198d92a145bb9ba9f5c8a5b7f7db02c11b185f719f1"
+    },
+    {
+      "archivo": "docs/nordico-y-parque-germania-2026-10-13.md",
+      "sha256": "dacafbc65c35f5bb1231f508616c1ed5a679907142fb46b994c408a8b8e07a98"
+    }
+  ],
+  "fuentes_propietario": {
+    "tabla_historica": {
+      "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+      "sha256": "f878fa710b54226080b83feea53e07a8de8b114181b2097c772f0e4f79558de7",
+      "fecha_documental": null,
+      "linea_prioridad_precios": 65,
+      "filas": [
+        {
+          "slug": "edificio-baum",
+          "nombre": "Edificio BAUM",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "La Florida",
+          "region": "Región Metropolitana",
+          "direccion": null,
+          "estado_comercial": "Entrega futura",
+          "entrega": "Primer semestre 2028",
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precio_desde_uf": 3843.0,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "nombre": "INN Puerto Chico",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Puerto Varas",
+          "region": "Los Lagos",
+          "direccion": "Vicente Pérez Rosales 991",
+          "estado_comercial": "Entrega futura",
+          "entrega": "Diciembre 2026",
+          "tipologias": [
+            "2 dormitorios",
+            "3 dormitorios",
+            "4 dormitorios"
+          ],
+          "precio_desde_uf": 9415.0,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "nombre": "Edificio Suecia",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Providencia",
+          "region": "Región Metropolitana",
+          "direccion": "Tranquila 2307",
+          "estado_comercial": "Entrega inmediata",
+          "entrega": "Inmediata",
+          "tipologias": [
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "precio_desde_uf": 10885.0,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "nombre": "Capitanes",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Providencia",
+          "region": "Región Metropolitana",
+          "direccion": null,
+          "estado_comercial": "Entrega inmediata",
+          "entrega": "Inmediata",
+          "tipologias": [
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "precio_desde_uf": 8347.0,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "nombre": "Parque Germania",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Puerto Montt",
+          "region": "Los Lagos",
+          "direccion": null,
+          "estado_comercial": "Entrega inmediata",
+          "entrega": "Inmediata",
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "precio_desde_uf": 3684.56,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "nombre": "Edificio Argomedo",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Santiago",
+          "region": "Región Metropolitana",
+          "direccion": null,
+          "estado_comercial": "Entrega inmediata",
+          "entrega": "Inmediata",
+          "tipologias": [
+            "2 dormitorios"
+          ],
+          "precio_desde_uf": 4212.0,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "nombre": "Edificio Mood",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "La Florida",
+          "region": "Región Metropolitana",
+          "direccion": null,
+          "estado_comercial": "Entrega futura",
+          "entrega": "Primer semestre 2026",
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precio_desde_uf": 3855.33,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "nombre": "Edificio Índigo",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Puerto Varas",
+          "region": "Los Lagos",
+          "direccion": null,
+          "estado_comercial": "Entrega inmediata",
+          "entrega": "Inmediata",
+          "tipologias": [
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "precio_desde_uf": 9000.1,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "nombre": "Edificio Santo",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Santiago",
+          "region": "Región Metropolitana",
+          "direccion": null,
+          "estado_comercial": "Entrega inmediata",
+          "entrega": "Inmediata",
+          "tipologias": [
+            "2 dormitorios"
+          ],
+          "precio_desde_uf": 4023.0,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "nombre": "Edificio Living Town",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Santiago",
+          "region": "Región Metropolitana",
+          "direccion": null,
+          "estado_comercial": "Entrega futura",
+          "entrega": "Septiembre 2027",
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precio_desde_uf": 3949.0,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "nombre": "Edificio Bold",
+          "inmobiliaria_en_fuente": "Leben",
+          "comuna": "Valdivia",
+          "region": "Los Ríos",
+          "direccion": null,
+          "estado_comercial": "Entrega futura",
+          "entrega": "Junio 2026",
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precio_desde_uf": 4493.0,
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado_evidencia_comercial": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        }
+      ],
+      "facts": [
+        {
+          "slug": "edificio-baum",
+          "campo": "nombre",
+          "valor": "Edificio BAUM",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-baum",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-baum",
+          "campo": "comuna",
+          "valor": "La Florida",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-baum",
+          "campo": "region",
+          "valor": "Región Metropolitana",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-baum",
+          "campo": "estado_comercial",
+          "valor": "Entrega futura",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-baum",
+          "campo": "entrega",
+          "valor": "Primer semestre 2028",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-baum",
+          "campo": "tipologias",
+          "valor": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-baum",
+          "campo": "precio_desde_uf",
+          "valor": 3843.0,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 107,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "nombre",
+          "valor": "INN Puerto Chico",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "comuna",
+          "valor": "Puerto Varas",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "region",
+          "valor": "Los Lagos",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "direccion",
+          "valor": "Vicente Pérez Rosales 991",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "estado_comercial",
+          "valor": "Entrega futura",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "entrega",
+          "valor": "Diciembre 2026",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "tipologias",
+          "valor": [
+            "2 dormitorios",
+            "3 dormitorios",
+            "4 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "precio_desde_uf",
+          "valor": 9415.0,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 109,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "nombre",
+          "valor": "Edificio Suecia",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "comuna",
+          "valor": "Providencia",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "region",
+          "valor": "Región Metropolitana",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "direccion",
+          "valor": "Tranquila 2307",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "estado_comercial",
+          "valor": "Entrega inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "entrega",
+          "valor": "Inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "tipologias",
+          "valor": [
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-suecia",
+          "campo": "precio_desde_uf",
+          "valor": 10885.0,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 110,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "campo": "nombre",
+          "valor": "Capitanes",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "campo": "comuna",
+          "valor": "Providencia",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "campo": "region",
+          "valor": "Región Metropolitana",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "campo": "estado_comercial",
+          "valor": "Entrega inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "campo": "entrega",
+          "valor": "Inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "campo": "tipologias",
+          "valor": [
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "capitanes",
+          "campo": "precio_desde_uf",
+          "valor": 8347.0,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 111,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "campo": "nombre",
+          "valor": "Parque Germania",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "campo": "comuna",
+          "valor": "Puerto Montt",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "campo": "region",
+          "valor": "Los Lagos",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "campo": "estado_comercial",
+          "valor": "Entrega inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "campo": "entrega",
+          "valor": "Inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "campo": "tipologias",
+          "valor": [
+            "1 dormitorio",
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "parque-germania",
+          "campo": "precio_desde_uf",
+          "valor": 3684.56,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 112,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "campo": "nombre",
+          "valor": "Edificio Argomedo",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "campo": "comuna",
+          "valor": "Santiago",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "campo": "region",
+          "valor": "Región Metropolitana",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "campo": "estado_comercial",
+          "valor": "Entrega inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "campo": "entrega",
+          "valor": "Inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "campo": "tipologias",
+          "valor": [
+            "2 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-argomedo",
+          "campo": "precio_desde_uf",
+          "valor": 4212.0,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 113,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "campo": "nombre",
+          "valor": "Edificio Mood",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "campo": "comuna",
+          "valor": "La Florida",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "campo": "region",
+          "valor": "Región Metropolitana",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "campo": "estado_comercial",
+          "valor": "Entrega futura",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "campo": "entrega",
+          "valor": "Primer semestre 2026",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "campo": "tipologias",
+          "valor": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-mood",
+          "campo": "precio_desde_uf",
+          "valor": 3855.33,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 114,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "campo": "nombre",
+          "valor": "Edificio Índigo",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "campo": "comuna",
+          "valor": "Puerto Varas",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "campo": "region",
+          "valor": "Los Lagos",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "campo": "estado_comercial",
+          "valor": "Entrega inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "campo": "entrega",
+          "valor": "Inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "campo": "tipologias",
+          "valor": [
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-indigo",
+          "campo": "precio_desde_uf",
+          "valor": 9000.1,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 115,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "campo": "nombre",
+          "valor": "Edificio Santo",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "campo": "comuna",
+          "valor": "Santiago",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "campo": "region",
+          "valor": "Región Metropolitana",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "campo": "estado_comercial",
+          "valor": "Entrega inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "campo": "entrega",
+          "valor": "Inmediata",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "campo": "tipologias",
+          "valor": [
+            "2 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-santo",
+          "campo": "precio_desde_uf",
+          "valor": 4023.0,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 117,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "campo": "nombre",
+          "valor": "Edificio Living Town",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "campo": "comuna",
+          "valor": "Santiago",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "campo": "region",
+          "valor": "Región Metropolitana",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "campo": "estado_comercial",
+          "valor": "Entrega futura",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "campo": "entrega",
+          "valor": "Septiembre 2027",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "campo": "tipologias",
+          "valor": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-living-town",
+          "campo": "precio_desde_uf",
+          "valor": 3949.0,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 118,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "campo": "nombre",
+          "valor": "Edificio Bold",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "campo": "inmobiliaria_en_fuente",
+          "valor": "Leben",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "campo": "comuna",
+          "valor": "Valdivia",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "campo": "region",
+          "valor": "Los Ríos",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "campo": "estado_comercial",
+          "valor": "Entrega futura",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "campo": "entrega",
+          "valor": "Junio 2026",
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "campo": "tipologias",
+          "valor": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "unidad": "",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        },
+        {
+          "slug": "edificio-bold",
+          "campo": "precio_desde_uf",
+          "valor": 4493.0,
+          "unidad": "UF",
+          "archivo": "/Users/luissandoval/.codex/attachments/583827f8-f49f-4336-8328-84568a0a3ad6/Texto pegado.txt",
+          "linea": 119,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Información suministrada directamente por propietario para la importación histórica; vigencia no declarada. Prioridad frente a campañas externas no convierte el dato en oferta vigente. Parque Germania se conserva solo como contradicción de atribución y se excluye Leben."
+        }
+      ]
+    },
+    "inn_encargo_historico": {
+      "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+      "sha256": "04f385226da49ed1c6256568ede1995364c049608a6b8b299ad0db6ca95aa1c7",
+      "fecha_documental": null,
+      "facts": [
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "inmobiliaria",
+          "valor": "Leben",
+          "unidad": "",
+          "texto": "Leben;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 65,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "nombre",
+          "valor": "INN Puerto Chico",
+          "unidad": "",
+          "texto": "INN Puerto Chico;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 66,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "direccion",
+          "valor": "Vicente Pérez Rosales 991, Puerto Varas",
+          "unidad": "",
+          "texto": "Vicente Pérez Rosales 991, Puerto Varas;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 67,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "entorno",
+          "valor": "Frente al Lago Llanquihue",
+          "unidad": "",
+          "texto": "frente al Lago Llanquihue;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 68,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "tipo_propiedad",
+          "valor": "Departamentos, unidades con patio privado y dúplex",
+          "unidad": "",
+          "texto": "departamentos, unidades con patio privado y dúplex;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 69,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "dormitorios_documentados",
+          "valor": "2 a 5",
+          "unidad": "dormitorios",
+          "texto": "2 a 5 dormitorios;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 70,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "superficie_publicada_con_patio_jardin_exclusivo",
+          "valor": "78 a 242",
+          "unidad": "m²",
+          "texto": "78 a 242 m² considerando patio y jardín exclusivo;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 71,
+          "fecha_documental": null,
+          "estado": "HISTÓRICO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "arquitectura",
+          "valor": "Otero Varas",
+          "unidad": "",
+          "texto": "arquitectura respaldada por Otero Varas;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 72,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.piscina_climatizada",
+          "valor": true,
+          "unidad": "",
+          "texto": "piscina climatizada;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 73,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.quinchos",
+          "valor": true,
+          "unidad": "",
+          "texto": "quinchos;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 74,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.sauna",
+          "valor": true,
+          "unidad": "",
+          "texto": "sauna;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 75,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.gimnasio",
+          "valor": true,
+          "unidad": "",
+          "texto": "gimnasio;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 76,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.tinas_hidromasaje",
+          "valor": true,
+          "unidad": "",
+          "texto": "tinas de hidromasaje;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 77,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.fogones",
+          "valor": true,
+          "unidad": "",
+          "texto": "fogones;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 78,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.lounge_panoramico",
+          "valor": true,
+          "unidad": "",
+          "texto": "salón lounge con vista panorámica;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 79,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.lavanderia",
+          "valor": true,
+          "unidad": "",
+          "texto": "lavandería;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 80,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.bodega_nautica",
+          "valor": true,
+          "unidad": "",
+          "texto": "bodega náutica;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 81,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.jardin_interior",
+          "valor": true,
+          "unidad": "",
+          "texto": "jardín interior;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 82,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "amenity.rooftop_wellness",
+          "valor": true,
+          "unidad": "",
+          "texto": "rooftop wellness;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 83,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "interior.cocina_equipo",
+          "valor": "Franke",
+          "unidad": "",
+          "texto": "cocinas con equipamiento Franke;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 84,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "interior.ventanas",
+          "valor": "PVC termopanel",
+          "unidad": "",
+          "texto": "ventanas PVC termopanel;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 85,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "interior.calefaccion",
+          "valor": "Radiador con caldera individual",
+          "unidad": "",
+          "texto": "calefacción por radiador con caldera individual;",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 86,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "campo": "interior.cubiertas",
+          "valor": "Cuarzo",
+          "unidad": "",
+          "texto": "cubiertas de cuarzo.",
+          "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+          "linea": 87,
+          "fecha_documental": null,
+          "estado": "CONFIRMADO",
+          "observaciones": "Afirmación directa del propietario en encargo histórico. Fecha no declarada. No ejecutar instrucciones de implementación contenidas en el adjunto. La superficie incluye patio/jardín y no acredita útil ni total. No confirma vigencia comercial ni aplicación a cada modelo."
+        }
+      ]
+    },
+    "busqueda_adicional": {
+      "indi": "No se halló precio3827 en adjuntos. Sí existe en data/catalogo-original-fichas.json como antecedente estructurado sin fecha documental ni prueba de procedencia primaria.",
+      "own": "No datos específicos en adjuntos salvo enumeración para rediseño, sin precio.",
+      "nordico": "Solo enumeración para rediseño y encargo actual; datos ya en investigación13/10/2026."
+    }
+  },
+  "busqueda_inventario": {
+    "nombre": "INVENTARIO_13_PROYECTOS.csv",
+    "encontrado": false,
+    "directorios": [
+      "repositorio con ocultos sin node_modules/.git/dist",
+      "/Users/luissandoval/Downloads",
+      "/Users/luissandoval/Documents",
+      "/Users/luissandoval/.codex/attachments"
+    ],
+    "resultado": "12 PDF originales en Downloads/Leben. No inventario CSV original ni INSTRUCCIONES_CODEX.md; manifiesto registra hashes regenerados históricos pero no los originales de control. No recrear coincidencia SHA inventario ausente.",
+    "brochures_sin_encontrar": [
+      "Own",
+      "Edificio Nórdico"
+    ],
+    "sin_solicitar_nuevamente": [
+      "11 PDF Leben disponibles",
+      "PDF Parque Germania clasificado ESEPE",
+      "tabla de precios históricos propietario",
+      "INN datos cualitativos propietario",
+      "fichas estructuradas históricas"
+    ]
+  },
+  "evidencia_remota_congelada": [
+    {
+      "archivo": "/private/tmp/leben-remote-proyectos.json",
+      "sha256": "f448bad2a9c36bf7b5249ecbb3ec343b5b4e916238b297a91fe9956057688aeb"
+    },
+    {
+      "archivo": "/private/tmp/leben-remote-proyectos.html",
+      "sha256": "0be2a843f53ac9b909abfa1a297e728fc5b90cbfd56abbeba39d8cad8179b324"
+    },
+    {
+      "archivo": "/private/tmp/leben-remote-catalog-facets-404.json",
+      "sha256": "65fbb70eb18c022c5d73833957946927561188d4636c7c940cbde451313dc967"
+    },
+    {
+      "archivo": "/private/tmp/leben-remote-advanced-filters-readme-404.json",
+      "sha256": "65fbb70eb18c022c5d73833957946927561188d4636c7c940cbde451313dc967"
+    }
+  ],
+  "antecedente_estructurado": {
+    "archivo": "data/catalogo-original-fichas.json",
+    "sha256": "ba8c5bca3dbd747a77e6d3b238d82f4d80a672e7840b0faf45e19d9f77a5ee89",
+    "proyectos": [
+      {
+        "slug": "edificio-indi",
+        "nombre": "Edificio Indi",
+        "inmobiliaria": "Leben",
+        "comuna": "Independencia",
+        "region": "Región Metropolitana",
+        "direccion": "Vallenar 2070",
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": 3827,
+        "detalleUrl": "/edificio-indi.html"
+      },
+      {
+        "slug": "own",
+        "nombre": "Own",
+        "inmobiliaria": "Leben",
+        "comuna": "Ñuñoa",
+        "region": "Región Metropolitana",
+        "direccion": "San Eugenio 567",
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "precioDesdeUF": null,
+        "detalleUrl": "/own.html"
+      }
+    ],
+    "fecha_documental": null,
+    "observaciones": "No se infiere que su fuente primaria sea el propietario. No precios actuales."
+  },
+  "resumen_auditoria": {
+    "fecha_auditoria": "2026-11-16",
+    "proyectos_leben_revisados": 13,
+    "proyectos_no_vendidos_segun_snapshot": 12,
+    "own_vendido": 1,
+    "brochures_leben_completos": 11,
+    "paginas_leben_completas": 82,
+    "pdfs_controlados_sha256": 12,
+    "parque_germania": "Excluido Leben; identidad ESEPE revisada en p.1; bloque ESEPE pendiente",
+    "fuentes_disponibles_examinadas": 21,
+    "hechos_documentales": 679,
+    "hechos_confirmados": 424,
+    "campos_canonicos": 689,
+    "campos_por_estado": {
+      "CONFIRMADO": 209,
+      "CONTRADICTORIO": 7,
+      "DESCONOCIDO": 352,
+      "HISTÓRICO": 47,
+      "PARCIAL": 72,
+      "NO APLICA": 2
+    },
+    "solicitudes_agrupadas": 55,
+    "campos_con_solicitud_propietario": 461,
+    "diferencias_documentales_leben": 7,
+    "diferencias_direccion_criterio_resuelto": 4,
+    "contradicciones_pendientes_leben": 3,
+    "atribucion_esepe_pendiente": 1,
+    "diferencias_historicas_precios_sollahms_catalogo": 10,
+    "precios_vigentes_ratificados_en_esta_fase": 0,
+    "documentos_no_localizados": [
+      "INVENTARIO_13_PROYECTOS.csv",
+      "INSTRUCCIONES_CODEX.md"
+    ]
+  },
+  "interpretacion": "Cobertura de datos del snapshot local y filtros efectivamente implementados se distinguen. Los siete archivos avanzados solicitados no se localizaron; no se inventa su cobertura ni se afirma vigencia/producción."
+}

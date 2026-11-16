@@ -1,0 +1,753 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Proyectos inmobiliarios | Sollahms</title>
+<meta name="description" content="Explora proyectos inmobiliarios disponibles en distintas ciudades de Chile y filtra las alternativas por ubicación y estado.">
+<link rel="canonical" href="https://sollahms.cl/proyectos.html">
+<link rel="icon" type="image/svg+xml" href="/assets/branding/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sollahms">
+<meta property="og:title" content="Proyectos inmobiliarios | Sollahms">
+<meta property="og:description" content="Explora proyectos inmobiliarios disponibles en distintas ciudades de Chile y filtra las alternativas por ubicación y estado.">
+<meta property="og:url" content="https://sollahms.cl/proyectos.html">
+<meta property="og:image" content="https://sollahms.cl/assets/branding/og-sollahms.png">
+<meta property="og:image:alt" content="Sollahms">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proyectos inmobiliarios | Sollahms">
+<meta name="twitter:description" content="Explora proyectos inmobiliarios disponibles en distintas ciudades de Chile y filtra las alternativas por ubicación y estado.">
+<meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms.png">
+<meta name="twitter:image:alt" content="Sollahms">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://sollahms.cl/proyectos.html#collection",
+  "name": "Catálogo de proyectos inmobiliarios Sollahms",
+  "url": "https://sollahms.cl/proyectos.html",
+  "description": "Explora proyectos inmobiliarios disponibles en distintas ciudades de Chile y filtra las alternativas por ubicación y estado.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sollahms",
+    "url": "https://sollahms.cl/"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/index.tailwind.css">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+            .catalog-filters { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+        .catalog-control { width: 100%; min-height: 44px; border: 1px solid #bcc9c3; border-radius: .5rem; padding: .75rem; background: white; color: #00201a; }
+        .catalog-control:focus-visible { outline: 2px solid #005144; outline-offset: 3px; }
+        .catalog-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+        .catalog-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; overflow-wrap: anywhere; background: #fff; border: 1px solid #00322914; border-radius: 1rem; box-shadow: 0 4px 18px #00322908; transition: box-shadow .2s ease, border-color .2s ease; }
+        .catalog-card:hover { border-color: #00322935; box-shadow: 0 8px 26px #00322912; }
+        .catalog-cover { display: block; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #eef2ee; color: #003229; }
+        .catalog-cover-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+        .catalog-cover-placeholder { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; padding: 1rem; text-align: center; background: linear-gradient(135deg, #003229, #154d41); color: #fff; }
+        .catalog-cover-placeholder strong { font-family: Manrope, sans-serif; color: #E9C176; font-size: 1.2rem; letter-spacing: .04em; }
+        .catalog-cover-placeholder span { font-size: .75rem; line-height: 1.5; color: #ffffffbf; }
+        .catalog-card-body { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+        .catalog-card-title { color: #003229; font-size: 1.2rem; line-height: 1.4; margin: 0 0 .8rem; }
+        .catalog-actions { margin-top: auto; padding-top: 1.25rem; }
+        .catalog-details-link { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1rem; border-radius: .5rem; background: #003229; color: #fff; font-size: .875rem; font-weight: 700; text-decoration: none; transition: background .2s ease; }
+        .catalog-details-link:hover { background: #185245; }
+        .catalog-reference { margin-top: .75rem; color: #4b635a; font-size: .8125rem; line-height: 1.6; }
+        .catalog-reference a { color: #003229; text-decoration: underline; text-underline-offset: .2em; }
+        .catalog-directory { padding: 1.25rem; margin-top: 1.5rem; border: 1px solid #bcc9c3; border-radius: .5rem; background: #fff; color: #003229; }
+        .catalog-directory summary { cursor: pointer; font-weight: 700; padding: .5rem 0; }
+        .catalog-directory p { margin: .75rem 0; line-height: 1.6; }
+        .catalog-directory ul { display: grid; gap: .5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+        .catalog-directory a { display: block; padding: .5rem 0; text-decoration: underline; text-underline-offset: .2em; }
+        .catalog-reference a:focus-visible, .catalog-directory a:focus-visible, .catalog-directory summary:focus-visible { outline: 3px solid #005144; outline-offset: 3px; }
+        .catalog-cover:focus-visible, .catalog-details-link:focus-visible { outline: 3px solid #E9C176; outline-offset: -3px; }
+        @media (prefers-reduced-motion: reduce) { .catalog-card, .catalog-details-link { transition: none; } }
+        @media (min-width: 768px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 1024px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .catalog-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; } }
+    </style>
+<link rel="stylesheet" href="/assets/css/purchase-capacity.css">
+</head>
+<body class="text-on-background pt-20">
+<a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-3 focus:shadow-lg focus:rounded">
+  Saltar al contenido
+</a>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-4 md:px-8 h-20" aria-label="Navegación principal">
+<a class="text-2xl font-black tracking-tighter text-emerald-950" href="/">Sollahms</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/#expertise">Expertise</a>
+<a class="text-emerald-950 font-headline font-bold tracking-tight" href="/proyectos.html" aria-current="page">Asset Portafolio</a>
+<a class="text-slate-600 hover:text-emerald-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="/contacto.html">Contacto</a>
+</div>
+<div class="flex items-center gap-2 md:gap-6">
+<a class="bg-tertiary-fixed text-on-tertiary-fixed px-2 md:px-6 py-2 hover:bg-tertiary-fixed-dim transition-all font-bold tracking-tight text-xs md:text-base whitespace-nowrap rounded-lg flex items-center justify-center gap-2" href="/agenda-asesoria.html">Agendar Asesoría <span class="material-symbols-outlined hidden md:inline" aria-hidden="true">calendar_today</span></a>
+<button type="button" class="md:hidden inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-emerald-950 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-900" aria-label="Abrir menú de navegación" aria-controls="mobile-menu" aria-expanded="false">
+<svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</nav>
+<div id="mobile-menu" class="hidden md:hidden absolute top-full inset-x-0 bg-white shadow-lg border-t border-slate-200">
+<nav class="max-w-7xl mx-auto px-4 py-3 flex flex-col" aria-label="Navegación móvil">
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/#expertise">Expertise</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/proyectos.html" aria-current="page">Asset Portafolio</a>
+<a class="px-4 py-3 font-bold text-emerald-950 hover:bg-slate-100 rounded-lg" href="/contacto.html">Contacto</a>
+</nav>
+</div>
+</header>
+<script>
+(() => {
+    const button = document.querySelector('[aria-controls="mobile-menu"]');
+    const menu = document.getElementById('mobile-menu');
+    const closeMenu = () => {
+        menu.classList.add('hidden');
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Abrir menú de navegación');
+    };
+
+    button.addEventListener('click', () => {
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+        menu.classList.toggle('hidden', isOpen);
+        button.setAttribute('aria-expanded', String(!isOpen));
+        button.setAttribute('aria-label', isOpen ? 'Abrir menú de navegación' : 'Cerrar menú de navegación');
+    });
+    menu.addEventListener('click', event => {
+        if (event.target.closest('a')) closeMenu();
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+            closeMenu();
+            button.focus();
+        }
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) closeMenu();
+    });
+})();
+</script>
+<main id="contenido-principal">
+<section class="bg-[#00201a] text-white py-16 md:py-24">
+<div class="max-w-7xl mx-auto px-8">
+<p class="text-sm font-bold tracking-[0.2em] uppercase text-primary-fixed mb-6">ASSET PORTAFOLIO</p>
+<h1 class="text-4xl md:text-6xl font-extrabold mb-6">Catálogo inmobiliario</h1>
+<p class="leading-relaxed">Explora las alternativas disponibles y filtra el catálogo según ubicación o estado del proyecto.</p>
+</div>
+</section>
+<section class="py-16 bg-surface" aria-label="Catálogo de proyectos">
+<div class="max-w-7xl mx-auto px-8">
+<section class="capacity-search" aria-labelledby="capacity-title">
+<div class="capacity-intro"><div><h2 id="capacity-title">Encuentra tu propiedad según tu renta</h2><p>Explora un escenario de compra con tu renta, ahorro y un pie estimado. Puedes seguir usando el catálogo sin ingresar datos financieros.</p></div><button class="capacity-button" id="capacity-toggle" type="button" aria-expanded="false" aria-controls="capacity-form" disabled>Buscar según mi renta</button></div>
+<form id="capacity-form" class="capacity-form" hidden autocomplete="off">
+<div class="capacity-fields">
+<div class="capacity-field"><label for="capacity-income">Renta líquida individual (CLP / mes)</label><input id="capacity-income" type="number" min="1" max="10000000000" step="1" inputmode="numeric" required></div>
+<div class="capacity-field"><label for="capacity-complement">¿Complementar renta?</label><select id="capacity-complement"><option value="no">No</option><option value="yes">Sí</option></select></div>
+<div class="capacity-field" id="capacity-second-wrap" hidden><label for="capacity-second">Renta segunda persona (CLP / mes)</label><input id="capacity-second" type="number" min="1" max="10000000000" step="1" inputmode="numeric" disabled></div>
+<div class="capacity-field"><label for="capacity-debt">Cuotas de deudas mensuales (CLP, opcional)</label><input id="capacity-debt" type="number" min="0" max="10000000000" step="1" inputmode="numeric" placeholder="0"></div>
+<div class="capacity-field"><label for="capacity-savings">¿Cuánto tienes ahorrado para el pie?</label><input id="capacity-savings" type="text" inputmode="numeric" placeholder="$5.000.000" aria-describedby="capacity-savings-help"><p id="capacity-savings-help" class="capacity-field-help">Ingresa tu ahorro actual en pesos chilenos (CLP). Lo convertimos a UF con el valor oficial de hoy; no necesitas calcularlo. Si aún no tienes ahorro, puedes dejarlo en blanco.</p></div>
+<div class="capacity-field"><label for="capacity-monthly">¿Cuánto puedes ahorrar cada mes?</label><input id="capacity-monthly" type="text" inputmode="numeric" placeholder="$0" aria-describedby="capacity-monthly-help"><p id="capacity-monthly-help" class="capacity-field-help">Opcional, en pesos chilenos (CLP). Sumamos este aporte durante el horizonte de compra que elijas. Si lo dejas en blanco, consideramos $0.</p></div>
+<div class="capacity-field"><label for="capacity-horizon">Horizonte de compra</label><select id="capacity-horizon"><option value="0">Inmediata</option><option value="6">6 meses</option><option value="12">12 meses</option><option value="18">18 meses</option><option value="24">24 meses</option><option value="custom">Otro horizonte</option></select><div class="capacity-custom" id="capacity-horizon-wrap" hidden><label for="capacity-horizon-custom">Meses (0 a 600)</label><input id="capacity-horizon-custom" type="number" min="0" max="600" step="1" inputmode="numeric" disabled></div></div>
+<div class="capacity-field"><label for="capacity-pie">Pie estimado</label><select id="capacity-pie"><option value="10">10%</option><option value="15">15%</option><option value="20" selected>20%</option><option value="custom">Otro porcentaje</option></select><div class="capacity-custom" id="capacity-pie-wrap" hidden><label for="capacity-pie-custom">Porcentaje de pie (5 a 90)</label><input id="capacity-pie-custom" type="number" min="5" max="90" step="any" inputmode="decimal" disabled></div></div>
+<div class="capacity-field"><label for="capacity-years">Plazo del crédito</label><select id="capacity-years"><option value="15">15 años</option><option value="20">20 años</option><option value="25" selected>25 años</option><option value="30">30 años</option><option value="custom">Otro plazo</option></select><div class="capacity-custom" id="capacity-years-wrap" hidden><label for="capacity-years-custom">Años (5 a 40)</label><input id="capacity-years-custom" type="number" min="5" max="40" step="1" inputmode="numeric" disabled></div></div>
+<div class="capacity-field"><label for="capacity-rate">Tasa anual proporcionada por ti (%)</label><input id="capacity-rate" type="number" min="0" max="25" step="any" inputmode="decimal" placeholder="Ingresa la tasa de tu cotización" aria-describedby="capacity-rate-help"></div>
+<div class="capacity-field"><label for="capacity-convention">Convención de la tasa anual</label><select id="capacity-convention"><option value="effective">Efectiva anual</option><option value="nominal">Nominal anual</option></select></div>
+<div class="capacity-field"><label for="capacity-criterion">Criterio referencial configurable</label><select id="capacity-criterion"><option value="25">25% de la renta − deudas</option><option value="30">30% de la renta − deudas</option></select></div>
+</div>
+<div class="capacity-notes"><p id="capacity-rate-help">No suponemos una tasa bancaria. Si dejas la tasa vacía, los proyectos quedarán pendientes de evaluación. El comparador permite consultar referencias sólo cuando coinciden con el escenario.</p><p>El presupuesto mensual es renta total × criterio − cuotas de deudas, con mínimo cero. 25% y 30% son criterios de exploración configurables; no son requisitos universales. Complementar renta depende de cada institución.</p><p>El dividendo incluye capital e intereses. Seguros y gastos están pendientes de verificación. El ahorro proyectado usa la UF fechada de hoy constante y no considera rentabilidad ni predice la UF futura.</p><p>Los resultados no representan aprobación ni probabilidad de crédito. La evaluación bancaria considera historial, antigüedad laboral, edad, deudas, seguros y el tipo de activo.</p><p>La búsqueda se calcula en tu navegador. No se guardan ni envían renta, deudas o ahorro. Al abrir un escenario sólo se conserva temporalmente el proyecto, monto, pie, plazo y tasa para el simulador.</p></div>
+<p id="capacity-uf" class="capacity-uf" role="status">Cargando referencia UF…</p><p id="capacity-error" class="capacity-error" role="alert"></p>
+<div class="capacity-form-actions"><button id="capacity-submit" class="capacity-button" type="submit">Evaluar proyectos</button><button id="capacity-reset" class="capacity-button capacity-button-secondary" type="button">Volver al catálogo</button></div>
+</form><p id="capacity-summary" class="capacity-summary" role="status" aria-live="polite"></p>
+</section>
+<form id="catalog-filters" class="catalog-filters mb-8" role="search" aria-label="Filtros del catálogo">
+<div><label class="block font-bold text-primary mb-3" for="search">Buscar proyecto</label><input class="catalog-control" id="search" type="search" disabled></div>
+<div><label class="block font-bold text-primary mb-3" for="asset-type">Tipo de activo</label><select class="catalog-control" id="asset-type" disabled><option value="">Todos</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option><option value="Terreno">Terreno</option></select></div>
+<div><label class="block font-bold text-primary mb-3" for="region">Región</label><select class="catalog-control" id="region" disabled><option value="">Todas las regiones</option></select></div>
+<div><label class="block font-bold text-primary mb-3" for="commune">Comuna</label><select class="catalog-control" id="commune" disabled><option value="">Todas las comunas</option></select></div>
+<div><label class="block font-bold text-primary mb-3" for="state">Estado</label><select class="catalog-control" id="state" disabled><option value="">Todos los estados</option></select></div>
+<div><label class="block font-bold text-primary mb-3" for="max-price">Precio máximo UF</label><input class="catalog-control" id="max-price" type="number" min="0" step="1" inputmode="numeric" placeholder="Sin máximo" disabled></div>
+<div><label class="block font-bold text-primary mb-3" for="sort-order">Ordenar</label><select class="catalog-control" id="sort-order" disabled><option value="original">Orden original</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option></select></div>
+<button id="clear-filters" class="catalog-control font-bold hover:bg-slate-100" type="button" disabled>Limpiar filtros</button>
+</form>
+<p id="project-count" class="font-bold text-primary mb-6" role="status" aria-live="polite" aria-atomic="true">Cargando proyectos…</p>
+<p id="catalog-message" class="text-secondary mb-6" role="status" aria-live="polite" aria-atomic="true"></p>
+<div id="project-grid" class="catalog-grid" aria-busy="true"></div>
+<noscript><p>Puedes explorar las fichas desde el listado siguiente. Los filtros y la búsqueda financiera requieren JavaScript.</p></noscript>
+<!--CATALOG_DIRECTORY_START-->
+<details id="catalog-static-directory" class="catalog-directory">
+<summary>Explorar el listado de fichas de proyectos</summary>
+<p>Consulta la información y los pendientes en cada ficha. El listado no acredita disponibilidad ni condiciones comerciales vigentes.</p>
+<ul>
+    <li><a href="/distrito-centro.html">Distrito Centro</a></li>
+    <li><a href="/reserva-mayor-2.html">Reserva Mayor 2</a></li>
+    <li><a href="/vista-llacolen-b.html">Vista Llacolén B</a></li>
+    <li><a href="/bcome.html">Edificio B.Come — Concepción</a></li>
+    <li><a href="/vista-llacolen-a.html">Vista Llacolén A</a></li>
+    <li><a href="/campus-llacolen.html">Campus Llacolén</a></li>
+    <li><a href="/nucleo-costanera.html">Núcleo Costanera</a></li>
+    <li><a href="/wayra.html">Edificio Wayra</a></li>
+    <li><a href="/lamara.html">Lamara</a></li>
+    <li><a href="/alto-buzeta.html">Alto Buzeta</a></li>
+    <li><a href="/independencia-4745.html">Independencia 4745</a></li>
+    <li><a href="/vistamar.html">Vistamar</a></li>
+    <li><a href="/costanera-coquimbo-a.html">Costanera Coquimbo Edificio A</a></li>
+    <li><a href="/costanera-coquimbo-b.html">Costanera Coquimbo Edificio B</a></li>
+    <li><a href="/edificio-ecuador.html">Edificio Ecuador</a></li>
+    <li><a href="/coronel-godoy.html">Edificio Coronel Godoy</a></li>
+    <li><a href="/edificio-indi.html">Edificio Indi</a></li>
+    <li><a href="/vivaceta.html">Edificio Vivaceta</a></li>
+    <li><a href="/edificio-bezanilla.html">Bezanilla</a></li>
+    <li><a href="/jardines-de-alvarado.html">Jardines de Alvarado</a></li>
+    <li><a href="/edificio-santa-maria.html">Edificio Santa María</a></li>
+    <li><a href="/plaza-cervantes-b.html">Plaza Cervantes - Torre B</a></li>
+    <li><a href="/edificio-teatinos-750.html">Edificio Teatinos 750</a></li>
+    <li><a href="/edificio-vista-amunategui.html">Edificio Vista Amunategui</a></li>
+    <li><a href="/endemico.html">Endémico</a></li>
+    <li><a href="/playa-penuelas.html">Edificio Playa Peñuelas</a></li>
+    <li><a href="/serrano-torre-a.html">Serrano - Torre A</a></li>
+    <li><a href="/plaza-cervantes.html">Plaza Cervantes - Torre A</a></li>
+    <li><a href="/vista-costanera.html">Vista Costanera</a></li>
+    <li><a href="/vista-reloncavi.html">Vista Reloncaví</a></li>
+    <li><a href="/downtown-san-martin.html">Downtown San Martín</a></li>
+    <li><a href="/vista-morande.html">Vista Morandé</a></li>
+    <li><a href="/edificio-don-pepe-154.html">Don Pepe 154</a></li>
+    <li><a href="/plaza-de-lourdes.html">Plaza de Lourdes</a></li>
+    <li><a href="/santa-elena-1670-mbi.html">Santa Elena 1670</a></li>
+    <li><a href="/plaza-quilicura.html">Plaza Quilicura</a></li>
+    <li><a href="/mapocho-3521-edificio-a.html">Mapocho 3521 - Edificio A</a></li>
+    <li><a href="/edificio-lira-622.html">Edificio Lira 622</a></li>
+    <li><a href="/edificio-dual-390-lto.html">Edificio Dual 390 LTO</a></li>
+    <li><a href="/entre-vicunas.html">Entre Vicuñas</a></li>
+    <li><a href="/lomas-de-puyai.html">Lomas de Puyai</a></li>
+    <li><a href="/ferroparque.html">FerroParque</a></li>
+    <li><a href="/froilan-roa-5731-torre-norte.html">Froilán Roa 5731 - Torre Norte</a></li>
+    <li><a href="/rosas-1444.html">Rosas 1444</a></li>
+    <li><a href="/guillermo-mann-1401.html">Guillermo Mann 1401</a></li>
+    <li><a href="/froilan-roa-5731-torre-sur.html">Froilán Roa 5731 - Torre Sur</a></li>
+    <li><a href="/edificio-san-francisco-1204.html">Edificio San Francisco 1204</a></li>
+    <li><a href="/cumbres-de-penuelas.html">Cumbres de Peñuelas</a></li>
+    <li><a href="/edificio-baum.html">Edificio BAUM</a></li>
+    <li><a href="/diagonal-paraguay.html">Diagonal Paraguay</a></li>
+    <li><a href="/inn-puerto-chico.html">INN Puerto Chico</a></li>
+    <li><a href="/edificio-suecia.html">Edificio Suecia</a></li>
+    <li><a href="/capitanes.html">Capitanes</a></li>
+    <li><a href="/parque-germania.html">Parque Germania</a></li>
+    <li><a href="/edificio-argomedo.html">Edificio Argomedo</a></li>
+    <li><a href="/edificio-mood.html">Edificio Mood</a></li>
+    <li><a href="/edificio-indigo.html">Edificio Índigo</a></li>
+    <li><a href="/edificio-verne.html">Edificio Verne</a></li>
+    <li><a href="/edificio-santo.html">Edificio Santo</a></li>
+    <li><a href="/edificio-living-town.html">Edificio Living Town</a></li>
+    <li><a href="/edificio-bold.html">Edificio Bold</a></li>
+    <li><a href="/domeyko-2055.html">Domeyko 2055</a></li>
+    <li><a href="/vergara-domeyko.html">Edificio Vergara Domeyko</a></li>
+    <li><a href="/parque-panama.html">Edificio Parque Panamá</a></li>
+    <li><a href="/playa-serena.html">Edificio Playa Serena</a></li>
+    <li><a href="/don-tomas.html">Don Tomás</a></li>
+    <li><a href="/plaza-las-condes.html">Plaza Las Condes</a></li>
+    <li><a href="/mapocho-3521.html">Mapocho 3521</a></li>
+    <li><a href="/jofre-135.html">Jofré 157</a></li>
+    <li><a href="/irarrazaval.html">Edificio Irarrázaval 1970</a></li>
+    <li><a href="/parque-quinta.html">Edificio Parque Quinta</a></li>
+    <li><a href="/quintavista.html">Edificio Quintavista</a></li>
+    <li><a href="/don-rafael.html">Don Rafael</a></li>
+    <li><a href="/terrazzo.html">Terrazzo</a></li>
+    <li><a href="/vima.html">VIMA</a></li>
+    <li><a href="/los-lilenes.html">Los Lilenes</a></li>
+    <li><a href="/nueva-esmeralda.html">Nueva Esmeralda</a></li>
+    <li><a href="/el-aromo.html">El Aromo</a></li>
+    <li><a href="/espacio-victoria.html">Espacio Victoria</a></li>
+    <li><a href="/terratolten.html">Terratoltén</a></li>
+    <li><a href="/pintor-cicarelli-iii.html">Pintor Cicarelli III</a></li>
+    <li><a href="/trinidad-iii.html">Trinidad III</a></li>
+    <li><a href="/edificio-liverpool.html">Edificio Liverpool</a></li>
+    <li><a href="/mirador-la-florida.html">Mirador La Florida</a></li>
+    <li><a href="/alto-goycolea.html">Alto Goycolea</a></li>
+    <li><a href="/eleuterio-ramirez.html">Eleuterio Ramírez</a></li>
+    <li><a href="/barrio-zenteno.html">Barrio Zenteno</a></li>
+    <li><a href="/urban-la-florida.html">Urban La Florida</a></li>
+    <li><a href="/vicuna-mackenna-6896.html">Edificio Vicuña Mackenna 6896</a></li>
+    <li><a href="/vicuna-mackenna-7589.html">Edificio Vicuña Mackenna 7589</a></li>
+    <li><a href="/aires-la-florida-2.html">Aires La Florida 2</a></li>
+    <li><a href="/condominio-uruguay.html">Condominio Uruguay</a></li>
+    <li><a href="/enlace-mackenna.html">Enlace Mackenna</a></li>
+    <li><a href="/novo-catedral.html">Novo Catedral</a></li>
+    <li><a href="/carmen-marin.html">Edificio Carmen Marín</a></li>
+    <li><a href="/gregorio-de-la-fuente-a.html">Condominio Gregorio de la Fuente</a></li>
+    <li><a href="/matta-016.html">Matta 016</a></li>
+    <li><a href="/edificio-plaza-nova.html">Edificio Plaza Nova</a></li>
+    <li><a href="/condominio-parque-don-lautaro.html">Condominio Parque Don Lautaro</a></li>
+    <li><a href="/caceres.html">Cáceres</a></li>
+    <li><a href="/pintor-cicarelli-i.html">Pintor Cicarelli I</a></li>
+    <li><a href="/pintor-cicarelli-ii.html">Pintor Cicarelli II</a></li>
+    <li><a href="/edif-origen-atacama-3008.html">Edificio Origen Atacama</a></li>
+    <li><a href="/abdon-cifuentes.html">Abdón Cifuentes</a></li>
+    <li><a href="/don-ignacio.html">Don Ignacio</a></li>
+    <li><a href="/tocornal.html">Tocornal</a></li>
+    <li><a href="/centenario-1.html">Centenario 1</a></li>
+    <li><a href="/curico-77.html">Curicó 77</a></li>
+    <li><a href="/san-ignacio.html">San Ignacio</a></li>
+    <li><a href="/angamos.html">Angamos 205</a></li>
+    <li><a href="/conecta-huechuraba.html">Conecta Huechuraba</a></li>
+    <li><a href="/bordevivo.html">Edificio Borde Vivo</a></li>
+    <li><a href="/mirador-mapocho.html">Mirador Mapocho</a></li>
+    <li><a href="/alto-san-joaquin.html">Alto San Joaquín</a></li>
+    <li><a href="/vista-bulnes.html">Edificio Vista Bulnes</a></li>
+    <li><a href="/jardines-de-ramon-cruz.html">Condominio Jardines de Ramón Cruz</a></li>
+    <li><a href="/vitro.html">Vitro</a></li>
+    <li><a href="/mirador-irarrazaval.html">Mirador Irarrázaval</a></li>
+    <li><a href="/alto-irarrazaval.html">Alto Irarrázaval</a></li>
+    <li><a href="/jose-pedro-alessandri.html">José Pedro Alessandri</a></li>
+    <li><a href="/vicuna-mackenna-1432.html">Vicuña Mackenna 1432</a></li>
+    <li><a href="/vicente-valdes.html">Vicente Valdés</a></li>
+    <li><a href="/diagonal-vicuna.html">Diagonal Vicuña</a></li>
+    <li><a href="/vista-portugal.html">Vista Portugal</a></li>
+    <li><a href="/marina-pacifico.html">Marina Pacífico</a></li>
+    <li><a href="/nova-parque.html">Nova Parque</a></li>
+    <li><a href="/own.html">Own</a></li>
+    <li><a href="/monjitas-690.html">Monjitas 690</a></li>
+    <li><a href="/patio-brasil.html">Patio Brasil</a></li>
+    <li><a href="/atelier-prat-oficinas.html">Edificio Atelier Prat Oficinas</a></li>
+    <li><a href="/corrientes-oficinas.html">Edificio Corrientes Oficinas</a></li>
+    <li><a href="/los-alerces.html">Los Alerces</a></li>
+    <li><a href="/valle-los-ingleses-iii.html">Valle Los Ingleses III</a></li>
+    <li><a href="/edificio-nordico.html">Edificio Nórdico</a></li>
+</ul>
+</details>
+<!--CATALOG_DIRECTORY_END-->
+</div>
+</section>
+</main>
+<footer class="bg-slate-100 w-full pt-16 pb-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8">
+<div class="col-span-1">
+<a class="text-xl font-bold text-emerald-950 mb-4 block" href="/">Sollahms</a>
+<p class="text-slate-500 font-['Inter'] text-sm tracking-wide leading-relaxed">
+                    © 2026 Sollahms. Todos los derechos reservados.
+                </p>
+</div>
+<div>
+<h2 class="text-emerald-900 font-semibold mb-4 font-['Inter'] text-sm uppercase tracking-widest">Secciones</h2>
+<ul class="space-y-2">
+<li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/#expertise">Expertise</a></li>
+<li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/#portfolio">Asset Portfolio</a></li>
+<li class=""><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/contacto.html">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h2 class="text-emerald-900 font-semibold mb-4 font-['Inter'] text-sm uppercase tracking-widest">Legal</h2>
+<ul class="space-y-2">
+<li><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/privacidad.html">Privacidad</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-slate-200">
+<p class="text-[10px] text-slate-400 font-mono tracking-widest text-center">PRECISION • TRANSPARENCY • STRATEGY</p>
+</div>
+</footer>
+<script>
+(() => {
+    const search = document.getElementById('search');
+    const assetType = document.getElementById('asset-type');
+    const region = document.getElementById('region');
+    const commune = document.getElementById('commune');
+    const state = document.getElementById('state');
+    const maxPriceInput = document.getElementById('max-price');
+    const sortOrder = document.getElementById('sort-order');
+    const clear = document.getElementById('clear-filters');
+    const grid = document.getElementById('project-grid');
+    const count = document.getElementById('project-count');
+    const message = document.getElementById('catalog-message');
+    const form = document.getElementById('catalog-filters');
+    const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
+    const numberFormat = new Intl.NumberFormat('es-CL');
+    // CATALOG_CONDITION_TARGETS_START
+    const conditionTargets = {
+    "distrito-centro": "#contenido-principal",
+    "inn-puerto-chico": "#contenido-principal",
+    "edificio-suecia": "#contenido-principal"
+};
+    // CATALOG_CONDITION_TARGETS_END
+    // CATALOG_COVERS_START
+    const coverVariants = {
+    "jardines-de-ramon-cruz": {
+        "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial.webp",
+        "width": 1920,
+        "height": 1078,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial-480.webp",
+                "width": 480,
+                "height": 270
+            },
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial-640.webp",
+                "width": 640,
+                "height": 359
+            },
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial-960.webp",
+                "width": 960,
+                "height": 539
+            },
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial-1440.webp",
+                "width": 1440,
+                "height": 808
+            },
+            {
+                "localPath": "/assets/propiedades/leon/jardines-de-ramon-cruz/fachada-oficial.webp",
+                "width": 1920,
+                "height": 1078
+            }
+        ]
+    },
+    "condominio-parque-don-lautaro": {
+        "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01.webp",
+        "width": 2000,
+        "height": 1124,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01-480.webp",
+                "width": 480,
+                "height": 270
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01-640.webp",
+                "width": 640,
+                "height": 360
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01-960.webp",
+                "width": 960,
+                "height": 540
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01-1440.webp",
+                "width": 1440,
+                "height": 809
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-parque-don-lautaro/foto-01.webp",
+                "width": 2000,
+                "height": 1124
+            }
+        ]
+    },
+    "condominio-uruguay": {
+        "localPath": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-1600.webp",
+        "width": 1600,
+        "height": 919,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-640.webp",
+                "width": 640,
+                "height": 368
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-960.webp",
+                "width": 960,
+                "height": 551
+            },
+            {
+                "localPath": "/assets/propiedades/leon/condominio-uruguay/foto-p16-image153-1600.webp",
+                "width": 1600,
+                "height": 919
+            }
+        ]
+    },
+    "gregorio-de-la-fuente-a": {
+        "localPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-640.webp",
+                "width": 640,
+                "height": 360
+            },
+            {
+                "localPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-960.webp",
+                "width": 960,
+                "height": 540
+            },
+            {
+                "localPath": "/assets/propiedades/leon/gregorio-de-la-fuente-a/fachada-oficial-1600.webp",
+                "width": 1600,
+                "height": 900
+            }
+        ]
+    },
+    "bcome": {
+        "localPath": "/assets/propiedades/leon/bcome/foto-01.webp",
+        "width": 1467,
+        "height": 1467,
+        "sources": [
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01-480.webp",
+                "width": 480,
+                "height": 480
+            },
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01-640.webp",
+                "width": 640,
+                "height": 640
+            },
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01-960.webp",
+                "width": 960,
+                "height": 960
+            },
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01-1440.webp",
+                "width": 1440,
+                "height": 1440
+            },
+            {
+                "localPath": "/assets/propiedades/leon/bcome/foto-01.webp",
+                "width": 1467,
+                "height": 1467
+            }
+        ]
+    }
+};
+    // CATALOG_COVERS_END
+    let projects = [];
+    let capacitySearch = null;
+    const stages = project => project.inmobiliaria === 'Ecasa' && Array.isArray(project.etapasComerciales) && project.etapasComerciales.length > 1
+        ? project.etapasComerciales : Array.isArray(project.etapas) ? project.etapas : [];
+    const commercialReference = project => project.inmobiliaria === 'Ecasa' && stages(project).length > 1
+        ? stages(project).find(stage => stage.slug === project.etapaReferenciaSlug) : null;
+    const projectStates = project => [project.estado, ...stages(project).map(stage => stage.estado)]
+        .filter(value => typeof value === 'string' && value.length);
+    const element = (tag, text, classes) => {
+        const node = document.createElement(tag);
+        if (text !== undefined) node.textContent = text;
+        if (classes) node.className = classes;
+        return node;
+    };
+    const appendOptions = (select, values) => {
+        [...new Set(values.filter(value => typeof value === 'string' && value.length))]
+            .sort((a, b) => a.localeCompare(b, 'es-CL'))
+            .forEach(value => {
+                const option = element('option', value);
+                option.value = value;
+                select.append(option);
+            });
+    };
+    const options = (select, key, source = projects) => appendOptions(select, source.map(project => project[key]));
+    const updateCommunes = () => {
+        const selected = commune.value;
+        commune.replaceChildren(new Option('Todas las comunas', ''));
+        options(commune, 'comuna', projects.filter(project => !region.value || project.region === region.value));
+        if ([...commune.options].some(option => option.value === selected)) commune.value = selected;
+    };
+    const card = project => {
+        const article = element('article', undefined, 'catalog-card');
+        article.dataset.project = project.slug;
+        const hasDetail = typeof project.detalleUrl === 'string' && /^\/[a-z0-9-]+\.html$/.test(project.detalleUrl);
+        const cover = element(hasDetail ? 'a' : 'div', undefined, 'catalog-cover');
+        if (hasDetail) {
+            cover.href = project.detalleUrl;
+            cover.setAttribute('aria-label', 'Ver fotografías y detalles de ' + project.nombre);
+        }
+        const showPlaceholder = () => {
+            const placeholder = element('div', undefined, 'catalog-cover-placeholder');
+            placeholder.append(element('strong', 'Sollahms'), element('span', 'Fotografía oficial pendiente'));
+            cover.replaceChildren(placeholder);
+        };
+        // Only existing local official images enter the public catalogue dataset.
+        if (typeof project.imagenPrincipal === 'string' && /^\/assets\/propiedades\/[a-z0-9/._-]+\.(?:webp|jpe?g|png)$/i.test(project.imagenPrincipal)) {
+            const image = element('img', undefined, 'catalog-cover-image');
+            image.alt = project.imagenAlt || 'Fotografía del proyecto ' + project.nombre;
+            image.loading = 'lazy';
+            image.decoding = 'async';
+            image.width = 1600;
+            image.height = 900;
+            image.addEventListener('error', showPlaceholder, { once: true });
+            const responsive = coverVariants[project.slug];
+            // A changed cover never inherits another photograph's variants.
+            if (responsive?.localPath === project.imagenPrincipal) {
+                image.width = responsive.width;
+                image.height = responsive.height;
+                image.srcset = responsive.sources.map(source => source.localPath + ' ' + source.width + 'w').join(', ');
+                image.sizes = '(min-width: 1280px) 384px, (min-width: 1024px) calc(33.333vw - 42.667px), (min-width: 768px) calc(50vw - 48px), calc(100vw - 64px)';
+            }
+            image.src = project.imagenPrincipal;
+            cover.append(image);
+        } else showPlaceholder();
+        const body = element('div', undefined, 'catalog-card-body');
+        article.append(cover, body);
+        const builderVerified = project.verificacion?.camposVerificados?.includes('inmobiliaria');
+        body.append(element('p', project.inmobiliaria + (builderVerified ? '' : ' · Asociación por verificar'), 'text-sm font-bold text-secondary mb-3'));
+        body.append(element('h2', project.nombre, 'catalog-card-title font-bold'));
+        body.append(element('p', [project.comuna, project.region].filter(Boolean).join(', '), 'text-sm text-secondary mb-4'));
+        const pendingIdentity = ['mapocho-3521-edificio-a', 'froilan-roa-5731-torre-norte', 'froilan-roa-5731-torre-sur', 'edificio-verne'].includes(project.slug);
+        if (pendingIdentity) {
+            const notice = element('p', project.slug === 'edificio-verne'
+                ? 'La oferta residencial vigente sigue sin confirmar. Verne Oficinas se presenta por separado como alternativa comercial.'
+                : 'La identidad comercial y la oferta vigente de esta etapa siguen sin confirmar. La información del conjunto se muestra por separado.', 'commercial-identity-notice text-sm text-secondary mb-4');
+            notice.setAttribute('role', 'note');
+            body.append(notice);
+        }
+        const reference = commercialReference(project);
+        if (project.imagenEtapa) body.append(element('p', 'Imagen referencial · ' + project.imagenEtapa, 'text-xs text-secondary mb-3'));
+        if (reference) body.append(element('p', 'Información comercial · Etapa ' + reference.etapa, 'text-xs text-secondary mb-3'));
+        if (project.direccion != null) body.append(element('p', project.direccion, 'text-sm text-secondary mb-4'));
+        const details = element('dl');
+        const detail = (label, value) => {
+            details.append(element('dt', label, 'text-sm font-bold text-primary mt-4'));
+            details.append(element('dd', value, 'text-sm text-secondary'));
+        };
+        if (project.estado != null) detail('Estado', project.estado);
+        const projectStages = stages(project).filter(stage => project.inmobiliaria !== 'Ecasa' || (stage.slug !== project.etapaReferenciaSlug && (stage.estado != null || stage.entrega != null)));
+        if (projectStages.length) {
+            details.append(element('dt', 'Etapas', 'text-sm font-bold text-primary mt-4'));
+            const values = element('dd');
+            const list = element('ul');
+            projectStages.forEach(stage => {
+                let summary = stage.nombre + (stage.estado != null ? ' — ' + stage.estado : '');
+                if (stage.entrega != null && !normalize(stage.estado).includes(normalize(stage.entrega))) {
+                    summary += ' · Entrega ' + stage.entrega;
+                }
+                list.append(element('li', summary, 'text-sm text-secondary'));
+            });
+            values.append(list);
+            details.append(values);
+        }
+        if (project.entrega != null) detail('Entrega', project.entrega);
+        if (Array.isArray(project.tipologias) && project.tipologias.length) {
+            details.append(element('dt', 'Tipologías', 'text-sm font-bold text-primary mt-4'));
+            const values = element('dd');
+            const list = element('ul');
+            project.tipologias.forEach(value => list.append(element('li', value, 'text-sm text-secondary')));
+            values.append(list);
+            details.append(values);
+        }
+        body.append(details);
+        if (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF)) {
+            body.append(element('p', 'Desde UF ' + numberFormat.format(project.precioDesdeUF) + (reference ? ' · Etapa ' + reference.etapa : ''), 'font-bold text-primary mt-6 pt-4 border-t border-outline-variant/30'));
+        } else {
+            body.append(element('p', (['los-alerces', 'valle-los-ingleses-iii'].includes(project.slug) ? 'Consultar precio' : 'Precio pendiente de verificación'), 'text-sm text-secondary mt-6 pt-4 border-t border-outline-variant/30'));
+        }
+        const referenceNote = element('div', undefined, 'catalog-reference');
+        const reviewedOn = project.commercialSource?.verifiedOn ?? project.verificacion?.fecha;
+        const date = /^\d{4}-\d{2}-\d{2}$/.test(reviewedOn ?? '') ? reviewedOn : null;
+        referenceNote.append(element('p', date ? 'Referencia revisada el ' + date + '.' : 'Fecha de revisión pendiente.'));
+        const retainedConditions = project.commercialSource?.note || (project.slug === 'edificio-nordico' && project.precioDesdeUF === 4746 && date === '2026-10-13'
+            ? 'Desde UF 4.746 corresponde sólo a unidad 101, 1 dormitorio y 1 baño; excluye estacionamiento y bodega.' : '');
+        if (retainedConditions) referenceNote.append(element('p', retainedConditions));
+        referenceNote.append(element('p', 'Información referencial; confirma precio, disponibilidad y condiciones al cotizar.'));
+        if (hasDetail) {
+            const conditions = element('a', 'Ver condiciones y pendientes en la ficha');
+            conditions.href = project.detalleUrl + (conditionTargets[project.slug] ?? '#proyecto');
+            conditions.setAttribute('aria-label', 'Ver condiciones y pendientes de ' + project.nombre);
+            referenceNote.append(conditions);
+        }
+        body.append(referenceNote);
+        if (hasDetail) {
+            const actions = element('div', undefined, 'catalog-actions');
+            const details = element('a', 'Ver detalles', 'catalog-details-link');
+            details.href = project.detalleUrl;
+            details.setAttribute('aria-label', 'Ver detalles de ' + project.nombre);
+            actions.append(details);
+            body.append(actions);
+        }
+        capacitySearch?.decorateCard(article, project);
+        return article;
+    };
+    const render = () => {
+        const query = normalize(search.value.trim());
+        const maxPrice = maxPriceInput.valueAsNumber;
+        const hasMaxPrice = Number.isFinite(maxPrice) && maxPrice >= 0;
+        const filtered = projects.filter(project =>
+            (!assetType.value || (project.tipoActivo ?? 'Residencial') === assetType.value) &&
+            (!region.value || project.region === region.value) &&
+            (!commune.value || project.comuna === commune.value) &&
+            (!state.value || projectStates(project).includes(state.value)) &&
+            (!hasMaxPrice || (typeof project.precioDesdeUF === 'number' && Number.isFinite(project.precioDesdeUF) && project.precioDesdeUF <= maxPrice)) &&
+            (!query || [
+                ...['nombre', 'inmobiliaria', 'comuna', 'region', 'direccion', 'slug'].map(key => project[key]),
+                ...stages(project).map(stage => stage.nombre)
+            ].some(value => normalize(value).includes(query)))
+        );
+        const sorted = [...filtered];
+        if (sortOrder.value === 'price-asc' || sortOrder.value === 'price-desc') {
+            const direction = sortOrder.value === 'price-asc' ? 1 : -1;
+            // Stable sorting preserves JSON order for ties; unknown prices go last.
+            sorted.sort((a, b) => {
+                const aValid = typeof a.precioDesdeUF === 'number' && Number.isFinite(a.precioDesdeUF);
+                const bValid = typeof b.precioDesdeUF === 'number' && Number.isFinite(b.precioDesdeUF);
+                if (!aValid || !bValid) return aValid ? -1 : bValid ? 1 : 0;
+                return direction * (a.precioDesdeUF - b.precioDesdeUF);
+            });
+        }
+        if (sortOrder.value === 'original') capacitySearch?.sortProjects(sorted);
+        grid.replaceChildren(...sorted.map(card));
+        count.textContent = filtered.length + (filtered.length === 1 ? ' proyecto' : ' proyectos');
+        message.textContent = filtered.length ? '' : 'No encontramos proyectos que coincidan con tus filtros.';
+    };
+    form.addEventListener('submit', event => event.preventDefault());
+    search.addEventListener('input', render);
+    assetType.addEventListener('change', render);
+    maxPriceInput.addEventListener('input', render);
+    region.addEventListener('change', () => {
+        updateCommunes();
+        render();
+    });
+    commune.addEventListener('change', render);
+    state.addEventListener('change', render);
+    sortOrder.addEventListener('change', render);
+    clear.addEventListener('click', () => {
+        form.reset();
+        updateCommunes();
+        render();
+    });
+    const load = async () => {
+        try {
+            const response = await fetch('/data/proyectos.json');
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            const data = await response.json();
+            if (!Array.isArray(data)) throw new Error('El catálogo debe ser un array');
+            data.forEach((project, index) => {
+                if (project.etapas === undefined) return;
+                if (!Array.isArray(project.etapas) || project.etapas.some(stage =>
+                    !stage || typeof stage.nombre !== 'string' || !stage.nombre.length ||
+                    typeof stage.estado !== 'string' || !stage.estado.length ||
+                    (stage.entrega !== null && typeof stage.entrega !== 'string')
+                )) throw new Error('Etapas inválidas en el proyecto ' + index);
+            });
+            projects = data;
+            options(region, 'region');
+            appendOptions(state, projects.flatMap(projectStates));
+            updateCommunes();
+            render();
+            document.getElementById('catalog-static-directory').hidden = true;
+            [search, assetType, region, commune, state, maxPriceInput, sortOrder, clear].forEach(control => { control.disabled = false; });
+            import('/assets/js/purchase-capacity-ui.mjs').then(({ initializeCapacitySearch }) => {
+                capacitySearch = initializeCapacitySearch({ projects, onChange: render });
+                document.getElementById('capacity-toggle').disabled = false;
+            }).catch(() => {
+                document.getElementById('capacity-summary').textContent = 'El buscador financiero no pudo cargar. Puedes seguir utilizando los filtros del catálogo.';
+            });
+        } catch (error) {
+            grid.replaceChildren();
+            count.textContent = '';
+            message.textContent = 'No pudimos cargar el catálogo de proyectos. Inténtalo nuevamente más tarde.';
+        } finally {
+            grid.setAttribute('aria-busy', 'false');
+        }
+    };
+    load();
+})();
+</script>
+</body>
+</html>
