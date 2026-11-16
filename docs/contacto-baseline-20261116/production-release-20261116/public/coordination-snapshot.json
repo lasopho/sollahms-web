@@ -1,0 +1,35 @@
+{
+  "checkedAtUtc": "2026-11-16T13:35:06.867239+00:00",
+  "method": "Codex app read-only list_threads history/codex/local and read_thread, latest turn only",
+  "scope": "Other Contacto and Leon chats; no external messages or mutations",
+  "threads": [
+    {
+      "id": "01a1e1b2-deec-74b1-863d-9ffc70fea8d4",
+      "title": "Preparar espacio de publicación Sollahms",
+      "status": "notLoaded",
+      "latestTurnStatus": "completed",
+      "updatedAtUtc": "2026-11-16T04:31:00+00:00",
+      "latestTurnCompletedAtUtc": "2026-11-16T04:31:00+00:00",
+      "lastOutcome": "DENY/ALIASES after baseline changed from 9zz to ByUhr; no Contacto Production created or promoted"
+    },
+    {
+      "id": "01a13850-427a-7d71-9153-8d454f999e3d",
+      "title": "Completar cartera de Inmobiliaria Le",
+      "status": "notLoaded",
+      "latestTurnStatus": "completed",
+      "updatedAtUtc": "2026-10-14T21:44:46+00:00",
+      "latestTurnCompletedAtUtc": "2026-10-14T18:12:44+00:00",
+      "lastOutcome": "PR6 Leon-only merge reported complete; Production unchanged"
+    }
+  ],
+  "codexHistoryEntriesInspected": 50,
+  "otherActiveSollahmsCodexThreadsObserved": 0,
+  "currentThreadExcluded": "01a1e22e-f9c5-7c20-b030-5a666cca38c2",
+  "externalMessagesSent": 0,
+  "gitMutations": 0,
+  "deploymentMutations": 0,
+  "limits": [
+    "App metadata is a point-in-time observation, not a distributed lock or an OS process audit.",
+    "Root must recheck API aliases and concurrent publication before promotion."
+  ]
+}

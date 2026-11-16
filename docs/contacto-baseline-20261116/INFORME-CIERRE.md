@@ -1,3 +1,5 @@
+> Actualización del 16/11/2026, 10:52 Santiago: el propietario autorizó expresamente la publicación de Contacto. Se creó el Production aislado `dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w`, que aprobó el [gate productivo](production-release-20261116/production-gate.json), sus 1.660 fuentes, siete funciones, 32 controles HTTP y cinco anchos. La promoción y comprobación pública están en curso; ambos dominios se conservan en ByUhr hasta completar ese paso. La autorización y evidencias nuevas están en `production-release-20261116/`. El texto siguiente conserva el cierre de la fase Preview, anterior a esta autorización.
+
 # Contacto conciliado y verificado en Preview privada
 
 **Preparación completada el 16/11/2026, America/Santiago.** El pie corporativo de PR #26 y la corrección del selector de PR #28 están integrados sobre los bytes productivos de ByUhr. La [Preview privada de Contacto](https://project-wrapp-cyqjausfq-lsandoval2-8260s-projects.vercel.app/contacto.html) está READY y conserva SSO. La etapa productiva queda separada y pendiente de autorización expresa para Contacto.

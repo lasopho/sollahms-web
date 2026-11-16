@@ -1,0 +1,83 @@
+{
+  "validatedAt": "2026-11-16T10:52:49.457744-03:00",
+  "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+  "target": "production",
+  "candidateInventorySha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+  "productionAuthorized": true,
+  "productionQaPassed": true,
+  "eligibleForPromotion": true,
+  "sameTestedDeploymentOnly": true,
+  "baselineDeploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+  "requiresFreshAliasAndConcurrencyCheck": true,
+  "checks": {
+    "owner_authorized": true,
+    "preflight_passed": true,
+    "exact_stage": true,
+    "single_contacto_delta": true,
+    "created_isolated_production": true,
+    "remote_api_http": true,
+    "sources_functions_aliases": true,
+    "sso": true,
+    "source_sha": true,
+    "responsive_qa": true,
+    "no_commercial_operations": true,
+    "processes_closed": true,
+    "visual": true,
+    "archive_preparation/manifest-sha256.json": true,
+    "archive_verification/manifest-sha256.json": true,
+    "archive_browser/isolated/MANIFEST-SHA256.json": true
+  },
+  "failures": [],
+  "archiveEntriesVerified": {
+    "preparation/manifest-sha256.json": 9,
+    "verification/manifest-sha256.json": 16,
+    "browser/isolated/MANIFEST-SHA256.json": 21
+  },
+  "evidence": [
+    {
+      "path": "authorization.json",
+      "sha256": "a2913534384b2f2ba56f211b2ed394fe4ac57acc240efb496567288968e728c2"
+    },
+    {
+      "path": "preflight-native.json",
+      "sha256": "ee288b713c7292455ae2743ba8a97369c324b0e0204acdc0c53369e5e7e7c859"
+    },
+    {
+      "path": "preparation/stage-receipt.json",
+      "sha256": "fea543420c161db90d5758dbe6dd0fdbe1e27d1ceba51ef667e1b407b48242ea"
+    },
+    {
+      "path": "created.json",
+      "sha256": "65df29ded738600f7edf28659e47d62de9018f6bb331887ccbd4646b7d2b3213"
+    },
+    {
+      "path": "verification/verification-summary.json",
+      "sha256": "9dcf3ada2d5484f90987b4e31219c220a91a822756b4d84a947b02bdd607c15d"
+    },
+    {
+      "path": "verification/gate-summary.json",
+      "sha256": "163333668e0eb184829b3aa9f9deefff458be5ecd8514d8f6d213772a655e220"
+    },
+    {
+      "path": "browser/isolated/acceptance-summary.json",
+      "sha256": "f9cd86f26d602bc6ac6eb75c1d11a1904f241be1c832fdc2c77dbf2a5ceace67"
+    },
+    {
+      "path": "visual-isolated.json",
+      "sha256": "f4f456fc785107e4f47fb6613a13844cf37dd5ae08af2939e0db1dd982e0829d"
+    },
+    {
+      "path": "preparation/manifest-sha256.json",
+      "sha256": "b1ef938a3a01a5a5738c08ca4da7ef26aa48c87fb2ed236e67997e3484e265aa"
+    },
+    {
+      "path": "verification/manifest-sha256.json",
+      "sha256": "66e7633754fa11e347f600557fda394026254279ada8904ccc11d7df62fa3821"
+    },
+    {
+      "path": "browser/isolated/MANIFEST-SHA256.json",
+      "sha256": "44be10b8bf7cb7e7f8053372de78277a08da7a46eaf06295ce335ea49076a5b3"
+    }
+  ],
+  "newNetworkOrBrowserTests": 0
+}

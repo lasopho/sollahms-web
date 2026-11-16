@@ -1,0 +1,158 @@
+{
+  "verifiedAtUTC": "2026-11-16T13:32:57.277581+00:00",
+  "phase": "Fresh local verification before Production staging",
+  "passed": true,
+  "checks": [
+    {
+      "check": "manifest_1660_unique",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "candidate_manifest_canonical",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "baseline_certificate_canonical",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "candidate_target_approved_contacto",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "existing_output_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "actual_file_count",
+      "pass": true,
+      "detail": {
+        "actual": 1660,
+        "expected": 1660
+      }
+    },
+    {
+      "check": "actual_paths_exact",
+      "pass": true,
+      "detail": {
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "check": "all_path_size_sha1_sha256_match",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "actual_canonical_inventory",
+      "pass": true,
+      "detail": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0"
+    },
+    {
+      "check": "only_contacto_differs_from_by_uhr",
+      "pass": true,
+      "detail": {
+        "identical": 1659,
+        "changed_paths": [
+          "static/contacto.html"
+        ]
+      }
+    },
+    {
+      "check": "contacto_exact_18655_bytes",
+      "pass": true,
+      "detail": {
+        "path": "static/contacto.html",
+        "size": 18655,
+        "sha1": "155c3d554450f1c8368506bcdf1563c541b69c1e",
+        "sha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1"
+      }
+    },
+    {
+      "check": "functions_57_identical_to_by_uhr",
+      "pass": true,
+      "detail": 57
+    },
+    {
+      "check": "seven_bundle_configurations",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "effective_config_v3_unchanged",
+      "pass": true,
+      "detail": {
+        "path": "config.json",
+        "size": 3916,
+        "sha1": "04e9bcfbdaedafe692af92f3409844151fd82ab3",
+        "sha256": "ef32ad5c7a069d7de482a7a92f5022a0c852cd0b9b896a735a48bd12bae71f05"
+      }
+    },
+    {
+      "check": "131_fiches_unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "147_html_pages_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "66_tour_removal_changes_preserved",
+      "pass": true,
+      "detail": {
+        "html": 64,
+        "css": 2
+      }
+    },
+    {
+      "check": "three_reconciled_productive_versions_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "numeric_discrepancy_explained",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "failures": [],
+  "local_documentation_head": "534bf362b8960e275f5b8b42b5c786027906a4cb",
+  "output": "/private/tmp/sollahms-contacto-baseline-20261116/.vercel/contacto-baseline-20261116/preview/.vercel/output",
+  "candidate_inventory_sha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+  "candidate_files": 1660,
+  "candidate_bytes": 219244937,
+  "contacto": {
+    "path": "static/contacto.html",
+    "size": 18655,
+    "sha1": "155c3d554450f1c8368506bcdf1563c541b69c1e",
+    "sha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1"
+  },
+  "identical_to_by_uhr": 1659,
+  "runtime_delta_vs_by_uhr": [
+    "static/contacto.html"
+  ],
+  "function_files": 57,
+  "function_bundles": 7,
+  "fiche_count": 131,
+  "tour_changes_preserved": 66,
+  "historical_manifest_authorization_flags": {
+    "targetAuthorized": "preview",
+    "productionAuthorized": false
+  },
+  "effective_new_authorization_context": "Parent relayed a new express owner authorization for the complete Contacto release sequence; historical Preview flags are preserved as history. This subtask only verifies local bytes and does not exercise release authorization.",
+  "stage_copy_performed": false,
+  "deployment_or_promotion_performed": false,
+  "network_calls": 0,
+  "builders_or_generators_executed": 0,
+  "historical_suites_repeated": false,
+  "source_or_application_modified": false,
+  "parent_live_baseline_preflight_still_required": true
+}
