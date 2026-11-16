@@ -1,0 +1,89 @@
+{
+  "deployment": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+  "runtime_sha": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4",
+  "recoveredAtUTC": "2026-11-16T12:39:16.172583+00:00",
+  "output": "/private/tmp/sollahms-contacto-baseline-20261116/.vercel/contacto-baseline-20261116/baseline/output",
+  "output_files": 1660,
+  "output_bytes": 219243111,
+  "canonical_inventory_sha256": "f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0",
+  "static_files": 1602,
+  "function_files": 57,
+  "function_bundles": [
+    {
+      "bundle": "api/advisory.func",
+      "handler": "api/advisory.mjs",
+      "runtime": "nodejs24.x",
+      "environment_empty": true,
+      "files": 6
+    },
+    {
+      "bundle": "api/booking-availability.func",
+      "handler": "api/booking-availability.mjs",
+      "runtime": "nodejs24.x",
+      "environment_empty": true,
+      "files": 4
+    },
+    {
+      "bundle": "api/booking-create.func",
+      "handler": "api/booking-create.mjs",
+      "runtime": "nodejs24.x",
+      "environment_empty": true,
+      "files": 6
+    },
+    {
+      "bundle": "api/collaboration.func",
+      "handler": "api/collaboration.mjs",
+      "runtime": "nodejs24.x",
+      "environment_empty": true,
+      "files": 6
+    },
+    {
+      "bundle": "api/contact.func",
+      "handler": "api/contact.mjs",
+      "runtime": "nodejs24.x",
+      "environment_empty": true,
+      "files": 14
+    },
+    {
+      "bundle": "api/orientation-contact.func",
+      "handler": "api/orientation-contact.mjs",
+      "runtime": "nodejs24.x",
+      "environment_empty": true,
+      "files": 15
+    },
+    {
+      "bundle": "api/uf.func",
+      "handler": "api/uf.mjs",
+      "runtime": "nodejs24.x",
+      "environment_empty": true,
+      "files": 6
+    }
+  ],
+  "config_version": 3,
+  "api_source_hashes_verified": 1660,
+  "remote_explicit_size_records": 0,
+  "local_sources": {
+    "production_source_local_verified": 1594,
+    "documented_checkout_source_local_verified": 66,
+    "by_uhr_api_blob": 0,
+    "api_cache_verified": 0
+  },
+  "body_blobs_downloaded": 0,
+  "source_preview_used": false,
+  "root_contacto_html_modified": false,
+  "builds_executed": 0,
+  "generators_executed": 0,
+  "env_pulls_executed": 0,
+  "deployments_created": 0,
+  "production_modified": false,
+  "historical_suites_repeated": false,
+  "credentials_read_or_logged": false,
+  "active_own_process_groups": [],
+  "elapsed_seconds": 7.18,
+  "contacto_baseline": {
+    "path": "static/contacto.html",
+    "size": 16829,
+    "sha1": "69c2519a92d9a67e826bcbd580f3e67570eeb359",
+    "sha256": "5c16a5cff747b87b64d3a4bba49d4d0a0c6fc0fbf578bdb3d730e0c6dc209a69"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "validatedAt": "2026-11-16T10:13:27.494106-03:00",
+  "deploymentId": "dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh",
+  "result": "PASS",
+  "previewAccepted": true,
+  "candidateInventorySha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+  "productionAuthorized": false,
+  "productionCreationAllowedNow": false,
+  "promotionAllowedNow": false,
+  "productionPreserved": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+  "nextStage": "Separate express owner authorization for Contacto; reconcile again if Production changed.",
+  "checks": {
+    "candidate_identity": true,
+    "single_approved_html_delta": true,
+    "functions_and_pages": true,
+    "preservation20": true,
+    "qa_five_widths": true,
+    "qa_identity": true,
+    "qa_form_safety": true,
+    "historical_dom_event_accounted": true,
+    "qa_processes_closed": true,
+    "remote_api_http": true,
+    "sso_and_aliases": true,
+    "creation_preview_only": true,
+    "source_commit": true,
+    "visual_review": true,
+    "archive_recovery/manifest-sha256.json": true,
+    "archive_verification/manifest-sha256.json": true,
+    "archive_qa/MANIFEST-SHA256.json": true
+  },
+  "failures": [],
+  "archiveEntriesVerified": {
+    "recovery/manifest-sha256.json": 8,
+    "verification/manifest-sha256.json": 19,
+    "qa/MANIFEST-SHA256.json": 31
+  },
+  "evidence": [
+    {
+      "path": "candidate-manifest.json",
+      "sha256": "cb1b3a549d8aaad9d5e847827978bda141e922073d64e3ac8a9b7e2bcc2e1e89"
+    },
+    {
+      "path": "preservation.json",
+      "sha256": "9d4a4e970939db572497ba9e88325e431f5bc23fe36d2bbd7981d3800cacd672"
+    },
+    {
+      "path": "qa/acceptance-summary.json",
+      "sha256": "5b0b0104984f1ffe1a824c91657bcce928a6739ab9ca16ea2ff171bf2c4cfad4"
+    },
+    {
+      "path": "verification/verification-summary.json",
+      "sha256": "71ff208108d269a510eeb837005403daf8f4d0aac10c5522a09407c0dafa92cf"
+    },
+    {
+      "path": "visual-review.json",
+      "sha256": "3536716d0433acde8123c2215d5cec20deffa278bfeeaddef3d0442527721625"
+    },
+    {
+      "path": "preview-created.json",
+      "sha256": "a3fabd42e656d33b6e7340a69b1b1e983441d96c7e467efd0ac50d727721acbd"
+    },
+    {
+      "path": "recovery/manifest-sha256.json",
+      "sha256": "d2ae44eb5e6f8fa4d0ceee5eed60e46870ea81851fa98581014e224e81c301e6"
+    },
+    {
+      "path": "verification/manifest-sha256.json",
+      "sha256": "6d1c0dd350f24db5d3ff1b23ee40e82dc32cf5b9b9aecdc5cbb523194b6c434e"
+    },
+    {
+      "path": "qa/MANIFEST-SHA256.json",
+      "sha256": "06a38188dfe514b7931c2a977c7b2b689824aa6926d2344130d7d7880f0d6402"
+    }
+  ],
+  "newNetworkOrBrowserTests": 0
+}
