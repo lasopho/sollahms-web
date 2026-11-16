@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "expectedProductionId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+  "candidateInventorySha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+  "sourcePreviewDeploymentId": "dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh",
+  "baselineDeploymentId": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+  "startedAtUtc": "2026-11-16T13:57:07.828468+00:00",
+  "finishedAtUtc": "2026-11-16T13:59:09.112735+00:00",
+  "expectedChecks": 648,
+  "completedChecks": 648,
+  "passedChecks": 648,
+  "failedChecks": 0,
+  "counts": {
+    "fiche": 524,
+    "home": 4,
+    "contacto": 4,
+    "resource": 70,
+    "safe-function": 14,
+    "internal-source-denied": 14,
+    "internal-api-rewrite-without-source": 2,
+    "retired-410": 16
+  },
+  "statusCounts": {
+    "200": 602,
+    "405": 12,
+    "503": 4,
+    "404": 14,
+    "410": 16
+  },
+  "contentMatchCounts": {
+    "exact": 632,
+    "safe-method": 16
+  },
+  "actualHttpTransactions": 1246,
+  "httpsTransactionsTlsValidated": 972,
+  "redirectTransactions": 598,
+  "redirectStatusCounts": {
+    "308": 598
+  },
+  "finalOriginAllCases": "https://sollahms.cl",
+  "homeAndContactoAcrossFourOrigins": 8,
+  "preservedFicheSlugs": 131,
+  "preservedFicheChecks": 524,
+  "publishedTourUiNodes": 0,
+  "retiredPatioBrasil410Cases": 16,
+  "functionChecks": [
+    {
+      "path": "/api/advisory",
+      "method": "GET",
+      "status": 405,
+      "requestOnlyConfirmed": false
+    },
+    {
+      "path": "/api/booking-availability",
+      "method": "GET",
+      "status": 503,
+      "requestOnlyConfirmed": true
+    },
+    {
+      "path": "/api/booking-create",
+      "method": "GET",
+      "status": 503,
+      "requestOnlyConfirmed": true
+    },
+    {
+      "path": "/api/collaboration",
+      "method": "GET",
+      "status": 405,
+      "requestOnlyConfirmed": false
+    },
+    {
+      "path": "/api/contact",
+      "method": "GET",
+      "status": 405,
+      "requestOnlyConfirmed": false
+    },
+    {
+      "path": "/api/orientation-contact",
+      "method": "GET",
+      "status": 405,
+      "requestOnlyConfirmed": false
+    },
+    {
+      "path": "/api/uf",
+      "method": "HEAD",
+      "status": 405,
+      "requestOnlyConfirmed": false
+    }
+  ],
+  "safety": {
+    "methods": [
+      "GET",
+      "HEAD"
+    ],
+    "authHeadersSent": false,
+    "cookiesSentOrStored": false,
+    "formSubmissions": 0,
+    "commercialRequests": 0,
+    "providerWrites": 0,
+    "ufProviderLookup": false,
+    "rawHeadersStored": false,
+    "responseBodiesStored": false,
+    "queriesOrFragmentsStored": false,
+    "credentialsOrProtectionsChanged": false,
+    "serviceMutations": 0
+  },
+  "processes": {
+    "runnerExitCode": 0,
+    "runnerClosed": true,
+    "remainingManagedProcessGroups": 0,
+    "pid": 7754
+  },
+  "historicalAttempt": {
+    "classification": "HARNESS_NETWORK_UNAVAILABLE",
+    "cases": 648,
+    "httpResponsesReceived": 0,
+    "curlExit": 6,
+    "appFailureEstablished": false,
+    "path": "attempts/sandbox-dns-unavailable/classification.json"
+  },
+  "repeatPolicy": "One successful public pass; only the sandbox DNS attempt was retried, with no HTTP response or approved case from that attempt. No further network or QA repeated.",
+  "limits": [
+    "Aliases are independently verified by root through the Vercel API; this runner checks public HTTP only.",
+    "No provider acceptance/delivery to CRM or Resend is claimed.",
+    "No responsive or media interaction suite was repeated by this HTTP runner."
+  ]
+}

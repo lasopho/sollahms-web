@@ -1,11 +1,27 @@
 {
-  "state": "PREPARATION_ONLY",
-  "networkExecuted": false,
+  "state": "FINAL_PASS",
+  "expectedProductionId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+  "candidateInventorySha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
   "files": [
     {
       "path": "README.md",
-      "size": 4706,
-      "sha256": "7890974ee7cc41f74df138cf9a7dc0e5caccb77308da0292c742e6d7d2c8640d"
+      "size": 6519,
+      "sha256": "3fbed81d984fa97842e2bbb086224fb7ce4e63f3b60e80e0deb07167a02e54bf"
+    },
+    {
+      "path": "attempts/sandbox-dns-unavailable/classification.json",
+      "size": 360,
+      "sha256": "95ad356c82dfc27ecbd48bc7b7cc9a328838ba0ccd678df561c27c8bc6798c25"
+    },
+    {
+      "path": "attempts/sandbox-dns-unavailable/process-closed.json",
+      "size": 489,
+      "sha256": "aa04776cd0fe7852417db5b9e9b889e65961ed25cbe13deb5bdff1c9b38401bb"
+    },
+    {
+      "path": "attempts/sandbox-dns-unavailable/public-verification-results.json",
+      "size": 557746,
+      "sha256": "ef733f2d091f66ad1cbb5d7520ea55229aa40f41abcde6aca92a28ef4cb04e3a"
     },
     {
       "path": "coordination-snapshot.json",
@@ -18,9 +34,33 @@
       "sha256": "f1883615331eb99fea77b3cda7e70c3afa0850ba83fad677dd15447b3e123dea"
     },
     {
+      "path": "process-closed.json",
+      "size": 487,
+      "sha256": "f2f26c13398609888f718fd197318e1dad4f3468d2f3f1f68a97f0eb041cea19"
+    },
+    {
+      "path": "promotion-confirmed.json",
+      "size": 1412,
+      "sha256": "69f864d78b68e02ced6ef8c305b00a687b0f354e00ecdf037c674fa9fae4e916"
+    },
+    {
+      "path": "public-verification-results.json",
+      "size": 1087009,
+      "sha256": "a395a6db5cfacad34d65ef240479147b4f211379953d78735701824f9a70706b"
+    },
+    {
+      "path": "verification-summary.json",
+      "size": 3458,
+      "sha256": "10c45caea3674913072987b291ea450da221a959bebd9edb2d18edc0fdef32d7"
+    },
+    {
       "path": "verify_public.py",
       "size": 18162,
       "sha256": "26c1fccf064d376986c8d13b7379186704531968c554719a170361c56aaef01e"
     }
+  ],
+  "excluded": [
+    "manifest-sha256.json",
+    "SHA256SUMS"
   ]
 }

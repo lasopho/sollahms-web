@@ -1,46 +1,45 @@
-# SOLLAHMS — etapa separada de publicación de Contacto conciliado
+# SOLLAHMS — continuidad después de publicar Contacto
 
-Continuar desde el candidato privado de Contacto conciliado con la producción del 16/11/2026. **Este documento no concede autorización productiva.** Ejecutar creación de Production o promoción únicamente si el propietario aporta autorización expresa aplicable a Contacto. La autorización de Recorridos no la sustituye. Sin esa autorización, conservar la Preview y presentar el estado preparado.
+La publicación de Contacto está completada y verificada. Este es el siguiente prompt completo para reanudar con trazabilidad; **no solicita otra publicación ni concede autorización para cambios nuevos**. Si no hay un encargo nuevo del propietario, informar el cierre y mantener el estado.
 
-Repositorio: `lasopho/sollahms-web`.
-Rama de integración: `codex/contacto-baseline-productivo-20261116`.
-[PR #29 de integración](https://github.com/lasopho/sollahms-web/pull/29), abierto en Draft sobre la rama de #27, sin requerir su fusión.
-Checkout independiente actual: `/private/tmp/sollahms-contacto-baseline-20261116`.
-No tocar ni cambiar de rama los checkouts de Documents o `/Users/luissandoval/Projects/sollahms-publicacion`. Si desaparece el temporal, clonar la rama remota en otra copia independiente y conservar todos los commits posteriores.
+## Identidad y estado vigente
 
-Leer `AGENTS.md`, `NEXT-PROMPT.md` y el expediente `docs/contacto-baseline-20261116/`: `INFORME-CIERRE.md`, `CONCILIACION.md`, `PRESERVACION.md`, `candidate-manifest.json`, `preview-approval.json`, `qa/README.md` y `verification/README.md`.
+Repositorio `lasopho/sollahms-web`; rama `codex/contacto-baseline-productivo-20261116`. [PR #29](https://github.com/lasopho/sollahms-web/pull/29) abierto en Draft, sin merge.
 
-## Identificadores que se deben volver a comprobar
+Producción: `dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w`. [Contacto público](https://sollahms.cl/contacto.html). [Hostname inmutable protegido](https://project-wrapp-4l11wr2s0-lsandoval2-8260s-projects.vercel.app/).
 
-- Baseline productivo conciliado: `dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5`.
-- SHA de runtime declarado por ese deployment y verificado en GitHub/Vercel: `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`.
-- Aprobación QA histórica de Recorridos: `7ebad405d403f62306039b08193a58b35bef8bfc`; cierre documental: `98ba61d103059ab488cb85216c9bc95214aee82a`.
-- Contacto aprobado: PR #26, `055787d9a1dadf35217080e46dbdae1c4ccfe78a`; PR #28, `967d556730e20ef86bae6ecee11ec6152434c8ae`.
-- Commit de integración del HTML: `e95357fffa031dce3ac29a254b49c02e240a997f`; control de despliegue manual: `a1f2930475e23ebb87bac1f8443877b06883fe60`.
-- Preview nueva: `dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh`, [Contacto privado](https://project-wrapp-cyqjausfq-lsandoval2-8260s-projects.vercel.app/contacto.html).
-- Inventario del candidato: `de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0`.
-- `static/contacto.html`: 18.655 bytes, SHA256 `02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1`.
+Publicado el 16/11/2026 a las **10:54:49.885, America/Santiago**, por asignación de ambos dominios al mismo Production aislado previamente probado. www mantiene 308 hacia apex. La confirmación API se registró a las 10:55:29. La promoción no reconstruyó ni cambió el ID.
 
-Consultar el HEAD remoto real y los PR antes de actuar. No confiar en los SHA erróneos de prompts históricos. Comprobar ambos aliases productivos: si ya no apuntan a ByUhr, detener el uso de este paquete y conciliar Contacto con el nuevo baseline sin revertir avances. Revisar otras tareas y evitar publicaciones simultáneas.
+Source SHA del deployment: `534bf362b8960e275f5b8b42b5c786027906a4cb`. Checkpoint de QA previo a promoción: `41577c1fae2f8c10e577a8af5c68d277c515f6bc`. Consultar el HEAD remoto real de la rama para el cierre documental final y conservar todos los commits posteriores; no confundir ese SHA documental con el runtime publicado.
 
-## Preservación y preparación
+Baseline anterior, conservado como recuperación: `dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5`. Preview certificada anterior: `dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh`; ya no representa una etapa pendiente.
 
-El paquete tiene 1.660 archivos: un cambio en Contacto y 1.659 idénticos a ByUhr, incluidas 147 páginas, siete bundles/57 archivos y config v3. Conserva las 131 fichas y los 66 cambios de eliminación de recorridos. No repetir generadores, eliminación, preparación histórica, 524 controles responsive ni suites certificadas sin una causa nueva.
+## Fuentes obligatorias
 
-Mantener el HTML aprobado, encabezado, cuerpo, cuatro campos, RUT, consentimiento, scripts, antiabuso, idempotencia, CRM 360, Resend, WhatsApp, SEO/GEO y enlaces legales. No incorporar la cobertura territorial de PR #25: es una rama hermana separada. No reutilizar el paquete antiguo de Contacto basado en `9zz`/`6bc`.
+Leer `AGENTS.md`, `NEXT-PROMPT.md` y los documentos de `docs/contacto-baseline-20261116/`: `INFORME-CIERRE.md`, `CONCILIACION.md`, `PRESERVACION.md` y `candidate-manifest.json`. Los dos documentos de conciliación/preservación describen la fase Preview original; sus límites de autorización son históricos.
 
-El output privado está en `.vercel/contacto-baseline-20261116/preview/.vercel/output`. Si falta, recuperar los mismos bytes por API autenticada del deployment Preview y verificar las 1.660 rutas, tamaños y SHA contra el manifiesto; el mecanismo documentado permite reutilizar archivos locales únicamente si sus hashes coinciden. No reconstruir desde `main` ni ejecutar el preparador antiguo.
+Leer también `production-release-20261116/`: `authorization.json`, `created.json`, `production-gate.json`, `promotion-confirmed.json`, `post-promotion-project.json`, `publication-closure.json`, `verification/README.md`, `browser/isolated/README.md`, `browser/public/README.md` y `public/README.md`. El propietario concedió expresamente la publicación en el adjunto de esta etapa; esa autorización se ejecutó completamente. Los textos anteriores permanecen bajo `history/`.
 
-Confirmar Node 24.22.3, Vercel CLI 65.16.0, `vercel whoami`, equipo `lsandoval2-8260s-projects`, proyecto `project-wrapp` (`prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`) y SSO existente. No cambiar dominios, credenciales, proveedores ni protecciones; no crear bypasses ni sharelinks.
+## Artefacto que se debe conservar
 
-## Secuencia posterior, solo con autorización expresa
+Inventario SHA256 `de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0`: 1.660 archivos, 219.244.937 bytes, 147 HTML, 131 fichas, siete bundles/57 archivos y config v3. Un único cambio frente a ByUhr: `static/contacto.html`; 1.659 entradas idénticas. Los 66 cambios de Recorridos siguen presentes.
 
-1. Revisar el QA aprobado de esta Preview en 1440/1024/768/390/320 px y el cotejo remoto de fuentes. No usar una Preview histórica como evidencia del candidato.
-2. Transferir idéntico el output certificado a un stage productivo separado. Verificar inventario y que sólo Contacto difiera de ByUhr.
-3. Crear un único Production nativo **sin aliases**, con `vercel deploy --prebuilt --environment=production --skip-domain`, equipo/proyecto explícitos y metadatos del commit e inventario. No ejecutar un build para promover una Preview.
-4. Verificar READY, target Production, fuentes, siete lambdas, configuración productiva, acceso SSO y HTTP/browser sobre ese nuevo ID. Usar métodos seguros y reservas request-only. No enviar formularios ni generar leads, correos o reservas; no afirmar entrega real de proveedores sin probarla.
-5. Reconfirmar autorización, aliases, concurrencia y QA. Sólo entonces promover **ese mismo Production ya verificado**, sin reconstrucción. No promover directamente la Preview ni el paquete histórico obsoleto.
-6. Comprobar públicamente Contacto, recursos, navegación, siete funciones con métodos seguros, integridad ajena a Contacto, TLS, redirects y Patio Brasil 410. Ante un fallo material, no dejar publicada una versión defectuosa y usar únicamente el mecanismo de recuperación autorizado.
-7. Actualizar informe, hashes, evidencias, ID productivo, hora de asignación de dominios y `NEXT-PROMPT.md`.
+Contacto: 18.655 bytes, SHA256 `02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1`. Corresponde al pie de PR #26 y al selector de #28, `967d556`, integrado en `e95357f`. Encabezado, contenido principal, formulario, cuatro campos comerciales, validación RUT, consentimiento, antiabuso, idempotencia, CRM 360, Resend, SEO/GEO, correo, WhatsApp y legales permanecen preservados. La cobertura del PR #25 no se incorporó.
 
-No modificar PR #25. Mantener PR #26, #28 y #27 abiertos en Draft, sin fusiones automáticas. No fusionar #27 como requisito de publicación. Conservar su rama, historial y evidencias. El nuevo PR de integración también debe permanecer Draft mientras no exista una instrucción distinta del propietario.
+El output está en `/private/tmp/sollahms-contacto-baseline-20261116/.vercel/contacto-production-release-20261116/stage/.vercel/output`. Si desaparece, clonar la rama real en una copia independiente y recuperar los mismos bytes por la API autenticada de fuentes de **B9HL**, verificando rutas, tamaños y SHA con el manifiesto completo. Reutilizar archivos locales solo si sus hashes coinciden. No usar main ni regenerar fichas; no desplegar íntegramente un paquete antiguo de 9zz/6bc/ByUhr que revierta Contacto o Recorridos.
+
+## QA terminado y límites
+
+Production aislado aprobó todas sus 1.660 fuentes, siete lambdas, 32 HTTP y cinco anchos antes de asignar dominios. Público aprobó **648/648 HTTP**, con 972 TLS válidos, 598 redirects y cero UI de recorridos en 131 fichas. Contacto público aprobó **5/5** en 1440/1024/768/390/320, con 15 capturas nuevas, teclado por letra/Tab, RUT inválido/válido y consentimiento.
+
+No repetir por rutina las matrices responsive históricas ni los 648 controles ya aprobados. El intento DNS del sandbox quedó registrado sin respuestas HTTP; la pasada efectiva completa aprobó todo. No hubo envíos productivos, leads, correos, reservas, escrituras CRM/Resend ni lookup UF. No afirmar entrega real de proveedores.
+
+SSO permanece `all_except_custom_domains`; se conservan reglas automáticas, credenciales, variables y proveedores. CLI de publicación Node 24.22.3/Vercel 65.16.0; runtime de funciones nodejs24.x. No crear bypasses/sharelinks ni usar `--verify` que pueda generar uno. Los perfiles, navegadores y procesos propios fueron cerrados.
+
+## Reanudación futura
+
+Usar exclusivamente el checkout independiente `/private/tmp/sollahms-contacto-baseline-20261116` o uno nuevo. No tocar Documents ni `/Users/luissandoval/Projects/sollahms-publicacion`, ni cambiarles la rama. Mantener PR #29/#26/#28/#27 abiertos en Draft salvo nueva instrucción del propietario; no modificar #25 ni fusionar ramas históricas por iniciativa propia.
+
+Antes de cualquier nuevo cambio autorizado, consultar GitHub, Vercel y ambos aliases; la producción puede haber avanzado. Preservar los cambios posteriores y conciliar el trabajo nuevo con el baseline real, incluyendo el Contacto publicado y la eliminación de recorridos. Evitar publicaciones simultáneas. La referencia anterior ByUhr es recuperación histórica y no un sustituto del sitio vigente.
+
+No existe trabajo productivo pendiente de esta intervención. No volver a crear ni promover B9HL, no reconstruir una Preview y no solicitar de nuevo permisos que ya fueron concedidos para este cierre. Un trabajo adicional necesita un objetivo y alcance propios.
