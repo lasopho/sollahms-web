@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-16T14:26:06.811924-03:00",
+  "passed": true,
+  "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+  "productionDeploymentStillBaseline": true,
+  "productionAliases": [
+    {
+      "host": "sollahms.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794842996857
+    },
+    {
+      "host": "www.sollahms.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794842996873
+    },
+    {
+      "host": "sollhams.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794842996858
+    }
+  ],
+  "defaultDomainDeploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+  "uniqueNewProductionId": [
+    "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu"
+  ],
+  "project": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "nodeVersion": "24.x"
+  },
+  "isolatedBrowserCases": 10,
+  "isolatedIntegrityChecks": 24,
+  "sameVerifiedDeployment": true
+}

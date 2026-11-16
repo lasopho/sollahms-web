@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Read-only connected preflight before isolated production footer release",
+  "checkedAtUtc": "2026-11-16T17:13:36.812Z",
+  "sourceTools": [
+    "Vercel connected get_project/get_deployment/list_project_domains/list_aliases/list_deployments",
+    "GitHub connected fetch git/ref/heads and pull request"
+  ],
+  "mutationsPerformed": false,
+  "expected": {
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "productionDeploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+    "previewDeploymentId": "dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF",
+    "branch": "codex/footer-sin-frase-20261116",
+    "sourceHead": "b761ddeaea2fa526870e6af25658046e31b571d7",
+    "pullRequest": 31
+  },
+  "project": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "nodeVersion": "24.x",
+    "latestDeployment": {
+      "id": "dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF",
+      "url": "project-wrapp-b4lw8u26z-lsandoval2-8260s-projects.vercel.app",
+      "createdAt": 1794845029855,
+      "readyState": "READY",
+      "target": null
+    },
+    "ssoProtection": {
+      "enabled": true,
+      "deploymentType": "all_except_custom_domains"
+    },
+    "passwordProtection": {
+      "enabled": false,
+      "deploymentType": null
+    },
+    "trustedIps": {
+      "enabled": false,
+      "deploymentType": null,
+      "addresses": [],
+      "protectionMode": null
+    }
+  },
+  "production": {
+    "id": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+    "url": "project-wrapp-4tb7ztjjc-lsandoval2-8260s-projects.vercel.app",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "target": "production",
+    "state": "READY",
+    "readyState": "READY",
+    "createdAt": 1794842728953,
+    "source": "cli",
+    "githubCommitRef": "codex/centro-auditoria-integral-20261116",
+    "githubCommitSha": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9"
+  },
+  "preview": {
+    "id": "dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF",
+    "url": "project-wrapp-b4lw8u26z-lsandoval2-8260s-projects.vercel.app",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "target": null,
+    "state": "READY",
+    "readyState": "READY",
+    "createdAt": 1794845029855,
+    "source": "cli",
+    "githubCommitRef": "codex/footer-sin-frase-20261116",
+    "githubCommitSha": "d4d67bc298bbb8e78e7ba91867b49c1e4fd09772"
+  },
+  "domains": [
+    {
+      "name": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308
+    },
+    {
+      "name": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": null,
+      "redirectStatusCode": null
+    },
+    {
+      "name": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308
+    },
+    {
+      "name": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": null,
+      "redirectStatusCode": null
+    }
+  ],
+  "customAliases": [
+    {
+      "alias": "www.sollahms.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794842996873
+    },
+    {
+      "alias": "sollahms.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794842996857
+    },
+    {
+      "alias": "sollhams.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794842996858
+    }
+  ],
+  "vercelDefaultDomain": {
+    "hostname": "project-wrapp.vercel.app",
+    "resolvedBy": "get_deployment(hostname); this hostname is registered as a project domain but omitted by list_aliases",
+    "deployment": {
+      "id": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "url": "project-wrapp-4tb7ztjjc-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "target": "production",
+      "state": "READY",
+      "readyState": "READY",
+      "createdAt": 1794842728953,
+      "source": "cli",
+      "githubCommitRef": "codex/centro-auditoria-integral-20261116",
+      "githubCommitSha": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9"
+    }
+  },
+  "github": {
+    "head": {
+      "ref": "refs/heads/codex/footer-sin-frase-20261116",
+      "sha": "b761ddeaea2fa526870e6af25658046e31b571d7"
+    },
+    "pullRequest": {
+      "number": 31,
+      "url": "https://github.com/lasopho/sollahms-web/pull/31",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "mergedAt": null,
+      "autoMerge": null,
+      "head": {
+        "ref": "codex/footer-sin-frase-20261116",
+        "sha": "b761ddeaea2fa526870e6af25658046e31b571d7"
+      },
+      "base": {
+        "ref": "codex/centro-auditoria-integral-20261116",
+        "sha": "67a57b142dd2170c678e75c4c425aabd16579339"
+      }
+    }
+  },
+  "concurrency": {
+    "windowCount": 20,
+    "newerThanPreview": [],
+    "inflight": [],
+    "recentDeployments": [
+      {
+        "id": "dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF",
+        "url": "project-wrapp-b4lw8u26z-lsandoval2-8260s-projects.vercel.app",
+        "target": null,
+        "state": "READY",
+        "createdAt": 1794845029855,
+        "githubCommitRef": "codex/footer-sin-frase-20261116",
+        "githubCommitSha": "d4d67bc298bbb8e78e7ba91867b49c1e4fd09772"
+      },
+      {
+        "id": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+        "url": "project-wrapp-4tb7ztjjc-lsandoval2-8260s-projects.vercel.app",
+        "target": "production",
+        "state": "READY",
+        "createdAt": 1794842728953,
+        "githubCommitRef": "codex/centro-auditoria-integral-20261116",
+        "githubCommitSha": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9"
+      },
+      {
+        "id": "dpl_33R4uenGQAt2cSVUGEJC7VsoF9yS",
+        "url": "project-wrapp-9uq44evdh-lsandoval2-8260s-projects.vercel.app",
+        "target": null,
+        "state": "READY",
+        "createdAt": 1794841286116,
+        "githubCommitRef": "codex/centro-auditoria-integral-20261116",
+        "githubCommitSha": "e9d7393148bf1e209f6a8e2210ed4c5a973ceb41"
+      },
+      {
+        "id": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "url": "project-wrapp-4l11wr2s0-lsandoval2-8260s-projects.vercel.app",
+        "target": "production",
+        "state": "READY",
+        "createdAt": 1794836242120,
+        "githubCommitRef": "codex/contacto-baseline-productivo-20261116",
+        "githubCommitSha": "534bf362b8960e275f5b8b42b5c786027906a4cb"
+      },
+      {
+        "id": "dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh",
+        "url": "project-wrapp-cyqjausfq-lsandoval2-8260s-projects.vercel.app",
+        "target": null,
+        "state": "READY",
+        "createdAt": 1794833011372,
+        "githubCommitRef": "codex/contacto-baseline-productivo-20261116",
+        "githubCommitSha": "a1f2930475e23ebb87bac1f8443877b06883fe60"
+      },
+      {
+        "id": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+        "url": "project-wrapp-jteux3lm5-lsandoval2-8260s-projects.vercel.app",
+        "target": "production",
+        "state": "READY",
+        "createdAt": 1794802137979,
+        "githubCommitRef": "codex/eliminar-recorridos-global-20261115",
+        "githubCommitSha": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+      },
+      {
+        "id": "dpl_GsQkzdBBESnC3nHJCdjR44HP75fL",
+        "url": "project-wrapp-5tt7fw86l-lsandoval2-8260s-projects.vercel.app",
+        "target": null,
+        "state": "READY",
+        "createdAt": 1794796418231,
+        "githubCommitRef": "HEAD",
+        "githubCommitSha": "967d556730e20ef86bae6ecee11ec6152434c8ae"
+      },
+      {
+        "id": "dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi",
+        "url": "project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app",
+        "target": null,
+        "state": "READY",
+        "createdAt": 1794780184161,
+        "githubCommitRef": "codex/eliminar-recorridos-global-20261115",
+        "githubCommitSha": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+      },
+      {
+        "id": "dpl_4CDsorKWtUNX3rHWggGSqMdcvkbD",
+        "url": "project-wrapp-h2eoiw0xl-lsandoval2-8260s-projects.vercel.app",
+        "target": "staging",
+        "state": "READY",
+        "createdAt": 1794779891328,
+        "githubCommitRef": "codex/contacto-node24223-preview-20261115",
+        "githubCommitSha": "967d556730e20ef86bae6ecee11ec6152434c8ae"
+      },
+      {
+        "id": "dpl_3TUeGDo3eCjRVcG57KVRqnQuNR5v",
+        "url": "project-wrapp-ls39xr1ot-lsandoval2-8260s-projects.vercel.app",
+        "target": "staging",
+        "state": "ERROR",
+        "createdAt": 1794779328608,
+        "githubCommitRef": "codex/contacto-full-preview-20261115",
+        "githubCommitSha": "967d556730e20ef86bae6ecee11ec6152434c8ae"
+      },
+      {
+        "id": "dpl_44R89Ataifx1UuoVVBv1gG9ruyM3",
+        "url": "project-wrapp-m6ul7xxo1-lsandoval2-8260s-projects.vercel.app",
+        "target": "staging",
+        "state": "READY",
+        "createdAt": 1794775214029,
+        "githubCommitRef": "codex/contacto-selector-320-20261115",
+        "githubCommitSha": "967d556730e20ef86bae6ecee11ec6152434c8ae"
+      },
+      {
+        "id": "dpl_72Jr5vGs4JBqzK1LJAagqkUUANw9",
+        "url": "project-wrapp-m8zs3v5iv-lsandoval2-8260s-projects.vercel.app",
+        "target": "staging",
+        "state": "READY",
+        "createdAt": 1794775166591,
+        "githubCommitRef": "codex/contacto-selector-320-20261115",
+        "githubCommitSha": "ce52d913db89b4bb92d40c5b89e6dc005fa91432"
+      },
+      {
+        "id": "dpl_Fyu39RK4drsHA7tqs8brGRHqTtxF",
+        "url": "project-wrapp-b1aszxxoe-lsandoval2-8260s-projects.vercel.app",
+        "target": "staging",
+        "state": "READY",
+        "createdAt": 1794774673191,
+        "githubCommitRef": "codex/eliminar-recorridos-global-20261115",
+        "githubCommitSha": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+      },
+      {
+        "id": "dpl_6TX1hPUJTsVqvGJzHugB9oPepQ22",
+        "url": "project-wrapp-fh6upnyq4-lsandoval2-8260s-projects.vercel.app",
+        "target": "staging",
+        "state": "READY",
+        "createdAt": 1794773809450,
+        "githubCommitRef": "codex/contacto-pie-corporativo-20261115",
+        "githubCommitSha": "055787d9a1dadf35217080e46dbdae1c4ccfe78a"
+      },
+      {
+        "id": "dpl_DjJQNHKsbHyG2dnSYtEmbvNcuACx",
+        "url": "project-wrapp-hxgmve2xk-lsandoval2-8260s-projects.vercel.app",
+        "target": "staging",
+        "state": "READY",
+        "createdAt": 1794759276892
+      },
+      {
+        "id": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+        "url": "project-wrapp-e2x698w8f-lsandoval2-8260s-projects.vercel.app",
+        "target": "production",
+        "state": "READY",
+        "createdAt": 1794754853864
+      },
+      {
+        "id": "dpl_21xM1afWsRHgbu3Kv2zdikWH3tkJ",
+        "url": "project-wrapp-ecxujvh2b-lsandoval2-8260s-projects.vercel.app",
+        "target": "production",
+        "state": "ERROR",
+        "createdAt": 1794754023021
+      },
+      {
+        "id": "dpl_2S4kRYezijcgik4etSnnR3sAY1z6",
+        "url": "project-wrapp-njwez5b63-lsandoval2-8260s-projects.vercel.app",
+        "target": "production",
+        "state": "READY",
+        "createdAt": 1794748528078,
+        "githubCommitRef": "codex/comparador-footer-20261115",
+        "githubCommitSha": "6eefd61edf3843cff603c1a2053eb204920270a7"
+      },
+      {
+        "id": "dpl_3otu6np58efcMyX4pSvBmLtjpw3a",
+        "url": "project-wrapp-7dje1d2kz-lsandoval2-8260s-projects.vercel.app",
+        "target": "staging",
+        "state": "READY",
+        "createdAt": 1794747219726,
+        "githubCommitRef": "codex/agenda-regions-responsive-20261115",
+        "githubCommitSha": "cb55f8db05495009d5ce15301747ccdf0696ccbd"
+      },
+      {
+        "id": "dpl_Ec3koFKPBYbYfmKZ9moxfRbnNDqD",
+        "url": "project-wrapp-kzqqr57mm-lsandoval2-8260s-projects.vercel.app",
+        "target": null,
+        "state": "READY",
+        "createdAt": 1794747085343,
+        "githubCommitRef": "codex/comparador-footer-20261115",
+        "githubCommitSha": "6eefd61edf3843cff603c1a2053eb204920270a7"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "intended_project",
+      "pass": true
+    },
+    {
+      "name": "intended_team",
+      "pass": true
+    },
+    {
+      "name": "production_is_expected_baseline",
+      "pass": true
+    },
+    {
+      "name": "all_custom_aliases_unchanged",
+      "pass": true
+    },
+    {
+      "name": "www_redirect_preserved",
+      "pass": true
+    },
+    {
+      "name": "typo_domain_redirect_preserved",
+      "pass": true
+    },
+    {
+      "name": "vercel_domain_resolves_expected_baseline",
+      "pass": true
+    },
+    {
+      "name": "all_domains_verified",
+      "pass": true
+    },
+    {
+      "name": "sso_preserved",
+      "pass": true
+    },
+    {
+      "name": "preview_ready_and_isolated",
+      "pass": true
+    },
+    {
+      "name": "remote_branch_head_expected",
+      "pass": true
+    },
+    {
+      "name": "pr_open_draft_unmerged",
+      "pass": true
+    },
+    {
+      "name": "no_concurrent_deployments_after_preview",
+      "pass": true
+    },
+    {
+      "name": "no_inflight_deployments_in_recent_window",
+      "pass": true
+    }
+  ],
+  "status": "PASS"
+}

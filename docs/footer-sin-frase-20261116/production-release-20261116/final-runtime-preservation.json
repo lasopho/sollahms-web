@@ -1,0 +1,229 @@
+{
+  "checkedAt": "2026-11-16T14:35:06.192650-03:00",
+  "checkedAtUTC": "2026-11-16T17:35:06.192650+00:00",
+  "timezone": "America/Santiago",
+  "passed": true,
+  "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+  "baselineDeployment": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+  "candidateInventorySha256": "aabc92d6a5c7c8d345d9a3cc7dd4f45a7fd11c8385c752ddf45e5a2d0f649549",
+  "baselineInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+  "implementationCommit": "d4d67bc298bbb8e78e7ba91867b49c1e4fd09772",
+  "checks": [
+    {
+      "name": "certified complete inventory pins unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 1660 local candidate bytes unchanged after upload and publication",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HWs local rollback artifact still exact to certified baseline",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "only two unique HTML diffs; 1658 identical runtime files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 131 active project fiches unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 57 files in seven function bundles unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Contacto, Centro, fade and runtime config exact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all 66 previous tour removal changes retained by byte identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "actual working runtime source equals implementation; docs/NEXT excluded",
+      "passed": true,
+      "detail": {
+        "runtimeGitDelta": [],
+        "untrackedRuntime": []
+      }
+    },
+    {
+      "name": "source vercel.json exact to implementation false branch guard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "working two HTML sources exact to deployed artifact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "public HTTP certificate approved for same deployment and pin",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "public Chrome certificate approved for same deployment and pin",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "native postpromotion certificate and promotion identity approved",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "verificationScope": "Post-publication identity and working runtime check using local bytes and completed HTTP/browser/native certificates; no network, refresh, build or source mutation.",
+  "changes": [
+    {
+      "path": "static/index.html",
+      "before": {
+        "path": "static/index.html",
+        "size": 59370,
+        "sha1": "e9c1a14c112e6a4bd271547150865dda1de2ff96",
+        "sha256": "b28e03ef77a178c39bd7d8fd2cbf4bfa21b143a267f5fe747d2cf8ddd68df3cf"
+      },
+      "after": {
+        "path": "static/index.html",
+        "size": 59169,
+        "sha1": "5bde4b7ed86a0f2e77ca56b861ad85f679f3b21a",
+        "sha256": "500f2935db51b0c34460986ff2f78be499ef52dfe5e270967b4502489cd4b33d"
+      }
+    },
+    {
+      "path": "static/proyectos.html",
+      "before": {
+        "path": "static/proyectos.html",
+        "size": 42977,
+        "sha1": "9ec5862cc32c271e0fc64eec5f69b1ffa2dae0b8",
+        "sha256": "eed14625dff13fc98ee2b5829243614bfef1e9d61f1276a7f24dd9678ee732cd"
+      },
+      "after": {
+        "path": "static/proyectos.html",
+        "size": 42776,
+        "sha1": "01c51df54d7c2afb388897fa9b837a5a8e167ce9",
+        "sha256": "2af1e53e21c4b818e4fb728edc9960df3bb114036c8e973db932b862443f7c34"
+      }
+    }
+  ],
+  "runtimeFiles": 1660,
+  "runtimeChangedFiles": 2,
+  "runtimeIdenticalFiles": 1658,
+  "projectFiches": {
+    "count": 131,
+    "allByteIdenticalToHWs": true,
+    "inventorySha256": "864326e7c07f53314c430c811a60171b49875cd18b905db9a9690eb3898b34a4"
+  },
+  "functions": {
+    "files": 57,
+    "bundles": [
+      "advisory.func",
+      "booking-availability.func",
+      "booking-create.func",
+      "collaboration.func",
+      "contact.func",
+      "orientation-contact.func",
+      "uf.func"
+    ],
+    "allByteIdenticalToHWs": true,
+    "inventorySha256": "c415b7702e9a314845df83d20b0750962afefd211ec4654eb11960913bc677b9"
+  },
+  "criticalFiles": [
+    {
+      "path": "static/contacto.html",
+      "size": 18655,
+      "sha1": "155c3d554450f1c8368506bcdf1563c541b69c1e",
+      "sha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1"
+    },
+    {
+      "path": "static/centro-orientacion.html",
+      "size": 29317,
+      "sha1": "861ddb6c1431214eaa1821e7850a72da3aa93ced",
+      "sha256": "d9dff77fbbbb166abc11d0fd6b8ab13a2cb24ea7d10896259b799f6a7e64f585"
+    },
+    {
+      "path": "static/assets/css/orientacion.css",
+      "size": 22395,
+      "sha1": "c88551f87e4771c2c2eaea8537f53defd67be195",
+      "sha256": "39140c19c998dc9244c898ededfcf19364f71e4102357db5470943d6e7906ce0"
+    },
+    {
+      "path": "static/assets/js/orientacion.mjs",
+      "size": 15924,
+      "sha1": "0b00db3ec4ef387662dc329a4b49c7677bed4064",
+      "sha256": "2ea9526c043d044d3af8d9a4ebcde4d3809561b591e3a50cae891c9718eb6fee"
+    },
+    {
+      "path": "static/assets/js/orientation-engine.mjs",
+      "size": 7661,
+      "sha1": "586ede8442893fd0fae880db58a6c11d22618dd7",
+      "sha256": "f2cced4ce11a3b0e2e82b9021e2986e3a96f44ca0f75de3ba25e4f8bb793a6ab"
+    },
+    {
+      "path": "static/assets/js/scroll-presence.js",
+      "size": 7254,
+      "sha1": "66a7a3b7e37565ef4ba7cf5cc7846ed93340619a",
+      "sha256": "6d6f2be8832ff56ae6c3ba6d7e450b4b83c8dab2fbac834edc45cb37f9371f5d"
+    },
+    {
+      "path": "config.json",
+      "size": 3916,
+      "sha1": "04e9bcfbdaedafe692af92f3409844151fd82ab3",
+      "sha256": "ef32ad5c7a069d7de482a7a92f5022a0c852cd0b9b896a735a48bd12bae71f05"
+    }
+  ],
+  "priorTourRemovalFilesPreserved": 66,
+  "runtimeGitDelta": 0,
+  "untrackedRuntimeFiles": 0,
+  "workingSourceHead": "b761ddeaea2fa526870e6af25658046e31b571d7",
+  "sourceVercelJsonSha256": "2b69b392e8a844bea894183c4a7b9e559a167444ecfcc86c0591e5b63b272d4e",
+  "completedEvidence": {
+    "public-http/summary.json": {
+      "sha256": "4c5eea645c07cea1ab07dbc64a742f18bf4e36b07f018c19aebd1e701433daef",
+      "passed": true
+    },
+    "browser/public/results.json": {
+      "sha256": "a18a54992aff48251a05356464abe862bd9d680c04339e2e6f9eb5fd4b04bf3a",
+      "passed": true
+    },
+    "verification/postpromotion-summary.json": {
+      "sha256": "61129f22637e56edc4ee3482030d2e18d8666a73e3de3129c1ed0f429638bc05",
+      "passed": true
+    },
+    "promotion-confirmed.json": {
+      "sha256": "96b8a072a8a685607e7b073b2f2f4d42b2520e7c5469d028cdf41bfd842e31a7",
+      "passed": true
+    }
+  },
+  "publicQa": {
+    "httpCases": 210,
+    "httpPassed": 210,
+    "nativePostpromotionChecks": 25,
+    "nativePostpromotionPassed": 25,
+    "browserCases": 10,
+    "browserPassed": 10,
+    "browserAggregation": "Nine original completed cases retained unchanged; only the incomplete proyectos320 case replaced by a complete independent real-HTTPS repetition."
+  },
+  "manifestHashes": {
+    "fileSha256": "727b0533e54435577e21d98bad33854e3c60931b07976d618c154bad2a792753",
+    "actualCandidateInventorySha256": "aabc92d6a5c7c8d345d9a3cc7dd4f45a7fd11c8385c752ddf45e5a2d0f649549",
+    "actualHWsInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05"
+  },
+  "status": "PASS",
+  "artifactMutations": 0,
+  "sourceMutations": 0,
+  "gitMutations": 0,
+  "networkRequests": 0,
+  "buildersOrGeneratorsExecuted": 0,
+  "finishedAtUTC": "2026-11-16T17:35:08.140740+00:00"
+}
