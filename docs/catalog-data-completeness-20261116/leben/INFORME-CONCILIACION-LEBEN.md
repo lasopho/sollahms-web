@@ -55,6 +55,6 @@ Se conservaron los 55 archivos y hashes certificados de fase 1 en el [manifiesto
 
 ## Sincronización y siguiente paso
 
-El propietario autorizó expresamente la exclusión de deployments solo para la rama de auditoría y su sincronización. El parche mínimo ya está aplicado en ese checkout; no modifica main. [Estado y evidencia de sincronización](recepcion-fase2/SINCRONIZACION-GITHUB.md). El traslado Git conserva commits, hashes y archivos binarios exactos; no crea PR ni invoca generadores.
+El propietario autorizó la exclusión de deployments solo para esta rama y su sincronización. El contenido documental quedó [verificado en GitHub, commit 37ff7a4](https://github.com/lasopho/sollahms-web/commit/37ff7a41c2635e8d8e7370b72b9e459dce8522c5), con SHA local/remoto coincidente y la exclusión presente. Main conserva su SHA anterior y Vercel devuelve cero deployments de esta rama tras el push. [Recibo y commit de control posterior](recepcion-fase2/SINCRONIZACION-GITHUB.md). No se creó PR ni se ejecutaron generadores.
 
 Esperar antecedentes Leben, validar las respuestas contra sus fuentes y actualizar solo los campos afectados. No iniciar Euro automáticamente. Se preparó un [prompt Euro condicionado](../continuidad/PROMPT-EURO-CONDICIONADO.md), que no se ejecuta hasta el cierre documental Leben y autorización de continuación.
