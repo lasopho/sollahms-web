@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "fecha_auditoria": "2026-11-16",
   "timezone": "America/Santiago",
   "base": {
@@ -33,8 +33,8 @@
   },
   "estado_bloques": {
     "Leben": {
-      "estado": "Pendientes entregados al propietario",
-      "cierre": "Auditoría documental y solicitudes entregadas; recepción/conciliación pendientes",
+      "estado": "Recepción de antecedentes abierta",
+      "cierre": "No conciliada. Cuatro respuestas sin precios vigentes; ningún campo pendiente resuelto.",
       "metricas": {
         "fecha_auditoria": "2026-11-16",
         "proyectos_leben_revisados": 13,
@@ -80,13 +80,40 @@
     "Pendiente de auditoría": 118,
     "Pendientes entregados al propietario": 13
   },
-  "siguiente_paso": "Recibir respuestas Leben, validar sus fuentes y conciliar. No iniciar Euro.",
+  "siguiente_paso": "Esperar antecedentes pendientes Leben. No iniciar Euro.",
   "protecciones": {
     "generadores_aplicacion_ejecutados": 0,
     "deployments_creados": 0,
     "pushes": 0,
     "prs_publicados_o_fusionados": 0,
     "archivos_productivos_modificados": 0,
-    "nota_funciones": "Solo cinco archivos API existen en este checkout; no se afirma haber verificado las siete funciones de producción. Los bytes API/lib/vercel se verifican intactos."
+    "nota_funciones": "Cuatro archivos API locales enumerados en BASELINE; se corrige la nota textual previa de cinco. No se verifican ni invocan las siete funciones de producción. Bytes API/lib/vercel originales intactos.",
+    "cambio_configuracion_autorizado": "Solo exclusión de deployments de codex/auditoria-leben-20261116 en el checkout independiente. main y producción intactos."
+  },
+  "fase2": {
+    "estado": "Recepción abierta: bloque 1A sin precios vigentes",
+    "fecha": "2026-11-16",
+    "commit_base_certificado": "dd3a68892b85b4e355e4546fd161844ce7b02361",
+    "solicitudes_originales": 55,
+    "campos_pendientes_originales": 461,
+    "comunicaciones_recibidas": 1,
+    "respuestas_por_campo": 4,
+    "campos_confirmados_por_propietario": 0,
+    "campos_resueltos": 0,
+    "campos_pendientes_restantes": 461,
+    "nuevas_discrepancias_resueltas": 0,
+    "listos_incorporacion": 0,
+    "siguiente_accion": "Esperar cotizaciones, capturas o declaración directa Sollahms que confirme valores y vigencia. No repetir la auditoría ni presentar históricos como vigentes.",
+    "sincronizacion_github": "Exclusión específica autorizada y aplicada; push de documentación pendiente.",
+    "matriz_estados_dato": {
+      "Confirmado documentalmente": 209,
+      "Contradictorio": 7,
+      "Desconocido": 352,
+      "Histórico": 47,
+      "Parcial": 72,
+      "No aplicable": 2
+    },
+    "fuentes_registradas_actuales": 22,
+    "fuentes_primarias_fase1": 21
   }
 }

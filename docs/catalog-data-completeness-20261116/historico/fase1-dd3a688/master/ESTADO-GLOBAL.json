@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "fecha_auditoria": "2026-11-16",
+  "timezone": "America/Santiago",
+  "base": {
+    "fecha_auditoria": "2026-11-16",
+    "timezone": "America/Santiago",
+    "source_checkout": "/Users/luissandoval/Documents/sollahms-web",
+    "audit_checkout": "/private/tmp/sollahms-auditoria-leben-20261116",
+    "branch": "codex/auditoria-leben-20261116",
+    "source_head": "dfa5b5b73173b246fd29921ad3514fa53e4bf0c4",
+    "catalog_source": "data/proyectos.json",
+    "catalog_sha256": "8f1c7ea7021cb630c4144fb7612d741d4c472d3534189da7b09e1299580bed78",
+    "catalog_count": 131,
+    "leben_labelled": 14,
+    "leben_excluding_esepe": 13,
+    "api_local_files": [
+      "api/booking-availability.mjs",
+      "api/booking-create.mjs",
+      "api/contact.mjs",
+      "api/uf.mjs"
+    ],
+    "protected_files_count": 235,
+    "note": "Matriz anclada al catálogo local recibido; no equivale a main ni a producción. No se altera la atribución original de Parque Germania."
+  },
+  "catalogo_maestro": {
+    "filas": 131,
+    "slugs_unicos": 131,
+    "base_referencia": "leben/evidencias/entrada/proyectos-131.json",
+    "no_equivale_a_ofertas_activas": true,
+    "main_remoto_filas": 134,
+    "produccion_verificada": false
+  },
+  "estado_bloques": {
+    "Leben": {
+      "estado": "Pendientes entregados al propietario",
+      "cierre": "Auditoría documental y solicitudes entregadas; recepción/conciliación pendientes",
+      "metricas": {
+        "fecha_auditoria": "2026-11-16",
+        "proyectos_leben_revisados": 13,
+        "proyectos_no_vendidos_segun_snapshot": 12,
+        "own_vendido": 1,
+        "brochures_leben_completos": 11,
+        "paginas_leben_completas": 82,
+        "pdfs_controlados_sha256": 12,
+        "parque_germania": "Excluido Leben; identidad ESEPE revisada en p.1; bloque ESEPE pendiente",
+        "fuentes_disponibles_examinadas": 21,
+        "hechos_documentales": 679,
+        "hechos_confirmados": 424,
+        "campos_canonicos": 689,
+        "campos_por_estado": {
+          "CONFIRMADO": 209,
+          "CONTRADICTORIO": 7,
+          "DESCONOCIDO": 352,
+          "HISTÓRICO": 47,
+          "PARCIAL": 72,
+          "NO APLICA": 2
+        },
+        "solicitudes_agrupadas": 55,
+        "campos_con_solicitud_propietario": 461,
+        "diferencias_documentales_leben": 7,
+        "diferencias_direccion_criterio_resuelto": 4,
+        "contradicciones_pendientes_leben": 3,
+        "atribucion_esepe_pendiente": 1,
+        "diferencias_historicas_precios_sollahms_catalogo": 10,
+        "precios_vigentes_ratificados_en_esta_fase": 0,
+        "documentos_no_localizados": [
+          "INVENTARIO_13_PROYECTOS.csv",
+          "INSTRUCCIONES_CODEX.md"
+        ]
+      }
+    },
+    "Otras inmobiliarias": {
+      "estado": "Pendiente de auditoría",
+      "proyectos": 118,
+      "prohibido_avanzar_automaticamente": true
+    }
+  },
+  "por_estado_revision": {
+    "Pendiente de auditoría": 118,
+    "Pendientes entregados al propietario": 13
+  },
+  "siguiente_paso": "Recibir respuestas Leben, validar sus fuentes y conciliar. No iniciar Euro.",
+  "protecciones": {
+    "generadores_aplicacion_ejecutados": 0,
+    "deployments_creados": 0,
+    "pushes": 0,
+    "prs_publicados_o_fusionados": 0,
+    "archivos_productivos_modificados": 0,
+    "nota_funciones": "Solo cinco archivos API existen en este checkout; no se afirma haber verificado las siete funciones de producción. Los bytes API/lib/vercel se verifican intactos."
+  }
+}

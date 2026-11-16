@@ -1,0 +1,166 @@
+{
+  "fecha": "2026-11-16",
+  "resultado": "APROBADO",
+  "comprobaciones": {
+    "55_hashes_fase1_preservados": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "235_archivos_originales_protegidos": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "solo_documentacion_y_exclusion_autorizada": {
+      "resultado": "APROBADO",
+      "detalle": [
+        "docs/catalog-data-completeness-20261116/continuidad/NEXT-PROMPT.md",
+        "docs/catalog-data-completeness-20261116/leben/CONTRADICCIONES.md",
+        "docs/catalog-data-completeness-20261116/leben/DATOS-CONFIRMADOS.csv",
+        "docs/catalog-data-completeness-20261116/leben/DATOS-PENDIENTES-PROPIETARIO.csv",
+        "docs/catalog-data-completeness-20261116/leben/FUENTES-DOCUMENTALES.csv",
+        "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+        "docs/catalog-data-completeness-20261116/leben/RESUMEN-FILTROS-LEBEN.json",
+        "docs/catalog-data-completeness-20261116/master/ESTADO-GLOBAL.json",
+        "docs/catalog-data-completeness-20261116/master/MATRIZ-MAESTRA-131.csv",
+        "vercel.json"
+      ]
+    },
+    "689_campos_originales_intactos": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "424_evidencias_originales_intactas": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "55_solicitudes_originales_intactas": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "131_proyectos_originales_intactos": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "maestro_identidades_unicas": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "estado_dato_sin_promociones": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "72_parciales_identicos_subset": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "461_campos_55_ids_sin_duplicados": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "bloques_exactos_sin_duplicar": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "4_respuestas_sin_precio_vigente": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "una_comunicacion_cuatro_respuestas_trazables": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "respuestas_no_cambian_historicos": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "fuente22_sin_precio_confirmado": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "tipos_propiedad_confirmados_no_repreguntados": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "own_sin_preguntas_precio": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "3_discrepancias_abiertas_cero_nuevas_resueltas": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "cero_registros_listos_y_sin_cambio_cobertura": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "excel_original_hash_conservado": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "excel_leido_275_entradas_vacias": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "global_no_cierre_ni_euro": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "cuatro_api_locales_sin_invocar_produccion": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "exclusion_minima_autorizada_sin_otro_cambio_config": {
+      "resultado": "APROBADO",
+      "detalle": null
+    },
+    "sin_deployments_ni_prs": {
+      "resultado": "APROBADO",
+      "detalle": null
+    }
+  },
+  "fallos": [],
+  "metricas": {
+    "comunicaciones": 1,
+    "respuestas_campo": 4,
+    "precios_vigentes_confirmados": 0,
+    "campos_resueltos": 0,
+    "campos_pendientes": 461
+  },
+  "archivos_fase2_sha256": {
+    "leben/recepcion-fase2/AUTORIZACION-SINCRONIZACION.json": "dcced61c5fe2547d67cdebcb44e648bcca49f54bedc648178b1155713de46d15",
+    "leben/recepcion-fase2/B1-SOLICITUDES.csv": "82919ee710706657b37fe822c08a63dd017c594d29f19b57260677b5c85e675a",
+    "leben/recepcion-fase2/B1A-PRECIOS-RESPUESTA.csv": "78879481f8284fd8297c8becb0e1c0b7b70e3ad695bf12a8370bc3fb84e6325c",
+    "leben/recepcion-fase2/B2-SOLICITUDES.csv": "7cfb2ddbdf4f930b20699973e784384d6df5d86546199fa09b7ae21db02665f1",
+    "leben/recepcion-fase2/B3-SOLICITUDES.csv": "68322db41705e1b5360548638eb62abe1eaf747f8fce55b53a9a0824189285b0",
+    "leben/recepcion-fase2/B4-SOLICITUDES.csv": "27d67e75ecb4523cd0e2b0bf10a3e6085a46d78eea66c574f1184db53cb48589",
+    "leben/recepcion-fase2/B5-SOLICITUDES.csv": "0bfc1f80418fc81c5828e35437f41fd6c19ec23919029c1ca7b5c661c2288ed7",
+    "leben/recepcion-fase2/B6-SOLICITUDES.csv": "c38b35f568284bfdc8cc3818b5ab986e5a3e95a00c7fbc601439d26a780e94c6",
+    "leben/recepcion-fase2/B7-SOLICITUDES.csv": "aad7ab7f8b67ecc5f16bdff2dc6ba7f528f8552a3d5ca573b822e1274149a3fc",
+    "leben/recepcion-fase2/BLOQUES-SOLICITUDES-LEBEN.md": "dbe123b1e5b44e8d0dfbdb553d6d27ba9e0c5e93f85745de409519156ea4d130",
+    "leben/recepcion-fase2/CAMPOS-LISTOS-FILTROS.csv": "e95638d44e5356eef354d15cc34686693568cb79f2779ee30d9cd583ac26dcb6",
+    "leben/recepcion-fase2/COM-F2-001-RESPUESTA-PROPIETARIO.json": "54457a16381a8b20a068ff8d328bad03de98a5ee7b1abea28751ef55492239f8",
+    "leben/recepcion-fase2/CONCILIACION-DISCREPANCIAS.csv": "7cd9c1a9a5d532a9661f8c69084fd91e829a68086a1076b987517d23c44f3db4",
+    "leben/recepcion-fase2/DISCREPANCIAS-RESUELTAS-FASE2.csv": "664e224442c2c3a099792ef69a09f8e4b288b688d1424cb5b3924c042ea8b6c6",
+    "leben/recepcion-fase2/LECTURA-EXCEL-FASE1.json": "7e9641122d4315fdeaa55b307fa1ef7bf51c4a674c3823102bf1c5d763d448e6",
+    "leben/recepcion-fase2/PLAN-RECEPCION.json": "888e77a92658cf95d599d4e5ad524af391779eb8d2c2eae0b6340ce766b48f22",
+    "leben/recepcion-fase2/PREPARACION-FUTURA-FILTROS.md": "9bea811543264eed07c28ddb68e5d0cb9de17fbc4e6e48839472896649c920c5",
+    "leben/recepcion-fase2/PROPUESTA-EXCLUSION-DEPLOYMENTS.patch": "f931893043e447c5ad02a7bdaec367cd9835684da1a80038757a8458f2814a66",
+    "leben/recepcion-fase2/PROTOCOLO-RECEPCION.md": "b3cb01cd26b89afa1cbb025f688f43aa045acd39e2353427b9b4a05ec86730fc",
+    "leben/recepcion-fase2/RECEPCION-POR-CAMPO.csv": "5a4a16d7589929a007d9449e320efce467c6d73b15cfadcc37a23bee87c1b806",
+    "leben/recepcion-fase2/REGISTRO-CAMBIOS.csv": "9988276912476e4507ffa34182353eea4083dfb5360d64e0669efb2024d841ef",
+    "leben/recepcion-fase2/RESPUESTAS-RECIBIDAS.csv": "21c155ff80aec509dab1548bbacb2fb2b0345a8be76e78edc9b32160bfeb05c4",
+    "leben/recepcion-fase2/RESPUESTAS-RECIBIDAS.json": "fee65ed8c3abbf9170e69865b22e463d5a75b0d64dfff1321c217e48e8a5914f",
+    "leben/recepcion-fase2/REVISION-INDEPENDIENTE-RECEPCION.json": "253cd53dc7dce602c8ee283750334a01bcdb00d94dd5d6e1bf83e7e7fc1a2153",
+    "leben/recepcion-fase2/SEGURIDAD-SINCRONIZACION-GITHUB.json": "1d728ba4f3c5762f0bdcd69100d84c2b475ac1f368323461d89953cb9650482e",
+    "leben/recepcion-fase2/SINCRONIZACION-GITHUB.md": "4337a7411c6d1b54ef11acbc981a54f1f8a21db2605d1f838631837a702a7961"
+  },
+  "matrices_actuales_sha256": {
+    "leben/MATRIZ-LEBEN.csv": "d58f8822f34cd7a46f82e5a6601bd9af87f3f4e15833a4f1294c7f116165d3b6",
+    "leben/DATOS-CONFIRMADOS.csv": "baf7a92b9e97d5da1a974ccfeef00a29d2b8a764e1cbed7cef8e8c94954afe70",
+    "leben/DATOS-PARCIALES.csv": "4466b6748bc2bbf64dbead218a2c9cf1f0e014cbd49ffad7d5fc30b6b1e78c79",
+    "leben/DATOS-PENDIENTES-PROPIETARIO.csv": "68983361540bc7925f7388c4589f8a14e9711521ca0c341d8fd2db4be8bc612a",
+    "leben/FUENTES-DOCUMENTALES.csv": "528593553df7db3bfa41d048da2ae192ae2d9cc34eb7f8dd03775ab1a3cdc09e",
+    "master/MATRIZ-MAESTRA-131.csv": "559775db2dbf04fbea651594d49adbc469fbe757a88ea65a80523ee62cf8159f",
+    "master/ESTADO-GLOBAL.json": "8fee7e7e2e156f69246db4ad88db833a3117ef77132baf9400688a5c65e9edae"
+  }
+}

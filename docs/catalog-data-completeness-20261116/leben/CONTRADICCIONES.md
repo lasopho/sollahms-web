@@ -28,3 +28,7 @@ Las diez diferencias de precio entre la tabla directa Sollahms y la ficha oficia
 ## Evidencias
 
 Los IDs de archivo, SHA-256, página física y fecha documental se consultan en [Fuentes](FUENTES-DOCUMENTALES.csv), [Hechos atómicos](evidencias/hechos-documentales.json) y [Matriz](MATRIZ-LEBEN.csv). Cuatro criterios resueltos documentalmente siguen clasificados CONTRADICTORIO por coexistencia de valores, pero no generan una solicitud redundante.
+
+## Recepción fase 2
+
+Se registró COM-F2-001 para cuatro precios del bloque 1A, sin valores actuales confirmados. No responde a D-01 Argomedo, D-02 Indi ni D-03 cubierta INN. Los tres casos siguen abiertos; ninguna discrepancia se resolvió en fase 2. [Control por caso](recepcion-fase2/CONCILIACION-DISCREPANCIAS.csv).

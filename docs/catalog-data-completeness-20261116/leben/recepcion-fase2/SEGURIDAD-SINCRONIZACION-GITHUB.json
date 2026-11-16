@@ -1,0 +1,76 @@
+{
+  "fecha": "2026-11-16",
+  "tarea": "Verificación de sincronización documental GitHub sin crear deployments",
+  "resultado": "NO_HAY_PUSH_DE_RAMA_ACREDITADO_COMO_SEGURO_CON_LA_CONFIGURACION_ACTUAL",
+  "rama": "codex/auditoria-leben-20261116",
+  "repositorio": "lasopho/sollahms-web",
+  "solo_lectura": true,
+  "hallazgos": [
+    {
+      "hecho": "El proyecto Vercel real se identifica con docs/release-reference.json, no con el nombre del repositorio.",
+      "archivo": "/Users/luissandoval/Documents/sollahms-web/docs/release-reference.json",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+      "projectName": "project-wrapp"
+    },
+    {
+      "hecho": "La herramienta autenticada get_git_deployment_context devolvió el proyecto enlazado a GitHub lasopho/sollahms-web.",
+      "evidencia": "team.linkedProjects[].link = {type:github,org:lasopho,repo:sollahms-web}",
+      "integracion_desconectada": false
+    },
+    {
+      "hecho": "get_project confirma el proyecto, pero su respuesta resumida no expone una desactivación global de Git deployments.",
+      "limitacion": "No inferir desconexión o bloqueo de Git desde live:false ni desde un deployment de origen CLI."
+    },
+    {
+      "hecho": "vercel.json del checkout independiente no contiene guard para la rama de auditoría.",
+      "archivo": "/private/tmp/sollahms-auditoria-leben-20261116/vercel.json",
+      "guard_rama_auditoria": false,
+      "guard_global": false
+    },
+    {
+      "hecho": "Vercel documenta git.deploymentEnabled con default true para ramas no especificadas.",
+      "fuente": "https://vercel.com/docs/project-configuration/git-configuration#gitdeploymentenabled",
+      "lineas_web": [
+        237,
+        243
+      ],
+      "documentacion_actualizada": "2026-08-25"
+    },
+    {
+      "hecho": "La integración Git crea previews automáticamente en pushes de ramas habilitadas; documentación solo no prueba que se omita.",
+      "fuente": "https://vercel.com/docs/git",
+      "skill": "/Users/luissandoval/.codex/plugins/cache/openai-curated-remote/vercel/0.54.1/skills/deployments-cicd/SKILL.md"
+    }
+  ],
+  "acciones_no_ejecutadas": [
+    "git push",
+    "crear rama remota",
+    "actualizar refs GitHub",
+    "crear deployment",
+    "modificar configuración",
+    "comunicaciones a terceros",
+    "lectura de secretos"
+  ],
+  "recomendacion": {
+    "actual": "Mantener el commit/documentación local. No ejecutar push de la rama de auditoría mientras no se establezca una guard segura y verificable, o se acredite que la integración global está desactivada.",
+    "cambio_minimo_propuesto_si_se_autoriza": "Añadir únicamente git.deploymentEnabled[\"codex/auditoria-leben-20261116\"] = false al vercel.json de esa rama antes del primer push. No tocar main ni otros valores.",
+    "motivo": "La rama no coincide con las exclusiones actuales; está conectada al proyecto y el default documentado es desplegar.",
+    "sin_configuracion": "No se acreditó una vía durable en la misma rama/repositorio que publique sus commits y garantice cero deployments con la configuración actual.",
+    "alternativas_descartadas": [
+      "[skip ci] no es una guard documentada contra Vercel Git deployments.",
+      "ignoreCommand/Ignored Build Step requiere ejecutar/configurar una etapa y no acredita que no se cree el registro de deployment.",
+      "Subir objetos Git sin ref no constituye sincronización durable de la rama y puede dejar commits inaccesibles o sujetos a limpieza.",
+      "Etiquetas, otras ramas excluidas, Wiki, releases o issues cambiarían el destino/flujo solicitado o no tienen garantía suficiente de ausencia de automatismos; no se proponen como cumplimiento equivalente."
+    ],
+    "continuidad_local": "Se puede conservar un git bundle local con SHA-256 como transporte pendiente, sin presentarlo como sincronización GitHub completada."
+  },
+  "lecturas": {
+    "vercel_list_projects": "El filtro devolvió project-wrapp. Se comprobó después la identidad con release-reference.json.",
+    "vercel_get_project_por_nombre_repositorio": "404; no se reutilizó como prueba de falta de proyecto.",
+    "vercel_get_project_por_id": "OK; proyecto real confirmado",
+    "vercel_get_git_deployment_context": "OK; GitHub link confirmado",
+    "local_vercel_project_json": "No localizado; no se leyeron credenciales",
+    "documentacion_oficial": "Consultada mediante search_vercel_documentation y web open"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "estado": "Recepción abierta; una comunicación y cuatro respuestas sin precios vigentes confirmados.",
+  "alcance": "Organización de solicitudes existentes sin reauditar los PDF ni cerrar conciliación",
+  "solicitudes_originales": 55,
+  "campos_pendientes_con_solicitud": 461,
+  "solicitudes_por_grupo": {
+    "Vigencia comercial": 13,
+    "Modelos y superficies": 13,
+    "Amenities sin evidencia": 13,
+    "Interiores sin evidencia": 13,
+    "Dirección": 2,
+    "Terminación contradictoria": 1
+  },
+  "campos_por_bloque": {
+    "B1": 24,
+    "B6": 52,
+    "B2": 91,
+    "B3": 91,
+    "B4": 111,
+    "B5": 89,
+    "B7": 3
+  },
+  "bloques": [
+    {
+      "id": "B1",
+      "titulo": "Precios desde y por tipología",
+      "campos": 24
+    },
+    {
+      "id": "B2",
+      "titulo": "Identificación de tipologías, dormitorios y baños",
+      "campos": 91
+    },
+    {
+      "id": "B3",
+      "titulo": "Superficies por el mismo modelo y etapa",
+      "campos": 91
+    },
+    {
+      "id": "B4",
+      "titulo": "Amenities sin respaldo",
+      "campos": 111
+    },
+    {
+      "id": "B5",
+      "titulo": "Características interiores faltantes o parciales",
+      "campos": 89
+    },
+    {
+      "id": "B6",
+      "titulo": "Estado comercial y entrega",
+      "campos": 52
+    },
+    {
+      "id": "B7",
+      "titulo": "Tres discrepancias que requieren respuesta",
+      "campos": 3
+    }
+  ],
+  "nota_conteo": "Al separar bloques, una solicitud original puede aparecer en varios bloques; contar IDs L-001–L-055 únicos, sin anunciar solicitudes nuevas. Cada par solicitud/campo aparece una sola vez en la recepción detallada.",
+  "primero_entregar": {
+    "id": "B1A",
+    "campo_inicial": "precio_desde_uf",
+    "proyectos": [
+      "Edificio Living Town",
+      "Edificio Mood",
+      "Edificio Santo",
+      "Edificio BAUM"
+    ],
+    "solicitudes_originales": [
+      "L-001",
+      "L-005",
+      "L-009",
+      "L-013"
+    ],
+    "solicitar_ahora": false,
+    "dato_a_pedir": "Ratificar o corregir el precio desde Sollahms en UF, fecha/vigencia, referencia y condiciones. Los precios antiguos se muestran como antecedentes históricos, no como propuesta de sustitución. No pedir stock. Precio por tipología puede recibirse si ya existe tabla, pero su vínculo a modelo/etapa debe verificarse antes de validarlo.",
+    "estado_recepcion": "Respondido sin precios vigentes; esperando nuevos antecedentes"
+  },
+  "subbloques_precios": [
+    {
+      "id": "B1A",
+      "campo_inicial": "precio_desde_uf",
+      "proyectos": [
+        "Edificio Living Town",
+        "Edificio Mood",
+        "Edificio Santo",
+        "Edificio BAUM"
+      ],
+      "solicitudes_originales": [
+        "L-001",
+        "L-005",
+        "L-009",
+        "L-013"
+      ],
+      "solicitar_ahora": false,
+      "dato_a_pedir": "Ratificar o corregir el precio desde Sollahms en UF, fecha/vigencia, referencia y condiciones. Los precios antiguos se muestran como antecedentes históricos, no como propuesta de sustitución. No pedir stock. Precio por tipología puede recibirse si ya existe tabla, pero su vínculo a modelo/etapa debe verificarse antes de validarlo.",
+      "estado_recepcion": "Respondido sin precios vigentes; esperando nuevos antecedentes"
+    },
+    {
+      "id": "B1B",
+      "campo_inicial": "precio_desde_uf",
+      "proyectos": [
+        "Edificio Suecia",
+        "Capitanes",
+        "Edificio Bold",
+        "Edificio Argomedo"
+      ],
+      "solicitudes_originales": [
+        "L-017",
+        "L-021",
+        "L-025",
+        "L-029"
+      ],
+      "solicitar_ahora": false,
+      "dato_a_pedir": "Ratificar o corregir el precio desde Sollahms en UF, fecha/vigencia, referencia y condiciones. Los precios antiguos se muestran como antecedentes históricos, no como propuesta de sustitución. No pedir stock. Precio por tipología puede recibirse si ya existe tabla, pero su vínculo a modelo/etapa debe verificarse antes de validarlo.",
+      "estado_recepcion": "Preparado; no presentado"
+    },
+    {
+      "id": "B1C",
+      "campo_inicial": "precio_desde_uf",
+      "proyectos": [
+        "Edificio Indi",
+        "Edificio Índigo",
+        "INN Puerto Chico",
+        "Edificio Nórdico"
+      ],
+      "solicitudes_originales": [
+        "L-034",
+        "L-039",
+        "L-043",
+        "L-048"
+      ],
+      "solicitar_ahora": false,
+      "dato_a_pedir": "Ratificar o corregir el precio desde Sollahms en UF, fecha/vigencia, referencia y condiciones. Los precios antiguos se muestran como antecedentes históricos, no como propuesta de sustitución. No pedir stock. Precio por tipología puede recibirse si ya existe tabla, pero su vínculo a modelo/etapa debe verificarse antes de validarlo.",
+      "estado_recepcion": "Preparado; no presentado"
+    }
+  ],
+  "no_volver_a_pedir": {
+    "tipo_propiedad_proyecto": "13 CONFIRMADO. Solo falta asociación por modelo cuando corresponda.",
+    "tipo_activo": "13 PARCIAL estructurales no requieren nueva pregunta al propietario.",
+    "direcciones_criterio_conservado": [
+      "Living Town",
+      "Mood",
+      "Suecia",
+      "Capitanes"
+    ],
+    "own": "Precio desde y precios por tipología No aplica mientras conserve vendido. L-052 solo ratificación de estado/entrega.",
+    "brochures": "No pedir los 11 Leben ya disponibles."
+  },
+  "reglas_estado": [
+    "Cero datos nuevos en el encargo: no registrar instrucciones como respuesta comercial ni como ratificación.",
+    "Mantener estados de dato separados de estado de recepción/preparación: Confirmado documentalmente/Confirmado por propietario no deben perderse al marcar un campo Listo para incorporación.",
+    "Una fila Excel completada no equivale por sí sola a conciliada. Registrar respaldo, fecha, precisión, alcance y contradicciones.",
+    "Las declaraciones directas del propietario en texto son fuente válida. No imponer PDFs o planillas como requisito universal ni exigir datos conocidos otra vez.",
+    "Ningún proyecto listo ni Leben conciliada solo por preparar formularios; esperar antecedentes según instrucción explícita.",
+    "Conservar histórico y hashes de dd3a688; los datos nuevos requieren registro de cambio antes/después y referencia a fuente.",
+    "No asignar año ni semestre a Inmediata/Proyecto entregado por la fecha de la sesión.",
+    "Unidad 101/204/311 no equivale a código de modelo. Precios por tipología sin modelo/etapa permanecen parciales.",
+    "No iniciar Euro. Preparar instrucciones Euro solo con condición expresa de cierre Leben y autorización de continuación."
+  ],
+  "observaciones_control": [
+    "BASELINE.json enumera cuatro archivos API locales. El estado global histórico dice cinco en texto: no repetir ese número sin corrección documental trazable; no se verificaron las siete funciones productivas.",
+    "Fuente local 131 y main remoto 134 son bases distintas. No sincronizar o rebasar datos productivos para hacerlas coincidir durante esta fase.",
+    "La ruta de repositorio y archivos se mantiene intacta; este plan escribe únicamente en /private/tmp."
+  ],
+  "estado_actual": "Bloque 1A respondido sin precios vigentes; recepción sigue abierta",
+  "respuestas_recibidas": 4,
+  "comunicaciones": 1,
+  "confirmados_propietario": 0,
+  "campos_resueltos": 0,
+  "primer_subbloque_activo": "B1A",
+  "no_avanzar_automaticamente": "Esperar antecedentes de Leben; no abrir Euro ni reenviar de inmediato las mismas cuatro preguntas."
+}
