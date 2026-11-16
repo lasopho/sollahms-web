@@ -1,4 +1,4 @@
-# Reanudación local — recuperación completa; QA remoto en curso
+# Reanudación local — QA de Preview aprobado; Production pendiente
 
 Fecha: 15/11/2026, America/Santiago. Este hito todavía no aprueba la publicación.
 
@@ -31,3 +31,29 @@ La composición de las galerías se revisa después de decodificar y pintar las 
 El PR #27 se actualizó para reflejar acceso efectivo, recuperación y QA pendiente, manteniendo Draft. La comparación remota del hito `864d6bb` confirma un commit exclusivamente documental y Contacto sin cambios posteriores ni archivos compartidos. [Comparación de ramas](github-coordination-864d6bb.json).
 
 La auditoría de CLI confirma que el output certificado no necesita `builds.json` adicional para `--prebuilt`; `--environment=production --skip-domain` permite la etapa aislada posterior al QA. No se usará `--verify`, que puede crear un bypass. No se preparó ni ejecutó Production. [Auditoría de compatibilidad](production-cli-readonly-audit.json).
+
+## Aprobación técnica de Preview — 16/11/2026, 00:59:57 Santiago
+
+El gate independiente aprobó todas las condiciones para preparar Production: cero fallos y el mismo inventario SHA256 certificado. Se comprobó que los 1.660 archivos continúan intactos después del QA; no se reconstruyó el paquete. [Gate y hashes de evidencias](qa/gate/qa-gate.json).
+
+| Control | Resultado final |
+| --- | --- |
+| Fichas y anchos | 131 × 1440/768/390/320 = 524 parejas únicas; sin faltantes ni duplicados |
+| Aplicación, imágenes y composición | Cero excepciones JS, recorridos, imágenes rotas, huecos visibles o overflow |
+| Mapas | 476 mediciones de los 119 mapas existentes; cuatro casos completados mediante reprobe dirigido |
+| Encabezados, pies y menú | 524 mediciones aprobadas y 18 interacciones de menú móvil correctas |
+| Navegación | 730 clics verificados en las 131 fichas |
+| Formularios | 262 cambios de modalidad, 262 validaciones vacías y 262 CTA; cero envíos y campos sin modificar |
+| Galerías y planos | 709 imágenes de galería verificadas; 155 originales de galería y 395 planos abiertos y decodificados |
+| Comparación de planos | Siete comparadores con dos imágenes, cierre y restauración; la ficha con una sola lámina conserva correctamente el botón deshabilitado |
+| Consola | Sin errores o advertencias de aplicación desconocidos; 116 avisos conocidos del parser y bloqueos deliberados del toolbar documentados |
+| Recursos HTTP | 1.485 rutas previstas aprobadas; snapshot de 1.506 GET200 vinculado al artefacto, sin divergencias |
+| Funciones | Siete endpoints comprobados con métodos seguros; reservas permanecen request-only |
+
+En Ferroparque se abrió mediante clic la sección cerrada `Etapa 2` antes de comprobar su iframe. Sus dos mapas permanecen separados, con las direcciones Av. y Pasaje Bascuñán Santa María originales. La espera de mosaicos, metadatos y pintura resolvió los otros casos sin modificar HTML. Se conservaron capturas anteriores y posteriores. [Core final](qa/core/acceptance-summary.json), [suplementos](qa/supplement/README.md), [HTTP](qa/http/warm-http-summary.json).
+
+Los avisos `allow`/`allowfullscreen` corresponden a precedencia documentada por W3C y ya existían en las fuentes. Se conservaron por identidad de bytes; no se declara cero advertencias de navegador. Los fallos de los primeros intentos se atribuyeron mediante evidencia a selectores, posicionamiento, disclosures cerrados, esperas y procesos huérfanos del harness; ningún archivo runtime necesitó corrección adicional.
+
+Contacto terminó su Preview y permanece sin autorización productiva propia. Antes de esta etapa se confirmó que apex y www siguen en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN` y se informó la preparación aislada de Recorridos. Esta publicación conserva `contacto.html` productivo y sus ramas intactas. Una futura publicación de Contacto deberá conciliar su overlay con el nuevo baseline sin reintroducir los 64 HTML y dos CSS retirados de recorridos.
+
+El QA de Preview está aprobado. Aún no existe un nuevo deployment Production ni promoción: la siguiente etapa es crear el mismo artefacto mediante `--prebuilt --environment=production --skip-domain`, verificar fuentes, rutas, funciones y entorno aislado, y promover exclusivamente ese Production aprobado. La autorización integral sigue vigente sin nuevas confirmaciones.

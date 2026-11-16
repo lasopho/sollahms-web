@@ -1,0 +1,2357 @@
+{
+  "deployment": "dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi",
+  "readOnly": true,
+  "submitEventsDispatched": 0,
+  "rows": [
+    {
+      "slug": "reserva-mayor-2",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/a7707ffa76b5478552a0fee5.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/a7707ffa76b5478552a0fee5.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/0193dd9df0925045a1dffd22.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/bd32ae358b71ead75b894116.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/8c4629a9643bb2f8512247cd.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 4,
+        "planImages": 0,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 0,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "distrito-centro",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#planos",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "error": "page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"popup\"\n=========================== logs ===========================\nwaiting for event \"popup\"\n============================================================"
+    },
+    {
+      "slug": "vista-llacolen-b",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#planos",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/1d034536ee14681baff42f4c.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/1d034536ee14681baff42f4c.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/24f3da46674ebdf5c9e52aa2.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "error": "page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"popup\"\n=========================== logs ===========================\nwaiting for event \"popup\"\n============================================================"
+    },
+    {
+      "slug": "vista-llacolen-a",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/85b1d16dcf8fa61cb488d1dc.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/85b1d16dcf8fa61cb488d1dc.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/05d20090d7beed83478d5afe.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 3,
+        "planImages": 1,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 3,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "campus-llacolen",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#planos",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/9b84c833907a7ce542de3e23.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/9b84c833907a7ce542de3e23.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/851a7c2a20bc8a3c7783d711.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/9e661533ab6e6cc3f2687725.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "error": "page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"popup\"\n=========================== logs ===========================\nwaiting for event \"popup\"\n============================================================"
+    },
+    {
+      "slug": "bcome",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#planos",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#entorno",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/brochures-20261025/bcome-01.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/brochures-20261025/bcome-01.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/brochures-20261025/bcome-02.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/brochures-20261025/bcome-03.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/brochures-20261025/bcome-04.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/brochures-20261025/bcome-05.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/brochures-20261025/bcome-06.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/brochures-20261025/bcome-07.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/brochures-20261025/bcome-08.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-01.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-01.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-02.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-02.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-03.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-03.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-04.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-04.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-05.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-05.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-06.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-06.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-07.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-07.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-08.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-08.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-09.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-09.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-10.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-10.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/leon/bcome/plano-11.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/leon/bcome/plano-11.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "error": "page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"popup\"\n=========================== logs ===========================\nwaiting for event \"popup\"\n============================================================"
+    },
+    {
+      "slug": "wayra",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/86736ec898fe7c3502644dbf.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/86736ec898fe7c3502644dbf.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/f96f0157b32dea8534c3962f.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/d6ea51f6bbc6a136d2af7b2b.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/46ed6cf757748ef297022250.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 4,
+        "planImages": 0,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 3,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "nucleo-costanera",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/10a2ce6fe3d7d8c64b07e502.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/10a2ce6fe3d7d8c64b07e502.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/308d708b45a104e0dec628b9.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/46e500f604cbb894220d4b7a.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/36666bb406bdd73fe64a7534.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 4,
+        "planImages": 0,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 3,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "lamara",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "error": "page.waitForEvent: Timeout 15000ms exceeded while waiting for event \"popup\"\n=========================== logs ===========================\nwaiting for event \"popup\"\n============================================================"
+    },
+    {
+      "slug": "independencia-4745",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/independencia-4745.html\", waiting until \"load\"\u001b[22m\n"
+    }
+  ]
+}

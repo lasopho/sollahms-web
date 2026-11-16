@@ -1,0 +1,2945 @@
+{
+  "deployment": "dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi",
+  "readOnly": true,
+  "submitEventsDispatched": 0,
+  "rows": [
+    {
+      "slug": "reserva-mayor-2",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/a7707ffa76b5478552a0fee5.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/a7707ffa76b5478552a0fee5.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/0193dd9df0925045a1dffd22.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/bd32ae358b71ead75b894116.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/8c4629a9643bb2f8512247cd.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 4,
+        "planImages": 0,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 0,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "vista-llacolen-a",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/85b1d16dcf8fa61cb488d1dc.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/85b1d16dcf8fa61cb488d1dc.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/05d20090d7beed83478d5afe.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 3,
+        "planImages": 1,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 3,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "wayra",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/86736ec898fe7c3502644dbf.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/86736ec898fe7c3502644dbf.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/f96f0157b32dea8534c3962f.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/d6ea51f6bbc6a136d2af7b2b.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/46ed6cf757748ef297022250.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 4,
+        "planImages": 0,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 3,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "nucleo-costanera",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/10a2ce6fe3d7d8c64b07e502.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/10a2ce6fe3d7d8c64b07e502.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/308d708b45a104e0dec628b9.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/46e500f604cbb894220d4b7a.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/36666bb406bdd73fe64a7534.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST"
+        }
+      ],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 4,
+        "planImages": 0,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 3,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "distrito-centro",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#planos",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/maestra-brochures/distrito-centro/imagen-p01-x9.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/distrito-centro/imagen-p01-x9.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/maestra-brochures/distrito-centro/imagen-p02-x19.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/distrito-centro/imagen-p02-x19.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/maestra-brochures/distrito-centro/plano-p06.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/distrito-centro/plano-p06.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/maestra-brochures/distrito-centro/plano-p07.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/distrito-centro/plano-p07.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/maestra-brochures/distrito-centro/plano-p08.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/distrito-centro/plano-p08.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/maestra-brochures/distrito-centro/plano-p09.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/distrito-centro/plano-p09.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "mediaInventory": {
+        "galleryImages": 2,
+        "planImages": 4,
+        "unhandledMediaButtons": [],
+        "videoElements": 0
+      },
+      "mapEvidenceDelegatedToCore": true,
+      "readOnlyMapRpc": 5,
+      "fieldsUntouched": true
+    },
+    {
+      "slug": "vista-llacolen-b",
+      "width": 1440,
+      "navigation": [
+        {
+          "href": "#resumen",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#caracteristicas",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#planos",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#galeria",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#ubicacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        },
+        {
+          "href": "#solicitar-cotizacion",
+          "hashMatches": true,
+          "targetExists": true,
+          "visibleAtDestination": true,
+          "ariaCurrent": "location"
+        }
+      ],
+      "media": [
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/1d034536ee14681baff42f4c.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/catalogo/1d034536ee14681baff42f4c.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/catalogo/24f3da46674ebdf5c9e52aa2.webp",
+          "target": "_blank",
+          "sameAsDisplayed": true,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": false
+        },
+        {
+          "kind": "gallery",
+          "path": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/vista-llacolen-b/imagen-p02-x33.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        },
+        {
+          "kind": "plan",
+          "path": "/assets/propiedades/maestra-brochures/vista-llacolen-b/plano-p03.webp",
+          "target": "_blank",
+          "sameAsDisplayed": false,
+          "displayedDecoded": true,
+          "disabled": false,
+          "opened": true,
+          "finalPath": "/assets/propiedades/maestra-brochures/vista-llacolen-b/plano-p03.webp",
+          "destinationMatches": true,
+          "popupDecoded": true
+        }
+      ],
+      "forms": [
+        {
+          "mode": "llamada",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": true,
+          "preferredTimeEnabled": true,
+          "title": "Quiero que me llamen",
+          "submitLabel": "Solicitar llamada",
+          "consentUnchecked": true
+        },
+        {
+          "mode": "cotizacion",
+          "active": "true",
+          "fields": [
+            {
+              "name": "nombre",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "rut",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "correo",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "telefono",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            },
+            {
+              "name": "consent",
+              "exists": true,
+              "required": true,
+              "enabled": true,
+              "visible": true,
+              "empty": true,
+              "willValidate": true,
+              "valueMissing": true,
+              "labelled": true
+            }
+          ],
+          "emptyFormRejected": true,
+          "action": "/api/advisory",
+          "method": "post",
+          "novalidate": true,
+          "preferredTimeVisible": false,
+          "preferredTimeEnabled": false,
+          "title": "Solicitar cotización",
+          "submitLabel": "Solicitar cotización",
+          "consentUnchecked": true
+        }
+      ],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "status": 200,
+      "ctas": [
+        {
+          "intent": "llamada",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        },
+        {
+          "intent": "cotizacion",
+          "hash": "#solicitar-cotizacion",
+          "active": "true"
+        }
+      ],
+      "error": "page.waitForEvent: Target page, context or browser has been closed\n=========================== logs ===========================\nwaiting for event \"popup\"\n============================================================"
+    },
+    {
+      "slug": "bcome",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "campus-llacolen",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "lamara",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "alto-buzeta",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "independencia-4745",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vistamar",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "costanera-coquimbo-a",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "costanera-coquimbo-b",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-ecuador",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "coronel-godoy",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-indi",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vivaceta",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-bezanilla",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "jardines-de-alvarado",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-santa-maria",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "plaza-cervantes-b",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-teatinos-750",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-vista-amunategui",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "endemico",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "playa-penuelas",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "serrano-torre-a",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "plaza-cervantes",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vista-costanera",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vista-reloncavi",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "downtown-san-martin",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vista-morande",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-don-pepe-154",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "plaza-de-lourdes",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "santa-elena-1670-mbi",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "plaza-quilicura",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "mapocho-3521-edificio-a",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-lira-622",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-dual-390-lto",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "entre-vicunas",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "lomas-de-puyai",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "ferroparque",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "froilan-roa-5731-torre-norte",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "rosas-1444",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "guillermo-mann-1401",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "froilan-roa-5731-torre-sur",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-san-francisco-1204",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "cumbres-de-penuelas",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-baum",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "diagonal-paraguay",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-suecia",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "capitanes",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "parque-germania",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-argomedo",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-mood",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-indigo",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-verne",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-santo",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-living-town",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-bold",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "domeyko-2055",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vergara-domeyko",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "parque-panama",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "playa-serena",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "don-tomas",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "plaza-las-condes",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "mapocho-3521",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "jofre-135",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "irarrazaval",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "parque-quinta",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "quintavista",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "don-rafael",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "terrazzo",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vima",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "los-lilenes",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "nueva-esmeralda",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "el-aromo",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "espacio-victoria",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "terratolten",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "pintor-cicarelli-iii",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "trinidad-iii",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-liverpool",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "mirador-la-florida",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "alto-goycolea",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "eleuterio-ramirez",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "barrio-zenteno",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "urban-la-florida",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vicuna-mackenna-6896",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vicuna-mackenna-7589",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "aires-la-florida-2",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "condominio-uruguay",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "enlace-mackenna",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "novo-catedral",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "carmen-marin",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "gregorio-de-la-fuente-a",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "matta-016",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-plaza-nova",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "condominio-parque-don-lautaro",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "caceres",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "pintor-cicarelli-i",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "pintor-cicarelli-ii",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edif-origen-atacama-3008",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "abdon-cifuentes",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "don-ignacio",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "tocornal",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "centenario-1",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "curico-77",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "san-ignacio",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "angamos",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "conecta-huechuraba",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "bordevivo",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "mirador-mapocho",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "alto-san-joaquin",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vista-bulnes",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "jardines-de-ramon-cruz",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vitro",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "mirador-irarrazaval",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "alto-irarrazaval",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "jose-pedro-alessandri",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vicuna-mackenna-1432",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vicente-valdes",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "diagonal-vicuna",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "vista-portugal",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "marina-pacifico",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "nova-parque",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "own",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "monjitas-690",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "los-alerces",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "valle-los-ingleses-iii",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "slug": "edificio-nordico",
+      "width": 1440,
+      "navigation": [],
+      "media": [],
+      "forms": [],
+      "videos": [],
+      "blocked": [],
+      "errors": [],
+      "error": "page.goto: Target page, context or browser has been closed"
+    }
+  ]
+}

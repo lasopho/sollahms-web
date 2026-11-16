@@ -128,3 +128,7 @@ La nueva conexión efectiva a la Preview respondió HTTP 302 hacia Vercel SSO, c
 ## Reanudación local — 15/11/2026
 
 Chrome y la CLI existente ya acceden a la Preview protegida. Se recuperaron directamente sus1660archivos certificados por API GET, con el mismo hash canónico,66cambios y1594idénticos, incluidos los7bundles/57archivos. No se repitieron preparación, eliminación ni pruebas históricas. Las siete funciones superaron los controles remotos de métodos seguros; el QA de131fichas/524combinaciones está en curso. PR#27 sigueDraft y producción no se modificó. Se trabaja en checkout independiente y se coordina con Contacto. [Cierre y evidencias locales](local-qa-20261115/INFORME-CIERRE.md).
+
+## Aprobación de QA remoto — 16/11/2026, 00:59:57 Santiago
+
+Se aprobaron las 131 fichas y 524 parejas de viewport, 476 mediciones de mapas, encabezados/pies y 18 menús móviles, navegación, galerías, planos, comparadores y formularios sin envío. Las siete funciones respondieron correctamente a métodos seguros. El gate independiente confirmó cero fallos y los mismos 1.660 archivos certificados, con 66 cambios y 1.594 idénticos; no hubo reconstrucción ni modificación del runtime. Los avisos conocidos de navegador y las correcciones del harness están documentados. [Gate](local-qa-20261115/qa/gate/qa-gate.json), [cierre de QA](local-qa-20261115/INFORME-CIERRE.md). Production aislado y publicación siguen como siguientes etapas autorizadas; PR #27 permanece Draft y Contacto está coordinado.

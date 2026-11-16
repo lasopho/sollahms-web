@@ -1,0 +1,278 @@
+{
+  "origin": "https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app",
+  "readOnly": true,
+  "results": [
+    {
+      "slug": "vistamar",
+      "width": 1440,
+      "expected": 1,
+      "passed": true,
+      "rpc": [
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:08.130Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:08.130Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:08.153Z",
+          "finished": true
+        },
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:08.188Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:08.557Z",
+          "finished": true
+        }
+      ],
+      "blocked": [],
+      "mainVisibility": "visible",
+      "mapEvidence": [
+        {
+          "index": 0,
+          "srcOrigin": "https://www.google.com",
+          "hasTitle": true,
+          "geometry": {
+            "width": 1094,
+            "height": 418
+          },
+          "ready": true,
+          "visibility": "visible",
+          "mapWidgets": 2,
+          "canvases": 0,
+          "decodedImages": 51,
+          "decodedTiles": 50,
+          "errorText": false,
+          "textLength": 92,
+          "topLeftAnimations": [],
+          "screenshot": "/private/tmp/sollahms-recorridos-qa/map-reprobe-bounded/map-vistamar-1440-0.png"
+        }
+      ],
+      "pendingRpc": [],
+      "at": "2026-11-16T03:51:10.178Z"
+    },
+    {
+      "slug": "plaza-de-lourdes",
+      "width": 1440,
+      "expected": 1,
+      "passed": true,
+      "rpc": [
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:11.269Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:11.269Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:11.293Z",
+          "finished": true
+        },
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:11.330Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:11.708Z",
+          "finished": true
+        }
+      ],
+      "blocked": [],
+      "mainVisibility": "visible",
+      "mapEvidence": [
+        {
+          "index": 0,
+          "srcOrigin": "https://www.google.com",
+          "hasTitle": true,
+          "geometry": {
+            "width": 1094,
+            "height": 418
+          },
+          "ready": true,
+          "visibility": "visible",
+          "mapWidgets": 2,
+          "canvases": 0,
+          "decodedImages": 51,
+          "decodedTiles": 50,
+          "errorText": false,
+          "textLength": 92,
+          "topLeftAnimations": [],
+          "screenshot": "/private/tmp/sollahms-recorridos-qa/map-reprobe-bounded/map-plaza-de-lourdes-1440-0.png"
+        }
+      ],
+      "pendingRpc": [],
+      "at": "2026-11-16T03:51:13.303Z"
+    },
+    {
+      "slug": "ferroparque",
+      "width": 1440,
+      "expected": 2,
+      "passed": false,
+      "rpc": [
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:14.445Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:14.446Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:14.466Z",
+          "finished": true
+        },
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:14.497Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:14.828Z",
+          "finished": true
+        }
+      ],
+      "blocked": [],
+      "mainVisibility": "visible",
+      "error": "frame.waitForFunction: Timeout 15000ms exceeded.",
+      "pendingRpc": [],
+      "at": "2026-11-16T03:51:28.889Z"
+    },
+    {
+      "slug": "eleuterio-ramirez",
+      "width": 1440,
+      "expected": 1,
+      "passed": true,
+      "rpc": [
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:30.269Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:30.270Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:30.300Z",
+          "finished": true
+        },
+        {
+          "origin": "https://places.googleapis.com",
+          "path": "/$rpc/google.maps.places.v1.Places/GetPlace",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:30.340Z",
+          "finished": true
+        },
+        {
+          "origin": "https://maps.googleapis.com",
+          "path": "/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+          "method": "POST",
+          "status": 200,
+          "startedAt": "2026-11-16T03:51:30.720Z",
+          "finished": true
+        }
+      ],
+      "blocked": [],
+      "mainVisibility": "visible",
+      "mapEvidence": [
+        {
+          "index": 0,
+          "srcOrigin": "https://www.google.com",
+          "hasTitle": true,
+          "geometry": {
+            "width": 1094,
+            "height": 418
+          },
+          "ready": true,
+          "visibility": "visible",
+          "mapWidgets": 2,
+          "canvases": 0,
+          "decodedImages": 48,
+          "decodedTiles": 47,
+          "errorText": false,
+          "textLength": 92,
+          "topLeftAnimations": [],
+          "screenshot": "/private/tmp/sollahms-recorridos-qa/map-reprobe-bounded/map-eleuterio-ramirez-1440-0.png"
+        }
+      ],
+      "pendingRpc": [],
+      "at": "2026-11-16T03:51:32.340Z"
+    }
+  ]
+}

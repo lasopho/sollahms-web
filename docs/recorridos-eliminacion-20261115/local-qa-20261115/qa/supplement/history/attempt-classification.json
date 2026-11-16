@@ -1,0 +1,60 @@
+{
+  "countingPolicy": "Only the final complete reports contribute to acceptance. Historical failures remain classified and are not silently removed or counted as application defects.",
+  "attempts": [
+    {
+      "file": "smoke-before-metadata-whitelist.json",
+      "classification": "initial-harness-network-policy",
+      "meaning": "The single-fiche smoke passed its interactions but blocked a read-only Google Maps metadata request before the authorized read policy was aligned. No commercial request was forwarded."
+    },
+    {
+      "file": "initial-partial-before-timeout-correction.json",
+      "classification": "harness-timeouts-under-resource-pressure",
+      "rows": 10,
+      "meaning": "Short popup waits and a pending popup promise interrupted this attempt. The managed transport and popup handling were corrected; approved controls were retained."
+    },
+    {
+      "file": "after-sigint-raw.json",
+      "classification": "intentional-runner-stop",
+      "rawRows": 131,
+      "rowsWithBrowserClosedError": 126,
+      "meaning": "The browser was deliberately closed to stabilize the Mac. The 126 browser-closed rows are not completed navigations or acceptance checks."
+    },
+    {
+      "file": "checkpoint-before-warm-resume.json",
+      "classification": "preserved-real-attempt-checkpoint",
+      "actualAttemptedFiches": 10,
+      "completedInteractionFiches": 5,
+      "meaning": "Restored the actual attempted rows after excluding the synthetic browser-closed tail; these five valid interaction records were reused."
+    },
+    {
+      "file": "initial-warm-pass-131-before-comparator.json",
+      "classification": "first-complete-pass-with-pending-harness-coverage",
+      "rows": 131,
+      "pendingFiches": 13,
+      "nestedSummarySelectorFailures": 5,
+      "planComparisonControlsNotYetExercised": 8,
+      "meaning": "The nested summary selector was corrected to its direct child. The comparison controls were subsequently exercised rather than omitted from acceptance."
+    },
+    {
+      "file": "comparator-targeted-before-centering.json",
+      "classification": "real-click-positioning-and-single-sheet-guard",
+      "pendingFiches": 8,
+      "meaning": "Seven checkbox clicks required stable centered positioning before real input. The eighth fiche has one sheet and correctly cannot compare two. The isolated click evidence and final reports resolve these cases without application changes."
+    },
+    {
+      "file": "header-footer-raw-before-console-triage.json",
+      "classification": "known-parser-warning-triage",
+      "rows": 524,
+      "rawRunnerExitCode": 1,
+      "knownParserWarnings": 116,
+      "meaning": "The raw gate rejected the exact fullscreen precedence warning. Authorized source-backed triage classified only that warning as nonblocking. Raw evidence and all other warning/error gates were preserved."
+    }
+  ],
+  "finalReports": [
+    "../reports/supplement-results.json",
+    "../reports/header-footer-results.json"
+  ],
+  "noApplicationFilesChanged": true,
+  "noFormsSubmitted": true,
+  "noQaRepeatedDuringPackaging": true
+}

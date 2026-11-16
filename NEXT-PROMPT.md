@@ -1,50 +1,34 @@
-# Continuidad — recuperación local completa; QA remoto en curso
+# Continuidad — Preview aprobada; publicar Production verificado
 
-## Hito local vigente — 15/11/2026
+Estado al 16/11/2026, America/Santiago. La autorización integral de corrección, verificación y publicación condicionada sigue vigente. No pedirla de nuevo.
 
-Usar exclusivamente `/private/tmp/sollahms-recorridos-20261115-local`, rama `codex/eliminar-recorridos-global-20261115`. HEAD recibido `16480969f0647c0e6df97053d49199b979e17c83`, sin commits remotos posteriores al consultar. No utilizar ni cambiar de rama el checkout original de Documents; Contacto trabaja en `/Users/luissandoval/Projects/sollahms-publicacion`.
+Trabajar exclusivamente en `/private/tmp/sollahms-recorridos-20261115-local`, rama `codex/eliminar-recorridos-global-20261115`. No modificar ni cambiar de rama el checkout original de Documents ni `/Users/luissandoval/Projects/sollahms-publicacion` de Contacto. Consultar HEAD remoto antes de escribir y conservar avances posteriores. PR #27 permanece abierto y Draft, incluso tras la publicación; no fusionar automáticamente.
 
-Leer [cierre local](docs/recorridos-eliminacion-20261115/local-qa-20261115/INFORME-CIERRE.md). El acceso SSO ya funciona por Chrome y CLI 65.16.0 existente. Preview raíz200; siete endpoints comprobados con métodos seguros. SSO sigue habilitado; no se modificaron credenciales ni se crearon bypasses/sharelinks. No usar conectores de fetch que creen enlaces temporales.
+Leer `AGENTS.md` y `docs/recorridos-eliminacion-20261115/local-qa-20261115/INFORME-CIERRE.md`. Los informes históricos siguen preservados; sus bloqueos de red/SSO/artefactos están resueltos. El último hito documental anterior a esta aprobación fue `2e0759cac94b3a489ba51439e7214074fde8a6c8`.
 
-Se recuperaron del deployment correctivo los 1.660 archivos exactos por API autenticada de fuentes, sin build/preparación/generadores: `/private/tmp/sollahms-recorridos-recovery/output`. Hash inventario `f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0`; 66 cambios / 1.594 idénticos; siete bundles / 57 archivos. No repetir preparación, eliminación ni pruebas históricas. [Recuperación](docs/recorridos-eliminacion-20261115/local-qa-20261115/recovery-report.json).
+## Artefacto y QA aprobados
 
-**QA de 524 combinaciones en curso**, no aprobado aún. Smoke INN a 390 px aprobado con mapa real; runners/caché privados en `/private/tmp/sollahms-recorridos-qa` y suplemento en `/private/tmp/sollahms-recorridos-supplement`. Recuperar checkpoints y continuar; no presentar muestras como 131 fichas verificadas. No hay Production nuevo ni promoción. Producción sigue `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`, aliases apex/www confirmados.
+Preview correctiva: https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/ . Deployment `dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi`, runtime declarado `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`.
 
-PR #27 permanece abierto y Draft. Contacto PR #28, SHA 967d556 y PR #26 modifican únicamente contacto.html, sin intersección textual con #27; coordinar ambos trabajos antes de integrar/publicar y evitar deployments simultáneos. Los nuevos bundles de Contacto no reemplazan los certificados de Recorridos. La autorización integral condicionada sigue vigente, sin pedirla otra vez.
+Salida existente recuperada directamente de las fuentes de ese deployment: `/private/tmp/sollahms-recorridos-recovery/output`. Son 1.660 archivos exactos: 1.602 estáticos, 57 archivos en siete bundles y config v3; 66 cambios aprobados y 1.594 preservados. Inventario SHA256 `f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0`. No hubo build, generadores ni repetición de preparación o eliminación.
 
-El texto siguiente es contexto histórico de la sesión anterior; sus bloqueos de CLI/SSO/artefactos ya quedaron resueltos localmente. El prompt previo completo se conserva en [archivo](docs/recorridos-eliminacion-20261115/local-qa-20261115/NEXT-PROMPT-anterior.md).
+QA aprobado: 131 fichas × cuatro anchos = 524 parejas; 476 mediciones de los 119 mapas; encabezados/pies 524 y menú móvil 18; navegación, galerías, planos, comparación y formularios en 131 fichas; siete funciones con métodos seguros. Cero envíos comerciales o campos modificados. Los cuatro mapas se cerraron con reprobes dirigidos, abriendo `Etapa 2` de Ferroparque sin alterar sus dos mapas.
 
----
+Gate independiente: `/private/tmp/sollahms-recorridos-access/qa-gate.json`, validado a las 00:59:57 Santiago, `eligibleForProductionPreparation:true`, cero fallos. Copia versionada en `docs/recorridos-eliminacion-20261115/local-qa-20261115/qa/gate/`. No repetir los 524 controles certificados sin una razón nueva. Se documentaron advertencias preexistentes de `allow`/`allowfullscreen` y bloqueos de telemetría/toolbar; no ocultar errores reales ni declarar cero advertencias.
 
-## Contexto histórico anterior al acceso local
+## Siguiente etapa autorizada
 
-Continuar la verificación y publicación autorizada de Sollahms. La autorización integral vigente comprende corrección acotada, Previews privadas, QA, Production aislado sin dominios y promoción final sólo después de aprobar todos los controles. No pedirla de nuevo. Conservar SSO y credenciales; no crear bypasses ni enlaces temporales de compartición.
+1. Confirmar HEAD, PR Draft, proyecto/equipo, CLI y aliases actuales. CLI local 65.16.0, Node 24.22.3, usuario `lsandoval2-8260`. Proyecto `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`, equipo `team_A9VNIW2f2K1IJpd2pGdvDmEN`.
+2. Preparar únicamente una copia idéntica del output aprobado bajo `.vercel/output` en un directorio aislado. Verificar la transferencia contra el inventario; no ejecutar `prepare-isolated.py`, builders ni generadores.
+3. Crear Production sin dominios por CLI oficial, `--prebuilt --environment=production --skip-domain`, proyecto y scope explícitos. No usar `--verify`, sharelinks, bypasses nuevos, promoción de Preview ni despliegue ordinario de fuentes. La CLI admite el output sin `builds.json`; no añadir archivos a sus 1.660 entradas. No cambiar credenciales, variables o SSO.
+4. Verificar READY, target production, fuentes/hash 1.660, siete lambdas, rutas originales/recursos, métodos seguros y un smoke de entorno con las seis fichas prioritarias a cuatro anchos. Usar caché separada por deployment y acceso nativo autenticado desde un directorio sin vincular; no copiar/extraer tokens. Scripts de verificación en `/private/tmp/sollahms-recorridos-production-verify`; aún esperan ID.
+5. Solo después de aprobar ese Production, promover exclusivamente su ID sin reconstrucción. Reconsultar aliases/coordinar inmediatamente antes. Comprobar HTTP y HTTPS de `sollahms.cl` y `www.sollahms.cl`, portada, fichas, recursos y funciones sin enviar formularios.
+6. Registrar deployment/hora local, conservar el anterior y actualizar informe, PR y este prompt. No declarar terminada la tarea mientras falten verificación productiva o publicación.
 
-## Estado nuevo comprobado
+A la aprobación de QA todavía no se había creado Production ni promovido. Ambos aliases se revalidaron en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`; conservarlo como referencia de recuperación. SSO sigue `all_except_custom_domains` y los deployments automáticos continúan desactivados.
 
-El 15/11/2026 a las 21:54–21:55, America/Santiago, HTTPS de la Preview respondió **302 hacia https://vercel.com/sso-api**, con curl exitoso y TLS verificado (`ssl_verify_result=0`). Es un límite de autenticación SSO, no un bloqueo de red. No se obtuvo contenido autenticado de la aplicación. `https://www.google.com/` respondió 200 y una URL representativa de mapas respondió 301 → 200 en `www.google.com/maps/embed`, también con TLS válido. Esto no certifica la carga visual de los mapas dentro de las fichas.
+## Coordinación con Contacto
 
-Preview: https://project-wrapp-nx82ysqwn-lsandoval2-8260s-projects.vercel.app/
-Deployment: `dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi`, READY.
-Runtime declarado: `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`.
-Proyecto: `prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`; equipo: `team_A9VNIW2f2K1IJpd2pGdvDmEN`.
-SSO: habilitado, `all_except_custom_domains`.
+Su chat terminó la Preview, está idle y no tiene autorización propia para Production. PR #26/#28 siguen Draft; Contacto aprobado `967d556730e20ef86bae6ecee11ec6152434c8ae` cambia únicamente contacto.html. No hay intersección textual con Recorridos. Se informó expresamente que comenzaremos Production aislado tras QA, evitando operaciones simultáneas.
 
-Repositorio `lasopho/sollahms-web`, rama `codex/eliminar-recorridos-global-20261115`; HEAD recibido `f975a005c4f4330996461d6d71134aaf678f3e26`. PR #27 abierto, Draft, base `codex/agenda-regions-responsive-20261115` (`c2e1965ced736d46917a1bee286456cb937d58fe`). Leer AGENTS.md y el cierre nuevo: `docs/recorridos-eliminacion-20261115/https-sso-20261115T215402/INFORME-CIERRE.md`. El commit documental de esta entrega se obtiene del historial de NEXT-PROMPT.md.
-
-## Conservar la preparación certificada
-
-Las evidencias actuales se localizaron en GitHub; el checkout preexistente de este ejecutor (`work@86e200e`, 134 proyectos) es histórico y no debe usarse para reconstruir las 131 fichas ni para publicar. No se modificó ese checkout. El inventario de evidencias anteriores con sus Git blob SHA está en `docs/recorridos-eliminacion-20261115/https-sso-20261115T215402/historial-preservado.json`; el prompt previo está archivado junto al cierre.
-
-Salida certificada documentada: `/workspace/work/tour-release/preview/.vercel/output`, 1.660 archivos, 66 cambios autorizados, 1.594 preservados, siete bundles/57 archivos; inventario SHA256 `f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0`. **Esa salida y el directorio de sesión CLI documentado no existen en este ejecutor nuevo.** No se regeneraron. Recuperar los artefactos existentes mediante su mecanismo autorizado; conservar sus hashes. No repetir la preparación ni pruebas certificadas por reanudar.
-
-En este ejecutor no hay `VERCEL_OIDC_TOKEN`; la CLI no está en PATH. La credencial de automatización configurada conserva alcance sólo para dos Previews anteriores, no para la nueva. No copiar, extraer, reemplazar ni ampliar credenciales. Usar exclusivamente una sesión SSO o CLI ya autorizada que pueda acceder a esta Preview. No usar conectores que creen/reutilicen share links, ni desactivar SSO. La autorización de publicación no sustituye autenticación de aplicación.
-
-## Próximos pasos
-
-1. Revalidar HEAD, PR Draft, Preview READY y SSO, conservando cambios posteriores. Resolver el acceso autenticado con una vía existente autorizada; distinguir SSO, errores de aplicación y bloqueos de red. No volver a tratar esta conexión 302 como CONNECT 403.
-2. Con acceso efectivo, verificar portada, las 131 rutas originales, recursos, siete endpoints con métodos seguros y fuentes internas no expuestas. Ejecutar `tests/qa-project-tour-removal.mjs` para **524 controles** a 1440/768/390/320 px. Comprobar medios, planos, mapas, navegación, controles y campos, WhatsApp, consola, overflow, huecos y superposiciones, sin enviar leads, reservas, correos ni operaciones CRM/Resend.
-3. Sólo tras aprobar todo y disponer de los artefactos certificados, preparar los mismos bytes en Production aislado, desplegar oficialmente con `--prebuilt --environment=production --skip-domain`, verificar ese Production y promover exclusivamente su ID. No promover la Preview. Comprobar HTTP/HTTPS de ambos dominios; conservar el deployment anterior. Producción de referencia histórica: `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`; reconsultar antes de cualquier cambio.
-4. Actualizar documentación y PR tras hitos, conservar evidencias y actualizar NEXT-PROMPT.md. Mantener Draft mientras falte QA; no fusionar por defecto.
-
-Esta sesión: **0/131 fichas y 0/524 controles remotos ejecutados; publicación no intentada**. Las comprobaciones históricas siguen siendo históricas. No se confirmó ni descartó la presencia de defectos bloqueantes de la aplicación. Mantener la publicación pendiente hasta superar los controles. Sin cambios comerciales, de CRM/AI Lab/proveedores, credenciales, dominios, gastos ni ampliación de alcance.
+Esta publicación conserva el contacto.html productivo actual y sus ramas intactas; no incorpora su overlay todavía no publicado ni reemplaza los siete bundles certificados por su reconstrucción alternativa B. Una futura publicación de Contacto deberá conciliar su candidato con el nuevo baseline y conservar los 64 HTML y dos CSS sin recorridos. Comunicar el deployment final a esa tarea; no alterar ni fusionar sus PR.
