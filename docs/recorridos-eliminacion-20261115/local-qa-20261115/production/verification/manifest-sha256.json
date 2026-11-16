@@ -1,0 +1,74 @@
+{
+  "deployment": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+  "scope": "Read-only isolated Production verification evidence, before promotion.",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4273,
+      "sha256": "944c8a6764f7647a7294d405a7d00b3c954307043b9e5705edbea549823803a0"
+    },
+    {
+      "path": "deployment-aliases.json",
+      "bytes": 96,
+      "sha256": "d1e75347500b3bad8e2b25723143cdb07f0e96a8c4f6ba8a67ddf19ac5ba08a1"
+    },
+    {
+      "path": "deployment-tree.json",
+      "bytes": 385952,
+      "sha256": "16a950a67200ca2cfe781172c3c11ef7bc8ac532f7bbff502d4737286079c5c8"
+    },
+    {
+      "path": "expected.json",
+      "bytes": 430554,
+      "sha256": "0de38481db35e5bce080c4773eeb591684bc4886c5ede7c0633b16dfd5e830c2"
+    },
+    {
+      "path": "http-results.json",
+      "bytes": 155994,
+      "sha256": "788b9562528ab4809010e78f3553d1667b10298c64b40fe0c95b4bd7f0c36dd4"
+    },
+    {
+      "path": "metadata.json",
+      "bytes": 624,
+      "sha256": "3f5a04a13c92bbd3741c11dd386214fa0689a28c29bd82663e27933560c27711"
+    },
+    {
+      "path": "project-protection.json",
+      "bytes": 228,
+      "sha256": "b0d18ccdf1707e17aae54dc111b41bd6848060a59c199bda36dedf4b48447b37"
+    },
+    {
+      "path": "registered-functions.json",
+      "bytes": 1445,
+      "sha256": "1317e7dffc0868c66034655221db7d52f67d5af65b53776542fa1478edbdc5bc"
+    },
+    {
+      "path": "source-manifest-comparison.json",
+      "bytes": 511733,
+      "sha256": "59be862ce0fcad5ac412eb29be2865195d62d2cd11b644c5ea15c5d75166f746"
+    },
+    {
+      "path": "verification-summary.json",
+      "bytes": 2841,
+      "sha256": "1125ab798704239fd8efa271aa999e48bfd9a6fb1bab800fb719a35a762287f7"
+    },
+    {
+      "path": "verify-production.py",
+      "bytes": 16757,
+      "sha256": "9a83bee6e52921ee41bf78e608f613d2bc59bbc03499fd176b7f7f6a4d03a029"
+    }
+  ],
+  "excluded": [
+    "http-cache bodies",
+    "raw headers",
+    "browser profiles",
+    "node_modules",
+    "credentials or token values",
+    "unfiltered API responses"
+  ],
+  "source_check": "1660 source content addresses matched; API sizes not independently exposed.",
+  "verification_passed": true,
+  "deployment_created_by_this_package": false,
+  "promoted_by_this_package": false,
+  "tests_repeated_during_packaging": false
+}

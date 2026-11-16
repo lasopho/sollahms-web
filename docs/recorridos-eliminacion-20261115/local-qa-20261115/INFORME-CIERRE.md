@@ -1,59 +1,42 @@
-# Reanudación local — QA de Preview aprobado; Production pendiente
+# Sollahms — recorridos eliminados, publicados y verificados
 
-Fecha: 15/11/2026, America/Santiago. Este hito todavía no aprueba la publicación.
+**Intervención completada.** La versión aprobada está publicada en [sollahms.cl](https://sollahms.cl/). Los dos aliases se asignaron el **16/11/2026 a las 01:23:43, America/Santiago**; `www.sollahms.cl` conserva la redirección 308 al dominio principal. La confirmación de API se obtuvo a las 01:23:57 y la verificación pública posterior aprobó 608/608 controles.
 
-Se recuperaron directamente del deployment correctivo `dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi` los 1.660 archivos certificados: 1.602 estáticos, 57 archivos en siete bundles y config v3. La API autenticada de fuentes entregó los bytes existentes; no se ejecutaron builders, preparadores ni generadores. Se verificaron tamaño, SHA1 y SHA256 por archivo, y el inventario canónico conserva `f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0`. Siguen siendo 66 cambios autorizados y 1.594 archivos preservados. [Recuperación y hashes](recovery-report.json).
+Deployment definitivo: `dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5`. Se promovió exclusivamente el mismo Production aislado probado, sin reconstrucción. El anterior `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN` permanece identificado como referencia de recuperación. [Asignación de dominios y hora del servidor](production/published.json), [verificación pública](production/public/README.md).
 
-El checkout de trabajo independiente es `/private/tmp/sollahms-recorridos-20261115-local`, rama `codex/eliminar-recorridos-global-20261115`, HEAD recibido `16480969f0647c0e6df97053d49199b979e17c83`. El checkout original de Documents y el de Contacto en Projects no se modificaron. El PR #27 permanece abierto y Draft. La copia selectiva auxiliar terminada en `/private/tmp/sollahms-recorridos-20261115-work` no se utiliza para publicar.
-
-La CLI 65.16.0 confirma la identidad existente `lsandoval2-8260`; Node es v24.22.3. La portada HTTPS de la Preview responde 200 con contenido Sollahms. Chrome también abrió esa misma Preview con la sesión SSO existente. SSO sigue habilitado `all_except_custom_domains`. No se crearon bypasses ni enlaces temporales, ni se cambiaron credenciales. Las solicitudes nativas usan un directorio sin vinculación, deployment explícito y la autenticación existente manejada internamente por la CLI. [Acceso](access-root.json), [Chrome](chrome-access.json).
-
-Las siete funciones respondieron a métodos seguros: advisory/contact/collaboration/orientation-contact GET405, ambas reservas GET503 con `booking_not_certified`/`request-only`, y UF HEAD405 antes de consultar su proveedor. Las rutas internas comprobadas no entregan código fuente. `/api/contact.mjs` responde JSON405 porque config reescribe el sufijo `.mjs` al handler, por lo que no corresponde exigir 404 en esa ruta. No hubo envíos de formularios, leads, reservas, correos ni operaciones CRM/Resend. [Resultados remotos](endpoints-results.json), [config y métodos](function-structure-notes.json).
-
-El smoke remoto de INN Puerto Chico a 390 px pasó sin recorridos, errores JS, recursos fallidos ni overflow. Su mapa se renderizó con dos widgets y 37 mosaicos decodificados. La matriz de 131 fichas × cuatro anchos (1440/768/390/320) = 524 controles está en curso; ese smoke no sustituye la matriz. Se están revisando también navegación, galerías, planos y validación de formularios sin envío. Las correcciones iniciales afectan exclusivamente al harness: esperas de descarga/pintura, API FrameLocator, exclusión del honeypot y RPC de lectura de Google Maps. No son modificaciones de la aplicación ni aprobación anticipada del QA.
-
-Contacto conserva SHA `967d556730e20ef86bae6ecee11ec6152434c8ae`, PR #28 Draft. PR #26 también sigue Draft. Ambos cambian únicamente `contacto.html`; ninguno de los 194 archivos del PR #27 lo modifica. El ancestro común es `c2e1965ced736d46917a1bee286456cb937d58fe`, base real del PR #27. Se informó a la otra tarea de la coordinación solicitada. No se sustituyen los bundles certificados por los nuevos de su alternativa B, ni se integran automáticamente los PR. Dos deployments completos independientes podrían revertirse; se requiere conciliación final antes de operar Production.
-
-Los aliases apex y www siguen asociados a `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN`. No se creó Production ni se promovió. La autorización integral permanece vigente; Production solo se preparará después de aprobar todos los controles pendientes, manteniendo coordinación con Contacto y el mismo artefacto certificado.
-
-La salida recuperada está en `/private/tmp/sollahms-recorridos-recovery/output`. El script archivado recupera únicamente las fuentes existentes mediante API GET; requiere el inventario certificado `verification-certified.json`, copia de `release-20261115T191251/verification.json`. No sirve para generar otra versión ni autoriza a repetir pruebas ya certificadas.
-
-## Actualización del 16/11/2026 — QA en ejecución
-
-Las 131 rutas HTML ya tienen respuesta HTTP verificada contra la salida certificada. Vercel añade a los HTML un sufijo de feedback de 163 bytes, SHA256 `1ec749d6c1840dd80e5f178a7ebea403951fa9e3bb90e80a4b1be83b311e85cb`. El documento fuente completo permanece como prefijo exacto. El verificador permite exclusivamente ese sufijo observado y conserva intactos tanto el cuerpo HTTP como el artefacto recuperado. [Verificador de evidencia HTTP](verify-http-cache.py).
-
-El inventario de las 131 fuentes exactas confirma 119 mapas, 131 formularios y cero videos publicados. Las siete referencias YouTube internas de Sento ya estaban ausentes del HTML antes de esta intervención y siguen conservadas en investigación no desplegada; no se incorporaron ni se afirma una prueba de reproducción inexistente. [Inventario de medios y comparación anterior](source-media-inventory.json).
-
-La presión de recursos del Mac y los procesos CLI huérfanos de intentos de QA anteriores provocaron timeouts del harness. Se cerraron exclusivamente diez pares Node/Vercel huérfanos tras comprobar su directorio de trabajo, sin tocar procesos ajenos. Se añadió un watchdog de proceso completo y cierre de su grupo; una prueba local nueva confirmó la terminación del padre y un hijo que ignoraba SIGTERM. Se conservaron checkpoints y caché. Estas correcciones pertenecen al harness; el runtime sigue intacto. [Recuperación de recursos](qa-resource-recovery.json).
-
-La composición de las galerías se revisa después de decodificar y pintar las imágenes, evitando aceptar fondos vacíos por una captura prematura. Las consultas de lectura necesarias de Google Maps se distinguen de envíos comerciales; la telemetría opcional bloqueada se registra separadamente de fallos de la aplicación. Continúan la matriz de cuatro anchos y las interacciones de navegación, planos y formularios sin envío.
-
-El PR #27 se actualizó para reflejar acceso efectivo, recuperación y QA pendiente, manteniendo Draft. La comparación remota del hito `864d6bb` confirma un commit exclusivamente documental y Contacto sin cambios posteriores ni archivos compartidos. [Comparación de ramas](github-coordination-864d6bb.json).
-
-La auditoría de CLI confirma que el output certificado no necesita `builds.json` adicional para `--prebuilt`; `--environment=production --skip-domain` permite la etapa aislada posterior al QA. No se usará `--verify`, que puede crear un bypass. No se preparó ni ejecutó Production. [Auditoría de compatibilidad](production-cli-readonly-audit.json).
-
-## Aprobación técnica de Preview — 16/11/2026, 00:59:57 Santiago
-
-El gate independiente aprobó todas las condiciones para preparar Production: cero fallos y el mismo inventario SHA256 certificado. Se comprobó que los 1.660 archivos continúan intactos después del QA; no se reconstruyó el paquete. [Gate y hashes de evidencias](qa/gate/qa-gate.json).
-
-| Control | Resultado final |
+| Verificación | Resultado |
 | --- | --- |
-| Fichas y anchos | 131 × 1440/768/390/320 = 524 parejas únicas; sin faltantes ni duplicados |
-| Aplicación, imágenes y composición | Cero excepciones JS, recorridos, imágenes rotas, huecos visibles o overflow |
-| Mapas | 476 mediciones de los 119 mapas existentes; cuatro casos completados mediante reprobe dirigido |
-| Encabezados, pies y menú | 524 mediciones aprobadas y 18 interacciones de menú móvil correctas |
-| Navegación | 730 clics verificados en las 131 fichas |
-| Formularios | 262 cambios de modalidad, 262 validaciones vacías y 262 CTA; cero envíos y campos sin modificar |
+| Preview remota | 131 fichas × 1440/768/390/320 px = 524 parejas únicas, sin faltantes ni duplicados |
+| Renderizado | Cero excepciones JS, recorridos, imágenes rotas, huecos visibles o desbordamientos |
+| Mapas | 476 mediciones de 119 iframes; cuatro reprobes cerrados sin incidencias pendientes |
+| Encabezados y pies | 524 mediciones y 18 interacciones de menú móvil correctas |
+| Interacciones | 131 fichas; 730 clics de navegación, 262 modalidades, 262 validaciones vacías y 262 CTA |
 | Galerías y planos | 709 imágenes de galería verificadas; 155 originales de galería y 395 planos abiertos y decodificados |
-| Comparación de planos | Siete comparadores con dos imágenes, cierre y restauración; la ficha con una sola lámina conserva correctamente el botón deshabilitado |
-| Consola | Sin errores o advertencias de aplicación desconocidos; 116 avisos conocidos del parser y bloqueos deliberados del toolbar documentados |
-| Recursos HTTP | 1.485 rutas previstas aprobadas; snapshot de 1.506 GET200 vinculado al artefacto, sin divergencias |
-| Funciones | Siete endpoints comprobados con métodos seguros; reservas permanecen request-only |
+| Comparación de planos | Siete comparadores con dos imágenes/cierre/restauración; bloqueo correcto en la ficha con una sola lámina |
+| Recursos HTTP de Preview | 1.485 rutas aprobadas; 1.506 GET200 cotejados contra el artefacto, sin divergencias |
+| Production aislado | 1.660 rutas/SHA1 coincidentes, siete lambdas, 153/153 HTTP seguros y 24/24 casos de navegador |
+| Sitio público | 608/608 controles: 528 HTML, 38 recursos, 14 métodos seguros, 12 controles de fuentes internas y 16 retenciones 410 |
+| TLS y redirects | HTTP/HTTPS de apex y www aprobados; 1.184 transacciones, 912 validaciones TLS y 576 redirects 308 |
+| Envíos de prueba | Cero formularios, leads, reservas, correos u operaciones CRM/Resend; campos vacíos y sin modificar |
 
-En Ferroparque se abrió mediante clic la sección cerrada `Etapa 2` antes de comprobar su iframe. Sus dos mapas permanecen separados, con las direcciones Av. y Pasaje Bascuñán Santa María originales. La espera de mosaicos, metadatos y pintura resolvió los otros casos sin modificar HTML. Se conservaron capturas anteriores y posteriores. [Core final](qa/core/acceptance-summary.json), [suplementos](qa/supplement/README.md), [HTTP](qa/http/warm-http-summary.json).
+La matriz principal y sus suplementos quedaron aprobados antes de preparar Production. El gate independiente del 16/11 a las 00:59:57 confirmó cero fallos y la identidad del artefacto. [Gate](qa/gate/qa-gate.json), [core](qa/core/CORE-QA.md), [suplementos](qa/supplement/README.md), [cotejo HTTP](qa/http/warm-http-summary.json).
 
-Los avisos `allow`/`allowfullscreen` corresponden a precedencia documentada por W3C y ya existían en las fuentes. Se conservaron por identidad de bytes; no se declara cero advertencias de navegador. Los fallos de los primeros intentos se atribuyeron mediante evidencia a selectores, posicionamiento, disclosures cerrados, esperas y procesos huérfanos del harness; ningún archivo runtime necesitó corrección adicional.
+Se conservaron **1.660 archivos**, con **66 cambios aprobados y 1.594 idénticos** frente al baseline congelado: 64 HTML y dos CSS, 1.602 archivos estáticos, 57 archivos en siete bundles y config v3. Inventario canónico SHA256:
 
-Contacto terminó su Preview y permanece sin autorización productiva propia. Antes de esta etapa se confirmó que apex y www siguen en `dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN` y se informó la preparación aislada de Recorridos. Esta publicación conserva `contacto.html` productivo y sus ramas intactas. Una futura publicación de Contacto deberá conciliar su overlay con el nuevo baseline sin reintroducir los 64 HTML y dos CSS retirados de recorridos.
+`f98c6494c31f2174a016d58d7e2e4bd9a512aea1b5448bba4f790c14a06206d0`
 
-El QA de Preview está aprobado. Aún no existe un nuevo deployment Production ni promoción: la siguiente etapa es crear el mismo artefacto mediante `--prebuilt --environment=production --skip-domain`, verificar fuentes, rutas, funciones y entorno aislado, y promover exclusivamente ese Production aprobado. La autorización integral sigue vigente sin nuevas confirmaciones.
+Los bytes existentes se recuperaron por API autenticada de fuentes de la Preview correctiva; no se ejecutaron builders, preparadores, generadores ni la eliminación otra vez. Después del QA se hizo únicamente una transferencia idéntica a `.vercel/output` aislado. [Recuperación](recovery-report.json), [transferencia](production/prepared.json). El árbol remoto de Production no expone tamaños: se verificaron sus 1.660 SHA1 y rutas, vinculados a los tamaños y SHA256 certificados localmente, sin inventar esa medición remota ni redescargar todos los archivos.
+
+La creación oficial con CLI 65.16.0 y Node 24.22.3 usó `--prebuilt --environment=production --skip-domain`, proyecto y scope explícitos. Production alcanzó READY a las 01:09:08 sin aliases; se verificaron API, rutas, recursos y siete funciones con métodos seguros, conservando reservas `request-only`. El smoke de entorno comprobó las seis fichas prioritarias en cuatro anchos con caché separada y **cero respuestas de Preview reutilizadas**. El acceso anónimo a su hostname seguía 302 hacia SSO con TLS válido. [Creación](production/created.json), [API/HTTP](production/verification/README.md), [smoke de 24 casos](production/browser/README.md), [SSO anónimo](production/production-anonymous-sso.json), [gate productivo](production/production-gate.json).
+
+La promoción no reconstruyó ni cambió el ID. La comprobación pública recorrió portada y 131 fichas por los cuatro orígenes HTTP/HTTPS de apex/www; todos los HTML coinciden exactamente con el certificado, sin sufijo de toolbar. También se comprobaron recursos, métodos de las siete funciones en ambos dominios, denegación de fuentes internas y las cuatro variantes de Patio Brasil con 410. No hubo fallos ni necesidad de rollback. [Resultados completos y hashes](production/public/README.md).
+
+Los ajustes de esta reanudación afectaron al harness: esperas de descarga/pintura, FrameLocator, selectores de disclosures anidados, posicionamiento de clics, límites de procesos y el disclosure de Etapa 2 en Ferroparque. Allí se abrió la sección mediante clic real y se verificaron sus dos mapas, conservando las direcciones Av. y Pasaje Bascuñán Santa María. Los primeros intentos y las capturas antes/después permanecen archivados; ningún archivo runtime necesitó corrección adicional. Se cerraron diez pares CLI huérfanos propios y los procesos posteriores tienen watchdog y limpieza de grupo, sin tocar procesos de Contacto o Chrome del usuario.
+
+Se documentaron 116 avisos conocidos del parser sobre `allow`/`allowfullscreen`, además de bloqueos deliberados de toolbar/telemetría durante las pruebas. La precedencia está descrita en [W3C Permissions Policy §6.3.1](https://www.w3.org/TR/permissions-policy/#iframe-allowfullscreen-attribute); los atributos ya existían y se conservaron. No se declara cero advertencias de navegador. El inventario exacto tiene cero videos publicados y conserva siete referencias internas de investigación Sento, también ausentes del HTML anterior; no se incorporaron ni se afirma una reproducción inexistente.
+
+La rama es `codex/eliminar-recorridos-global-20261115`, runtime declarado `c97bfa5aba80329f18e3db8058ec5c3fada80cc4`. El QA quedó versionado en `7ebad405d403f62306039b08193a58b35bef8bfc`; el HEAD documental final se obtiene del historial de este informe. [PR #27](https://github.com/lasopho/sollahms-web/pull/27) permanece **abierto y Draft**, base `codex/agenda-regions-responsive-20261115` (`c2e1965ced736d46917a1bee286456cb937d58fe`), sin merge automático. Se preservaron el HEAD remoto recibido `16480969f0647c0e6df97053d49199b979e17c83` y sus antecedentes.
+
+Se trabajó exclusivamente en el checkout independiente `/private/tmp/sollahms-recorridos-20261115-local`. Los cambios de Documents y el checkout de Contacto no se sobrescribieron. Los PR #26/#28 de Contacto siguen separados; únicamente modifican `contacto.html` y no hay intersección textual. Esta publicación conserva su versión productiva anterior y sus ramas. Se comunicó el nuevo baseline ByUhr a la otra tarea: cualquier futura publicación de Contacto deberá conciliar su overlay aprobado con estos 64 HTML y dos CSS sin recorridos. Su autorización productiva no se amplió.
+
+SSO continúa habilitado `all_except_custom_domains`; no se cambiaron credenciales, variables, proveedores, precios, sitemap, contenido SEO/GEO ni configuración de despliegues automáticos. No se crearon bypasses o enlaces temporales. [Estado final del proyecto](production/project-final.json). La autorización integral de esta intervención quedó ejecutada; no quedan controles de publicación pendientes. [Continuidad final](../../../NEXT-PROMPT.md).

@@ -1,0 +1,135 @@
+{
+  "deployment": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+  "verifiedAtUTC": "2026-11-16T04:12:12.419549+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "check": "deployment_id",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "ready",
+      "pass": true,
+      "detail": "READY"
+    },
+    {
+      "check": "production_target",
+      "pass": true,
+      "detail": "production"
+    },
+    {
+      "check": "prebuilt",
+      "pass": true,
+      "detail": true
+    },
+    {
+      "check": "project",
+      "pass": true,
+      "detail": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH"
+    },
+    {
+      "check": "team",
+      "pass": true,
+      "detail": {
+        "matching_team_field_present": true
+      }
+    },
+    {
+      "check": "sso_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "system_runtime_envs_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "runtime_metadata",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "branch_metadata",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "canonical_vercel_hostname",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_custom_domains_assigned",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "check": "apex_www_not_assigned",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "check": "skip_domain_flag_preserved",
+      "pass": true,
+      "detail": false
+    },
+    {
+      "check": "source_path_count",
+      "pass": true,
+      "detail": {
+        "remote": 1660,
+        "expected": 1660
+      }
+    },
+    {
+      "check": "source_paths_exact",
+      "pass": true,
+      "detail": {
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "check": "all_1660_content_hashes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "seven_registered_lambdas",
+      "pass": true,
+      "detail": {
+        "lambdas": [
+          "out/api/advisory",
+          "out/api/booking-availability",
+          "out/api/booking-create",
+          "out/api/collaboration",
+          "out/api/contact",
+          "out/api/orientation-contact",
+          "out/api/uf"
+        ]
+      }
+    },
+    {
+      "check": "root_131_fiches_resources_http",
+      "pass": true,
+      "detail": {
+        "requests": 153,
+        "failures": []
+      }
+    }
+  ],
+  "failures": [],
+  "source_files_compared": 1660,
+  "http_requests_completed": 153,
+  "expected_http_requests": 153,
+  "read_only": true,
+  "source_files_redownloaded": 0,
+  "api_writes": 0,
+  "real_forms_submitted": 0,
+  "credentials_or_protections_modified": false,
+  "watchdog_seconds": 55,
+  "active_own_process_groups": [],
+  "process_group_cleanup": "Own CLI process groups only; SIGTERM then SIGKILL if necessary, including runner SIGINT/SIGTERM."
+}
