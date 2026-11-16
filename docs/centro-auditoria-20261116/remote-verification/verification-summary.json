@@ -1,0 +1,228 @@
+{
+  "verifiedAtUTC": "2026-11-16T15:05:09.208345+00:00",
+  "passed": true,
+  "deployment": "dpl_33R4uenGQAt2cSVUGEJC7VsoF9yS",
+  "origin": "https://project-wrapp-9uq44evdh-lsandoval2-8260s-projects.vercel.app",
+  "sourceCommit": "e9d7393148bf1e209f6a8e2210ed4c5a973ceb41",
+  "candidateInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+  "expectedSourceFiles": 1660,
+  "preservedBaselineFiles": 1657,
+  "approvedChangedFiles": 3,
+  "functionBundles": 7,
+  "functionSourceFiles": 57,
+  "checks": [
+    {
+      "check": "ready_private_preview_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "preview_project_team",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "preview_source_commit",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "preview_candidate_pin",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_project_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_sso_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_project_automatic_states_preserved",
+      "pass": true,
+      "detail": {
+        "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+        "nodeVersion": "24.x",
+        "autoAssignCustomDomains": false,
+        "previewDeploymentsDisabled": true,
+        "paused": null
+      }
+    },
+    {
+      "check": "before_git_integration_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "before_repository_deployments_disabled",
+      "pass": true,
+      "detail": {
+        "main": false,
+        "codex/contacto-baseline-productivo-20261116": false,
+        "codex/eliminar-recorridos-global-20261115": false,
+        "codex/centro-auditoria-integral-20261116": false
+      }
+    },
+    {
+      "check": "before_production_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "updatedAt": 1794837289885
+      }
+    },
+    {
+      "check": "before_production_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "updatedAt": 1794837289884
+      }
+    },
+    {
+      "check": "before_www_redirect_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "all_1660_remote_source_paths_sha1",
+      "pass": true,
+      "detail": {
+        "expected": 1660,
+        "remote": 1660,
+        "matched": 1660
+      }
+    },
+    {
+      "check": "seven_registered_functions",
+      "pass": true,
+      "detail": [
+        "out/api/advisory",
+        "out/api/booking-availability",
+        "out/api/booking-create",
+        "out/api/collaboration",
+        "out/api/contact",
+        "out/api/orientation-contact",
+        "out/api/uf"
+      ]
+    },
+    {
+      "check": "anonymous_https_sso",
+      "pass": true,
+      "detail": {
+        "status": 302,
+        "locationHost": "vercel.com",
+        "sslVerifyResult": 0,
+        "redirectFollowed": false,
+        "authenticationHeadersCookiesOrBypassUsed": false
+      }
+    },
+    {
+      "check": "live_uf_usable_or_fail_closed",
+      "pass": true,
+      "detail": {
+        "status": 200,
+        "usable": true,
+        "gracefulUnavailable": false
+      }
+    },
+    {
+      "check": "after_project_identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_sso_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_project_automatic_states_preserved",
+      "pass": true,
+      "detail": {
+        "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+        "nodeVersion": "24.x",
+        "autoAssignCustomDomains": false,
+        "previewDeploymentsDisabled": true,
+        "paused": null
+      }
+    },
+    {
+      "check": "after_git_integration_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "after_repository_deployments_disabled",
+      "pass": true,
+      "detail": {
+        "main": false,
+        "codex/contacto-baseline-productivo-20261116": false,
+        "codex/eliminar-recorridos-global-20261115": false,
+        "codex/centro-auditoria-integral-20261116": false
+      }
+    },
+    {
+      "check": "after_production_alias_sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "updatedAt": 1794837289885
+      }
+    },
+    {
+      "check": "after_production_alias_www.sollahms.cl",
+      "pass": true,
+      "detail": {
+        "host": "www.sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "updatedAt": 1794837289884
+      }
+    },
+    {
+      "check": "after_www_redirect_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "project_settings_stable_during_verification",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "production_aliases_stable_during_verification",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "failures": [],
+  "ufProviderLookupAttempted": true,
+  "browserTestsRepeated": false,
+  "sourceBodiesDownloaded": 0,
+  "formsSubmitted": 0,
+  "apiWrites": 0,
+  "deploymentsCreatedOrPromoted": 0,
+  "credentialsOrProtectionsModified": false,
+  "activeOwnProcessGroups": []
+}

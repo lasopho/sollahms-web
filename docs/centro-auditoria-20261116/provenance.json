@@ -1,0 +1,143 @@
+{
+  "verifiedAtUTC": "2026-11-16T14:53:17.925Z",
+  "repository": "https://github.com/lasopho/sollahms-web",
+  "defaultBranch": {
+    "name": "main",
+    "sha": "86e200ec191b38af355061e21bc0fc1e549cce3b",
+    "usedAsImplementationBase": false
+  },
+  "production": {
+    "id": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+    "url": "https://project-wrapp-4l11wr2s0-lsandoval2-8260s-projects.vercel.app",
+    "state": "READY",
+    "target": "production",
+    "sourceBranch": "codex/contacto-baseline-productivo-20261116",
+    "sourceSha": "534bf362b8960e275f5b8b42b5c786027906a4cb",
+    "createdAtUTC": "2026-11-16T13:37:22.120Z",
+    "aliases": [
+      {
+        "alias": "sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "updatedAt": 1794837289885
+      },
+      {
+        "alias": "www.sollahms.cl",
+        "deploymentId": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "updatedAt": 1794837289884
+      }
+    ]
+  },
+  "selectedBase": {
+    "branch": "codex/contacto-baseline-productivo-20261116",
+    "sha": "dffbd310fe0cb34d952bda493140504ec4e1241c",
+    "pr": 29,
+    "prState": "open",
+    "prDraft": true,
+    "aheadOfProduction": 2,
+    "behindProduction": 0,
+    "postProductionChangesOnlyDocumentation": true,
+    "postProductionCommits": [
+      {
+        "sha": "41577c1fae2f8c10e577a8af5c68d277c515f6bc",
+        "message": "docs: aprobar Production aislado de Contacto antes de promoción"
+      },
+      {
+        "sha": "dffbd310fe0cb34d952bda493140504ec4e1241c",
+        "message": "docs: cerrar publicación productiva verificada de Contacto"
+      }
+    ],
+    "postProductionFileCount": 119
+  },
+  "project": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "ssoProtection": {
+      "enabled": true,
+      "deploymentType": "all_except_custom_domains"
+    },
+    "settingsModified": false
+  },
+  "recentProductionDeployments": [
+    {
+      "id": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+      "state": "READY",
+      "target": "production",
+      "createdAtUTC": "2026-11-16T13:37:22.120Z",
+      "sourceBranch": "codex/contacto-baseline-productivo-20261116",
+      "sourceSha": "534bf362b8960e275f5b8b42b5c786027906a4cb"
+    },
+    {
+      "id": "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+      "state": "READY",
+      "target": "production",
+      "createdAtUTC": "2026-11-16T04:08:57.979Z",
+      "sourceBranch": "codex/eliminar-recorridos-global-20261115",
+      "sourceSha": "c97bfa5aba80329f18e3db8058ec5c3fada80cc4"
+    },
+    {
+      "id": "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+      "state": "READY",
+      "target": "production",
+      "createdAtUTC": "2026-11-15T15:00:53.864Z",
+      "sourceBranch": null,
+      "sourceSha": null
+    },
+    {
+      "id": "dpl_21xM1afWsRHgbu3Kv2zdikWH3tkJ",
+      "state": "ERROR",
+      "target": "production",
+      "createdAtUTC": "2026-11-15T14:47:03.021Z",
+      "sourceBranch": null,
+      "sourceSha": null
+    },
+    {
+      "id": "dpl_2S4kRYezijcgik4etSnnR3sAY1z6",
+      "state": "READY",
+      "target": "production",
+      "createdAtUTC": "2026-11-15T13:15:28.078Z",
+      "sourceBranch": "codex/comparador-footer-20261115",
+      "sourceSha": "6eefd61edf3843cff603c1a2053eb204920270a7"
+    }
+  ],
+  "preservedProductionInventory": {
+    "manifest": "docs/contacto-baseline-20261116/candidate-manifest.json",
+    "sha256": "de0b2ba4cb81678a710605f829c0ba8fe0470a81c28959099dc0605e8a3c6fb0",
+    "files": 1660,
+    "htmlPages": 147,
+    "projectFiches": 131,
+    "functionBundles": 7,
+    "functionFiles": 57,
+    "contactoSha256": "02036adfd6b1cc9a8093e8e94b9e19abf4f7e882d3fe4d5214a661f4829705e1"
+  },
+  "newIntervention": {
+    "branch": "codex/centro-auditoria-integral-20261116",
+    "checkout": "/private/tmp/sollahms-centro-audit-20261116",
+    "scope": [
+      "centro-orientacion.html",
+      "assets/css/orientacion.css",
+      "assets/js/orientacion.mjs"
+    ],
+    "previewOnly": true,
+    "productionPublicationAuthorized": false
+  },
+  "evidenceSources": [
+    "https://api.vercel.com/v4/aliases/sollahms.cl",
+    "https://api.vercel.com/v4/aliases/www.sollahms.cl",
+    "https://api.vercel.com/v13/deployments/dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+    "https://api.vercel.com/v9/projects/prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "https://api.github.com/repos/lasopho/sollahms-web/compare/534bf362b8960e275f5b8b42b5c786027906a4cb...dffbd310fe0cb34d952bda493140504ec4e1241c",
+    "https://github.com/lasopho/sollahms-web/blob/codex/contacto-baseline-productivo-20261116/NEXT-PROMPT.md"
+  ],
+  "notes": [
+    "Connected read-only tools used; no deployments or settings changed by this provenance check.",
+    "No credentials, environment values or protection bypasses included.",
+    "Read-only API snapshot is evidence of observed state; recheck aliases and current branch before eventual publication."
+  ]
+}
