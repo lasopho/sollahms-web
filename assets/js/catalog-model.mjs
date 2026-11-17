@@ -1,5 +1,6 @@
 import {advancedFilterAndSort} from './catalog-filter-engine.mjs?v=20261029-euro-1';
 import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
+import {hasCatalogTypologyPrices,catalogTypologyOffer} from './catalog-typology-prices.mjs';
 // Public catalogue facts only. This module never changes source records.
 export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
 export const validPrice = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
@@ -57,7 +58,7 @@ export function projectOffer(project,state={}) {
     const reference=documentaryReference(project),a=reference?.attributes??{},metadata=documentaryMetadata(project,reference);
     return {value:validPrice(a.priceUF)?a.priceUF:null,typology:null,documentary:true,referenceId:reference?.id??null,date:metadata.ownerPriceDate??null};
   }
-  if (!project._commercialMatch) return catalogReference(project,state);
+  if (!project._commercialMatch) return hasCatalogTypologyPrices(project)?catalogTypologyOffer(project,state):catalogReference(project,state);
   const reference = preparedReference(project), a = reference?.attributes ?? {};
   const typology = [a.bedrooms == null ? null : a.bedrooms+'D', a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ');
   return {value:validPrice(a.priceUF)?a.priceUF:null,typology:typology||null,prepared:true,date:project._commercial?.asOf,referenceId:reference?.id};

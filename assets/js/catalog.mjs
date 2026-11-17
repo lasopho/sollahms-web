@@ -72,7 +72,7 @@ function card(project){
   }
   if(view==='split'){const b=element('button','Ubicar en mapa','catalog-text-button');b.type='button';b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('catalog-list-selection',{detail:{slug:project.slug}})));actions.append(b);}
   body.append(actions);article.append(body);
-  if(values().evidenceMode==='published'&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
+  if(values().evidenceMode==='published'&&offer.financialBaselineCompatible!==false&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
   const financial=body.querySelector('.capacity-result');
   if(financial){
     // Review dates remain in the source data; the financial scenario keeps all amounts/conditions.
