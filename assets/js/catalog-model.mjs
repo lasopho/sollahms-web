@@ -24,7 +24,33 @@ export function selectedOffer(project, selectedType='') {
   const lowest=offers.reduce((best,row)=>!best||row.precioDesdeUF<best.precioDesdeUF?row:best,null);
   return {value:lowest?.precioDesdeUF??null,typology:lowest?.tipologia??null};
 }
-export const projectOffer=(project,state={})=>catalogReference(project,state);
+// Prepared matches contain only references that satisfied the same active predicates.
+// A model without a price never borrows the published project's price.
+export function preparedReference(project) {
+  const references = project._commercialMatch?.references;
+  if (!references?.length) return null;
+  const priced = references.filter(r => validPrice(r.attributes?.priceUF));
+  if (priced.length) return priced.reduce((a,b) => a.attributes.priceUF <= b.attributes.priceUF ? a : b);
+  return references.reduce((a,b) => Object.values(a.attributes ?? {}).filter(v => v != null).length >= Object.values(b.attributes ?? {}).filter(v => v != null).length ? a : b);
+}
+export function projectOffer(project,state={}) {
+  if (!project._commercialMatch) return catalogReference(project,state);
+  const reference = preparedReference(project), a = reference?.attributes ?? {};
+  const typology = [a.bedrooms == null ? null : a.bedrooms+'D', a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ');
+  return {value:validPrice(a.priceUF)?a.priceUF:null,typology:typology||null,prepared:true,date:project._commercial?.asOf,referenceId:reference?.id};
+}
+export function offerPriceLabel(project,state={}) {
+  const offer=projectOffer(project,state);
+  if (!offer.prepared) return priceFromLabel(offer.value,project.precioDecimales);
+  return validPrice(offer.value) ? 'Referencia UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}) : 'Precio de esta referencia por confirmar';
+}
+export function commercialLayerNote(project) {
+  if (!project._commercialMatch) return '';
+  const date=project._commercial?.asOf?.split('-').reverse().join('/');
+  const kind=preparedReference(project)?.sourceKind;
+  const label=kind==='COTIZACION_PROPIETARIO'?'Cotización Sollahms de referencia':kind==='PLANO_UNIDAD'?'Plano de referencia':kind==='UNIDAD_UI'?'Ficha Iris de referencia':'Tipo de propiedad documentado';
+  return label+(date?' · '+date:'')+' · disponibilidad por confirmar';
+}
 export const searchableValues = project => [...['nombre','inmobiliaria','comuna','region','direccion','slug'].map(key=>project[key]),...stages(project).map(stage=>stage.nombre)];
 export function filterAndSort(projects, filters={}) {
   if(filters.version===2)return advancedFilterAndSort(projects,filters);
@@ -44,6 +70,15 @@ export function filterAndSort(projects, filters={}) {
   return rows;
 }
 export function projectFacts(project, selectedType='') {
+  if (project._commercialMatch) {
+    const a=preparedReference(project)?.attributes ?? {}, common=project._commercial?.projectFacts ?? {}, facts=[];
+    if (a.bedrooms != null || a.bathrooms != null) facts.push({label:'Tipología de referencia',value:[a.bedrooms == null ? null : a.bedrooms+'D',a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ')});
+    for (const [key,label] of [['usefulM2','Superficie útil'],['totalM2','Superficie total']]) if (a[key] != null) facts.push({label,value:a[key].toLocaleString('es-CL')+' m²'});
+    if (common.state) facts.push({label:'Estado',value:common.state});
+    const delivery=common.delivery?.label ?? (typeof common.delivery==='string'?common.delivery:null);
+    if (delivery) facts.push({label:'Entrega',value:delivery});
+    return facts;
+  }
   const facts=[];
   const typologies=(project.tipologias?.length?project.tipologias:project._facets?.typologyLabels??[]).filter(t=>!project.preciosPorTipologia||(selectedType==='Comercial'?t==='Local':selectedType==='Residencial'?t!=='Local':true));
   if(typologies.length)facts.push({label:typologies.some(t=>/^Parcelas/.test(t))?'Terreno':'Tipologías',value:typologies.join(' · ')});
