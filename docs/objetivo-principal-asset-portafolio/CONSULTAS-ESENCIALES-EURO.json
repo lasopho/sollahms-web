@@ -1,0 +1,3331 @@
+{
+  "schemaVersion": 1,
+  "kind": "Minimal next Iris research queries for 21 Euro projects",
+  "createdAtUTC": "2026-11-17T17:41:45.481624+00:00",
+  "status": "plan only; no Iris, PDF or external project source opened",
+  "sourceSnapshot": {
+    "path": "/private/tmp/sollahms-euro-essential-status.json",
+    "sha256": "6c7c0414aa74bd21f301ead025d5f762d19748be434b4e78caa78d6db353ff28",
+    "technicalCommit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+    "sourcesReused": [
+      {
+        "path": "data/proyectos.json",
+        "absolutePath": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/proyectos.json",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "usedScope": "Euro rows only; no 131-project synthesis"
+      },
+      {
+        "path": "data/catalog-facets.json",
+        "absolutePath": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/catalog-facets.json",
+        "sha256": "bdfb1d2036ec379ea03d1ce524d83e1843da3f89719222cfc6fb5f4883381681",
+        "usedScope": "Euro rows only; no 131-project synthesis"
+      },
+      {
+        "path": "data/euro-commercial.json",
+        "absolutePath": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/euro-commercial.json",
+        "sha256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "usedScope": "existing Euro records"
+      },
+      {
+        "path": "data/euro-brochures.json",
+        "absolutePath": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/euro-brochures.json",
+        "sha256": "8b3d89e25127e62c9d5e99bdeb5cac86eb5b765bec160562b8029a26ba4a2334",
+        "usedScope": "existing Euro records"
+      },
+      {
+        "path": "data/euro-official-review.json",
+        "absolutePath": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/euro-official-review.json",
+        "sha256": "b8b5873efe841c898c8d0d774c5de1417f0604b6ad4961e98e0b4cdfd7709bb5",
+        "usedScope": "existing Euro records"
+      },
+      {
+        "path": "data/fichas-proyectos.json",
+        "absolutePath": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/fichas-proyectos.json",
+        "sha256": "980429461bc659829eaee6e0fd777a46b62262d88ff61389b38427e5ae6274e7",
+        "usedScope": "Euro rows only; no 131-project synthesis"
+      }
+    ],
+    "additionalExistingSourceResolutionReused": {
+      "ownerInstruction": {
+        "repositoryPath": "docs/euro-20261029/owner-instruction.txt",
+        "ref": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+        "gitBlobSHA": "1efac969bd714707016839c436883d781cc12a5d",
+        "contentSHA256": "5ce0900bd16d6c5d1fc1ff5819f9a2b08c739fe3cbdef8e4317da5baf31814af",
+        "toolDisplayURL": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/euro-20261029/owner-instruction.txt",
+        "retrieval": "GitHub fetch_file at exact existing commit; sparse local blob unavailable",
+        "mapochoAExactPriceSection": [
+          {
+            "line": 84,
+            "text": "### Mapocho 3521 — Edificio A"
+          },
+          {
+            "line": 85,
+            "text": ""
+          },
+          {
+            "line": 86,
+            "text": "- 2 dormitorios: UF 3.194,03."
+          },
+          {
+            "line": 87,
+            "text": "- 3 dormitorios: UF 3.324,18."
+          },
+          {
+            "line": 88,
+            "text": "- Precio desde: UF 3.194,03."
+          }
+        ],
+        "mapochoIdentityCaution": [
+          {
+            "line": 58,
+            "text": "**Mapocho 3521 y Mapocho 3521 — Edificio A**"
+          },
+          {
+            "line": 59,
+            "text": ""
+          },
+          {
+            "line": 60,
+            "text": "Investigar si corresponden a fases, edificios o registros comerciales distintos."
+          },
+          {
+            "line": 61,
+            "text": ""
+          },
+          {
+            "line": 62,
+            "text": "Conservar ambos registros y sus precios diferenciados mientras no se confirme que son duplicados."
+          },
+          {
+            "line": 63,
+            "text": ""
+          },
+          {
+            "line": 64,
+            "text": "No fusionar automáticamente las fichas ni mezclar planos, fotografías o características específicas."
+          }
+        ],
+        "interpretation": "The Mapocho A-specific instruction states bedroom typologies/prices, but does not explicitly establish departamento as the property type. General examples of Departamento elsewhere are not project-specific evidence."
+      },
+      "offerImporter": {
+        "repositoryPath": "scripts/euro_details.py",
+        "ref": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+        "gitBlobSHA": "44dfecb2f87e7a9b214e8439d62b3a121b2e71f0",
+        "contentSHA256": "7f8d87244ea7b13105392164c77a7f19d48eeb349aa3b673de137f18bead0ed3",
+        "toolDisplayURL": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/scripts/euro_details.py",
+        "retrieval": "GitHub fetch_file at exact existing commit; script was read and never executed",
+        "offerBuilder": [
+          {
+            "line": 28,
+            "text": "def offers_for(c,brochure,old):"
+          },
+          {
+            "line": 29,
+            "text": " keys=set(c['prices'])"
+          },
+          {
+            "line": 30,
+            "text": " keys.update(str(m['bedrooms']) for m in brochure.get('variants',[]) if m['bedrooms'] is not None)"
+          },
+          {
+            "line": 31,
+            "text": " for t in old.get('tipologias',[]):"
+          },
+          {
+            "line": 32,
+            "text": "  m=re.fullmatch(r'(\\d+) dormitorios?',t)"
+          },
+          {
+            "line": 33,
+            "text": "  if m:keys.add(m[1])"
+          },
+          {
+            "line": 34,
+            "text": " if not keys:keys={'1','2'} if c['name']=='Diagonal Vicuña' else set()"
+          },
+          {
+            "line": 35,
+            "text": " return [{'id':'local' if k=='local' else k+'d','bedrooms':None if k=='local' else int(k),'label':'Local comercial' if k=='local' else typ(int(k)),'propertyType':'local' if k=='local' else 'departamento','priceUF':c['prices'].get(k),'priceDecimals':2 if '.' in c.get('priceStrings',{}).get(k,'') else 0} for k in sorted(keys,key=lambda k:99 if k=='local' else int(k))]"
+          }
+        ],
+        "interpretation": "offers_for uses propertyType='local' only for the local key, otherwise it supplies departamento by default; this generated propertyType is not independent owner/primary proof."
+      },
+      "externalPrimarySiteOrBrochureRetrievals": 0,
+      "IrisOrRemoteLoginAccessed": false
+    }
+  },
+  "scope": {
+    "projectCount": 21,
+    "ownerReviewed12": [
+      "mapocho-3521",
+      "mapocho-3521-edificio-a",
+      "plaza-de-lourdes",
+      "rosas-1444",
+      "diagonal-vicuna",
+      "santa-elena-1670-mbi",
+      "independencia-4745",
+      "froilan-roa-5731-torre-sur",
+      "entre-vicunas",
+      "froilan-roa-5731-torre-norte",
+      "edificio-don-pepe-154",
+      "guillermo-mann-1401"
+    ],
+    "otherEuro9": [
+      "vitro",
+      "mirador-irarrazaval",
+      "alto-irarrazaval",
+      "jose-pedro-alessandri",
+      "vicuna-mackenna-1432",
+      "vicente-valdes",
+      "vista-portugal",
+      "marina-pacifico",
+      "nova-parque"
+    ],
+    "IrisQueriesExecuted": 0,
+    "PDFsOpened": 0,
+    "applicationChanges": 0,
+    "testsOrGeneratorsExecuted": 0,
+    "ownerQuestions": 0
+  },
+  "executionOrder": {
+    "first": "P0 Diagonal: only independent dated external price/provenance; reuse all five reviewed models.",
+    "second": "P1 nine other Euro projects: turn project summaries into exact documentary references, without expanding ranges.",
+    "then": "P2 identity-specific missing models for Mapocho A/Froilán and scalar areas for generic Mapocho; P3 only unprinted missing model metrics and KC bathroom conflict."
+  },
+  "rules": {
+    "partialSearch": "Missing inactive fields never block supported partial searches; do not demand price+type+D+B+useful+total on every record.",
+    "priceAuthority": "Iris prices are separate external documentary observations with date/source/scope. Never label them current Sollahms prices, replace authorized owner values, or automatically fill Diagonal published price. No owner question is needed to run this research.",
+    "modelBinding": "Do not create model correspondences by D/B match, smallest area, range endpoints, project minimum or similar commercial price.",
+    "surfaceMetrics": "Keep useful/total/interior/terrace distinct. Do not subtract, average or convert metrics. Mapocho average totals remain display-only; Rosas known approximate model totals remain reusable.",
+    "scope": "Every new fact must identify its project/building/tower/product. Unknown remains null; no transfer across local/residential or towers.",
+    "sourceReuse": "Existing nine brochures and five Diagonal models are not to be reaudited. Use their exact record IDs/labels/pages as the starting evidence.",
+    "minimality": "19 bounded initial lookups cover 21 project branches: one shared Mapocho lookup and one shared Froilán lookup. Prioritize the 10 P0/P1 lookups; later lookups request only remaining dimensions, not a full project audit.",
+    "newResultAcceptance": "One verifiable partial reference is useful; no stock completeness target or all-fields gate. If a result contains only the old project summary, it creates no new combined witness.",
+    "currentAvailability": "The research plans documentary filter support, not a unit stock inventory, legal delivery certification or commercial closure."
+  },
+  "summary": {
+    "projectBranches": 21,
+    "plannedInitialLookups": 19,
+    "priorityP0Lookups": 1,
+    "priorityP1Lookups": 9,
+    "priorityP2Lookups": 2,
+    "priorityP3Lookups": 7,
+    "reviewedBrochureModelsToReuse": 42,
+    "reviewedDiagonalModelsToReuse": 5,
+    "existingLegacySummaryRowsReused": 9,
+    "ownerQuestionsNeeded": 0
+  },
+  "lookupGroups": [
+    {
+      "id": "iris-euro-01-diagonal-price",
+      "priority": "P0",
+      "projectSlugs": [
+        "diagonal-vicuna"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Diagonal Vicuña, Euro, Santa Elena 2000, Santiago: localizar únicamente una referencia comercial con precio, fecha y fuente. Reutilizar los cinco modelos ya revisados (1D1B 32/34; 2D1B 42/45; 2D1B 45/48; mariposa 2D2B 49/51; 2D2B 57/59 m² útil/total). No volver a investigar sus D/B/superficies; no atribuir un precio a un modelo sin ID coincidente explícito.",
+      "projectPlans": [
+        "diagonal-vicuna"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-alto-irarrazaval",
+      "priority": "P1",
+      "projectSlugs": [
+        "alto-irarrazaval"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Alto Irarrázaval, Euro, Avda. Irarrázaval 2325, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=32 a 54 m² y total=35 a 61 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "projectPlans": [
+        "alto-irarrazaval"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-jose-pedro-alessandri",
+      "priority": "P1",
+      "projectSlugs": [
+        "jose-pedro-alessandri"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "José Pedro Alessandri, Euro, Avda. José Pedro Alessandri 1498, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 3, B=1 a 2, útil=30 a 76 m² y total=34 a 85 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "projectPlans": [
+        "jose-pedro-alessandri"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-marina-pacifico",
+      "priority": "P1",
+      "projectSlugs": [
+        "marina-pacifico"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Marina Pacífico, Euro, Av. Los Pescadores 5121, Coquimbo: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 3, B=1 a 2, útil=31 a 72 m² y total=34 a 85 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "projectPlans": [
+        "marina-pacifico"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-mirador-irarrazaval",
+      "priority": "P1",
+      "projectSlugs": [
+        "mirador-irarrazaval"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Mirador Irarrázaval, Euro, Obispo Orrego 40, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=35 a 58 m² y total=38 a 62 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "projectPlans": [
+        "mirador-irarrazaval"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-nova-parque",
+      "priority": "P1",
+      "projectSlugs": [
+        "nova-parque"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Nova Parque, Euro, Vicuña Mackenna 3747, San Joaquín: buscar una referencia o modelo que documente expresamente la pertenencia conjunta de 1D, 1B, 29 m² útiles y 30 m² totales; los cuatro valores ya existen como resumen separado. No inventar más modelos ni juntar esos valores por coincidencia.",
+      "projectPlans": [
+        "nova-parque"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-vicente-valdes",
+      "priority": "P1",
+      "projectSlugs": [
+        "vicente-valdes"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Vicente Valdés, Euro, Vicente Valdés 86, La Florida: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=31 a 52 m² y total=43 a 55 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "projectPlans": [
+        "vicente-valdes"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-vicuna-mackenna-1432",
+      "priority": "P1",
+      "projectSlugs": [
+        "vicuna-mackenna-1432"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Vicuña Mackenna 1432, Euro, Avda. Vicuña Mackenna 1432, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=30 a 55 m² y total=32 a 60 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "projectPlans": [
+        "vicuna-mackenna-1432"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-vista-portugal",
+      "priority": "P1",
+      "projectSlugs": [
+        "vista-portugal"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Vista Portugal, Euro, Portugal 755, Santiago: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=30 a 53 m² y total=30 a 55 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "projectPlans": [
+        "vista-portugal"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-vitro",
+      "priority": "P1",
+      "projectSlugs": [
+        "vitro"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Vitro, Euro, Zañartu 980, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=32 a 60 m² y total=37 a 65 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "projectPlans": [
+        "vitro"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-froilan-towers",
+      "priority": "P2",
+      "projectSlugs": [
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Euro Froilán Roa 5731, La Florida: localizar las fichas de modelos que identifiquen explícitamente Torre Norte y Torre Sur. Un único lookup del conjunto, conservando resultados y vacíos separados por torre; no trasladar modelos genéricos a ambas.",
+      "projectPlans": [
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-mapochos-identity-models",
+      "priority": "P2",
+      "projectSlugs": [
+        "mapocho-3521",
+        "mapocho-3521-edificio-a"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Euro Mapocho 3521 y Mapocho 3521 — Edificio A, Quinta Normal: localizar una ficha identificada por cada registro/edificio. Reutilizar lo ya revisado y pedir sólo campos faltantes de cada rama; no suponer equivalencias de edificios ni copiar el brochure duplicado.",
+      "projectPlans": [
+        "mapocho-3521",
+        "mapocho-3521-edificio-a"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-edificio-don-pepe-154",
+      "priority": "P3",
+      "projectSlugs": [
+        "edificio-don-pepe-154"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Don Pepe 154, Euro, La Florida: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p09-single]; 3C [p10-single]; 4C [p11-single]; M [p12-single]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "projectPlans": [
+        "edificio-don-pepe-154"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-entre-vicunas",
+      "priority": "P3",
+      "projectSlugs": [
+        "entre-vicunas"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Entre Vicuñas, Euro, La Florida: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p09-left]; 3C [p09-right]; 1 DORM + 1 BAÑO [p10-single]; 4C [p11-single]; M [p12-single]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "projectPlans": [
+        "entre-vicunas"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-guillermo-mann-1401",
+      "priority": "P3",
+      "projectSlugs": [
+        "guillermo-mann-1401"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Guillermo Mann 1401, Euro, Ñuñoa: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p10-left]; 3C [p10-right]; 4C [p11-left]; 4C [p11-right]; 4C [p12-left]; M [p12-right]; KC [p13-single]. Resolver baños del KC únicamente si una referencia identificada explícitamente como KC aporta respaldo; no elegir entre etiqueta y dibujo por interpretación. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "projectPlans": [
+        "guillermo-mann-1401"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-independencia-4745",
+      "priority": "P3",
+      "projectSlugs": [
+        "independencia-4745"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Independencia 4745, Euro, Conchalí: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p09-single]; 3C [p10-single]; 4C [p11-single]; 4C [p12-single]; M [p13-single]. Mantener dos ramas: departamentos (cinco modelos conocidos, pedir sólo áreas) y local comercial independiente (pedir áreas y baños sólo si están expresos, sin asignarle dormitorios ni amenities residenciales). Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "projectPlans": [
+        "independencia-4745"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-plaza-de-lourdes",
+      "priority": "P3",
+      "projectSlugs": [
+        "plaza-de-lourdes"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Plaza de Lourdes, Euro, Quinta Normal: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 Dormitorio + 1 Baño [p05-top-left]; 3C [p05-top-middle]; 4C [p05-top-right]; M [p05-bottom-left]; 5C [p05-bottom-middle]; 5C [p05-bottom-right]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "projectPlans": [
+        "plaza-de-lourdes"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-rosas-1444",
+      "priority": "P3",
+      "projectSlugs": [
+        "rosas-1444"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Rosas 1444, Euro, Santiago: localizar sólo superficie útil de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORMITORIO + 1 BAÑO [p09-left]; 3C [p09-right]; 4C [p10-left]; MARIPOSA [p10-right]; 4C [p11-single]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "projectPlans": [
+        "rosas-1444"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    },
+    {
+      "id": "iris-euro-santa-elena-1670-mbi",
+      "priority": "P3",
+      "projectSlugs": [
+        "santa-elena-1670-mbi"
+      ],
+      "plannedInitialIrisSearches": 1,
+      "queryText": "Santa Elena 1670, Euro, Santiago: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p09-single]; 3C [p10-single]; 4C [p11-single]; M [p12-single]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "projectPlans": [
+        "santa-elena-1670-mbi"
+      ],
+      "followupRule": "Only inspect a returned source if it is new, project/tower/product scoped, and can support a requested missing field. Do not reopen previously reviewed brochures.",
+      "stopRule": "One bounded lookup; if only a project summary, unidentified duplicate, generic complex or unverifiable source is returned, record unknown and continue. No exhaustive audit or automatic followup search."
+    }
+  ],
+  "projectPlans": [
+    {
+      "slug": "diagonal-vicuna",
+      "name": "Diagonal Vicuña",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Santiago",
+        "region": "Región Metropolitana",
+        "direccion": "Santa Elena 2000",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/diagonal-vicuna",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "diagonal-vicuna:official:diagonal-web-1d1b",
+          "id": "diagonal-web-1d1b",
+          "label": "1 dorm1 baño",
+          "propertyTypeInProjectRecord": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": {
+            "util": 32,
+            "total": 34
+          },
+          "source": {
+            "file": "data/euro-official-review.json",
+            "pointer": "/diagonalVicuna/variants/0"
+          }
+        },
+        {
+          "referenceId": "diagonal-vicuna:official:diagonal-web-2d1b-3c",
+          "id": "diagonal-web-2d1b-3c",
+          "label": "2 dorm1 baño (3c)",
+          "propertyTypeInProjectRecord": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": {
+            "util": 42,
+            "total": 45
+          },
+          "source": {
+            "file": "data/euro-official-review.json",
+            "pointer": "/diagonalVicuna/variants/1"
+          }
+        },
+        {
+          "referenceId": "diagonal-vicuna:official:diagonal-web-2d1b-4c",
+          "id": "diagonal-web-2d1b-4c",
+          "label": "2 dorm1 baño (4c)",
+          "propertyTypeInProjectRecord": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": {
+            "util": 45,
+            "total": 48
+          },
+          "source": {
+            "file": "data/euro-official-review.json",
+            "pointer": "/diagonalVicuna/variants/2"
+          }
+        },
+        {
+          "referenceId": "diagonal-vicuna:official:diagonal-web-mariposa",
+          "id": "diagonal-web-mariposa",
+          "label": "Mariposa",
+          "propertyTypeInProjectRecord": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": {
+            "util": 49,
+            "total": 51
+          },
+          "source": {
+            "file": "data/euro-official-review.json",
+            "pointer": "/diagonalVicuna/variants/3"
+          }
+        },
+        {
+          "referenceId": "diagonal-vicuna:official:diagonal-web-2d2b",
+          "id": "diagonal-web-2d2b",
+          "label": "2 dorm2 baños",
+          "propertyTypeInProjectRecord": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": {
+            "util": 57,
+            "total": 59
+          },
+          "source": {
+            "file": "data/euro-official-review.json",
+            "pointer": "/diagonalVicuna/variants/4"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": null,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": false
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P0",
+      "lookupGroup": "iris-euro-01-diagonal-price",
+      "missingDimensions": [
+        "external-dated-price-reference-only"
+      ],
+      "missingTypeDBUsefulTotal": [],
+      "requestedData": [
+        "Sólo buscar si Iris contiene una referencia de precio con fuente y fecha para esta identidad, manteniendo su origen externo.",
+        "Si el precio corresponde expresamente a uno de los cinco modelos ya conocidos, conservar el ID que lo demuestra; si no lo identifica, dejar la relación precio-modelo null."
+      ],
+      "queryText": "Diagonal Vicuña, Euro, Santa Elena 2000, Santiago: localizar únicamente una referencia comercial con precio, fecha y fuente. Reutilizar los cinco modelos ya revisados (1D1B 32/34; 2D1B 42/45; 2D1B 45/48; mariposa 2D2B 49/51; 2D2B 57/59 m² útil/total). No volver a investigar sus D/B/superficies; no atribuir un precio a un modelo sin ID coincidente explícito.",
+      "doNotRepeat": [
+        "Los cinco modelos ya contienen D/B/útil/total.",
+        "No buscar nuevamente el antiguo precio UF3184 ni convertirlo en vigente.",
+        "No volver a preguntar al propietario por el precio; la instrucción existente es Consultar precio cuando no exista autorización.",
+        "No reabrir los conflictos de etapa de esta tarea de modelos."
+      ],
+      "usefulOutcome": "Un antecedente comercial externo fechado, o unknown si no existe. El precio Sollahms continúa null hasta otra fuente autorizada; los cinco modelos siguen disponibles para consultas sin precio.",
+      "noExpansionOfGeometryNeeded": true
+    },
+    {
+      "slug": "alto-irarrazaval",
+      "name": "Alto Irarrázaval",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Ñuñoa",
+        "region": "Región Metropolitana",
+        "direccion": "Avda. Irarrázaval 2325",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/alto-irarrazaval",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 4004,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-alto-irarrazaval",
+      "missingDimensions": [
+        "exact-model-bedroom-bathroom-combination",
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Rango resumen, sin áreas útiles por modelo.",
+        "totalArea": "Rango resumen, sin áreas totales por modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/118"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/alto-irarrazaval",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "estado",
+          "entrega",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "Alto Irarrázaval · Avda. Irarrázaval 2325 · 2do semestre 2028 · desde UF 4004"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "32 a 54",
+          "totalM2": "35 a 61",
+          "terrenoM2": null,
+          "dormitorios": "1 a 2",
+          "banos": "1 a 2"
+        },
+        "pendingFields": [],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precioDesdeUF": 4004,
+          "entrega": "2do semestre 2028",
+          "estado": "Entrega futura",
+          "superficieDesdeM2": 32.0,
+          "amenities": [
+            "Áreas verdes"
+          ],
+          "descripcionLarga": "Alto Irarrázaval es un proyecto de Euro ubicado en Avda. Irarrázaval 2325, Ñuñoa. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega estimada para 2do semestre 2028. Su equipamiento incluye áreas verdes."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "Alto Irarrázaval, Euro, Avda. Irarrázaval 2325, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=32 a 54 m² y total=35 a 61 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "jose-pedro-alessandri",
+      "name": "José Pedro Alessandri",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Ñuñoa",
+        "region": "Región Metropolitana",
+        "direccion": "Avda. José Pedro Alessandri 1498",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/jose-pedro-alessandri",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 3401,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2,
+          3
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-jose-pedro-alessandri",
+      "missingDimensions": [
+        "exact-model-bedroom-bathroom-combination",
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Rango resumen, sin áreas útiles por modelo.",
+        "totalArea": "Rango resumen, sin áreas totales por modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/119"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/jose-pedro-alessandri",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "estado",
+          "entrega",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "José Pedro Alessandri · Avda. José Pedro Alessandri 1498 · Entrega inmediata · desde UF 3401"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "30 a 76",
+          "totalM2": "34 a 85",
+          "terrenoM2": null,
+          "dormitorios": "1 a 3",
+          "banos": "1 a 2"
+        },
+        "pendingFields": [
+          "Equipamiento: listado completo pendiente de confirmación",
+          "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+        ],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "precioDesdeUF": 3401,
+          "entrega": "Entrega inmediata",
+          "estado": "Entrega inmediata",
+          "superficieDesdeM2": 30.0,
+          "amenities": [],
+          "descripcionLarga": "José Pedro Alessandri es un proyecto de Euro ubicado en Avda. José Pedro Alessandri 1498, Ñuñoa. La ficha oficial publica departamentos de 1 a 3 dormitorios y 1 a 2 baños, con entrega inmediata."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "José Pedro Alessandri, Euro, Avda. José Pedro Alessandri 1498, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 3, B=1 a 2, útil=30 a 76 m² y total=34 a 85 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "marina-pacifico",
+      "name": "Marina Pacífico",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Coquimbo",
+        "region": "Coquimbo",
+        "direccion": "Av. Los Pescadores 5121",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/mirador-pacifico",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 2525,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2,
+          3
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-marina-pacifico",
+      "missingDimensions": [
+        "exact-model-bedroom-bathroom-combination",
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Rango resumen, sin áreas útiles por modelo.",
+        "totalArea": "Rango resumen, sin áreas totales por modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/124"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/mirador-pacifico",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El recorrido enlazado por la inmobiliaria devuelve HTTP404 y no se integra como funcional.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "estado",
+          "entrega",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "Marina Pacífico · Av. Los Pescadores 5121 · Entrega inmediata · desde UF 2525"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "31 a 72",
+          "totalM2": "34 a 85",
+          "terrenoM2": null,
+          "dormitorios": "1 a 3",
+          "banos": "1 a 2"
+        },
+        "pendingFields": [
+          "Equipamiento: listado completo pendiente de confirmación",
+          "Recorrido oficial enlazado no disponible: HTTP404"
+        ],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios",
+            "3 dormitorios"
+          ],
+          "precioDesdeUF": 2525,
+          "entrega": "Entrega inmediata",
+          "estado": "Entrega inmediata",
+          "superficieDesdeM2": 31.0,
+          "amenities": [],
+          "descripcionLarga": "Marina Pacífico es un proyecto de Euro ubicado en Av. Los Pescadores 5121, Coquimbo. La ficha oficial publica departamentos de 1 a 3 dormitorios y 1 a 2 baños, con entrega inmediata."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "Marina Pacífico, Euro, Av. Los Pescadores 5121, Coquimbo: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 3, B=1 a 2, útil=31 a 72 m² y total=34 a 85 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [
+        "El registro publicado es Marina Pacífico; su URL oficial histórica termina en /mirador-pacifico. Exigir coincidencia de Av. Los Pescadores 5121, Coquimbo e inmobiliaria antes de tratar ambos nombres como la misma referencia."
+      ],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "mirador-irarrazaval",
+      "name": "Mirador Irarrázaval",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Ñuñoa",
+        "region": "Región Metropolitana",
+        "direccion": "Obispo Orrego 40",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/mirador-irarrazabal",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 4026,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-mirador-irarrazaval",
+      "missingDimensions": [
+        "exact-model-bedroom-bathroom-combination",
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Rango resumen, sin áreas útiles por modelo.",
+        "totalArea": "Rango resumen, sin áreas totales por modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/117"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/mirador-irarrazabal",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "estado",
+          "entrega",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "Mirador Irarrázaval · Obispo Orrego 40 · 1er semestre 2028 · desde UF 4026"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "35 a 58",
+          "totalM2": "38 a 62",
+          "terrenoM2": null,
+          "dormitorios": "1 a 2",
+          "banos": "1 a 2"
+        },
+        "pendingFields": [
+          "Equipamiento: listado completo pendiente de confirmación",
+          "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+        ],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precioDesdeUF": 4026,
+          "entrega": "1er semestre 2028",
+          "estado": "Entrega futura",
+          "superficieDesdeM2": 35.0,
+          "amenities": [],
+          "descripcionLarga": "Mirador Irarrázaval es un proyecto de Euro ubicado en Obispo Orrego 40, Ñuñoa. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega estimada para 1er semestre 2028."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "Mirador Irarrázaval, Euro, Obispo Orrego 40, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=35 a 58 m² y total=38 a 62 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "nova-parque",
+      "name": "Nova Parque",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "San Joaquín",
+        "region": "Región Metropolitana",
+        "direccion": "Vicuña Mackenna 3747",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/nova-parque",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 2725,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-nova-parque",
+      "missingDimensions": [
+        "same-reference-binding-of-propertyType-bedrooms-bathrooms-useful-total"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Valor resumen escalar, sin relación exacta a modelo.",
+        "totalArea": "Valor resumen escalar, sin relación exacta a modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/125"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/nova-parque",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "estado",
+          "entrega",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "Nova Parque · Vicuña Mackenna 3747 · 2do semestre 2028 · desde UF 2725"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "29",
+          "totalM2": "30",
+          "terrenoM2": null,
+          "dormitorios": "1",
+          "banos": "1"
+        },
+        "pendingFields": [
+          "Equipamiento: listado completo pendiente de confirmación",
+          "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+        ],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio"
+          ],
+          "precioDesdeUF": 2725,
+          "entrega": "2do semestre 2028",
+          "estado": "Entrega futura",
+          "superficieDesdeM2": 29.0,
+          "amenities": [],
+          "descripcionLarga": "Nova Parque es un proyecto de Euro ubicado en Vicuña Mackenna 3747, San Joaquín. La ficha oficial publica departamentos de 1 dormitorios y 1 baños, con entrega estimada para 2do semestre 2028."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "Nova Parque, Euro, Vicuña Mackenna 3747, San Joaquín: buscar una referencia o modelo que documente expresamente la pertenencia conjunta de 1D, 1B, 29 m² útiles y 30 m² totales; los cuatro valores ya existen como resumen separado. No inventar más modelos ni juntar esos valores por coincidencia.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "vicente-valdes",
+      "name": "Vicente Valdés",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana",
+        "direccion": "Vicente Valdés 86",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/vicente-valdes",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 3244,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-vicente-valdes",
+      "missingDimensions": [
+        "exact-model-bedroom-bathroom-combination",
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Rango resumen, sin áreas útiles por modelo.",
+        "totalArea": "Rango resumen, sin áreas totales por modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/121"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/vicente-valdes",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados. El catálogo JSON no lo incluye, pero la ficha específica responde200 y publica precio3244; el campo de entrega contiene solo un rótulo sin fecha.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "Vicente Valdés · Vicente Valdés 86 · None · desde UF 3244"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "31 a 52",
+          "totalM2": "43 a 55",
+          "terrenoM2": null,
+          "dormitorios": "1 a 2",
+          "banos": "1 a 2"
+        },
+        "pendingFields": [
+          "Estado de construcción vigente",
+          "Fecha estimada de entrega",
+          "Equipamiento: listado completo pendiente de confirmación",
+          "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+        ],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precioDesdeUF": 3244,
+          "entrega": null,
+          "estado": null,
+          "superficieDesdeM2": 31.0,
+          "amenities": [],
+          "descripcionLarga": "Vicente Valdés es un proyecto de Euro ubicado en Vicente Valdés 86, La Florida. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con fecha de entrega pendiente de confirmación."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "Vicente Valdés, Euro, Vicente Valdés 86, La Florida: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=31 a 52 m² y total=43 a 55 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "vicuna-mackenna-1432",
+      "name": "Vicuña Mackenna 1432",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Ñuñoa",
+        "region": "Región Metropolitana",
+        "direccion": "Avda. Vicuña Mackenna 1432",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/vicuna-mackenna-1432",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 3381,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-vicuna-mackenna-1432",
+      "missingDimensions": [
+        "exact-model-bedroom-bathroom-combination",
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Rango resumen, sin áreas útiles por modelo.",
+        "totalArea": "Rango resumen, sin áreas totales por modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/120"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/vicuna-mackenna-1432",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "estado",
+          "entrega",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "Vicuña Mackenna 1432 · Avda. Vicuña Mackenna 1432 · Entrega inmediata · desde UF 3381"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "30 a 55",
+          "totalM2": "32 a 60",
+          "terrenoM2": null,
+          "dormitorios": "1 a 2",
+          "banos": "1 a 2"
+        },
+        "pendingFields": [],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precioDesdeUF": 3381,
+          "entrega": "Entrega inmediata",
+          "estado": "Entrega inmediata",
+          "superficieDesdeM2": 30.0,
+          "amenities": [
+            "Bicicleteros",
+            "Piscina"
+          ],
+          "descripcionLarga": "Vicuña Mackenna 1432 es un proyecto de Euro ubicado en Avda. Vicuña Mackenna 1432, Ñuñoa. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye bicicleteros, piscina."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "Vicuña Mackenna 1432, Euro, Avda. Vicuña Mackenna 1432, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=30 a 55 m² y total=32 a 60 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "vista-portugal",
+      "name": "Vista Portugal",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Santiago",
+        "region": "Región Metropolitana",
+        "direccion": "Portugal 755",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/vista-portugal",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 2616,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-vista-portugal",
+      "missingDimensions": [
+        "exact-model-bedroom-bathroom-combination",
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Rango resumen, sin áreas útiles por modelo.",
+        "totalArea": "Rango resumen, sin áreas totales por modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/123"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/vista-portugal",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "estado",
+          "entrega",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "Vista Portugal · Portugal 755 · Entrega inmediata · desde UF 2616"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "30 a 53",
+          "totalM2": "30 a 55",
+          "terrenoM2": null,
+          "dormitorios": "1 a 2",
+          "banos": "1 a 2"
+        },
+        "pendingFields": [
+          "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+        ],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precioDesdeUF": 2616,
+          "entrega": "Entrega inmediata",
+          "estado": "Entrega inmediata",
+          "superficieDesdeM2": 30.0,
+          "amenities": [
+            "Lavandería",
+            "Bicicleteros",
+            "Gimnasio",
+            "Piscina",
+            "Sala multiuso",
+            "Quinchos"
+          ],
+          "descripcionLarga": "Vista Portugal es un proyecto de Euro ubicado en Portugal 755, Santiago. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye lavandería, bicicleteros, gimnasio, piscina, sala multiuso."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "Vista Portugal, Euro, Portugal 755, Santiago: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=30 a 53 m² y total=30 a 55 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "vitro",
+      "name": "Vitro",
+      "cohort": "other-euro-9",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Ñuñoa",
+        "region": "Región Metropolitana",
+        "direccion": "Zañartu 980",
+        "tipoActivo": null,
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/vitro",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 2791,
+      "priceAuthorityAlreadyAnswered": "Precio publicado existente procede de la revisión oficial histórica; no presentarlo como nuevo precio autorizado por Sollahms.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P1",
+      "lookupGroup": "iris-euro-vitro",
+      "missingDimensions": [
+        "exact-model-bedroom-bathroom-combination",
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "El proyecto ya se describe como departamento; no falta repetir ese dato general. La nueva referencia debe conservar su producto explícito.",
+        "bedrooms": "Existen valores o rangos del proyecto; falta un ID de modelo que los ligue con B y áreas.",
+        "bathrooms": "Existen valores o rangos del proyecto; falta su pertenencia al mismo modelo.",
+        "usefulArea": "Rango resumen, sin áreas útiles por modelo.",
+        "totalArea": "Rango resumen, sin áreas totales por modelo."
+      },
+      "legacySourceToReuse": {
+        "source": {
+          "file": "data/fichas-proyectos.json",
+          "pointer": "/116"
+        },
+        "sourceUrl": "https://www.euroinmobiliaria.cl/proyectos/vitro",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial y del JSON público del catálogo. El precio incluye el descuento publicado, excluye estacionamiento y bodega, y está sujeto a stock y confirmación comercial. Las superficies corresponden a los modelos publicados.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "estado",
+          "entrega",
+          "tipologias",
+          "precioDesdeUF",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "sourceEvidence": {
+          "location": "#informacion; #modelos; script[data-project-filter-data] del catálogo oficial",
+          "excerpt": "Vitro · Zañartu 980 · Entrega inmediata · desde UF 2791"
+        },
+        "rawSummarySpecs": {
+          "utilM2": "32 a 60",
+          "totalM2": "37 a 65",
+          "terrenoM2": null,
+          "dormitorios": "1 a 2",
+          "banos": "1 a 2"
+        },
+        "pendingFields": [
+          "Recorrido virtual propio: no se encontró enlace en la ficha oficial"
+        ],
+        "rawProjectUpdates": {
+          "tipologias": [
+            "1 dormitorio",
+            "2 dormitorios"
+          ],
+          "precioDesdeUF": 2791,
+          "entrega": "Entrega inmediata",
+          "estado": "Entrega inmediata",
+          "superficieDesdeM2": 32.0,
+          "amenities": [
+            "Lavandería",
+            "Bicicleteros",
+            "Gimnasio",
+            "Piscina",
+            "Sala multiuso",
+            "Quinchos"
+          ],
+          "descripcionLarga": "Vitro es un proyecto de Euro ubicado en Zañartu 980, Ñuñoa. La ficha oficial publica departamentos de 1 a 2 dormitorios y 1 a 2 baños, con entrega inmediata. Su equipamiento incluye lavandería, bicicleteros, gimnasio, piscina, sala multiuso."
+        },
+        "scope": "project-summary; raw ranges or separate scalar facts do not identify a common model",
+        "priceToModelLink": null,
+        "exactModelPages": null
+      },
+      "queryText": "Vitro, Euro, Zañartu 980, Ñuñoa: buscar fichas de modelo identificadas que documenten D y B en la misma referencia, y superficie útil y/o total rotulada para esa misma referencia. El resumen oficial existente sólo dice D=1 a 2, B=1 a 2, útil=32 a 60 m² y total=37 a 65 m²; no enumerar combinaciones ni asociar extremos de esos rangos.",
+      "requestedData": [
+        "ID del modelo y pertenencia expresa al proyecto.",
+        "D/B en la misma referencia; tipo de producto explícito en esa referencia.",
+        "Útil y/o total con rótulo, unidad y fuente del mismo modelo; aceptar sólo la métrica encontrada.",
+        "Una referencia parcial nueva sirve si respalda el predicado solicitado; no exigir precio, todas las áreas o un inventario completo."
+      ],
+      "doNotRepeat": [
+        "No repetir la búsqueda del precio mínimo del proyecto como requisito de esta consulta.",
+        "No convertir rangos del resumen en modelos o combinaciones D/B.",
+        "No calcular terraza ni útil por resta.",
+        "No tratar el valor desde como precio de un modelo ni asociarlo a la menor superficie."
+      ],
+      "identityGuards": [],
+      "usefulOutcome": "Al menos una referencia exacta que amplíe algún filtro faltante, manteniendo null en lo no informado; si sólo aparece el mismo resumen, cerrar sin ampliación."
+    },
+    {
+      "slug": "froilan-roa-5731-torre-norte",
+      "name": "Froilán Roa 5731 - Torre Norte",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana",
+        "direccion": "Froilán Roa 5731",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 3145.0,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P2",
+      "lookupGroup": "iris-euro-froilan-towers",
+      "missingDimensions": [
+        "tower-specific-model-identity",
+        "tower-specific-bathrooms",
+        "tower-specific-useful-area",
+        "tower-specific-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Departamento en proyección existente; pedir producto explícito dentro de cada referencia de torre, sin inferirlo por D.",
+        "bedrooms": "1D/2D ya documentados comercialmente para esta torre; falta su relación con un modelo concreto.",
+        "bathrooms": "Sin fuente/modelo específico de la torre.",
+        "usefulArea": "Sin fuente/modelo específico de la torre.",
+        "totalArea": "Sin fuente/modelo específico de la torre."
+      },
+      "queryText": "Euro Froilán Roa 5731, La Florida: una búsqueda compartida con resultados separados para Torre Norte y Torre Sur. Para Torre Norte, buscar sólo modelos con torre explícita y D/B/útil/total de la misma referencia. Reutilizar los precios y tipologías owner existentes. Si el resultado es del conjunto y no asigna torre, conservarlo sólo como contexto, sin atribuirlo a Norte ni Sur.",
+      "requestedData": [
+        "ID de torre explícito, ID de modelo y tipo de producto.",
+        "B y superficies útiles/totales del modelo; D sólo para identificar el testigo, sin deducir el resto."
+      ],
+      "doNotRepeat": [
+        "No repetir precios owner distintos de Norte y Sur.",
+        "No asignar modelos del brochure o web genéricos a ambas torres.",
+        "No abrir aquí una investigación de avance constructivo o entrega; sus conflictos siguen registrados."
+      ],
+      "usefulOutcome": "Uno o más testigos de la torre expresamente identificada, o unknown sin copiar datos del conjunto."
+    },
+    {
+      "slug": "froilan-roa-5731-torre-sur",
+      "name": "Froilán Roa 5731 - Torre Sur",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana",
+        "direccion": "Froilán Roa 5731",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/froilan-roa-5731",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 3216.0,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P2",
+      "lookupGroup": "iris-euro-froilan-towers",
+      "missingDimensions": [
+        "tower-specific-model-identity",
+        "tower-specific-bathrooms",
+        "tower-specific-useful-area",
+        "tower-specific-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Departamento en proyección existente; pedir producto explícito dentro de cada referencia de torre, sin inferirlo por D.",
+        "bedrooms": "1D/2D ya documentados comercialmente para esta torre; falta su relación con un modelo concreto.",
+        "bathrooms": "Sin fuente/modelo específico de la torre.",
+        "usefulArea": "Sin fuente/modelo específico de la torre.",
+        "totalArea": "Sin fuente/modelo específico de la torre."
+      },
+      "queryText": "Euro Froilán Roa 5731, La Florida: una búsqueda compartida con resultados separados para Torre Norte y Torre Sur. Para Torre Sur, buscar sólo modelos con torre explícita y D/B/útil/total de la misma referencia. Reutilizar los precios y tipologías owner existentes. Si el resultado es del conjunto y no asigna torre, conservarlo sólo como contexto, sin atribuirlo a Norte ni Sur.",
+      "requestedData": [
+        "ID de torre explícito, ID de modelo y tipo de producto.",
+        "B y superficies útiles/totales del modelo; D sólo para identificar el testigo, sin deducir el resto."
+      ],
+      "doNotRepeat": [
+        "No repetir precios owner distintos de Norte y Sur.",
+        "No asignar modelos del brochure o web genéricos a ambas torres.",
+        "No abrir aquí una investigación de avance constructivo o entrega; sus conflictos siguen registrados."
+      ],
+      "usefulOutcome": "Uno o más testigos de la torre expresamente identificada, o unknown sin copiar datos del conjunto."
+    },
+    {
+      "slug": "mapocho-3521",
+      "name": "Mapocho 3521",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Quinta Normal",
+        "region": "Región Metropolitana",
+        "direccion": "Rivas Vicuña 1131",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://euroinmobiliaria.cl/proyectos/mapocho-3521",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "mapocho-3521:brochure:p13-left",
+          "id": "p13-left",
+          "label": "1 DORM + 1 BAÑO (2C)",
+          "modelCode": "2C",
+          "page": 13,
+          "position": "left",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 30,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 13,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/mapocho-3521/variants/0"
+          }
+        },
+        {
+          "referenceId": "mapocho-3521:brochure:p13-right",
+          "id": "p13-right",
+          "label": "2 DORMS + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "page": 13,
+          "position": "right",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 40,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 13,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/mapocho-3521/variants/1"
+          }
+        },
+        {
+          "referenceId": "mapocho-3521:brochure:p14-left",
+          "id": "p14-left",
+          "label": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 14,
+          "position": "left",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 44,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 14,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/mapocho-3521/variants/2"
+          }
+        },
+        {
+          "referenceId": "mapocho-3521:brochure:p14-right",
+          "id": "p14-right",
+          "label": "3 DORMS + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 14,
+          "position": "right",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 47,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 14,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/mapocho-3521/variants/3"
+          }
+        },
+        {
+          "referenceId": "mapocho-3521:brochure:p15-single",
+          "id": "p15-single",
+          "label": "3 DORM + 2 BAÑO (4C) (KA)",
+          "modelCode": "4C-KA",
+          "page": 15,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 54,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 15,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/mapocho-3521/variants/4"
+          }
+        },
+        {
+          "referenceId": "mapocho-3521:brochure:p16-single",
+          "id": "p16-single",
+          "label": "3 DORM + 2 BAÑO (4C) (KC)",
+          "modelCode": "4C-KC",
+          "page": 16,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox. promedio",
+              "value": 54,
+              "unit": "m2",
+              "approximate": true,
+              "average": true,
+              "sourcePage": 16,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/mapocho-3521/variants/5"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": 3092.0,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2,
+          3
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P2",
+      "lookupGroup": "iris-euro-mapochos-identity-models",
+      "missingDimensions": [
+        "model-useful-area",
+        "model-total-area-not-average",
+        "explicit-generic-vs-building-correspondence"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Departamento conocido para el registro genérico; no copiar a A.",
+        "bedrooms": "Seis modelos ya revisados, reutilizar D.",
+        "bathrooms": "Seis modelos ya revisados, reutilizar B.",
+        "usefulArea": "No documentada en los seis modelos.",
+        "totalArea": "Sólo promedios aproximados, display-only; se requiere total de modelo expresamente rotulado sin promedio."
+      },
+      "queryText": "Euro Mapocho 3521 y Mapocho 3521 — Edificio A, Quinta Normal: una sola búsqueda de identidad que devuelva registros separados. Para A buscar prueba explícita del tipo y correspondencia edificio-modelo, con B/útil/total cuando estén documentados. Para el registro genérico reutilizar sus seis modelos y buscar sólo útil y total de modelo que no sea promedio. No suponer que genérico es B, no mapear A/B a Norte/Sur y no reutilizar el PDF duplicado como prueba.",
+      "requestedData": [
+        "Identificador explícito de edificio y proyecto de cada resultado.",
+        "Sólo campos faltantes de la rama correspondiente.",
+        "Fuente que respalde la identidad; no basta nombre de archivo, D ni precio coincidente."
+      ],
+      "doNotRepeat": [
+        "No reabrir los dos PDF Mapocho ya revisados: son byte-identical y no identifican edificio.",
+        "No volver a solicitar los cuatro precios owner ya autorizados.",
+        "No trasladar modelos o características genéricas a Edificio A."
+      ],
+      "usefulOutcome": "Referencias separadas con ámbito acreditado; si Iris no distingue edificios, A sigue unknown y el genérico conserva sólo su ámbito."
+    },
+    {
+      "slug": "mapocho-3521-edificio-a",
+      "name": "Mapocho 3521 - Edificio A",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Quinta Normal",
+        "region": "Región Metropolitana",
+        "direccion": null,
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/mapocho-3521",
+      "knownReviewedModelsToReuse": [],
+      "knownPublishedPriceUF": 3194.03,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [],
+        "bedroomsFromIndividualFacetRecords": [
+          2,
+          3
+        ],
+        "bathroomsFromIndividualFacetRecords": [],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P2",
+      "lookupGroup": "iris-euro-mapochos-identity-models",
+      "missingDimensions": [
+        "building-specific-property-type",
+        "exact-building-model-D-B-useful-total"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Desconocido para Edificio A: el dato departamento publicado por commercialOffers procede de un default del importador.",
+        "bedrooms": "2D/3D ya autorizados como tipologías comerciales, sin modelo específico.",
+        "bathrooms": "Sin modelos propios de A.",
+        "usefulArea": "Sin referencia propia.",
+        "totalArea": "Sin referencia propia."
+      },
+      "queryText": "Euro Mapocho 3521 y Mapocho 3521 — Edificio A, Quinta Normal: una sola búsqueda de identidad que devuelva registros separados. Para A buscar prueba explícita del tipo y correspondencia edificio-modelo, con B/útil/total cuando estén documentados. Para el registro genérico reutilizar sus seis modelos y buscar sólo útil y total de modelo que no sea promedio. No suponer que genérico es B, no mapear A/B a Norte/Sur y no reutilizar el PDF duplicado como prueba.",
+      "requestedData": [
+        "Identificador explícito de edificio y proyecto de cada resultado.",
+        "Sólo campos faltantes de la rama correspondiente.",
+        "Fuente que respalde la identidad; no basta nombre de archivo, D ni precio coincidente."
+      ],
+      "doNotRepeat": [
+        "No reabrir los dos PDF Mapocho ya revisados: son byte-identical y no identifican edificio.",
+        "No volver a solicitar los cuatro precios owner ya autorizados.",
+        "No trasladar modelos o características genéricas a Edificio A."
+      ],
+      "usefulOutcome": "Referencias separadas con ámbito acreditado; si Iris no distingue edificios, A sigue unknown y el genérico conserva sólo su ámbito."
+    },
+    {
+      "slug": "edificio-don-pepe-154",
+      "name": "Don Pepe 154",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana",
+        "direccion": "Calle Don Pepe N°154",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/don-pepe-154",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "edificio-don-pepe-154:brochure:p09-single",
+          "id": "p09-single",
+          "label": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "page": 9,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/edificio-don-pepe-154/variants/0"
+          }
+        },
+        {
+          "referenceId": "edificio-don-pepe-154:brochure:p10-single",
+          "id": "p10-single",
+          "label": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "page": 10,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/edificio-don-pepe-154/variants/1"
+          }
+        },
+        {
+          "referenceId": "edificio-don-pepe-154:brochure:p11-single",
+          "id": "p11-single",
+          "label": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 11,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/edificio-don-pepe-154/variants/2"
+          }
+        },
+        {
+          "referenceId": "edificio-don-pepe-154:brochure:p12-single",
+          "id": "p12-single",
+          "label": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "page": 12,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/edificio-don-pepe-154/variants/3"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": 3306.18,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P3",
+      "lookupGroup": "iris-euro-edificio-don-pepe-154",
+      "missingDimensions": [
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Ya respaldado en los modelos residenciales; no volver a buscar.",
+        "bedrooms": "Ya respaldados en modelos; reutilizar sin repetir.",
+        "bathrooms": "Ya respaldados; reutilizar.",
+        "usefulArea": "No documentada en los modelos revisados.",
+        "totalArea": "No documentada en los modelos revisados."
+      },
+      "queryText": "Don Pepe 154, Euro, La Florida: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p09-single]; 3C [p10-single]; 4C [p11-single]; M [p12-single]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "requestedData": [
+        "Únicamente las métricas faltantes, rotuladas, fechadas y ligadas a un ID de modelo o lámina inequívoco.",
+        "Conservar posiciones distintas cuando existan etiquetas iguales; aceptar referencias parciales sin completar lo desconocido."
+      ],
+      "doNotRepeat": [
+        "No reabrir el brochure existente ni volver a extraer D/B conocidos.",
+        "No buscar otra vez precios ya owner-autorizados.",
+        "No pedir al propietario la misma confirmación resuelta.",
+        "No copiar superficie de otro modelo con el mismo D/B ni derivar útil desde total."
+      ],
+      "usefulOutcome": "Métrica nueva con correspondencia exacta a un modelo existente; si no hay prueba, mantener áreas unknown."
+    },
+    {
+      "slug": "entre-vicunas",
+      "name": "Entre Vicuñas",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "La Florida",
+        "region": "Región Metropolitana",
+        "direccion": "Vicuña Mackenna 5970",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/entre-vicunas",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "entre-vicunas:brochure:p09-left",
+          "id": "p09-left",
+          "label": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "page": 9,
+          "position": "left",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/entre-vicunas/variants/0"
+          }
+        },
+        {
+          "referenceId": "entre-vicunas:brochure:p09-right",
+          "id": "p09-right",
+          "label": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "page": 9,
+          "position": "right",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/entre-vicunas/variants/1"
+          }
+        },
+        {
+          "referenceId": "entre-vicunas:brochure:p10-single",
+          "id": "p10-single",
+          "label": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "page": 10,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/entre-vicunas/variants/2"
+          }
+        },
+        {
+          "referenceId": "entre-vicunas:brochure:p11-single",
+          "id": "p11-single",
+          "label": "2 DORM + 2 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 11,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/entre-vicunas/variants/3"
+          }
+        },
+        {
+          "referenceId": "entre-vicunas:brochure:p12-single",
+          "id": "p12-single",
+          "label": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "page": 12,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/entre-vicunas/variants/4"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": 3098.0,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P3",
+      "lookupGroup": "iris-euro-entre-vicunas",
+      "missingDimensions": [
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Ya respaldado en los modelos residenciales; no volver a buscar.",
+        "bedrooms": "Ya respaldados en modelos; reutilizar sin repetir.",
+        "bathrooms": "Ya respaldados; reutilizar.",
+        "usefulArea": "No documentada en los modelos revisados.",
+        "totalArea": "No documentada en los modelos revisados."
+      },
+      "queryText": "Entre Vicuñas, Euro, La Florida: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p09-left]; 3C [p09-right]; 1 DORM + 1 BAÑO [p10-single]; 4C [p11-single]; M [p12-single]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "requestedData": [
+        "Únicamente las métricas faltantes, rotuladas, fechadas y ligadas a un ID de modelo o lámina inequívoco.",
+        "Conservar posiciones distintas cuando existan etiquetas iguales; aceptar referencias parciales sin completar lo desconocido."
+      ],
+      "doNotRepeat": [
+        "No reabrir el brochure existente ni volver a extraer D/B conocidos.",
+        "No buscar otra vez precios ya owner-autorizados.",
+        "No pedir al propietario la misma confirmación resuelta.",
+        "No copiar superficie de otro modelo con el mismo D/B ni derivar útil desde total."
+      ],
+      "usefulOutcome": "Métrica nueva con correspondencia exacta a un modelo existente; si no hay prueba, mantener áreas unknown."
+    },
+    {
+      "slug": "guillermo-mann-1401",
+      "name": "Guillermo Mann 1401",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Ñuñoa",
+        "region": "Región Metropolitana",
+        "direccion": "Guillermo Mann 1401",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/guillermo-mann-1401",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "guillermo-mann-1401:brochure:p10-left",
+          "id": "p10-left",
+          "label": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "page": 10,
+          "position": "left",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/guillermo-mann-1401/variants/0"
+          }
+        },
+        {
+          "referenceId": "guillermo-mann-1401:brochure:p10-right",
+          "id": "p10-right",
+          "label": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "page": 10,
+          "position": "right",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/guillermo-mann-1401/variants/1"
+          }
+        },
+        {
+          "referenceId": "guillermo-mann-1401:brochure:p11-left",
+          "id": "p11-left",
+          "label": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 11,
+          "position": "left",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/guillermo-mann-1401/variants/2"
+          }
+        },
+        {
+          "referenceId": "guillermo-mann-1401:brochure:p11-right",
+          "id": "p11-right",
+          "label": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 11,
+          "position": "right",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/guillermo-mann-1401/variants/3"
+          }
+        },
+        {
+          "referenceId": "guillermo-mann-1401:brochure:p12-left",
+          "id": "p12-left",
+          "label": "2 DORM + 2 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 12,
+          "position": "left",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/guillermo-mann-1401/variants/4"
+          }
+        },
+        {
+          "referenceId": "guillermo-mann-1401:brochure:p12-right",
+          "id": "p12-right",
+          "label": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "page": 12,
+          "position": "right",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/guillermo-mann-1401/variants/5"
+          }
+        },
+        {
+          "referenceId": "guillermo-mann-1401:brochure:p13-single",
+          "id": "p13-single",
+          "label": "2 DORM + 1 BAÑO (KC)",
+          "modelCode": "KC",
+          "page": 13,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": null,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/guillermo-mann-1401/variants/6"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": 3998.31,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P3",
+      "lookupGroup": "iris-euro-guillermo-mann-1401",
+      "missingDimensions": [
+        "model-useful-area",
+        "model-total-area",
+        "KC-model-conflicting-bathroom-count"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Ya respaldado en los modelos residenciales; no volver a buscar.",
+        "bedrooms": "Ya respaldados en modelos; reutilizar sin repetir.",
+        "bathrooms": "Ya respaldados salvo KC; mantener KC null hasta prueba expresa.",
+        "usefulArea": "No documentada en los modelos revisados.",
+        "totalArea": "No documentada en los modelos revisados."
+      },
+      "queryText": "Guillermo Mann 1401, Euro, Ñuñoa: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p10-left]; 3C [p10-right]; 4C [p11-left]; 4C [p11-right]; 4C [p12-left]; M [p12-right]; KC [p13-single]. Resolver baños del KC únicamente si una referencia identificada explícitamente como KC aporta respaldo; no elegir entre etiqueta y dibujo por interpretación. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "requestedData": [
+        "Únicamente las métricas faltantes, rotuladas, fechadas y ligadas a un ID de modelo o lámina inequívoco.",
+        "Conservar posiciones distintas cuando existan etiquetas iguales; aceptar referencias parciales sin completar lo desconocido."
+      ],
+      "doNotRepeat": [
+        "No reabrir el brochure existente ni volver a extraer D/B conocidos.",
+        "No buscar otra vez precios ya owner-autorizados.",
+        "No pedir al propietario la misma confirmación resuelta.",
+        "No copiar superficie de otro modelo con el mismo D/B ni derivar útil desde total."
+      ],
+      "usefulOutcome": "Métrica nueva con correspondencia exacta a un modelo existente; si no hay prueba, mantener áreas unknown."
+    },
+    {
+      "slug": "independencia-4745",
+      "name": "Independencia 4745",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Conchalí",
+        "region": "Región Metropolitana",
+        "direccion": "Independencia 4745",
+        "tipoActivo": "Mixto",
+        "tiposActivos": [
+          "Residencial",
+          "Comercial",
+          "Mixto"
+        ]
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/independencia-4745",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "independencia-4745:brochure:p09-single",
+          "id": "p09-single",
+          "label": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "page": 9,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/independencia-4745/variants/0"
+          }
+        },
+        {
+          "referenceId": "independencia-4745:brochure:p10-single",
+          "id": "p10-single",
+          "label": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "page": 10,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/independencia-4745/variants/1"
+          }
+        },
+        {
+          "referenceId": "independencia-4745:brochure:p11-single",
+          "id": "p11-single",
+          "label": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 11,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/independencia-4745/variants/2"
+          }
+        },
+        {
+          "referenceId": "independencia-4745:brochure:p12-single",
+          "id": "p12-single",
+          "label": "2 DORM + 2 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 12,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/independencia-4745/variants/3"
+          }
+        },
+        {
+          "referenceId": "independencia-4745:brochure:p13-single",
+          "id": "p13-single",
+          "label": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "page": 13,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/independencia-4745/variants/4"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": 3146.65,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento",
+          "local"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P3",
+      "lookupGroup": "iris-euro-independencia-4745",
+      "missingDimensions": [
+        "model-useful-area",
+        "model-total-area",
+        "local-model-bathrooms-if-documented",
+        "local-useful-area",
+        "local-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Ya respaldado en los modelos residenciales; no volver a buscar.",
+        "bedrooms": "Ya respaldados en modelos; reutilizar sin repetir.",
+        "bathrooms": "Ya respaldados en modelos residenciales; local sin dato si no hay referencia.",
+        "usefulArea": "No documentada en los modelos revisados.",
+        "totalArea": "No documentada en los modelos revisados."
+      },
+      "queryText": "Independencia 4745, Euro, Conchalí: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p09-single]; 3C [p10-single]; 4C [p11-single]; 4C [p12-single]; M [p13-single]. Mantener dos ramas: departamentos (cinco modelos conocidos, pedir sólo áreas) y local comercial independiente (pedir áreas y baños sólo si están expresos, sin asignarle dormitorios ni amenities residenciales). Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "requestedData": [
+        "Únicamente las métricas faltantes, rotuladas, fechadas y ligadas a un ID de modelo o lámina inequívoco.",
+        "Conservar posiciones distintas cuando existan etiquetas iguales; aceptar referencias parciales sin completar lo desconocido."
+      ],
+      "doNotRepeat": [
+        "No reabrir el brochure existente ni volver a extraer D/B conocidos.",
+        "No buscar otra vez precios ya owner-autorizados.",
+        "No pedir al propietario la misma confirmación resuelta.",
+        "No copiar superficie de otro modelo con el mismo D/B ni derivar útil desde total."
+      ],
+      "usefulOutcome": "Métrica nueva con correspondencia exacta a un modelo existente; si no hay prueba, mantener áreas unknown.",
+      "productBranches": {
+        "departamento": {
+          "reuseModels": 5,
+          "request": [
+            "usefulArea",
+            "totalArea"
+          ]
+        },
+        "local": {
+          "reuseOwnerPriceUF": 8440.85,
+          "request": [
+            "usefulArea",
+            "totalArea",
+            "bathrooms-if-explicit"
+          ],
+          "doNotRequestOrInfer": [
+            "residential-bedrooms",
+            "residential-amenities",
+            "residential-surfaces"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "plaza-de-lourdes",
+      "name": "Plaza de Lourdes",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Quinta Normal",
+        "region": "Región Metropolitana",
+        "direccion": "Avda. San Pablo 3770",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/plaza-de-lourdes",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "plaza-de-lourdes:brochure:p05-top-left",
+          "id": "p05-top-left",
+          "label": "1 Dormitorio + 1 Baño",
+          "modelCode": null,
+          "page": 5,
+          "position": "top-left",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/plaza-de-lourdes/variants/0"
+          }
+        },
+        {
+          "referenceId": "plaza-de-lourdes:brochure:p05-top-middle",
+          "id": "p05-top-middle",
+          "label": "2 Dormitorios + 1 Baño (3C)",
+          "modelCode": "3C",
+          "page": 5,
+          "position": "top-middle",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/plaza-de-lourdes/variants/1"
+          }
+        },
+        {
+          "referenceId": "plaza-de-lourdes:brochure:p05-top-right",
+          "id": "p05-top-right",
+          "label": "2 Dormitorios + 2 Baños (4C)",
+          "modelCode": "4C",
+          "page": 5,
+          "position": "top-right",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/plaza-de-lourdes/variants/2"
+          }
+        },
+        {
+          "referenceId": "plaza-de-lourdes:brochure:p05-bottom-left",
+          "id": "p05-bottom-left",
+          "label": "2 Dormitorios + 2 Baños (M)",
+          "modelCode": "M",
+          "page": 5,
+          "position": "bottom-left",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/plaza-de-lourdes/variants/3"
+          }
+        },
+        {
+          "referenceId": "plaza-de-lourdes:brochure:p05-bottom-middle",
+          "id": "p05-bottom-middle",
+          "label": "3 Dormitorios + 2 Baños (5C)",
+          "modelCode": "5C",
+          "page": 5,
+          "position": "bottom-middle",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/plaza-de-lourdes/variants/4"
+          }
+        },
+        {
+          "referenceId": "plaza-de-lourdes:brochure:p05-bottom-right",
+          "id": "p05-bottom-right",
+          "label": "3 Dormitorios + 2 Baños (5C)",
+          "modelCode": "5C",
+          "page": 5,
+          "position": "bottom-right",
+          "propertyType": "departamento",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/plaza-de-lourdes/variants/5"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": 2647.0,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2,
+          3
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P3",
+      "lookupGroup": "iris-euro-plaza-de-lourdes",
+      "missingDimensions": [
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Ya respaldado en los modelos residenciales; no volver a buscar.",
+        "bedrooms": "Ya respaldados en modelos; reutilizar sin repetir.",
+        "bathrooms": "Ya respaldados; reutilizar.",
+        "usefulArea": "No documentada en los modelos revisados.",
+        "totalArea": "No documentada en los modelos revisados."
+      },
+      "queryText": "Plaza de Lourdes, Euro, Quinta Normal: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 Dormitorio + 1 Baño [p05-top-left]; 3C [p05-top-middle]; 4C [p05-top-right]; M [p05-bottom-left]; 5C [p05-bottom-middle]; 5C [p05-bottom-right]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "requestedData": [
+        "Únicamente las métricas faltantes, rotuladas, fechadas y ligadas a un ID de modelo o lámina inequívoco.",
+        "Conservar posiciones distintas cuando existan etiquetas iguales; aceptar referencias parciales sin completar lo desconocido."
+      ],
+      "doNotRepeat": [
+        "No reabrir el brochure existente ni volver a extraer D/B conocidos.",
+        "No buscar otra vez precios ya owner-autorizados.",
+        "No pedir al propietario la misma confirmación resuelta.",
+        "No copiar superficie de otro modelo con el mismo D/B ni derivar útil desde total."
+      ],
+      "usefulOutcome": "Métrica nueva con correspondencia exacta a un modelo existente; si no hay prueba, mantener áreas unknown."
+    },
+    {
+      "slug": "rosas-1444",
+      "name": "Rosas 1444",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Santiago",
+        "region": "Región Metropolitana",
+        "direccion": "Rosas 1438",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/rosas-1444",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "rosas-1444:brochure:p09-left",
+          "id": "p09-left",
+          "label": "1 DORMITORIO + 1 BAÑO",
+          "modelCode": null,
+          "page": 9,
+          "position": "left",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 31.07,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 9,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/rosas-1444/variants/0"
+          }
+        },
+        {
+          "referenceId": "rosas-1444:brochure:p09-right",
+          "id": "p09-right",
+          "label": "2 DORMITORIOS + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "page": 9,
+          "position": "right",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 42.26,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 9,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/rosas-1444/variants/1"
+          }
+        },
+        {
+          "referenceId": "rosas-1444:brochure:p10-left",
+          "id": "p10-left",
+          "label": "2 DORMITORIOS + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 10,
+          "position": "left",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 46.93,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 10,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/rosas-1444/variants/2"
+          }
+        },
+        {
+          "referenceId": "rosas-1444:brochure:p10-right",
+          "id": "p10-right",
+          "label": "2 DORMITORIOS + 2 BAÑOS (MARIPOSA)",
+          "modelCode": "MARIPOSA",
+          "page": 10,
+          "position": "right",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 51.78,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 10,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/rosas-1444/variants/3"
+          }
+        },
+        {
+          "referenceId": "rosas-1444:brochure:p11-single",
+          "id": "p11-single",
+          "label": "2 DORMITORIOS + 2 BAÑOS (4C)",
+          "modelCode": "4C",
+          "page": 11,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [
+            {
+              "metric": "total",
+              "label": "Superficie total aprox.",
+              "value": 58.47,
+              "unit": "m2",
+              "approximate": true,
+              "average": false,
+              "sourcePage": 11,
+              "note": "No equivale a superficie útil o interior; no se desglosan terrazas."
+            }
+          ],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/rosas-1444/variants/4"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": 4141.63,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P3",
+      "lookupGroup": "iris-euro-rosas-1444",
+      "missingDimensions": [
+        "model-useful-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Ya respaldado en los modelos residenciales; no volver a buscar.",
+        "bedrooms": "Ya respaldados en modelos; reutilizar sin repetir.",
+        "bathrooms": "Ya respaldados; reutilizar.",
+        "usefulArea": "No documentada en los modelos revisados.",
+        "totalArea": "Ya documentada como total aproximada no promedio; no repetir."
+      },
+      "queryText": "Rosas 1444, Euro, Santiago: localizar sólo superficie útil de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORMITORIO + 1 BAÑO [p09-left]; 3C [p09-right]; 4C [p10-left]; MARIPOSA [p10-right]; 4C [p11-single]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "requestedData": [
+        "Únicamente las métricas faltantes, rotuladas, fechadas y ligadas a un ID de modelo o lámina inequívoco.",
+        "Conservar posiciones distintas cuando existan etiquetas iguales; aceptar referencias parciales sin completar lo desconocido."
+      ],
+      "doNotRepeat": [
+        "No reabrir el brochure existente ni volver a extraer D/B conocidos.",
+        "No buscar otra vez precios ya owner-autorizados.",
+        "No pedir al propietario la misma confirmación resuelta.",
+        "No copiar superficie de otro modelo con el mismo D/B ni derivar útil desde total.",
+        "No pedir nuevamente las cinco superficies totales ya revisadas de Rosas."
+      ],
+      "usefulOutcome": "Métrica nueva con correspondencia exacta a un modelo existente; si no hay prueba, mantener áreas unknown."
+    },
+    {
+      "slug": "santa-elena-1670-mbi",
+      "name": "Santa Elena 1670",
+      "cohort": "owner-reviewed-12",
+      "identity": {
+        "inmobiliaria": "Euro",
+        "comuna": "Santiago",
+        "region": "Región Metropolitana",
+        "direccion": "Santa Elena 1670",
+        "tipoActivo": "Residencial",
+        "tiposActivos": null
+      },
+      "existingOfficialURL": "https://www.euroinmobiliaria.cl/proyectos/santa-elena-1670",
+      "knownReviewedModelsToReuse": [
+        {
+          "referenceId": "santa-elena-1670-mbi:brochure:p09-single",
+          "id": "p09-single",
+          "label": "1 DORM + 1 BAÑO",
+          "modelCode": null,
+          "page": 9,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/santa-elena-1670-mbi/variants/0"
+          }
+        },
+        {
+          "referenceId": "santa-elena-1670-mbi:brochure:p10-single",
+          "id": "p10-single",
+          "label": "2 DORM + 1 BAÑO (3C)",
+          "modelCode": "3C",
+          "page": 10,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/santa-elena-1670-mbi/variants/1"
+          }
+        },
+        {
+          "referenceId": "santa-elena-1670-mbi:brochure:p11-single",
+          "id": "p11-single",
+          "label": "2 DORM + 1 BAÑO (4C)",
+          "modelCode": "4C",
+          "page": 11,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/santa-elena-1670-mbi/variants/2"
+          }
+        },
+        {
+          "referenceId": "santa-elena-1670-mbi:brochure:p12-single",
+          "id": "p12-single",
+          "label": "2 DORM + 2 BAÑO (M)",
+          "modelCode": "M",
+          "page": 12,
+          "position": "single",
+          "propertyType": "departamento",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "areas": [],
+          "source": {
+            "file": "data/euro-brochures.json",
+            "pointer": "/projects/santa-elena-1670-mbi/variants/3"
+          }
+        }
+      ],
+      "knownPublishedPriceUF": 2920.0,
+      "priceAuthorityAlreadyAnswered": "Mantener los precios Sollahms ya autorizados; una cifra Iris sólo sería antecedente externo separado.",
+      "alreadySupportedPartialSearches": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "bedroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "bathroomsFromIndividualFacetRecords": [
+          1,
+          2
+        ],
+        "numericProjectPriceAvailable": true
+      },
+      "captureRequirements": [
+        "Identidad exacta de proyecto/edificio/torre y producto",
+        "ID de referencia/modelo conservado literalmente",
+        "Campo solicitado con su rótulo original y unidad",
+        "Fuente o documento de respaldo y fecha propia; fecha de consulta separada",
+        "URL o identificador exacto de la evidencia y página/sección si Iris la informa",
+        "Alcance del dato: modelo, proyecto, torre o producto; null si no consta"
+      ],
+      "ownerQuestionRequired": false,
+      "applicationAction": "none; research plan only",
+      "priority": "P3",
+      "lookupGroup": "iris-euro-santa-elena-1670-mbi",
+      "missingDimensions": [
+        "model-useful-area",
+        "model-total-area"
+      ],
+      "missingTypeDBUsefulTotal": {
+        "propertyType": "Ya respaldado en los modelos residenciales; no volver a buscar.",
+        "bedrooms": "Ya respaldados en modelos; reutilizar sin repetir.",
+        "bathrooms": "Ya respaldados; reutilizar.",
+        "usefulArea": "No documentada en los modelos revisados.",
+        "totalArea": "No documentada en los modelos revisados."
+      },
+      "queryText": "Santa Elena 1670, Euro, Santiago: localizar sólo superficies útil y total de los modelos ya revisados, con un identificador que pruebe correspondencia exacta. Modelos a reutilizar: 1 DORM + 1 BAÑO [p09-single]; 3C [p10-single]; 4C [p11-single]; M [p12-single]. Si sólo coincide el número de dormitorios o una etiqueta repetida, no asignar la nueva superficie.",
+      "requestedData": [
+        "Únicamente las métricas faltantes, rotuladas, fechadas y ligadas a un ID de modelo o lámina inequívoco.",
+        "Conservar posiciones distintas cuando existan etiquetas iguales; aceptar referencias parciales sin completar lo desconocido."
+      ],
+      "doNotRepeat": [
+        "No reabrir el brochure existente ni volver a extraer D/B conocidos.",
+        "No buscar otra vez precios ya owner-autorizados.",
+        "No pedir al propietario la misma confirmación resuelta.",
+        "No copiar superficie de otro modelo con el mismo D/B ni derivar útil desde total."
+      ],
+      "usefulOutcome": "Métrica nueva con correspondencia exacta a un modelo existente; si no hay prueba, mantener áreas unknown."
+    }
+  ],
+  "validation": {
+    "all21ExistingSlugsCovered": true,
+    "queriesGroupedWithoutMergingReferences": true,
+    "all9LegacySummaryValuesAndURLsCopiedFromExistingJSON": true,
+    "noNewProjectOrSourceURLInvented": true,
+    "sourceInputAndApplicationDataUnchanged": true,
+    "noPriceModelAssociationCreated": true,
+    "knownModelsNotRequestedAgain": true
+  }
+}

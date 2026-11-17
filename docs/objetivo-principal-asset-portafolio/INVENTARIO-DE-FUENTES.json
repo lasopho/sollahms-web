@@ -1,0 +1,2502 @@
+{
+  "schema_version": 1,
+  "fecha": "2026-11-17",
+  "naturaleza": "Inventario lector de cobertura y fuentes reutilizables; no auditoría repetida, cambio de datos, código ni publicación.",
+  "repositorio": "https://github.com/lasopho/sollahms-web",
+  "bases": {
+    "catalogo_actual_131": {
+      "archivo": "data/proyectos.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/proyectos.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/proyectos.json",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b"
+    },
+    "catalogo_historico_131": {
+      "archivo": "docs/catalog-data-completeness-20261116/master/MATRIZ-MAESTRA-131.csv",
+      "ruta_local": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/master/MATRIZ-MAESTRA-131.csv",
+      "commit": "0b9d2a36e89077ee0a11a97ef7026593be636a27",
+      "url": "https://github.com/lasopho/sollahms-web/blob/0b9d2a36e89077ee0a11a97ef7026593be636a27/docs/catalog-data-completeness-20261116/master/MATRIZ-MAESTRA-131.csv",
+      "sha256": "46e7c72a973ba321ec117c237d78bc42d185d193a587a6b66d1f608bc2243821"
+    },
+    "catalogo_documental_137": {
+      "archivo": "data/proyectos.json",
+      "ruta_local": "/private/tmp/sollahms-auditoria-leben-20261116/data/proyectos.json",
+      "commit": "0b9d2a36e89077ee0a11a97ef7026593be636a27",
+      "url": "https://github.com/lasopho/sollahms-web/blob/0b9d2a36e89077ee0a11a97ef7026593be636a27/data/proyectos.json",
+      "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494"
+    },
+    "preguntas_F9": {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/PREGUNTAS-MINIMAS-PREPARADAS.json",
+      "ruta_local": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/PREGUNTAS-MINIMAS-PREPARADAS.json",
+      "commit": "0b9d2a36e89077ee0a11a97ef7026593be636a27",
+      "url": "https://github.com/lasopho/sollahms-web/blob/0b9d2a36e89077ee0a11a97ef7026593be636a27/docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/PREGUNTAS-MINIMAS-PREPARADAS.json",
+      "sha256": "2fae6c14a6fbf313cc19901caf574d67f038fedcd78a04c21cb6555740e30631"
+    },
+    "reglas_AGENTS": {
+      "archivo": "AGENTS.md",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/AGENTS.md",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/AGENTS.md",
+      "sha256": "4aa1fae6ab5e93f0ac3b8c79c26ac6920469220723b474f97e939015a1d0e2b8"
+    },
+    "verificacion_produccion_nueva": false,
+    "nota_catalogo_actual": "Universo de producción indicado por el hilo principal, leído desde su checkout técnico. No se repitió verificación remota."
+  },
+  "universos": {
+    "actual": {
+      "cantidad": 131,
+      "slugs_unicos": 131,
+      "por_inmobiliaria": {
+        "Maestra": 19,
+        "Vesant": 1,
+        "León": 5,
+        "Ecasa": 15,
+        "Euro": 21,
+        "Nollagam": 7,
+        "Norte Verde": 18,
+        "Ingevec": 16,
+        "Leben": 14,
+        "AJ Urbana": 5,
+        "Sento": 7,
+        "Crescer": 2,
+        "Sudamericana": 1
+      }
+    },
+    "historico": {
+      "cantidad": 131,
+      "solo_actual": [
+        "vergara-domeyko"
+      ],
+      "solo_historico": [
+        "patio-brasil"
+      ],
+      "interpretacion": "Histórico conserva Patio Brasil retirado; actual añade Vergara Domeyko. No restaurar Patio Brasil ni copiar denominador antiguo."
+    },
+    "documental_137": {
+      "cantidad": 137,
+      "extras_sobre_historico_131": [
+        "atelier-prat-oficinas",
+        "box-santiago",
+        "corrientes-oficinas",
+        "la-casona-de-buin",
+        "urbano-centro",
+        "vergara-domeyko"
+      ],
+      "ausentes_respecto_historico": [],
+      "solo_documental_respecto_actual": [
+        "atelier-prat-oficinas",
+        "box-santiago",
+        "corrientes-oficinas",
+        "la-casona-de-buin",
+        "patio-brasil",
+        "urbano-centro"
+      ],
+      "solo_actual_respecto_documental": [],
+      "interpretacion": "Las seis altas sobre histórico incluyen Vergara; no sustituyen el alcance público actual131."
+    },
+    "Leben": {
+      "catalogo_etiquetado": 14,
+      "auditoria_Leben": 13,
+      "activos_F9": 12,
+      "slugs_fuera_auditoria_Leben13": [
+        "parque-germania"
+      ],
+      "slugs_auditados_fuera_F9": [
+        "own"
+      ],
+      "nota": "Parque Germania es el14º y tiene atribución ESEPE documentada; Own es el13º auditado excluido de F9 activo. Edificio Verne pertenece a Norte Verde."
+    },
+    "Euro": {
+      "catalogo": 21,
+      "slugs_commercial_owner": 12,
+      "valores_owner_autorizados_segun_AGENTS": 21,
+      "entradas_brochures": 9,
+      "advertencia": "12slugs comerciales no significan21slugs. Mapocho A tiene entrada documental pero correspondencia unresolved-building.",
+      "slugs_fuera_commercial_owner_12": [
+        "alto-irarrazaval",
+        "jose-pedro-alessandri",
+        "marina-pacifico",
+        "mirador-irarrazaval",
+        "nova-parque",
+        "vicente-valdes",
+        "vicuna-mackenna-1432",
+        "vista-portugal",
+        "vitro"
+      ]
+    }
+  },
+  "reglas_de_uso": [
+    "La existencia de una fuente, verificacion=verified o proyección de facetas no acredita por sí sola revisión de filtros por referencia/etapa/producto.",
+    "Reutilizar revisiones existentes y sus exclusiones antes de pedir originales o repetir auditorías.",
+    "Conservar precios y entregas ya suministrados; no reabrir F049 ni los dos adicionales Suecia.",
+    "Una búsqueda parcial usa solo los atributos respaldados; no exige completar todo un proyecto.",
+    "No transferir precio, dormitorio, baño, área, terraza o jardín entre referencias sin asociación expresa.",
+    "No propagar amenities residenciales al local ni entre edificios o torres.",
+    "Brochure de diseño no confirma stock ni entrega legal; unknown no equivale a ausencia.",
+    "Esta ampliación del inventario no autoriza deploy, merge, publicación, push, nuevo PR ni mensajes externos."
+  ],
+  "inmobiliarias": [
+    {
+      "inmobiliaria": "Maestra",
+      "cantidad_actual": 19,
+      "slugs": [
+        "alto-buzeta",
+        "caceres",
+        "campus-llacolen",
+        "distrito-centro",
+        "jardines-de-alvarado",
+        "mirador-mapocho",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "pintor-cicarelli-iii",
+        "plaza-cervantes",
+        "plaza-cervantes-b",
+        "plaza-quilicura",
+        "serrano-torre-a",
+        "trinidad-iii",
+        "vista-costanera",
+        "vista-llacolen-a",
+        "vista-llacolen-b",
+        "vista-reloncavi",
+        "vistamar"
+      ],
+      "cantidad_matriz_historica": 19,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 19
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {},
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Vesant",
+      "cantidad_actual": 1,
+      "slugs": [
+        "reserva-mayor-2"
+      ],
+      "cantidad_matriz_historica": 1,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 1
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {},
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "León",
+      "cantidad_actual": 5,
+      "slugs": [
+        "bcome",
+        "condominio-parque-don-lautaro",
+        "condominio-uruguay",
+        "gregorio-de-la-fuente-a",
+        "jardines-de-ramon-cruz"
+      ],
+      "cantidad_matriz_historica": 5,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 5
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/brochures-leon.json": {
+          "cantidad_registros": 5,
+          "slugs": [
+            "bcome",
+            "condominio-parque-don-lautaro",
+            "condominio-uruguay",
+            "gregorio-de-la-fuente-a",
+            "jardines-de-ramon-cruz"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewDate": "2026-10-13",
+            "protectedPreviewOnly": true
+          }
+        },
+        "data/leon-official-research.json": {
+          "cantidad_registros": 5,
+          "slugs": [
+            "bcome",
+            "condominio-parque-don-lautaro",
+            "condominio-uruguay",
+            "gregorio-de-la-fuente-a",
+            "jardines-de-ramon-cruz"
+          ],
+          "marcas_de_revision_existentes": {
+            "verifiedOn": "2026-10-13"
+          }
+        },
+        "data/project-content-additions.json": {
+          "cantidad_registros": 5,
+          "slugs": [
+            "bcome",
+            "condominio-parque-don-lautaro",
+            "condominio-uruguay",
+            "gregorio-de-la-fuente-a",
+            "jardines-de-ramon-cruz"
+          ],
+          "marcas_de_revision_existentes": {}
+        }
+      },
+      "documentos_comerciales_existentes": [
+        "docs/leon-commercial-20261030/README.md",
+        "docs/leon-commercial-20261030/owner-input.json",
+        "docs/leon-commercial-20261030/verification.json"
+      ],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Ecasa",
+      "cantidad_actual": 15,
+      "slugs": [
+        "aires-la-florida-2",
+        "alto-san-joaquin",
+        "conecta-huechuraba",
+        "cumbres-de-penuelas",
+        "edificio-bezanilla",
+        "endemico",
+        "enlace-mackenna",
+        "espacio-victoria",
+        "ferroparque",
+        "lamara",
+        "lomas-de-puyai",
+        "nucleo-costanera",
+        "terratolten",
+        "urban-la-florida",
+        "wayra"
+      ],
+      "cantidad_matriz_historica": 15,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 15
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/brochures-ecasa.json": {
+          "cantidad_registros": 15,
+          "slugs": [
+            "aires-la-florida-2",
+            "alto-san-joaquin",
+            "conecta-huechuraba",
+            "cumbres-de-penuelas",
+            "edificio-bezanilla",
+            "endemico",
+            "enlace-mackenna",
+            "espacio-victoria",
+            "ferroparque",
+            "lamara",
+            "lomas-de-puyai",
+            "nucleo-costanera",
+            "terratolten",
+            "urban-la-florida",
+            "wayra"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewedOn": "2026-10-12"
+          }
+        },
+        "data/ecasa-official-originals.json": {
+          "cantidad_registros": 2,
+          "slugs": [
+            "alto-san-joaquin",
+            "ferroparque"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewedOn": "2026-10-13",
+            "protectedPreviewOnly": true
+          }
+        },
+        "data/ecasa-manual-quality.json": {
+          "cantidad_registros": 15,
+          "slugs": [
+            "aires-la-florida-2",
+            "alto-san-joaquin",
+            "conecta-huechuraba",
+            "cumbres-de-penuelas",
+            "edificio-bezanilla",
+            "endemico",
+            "enlace-mackenna",
+            "espacio-victoria",
+            "ferroparque",
+            "lamara",
+            "lomas-de-puyai",
+            "nucleo-costanera",
+            "terratolten",
+            "urban-la-florida",
+            "wayra"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewedOn": "2026-10-13",
+            "protectedPreviewOnly": true
+          }
+        },
+        "data/ecasa-image-quality.json": {
+          "cantidad_registros": 15,
+          "slugs": [
+            "aires-la-florida-2",
+            "alto-san-joaquin",
+            "conecta-huechuraba",
+            "cumbres-de-penuelas",
+            "edificio-bezanilla",
+            "endemico",
+            "enlace-mackenna",
+            "espacio-victoria",
+            "ferroparque",
+            "lamara",
+            "lomas-de-puyai",
+            "nucleo-costanera",
+            "terratolten",
+            "urban-la-florida",
+            "wayra"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewedOn": "2026-10-13"
+          }
+        }
+      },
+      "documentos_comerciales_existentes": [
+        "docs/ecasa-commercial-20261030/README.md",
+        "docs/ecasa-commercial-20261030/owner-input.json",
+        "docs/ecasa-commercial-20261030/verification.json"
+      ],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Euro",
+      "cantidad_actual": 21,
+      "slugs": [
+        "alto-irarrazaval",
+        "diagonal-vicuna",
+        "edificio-don-pepe-154",
+        "entre-vicunas",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "guillermo-mann-1401",
+        "independencia-4745",
+        "jose-pedro-alessandri",
+        "mapocho-3521",
+        "mapocho-3521-edificio-a",
+        "marina-pacifico",
+        "mirador-irarrazaval",
+        "nova-parque",
+        "plaza-de-lourdes",
+        "rosas-1444",
+        "santa-elena-1670-mbi",
+        "vicente-valdes",
+        "vicuna-mackenna-1432",
+        "vista-portugal",
+        "vitro"
+      ],
+      "cantidad_matriz_historica": 21,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 21
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/euro-commercial.json": {
+          "cantidad_registros": 12,
+          "slugs": [
+            "diagonal-vicuna",
+            "edificio-don-pepe-154",
+            "entre-vicunas",
+            "froilan-roa-5731-torre-norte",
+            "froilan-roa-5731-torre-sur",
+            "guillermo-mann-1401",
+            "independencia-4745",
+            "mapocho-3521",
+            "mapocho-3521-edificio-a",
+            "plaza-de-lourdes",
+            "rosas-1444",
+            "santa-elena-1670-mbi"
+          ],
+          "marcas_de_revision_existentes": {}
+        },
+        "data/euro-brochures.json": {
+          "cantidad_registros": 9,
+          "slugs": [
+            "edificio-don-pepe-154",
+            "entre-vicunas",
+            "guillermo-mann-1401",
+            "independencia-4745",
+            "mapocho-3521",
+            "mapocho-3521-edificio-a",
+            "plaza-de-lourdes",
+            "rosas-1444",
+            "santa-elena-1670-mbi"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewedAt": "2026-10-29"
+          }
+        },
+        "data/euro-media.json": {
+          "cantidad_registros": 8,
+          "slugs": [
+            "edificio-don-pepe-154",
+            "entre-vicunas",
+            "guillermo-mann-1401",
+            "independencia-4745",
+            "mapocho-3521",
+            "plaza-de-lourdes",
+            "rosas-1444",
+            "santa-elena-1670-mbi"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewedAt": "2026-10-29"
+          }
+        },
+        "data/euro-official-review.json": {
+          "cantidad_registros": 6,
+          "slugs": [
+            "diagonal-vicuna",
+            "edificio-don-pepe-154",
+            "entre-vicunas",
+            "froilan-roa-5731-torre-norte",
+            "froilan-roa-5731-torre-sur",
+            "plaza-de-lourdes"
+          ],
+          "marcas_de_revision_existentes": {
+            "checkedAt": "2026-10-29"
+          }
+        }
+      },
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Nollagam",
+      "cantidad_actual": 7,
+      "slugs": [
+        "alto-goycolea",
+        "barrio-zenteno",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "edificio-liverpool",
+        "edificio-santa-maria",
+        "eleuterio-ramirez"
+      ],
+      "cantidad_matriz_historica": 7,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 7
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/nollagam-brochures.json": {
+          "cantidad_registros": 7,
+          "slugs": [
+            "alto-goycolea",
+            "barrio-zenteno",
+            "costanera-coquimbo-a",
+            "costanera-coquimbo-b",
+            "edificio-liverpool",
+            "edificio-santa-maria",
+            "eleuterio-ramirez"
+          ],
+          "marcas_de_revision_existentes": {
+            "all_pages_reviewed": 103,
+            "prices_included": false,
+            "availability": "unconfirmed for every model"
+          }
+        },
+        "data/nollagam-commercial.json": {
+          "cantidad_registros": 7,
+          "slugs": [
+            "alto-goycolea",
+            "barrio-zenteno",
+            "costanera-coquimbo-a",
+            "costanera-coquimbo-b",
+            "edificio-liverpool",
+            "edificio-santa-maria",
+            "eleuterio-ramirez"
+          ],
+          "marcas_de_revision_existentes": {}
+        }
+      },
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Norte Verde",
+      "cantidad_actual": 18,
+      "slugs": [
+        "bordevivo",
+        "carmen-marin",
+        "edif-origen-atacama-3008",
+        "edificio-dual-390-lto",
+        "edificio-ecuador",
+        "edificio-lira-622",
+        "edificio-plaza-nova",
+        "edificio-san-francisco-1204",
+        "edificio-verne",
+        "irarrazaval",
+        "parque-panama",
+        "parque-quinta",
+        "playa-penuelas",
+        "playa-serena",
+        "quintavista",
+        "vergara-domeyko",
+        "vicuna-mackenna-6896",
+        "vista-bulnes"
+      ],
+      "cantidad_matriz_historica": 17,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 17
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {},
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Ingevec",
+      "cantidad_actual": 16,
+      "slugs": [
+        "abdon-cifuentes",
+        "centenario-1",
+        "coronel-godoy",
+        "diagonal-paraguay",
+        "don-ignacio",
+        "el-aromo",
+        "los-alerces",
+        "los-lilenes",
+        "matta-016",
+        "nueva-esmeralda",
+        "terrazzo",
+        "tocornal",
+        "valle-los-ingleses-iii",
+        "vicuna-mackenna-7589",
+        "vima",
+        "vivaceta"
+      ],
+      "cantidad_matriz_historica": 16,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 16
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/brochures-ingevec.json": {
+          "cantidad_registros": 16,
+          "slugs": [
+            "abdon-cifuentes",
+            "centenario-1",
+            "coronel-godoy",
+            "diagonal-paraguay",
+            "don-ignacio",
+            "el-aromo",
+            "los-alerces",
+            "los-lilenes",
+            "matta-016",
+            "nueva-esmeralda",
+            "terrazzo",
+            "tocornal",
+            "valle-los-ingleses-iii",
+            "vicuna-mackenna-7589",
+            "vima",
+            "vivaceta"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewDate": "2026-10-10"
+          }
+        },
+        "data/purchase-stage-verifications.json": {
+          "cantidad_registros": 1,
+          "slugs": [
+            "centenario-1"
+          ],
+          "marcas_de_revision_existentes": {}
+        }
+      },
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Leben",
+      "cantidad_actual": 14,
+      "slugs": [
+        "capitanes",
+        "edificio-argomedo",
+        "edificio-baum",
+        "edificio-bold",
+        "edificio-indi",
+        "edificio-indigo",
+        "edificio-living-town",
+        "edificio-mood",
+        "edificio-nordico",
+        "edificio-santo",
+        "edificio-suecia",
+        "inn-puerto-chico",
+        "own",
+        "parque-germania"
+      ],
+      "cantidad_matriz_historica": 14,
+      "estados_revision_matriz_historica": {
+        "Pendientes entregados al propietario": 13,
+        "Pendiente de auditoría": 1
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/brochures-leben.json": {
+          "cantidad_registros": 12,
+          "slugs": [
+            "capitanes",
+            "edificio-argomedo",
+            "edificio-baum",
+            "edificio-bold",
+            "edificio-indi",
+            "edificio-indigo",
+            "edificio-living-town",
+            "edificio-mood",
+            "edificio-santo",
+            "edificio-suecia",
+            "inn-puerto-chico",
+            "parque-germania"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewedOn": "2026-10-13",
+            "protectedPreviewOnly": true
+          }
+        },
+        "data/commercial-filter-evidence-leben.json": {
+          "cantidad_registros": 12,
+          "slugs": [
+            "capitanes",
+            "edificio-argomedo",
+            "edificio-baum",
+            "edificio-bold",
+            "edificio-indi",
+            "edificio-indigo",
+            "edificio-living-town",
+            "edificio-mood",
+            "edificio-nordico",
+            "edificio-santo",
+            "edificio-suecia",
+            "inn-puerto-chico"
+          ],
+          "marcas_de_revision_existentes": {}
+        }
+      },
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Leben: F9 documental para12; F14 técnico separado a cargo del hilo principal. Resto: auditoría global de filtros no acreditada por el mero registro de fuente."
+    },
+    {
+      "inmobiliaria": "AJ Urbana",
+      "cantidad_actual": 5,
+      "slugs": [
+        "downtown-san-martin",
+        "edificio-teatinos-750",
+        "edificio-vista-amunategui",
+        "monjitas-690",
+        "vista-morande"
+      ],
+      "cantidad_matriz_historica": 5,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 5
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/brochures-aj-urbana.json": {
+          "cantidad_registros": 5,
+          "slugs": [
+            "downtown-san-martin",
+            "edificio-teatinos-750",
+            "edificio-vista-amunategui",
+            "monjitas-690",
+            "vista-morande"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewDate": "2026-10-10"
+          }
+        }
+      },
+      "documentos_comerciales_existentes": [
+        "docs/aj-urbana-20261030/README.md",
+        "docs/aj-urbana-20261030/owner-input.json",
+        "docs/aj-urbana-20261030/verification.json"
+      ],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Sento",
+      "cantidad_actual": 7,
+      "slugs": [
+        "angamos",
+        "curico-77",
+        "domeyko-2055",
+        "jofre-135",
+        "mirador-la-florida",
+        "plaza-las-condes",
+        "san-ignacio"
+      ],
+      "cantidad_matriz_historica": 7,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 7
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/brochures-sento.json": {
+          "cantidad_registros": 6,
+          "slugs": [
+            "curico-77",
+            "domeyko-2055",
+            "jofre-135",
+            "mirador-la-florida",
+            "plaza-las-condes",
+            "san-ignacio"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewDate": "2026-10-13"
+          }
+        },
+        "data/sento-official-research.json": {
+          "cantidad_registros": 7,
+          "slugs": [
+            "angamos",
+            "curico-77",
+            "domeyko-2055",
+            "jofre-135",
+            "mirador-la-florida",
+            "plaza-las-condes",
+            "san-ignacio"
+          ],
+          "marcas_de_revision_existentes": {
+            "fechaRevision": "2026-10-13"
+          }
+        },
+        "data/sento-review.json": {
+          "cantidad_registros": 7,
+          "slugs": [
+            "angamos",
+            "curico-77",
+            "domeyko-2055",
+            "jofre-135",
+            "mirador-la-florida",
+            "plaza-las-condes",
+            "san-ignacio"
+          ],
+          "marcas_de_revision_existentes": {
+            "reviewDate": "2026-10-13",
+            "protectedPreviewOnly": true
+          }
+        },
+        "data/project-content-additions.json": {
+          "cantidad_registros": 6,
+          "slugs": [
+            "angamos",
+            "curico-77",
+            "domeyko-2055",
+            "jofre-135",
+            "mirador-la-florida",
+            "san-ignacio"
+          ],
+          "marcas_de_revision_existentes": {}
+        },
+        "data/purchase-stage-verifications.json": {
+          "cantidad_registros": 3,
+          "slugs": [
+            "angamos",
+            "domeyko-2055",
+            "san-ignacio"
+          ],
+          "marcas_de_revision_existentes": {}
+        }
+      },
+      "documentos_comerciales_existentes": [
+        "docs/sento-commercial-20261030/README.md",
+        "docs/sento-commercial-20261030/owner-input.json",
+        "docs/sento-commercial-20261030/verification.json"
+      ],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Crescer",
+      "cantidad_actual": 2,
+      "slugs": [
+        "don-rafael",
+        "don-tomas"
+      ],
+      "cantidad_matriz_historica": 2,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 2
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {
+        "data/crescer-brochures.json": {
+          "cantidad_registros": 2,
+          "slugs": [
+            "don-rafael",
+            "don-tomas"
+          ],
+          "marcas_de_revision_existentes": {
+            "auditDate": "2026-10-29"
+          }
+        },
+        "data/crescer-commercial.json": {
+          "cantidad_registros": 2,
+          "slugs": [
+            "don-rafael",
+            "don-tomas"
+          ],
+          "marcas_de_revision_existentes": {}
+        }
+      },
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    },
+    {
+      "inmobiliaria": "Sudamericana",
+      "cantidad_actual": 1,
+      "slugs": [
+        "novo-catedral"
+      ],
+      "cantidad_matriz_historica": 2,
+      "estados_revision_matriz_historica": {
+        "Pendiente de auditoría": 2
+      },
+      "fuentes_base_131": [
+        "data/proyectos.json",
+        "data/fichas-proyectos.json",
+        "data/project-features.json",
+        "data/catalog-facets.json"
+      ],
+      "fuentes_especificas_ya_existentes": {},
+      "documentos_comerciales_existentes": [],
+      "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+    }
+  ],
+  "fuentes_existentes": {
+    "data/proyectos.json": {
+      "archivo": "data/proyectos.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/proyectos.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/proyectos.json",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "naturaleza_y_limite": "Catálogo comercial actual; campos y procedencia, sin nueva certificación global.",
+      "cantidad_slugs_catalogo_con_registro": 131,
+      "slugs": [
+        "abdon-cifuentes",
+        "aires-la-florida-2",
+        "alto-buzeta",
+        "alto-goycolea",
+        "alto-irarrazaval",
+        "alto-san-joaquin",
+        "angamos",
+        "barrio-zenteno",
+        "bcome",
+        "bordevivo",
+        "caceres",
+        "campus-llacolen",
+        "capitanes",
+        "carmen-marin",
+        "centenario-1",
+        "condominio-parque-don-lautaro",
+        "condominio-uruguay",
+        "conecta-huechuraba",
+        "coronel-godoy",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "cumbres-de-penuelas",
+        "curico-77",
+        "diagonal-paraguay",
+        "diagonal-vicuna",
+        "distrito-centro",
+        "domeyko-2055",
+        "don-ignacio",
+        "don-rafael",
+        "don-tomas",
+        "downtown-san-martin",
+        "edif-origen-atacama-3008",
+        "edificio-argomedo",
+        "edificio-baum",
+        "edificio-bezanilla",
+        "edificio-bold",
+        "edificio-don-pepe-154",
+        "edificio-dual-390-lto",
+        "edificio-ecuador",
+        "edificio-indi",
+        "edificio-indigo",
+        "edificio-lira-622",
+        "edificio-liverpool",
+        "edificio-living-town",
+        "edificio-mood",
+        "edificio-nordico",
+        "edificio-plaza-nova",
+        "edificio-san-francisco-1204",
+        "edificio-santa-maria",
+        "edificio-santo",
+        "edificio-suecia",
+        "edificio-teatinos-750",
+        "edificio-verne",
+        "edificio-vista-amunategui",
+        "el-aromo",
+        "eleuterio-ramirez",
+        "endemico",
+        "enlace-mackenna",
+        "entre-vicunas",
+        "espacio-victoria",
+        "ferroparque",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "gregorio-de-la-fuente-a",
+        "guillermo-mann-1401",
+        "independencia-4745",
+        "inn-puerto-chico",
+        "irarrazaval",
+        "jardines-de-alvarado",
+        "jardines-de-ramon-cruz",
+        "jofre-135",
+        "jose-pedro-alessandri",
+        "lamara",
+        "lomas-de-puyai",
+        "los-alerces",
+        "los-lilenes",
+        "mapocho-3521",
+        "mapocho-3521-edificio-a",
+        "marina-pacifico",
+        "matta-016",
+        "mirador-irarrazaval",
+        "mirador-la-florida",
+        "mirador-mapocho",
+        "monjitas-690",
+        "nova-parque",
+        "novo-catedral",
+        "nucleo-costanera",
+        "nueva-esmeralda",
+        "own",
+        "parque-germania",
+        "parque-panama",
+        "parque-quinta",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "pintor-cicarelli-iii",
+        "playa-penuelas",
+        "playa-serena",
+        "plaza-cervantes",
+        "plaza-cervantes-b",
+        "plaza-de-lourdes",
+        "plaza-las-condes",
+        "plaza-quilicura",
+        "quintavista",
+        "reserva-mayor-2",
+        "rosas-1444",
+        "san-ignacio",
+        "santa-elena-1670-mbi",
+        "serrano-torre-a",
+        "terratolten",
+        "terrazzo",
+        "tocornal",
+        "trinidad-iii",
+        "urban-la-florida",
+        "valle-los-ingleses-iii",
+        "vergara-domeyko",
+        "vicente-valdes",
+        "vicuna-mackenna-1432",
+        "vicuna-mackenna-6896",
+        "vicuna-mackenna-7589",
+        "vima",
+        "vista-bulnes",
+        "vista-costanera",
+        "vista-llacolen-a",
+        "vista-llacolen-b",
+        "vista-morande",
+        "vista-portugal",
+        "vista-reloncavi",
+        "vistamar",
+        "vitro",
+        "vivaceta",
+        "wayra"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/fichas-proyectos.json": {
+      "archivo": "data/fichas-proyectos.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/fichas-proyectos.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json",
+      "sha256": "980429461bc659829eaee6e0fd777a46b62262d88ff61389b38427e5ae6274e7",
+      "naturaleza_y_limite": "Investigación oficial y campos verificados heredados; no equivale a auditoría de combinaciones de filtros.",
+      "cantidad_slugs_catalogo_con_registro": 131,
+      "slugs": [
+        "abdon-cifuentes",
+        "aires-la-florida-2",
+        "alto-buzeta",
+        "alto-goycolea",
+        "alto-irarrazaval",
+        "alto-san-joaquin",
+        "angamos",
+        "barrio-zenteno",
+        "bcome",
+        "bordevivo",
+        "caceres",
+        "campus-llacolen",
+        "capitanes",
+        "carmen-marin",
+        "centenario-1",
+        "condominio-parque-don-lautaro",
+        "condominio-uruguay",
+        "conecta-huechuraba",
+        "coronel-godoy",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "cumbres-de-penuelas",
+        "curico-77",
+        "diagonal-paraguay",
+        "diagonal-vicuna",
+        "distrito-centro",
+        "domeyko-2055",
+        "don-ignacio",
+        "don-rafael",
+        "don-tomas",
+        "downtown-san-martin",
+        "edif-origen-atacama-3008",
+        "edificio-argomedo",
+        "edificio-baum",
+        "edificio-bezanilla",
+        "edificio-bold",
+        "edificio-don-pepe-154",
+        "edificio-dual-390-lto",
+        "edificio-ecuador",
+        "edificio-indi",
+        "edificio-indigo",
+        "edificio-lira-622",
+        "edificio-liverpool",
+        "edificio-living-town",
+        "edificio-mood",
+        "edificio-nordico",
+        "edificio-plaza-nova",
+        "edificio-san-francisco-1204",
+        "edificio-santa-maria",
+        "edificio-santo",
+        "edificio-suecia",
+        "edificio-teatinos-750",
+        "edificio-verne",
+        "edificio-vista-amunategui",
+        "el-aromo",
+        "eleuterio-ramirez",
+        "endemico",
+        "enlace-mackenna",
+        "entre-vicunas",
+        "espacio-victoria",
+        "ferroparque",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "gregorio-de-la-fuente-a",
+        "guillermo-mann-1401",
+        "independencia-4745",
+        "inn-puerto-chico",
+        "irarrazaval",
+        "jardines-de-alvarado",
+        "jardines-de-ramon-cruz",
+        "jofre-135",
+        "jose-pedro-alessandri",
+        "lamara",
+        "lomas-de-puyai",
+        "los-alerces",
+        "los-lilenes",
+        "mapocho-3521",
+        "mapocho-3521-edificio-a",
+        "marina-pacifico",
+        "matta-016",
+        "mirador-irarrazaval",
+        "mirador-la-florida",
+        "mirador-mapocho",
+        "monjitas-690",
+        "nova-parque",
+        "novo-catedral",
+        "nucleo-costanera",
+        "nueva-esmeralda",
+        "own",
+        "parque-germania",
+        "parque-panama",
+        "parque-quinta",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "pintor-cicarelli-iii",
+        "playa-penuelas",
+        "playa-serena",
+        "plaza-cervantes",
+        "plaza-cervantes-b",
+        "plaza-de-lourdes",
+        "plaza-las-condes",
+        "plaza-quilicura",
+        "quintavista",
+        "reserva-mayor-2",
+        "rosas-1444",
+        "san-ignacio",
+        "santa-elena-1670-mbi",
+        "serrano-torre-a",
+        "terratolten",
+        "terrazzo",
+        "tocornal",
+        "trinidad-iii",
+        "urban-la-florida",
+        "valle-los-ingleses-iii",
+        "vergara-domeyko",
+        "vicente-valdes",
+        "vicuna-mackenna-1432",
+        "vicuna-mackenna-6896",
+        "vicuna-mackenna-7589",
+        "vima",
+        "vista-bulnes",
+        "vista-costanera",
+        "vista-llacolen-a",
+        "vista-llacolen-b",
+        "vista-morande",
+        "vista-portugal",
+        "vista-reloncavi",
+        "vistamar",
+        "vitro",
+        "vivaceta",
+        "wayra"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/project-features.json": {
+      "archivo": "data/project-features.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/project-features.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/project-features.json",
+      "sha256": "a21460b821f8b52605c7eb130af126458b3f657a55f704f6146c67115eaf2e62",
+      "naturaleza_y_limite": "Fuente compartida de características y alcance de proyecto/etapa/producto; elegibilidad existente no recertificada aquí.",
+      "cantidad_slugs_catalogo_con_registro": 131,
+      "slugs": [
+        "abdon-cifuentes",
+        "aires-la-florida-2",
+        "alto-buzeta",
+        "alto-goycolea",
+        "alto-irarrazaval",
+        "alto-san-joaquin",
+        "angamos",
+        "barrio-zenteno",
+        "bcome",
+        "bordevivo",
+        "caceres",
+        "campus-llacolen",
+        "capitanes",
+        "carmen-marin",
+        "centenario-1",
+        "condominio-parque-don-lautaro",
+        "condominio-uruguay",
+        "conecta-huechuraba",
+        "coronel-godoy",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "cumbres-de-penuelas",
+        "curico-77",
+        "diagonal-paraguay",
+        "diagonal-vicuna",
+        "distrito-centro",
+        "domeyko-2055",
+        "don-ignacio",
+        "don-rafael",
+        "don-tomas",
+        "downtown-san-martin",
+        "edif-origen-atacama-3008",
+        "edificio-argomedo",
+        "edificio-baum",
+        "edificio-bezanilla",
+        "edificio-bold",
+        "edificio-don-pepe-154",
+        "edificio-dual-390-lto",
+        "edificio-ecuador",
+        "edificio-indi",
+        "edificio-indigo",
+        "edificio-lira-622",
+        "edificio-liverpool",
+        "edificio-living-town",
+        "edificio-mood",
+        "edificio-nordico",
+        "edificio-plaza-nova",
+        "edificio-san-francisco-1204",
+        "edificio-santa-maria",
+        "edificio-santo",
+        "edificio-suecia",
+        "edificio-teatinos-750",
+        "edificio-verne",
+        "edificio-vista-amunategui",
+        "el-aromo",
+        "eleuterio-ramirez",
+        "endemico",
+        "enlace-mackenna",
+        "entre-vicunas",
+        "espacio-victoria",
+        "ferroparque",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "gregorio-de-la-fuente-a",
+        "guillermo-mann-1401",
+        "independencia-4745",
+        "inn-puerto-chico",
+        "irarrazaval",
+        "jardines-de-alvarado",
+        "jardines-de-ramon-cruz",
+        "jofre-135",
+        "jose-pedro-alessandri",
+        "lamara",
+        "lomas-de-puyai",
+        "los-alerces",
+        "los-lilenes",
+        "mapocho-3521",
+        "mapocho-3521-edificio-a",
+        "marina-pacifico",
+        "matta-016",
+        "mirador-irarrazaval",
+        "mirador-la-florida",
+        "mirador-mapocho",
+        "monjitas-690",
+        "nova-parque",
+        "novo-catedral",
+        "nucleo-costanera",
+        "nueva-esmeralda",
+        "own",
+        "parque-germania",
+        "parque-panama",
+        "parque-quinta",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "pintor-cicarelli-iii",
+        "playa-penuelas",
+        "playa-serena",
+        "plaza-cervantes",
+        "plaza-cervantes-b",
+        "plaza-de-lourdes",
+        "plaza-las-condes",
+        "plaza-quilicura",
+        "quintavista",
+        "reserva-mayor-2",
+        "rosas-1444",
+        "san-ignacio",
+        "santa-elena-1670-mbi",
+        "serrano-torre-a",
+        "terratolten",
+        "terrazzo",
+        "tocornal",
+        "trinidad-iii",
+        "urban-la-florida",
+        "valle-los-ingleses-iii",
+        "vergara-domeyko",
+        "vicente-valdes",
+        "vicuna-mackenna-1432",
+        "vicuna-mackenna-6896",
+        "vicuna-mackenna-7589",
+        "vima",
+        "vista-bulnes",
+        "vista-costanera",
+        "vista-llacolen-a",
+        "vista-llacolen-b",
+        "vista-morande",
+        "vista-portugal",
+        "vista-reloncavi",
+        "vistamar",
+        "vitro",
+        "vivaceta",
+        "wayra"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false,
+      "policy": "Confirmed presence only; absence of a record means unknown. Groups are the shared source for fiche rendering and catalogue facets."
+    },
+    "data/catalog-facets.json": {
+      "archivo": "data/catalog-facets.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/catalog-facets.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/catalog-facets.json",
+      "sha256": "bdfb1d2036ec379ea03d1ce524d83e1843da3f89719222cfc6fb5f4883381681",
+      "naturaleza_y_limite": "Proyección generada existente de filtros; presencia no prueba cobertura comercial completa.",
+      "cantidad_slugs_catalogo_con_registro": 131,
+      "slugs": [
+        "abdon-cifuentes",
+        "aires-la-florida-2",
+        "alto-buzeta",
+        "alto-goycolea",
+        "alto-irarrazaval",
+        "alto-san-joaquin",
+        "angamos",
+        "barrio-zenteno",
+        "bcome",
+        "bordevivo",
+        "caceres",
+        "campus-llacolen",
+        "capitanes",
+        "carmen-marin",
+        "centenario-1",
+        "condominio-parque-don-lautaro",
+        "condominio-uruguay",
+        "conecta-huechuraba",
+        "coronel-godoy",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "cumbres-de-penuelas",
+        "curico-77",
+        "diagonal-paraguay",
+        "diagonal-vicuna",
+        "distrito-centro",
+        "domeyko-2055",
+        "don-ignacio",
+        "don-rafael",
+        "don-tomas",
+        "downtown-san-martin",
+        "edif-origen-atacama-3008",
+        "edificio-argomedo",
+        "edificio-baum",
+        "edificio-bezanilla",
+        "edificio-bold",
+        "edificio-don-pepe-154",
+        "edificio-dual-390-lto",
+        "edificio-ecuador",
+        "edificio-indi",
+        "edificio-indigo",
+        "edificio-lira-622",
+        "edificio-liverpool",
+        "edificio-living-town",
+        "edificio-mood",
+        "edificio-nordico",
+        "edificio-plaza-nova",
+        "edificio-san-francisco-1204",
+        "edificio-santa-maria",
+        "edificio-santo",
+        "edificio-suecia",
+        "edificio-teatinos-750",
+        "edificio-verne",
+        "edificio-vista-amunategui",
+        "el-aromo",
+        "eleuterio-ramirez",
+        "endemico",
+        "enlace-mackenna",
+        "entre-vicunas",
+        "espacio-victoria",
+        "ferroparque",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "gregorio-de-la-fuente-a",
+        "guillermo-mann-1401",
+        "independencia-4745",
+        "inn-puerto-chico",
+        "irarrazaval",
+        "jardines-de-alvarado",
+        "jardines-de-ramon-cruz",
+        "jofre-135",
+        "jose-pedro-alessandri",
+        "lamara",
+        "lomas-de-puyai",
+        "los-alerces",
+        "los-lilenes",
+        "mapocho-3521",
+        "mapocho-3521-edificio-a",
+        "marina-pacifico",
+        "matta-016",
+        "mirador-irarrazaval",
+        "mirador-la-florida",
+        "mirador-mapocho",
+        "monjitas-690",
+        "nova-parque",
+        "novo-catedral",
+        "nucleo-costanera",
+        "nueva-esmeralda",
+        "own",
+        "parque-germania",
+        "parque-panama",
+        "parque-quinta",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "pintor-cicarelli-iii",
+        "playa-penuelas",
+        "playa-serena",
+        "plaza-cervantes",
+        "plaza-cervantes-b",
+        "plaza-de-lourdes",
+        "plaza-las-condes",
+        "plaza-quilicura",
+        "quintavista",
+        "reserva-mayor-2",
+        "rosas-1444",
+        "san-ignacio",
+        "santa-elena-1670-mbi",
+        "serrano-torre-a",
+        "terratolten",
+        "terrazzo",
+        "tocornal",
+        "trinidad-iii",
+        "urban-la-florida",
+        "valle-los-ingleses-iii",
+        "vergara-domeyko",
+        "vicente-valdes",
+        "vicuna-mackenna-1432",
+        "vicuna-mackenna-6896",
+        "vicuna-mackenna-7589",
+        "vima",
+        "vista-bulnes",
+        "vista-costanera",
+        "vista-llacolen-a",
+        "vista-llacolen-b",
+        "vista-morande",
+        "vista-portugal",
+        "vista-reloncavi",
+        "vistamar",
+        "vitro",
+        "vivaceta",
+        "wayra"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false,
+      "policy": "Documented project/model characteristics; no stock or unit inventory. Missing values are unknown."
+    },
+    "data/brochures-aj-urbana.json": {
+      "archivo": "data/brochures-aj-urbana.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/brochures-aj-urbana.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-aj-urbana.json",
+      "sha256": "b23e5730201768f4be2d83eabdcfdbfa648d8b5906df188e7ae8de7ca42ac42c",
+      "naturaleza_y_limite": "Brochures con modelos, páginas y revisión documental ya registrada.",
+      "cantidad_slugs_catalogo_con_registro": 5,
+      "slugs": [
+        "downtown-san-martin",
+        "edificio-teatinos-750",
+        "edificio-vista-amunategui",
+        "monjitas-690",
+        "vista-morande"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewDate": "2026-10-10"
+      },
+      "es_certificacion_nueva_filtros": false,
+      "publicationRights": {
+        "sourceChannel": "Yapo/IRIS",
+        "basis": "user_contract_attestation",
+        "protectedPreview": "authorized_by_user",
+        "individualAssetLicense": "not_required_when_contract_covered",
+        "contractScope": {
+          "status": "verified_contract",
+          "evidenceSha256": "a3f5fc354a7fd5e41ed1c3f3ae499d4b5511376a7a914161d4de9c87ee44f3eb",
+          "verifiedOn": "2026-10-11",
+          "permittedOrigins": [
+            "https://sollahms.cl"
+          ],
+          "permittedUses": [
+            "web_promotion"
+          ],
+          "coveredDocuments": [
+            "119976d9a6cc9045be5c9ccdedd6c293d0ebdc38be7df3065843a29b88c56327",
+            "3a80503b8ef2670deb75c7776724f6d6880128a03b1609484cedb43f452893f4",
+            "4e1ac72e7fa333bc944039a50745d935800df80f3d9d8d3f4d01a277207ef628",
+            "a5c95f31e3f90b365d0b8edd8340bd6fb7bfdb28172cd30e59dfef854e6643f4",
+            "da6ede0213e85e675ff7531e0640dc55194e375c1e4822244a459c2a837816b1"
+          ],
+          "exclusions": [
+            "contract_documents",
+            "internal_commercial_information",
+            "original_pdfs",
+            "unapproved_candidates"
+          ],
+          "evidence": {
+            "type": "official_terms_and_owner_attestation",
+            "termsUrl": "https://iris.yapo.cl/terminos-y-condiciones",
+            "termsUpdatedOn": "2023-08-04",
+            "termsSha256": "99e724e9cee0539229d1dbfc1e7e44c6094f24368ccd4c96bc5f08aed2361853",
+            "liveBundleSha256": "ff1798ff2c3b9ff7392c1e322eced52210bab8f7f5a17b2a001114b2ab559ed0",
+            "ownerAttestation": "user_confirmed_yapo_iris_channel_and_sollahms_web_use",
+            "clauses": [
+              "Publicidad sobre el Proyecto",
+              "Entrega de materiales"
+            ]
+          }
+        },
+        "publicSourceDistribution": "pending_contract_scope_verification",
+        "productionPolicy": "requires_verified_contract_scope"
+      }
+    },
+    "data/brochures-ecasa.json": {
+      "archivo": "data/brochures-ecasa.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/brochures-ecasa.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-ecasa.json",
+      "sha256": "fd37681006e965e83241dccd88b7b532dba5411733219dbdc152aef1e4f5017c",
+      "naturaleza_y_limite": "Brochures por identidad/etapa; una fila puede registrar documento ausente.",
+      "cantidad_slugs_catalogo_con_registro": 15,
+      "slugs": [
+        "aires-la-florida-2",
+        "alto-san-joaquin",
+        "conecta-huechuraba",
+        "cumbres-de-penuelas",
+        "edificio-bezanilla",
+        "endemico",
+        "enlace-mackenna",
+        "espacio-victoria",
+        "ferroparque",
+        "lamara",
+        "lomas-de-puyai",
+        "nucleo-costanera",
+        "terratolten",
+        "urban-la-florida",
+        "wayra"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewedOn": "2026-10-12"
+      },
+      "es_certificacion_nueva_filtros": false,
+      "publicationRights": {
+        "sourceChannel": "Ecasa/user_supplied",
+        "protectedPreview": "authorized_by_user",
+        "productionPolicy": "requires_verified_contract_scope",
+        "contractScope": {
+          "status": "pending_contract_scope_verification"
+        }
+      }
+    },
+    "data/brochures-ingevec.json": {
+      "archivo": "data/brochures-ingevec.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/brochures-ingevec.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-ingevec.json",
+      "sha256": "ce57d1e608aae4e11edd9c224fb7593c7aa2ae0604eddf5ba4f279be75a08c03",
+      "naturaleza_y_limite": "Brochures y modelos existentes; preservar restricciones y candidatos privados.",
+      "cantidad_slugs_catalogo_con_registro": 16,
+      "slugs": [
+        "abdon-cifuentes",
+        "centenario-1",
+        "coronel-godoy",
+        "diagonal-paraguay",
+        "don-ignacio",
+        "el-aromo",
+        "los-alerces",
+        "los-lilenes",
+        "matta-016",
+        "nueva-esmeralda",
+        "terrazzo",
+        "tocornal",
+        "valle-los-ingleses-iii",
+        "vicuna-mackenna-7589",
+        "vima",
+        "vivaceta"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewDate": "2026-10-10"
+      },
+      "es_certificacion_nueva_filtros": false,
+      "publicationRights": {
+        "sourceChannel": "Yapo/IRIS",
+        "basis": "user_contract_attestation",
+        "protectedPreview": "authorized_by_user",
+        "individualAssetLicense": "not_required_when_contract_covered",
+        "contractScope": {
+          "status": "verified_contract",
+          "evidenceSha256": "a3f5fc354a7fd5e41ed1c3f3ae499d4b5511376a7a914161d4de9c87ee44f3eb",
+          "verifiedOn": "2026-10-11",
+          "permittedOrigins": [
+            "https://sollahms.cl"
+          ],
+          "permittedUses": [
+            "web_promotion"
+          ],
+          "coveredDocuments": [
+            "04850e397134f55836374b5fd78bfd645a4998459bea406a87b2d5e0f7896fea",
+            "11fd8e276a5b72d6da4832d63f823810ffe1f80c4c83db8a97975cfc2b63961d",
+            "1718596161846470541f7eb1f103c0dd550b52fc6b8c93507adb2c8b53af07e8",
+            "1a4253e74dba77535e89dbb40790d98cfcc5ed4e693a1858c14de4526278efd9",
+            "2f5ee0fee2dc93ece339756b705030861a9c7c133b78307327b8d1401baeeefc",
+            "4b86d9b13723b7e12edf9b44e7c5616284f2e81b8f7f81d177ca0dfa3bd94f3f",
+            "509ad7aeaafec2b9e09354505a117aea77efb354a433a0d4eae27b08e6378f08",
+            "5890a3c98ef2e130f5a91bd30073203314039741cbd68d7a8f10a294c026dda0",
+            "5c5e880dceb83d6fb0c0a80d78f1e5a51484408c437936811e028364a6c9a685",
+            "790eac34ce7353365f5c765bd8399eeb12845fb31d6e02f6a8ae31e831f293d5",
+            "86e7bcd761a1037a460ae58c23f3c5f19ab047dde162f46c2f61c5ad38ad1085",
+            "958572a482d1af3a5c287a86eb3eba9e6d1c3cd72aa4b68e4aadad1444e0da77",
+            "c90fce264f9991b68d3c2bbdb87442a71fe31f75b70244ced236ef5ca0970dfd",
+            "c93eaab1b4c5a398c7f49e98614a40781fb01f9428aba6c9fea7d52e2a7882bd",
+            "d5cfa2a624f441173a6ec27c1091c5cff2b7c37e45782d84fbbc866966112e08",
+            "ded2b0d73122c2160791e4dc1575e18a73dfc784fb397aad313638cab05c8cdc",
+            "ea21b26f8fc2df546b06faf9eeb8cdafbce76edbb37b0922e8a4cf13acdcfc94"
+          ],
+          "exclusions": [
+            "contract_documents",
+            "internal_commercial_information",
+            "original_pdfs",
+            "unapproved_candidates"
+          ],
+          "evidence": {
+            "type": "official_terms_and_owner_attestation",
+            "termsUrl": "https://iris.yapo.cl/terminos-y-condiciones",
+            "termsUpdatedOn": "2023-08-04",
+            "termsSha256": "99e724e9cee0539229d1dbfc1e7e44c6094f24368ccd4c96bc5f08aed2361853",
+            "liveBundleSha256": "ff1798ff2c3b9ff7392c1e322eced52210bab8f7f5a17b2a001114b2ab559ed0",
+            "ownerAttestation": "user_confirmed_yapo_iris_channel_and_sollahms_web_use",
+            "clauses": [
+              "Publicidad sobre el Proyecto",
+              "Entrega de materiales"
+            ]
+          }
+        },
+        "publicSourceDistribution": "pending_contract_scope_verification",
+        "productionPolicy": "requires_verified_contract_scope"
+      }
+    },
+    "data/brochures-leben.json": {
+      "archivo": "data/brochures-leben.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/brochures-leben.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-leben.json",
+      "sha256": "50c09c226450b1e8ed2432db3fa6e1f113d31b0b4084f7079a6c2f34463e9fc3",
+      "naturaleza_y_limite": "Brochures existentes; contiene Parque Germania acreditado ESEPE y límites por documento.",
+      "cantidad_slugs_catalogo_con_registro": 12,
+      "slugs": [
+        "capitanes",
+        "edificio-argomedo",
+        "edificio-baum",
+        "edificio-bold",
+        "edificio-indi",
+        "edificio-indigo",
+        "edificio-living-town",
+        "edificio-mood",
+        "edificio-santo",
+        "edificio-suecia",
+        "inn-puerto-chico",
+        "parque-germania"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewedOn": "2026-10-13",
+        "protectedPreviewOnly": true
+      },
+      "es_certificacion_nueva_filtros": false,
+      "publicationRights": {
+        "sourceChannel": "Leben/user_supplied",
+        "protectedPreview": "authorized_by_user",
+        "productionPolicy": "requires_verified_contract_scope",
+        "contractScope": {
+          "status": "pending_contract_scope_verification"
+        },
+        "publicPublicationApproved": false
+      }
+    },
+    "data/brochures-leon.json": {
+      "archivo": "data/brochures-leon.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/brochures-leon.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-leon.json",
+      "sha256": "962ed948e818a6c27046657bea5835d54e1e885f88c14775b5567b1c6c3ec28d",
+      "naturaleza_y_limite": "Brochures revisados; respetar protectedPreviewOnly y guardas de publicación.",
+      "cantidad_slugs_catalogo_con_registro": 5,
+      "slugs": [
+        "bcome",
+        "condominio-parque-don-lautaro",
+        "condominio-uruguay",
+        "gregorio-de-la-fuente-a",
+        "jardines-de-ramon-cruz"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewDate": "2026-10-13",
+        "protectedPreviewOnly": true
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/brochures-sento.json": {
+      "archivo": "data/brochures-sento.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/brochures-sento.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-sento.json",
+      "sha256": "3419ae21cf01d5210106d1ffd36e68c9a70525715996b31de963dcf208bee409",
+      "naturaleza_y_limite": "Brochures revisados; preservar política y restricciones existentes.",
+      "cantidad_slugs_catalogo_con_registro": 6,
+      "slugs": [
+        "curico-77",
+        "domeyko-2055",
+        "jofre-135",
+        "mirador-la-florida",
+        "plaza-las-condes",
+        "san-ignacio"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewDate": "2026-10-13"
+      },
+      "es_certificacion_nueva_filtros": false,
+      "publicationRights": {
+        "sourceChannel": "Sento/user_supplied",
+        "scope": "requested_seven_project_portfolio"
+      },
+      "sourcePolicy": "user_supplied_brochures_with_separate_official_commercial_verification"
+    },
+    "data/crescer-brochures.json": {
+      "archivo": "data/crescer-brochures.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/crescer-brochures.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/crescer-brochures.json",
+      "sha256": "c64dbf4f4a4737843460038c42c8d317938eba31d82e76f16e9f2d4445283f5e",
+      "naturaleza_y_limite": "Planos y métricas revisados con exclusiones expresas.",
+      "cantidad_slugs_catalogo_con_registro": 2,
+      "slugs": [
+        "don-rafael",
+        "don-tomas"
+      ],
+      "marcas_de_revision_existentes": {
+        "auditDate": "2026-10-29"
+      },
+      "es_certificacion_nueva_filtros": false,
+      "sourcePolicy": {
+        "scope": "Two provided Crescer PDFs, all 34 pages visually reviewed, with text extraction as auxiliary evidence.",
+        "sourcePrecedence": "Original PDF for documentary facts; owner commercial input is separate and authoritative for the seven prices.",
+        "pricesIncluded": false,
+        "webConsulted": false,
+        "documentaryModelsAreInventory": false,
+        "referenceNumbersAreInternalOnly": true,
+        "pageNumbers": "1-based ordinal PDF pages",
+        "decimalEncoding": "Exact normalized decimal strings with printed precision; no rounding. Null means not published/unknown, not zero.",
+        "printedSurfaceLabelsPreserved": true,
+        "numericalSurfaceClaimsRequireCoherentModel": true,
+        "illustrationsMayNotEstablishIncludedFinishes": true,
+        "readOnlySourceAudit": true
+      }
+    },
+    "data/crescer-commercial.json": {
+      "archivo": "data/crescer-commercial.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/crescer-commercial.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/crescer-commercial.json",
+      "sha256": "486e812e03fee2559053e08c36e06e83538c84f13ec8e5219595a01dc05b5a2f",
+      "naturaleza_y_limite": "Precios autorizados por propietario y condiciones existentes.",
+      "cantidad_slugs_catalogo_con_registro": 2,
+      "slugs": [
+        "don-rafael",
+        "don-tomas"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/nollagam-brochures.json": {
+      "archivo": "data/nollagam-brochures.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/nollagam-brochures.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/nollagam-brochures.json",
+      "sha256": "0a216701b066d74334253434638cc41daa1d71fdf26e713c76f1ad175c73f7a4",
+      "naturaleza_y_limite": "Modelos revisados; AGOTADO histórico no confirma stock actual.",
+      "cantidad_slugs_catalogo_con_registro": 7,
+      "slugs": [
+        "alto-goycolea",
+        "barrio-zenteno",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "edificio-liverpool",
+        "edificio-santa-maria",
+        "eleuterio-ramirez"
+      ],
+      "marcas_de_revision_existentes": {
+        "all_pages_reviewed": 103,
+        "prices_included": false,
+        "availability": "unconfirmed for every model"
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/nollagam-commercial.json": {
+      "archivo": "data/nollagam-commercial.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/nollagam-commercial.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/nollagam-commercial.json",
+      "sha256": "d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b",
+      "naturaleza_y_limite": "Precios autorizados por propietario; no vincular tipología a unidad sin respaldo.",
+      "cantidad_slugs_catalogo_con_registro": 7,
+      "slugs": [
+        "alto-goycolea",
+        "barrio-zenteno",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "edificio-liverpool",
+        "edificio-santa-maria",
+        "eleuterio-ramirez"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/euro-commercial.json": {
+      "archivo": "data/euro-commercial.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/euro-commercial.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/euro-commercial.json",
+      "sha256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+      "naturaleza_y_limite": "Solo 12 slugs y 21 valores autorizados; no cubre los 21 Euro del catálogo.",
+      "cantidad_slugs_catalogo_con_registro": 12,
+      "slugs": [
+        "diagonal-vicuna",
+        "edificio-don-pepe-154",
+        "entre-vicunas",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "guillermo-mann-1401",
+        "independencia-4745",
+        "mapocho-3521",
+        "mapocho-3521-edificio-a",
+        "plaza-de-lourdes",
+        "rosas-1444",
+        "santa-elena-1670-mbi"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/euro-brochures.json": {
+      "archivo": "data/euro-brochures.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/euro-brochures.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/euro-brochures.json",
+      "sha256": "8b3d89e25127e62c9d5e99bdeb5cac86eb5b765bec160562b8029a26ba4a2334",
+      "naturaleza_y_limite": "Nueve entradas documentales; Mapocho A es unresolved-building y tiene cero variantes aplicables.",
+      "cantidad_slugs_catalogo_con_registro": 9,
+      "slugs": [
+        "edificio-don-pepe-154",
+        "entre-vicunas",
+        "guillermo-mann-1401",
+        "independencia-4745",
+        "mapocho-3521",
+        "mapocho-3521-edificio-a",
+        "plaza-de-lourdes",
+        "rosas-1444",
+        "santa-elena-1670-mbi"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewedAt": "2026-10-29"
+      },
+      "es_certificacion_nueva_filtros": false,
+      "policy": {
+        "prices": "No se importan precios, rentas, descuentos o garantías de los PDF. Los precios autorizados se mantienen en una fuente comercial separada.",
+        "availability": "Los conteos corresponden al diseño del proyecto; no constituyen inventario ni disponibilidad.",
+        "unknowns": "null significa no confirmado; nunca ausencia.",
+        "surfaceMetrics": "Solo Mapocho y Rosas tienen superficies rotuladas: total aproximada; Mapocho además promedio. Ningún PDF desglosa útil/interior/terraza.",
+        "duplicateSource": "Mapocho3521 y EdificioA son archivos byte-identical, sin letra de edificio en el contenido."
+      },
+      "aplicabilidad_por_slug": {
+        "edificio-don-pepe-154": {
+          "applicability": {
+            "status": "project-matched",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+          },
+          "variantes_documentales": 4,
+          "conflictos_registrados": 0
+        },
+        "entre-vicunas": {
+          "applicability": {
+            "status": "project-matched",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+          },
+          "variantes_documentales": 5,
+          "conflictos_registrados": 0
+        },
+        "guillermo-mann-1401": {
+          "applicability": {
+            "status": "project-matched",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+          },
+          "variantes_documentales": 7,
+          "conflictos_registrados": 2
+        },
+        "independencia-4745": {
+          "applicability": {
+            "status": "project-matched",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+          },
+          "variantes_documentales": 5,
+          "conflictos_registrados": 1
+        },
+        "mapocho-3521": {
+          "applicability": {
+            "status": "generic-project-only",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "El PDF nombra Mapocho 3521 sin letra de edificio. Contenido aplicable al registro genérico únicamente con advertencia documental; no identifica ni valida su correspondencia con Edificio A u otra torre."
+          },
+          "variantes_documentales": 6,
+          "conflictos_registrados": 1
+        },
+        "mapocho-3521-edificio-a": {
+          "applicability": {
+            "status": "unresolved-building",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "No incorporar planos, imágenes, conteos o características específicos de edificio a partir del nombre del archivo. Requiere prueba independiente de correspondencia."
+          },
+          "variantes_documentales": 0,
+          "conflictos_registrados": 1
+        },
+        "plaza-de-lourdes": {
+          "applicability": {
+            "status": "project-matched",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+          },
+          "variantes_documentales": 6,
+          "conflictos_registrados": 0
+        },
+        "rosas-1444": {
+          "applicability": {
+            "status": "project-matched",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+          },
+          "variantes_documentales": 5,
+          "conflictos_registrados": 0
+        },
+        "santa-elena-1670-mbi": {
+          "applicability": {
+            "status": "project-matched",
+            "propertyTypes": [
+              "departamento"
+            ],
+            "note": "Documentación de diseño; no confirma stock, precios ni estado actual de recepción o entrega."
+          },
+          "variantes_documentales": 4,
+          "conflictos_registrados": 1
+        }
+      }
+    },
+    "data/euro-media.json": {
+      "archivo": "data/euro-media.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/euro-media.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/euro-media.json",
+      "sha256": "af2e0f7426e9c77e3ca8aba2aa2a5385ff5c8b4d3641e76179efe8d06acf7e78",
+      "naturaleza_y_limite": "Proveniencia de medios; no certifica filtros ni aplicabilidad a torre.",
+      "cantidad_slugs_catalogo_con_registro": 8,
+      "slugs": [
+        "edificio-don-pepe-154",
+        "entre-vicunas",
+        "guillermo-mann-1401",
+        "independencia-4745",
+        "mapocho-3521",
+        "plaza-de-lourdes",
+        "rosas-1444",
+        "santa-elena-1670-mbi"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewedAt": "2026-10-29"
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/euro-official-review.json": {
+      "archivo": "data/euro-official-review.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/euro-official-review.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/euro-official-review.json",
+      "sha256": "b8b5873efe841c898c8d0d774c5de1417f0604b6ad4961e98e0b4cdfd7709bb5",
+      "naturaleza_y_limite": "Revisión oficial acotada ya hecha; conserva conflictos de etapa/dirección.",
+      "cantidad_slugs_catalogo_con_registro": 6,
+      "slugs": [
+        "diagonal-vicuna",
+        "edificio-don-pepe-154",
+        "entre-vicunas",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "plaza-de-lourdes"
+      ],
+      "marcas_de_revision_existentes": {
+        "checkedAt": "2026-10-29"
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/leon-official-research.json": {
+      "archivo": "data/leon-official-research.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/leon-official-research.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/leon-official-research.json",
+      "sha256": "9d2c70e6409462d6878cd2bb65ef4c4b3d57f753a5c10480d4e202934b9c3030",
+      "naturaleza_y_limite": "Investigación oficial existente por proyecto.",
+      "cantidad_slugs_catalogo_con_registro": 5,
+      "slugs": [
+        "bcome",
+        "condominio-parque-don-lautaro",
+        "condominio-uruguay",
+        "gregorio-de-la-fuente-a",
+        "jardines-de-ramon-cruz"
+      ],
+      "marcas_de_revision_existentes": {
+        "verifiedOn": "2026-10-13"
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/leon-plan-surfaces.json": {
+      "archivo": "data/leon-plan-surfaces.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/leon-plan-surfaces.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/leon-plan-surfaces.json",
+      "sha256": "0c3465d7e6f2f623378c7e295c2e0f9cf72b586dd60a3c45b18a78985d3400dc",
+      "naturaleza_y_limite": "Superficies revisadas y alcances existentes.",
+      "cantidad_slugs_catalogo_con_registro": 0,
+      "slugs": [],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/leon-pendientes-vigentes.json": {
+      "archivo": "data/leon-pendientes-vigentes.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/leon-pendientes-vigentes.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/leon-pendientes-vigentes.json",
+      "sha256": "8c8b9fd020c50d2b8b618f24db0402f28c6e4215d46c0cad6ac7fb4c35df8eef",
+      "naturaleza_y_limite": "Pendientes documentales existentes; históricos sujetos a posteriores instrucciones.",
+      "cantidad_slugs_catalogo_con_registro": 0,
+      "slugs": [],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/sento-official-research.json": {
+      "archivo": "data/sento-official-research.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/sento-official-research.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/sento-official-research.json",
+      "sha256": "3774ef626e197175341b4bc31d4d35c847d3a0522bb0bcb671ff0604eb420102",
+      "naturaleza_y_limite": "Investigación oficial existente; no modifica guardas protegidas.",
+      "cantidad_slugs_catalogo_con_registro": 7,
+      "slugs": [
+        "angamos",
+        "curico-77",
+        "domeyko-2055",
+        "jofre-135",
+        "mirador-la-florida",
+        "plaza-las-condes",
+        "san-ignacio"
+      ],
+      "marcas_de_revision_existentes": {
+        "fechaRevision": "2026-10-13"
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/sento-review.json": {
+      "archivo": "data/sento-review.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/sento-review.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/sento-review.json",
+      "sha256": "e44ae176a8fe3384ba33df0306e0a97594fc2a1c692aa423310e9b4b6a1bea5f",
+      "naturaleza_y_limite": "Registro protegido; no autorización automática para publicar contenido.",
+      "cantidad_slugs_catalogo_con_registro": 7,
+      "slugs": [
+        "angamos",
+        "curico-77",
+        "domeyko-2055",
+        "jofre-135",
+        "mirador-la-florida",
+        "plaza-las-condes",
+        "san-ignacio"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewDate": "2026-10-13",
+        "protectedPreviewOnly": true
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/sento-angamos.json": {
+      "archivo": "data/sento-angamos.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/sento-angamos.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/sento-angamos.json",
+      "sha256": "97f818ecbccb0a8d37c7d8836d741d1d7963734d056ef8dc91dcae6d17a5e9b8",
+      "naturaleza_y_limite": "Evidencia específica Angamos existente.",
+      "cantidad_slugs_catalogo_con_registro": 0,
+      "slugs": [],
+      "marcas_de_revision_existentes": {
+        "reviewedOn": "2026-10-13"
+      },
+      "es_certificacion_nueva_filtros": false,
+      "sourcePolicy": "Official current Sento page and publicly accessible original media; no synthesized or environment images."
+    },
+    "data/ecasa-official-originals.json": {
+      "archivo": "data/ecasa-official-originals.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/ecasa-official-originals.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/ecasa-official-originals.json",
+      "sha256": "3fce8acf5d4c6e5e2585e2a4f7087f739db2125bc198fab9a5d19be0a9907cdf",
+      "naturaleza_y_limite": "Originales oficiales y trazabilidad existente.",
+      "cantidad_slugs_catalogo_con_registro": 2,
+      "slugs": [
+        "alto-san-joaquin",
+        "ferroparque"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewedOn": "2026-10-13",
+        "protectedPreviewOnly": true
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/ecasa-manual-quality.json": {
+      "archivo": "data/ecasa-manual-quality.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/ecasa-manual-quality.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/ecasa-manual-quality.json",
+      "sha256": "68f3187f03062d83fcc294d77bda83d7094b249bd50e60e3823ed3687317fe14",
+      "naturaleza_y_limite": "Decisiones de calidad documental existentes.",
+      "cantidad_slugs_catalogo_con_registro": 15,
+      "slugs": [
+        "aires-la-florida-2",
+        "alto-san-joaquin",
+        "conecta-huechuraba",
+        "cumbres-de-penuelas",
+        "edificio-bezanilla",
+        "endemico",
+        "enlace-mackenna",
+        "espacio-victoria",
+        "ferroparque",
+        "lamara",
+        "lomas-de-puyai",
+        "nucleo-costanera",
+        "terratolten",
+        "urban-la-florida",
+        "wayra"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewedOn": "2026-10-13",
+        "protectedPreviewOnly": true
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/ecasa-image-quality.json": {
+      "archivo": "data/ecasa-image-quality.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/ecasa-image-quality.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/ecasa-image-quality.json",
+      "sha256": "b4562d1dfbe729520a270039df347b8e3e62f5cff7c3b62d99355d784b0bfb34",
+      "naturaleza_y_limite": "Decisiones de imágenes; no equivale a revisión comercial.",
+      "cantidad_slugs_catalogo_con_registro": 15,
+      "slugs": [
+        "aires-la-florida-2",
+        "alto-san-joaquin",
+        "conecta-huechuraba",
+        "cumbres-de-penuelas",
+        "edificio-bezanilla",
+        "endemico",
+        "enlace-mackenna",
+        "espacio-victoria",
+        "ferroparque",
+        "lamara",
+        "lomas-de-puyai",
+        "nucleo-costanera",
+        "terratolten",
+        "urban-la-florida",
+        "wayra"
+      ],
+      "marcas_de_revision_existentes": {
+        "reviewedOn": "2026-10-13"
+      },
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/plaza-las-condes-verified.json": {
+      "archivo": "data/plaza-las-condes-verified.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/plaza-las-condes-verified.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/plaza-las-condes-verified.json",
+      "sha256": "5f8f31d51a6ff2730ddf83dec580c56294d1d21f6fbb40f22ee665f828b11788",
+      "naturaleza_y_limite": "Verificación específica existente; precios del propietario prevalecen.",
+      "cantidad_slugs_catalogo_con_registro": 0,
+      "slugs": [],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false
+    },
+    "data/project-content-additions.json": {
+      "archivo": "data/project-content-additions.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/project-content-additions.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/project-content-additions.json",
+      "sha256": "6ef7099881fa4c18920487f3554bbb7339b9455e0adb33c6c61e9485a2e89341",
+      "naturaleza_y_limite": "Enriquecimientos documentales existentes; no cambiar estado/precio desde brochure.",
+      "cantidad_slugs_catalogo_con_registro": 11,
+      "slugs": [
+        "angamos",
+        "bcome",
+        "condominio-parque-don-lautaro",
+        "condominio-uruguay",
+        "curico-77",
+        "domeyko-2055",
+        "gregorio-de-la-fuente-a",
+        "jardines-de-ramon-cruz",
+        "jofre-135",
+        "mirador-la-florida",
+        "san-ignacio"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false,
+      "policy": "Descriptive brochure facts only; current catalogue owns prices, states and dates."
+    },
+    "data/purchase-stage-verifications.json": {
+      "archivo": "data/purchase-stage-verifications.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/purchase-stage-verifications.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/purchase-stage-verifications.json",
+      "sha256": "13a030f0551363d31c280182d76418bc8ad08919e58994e342002b6543817700",
+      "naturaleza_y_limite": "Verificaciones específicas de etapa existentes, con alcance y fecha.",
+      "cantidad_slugs_catalogo_con_registro": 4,
+      "slugs": [
+        "angamos",
+        "centenario-1",
+        "domeyko-2055",
+        "san-ignacio"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false,
+      "policy": "Current public commercial offer and advertised delivery are checked together. This is not a legal title audit or a real-time stock guarantee. Confirm the exact unit, reception/other legal enablement and contractual delivery before reserving. Pending, contradictory and reception-in-progress projects are excluded from guided immediate results."
+    },
+    "data/commercial-filter-evidence-leben.json": {
+      "archivo": "data/commercial-filter-evidence-leben.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/commercial-filter-evidence-leben.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/commercial-filter-evidence-leben.json",
+      "sha256": "b9f87e764ecc9bf102c43287201d98f31fe3b34a5ba6e4e8829bc733a097ee36",
+      "naturaleza_y_limite": "Capa preparada por referencia de 12 Leben; no es la fuente de los demás 119 proyectos.",
+      "cantidad_slugs_catalogo_con_registro": 12,
+      "slugs": [
+        "capitanes",
+        "edificio-argomedo",
+        "edificio-baum",
+        "edificio-bold",
+        "edificio-indi",
+        "edificio-indigo",
+        "edificio-living-town",
+        "edificio-mood",
+        "edificio-nordico",
+        "edificio-santo",
+        "edificio-suecia",
+        "inn-puerto-chico"
+      ],
+      "marcas_de_revision_existentes": {},
+      "es_certificacion_nueva_filtros": false,
+      "policy": {
+        "newEvidenceReceived": false,
+        "availableUnitInventory": false,
+        "mergeReferences": false,
+        "publishedPricesChanged": false,
+        "priceFallbackToIrisOrLegacy": false,
+        "proposalFalseProvesPhysicalAbsence": false,
+        "privateFactsRequireSameReference": true,
+        "sourceGeneralTypesAreSeparateAdministrativeFacts": true
+      }
+    }
+  },
+  "documentos_comerciales_existentes": {
+    "docs/aj-urbana-20261030/README.md": {
+      "archivo": "docs/aj-urbana-20261030/README.md",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/aj-urbana-20261030/README.md",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/aj-urbana-20261030/README.md",
+      "sha256": "992c6c090d9ab5ef1f1c1abcb8e4fa56a302b6975c9efb623acd19ce02c318f2",
+      "inmobiliaria": "AJ Urbana",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/aj-urbana-20261030/owner-input.json": {
+      "archivo": "docs/aj-urbana-20261030/owner-input.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/aj-urbana-20261030/owner-input.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/aj-urbana-20261030/owner-input.json",
+      "sha256": "e237a5317a6784cba919e1e6c1cd7feb81a64bbb89eee1fd7a6e204971a634c5",
+      "inmobiliaria": "AJ Urbana",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/aj-urbana-20261030/verification.json": {
+      "archivo": "docs/aj-urbana-20261030/verification.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/aj-urbana-20261030/verification.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/aj-urbana-20261030/verification.json",
+      "sha256": "e28408f197ba2b319fd8982cae6eb90068440a0673c049ea6d1e9a7afdf1afc2",
+      "inmobiliaria": "AJ Urbana",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/ecasa-commercial-20261030/README.md": {
+      "archivo": "docs/ecasa-commercial-20261030/README.md",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/ecasa-commercial-20261030/README.md",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/ecasa-commercial-20261030/README.md",
+      "sha256": "c2a70ee4c8cce84cf09549f5e37b837ae7346c2684e77c487b8d4d36219b8c54",
+      "inmobiliaria": "Ecasa",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/ecasa-commercial-20261030/owner-input.json": {
+      "archivo": "docs/ecasa-commercial-20261030/owner-input.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/ecasa-commercial-20261030/owner-input.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/ecasa-commercial-20261030/owner-input.json",
+      "sha256": "27ff8f73f32ea7c5edae743e95f21dc3eddbc168474f542c0257e2186019a8c8",
+      "inmobiliaria": "Ecasa",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/ecasa-commercial-20261030/verification.json": {
+      "archivo": "docs/ecasa-commercial-20261030/verification.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/ecasa-commercial-20261030/verification.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/ecasa-commercial-20261030/verification.json",
+      "sha256": "f8c0dcbe4cd016a9d3fba0c327793592bd4ec79da50a896dbd1225c1198ac141",
+      "inmobiliaria": "Ecasa",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/sento-commercial-20261030/README.md": {
+      "archivo": "docs/sento-commercial-20261030/README.md",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/sento-commercial-20261030/README.md",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/sento-commercial-20261030/README.md",
+      "sha256": "543c52c56039a6ae748fa6129c6a1fe9ef8152a1c46130cace3e2e911a163dcf",
+      "inmobiliaria": "Sento",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/sento-commercial-20261030/owner-input.json": {
+      "archivo": "docs/sento-commercial-20261030/owner-input.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/sento-commercial-20261030/owner-input.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/sento-commercial-20261030/owner-input.json",
+      "sha256": "af373688774788cfe5b8b494bc777522ed52ff2a16b95ca01a194c8e95ce4c72",
+      "inmobiliaria": "Sento",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/sento-commercial-20261030/verification.json": {
+      "archivo": "docs/sento-commercial-20261030/verification.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/sento-commercial-20261030/verification.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/sento-commercial-20261030/verification.json",
+      "sha256": "17d3bb6f1f7070b076fa484b53d79e963c5894ba6993af61b1115ecc444ee529",
+      "inmobiliaria": "Sento",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/leon-commercial-20261030/README.md": {
+      "archivo": "docs/leon-commercial-20261030/README.md",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/leon-commercial-20261030/README.md",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/leon-commercial-20261030/README.md",
+      "sha256": "08edad4d367252197bc5cbd5e879b65be9a846159a575e0b20230945c36618f0",
+      "inmobiliaria": "León",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/leon-commercial-20261030/owner-input.json": {
+      "archivo": "docs/leon-commercial-20261030/owner-input.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/leon-commercial-20261030/owner-input.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/leon-commercial-20261030/owner-input.json",
+      "sha256": "f88231e8fc0f67235a70315316eff291c9ad33035ae1e0ef27e4c85cf6aa26f7",
+      "inmobiliaria": "León",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    },
+    "docs/leon-commercial-20261030/verification.json": {
+      "archivo": "docs/leon-commercial-20261030/verification.json",
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/leon-commercial-20261030/verification.json",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/leon-commercial-20261030/verification.json",
+      "sha256": "2d46740ef9c0197f43d0a48efaebfe0a3c2ac4b71cc69d34c5fce7c172093fb4",
+      "inmobiliaria": "León",
+      "rol": "Fuente comercial o recibo histórico existente; alcance exacto en el archivo, no reasignado por este inventario."
+    }
+  },
+  "parque_germania_reconciliacion_sin_reabrir_pregunta": {
+    "slug": "parque-germania",
+    "etiqueta_publica_actual": "Leben",
+    "editor_acreditado_documento": "ESEPE",
+    "identidad_ya_documentada": "Un solo proyecto, misma dirección y presencia comercial en ambos canales oficiales. Está acreditado y no se vuelve a pedir.",
+    "relacion_societaria_mandato_participacion_cesion": "No acreditada en las fuentes existentes; no inferir y no es requisito para reutilizar identidad de proyecto.",
+    "efecto_matriz_auditoria": "Excluido del bloque Leben13 por autoría ESEPE; conservar etiqueta pública y atribución documental como campos distintos, sin cerrar bloque ESEPE.",
+    "medidas_y_amenities": "Persisten límites por fuente, superficies sin rótulo y especificaciones contradictorias; no unir por canal.",
+    "pregunta_nueva_propietario": null,
+    "motivo_no_preguntar": "La doble presencia y la identidad única ya están documentadas. No se necesita reconsultar precios, entrega ni relación empresarial para inventariar.",
+    "document_relationship_ya_existente": {
+      "displayNote": "Parque Germania aparece en el brochure de ESEPE y se comercializa en los canales oficiales de ESEPE y Leben, con la misma dirección. Consulta la oferta vigente de la unidad que te interesa.",
+      "sources": [
+        {
+          "label": "Leben",
+          "url": "https://parquegermania.ileben.cl/"
+        },
+        {
+          "label": "ESEPE",
+          "url": "https://www.esepe.cl/proyecto/parque-germania"
+        }
+      ],
+      "status": "coincident_official_marketing; legal_relationship_unverified"
+    },
+    "fuentes_reutilizadas": [
+      {
+        "archivo": "docs/nordico-y-parque-germania-2026-10-13.md",
+        "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/docs/nordico-y-parque-germania-2026-10-13.md",
+        "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+        "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/nordico-y-parque-germania-2026-10-13.md",
+        "sha256": "84a655251c21c23f7d688304620d1f88541986d536a49caa595371d5dcc612ab"
+      },
+      {
+        "archivo": "data/brochures-leben.json",
+        "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/brochures-leben.json",
+        "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+        "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-leben.json",
+        "sha256": "50c09c226450b1e8ed2432db3fa6e1f113d31b0b4084f7079a6c2f34463e9fc3"
+      },
+      {
+        "archivo": "docs/catalog-data-completeness-20261116/leben/INFORME-LEBEN.md",
+        "ruta_local": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/INFORME-LEBEN.md",
+        "commit": "0b9d2a36e89077ee0a11a97ef7026593be636a27",
+        "url": "https://github.com/lasopho/sollahms-web/blob/0b9d2a36e89077ee0a11a97ef7026593be636a27/docs/catalog-data-completeness-20261116/leben/INFORME-LEBEN.md",
+        "sha256": "b3b7b84b976e9c864113e793a4f6391ffb01455ddfb5098703250768d5abccb0"
+      }
+    ]
+  },
+  "registro_detallado_por_proyecto": "CLASIFICACION-COMERCIAL-131.json",
+  "detalle_Euro": "EURO-FUENTES-Y-ALCANCES.json"
+}

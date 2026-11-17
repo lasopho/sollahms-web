@@ -1,0 +1,280 @@
+{
+  "fecha": "2026-11-17",
+  "alcance": "Revisión documental local, puntual e independiente del artefacto; sin nueva extracción de PDF/imágenes, app, pruebas o Internet.",
+  "artefacto": "/private/tmp/sollahms-classification-131.json",
+  "sha256_actual": "d5ba5f973e3014996b106ee3ef20a663b25725a841c23a8450ee7aaaec37cddf",
+  "resultado": "CORREGIDO_Y_VERIFICADO; clasificaciones131x9 intactas.",
+  "verificacion_independiente": {
+    "revisor": "fase14_engine_review",
+    "fuentes_manifiesto_original": 20,
+    "fuentes_finales": 21,
+    "fuentes_con_commit_SHA_bytes_URL_coincidentes": 21,
+    "commit_verificado": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+    "punteros_base_resueltos": 3288,
+    "pares_indice_campo_relativo_resueltos": 4329,
+    "rutas_relativas_resueltas": 1100,
+    "errores_punteros_finales": 0,
+    "ausencias_amenities_reales_verificadas": 12,
+    "ausencias_registro_Euro_reales_verificadas": 12,
+    "artefacto_intacto_al_final_de_revision_independiente": true
+  },
+  "correcciones_realizadas": {
+    "recibo": "/private/tmp/sollahms-classification-131-pointer-corrections.json",
+    "rutas_inexistentes_corregidas": 24,
+    "detalle": [
+      "12punteros a amenities ausente ahora citan el objeto padre y declaran campo_ausente, sin cambiar el estado ni descartar otras fuentes.",
+      "12contextos Euro sin registro ahora citan /projects y declaran slug_sin_registro; las9rutas existentes se conservaron.",
+      "data/euro-brochures.json incorporado al manifiesto como fuente21 con hash y commit165.",
+      "La cobertura desconocida de Euro delegado se separó del listado de faltas comerciales; el resumen técnico131 conserva su alcance limitado.",
+      "Las fechas de referencias F9 ahora conservan dateKind; consulta no se presenta como fecha de documento."
+    ],
+    "valores_precios_y_estados_de_clasificacion_modificados": false,
+    "codigo_aplicacion_modificado": false
+  },
+  "revision_semantica": [
+    {
+      "caso": "Plaza Las Condes",
+      "resultado": "Conservado correctamente por capa y referencia.",
+      "evidencias": [
+        {
+          "archivo": "data/plaza-las-condes-verified.json",
+          "campo": "/plans",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/plaza-las-condes-verified.json"
+        },
+        {
+          "archivo": "data/plaza-las-condes-verified.json",
+          "campo": "/surfaceDiscrepancies",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/plaza-las-condes-verified.json"
+        },
+        {
+          "archivo": "data/plaza-las-condes-verified.json",
+          "campo": "/units",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/plaza-las-condes-verified.json"
+        },
+        {
+          "archivo": "data/proyectos.json",
+          "campo": "/66/commercialSource",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/proyectos.json"
+        }
+      ],
+      "hechos_de_revision": {
+        "planes": 9,
+        "total_rotulado_no_nulo": 6,
+        "banos_explicitos": 9,
+        "modelos_con_total_conflictivo": [
+          "B5",
+          "C2",
+          "C4"
+        ],
+        "unidades_owner_con_interior_no_equivalente_util": 2
+      },
+      "criterio": "Útil queda desconocido: interiorM2 no se transforma en útil. Los totales conflictivos no se imputan a otros modelos. Precio mínimo de lista y nueva tipología conservan fuentes separadas; no se declara revocación ni stock."
+    },
+    {
+      "caso": "Norte Verde preciosPorTipologia",
+      "resultado": "Precios owner respaldados en su categoría literal; publicado sigue separado.",
+      "evidencias": [
+        {
+          "archivo": "data/proyectos.json",
+          "campo": "/14/preciosPorTipologia",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/proyectos.json"
+        },
+        {
+          "archivo": "data/proyectos.json",
+          "campo": "/62/commercialSource",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/proyectos.json"
+        }
+      ],
+      "hechos_de_revision": {
+        "proyectos": 18,
+        "proyectos_con_origen_owner_y_tabla_tipologica": 18
+      },
+      "criterio": "verifiedOn2026-10-25 se conserva como revisión declarada, no fecha nueva de entrega ni certificado de disponibilidad. No se parsea Estudio/1D para asociar área o baños, ni se mejora el estado publicado por existir precio owner."
+    },
+    {
+      "caso": "Parque Germania documentarySurfaces",
+      "resultado": "Conservado: respaldo útil por modelo, total desconocido, identidad doble ya documentada.",
+      "evidencias": [
+        {
+          "archivo": "data/brochures-leben.json",
+          "campo": "/projects/0/documentarySurfaces",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-leben.json"
+        },
+        {
+          "archivo": "data/brochures-leben.json",
+          "campo": "/projects/0/developerRelationship",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/brochures-leben.json"
+        },
+        {
+          "archivo": "docs/nordico-y-parque-germania-2026-10-13.md",
+          "campo": "texto identidad única",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/docs/nordico-y-parque-germania-2026-10-13.md"
+        }
+      ],
+      "hechos_de_revision": {
+        "registros_superficie": 22,
+        "util_no_nulo": 22,
+        "total_no_nulo": 0,
+        "D_y_B_no_nulos": 21
+      },
+      "criterio": "El rechazo por baja resolución afecta a la imagen, no elimina las lecturas estructuradas verificadas. La segunda cifra sin rótulo no se convierte en total. Público Leben/editor ESEPE; no pregunta nueva ni ingreso automático a F9."
+    },
+    {
+      "caso": "Maestra desconocidos frente a fichas",
+      "resultado": "Desconocidos de útil/total coinciden con estructuras; no hay datos typed omitidos en specs.",
+      "evidencias": [
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/0/specs",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/0/sourceNotes",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/27/pendingFields",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/27/sourceNotes",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/9/specs",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        }
+      ],
+      "hechos_de_revision": {
+        "proyectos": 19,
+        "util_specs_nulo": 19,
+        "total_specs_nulo": 19
+      },
+      "criterio": "Los19tienen útil/total null en specs. SuperficieDesdeM2 y texto de modelos no autorizan una métrica normalizada ni precio↔menorárea. Distrito Centro conserva conflicto de etiquetas; cronograma municipal no equivale a entrega. Plaza Cervantes es Torre A exacta: no copiar B/I/II. Su promoción histórica termina31/10/2026 según sourceNotes; el registro publicado no confirma vigencia hoy."
+    }
+  ],
+  "proyecciones": "La clasificación conserva project-features y catalog-facets como proyección parcial, no confirmación nueva. Ningún resultado global certifica131filtros.",
+  "faltas_reales_y_Euro": {
+    "Euro_delegado_excluido_de_faltas": true,
+    "resumen_unknown_131_no_es_lista_de_faltas_reales": true,
+    "restantes96_sin_dato_explicito_clasificado": {
+      "tipo_propiedad": 2,
+      "precio": 3,
+      "dormitorios": 1,
+      "banos": 10,
+      "util": 36,
+      "total": 28,
+      "entrega": 23,
+      "estado": 2,
+      "amenities": 3
+    },
+    "preguntas_nuevas_propietario": 0
+  },
+  "primeras_consultas_Iris_propuestas_no_ejecutadas": [
+    {
+      "orden": 1,
+      "slug": "plaza-cervantes",
+      "consulta_identidad": "Maestra | Plaza Cervantes Torre A | La Cisterna | post24783",
+      "objetivo_esencial": "Localizar el registro/documento ya existente de Torre A y una referencia explícita de tipo de propiedad, D/B y útil/total, con alcance de modelo.",
+      "base_ya_disponible": [
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/27/sourceEvidence",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/27/pendingFields",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        }
+      ],
+      "por_que_no_resuelto": "Specs D/B/útil/total null y solo tarjeta promocional exacta histórica; ficha privada404.",
+      "limite": "Primero correspondencia de etapa y una opción. No pedir nuevamente precio, no copiar Torre B ni brochures I/II y no inferir stock desde campaña."
+    },
+    {
+      "orden": 2,
+      "slug": "distrito-centro",
+      "consulta_identidad": "Maestra | Distrito Centro | O’Higgins1125 | Chillán",
+      "objetivo_esencial": "Localizar en el registro existente una referencia modelo con útil y total rotulados y sus D/B expresos.",
+      "base_ya_disponible": [
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/0/specs",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/0/sourceNotes",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/0/sourceEvidence",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        }
+      ],
+      "por_que_no_resuelto": "Los dos campos typed son null y el texto ya documenta etiquetas útil/interior/total incompatibles.",
+      "limite": "No reconstruir métricas desde superficieDesde, no usar la menor área para el precio publicado, no volver a pedir el precio ni tomar ingresoDOM como entrega."
+    },
+    {
+      "orden": 3,
+      "slug": "edificio-verne",
+      "consulta_identidad": "Norte Verde | Edificio Verne residencial | Estudio | Av. Videla810 | Coquimbo",
+      "objetivo_esencial": "Encontrar el registro/documento vigente del producto residencial y su correspondencia con un perfil técnico; separar Verne Oficinas.",
+      "base_ya_disponible": [
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/57/sourceEvidence",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/fichas-proyectos.json",
+          "campo": "/57/pendingFields",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/fichas-proyectos.json"
+        },
+        {
+          "archivo": "data/proyectos.json",
+          "campo": "/57/commercialSource",
+          "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+          "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/proyectos.json"
+        }
+      ],
+      "por_que_no_resuelto": "La fuente oficial estructurada retenida es memoria2019/contexto de oficinas; el precio owner de Estudio ya existe pero no trae B ni áreas.",
+      "limite": "Conservar precio owner suministrado. No trasladar atributos de oficinas, recuperar inventario completo ni volver a preguntar datos ya entregados."
+    }
+  ],
+  "correcciones_necesarias_pendientes": [],
+  "operaciones": {
+    "solo_archivos_temporales_modificados": true,
+    "repo_modificado": false,
+    "nueva_extraccion_brochures": false,
+    "tests_aplicacion": false,
+    "Internet_Iris": false,
+    "push_PR_deploy": false
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "phase": "F14",
+  "date": "2026-11-17",
+  "repository": "lasopho/sollahms-web",
+  "verdict": "APROBADO CON OBSERVACIONES",
+  "scope": "Revisión independiente del delta e090d33 → 165f918; no certificación global de los 131 proyectos.",
+  "pullRequest": {
+    "url": "https://github.com/lasopho/sollahms-web/pull/32",
+    "number": 32,
+    "draft": true,
+    "state": "open",
+    "head_sha": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+    "base_sha": "daf16e7dd560301029357ce79a7af0b0e9a7e67b",
+    "base": "codex/footer-sin-frase-20261116",
+    "merged": false,
+    "merged_at": null,
+    "changed_files": 17,
+    "commits": 4
+  },
+  "findings": [
+    {
+      "id": "F12-01",
+      "verdict": "RESUELTO",
+      "file": "assets/js/commercial-filter-engine.mjs",
+      "line": 114,
+      "reason": "amenityApplies y eligibleAmenities se evalúan para cada referencia. La evidencia universal, por uso o por tipo se exige con su alcance. Uso desconocido no se convierte en residencial; AND/OR se mantiene en la misma referencia.",
+      "evidence": [
+        "tests/commercial-filter-engine.test.mjs:123",
+        "tests/commercial-filter-engine.test.mjs:142",
+        "tests/commercial-filter-engine.test.mjs:161",
+        "fase13-correcciones-pr32-20261117/evidencias/engine-after.jsonl"
+      ],
+      "case": "Indi local UF 8.560 + gimnasio queda excluido; una consulta sin amenity conserva la referencia elegible sin asumir su uso."
+    },
+    {
+      "id": "F12-02",
+      "verdict": "RESUELTO",
+      "file": "assets/js/commercial-filter-engine.mjs",
+      "line": 128,
+      "reason": "La bolsa de búsqueda de cada referencia incorpora las etiquetas españolas de sus amenities elegibles mediante los mapas existentes; no agrega atributos de otras referencias.",
+      "evidence": [
+        "assets/js/commercial-filter-engine.mjs:170",
+        "tests/commercial-filter-engine.test.mjs:172",
+        "tests/commercial-filter-engine.test.mjs:186",
+        "fase13-correcciones-pr32-20261117/evidencias/spanish-labels-real-reference.json"
+      ],
+      "case": "Living Town con piscina, gimnasio, quincho o lavandería y UF 3.949/1D/1B mantiene OWN4-P001; salón multiuso no acreditado queda excluido."
+    },
+    {
+      "id": "F12-03",
+      "verdict": "RESUELTO",
+      "file": "assets/js/catalog.mjs",
+      "line": 87,
+      "reason": "render cambia únicamente hidden del resumen al alternar preparado/publicados. Las cuatro vistas históricas F13 conservan la restauración del texto publicado; fórmulas y módulos financieros permanecen intactos.",
+      "evidence": [
+        "tests/commercial-filter-fase13-browser.mjs:57",
+        "fase13-correcciones-pr32-20261117/evidencias/browser-report.json"
+      ],
+      "case": "En preparado summaryVisible=false; al volver a publicados se recupera el mismo resumen."
+    },
+    {
+      "id": "F12-04",
+      "verdict": "RESUELTO",
+      "file": "proyectos.html",
+      "line": 177,
+      "reason": "advanced-data-status está fuera de los dos details y conserva role=status y aria-live=polite. El fallo de carga identifica los datos publicados de respaldo; normalizar la URL y cambiar vista no borra el aviso.",
+      "evidence": [
+        "assets/js/catalog.mjs:110",
+        "tests/commercial-filter-fase13-browser.mjs:80",
+        "tests/commercial-filter-fase13-browser.mjs:95",
+        "fase13-correcciones-pr32-20261117/evidencias/browser-report.json"
+      ],
+      "case": "Aviso visible con paneles cerrados, incluida la comprobación móvil puntual de 390 px."
+    }
+  ],
+  "blockingDefects": 0,
+  "newCodeDefectsFound": 0,
+  "historicalTestsAccepted": {
+    "F13": {
+      "engine": {
+        "passed": 57,
+        "total": 57
+      },
+      "catalogFilters": {
+        "passed": 10,
+        "total": 10
+      },
+      "chromeNew": {
+        "passed": 6,
+        "total": 6
+      }
+    },
+    "F10": {
+      "node": 84,
+      "chrome": 16,
+      "widths": 5,
+      "views": 4
+    },
+    "executedAgainInF14": false,
+    "duplicateSubsetsAdded": false
+  },
+  "observations": [
+    "No hay reviews, comentarios, estados, Check Runs ni workflow runs asociados al SHA consultado; la ausencia de checks no equivale a aprobación.",
+    "F13 conserva comandos, hashes, resultado registrado y reporte Chrome; stdout bruto Node no fue archivado. No se inventa ese log.",
+    "No se repitió el conjunto responsive de cinco anchos; se acepta F10 histórico y el control móvil F13 específico.",
+    "La preparación técnica del PR no autoriza Ready for Review, merge, deployment o publicación ni completa la cobertura comercial global."
+  ],
+  "integrity": {
+    "groups": [
+      {
+        "group": "changedFiles",
+        "expected": 5,
+        "matched": 5,
+        "differences": []
+      },
+      {
+        "group": "PRFiles",
+        "expected": 17,
+        "matched": 17,
+        "differences": []
+      },
+      {
+        "group": "documentationFiles",
+        "expected": 11,
+        "matched": 11,
+        "differences": []
+      }
+    ],
+    "protectedFiles": {
+      "expected": 155,
+      "matched": 155,
+      "differences": []
+    },
+    "deltaFiles": [
+      "assets/js/catalog.mjs",
+      "assets/js/commercial-filter-engine.mjs",
+      "proyectos.html",
+      "tests/commercial-filter-engine.test.mjs",
+      "tests/commercial-filter-fase13-browser.mjs"
+    ]
+  },
+  "preservation": {
+    "production": {
+      "id": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+      "project": {
+        "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "name": "project-wrapp",
+        "framework": null
+      },
+      "meta": {
+        "githubCommitRef": "codex/footer-sin-frase-20261116",
+        "githubCommitSha": "b761ddeaea2fa526870e6af25658046e31b571d7",
+        "githubCommitMessage": "docs: certificar Preview privada y continuidad de la eliminación del eslogan",
+        "githubRepo": "sollahms-web",
+        "githubOrg": "lasopho"
+      },
+      "state": "READY",
+      "target": "production"
+    },
+    "newDeploymentsObserved": 0,
+    "noCodeOrTestEdits": true,
+    "noPRMutations": true,
+    "noMerge": true,
+    "draftMaintained": true,
+    "historicalPendingIDsUnchanged": 313,
+    "documentaryReferencesAreStock": false
+  },
+  "next": "Registrar el dictamen en documentación independiente y continuar las tareas documentales autorizadas del objetivo de 131 proyectos. Cualquier paso Ready/merge/publicación requiere autorización independiente; F14 no la solicita."
+}
