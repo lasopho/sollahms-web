@@ -1,0 +1,113 @@
+{
+  "phase": "F13",
+  "sourceCommit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+  "executedAffectedRegressions": [
+    {
+      "name": "Motor por referencia",
+      "command": "/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/commercial-filter-engine.test.mjs",
+      "exitCode": 0,
+      "tests": 57,
+      "passed": 57,
+      "failed": 0,
+      "newRegressionGroupsIncluded": 5,
+      "rawStdoutPersisted": false,
+      "evidence": "Salida de herramienta del ejecutor; pruebas y comando reproducibles fijados en este SHA."
+    },
+    {
+      "name": "Filtros vigentes",
+      "command": "/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --test tests/catalog-filters.test.mjs",
+      "exitCode": 0,
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "rawStdoutPersisted": false
+    },
+    {
+      "name": "UI F12-03/F12-04",
+      "command": "/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node tests/commercial-filter-fase13-browser.mjs",
+      "exitCode": 0,
+      "checks": 6,
+      "passed": 6,
+      "failed": 0,
+      "artifact": "evidencias/browser-report.json",
+      "log": "evidencias/browser-checks.log"
+    }
+  ],
+  "nodeAffectedTestsPassed": 67,
+  "newChromeChecksPassed": 6,
+  "independentCheck": {
+    "newEngineGroupsPassed": 5,
+    "subsetOfEngine57": true,
+    "extraTestsNotAddedToTotal": true,
+    "diffReviewed": true,
+    "noNewFindings": true,
+    "protectedHashesVerified": 155
+  },
+  "originalF10Certification": {
+    "node": 84,
+    "chrome": 16,
+    "widths": 5,
+    "views": 4,
+    "reexecutedAsFullSuitesInF13": false
+  },
+  "browserSafety": {
+    "localOnly": true,
+    "serviceWorkersBlocked": true,
+    "externalReadsBlocked": true,
+    "UFAPIBlocked": true,
+    "pageErrors": [],
+    "blockedWrites": [],
+    "serverWrites": [],
+    "serverClosed": true,
+    "syntheticFinancialInputOnly": true
+  },
+  "testSourceHashes": [
+    {
+      "path": "tests/commercial-filter-engine.test.mjs",
+      "sha256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393"
+    },
+    {
+      "path": "tests/catalog-filters.test.mjs",
+      "sha256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e"
+    },
+    {
+      "path": "tests/commercial-filter-fase13-browser.mjs",
+      "sha256": "7c0c52e46bd0bdaa2cc62ce26a1a0ff03f7d6340c2ef5ae0ccf647aa63ef5eaa"
+    }
+  ],
+  "beforeEvidence": {
+    "engine-results.jsonl": {
+      "commit": "0b6ab0bd04565d73d9621c5d5b73fad0035d8251",
+      "path": "docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/evidencias/engine-results.jsonl",
+      "sha256": "0b07bb96382c4890b60e4b1093f4097e23c2e20d4b2b524f664dd61330f57f4a"
+    },
+    "capacity-summary.json": {
+      "commit": "0b6ab0bd04565d73d9621c5d5b73fad0035d8251",
+      "path": "docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/evidencias/capacity-summary.json",
+      "sha256": "813822c119d156969709366609454c8dcf5675dc5e715f543b565ce880c64524"
+    },
+    "source-fallback.json": {
+      "commit": "0b6ab0bd04565d73d9621c5d5b73fad0035d8251",
+      "path": "docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/evidencias/source-fallback.json",
+      "sha256": "62b77a8da23328f6dd7fab4d13f2dfe2c9658e16d114350ed740ac727e561b07"
+    }
+  },
+  "afterEngineReproduction": {
+    "command": "/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/reproducciones/engine-review-repros.mjs",
+    "exitCode": 0,
+    "artifact": "evidencias/engine-after.jsonl"
+  },
+  "limitations": [
+    "No se revalidaron las suites completas F10 ni los cinco anchos.",
+    "La captura móvil 390 px se limitó a la nueva posición del aviso.",
+    "No se certificó una UF vigente ni una evaluación financiera: la API estuvo bloqueada.",
+    "No se ejecutaron generadores, build de producción o deployments."
+  ],
+  "additionalTargetedAcceptance": {
+    "realSpanishLabelQueriesPassed": 6,
+    "artifact": "evidencias/spanish-labels-real-reference.json",
+    "queryReference": "OWN4-P001",
+    "unconfirmedAmenityRejected": true,
+    "notAddedToNodeSuiteTestTotal": true
+  }
+}

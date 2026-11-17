@@ -1,28 +1,22 @@
-# SOLLAHMS — FASE 13 PROPUESTA: CORREGIR LOS CUATRO HALLAZGOS DEL PR #32
+# SOLLAHMS — FASE 14 PROPUESTA: REVISAR EL CIERRE DE LAS CORRECCIONES DEL PR #32
 
-Objetivo: corregir únicamente F12-01 a F12-04 y comprobar sus regresiones locales. La revisión F12 terminó con dictamen Requiere cambios y no modificó código. Este prompt propone la siguiente etapa; durante F12 no se ejecutaron estas correcciones.
-
-Repositorio: lasopho/sollahms-web. PR existente: https://github.com/lasopho/sollahms-web/pull/32, abierto en Draft.
+Repositorio: lasopho/sollahms-web. PR: https://github.com/lasopho/sollahms-web/pull/32, abierto en Draft.
 Rama técnica: codex/filtros-comerciales-fase10-20261117.
 Checkout: /private/tmp/sollahms-filtros-comerciales-fase10-20261117.
-HEAD revisado: e090d33d71cd98a6919e589f7ec66168216c94ba.
-Base del PR: codex/footer-sin-frase-20261116, daf16e7dd560301029357ce79a7af0b0e9a7e67b.
+HEAD local/remoto de cierre F13: 165f918aba402a0eb3313c85e144af2b4a7e8651.
+Base sin cambios: codex/footer-sin-frase-20261116, daf16e7dd560301029357ce79a7af0b0e9a7e67b.
 Producción y merge-base: b761ddeaea2fa526870e6af25658046e31b571d7.
 
-Antes de cambios reales verificar PR, HEAD local/remoto, base, árboles limpios, producción y ausencia de deployments nuevos. Si cambiaron referencias, reconciliar antes de continuar. Mantener la exclusión de deployments de la rama en vercel.json.
+Objetivo propuesto: revisión independiente del cierre de F12-01 a F12-04 antes de solicitar aprobación. La fase13 terminó con cuatro defectos corregidos y probados, cero parciales y cero pendientes de ese alcance. No implica aprobación, merge o publicación.
 
-Leer docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/: DICTAMEN-FASE12-PR32.md, RESULTADO-REVISION.json, manifiesto y reproducciones. Consultar F10/F11 como historia; no rehacer la auditoría documental ni regenerar datos.
+Verificar referencias y Draft antes de una nueva revisión activa; si cambiaron, reconciliar. Leer docs/catalog-data-completeness-20261116/leben/fase13-correcciones-pr32-20261117/: INFORME-FASE13-CORRECCIONES.md, RESULTADO-F12-01-04.json, PRUEBAS-REGRESION-FASE13.json y MANIFIESTO-HASHES-FASE13.json. Consultar F12 como evidencia anterior.
 
-Correcciones delimitadas:
-1. F12-01, commercial-filter-engine.mjs:142: comprobar amenities según tipo/alcance de la referencia coincidente. Indi UF8560 + gimnasio no debe aceptar el local OWN4-P011 aunque no se seleccione tipo. Conservar AND/OR y desconocidos.
-2. F12-02, commercial-filter-engine.mjs:151: buscar etiquetas públicas españolas de hechos confirmados y con alcance válido. Living Town debe encontrarse con piscina, sin exigir la clave técnica pool.
-3. F12-03, catalog.mjs:85: impedir que el resumen financiero de publicados permanezca visible en preparado. Conservar el funcionamiento correcto al volver a publicados, sin tocar fórmulas o módulos financieros.
-4. F12-04, catalog.mjs:109 y catalog-filter-controls.mjs:86: al fallar la fuente preparada solicitada, mostrar un aviso visible/accesible y no ocultar la sustitución mediante el panel cerrado o la reescritura de URL.
+Revisar únicamente el delta e090d33 → 165f918: cinco archivos. El PR completo tiene diecisiete. Comprobar alcance de amenities por referencia sin asumir uso residencial desconocido; etiquetas españolas sólo de hechos elegibles; resumen financiero oculto en preparado y restaurado en publicados; aviso visible/accesible al fallar la fuente, incluso con paneles cerrados y URL normalizada.
 
-Reutilizar las reproducciones puntuales para verificar los cuatro casos y ejecutar sólo las regresiones afectadas por cambios reales. F10 certificó 84/84 Node y 16/16 Chrome; F12 no repitió esas suites. No declarar un defecto corregido sin evidencia nueva de su resultado.
+F13 ejecutó 57/57 pruebas del motor, 10/10 filtros y 6/6 controles Chrome nuevos, más consultas puntuales de etiquetas y revisión independiente de cinco grupos nuevos. No sumar esos subconjuntos dos veces. F10 84/16 y cinco anchos son historia, no una repetición F13. No repetir suites si los archivos siguen idénticos; ante un defecto nuevo, preparar sólo su reproducción aislada. Durante esta revisión propuesta no modificar código ni resolver comentarios o cambiar estados del PR.
 
-Preservar los 155 archivos protegidos, las 131 fichas, datos y precios publicados, direcciones, módulos financieros, Contacto, Centro de Orientación, formularios, funciones serverless, CRM360, AI Lab y Resend. No editar el JSON de evidencia para forzar resultados. Los 454 registros no son stock; los veinte precios y dos adicionales Suecia permanecen separados. Los 313 pendientes siguen intactos. Own publicado ya está etiquetado Vendido y sin precio; no modificar ese caso descartado como defecto. No incorporar los seis registros históricos, restaurar Patio Brasil ni iniciar Euro.
+Los 155 archivos protegidos y las 131 fichas permanecen intactos; no se modificó el JSON de evidencia, precios publicados, direcciones, funciones, finanzas, formularios, Contacto, Centro de Orientación, CRM360, AI Lab o Resend. Las 454 referencias no son stock. Veinte precios y dos adicionales Suecia separados; 313 pendientes históricos sin cambios. No incorporar seis registros históricos, restaurar Patio Brasil o iniciar Euro.
 
-Trabajar sólo en el checkout técnico; no usar el checkout original con cambios ajenos. Tras validar correcciones, actualizar la misma rama y el PR #32 sin recrearlo, sin force push y manteniéndolo en Draft. La documentación permanece en codex/auditoria-leben-20261116, checkout /private/tmp/sollahms-auditoria-leben-20261116. Registrar únicamente cambios y resultados reales, actualizar NEXT-PROMPT.md y entregar el siguiente prompt completo.
+Mantener vercel.json con la rama excluida de deployments. No Ready for Review, merge, publicación, promoción, cambios de main, dominios, SSO o variables sin autorizaciones expresas independientes. No generar builds de producción.
 
-No marcar Ready for Review, fusionar, crear deployments, publicar, promover ni modificar main, dominios, SSO o variables. Esos pasos requieren autorizaciones expresas independientes. Si sólo se solicita continuidad sin activar la etapa de corrección o aportar una acción nueva, no iniciar otro ciclo de comprobaciones o informes.
+Documentación: codex/auditoria-leben-20261116, checkout /private/tmp/sollahms-auditoria-leben-20261116. Registrar únicamente resultados reales, actualizar NEXT-PROMPT.md y entregar el siguiente prompt completo. Si sólo se solicita continuidad sin activar una revisión concreta ni aportar novedades, no repetir comprobaciones o informes.

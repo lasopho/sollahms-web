@@ -1,0 +1,165 @@
+{
+  "phase": "F13",
+  "repository": "lasopho/sollahms-web",
+  "pullRequest": 32,
+  "url": "https://github.com/lasopho/sollahms-web/pull/32",
+  "priorHead": "e090d33d71cd98a6919e589f7ec66168216c94ba",
+  "correctedHead": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+  "baseBranch": "codex/footer-sin-frase-20261116",
+  "baseSHA": "daf16e7dd560301029357ce79a7af0b0e9a7e67b",
+  "productionSHA": "b761ddeaea2fa526870e6af25658046e31b571d7",
+  "draft": true,
+  "merged": false,
+  "correctedAndTested": 4,
+  "partial": 0,
+  "pending": 0,
+  "results": [
+    {
+      "id": "F12-01",
+      "status": "Corregido y probado",
+      "change": "Amenity y búsqueda se resuelven según uso/alcance de la misma referencia candidata, sin asumir residencial para tipos desconocidos.",
+      "source": "assets/js/commercial-filter-engine.mjs",
+      "before": {
+        "evidence": {
+          "commit": "0b6ab0bd04565d73d9621c5d5b73fad0035d8251",
+          "path": "docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/evidencias/engine-results.jsonl",
+          "sha256": "0b07bb96382c4890b60e4b1093f4097e23c2e20d4b2b524f664dd61330f57f4a"
+        },
+        "observed": "Indi UF8560 + gimnasio, sin tipo, aceptaba OWN4-P011 local."
+      },
+      "after": {
+        "artifact": "evidencias/engine-after.jsonl",
+        "implicit": [],
+        "explicitLocal": [],
+        "directImplicit": [],
+        "directExplicit": [],
+        "validScopedMatchesPreserved": true,
+        "AND_OR_sameWitness_unknownCasesPassed": true
+      }
+    },
+    {
+      "id": "F12-02",
+      "status": "Corregido y probado",
+      "change": "Se reutilizan etiquetas públicas y IDs de la taxonomía compartida, incorporándolos sólo cuando son elegibles para la referencia.",
+      "source": "assets/js/commercial-filter-engine.mjs",
+      "before": {
+        "evidence": {
+          "commit": "0b6ab0bd04565d73d9621c5d5b73fad0035d8251",
+          "path": "docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/evidencias/engine-results.jsonl",
+          "sha256": "0b07bb96382c4890b60e4b1093f4097e23c2e20d4b2b524f664dd61330f57f4a"
+        },
+        "observed": "Living Town: piscina=0 proyectos; pool y checkbox=1."
+      },
+      "after": {
+        "artifact": "evidencias/engine-after.jsonl",
+        "piscinaProjects": 1,
+        "poolProjects": 1,
+        "checkboxProjects": 1,
+        "spanishLabelsTested": [
+          "Piscina",
+          "Gimnasio",
+          "Quincho",
+          "Lavandería",
+          "Áreas verdes",
+          "Salón multiuso",
+          "Bicicleteros",
+          "Terraza panorámica común"
+        ],
+        "scopeValidatedForText": true,
+        "realSpanishLabelsArtifact": "evidencias/spanish-labels-real-reference.json"
+      }
+    },
+    {
+      "id": "F12-03",
+      "status": "Corregido y probado",
+      "change": "El resumen financiero publicado se oculta en preparado y se restaura al regresar a publicados sin modificar cálculos ni valores.",
+      "source": "assets/js/catalog.mjs",
+      "before": {
+        "evidence": {
+          "commit": "0b6ab0bd04565d73d9621c5d5b73fad0035d8251",
+          "path": "docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/evidencias/capacity-summary.json",
+          "sha256": "813822c119d156969709366609454c8dcf5675dc5e715f543b565ce880c64524"
+        },
+        "observed": "Resumen publicado de 131 proyectos visible sobre 130 preparados, sin escenarios ni orden por compatibilidad."
+      },
+      "after": {
+        "artifact": "evidencias/browser-report.json",
+        "views": [
+          "cards",
+          "list",
+          "map",
+          "split"
+        ],
+        "preparedSummaryVisible": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "restoredSummaryVisible": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "restoredTextIdentical": true,
+        "syntheticInputsPreservedByAssertions": true
+      }
+    },
+    {
+      "id": "F12-04",
+      "status": "Corregido y probado",
+      "change": "El aviso existente se mueve fuera de ambos details, con role=status/aria-live=polite, y declara que se muestran datos publicados.",
+      "sources": [
+        "assets/js/catalog.mjs",
+        "proyectos.html"
+      ],
+      "before": {
+        "evidence": {
+          "commit": "0b6ab0bd04565d73d9621c5d5b73fad0035d8251",
+          "path": "docs/catalog-data-completeness-20261116/leben/fase12-revision-pr32-20261117/evidencias/source-fallback.json",
+          "sha256": "62b77a8da23328f6dd7fab4d13f2dfe2c9658e16d114350ed740ac727e561b07"
+        },
+        "observed": "Fuente preparada fallaba; URL perdía evidencia y aviso quedaba oculto en catalog-more."
+      },
+      "after": {
+        "artifact": "evidencias/browser-report.json",
+        "state": {
+          "url": "http://127.0.0.1:64077/proyectos.html?vista=list",
+          "mode": "published",
+          "warning": "Las referencias Leben no pudieron cargar. Se muestran los datos publicados.",
+          "warningVisible": true,
+          "warningClosedAncestor": null,
+          "role": "status",
+          "count": "131 proyectos"
+        },
+        "visibleAfterURLRewritePanelCollapseViewChangeClearAnd390px": true,
+        "role": "status",
+        "ariaLive": "polite"
+      }
+    }
+  ],
+  "scope": {
+    "changedFiles": [
+      "assets/js/catalog.mjs",
+      "assets/js/commercial-filter-engine.mjs",
+      "proyectos.html",
+      "tests/commercial-filter-engine.test.mjs",
+      "tests/commercial-filter-fase13-browser.mjs"
+    ],
+    "evidenceJSONModified": false,
+    "protectedHashesUnchanged": 155,
+    "fichesUnchanged": 131,
+    "historicalPendingFields": 313,
+    "newDocumentaryClosures": 0,
+    "financialModulesChanged": false,
+    "deploymentsCreated": 0,
+    "productionOrMainChanged": false
+  },
+  "continuity": {
+    "path": "NEXT-PROMPT.md",
+    "preimageCommit": "0b6ab0bd04565d73d9621c5d5b73fad0035d8251",
+    "preimageSHA256": "510d7bd10d82191076b77b6ec51720b99710b70746ad885de38940f69a752108",
+    "newSHA256": "cb08fc0623540b4d1fbed3b2cf954905e2398c1f9213355f6eee21c14a242eea"
+  }
+}

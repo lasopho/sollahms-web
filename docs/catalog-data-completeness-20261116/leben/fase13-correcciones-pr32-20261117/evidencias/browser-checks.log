@@ -1,0 +1,10 @@
+PASS cards: published → prepared → published restores only the published capacity context
+PASS list: published → prepared → published restores only the published capacity context
+PASS map: published → prepared → published restores only the published capacity context
+PASS split: published → prepared → published restores only the published capacity context
+PASS failed prepared GET visibly explains the public fallback after URL rewrite and closed filters
+PASS no JavaScript errors, writes or unblocked UF requests
+serverClosed=True
+pageErrors=0
+blockedWrites=0
+serverWrites=0
