@@ -1,6 +1,6 @@
 {
   "date": "2026-11-17",
-  "status": "PAQUETE_LOCAL_PREPARADO_PENDIENTE_AUTORIZACION_DEPLOYMENT",
+  "status": "DEPLOYMENT_READY_VERIFICADO_PENDIENTE_PROMOCION",
   "sourceCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
   "artifact": {
     "prepared": true,
@@ -57,34 +57,19 @@
   "authorized": {
     "ReadyPR32": true,
     "mergePR32": true,
-    "deploymentCreation": false,
+    "deploymentCreation": true,
     "promotionPublication": false
   },
   "nextOperationPrepared": {
-    "workingDirectory": "/private/tmp/sollahms-pr32-release-20261117/stage",
-    "argv": [
-      "/Users/luissandoval/.npm-global/bin/vercel",
-      "deploy",
-      "--prebuilt",
-      "--environment",
-      "production",
-      "--skip-domain",
-      "--scope",
-      "lsandoval2-8260s-projects",
-      "--yes",
-      "--meta",
-      "githubCommitSha=9e8212264e0bac24f392d8340d6e55eabb17499a",
-      "--meta",
-      "githubCommitRef=codex/footer-sin-frase-20261116",
-      "--meta",
-      "githubOrg=lasopho",
-      "--meta",
-      "githubRepo=sollahms-web",
-      "--meta",
-      "artifactInventorySha256=0e7482726ee1c172988ee63e65db2ff87d0c5935a97637e59472e9e685e581f6"
-    ],
-    "meaning": "Crear un deployment del entorno production sin asignación de dominios, sólo después de autorización expresa. Usa bytes prebuilt ya verificados; no ejecuta build ni generadores. No promueve ni publica.",
-    "subsequent": "Verificar READY,artefacto e identidad; QA pertinente al nuevo entorno. Solicitar por separado promoción/publicación sólo con resultado revisable."
+    "tool": "mcp__codex_apps__vercel_request_promote",
+    "arguments": {
+      "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN"
+    },
+    "meaning": "Promover el deployment existente a los dominios productivos actuales, sin rebuild ni deployment adicional. Ejecutar sólo tras autorización independiente de publicación/promoción.",
+    "before": "Recomprobar READY, fuente9e, alias productivo aúnb761, refs y permiso.",
+    "after": "Comprobar aliases, mismo ID publicado, contenido/funciones preservados y origen de datos; no enviar formularios."
   },
   "transportHistory": {
     "firstRecoveryStoppedAt": "index.html HTTP308 hacia raíz",
@@ -100,5 +85,60 @@
     "No extraer ni almacenar credenciales; CLI usa su sesión normal. Si pide login, intervención personal del propietario.",
     "No repetir pruebas certificadas idénticas; verificar sólo el empaquetado y el nuevo entorno.",
     "Las15referencias externas nuevas siguen documentales. No se adoptan sus precios como Sollahms ni se cierra el objetivo131 con este paquete."
+  ],
+  "deploymentAuthorization": "Respuesta expresa del propietario: Autorizar deployment sin dominios",
+  "authorizationScope": "Un único deployment CLI --prebuilt --environment production --skip-domain; no promoción ni publicación. Se añadió --non-interactive para impedir autenticación o vinculación implícita.",
+  "deployment": {
+    "id": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "url": "https://project-wrapp-a4yrgw4ss-lsandoval2-8260s-projects.vercel.app",
+    "inspectorURL": "https://vercel.com/lsandoval2-8260s-projects/project-wrapp/Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "readyState": "READY",
+    "target": "production",
+    "productionURL": null,
+    "aliases": [],
+    "sourceCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "newDeploymentsCreated": 1,
+    "deploymentProtection": "vercel_authentication",
+    "receivedDigestFilesMatched": 1663,
+    "missingFiles": 0,
+    "extraFiles": 0,
+    "differentDigestFiles": 0,
+    "lambdaRoutes": 7
+  },
+  "verification": {
+    "source": "publicacion-pr32/VERIFICACION-DEPLOYMENT.json",
+    "initialization": "publicacion-pr32/INICIALIZACION-DEPLOYMENT.json",
+    "projectsRendered": 131,
+    "preparedLebenSourceEnabled": true,
+    "visibleSourceFailureNotice": false,
+    "consoleErrors": 0,
+    "browserAuthenticationRequested": false,
+    "SSOOrProtectionChanged": false,
+    "formsSubmitted": 0,
+    "scope": "Integridad del paquete e inicialización en el nuevo host. Las suites F10/F13 siguen históricas; no se repitieron.",
+    "publishedModuleCacheControl": "public, max-age=0, must-revalidate",
+    "publishedModuleMIME": "application/javascript; charset=utf-8"
+  },
+  "deploymentCreationAuthorizationUsed": 1,
+  "remainingDeploymentCreationAuthorizations": 0,
+  "verifiedExistingDomains": [
+    {
+      "name": "www.sollahms.cl",
+      "redirect": "sollahms.cl",
+      "status": 308
+    },
+    {
+      "name": "sollahms.cl",
+      "redirect": null
+    },
+    {
+      "name": "sollhams.cl",
+      "redirect": "sollahms.cl",
+      "status": 308
+    },
+    {
+      "name": "project-wrapp.vercel.app",
+      "redirect": null
+    }
   ]
 }

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "kind": "only new isolated Iris15 documentary dataset validation",
+  "executedAtUTC": "2026-11-17T18:43:40.513Z",
+  "passed": true,
+  "cases": 183,
+  "passedCases": 183,
+  "failures": [],
+  "dataset": {
+    "path": "/private/tmp/sollahms-iris-normalized-layer.json",
+    "sha256": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+    "records": 14,
+    "references": 15
+  },
+  "script": {
+    "path": "/private/tmp/sollahms-iris-normalized-validation.mjs",
+    "sha256": "75145429e231911b03150c3e9704bda87f525872d809a6709d420ef9296feb60"
+  },
+  "registry": {
+    "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/REGISTRO-NUEVA-EVIDENCIA-IRIS.json",
+    "sha256": "89bbd82cee7375e648437d1e6db77aa993e30cd912508dec85de9e1c6cf5ba4e"
+  },
+  "existingPureEvaluatorSources": {
+    "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/commercial-filter-engine.mjs": "d901354cd90bd9ca284b50fa56bf4ae5f2675674ac72b17b06ec3b249e44d9f4",
+    "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/commercial-filter-data.mjs": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b"
+  },
+  "byQuery": {
+    "unknown fields inactive preserve documentary result": {
+      "cases": 14,
+      "passed": 14
+    },
+    "active commercial price excludes metadata prices": {
+      "cases": 14,
+      "passed": 14
+    },
+    "active useful range excludes unknown metric": {
+      "cases": 14,
+      "passed": 14
+    },
+    "active total range excludes unknown residential total": {
+      "cases": 14,
+      "passed": 14
+    },
+    "active canonical interior excludes literal Internos": {
+      "cases": 14,
+      "passed": 14
+    },
+    "unknown private garden is not a positive": {
+      "cases": 14,
+      "passed": 14
+    },
+    "unknown private terrace is not a positive": {
+      "cases": 14,
+      "passed": 14
+    },
+    "explicit property type matches same reference": {
+      "cases": 15,
+      "passed": 15
+    },
+    "D and B match an exact source reference": {
+      "cases": 14,
+      "passed": 14
+    },
+    "D B and terrace share the same reference": {
+      "cases": 14,
+      "passed": 14
+    },
+    "price cannot attach to D B reference": {
+      "cases": 14,
+      "passed": 14
+    },
+    "external price is absent from searchable offering text": {
+      "cases": 14,
+      "passed": 14
+    },
+    "lot appears by its explicit type with D B inactive": {
+      "cases": 1,
+      "passed": 1
+    },
+    "unknown lot bedrooms do not become zero": {
+      "cases": 1,
+      "passed": 1
+    },
+    "unknown lot bathrooms do not become one": {
+      "cases": 1,
+      "passed": 1
+    }
+  },
+  "exactDBReferenceCount": 14,
+  "exactDBReferenceIds": [
+    "IRIS-131-R001",
+    "IRIS-131-R002",
+    "IRIS-131-R003",
+    "IRIS-131-R004",
+    "IRIS-131-R005",
+    "IRIS-131-R007",
+    "IRIS-131-R008",
+    "IRIS-131-R009",
+    "IRIS-131-R010",
+    "IRIS-131-R011",
+    "IRIS-131-R012",
+    "IRIS-131-R013",
+    "IRIS-131-R014",
+    "IRIS-131-R015"
+  ],
+  "issuesNonemptyCases": 0,
+  "negativeResultsRequireEmptyIssues": true,
+  "canonicalContractUsed": {
+    "price": {
+      "query": [
+        "minPrice",
+        "maxPrice"
+      ],
+      "attribute": "priceUF"
+    },
+    "useful": {
+      "selector": "util",
+      "attribute": "usefulM2"
+    },
+    "total": {
+      "selector": "total",
+      "attribute": "totalM2"
+    },
+    "interior": {
+      "selector": "interior",
+      "attribute": "interiorM2"
+    },
+    "terrace": {
+      "selector": "terraza",
+      "attribute": "terraceM2"
+    }
+  },
+  "schemaLimits": {
+    "compatibleWith": "matchProjectFilters record contract only",
+    "notLebenCommercialFactoryInput": true,
+    "internalM2AndLotTotalM2ArePreservedDocumentaryMetricsNotEngineAliases": true
+  },
+  "operations": {
+    "onlyNewDataset": true,
+    "applicationStarted": false,
+    "existingTestSuitesRun": false,
+    "repositoryTestsModified": false,
+    "applicationFilesModified": false,
+    "networkRequests": false,
+    "publicModeAdded": false,
+    "publishedOrOwnerPricesModified": false,
+    "PRorPrebuiltModified": false
+  },
+  "publicConsumption": false
+}
