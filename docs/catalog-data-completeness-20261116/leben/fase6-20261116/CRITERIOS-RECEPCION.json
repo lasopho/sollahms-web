@@ -1,0 +1,89 @@
+{
+  "fase": 6,
+  "rol": "Revision independiente del protocolo de recepcion, solo lectura",
+  "fecha_documental": "2026-11-16",
+  "base_commit": "da5506875cf2f09133e883db55d3e8717d88c95d",
+  "entradas_revisadas": [
+    "leben/recepcion-fase2/PROTOCOLO-RECEPCION.md",
+    "leben/fase5-20261116/SIGUIENTE-PROMPT.md",
+    "leben/fase5-20261116/CONFLICTOS-TECNICOS-LEBEN.csv",
+    "leben/fase5-20261116/DOCUMENTOS-REALMENTE-FALTANTES-LEBEN.csv",
+    "leben/fase5-20261116/MAPEO-DOCUMENTOS.json",
+    "docs/iris-operational-manual/PROCEDIMIENTOS-DE-EXTRACCION.md",
+    "docs/iris-operational-manual/LIMITACIONES-Y-EXCEPCIONES.md"
+  ],
+  "resultado": "Procedimiento preparado; sin nuevos originales o respuestas que validar",
+  "hallazgos_materiales": [],
+  "invariantes": {
+    "pendientes_conservados": 313,
+    "conflictos_activos": 12,
+    "decision_D_03": 1,
+    "conflictos_tecnicos": 11,
+    "limite_adicional_F3_C001": 1,
+    "paquetes_principales": 13,
+    "anexos_INN_incluidos_en_su_paquete": 4,
+    "campos_documentales_mapeados_una_vez": 287,
+    "recibos_nuevos_en_este_turno": 0,
+    "hechos_validados_nuevos_en_este_turno": 0,
+    "conflictos_resueltos_nuevos_en_este_turno": 0
+  },
+  "esquemas_csv_recomendados": {
+    "REGISTRO-RECEPCION-DOCUMENTOS.csv": [
+      "id_recepcion", "fecha_recepcion", "nombre_original", "ruta_original_preservado", "sha256_original", "formato_real", "tamano_bytes", "proyecto", "slug", "id_paquete_f5", "ids_anexo_f5", "documento_tipo", "emisor_declarado", "fecha_documental", "version_revision", "modelo_unidad_alcance_literal", "campos_potenciales_ids", "ids_conflicto_o_limite", "paginas_o_hojas", "estado_recepcion", "duplicado_de", "observaciones"
+    ],
+    "HECHOS-VALIDADOS-FASE6.csv": [
+      "id_hecho", "id_recepcion", "id_fuente", "slug", "proyecto", "campo_id", "valor_literal", "valor_normalizado", "unidad_medida", "rotulo_metrica_original", "modelo_literal", "unidad_inmueble", "version_revision", "etapa_torre", "alcance_literal", "ubicacion_documental", "fecha_documental", "autoridad_emisor", "estado_dato", "ids_fuentes_comparadas", "ids_hechos_anteriores", "ids_conflicto_o_limite", "suficiente_para_cierre", "que_falta", "observaciones"
+    ],
+    "CONFLICTOS-RESUELTOS.csv": [
+      "id_resolucion", "id_conflicto_original", "tipo_registro_original", "slug", "modelo_unidad_alcance", "campos_ids", "ids_fuente_a", "ids_fuente_b", "ids_hechos_nuevos", "ids_recepcion", "resultado_conciliado", "version_aplicable", "motivo_suficiencia", "fecha_resolucion", "resuelto_totalmente", "limitaciones_restantes", "observaciones"
+    ]
+  },
+  "identificadores": {
+    "regla": "Definir patrones F6-R001, F6-H001 y F6-CR001 para recepcion, hechos y resoluciones, sin crear filas o consumir identificadores hasta recibir evidencia real. Para fuentes continuar el registro canónico a partir del siguiente F libre, después de comprobar unicidad. No renumerar identificadores históricos.",
+    "relaciones": "Cada hecho apunta al recibo y fuente reales; cada resolución apunta al ID de conflicto original, ambos lados conservados, hechos nuevos y ubicación precisa. Las claves de campo siguen siendo slug + campo_id, con modelo/unidad/versión en el hecho.",
+    "paquetes": "Mantener F5-DOC-01..13 y F5-ANX-INN-01..04 como IDs de lo esperado. Un documento puede respaldar varios campos; las asociaciones no son documentos adicionales."
+  },
+  "recepcion_y_preservacion": [
+    "Recibir solo archivos o declaraciones que el propietario proporcione explícitamente. Las instrucciones actuales no son una respuesta comercial ni un documento técnico recibido.",
+    "Preservar bytes originales, nombre recibido y SHA-256 antes de extraer. Copiar al expediente sin sobrescribir el archivo entregado. Registrar la ruta de la copia preservada y comprobar que su SHA coincide con la entrada.",
+    "Registrar fecha de recepción con zona horaria y mantener separada la fecha documental. No asumir que recepción equivale a revisión, vigencia o emisión.",
+    "Conservar fecha, autor o emisor, versión y alcance solo si constan. Un dato no encontrado queda vacío/desconocido; no inventar metadatos para completar el registro.",
+    "Un original con varios proyectos puede mantener una única identidad binaria, con asociaciones explícitas por proyecto/paquete. No contar los enlaces como nuevas recepciones de bytes.",
+    "Comparar SHA con originales existentes para detectar duplicación física. Un documento idéntico no aporta un nuevo hecho por volver a recibirse. Si el mensaje acompañante aporta alcance nuevo, preservarlo como declaración separada y evaluar esa novedad.",
+    "En texto recibido por chat, preservar una transcripción fiel como comunicación identificada y su SHA. Indicar que el hash pertenece a la transcripción conservada, no a un supuesto archivo binario original que no se entregó.",
+    "Derivados de OCR, recortes de lectura o conversiones se guardan aparte, vinculados al original y su propio SHA. Nunca reemplazan el original ni su autoridad."
+  ],
+  "validacion_por_formato": {
+    "PDF_y_memorias": "Comprobar que el archivo abre, páginas, legibilidad, rótulos del proyecto, fecha/revisión y modelo/unidad. Citar página y sección/cuadro. En PDF escaneado contrastar OCR con la imagen; marcar lo ilegible sin reconstruirlo. Una memoria solo respalda los modelos/versiones indicados.",
+    "Excel": "Identificar hojas y celdas exactas, proyecto, unidades y rótulos. Distinguir fórmulas de valores declarados y las respuestas del propietario de las filas de referencia prellenadas. Registrar hoja/rango por cada hecho. Una celda respondida no implica cierre automático; el workbook F5 sin respuestas no es evidencia nueva.",
+    "CSV": "Identificar separador, codificación, encabezados y filas mediante claves estables. Preservar identificadores como texto y rótulos/precisión originales. Registrar fila o clave de registro. No convertir una etiqueta vacía en cero o false.",
+    "fotografias_y_capturas": "Verificar legibilidad e identificación visible de proyecto/modelo/unidad, contexto y alcance. Registrar región o rótulo que sustenta el dato. No aceptar nombre de archivo o parecido visual como identificación suficiente; no reconstruir cifras pequeñas desde geometría.",
+    "planos": "Comprobar código, revisión, torre/etapa y unidades impresas. Separar superficie útil, interior, total, terraza, patio/jardín y terreno. Mantener Internos, logia y rooftop separados. No sumar/restar métricas ni extender a unidades enlazadas sin aplicabilidad expresa.",
+    "texto_y_declaraciones": "Guardar literal, autor o fuente declarada, fecha, proyecto, modelo/unidad y alcance. Distinguir declaración comercial de respaldo técnico. La precisión D-03 puede proceder del propietario si es expresa y delimita material/versión; los once conflictos físicos requieren documentación o aclaración técnica específica conforme al dossier F5."
+  },
+  "reglas_de_conciliacion": [
+    "Comprobar que cada aporte se refiere al mismo proyecto, modelo/unidad, versión y ámbito que el campo pendiente. La igualdad numérica o el parecido del plano no establece equivalencia.",
+    "Conservar A y B de los doce casos y el límite adicional. Un nuevo documento incompatible registra otra contradicción; no borra las fuentes previas.",
+    "D-03 requiere material comercial aplicable y alcance por modelo/versión. Si ambos materiales corresponden a versiones, conservar ambas asignaciones. Una mención sin alcance no permite elegir entre cuarzo y ultracompacto travertino.",
+    "La aplicabilidad de INN F/406 a 806/906 se evalúa como F3-C001, separado de los doce conflictos. No transferir torre o áreas por el enlace compartido.",
+    "Los tres PDF INN no recuperados conservan SHA vacío hasta recibir bytes válidos; no registrar hashes de URL o nombres como si fueran del documento. Procesar los originales entregados sin repetir exportaciones fallidas.",
+    "Un dato puede ser confirmado documentalmente, confirmado por propietario, parcial, histórico, contradictorio, desconocido o no aplicable. No aplicable exige respaldo explícito y no se deduce de una omisión.",
+    "Una resolución de una unidad no cierra automáticamente el campo global del proyecto. Verificar que el alcance suficiente cubre la clave pendiente y las contradicciones que afectan ese mismo campo.",
+    "El cambio de estado exige antes/después, hecho nuevo, recibo, fuente, ubicación, alcance y motivo. Los parciales siguen pendientes y no se suman a cierres completos.",
+    "No reabrir los veinte precios y dos adicionales F049 para exigir vigencia o ratificación nueva: ya están aceptados como declaraciones del 16/11/2026. La regla de recepción F2 se aplica a nuevos importes, no retroactivamente al respaldo aceptado."
+  ],
+  "preparacion_sin_nuevos_originales": {
+    "registro_recepcion": "Solo encabezados, cero filas. No añadir las diecisiete expectativas como si fueran documentos recibidos.",
+    "hechos_validados": "Solo encabezados, cero filas. No crear F6-H para repetir hechos históricos o para describir la preparación administrativa.",
+    "conflictos_resueltos": "Solo encabezados, cero filas. Los doce conflictos y F3-C001 permanecen abiertos.",
+    "documentos_aun_faltantes": "Conservar diecisiete filas de expectativas de fase 5: trece paquetes y cuatro anexos INN, con estado de recepción pendiente y sin SHA nuevo. Los anexos no suman cobertura documental adicional.",
+    "pendientes_actualizados": "Conservar exactamente las 313 claves y valores de base. Si se añaden metadatos F6, deben indicar que no hubo recepción ni cambio de estado.",
+    "canon_fuentes": "No añadir fuente F nueva por las instrucciones o el protocolo. Conservar matrices y registro de fuentes sin cambios si no hay hechos nuevos que incorporar."
+  },
+  "protecciones": [
+    "Sin navegación nueva o relectura de los once brochures, 210 gráficos o doce plantillas.",
+    "Sin endpoints privados, URLs inventadas, exportaciones fallidas repetidas o búsqueda en fuentes privadas.",
+    "Conservar autenticación interactiva en Chrome, sin acceder a credenciales, cookies o tokens.",
+    "Solo documentación; sin cambios de producción, main, PR, deployment, publicación o inicio automático de Euro."
+  ]
+}

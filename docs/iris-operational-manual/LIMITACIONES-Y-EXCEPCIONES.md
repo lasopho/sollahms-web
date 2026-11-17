@@ -59,3 +59,9 @@ El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-2
 Una lectura documental confirmada y un enlace de unidad a plano no confirman por sí solos la realidad física, la versión vigente o la aplicabilidad. Mood A enlazado a 303 conserva la observación previa DEPTO 201 y 1,5D, sin redondeo. Bold F tiene tres recursos diferentes: IR-P106 para 207/307, IR-P107 para 508 e IR-P108 enlazado a 608; solo este último contiene el cuadro 62,40/3,12/65,52. No propagarlo a los demás recursos. F3-C001 sigue siendo un límite adicional, fuera de los doce conflictos.
 
 No resolver cantidades físicas mediante una elección personal. Obtener plano, cuadro o constancia técnica con unidad/modelo/versión explícitos. El propietario puede precisar la especificación comercial de cubiertas INN y su alcance; si falta respaldo, solicitar memoria técnica. No hay nuevas fuentes ni cambios verificados de interfaz en esta fase.
+
+## Expectativas frente a recepciones — fase 6, 16/11/2026
+
+F5-DOC-01..13 y los cuatro anexos INN identifican documentos esperados. No son archivos recibidos y no tienen una nueva fecha/SHA hasta su entrega real. Sin nuevos antecedentes, los registros de recepción, hechos y resoluciones tienen cero filas y los 313 campos permanecen pendientes.
+
+La regla histórica de solicitar vigencia para una cotización no se aplica retroactivamente a los veinte precios y dos adicionales F049 ya aceptados al 16/11/2026. Una aclaración parcial o un archivo de alcance limitado no resuelve el caso completo ni un campo global por sí solo.

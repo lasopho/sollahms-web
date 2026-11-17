@@ -1,0 +1,192 @@
+{
+  "fecha": "2026-11-16",
+  "commit_base": "da5506875cf2f09133e883db55d3e8717d88c95d",
+  "controles": [
+    {
+      "control": "rama de auditoria",
+      "correcto": true
+    },
+    {
+      "control": "fuentes Iris/F3/F4/F5 y canonicos intactos",
+      "correcto": true,
+      "detalle": 326
+    },
+    {
+      "control": "preimagenes administrativas recuperables en Git",
+      "correcto": true
+    },
+    {
+      "control": "REGISTRO-RECEPCION-DOCUMENTOS.csv: esquema y cero registros",
+      "correcto": true
+    },
+    {
+      "control": "REGISTRO-RECEPCION-DOCUMENTOS.csv: ningun ID o hash ficticio",
+      "correcto": true
+    },
+    {
+      "control": "HECHOS-VALIDADOS-FASE6.csv: esquema y cero registros",
+      "correcto": true
+    },
+    {
+      "control": "HECHOS-VALIDADOS-FASE6.csv: ningun ID o hash ficticio",
+      "correcto": true
+    },
+    {
+      "control": "CONFLICTOS-RESUELTOS.csv: esquema y cero registros",
+      "correcto": true
+    },
+    {
+      "control": "CONFLICTOS-RESUELTOS.csv: ningun ID o hash ficticio",
+      "correcto": true
+    },
+    {
+      "control": "313 claves y todas las columnas F5 conservadas",
+      "correcto": true
+    },
+    {
+      "control": "cohorte unica slug y campo",
+      "correcto": true
+    },
+    {
+      "control": "sin cambios de estado ni cierres",
+      "correcto": true
+    },
+    {
+      "control": "sin recepciones hechos o resoluciones asignados al ledger",
+      "correcto": true
+    },
+    {
+      "control": "107 parciales en saldo",
+      "correcto": true
+    },
+    {
+      "control": "17 expectativas y todas las columnas F5 conservadas",
+      "correcto": true
+    },
+    {
+      "control": "13 paquetes y cuatro anexos INN con IDs intactos",
+      "correcto": true
+    },
+    {
+      "control": "expectativas no se presentan recibidas",
+      "correcto": true
+    },
+    {
+      "control": "287 campos con asignacion primaria unica",
+      "correcto": true
+    },
+    {
+      "control": "12 casos mas F3-C001 separado",
+      "correcto": true
+    },
+    {
+      "control": "ningun conflicto o limite resuelto",
+      "correcto": true
+    },
+    {
+      "control": "criterio especifico para cada caso y anexo",
+      "correcto": true
+    },
+    {
+      "control": "49 fuentes sin asignaciones nuevas",
+      "correcto": true
+    },
+    {
+      "control": "689 estados previos y 215 confirmados",
+      "correcto": true
+    },
+    {
+      "control": "saldo y cobertura sin avance artificial",
+      "correcto": true
+    },
+    {
+      "control": "313 intervenciones agrupadas y sin ronda nueva",
+      "correcto": true
+    },
+    {
+      "control": "131 identidades y todo valor anterior intacto",
+      "correcto": true
+    },
+    {
+      "control": "118 restantes sin metadatos F6",
+      "correcto": true
+    },
+    {
+      "control": "13 proyectos solo preparacion administrativa",
+      "correcto": true
+    },
+    {
+      "control": "global conserva datos y cortes anteriores",
+      "correcto": true
+    },
+    {
+      "control": "bloques ajenos a Leben intactos",
+      "correcto": true
+    },
+    {
+      "control": "XLSX F5 intacto",
+      "correcto": true
+    },
+    {
+      "control": "XLSX hoja 1 leida y sin respuestas nuevas",
+      "correcto": true
+    },
+    {
+      "control": "XLSX hoja 2 leida y sin respuestas nuevas",
+      "correcto": true
+    },
+    {
+      "control": "XLSX hoja 3 leida y sin respuestas nuevas",
+      "correcto": true
+    },
+    {
+      "control": "235 hashes protegidos originales",
+      "correcto": true
+    },
+    {
+      "control": "deployment de rama excluido",
+      "correcto": true
+    },
+    {
+      "control": "cuatro prompts completos identicos",
+      "correcto": true
+    },
+    {
+      "control": "sin originales o derivados inventados",
+      "correcto": true
+    },
+    {
+      "control": "todos los entregables pedidos presentes",
+      "correcto": true
+    },
+    {
+      "control": "enlaces locales de entregables validos",
+      "correcto": true,
+      "detalle": []
+    },
+    {
+      "control": "cambios solo documentales",
+      "correcto": true
+    },
+    {
+      "control": "ningun dato previo modificado fuera de metadatos autorizados",
+      "correcto": true
+    },
+    {
+      "control": "sin archivos de ejecucion o medios nuevos",
+      "correcto": true
+    }
+  ],
+  "resultado": "Correcto",
+  "verificacion_sincronizacion": "HEAD remoto, main, deployments y árbol limpio se verifican al terminar la sincronización; ver entrega final.",
+  "revisiones_independientes": [
+    {
+      "archivo": "REVISION-FINAL-RECEPCION.json",
+      "sha256": "ea449eb4cf09d21f80b3f6b321e9be12dc0bc4e59f34c131b35bcd9427804985"
+    },
+    {
+      "archivo": "REVISION-FINAL-CONFLICTOS-DOCUMENTOS.json",
+      "sha256": "d337c3d8614d10d695e955f5a6c1bed56747d35e2c41a49d90f2f6b221627977"
+    }
+  ]
+}

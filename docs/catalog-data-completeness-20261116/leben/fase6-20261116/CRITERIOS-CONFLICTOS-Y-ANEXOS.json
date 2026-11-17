@@ -1,0 +1,329 @@
+{
+  "fecha_corte": "2026-11-16",
+  "base_commit_fase6": "da5506875cf2f09133e883db55d3e8717d88c95d",
+  "modo": "Revisión de fuentes existentes, sin navegación ni modificación del repositorio",
+  "fuentes": {
+    "DOSSIER-CONFLICTOS.json": "c439e579f34262976c73e53d02f95bd78f1a99e3887698e20a0b985e6be00cee",
+    "MAPEO-DOCUMENTOS.json": "5a994f3fe1f9faf0a3350f570c167ed74baff2c60e9176359e2724f63e3f23f2",
+    "DOCUMENTOS-REALMENTE-FALTANTES-LEBEN.csv": "ecb1bb128091615296718eb971bbf5ed7d57f0ef8d968fecf47b0c18341224bf"
+  },
+  "regla_sin_nueva_evidencia": "Las instrucciones fase 6 no son una declaración comercial ni un documento técnico nuevo. Ningún caso se resuelve por preparar recepción.",
+  "criterios_comunes": [
+    "Documento o declaración real, recibido con original preservado, SHA, fecha y procedencia.",
+    "Proyecto, unidad/modelo, versión y alcance identificados y legibles; fecha de recepción separada de vigencia.",
+    "Comparar con A/B conservados, explicar qué contradicción resuelve y qué fuente/version queda histórica o sigue vigente. Una fecha más reciente no resuelve por sí sola la aplicabilidad.",
+    "Conservar literal, rótulo y localizador página/hoja/celda/imagen; distinguir lectura documental de hecho físico.",
+    "Si el respaldo cubre solo parte de las unidades/versiones, registrar hecho nuevo y avance parcial sin resolver el caso completo ni un campo global de cobertura incompleta.",
+    "Cerrar únicamente claves del ledger realmente respaldadas; contar cada slug+campo_id una vez aunque aparezca en varios casos/documentos."
+  ],
+  "casos": [
+    {
+      "id_conflicto": "IR-C001",
+      "proyecto": "Living Town",
+      "slug": "edificio-living-town",
+      "unidad_o_modelo": "A1 / unidades 603 y 803",
+      "campos_afectados": [
+        "banos"
+      ],
+      "documento_concreto_minimo": "Plano vigente de A1 aplicable a603 y803, o ficha técnica emitida por Leben que identifique esas unidades y número de baños.",
+      "criterio_especifico": "Acreditar número de baños de A1 para 603 y 803 por separado o mediante alcance expreso común. F049 2D2B general no acredita A1.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "IR-C003",
+      "proyecto": "Mood",
+      "slug": "edificio-mood",
+      "unidad_o_modelo": "A / unidad303; gráfico rotulado DEPTO201",
+      "campos_afectados": [
+        "dormitorios"
+      ],
+      "documento_concreto_minimo": "Plano/ficha vigente específica de303 o tabla oficial de equivalencia de versiones A/201/303, con tipología rotulada.",
+      "criterio_especifico": "Acreditar tipología y criterio 1,5D/2D aplicables a 303, además de resolver el alcance del gráfico rotulado DEPTO 201. Conservar 1,5D literal; no redondear.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "CAP-A-ALCANCE",
+      "proyecto": "Capitanes",
+      "slug": "capitanes",
+      "unidad_o_modelo": "A / unidades501 y601",
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo",
+        "superficie_interior",
+        "superficie_total"
+      ],
+      "documento_concreto_minimo": "Planos vigentes de501/601 o certificado de correspondencia del plano A con listado de unidades y cuadro de superficies.",
+      "criterio_especifico": "Vincular expresamente la versión A con 501/601 o aportar planos correctos de esas unidades. No convertir Internos 87,01 a Interior por coincidencia con el plano 201 al 301. Mantener logia separada.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "BOLD-S1-TIPOLOGIA",
+      "proyecto": "Bold",
+      "slug": "edificio-bold",
+      "unidad_o_modelo": "S1 / unidad312",
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo",
+        "dormitorios"
+      ],
+      "documento_concreto_minimo": "Plano/ficha tipológica vigente de312/S1 o aclaración técnica de Leben que identifique el recinto y el código.",
+      "criterio_especifico": "Identificar 312/S1 y tipología vigente, estudio o 1D, con respaldo técnico. El dato de baños coincide en uno y no requiere otra conciliación.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "BOLD-F-SUPERFICIES",
+      "proyecto": "Bold",
+      "slug": "edificio-bold",
+      "unidad_o_modelo": "F / unidades207,307,508,608",
+      "campos_afectados": [
+        "superficie_interior",
+        "superficie_terraza",
+        "superficie_total"
+      ],
+      "documento_concreto_minimo": "Cuadro oficial de superficies por unidad/versiones F207,307,508,608 más plano vigente de cada versión o certificado de aplicabilidad.",
+      "criterio_especifico": "Identificar plano/versión y cuadro de superficies aplicables a cada una de 207,307,508,608. Preservar tres recursos distintos IR-P106/107/108. Aclarar la métrica Internos y terraza 3,71 UI frente a 3,12 de P108. No trasladar el cuadro de P108 a los demás recursos ni expandir el rango impreso.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "ARG-C-C1",
+      "proyecto": "Argomedo",
+      "slug": "edificio-argomedo",
+      "unidad_o_modelo": "C1(UI) / C(gráfico), unidad915",
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo"
+      ],
+      "documento_concreto_minimo": "Tabla oficial de equivalencia C/C1 con unidad915 o plano corregido de915 identificado por Leben.",
+      "criterio_especifico": "Vincular 915 con C/C1 mediante equivalencia oficial o plano correcto. Ambos lados ya coinciden en 2D2B; no pedir precio o dirección.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "INDI-D-PLANO-A2",
+      "proyecto": "Indi",
+      "slug": "edificio-indi",
+      "unidad_o_modelo": "D(UI) / A2(gráfico), unidad607",
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo",
+        "dormitorios"
+      ],
+      "documento_concreto_minimo": "Plano/ficha de607 y correspondencia oficial D/A2, incluyendo tipología y revisión de versión.",
+      "criterio_especifico": "Identificar unidad 607, código/versión y dormitorios aplicables a D/A2. El nombre del archivo modelo-d no resuelve el código impreso. Baños uno en ambos lados.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "INDI-A4-PLANO-C1",
+      "proyecto": "Indi",
+      "slug": "edificio-indi",
+      "unidad_o_modelo": "A4(UI) / C1(gráfico), unidad411",
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo"
+      ],
+      "documento_concreto_minimo": "Tabla de correspondencia oficial A4/C1 con unidad411 o plano vigente corregido para411.",
+      "criterio_especifico": "Acreditar la correspondencia A4/C1 para 411 o aportar plano correcto. La equivalencia no se propaga a 1104/805 por URL compartida.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "IR-C020",
+      "proyecto": "INN Puerto Chico",
+      "slug": "inn-puerto-chico",
+      "unidad_o_modelo": "S / unidad605, TorreA en gráfico",
+      "campos_afectados": [
+        "banos"
+      ],
+      "documento_concreto_minimo": "Plano vigente S605 con tipología y baños rotulados o ficha técnica/certificación de Leben identificando la unidad.",
+      "criterio_especifico": "Identificar S/605 y revisión aplicable, con baños expresamente respaldados. La discrepancia es tres frente a dos baños, sin cambiar los tres dormitorios coincidentes.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "IR-C021",
+      "proyecto": "INN Puerto Chico",
+      "slug": "inn-puerto-chico",
+      "unidad_o_modelo": "R / unidad604, TorreA en gráfico",
+      "campos_afectados": [
+        "dormitorios"
+      ],
+      "documento_concreto_minimo": "Plano/ficha vigente R604 con tipología y definición de recintos, o aclaración técnica firmada por Leben.",
+      "criterio_especifico": "Identificar R/604 y revisión aplicable, con cantidad/criterio de dormitorios expresos. La discrepancia es cuatro frente a cinco dormitorios; los cuatro baños coinciden. No inferir la causa por geometría.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "IR-C022",
+      "proyecto": "INN Puerto Chico",
+      "slug": "inn-puerto-chico",
+      "unidad_o_modelo": "Q / unidad603, TorreA en gráfico",
+      "campos_afectados": [
+        "dormitorios"
+      ],
+      "documento_concreto_minimo": "Plano/ficha vigente Q603 con tipología y definición de recintos, o aclaración técnica firmada por Leben.",
+      "criterio_especifico": "Identificar Q/603 y revisión aplicable, con cantidad/criterio de dormitorios expresos. La discrepancia es cuatro frente a cinco dormitorios; los cuatro baños coinciden. No inferir la causa por geometría.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    },
+    {
+      "id_conflicto": "D-03",
+      "proyecto": "INN Puerto Chico",
+      "slug": "inn-puerto-chico",
+      "unidad_o_modelo": "Modelos/versiones por precisar; solicitud L-047",
+      "campos_afectados": [
+        "interior_cubiertas"
+      ],
+      "documento_concreto_minimo": "Declaración expresa precisa del propietario con material y alcance, o memoria de terminaciones vigente de Leben por modelo/versión.",
+      "criterio_especifico": "Declaración comercial precisa del propietario o memoria aplicable con material y alcance por modelo/versión. Si cuarzo y ultracompacto travertino pertenecen a versiones diferentes, mantener ambos con alcances y fechas diferenciados. Sin alcance suficiente no cerrar el campo global; no seleccionar una alternativa por defecto.",
+      "estado_fase6_sin_nuevas_evidencias": "Abierto, sin cambio de estado ni valor",
+      "resolucion_propuesta": false
+    }
+  ],
+  "limitacion_adicional": {
+    "id_conflicto": "F3-C001",
+    "proyecto": "INN Puerto Chico",
+    "slug": "inn-puerto-chico",
+    "unidad_o_modelo": "F / 406,806,906",
+    "campos_afectados": [
+      "etapa_modelo",
+      "superficie_interior",
+      "superficie_total",
+      "superficie_terraza",
+      "superficie_jardin"
+    ],
+    "documento_concreto_minimo": "Planos F806/F906 o certificado oficial de equivalencia y alcance por unidad frente al plano406.",
+    "tipo": "LIMITACION_ADICIONAL",
+    "criterio": "Constancia expresa de aplicabilidad de F/406 a 806/906 o planos específicos correctos. Sin ello, IR-P125 conserva Torre B/406; no transferir patio, torre, interior, total o terraza a 806/906. No contar como conflicto trece.",
+    "resolucion_propuesta": false
+  },
+  "anexos_INN": [
+    {
+      "id_documento": "F5-ANX-INN-01",
+      "documento_principal_id": "F5-DOC-11",
+      "documento_requerido": "Archivo PDF original del plano adjunto a unidad 616 / modelo UI N",
+      "nombre_recurso": "694a1152bb220_pc-f-15-04.pdf",
+      "recepcion_actual": "No recibido",
+      "sha256_original_nuevo": null,
+      "criterio": "Procesar bytes originales directamente, registrar SHA y páginas, cotejar el rótulo real con la unidad/modelo UI esperado y conservar cualquier divergencia. No deducir modelo o unidad del nombre del archivo.",
+      "cobertura_adicional_no_duplicada": 0
+    },
+    {
+      "id_documento": "F5-ANX-INN-02",
+      "documento_principal_id": "F5-DOC-11",
+      "documento_requerido": "Archivo PDF original del plano adjunto a unidad 513 / modelo UI B2",
+      "nombre_recurso": "694a0be8bd379_pc-f-03-04.pdf",
+      "recepcion_actual": "No recibido",
+      "sha256_original_nuevo": null,
+      "criterio": "Procesar bytes originales directamente, registrar SHA y páginas, cotejar el rótulo real con la unidad/modelo UI esperado y conservar cualquier divergencia. No deducir modelo o unidad del nombre del archivo.",
+      "cobertura_adicional_no_duplicada": 0
+    },
+    {
+      "id_documento": "F5-ANX-INN-03",
+      "documento_principal_id": "F5-DOC-11",
+      "documento_requerido": "Archivo PDF original del plano adjunto a unidad 601 / modelo UI O1",
+      "nombre_recurso": "694a0b8a05509_pc-f-17-04.pdf",
+      "recepcion_actual": "No recibido",
+      "sha256_original_nuevo": null,
+      "criterio": "Procesar bytes originales directamente, registrar SHA y páginas, cotejar el rótulo real con la unidad/modelo UI esperado y conservar cualquier divergencia. No deducir modelo o unidad del nombre del archivo.",
+      "cobertura_adicional_no_duplicada": 0
+    },
+    {
+      "id_documento": "F5-ANX-INN-04",
+      "documento_principal_id": "F5-DOC-11",
+      "documento_requerido": "Planos específicos de unidades806/906 o constancia técnica de aplicabilidad de la versiónF/406 a esas unidades.",
+      "nombre_recurso": null,
+      "recepcion_actual": "No recibido",
+      "sha256_original_nuevo": null,
+      "criterio": "Constancia expresa de aplicabilidad de F/406 a 806/906 o planos específicos correctos. Sin ello, IR-P125 conserva Torre B/406; no transferir patio, torre, interior, total o terraza a 806/906. No contar como conflicto trece.",
+      "cobertura_adicional_no_duplicada": 0
+    }
+  ],
+  "DOCUMENTOS_AUN_FALTANTES_propuesta": {
+    "origen": "DOCUMENTOS-REALMENTE-FALTANTES-LEBEN.csv de fase 5",
+    "filas": 17,
+    "conservar_columnas_previas": [
+      "id_documento",
+      "tipo_registro",
+      "proyecto",
+      "slug",
+      "documento_requerido",
+      "solicitud_compacta",
+      "campos_primarios_cubiertos",
+      "cantidad_campos_primarios",
+      "ids_solicitud_originales",
+      "grupos_requeridos",
+      "detalles_por_grupo",
+      "origen_posible",
+      "intervencion_propietario",
+      "que_ya_existe_y_se_excluye",
+      "referencias_comerciales_aceptadas_no_solicitables",
+      "tarjetas_ui_existentes",
+      "planos_de_unidad_existentes",
+      "no_exige_crear_documento_nuevo",
+      "respuesta_propietario",
+      "observaciones_respuesta",
+      "documento_principal_id",
+      "unidad",
+      "modelo_ui_literal",
+      "nombre_recurso",
+      "url_observada",
+      "fuente_previa",
+      "id_candidato_previo",
+      "sha256_documento",
+      "estado_actual",
+      "campos_potenciales_primarios_apoyados",
+      "cantidad_cobertura_adicional_no_duplicada",
+      "regla_cierre",
+      "unidades",
+      "id_limite_existente",
+      "id_plano_existente",
+      "alcance_impreso_existente",
+      "unidades_enlazadas_dom_existentes",
+      "archivo_existente",
+      "sha256_existente"
+    ],
+    "conservar_todos_los_valores_previos": true,
+    "conservar_orden_e_ids": true,
+    "columnas_nuevas_sugeridas": {
+      "estado_recepcion_fase6": "NO_RECIBIDO",
+      "ids_recepcion_fase6": "[]",
+      "fecha_ultima_recepcion_fase6": "",
+      "sha256_originales_recibidos_fase6": "[]",
+      "estado_validacion_fase6": "NO_INICIADA",
+      "alcance_validado_fase6": "",
+      "ids_hechos_fase6": "[]",
+      "claves_campos_respaldados_fase6": "[]",
+      "claves_campos_cerrados_fase6": "[]",
+      "motivo_sigue_faltante_fase6": "Sin nuevo documento o respuesta recibido para el alcance faltante."
+    },
+    "reglas": [
+      "No usar las 17 filas de documentos esperados como si fueran 17 recepciones reales. El registro de recepción permanece sin filas si no hay originales/declaraciones nuevos.",
+      "El SHA existente del gráfico F/406 no es SHA de un nuevo documento de aplicabilidad. Los tres PDF aún sin recuperar no reciben hash inventado.",
+      "Un paquete puede recibirse parcialmente en varios archivos. Las referencias de recepción son listas o relaciones por ID; no duplicar la cobertura primaria 287 para representar archivos.",
+      "D-03 tiene una respuesta comercial y/o memoria dentro de INN. No crear otro paquete o un anexo quinto solo para repetir la pregunta.",
+      "Los seis campos comerciales Santo/BAUM conservan sus solicitudes previas y no aumentan los 287 ni originan nueva ronda."
+    ]
+  },
+  "validaciones": {
+    "12_conflictos": true,
+    "11_tecnicos_y_1_D03": true,
+    "F3C001_separado": true,
+    "17_filas_documentales": true,
+    "13_paquetes": true,
+    "4_anexos_INN": true,
+    "287_claves_unicas": true,
+    "cero_cobertura_adicional_anexos": true,
+    "IDs_csv_json_iguales": true,
+    "sin_respuestas_previas_en_pendientes": true
+  },
+  "resultado": "Correcto",
+  "campos_cerrados_por_esta_revision": 0,
+  "conflictos_resueltos_por_esta_revision": 0,
+  "saldo_que_debe_conservarse": 313
+}

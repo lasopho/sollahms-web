@@ -55,3 +55,9 @@ El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-2
 Sin nueva navegación, autenticación, lectura de imágenes o exportación. La conciliación reutilizó las fuentes ya conservadas. Resultado: 313 pendientes antes/después, cero cierres y cero fuentes primarias nuevas. Se distinguieron una precisión comercial D-03, once conflictos técnicos y F3-C001 como límite adicional. Los 287 campos documentales se agruparon en trece paquetes, con cuatro anexos INN dentro del mismo envío.
 
 La fuente activa de coordinación es [INFORME-FASE5-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE5-LEBEN.md). La navegación descrita en este manual no se verificó nuevamente en esta fase. Consultar NEXT-PROMPT antes de abrir Iris para evitar relecturas y preguntas duplicadas.
+
+## Fase 6 — recepción preparada, 16/11/2026
+
+No se recibieron documentos ni declaraciones nuevos. No hubo navegación, autenticación, lectura gráfica o exportación. Se prepararon registros vacíos y validación por paquete para los antecedentes futuros: saldo 313, cero cierres. Dentro del saldo hay 107 parciales,177 desconocidos,20 contradictorios y9 históricos; los 161 parciales del universo no son el mismo conteo.
+
+La coordinación activa está en [INFORME-FASE6-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE6-LEBEN.md). Las 17 expectativas documentales no son recepciones. No se verificó nuevamente la interfaz de Iris.

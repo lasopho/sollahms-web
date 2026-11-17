@@ -1,0 +1,169 @@
+{
+  "fecha": "2026-11-16",
+  "rol": "Revision independiente final de protocolo e implementación F6",
+  "solo_lectura_repo": true,
+  "base": "da5506875cf2f09133e883db55d3e8717d88c95d",
+  "controles": [
+    {
+      "control": "REGISTRO-RECEPCION-DOCUMENTOS.csv: encabezados iguales al esquema",
+      "correcto": true
+    },
+    {
+      "control": "REGISTRO-RECEPCION-DOCUMENTOS.csv: cero filas, sin evidencia ficticia",
+      "correcto": true
+    },
+    {
+      "control": "HECHOS-VALIDADOS-FASE6.csv: encabezados iguales al esquema",
+      "correcto": true
+    },
+    {
+      "control": "HECHOS-VALIDADOS-FASE6.csv: cero filas, sin evidencia ficticia",
+      "correcto": true
+    },
+    {
+      "control": "CONFLICTOS-RESUELTOS.csv: encabezados iguales al esquema",
+      "correcto": true
+    },
+    {
+      "control": "CONFLICTOS-RESUELTOS.csv: cero filas, sin evidencia ficticia",
+      "correcto": true
+    },
+    {
+      "control": "313 claves conservadas",
+      "correcto": true
+    },
+    {
+      "control": "todas las columnas anteriores del ledger intactas",
+      "correcto": true
+    },
+    {
+      "control": "ningun campo cerrado en fase6",
+      "correcto": true
+    },
+    {
+      "control": "sin IDs de recepcion hechos o resoluciones en ledger",
+      "correcto": true
+    },
+    {
+      "control": "estados vigentes iguales a fase4",
+      "correcto": true
+    },
+    {
+      "control": "107 parciales de saldo distinguidos",
+      "correcto": true
+    },
+    {
+      "control": "17 expectativas conservadas",
+      "correcto": true
+    },
+    {
+      "control": "columnas originales de expectativas intactas",
+      "correcto": true
+    },
+    {
+      "control": "13 paquetes y 4 anexos separados",
+      "correcto": true
+    },
+    {
+      "control": "expectativas no marcadas como recibidas o validadas",
+      "correcto": true
+    },
+    {
+      "control": "expectativas sin hashes fechas o recepciones nuevas",
+      "correcto": true
+    },
+    {
+      "control": "protocolo distingue instrucciones plantilla y expectativas de recepcion",
+      "correcto": true
+    },
+    {
+      "control": "originales y hashes protegidos antes de extraer",
+      "correcto": true
+    },
+    {
+      "control": "transcripcion y derivados identificados",
+      "correcto": true
+    },
+    {
+      "control": "deduplicacion conserva contexto nuevo",
+      "correcto": true
+    },
+    {
+      "control": "soportes requeridos previstos",
+      "correcto": true
+    },
+    {
+      "control": "separacion de metricas y aplicabilidad",
+      "correcto": true
+    },
+    {
+      "control": "IDs nuevos solo al haber evidencia",
+      "correcto": true
+    },
+    {
+      "control": "lectura validada distinguida de hecho fisico",
+      "correcto": true
+    },
+    {
+      "control": "D03 no elegido arbitrariamente",
+      "correcto": true
+    },
+    {
+      "control": "once tecnicos y limite tratados especificamente",
+      "correcto": true
+    },
+    {
+      "control": "resoluciones parciales no declaradas completas",
+      "correcto": true
+    },
+    {
+      "control": "cohorte y saldo futuro distinguibles",
+      "correcto": true
+    },
+    {
+      "control": "paquetes y anexos sin doble conteo",
+      "correcto": true
+    },
+    {
+      "control": "F049 y direcciones no re-pedidos",
+      "correcto": true
+    },
+    {
+      "control": "sin repeticion exportaciones o auditorias",
+      "correcto": true
+    },
+    {
+      "control": "autenticacion interactiva preservada",
+      "correcto": true
+    },
+    {
+      "control": "prompt incluye estado F6 y contexto tecnico completo",
+      "correcto": true
+    },
+    {
+      "control": "prompt repite requerimientos de preservacion y criterio de cierre",
+      "correcto": true
+    },
+    {
+      "control": "informe distingue saldo parcial y universo",
+      "correcto": true
+    },
+    {
+      "control": "informe declara cero nueva recepcion/incorporacion",
+      "correcto": true
+    },
+    {
+      "control": "resumen cero ingresos hechos cierres",
+      "correcto": true
+    },
+    {
+      "control": "resumen 313 y estados correctos",
+      "correcto": true
+    }
+  ],
+  "total": 39,
+  "correctos": 39,
+  "hallazgos_materiales": [],
+  "observaciones_menores": [],
+  "resultado": "Correcto"
+}

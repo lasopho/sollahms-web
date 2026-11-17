@@ -1,6 +1,30 @@
-# Continuar Sollahms / Leben después de la fase 5
+# Continuar Sollahms / Leben después de la preparación de fase 6
 
-Continúa la auditoría documental de Leben desde el corte del 16/11/2026, America/Santiago. Repositorio `lasopho/sollahms-web`, rama `codex/auditoria-leben-20261116`, checkout independiente `/private/tmp/sollahms-auditoria-leben-20261116`. La base de fase 5 fue `2774b10bff3e74d186359f7793fa8712866a83fb`. Antes de editar consulta HEAD local y remoto actuales y conserva cambios posteriores. No trabajes sobre el checkout original con cambios ajenos. Lee AGENTS.md si aparece.
+Continúa la recepción documental de Leben. Repositorio `lasopho/sollahms-web`, rama `codex/auditoria-leben-20261116`, checkout independiente `/private/tmp/sollahms-auditoria-leben-20261116`. Base F6 verificada local/remota: `da5506875cf2f09133e883db55d3e8717d88c95d`. Antes de editar consulta HEAD y remoto actuales, conserva cambios posteriores y lee AGENTS.md si aparece. No usar el checkout original con cambios ajenos.
+
+## Estado activo de fase 6
+
+Lee `docs/catalog-data-completeness-20261116/leben/INFORME-FASE6-LEBEN.md` y `leben/fase6-20261116/`: `RESUMEN-FASE6.json`, `PROTOCOLO-RECEPCION-Y-VALIDACION.md`, `ESQUEMAS-RECEPCION.json`, `REGISTRO-RECEPCION-DOCUMENTOS.csv`, `HECHOS-VALIDADOS-FASE6.csv`, `CONFLICTOS-RESUELTOS.csv`, `PENDIENTES-ACTUALIZADOS.csv`, `DOCUMENTOS-AUN-FALTANTES.csv`, `CRITERIOS-CONFLICTOS-Y-ANEXOS.json` y las verificaciones. Lee también maestra/global y manual Iris completo. Los antecedentes F5/F4 detallados debajo siguen siendo la base histórica de comparación.
+
+El turno que preparó fase 6 contenía instrucciones y ningún archivo o respuesta inmobiliaria nuevos. Los tres registros de recepción, hechos y resoluciones tienen solo encabezados. No contarlos como documentos recibidos ni registrar la plantilla vacía o el encargo como fuente comercial. No se asignó ningún F6-R, F6-H, F6-CR ni una fuente F nueva.
+
+Saldo activo: **313 pendientes**, cero campos nuevos completos o enriquecidos parcialmente, cero conflictos resueltos. Dentro de los 313: **107 parciales,177 desconocidos,20 contradictorios y9 históricos**. En el universo de 689 hay 215 confirmados,161 parciales,177 desconocidos,26 contradictorios,99 propuestas false de catálogo,9 históricos y2 no aplicables. La cobertura es 215/689 =31,20 %. Son universos distintos: no presentar los 161 parciales totales como si todos integraran el saldo de 313.
+
+La intervención adicional mantiene 306 campos de respaldo documental/técnico, uno D-03 y seis esperas previas Santo/BAUM. La partición de origen es 287 documentales/de alcance,20 de conflicto,6 comerciales. Los trece paquetes y cuatro anexos INN siguen NO_RECIBIDO, con sus 17 filas y todas las columnas F5 conservadas. Los 287 campos están asignados una vez en MAPEO-DOCUMENTOS F5. No convertir esta estructura en una nueva ronda de preguntas.
+
+## Recepción e incorporación a ejecutar solo cuando llegue evidencia
+
+Recibe PDF, Excel, CSV, fotografías, capturas, planos, memorias o texto/declaraciones que proporcione el propietario. Conserva original, nombre y SHA de bytes antes de extraer; mantén derivados separados y verifica igualdad de hash de la copia. En mensajes, preserva una transcripción fiel e identifica que el hash corresponde a esa transcripción. Fecha de recepción con zona horaria y fecha documental van separadas. No inventes proyecto, emisor, versión o vigencia ausentes.
+
+Usa los esquemas preparados. Asigna el siguiente F6-R libre solo a una recepción real, F6-H a un hecho leído y validado y F6-CR a una resolución suficientemente respaldada. Continúa fuentes F desde el siguiente ID libre tras verificar el registro canónico; la base termina en F049. Conservar todos los IDs previos. Un duplicado SHA no crea hechos nuevos; evaluar aparte cualquier declaración nueva de alcance que lo acompañe.
+
+Registra proyecto/slug, paquete, modelo, unidad, versión, torre, rótulo de métrica y alcance expreso. Cita página/sección, hoja/celda, clave/fila o región de imagen según soporte. Diferencia datos precargados del Excel y respuestas nuevas. Lo ilegible no se completa por geometría. Una lectura validada puede seguir parcial o contradictoria; no equivale a confirmación física. Un caso resuelto para una unidad no completa un campo global sin cobertura suficiente.
+
+D-03 requiere material comercial y alcance por modelo/versión. Conserva cuarzo y ultracompacto travertino hasta aclarar su aplicación; si son versiones distintas registra ambas. Los once conflictos técnicos siguen necesitando respaldo particular. F3-C001 es un límite adicional y no el caso trece. Procesa directamente los PDF INN que se reciban y registra hash/páginas/rótulos reales, sin repetir exportación fallida ni inferir por filename.
+
+Conserva antes/después y justificación por cada campo. Actualiza únicamente matrices, fuentes, confirmados/parciales, contradicciones y cobertura realmente respaldados. El ledger F6 conserva la cohorte completa de 313 claves; al resolver un campo conserva la fila e ID, cambia `sigue_pendiente_fase6` y calcula el saldo con los que permanecen abiertos. Nunca contar parcialidades como cierres. Si no hay fuentes nuevas, no cambiar estados ni simular incorporación. No reabrir precios F049 o direcciones ya aceptados. No comenzar Euro.
+
+## Contexto técnico permanente del expediente F5
 
 ## Lectura y fuente activa
 

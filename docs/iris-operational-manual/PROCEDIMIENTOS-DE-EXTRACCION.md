@@ -74,3 +74,9 @@ El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-2
 5. Actualizar solo los campos suficientemente respaldados y registrar el cambio con sus IDs. Abrir Chrome únicamente si existe una fuente nueva concreta accesible mediante la sesión autorizada.
 
 Se mantienen el acceso interactivo del propietario y las prohibiciones de exportación fallida, URLs supuestas y endpoints privados del procedimiento anterior. Esta fase no añadió selectores ni rutas nuevas.
+
+## Recepción verificable de originales — fase 6, 16/11/2026
+
+Antes de abrir Iris, utilizar el [protocolo de recepción y validación](../catalog-data-completeness-20261116/leben/fase6-20261116/PROTOCOLO-RECEPCION-Y-VALIDACION.md). Separa identidad binaria del original, campos potenciales, hechos validados y resolución suficiente por alcance. Los registros vacíos no consumen IDs ni constituyen evidencia. Las transcripciones de mensajes se identifican como tales; los derivados no reemplazan originales.
+
+Un documento duplicado no aporta nuevos hechos por sí mismo. Un mensaje acompañante que precise versión o alcance se conserva y evalúa por separado. La preparación administrativa no reabre F049 ni justifica repetir búsquedas o exportaciones.
