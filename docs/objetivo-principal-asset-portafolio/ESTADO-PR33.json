@@ -3,7 +3,7 @@
   "authorization": "Respuesta expresa del propietario: Autorizar push y PR Draft",
   "repository": "lasopho/sollahms-web",
   "branch": "codex/referencias-documentales-131-20261117",
-  "localAndRemoteSHA": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
+  "localAndRemoteSHA": "c56f199a0a6e0d9c15ca3d26969603e9f3d88919",
   "baseBranch": "codex/footer-sin-frase-20261116",
   "baseSHA": "9e8212264e0bac24f392d8340d6e55eabb17499a",
   "pullRequest": {
@@ -13,19 +13,28 @@
     "draft": true,
     "merged": false,
     "mergeable": true,
-    "changedFiles": 16,
-    "commits": 3
+    "changedFiles": 25,
+    "commits": 4
   },
   "files": [
+    "assets/js/catalog-euro-owner-quotes.mjs",
     "assets/js/catalog-filter-controls.mjs",
     "assets/js/catalog-filter-engine.mjs",
+    "assets/js/catalog-financial-witness.mjs",
     "assets/js/catalog-map.mjs",
     "assets/js/catalog-model.mjs",
+    "assets/js/catalog-nollagam-owner-quotes.mjs",
+    "assets/js/catalog-nollagam-quote-consumer.mjs",
     "assets/js/catalog-typology-prices.mjs",
     "assets/js/catalog.mjs",
     "assets/js/commercial-filter-engine.mjs",
     "assets/js/documentary-local-review.mjs",
     "assets/js/documentary-reference-data.mjs",
+    "tests/catalog-euro-owner-quotes.test.mjs",
+    "tests/catalog-financial-witness.test.mjs",
+    "tests/catalog-nollagam-integration.test.mjs",
+    "tests/catalog-nollagam-owner-quotes.test.mjs",
+    "tests/catalog-nollagam-quote-consumer.test.mjs",
     "tests/catalog-typology-prices.test.mjs",
     "tests/documentary-local-review.test.mjs",
     "tests/documentary-presentation.test.mjs",
@@ -68,12 +77,20 @@
     "No alterar main,dominios,SSO,variables,fichas,precios oserviciosprotegidos.",
     "La clasificación131 y los16testigos no equivalen a objetivo global terminado."
   ],
-  "verifiedAtUTC": "2026-11-17T22:48:16.618567+00:00",
+  "verifiedAtUTC": "2026-11-17T23:38:42.536774+00:00",
   "corrections": {
     "publishedTypologyPrices": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
     "receipt": "correccion-precios-tipologia-20261117/recibo-final34/sollahms-typology-prices-receipt.json",
     "scope": "Existing confirmed dated owner tables; no source-data changes or publication.",
-    "localDevelopmentContinues": "Euro price+D integration is separate and not yet committed or pushed."
+    "localDevelopmentContinues": "Current known code corrections completed and reviewed; global131data objective remains open.",
+    "existingOwnerQuotesAndFinancialContext": {
+      "commit": "c56f199a0a6e0d9c15ca3d26969603e9f3d88919",
+      "EuroExistingPrices": 21,
+      "NollagamExistingPrices": 17,
+      "NollagamUnknownPriceCategories": 5,
+      "newOwnerPrices": 0,
+      "status": "CORREGIDO_VERIFICADO_EN_DRAFT_NO_PUBLICADO"
+    }
   },
   "documentationArchiveValidation": {
     "hashManifestVerified": true,
@@ -87,5 +104,40 @@
       "docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/iris-project-1372.ax.txt",
       "docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/iris-unit45-open.ax.txt"
     ]
+  },
+  "currentCandidate": "CANDIDATO-ACTUAL-PR33.json",
+  "testsLatestDelta": {
+    "Euro": 42,
+    "NollagamIntegration": 23,
+    "financialWitness": 13,
+    "typologyRegression": 34,
+    "jointRun": 112,
+    "otherRelevantRegression": 83,
+    "Chrome": 23,
+    "NollagamNormalizerAcceptedByHash": 18,
+    "NollagamConsumerAcceptedByHash": 14,
+    "noDoubleCounting": true
+  },
+  "observations": [
+    "Original preview tab remained loading, cause unconfirmed; fresh tab/reload completed23checks with zero runtime exceptions or console errors.",
+    "Static preview does not execute/api/uf or certify financial scenarios.",
+    "Future frozen release needs the two original ownerJSON resources.",
+    "Only published+active-price uses Euro/Nollagam quote routes; model/area queries without price retain prior routes.",
+    "No GitHub reviews or PR workflow runs found; no implicitCIapproval."
+  ],
+  "nextAction": {
+    "step": "Ready for Review",
+    "authorization": "REQUIERE_AUTORIZACION_INDEPENDIENTE_TODAVIA_NO_SOLICITADA",
+    "mergeDeploymentPublicationAuthorized": false
+  },
+  "latestArchiveWhitespace": {
+    "originalFiles": [
+      "docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/antecedentes/sollahms-nollagam-integration-before-label-fix.log",
+      "docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/financiero/sollahms-financial-witness-before-expanded.log",
+      "docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/financiero/sollahms-financial-witness-before.log",
+      "docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/nollagam/baseline-before.log"
+    ],
+    "findings": 32,
+    "meaning": "Original Node failure logs preserved byte-for-byte; whitespace not normalized to retain hashes. No whitespace findings in human-edited documentation or application delta."
   }
 }

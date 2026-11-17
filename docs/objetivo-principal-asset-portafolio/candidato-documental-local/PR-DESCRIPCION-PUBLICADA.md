@@ -1,17 +1,28 @@
-El catálogo conserva la revisión documental local y corrige la selección de precios publicados por tipología. Por ejemplo, Local de Origen Atacama usa su referencia UF 2.697,78 y admite el rango UF 2.600–2.800; antes tomaba UF 2.534,88 de Estudio. Precio y atributos deben satisfacerse en una misma referencia, sin prestar baños, superficies o tipos entre filas.
+El catálogo correlaciona los filtros con la referencia que respalda cada precio, sin prestar atributos entre tipologías, unidades o etapas.
 
-La corrección adapta tablas del propietario con fuente y fecha explícitas (20 proyectos, 41 filas), conserva las rutas comerciales modernas y los 131 precios/tipos predeterminados. En proyectos mixtos no asigna Departamento a cotizaciones sin ese respaldo: el diferencial de 48 consultas registra 40 resultados iguales, cuatro altas Local y cuatro exclusiones conservadoras. También corrige cuatro precios Local mostrados. Las fórmulas y módulos financieros permanecen intactos; la tarjeta oculta un cálculo incompatible con la referencia seleccionada.
+- Origen Atacama Local usa UF 2.697,78 y admite UF 2.600–2.800; antes seleccionaba el precio de Estudio.
+- Don Pepe1542D usa su cotización owner UF 3.562, separada de1D UF 3.306,18.
+- Costanera Coquimbo A3D usa UF 5.070, separada de2D UF 4.210.
+- Un Local Euro seleccionado sólo por precio conserva `oferta=local` tanto en tarjeta como en mapa.
 
-La fuente documental se habilita sólo en loopback con `revision_documental=1`, antes de cargar archivos fijados por SHA-256. Incluye 16 referencias de 15 proyectos y conserva las 131 identidades. Las 15 referencias Iris mantienen precio nulo; Plaza Las Condes 213/C7 relaciona su precio de lista del propietario del 28/10 con el plano exacto observado el 17/11. No acredita stock ni vigencia comercial. Tarjetas, listado, mapa y vista dividida comparten la proyección; el fallo de fuente muestra respaldo publicado mediante aviso accesible persistente.
+Se reutilizan las fuentes del propietario ya existentes: 20 proyectos/41filas de tablas publicadas fechadas, 21precios Euro y17precios Nollagam (más5categorías sin precio). No se editaron datos ni precios de origen ni se recibieron precios nuevos. Los JSON Euro/Nollagam se verifican por SHA-256 antes de normalizar; un fallo limita sus consultas con precio y muestra un aviso accesible persistente. Sin precio se conservan las consultas anteriores. Las cotizaciones sin respaldo de tipo, baños o superficies no heredan esos atributos.
 
-Validación por corte, sin sumar subconjuntos:
+La tarjeta financiera sólo puede mostrar el escenario del proyecto original cuando coincide con el importe y la tipología seleccionados, incluyendo etapas Ecasa. No cambia fórmulas, módulos, orden financiero ni el widget general. Los matches Euro se autentican y congelan para impedir préstamos desde resultados copiados o alterados.
 
-- Delta de precios: 34/34 pruebas nuevas Node, 70/70 regresiones pertinentes y 14/14 controles Chrome.
-- Integración documental anterior: 32/32 carga y motor, 17/17 presentación final, 83/83 regresiones pertinentes y 22/22 Chrome (cuatro vistas y cinco anchos).
-- 155 archivos protegidos coincidentes. Datos publicados originales, 131 fichas, siete funciones y módulos financieros intactos.
+La revisión documental permanece exclusivamente local: loopback + `revision_documental=1`, antes de fetch, con dos fixtures fijados por hash. Conserva16referencias/15proyectos dentro de131identidades; las15Iris tienen precio comercial nulo y Plaza213/C7 usa su cotización y plano exactos. No habilita esa capa en producción ni acredita stock. Los dos hallazgos documentales posteriores siguen separados de estos fixtures.
 
-El servidor estático de QA no ejecuta `/api/uf` ni certifica escenarios financieros. No se ejecutaron builds, generadores o formularios.
+Validación del último delta, sin sumar subconjuntos:
 
-Este PR permanece en Draft. No habilita la fuente documental en producción ni autoriza Ready, merge, deployment o publicación. Los deployments automáticos están excluidos en origen y destino. Producción continúa en 9e82122. El objetivo global de información comercial de los 131 proyectos sigue abierto.
+- 42/42 Euro,23/23 integración Nollagam y13/13 guard financiero;34/34 casos de tipologías anteriores vueltos a verificar por el cambio compartido del motor (112/112 en la ejecución conjunta).
+- 83/83 regresiones pertinentes. Normalizador Nollagam18/18 y consumidor14/14 aceptados por sus hashes sin repetirlos.
+- 23/23 controles Chrome nuevos: cuatro vistas, anchos375y1280, correlación, desconocidos, enlaces Local y fallo503 controlado de las dos fuentes.
+- 155protegidos y21fuentes coincidentes;131fichas y siete funciones intactas.
+- Los cortes documentales previos32/17/83/22 y las certificacionesF10/F13 se conservan como historia, sin sumarlos a este resultado.
 
-[Evidencia del candidato documental original](https://github.com/lasopho/sollahms-web/blob/923ca4bff746625bc1f8af5b8435369dd655f396/docs/objetivo-principal-asset-portafolio/candidato-documental-local/CANDIDATO-INTEGRADO.json). La corrección de precios es el commit cea57c8144d1e388203f0743f8b87fc88b5441ed; su recibo y QA se incorporan al expediente documental independiente.
+Observaciones: una pestaña previa quedó en Cargando; su causa no se confirmó. Una pestaña nueva y su recarga obtuvieron recursos locales200, completaron23controles y registraron cero excepciones/errores de consola. El servidor estático no ejecuta `/api/uf` ni certifica escenarios financieros. No se enviaron formularios.
+
+Para una futura release habrá que incluir los dos JSON owner originales como recursos, preservando sus hashes; actualmente no están en el paquete congelado1663. No se preparó un build ni se creó un deployment.
+
+PR en Draft:25archivos, head `c56f199a0a6e0d9c15ca3d26969603e9f3d88919`, base `9e8212264e0bac24f392d8340d6e55eabb17499a`. Deployments automáticos excluidos en ambas ramas. Sin Ready, merge o publicación. Producción sigue en9e/Gm75 y el objetivo global de datos131 continúa abierto.
+
+[Estado y evidencias documentales](https://github.com/lasopho/sollahms-web/blob/codex/auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ESTADO-PR33.json).

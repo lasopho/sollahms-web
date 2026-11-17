@@ -1,0 +1,120 @@
+{
+  "createdAtUTC": "2026-11-17T23:09:12.913556+00:00",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "scope": "New isolated Nollagam pinned-source consumer only; runtime integration remains for root",
+  "files": [
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/catalog-nollagam-quote-consumer.mjs",
+      "sha256": "e55a0672835b445069a1bd3111e4fbeb46ae6c3ad8da34c3d64708cdba6000e4",
+      "bytes": 6422,
+      "lines": 108
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-quote-consumer.test.mjs",
+      "sha256": "9fecac022749ad3d702246fc1696829e7c1b74c654f1c8f2b258d7af6c0f1ad1",
+      "bytes": 12402,
+      "lines": 183
+    }
+  ],
+  "source": {
+    "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/nollagam-commercial.json",
+    "sha256": "d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b",
+    "bytes": 8493,
+    "lines": 152
+  },
+  "expectedSourceSHA256": "d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b",
+  "originalSourceDate": {
+    "value": "2026-10-28",
+    "field": "/checkedOn",
+    "notRenewedPriceValidity": true
+  },
+  "preservedNormalizer": {
+    "module": {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/catalog-nollagam-owner-quotes.mjs",
+      "sha256": "da1dd0b56eb8e60204a42253a0f29f6a6aea90e9b880133a05460e376c4e09a8",
+      "bytes": 6837,
+      "lines": 103
+    },
+    "tests": {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-owner-quotes.test.mjs",
+      "sha256": "961f4a4406cf907d7ce2a7344e9d1ee76f347f0e22e02569de0dc4fe0ac18cba",
+      "bytes": 12826,
+      "lines": 197
+    },
+    "receipt": {
+      "path": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/NORMALIZER-RECEIPT.json",
+      "sha256": "986cb9ea4cf3cea4af8912e4602dc05ab79983434c42bbb5c883517fc8af775b",
+      "bytes": 6270,
+      "lines": 164
+    },
+    "originalCertification": {
+      "tests": 18,
+      "pass": 18,
+      "rerun": false
+    }
+  },
+  "verification": {
+    "command": "node --test tests/catalog-nollagam-quote-consumer.test.mjs",
+    "log": {
+      "path": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/consumer-tests.log",
+      "sha256": "cddc97d1ab1066f829bde3e1b1d1eb3dec71481488c2cabc6e9c9f162a970359",
+      "bytes": 1576,
+      "lines": 22
+    },
+    "tests": 14,
+    "pass": 14,
+    "fail": 0,
+    "skipped": 0,
+    "sourceLoader": "Real source bytes with stub fetch only; no network requests",
+    "knownPriceDChecks": 17,
+    "unknownPriceCategoriesExcludedByValidActivePriceChecks": 5,
+    "unknownNegativeQueriesIssuesEmpty": true,
+    "CostaneraA3DUF5070Within5000to5100": true,
+    "legacyAndHistoricalSuitesRepeated": false
+  },
+  "contract": {
+    "loadNollagamOwnerQuoteContexts": "async(publishedProjects,{fetchImpl,cryptoImpl}) -> frozen{status,bySlug}",
+    "loaderSource": "/data/nollagam-commercial.json; SHA256 of exact response bytes verified before parsing/normalization",
+    "loaderFailure": "Every one of the7 scoped slugs receives status unavailable, record null and date null; no fallback from a bound failure",
+    "projectProperty": "_nollagamOwnerQuoteContext",
+    "scopeRecognition": "isNollagamQuoteProject(project) recognizes the seven known slugs; wrong developer/identity fails a bound context",
+    "contextGuard": "nollagamOwnerQuoteContext(project) accepts only original ready-context objects created by the pinned loader, matching all identity allowlist fields",
+    "matcher": "matchNollagamOwnerQuotes(project,state) returns null for other projects/modes, inactive price or no own context property",
+    "legacyWithoutOwnContext": "Explicit root-authorized delegation to previous pipeline; raw callers remain unchanged",
+    "boundContextFailure": "Own null/undefined/unavailable/forged/copied/crossed context returns a non-null match with matches false for active price",
+    "query": "Preserve every queryFromCatalogState predicate; existing metro provenance helper also applies; purchase modes lacking source evidence and unsupported unit/model/stock/availability selectors fail",
+    "witness": "nollagamOwnerQuoteWitness(match) selects the minimum positive price only among matching references belonging to the bound record",
+    "offer": "nollagamOwnerQuoteOffer(match) -> value,typology,referenceId,date,financialBaselineCompatible:false; null for a delegated match",
+    "facts": "nollagamOwnerQuoteFacts(match) -> only matching Tipologías, or empty array",
+    "note": "nollagamOwnerQuoteNote(match) -> original owner date, typology scope and no-unit/no-stock notice",
+    "notBorrowed": [
+      "project minimum",
+      "models",
+      "property type",
+      "asset use",
+      "bathrooms",
+      "surfaces",
+      "extras",
+      "amenities",
+      "state",
+      "delivery",
+      "unit",
+      "stock"
+    ]
+  },
+  "operations": {
+    "newCodeFiles": 2,
+    "normalizerModified": false,
+    "engineModelCatalogModified": false,
+    "dataOrFinancialFilesModified": false,
+    "IrisBrochureResearchNetwork": false,
+    "gitWritesPushPRBuildDeployment": false,
+    "runtimeConsumerConnected": false
+  },
+  "limits": [
+    "No current public or local application loader has been connected by this subtask.",
+    "The original catalogue false negative remains open until root binds the seven contexts and connects the helpers.",
+    "18 normalizer tests and14 consumer tests are separate delta suites, not global131 certification.",
+    "Unknown property/use and all other non-price/D option facts remain excluded while active; original dates do not certify stock or price validity."
+  ]
+}

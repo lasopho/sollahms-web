@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-17T22:24:34.876499+00:00",
+  "kind": "New isolated normalization prototype for two existing Euro owner quotes; not application integration",
+  "contract": {
+    "path": "OWNER-QUOTE-DON-PEPE-REFERENCE.json",
+    "sha256": "1a10f4f293e5af22f4fae97e7ce0e133c3cb80489718b901b1c07e0182bfa9cc",
+    "bytes": 9300
+  },
+  "normalizationOnly": true,
+  "project": "edificio-don-pepe-154",
+  "developer": "Euro",
+  "sourceDate": "2026-10-29",
+  "existingPriceReferenceIDs": [
+    "edificio-don-pepe-154:owner-price:1",
+    "edificio-don-pepe-154:owner-price:2"
+  ],
+  "optionFactsAccepted": [
+    {
+      "priceUF": 3306.18,
+      "bedrooms": 1
+    },
+    {
+      "priceUF": 3562,
+      "bedrooms": 2
+    }
+  ],
+  "optionFactsMaskedUnknown": [
+    "propertyType",
+    "assetType",
+    "bathrooms",
+    "usefulM2",
+    "totalM2",
+    "interiorM2",
+    "terraceM2",
+    "gardenM2",
+    "landM2",
+    "privateTerrace",
+    "privateGarden",
+    "parkingIncluded",
+    "parkingAvailable",
+    "storageIncluded",
+    "storageAvailable"
+  ],
+  "identityScope": "Registered project name, Euro, LaFlorida and RegiónMetropolitana only; no unit/model reconstructed.",
+  "newCommercialEvidence": false,
+  "newOwnerReception": false,
+  "newGlobalFactOrReceiptIDs": false,
+  "stock": null,
+  "availability": null,
+  "useAsActiveOffer": false,
+  "pureEvaluatorMetadataLimitation": "The evaluator does not enforce stock/source-layer or active-offer metadata. Its caller must retain the dated-quote/non-stock scope.",
+  "actualEvaluator": {
+    "recordedAtUTC": "2026-11-17T22:20:44.511190+00:00",
+    "kind": "Exact bytes of current pure evaluator; no North Verde helper imported or executed",
+    "sources": [
+      {
+        "sourcePath": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/commercial-filter-engine.mjs",
+        "snapshotPath": "current-core/commercial-filter-engine.mjs",
+        "sha256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+        "bytes": 12911
+      },
+      {
+        "sourcePath": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/commercial-filter-data.mjs",
+        "snapshotPath": "current-core/commercial-filter-data.mjs",
+        "sha256": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b",
+        "bytes": 7925
+      }
+    ]
+  },
+  "matchesCurrentSourceAtFinalCheck": true,
+  "execution": {
+    "command": "node --test owner-quote-don-pepe.test.mjs",
+    "newTests": 16,
+    "passed": 16,
+    "failed": 0,
+    "nodeInvocationsForThisNewContractSuite": 1,
+    "oldCertifiedSuitesRepeated": false,
+    "positiveQueries": "1D/3306.18 and2D/3562 produce their own stable reference IDs; inactive unknowns retain both references.",
+    "negativeQueries": [
+      "2D with1D price",
+      "1D with2D price",
+      "importer department default",
+      "unknown residential use",
+      "unreported bathroom1",
+      "published generic surface29 as useful",
+      "published generic surface29 as total",
+      "local product",
+      "tainted external-price metadata",
+      "unknown included parking",
+      "unknown available storage"
+    ],
+    "outputs": [
+      "RESULTADO-PROTOTIPO-CONTRATO.json",
+      "PRUEBA-CONTRATO.log"
+    ],
+    "syntheticNegativeFixturePolicy": "Tainted metadata exists only in temporary test clones, explicitly not evidence or source records; no values are added to the normalized contract."
+  },
+  "sourceFilesReused": [
+    "OWNER-EXTRACT.json",
+    "PROJECT-EXTRACT.json",
+    "production9e/docs/euro-20261029/README.md",
+    "production9e/scripts/euro_details.py"
+  ],
+  "previousProductionFindingUnchanged": "The prior9e price+1D false negative remains the isolated reproduced finding; this prototype does not claim to fix published routing.",
+  "proposedIntegration": "PROPUESTA-CONSUMO-MINIMO.md",
+  "operations": {
+    "applicationFilesEdited": false,
+    "NorthVerdeHelperReadOrEditedByThisPrototype": false,
+    "NorthVerdeHelperExecuted": false,
+    "T2FixturesOrPinsEdited": false,
+    "GitCommitOrPush": false,
+    "PRStateChanged": false,
+    "productionOrDeploymentChanged": false,
+    "IrisOrNewWebResearch": false,
+    "newOwnerQuestions": 0,
+    "newPrices": 0,
+    "LebenHistoricalIDsClosed": 0
+  }
+}

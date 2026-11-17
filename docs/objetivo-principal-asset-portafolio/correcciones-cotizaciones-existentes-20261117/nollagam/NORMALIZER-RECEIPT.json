@@ -1,0 +1,164 @@
+{
+  "createdAtUTC": "2026-11-17T22:59:21.777354+00:00",
+  "scope": "Pure Nollagam owner-category normalizer only; no integration or public consumption",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "authorizedCodeFiles": [
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/catalog-nollagam-owner-quotes.mjs",
+      "sha256": "da1dd0b56eb8e60204a42253a0f29f6a6aea90e9b880133a05460e376c4e09a8",
+      "bytes": 6837,
+      "lines": 103
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-owner-quotes.test.mjs",
+      "sha256": "961f4a4406cf907d7ce2a7344e9d1ee76f347f0e22e02569de0dc4fe0ac18cba",
+      "bytes": 12826,
+      "lines": 197
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/nollagam-commercial.json",
+      "sha256": "d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b",
+      "bytes": 8493,
+      "lines": 152
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/proyectos.json",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "bytes": 328016,
+      "lines": 10489
+    }
+  ],
+  "sourceDate": {
+    "value": "2026-10-28",
+    "path": "data/nollagam-commercial.json",
+    "field": "/checkedOn",
+    "meaning": "Original declared source check date, not renewed validity or stock confirmation"
+  },
+  "baselineReproduction": {
+    "script": {
+      "path": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/baseline-reproduction.test.mjs",
+      "sha256": "823c3028847da4ddee6f6a14d54b6c4e3ef9fdeb385d2253a2555d90c303dc5a",
+      "bytes": 1311,
+      "lines": 20
+    },
+    "log": {
+      "path": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/baseline-before.log",
+      "sha256": "3f84c8297a0532962bdc2de1561da041bcf4313a7e60ec59a21d71d65ecc47e2",
+      "bytes": 1073,
+      "lines": 30
+    },
+    "command": "node --test /private/tmp/sollahms-nollagam-owner-quotes-20261117/baseline-reproduction.test.mjs",
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "failureExpected": true,
+    "slug": "costanera-coquimbo-a",
+    "query": {
+      "bedrooms": "3",
+      "minPriceInput": "5000",
+      "maxPriceInput": "5100"
+    },
+    "ownerEvidence": "data/nollagam-commercial.json#/projects/costanera-coquimbo-a/prices/3 = 5070",
+    "actualPublishedRows": 0,
+    "expectedOwnerCategoryRows": 1,
+    "originalRouteStillUnintegrated": true,
+    "runtimePinAtExecutionCaptured": false
+  },
+  "verification": {
+    "command": "node --test tests/catalog-nollagam-owner-quotes.test.mjs",
+    "log": {
+      "path": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/normalizer-tests.log",
+      "sha256": "357bd0d734e59e252add15659d4bdabd113185a5bc1f3e99381134f2cead1d0e",
+      "bytes": 1975,
+      "lines": 26
+    },
+    "tests": 18,
+    "pass": 18,
+    "fail": 0,
+    "skipped": 0,
+    "scope": "Only the new source-normalizer delta; no historical suites or application tests repeated",
+    "normalizerCounts": {
+      "projects": 7,
+      "references": 22,
+      "priced": 17,
+      "unknownPrice": 5
+    },
+    "allSeventeenPricesTestedWithSameReferenceDAndExactValidBounds": true,
+    "allFiveUnknownPricesRetainDAndFailActiveValidPriceQuery": true,
+    "negativeQueriesCheckedIssuesEmpty": true,
+    "propertyUseBathAreasPrivateAndExtrasRemainNull": true,
+    "inputJSONPreserved": true,
+    "sourcePointersResolveIncludingExplicitAbsentCategoryParent": true
+  },
+  "contract": {
+    "export": "createNollagamOwnerQuoteLayer(publishedProjects, ownerSource)",
+    "returns": [
+      "source",
+      "records",
+      "counts"
+    ],
+    "recordSourceLayer": "nollagam-owner-typology",
+    "sourceProjectIdentityAllowlist": [
+      "slug",
+      "nombre",
+      "inmobiliaria",
+      "comuna",
+      "region",
+      "direccion"
+    ],
+    "knownPriceAuthority": "ownerSource.projects[slug].prices only; never project minimum, brochures or another category",
+    "bedrooms": "Literal numeric key for priced owner categories, cross-checked against exact published category enum; unknown categories retain the exact published enum with separate pointer",
+    "unknownPrices": [
+      "alto-goycolea:3 dormitorios",
+      "barrio-zenteno:Estudio",
+      "edificio-liverpool:Estudio",
+      "edificio-liverpool:1 dormitorio",
+      "eleuterio-ramirez:1 dormitorio"
+    ],
+    "referenceIDs": "Deterministic adapter identifiers nollagam-owner:<slug>:<bedrooms>d; not unit/model IDs",
+    "absentOwnerCategory": "sourcePointer cites existing /projects/<slug>/prices parent, missingSourceKey identifies observed absence; publishedCategory.unknownPricePointer resolves to explicit null",
+    "nullOwnerCategory": "An explicitly null owner amount remains null even with a populated published amount",
+    "scope": "typology-not-unit",
+    "stock": null,
+    "availability": null,
+    "noFallbackFields": [
+      "propertyType",
+      "assetType",
+      "bathrooms",
+      "typology",
+      "usefulM2",
+      "totalM2",
+      "interiorM2",
+      "terraceM2",
+      "gardenM2",
+      "landM2",
+      "privateTerrace",
+      "privateGarden",
+      "parkingIncluded",
+      "parkingAvailable",
+      "storageIncluded",
+      "storageAvailable",
+      "state",
+      "delivery"
+    ],
+    "unsupportedQuerySelectors": "Pure matchProjectFilters has no stock/unit/model predicate contract; callers must not treat them as validated searches"
+  },
+  "operations": {
+    "newCodeFiles": 2,
+    "existingApplicationFilesEdited": false,
+    "dataFilesEdited": false,
+    "brochuresRead": false,
+    "IrisOrInternet": false,
+    "financialScenarios": false,
+    "gitWrites": false,
+    "pushPRMergeBuildDeployment": false
+  },
+  "limits": [
+    "Current catalogue false negative remains open until root integrates this normalizer.",
+    "No public consumer, loader, UI, engine/model/catalog change was added.",
+    "Not a global131 certification, stock inventory, current price renewal or price-to-model/area association.",
+    "Original source hashes are recorded here; the synchronous pure factory receives parsed JSON and does not claim runtime byte-pin verification."
+  ]
+}

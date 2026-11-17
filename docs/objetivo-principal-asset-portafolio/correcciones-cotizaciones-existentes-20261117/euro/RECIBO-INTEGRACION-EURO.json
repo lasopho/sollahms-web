@@ -1,0 +1,83 @@
+{
+  "task": "Integración mínima de cotizaciones Euro existentes; sin nueva evidencia comercial",
+  "capturedAt": "2026-11-17T23:14:19.414147+00:00",
+  "technicalCheckout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "startingCommit": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
+  "scope": {
+    "files": [
+      {
+        "path": "assets/js/catalog-euro-owner-quotes.mjs",
+        "sha256": "50f25cb9194aedd9fc9408fe69cf864e552fdb816919e651cd54c89734a74199",
+        "bytes": 9196
+      },
+      {
+        "path": "assets/js/catalog-filter-engine.mjs",
+        "sha256": "e1fd353c756ff01a53862c548271456c11afe539d6cb823830909cb37b8f6f68",
+        "bytes": 21003
+      },
+      {
+        "path": "assets/js/catalog-model.mjs",
+        "sha256": "73a68e260e3fec0cff77a8d51a3d28099865a78bcca0a6c1dec9d0164d808700",
+        "bytes": 15468
+      },
+      {
+        "path": "assets/js/catalog.mjs",
+        "sha256": "6b974212b79c903402f8d58a1a4c6500bed63019ae7e10b6009fac2beb94a966",
+        "bytes": 15941
+      },
+      {
+        "path": "tests/catalog-euro-owner-quotes.test.mjs",
+        "sha256": "0509c14111af67d72c1a55ddc7541f7d6a004c5a7c143158c7e00074827bd766",
+        "bytes": 12816
+      }
+    ],
+    "sharedFileNotice": "catalog.mjs incluye también el guard financiero independiente del root y puede incluir su ajuste de enlace Local; este recibo no atribuye esos cambios ni sus pruebas al delta Euro.",
+    "gitWrites": false,
+    "dataEdits": false,
+    "builds": false,
+    "platformMutations": false
+  },
+  "source": {
+    "path": "data/euro-commercial.json",
+    "date": "2026-10-29",
+    "expectedSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+    "sha256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+    "bytes": 8454,
+    "scope": "12 identidades Euro, 21 cotizaciones owner explícitas en 11 proyectos; Diagonal sin precio vigente. ID de normalización conserva slug:owner-price:key, sin nueva recepción/hecho.",
+    "pinMatches": true
+  },
+  "behavior": [
+    "Ruta exclusivamente publicada con precio activo; prepared/documentary y búsquedas sin precio conservan sus rutas anteriores.",
+    "Precio y dormitorios se evalúan sobre la misma cotización owner. Departamento/Residencial por default del importador no se adopta; B, superficies, extras, unidad, modelo y stock permanecen desconocidos si la cotización no los acredita.",
+    "Local Independencia mantiene testigo local explícito y separado de residencial; offer.propertyType expone local sólo cuando la referencia lo respalda y null para Don Pepe.",
+    "Proyección muestra precio y tipología exactos del testigo, fecha 29/10/2026 y alcance sin unidad/modelo/stock; estado y entrega del proyecto se rotulan por separado.",
+    "Fallo de transporte, hash o identidad cierra coincidencias Euro de precio, con aviso; no cae a positivos heredados.",
+    "Cache sólo acepta matches propios con WeakSet privado y record/queryKey exactos. Resultados y arrays quedan congelados profundamente; un clon no permite prestar otra cotización."
+  ],
+  "validation": {
+    "initialSpecificSuite": {
+      "pass": 40,
+      "fail": 0,
+      "log": "PRUEBAS-INTEGRACION-EURO.log",
+      "scope": "Antes del endurecimiento final de cache"
+    },
+    "finalCacheDelta": {
+      "pass": 2,
+      "fail": 0,
+      "log": "PRUEBAS-CACHE-EURO-DELTA.log",
+      "scope": "Sólo dos casos nuevos: clon con referencia ajena y mutación de array legítimo; también aserciones de propertyType local/null"
+    },
+    "definedTestsAfterDelta": 42,
+    "finalFull42Run": "Pendiente de ejecución única por root tras integrar Nollagam; no se declara 42/42 final aquí.",
+    "certifiedHistoricalSuitesRepeated": false,
+    "rootFinancialTestsCounted": false,
+    "rootChromeChecksCounted": false
+  },
+  "limits": [
+    "No vínculo precio-superficie sin evidencia; no se reconstruye inventario ni disponibilidad.",
+    "Fuente owner original está en Git/T2, pero falta en el paquete público congelado de 1663 archivos. Una futura preparación de release debe incluir sus bytes originales como recurso runtime y verificar su hash/cierre; no se crea paquete/deployment aquí.",
+    "Hashes son instantánea de archivos compartidos liberados al root; cambios posteriores coordinados deben quedar recogidos en su manifiesto final.",
+    "PR33 permanece Draft; sin nueva autorización de Ready, merge, deployment ni publicación."
+  ],
+  "handoff": "Runtime Euro estable y cinco archivos liberados al root para revisión, integración Nollagam, ejecución pertinente final y QA de vistas. Sin cambios pendientes por este agente."
+}

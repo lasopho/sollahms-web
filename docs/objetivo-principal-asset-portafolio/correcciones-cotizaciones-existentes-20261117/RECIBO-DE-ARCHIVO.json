@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "registrado_UTC": "2026-11-17T23:40:48.015185+00:00",
+  "fecha": "2026-11-17",
+  "naturaleza": "Archivo documental de correcciones que consumen cotizaciones existentes; sin nueva recepción comercial ni modificación de fuentes.",
+  "cortes": {
+    "parent": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
+    "commitFinalLocalVerificado": "c56f199a0a6e0d9c15ca3d26969603e9f3d88919",
+    "receiptPreservacionOriginalParent": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
+    "receiptPreservacionEraWIP": true,
+    "receiptOriginalModificado": false,
+    "bindingSeparado": "MANIFIESTO-13-ARCHIVOS-155-PROTEGIDOS-21-FUENTES.json compara los13hashesWIP originales con blobs c56.",
+    "remotePR": "Push y actualización de PR/state/body/NEXT son responsabilidad de root; esta subtarea no consultó ni cambió remoto."
+  },
+  "verificaciones_conservadas_sin_repetir": {
+    "finalNode112": {
+      "archivo": "final/sollahms-owner-quote-final-node.log",
+      "tests": 112,
+      "pass": 112,
+      "fail": 0,
+      "skipped": 0,
+      "desglose": {
+        "NV_Crescer": 34,
+        "Euro": 42,
+        "NollagamIntegracion": 23,
+        "GuardFinanciero": 13
+      }
+    },
+    "regresionesPertinentes83": {
+      "archivo": "final/sollahms-owner-quote-final-regression.log",
+      "tests": 83,
+      "pass": 83,
+      "fail": 0,
+      "skipped": 0,
+      "comando_completo_declarado_en_log": null
+    },
+    "Chrome23": {
+      "archivo": "chrome/CHROME-OWNER-QUOTES.json",
+      "total": 23,
+      "passed": 23,
+      "failed": 0,
+      "views": [
+        "cards",
+        "list",
+        "map",
+        "split"
+      ],
+      "newResponsiveWidths": [
+        375,
+        1280
+      ],
+      "runtimeExceptions": 0,
+      "consoleWarningsOrErrors": [],
+      "escenariosFinancierosEjecutados": 0,
+      "formularios_o_mensajes_enviados": 0,
+      "servidoresEstaticos": "No ejecutan /api/uf ni escenarios financieros. Pruebas de fallo local503 sólo para los dos JSON owner."
+    }
+  },
+  "contadores_no_sumables": {
+    "regla": "No sumar112+83+23como pruebas únicas ni añadir subconjuntos, casos de fuente o reproducciones anteriores.",
+    "Euro": "Recibo original declara40previos+2cache-delta y42definidos pendientes en ese corte; el log final112 ya incluye42Euro. No es40+42.",
+    "Nollagam": "18/18normalizador y14/14consumer son cortes previos aislados;23integración están incluidos en112. Los17precios+5unknown son datos/assertions, no22pruebas extra.",
+    "financiero": "13finales están incluidos en112; before1/1fail yexpanded10/10fail son antecedentes de corte, no nuevasfallasfinales.",
+    "defaults131": "La preservación de131identidades/precios predeterminados es un check dentro de las suites, no131pruebas o certificacióncompleta."
+  },
+  "antecedente_error_harness": {
+    "archivo": "antecedentes/sollahms-nollagam-integration-before-label-fix.log",
+    "tests": 23,
+    "pass": 19,
+    "fail": 4,
+    "skipped": 0,
+    "causa_acreditada": "Cuatro esperados de prueba construían rótulos1 dormitorios/0 dormitorios en lugar del enum original1 dormitorio/Estudio. Se corrigieron los esperados al dato original; no fue un fallo de aplicación."
+  },
+  "historico_no_reescrito": {
+    "EuroReciboIntegracionCapturedAt": "2026-11-17T23:14:19.414147+00:00",
+    "EuroValidationOriginal": {
+      "initialSpecificSuite": {
+        "pass": 40,
+        "fail": 0,
+        "log": "PRUEBAS-INTEGRACION-EURO.log",
+        "scope": "Antes del endurecimiento final de cache"
+      },
+      "finalCacheDelta": {
+        "pass": 2,
+        "fail": 0,
+        "log": "PRUEBAS-CACHE-EURO-DELTA.log",
+        "scope": "Sólo dos casos nuevos: clon con referencia ajena y mutación de array legítimo; también aserciones de propertyType local/null"
+      },
+      "definedTestsAfterDelta": 42,
+      "finalFull42Run": "Pendiente de ejecución única por root tras integrar Nollagam; no se declara 42/42 final aquí.",
+      "certifiedHistoricalSuitesRepeated": false,
+      "rootFinancialTestsCounted": false,
+      "rootChromeChecksCounted": false
+    },
+    "NollagamFrasesNoIntegracion": "Se conservan literales como estado histórico de sus recibos previos; el corte final c56 y log112 acreditan integración posterior.",
+    "sharedFileHashes": "Snapshots previos no reemplazan el manifiesto raíz de13blobs c56."
+  },
+  "observacion_carga": {
+    "archivo": "chrome/OLD-TAB-LOADING-OBSERVATION.json",
+    "estado_antiguo": {
+      "count": "Cargando proyectos…",
+      "ready": "complete",
+      "url": "http://127.0.0.1:8766/proyectos.html?q=Independencia+4745&precio_min=8440.85&precio_max=8440.85&vista=split"
+    },
+    "causa": "NO_CONFIRMADA",
+    "atribucion_a_fix_o_workaround": false,
+    "evidencia_pestana_fresca": "23checks finales,0excepciones y0consolewarn/error según CHROME-OWNER-QUOTES. No prueba causa de la pestaña antigua."
+  },
+  "network_respetado": {
+    "archivo": "chrome/NETWORK-LOCAL-RELOAD.json",
+    "scope_original": "Local own-app resource URL/status only; no headers, cookies, response bodies or credentials",
+    "solo_campos_method_url_status": true,
+    "headers_cookies_bodies_credenciales_archivados": false
+  },
+  "dictamen_lector_independiente": {
+    "resultado": "Sin bloqueantes de código tras registrar/congelar los matchesEuro; Nollagam recalcula consulta actual, los enlacesLocalusan propertyType del testigo y by-product existente, y el guard financiero compara con el proyecto original.",
+    "pruebas_ejecutadas_por_revisor_en_esta_subtarea": false,
+    "no_cierre_runtime_por_atribucion": "Cargando antiguo mantiene causa no confirmada."
+  },
+  "limites_de_alcance": {
+    "modo": "Adaptadores Euro/Nollagam sólo published con precio activo; prepared/documentary y consultas sinprecio conservan rutas anteriores.",
+    "Euro": "12identidades en fuente;21cotizaciones de11proyectos;Diagonal sinprecio. P/D mismo testigo; Departamento/Residencial no se adoptan desde defaults del importador.",
+    "Nollagam": "7identidades,17precios y5unknown; sóloD+precio. Tipo/uso/B/áreas/extras/estado/entrega permanecen unknown; no join desde modelos ni estado/entrega publicados.",
+    "fuentesFechadas": "Euro29/10/2026 yNollagam28/10/2026 son fechas originales; normalizar/archivar17Nov no renueva vigencia ni garantiza stock.",
+    "finanzas": "Sólo gate de decoración de tarjeta; fórmulas,UF,cache,sort ywidget global de131baselines intactos.",
+    "frozenFuture": "Una futura preparación autorizada del frozen debe incluir bytes originales de data/euro-commercial.json ydata/nollagam-commercial.json y suspins; esta tarea no prepara ni despliega un release.",
+    "global": "No certifica completitud comercial131, inventario/stock, equivalencias precio-área ni cierres de313pendientes.",
+    "lecturaPublicacion": "Commit/push/DraftPR no equivale a deployment ni nuevaautorizacióndeproducción.",
+    "reproduccionScripts": "Los archivos test/script preservan rutas/imports originales y no se ejecutaron; no se promete portabilidad sin reconstruir el contexto."
+  },
+  "operaciones_de_archivo": {
+    "solo_subdirectorio_autorizado": true,
+    "codigo_app_editado": false,
+    "pruebas_ejecutadas": 0,
+    "navegacion_research": false,
+    "generadores_app": false,
+    "gitwrite_commit_push_merge_PR_deployment": false,
+    "CONTROL_NEXT_manifiesto_global_editados": false
+  },
+  "copias_exactas_de_originales": [
+    {
+      "original": "/private/tmp/sollahms-owner-quote-final-node.log",
+      "archivo": "final/sollahms-owner-quote-final-node.log",
+      "sha256": "12d7ed40d7dd86c280ab569a18fc6d4f6701abbdb5845b886330a20d5f361c0c",
+      "bytes": 10273,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:13:30.611509+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-owner-quote-final-regression.log",
+      "archivo": "final/sollahms-owner-quote-final-regression.log",
+      "sha256": "d50a49d17a4eef2ebdcbe9db100ff795a8e319a3d2fb4233a69e6d9cbb8f6f81",
+      "bytes": 6802,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:13:30.761786+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-owner-quote-preservation.json",
+      "archivo": "final/sollahms-owner-quote-preservation.json",
+      "sha256": "4e8b6c7ce885f880a2328bc38c8700c033c341b2690b1929d752e2c8b1d38264",
+      "bytes": 3164,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:33:23.534014+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-owner-quote-qa/CHROME-OWNER-QUOTES.json",
+      "archivo": "chrome/CHROME-OWNER-QUOTES.json",
+      "sha256": "c0bc540390bc2dca9fb880a52e19dd17f2e38ef42d15b8fa45c28b9dc85b6738",
+      "bytes": 17808,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:32:29.125205+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-owner-quote-qa/EURO-375.jpg",
+      "archivo": "chrome/EURO-375.jpg",
+      "sha256": "c207e5f2c5800496364b1f0230d8256f7742d6e8eee455f86ad1e0638536d3d1",
+      "bytes": 41870,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:29:43.676420+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-owner-quote-qa/LOCAL-LINK-BEFORE.json",
+      "archivo": "chrome/LOCAL-LINK-BEFORE.json",
+      "sha256": "afa8bce0318b64fb813f3073d44bf513a524fa231c33138c80f324d0f9f6aa70",
+      "bytes": 1169,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:12:34.988450+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-owner-quote-qa/NETWORK-LOCAL-RELOAD.json",
+      "archivo": "chrome/NETWORK-LOCAL-RELOAD.json",
+      "sha256": "54f58877052b91edc9ff8ad5f5d92256e82b99f6dc70396e9e6b45c7ce311dc4",
+      "bytes": 18868,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:23:16.005538+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-owner-quote-qa/OLD-TAB-LOADING-OBSERVATION.json",
+      "archivo": "chrome/OLD-TAB-LOADING-OBSERVATION.json",
+      "sha256": "60edeb5eec249769d703ee2ac592967bc0fff1fa3dc30a365d22b682e994f047",
+      "bytes": 330,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:32:29.299265+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-euro-owner-quote-scope/RECIBO-ALCANCE-Y-REPRODUCCION.json",
+      "archivo": "euro/RECIBO-ALCANCE-Y-REPRODUCCION.json",
+      "sha256": "e1580d4b91063abcdf96f886bf9a49aec8d5db9cba6dfbef69e1c32d72eb235e",
+      "bytes": 4565,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T21:52:13.099943+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-euro-owner-quote-scope/RESULTADO-REPRODUCCION.json",
+      "archivo": "euro/RESULTADO-REPRODUCCION.json",
+      "sha256": "cac29a9ca2634d28aa0a06aa2b8d079baf57daa120936f242c59f49510efa968",
+      "bytes": 2098,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T21:50:30.503909+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-euro-owner-quote-scope/RECIBO-PROTOTIPO-CONTRATO.json",
+      "archivo": "euro/RECIBO-PROTOTIPO-CONTRATO.json",
+      "sha256": "9b60db0cbd66ee713ac608f20e26d39639fd5f79de0397374bcf2c4771a96613",
+      "bytes": 4293,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:24:34.878027+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-euro-owner-quote-scope/OWNER-QUOTE-DON-PEPE-REFERENCE.json",
+      "archivo": "euro/OWNER-QUOTE-DON-PEPE-REFERENCE.json",
+      "sha256": "1a10f4f293e5af22f4fae97e7ce0e133c3cb80489718b901b1c07e0182bfa9cc",
+      "bytes": 9300,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:20:44.510077+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-euro-owner-quote-scope/RESULTADO-PROTOTIPO-CONTRATO.json",
+      "archivo": "euro/RESULTADO-PROTOTIPO-CONTRATO.json",
+      "sha256": "9d5e0635d139a1951d2ca6044904d357fefb7f5334513dd9903912dfb0607cd9",
+      "bytes": 5200,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:22:39.538496+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-euro-owner-quote-scope/RECIBO-INTEGRACION-EURO.json",
+      "archivo": "euro/RECIBO-INTEGRACION-EURO.json",
+      "sha256": "f7fde85924ffc5dc1343ccb507c3078cd6fa99f48de79d9a561ad6b32c8512b9",
+      "bytes": 4665,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:14:19.416322+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-euro-owner-quote-scope/MANIFIESTO-INTEGRACION-EURO.json",
+      "archivo": "euro/MANIFIESTO-INTEGRACION-EURO.json",
+      "sha256": "0539f1b1a90d34624ff301d692a7cf3ef97cc5668c5264bb0f4cc7c0aeb837b2",
+      "bytes": 1953,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:14:19.416948+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/NORMALIZER-RECEIPT.json",
+      "archivo": "nollagam/NORMALIZER-RECEIPT.json",
+      "sha256": "986cb9ea4cf3cea4af8912e4602dc05ab79983434c42bbb5c883517fc8af775b",
+      "bytes": 6270,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:59:21.782845+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/CONSUMER-RECEIPT.json",
+      "archivo": "nollagam/CONSUMER-RECEIPT.json",
+      "sha256": "68f4ccc25f20f9cac87fd9c3c9bbfbefcf26bf71f67d2160aa6133fb107ce9ec",
+      "bytes": 5756,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:09:12.918793+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/baseline-reproduction.test.mjs",
+      "archivo": "nollagam/baseline-reproduction.test.mjs",
+      "sha256": "823c3028847da4ddee6f6a14d54b6c4e3ef9fdeb385d2253a2555d90c303dc5a",
+      "bytes": 1311,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:54:27.456042+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/baseline-before.log",
+      "archivo": "nollagam/baseline-before.log",
+      "sha256": "3f84c8297a0532962bdc2de1561da041bcf4313a7e60ec59a21d71d65ecc47e2",
+      "bytes": 1073,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:54:35.212612+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/normalizer-tests.log",
+      "archivo": "nollagam/normalizer-tests.log",
+      "sha256": "357bd0d734e59e252add15659d4bdabd113185a5bc1f3e99381134f2cead1d0e",
+      "bytes": 1975,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:58:04.497080+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-nollagam-owner-quotes-20261117/consumer-tests.log",
+      "archivo": "nollagam/consumer-tests.log",
+      "sha256": "cddc97d1ab1066f829bde3e1b1d1eb3dec71481488c2cabc6e9c9f162a970359",
+      "bytes": 1576,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:08:22.705107+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-financial-witness-before.log",
+      "archivo": "financiero/sollahms-financial-witness-before.log",
+      "sha256": "ac2b6089ca8950148e56fb07403da507c5e534184d62200d693bd616810acdaf",
+      "bytes": 1055,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:52:13.854692+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-financial-witness-before-expanded.log",
+      "archivo": "financiero/sollahms-financial-witness-before-expanded.log",
+      "sha256": "eaf2e8aef3c6962aa2c2b0f82e9b7f72168b39d4206496f59b77f6d0802b399e",
+      "bytes": 10644,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:57:14.366300+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-financial-witness-before-expanded.test.mjs",
+      "archivo": "financiero/sollahms-financial-witness-before-expanded.test.mjs",
+      "sha256": "e7a1ff95d785cfe0c94cd3111ecedcc1ce9cda2e95f7c15614e8b2821fc4fc3d",
+      "bytes": 4076,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:58:13.172430+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-financial-witness-final13.log",
+      "archivo": "financiero/sollahms-financial-witness-final13.log",
+      "sha256": "066297b875d0c25e7cfcb200990d972aac3f0b16e914b4dbe1fb6176166bace9",
+      "bytes": 1337,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T22:59:43.764011+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-nollagam-integration-before-label-fix.log",
+      "archivo": "antecedentes/sollahms-nollagam-integration-before-label-fix.log",
+      "sha256": "ac156b18c5425f0bfc972234b30d026b1c0342702e6191e0836f5750e9d5a97a",
+      "bytes": 6852,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T23:12:02.009336+00:00"
+    },
+    {
+      "original": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/ARCHIVOS-PROTEGIDOS.json",
+      "archivo": "preservacion/ARCHIVOS-PROTEGIDOS-F10.json",
+      "sha256": "40cec8f95102baaf7b8de826c31c4d52df3e41b7e4f914cca6f427a1e40c529f",
+      "bytes": 21249,
+      "bytes_identicos": true,
+      "original_mtime_UTC": "2026-11-17T14:33:50.258577+00:00"
+    }
+  ],
+  "fuentes_owner_originales_desde_commit": [
+    {
+      "archivo": "fuentes-owner/data/euro-commercial.json",
+      "origen": "git show c56f199a0a6e0d9c15ca3d26969603e9f3d88919:data/euro-commercial.json",
+      "path": "data/euro-commercial.json",
+      "sha256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+      "bytes": 8454,
+      "original_sin_reescribir": true
+    },
+    {
+      "archivo": "fuentes-owner/data/nollagam-commercial.json",
+      "origen": "git show c56f199a0a6e0d9c15ca3d26969603e9f3d88919:data/nollagam-commercial.json",
+      "path": "data/nollagam-commercial.json",
+      "sha256": "d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b",
+      "bytes": 8493,
+      "original_sin_reescribir": true
+    }
+  ]
+}

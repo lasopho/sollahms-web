@@ -1,0 +1,30 @@
+✖ Costanera A 3D must retain its explicit owner UF5070 quote within UF5000–5100 (3.924084ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.947625
+
+✖ failing tests:
+
+test at ../sollahms-nollagam-owner-quotes-20261117/baseline-reproduction.test.mjs:12:1
+✖ Costanera A 3D must retain its explicit owner UF5070 quote within UF5000–5100 (3.924084ms)
+  AssertionError [ERR_ASSERTION]: known owner category is incorrectly excluded by the original project minimum
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-nollagam-owner-quotes-20261117/baseline-reproduction.test.mjs:18:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

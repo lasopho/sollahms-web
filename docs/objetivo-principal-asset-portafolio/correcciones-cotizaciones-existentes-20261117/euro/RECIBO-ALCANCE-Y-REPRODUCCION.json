@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-17T21:52:13.096576+00:00",
+  "kind": "One reused Euro owner quotation: scope separation and isolated production false-negative reproduction",
+  "project": "edificio-don-pepe-154",
+  "projectName": "Don Pepe 154",
+  "priceReferenceIdPreserved": "edificio-don-pepe-154:owner-price:1",
+  "newCommercialData": false,
+  "newOwnerStatement": false,
+  "sourceScope": {
+    "ownerSourceFile": "data/euro-commercial.json",
+    "ownerSourceSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+    "ownerSourceDate": "2026-10-29",
+    "ownerProjectPointer": "/projects/edificio-don-pepe-154",
+    "ownerPricePointers": {
+      "1D": "/projects/edificio-don-pepe-154/prices/1",
+      "2D": "/projects/edificio-don-pepe-154/prices/2"
+    },
+    "confirmedExistingPrices": [
+      {
+        "priceUF": 3306.18,
+        "bedrooms": 1,
+        "bathrooms": null
+      },
+      {
+        "priceUF": 3562,
+        "bedrooms": 2,
+        "bathrooms": null
+      }
+    ],
+    "priceScope": "typology; not a unit offer",
+    "unit": null,
+    "model": null,
+    "propertyTypeOnOwnerPriceReference": null,
+    "usefulM2OnOwnerPriceReference": null,
+    "totalM2OnOwnerPriceReference": null,
+    "stock": null
+  },
+  "importerDerivedAttributes": {
+    "source": "production9e/scripts/euro_details.py",
+    "sourceLine": 35,
+    "function": "offers_for",
+    "propertyTypeRule": "'local' if k=='local' else 'departamento'",
+    "bedroomsRule": "Numeric owner typology key converted to integer; keys can also be assembled from brochures or old typologies. For this price-backed1d/2d, the corresponding owner keys are explicitly present.",
+    "propertyTypeDepartmentIsExplicitOwnerQuoteData": false,
+    "publishedResidencialRuleSourceLine": 92,
+    "doNotAdoptImporterDefaultAsOwnerEvidence": true
+  },
+  "oneIsolatedReproduction": {
+    "codeRef": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "productionModuleFilesPreservedAndGitBlobVerified": 5,
+    "command": "node reproduce-once.mjs",
+    "nodeInvocations": 1,
+    "combinedQuery": {
+      "evidenceMode": "published",
+      "bedrooms": "1",
+      "minPriceInput": "3306.18",
+      "maxPriceInput": "3306.18"
+    },
+    "expectedMatch": true,
+    "actualMatch": false,
+    "priceOnlyControl": true,
+    "bedroomsOnlyControl": true,
+    "priceReferenceGate": false,
+    "inputMutated": false,
+    "result": "REPRODUCED_FALSE_NEGATIVE_OWNER_PRICE_BEDROOM",
+    "outputFile": "RESULTADO-REPRODUCCION.json",
+    "stdoutFile": "REPRODUCCION.log",
+    "oldCertifiedSuitesRepeated": false
+  },
+  "finding": {
+    "id": "EURO-DONPEPE-OWNER-PRICE-D-9E-01",
+    "status": "REPRODUCIDO",
+    "severity": "P2",
+    "file": "assets/js/catalog-filter-engine.mjs",
+    "lineInProduction9e": 61,
+    "otherLocation": {
+      "file": "assets/js/project-offers.mjs",
+      "lineInProduction9e": 8
+    },
+    "impact": "A valid owner-backed1D+UF3306.18 query excludes Don Pepe154. Each predicate separately matches. The quote lacks catalogPricePolicy and Euro is outside the dated typed-price allowlist, so a generic project price with unknown bedrooms becomes its only priced witness.",
+    "proposedCorrection": "Admit explicit price+bedroom facts from the dated Euro owner source through an appropriate pure reference path. Keep bathroom, unit/model, area and unsupported property type unknown; do not simply promote the importer department default or lend the project minimum to another typology.",
+    "scopeNotMeasured": "Other Euro projects and2D combinations were not reproduced in this task; do not turn this single verified case into a cohort count."
+  },
+  "technicalBoundaries": {
+    "workingCheckoutEngineOrNorthVerdeHelperModified": false,
+    "currentHelperExecuted": false,
+    "productionSnapshotOnly": true,
+    "applicationOrPublishedDataChanged": false,
+    "generatorsOrBuildsRun": false,
+    "IrisOrOtherWebNavigation": false,
+    "GitOrPRWrites": false,
+    "newOwnerQuestions": 0,
+    "closedLebenHistoricalIDs": 0
+  },
+  "sourcePreservation": {
+    "copiedOriginalRepoFiles": 7,
+    "GitBlobIDsAllMatch": true,
+    "structuredInputExcerpts": 3,
+    "excerptPolicy": "Parsed excerpts preserve values and cite original whole-file SHA256 and pointer; they are explicitly not original file bytes.",
+    "partialCheckoutSourceRead": "README/script absent from sparse checkout; initial git show read attempted promisor fetch and failed DNS. Read exact known-ref files through connected GitHub fetch_file instead. No importer script was executed."
+  }
+}

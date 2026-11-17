@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "kind": "NORMALIZED_EXISTING_OWNER_QUOTES_NOT_NEW_COMMERCIAL_EVIDENCE",
+  "createdAtUTC": "2026-11-17T22:20:44.509311+00:00",
+  "normalizationOnly": true,
+  "newOwnerReception": false,
+  "newCommercialFacts": false,
+  "sourceDate": "2026-10-29",
+  "sourceAuthority": {
+    "type": "owner-supplied",
+    "date": "2026-10-29",
+    "instruction": "Texto pegado(7).txt",
+    "screenshots": [
+      {
+        "file": "Captura de pantalla 2026-10-29 a la(s) 12.55.57 a.m..png",
+        "sha256": "0936987c080a12b408c16145db7b6804ea61e63d7859ca2084be6f502e7f6285"
+      },
+      {
+        "file": "Captura de pantalla 2026-10-29 a la(s) 12.56.06 a.m..png",
+        "sha256": "24e6e4a09fc96933cce85ceb2509d07fdee7527b8f99a6cfa8b837e33334aff3"
+      }
+    ],
+    "authority": "The 21 exact owner values override any historical developer price or future source refresh.",
+    "overwritePolicy": "Apply after every external catalogue refresh; amendments require an explicit owner source."
+  },
+  "stableReferenceIdPolicy": "Preserve the existing IDs from EURO-FUENTES-Y-ALCANCES.json; no new receipt or commercial-fact IDs.",
+  "record": {
+    "slug": "edificio-don-pepe-154",
+    "name": "Don Pepe 154",
+    "sourceLayer": "owner-quote-prototype-not-stock",
+    "notOffer": true,
+    "commercialAdoptionAllowed": false,
+    "sourceProject": {
+      "slug": "edificio-don-pepe-154",
+      "nombre": "Don Pepe 154",
+      "inmobiliaria": "Euro",
+      "comuna": "La Florida",
+      "region": "Región Metropolitana"
+    },
+    "projectFacts": {
+      "region": "Región Metropolitana",
+      "commune": "La Florida",
+      "developer": "Euro",
+      "assetTypes": [],
+      "state": null,
+      "delivery": null,
+      "amenities": null,
+      "features": null,
+      "parking": null,
+      "storage": null
+    },
+    "references": [
+      {
+        "id": "edificio-don-pepe-154:owner-price:1",
+        "sourceKind": "OWNER_DECLARED_PRICE_TYPOLOGY",
+        "sourceLayer": "owner-quote-prototype-not-stock",
+        "sourceDate": "2026-10-29",
+        "priceScope": "typology; not a unit offer",
+        "notOffer": true,
+        "unit": null,
+        "model": null,
+        "stock": null,
+        "availability": null,
+        "attributes": {
+          "propertyType": null,
+          "assetType": null,
+          "bathrooms": null,
+          "usefulM2": null,
+          "totalM2": null,
+          "interiorM2": null,
+          "terraceM2": null,
+          "gardenM2": null,
+          "landM2": null,
+          "privateTerrace": null,
+          "privateGarden": null,
+          "parkingIncluded": null,
+          "parkingAvailable": null,
+          "storageIncluded": null,
+          "storageAvailable": null,
+          "state": null,
+          "delivery": null,
+          "typology": null,
+          "priceUF": 3306.18,
+          "bedrooms": 1
+        }
+      },
+      {
+        "id": "edificio-don-pepe-154:owner-price:2",
+        "sourceKind": "OWNER_DECLARED_PRICE_TYPOLOGY",
+        "sourceLayer": "owner-quote-prototype-not-stock",
+        "sourceDate": "2026-10-29",
+        "priceScope": "typology; not a unit offer",
+        "notOffer": true,
+        "unit": null,
+        "model": null,
+        "stock": null,
+        "availability": null,
+        "attributes": {
+          "propertyType": null,
+          "assetType": null,
+          "bathrooms": null,
+          "usefulM2": null,
+          "totalM2": null,
+          "interiorM2": null,
+          "terraceM2": null,
+          "gardenM2": null,
+          "landM2": null,
+          "privateTerrace": null,
+          "privateGarden": null,
+          "parkingIncluded": null,
+          "parkingAvailable": null,
+          "storageIncluded": null,
+          "storageAvailable": null,
+          "state": null,
+          "delivery": null,
+          "typology": null,
+          "priceUF": 3562.0,
+          "bedrooms": 2
+        }
+      }
+    ]
+  },
+  "fieldProvenance": {
+    "edificio-don-pepe-154:owner-price:1": {
+      "priceUF": {
+        "sourceFile": "data/euro-commercial.json",
+        "sourceSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "sourceRef": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+        "pointer": "/projects/edificio-don-pepe-154/prices/1",
+        "originalValue": 3306.18,
+        "originalString": "3306.18"
+      },
+      "bedrooms": {
+        "sourceFile": "data/euro-commercial.json",
+        "sourceSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "pointer": "/projects/edificio-don-pepe-154/prices/1",
+        "explicitOwnerCategoryKey": "1",
+        "normalization": "Numeric bedroom category declared by owner; not a brochure/old typology fallback.",
+        "corroboratingSource": "production9e/docs/euro-20261029/README.md:21"
+      },
+      "sourceDate": {
+        "sourceFile": "data/euro-commercial.json",
+        "sourceSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "pointer": "/source/date",
+        "value": "2026-10-29"
+      },
+      "unknownFields": {
+        "fields": [
+          "propertyType",
+          "assetType",
+          "bathrooms",
+          "usefulM2",
+          "totalM2",
+          "interiorM2",
+          "terraceM2",
+          "gardenM2",
+          "landM2",
+          "privateTerrace",
+          "privateGarden",
+          "parkingIncluded",
+          "parkingAvailable",
+          "storageIncluded",
+          "storageAvailable",
+          "state",
+          "delivery",
+          "typology"
+        ],
+        "reason": "Not declared on this owner price category. Do not borrow source model or importer defaults."
+      },
+      "stockAndUnit": {
+        "unit": null,
+        "model": null,
+        "stock": null,
+        "availability": null,
+        "reason": "The owner source expressly scopes prices to typology rather than a unit offer."
+      }
+    },
+    "edificio-don-pepe-154:owner-price:2": {
+      "priceUF": {
+        "sourceFile": "data/euro-commercial.json",
+        "sourceSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "sourceRef": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+        "pointer": "/projects/edificio-don-pepe-154/prices/2",
+        "originalValue": 3562.0,
+        "originalString": "3562"
+      },
+      "bedrooms": {
+        "sourceFile": "data/euro-commercial.json",
+        "sourceSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "pointer": "/projects/edificio-don-pepe-154/prices/2",
+        "explicitOwnerCategoryKey": "2",
+        "normalization": "Numeric bedroom category declared by owner; not a brochure/old typology fallback.",
+        "corroboratingSource": "production9e/docs/euro-20261029/README.md:21"
+      },
+      "sourceDate": {
+        "sourceFile": "data/euro-commercial.json",
+        "sourceSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "pointer": "/source/date",
+        "value": "2026-10-29"
+      },
+      "unknownFields": {
+        "fields": [
+          "propertyType",
+          "assetType",
+          "bathrooms",
+          "usefulM2",
+          "totalM2",
+          "interiorM2",
+          "terraceM2",
+          "gardenM2",
+          "landM2",
+          "privateTerrace",
+          "privateGarden",
+          "parkingIncluded",
+          "parkingAvailable",
+          "storageIncluded",
+          "storageAvailable",
+          "state",
+          "delivery",
+          "typology"
+        ],
+        "reason": "Not declared on this owner price category. Do not borrow source model or importer defaults."
+      },
+      "stockAndUnit": {
+        "unit": null,
+        "model": null,
+        "stock": null,
+        "availability": null,
+        "reason": "The owner source expressly scopes prices to typology rather than a unit offer."
+      }
+    }
+  },
+  "registeredIdentityProvenance": {
+    "sourceFile": "data/proyectos.json",
+    "sourceSHA256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+    "sourceRef": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "pointer": "/32",
+    "onlyFields": [
+      "slug",
+      "nombre",
+      "inmobiliaria",
+      "comuna",
+      "region"
+    ]
+  },
+  "ignoredImporterFields": {
+    "propertyType": "departamento",
+    "origin": "production9e/scripts/euro_details.py:35 offers_for non-local default",
+    "canonicalPropertyType": null,
+    "canonicalAssetType": null,
+    "notAnOwnerDeclaration": true
+  },
+  "consumerEligibility": {
+    "localPredicatePrototype": true,
+    "publishedIntegration": false,
+    "useAsActiveOffer": false,
+    "stockCertified": false,
+    "availabilityCertified": false,
+    "commercialValidityBeyondSourceDateCertified": false,
+    "requiresReviewedConsumer": true,
+    "engineDoesNotEnforceSourceOrStockMetadata": true
+  },
+  "limits": [
+    "Only owner price and bedroom category are accepted as option attributes.",
+    "No unit/model/stock/area/bathroom is reconstructed from a bedroom count.",
+    "No generic minimum or imported department/residential type is lent to a quote.",
+    "Owner common state/delivery and brochure features remain outside this minimal predicate prototype.",
+    "Location and developer are registered identity, not unit attributes."
+  ]
+}

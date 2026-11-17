@@ -1,0 +1,222 @@
+{
+  "recordedAtUTC": "2026-11-17T22:22:39.528Z",
+  "scope": "New isolated owner-quote prototype only",
+  "declaredTests": 16,
+  "observations": [
+    {
+      "name": "owner-contract-masks",
+      "passed": true,
+      "existingOwnerQuotes": 2,
+      "newCommercialFacts": false
+    },
+    {
+      "name": "1D-price-positive",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1"
+      },
+      "expectedMatch": true,
+      "actualMatch": true,
+      "matchedReferenceIds": [
+        "edificio-don-pepe-154:owner-price:1"
+      ],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "2D-price-positive",
+      "query": {
+        "minPrice": 3562,
+        "maxPrice": 3562,
+        "bedrooms": "2"
+      },
+      "expectedMatch": true,
+      "actualMatch": true,
+      "matchedReferenceIds": [
+        "edificio-don-pepe-154:owner-price:2"
+      ],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "inactive-unknowns",
+      "query": {},
+      "expectedMatch": true,
+      "actualMatch": true,
+      "matchedReferenceIds": [
+        "edificio-don-pepe-154:owner-price:1",
+        "edificio-don-pepe-154:owner-price:2"
+      ],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "2D-cannot-borrow1D-price",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "2"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "1D-cannot-borrow2D-price",
+      "query": {
+        "minPrice": 3562,
+        "maxPrice": 3562,
+        "bedrooms": "1"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "department-unknown",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1",
+        "propertyType": "departamento"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "residential-unknown",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1",
+        "assetType": "Residencial"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "bathroom-unknown",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1",
+        "bathrooms": "1"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "generic-surface-not-useful",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1",
+        "surfaceMetric": "util",
+        "minSurface": 29,
+        "maxSurface": 29
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "generic-surface-not-total",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1",
+        "surfaceMetric": "total",
+        "minSurface": 29,
+        "maxSurface": 29
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "local-unknown",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1",
+        "propertyType": "local"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "external-metadata-not-price",
+      "query": {
+        "minPrice": 3562,
+        "maxPrice": 3562,
+        "bedrooms": "1"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "parking-unknown",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1",
+        "parking": "included"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "storage-unknown",
+      "query": {
+        "minPrice": 3306.18,
+        "maxPrice": 3306.18,
+        "bedrooms": "1",
+        "storage": "available"
+      },
+      "expectedMatch": false,
+      "actualMatch": false,
+      "matchedReferenceIds": [],
+      "issues": [],
+      "passed": true
+    },
+    {
+      "name": "immutability-and-stock-limit",
+      "passed": true,
+      "stockAndAvailabilityRemainNull": true,
+      "callerMustPreserveDocumentaryScope": true
+    }
+  ],
+  "passedObservations": 16,
+  "failures": [],
+  "noApplicationOrPublishedChanges": true,
+  "noOldSuitesRun": true,
+  "noNewCommercialEvidence": true,
+  "currentCoreSnapshot": "CURRENT-CORE-SNAPSHOT.json"
+}

@@ -1,0 +1,1397 @@
+diff --git a/assets/js/catalog-euro-owner-quotes.mjs b/assets/js/catalog-euro-owner-quotes.mjs
+new file mode 100644
+index 0000000..eba54fe
+--- /dev/null
++++ b/assets/js/catalog-euro-owner-quotes.mjs
+@@ -0,0 +1,139 @@
++import {matchProjectFilters,queryFromCatalogState,normalizeAmenityKey} from './commercial-filter-engine.mjs';
++
++export const EURO_OWNER_SOURCE_PATH='/data/euro-commercial.json';
++export const EURO_OWNER_SOURCE_SHA256='21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2';
++const sourceDate='2026-10-29';
++const sources=new WeakSet(),contexts=new WeakSet(),matches=new WeakSet();
++const priced=value=>typeof value==='number'&&Number.isFinite(value)&&value>0;
++const present=value=>value!==''&&value!==null&&value!==undefined;
++const object=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
++const privateIds=new Set(['terraza-privada','jardin-privado']);
++const fail=message=>{throw new TypeError('Euro owner quotes: '+message);};
++function freeze(value){if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
++
++/** Verify the existing owner source, rather than the importer's derived fields. */
++export async function parseEuroOwnerSource(text){
++  if(typeof text!=='string'||text.length>1000000||!globalThis.crypto?.subtle)fail('invalid source transport');
++  const digest=await globalThis.crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));
++  const hash=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,'0')).join('');
++  if(hash!==EURO_OWNER_SOURCE_SHA256)fail('source SHA-256 mismatch');
++  const evidence=JSON.parse(text);
++  if(evidence.schemaVersion!==1||evidence.source?.type!=='owner-supplied'
++    ||evidence.source.date!==sourceDate||!object(evidence.projects))fail('source identity');
++  const source=freeze({evidence,path:EURO_OWNER_SOURCE_PATH,sha256:hash,date:sourceDate});
++  sources.add(source);return source;
++}
++export async function loadEuroOwnerSource(fetchImpl=globalThis.fetch){
++  if(typeof fetchImpl!=='function')fail('fetch unavailable');
++  const response=await fetchImpl(EURO_OWNER_SOURCE_PATH,{signal:AbortSignal.timeout(10000),credentials:'omit',redirect:'error'});
++  if(!response?.ok)fail('source unavailable');
++  return parseEuroOwnerSource(await response.text());
++}
++
++const candidate=project=>project.inmobiliaria==='Euro'&&project.commercialSource?.file==='data/euro-commercial.json';
++const labelFor=key=>key==='local'?'Local comercial':key==='1'?'1 dormitorio':key+' dormitorios';
++function identity(project){return {slug:project.slug,nombre:project.nombre,direccion:project.direccion,
++  inmobiliaria:project.inmobiliaria,comuna:project.comuna,region:project.region};}
++function sameIdentity(project,registered){return Object.keys(registered).every(key=>project[key]===registered[key]);}
++function projectAmenities(project){
++  const amenities={},amenityScopes={};
++  for(const feature of project._facets?.features??[]){
++    if(typeof feature?.id!=='string'||privateIds.has(feature.id))continue;
++    const key=normalizeAmenityKey(feature.id);amenities[key]=true;
++    if(['residential','commercial','all','Residencial','Comercial','Terreno'].includes(feature.scope))amenityScopes[key]=feature.scope;
++  }
++  return {amenities,amenityScopes};
++}
++function recordForSource(project,source){
++  const owner=source.evidence.projects[project.slug],commercial=project.commercialSource;
++  if(!object(owner)||owner.developer!=='Euro'||owner.commune!==project.comuna||owner.region!==project.region
++    ||commercial.type!=='owner-supplied'||commercial.date!==source.date
++    ||!['confirmed','pending'].includes(commercial.priceStatus)
++    ||owner.priceScope!=='typology; not a unit offer'||!object(owner.prices)
++    ||project.precioDesdeUF!==owner.projectFromUF)return null;
++  const entries=Object.entries(owner.prices);
++  if(commercial.priceStatus!==(entries.length?'confirmed':'pending'))return null;
++  const references=[];
++  for(const [key,value] of entries){
++    if(!/^(?:[1-9]\d?|local)$/.test(key)||!priced(value))return null;
++    const tableLabel=key==='local'?'Local':labelFor(key);
++    if(!(project.preciosPorTipologia??[]).some(row=>row.tipologia===tableLabel&&row.precioDesdeUF===value))return null;
++    const local=key==='local';
++    references.push({id:project.slug+':owner-price:'+key,label:labelFor(key),
++      sourceKind:'owner-euro-typology',sourceDate:source.date,sourcePath:'data/euro-commercial.json',
++      sourcePointer:'/projects/'+project.slug+'/prices/'+key,sourceSHA256:source.sha256,
++      scope:owner.priceScope,stock:null,availability:null,unit:null,model:null,notOffer:true,
++      priceDecimals:String(owner.priceStrings?.[key]??'').includes('.')?2:0,
++      attributes:{priceUF:value,bedrooms:local?null:Number(key),
++        // The literal owner key local establishes that product. A bedroom
++        // category never adopts the importer's apartment/residential defaults.
++        propertyType:local?'local':null,assetType:local?'Comercial':null,
++        typology:local?'local':key+'d',bathrooms:null,usefulM2:null,totalM2:null,interiorM2:null,
++        terraceM2:null,gardenM2:null,landM2:null,privateTerrace:null,privateGarden:null,
++        parkingIncluded:null,parkingAvailable:null,storageIncluded:null,storageAvailable:null}});
++  }
++  return freeze({slug:project.slug,name:project.nombre,sourceLayer:'published-owner-euro-quotes',
++    sourceProject:identity(project),asOf:source.date,notOffer:true,
++    projectFacts:{region:project.region,commune:project.comuna,developer:'Euro',
++      // Mixto is an explicit project class, not an inferred use of a quotation.
++      assetTypes:project.tiposActivos?.includes('Mixto')?['Mixto']:[],...projectAmenities(project)},references});
++}
++function attach(project,status,record=null){
++  const context=freeze({status,identity:identity(project),record});contexts.add(context);
++  return {...project,_euroOwnerQuoteContext:context};
++}
++export function bindEuroOwnerQuotes(projects,source){
++  if(!Array.isArray(projects)||!sources.has(source))fail('verified source required');
++  return projects.map(project=>{
++    if(!candidate(project))return project;
++    const record=recordForSource(project,source);
++    return attach(project,record?'ready':'unavailable',record);
++  });
++}
++export const unavailableEuroOwnerQuotes=projects=>projects.map(project=>candidate(project)?attach(project,'unavailable'):project);
++function context(project){
++  const current=project._euroOwnerQuoteContext;
++  return project.inmobiliaria==='Euro'&&current&&contexts.has(current)?current:null;
++}
++function record(project){const current=context(project);return current?.status==='ready'&&sameIdentity(project,current.identity)?current.record:null;}
++export const euroOwnerQuoteLoadFailed=project=>context(project)?.status==='unavailable';
++export function usesEuroOwnerQuotes(project,state={}){
++  return !!context(project)&&(!state.evidenceMode||state.evidenceMode==='published')
++    &&(present(state.minPriceInput)||present(state.maxPriceInput));
++}
++const queryKey=state=>JSON.stringify(queryFromCatalogState(state));
++export function matchEuroOwnerQuotes(project,state={}){
++  if(!usesEuroOwnerQuotes(project,state))return null;
++  const current=record(project),query=queryFromCatalogState(state);
++  // Existing registered-project/stage selectors retain their catalogue path.
++  for(const key of ['region','commune','developers','state','delivery'])delete query[key];
++  query.features=[];
++  const match=matchProjectFilters(current,query);
++  const references=match.references.filter(reference=>matchProjectFilters({...current,references:[reference]},
++    {amenities:state.features??[],amenitiesAll:state.featuresAll===true}).matches);
++  const result=freeze({...match,matches:references.length>0,references,
++    matchedReferenceIds:references.map(reference=>reference.id),queryKey:queryKey(state)});
++  matches.add(result);return result;
++}
++function currentMatch(project,state,provided=project._euroOwnerQuoteMatch){
++  return provided&&matches.has(provided)&&provided.record===record(project)&&provided.queryKey===queryKey(state)?provided:matchEuroOwnerQuotes(project,state);
++}
++function witness(project,state,provided){
++  const references=currentMatch(project,state,provided)?.references??[];
++  return references.reduce((best,reference)=>!best||reference.attributes.priceUF<best.attributes.priceUF?reference:best,null);
++}
++export function euroOwnerQuoteOffer(project,state={},provided){
++  if(!usesEuroOwnerQuotes(project,state))return null;
++  const reference=witness(project,state,provided),value=reference?.attributes.priceUF??null,typology=reference?.label??null;
++  return {value,typology,euroOwnerQuote:true,date:reference?.sourceDate??null,
++    propertyType:reference?.attributes.propertyType??null,
++    referenceId:reference?.id??null,priceDecimals:reference?.priceDecimals??0,
++    financialBaselineCompatible:priced(value)&&value===project.precioDesdeUF
++      &&typeof typology==='string'&&typology===project.precioDesdeTipologia};
++}
++export function euroOwnerQuoteFeatureIds(project,state={},provided){
++  const match=currentMatch(project,state,provided),reference=witness(project,state,match);
++  if(!reference)return [];
++  return (project._facets?.features??[]).filter(feature=>!privateIds.has(feature.id)
++    &&matchProjectFilters({...match.record,references:[reference]},{amenities:[feature.id]}).matches).map(feature=>feature.id);
++}
+diff --git a/assets/js/catalog-filter-engine.mjs b/assets/js/catalog-filter-engine.mjs
+index cbe0ae4..3f28dde 100644
+--- a/assets/js/catalog-filter-engine.mjs
++++ b/assets/js/catalog-filter-engine.mjs
+@@ -1,6 +1,8 @@
+ import {metroDefaults,metroMatches} from './metro-model.mjs';
+ import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
+ import {hasCatalogTypologyPrices,matchCatalogTypologyPrices,catalogTypologyOffer,catalogTypologyFeatureIds} from './catalog-typology-prices.mjs';
++import {usesEuroOwnerQuotes,matchEuroOwnerQuotes,euroOwnerQuoteOffer,euroOwnerQuoteFeatureIds} from './catalog-euro-owner-quotes.mjs';
++import {matchNollagamOwnerQuotes,nollagamOwnerQuoteOffer} from './catalog-nollagam-quote-consumer.mjs';
+ import {matchProjectFilters,queryFromCatalogState,normalizePropertyType,normalizeAmenityKey} from './commercial-filter-engine.mjs';
+ /** Pure, bounded filtering of documented project facts. Unknown is never false. */
+ export const fold=value=>String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es-CL');
+@@ -54,6 +56,9 @@ function optionQuery(project,s){
+ }
+ export function matchesPublishedPriceReference(project,s){
+   if(bound(s.minPriceInput)===null&&bound(s.maxPriceInput)===null)return true;
++  const nollagamMatch=matchNollagamOwnerQuotes(project,s);
++  if(nollagamMatch!==null)return nollagamMatch.matches;
++  if(usesEuroOwnerQuotes(project,s))return matchEuroOwnerQuotes(project,s).matches;
+   if(hasCatalogTypologyPrices(project))return matchCatalogTypologyPrices(project,s).matches;
+   const f=project._facets??{},price=catalogReference(project,s).value;
+   const propertyTypes=[...new Set((f.propertyTypes??[]).map(normalizePropertyType).filter(Boolean))];
+@@ -93,7 +98,9 @@ const matchingPrice=match=>{
+   return prices.length?Math.min(...prices):null;
+ };
+ const resultPrice=(project,state)=>state.evidenceMode==='documentary'?matchingPrice(project._documentaryMatch):
+-  project._commercialMatch?matchingPrice(project._commercialMatch):hasCatalogTypologyPrices(project)?
++  project._commercialMatch?matchingPrice(project._commercialMatch):matchNollagamOwnerQuotes(project,state)!==null?
++    nollagamOwnerQuoteOffer(matchNollagamOwnerQuotes(project,state)).value:usesEuroOwnerQuotes(project,state)?
++    euroOwnerQuoteOffer(project,state).value:hasCatalogTypologyPrices(project)?
+     catalogTypologyOffer(project,state).value:catalogReference(project,state).value;
+ function preparedPurchaseMatches(record,state){
+   if(!state.purchaseModes.length)return true;
+@@ -139,20 +146,24 @@ export function advancedFilterAndSort(projects,input={}){
+       return match.matches&&metroMatches(p,s)&&preparedPurchaseMatches(p._commercial,s)
+         ?[{...p,_commercialMatch:match}]:[];
+     }
++    const nollagamPriceMatch=matchNollagamOwnerQuotes(p,s);
++    const euroPriceMatch=usesEuroOwnerQuotes(p,s)?matchEuroOwnerQuotes(p,s):null;
+     const publishedPriceMatch=hasCatalogTypologyPrices(p)?matchCatalogTypologyPrices(p,s):null;
+     const hasPrice=bound(s.minPriceInput)!==null||bound(s.maxPriceInput)!==null;
+-    const f=p._facets??{},ids=publishedPriceMatch&&hasPrice?catalogTypologyFeatureIds(p,s,publishedPriceMatch):eligibleFeatures(p,s);
++    const f=p._facets??{},ids=nollagamPriceMatch?[]:euroPriceMatch?euroOwnerQuoteFeatureIds(p,s,euroPriceMatch):
++      publishedPriceMatch&&hasPrice?catalogTypologyFeatureIds(p,s,publishedPriceMatch):eligibleFeatures(p,s);
+     const matches=metroMatches(p,s)&&(!s.region||p.region===s.region)&&(!s.commune||p.comuna===s.commune)
+       &&(!s.developers.length||s.developers.includes(p.inmobiliaria))
+       &&(!s.state||(f.states??[p.estado]).some(x=>fold(x)===fold(s.state)))
+       &&(!s.assetType||(f.assetTypes??[]).includes(s.assetType))
+       &&(!s.purchaseModes.length||(f.purchaseStage?.eligible===true&&s.purchaseModes.includes(f.purchaseStage.mode)))
+       &&(!s.delivery||(s.delivery==='inmediata'?(f.delivery?.immediate===true||p.inmobiliaria==='León'&&f.delivery?.reportedImmediate===true):String(f.delivery?.year)===s.delivery))
+-      &&(publishedPriceMatch&&hasPrice?publishedPriceMatch.matches:
++      &&(nollagamPriceMatch?nollagamPriceMatch.matches:euroPriceMatch?euroPriceMatch.matches:publishedPriceMatch&&hasPrice?publishedPriceMatch.matches:
+         inRange(catalogReference(p,s).value,s.minPriceInput,s.maxPriceInput)&&matchesVariant(p,s)&&matchesPublishedPriceReference(p,s)&&publishedExtraMatches(p,s))
+       &&selectedMatch(ids,s.amenities,s.amenitiesAll)&&selectedMatch(ids,s.features,s.featuresAll)
+-      &&(publishedPriceMatch&&hasPrice||!words.length||words.every(w=>fold(keywords(p,s)).includes(w)));
+-    return matches?[publishedPriceMatch?{...p,_publishedPriceMatch:publishedPriceMatch}:p]:[];
++      &&(nollagamPriceMatch||euroPriceMatch||publishedPriceMatch&&hasPrice||!words.length||words.every(w=>fold(keywords(p,s)).includes(w)));
++    return matches?[nollagamPriceMatch?{...p,_nollagamOwnerQuoteMatch:nollagamPriceMatch}:euroPriceMatch?{...p,_euroOwnerQuoteMatch:euroPriceMatch}:
++      publishedPriceMatch?{...p,_publishedPriceMatch:publishedPriceMatch}:p]:[];
+   });
+   if(s.sortOrder==='price-asc'||s.sortOrder==='price-desc')rows.sort((a,b)=>{
+     const av=resultPrice(a,s),bv=resultPrice(b,s),ak=validNumber(av)&&av>0,bk=validNumber(bv)&&bv>0;
+@@ -199,6 +210,11 @@ export function writeQuery(state,view='cards'){
+ export function matchedLabels(project,state){
+   const selected=new Set([...(state.amenities??[]),...(state.features??[])]);
+   if(state.evidenceMode==='documentary'||project._documentaryMatch)return [];
++  if(matchNollagamOwnerQuotes(project,state)!==null)return [];
++  if(usesEuroOwnerQuotes(project,state)){
++    const actual=new Set(euroOwnerQuoteFeatureIds(project,state));
++    return (project._facets?.features??[]).filter(feature=>selected.has(feature.id)&&actual.has(feature.id)).map(feature=>feature.label);
++  }
+   if(project._publishedPriceMatch&&!project._commercialMatch
+     &&(bound(state.minPriceInput)!==null||bound(state.maxPriceInput)!==null)){
+     const actual=new Set(catalogTypologyFeatureIds(project,state));
+diff --git a/assets/js/catalog-financial-witness.mjs b/assets/js/catalog-financial-witness.mjs
+new file mode 100644
+index 0000000..56047f3
+--- /dev/null
++++ b/assets/js/catalog-financial-witness.mjs
+@@ -0,0 +1,7 @@
++/** The financial UI caches the original project scenario by slug. */
++export function financialReferenceCompatible(originalProject,selectedOffer){
++  return !!originalProject&&!!selectedOffer&&selectedOffer.financialBaselineCompatible!==false
++    &&typeof selectedOffer.value==='number'&&Number.isFinite(selectedOffer.value)&&selectedOffer.value>0
++    &&selectedOffer.value===originalProject.precioDesdeUF
++    &&(selectedOffer.typology??null)===(originalProject.precioDesdeTipologia??null);
++}
+diff --git a/assets/js/catalog-map.mjs b/assets/js/catalog-map.mjs
+index e95c058..d0a4ad2 100644
+--- a/assets/js/catalog-map.mjs
++++ b/assets/js/catalog-map.mjs
+@@ -71,7 +71,7 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
+     const title=el('h2',p.nombre),location=el('p',[p.comuna,p.region].filter(Boolean).join(' · '),'catalog-location');
+     const facts=el('dl',undefined,'catalog-facts');for(const fact of projectFacts(p,type||(filterState.propertyType==='local'?'Comercial':''),filterState)){const item=el('div');item.append(el('dt',fact.label),el('dd',fact.value));facts.append(item);}
+     const offer=selectedOffer(p,filterState),amount=el('p',offerPriceLabel(p,filterState),'catalog-price-value');
+-    const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(location.search,'buscador'))+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(p.inmobiliaria)&&/^[012]$/.test(filterState.bedrooms)&&p.commercialOffers?.some(o=>o.id===filterState.bedrooms+'d')?'&oferta='+filterState.bedrooms+'d':'')+(leonCatalogOfferId(p,filterState)?'&oferta='+leonCatalogOfferId(p,filterState):'')+(p._ecasaStageNumber?'#etapa-'+p._ecasaStageNumber:'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
++    const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(location.search,'buscador'))+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local'||offer.euroOwnerQuote&&offer.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(p.inmobiliaria)&&/^[012]$/.test(filterState.bedrooms)&&p.commercialOffers?.some(o=>o.id===filterState.bedrooms+'d')?'&oferta='+filterState.bedrooms+'d':'')+(leonCatalogOfferId(p,filterState)?'&oferta='+leonCatalogOfferId(p,filterState):'')+(p._ecasaStageNumber?'#etapa-'+p._ecasaStageNumber:'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
+     if(filterState.evidenceMode==='documentary'){link.textContent='Ver ficha publicada';link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(globalThis.location.search,'buscador'));link.setAttribute('aria-label','Ver ficha publicada de '+p.nombre);}
+     detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(commercialLayerNote(p,filterState))detail.append(el('p',commercialLayerNote(p,filterState),'catalog-price-type'));if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));const metro=metroSummary(p,filterState);if(metro)detail.append(el('p',metro.station+' · '+metro.lines+' · '+metro.distance,'catalog-metro-summary'));detail.append(link);
+     const matches=matchedLabels(p,filterState);if(matches.length){const list=el('ul',undefined,'cf-match-list');list.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))list.append(el('li',label));detail.append(list);}
+diff --git a/assets/js/catalog-model.mjs b/assets/js/catalog-model.mjs
+index aa871af..45a5bcc 100644
+--- a/assets/js/catalog-model.mjs
++++ b/assets/js/catalog-model.mjs
+@@ -1,6 +1,8 @@
+ import {advancedFilterAndSort} from './catalog-filter-engine.mjs?v=20261029-euro-1';
+ import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
+ import {hasCatalogTypologyPrices,catalogTypologyOffer} from './catalog-typology-prices.mjs';
++import {usesEuroOwnerQuotes,euroOwnerQuoteOffer} from './catalog-euro-owner-quotes.mjs';
++import {matchNollagamOwnerQuotes,nollagamOwnerQuoteOffer,nollagamOwnerQuoteFacts,nollagamOwnerQuoteNote} from './catalog-nollagam-quote-consumer.mjs';
+ // Public catalogue facts only. This module never changes source records.
+ export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
+ export const validPrice = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
+@@ -58,6 +60,9 @@ export function projectOffer(project,state={}) {
+     const reference=documentaryReference(project),a=reference?.attributes??{},metadata=documentaryMetadata(project,reference);
+     return {value:validPrice(a.priceUF)?a.priceUF:null,typology:null,documentary:true,referenceId:reference?.id??null,date:metadata.ownerPriceDate??null};
+   }
++  const nollagamMatch=!project._commercialMatch?matchNollagamOwnerQuotes(project,state):null;
++  if(nollagamMatch!==null)return nollagamOwnerQuoteOffer(nollagamMatch);
++  if(!project._commercialMatch&&usesEuroOwnerQuotes(project,state))return euroOwnerQuoteOffer(project,state);
+   if (!project._commercialMatch) return hasCatalogTypologyPrices(project)?catalogTypologyOffer(project,state):catalogReference(project,state);
+   const reference = preparedReference(project), a = reference?.attributes ?? {};
+   const typology = [a.bedrooms == null ? null : a.bedrooms+'D', a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ');
+@@ -66,6 +71,7 @@ export function projectOffer(project,state={}) {
+ export function offerPriceLabel(project,state={}) {
+   const offer=projectOffer(project,state);
+   if(offer.documentary)return validPrice(offer.value)?'Referencia propietaria UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}):offer.referenceId?'Sin precio comercial para esta referencia':'Sin referencia documental en esta revisión';
++  if(offer.euroOwnerQuote)return priceFromLabel(offer.value,offer.priceDecimals);
+   if (!offer.prepared) return priceFromLabel(offer.value,project.precioDecimales);
+   return validPrice(offer.value) ? 'Referencia UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}) : 'Precio de esta referencia por confirmar';
+ }
+@@ -84,6 +90,13 @@ export function commercialLayerNote(project,state={}) {
+       sourceDate?'Fecha declarada de fuente · '+sourceDate:observed?'Consultada · '+observed:null,
+       documentaryScopeLabel(metadata.scope),'Disponibilidad y vigencia por confirmar; no acredita stock'].filter(Boolean).join(' · ');
+   }
++  const nollagamMatch=!project._commercialMatch?matchNollagamOwnerQuotes(project,state):null;
++  if(nollagamMatch!==null)return nollagamOwnerQuoteNote(nollagamMatch);
++  if(!project._commercialMatch&&usesEuroOwnerQuotes(project,state)){
++    const offer=euroOwnerQuoteOffer(project,state),date=referenceDate(offer.date);
++    return ['Precio del propietario por tipología',date||null,'sin asignación a unidad o modelo',
++      'disponibilidad por confirmar; no acredita stock'].filter(Boolean).join(' · ');
++  }
+   if (!project._commercialMatch) return '';
+   const date=project._commercial?.asOf?.split('-').reverse().join('/');
+   const kind=preparedReference(project)?.sourceKind;
+@@ -117,6 +130,19 @@ export function projectFacts(project, selectedType='',filterState={}) {
+     }
+     return facts;
+   }
++  const nollagamMatch=!project._commercialMatch?matchNollagamOwnerQuotes(project,filterState):null;
++  if(nollagamMatch!==null)return nollagamOwnerQuoteFacts(nollagamMatch);
++  if(!project._commercialMatch&&usesEuroOwnerQuotes(project,filterState)){
++    const offer=euroOwnerQuoteOffer(project,filterState),facts=[];
++    if(offer.typology)facts.push({label:'Tipología del precio',value:offer.typology});
++    // These are the registered project facts checked by the existing common
++    // filter path, not bathroom/surface facts lent to this quotation.
++    const delivery=project._facets?project._facets.delivery?.label:project.entrega,state=project.estado;
++    const duplicate=delivery&&[normalize(delivery),normalize('Entrega '+delivery)].includes(normalize(state));
++    if(state&&!duplicate)facts.push({label:'Estado del proyecto',value:state});
++    if(delivery)facts.push({label:'Entrega del proyecto',value:delivery});
++    return facts;
++  }
+   if (project._commercialMatch) {
+     const a=preparedReference(project)?.attributes ?? {}, common=project._commercial?.projectFacts ?? {}, facts=[];
+     if (a.bedrooms != null || a.bathrooms != null) facts.push({label:'Tipología de referencia',value:[a.bedrooms == null ? null : a.bedrooms+'D',a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ')});
+diff --git a/assets/js/catalog-nollagam-owner-quotes.mjs b/assets/js/catalog-nollagam-owner-quotes.mjs
+new file mode 100644
+index 0000000..c78c01b
+--- /dev/null
++++ b/assets/js/catalog-nollagam-owner-quotes.mjs
+@@ -0,0 +1,103 @@
++/** Pure Nollagam owner-category references. No model, unit or stock is inferred. */
++export const NOLLAGAM_OWNER_SOURCE_PATH='data/nollagam-commercial.json';
++const PROJECTS_SOURCE_PATH='data/proyectos.json';
++const ownerDeclaration='Tabla proporcionada por el propietario de Sollahms; prevalece sobre campañas del proveedor';
++const slugs=new Set(['edificio-liverpool','barrio-zenteno','alto-goycolea','edificio-santa-maria',
++  'eleuterio-ramirez','costanera-coquimbo-a','costanera-coquimbo-b']);
++const bedroomLabels=new Map([['Estudio',0],['1 dormitorio',1],['2 dormitorios',2],
++  ['3 dormitorios',3],['4 dormitorios',4]]);
++const unknownAttributes=Object.freeze({propertyType:null,assetType:null,bathrooms:null,typology:null,
++  usefulM2:null,totalM2:null,interiorM2:null,terraceM2:null,gardenM2:null,landM2:null,
++  privateTerrace:null,privateGarden:null,parkingIncluded:null,parkingAvailable:null,
++  storageIncluded:null,storageAvailable:null,state:null,delivery:null});
++const plain=value=>value!==null&&typeof value==='object'&&!Array.isArray(value)
++  &&[Object.prototype,null].includes(Object.getPrototypeOf(value));
++const requireValue=(condition,message)=>{if(!condition)throw new TypeError('Nollagam owner quotes: '+message);};
++const validPrice=value=>typeof value==='number'&&Number.isFinite(value)&&value>0;
++function validDate(value){
++  if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
++  const epoch=Date.parse(value+'T00:00:00Z');
++  return Number.isFinite(epoch)&&new Date(epoch).toISOString().slice(0,10)===value;
++}
++function freeze(value){
++  if(value&&typeof value==='object'){for(const child of Object.values(value))freeze(child);Object.freeze(value);}
++  return value;
++}
++function identity(project){
++  const result={};
++  for(const key of ['slug','nombre','inmobiliaria','comuna','region','direccion']){
++    const value=project[key];
++    requireValue(value==null||typeof value==='string','invalid identity '+key);
++    result[key]=value??null;
++  }
++  requireValue(result.nombre&&result.inmobiliaria==='Nollagam','unmatched Nollagam identity');
++  return result;
++}
++
++/**
++ * Accept the existing parsed owner source and published identities explicitly.
++ * The 17 known prices come only from source.projects[slug].prices. The five
++ * other published categories retain null; no project minimum can fill them.
++ * checkedOn is the original declared source date, not renewed price validity.
++ * This module has no loader or application consumer. The caller owns adoption.
++ */
++export function createNollagamOwnerQuoteLayer(publishedProjects,ownerSource){
++  requireValue(Array.isArray(publishedProjects),'published identities must be an array');
++  requireValue(plain(ownerSource)&&plain(ownerSource.projects),'owner source is required');
++  requireValue(ownerSource.priceSource===ownerDeclaration,'owner authority declaration is missing');
++  requireValue(validDate(ownerSource.checkedOn),'checkedOn must be a valid declared calendar date');
++  const sourceSlugs=Object.keys(ownerSource.projects);
++  requireValue(sourceSlugs.length===slugs.size&&sourceSlugs.every(slug=>slugs.has(slug)),
++    'source must retain the seven existing Nollagam identities');
++  const index=new Map();
++  publishedProjects.forEach((project,position)=>{
++    requireValue(plain(project)&&typeof project.slug==='string','invalid published identity');
++    requireValue(!index.has(project.slug),'duplicate published identity '+project.slug);
++    index.set(project.slug,{project,position});
++  });
++  for(const slug of slugs)requireValue(index.has(slug),'missing published identity '+slug);
++  const records=publishedProjects.filter(project=>slugs.has(project.slug)).map(project=>{
++    const {position}=index.get(project.slug),sourceProject=identity(project);
++    const ownerProject=ownerSource.projects[project.slug];
++    requireValue(plain(ownerProject)&&plain(ownerProject.prices),'missing owner price categories '+project.slug);
++    const ownerPrices=ownerProject.prices,rows=project.preciosPorTipologia;
++    requireValue(Array.isArray(rows)&&rows.length>0,'missing published categories '+project.slug);
++    for(const [key,value] of Object.entries(ownerPrices)){
++      requireValue(/^[0-4]$/.test(key),'unknown owner bedroom category '+key);
++      requireValue(value===null||validPrice(value),'owner prices must be positive numbers or explicit null');
++    }
++    const seen=new Set(),priceParent='/projects/'+project.slug+'/prices';
++    const references=rows.map((row,rowIndex)=>{
++      requireValue(plain(row)&&bedroomLabels.has(row.tipologia),'unrecognized category label '+project.slug);
++      const bedrooms=bedroomLabels.get(row.tipologia),key=String(bedrooms);
++      requireValue(!seen.has(key),'duplicate bedroom category '+project.slug+':'+key);seen.add(key);
++      const present=Object.hasOwn(ownerPrices,key),price=present?ownerPrices[key]:null;
++      // Absence in the owner table cannot authorize a populated legacy price.
++      requireValue(present||row.precioDesdeUF===null,'unbacked published category price '+project.slug+':'+key);
++      const categoryPointer='/'+position+'/preciosPorTipologia/'+rowIndex;
++      return {
++        id:'nollagam-owner:'+project.slug+':'+key+'d',label:row.tipologia,
++        sourceKind:'owner-supplied',sourcePath:NOLLAGAM_OWNER_SOURCE_PATH,
++        sourcePointer:present?priceParent+'/'+key:priceParent,
++        sourceDate:ownerSource.checkedOn,sourceDateField:'/checkedOn',
++        sourcePresence:present?'category-declared':'category-not-listed',
++        missingSourceKey:present?null:key,scope:'typology-not-unit',stock:null,availability:null,
++        publishedCategory:{sourcePath:PROJECTS_SOURCE_PATH,sourcePointer:categoryPointer+'/tipologia',
++          literal:row.tipologia,...(!present?{unknownPricePointer:categoryPointer+'/precioDesdeUF'}:{})},
++        attributes:{...unknownAttributes,bedrooms,priceUF:price},
++      };
++    });
++    requireValue(Object.keys(ownerPrices).every(key=>seen.has(key)),
++      'owner category lacks a matching published category '+project.slug);
++    return {slug:project.slug,sourceLayer:'nollagam-owner-typology',sourceProject,
++      asOf:ownerSource.checkedOn,scope:'owner-typology-not-unit-no-stock',
++      projectFacts:{region:sourceProject.region,commune:sourceProject.comuna,developer:sourceProject.inmobiliaria},
++      references};
++  });
++  const references=records.flatMap(record=>record.references);
++  return freeze({source:{path:NOLLAGAM_OWNER_SOURCE_PATH,date:ownerSource.checkedOn,dateField:'/checkedOn',
++    authority:ownerSource.priceSource,scope:'typology-not-unit',stock:'unconfirmed'},records,
++    counts:{projects:records.length,references:references.length,
++      priced:references.filter(reference=>validPrice(reference.attributes.priceUF)).length,
++      unknownPrice:references.filter(reference=>reference.attributes.priceUF===null).length}});
++}
+diff --git a/assets/js/catalog-nollagam-quote-consumer.mjs b/assets/js/catalog-nollagam-quote-consumer.mjs
+new file mode 100644
+index 0000000..b4dd1ce
+--- /dev/null
++++ b/assets/js/catalog-nollagam-quote-consumer.mjs
+@@ -0,0 +1,108 @@
++import {createNollagamOwnerQuoteLayer,NOLLAGAM_OWNER_SOURCE_PATH} from './catalog-nollagam-owner-quotes.mjs';
++import {matchProjectFilters,queryFromCatalogState} from './commercial-filter-engine.mjs';
++import {metroMatches} from './metro-model.mjs';
++
++export const NOLLAGAM_OWNER_SOURCE_SHA256='d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b';
++const slugs=['edificio-liverpool','barrio-zenteno','alto-goycolea','edificio-santa-maria',
++  'eleuterio-ramirez','costanera-coquimbo-a','costanera-coquimbo-b'];
++const knownSlugs=new Set(slugs),trustedContexts=new WeakSet();
++const present=value=>value!==undefined&&value!==null&&value!=='';
++const priced=value=>typeof value==='number'&&Number.isFinite(value)&&value>0;
++const identityKeys=['slug','nombre','inmobiliaria','comuna','region','direccion'];
++const failure=code=>{const error=new Error(code);error.code=code;throw error;};
++
++export const isNollagamQuoteProject=project=>knownSlugs.has(project?.slug);
++
++function unavailableContext(slug,reason='source-unavailable'){
++  return Object.freeze({status:'unavailable',slug,reason,record:null,
++    source:Object.freeze({path:NOLLAGAM_OWNER_SOURCE_PATH,sha256:NOLLAGAM_OWNER_SOURCE_SHA256,date:null})});
++}
++function unavailableLayer(reason){
++  return Object.freeze({status:'unavailable',bySlug:Object.freeze(Object.fromEntries(
++    slugs.map(slug=>[slug,unavailableContext(slug,reason)])))});
++}
++
++/** Fetch only the existing owner JSON, verify its exact bytes, then normalize. */
++export async function loadNollagamOwnerQuoteContexts(publishedProjects,{fetchImpl=globalThis.fetch,cryptoImpl=globalThis.crypto}={}){
++  try{
++    if(typeof fetchImpl!=='function'||!cryptoImpl?.subtle?.digest)failure('loader-unavailable');
++    const response=await fetchImpl('/'+NOLLAGAM_OWNER_SOURCE_PATH,
++      {cache:'no-store',credentials:'omit',redirect:'error',signal:AbortSignal.timeout(10000)});
++    if(response?.ok!==true||response.redirected===true)failure('source-unavailable');
++    const bytes=new Uint8Array(await response.arrayBuffer());
++    if(!bytes.length||bytes.byteLength>100000)failure('source-size-invalid');
++    const digest=await cryptoImpl.subtle.digest('SHA-256',bytes);
++    const sha256=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,'0')).join('');
++    if(sha256!==NOLLAGAM_OWNER_SOURCE_SHA256)failure('source-pin-mismatch');
++    const source=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
++    const layer=createNollagamOwnerQuoteLayer(publishedProjects,source);
++    const bySlug={};
++    for(const record of layer.records){
++      const context=Object.freeze({status:'ready',slug:record.slug,record,
++        source:Object.freeze({...layer.source,sha256})});
++      trustedContexts.add(context);bySlug[record.slug]=context;
++    }
++    return Object.freeze({status:'ready',bySlug:Object.freeze(bySlug)});
++  }catch(error){
++    const code=['loader-unavailable','source-unavailable','source-size-invalid','source-pin-mismatch'].includes(error?.code)
++      ?error.code:'source-invalid';
++    return unavailableLayer(code);
++  }
++}
++
++/** An invalid bound context cannot fall back for an active price. */
++export function nollagamOwnerQuoteContext(project){
++  if(!isNollagamQuoteProject(project))return null;
++  const context=Object.hasOwn(project,'_nollagamOwnerQuoteContext')?project._nollagamOwnerQuoteContext:null;
++  const record=context?.record;
++  if(context?.status==='ready'&&trustedContexts.has(context)&&context.slug===project.slug
++    &&context.source?.sha256===NOLLAGAM_OWNER_SOURCE_SHA256&&record?.slug===project.slug
++    &&record.sourceLayer==='nollagam-owner-typology'&&record.sourceProject?.inmobiliaria==='Nollagam'
++    &&identityKeys.every(key=>(project[key]??null)===record.sourceProject[key]))return context;
++  return unavailableContext(project.slug,context?.status==='unavailable'?context.reason:'context-unavailable');
++}
++
++/** Missing own context delegates the previous pipeline; a bound failure does not. */
++export function matchNollagamOwnerQuotes(project,state={}){
++  if(!isNollagamQuoteProject(project)||(state.evidenceMode??'published')!=='published'
++    ||!Object.hasOwn(project,'_nollagamOwnerQuoteContext')
++    ||!present(state.minPriceInput)&&!present(state.maxPriceInput))return null;
++  const context=nollagamOwnerQuoteContext(project),query=queryFromCatalogState(state);
++  const result=matchProjectFilters(context.record,query);
++  const unsupported=['unit','model','stock','availability'].some(key=>present(state[key]));
++  // No legal purchase-stage evidence exists in these price/D records. Metro is
++  // checked independently with its existing address/provenance guard.
++  const stage=context.record?.projectFacts?.purchaseStage;
++  const purchaseMatches=!state.purchaseModes?.length||stage?.eligible===true&&state.purchaseModes.includes(stage.mode);
++  const matches=context.status==='ready'&&result.matches&&!unsupported&&purchaseMatches&&metroMatches(project,state);
++  return {...result,matches,context,references:matches?result.references:[],
++    matchedReferenceIds:matches?result.matchedReferenceIds:[]};
++}
++
++/** Select only among references that satisfied every active predicate. */
++export function nollagamOwnerQuoteWitness(match){
++  if(match?.matches!==true||match.context?.status!=='ready'||!trustedContexts.has(match.context)
++    ||match.record!==match.context.record)return null;
++  const references=(match.references??[]).filter(reference=>match.record?.references?.includes(reference)
++    &&priced(reference.attributes?.priceUF));
++  return references.length?references.reduce((best,reference)=>
++    best.attributes.priceUF<=reference.attributes.priceUF?best:reference):null;
++}
++
++export function nollagamOwnerQuoteOffer(match){
++  if(match==null)return null;
++  const reference=nollagamOwnerQuoteWitness(match);
++  return {value:reference?.attributes.priceUF??null,typology:reference?.label??null,
++    referenceId:reference?.id??null,date:match.context?.source?.date??null,financialBaselineCompatible:false};
++}
++
++export function nollagamOwnerQuoteFacts(match){
++  const reference=nollagamOwnerQuoteWitness(match);
++  return reference?[{label:'Tipologías',value:reference.label}]:[];
++}
++
++export function nollagamOwnerQuoteNote(match){
++  if(!nollagamOwnerQuoteWitness(match))return '';
++  const date=match.context.source.date.split('-').reverse().join('/');
++  return 'Referencia del propietario · '+date+' · Por tipología; no acredita unidad ni stock.';
++}
+diff --git a/assets/js/catalog.mjs b/assets/js/catalog.mjs
+index d755d49..649c147 100644
+--- a/assets/js/catalog.mjs
++++ b/assets/js/catalog.mjs
+@@ -1,4 +1,7 @@
+ import {loadCommercialEvidence,buildCommercialProjects} from './commercial-filter-data.mjs';
++import {financialReferenceCompatible} from './catalog-financial-witness.mjs';
++import {loadEuroOwnerSource,bindEuroOwnerQuotes,unavailableEuroOwnerQuotes,euroOwnerQuoteLoadFailed} from './catalog-euro-owner-quotes.mjs';
++import {loadNollagamOwnerQuoteContexts} from './catalog-nollagam-quote-consumer.mjs';
+ import {loadLocalDocumentaryReview} from './documentary-local-review.mjs';
+ import {metroSummary} from './metro-model.mjs';
+ import {leonCatalogOfferId} from './project-offers.mjs?v=20261030-leon';
+@@ -67,12 +70,12 @@ function card(project){
+   if(commercialLayerNote(project,values()))price.append(element('p',commercialLayerNote(project,values()),'catalog-price-type'));
+   actions.append(price);
+   if(typeof project.detalleUrl==='string'&&/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl)){
+-    const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(project.inmobiliaria)&&/^[012]$/.test(current.bedrooms)&&project.commercialOffers?.some(o=>o.id===current.bedrooms+'d')?'&oferta='+current.bedrooms+'d':'')+(leonCatalogOfferId(project,current)?'&oferta='+leonCatalogOfferId(project,current):'')+(project._ecasaStageNumber?'#etapa-'+project._ecasaStageNumber:'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
++    const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local'||offer.euroOwnerQuote&&offer.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(project.inmobiliaria)&&/^[012]$/.test(current.bedrooms)&&project.commercialOffers?.some(o=>o.id===current.bedrooms+'d')?'&oferta='+current.bedrooms+'d':'')+(leonCatalogOfferId(project,current)?'&oferta='+leonCatalogOfferId(project,current):'')+(project._ecasaStageNumber?'#etapa-'+project._ecasaStageNumber:'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
+     if(current.evidenceMode==='documentary'){link.textContent='Ver ficha publicada';link.href=project.detalleUrl+'?origen='+source;link.setAttribute('aria-label','Ver ficha publicada de '+project.nombre);}
+   }
+   if(view==='split'){const b=element('button','Ubicar en mapa','catalog-text-button');b.type='button';b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('catalog-list-selection',{detail:{slug:project.slug}})));actions.append(b);}
+   body.append(actions);article.append(body);
+-  if(values().evidenceMode==='published'&&offer.financialBaselineCompatible!==false&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
++  if(values().evidenceMode==='published'&&financialReferenceCompatible(projects.find(original=>original.slug===project.slug),offer)&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
+   const financial=body.querySelector('.capacity-result');
+   if(financial){
+     // Review dates remain in the source data; the financial scenario keeps all amounts/conditions.
+@@ -102,6 +105,8 @@ async function load(){
+     const response=await fetch('/data/proyectos.json',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('catalogue unavailable');
+     const data=await response.json();if(!Array.isArray(data)||new Set(data.map(p=>p.slug)).size!==data.length)throw Error('catalogue identity');
+     data.forEach(project=>{if(!project||typeof project.slug!=='string'||typeof project.nombre!=='string'||!/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl))throw Error('catalogue identity');});
++    const euroOwnerSource=loadEuroOwnerSource().then(source=>({source}),()=>({unavailable:true}));
++    const nollagamOwnerContexts=loadNollagamOwnerQuoteContexts(data);
+     const metroData=Promise.all(['/data/metro-network.json','/data/project-metro.json'].map(async u=>{const r=await fetch(u,{signal:AbortSignal.timeout(6000)});if(!r.ok)throw Error('metro');return r.json();})).catch(()=>null);
+     let index={projects:{},filters:[],typologies:[]};
+     try{const response=await fetch('/data/catalog-facets.json?v=20261029-euro-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
+@@ -110,6 +115,13 @@ async function load(){
+     projects=data.map(p=>({...p,_metro:index.metroProjects?.[p.slug],_facets:index.projects[p.slug]??{assetTypes:p.tiposActivos??[p.tipoActivo].filter(Boolean),states:[p.estado].filter(Boolean)}}));
+     try{projects=buildCommercialProjects(projects,await loadCommercialEvidence(),index);}
+     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Las referencias Leben no pudieron cargar. Se muestran los datos publicados.';index.preparedUnavailable=true;}
++    const euroOwner=await euroOwnerSource;
++    try{projects=euroOwner.source?bindEuroOwnerQuotes(projects,euroOwner.source):unavailableEuroOwnerQuotes(projects);}
++    catch{projects=unavailableEuroOwnerQuotes(projects);}
++    if(projects.some(euroOwnerQuoteLoadFailed)){const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'Las cotizaciones Euro por tipología no pudieron validarse. Sus consultas con precio quedan limitadas; las consultas sin precio siguen disponibles.';}
++    const nollagamOwner=await nollagamOwnerContexts;
++    projects=projects.map(project=>nollagamOwner.bySlug[project.slug]?{...project,_nollagamOwnerQuoteContext:nollagamOwner.bySlug[project.slug]}:project);
++    if(nollagamOwner.status!=='ready'){const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'Las referencias Nollagam por tipología no pudieron validarse. Sus consultas con precio quedan limitadas; las consultas sin precio siguen disponibles.';}
+     try{const localReview=await loadLocalDocumentaryReview(projects,{location,fetchImpl:fetch});if(localReview){projects=localReview.projects;Object.assign(index,localReview.index);}}
+     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'La revisión documental local no pudo cargar. Se muestran los datos publicados; la fuente documental no está disponible.';index.documentaryReviewEnabled=false;index.documentaryUnavailable=true;}
+     filterControls=createFilterControls({projects,index,onChange:render,getView:()=>view,setView:next=>{view=next;applyView();}});applyView();render();
+diff --git a/tests/catalog-euro-owner-quotes.test.mjs b/tests/catalog-euro-owner-quotes.test.mjs
+new file mode 100644
+index 0000000..4d54f48
+--- /dev/null
++++ b/tests/catalog-euro-owner-quotes.test.mjs
+@@ -0,0 +1,213 @@
++import {test} from 'node:test';
++import assert from 'node:assert/strict';
++import {readFile} from 'node:fs/promises';
++import {EURO_OWNER_SOURCE_PATH,EURO_OWNER_SOURCE_SHA256,parseEuroOwnerSource,loadEuroOwnerSource,
++  bindEuroOwnerQuotes,unavailableEuroOwnerQuotes,euroOwnerQuoteLoadFailed,usesEuroOwnerQuotes,
++  matchEuroOwnerQuotes,euroOwnerQuoteOffer} from '../assets/js/catalog-euro-owner-quotes.mjs';
++import {advancedFilterAndSort,defaults,matchedLabels} from '../assets/js/catalog-filter-engine.mjs';
++import {projectOffer,offerPriceLabel,projectFacts,commercialLayerNote} from '../assets/js/catalog-model.mjs';
++
++const text=await readFile(new URL('../data/euro-commercial.json',import.meta.url),'utf8');
++const source=await parseEuroOwnerSource(text),owner=JSON.parse(text);
++const catalogue=JSON.parse(await readFile(new URL('../data/proyectos.json',import.meta.url),'utf8'));
++const facets=JSON.parse(await readFile(new URL('../data/catalog-facets.json',import.meta.url),'utf8'));
++const original=catalogue.map(project=>({...project,_facets:facets.projects[project.slug]??{}}));
++const bound=bindEuroOwnerQuotes(original,source);
++const bySlug=new Map(bound.map(project=>[project.slug,project]));
++const state=patch=>({...defaults(),...patch});
++const run=(project,patch)=>advancedFilterAndSort([project],state(patch));
++const donPepe=bySlug.get('edificio-don-pepe-154');
++const q1={minPriceInput:'3306.18',maxPriceInput:'3306.18',bedrooms:'1'};
++const q2={minPriceInput:'3562',maxPriceInput:'3562',bedrooms:'2'};
++
++for(const [slug,projectOwner] of Object.entries(owner.projects))for(const [key,price] of Object.entries(projectOwner.prices)){
++  test(slug+' uses its exact owner '+key+' price reference',()=>{
++    const patch={minPriceInput:String(price),maxPriceInput:String(price),
++      ...(key==='local'?{propertyType:'local',assetType:'Comercial'}:{bedrooms:key})};
++    const rows=run(bySlug.get(slug),patch);
++    assert.equal(rows.length,1);
++    const match=rows[0]._euroOwnerQuoteMatch;
++    assert.deepEqual(match.issues,[]);
++    assert.deepEqual(match.matchedReferenceIds,[slug+':owner-price:'+key]);
++    const reference=match.references[0];
++    assert.equal(reference.sourceDate,'2026-10-29');
++    assert.equal(reference.sourceSHA256,EURO_OWNER_SOURCE_SHA256);
++    assert.equal(reference.attributes.priceUF,price);
++    assert.equal(reference.attributes.bathrooms,null);
++    assert.equal(reference.attributes.usefulM2,null);
++    assert.equal(reference.attributes.totalM2,null);
++    assert.equal(reference.attributes.propertyType,key==='local'?'local':null);
++    assert.equal(reference.attributes.assetType,key==='local'?'Comercial':null);
++    assert.equal(reference.unit,null);assert.equal(reference.model,null);assert.equal(reference.stock,null);
++    assert.equal(projectOffer(rows[0],state(patch)).value,price);
++  });
++}
++
++test('source transport is pinned before records can be constructed',async()=>{
++  const calls=[];
++  const loaded=await loadEuroOwnerSource(async(path,options)=>{calls.push({path,options});return {ok:true,text:async()=>text};});
++  assert.equal(calls.length,1);assert.equal(calls[0].path,EURO_OWNER_SOURCE_PATH);
++  assert.equal(calls[0].options.credentials,'omit');assert.equal(calls[0].options.redirect,'error');
++  assert.equal(bindEuroOwnerQuotes(original,loaded).length,131);
++  await assert.rejects(parseEuroOwnerSource(text+' '),/SHA-256 mismatch/);
++  assert.throws(()=>bindEuroOwnerQuotes(original,{...source}),/verified source required/);
++});
++
++test('Diagonal has no owner price and never acquires a historical campaign amount',()=>{
++  const project=bySlug.get('diagonal-vicuna');
++  assert.equal(project.precioDesdeUF,null);
++  assert.equal(euroOwnerQuoteLoadFailed(project),false);
++  assert.equal(run(project,{minPriceInput:'0'}).length,0);
++  assert.equal(run(project,{minPriceInput:'1',bedrooms:'1'}).length,0);
++  assert.equal(euroOwnerQuoteOffer(project,state({minPriceInput:'1'})).value,null);
++});
++
++test('1D and2D prices never cross between the existing DonPepe quotes',()=>{
++  assert.equal(run(donPepe,{...q1,bedrooms:'2'}).length,0);
++  assert.equal(run(donPepe,{...q2,bedrooms:'1'}).length,0);
++});
++
++test('importer department and residential defaults are not quote evidence',()=>{
++  assert.equal(donPepe.commercialOffers[0].propertyType,'departamento');
++  assert.equal(run(donPepe,{...q1,propertyType:'departamento'}).length,0);
++  assert.equal(run(donPepe,{...q1,assetType:'Residencial'}).length,0);
++  assert.equal(run(donPepe,{...q1,propertyType:'local'}).length,0);
++});
++
++test('bathrooms, generic surfaces and private spaces are not lent to a priced quote',()=>{
++  assert.equal(run(donPepe,{...q1,bathrooms:'1'}).length,0);
++  for(const areaType of ['util','total','interior','terraza','jardin','terreno']){
++    assert.equal(run(donPepe,{...q1,areaType,minArea:'29',maxArea:'29'}).length,0,areaType);
++  }
++  for(const features of [['terraza-privada'],['jardin-privado']])assert.equal(run(donPepe,{...q1,features}).length,0);
++});
++
++test('unknown extras and residential amenities cannot complete an unknown-use quote',()=>{
++  assert.equal(run(donPepe,{...q1,parking:'included'}).length,0);
++  assert.equal(run(donPepe,{...q1,storage:'available'}).length,0);
++  assert.equal(run(donPepe,{...q1,amenities:['piscina']}).length,0);
++  const result=run(donPepe,q1)[0];
++  assert.deepEqual(matchedLabels(result,state({...q1,amenities:['piscina']})),[]);
++});
++
++test('Independencia Local stays separate from residential categories and amenities',()=>{
++  const project=bySlug.get('independencia-4745');
++  const local={minPriceInput:'8440.85',maxPriceInput:'8440.85',propertyType:'local',assetType:'Comercial'};
++  assert.equal(project.catalogPricePolicy,'by-product');
++  assert.equal(project.precioDesdeUF,3146.65);
++  assert.equal(run(project,local).length,1);
++  assert.equal(run(project,{...local,bedrooms:'2'}).length,0);
++  assert.equal(run(project,{...local,bathrooms:'1'}).length,0);
++  assert.equal(run(project,{...local,amenities:['piscina']}).length,0);
++  assert.equal(run(project,{...local,minPriceInput:'3146.65',maxPriceInput:'3146.65'}).length,0);
++  assert.equal(projectOffer(run(project,local)[0],state(local)).financialBaselineCompatible,false);
++});
++
++test('2D projection uses only that price typology, its owner date and non-stock scope',()=>{
++  const project=run(donPepe,q2)[0],input=state(q2),offer=projectOffer(project,input);
++  assert.equal(offer.value,3562);assert.equal(offer.typology,'2 dormitorios');
++  assert.equal(offer.financialBaselineCompatible,false);
++  assert.equal(offerPriceLabel(project,input),'Desde UF 3.562');
++  const facts=projectFacts(project,'',input);
++  assert.ok(facts.some(fact=>fact.label==='Tipología del precio'&&fact.value==='2 dormitorios'));
++  assert.ok(!facts.some(fact=>/1 dormitorio|1D/.test(fact.value)));
++  assert.ok(!facts.some(fact=>/Superficie|Baños/.test(fact.label)));
++  assert.match(commercialLayerNote(project,input),/29\/10\/2026/);
++  assert.match(commercialLayerNote(project,input),/sin asignación a unidad o modelo/);
++  assert.match(commercialLayerNote(project,input),/disponibilidad por confirmar; no acredita stock/);
++  assert.equal(project.precioDesdeUF,3306.18);
++});
++
++test('price sorting uses the matching2D amount rather than the global minimum',()=>{
++  const input=state({bedrooms:'2',minPriceInput:'0',sortOrder:'price-asc'});
++  const projects=bound.filter(project=>Object.hasOwn(owner.projects,project.slug));
++  const rows=advancedFilterAndSort(projects,input);
++  const expected=Object.entries(owner.projects).filter(([,row])=>row.prices['2']!==undefined)
++    .map(([slug,row])=>({slug,price:row.prices['2']})).sort((a,b)=>a.price-b.price);
++  assert.deepEqual(rows.map(project=>({slug:project.slug,price:projectOffer(project,input).value})),expected);
++});
++
++test('a previous query witness is not reused after the selected bedroom changes',()=>{
++  const first=run(donPepe,q1)[0];
++  assert.equal(projectOffer(first,state(q2)).value,3562);
++  assert.equal(run(first,q2)[0]._euroOwnerQuoteMatch.matchedReferenceIds[0],'edificio-don-pepe-154:owner-price:2');
++});
++
++test('a forged matching result cannot substitute another quote or manufacture a local type',()=>{
++  const input=state(q1),legitimate=matchEuroOwnerQuotes(donPepe,input);
++  const foreign=matchEuroOwnerQuotes(donPepe,state(q2)).references[0];
++  const forged={...legitimate,references:[foreign],matchedReferenceIds:[foreign.id]};
++  const offer=euroOwnerQuoteOffer(donPepe,input,forged);
++  assert.equal(offer.value,3306.18);
++  assert.equal(offer.referenceId,'edificio-don-pepe-154:owner-price:1');
++  assert.equal(offer.propertyType,null);
++  const local=bySlug.get('independencia-4745');
++  const localOffer=euroOwnerQuoteOffer(local,state({minPriceInput:'8440.85',maxPriceInput:'8440.85',propertyType:'local'}));
++  assert.equal(localOffer.propertyType,'local');
++});
++
++test('a legitimate matching result and its reference arrays are immutable',()=>{
++  const input=state(q1),legitimate=matchEuroOwnerQuotes(donPepe,input);
++  const foreign=matchEuroOwnerQuotes(donPepe,state(q2)).references[0];
++  assert.equal(Object.isFrozen(legitimate),true);
++  assert.equal(Object.isFrozen(legitimate.references),true);
++  assert.equal(Object.isFrozen(legitimate.matchedReferenceIds),true);
++  assert.throws(()=>legitimate.references.push(foreign),TypeError);
++  assert.throws(()=>{legitimate.references[0]=foreign;},TypeError);
++  assert.throws(()=>legitimate.matchedReferenceIds.push(foreign.id),TypeError);
++  assert.equal(euroOwnerQuoteOffer(donPepe,input,legitimate).value,3306.18);
++});
++
++test('source transport failure does not revert owner Euro price queries to legacy matching',async()=>{
++  await assert.rejects(loadEuroOwnerSource(async()=>({ok:false})),/source unavailable/);
++  const failed=unavailableEuroOwnerQuotes(original),local=failed.find(project=>project.slug==='independencia-4745');
++  assert.equal(failed.filter(euroOwnerQuoteLoadFailed).length,12);
++  assert.equal(run(failed.find(project=>project.slug===donPepe.slug),q1).length,0);
++  assert.equal(run(local,{minPriceInput:'8440.85',maxPriceInput:'8440.85',propertyType:'local'}).length,0);
++  assert.equal(projectOffer(local,state({minPriceInput:'8440.85',propertyType:'local'})).value,null);
++});
++
++test('a mismatched published amount/date or registered identity closes only that context',()=>{
++  for(const patch of [{precioDesdeUF:1},{commercialSource:{...donPepe.commercialSource,date:'2026-10-30'}},
++    {comuna:'Otra comuna'}]){
++    const altered=bindEuroOwnerQuotes([{...donPepe,...patch}],source)[0];
++    assert.equal(euroOwnerQuoteLoadFailed(altered),true);
++    assert.equal(run(altered,q1).length,0);
++  }
++  assert.equal(run({...donPepe,slug:'other-project'},q1).length,0);
++});
++
++test('source normalization and matching do not mutate original catalogue values',()=>{
++  const before=JSON.stringify(original),raw=JSON.stringify(source.evidence);
++  const rebound=bindEuroOwnerQuotes(original,source);
++  advancedFilterAndSort(rebound,state({minPriceInput:'0',bedrooms:'2'}));
++  assert.equal(JSON.stringify(original),before);assert.equal(JSON.stringify(source.evidence),raw);
++  assert.equal(Object.isFrozen(source.evidence),true);
++});
++
++test('queries without price keep the previous model/facet route, even if source loading fails',()=>{
++  const failed=unavailableEuroOwnerQuotes(original);
++  for(const patch of [{},{bedrooms:'1'},{bedrooms:'2',bathrooms:'1'},{propertyType:'departamento'},
++    {areaType:'util',minArea:'1'}]){
++    const input=state(patch),base=advancedFilterAndSort(original,input).map(project=>project.slug);
++    assert.deepEqual(advancedFilterAndSort(bound,input).map(project=>project.slug),base);
++    assert.deepEqual(advancedFilterAndSort(failed,input).map(project=>project.slug),base);
++    assert.equal(usesEuroOwnerQuotes(donPepe,input),false);
++  }
++});
++
++test('prepared and documentary queries never consume the new published owner context',()=>{
++  for(const evidenceMode of ['prepared','documentary']){
++    const input=state({...q1,evidenceMode});
++    assert.equal(usesEuroOwnerQuotes(donPepe,input),false);
++    assert.deepEqual(advancedFilterAndSort(bound,input).map(project=>project.slug),advancedFilterAndSort(original,input).map(project=>project.slug));
++  }
++});
++
++for(const developer of ['AJ Urbana','Sento','León','Ecasa'])test(developer+' keeps its previous commercial route',()=>{
++  const before=original.filter(project=>project.inmobiliaria===developer),after=bound.filter(project=>project.inmobiliaria===developer);
++  assert.deepEqual(after,before);after.forEach((project,index)=>assert.equal(project,before[index]));
++  const input=state({bedrooms:'2',minPriceInput:'0',sortOrder:'price-asc'});
++  const view=rows=>rows.map(project=>({slug:project.slug,price:projectOffer(project,input).value}));
++  assert.deepEqual(view(advancedFilterAndSort(after,input)),view(advancedFilterAndSort(before,input)));
++});
+diff --git a/tests/catalog-financial-witness.test.mjs b/tests/catalog-financial-witness.test.mjs
+new file mode 100644
+index 0000000..9d66c13
+--- /dev/null
++++ b/tests/catalog-financial-witness.test.mjs
+@@ -0,0 +1,99 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {readFileSync} from 'node:fs';
++import {financialReferenceCompatible} from '../assets/js/catalog-financial-witness.mjs';
++import {projectOffer} from '../assets/js/catalog-model.mjs';
++import {verifiedProjectPrice} from '../assets/js/project-finance.mjs';
++import {advancedFilterAndSort,defaults} from '../assets/js/catalog-filter-engine.mjs';
++
++const projects=JSON.parse(readFileSync(new URL('../data/proyectos.json',import.meta.url)));
++const bcome=projects.find(project=>project.slug==='bcome');
++const facets=JSON.parse(readFileSync(new URL('../data/catalog-facets.json',import.meta.url)));
++
++test('a selected Bcome2D price never displays the financial baseline for Estudio',()=>{
++  const baseline=verifiedProjectPrice(bcome,'2026-11-17');
++  const selected=projectOffer(bcome,{bedrooms:'2'});
++  assert.equal(baseline.valueUf,2930);
++  assert.equal(baseline.typology,'Estudio');
++  assert.equal(selected.value,3855);
++  assert.equal(selected.typology,'2 dormitorios');
++  assert.equal(financialReferenceCompatible(bcome,selected),false);
++});
++
++test('the original Bcome Estudio retains its compatible financial baseline',()=>{
++  assert.equal(financialReferenceCompatible(bcome,projectOffer(bcome)),true);
++});
++
++test('an equal amount never identifies a different typology as the same financial scenario',()=>{
++  // Deliberately synthetic test clone, never a source or catalogue amendment.
++  const copy=structuredClone(bcome);
++  copy.commercialOffers.find(offer=>offer.id==='2d').priceUF=2930;
++  const selected=projectOffer(copy,{bedrooms:'2'});
++  assert.equal(selected.value,2930);
++  assert.equal(financialReferenceCompatible(copy,selected),false);
++});
++
++test('a source without a typology preserves its original amount without null/undefined mismatch',()=>{
++  const project=projects.find(project=>project.slug==='distrito-centro');
++  assert.equal(project.precioDesdeTipologia,undefined);
++  assert.equal(projectOffer(project).value,project.precioDesdeUF);
++  assert.equal(financialReferenceCompatible(project,projectOffer(project)),true);
++});
++
++test('Plaza213 typology price cannot display the separate public313 baseline',()=>{
++  const project=projects.find(project=>project.slug==='plaza-las-condes');
++  const selected=projectOffer(project,{bedrooms:'2'});
++  assert.equal(project.precioDesdeUF,11073);
++  assert.equal(selected.value,11119);
++  assert.equal(financialReferenceCompatible(project,selected),false);
++});
++
++test('AJ selected1D keeps its own price and hides its Estudio financial scenario',()=>{
++  const project=projects.find(project=>project.slug==='edificio-teatinos-750');
++  assert.equal(financialReferenceCompatible(project,projectOffer(project)),true);
++  const selected=projectOffer(project,{bedrooms:'1'});
++  assert.equal(selected.value,3315);
++  assert.equal(financialReferenceCompatible(project,selected),false);
++});
++
++for(const [slug,bedrooms,price,baseline,stage] of [
++  ['ferroparque','0',2240,2360,'ferroparque-2'],
++  ['lomas-de-puyai','2',4220,5260,'lomas-de-puyai-3'],
++  ['terratolten','2',3750,2780,'terratolten-1']
++])test('Ecasa '+stage+' keeps the original project financial baseline separate',()=>{
++  const source=projects.find(project=>project.slug===slug),before=JSON.stringify(source);
++  const query={...defaults(),bedrooms,minPriceInput:String(price),maxPriceInput:String(price)};
++  const matches=advancedFilterAndSort([{...source,_facets:facets.projects[slug]}],query);
++  assert.equal(matches.length,1);
++  assert.equal(matches[0]._ecasaStageSlug,stage);
++  const selected=projectOffer(matches[0],query);
++  assert.equal(source.precioDesdeUF,baseline);
++  assert.equal(selected.value,price);
++  assert.equal(financialReferenceCompatible(source,selected),false);
++  assert.equal(JSON.stringify(source),before);
++});
++
++test('Ecasa reference stage remains compatible when its amount and typology are unchanged',()=>{
++  const source=projects.find(project=>project.slug==='ferroparque');
++  const matches=advancedFilterAndSort([{...source,_facets:facets.projects.ferroparque}],defaults());
++  assert.equal(matches.length,1);
++  assert.equal(matches[0]._ecasaStageSlug,'ferroparque');
++  assert.equal(financialReferenceCompatible(source,projectOffer(matches[0])),true);
++});
++
++test('an explicit incompatible source flag always suppresses the cached scenario',()=>{
++  assert.equal(financialReferenceCompatible(bcome,{value:2930,typology:'Estudio',financialBaselineCompatible:false}),false);
++});
++
++test('missing identity and unknown, zero or invalid amounts never authorize decoration',()=>{
++  assert.equal(financialReferenceCompatible(null,{value:2930,typology:'Estudio'}),false);
++  for(const value of [null,undefined,0,NaN,Infinity,'2930']){
++    assert.equal(financialReferenceCompatible(bcome,{value,typology:'Estudio'}),false);
++  }
++});
++
++test('a compatible flag does not override a different amount or typology',()=>{
++  for(const offer of [{value:3855,typology:'2 dormitorios'},{value:2930,typology:'2 dormitorios'}]){
++    assert.equal(financialReferenceCompatible(bcome,{...offer,financialBaselineCompatible:true}),false);
++  }
++});
+diff --git a/tests/catalog-nollagam-integration.test.mjs b/tests/catalog-nollagam-integration.test.mjs
+new file mode 100644
+index 0000000..c4f38ad
+--- /dev/null
++++ b/tests/catalog-nollagam-integration.test.mjs
+@@ -0,0 +1,91 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {readFileSync} from 'node:fs';
++import {webcrypto} from 'node:crypto';
++import {loadNollagamOwnerQuoteContexts} from '../assets/js/catalog-nollagam-quote-consumer.mjs';
++import {advancedFilterAndSort,defaults,matchedLabels} from '../assets/js/catalog-filter-engine.mjs';
++import {projectOffer,projectFacts,commercialLayerNote} from '../assets/js/catalog-model.mjs';
++
++const catalogue=JSON.parse(readFileSync(new URL('../data/proyectos.json',import.meta.url)));
++const facets=JSON.parse(readFileSync(new URL('../data/catalog-facets.json',import.meta.url)));
++const ownerBytes=readFileSync(new URL('../data/nollagam-commercial.json',import.meta.url));
++const owner=JSON.parse(ownerBytes);
++const originals=catalogue.map(project=>({...project,_facets:facets.projects[project.slug]}));
++const layer=await loadNollagamOwnerQuoteContexts(originals,{cryptoImpl:webcrypto,fetchImpl:async()=>({
++  ok:true,redirected:false,arrayBuffer:async()=>ownerBytes.buffer.slice(ownerBytes.byteOffset,ownerBytes.byteOffset+ownerBytes.byteLength)
++})});
++const attach=(projects,context=layer)=>projects.map(project=>context.bySlug[project.slug]
++  ?{...project,_nollagamOwnerQuoteContext:context.bySlug[project.slug]}:project);
++const bound=attach(originals),query=patch=>({...defaults(),...patch});
++const one=slug=>bound.filter(project=>project.slug===slug);
++
++for(const [slug,record] of Object.entries(owner.projects))for(const [bedrooms,price] of Object.entries(record.prices)){
++  test('Nollagam application correlates '+slug+' '+bedrooms+'D with owner UF'+price,()=>{
++    const state=query({bedrooms,minPriceInput:String(price),maxPriceInput:String(price)});
++    const rows=advancedFilterAndSort(one(slug),state);
++    assert.equal(rows.length,1);
++    assert.equal(projectOffer(rows[0],state).value,price);
++    assert.equal(projectOffer(rows[0],state).referenceId,'nollagam-owner:'+slug+':'+bedrooms+'d');
++    assert.deepEqual(projectFacts(rows[0],'',state),[{label:'Tipologías',value:bedrooms==='0'?'Estudio':bedrooms==='1'?'1 dormitorio':bedrooms+' dormitorios'}]);
++    assert.match(commercialLayerNote(rows[0],state),/28\/10\/2026/);
++    assert.match(commercialLayerNote(rows[0],state),/no acredita unidad ni stock/);
++    assert.deepEqual(matchedLabels(rows[0],state),[]);
++  });
++}
++
++test('Nollagam never borrows bathroom, type, surface, amenities or extras for its price',()=>{
++  for(const extra of [{bathrooms:'2'},{propertyType:'departamento'},{assetType:'Residencial'},
++    {minArea:'1',areaType:'util'},{amenities:['piscina']},{features:['termopanel']},
++    {parking:'included'},{storage:'available'}]){
++    assert.equal(advancedFilterAndSort(one('costanera-coquimbo-a'),query({
++      bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100',...extra
++    })).length,0);
++  }
++});
++
++test('Nollagam default identities and published prices remain unchanged when price is inactive',()=>{
++  const before=JSON.stringify(originals);
++  const rows=advancedFilterAndSort(bound,defaults());
++  assert.equal(rows.length,131);
++  assert.deepEqual(rows.map(project=>project.slug),originals.map(project=>project.slug));
++  for(const source of originals){
++    const selected=rows.find(project=>project.slug===source.slug);
++    assert.deepEqual(projectOffer(selected),projectOffer(source));
++  }
++  assert.equal(JSON.stringify(originals),before);
++});
++
++test('five unknown-price categories cannot borrow another category or the project minimum',()=>{
++  let unknowns=0;
++  for(const project of bound.filter(project=>layer.bySlug[project.slug])){
++    for(const reference of layer.bySlug[project.slug].record.references.filter(reference=>reference.attributes.priceUF===null)){
++      unknowns++;
++      assert.equal(advancedFilterAndSort([project],query({bedrooms:String(reference.attributes.bedrooms),minPriceInput:'1'})).length,0);
++    }
++  }
++  assert.equal(unknowns,5);
++});
++
++test('price projection recomputes a changed query rather than borrowing a previous match',()=>{
++  const previous=query({bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100'});
++  const [result]=advancedFilterAndSort(one('costanera-coquimbo-a'),previous);
++  assert.equal(projectOffer(result,previous).value,5070);
++  const next=query({bedrooms:'2',minPriceInput:'4200',maxPriceInput:'4220'});
++  assert.equal(projectOffer(result,next).value,4210);
++});
++
++test('an attached failed owner source closes active price queries and retains inactive identities',async()=>{
++  const unavailable=await loadNollagamOwnerQuoteContexts(originals,{cryptoImpl:webcrypto,
++    fetchImpl:async()=>({ok:false})});
++  const failed=attach(originals,unavailable);
++  assert.equal(advancedFilterAndSort(failed,defaults()).length,131);
++  assert.equal(advancedFilterAndSort(failed.filter(project=>project.slug==='costanera-coquimbo-a'),query({minPriceInput:'1'})).length,0);
++});
++
++test('price sorting uses selected3D quotes rather than project minima',()=>{
++  const state=query({bedrooms:'3',minPriceInput:'1',sortOrder:'price-asc'});
++  const rows=advancedFilterAndSort(bound.filter(project=>layer.bySlug[project.slug]),state);
++  assert.ok(rows.length>1);
++  const prices=rows.map(project=>projectOffer(project,state).value);
++  assert.deepEqual(prices,[...prices].sort((a,b)=>a-b));
++});
+diff --git a/tests/catalog-nollagam-owner-quotes.test.mjs b/tests/catalog-nollagam-owner-quotes.test.mjs
+new file mode 100644
+index 0000000..8d23fa3
+--- /dev/null
++++ b/tests/catalog-nollagam-owner-quotes.test.mjs
+@@ -0,0 +1,197 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {readFileSync} from 'node:fs';
++import {createNollagamOwnerQuoteLayer,NOLLAGAM_OWNER_SOURCE_PATH} from '../assets/js/catalog-nollagam-owner-quotes.mjs';
++import {matchProjectFilters} from '../assets/js/commercial-filter-engine.mjs';
++
++const read=path=>JSON.parse(readFileSync(new URL(path,import.meta.url),'utf8'));
++const published=read('../data/proyectos.json'),owner=read('../data/nollagam-commercial.json');
++const layer=createNollagamOwnerQuoteLayer(published,owner);
++const bySlug=new Map(layer.records.map(record=>[record.slug,record]));
++const clone=value=>structuredClone(value);
++const evaluate=(record,query)=>{
++  const result=matchProjectFilters(record,query);assert.deepEqual(result.issues,[]);return result;
++};
++const resolve=(root,pointer)=>pointer.split('/').slice(1).reduce((value,key)=>{
++  assert.ok(value!==null&&Object.hasOwn(value,key),'unresolved source pointer '+pointer);return value[key];
++},root);
++
++test('real owner source produces seven identities, seventeen prices and five explicit unknown categories',()=>{
++  assert.deepEqual(layer.counts,{projects:7,references:22,priced:17,unknownPrice:5});
++  assert.deepEqual(layer.records.map(record=>record.slug),
++    published.filter(project=>Object.hasOwn(owner.projects,project.slug)).map(project=>project.slug));
++  const unknown=layer.records.flatMap(record=>record.references
++    .filter(reference=>reference.attributes.priceUF===null).map(reference=>record.slug+':'+reference.label));
++  assert.deepEqual(unknown.sort(),['alto-goycolea:3 dormitorios','barrio-zenteno:Estudio',
++    'edificio-liverpool:1 dormitorio','edificio-liverpool:Estudio','eleuterio-ramirez:1 dormitorio'].sort());
++});
++
++test('specific Costanera A regression has a same-reference 3D UF5070 witness inside UF5000–5100',()=>{
++  const record=bySlug.get('costanera-coquimbo-a');
++  const result=evaluate(record,{bedrooms:'3',minPrice:'5000',maxPrice:'5100'});
++  assert.equal(result.matches,true);assert.equal(result.references.length,1);
++  assert.equal(result.references[0].attributes.priceUF,5070);
++  assert.equal(result.references[0].attributes.bedrooms,3);
++  assert.equal(result.references[0].id,'nollagam-owner:costanera-coquimbo-a:3d');
++  assert.equal(evaluate(record,{bedrooms:'2',minPrice:'5000',maxPrice:'5100'}).matches,false);
++});
++
++test('all seventeen real owner prices match only their explicit bedroom category with valid exact bounds',()=>{
++  let checked=0;
++  for(const record of layer.records)for(const reference of record.references){
++    const {priceUF,bedrooms}=reference.attributes;if(priceUF===null)continue;
++    const result=evaluate(record,{bedrooms:String(bedrooms),minPrice:String(priceUF),maxPrice:String(priceUF)});
++    assert.equal(result.matches,true,reference.id);assert.deepEqual(result.matchedReferenceIds,[reference.id]);checked++;
++  }
++  assert.equal(checked,17);
++});
++
++test('all five unknown-price categories retain known D and fail an active valid price range',()=>{
++  let checked=0;
++  for(const record of layer.records)for(const reference of record.references){
++    if(reference.attributes.priceUF!==null)continue;
++    const isolated={...record,references:[reference]},bedrooms=String(reference.attributes.bedrooms);
++    assert.equal(evaluate(isolated,{bedrooms}).matches,true,reference.id);
++    assert.equal(evaluate(isolated,{bedrooms,minPrice:'0',maxPrice:'99999'}).matches,false,reference.id);checked++;
++  }
++  assert.equal(checked,5);
++});
++
++test('original date and authority retain their declared meaning, with every source pointer resolving',()=>{
++  assert.equal(layer.source.path,NOLLAGAM_OWNER_SOURCE_PATH);
++  assert.equal(layer.source.date,'2026-10-28');assert.equal(layer.source.dateField,'/checkedOn');
++  assert.equal(layer.source.authority,owner.priceSource);
++  for(const record of layer.records)for(const reference of record.references){
++    assert.equal(reference.sourceDate,resolve(owner,reference.sourceDateField));
++    assert.equal(reference.scope,'typology-not-unit');assert.equal(record.asOf,'2026-10-28');
++    assert.equal(resolve(published,reference.publishedCategory.sourcePointer),reference.label);
++    const sourceValue=resolve(owner,reference.sourcePointer);
++    if(reference.sourcePresence==='category-declared'){
++      assert.equal(sourceValue,reference.attributes.priceUF);assert.equal(reference.missingSourceKey,null);
++    }else{
++      assert.equal(reference.sourcePresence,'category-not-listed');
++      assert.equal(Object.hasOwn(sourceValue,reference.missingSourceKey),false);
++      assert.equal(resolve(published,reference.publishedCategory.unknownPricePointer),null);
++    }
++  }
++});
++
++test('owner zero-bedroom category is explicit and does not convert unknown to zero',()=>{
++  const record=bySlug.get('alto-goycolea'),result=evaluate(record,{bedrooms:'0',minPrice:'2264',maxPrice:'2264'});
++  assert.equal(result.matches,true);assert.equal(result.references[0].label,'Estudio');
++  assert.equal(result.references[0].attributes.bedrooms,0);
++  assert.equal(result.references[0].sourcePointer,'/projects/alto-goycolea/prices/0');
++  assert.equal(bySlug.get('edificio-liverpool').references.find(reference=>reference.label==='Estudio').attributes.priceUF,null);
++});
++
++test('price witnesses never acquire property type, use, bathrooms or surfaces from the published project',()=>{
++  const unknown=['propertyType','assetType','bathrooms','typology','usefulM2','totalM2','interiorM2',
++    'terraceM2','gardenM2','landM2','privateTerrace','privateGarden','parkingIncluded',
++    'parkingAvailable','storageIncluded','storageAvailable','state','delivery'];
++  for(const record of layer.records)for(const reference of record.references){
++    for(const field of unknown)assert.equal(reference.attributes[field],null,reference.id+':'+field);
++    assert.equal(reference.stock,null);assert.equal(reference.availability,null);
++  }
++  const record=bySlug.get('costanera-coquimbo-a'),base={bedrooms:'3',minPrice:'5000',maxPrice:'5100'};
++  for(const query of [{propertyType:'departamento'},{assetType:'Residencial'},{bathrooms:'2'},
++    ...['util','total','interior','terraza','jardin','terreno'].map(surfaceMetric=>({surfaceMetric,minSurface:'0',maxSurface:'9999'})),
++    {privateTerrace:true},{privateGarden:true},{parking:'included'},{storage:'available'}]){
++    assert.equal(evaluate(record,{...base,...query}).matches,false,JSON.stringify(query));
++  }
++});
++
++test('unused unknowns do not remove identities or the seven price/D records',()=>{
++  for(const record of layer.records){
++    assert.equal(evaluate(record,{}).matches,true);
++    assert.equal(evaluate(record,{commune:record.projectFacts.commune,developers:['Nollagam']}).matches,true);
++  }
++});
++
++test('identity projection reads no project minimum, model facets, offers, stage or stock fields',()=>{
++  const projects=clone(published);
++  for(const project of projects.filter(project=>Object.hasOwn(owner.projects,project.slug))){
++    for(const field of ['precioDesdeUF','commercialOffers','commercialSource','tipoActivo','tiposActivos',
++      '_facets','models','estado','entrega','stock','unit','_commercial']){
++      Object.defineProperty(project,field,{configurable:true,get(){throw Error('forbidden read '+field);}});
++    }
++  }
++  const result=createNollagamOwnerQuoteLayer(projects,owner);
++  assert.deepEqual(result.counts,layer.counts);
++  assert.deepEqual(Object.keys(result.records[0].sourceProject),['slug','nombre','inmobiliaria','comuna','region','direccion']);
++});
++
++test('known owner amounts never borrow or consult an inconsistent legacy typology amount',()=>{
++  const projects=clone(published),project=projects.find(project=>project.slug==='costanera-coquimbo-a');
++  for(const row of project.preciosPorTipologia)Object.defineProperty(row,'precioDesdeUF',{
++    configurable:true,get(){throw Error('known owner category read a legacy amount');}});
++  const result=createNollagamOwnerQuoteLayer(projects,owner);
++  assert.deepEqual(result.records.find(record=>record.slug===project.slug).references.map(reference=>reference.attributes.priceUF),[4210,5070]);
++});
++
++test('an explicit unknown owner price stays null despite a populated published amount',()=>{
++  const source=clone(owner);source.projects['costanera-coquimbo-a'].prices['2']=null;
++  const result=createNollagamOwnerQuoteLayer(published,source);
++  const record=result.records.find(record=>record.slug==='costanera-coquimbo-a');
++  const reference=record.references.find(reference=>reference.attributes.bedrooms===2);
++  assert.equal(reference.attributes.priceUF,null);assert.equal(reference.sourcePresence,'category-declared');
++  assert.equal(evaluate({...record,references:[reference]},{minPrice:'0',maxPrice:'99999'}).matches,false);
++});
++
++test('an absent owner amount cannot activate a populated legacy category',()=>{
++  const source=clone(owner);delete source.projects['costanera-coquimbo-a'].prices['3'];
++  assert.throws(()=>createNollagamOwnerQuoteLayer(published,source),/unbacked published category price/);
++});
++
++test('authority and original date are required, without deriving them from project verification',()=>{
++  for(const change of [{priceSource:undefined},{priceSource:'Provider campaign'},
++    {checkedOn:undefined},{checkedOn:'28/10/2026'},{checkedOn:'2026-02-30'}]){
++    assert.throws(()=>createNollagamOwnerQuoteLayer(published,{...owner,...change}),/owner authority|checkedOn/);
++  }
++});
++
++test('numeric strings, zero, negative values and nonfinite owner prices are rejected without coercion',()=>{
++  for(const price of ['5070',undefined,0,-1,NaN,Infinity]){
++    const source=clone(owner);source.projects['costanera-coquimbo-a'].prices['3']=price;
++    assert.throws(()=>createNollagamOwnerQuoteLayer(published,source),/positive numbers or explicit null/);
++  }
++});
++
++test('foreign, missing, duplicate or mismatched public identities cannot be joined',()=>{
++  const source=clone(owner);source.projects.foreign=source.projects['costanera-coquimbo-a'];
++  assert.throws(()=>createNollagamOwnerQuoteLayer(published,source),/seven existing/);
++  assert.throws(()=>createNollagamOwnerQuoteLayer(published.filter(project=>project.slug!=='costanera-coquimbo-a'),owner),/missing published identity/);
++  const duplicated=[...published,published.find(project=>project.slug==='costanera-coquimbo-a')];
++  assert.throws(()=>createNollagamOwnerQuoteLayer(duplicated,owner),/duplicate published identity/);
++  const projects=clone(published);projects.find(project=>project.slug==='costanera-coquimbo-a').inmobiliaria='Euro';
++  assert.throws(()=>createNollagamOwnerQuoteLayer(projects,owner),/unmatched Nollagam identity/);
++});
++
++test('unknown labels, duplicate categories and owner keys without published correspondence are rejected',()=>{
++  for(const label of ['3D','3 dormitorios con terraza','Local','desconocido','constructor']){
++    const projects=clone(published);projects.find(project=>project.slug==='costanera-coquimbo-a').preciosPorTipologia[1].tipologia=label;
++    assert.throws(()=>createNollagamOwnerQuoteLayer(projects,owner),/unrecognized category label/);
++  }
++  const projects=clone(published),project=projects.find(project=>project.slug==='costanera-coquimbo-a');
++  project.preciosPorTipologia.push({...project.preciosPorTipologia[0]});
++  assert.throws(()=>createNollagamOwnerQuoteLayer(projects,owner),/duplicate bedroom category/);
++  const source=clone(owner);source.projects['costanera-coquimbo-a'].prices['4']=6000;
++  assert.throws(()=>createNollagamOwnerQuoteLayer(published,source),/lacks a matching published category/);
++});
++
++test('reference IDs remain stable when published category order changes',()=>{
++  const projects=clone(published);projects.find(project=>project.slug==='costanera-coquimbo-a').preciosPorTipologia.reverse();
++  const result=createNollagamOwnerQuoteLayer(projects,owner);
++  assert.deepEqual(result.records.find(record=>record.slug==='costanera-coquimbo-a').references.map(reference=>reference.id).sort(),
++    bySlug.get('costanera-coquimbo-a').references.map(reference=>reference.id).sort());
++});
++
++test('normalization and matching preserve both input datasets and return isolated frozen records',()=>{
++  const projects=clone(published),source=clone(owner),before=[JSON.stringify(projects),JSON.stringify(source)];
++  const result=createNollagamOwnerQuoteLayer(projects,source);
++  for(const record of result.records)evaluate(record,{bedrooms:'2',minPrice:'1'});
++  assert.deepEqual([JSON.stringify(projects),JSON.stringify(source)],before);
++  assert.ok(Object.isFrozen(result));assert.ok(Object.isFrozen(result.records[0].references[0].attributes));
++  assert.throws(()=>{result.records[0].references[0].attributes.priceUF=1;},TypeError);
++  source.projects['costanera-coquimbo-a'].prices['2']=1;
++  assert.equal(result.records.find(record=>record.slug==='costanera-coquimbo-a').references[0].attributes.priceUF,4210);
++});
+diff --git a/tests/catalog-nollagam-quote-consumer.test.mjs b/tests/catalog-nollagam-quote-consumer.test.mjs
+new file mode 100644
+index 0000000..a09c0eb
+--- /dev/null
++++ b/tests/catalog-nollagam-quote-consumer.test.mjs
+@@ -0,0 +1,183 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {readFileSync} from 'node:fs';
++import {createHash,webcrypto} from 'node:crypto';
++import {isNollagamQuoteProject,loadNollagamOwnerQuoteContexts,nollagamOwnerQuoteContext,
++  matchNollagamOwnerQuotes,nollagamOwnerQuoteWitness,nollagamOwnerQuoteOffer,
++  nollagamOwnerQuoteFacts,nollagamOwnerQuoteNote,NOLLAGAM_OWNER_SOURCE_SHA256}
++  from '../assets/js/catalog-nollagam-quote-consumer.mjs';
++
++const published=JSON.parse(readFileSync(new URL('../data/proyectos.json',import.meta.url),'utf8'));
++const ownerBytes=readFileSync(new URL('../data/nollagam-commercial.json',import.meta.url));
++const body=bytes=>bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength);
++const sourceFetch=async()=>({ok:true,redirected:false,arrayBuffer:async()=>body(ownerBytes)});
++const loaded=await loadNollagamOwnerQuoteContexts(published,{fetchImpl:sourceFetch,cryptoImpl:webcrypto});
++const attach=(slug,layer=loaded)=>({...published.find(project=>project.slug===slug),
++  _nollagamOwnerQuoteContext:layer.bySlug[slug]});
++const evaluate=(project,state)=>{
++  const result=matchNollagamOwnerQuotes(project,{evidenceMode:'published',...state});
++  assert.ok(result!==null);assert.deepEqual(result.issues,[]);return result;
++};
++
++test('loader verifies the real owner JSON pin and returns seven ready contexts with original dates',async()=>{
++  assert.equal(createHash('sha256').update(ownerBytes).digest('hex'),NOLLAGAM_OWNER_SOURCE_SHA256);
++  const calls=[];
++  const result=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
++    fetchImpl:async(url,options)=>{calls.push({url,options});return sourceFetch();}});
++  assert.equal(calls.length,1);assert.equal(calls[0].url,'/data/nollagam-commercial.json');
++  assert.equal(calls[0].options.cache,'no-store');assert.equal(calls[0].options.credentials,'omit');
++  assert.equal(calls[0].options.redirect,'error');assert.ok(calls[0].options.signal instanceof AbortSignal);
++  assert.equal(result.status,'ready');assert.equal(Object.keys(result.bySlug).length,7);
++  for(const [slug,context] of Object.entries(result.bySlug)){
++    assert.equal(context.status,'ready');assert.equal(context.slug,slug);
++    assert.equal(context.source.sha256,NOLLAGAM_OWNER_SOURCE_SHA256);assert.equal(context.source.date,'2026-10-28');
++    assert.equal(context.record.sourceProject.slug,slug);assert.ok(Object.isFrozen(context));
++  }
++});
++
++test('Costanera A3D UF5070 survives the previously failing UF5000–5100 query',()=>{
++  const result=evaluate(attach('costanera-coquimbo-a'),{bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100'});
++  assert.equal(result.matches,true);assert.equal(result.references.length,1);
++  assert.deepEqual(nollagamOwnerQuoteOffer(result),{value:5070,typology:'3 dormitorios',
++    referenceId:'nollagam-owner:costanera-coquimbo-a:3d',date:'2026-10-28',financialBaselineCompatible:false});
++  assert.equal(evaluate(attach('costanera-coquimbo-a'),{bedrooms:'2',minPriceInput:'5000',maxPriceInput:'5100'}).matches,false);
++});
++
++test('all seventeen existing owner prices match exact price+D without source coercion or model fields',()=>{
++  let count=0;
++  for(const [slug,context] of Object.entries(loaded.bySlug))for(const reference of context.record.references){
++    const {priceUF,bedrooms}=reference.attributes;if(priceUF===null)continue;
++    const result=evaluate(attach(slug),{bedrooms:String(bedrooms),minPriceInput:String(priceUF),maxPriceInput:String(priceUF)});
++    assert.equal(result.matches,true,reference.id);assert.deepEqual(result.matchedReferenceIds,[reference.id]);
++    assert.equal(nollagamOwnerQuoteOffer(result).value,priceUF);count++;
++  }
++  assert.equal(count,17);
++});
++
++test('the five unknown-price categories fail a valid active range and never acquire a project minimum',()=>{
++  let count=0;
++  for(const [slug,context] of Object.entries(loaded.bySlug))for(const reference of context.record.references){
++    if(reference.attributes.priceUF!==null)continue;
++    const result=evaluate(attach(slug),{bedrooms:String(reference.attributes.bedrooms),minPriceInput:'0',maxPriceInput:'99999'});
++    assert.equal(result.matches,false,reference.id);assert.equal(nollagamOwnerQuoteWitness(result),null);
++    assert.equal(nollagamOwnerQuoteOffer(result).value,null);assert.deepEqual(nollagamOwnerQuoteFacts(result),[]);count++;
++  }
++  assert.equal(count,5);
++});
++
++test('inactive price, unbound legacy projects and prepared/documentary modes delegate with null',()=>{
++  const project=attach('costanera-coquimbo-a');
++  for(const state of [{},{bedrooms:'3'},{evidenceMode:'prepared',minPriceInput:'1'},
++    {evidenceMode:'documentary',minPriceInput:'1'}])assert.equal(matchNollagamOwnerQuotes(project,state),null);
++  assert.equal(matchNollagamOwnerQuotes(published.find(project=>project.slug==='bcome'),{minPriceInput:'1'}),null);
++  const unbound=published.find(project=>project.slug==='costanera-coquimbo-a');
++  assert.equal(matchNollagamOwnerQuotes(unbound,{minPriceInput:'0'}),null);
++  const inherited=Object.assign(Object.create({_nollagamOwnerQuoteContext:loaded.bySlug[unbound.slug]}),unbound);
++  assert.equal(matchNollagamOwnerQuotes(inherited,{minPriceInput:'0'}),null);
++  assert.equal(isNollagamQuoteProject(project),true);assert.equal(isNollagamQuoteProject({slug:'bcome'}),false);
++  assert.equal(nollagamOwnerQuoteContext({slug:'bcome'}),null);
++  assert.equal(nollagamOwnerQuoteOffer(null),null);assert.deepEqual(nollagamOwnerQuoteFacts(null),[]);
++});
++
++test('price queries preserve known identity, name and exact published address predicates',()=>{
++  const project=attach('costanera-coquimbo-a'),base={bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100'};
++  for(const state of [{search:project.nombre},{search:project.direccion},
++    {region:project.region,commune:project.comuna,developers:['Nollagam']}]){
++    assert.equal(evaluate(project,{...base,...state}).matches,true,JSON.stringify(state));
++  }
++  for(const state of [{region:'Región Metropolitana'},{commune:'Santiago'},
++    {developers:['AJ Urbana']},{search:'gimnasio'}])assert.equal(evaluate(project,{...base,...state}).matches,false);
++});
++
++test('unknown D, B, property/use, typed surfaces, private features, extras and amenities do not pass',()=>{
++  const project=attach('costanera-coquimbo-a'),base={bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100'};
++  for(const state of [{bedrooms:'4+'},{bathrooms:'2'},{propertyType:'departamento'},{assetType:'Residencial'},
++    ...['util','total','interior','terraza','jardin','terreno'].map(areaType=>({areaType,minArea:'0',maxArea:'9999'})),
++    {features:['terraza-privada']},{features:['cocina-equipada']},
++    {parking:'included'},{parking:'additional'},{storage:'available'},
++    {amenities:['gimnasio']},{amenities:['piscina']},{amenities:['piscina','gimnasio'],amenitiesAll:true}]){
++    assert.equal(evaluate(project,{...base,...state}).matches,false,JSON.stringify(state));
++  }
++});
++
++test('state, delivery, purchase stage and unsupported unit/model/stock selectors are not silently removed',()=>{
++  const project=attach('costanera-coquimbo-a'),base={bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100'};
++  for(const state of [{state:'En blanco'},{delivery:'2027'},{purchaseModes:['blanco']},
++    {unit:'101'},{model:'3D'},{stock:true},{availability:false},
++    {metroNetwork:'current'},{metroLines:['L1']}]){
++    assert.equal(evaluate(project,{...base,...state}).matches,false,JSON.stringify(state));
++  }
++});
++
++test('the witness is the lowest price among matching references only',()=>{
++  const project=attach('costanera-coquimbo-a');
++  const all=evaluate(project,{minPriceInput:'1'}),filtered=evaluate(project,{minPriceInput:'5000',maxPriceInput:'5100'});
++  assert.equal(nollagamOwnerQuoteWitness(all).attributes.priceUF,4210);
++  assert.equal(nollagamOwnerQuoteWitness(filtered).attributes.priceUF,5070);
++  const foreign=loaded.bySlug['costanera-coquimbo-b'].record.references[0];
++  assert.equal(nollagamOwnerQuoteWitness({...filtered,references:[foreign]}),null);
++  assert.equal(nollagamOwnerQuoteWitness({...filtered,record:loaded.bySlug['costanera-coquimbo-b'].record}),null);
++  assert.equal(nollagamOwnerQuoteWitness({...filtered,matches:false}),null);
++});
++
++test('projection shows only the matching typology, original owner date and explicit scope notice',()=>{
++  const result=evaluate(attach('costanera-coquimbo-a'),{bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100'});
++  assert.deepEqual(nollagamOwnerQuoteFacts(result),[{label:'Tipologías',value:'3 dormitorios'}]);
++  const note=nollagamOwnerQuoteNote(result);
++  assert.match(note,/propietario/);assert.match(note,/28\/10\/2026/);assert.match(note,/no acredita unidad ni stock/);
++  assert.equal(nollagamOwnerQuoteOffer(result).financialBaselineCompatible,false);
++  assert.equal(nollagamOwnerQuoteNote(null),'');
++});
++
++test('pin mismatch is rejected before normalization and gives seven unavailable contexts',async()=>{
++  let reads=0;const poisoned=[new Proxy({},{get(){reads++;throw Error('should not normalize');}})];
++  const badBytes=Buffer.concat([ownerBytes,Buffer.from('\n')]);
++  const result=await loadNollagamOwnerQuoteContexts(poisoned,{cryptoImpl:webcrypto,
++    fetchImpl:async()=>({ok:true,arrayBuffer:async()=>body(badBytes)})});
++  assert.equal(reads,0);assert.equal(result.status,'unavailable');assert.equal(Object.keys(result.bySlug).length,7);
++  for(const context of Object.values(result.bySlug)){
++    assert.equal(context.status,'unavailable');assert.equal(context.reason,'source-pin-mismatch');assert.equal(context.record,null);
++  }
++});
++
++test('HTTP, fetch, crypto, redirect and identity-normalization failures never reactivate legacy prices',async()=>{
++  const cases=[
++    {fetchImpl:async()=>({ok:false,status:503})},
++    {fetchImpl:async()=>{throw Error('network unavailable');}},
++    {fetchImpl:sourceFetch,cryptoImpl:{}},
++    {fetchImpl:async()=>({ok:true,redirected:true})},
++  ];
++  for(const options of cases){
++    const result=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,...options});
++    assert.equal(result.status,'unavailable');assert.equal(Object.keys(result.bySlug).length,7);
++    const project=attach('costanera-coquimbo-a',result),match=evaluate(project,{bedrooms:'3',minPriceInput:'1'});
++    assert.equal(match.matches,false);assert.equal(match.context.status,'unavailable');
++    assert.equal(nollagamOwnerQuoteOffer(match).value,null);assert.equal(nollagamOwnerQuoteOffer(match).date,null);
++    assert.equal(matchNollagamOwnerQuotes(project,{bedrooms:'3'}),null);
++  }
++  const missing=published.filter(project=>project.slug!=='costanera-coquimbo-a');
++  const result=await loadNollagamOwnerQuoteContexts(missing,{cryptoImpl:webcrypto,fetchImpl:sourceFetch});
++  assert.equal(result.status,'unavailable');assert.equal(result.bySlug['costanera-coquimbo-a'].reason,'source-invalid');
++});
++
++test('bound empty, crossed, copied and mismatched identities close the active-price route',()=>{
++  const original=published.find(project=>project.slug==='costanera-coquimbo-a');
++  const ready=loaded.bySlug[original.slug];
++  for(const project of [{...original,_nollagamOwnerQuoteContext:undefined},{...original,_nollagamOwnerQuoteContext:null},
++    {...original,_nollagamOwnerQuoteContext:loaded.bySlug['costanera-coquimbo-b']},
++    {...original,_nollagamOwnerQuoteContext:{...ready}},
++    {...original,inmobiliaria:'Euro',_nollagamOwnerQuoteContext:ready},
++    {...original,direccion:'Different address',_nollagamOwnerQuoteContext:ready}]){
++    assert.equal(nollagamOwnerQuoteContext(project).status,'unavailable');
++    assert.equal(evaluate(project,{bedrooms:'3',minPriceInput:'1'}).matches,false);
++  }
++});
++
++test('loading, matching and projecting do not mutate published data or trusted records',()=>{
++  const before=JSON.stringify(published),context=loaded.bySlug['costanera-coquimbo-a'],recordBefore=JSON.stringify(context.record);
++  const project=attach('costanera-coquimbo-a'),projectBefore=JSON.stringify(project);
++  const result=evaluate(project,{bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100'});
++  nollagamOwnerQuoteOffer(result);nollagamOwnerQuoteFacts(result);nollagamOwnerQuoteNote(result);
++  assert.equal(JSON.stringify(published),before);assert.equal(JSON.stringify(project),projectBefore);
++  assert.equal(JSON.stringify(context.record),recordBefore);assert.ok(Object.isFrozen(context.record.references[0].attributes));
++});

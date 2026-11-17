@@ -1,0 +1,145 @@
+✔ Nollagam application correlates edificio-liverpool 2D with owner UF4151 (4.854792ms)
+✔ Nollagam application correlates edificio-liverpool 3D with owner UF4457 (0.4075ms)
+✖ Nollagam application correlates barrio-zenteno 1D with owner UF2784 (1.035792ms)
+✔ Nollagam application correlates barrio-zenteno 2D with owner UF3202 (0.293ms)
+✔ Nollagam application correlates barrio-zenteno 3D with owner UF3508 (0.233625ms)
+✖ Nollagam application correlates alto-goycolea 0D with owner UF2264 (0.268291ms)
+✖ Nollagam application correlates alto-goycolea 1D with owner UF2601 (0.2465ms)
+✔ Nollagam application correlates alto-goycolea 2D with owner UF2886 (0.196875ms)
+✖ Nollagam application correlates edificio-santa-maria 1D with owner UF3090 (0.214709ms)
+✔ Nollagam application correlates edificio-santa-maria 2D with owner UF3355 (0.233ms)
+✔ Nollagam application correlates edificio-santa-maria 3D with owner UF4029 (0.171916ms)
+✔ Nollagam application correlates eleuterio-ramirez 2D with owner UF3825 (1.1565ms)
+✔ Nollagam application correlates eleuterio-ramirez 3D with owner UF4400 (0.167625ms)
+✔ Nollagam application correlates costanera-coquimbo-a 2D with owner UF4210 (0.143833ms)
+✔ Nollagam application correlates costanera-coquimbo-a 3D with owner UF5070 (0.1015ms)
+✔ Nollagam application correlates costanera-coquimbo-b 2D with owner UF3880 (0.148208ms)
+✔ Nollagam application correlates costanera-coquimbo-b 3D with owner UF5460 (0.109375ms)
+✔ Nollagam never borrows bathroom, type, surface, amenities or extras for its price (0.327667ms)
+✔ Nollagam default identities and published prices remain unchanged when price is inactive (15.81525ms)
+✔ five unknown-price categories cannot borrow another category or the project minimum (9.379542ms)
+✔ price projection recomputes a changed query rather than borrowing a previous match (5.334333ms)
+✔ an attached failed owner source closes active price queries and retains inactive identities (12.8745ms)
+✔ price sorting uses selected3D quotes rather than project minima (2.334833ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 19
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 178.915583
+
+✖ failing tests:
+
+test at tests/catalog-nollagam-integration.test.mjs:23:3
+✖ Nollagam application correlates barrio-zenteno 1D with owner UF2784 (1.035792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      {
+        label: 'Tipologías',
+  +     value: '1 dormitorio'
+  -     value: '1 dormitorios'
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-integration.test.mjs:29:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { label: 'Tipologías', value: '1 dormitorio' } ],
+    expected: [ { label: 'Tipologías', value: '1 dormitorios' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/catalog-nollagam-integration.test.mjs:23:3
+✖ Nollagam application correlates alto-goycolea 0D with owner UF2264 (0.268291ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      {
+        label: 'Tipologías',
+  +     value: 'Estudio'
+  -     value: '0 dormitorios'
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-integration.test.mjs:29:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { label: 'Tipologías', value: 'Estudio' } ],
+    expected: [ { label: 'Tipologías', value: '0 dormitorios' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/catalog-nollagam-integration.test.mjs:23:3
+✖ Nollagam application correlates alto-goycolea 1D with owner UF2601 (0.2465ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      {
+        label: 'Tipologías',
+  +     value: '1 dormitorio'
+  -     value: '1 dormitorios'
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-integration.test.mjs:29:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { label: 'Tipologías', value: '1 dormitorio' } ],
+    expected: [ { label: 'Tipologías', value: '1 dormitorios' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/catalog-nollagam-integration.test.mjs:23:3
+✖ Nollagam application correlates edificio-santa-maria 1D with owner UF3090 (0.214709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      {
+        label: 'Tipologías',
+  +     value: '1 dormitorio'
+  -     value: '1 dormitorios'
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-integration.test.mjs:29:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { label: 'Tipologías', value: '1 dormitorio' } ],
+    expected: [ { label: 'Tipologías', value: '1 dormitorios' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
