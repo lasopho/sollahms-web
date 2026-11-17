@@ -1,0 +1,142 @@
+{
+  "fecha": "2026-11-16",
+  "modo": "Revisión independiente READ-ONLY de mapeo documental y datos fuente de Excel; sin revisión del archivo XLSX exportado ni cambios de repositorio.",
+  "resultado": "PASS",
+  "controles_aprobados": 30,
+  "controles": [
+    {
+      "control": "313 pendientes conservados, sin nuevas claves",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Columnas F4 de cada pendiente preservadas",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Cero cierres por reorganización",
+      "resultado": "PASS",
+      "nota": "CSV serializa booleano false en las313filas, equivalente a cero nuevos cierres."
+    },
+    {
+      "control": "287 claves documentales cubiertas exactamente una vez",
+      "resultado": "PASS"
+    },
+    {
+      "control": "13 paquetes para los13proyectos",
+      "resultado": "PASS"
+    },
+    {
+      "control": "IDs principales únicos",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Suma cobertura primaria287",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Detalle de campos primarios coincide con ledger",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Ledger enlaza solo paquetes válidos",
+      "resultado": "PASS"
+    },
+    {
+      "control": "4 anexos INN sin conteo adicional",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Anexos enlazan al mismo paquete INN",
+      "resultado": "PASS"
+    },
+    {
+      "control": "PDF616N513B2601O1 exactos",
+      "resultado": "PASS"
+    },
+    {
+      "control": "PDFsinSHA inventado ni lectura afirmada",
+      "resultado": "PASS"
+    },
+    {
+      "control": "F3C001 distinto de conflictos materiales",
+      "resultado": "PASS"
+    },
+    {
+      "control": "CSVdocumentos17IDs igualmapeo",
+      "resultado": "PASS"
+    },
+    {
+      "control": "CSVpaquetes campos primarios igualmapeo",
+      "resultado": "PASS"
+    },
+    {
+      "control": "287 pendientes enlazan paquete y grupo correctos",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Precios aceptados solo alcance sin recotización",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Sin direcciones como campos solicitados",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Amenities de brochure resueltos no se reabren",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Own solo archivo histórico sin preguntas comerciales",
+      "resultado": "PASS"
+    },
+    {
+      "control": "13solicitudes agrupadas conservan313",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Cada solicitud agrupada identifica su paquete",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Workbook1decisión12respaldos17docs",
+      "resultado": "PASS"
+    },
+    {
+      "control": "D03solo decisión comercial",
+      "resultado": "PASS"
+    },
+    {
+      "control": "F3C001incluido como respaldo adicional",
+      "resultado": "PASS"
+    },
+    {
+      "control": "WorkbookdocumentosIDs exactos",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Workbookrespuestas yobservacionesenblanco",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Workbookdocumentos excluye repetir datos",
+      "resultado": "PASS"
+    },
+    {
+      "control": "Seis comerciales previos permanecen en espera",
+      "resultado": "PASS"
+    }
+  ],
+  "hallazgos_materiales_abiertos": [],
+  "observaciones_no_bloqueantes": [
+    {
+      "detalle": "La acción mínima de las seis filas de espera comercial usa el texto conjunto L-009/L-013 para Santo y BAUM. Los IDs originales por campo permanecen en columnas legadas; se puede precisar la nota por proyecto para una lectura más rápida, sin cambiar las solicitudes."
+    }
+  ],
+  "archivos_revisados_sha256": {
+    "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase5-20261116/DOCUMENTOS-REALMENTE-FALTANTES-LEBEN.csv": "ecb1bb128091615296718eb971bbf5ed7d57f0ef8d968fecf47b0c18341224bf",
+    "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase5-20261116/PENDIENTES-ACTUALIZADOS-LEBEN.csv": "57fbe3b2ba503cfc36a001aeb4c1c67e27333664562430757480d2fe5bc1914c",
+    "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase5-20261116/SOLICITUDES-FINALES-POR-PROYECTO.csv": "b804f111a9e91c90b1551a9ec88dafde441b1e3bd2fd434c82c2bd43da40206f",
+    "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase5-20261116/MAPEO-DOCUMENTOS.json": "5a994f3fe1f9faf0a3350f570c167ed74baff2c60e9176359e2724f63e3f23f2",
+    "/private/tmp/leben-f5-workbook-data.json": "93ff378a66eb755713febbaafb5c088b8a8987cef9b15ca87f96cdd579d191ec"
+  }
+}

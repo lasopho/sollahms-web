@@ -49,3 +49,9 @@ Resultado documental:330pendientes antes/después,0cierres completos,1mejora par
 Fase4,16/11/2026: recibida comunicación directa F049,65declaraciones,20precios de inmuebles,2adicionales Suecia y7asociaciones D/B. Sin consulta nueva a Iris ni relecturas de imágenes/brochures. Resultado15cierres y2preguntas de dirección retiradas:330→313pendientes.34campos enriquecidos de forma parcial;12casos particulares siguen abiertos. Los pendientes se separan en6comerciales previos Santo/BAUM,20campos conflictivos y287de documentación/alcance. No se envió otra ronda de preguntas.
 
 El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.
+
+## Fase 5 — 16/11/2026
+
+Sin nueva navegación, autenticación, lectura de imágenes o exportación. La conciliación reutilizó las fuentes ya conservadas. Resultado: 313 pendientes antes/después, cero cierres y cero fuentes primarias nuevas. Se distinguieron una precisión comercial D-03, once conflictos técnicos y F3-C001 como límite adicional. Los 287 campos documentales se agruparon en trece paquetes, con cuatro anexos INN dentro del mismo envío.
+
+La fuente activa de coordinación es [INFORME-FASE5-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE5-LEBEN.md). La navegación descrita en este manual no se verificó nuevamente en esta fase. Consultar NEXT-PROMPT antes de abrir Iris para evitar relecturas y preguntas duplicadas.

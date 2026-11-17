@@ -1,0 +1,1756 @@
+{
+  "fecha": "2026-11-16",
+  "base_commit": "2774b10bff3e74d186359f7793fa8712866a83fb",
+  "modo": "Conciliación de transcripciones y registros existentes, sin navegador ni relectura de imágenes/brochures. Hashes de gráficos verificados sin nueva lectura visual.",
+  "fuentes_entradas": [
+    {
+      "archivo": "fase4-20261116/CONTRADICCIONES-LEBEN.csv",
+      "sha256": "606eeeb93155b2ff5ca3170e55504462c78a84f8ad13f5720b09eaad6258a715"
+    },
+    {
+      "archivo": "iris-20261116/UNIDADES-IRIS.csv",
+      "sha256": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254"
+    },
+    {
+      "archivo": "iris-20261116/PLANOS-LECTURA-GRAFICA.json",
+      "sha256": "b6f0fcd8bd5cb3a55511f540744d2e0f84cfe60aad7b74742e149e69aeeb2d2d"
+    },
+    {
+      "archivo": "iris-20261116/HECHOS-IRIS.csv",
+      "sha256": "3be90034891169e7a929053adefab3b28745eb0c8ee12a826316b936a8c2635f"
+    },
+    {
+      "archivo": "fase4-20261116/HECHOS-PROPIETARIO-FASE4.json",
+      "sha256": "b8719ec4a39f9271cd8b55bf4a092cf6dc86e562ca851db76ed33daeacc20cf1"
+    },
+    {
+      "archivo": "recepcion-fase2/CONCILIACION-DISCREPANCIAS.csv",
+      "sha256": "7cd9c1a9a5d532a9661f8c69084fd91e829a68086a1076b987517d23c44f3db4"
+    }
+  ],
+  "resumen": {
+    "conflictos": 12,
+    "decision_especificacion_vigente_propietario": 1,
+    "conflictos_que_requieren_respaldo_tecnico": 11,
+    "limitacion_adicional": 1,
+    "filas_tecnicas_incluida_limitacion": 12,
+    "conflictos_resueltos": 0,
+    "campos_nuevos_completos": 0,
+    "nuevas_lecturas_visuales": 0,
+    "nuevas_exportaciones": 0,
+    "precios_o_direcciones_solicitados": 0
+  },
+  "instruccion_respuesta": "Dejar campo de respuesta vacío. El propietario puede aportar el documento o canalizar su obtención; no pedir que vote entre cantidades técnicas. Para material vigente, una declaración expresa precisa y con alcance es fuente válida. No convertir313campos en313preguntas.",
+  "conflictos": [
+    {
+      "id_conflicto": "IR-C001",
+      "proyecto": "Living Town",
+      "slug": "edificio-living-town",
+      "unidad_o_modelo": "A1 / unidades 603 y 803",
+      "unidades_afectadas": [
+        "603",
+        "803"
+      ],
+      "campos_afectados": [
+        "banos"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM: Modelo A1, 2 dormitorios y 2 baños en603 y803.",
+      "dato_fuente_b": "Plano A1:2D/1B. No imprime alcance de unidades.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F023",
+        "url_ficha": "https://iris.yapo.cl/proyecto/645?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/edificio-living-town.json",
+        "sha256_snapshot": "6eb6040b911674f97e2ca9d9a10fd01aa4199029fb85cdfba285efe6878235e2",
+        "unidades": [
+          {
+            "unidad": "603",
+            "piso_literal": "6",
+            "modelo_descripcion_literal": "A1",
+            "descripcion_modelo_literal": "Modelo A1 (4C TRADIC)",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "48.81m² Internos · 9.74m² Terraza",
+            "rotulos_ui": {
+              "Internos": "48.81",
+              "Terraza": "9.74"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.65ae8172b750c_modelo-a1.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H00851",
+              "IR-H00852",
+              "IR-H00853",
+              "IR-H00854",
+              "IR-H00855",
+              "IR-H00856",
+              "IR-H00857",
+              "IR-H00858"
+            ]
+          },
+          {
+            "unidad": "803",
+            "piso_literal": "8",
+            "modelo_descripcion_literal": "A1",
+            "descripcion_modelo_literal": "Modelo A1 (4C TRADIC)",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "48.81m² Internos · 9.74m² Terraza",
+            "rotulos_ui": {
+              "Internos": "48.81",
+              "Terraza": "9.74"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.65ae8172b750c_modelo-a1.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H00883",
+              "IR-H00884",
+              "IR-H00885",
+              "IR-H00886",
+              "IR-H00887",
+              "IR-H00888",
+              "IR-H00889",
+              "IR-H00890"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P020",
+            "archivo": "iris-20261116/evidencias/edificio-living-town/3bff6a493b3fa2a3.avif",
+            "sha256": "3bff6a493b3fa2a380491230ab66680142a0dc88178c72656b74870ac0d732ec",
+            "url_imagen": "https://cdn2.infocasas.com.uy/web/th.outside700x700.65ae8172b750c_modelo-a1.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/645?operation=Venta",
+            "modelo_grafico_literal": "A1",
+            "dormitorios_grafico_estructurados": 2,
+            "banos_grafico_estructurados": 1,
+            "tipo_grafico_literal": null,
+            "alcance_impreso_literal": null,
+            "unidades_enlazadas_dom": [
+              "603",
+              "803"
+            ],
+            "superficies_rotuladas": [],
+            "observaciones_transcritas_previas": "Plano inspeccionado visualmente: código y dormitorios/baños; no hay rótulos numéricos de superficies.",
+            "ids_hechos_graficos": [
+              "IR-H02752",
+              "IR-H02753",
+              "IR-H02754"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Están documentadas ambas lecturas y el vínculo de ambas unidades a IR-P020. F049 confirma2D/2B como categoría general, sin identificar A1.",
+      "decision_o_respaldo_faltante": "Confirmar baños y aplicabilidad de la versión A1 para603/803 con respaldo específico; no extender la categoría general al modelo.",
+      "documento_concreto_minimo": "Plano vigente de A1 aplicable a603 y803, o ficha técnica emitida por Leben que identifique esas unidades y número de baños.",
+      "grupo_documental_sugerido": "edificio-living-town-correspondencias",
+      "campo_respuesta": "",
+      "observaciones": "Sin conflicto de cantidad de dormitorios: ambos lados indican2. No re-pedir categorías comerciales.",
+      "declaracion_propietario_previa_relevante": [
+        {
+          "id_hecho": "F4-H003",
+          "campo": "asociacion_dormitorios_banos",
+          "valor": {
+            "dormitorios": 1,
+            "banos": 1
+          },
+          "alcance": "Tipología comercial general; sin asociación a modelo particular"
+        },
+        {
+          "id_hecho": "F4-H004",
+          "campo": "asociacion_dormitorios_banos",
+          "valor": {
+            "dormitorios": 2,
+            "banos": 2
+          },
+          "alcance": "Tipología comercial general; sin asociación a modelo particular"
+        }
+      ],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "IR-C003",
+      "proyecto": "Mood",
+      "slug": "edificio-mood",
+      "unidad_o_modelo": "A / unidad303; gráfico rotulado DEPTO201",
+      "unidades_afectadas": [
+        "303"
+      ],
+      "campos_afectados": [
+        "dormitorios"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM de303: Modelo A, 2 dormitorios y2 baños.",
+      "dato_fuente_b": "Gráfico Modelo A:1,5D+2B; observación previa transcribe DEPTO201.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F024",
+        "url_ficha": "https://iris.yapo.cl/proyecto/650?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/edificio-mood.json",
+        "sha256_snapshot": "285ed5ab5d8b80788a5f51211bfd02fc84f8ab5c92b25160b79173d033fb0661",
+        "unidades": [
+          {
+            "unidad": "303",
+            "piso_literal": "Piso 3",
+            "modelo_descripcion_literal": "A",
+            "descripcion_modelo_literal": "A",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "44.34m² Internos · 4.03m² Terraza",
+            "rotulos_ui": {
+              "Internos": "44.34",
+              "Terraza": "4.03"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.65b169ef2d7b3_modelo-a.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H01123",
+              "IR-H01124",
+              "IR-H01125",
+              "IR-H01126",
+              "IR-H01127",
+              "IR-H01128",
+              "IR-H01130"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P035",
+            "archivo": "iris-20261116/evidencias/edificio-mood/9f59b33a7c3477dd.avif",
+            "sha256": "9f59b33a7c3477dd6135217d35fdfdc19426b01660d291f63bdc126fe6b37dd9",
+            "url_imagen": "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.65b169ef2d7b3_modelo-a.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/650?operation=Venta",
+            "modelo_grafico_literal": "A",
+            "dormitorios_grafico_estructurados": null,
+            "banos_grafico_estructurados": 2,
+            "tipo_grafico_literal": "Departamento",
+            "alcance_impreso_literal": null,
+            "unidades_enlazadas_dom": [
+              "303"
+            ],
+            "superficies_rotuladas": [],
+            "observaciones_transcritas_previas": "Plano Modelo A declara 1,5D+2B y DEPTO 201; unidad 303 asociada declara 2 Dormitorios. Se retiene divergencia sin redondear dormitorios del plano. Rótulo tipológico: Modelo A | 1,5D + 2B",
+            "ids_hechos_graficos": [
+              "IR-H02786",
+              "IR-H02787",
+              "IR-H02788"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Código A y2baños coinciden; la cantidad de dormitorios y aplicabilidad de gráfico201 a303 no están conciliadas. La lectura1,5D ya estaba transcrita, no se redondea ni es hallazgo visual nuevo.",
+      "decision_o_respaldo_faltante": "Precisar dormitorio/clasificación del ambiente adicional y versión aplicable a303, además de acreditar si el gráfico201 corresponde.",
+      "documento_concreto_minimo": "Plano/ficha vigente específica de303 o tabla oficial de equivalencia de versiones A/201/303, con tipología rotulada.",
+      "grupo_documental_sugerido": "edificio-mood-correspondencias",
+      "campo_respuesta": "",
+      "observaciones": "No convertir1,5D a2. La respuesta1D1B/2D2B general F049 no resuelve A/303.",
+      "declaracion_propietario_previa_relevante": [
+        {
+          "id_hecho": "F4-H012",
+          "campo": "asociacion_dormitorios_banos",
+          "valor": {
+            "dormitorios": 1,
+            "banos": 1
+          },
+          "alcance": "Tipología comercial general; sin asociación a modelo particular"
+        },
+        {
+          "id_hecho": "F4-H013",
+          "campo": "asociacion_dormitorios_banos",
+          "valor": {
+            "dormitorios": 2,
+            "banos": 2
+          },
+          "alcance": "Tipología comercial general; sin asociación a modelo particular"
+        }
+      ],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "CAP-A-ALCANCE",
+      "proyecto": "Capitanes",
+      "slug": "capitanes",
+      "unidad_o_modelo": "A / unidades501 y601",
+      "unidades_afectadas": [
+        "501",
+        "601"
+      ],
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo",
+        "superficie_interior",
+        "superficie_total"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM501/601: Modelo A,3D/3B,87.01m² Internos y18.45m² Terraza.",
+      "dato_fuente_b": "Plano A imprime Deptos.201 al301: interior87,01; terraza18,45; logia3,55; total109,01m².",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F028",
+        "url_ficha": "https://iris.yapo.cl/proyecto/658?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/capitanes.json",
+        "sha256_snapshot": "20bcfad12741a154cdc8c99cb2a1023ab23725390211f4b40b7035665e5241b8",
+        "unidades": [
+          {
+            "unidad": "501",
+            "piso_literal": "5",
+            "modelo_descripcion_literal": "A",
+            "descripcion_modelo_literal": "Modelo A",
+            "dormitorios_ui_literal": "3",
+            "banos_ui_literal": "3",
+            "superficies_ui_literal": "87.01m² Internos · 18.45m² Terraza",
+            "rotulos_ui": {
+              "Internos": "87.01",
+              "Terraza": "18.45"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.67f01c87b79d0_modelo-a.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02035",
+              "IR-H02036",
+              "IR-H02037",
+              "IR-H02038",
+              "IR-H02039",
+              "IR-H02040",
+              "IR-H02042"
+            ]
+          },
+          {
+            "unidad": "601",
+            "piso_literal": "6",
+            "modelo_descripcion_literal": "A",
+            "descripcion_modelo_literal": "Modelo A",
+            "dormitorios_ui_literal": "3",
+            "banos_ui_literal": "3",
+            "superficies_ui_literal": "87.01m² Internos · 18.45m² Terraza",
+            "rotulos_ui": {
+              "Internos": "87.01",
+              "Terraza": "18.45"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.67f01c87b79d0_modelo-a.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02043",
+              "IR-H02044",
+              "IR-H02045",
+              "IR-H02046",
+              "IR-H02047",
+              "IR-H02048",
+              "IR-H02050"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P099",
+            "archivo": "iris-20261116/evidencias/capitanes/45e8c7aac696a64d.avif",
+            "sha256": "45e8c7aac696a64deac6ef61f2894d40e7c6cafcaa18d1ca5c20a54767c6dea1",
+            "url_imagen": "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.67f01c87b79d0_modelo-a.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/658?operation=Venta",
+            "modelo_grafico_literal": "A",
+            "dormitorios_grafico_estructurados": 3,
+            "banos_grafico_estructurados": 3,
+            "tipo_grafico_literal": "Departamento",
+            "alcance_impreso_literal": "Deptos. 201 al 301",
+            "unidades_enlazadas_dom": [
+              "501",
+              "601"
+            ],
+            "superficies_rotuladas": [
+              {
+                "rotulo": "Superficie interior",
+                "valor_texto": "87,01",
+                "valor_m2": 87.01,
+                "unidad": "m²"
+              },
+              {
+                "rotulo": "Superficie terraza",
+                "valor_texto": "18,45",
+                "valor_m2": 18.45,
+                "unidad": "m²"
+              },
+              {
+                "rotulo": "Superficie logia",
+                "valor_texto": "3,55",
+                "valor_m2": 3.55,
+                "unidad": "m²"
+              },
+              {
+                "rotulo": "Superficie total",
+                "valor_texto": "109,01",
+                "valor_m2": 109.01,
+                "unidad": "m²"
+              }
+            ],
+            "observaciones_transcritas_previas": "",
+            "ids_hechos_graficos": [
+              "IR-H02872",
+              "IR-H02873",
+              "IR-H02874",
+              "IR-H02875",
+              "IR-H02876",
+              "IR-H02877",
+              "IR-H02878",
+              "IR-H02879"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "F049 confirma unidad501 y3D/3B. El código A y la lectura del plano están documentados, sin demostrar que su alcance impreso incluya501/601.",
+      "decision_o_respaldo_faltante": "Precisar aplicabilidad del plano A a501/601 y sus métricas exactas, sin equiparar Internos a Interior por coincidencia numérica.",
+      "documento_concreto_minimo": "Planos vigentes de501/601 o certificado de correspondencia del plano A con listado de unidades y cuadro de superficies.",
+      "grupo_documental_sugerido": "capitanes-correspondencias",
+      "campo_respuesta": "",
+      "observaciones": "Conservar literal201 al301, sin enumerar ni ampliar el rango. Logia separada; no sumar para inventar áreas.",
+      "declaracion_propietario_previa_relevante": [
+        {
+          "id_hecho": "F4-H027",
+          "campo": "asociacion_dormitorios_banos",
+          "valor": {
+            "dormitorios": 3,
+            "banos": 3
+          },
+          "alcance": "Unidad501, sin asignar código de modelo"
+        },
+        {
+          "id_hecho": "F4-H028",
+          "campo": "unidad",
+          "valor": "501",
+          "alcance": "Literal propietario: Unidad501. No transformar en código modelo501"
+        }
+      ],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "BOLD-S1-TIPOLOGIA",
+      "proyecto": "Bold",
+      "slug": "edificio-bold",
+      "unidad_o_modelo": "S1 / unidad312",
+      "unidades_afectadas": [
+        "312"
+      ],
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo",
+        "dormitorios"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "Descripción DOM: Tipo Estudio S1. Baños1; campo numérico dormitorios no publicado.",
+      "dato_fuente_b": "Plano S1:1D/1B.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F029",
+        "url_ficha": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/edificio-bold.json",
+        "sha256_snapshot": "732bd80f9dfcca90a13a5049772d7cf523282ae21509ad888d0dae824fd66d1c",
+        "unidades": [
+          {
+            "unidad": "312",
+            "piso_literal": "3",
+            "modelo_descripcion_literal": "S1",
+            "descripcion_modelo_literal": "Tipo Estudio S1",
+            "dormitorios_ui_literal": "",
+            "banos_ui_literal": "1",
+            "superficies_ui_literal": "27.04m² Internos · 3.68m² Terraza",
+            "rotulos_ui": {
+              "Internos": "27.04",
+              "Terraza": "3.68"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.67f02d06da346_modelo-s1.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02067",
+              "IR-H02068",
+              "IR-H02069",
+              "IR-H02070",
+              "IR-H02071",
+              "IR-H02073"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P101",
+            "archivo": "iris-20261116/evidencias/edificio-bold/704b24bff848ce48.avif",
+            "sha256": "704b24bff848ce48e51f62203262eb5294e1de3a87bec22129ba6ae34f208ea4",
+            "url_imagen": "https://cdn2.infocasas.com.uy/web/th.outside700x700.67f02d06da346_modelo-s1.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+            "modelo_grafico_literal": "S1",
+            "dormitorios_grafico_estructurados": 1,
+            "banos_grafico_estructurados": 1,
+            "tipo_grafico_literal": null,
+            "alcance_impreso_literal": null,
+            "unidades_enlazadas_dom": [
+              "312"
+            ],
+            "superficies_rotuladas": [],
+            "observaciones_transcritas_previas": "",
+            "ids_hechos_graficos": [
+              "IR-H02888",
+              "IR-H02889",
+              "IR-H02890"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Baños coinciden en1; fase3 retiró esa falsa etiqueta numérica. F049 ofrece categoría Estudio, sin enlazarla expresamente con312/S1.",
+      "decision_o_respaldo_faltante": "Determinar la tipología técnica de312/S1: estudio o1D, con correspondencia del plano.",
+      "documento_concreto_minimo": "Plano/ficha tipológica vigente de312/S1 o aclaración técnica de Leben que identifique el recinto y el código.",
+      "grupo_documental_sugerido": "edificio-bold-tipologias-superficies",
+      "campo_respuesta": "",
+      "observaciones": "No convertir Estudio a0 o1 dormitorio por inferencia. No reabrir discrepancia de baños.",
+      "declaracion_propietario_previa_relevante": [],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "BOLD-F-SUPERFICIES",
+      "proyecto": "Bold",
+      "slug": "edificio-bold",
+      "unidad_o_modelo": "F / unidades207,307,508,608",
+      "unidades_afectadas": [
+        "207",
+        "307",
+        "508",
+        "608"
+      ],
+      "campos_afectados": [
+        "superficie_interior",
+        "superficie_terraza",
+        "superficie_total"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM207/307/508:61.67m² Internos y3.71m² Terraza. DOM608:63.44m² Internos y3.71m² Terraza.",
+      "dato_fuente_b": "IR-P108 enlazado a608: interior62,40; terraza3,12; total65,52m². Alcance impreso:Deptos.207 al407,508 y608. P106(207/307) yP107(508) no imprimen esas áreas.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F029",
+        "url_ficha": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/edificio-bold.json",
+        "sha256_snapshot": "732bd80f9dfcca90a13a5049772d7cf523282ae21509ad888d0dae824fd66d1c",
+        "unidades": [
+          {
+            "unidad": "207",
+            "piso_literal": "2",
+            "modelo_descripcion_literal": "F",
+            "descripcion_modelo_literal": "Modelo F",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "61.67m² Internos · 3.71m² Terraza",
+            "rotulos_ui": {
+              "Internos": "61.67",
+              "Terraza": "3.71"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.67f02d06dd26d_modelo-f.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02154",
+              "IR-H02155",
+              "IR-H02156",
+              "IR-H02157",
+              "IR-H02158",
+              "IR-H02159",
+              "IR-H02161"
+            ]
+          },
+          {
+            "unidad": "307",
+            "piso_literal": "3",
+            "modelo_descripcion_literal": "F",
+            "descripcion_modelo_literal": "Modelo F",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "61.67m² Internos · 3.71m² Terraza",
+            "rotulos_ui": {
+              "Internos": "61.67",
+              "Terraza": "3.71"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.67f02d06dd26d_modelo-f.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02162",
+              "IR-H02163",
+              "IR-H02164",
+              "IR-H02165",
+              "IR-H02166",
+              "IR-H02167",
+              "IR-H02169"
+            ]
+          },
+          {
+            "unidad": "508",
+            "piso_literal": "5",
+            "modelo_descripcion_literal": "F",
+            "descripcion_modelo_literal": "Modelo F",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "61.67m² Internos · 3.71m² Terraza",
+            "rotulos_ui": {
+              "Internos": "61.67",
+              "Terraza": "3.71"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.65b43bcce9f51_modelo-f.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02170",
+              "IR-H02171",
+              "IR-H02172",
+              "IR-H02173",
+              "IR-H02174",
+              "IR-H02175",
+              "IR-H02177"
+            ]
+          },
+          {
+            "unidad": "608",
+            "piso_literal": "6",
+            "modelo_descripcion_literal": "F",
+            "descripcion_modelo_literal": "F",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "63.44m² Internos · 3.71m² Terraza",
+            "rotulos_ui": {
+              "Internos": "63.44",
+              "Terraza": "3.71"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.68f64a59f10c9_leben-608.png"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02178",
+              "IR-H02179",
+              "IR-H02180",
+              "IR-H02181",
+              "IR-H02182",
+              "IR-H02183",
+              "IR-H02185"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P106",
+            "archivo": "iris-20261116/evidencias/edificio-bold/75abc62a3dd6fbf5.avif",
+            "sha256": "75abc62a3dd6fbf53eb976868c80dbcf08e1234ad31a586ca4ad65dacfd3bdd0",
+            "url_imagen": "https://cdn2.infocasas.com.uy/web/th.outside700x700.67f02d06dd26d_modelo-f.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+            "modelo_grafico_literal": "F",
+            "dormitorios_grafico_estructurados": 2,
+            "banos_grafico_estructurados": 2,
+            "tipo_grafico_literal": null,
+            "alcance_impreso_literal": null,
+            "unidades_enlazadas_dom": [
+              "207",
+              "307"
+            ],
+            "superficies_rotuladas": [],
+            "observaciones_transcritas_previas": "",
+            "ids_hechos_graficos": [
+              "IR-H02903",
+              "IR-H02904",
+              "IR-H02905"
+            ],
+            "nueva_lectura_visual": false
+          },
+          {
+            "id_plano": "IR-P107",
+            "archivo": "iris-20261116/evidencias/edificio-bold/6d5f09c66c9141bb.avif",
+            "sha256": "6d5f09c66c9141bba82bc3b7e357816e9d87ae9b716ca8b88300bb9794be7fe3",
+            "url_imagen": "https://cdn2.infocasas.com.uy/web/th.outside700x700.65b43bcce9f51_modelo-f.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+            "modelo_grafico_literal": "F",
+            "dormitorios_grafico_estructurados": 2,
+            "banos_grafico_estructurados": 2,
+            "tipo_grafico_literal": null,
+            "alcance_impreso_literal": null,
+            "unidades_enlazadas_dom": [
+              "508"
+            ],
+            "superficies_rotuladas": [],
+            "observaciones_transcritas_previas": "",
+            "ids_hechos_graficos": [
+              "IR-H02906",
+              "IR-H02907",
+              "IR-H02908"
+            ],
+            "nueva_lectura_visual": false
+          },
+          {
+            "id_plano": "IR-P108",
+            "archivo": "iris-20261116/evidencias/edificio-bold/a56963c57b34229c.avif",
+            "sha256": "a56963c57b34229c0aab282b012e6f1203bcac83d2e63bf04b93072881a3f106",
+            "url_imagen": "https://cdn2.infocasas.com.uy/web/th.outside700x700.68f64a59f10c9_leben-608.png",
+            "url_ficha": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+            "modelo_grafico_literal": "F",
+            "dormitorios_grafico_estructurados": 2,
+            "banos_grafico_estructurados": 2,
+            "tipo_grafico_literal": "Departamento",
+            "alcance_impreso_literal": "Deptos. 207 al 407, 508 y 608",
+            "unidades_enlazadas_dom": [
+              "608"
+            ],
+            "superficies_rotuladas": [
+              {
+                "rotulo": "Superficie interior",
+                "valor_texto": "62,40",
+                "valor_m2": 62.4,
+                "unidad": "m²"
+              },
+              {
+                "rotulo": "Superficie terraza",
+                "valor_texto": "3,12",
+                "valor_m2": 3.12,
+                "unidad": "m²"
+              },
+              {
+                "rotulo": "Superficie total",
+                "valor_texto": "65,52",
+                "valor_m2": 65.52,
+                "unidad": "m²"
+              }
+            ],
+            "observaciones_transcritas_previas": "",
+            "ids_hechos_graficos": [
+              "IR-H02909",
+              "IR-H02910",
+              "IR-H02911",
+              "IR-H02912",
+              "IR-H02913",
+              "IR-H02914",
+              "IR-H02915"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Se conocen los valores literales y tres recursos distintos. La terraza3.71UI difiere de3.12enP108. Internos/Interior no se comparan como si fuesen la misma métrica.",
+      "decision_o_respaldo_faltante": "Precisar qué versión de plano/cuadro de superficies rige cada una de las cuatro unidades y qué métrica denomina Internos en UI.",
+      "documento_concreto_minimo": "Cuadro oficial de superficies por unidad/versiones F207,307,508,608 más plano vigente de cada versión o certificado de aplicabilidad.",
+      "grupo_documental_sugerido": "edificio-bold-tipologias-superficies",
+      "campo_respuesta": "",
+      "observaciones": "P108 no es el recurso DOM de las cuatro unidades; no transferir automáticamente sus medidas a207/307/508 ni expandir207al407 como lista inferida.",
+      "declaracion_propietario_previa_relevante": [],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "ARG-C-C1",
+      "proyecto": "Argomedo",
+      "slug": "edificio-argomedo",
+      "unidad_o_modelo": "C1(UI) / C(gráfico), unidad915",
+      "unidades_afectadas": [
+        "915"
+      ],
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM915: Modelo C1,2D/2B.",
+      "dato_fuente_b": "Plano adjunto: Modelo C,2D/2B.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F030",
+        "url_ficha": "https://iris.yapo.cl/proyecto/647?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/edificio-argomedo.json",
+        "sha256_snapshot": "73309c59cbe64bf7b97ffc65361e92e883cc339b091b460091e05fbb2e297bb8",
+        "unidades": [
+          {
+            "unidad": "915",
+            "piso_literal": "9",
+            "modelo_descripcion_literal": "C1",
+            "descripcion_modelo_literal": "C1 ",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "45.36m² Internos · 3.49m² Terraza",
+            "rotulos_ui": {
+              "Internos": "45.36",
+              "Terraza": "3.49"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.65b7cb15bb751_modelo-c.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02193",
+              "IR-H02194",
+              "IR-H02195",
+              "IR-H02196",
+              "IR-H02197",
+              "IR-H02198",
+              "IR-H02200"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P109",
+            "archivo": "iris-20261116/evidencias/edificio-argomedo/62f6d34019f7f0c6.avif",
+            "sha256": "62f6d34019f7f0c633f46c4d362e0afca3b91371723916b031c569e89c51e983",
+            "url_imagen": "https://cdn2.infocasas.com.uy/web/th.outside700x700.65b7cb15bb751_modelo-c.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/647?operation=Venta",
+            "modelo_grafico_literal": "C",
+            "dormitorios_grafico_estructurados": 2,
+            "banos_grafico_estructurados": 2,
+            "tipo_grafico_literal": "Departamento",
+            "alcance_impreso_literal": null,
+            "unidades_enlazadas_dom": [
+              "915"
+            ],
+            "superficies_rotuladas": [],
+            "observaciones_transcritas_previas": "",
+            "ids_hechos_graficos": [
+              "IR-H02916",
+              "IR-H02917",
+              "IR-H02918",
+              "IR-H02919"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Dormitorios y baños coinciden2D/2B y F049 confirma esa categoría general. No existe equivalencia C=C1 documentada.",
+      "decision_o_respaldo_faltante": "Acreditar el código/versión aplicable a915 y si C yC1 son equivalentes o planos diferentes.",
+      "documento_concreto_minimo": "Tabla oficial de equivalencia C/C1 con unidad915 o plano corregido de915 identificado por Leben.",
+      "grupo_documental_sugerido": "edificio-argomedo-correspondencias",
+      "campo_respuesta": "",
+      "observaciones": "La dirección queda fuera de preguntas. No re-pedir2D2B ni el precio ya informado.",
+      "declaracion_propietario_previa_relevante": [
+        {
+          "id_hecho": "F4-H039",
+          "campo": "asociacion_dormitorios_banos",
+          "valor": {
+            "dormitorios": 2,
+            "banos": 2
+          },
+          "alcance": "Tipología comercial general; sin asociación a modelo particular"
+        }
+      ],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "INDI-D-PLANO-A2",
+      "proyecto": "Indi",
+      "slug": "edificio-indi",
+      "unidad_o_modelo": "D(UI) / A2(gráfico), unidad607",
+      "unidades_afectadas": [
+        "607"
+      ],
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo",
+        "dormitorios"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM607: Modelo D,2D/1B.",
+      "dato_fuente_b": "Gráfico adjunto: Modelo A2,1D/1B; el nombre del archivo dice modelo-d.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F031",
+        "url_ficha": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/edificio-indi.json",
+        "sha256_snapshot": "048c43eb981f4f0aa8306048668fd075939940847922b55cf5148bd350289670",
+        "unidades": [
+          {
+            "unidad": "607",
+            "piso_literal": "6",
+            "modelo_descripcion_literal": "D",
+            "descripcion_modelo_literal": "Modelo D",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "1",
+            "superficies_ui_literal": "41.19m² Internos · 1.79m² Terraza",
+            "rotulos_ui": {
+              "Internos": "41.19",
+              "Terraza": "1.79"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.65aed74d76dc3_modelo-d.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02257",
+              "IR-H02258",
+              "IR-H02259",
+              "IR-H02260",
+              "IR-H02261",
+              "IR-H02262",
+              "IR-H02264"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P114",
+            "archivo": "iris-20261116/evidencias/edificio-indi/ca67aa6cfbab948e.avif",
+            "sha256": "ca67aa6cfbab948ead421680a9d4b2304d3ae38674a1d159d6d387121163e6d9",
+            "url_imagen": "https://cdn2.infocasas.com.uy/web/th.outside700x700.65aed74d76dc3_modelo-d.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+            "modelo_grafico_literal": "A2",
+            "dormitorios_grafico_estructurados": 1,
+            "banos_grafico_estructurados": 1,
+            "tipo_grafico_literal": "Departamento",
+            "alcance_impreso_literal": null,
+            "unidades_enlazadas_dom": [
+              "607"
+            ],
+            "superficies_rotuladas": [],
+            "observaciones_transcritas_previas": "",
+            "ids_hechos_graficos": [
+              "IR-H02936",
+              "IR-H02937",
+              "IR-H02938",
+              "IR-H02939"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Baños coinciden1/1. Están documentados código D y2D en UI frente a A2 y1D del gráfico. El nombre del archivo no acredita el código impreso.",
+      "decision_o_respaldo_faltante": "Precisar modelo y cantidad de dormitorios de607; obtener recurso correcto o equivalencia oficial sin elegir por el archivo.",
+      "documento_concreto_minimo": "Plano/ficha de607 y correspondencia oficial D/A2, incluyendo tipología y revisión de versión.",
+      "grupo_documental_sugerido": "edificio-indi-equivalencias",
+      "campo_respuesta": "",
+      "observaciones": "No reabrir discrepancia numérica de baños ni direcciones. Las categorías comerciales generales F049 no resuelven esta asociación.",
+      "declaracion_propietario_previa_relevante": [],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "INDI-A4-PLANO-C1",
+      "proyecto": "Indi",
+      "slug": "edificio-indi",
+      "unidad_o_modelo": "A4(UI) / C1(gráfico), unidad411",
+      "unidades_afectadas": [
+        "411"
+      ],
+      "campos_afectados": [
+        "codigo_modelo",
+        "nombre_modelo"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM411: Modelo A4,2D/2B.",
+      "dato_fuente_b": "Plano adjunto: Modelo C1,2D/2B.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F031",
+        "url_ficha": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/edificio-indi.json",
+        "sha256_snapshot": "048c43eb981f4f0aa8306048668fd075939940847922b55cf5148bd350289670",
+        "unidades": [
+          {
+            "unidad": "411",
+            "piso_literal": "4",
+            "modelo_descripcion_literal": "A4",
+            "descripcion_modelo_literal": "Modelo A4",
+            "dormitorios_ui_literal": "2",
+            "banos_ui_literal": "2",
+            "superficies_ui_literal": "49.53m² Internos · 2.68m² Terraza",
+            "rotulos_ui": {
+              "Internos": "49.53",
+              "Terraza": "2.68"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/web/th.outside700x700.65aed74d6f56e_modelo-c1.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02281",
+              "IR-H02282",
+              "IR-H02283",
+              "IR-H02284",
+              "IR-H02285",
+              "IR-H02286",
+              "IR-H02288"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P116",
+            "archivo": "iris-20261116/evidencias/edificio-indi/fd9b36c1d1d9bda9.avif",
+            "sha256": "fd9b36c1d1d9bda92455b6ff31c4bce6f07a3872d230a9219155c0cdcb786cfe",
+            "url_imagen": "https://cdn2.infocasas.com.uy/web/th.outside700x700.65aed74d6f56e_modelo-c1.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+            "modelo_grafico_literal": "C1",
+            "dormitorios_grafico_estructurados": 2,
+            "banos_grafico_estructurados": 2,
+            "tipo_grafico_literal": "Departamento",
+            "alcance_impreso_literal": null,
+            "unidades_enlazadas_dom": [
+              "411",
+              "1104",
+              "805"
+            ],
+            "superficies_rotuladas": [],
+            "observaciones_transcritas_previas": "",
+            "ids_hechos_graficos": [
+              "IR-H02944",
+              "IR-H02945",
+              "IR-H02946",
+              "IR-H02947"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Dormitorios y baños coinciden2D/2B. Falta correspondencia del código; IR-P116 también se enlaza a otras unidades, sin que eso confirme equivalencia.",
+      "decision_o_respaldo_faltante": "Precisar el código aplicable a411 y la relación A4/C1.",
+      "documento_concreto_minimo": "Tabla de correspondencia oficial A4/C1 con unidad411 o plano vigente corregido para411.",
+      "grupo_documental_sugerido": "edificio-indi-equivalencias",
+      "campo_respuesta": "",
+      "observaciones": "No trasladar esta discrepancia a1104/805 ni a todos los modelos C1 por compartir URL.",
+      "declaracion_propietario_previa_relevante": [],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "IR-C020",
+      "proyecto": "INN Puerto Chico",
+      "slug": "inn-puerto-chico",
+      "unidad_o_modelo": "S / unidad605, TorreA en gráfico",
+      "unidades_afectadas": [
+        "605"
+      ],
+      "campos_afectados": [
+        "banos"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM605: Modelo S,3D/3B.",
+      "dato_fuente_b": "Plano S:3D/2B; alcance TorreA-Depto605,705.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F033",
+        "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/inn-puerto-chico.json",
+        "sha256_snapshot": "ddb77e02e7a72f27f518e039168ab044ac159a31db1ad31b66bb061ddf91bb73",
+        "unidades": [
+          {
+            "unidad": "605",
+            "piso_literal": "6",
+            "modelo_descripcion_literal": "S",
+            "descripcion_modelo_literal": "Modelo S",
+            "dormitorios_ui_literal": "3",
+            "banos_ui_literal": "3",
+            "superficies_ui_literal": "129.64m² Internos · 14.52m² Terraza",
+            "rotulos_ui": {
+              "Internos": "129.64",
+              "Terraza": "14.52"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6823bff801c89_dpto-605-705.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02572",
+              "IR-H02573",
+              "IR-H02574",
+              "IR-H02575",
+              "IR-H02576",
+              "IR-H02577",
+              "IR-H02579"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P138",
+            "archivo": "iris-20261116/evidencias/inn-puerto-chico/b8aa7b9c5139aa01.avif",
+            "sha256": "b8aa7b9c5139aa012854097b32177fafb1f3605350cbbabcd65a6e2a5648bbdb",
+            "url_imagen": "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6823bff801c89_dpto-605-705.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+            "modelo_grafico_literal": "S",
+            "dormitorios_grafico_estructurados": 3,
+            "banos_grafico_estructurados": 2,
+            "tipo_grafico_literal": "Departamento dúplex + sala de estar",
+            "alcance_impreso_literal": "Torre A - Depto 605, 705",
+            "unidades_enlazadas_dom": [
+              "605"
+            ],
+            "superficies_rotuladas": [
+              {
+                "rotulo": "Superficie Interior",
+                "valor_m2": 129.64
+              },
+              {
+                "rotulo": "Superficie Terraza",
+                "valor_m2": 14.52
+              },
+              {
+                "rotulo": "Superficie Total",
+                "valor_m2": 144.16
+              }
+            ],
+            "observaciones_transcritas_previas": "Lectura visual del plano exportado; sin sumas ni equivalencias inferidas",
+            "ids_hechos_graficos": [
+              "IR-H03123",
+              "IR-H03124",
+              "IR-H03125",
+              "IR-H03126",
+              "IR-H03127",
+              "IR-H03128",
+              "IR-H03129",
+              "IR-H03130",
+              "IR-H03131"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Código S y3D coinciden; el gráfico identifica605 en su alcance. No está resuelta la diferencia de baños.",
+      "decision_o_respaldo_faltante": "Determinar número de baños y versión vigente de605, sin contar recintos o niveles por geometría.",
+      "documento_concreto_minimo": "Plano vigente S605 con tipología y baños rotulados o ficha técnica/certificación de Leben identificando la unidad.",
+      "grupo_documental_sugerido": "inn-tipologias-s-r-q",
+      "campo_respuesta": "",
+      "observaciones": "La categoría comercial general y su precio no resuelven baños deS/605.",
+      "declaracion_propietario_previa_relevante": [],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "IR-C021",
+      "proyecto": "INN Puerto Chico",
+      "slug": "inn-puerto-chico",
+      "unidad_o_modelo": "R / unidad604, TorreA en gráfico",
+      "unidades_afectadas": [
+        "604"
+      ],
+      "campos_afectados": [
+        "dormitorios"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM604: Modelo R,4D/4B.",
+      "dato_fuente_b": "Plano R:5D/4B; alcance TorreA-Depto604,704.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F033",
+        "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/inn-puerto-chico.json",
+        "sha256_snapshot": "ddb77e02e7a72f27f518e039168ab044ac159a31db1ad31b66bb061ddf91bb73",
+        "unidades": [
+          {
+            "unidad": "604",
+            "piso_literal": "6",
+            "modelo_descripcion_literal": "R",
+            "descripcion_modelo_literal": "Modelo R",
+            "dormitorios_ui_literal": "4",
+            "banos_ui_literal": "4",
+            "superficies_ui_literal": "132.27m² Internos · 20.03m² Terraza",
+            "rotulos_ui": {
+              "Internos": "132.27",
+              "Terraza": "20.03"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6823bff8015b0_dpto-604-704.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02596",
+              "IR-H02597",
+              "IR-H02598",
+              "IR-H02599",
+              "IR-H02600",
+              "IR-H02601",
+              "IR-H02603"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P139",
+            "archivo": "iris-20261116/evidencias/inn-puerto-chico/8dd206108a051eab.avif",
+            "sha256": "8dd206108a051eab8f519ee93a90796163d7781ddc514712af6b27f441e0e071",
+            "url_imagen": "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6823bff8015b0_dpto-604-704.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+            "modelo_grafico_literal": "R",
+            "dormitorios_grafico_estructurados": 5,
+            "banos_grafico_estructurados": 4,
+            "tipo_grafico_literal": "Departamento dúplex",
+            "alcance_impreso_literal": "Torre A - Depto 604, 704",
+            "unidades_enlazadas_dom": [
+              "604"
+            ],
+            "superficies_rotuladas": [
+              {
+                "rotulo": "Superficie Interior",
+                "valor_m2": 132.27
+              },
+              {
+                "rotulo": "Superficie Terraza",
+                "valor_m2": 20.03
+              },
+              {
+                "rotulo": "Superficie Total",
+                "valor_m2": 152.3
+              }
+            ],
+            "observaciones_transcritas_previas": "Lectura visual del plano exportado; sin sumas ni equivalencias inferidas",
+            "ids_hechos_graficos": [
+              "IR-H03132",
+              "IR-H03133",
+              "IR-H03134",
+              "IR-H03135",
+              "IR-H03136",
+              "IR-H03137",
+              "IR-H03138",
+              "IR-H03139",
+              "IR-H03140"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Código R y4B coinciden; el gráfico incluye604. La cantidad o clasificación de dormitorios no está conciliada.",
+      "decision_o_respaldo_faltante": "Precisar dormitorios y criterio de clasificación de604/R con respaldo específico; no presumir la causa4/5.",
+      "documento_concreto_minimo": "Plano/ficha vigente R604 con tipología y definición de recintos, o aclaración técnica firmada por Leben.",
+      "grupo_documental_sugerido": "inn-tipologias-s-r-q",
+      "campo_respuesta": "",
+      "observaciones": "No interpretar por cuenta propia que una diferencia corresponde a pieza de servicio u otro recinto. El precio4D general F049 no selecciona una versión.",
+      "declaracion_propietario_previa_relevante": [],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "IR-C022",
+      "proyecto": "INN Puerto Chico",
+      "slug": "inn-puerto-chico",
+      "unidad_o_modelo": "Q / unidad603, TorreA en gráfico",
+      "unidades_afectadas": [
+        "603"
+      ],
+      "campos_afectados": [
+        "dormitorios"
+      ],
+      "clasificacion_intervencion": "RESPALDO_TECNICO",
+      "responsable_de_obtener_respaldo": "Propietario puede canalizar la solicitud a Leben/equipo técnico; no debe elegir por semejanza o adivinar cantidades.",
+      "dato_fuente_a": "DOM603: Modelo Q,4D/4B.",
+      "dato_fuente_b": "Plano Q:5D/4B; alcance TorreA-Depto603,703.",
+      "fuente_a": {
+        "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+        "id_fuente": "F033",
+        "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+        "fecha_consulta": "2026-11-16",
+        "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+        "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+        "archivo_snapshot": "iris-20261116/proyectos/inn-puerto-chico.json",
+        "sha256_snapshot": "ddb77e02e7a72f27f518e039168ab044ac159a31db1ad31b66bb061ddf91bb73",
+        "unidades": [
+          {
+            "unidad": "603",
+            "piso_literal": "6",
+            "modelo_descripcion_literal": "Q",
+            "descripcion_modelo_literal": "Modelo Q",
+            "dormitorios_ui_literal": "4",
+            "banos_ui_literal": "4",
+            "superficies_ui_literal": "138.6m² Internos · 21.14m² Terraza",
+            "rotulos_ui": {
+              "Internos": "138.6",
+              "Terraza": "21.14"
+            },
+            "urls_planos_vinculados": [
+              "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6823bff803599_dpto-603-703.jpg"
+            ],
+            "ids_hechos_tecnicos": [
+              "IR-H02604",
+              "IR-H02605",
+              "IR-H02606",
+              "IR-H02607",
+              "IR-H02608",
+              "IR-H02609",
+              "IR-H02611"
+            ]
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Gráficos originales ya inspeccionados; solo lectura de su transcripción y verificación SHA en fase5",
+        "planos": [
+          {
+            "id_plano": "IR-P140",
+            "archivo": "iris-20261116/evidencias/inn-puerto-chico/099c2eabec9e1854.avif",
+            "sha256": "099c2eabec9e1854c0ab0b7a676dfb374125110d27b38b7481c3bbffa0fc1a9e",
+            "url_imagen": "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6823bff803599_dpto-603-703.jpg",
+            "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+            "modelo_grafico_literal": "Q",
+            "dormitorios_grafico_estructurados": 5,
+            "banos_grafico_estructurados": 4,
+            "tipo_grafico_literal": "Departamento dúplex",
+            "alcance_impreso_literal": "Torre A - Depto 603, 703",
+            "unidades_enlazadas_dom": [
+              "603"
+            ],
+            "superficies_rotuladas": [
+              {
+                "rotulo": "Superficie Interior",
+                "valor_m2": 138.6
+              },
+              {
+                "rotulo": "Superficie Terraza",
+                "valor_m2": 21.14
+              },
+              {
+                "rotulo": "Superficie Total",
+                "valor_m2": 159.74
+              }
+            ],
+            "observaciones_transcritas_previas": "Lectura visual del plano exportado; sin sumas ni equivalencias inferidas",
+            "ids_hechos_graficos": [
+              "IR-H03141",
+              "IR-H03142",
+              "IR-H03143",
+              "IR-H03144",
+              "IR-H03145",
+              "IR-H03146",
+              "IR-H03147",
+              "IR-H03148",
+              "IR-H03149"
+            ],
+            "nueva_lectura_visual": false
+          }
+        ]
+      },
+      "informacion_confirmada": "Código Q y4B coinciden; el gráfico incluye603. La cantidad o clasificación de dormitorios sigue abierta.",
+      "decision_o_respaldo_faltante": "Precisar dormitorios y criterio de clasificación de603/Q con respaldo específico.",
+      "documento_concreto_minimo": "Plano/ficha vigente Q603 con tipología y definición de recintos, o aclaración técnica firmada por Leben.",
+      "grupo_documental_sugerido": "inn-tipologias-s-r-q",
+      "campo_respuesta": "",
+      "observaciones": "No inferir la causa4/5 ni usar la categoría comercial4D general para corregir el gráfico.",
+      "declaracion_propietario_previa_relevante": [],
+      "estado": "Abierto; sin nueva evidencia suficiente",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios ya aceptados",
+        "Direcciones",
+        "Brochures completos existentes",
+        "Nueva exportación de imágenes válidas"
+      ]
+    },
+    {
+      "id_conflicto": "D-03",
+      "proyecto": "INN Puerto Chico",
+      "slug": "inn-puerto-chico",
+      "unidad_o_modelo": "Modelos/versiones por precisar; solicitud L-047",
+      "unidades_afectadas": [],
+      "campos_afectados": [
+        "interior_cubiertas"
+      ],
+      "clasificacion_intervencion": "DECISION_ESPECIFICACION_VIGENTE",
+      "responsable_de_obtener_respaldo": "Propietario puede declarar la especificación comercial vigente si conoce su alcance. Si no lo conoce, solicitar memoria de terminaciones o aclaración de Leben; no elegir material por semejanza.",
+      "dato_fuente_a": "Brochure F005 p.4: Cuarzo en cocina; antecedente directo F021 línea87: Cuarzo, sin fecha/alcance de modelos.",
+      "dato_fuente_b": "F014, verificación oficial archivada09/10/2026: Cubierta de cocina ultracompacto con terminación travertino. No hay gráfico de material que dirima este caso.",
+      "fuente_a": {
+        "tipo": "Brochure y declaración directa previa",
+        "fuentes": [
+          {
+            "id_fuente": "F005",
+            "archivo": "/Users/luissandoval/Downloads/Leben/Leben - Edif INN Puerto Chico.pdf",
+            "pagina": 4,
+            "sha256_documental_previo": "fc073388049d38820759f4a65fe3cca851066ad2a532530b6edfc5a1f4d37ad6",
+            "id_evidencia": "E0392",
+            "valor": "Cuarzo en cocina"
+          },
+          {
+            "id_fuente": "F021",
+            "archivo": "/Users/luissandoval/.codex/attachments/6d8ca7b5-9b4e-4024-8b32-9da9c59024db/Texto pegado.txt",
+            "linea": 87,
+            "sha256_documental_previo": "04f385226da49ed1c6256568ede1995364c049608a6b8b299ad0db6ca95aa1c7",
+            "id_evidencia": "E0679",
+            "valor": "Cuarzo",
+            "fecha": "s/f"
+          }
+        ]
+      },
+      "fuente_b": {
+        "tipo": "Verificación oficial archivada; no dato gráfico de área",
+        "id_fuente": "F014",
+        "archivo_origen_registrado": "/Users/luissandoval/Documents/sollahms-web/data/fichas-proyectos.json",
+        "sha256_archivo_origen_registrado": "65d7bd42907f627ffe8cde519c5bb76a9b93db64b774401c9a7042d4551034e3",
+        "archivo_snapshot_consultable": "evidencias/entrada/fichas-leben.json",
+        "sha256_snapshot_consultable": "6d83d9f823cea457f56abb2d6a90e42a133723b798b11c89e9c53229175b9f52",
+        "id_evidencia": "E0400",
+        "valor": "Cubierta de cocina ultracompacto con terminación travertino",
+        "fecha": "2026-10-09"
+      },
+      "informacion_confirmada": "Las dos especificaciones están documentadas; la declaración directa antigua afirma cuarzo, pero sin demostrar a qué modelos/versiones aplica frente a la verificación archivada. F049 no aporta material de cubierta.",
+      "decision_o_respaldo_faltante": "Indicar material comercial vigente y su alcance por modelo/versión; si coexisten ambas especificaciones, delimitar cada una. Si no puede precisarlo con respaldo, pedir memoria de terminaciones, sin seleccionar por defecto.",
+      "documento_concreto_minimo": "Declaración expresa precisa del propietario con material y alcance, o memoria de terminaciones vigente de Leben por modelo/versión.",
+      "grupo_documental_sugerido": "inn-terminaciones",
+      "campo_respuesta": "",
+      "observaciones": "D-03 es independiente de F3-C001. No re-pedir precios, direcciones o brochure completo. Se acepta una declaración precisa del propietario como fuente, sin exigir conciliación Iris.",
+      "declaracion_propietario_previa_relevante": [
+        {
+          "id_fuente": "F021",
+          "id_evidencia": "E0679",
+          "valor": "Cuarzo",
+          "alcance": "No precisado"
+        }
+      ],
+      "estado": "Abierto; sin nueva declaración de material/alcance",
+      "nuevo_cierre_completo": false,
+      "conflicto_resuelto": false,
+      "no_pedir": [
+        "Precios aceptados",
+        "Direcciones",
+        "Brochure completo ya examinado"
+      ]
+    }
+  ],
+  "limitacion_adicional": {
+    "id_conflicto": "F3-C001",
+    "tipo_registro": "LIMITACION_ADICIONAL_NO_ES_UNO_DE_LOS12_CONFLICTOS",
+    "proyecto": "INN Puerto Chico",
+    "slug": "inn-puerto-chico",
+    "unidad_o_modelo": "F / 406,806,906",
+    "unidades_afectadas": [
+      "406",
+      "806",
+      "906"
+    ],
+    "campos_afectados": [
+      "etapa_modelo",
+      "superficie_interior",
+      "superficie_total",
+      "superficie_terraza",
+      "superficie_jardin"
+    ],
+    "clasificacion_intervencion": "RESPALDO_TECNICO",
+    "dato_fuente_a": "La UI enlaza el mismo recurso a406/806/906; cada tarjeta declara88.8m² Internos y26.36m² Terraza.",
+    "dato_fuente_b": "IR-P125 imprime TorreB-Depto406: Interior88.8, Terraza26.36, Patio20.7, Total135.86m². No imprime806/906.",
+    "fuente_a": {
+      "tipo": "Iris: transcripción de tarjetas DOM del corte anterior",
+      "id_fuente": "F033",
+      "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+      "fecha_consulta": "2026-11-16",
+      "archivo_tabla": "iris-20261116/UNIDADES-IRIS.csv",
+      "sha256_tabla": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254",
+      "archivo_snapshot": "iris-20261116/proyectos/inn-puerto-chico.json",
+      "sha256_snapshot": "ddb77e02e7a72f27f518e039168ab044ac159a31db1ad31b66bb061ddf91bb73",
+      "unidades": [
+        {
+          "unidad": "406",
+          "piso_literal": "4",
+          "modelo_descripcion_literal": "F",
+          "descripcion_modelo_literal": "Modelo F con patio",
+          "dormitorios_ui_literal": "2",
+          "banos_ui_literal": "2",
+          "superficies_ui_literal": "88.8m² Internos · 26.36m² Terraza",
+          "rotulos_ui": {
+            "Internos": "88.8",
+            "Terraza": "26.36"
+          },
+          "urls_planos_vinculados": [
+            "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6827849906ed3_modelo-f.jpg"
+          ],
+          "ids_hechos_tecnicos": [
+            "IR-H02430",
+            "IR-H02431",
+            "IR-H02432",
+            "IR-H02433",
+            "IR-H02434",
+            "IR-H02435",
+            "IR-H02437"
+          ]
+        },
+        {
+          "unidad": "906",
+          "piso_literal": "9",
+          "modelo_descripcion_literal": "F",
+          "descripcion_modelo_literal": "Modelo F",
+          "dormitorios_ui_literal": "2",
+          "banos_ui_literal": "2",
+          "superficies_ui_literal": "88.8m² Internos · 26.36m² Terraza",
+          "rotulos_ui": {
+            "Internos": "88.8",
+            "Terraza": "26.36"
+          },
+          "urls_planos_vinculados": [
+            "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6827849906ed3_modelo-f.jpg"
+          ],
+          "ids_hechos_tecnicos": [
+            "IR-H02468",
+            "IR-H02469",
+            "IR-H02470",
+            "IR-H02471",
+            "IR-H02472",
+            "IR-H02473",
+            "IR-H02475"
+          ]
+        },
+        {
+          "unidad": "806",
+          "piso_literal": "8",
+          "modelo_descripcion_literal": "F",
+          "descripcion_modelo_literal": "Modelo F",
+          "dormitorios_ui_literal": "2",
+          "banos_ui_literal": "2",
+          "superficies_ui_literal": "88.8m² Internos · 26.36m² Terraza",
+          "rotulos_ui": {
+            "Internos": "88.8",
+            "Terraza": "26.36"
+          },
+          "urls_planos_vinculados": [
+            "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6827849906ed3_modelo-f.jpg"
+          ],
+          "ids_hechos_tecnicos": [
+            "IR-H02484",
+            "IR-H02485",
+            "IR-H02486",
+            "IR-H02487",
+            "IR-H02488",
+            "IR-H02489",
+            "IR-H02491"
+          ]
+        }
+      ]
+    },
+    "fuente_b": {
+      "tipo": "Plano original transcrito",
+      "planos": [
+        {
+          "id_plano": "IR-P125",
+          "archivo": "iris-20261116/evidencias/inn-puerto-chico/ec1578d06e5f3bb3.avif",
+          "sha256": "ec1578d06e5f3bb3c6328134c5fb666de593e887bb3aeb95f003704565527bde",
+          "url_imagen": "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.6827849906ed3_modelo-f.jpg",
+          "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+          "modelo_grafico_literal": "F",
+          "dormitorios_grafico_estructurados": 2,
+          "banos_grafico_estructurados": 2,
+          "tipo_grafico_literal": "Departamento con patio",
+          "alcance_impreso_literal": "Torre B - Depto 406",
+          "unidades_enlazadas_dom": [
+            "406",
+            "906",
+            "806"
+          ],
+          "superficies_rotuladas": [
+            {
+              "rotulo": "Superficie Interior",
+              "valor_m2": 88.8
+            },
+            {
+              "rotulo": "Superficie Terraza",
+              "valor_m2": 26.36
+            },
+            {
+              "rotulo": "Superficie Patio",
+              "valor_m2": 20.7
+            },
+            {
+              "rotulo": "Superficie Total",
+              "valor_m2": 135.86
+            }
+          ],
+          "observaciones_transcritas_previas": "Lectura visual del plano exportado; sin sumas ni equivalencias inferidas",
+          "ids_hechos_graficos": [
+            "IR-H03009",
+            "IR-H03010",
+            "IR-H03011",
+            "IR-H03012",
+            "IR-H03013",
+            "IR-H03014",
+            "IR-H03015",
+            "IR-H03016",
+            "IR-H03017",
+            "IR-H03018",
+            "IR-H03019",
+            "IR-H03020"
+          ],
+          "nueva_lectura_visual": false
+        }
+      ]
+    },
+    "informacion_confirmada": "El gráfico identifica TorreB/406 y sus métricas; el vínculo compartido UI no confirma que esas métricas, patio o torre se apliquen a806/906.",
+    "decision_o_respaldo_faltante": "Obtener aplicabilidad expresa del plano F/406 a806/906 o sus planos específicos, con versión y cuadro de superficies.",
+    "documento_concreto_minimo": "Planos F806/F906 o certificado oficial de equivalencia y alcance por unidad frente al plano406.",
+    "grupo_documental_sugerido": "inn-f-aplicabilidad",
+    "campo_respuesta": "",
+    "observaciones": "No transferir patio, áreas ni torre a806/906; no contar este límite como un conflicto número13 ni como dato nuevo.",
+    "estado": "Limitación adicional abierta",
+    "nuevo_cierre_completo": false,
+    "conflicto_resuelto": false
+  },
+  "sugerencia_excel": {
+    "hoja_decision_propietario": [
+      "D-03"
+    ],
+    "hoja_respaldos_tecnicos": [
+      "IR-C001",
+      "IR-C003",
+      "CAP-A-ALCANCE",
+      "BOLD-S1-TIPOLOGIA",
+      "BOLD-F-SUPERFICIES",
+      "ARG-C-C1",
+      "INDI-D-PLANO-A2",
+      "INDI-A4-PLANO-C1",
+      "IR-C020",
+      "IR-C021",
+      "IR-C022",
+      "F3-C001"
+    ],
+    "columnas_visibles": [
+      "Proyecto",
+      "Conflicto / ID",
+      "Unidad o modelo",
+      "Dato fuente A",
+      "Dato fuente B",
+      "Qué se necesita",
+      "Respuesta",
+      "Observaciones"
+    ],
+    "fuentes_detalladas": "Conservar IDs, URLs, archivos y SHA en columnas de soporte o expediente; no saturar el área de respuesta compacta."
+  }
+}

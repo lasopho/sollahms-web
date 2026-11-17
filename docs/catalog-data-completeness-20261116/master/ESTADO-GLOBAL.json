@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "fecha_auditoria": "2026-11-16",
   "timezone": "America/Santiago",
   "base": {
@@ -33,8 +33,8 @@
   },
   "estado_bloques": {
     "Leben": {
-      "estado": "Fase4: respuestas incorporadas; cierre documental aún pendiente",
-      "cierre": "313 campos aún pendientes;20cotizacionesaceptadas,15camposcompletadosy2direccionesretiradas sin cambiarregistro.",
+      "estado": "Fase 5: conciliación técnica y solicitudes mínimas preparadas",
+      "cierre": "313 pendientes conservados, cero cierres nuevos. Doce conflictos y F3-C001 sin resolver.",
       "metricas": {
         "fecha_auditoria": "2026-11-16",
         "proyectos_leben_revisados": 13,
@@ -80,7 +80,7 @@
     "Pendiente de auditoría": 118,
     "Iris documentado; conciliación abierta": 13
   },
-  "siguiente_paso": "Atender solo discrepancias particulares y documentación/alcance no respaldados; no repetir cotizaciones ni tipologías informadas y no pedir direcciones. No iniciar Euro.",
+  "siguiente_paso": "Recibir respuesta precisa D-03 o respaldos técnicos/paquetes identificados. No repetir precios, direcciones o lecturas. No iniciar Euro.",
   "protecciones": {
     "generadores_aplicacion_ejecutados": 0,
     "deployments_creados": 0,
@@ -572,6 +572,150 @@
         "campos_con_conflicto": 0,
         "campos_documentacion_o_alcance": 35,
         "cotizaciones_aceptadas": 0
+      }
+    }
+  },
+  "fase5": {
+    "fase": 5,
+    "fecha": "2026-11-16",
+    "commit_base": "2774b10bff3e74d186359f7793fa8712866a83fb",
+    "pendientes_iniciales": 313,
+    "pendientes_finales": 313,
+    "campos_nuevos_completados": 0,
+    "campos_nuevos_parciales_por_evidencia_nueva": 0,
+    "conflictos_resueltos": 0,
+    "conflictos_abiertos": 12,
+    "decision_especificacion": 1,
+    "conflictos_que_requieren_respaldo_tecnico": 11,
+    "limitacion_adicional_F3_C001": 1,
+    "paquetes_documentales_por_proyecto": 13,
+    "anexos_INN": 4,
+    "filas_documentales": 17,
+    "campos_documentales_mapeados_una_vez": 287,
+    "distribucion_de_base_fase4": {
+      "DECISION_COMERCIAL_PROPIETARIO": 6,
+      "CONCILIACION_CONTRADICCION": 20,
+      "FALTA_DOCUMENTAL_O_ALCANCE": 287
+    },
+    "intervencion_operativa_por_campo": {
+      "OBTENER_RESPALDO_DOCUMENTAL": 306,
+      "ESPERA_COMERCIAL_PREVIA": 6,
+      "DECISION_ESPECIFICACION_VIGENTE": 1
+    },
+    "nota_intervenciones": "La redistribución operativa no cierra campos: una precisión de especificación, seis esperas previas y 306 campos que requieren respaldo técnico o documental. Las filas Excel no equivalen a preguntas independientes.",
+    "campos_confirmados_actuales": 215,
+    "campos_parciales_actuales": 161,
+    "campos_desconocidos_actuales": 177,
+    "propuestas_false_catalogo": 99,
+    "cobertura_confirmada": {
+      "numerador": 215,
+      "denominador": 689,
+      "porcentaje": 31.2
+    },
+    "nuevas_fuentes_primarias": 0,
+    "nuevos_pdf_originales": 0,
+    "nuevas_lecturas_visuales": 0,
+    "nuevas_exportaciones": 0,
+    "precios_o_direcciones_nuevamente_solicitados": 0,
+    "precio_fuente_F049": "20 inmuebles y 2 adicionales Suecia aceptados el 16/11/2026, sin exigir conciliación con Iris ni garantía futura.",
+    "por_proyecto": {
+      "edificio-living-town": {
+        "pendientes_conservados": 18,
+        "paquete_documental": "F5-DOC-01",
+        "campos_documentales_base": 17,
+        "casos_y_limites": [
+          "IR-C001"
+        ]
+      },
+      "edificio-mood": {
+        "pendientes_conservados": 25,
+        "paquete_documental": "F5-DOC-02",
+        "campos_documentales_base": 24,
+        "casos_y_limites": [
+          "IR-C003"
+        ]
+      },
+      "edificio-santo": {
+        "pendientes_conservados": 25,
+        "paquete_documental": "F5-DOC-03",
+        "campos_documentales_base": 22,
+        "casos_y_limites": []
+      },
+      "edificio-baum": {
+        "pendientes_conservados": 21,
+        "paquete_documental": "F5-DOC-04",
+        "campos_documentales_base": 18,
+        "casos_y_limites": []
+      },
+      "edificio-suecia": {
+        "pendientes_conservados": 22,
+        "paquete_documental": "F5-DOC-05",
+        "campos_documentales_base": 22,
+        "casos_y_limites": []
+      },
+      "capitanes": {
+        "pendientes_conservados": 20,
+        "paquete_documental": "F5-DOC-06",
+        "campos_documentales_base": 16,
+        "casos_y_limites": [
+          "CAP-A-ALCANCE"
+        ]
+      },
+      "edificio-bold": {
+        "pendientes_conservados": 27,
+        "paquete_documental": "F5-DOC-07",
+        "campos_documentales_base": 21,
+        "casos_y_limites": [
+          "BOLD-S1-TIPOLOGIA",
+          "BOLD-F-SUPERFICIES"
+        ]
+      },
+      "edificio-argomedo": {
+        "pendientes_conservados": 23,
+        "paquete_documental": "F5-DOC-08",
+        "campos_documentales_base": 21,
+        "casos_y_limites": [
+          "ARG-C-C1"
+        ]
+      },
+      "edificio-indi": {
+        "pendientes_conservados": 23,
+        "paquete_documental": "F5-DOC-09",
+        "campos_documentales_base": 20,
+        "casos_y_limites": [
+          "INDI-D-PLANO-A2",
+          "INDI-A4-PLANO-C1"
+        ]
+      },
+      "edificio-indigo": {
+        "pendientes_conservados": 22,
+        "paquete_documental": "F5-DOC-10",
+        "campos_documentales_base": 22,
+        "casos_y_limites": []
+      },
+      "inn-puerto-chico": {
+        "pendientes_conservados": 20,
+        "paquete_documental": "F5-DOC-11",
+        "campos_documentales_base": 17,
+        "casos_y_limites": [
+          "IR-C020",
+          "IR-C021",
+          "IR-C022",
+          "D-03",
+          "F3-C001"
+        ]
+      },
+      "edificio-nordico": {
+        "pendientes_conservados": 32,
+        "paquete_documental": "F5-DOC-12",
+        "campos_documentales_base": 32,
+        "casos_y_limites": []
+      },
+      "own": {
+        "pendientes_conservados": 35,
+        "paquete_documental": "F5-DOC-13",
+        "campos_documentales_base": 35,
+        "casos_y_limites": []
       }
     }
   }

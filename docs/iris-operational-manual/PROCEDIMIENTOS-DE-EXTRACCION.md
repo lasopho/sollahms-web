@@ -64,3 +64,13 @@ Los tres PDF de unidades INN fallaron otra vez mediante pageAssets. El documento
 Para una respuesta del propietario: conservar el original y SHA, normalizar UF como string decimal, registrar cada asociación literal y comparar únicamente su alcance con los pendientes. No exigir Iris para aceptar precios propios. No volver a preguntar datos ya declarados. Una respuesta comercial general no resuelve discrepancias de un modelo particular. No hubo navegación, autenticación ni reintentos PDF en fase4.
 
 El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.
+
+## Recepción por paquete antes de nueva navegación — fase 5, 16/11/2026
+
+1. Revisar el ledger vigente y el mapeo de paquetes F5-DOC. Comprobar si el dato/documento ya está conservado antes de abrir Iris.
+2. Coordinar una entrega por proyecto con extractos o archivos existentes del alcance faltante. Los cuatro anexos INN pertenecen a F5-DOC-11; no son nuevas preguntas por campo.
+3. Al recibir un original o respuesta, preservar su archivo, SHA, fecha, fuente, proyecto, unidad/modelo y alcance. Distinguir el documento leído del hecho físico que puede acreditar.
+4. Conciliar cada campo contra A/B y su versión. Mantener abierto si no hay aplicabilidad expresa o persiste contradicción; una celda de respuesta no cierra el caso automáticamente.
+5. Actualizar solo los campos suficientemente respaldados y registrar el cambio con sus IDs. Abrir Chrome únicamente si existe una fuente nueva concreta accesible mediante la sesión autorizada.
+
+Se mantienen el acceso interactivo del propietario y las prohibiciones de exportación fallida, URLs supuestas y endpoints privados del procedimiento anterior. Esta fase no añadió selectores ni rutas nuevas.

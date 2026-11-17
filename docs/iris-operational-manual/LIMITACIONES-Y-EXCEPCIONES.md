@@ -53,3 +53,9 @@ En Bold e Indi, los baños de los pares UI/gráfico coinciden: se corrigieron do
 Las siete listas de precios por categoría no se convierten en precio desde global calculando mínimos. Las20cotizaciones son válidas como declaración en16/11/2026 aunque falte inventario técnico completo. INN2D10500,3D10016,4D21869 se conserva en ese orden; Índigo2D9001 no se cambia por9000,1 de otra fuente. No inferir baños no declarados. Todas las direcciones quedan fuera de preguntas, sin modificar sus strings ni resolver físicamente diferencias. Own permanece vendido.
 
 El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.
+
+## Precisión de aplicabilidad — fase 5, 16/11/2026
+
+Una lectura documental confirmada y un enlace de unidad a plano no confirman por sí solos la realidad física, la versión vigente o la aplicabilidad. Mood A enlazado a 303 conserva la observación previa DEPTO 201 y 1,5D, sin redondeo. Bold F tiene tres recursos diferentes: IR-P106 para 207/307, IR-P107 para 508 e IR-P108 enlazado a 608; solo este último contiene el cuadro 62,40/3,12/65,52. No propagarlo a los demás recursos. F3-C001 sigue siendo un límite adicional, fuera de los doce conflictos.
+
+No resolver cantidades físicas mediante una elección personal. Obtener plano, cuadro o constancia técnica con unidad/modelo/versión explícitos. El propietario puede precisar la especificación comercial de cubiertas INN y su alcance; si falta respaldo, solicitar memoria técnica. No hay nuevas fuentes ni cambios verificados de interfaz en esta fase.
