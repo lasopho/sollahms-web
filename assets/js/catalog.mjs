@@ -1,4 +1,7 @@
 import {loadCommercialEvidence,buildCommercialProjects} from './commercial-filter-data.mjs';
+import {financialReferenceCompatible} from './catalog-financial-witness.mjs';
+import {loadEuroOwnerSource,bindEuroOwnerQuotes,unavailableEuroOwnerQuotes,euroOwnerQuoteLoadFailed} from './catalog-euro-owner-quotes.mjs';
+import {loadNollagamOwnerQuoteContexts} from './catalog-nollagam-quote-consumer.mjs';
 import {loadLocalDocumentaryReview} from './documentary-local-review.mjs';
 import {metroSummary} from './metro-model.mjs';
 import {leonCatalogOfferId} from './project-offers.mjs?v=20261030-leon';
@@ -67,12 +70,12 @@ function card(project){
   if(commercialLayerNote(project,values()))price.append(element('p',commercialLayerNote(project,values()),'catalog-price-type'));
   actions.append(price);
   if(typeof project.detalleUrl==='string'&&/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl)){
-    const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(project.inmobiliaria)&&/^[012]$/.test(current.bedrooms)&&project.commercialOffers?.some(o=>o.id===current.bedrooms+'d')?'&oferta='+current.bedrooms+'d':'')+(leonCatalogOfferId(project,current)?'&oferta='+leonCatalogOfferId(project,current):'')+(project._ecasaStageNumber?'#etapa-'+project._ecasaStageNumber:'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
+    const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local'||offer.euroOwnerQuote&&offer.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(project.inmobiliaria)&&/^[012]$/.test(current.bedrooms)&&project.commercialOffers?.some(o=>o.id===current.bedrooms+'d')?'&oferta='+current.bedrooms+'d':'')+(leonCatalogOfferId(project,current)?'&oferta='+leonCatalogOfferId(project,current):'')+(project._ecasaStageNumber?'#etapa-'+project._ecasaStageNumber:'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
     if(current.evidenceMode==='documentary'){link.textContent='Ver ficha publicada';link.href=project.detalleUrl+'?origen='+source;link.setAttribute('aria-label','Ver ficha publicada de '+project.nombre);}
   }
   if(view==='split'){const b=element('button','Ubicar en mapa','catalog-text-button');b.type='button';b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('catalog-list-selection',{detail:{slug:project.slug}})));actions.append(b);}
   body.append(actions);article.append(body);
-  if(values().evidenceMode==='published'&&offer.financialBaselineCompatible!==false&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
+  if(values().evidenceMode==='published'&&financialReferenceCompatible(projects.find(original=>original.slug===project.slug),offer)&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
   const financial=body.querySelector('.capacity-result');
   if(financial){
     // Review dates remain in the source data; the financial scenario keeps all amounts/conditions.
@@ -102,6 +105,8 @@ async function load(){
     const response=await fetch('/data/proyectos.json',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('catalogue unavailable');
     const data=await response.json();if(!Array.isArray(data)||new Set(data.map(p=>p.slug)).size!==data.length)throw Error('catalogue identity');
     data.forEach(project=>{if(!project||typeof project.slug!=='string'||typeof project.nombre!=='string'||!/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl))throw Error('catalogue identity');});
+    const euroOwnerSource=loadEuroOwnerSource().then(source=>({source}),()=>({unavailable:true}));
+    const nollagamOwnerContexts=loadNollagamOwnerQuoteContexts(data);
     const metroData=Promise.all(['/data/metro-network.json','/data/project-metro.json'].map(async u=>{const r=await fetch(u,{signal:AbortSignal.timeout(6000)});if(!r.ok)throw Error('metro');return r.json();})).catch(()=>null);
     let index={projects:{},filters:[],typologies:[]};
     try{const response=await fetch('/data/catalog-facets.json?v=20261029-euro-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
@@ -110,6 +115,13 @@ async function load(){
     projects=data.map(p=>({...p,_metro:index.metroProjects?.[p.slug],_facets:index.projects[p.slug]??{assetTypes:p.tiposActivos??[p.tipoActivo].filter(Boolean),states:[p.estado].filter(Boolean)}}));
     try{projects=buildCommercialProjects(projects,await loadCommercialEvidence(),index);}
     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Las referencias Leben no pudieron cargar. Se muestran los datos publicados.';index.preparedUnavailable=true;}
+    const euroOwner=await euroOwnerSource;
+    try{projects=euroOwner.source?bindEuroOwnerQuotes(projects,euroOwner.source):unavailableEuroOwnerQuotes(projects);}
+    catch{projects=unavailableEuroOwnerQuotes(projects);}
+    if(projects.some(euroOwnerQuoteLoadFailed)){const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'Las cotizaciones Euro por tipología no pudieron validarse. Sus consultas con precio quedan limitadas; las consultas sin precio siguen disponibles.';}
+    const nollagamOwner=await nollagamOwnerContexts;
+    projects=projects.map(project=>nollagamOwner.bySlug[project.slug]?{...project,_nollagamOwnerQuoteContext:nollagamOwner.bySlug[project.slug]}:project);
+    if(nollagamOwner.status!=='ready'){const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'Las referencias Nollagam por tipología no pudieron validarse. Sus consultas con precio quedan limitadas; las consultas sin precio siguen disponibles.';}
     try{const localReview=await loadLocalDocumentaryReview(projects,{location,fetchImpl:fetch});if(localReview){projects=localReview.projects;Object.assign(index,localReview.index);}}
     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'La revisión documental local no pudo cargar. Se muestran los datos publicados; la fuente documental no está disponible.';index.documentaryReviewEnabled=false;index.documentaryUnavailable=true;}
     filterControls=createFilterControls({projects,index,onChange:render,getView:()=>view,setView:next=>{view=next;applyView();}});applyView();render();

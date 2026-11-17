@@ -1,6 +1,8 @@
 import {advancedFilterAndSort} from './catalog-filter-engine.mjs?v=20261029-euro-1';
 import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
 import {hasCatalogTypologyPrices,catalogTypologyOffer} from './catalog-typology-prices.mjs';
+import {usesEuroOwnerQuotes,euroOwnerQuoteOffer} from './catalog-euro-owner-quotes.mjs';
+import {matchNollagamOwnerQuotes,nollagamOwnerQuoteOffer,nollagamOwnerQuoteFacts,nollagamOwnerQuoteNote} from './catalog-nollagam-quote-consumer.mjs';
 // Public catalogue facts only. This module never changes source records.
 export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
 export const validPrice = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
@@ -58,6 +60,9 @@ export function projectOffer(project,state={}) {
     const reference=documentaryReference(project),a=reference?.attributes??{},metadata=documentaryMetadata(project,reference);
     return {value:validPrice(a.priceUF)?a.priceUF:null,typology:null,documentary:true,referenceId:reference?.id??null,date:metadata.ownerPriceDate??null};
   }
+  const nollagamMatch=!project._commercialMatch?matchNollagamOwnerQuotes(project,state):null;
+  if(nollagamMatch!==null)return nollagamOwnerQuoteOffer(nollagamMatch);
+  if(!project._commercialMatch&&usesEuroOwnerQuotes(project,state))return euroOwnerQuoteOffer(project,state);
   if (!project._commercialMatch) return hasCatalogTypologyPrices(project)?catalogTypologyOffer(project,state):catalogReference(project,state);
   const reference = preparedReference(project), a = reference?.attributes ?? {};
   const typology = [a.bedrooms == null ? null : a.bedrooms+'D', a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ');
@@ -66,6 +71,7 @@ export function projectOffer(project,state={}) {
 export function offerPriceLabel(project,state={}) {
   const offer=projectOffer(project,state);
   if(offer.documentary)return validPrice(offer.value)?'Referencia propietaria UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}):offer.referenceId?'Sin precio comercial para esta referencia':'Sin referencia documental en esta revisión';
+  if(offer.euroOwnerQuote)return priceFromLabel(offer.value,offer.priceDecimals);
   if (!offer.prepared) return priceFromLabel(offer.value,project.precioDecimales);
   return validPrice(offer.value) ? 'Referencia UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}) : 'Precio de esta referencia por confirmar';
 }
@@ -83,6 +89,13 @@ export function commercialLayerNote(project,state={}) {
       metadata.sourceURL?.includes('iris.yapo.cl')?'Fuente Iris':metadata.sourceLabel??null,
       sourceDate?'Fecha declarada de fuente · '+sourceDate:observed?'Consultada · '+observed:null,
       documentaryScopeLabel(metadata.scope),'Disponibilidad y vigencia por confirmar; no acredita stock'].filter(Boolean).join(' · ');
+  }
+  const nollagamMatch=!project._commercialMatch?matchNollagamOwnerQuotes(project,state):null;
+  if(nollagamMatch!==null)return nollagamOwnerQuoteNote(nollagamMatch);
+  if(!project._commercialMatch&&usesEuroOwnerQuotes(project,state)){
+    const offer=euroOwnerQuoteOffer(project,state),date=referenceDate(offer.date);
+    return ['Precio del propietario por tipología',date||null,'sin asignación a unidad o modelo',
+      'disponibilidad por confirmar; no acredita stock'].filter(Boolean).join(' · ');
   }
   if (!project._commercialMatch) return '';
   const date=project._commercial?.asOf?.split('-').reverse().join('/');
@@ -115,6 +128,19 @@ export function projectFacts(project, selectedType='',filterState={}) {
     for(const [key,label] of [['usefulM2','Superficie útil'],['totalM2','Superficie total'],['terraceM2','Superficie de terraza'],['internalM2','Internos (rótulo de la fuente)'],['lotTotalM2','Total del lote']]){
       if(typeof a[key]==='number'&&Number.isFinite(a[key])&&a[key]>=0)facts.push({label,value:a[key].toLocaleString('es-CL')+' m²'});
     }
+    return facts;
+  }
+  const nollagamMatch=!project._commercialMatch?matchNollagamOwnerQuotes(project,filterState):null;
+  if(nollagamMatch!==null)return nollagamOwnerQuoteFacts(nollagamMatch);
+  if(!project._commercialMatch&&usesEuroOwnerQuotes(project,filterState)){
+    const offer=euroOwnerQuoteOffer(project,filterState),facts=[];
+    if(offer.typology)facts.push({label:'Tipología del precio',value:offer.typology});
+    // These are the registered project facts checked by the existing common
+    // filter path, not bathroom/surface facts lent to this quotation.
+    const delivery=project._facets?project._facets.delivery?.label:project.entrega,state=project.estado;
+    const duplicate=delivery&&[normalize(delivery),normalize('Entrega '+delivery)].includes(normalize(state));
+    if(state&&!duplicate)facts.push({label:'Estado del proyecto',value:state});
+    if(delivery)facts.push({label:'Entrega del proyecto',value:delivery});
     return facts;
   }
   if (project._commercialMatch) {

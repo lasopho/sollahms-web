@@ -1,6 +1,8 @@
 import {metroDefaults,metroMatches} from './metro-model.mjs';
 import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
 import {hasCatalogTypologyPrices,matchCatalogTypologyPrices,catalogTypologyOffer,catalogTypologyFeatureIds} from './catalog-typology-prices.mjs';
+import {usesEuroOwnerQuotes,matchEuroOwnerQuotes,euroOwnerQuoteOffer,euroOwnerQuoteFeatureIds} from './catalog-euro-owner-quotes.mjs';
+import {matchNollagamOwnerQuotes,nollagamOwnerQuoteOffer} from './catalog-nollagam-quote-consumer.mjs';
 import {matchProjectFilters,queryFromCatalogState,normalizePropertyType,normalizeAmenityKey} from './commercial-filter-engine.mjs';
 /** Pure, bounded filtering of documented project facts. Unknown is never false. */
 export const fold=value=>String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es-CL');
@@ -54,6 +56,9 @@ function optionQuery(project,s){
 }
 export function matchesPublishedPriceReference(project,s){
   if(bound(s.minPriceInput)===null&&bound(s.maxPriceInput)===null)return true;
+  const nollagamMatch=matchNollagamOwnerQuotes(project,s);
+  if(nollagamMatch!==null)return nollagamMatch.matches;
+  if(usesEuroOwnerQuotes(project,s))return matchEuroOwnerQuotes(project,s).matches;
   if(hasCatalogTypologyPrices(project))return matchCatalogTypologyPrices(project,s).matches;
   const f=project._facets??{},price=catalogReference(project,s).value;
   const propertyTypes=[...new Set((f.propertyTypes??[]).map(normalizePropertyType).filter(Boolean))];
@@ -93,7 +98,9 @@ const matchingPrice=match=>{
   return prices.length?Math.min(...prices):null;
 };
 const resultPrice=(project,state)=>state.evidenceMode==='documentary'?matchingPrice(project._documentaryMatch):
-  project._commercialMatch?matchingPrice(project._commercialMatch):hasCatalogTypologyPrices(project)?
+  project._commercialMatch?matchingPrice(project._commercialMatch):matchNollagamOwnerQuotes(project,state)!==null?
+    nollagamOwnerQuoteOffer(matchNollagamOwnerQuotes(project,state)).value:usesEuroOwnerQuotes(project,state)?
+    euroOwnerQuoteOffer(project,state).value:hasCatalogTypologyPrices(project)?
     catalogTypologyOffer(project,state).value:catalogReference(project,state).value;
 function preparedPurchaseMatches(record,state){
   if(!state.purchaseModes.length)return true;
@@ -139,20 +146,24 @@ export function advancedFilterAndSort(projects,input={}){
       return match.matches&&metroMatches(p,s)&&preparedPurchaseMatches(p._commercial,s)
         ?[{...p,_commercialMatch:match}]:[];
     }
+    const nollagamPriceMatch=matchNollagamOwnerQuotes(p,s);
+    const euroPriceMatch=usesEuroOwnerQuotes(p,s)?matchEuroOwnerQuotes(p,s):null;
     const publishedPriceMatch=hasCatalogTypologyPrices(p)?matchCatalogTypologyPrices(p,s):null;
     const hasPrice=bound(s.minPriceInput)!==null||bound(s.maxPriceInput)!==null;
-    const f=p._facets??{},ids=publishedPriceMatch&&hasPrice?catalogTypologyFeatureIds(p,s,publishedPriceMatch):eligibleFeatures(p,s);
+    const f=p._facets??{},ids=nollagamPriceMatch?[]:euroPriceMatch?euroOwnerQuoteFeatureIds(p,s,euroPriceMatch):
+      publishedPriceMatch&&hasPrice?catalogTypologyFeatureIds(p,s,publishedPriceMatch):eligibleFeatures(p,s);
     const matches=metroMatches(p,s)&&(!s.region||p.region===s.region)&&(!s.commune||p.comuna===s.commune)
       &&(!s.developers.length||s.developers.includes(p.inmobiliaria))
       &&(!s.state||(f.states??[p.estado]).some(x=>fold(x)===fold(s.state)))
       &&(!s.assetType||(f.assetTypes??[]).includes(s.assetType))
       &&(!s.purchaseModes.length||(f.purchaseStage?.eligible===true&&s.purchaseModes.includes(f.purchaseStage.mode)))
       &&(!s.delivery||(s.delivery==='inmediata'?(f.delivery?.immediate===true||p.inmobiliaria==='León'&&f.delivery?.reportedImmediate===true):String(f.delivery?.year)===s.delivery))
-      &&(publishedPriceMatch&&hasPrice?publishedPriceMatch.matches:
+      &&(nollagamPriceMatch?nollagamPriceMatch.matches:euroPriceMatch?euroPriceMatch.matches:publishedPriceMatch&&hasPrice?publishedPriceMatch.matches:
         inRange(catalogReference(p,s).value,s.minPriceInput,s.maxPriceInput)&&matchesVariant(p,s)&&matchesPublishedPriceReference(p,s)&&publishedExtraMatches(p,s))
       &&selectedMatch(ids,s.amenities,s.amenitiesAll)&&selectedMatch(ids,s.features,s.featuresAll)
-      &&(publishedPriceMatch&&hasPrice||!words.length||words.every(w=>fold(keywords(p,s)).includes(w)));
-    return matches?[publishedPriceMatch?{...p,_publishedPriceMatch:publishedPriceMatch}:p]:[];
+      &&(nollagamPriceMatch||euroPriceMatch||publishedPriceMatch&&hasPrice||!words.length||words.every(w=>fold(keywords(p,s)).includes(w)));
+    return matches?[nollagamPriceMatch?{...p,_nollagamOwnerQuoteMatch:nollagamPriceMatch}:euroPriceMatch?{...p,_euroOwnerQuoteMatch:euroPriceMatch}:
+      publishedPriceMatch?{...p,_publishedPriceMatch:publishedPriceMatch}:p]:[];
   });
   if(s.sortOrder==='price-asc'||s.sortOrder==='price-desc')rows.sort((a,b)=>{
     const av=resultPrice(a,s),bv=resultPrice(b,s),ak=validNumber(av)&&av>0,bk=validNumber(bv)&&bv>0;
@@ -199,6 +210,11 @@ export function writeQuery(state,view='cards'){
 export function matchedLabels(project,state){
   const selected=new Set([...(state.amenities??[]),...(state.features??[])]);
   if(state.evidenceMode==='documentary'||project._documentaryMatch)return [];
+  if(matchNollagamOwnerQuotes(project,state)!==null)return [];
+  if(usesEuroOwnerQuotes(project,state)){
+    const actual=new Set(euroOwnerQuoteFeatureIds(project,state));
+    return (project._facets?.features??[]).filter(feature=>selected.has(feature.id)&&actual.has(feature.id)).map(feature=>feature.label);
+  }
   if(project._publishedPriceMatch&&!project._commercialMatch
     &&(bound(state.minPriceInput)!==null||bound(state.maxPriceInput)!==null)){
     const actual=new Set(catalogTypologyFeatureIds(project,state));
