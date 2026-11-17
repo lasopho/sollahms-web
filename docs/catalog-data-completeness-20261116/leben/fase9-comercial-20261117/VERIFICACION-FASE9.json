@@ -1,0 +1,407 @@
+{
+  "fecha": "2026-11-17",
+  "commit_base": "26dba5d3684fcfa1eb69fe75e8a33aa01c64c18e",
+  "resultado_integridad": "Correcto",
+  "controles": [
+    {
+      "control": "rama independiente",
+      "correcto": true
+    },
+    {
+      "control": "solo12activos conIDs exactos",
+      "correcto": true
+    },
+    {
+      "control": "aptitud parcial de datos sin falsa implementacion o stock",
+      "correcto": true
+    },
+    {
+      "control": "454referencias existentes sin duplicacion",
+      "correcto": true
+    },
+    {
+      "control": "UNIDAD_UI: numeros de tipo y métricas proceden del mismoID",
+      "correcto": true
+    },
+    {
+      "control": "UNIDAD_UI: literales tipo y etiqueta preservados",
+      "correcto": true
+    },
+    {
+      "control": "UNIDAD_UI: sin precios Iris convertidos en Sollahms",
+      "correcto": true
+    },
+    {
+      "control": "PLANO_UNIDAD: numeros de tipo y métricas proceden del mismoID",
+      "correcto": true
+    },
+    {
+      "control": "PLANO_UNIDAD: literales tipo y etiqueta preservados",
+      "correcto": true
+    },
+    {
+      "control": "PLANO_UNIDAD: sin precios Iris convertidos en Sollahms",
+      "correcto": true
+    },
+    {
+      "control": "mascaras exactas y datos no afectados conservados",
+      "correcto": true
+    },
+    {
+      "control": "20cotizaciones fuenteF049 intactas con fecha",
+      "correcto": true
+    },
+    {
+      "control": "dos adicionales Suecia fuera de precios inmueble",
+      "correcto": true
+    },
+    {
+      "control": "cotizaciones sin metros privados o planos prestados",
+      "correcto": true
+    },
+    {
+      "control": "Modelo203 y unidad501 no intercambiados",
+      "correcto": true
+    },
+    {
+      "control": "Estudio propietario no se convierte a0dormitorios",
+      "correcto": true
+    },
+    {
+      "control": "UI sin util total no recibe Internos o plano",
+      "correcto": true
+    },
+    {
+      "control": "planos conservan alcance propio y ninguna unidad asignada por enlace",
+      "correcto": true
+    },
+    {
+      "control": "Cap501601 conservan DBterraza sin total109,01",
+      "correcto": true
+    },
+    {
+      "control": "INN806906 conservan propios sin transferencia406",
+      "correcto": true
+    },
+    {
+      "control": "BoldF presencia terraza retenida con cifra indeterminada",
+      "correcto": true
+    },
+    {
+      "control": "edificio-living-town: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-living-town: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-living-town: ejemplo precio_dormitorios_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-living-town: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-living-town: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-mood: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-mood: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-mood: ejemplo precio_dormitorios_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-mood: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-mood: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-mood: ejemplo dormitorios_banos_util_total de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-mood: ejemplo dormitorios_banos_total de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-santo: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-santo: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-baum: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-baum: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-suecia: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-suecia: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-suecia: ejemplo precio_dormitorios_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-suecia: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-suecia: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "capitanes: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "capitanes: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "capitanes: ejemplo precio_dormitorios_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "capitanes: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "capitanes: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "capitanes: ejemplo dormitorios_banos_total de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-bold: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-bold: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-bold: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-bold: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-bold: ejemplo dormitorios_banos_total de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-argomedo: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-argomedo: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-argomedo: ejemplo precio_dormitorios_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-argomedo: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-argomedo: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-indi: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-indi: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-indi: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-indi: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-indigo: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-indigo: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-indigo: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-indigo: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "inn-puerto-chico: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "inn-puerto-chico: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "inn-puerto-chico: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "inn-puerto-chico: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "inn-puerto-chico: ejemplo dormitorios_banos_total de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-nordico: ejemplo precio_maximo_por_cotizacion de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-nordico: ejemplo precio_y_dormitorios de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-nordico: ejemplo dormitorios_y_banos de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-nordico: ejemplo dormitorios_banos_terraza de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-nordico: ejemplo dormitorios_banos_util_total de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "edificio-nordico: ejemplo dormitorios_banos_total de una sola referencia",
+      "correcto": true
+    },
+    {
+      "control": "conteos por consulta respaldados por susIDs",
+      "correcto": true
+    },
+    {
+      "control": "39faltantes condicionados esenciales sinOwn",
+      "correcto": true
+    },
+    {
+      "control": "9conflictos y1limite sin cierres",
+      "correcto": true
+    },
+    {
+      "control": "complementarios fuera de casos y F3sin nueva exigenciaC",
+      "correcto": true
+    },
+    {
+      "control": "12preguntas preparadas no obligatorias sin reenviar",
+      "correcto": true
+    },
+    {
+      "control": "32consultas documentales con todos resultados esperados",
+      "correcto": true
+    },
+    {
+      "control": "fuentes estructuradas y base byteidenticas",
+      "correcto": true
+    },
+    {
+      "control": "HTML mantiene defecto probado y no nuevos controles",
+      "correcto": true
+    },
+    {
+      "control": "recomendaciones no implementadas",
+      "correcto": true
+    },
+    {
+      "control": "saldo313 y clasificacion74/48/191 sin cierres",
+      "correcto": true
+    },
+    {
+      "control": "registrosF6 sin hechos o recepciones ficticias",
+      "correcto": true
+    },
+    {
+      "control": "global cambia solo metadatosfase9",
+      "correcto": true
+    },
+    {
+      "control": "235 hashes protegidos intactos",
+      "correcto": true
+    },
+    {
+      "control": "deployment excluido en rama",
+      "correcto": true
+    },
+    {
+      "control": "cuatro prompts completos identicos",
+      "correcto": true
+    },
+    {
+      "control": "archivos anteriores solo cambios documentales autorizados",
+      "correcto": true
+    },
+    {
+      "control": "sin generadores scripts o binarios en entregables",
+      "correcto": true
+    },
+    {
+      "control": "entregables solicitados presentes",
+      "correcto": true
+    },
+    {
+      "control": "enlaces locales validos",
+      "correcto": true,
+      "detalle": []
+    }
+  ],
+  "nota": "Son comprobaciones de documentación/consultas por referencia, no certificación de implementación o stock. HEAD remoto, main, deployments y árbol limpio se verifican al terminar el push.",
+  "revisiones_independientes": [
+    {
+      "archivo": "REVISION-FINAL-INTEGRIDAD.json",
+      "sha256": "2e538123306757e81e1821c6ff7563ee3c29ab476c409cbedf57f8b26ffb194d"
+    },
+    {
+      "archivo": "REVISION-FINAL-PREGUNTAS.json",
+      "sha256": "4505e244bb528235d64cbb779b26d356bbd8dcda962fea16a0ebb420e56adb59"
+    },
+    {
+      "archivo": "REVISION-FINAL-REFERENCIAS.json",
+      "sha256": "ba1310574e26e52b6ed2981d11f9963c1e09e41b22427944e3a9c4e223903379"
+    }
+  ]
+}

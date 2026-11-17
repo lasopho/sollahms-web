@@ -1,0 +1,279 @@
+{
+  "fecha": "2026-11-17",
+  "implementacion_actual_sin_modificar": [
+    {
+      "faceta": "precio",
+      "implementado": true,
+      "campo_o_control": "max-price",
+      "regla_actual": "Precio máximo compara solamente precioDesdeUF numérico finito <= máximo activo. No compara cotizaciones por tipología ni exige fuente/fecha.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 168
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 316,
+          "hasta_linea": 320
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 337,
+          "hasta_linea": 344
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 351,
+          "hasta_linea": 358
+        }
+      ]
+    },
+    {
+      "faceta": "tipo_de_propiedad",
+      "implementado": "Solo tipo de activo",
+      "campo_o_control": "asset-type",
+      "regla_actual": "Opciones Residencial, Comercial y Terreno sobre tipoActivo. No selecciona departamento/casa/estudio/local. Un tipoActivo null o ausente se sustituye por Residencial.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 164
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 340
+        }
+      ]
+    },
+    {
+      "faceta": "dormitorios",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "Tipologías se muestran como lista de texto en tarjetas; no hay predicado ni control de dormitorios. El catálogo no carga data/fichas-proyectos.json para buscar.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 308,
+          "hasta_linea": 315
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 383,
+          "hasta_linea": 402
+        }
+      ]
+    },
+    {
+      "faceta": "banos",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "Sin control ni predicado de baños en el catálogo. specs.banos existe en fichas de detalle, separado del dataset cargado por el buscador.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 142,
+          "hasta_linea": 149
+        }
+      ]
+    },
+    {
+      "faceta": "superficie",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "Sin control ni predicado de superficies. superficieDesdeM2 heredada no identifica por sí sola útil o total. El generador de detalle distingue superficie publicada y specs útil/total/terreno.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 137,
+          "hasta_linea": 149
+        }
+      ]
+    },
+    {
+      "faceta": "estado_comercial",
+      "implementado": true,
+      "campo_o_control": "state",
+      "regla_actual": "Opciones exactas desde estado del proyecto y estados de sus etapas. La coincidencia puede proceder de cualquier etapa; no enlaza estado y precio a la misma unidad/etapa. No normaliza recepción final frente a entrega inmediata.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 167
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 224,
+          "hasta_linea": 229
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 343
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 398
+        }
+      ]
+    },
+    {
+      "faceta": "entrega",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "Entrega se muestra en tarjeta y etapas, pero no hay filtro directo de entrega/fecha. Entrega inmediata puede aparecer como estado heredado; no equivale a una faceta separada ni a recepción final.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 294,
+          "hasta_linea": 307
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        }
+      ]
+    },
+    {
+      "faceta": "inmobiliaria",
+      "implementado": "Texto libre",
+      "campo_o_control": null,
+      "regla_actual": "Se busca el nombre de inmobiliaria mediante búsqueda libre junto con nombre/comuna/región/dirección/slug y nombres de etapas. No hay selector dedicado de inmobiliaria.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 163
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 345,
+          "hasta_linea": 348
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 280,
+          "hasta_linea": 281
+        }
+      ]
+    },
+    {
+      "faceta": "amenities",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "El catálogo recibe arrays de amenities, pero no hay control ni predicado y tampoco entran en búsqueda libre. La ficha de detalle presenta solo lo que considera verificado.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 157,
+          "hasta_linea": 158
+        }
+      ]
+    },
+    {
+      "faceta": "estacionamiento_bodega",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "No hay filtros ni campos dedicados de disponibilidad/inclusión/adicionalidad en el catálogo. Menciones en amenities no codifican el precio ni la asignación a una unidad.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        }
+      ]
+    },
+    {
+      "faceta": "region_comuna",
+      "implementado": true,
+      "campo_o_control": "region,commune",
+      "regla_actual": "Igualdad exacta cuando hay selección, sin exclusión por atributo vacío si no se activa esa selección. Comuna se restringe a la región seleccionada.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 165,
+          "hasta_linea": 166
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 246,
+          "hasta_linea": 250
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 341,
+          "hasta_linea": 342
+        }
+      ]
+    }
+  ],
+  "html_verificado": {
+    "sha256_HEAD": "c8c15f965f9d644a6d292c76052c124321eb3d68258ca44707474fb33f58020a",
+    "sha256_3ecc": "c8c15f965f9d644a6d292c76052c124321eb3d68258ca44707474fb33f58020a",
+    "sin_cambios": true,
+    "problema_tipo_desconocido_persiste": true,
+    "precio_y_estado_F049_no_consumidos_por_codigo": true,
+    "referencias": [
+      "proyectos.html:162-170",
+      "proyectos.html:224-229",
+      "proyectos.html:337-349",
+      "proyectos.html:384"
+    ]
+  },
+  "defectos_actuales_documentados": [
+    "tipoActivo ausente/null se convierte en Residencial",
+    "El catálogo carga precios/estados heredados de proyectos.json, no los datos F049 preparados."
+  ],
+  "reglas_para_futura_implementacion": [
+    "Desconocido nunca produce coincidencia positiva si el predicado está activo.",
+    "Un atributo desconocido no excluye cuando su predicado está inactivo.",
+    "Un solo testigo documental respalda todos los predicados de opción; no usar uno para precio y otro para dormitorios/superficie.",
+    "Privados no son rasgos universales de proyecto: no combinar la existencia de jardín de una opción con el precio de otra.",
+    "Una cotización F049 puede filtrar por precio y D/B explícitos sin exigir antes un perfil de superficies.",
+    "Un perfil gráfico puede filtrar D/B y útil/total propios sin precio ni asociación a una UI diferente.",
+    "Los atributos no contradictorios de una referencia siguen utilizables; nunca invalidar el proyecto completo.",
+    "No sustituir tipo de propiedad por default de tipo de activo; distinguir categorías y proyecto mixto.",
+    "No sumar áreas ni convertir Internos/interior/logia/rooftop en útil o total.",
+    "Separar oferta adicional general, inclusión y disponibilidad por unidad de estacionamiento/bodega.",
+    "La fecha de la cotización y estado de fuente deben acompañar el dato; no inferir garantía futura o stock."
+  ],
+  "recomendaciones_no_implementadas": true,
+  "fuente_criterios_por_referencia": "REGLAS-POR-REFERENCIA.json",
+  "sin_generadores_app": true
+}

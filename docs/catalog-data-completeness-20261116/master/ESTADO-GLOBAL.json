@@ -1,5 +1,5 @@
 {
-  "schema_version": 8,
+  "schema_version": 9,
   "fecha_auditoria": "2026-11-16",
   "timezone": "America/Santiago",
   "base": {
@@ -33,7 +33,7 @@
   },
   "estado_bloques": {
     "Leben": {
-      "estado": "Alcance comercial: 74 pendientes A, 48 B y 191 complementarios C fuera de la obligación, sin cierres documentales.",
+      "estado": "Fase 9: doce proyectos con respaldo para búsquedas parciales; combinaciones limitadas por referencia, sin cierres documentales nuevos.",
       "cierre": "313 pendientes conservados. Cero campos nuevos completos o conflictos resueltos.",
       "metricas": {
         "fecha_auditoria": "2026-11-16",
@@ -80,7 +80,7 @@
     "Pendiente de auditoría": 118,
     "Iris documentado; conciliación abierta": 13
   },
-  "siguiente_paso": "Completar la información comercial esencial de Leben con evidencia existente y respaldo puntual de opciones; D-03 y detalles C no bloquean. No iniciar otra inmobiliaria todavía.",
+  "siguiente_paso": "Usar búsquedas parciales por referencia documentada. Si se requiere ampliar una combinación, obtener solo la asociación o métrica esencial identificada por proyecto. No pedir datos ya conservados ni detalles C; no iniciar Euro.",
   "protecciones": {
     "generadores_aplicacion_ejecutados": 0,
     "deployments_creados": 0,
@@ -900,5 +900,44 @@
     "proyectos_con_total_en_planos": 5,
     "informe": "docs/catalog-data-completeness-20261116/INFORME-RECLASIFICACION-CATALOGO.md",
     "matriz_prioridades": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/MATRIZ-131-PRIORIDADES.csv"
+  },
+  "fase9_comercial": {
+    "fecha": "2026-11-17",
+    "commit_base": "26dba5d3684fcfa1eb69fe75e8a33aa01c64c18e",
+    "proyectos_activos": 12,
+    "Own_fuera_oferta_activa": true,
+    "aptos_datos_busqueda_parcial": 12,
+    "certificados_todas_combinaciones_datos": 0,
+    "certificados_implementacion_filtros_avanzados": 0,
+    "fuentes_nuevas": 0,
+    "recepciones_nuevas": 0,
+    "cierres_documentales_nuevos": 0,
+    "saldo_documental_conservado": 313,
+    "clasificacion_anterior": {
+      "A": 74,
+      "B": 48,
+      "C": 191
+    },
+    "referencias_sin_unir": {
+      "UNIDAD_UI": 330,
+      "PLANO_UNIDAD": 104,
+      "COTIZACION_PROPIETARIO": 20
+    },
+    "proyectos_por_consulta_respaldada": {
+      "precio_maximo_por_cotizacion": 10,
+      "precio_y_dormitorios": 10,
+      "precio_dormitorios_banos": 5,
+      "dormitorios_y_banos": 12,
+      "dormitorios_banos_terraza": 12,
+      "dormitorios_banos_util_total": 2,
+      "dormitorios_banos_total": 5,
+      "precio_util_total": 0,
+      "precio_jardin_privado": 0
+    },
+    "filas_faltantes_condicionados": 39,
+    "conflictos_esenciales": 9,
+    "limites_adicionales": 1,
+    "preguntas_preparadas_no_enviadas": 12,
+    "advertencia": "Apto parcial describe respaldo documental por referencia, no publicación, stock o implementación de nuevos controles."
   }
 }

@@ -1,0 +1,2249 @@
+{
+  "fase": 9,
+  "fecha": "2026-11-17",
+  "timezone": "America/Santiago",
+  "base_commit": "26dba5d3684fcfa1eb69fe75e8a33aa01c64c18e",
+  "metodo": "Solo lectura mediante git show delHEAD fijo. Sin código de app/generadores/navegador ni reauditoría Iris. El checkout original se leyó solo para comprobar los235hashes preexistentes, nunca comoautoridad de precios/datos.",
+  "controles": [
+    {
+      "control": "HEAD base autorizado",
+      "correcto": true,
+      "detalle": "26dba5d3684fcfa1eb69fe75e8a33aa01c64c18e"
+    },
+    {
+      "control": "HTML idéntico a3eccce6",
+      "correcto": true,
+      "detalle": "c8c15f965f9d644a6d292c76052c124321eb3d68258ca44707474fb33f58020a"
+    },
+    {
+      "control": "defecto defaultResidencial persiste",
+      "correcto": true
+    },
+    {
+      "control": "buscador carga catálogo publicado y no expedienteF049",
+      "correcto": true
+    },
+    {
+      "control": "12Leben activos excluyenOwn",
+      "correcto": true
+    },
+    {
+      "control": "137proyectos código y131corte comercial separados",
+      "correcto": true
+    },
+    {
+      "control": "20precios inmueble y2adicionales idénticos F049",
+      "correcto": true
+    },
+    {
+      "control": "propuesta usa cotizaciones originales sin alterar",
+      "correcto": true
+    },
+    {
+      "control": "dorm baños superficie entrega amenities parkingbodega sinfiltro",
+      "correcto": true
+    },
+    {
+      "control": "4probes anteriores reutilizables al no cambiar elHTML",
+      "correcto": true
+    },
+    {
+      "control": "7reglas propuestas no se confunden con código",
+      "correcto": true
+    },
+    {
+      "control": "12proyectos cotejados ytodos usan defaulttipo heredado",
+      "correcto": true
+    },
+    {
+      "control": "3desde global expresos y7listados de10cotizados",
+      "correcto": true
+    },
+    {
+      "control": "20cotizaciones y2adicionales representados una vez",
+      "correcto": true
+    },
+    {
+      "control": "D03 no aparece entreconflictos esenciales",
+      "correcto": true
+    },
+    {
+      "control": "49fuentes F001..F049 sin nuevas asignaciones",
+      "correcto": true
+    },
+    {
+      "control": "689estados canónicos conservados",
+      "correcto": true
+    },
+    {
+      "control": "313prioridades históricas74A48B191C",
+      "correcto": true
+    },
+    {
+      "control": "maestra131identidades sin cambios deuniverso",
+      "correcto": true
+    },
+    {
+      "control": "F049comunicación original preservada",
+      "correcto": true
+    },
+    {
+      "control": "235archivos protegidos intactos (solo integridad, no autoridad factual)",
+      "correcto": true,
+      "detalle": {
+        "total": 235,
+        "diferencias": []
+      }
+    },
+    {
+      "control": "deployment de rama excluido",
+      "correcto": true
+    }
+  ],
+  "controles_correctos": 22,
+  "resultado": "Correcto",
+  "fuentes_base_snapshot": [
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+      "sha256": "449856fc4e6853ed5fc5ac64cace6d5d905674123e8a3d91b4c8ed3eecb120a1"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/DATOS-CONFIRMADOS.csv",
+      "sha256": "f4c6206b5ad9c9a2508d952606ade00c33f5b95223a2d4394daa940a5b8fb8d2"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/DATOS-PARCIALES.csv",
+      "sha256": "0535d0de1cc87595512f35a125902f5af132ece41662764237c715db380a8ec7"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/DATOS-PENDIENTES-PROPIETARIO.csv",
+      "sha256": "08b5edfcda9b4aae632c6d45abec80cfc08afaa96c410230784b11e56357bcdf"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/FUENTES-DOCUMENTALES.csv",
+      "sha256": "1083c4fff309b8ac9be817fc39f2d72821db46a8e5a9c291c23e8df0733e5127"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/CONTRADICCIONES.md",
+      "sha256": "19079b1de950fea93064feee2449ff07156a8f269a4d06f7c104d7aa769a499c"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+      "sha256": "6cc68873fa171ffbc09b6dccbdf83b9b979ae1a6c7ae568a584a063784abafc6"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/TIPOLOGIAS-LEBEN.csv",
+      "sha256": "683276c2860eb2a416204ad38aa063dd8e6c06218763a4a8a24bf27e45a26520"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/SUPERFICIES-LEBEN.csv",
+      "sha256": "46c202b473c2c2a205bba83fea5d88593e74ec0d95a379d6c6b6b4fbd4d90bb6"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/master/MATRIZ-MAESTRA-131.csv",
+      "sha256": "46e7c72a973ba321ec117c237d78bc42d185d193a587a6b66d1f608bc2243821"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/master/ESTADO-GLOBAL.json",
+      "sha256": "ed5f2bde34f0e3441230fc2a89e7d35b04abd2868092a17ed966171a52363071"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/MATRIZ-131-PRIORIDADES.csv",
+      "sha256": "8d56e8ca7ad9632ccb03cd88d54d56aed065d572111ecf246a9b20f580e4ef79"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/RECLASIFICACION-313-TRAZABLE.csv",
+      "sha256": "dcfa9ed1627c2a47cc2d65234f5ffa304937587c4dcffc646835cf688b1f80de"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+      "sha256": "009af802902b122d55883774bff352fb1b511adcdfc3dc2f72ac8ac198e7c7f1"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/PENDIENTES-BLOQUEANTES.csv",
+      "sha256": "0abc6113cacac50f688738d4ee9fd2282a4926fa586d4dcfc4fa6813c1c4e47b"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/PENDIENTES-COMERCIALES.csv",
+      "sha256": "a39d82b93bec941a7515c9c3c0f483f09dfcd735ae3e1ef70ace36b8cc27a362"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/CAMPOS-COMPLEMENTARIOS.csv",
+      "sha256": "feb9fb87396c681e7266e48312165ce89809225d2862976138472a6dec95e177"
+    },
+    {
+      "archivo": "proyectos.html",
+      "sha256": "c8c15f965f9d644a6d292c76052c124321eb3d68258ca44707474fb33f58020a"
+    },
+    {
+      "archivo": "data/proyectos.json",
+      "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494"
+    },
+    {
+      "archivo": "data/fichas-proyectos.json",
+      "sha256": "0c621aff2e65779acd55c7508d4f949dab14f47a3130874c36ce0336bc4c5278"
+    }
+  ],
+  "html": {
+    "sha256_HEAD": "c8c15f965f9d644a6d292c76052c124321eb3d68258ca44707474fb33f58020a",
+    "sha256_3ecc": "c8c15f965f9d644a6d292c76052c124321eb3d68258ca44707474fb33f58020a",
+    "sin_cambios": true,
+    "problema_tipo_desconocido_persiste": true,
+    "precio_y_estado_F049_no_consumidos_por_codigo": true,
+    "referencias": [
+      "proyectos.html:162-170",
+      "proyectos.html:224-229",
+      "proyectos.html:337-349",
+      "proyectos.html:384"
+    ]
+  },
+  "filtros_existentes_o_ausentes": [
+    {
+      "faceta": "precio",
+      "implementado": true,
+      "campo_o_control": "max-price",
+      "regla_actual": "Precio máximo compara solamente precioDesdeUF numérico finito <= máximo activo. No compara cotizaciones por tipología ni exige fuente/fecha.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 168
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 316,
+          "hasta_linea": 320
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 337,
+          "hasta_linea": 344
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 351,
+          "hasta_linea": 358
+        }
+      ]
+    },
+    {
+      "faceta": "tipo_de_propiedad",
+      "implementado": "Solo tipo de activo",
+      "campo_o_control": "asset-type",
+      "regla_actual": "Opciones Residencial, Comercial y Terreno sobre tipoActivo. No selecciona departamento/casa/estudio/local. Un tipoActivo null o ausente se sustituye por Residencial.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 164
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 340
+        }
+      ]
+    },
+    {
+      "faceta": "dormitorios",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "Tipologías se muestran como lista de texto en tarjetas; no hay predicado ni control de dormitorios. El catálogo no carga data/fichas-proyectos.json para buscar.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 308,
+          "hasta_linea": 315
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 383,
+          "hasta_linea": 402
+        }
+      ]
+    },
+    {
+      "faceta": "banos",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "Sin control ni predicado de baños en el catálogo. specs.banos existe en fichas de detalle, separado del dataset cargado por el buscador.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 142,
+          "hasta_linea": 149
+        }
+      ]
+    },
+    {
+      "faceta": "superficie",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "Sin control ni predicado de superficies. superficieDesdeM2 heredada no identifica por sí sola útil o total. El generador de detalle distingue superficie publicada y specs útil/total/terreno.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 137,
+          "hasta_linea": 149
+        }
+      ]
+    },
+    {
+      "faceta": "estado_comercial",
+      "implementado": true,
+      "campo_o_control": "state",
+      "regla_actual": "Opciones exactas desde estado del proyecto y estados de sus etapas. La coincidencia puede proceder de cualquier etapa; no enlaza estado y precio a la misma unidad/etapa. No normaliza recepción final frente a entrega inmediata.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 167
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 224,
+          "hasta_linea": 229
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 343
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 398
+        }
+      ]
+    },
+    {
+      "faceta": "entrega",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "Entrega se muestra en tarjeta y etapas, pero no hay filtro directo de entrega/fecha. Entrega inmediata puede aparecer como estado heredado; no equivale a una faceta separada ni a recepción final.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 294,
+          "hasta_linea": 307
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        }
+      ]
+    },
+    {
+      "faceta": "inmobiliaria",
+      "implementado": "Texto libre",
+      "campo_o_control": null,
+      "regla_actual": "Se busca el nombre de inmobiliaria mediante búsqueda libre junto con nombre/comuna/región/dirección/slug y nombres de etapas. No hay selector dedicado de inmobiliaria.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 163
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 345,
+          "hasta_linea": 348
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 280,
+          "hasta_linea": 281
+        }
+      ]
+    },
+    {
+      "faceta": "amenities",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "El catálogo recibe arrays de amenities, pero no hay control ni predicado y tampoco entran en búsqueda libre. La ficha de detalle presenta solo lo que considera verificado.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 157,
+          "hasta_linea": 158
+        }
+      ]
+    },
+    {
+      "faceta": "estacionamiento_bodega",
+      "implementado": false,
+      "campo_o_control": null,
+      "regla_actual": "No hay filtros ni campos dedicados de disponibilidad/inclusión/adicionalidad en el catálogo. Menciones en amenities no codifican el precio ni la asignación a una unidad.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        }
+      ]
+    },
+    {
+      "faceta": "region_comuna",
+      "implementado": true,
+      "campo_o_control": "region,commune",
+      "regla_actual": "Igualdad exacta cuando hay selección, sin exclusión por atributo vacío si no se activa esa selección. Comuna se restringe a la región seleccionada.",
+      "referencias": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 165,
+          "hasta_linea": 166
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 246,
+          "hasta_linea": 250
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 341,
+          "hasta_linea": 342
+        }
+      ]
+    }
+  ],
+  "pruebas_anteriores_reutilizadas_sin_ejecucion_nueva": {
+    "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COMPROBACION-SEMANTICA-FILTROS.json",
+    "escenarios_actuales": 4,
+    "cumplen": 3,
+    "defecto": "ACTUAL-TIPO-DESCONOCIDO",
+    "reglas_propuestas_no_implementadas": 7
+  },
+  "matriz_por_proyecto": [
+    {
+      "slug": "edificio-living-town",
+      "proyecto": "Edificio Living Town",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 2812,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Venta en verde",
+        "entrega": null,
+        "tipologias_texto": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 31,
+        "numero_amenities_mencionados": 7,
+        "region": "Región Metropolitana",
+        "comuna": "Santiago"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P001",
+            "categoria_literal": "1 dormitorio",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 3.949",
+            "precio_uf_decimal": "3949",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "1",
+            "banos_declarados": "1",
+            "tipo_propiedad_explicito": "Departamento",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P002",
+            "categoria_literal": "2 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 4.991,65",
+            "precio_uf_decimal": "4991.65",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "2",
+            "banos_declarados": "2",
+            "tipo_propiedad_explicito": "Departamento",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "COTIZACIONES_POR_CATEGORIA_ACEPTADAS",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por propietario",
+          "valor_literal": "[{\"campo_declarado\": \"tipo_propiedad\", \"valor\": \"Departamento\", \"alcance\": \"Tipo de propiedad general declarado para el proyecto\", \"id_hecho\": \"F4-H005\"}]",
+          "fuentes": "F007 p.1",
+          "evidencias": "E0043"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F007 p.1",
+            "evidencias": "E0043"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 105,
+          "con_dormitorios_UI_numericos": 101,
+          "con_banos_UI_numericos": 105,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 105,
+            "tipologias_UI": 105,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 105,
+            "planos_con_util": 0,
+            "planos_con_total": 0,
+            "planos_con_terraza": 0,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 0,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "en blanco",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H007"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00007",
+          "slug": "edificio-living-town",
+          "campo_id": "entrega",
+          "valor_literal": "septiembre 2027",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F023",
+          "url": "https://iris.yapo.cl/proyecto/645?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-living-town.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "true": 9,
+          "false": 8
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [
+        "IR-C001"
+      ],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-mood",
+      "proyecto": "Edificio Mood",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 2750,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias_texto": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 30,
+        "numero_amenities_mencionados": 9,
+        "region": "Región Metropolitana",
+        "comuna": "La Florida"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P003",
+            "categoria_literal": "1 dormitorio",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 3.753,20",
+            "precio_uf_decimal": "3753.20",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "1",
+            "banos_declarados": "1",
+            "tipo_propiedad_explicito": "Departamento",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P004",
+            "categoria_literal": "2 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 4.678,45",
+            "precio_uf_decimal": "4678.45",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "2",
+            "banos_declarados": "2",
+            "tipo_propiedad_explicito": "Departamento",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "COTIZACIONES_POR_CATEGORIA_ACEPTADAS",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por propietario",
+          "valor_literal": "[{\"campo_declarado\": \"tipo_propiedad\", \"valor\": \"Departamento\", \"alcance\": \"Tipo de propiedad general declarado para el proyecto\", \"id_hecho\": \"F4-H014\"}]",
+          "fuentes": "F008 p.2",
+          "evidencias": "E0081"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F008 p.2",
+            "evidencias": "E0081"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 30,
+          "con_dormitorios_UI_numericos": 30,
+          "con_banos_UI_numericos": 30,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 30,
+            "tipologias_UI": 30,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 30,
+            "planos_con_util": 2,
+            "planos_con_total": 2,
+            "planos_con_terraza": 2,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 2,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "Recepción final",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H015"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00017",
+          "slug": "edificio-mood",
+          "campo_id": "entrega",
+          "valor_literal": "Inmediata",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F024",
+          "url": "https://iris.yapo.cl/proyecto/650?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-mood.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "true": 11,
+          "false": 6
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [
+        "IR-C003"
+      ],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-santo",
+      "proyecto": "Edificio Santo",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 3756,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias_texto": [
+          "2 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 45,
+        "numero_amenities_mencionados": 6,
+        "region": "Región Metropolitana",
+        "comuna": "Santiago"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "PRECIO_SOLL_AHMS_SIN_NUEVA_DECLARACION",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento",
+          "fuentes": "F009 p.2",
+          "evidencias": "E0110"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F009 p.2",
+            "evidencias": "E0110"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 1,
+          "con_dormitorios_UI_numericos": 1,
+          "con_banos_UI_numericos": 1,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 1,
+            "tipologias_UI": 1,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 1,
+            "planos_con_util": 0,
+            "planos_con_total": 0,
+            "planos_con_terraza": 0,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 0,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "estado": "HISTORICO_NO_ACTUALIZADO",
+          "literal_snapshot": "Entrega inmediata",
+          "no_usar_como_actual": true
+        },
+        "entrega": {
+          "id_hecho": "IR-H00023",
+          "slug": "edificio-santo",
+          "campo_id": "entrega",
+          "valor_literal": "Inmediata",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F025",
+          "url": "https://iris.yapo.cl/proyecto/640?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-santo.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "false": 12,
+          "true": 5
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-baum",
+      "proyecto": "Edificio BAUM",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 2844,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Venta en verde",
+        "entrega": null,
+        "tipologias_texto": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 33,
+        "numero_amenities_mencionados": 15,
+        "region": "Región Metropolitana",
+        "comuna": "La Florida"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "PRECIO_SOLL_AHMS_SIN_NUEVA_DECLARACION",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento",
+          "fuentes": "F011 p.3",
+          "evidencias": "E0135"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F011 p.3",
+            "evidencias": "E0135"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 108,
+          "con_dormitorios_UI_numericos": 108,
+          "con_banos_UI_numericos": 108,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 108,
+            "tipologias_UI": 108,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 108,
+            "planos_con_util": 0,
+            "planos_con_total": 0,
+            "planos_con_terraza": 0,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 0,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "estado": "HISTORICO_NO_ACTUALIZADO",
+          "literal_snapshot": "Venta en verde",
+          "no_usar_como_actual": true
+        },
+        "entrega": {
+          "id_hecho": "IR-H00030",
+          "slug": "edificio-baum",
+          "campo_id": "entrega",
+          "valor_literal": "1er Semestre 2028",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F026",
+          "url": "https://iris.yapo.cl/proyecto/935?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-baum.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "true": 11,
+          "false": 6
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-suecia",
+      "proyecto": "Edificio Suecia",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 8247,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias_texto": [
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 74,
+        "numero_amenities_mencionados": 7,
+        "region": "Región Metropolitana",
+        "comuna": "Providencia"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P005",
+            "categoria_literal": "Precio desde",
+            "tipo_precio_declarado": "precio_desde_explicito",
+            "precio_uf_literal": "UF 11.358,90",
+            "precio_uf_decimal": "11358.90",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "3",
+            "banos_declarados": "3",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "203",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [
+          {
+            "id_precio_normalizado": "OWN4-AD001",
+            "concepto_adicional": "parking",
+            "precio_uf_decimal": "510",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16"
+          },
+          {
+            "id_precio_normalizado": "OWN4-AD002",
+            "concepto_adicional": "storage",
+            "precio_uf_decimal": "75",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16"
+          }
+        ],
+        "precio_desde_global_expreso": true,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "DESDE_GLOBAL_EXPRESO_ACEPTADO",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento | [\"Departamento\",\"Dúplex\",\"Dúplex con rooftop\"]",
+          "fuentes": "F012 p.2",
+          "evidencias": "E0185 | E0204"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F012 p.2",
+            "evidencias": "E0185"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 1,
+          "con_dormitorios_UI_numericos": 1,
+          "con_banos_UI_numericos": 1,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 1,
+            "tipologias_UI": 1,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 1,
+            "planos_con_util": 0,
+            "planos_con_total": 0,
+            "planos_con_terraza": 0,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 0,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "Recepción final",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H021"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00039",
+          "slug": "edificio-suecia",
+          "campo_id": "entrega",
+          "valor_literal": "Inmediata",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F027",
+          "url": "https://iris.yapo.cl/proyecto/657?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-suecia.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "true": 8,
+          "false": 9
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "capitanes",
+      "proyecto": "Capitanes",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 7662,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias_texto": [
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 67,
+        "numero_amenities_mencionados": 6,
+        "region": "Región Metropolitana",
+        "comuna": "Providencia"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P006",
+            "categoria_literal": "Precio desde",
+            "tipo_precio_declarado": "precio_desde_explicito",
+            "precio_uf_literal": "UF 12.608",
+            "precio_uf_decimal": "12608",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "3",
+            "banos_declarados": "3",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "501",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": true,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "DESDE_GLOBAL_EXPRESO_ACEPTADO",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento | [\"Departamento\",\"Dúplex\",\"Dúplex con rooftop\"]",
+          "fuentes": "F002 p.1",
+          "evidencias": "E0007 | E0030"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F002 p.1",
+            "evidencias": "E0007"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 4,
+          "con_dormitorios_UI_numericos": 4,
+          "con_banos_UI_numericos": 4,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 4,
+            "tipologias_UI": 4,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 4,
+            "planos_con_util": 0,
+            "planos_con_total": 2,
+            "planos_con_terraza": 2,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 2,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "Recepción final",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H029"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00045",
+          "slug": "capitanes",
+          "campo_id": "entrega",
+          "valor_literal": "Inmediata",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F028",
+          "url": "https://iris.yapo.cl/proyecto/658?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/capitanes.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "false": 11,
+          "true": 6
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [
+        "CAP-A-ALCANCE"
+      ],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-bold",
+      "proyecto": "Edificio Bold",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 3521,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias_texto": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 22,
+        "numero_amenities_mencionados": 6,
+        "region": "Los Ríos",
+        "comuna": "Valdivia"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P007",
+            "categoria_literal": "Estudio",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 3.862,50",
+            "precio_uf_decimal": "3862.50",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P008",
+            "categoria_literal": "1 dormitorio",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 4.897,50",
+            "precio_uf_decimal": "4897.50",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "1",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P009",
+            "categoria_literal": "2 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 6.716,25",
+            "precio_uf_decimal": "6716.25",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "2",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "COTIZACIONES_POR_CATEGORIA_ACEPTADAS",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento",
+          "fuentes": "F014",
+          "evidencias": "E0219"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F014",
+            "evidencias": "E0219 | E0220"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 16,
+          "con_dormitorios_UI_numericos": 14,
+          "con_banos_UI_numericos": 16,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 16,
+            "tipologias_UI": 16,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 16,
+            "planos_con_util": 0,
+            "planos_con_total": 1,
+            "planos_con_terraza": 1,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 1,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "Recepción final",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H035"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00050",
+          "slug": "edificio-bold",
+          "campo_id": "entrega",
+          "valor_literal": "Inmediata",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F029",
+          "url": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-bold.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "false": 9,
+          "true": 8
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [
+        "BOLD-S1-TIPOLOGIA",
+        "BOLD-F-SUPERFICIES"
+      ],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-argomedo",
+      "proyecto": "Edificio Argomedo",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 3790,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias_texto": [
+          "2 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": null,
+        "numero_amenities_mencionados": 6,
+        "region": "Región Metropolitana",
+        "comuna": "Santiago"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P010",
+            "categoria_literal": "Precio desde",
+            "tipo_precio_declarado": "precio_desde_explicito",
+            "precio_uf_literal": "UF 4.432",
+            "precio_uf_decimal": "4432",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "2",
+            "banos_declarados": "2",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": true,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "DESDE_GLOBAL_EXPRESO_ACEPTADO",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento",
+          "fuentes": "F014",
+          "evidencias": "E0258"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F014",
+            "evidencias": "E0258 | E0259"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 1,
+          "con_dormitorios_UI_numericos": 1,
+          "con_banos_UI_numericos": 1,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 1,
+            "tipologias_UI": 1,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 1,
+            "planos_con_util": 0,
+            "planos_con_total": 0,
+            "planos_con_terraza": 0,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 0,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "Recepción final",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H040"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00056",
+          "slug": "edificio-argomedo",
+          "campo_id": "entrega",
+          "valor_literal": "Inmediata",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F030",
+          "url": "https://iris.yapo.cl/proyecto/647?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-argomedo.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "false": 10,
+          "true": 7
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [],
+      "complementarios_no_bloqueantes_ids": [
+        "ARG-C-C1"
+      ],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-indi",
+      "proyecto": "Edificio Indi",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 2560,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias_texto": [
+          "1 dormitorio",
+          "2 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 31,
+        "numero_amenities_mencionados": 8,
+        "region": "Región Metropolitana",
+        "comuna": "Independencia"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P011",
+            "categoria_literal": "Local comercial",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 8.560",
+            "precio_uf_decimal": "8560",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "Local comercial",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P012",
+            "categoria_literal": "1 dormitorio",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 3.544",
+            "precio_uf_decimal": "3544",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "1",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P013",
+            "categoria_literal": "2 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 3.944",
+            "precio_uf_decimal": "3944",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "2",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "COTIZACIONES_POR_CATEGORIA_ACEPTADAS",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento",
+          "fuentes": "F014",
+          "evidencias": "E0295"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F014",
+            "evidencias": "E0295 | E0296"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 17,
+          "con_dormitorios_UI_numericos": 14,
+          "con_banos_UI_numericos": 17,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 17,
+            "tipologias_UI": 17,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 17,
+            "planos_con_util": 0,
+            "planos_con_total": 0,
+            "planos_con_terraza": 0,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 0,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "Recepción final",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H046"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00063",
+          "slug": "edificio-indi",
+          "campo_id": "entrega",
+          "valor_literal": "Inmediata",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F031",
+          "url": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-indi.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "true": 12,
+          "false": 5
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [
+        "INDI-D-PLANO-A2"
+      ],
+      "complementarios_no_bloqueantes_ids": [
+        "INDI-A4-PLANO-C1"
+      ],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-indigo",
+      "proyecto": "Edificio Índigo",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 8905,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Entrega inmediata",
+        "entrega": "Inmediata",
+        "tipologias_texto": [
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 68,
+        "numero_amenities_mencionados": 4,
+        "region": "Los Lagos",
+        "comuna": "Puerto Varas"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P014",
+            "categoria_literal": "2 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 9.001",
+            "precio_uf_decimal": "9001",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "2",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P015",
+            "categoria_literal": "3 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 10.414,90",
+            "precio_uf_decimal": "10414.90",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "3",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "COTIZACIONES_POR_CATEGORIA_ACEPTADAS",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento | [\"Departamento\",\"Dúplex\"]",
+          "fuentes": "F014 | F010 p.2",
+          "evidencias": "E0333 | E0340"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F014 | F010 p.2",
+            "evidencias": "E0333 | E0334 | E0340"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 2,
+          "con_dormitorios_UI_numericos": 2,
+          "con_banos_UI_numericos": 2,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 2,
+            "tipologias_UI": 2,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 2,
+            "planos_con_util": 0,
+            "planos_con_total": 0,
+            "planos_con_terraza": 0,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 0,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "Recepción final",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H051"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00068",
+          "slug": "edificio-indigo",
+          "campo_id": "entrega",
+          "valor_literal": "Inmediata",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F032",
+          "url": "https://iris.yapo.cl/proyecto/653?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-indigo.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "true": 8,
+          "false": 9
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 9816,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Venta en verde",
+        "entrega": "Primer semestre 2027",
+        "tipologias_texto": [
+          "2 dormitorios",
+          "3 dormitorios",
+          "4 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": null,
+        "numero_amenities_mencionados": 6,
+        "region": "Los Lagos",
+        "comuna": "Puerto Varas"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P016",
+            "categoria_literal": "2 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 10.500",
+            "precio_uf_decimal": "10500",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "2",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P017",
+            "categoria_literal": "3 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 10.016",
+            "precio_uf_decimal": "10016",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "3",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P018",
+            "categoria_literal": "4 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 21.869",
+            "precio_uf_decimal": "21869",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "4",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "COTIZACIONES_POR_CATEGORIA_ACEPTADAS",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento | [\"Departamento\",\"Departamento con patio privado\",\"Dúplex\"] | Departamentos, unidades con patio privado y dúplex",
+          "fuentes": "F014 | F005 p.3 | F021 l.69",
+          "evidencias": "E0369 | E0373 | E0661"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F014 | F005 p.3 | F021 l.69",
+            "evidencias": "E0369 | E0370 | E0373 | E0661"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 36,
+          "con_dormitorios_UI_numericos": 36,
+          "con_banos_UI_numericos": 36,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 36,
+            "tipologias_UI": 36,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 36,
+            "planos_con_util": 0,
+            "planos_con_total": 19,
+            "planos_con_terraza": 19,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 19,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "en verde",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H057"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00076",
+          "slug": "inn-puerto-chico",
+          "campo_id": "entrega",
+          "valor_literal": "diciembre 2026",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F033",
+          "url": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/inn-puerto-chico.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "true": 10,
+          "false": 7
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [
+        "IR-C020",
+        "IR-C021",
+        "IR-C022"
+      ],
+      "complementarios_no_bloqueantes_ids": [
+        "D-03"
+      ],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    },
+    {
+      "slug": "edificio-nordico",
+      "proyecto": "Edificio Nórdico",
+      "catalogo_HEAD_heredado_no_actualizado_por_F049": {
+        "precioDesdeUF": 4746,
+        "tipoActivo_explicito": null,
+        "tipoActivo_usado_por_codigo": "Residencial",
+        "default_tipo_es_inferencia_de_codigo": true,
+        "estado": "Venta en blanco",
+        "entrega": null,
+        "tipologias_texto": [
+          "1 dormitorio",
+          "2 dormitorios",
+          "3 dormitorios"
+        ],
+        "superficieDesdeM2_sin_clasificar": 42,
+        "numero_amenities_mencionados": 8,
+        "region": "Los Lagos",
+        "comuna": "Puerto Varas"
+      },
+      "datos_comerciales_preparados_expediente_no_consumidos_por_codigo": {
+        "precios_F049": [
+          {
+            "id_precio_normalizado": "OWN4-P019",
+            "categoria_literal": "1 dormitorio",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 5.382",
+            "precio_uf_decimal": "5382",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "1",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          },
+          {
+            "id_precio_normalizado": "OWN4-P020",
+            "categoria_literal": "3 dormitorios",
+            "tipo_precio_declarado": "precio_por_categoria_explicita",
+            "precio_uf_literal": "UF 10.335",
+            "precio_uf_decimal": "10335",
+            "tipo_registro": "INMUEBLE",
+            "dormitorios_declarados": "3",
+            "banos_declarados": "",
+            "tipo_propiedad_explicito": "",
+            "modelo_declarado_literal": "",
+            "unidad_declarada_literal": "",
+            "id_fuente": "F049",
+            "fecha_comunicacion": "2026-11-16",
+            "condicion_estacionamiento": "adicional",
+            "condicion_bodega": "adicional",
+            "estacionamiento_incluido_en_precio": "false",
+            "bodega_incluida_en_precio": "false"
+          }
+        ],
+        "adicionales_F049_separados": [],
+        "precio_desde_global_expreso": false,
+        "sin_calcular_minimo_global": true,
+        "estado_precio": "COTIZACIONES_POR_CATEGORIA_ACEPTADAS",
+        "tipo_propiedad": {
+          "estado_documental": "Confirmado por documento",
+          "valor_literal": "Departamento",
+          "fuentes": "F014",
+          "evidencias": "E0423"
+        },
+        "tipo_activo": {
+          "dato_canonico": {
+            "estado_documental": "Parcial",
+            "valor_literal": "Residencial aplicado por defecto del código; oferta documental de departamentos.",
+            "fuentes": "F014",
+            "evidencias": "E0423 | E0424"
+          },
+          "regla": "No usar el default Residencial. Distinguir proyecto y opción; Living/Indi incluyen referencias de locales y departamentos."
+        },
+        "dormitorios_banos": {
+          "tarjetas_UI_observadas": 9,
+          "con_dormitorios_UI_numericos": 9,
+          "con_banos_UI_numericos": 9,
+          "estado": "PARCIAL_POR_REFERENCIA",
+          "regla": "No redondear 1,5D ni convertir descripción Estudio en 1D; mantener baños y tipo de la misma opción."
+        },
+        "superficies": {
+          "cobertura_observada": {
+            "tarjetas_UI": 9,
+            "tipologias_UI": 9,
+            "superficie_util_UI": 0,
+            "superficie_total_UI": 0,
+            "superficie_terraza_UI": 9,
+            "planos_con_util": 6,
+            "planos_con_total": 6,
+            "planos_con_terraza": 4,
+            "no_es_stock_sollahms": true,
+            "no_demuestra_inventario_completo": true
+          },
+          "perfiles_documentados": 6,
+          "estado": "PARCIAL_CON_ALCANCE",
+          "regla": "Internos e interior no sustituyen útil; ninguna suma para total; 30perfiles no son30unidades nuevas."
+        },
+        "estado_comercial": {
+          "valor_literal": "en verde",
+          "fuente": "F049",
+          "ids_hechos": [
+            "F4-H062"
+          ],
+          "fecha": "2026-11-16"
+        },
+        "entrega": {
+          "id_hecho": "IR-H00084",
+          "slug": "edificio-nordico",
+          "campo_id": "entrega",
+          "valor_literal": "junio 2028",
+          "rotulo_original": "Entrega",
+          "unidad": "",
+          "alcance": "Proyecto; solo afirmación publicada",
+          "seccion": "Características",
+          "fuente": "F034",
+          "url": "https://iris.yapo.cl/proyecto/1528?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-nordico.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        "amenities_con_valor_preparado": {
+          "true": 9,
+          "desconocido": 8
+        }
+      },
+      "no_certifica_uso_de_F049_por_implementacion": true,
+      "puede_conservarse_en_busquedas_sin_predicados_desconocidos": true,
+      "facetas_que_aun_no_existen_en_codigo": [
+        "amenities",
+        "banos",
+        "dormitorios",
+        "entrega",
+        "estacionamiento_bodega",
+        "superficie"
+      ],
+      "tipos_de_busqueda_a_distinguir": {
+        "actual": "Precio/estado/tipo yubicación usan valores delcatálogo HEAD; no afirmar que elresultado ya usa precios/estados F049.",
+        "documental_preparada": "Las referencias confirmadas permiten preparar predicados parciales solo dentro de su unidad/modelo/versión y alcance. No es un despliegue ni una prueba delbuscador avanzado."
+      },
+      "conflictos_esenciales_ids": [],
+      "complementarios_no_bloqueantes_ids": [],
+      "referencias": [
+        "data/proyectos.json",
+        "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+        "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv"
+      ]
+    }
+  ],
+  "advertencias_de_interpretacion": [
+    "Estos datos están preparados documentalmente; los actuales predicados delcatálogo no leen lasfuentes F049 ni lasfacetas avanzadas.",
+    "La ausencia de unfiltro enelHTML no convierte eldatodocumentado endesconocido, pero impide certificar queese filtro funcione actualmente.",
+    "No transformar precio porcategoría enun desde global, ni disponibilidadgeneral deparking/bodega enstock porunidad.",
+    "Los datos desconocidos no deben producir coincidencias positivas con elpredicado activo, ni excluir cuando eseatributo no se solicita.",
+    "El catálogo HEAD137 no sustituye elsnapshot131 ni amplía elalcance aotras inmobiliarias.",
+    "D03,ArgomedoC/C1 eIndiA4/C1 permanecen complementarios; ningún código se declaró equivalente."
+  ],
+  "nota_sincronizacion": "Root verificó remoto y árbol limpio antes delencargo. Esta revisión no escribe al repositorio."
+}

@@ -71,3 +71,9 @@ La regla histórica de solicitar vigencia para una cotización no se aplica retr
 La clasificación comercial reemplaza el bloqueo constructivo anterior: D-03, Argomedo C/C1 e Indi A4/C1 quedan complementarios, abiertos documentalmente y sin equivalencias inventadas. Los nueve casos que sí afectan D/B o superficies restringen solo el atributo/opción correspondiente. F3-C001 sigue adicional.
 
 Desconocido no equivale a false/cero/Residencial. Sin predicado activo no excluye al proyecto. El código actual todavía aplica Residencial a tipoActivo ausente: hallazgo documentado, no corregido en esta etapa. Las 131 identidades auditadas se distinguen de las 137 del archivo actual. Los 118 proyectos no Leben siguen sin auditoría comercial. No usar una propuesta false de brochure para invalidar la oferta adicional general declarada en F049.
+
+## Máscaras de atributo y existencia — fase 9, 17/11/2026
+
+En Bold F la cifra de terraza queda indeterminada, pero ambas cifras positivas conservan la presencia de terraza. Capitanes 501/601 mantiene sus 3D3B y terraza UI; el total del plano 201–301 no se transfiere. INN 806/906 mantiene sus propios D/B/terraza; los datos del plano 406 siguen limitados a su alcance. No exigir torre o interior como nuevos datos comerciales.
+
+El conflicto no invalida automáticamente toda la referencia o el proyecto. Un dato desconocido o en conflicto solo restringe el predicado que lo necesita. Las recomendaciones y consultas documentales no certifican filtros nuevos implementados ni stock.

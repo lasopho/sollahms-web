@@ -1,0 +1,232 @@
+{
+  "fecha": "2026-11-17",
+  "metodo": "Consultas de documentación sobre referencias existentes, en memoria. No ejecución de filtros de aplicación, navegador, generadores o publicación.",
+  "regla": "Todo predicado de opción debe resolverse en un mismo registro documental; las máscaras conservan literal pero impiden usar el atributo discrepante.",
+  "controles": [
+    {
+      "escenario": "edificio-living-town: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-mood: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-santo: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-baum: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-suecia: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "capitanes: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-bold: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-argomedo: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-indi: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-indigo: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "inn-puerto-chico: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "edificio-nordico: no exigir atributos inactivos",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Living: precio+D+B en una cotización sin exigir útil",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Living: A1no invalida otra cotización2D2B",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Living603: D2seconserva",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Living603: baño2no conciliado",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "Mood: D1B1+útil/total en perfil sin precio",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Mood: impedir cruce de precioF049 con útil de otro perfil",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "Mood303: B2conservado",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Mood303: D2no conciliado",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "Cap501: D3B3yT18,45propiosUI",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Cap501: no copiar total109,01 deP099",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "Bold608: D2B2conservado",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Bold608: terraza3,71no conciliada",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "Bold608: presencia de terraza sigue acreditada",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "INN806: D2B2T26,36propiosUI",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "INN806: no copiar total135,86 de406",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "INN: precio2D sin jardín privado declarado no basta para jardín",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "Nórdico: no cruzar precio1D con patio de perfil distinto",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "Nórdico: D/B+útil+total sin precio tienen perfil",
+      "correcto": true,
+      "observado": true,
+      "esperado": true,
+      "respaldo": null
+    },
+    {
+      "escenario": "Santo: sin cotización nueva no inventar precio",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    },
+    {
+      "escenario": "BAUM: no convertir Internos en útil",
+      "correcto": true,
+      "observado": false,
+      "esperado": false,
+      "respaldo": null
+    }
+  ],
+  "correctos": 32
+}

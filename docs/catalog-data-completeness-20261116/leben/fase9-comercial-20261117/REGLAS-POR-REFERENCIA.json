@@ -1,0 +1,2638 @@
+{
+  "fecha": "2026-11-17",
+  "base_commit_usuario": "26dba5d3684fcfa1eb69fe75e8a33aa01c64c18e",
+  "modo": "Solo lectura de tablas/dossier existentes; sin browser, imágenes ni repo edits",
+  "regla_general": "Indeterminado se refiere a usar un atributo como valor conciliado de la opción afectada, no a borrar su literal de fuente. El filtro activo sobre ese atributo no obtiene un positivo; si está inactivo, la referencia sigue evaluándose por sus otros atributos presentes. Nunca bloquear un proyecto entero por estos casos.",
+  "distinguir_lectura_y_asociacion": "Las filas PLANO conservan sus cifras y alcance como referencias documentales. Un valor de PLANO no se copia a ninguna UI solo por estar en ids_planos_vinculados. Un total leído en un plano puede describir ese perfil sin acreditar el total de una UI distinta. Las fuentes no prueban stock.",
+  "casos": [
+    {
+      "id_conflicto": "IR-C001",
+      "slug": "edificio-living-town",
+      "proyecto": "Living Town",
+      "unidad_o_modelo": "A1 / unidades 603 y 803",
+      "ui_registro_ids": [
+        "UI:edificio-living-town:603",
+        "UI:edificio-living-town:803"
+      ],
+      "plan_ids": [
+        "IR-P020"
+      ],
+      "atributos_que_requieren_precision": [
+        "banos"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-living-town:603",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "603",
+          "modelo_ui": "A1",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 9.74,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "superficie_terraza": 9.74,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:edificio-living-town:803",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "803",
+          "modelo_ui": "A1",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 9.74,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "superficie_terraza": 9.74,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P020",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "A1",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P001",
+        "OWN4-P002"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Baños de A1/603/803 en cualquier igualdad/rango que pretenda usar2UI o1gráfico como dato conciliado."
+      ],
+      "consultas_permitidas": [
+        "Unidad603 u803: dormitorios2 y terraza9,74 de la propia UI, sin predicado de baños.",
+        "Otra opción no afectada o referencia F0491D1B/2D2B puede satisfacer sus propios predicados sin atribuirse aA1."
+      ],
+      "pregunta_minima": "Para A1/603 y803, ¿qué número de baños corresponde a la versión aplicable? Aportar respaldo específico, sin repetir dormitorios, precio o dirección.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    {
+      "id_conflicto": "IR-C003",
+      "slug": "edificio-mood",
+      "proyecto": "Mood",
+      "unidad_o_modelo": "A / unidad303; gráfico rotulado DEPTO201",
+      "ui_registro_ids": [
+        "UI:edificio-mood:303"
+      ],
+      "plan_ids": [
+        "IR-P035"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-mood:303",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "303",
+          "modelo_ui": "A",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 4.03,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 2.0,
+            "superficie_terraza": 4.03
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P035",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "A",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 1.5,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 2.0,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P003",
+        "OWN4-P004"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Dormitorios y clasificación Estudio/1D/2D de la opciónA/303.",
+        "Transferencia del gráfico201 a303."
+      ],
+      "consultas_permitidas": [
+        "UI303: baños2 y terraza4,03, sin filtrar dormitorios.",
+        "El literal1,5D del gráfico se conserva como lectura; no confirma la unidad303.",
+        "Las categorías F0491D1B y2D2B siguen aceptadas en su propio alcance."
+      ],
+      "pregunta_minima": "Para A/303, precisar el número/clasificación comercial de dormitorios y si el gráfico rotulado DEPTO201 corresponde a303. No redondear1,5D ni volver a pedir sus2baños.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    {
+      "id_conflicto": "CAP-A-ALCANCE",
+      "slug": "capitanes",
+      "proyecto": "Capitanes",
+      "unidad_o_modelo": "A / unidades501 y601",
+      "ui_registro_ids": [
+        "UI:capitanes:501",
+        "UI:capitanes:601"
+      ],
+      "plan_ids": [
+        "IR-P099"
+      ],
+      "atributos_que_requieren_precision": [
+        "aplicabilidad_superficie_total"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:capitanes:501",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "501",
+          "modelo_ui": "A",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 18.45,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_terraza": 18.45
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:capitanes:601",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "601",
+          "modelo_ui": "A",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 18.45,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_terraza": 18.45
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P099",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "A",
+          "alcance_impreso_literal": "Deptos. 201 al 301",
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_util": null,
+            "superficie_total": 109.01,
+            "superficie_terraza": 18.45,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_total": 109.01,
+            "superficie_terraza": 18.45,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P006"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Consultas de total de501/601 usando109,01 desdeP099.",
+        "Precio501+totalP099 por enlace sin respaldo."
+      ],
+      "consultas_permitidas": [
+        "UI501 o601:3D3B yterraza18,45 en la misma fila UI.",
+        "OWN4-P006:precio12608 y3D3B deunidad501, sin atribuirle total109,01 deP099.",
+        "P099 conserva total109,01 yterraza18,45 como perfil gráfico de su alcance201al301, sin convertirlo en las unidades501/601."
+      ],
+      "pregunta_minima": "Para501/601 que se vayan a ofertar, indicar total rotulado aplicable o confirmar expresamente el alcance del planoA que imprime201al301. No repetir3D3B ni terrazaUI18,45.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    {
+      "id_conflicto": "BOLD-S1-TIPOLOGIA",
+      "slug": "edificio-bold",
+      "proyecto": "Bold",
+      "unidad_o_modelo": "S1 / unidad312",
+      "ui_registro_ids": [
+        "UI:edificio-bold:312"
+      ],
+      "plan_ids": [
+        "IR-P101"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios",
+        "tipologia_estudio_1D"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-bold:312",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "312",
+          "modelo_ui": "S1",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": null,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.68,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 1.0,
+            "superficie_terraza": 3.68
+          },
+          "campos_ausentes_no_inferibles": [
+            "dormitorios",
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P101",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "S1",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 1.0,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 1.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P007",
+        "OWN4-P008",
+        "OWN4-P009"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "312/S1 como Estudio,0D o1D para coincidencias comerciales conciliadas."
+      ],
+      "consultas_permitidas": [
+        "UI312:baño1 yterraza3,68, sin predicado de dormitorios/Estudio.",
+        "OWN4-P007 conserva categoría comercialEstudio yUF3862,50 sin convertir su vacío de dormitorios en0 ni asignarla a312."
+      ],
+      "pregunta_minima": "Para312/S1, precisar si la oferta corresponde aEstudio o1D, con respaldo específico. No pedir el baño1 que coincide ni volver a pedir el precio deEstudio ya declarado.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    {
+      "id_conflicto": "BOLD-F-SUPERFICIES",
+      "slug": "edificio-bold",
+      "proyecto": "Bold",
+      "unidad_o_modelo": "F / unidades207,307,508,608",
+      "ui_registro_ids": [
+        "UI:edificio-bold:207",
+        "UI:edificio-bold:307",
+        "UI:edificio-bold:508",
+        "UI:edificio-bold:608"
+      ],
+      "plan_ids": [
+        "IR-P106",
+        "IR-P107",
+        "IR-P108"
+      ],
+      "atributos_que_requieren_precision": [
+        "superficie_terraza",
+        "aplicabilidad_superficie_total"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-bold:207",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "207",
+          "modelo_ui": "F",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.71,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:edificio-bold:307",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "307",
+          "modelo_ui": "F",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.71,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:edificio-bold:508",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "508",
+          "modelo_ui": "F",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.71,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:edificio-bold:608",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "608",
+          "modelo_ui": "F",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.71,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P106",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "F",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P107",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "F",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P108",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "F",
+          "alcance_impreso_literal": "Deptos. 207 al 407, 508 y 608",
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": 65.52,
+            "superficie_terraza": 3.12,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_total": 65.52,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P007",
+        "OWN4-P008",
+        "OWN4-P009"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Terraza3,71UI frente3,12P108: discrepancia directa en608; el alcance impreso incluye508 y un rango207al407 que no se enumera.",
+        "Se retiene de forma conservadora el predicado numérico terraza de las cuatro UI afectadas por el caso hasta precisar versión; no se borran sus literales3,71.",
+        "Uso de total65,52 para las unidades deP106/P107 o todas lasF sin aplicabilidad expresa."
+      ],
+      "consultas_permitidas": [
+        "UI207/307/508/608:2D2B; consultas sin predicado de terraza conflictiva o total transferido.",
+        "P106 yP107 conservan2D2B; carecen de cuadro numérico y no heredan el deP108.",
+        "P108 conserva su total65,52 y2D2B como perfil gráfico de alcance impreso, sin trasladarlo automáticamente a las UI."
+      ],
+      "pregunta_minima": "Para las opcionesF207/307/508/608 que se vayan a ofertar, precisar qué terraza y total rotulados/versiones aplican, distinguiendoP106,P107 yP108. No repetir2D2B ni pedir material/interior.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    {
+      "id_conflicto": "INDI-D-PLANO-A2",
+      "slug": "edificio-indi",
+      "proyecto": "Indi",
+      "unidad_o_modelo": "D(UI) / A2(gráfico), unidad607",
+      "ui_registro_ids": [
+        "UI:edificio-indi:607"
+      ],
+      "plan_ids": [
+        "IR-P114"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-indi:607",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "607",
+          "modelo_ui": "D",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 1.79,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 1.0,
+            "superficie_terraza": 1.79
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P114",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "A2",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 1.0,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 1.0,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P011",
+        "OWN4-P012",
+        "OWN4-P013"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "607 como2DUI o1Ddelgráfico en una coincidencia conciliada."
+      ],
+      "consultas_permitidas": [
+        "UI607:baño1 yterraza1,79, sin predicado de dormitorios.",
+        "P114 conserva A2/1D1B como lectura de su gráfico; no resuelve la asociación a607.",
+        "F0491D3544 y2D3944 son categorías independientes, sin asignarlas a607."
+      ],
+      "pregunta_minima": "Para607, precisar dormitorios y correspondenciaD/A2 o aportar el plano aplicable. No repetir baño1 ni elegir por el nombre modelo-d del archivo.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    {
+      "id_conflicto": "IR-C020",
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "unidad_o_modelo": "S / unidad605, TorreA en gráfico",
+      "ui_registro_ids": [
+        "UI:inn-puerto-chico:605"
+      ],
+      "plan_ids": [
+        "IR-P138"
+      ],
+      "atributos_que_requieren_precision": [
+        "banos"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:inn-puerto-chico:605",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "605",
+          "modelo_ui": "S",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 14.52,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "superficie_terraza": 14.52
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P138",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "S",
+          "alcance_impreso_literal": "Torre A - Depto 605, 705",
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": 144.16,
+            "superficie_terraza": 14.52,
+            "tipo_propiedad_literal": "Departamento dúplex + sala de estar"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "superficie_total": 144.16,
+            "superficie_terraza": 14.52,
+            "tipo_propiedad_literal": "Departamento dúplex + sala de estar"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P016",
+        "OWN4-P017",
+        "OWN4-P018"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Baños2 o3 deS/605 y consultas que exijan ese dato."
+      ],
+      "consultas_permitidas": [
+        "UI605:3D yterraza14,52 sin predicado de baños.",
+        "P138:3D,total144,16,terraza14,52 de su propio alcance605/705, sin completar baños o stock.",
+        "F0493D10016 no declara baño ni vincula precio a605; mantener su propio alcance."
+      ],
+      "pregunta_minima": "ParaS/605, indicar baños aplicables con respaldo específico, frente3UI/2plano. No repetir3dormitorios ni las áreas ya rotuladas.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    {
+      "id_conflicto": "IR-C021",
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "unidad_o_modelo": "R / unidad604, TorreA en gráfico",
+      "ui_registro_ids": [
+        "UI:inn-puerto-chico:604"
+      ],
+      "plan_ids": [
+        "IR-P139"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:inn-puerto-chico:604",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "604",
+          "modelo_ui": "R",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 4.0,
+            "banos": 4.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 20.03,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 4.0,
+            "superficie_terraza": 20.03
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P139",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "R",
+          "alcance_impreso_literal": "Torre A - Depto 604, 704",
+          "literales_estructurados_conservados": {
+            "dormitorios": 5.0,
+            "banos": 4.0,
+            "superficie_util": null,
+            "superficie_total": 152.3,
+            "superficie_terraza": 20.03,
+            "tipo_propiedad_literal": "Departamento dúplex"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 4.0,
+            "superficie_total": 152.3,
+            "superficie_terraza": 20.03,
+            "tipo_propiedad_literal": "Departamento dúplex"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P016",
+        "OWN4-P017",
+        "OWN4-P018"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "604/R como4DUI o5Dplano y su correlación con el precio de categoría4D."
+      ],
+      "consultas_permitidas": [
+        "UI604:4baños yterraza20,03, sin predicado dormitorios.",
+        "P139:4baños,total152,30,terraza20,03 en el perfil gráfico; dormitorios quedan no conciliados para604.",
+        "OWN4-P018:categoría4D21869 sigue aceptada, sin asignarla automáticamente aR/604."
+      ],
+      "pregunta_minima": "ParaR/604, precisar dormitorios aplicables con respaldo específico, frente4UI/5plano. No repetir4baños ni áreas ya rotuladas.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    {
+      "id_conflicto": "IR-C022",
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "unidad_o_modelo": "Q / unidad603, TorreA en gráfico",
+      "ui_registro_ids": [
+        "UI:inn-puerto-chico:603"
+      ],
+      "plan_ids": [
+        "IR-P140"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:inn-puerto-chico:603",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "603",
+          "modelo_ui": "Q",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 4.0,
+            "banos": 4.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 21.14,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 4.0,
+            "superficie_terraza": 21.14
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P140",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "Q",
+          "alcance_impreso_literal": "Torre A - Depto 603, 703",
+          "literales_estructurados_conservados": {
+            "dormitorios": 5.0,
+            "banos": 4.0,
+            "superficie_util": null,
+            "superficie_total": 159.74,
+            "superficie_terraza": 21.14,
+            "tipo_propiedad_literal": "Departamento dúplex"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 4.0,
+            "superficie_total": 159.74,
+            "superficie_terraza": 21.14,
+            "tipo_propiedad_literal": "Departamento dúplex"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P016",
+        "OWN4-P017",
+        "OWN4-P018"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "603/Q como4DUI o5Dplano y su correlación con el precio de categoría4D."
+      ],
+      "consultas_permitidas": [
+        "UI603:4baños yterraza21,14, sin predicado dormitorios.",
+        "P140:4baños,total159,74,terraza21,14 en su propio perfil; dormitorios quedan no conciliados para603.",
+        "OWN4-P018:categoría4D21869 sigue aceptada, sin asignarla automáticamente aQ/603."
+      ],
+      "pregunta_minima": "ParaQ/603, precisar dormitorios aplicables con respaldo específico, frente4UI/5plano. No repetir4baños ni áreas ya rotuladas.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    }
+  ],
+  "por_id_conflicto": {
+    "IR-C001": {
+      "id_conflicto": "IR-C001",
+      "slug": "edificio-living-town",
+      "proyecto": "Living Town",
+      "unidad_o_modelo": "A1 / unidades 603 y 803",
+      "ui_registro_ids": [
+        "UI:edificio-living-town:603",
+        "UI:edificio-living-town:803"
+      ],
+      "plan_ids": [
+        "IR-P020"
+      ],
+      "atributos_que_requieren_precision": [
+        "banos"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-living-town:603",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "603",
+          "modelo_ui": "A1",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 9.74,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "superficie_terraza": 9.74,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:edificio-living-town:803",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "803",
+          "modelo_ui": "A1",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 9.74,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "superficie_terraza": 9.74,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P020",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "A1",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P001",
+        "OWN4-P002"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Baños de A1/603/803 en cualquier igualdad/rango que pretenda usar2UI o1gráfico como dato conciliado."
+      ],
+      "consultas_permitidas": [
+        "Unidad603 u803: dormitorios2 y terraza9,74 de la propia UI, sin predicado de baños.",
+        "Otra opción no afectada o referencia F0491D1B/2D2B puede satisfacer sus propios predicados sin atribuirse aA1."
+      ],
+      "pregunta_minima": "Para A1/603 y803, ¿qué número de baños corresponde a la versión aplicable? Aportar respaldo específico, sin repetir dormitorios, precio o dirección.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    "IR-C003": {
+      "id_conflicto": "IR-C003",
+      "slug": "edificio-mood",
+      "proyecto": "Mood",
+      "unidad_o_modelo": "A / unidad303; gráfico rotulado DEPTO201",
+      "ui_registro_ids": [
+        "UI:edificio-mood:303"
+      ],
+      "plan_ids": [
+        "IR-P035"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-mood:303",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "303",
+          "modelo_ui": "A",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 4.03,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 2.0,
+            "superficie_terraza": 4.03
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P035",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "A",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 1.5,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 2.0,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P003",
+        "OWN4-P004"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Dormitorios y clasificación Estudio/1D/2D de la opciónA/303.",
+        "Transferencia del gráfico201 a303."
+      ],
+      "consultas_permitidas": [
+        "UI303: baños2 y terraza4,03, sin filtrar dormitorios.",
+        "El literal1,5D del gráfico se conserva como lectura; no confirma la unidad303.",
+        "Las categorías F0491D1B y2D2B siguen aceptadas en su propio alcance."
+      ],
+      "pregunta_minima": "Para A/303, precisar el número/clasificación comercial de dormitorios y si el gráfico rotulado DEPTO201 corresponde a303. No redondear1,5D ni volver a pedir sus2baños.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    "CAP-A-ALCANCE": {
+      "id_conflicto": "CAP-A-ALCANCE",
+      "slug": "capitanes",
+      "proyecto": "Capitanes",
+      "unidad_o_modelo": "A / unidades501 y601",
+      "ui_registro_ids": [
+        "UI:capitanes:501",
+        "UI:capitanes:601"
+      ],
+      "plan_ids": [
+        "IR-P099"
+      ],
+      "atributos_que_requieren_precision": [
+        "aplicabilidad_superficie_total"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:capitanes:501",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "501",
+          "modelo_ui": "A",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 18.45,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_terraza": 18.45
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:capitanes:601",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "601",
+          "modelo_ui": "A",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 18.45,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_terraza": 18.45
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P099",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "A",
+          "alcance_impreso_literal": "Deptos. 201 al 301",
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_util": null,
+            "superficie_total": 109.01,
+            "superficie_terraza": 18.45,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_total": 109.01,
+            "superficie_terraza": 18.45,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P006"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Consultas de total de501/601 usando109,01 desdeP099.",
+        "Precio501+totalP099 por enlace sin respaldo."
+      ],
+      "consultas_permitidas": [
+        "UI501 o601:3D3B yterraza18,45 en la misma fila UI.",
+        "OWN4-P006:precio12608 y3D3B deunidad501, sin atribuirle total109,01 deP099.",
+        "P099 conserva total109,01 yterraza18,45 como perfil gráfico de su alcance201al301, sin convertirlo en las unidades501/601."
+      ],
+      "pregunta_minima": "Para501/601 que se vayan a ofertar, indicar total rotulado aplicable o confirmar expresamente el alcance del planoA que imprime201al301. No repetir3D3B ni terrazaUI18,45.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    "BOLD-S1-TIPOLOGIA": {
+      "id_conflicto": "BOLD-S1-TIPOLOGIA",
+      "slug": "edificio-bold",
+      "proyecto": "Bold",
+      "unidad_o_modelo": "S1 / unidad312",
+      "ui_registro_ids": [
+        "UI:edificio-bold:312"
+      ],
+      "plan_ids": [
+        "IR-P101"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios",
+        "tipologia_estudio_1D"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-bold:312",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "312",
+          "modelo_ui": "S1",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": null,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.68,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 1.0,
+            "superficie_terraza": 3.68
+          },
+          "campos_ausentes_no_inferibles": [
+            "dormitorios",
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P101",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "S1",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 1.0,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 1.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P007",
+        "OWN4-P008",
+        "OWN4-P009"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "312/S1 como Estudio,0D o1D para coincidencias comerciales conciliadas."
+      ],
+      "consultas_permitidas": [
+        "UI312:baño1 yterraza3,68, sin predicado de dormitorios/Estudio.",
+        "OWN4-P007 conserva categoría comercialEstudio yUF3862,50 sin convertir su vacío de dormitorios en0 ni asignarla a312."
+      ],
+      "pregunta_minima": "Para312/S1, precisar si la oferta corresponde aEstudio o1D, con respaldo específico. No pedir el baño1 que coincide ni volver a pedir el precio deEstudio ya declarado.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    "BOLD-F-SUPERFICIES": {
+      "id_conflicto": "BOLD-F-SUPERFICIES",
+      "slug": "edificio-bold",
+      "proyecto": "Bold",
+      "unidad_o_modelo": "F / unidades207,307,508,608",
+      "ui_registro_ids": [
+        "UI:edificio-bold:207",
+        "UI:edificio-bold:307",
+        "UI:edificio-bold:508",
+        "UI:edificio-bold:608"
+      ],
+      "plan_ids": [
+        "IR-P106",
+        "IR-P107",
+        "IR-P108"
+      ],
+      "atributos_que_requieren_precision": [
+        "superficie_terraza",
+        "aplicabilidad_superficie_total"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-bold:207",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "207",
+          "modelo_ui": "F",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.71,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:edificio-bold:307",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "307",
+          "modelo_ui": "F",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.71,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:edificio-bold:508",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "508",
+          "modelo_ui": "F",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.71,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "UI:edificio-bold:608",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "608",
+          "modelo_ui": "F",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 3.71,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P106",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "F",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P107",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "F",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P108",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "F",
+          "alcance_impreso_literal": "Deptos. 207 al 407, 508 y 608",
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": 65.52,
+            "superficie_terraza": 3.12,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "superficie_terraza"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 2.0,
+            "banos": 2.0,
+            "superficie_total": 65.52,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P007",
+        "OWN4-P008",
+        "OWN4-P009"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Terraza3,71UI frente3,12P108: discrepancia directa en608; el alcance impreso incluye508 y un rango207al407 que no se enumera.",
+        "Se retiene de forma conservadora el predicado numérico terraza de las cuatro UI afectadas por el caso hasta precisar versión; no se borran sus literales3,71.",
+        "Uso de total65,52 para las unidades deP106/P107 o todas lasF sin aplicabilidad expresa."
+      ],
+      "consultas_permitidas": [
+        "UI207/307/508/608:2D2B; consultas sin predicado de terraza conflictiva o total transferido.",
+        "P106 yP107 conservan2D2B; carecen de cuadro numérico y no heredan el deP108.",
+        "P108 conserva su total65,52 y2D2B como perfil gráfico de alcance impreso, sin trasladarlo automáticamente a las UI."
+      ],
+      "pregunta_minima": "Para las opcionesF207/307/508/608 que se vayan a ofertar, precisar qué terraza y total rotulados/versiones aplican, distinguiendoP106,P107 yP108. No repetir2D2B ni pedir material/interior.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    "INDI-D-PLANO-A2": {
+      "id_conflicto": "INDI-D-PLANO-A2",
+      "slug": "edificio-indi",
+      "proyecto": "Indi",
+      "unidad_o_modelo": "D(UI) / A2(gráfico), unidad607",
+      "ui_registro_ids": [
+        "UI:edificio-indi:607"
+      ],
+      "plan_ids": [
+        "IR-P114"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:edificio-indi:607",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "607",
+          "modelo_ui": "D",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 2.0,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 1.79,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 1.0,
+            "superficie_terraza": 1.79
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P114",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "A2",
+          "alcance_impreso_literal": "",
+          "literales_estructurados_conservados": {
+            "dormitorios": 1.0,
+            "banos": 1.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": null,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 1.0,
+            "tipo_propiedad_literal": "Departamento"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "superficie_terraza"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P011",
+        "OWN4-P012",
+        "OWN4-P013"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "607 como2DUI o1Ddelgráfico en una coincidencia conciliada."
+      ],
+      "consultas_permitidas": [
+        "UI607:baño1 yterraza1,79, sin predicado de dormitorios.",
+        "P114 conserva A2/1D1B como lectura de su gráfico; no resuelve la asociación a607.",
+        "F0491D3544 y2D3944 son categorías independientes, sin asignarlas a607."
+      ],
+      "pregunta_minima": "Para607, precisar dormitorios y correspondenciaD/A2 o aportar el plano aplicable. No repetir baño1 ni elegir por el nombre modelo-d del archivo.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    "IR-C020": {
+      "id_conflicto": "IR-C020",
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "unidad_o_modelo": "S / unidad605, TorreA en gráfico",
+      "ui_registro_ids": [
+        "UI:inn-puerto-chico:605"
+      ],
+      "plan_ids": [
+        "IR-P138"
+      ],
+      "atributos_que_requieren_precision": [
+        "banos"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:inn-puerto-chico:605",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "605",
+          "modelo_ui": "S",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 3.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 14.52,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "superficie_terraza": 14.52
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P138",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "S",
+          "alcance_impreso_literal": "Torre A - Depto 605, 705",
+          "literales_estructurados_conservados": {
+            "dormitorios": 3.0,
+            "banos": 2.0,
+            "superficie_util": null,
+            "superficie_total": 144.16,
+            "superficie_terraza": 14.52,
+            "tipo_propiedad_literal": "Departamento dúplex + sala de estar"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "banos"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "dormitorios": 3.0,
+            "superficie_total": 144.16,
+            "superficie_terraza": 14.52,
+            "tipo_propiedad_literal": "Departamento dúplex + sala de estar"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P016",
+        "OWN4-P017",
+        "OWN4-P018"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "Baños2 o3 deS/605 y consultas que exijan ese dato."
+      ],
+      "consultas_permitidas": [
+        "UI605:3D yterraza14,52 sin predicado de baños.",
+        "P138:3D,total144,16,terraza14,52 de su propio alcance605/705, sin completar baños o stock.",
+        "F0493D10016 no declara baño ni vincula precio a605; mantener su propio alcance."
+      ],
+      "pregunta_minima": "ParaS/605, indicar baños aplicables con respaldo específico, frente3UI/2plano. No repetir3dormitorios ni las áreas ya rotuladas.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    "IR-C021": {
+      "id_conflicto": "IR-C021",
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "unidad_o_modelo": "R / unidad604, TorreA en gráfico",
+      "ui_registro_ids": [
+        "UI:inn-puerto-chico:604"
+      ],
+      "plan_ids": [
+        "IR-P139"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:inn-puerto-chico:604",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "604",
+          "modelo_ui": "R",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 4.0,
+            "banos": 4.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 20.03,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 4.0,
+            "superficie_terraza": 20.03
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P139",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "R",
+          "alcance_impreso_literal": "Torre A - Depto 604, 704",
+          "literales_estructurados_conservados": {
+            "dormitorios": 5.0,
+            "banos": 4.0,
+            "superficie_util": null,
+            "superficie_total": 152.3,
+            "superficie_terraza": 20.03,
+            "tipo_propiedad_literal": "Departamento dúplex"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 4.0,
+            "superficie_total": 152.3,
+            "superficie_terraza": 20.03,
+            "tipo_propiedad_literal": "Departamento dúplex"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P016",
+        "OWN4-P017",
+        "OWN4-P018"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "604/R como4DUI o5Dplano y su correlación con el precio de categoría4D."
+      ],
+      "consultas_permitidas": [
+        "UI604:4baños yterraza20,03, sin predicado dormitorios.",
+        "P139:4baños,total152,30,terraza20,03 en el perfil gráfico; dormitorios quedan no conciliados para604.",
+        "OWN4-P018:categoría4D21869 sigue aceptada, sin asignarla automáticamente aR/604."
+      ],
+      "pregunta_minima": "ParaR/604, precisar dormitorios aplicables con respaldo específico, frente4UI/5plano. No repetir4baños ni áreas ya rotuladas.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    },
+    "IR-C022": {
+      "id_conflicto": "IR-C022",
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "unidad_o_modelo": "Q / unidad603, TorreA en gráfico",
+      "ui_registro_ids": [
+        "UI:inn-puerto-chico:603"
+      ],
+      "plan_ids": [
+        "IR-P140"
+      ],
+      "atributos_que_requieren_precision": [
+        "dormitorios"
+      ],
+      "por_referencia": [
+        {
+          "registro_id": "UI:inn-puerto-chico:603",
+          "origen": "UNIDAD_UI",
+          "unidad_ui": "603",
+          "modelo_ui": "Q",
+          "modelo_plano": null,
+          "alcance_impreso_literal": null,
+          "literales_estructurados_conservados": {
+            "dormitorios": 4.0,
+            "banos": 4.0,
+            "superficie_util": null,
+            "superficie_total": null,
+            "superficie_terraza": 21.14,
+            "tipo_propiedad_literal": ""
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 4.0,
+            "superficie_terraza": 21.14
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util",
+            "superficie_total",
+            "tipo_propiedad_literal"
+          ],
+          "nota_alcance": "Los predicados no afectados pueden usar datos de esta misma UI; útil/total ausentes siguen null. No copiar atributos desde el plano vinculado.",
+          "no_borrar_literal": true
+        },
+        {
+          "registro_id": "IR-P140",
+          "origen": "PLANO_UNIDAD",
+          "unidad_ui": null,
+          "modelo_ui": null,
+          "modelo_plano": "Q",
+          "alcance_impreso_literal": "Torre A - Depto 603, 703",
+          "literales_estructurados_conservados": {
+            "dormitorios": 5.0,
+            "banos": 4.0,
+            "superficie_util": null,
+            "superficie_total": 159.74,
+            "superficie_terraza": 21.14,
+            "tipo_propiedad_literal": "Departamento dúplex"
+          },
+          "campos_indeterminados_para_opcion_afectada": [
+            "dormitorios"
+          ],
+          "campos_disponibles_en_misma_fuente": {
+            "banos": 4.0,
+            "superficie_total": 159.74,
+            "superficie_terraza": 21.14,
+            "tipo_propiedad_literal": "Departamento dúplex"
+          },
+          "campos_ausentes_no_inferibles": [
+            "superficie_util"
+          ],
+          "nota_alcance": "El campo numérico leído no se altera. La máscara de conflicto impide usarlo como valor conciliado de la opción afectada. Las demás cifras solo describen este perfil gráfico y su alcance impreso, sin generar una UI, precio o stock.",
+          "no_borrar_literal": true
+        }
+      ],
+      "owner_referencias_que_no_se_bloquean_por_este_caso": [
+        "OWN4-P016",
+        "OWN4-P017",
+        "OWN4-P018"
+      ],
+      "owner_regla": "Las cotizaciones/categorías F049 se conservan en su propio alcance. No heredan el conflicto de un modelo no asociado ni lo resuelven; tampoco se unen sus precios a superficies de otras referencias.",
+      "consultas_afectadas": [
+        "603/Q como4DUI o5Dplano y su correlación con el precio de categoría4D."
+      ],
+      "consultas_permitidas": [
+        "UI603:4baños yterraza21,14, sin predicado dormitorios.",
+        "P140:4baños,total159,74,terraza21,14 en su propio perfil; dormitorios quedan no conciliados para603.",
+        "OWN4-P018:categoría4D21869 sigue aceptada, sin asignarla automáticamente aQ/603."
+      ],
+      "pregunta_minima": "ParaQ/603, precisar dormitorios aplicables con respaldo específico, frente4UI/5plano. No repetir4baños ni áreas ya rotuladas.",
+      "bloquea_todo_proyecto": false,
+      "bloquea_toda_opcion": false,
+      "resuelto": false
+    }
+  },
+  "limitacion_adicional": {
+    "id_limite": "F3-C001",
+    "es_conflicto_numero10": false,
+    "ui_registro_ids": [
+      "UI:inn-puerto-chico:406",
+      "UI:inn-puerto-chico:806",
+      "UI:inn-puerto-chico:906"
+    ],
+    "plan_ids": [
+      "IR-P125"
+    ],
+    "atributos_indeterminados_por_transferencia_a_806_906": [
+      "superficie_total",
+      "patio_jardin_privado",
+      "etapa_torre",
+      "superficie_interior"
+    ],
+    "no_es_transferencia_y_sigue_seguro": [
+      "dormitorios2 de cadaUI",
+      "banos2 de cadaUI",
+      "superficie_terraza26,36 de cadaUI",
+      "total135,86/terraza26,36/patio20,7 del perfil gráfico406"
+    ],
+    "por_referencia": [
+      {
+        "registro_id": "UI:inn-puerto-chico:406",
+        "origen": "UNIDAD_UI",
+        "unidad_ui": "406",
+        "modelo_ui": "F",
+        "modelo_plano": null,
+        "alcance_impreso_literal": null,
+        "literales_estructurados_conservados": {
+          "dormitorios": 2.0,
+          "banos": 2.0,
+          "superficie_util": null,
+          "superficie_total": null,
+          "superficie_terraza": 26.36,
+          "tipo_propiedad_literal": ""
+        },
+        "campos_indeterminados_para_opcion_afectada": [],
+        "campos_disponibles_en_misma_fuente": {
+          "dormitorios": 2.0,
+          "banos": 2.0,
+          "superficie_terraza": 26.36
+        },
+        "campos_ausentes_no_inferibles": [
+          "superficie_util",
+          "superficie_total",
+          "tipo_propiedad_literal"
+        ],
+        "nota_alcance": "Sus2D2B yterraza26,36 proceden de la propiaUI y no quedan bloqueados. Total/útil ausentes siguennull; no transferir patio, torre o total del plano406.",
+        "no_borrar_literal": true
+      },
+      {
+        "registro_id": "UI:inn-puerto-chico:806",
+        "origen": "UNIDAD_UI",
+        "unidad_ui": "806",
+        "modelo_ui": "F",
+        "modelo_plano": null,
+        "alcance_impreso_literal": null,
+        "literales_estructurados_conservados": {
+          "dormitorios": 2.0,
+          "banos": 2.0,
+          "superficie_util": null,
+          "superficie_total": null,
+          "superficie_terraza": 26.36,
+          "tipo_propiedad_literal": ""
+        },
+        "campos_indeterminados_para_opcion_afectada": [],
+        "campos_disponibles_en_misma_fuente": {
+          "dormitorios": 2.0,
+          "banos": 2.0,
+          "superficie_terraza": 26.36
+        },
+        "campos_ausentes_no_inferibles": [
+          "superficie_util",
+          "superficie_total",
+          "tipo_propiedad_literal"
+        ],
+        "nota_alcance": "Sus2D2B yterraza26,36 proceden de la propiaUI y no quedan bloqueados. Total/útil ausentes siguennull; no transferir patio, torre o total del plano406.",
+        "no_borrar_literal": true
+      },
+      {
+        "registro_id": "UI:inn-puerto-chico:906",
+        "origen": "UNIDAD_UI",
+        "unidad_ui": "906",
+        "modelo_ui": "F",
+        "modelo_plano": null,
+        "alcance_impreso_literal": null,
+        "literales_estructurados_conservados": {
+          "dormitorios": 2.0,
+          "banos": 2.0,
+          "superficie_util": null,
+          "superficie_total": null,
+          "superficie_terraza": 26.36,
+          "tipo_propiedad_literal": ""
+        },
+        "campos_indeterminados_para_opcion_afectada": [],
+        "campos_disponibles_en_misma_fuente": {
+          "dormitorios": 2.0,
+          "banos": 2.0,
+          "superficie_terraza": 26.36
+        },
+        "campos_ausentes_no_inferibles": [
+          "superficie_util",
+          "superficie_total",
+          "tipo_propiedad_literal"
+        ],
+        "nota_alcance": "Sus2D2B yterraza26,36 proceden de la propiaUI y no quedan bloqueados. Total/útil ausentes siguennull; no transferir patio, torre o total del plano406.",
+        "no_borrar_literal": true
+      },
+      {
+        "registro_id": "IR-P125",
+        "origen": "PLANO_UNIDAD",
+        "unidad_ui": null,
+        "modelo_ui": null,
+        "modelo_plano": "F",
+        "alcance_impreso_literal": "Torre B - Depto 406",
+        "literales_estructurados_conservados": {
+          "dormitorios": 2.0,
+          "banos": 2.0,
+          "superficie_util": null,
+          "superficie_total": 135.86,
+          "superficie_terraza": 26.36,
+          "tipo_propiedad_literal": "Departamento con patio"
+        },
+        "campos_indeterminados_para_opcion_afectada": [],
+        "campos_disponibles_en_misma_fuente": {
+          "dormitorios": 2.0,
+          "banos": 2.0,
+          "superficie_total": 135.86,
+          "superficie_terraza": 26.36,
+          "tipo_propiedad_literal": "Departamento con patio"
+        },
+        "campos_ausentes_no_inferibles": [
+          "superficie_util"
+        ],
+        "nota_alcance": "Plano explícito TorreB/406:2D2B,total135,86,terraza26,36 ypatio20,7. Esos datos pueden conservarse en esta referencia406; no se bloquea el perfil por estar también enlazado a806/906.",
+        "no_borrar_literal": true
+      }
+    ],
+    "consultas_afectadas": [
+      "Total135,86 para806/906, jardín/patio20,7 o torreB asignados mediante el enlace compartido.",
+      "Precio2DF049+total135,86 como si la cotización identificase406 sin respaldo de correspondencia."
+    ],
+    "consultas_permitidas": [
+      "UI806/906:2D2B yterraza26,36 en su propiafila, sin exigir total/patio/todoelconjunto.",
+      "IR-P125/TorreB406:2D2B,total135,86,terraza26,36 ypatio20,7 como perfil documental de ese alcance, sin afirmar stock."
+    ],
+    "pregunta_minima": "Solo si806/906 se van a ofertar con total o patio: aportar su total/patio rotulado o aplicabilidad expresa del planoF/406. No volver a pedir2D2B ni su terrazaUI26,36.",
+    "excepcion_metadata_heredada": "UI:inn-puerto-chico:806 tiene ids_conflicto_o_limite_por_alcance vacío en F4, aunque el dossier sí incluye806 en F3-C001. Aplicar la regla de alcance explícita, sin editar la fila histórica.",
+    "bloquea_todo_proyecto": false,
+    "bloquea_toda_opcion": false,
+    "resuelto": false
+  },
+  "referencias_owner_no_bloqueadas_por_conflicto": [
+    {
+      "registro_id": "OWN4-P001",
+      "slug": "edificio-living-town",
+      "precio_uf": "3949",
+      "categoria_literal": "1 dormitorio",
+      "dormitorios": "1",
+      "banos": "1",
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P002",
+      "slug": "edificio-living-town",
+      "precio_uf": "4991.65",
+      "categoria_literal": "2 dormitorios",
+      "dormitorios": "2",
+      "banos": "2",
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P003",
+      "slug": "edificio-mood",
+      "precio_uf": "3753.20",
+      "categoria_literal": "1 dormitorio",
+      "dormitorios": "1",
+      "banos": "1",
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P004",
+      "slug": "edificio-mood",
+      "precio_uf": "4678.45",
+      "categoria_literal": "2 dormitorios",
+      "dormitorios": "2",
+      "banos": "2",
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P005",
+      "slug": "edificio-suecia",
+      "precio_uf": "11358.90",
+      "categoria_literal": "Precio desde",
+      "dormitorios": "3",
+      "banos": "3",
+      "modelo": "203",
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P006",
+      "slug": "capitanes",
+      "precio_uf": "12608",
+      "categoria_literal": "Precio desde",
+      "dormitorios": "3",
+      "banos": "3",
+      "modelo": null,
+      "unidad": "501",
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P007",
+      "slug": "edificio-bold",
+      "precio_uf": "3862.50",
+      "categoria_literal": "Estudio",
+      "dormitorios": null,
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P008",
+      "slug": "edificio-bold",
+      "precio_uf": "4897.50",
+      "categoria_literal": "1 dormitorio",
+      "dormitorios": "1",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P009",
+      "slug": "edificio-bold",
+      "precio_uf": "6716.25",
+      "categoria_literal": "2 dormitorios",
+      "dormitorios": "2",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P010",
+      "slug": "edificio-argomedo",
+      "precio_uf": "4432",
+      "categoria_literal": "Precio desde",
+      "dormitorios": "2",
+      "banos": "2",
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P011",
+      "slug": "edificio-indi",
+      "precio_uf": "8560",
+      "categoria_literal": "Local comercial",
+      "dormitorios": null,
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P012",
+      "slug": "edificio-indi",
+      "precio_uf": "3544",
+      "categoria_literal": "1 dormitorio",
+      "dormitorios": "1",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P013",
+      "slug": "edificio-indi",
+      "precio_uf": "3944",
+      "categoria_literal": "2 dormitorios",
+      "dormitorios": "2",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P014",
+      "slug": "edificio-indigo",
+      "precio_uf": "9001",
+      "categoria_literal": "2 dormitorios",
+      "dormitorios": "2",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P015",
+      "slug": "edificio-indigo",
+      "precio_uf": "10414.90",
+      "categoria_literal": "3 dormitorios",
+      "dormitorios": "3",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P016",
+      "slug": "inn-puerto-chico",
+      "precio_uf": "10500",
+      "categoria_literal": "2 dormitorios",
+      "dormitorios": "2",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P017",
+      "slug": "inn-puerto-chico",
+      "precio_uf": "10016",
+      "categoria_literal": "3 dormitorios",
+      "dormitorios": "3",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P018",
+      "slug": "inn-puerto-chico",
+      "precio_uf": "21869",
+      "categoria_literal": "4 dormitorios",
+      "dormitorios": "4",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P019",
+      "slug": "edificio-nordico",
+      "precio_uf": "5382",
+      "categoria_literal": "1 dormitorio",
+      "dormitorios": "1",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    },
+    {
+      "registro_id": "OWN4-P020",
+      "slug": "edificio-nordico",
+      "precio_uf": "10335",
+      "categoria_literal": "3 dormitorios",
+      "dormitorios": "3",
+      "banos": null,
+      "modelo": null,
+      "unidad": null,
+      "campos_bloqueados_por_conflictos_particulares": [],
+      "regla": "No asignar esta referencia a un modelo/unidad sin correspondencia. Un baño vacío sigue desconocido. La categoríaEstudio no se convierte automáticamente en dormitorios0."
+    }
+  ],
+  "mascaras_simplificadas_por_UI": {
+    "UI:edificio-living-town:603": [
+      "banos"
+    ],
+    "UI:edificio-living-town:803": [
+      "banos"
+    ],
+    "UI:edificio-mood:303": [
+      "dormitorios"
+    ],
+    "UI:capitanes:501": [],
+    "UI:capitanes:601": [],
+    "UI:edificio-bold:312": [
+      "dormitorios"
+    ],
+    "UI:edificio-bold:207": [
+      "superficie_terraza"
+    ],
+    "UI:edificio-bold:307": [
+      "superficie_terraza"
+    ],
+    "UI:edificio-bold:508": [
+      "superficie_terraza"
+    ],
+    "UI:edificio-bold:608": [
+      "superficie_terraza"
+    ],
+    "UI:edificio-indi:607": [
+      "dormitorios"
+    ],
+    "UI:inn-puerto-chico:605": [
+      "banos"
+    ],
+    "UI:inn-puerto-chico:604": [
+      "dormitorios"
+    ],
+    "UI:inn-puerto-chico:603": [
+      "dormitorios"
+    ]
+  },
+  "mascaras_simplificadas_por_PLANO": {
+    "IR-P020": [
+      "banos"
+    ],
+    "IR-P035": [
+      "dormitorios"
+    ],
+    "IR-P099": [],
+    "IR-P101": [
+      "dormitorios"
+    ],
+    "IR-P106": [],
+    "IR-P107": [],
+    "IR-P108": [
+      "superficie_terraza"
+    ],
+    "IR-P114": [
+      "dormitorios"
+    ],
+    "IR-P138": [
+      "banos"
+    ],
+    "IR-P139": [
+      "dormitorios"
+    ],
+    "IR-P140": [
+      "dormitorios"
+    ]
+  },
+  "fuera_bloqueo": [
+    "D-03",
+    "ARG-C-C1",
+    "INDI-A4-PLANO-C1"
+  ],
+  "precisiones_clave": [
+    "CapA: no bloquearterrazaUI18,45 ni3D3B; totalde501/601 esdesconocidoporaplicabilidad.",
+    "BoldF:2D2Bcontinúaseguro. Terrazaeselatributocontradictorio; total65,52existeenP108peroaplicabilidadalasotrasUIesindeterminada. Noacusardiscrepancianumérica de totalUIporqueestávacío.",
+    "Loscódigosdelmodelo ymaterialD03no bloqueanD/Bcoincidentes; no se fabricaequivalencia.",
+    "Losgatesno sustituyen ausencia: útil/totalUIseguiránnullaunqueelcasoseaotroatributo.",
+    "No permitir filtros combinados usandoDdeunaUI,Bdeungráfico,totaldeotroplanoopreciodeotratipología.",
+    "La máscara simplificada es conservadora para las cuatro terrazasUIF:608esdiscrepanciadirecta;lasdemásrequierenprecisióndeversiónsintransferirP108porunrango."
+  ],
+  "fuentes_sha256": {
+    "fase4-20261116/TIPOLOGIAS-LEBEN.csv": "683276c2860eb2a416204ad38aa063dd8e6c06218763a4a8a24bf27e45a26520",
+    "fase4-20261116/SUPERFICIES-LEBEN.csv": "46c202b473c2c2a205bba83fea5d88593e74ec0d95a379d6c6b6b4fbd4d90bb6",
+    "fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv": "6cc68873fa171ffbc09b6dccbdf83b9b979ae1a6c7ae568a584a063784abafc6",
+    "fase5-20261116/DOSSIER-CONFLICTOS.json": "c439e579f34262976c73e53d02f95bd78f1a99e3887698e20a0b985e6be00cee"
+  },
+  "controles": {
+    "9_casos": true,
+    "12_planos_referenciados": true,
+    "20_owner_preservadas": true,
+    "0_cierres": true
+  }
+}

@@ -86,3 +86,9 @@ Un documento duplicado no aporta nuevos hechos por sí mismo. Un mensaje acompa�
 Usar [INFORME-RECLASIFICACION-CATALOGO](../catalog-data-completeness-20261116/INFORME-RECLASIFICACION-CATALOGO.md) antes de una extracción nueva. Prioridad A para atributos esenciales, B para comparación comercial y C fuera de la obligación. D-03 y los inventarios exhaustivos de códigos/versiones no bloquean el cierre comercial. Reutilizar las cotizaciones F049, entregas y perfiles ya conservados; solicitar únicamente el alcance o métrica esencial aún no respaldados.
 
 No exigir todas las opciones para que una búsqueda por atributos conocidos conserve el proyecto. Para filtros combinados, una misma referencia debe respaldar todos los predicados de opción. Nueve propuestas de false para jardín privado aplican el criterio de brochure completo ya revisado; no implican ausencia física ni cierre canónico.
+
+## Referencias para búsquedas parciales — fase 9, 17/11/2026
+
+Separar cotización, UI y perfil gráfico, sin completar uno con atributos de otro por similitud o enlace. Dentro de una UI o de un recurso gráfico sí se emparejan los datos de la misma captura/ID. Una cotización puede usarse por precio y D/B expresos sin exigir antes superficies; un perfil puede usarse por D/B+áreas propias sin precio.
+
+Los rasgos comunes del proyecto se distinguen de jardín/terraza privados de una opción. No cruzar el precio de una referencia con el patio de otra. Consultar [INFORME-FASE9-LEBEN](../catalog-data-completeness-20261116/leben/INFORME-FASE9-LEBEN.md) y sus máscaras antes de solicitar datos nuevos.

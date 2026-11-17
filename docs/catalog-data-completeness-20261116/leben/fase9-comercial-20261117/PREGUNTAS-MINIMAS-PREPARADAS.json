@@ -1,0 +1,1369 @@
+{
+  "fecha": "2026-11-17",
+  "rol": "Propuestas minimas por proyecto F9, solo lectura",
+  "instruccion": "83ef1646-1243-4515-a5d9-6e0ad25ec80d/Texto pegado.txt",
+  "fuentes_reutilizadas": [
+    "COBERTURA-FILTROS-131.json comercial",
+    "F4/PRECIOS-PROPIETARIO-LEBEN.csv",
+    "F4/TIPOLOGIAS-LEBEN.csv",
+    "F4/SUPERFICIES-LEBEN.csv"
+  ],
+  "resumen": {
+    "Leben_activos": 12,
+    "aptos_datos_para_al_menos_una_busqueda_parcial": 12,
+    "Own_vendido_fuera_de_oferta_activa": 1,
+    "preguntas_preparadas_por_proyecto": 12,
+    "preguntas_efectivamente_enviadas_por_este_agente": 0,
+    "datos_nuevos_o_cierres": 0,
+    "repeticiones_de_importes_F049_solicitadas": 0
+  },
+  "reglas_de_consulta": [
+    "No confundir aptitud documental para una busqueda parcial con implementacion de controles en el sitio o certificacion de todas las combinaciones.",
+    "Una cotizacionF049 basta para su precio y D/B expresos en la misma referencia. Living/Mood ya aportan D/B por categoria; Suecia/Capitanes/Argomedo sus referencias expresas. No pedirlos otra vez.",
+    "Una ficha o perfil tecnico puede satisfacer D/B y area conjuntamente sin precio si son hechos del mismo perfil y alcance. El precio puede permanecer desconocido/inactivo para esa consulta.",
+    "Metadatos de identidad/ubicacion/inmobiliaria, estado y entrega de proyecto pueden combinarse con una referencia comercial si sus alcances son compatibles. La entrega no acredita el estado comercial ni stock.",
+    "Amenities comunes con alcance de proyecto pueden combinarse con la referencia comercial; no proyectar una amenity de una torre a otra si su alcance es limitado.",
+    "Jardin y terraza privados son atributos de opcion. Su presencia en alguna unidad del proyecto no se combina con un precio de otra referencia sin vinculo expreso. No confundirlos con areas verdes o terraza comunes.",
+    "No construir productos cartesianos entre precios, habitaciones y areas de unidades distintas. La coincidencia deD/B o el unico resultadoIris no demuestra correspondencia entre cotizacion y plano.",
+    "Un atributo desconocido o contradictorio no coincide con un predicado que lo exige. Cuando el predicado no esta activo, no excluye el proyecto. Desconocido no se transforma en false fisico, cero oResidencial.",
+    "Una sola opcion comercial respaldada puede ampliar una busqueda combinada; no exigir todos los modelos, todos los precios o la resolucion de los nueve casos para que el proyecto aparezca.",
+    "Las preguntas de asociacion se preparan solo para ampliar combinaciones que usaran precio mas perfil; no constituyen un bloqueo universal ni una nueva ratificacion de las cotizaciones.",
+    "No emitir nuevamente L009/L013 como preguntas de precio/estado; siguen pendientes previas. No preguntar D03, codigos complementarios o detalles constructivos.",
+    "No solicitar metros utiles o totales deMood/Nordico: ya existen2y6perfiles. Preguntar solo cual se aplica a una cotizacion que el propietario elija vincular."
+  ],
+  "proyectos": [
+    {
+      "slug": "edificio-living-town",
+      "proyecto": "Edificio Living Town",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "¿Puedes vincular una cotización ya aceptada de Living Town con una opción a ofertar y aportar únicamente un extracto con útil y total rotulados de esa opción?",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Total rotulado de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P001",
+          "precio_uf": "3949",
+          "categoria": "1 dormitorio",
+          "dormitorios_declarados": "1",
+          "banos_declarados": "1",
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P002",
+          "precio_uf": "4991.65",
+          "categoria": "2 dormitorios",
+          "dormitorios_declarados": "2",
+          "banos_declarados": "2",
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 105,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "1",
+            "B": "1",
+            "tipo_literal": "Departamento"
+          },
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": "Departamento"
+          },
+          {
+            "D": null,
+            "B": "1",
+            "tipo_literal": "Local Comercial"
+          },
+          {
+            "D": null,
+            "B": "0",
+            "tipo_literal": "Local Comercial"
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 0
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [
+        {
+          "id": "IR-C001",
+          "solo_si_se_utiliza": "A1/603 o803 en un predicado de baños o una combinación que exige esa tipología",
+          "faltante": "Respaldo específico del número de baños y alcance. La declaración general2D2B no resuelve A1.",
+          "alternativa_sin_nueva_pregunta": "Usar la referencia comercial F049 en su alcance declarado, u otras opciones sin el conflicto; no atribuir esa referencia a A1."
+        }
+      ],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ]
+    },
+    {
+      "slug": "edificio-mood",
+      "proyecto": "Edificio Mood",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "¿Qué cotización ya aceptada de Mood corresponde a uno de los perfiles conservados IR-P030 o IR-P037, y con qué alcance de unidad o versión? Basta una opción; no necesitamos repetir precios ni superficies.",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P003",
+          "precio_uf": "3753.20",
+          "categoria": "1 dormitorio",
+          "dormitorios_declarados": "1",
+          "banos_declarados": "1",
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P004",
+          "precio_uf": "4678.45",
+          "categoria": "2 dormitorios",
+          "dormitorios_declarados": "2",
+          "banos_declarados": "2",
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [
+        {
+          "id_plano": "IR-P030",
+          "modelo": "",
+          "alcance": "DEPTOS 707 - 1707",
+          "util": "31.16",
+          "total": "35.04",
+          "terraza": "3.88",
+          "D": "1",
+          "B": "1",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P037",
+          "modelo": "",
+          "alcance": "DEPTOS 702 - 1702",
+          "util": "48.75",
+          "total": "52.57",
+          "terraza": "3.82",
+          "D": "2",
+          "B": "2",
+          "limites": "[]"
+        }
+      ],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 30,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "1",
+            "B": "1",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "1",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 2,
+        "total_rotulado_perfiles": 2
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area.",
+        "D/B y metricas de un mismo perfil grafico en su alcance literal, sin unirlo por defecto a una cotizacion propietaria ni a stock Sollahms."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [
+        {
+          "id": "IR-C003",
+          "solo_si_se_utiliza": "A/303 para dormitorios o una combinación del perfil afectado",
+          "faltante": "Aplicabilidad real de la lámina rotulada201 frente a303 y tipología literal1,5D/2D.",
+          "alternativa_sin_nueva_pregunta": "Usar los perfiles IR-P030 o IR-P037, o la referencia comercial F049 en su propio alcance. La pregunta principal de Mood es solo de asociación, no vuelve a pedir cifras."
+        }
+      ],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ],
+      "solo_preguntar_alcance_no_cifras": true,
+      "pregunta_superficies_nuevas": false
+    },
+    {
+      "slug": "edificio-santo",
+      "proyecto": "Edificio Santo",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "Para una opción de Santo que se vaya a ofertar, ¿puedes aportar únicamente un extracto con útil y total rotulados que identifique su unidad o referencia?",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Total rotulado de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Cotizacion/estado siguen en la solicitud comercial anterior L-009; no reeditarla."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [],
+      "perfiles_ya_conservados_no_repedir": [],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 1,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 0
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Sin precio vigente Sollahms nuevo; conservar el proyecto en busquedas sin precio, usando los datos documentados de identidad, tipo, entrega y opciones."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ],
+      "espera_comercial_preexistente": "L-009",
+      "no_emitir_nueva_pregunta_precio_estado": true
+    },
+    {
+      "slug": "edificio-baum",
+      "proyecto": "Edificio BAUM",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "Para una opción de BAUM que se vaya a ofertar, ¿puedes aportar únicamente un extracto con útil y total rotulados que identifique su unidad o referencia?",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Total rotulado de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Cotizacion/estado siguen en la solicitud comercial anterior L-013; no reeditarla."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [],
+      "perfiles_ya_conservados_no_repedir": [],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 108,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "1",
+            "B": "1",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "1",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 0
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Sin precio vigente Sollahms nuevo; conservar el proyecto en busquedas sin precio, usando los datos documentados de identidad, tipo, entrega y opciones."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ],
+      "espera_comercial_preexistente": "L-013",
+      "no_emitir_nueva_pregunta_precio_estado": true
+    },
+    {
+      "slug": "edificio-suecia",
+      "proyecto": "Edificio Suecia",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "Para el Modelo 203 ya cotizado de Suecia, ¿puedes aportar únicamente un extracto con útil y total rotulados e identificación expresa de ese modelo?",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Total rotulado de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P005",
+          "precio_uf": "11358.90",
+          "categoria": "Precio desde",
+          "dormitorios_declarados": "3",
+          "banos_declarados": "3",
+          "modelo_declarado": "203",
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 1,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "3",
+            "B": "3",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 0
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ],
+      "limite_especifico": "Modelo203 propietario no se transforma en unidad203 ni se equipara aIrisF/206. El precio+D/B deModelo203 sirve por si mismo sin solicitar esos datos otra vez."
+    },
+    {
+      "slug": "capitanes",
+      "proyecto": "Capitanes",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "Para la unidad 501 ya cotizada de Capitanes, ¿puedes aportar su útil rotulada y el respaldo de qué plano o cuadro de total le aplica? No necesitamos repetir el precio ni las medidas ya documentadas de 704.",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Seleccion/aplicabilidad del total existente a la opcion elegida; pedir un total nuevo solo si esa opcion carece de respaldo.",
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P006",
+          "precio_uf": "12608",
+          "categoria": "Precio desde",
+          "dormitorios_declarados": "3",
+          "banos_declarados": "3",
+          "modelo_declarado": null,
+          "unidad_declarada": "501",
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [
+        {
+          "id_plano": "IR-P099",
+          "modelo": "A",
+          "alcance": "Deptos. 201 al 301",
+          "util": null,
+          "total": "109.01",
+          "terraza": "18.45",
+          "D": "3",
+          "B": "3",
+          "limites": "[\"CAP-A-ALCANCE\"]"
+        },
+        {
+          "id_plano": "IR-P100",
+          "modelo": "E2",
+          "alcance": "Depto. 704",
+          "util": null,
+          "total": "124.73",
+          "terraza": "8.13",
+          "D": "3",
+          "B": "3",
+          "limites": "[\"CAP-E2-CODIGO\"]"
+        }
+      ],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 4,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "3",
+            "B": "3",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 2
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area.",
+        "D/B y metricas de un mismo perfil grafico en su alcance literal, sin unirlo por defecto a una cotizacion propietaria ni a stock Sollahms."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [
+        {
+          "id": "CAP-A-ALCANCE",
+          "solo_si_se_utiliza": "Total del planoA201–301 para501/601",
+          "faltante": "Aplicabilidad expresa de ese cuadro a501 o documento correcto de501.",
+          "alternativa_sin_nueva_pregunta": "Usar el perfil de704/IR-P100 sin precio de501; no trasladar la cotización501 a704 por compartir3D3B."
+        }
+      ],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ],
+      "limite_especifico": "La cotizacion es para501. El perfilE2/704 puede usarse sin ese precio; no pedir otro total de704 ni tratar501 como modelo."
+    },
+    {
+      "slug": "edificio-bold",
+      "proyecto": "Edificio Bold",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "¿Puedes vincular una cotización aceptada de Bold con una opción y su útil rotulada, aprovechando el total ya conservado si le aplica? Si esa opción no tiene total respaldado, basta un extracto que lo rotule.",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Seleccion/aplicabilidad del total existente a la opcion elegida; pedir un total nuevo solo si esa opcion carece de respaldo.",
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P007",
+          "precio_uf": "3862.50",
+          "categoria": "Estudio",
+          "dormitorios_declarados": null,
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P008",
+          "precio_uf": "4897.50",
+          "categoria": "1 dormitorio",
+          "dormitorios_declarados": "1",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P009",
+          "precio_uf": "6716.25",
+          "categoria": "2 dormitorios",
+          "dormitorios_declarados": "2",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [
+        {
+          "id_plano": "IR-P108",
+          "modelo": "F",
+          "alcance": "Deptos. 207 al 407, 508 y 608",
+          "util": null,
+          "total": "65.52",
+          "terraza": "3.12",
+          "D": "2",
+          "B": "2",
+          "limites": "[\"BOLD-F-SUPERFICIES\"]"
+        }
+      ],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 16,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": null,
+            "B": "1",
+            "tipo_literal": null
+          },
+          {
+            "D": "1",
+            "B": "1",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": null
+          },
+          {
+            "D": null,
+            "B": "0",
+            "tipo_literal": "Local Comercial (membresía de filtro; leyenda discordante)"
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 1
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area.",
+        "D/B y metricas de un mismo perfil grafico en su alcance literal, sin unirlo por defecto a una cotizacion propietaria ni a stock Sollahms."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [
+        {
+          "id": "BOLD-S1-TIPOLOGIA",
+          "solo_si_se_utiliza": "312/S1 para filtro de dormitorios o tipología de esa opción",
+          "faltante": "Tipología técnica estudio/1D para312/S1. Baños coinciden y no se vuelven a pedir.",
+          "alternativa_sin_nueva_pregunta": "Cotizaciones F049 y opciones no afectadas en sus ámbitos; estudio es etiqueta literal, no inferir dormitorio numérico desde el nombre."
+        },
+        {
+          "id": "BOLD-F-SUPERFICIES",
+          "solo_si_se_utiliza": "Terraza/total o combinación metrológica de las opcionesF207/307/508/608",
+          "faltante": "Versión aplicable para la opción escogida; no repetir todas las áreas o recuperar inventarioF entero.",
+          "alternativa_sin_nueva_pregunta": "Conservar la lectura del gráficoP108 en su alcance, sin transferirla aP106/P107 ni unir al precio hasta respaldo."
+        }
+      ],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ]
+    },
+    {
+      "slug": "edificio-argomedo",
+      "proyecto": "Edificio Argomedo",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "Para la referencia 2D2B ya cotizada de Argomedo, ¿puedes identificar una opción aplicable y aportar únicamente su útil y total rotulados?",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Total rotulado de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P010",
+          "precio_uf": "4432",
+          "categoria": "Precio desde",
+          "dormitorios_declarados": "2",
+          "banos_declarados": "2",
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 1,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 0
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ]
+    },
+    {
+      "slug": "edificio-indi",
+      "proyecto": "Edificio Indi",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "¿Puedes identificar una opción de Indi correspondiente a una cotización aceptada y aportar únicamente su útil y total rotulados, conservando si se trata del local o de un departamento?",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Total rotulado de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P011",
+          "precio_uf": "8560",
+          "categoria": "Local comercial",
+          "dormitorios_declarados": null,
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P012",
+          "precio_uf": "3544",
+          "categoria": "1 dormitorio",
+          "dormitorios_declarados": "1",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P013",
+          "precio_uf": "3944",
+          "categoria": "2 dormitorios",
+          "dormitorios_declarados": "2",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 17,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "1",
+            "B": "1",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "1",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": null
+          },
+          {
+            "D": null,
+            "B": "0",
+            "tipo_literal": "Local Comercial (membresía de filtro; leyenda discordante)"
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 0
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [
+        {
+          "id": "INDI-D-PLANO-A2",
+          "solo_si_se_utiliza": "607 para dormitorios o asociación cotización+perfil",
+          "faltante": "Respaldo específico de607 y su tipología2D/1D; baños1 coincide.",
+          "alternativa_sin_nueva_pregunta": "Usar las cotizaciones o las opciones documentadas no afectadas por607. El códigoA4/C1 de411 permanece complementario."
+        }
+      ],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ]
+    },
+    {
+      "slug": "edificio-indigo",
+      "proyecto": "Edificio Índigo",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "¿Puedes vincular una cotización aceptada de Índigo con una opción a ofertar y aportar únicamente un extracto con útil y total rotulados de esa opción?",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Total rotulado de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P014",
+          "precio_uf": "9001",
+          "categoria": "2 dormitorios",
+          "dormitorios_declarados": "2",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P015",
+          "precio_uf": "10414.90",
+          "categoria": "3 dormitorios",
+          "dormitorios_declarados": "3",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 2,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": null
+          },
+          {
+            "D": "3",
+            "B": "2",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 0
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ]
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "proyecto": "INN Puerto Chico",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "¿Puedes vincular una cotización aceptada de INN con uno de los perfiles de total ya conservados y aportar únicamente su útil rotulada? Basta una opción, sin repetir el total o la terraza documentados.",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Util rotulada de la opcion a ofertar, solo si se quiere incorporar ese predicado.",
+        "Seleccion/aplicabilidad del total existente a la opcion elegida; pedir un total nuevo solo si esa opcion carece de respaldo.",
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P016",
+          "precio_uf": "10500",
+          "categoria": "2 dormitorios",
+          "dormitorios_declarados": "2",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P017",
+          "precio_uf": "10016",
+          "categoria": "3 dormitorios",
+          "dormitorios_declarados": "3",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P018",
+          "precio_uf": "21869",
+          "categoria": "4 dormitorios",
+          "dormitorios_declarados": "4",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [
+        {
+          "id_plano": "IR-P120",
+          "modelo": "J",
+          "alcance": "Torre A - Depto 110",
+          "util": null,
+          "total": "150.08",
+          "terraza": "15.45",
+          "D": "3",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P121",
+          "modelo": "G",
+          "alcance": "Torre B - Depto 507, 707 al 907",
+          "util": null,
+          "total": "79.3",
+          "terraza": "9.36",
+          "D": "2",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P122",
+          "modelo": "J",
+          "alcance": "Torre A - Depto 210 al 510",
+          "util": null,
+          "total": "101.02",
+          "terraza": "15.45",
+          "D": "3",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P123",
+          "modelo": "E",
+          "alcance": "Torre A - Depto 205 al 505",
+          "util": null,
+          "total": "89.15",
+          "terraza": "14.51",
+          "D": "2",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P124",
+          "modelo": "K",
+          "alcance": "Torre A - Depto 211 al 511",
+          "util": null,
+          "total": "107.2",
+          "terraza": "19.07",
+          "D": "3",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P125",
+          "modelo": "F",
+          "alcance": "Torre B - Depto 406",
+          "util": null,
+          "total": "135.86",
+          "terraza": "26.36",
+          "D": "2",
+          "B": "2",
+          "limites": "[\"F3-C001\"]"
+        },
+        {
+          "id_plano": "IR-P126",
+          "modelo": "D",
+          "alcance": "Torre A - Depto 104",
+          "util": null,
+          "total": "177.4",
+          "terraza": "20.03",
+          "D": "3",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P127",
+          "modelo": "I",
+          "alcance": "Torre B - Depto 509 al 909",
+          "util": null,
+          "total": "101.78",
+          "terraza": "24.76",
+          "D": "2",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P128",
+          "modelo": "C",
+          "alcance": "Torre A - Depto 103",
+          "util": null,
+          "total": "187.81",
+          "terraza": "20.95",
+          "D": "3",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P129",
+          "modelo": "C",
+          "alcance": "Torre A - Depto 203 al 503",
+          "util": null,
+          "total": "115.56",
+          "terraza": "20.95",
+          "D": "3",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P130",
+          "modelo": "A1",
+          "alcance": "Torre A - Depto 101",
+          "util": null,
+          "total": "219.48",
+          "terraza": "30.56",
+          "D": "3",
+          "B": "3",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P131",
+          "modelo": "P2",
+          "alcance": "Torre A - Depto 613, 713",
+          "util": null,
+          "total": "118.61",
+          "terraza": "11.68",
+          "D": "2",
+          "B": "3",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P132",
+          "modelo": "P1",
+          "alcance": "Torre A - Depto 602, 702",
+          "util": null,
+          "total": "117.8",
+          "terraza": "11.36",
+          "D": "2",
+          "B": "3",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P133",
+          "modelo": "B",
+          "alcance": "Torre A - Depto 102",
+          "util": null,
+          "total": "242.39",
+          "terraza": "20.44",
+          "D": "3",
+          "B": "3",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P134",
+          "modelo": "A",
+          "alcance": "Torre A - Depto 201 al 501",
+          "util": null,
+          "total": "141.8",
+          "terraza": "30.02",
+          "D": "3",
+          "B": "3",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P136",
+          "modelo": "M",
+          "alcance": "Torre A - Depto 615",
+          "util": null,
+          "total": "110.52",
+          "terraza": "15.38",
+          "D": "2",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P138",
+          "modelo": "S",
+          "alcance": "Torre A - Depto 605, 705",
+          "util": null,
+          "total": "144.16",
+          "terraza": "14.52",
+          "D": "3",
+          "B": "2",
+          "limites": "[\"IR-C020\"]"
+        },
+        {
+          "id_plano": "IR-P139",
+          "modelo": "R",
+          "alcance": "Torre A - Depto 604, 704",
+          "util": null,
+          "total": "152.3",
+          "terraza": "20.03",
+          "D": "5",
+          "B": "4",
+          "limites": "[\"IR-C021\"]"
+        },
+        {
+          "id_plano": "IR-P140",
+          "modelo": "Q",
+          "alcance": "Torre A - Depto 603, 703",
+          "util": null,
+          "total": "159.74",
+          "terraza": "21.14",
+          "D": "5",
+          "B": "4",
+          "limites": "[\"IR-C022\"]"
+        }
+      ],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 36,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "3",
+            "B": "2",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "2",
+            "tipo_literal": null
+          },
+          {
+            "D": "2",
+            "B": "3",
+            "tipo_literal": null
+          },
+          {
+            "D": "3",
+            "B": "3",
+            "tipo_literal": null
+          },
+          {
+            "D": "4",
+            "B": "4",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 0,
+        "total_rotulado_perfiles": 19
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area.",
+        "D/B y metricas de un mismo perfil grafico en su alcance literal, sin unirlo por defecto a una cotizacion propietaria ni a stock Sollahms."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [
+        {
+          "id": "IR-C020",
+          "solo_si_se_utiliza": "S/605 para baños",
+          "faltante": "Baños específicos de605; no pedir todas las tipologíasINN.",
+          "alternativa_sin_nueva_pregunta": "Otros perfiles INN sin ese conflicto o búsquedas que no usan baños605."
+        },
+        {
+          "id": "IR-C021",
+          "solo_si_se_utiliza": "R/604 para dormitorios",
+          "faltante": "Dormitorios específicos de604; no usar geometría para elegir4/5.",
+          "alternativa_sin_nueva_pregunta": "Otros perfiles sin ese conflicto o consultas que no usan dormitorios604."
+        },
+        {
+          "id": "IR-C022",
+          "solo_si_se_utiliza": "Q/603 para dormitorios",
+          "faltante": "Dormitorios específicos de603; no usar la categoría4D cotizada para corregir el gráfico5D.",
+          "alternativa_sin_nueva_pregunta": "Otros perfiles sin ese conflicto o consultas que no usan dormitorios603."
+        },
+        {
+          "id": "F3-C001",
+          "tipo": "LIMITACION_ADICIONAL",
+          "solo_si_se_utiliza": "Áreas o torre del planoF406 atribuidas a806/906",
+          "faltante": "Aplicabilidad expresa a806/906 o sus perfiles correctos.",
+          "alternativa_sin_nueva_pregunta": "Conservar el perfilF/406 en406 y los otros perfilesINN; no exigir recuperar todas las unidades."
+        }
+      ],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ]
+    },
+    {
+      "slug": "edificio-nordico",
+      "proyecto": "Edificio Nórdico",
+      "apto_busqueda_parcial_documental": true,
+      "requiere_todos_los_atributos_para_aparecer": false,
+      "pregunta_minima_al_propietario": "¿Qué cotización aceptada de Nórdico corresponde a un perfil de 1D o 3D ya conservado, y con qué alcance de unidad o versión? Basta una opción; no necesitamos repetir precios, útil, total ni terraza.",
+      "es_pregunta_obligatoria_para_busqueda_parcial": false,
+      "objetivo_de_la_pregunta": "Ampliar una opcion comercial combinable, no completar todo el proyecto o todas sus cotizaciones.",
+      "faltantes_reales_condicionados_al_uso": [
+        "Correspondencia expresa con una cotizacion F049 solo para consultas que cruzan precio y atributos de un perfil distinto; no se necesita para consultar la cotizacion por si misma."
+      ],
+      "cotizaciones_ya_aceptadas_no_repedir": [
+        {
+          "id": "OWN4-P019",
+          "precio_uf": "5382",
+          "categoria": "1 dormitorio",
+          "dormitorios_declarados": "1",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        },
+        {
+          "id": "OWN4-P020",
+          "precio_uf": "10335",
+          "categoria": "3 dormitorios",
+          "dormitorios_declarados": "3",
+          "banos_declarados": null,
+          "modelo_declarado": null,
+          "unidad_declarada": null,
+          "puede_filtrar_su_precio_y_los_atributos_expresos_de_esta_referencia": true,
+          "no_garantiza_stock": true
+        }
+      ],
+      "perfiles_ya_conservados_no_repedir": [
+        {
+          "id_plano": "IR-P142",
+          "modelo": "D3",
+          "alcance": "Depto. 103",
+          "util": "38.48",
+          "total": "52.29",
+          "terraza": null,
+          "D": "1",
+          "B": "1",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P143",
+          "modelo": "D1",
+          "alcance": "Deptos. 201 al 601",
+          "util": "38.21",
+          "total": "41.75",
+          "terraza": "3.54",
+          "D": "1",
+          "B": "1",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P144",
+          "modelo": "D",
+          "alcance": "Deptos. 209 al 609",
+          "util": "34.7",
+          "total": "42.02",
+          "terraza": "7.32",
+          "D": "1",
+          "B": "1",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P145",
+          "modelo": "D3",
+          "alcance": "Deptos. 202 al 602 y 203 al 603",
+          "util": "38.39",
+          "total": "41.93",
+          "terraza": "3.54",
+          "D": "1",
+          "B": "1",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P146",
+          "modelo": "A3",
+          "alcance": "Deptos. 204 al 604",
+          "util": "75.64",
+          "total": "83.08",
+          "terraza": "4.9",
+          "D": "3",
+          "B": "2",
+          "limites": "[]"
+        },
+        {
+          "id_plano": "IR-P147",
+          "modelo": "A3",
+          "alcance": "Depto. 104",
+          "util": "75.76",
+          "total": "95.67",
+          "terraza": null,
+          "D": "3",
+          "B": "2",
+          "limites": "[]"
+        }
+      ],
+      "datos_UI_y_graficos_para_predicados_sin_precio": {
+        "tarjetas_UI": 9,
+        "DB_observados_sin_extender_a_cotizacion": [
+          {
+            "D": "1",
+            "B": "1",
+            "tipo_literal": null
+          },
+          {
+            "D": "3",
+            "B": "2",
+            "tipo_literal": null
+          }
+        ],
+        "util_rotulada_perfiles": 6,
+        "total_rotulado_perfiles": 6
+      },
+      "consultas_ya_posibles_con_alcance": [
+        "Identidad, ubicacion y tipo documentados del proyecto, sin exigir precio o superficies que no intervienen.",
+        "Estado comercial confirmado y entrega documental como predicados distintos, solo si sus valores estan respaldados; no inferir recepcion final desde entrega.",
+        "Amenities comunes documentados con alcance de proyecto, sin inferir presencia privada en la opcion cotizada.",
+        "Precio por una referencia comercial F049; combinar solo con sus D/B expresos, y con datos comunes de proyecto que sí apliquen a esa referencia. No necesita primero un perfil de area.",
+        "D/B y metricas de un mismo perfil grafico en su alcance literal, sin unirlo por defecto a una cotizacion propietaria ni a stock Sollahms."
+      ],
+      "consultas_aun_no_aseguradas": [
+        "Precio mas util/total/bano no declarado o terraza/jardin privados de una opcion sin correspondencia expresa.",
+        "Atributo esencial contradictorio de una opcion especifica; el resto del proyecto no queda invalidado."
+      ],
+      "aclaraciones_condicionales_si_se_elige_la_opcion": [],
+      "datos_que_no_se_piden": [
+        "Importes F049 y dos adicionales Suecia",
+        "D/B ya declarados o documentados sin conflicto",
+        "Direcciones",
+        "Estados confirmados",
+        "Entregas",
+        "Amenities ya documentados",
+        "D03 y detallesC",
+        "Inventario exhaustivo de unidades/modelos/versiones"
+      ],
+      "solo_preguntar_alcance_no_cifras": true,
+      "pregunta_superficies_nuevas": false
+    }
+  ],
+  "validaciones": {
+    "12_slugs_activos_unicos": true,
+    "Own_ausente": true,
+    "20_precio_referencias_reutilizadas": true,
+    "todos_aptos_parciales": true,
+    "Mood_Nordico_solo_alcance": true
+  }
+}

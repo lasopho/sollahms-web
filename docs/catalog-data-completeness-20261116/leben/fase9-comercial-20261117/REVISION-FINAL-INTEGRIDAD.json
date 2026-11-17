@@ -1,0 +1,231 @@
+{
+  "fase": 9,
+  "fecha": "2026-11-17",
+  "modo": "Revisión final independiente de solo lectura; no se modificó el repositorio, ni se ejecutó app o navegación Iris.",
+  "base_commit": "26dba5d3684fcfa1eb69fe75e8a33aa01c64c18e",
+  "resultado": "Correcto",
+  "controles_correctos": 35,
+  "controles": [
+    {
+      "control": "doce proyectos de datos parciales, sin Own",
+      "correcto": true
+    },
+    {
+      "control": "JSON aptitud es de datos y nunca certifica UI o stock",
+      "correcto": true
+    },
+    {
+      "control": "CSV datos preparados siguen fuera del catálogo implementado",
+      "correcto": true
+    },
+    {
+      "control": "resumen duplica aptitud sin exagerar implementación",
+      "correcto": true
+    },
+    {
+      "control": "sin nuevos hechos fuentes o cierres",
+      "correcto": true
+    },
+    {
+      "control": "nueve conflictos esenciales y límite adicional",
+      "correcto": true
+    },
+    {
+      "control": "no hay unión automática de propietario UI o plano",
+      "correcto": true
+    },
+    {
+      "control": "330UI104planos20cotizaciones siguen separados",
+      "correcto": true
+    },
+    {
+      "control": "454referencias con ID único y stock desconocido",
+      "correcto": true
+    },
+    {
+      "control": "capacidades parciales remiten a referencias del mismo proyecto",
+      "correcto": true
+    },
+    {
+      "control": "resumen por consulta derivado de referencias, no de UI implementada",
+      "correcto": true,
+      "detalle": {
+        "precio_maximo_por_cotizacion": 10,
+        "precio_y_dormitorios": 10,
+        "precio_dormitorios_banos": 5,
+        "dormitorios_y_banos": 12,
+        "dormitorios_banos_terraza": 12,
+        "dormitorios_banos_util_total": 2,
+        "dormitorios_banos_total": 5,
+        "precio_util_total": 0,
+        "precio_jardin_privado": 0
+      }
+    },
+    {
+      "control": "controles avanzados ausentes se indican ausentes",
+      "correcto": true
+    },
+    {
+      "control": "recomendaciones futuras identificadas no implementadas",
+      "correcto": true
+    },
+    {
+      "control": "precio y estado F049 no consumidos por código quedan explícitos",
+      "correcto": true
+    },
+    {
+      "control": "defecto tipo default persiste documentado",
+      "correcto": true
+    },
+    {
+      "control": "HTML sin cambio y mismo SHA de revisión",
+      "correcto": true
+    },
+    {
+      "control": "código no trae F049 o datos F9 y sí catálogo antiguo",
+      "correcto": true
+    },
+    {
+      "control": "fuentes canónicas y estructuradas preservadas",
+      "correcto": true,
+      "detalle": {
+        "registros_verificados": 24,
+        "distintos": 21,
+        "diferencias": []
+      }
+    },
+    {
+      "control": "clasificación histórica74A48B191C intacta",
+      "correcto": true
+    },
+    {
+      "control": "49fuentes y ninguna asignación nueva",
+      "correcto": true
+    },
+    {
+      "control": "registros F6 siguen vacíos",
+      "correcto": true
+    },
+    {
+      "control": "235hashes originales protegidos intactos",
+      "correcto": true
+    },
+    {
+      "control": "globalfase9 es el resumen administrativo",
+      "correcto": true
+    },
+    {
+      "control": "global conserva todos los datos históricos y solo cambia4 metadatos",
+      "correcto": true
+    },
+    {
+      "control": "todos los bloques fuera de Leben intactos",
+      "correcto": true
+    },
+    {
+      "control": "manifest global es una preimagen y no fuente nueva",
+      "correcto": true
+    },
+    {
+      "control": "ningún cambio de aplicación o clasificación histórica",
+      "correcto": true,
+      "detalle": [
+        "docs/catalog-data-completeness-20261116/master/ESTADO-GLOBAL.json"
+      ]
+    },
+    {
+      "control": "dos informes F9 tienen la misma narrativa",
+      "correcto": true
+    },
+    {
+      "control": "informe aptitud documental parcial diferenciada de UI y stock",
+      "correcto": true
+    },
+    {
+      "control": "informe conserva continuidad doce activos y Own vendido",
+      "correcto": true
+    },
+    {
+      "control": "informe preserva fuentes F049 y sin falso avance de stock o precios",
+      "correcto": true
+    },
+    {
+      "control": "prompt conserva capas de datos operativa y denominadores",
+      "correcto": true
+    },
+    {
+      "control": "prompt continuidad fuentes fechas y roles comercial conservada",
+      "correcto": true
+    },
+    {
+      "control": "prompt mantiene Own fuera de oferta y no inicia Euro",
+      "correcto": true
+    },
+    {
+      "control": "cuatro prompts completos idénticos",
+      "correcto": true
+    }
+  ],
+  "hallazgos_materiales": [],
+  "resumen": {
+    "aptos_Datos_busqueda_parcial": 12,
+    "certificados_implementacion_avanzada": 0,
+    "stock_certificado": 0,
+    "fuentes_nuevas": 0,
+    "saldo_historico": 313,
+    "clasificacion_preservada": {
+      "A": 74,
+      "B": 48,
+      "C": 191
+    },
+    "archivos_protegidos": 235,
+    "global": "Solo schema_version,siguiente_paso,estado descriptivo Leben y nueva anotación fase9_comercial; históricos intactos."
+  },
+  "archivos_revisados": [
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/RESUMEN-FASE9.json",
+      "sha256": "723e564560b504db7d8bacc8db49604cceaccc808e0c4e351c7ef6f964619a2e"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/PROYECTOS-APTOS-BUSQUEDA-PARCIAL.json",
+      "sha256": "5fb3b13578a26b5bab725b980876591768d37405316c384855f9b9cc38fcd68a"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/COBERTURA-ESENCIAL-LEBEN.csv",
+      "sha256": "b9651772d071cd106422c98c29511abc157ee33580e27c92956e9fad240a4186"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/RECOMENDACIONES-FILTROS.json",
+      "sha256": "69fd943290d5712ca103a31fd49d56d61cbc7bd41faf7e906b764263a76c5fcb"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/master/ESTADO-GLOBAL.json",
+      "sha256": "f94caeba4b2c050ff2d252a688c1019cdebcab49fc486beb7ece0a0afbb5ccc3"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/INFORME-FASE9-LEBEN.md",
+      "sha256": "4723b3a6bdb9d5f5ee9364f491f3d5ef0559cfd33332c11721f8dc279221233a"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/INFORME-FASE9-LEBEN.md",
+      "sha256": "0f56dede57fe86d21515b7bcda4feb0d49a70f5a3b2e3135f334b3472c15ff15"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/NEXT-PROMPT.md",
+      "sha256": "13f435141a3667f4ecb26a40fd0a525fb25f97f5ae1d9d6d1f5d19903db58457"
+    },
+    {
+      "archivo": "NEXT-PROMPT.md",
+      "sha256": "13f435141a3667f4ecb26a40fd0a525fb25f97f5ae1d9d6d1f5d19903db58457"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/continuidad/NEXT-PROMPT.md",
+      "sha256": "13f435141a3667f4ecb26a40fd0a525fb25f97f5ae1d9d6d1f5d19903db58457"
+    },
+    {
+      "archivo": "docs/iris-operational-manual/NEXT-PROMPT.md",
+      "sha256": "13f435141a3667f4ecb26a40fd0a525fb25f97f5ae1d9d6d1f5d19903db58457"
+    }
+  ],
+  "alcance_reporte_prompt": "Completado: dos informes con narrativa equivalente y cuatro prompts idénticos. Revisión adicional de capas datos/operación, F049, Own vendido y no Euro. No se repitieron los controles de fuentes o hashes protegidos ya aprobados; sincronización final a cargo de root."
+}

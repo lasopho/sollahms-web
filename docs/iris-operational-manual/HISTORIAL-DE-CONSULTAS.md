@@ -67,3 +67,9 @@ La coordinación activa está en [INFORME-FASE6-LEBEN.md](../catalog-data-comple
 Cambio expreso de alcance del propietario: 313 pendientes históricos clasificados en 74 A,48 B y191 C, sin cierres nuevos. D-03 deja de ser solicitud obligatoria. Se reutilizaron datos estructurados y se inspeccionó estáticamente el contrato del catálogo; no hubo navegación, autenticación, descarga o relectura de brochures/gráficos.
 
 La cobertura nueva separa 13 Leben,118 no auditados yla diferencia de137proyectos enHEAD frente aluniverso131. Se prepararon nueve false de catálogo para jardín privado a partir del criterio de omisión sobre brochures completos ya revisados; se conservaron positivos y desconocidos. Ver [informe vigente](../catalog-data-completeness-20261116/INFORME-RECLASIFICACION-CATALOGO.md). La fecha de interfaz no se revalida por esta reclasificación.
+
+## Fase 9 — 17/11/2026
+
+Se preparó aptitud documental para búsquedas parciales de los doce activos mediante 330 UI,104 perfiles y20 cotizaciones separadas, sin nuevas recepciones, navegación o relectura gráfica. Hay respaldo de precio+dormitorios en10proyectos, precio+D/B en5 y D/B+útil+total en2. La clasificación histórica74/48/191 ylos313IDs no cambia.
+
+Se prepararon doce preguntas mínimas condicionadas, sin enviarlas. El código de catálogo permanece intacto; su interfaz no se verificó de nuevo. Ver [informe F9](../catalog-data-completeness-20261116/leben/INFORME-FASE9-LEBEN.md).
