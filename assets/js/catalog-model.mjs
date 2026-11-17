@@ -33,7 +33,30 @@ export function preparedReference(project) {
   if (priced.length) return priced.reduce((a,b) => a.attributes.priceUF <= b.attributes.priceUF ? a : b);
   return references.reduce((a,b) => Object.values(a.attributes ?? {}).filter(v => v != null).length >= Object.values(b.attributes ?? {}).filter(v => v != null).length ? a : b);
 }
+// A documentary result is projected from one matching reference. Published
+// prices, summaries and prepared Leben matches are separate sources.
+export function documentaryReference(project) {
+  const references=project._documentaryMatch?.references??[];
+  if(!references.length)return null;
+  const priced=references.filter(reference=>validPrice(reference.attributes?.priceUF));
+  return (priced.length?priced:references).reduce((a,b)=>priced.length
+    ?a.attributes.priceUF<=b.attributes.priceUF?a:b
+    :Object.values(a.attributes??{}).filter(value=>value!=null).length>=Object.values(b.attributes??{}).filter(value=>value!=null).length?a:b);
+}
+export const documentaryResult=project=>project._documentaryMatch!=null;
+const referenceDate=value=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}/.test(value)?value.slice(0,10).split('-').reverse().join('/'):'';
+function documentaryMetadata(project,reference){return reference?project._documentaryMetadata?.byReferenceId?.[reference.id]??{}:{};}
+function documentaryScopeLabel(scope){
+  if(typeof scope==='string')return scope;
+  if(!scope||typeof scope!=='object'||Array.isArray(scope))return null;
+  const identity=[typeof scope.unit==='string'?'unidad '+scope.unit:null,typeof scope.model==='string'?'modelo '+scope.model:null].filter(Boolean);
+  return identity.length?'Alcance: sólo '+identity.join(', '):null;
+}
 export function projectOffer(project,state={}) {
+  if(documentaryResult(project)||state.evidenceMode==='documentary'){
+    const reference=documentaryReference(project),a=reference?.attributes??{},metadata=documentaryMetadata(project,reference);
+    return {value:validPrice(a.priceUF)?a.priceUF:null,typology:null,documentary:true,referenceId:reference?.id??null,date:metadata.ownerPriceDate??null};
+  }
   if (!project._commercialMatch) return catalogReference(project,state);
   const reference = preparedReference(project), a = reference?.attributes ?? {};
   const typology = [a.bedrooms == null ? null : a.bedrooms+'D', a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ');
@@ -41,10 +64,25 @@ export function projectOffer(project,state={}) {
 }
 export function offerPriceLabel(project,state={}) {
   const offer=projectOffer(project,state);
+  if(offer.documentary)return validPrice(offer.value)?'Referencia propietaria UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}):offer.referenceId?'Sin precio comercial para esta referencia':'Sin referencia documental en esta revisión';
   if (!offer.prepared) return priceFromLabel(offer.value,project.precioDecimales);
   return validPrice(offer.value) ? 'Referencia UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}) : 'Precio de esta referencia por confirmar';
 }
-export function commercialLayerNote(project) {
+export function commercialLayerNote(project,state={}) {
+  if(documentaryResult(project)||state.evidenceMode==='documentary'){
+    const reference=documentaryReference(project);
+    if(!reference)return 'Revisión documental local · sólo identidad publicada; sin referencia recibida en esta capa';
+    const metadata=documentaryMetadata(project,reference);
+    const unit=metadata.unitLabel?(/^(?:Unidad|Lote)\b/i.test(metadata.unitLabel)?metadata.unitLabel:'Unidad '+metadata.unitLabel):null;
+    const identity=[unit,metadata.modelLabel?'Modelo '+metadata.modelLabel:null].filter(Boolean).join(' · ');
+    const observed=referenceDate(metadata.observedAtUTC),sourceDate=referenceDate(metadata.sourceDate);
+    const ownerDate=validPrice(reference.attributes?.priceUF)?referenceDate(metadata.ownerPriceDate):'';
+    return ['Referencia documental'+(identity?' · '+identity:''),
+      ownerDate?'Precio del propietario · '+ownerDate:null,
+      metadata.sourceURL?.includes('iris.yapo.cl')?'Fuente Iris':metadata.sourceLabel??null,
+      sourceDate?'Fecha declarada de fuente · '+sourceDate:observed?'Consultada · '+observed:null,
+      documentaryScopeLabel(metadata.scope),'Disponibilidad y vigencia por confirmar; no acredita stock'].filter(Boolean).join(' · ');
+  }
   if (!project._commercialMatch) return '';
   const date=project._commercial?.asOf?.split('-').reverse().join('/');
   const kind=preparedReference(project)?.sourceKind;
@@ -69,7 +107,15 @@ export function filterAndSort(projects, filters={}) {
   });
   return rows;
 }
-export function projectFacts(project, selectedType='') {
+export function projectFacts(project, selectedType='',filterState={}) {
+  if(documentaryResult(project)||filterState.evidenceMode==='documentary'){
+    const a=documentaryReference(project)?.attributes??{},facts=[];
+    if(a.bedrooms!=null||a.bathrooms!=null)facts.push({label:'Tipología de la referencia',value:[a.bedrooms==null?null:a.bedrooms+'D',a.bathrooms==null?null:a.bathrooms+'B'].filter(Boolean).join(' / ')});
+    for(const [key,label] of [['usefulM2','Superficie útil'],['totalM2','Superficie total'],['terraceM2','Superficie de terraza'],['internalM2','Internos (rótulo de la fuente)'],['lotTotalM2','Total del lote']]){
+      if(typeof a[key]==='number'&&Number.isFinite(a[key])&&a[key]>=0)facts.push({label,value:a[key].toLocaleString('es-CL')+' m²'});
+    }
+    return facts;
+  }
   if (project._commercialMatch) {
     const a=preparedReference(project)?.attributes ?? {}, common=project._commercial?.projectFacts ?? {}, facts=[];
     if (a.bedrooms != null || a.bathrooms != null) facts.push({label:'Tipología de referencia',value:[a.bedrooms == null ? null : a.bedrooms+'D',a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ')});

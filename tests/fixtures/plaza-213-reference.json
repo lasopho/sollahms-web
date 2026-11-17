@@ -1,0 +1,775 @@
+{
+  "schemaVersion": 1,
+  "kind": "Pure matchProjectFilters documentary record with separate per-field provenance",
+  "createdAtUTC": "2026-11-17T20:12:25.600168+00:00",
+  "stableReferenceId": "DOC-SENTO-PLC-U213-C7-OBS20261117",
+  "identity": {
+    "projectSlug": "plaza-las-condes",
+    "developer": "Sento",
+    "address": "Avenida Las Condes 7083",
+    "unit": "213",
+    "model": "C7"
+  },
+  "sourceLayer": "documentary-reviewed-no-stock",
+  "contract": {
+    "module": "assets/js/commercial-filter-engine.mjs",
+    "export": "matchProjectFilters",
+    "call": "matchProjectFilters(artifact.record, query)",
+    "referencePath": "/record/references/0",
+    "engineSnapshotSHA256": "d901354cd90bd9ca284b50fa56bf4ae5f2675674ac72b17b06ec3b249e44d9f4",
+    "directPureEvaluatorOnly": true,
+    "evidenceAdapterOrPublishedOverlayApplied": false,
+    "engineEvaluationExecuted": false,
+    "notes": "The record and its attributes use the exact keys read by the pure evaluator. Provenance, dates, authority and usage restrictions are in separate channels."
+  },
+  "record": {
+    "slug": "plaza-las-condes",
+    "name": "Plaza Las Condes",
+    "sourceLayer": "documentary-reviewed-no-stock",
+    "sourceProject": {
+      "slug": "plaza-las-condes",
+      "nombre": "Plaza Las Condes"
+    },
+    "projectFacts": {
+      "region": "Región Metropolitana",
+      "commune": "Las Condes",
+      "developer": "Sento",
+      "state": null,
+      "delivery": null,
+      "amenities": null,
+      "amenityScopes": null,
+      "amenityEvidence": null,
+      "features": null,
+      "parking": null,
+      "storage": null
+    },
+    "references": [
+      {
+        "id": "DOC-SENTO-PLC-U213-C7-OBS20261117",
+        "sourceKind": "documentary-unit-association",
+        "sourceLayer": "documentary-reviewed-no-stock",
+        "sourceDate": null,
+        "stock": null,
+        "availability": null,
+        "attributes": {
+          "propertyType": "departamento",
+          "assetType": "Residencial",
+          "priceUF": 11119,
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "usefulM2": 69.85,
+          "totalM2": 83.82,
+          "terraceM2": 13.97,
+          "interiorM2": null,
+          "gardenM2": null,
+          "landM2": null,
+          "state": null,
+          "delivery": null,
+          "privateTerrace": null,
+          "privateGarden": null,
+          "parkingIncluded": null,
+          "parkingAvailable": null,
+          "storageIncluded": null,
+          "storageAvailable": null
+        }
+      }
+    ]
+  },
+  "usage": {
+    "localReviewOnly": true,
+    "documentaryPredicateSupport": true,
+    "useAsActiveOffer": false,
+    "publishAsUnitInventory": false,
+    "countAsStock": false,
+    "stock": null,
+    "availability": null,
+    "commercialValidityCertified": false,
+    "drawingIssueDate": null,
+    "drawingRevision": null,
+    "IrisPriceAdopted": false,
+    "projectFromPriceCreated": false,
+    "interiorEqualsUsefulInferred": false,
+    "totalCalculated": false,
+    "requiresAllFieldsForPartialSearch": false,
+    "engineDoesNotEnforceMetadata": [
+      "sourceLayer",
+      "stock",
+      "availability",
+      "active-offer status",
+      "unit/model identity"
+    ],
+    "callerRestriction": "The pure evaluator finds documentary witnesses. It does not certify availability or enforce active-offer/stock policy; a caller must preserve this source layer and must not present its matches as active offers."
+  },
+  "sources": [
+    {
+      "id": "owner-prices-20261028",
+      "path": "archive-owner-prices-source-validation.json",
+      "sha256": "7fc6af756511ae2ad656bf6575bb10a0e13134422b2baefb3918e0b51322bd58",
+      "bytes": 710,
+      "repositoryPath": "docs/plaza-owner-prices-20261028/source-validation.json",
+      "repositoryRef": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "sourceDate": "2026-10-28",
+      "originalPriceKey": "/prices/213"
+    },
+    {
+      "id": "owner-price-date-and-policy",
+      "path": "baseline-plaza-las-condes-verified.json",
+      "sha256": "5f8f31d51a6ff2730ddf83dec580c56294d1d21f6fbb40f22ee665f828b11788",
+      "bytes": 13343,
+      "repositoryPath": "data/plaza-las-condes-verified.json",
+      "repositoryRef": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "priceKey": "/units/1/ownerListPriceUF",
+      "sourceDateKey": "/commercialPriceSource/checkedOn",
+      "priceTypeKey": "/commercialPriceSource/priceType"
+    },
+    {
+      "id": "owner-price-readme",
+      "path": "archive-owner-prices-README.md",
+      "sha256": "cf50045c67707667d2c92a3e78c776aed15178261a4214b343def5a99d05a79e",
+      "bytes": 2616,
+      "repositoryPath": "docs/plaza-owner-prices-20261028/README.md",
+      "repositoryRef": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "sourceDate": "2026-10-28"
+    },
+    {
+      "id": "iris-project-context",
+      "path": "iris-project-269-main-visible.txt",
+      "sha256": "2e20e47668757d5e9eab6ac838307bcde8472b35bde63ecb68a7277c763a4348",
+      "bytes": 8277,
+      "url": "https://iris.yapo.cl/proyecto/269",
+      "observedAtUTC": "2026-11-17T19:58:48.084Z",
+      "publishedProjectLabel": "Publicado el 17/11/2026"
+    },
+    {
+      "id": "iris-unit-dialog",
+      "path": "iris-unit-213-visible.txt",
+      "sha256": "430c0ecb206efaf2c49a7e2dde4b001c39f45129a9a4b0b0056480d44f237fb2",
+      "bytes": 224,
+      "url": "https://iris.yapo.cl/proyecto/269",
+      "observedAtUTC": "2026-11-17T20:00:18.548Z"
+    },
+    {
+      "id": "plan-original-bytes",
+      "path": "iris-unit-213-C7-plan.avif",
+      "sha256": "e25e9af9fc72321f249574d78d5d606241c548d2ca0193fe2edded7a418f926f",
+      "bytes": 27099,
+      "url": "https://cdn2.infocasas.com.uy/repo/img/th.outside700x700.64b88f6ecbe47_213.jpg",
+      "contentType": "image/avif",
+      "observedAtUTC": "2026-11-17T20:01:25.753Z",
+      "sourceDate": null,
+      "sourceRevision": null
+    },
+    {
+      "id": "plan-decoded-lossless",
+      "path": "iris-unit-213-C7-plan-decoded.png",
+      "sha256": "69fd3430fa9362fd1e69f3166e0093a1ff0db0320726e3a695fbd25738218142",
+      "bytes": 202272,
+      "derivedFrom": "plan-original-bytes",
+      "width": 895,
+      "height": 583,
+      "processing": "AVIF decoded to PNG; no resize, crop, rotation or redraw."
+    },
+    {
+      "id": "plan-literal-reading",
+      "path": "LECTURA-PLANO-C7-213.json",
+      "sha256": "13bbc8359bbb2b7c9b8bc4fa8d6133c01f3d6be49f464a10916c565ad29f07cd",
+      "bytes": 1591,
+      "sourceDate": null,
+      "sourceRevision": null,
+      "observedAtUTC": "2026-11-17T20:01:25.753Z"
+    },
+    {
+      "id": "plan-decoding-check",
+      "path": "decoded-image-validation.json",
+      "sha256": "7aa36a7019ff06451dd4f74179101bf8f38570500a4b194d9a0efc866d067681",
+      "bytes": 662,
+      "role": "Decoded RGB equality for original AVIF and derived PNG."
+    },
+    {
+      "id": "association-receipt",
+      "path": "RECIBO-ASOCIACION-213.json",
+      "sha256": "6d50dd89679ece23ffefec98f32146c4ef43941d4599d359c9654ad0685d6603",
+      "bytes": 7193,
+      "role": "Evidence join and explicit limitations; no publication authorization."
+    }
+  ],
+  "fieldProvenance": {
+    "/record/references/0/attributes/priceUF": {
+      "value": 11119,
+      "authority": "owner-authorized-list-price",
+      "sourceDate": "2026-10-28",
+      "sourceRefs": [
+        {
+          "sourceId": "owner-prices-20261028",
+          "key": "/prices/213"
+        },
+        {
+          "sourceId": "owner-price-date-and-policy",
+          "key": "/units/1/ownerListPriceUF"
+        },
+        {
+          "sourceId": "owner-price-date-and-policy",
+          "key": "/commercialPriceSource/checkedOn"
+        },
+        {
+          "sourceId": "owner-price-readme",
+          "locator": "Owner-supplied prices, 28 October 2026; unit 213: UF 11,119"
+        }
+      ],
+      "priceScope": "exact unit 213",
+      "IrisPriceRole": "Comparison only. The current Iris amount does not replace or renew the owner authorization.",
+      "notProjectFromPrice": true,
+      "discountCalculated": false
+    },
+    "/record/references/0/attributes/usefulM2": {
+      "value": 69.85,
+      "unit": "m2",
+      "originalLabel": "SUP. ÚTIL",
+      "originalValue": "69,85 m²",
+      "sourceDate": null,
+      "sourceRevision": null,
+      "observedAtUTC": "2026-11-17T20:01:25.753Z",
+      "sourceRefs": [
+        {
+          "sourceId": "plan-original-bytes",
+          "locator": "SUPERFICIES DEPARTAMENTO; SUP. ÚTIL"
+        },
+        {
+          "sourceId": "plan-decoded-lossless",
+          "locator": "Exact printed C7/213 drawing"
+        },
+        {
+          "sourceId": "plan-literal-reading",
+          "key": "/printedAreas/0"
+        }
+      ],
+      "scope": {
+        "project": "plaza-las-condes",
+        "unit": "213",
+        "model": "C7"
+      },
+      "explicitlyPrinted": true,
+      "calculated": false,
+      "convertedFromInterior": false
+    },
+    "/record/references/0/attributes/terraceM2": {
+      "value": 13.97,
+      "unit": "m2",
+      "originalLabel": "SUP. TERRAZA",
+      "originalValue": "13,97 m²",
+      "sourceDate": null,
+      "sourceRevision": null,
+      "observedAtUTC": "2026-11-17T20:01:25.753Z",
+      "sourceRefs": [
+        {
+          "sourceId": "plan-original-bytes",
+          "locator": "SUPERFICIES DEPARTAMENTO; SUP. TERRAZA"
+        },
+        {
+          "sourceId": "plan-decoded-lossless",
+          "locator": "Exact printed C7/213 drawing"
+        },
+        {
+          "sourceId": "plan-literal-reading",
+          "key": "/printedAreas/1"
+        }
+      ],
+      "scope": {
+        "project": "plaza-las-condes",
+        "unit": "213",
+        "model": "C7"
+      },
+      "explicitlyPrinted": true,
+      "calculated": false,
+      "convertedFromInterior": false
+    },
+    "/record/references/0/attributes/totalM2": {
+      "value": 83.82,
+      "unit": "m2",
+      "originalLabel": "SUP. TOTAL",
+      "originalValue": "83,82 m²",
+      "sourceDate": null,
+      "sourceRevision": null,
+      "observedAtUTC": "2026-11-17T20:01:25.753Z",
+      "sourceRefs": [
+        {
+          "sourceId": "plan-original-bytes",
+          "locator": "SUPERFICIES DEPARTAMENTO; SUP. TOTAL"
+        },
+        {
+          "sourceId": "plan-decoded-lossless",
+          "locator": "Exact printed C7/213 drawing"
+        },
+        {
+          "sourceId": "plan-literal-reading",
+          "key": "/printedAreas/2"
+        }
+      ],
+      "scope": {
+        "project": "plaza-las-condes",
+        "unit": "213",
+        "model": "C7"
+      },
+      "explicitlyPrinted": true,
+      "calculated": false,
+      "convertedFromInterior": false
+    },
+    "/record/references/0/attributes/propertyType": {
+      "value": "departamento",
+      "sourceDate": null,
+      "sourceRevision": null,
+      "observedAtUTC": "2026-11-17T20:01:25.753Z",
+      "originalLabel": "DEPARTAMENTO TIPO C7",
+      "sourceRefs": [
+        {
+          "sourceId": "plan-original-bytes",
+          "locator": "DEPARTAMENTO TIPO C7"
+        },
+        {
+          "sourceId": "iris-unit-dialog",
+          "locator": "Unidad 213 · Piso 2; MODELO C7; 2 dormitorios; 2 baños"
+        }
+      ],
+      "normalization": "Controlled property label departamento; no property type inferred from bedroom count."
+    },
+    "/record/references/0/attributes/bedrooms": {
+      "value": 2,
+      "sourceDate": null,
+      "sourceRevision": null,
+      "observedAtUTC": "2026-11-17T20:01:25.753Z",
+      "originalLabel": "213 | 2D + 2B",
+      "sourceRefs": [
+        {
+          "sourceId": "plan-original-bytes",
+          "locator": "213 | 2D + 2B"
+        },
+        {
+          "sourceId": "iris-unit-dialog",
+          "locator": "Unidad 213 · Piso 2; MODELO C7; 2 dormitorios; 2 baños"
+        }
+      ],
+      "normalization": "Numeric value explicitly printed in the exact unit/model identity."
+    },
+    "/record/references/0/attributes/bathrooms": {
+      "value": 2,
+      "sourceDate": null,
+      "sourceRevision": null,
+      "observedAtUTC": "2026-11-17T20:01:25.753Z",
+      "originalLabel": "213 | 2D + 2B",
+      "sourceRefs": [
+        {
+          "sourceId": "plan-original-bytes",
+          "locator": "213 | 2D + 2B"
+        },
+        {
+          "sourceId": "iris-unit-dialog",
+          "locator": "Unidad 213 · Piso 2; MODELO C7; 2 dormitorios; 2 baños"
+        }
+      ],
+      "normalization": "Numeric value explicitly printed in the exact unit/model identity."
+    },
+    "/record/references/0/attributes/assetType": {
+      "value": "Residencial",
+      "method": "Controlled catalogue taxonomy mapping from explicitly documented propertyType=departamento, the same mapping used by the pure evaluator.",
+      "sourceRefs": [
+        {
+          "sourceId": "plan-original-bytes",
+          "locator": "DEPARTAMENTO TIPO C7"
+        }
+      ],
+      "notInferredFromBedrooms": true,
+      "sourceDate": null,
+      "observedAtUTC": "2026-11-17T20:01:25.753Z"
+    },
+    "/record/references/0/attributes/interiorM2": {
+      "value": null,
+      "reason": "Original literal owner-area declaration was not located. The old normalized interiorM2 attribution is not promoted or converted into a useful-area claim. Iris Internos and drawing SUP. ÚTIL remain separately sourced labels.",
+      "sourceRefs": [
+        {
+          "sourceId": "association-receipt",
+          "key": "/originalOwnerProvenance/originalVerbatimOwnerAreaTableLocated"
+        }
+      ]
+    },
+    "/record/projectFacts/region": {
+      "value": "Región Metropolitana",
+      "sourceRefs": [
+        {
+          "sourceId": "iris-project-context",
+          "locator": "Comuna Las Condes, Región Metropolitana"
+        }
+      ],
+      "sourceDate": null,
+      "observedAtUTC": "2026-11-17T19:58:48.084Z",
+      "scope": "Project identity only; no inherited project price, state, delivery or amenities."
+    },
+    "/record/projectFacts/commune": {
+      "value": "Las Condes",
+      "sourceRefs": [
+        {
+          "sourceId": "iris-project-context",
+          "locator": "Comuna Las Condes, Región Metropolitana"
+        }
+      ],
+      "sourceDate": null,
+      "observedAtUTC": "2026-11-17T19:58:48.084Z",
+      "scope": "Project identity only; no inherited project price, state, delivery or amenities."
+    },
+    "/record/projectFacts/developer": {
+      "value": "Sento",
+      "sourceRefs": [
+        {
+          "sourceId": "iris-project-context",
+          "locator": "Sento - Plaza las Condes"
+        }
+      ],
+      "sourceDate": null,
+      "observedAtUTC": "2026-11-17T19:58:48.084Z",
+      "scope": "Project identity only; no inherited project price, state, delivery or amenities."
+    },
+    "/record/references/0/stock": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/availability": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/sourceDate": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/gardenM2": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/landM2": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/state": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/delivery": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/privateTerrace": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/privateGarden": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/parkingIncluded": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/parkingAvailable": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/storageIncluded": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/references/0/attributes/storageAvailable": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/projectFacts/state": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/projectFacts/delivery": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/projectFacts/amenities": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/projectFacts/amenityScopes": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/projectFacts/amenityEvidence": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/projectFacts/features": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/projectFacts/parking": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    },
+    "/record/projectFacts/storage": {
+      "value": null,
+      "status": "unknown",
+      "reason": "No unit-specific supported assertion is imported for this field. This documentary reference is not evidence of stock, active availability, status, delivery, extras or amenity entitlement."
+    }
+  },
+  "verificationPlan": {
+    "executed": false,
+    "scope": "Isolated record containing only this one reference; no application/test-file edits or broad suites.",
+    "positiveExample": {
+      "query": {
+        "propertyType": "departamento",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "minPrice": 11119,
+        "maxPrice": 11119,
+        "surfaces": {
+          "useful": {
+            "min": 69.85,
+            "max": 69.85
+          },
+          "total": {
+            "min": 83.82,
+            "max": 83.82
+          },
+          "terrace": {
+            "min": 13.97,
+            "max": 13.97
+          }
+        }
+      },
+      "expectedMatches": true,
+      "expectedMatchedReferenceIds": [
+        "DOC-SENTO-PLC-U213-C7-OBS20261117"
+      ]
+    },
+    "negativeCases": [
+      {
+        "id": "reject-unit-313-price",
+        "query": {
+          "minPrice": 11073,
+          "maxPrice": 11073,
+          "surfaceMetric": "useful",
+          "minSurface": 69.85,
+          "maxSurface": 69.85
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "UF 11,073 belongs to the separate owner price for unit 313; it cannot be lent to C7/213 surfaces."
+      },
+      {
+        "id": "reject-C6-total",
+        "query": {
+          "minPrice": 11119,
+          "maxPrice": 11119,
+          "surfaceMetric": "total",
+          "minSurface": 71.93,
+          "maxSurface": 71.93
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "Do not mix C6 total 71.93 m² into the exact C7/213 reference."
+      },
+      {
+        "id": "reject-C8-total",
+        "query": {
+          "minPrice": 11119,
+          "maxPrice": 11119,
+          "surfaceMetric": "total",
+          "minSurface": 83.43,
+          "maxSurface": 83.43
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "Do not mix C8 total 83.43 m² into the exact C7/213 reference."
+      },
+      {
+        "id": "reject-interior-conversion",
+        "query": {
+          "surfaceMetric": "interior",
+          "minSurface": 69.85,
+          "maxSurface": 69.85
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "interiorM2 stays null; usefulM2 does not satisfy an interior predicate."
+      },
+      {
+        "id": "reject-useful-as-total",
+        "query": {
+          "surfaceMetric": "total",
+          "minSurface": 69.85,
+          "maxSurface": 69.85
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "The explicitly printed useful value is not a total value."
+      },
+      {
+        "id": "reject-total-as-useful",
+        "query": {
+          "surfaceMetric": "useful",
+          "minSurface": 83.82,
+          "maxSurface": 83.82
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "The explicitly printed total is not a useful-area value."
+      },
+      {
+        "id": "reject-terrace-as-useful",
+        "query": {
+          "surfaceMetric": "useful",
+          "minSurface": 13.97,
+          "maxSurface": 13.97
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "Terrace is a distinct metric, never a useful-area substitute."
+      },
+      {
+        "id": "reject-local-type",
+        "query": {
+          "propertyType": "local"
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "The reference explicitly identifies a departamento."
+      },
+      {
+        "id": "reject-unconfirmed-commercial-state",
+        "query": {
+          "state": "En verde"
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "The existing public project state is not inherited by this documentary reference."
+      },
+      {
+        "id": "reject-unconfirmed-delivery",
+        "query": {
+          "delivery": {
+            "category": "estimated",
+            "year": 2026
+          }
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "No delivery fact is assigned to this reference."
+      },
+      {
+        "id": "reject-parking-included",
+        "query": {
+          "parking": "included"
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "Parking inclusion remains unknown."
+      },
+      {
+        "id": "reject-storage-available",
+        "query": {
+          "storage": "available"
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "Storage availability remains unknown."
+      },
+      {
+        "id": "reject-private-terrace-flag",
+        "query": {
+          "privateTerrace": true
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "A printed terrace surface does not automatically create the privateTerrace eligibility flag."
+      },
+      {
+        "id": "reject-inherited-pool",
+        "query": {
+          "amenities": [
+            "piscina"
+          ]
+        },
+        "expectedIsolatedMatches": false,
+        "expectedIsolatedMatchedReferenceIds": [],
+        "integratedExpectation": "This reference ID must be absent; other legitimately matching catalogue references are not forbidden.",
+        "reason": "The project amenity is not imported into this narrowly scoped unit reference."
+      }
+    ],
+    "identityChecksOutsideEvaluator": [
+      {
+        "change": "Assign the same fields to unit 313",
+        "expected": "reject",
+        "reason": "No drawing/area correspondence for 313 was obtained."
+      },
+      {
+        "change": "Relabel the model C6 or C8",
+        "expected": "reject",
+        "reason": "The preserved drawing explicitly identifies C7/213."
+      },
+      {
+        "change": "Treat publication 17/11/2026 as drawing issue/revision date",
+        "expected": "reject",
+        "reason": "That date labels the project listing, not the drawing."
+      },
+      {
+        "change": "Treat the Iris displayed price as a replacement or renewal of the owner price",
+        "expected": "reject",
+        "reason": "Owner authority and 28/10/2026 date remain the commercial source."
+      },
+      {
+        "change": "Pass unsupported stock/unit/model query keys and assume the evaluator enforces them",
+        "expected": "reject integration assumption",
+        "reason": "Those are metadata/custody checks outside matchProjectFilters."
+      }
+    ]
+  },
+  "preservation": {
+    "applicationCodeEdited": false,
+    "currentDataEdited": false,
+    "testFilesEdited": false,
+    "prior15ReferenceJSONEdited": false,
+    "integrationPerformed": false,
+    "publicationPerformed": false
+  },
+  "structuralValidation": {
+    "fieldPointersValidated": 33,
+    "originalSourceHashesMatched": 10,
+    "engineQueriesExecuted": 0,
+    "priceAndPrintedValuesPreserved": true
+  }
+}
