@@ -48,3 +48,12 @@ Archivos contiene una plantilla imprimible en el DOM. Se localizaron sus h3 Cara
 Los datos del propietario se localizan en COM-F4-001/F049, con fecha16/11/2026, campo, proyecto y alcance. La fecha de comunicación no es fecha de entrega ni garantía futura. Estado en blanco es una categoría explícita. Recepción final no permite calcular año/semestre de entrega. Los costos adicionales se separan de precios de inmuebles.
 
 El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.
+
+
+## Verificación de continuidad global — 17/11/2026
+
+En las fichas Euro/Maestra consultadas, la tarjeta de unidad presenta Precio de lista, Descuento y Precio final como campos distintos. El importe destacado del modal coincide con lista en los casos observados; no tratarlo automáticamente como final. Seleccionar la unidad exacta y conservar su descripción, piso y rótulos.
+
+El modal rotula Internos y Terraza. No normalizar Internos a útil ni calcular total sumando valores. En ReservaMayor2, totales pertenece al lote3b, no a una superficie residencial. Los dos valores0 de terraza en Euro se registraron porque el rótulo dice0, sin convertir desconocidos. Un nombre de imagen plano puede corresponder a un placeholder: MapochoA muestra Unidad sin plano cargado.
+
+El texto accesible puede juntar Unidad235 mientras que el DOM contiene Unidad y235 en nodos separados. Si un selector textual exacto no existe, inspeccionar el estado fresco y elegir el identificador realmente visible; no repetir el mismo selector a ciegas.

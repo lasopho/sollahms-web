@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "fecha": "2026-11-17",
+  "naturaleza": "Revisión estática acotada del cruce publicado precio↔modelo/área. No certifica otros filtros ni vigencia de los datos.",
+  "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+  "fuentes_codigo": {
+    "assets/js/commercial-filter-data.mjs": {
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/commercial-filter-data.mjs",
+      "sha256": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b",
+      "bytes": 7925,
+      "archivo": "assets/js/commercial-filter-data.mjs",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "coincide_bytes_commit": true,
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/assets/js/commercial-filter-data.mjs"
+    },
+    "assets/js/catalog-filter-engine.mjs": {
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/catalog-filter-engine.mjs",
+      "sha256": "9c99259fbc6af069cdcf82ada1a134d1b3d23199fda6cbd7a6324c2704e25120",
+      "bytes": 17066,
+      "archivo": "assets/js/catalog-filter-engine.mjs",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "coincide_bytes_commit": true,
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/assets/js/catalog-filter-engine.mjs"
+    },
+    "assets/js/commercial-filter-engine.mjs": {
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/commercial-filter-engine.mjs",
+      "sha256": "d901354cd90bd9ca284b50fa56bf4ae5f2675674ac72b17b06ec3b249e44d9f4",
+      "bytes": 12467,
+      "archivo": "assets/js/commercial-filter-engine.mjs",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "coincide_bytes_commit": true,
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/assets/js/commercial-filter-engine.mjs"
+    },
+    "assets/js/project-offers.mjs": {
+      "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/project-offers.mjs",
+      "sha256": "4842c8eba277bdcdb05e464bcd8b85732878ec250702ca0bd2b435beba36e81b",
+      "bytes": 2714,
+      "archivo": "assets/js/project-offers.mjs",
+      "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "coincide_bytes_commit": true,
+      "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/assets/js/project-offers.mjs"
+    }
+  },
+  "datos_fuente": {
+    "ruta_local": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/proyectos.json",
+    "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+    "bytes": 328016,
+    "archivo": "data/proyectos.json",
+    "commit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+    "coincide_bytes_commit": true,
+    "url": "https://github.com/lasopho/sollahms-web/blob/165f918aba402a0eb3313c85e144af2b4a7e8651/data/proyectos.json"
+  },
+  "riesgo_examinado": "Préstamo de precios globales u owner a áreas/modelos sin asociación expresa.",
+  "resultado": "NO_SE_ENCONTRO_DEFECTO_NUEVO_CONCRETO_EN_ESTE_RIESGO",
+  "hallazgos_lectores": [
+    {
+      "archivo": "assets/js/commercial-filter-data.mjs",
+      "lineas": 104,
+      "hecho": "Solo construye capa preparada de12identidades. _publishedFacets no se utiliza; no es el adaptador publicado y no mezcla facetas con precio."
+    },
+    {
+      "archivo": "assets/js/catalog-filter-engine.mjs",
+      "lineas": 54,
+      "hecho": "matchesPublishedPriceReference exige testigo propio cuando hay rango activo de precio. Referencia de precio global contiene sólo priceUF y un tipo universal documentado, sin D/B/áreas."
+    },
+    {
+      "archivo": "assets/js/catalog-filter-engine.mjs",
+      "lineas": 63,
+      "hecho": "Ofertas tipológicas/producto se copian campo a campo directamente desde commercialOffers; no se unen a variants de facetas ni al modelo de menor área."
+    },
+    {
+      "archivo": "assets/js/commercial-filter-engine.mjs",
+      "lineas": 130,
+      "hecho": "referenceMatches evalúa precio, D/B y cada superficie sobre los attributes de la misma referencia. Una métrica activa desconocida no satisface rango."
+    },
+    {
+      "archivo": "assets/js/catalog-filter-engine.mjs",
+      "lineas": 130,
+      "hecho": "Ruta publicada requiere conjuntamente matchesVariant y matchesPublishedPriceReference. La existencia separada de un modelo con área no satisface el segundo testigo."
+    },
+    {
+      "archivo": "assets/js/project-offers.mjs",
+      "lineas": 7,
+      "hecho": "catalogReference elige el precio conforme a las políticas actuales de tipología/producto; no adjunta áreas de modelos."
+    }
+  ],
+  "cobertura_datos_leidos": {
+    "proyectos": 131,
+    "registros_proyecto_mas_etapas": 153,
+    "registros_commercialOffers_incluyendo_repeticiones_proyecto_etapa": 140,
+    "campos_commercialOffers_existentes": {
+      "id": 140,
+      "label": 140,
+      "bedrooms": 140,
+      "propertyType": 140,
+      "priceUF": 140,
+      "priceDecimals": 140
+    },
+    "registros_oferta_con_area_bano_o_privado_explicito": [],
+    "limite": "Conteos de representaciones de fuente; no unidades únicas ni stock."
+  },
+  "contraste_clasificacion131": {
+    "precio_published_no_es_precio_modelo": true,
+    "areas_brochure_no_prueban_oferta_actual": true,
+    "propiedades_amenities_estados_otras_reglas_no_recertificados": true
+  },
+  "reproduccion_minima": null,
+  "razon_sin_reproduccion": "La lectura de la ruta y de todos los campos de ofertas actuales muestra el guard ya presente; no hay caso nuevo positivo que justifique reproducir o repetir suites.",
+  "operaciones": {
+    "codigo_leido": true,
+    "JSON_existentes_leidos": true,
+    "aplicacion_ejecutada": false,
+    "suite_o_tests_ejecutados": false,
+    "app_repo_PR_modificado": false,
+    "datos_inventados": false
+  }
+}

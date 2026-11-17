@@ -73,3 +73,25 @@ La cobertura nueva separa 13 Leben,118 no auditados yla diferencia de137proyecto
 Se preparó aptitud documental para búsquedas parciales de los doce activos mediante 330 UI,104 perfiles y20 cotizaciones separadas, sin nuevas recepciones, navegación o relectura gráfica. Hay respaldo de precio+dormitorios en10proyectos, precio+D/B en5 y D/B+útil+total en2. La clasificación histórica74/48/191 ylos313IDs no cambia.
 
 Se prepararon doce preguntas mínimas condicionadas, sin enviarlas. El código de catálogo permanece intacto; su interfaz no se verificó de nuevo. Ver [informe F9](../catalog-data-completeness-20261116/leben/INFORME-FASE9-LEBEN.md).
+
+
+## Verificación de continuidad global — 17/11/2026
+
+| Proyecto / fuente Iris | Referencias leídas | Alcance conservado |
+| --- | --- | --- |
+| [diagonal-vicuna](https://iris.yapo.cl/proyecto/1104?operation=Venta) | 235 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [mapocho-3521-edificio-a](https://iris.yapo.cl/proyecto/1149?operation=Venta) | 1010 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [plaza-cervantes](https://iris.yapo.cl/proyecto/1358?operation=Venta) | Unidad 909A · Piso 9 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [alto-buzeta](https://iris.yapo.cl/proyecto/1342?operation=Venta) | Unidad 1220 · Piso 12, Unidad 212 · Piso 2 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [reserva-mayor-2](https://iris.yapo.cl/proyecto/1308?operation=Venta) | Lote 3b · | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [vitro](https://iris.yapo.cl/proyecto/1577?operation=Venta) | 218 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [nova-parque](https://iris.yapo.cl/proyecto/1576?operation=Venta) | 114 O | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [mirador-irarrazaval](https://iris.yapo.cl/proyecto/1578?operation=Venta) | 709 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [alto-irarrazaval](https://iris.yapo.cl/proyecto/1580?operation=Venta) | 215 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [jose-pedro-alessandri](https://iris.yapo.cl/proyecto/1583?operation=Venta) | 213 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [vicuna-mackenna-1432](https://iris.yapo.cl/proyecto/374?operation=Venta) | 2510N | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [vicente-valdes](https://iris.yapo.cl/proyecto/1581?operation=Venta) | 1103 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [vista-portugal](https://iris.yapo.cl/proyecto/1574?operation=Venta) | 218 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+| [marina-pacifico](https://iris.yapo.cl/proyecto/1584?operation=Venta) | 2415 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
+
+Capturas, extracción visible, fechas UTC, hashes y discrepancias: [REGISTRO-NUEVA-EVIDENCIA-IRIS.json](../objetivo-principal-asset-portafolio/REGISTRO-NUEVA-EVIDENCIA-IRIS.json). Catorce proyectos, quince referencias; cero documentos owner recibidos, cero cambios publicados, cero cierres de los313históricos.

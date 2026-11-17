@@ -47,3 +47,12 @@ Las doce plantillas técnicas de Archivos ya están revisadas por secciones perm
 La fase4 incorpora una fuente directa del propietario, no una navegación nueva. Antes de volver a Iris, consultar F049 y el corte fase4-20261116. Los precios declarados se aceptan sin exigir una segunda fuente. No se repiten brochures, gráficos, plantillas o PDF fallados.
 
 El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.
+
+
+## Verificación de continuidad global — 17/11/2026
+
+La instrucción vigente permite Euro y las demás inmobiliarias del universo131. Catálogo y catorce fichas consultadas fueron accesibles sin pedir login; no se afirmó que hubiera sesión autenticada. Una ficha pública accesible no sustituye la comprobación tras una autenticación personal cuando ésta sea necesaria. Al pulsar una tarjeta se abrió otra pestaña; recuperar la pestaña por el enlace realmente abierto, sin deducir IDs.
+
+Después de Enter, la URL y el tag de búsqueda pueden actualizarse antes que las tarjetas y el contador. Esperar el resultado definitivo por nombre antes de abrirlo. Caso real: Diagonal pasó del listado previo a1/1; Mapocho3521 terminó2/2, con /311 y /1149 separados. No repetir búsquedas completadas por ese estado transitorio.
+
+Fuente y punto activo: [registro nuevo de Iris](../objetivo-principal-asset-portafolio/REGISTRO-NUEVA-EVIDENCIA-IRIS.json) y [control global](../objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md).

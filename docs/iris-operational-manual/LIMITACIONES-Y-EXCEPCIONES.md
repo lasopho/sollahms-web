@@ -77,3 +77,16 @@ Desconocido no equivale a false/cero/Residencial. Sin predicado activo no excluy
 En Bold F la cifra de terraza queda indeterminada, pero ambas cifras positivas conservan la presencia de terraza. Capitanes 501/601 mantiene sus 3D3B y terraza UI; el total del plano 201–301 no se transfiere. INN 806/906 mantiene sus propios D/B/terraza; los datos del plano 406 siguen limitados a su alcance. No exigir torre o interior como nuevos datos comerciales.
 
 El conflicto no invalida automáticamente toda la referencia o el proyecto. Un dato desconocido o en conflicto solo restringe el predicado que lo necesita. Las recomendaciones y consultas documentales no certifican filtros nuevos implementados ni stock.
+
+
+## Verificación de continuidad global — 17/11/2026
+
+Diagonal Vicuña /1104: el modal235 muestra un plano rotulado PLANTA DEPTO435 AL1635, TORREB, noviembre2022. No se acreditó su aplicabilidad a235 ni su equivalencia con los cinco modelos oficiales conservados. No trasladar torre, útil municipal o superficie de ventas del plano a235.
+
+MapochoA /1149: el título, dirección y tipo Departamento respaldan esa ficha externa; unidad1010 tiene datos propios pero no plano cargado. Esto no resuelve el brochure histórico unresolved-building ni permite copiar modelos de Mapocho genérico /311.
+
+Plaza Cervantes /1358: descripción general TorreB frente a unidad909A descrita EdificioA. No completar globalmente TorreA con la ficha ni usar la otra ficha1451B como equivalente. Mantener la discrepancia explícita.
+
+Euro9: conservar las diferencias de entrega Nova(1S2028 frente a2S2028) y Mirador(1S2029 frente a1S2028), además de diferencias en rangos de dormitorios en el registro detallado. Son alcances de fuentes con fechas distintas; no sobreescribir datos owner. Vicuña Mackenna1432 aparece escrito Mackena en Iris; se halló mediante búsqueda visible1432 tras el intento nominal. La identidad se comprobó por proyecto, Euro y dirección. No extrapolar ese alias a otro proyecto.
+
+No se enviaron chats, reservas, cotizaciones o contactos. Si el panel AsistenteIRIS tapa el modal, cerrar sólo ese panel por su control visible para capturar; no preguntar al chatbot ni enviar formularios.

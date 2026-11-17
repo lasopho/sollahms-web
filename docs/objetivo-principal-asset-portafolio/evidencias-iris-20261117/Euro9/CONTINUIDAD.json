@@ -1,0 +1,72 @@
+{
+  "completedAtUTC": "2026-11-17T17:55:31.044Z",
+  "completedProjects": [
+    "vitro",
+    "nova-parque",
+    "mirador-irarrazaval",
+    "alto-irarrazaval",
+    "jose-pedro-alessandri",
+    "vicuna-mackenna-1432",
+    "vicente-valdes",
+    "vista-portugal",
+    "marina-pacifico"
+  ],
+  "pendingProjectsInRequestedNine": [],
+  "boundedCoverage": "One exact displayed reference per project; no stock enumeration, all-model claim or typology completeness claim.",
+  "unknownsAcrossAllNine": [
+    "usefulAreaM2",
+    "totalAreaM2",
+    "sourceDocumentDate",
+    "separatelyLabeledModelCode",
+    "currentUnitStockCertification"
+  ],
+  "nextDocumentaryNeed": "Only a new source that explicitly labels useful or total, and identifies the same exact reference, could fill those metrics. Do not use Internos or sums as a substitute.",
+  "existingValidPartialSupportRetained": "The nine exact D/B records are useful without price, useful area, total area or complete unit inventory.",
+  "observedDifferences": [
+    {
+      "slug": "nova-parque",
+      "field": "project-bedroom-range",
+      "existing": "1 dormitorio",
+      "iris": "1 a 2 dormitorios",
+      "resolution": "retain separate external observation; no public edit"
+    },
+    {
+      "slug": "nova-parque",
+      "field": "delivery",
+      "existing": "2do semestre 2028",
+      "iris": "1er semestre 2028",
+      "resolution": "unresolved dated-source discrepancy; no public edit"
+    },
+    {
+      "slug": "mirador-irarrazaval",
+      "field": "delivery",
+      "existing": "1er semestre 2028",
+      "iris": "1er semestre 2029",
+      "resolution": "separate external observation; no public edit"
+    },
+    {
+      "slug": "jose-pedro-alessandri",
+      "field": "project-bedroom-range",
+      "existing": "1 a 3 dormitorios",
+      "iris": "1 a 2 dormitorios",
+      "resolution": "different source/current listing scope; no exclusion or public edit"
+    },
+    {
+      "slug": "vista-portugal",
+      "field": "project-bedroom-range",
+      "existing": "1 a 2 dormitorios",
+      "iris": "Estudio a 2 dormitorios",
+      "resolution": "project summary only; no estudio unit inferred or public edit"
+    },
+    {
+      "slug": "marina-pacifico",
+      "field": "project-bedroom-range",
+      "existing": "1 a 3 dormitorios",
+      "iris": "2 a 3 dormitorios",
+      "resolution": "available listing scope is different; do not delete previously documented1D"
+    }
+  ],
+  "additionalSourceNote": "Vicente Valdés now has an external Iris delivery label1er semestre2029 while existing public delivery is null; do not adopt automatically.",
+  "sourceAccess": "Catalog and details were readable without login prompt during this run. No authentication status inferred.",
+  "noUserActionNeeded": true
+}
