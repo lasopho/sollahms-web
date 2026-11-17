@@ -80,3 +80,9 @@ Se mantienen el acceso interactivo del propietario y las prohibiciones de export
 Antes de abrir Iris, utilizar el [protocolo de recepción y validación](../catalog-data-completeness-20261116/leben/fase6-20261116/PROTOCOLO-RECEPCION-Y-VALIDACION.md). Separa identidad binaria del original, campos potenciales, hechos validados y resolución suficiente por alcance. Los registros vacíos no consumen IDs ni constituyen evidencia. Las transcripciones de mensajes se identifican como tales; los derivados no reemplazan originales.
 
 Un documento duplicado no aporta nuevos hechos por sí mismo. Un mensaje acompañante que precise versión o alcance se conserva y evalúa por separado. La preparación administrativa no reabre F049 ni justifica repetir búsquedas o exportaciones.
+
+## Alcance comercial vigente — 17/11/2026
+
+Usar [INFORME-RECLASIFICACION-CATALOGO](../catalog-data-completeness-20261116/INFORME-RECLASIFICACION-CATALOGO.md) antes de una extracción nueva. Prioridad A para atributos esenciales, B para comparación comercial y C fuera de la obligación. D-03 y los inventarios exhaustivos de códigos/versiones no bloquean el cierre comercial. Reutilizar las cotizaciones F049, entregas y perfiles ya conservados; solicitar únicamente el alcance o métrica esencial aún no respaldados.
+
+No exigir todas las opciones para que una búsqueda por atributos conocidos conserve el proyecto. Para filtros combinados, una misma referencia debe respaldar todos los predicados de opción. Nueve propuestas de false para jardín privado aplican el criterio de brochure completo ya revisado; no implican ausencia física ni cierre canónico.

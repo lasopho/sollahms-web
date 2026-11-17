@@ -1,5 +1,5 @@
 {
-  "schema_version": 7,
+  "schema_version": 8,
   "fecha_auditoria": "2026-11-16",
   "timezone": "America/Santiago",
   "base": {
@@ -33,7 +33,7 @@
   },
   "estado_bloques": {
     "Leben": {
-      "estado": "Fase 6: recepción documental preparada, sin antecedentes nuevos",
+      "estado": "Alcance comercial: 74 pendientes A, 48 B y 191 complementarios C fuera de la obligación, sin cierres documentales.",
       "cierre": "313 pendientes conservados. Cero campos nuevos completos o conflictos resueltos.",
       "metricas": {
         "fecha_auditoria": "2026-11-16",
@@ -80,7 +80,7 @@
     "Pendiente de auditoría": 118,
     "Iris documentado; conciliación abierta": 13
   },
-  "siguiente_paso": "Recibir archivos originales o declaraciones nuevas del propietario y validarlos por alcance. Sin antecedentes nuevos, conservar el saldo y no repetir preguntas ni navegación. No iniciar Euro.",
+  "siguiente_paso": "Completar la información comercial esencial de Leben con evidencia existente y respaldo puntual de opciones; D-03 y detalles C no bloquean. No iniciar otra inmobiliaria todavía.",
   "protecciones": {
     "generadores_aplicacion_ejecutados": 0,
     "deployments_creados": 0,
@@ -872,5 +872,33 @@
       }
     },
     "nota": "Preparar recepción no constituye validación, incorporación ni cierre. Los parciales siguen pendientes."
+  },
+  "alcance_catalogo_comercial": {
+    "fecha": "2026-11-17",
+    "base_commit": "3eccce6a4a758a7b56f7c29093c731014cd6382f",
+    "proyectos": 131,
+    "Leben_con_evidencia_revisada": 13,
+    "Leben_activos_necesitan_respaldo_esencial": 12,
+    "Own_vendido_no_oferta_activa": 1,
+    "restantes_no_auditados": 118,
+    "certificados_datos_todos_filtros_esenciales": 0,
+    "certificados_implementacion_todos_filtros_esenciales": 0,
+    "requieren_intervencion_propietario_Leben": 12,
+    "requieren_intervencion_propietario_restantes": "No determinado antes de auditoría",
+    "pendientes_documentales_historicos": 313,
+    "prioridades": {
+      "A": 74,
+      "B": 48,
+      "C": 191
+    },
+    "fuera_obligatorio_no_completados": 191,
+    "campos_nuevos_completados": 0,
+    "conflictos_con_atributo_esencial": 9,
+    "conflictos_complementarios_no_bloqueantes": 3,
+    "F3_C001_limite_adicional": 1,
+    "proyectos_con_util_en_planos": 2,
+    "proyectos_con_total_en_planos": 5,
+    "informe": "docs/catalog-data-completeness-20261116/INFORME-RECLASIFICACION-CATALOGO.md",
+    "matriz_prioridades": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/MATRIZ-131-PRIORIDADES.csv"
   }
 }

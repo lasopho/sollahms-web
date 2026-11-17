@@ -1,0 +1,172 @@
+{
+  "fecha": "2026-11-17",
+  "fuente": "proyectos.html:339-349, HEAD 3eccce6a4a758a7b56f7c29093c731014cd6382f",
+  "metodo": "Evaluación aislada del predicado real sin DOM, servidor, generadores, builds o publicación. Los ejemplos usan datos sintéticos, nunca hechos inmobiliarios.",
+  "actual": [
+    {
+      "id": "ACTUAL-TIPO-DESCONOCIDO",
+      "escenario": {
+        "slug": "sintetico",
+        "tipoActivo": null,
+        "precioDesdeUF": null
+      },
+      "filtro": {
+        "type": "Residencial"
+      },
+      "observado": true,
+      "esperado_segun_alcance_comercial": false,
+      "cumple": false
+    },
+    {
+      "id": "ACTUAL-PRECIO-DESCONOCIDO-SIN-FILTRO",
+      "escenario": {
+        "slug": "sintetico",
+        "precioDesdeUF": null
+      },
+      "filtro": {},
+      "observado": true,
+      "esperado_segun_alcance_comercial": true,
+      "cumple": true
+    },
+    {
+      "id": "ACTUAL-PRECIO-DESCONOCIDO-CON-FILTRO",
+      "escenario": {
+        "slug": "sintetico",
+        "precioDesdeUF": null
+      },
+      "filtro": {
+        "max": 5000
+      },
+      "observado": false,
+      "esperado_segun_alcance_comercial": false,
+      "cumple": true
+    },
+    {
+      "id": "ACTUAL-TIPO-DESCONOCIDO-SIN-FILTRO",
+      "escenario": {
+        "slug": "sintetico"
+      },
+      "filtro": {},
+      "observado": true,
+      "esperado_segun_alcance_comercial": true,
+      "cumple": true
+    }
+  ],
+  "hallazgos_actuales": [
+    "ACTUAL-TIPO-DESCONOCIDO"
+  ],
+  "especificacion_propuesta_no_implementada": [
+    {
+      "id": "PROPUESTO-DESCONOCIDO-SIN-PREDICADO",
+      "opciones_sinteticas": [
+        {
+          "banos": null
+        }
+      ],
+      "filtros": {},
+      "observado": true,
+      "esperado": true,
+      "cumple": true
+    },
+    {
+      "id": "PROPUESTO-DESCONOCIDO-CON-PREDICADO",
+      "opciones_sinteticas": [
+        {
+          "banos": null
+        }
+      ],
+      "filtros": {
+        "banos": 2
+      },
+      "observado": false,
+      "esperado": false,
+      "cumple": true
+    },
+    {
+      "id": "PROPUESTO-AMENITY-DESCONOCIDA",
+      "opciones_sinteticas": [
+        {
+          "piscina": null
+        }
+      ],
+      "filtros": {
+        "piscina": true
+      },
+      "observado": false,
+      "esperado": false,
+      "cumple": true
+    },
+    {
+      "id": "PROPUESTO-AMENITY-FALSE",
+      "opciones_sinteticas": [
+        {
+          "piscina": false
+        }
+      ],
+      "filtros": {
+        "piscina": true
+      },
+      "observado": false,
+      "esperado": false,
+      "cumple": true
+    },
+    {
+      "id": "PROPUESTO-ATRIBUTOS-EN-OPCIONES-DISTINTAS",
+      "opciones_sinteticas": [
+        {
+          "precioUF": 3500,
+          "banos": 1
+        },
+        {
+          "precioUF": 7000,
+          "banos": 2
+        }
+      ],
+      "filtros": {
+        "precioUF": {
+          "max": 4000
+        },
+        "banos": 2
+      },
+      "observado": false,
+      "esperado": false,
+      "cumple": true
+    },
+    {
+      "id": "PROPUESTO-UNA-OPCION-RESPALDA-TODO",
+      "opciones_sinteticas": [
+        {
+          "precioUF": 3500,
+          "banos": 2
+        }
+      ],
+      "filtros": {
+        "precioUF": {
+          "max": 4000
+        },
+        "banos": 2
+      },
+      "observado": true,
+      "esperado": true,
+      "cumple": true
+    },
+    {
+      "id": "PROPUESTO-INTERIOR-NO-ES-UTIL",
+      "opciones_sinteticas": [
+        {
+          "interiorM2": 55,
+          "utilM2": null
+        }
+      ],
+      "filtros": {
+        "utilM2": {
+          "min": 50
+        }
+      },
+      "observado": false,
+      "esperado": false,
+      "cumple": true
+    }
+  ],
+  "nota": "Las pruebas propuestas validan una regla de documentación. No certifican una implementación nueva ni activan filtros en el catálogo."
+}

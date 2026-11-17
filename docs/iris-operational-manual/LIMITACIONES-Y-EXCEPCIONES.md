@@ -65,3 +65,9 @@ No resolver cantidades físicas mediante una elección personal. Obtener plano, 
 F5-DOC-01..13 y los cuatro anexos INN identifican documentos esperados. No son archivos recibidos y no tienen una nueva fecha/SHA hasta su entrega real. Sin nuevos antecedentes, los registros de recepción, hechos y resoluciones tienen cero filas y los 313 campos permanecen pendientes.
 
 La regla histórica de solicitar vigencia para una cotización no se aplica retroactivamente a los veinte precios y dos adicionales F049 ya aceptados al 16/11/2026. Una aclaración parcial o un archivo de alcance limitado no resuelve el caso completo ni un campo global por sí solo.
+
+## Complementarios y filtro de desconocidos — cambio de alcance, 17/11/2026
+
+La clasificación comercial reemplaza el bloqueo constructivo anterior: D-03, Argomedo C/C1 e Indi A4/C1 quedan complementarios, abiertos documentalmente y sin equivalencias inventadas. Los nueve casos que sí afectan D/B o superficies restringen solo el atributo/opción correspondiente. F3-C001 sigue adicional.
+
+Desconocido no equivale a false/cero/Residencial. Sin predicado activo no excluye al proyecto. El código actual todavía aplica Residencial a tipoActivo ausente: hallazgo documentado, no corregido en esta etapa. Las 131 identidades auditadas se distinguen de las 137 del archivo actual. Los 118 proyectos no Leben siguen sin auditoría comercial. No usar una propuesta false de brochure para invalidar la oferta adicional general declarada en F049.

@@ -1,0 +1,4246 @@
+{
+  "fecha": "2026-11-17",
+  "rol": "Revision independiente de reclasificacion comercial, sin modificaciones del repositorio",
+  "instruccion_fuente": "88d1564e-098a-4ebc-88c4-1a45658d89e1/Texto pegado.txt",
+  "mapa_determinista_campo_id": {
+    "nombre": {
+      "prioridad_base": "A",
+      "campo": "Nombre",
+      "motivo": "Identifica inequívocamente el proyecto encontrado; ya documentado y no se vuelve a solicitar."
+    },
+    "slug": {
+      "prioridad_base": "A",
+      "campo": "Slug",
+      "motivo": "Clave estable para mantener identidad y trazabilidad de filtros; sin nueva pregunta."
+    },
+    "inmobiliaria": {
+      "prioridad_base": "A",
+      "campo": "Inmobiliaria",
+      "motivo": "Filtro y atribución comercial del proyecto."
+    },
+    "region": {
+      "prioridad_base": "A",
+      "campo": "Región",
+      "motivo": "Localización básica para búsqueda; conservar la identidad existente."
+    },
+    "comuna": {
+      "prioridad_base": "A",
+      "campo": "Comuna",
+      "motivo": "Localización básica para búsqueda; conservar la identidad existente."
+    },
+    "direccion": {
+      "prioridad_base": "A",
+      "campo": "Dirección",
+      "motivo": "Identificación comercial del proyecto; direcciones ya aceptadas, fuera de nuevas preguntas."
+    },
+    "precio_desde_uf": {
+      "prioridad_base": "A",
+      "campo": "Precio desde",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado."
+    },
+    "tipo_propiedad": {
+      "prioridad_base": "A",
+      "campo": "Tipo de propiedad",
+      "motivo": "Filtro principal que distingue departamento, local u otro tipo; no mezclar atributos de tipos distintos."
+    },
+    "tipo_activo": {
+      "prioridad_base": "A",
+      "campo": "Tipo de activo",
+      "motivo": "Clasificación residencial/comercial cuando el filtro la utiliza; no aceptar un valor aplicado solo por defecto del código."
+    },
+    "estado_comercial": {
+      "prioridad_base": "A",
+      "campo": "Estado comercial",
+      "motivo": "Categoría comercial esencial en blanco, en verde o recepción final; no confundir con entrega."
+    },
+    "entrega": {
+      "prioridad_base": "A",
+      "campo": "Fecha o categoría de entrega",
+      "motivo": "Basta una categoría Inmediata o una fecha/periodo estimado explícito, con fuente; no exige un calendario exhaustivo por versión."
+    },
+    "dormitorios": {
+      "prioridad_base": "A",
+      "campo": "Dormitorios",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido."
+    },
+    "banos": {
+      "prioridad_base": "A",
+      "campo": "Baños",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido."
+    },
+    "superficie_util": {
+      "prioridad_base": "A",
+      "campo": "Superficie útil",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto."
+    },
+    "superficie_total": {
+      "prioridad_base": "A",
+      "campo": "Superficie total",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano."
+    },
+    "superficie_terraza": {
+      "prioridad_base": "A",
+      "campo": "Terraza",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero."
+    },
+    "precios_tipologia": {
+      "prioridad_base": "B",
+      "campo": "Precios por tipología",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización."
+    },
+    "anio_entrega": {
+      "prioridad_base": "B",
+      "campo": "Año de entrega",
+      "motivo": "Detalle comercial de una entrega estimada si es pertinente; no es requisito separado cuando ya basta Inmediata o el periodo literal."
+    },
+    "semestre_entrega": {
+      "prioridad_base": "B",
+      "campo": "Semestre de entrega",
+      "motivo": "Detalle comercial de una entrega estimada si es pertinente; no exigir semestre si ya existe categoría o fecha suficiente."
+    },
+    "superficie_jardin": {
+      "prioridad_base": "B",
+      "campo": "Jardín o patio privado",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo."
+    },
+    "interior_cocina_equipada": {
+      "prioridad_base": "B",
+      "campo": "Cocina equipada",
+      "motivo": "Presencia/inclusión genérica útil para comparar; marcas y modelos de artefactos quedan fuera del alcance obligatorio."
+    },
+    "interior_ventanas_termopanel": {
+      "prioridad_base": "B",
+      "campo": "Ventanas termopanel",
+      "motivo": "Característica genérica de comparación; no requiere especificación de marcas, espesores o solución constructiva."
+    },
+    "interior_terraza_privada": {
+      "prioridad_base": "B",
+      "campo": "Terraza / rooftop privado",
+      "motivo": "Presencia de terraza privada relevante para comparar y filtrar amenities."
+    },
+    "interior_jardin_privado": {
+      "prioridad_base": "B",
+      "campo": "Jardín / patio privado (presencia)",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes."
+    },
+    "amenity_piscina": {
+      "prioridad_base": "B",
+      "campo": "Piscina",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_gimnasio": {
+      "prioridad_base": "B",
+      "campo": "Gimnasio / Training Zone",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_quinchos": {
+      "prioridad_base": "B",
+      "campo": "Quinchos",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_salon_multiuso": {
+      "prioridad_base": "B",
+      "campo": "Salón multiuso",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_cowork": {
+      "prioridad_base": "B",
+      "campo": "Cowork",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_bicicleteros": {
+      "prioridad_base": "B",
+      "campo": "Bicicleteros",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_lavanderia": {
+      "prioridad_base": "B",
+      "campo": "Lavandería",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_areas_verdes": {
+      "prioridad_base": "B",
+      "campo": "Áreas verdes comunes",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_juegos_infantiles": {
+      "prioridad_base": "B",
+      "campo": "Juegos infantiles",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_terraza_panoramica": {
+      "prioridad_base": "B",
+      "campo": "Terraza panorámica común",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_lounge": {
+      "prioridad_base": "B",
+      "campo": "Lounge",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_mascotas": {
+      "prioridad_base": "B",
+      "campo": "Espacios para mascotas",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_seguridad": {
+      "prioridad_base": "B",
+      "campo": "Seguridad",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_estacionamientos": {
+      "prioridad_base": "B",
+      "campo": "Estacionamientos",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "amenity_bodegas": {
+      "prioridad_base": "B",
+      "campo": "Bodegas privadas",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física."
+    },
+    "etapas": {
+      "prioridad_base": "C",
+      "campo": "Etapas o edificios diferenciados",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros."
+    },
+    "nombre_modelo": {
+      "prioridad_base": "C",
+      "campo": "Nombre de cada modelo",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas."
+    },
+    "codigo_modelo": {
+      "prioridad_base": "C",
+      "campo": "Identificación de cada modelo",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro."
+    },
+    "tipo_por_modelo": {
+      "prioridad_base": "C",
+      "campo": "Tipo de propiedad por modelo",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados."
+    },
+    "etapa_modelo": {
+      "prioridad_base": "C",
+      "campo": "Etapa por modelo",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto."
+    },
+    "superficie_sin_clasificar": {
+      "prioridad_base": "C",
+      "campo": "Superficie general sin clasificación",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes."
+    },
+    "superficie_interior": {
+      "prioridad_base": "C",
+      "campo": "Superficie interior",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente."
+    },
+    "superficie_terreno": {
+      "prioridad_base": "C",
+      "campo": "Terreno",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente."
+    },
+    "interior_pisos": {
+      "prioridad_base": "C",
+      "campo": "Pisos",
+      "motivo": "Tipo de piso y terminación decorativa expresamente fuera del obligatorio."
+    },
+    "interior_iluminacion": {
+      "prioridad_base": "C",
+      "campo": "Iluminación interior",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio."
+    },
+    "interior_cubiertas": {
+      "prioridad_base": "C",
+      "campo": "Cubiertas de cocina",
+      "motivo": "Material de cubierta expresamente fuera del obligatorio; incluye D-03 sin completarlo ni resolverlo."
+    },
+    "interior_conexion_lavadora": {
+      "prioridad_base": "C",
+      "campo": "Conexión para lavadora",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos."
+    },
+    "interior_tecnologia": {
+      "prioridad_base": "C",
+      "campo": "Equipamiento tecnológico interior",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad."
+    },
+    "interior_adicionales": {
+      "prioridad_base": "C",
+      "campo": "Terminaciones adicionales",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio."
+    }
+  },
+  "orden_reglas": [
+    "Own vendido: todos sus pendientes pasan a C por alcance de oferta activa",
+    "Año/semestre en los ocho proyectos con entrega literal Inmediata: C",
+    "tipo_por_modelo en Living/Bold/Indi: A solo para evitar asociación entre tipos al usar el filtro",
+    "Resto: prioridad base del campo"
+  ],
+  "contadores": {
+    "campos_canonicos": 53,
+    "particion_53_base": {
+      "A": 16,
+      "B": 23,
+      "C": 14
+    },
+    "filas_canonicas_leben": 689,
+    "particion_689_aplicable": {
+      "A": 205,
+      "C": 216,
+      "B": 268
+    },
+    "pendientes_documentales_historicos": 313,
+    "particion_313_aplicable": {
+      "A": 74,
+      "B": 48,
+      "C": 191
+    },
+    "campos_nuevos_completados": 0,
+    "pendientes_por_proyecto": {
+      "edificio-living-town": {
+        "A": 7,
+        "B": 3,
+        "C": 8
+      },
+      "edificio-mood": {
+        "C": 15,
+        "A": 6,
+        "B": 4
+      },
+      "edificio-santo": {
+        "C": 14,
+        "A": 7,
+        "B": 4
+      },
+      "edificio-baum": {
+        "C": 10,
+        "A": 7,
+        "B": 4
+      },
+      "edificio-suecia": {
+        "C": 14,
+        "B": 3,
+        "A": 5
+      },
+      "capitanes": {
+        "C": 12,
+        "B": 3,
+        "A": 5
+      },
+      "edificio-bold": {
+        "C": 15,
+        "A": 7,
+        "B": 5
+      },
+      "edificio-argomedo": {
+        "C": 15,
+        "B": 3,
+        "A": 5
+      },
+      "edificio-indi": {
+        "C": 13,
+        "A": 7,
+        "B": 3
+      },
+      "edificio-indigo": {
+        "C": 14,
+        "A": 6,
+        "B": 2
+      },
+      "inn-puerto-chico": {
+        "C": 12,
+        "A": 6,
+        "B": 2
+      },
+      "edificio-nordico": {
+        "C": 14,
+        "A": 6,
+        "B": 12
+      },
+      "own": {
+        "C": 35
+      }
+    },
+    "pendientes_por_campo": {
+      "nombre": {
+        "prioridad_base": "A",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "slug": {
+        "prioridad_base": "A",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "inmobiliaria": {
+        "prioridad_base": "A",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "region": {
+        "prioridad_base": "A",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "comuna": {
+        "prioridad_base": "A",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "direccion": {
+        "prioridad_base": "A",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "precio_desde_uf": {
+        "prioridad_base": "A",
+        "pendientes_base": 9,
+        "particion_aplicable": {
+          "A": 9
+        }
+      },
+      "tipo_propiedad": {
+        "prioridad_base": "A",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "tipo_activo": {
+        "prioridad_base": "A",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "estado_comercial": {
+        "prioridad_base": "A",
+        "pendientes_base": 2,
+        "particion_aplicable": {
+          "A": 2
+        }
+      },
+      "entrega": {
+        "prioridad_base": "A",
+        "pendientes_base": 1,
+        "particion_aplicable": {
+          "C": 1
+        }
+      },
+      "dormitorios": {
+        "prioridad_base": "A",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "A": 12,
+          "C": 1
+        }
+      },
+      "banos": {
+        "prioridad_base": "A",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "A": 12,
+          "C": 1
+        }
+      },
+      "superficie_util": {
+        "prioridad_base": "A",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "A": 12,
+          "C": 1
+        }
+      },
+      "superficie_total": {
+        "prioridad_base": "A",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "A": 12,
+          "C": 1
+        }
+      },
+      "superficie_terraza": {
+        "prioridad_base": "A",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "A": 12,
+          "C": 1
+        }
+      },
+      "precios_tipologia": {
+        "prioridad_base": "B",
+        "pendientes_base": 12,
+        "particion_aplicable": {
+          "B": 12
+        }
+      },
+      "anio_entrega": {
+        "prioridad_base": "B",
+        "pendientes_base": 9,
+        "particion_aplicable": {
+          "C": 9
+        }
+      },
+      "semestre_entrega": {
+        "prioridad_base": "B",
+        "pendientes_base": 9,
+        "particion_aplicable": {
+          "C": 9
+        }
+      },
+      "superficie_jardin": {
+        "prioridad_base": "B",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "B": 12,
+          "C": 1
+        }
+      },
+      "interior_cocina_equipada": {
+        "prioridad_base": "B",
+        "pendientes_base": 4,
+        "particion_aplicable": {
+          "B": 3,
+          "C": 1
+        }
+      },
+      "interior_ventanas_termopanel": {
+        "prioridad_base": "B",
+        "pendientes_base": 5,
+        "particion_aplicable": {
+          "B": 4,
+          "C": 1
+        }
+      },
+      "interior_terraza_privada": {
+        "prioridad_base": "B",
+        "pendientes_base": 1,
+        "particion_aplicable": {
+          "C": 1
+        }
+      },
+      "interior_jardin_privado": {
+        "prioridad_base": "B",
+        "pendientes_base": 10,
+        "particion_aplicable": {
+          "B": 9,
+          "C": 1
+        }
+      },
+      "amenity_piscina": {
+        "prioridad_base": "B",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "amenity_gimnasio": {
+        "prioridad_base": "B",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "amenity_quinchos": {
+        "prioridad_base": "B",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "amenity_salon_multiuso": {
+        "prioridad_base": "B",
+        "pendientes_base": 2,
+        "particion_aplicable": {
+          "B": 1,
+          "C": 1
+        }
+      },
+      "amenity_cowork": {
+        "prioridad_base": "B",
+        "pendientes_base": 2,
+        "particion_aplicable": {
+          "B": 1,
+          "C": 1
+        }
+      },
+      "amenity_bicicleteros": {
+        "prioridad_base": "B",
+        "pendientes_base": 0,
+        "particion_aplicable": {}
+      },
+      "amenity_lavanderia": {
+        "prioridad_base": "B",
+        "pendientes_base": 1,
+        "particion_aplicable": {
+          "B": 1
+        }
+      },
+      "amenity_areas_verdes": {
+        "prioridad_base": "B",
+        "pendientes_base": 1,
+        "particion_aplicable": {
+          "C": 1
+        }
+      },
+      "amenity_juegos_infantiles": {
+        "prioridad_base": "B",
+        "pendientes_base": 2,
+        "particion_aplicable": {
+          "B": 1,
+          "C": 1
+        }
+      },
+      "amenity_terraza_panoramica": {
+        "prioridad_base": "B",
+        "pendientes_base": 1,
+        "particion_aplicable": {
+          "B": 1
+        }
+      },
+      "amenity_lounge": {
+        "prioridad_base": "B",
+        "pendientes_base": 1,
+        "particion_aplicable": {
+          "B": 1
+        }
+      },
+      "amenity_mascotas": {
+        "prioridad_base": "B",
+        "pendientes_base": 2,
+        "particion_aplicable": {
+          "B": 1,
+          "C": 1
+        }
+      },
+      "amenity_seguridad": {
+        "prioridad_base": "B",
+        "pendientes_base": 2,
+        "particion_aplicable": {
+          "B": 1,
+          "C": 1
+        }
+      },
+      "amenity_estacionamientos": {
+        "prioridad_base": "B",
+        "pendientes_base": 1,
+        "particion_aplicable": {
+          "C": 1
+        }
+      },
+      "amenity_bodegas": {
+        "prioridad_base": "B",
+        "pendientes_base": 1,
+        "particion_aplicable": {
+          "C": 1
+        }
+      },
+      "etapas": {
+        "prioridad_base": "C",
+        "pendientes_base": 12,
+        "particion_aplicable": {
+          "C": 12
+        }
+      },
+      "nombre_modelo": {
+        "prioridad_base": "C",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "C": 13
+        }
+      },
+      "codigo_modelo": {
+        "prioridad_base": "C",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "C": 13
+        }
+      },
+      "tipo_por_modelo": {
+        "prioridad_base": "C",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "A": 3,
+          "C": 10
+        }
+      },
+      "etapa_modelo": {
+        "prioridad_base": "C",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "C": 13
+        }
+      },
+      "superficie_sin_clasificar": {
+        "prioridad_base": "C",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "C": 13
+        }
+      },
+      "superficie_interior": {
+        "prioridad_base": "C",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "C": 13
+        }
+      },
+      "superficie_terreno": {
+        "prioridad_base": "C",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "C": 13
+        }
+      },
+      "interior_pisos": {
+        "prioridad_base": "C",
+        "pendientes_base": 6,
+        "particion_aplicable": {
+          "C": 6
+        }
+      },
+      "interior_iluminacion": {
+        "prioridad_base": "C",
+        "pendientes_base": 10,
+        "particion_aplicable": {
+          "C": 10
+        }
+      },
+      "interior_cubiertas": {
+        "prioridad_base": "C",
+        "pendientes_base": 5,
+        "particion_aplicable": {
+          "C": 5
+        }
+      },
+      "interior_conexion_lavadora": {
+        "prioridad_base": "C",
+        "pendientes_base": 13,
+        "particion_aplicable": {
+          "C": 13
+        }
+      },
+      "interior_tecnologia": {
+        "prioridad_base": "C",
+        "pendientes_base": 11,
+        "particion_aplicable": {
+          "C": 11
+        }
+      },
+      "interior_adicionales": {
+        "prioridad_base": "C",
+        "pendientes_base": 9,
+        "particion_aplicable": {
+          "C": 9
+        }
+      }
+    }
+  },
+  "filas_313_clasificadas": [
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "A",
+      "regla": "SEPARACION_TIPO_SOLO_ALCANCE_USADO",
+      "motivo": "Hay evidencia separada de departamentos/locales: asegurar que precio, D/B y superficie usados por el filtro pertenecen al tipo correspondiente. Basta la asociación de las referencias utilizadas; no se exige inventario completo de modelos ni se confirma stock Sollahms desde Iris.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-living-town",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "interior_ventanas_termopanel",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica genérica de comparación; no requiere especificación de marcas, espesores o solución constructiva.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "interior_pisos",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Tipo de piso y terminación decorativa expresamente fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "interior_cubiertas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Material de cubierta expresamente fuera del obligatorio; incluye D-03 sin completarlo ni resolverlo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-mood",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "estado_comercial",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Categoría comercial esencial en blanco, en verde o recepción final; no confundir con entrega.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "interior_cocina_equipada",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia/inclusión genérica útil para comparar; marcas y modelos de artefactos quedan fuera del alcance obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-santo",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "estado_comercial",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Categoría comercial esencial en blanco, en verde o recepción final; no confundir con entrega.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "interior_ventanas_termopanel",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica genérica de comparación; no requiere especificación de marcas, espesores o solución constructiva.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "interior_pisos",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Tipo de piso y terminación decorativa expresamente fuera del obligatorio.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-baum",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-suecia",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "capitanes",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "A",
+      "regla": "SEPARACION_TIPO_SOLO_ALCANCE_USADO",
+      "motivo": "Hay evidencia separada de departamentos/locales: asegurar que precio, D/B y superficie usados por el filtro pertenecen al tipo correspondiente. Basta la asociación de las referencias utilizadas; no se exige inventario completo de modelos ni se confirma stock Sollahms desde Iris.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_cocina_equipada",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia/inclusión genérica útil para comparar; marcas y modelos de artefactos quedan fuera del alcance obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_ventanas_termopanel",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica genérica de comparación; no requiere especificación de marcas, espesores o solución constructiva.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_pisos",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Tipo de piso y terminación decorativa expresamente fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_cubiertas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Material de cubierta expresamente fuera del obligatorio; incluye D-03 sin completarlo ni resolverlo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-bold",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "interior_pisos",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Tipo de piso y terminación decorativa expresamente fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-argomedo",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "A",
+      "regla": "SEPARACION_TIPO_SOLO_ALCANCE_USADO",
+      "motivo": "Hay evidencia separada de departamentos/locales: asegurar que precio, D/B y superficie usados por el filtro pertenecen al tipo correspondiente. Basta la asociación de las referencias utilizadas; no se exige inventario completo de modelos ni se confirma stock Sollahms desde Iris.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia de jardín/patio privado relevante para comparar; no inferir desde áreas comunes.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "ENTREGA_INMEDIATA_YA_DOCUMENTADA",
+      "motivo": "Existe entrega literal Inmediata en la evidencia ya conservada. Año/semestre no son requisitos adicionales de esa categoría; no se infieren ni se vuelven a pedir.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-indigo",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "interior_cubiertas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Material de cubierta expresamente fuera del obligatorio; incluye D-03 sin completarlo ni resolverlo.",
+      "estado_documental_conservado": "Contradictorio",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de etapas/edificios fuera del obligatorio; solo importa una asociación puntual si evita una coincidencia falsa en filtros.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "precio_desde_uf",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro principal de precio en UF; usar declaración expresa del propietario con fecha, sin calcular un mínimo global no declarado.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "precios_tipologia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Comparación comercial cuando estén disponibles. Las veinte cotizaciones F049 ya se aceptaron; no exigir lista exhaustiva ni recotización.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de nombres fuera del obligatorio; no bloquear por diferencia de nombre si la tipología y métricas utilizadas están respaldadas.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de códigos fuera del obligatorio. Conservar diferencias sin inventar equivalencias; investigar solo una dependencia puntual de un filtro.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo por modelo fuera del obligatorio si tipo de propiedad y referencias comerciales tienen alcance suficiente. Se aplica excepción en proyectos con departamentos/locales mezclados.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Inventario exhaustivo de asociaciones etapa/modelo fuera del obligatorio; no pedir todas las versiones para filtros de proyecto.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Filtro esencial, con alcance de la referencia comercial o unidad/modelo realmente ofrecido.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Rangos históricos sin métrica no se usan en filtros. Se conserva el historial, sin exigir reclasificar cada rango cuando ya hay métricas explícitas suficientes.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no usar Internos o interior como sustituto.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica separada que no sustituye útil ni total; el nuevo obligatorio enumera útil/total/terraza y no exige completar interior exhaustivamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica esencial de superficie cuando el filtro la consulta; no calcularla por suma ni extender un plano.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "A",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Métrica de terraza cuando existe o se ofrece; no exigirla a una tipología sin terraza ni convertir desconocido en cero.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica comercial de jardín/patio privado; no confundir área común y privada ni exigir cuadro exhaustivo.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Fuera del obligatorio de la oferta de departamentos/locales Leben auditada. Solo sería esencial si una oferta de casa/parcela/terreno y su filtro lo requirieran expresamente.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "amenity_salon_multiuso",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "amenity_cowork",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "amenity_lavanderia",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "amenity_juegos_infantiles",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "amenity_terraza_panoramica",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "amenity_lounge",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "amenity_mascotas",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "amenity_seguridad",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Amenity o característica comercial relevante para comparación. Reutilizar brochure/ficha/Iris; false por omisión solo bajo el criterio de brochure completo, sin afirmar ausencia física.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "interior_cocina_equipada",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Presencia/inclusión genérica útil para comparar; marcas y modelos de artefactos quedan fuera del alcance obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "interior_ventanas_termopanel",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "B",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Característica genérica de comparación; no requiere especificación de marcas, espesores o solución constructiva.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": false,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "interior_pisos",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Tipo de piso y terminación decorativa expresamente fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación de iluminación/terminación secundaria fuera del obligatorio.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "interior_cubiertas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Material de cubierta expresamente fuera del obligatorio; incluye D-03 sin completarlo ni resolverlo.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificación constructiva de conexión/ubicación secundaria; no equivale a amenity lavandería ni obliga a rehacer los documentos.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Especificaciones tecnológicas secundarias fuera del obligatorio; seguridad comercial documentada se trata en amenity_seguridad.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "edificio-nordico",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "MAPA_CAMPO",
+      "motivo": "Terminaciones o detalles constructivos secundarios fuera del obligatorio.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "etapas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "entrega",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Histórico",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "anio_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "semestre_entrega",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "nombre_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "codigo_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "tipo_por_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "etapa_modelo",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "dormitorios",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "banos",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "superficie_sin_clasificar",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Parcial",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "superficie_util",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "superficie_interior",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "superficie_total",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "superficie_terraza",
+      "prioridad_base": "A",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "superficie_jardin",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "superficie_terreno",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "amenity_salon_multiuso",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "amenity_cowork",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "amenity_areas_verdes",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "amenity_juegos_infantiles",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "amenity_mascotas",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "amenity_seguridad",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "amenity_estacionamientos",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "amenity_bodegas",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_cocina_equipada",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_ventanas_termopanel",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_pisos",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_iluminacion",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_cubiertas",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_conexion_lavadora",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_tecnologia",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_terraza_privada",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_jardin_privado",
+      "prioridad_base": "B",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    },
+    {
+      "slug": "own",
+      "campo_id": "interior_adicionales",
+      "prioridad_base": "C",
+      "prioridad_aplicable": "C",
+      "regla": "OWN_VENDIDO_FUERA_OFERTA_ACTIVA",
+      "motivo": "Own está vendido por F049/F4-H065. Este pendiente histórico no bloquea una oferta activa inexistente; se conserva sin completarlo, sin pedir precio/stock y sin habilitar venta.",
+      "estado_documental_conservado": "Desconocido",
+      "fuera_alcance_obligatorio": true,
+      "nuevo_cierre": false
+    }
+  ],
+  "casos_activos_reclasificados": {
+    "IR-C001": {
+      "prioridad": "A",
+      "motivo": "Baños A1/603/803 afectan filtro; no usar categoría general para resolver el caso."
+    },
+    "IR-C003": {
+      "prioridad": "A",
+      "motivo": "Dormitorios Mood A/303 y alcance del gráfico201 afectan filtro; conservar1,5D literal."
+    },
+    "CAP-A-ALCANCE": {
+      "prioridad": "A_CONDICIONAL",
+      "motivo": "Aplicabilidad de superficies utilizadas por filtros a501/601; nombres/códigos por sí solos permanecenC."
+    },
+    "BOLD-S1-TIPOLOGIA": {
+      "prioridad": "A",
+      "motivo": "Estudio vs1D afecta dormitorios/tipo comercial; baños no están en conflicto."
+    },
+    "BOLD-F-SUPERFICIES": {
+      "prioridad": "A_CONDICIONAL",
+      "motivo": "Terraza/total si se utilizan en filtros. Interior no se exige como sustituto útil/total; no transferirP108 a otros recursos."
+    },
+    "ARG-C-C1": {
+      "prioridad": "C",
+      "motivo": "Solo cambia código; ambos lados dicen2D2B. Conservar diferencia sin afirmar equivalencia ni bloquear por inventario de códigos."
+    },
+    "INDI-D-PLANO-A2": {
+      "prioridad": "A",
+      "motivo": "2D vs1D afecta dormitorios y asociación del tipo filtrado."
+    },
+    "INDI-A4-PLANO-C1": {
+      "prioridad": "C",
+      "motivo": "CódigoA4/C1 con misma tipología2D2B; no bloquear por nombre ni propagar a otras unidades."
+    },
+    "IR-C020": {
+      "prioridad": "A",
+      "motivo": "BañosS/605 afectan filtro."
+    },
+    "IR-C021": {
+      "prioridad": "A",
+      "motivo": "DormitoriosR/604 afectan filtro."
+    },
+    "IR-C022": {
+      "prioridad": "A",
+      "motivo": "DormitoriosQ/603 afectan filtro."
+    },
+    "D-03": {
+      "prioridad": "C",
+      "motivo": "Material de cubierta fuera del obligatorio por orden expresa del propietario; no completado y no resuelto."
+    },
+    "F3-C001": {
+      "prioridad": "A_CONDICIONAL_SIN_BLOQUEO_GLOBAL",
+      "motivo": "Solo afecta una búsqueda que pretenda usar métricas atribuidas a806/906; no transferir plano406. Puede omitirse esa asociación desconocida sin bloquear proyecto o filtros que no la usan."
+    }
+  },
+  "aplicacion_prudente": [
+    "La particion A/B/C no cambia estados documentales ni cierra pendientes. Sigue habiendo313pendientes documentales historicos; ahora se distingue el alcance obligatorio.",
+    "A en el antiguo ledger no significa que falte toda la funcion del filtro: puede existir una referencia comercial suficiente aunque falte inventario exhaustivo. Evaluar evidencia y alcance reales antes de declarar un bloqueo.",
+    "No exigir que todos los filtros sean consultables para que un proyecto aparezca en búsquedas que no usan los atributos desconocidos. Si un predicado usa un dato desconocido, ese dato no puede producir coincidencia positiva.",
+    "Para combinar precio/tipo/D/B/superficie, exigir una misma referencia o alcance comercial compatible. No construir coincidencias con mínimos o atributos de unidades distintas.",
+    "Los20preciosF049 y2adicionales siguen aceptados con fecha. No derivar desde global no declarado ni volver a recotizar; precios por tipología se aprovechan cuando estén disponibles.",
+    "La entrega inmediata o fecha/periodo estimado suficientemente documentados bastan para ese filtro; no exigir un calendario entero de años/semestres por modelo.",
+    "C queda explícitamente fuera del obligatorio, sin completar ni resolver: especialmenteD03, inventarios de modelo y detalles constructivos.",
+    "Ninguna cifra de proyectos listos se obtiene solo de esta clasificación: hace falta la verificación funcional de filtros sobre evidencia ya disponible.",
+    "No afirmar cobertura de los118proyectos restantes: solo mantener sus identidades en la maestra y marcar revisión comercial pendiente, sin navegar otras inmobiliarias."
+  ],
+  "validaciones": {
+    "313_claves_unicas": true,
+    "particion_313_exhaustiva": true,
+    "mapa_53_exhaustivo": true,
+    "D03_no_bloqueante": true,
+    "Own_35_C": true,
+    "sin_cierres": true
+  }
+}

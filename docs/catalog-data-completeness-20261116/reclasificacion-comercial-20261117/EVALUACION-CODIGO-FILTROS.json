@@ -1,0 +1,2952 @@
+{
+  "fecha_revision": "2026-11-17",
+  "timezone": "America/Santiago",
+  "head_auditado": "3eccce6a4a758a7b56f7c29093c731014cd6382f",
+  "metodo": "Lectura estática mediante git show del checkout de auditoría. Sin ejecutar generadores, modificar código, navegador, endpoints o auditar otras inmobiliarias. No se usó el checkout original dirty como autoridad.",
+  "fuentes": [
+    {
+      "archivo": "proyectos.html",
+      "sha256": "c8c15f965f9d644a6d292c76052c124321eb3d68258ca44707474fb33f58020a"
+    },
+    {
+      "archivo": "data/proyectos.json",
+      "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494"
+    },
+    {
+      "archivo": "data/fichas-proyectos.json",
+      "sha256": "0c621aff2e65779acd55c7508d4f949dab14f47a3130874c36ce0336bc4c5278"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+      "sha256": "8f1c7ea7021cb630c4144fb7612d741d4c472d3534189da7b09e1299580bed78"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/BASELINE.json",
+      "sha256": "e6490b69a7f01a472577e28bdb5c46440c182ef98685017ef44b8796a9be31b9"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+      "sha256": "449856fc4e6853ed5fc5ac64cace6d5d905674123e8a3d91b4c8ed3eecb120a1"
+    },
+    {
+      "archivo": "scripts/build-project-details.py",
+      "sha256": "4fbd00de6b2a5c63705b73533d60f31041f5a3fa5993609c28c80367dcf56780"
+    }
+  ],
+  "universos": {
+    "auditoria_131": {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+      "cantidad": 131,
+      "sha256": "8f1c7ea7021cb630c4144fb7612d741d4c472d3534189da7b09e1299580bed78",
+      "coincide_hash_baseline": true,
+      "nota": "Matriz anclada al catálogo local recibido; no equivale a main ni a producción. No se altera la atribución original de Parque Germania.",
+      "origen_historico": "/Users/luissandoval/Documents/sollahms-web",
+      "source_head_declarado": "dfa5b5b73173b246fd29921ad3514fa53e4bf0c4",
+      "origen_no_releido": true
+    },
+    "catalogo_en_HEAD": {
+      "archivo": "data/proyectos.json",
+      "cantidad": 137,
+      "solo_en_HEAD": [
+        "atelier-prat-oficinas",
+        "box-santiago",
+        "corrientes-oficinas",
+        "la-casona-de-buin",
+        "urbano-centro",
+        "vergara-domeyko"
+      ],
+      "ausentes_en_HEAD_respecto131": []
+    },
+    "regla_denominador": "Mantener131IDs de la matriz y distinguir13Leben auditados de118no evaluados. Los137del código no sustituyen ese corte ni se importan en esta etapa."
+  },
+  "facetas_implementadas": [
+    {
+      "faceta": "precio",
+      "control_actual": true,
+      "control": "max-price",
+      "contrato_actual": "Precio máximo compara solamente precioDesdeUF numérico finito <= máximo activo. No compara cotizaciones por tipología ni exige fuente/fecha.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 168
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 316,
+          "hasta_linea": 320
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 337,
+          "hasta_linea": 344
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 351,
+          "hasta_linea": 358
+        }
+      ]
+    },
+    {
+      "faceta": "tipo_de_propiedad",
+      "control_actual": "Solo tipo de activo",
+      "control": "asset-type",
+      "contrato_actual": "Opciones Residencial, Comercial y Terreno sobre tipoActivo. No selecciona departamento/casa/estudio/local. Un tipoActivo null o ausente se sustituye por Residencial.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 164
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 340
+        }
+      ]
+    },
+    {
+      "faceta": "dormitorios",
+      "control_actual": false,
+      "contrato_actual": "Tipologías se muestran como lista de texto en tarjetas; no hay predicado ni control de dormitorios. El catálogo no carga data/fichas-proyectos.json para buscar.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 308,
+          "hasta_linea": 315
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 383,
+          "hasta_linea": 402
+        }
+      ]
+    },
+    {
+      "faceta": "banos",
+      "control_actual": false,
+      "contrato_actual": "Sin control ni predicado de baños en el catálogo. specs.banos existe en fichas de detalle, separado del dataset cargado por el buscador.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 142,
+          "hasta_linea": 149
+        }
+      ]
+    },
+    {
+      "faceta": "superficie",
+      "control_actual": false,
+      "contrato_actual": "Sin control ni predicado de superficies. superficieDesdeM2 heredada no identifica por sí sola útil o total. El generador de detalle distingue superficie publicada y specs útil/total/terreno.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 137,
+          "hasta_linea": 149
+        }
+      ]
+    },
+    {
+      "faceta": "estado_comercial",
+      "control_actual": true,
+      "control": "state",
+      "contrato_actual": "Opciones exactas desde estado del proyecto y estados de sus etapas. La coincidencia puede proceder de cualquier etapa; no enlaza estado y precio a la misma unidad/etapa. No normaliza recepción final frente a entrega inmediata.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 167
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 224,
+          "hasta_linea": 229
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 343
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 398
+        }
+      ]
+    },
+    {
+      "faceta": "entrega",
+      "control_actual": false,
+      "contrato_actual": "Entrega se muestra en tarjeta y etapas, pero no hay filtro directo de entrega/fecha. Entrega inmediata puede aparecer como estado heredado; no equivale a una faceta separada ni a recepción final.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 294,
+          "hasta_linea": 307
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        }
+      ]
+    },
+    {
+      "faceta": "inmobiliaria",
+      "control_actual": "Texto libre",
+      "contrato_actual": "Se busca el nombre de inmobiliaria mediante búsqueda libre junto con nombre/comuna/región/dirección/slug y nombres de etapas. No hay selector dedicado de inmobiliaria.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 163
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 345,
+          "hasta_linea": 348
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 280,
+          "hasta_linea": 281
+        }
+      ]
+    },
+    {
+      "faceta": "amenities",
+      "control_actual": false,
+      "contrato_actual": "El catálogo recibe arrays de amenities, pero no hay control ni predicado y tampoco entran en búsqueda libre. La ficha de detalle presenta solo lo que considera verificado.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 157,
+          "hasta_linea": 158
+        }
+      ]
+    },
+    {
+      "faceta": "estacionamiento_bodega",
+      "control_actual": false,
+      "contrato_actual": "No hay filtros ni campos dedicados de disponibilidad/inclusión/adicionalidad en el catálogo. Menciones en amenities no codifican el precio ni la asignación a una unidad.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 162,
+          "hasta_linea": 170
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 339,
+          "hasta_linea": 349
+        }
+      ]
+    },
+    {
+      "faceta": "region_comuna",
+      "control_actual": true,
+      "control": "region,commune",
+      "contrato_actual": "Igualdad exacta cuando hay selección, sin exclusión por atributo vacío si no se activa esa selección. Comuna se restringe a la región seleccionada.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 165,
+          "hasta_linea": 166
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 246,
+          "hasta_linea": 250
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 341,
+          "hasta_linea": 342
+        }
+      ]
+    }
+  ],
+  "conteos_legados_snapshot131": {
+    "proyectos": 131,
+    "precio_desde_numerico_finito_positivo": 86,
+    "tipo_activo_explicito": 30,
+    "tipo_activo_ausente": 101,
+    "tipo_activo_valores": {
+      "SIN_ATRIBUTO": 101,
+      "Terreno": 1,
+      "Residencial": 29
+    },
+    "estado_texto": 106,
+    "entrega_texto": 71,
+    "tipologias_array_no_vacio": 126,
+    "superficie_desde_numerica_sin_rotulo_metrologico": 86,
+    "amenities_array_no_vacio": 114,
+    "inmobiliaria_texto": 131,
+    "region_texto": 114,
+    "comuna_texto": 124
+  },
+  "advertencia_conteos": "Los conteos solo verifican presencia y tipo en el snapshot archivado. No demuestran vigencia, aplicabilidad por modelo/unidad, stock, cobertura completa o auditoría de los118restantes.",
+  "semantica_desconocidos": {
+    "actual_correcto": [
+      "Precio desconocido no excluye sin máximo activo y no coincide cuando máximo está activo.",
+      "Región,comuna yestado solo restringen si existe selección; no excluyen automáticamente porotro atributo desconocido.",
+      "Orden deprecio coloca desconocidos al final."
+    ],
+    "actual_pendiente": [
+      "tipoActivo null/ausente se convierte enResidencial yproduce coincidencia sinatributo explícito.",
+      "Las facetas dormitorios,baños,superficie,entrega,amenities yparking/bodega no estánimplementadas enel formulario/predicado delcatálogo. No declarar sus pruebasaprobadas."
+    ],
+    "contrato_propuesto": [
+      "Evaluar únicamente filtros activos. Si atributo necesario es desconocido,parcial sin alcance o contradictorio, no afirmar coincidencia; conservar el proyecto en búsquedas que no usan ese atributo.",
+      "Separar valor conocido, false de catálogo por brochure completo, desconocido e inaplicable. Un array vacío o silencio de Iris no acredita false.",
+      "Precio requiere UF positivo,fecha deactualización,fuente propietaria prevalente yreferencia/modelo. Costos adicionales no son precios de inmuebles.",
+      "En combinación de filtros exigir que tipo, dormitorios, baños, superficies yprecio pertenezcan auna misma unidad/modelo/versión aplicable; no formar productos cartesianos de datos generales.",
+      "Conservarútil,interior,total,terraza,patio/ jardín,terreno,Internos,logia yrooftop separados. No usar superficieDesdeM2 sinclasificar comoútil/total ni inferir sumas.",
+      "Separar estado comercial de entrega. Recepción final no determina fecha, yentrega inmediata no sustituye la declaración comercialpropietaria.",
+      "Tipo de activo ytipo de propiedad son facetas distintas. No inferir residual de null; un tipo documentado puede normalizarse solo bajo una regla explícita, sin cambiar el original.",
+      "Mantener vendidos identificados como tales, sin solicitar precio/stock nuevo. No tratar falta de disponibilidad como cero monetario.",
+      "No convertir metadatos verificacion heredados enuna nueva auditoría deotras inmobiliarias."
+    ]
+  },
+  "mapeo_estado_Leben_snapshot_a_F049": [
+    {
+      "slug": "edificio-indi",
+      "estado_snapshot": "Entrega inmediata",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "Recepción final",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 1012
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 437
+        }
+      ]
+    },
+    {
+      "slug": "edificio-baum",
+      "estado_snapshot": "Venta en verde",
+      "estado_fase4": "Histórico",
+      "categoria_propietario_F049": null,
+      "fecha_declaracion": null,
+      "regla": "No hay respuesta F049 para este estado; conservar histórico y pendiente, sin normalizar como vigente.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 2769
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 172
+        }
+      ]
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "estado_snapshot": "Venta en verde",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "en verde",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 2873
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 543
+        }
+      ]
+    },
+    {
+      "slug": "edificio-suecia",
+      "estado_snapshot": "Entrega inmediata",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "Recepción final",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 2922
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 225
+        }
+      ]
+    },
+    {
+      "slug": "capitanes",
+      "estado_snapshot": "Entrega inmediata",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "Recepción final",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 2972
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 278
+        }
+      ]
+    },
+    {
+      "slug": "edificio-argomedo",
+      "estado_snapshot": "Entrega inmediata",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "Recepción final",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3069
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 384
+        }
+      ]
+    },
+    {
+      "slug": "edificio-mood",
+      "estado_snapshot": "Entrega inmediata",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "Recepción final",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3116
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 66
+        }
+      ]
+    },
+    {
+      "slug": "edificio-indigo",
+      "estado_snapshot": "Entrega inmediata",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "Recepción final",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3168
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 490
+        }
+      ]
+    },
+    {
+      "slug": "edificio-santo",
+      "estado_snapshot": "Entrega inmediata",
+      "estado_fase4": "Histórico",
+      "categoria_propietario_F049": null,
+      "fecha_declaracion": null,
+      "regla": "No hay respuesta F049 para este estado; conservar histórico y pendiente, sin normalizar como vigente.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3263
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 119
+        }
+      ]
+    },
+    {
+      "slug": "edificio-living-town",
+      "estado_snapshot": "Venta en verde",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "en blanco",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3311
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 13
+        }
+      ]
+    },
+    {
+      "slug": "edificio-bold",
+      "estado_snapshot": "Entrega inmediata",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "Recepción final",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3360
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 331
+        }
+      ]
+    },
+    {
+      "slug": "own",
+      "estado_snapshot": "Vendido",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "vendido",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 7252
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 649
+        }
+      ]
+    },
+    {
+      "slug": "edificio-nordico",
+      "estado_snapshot": "Venta en blanco",
+      "estado_fase4": "Confirmado por propietario",
+      "categoria_propietario_F049": "en verde",
+      "fecha_declaracion": "2026-11-16",
+      "regla": "Usar la categoría declarada con su alcance/fecha, sin derivar entrega o stock.",
+      "referencias": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 7489
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 596
+        }
+      ]
+    }
+  ],
+  "ejemplos_verificables": [
+    {
+      "id": "EJ-TIPO-UNKNOWN",
+      "tipo": "Defecto del predicado actual",
+      "dato": {
+        "slug": "edificio-living-town",
+        "tipoActivo": null
+      },
+      "resultado_actual": "Coincide con Residencial por fallback; no demuestra que el atributo esté documentado.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 340
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3305
+        }
+      ]
+    },
+    {
+      "id": "EJ-PRECIO-UNKNOWN",
+      "tipo": "Comportamiento correcto para filtro activo/inactivo",
+      "dato": {
+        "slug": "own",
+        "precioDesdeUF": null,
+        "estado": "Vendido"
+      },
+      "resultado_actual": "Sin máximo no se excluye por carecer de precio; con máximo activo no coincide. No se presenta vendido como disponible.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 337,
+          "hasta_linea": 344
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 7258
+        }
+      ]
+    },
+    {
+      "id": "EJ-PRECIO-LEGADO",
+      "tipo": "Fuente comercial dinámica separada de catálogo publicado",
+      "dato": {
+        "slug": "edificio-living-town",
+        "precio_desde_snapshot_UF": 2812,
+        "precio_propietario_1D_UF": 3949,
+        "precio_propietario_2D_UF": 4991.65
+      },
+      "resultado": "El snapshot conserva un importe histórico distinto. F049 prevalece comercialmente para las categorías declaradas; no calcular un desde global de esas categorías ni modificar precios publicados en esta etapa.",
+      "refs": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3317
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/MATRIZ-LEBEN.csv",
+          "linea": 9
+        },
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+          "linea": 1
+        }
+      ]
+    },
+    {
+      "id": "EJ-SUPERFICIE-SIN-ROTULO",
+      "tipo": "No sustituir una métrica por otra",
+      "dato": {
+        "slug": "edificio-living-town",
+        "superficieDesdeM2_snapshot": 31
+      },
+      "resultado": "La cifra genérica no prueba útil ni total y no habilita una futura coincidencia en esas métricas.",
+      "refs": [
+        {
+          "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/entrada/proyectos-131.json",
+          "linea": 3330
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 139,
+          "hasta_linea": 149
+        }
+      ]
+    },
+    {
+      "id": "EJ-FACETAS-NO-CARGADAS",
+      "tipo": "Separar detalle de buscador",
+      "resultado": "Los specs dormitorios/baños/útil/total pertenecen al detalle; el buscador carga proyectos.json y solo valida etapas. Existencia de specs no significa filtro implementado ni dato auditado.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 383,
+          "hasta_linea": 397
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 44,
+          "hasta_linea": 57
+        },
+        {
+          "archivo": "scripts/build-project-details.py",
+          "linea": 142,
+          "hasta_linea": 149
+        }
+      ]
+    },
+    {
+      "id": "EJ-ESTADO-PRECIO-ETAPAS",
+      "tipo": "Riesgo de asociación en combinación actual",
+      "resultado": "projectStates reúne estados de etapas, mientras precio usa precioDesdeUF del proyecto o referencia; la conjunción no garantiza una misma etapa. Debe validarse la misma oferta/versión antes de certificar resultados combinados.",
+      "refs": [
+        {
+          "archivo": "proyectos.html",
+          "linea": 224,
+          "hasta_linea": 229
+        },
+        {
+          "archivo": "proyectos.html",
+          "linea": 343,
+          "hasta_linea": 344
+        }
+      ]
+    }
+  ],
+  "propuesta_cobertura131": {
+    "capas": [
+      "Control/predicado implementado en elcódigo deHEAD",
+      "Presencia devalores legados enelsnapshot131",
+      "Respaldo documental yalcance real auditado para13Leben",
+      "Pendientes comerciales/bloqueantes que requieren evidencia antes decertificar cadafaceta"
+    ],
+    "grupos": {
+      "con_auditoria_Leben_parcial": 13,
+      "restantes_no_evaluados": 118
+    },
+    "no_emitir": [
+      "No declarar131proyectos listos por tenercampos JSON o flags deverificacion.",
+      "No declarar118faltantes de datos por ausencia de una auditoría; registrar No evaluado.",
+      "No certificar una faceta inexistente en el código como operativa.",
+      "No asumir un proyecto entero inutilizable por un soloatributo desconocido cuando eseatributo no participa en labúsqueda.",
+      "No usarD03materiales como bloqueo comercial; conservar historial complementario."
+    ],
+    "certificacion_global": "Este análisis decódigo no certifica la preparación comercial completa de ningúnproyecto. El conteo final requiere juntar facetas esenciales, alcance yestados documentales; distinguirobjeto heredado, cobertura parcial y noprobado.",
+    "por_proyecto": [
+      {
+        "slug": "distrito-centro",
+        "nombre": "Distrito Centro",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "reserva-mayor-2",
+        "nombre": "Reserva Mayor 2",
+        "inmobiliaria_etiqueta_snapshot": "Vesant",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vista-llacolen-b",
+        "nombre": "Vista Llacolén B",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "bcome",
+        "nombre": "Edificio B.Come — Concepción",
+        "inmobiliaria_etiqueta_snapshot": "León",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vista-llacolen-a",
+        "nombre": "Vista Llacolén A",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "campus-llacolen",
+        "nombre": "Campus Llacolén",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "nucleo-costanera",
+        "nombre": "Núcleo Costanera",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "wayra",
+        "nombre": "Edificio Wayra",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "lamara",
+        "nombre": "Lamara",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "alto-buzeta",
+        "nombre": "Alto Buzeta",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "independencia-4745",
+        "nombre": "Independencia 4745",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vistamar",
+        "nombre": "Vistamar",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "costanera-coquimbo-a",
+        "nombre": "Costanera Coquimbo Edificio A",
+        "inmobiliaria_etiqueta_snapshot": "Nollagam",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "costanera-coquimbo-b",
+        "nombre": "Costanera Coquimbo Edificio B",
+        "inmobiliaria_etiqueta_snapshot": "Nollagam",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-ecuador",
+        "nombre": "Ecuador",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "coronel-godoy",
+        "nombre": "Edificio Coronel Godoy",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-indi",
+        "nombre": "Edificio Indi",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "vivaceta",
+        "nombre": "Edificio Vivaceta",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-bezanilla",
+        "nombre": "Bezanilla",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "jardines-de-alvarado",
+        "nombre": "Jardines de Alvarado",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-santa-maria",
+        "nombre": "Edificio Santa María",
+        "inmobiliaria_etiqueta_snapshot": "Nollagam",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "plaza-cervantes-b",
+        "nombre": "Plaza Cervantes - Torre B",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-teatinos-750",
+        "nombre": "Edificio Teatinos 750",
+        "inmobiliaria_etiqueta_snapshot": "AJ Urbana",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-vista-amunategui",
+        "nombre": "Edificio Vista Amunategui",
+        "inmobiliaria_etiqueta_snapshot": "AJ Urbana",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "endemico",
+        "nombre": "Endémico",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": false,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "playa-penuelas",
+        "nombre": "Playa Peñuelas",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "serrano-torre-a",
+        "nombre": "Serrano - Torre A",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "plaza-cervantes",
+        "nombre": "Plaza Cervantes - Torre A",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": false,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vista-costanera",
+        "nombre": "Vista Costanera",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vista-reloncavi",
+        "nombre": "Vista Reloncaví",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "downtown-san-martin",
+        "nombre": "Downtown San Martín",
+        "inmobiliaria_etiqueta_snapshot": "AJ Urbana",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vista-morande",
+        "nombre": "Vista Morandé",
+        "inmobiliaria_etiqueta_snapshot": "AJ Urbana",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-don-pepe-154",
+        "nombre": "Don Pepe 154",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "plaza-de-lourdes",
+        "nombre": "Plaza de Lourdes",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "santa-elena-1670-mbi",
+        "nombre": "Santa Elena 1670",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "plaza-quilicura",
+        "nombre": "Plaza Quilicura",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "mapocho-3521-edificio-a",
+        "nombre": "Mapocho 3521 - Edificio A",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": false,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-lira-622",
+        "nombre": "Lira 622",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-dual-390-lto",
+        "nombre": "Dual 390 LTO",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "entre-vicunas",
+        "nombre": "Entre Vicuñas",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "lomas-de-puyai",
+        "nombre": "Lomas de Puyai",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "ferroparque",
+        "nombre": "FerroParque",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "froilan-roa-5731-torre-norte",
+        "nombre": "Froilán Roa 5731 - Torre Norte",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": false,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "rosas-1444",
+        "nombre": "Rosas 1444",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "guillermo-mann-1401",
+        "nombre": "Guillermo Mann 1401",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "froilan-roa-5731-torre-sur",
+        "nombre": "Froilán Roa 5731 - Torre Sur",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": false,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-san-francisco-1204",
+        "nombre": "San Francisco 1204",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "cumbres-de-penuelas",
+        "nombre": "Cumbres de Peñuelas",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-baum",
+        "nombre": "Edificio BAUM",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "diagonal-paraguay",
+        "nombre": "Diagonal Paraguay",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "inn-puerto-chico",
+        "nombre": "INN Puerto Chico",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-suecia",
+        "nombre": "Edificio Suecia",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "capitanes",
+        "nombre": "Capitanes",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "parque-germania",
+        "nombre": "Parque Germania",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": "Parque Germania se conserva fuera de Leben (ESEPE); la etiqueta antigua Leben del snapshot no amplía los13 auditados."
+      },
+      {
+        "slug": "edificio-argomedo",
+        "nombre": "Edificio Argomedo",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-mood",
+        "nombre": "Edificio Mood",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-indigo",
+        "nombre": "Edificio Índigo",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-verne",
+        "nombre": "Verne",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-santo",
+        "nombre": "Edificio Santo",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-living-town",
+        "nombre": "Edificio Living Town",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-bold",
+        "nombre": "Edificio Bold",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "domeyko-2055",
+        "nombre": "Domeyko 2055",
+        "inmobiliaria_etiqueta_snapshot": "Sento",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "parque-panama",
+        "nombre": "Parque Panamá",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "playa-serena",
+        "nombre": "Playa Serena",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "don-tomas",
+        "nombre": "Don Tomás",
+        "inmobiliaria_etiqueta_snapshot": "Crescer",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "plaza-las-condes",
+        "nombre": "Plaza Las Condes",
+        "inmobiliaria_etiqueta_snapshot": "Sento",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "mapocho-3521",
+        "nombre": "Mapocho 3521",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "jofre-135",
+        "nombre": "Jofré 157",
+        "inmobiliaria_etiqueta_snapshot": "Sento",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "irarrazaval",
+        "nombre": "Irarrázaval 1970",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "parque-quinta",
+        "nombre": "Parque Quinta",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "quintavista",
+        "nombre": "Quintavista",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "don-rafael",
+        "nombre": "Don Rafael",
+        "inmobiliaria_etiqueta_snapshot": "Crescer",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "terrazzo",
+        "nombre": "Terrazzo",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vima",
+        "nombre": "VIMA",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "los-lilenes",
+        "nombre": "Los Lilenes",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "nueva-esmeralda",
+        "nombre": "Nueva Esmeralda",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "el-aromo",
+        "nombre": "El Aromo",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "espacio-victoria",
+        "nombre": "Espacio Victoria",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "terratolten",
+        "nombre": "Terratoltén",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "pintor-cicarelli-iii",
+        "nombre": "Pintor Cicarelli III",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "trinidad-iii",
+        "nombre": "Trinidad III",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-liverpool",
+        "nombre": "Edificio Liverpool",
+        "inmobiliaria_etiqueta_snapshot": "Nollagam",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "mirador-la-florida",
+        "nombre": "Mirador La Florida",
+        "inmobiliaria_etiqueta_snapshot": "Sento",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "alto-goycolea",
+        "nombre": "Alto Goycolea",
+        "inmobiliaria_etiqueta_snapshot": "Nollagam",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "eleuterio-ramirez",
+        "nombre": "Eleuterio Ramírez",
+        "inmobiliaria_etiqueta_snapshot": "Nollagam",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "barrio-zenteno",
+        "nombre": "Barrio Zenteno",
+        "inmobiliaria_etiqueta_snapshot": "Nollagam",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "urban-la-florida",
+        "nombre": "Urban La Florida",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vicuna-mackenna-6896",
+        "nombre": "Vicuña Mackenna 6896",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vicuna-mackenna-7589",
+        "nombre": "Edificio Vicuña Mackenna 7589",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "aires-la-florida-2",
+        "nombre": "Aires La Florida 2",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "condominio-uruguay",
+        "nombre": "Condominio Uruguay",
+        "inmobiliaria_etiqueta_snapshot": "León",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "enlace-mackenna",
+        "nombre": "Enlace Mackenna",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "novo-catedral",
+        "nombre": "Novo Catedral",
+        "inmobiliaria_etiqueta_snapshot": "Sudamericana",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "carmen-marin",
+        "nombre": "Carmen Marín",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "gregorio-de-la-fuente-a",
+        "nombre": "Condominio Gregorio de la Fuente",
+        "inmobiliaria_etiqueta_snapshot": "León",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "matta-016",
+        "nombre": "Matta 016",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-plaza-nova",
+        "nombre": "Plaza Nova",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "condominio-parque-don-lautaro",
+        "nombre": "Condominio Parque Don Lautaro",
+        "inmobiliaria_etiqueta_snapshot": "León",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "caceres",
+        "nombre": "Cáceres",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "pintor-cicarelli-i",
+        "nombre": "Pintor Cicarelli I",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "pintor-cicarelli-ii",
+        "nombre": "Pintor Cicarelli II",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edif-origen-atacama-3008",
+        "nombre": "Origen Atacama 3008",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "abdon-cifuentes",
+        "nombre": "Abdón Cifuentes",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "don-ignacio",
+        "nombre": "Don Ignacio",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "tocornal",
+        "nombre": "Tocornal",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "centenario-1",
+        "nombre": "Centenario 1",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "curico-77",
+        "nombre": "Curicó 77",
+        "inmobiliaria_etiqueta_snapshot": "Sento",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "san-ignacio",
+        "nombre": "San Ignacio",
+        "inmobiliaria_etiqueta_snapshot": "Sento",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "angamos",
+        "nombre": "Angamos 205",
+        "inmobiliaria_etiqueta_snapshot": "Sento",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "conecta-huechuraba",
+        "nombre": "Conecta Huechuraba",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "bordevivo",
+        "nombre": "Bordevivo",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "mirador-mapocho",
+        "nombre": "Mirador Mapocho",
+        "inmobiliaria_etiqueta_snapshot": "Maestra",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "alto-san-joaquin",
+        "nombre": "Alto San Joaquín",
+        "inmobiliaria_etiqueta_snapshot": "Ecasa",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vista-bulnes",
+        "nombre": "Vista Bulnes",
+        "inmobiliaria_etiqueta_snapshot": "Norte Verde",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": true,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "jardines-de-ramon-cruz",
+        "nombre": "Condominio Jardines de Ramón Cruz",
+        "inmobiliaria_etiqueta_snapshot": "León",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": true,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vitro",
+        "nombre": "Vitro",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "mirador-irarrazaval",
+        "nombre": "Mirador Irarrázaval",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "alto-irarrazaval",
+        "nombre": "Alto Irarrázaval",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "jose-pedro-alessandri",
+        "nombre": "José Pedro Alessandri",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vicuna-mackenna-1432",
+        "nombre": "Vicuña Mackenna 1432",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vicente-valdes",
+        "nombre": "Vicente Valdés",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "diagonal-vicuna",
+        "nombre": "Diagonal Vicuña",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "vista-portugal",
+        "nombre": "Vista Portugal",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "marina-pacifico",
+        "nombre": "Marina Pacífico",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "nova-parque",
+        "nombre": "Nova Parque",
+        "inmobiliaria_etiqueta_snapshot": "Euro",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": false
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "own",
+        "nombre": "Own",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      },
+      {
+        "slug": "monjitas-690",
+        "nombre": "Monjitas 690",
+        "inmobiliaria_etiqueta_snapshot": "AJ Urbana",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "patio-brasil",
+        "nombre": "Patio Brasil",
+        "inmobiliaria_etiqueta_snapshot": "Sudamericana",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": true,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "los-alerces",
+        "nombre": "Los Alerces",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "valle-los-ingleses-iii",
+        "nombre": "Valle Los Ingleses III",
+        "inmobiliaria_etiqueta_snapshot": "Ingevec",
+        "grupo_validacion": "RESTO_118_NO_AUDITADO_EN_ESTE_CORTE",
+        "atributos_heredados_presentes": {
+          "precio_numerico": false,
+          "tipo_activo_explicito": false,
+          "estado_texto": false,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": false,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "No evaluado: dato heredado, sin certificar preparación ni solicitar al propietario automáticamente",
+        "notas": ""
+      },
+      {
+        "slug": "edificio-nordico",
+        "nombre": "Edificio Nórdico",
+        "inmobiliaria_etiqueta_snapshot": "Leben",
+        "grupo_validacion": "LEBEN_13_CON_AUDITORIA_DOCUMENTAL_PARCIAL",
+        "atributos_heredados_presentes": {
+          "precio_numerico": true,
+          "tipo_activo_explicito": false,
+          "estado_texto": true,
+          "entrega_texto": false,
+          "tipologias_texto": true,
+          "superficie_generica_numerica": true,
+          "amenities_mencionados": true
+        },
+        "estado_de_cobertura_comercial": "Determinar por faceta usando hechos y conflictos del expediente, sin equiparar presencia a validación",
+        "notas": ""
+      }
+    ]
+  },
+  "resultado": "Revisión estática completa; sin modificación de aplicación ni auditoría adicional."
+}

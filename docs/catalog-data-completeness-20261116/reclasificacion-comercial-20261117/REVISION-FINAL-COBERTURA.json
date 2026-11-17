@@ -1,0 +1,165 @@
+{
+  "fecha": "2026-11-17",
+  "modo": "Revisión independiente de solo lectura. Sin cambios de fuentes, código o archivos del repositorio.",
+  "resultado": "Correcto",
+  "controles": [
+    {
+      "control": "131 identidades únicas coinciden con maestra",
+      "correcto": true
+    },
+    {
+      "control": "13 Leben,12 activos,1 vendido,118 no auditados",
+      "correcto": true
+    },
+    {
+      "control": "118 null en evaluación factual de cobertura",
+      "correcto": true
+    },
+    {
+      "control": "118 no generan acciones ni prioridades inmobiliaria nueva",
+      "correcto": true
+    },
+    {
+      "control": "12 activos requieren respaldo esencial sin certificar completitud",
+      "correcto": true
+    },
+    {
+      "control": "Own no requiere nueva oferta o precio",
+      "correcto": true
+    },
+    {
+      "control": "cero certificados de datos y de implementación",
+      "correcto": true
+    },
+    {
+      "control": "no exclusión automática por cobertura parcial",
+      "correcto": true
+    },
+    {
+      "control": "CSV y JSON mismos estados y flags",
+      "correcto": true
+    },
+    {
+      "control": "313 prioridades únicas74A48B191C",
+      "correcto": true
+    },
+    {
+      "control": "sin cierres ni bloqueos automáticos por reclasificación",
+      "correcto": true
+    },
+    {
+      "control": "totales por proyecto coherentes en CSV JSON y ledger",
+      "correcto": true
+    },
+    {
+      "control": "Own35 pendientes complementarios sin cerrarlos",
+      "correcto": true
+    },
+    {
+      "control": "universos131 y137 separados con diferencia exacta",
+      "correcto": true
+    },
+    {
+      "control": "snapshot131 hash coincide con manifiesto y fuente archivada",
+      "correcto": true
+    },
+    {
+      "control": "conteos legados no elevados a auditoría y coinciden con revisión de código",
+      "correcto": true
+    },
+    {
+      "control": "facetas ausentes no presentadas operativas",
+      "correcto": true
+    },
+    {
+      "control": "4 pruebas actuales con un defecto de default tipo",
+      "correcto": true
+    },
+    {
+      "control": "7 ejemplos propuestos separados de implementación",
+      "correcto": true
+    },
+    {
+      "control": "20 precios de inmueble y2 adicionales idénticos a F4 F049",
+      "correcto": true
+    },
+    {
+      "control": "F049 precio fecha moneda y exclusión de Iris intactos",
+      "correcto": true
+    },
+    {
+      "control": "3 desde global expresos; 7 listados sin mínimo inventado",
+      "correcto": true
+    },
+    {
+      "control": "costos adicionales solo Suecia yfuera del precio inmueble",
+      "correcto": true
+    },
+    {
+      "control": "INN2D10500 3D10016 4D21869 sin intercambios",
+      "correcto": true
+    },
+    {
+      "control": "SueciaModelo203 yCapunidad501 conservados",
+      "correcto": true
+    },
+    {
+      "control": "SantoBAUM sin nuevo precio ni estado inventado",
+      "correcto": true
+    },
+    {
+      "control": "11 estados F049 exactos sin inferir entrega",
+      "correcto": true
+    },
+    {
+      "control": "fuentes de precios y código sin modificación",
+      "correcto": true
+    },
+    {
+      "control": "informe distingue cero global de exclusión y propuesta de aplicación",
+      "correcto": true
+    }
+  ],
+  "controles_correctos": 29,
+  "hallazgos_materiales": [],
+  "resumen": {
+    "universo": 131,
+    "Leben": 13,
+    "activos_esencial_parcial": 12,
+    "Own_vendido": 1,
+    "no_auditados_null": 118,
+    "certificados_datos_todos_filtros": 0,
+    "certificados_implementacion_todos_filtros": 0,
+    "prioridades": {
+      "A": 74,
+      "B": 48,
+      "C": 191
+    },
+    "precios_F049_inmueble": 20,
+    "adicionales_Suecia": 2,
+    "probes_actuales": 4,
+    "defectos_actuales": 1,
+    "reglas_propuestas_no_implementadas": 7
+  },
+  "archivos_revisados": [
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COBERTURA-FILTROS-131.json",
+      "sha256": "009af802902b122d55883774bff352fb1b511adcdfc3dc2f72ac8ac198e7c7f1"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/MATRIZ-131-PRIORIDADES.csv",
+      "sha256": "8d56e8ca7ad9632ccb03cd88d54d56aed065d572111ecf246a9b20f580e4ef79"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/reclasificacion-comercial-20261117/COMPROBACION-SEMANTICA-FILTROS.json",
+      "sha256": "2b52294467e8c71b7e68696af4d29108b8cac494b73609176fb082d769d02450"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/INFORME-RECLASIFICACION-CATALOGO.md",
+      "sha256": "3891f551d17e31935b76135c10983c9c80f0637fcc74c0319362f9caadad7cff"
+    }
+  ],
+  "observaciones_editoriales_no_materiales": [
+    "En el informe, la frase «Las otras118inmobiliarias/proyectos» se entiende como118proyectos; puede simplificarse a «Los otros118proyectos» para evitar ambigüedad."
+  ]
+}

@@ -61,3 +61,9 @@ La fuente activa de coordinación es [INFORME-FASE5-LEBEN.md](../catalog-data-co
 No se recibieron documentos ni declaraciones nuevos. No hubo navegación, autenticación, lectura gráfica o exportación. Se prepararon registros vacíos y validación por paquete para los antecedentes futuros: saldo 313, cero cierres. Dentro del saldo hay 107 parciales,177 desconocidos,20 contradictorios y9 históricos; los 161 parciales del universo no son el mismo conteo.
 
 La coordinación activa está en [INFORME-FASE6-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE6-LEBEN.md). Las 17 expectativas documentales no son recepciones. No se verificó nuevamente la interfaz de Iris.
+
+## Reclasificación comercial — 17/11/2026
+
+Cambio expreso de alcance del propietario: 313 pendientes históricos clasificados en 74 A,48 B y191 C, sin cierres nuevos. D-03 deja de ser solicitud obligatoria. Se reutilizaron datos estructurados y se inspeccionó estáticamente el contrato del catálogo; no hubo navegación, autenticación, descarga o relectura de brochures/gráficos.
+
+La cobertura nueva separa 13 Leben,118 no auditados yla diferencia de137proyectos enHEAD frente aluniverso131. Se prepararon nueve false de catálogo para jardín privado a partir del criterio de omisión sobre brochures completos ya revisados; se conservaron positivos y desconocidos. Ver [informe vigente](../catalog-data-completeness-20261116/INFORME-RECLASIFICACION-CATALOGO.md). La fecha de interfaz no se revalida por esta reclasificación.

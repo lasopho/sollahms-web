@@ -1,0 +1,192 @@
+{
+  "fecha": "2026-11-17",
+  "commit_base": "3eccce6a4a758a7b56f7c29093c731014cd6382f",
+  "resultado_integridad": "Correcto",
+  "controles": [
+    {
+      "control": "rama independiente",
+      "correcto": true
+    },
+    {
+      "control": "313 IDs y columnas anteriores intactos",
+      "correcto": true
+    },
+    {
+      "control": "particion74A48B191C",
+      "correcto": true
+    },
+    {
+      "control": "PENDIENTES-BLOQUEANTES.csv: subconjunto exacto",
+      "correcto": true
+    },
+    {
+      "control": "PENDIENTES-COMERCIALES.csv: subconjunto exacto",
+      "correcto": true
+    },
+    {
+      "control": "CAMPOS-COMPLEMENTARIOS.csv: subconjunto exacto",
+      "correcto": true
+    },
+    {
+      "control": "particiones sin duplicados o perdidas",
+      "correcto": true
+    },
+    {
+      "control": "C fuera obligatorio y sin nuevo cierre",
+      "correcto": true
+    },
+    {
+      "control": "ningun A bloquea automaticamente proyecto entero",
+      "correcto": true
+    },
+    {
+      "control": "35 pendientes Own C sin habilitar oferta",
+      "correcto": true
+    },
+    {
+      "control": "D03 conservado complementario",
+      "correcto": true
+    },
+    {
+      "control": "131 identidades exactas en CSV y JSON",
+      "correcto": true
+    },
+    {
+      "control": "131 nombres inmobiliarias conservados",
+      "correcto": true
+    },
+    {
+      "control": "118 sin diagnostico comercial inventado",
+      "correcto": true
+    },
+    {
+      "control": "12 activos parciales y1Own vendido",
+      "correcto": true
+    },
+    {
+      "control": "0certificados no excluye busquedas parciales",
+      "correcto": true
+    },
+    {
+      "control": "ningun filtro inexistente certificado implementado",
+      "correcto": true
+    },
+    {
+      "control": "137 vs131 sin importar extras",
+      "correcto": true
+    },
+    {
+      "control": "22 registros precio sin alterar importes fuente alcance o fecha",
+      "correcto": true
+    },
+    {
+      "control": "20inmuebles2adicionales separados",
+      "correcto": true
+    },
+    {
+      "control": "3desde expresos y7categorias sin minimo global",
+      "correcto": true
+    },
+    {
+      "control": "12 entregas reutilizadas literalmente",
+      "correcto": true
+    },
+    {
+      "control": "30 perfiles con medidas y alcance intactos",
+      "correcto": true
+    },
+    {
+      "control": "2proyectosutil y5total no son inventario nuevo",
+      "correcto": true
+    },
+    {
+      "control": "9casos esenciales3complementarios sin resolver",
+      "correcto": true
+    },
+    {
+      "control": "F3C001 adicional no decimotercer conflicto",
+      "correcto": true
+    },
+    {
+      "control": "26privados9false15positivos2desconocidos",
+      "correcto": true
+    },
+    {
+      "control": "propuestas privadas integradas con limites",
+      "correcto": true
+    },
+    {
+      "control": "20ofertas generales de adicionales sin stock inventado",
+      "correcto": true
+    },
+    {
+      "control": "hallazgo tipo desconocido reproducido sin ocultarlo",
+      "correcto": true
+    },
+    {
+      "control": "7ejemplos de regla propuesta sin afirmar implementacion",
+      "correcto": true
+    },
+    {
+      "control": "fuentes canonicas y maestra historica intactas",
+      "correcto": true
+    },
+    {
+      "control": "estado global solo cambia alcance administrativo",
+      "correcto": true
+    },
+    {
+      "control": "F6 sin recepciones hechos resoluciones nuevas",
+      "correcto": true
+    },
+    {
+      "control": "4prompts completos identicos",
+      "correcto": true
+    },
+    {
+      "control": "D03 retirado de solicitud obligatoria en continuidad",
+      "correcto": true
+    },
+    {
+      "control": "235 hashes originales iguales al inicio de esta tarea",
+      "correcto": true
+    },
+    {
+      "control": "exclusion deployment conservada",
+      "correcto": true
+    },
+    {
+      "control": "archivos previos cambiados solo documentacion autorizada",
+      "correcto": true
+    },
+    {
+      "control": "sin nuevos binarios o scripts de aplicacion",
+      "correcto": true
+    },
+    {
+      "control": "entregables solicitados presentes",
+      "correcto": true
+    },
+    {
+      "control": "enlaces locales validos",
+      "correcto": true,
+      "detalle": []
+    }
+  ],
+  "nota_hallazgo_funcional": "Existe una coincidencia falsa de tipo desconocido en el código actual, documentada y no corregida por protección de alcance. Los controles de integridad no certifican funcionalidad completa del catálogo.",
+  "sincronizacion": "HEAD remoto, main, árbol limpio y deployments se verifican tras el push; ver entrega final.",
+  "revisiones_independientes": [
+    {
+      "archivo": "REVISION-FINAL-COBERTURA.json",
+      "sha256": "13ca87d1f060a49a46f47fedc602970885ebd39c145d6c7aeba45005acfa3e31"
+    },
+    {
+      "archivo": "REVISION-FINAL-EVIDENCIA.json",
+      "sha256": "c43356c6848dcf8c9e02466c4cbdb46a14a1719e3f0d8ac994f028f9d7e99c84"
+    },
+    {
+      "archivo": "REVISION-FINAL-PRIORIDADES.json",
+      "sha256": "a76b704b5b015543dea1a4038eaf415cd66bd1cf0b0c5710a18cb5e61a72e4ab"
+    }
+  ]
+}
