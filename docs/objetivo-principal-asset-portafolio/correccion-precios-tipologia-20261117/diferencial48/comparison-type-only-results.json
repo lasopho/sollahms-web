@@ -1,0 +1,879 @@
+{
+  "date": "2026-11-17",
+  "scope": "Delta QA of20 eligible projects; universal published property type plus minPrice1, and explicit types of mixed projects. Not a data audit or global certification.",
+  "baselineCommit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+  "baselineCodeUnedited": true,
+  "scriptSHA256": "dff08777d6e59662b429bcd578f1489fde04b50166d7af091793a6133594ff26",
+  "projects": 20,
+  "queries": 24,
+  "universalQueries": 16,
+  "counts": {
+    "same": 20,
+    "added": 4,
+    "lost": 0
+  },
+  "cases": [
+    {
+      "project": "edificio-ecuador",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-ecuador:0",
+          "label": "1 dormitorio",
+          "priceUF": 2658.23,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/edificio-ecuador/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:edificio-ecuador:1",
+          "label": "2 dormitorios",
+          "priceUF": 3291.14,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/edificio-ecuador/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "playa-penuelas",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:playa-penuelas:0",
+          "label": "1 dormitorio",
+          "priceUF": 3544,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/playa-penuelas/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:playa-penuelas:1",
+          "label": "2 dormitorios",
+          "priceUF": 4361,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/playa-penuelas/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "edificio-lira-622",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-lira-622:0",
+          "label": "Estudio",
+          "priceUF": 3372.09,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/edificio-lira-622/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:edificio-lira-622:1",
+          "label": "1 dormitorio",
+          "priceUF": 3313.95,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/edificio-lira-622/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "edificio-dual-390-lto",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 0,
+      "difference": "same",
+      "candidateWitnesses": []
+    },
+    {
+      "project": "edificio-dual-390-lto",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 1,
+      "difference": "added",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-dual-390-lto:0",
+          "label": "Local",
+          "priceUF": 18386.36,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "edificio-san-francisco-1204",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-san-francisco-1204:0",
+          "label": "1 dormitorio",
+          "priceUF": 3197.67,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/edificio-san-francisco-1204/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "edificio-verne",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-verne:0",
+          "label": "Estudio",
+          "priceUF": 1937,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/edificio-verne/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "vergara-domeyko",
+      "propertyTypes": [
+        "local"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:vergara-domeyko:0",
+          "label": "Local",
+          "priceUF": 7587.5,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "parque-panama",
+      "propertyTypes": [
+        "local"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:parque-panama:0",
+          "label": "Local",
+          "priceUF": 2575.45,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "playa-serena",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:playa-serena:0",
+          "label": "1 dormitorio",
+          "priceUF": 4222,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/playa-serena/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:playa-serena:1",
+          "label": "2 dormitorios",
+          "priceUF": 5878,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/playa-serena/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:playa-serena:2",
+          "label": "3 dormitorios",
+          "priceUF": 8065,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/playa-serena/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "don-tomas",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:don-tomas:0",
+          "label": "Estudio",
+          "priceUF": 2360.1,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/don-tomas/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:don-tomas:1",
+          "label": "1 dormitorio",
+          "priceUF": 3292.89,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/don-tomas/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:don-tomas:2",
+          "label": "2 dormitorios",
+          "priceUF": 3292.89,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/don-tomas/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:don-tomas:3",
+          "label": "3 dormitorios",
+          "priceUF": 3292.89,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/don-tomas/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "irarrazaval",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:irarrazaval:0",
+          "label": "Estudio",
+          "priceUF": 3589.29,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/irarrazaval/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "parque-quinta",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 0,
+      "difference": "same",
+      "candidateWitnesses": []
+    },
+    {
+      "project": "parque-quinta",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 1,
+      "difference": "added",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:parque-quinta:0",
+          "label": "Local",
+          "priceUF": 3194.45,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "quintavista",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:quintavista:0",
+          "label": "Estudio",
+          "priceUF": 3417.72,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/quintavista/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "don-rafael",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:don-rafael:0",
+          "label": "Estudio",
+          "priceUF": 2817.14,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/don-rafael/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:don-rafael:1",
+          "label": "1 dormitorio",
+          "priceUF": 3668.54,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/don-rafael/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:don-rafael:2",
+          "label": "2 dormitorios",
+          "priceUF": 4985.77,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/don-rafael/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "vicuna-mackenna-6896",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:vicuna-mackenna-6896:0",
+          "label": "Estudio",
+          "priceUF": 3259.49,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/vicuna-mackenna-6896/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "carmen-marin",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:carmen-marin:0",
+          "label": "Estudio",
+          "priceUF": 2932.56,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/carmen-marin/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:carmen-marin:1",
+          "label": "1 dormitorio",
+          "priceUF": 3476.74,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/carmen-marin/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        },
+        {
+          "id": "published-typology:carmen-marin:2",
+          "label": "2 dormitorios",
+          "priceUF": 4552.33,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/carmen-marin/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "project": "edificio-plaza-nova",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 0,
+      "difference": "same",
+      "candidateWitnesses": []
+    },
+    {
+      "project": "edificio-plaza-nova",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 1,
+      "difference": "added",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-plaza-nova:1",
+          "label": "Local",
+          "priceUF": 6910.23,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "edif-origen-atacama-3008",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 0,
+      "difference": "same",
+      "candidateWitnesses": []
+    },
+    {
+      "project": "edif-origen-atacama-3008",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 1,
+      "difference": "added",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edif-origen-atacama-3008:1",
+          "label": "Local",
+          "priceUF": 2697.78,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "bordevivo",
+      "propertyTypes": [
+        "local"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:bordevivo:0",
+          "label": "Local",
+          "priceUF": 3318.19,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "vista-bulnes",
+      "propertyTypes": [
+        "departamento"
+      ],
+      "universalContext": true,
+      "query": {
+        "propertyType": "departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:vista-bulnes:0",
+          "label": "Estudio",
+          "priceUF": 3148.1,
+          "propertyType": "departamento",
+          "universalProjectContext": {
+            "propertyType": {
+              "value": "departamento",
+              "sourcePath": "data/catalog-facets.json",
+              "sourcePointer": "/projects/vista-bulnes/propertyTypes",
+              "scope": "published-project-universal",
+              "sourceDate": null,
+              "ownerCategoryAssetType": "Residencial",
+              "noVariantFieldsUsed": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

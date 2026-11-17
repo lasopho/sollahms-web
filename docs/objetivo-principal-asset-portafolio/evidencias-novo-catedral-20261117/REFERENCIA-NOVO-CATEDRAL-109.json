@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "fecha": "2026-11-17",
+  "naturaleza": "Una referencia documental externa nueva y focalizada; no oferta, inventario ni cambio comercial publicado.",
+  "proyecto": {
+    "slug_publicado": "novo-catedral",
+    "nombre_publicado": "Novo Catedral",
+    "inmobiliaria_publicada": "Sudamericana",
+    "nombre_literal_Iris": "Sudamericana - Novo Catedral",
+    "direccion_literal_Iris": "Catedral 1743",
+    "comuna_literal_Iris": "Comuna Santiago, Región Metropolitana",
+    "identidad_coincide_con_fuente_publicada": true,
+    "fuente_identidad": "novo-catedral-project-identity-visible.json"
+  },
+  "descubrimiento": {
+    "metodo": "Búsqueda visible de Iris, campo Buscar por nombre de proyecto o zona y Enter. Se abrió el enlace real del único resultado.",
+    "termino": "Novo Catedral",
+    "url_busqueda_real": "https://iris.yapo.cl/proyectos?country=7&state=1%2C2%2C3&order=promos%2Cpopularity&search=Novo+Catedral",
+    "enlace_resultado_real": "/proyecto/1428?operation=Venta",
+    "url_ficha_real": "https://iris.yapo.cl/proyecto/1428?operation=Venta",
+    "fecha_observacion_busqueda_UTC": "2026-11-17T20:53:10.397Z",
+    "ids_adivinados_o_endpoints_directos": false
+  },
+  "alcance": {
+    "tipo": "unidad externa exacta observada en modal",
+    "unidad_literal": "109",
+    "piso_literal": "1",
+    "modelo_literal": null,
+    "modelo_estado": "NO_DECLARADO_EN_MODAL_OBSERVADO",
+    "tipologia_literal": "estudio",
+    "dormitorios_numericos": null,
+    "no_asumir_dormitorios_0_desde_etiqueta": true,
+    "no_inventariar_todas_las_unidades": true,
+    "no_expandir_a_proyecto_o_tipologia_completa": true
+  },
+  "dato_esencial_nuevo": {
+    "campo": "banos",
+    "valor_literal": "1 baño",
+    "valor_numerico": 1,
+    "estado": "CONFIRMADO_DOCUMENTAL_EXTERNO_PARA_UNIDAD_109",
+    "fecha_observacion_UTC": "2026-11-17T20:54:01.723Z",
+    "fuente_texto": "novo-catedral-unit-109-visible.txt",
+    "fuente_captura": "novo-catedral-unit-109-visible.jpg",
+    "limite": "Respalda el predicado de baño para esta unidad documental; no todos los estudios ni el proyecto entero."
+  },
+  "superficies_literales_de_la_misma_UI": {
+    "internos": {
+      "rotulo_literal": "internos",
+      "valor_m2": 18.44,
+      "campo_propio": "internalM2"
+    },
+    "terraza": {
+      "rotulo_literal": "terraza",
+      "valor_m2": 1.9,
+      "campo_propio": "terraceM2"
+    },
+    "texto_literal": "18.44m² internos · 1.9m² terraza",
+    "usefulM2": null,
+    "interiorM2": null,
+    "totalM2": null,
+    "landM2": null,
+    "no_sumar_para_inventar_total": true,
+    "sin_equivalencia_internos_util_interior_total": true
+  },
+  "plano_unico_observado": {
+    "url_real_observada": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6a21c9247534d_studioo-catedral.jpg",
+    "origen": "img alt=plano visible en el mismo modal; inventario pageAssets y exportación por assetId observado.",
+    "archivo_original": "novo-catedral-unit109-plan-original.avif",
+    "nombre_publicado_en_exportacion": "th.outside700x700.6a21c9247534d_studioo-catedral.jpg",
+    "tipo_real_exportado": "image/avif",
+    "sha256": "ba2847557bb585ad111a7424c3c77661606f1c2d16ef6c8e4fdddc400004ea42",
+    "bytes": 3493,
+    "exportaciones_solicitadas": 1,
+    "exportaciones_completadas": 1,
+    "exportaciones_fallidas": 0,
+    "reintentos_exportacion": 0,
+    "lectura_en_render_del_modal": "Dibujo del estudio sin cuadro de superficies ni identificación de unidad/modelo legible observados en el modal. No se reconstruyen medidas desde el dibujo.",
+    "aplicabilidad": "Enlazado por Iris al modal109; sin identidad independiente impresa acreditada. No presta código de modelo, útil o total.",
+    "fecha_emision_y_revision": null,
+    "conversion_local_separada": "No generada: Pillow no disponible en python3 y sips no pudo decodificar el AVIF. Se conserva el original y la captura de su representación visible en el modal. No se reintentó la exportación."
+  },
+  "proyeccion_comercial_conservadora": {
+    "priceUF": null,
+    "stock": null,
+    "availability": null,
+    "state": null,
+    "delivery": null,
+    "notOffer": true,
+    "commercialAdoptionAllowed": false,
+    "precio_Iris_del_modal": "Visible en evidencia externa; no adoptado como precio Sollahms ni transcrito a un campo ofertable.",
+    "precio_publicado_proyecto": "Sin modificación y sin asociación con109 o sus superficies.",
+    "nuevos_precio_owner": 0,
+    "sin_nueva_consulta_propietario": true,
+    "certificacion_131_o_cierres_313": false
+  },
+  "elegibilidad_documental": {
+    "banos_1_solo_referencia_109": true,
+    "banos_y_terraza_misma_UI": true,
+    "precio_y_banos_o_area": false,
+    "util_total_interior": false,
+    "stock_o_vigencia_actual": false,
+    "consumida_en_app_o_candidato13": false
+  },
+  "custodia_y_operaciones": {
+    "autenticacion_solicitada": false,
+    "credenciales_cookies_tokens_leidos_guardados": false,
+    "unidades_abiertas": 1,
+    "proyectos_consultados": 1,
+    "busquedas_visibles": 1,
+    "chats_cotizaciones_contactos_reservas_visitas_tours_ejecutados": false,
+    "pestanas_propias_cerradas": true,
+    "repositorios_ramas_fixtures_pins_candidato13_modificados": false,
+    "tests_app_ejecutados": false,
+    "precio_stock_no_inferidos": true
+  }
+}

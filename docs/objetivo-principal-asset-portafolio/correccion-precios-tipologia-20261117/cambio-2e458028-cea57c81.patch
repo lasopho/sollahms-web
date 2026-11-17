@@ -1,0 +1,641 @@
+diff --git a/assets/js/catalog-filter-engine.mjs b/assets/js/catalog-filter-engine.mjs
+index 3b55742..cbe0ae4 100644
+--- a/assets/js/catalog-filter-engine.mjs
++++ b/assets/js/catalog-filter-engine.mjs
+@@ -1,5 +1,6 @@
+ import {metroDefaults,metroMatches} from './metro-model.mjs';
+ import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
++import {hasCatalogTypologyPrices,matchCatalogTypologyPrices,catalogTypologyOffer,catalogTypologyFeatureIds} from './catalog-typology-prices.mjs';
+ import {matchProjectFilters,queryFromCatalogState,normalizePropertyType,normalizeAmenityKey} from './commercial-filter-engine.mjs';
+ /** Pure, bounded filtering of documented project facts. Unknown is never false. */
+ export const fold=value=>String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es-CL');
+@@ -53,6 +54,7 @@ function optionQuery(project,s){
+ }
+ export function matchesPublishedPriceReference(project,s){
+   if(bound(s.minPriceInput)===null&&bound(s.maxPriceInput)===null)return true;
++  if(hasCatalogTypologyPrices(project))return matchCatalogTypologyPrices(project,s).matches;
+   const f=project._facets??{},price=catalogReference(project,s).value;
+   const propertyTypes=[...new Set((f.propertyTypes??[]).map(normalizePropertyType).filter(Boolean))];
+   const references=[];
+@@ -91,7 +93,8 @@ const matchingPrice=match=>{
+   return prices.length?Math.min(...prices):null;
+ };
+ const resultPrice=(project,state)=>state.evidenceMode==='documentary'?matchingPrice(project._documentaryMatch):
+-  project._commercialMatch?matchingPrice(project._commercialMatch):catalogReference(project,state).value;
++  project._commercialMatch?matchingPrice(project._commercialMatch):hasCatalogTypologyPrices(project)?
++    catalogTypologyOffer(project,state).value:catalogReference(project,state).value;
+ function preparedPurchaseMatches(record,state){
+   if(!state.purchaseModes.length)return true;
+   const stage=record.projectFacts?.purchaseStage;
+@@ -136,17 +139,20 @@ export function advancedFilterAndSort(projects,input={}){
+       return match.matches&&metroMatches(p,s)&&preparedPurchaseMatches(p._commercial,s)
+         ?[{...p,_commercialMatch:match}]:[];
+     }
+-    const f=p._facets??{},ids=eligibleFeatures(p,s);
++    const publishedPriceMatch=hasCatalogTypologyPrices(p)?matchCatalogTypologyPrices(p,s):null;
++    const hasPrice=bound(s.minPriceInput)!==null||bound(s.maxPriceInput)!==null;
++    const f=p._facets??{},ids=publishedPriceMatch&&hasPrice?catalogTypologyFeatureIds(p,s,publishedPriceMatch):eligibleFeatures(p,s);
+     const matches=metroMatches(p,s)&&(!s.region||p.region===s.region)&&(!s.commune||p.comuna===s.commune)
+       &&(!s.developers.length||s.developers.includes(p.inmobiliaria))
+       &&(!s.state||(f.states??[p.estado]).some(x=>fold(x)===fold(s.state)))
+       &&(!s.assetType||(f.assetTypes??[]).includes(s.assetType))
+       &&(!s.purchaseModes.length||(f.purchaseStage?.eligible===true&&s.purchaseModes.includes(f.purchaseStage.mode)))
+       &&(!s.delivery||(s.delivery==='inmediata'?(f.delivery?.immediate===true||p.inmobiliaria==='León'&&f.delivery?.reportedImmediate===true):String(f.delivery?.year)===s.delivery))
+-      &&inRange(catalogReference(p,s).value,s.minPriceInput,s.maxPriceInput)&&matchesVariant(p,s)&&matchesPublishedPriceReference(p,s)&&publishedExtraMatches(p,s)
++      &&(publishedPriceMatch&&hasPrice?publishedPriceMatch.matches:
++        inRange(catalogReference(p,s).value,s.minPriceInput,s.maxPriceInput)&&matchesVariant(p,s)&&matchesPublishedPriceReference(p,s)&&publishedExtraMatches(p,s))
+       &&selectedMatch(ids,s.amenities,s.amenitiesAll)&&selectedMatch(ids,s.features,s.featuresAll)
+-      &&(!words.length||words.every(w=>fold(keywords(p,s)).includes(w)));
+-    return matches?[p]:[];
++      &&(publishedPriceMatch&&hasPrice||!words.length||words.every(w=>fold(keywords(p,s)).includes(w)));
++    return matches?[publishedPriceMatch?{...p,_publishedPriceMatch:publishedPriceMatch}:p]:[];
+   });
+   if(s.sortOrder==='price-asc'||s.sortOrder==='price-desc')rows.sort((a,b)=>{
+     const av=resultPrice(a,s),bv=resultPrice(b,s),ak=validNumber(av)&&av>0,bk=validNumber(bv)&&bv>0;
+@@ -193,6 +199,11 @@ export function writeQuery(state,view='cards'){
+ export function matchedLabels(project,state){
+   const selected=new Set([...(state.amenities??[]),...(state.features??[])]);
+   if(state.evidenceMode==='documentary'||project._documentaryMatch)return [];
++  if(project._publishedPriceMatch&&!project._commercialMatch
++    &&(bound(state.minPriceInput)!==null||bound(state.maxPriceInput)!==null)){
++    const actual=new Set(catalogTypologyFeatureIds(project,state));
++    return (project._facets?.features??[]).filter(feature=>selected.has(feature.id)&&actual.has(feature.id)).map(feature=>feature.label);
++  }
+   if(project._commercialMatch){
+     const match=project._commercialMatch,facts=match.record.projectFacts;
+     return (project._facets?.features??[]).filter(feature=>selected.has(feature.id)&&(
+diff --git a/assets/js/catalog-model.mjs b/assets/js/catalog-model.mjs
+index 8205836..aa871af 100644
+--- a/assets/js/catalog-model.mjs
++++ b/assets/js/catalog-model.mjs
+@@ -1,5 +1,6 @@
+ import {advancedFilterAndSort} from './catalog-filter-engine.mjs?v=20261029-euro-1';
+ import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
++import {hasCatalogTypologyPrices,catalogTypologyOffer} from './catalog-typology-prices.mjs';
+ // Public catalogue facts only. This module never changes source records.
+ export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
+ export const validPrice = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
+@@ -57,7 +58,7 @@ export function projectOffer(project,state={}) {
+     const reference=documentaryReference(project),a=reference?.attributes??{},metadata=documentaryMetadata(project,reference);
+     return {value:validPrice(a.priceUF)?a.priceUF:null,typology:null,documentary:true,referenceId:reference?.id??null,date:metadata.ownerPriceDate??null};
+   }
+-  if (!project._commercialMatch) return catalogReference(project,state);
++  if (!project._commercialMatch) return hasCatalogTypologyPrices(project)?catalogTypologyOffer(project,state):catalogReference(project,state);
+   const reference = preparedReference(project), a = reference?.attributes ?? {};
+   const typology = [a.bedrooms == null ? null : a.bedrooms+'D', a.bathrooms == null ? null : a.bathrooms+'B'].filter(Boolean).join(' / ');
+   return {value:validPrice(a.priceUF)?a.priceUF:null,typology:typology||null,prepared:true,date:project._commercial?.asOf,referenceId:reference?.id};
+diff --git a/assets/js/catalog-typology-prices.mjs b/assets/js/catalog-typology-prices.mjs
+new file mode 100644
+index 0000000..e11edf0
+--- /dev/null
++++ b/assets/js/catalog-typology-prices.mjs
+@@ -0,0 +1,130 @@
++import {matchProjectFilters,queryFromCatalogState,normalizeAmenityKey,normalizePropertyType} from './commercial-filter-engine.mjs';
++
++const priced=value=>typeof value==='number'&&Number.isFinite(value)&&value>0;
++const active=value=>value!==''&&value!==undefined&&value!==null;
++const privateIds=new Set(['terraza-privada','jardin-privado']);
++const bedroomLabels=new Map([['1 dormitorio',1],['2 dormitorios',2],['3 dormitorios',3],['4 dormitorios',4]]);
++const documentedDate=value=>{
++  if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;
++  const parsed=Date.parse(value+'T00:00:00Z');
++  return Number.isFinite(parsed)&&new Date(parsed).toISOString().slice(0,10)===value;
++};
++
++// Existing commercialOffers policies remain authoritative, including each ECasa
++// stage. Its summary table must never introduce a second stage price path.
++export function hasCatalogTypologyPrices(project){
++  const commercial=project.commercialSource;
++  return Array.isArray(project.preciosPorTipologia)&&project.preciosPorTipologia.length>0
++    &&commercial?.type==='owner-supplied'&&documentedDate(commercial.verifiedOn??commercial.date)
++    &&[undefined,'confirmed'].includes(project.priceStatus)&&[undefined,'confirmed'].includes(commercial.priceStatus)
++    &&!Object.hasOwn(project,'commercialOffers')
++    &&project.catalogPricePolicy!=='owner-typology'
++    &&!(project.inmobiliaria==='Ecasa'&&project.commercialSource?.date==='2026-10-30');
++}
++
++function source(project){
++  const commercial=project.commercialSource??{};
++  return {kind:'owner-published-typology',
++    date:commercial.verifiedOn??commercial.date??null,
++    path:commercial.file??'data/proyectos.json'};
++}
++
++function category(label,owner){
++  if(label==='Local')return {propertyType:'local',assetType:'Comercial',bedrooms:null,typology:'local'};
++  // This exact six-label owner catalogue enum is separate from raw Iris text.
++  // A residential category does not establish apartment versus house. Estudio
++  // means 0 bedrooms only in this already-published owner enum, never in Iris.
++  if(label==='Estudio')return {propertyType:null,assetType:owner?'Residencial':null,
++    bedrooms:owner?0:null,typology:owner?'estudio':null};
++  const bedrooms=bedroomLabels.get(label);
++  return {propertyType:null,assetType:bedrooms&&owner?'Residencial':null,
++    bedrooms:bedrooms??null,typology:bedrooms?bedrooms+'d':null};
++}
++
++function universalTypeContext(project,attributes){
++  if(attributes.propertyType!==null||attributes.assetType!=='Residencial')return null;
++  const facets=project._facets??{},declared=facets.propertyTypes??[],types=declared.map(normalizePropertyType);
++  if(!types.length||types.some(type=>type===null)||new Set(types).size!==1
++    ||!['departamento','casa','duplex','estudio'].includes(types[0])
++    ||!facets.assetTypes?.length||facets.assetTypes.some(type=>type!=='Residencial'))return null;
++  return {propertyType:{value:types[0],sourcePath:'data/catalog-facets.json',
++    sourcePointer:'/projects/'+project.slug+'/propertyTypes',scope:'published-project-universal',
++    sourceDate:null,ownerCategoryAssetType:attributes.assetType,noVariantFieldsUsed:true}};
++}
++
++export function catalogTypologyRecord(project){
++  if(!hasCatalogTypologyPrices(project))return null;
++  const provenance=source(project),owner=provenance.kind==='owner-published-typology';
++  const amenities={},amenityScopes={};
++  for(const feature of project._facets?.features??[]){
++    if(privateIds.has(feature.id))continue;
++    const key=normalizeAmenityKey(feature.id);amenities[key]=true;
++    // A generic project entry does not prove universal entitlement. The pure
++    // evaluator requires known residential use unless scope is explicit.
++    if(['residential','commercial','all','Residencial','Comercial','Terreno'].includes(feature.scope))amenityScopes[key]=feature.scope;
++  }
++  return {slug:project.slug,sourceLayer:'published-typology-prices',
++    sourceProject:{slug:project.slug,nombre:project.nombre,direccion:project.direccion},
++    projectFacts:{region:project.region,commune:project.comuna,developer:project.inmobiliaria,
++      assetTypes:project._facets?.assetTypes??[],amenities,amenityScopes},
++    references:project.preciosPorTipologia.map((row,index)=>{
++      const attributes=category(row.tipologia,owner),context=universalTypeContext(project,attributes);
++      return {
++      id:'published-typology:'+project.slug+':'+index,label:row.tipologia,
++      sourceKind:provenance.kind,sourceDate:provenance.date,
++      sourcePath:'data/proyectos.json',sourcePointer:'/preciosPorTipologia/'+index,
++      sourceProjectSlug:project.slug,authoritySourcePath:provenance.path,
++      scope:'published typology, not a unit',stock:null,
++      ...(context?{universalProjectContext:context}:{}),
++      attributes:{...attributes,propertyType:context?.propertyType.value??attributes.propertyType,
++        priceUF:priced(row.precioDesdeUF)?row.precioDesdeUF:null,
++        bathrooms:null,usefulM2:null,totalM2:null,interiorM2:null,terraceM2:null,gardenM2:null,landM2:null,
++        privateTerrace:null,privateGarden:null,parkingIncluded:null,parkingAvailable:null,
++        storageIncluded:null,storageAvailable:null},
++    };})};
++}
++
++export function matchCatalogTypologyPrices(project,state={}){
++  const record=catalogTypologyRecord(project);if(!record)return null;
++  const query=queryFromCatalogState(state);
++  // These existing project/stage predicates are evaluated by the catalogue.
++  for(const key of ['region','commune','developers','state','delivery'])delete query[key];
++  query.features=[];
++  const match=matchProjectFilters(record,query);
++  // Features and amenities each retain their own AND/OR group. Both must use
++  // the same price witness, and scoped features use the same eligibility rules.
++  const references=match.references.filter(reference=>matchProjectFilters({...record,references:[reference]},
++    {amenities:state.features??[],amenitiesAll:state.featuresAll===true}).matches);
++  return {...match,matches:references.length>0,references,matchedReferenceIds:references.map(reference=>reference.id)};
++}
++
++function selectingReference(state){
++  return ['propertyType','assetType','bedrooms','bathrooms','minPriceInput','maxPriceInput',
++    'minArea','maxArea','parking','storage','search'].some(key=>active(state[key]))
++    ||['typologies','amenities','features'].some(key=>state[key]?.length);
++}
++
++export function catalogTypologyWitness(project,state={},match=project._publishedPriceMatch??matchCatalogTypologyPrices(project,state)){
++  const references=match?.references??[];
++  if(!selectingReference(state))return references.find(reference=>reference.attributes.priceUF===project.precioDesdeUF
++    &&reference.label===project.precioDesdeTipologia)??null;
++  const known=references.filter(reference=>priced(reference.attributes.priceUF));
++  return known.length?known.reduce((a,b)=>a.attributes.priceUF<=b.attributes.priceUF?a:b):references[0]??null;
++}
++
++export function catalogTypologyOffer(project,state={},match=project._publishedPriceMatch??matchCatalogTypologyPrices(project,state)){
++  if(!selectingReference(state))return {value:priced(project.precioDesdeUF)?project.precioDesdeUF:null,
++    typology:project.precioDesdeTipologia??null,financialBaselineCompatible:true};
++  const reference=catalogTypologyWitness(project,state,match);
++  const value=reference?.attributes.priceUF??null,typology=reference?.label??null;
++  // The capacity programme evaluates the original published project baseline.
++  // A matching amount alone cannot make another typology that same scenario.
++  return {value,typology,financialBaselineCompatible:priced(value)&&value===project.precioDesdeUF
++    &&typeof typology==='string'&&typology===project.precioDesdeTipologia};
++}
++
++export function catalogTypologyFeatureIds(project,state={},match=project._publishedPriceMatch??matchCatalogTypologyPrices(project,state)){
++  const reference=catalogTypologyWitness(project,state,match);if(!reference)return [];
++  return (project._facets?.features??[]).filter(feature=>!privateIds.has(feature.id)
++    &&matchProjectFilters({...match.record,references:[reference]},{amenities:[feature.id]}).matches).map(feature=>feature.id);
++}
+diff --git a/assets/js/catalog.mjs b/assets/js/catalog.mjs
+index b6bcbca..d755d49 100644
+--- a/assets/js/catalog.mjs
++++ b/assets/js/catalog.mjs
+@@ -72,7 +72,7 @@ function card(project){
+   }
+   if(view==='split'){const b=element('button','Ubicar en mapa','catalog-text-button');b.type='button';b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('catalog-list-selection',{detail:{slug:project.slug}})));actions.append(b);}
+   body.append(actions);article.append(body);
+-  if(values().evidenceMode==='published'&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
++  if(values().evidenceMode==='published'&&offer.financialBaselineCompatible!==false&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
+   const financial=body.querySelector('.capacity-result');
+   if(financial){
+     // Review dates remain in the source data; the financial scenario keeps all amounts/conditions.
+diff --git a/assets/js/commercial-filter-engine.mjs b/assets/js/commercial-filter-engine.mjs
+index 7986ec6..2fbf8f0 100644
+--- a/assets/js/commercial-filter-engine.mjs
++++ b/assets/js/commercial-filter-engine.mjs
+@@ -12,6 +12,12 @@ const values=value=>Array.isArray(value)?value:present(value)?[value]:[];
+ const selected=(actual,wanted,all=false)=>!wanted.length||(all?wanted.every(x=>actual.includes(x)):wanted.some(x=>actual.includes(x)));
+ const propertyAliases={departamento:'departamento',departamentos:'departamento',depto:'departamento',casa:'casa',casas:'casa',duplex:'duplex',estudio:'estudio',local:'local','local comercial':'local',oficina:'oficina',terreno:'terreno',terrenos:'terreno'};
+ export const normalizePropertyType=value=>propertyAliases[fold(value)]??null;
++const propertyTerms=new Map([
++  ['departamento',['departamento','departamentos']],['casa',['casa','casas']],
++  ['duplex',['dúplex','duplex']],['estudio',['estudio','estudios']],
++  ['local',['local comercial','locales comerciales']],['oficina',['oficina','oficinas']],
++  ['terreno',['terreno','terrenos']],
++]);
+ const assetAliases={residencial:'Residencial',comercial:'Comercial',terreno:'Terreno',mixto:'Mixto'};
+ export const normalizeAssetType=value=>assetAliases[fold(value)]??null;
+ const assetOf=property=>['departamento','casa','duplex','estudio'].includes(property)?'Residencial':['local','oficina'].includes(property)?'Comercial':property==='terreno'?'Terreno':null;
+@@ -166,12 +172,13 @@ export function matchProjectFilters(record,query={}){
+   if(present(query.assetType)&&!normalizeAssetType(query.assetType))return result;
+   if(normalizeAssetType(query.assetType)==='Mixto'&&!values(facts.assetTypes).some(value=>normalizeAssetType(value)==='Mixto'))return result;
+   const words=fold(query.text).split(/\s+/).filter(Boolean).slice(0,30);
+-  const projectTerms=[project.nombre,record.name,record.slug,facts.region,facts.commune,facts.developer,...featureKeys(facts)];
++  const projectTerms=[project.nombre,project.direccion,record.name,record.slug,facts.region,facts.commune,facts.developer,...featureKeys(facts)];
+   const matchesReference=reference=>{
+     if(!referenceMatches(reference,query,facts))return false;
+     const amenities=eligibleAmenities(reference,facts);
+     if(!selected(amenities,values(query.amenities).map(amenityKey),query.amenitiesAll))return false;
+-    const haystack=fold([...projectTerms,...amenities.map(key=>amenityTerms[key]??key)].filter(Boolean).join(' '));
++    const typeTerms=propertyTerms.get(normalizePropertyType(reference.attributes?.propertyType))??[];
++    const haystack=fold([...projectTerms,...typeTerms,...amenities.map(key=>amenityTerms[key]??key)].filter(Boolean).join(' '));
+     return words.every(word=>haystack.includes(word));
+   };
+   const references=(record.references??[]).filter(matchesReference);
+diff --git a/tests/catalog-typology-prices.test.mjs b/tests/catalog-typology-prices.test.mjs
+new file mode 100644
+index 0000000..7fd4f58
+--- /dev/null
++++ b/tests/catalog-typology-prices.test.mjs
+@@ -0,0 +1,367 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {readFileSync} from 'node:fs';
++import {advancedFilterAndSort,defaults,matchedLabels} from '../assets/js/catalog-filter-engine.mjs';
++import {projectOffer,offerPriceLabel} from '../assets/js/catalog-model.mjs';
++import {catalogReference} from '../assets/js/project-offers.mjs';
++import {verifiedProjectPrice} from '../assets/js/project-finance.mjs';
++import {catalogTypologyRecord,matchCatalogTypologyPrices,hasCatalogTypologyPrices,catalogTypologyOffer} from '../assets/js/catalog-typology-prices.mjs';
++import {matchProjectFilters} from '../assets/js/commercial-filter-engine.mjs';
++
++const read=path=>JSON.parse(readFileSync(new URL(path,import.meta.url),'utf8'));
++const published=read('../data/proyectos.json');
++const facets=read('../data/catalog-facets.json');
++const project=slug=>{const p=published.find(project=>project.slug===slug);return {...p,_facets:facets.projects[slug]};};
++const origen=project('edif-origen-atacama-3008');
++const plazaNova=project('edificio-plaza-nova');
++const state=input=>({...defaults(),...input});
++const filter=(p,input)=>advancedFilterAndSort([p],state(input));
++const match=(p,input)=>{const m=matchCatalogTypologyPrices(p,state(input));assert.deepEqual(m.issues,[]);return m;};
++
++test('regression: selecting Origen Local presents its own owner price, not Estudio',()=>{
++  const s=state({propertyType:'local'});
++  const rows=advancedFilterAndSort([origen],s);
++  assert.equal(rows.length,1);
++  assert.deepEqual(projectOffer(rows[0],s),{value:2697.78,typology:'Local',financialBaselineCompatible:false});
++});
++
++test('regression: Origen Local in UF2600–2800 remains a match',()=>{
++  const s=state({propertyType:'local',minPriceInput:'2600',maxPriceInput:'2800'});
++  const rows=advancedFilterAndSort([origen],s);
++  assert.equal(rows.length,1);
++  assert.equal(projectOffer(rows[0],s).value,2697.78);
++});
++
++test('regression: selecting commercial use presents and filters Origen Local',()=>{
++  const s=state({assetType:'Comercial',minPriceInput:'2600',maxPriceInput:'2800'});
++  const rows=advancedFilterAndSort([origen],s);
++  assert.equal(rows.length,1);
++  assert.equal(projectOffer(rows[0],s).value,2697.78);
++  assert.equal(projectOffer(rows[0],s).typology,'Local');
++});
++
++test('real Origen and Plaza Nova rows preserve exact owner dates, prices and category labels',()=>{
++  for(const p of [origen,plazaNova]){
++    const record=catalogTypologyRecord(p);
++    assert.equal(record.sourceLayer,'published-typology-prices');
++    assert.equal(record.references.length,p.preciosPorTipologia.length);
++    for(const [index,reference] of record.references.entries()){
++      assert.equal(reference.label,p.preciosPorTipologia[index].tipologia);
++      assert.equal(reference.attributes.priceUF,p.preciosPorTipologia[index].precioDesdeUF);
++      assert.equal(reference.sourceKind,'owner-published-typology');assert.equal(reference.sourceDate,'2026-10-25');
++      assert.equal(reference.sourcePointer,'/preciosPorTipologia/'+index);
++      assert.equal(reference.sourceProjectSlug,p.slug);assert.equal(reference.stock,null);
++      for(const key of ['bathrooms','usefulM2','totalM2','interiorM2','terraceM2','privateTerrace','parkingIncluded','storageIncluded'])assert.equal(reference.attributes[key],null);
++    }
++  }
++});
++
++test('Plaza Nova Local displays and filters UF6910.23, not the Estudio minimum',()=>{
++  for(const input of [{propertyType:'local'},{assetType:'Comercial'},
++    {propertyType:'local',minPriceInput:'6800',maxPriceInput:'7000'}]){
++    const s=state(input),rows=advancedFilterAndSort([plazaNova],s);
++    assert.equal(rows.length,1);assert.deepEqual(projectOffer(rows[0],s),{value:6910.23,typology:'Local',financialBaselineCompatible:false});
++    assert.equal(rows[0]._publishedPriceMatch.references.length,1);
++    assert.equal(rows[0]._publishedPriceMatch.references[0].attributes.propertyType,'local');
++  }
++});
++
++test('explicit bedrooms select that category and the same price witness, including tied Origen values',()=>{
++  for(const [p,bedrooms,price,label] of [[origen,'1',2534.88,'1 dormitorio'],[origen,'2',4360.47,'2 dormitorios'],
++    [plazaNova,'1',3275.14,'1 dormitorio']]){
++    const s=state({bedrooms,minPriceInput:String(price),maxPriceInput:String(price)});
++    const rows=advancedFilterAndSort([p],s);assert.equal(rows.length,1);
++    assert.deepEqual(projectOffer(rows[0],s),{value:price,typology:label,financialBaselineCompatible:false});
++    assert.ok(rows[0]._publishedPriceMatch.references.every(reference=>reference.attributes.bedrooms===Number(bedrooms)));
++  }
++  assert.deepEqual(filter(origen,{bedrooms:'1',minPriceInput:'4360.47',maxPriceInput:'4360.47'}),[]);
++  assert.deepEqual(filter(origen,{propertyType:'local',bedrooms:'1',minPriceInput:'2600',maxPriceInput:'2800'}),[]);
++});
++
++test('owner residential category is explicit use, but does not invent apartment property type',()=>{
++  const s=state({assetType:'Residencial',bedrooms:'2',minPriceInput:'4300',maxPriceInput:'4400'});
++  const rows=advancedFilterAndSort([origen],s);assert.equal(rows.length,1);
++  assert.equal(projectOffer(rows[0],s).value,4360.47);
++  const reference=rows[0]._publishedPriceMatch.references[0];
++  assert.equal(reference.attributes.assetType,'Residencial');assert.equal(reference.attributes.propertyType,null);
++  assert.deepEqual(filter(origen,{...s,propertyType:'departamento'}),[]);
++});
++
++test('published universal project type preserves Vista Bulnes and Ecuador apartment prices',()=>{
++  for(const slug of ['vista-bulnes','edificio-ecuador']){
++    const p=project(slug),s=state({propertyType:'departamento',minPriceInput:'1'});
++    const rows=advancedFilterAndSort([p],s);assert.equal(rows.length,1,slug);
++    assert.ok(rows[0]._publishedPriceMatch.references.every(reference=>reference.attributes.propertyType==='departamento'));
++    assert.equal(projectOffer(rows[0],s).value,p.precioDesdeUF);
++    for(const reference of rows[0]._publishedPriceMatch.references){
++      assert.equal(reference.universalProjectContext.propertyType.sourcePath,'data/catalog-facets.json');
++      assert.equal(reference.universalProjectContext.propertyType.sourcePointer,'/projects/'+slug+'/propertyTypes');
++      assert.equal(reference.universalProjectContext.propertyType.scope,'published-project-universal');
++      assert.equal(reference.attributes.bathrooms,null);assert.equal(reference.attributes.usefulM2,null);
++    }
++  }
++});
++
++test('published property text keeps Vista Bulnes Departamento and Origen Local price witnesses',()=>{
++  for(const search of ['Departamento','Departamentos']){
++    const p=project('vista-bulnes'),s=state({search,minPriceInput:'1'}),rows=advancedFilterAndSort([p],s);
++    assert.equal(rows.length,1);assert.equal(projectOffer(rows[0],s).value,3148.1);
++  }
++  for(const search of ['Local','Locales comerciales']){
++    const s=state({search,minPriceInput:'1'}),rows=advancedFilterAndSort([origen],s);
++    assert.equal(rows.length,1);assert.equal(projectOffer(rows[0],s).value,2697.78);
++    assert.deepEqual(rows[0]._publishedPriceMatch.references.map(reference=>reference.label),['Local']);
++  }
++});
++
++test('property words cannot be borrowed from another price reference or unknown-use project labels',()=>{
++  const record={slug:'scope-check',sourceProject:{nombre:'Scope check'},projectFacts:{},references:[
++    {id:'local-price',attributes:{propertyType:'local',priceUF:2697.78}},
++    {id:'apartment-price',attributes:{propertyType:'departamento',priceUF:4000}},
++  ]};
++  const query={text:'Departamento',minPrice:2600,maxPrice:2800};
++  const result=matchProjectFilters(record,query);assert.deepEqual(result.issues,[]);assert.equal(result.matches,false);
++  assert.deepEqual(filter(origen,{search:'Departamento',minPriceInput:'2600',maxPriceInput:'2800'}),[]);
++  const ecuador=project('edificio-ecuador');
++  const unknown={...ecuador,preciosPorTipologia:[{tipologia:'Uso sin confirmar',precioDesdeUF:3000}]};
++  assert.equal(unknown._facets.propertyLabels.includes('Departamento'),true);
++  assert.deepEqual(filter(unknown,{search:'Departamento',minPriceInput:'1'}),[]);
++});
++
++test('canonical type text never adds bedroom counts or area values to the searchable quote',()=>{
++  const p=project('vista-bulnes');
++  for(const search of ['0 dormitorios','27.9','desconocido'])assert.deepEqual(filter(p,{search,minPriceInput:'1'}),[]);
++});
++
++test('universal type context never completes a mixed, unknown-use, contradictory or explicit Local row',()=>{
++  assert.equal(catalogTypologyRecord(origen).references.find(reference=>reference.label==='1 dormitorio').attributes.propertyType,null);
++  const ecuador=project('edificio-ecuador');
++  const unknown={...ecuador,preciosPorTipologia:[{tipologia:'Uso sin confirmar',precioDesdeUF:3000}]};
++  const unknownRef=catalogTypologyRecord(unknown).references[0];
++  assert.equal(unknownRef.attributes.propertyType,null);assert.equal(unknownRef.universalProjectContext,undefined);
++  assert.deepEqual(filter(unknown,{propertyType:'departamento',minPriceInput:'1'}),[]);
++  assert.deepEqual(filter(unknown,{amenities:['gimnasio'],minPriceInput:'1'}),[]);
++  for(const f of [{...ecuador._facets,propertyTypes:['departamento','desconocido']},
++    {...ecuador._facets,propertyTypes:['local']},{...ecuador._facets,assetTypes:['Comercial']}]){
++    assert.equal(catalogTypologyRecord({...ecuador,_facets:f}).references[0].attributes.propertyType,null);
++  }
++  const local={...ecuador,preciosPorTipologia:[{tipologia:'Local',precioDesdeUF:3000}]};
++  const localRef=catalogTypologyRecord(local).references[0];
++  assert.equal(localRef.attributes.propertyType,'local');assert.equal(localRef.universalProjectContext,undefined);
++});
++
++test('Estudio zero-bedroom convention is restricted to the published owner enum',()=>{
++  const s=state({bedrooms:'0',minPriceInput:'2000',maxPriceInput:'2100'});
++  const rows=advancedFilterAndSort([plazaNova],s);assert.equal(rows.length,1);
++  assert.deepEqual(projectOffer(rows[0],s),{value:2035.23,typology:'Estudio',financialBaselineCompatible:true});
++  for(const label of ['studio','estudio','1D','2 dormitorios con terraza','Producto desconocido','constructor','toString']){
++    const synthetic={...origen,preciosPorTipologia:[{tipologia:label,precioDesdeUF:2697.78}]};
++    const attrs=catalogTypologyRecord(synthetic).references[0].attributes;
++    assert.equal(attrs.bedrooms,null);assert.equal(attrs.assetType,null);assert.equal(attrs.propertyType,null);
++  }
++  const unconfirmed={...origen,commercialSource:undefined,verificacion:{},preciosPorTipologia:[{tipologia:'Estudio',precioDesdeUF:2697.78}]};
++  assert.equal(catalogTypologyRecord(unconfirmed),null);
++});
++
++test('a legacy table without explicit owner authority cannot replace the published project price',()=>{
++  const p={...origen,precioDesdeUF:2000,precioDesdeTipologia:null,commercialSource:undefined,
++    preciosPorTipologia:[{tipologia:'Local',precioDesdeUF:8000}],
++    _facets:{...origen._facets,propertyTypes:['local'],assetTypes:['Comercial'],variants:[{propertyType:'local',areas:{total:60}}]}};
++  assert.equal(hasCatalogTypologyPrices(p),false);assert.equal(catalogTypologyRecord(p),null);
++  assert.equal(filter(p,{propertyType:'local',maxPriceInput:'2500'}).length,1);
++  assert.deepEqual(filter(p,{minPriceInput:'2100'}),[]);
++  assert.deepEqual(projectOffer(p,state({propertyType:'local'})),{value:2000,typology:null});
++});
++
++test('owner authority needs an explicit valid source date and no unresolved price status',()=>{
++  for(const commercialSource of [undefined,{type:'official',date:'2026-10-25'},
++    {type:'owner-supplied'},{type:'owner-supplied',verifiedOn:'2026-02-30'},
++    {type:'owner-supplied',date:'25/10/2026'},{type:'owner-supplied',date:'2026-10-25',priceStatus:'pending'},
++    {type:'owner-supplied',date:'2026-10-25',priceStatus:'unknown'}]){
++    assert.equal(hasCatalogTypologyPrices({...origen,commercialSource}),false);
++  }
++  assert.equal(hasCatalogTypologyPrices({...origen,priceStatus:'pending'}),false);
++  assert.equal(hasCatalogTypologyPrices(origen),true);
++});
++
++test('every declared modern offer route takes precedence, including empty or null-priced offers',()=>{
++  for(const inmobiliaria of ['Euro','Crescer','Nollagam'])for(const commercialOffers of [[],null,
++    [{id:'local',propertyType:'local',priceUF:null}],[{id:'local',propertyType:'local',priceUF:7777}]]){
++    const p={...origen,inmobiliaria,commercialOffers};
++    assert.equal(hasCatalogTypologyPrices(p),false);
++    for(const input of [{propertyType:'local'},{bedrooms:'1'},{maxPriceInput:'2800'}]){
++      assert.deepEqual(projectOffer(p,state(input)),catalogReference(p,state(input)));
++    }
++  }
++});
++
++test('real pending Diagonal offers cannot be replaced by populated legacy typology rows',()=>{
++  const original=project('diagonal-vicuna');assert.equal(original.commercialSource.priceStatus,'pending');
++  const p={...original,preciosPorTipologia:[{tipologia:'1 dormitorio',precioDesdeUF:1000}]};
++  assert.equal(hasCatalogTypologyPrices(p),false);
++  assert.equal(projectOffer(p,state({bedrooms:'1'})).value,null);
++  assert.deepEqual(filter(p,{bedrooms:'1',minPriceInput:'0',maxPriceInput:'99999'}),[]);
++});
++
++test('Local-only range cannot borrow residential gym with or without an explicit type',()=>{
++  for(const p of [origen,plazaNova])for(const type of [{},{propertyType:'local'},{assetType:'Comercial'}]){
++    const price=p.preciosPorTipologia.find(row=>row.tipologia==='Local').precioDesdeUF;
++    const input={...type,minPriceInput:String(price),maxPriceInput:String(price),amenities:['gimnasio']};
++    assert.equal(match(p,input).matches,false);assert.deepEqual(filter(p,input),[]);
++  }
++});
++
++test('amenities and features retain independent AND/OR groups on a single price witness',()=>{
++  for(const key of ['amenities','features'])for(const all of [false,true]){
++    const input={minPriceInput:'2600',maxPriceInput:'2800',[key]:['gimnasio','quinchos'],[key+'All']:all};
++    assert.equal(match(origen,input).matches,false);assert.deepEqual(filter(origen,input),[]);
++  }
++  const base={bedrooms:'1',maxPriceInput:'2800',amenities:['gimnasio','no-documentado']};
++  assert.equal(filter(origen,base).length,1);
++  assert.deepEqual(filter(origen,{...base,amenitiesAll:true}),[]);
++  assert.equal(filter(origen,{bedrooms:'1',maxPriceInput:'2800',amenities:['gimnasio'],features:['cowork']}).length,1);
++  assert.deepEqual(filter(origen,{...base,features:['no-documentado'],featuresAll:true}),[]);
++});
++
++test('residential gym can match a residential owner price, with only supported badges',()=>{
++  const s=state({maxPriceInput:'2800',amenities:['gimnasio','no-documentado']});
++  const rows=advancedFilterAndSort([origen],s);assert.equal(rows.length,1);
++  assert.equal(projectOffer(rows[0],s).value,2534.88);
++  assert.deepEqual(matchedLabels(rows[0],s),['Gimnasio']);
++  const local=filter(origen,{minPriceInput:'2600',maxPriceInput:'2800'})[0];
++  assert.deepEqual(matchedLabels(local,state({minPriceInput:'2600',maxPriceInput:'2800',amenities:['gimnasio']})),[]);
++});
++
++test('unknown-use price remains usable alone and cannot acquire residential amenities or use',()=>{
++  const unknown={...origen,preciosPorTipologia:[{tipologia:'Uso no documentado',precioDesdeUF:2697.78}]};
++  const base={minPriceInput:'2600',maxPriceInput:'2800'};
++  assert.equal(filter(unknown,base).length,1);
++  for(const input of [{amenities:['gimnasio']},{features:['gimnasio']},{assetType:'Residencial'},
++    {propertyType:'local'},{bedrooms:'0'},{search:'gimnasio'}]){
++    assert.equal(match(unknown,{...base,...input}).matches,false);assert.deepEqual(filter(unknown,{...base,...input}),[]);
++  }
++});
++
++test('price-witness search keeps the registered identity/address without borrowing gym text',()=>{
++  const base={minPriceInput:'2600',maxPriceInput:'2800'};
++  for(const search of ['Maipú 1196','Origen Santiago'])assert.equal(filter(origen,{...base,propertyType:'local',search}).length,1);
++  assert.deepEqual(filter(origen,{...base,search:'gimnasio'}),[]);
++  assert.equal(filter(origen,{maxPriceInput:'2800',bedrooms:'1',search:'gimnasio'}).length,1);
++  for(const [selection,price] of [[{propertyType:'local'},2697.78],[{},2534.88]]){
++    const s=state({search:'Maipú',...selection}),rows=advancedFilterAndSort([origen],s);
++    assert.equal(rows.length,1);assert.equal(projectOffer(rows[0],s).value,price);
++  }
++});
++
++test('price and unknown bathrooms, surfaces, private features and inclusions cannot borrow model facets',()=>{
++  for(const p of [origen,plazaNova])for(const predicate of [{bathrooms:'1'},{bathrooms:'2'},
++    ...['util','total','interior','terraza','jardin','terreno'].map(areaType=>({areaType,minArea:'0',maxArea:'9999'})),
++    {features:['terraza-privada']},{parking:'included'},{storage:'available'}]){
++    const input={minPriceInput:'1',maxPriceInput:'99999',...predicate};
++    assert.equal(match(p,input).matches,false);assert.deepEqual(filter(p,input),[]);
++  }
++});
++
++test('an unpriced surface profile can still match without displaying an unrelated typology price',()=>{
++  const p={...origen,_facets:{...origen._facets,variants:[{propertyType:'departamento',bedrooms:1,bathrooms:1,areas:{util:30},typology:'1d-1b'}]}};
++  const s=state({bedrooms:'1',bathrooms:'1',areaType:'util',minArea:'30',maxArea:'30'});
++  const rows=advancedFilterAndSort([p],s);assert.equal(rows.length,1);
++  assert.deepEqual(projectOffer(rows[0],s),{value:null,typology:null,financialBaselineCompatible:false});
++  assert.deepEqual(advancedFilterAndSort([p],{...s,maxPriceInput:'2800'}),[]);
++});
++
++test('unpriced bathroom/model searches retain their documented residential amenity badge',()=>{
++  const s=state({bathrooms:'1',amenities:['gimnasio']});
++  const rows=advancedFilterAndSort([origen],s);assert.equal(rows.length,1);
++  assert.deepEqual(rows[0]._publishedPriceMatch.references,[]);
++  assert.equal(projectOffer(rows[0],s).value,null);
++  assert.deepEqual(matchedLabels(rows[0],s),['Gimnasio']);
++});
++
++test('null or nonnumeric row prices stay unknown and cannot borrow the global project minimum',()=>{
++  for(const precioDesdeUF of [null,'2697.78',0,-1]){
++    const p={...origen,preciosPorTipologia:[{tipologia:'Local',precioDesdeUF}]};
++    assert.equal(catalogTypologyRecord(p).references[0].attributes.priceUF,null);
++    assert.deepEqual(catalogTypologyOffer(p,state({propertyType:'local'})),{value:null,typology:'Local',financialBaselineCompatible:false});
++    assert.deepEqual(filter(p,{propertyType:'local',minPriceInput:'0',maxPriceInput:'99999'}),[]);
++  }
++});
++
++test('no-selection defaults preserve the published global price and original row/project order',()=>{
++  for(const p of [origen,plazaNova]){
++    const rows=filter(p,{});assert.equal(rows.length,1);
++    assert.deepEqual(projectOffer(rows[0],state({})),{...catalogReference(p,state({})),financialBaselineCompatible:true});
++  }
++  const changed={...origen,precioDesdeUF:9999,precioDesdeTipologia:'Owner global scope'};
++  assert.deepEqual(projectOffer(filter(changed,{})[0],state({})),{value:9999,typology:'Owner global scope',financialBaselineCompatible:true});
++  assert.deepEqual(advancedFilterAndSort([origen,plazaNova],state({})).map(p=>p.slug),[origen.slug,plazaNova.slug]);
++  assert.deepEqual(catalogTypologyRecord(origen).references.map(r=>r.label),origen.preciosPorTipologia.map(r=>r.tipologia));
++});
++
++test('all 131 original default offers preserve the protected baseline value and typology without mutation',()=>{
++  const before=JSON.stringify(published);assert.equal(published.length,131);
++  for(const p of published){
++    const offer=projectOffer(p,defaults()),baseline=catalogReference(p,defaults());
++    assert.deepEqual({value:offer.value,typology:offer.typology},baseline,p.slug);
++  }
++  assert.equal(JSON.stringify(published),before);
++});
++
++test('price sorting and price label both use the selected Local reference',()=>{
++  const s=state({propertyType:'local',sortOrder:'price-desc'});
++  const rows=advancedFilterAndSort([origen,plazaNova],s);
++  assert.deepEqual(rows.map(p=>p.slug),[plazaNova.slug,origen.slug]);
++  assert.match(offerPriceLabel(rows[1],s),/2[.]697,78/);
++  assert.equal(projectOffer(rows[1],s).typology,'Local');
++});
++
++test('financial card compatibility is false for a different row, including a tied amount with another label',()=>{
++  const cases=[
++    [{},true,2534.88,'Estudio'],
++    [{minPriceInput:'2600',maxPriceInput:'2800'},false,2697.78,'Local'],
++    [{bedrooms:'1'},false,2534.88,'1 dormitorio'],
++    [{bedrooms:'0'},true,2534.88,'Estudio'],
++    [{bedrooms:'2'},false,4360.47,'2 dormitorios'],
++  ];
++  const originalBaseline=verifiedProjectPrice(origen,new Date('2026-11-17T12:00:00Z'));
++  assert.equal(originalBaseline.valueUf,2534.88);assert.equal(originalBaseline.typology,'Estudio');
++  for(const [input,compatible,value,typology] of cases){
++    const s=state(input),[row]=advancedFilterAndSort([origen],s),offer=projectOffer(row,s);
++    assert.equal(offer.financialBaselineCompatible,compatible);
++    assert.equal(offer.value,value);assert.equal(offer.typology,typology);
++  }
++  const unknown={...origen,preciosPorTipologia:[{tipologia:'Local',precioDesdeUF:null}]};
++  assert.equal(catalogTypologyOffer(unknown,state({propertyType:'local'})).financialBaselineCompatible,false);
++  assert.equal(projectOffer(project('edificio-suecia'),state({})).financialBaselineCompatible,undefined);
++});
++
++test('AJ, Sento, Leon and each Ecasa stage keep their established commercialOffers policy',()=>{
++  for(const slug of ['san-martin-70','plaza-las-condes','uruguay','alto-san-joaquin']){
++    const p=published.find(project=>project.slug===slug)||published.find(project=>
++      (slug==='san-martin-70'&&project.inmobiliaria==='AJ Urbana')||(slug==='uruguay'&&project.inmobiliaria==='León'));
++    assert.ok(p);assert.equal(hasCatalogTypologyPrices(p),false);
++    for(const input of [{},{bedrooms:'2'},{propertyType:'local'}])assert.deepEqual(projectOffer(p,state(input)),catalogReference(p,state(input)));
++  }
++});
++
++test('prepared and documentary source precedence never changes to the published table',()=>{
++  const p={...origen,_commercialMatch:{references:[{id:'own',attributes:{priceUF:7777,bedrooms:1}}]},_commercial:{asOf:'2026-11-16'}};
++  assert.equal(projectOffer(p,state({propertyType:'local'})).value,7777);
++  const documentary={...p,_documentaryMatch:{references:[{id:'doc',attributes:{priceUF:null,bedrooms:1}}]}};
++  assert.equal(projectOffer(documentary,state({evidenceMode:'documentary'})).value,null);
++});
++
++test('no-table public prices and Suecia additional costs remain untouched',()=>{
++  const suecia=project('edificio-suecia');assert.equal(hasCatalogTypologyPrices(suecia),false);
++  assert.equal(catalogTypologyRecord(suecia),null);
++  assert.deepEqual(projectOffer(suecia,state({})),catalogReference(suecia,state({})));
++});
++
++test('filtering and presentation never mutate published tables, facets or policy records',()=>{
++  const p=structuredClone(origen),before=JSON.stringify(p);
++  for(const input of [{},{propertyType:'local'},{bedrooms:'2',maxPriceInput:'4500'},
++    {maxPriceInput:'2800',amenities:['gimnasio']}]){
++    const s=state(input);for(const row of advancedFilterAndSort([p],s)){projectOffer(row,s);matchedLabels(row,s);}
++  }
++  assert.equal(JSON.stringify(p),before);
++});

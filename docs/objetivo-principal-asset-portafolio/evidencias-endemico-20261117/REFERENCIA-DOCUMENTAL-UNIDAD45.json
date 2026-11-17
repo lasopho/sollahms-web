@@ -1,0 +1,130 @@
+{
+  "sourceProjectURL": "https://iris.yapo.cl/proyecto/1372?operation=Venta",
+  "sourceKind": "IRIS_DOCUMENTARY_UNIT_NOT_OFFER",
+  "project": "endemico",
+  "observedProjectName": "ECasa - Endemico",
+  "observedDeveloperName": "ECasa",
+  "unit": "45",
+  "floorLiteral": "Planta Baja",
+  "model": null,
+  "stage": null,
+  "stageScope": "Named Endémico development in Pichilemu; the Iris unit does not state a numbered stage. Do not infer stage1 from the internal record.",
+  "propertyTypeLiteral": "CASAS VENTA",
+  "propertyType": "casa",
+  "bedroomsLiteral": "4 dormitorios",
+  "bedrooms": 4,
+  "bathroomsLiteral": "3 baños",
+  "bathrooms": 3,
+  "sourceMetrics": [
+    {
+      "sourceLabel": "internos",
+      "literal": "160m² internos",
+      "valueM2": 160,
+      "storedKey": "internalM2",
+      "canonicalUsefulInteriorTotalMapping": null
+    },
+    {
+      "sourceLabel": "terraza",
+      "literal": "0m² terraza",
+      "valueM2": 0,
+      "storedKey": "terraceM2",
+      "zeroExplicitlyPrinted": true
+    }
+  ],
+  "priceUF": null,
+  "usefulM2": null,
+  "totalM2": null,
+  "interiorM2": null,
+  "stock": null,
+  "availability": null,
+  "privateTerrace": null,
+  "privateGarden": null,
+  "landM2": null,
+  "gardenM2": null,
+  "parkingIncluded": null,
+  "parkingAvailable": null,
+  "storageIncluded": null,
+  "storageAvailable": null,
+  "state": null,
+  "delivery": null,
+  "notOffer": true,
+  "publicConsumption": false,
+  "commercialAdoptionAllowed": false,
+  "sourceDocumentDate": null,
+  "observedOn": "2026-11-17",
+  "recordedAtUTC": "2026-11-17T21:06:11.270281+00:00",
+  "externalPriceMetadata": {
+    "listPriceLiteral": "Precio de lista UF 11.343",
+    "listPriceUF": 11343,
+    "discountLiteral": "5.40%",
+    "finalPriceLiteral": "Precio final UF 10.730,48",
+    "finalPriceUF": 10730.48,
+    "visibleUnitModalPriceUF": 11343,
+    "usedAsOwnerPriceOrCurrentSollahmsPrice": false
+  },
+  "externalIdentityContext": {
+    "addressLiteral": "Camino a Cahuil 7225",
+    "communeLiteral": "Comuna Pichilemu",
+    "regionLiteral": "Región Del Libertador Gral. Bernardo O'Higgins",
+    "publishedAddressWasNull": true,
+    "publishedAddressUpdated": false
+  },
+  "planAvailability": {
+    "status": "PLACEHOLDER_NOT_A_PLAN",
+    "visibleText": [
+      "Unidad sin plano cargado",
+      "DISPONIBLE PROXIMAMENTE"
+    ],
+    "assetExportAttempted": false,
+    "noCanonicalAreaEstablished": true
+  },
+  "sourceFiles": [
+    {
+      "path": "iris-search-result.dom.txt",
+      "bytes": 2768,
+      "sha256": "1cb7fc26e478240ffd3e2eb13593ee0e5dc0e04146a67f735602a0e7c9509363"
+    },
+    {
+      "path": "iris-project-1372.ax.txt",
+      "bytes": 8903,
+      "sha256": "15f2baf33067ca8dd0bbb094ffbe87a8351c2eaa7bbb0bf9dbf5dc5aa057273a"
+    },
+    {
+      "path": "iris-unit45-open.ax.txt",
+      "bytes": 9204,
+      "sha256": "b4976c8ab286d0c2d1b181f92ee603a30339bbcace7dd1141ca1df36cff1f68a"
+    },
+    {
+      "path": "iris-unit45-plan-update.ax.txt",
+      "bytes": 724,
+      "sha256": "175bf9a4866f56d9749d4b3af3ac774f06411e573899da5d0d333bad36478637"
+    },
+    {
+      "path": "iris-unit45-after-scroll.ax.txt",
+      "bytes": 202,
+      "sha256": "b1131d0d645bc27b6b956bf5fad1d9c57d65d0655310f02851b6c4c1e8f63a8c"
+    },
+    {
+      "path": "iris-unit45.dom.txt",
+      "bytes": 7971,
+      "sha256": "04e05eeb228fce040613ef616098ce108347c1b09963be34c97b075eb1c2b167"
+    },
+    {
+      "path": "endemico-unit45-plan-visible.jpg",
+      "bytes": 30819,
+      "sha256": "6bcd0ba969f8a6abae68970c35062c6d72d34d58576f4904b1f3c7dcf7f6195a"
+    },
+    {
+      "path": "endemico-unit45-values-visible.jpg",
+      "bytes": 33898,
+      "sha256": "c8637651dd8590ce6d9aeb6466334822aa4438e2ed3544df03921e9c04f427a1"
+    }
+  ],
+  "constraints": [
+    "The external list-price amount equals an existing 4D category price, but this does not identify unit45 as the owner-authorized priced unit.",
+    "The old D-Molle brochure model has Interior119/Terrace41/Total160. Its total160 and4D3B do not establish a link to unit45 Internos160/Terrace0. No values are transferred or treated as a resolved contradiction.",
+    "The explicit zero belongs only to the UI terrace area; it is not a default for unknowns or certification of absence of physical terrace.",
+    "No useful, residential total or interior metric is inferred from Internos.",
+    "No other unit, model, stage, owner quote, stock or current commercial validity receives these facts."
+  ]
+}

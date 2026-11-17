@@ -101,3 +101,7 @@ Los rasgos comunes del proyecto se distinguen de jardín/terraza privados de una
 4. Conservar los bytes originales aunque la extensión no corresponda al MIME. Si el visor no decodificaAVIF, crear una copiaPNG sin alteraciones con una biblioteca ya disponible; comprobar dimensiones y píxeles equivalentes.
 5. Leer los rótulos impresos y su alcance. Asociar precio por la misma unidad y fuente owner fechada; no por mínimo del proyecto o número de dormitorios.
 6. Mantener desconocidos fecha/revisión del plano, vigencia o stock si no constan. Registrar límites y hashes; no extender a otras unidades.
+
+## Resultados asíncronos y reemplazos —17/11/2026
+
+Un0 inicial enAX puede cambiar a1 enDOM tras cargar, como ocurrió en Endémico sin una segunda búsqueda. Esperar el estado de carga y contrastar la misma consulta en una lectura fresca; no repetir el término por un cero transitorio. Conservar fecha y límites de la observación; un0 capturado no certifica ausencia estable, retirada o stock. Si el modal abre automáticamente TourVirtual/about:blank, no interactuar con recorridos; pasar directamente a Plano y conservar el límite. Unidad sin plano cargado/Disponible próximamente es un reemplazo: no exportarlo ni usarlo como modelo o cuadro de superficies.

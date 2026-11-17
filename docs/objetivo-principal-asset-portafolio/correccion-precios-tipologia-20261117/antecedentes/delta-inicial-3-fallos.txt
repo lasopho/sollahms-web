@@ -1,0 +1,80 @@
+✖ regression: selecting Origen Local presents its own owner price, not Estudio (4.054625ms)
+✖ regression: Origen Local in UF2600–2800 remains a match (0.4555ms)
+✖ regression: selecting commercial use presents and filters Origen Local (0.144167ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 91.206125
+
+✖ failing tests:
+
+test at tests/catalog-typology-prices.test.mjs:14:1
+✖ regression: selecting Origen Local presents its own owner price, not Estudio (4.054625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   typology: 'Estudio',
+  +   value: 2534.88
+  -   typology: 'Local',
+  -   value: 2697.78
+    }
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-typology-prices.test.mjs:18:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { value: 2534.88, typology: 'Estudio' },
+    expected: { value: 2697.78, typology: 'Local' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/catalog-typology-prices.test.mjs:21:1
+✖ regression: Origen Local in UF2600–2800 remains a match (0.4555ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-typology-prices.test.mjs:24:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/catalog-typology-prices.test.mjs:28:1
+✖ regression: selecting commercial use presents and filters Origen Local (0.144167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-typology-prices.test.mjs:31:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

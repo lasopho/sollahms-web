@@ -1,0 +1,367 @@
+{
+  "projects": 20,
+  "queries": 48,
+  "universalQueries": 16,
+  "typedPropertyQueries": 24,
+  "propertyTextQueries": 24,
+  "counts": {
+    "same": 40,
+    "added": 4,
+    "lost": 4
+  },
+  "changedDisplayedPrices": 4,
+  "differences": [
+    {
+      "kind": "typed-property",
+      "project": "edificio-dual-390-lto",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 1,
+      "baselineOffer": null,
+      "candidateOffer": {
+        "value": 18386.36,
+        "typology": "Local"
+      },
+      "changedDisplayedPrice": false,
+      "difference": "added",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-dual-390-lto:0",
+          "label": "Local",
+          "priceUF": 18386.36,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "kind": "property-text",
+      "project": "edificio-dual-390-lto",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "search": "Departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 0,
+      "baselineOffer": {
+        "value": 7337.21,
+        "typology": "1 dormitorio"
+      },
+      "candidateOffer": null,
+      "changedDisplayedPrice": false,
+      "difference": "lost",
+      "candidateWitnesses": []
+    },
+    {
+      "kind": "property-text",
+      "project": "edificio-dual-390-lto",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "search": "Local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "baselineOffer": {
+        "value": 7337.21,
+        "typology": "1 dormitorio"
+      },
+      "candidateOffer": {
+        "value": 18386.36,
+        "typology": "Local"
+      },
+      "changedDisplayedPrice": true,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-dual-390-lto:0",
+          "label": "Local",
+          "priceUF": 18386.36,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "kind": "typed-property",
+      "project": "parque-quinta",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 1,
+      "baselineOffer": null,
+      "candidateOffer": {
+        "value": 3194.45,
+        "typology": "Local"
+      },
+      "changedDisplayedPrice": false,
+      "difference": "added",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:parque-quinta:0",
+          "label": "Local",
+          "priceUF": 3194.45,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "kind": "property-text",
+      "project": "parque-quinta",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "search": "Departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 0,
+      "baselineOffer": {
+        "value": 3101.27,
+        "typology": "Estudio"
+      },
+      "candidateOffer": null,
+      "changedDisplayedPrice": false,
+      "difference": "lost",
+      "candidateWitnesses": []
+    },
+    {
+      "kind": "property-text",
+      "project": "parque-quinta",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "search": "Local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "baselineOffer": {
+        "value": 3101.27,
+        "typology": "Estudio"
+      },
+      "candidateOffer": {
+        "value": 3194.45,
+        "typology": "Local"
+      },
+      "changedDisplayedPrice": true,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:parque-quinta:0",
+          "label": "Local",
+          "priceUF": 3194.45,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "kind": "typed-property",
+      "project": "edificio-plaza-nova",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 1,
+      "baselineOffer": null,
+      "candidateOffer": {
+        "value": 6910.23,
+        "typology": "Local"
+      },
+      "changedDisplayedPrice": false,
+      "difference": "added",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-plaza-nova:1",
+          "label": "Local",
+          "priceUF": 6910.23,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "kind": "property-text",
+      "project": "edificio-plaza-nova",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "search": "Departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 0,
+      "baselineOffer": {
+        "value": 2035.23,
+        "typology": "Estudio"
+      },
+      "candidateOffer": null,
+      "changedDisplayedPrice": false,
+      "difference": "lost",
+      "candidateWitnesses": []
+    },
+    {
+      "kind": "property-text",
+      "project": "edificio-plaza-nova",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "search": "Local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "baselineOffer": {
+        "value": 2035.23,
+        "typology": "Estudio"
+      },
+      "candidateOffer": {
+        "value": 6910.23,
+        "typology": "Local"
+      },
+      "changedDisplayedPrice": true,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edificio-plaza-nova:1",
+          "label": "Local",
+          "priceUF": 6910.23,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "kind": "typed-property",
+      "project": "edif-origen-atacama-3008",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 0,
+      "candidateCount": 1,
+      "baselineOffer": null,
+      "candidateOffer": {
+        "value": 2697.78,
+        "typology": "Local"
+      },
+      "changedDisplayedPrice": false,
+      "difference": "added",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edif-origen-atacama-3008:1",
+          "label": "Local",
+          "priceUF": 2697.78,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "kind": "property-text",
+      "project": "edif-origen-atacama-3008",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "search": "Departamento",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 0,
+      "baselineOffer": {
+        "value": 2534.88,
+        "typology": "Estudio"
+      },
+      "candidateOffer": null,
+      "changedDisplayedPrice": false,
+      "difference": "lost",
+      "candidateWitnesses": []
+    },
+    {
+      "kind": "property-text",
+      "project": "edif-origen-atacama-3008",
+      "propertyTypes": [
+        "departamento",
+        "local"
+      ],
+      "universalContext": false,
+      "query": {
+        "search": "Local",
+        "minPriceInput": "1"
+      },
+      "baselineCount": 1,
+      "candidateCount": 1,
+      "baselineOffer": {
+        "value": 2534.88,
+        "typology": "Estudio"
+      },
+      "candidateOffer": {
+        "value": 2697.78,
+        "typology": "Local"
+      },
+      "changedDisplayedPrice": true,
+      "difference": "same",
+      "candidateWitnesses": [
+        {
+          "id": "published-typology:edif-origen-atacama-3008:1",
+          "label": "Local",
+          "priceUF": 2697.78,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    }
+  ]
+}

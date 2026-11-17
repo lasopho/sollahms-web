@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-17",
+  "kind": "Adiciones documentales posteriores al dataset fijado del PR33; no oferta ni nueva recepción owner",
+  "baseSnapshotsUnchanged": [
+    "CAPA-DOCUMENTAL-IRIS.json",
+    "REGISTRO-ASOCIACIONES-COMERCIALES.json",
+    "PR33@2e45802883c413fa04c8d240a4cc4101d3eee12c"
+  ],
+  "references": [
+    {
+      "id": "IRIS-131-R016",
+      "project": "novo-catedral",
+      "unit": "109",
+      "model": null,
+      "sourceURL": "https://iris.yapo.cl/proyecto/1428?operation=Venta",
+      "sourceFile": "evidencias-novo-catedral-20261117/REFERENCIA-NOVO-CATEDRAL-109.json",
+      "sourceSHA256": "2ce0e23f7ef7475147586bcfcb79eca7e34f77764f1d6a1ee2bcdfe1925ca037",
+      "status": "CONFIRMADO_DOCUMENTAL_POR_UNIDAD_NO_OFERTA",
+      "attributes": {
+        "priceUF": null,
+        "stock": null,
+        "bedrooms": null,
+        "bathrooms": 1,
+        "internalM2": 18.44,
+        "terraceM2": 1.9,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null
+      },
+      "literalTypology": "estudio",
+      "notStudioToNumericZero": true,
+      "newEssentialFact": "Baño1 expreso sólo para109; no universal para todos los estudios/proyecto",
+      "planeLimit": "Un gráfico exportado una vez, sin identificación/cuadro acreditados; no presta áreas canónicas.",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "publicConsumption": false
+    },
+    {
+      "id": "IRIS-131-R017",
+      "project": "endemico",
+      "unit": "45",
+      "model": null,
+      "stage": null,
+      "sourceURL": "https://iris.yapo.cl/proyecto/1372?operation=Venta",
+      "sourceFile": "evidencias-endemico-20261117/RECIBO-CONSULTA-ENDEMICO.json",
+      "sourceSHA256": "48327b16b54d571ed3a354d50561f525f26bcef2029f59d082d67fc358e9729a",
+      "status": "CONFIRMADO_UI_EXACTA_UTIL_SIGUE_DESCONOCIDA",
+      "attributes": {
+        "priceUF": null,
+        "stock": null,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "internalM2": 160,
+        "terraceM2": 0,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null
+      },
+      "newEssentialFacts": "4D/3B y ceroTerraza explícitos para45; el objetivo útil no se cerró",
+      "planeLimit": "Unidad sin plano cargado; no exportar placeholder ni unir con D-Molle por coincidencia160/4D3B.",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "publicConsumption": false
+    }
+  ],
+  "queriesWithoutNewReference": [
+    {
+      "project": "vista-bulnes",
+      "field": "bathrooms",
+      "observed": "0 observado, estabilidad no certificada",
+      "source": "consulta-vista-bulnes-20261117/ALCANCE-DE-LOS-CEROS.json",
+      "newFacts": 0,
+      "projectRetiredOrNoStockInferred": false
+    }
+  ],
+  "counts": {
+    "additionalExactReferences": 2,
+    "additionalProjects": 2,
+    "newOwnerPrices": 0,
+    "newPriceAreaJoins": 0,
+    "LebenOriginal313Closures": 0,
+    "existingIris15PlusPlaza": 16,
+    "totalDocumentaryReferencesAcrossSnapshots": 18,
+    "totalProjectsAcrossSnapshots": 17,
+    "PR33ReferencesUnchanged": 16
+  },
+  "sourceFilesVerified": {
+    "evidencias-novo-catedral-20261117": 8,
+    "consulta-vista-bulnes-20261117": 6,
+    "evidencias-endemico-20261117": 11
+  },
+  "applicationOrFixtureOrPublishedChanges": 0,
+  "nextUse": "Validar incorporación local futura preservando los IDs; no modificar el dataset/13 archivos revisados por estos documentos."
+}

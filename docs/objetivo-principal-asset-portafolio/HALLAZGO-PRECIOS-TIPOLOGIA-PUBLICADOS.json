@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-17T21:15:00.076666+00:00",
+  "id": "PUB-TYPOLOGY-PRICE-001",
+  "status": "CORREGIDO_Y_VERIFICADO_EN_PR33_DRAFT_NO_PUBLICADO",
+  "project": "edif-origen-atacama-3008",
+  "productionSHA": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+  "PR33RemoteSHA": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
+  "notIntroducedByPR33": true,
+  "sourceFile": "data/proyectos.json",
+  "sourceSHA256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+  "sourceAuthority": {
+    "type": "owner-supplied",
+    "verifiedOn": "2026-10-25",
+    "url": "https://sollahms.cl/edif-origen-atacama-3008.html#oferta-comercial",
+    "note": "Precios desde por tipología informados por Sollahms. Confirma disponibilidad, precio y condiciones de la unidad al cotizar."
+  },
+  "existingOwnerValues": [
+    {
+      "tipologia": "Estudio",
+      "precioDesdeUF": 2534.88
+    },
+    {
+      "tipologia": "Local",
+      "precioDesdeUF": 2697.78
+    },
+    {
+      "tipologia": "1 dormitorio",
+      "precioDesdeUF": 2534.88
+    },
+    {
+      "tipologia": "2 dormitorios",
+      "precioDesdeUF": 4360.47
+    }
+  ],
+  "observedCases": [
+    {
+      "query": {
+        "propertyType": "local"
+      },
+      "selected": {
+        "value": 2534.88,
+        "typology": "Estudio"
+      },
+      "matchingProjects": [
+        "edif-origen-atacama-3008"
+      ]
+    },
+    {
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "2600",
+        "maxPriceInput": "2800"
+      },
+      "selected": {
+        "value": 2534.88,
+        "typology": "Estudio"
+      },
+      "matchingProjects": []
+    },
+    {
+      "query": {
+        "assetType": "Comercial",
+        "minPriceInput": "2600",
+        "maxPriceInput": "2800"
+      },
+      "selected": {
+        "value": 2534.88,
+        "typology": "Estudio"
+      },
+      "matchingProjects": []
+    }
+  ],
+  "expected": "El filtroLocal/Comercial debe seleccionar la fila ownerLocalUF2697.78 y admitir el rango2600–2800. No copiarB/áreas de facetas. La proyección y coincidencia deben usar ese mismo testigo.",
+  "impact": "Opción comercial documentada excluida por rango válido; selección de precio incompatible con categoría local.",
+  "cause": "La ruta nueva de filtros/proyección usa catalogReference y commercialOffers, sin adaptar preciosPorTipologia del legado NorteVerde.",
+  "fixScope": [
+    "Módulo de catálogo para las filas ownerpublicadas",
+    "Motor y proyección del catálogo",
+    "Pruebas específicas del defecto"
+  ],
+  "protectedMustStayIntact": [
+    "project-offers.mjs y módulos financieros",
+    "155protegidos",
+    "data/fichas/precios/13universo",
+    "Funciones/formularios/CRM/Resend"
+  ],
+  "additionalPushPerformed": true,
+  "productionChangePerformed": false,
+  "newDeploymentCreated": false,
+  "ownerDataNeeded": false,
+  "correctionCommit": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
+  "verification": {
+    "newNode": 34,
+    "relevantRegression": 70,
+    "newChrome": 14,
+    "protectedFiles": 155,
+    "defaultProjectsUnchanged": 131,
+    "differential48": {
+      "same": 40,
+      "LocalGains": 4,
+      "conservativeDepartmentExclusionsInMixedProjects": 4
+    },
+    "LocalDisplayedPricesCorrected": 4,
+    "receipt": "correccion-precios-tipologia-20261117/recibo-final34/sollahms-typology-prices-receipt.json"
+  }
+}

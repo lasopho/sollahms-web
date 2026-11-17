@@ -94,3 +94,7 @@ No se enviaron chats, reservas, cotizaciones o contactos. Si el panel AsistenteI
 ## Plaza213 —17/11/2026
 
 El plano C7/213 respalda útil69,85/terraza13,97/total83,82 como declaración gráfica comercial; no certifica áreas legales o as-built, fecha/revisión ni disponibilidad. La tabla literal original de áreas owner no se localizó: las atribuciones derivadas interiorM2 no prueban su rótulo original. El plano nuevo proporciona respaldo independiente.313 no estaba visible, no se buscó ni se declaró agotada; sus69,78 no quedan validados porC7. El motor puro no impone stock/sourceLayer: el consumidor debe mantener explícita la capa documental y no presentarla como oferta activa.
+
+## Nuevo alcance unitario, sin cierres artificiales —17/11/2026
+
+Novo109 aporta baño1 sólo a esa referencia; Estudio literal no completa dormitorios numéricos. Endémico45 aporta4D3B eInternos160/Terraza0, pero no útil/total. La coincidencia160 con Total del brochureD-Molle no prueba identidad o métrica. VistaBulnes conserva baño desconocido:0 observado, estabilidad no certificada. No reabrir estas consultas sin evidencia/condición nueva; no pedir un inventario al propietario.

@@ -1,0 +1,102 @@
+200 combined filters: 735.9ms
+✔ no filters retain all projects, owner amounts, order and unknown data (54.445ms)
+✔ categories intersect; selections within amenities use OR or explicit ALL (0.922166ms)
+✔ bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option (0.565125ms)
+✔ exact ranges are inclusive and invalid ranges never broaden results (0.379125ms)
+✖ project desde stays authoritative regardless of selected property or old typology prices (1.338292ms)
+✔ residential-only common spaces do not become local amenities; stage references remain separate (0.501667ms)
+✔ keywords include only registered features; sorting is deterministic with unknowns last (17.5885ms)
+✔ URL round trip is bounded, shareable, uses allowlists and excludes unrelated or private state (1.539875ms)
+✔ projection is complete without unit inventory, empty facets, generated absences or schema drift (4.478541ms)
+✔ current catalogue filtering stays responsive without network or mutation (736.639791ms)
+✔ F9: edificio-living-town conserva atributos inactivos (7.056834ms)
+✔ F9: edificio-mood conserva atributos inactivos (2.284459ms)
+✔ F9: edificio-santo conserva atributos inactivos (0.203875ms)
+✔ F9: edificio-baum conserva atributos inactivos (1.660667ms)
+✔ F9: edificio-suecia conserva atributos inactivos (0.142291ms)
+✔ F9: capitanes conserva atributos inactivos (0.193042ms)
+✔ F9: edificio-bold conserva atributos inactivos (0.38425ms)
+✔ F9: edificio-argomedo conserva atributos inactivos (0.118666ms)
+✔ F9: edificio-indi conserva atributos inactivos (0.343125ms)
+✔ F9: edificio-indigo conserva atributos inactivos (0.182625ms)
+✔ F9: inn-puerto-chico conserva atributos inactivos (0.56125ms)
+✔ F9: edificio-nordico conserva atributos inactivos (0.1765ms)
+✔ F9: Living precio+D+B (0.408875ms)
+✔ F9: Living otra cotización 2D2B (0.13725ms)
+✔ F9: Living603 conserva D2 (0.110375ms)
+✔ F9: Living603 no concilia B2 (0.061625ms)
+✔ F9: Mood D1B1 útil+total (0.24475ms)
+✔ F9: Mood precio no presta útil (0.092791ms)
+✔ F9: Mood303 conserva B2 (0.060334ms)
+✔ F9: Mood303 no concilia D2 (0.03325ms)
+✔ F9: Cap501 conserva D3B3 y T18,45 (0.064875ms)
+✔ F9: Cap501 no presta total109,01 (0.043083ms)
+✔ F9: Bold608 conserva D2B2 (0.056875ms)
+✔ F9: Bold608 no concilia T3,71 (0.036333ms)
+✔ F9: Bold608 conserva terraza privada (0.045ms)
+✔ F9: INN806 conserva D2B2T26,36 (0.040625ms)
+✔ F9: INN806 no presta total135,86 (0.064584ms)
+✔ F9: INN precio2D no presta jardín (0.091417ms)
+✔ F9: Nórdico precio1D no presta patio (0.057166ms)
+✔ F9: Nórdico D1B1 útil+total (0.236125ms)
+✔ F9: Santo conserva precio desconocido (0.061542ms)
+✔ F9: BAUM no convierte Internos en útil (0.606375ms)
+✔ 454 referencias documentales y costes adicionales no son stock ni precios de inmueble (0.291292ms)
+✔ precio y todos los atributos de opción necesitan una única referencia (2.190042ms)
+✔ null, undefined, texto numérico y vacío no se convierten en cero (0.326208ms)
+✔ desconocido no hereda Residencial y los productos mixtos conservan su referencia (0.315041ms)
+✔ superficie requiere métrica explícita y no convierte total, interior o terraza en útil (0.148083ms)
+✔ región, comuna, estado, entrega y amenities se combinan sin completar datos desconocidos (0.359833ms)
+✔ estado y entrega de etapas distintas no se cruzan (0.103125ms)
+✔ terraza y jardín privados no son amenities comunes ni se prestan a locales (0.1555ms)
+✔ F12-01: el gimnasio de Indi no se presta al local OWN4-P011 por precio implícito (2.28875ms)
+✔ los amenities exigen uso conocido por referencia y respetan alcance universal/comercial/tipo (0.83475ms)
+✔ amenities y texto conservan AND/OR y un único testigo entre alcances distintos (0.323542ms)
+✔ F12-02: Living Town encuentra etiquetas públicas sin perder precio ni referencia (35.24925ms)
+✔ búsqueda española y aliases públicos sólo indexan amenities confirmados con alcance válido (3.482709ms)
+✔ oferta adicional de estacionamiento/bodega no significa incluido ni disponible (0.352791ms)
+✔ una clasificación de proyecto no presta tipo a una cotización (0.191916ms)
+✔ rangos inclusivos, opciones 4+/3+ y tipologías mantienen semántica de consulta (0.472917ms)
+✔ evaluación pura conserva registros, consultas y valores originales (0.144917ms)
+✔ wrapper usa evidencia sólo en modo preparado y conserva el registro publicado (3.033292ms)
+✔ Own sigue en la entrada y se excluye sólo de la oferta preparada (0.266042ms)
+✔ el modo preparado no hereda modalidad legal publicada de otra fecha (0.290917ms)
+✔ regresión publicada: desconocido no pasa Residencial en un proyecto mixto (0.553041ms)
+✔ regresión publicada: precio de oferta no toma baños/superficie de otro modelo (0.821584ms)
+✔ precio global conserva precio solo pero no inventa correspondencia con dormitorios (0.165458ms)
+✔ métrica explícita, modo de evidencia y extras sobreviven URL saneada (0.462708ms)
+✔ etiquetas preparadas provienen de hechos y referencias coincidentes (0.150083ms)
+✔ a matching unpriced plan cannot display the unrelated published price (64.982125ms)
+✔ a displayed quote and facts share the same reference, without borrowing model areas (0.416667ms)
+✔ published records retain their existing price presentation (0.546959ms)
+ℹ tests 70
+ℹ suites 0
+ℹ pass 69
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 959.130708
+
+✖ failing tests:
+
+test at tests/catalog-filters.test.mjs:39:1
+✖ project desde stays authoritative regardless of selected property or old typology prices (1.338292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-filters.test.mjs:41:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

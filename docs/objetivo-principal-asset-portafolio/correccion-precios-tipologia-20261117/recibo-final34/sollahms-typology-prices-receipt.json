@@ -1,0 +1,410 @@
+{
+  "date": "2026-11-17",
+  "createdAtUTC": "2026-11-17T21:23:26.222132+00:00",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "unchangedHEAD": "2e45802883c413fa04c8d240a4cc4101d3eee12c",
+  "scope": "Local correction of published preciosPorTipologia selection and witnesses; no public release",
+  "files": [
+    {
+      "path": "assets/js/catalog-typology-prices.mjs",
+      "sha256": "992d9a0a2a3e5d92544c5872289fe7d14cc0de369a4615c30ea328832b17c1e7",
+      "bytes": 8150,
+      "lines": 130
+    },
+    {
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "sha256": "72abedbad869d6c2f11546a8465c93c8a8617847c3714a21fc081e78f49daff9",
+      "bytes": 19561,
+      "lines": 218
+    },
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "sha256": "42c1f052a1d69b0f1b9811852b510b8224f21bae8056fde62a2ae8521a6b088c",
+      "bytes": 13416,
+      "lines": 161
+    },
+    {
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "sha256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+      "bytes": 12911,
+      "lines": 192
+    },
+    {
+      "path": "assets/js/catalog.mjs",
+      "sha256": "d5d6b54eb9caf13bdc78529aa701e6ca907ce3af58422e4d7e5a2e3686eddd4d",
+      "bytes": 14346,
+      "lines": 127
+    },
+    {
+      "path": "tests/catalog-typology-prices.test.mjs",
+      "sha256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+      "bytes": 23168,
+      "lines": 367
+    }
+  ],
+  "publicDataUsed": [
+    "data/proyectos.json",
+    "data/catalog-facets.json"
+  ],
+  "sourceFacts": {
+    "edif-origen-atacama-3008": {
+      "Estudio": "2534.88",
+      "Local": "2697.78",
+      "1 dormitorio": "2534.88",
+      "2 dormitorios": "4360.47",
+      "ownerVerificationDate": "2026-10-25"
+    },
+    "edificio-plaza-nova": {
+      "Estudio": "2035.23",
+      "Local": "6910.23",
+      "1 dormitorio": "3275.14",
+      "ownerVerificationDate": "2026-10-25"
+    }
+  },
+  "reproductionBefore": {
+    "command": "node --test tests/catalog-typology-prices.test.mjs",
+    "log": "/private/tmp/sollahms-typology-prices-before.txt",
+    "sha256": "6186419001d0bc20e6fc3f89cbeb2178176d55d828bf7b0ab60f87af0fc4b1af",
+    "bytes": 3181,
+    "lines": 80,
+    "tests": 3,
+    "pass": 0,
+    "fail": 3,
+    "actualWrongOffer": {
+      "value": 2534.88,
+      "typology": "Estudio"
+    },
+    "expectedOffer": {
+      "value": 2697.78,
+      "typology": "Local"
+    },
+    "falseNegative": "Origen Local or Comercial in2600–2800 UF returned zero rows despite owner Local2697.78."
+  },
+  "verificationAfter": {
+    "command": "node --test tests/catalog-typology-prices.test.mjs",
+    "log": "/private/tmp/sollahms-typology-prices-after.txt",
+    "sha256": "9d59d5d71c50aa1f2f3569fea1cf205502b2c86b015c51168e715228df2b3a13",
+    "bytes": 3558,
+    "lines": 42,
+    "tests": 34,
+    "pass": 34,
+    "fail": 0,
+    "gitDiffCheck": "passed",
+    "scope": "Only new delta suite; historical84/57/16/45/32 suites not repeated.",
+    "newDefault131Preservation": {
+      "count": 131,
+      "actual": "projectOffer(originalProject,defaults()) value/typology",
+      "baseline": "unchanged catalogReference(originalProject,defaults())",
+      "differences": 0,
+      "catalogueJSONMutated": false,
+      "scope": "New focused default-preservation test, not historical suite replay or commercial completeness certification."
+    },
+    "previouslyFailingLegacyTest": {
+      "command": "node --test --test-name-pattern='project desde stays authoritative' tests/catalog-filters.test.mjs",
+      "log": "/private/tmp/sollahms-typology-legacy-pattern-after.txt",
+      "sha256": "d13d1c3d0238ad2a4d07d68ed3b93a86b6b31637209e84364b08be691bf2a7e1",
+      "bytes": 220,
+      "lines": 9,
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "oldTestEdited": false
+    },
+    "differential165": {
+      "directory": "/private/tmp/sollahms-typology-differential-165-20261117",
+      "command": "node /private/tmp/sollahms-typology-differential-165-20261117/run-comparison.mjs",
+      "baselineCommit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+      "baselineOriginalModulesCopiedUnedited": 5,
+      "datasetsCopiedUneditedAndEqualCurrent": 2,
+      "projects": 20,
+      "queries": 48,
+      "universalQueries": 16,
+      "counts": {
+        "same": 40,
+        "added": 4,
+        "lost": 4
+      },
+      "interpretation": "/private/tmp/sollahms-typology-differential-165-20261117/comparison-interpretation.json",
+      "files": [
+        {
+          "path": "/private/tmp/sollahms-typology-differential-165-20261117/baseline-source-manifest.json",
+          "sha256": "07077ab511b40c08c96992e9eacdb838b509d0e46aec7582aebf0d551b266f52",
+          "bytes": 2261,
+          "lines": 61
+        },
+        {
+          "path": "/private/tmp/sollahms-typology-differential-165-20261117/run-comparison.mjs",
+          "sha256": "549c2894833861fdc4797f0e3c6abec06d568355f6d28d71873d3e74ba2c84b1",
+          "bytes": 4081,
+          "lines": 41
+        },
+        {
+          "path": "/private/tmp/sollahms-typology-differential-165-20261117/comparison-results.json",
+          "sha256": "6119adba6710072784610d38038fd30688e29ba509ef8afa690092149d2d90d4",
+          "bytes": 62865,
+          "lines": 2176
+        },
+        {
+          "path": "/private/tmp/sollahms-typology-differential-165-20261117/comparison-output.json",
+          "sha256": "12976cf57bf576089729ce9d8f64bf97c447707fa02674c15ec601b41aeb4bf1",
+          "bytes": 8837,
+          "lines": 367
+        },
+        {
+          "path": "/private/tmp/sollahms-typology-differential-165-20261117/comparison-interpretation.json",
+          "sha256": "099e7195c5a952cea712cf6d829dd9f6f1ea0ed34af3bf55abd3d28aff5275a9",
+          "bytes": 7258,
+          "lines": 229
+        },
+        {
+          "path": "/private/tmp/sollahms-typology-differential-165-20261117/comparison-type-only-results.json",
+          "sha256": "c86f1af50c0b06099edc84cadade1733bebe05049623dd4194a647126cf5ed43",
+          "bytes": 26188,
+          "lines": 879
+        },
+        {
+          "path": "/private/tmp/sollahms-typology-differential-165-20261117/run-type-only-comparison.mjs",
+          "sha256": "dff08777d6e59662b429bcd578f1489fde04b50166d7af091793a6133594ff26",
+          "bytes": 2764,
+          "lines": 31
+        },
+        {
+          "path": "/private/tmp/sollahms-typology-differential-165-20261117/MANIFEST.json",
+          "sha256": "e2bd7ae717bcfeb589177c6ec303fedb6cba5c6f6c1f8a7b466ee9e07c9ce11f",
+          "bytes": 1343,
+          "lines": 48
+        }
+      ],
+      "typedPropertyQueries": 24,
+      "propertyTextQueries": 24,
+      "intentionalConservativeExclusions": 4,
+      "changedDisplayedPrices": 4,
+      "unexpectedLossCount": 0
+    }
+  },
+  "outputContract": {
+    "field": "_publishedPriceMatch",
+    "shape": [
+      "matches",
+      "record",
+      "references",
+      "matchedReferenceIds",
+      "issues"
+    ],
+    "recordSourceLayer": "published-typology-prices",
+    "referenceFields": [
+      "id",
+      "label",
+      "sourceKind",
+      "sourceDate",
+      "sourcePath",
+      "sourcePointer [relative to sourceProjectSlug]",
+      "sourceProjectSlug",
+      "authoritySourcePath",
+      "scope",
+      "stock:null",
+      "attributes"
+    ],
+    "allowedQuoteAttributes": "Price from that authorized row, explicit Local type, explicit residential owner category and its D enum. A compatible single published project type can be retained as universal context with separate provenance; no model fields are lent. Numeric source values are not coerced.",
+    "unknownQuoteAttributes": [
+      "bathrooms",
+      "usefulM2",
+      "totalM2",
+      "interiorM2",
+      "terraceM2",
+      "gardenM2",
+      "landM2",
+      "privateTerrace",
+      "privateGarden",
+      "parkingIncluded",
+      "parkingAvailable",
+      "storageIncluded",
+      "storageAvailable"
+    ],
+    "taxonomyLimit": "Owner labels Estudio and1–4dormitorios establish controlled residential categories. They do not establish departamento/casa. Estudio→0 is limited to this existing owner enum, never raw Iris text.",
+    "amenityScope": "Existing explicitly scoped project features are evaluated for the same price reference; Local and unknown use cannot borrow residential gym. AND/OR groups remain separate.",
+    "noActivePrice": "Existing area/bathroom profiles may still match their own facts; an unrelated quote price is not displayed. Legacy badges remain for that path.",
+    "default": "No selection retains precioDesdeUF and its existing label/order.",
+    "offerAdditionalField": "financialBaselineCompatible: boolean on this adapter only; undefined on unchanged other offer paths.",
+    "recordEligibility": "Only explicitly dated owner-supplied tables without a declared modern offer route or unresolved price status; current20projects/41rows.",
+    "universalTypeContext": "Optional reference.universalProjectContext.propertyType, separate from the original owner typology row provenance."
+  },
+  "coreAmendment": {
+    "file": "assets/js/commercial-filter-engine.mjs",
+    "change": "Add sourceProject.direccion to projectTerms and canonical Spanish property-type terms scoped exclusively to the current reference inside matchesReference. No aggregate propertyLabels or raw row labels enter the haystack.",
+    "queryTextPreserved": true,
+    "rawPriceUnitLabelsAddedToSearch": false,
+    "authorization": "Root expressly authorized the identity-address and reference-specific canonical property-text amendments within the same six-file scope.",
+    "protectionManifest": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/ARCHIVOS-PROTEGIDOS.json",
+    "sha256": "40cec8f95102baaf7b8de826c31c4d52df3e41b7e4f914cca6f427a1e40c529f",
+    "bytes": 21249,
+    "lines": 634,
+    "protectedFiles": 155,
+    "coreMemberOfProtected155": false,
+    "canonicalPropertyText": {
+      "lookup": "Map.get(normalizePropertyType(reference.attributes.propertyType)); null or unknown adds no terms.",
+      "canonicalTypes": [
+        "departamento",
+        "casa",
+        "duplex",
+        "estudio",
+        "local",
+        "oficina",
+        "terreno"
+      ],
+      "additionalBedroomsAreasOrUnclassifiedLabels": false,
+      "queryTextConstraintPreserved": true,
+      "reproductionBefore": {
+        "file": "/private/tmp/sollahms-typology-property-text-before.txt",
+        "sha256": "0a96ed6fe5656c74be06ee5ffd5e0453157a8bee9413033422cdc4b76b1ae191",
+        "bytes": 1032,
+        "lines": 30,
+        "tests": 1,
+        "fail": 1
+      },
+      "verifiedCases": [
+        "Vista Bulnes Departamento/Departamentos +minPrice1 keeps3148.1",
+        "Origen Local/Locales comerciales +minPrice1 selects2697.78 Local only",
+        "Local2697.78 cannot take Departamento text from another reference priced4000",
+        "Unknown-use row in a project with Department labels adds no Departamento term",
+        "No added bedroom count or area-number search terms"
+      ]
+    }
+  },
+  "preservation": {
+    "projectOffersSharedUnchanged": true,
+    "projectOffersSHA256": "4842c8eba277bdcdb05e464bcd8b85732878ec250702ca0bd2b435beba36e81b",
+    "AJ_Sento_Leon_EcasaCommercialOffersPolicies": "Remain delegated to existing catalogReference; each Ecasa stage bypasses the new typology table path.",
+    "preparedDocumentaryPrecedence": "Preserved before published typology fallback.",
+    "publishedPricesSourcesFixturesPinsProtected155Modified": false,
+    "IrisNovoRawEstudioModified": false,
+    "SueciaAdditionalCostsSummed": false,
+    "newDataOrOwnerValues": false,
+    "commitPushPRMergeBuildDeploymentExecuted": false,
+    "remotePR33SHAChanged": false,
+    "financialModulesUnchanged": [
+      {
+        "path": "assets/js/project-finance.mjs",
+        "equalsHEAD": true,
+        "sha256": "a49958fd5020206c6152bf48c03ab3ae3de3039c27f3abc04b1eaf8fbfb7376a"
+      },
+      {
+        "path": "assets/js/purchase-capacity-ui.mjs",
+        "equalsHEAD": true,
+        "sha256": "2a73b95ed500f2a3c05902d3e4042b40c371583fceee6658d43cfe3c0df69fa8"
+      }
+    ],
+    "financialSortWidgetAnd131BaselineProgramChanged": false
+  },
+  "independentReadReview": {
+    "agent": "documentary_contract_review",
+    "result": "No remaining blocker after final property-text fix. Canonical terms are scoped per matching reference; four mixed-project Departamento-text losses are explicitly declared conservative exclusions, not hidden as zero losses. Reviewer did not execute tests or differential.",
+    "testsExecutedByReviewer": false
+  },
+  "limits": [
+    "Not a global131 commercial or stock certification.",
+    "Published owner verification date is not a new stock or delivery guarantee.",
+    "No current release authorization inferred.",
+    "Financial evaluation and compatibility order remain the original131 baseline programme; variant-specific financial scenarios are not introduced.",
+    "Unknown or mixed property type is not filled from models. Only the existing compatible universal project type is retained with explicit separate provenance."
+  ],
+  "updatedAtUTC": "2026-11-17T22:14:32.748056+00:00",
+  "financialProjectionGuard": {
+    "scope": "Presentation of the per-card capacity block only; no financial programme/formula changes.",
+    "pureSourcePriceReproduction": {
+      "file": "/private/tmp/sollahms-typology-financial-before.json",
+      "sha256": "3a5e51044f722abc5c96a3f311d7d3c649f76f39f3860d607965e00ed28a694f",
+      "bytes": 560,
+      "lines": 21,
+      "selectedPublishedReference": {
+        "valueUF": 2697.78,
+        "typology": "Local"
+      },
+      "verifiedProjectPriceBaseline": {
+        "valueUF": 2534.88,
+        "typology": "Estudio"
+      },
+      "personalInputsOrScenariosUsed": false
+    },
+    "compatibilityRule": {
+      "defaultWithoutSelection": true,
+      "selectedWitness": "true only for valid price exactly equal to precioDesdeUF AND exact string label equal to precioDesdeTipologia, without coercion or typology conversion.",
+      "differentPriceOrLabelOrNull": false,
+      "otherUnchangedFlows": "undefined, accepted by !==false guard"
+    },
+    "catalogCallSite": "assets/js/catalog.mjs:75; add offer.financialBaselineCompatible!==false to existing published/explicitLocal guard before capacitySearch.decorateCard.",
+    "cases": {
+      "OrigenNoSelection": true,
+      "Origen2600to2800WithoutExplicitType": false,
+      "Origen1DButPriceTiesEstudio2534_88": false,
+      "Origen0DOwnerEstudioSamePriceAndLabel": true,
+      "UnknownQuotePrice": false
+    },
+    "programmeBaselineUnchanged": "Evaluation, compatibility sorting, widget and summary still use all131 original published project baselines. The gate only suppresses a mismatched card scenario; it does not re-evaluate capacity for another typology.",
+    "authorization": "Root expressly authorized sixth file catalog.mjs for this single gate, with no financial-module or formula edits."
+  },
+  "sourceAuthorityGuard": {
+    "require": [
+      "nonempty preciosPorTipologia",
+      "commercialSource.type exactly owner-supplied",
+      "explicit commercialSource.verifiedOn or commercialSource.date, exact valid YYYY-MM-DD calendar date",
+      "priceStatus in root and commercialSource absent or confirmed",
+      "commercialOffers not declared at all, detected with Object.hasOwn",
+      "prior owner-typology and ECasa stage policy exclusions preserved"
+    ],
+    "legacyWithoutAuthority": "Keep existing catalogReference and published project baseline; table presence alone does not establish authority.",
+    "modernRoutes": "Any commercialOffers field takes precedence regardless of developer and whether value is[]/null or offers have null/pending prices.",
+    "pending": "Pending or other unresolved price statuses cannot enable this route.",
+    "currentDataEligible": {
+      "projects": 20,
+      "rows": 41,
+      "developers": {
+        "Norte Verde": 18,
+        "Crescer": 2
+      }
+    },
+    "currentDataRetainedOnPreviousRoutes": {
+      "EuroWithTablesAndDeclaredOffers": 12,
+      "EcasaWithTablesAndDeclaredOffers": 15,
+      "NollagamWithoutCommercialSource": 7
+    },
+    "realPendingCase": "diagonal-vicuna commercialSource.priceStatus=pending and declared offers; synthetic legacy1000 cannot reactivate price.",
+    "rootRegressionBefore": {
+      "log": "/private/tmp/sollahms-typology-legacy-before.log",
+      "rootReportedPass": 69,
+      "rootReportedTests": 70,
+      "failure": "Old legacy test expected global2000 to remain authoritative over unauthenticated Local8000 table.",
+      "sha256": "15c2490e344d5e50c98821c271b05922e32a6e620c01eb2da019f5f98f6ecee5",
+      "bytes": 6434,
+      "lines": 102
+    },
+    "newCases": [
+      "legacy2000 vs Local8000 without owner metadata",
+      "owner type/calendar date/status authority",
+      "declared Euro/Crescer/Nollagam offers including[]/null/null-price",
+      "real Diagonal pending with populated legacy table"
+    ],
+    "independentReadReview": "Guard and four new cases read independently; no remaining blocker."
+  },
+  "universalProjectTypeContext": {
+    "problem": "Vista Bulnes and Ecuador were incorrectly excluded by Departamento+minPrice1 despite a known single published project type already supported by the165 baseline.",
+    "reproductionBefore": {
+      "file": "/private/tmp/sollahms-typology-universal-before.txt",
+      "sha256": "d8881aaa99d9b3e11103fb6c9b06defea16b2b4b0de1f491650bb3e1e7811423",
+      "bytes": 998,
+      "lines": 30,
+      "tests": 1,
+      "fail": 1
+    },
+    "rule": "Only a dated owner row with explicit residential enum use and null propertyType may retain one universal compatible canonical project type. Require a nonempty all-recognized singleton propertyTypes list and exclusively Residencial assetTypes.",
+    "source": "data/catalog-facets.json#/projects/<slug>/propertyTypes",
+    "provenanceChannel": "reference.universalProjectContext.propertyType; scope published-project-universal, sourceDate null, noVariantFieldsUsed true. No per-facet verified flag is invented.",
+    "explicitLocalUnknownUseMixedUnknownTypes": "No substitution or fallback.",
+    "bathroomsSurfacesPrivateFeaturesExtras": "Remain null; no variants fields are read.",
+    "newTests": [
+      "real Vista Bulnes and Ecuador Departamento+price preservation",
+      "mixed, unknown-use, unknown/contradictory project type and explicit Local negative guards"
+    ],
+    "independentReadReview": "No blocking finding; reviewer read guards and new tests, did not execute them."
+  }
+}

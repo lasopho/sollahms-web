@@ -1,0 +1,229 @@
+{
+  "date": "2026-11-17",
+  "scope": "Differential QA of this code delta, not a source-data re-audit or global commercial certification.",
+  "eligibleProjects": 20,
+  "testedQueries": 48,
+  "typedPropertyQueries": 24,
+  "propertyTextQueries": 24,
+  "rawResultCounts": {
+    "same": 40,
+    "added": 4,
+    "lost": 4
+  },
+  "universalProjectTypeQueries": {
+    "typedCount": 16,
+    "typedPreserved": 16,
+    "textCount": 16,
+    "textPreserved": 16,
+    "residentialSingleDepartamentoProjects": 13,
+    "explicitLocalProjects": 3
+  },
+  "mixedTypedDepartamentoQueries": {
+    "count": 4,
+    "baselineAndCandidate": 0,
+    "reason": "A mixed project does not establish a universal Departamento type for its residential owner category."
+  },
+  "intentionalAdditions": [
+    {
+      "project": "edificio-dual-390-lto",
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "before": 0,
+      "after": 1,
+      "classification": "EXPLICIT_LOCAL_OWNER_PRICE_WITNESS",
+      "witness": [
+        {
+          "id": "published-typology:edificio-dual-390-lto:0",
+          "label": "Local",
+          "priceUF": 18386.36,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "parque-quinta",
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "before": 0,
+      "after": 1,
+      "classification": "EXPLICIT_LOCAL_OWNER_PRICE_WITNESS",
+      "witness": [
+        {
+          "id": "published-typology:parque-quinta:0",
+          "label": "Local",
+          "priceUF": 3194.45,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "edificio-plaza-nova",
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "before": 0,
+      "after": 1,
+      "classification": "EXPLICIT_LOCAL_OWNER_PRICE_WITNESS",
+      "witness": [
+        {
+          "id": "published-typology:edificio-plaza-nova:1",
+          "label": "Local",
+          "priceUF": 6910.23,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    },
+    {
+      "project": "edif-origen-atacama-3008",
+      "query": {
+        "propertyType": "local",
+        "minPriceInput": "1"
+      },
+      "before": 0,
+      "after": 1,
+      "classification": "EXPLICIT_LOCAL_OWNER_PRICE_WITNESS",
+      "witness": [
+        {
+          "id": "published-typology:edif-origen-atacama-3008:1",
+          "label": "Local",
+          "priceUF": 2697.78,
+          "propertyType": "local",
+          "universalProjectContext": null
+        }
+      ]
+    }
+  ],
+  "intentionalTextPriceCorrections": [
+    {
+      "project": "edificio-dual-390-lto",
+      "query": {
+        "search": "Local",
+        "minPriceInput": "1"
+      },
+      "countBefore": 1,
+      "countAfter": 1,
+      "baselineOffer": {
+        "value": 7337.21,
+        "typology": "1 dormitorio"
+      },
+      "candidateOffer": {
+        "value": 18386.36,
+        "typology": "Local"
+      },
+      "classification": "LOCAL_TEXT_DISPLAYS_SAME_REFERENCE_PRICE"
+    },
+    {
+      "project": "parque-quinta",
+      "query": {
+        "search": "Local",
+        "minPriceInput": "1"
+      },
+      "countBefore": 1,
+      "countAfter": 1,
+      "baselineOffer": {
+        "value": 3101.27,
+        "typology": "Estudio"
+      },
+      "candidateOffer": {
+        "value": 3194.45,
+        "typology": "Local"
+      },
+      "classification": "LOCAL_TEXT_DISPLAYS_SAME_REFERENCE_PRICE"
+    },
+    {
+      "project": "edificio-plaza-nova",
+      "query": {
+        "search": "Local",
+        "minPriceInput": "1"
+      },
+      "countBefore": 1,
+      "countAfter": 1,
+      "baselineOffer": {
+        "value": 2035.23,
+        "typology": "Estudio"
+      },
+      "candidateOffer": {
+        "value": 6910.23,
+        "typology": "Local"
+      },
+      "classification": "LOCAL_TEXT_DISPLAYS_SAME_REFERENCE_PRICE"
+    },
+    {
+      "project": "edif-origen-atacama-3008",
+      "query": {
+        "search": "Local",
+        "minPriceInput": "1"
+      },
+      "countBefore": 1,
+      "countAfter": 1,
+      "baselineOffer": {
+        "value": 2534.88,
+        "typology": "Estudio"
+      },
+      "candidateOffer": {
+        "value": 2697.78,
+        "typology": "Local"
+      },
+      "classification": "LOCAL_TEXT_DISPLAYS_SAME_REFERENCE_PRICE"
+    }
+  ],
+  "intentionalConservativeExclusions": [
+    {
+      "project": "edificio-dual-390-lto",
+      "query": {
+        "search": "Departamento",
+        "minPriceInput": "1"
+      },
+      "before": 1,
+      "after": 0,
+      "classification": "REFERENCE_TYPE_UNKNOWN_IN_MIXED_PROJECT",
+      "reason": "Owner residential category has null propertyType. The old aggregate propertyLabels supplied Departamento to a price reference without that type. The explicit new contract requires canonical type terms from the same price witness and prohibits inferring Departamento from a mixed project."
+    },
+    {
+      "project": "parque-quinta",
+      "query": {
+        "search": "Departamento",
+        "minPriceInput": "1"
+      },
+      "before": 1,
+      "after": 0,
+      "classification": "REFERENCE_TYPE_UNKNOWN_IN_MIXED_PROJECT",
+      "reason": "Owner residential category has null propertyType. The old aggregate propertyLabels supplied Departamento to a price reference without that type. The explicit new contract requires canonical type terms from the same price witness and prohibits inferring Departamento from a mixed project."
+    },
+    {
+      "project": "edificio-plaza-nova",
+      "query": {
+        "search": "Departamento",
+        "minPriceInput": "1"
+      },
+      "before": 1,
+      "after": 0,
+      "classification": "REFERENCE_TYPE_UNKNOWN_IN_MIXED_PROJECT",
+      "reason": "Owner residential category has null propertyType. The old aggregate propertyLabels supplied Departamento to a price reference without that type. The explicit new contract requires canonical type terms from the same price witness and prohibits inferring Departamento from a mixed project."
+    },
+    {
+      "project": "edif-origen-atacama-3008",
+      "query": {
+        "search": "Departamento",
+        "minPriceInput": "1"
+      },
+      "before": 1,
+      "after": 0,
+      "classification": "REFERENCE_TYPE_UNKNOWN_IN_MIXED_PROJECT",
+      "reason": "Owner residential category has null propertyType. The old aggregate propertyLabels supplied Departamento to a price reference without that type. The explicit new contract requires canonical type terms from the same price witness and prohibits inferring Departamento from a mixed project."
+    }
+  ],
+  "unexpectedLostCases": [],
+  "unexpectedLossCount": 0,
+  "caution": "Do not describe these results as zero losses: four prior textual matches are intentionally excluded by reference scope. No projects or data records are removed.",
+  "outsideScope": "This bounded matrix does not certify every query, unit, field or stock condition.",
+  "originalCode": "Five original165 modules copied byte-for-byte via git show, unedited; manifest stores actual SHA256. Both data files are exact165 bytes and equal current published source inputs."
+}

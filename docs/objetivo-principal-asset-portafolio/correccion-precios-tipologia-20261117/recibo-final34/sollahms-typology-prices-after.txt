@@ -1,0 +1,42 @@
+✔ regression: selecting Origen Local presents its own owner price, not Estudio (3.358209ms)
+✔ regression: Origen Local in UF2600–2800 remains a match (0.8475ms)
+✔ regression: selecting commercial use presents and filters Origen Local (0.376209ms)
+✔ real Origen and Plaza Nova rows preserve exact owner dates, prices and category labels (0.180834ms)
+✔ Plaza Nova Local displays and filters UF6910.23, not the Estudio minimum (0.445791ms)
+✔ explicit bedrooms select that category and the same price witness, including tied Origen values (1.507375ms)
+✔ owner residential category is explicit use, but does not invent apartment property type (0.371208ms)
+✔ published universal project type preserves Vista Bulnes and Ecuador apartment prices (0.448791ms)
+✔ published property text keeps Vista Bulnes Departamento and Origen Local price witnesses (1.059792ms)
+✔ property words cannot be borrowed from another price reference or unknown-use project labels (0.268458ms)
+✔ canonical type text never adds bedroom counts or area values to the searchable quote (0.15125ms)
+✔ universal type context never completes a mixed, unknown-use, contradictory or explicit Local row (0.173959ms)
+✔ Estudio zero-bedroom convention is restricted to the published owner enum (0.277208ms)
+✔ a legacy table without explicit owner authority cannot replace the published project price (0.18475ms)
+✔ owner authority needs an explicit valid source date and no unresolved price status (0.073917ms)
+✔ every declared modern offer route takes precedence, including empty or null-priced offers (0.303875ms)
+✔ real pending Diagonal offers cannot be replaced by populated legacy typology rows (0.074041ms)
+✔ Local-only range cannot borrow residential gym with or without an explicit type (0.349375ms)
+✔ amenities and features retain independent AND/OR groups on a single price witness (0.869333ms)
+✔ residential gym can match a residential owner price, with only supported badges (0.569833ms)
+✔ unknown-use price remains usable alone and cannot acquire residential amenities or use (0.369542ms)
+✔ price-witness search keeps the registered identity/address without borrowing gym text (0.666084ms)
+✔ price and unknown bathrooms, surfaces, private features and inclusions cannot borrow model facets (1.660875ms)
+✔ an unpriced surface profile can still match without displaying an unrelated typology price (0.167416ms)
+✔ unpriced bathroom/model searches retain their documented residential amenity badge (0.086125ms)
+✔ null or nonnumeric row prices stay unknown and cannot borrow the global project minimum (0.263958ms)
+✔ no-selection defaults preserve the published global price and original row/project order (3.825333ms)
+✔ all 131 original default offers preserve the protected baseline value and typology without mutation (3.567333ms)
+✔ price sorting and price label both use the selected Local reference (39.977291ms)
+✔ financial card compatibility is false for a different row, including a tied amount with another label (6.4805ms)
+✔ AJ, Sento, Leon and each Ecasa stage keep their established commercialOffers policy (0.185583ms)
+✔ prepared and documentary source precedence never changes to the published table (0.139667ms)
+✔ no-table public prices and Suecia additional costs remain untouched (0.053583ms)
+✔ filtering and presentation never mutate published tables, facets or policy records (0.871791ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 133.520458

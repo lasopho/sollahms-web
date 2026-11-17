@@ -1,0 +1,722 @@
+{
+  "kind": "Reused exact existing source extracts; no new documentary certification",
+  "selectedProject": "vista-bulnes",
+  "sources": [
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/CLASIFICACION-COMERCIAL-131.json",
+      "sha256": "d5ba5f973e3014996b106ee3ef20a663b25725a841c23a8450ee7aaaec37cddf",
+      "bytes": 1211014,
+      "jsonPointer": "/proyectos/114",
+      "value": {
+        "slug": "vista-bulnes",
+        "nombre": "Vista Bulnes",
+        "inmobiliaria_publicada": "Norte Verde",
+        "campos": {
+          "tipo_propiedad": {
+            "estado": "parcial",
+            "evidencias": [
+              {
+                "fuente": "data/proyectos.json",
+                "campo": "/114/tipoActivo",
+                "estado": "parcial",
+                "capa": "publicado",
+                "alcance": "tipo_activo_solo",
+                "fecha_revision_declarada": "2026-10-25",
+                "elegibilidad": "no_usar_como_tipo_detallado",
+                "contexto": {
+                  "literal": "Residencial"
+                }
+              },
+              {
+                "fuente": "data/catalog-facets.json",
+                "campo": "/projects/vista-bulnes/propertyTypes",
+                "estado": "parcial",
+                "capa": "proyeccion_existente",
+                "alcance": "proyecto_o_modelos_proyectados",
+                "elegibilidad": "proyeccion_existente_no_recertificada",
+                "contexto": {
+                  "valores": [
+                    "departamento"
+                  ]
+                }
+              }
+            ]
+          },
+          "precio": {
+            "estado": "parcial",
+            "evidencias": [
+              {
+                "fuente": "data/proyectos.json",
+                "campo": "/114/precioDesdeUF",
+                "estado": "parcial",
+                "capa": "publicado",
+                "alcance": "resumen_proyecto",
+                "fecha_revision_declarada": "2026-10-25",
+                "elegibilidad": "valor_publicado_solo",
+                "contexto": {
+                  "condicion": "publicado",
+                  "origen_declarado": "https://sollahms.cl/vista-bulnes.html#oferta-comercial",
+                  "estado_fuente_heredado": "verified",
+                  "campo_declarado_verificado": true,
+                  "limite": "No se asocia a área mínima, modelo, stock o unidad."
+                }
+              },
+              {
+                "fuente": "data/proyectos.json",
+                "campo": "/114/preciosPorTipologia/0/precioDesdeUF",
+                "estado": "confirmado",
+                "capa": "owner_categoria",
+                "alcance": "tipologia_no_unidad",
+                "fecha_revision_declarada": "2026-10-25",
+                "elegibilidad": "solo_precio_categoria_declarada",
+                "contexto": {
+                  "categoria_literal": "Estudio",
+                  "proveniencia": "/114/commercialSource"
+                }
+              }
+            ]
+          },
+          "dormitorios": {
+            "estado": "parcial",
+            "evidencias": [
+              {
+                "fuente": "data/proyectos.json",
+                "campo": "/114/tipologias",
+                "estado": "parcial",
+                "capa": "publicado",
+                "alcance": "resumen_proyecto",
+                "fecha_revision_declarada": "2026-10-25",
+                "elegibilidad": "sin_certificacion_nueva",
+                "contexto": {
+                  "condicion": "publicado",
+                  "origen_declarado": "https://sollahms.cl/vista-bulnes.html#oferta-comercial",
+                  "estado_fuente_heredado": "verified",
+                  "campo_declarado_verificado": true,
+                  "limite": "Etiquetas publicadas; no se normalizan dormitorios ni se asignan a un modelo."
+                }
+              },
+              {
+                "fuente": "data/fichas-proyectos.json",
+                "campo": "/114/specs/dormitorios",
+                "estado": "parcial",
+                "capa": "investigacion_heredada",
+                "alcance": "resumen_proyecto",
+                "fecha_revision_declarada": "2026-10-09",
+                "elegibilidad": "resumen_sin_asociar_a_oferta",
+                "contexto": {
+                  "sourceStatus_literal": "verified",
+                  "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+                }
+              },
+              {
+                "fuente": "data/catalog-facets.json",
+                "campo": "/projects/vista-bulnes/variants",
+                "estado": "parcial",
+                "capa": "proyeccion_existente",
+                "alcance": "variante_proyectada",
+                "elegibilidad": "misma_variante_proyectada_sin_nueva_certificacion",
+                "indices": [
+                  0
+                ],
+                "campo_relativo": "bedrooms"
+              }
+            ]
+          },
+          "banos": {
+            "estado": "desconocido",
+            "evidencias": [],
+            "nulos_estructurados_observados": 1,
+            "motivo": "No se encontró dato explícito clasificado en las estructuras consultadas; no es ausencia física ni inexistencia definitiva."
+          },
+          "util": {
+            "estado": "parcial",
+            "evidencias": [
+              {
+                "fuente": "data/fichas-proyectos.json",
+                "campo": "/114/specs/utilM2",
+                "estado": "parcial",
+                "capa": "investigacion_heredada",
+                "alcance": "resumen_proyecto",
+                "fecha_revision_declarada": "2026-10-09",
+                "elegibilidad": "resumen_sin_asociar_a_oferta",
+                "contexto": {
+                  "sourceStatus_literal": "verified",
+                  "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+                }
+              },
+              {
+                "fuente": "data/catalog-facets.json",
+                "campo": "/projects/vista-bulnes/variants",
+                "estado": "parcial",
+                "capa": "proyeccion_existente",
+                "alcance": "variante_proyectada",
+                "elegibilidad": "misma_variante_proyectada_sin_nueva_certificacion",
+                "indices": [
+                  1
+                ],
+                "campo_relativo": "areas/util"
+              }
+            ]
+          },
+          "total": {
+            "estado": "parcial",
+            "evidencias": [
+              {
+                "fuente": "data/fichas-proyectos.json",
+                "campo": "/114/specs/totalM2",
+                "estado": "parcial",
+                "capa": "investigacion_heredada",
+                "alcance": "resumen_proyecto",
+                "fecha_revision_declarada": "2026-10-09",
+                "elegibilidad": "resumen_sin_asociar_a_oferta",
+                "contexto": {
+                  "sourceStatus_literal": "verified",
+                  "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+                }
+              },
+              {
+                "fuente": "data/catalog-facets.json",
+                "campo": "/projects/vista-bulnes/variants",
+                "estado": "parcial",
+                "capa": "proyeccion_existente",
+                "alcance": "variante_proyectada",
+                "elegibilidad": "misma_variante_proyectada_sin_nueva_certificacion",
+                "indices": [
+                  2
+                ],
+                "campo_relativo": "areas/total"
+              }
+            ]
+          },
+          "entrega": {
+            "estado": "parcial",
+            "evidencias": [
+              {
+                "fuente": "data/proyectos.json",
+                "campo": "/114/entrega",
+                "estado": "parcial",
+                "capa": "publicado",
+                "alcance": "resumen_proyecto",
+                "fecha_revision_declarada": "2026-10-25",
+                "elegibilidad": "sin_certificacion_nueva",
+                "contexto": {
+                  "condicion": "publicado",
+                  "origen_declarado": "https://sollahms.cl/vista-bulnes.html#oferta-comercial",
+                  "estado_fuente_heredado": "verified",
+                  "campo_declarado_verificado": false,
+                  "literal": "Inmediata"
+                }
+              }
+            ]
+          },
+          "estado": {
+            "estado": "parcial",
+            "evidencias": [
+              {
+                "fuente": "data/proyectos.json",
+                "campo": "/114/estado",
+                "estado": "parcial",
+                "capa": "publicado",
+                "alcance": "resumen_proyecto",
+                "fecha_revision_declarada": "2026-10-25",
+                "elegibilidad": "sin_certificacion_nueva",
+                "contexto": {
+                  "condicion": "publicado",
+                  "origen_declarado": "https://sollahms.cl/vista-bulnes.html#oferta-comercial",
+                  "estado_fuente_heredado": "verified",
+                  "campo_declarado_verificado": false,
+                  "literal": "En recepción final"
+                }
+              }
+            ]
+          },
+          "amenities": {
+            "estado": "parcial",
+            "evidencias": [
+              {
+                "fuente": "data/proyectos.json",
+                "campo": "/114/amenities",
+                "estado": "parcial",
+                "capa": "publicado",
+                "alcance": "resumen_proyecto",
+                "fecha_revision_declarada": "2026-10-25",
+                "elegibilidad": "sin_certificacion_nueva",
+                "contexto": {
+                  "condicion": "publicado",
+                  "origen_declarado": "https://sollahms.cl/vista-bulnes.html#oferta-comercial",
+                  "estado_fuente_heredado": "verified",
+                  "campo_declarado_verificado": false
+                }
+              },
+              {
+                "fuente": "data/project-features.json",
+                "campo": "/projects/vista-bulnes",
+                "estado": "parcial",
+                "capa": "caracteristicas_existentes",
+                "alcance": "project",
+                "elegibilidad": "elegibilidad_existente_no_recertificada",
+                "contexto": {
+                  "rutas_relativas": [
+                    "groups/0/items/0",
+                    "groups/0/items/3",
+                    "groups/0/items/4",
+                    "groups/0/items/5"
+                  ],
+                  "filterEligible_literal": true,
+                  "proveniencia_por_item_en_campo_source": true
+                }
+              },
+              {
+                "fuente": "data/project-features.json",
+                "campo": "/projects/vista-bulnes",
+                "estado": "parcial",
+                "capa": "caracteristicas_existentes",
+                "alcance": "project",
+                "elegibilidad": "excluido_de_predicado_por_fuente",
+                "contexto": {
+                  "rutas_relativas": [
+                    "groups/0/items/1",
+                    "groups/0/items/2"
+                  ],
+                  "filterEligible_literal": false,
+                  "proveniencia_por_item_en_campo_source": true
+                }
+              }
+            ]
+          }
+        },
+        "contexto_superficie_generica_publicada": {
+          "fuente": "data/proyectos.json",
+          "campo": "/114/superficieDesdeM2",
+          "presente": true,
+          "no_asignar_util_o_total": true
+        },
+        "contextos_y_limites": [
+          {
+            "fuente": "data/fichas-proyectos.json",
+            "campo": "/114/pendingFields",
+            "limite": "Pendientes heredados en texto; pueden anteceder a instrucciones owner. No se convierten automáticamente en bloqueos nuevos."
+          }
+        ],
+        "elegibilidad_global_todos_filtros": "NO_CERTIFICADA",
+        "stock_unidad": "NO_CERTIFICADO",
+        "asociacion_precio_modelo_area": "NO_INFERIDA",
+        "detalle_documental_delegado": false,
+        "preguntas_propietario": [],
+        "capa_para_estado_agregado": "fuentes_existentes_sin_unir"
+      }
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/INVENTARIO-DE-FUENTES.json",
+      "sha256": "685901b43fcc05efb0ddb09d5ee7d26d1a8df103f44e09f510ebe98281d05e59",
+      "bytes": 98421,
+      "jsonPointer": "/inmobiliarias/6",
+      "value": {
+        "inmobiliaria": "Norte Verde",
+        "cantidad_actual": 18,
+        "slugs": [
+          "bordevivo",
+          "carmen-marin",
+          "edif-origen-atacama-3008",
+          "edificio-dual-390-lto",
+          "edificio-ecuador",
+          "edificio-lira-622",
+          "edificio-plaza-nova",
+          "edificio-san-francisco-1204",
+          "edificio-verne",
+          "irarrazaval",
+          "parque-panama",
+          "parque-quinta",
+          "playa-penuelas",
+          "playa-serena",
+          "quintavista",
+          "vergara-domeyko",
+          "vicuna-mackenna-6896",
+          "vista-bulnes"
+        ],
+        "cantidad_matriz_historica": 17,
+        "estados_revision_matriz_historica": {
+          "Pendiente de auditoría": 17
+        },
+        "fuentes_base_131": [
+          "data/proyectos.json",
+          "data/fichas-proyectos.json",
+          "data/project-features.json",
+          "data/catalog-facets.json"
+        ],
+        "fuentes_especificas_ya_existentes": {},
+        "documentos_comerciales_existentes": [],
+        "estado_revision_filtros": "Fuentes y proyecciones existentes; no asumir auditoría comercial global de filtros. Matriz histórica pendiente salvo nueva evidencia específica."
+      }
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/proyectos.json",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "bytes": 328016,
+      "jsonPointer": "/114",
+      "value": {
+        "slug": "vista-bulnes",
+        "nombre": "Vista Bulnes",
+        "inmobiliaria": "Norte Verde",
+        "comuna": "Santiago",
+        "region": "Región Metropolitana",
+        "direccion": "Calle Cóndor 1152",
+        "estado": "En recepción final",
+        "entrega": "Inmediata",
+        "tipologias": [
+          "Estudio"
+        ],
+        "precioDesdeUF": 3148.1,
+        "amenities": [
+          "Terraza con quincho",
+          "Bodega E-commerce",
+          "Objetoteca",
+          "Bicicletero",
+          "Conserjería Virtual",
+          "Acceso controlado por CCTV"
+        ],
+        "mapQuery": "Calle Cóndor 1152, Santiago, Chile",
+        "descripcionLarga": "Vista Bulnes es un proyecto de Norte Verde en Calle Cóndor 1152, Santiago. La oferta de Sollahms comprende estudio.",
+        "superficieDesdeM2": 27.9,
+        "imagenPrincipal": "/assets/propiedades/catalogo/932d91c719ac1aeac67c0c15.webp",
+        "imagenAlt": "Vista oficial del proyecto Vista Bulnes",
+        "detalleUrl": "/vista-bulnes.html",
+        "verificacion": {
+          "fecha": "2026-10-25",
+          "fuente": "https://sollahms.cl/vista-bulnes.html#oferta-comercial",
+          "estadoFuente": "verified",
+          "camposVerificados": [
+            "nombre",
+            "inmobiliaria",
+            "comuna",
+            "region",
+            "precioDesdeUF",
+            "tipologias"
+          ],
+          "criterio": "Identidad contrastada con Norte Verde; valores comerciales cotejados con el listado autorizado del propietario de Sollahms, sin confirmar stock ni recepción final."
+        },
+        "tipoActivo": "Residencial",
+        "tiposActivos": [
+          "Residencial"
+        ],
+        "precioDesdeTipologia": "Estudio",
+        "preciosPorTipologia": [
+          {
+            "tipologia": "Estudio",
+            "precioDesdeUF": 3148.1
+          }
+        ],
+        "commercialSource": {
+          "type": "owner-supplied",
+          "verifiedOn": "2026-10-25",
+          "url": "https://sollahms.cl/vista-bulnes.html#oferta-comercial",
+          "note": "Precios desde por tipología informados por Sollahms. Confirma disponibilidad, precio y condiciones de la unidad al cotizar."
+        },
+        "observacionesComerciales": [],
+        "identitySource": "https://norte-verde.cl/proyecto/vista-bulnes/"
+      }
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/fichas-proyectos.json",
+      "sha256": "980429461bc659829eaee6e0fd777a46b62262d88ff61389b38427e5ae6274e7",
+      "bytes": 2153891,
+      "jsonPointer": "/114",
+      "value": {
+        "slug": "vista-bulnes",
+        "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/",
+        "checkedAt": "2026-10-09",
+        "sourceStatus": "verified",
+        "sourceNotes": "Consulta directa del HTML oficial. Precio de ficha específica con descuento máximo publicado; no acumula promociones y requiere confirmación de stock. Superficie útil: fila Útil depto. (Municipal, o Construido si Municipal está vacío); total: columna Construido de Total, excluyendo confundir terrazas con área útil.",
+        "verifiedFields": [
+          "nombre",
+          "inmobiliaria",
+          "comuna",
+          "region",
+          "direccion",
+          "mapQuery",
+          "precioDesdeUF",
+          "estado",
+          "entrega",
+          "tipologias",
+          "amenities",
+          "superficieDesdeM2",
+          "descripcionLarga"
+        ],
+        "updates": {
+          "nombre": "Vista Bulnes",
+          "inmobiliaria": "Norte Verde",
+          "comuna": "Santiago",
+          "region": "Región Metropolitana",
+          "direccion": "Calle Cóndor 1152",
+          "mapQuery": "Calle Cóndor 1152, Santiago, Chile",
+          "precioDesdeUF": 3148.1,
+          "estado": "En recepción final",
+          "entrega": "Inmediata",
+          "tipologias": [
+            "Estudio"
+          ],
+          "amenities": [
+            "Terraza con quincho",
+            "Bodega E-commerce",
+            "Objetoteca",
+            "Bicicletero",
+            "Conserjería Virtual",
+            "Acceso controlado por CCTV"
+          ],
+          "superficieDesdeM2": 27.9,
+          "descripcionLarga": "Vista Bulnes es un proyecto de Norte Verde en Calle Cóndor 1152, Santiago. La oferta de Sollahms comprende estudio.",
+          "tipoActivo": "Residencial",
+          "preciosPorTipologia": [
+            {
+              "tipologia": "Estudio",
+              "precioDesdeUF": 3148.1
+            }
+          ]
+        },
+        "specs": {
+          "utilM2": "27,9",
+          "totalM2": "27,9",
+          "terrenoM2": null,
+          "dormitorios": "Estudio",
+          "banos": null
+        },
+        "images": [
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/Vista-Bulnes.jpg",
+            "alt": "Vista oficial del proyecto Vista Bulnes",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/",
+            "localPath": "/assets/propiedades/catalogo/932d91c719ac1aeac67c0c15.webp",
+            "width": 1600,
+            "height": 900
+          },
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/BULNES_COMUNES_05.jpg",
+            "alt": "Áreas comunes 1",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/",
+            "localPath": "/assets/propiedades/catalogo/fde97d5351ea7328545d7fd2.webp",
+            "width": 940,
+            "height": 450
+          },
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/BULNES_COMUNES_04-1.jpg",
+            "alt": "Áreas comunes 2",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/",
+            "localPath": "/assets/propiedades/catalogo/7d67389664be2259bacd0613.webp",
+            "width": 940,
+            "height": 450
+          },
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/BULNES_COMUNES_03-1.jpg",
+            "alt": "Áreas comunes 3",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/",
+            "localPath": "/assets/propiedades/catalogo/65a520e887f2456b52a8084f.webp",
+            "width": 940,
+            "height": 450
+          }
+        ],
+        "virtualTours": [
+          {
+            "url": "https://data.sentiovr.com/spaces/19805/space_1600948559/vtour/tour.html?showme=true?showme=true&_ga=2.18944824.1839358211.1767707268-1601151291.1753297916",
+            "title": "Recorrido virtual de Vista Bulnes",
+            "provider": "Otro",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/",
+            "httpStatus": 200,
+            "verification": "URL responde200; interacción y embebido requieren QA navegador",
+            "availabilityCheck": {
+              "httpStatus": 200,
+              "xFrameOptions": "",
+              "frameAncestors": "",
+              "embedStatus": "allowed",
+              "viewerStatus": "http_accessible",
+              "finalUrl": "https://data.sentiovr.com/spaces/19805/space_1600948559/vtour/tour.html?showme=true?showme=true&_ga=2.18944824.1839358211.1767707268-1601151291.1753297916",
+              "checkedAt": "2026-10-09"
+            },
+            "embedStatus": "visual_pending",
+            "visualVerification": {
+              "result": "pending_blank",
+              "checkedAt": "2026-10-09",
+              "method": "local_iframe_cua_screenshot_review",
+              "evidence": "Visor VistaBulnes completamente negro, sin escena ni controles después de60–120s de carga según root.",
+              "limitation": "La comprobación no recorre todos los hotspots del proveedor.",
+              "screenshotSha256": "84b57abc65d06412bfae7e8df4714b75f0fd78e1834b9a91c42372e4184c29a5",
+              "screenshot": "docs/qa/recorridos/089.jpg"
+            },
+            "verificationStatus": "visualization_pending"
+          },
+          {
+            "url": "https://norte-verde.cl/360/edificio_vista_bulnes/contexto/",
+            "title": "Entorno y exteriores de Edificio Vista Bulnes",
+            "provider": "Otro",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/",
+            "httpStatus": 200,
+            "verification": "URL responde200; interacción y embebido requieren QA navegador",
+            "availabilityCheck": {
+              "httpStatus": 200,
+              "xFrameOptions": "",
+              "frameAncestors": "",
+              "embedStatus": "allowed",
+              "viewerStatus": "http_accessible",
+              "finalUrl": "https://norte-verde.cl/360/edificio_vista_bulnes/contexto/",
+              "checkedAt": "2026-10-09"
+            },
+            "embedStatus": "allowed",
+            "visualVerification": {
+              "result": "valid_interface",
+              "checkedAt": "2026-10-09",
+              "method": "local_iframe_cua_screenshot_review",
+              "evidence": "Portada360Entrar de entorno VistaBulnes con vista aérea y controles/instrucción para arrastrar.",
+              "limitation": "La portada y los controles están cargados; no se han recorrido todas las habitaciones.",
+              "screenshotSha256": "ca3a4047c8a38c8a026686486d3c9dc4dbeb6b8063bcddebd6ae70772bae084f",
+              "screenshot": "docs/qa/recorridos/090.jpg"
+            }
+          }
+        ],
+        "pendingFields": [
+          "Baños del modelo estudio: no se publica número explícito",
+          "Disponibilidad del visor Recorrido virtual de Vista Bulnes: no mostró escena tras reintento; conservar enlace oficial y confirmar con el proveedor"
+        ],
+        "sourceEvidence": {
+          "location": ".proyecto-hero-content; .caracteristica-row; .planta-tabla; .proyecto-areas-section",
+          "excerpt": "Vista Bulnes · Calle Cóndor 1152 · Entrega Inmediata · Desde UF 2.487"
+        },
+        "reviewedOriginal": {
+          "comuna": "Santiago",
+          "precioDesdeUF": 2487,
+          "direccion": "Calle Cóndor 1152",
+          "inmobiliaria": "Norte Verde",
+          "amenities": [
+            "Quincho",
+            "Bicicleteros"
+          ],
+          "nombre": "Vista Bulnes",
+          "superficieDesdeM2": 27.9,
+          "region": "Región Metropolitana",
+          "tipologias": [
+            "Estudio"
+          ],
+          "entrega": "Inmediata",
+          "mapQuery": "Calle Cóndor 1152, Santiago, Región Metropolitana, Chile",
+          "estado": "Entrega inmediata",
+          "descripcionLarga": "Proyecto de Norte Verde ubicado en Calle Cóndor 1152, Santiago, en el entorno del Paseo Bulnes y el centro cívico. Ofrece departamentos tipo estudio con entrega inmediata, diseño contemporáneo y áreas comunes funcionales como terraza con quincho y bicicleteros."
+        },
+        "originalImages": [
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/Vista-Bulnes.jpg",
+            "alt": "Vista oficial del proyecto Vista Bulnes",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+          },
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/BULNES_COMUNES_05.jpg",
+            "alt": "Áreas comunes 1",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+          },
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/BULNES_COMUNES_04-1.jpg",
+            "alt": "Áreas comunes 2",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+          },
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/BULNES_COMUNES_03-1.jpg",
+            "alt": "Áreas comunes 3",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+          },
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/BULNES_COMUNES_02-1.jpg",
+            "alt": "Áreas comunes 4",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+          },
+          {
+            "url": "https://norte-verde.cl/wp-content/uploads/2026/01/BULNES_COMUNES_01-1.jpg",
+            "alt": "Áreas comunes 5",
+            "sourceUrl": "https://norte-verde.cl/proyecto/vista-bulnes/"
+          }
+        ],
+        "commercialSource": {
+          "type": "owner-supplied",
+          "verifiedOn": "2026-10-25",
+          "url": "https://sollahms.cl/vista-bulnes.html#oferta-comercial",
+          "note": "Precios desde por tipología informados por Sollahms. Confirma disponibilidad, precio y condiciones de la unidad al cotizar."
+        },
+        "commercialNotes": []
+      }
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/catalog-facets.json",
+      "sha256": "bdfb1d2036ec379ea03d1ce524d83e1843da3f89719222cfc6fb5f4883381681",
+      "bytes": 213370,
+      "jsonPointer": "/projects/vista-bulnes",
+      "value": {
+        "propertyTypes": [
+          "departamento"
+        ],
+        "propertyLabels": [
+          "Departamento"
+        ],
+        "assetTypes": [
+          "Residencial"
+        ],
+        "variants": [
+          {
+            "propertyType": "departamento",
+            "bedrooms": 0,
+            "areas": {},
+            "typology": "estudio"
+          },
+          {
+            "propertyType": "departamento",
+            "areas": {
+              "util": 27.9
+            }
+          },
+          {
+            "propertyType": "departamento",
+            "areas": {
+              "total": 27.9
+            }
+          }
+        ],
+        "delivery": {
+          "label": "Inmediata",
+          "immediate": true,
+          "precision": "immediate"
+        },
+        "features": [
+          {
+            "id": "quinchos",
+            "label": "Quinchos",
+            "scope": "project"
+          },
+          {
+            "id": "bicicleteros",
+            "label": "Bicicleteros",
+            "scope": "project"
+          },
+          {
+            "id": "seguridad",
+            "label": "Seguridad o control de acceso",
+            "scope": "project"
+          }
+        ],
+        "states": [],
+        "typologyLabels": [],
+        "purchaseStage": {
+          "mode": null,
+          "eligible": false,
+          "reason": "Recepción final pendiente: no equivale a entrega inmediata",
+          "referenceStage": null
+        }
+      }
+    }
+  ],
+  "existingSourceRegistry": {
+    "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/MANIFIESTO-DE-FUENTES.json",
+    "sha256": "cbf8b53b62dfffb868bb4d5f86e9e2124c68d4cf45dd65a37a2d7b5df470566a",
+    "sourceFileCount": 21,
+    "reusedNoNewGeneralAudit": true
+  },
+  "excludedPreviousIrisLayer": {
+    "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/CAPA-DOCUMENTAL-IRIS.json",
+    "sha256": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+    "selectedSlugAlreadyPresent": false
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-17",
+  "authorization": "Respuesta expresa del propietario: Autorizar push y PR Draft",
+  "repository": "lasopho/sollahms-web",
+  "branch": "codex/referencias-documentales-131-20261117",
+  "localAndRemoteSHA": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
+  "baseBranch": "codex/footer-sin-frase-20261116",
+  "baseSHA": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+  "pullRequest": {
+    "number": 33,
+    "url": "https://github.com/lasopho/sollahms-web/pull/33",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "mergeable": true,
+    "changedFiles": 16,
+    "commits": 3
+  },
+  "files": [
+    "assets/js/catalog-filter-controls.mjs",
+    "assets/js/catalog-filter-engine.mjs",
+    "assets/js/catalog-map.mjs",
+    "assets/js/catalog-model.mjs",
+    "assets/js/catalog-typology-prices.mjs",
+    "assets/js/catalog.mjs",
+    "assets/js/commercial-filter-engine.mjs",
+    "assets/js/documentary-local-review.mjs",
+    "assets/js/documentary-reference-data.mjs",
+    "tests/catalog-typology-prices.test.mjs",
+    "tests/documentary-local-review.test.mjs",
+    "tests/documentary-presentation.test.mjs",
+    "tests/documentary-reference-data.test.mjs",
+    "tests/fixtures/iris-documentary-15.json",
+    "tests/fixtures/plaza-213-reference.json",
+    "vercel.json"
+  ],
+  "GitHubEvidence": {
+    "reviews": 0,
+    "pullRequestWorkflowRuns": 0,
+    "scope": "Consultas del conector; no afirma totalidad de checks de otros proveedores ni aprobación implícita."
+  },
+  "deploymentProtection": {
+    "sourceDeploymentEnabled": false,
+    "targetDeploymentEnabled": false
+  },
+  "production": {
+    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "canonical": "https://sollahms.cl",
+    "state": "READY",
+    "changedByPR33": false,
+    "newDeploymentsForThisPushAndPR": 0
+  },
+  "mainSHA": "86e200ec191b38af355061e21bc0fc1e549cce3b",
+  "operations": {
+    "firstPush": true,
+    "forcePush": false,
+    "historyRewritten": false,
+    "PRDraftCreated": true,
+    "Ready": false,
+    "merge": false,
+    "deployment": false,
+    "publication": false
+  },
+  "restrictions": [
+    "La fuente sólo funciona en loopback con opt-in, sin uso público nuevo.",
+    "No Ready/merge/deployment/publicación sin permisos futuros independientes.",
+    "No alterar main,dominios,SSO,variables,fichas,precios oserviciosprotegidos.",
+    "La clasificación131 y los16testigos no equivalen a objetivo global terminado."
+  ],
+  "verifiedAtUTC": "2026-11-17T22:48:16.618567+00:00",
+  "corrections": {
+    "publishedTypologyPrices": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
+    "receipt": "correccion-precios-tipologia-20261117/recibo-final34/sollahms-typology-prices-receipt.json",
+    "scope": "Existing confirmed dated owner tables; no source-data changes or publication.",
+    "localDevelopmentContinues": "Euro price+D integration is separate and not yet committed or pushed."
+  },
+  "documentationArchiveValidation": {
+    "hashManifestVerified": true,
+    "whitespaceCheck": "Only7byte-preserved original log/AX/baseline files have17existing whitespace findings; no normalization to avoid changing source hashes. Human-edited documentation has no whitespace findings.",
+    "preservedOriginalPaths": [
+      "docs/objetivo-principal-asset-portafolio/correccion-precios-tipologia-20261117/antecedentes/delta-inicial-3-fallos.txt",
+      "docs/objetivo-principal-asset-portafolio/correccion-precios-tipologia-20261117/antecedentes/regression-before-authority-fix-69-of-70.log",
+      "docs/objetivo-principal-asset-portafolio/correccion-precios-tipologia-20261117/antecedentes/sollahms-typology-property-text-before.txt",
+      "docs/objetivo-principal-asset-portafolio/correccion-precios-tipologia-20261117/antecedentes/sollahms-typology-universal-before.txt",
+      "docs/objetivo-principal-asset-portafolio/correccion-precios-tipologia-20261117/diferencial48/baseline/assets/js/catalog-filter-engine.mjs",
+      "docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/iris-project-1372.ax.txt",
+      "docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/iris-unit45-open.ax.txt"
+    ]
+  }
+}

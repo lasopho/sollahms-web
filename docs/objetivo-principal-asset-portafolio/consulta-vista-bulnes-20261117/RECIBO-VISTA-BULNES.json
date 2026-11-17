@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "Bounded commercial recovery attempt; exact project not returned",
+  "project": {
+    "slug": "vista-bulnes",
+    "name": "Vista Bulnes",
+    "developerExistingSource": "Norte Verde",
+    "addressExistingSource": "Calle Cóndor 1152, Santiago",
+    "officialUrlExistingSource": "https://norte-verde.cl/proyecto/vista-bulnes/",
+    "identityLiveIrisConfirmed": false
+  },
+  "selection": {
+    "essentialTarget": "bathrooms",
+    "reason": "CLASIFICACION-COMERCIAL-131 /proyectos/114/campos/banos = desconocido; fichas /114/specs/banos = null; existing pendingFields says Baños del modelo estudio: no se publica número explícito.",
+    "previousIris15OrSento": false,
+    "novoCatedral": false
+  },
+  "method": {
+    "interface": "Official Chrome plugin; own search tab; visible Iris catalogue search, Enter, waited for final result",
+    "initialQuery": "Vista Bulnes",
+    "controlledRetry": "Bulnes",
+    "controlledRetries": 1,
+    "projectTabsOpened": 0,
+    "unitsOpened": 0,
+    "loginOrCaptchaEncountered": false,
+    "sessionAuthenticationAsserted": false,
+    "stockCertified": false
+  },
+  "queries": [
+    {
+      "query": "Vista Bulnes",
+      "observedAt": "2026-11-17T20:59:34.025Z",
+      "url": "https://iris.yapo.cl/proyectos?country=7&state=1%2C2%2C3&order=promos%2Cpopularity&search=Vista+Bulnes",
+      "resultLiteral": "Estas viendo 0 de 0 oportunidades",
+      "messageLiteral": "No encontramos ningún resultado para esa busqueda. Intenta de nuevo cambiando algunos filtros :)",
+      "evidenceDOM": "01-search-vista-bulnes.json",
+      "evidenceScreenshot": "01-search-vista-bulnes.jpg",
+      "exactProjectLinkObserved": null
+    },
+    {
+      "query": "Bulnes",
+      "observedAt": "2026-11-17T20:59:41.642Z",
+      "url": "https://iris.yapo.cl/proyectos?country=7&state=1%2C2%2C3&order=promos%2Cpopularity&search=Bulnes",
+      "resultLiteral": "Estas viendo 0 de 0 oportunidades",
+      "messageLiteral": "No encontramos ningún resultado para esa busqueda. Intenta de nuevo cambiando algunos filtros :)",
+      "evidenceDOM": "02-search-bulnes.json",
+      "evidenceScreenshot": "02-search-bulnes.jpg",
+      "exactProjectLinkObserved": null
+    }
+  ],
+  "recoveredReference": null,
+  "fields": {
+    "unit": null,
+    "model": null,
+    "bedrooms": null,
+    "bathrooms": null,
+    "usefulM2": null,
+    "totalM2": null,
+    "interiorM2": null,
+    "externalIrisPriceUF": null,
+    "stock": null,
+    "availability": null
+  },
+  "unknownPolicy": [
+    "No exact project result was returned in these two searches with the observed catalogue filters. This does not establish project retirement, stock absence or physical lack of bathrooms.",
+    "Existing word Estudio is preserved without converting to 0 bedrooms.",
+    "No Internos-to-useful equivalence and no total-by-sum calculation.",
+    "No external Iris price was recovered or adopted as a Sollahms price."
+  ],
+  "outcome": "No new eligible reference; target bathrooms remains unknown; stop after the controlled retry rather than guess project IDs or switch projects.",
+  "minimumMissingEvidence": "An exact Vista Bulnes project/unit reference that explicitly states bathroom count, matching Norte Verde and Calle Cóndor 1152. No owner question was sent.",
+  "unchanged": [
+    "application",
+    "current data",
+    "pins",
+    "tests",
+    "commits",
+    "PR33 draft 2e",
+    "production 9e",
+    "public prices"
+  ],
+  "sourceContext": "FUENTES-REUTILIZADAS.json"
+}
