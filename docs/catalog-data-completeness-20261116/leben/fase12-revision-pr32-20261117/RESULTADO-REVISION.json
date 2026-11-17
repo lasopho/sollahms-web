@@ -1,0 +1,202 @@
+{
+  "verdict": "Requiere cambios",
+  "reviewedAtUTC": "2026-11-17T16:23:54Z",
+  "repository": "lasopho/sollahms-web",
+  "pullRequest": 32,
+  "head": "e090d33d71cd98a6919e589f7ec66168216c94ba",
+  "base": "daf16e7dd560301029357ce79a7af0b0e9a7e67b",
+  "platform": {
+    "checkedAtUTC": "2026-11-17T16:23:54Z",
+    "pr": {
+      "url": "https://github.com/lasopho/sollahms-web/pull/32",
+      "number": 32,
+      "draft": true,
+      "state": "open",
+      "merged": false,
+      "head_sha": "e090d33d71cd98a6919e589f7ec66168216c94ba",
+      "base_sha": "daf16e7dd560301029357ce79a7af0b0e9a7e67b",
+      "head": "codex/filtros-comerciales-fase10-20261117",
+      "base": "codex/footer-sin-frase-20261116",
+      "changed_files": 16
+    },
+    "production": {
+      "id": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+      "sha": "b761ddeaea2fa526870e6af25658046e31b571d7",
+      "state": "READY",
+      "target": "production"
+    },
+    "deploymentIds": [
+      "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+      "dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF",
+      "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "dpl_33R4uenGQAt2cSVUGEJC7VsoF9yS",
+      "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w",
+      "dpl_CUtKHF72knPKEdNTAdAXxaxNz8dh",
+      "dpl_ByUhr1dgqeJhw9Yj1zY4WbBFRcY5",
+      "dpl_GsQkzdBBESnC3nHJCdjR44HP75fL",
+      "dpl_5qdzW9mh6QQKoe7ebWTswnBDnMCi",
+      "dpl_4CDsorKWtUNX3rHWggGSqMdcvkbD",
+      "dpl_3TUeGDo3eCjRVcG57KVRqnQuNR5v",
+      "dpl_44R89Ataifx1UuoVVBv1gG9ruyM3",
+      "dpl_72Jr5vGs4JBqzK1LJAagqkUUANw9",
+      "dpl_Fyu39RK4drsHA7tqs8brGRHqTtxF",
+      "dpl_6TX1hPUJTsVqvGJzHugB9oPepQ22",
+      "dpl_DjJQNHKsbHyG2dnSYtEmbvNcuACx",
+      "dpl_9zzSj2BRu8pSyW8Wc9aPtYawcRtN",
+      "dpl_21xM1afWsRHgbu3Kv2zdikWH3tkJ",
+      "dpl_2S4kRYezijcgik4etSnnR3sAY1z6",
+      "dpl_3otu6np58efcMyX4pSvBmLtjpw3a"
+    ],
+    "newDeploymentsComparedWithF11": 0,
+    "headVerified": "e090d33d71cd98a6919e589f7ec66168216c94ba",
+    "baseVerified": "daf16e7dd560301029357ce79a7af0b0e9a7e67b",
+    "technicalTreeClean": true,
+    "prFileHashesUnchanged": 16,
+    "protectedHashesUnchanged": 155,
+    "automaticDeploymentEnabled": false,
+    "certifiedNodeTestsRerun": false,
+    "certifiedChromeTestsRerun": false,
+    "applicationEdits": false,
+    "prCommentsPosted": false,
+    "prStateChanged": false
+  },
+  "findings": [
+    {
+      "id": "F12-01",
+      "priority": "P2",
+      "title": "Un local implícito hereda amenities residenciales",
+      "file": "assets/js/commercial-filter-engine.mjs",
+      "line": 142,
+      "relatedLines": [
+        143,
+        145,
+        149,
+        153
+      ],
+      "trigger": {
+        "project": "edificio-indi",
+        "evidenceMode": "prepared",
+        "minPriceInput": "8560",
+        "maxPriceInput": "8560",
+        "amenities": [
+          "gimnasio"
+        ]
+      },
+      "actual": "Coincide únicamente OWN4-P011: tipo local, UF8560. Al añadir propertyType=local se excluye.",
+      "expected": "La referencia local no satisface gimnasio sin respaldo de alcance comercial, aunque el tipo no se seleccione.",
+      "impact": "Falso positivo comercial en un proyecto mixto; la consulta deja de exigir un testigo compatible para todos sus predicados.",
+      "proposedCorrection": "Evaluar elegibilidad y alcance del amenity sobre cada referencia candidata, sin deducir uso residencial desde la ausencia de filtro de tipo. Mantener AND/OR y desconocidos.",
+      "evidence": "evidencias/engine-results.jsonl"
+    },
+    {
+      "id": "F12-02",
+      "priority": "P2",
+      "title": "La búsqueda preparada omite etiquetas públicas en español",
+      "file": "assets/js/commercial-filter-engine.mjs",
+      "line": 151,
+      "relatedLines": [
+        150,
+        152
+      ],
+      "trigger": {
+        "project": "edificio-living-town",
+        "evidenceMode": "prepared",
+        "search": "piscina"
+      },
+      "actual": "Cero resultados; search=pool y amenity=piscina devuelven Living Town, cuyo pool=true está documentado.",
+      "expected": "La etiqueta visible Piscina debe localizar la característica acreditada y respetar su alcance.",
+      "impact": "Falso negativo en la búsqueda anunciada por característica; cambia su semántica al cambiar de fuente.",
+      "proposedCorrection": "Añadir etiquetas públicas de la taxonomía para hechos confirmados y con alcance válido al índice de texto preparado.",
+      "evidence": "evidencias/engine-results.jsonl"
+    },
+    {
+      "id": "F12-03",
+      "priority": "P2",
+      "title": "El resumen financiero de publicados persiste en preparado",
+      "file": "assets/js/catalog.mjs",
+      "line": 85,
+      "relatedLines": [
+        86,
+        87,
+        88
+      ],
+      "trigger": "Evaluar capacidad con datos sintéticos en publicados y después seleccionar referencias Leben preparadas.",
+      "actual": "Sigue visible Evaluación de 131 proyectos y Orden por compatibilidad; en preparado quedan 130, no se ordena por compatibilidad y no hay escenarios financieros. Se reproduce en las cuatro vistas.",
+      "expected": "Ningún resumen de una evaluación publicada debe aparentar aplicarse a las referencias preparadas.",
+      "impact": "Contexto financiero desactualizado y contradictorio con los resultados y la ordenación.",
+      "proposedCorrection": "Ocultar o invalidar también el resumen/estado de capacidad al cambiar a preparado y restaurar el estado correcto al volver a publicados, sin modificar fórmulas ni módulos financieros.",
+      "evidence": "evidencias/capacity-summary.json"
+    },
+    {
+      "id": "F12-04",
+      "priority": "P2",
+      "title": "La fuente solicitada cambia sin aviso visible cuando falla su carga",
+      "file": "assets/js/catalog.mjs",
+      "line": 109,
+      "relatedLocations": [
+        {
+          "file": "assets/js/catalog-filter-controls.mjs",
+          "line": 86
+        },
+        {
+          "file": "assets/js/catalog-filter-controls.mjs",
+          "line": 89
+        },
+        {
+          "file": "proyectos.html",
+          "line": 160
+        }
+      ],
+      "trigger": "Abrir ?q=Living+Town&evidencia=prepared y fallar únicamente el GET del JSON preparado.",
+      "actual": "Se fuerza published, se borra evidencia de la URL y se muestra Desde UF2812. El aviso existe dentro de catalog-more cerrado y no es visible.",
+      "expected": "La pérdida de la fuente solicitada debe comunicarse visiblemente antes de presentar resultados de otra capa.",
+      "impact": "El usuario recibe datos y precio de otra fuente sin advertencia accesible; se pierde trazabilidad de su consulta.",
+      "proposedCorrection": "Mantener visible el aviso fuera del panel colapsable, o abrirlo/mostrar el estado de error al degradar la fuente; no ocultar la sustitución al reescribir el estado.",
+      "evidence": "evidencias/source-fallback.json"
+    }
+  ],
+  "reviewCoverage": {
+    "independentReviewTracks": [
+      "motores y pruebas",
+      "adaptación/evidencia y pruebas",
+      "vistas/presentación/controles y pruebas"
+    ],
+    "sourceFilesReviewed": 16,
+    "certifiedValidationPreserved": {
+      "node": 84,
+      "chrome": 16,
+      "widths": 5,
+      "views": 4
+    },
+    "newTargetedDefectCases": 4,
+    "F10SuitesRerun": false,
+    "OwnObservation": "Publicado lo muestra expresamente Vendido, precio null y etapa ineligible; preparado lo excluye. Se conserva como registro histórico, sin hallazgo por este punto.",
+    "documentaryReferences": 454,
+    "quotesIncludedIn454": 20,
+    "additionalSueciaCostsSeparate": [
+      510,
+      75
+    ],
+    "historicalPendingFields": 313,
+    "newClosures": 0,
+    "releaseBuildOrDeploymentTested": false,
+    "documentaryReferencesWithUnknownPropertyType": 277
+  },
+  "restrictions": {
+    "applicationSourceChanged": false,
+    "existingTestsChanged": false,
+    "PRStateChanged": false,
+    "PRCommentsOrReviewsPosted": false,
+    "merge": false,
+    "deployments": false,
+    "productionOrMainChanged": false,
+    "CRM_AI_Resend_Forms_ServerlessChanged": false
+  },
+  "continuity": {
+    "path": "NEXT-PROMPT.md",
+    "preimageCommit": "9d7585964f8766b4321ac950a0248d6d675ed6c4",
+    "preimageSHA256": "cff8e87a245d1c1cb08e06f304963342e4d8782fe74e5a786b9c18a6159050b8",
+    "newSHA256": "510d7bd10d82191076b77b6ec51720b99710b70746ad885de38940f69a752108",
+    "nextStage": "Corrección propuesta de cuatro defectos; no ejecutada durante F12."
+  }
+}

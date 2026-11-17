@@ -1,0 +1,18 @@
+import { readFileSync } from 'node:fs';
+import { buildCommercialProjects } from '/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/commercial-filter-data.mjs';
+import { advancedFilterAndSort, defaults } from '/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/catalog-filter-engine.mjs';
+import { matchProjectFilters } from '/private/tmp/sollahms-filtros-comerciales-fase10-20261117/assets/js/commercial-filter-engine.mjs';
+const root='/private/tmp/sollahms-filtros-comerciales-fase10-20261117/';
+const read=path=>JSON.parse(readFileSync(root+path,'utf8'));
+const slugs=['edificio-living-town','edificio-indi'];
+const facets=read('data/catalog-facets.json');
+const published=read('data/proyectos.json').filter(p=>slugs.includes(p.slug)).map(p=>({...p,_facets:facets.projects[p.slug]}));
+const raw=read('data/commercial-filter-evidence-leben.json');
+const evidence={...raw,projects:raw.projects.filter(p=>slugs.includes(p.slug))};
+const projects=buildCommercialProjects(published,evidence);
+const living=projects.find(p=>p.slug==='edificio-living-town');
+const indi=projects.find(p=>p.slug==='edificio-indi');
+const view=rows=>rows.map(p=>({slug:p.slug,witnessCount:p._commercialMatch?.references.length,witnesses:p._commercialMatch?.references.slice(0,3).map(r=>({id:r.id,type:r.attributes.propertyType,price:r.attributes.priceUF}))}));
+console.log(JSON.stringify({case:'Spanish amenity search',poolFact:living._commercial.projectFacts.amenities.pool,prepared:view(advancedFilterAndSort([living],{...defaults(),evidenceMode:'prepared',search:'piscina'})),preparedTechnicalKey:view(advancedFilterAndSort([living],{...defaults(),evidenceMode:'prepared',search:'pool'})),preparedAmenityCheckbox:view(advancedFilterAndSort([living],{...defaults(),evidenceMode:'prepared',amenities:['piscina']}))}));
+const priceAndAmenity={...defaults(),evidenceMode:'prepared',minPriceInput:'8560',maxPriceInput:'8560',amenities:['gimnasio']};
+console.log(JSON.stringify({case:'Implicit local witness with residential amenity',input:priceAndAmenity,implicit:view(advancedFilterAndSort([indi],priceAndAmenity)),explicitLocal:view(advancedFilterAndSort([indi],{...priceAndAmenity,propertyType:'local'})),directImplicit:matchProjectFilters(indi._commercial,{minPrice:8560,maxPrice:8560,amenities:['gym']}).matchedReferenceIds,directExplicit:matchProjectFilters(indi._commercial,{propertyType:'local',minPrice:8560,maxPrice:8560,amenities:['gym']}).matchedReferenceIds}));
