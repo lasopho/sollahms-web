@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-17",
+  "status": "LOCAL_SIN_CONSUMIDOR_PUBLICO",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "branch": "codex/referencias-documentales-131-20261117",
+  "baseCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+  "localCommit": "5ba3aa28e2a59d687fa971f500e320b9079a6962",
+  "remoteBranch": false,
+  "push": false,
+  "PR": null,
+  "deployment": null,
+  "adapterReceipt": "RECIBO-ADAPTADOR.json",
+  "receiptScope": "Recibo de la revisión anterior al commit local; operations.commit=false describe ese snapshot.",
+  "newTests": {
+    "passed": 45,
+    "failed": 0,
+    "historicalSuitesRepeated": false
+  },
+  "restrictions": [
+    "Sólo revisión local explícita con pin SHA256.",
+    "15 referencias/14 proyectos, no oferta ni stock, precio comercial nulo.",
+    "Internos y total de lote conservan métricas propias; no se convierten en útil/total residencial.",
+    "Sin integración UI ni modificación del paquete público9e.",
+    "No hay autorización de primer push/PR/deployment/publicación para esta rama."
+  ],
+  "files": [
+    {
+      "path": "assets/js/documentary-reference-data.mjs",
+      "sha256": "39b115f64a02ea1106bd3f320cb8ac87670658267324b30cd093d93deca2ad3a",
+      "bytes": 14684
+    },
+    {
+      "path": "tests/documentary-reference-data.test.mjs",
+      "sha256": "34d25ca79334de899108d433cfab8841ec8bb826f7c098d1205e5c03d8fd593c",
+      "bytes": 15341
+    },
+    {
+      "path": "tests/fixtures/iris-documentary-15.json",
+      "sha256": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+      "bytes": 72292
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "85f5895366584a961bd397b9778f7567461758286cb7c32e9e2eaa9447f15029",
+      "bytes": 3768
+    }
+  ]
+}

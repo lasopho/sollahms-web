@@ -1,6 +1,6 @@
 {
   "date": "2026-11-17",
-  "status": "DEPLOYMENT_READY_VERIFICADO_PENDIENTE_PROMOCION",
+  "status": "PUBLICADO_VERIFICADO",
   "sourceCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
   "artifact": {
     "prepared": true,
@@ -40,7 +40,8 @@
     "buildsExecuted": 0,
     "deploymentsCreated": 0,
     "promotions": 0,
-    "baselineBytesModified": false
+    "baselineBytesModified": false,
+    "scope": "Preparación local previa al deployment; sus contadores cero son históricos."
   },
   "projectBindingVerifiedByOfficialCLI": true,
   "resourceClosure": {
@@ -50,26 +51,19 @@
     "missing": []
   },
   "production": {
-    "sha": "b761ddeaea2fa526870e6af25658046e31b571d7",
-    "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
-    "unchanged": true
+    "id": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "target": "production",
+    "readyState": "READY",
+    "canonical": "https://sollahms.cl",
+    "unchanged": false,
+    "authorizedChange": true
   },
   "authorized": {
     "ReadyPR32": true,
     "mergePR32": true,
     "deploymentCreation": true,
-    "promotionPublication": false
-  },
-  "nextOperationPrepared": {
-    "tool": "mcp__codex_apps__vercel_request_promote",
-    "arguments": {
-      "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
-      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
-      "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN"
-    },
-    "meaning": "Promover el deployment existente a los dominios productivos actuales, sin rebuild ni deployment adicional. Ejecutar sólo tras autorización independiente de publicación/promoción.",
-    "before": "Recomprobar READY, fuente9e, alias productivo aúnb761, refs y permiso.",
-    "after": "Comprobar aliases, mismo ID publicado, contenido/funciones preservados y origen de datos; no enviar formularios."
+    "promotionPublication": true
   },
   "transportHistory": {
     "firstRecoveryStoppedAt": "index.html HTTP308 hacia raíz",
@@ -87,15 +81,20 @@
     "Las15referencias externas nuevas siguen documentales. No se adoptan sus precios como Sollahms ni se cierra el objetivo131 con este paquete."
   ],
   "deploymentAuthorization": "Respuesta expresa del propietario: Autorizar deployment sin dominios",
-  "authorizationScope": "Un único deployment CLI --prebuilt --environment production --skip-domain; no promoción ni publicación. Se añadió --non-interactive para impedir autenticación o vinculación implícita.",
+  "authorizationScope": "Un deployment sin dominios y, después, una promoción/publicación del mismo ID, autorizados por separado y ya ejecutados. No autoriza operaciones futuras.",
   "deployment": {
     "id": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
     "url": "https://project-wrapp-a4yrgw4ss-lsandoval2-8260s-projects.vercel.app",
     "inspectorURL": "https://vercel.com/lsandoval2-8260s-projects/project-wrapp/Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
     "readyState": "READY",
     "target": "production",
-    "productionURL": null,
-    "aliases": [],
+    "productionURL": "https://sollahms.cl",
+    "aliases": [
+      "www.sollahms.cl",
+      "sollahms.cl",
+      "sollhams.cl",
+      "project-wrapp.vercel.app"
+    ],
     "sourceCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
     "newDeploymentsCreated": 1,
     "deploymentProtection": "vercel_authentication",
@@ -140,5 +139,47 @@
       "name": "project-wrapp.vercel.app",
       "redirect": null
     }
-  ]
+  ],
+  "priorProduction": {
+    "sha": "b761ddeaea2fa526870e6af25658046e31b571d7",
+    "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+    "unchanged": true,
+    "scope": "Producción anterior, preservada como baseline histórico recuperable."
+  },
+  "executedPromotion": {
+    "tool": "mcp__codex_apps__vercel_request_promote",
+    "arguments": {
+      "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN"
+    },
+    "meaning": "Promoción autorizada del deployment existente a los cuatro alias existentes.",
+    "before": "READY, commit y dominio anterior comprobados antes de ejecutar.",
+    "after": "Cuatro alias completados; mismo ID y SHA, quince archivos públicos coincidentes, 131 proyectos sin errores de consola.",
+    "status": "EJECUTADA_Y_VERIFICADA",
+    "authorization": "Respuesta expresa del propietario: Autorizar promoción y publicación",
+    "receipt": "publicacion-pr32/PUBLICACION-CONFIRMADA.json",
+    "sameDeployment": true,
+    "additionalDeploymentCreated": false,
+    "rebuild": false
+  },
+  "publicationVerification": {
+    "receipt": "publicacion-pr32/PUBLICACION-CONFIRMADA.json",
+    "publicContent": "publicacion-pr32/VERIFICACION-PUBLICA.json",
+    "browser": "publicacion-pr32/INICIALIZACION-PUBLICA.json",
+    "filesMatched": 15,
+    "projectsRendered": 131,
+    "consoleErrors": 0,
+    "completedAliases": 4,
+    "domainsUnchanged": true,
+    "DNSChanged": false,
+    "mainChanged": false,
+    "SSOOrVariablesChanged": false,
+    "formsSubmitted": 0,
+    "additionalDeploymentCreatedForPromotion": false,
+    "scope": "Entrega e inicialización pública nuevas; sin repetir certificaciones históricas. El objetivo de datos131 sigue abierto."
+  },
+  "promotionAuthorizationUsed": 1,
+  "remainingPromotionAuthorizations": 0,
+  "nextAuthorizedWork": "Investigación e integración local de evidencia comercial; toda nueva publicación requiere otra autorización."
 }

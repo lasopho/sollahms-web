@@ -90,3 +90,7 @@ Plaza Cervantes /1358: descripción general TorreB frente a unidad909A descrita 
 Euro9: conservar las diferencias de entrega Nova(1S2028 frente a2S2028) y Mirador(1S2029 frente a1S2028), además de diferencias en rangos de dormitorios en el registro detallado. Son alcances de fuentes con fechas distintas; no sobreescribir datos owner. Vicuña Mackenna1432 aparece escrito Mackena en Iris; se halló mediante búsqueda visible1432 tras el intento nominal. La identidad se comprobó por proyecto, Euro y dirección. No extrapolar ese alias a otro proyecto.
 
 No se enviaron chats, reservas, cotizaciones o contactos. Si el panel AsistenteIRIS tapa el modal, cerrar sólo ese panel por su control visible para capturar; no preguntar al chatbot ni enviar formularios.
+
+## Plaza213 —17/11/2026
+
+El plano C7/213 respalda útil69,85/terraza13,97/total83,82 como declaración gráfica comercial; no certifica áreas legales o as-built, fecha/revisión ni disponibilidad. La tabla literal original de áreas owner no se localizó: las atribuciones derivadas interiorM2 no prueban su rótulo original. El plano nuevo proporciona respaldo independiente.313 no estaba visible, no se buscó ni se declaró agotada; sus69,78 no quedan validados porC7. El motor puro no impone stock/sourceLayer: el consumidor debe mantener explícita la capa documental y no presentarla como oferta activa.

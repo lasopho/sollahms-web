@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-17",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "branch": "codex/referencias-documentales-131-20261117",
+  "baseCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+  "files": [
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs",
+      "repositoryPath": "assets/js/documentary-reference-data.mjs",
+      "sha256": "39b115f64a02ea1106bd3f320cb8ac87670658267324b30cd093d93deca2ad3a",
+      "bytes": 14684
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-data.test.mjs",
+      "repositoryPath": "tests/documentary-reference-data.test.mjs",
+      "sha256": "34d25ca79334de899108d433cfab8841ec8bb826f7c098d1205e5c03d8fd593c",
+      "bytes": 15341
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/fixtures/iris-documentary-15.json",
+      "repositoryPath": "tests/fixtures/iris-documentary-15.json",
+      "sha256": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+      "bytes": 72292
+    }
+  ],
+  "entryPoint": "await createDocumentaryReferenceLayer(publishedProjects, sourceText, {mode:\"local-review\", sourceGuard:{sha256:reviewedPin}})",
+  "resultChannels": {
+    "records": "14 pure-engine records,15 stable documentary reference IDs; registered identity only, no commercial borrowing.",
+    "documentary": "Raw units, external prices, descriptions, provenance, metrics and unresolved restrictions indexed by reference ID."
+  },
+  "counts": {
+    "publishedIdentitiesCompatible": 131,
+    "records": 14,
+    "references": 15,
+    "positiveDBReferences": 14,
+    "commercialPrices": 0,
+    "stockCertifications": 0
+  },
+  "validation": {
+    "command": "node --test tests/documentary-reference-data.test.mjs",
+    "finalTests": 45,
+    "pass": 45,
+    "fail": 0,
+    "issuesEmptyForEveryPositiveAndNegativeQuery": true,
+    "oldCertifiedSuitesRepeated": false,
+    "gitDiffCheckPassed": true,
+    "canonicalIdentityArrayIndexRequired": true,
+    "leadingZeroNegativeCase": "/0122; repinned malformed source tests structural rejection without changing the real fixture pin"
+  },
+  "independentReview": {
+    "reviewer": "documentary_contract_review",
+    "result": "OK_WITH_LIMITS",
+    "blockingFindings": 0,
+    "method": "Read-only inspection of final module, tests and exact fixture; final hashes confirmed again after the canonical-index fix, tests not repeated.",
+    "limits": [
+      "The trusted SHA-256 pin authenticates the reviewed normalized payload. Primary source files are not fetched or reread by this module.",
+      "notOffer remains metadata, not a global gate in matchProjectFilters. Consumer activation is explicit local-review only; no public integration."
+    ],
+    "canonicalIndexDeltaConfirmed": true
+  },
+  "operations": {
+    "agentChangedOnlyTheThreeNewAllowedFiles": true,
+    "rootExistingVercelExclusionUnchangedByAgent": true,
+    "existingLebenFactoryChanged": false,
+    "UIorPublicConsumerAdded": false,
+    "oldTechnicalOrAuditCheckoutModified": false,
+    "publishedOrOwnerDataModified": false,
+    "PRorPrebuilt9e1663Modified": false,
+    "buildOrGeneratorRun": false,
+    "commit": false,
+    "push": false,
+    "PR": false,
+    "deployment": false
+  }
+}

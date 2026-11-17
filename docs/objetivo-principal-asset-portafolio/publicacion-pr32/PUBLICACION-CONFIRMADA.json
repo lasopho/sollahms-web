@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-17",
+  "authorization": "Respuesta expresa del propietario: Autorizar promoción y publicación",
+  "promotionResult": {
+    "result": null
+  },
+  "publishedDeployment": {
+    "id": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "target": "production",
+    "readyState": "READY",
+    "canonical": "https://sollahms.cl"
+  },
+  "priorProduction": {
+    "id": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+    "sha": "b761ddeaea2fa526870e6af25658046e31b571d7"
+  },
+  "promoteAliases": [
+    {
+      "alias": "www.sollahms.cl",
+      "status": "completed"
+    },
+    {
+      "alias": "sollahms.cl",
+      "status": "completed"
+    },
+    {
+      "alias": "sollhams.cl",
+      "status": "completed"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "status": "completed"
+    }
+  ],
+  "newDeploymentIds": [
+    "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ"
+  ],
+  "domainsUnchanged": true,
+  "domains": [
+    {
+      "name": "project-wrapp.vercel.app",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    },
+    {
+      "name": "sollahms.cl",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    },
+    {
+      "name": "sollhams.cl",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    },
+    {
+      "name": "www.sollahms.cl",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "gitBranch": null,
+      "customEnvironmentId": null
+    }
+  ],
+  "additionalDeploymentCreatedForPromotion": false,
+  "buildsRequested": false,
+  "mainChanged": false,
+  "SSOOrVariablesChanged": false,
+  "formsSubmitted": 0
+}

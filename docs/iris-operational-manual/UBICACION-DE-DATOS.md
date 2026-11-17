@@ -57,3 +57,7 @@ En las fichas Euro/Maestra consultadas, la tarjeta de unidad presenta Precio de 
 El modal rotula Internos y Terraza. No normalizar Internos a útil ni calcular total sumando valores. En ReservaMayor2, totales pertenece al lote3b, no a una superficie residencial. Los dos valores0 de terraza en Euro se registraron porque el rótulo dice0, sin convertir desconocidos. Un nombre de imagen plano puede corresponder a un placeholder: MapochoA muestra Unidad sin plano cargado.
 
 El texto accesible puede juntar Unidad235 mientras que el DOM contiene Unidad y235 en nodos separados. Si un selector textual exacto no existe, inspeccionar el estado fresco y elegir el identificador realmente visible; no repetir el mismo selector a ciegas.
+
+## Plano explícito en modal: Plaza Las Condes213 —17/11/2026
+
+En Iris269, abrir la fila213 y comprobar proyecto/dirección, Unidad213, piso2 y MODELO C7. La tabla y el modal dicen Internos; ese rótulo solo no acredita útil. La imagen del mismo modal sí imprime DEPARTAMENTO TIPO C7,213|2D+2B y tres métricas independientes: SUP. ÚTIL69,85, SUP. TERRAZA13,97 y SUP. TOTAL83,82m². Conservar cada fuente y su rótulo sin convertir conceptos ni calcular sumas. Publicado el17/11/2026 se refiere a la ficha; no fecha el plano. El precio owner se conserva con su fuente/fecha28/10.

@@ -95,3 +95,7 @@ Se prepararon doce preguntas mínimas condicionadas, sin enviarlas. El código d
 | [marina-pacifico](https://iris.yapo.cl/proyecto/1584?operation=Venta) | 2415 | Externo, unidad exacta; sin precioSoll/stock ni equivalencia internos-útil. |
 
 Capturas, extracción visible, fechas UTC, hashes y discrepancias: [REGISTRO-NUEVA-EVIDENCIA-IRIS.json](../objetivo-principal-asset-portafolio/REGISTRO-NUEVA-EVIDENCIA-IRIS.json). Catorce proyectos, quince referencias; cero documentos owner recibidos, cero cambios publicados, cero cierres de los313históricos.
+
+## Plaza Las Condes: asociación exacta de unidad —17/11/2026
+
+Ficha real [Iris269](https://iris.yapo.cl/proyecto/269), Sento, Avenida Las Condes7083. Se abrió sólo la unidad213 visible: modal MODELO C7,2D2B, Internos69.85 y Terraza13.97. El plano del mismo modal rotula C7/213 y SUP. ÚTIL69,85, SUP. TERRAZA13,97, SUP. TOTAL83,82m². El precio owner UF11.119 proviene de archivos28/10 y sigue fechado; la coincidencia Iris no renueva su vigencia. No se revisaron los nueve planos previos ni recorridos, ni se buscó313 ausente. Stock desconocido; no hubo solicitudes de autenticación o formularios. Los20archivos y límites están en [evidencias conservadas](../objetivo-principal-asset-portafolio/evidencias-plaza-213-20261117/RECIBO-ASOCIACION-213.json).

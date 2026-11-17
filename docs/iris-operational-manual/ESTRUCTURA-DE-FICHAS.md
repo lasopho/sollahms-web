@@ -48,3 +48,7 @@ La plantilla técnica DOM es otra vista de datos del proyecto, no un brochure nu
 La fuente propietario se registra en filas distintas de UI y plano. Suecia dice literalmente Modelo203: es modelo declarado, no unidad203 ni equivalencia con F/206 de Iris. Capitanes501 es unidad, no modelo. La tabla técnica conserva330filas UI y104planos; las20referencias comerciales adicionales no son20unidades nuevas.
 
 El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.
+
+## Excepción comprobada en Plaza Las Condes —17/11/2026
+
+Un modal de una única unidad puede aportar un plano exacto con superficies que faltan en el catálogo de planos previamente archivado. El C7/213 de Iris269 no pertenece a los nueve gráficos revisados antes; su identidad está impresa en la imagen, no deducida del enlace. No se extrapola a313 ni a C6/C8. La extensión URL.jpg devolvió realmente image/avif: conservar bytes/MIME originales y, si hace falta, derivar una imagen legible sin redimensionar ni cambiar contenido. Registrar ambos hashes y comprobar equivalencia de píxeles. No es una exportaciónPDF ni motivo para repetir mecanismos fallidos.

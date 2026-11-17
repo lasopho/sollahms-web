@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "kind": "Plaza Las Condes exact unit213 owner-price and documentary-area association",
+  "completedAtUTC": "2026-11-17T20:06:17.216Z",
+  "scope": {
+    "project": "plaza-las-condes",
+    "developer": "Sento",
+    "address": "Avenida Las Condes 7083",
+    "repositorySnapshot": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "IrisProjectURL": "https://iris.yapo.cl/proyecto/269",
+    "IrisProjectId": "269",
+    "unitsRequested": [
+      "213",
+      "313 only if already visible"
+    ],
+    "unitsOpened": [
+      "213"
+    ],
+    "otherUnitVisibleInList": false,
+    "virtualToursOpenedOrRestored": 0,
+    "previousNinePlansReaudited": 0,
+    "formsMessagesContactReservations": 0,
+    "applicationOrPublishedChanges": 0
+  },
+  "originalOwnerProvenance": {
+    "ownerPricesAccepted": {
+      "sourceDate": "2026-10-28",
+      "unit213UF": 11119,
+      "unit313UF": 11073,
+      "priceType": "list",
+      "discountCalculated": false,
+      "evidence": [
+        "archive-owner-prices-README.md",
+        "archive-owner-prices-source-validation.json",
+        "baseline-plaza-las-condes-verified.json#/commercialPriceSource"
+      ]
+    },
+    "originalVerbatimOwnerAreaTableLocated": false,
+    "originalVerbatimOwnerAreaLabel": null,
+    "originalOwnerAreaStatementDate": null,
+    "secondaryArchivedAttributionDate": "2026-10-28",
+    "secondaryArchivedStatement": "Unit-specific interior areas 213=69.85 and 313=69.78 m² are owner-supplied and explicitly pending documentary confirmation; they are not total areas with terrace.",
+    "secondaryStatementSource": "archive-plaza-completion-README.md",
+    "normalizedFieldAttribution": [
+      {
+        "unit": "313",
+        "field": "interiorM2",
+        "value": 69.78,
+        "interiorSource": "Datos suministrados por el propietario; correspondencia pendiente de confirmación oficial"
+      },
+      {
+        "unit": "213",
+        "field": "interiorM2",
+        "value": 69.85,
+        "interiorSource": "Datos suministrados por el propietario; correspondencia pendiente de confirmación oficial"
+      }
+    ],
+    "rendererObservation": {
+      "source": "archive-plaza-renderer-source.txt",
+      "line": 47,
+      "behavior": "Reads unit[interiorM2] and renders Superficie interior informada; does not calculate these values.",
+      "limitation": "This does not prove the original owner label or exclude an earlier manual normalization. Original area wording is not certified from the archived derivative records."
+    },
+    "laterTypologyOwnerRecord": {
+      "source": "archive-sento-owner-input-20261030.json",
+      "date": "2026-10-30",
+      "plaza2DBedroomPriceUF": 11119,
+      "usedAsProofOfUnit213": false,
+      "reason": "Typology scope remains separate from the exact 28 October unit-price authorization."
+    }
+  },
+  "irisObservation": {
+    "observedAtUTC": "2026-11-17T19:58:48.084Z",
+    "projectName": "Sento - Plaza las Condes",
+    "propertyTypeVisible": "Departamento",
+    "addressVisible": "Avenida Las Condes 7083",
+    "communeVisible": "Las Condes",
+    "projectPublicationLabel": "Publicado el 17/11/2026",
+    "publicationDateScope": "project listing; not a declared issue/revision date of the drawing",
+    "table": {
+      "unit": "213",
+      "ownerComparisonListPriceUF": 11119,
+      "priceColumnLiteral": "Precio de lista",
+      "areaColumnLiteral": "Internos",
+      "areaLiteral": "69.85 m²",
+      "bedroomLiteral": "2 d.",
+      "bathroomLiteral": "2 b."
+    },
+    "unitDialog": {
+      "observedAtUTC": "2026-11-17T20:00:18.548Z",
+      "unit": "213",
+      "floor": 2,
+      "priceVisibleUF": 11119,
+      "rawAreaLabel": "69.85m² internos · 13.97m² terraza",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "orientation": "Nororiente",
+      "descriptionLiteral": "MODELO C7",
+      "rawVisibleTextFile": "iris-unit-213-visible.txt",
+      "externalIrisPriceIsComparisonOnly": true
+    },
+    "displayedDrawing": {
+      "source": "iris-unit-213-plan-source.json",
+      "reading": "LECTURA-PLANO-C7-213.json",
+      "model": "C7",
+      "unit": "213",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "usefulM2": 69.85,
+      "terraceM2": 13.97,
+      "totalM2": 83.82,
+      "eachAreaExplicitlyPrinted": true,
+      "drawingDate": null,
+      "drawingRevision": null,
+      "notDerivedBySubtractionOrAddition": true
+    }
+  },
+  "admissibleAssociation": {
+    "status": "Documentary association established for exact unit 213; no integration or publication performed.",
+    "identityKey": {
+      "project": "plaza-las-condes",
+      "developer": "Sento",
+      "address": "Avenida Las Condes 7083",
+      "unit": "213",
+      "model": "C7"
+    },
+    "ownerListPriceUF": 11119,
+    "ownerPriceSourceDate": "2026-10-28",
+    "propertyType": "departamento",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "usefulM2": 69.85,
+    "terraceM2": 13.97,
+    "totalM2": 83.82,
+    "joinBasis": [
+      "Owner price archive explicitly keys UF 11,119 to unit 213.",
+      "The actual Iris project confirms Sento, Plaza Las Condes and Avenida Las Condes 7083.",
+      "The selected unit row and dialog explicitly identify unit 213.",
+      "The displayed drawing independently prints C7, 213, 2D + 2B and each surface label."
+    ],
+    "notJoinBasis": [
+      "matching bedroom count alone",
+      "project minimum price",
+      "the unverified original interior-area attribution",
+      "C6 or C8 geometry",
+      "arithmetic of areas"
+    ],
+    "interiorEqualsUsefulInferred": false,
+    "totalCalculated": false,
+    "priceChanged": false
+  },
+  "unit313": {
+    "ownerListPriceUF": 11073,
+    "ownerPriceSourceDate": "2026-10-28",
+    "normalizedInteriorClaimM2": 69.78,
+    "originalOwnerAreaWordingVerified": false,
+    "visibleInCurrentIrisUnitList": false,
+    "searchedOrOpened": false,
+    "model": null,
+    "usefulM2": null,
+    "totalM2": null,
+    "independentAreaCorrespondenceConfirmed": false,
+    "availability": null,
+    "reason": "Only unit 213 was visible in the current unit list. No conclusion is made about stock or retirement of unit 313; C7/213 areas cannot be transferred."
+  },
+  "limits": {
+    "currentAvailability": null,
+    "stockCountCertified": null,
+    "commercialPriceValidityBeyondExistingOwnerAuthorizationUnknown": true,
+    "drawingIssueDate": null,
+    "drawingRevision": null,
+    "physicalAsBuiltOrLegalAreaCertified": false,
+    "brochureNinePlanCatalogueUnchanged": true,
+    "originalOwnerAreaTableStillNotLocated": true,
+    "publishedUnitInventoryNotAuthorizedOrCreated": true
+  },
+  "evidence": [
+    "iris-project-269-main-visible.txt",
+    "iris-unit-213-visible.txt",
+    "iris-unit-213-dialog.dom.txt",
+    "iris-unit-213-readable.jpg",
+    "iris-unit-213-plan-source.json",
+    "iris-unit-213-C7-plan.avif",
+    "iris-unit-213-C7-plan-decoded.png",
+    "LECTURA-PLANO-C7-213.json",
+    "archive-provenance.json",
+    "decoded-image-validation.json"
+  ],
+  "sourceBaselineSHA256": "5f8f31d51a6ff2730ddf83dec580c56294d1d21f6fbb40f22ee665f828b11788",
+  "decodedImageSHA256": "69fd3430fa9362fd1e69f3166e0093a1ff0db0320726e3a695fbd25738218142",
+  "decodedImageValidation": "decoded-image-validation.json"
+}

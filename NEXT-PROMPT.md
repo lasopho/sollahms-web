@@ -1,35 +1,46 @@
-# SOLLAHMS — CONTINUAR EL OBJETIVO PRINCIPAL (131 PROYECTOS)
+# Continuar el objetivo comercial de Sollahms para los 131 proyectos
 
-Continuar autónomamente hasta disponer de información comercial confiable y filtros funcionales para los 131 proyectos. No terminar por cerrar un PR o una inmobiliaria. Se permite Euro y las restantes inmobiliarias. Reutilizar fuentes y respuestas; no repetir auditorías, búsquedas completadas, exportaciones fallidas o pruebas certificadas idénticas.
+Repositorio: `lasopho/sollahms-web`. Corte17/11/2026. Continuar autónomamente; no reiniciar auditorías ni repetir pruebas certificadas. Objetivo global abierto: información comercial respaldada y filtros útiles para los131, con búsquedas parciales cuando los desconocidos no están activos.
 
-Repositorio: lasopho/sollahms-web. Checkouts independientes:
+## Publicación terminada y verificada
 
-- Técnico: /private/tmp/sollahms-filtros-comerciales-fase10-20261117; rama codex/filtros-comerciales-fase10-20261117, HEAD local/remoto 165f918aba402a0eb3313c85e144af2b4a7e8651, limpio.
-- Documental: /private/tmp/sollahms-auditoria-leben-20261116; rama codex/auditoria-leben-20261116. Consultar HEAD local/remoto actual; corte sincronizado anterior: db52a948b5248b8d704d1ae4b9a26fce0f8d59fd. No usar el checkout original con cambios ajenos.
-- PR https://github.com/lasopho/sollahms-web/pull/32 fusionado tras permisos separados de Ready y merge. Commit 9e8212264e0bac24f392d8340d6e55eabb17499a en codex/footer-sin-frase-20261116, padres daf16e7dd560301029357ce79a7af0b0e9a7e67b y 165f918aba402a0eb3313c85e144af2b4a7e8651. No repetir Ready/merge.
-- Web pública aún en b761ddeaea2fa526870e6af25658046e31b571d7, deployment dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu. Main observado 86e200ec191b38af355061e21bc0fc1e549cce3b. Revalidar referencias antes de acciones reales y reconciliar cambios.
+Ready, merge del PR32, un deployment sin dominios y su promoción/publicación fueron autorizados por separado y ejecutados. No repetirlos; no autorizan otra release.
 
-Leer docs/objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md, ESTADO-PR32.json, ESTADO-PUBLICACION.json y MANIFIESTO-DE-FUENTES.json. F14 aprobó con observaciones las cuatro correcciones F12; su estado Draft es histórico, anterior a los permisos posteriores. Conservar expediente F14 y hashes. Evidencia histórica: F10 84 Node/16 Chrome/cinco anchos/cuatro vistas; F13 57 motor+10 filtros/seis Chrome nuevos. No sumar subconjuntos ni repetir suites sin cambio o preocupación nueva. La ausencia de checks/reviews de GitHub no es aprobación.
+- PR https://github.com/lasopho/sollahms-web/pull/32 cerrado/fusionado.
+- Producción actual `9e8212264e0bac24f392d8340d6e55eabb17499a`, deployment `dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ`, READY/production, https://sollahms.cl/proyectos.html.
+- Cuatro alias completados: sollahms.cl, www.sollahms.cl, sollhams.cl y project-wrapp.vercel.app. Definiciones/redirecciones, DNS, SSO y variables intactos.
+- Exactamente un deployment nuevo; promoción del mismo ID, sin rebuild ni otro deployment. Verificación pública15/15SHA256; Chrome muestra131proyectos, fuenteLeben habilitada y cero errores. Sin envío de formularios.
+-1663archivos, pin `0e7482726ee1c172988ee63e65db2ff87d0c5935a97637e59472e9e685e581f6`; siete reemplazos/tres altas runtime.131fichas,155protegidos, siete funciones/57archivos y configuración intactos. Patio Brasil conserva410.
+- Baseline anterior recuperable `b761ddeaea2fa526870e6af25658046e31b571d7` / `dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu`; ya no es producción actual.
+- Main sigue `86e200ec191b38af355061e21bc0fc1e549cce3b`.
 
-Se autorizó y creó exactamente UN deployment sin dominios mediante CLI oficial --prebuilt --environment production --skip-domain:
+Leer `docs/objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md`, `ESTADO-PUBLICACION.json`, `ESTADO-PR32.json` y los recibos de `publicacion-pr32/`: PUBLICACION-CONFIRMADA, VERIFICACION-PUBLICA e INICIALIZACION-PUBLICA. Los estados Draft/sin deployment de F10/F13/F14 son históricos, anteriores a las autorizaciones posteriores.
 
-- ID dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ, READY/production, sin aliases asignados.
-- Revisión: https://project-wrapp-a4yrgw4ss-lsandoval2-8260s-projects.vercel.app/proyectos.html
-- Fuente 9e8212264e0bac24f392d8340d6e55eabb17499a; 1.663 archivos recibidos con sus digests exactos, sin faltantes o extras. Pin local SHA256: 0e7482726ee1c172988ee63e65db2ff87d0c5935a97637e59472e9e685e581f6.
-- Siete reemplazos y tres altas runtime; otros 1.653 archivos, 131 fichas, 57 archivos de siete funciones y configuración V3 intactos. No hubo generadores ni builds de aplicación. Paquete: /private/tmp/sollahms-pr32-release-20261117/stage/.vercel/output. No reconstruirlo ni repetir la recuperación del baseline1660.
-- Nueva verificación de entrega: 61 rutas locales sin faltantes; Chrome muestra131proyectos, fuenteLeben habilitada, sin aviso de fallo ni errores de consola. Sesión existente suficiente, sin pedir autenticación o cambiar protección. Captura y resultados en publicacion-pr32/ del control central.
-- Proyecto project-wrapp/prj_URomRRU0MAy4etGKP5gWv3Qv4DGH; equipo team_A9VNIW2f2K1IJpd2pGdvDmEN. Los cuatro dominios y redirecciones permanecen intactos.
+## Checkouts
 
-La autorización de creación ya se utilizó. NO hay permiso de promoción/publicación ni de otro deployment. Preparar/obtener el permiso independiente para promover este MISMO ID mediante mcp__codex_apps__vercel_request_promote; parámetros exactos en ESTADO-PUBLICACION.json. Tras permiso, revalidar READY/fuente/producción, promover sin rebuild y verificar aliases, mismo deployment publicado, contenido y preservación. No enviar formularios ni crear un segundo deployment. No modificar DNS, SSO, variables o main.
+- Documental: `/private/tmp/sollahms-auditoria-leben-20261116`, rama `codex/auditoria-leben-20261116`. Consultar HEAD local/remoto actual, conservar historial y sincronizar sólo documentación autorizada.
+- Candidato original PR32: `/private/tmp/sollahms-filtros-comerciales-fase10-20261117`, rama `codex/filtros-comerciales-fase10-20261117`, HEAD `165f918aba402a0eb3313c85e144af2b4a7e8651`. Mantener intacto.
+- Técnico posterior: `/private/tmp/sollahms-referencias-documentales-131-20261117`, rama `codex/referencias-documentales-131-20261117`, base9e, commit local `5ba3aa28e2a59d687fa971f500e320b9079a6962`. Sin rama remota/push/PR/deployment. Cuatro archivos: adaptador, pruebas, fixture y exclusión en vercel.json. Ver `candidato-documental-local/CANDIDATO-LOCAL.json` y `RECIBO-ADAPTADOR.json`.
+- No usar el checkout original con cambios ajenos. Toda edición de aplicación en el técnico posterior; rama Leben exclusivamente documental.
 
-Continuar en paralelo el objetivo de datos. CLASIFICACION-COMERCIAL-131.json contiene procedencia y alcance de nueve campos por slug, sin certificación global. Un desconocido sólo bloquea el predicado que lo necesita. REGISTRO-NUEVA-EVIDENCIA-IRIS.json conserva quince referencias en catorce proyectos,101archivos con hashes. CAPA-DOCUMENTAL-IRIS.json normaliza esos datos sin oferta: priceUF/stock nulos; precios Iris sólo metadata. Internos va en internalM2; útil/total/interior siguen desconocidos; el total1500 del lote va en lotTotalM2. VALIDACION-CAPA-DOCUMENTAL-IRIS.json registra183/183 verificaciones NUEVAS de ese dataset,14positivosD/B y ceroissues; no sumarlas a las suites históricas. Revisión lectora independiente sin diferencias. Compatible sólo con motor puro; no lo consume la app, la factory Leben ni el deployment.
+## Siguiente trabajo autorizado
 
-Reutilizar Diagonal235, MapochoA1010, nueveEuro fueraowner12, Plaza909A, AltoBuzeta1220/212 y ReservaMayor2lote3b antes de nuevas consultas. No aplicar a235 su plano435–1635/TorreB. MapochoA sigue sin plano y con brochure unresolved-building; Plaza conserva TorreB general frente a EdificioA de la unidad. Fuentes oficiales actuales respaldan Nova2S2028 y Mirador1S2028; las alternativas Iris no tienen alcance explicado. No sustituir precios owner/publicados con Iris.
+La clasificación131 reutiliza21fuentes; no certifica todas las combinaciones. La matriz histórica131 intercambia Patio Brasil/Vergara Domeyko y la aplicación histórica137 incluye seis ajenos al universo actual. No trasladar ni restaurar registros.
 
-Los313IDs históricos permanecen:74A+48B son necesidades comerciales condicionadas;191C quedan fuera del obligatorio sin cerrarse. Conservar454referencias Leben,20cotizaciones,dos adicionalesSuecia separados y16proyecciones administrativas que no son evidencia nueva. Own vendido se excluye sólo de oferta preparada. Precio+D10,precio+D/B5,precio+superficie0. No repetir solicitudes SantoL009/BAUML013 ni respuestasF049/F9.
+`CAPA-DOCUMENTAL-IRIS.json`:15referencias/14proyectos, tipo/D/B y métricas originales. Pin `3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71`. Precio comercial nulo, stock desconocido y precios externos separados. Dataset nuevo183/183; adaptador local45/45 y revisión sin bloqueantes. No sumar estas cifras a las suites históricas ni repetir con hashes iguales. El adaptador exige local-review y pinSHA256; aún no tiene consumidor UI ni forma parte de producción. Integrar localmente consultas acreditadas, con procedencia visible y sin oferta/stock. No convertir Internos en útil/interior/total ni total del lote en total residencial.
 
-Universo actual131: no copiar los seis ajenos de la aplicación137 ni restaurar PatioBrasil; el histórico131 contiene Patio en lugar de VergaraDomeyko. Leben14 incluye ParqueGermania con comercialización Leben/ESEPE ya documentada; Verne es NorteVerde. Euro21 no equivale a sus12expedientes owner. El objetivo global aún no está certificado ni terminado.
+Nueva asociación documental consolidada: Sento / Plaza Las Condes / Avenida Las Condes7083 / unidad213 / modeloC7. Precio owner archivado UF11.119, fecha28/10/2026; plano explícito2D2B, útil69,85, terraza13,97 y total83,82m². Iris269 observado17/11; fecha/revisión del dibujo, vigencia actual y stock desconocidos. OriginalAVIF y PNG conservados en `/private/tmp/sollahms-plaza-unit-association/`; revisar RECIBO-ASOCIACION-213, lectura, manifiesto y referencia nueva cuando exista. No se dedujo interior=útil ni total por suma; no extender a313/C6/C8 ni modificar precio/ficha publicados. Evidencia consolidada en REGISTRO-ASOCIACIONES-COMERCIALES.json y evidencias-plaza-213-20261117. Continúan integración/pruebas locales pertinentes enT2, sin nueva publicación.
 
-Si una plataforma pide login, abrir Chrome oficial visible, detener sólo esa navegación y esperar al propietario para contraseña/OTP/CAPTCHA. No leer, solicitar, copiar o guardar credenciales, cookies o tokens ni eludir seguridad. No hay autenticación pendiente solicitada. Agotar fuentes antes de preguntar por datos esenciales irrecuperables; continuar las tareas independientes.
+Leben:454referencias,20cotizaciones, dos adicionalesSuecia separados;16proyecciones administrativas no son evidencia nueva.313IDs históricos intactos:74A+48B condicionados,191C complementarios fuera del obligatorio. Own vendido excluido sólo de oferta preparada. Cobertura Leben precio+D10, precio+D/B5, precio+superficie0. La asociación Sento no cambia estos saldos. Reutilizar F049/F9 y preguntas previas; no volver a solicitar SantoL009/BAUML013 ni detalles constructivosD03.
 
-Mantener técnica/documentación separadas y árboles limpios. No tocar fichas, precios publicados, direcciones, CRM360, AI Lab, Resend, formularios, finanzas o funciones; no ejecutar generadores. Nuevos primeros push/PR, Ready/merge, deployments, publicación/promoción y cambios de dominios/SSO/variables/gastos requieren permisos independientes fuera de los pasos ya usados. Sincronizar sólo lo autorizado, actualizar CONTROL y NEXT con hechos reales y entregar siempre este prompt completo sin exigir que el propietario lo copie para continuar.
+Usar evidencia existente antes de navegar; investigar únicamente fuentes concretas restantes. Precio/D/B/áreas deben coincidir en una referencia compatible, sin mezclar modelo, unidad, etapa o métrica. Desconocidos fallan sólo con su predicado activo. Mantener AND/OR, procedencia y fechas.
+
+## Pruebas y límites
+
+Históricas F10:84/84Node,16/16Chrome, cinco anchos/cuatro vistas. F13:57/57motor+10/10filtros y6/6Chrome nuevos; cinco grupos incluidos en57. F14 aprobado con observaciones, sin checks/reviews GitHub. No repetir suites idénticas; para cambios reales, pruebas específicas del delta y QA local pertinente, sin builds de producción.
+
+No modificar fichas, precios publicados, direcciones, CRM360, AI Lab, Resend, formularios, finanzas o funciones; no ejecutar generadores. Primer push de nueva rama, PR, Ready, merge, deployment o publicación futuros requieren permisos independientes. Preparar resultado revisable antes de pedirlos. Mantener exclusiones y árboles limpios al sincronizar.
+
+Si Iris pide login: Chrome oficial visible y acceso personal del propietario, incluidos OTP/CAPTCHA. Nunca solicitar, leer, registrar o almacenar credenciales, cookies o tokens; no eludir seguridad ni modificar SSO. No contactar/reservar/cotizar.
+
+Actualizar control, manual sólo con aprendizajes nuevos y NEXT. Continuar tareas independientes autorizadas; pedir intervención sólo por dato esencial irrecuperable, autenticación o permiso nuevo. Entregar siempre el siguiente prompt completo sin pedir al propietario que lo copie para continuar.

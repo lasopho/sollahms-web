@@ -92,3 +92,12 @@ No exigir todas las opciones para que una búsqueda por atributos conocidos cons
 Separar cotización, UI y perfil gráfico, sin completar uno con atributos de otro por similitud o enlace. Dentro de una UI o de un recurso gráfico sí se emparejan los datos de la misma captura/ID. Una cotización puede usarse por precio y D/B expresos sin exigir antes superficies; un perfil puede usarse por D/B+áreas propias sin precio.
 
 Los rasgos comunes del proyecto se distinguen de jardín/terraza privados de una opción. No cruzar el precio de una referencia con el patio de otra. Consultar [INFORME-FASE9-LEBEN](../catalog-data-completeness-20261116/leben/INFORME-FASE9-LEBEN.md) y sus máscaras antes de solicitar datos nuevos.
+
+## Recuperación focalizada de un plano exacto —17/11/2026
+
+1. Reutilizar la URL real del proyecto y abrir únicamente la unidad cuya identidad se necesita.
+2. Conservar texto y captura del modal; comprobar nombre, dirección, unidad y modelo.
+3. Si el modal contiene un plano nuevo exacto, recuperar sólo ese asset observado mediante pageAssets. No repetir galerías previas, recorridos o exportacionesPDF fallidas.
+4. Conservar los bytes originales aunque la extensión no corresponda al MIME. Si el visor no decodificaAVIF, crear una copiaPNG sin alteraciones con una biblioteca ya disponible; comprobar dimensiones y píxeles equivalentes.
+5. Leer los rótulos impresos y su alcance. Asociar precio por la misma unidad y fuente owner fechada; no por mínimo del proyecto o número de dormitorios.
+6. Mantener desconocidos fecha/revisión del plano, vigencia o stock si no constan. Registrar límites y hashes; no extender a otras unidades.

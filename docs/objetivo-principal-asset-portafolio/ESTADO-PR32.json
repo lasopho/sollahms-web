@@ -128,6 +128,7 @@
     }
   },
   "deploymentProtection": {
+    "scope": "Snapshot del merge, anterior al deployment y promoción autorizados después; consultar ESTADO-PUBLICACION.json para el estado actual.",
     "technicalBranch": false,
     "targetBaseBranch": false,
     "meaning": "Valores git.deploymentEnabled; false excluye deployments automáticos.",
@@ -135,12 +136,22 @@
   },
   "productionUnchanged": {
     "sha": "b761ddeaea2fa526870e6af25658046e31b571d7",
-    "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu"
+    "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+    "scope": "Snapshot al ejecutar el merge, anterior a las autorizaciones independientes de deployment y publicación."
   },
   "limitations": [
     "Ready y merge fueron autorizados por separado y ejecutados; no otorgan permiso de deployment o publicación.",
     "Sin checks/reviews de GitHub en F14; no se inventan aprobaciones.",
     "El cuerpo del PR conserva la descripción histórica anterior que decía Draft; el estado final verificado es closed/merged. No se alteró su cuerpo, base ni código como parte de las autorizaciones de estado/merge.",
-    "No crear deployment ni promover sin autorización expresa. El merge conserva las guardas automáticas; producción sigue en b761dde."
-  ]
+    "El merge por sí solo no autorizó publicar. El propietario autorizó después un deployment y su promoción; ambos están ejecutados en ESTADO-PUBLICACION.json. No existe permiso para una nueva release."
+  ],
+  "currentPublication": {
+    "id": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "target": "production",
+    "readyState": "READY",
+    "canonical": "https://sollahms.cl",
+    "authorized": true,
+    "evidence": "ESTADO-PUBLICACION.json"
+  }
 }
