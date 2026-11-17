@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-17T20:42:32.015721+00:00",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "branch": "codex/referencias-documentales-131-20261117",
+  "localCommit": "2e45802883c413fa04c8d240a4cc4101d3eee12c",
+  "parentCommit": "5ba3aa28e2a59d687fa971f500e320b9079a6962",
+  "baseCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+  "status": "LOCAL_REVIEW_IMPLEMENTED_AND_VERIFIED",
+  "files": [
+    {
+      "path": "assets/js/catalog-filter-controls.mjs",
+      "sha256": "e31f170a9c598f3d8121a2e4698d27e2f5295571495b686f9e51e611ebecf3f3",
+      "bytes": 18618
+    },
+    {
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "sha256": "886fed0aceebc6e949a621d051bd8a2608a106c7ed7337c4a62f879b9fd3da04",
+      "bytes": 18465
+    },
+    {
+      "path": "assets/js/catalog-map.mjs",
+      "sha256": "de7434248b9074d30c789b500a2ff4a5b8780dd515a4d109c52cbcb854dd3369",
+      "bytes": 16808
+    },
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "sha256": "4ea96baada9d2ef5d648cb48e93e487de5687d167402d8dcd2074dafb2d861da",
+      "bytes": 13253
+    },
+    {
+      "path": "assets/js/catalog.mjs",
+      "sha256": "a1eabc55cd597b811fbd83736f8e31f746f551b4c9f5f55e4835ba68b0b7a4ac",
+      "bytes": 14303
+    },
+    {
+      "path": "assets/js/documentary-local-review.mjs",
+      "sha256": "d84547550fc0affad101f3c353b1c0cb795378fae87f67ee0322af70318ff034",
+      "bytes": 9627
+    },
+    {
+      "path": "assets/js/documentary-reference-data.mjs",
+      "sha256": "39b115f64a02ea1106bd3f320cb8ac87670658267324b30cd093d93deca2ad3a",
+      "bytes": 14684
+    },
+    {
+      "path": "tests/documentary-local-review.test.mjs",
+      "sha256": "d07cefa6481f49887e19b5b826ad1a3f3c72404b4dc1d8c60f0b88349aa5ea39",
+      "bytes": 17019
+    },
+    {
+      "path": "tests/documentary-presentation.test.mjs",
+      "sha256": "69bdd60818793746cc459bf811446000d420148fe6bc11ca85f79fb58d0bd73d",
+      "bytes": 9381
+    },
+    {
+      "path": "tests/documentary-reference-data.test.mjs",
+      "sha256": "34d25ca79334de899108d433cfab8841ec8bb826f7c098d1205e5c03d8fd593c",
+      "bytes": 15341
+    },
+    {
+      "path": "tests/fixtures/iris-documentary-15.json",
+      "sha256": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+      "bytes": 72292
+    },
+    {
+      "path": "tests/fixtures/plaza-213-reference.json",
+      "sha256": "94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865",
+      "bytes": 30261
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "85f5895366584a961bd397b9778f7567461758286cb7c32e9e2eaa9447f15029",
+      "bytes": 3768
+    }
+  ],
+  "fileCount": 13,
+  "remoteBranch": false,
+  "PR": null,
+  "deployment": null,
+  "publicConsumption": false,
+  "localGate": "http(s) loopback hostname + revision_documental=1, before any fixture fetch",
+  "coverage": {
+    "identityProjects": 131,
+    "documentaryProjects": 15,
+    "identityOnlyProjects": 116,
+    "references": 16,
+    "referencesWithoutCommercialPrice": 15,
+    "datedOwnerPriceAndAreaReferences": 1,
+    "stockCertified": 0
+  },
+  "tests": {
+    "adapter45": {
+      "pass": 45,
+      "scope": "Historical unchanged adapter45 hash accepted; not repeated"
+    },
+    "localLoaderEngine": {
+      "pass": 32,
+      "scope": "New suite32 includes14negativePlaza cases; old overlapping counts are not added"
+    },
+    "presentationFinal": {
+      "pass": 17,
+      "scope": "Final includes original16 plus one real-loader scope case; not16+17"
+    },
+    "legacyRegression": {
+      "pass": 83,
+      "files": [
+        "catalog-filters.test.mjs",
+        "commercial-filter-engine.test.mjs",
+        "commercial-filter-presentation.test.mjs",
+        "catalog-views.test.mjs",
+        "catalog-map.test.mjs"
+      ],
+      "reason": "Five application modules changed; pertinent regression suites run once, not a new F10/F13 certification"
+    },
+    "chrome": {
+      "pass": 22,
+      "views": 4,
+      "widths": [
+        375,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "results": "CHROME-LOCAL.json"
+    }
+  },
+  "resolvedDefect": {
+    "id": "LOCAL-SCOPE-OBJECT",
+    "symptom": "[object Object] in scope note for Plaza",
+    "before": "scope-defect-before-fix.json",
+    "fix": "catalog-model.mjs documentaryScopeLabel",
+    "regression": "Real pinned loader -> engine -> presentation, 17th projection test",
+    "independentReadReview": "fase14_ui_review: no remaining finding"
+  },
+  "testHarnessCorrection": "The first new projection test supplied an incomplete Location stub and returned null. A real URL object fixed that test setup; final17 passed. Financial restoration uses hidden=false rather than visibility of an empty summary under existing :empty CSS.",
+  "serverLimits": [
+    "Static preview does not execute serverless functions. Existing background /api/uf and favicon requests404; no financial scenario or amounts tested.",
+    "One source503 intentionally injected in isolated server8767, then stopped. Notice persisted outside collapsibles with role=status/aria-live after URL normalization.",
+    "Normal source/flow tests in8766, sourcefiles pinned; no builds/generators, forms or external writes."
+  ],
+  "remainingAuthorization": [
+    "First push of this new technical branch and any new PR require express permission.",
+    "Ready/merge/deployment/publication future steps are not authorized."
+  ],
+  "previewURL": "http://127.0.0.1:8766/proyectos.html?revision_documental=1&evidencia=documentary",
+  "patchSHA256": "4529eeb64da6e40247facff9674a8b156c17c3aaffa5e81397bd7ec6ce0f42fa",
+  "workingTreeClean": true
+}

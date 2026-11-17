@@ -1,0 +1,43 @@
+{
+  "scope": "Nueva presentación documental local; no suites históricas",
+  "tests": {
+    "command": "node --test tests/documentary-presentation.test.mjs",
+    "passed": 16,
+    "failed": 0,
+    "syntaxFailureCorrectedBeforeFinalRun": "projectFacts parameter state collided with existing local state; renamed filterState"
+  },
+  "operations": {
+    "commit": false,
+    "push": false,
+    "PR": false,
+    "deployment": false,
+    "browserQA": "Pendiente del root"
+  },
+  "files": [
+    {
+      "path": "assets/js/catalog.mjs",
+      "sha256": "a1eabc55cd597b811fbd83736f8e31f746f551b4c9f5f55e4835ba68b0b7a4ac",
+      "bytes": 14303
+    },
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "sha256": "3b77f09cfc98a8da0ae7c7b7a276a361bfcb8d68d8fed8315fbc34954a264686",
+      "bytes": 12863
+    },
+    {
+      "path": "assets/js/catalog-map.mjs",
+      "sha256": "de7434248b9074d30c789b500a2ff4a5b8780dd515a4d109c52cbcb854dd3369",
+      "bytes": 16808
+    },
+    {
+      "path": "assets/js/catalog-filter-controls.mjs",
+      "sha256": "e31f170a9c598f3d8121a2e4698d27e2f5295571495b686f9e51e611ebecf3f3",
+      "bytes": 18618
+    },
+    {
+      "path": "tests/documentary-presentation.test.mjs",
+      "sha256": "8143d66c04a2ce67eb9314a73243164c5632f2ec394d35bdf04c0a2ab5b8aecd",
+      "bytes": 7975
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "createdAtUTC": "2026-11-17T20:25:44.559715+00:00",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "baseCommit": "5ba3aa28e2a59d687fa971f500e320b9079a6962",
+  "files": [
+    {
+      "path": "assets/js/documentary-local-review.mjs",
+      "sha256": "d84547550fc0affad101f3c353b1c0cb795378fae87f67ee0322af70318ff034",
+      "bytes": 9627,
+      "lines": 130
+    },
+    {
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "sha256": "886fed0aceebc6e949a621d051bd8a2608a106c7ed7337c4a62f879b9fd3da04",
+      "bytes": 18465,
+      "lines": 207
+    },
+    {
+      "path": "tests/documentary-local-review.test.mjs",
+      "sha256": "d07cefa6481f49887e19b5b826ad1a3f3c72404b4dc1d8c60f0b88349aa5ea39",
+      "bytes": 17019,
+      "lines": 244
+    },
+    {
+      "path": "tests/fixtures/plaza-213-reference.json",
+      "sha256": "94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865",
+      "bytes": 30261,
+      "lines": 775
+    }
+  ],
+  "exports": [
+    "loadLocalDocumentaryReview(projects,{location,fetchImpl=fetch})",
+    "validatePlazaDocumentaryContract(source,projects) [custody validation only]"
+  ],
+  "transportGate": "http(s), exact hostname localhost/127.0.0.1/[::1], exactly one revision_documental=1; checked before fetch",
+  "transportPaths": [
+    "/tests/fixtures/iris-documentary-15.json",
+    "/tests/fixtures/plaza-213-reference.json"
+  ],
+  "sourceCounts": {
+    "registeredProjects": 131,
+    "documentaryProjects": 15,
+    "documentaryReferences": 16,
+    "identityOnlyProjects": 116,
+    "IrisReferencesWithPriceNull": 15,
+    "Plaza213DatedOwnerPriceReferences": 1
+  },
+  "checks": {
+    "command": "node --test tests/documentary-local-review.test.mjs",
+    "tests": 32,
+    "passed": 32,
+    "failed": 0,
+    "executionScope": "new loader/engine delta only; previous45/84/57/16 suites not executed",
+    "negativeQueriesIssueCheck": "All active price/surface unknown negatives use canonical queryFromCatalogState and explicitly assert issues=[]; all14Plaza verificationPlan negatives assert issues=[]",
+    "sameWitness": "14 Iris D/B/terrace positives and Plaza price+D/B+useful/total/terrace exact witness; no crossreference or F9/public project borrowing",
+    "mutations": "input catalogue/fixtures unchanged; runtime documentary records frozen"
+  },
+  "unchangedT2Sources": {
+    "assets/js/documentary-reference-data.mjs": "39b115f64a02ea1106bd3f320cb8ac87670658267324b30cd093d93deca2ad3a",
+    "tests/documentary-reference-data.test.mjs": "34d25ca79334de899108d433cfab8841ec8bb826f7c098d1205e5c03d8fd593c",
+    "tests/fixtures/iris-documentary-15.json": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71"
+  },
+  "readOnlyReview": "fase14_ui_review: no new boundary defect; UI scope object presentation corrected by UI owner; documentary_contract_review pending final follow-up",
+  "limits": [
+    "Explicit loopback review only; no public consumption or release",
+    "No stock or current commercial validity certified",
+    "Iris Internos stays internalM2 and lot total stays lotTotalM2, without canonical aliases",
+    "Plaza price date2026-10-28 remains separate from observed undated drawing2026-11-17",
+    "Identity-only records can satisfy identity/noop, never unsupported commercial option facts",
+    "Unknown state/delivery/purchase stage/amenities/extras cannot borrow public facets",
+    "No commit/push/PR/build/deployment performed"
+  ]
+}

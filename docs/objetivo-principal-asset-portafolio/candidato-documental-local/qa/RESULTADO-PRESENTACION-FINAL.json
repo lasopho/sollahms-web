@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-17",
+  "command": "node --test tests/documentary-presentation.test.mjs",
+  "finalPass": 17,
+  "fail": 0,
+  "includesInitial16": true,
+  "initialReceiptScope": "RECIBO-PRESENTACION-INICIAL-16.json is an earlier immutable snapshot before the scope fix; its model hash is historical.",
+  "sourceHashes": {
+    "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/catalog-model.mjs": "4ea96baada9d2ef5d648cb48e93e487de5687d167402d8dcd2074dafb2d861da",
+    "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-presentation.test.mjs": "69bdd60818793746cc459bf811446000d420148fe6bc11ca85f79fb58d0bd73d"
+  },
+  "regressionAdded": "Actual pinned loader -> engine -> Plaza presentation, verifies readable unit/model scope, both dates and exact reference/price.",
+  "firstNewTestSetupFailure": "Incomplete Location stub lacked protocol and returned null; fixed with real URL. No application change was required for that setup error.",
+  "independentReadReview": "fase14_ui_review confirmed final helper/test delta, no remaining finding.",
+  "oldCertifiedF10F13SuitesNotRecounted": true
+}
