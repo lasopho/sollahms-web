@@ -1,0 +1,360 @@
+{
+  "base": "http://127.0.0.1:8765",
+  "viewports": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "bodyWidth": 1440,
+      "primaryIds": [
+        "region",
+        "commune",
+        "property-type",
+        "bedrooms",
+        "bathrooms"
+      ],
+      "metricChoices": [
+        "",
+        "util",
+        "total"
+      ],
+      "screenshot": "filters-1440.png"
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "bodyWidth": 1024,
+      "primaryIds": [
+        "region",
+        "commune",
+        "property-type",
+        "bedrooms",
+        "bathrooms"
+      ],
+      "metricChoices": [
+        "",
+        "util",
+        "total"
+      ],
+      "screenshot": "filters-1024.png"
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "bodyWidth": 768,
+      "primaryIds": [
+        "region",
+        "commune",
+        "property-type",
+        "bedrooms",
+        "bathrooms"
+      ],
+      "metricChoices": [
+        "",
+        "util",
+        "total"
+      ],
+      "screenshot": "filters-768.png"
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "bodyWidth": 390,
+      "primaryIds": [
+        "region",
+        "commune",
+        "property-type",
+        "bedrooms",
+        "bathrooms"
+      ],
+      "metricChoices": [
+        "",
+        "util",
+        "total"
+      ],
+      "screenshot": "filters-390.png"
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "bodyWidth": 320,
+      "primaryIds": [
+        "region",
+        "commune",
+        "property-type",
+        "bedrooms",
+        "bathrooms"
+      ],
+      "metricChoices": [
+        "",
+        "util",
+        "total"
+      ],
+      "screenshot": "filters-320.png"
+    }
+  ],
+  "checks": [
+    {
+      "name": "published catalogue retains all 131 identities",
+      "passed": true
+    },
+    {
+      "name": "responsive controls and no horizontal overflow at five widths",
+      "passed": true
+    },
+    {
+      "name": "keyboard focus remains visible and new controls have accessible labels",
+      "passed": true
+    },
+    {
+      "name": "prepared layer retains 130 identities and distinguishes published remainder",
+      "passed": true
+    },
+    {
+      "name": "price + 1D + 1B uses the matching Living Town UF 3949 quotation",
+      "passed": true
+    },
+    {
+      "name": "card, list, map and split preserve the same filtered identity",
+      "passed": true
+    },
+    {
+      "name": "URL restore, removable chip and reset keep filter state coherent",
+      "passed": true
+    },
+    {
+      "name": "area range requires explicit useful or total metric",
+      "passed": true
+    },
+    {
+      "name": "legacy interior URL cannot apply a metric hidden from the useful/total controls",
+      "passed": true
+    },
+    {
+      "name": "a quotation cannot borrow a surface from another documentary reference",
+      "passed": true
+    },
+    {
+      "name": "an unpriced surface reference displays its own pending price",
+      "passed": true
+    },
+    {
+      "name": "unknown property is retained without a type filter and excluded when selected",
+      "passed": true
+    },
+    {
+      "name": "mixed Indi does not lend a local price or unknown bathroom count to a dwelling",
+      "passed": true
+    },
+    {
+      "name": "region changes clear a commune that no longer belongs to the selected region",
+      "passed": true
+    },
+    {
+      "name": "failed evidence load disables prepared mode and restores published state",
+      "passed": true
+    },
+    {
+      "name": "no JavaScript exceptions or write requests",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "blockedWrites": [],
+  "fonts": [
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "loaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "unloaded"
+    },
+    {
+      "family": "Inter",
+      "status": "loaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "loaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Manrope",
+      "status": "unloaded"
+    },
+    {
+      "family": "Material Symbols Outlined",
+      "status": "loaded"
+    }
+  ],
+  "failedEvidenceState": {
+    "count": 131,
+    "message": "",
+    "warning": "Las referencias Leben no pudieron cargar. Los datos publicados siguen disponibles.",
+    "view": "cards",
+    "mode": "published"
+  }
+}

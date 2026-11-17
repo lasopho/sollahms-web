@@ -1,0 +1,2602 @@
+{
+  "schemaVersion": 1,
+  "executedAt": "2026-11-17T14:28:58.889Z",
+  "evidenceAsOf": "2026-11-16",
+  "method": "Real matchProjectFilters; enumerate explicit numeric bedroom/bathroom choices and require a single witness for all active option predicates.",
+  "scope": {
+    "preparedLebenProjects": 12,
+    "publishedProjects": 131,
+    "originalDocumentaryReferences": 454,
+    "administrativeTypeOnlyReferences": 16,
+    "newEvidence": 0,
+    "documentaryClosures": 0,
+    "preservedPendingFields": 313,
+    "stockCertified": false,
+    "globalCatalogueCoverageClaim": false
+  },
+  "limitations": [
+    "Counts show existence of at least one supported reference per project, not complete coverage of every model or query.",
+    "The two-metric useful+total case is an API/documentary regression; the local UI selects one metric at a time.",
+    "Zero is an explicit numeric fact. Unknown values fail an active predicate and never become zero.",
+    "Project amenities and additional parking offers do not establish unit stock, inclusion or commercial entitlement."
+  ],
+  "reproduction": {
+    "script": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/verificar-cobertura.mjs",
+    "command": "node /private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/verificar-cobertura.mjs",
+    "output": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/COBERTURA-FUNCIONAL.json"
+  },
+  "hashes": {
+    "fixture": {
+      "path": "data/commercial-filter-evidence-leben.json",
+      "sha256": "b9f87e764ecc9bf102c43287201d98f31fe3b34a5ba6e4e8829bc733a097ee36"
+    },
+    "f9Source": {
+      "path": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/PROYECTOS-APTOS-BUSQUEDA-PARCIAL.json",
+      "sha256": "5fb3b13578a26b5bab725b980876591768d37405316c384855f9b9cc38fcd68a",
+      "matchesFixtureProvenance": true
+    },
+    "adapter": {
+      "path": "assets/js/commercial-filter-data.mjs",
+      "sha256": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b"
+    },
+    "evaluator": {
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "sha256": "df6416a4da3c35be40020fb98bc655ef3aa5c18c44d82191eab8c1df26445050"
+    },
+    "reproductionScript": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/verificar-cobertura.mjs",
+      "sha256": "cd761d4d27544676742c4e6109000a77a1b16b38bedf43d3b3e24b56f16feb2e"
+    }
+  },
+  "metrics": {
+    "price": {
+      "projectCount": 10,
+      "fields": [
+        "priceUF"
+      ],
+      "referenceCount": 20,
+      "projects": [
+        {
+          "slug": "edificio-living-town",
+          "referenceIds": [
+            "OWN4-P001",
+            "OWN4-P002"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-mood",
+          "referenceIds": [
+            "OWN4-P003",
+            "OWN4-P004"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-suecia",
+          "referenceIds": [
+            "OWN4-P005"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "capitanes",
+          "referenceIds": [
+            "OWN4-P006"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-bold",
+          "referenceIds": [
+            "OWN4-P007",
+            "OWN4-P008",
+            "OWN4-P009"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-argomedo",
+          "referenceIds": [
+            "OWN4-P010"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-indi",
+          "referenceIds": [
+            "OWN4-P011",
+            "OWN4-P012",
+            "OWN4-P013"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-indigo",
+          "referenceIds": [
+            "OWN4-P014",
+            "OWN4-P015"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "referenceIds": [
+            "OWN4-P016",
+            "OWN4-P017",
+            "OWN4-P018"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-nordico",
+          "referenceIds": [
+            "OWN4-P019",
+            "OWN4-P020"
+          ],
+          "queries": [
+            {
+              "minPrice": 0
+            }
+          ]
+        }
+      ]
+    },
+    "price_and_bedrooms": {
+      "projectCount": 10,
+      "fields": [
+        "priceUF",
+        "bedrooms"
+      ],
+      "referenceCount": 18,
+      "projects": [
+        {
+          "slug": "edificio-living-town",
+          "referenceIds": [
+            "OWN4-P001",
+            "OWN4-P002"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 2,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-mood",
+          "referenceIds": [
+            "OWN4-P003",
+            "OWN4-P004"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 2,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-suecia",
+          "referenceIds": [
+            "OWN4-P005"
+          ],
+          "queries": [
+            {
+              "bedrooms": 3,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "capitanes",
+          "referenceIds": [
+            "OWN4-P006"
+          ],
+          "queries": [
+            {
+              "bedrooms": 3,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-bold",
+          "referenceIds": [
+            "OWN4-P008",
+            "OWN4-P009"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 2,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-argomedo",
+          "referenceIds": [
+            "OWN4-P010"
+          ],
+          "queries": [
+            {
+              "bedrooms": 2,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-indi",
+          "referenceIds": [
+            "OWN4-P012",
+            "OWN4-P013"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 2,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-indigo",
+          "referenceIds": [
+            "OWN4-P014",
+            "OWN4-P015"
+          ],
+          "queries": [
+            {
+              "bedrooms": 2,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 3,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "referenceIds": [
+            "OWN4-P017",
+            "OWN4-P016",
+            "OWN4-P018"
+          ],
+          "queries": [
+            {
+              "bedrooms": 3,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 2,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 4,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-nordico",
+          "referenceIds": [
+            "OWN4-P019",
+            "OWN4-P020"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 3,
+              "minPrice": 0
+            }
+          ]
+        }
+      ]
+    },
+    "price_bedrooms_bathrooms": {
+      "projectCount": 5,
+      "fields": [
+        "priceUF",
+        "bedrooms",
+        "bathrooms"
+      ],
+      "referenceCount": 7,
+      "projects": [
+        {
+          "slug": "edificio-living-town",
+          "referenceIds": [
+            "OWN4-P001",
+            "OWN4-P002"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "bathrooms": 1,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 2,
+              "bathrooms": 2,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-mood",
+          "referenceIds": [
+            "OWN4-P003",
+            "OWN4-P004"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "bathrooms": 1,
+              "minPrice": 0
+            },
+            {
+              "bedrooms": 2,
+              "bathrooms": 2,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-suecia",
+          "referenceIds": [
+            "OWN4-P005"
+          ],
+          "queries": [
+            {
+              "bedrooms": 3,
+              "bathrooms": 3,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "capitanes",
+          "referenceIds": [
+            "OWN4-P006"
+          ],
+          "queries": [
+            {
+              "bedrooms": 3,
+              "bathrooms": 3,
+              "minPrice": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-argomedo",
+          "referenceIds": [
+            "OWN4-P010"
+          ],
+          "queries": [
+            {
+              "bedrooms": 2,
+              "bathrooms": 2,
+              "minPrice": 0
+            }
+          ]
+        }
+      ]
+    },
+    "bedrooms_bathrooms_useful_total": {
+      "projectCount": 2,
+      "fields": [
+        "bedrooms",
+        "bathrooms",
+        "usefulM2",
+        "totalM2"
+      ],
+      "referenceCount": 8,
+      "projects": [
+        {
+          "slug": "edificio-mood",
+          "referenceIds": [
+            "IR-P030",
+            "IR-P037"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "bathrooms": 1,
+              "surfaces": {
+                "useful": {
+                  "min": 0
+                },
+                "total": {
+                  "min": 0
+                }
+              }
+            },
+            {
+              "bedrooms": 2,
+              "bathrooms": 2,
+              "surfaces": {
+                "useful": {
+                  "min": 0
+                },
+                "total": {
+                  "min": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "slug": "edificio-nordico",
+          "referenceIds": [
+            "IR-P142",
+            "IR-P143",
+            "IR-P144",
+            "IR-P145",
+            "IR-P146",
+            "IR-P147"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "bathrooms": 1,
+              "surfaces": {
+                "useful": {
+                  "min": 0
+                },
+                "total": {
+                  "min": 0
+                }
+              }
+            },
+            {
+              "bedrooms": 3,
+              "bathrooms": 2,
+              "surfaces": {
+                "useful": {
+                  "min": 0
+                },
+                "total": {
+                  "min": 0
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "bedrooms_bathrooms_total": {
+      "projectCount": 5,
+      "fields": [
+        "bedrooms",
+        "bathrooms",
+        "totalM2"
+      ],
+      "referenceCount": 27,
+      "projects": [
+        {
+          "slug": "edificio-mood",
+          "referenceIds": [
+            "IR-P030",
+            "IR-P037"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "bathrooms": 1,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            },
+            {
+              "bedrooms": 2,
+              "bathrooms": 2,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            }
+          ]
+        },
+        {
+          "slug": "capitanes",
+          "referenceIds": [
+            "IR-P099",
+            "IR-P100"
+          ],
+          "queries": [
+            {
+              "bedrooms": 3,
+              "bathrooms": 3,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-bold",
+          "referenceIds": [
+            "IR-P108"
+          ],
+          "queries": [
+            {
+              "bedrooms": 2,
+              "bathrooms": 2,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            }
+          ]
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "referenceIds": [
+            "IR-P120",
+            "IR-P122",
+            "IR-P124",
+            "IR-P126",
+            "IR-P128",
+            "IR-P129",
+            "IR-P130",
+            "IR-P133",
+            "IR-P134",
+            "IR-P121",
+            "IR-P123",
+            "IR-P125",
+            "IR-P127",
+            "IR-P136",
+            "IR-P131",
+            "IR-P132"
+          ],
+          "queries": [
+            {
+              "bedrooms": 3,
+              "bathrooms": 2,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            },
+            {
+              "bedrooms": 3,
+              "bathrooms": 3,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            },
+            {
+              "bedrooms": 2,
+              "bathrooms": 2,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            },
+            {
+              "bedrooms": 2,
+              "bathrooms": 3,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            }
+          ]
+        },
+        {
+          "slug": "edificio-nordico",
+          "referenceIds": [
+            "IR-P142",
+            "IR-P143",
+            "IR-P144",
+            "IR-P145",
+            "IR-P146",
+            "IR-P147"
+          ],
+          "queries": [
+            {
+              "bedrooms": 1,
+              "bathrooms": 1,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            },
+            {
+              "bedrooms": 3,
+              "bathrooms": 2,
+              "surfaceMetric": "total",
+              "minSurface": 0
+            }
+          ]
+        }
+      ]
+    },
+    "price_useful": {
+      "projectCount": 0,
+      "fields": [
+        "priceUF",
+        "usefulM2"
+      ],
+      "referenceCount": 0,
+      "projects": []
+    },
+    "price_total": {
+      "projectCount": 0,
+      "fields": [
+        "priceUF",
+        "totalM2"
+      ],
+      "referenceCount": 0,
+      "projects": []
+    },
+    "property_type_price": {
+      "projectCount": 3,
+      "fields": [
+        "priceUF",
+        "propertyType"
+      ],
+      "referenceCount": 5,
+      "projects": [
+        {
+          "slug": "edificio-living-town",
+          "referenceIds": [
+            "OWN4-P001",
+            "OWN4-P002"
+          ],
+          "queries": [
+            {
+              "minPrice": 0,
+              "propertyType": "departamento"
+            }
+          ]
+        },
+        {
+          "slug": "edificio-mood",
+          "referenceIds": [
+            "OWN4-P003",
+            "OWN4-P004"
+          ],
+          "queries": [
+            {
+              "minPrice": 0,
+              "propertyType": "departamento"
+            }
+          ]
+        },
+        {
+          "slug": "edificio-indi",
+          "referenceIds": [
+            "OWN4-P011"
+          ],
+          "queries": [
+            {
+              "minPrice": 0,
+              "propertyType": "local"
+            }
+          ]
+        }
+      ]
+    },
+    "pool_gym": {
+      "projectCount": 8,
+      "projectFields": [
+        "amenities.pool",
+        "amenities.gym"
+      ],
+      "referenceCount": 0,
+      "projects": [
+        {
+          "slug": "edificio-living-town",
+          "referenceIds": [],
+          "queries": [
+            {
+              "amenities": [
+                "pool",
+                "gym"
+              ],
+              "amenitiesAll": true
+            }
+          ],
+          "projectFactSupport": {
+            "pool": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F007 p.1",
+              "evidenceIds": "E0059",
+              "literal": "[\"Piscina\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            },
+            "gym": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F007 p.1 | F013",
+              "evidenceIds": "E0056 | E0479",
+              "literal": "[\"Gimnasio\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            }
+          }
+        },
+        {
+          "slug": "edificio-mood",
+          "referenceIds": [],
+          "queries": [
+            {
+              "amenities": [
+                "pool",
+                "gym"
+              ],
+              "amenitiesAll": true
+            }
+          ],
+          "projectFactSupport": {
+            "pool": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F008 p.[7,8] | F013",
+              "evidenceIds": "E0089 | E0490",
+              "literal": "[\"Piscina\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            },
+            "gym": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F008 p.[7,8] | F013",
+              "evidenceIds": "E0087 | E0491",
+              "literal": "[\"Gimnasio\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            }
+          }
+        },
+        {
+          "slug": "edificio-baum",
+          "referenceIds": [],
+          "queries": [
+            {
+              "amenities": [
+                "pool",
+                "gym"
+              ],
+              "amenitiesAll": true
+            }
+          ],
+          "projectFactSupport": {
+            "pool": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F011 p.[5,6] | F013",
+              "evidenceIds": "E0141 | E0522",
+              "literal": "[\"Piscina\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            },
+            "gym": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F011 p.[5,6] | F013",
+              "evidenceIds": "E0146 | E0521",
+              "literal": "[\"Gimnasio\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            }
+          }
+        },
+        {
+          "slug": "edificio-suecia",
+          "referenceIds": [],
+          "queries": [
+            {
+              "amenities": [
+                "pool",
+                "gym"
+              ],
+              "amenitiesAll": true
+            }
+          ],
+          "projectFactSupport": {
+            "pool": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F012 p.3 | F013",
+              "evidenceIds": "E0197 | E0547",
+              "literal": "[\"Piscina\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            },
+            "gym": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F012 p.3 | F013",
+              "evidenceIds": "E0196 | E0545",
+              "literal": "[\"Gimnasio\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            }
+          }
+        },
+        {
+          "slug": "edificio-indi",
+          "referenceIds": [],
+          "queries": [
+            {
+              "amenities": [
+                "pool",
+                "gym"
+              ],
+              "amenitiesAll": true
+            }
+          ],
+          "projectFactSupport": {
+            "pool": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F006 p.3 | F013",
+              "evidenceIds": "E0307 | E0604",
+              "literal": "[\"Piscina\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            },
+            "gym": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F006 p.3 | F013",
+              "evidenceIds": "E0306 | E0602",
+              "literal": "[\"Gimnasio\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            }
+          }
+        },
+        {
+          "slug": "edificio-indigo",
+          "referenceIds": [],
+          "queries": [
+            {
+              "amenities": [
+                "pool",
+                "gym"
+              ],
+              "amenitiesAll": true
+            }
+          ],
+          "projectFactSupport": {
+            "pool": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F010 p.4 | F013",
+              "evidenceIds": "E0344 | E0613",
+              "literal": "[\"Piscina\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            },
+            "gym": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F010 p.4 | F013",
+              "evidenceIds": "E0345 | E0615",
+              "literal": "[\"Gimnasio\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            }
+          }
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "referenceIds": [],
+          "queries": [
+            {
+              "amenities": [
+                "pool",
+                "gym"
+              ],
+              "amenitiesAll": true
+            }
+          ],
+          "projectFactSupport": {
+            "pool": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F005 p.11 | F013 | F021 l.73",
+              "evidenceIds": "E0380 | E0625 | E0665",
+              "literal": "[\"Piscina\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            },
+            "gym": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Confirmado por documento",
+              "sourceIds": "F005 p.11 | F013 | F021 l.76",
+              "evidenceIds": "E0381 | E0626 | E0668",
+              "literal": "[\"Gimnasio\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            }
+          }
+        },
+        {
+          "slug": "edificio-nordico",
+          "referenceIds": [],
+          "queries": [
+            {
+              "amenities": [
+                "pool",
+                "gym"
+              ],
+              "amenitiesAll": true
+            }
+          ],
+          "projectFactSupport": {
+            "pool": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Parcial",
+              "sourceIds": "F014 | F013",
+              "evidenceIds": "E0428 | E0641",
+              "literal": "[\"Piscina\", \"Piscina temperada\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            },
+            "gym": {
+              "catalogProposal": true,
+              "absenceNotProven": false,
+              "status": "Parcial",
+              "sourceIds": "F014 | F013",
+              "evidenceIds": "E0431 | E0644",
+              "literal": "[\"Gimnasio\"]",
+              "scope": "Proyecto o referencias documentadas; no stock por unidad."
+            }
+          }
+        }
+      ]
+    },
+    "parking_additional": {
+      "projectCount": 10,
+      "projectFields": [
+        "parking.generalAdditional"
+      ],
+      "referenceCount": 0,
+      "projects": [
+        {
+          "slug": "edificio-living-town",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "edificio-mood",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "edificio-suecia",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "capitanes",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "edificio-bold",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "edificio-argomedo",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "edificio-indi",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "edificio-indigo",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "inn-puerto-chico",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        },
+        {
+          "slug": "edificio-nordico",
+          "referenceIds": [],
+          "queries": [
+            {
+              "parking": "additional"
+            }
+          ],
+          "projectFactSupport": {
+            "generalAdditional": true,
+            "included": false,
+            "available": null,
+            "stock": null,
+            "sourceId": "F049",
+            "sourceDate": "2026-11-16",
+            "scope": "Oferta adicional general, sin asegurar disponibilidad o asignación a cada unidad."
+          }
+        }
+      ]
+    },
+    "parking_available": {
+      "projectCount": 0,
+      "projectFields": [
+        "parking.available"
+      ],
+      "referenceCount": 0,
+      "projects": []
+    }
+  },
+  "referenceIndex": {
+    "OWN4-P001": {
+      "slug": "edificio-living-town",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "1 dormitorio; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 3949,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P002": {
+      "slug": "edificio-living-town",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "2 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 4991.65,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P003": {
+      "slug": "edificio-mood",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "1 dormitorio; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 3753.2,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P004": {
+      "slug": "edificio-mood",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "2 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 4678.45,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P005": {
+      "slug": "edificio-suecia",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "Precio desde; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 11358.9,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P006": {
+      "slug": "capitanes",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "Precio desde; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 12608,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P007": {
+      "slug": "edificio-bold",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "Estudio; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 3862.5,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": null,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P008": {
+      "slug": "edificio-bold",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "1 dormitorio; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 4897.5,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 1,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P009": {
+      "slug": "edificio-bold",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "2 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 6716.25,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 2,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P010": {
+      "slug": "edificio-argomedo",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "Precio desde; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 4432,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P011": {
+      "slug": "edificio-indi",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "Local comercial; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 8560,
+        "propertyType": "local",
+        "assetType": "Comercial",
+        "bedrooms": null,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P012": {
+      "slug": "edificio-indi",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "1 dormitorio; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 3544,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 1,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P013": {
+      "slug": "edificio-indi",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "2 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 3944,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 2,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P014": {
+      "slug": "edificio-indigo",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "2 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 9001,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 2,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P015": {
+      "slug": "edificio-indigo",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "3 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 10414.9,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 3,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P016": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "2 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 10500,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 2,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P017": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "3 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 10016,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 3,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P018": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "4 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 21869,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 4,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P019": {
+      "slug": "edificio-nordico",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "1 dormitorio; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 5382,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 1,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "OWN4-P020": {
+      "slug": "edificio-nordico",
+      "sourceKind": "COTIZACION_PROPIETARIO",
+      "sourceId": "F049",
+      "sourceDate": "2026-11-16",
+      "dateKind": "owner-declaration",
+      "scope": "3 dormitorios; solo los atributos expresamente declarados, sin asociar un plano por coincidencia de categoría.",
+      "attributes": {
+        "priceUF": 10335,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 3,
+        "bathrooms": null,
+        "usefulM2": null,
+        "totalM2": null,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [],
+      "stock": null
+    },
+    "IR-P030": {
+      "slug": "edificio-mood",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P030",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "DEPTOS 707 - 1707",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": 31.16,
+        "totalM2": 35.04,
+        "terraceM2": 3.88,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H02775",
+        "IR-H02776",
+        "IR-H02777"
+      ],
+      "stock": null
+    },
+    "IR-P037": {
+      "slug": "edificio-mood",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P037",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "DEPTOS 702 - 1702",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": null,
+        "assetType": null,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": 48.75,
+        "totalM2": 52.57,
+        "terraceM2": 3.82,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H02793",
+        "IR-H02794",
+        "IR-H02795"
+      ],
+      "stock": null
+    },
+    "IR-P142": {
+      "slug": "edificio-nordico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P142",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Depto. 103",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": 38.48,
+        "totalM2": 52.29,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": true
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03150",
+        "IR-H03151",
+        "IR-H03152",
+        "IR-H03153",
+        "IR-H03154",
+        "IR-H03155",
+        "IR-H03156",
+        "IR-H03157",
+        "IR-H03158",
+        "IR-H03159"
+      ],
+      "stock": null
+    },
+    "IR-P143": {
+      "slug": "edificio-nordico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P143",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Deptos. 201 al 601",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": 38.21,
+        "totalM2": 41.75,
+        "terraceM2": 3.54,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03160",
+        "IR-H03161",
+        "IR-H03162",
+        "IR-H03163",
+        "IR-H03164",
+        "IR-H03165",
+        "IR-H03166",
+        "IR-H03167"
+      ],
+      "stock": null
+    },
+    "IR-P144": {
+      "slug": "edificio-nordico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P144",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Deptos. 209 al 609",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": 34.7,
+        "totalM2": 42.02,
+        "terraceM2": 7.32,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03168",
+        "IR-H03169",
+        "IR-H03170",
+        "IR-H03171",
+        "IR-H03172",
+        "IR-H03173",
+        "IR-H03174",
+        "IR-H03175"
+      ],
+      "stock": null
+    },
+    "IR-P145": {
+      "slug": "edificio-nordico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P145",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Deptos. 202 al 602 y 203 al 603",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": 38.39,
+        "totalM2": 41.93,
+        "terraceM2": 3.54,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03176",
+        "IR-H03177",
+        "IR-H03178",
+        "IR-H03179",
+        "IR-H03180",
+        "IR-H03181",
+        "IR-H03182",
+        "IR-H03183"
+      ],
+      "stock": null
+    },
+    "IR-P146": {
+      "slug": "edificio-nordico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P146",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Deptos. 204 al 604",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": 75.64,
+        "totalM2": 83.08,
+        "terraceM2": 4.9,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03184",
+        "IR-H03185",
+        "IR-H03186",
+        "IR-H03187",
+        "IR-H03188",
+        "IR-H03189",
+        "IR-H03190",
+        "IR-H03191",
+        "IR-H03192"
+      ],
+      "stock": null
+    },
+    "IR-P147": {
+      "slug": "edificio-nordico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P147",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Depto. 104",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": 75.76,
+        "totalM2": 95.67,
+        "terraceM2": null,
+        "privateTerrace": null,
+        "privateGarden": true
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03193",
+        "IR-H03194",
+        "IR-H03195",
+        "IR-H03196",
+        "IR-H03197",
+        "IR-H03198",
+        "IR-H03199",
+        "IR-H03200",
+        "IR-H03201",
+        "IR-H03202",
+        "IR-H03203"
+      ],
+      "stock": null
+    },
+    "IR-P099": {
+      "slug": "capitanes",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P099",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Deptos. 201 al 301",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": 109.01,
+        "terraceM2": 18.45,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [
+        "CAP-A-ALCANCE"
+      ],
+      "sourceFactIds": [
+        "IR-H02872",
+        "IR-H02873",
+        "IR-H02874",
+        "IR-H02875",
+        "IR-H02876",
+        "IR-H02877",
+        "IR-H02878",
+        "IR-H02879"
+      ],
+      "stock": null
+    },
+    "IR-P100": {
+      "slug": "capitanes",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P100",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Depto. 704",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": 124.73,
+        "terraceM2": 8.13,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H02880",
+        "IR-H02881",
+        "IR-H02882",
+        "IR-H02883",
+        "IR-H02884",
+        "IR-H02885",
+        "IR-H02886",
+        "IR-H02887"
+      ],
+      "stock": null
+    },
+    "IR-P108": {
+      "slug": "edificio-bold",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P108",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Deptos. 207 al 407, 508 y 608",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 65.52,
+        "terraceM2": null,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [
+        "terraceM2"
+      ],
+      "conflictIds": [
+        "BOLD-F-SUPERFICIES"
+      ],
+      "sourceFactIds": [
+        "IR-H02909",
+        "IR-H02910",
+        "IR-H02911",
+        "IR-H02912",
+        "IR-H02913",
+        "IR-H02914",
+        "IR-H02915"
+      ],
+      "stock": null
+    },
+    "IR-P120": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P120",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 110",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 150.08,
+        "terraceM2": 15.45,
+        "privateTerrace": true,
+        "privateGarden": true
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H02961",
+        "IR-H02962",
+        "IR-H02963",
+        "IR-H02964",
+        "IR-H02965",
+        "IR-H02966",
+        "IR-H02967",
+        "IR-H02968",
+        "IR-H02969",
+        "IR-H02970",
+        "IR-H02971",
+        "IR-H02972"
+      ],
+      "stock": null
+    },
+    "IR-P122": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P122",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 210 al 510",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 101.02,
+        "terraceM2": 15.45,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H02982",
+        "IR-H02983",
+        "IR-H02984",
+        "IR-H02985",
+        "IR-H02986",
+        "IR-H02987",
+        "IR-H02988",
+        "IR-H02989",
+        "IR-H02990"
+      ],
+      "stock": null
+    },
+    "IR-P124": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P124",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 211 al 511",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 107.2,
+        "terraceM2": 19.07,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03000",
+        "IR-H03001",
+        "IR-H03002",
+        "IR-H03003",
+        "IR-H03004",
+        "IR-H03005",
+        "IR-H03006",
+        "IR-H03007",
+        "IR-H03008"
+      ],
+      "stock": null
+    },
+    "IR-P126": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P126",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 104",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 177.4,
+        "terraceM2": 20.03,
+        "privateTerrace": true,
+        "privateGarden": true
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03021",
+        "IR-H03022",
+        "IR-H03023",
+        "IR-H03024",
+        "IR-H03025",
+        "IR-H03026",
+        "IR-H03027",
+        "IR-H03028",
+        "IR-H03029",
+        "IR-H03030",
+        "IR-H03031",
+        "IR-H03032"
+      ],
+      "stock": null
+    },
+    "IR-P128": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P128",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 103",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 187.81,
+        "terraceM2": 20.95,
+        "privateTerrace": true,
+        "privateGarden": true
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03042",
+        "IR-H03043",
+        "IR-H03044",
+        "IR-H03045",
+        "IR-H03046",
+        "IR-H03047",
+        "IR-H03048",
+        "IR-H03049",
+        "IR-H03050",
+        "IR-H03051",
+        "IR-H03052",
+        "IR-H03053"
+      ],
+      "stock": null
+    },
+    "IR-P129": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P129",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 203 al 503",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 115.56,
+        "terraceM2": 20.95,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03054",
+        "IR-H03055",
+        "IR-H03056",
+        "IR-H03057",
+        "IR-H03058",
+        "IR-H03059",
+        "IR-H03060",
+        "IR-H03061",
+        "IR-H03062"
+      ],
+      "stock": null
+    },
+    "IR-P130": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P130",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 101",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": 219.48,
+        "terraceM2": 30.56,
+        "privateTerrace": true,
+        "privateGarden": true
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03063",
+        "IR-H03064",
+        "IR-H03065",
+        "IR-H03066",
+        "IR-H03067",
+        "IR-H03068",
+        "IR-H03069",
+        "IR-H03070",
+        "IR-H03071",
+        "IR-H03072",
+        "IR-H03073",
+        "IR-H03074"
+      ],
+      "stock": null
+    },
+    "IR-P133": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P133",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 102",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": 242.39,
+        "terraceM2": 20.44,
+        "privateTerrace": true,
+        "privateGarden": true
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03093",
+        "IR-H03094",
+        "IR-H03095",
+        "IR-H03096",
+        "IR-H03097",
+        "IR-H03098",
+        "IR-H03099",
+        "IR-H03100",
+        "IR-H03101",
+        "IR-H03102",
+        "IR-H03103",
+        "IR-H03104"
+      ],
+      "stock": null
+    },
+    "IR-P134": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P134",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 201 al 501",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": 141.8,
+        "terraceM2": 30.02,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03105",
+        "IR-H03106",
+        "IR-H03107",
+        "IR-H03108",
+        "IR-H03109",
+        "IR-H03110",
+        "IR-H03111",
+        "IR-H03112",
+        "IR-H03113"
+      ],
+      "stock": null
+    },
+    "IR-P121": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P121",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre B - Depto 507, 707 al 907",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 79.3,
+        "terraceM2": 9.36,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H02973",
+        "IR-H02974",
+        "IR-H02975",
+        "IR-H02976",
+        "IR-H02977",
+        "IR-H02978",
+        "IR-H02979",
+        "IR-H02980",
+        "IR-H02981"
+      ],
+      "stock": null
+    },
+    "IR-P123": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P123",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 205 al 505",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 89.15,
+        "terraceM2": 14.51,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H02991",
+        "IR-H02992",
+        "IR-H02993",
+        "IR-H02994",
+        "IR-H02995",
+        "IR-H02996",
+        "IR-H02997",
+        "IR-H02998",
+        "IR-H02999"
+      ],
+      "stock": null
+    },
+    "IR-P125": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P125",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre B - Depto 406",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 135.86,
+        "terraceM2": 26.36,
+        "privateTerrace": true,
+        "privateGarden": true
+      },
+      "maskedFields": [],
+      "conflictIds": [
+        "F3-C001"
+      ],
+      "sourceFactIds": [
+        "IR-H03009",
+        "IR-H03010",
+        "IR-H03011",
+        "IR-H03012",
+        "IR-H03013",
+        "IR-H03014",
+        "IR-H03015",
+        "IR-H03016",
+        "IR-H03017",
+        "IR-H03018",
+        "IR-H03019",
+        "IR-H03020"
+      ],
+      "stock": null
+    },
+    "IR-P127": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P127",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre B - Depto 509 al 909",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 101.78,
+        "terraceM2": 24.76,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03033",
+        "IR-H03034",
+        "IR-H03035",
+        "IR-H03036",
+        "IR-H03037",
+        "IR-H03038",
+        "IR-H03039",
+        "IR-H03040",
+        "IR-H03041"
+      ],
+      "stock": null
+    },
+    "IR-P136": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P136",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 615",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": 110.52,
+        "terraceM2": 15.38,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03114",
+        "IR-H03115",
+        "IR-H03116",
+        "IR-H03117",
+        "IR-H03118",
+        "IR-H03119",
+        "IR-H03120",
+        "IR-H03121",
+        "IR-H03122"
+      ],
+      "stock": null
+    },
+    "IR-P131": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P131",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 613, 713",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": 118.61,
+        "terraceM2": 11.68,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03075",
+        "IR-H03076",
+        "IR-H03077",
+        "IR-H03078",
+        "IR-H03079",
+        "IR-H03080",
+        "IR-H03081",
+        "IR-H03082",
+        "IR-H03083"
+      ],
+      "stock": null
+    },
+    "IR-P132": {
+      "slug": "inn-puerto-chico",
+      "sourceKind": "PLANO_UNIDAD",
+      "sourceId": "IR-P132",
+      "sourceDate": "2026-11-16",
+      "dateKind": "consultation",
+      "scope": "Torre A - Depto 602, 702",
+      "attributes": {
+        "priceUF": null,
+        "propertyType": "departamento",
+        "assetType": "Residencial",
+        "bedrooms": 2,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": 117.8,
+        "terraceM2": 11.36,
+        "privateTerrace": true,
+        "privateGarden": null
+      },
+      "maskedFields": [],
+      "conflictIds": [],
+      "sourceFactIds": [
+        "IR-H03084",
+        "IR-H03085",
+        "IR-H03086",
+        "IR-H03087",
+        "IR-H03088",
+        "IR-H03089",
+        "IR-H03090",
+        "IR-H03091",
+        "IR-H03092"
+      ],
+      "stock": null
+    }
+  }
+}
