@@ -1,0 +1,147 @@
+{
+  "fecha": "2026-11-17",
+  "zona_horaria": "America/Santiago",
+  "commit_base": "0fc4657f3d39a32042fce0a908d92269b0ad3cc8",
+  "controles": [
+    {
+      "control": "rama de auditoria",
+      "correcto": true
+    },
+    {
+      "control": "fecha de corte segun cliente Santiago",
+      "correcto": true
+    },
+    {
+      "control": "entradas de base intactas y verificadas contra Git",
+      "correcto": true
+    },
+    {
+      "control": "REGISTRO-RECEPCION-FASE7.csv: copia byteidentica F6",
+      "correcto": true
+    },
+    {
+      "control": "HECHOS-VALIDADOS-FASE7.csv: copia byteidentica F6",
+      "correcto": true
+    },
+    {
+      "control": "CONFLICTOS-RESUELTOS-FASE7.csv: copia byteidentica F6",
+      "correcto": true
+    },
+    {
+      "control": "PENDIENTES-REALES-LEBEN.csv: copia byteidentica F6",
+      "correcto": true
+    },
+    {
+      "control": "DOCUMENTOS-AUN-FALTANTES.csv: copia byteidentica F6",
+      "correcto": true
+    },
+    {
+      "control": "REGISTRO-RECEPCION-FASE7.csv: cero filas y solo cabecera",
+      "correcto": true
+    },
+    {
+      "control": "HECHOS-VALIDADOS-FASE7.csv: cero filas y solo cabecera",
+      "correcto": true
+    },
+    {
+      "control": "CONFLICTOS-RESUELTOS-FASE7.csv: cero filas y solo cabecera",
+      "correcto": true
+    },
+    {
+      "control": "313 claves abiertas e intactas",
+      "correcto": true
+    },
+    {
+      "control": "estado sin cierres o parciales nuevos",
+      "correcto": true
+    },
+    {
+      "control": "ningun ID nuevo asignado al saldo",
+      "correcto": true
+    },
+    {
+      "control": "17 expectativas 13paquetes y4anexos",
+      "correcto": true
+    },
+    {
+      "control": "ninguna expectativa presentada como recibida",
+      "correcto": true
+    },
+    {
+      "control": "287 campos documentales sin doble conteo",
+      "correcto": true
+    },
+    {
+      "control": "12 conflictos mas F3C001 adicional",
+      "correcto": true
+    },
+    {
+      "control": "balance 313 menos0 igual313",
+      "correcto": true
+    },
+    {
+      "control": "215confirmados 161parciales de689 sin cambios",
+      "correcto": true
+    },
+    {
+      "control": "49 fuentes canonicas sin nuevos IDs",
+      "correcto": true
+    },
+    {
+      "control": "maestra131 y universo689 mantenidos",
+      "correcto": true
+    },
+    {
+      "control": "todos los archivos previos salvo3NEXT intactos",
+      "correcto": true,
+      "detalle": [
+        "NEXT-PROMPT.md",
+        "docs/catalog-data-completeness-20261116/continuidad/NEXT-PROMPT.md",
+        "docs/iris-operational-manual/NEXT-PROMPT.md"
+      ]
+    },
+    {
+      "control": "seis archivos de manual tecnico intactos",
+      "correcto": true
+    },
+    {
+      "control": "cuatro prompts completos identicos",
+      "correcto": true
+    },
+    {
+      "control": "prioridad INN y F3C001 explicitos",
+      "correcto": true
+    },
+    {
+      "control": "235 hashes protegidos originales",
+      "correcto": true
+    },
+    {
+      "control": "deployment de rama excluido",
+      "correcto": true
+    },
+    {
+      "control": "sin originales o derivados inventados",
+      "correcto": true
+    },
+    {
+      "control": "todos los entregables pedidos presentes",
+      "correcto": true
+    },
+    {
+      "control": "enlaces locales validos",
+      "correcto": true,
+      "detalle": []
+    },
+    {
+      "control": "cambios exclusivamente documentales",
+      "correcto": true
+    }
+  ],
+  "resultado": "Correcto",
+  "nota": "Los hashes son de fuentes preexistentes/copias de corte, no de documentos nuevos. HEAD remoto, main, deployments y árbol limpio se comprueban después del push.",
+  "revision_independiente": {
+    "archivo": "REVISION-INDEPENDIENTE.json",
+    "sha256": "93806e3bab3b142cc8fbc68c6ac29c4cb040070d5d61f42444cda285f16432e9"
+  }
+}
