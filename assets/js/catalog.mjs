@@ -84,6 +84,7 @@ function render(){
   const sorted=filterAndSort(projects,values());
   const prepared=values().evidenceMode==='prepared';
   $('capacity-toggle').hidden=prepared;
+  $('capacity-summary').hidden=prepared;
   if(prepared){$('capacity-form').hidden=true;$('capacity-toggle').setAttribute('aria-expanded','false');}
   if(!prepared&&controls.sortOrder.value==='original')capacitySearch?.sortProjects(sorted);
   mapResults=sorted;
@@ -106,7 +107,7 @@ async function load(){
     try{const [network,connections]=await metroData;if(network.schemaVersion!==1||connections.schemaVersion!==1)throw Error('metro schema');index.metro=network;index.metroProjects=connections.projects;}catch{document.getElementById('metro-filter-section').hidden=true;document.getElementById('metro-load-status').hidden=false;}
     projects=data.map(p=>({...p,_metro:index.metroProjects?.[p.slug],_facets:index.projects[p.slug]??{assetTypes:p.tiposActivos??[p.tipoActivo].filter(Boolean),states:[p.estado].filter(Boolean)}}));
     try{projects=buildCommercialProjects(projects,await loadCommercialEvidence(),index);}
-    catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Las referencias Leben no pudieron cargar. Los datos publicados siguen disponibles.';index.preparedUnavailable=true;}
+    catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Las referencias Leben no pudieron cargar. Se muestran los datos publicados.';index.preparedUnavailable=true;}
     filterControls=createFilterControls({projects,index,onChange:render,getView:()=>view,setView:next=>{view=next;applyView();}});applyView();render();
     $('catalog-static-directory').hidden=true;
     viewButtons.forEach(c=>c.disabled=false);

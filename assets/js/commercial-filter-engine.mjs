@@ -2,6 +2,8 @@
  * Local commercial evidence evaluator. A reference is documentary evidence, never
  * a stock item. Every active option predicate must have the same witness.
  */
+import {AMENITY_KEY_MAP,AMENITY_LABELS} from './commercial-filter-data.mjs';
+
 const fold=value=>String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es-CL').trim();
 const present=value=>value!==undefined&&value!==null&&value!=='';
 const numeric=value=>typeof value==='number'&&Number.isFinite(value)&&value>=0;
@@ -14,9 +16,16 @@ const assetAliases={residencial:'Residencial',comercial:'Comercial',terreno:'Ter
 export const normalizeAssetType=value=>assetAliases[fold(value)]??null;
 const assetOf=property=>['departamento','casa','duplex','estudio'].includes(property)?'Residencial':['local','oficina'].includes(property)?'Comercial':property==='terreno'?'Terreno':null;
 const metricAliases={useful:'usefulM2',util:'usefulM2',total:'totalM2',interior:'interiorM2',terrace:'terraceM2',terraza:'terraceM2',garden:'gardenM2',jardin:'gardenM2',land:'landM2',terreno:'landM2'};
-const amenityAliases={piscina:'pool',gimnasio:'gym',quinchos:'barbecue',cowork:'cowork',lavanderia:'laundry',bicicleteros:'bikeParking','areas-verdes':'greenAreas','juegos-infantiles':'playground','salon-multiuso':'multipurposeRoom',seguridad:'security','terraza-comun':'commonTerrace','terraza-panoramica':'commonTerrace',mascotas:'pets',lounge:'lounge'};
-const amenityKey=value=>amenityAliases[value]??value;
+const amenityAliases={...AMENITY_KEY_MAP,'terraza-comun':'commonTerrace'};
+const amenityNames=Object.fromEntries([
+  ...Object.entries(amenityAliases),
+  ...Object.entries(AMENITY_LABELS).flatMap(([key,label])=>[[key,key],[label,key]]),
+].map(([name,key])=>[fold(name),key]));
+const amenityKey=value=>amenityNames[fold(value)]??value;
 export const normalizeAmenityKey=amenityKey;
+const amenityTerms=Object.fromEntries(Object.entries(AMENITY_LABELS).map(([key,label])=>[
+  key,[key,label,...Object.entries(amenityAliases).filter(([,value])=>value===key).map(([name])=>name)].join(' '),
+]));
 
 /** Query bounds accept form strings; source values must remain actual numbers. */
 function bound(value){
@@ -102,6 +111,23 @@ function extraMatches(kind,wanted,attributes,facts){
   if(!['included','available'].includes(wanted))return false;
   return facts[kind]?.[wanted]===true||attributes[kind+(wanted==='included'?'Included':'Available')]===true;
 }
+function amenityApplies(key,reference,facts){
+  const evidence=facts.amenityEvidence?.[key]??{},scope=fold(facts.amenityScopes?.[key]);
+  if(evidence.universal===true||scope==='all')return true;
+  const attributes=reference.attributes??{},property=normalizePropertyType(attributes.propertyType);
+  const asset=assetOf(property)??normalizeAssetType(attributes.assetType);
+  const propertyTypes=values(evidence.propertyTypes);
+  if(propertyTypes.length)return !!property&&propertyTypes.some(type=>normalizePropertyType(type)===property);
+  if(scope){
+    const scopedAsset=({residential:'Residencial',commercial:'Comercial',land:'Terreno'})[scope]??normalizeAssetType(scope);
+    return !!scopedAsset&&scopedAsset!=='Mixto'&&asset===scopedAsset;
+  }
+  // Unscoped residential evidence never establishes the use of an unknown reference.
+  return asset==='Residencial';
+}
+function eligibleAmenities(reference,facts){
+  return Object.entries(facts.amenities??{}).filter(([key,value])=>value===true&&amenityApplies(key,reference,facts)).map(([key])=>amenityKey(key));
+}
 function referenceMatches(reference,query,facts){
   const a=reference.attributes??{},property=normalizePropertyType(a.propertyType),asset=normalizeAssetType(a.assetType)??assetOf(property);
   if(present(query.propertyType)&&(!property||property!==normalizePropertyType(query.propertyType)))return false;
@@ -139,21 +165,19 @@ export function matchProjectFilters(record,query={}){
   if(values(query.developers).length&&!values(query.developers).some(value=>same(facts.developer,value)))return result;
   if(present(query.assetType)&&!normalizeAssetType(query.assetType))return result;
   if(normalizeAssetType(query.assetType)==='Mixto'&&!values(facts.assetTypes).some(value=>normalizeAssetType(value)==='Mixto'))return result;
-  const commercial=['local','oficina'].includes(normalizePropertyType(query.propertyType))||normalizeAssetType(query.assetType)==='Comercial';
-  const amenities=Object.entries(facts.amenities??{}).filter(([key,value])=>{
-    if(value!==true)return false;
-    if(!commercial)return true;
-    const evidence=facts.amenityEvidence?.[key]??{},scope=facts.amenityScopes?.[key];
-    return evidence.universal===true||['all','commercial'].includes(scope)||values(evidence.propertyTypes).some(type=>['local','oficina'].includes(normalizePropertyType(type)));
-  }).map(([key])=>amenityKey(key));
-  if(!selected(amenities,values(query.amenities).map(amenityKey),query.amenitiesAll))return result;
   const words=fold(query.text).split(/\s+/).filter(Boolean).slice(0,30);
-  const haystack=fold([project.nombre,record.name,record.slug,facts.region,facts.commune,facts.developer,...amenities,...featureKeys(facts)].filter(Boolean).join(' '));
-  if(!words.every(word=>haystack.includes(word)))return result;
-  const references=(record.references??[]).filter(reference=>referenceMatches(reference,query,facts));
+  const projectTerms=[project.nombre,record.name,record.slug,facts.region,facts.commune,facts.developer,...featureKeys(facts)];
+  const matchesReference=reference=>{
+    if(!referenceMatches(reference,query,facts))return false;
+    const amenities=eligibleAmenities(reference,facts);
+    if(!selected(amenities,values(query.amenities).map(amenityKey),query.amenitiesAll))return false;
+    const haystack=fold([...projectTerms,...amenities.map(key=>amenityTerms[key]??key)].filter(Boolean).join(' '));
+    return words.every(word=>haystack.includes(word));
+  };
+  const references=(record.references??[]).filter(matchesReference);
   const needs=optionNeeded(query,facts);
   // An empty reference set can satisfy only predicates that are all project facts.
-  const projectOnly=referenceMatches({attributes:{}},query,facts);
+  const projectOnly=matchesReference({attributes:{}});
   const matches=references.length>0||!needs&&projectOnly;
   return {...result,matches,references:matches?references:[],matchedReferenceIds:matches?references.map(reference=>reference.id):[]};
 }

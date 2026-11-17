@@ -93,7 +93,7 @@ test('superficie requiere métrica explícita y no convierte total, interior o t
 });
 
 test('región, comuna, estado, entrega y amenities se combinan sin completar datos desconocidos',()=>{
-  const source=record([ref('one',{})],{region:'Región Metropolitana',commune:'Santiago',developer:'Leben',state:'Recepción final',delivery:{category:'estimated',year:2027,semester:2},amenities:{pool:true,gym:true,greenAreas:null}});
+  const source=record([ref('one',{propertyType:'departamento'})],{region:'Región Metropolitana',commune:'Santiago',developer:'Leben',state:'Recepción final',delivery:{category:'estimated',year:2027,semester:2},amenities:{pool:true,gym:true,greenAreas:null}});
   assert.equal(matchProjectFilters(source,{region:'Región Metropolitana',commune:'Santiago',state:'Recepción final',delivery:{year:2027,semester:2},amenities:['pool','gym'],amenitiesAll:true}).matches,true);
   assert.equal(matchProjectFilters(source,{commune:'Ñuñoa'}).matches,false);
   assert.equal(matchProjectFilters(source,{delivery:'inmediata'}).matches,false);
@@ -118,6 +118,81 @@ test('terraza y jardín privados no son amenities comunes ni se prestan a locale
   const universal={...source,projectFacts:{...source.projectFacts,amenityScopes:{gym:'all'}}};
   assert.equal(matchProjectFilters(universal,{propertyType:'local',amenities:['gym']}).matches,true);
   assert.equal(matches('edificio-indi',{propertyType:'local',amenities:['gym']}),false);
+});
+
+test('F12-01: el gimnasio de Indi no se presta al local OWN4-P011 por precio implícito',()=>{
+  const source=bySlug.get('edificio-indi'),price={minPrice:8560,maxPrice:8560};
+  assert.deepEqual(matchProjectFilters(source,price).matchedReferenceIds,['OWN4-P011']);
+  for(const type of [{},{propertyType:'local'},{assetType:'Comercial'}]){
+    for(const amenityQuery of [{amenities:['gym']},{amenities:['gimnasio'],amenitiesAll:true},{text:'gimnasio'},{text:'gym'},{text:'quincho'}]){
+      assert.equal(matchProjectFilters(source,{...price,...type,...amenityQuery}).matches,false);
+    }
+  }
+  // A price/bedroom witness with unknown use remains valid when no amenity is requested.
+  assert.deepEqual(matchProjectFilters(source,{minPrice:3544,maxPrice:3544,bedrooms:1}).matchedReferenceIds,['OWN4-P012']);
+  assert.equal(matchProjectFilters(source,{minPrice:3544,maxPrice:3544,bedrooms:1,amenities:['gym']}).matches,false);
+  const existenceAndUnknownQuote={...source,references:source.references.filter(reference=>reference.sourceKind==='project-fact'||reference.id==='OWN4-P012')};
+  assert.deepEqual(matchProjectFilters(existenceAndUnknownQuote,{amenities:['gym']}).matchedReferenceIds,['project-fact:edificio-indi:property-type:departamento']);
+  assert.equal(matchProjectFilters(existenceAndUnknownQuote,{amenities:['gym'],maxPrice:4000}).matches,false);
+  const [indi]=buildCommercialProjects(published,evidence).filter(project=>project.slug==='edificio-indi');
+  assert.equal(advancedFilterAndSort([indi],{...defaults(),evidenceMode:'prepared',minPriceInput:'8560',maxPriceInput:'8560',amenities:['gimnasio']}).length,0);
+  assert.equal(advancedFilterAndSort([indi],{...defaults(),evidenceMode:'prepared',minPriceInput:'8560',maxPriceInput:'8560',search:'gimnasio'}).length,0);
+});
+
+test('los amenities exigen uso conocido por referencia y respetan alcance universal/comercial/tipo',()=>{
+  const references=[ref('apartment',{propertyType:'departamento',priceUF:5000}),ref('local',{propertyType:'local',priceUF:2000}),ref('office',{propertyType:'oficina',priceUF:3000}),ref('unknown',{priceUF:1000,bedrooms:1})];
+  const facts={propertyTypes:['departamento'],amenities:{gym:true}};
+  const check=projectFacts=>matchProjectFilters(record(references,projectFacts),{amenities:['gym']}).matchedReferenceIds;
+  assert.deepEqual(check(facts),['apartment']);
+  assert.deepEqual(check({...facts,amenityScopes:{gym:'commercial'}}),['local','office']);
+  assert.deepEqual(check({...facts,amenityScopes:{gym:'residential'}}),['apartment']);
+  assert.deepEqual(check({...facts,amenityScopes:{gym:'all'}}),['apartment','local','office','unknown']);
+  assert.deepEqual(check({...facts,amenityEvidence:{gym:{universal:true}}}),['apartment','local','office','unknown']);
+  assert.deepEqual(check({...facts,amenityEvidence:{gym:{propertyTypes:['oficina']}}}),['office']);
+  assert.deepEqual(check({...facts,amenityEvidence:{gym:{propertyTypes:['tipo no documentado']}}}),[]);
+  for(const query of [{amenities:['gym']},{text:'gimnasio'}]){
+    assert.equal(matchProjectFilters(record(references,{...facts,amenityScopes:{gym:'unknown'}}),query).matches,false);
+    assert.equal(matchProjectFilters(record([references[3]],facts),query).matches,false);
+  }
+  assert.equal(matchProjectFilters(record([references[3]],facts),{maxPrice:1500,bedrooms:1}).matches,true);
+  assert.equal(matchProjectFilters(record([references[3]],{...facts,amenityScopes:{gym:'all'}}),{maxPrice:1500,text:'gimnasio'}).matches,true);
+});
+
+test('amenities y texto conservan AND/OR y un único testigo entre alcances distintos',()=>{
+  const source=record([ref('apartment',{propertyType:'departamento',priceUF:5000}),ref('local',{propertyType:'local',priceUF:2000}),ref('unknown',{priceUF:1000})],{amenities:{pool:true,gym:true},amenityScopes:{gym:'commercial'}});
+  assert.deepEqual(matchProjectFilters(source,{amenities:['pool','gym']}).matchedReferenceIds,['apartment','local']);
+  assert.equal(matchProjectFilters(source,{amenities:['pool','gym'],amenitiesAll:true}).matches,false);
+  assert.deepEqual(matchProjectFilters(source,{maxPrice:3000,amenities:['pool','gym']}).matchedReferenceIds,['local']);
+  assert.equal(matchProjectFilters(source,{maxPrice:3000,amenities:['pool']}).matches,false);
+  assert.equal(matchProjectFilters(source,{amenities:['pool'],text:'gimnasio'}).matches,false);
+  assert.equal(matchProjectFilters(source,{text:'piscina gimnasio'}).matches,false);
+  assert.deepEqual(matchProjectFilters(source,{amenities:['gym'],maxPrice:3000,text:'gimnasio'}).matchedReferenceIds,['local']);
+});
+
+test('F12-02: Living Town encuentra etiquetas públicas sin perder precio ni referencia',()=>{
+  const source=bySlug.get('edificio-living-town');
+  for(const text of ['piscina','PISCINA','pool','gimnasio','quincho','quinchos','lavandería','áreas verdes']){
+    assert.equal(matchProjectFilters(source,{text}).matches,true,text);
+  }
+  assert.deepEqual(matchProjectFilters(source,{text:'piscina',maxPrice:4000,bedrooms:1,bathrooms:1}).matchedReferenceIds,['OWN4-P001']);
+  assert.equal(matchProjectFilters(source,{text:'piscina',maxPrice:3900,bedrooms:1,bathrooms:1}).matches,false);
+  assert.equal(matchProjectFilters(source,{text:'piscina',maxPrice:4000,surfaceMetric:'useful',minSurface:30}).matches,false);
+  for(const text of ['salón multiuso','juegos infantiles','espacios para mascotas'])assert.equal(matchProjectFilters(source,{text}).matches,false,text);
+  const [living]=buildCommercialProjects(published,evidence).filter(project=>project.slug==='edificio-living-town');
+  const [matched]=advancedFilterAndSort([living],{...defaults(),evidenceMode:'prepared',search:'piscina',maxPriceInput:'4000',bedrooms:'1',bathrooms:'1'});
+  assert.deepEqual(matched._commercialMatch.matchedReferenceIds,['OWN4-P001']);
+});
+
+test('búsqueda española y aliases públicos sólo indexan amenities confirmados con alcance válido',()=>{
+  const labels={multipurposeRoom:'Salón multiuso',bikeParking:'bicicleteros',playground:'juegos infantiles',commonTerrace:'terraza panorámica común',pets:'espacios para mascotas',security:'seguridad o control de acceso'};
+  for(const [key,text] of Object.entries(labels)){
+    const references=[ref('residential',{propertyType:'departamento'}),ref('local',{propertyType:'local'}),ref('unknown',{})];
+    assert.deepEqual(matchProjectFilters(record(references,{amenities:{[key]:true}}),{text}).matchedReferenceIds,['residential']);
+    for(const value of [false,null])assert.equal(matchProjectFilters(record(references,{amenities:{[key]:value}}),{text}).matches,false);
+  }
+  const source=record([ref('residential',{propertyType:'departamento'})],{amenities:{commonTerrace:true}});
+  for(const amenity of ['terraza-comun','terraza-panoramica','Terraza panorámica común'])assert.equal(matchProjectFilters(source,{amenities:[amenity]}).matches,true);
+  for(const text of ['gym','gimnasio','quincho'])assert.equal(matchProjectFilters(record([ref('unknown',{})],{amenities:{gym:true,barbecue:true}}),{text}).matches,false);
 });
 
 test('oferta adicional de estacionamiento/bodega no significa incluido ni disponible',()=>{
