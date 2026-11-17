@@ -42,3 +42,9 @@ No conservar importes ni porcentajes de comisión, atribuciones comerciales de i
 ## Plantilla técnica: fuente ya aprovechada en fase 3
 
 Archivos contiene una plantilla imprimible en el DOM. Se localizaron sus h3 Características, Amenities, Descripción y Ubicación y se leyó únicamente el siguiente hermano de cada uno. Las tablas conservan Internos sin nueva clasificación. Sus textos repiten la evidencia previa y pueden omitir algunos amenities: no interpretar esa diferencia como ausencia. No volver a revisar las doce plantillas sin un cambio verificable.
+
+## Actualización de fase 4 — 16/11/2026
+
+Los datos del propietario se localizan en COM-F4-001/F049, con fecha16/11/2026, campo, proyecto y alcance. La fecha de comunicación no es fecha de entrega ni garantía futura. Estado en blanco es una categoría explícita. Recepción final no permite calcular año/semestre de entrega. Los costos adicionales se separan de precios de inmuebles.
+
+El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.

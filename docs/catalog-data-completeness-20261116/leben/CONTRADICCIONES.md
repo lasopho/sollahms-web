@@ -1,3 +1,9 @@
+# Contradicciones — corte activo fase 4
+
+Doce casos particulares siguen abiertos; ninguna declaración comercial general resuelve su modelo/versión. Las direcciones quedan fuera de preguntas por instrucción F049 y sus registros se conservan sin alterar cadenas ni afirmar equivalencia física. Consultar [contradicciones activas](fase4-20261116/CONTRADICCIONES-LEBEN.csv), [registro completo](fase4-20261116/CONTRADICCIONES-IRIS.csv) e [informe fase4](INFORME-FASE4-LEBEN.md). F3-C001 es límite del plano INN F/406, distinto de D-03 cubiertas.
+
+## Corte anterior preservado
+
 # Contradicciones — corte activo fase 3
 
 No se resolvieron contradicciones. Se corrigieron dos etiquetas de divergencia numérica de baños en Bold/Indi; las cantidades coinciden y los conflictos de modelo/tipología permanecen. F3-C001 registra límite del plano INN F/406 frente a806/906, sin transferir métricas. Consultar [registro activo fase3](fase3-20261116/CONTRADICCIONES-IRIS.csv) e [informe de depuración](INFORME-DEPURACION-LEBEN.md). Conservar decisiones previas de dirección y Own vendido.

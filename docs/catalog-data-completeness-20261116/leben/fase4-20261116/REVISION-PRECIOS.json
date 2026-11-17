@@ -1,0 +1,202 @@
+{
+  "fecha_revision": "2026-11-16",
+  "revisor": "fase4_owner_normalization",
+  "alcance": "Revisión independiente de20preciosinmueble,2adicionales,65hechos,F049yconservación de fuentes. Sin navegador, sin escritura en repositorio.",
+  "estado": "PASS",
+  "controles_aprobados": 32,
+  "controles_totales": 32,
+  "controles": [
+    {
+      "control": "22 importes monetarios parseados directamente del adjunto",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "22 pares proyecto/categoría/importe exactos, sin float",
+      "resultado": "PASS",
+      "evidencia": {
+        "metodo": "Parsing independiente de los bullets del adjunto; separador miles punto y decimal coma, valores conservados como strings."
+      }
+    },
+    {
+      "control": "20 precios inmueble y2adicionales separados",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "INN orden y asociación 2D/3D/4D conservados",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Índigo2D9001 y3D10414.90 exactos",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Mood3753.20 y4678.45 preserve decimales",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Suecia510parking75storage adicionales",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "20 inmuebles excluyen estacionamiento/bodega adicionales",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Fechas propietario16/11/2026, sin garantía futura ni requisitoIris",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "65 hechos nuevos corresponden exactamente a normalización original",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "65 hechos fuenteF049, fecha y aceptación independientesIris",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "FuenteF049 adjunto íntegro conSHAigual",
+      "resultado": "PASS",
+      "evidencia": {
+        "sha256": "e0dba3dcf5ff8698ab18d1a67a308ad513d7e3da0b065eda22bd5018278fac5d",
+        "copia": "fase4-20261116/COM-F4-001-RESPUESTA-PROPIETARIO.md"
+      }
+    },
+    {
+      "control": "Normalización conserva SHA de revisión de respuestas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "48 fuentes históricas inalteradas yF049 única nueva",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "COM-F2-001 recibida antes queda byteigual a bdab9df",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Columnas heredadas de689filas conservadas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Preimágenes históricas con SHA correctos",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Todas evidencias Iris yF3 preservadas en rutaoriginal",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Modelo203 no se convierte en unidad203",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Capitanes501 permanece unidad,sin modelo501",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Baños propietarios se limitan a asociaciones expresas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Estudio no se convierte en0o1dormitorio",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "No hay actualización comercial Santo/BAUM,Ownsinprecio",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "10estados directos másOwnvendido",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Solo3desdeglobalesexpresos y7listasparciales",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Preciosportipología no cierran inventario íntegro",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "15cierres directos y2direccionesretiradas equivalen313",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Nordicobodega cierre solooferta,presencia sinstockinclusión",
+      "resultado": "PASS",
+      "evidencia": {
+        "justificacion": "Sin brochure; la nueva declaración general de bodega adicional respalda oferta/presencia a escala de proyecto. No asigna unidad, cantidad o inclusión, por eso se admite como15ºcierre frente a14propuesta mínima inicial."
+      }
+    },
+    {
+      "control": "34 avances parciales y0contradicciones particulares resueltas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "12casos particulares siguenabiertos,sindirecciónnirespuesta general",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Parciales normalizados:161enmatriz yCSV",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Santo/BAUM esperan sinrepetirB1A",
+      "resultado": "PASS",
+      "evidencia": null
+    }
+  ],
+  "hallazgos_materiales_abiertos": [],
+  "observacion_resuelta": {
+    "tema": "Duplicación de etiquetasParcial/PARCIAL",
+    "estado": "Corregida por root y revalidada:161Parcial, DATOS-PARCIALES161."
+  },
+  "conteos_verificados": {
+    "precios_inmueble": 20,
+    "adicionales": 2,
+    "hechos_nuevos": 65,
+    "tipologias_DBexpresas": 7,
+    "cierres_completos": 15,
+    "direcciones_retiradas": 2,
+    "pendientes": 313,
+    "avances_parciales": 34,
+    "contradicciones_resueltas": 0
+  },
+  "informe_y_next": "Informe existente al final; revisión principal circunscrita a datos/fuentes y precios.",
+  "archivos_sha256": {
+    "fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv": "6cc68873fa171ffbc09b6dccbdf83b9b979ae1a6c7ae568a584a063784abafc6",
+    "fase4-20261116/HECHOS-PROPIETARIO-FASE4.json": "b8719ec4a39f9271cd8b55bf4a092cf6dc86e562ca851db76ed33daeacc20cf1",
+    "fase4-20261116/FUENTES-FASE4.csv": "ee78f9aa23cb9ae3d0a5616b30d5861e2fadd78d626746ce36ef0a48685ee7bf",
+    "fase4-20261116/RESPUESTA-NORMALIZADA.json": "25e6c3727c2b5b55ae4454154b5668c3b998a06ad0f080b279ffa3a3b2dfbdc9",
+    "fase4-20261116/MATRIZ-LEBEN.csv": "449856fc4e6853ed5fc5ac64cace6d5d905674123e8a3d91b4c8ed3eecb120a1",
+    "fase4-20261116/RESUMEN-IRIS.json": "0a8f01178ae1f699526bf1b9c46d40fee10d443fc0c49e17416f32ad1cd1b336"
+  }
+}

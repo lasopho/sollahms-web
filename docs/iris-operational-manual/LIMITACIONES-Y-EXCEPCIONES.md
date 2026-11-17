@@ -47,3 +47,9 @@ Estas excepciones no son una lista exhaustiva de campos pendientes. Consultar la
 La limitación inicial de Archivos de Living Town quedó superada al seleccionar el botón real. Las doce plantillas fueron leídas sin aportar campos completos nuevos. No repetir la lectura de los 210 gráficos ni los 11 brochures. La prueba de impresión de Mood no produjo archivo y no debe repetirse. Los tres PDF INN siguen no leídos tras un reintento fallido; el PDF adicional de condiciones se clasificó como other y no fue exportable. Estas limitaciones no demuestran ausencia de los documentos o de los datos.
 
 En Bold e Indi, los baños de los pares UI/gráfico coinciden: se corrigieron dos etiquetas numéricas sin resolver las diferencias de código/tipología. En INN F/406 no se transfieren medidas a806/906. Nórdico ofrece bodega opcional en104/204/304; es mejora parcial, sin inferir inclusión, stock o cobertura general.
+
+## Actualización de fase 4 — 16/11/2026
+
+Las siete listas de precios por categoría no se convierten en precio desde global calculando mínimos. Las20cotizaciones son válidas como declaración en16/11/2026 aunque falte inventario técnico completo. INN2D10500,3D10016,4D21869 se conserva en ese orden; Índigo2D9001 no se cambia por9000,1 de otra fuente. No inferir baños no declarados. Todas las direcciones quedan fuera de preguntas, sin modificar sus strings ni resolver físicamente diferencias. Own permanece vendido.
+
+El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.

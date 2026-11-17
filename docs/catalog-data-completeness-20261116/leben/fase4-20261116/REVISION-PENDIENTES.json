@@ -1,0 +1,341 @@
+{
+  "fecha": "2026-11-16",
+  "modo": "Revisión independiente READ-ONLY; no navegador ni cambios en repositorio",
+  "status": "PASS",
+  "open_material_findings": [],
+  "resolved_findings": [
+    {
+      "id": "P1-ESTADOS-PARCIALES",
+      "detalle": "Versión inicial mezclabaParcial/PARCIALyomitía78filas enDATOS-PARCIALES; versiónactual normalizada y161filas verificadas."
+    },
+    {
+      "id": "LECTURA-MOOD-SOLICITUD",
+      "detalle": "La solicitud de Mood ahora resume el conflicto en prosa, conservando IR-C003 y el detalle original como fuente; observación de legibilidad cerrada."
+    }
+  ],
+  "checks": [
+    {
+      "control": "689 claves únicas y53 por proyecto",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Columnas históricas F3 conservadas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "313 mismos pendientes entre vistas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Remoción exacta15cierres y2direcciones",
+      "resultado": "PASS",
+      "evidencia": {
+        "removidos": [
+          [
+            "capitanes",
+            "estado_comercial"
+          ],
+          [
+            "capitanes",
+            "precio_desde_uf"
+          ],
+          [
+            "edificio-argomedo",
+            "direccion"
+          ],
+          [
+            "edificio-argomedo",
+            "estado_comercial"
+          ],
+          [
+            "edificio-argomedo",
+            "precio_desde_uf"
+          ],
+          [
+            "edificio-bold",
+            "estado_comercial"
+          ],
+          [
+            "edificio-indi",
+            "direccion"
+          ],
+          [
+            "edificio-indi",
+            "estado_comercial"
+          ],
+          [
+            "edificio-indigo",
+            "estado_comercial"
+          ],
+          [
+            "edificio-living-town",
+            "estado_comercial"
+          ],
+          [
+            "edificio-living-town",
+            "etapas"
+          ],
+          [
+            "edificio-mood",
+            "estado_comercial"
+          ],
+          [
+            "edificio-nordico",
+            "amenity_bodegas"
+          ],
+          [
+            "edificio-nordico",
+            "estado_comercial"
+          ],
+          [
+            "edificio-suecia",
+            "estado_comercial"
+          ],
+          [
+            "edificio-suecia",
+            "precio_desde_uf"
+          ],
+          [
+            "inn-puerto-chico",
+            "estado_comercial"
+          ]
+        ]
+      }
+    },
+    {
+      "control": "15 flags de cierre por propietario",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "2direcciones administrativas separadas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "34 enriquecidos sin inflar completitud",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "5enriquecidos mantienen contradicción",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "6comerciales20conflicto287documentales",
+      "resultado": "PASS",
+      "evidencia": {
+        "FALTA_DOCUMENTAL_O_ALCANCE": 287,
+        "CONCILIACION_CONTRADICCION": 20,
+        "DECISION_COMERCIAL_PROPIETARIO": 6
+      }
+    },
+    {
+      "control": "26decisiones y287documentales flags",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "17 precios parciales con respuesta van adocumentación",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "17 preguntas no reiteran importes/categorías",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "SoloSantoBAUM siguencomercialessin respuesta",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "20precios exactos con categorías sin intercambio",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "2adicionalesSuecia separados510/75",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "UFsin floats y fecha16nov2026",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "20cotizaciones aceptadas sin exigirYapo",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "No garantía futura ni inclusión de adicionales",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Solo3 desdeglobales literales",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "No derivar mínimo global de7listados",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Modelo203yunidad501 no intercambiados",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Sin baños inferidos en categorías no declaradas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "65hechos únicos con fuente/fecha/alcance",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Matriz referencia IDs F4 válidos",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Estados normalizados sin PARCIAL/DESCONOCIDO/HISTÓRICO duplicados",
+      "resultado": "PASS",
+      "evidencia": {
+        "Confirmado por documento": 196,
+        "Contradictorio": 26,
+        "Confirmado por propietario": 19,
+        "Parcial": 161,
+        "Desconocido": 177,
+        "Propuesta de catálogo": 99,
+        "Histórico": 9,
+        "No aplicable": 2
+      }
+    },
+    {
+      "control": "161parciales íntegros en dataset",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "215confirmados sin mezclar parciales/propuestas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Cero direcciones en pendientes y preguntas preparadas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Strings de13direcciones exactamente conservados",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "50casos registros previos intactos,solo columnasF4 agregadas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "12casos activos correctos sin dirección",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Conflictos generales no resueltos por respuestasowner",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "99propuestasfalse sin override por costo comercial",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Nórdicobodega cierre solo oferta general adicional",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Ownvendido sincotización nueva nipregunta de precio",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "13grupos suman313,26decisiones287documentación",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "F049copia fuente coincide conadjunto",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Informe contiene cantidades15,313,34,26y287 sin declarar343cierres",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "TresNEXT idénticos actualizados aF4",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "NEXT mantiene precios aceptados/direcciones/no reexport3PDF",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Enlaces locales informe/NEXT válidos",
+      "resultado": "PASS",
+      "evidencia": []
+    }
+  ],
+  "passed": 41,
+  "count_checks": 41,
+  "final_counts": {
+    "canonical_fields": 689,
+    "pending": 313,
+    "new_complete": 15,
+    "retired_address_questions": 2,
+    "partial_enrichments": 34,
+    "conflicting_partial_enrichments": 5,
+    "commercial_pending_no_new_response": 6,
+    "conflict_fields": 20,
+    "documentary_scope_fields": 287,
+    "active_conflict_cases": 12,
+    "owner_property_prices": 20,
+    "suecia_additional_prices": 2
+  },
+  "report_and_next_ready": true,
+  "human_review_report_next": {
+    "leidos_integros": true,
+    "conclusion": "Informe y NEXT conservan el alcance cauteloso; no presentan los20precios o34enriquecimientos como20/34cierres. Distinguen2retiros de dirección de15campos completos, y mantienen12casos particulares sin resolución.",
+    "archivos": [
+      "docs/catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md",
+      "NEXT-PROMPT.md"
+    ]
+  },
+  "observaciones_no_bloqueantes": [],
+  "reviewed_file_hashes": {
+    "docs/catalog-data-completeness-20261116/leben/fase4-20261116/MATRIZ-LEBEN.csv": "449856fc4e6853ed5fc5ac64cace6d5d905674123e8a3d91b4c8ed3eecb120a1",
+    "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PENDIENTES-POR-CAMPO.csv": "a140d505a528f33d3c641d73a8f594019816974e4ae48ab4f0e2594863329c73",
+    "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv": "6cc68873fa171ffbc09b6dccbdf83b9b979ae1a6c7ae568a584a063784abafc6",
+    "docs/catalog-data-completeness-20261116/leben/fase4-20261116/CONTRADICCIONES-LEBEN.csv": "606eeeb93155b2ff5ca3170e55504462c78a84f8ad13f5720b09eaad6258a715",
+    "docs/catalog-data-completeness-20261116/leben/fase4-20261116/SOLICITUDES-FINALES-POR-PROYECTO.csv": "dda53637e55ff92a8bfd51bef9599774b03ed46d8b7cb50b7707b6efdec4bd97",
+    "docs/catalog-data-completeness-20261116/leben/fase4-20261116/RESUMEN-IRIS.json": "0a8f01178ae1f699526bf1b9c46d40fee10d443fc0c49e17416f32ad1cd1b336"
+  }
+}

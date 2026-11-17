@@ -43,3 +43,9 @@ Consolidación de los inventarios de Living Town, grupo Mood/Santo/BAUM/Suecia, 
 Se revisaron las doce plantillas técnicas de las fichas exactas, por secciones permitidas y sin volver a descargar los once brochures ni releer los210gráficos. No aportaron campos completos nuevos. Living Town pudo abrir Archivos desde el botón real. Se precisan las opciones de once fichas como impresión, brochure y condiciones; Nórdico solo impresión. El reintento único de los tresPDFINN falló. Un documento adicional de condiciones INN se observó, pero la exportación de tipoother no está soportada. Una prueba de vista previa de Mood no produjoPDF, sin confirmar impresión.
 
 Resultado documental:330pendientes antes/después,0cierres completos,1mejora parcial de bodegas Nórdico y2etiquetas de baños corregidas.58campos de decisión/conciliación y272documentales, sin enviar otra ronda de preguntas. Ver INFORME-DEPURACION-LEBEN.md y fase3-20261116/ para detalles, fuentes y solicitudes agrupadas.
+
+## Actualización de fase 4 — 16/11/2026
+
+Fase4,16/11/2026: recibida comunicación directa F049,65declaraciones,20precios de inmuebles,2adicionales Suecia y7asociaciones D/B. Sin consulta nueva a Iris ni relecturas de imágenes/brochures. Resultado15cierres y2preguntas de dirección retiradas:330→313pendientes.34campos enriquecidos de forma parcial;12casos particulares siguen abiertos. Los pendientes se separan en6comerciales previos Santo/BAUM,20campos conflictivos y287de documentación/alcance. No se envió otra ronda de preguntas.
+
+El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.

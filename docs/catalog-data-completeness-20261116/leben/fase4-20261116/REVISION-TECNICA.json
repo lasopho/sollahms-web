@@ -1,0 +1,181 @@
+{
+  "fecha": "2026-11-16",
+  "tipo": "Revisión independiente de tablas técnicas fase4; solo lectura local estructurada",
+  "resultado": "PASS",
+  "controles_aprobados": 25,
+  "controles_totales": 25,
+  "hallazgos_abiertos": [],
+  "controles": [
+    {
+      "control": "434 superficies únicas =330UI+104planos",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "454 tipologías únicas =330UI+104planos+20referenciaspropietario",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Todas superficies y procedencias coinciden con preparación independiente",
+      "resultado": "PASS",
+      "evidencia": {
+        "diferencias": []
+      }
+    },
+    {
+      "control": "434 tipologías Iris mantienen literalmente ambos espacios de fuente",
+      "resultado": "PASS",
+      "evidencia": {
+        "diferencias": []
+      }
+    },
+    {
+      "control": "Internos330 no se reclasifica ni se calculan útil/interior/total UI",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Cero datos de terreno, nulos no son cero",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Todas métricas no vacías son strings decimales válidos",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Logia3 yrooftop1 quedan fuera de terraza canónica",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Cuadros30 yconteos métricos gráficos no inflados",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Planos se conservan únicos,sin expandir vinculaciones",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "330UI conservan flag de no transferencia de plano",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Mood907y1102/802 preservan rangos,sin heredar áreas a1702",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Mood1,5D yDEPTO201 siguen separados de303",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "INN F406 no transfiere patio/métricas a806/906",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Living6038032baños UI no se sustituyen por gráfico1",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "20 referencias comerciales no son20unidades nuevas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Solo7referencias tienen baños expresamente proporcionados",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "SueciaModelo203 no se convierte aunidad203 ni se une a206/F",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Cap501 se conserva como unidad, sin inventar modelo501",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "SantoBAUM no adquieren referencias comerciales nuevas",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "22precios =20inmueble+2adicionales separados",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "7DBnoinfieren baños de las otras13referencias",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Doce conflictos específicos permanecen abiertos",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "F3C001persiste en registro completo,fuera de12casos específicos de contradicción",
+      "resultado": "PASS",
+      "evidencia": null
+    },
+    {
+      "control": "Cobertura UI/plano separada de proyecto completo",
+      "resultado": "PASS",
+      "evidencia": null
+    }
+  ],
+  "archivos_revisados": [
+    {
+      "archivo": "fase4-20261116/SUPERFICIES-LEBEN.csv",
+      "sha256": "46c202b473c2c2a205bba83fea5d88593e74ec0d95a379d6c6b6b4fbd4d90bb6"
+    },
+    {
+      "archivo": "fase4-20261116/TIPOLOGIAS-LEBEN.csv",
+      "sha256": "683276c2860eb2a416204ad38aa063dd8e6c06218763a4a8a24bf27e45a26520"
+    },
+    {
+      "archivo": "fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+      "sha256": "6cc68873fa171ffbc09b6dccbdf83b9b979ae1a6c7ae568a584a063784abafc6"
+    },
+    {
+      "archivo": "fase4-20261116/RESUMEN-COBERTURA-FILTROS.json",
+      "sha256": "2f8b7d61063151a0c607685d7d9b14f8c29425ecc24d438c279a50b43a343dc1"
+    },
+    {
+      "archivo": "fase4-20261116/CONTRADICCIONES-LEBEN.csv",
+      "sha256": "606eeeb93155b2ff5ca3170e55504462c78a84f8ad13f5720b09eaad6258a715"
+    },
+    {
+      "archivo": "fase4-20261116/CONTRADICCIONES-IRIS.csv",
+      "sha256": "59f631facf6fbf311dd8c46bb6eebac6e4a9ec401001656f0a4960e81b5eb1a6"
+    }
+  ],
+  "limitaciones": [
+    "No se releyeron gráficos ni brochures ni se accedió al navegador.",
+    "Esta revisión comprueba la integración fiel de fuentes estructuradas y separaciones, no completitud exhaustiva de proyectos ni publicación de filtros."
+  ],
+  "conteos_verificados": {
+    "superficies": 434,
+    "tipologias": 454,
+    "ui": 330,
+    "planos_unidad": 104,
+    "referencias_comerciales_propietario": 20,
+    "referencias_banos_explicitos": 7,
+    "terreno_con_dato": 0,
+    "planos_con_superficies": 30,
+    "casos_especificos_abiertos": 12,
+    "limite_F3_C001": 1
+  }
+}

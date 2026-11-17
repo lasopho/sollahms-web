@@ -41,3 +41,9 @@ Para reutilizar el módulo, seguir [Procedimientos de extracción](PROCEDIMIENTO
 ## Actualización de fase 3 — 16/11/2026
 
 Las doce plantillas técnicas de Archivos ya están revisadas por secciones permitidas. El control que funcionó en Living Town y las demás fichas es `button.filter-estate.dropdown-toggle`; verificar el selector y su visibilidad en cada sesión. Leer el menú completo o su anchor concatena contenido ajeno al encargo: usar solo encabezados permitidos y su siguiente hermano. No es necesario pulsar Imprimir para examinar la plantilla DOM.
+
+## Actualización de fase 4 — 16/11/2026
+
+La fase4 incorpora una fuente directa del propietario, no una navegación nueva. Antes de volver a Iris, consultar F049 y el corte fase4-20261116. Los precios declarados se aceptan sin exigir una segunda fuente. No se repiten brochures, gráficos, plantillas o PDF fallados.
+
+El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.

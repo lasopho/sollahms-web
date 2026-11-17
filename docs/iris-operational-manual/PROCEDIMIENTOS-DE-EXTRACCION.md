@@ -58,3 +58,9 @@ Mantener separados esos planos generales y los planos individuales de **Unidades
 Abrir el botón Archivos permite leer la plantilla técnica sin imprimir. Una prueba de Imprimir ficha técnica bloqueó su pestaña propia de Mood y no produjo un PDF exportable; no repetir ese camino ni confirmar una impresión física. Once fichas muestran Imprimir ficha técnica, Descargar brochure y Condiciones comerciales; Nórdico solo ofrece impresión. La lectura anterior que identificó dos rótulos Descargar brochure en Índigo/INN se precisa con la inspección del botón real en fase 3.
 
 Los tres PDF de unidades INN fallaron otra vez mediante pageAssets. El documento adicional de Condiciones comerciales de INN se observó como recurso `other`, cuya exportación fue rechazada. No reclasificarlo como imagen, adivinar otra URL o usar solicitudes externas. Conservar el fallo, la URL exacta y el estado no leído; no declarar inexistencia. Los registros están en el corte fase3-20261116.
+
+## Actualización de fase 4 — 16/11/2026
+
+Para una respuesta del propietario: conservar el original y SHA, normalizar UF como string decimal, registrar cada asociación literal y comparar únicamente su alcance con los pendientes. No exigir Iris para aceptar precios propios. No volver a preguntar datos ya declarados. Una respuesta comercial general no resuelve discrepancias de un modelo particular. No hubo navegación, autenticación ni reintentos PDF en fase4.
+
+El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.

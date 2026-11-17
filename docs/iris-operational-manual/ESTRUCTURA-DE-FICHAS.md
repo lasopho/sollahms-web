@@ -42,3 +42,9 @@ La presencia de una galería o menú no prueba que contenga el dato buscado. Reg
 ## Precisión de fase 3
 
 La plantilla técnica DOM es otra vista de datos del proyecto, no un brochure nuevo ni prueba de un inventario completo de modelos. Sus doce extractos filtrados repiten datos. La opción Condiciones comerciales produjo un documento adicional no exportable mediante la capacidad disponible. Un menú observado, una plantilla leída y un PDF no leído deben conservar estados separados. La lista actual de opciones queda documentada en REVISION-FUENTES-NUEVAS.json.
+
+## Actualización de fase 4 — 16/11/2026
+
+La fuente propietario se registra en filas distintas de UI y plano. Suecia dice literalmente Modelo203: es modelo declarado, no unidad203 ni equivalencia con F/206 de Iris. Capitanes501 es unidad, no modelo. La tabla técnica conserva330filas UI y104planos; las20referencias comerciales adicionales no son20unidades nuevas.
+
+El corte activo está en [INFORME-FASE4-LEBEN.md](../catalog-data-completeness-20261116/leben/INFORME-FASE4-LEBEN.md) y su carpeta fase4-20261116. Los números y solicitudes de cortes anteriores de este manual son históricos; usar el siguiente prompt actualizado antes de repetir una exploración.
