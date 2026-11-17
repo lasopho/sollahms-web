@@ -7,7 +7,7 @@ Corte de investigación: **2026-11-16**. Iris aporta evidencia complementaria; n
 - Las tarjetas renderizadas en el DOM no equivalen a inspección visual individual ni acreditan stock Sollahms. Los contadores de la ficha tampoco autorizan esa conclusión.
 - **Internos**, útil e interior no son equivalentes por defecto. No sumar Internos y Terraza para inventar Total. No convertir logia o rooftop en terraza, útil o interior.
 - Una imagen sin cuadro de superficies no respalda seis métricas completas. Un gráfico de reemplazo no respalda ninguna.
-- La revisión final cubre 105 plantas/elevaciones generales de once fichas. En Nórdico la sección no aparece. La resolución publicada limita la lectura de pequeños rótulos; no aporta cuadros inequívocos de las seis superficies por modelo. Los menús Archivos varían por ficha y Living Town quedó como control oculto; revisar el historial antes de extrapolar opciones.
+- La revisión final cubre 105 plantas/elevaciones generales de once fichas. En Nórdico la sección no aparece. La resolución publicada limita la lectura de pequeños rótulos; no aporta cuadros inequívocos de las seis superficies por modelo. Los menús Archivos varían por ficha y Living Town tenía un span oculto en el primer corte; el botón real sí permitió abrirlo en fase 3; revisar el historial antes de extrapolar opciones.
 - Se detectaron recortes de captura que mostraban el fondo en lugar del modal. Esos archivos se descartaron; no deben citarse como capturas válidas.
 - En una comprobación posterior de Living Town, un recorte del encabezado produjo una imagen en blanco y también se descartó. El control **Archivos** existía en el DOM pero estaba oculto; el intento UI informó `no_visible_match`. No se forzó su activación ni se declara leído ese menú. Verificar visibilidad y diseño de la ficha antes de reutilizar un selector.
 - Los filtros del catálogo no incluyen un estado visible Vendido ni un selector observado de inmobiliaria. Una búsqueda sin coincidencia exacta no demuestra que el proyecto no exista.
@@ -41,3 +41,9 @@ Corte de investigación: **2026-11-16**. Iris aporta evidencia complementaria; n
 | Own | Búsquedas UI documentadas sin coincidencia exacta | Mantener condición Sollahms vendido. No asignar resultados Living Town o Downtown San Martín a Own. |
 
 Estas excepciones no son una lista exhaustiva de campos pendientes. Consultar la matriz y los registros de evidencia antes de promover un dato a confirmado o listo para filtros.
+
+## Depuración de fase 3
+
+La limitación inicial de Archivos de Living Town quedó superada al seleccionar el botón real. Las doce plantillas fueron leídas sin aportar campos completos nuevos. No repetir la lectura de los 210 gráficos ni los 11 brochures. La prueba de impresión de Mood no produjo archivo y no debe repetirse. Los tres PDF INN siguen no leídos tras un reintento fallido; el PDF adicional de condiciones se clasificó como other y no fue exportable. Estas limitaciones no demuestran ausencia de los documentos o de los datos.
+
+En Bold e Indi, los baños de los pares UI/gráfico coinciden: se corrigieron dos etiquetas numéricas sin resolver las diferencias de código/tipología. En INN F/406 no se transfieren medidas a806/906. Nórdico ofrece bodega opcional en104/204/304; es mejora parcial, sin inferir inclusión, stock o cobertura general.

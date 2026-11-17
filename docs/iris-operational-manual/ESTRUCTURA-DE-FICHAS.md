@@ -34,7 +34,11 @@ Ninguno permite elegir una versión por inferencia. El registro debe permitir re
 | Plano individual | Puede tener modelo, tipología y cuadro de áreas; puede mostrar únicamente un dibujo o ser una imagen de reemplazo. Tres planos INN solo rotulan niveles y no acreditan código o métricas. |
 | Pisos o plantas | Sección de cápsulas que abre otro carrusel. Once fichas la presentan; Nórdico no. Incluye subterráneos, plantas, cubiertas y elevaciones. Se revisaron 105 gráficos; no se obtuvieron nuevas superficies inequívocas por modelo. INN sí identifica Torres A/B. |
 | Estacionamientos y Bodegas | Tablas distintas de las viviendas. Su existencia o precio no acredita inclusión en la unidad ni disponibilidad. No confundir sus botones Ver más con la apertura de un departamento. |
-| Archivos | Opciones de impresión, brochure o condiciones según ficha. Nórdico solo permite impresión en el menú observado; Índigo e INN muestran dos rótulos Descargar brochure. Living Town tiene control oculto. No se deduce identidad o contenido de un documento desde el rótulo del botón. |
+| Archivos | Opciones de impresión, brochure o condiciones según ficha. Nórdico solo permite impresión en el menú observado; Índigo e INN muestran dos rótulos Descargar brochure. Living Town pudo abrirse mediante el botón real; el span no era un control visible fiable. No se deduce identidad o contenido de un documento desde el rótulo del botón. |
 | Información solo gráfica | Mood tiene dos cuadros numéricos de alcance parcial; Capitanes y Bold combinan métricas y conflictos; INN y Nórdico aportan cuadros con patio/loggia o torres. Muchos otros planos solo identifican modelo y tipología. Cada imagen requiere su lectura y alcance propios. |
 
 La presencia de una galería o menú no prueba que contenga el dato buscado. Registrar la navegación adicional necesaria, qué imagen o documento se revisó y si el rótulo era legible, ausente o contradictorio.
+
+## Precisión de fase 3
+
+La plantilla técnica DOM es otra vista de datos del proyecto, no un brochure nuevo ni prueba de un inventario completo de modelos. Sus doce extractos filtrados repiten datos. La opción Condiciones comerciales produjo un documento adicional no exportable mediante la capacidad disponible. Un menú observado, una plantilla leída y un PDF no leído deben conservar estados separados. La lista actual de opciones queda documentada en REVISION-FUENTES-NUEVAS.json.

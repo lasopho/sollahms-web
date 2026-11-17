@@ -1,0 +1,839 @@
+{
+  "fecha": "2026-11-16",
+  "modo": "Inventario documental local; sin navegador, sin red, sin cambios de repositorio",
+  "commit_corte": "27c21f28980ff120454980abfe5064cb9dd1d983",
+  "instruccion_usuario": {
+    "archivo": "/Users/luissandoval/.codex/attachments/b244b2fe-b00d-4f27-8f54-b3975988ca64/Texto pegado.txt",
+    "sha256": "56d72c88fa4e0604166c675e2d4fbb5c85e1f395de941aea4b42d73f9a0cc5c1"
+  },
+  "lecturas_obligatorias": [
+    {
+      "archivo": "AGENTS.md",
+      "estado": "Ausente en filesystem y árbol Git HEAD",
+      "accion": "Registrar ausencia; root NEXT solicitado debe crearse en corte fase3. AGENTS ausente no sustituye instrucciones explícitas de usuario."
+    },
+    {
+      "archivo": "NEXT-PROMPT.md",
+      "estado": "Ausente en filesystem y árbol Git HEAD",
+      "accion": "Registrar ausencia; root NEXT solicitado debe crearse en corte fase3. AGENTS ausente no sustituye instrucciones explícitas de usuario."
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/continuidad/NEXT-PROMPT.md",
+      "estado": "Leído",
+      "sha256": "fcaeb907c2fbefc9ffa44e54b32cd4c84e9acb96e77c497cb2e4fe7407e7d092"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/INFORME-IRIS-LEBEN.md",
+      "estado": "Leído",
+      "sha256": "57d60db0267f7088b1e675b6f700a57ca5faee7fd61e8ea174221a902772d606"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/RESUMEN-IRIS.json",
+      "estado": "Leído",
+      "sha256": "ef1b04aacc35b4fdd1389f4e9ba12621dd1419078eeafaf5d7acd0237af05db8"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/PENDIENTES-POR-CAMPO.csv",
+      "estado": "Leído",
+      "sha256": "43f95785d57489816a70ec196f265567b37a40a64751c6745edffef42fbe1c5b"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/CONTRADICCIONES-IRIS.csv",
+      "estado": "Leído",
+      "sha256": "dcc9831ade435821892b7dd04a2ffbb8a4cd1664fa9fc308abc7d86bab5010f6"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/PLANOS-LECTURA-GRAFICA.json",
+      "estado": "Leído",
+      "sha256": "b6f0fcd8bd5cb3a55511f540744d2e0f84cfe60aad7b74742e149e69aeeb2d2d"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/UNIDADES-IRIS.csv",
+      "estado": "Leído",
+      "sha256": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/HECHOS-IRIS.csv",
+      "estado": "Leído",
+      "sha256": "3be90034891169e7a929053adefab3b28745eb0c8ee12a826316b936a8c2635f"
+    },
+    {
+      "archivo": "docs/iris-operational-manual/HISTORIAL-DE-CONSULTAS.md",
+      "estado": "Leído",
+      "sha256": "d5dc89a7339bb04b5678253ae8c5d19dec51400301fa3db26b137c0bbeaa84f0"
+    },
+    {
+      "archivo": "docs/iris-operational-manual/MAPA-DE-NAVEGACION.md",
+      "estado": "Leído",
+      "sha256": "57a80b0bd10668561d6602e2f1632df26ebfb6187f52c752c1ba040b34141d95"
+    },
+    {
+      "archivo": "docs/iris-operational-manual/ESTRUCTURA-DE-FICHAS.md",
+      "estado": "Leído",
+      "sha256": "8710cdcdbc53549a1581bcdc82802a576bfc912bbf38f4fa96fa3fc0d480c367"
+    },
+    {
+      "archivo": "docs/iris-operational-manual/PROCEDIMIENTOS-DE-EXTRACCION.md",
+      "estado": "Leído",
+      "sha256": "b45f82f4fe9bf941be708f9c0d909e60d025976ca6961559751e7601046f6649"
+    },
+    {
+      "archivo": "docs/iris-operational-manual/UBICACION-DE-DATOS.md",
+      "estado": "Leído",
+      "sha256": "b8ded828aa41f00eccea0898cc950fa9ee02fcc6dc6986b80c085e88b27371fc"
+    },
+    {
+      "archivo": "docs/iris-operational-manual/NEXT-PROMPT.md",
+      "estado": "Leído",
+      "sha256": "f6bc1c758b7c505b98f1436ebdff5cdb546bfb01842280b9e8437c00bfe7cb5d"
+    },
+    {
+      "archivo": "docs/iris-operational-manual/LIMITACIONES-Y-EXCEPCIONES.md",
+      "estado": "Leído",
+      "sha256": "635c23abd5b8aee458a99d35445ffc62b90838924cd3d305daa3c6696004739c"
+    }
+  ],
+  "resumen": {
+    "proyectos": 13,
+    "pendientes_base": 330,
+    "brochures_leben_agotados": 11,
+    "paginas_brochure_leben_agotadas": 82,
+    "tarjetas_dom_ya_inventariadas": 330,
+    "graficos_ya_inspeccionados": 210,
+    "planos_unidad_reales_ya_leidos": 104,
+    "plantas_elevaciones_ya_leidas": 105,
+    "reemplazo_sin_plano": 1,
+    "pdfs_unidad_sin_documento_leido": 3,
+    "nuevas_fuentes_locales_con_datos_leben_detectadas": 0,
+    "nuevo_campo_completo_por_este_inventario": 0
+  },
+  "pdfs_inn_prioritarios": [
+    {
+      "id_candidato": "F3-S-PDF-INN-001",
+      "slug": "inn-puerto-chico",
+      "fuente_previa": "F033",
+      "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+      "seccion_observada": "Unidades en Venta > modal de unidad > recurso de plano adjunto",
+      "nombre_recurso": "694a1152bb220_pc-f-15-04.pdf",
+      "id_asset_previo": "88afc464c61219b1",
+      "url_observada": "https://cdn2.infocasas.com.uy/web/694a1152bb220_pc-f-15-04.pdf",
+      "content_type_previo": null,
+      "sha256_documento": null,
+      "motivo_sin_hash": "Ningún byte válido exportado; no inventar hash.",
+      "fallo_previo_literal": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at Ioe (<anonymous>:1:42)\n    at <anonymous>:1:355",
+      "unidades_ui": [
+        {
+          "unidad": "616",
+          "modelo_descripcion_literal": "N",
+          "dormitorios_ui": 2,
+          "banos_ui": 2,
+          "superficies_literal": "95.64m² Internos · 15.22m² Terraza"
+        }
+      ],
+      "campos_potenciales": [
+        "codigo_modelo",
+        "tipo_por_modelo",
+        "etapa_modelo",
+        "dormitorios",
+        "banos",
+        "superficie_util",
+        "superficie_interior",
+        "superficie_total",
+        "superficie_terraza",
+        "superficie_jardin",
+        "superficie_terreno"
+      ],
+      "mecanismo_ui_sugerido": "Abrir la ficha exacta y la unidad asociada. Revisar si el visor ofrece control normal para abrir/descargar el documento. Usar solo UI autorizada y exportación documentada de recursos observados. Si el control no existe o vuelve a fallar, registrar el error y continuar.",
+      "prohibido": "No deducir código del nombre PC-F, no construir URL alternativa, no usar HTTP externo/endpoints privados, no repetir exportaciones de imágenes válidas y no eludir controles."
+    },
+    {
+      "id_candidato": "F3-S-PDF-INN-002",
+      "slug": "inn-puerto-chico",
+      "fuente_previa": "F033",
+      "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+      "seccion_observada": "Unidades en Venta > modal de unidad > recurso de plano adjunto",
+      "nombre_recurso": "694a0be8bd379_pc-f-03-04.pdf",
+      "id_asset_previo": "06635bff688c3d30",
+      "url_observada": "https://cdn2.infocasas.com.uy/web/694a0be8bd379_pc-f-03-04.pdf",
+      "content_type_previo": null,
+      "sha256_documento": null,
+      "motivo_sin_hash": "Ningún byte válido exportado; no inventar hash.",
+      "fallo_previo_literal": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at Ioe (<anonymous>:1:42)\n    at <anonymous>:1:355",
+      "unidades_ui": [
+        {
+          "unidad": "513",
+          "modelo_descripcion_literal": "B2",
+          "dormitorios_ui": 3,
+          "banos_ui": 3,
+          "superficies_literal": "135.54m² Internos · 23.06m² Terraza"
+        }
+      ],
+      "campos_potenciales": [
+        "codigo_modelo",
+        "tipo_por_modelo",
+        "etapa_modelo",
+        "dormitorios",
+        "banos",
+        "superficie_util",
+        "superficie_interior",
+        "superficie_total",
+        "superficie_terraza",
+        "superficie_jardin",
+        "superficie_terreno"
+      ],
+      "mecanismo_ui_sugerido": "Abrir la ficha exacta y la unidad asociada. Revisar si el visor ofrece control normal para abrir/descargar el documento. Usar solo UI autorizada y exportación documentada de recursos observados. Si el control no existe o vuelve a fallar, registrar el error y continuar.",
+      "prohibido": "No deducir código del nombre PC-F, no construir URL alternativa, no usar HTTP externo/endpoints privados, no repetir exportaciones de imágenes válidas y no eludir controles."
+    },
+    {
+      "id_candidato": "F3-S-PDF-INN-003",
+      "slug": "inn-puerto-chico",
+      "fuente_previa": "F033",
+      "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+      "seccion_observada": "Unidades en Venta > modal de unidad > recurso de plano adjunto",
+      "nombre_recurso": "694a0b8a05509_pc-f-17-04.pdf",
+      "id_asset_previo": "8c231183a823809e",
+      "url_observada": "https://cdn2.infocasas.com.uy/web/694a0b8a05509_pc-f-17-04.pdf",
+      "content_type_previo": null,
+      "sha256_documento": null,
+      "motivo_sin_hash": "Ningún byte válido exportado; no inventar hash.",
+      "fallo_previo_literal": "Loaded resource fetch failed: Asset bundling failed; page fetch failed: Browser Use encountered an error interacting with this webpage: TypeError: Failed to fetch\n    at Ioe (<anonymous>:1:42)\n    at <anonymous>:1:355",
+      "unidades_ui": [
+        {
+          "unidad": "601",
+          "modelo_descripcion_literal": "O1",
+          "dormitorios_ui": 3,
+          "banos_ui": 3,
+          "superficies_literal": "134.93m² Internos · 16.7m² Terraza"
+        }
+      ],
+      "campos_potenciales": [
+        "codigo_modelo",
+        "tipo_por_modelo",
+        "etapa_modelo",
+        "dormitorios",
+        "banos",
+        "superficie_util",
+        "superficie_interior",
+        "superficie_total",
+        "superficie_terraza",
+        "superficie_jardin",
+        "superficie_terreno"
+      ],
+      "mecanismo_ui_sugerido": "Abrir la ficha exacta y la unidad asociada. Revisar si el visor ofrece control normal para abrir/descargar el documento. Usar solo UI autorizada y exportación documentada de recursos observados. Si el control no existe o vuelve a fallar, registrar el error y continuar.",
+      "prohibido": "No deducir código del nombre PC-F, no construir URL alternativa, no usar HTTP externo/endpoints privados, no repetir exportaciones de imágenes válidas y no eludir controles."
+    }
+  ],
+  "por_proyecto": [
+    {
+      "id_inventario": "F3-P-own",
+      "slug": "own",
+      "fuente_previa": "F035",
+      "url_ficha": "",
+      "pendientes_iniciales": 35,
+      "estado": "Sin ficha exacta; no hay documentos Iris identificados. No repetir búsquedas agotadas ni sustituir proyecto.",
+      "menu_observado": null,
+      "candidatos_sin_lectura": [],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": false,
+        "tarjetas_unidad": 0,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-mood",
+      "slug": "edificio-mood",
+      "fuente_previa": "F024",
+      "url_ficha": "https://iris.yapo.cl/proyecto/650?operation=Venta",
+      "pendientes_iniciales": 26,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "Opciones observadas, documentos no abiertos",
+        "opciones": [
+          "Descargar brochure",
+          "Condiciones comerciales"
+        ]
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Condiciones comerciales",
+          "estado": "Control visto; documento no abierto",
+          "prioridad": 4,
+          "campos_potenciales": [
+            "estado_comercial",
+            "entrega",
+            "precios_tipologia"
+          ],
+          "limite": "Solo extracción selectiva de campos autorizados. No conservar columnas comerciales excluidas, porcentajes ni atribuciones. No acredita precio propio Sollahms ni resuelve B1A."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 30,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-indigo",
+      "slug": "edificio-indigo",
+      "fuente_previa": "F032",
+      "url_ficha": "https://iris.yapo.cl/proyecto/653?operation=Venta",
+      "pendientes_iniciales": 23,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "Revisado visualmente en UI; opciones abiertas, sin ejecutar impresión ni descargar documentos duplicados.",
+        "opciones": [
+          "Imprimir ficha técnica",
+          "Descargar brochure",
+          "Descargar brochure"
+        ]
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Ficha técnica para impresión",
+          "estado": "Control visto; salida no abierta",
+          "prioridad": 2,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "tipo_por_modelo",
+            "etapa_modelo",
+            "dormitorios",
+            "banos",
+            "superficie_util",
+            "superficie_interior",
+            "superficie_total",
+            "superficie_terraza",
+            "superficie_jardin",
+            "superficie_terreno",
+            "interior_*"
+          ],
+          "limite": "Puede ser reformateo de datos ya vistos: solo registrar hechos realmente nuevos; no almacenar ficha completa si contiene campos comerciales excluidos."
+        },
+        {
+          "tipo": "Segundo control con rótulo Descargar brochure",
+          "estado": "Identidad del documento no verificada; no es prueba de otro documento",
+          "prioridad": 3,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "superficie_*",
+            "interior_*"
+          ],
+          "limite": "No pulsar para repetir los brochures ya examinados. Primero identificar mediante texto, enlace o metadatos UI legítimos; sin distinguirlo de documento previo, registrar identidad no verificable y no duplicar descarga."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 2,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-santo",
+      "slug": "edificio-santo",
+      "fuente_previa": "F025",
+      "url_ficha": "https://iris.yapo.cl/proyecto/640?operation=Venta",
+      "pendientes_iniciales": 25,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "Opciones observadas, documentos no abiertos",
+        "opciones": [
+          "Descargar brochure",
+          "Condiciones comerciales"
+        ]
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Condiciones comerciales",
+          "estado": "Control visto; documento no abierto",
+          "prioridad": 4,
+          "campos_potenciales": [
+            "estado_comercial",
+            "entrega",
+            "precios_tipologia"
+          ],
+          "limite": "Solo extracción selectiva de campos autorizados. No conservar columnas comerciales excluidas, porcentajes ni atribuciones. No acredita precio propio Sollahms ni resuelve B1A."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 1,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-suecia",
+      "slug": "edificio-suecia",
+      "fuente_previa": "F027",
+      "url_ficha": "https://iris.yapo.cl/proyecto/657?operation=Venta",
+      "pendientes_iniciales": 24,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "Opciones observadas, documentos no abiertos",
+        "opciones": [
+          "Descargar brochure",
+          "Condiciones comerciales"
+        ]
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Condiciones comerciales",
+          "estado": "Control visto; documento no abierto",
+          "prioridad": 4,
+          "campos_potenciales": [
+            "estado_comercial",
+            "entrega",
+            "precios_tipologia"
+          ],
+          "limite": "Solo extracción selectiva de campos autorizados. No conservar columnas comerciales excluidas, porcentajes ni atribuciones. No acredita precio propio Sollahms ni resuelve B1A."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 1,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-living-town",
+      "slug": "edificio-living-town",
+      "fuente_previa": "F023",
+      "url_ficha": "https://iris.yapo.cl/proyecto/645?operation=Venta",
+      "pendientes_iniciales": 20,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "Control observado en DOM pero no visible; no fue posible abrirlo con interacción UI válida. No se declara menú leído.",
+        "opciones": []
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Control Archivos oculto",
+          "estado": "Existe en DOM, no visible en comprobación previa; índice no leído",
+          "prioridad": 2,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "superficie_*",
+            "interior_*"
+          ],
+          "limite": "Comprobar UI actual y diseño visible; no forzar click, no evaluar manejadores ni estado interno para extraer documentos."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 105,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-baum",
+      "slug": "edificio-baum",
+      "fuente_previa": "F026",
+      "url_ficha": "https://iris.yapo.cl/proyecto/935?operation=Venta",
+      "pendientes_iniciales": 21,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "Opciones observadas, documentos no abiertos",
+        "opciones": [
+          "Descargar brochure",
+          "Condiciones comerciales"
+        ]
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Condiciones comerciales",
+          "estado": "Control visto; documento no abierto",
+          "prioridad": 4,
+          "campos_potenciales": [
+            "estado_comercial",
+            "entrega",
+            "precios_tipologia"
+          ],
+          "limite": "Solo extracción selectiva de campos autorizados. No conservar columnas comerciales excluidas, porcentajes ni atribuciones. No acredita precio propio Sollahms ni resuelve B1A."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 108,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-capitanes",
+      "slug": "capitanes",
+      "fuente_previa": "F028",
+      "url_ficha": "https://iris.yapo.cl/proyecto/658?operation=Venta",
+      "pendientes_iniciales": 22,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "verificado_solo_opciones",
+        "opciones": [
+          "Imprimir ficha técnica",
+          "Descargar brochure",
+          "Condiciones comerciales"
+        ],
+        "documentos_abiertos": false,
+        "acciones_ejecutadas": false,
+        "fecha_consulta": "2026-11-16",
+        "source_project_url": "https://iris.yapo.cl/proyecto/658?operation=Venta"
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Ficha técnica para impresión",
+          "estado": "Control visto; salida no abierta",
+          "prioridad": 2,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "tipo_por_modelo",
+            "etapa_modelo",
+            "dormitorios",
+            "banos",
+            "superficie_util",
+            "superficie_interior",
+            "superficie_total",
+            "superficie_terraza",
+            "superficie_jardin",
+            "superficie_terreno",
+            "interior_*"
+          ],
+          "limite": "Puede ser reformateo de datos ya vistos: solo registrar hechos realmente nuevos; no almacenar ficha completa si contiene campos comerciales excluidos."
+        },
+        {
+          "tipo": "Condiciones comerciales",
+          "estado": "Control visto; documento no abierto",
+          "prioridad": 4,
+          "campos_potenciales": [
+            "estado_comercial",
+            "entrega",
+            "precios_tipologia"
+          ],
+          "limite": "Solo extracción selectiva de campos autorizados. No conservar columnas comerciales excluidas, porcentajes ni atribuciones. No acredita precio propio Sollahms ni resuelve B1A."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 4,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-argomedo",
+      "slug": "edificio-argomedo",
+      "fuente_previa": "F030",
+      "url_ficha": "https://iris.yapo.cl/proyecto/647?operation=Venta",
+      "pendientes_iniciales": 26,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "verificado_solo_opciones",
+        "opciones": [
+          "Imprimir ficha técnica",
+          "Descargar brochure",
+          "Condiciones comerciales"
+        ],
+        "documentos_abiertos": false,
+        "acciones_ejecutadas": false,
+        "fecha_consulta": "2026-11-16",
+        "source_project_url": "https://iris.yapo.cl/proyecto/647?operation=Venta"
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Ficha técnica para impresión",
+          "estado": "Control visto; salida no abierta",
+          "prioridad": 2,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "tipo_por_modelo",
+            "etapa_modelo",
+            "dormitorios",
+            "banos",
+            "superficie_util",
+            "superficie_interior",
+            "superficie_total",
+            "superficie_terraza",
+            "superficie_jardin",
+            "superficie_terreno",
+            "interior_*"
+          ],
+          "limite": "Puede ser reformateo de datos ya vistos: solo registrar hechos realmente nuevos; no almacenar ficha completa si contiene campos comerciales excluidos."
+        },
+        {
+          "tipo": "Condiciones comerciales",
+          "estado": "Control visto; documento no abierto",
+          "prioridad": 4,
+          "campos_potenciales": [
+            "estado_comercial",
+            "entrega",
+            "precios_tipologia"
+          ],
+          "limite": "Solo extracción selectiva de campos autorizados. No conservar columnas comerciales excluidas, porcentajes ni atribuciones. No acredita precio propio Sollahms ni resuelve B1A."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 1,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-nordico",
+      "slug": "edificio-nordico",
+      "fuente_previa": "F034",
+      "url_ficha": "https://iris.yapo.cl/proyecto/1528?operation=Venta",
+      "pendientes_iniciales": 34,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "Revisado visualmente en UI; opciones abiertas, sin ejecutar impresión ni descargar documentos duplicados.",
+        "opciones": [
+          "Imprimir ficha técnica"
+        ]
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Ficha técnica para impresión",
+          "estado": "Control visto; salida no abierta",
+          "prioridad": 2,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "tipo_por_modelo",
+            "etapa_modelo",
+            "dormitorios",
+            "banos",
+            "superficie_util",
+            "superficie_interior",
+            "superficie_total",
+            "superficie_terraza",
+            "superficie_jardin",
+            "superficie_terreno",
+            "interior_*"
+          ],
+          "limite": "Puede ser reformateo de datos ya vistos: solo registrar hechos realmente nuevos; no almacenar ficha completa si contiene campos comerciales excluidos."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 9,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-inn-puerto-chico",
+      "slug": "inn-puerto-chico",
+      "fuente_previa": "F033",
+      "url_ficha": "https://iris.yapo.cl/proyecto/654?operation=Venta",
+      "pendientes_iniciales": 21,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "Revisado visualmente en UI; opciones abiertas, sin ejecutar impresión ni descargar documentos duplicados.",
+        "opciones": [
+          "Imprimir ficha técnica",
+          "Descargar brochure",
+          "Descargar brochure"
+        ]
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Ficha técnica para impresión",
+          "estado": "Control visto; salida no abierta",
+          "prioridad": 2,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "tipo_por_modelo",
+            "etapa_modelo",
+            "dormitorios",
+            "banos",
+            "superficie_util",
+            "superficie_interior",
+            "superficie_total",
+            "superficie_terraza",
+            "superficie_jardin",
+            "superficie_terreno",
+            "interior_*"
+          ],
+          "limite": "Puede ser reformateo de datos ya vistos: solo registrar hechos realmente nuevos; no almacenar ficha completa si contiene campos comerciales excluidos."
+        },
+        {
+          "tipo": "Segundo control con rótulo Descargar brochure",
+          "estado": "Identidad del documento no verificada; no es prueba de otro documento",
+          "prioridad": 3,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "superficie_*",
+            "interior_*"
+          ],
+          "limite": "No pulsar para repetir los brochures ya examinados. Primero identificar mediante texto, enlace o metadatos UI legítimos; sin distinguirlo de documento previo, registrar identidad no verificable y no duplicar descarga."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 36,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-indi",
+      "slug": "edificio-indi",
+      "fuente_previa": "F031",
+      "url_ficha": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+      "pendientes_iniciales": 25,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "verificado_solo_opciones",
+        "opciones": [
+          "Imprimir ficha técnica",
+          "Descargar brochure",
+          "Condiciones comerciales"
+        ],
+        "documentos_abiertos": false,
+        "acciones_ejecutadas": false,
+        "fecha_consulta": "2026-11-16",
+        "source_project_url": "https://iris.yapo.cl/proyecto/649?operation=Venta"
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Ficha técnica para impresión",
+          "estado": "Control visto; salida no abierta",
+          "prioridad": 2,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "tipo_por_modelo",
+            "etapa_modelo",
+            "dormitorios",
+            "banos",
+            "superficie_util",
+            "superficie_interior",
+            "superficie_total",
+            "superficie_terraza",
+            "superficie_jardin",
+            "superficie_terreno",
+            "interior_*"
+          ],
+          "limite": "Puede ser reformateo de datos ya vistos: solo registrar hechos realmente nuevos; no almacenar ficha completa si contiene campos comerciales excluidos."
+        },
+        {
+          "tipo": "Condiciones comerciales",
+          "estado": "Control visto; documento no abierto",
+          "prioridad": 4,
+          "campos_potenciales": [
+            "estado_comercial",
+            "entrega",
+            "precios_tipologia"
+          ],
+          "limite": "Solo extracción selectiva de campos autorizados. No conservar columnas comerciales excluidas, porcentajes ni atribuciones. No acredita precio propio Sollahms ni resuelve B1A."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 17,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    },
+    {
+      "id_inventario": "F3-P-edificio-bold",
+      "slug": "edificio-bold",
+      "fuente_previa": "F029",
+      "url_ficha": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+      "pendientes_iniciales": 28,
+      "estado": "Ficha y gráficos agotados; menú documental pendiente de aprovechamiento selectivo.",
+      "menu_observado": {
+        "estado": "verificado_solo_opciones",
+        "opciones": [
+          "Imprimir ficha técnica",
+          "Descargar brochure",
+          "Condiciones comerciales"
+        ],
+        "documentos_abiertos": false,
+        "acciones_ejecutadas": false,
+        "fecha_consulta": "2026-11-16",
+        "source_project_url": "https://iris.yapo.cl/proyecto/646?operation=Venta"
+      },
+      "candidatos_sin_lectura": [
+        {
+          "tipo": "Ficha técnica para impresión",
+          "estado": "Control visto; salida no abierta",
+          "prioridad": 2,
+          "campos_potenciales": [
+            "nombre_modelo",
+            "codigo_modelo",
+            "tipo_por_modelo",
+            "etapa_modelo",
+            "dormitorios",
+            "banos",
+            "superficie_util",
+            "superficie_interior",
+            "superficie_total",
+            "superficie_terraza",
+            "superficie_jardin",
+            "superficie_terreno",
+            "interior_*"
+          ],
+          "limite": "Puede ser reformateo de datos ya vistos: solo registrar hechos realmente nuevos; no almacenar ficha completa si contiene campos comerciales excluidos."
+        },
+        {
+          "tipo": "Condiciones comerciales",
+          "estado": "Control visto; documento no abierto",
+          "prioridad": 4,
+          "campos_potenciales": [
+            "estado_comercial",
+            "entrega",
+            "precios_tipologia"
+          ],
+          "limite": "Solo extracción selectiva de campos autorizados. No conservar columnas comerciales excluidas, porcentajes ni atribuciones. No acredita precio propio Sollahms ni resuelve B1A."
+        }
+      ],
+      "no_repetir": {
+        "descripcion_amenities_caracteristicas": true,
+        "tarjetas_unidad": 16,
+        "graficos_unidad_plantas": "Lecturas completas y hashes en PLANOS-LECTURA-GRAFICA.json; consultar solo nuevas diferencias, no reexportar."
+      }
+    }
+  ],
+  "fuentes_locales": {
+    "F002_F012": "11brochures completos con SHA y revisión previa; no volver a leer/descargar. F001 Parque Germania es ESEPE, fuera de Leben.",
+    "F013_F014": "Catálogo y fichas snapshot ya revisados. Objetos de los13Leben del checkout137 y snapshot131 son exactamente iguales; diferencias de hashes globales no son datos nuevos Leben ni motivo para cambiar universo.",
+    "F015_F017_F018": "Manifiesto brochures, inventario Leben y nota Nórdico ya revisados. Los hashes actuales del checkout coinciden con registro de fuentes. No son fuentes nuevas.",
+    "F020_F021_F022": "Declaraciones directas ya registradas. No hay nueva comunicación del propietario en este inventario; COM-F2-001 no confirma cuatropreciosB1A.",
+    "css_scripts_tests": "Archivos generadores, estilos y fixtures no acreditan información inmobiliaria nueva; no ejecutar builds ni generadores.",
+    "correo_drive": "No consultados: no hay autorización para abrir comunicaciones nuevas en este subtrabajo."
+  },
+  "fuente_archivada_adicional_no_examinada": {
+    "id_candidato": "F3-S-VISOR-NORDICO",
+    "archivo_referencia": "docs/nordico-y-parque-germania-2026-10-13.md",
+    "fuente_previa": "F018",
+    "url_archivada": "https://www.lanube360.com/ileben/edificio-nordico/",
+    "estado": "IFrame oficial de ubicación documentado, funcionamiento no acreditado en revisión13/10; disponibilidad actual no verificada",
+    "prioridad": "Baja: fuente de ubicación/entorno, no evidencia de plano interior ni superficies por modelo. No repetir investigación general para buscar datos ajenos a su alcance.",
+    "no_inferir": "No declarar recorrido interior ni detalles de unidades desde entorno."
+  },
+  "hallazgos_calidad": [
+    {
+      "id_hallazgo": "F3-H001",
+      "detalle": "Los snapshots B conservan limites iniciales que dicen plantas no inspeccionadas e índice Archivos no leído. La revisión final posterior sí cubrió33plantas y menús. Tratar esos textos como histórico; usar revision_final_plantas, PLANTAS-REVISION-FINAL y manifiesto para evitar repetir.",
+      "accion": "En corte fase3 etiquetar alcance inicial y final de forma inequívoca; no sobrescribir snapshot histórico."
+    },
+    {
+      "id_hallazgo": "F3-H002",
+      "detalle": "Una nota de alcance Mood aparece reutilizada también en límites de BAUM/Santo/Suecia. No significa que tengan esos dosplanos numéricos Mood.",
+      "accion": "Normalizar descripción de límites por proyecto en nuevo corte sin alterar hechos históricos ni contar información nueva."
+    },
+    {
+      "id_hallazgo": "F3-H003",
+      "detalle": "Ver opción de menú no prueba identidad ni contenido del documento. Dos botones con igual rótulo Descargar brochure no prueban dosbrochures diferentes.",
+      "accion": "Identificar primero por UI legítima; si no se distingue del previo, conservar limitación y evitar descarga duplicada."
+    }
+  ],
+  "protocolo_global": [
+    "Mantener autenticación interactiva en Chrome visible. Si expira, pausar y propietario ingresa credenciales/OTP/CAPTCHA personalmente; no almacenar cookies/tokens/credenciales.",
+    "No guardar ni extraer columnas comerciales excluidas. Ficha técnica o condiciones pueden contenerlas: guardar solo evidencia autorizada y selectiva.",
+    "No contar como completo un campo respaldado únicamente por una unidad/plano parcial. Mantener alcance literal y distinguir avance parcial frente a cierre.",
+    "No repetir Own con un proyecto alternativo; permanece vendido.",
+    "Fuentes no abiertas o no identificables siguen siendo limitaciones, no ausencia física ni NO APLICA."
+  ],
+  "estado_del_inventario": "Inventario previo a la navegación de fase3; no es una cola actual. Consultar REVISION-FUENTES-NUEVAS.json, REINTENTO-PDF-INN.json y DOCUMENTO-ADICIONAL-NO-EXPORTABLE.json.",
+  "es_cola_actual": false
+}

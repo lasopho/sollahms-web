@@ -52,3 +52,9 @@ Cada hecho debe conservar valor literal, valor normalizado cuando proceda, etiqu
 La sección **Pisos o plantas** puede mostrar únicamente botones en forma de cápsula con el nombre del nivel. La ausencia de imágenes en el DOM de esa sección no significa que no haya planos. En Living Town se verificó que pulsar la primera cápsula, `.floors .col-auto` en la interfaz observada, abre un modal independiente con las imágenes de los nueve niveles. Allí se leen las leyendas y los `img` de cada tarjeta del carrusel, se exportan las URLs observadas mediante `pageAssets` y se revisa cada gráfico.
 
 Mantener separados esos planos generales y los planos individuales de **Unidades en Venta**. Las plantas pueden mostrar distribución, subterráneos, cubierta o elevaciones sin un cuadro de superficies por modelo. Si la resolución publicada no permite leer un dato, registrar esa limitación; no reconstruir medidas desde el dibujo. No adivinar una URL de mayor resolución.
+
+## Documentos adicionales y límites comprobados en fase 3
+
+Abrir el botón Archivos permite leer la plantilla técnica sin imprimir. Una prueba de Imprimir ficha técnica bloqueó su pestaña propia de Mood y no produjo un PDF exportable; no repetir ese camino ni confirmar una impresión física. Once fichas muestran Imprimir ficha técnica, Descargar brochure y Condiciones comerciales; Nórdico solo ofrece impresión. La lectura anterior que identificó dos rótulos Descargar brochure en Índigo/INN se precisa con la inspección del botón real en fase 3.
+
+Los tres PDF de unidades INN fallaron otra vez mediante pageAssets. El documento adicional de Condiciones comerciales de INN se observó como recurso `other`, cuya exportación fue rechazada. No reclasificarlo como imagen, adivinar otra URL o usar solicitudes externas. Conservar el fallo, la URL exacta y el estado no leído; no declarar inexistencia. Los registros están en el corte fase3-20261116.

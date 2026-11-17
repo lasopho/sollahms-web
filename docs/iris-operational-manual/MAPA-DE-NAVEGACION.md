@@ -32,8 +32,12 @@ No se observó **Vendido** entre esas opciones. Estado no permite inferir dispon
 4. Revisar **Unidades en Venta** y abrir una fila de unidad para acceder al modal.
 5. Registrar descripción de modelo, dormitorios, baños, superficies con sus etiquetas y plano adjunto. Distinguir tabla, tarjeta activa y tarjetas DOM no activas.
 6. Revisar **Pisos o plantas** y **Ubicación**. Pulsar una cápsula de nivel para abrir el visor gráfico; distinguir títulos, imágenes exportadas y lectura efectiva. Nórdico no presenta esa sección.
-7. Revisar **Archivos** si el control está visible. Puede ofrecer impresión, brochure o condiciones; las opciones y su disponibilidad difieren entre fichas. Nórdico solo ofreció impresión y Living Town tenía el control oculto. El historial conserva las opciones verificadas, sin ejecutar impresiones ni leer condiciones.
+7. Revisar **Archivos** si el control está visible. Puede ofrecer impresión, brochure o condiciones; las opciones y su disponibilidad difieren entre fichas. Nórdico solo ofreció impresión y Living Town requiere seleccionar el botón real; su span puede estar oculto. El historial conserva las opciones verificadas, sin ejecutar impresiones ni leer condiciones.
 
 Las ubicaciones exactas de los campos están en [Ubicación de datos](UBICACION-DE-DATOS.md); las fichas encontradas y las búsquedas sin coincidencia exacta están en el historial.
 
 Para reutilizar el módulo, seguir [Procedimientos de extracción](PROCEDIMIENTOS-DE-EXTRACCION.md), contrastar [Estructura de fichas](ESTRUCTURA-DE-FICHAS.md) y [Limitaciones y excepciones](LIMITACIONES-Y-EXCEPCIONES.md), y comenzar la siguiente sesión desde [NEXT-PROMPT](NEXT-PROMPT.md). Actualizar el historial y la fecha de verificación cuando una nueva consulta cambie el procedimiento o descubra una excepción.
+
+## Actualización de fase 3 — 16/11/2026
+
+Las doce plantillas técnicas de Archivos ya están revisadas por secciones permitidas. El control que funcionó en Living Town y las demás fichas es `button.filter-estate.dropdown-toggle`; verificar el selector y su visibilidad en cada sesión. Leer el menú completo o su anchor concatena contenido ajeno al encargo: usar solo encabezados permitidos y su siguiente hermano. No es necesario pulsar Imprimir para examinar la plantilla DOM.

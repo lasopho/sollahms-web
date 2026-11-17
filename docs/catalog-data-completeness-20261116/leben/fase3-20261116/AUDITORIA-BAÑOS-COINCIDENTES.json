@@ -1,0 +1,616 @@
+{
+  "fecha": "2026-11-16",
+  "commit_fuente": "27c21f28980ff120454980abfe5064cb9dd1d983",
+  "modo": "Auditoría estructural local de textos y rótulos gráficos previamente transcritos. Sin navegador, sin volver a abrir gráficos ni brochures, sin cambios en repositorio.",
+  "dictamen": "CONFIRMADO: procede reclasificar ambos campos banos de CONTRADICTORIO a PARCIAL y cambiar su tipo a FALTA_DOCUMENTAL_O_ALCANCE. No existe otra divergencia numérica de baños en las comparaciones publicadas revisadas de Bold e Indi.",
+  "fuentes": [
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/UNIDADES-IRIS.csv",
+      "sha256": "c24fb53b9ce562c52dfb3bb7ec9a507a1406ae900899fea561930f8ae08fe254"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/HECHOS-IRIS.csv",
+      "sha256": "3be90034891169e7a929053adefab3b28745eb0c8ee12a826316b936a8c2635f"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/PLANOS-LECTURA-GRAFICA.json",
+      "sha256": "b6f0fcd8bd5cb3a55511f540744d2e0f84cfe60aad7b74742e149e69aeeb2d2d"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/iris-20261116/CONTRADICCIONES-IRIS.csv",
+      "sha256": "dcc9831ade435821892b7dd04a2ffbb8a4cd1664fa9fc308abc7d86bab5010f6"
+    },
+    {
+      "archivo": "docs/catalog-data-completeness-20261116/leben/evidencias/hechos-documentales.json",
+      "sha256": "5a6f4693d37e91b7ebb927129b3d32bc0ef6885a31946b19b3787fd3fd051acc"
+    }
+  ],
+  "casos": [
+    {
+      "slug": "edificio-bold",
+      "campo_id": "banos",
+      "estado_inicial": "CONTRADICTORIO",
+      "estado_fase3_propuesto": "PARCIAL",
+      "tipo_pendiente_propuesto": "FALTA_DOCUMENTAL_O_ALCANCE",
+      "caso_original_que_se_conserva": {
+        "id": "BOLD-S1-TIPOLOGIA",
+        "slug": "edificio-bold",
+        "campos_ids": "codigo_modelo | nombre_modelo | dormitorios | banos",
+        "alcance": "312",
+        "clasificacion": "Contradictorio",
+        "detalle": "La ficha dice Tipo Estudio S1 y dormitorio Estudio; el plano S1 imprime 1D · 1B.",
+        "resolucion": "Abierta; conservar fuentes. No modificar Sollahms ni elegir una versión sin respaldo.",
+        "fuente": "F029",
+        "url": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+        "fecha": "2026-11-16"
+      },
+      "correccion_acotada": "Suprimir solo la atribución de divergencia numérica de baños; conservar el caso de tipología/código/asociación de plano abierto, sin resolverlo por inferencia.",
+      "unidad_objetivo": "312",
+      "modelo_ui_objetivo": "S1",
+      "modelo_grafico_objetivo": "S1",
+      "banos_ui_objetivo": "1",
+      "banos_grafico_objetivo": 1,
+      "id_plano_objetivo": "IR-P101",
+      "hechos_exactos_banos_objetivo": [
+        {
+          "id_hecho": "IR-H02069",
+          "slug": "edificio-bold",
+          "campo_id": "banos",
+          "valor_literal": "1",
+          "rotulo_original": "Baños de unidad",
+          "unidad": "",
+          "alcance": "Unidad 312; piso 3; modelo UI S1",
+          "seccion": "Unidades en Venta > modal / tarjeta DOM",
+          "fuente": "F029",
+          "url": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-bold.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        {
+          "id_hecho": "IR-H02890",
+          "slug": "edificio-bold",
+          "campo_id": "banos",
+          "valor_literal": "1",
+          "rotulo_original": "Baños gráfico",
+          "unidad": "",
+          "alcance": "Plano S1; alcance impreso: no indicado; vínculos DOM: 312",
+          "seccion": "Plano de unidad",
+          "fuente": "F029",
+          "url": "https://iris.yapo.cl/proyecto/646?operation=Venta",
+          "evidencia": "iris-20261116/evidencias/edificio-bold/704b24bff848ce48.avif",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        }
+      ],
+      "evidencia_historica_compatible": [
+        {
+          "id_evidencia": "E0218",
+          "inmobiliaria": "Leben",
+          "proyecto": "Edificio Bold",
+          "slug": "edificio-bold",
+          "campo": "banos",
+          "estado": "PARCIAL",
+          "valor": "1 (unidad 204)",
+          "unidad": "",
+          "id_fuente": "F014",
+          "archivo": "data/fichas-proyectos.json",
+          "pagina_pdf": null,
+          "linea": null,
+          "fecha_documental": "2026-10-09",
+          "observaciones": "Datos de ficha, con alcance de tipología o unidad tal como fuente: no generalizar a otros modelos."
+        },
+        {
+          "id_evidencia": "E0240",
+          "inmobiliaria": "Leben",
+          "proyecto": "Edificio Bold",
+          "slug": "edificio-bold",
+          "campo": "unidad:204:banos",
+          "estado": "HISTÓRICO",
+          "valor": 1,
+          "unidad": "baños",
+          "id_fuente": "F014",
+          "archivo": "data/fichas-proyectos.json",
+          "pagina_pdf": null,
+          "linea": null,
+          "fecha_documental": "2026-10-09",
+          "observaciones": "Valor archivado en verificación oficial anterior; no acredita disponibilidad ni vigencia al 2026-11-16."
+        }
+      ],
+      "pares_publicados_revisados": [
+        {
+          "unidad": "312",
+          "modelo_ui": "S1",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P101",
+          "modelo_grafico": "S1",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/704b24bff848ce48.avif",
+          "sha256_plano": "704b24bff848ce48e51f62203262eb5294e1de3a87bec22129ba6ae34f208ea4"
+        },
+        {
+          "unidad": "602",
+          "modelo_ui": "D1",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P102",
+          "modelo_grafico": "D1",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/438323a89520c82d.avif",
+          "sha256_plano": "438323a89520c82df31f3da63a480a57dd9552615a89dbe073210a161c1575ca"
+        },
+        {
+          "unidad": "202",
+          "modelo_ui": "D",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P103",
+          "modelo_grafico": "D",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/e5c7f23c6383fb50.avif",
+          "sha256_plano": "e5c7f23c6383fb506ead9d6d64555df0c4e5b5e86f4cf5460055d7988d8beb15"
+        },
+        {
+          "unidad": "302",
+          "modelo_ui": "D",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P103",
+          "modelo_grafico": "D",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/e5c7f23c6383fb50.avif",
+          "sha256_plano": "e5c7f23c6383fb506ead9d6d64555df0c4e5b5e86f4cf5460055d7988d8beb15"
+        },
+        {
+          "unidad": "701",
+          "modelo_ui": "E1",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P104",
+          "modelo_grafico": "E1",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/6c1686d4ecfbb780.avif",
+          "sha256_plano": "6c1686d4ecfbb78009d6af88cf10339efd79e4500da23790241f3173a19ad4e4"
+        },
+        {
+          "unidad": "801",
+          "modelo_ui": "E1",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P104",
+          "modelo_grafico": "E1",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/6c1686d4ecfbb780.avif",
+          "sha256_plano": "6c1686d4ecfbb78009d6af88cf10339efd79e4500da23790241f3173a19ad4e4"
+        },
+        {
+          "unidad": "1001",
+          "modelo_ui": "E1",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P104",
+          "modelo_grafico": "E1",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/6c1686d4ecfbb780.avif",
+          "sha256_plano": "6c1686d4ecfbb78009d6af88cf10339efd79e4500da23790241f3173a19ad4e4"
+        },
+        {
+          "unidad": "503",
+          "modelo_ui": "D2",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P105",
+          "modelo_grafico": "D2",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/834f56dfa229abaa.avif",
+          "sha256_plano": "834f56dfa229abaae1c9640f3e3d6614f3adcf72edbd3f251f4f0b109c0a6c87"
+        },
+        {
+          "unidad": "901",
+          "modelo_ui": "E1",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P104",
+          "modelo_grafico": "E1",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/6c1686d4ecfbb780.avif",
+          "sha256_plano": "6c1686d4ecfbb78009d6af88cf10339efd79e4500da23790241f3173a19ad4e4"
+        },
+        {
+          "unidad": "603",
+          "modelo_ui": "D2",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P105",
+          "modelo_grafico": "D2",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/834f56dfa229abaa.avif",
+          "sha256_plano": "834f56dfa229abaae1c9640f3e3d6614f3adcf72edbd3f251f4f0b109c0a6c87"
+        },
+        {
+          "unidad": "207",
+          "modelo_ui": "F",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P106",
+          "modelo_grafico": "F",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/75abc62a3dd6fbf5.avif",
+          "sha256_plano": "75abc62a3dd6fbf53eb976868c80dbcf08e1234ad31a586ca4ad65dacfd3bdd0"
+        },
+        {
+          "unidad": "307",
+          "modelo_ui": "F",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P106",
+          "modelo_grafico": "F",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/75abc62a3dd6fbf5.avif",
+          "sha256_plano": "75abc62a3dd6fbf53eb976868c80dbcf08e1234ad31a586ca4ad65dacfd3bdd0"
+        },
+        {
+          "unidad": "508",
+          "modelo_ui": "F",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P107",
+          "modelo_grafico": "F",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/6d5f09c66c9141bb.avif",
+          "sha256_plano": "6d5f09c66c9141bba82bc3b7e357816e9d87ae9b716ca8b88300bb9794be7fe3"
+        },
+        {
+          "unidad": "608",
+          "modelo_ui": "F",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P108",
+          "modelo_grafico": "F",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-bold/a56963c57b34229c.avif",
+          "sha256_plano": "a56963c57b34229c0aab282b012e6f1203bcac83d2e63bf04b93072881a3f106"
+        }
+      ],
+      "unidades_sin_plano_real": [
+        {
+          "unidad": "201",
+          "modelo_ui": "E2",
+          "banos_ui": "1",
+          "motivo": "Sin plano real con rótulo de baños; no se infiere contradicción ni se declara cobertura completa."
+        },
+        {
+          "unidad": "L-103",
+          "modelo_ui": "L3",
+          "banos_ui": "0",
+          "motivo": "Sin plano real con rótulo de baños; no se infiere contradicción ni se declara cobertura completa."
+        }
+      ],
+      "resumen_comparacion": {
+        "tarjetas_ui": 16,
+        "pares_con_rotulo_grafico": 14,
+        "pares_coincidentes": 14,
+        "pares_divergentes": 0,
+        "unidades_sin_plano_real": 2
+      },
+      "respaldo_para_inventario_completo": false,
+      "nuevo_campo_completado": false,
+      "contradiccion_original_resuelta": false,
+      "sigue_pendiente_informacion": true
+    },
+    {
+      "slug": "edificio-indi",
+      "campo_id": "banos",
+      "estado_inicial": "CONTRADICTORIO",
+      "estado_fase3_propuesto": "PARCIAL",
+      "tipo_pendiente_propuesto": "FALTA_DOCUMENTAL_O_ALCANCE",
+      "caso_original_que_se_conserva": {
+        "id": "INDI-D-PLANO-A2",
+        "slug": "edificio-indi",
+        "campos_ids": "codigo_modelo | nombre_modelo | dormitorios | banos",
+        "alcance": "607",
+        "clasificacion": "Contradictorio",
+        "detalle": "Iris dice Modelo D, 2 Dormitorios, 1 baño; el archivo modelo-d.jpg adjunto imprime Modelo A2 | 1D + 1B.",
+        "resolucion": "Abierta; conservar fuentes. No modificar Sollahms ni elegir una versión sin respaldo.",
+        "fuente": "F031",
+        "url": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+        "fecha": "2026-11-16"
+      },
+      "correccion_acotada": "Suprimir solo la atribución de divergencia numérica de baños; conservar el caso de tipología/código/asociación de plano abierto, sin resolverlo por inferencia.",
+      "unidad_objetivo": "607",
+      "modelo_ui_objetivo": "D",
+      "modelo_grafico_objetivo": "A2",
+      "banos_ui_objetivo": "1",
+      "banos_grafico_objetivo": 1,
+      "id_plano_objetivo": "IR-P114",
+      "hechos_exactos_banos_objetivo": [
+        {
+          "id_hecho": "IR-H02260",
+          "slug": "edificio-indi",
+          "campo_id": "banos",
+          "valor_literal": "1",
+          "rotulo_original": "Baños de unidad",
+          "unidad": "",
+          "alcance": "Unidad 607; piso 6; modelo UI D",
+          "seccion": "Unidades en Venta > modal / tarjeta DOM",
+          "fuente": "F031",
+          "url": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+          "evidencia": "iris-20261116/proyectos/edificio-indi.json",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        },
+        {
+          "id_hecho": "IR-H02938",
+          "slug": "edificio-indi",
+          "campo_id": "banos",
+          "valor_literal": "1",
+          "rotulo_original": "Baños gráfico",
+          "unidad": "",
+          "alcance": "Plano A2; alcance impreso: no indicado; vínculos DOM: 607",
+          "seccion": "Plano de unidad",
+          "fuente": "F031",
+          "url": "https://iris.yapo.cl/proyecto/649?operation=Venta",
+          "evidencia": "iris-20261116/evidencias/edificio-indi/ca67aa6cfbab948e.avif",
+          "fecha_consulta": "2026-11-16",
+          "clasificacion": "Recuperado desde Iris"
+        }
+      ],
+      "evidencia_historica_compatible": [
+        {
+          "id_evidencia": "E0294",
+          "inmobiliaria": "Leben",
+          "proyecto": "Edificio Indi",
+          "slug": "edificio-indi",
+          "campo": "banos",
+          "estado": "PARCIAL",
+          "valor": "1–2",
+          "unidad": "",
+          "id_fuente": "F014",
+          "archivo": "data/fichas-proyectos.json",
+          "pagina_pdf": null,
+          "linea": null,
+          "fecha_documental": "2026-10-09",
+          "observaciones": "Datos de ficha, con alcance de tipología o unidad tal como fuente: no generalizar a otros modelos."
+        }
+      ],
+      "pares_publicados_revisados": [
+        {
+          "unidad": "706",
+          "modelo_ui": "A7",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P110",
+          "modelo_grafico": "A7",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/8fe31afe31d525f9.avif",
+          "sha256_plano": "8fe31afe31d525f911102210466a10cb9e93b0ddc7ece1337ae91fa55d891099"
+        },
+        {
+          "unidad": "606",
+          "modelo_ui": "A2",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P111",
+          "modelo_grafico": "A2",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/cb684cff58d0ab1a.avif",
+          "sha256_plano": "cb684cff58d0ab1a73942bac9e34db8733a4264bddf8fd266c291ef158538656"
+        },
+        {
+          "unidad": "1001",
+          "modelo_ui": "B3",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P113",
+          "modelo_grafico": "B3",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/166e2f2422455e29.avif",
+          "sha256_plano": "166e2f2422455e29f48c1dee20844916e32c3dc69042eb4e4da752dc349c5a0d"
+        },
+        {
+          "unidad": "202",
+          "modelo_ui": "A",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P112",
+          "modelo_grafico": "A",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/cd59c4ad9bad05e4.avif",
+          "sha256_plano": "cd59c4ad9bad05e4d9b4b450b9be517ae4fd3136fee8f88277bf14dfef32e088"
+        },
+        {
+          "unidad": "702",
+          "modelo_ui": "A5",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P115",
+          "modelo_grafico": "A5",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/baf10de53e862048.avif",
+          "sha256_plano": "baf10de53e862048ae8ddcdf64e09dc39c51cb561dfc6a3925662be0a3749c43"
+        },
+        {
+          "unidad": "605",
+          "modelo_ui": "A",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P112",
+          "modelo_grafico": "A",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/cd59c4ad9bad05e4.avif",
+          "sha256_plano": "cd59c4ad9bad05e4d9b4b450b9be517ae4fd3136fee8f88277bf14dfef32e088"
+        },
+        {
+          "unidad": "1101",
+          "modelo_ui": "B3",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P113",
+          "modelo_grafico": "B3",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/166e2f2422455e29.avif",
+          "sha256_plano": "166e2f2422455e29f48c1dee20844916e32c3dc69042eb4e4da752dc349c5a0d"
+        },
+        {
+          "unidad": "607",
+          "modelo_ui": "D",
+          "banos_ui_literal": "1",
+          "id_plano": "IR-P114",
+          "modelo_grafico": "A2",
+          "banos_grafico": 1,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/ca67aa6cfbab948e.avif",
+          "sha256_plano": "ca67aa6cfbab948ead421680a9d4b2304d3ae38674a1d159d6d387121163e6d9"
+        },
+        {
+          "unidad": "804",
+          "modelo_ui": "C",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P117",
+          "modelo_grafico": "C",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/cb289b338112e92c.avif",
+          "sha256_plano": "cb289b338112e92c9367b87e4f5a87a03301bcad5d52baece5f7e508c95ee19f"
+        },
+        {
+          "unidad": "310",
+          "modelo_ui": "C",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P117",
+          "modelo_grafico": "C",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/cb289b338112e92c.avif",
+          "sha256_plano": "cb289b338112e92c9367b87e4f5a87a03301bcad5d52baece5f7e508c95ee19f"
+        },
+        {
+          "unidad": "411",
+          "modelo_ui": "A4",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P116",
+          "modelo_grafico": "C1",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/fd9b36c1d1d9bda9.avif",
+          "sha256_plano": "fd9b36c1d1d9bda92455b6ff31c4bce6f07a3872d230a9219155c0cdcb786cfe"
+        },
+        {
+          "unidad": "1103",
+          "modelo_ui": "C",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P117",
+          "modelo_grafico": "C",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/cb289b338112e92c.avif",
+          "sha256_plano": "cb289b338112e92c9367b87e4f5a87a03301bcad5d52baece5f7e508c95ee19f"
+        },
+        {
+          "unidad": "1104",
+          "modelo_ui": "C1",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P116",
+          "modelo_grafico": "C1",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/fd9b36c1d1d9bda9.avif",
+          "sha256_plano": "fd9b36c1d1d9bda92455b6ff31c4bce6f07a3872d230a9219155c0cdcb786cfe"
+        },
+        {
+          "unidad": "805",
+          "modelo_ui": "C1",
+          "banos_ui_literal": "2",
+          "id_plano": "IR-P116",
+          "modelo_grafico": "C1",
+          "banos_grafico": 2,
+          "comparacion_posible": true,
+          "coinciden": true,
+          "archivo_plano": "iris-20261116/evidencias/edificio-indi/fd9b36c1d1d9bda9.avif",
+          "sha256_plano": "fd9b36c1d1d9bda92455b6ff31c4bce6f07a3872d230a9219155c0cdcb786cfe"
+        }
+      ],
+      "unidades_sin_plano_real": [
+        {
+          "unidad": "L-2Casona",
+          "modelo_ui": "",
+          "banos_ui": "0",
+          "motivo": "Sin plano real con rótulo de baños; no se infiere contradicción ni se declara cobertura completa."
+        },
+        {
+          "unidad": "L-2",
+          "modelo_ui": "",
+          "banos_ui": "0",
+          "motivo": "Sin plano real con rótulo de baños; no se infiere contradicción ni se declara cobertura completa."
+        },
+        {
+          "unidad": "L-1Casona",
+          "modelo_ui": "",
+          "banos_ui": "0",
+          "motivo": "Sin plano real con rótulo de baños; no se infiere contradicción ni se declara cobertura completa."
+        }
+      ],
+      "resumen_comparacion": {
+        "tarjetas_ui": 17,
+        "pares_con_rotulo_grafico": 14,
+        "pares_coincidentes": 14,
+        "pares_divergentes": 0,
+        "unidades_sin_plano_real": 3
+      },
+      "respaldo_para_inventario_completo": false,
+      "nuevo_campo_completado": false,
+      "contradiccion_original_resuelta": false,
+      "sigue_pendiente_informacion": true
+    }
+  ],
+  "consecuencia_contable": {
+    "pendientes_antes": 330,
+    "pendientes_despues": 330,
+    "campos_comerciales": 36,
+    "campos_con_conflicto_antes": 24,
+    "campos_con_conflicto_despues": 22,
+    "campos_falta_documental_antes": 270,
+    "campos_falta_documental_despues": 272,
+    "campos_preparados_para_decision_antes": 60,
+    "campos_preparados_para_decision_despues": 58,
+    "nuevos_campos_completados": 0,
+    "nuevos_campos_parcialmente_completados_por_esta_correccion": 0,
+    "contradicciones_resueltas": 0,
+    "etiquetas_de_campo_corregidas": 2
+  },
+  "implementacion_recomendada": [
+    "Conservar los IDs BOLD-S1-TIPOLOGIA e INDI-D-PLANO-A2 y todos los hechos originales.",
+    "En el nuevo corte, separar campos afectados por el conflicto de modelo/tipología de cualquier divergencia numérica: baños coincide en1 para los dos casos.",
+    "Mantener abierto el inventario/alcance de baños por modelo y los planos faltantes; no convertir coincidencia de28pares en completitud del proyecto.",
+    "Registrar estas dos filas como corrección de clasificación, no como nueva evidencia, cierre documental o resolución de contradicción."
+  ],
+  "limite": "La coincidencia solo corresponde a pares de unidades y planos publicados. No acredita versiones o modelos fuera de la muestra ni valida el plano asociado cuando su código/tipología difiere."
+}

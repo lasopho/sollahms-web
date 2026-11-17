@@ -1,3 +1,9 @@
+# Contradicciones — corte activo fase 3
+
+No se resolvieron contradicciones. Se corrigieron dos etiquetas de divergencia numérica de baños en Bold/Indi; las cantidades coinciden y los conflictos de modelo/tipología permanecen. F3-C001 registra límite del plano INN F/406 frente a806/906, sin transferir métricas. Consultar [registro activo fase3](fase3-20261116/CONTRADICCIONES-IRIS.csv) e [informe de depuración](INFORME-DEPURACION-LEBEN.md). Conservar decisiones previas de dirección y Own vendido.
+
+## Registro del corte anterior preservado
+
 # Contradicciones y diferencias — actualización Iris
 
 Las tres discrepancias anteriores siguen abiertas. Las diferencias con criterio previo sobre direcciones se conservan sin nueva solicitud. Ningún hallazgo Iris cambia la dirección Sollahms.

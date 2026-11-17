@@ -37,3 +37,9 @@ No se abrió la ficha de otra inmobiliaria. No se concluye que Own no exista en 
 ## Base de este registro
 
 Consolidación de los inventarios de Living Town, grupo Mood/Santo/BAUM/Suecia, grupo Capitanes/Bold/Argomedo/Indi y grupo Índigo/INN/Nórdico/Own. Los originales exportados conservan URL, fecha, sección y SHA-256 en sus registros de evidencia. El manual resume navegación y alcance; las medidas y decisiones por campo deben cotejarse con esos registros y la matriz de la auditoría.
+
+## Fase 3 — 16/11/2026
+
+Se revisaron las doce plantillas técnicas de las fichas exactas, por secciones permitidas y sin volver a descargar los once brochures ni releer los210gráficos. No aportaron campos completos nuevos. Living Town pudo abrir Archivos desde el botón real. Se precisan las opciones de once fichas como impresión, brochure y condiciones; Nórdico solo impresión. El reintento único de los tresPDFINN falló. Un documento adicional de condiciones INN se observó, pero la exportación de tipoother no está soportada. Una prueba de vista previa de Mood no produjoPDF, sin confirmar impresión.
+
+Resultado documental:330pendientes antes/después,0cierres completos,1mejora parcial de bodegas Nórdico y2etiquetas de baños corregidas.58campos de decisión/conciliación y272documentales, sin enviar otra ronda de preguntas. Ver INFORME-DEPURACION-LEBEN.md y fase3-20261116/ para detalles, fuentes y solicitudes agrupadas.

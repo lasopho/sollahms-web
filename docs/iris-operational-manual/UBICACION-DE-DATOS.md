@@ -18,7 +18,7 @@ Fecha de referencia: **2026-11-16**. Extraer únicamente los campos necesarios; 
 | Alcance del plano | Texto de modelo y departamentos indicados en el gráfico | Guardar rango o unidades literales. El vínculo de imagen en la UI no elimina una contradicción de alcance impreso. |
 | Precio Iris | Importe de unidad/modal; lista y final solo cuando estén rotulados | Referencia complementaria, con fecha y unidad. No confirma precio Sollahms vigente. No asumir inclusión de estacionamiento o bodega desde importes en la descripción. |
 | Plantas generales | **Pisos o plantas** | Diferenciar inventario de títulos, apertura de imagen y lectura gráfica efectiva. Los títulos inventariados no significan gráficos inspeccionados. |
-| Documentos adicionales | Botón **Archivos**, cuando esté disponible | Las opciones varían: impresión, brochure o condiciones; Nórdico solo ofreció impresión y Living Town tenía el control oculto. Confirmar cada ficha y consultar el historial; una opción observada no implica documento leído. |
+| Documentos adicionales | Botón **Archivos**, cuando esté disponible | Las opciones varían: impresión, brochure o condiciones; Nórdico solo ofreció impresión y Living Town pudo abrirse mediante el botón, aunque su span estaba oculto. Confirmar cada ficha y consultar el historial; una opción observada no implica documento leído. |
 
 En la implementación observada, las unidades de venta se distinguían mediante `.units-table.units`; había otras tablas para estacionamientos y bodegas. Al abrir una fila, el modal contenía tarjetas `.carousel-item`, con una tarjeta `.active`. Estos selectores son ayudas de la sesión de referencia, no un contrato de la interfaz.
 
@@ -38,3 +38,7 @@ En la implementación observada, las unidades de venta se distinguían mediante 
 Para todos los campos, conservar la misma URL de ficha y fecha de consulta junto con unidad/modelo/torre cuando se conozcan. Si solo se conoce el proyecto, dejar esos identificadores sin determinar; no completarlos por proximidad visual.
 
 No conservar importes ni porcentajes de comisión, atribuciones comerciales de intermediarios ni datos de autenticación. Revisar las capturas y exportaciones antes de incorporarlas al expediente.
+
+## Plantilla técnica: fuente ya aprovechada en fase 3
+
+Archivos contiene una plantilla imprimible en el DOM. Se localizaron sus h3 Características, Amenities, Descripción y Ubicación y se leyó únicamente el siguiente hermano de cada uno. Las tablas conservan Internos sin nueva clasificación. Sus textos repiten la evidencia previa y pueden omitir algunos amenities: no interpretar esa diferencia como ausencia. No volver a revisar las doce plantillas sin un cambio verificable.
