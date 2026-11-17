@@ -32,7 +32,7 @@ const check=async(name,run)=>{await run();report.checks.push({name,passed:true})
 let failure;
 try{
   await page.goto(base+'/proyectos.html',{waitUntil:'domcontentloaded'});await ready();report.fonts=await page.evaluate(()=>[...document.fonts].map(font=>({family:font.family,status:font.status})));
-  await check('published catalogue retains all 131 identities',async()=>assert.equal((await ids()).length,131));
+  await check('published catalogue retains all 131 identities',async()=>{assert.equal((await ids()).length,131);assert.equal(await page.locator('.cf-price > legend').innerText(),'Precio desde · UF');});
   await check('responsive controls and no horizontal overflow at five widths',async()=>{
     for(const width of [1440,1024,768,390,320]){
       await page.setViewportSize({width,height:1100});await openFilters();
@@ -54,6 +54,7 @@ try{
   await check('prepared layer retains 130 identities and distinguishes published remainder',async()=>{
     await reset();await prepared();await page.waitForFunction(()=>document.querySelectorAll('#project-grid [data-project]').length===130);
     assert.match(await page.locator('#evidence-mode-help').innerText(),/otros proyectos conservan sus datos publicados/);
+    assert.equal(await page.locator('.cf-price > legend').innerText(),'Precio de referencia · UF');
     assert(await page.locator('#capacity-toggle').isHidden());
     assert(!(await ids()).includes('own'));
   });
@@ -84,11 +85,19 @@ try{
     await page.reload({waitUntil:'domcontentloaded'});await ready();await waitIds(['edificio-living-town']);
     assert.equal(await page.locator('#evidence-mode').inputValue(),'prepared');
     await page.locator('#applied-filters button[aria-label="Quitar filtro Baños: 1 baño"]').click();assert.equal(await page.locator('#bathrooms').inputValue(),'');
-    await reset();assert.equal(await page.locator('#evidence-mode').inputValue(),'published');assert.equal(await page.locator('#area-type').inputValue(),'');
+    await reset();assert.equal(await page.locator('#evidence-mode').inputValue(),'published');assert.equal(await page.locator('#area-type').inputValue(),'');assert.equal(await page.locator('.cf-price > legend').innerText(),'Precio desde · UF');
   });
   await check('area range requires explicit useful or total metric',async()=>{
     await page.fill('#min-area','10');await waitIds([]);assert.match(await page.locator('#filter-range-error').innerText(),/métrica/);
     await page.selectOption('#area-type','util');await page.waitForFunction(()=>document.getElementById('filter-range-error').hidden);await reset();
+  });
+  await check('legacy interior URL cannot apply a metric hidden from the useful/total controls',async()=>{
+    await page.goto(base+'/proyectos.html?superficie=interior&m2_min=1',{waitUntil:'domcontentloaded'});await ready();await openFilters();await waitIds([]);
+    assert.equal(await page.locator('#area-type').inputValue(),'');assert.equal(await page.locator('#min-area').inputValue(),'1');
+    assert.match(await page.locator('#filter-range-error').innerText(),/Selecciona una métrica de superficie: útil o total/);
+    assert.match(await page.locator('#catalog-message').innerText(),/Selecciona una métrica/);
+    await page.selectOption('#area-type','util');await page.waitForFunction(()=>document.querySelectorAll('#project-grid [data-project]').length>0);
+    assert(await page.locator('#filter-range-error').isHidden());await reset();
   });
   await check('a quotation cannot borrow a surface from another documentary reference',async()=>{
     await prepared();await page.fill('#search','Living Town');await page.fill('#max-price','3949');await page.selectOption('#bedrooms','1');await page.selectOption('#bathrooms','1');await waitIds(['edificio-living-town']);

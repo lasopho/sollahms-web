@@ -68,6 +68,7 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
     host.hidden=!n;document.getElementById('catalog-filter-count').textContent=n?' ('+n+')':'';
     document.getElementById('purchase-stage-filter-note').hidden=!state.purchaseModes.length;
     const advancedCount=state.metroLines.length+(state.metroNetwork?1:0)+(state.metroStation?1:0)+state.purchaseModes.length+state.amenities.length+state.features.length+state.developers.length+state.typologies.length+['delivery','minArea','maxArea','state','assetType','parking','storage'].filter(k=>state[k]).length+(state.evidenceMode==='prepared'?1:0);
+    const priceLegend=form.querySelector('.cf-price > legend');if(priceLegend)priceLegend.textContent=state.evidenceMode==='prepared'?'Precio de referencia · UF':'Precio desde · UF';
     evidenceHelp.textContent=state.evidenceMode==='prepared'?'Leben usa referencias revisadas al 16/11/2026; los otros proyectos conservan sus datos publicados. La fecha y el alcance se indican en los resultados de Leben. Las referencias no acreditan stock disponible.':publishedHelp;
     for(const count of form.querySelectorAll('.cf-option-count'))count.hidden=state.evidenceMode==='prepared';
     document.getElementById('catalog-more-count').textContent=advancedCount?' ('+advancedCount+')':'';
@@ -78,7 +79,12 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
     if(!saved)try{saved=history.state?.[FILTER_STORAGE]??JSON.parse(sessionStorage.getItem(FILTER_STORAGE));}catch{}
     // Migrate the prior public catalogue preferences without retaining financial inputs.
     if(!saved)try{const old=JSON.parse(sessionStorage.getItem(SESSION_KEY));if(old?.version===1)saved=old;}catch{}
-    state=sanitizeState(saved??defaults(),options);if(preparedUnavailable)state.evidenceMode='published';writeControls();
+    state=sanitizeState(saved??defaults(),options);
+    // Restore only metrics that the current controls can display. Keep bounds
+    // intact so an unsupported legacy metric asks for an explicit selection.
+    if(!options.areaTypes.some(option=>option.id===state.areaType))state.areaType='';
+    if(preparedUnavailable)state.evidenceMode='published';writeControls();
+    const issue=rangeIssue(state);status.textContent=issue;status.hidden=!issue;
     let view=query.view;try{view??=history.state?.[VIEW_KEY]??localStorage.getItem(VIEW_KEY);}catch{}if(['cards','list','map','split'].includes(view))setView(view);
     if(state.metroNetwork||state.metroLines.length||state.metroStation||state.purchaseModes.length||state.amenities.length||state.features.length||state.developers.length||state.delivery||state.minArea||state.maxArea||state.typologies.length||state.parking||state.storage||state.evidenceMode==='prepared')advanced.open=true;
   }
