@@ -1,0 +1,104 @@
+{
+  "date": "2026-11-17",
+  "status": "PAQUETE_LOCAL_PREPARADO_PENDIENTE_AUTORIZACION_DEPLOYMENT",
+  "sourceCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+  "artifact": {
+    "prepared": true,
+    "sourceCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "technicalSourceCommit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+    "baselineDeployment": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+    "baselineInventorySha256": "aabc92d6a5c7c8d345d9a3cc7dd4f45a7fd11c8385c752ddf45e5a2d0f649549",
+    "candidateInventorySha256": "0e7482726ee1c172988ee63e65db2ff87d0c5935a97637e59472e9e685e581f6",
+    "output": "/private/tmp/sollahms-pr32-release-20261117/stage/.vercel/output",
+    "files": 1663,
+    "changedExisting": [
+      "static/assets/css/catalog-filters.css",
+      "static/assets/js/catalog-filter-controls.mjs",
+      "static/assets/js/catalog-filter-engine.mjs",
+      "static/assets/js/catalog-map.mjs",
+      "static/assets/js/catalog-model.mjs",
+      "static/assets/js/catalog.mjs",
+      "static/proyectos.html"
+    ],
+    "added": [
+      "static/assets/js/commercial-filter-data.mjs",
+      "static/assets/js/commercial-filter-engine.mjs",
+      "static/data/commercial-filter-evidence-leben.json"
+    ],
+    "baselineFilesIdentical": 1653,
+    "protectedSourceHashesMatched": 155,
+    "projectFichesUnchanged": 131,
+    "functionFilesUnchanged": 57,
+    "functionBundlesUnchanged": 7,
+    "configV3ByteIdentical": true,
+    "projectBinding": {
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "orgId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+      "projectName": "project-wrapp"
+    },
+    "generatorsExecuted": 0,
+    "buildsExecuted": 0,
+    "deploymentsCreated": 0,
+    "promotions": 0,
+    "baselineBytesModified": false
+  },
+  "projectBindingVerifiedByOfficialCLI": true,
+  "resourceClosure": {
+    "passed": true,
+    "literalChecks": 61,
+    "modules": 20,
+    "missing": []
+  },
+  "production": {
+    "sha": "b761ddeaea2fa526870e6af25658046e31b571d7",
+    "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+    "unchanged": true
+  },
+  "authorized": {
+    "ReadyPR32": true,
+    "mergePR32": true,
+    "deploymentCreation": false,
+    "promotionPublication": false
+  },
+  "nextOperationPrepared": {
+    "workingDirectory": "/private/tmp/sollahms-pr32-release-20261117/stage",
+    "argv": [
+      "/Users/luissandoval/.npm-global/bin/vercel",
+      "deploy",
+      "--prebuilt",
+      "--environment",
+      "production",
+      "--skip-domain",
+      "--scope",
+      "lsandoval2-8260s-projects",
+      "--yes",
+      "--meta",
+      "githubCommitSha=9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "--meta",
+      "githubCommitRef=codex/footer-sin-frase-20261116",
+      "--meta",
+      "githubOrg=lasopho",
+      "--meta",
+      "githubRepo=sollahms-web",
+      "--meta",
+      "artifactInventorySha256=0e7482726ee1c172988ee63e65db2ff87d0c5935a97637e59472e9e685e581f6"
+    ],
+    "meaning": "Crear un deployment del entorno production sin asignación de dominios, sólo después de autorización expresa. Usa bytes prebuilt ya verificados; no ejecuta build ni generadores. No promueve ni publica.",
+    "subsequent": "Verificar READY,artefacto e identidad; QA pertinente al nuevo entorno. Solicitar por separado promoción/publicación sólo con resultado revisable."
+  },
+  "transportHistory": {
+    "firstRecoveryStoppedAt": "index.html HTTP308 hacia raíz",
+    "retainedVerifiedFiles": 1528,
+    "missingCompleted": 132,
+    "canonicalSourceObserved": "https://sollahms.cl/",
+    "finalBaselineVerifiedFiles": 1660,
+    "initialReceiptPreserved": true,
+    "localPython39DateParsingCorrectedBeforeAnyResumeIO": true
+  },
+  "constraints": [
+    "No modificar main,dominios,SSO,variables ni servicios protegidos.",
+    "No extraer ni almacenar credenciales; CLI usa su sesión normal. Si pide login, intervención personal del propietario.",
+    "No repetir pruebas certificadas idénticas; verificar sólo el empaquetado y el nuevo entorno.",
+    "Las15referencias externas nuevas siguen documentales. No se adoptan sus precios como Sollahms ni se cierra el objetivo131 con este paquete."
+  ]
+}

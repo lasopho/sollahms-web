@@ -49,13 +49,15 @@ La clasificación fue contrastada de forma independiente: 21/21 hashes, 3.288 pu
 
 La investigación específica Iris incorporó **15 referencias exactas en14 proyectos**, con101 archivos conservados y hashes en [REGISTRO-NUEVA-EVIDENCIA-IRIS.json](REGISTRO-NUEVA-EVIDENCIA-IRIS.json). Incluye DiagonalVicuña235, MapochoA1010, los9Euro fueraowner12, PlazaCervantes909A, AltoBuzeta1220/212 y ReservaMayor2lote3b. Se preservan internos/terraza, tipo y D/B explícitos; el total de Reserva pertenece al lote. Útil/total residenciales no se inventan. Se documentaron discrepancias de plano, identidad y entregas sin resolverlas por parecido. No se modificó precioSollahms ni stock, no se actualizaron campos de aplicación y no se cerró ninguno de los313IDs históricos. No se solicitaron credenciales ni autenticación; acceso público no prueba sesión autenticada. Se reutilizarán estos antecedentes antes de repetir navegación.
 
+Las páginas oficiales actuales de [Nova Parque](https://www.euroinmobiliaria.cl/proyectos/nova-parque) y [Mirador Irarrázaval](https://www.euroinmobiliaria.cl/proyectos/mirador-irarrazabal), consultadas17/11, respaldan respectivamente2ºsemestre2028 y1ºsemestre2028, como estimaciones generales. Se conserva el soporte a los valores publicados sin atribuirles torre/etapa ni fecha documental inexistente. Las estimaciones distintas de Iris siguen sin correspondencia explicada; no se necesita cambiar los valores owner/publicados ni repetir una pregunta comercial general. Evidencia: [COMPARACION-ENTREGAS-EURO.json](COMPARACION-ENTREGAS-EURO.json).
+
 ## Dependencias e intervención selectiva
 
 | Dependencia | Estado y condición de resolución | Trabajo que continúa |
 | --- | --- | --- |
 | Ready for Review del PR32 | Autorizado expresamente y ejecutado a17:49:24UTC. F14 histórico mantuvo Draft; esta transición ocurrió después. | Sin repetir ese paso. |
-| Merge del PR32 | Autorizado expresamente y ejecutado17:55:26UTC en la base indicada.172blobs comparados:17PR+155protegidos idénticos al candidato; padresdaf/165. | Preparación local de publicación y clasificación de datos. |
-| Deployment/publicación/promoción | Sin autorización independiente. No crear previews ni deployments. | QA local pertinente a cambios nuevos y preparación de publicación. |
+| Merge del PR32 | Autorizado expresamente y ejecutado17:55:26UTC en la base indicada.172blobs comparados:17PR+155protegidos idénticos al candidato; padresdaf/165. | Preparación local de publicación y clasificación de datos. Artefacto congelado1660 recuperado por bytes/hashes; copia local1663 preparada con10runtime,131fichas/7funciones/config intactos. No se ejecutó el packager legacy. |
+| Deployment/publicación/promoción | Paquete local preparado; creación de deployment y promoción/publicación siguen sin autorización independiente. No ejecutar. |61rutas literales verificadas,sin faltantes; preparar la revisión del nuevo entorno tras autorización. |
 | Iris | Catálogo y ficha Diagonal accesibles sin login solicitado; eso no acredita sesión autenticada. Si aparece login, abrir Chrome oficial visible y esperar al propietario; no leer ni almacenar credenciales, cookies o tokens. | Revisión documental ajena a la sesión. |
 | Leben: precios/estados/entregas ya pendientes del propietario | Conservar las respuestas y preguntas previas F9; Santo L009 y BAUM L013 no se vuelven a solicitar. | Otras referencias, proyectos e inmobiliarias. |
 | Conflictos técnicos y alcance de planos | Conservar ambos lados hasta evidencia específica. No bloquean búsquedas que no usan esos campos. | Tipos, ubicaciones y demás campos acreditados. |
@@ -83,5 +85,9 @@ Autorizados: investigación, reutilización, extracción, clasificación, prueba
 - Los filtros y las cuatro vistas pasan las pruebas pertinentes, incluido QA visual y responsive del alcance final.
 - La preservación de producción y servicios protegidos queda verificada, y la documentación está sincronizada.
 - Integración y publicación se ejecutan sólo con sus autorizaciones, seguidas de comprobación real en producción. Hasta entonces el objetivo sigue abierto.
+
+[Estado y paquete concreto de publicación](ESTADO-PUBLICACION.json):1.663archivos,pin`0e7482726ee1c172988ee63e65db2ff87d0c5935a97637e59472e9e685e581f6`;7reemplazos+3altas,1.653baselinesidénticos,131fichas y57archivosde7funciones intactos,configV3idéntica.61rutasdemódulos/recursos sin faltantes. Cero builds/generadores/deployments/promociones. La recuperación conservó su registro de parada por308 y completó sólo132faltantes usandoelcanónico observado.
+
+El [criterio mínimo de aceptación](CRITERIO-DE-ACEPTACION-Y-BLOQUEOS.json) conserva74A+48B como necesidades comerciales condicionadas y191C fuera del obligatorio; ninguna reclasificación cierra IDs. No hay base para repetir preguntas owner o más barridos de desconocidos. Las referencias externas requieren una capa/alcance explícitos al incorporarlas; no reemplazan precios owner. El objetivo131 aún no está certificado globalmente.
 
 El siguiente punto de trabajo se conserva en [NEXT-PROMPT.md](../../NEXT-PROMPT.md). Continuar sin pedir al propietario que copie el prompt ni esperar nueva fase para tareas autorizadas.
