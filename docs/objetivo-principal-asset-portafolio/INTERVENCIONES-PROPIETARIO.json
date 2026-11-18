@@ -462,6 +462,42 @@
       "pendingOwnerAction": "Autorizar push y PR Draft o mantener sólo local.",
       "technicalPushPerformed": false,
       "PRCreated": false
+    },
+    {
+      "id": "AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01",
+      "kind": "Primer push de nueva rama y creación PR Draft",
+      "status": "PREPARADA_PENDIENTE_PRESENTAR",
+      "preparedAtUTC": "2026-11-18T19:43:00.414084+00:00",
+      "repository": "lasopho/sollahms-web",
+      "branch": "codex/ampliacion-21-proyectos-gpr-20261118",
+      "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
+      "targetBase": "codex/footer-sin-frase-20261116",
+      "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "preparedResult": "docs/objetivo-principal-asset-portafolio/CANDIDATO-AMPLIACION-21-GPR.json",
+      "scope": [
+        "Primer push sin force de6cedd329879be1b716be9854d23e1b5538db2806",
+        "Crear un PR Draft contra codex/footer-sin-frase-20261116"
+      ],
+      "notAuthorized": [
+        "Ready",
+        "merge",
+        "deployment",
+        "promotion",
+        "publication",
+        "main",
+        "domains",
+        "SSO",
+        "environmentVariables"
+      ],
+      "candidateFiles": 59,
+      "automaticDeploymentsDisabledForSourceAndBase": true,
+      "questionAlreadyPresented": false,
+      "doNotRepeatAfterPresentation": true,
+      "newOwnerResponseReceived": false,
+      "pendingOwnerAction": "Autorizar push y PR Draft o conservar candidato local.",
+      "technicalPushPerformed": false,
+      "PRCreated": false,
+      "doesNotAnswer24aAuthorization": true
     }
   ],
   "otherPriorWaitsUnchanged": true

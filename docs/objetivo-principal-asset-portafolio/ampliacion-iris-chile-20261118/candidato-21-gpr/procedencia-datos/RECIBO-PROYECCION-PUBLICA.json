@@ -1,0 +1,510 @@
+{
+  "kind": "PUBLIC_WHITELIST_PROJECTION_FROM_EXISTING_AND_AUTHORIZED_IRIS_EVIDENCE",
+  "sources": {
+    "proposal": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/PROPUESTA-POR-LOTES.json",
+      "sha256": "b92427bca520de5a2d89dc53e89a9740a6881bad3a333b8d6ffd43d9a8a3379e",
+      "bytes": 77395
+    },
+    "validations": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/descubrimiento/VALIDACION-FICHAS.json",
+      "sha256": "dda4c80c9377a62e65dd687277610c2099723e1c4371dc4e0586b8715a3181d1",
+      "bytes": 255220
+    },
+    "ownerEcasa": {
+      "path": "/private/tmp/sollahms-ampliacion-21-datos-20261118/fuentes-existentes/docs/ecasa-commercial-20261030/owner-input.json",
+      "sha256": "27ff8f73f32ea7c5edae743e95f21dc3eddbc168474f542c0257e2186019a8c8",
+      "bytes": 4187
+    },
+    "ownerSento": {
+      "path": "/private/tmp/sollahms-ampliacion-21-datos-20261118/fuentes-existentes/docs/sento-commercial-20261030/owner-input.json",
+      "sha256": "af373688774788cfe5b8b494bc777522ed52ff2a16b95ca01a194c8e95ce4c72",
+      "bytes": 1399
+    },
+    "mediaMap": {
+      "path": "/private/tmp/sollahms-ampliacion-21-media-public-map.json",
+      "sha256": "a6285f6e71f6ae8cc89fcdcfe68124cc6080a06e33c10635177a117c6b76b383",
+      "bytes": 25248
+    },
+    "coverReview": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/LECTURA-VISUAL-PORTADAS-21.json",
+      "sha256": "35d66a6ef9e16c975542baec21070b0c629f410911a63f4ec58825acc8515b5f",
+      "bytes": 9582
+    },
+    "baseline": {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/data/proyectos.json",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "bytes": 328016
+    },
+    "taxonomy": {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/data/amenities.json",
+      "sha256": "9f6276d9ee8e48706944b286786baa08e265ce6b66c3fd6386962de775479e2a",
+      "bytes": 107719
+    },
+    "unitReferences": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/RAW-REFERENCIAS-UNITARIAS-21.json",
+      "sha256": "111d79541b487debd41a922d8f34d64edbd525b7b7d2af6862f88f25a4af2f07",
+      "bytes": 94533
+    }
+  },
+  "output": {
+    "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/data/catalog-expansion-iris-20261118.json",
+    "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb",
+    "bytes": 127640
+  },
+  "records": [
+    {
+      "irisId": "299",
+      "slug": "alameda-4719",
+      "proposalPointer": "/candidates/0",
+      "validationRecordIndex": 74,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-dbfbb28c8554626afd7009be",
+          "rawReferenceId": "iris:299:unit:2017",
+          "unitLabel": "2017",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:45:38.169Z"
+        }
+      ]
+    },
+    {
+      "irisId": "315",
+      "slug": "compania-1735",
+      "proposalPointer": "/candidates/1",
+      "validationRecordIndex": 78,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": "/pending/compania-1735",
+      "ownerReferenceCount": 1,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-bea8385cb810f021bec71e3e",
+          "rawReferenceId": "iris:315:unit:137",
+          "unitLabel": "137",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:45:40.125Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1549",
+      "slug": "nuevo-vivaceta",
+      "proposalPointer": "/candidates/2",
+      "validationRecordIndex": 128,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": "/records/nuevo-vivaceta",
+      "ownerReferenceCount": 4,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-7dbf71403d6e18cb94ab2b49",
+          "rawReferenceId": "iris:1549:unit:201-A",
+          "unitLabel": "201-A",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:45:43.529Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1556",
+      "slug": "condominio-altos-del-penon",
+      "proposalPointer": "/candidates/3",
+      "validationRecordIndex": 129,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-6bc8c6088a649646ef5ad93e",
+          "rawReferenceId": "iris:1556:unit:5_408B",
+          "unitLabel": "5_408B",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:44:27.131Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1557",
+      "slug": "condominio-reserva-santa-clara",
+      "proposalPointer": "/candidates/4",
+      "validationRecordIndex": 130,
+      "originalRegion": "Coquimbo",
+      "projectedRegion": "Coquimbo",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-8426a6d56010f3714bf5b7b1",
+          "rawReferenceId": "iris:1557:unit:Sitio 15",
+          "unitLabel": "Sitio 15",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:44:51.971Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1558",
+      "slug": "condominio-hacienda-santa-clara",
+      "proposalPointer": "/candidates/5",
+      "validationRecordIndex": 131,
+      "originalRegion": "Coquimbo",
+      "projectedRegion": "Coquimbo",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-009b98fddd9aea32f3fa8bb6",
+          "rawReferenceId": "iris:1558:unit:TH 02",
+          "unitLabel": "TH 02",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:44:54.323Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1559",
+      "slug": "condominio-plaza-nos",
+      "proposalPointer": "/candidates/6",
+      "validationRecordIndex": 132,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-c0ba2f938a3f393dab644fc5",
+          "rawReferenceId": "iris:1559:unit:Sitio 7",
+          "unitLabel": "Sitio 7",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:44:56.246Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1560",
+      "slug": "condominio-sendero-santa-clara",
+      "proposalPointer": "/candidates/7",
+      "validationRecordIndex": 133,
+      "originalRegion": "Coquimbo",
+      "projectedRegion": "Coquimbo",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-d86d91fb71d4ab62999a8371",
+          "rawReferenceId": "iris:1560:unit:401 E2",
+          "unitLabel": "401 E2",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:44:58.783Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1561",
+      "slug": "terrazas-del-mirador",
+      "proposalPointer": "/candidates/8",
+      "validationRecordIndex": 134,
+      "originalRegion": "De los Lagos",
+      "projectedRegion": "Los Lagos",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-5e8346564cd3a1f7bc23e057",
+          "rawReferenceId": "iris:1561:unit:Mz C - Casa 11",
+          "unitLabel": "Mz C - Casa 11",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:45:05.248Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1562",
+      "slug": "altos-del-mirador",
+      "proposalPointer": "/candidates/9",
+      "validationRecordIndex": 135,
+      "originalRegion": "Coquimbo",
+      "projectedRegion": "Coquimbo",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-57ed38ed6b3905930e247d5b",
+          "rawReferenceId": "iris:1562:unit:Mz 21 Sitio 2",
+          "unitLabel": "Mz 21 Sitio 2",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:45:07.460Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1563",
+      "slug": "condominio-hacienda-junquillar",
+      "proposalPointer": "/candidates/10",
+      "validationRecordIndex": 136,
+      "originalRegion": "Del Biobío",
+      "projectedRegion": "Biobío",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-89cca284ed3b7d1f374fb9b1",
+          "rawReferenceId": "iris:1563:unit:Casa 84",
+          "unitLabel": "Casa 84",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:45:10.075Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1566",
+      "slug": "condominio-hacienda-volcanes",
+      "proposalPointer": "/candidates/11",
+      "validationRecordIndex": 137,
+      "originalRegion": "De los Lagos",
+      "projectedRegion": "Los Lagos",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-fe54e7ec616a4abca44ef88b",
+          "rawReferenceId": "iris:1566:unit:Casa 70",
+          "unitLabel": "Casa 70",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:45:12.292Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1573",
+      "slug": "kiez",
+      "proposalPointer": "/candidates/12",
+      "validationRecordIndex": 138,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-ea3bb2d0ebb700bc2fba27b3",
+          "rawReferenceId": "iris:1573:unit:208",
+          "unitLabel": "208",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:45:58.947Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1575",
+      "slug": "centro-santa-ana",
+      "proposalPointer": "/candidates/13",
+      "validationRecordIndex": 140,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-6655e87b77e8d2e1f49281fc",
+          "rawReferenceId": "iris:1575:unit:201",
+          "unitLabel": "201",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:46:16.695Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1579",
+      "slug": "edificio-ambar-urbano",
+      "proposalPointer": "/candidates/14",
+      "validationRecordIndex": 144,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-d54a3a55d027171ed7619af4",
+          "rawReferenceId": "iris:1579:unit:214",
+          "unitLabel": "214",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:46:19.587Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1582",
+      "slug": "espacio-v",
+      "proposalPointer": "/candidates/15",
+      "validationRecordIndex": 147,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-9ec6470e6b33fe17b6060ddb",
+          "rawReferenceId": "iris:1582:unit:205",
+          "unitLabel": "205",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:46:23.895Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1585",
+      "slug": "edificio-botanico",
+      "proposalPointer": "/candidates/16",
+      "validationRecordIndex": 150,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-f841802509968d1225015be7",
+          "rawReferenceId": "iris:1585:unit:1210",
+          "unitLabel": "1210",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:46:33.187Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1586",
+      "slug": "balmaceda",
+      "proposalPointer": "/candidates/17",
+      "validationRecordIndex": 151,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-62de3483baba038bb009a2bf",
+          "rawReferenceId": "iris:1586:unit:2821",
+          "unitLabel": "2821",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:46:36.384Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1588",
+      "slug": "prat",
+      "proposalPointer": "/candidates/18",
+      "validationRecordIndex": 153,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-b3f139613eadbbd83d1df0fc",
+          "rawReferenceId": "iris:1588:unit:302",
+          "unitLabel": "302",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:46:38.829Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1589",
+      "slug": "vicuna-mackenna-capital",
+      "proposalPointer": "/candidates/19",
+      "validationRecordIndex": 154,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-d3fdaa62e9a968ef9714911d",
+          "rawReferenceId": "iris:1589:unit:604",
+          "unitLabel": "604",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:46:40.918Z"
+        }
+      ]
+    },
+    {
+      "irisId": "1590",
+      "slug": "mirador-capital",
+      "proposalPointer": "/candidates/20",
+      "validationRecordIndex": 155,
+      "originalRegion": "Metropolitana",
+      "projectedRegion": "Metropolitana",
+      "ownerSourcePointer": null,
+      "ownerReferenceCount": 0,
+      "exactUnitReferenceCount": 1,
+      "privateUnitLabelsNotExported": true,
+      "privateUnitReferenceMapping": [
+        {
+          "publicOpaqueId": "iris-ref-5db2cff637a03b00354d5f99",
+          "rawReferenceId": "iris:1590:unit:408",
+          "unitLabel": "408",
+          "modelLabel": null,
+          "observedAtUTC": "2026-11-18T18:46:42.895Z"
+        }
+      ]
+    }
+  ],
+  "baseline131Unchanged": true,
+  "ownerContextEvidence": {
+    "path": "AGENTS.md",
+    "sha256": "4aa1fae6ab5e93f0ac3b8c79c26ac6920469220723b474f97e939015a1d0e2b8",
+    "sections": [
+      "ECasa commercial synchronization (2026-10-30)",
+      "Sento owner commercial overlay (2026-10-30)"
+    ],
+    "meaning": "Context date of existing owner instructions; source document dates remain null."
+  },
+  "newOwnerReceiptOrConfirmation": false,
+  "networkOrGitMutations": false
+}

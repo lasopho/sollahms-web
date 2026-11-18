@@ -1,0 +1,42 @@
+{
+  "kind": "DOM_WHITELIST_DE_UNA_FILA_Y_SU_MODAL_OBSERVADOS_EN_CHROME",
+  "irisProjectId": "1562",
+  "sourceURL": "https://iris.yapo.cl/proyecto/1562?operation=Venta",
+  "observedAtUTC": "2026-11-18T18:45:07.460Z",
+  "projectHeading": "GPR - Altos del Mirador",
+  "rowSelector": ".units-table-row (primera fila observada)",
+  "allowedColumnClasses": {
+    "unit": "units_table_col_0",
+    "listPrice": "units_table_col_3",
+    "finalPrice": "units_table_col_5",
+    "internalArea": "units_table_col_7",
+    "bedrooms": "units_table_col_11",
+    "bathrooms": "units_table_col_12"
+  },
+  "row": {
+    "unitLiteral": "Unidad Mz 21 Sitio 2",
+    "listPriceLiteral": "Precio de lista UF 2.995",
+    "finalPriceLiteral": "Precio final UF 2.755,4",
+    "internalAreaLiteral": "50.78 m²",
+    "bedroomsCellLiteral": "3",
+    "bathroomsCellLiteral": "1"
+  },
+  "modalAllowedLines": [
+    "Unidad Mz 21 Sitio 2 · Piso 1",
+    "50.78m² internos · 0m² terraza",
+    "3 dormitorios",
+    "1 baño"
+  ],
+  "modelLiteralPrefix": null,
+  "modelPrefixScope": "Rótulo literal de UI, NO_HOMOLOGADO; el resto mezclado con condiciones queda fuera de esta whitelist.",
+  "excludedFromCapture": [
+    "commission",
+    "broker",
+    "discountPercentage",
+    "bonusPie",
+    "paymentOrFinancingConditions",
+    "fullMixedDescription",
+    "otherUnits",
+    "stockCounters"
+  ]
+}

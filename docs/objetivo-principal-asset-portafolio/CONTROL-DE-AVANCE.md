@@ -1,6 +1,16 @@
 # Control del objetivo principal: Asset Portafolio
 
-Último corte operativo: **18/11/2026**. Objetivo global en ejecución. Producción verificada: `875bd80ddb650b376cb3dd53af4ffae066fcd48f`, deployment `dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr`. El suplemento local `24a11df1a62898a06b408a729bb20ce1b1de4e87` permanece sin push ni nuevo PR. Los permisos anteriores ejecutados no autorizan otra integración o publicación.
+Último corte operativo: **18/11/2026**. Objetivo global en ejecución, ahora con ampliación local expresamente solicitada: los 131 originales más 21 proyectos nuevos, nueve GPR. Candidato local `6cedd329879be1b716be9854d23e1b5538db2806`, 152 identidades compuestas; sin primer push técnico ni PR. Producción verificada conserva 131 en `875bd80ddb650b376cb3dd53af4ffae066fcd48f`, deployment `dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr`. El suplemento local `24a11df1a62898a06b408a729bb20ce1b1de4e87` permanece intacto, sin push ni nuevo PR. Los permisos anteriores ejecutados no autorizan otra integración o publicación.
+
+## Ampliación local de 21 proyectos y GPR
+
+La instrucción nueva autoriza preparación técnica local de ambos lotes. El [candidato](CANDIDATO-AMPLIACION-21-GPR.json) y el [expediente revisable](ampliacion-iris-chile-20261118/candidato-21-gpr/README.md) fijan 59 archivos en `codex/ampliacion-21-proyectos-gpr-20261118`, sobre producción875. Se reutilizaron las158fichas válidas y se recuperó una referencia exacta por cada candidato, con medios y lectura acotada de planos. No se reinició el descubrimiento ni la auditoría de los131. Las21identidades superaron la comparación; los2posibles duplicados,2identidades insuficientes y2retiros permanecen fuera.
+
+GPR tiene nueve registros nuevos y opción de inmobiliaria: siete casas y dos departamentos. Hay21referencias exactas Iris,16conDnumérico y21conB; Internos/terraza conservan sus rótulos, útil/total desconocidos en21. Cinco antecedentes owner de Nuevo Vivaceta/Compañía1735 se reutilizan con prioridad sobre precios externos y sin prestar baños o superficies. Amenities generales:96descriptores en19proyectos. Disponibilidad, stock, vigencia actual y coordenadas nuevas no se inventan.
+
+Node52casos distintos aprobados (7datos+19comportamiento+26regresiones afectadas); Chrome13comerciales,20controles de cuatro vistas×cinco anchos,15fichas responsive y4flujos dirigidos; HTTP21/21. Revisión independiente **APROBADO CON OBSERVACIONES**, cero bloqueantes. Los155cuerpos protegidos conservaron susSHA256certificados, incluidas131fichas originales. Datos publicados, siete funciones y módulos financieros intactos; el cálculo financiero continúa evaluando sólo los131originales. Fallo de la fuente nueva restaura131con aviso persistente accesible.
+
+Las ramas origen/destino excluyen deployments automáticos. Falta permiso independiente para primer push del commit6cedd32 y PRDraft; no autoriza Ready, merge, deployment o publicación. El catálogo público sigue en131. La consolidación de1.993punteros y los313IDs históricos permanece intacta. La ampliación no resuelve ni sustituye el permiso24a pendiente.
 
 ## Estado actual de los 131
 
@@ -52,9 +62,11 @@ Las rutas originales de lectura y los hashes permanecen en los artefactos; sus c
 
 ## Intervenciones vigentes
 
-Sólo permanecen las dos solicitudes ya presentadas en [INTERVENCIONES-PROPIETARIO.json](INTERVENCIONES-PROPIETARIO.json): `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` y `OWNER-BATH-IRARR1970-20261118-01`. No se repreguntan ni se interpretan las instrucciones de continuidad como respuesta. Los desconocidos restringen exclusivamente sus predicados; no obligan a reconstruir inventarios completos ni terminaciones.
+Las dos solicitudes anteriores de [INTERVENCIONES-PROPIETARIO.json](INTERVENCIONES-PROPIETARIO.json), `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` y `OWNER-BATH-IRARR1970-20261118-01`, siguen sin respuesta y no se repreguntan. La nueva solicitud de primer push/PRDraft de la ampliación tiene identificador y alcance propios; su estado real está en el mismo registro. Los desconocidos restringen exclusivamente sus predicados y no obligan a reconstruir inventarios completos ni terminaciones.
 
-## Ampliación documental paralela: Iris Chile
+## Descubrimiento inicial conservado: Iris Chile
+
+El apartado siguiente corresponde a la propuesta previa, anterior a la autorización de preparación local de los21. Su comparación y originales se conservan como fuente. El estado vigente de implementación está en el apartado de ampliación local de este control.
 
 Autorizado descubrimiento, comparación y propuesta, sin incorporar proyectos. El catálogo oficial mostró158/158 oportunidades chilenas y se abrieron sus158fichas individuales: **158 válidas, cero vacías y cero no verificables finales**. La comparación revisada sin bloqueantes identifica131IDs correspondientes a121slugs actuales,21candidatos documentales nuevos, dos posibles duplicados, dos identidades insuficientes y dos retiros previos del alcanceSoll (sin afirmar vendidos). Diez slugs actuales no tienen correspondencia en este listado; no se propone su baja. Ver [propuesta compacta y tabla agrupada](ampliacion-iris-chile-20261118/README.md) y sus lotes documentales12+9. Son14departamentos y7casas; no21edificios certificados ni stock. No se incorporó ningún proyecto o precio.
 

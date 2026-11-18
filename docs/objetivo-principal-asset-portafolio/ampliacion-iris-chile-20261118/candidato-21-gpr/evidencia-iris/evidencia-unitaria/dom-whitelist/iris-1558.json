@@ -1,0 +1,42 @@
+{
+  "kind": "DOM_WHITELIST_DE_UNA_FILA_Y_SU_MODAL_OBSERVADOS_EN_CHROME",
+  "irisProjectId": "1558",
+  "sourceURL": "https://iris.yapo.cl/proyecto/1558?operation=Venta",
+  "observedAtUTC": "2026-11-18T18:44:54.323Z",
+  "projectHeading": "GPR - Condominio Hacienda Santa Clara",
+  "rowSelector": ".units-table-row (primera fila observada)",
+  "allowedColumnClasses": {
+    "unit": "units_table_col_0",
+    "listPrice": "units_table_col_3",
+    "finalPrice": "units_table_col_5",
+    "internalArea": "units_table_col_7",
+    "bedrooms": "units_table_col_11",
+    "bathrooms": "units_table_col_12"
+  },
+  "row": {
+    "unitLiteral": "Unidad TH 02",
+    "listPriceLiteral": "Precio de lista UF 3.967,8",
+    "finalPriceLiteral": "Precio final UF 3.650,38",
+    "internalAreaLiteral": "66.8 m²",
+    "bedroomsCellLiteral": "3",
+    "bathroomsCellLiteral": "3"
+  },
+  "modalAllowedLines": [
+    "Unidad TH 02 · Piso 1",
+    "66.8m² internos · 0m² terraza",
+    "3 dormitorios",
+    "3 baños"
+  ],
+  "modelLiteralPrefix": null,
+  "modelPrefixScope": "Rótulo literal de UI, NO_HOMOLOGADO; el resto mezclado con condiciones queda fuera de esta whitelist.",
+  "excludedFromCapture": [
+    "commission",
+    "broker",
+    "discountPercentage",
+    "bonusPie",
+    "paymentOrFinancingConditions",
+    "fullMixedDescription",
+    "otherUnits",
+    "stockCounters"
+  ]
+}

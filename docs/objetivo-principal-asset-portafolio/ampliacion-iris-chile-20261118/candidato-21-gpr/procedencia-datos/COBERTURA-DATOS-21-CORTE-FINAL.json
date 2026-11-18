@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "kind": "FINAL_DATA_COVERAGE_21_REGIONAL_CUT",
+  "recordedAtUTC": "2026-11-18T19:37:22.699309+00:00",
+  "source": {
+    "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/data/catalog-expansion-iris-20261118.json",
+    "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb"
+  },
+  "universe": {
+    "newProjects": 21,
+    "newGPR": 9,
+    "baselineProjects": 131,
+    "localCompositionTarget": 152,
+    "projectTypes": {
+      "departamento": 14,
+      "casa": 7
+    },
+    "regions": {
+      "Metropolitana": 14,
+      "Coquimbo": 4,
+      "Los Lagos": 2,
+      "Biobío": 1
+    }
+  },
+  "ownerReferences": {
+    "projects": 2,
+    "priceReferences": 5,
+    "numericBedroomReferences": 4,
+    "studioReferencesWithNumericBedroomNull": 1,
+    "bathroomReferences": 0,
+    "usefulAreaReferences": 0,
+    "totalAreaReferences": 0,
+    "newOwnerReceiptsOrConfirmations": 0
+  },
+  "externalIrisPrices": {
+    "projectFromReferencesStored": 21,
+    "exactReferencesStored": 21,
+    "exactListPriceFieldsStored": 21,
+    "exactFinalPriceFieldsStored": 21,
+    "chosenExactPriceField": "finalPriceUF",
+    "noDeclaredCurrentValidityOrStock": true,
+    "projectsWithExternalPricePredicatesAllowedByPolicy": 19,
+    "projectsWithAllExternalPricesMaskedByOwnerPolicy": 2,
+    "storedPricesAreNotAllFilterablePrices": true
+  },
+  "exactReferenceAttributes": {
+    "propertyType": 0,
+    "bedrooms": 16,
+    "bathrooms": 21,
+    "internalM2": 21,
+    "terraceM2": 21,
+    "usefulM2": 0,
+    "totalM2": 0,
+    "interiorM2": 0
+  },
+  "exactReferenceDetails": {
+    "oneReferencePerProject": true,
+    "numericBedroomUnknown": 5,
+    "terraceExplicitZero": 11,
+    "terracePositive": 10,
+    "numericBedroomsWithAllowedExternalPricePolicy": 15,
+    "bathroomsWithAllowedExternalPricePolicy": 19,
+    "unclassifiedSurfaceSummaries": 21,
+    "internalNeverCanonicalUsefulInteriorOrTotal": true,
+    "publicUnitOrModelLabels": false
+  },
+  "headerBedroomProfiles": {
+    "exactNumeric": 9,
+    "rangesOrStudioNotExpanded": 12,
+    "correlatedWithProjectFromPrice": 0
+  },
+  "amenities": {
+    "projectsWithMappedDescriptors": 19,
+    "mappedDescriptors": 96,
+    "uniqueMappedLabels": [
+      "Accesos controlados",
+      "Bicicleteros",
+      "Conserjería 24 horas",
+      "Cowork",
+      "Gimnasio",
+      "Jardín",
+      "Juegos infantiles",
+      "Lavandería",
+      "Lounge",
+      "Pet friendly",
+      "Piscina",
+      "Plaza elevada",
+      "Plaza interior",
+      "Quincho",
+      "Quinchos",
+      "Quinchos panorámicos",
+      "Salón de eventos",
+      "Salón de juegos",
+      "Salón gourmet",
+      "Salón infantil",
+      "Salón multiuso",
+      "Sky Bar",
+      "Spa de mascotas",
+      "Zona de juegos infantiles",
+      "Áreas verdes"
+    ],
+    "projectsWithUnmappedSourceNotes": 20,
+    "scope": "project-general, not private assignment; unmapped source notes are not filter predicates",
+    "parkingInclusionUnknown": 21,
+    "parkingAvailabilityUnknown": 21,
+    "storageInclusionUnknown": 21,
+    "storageAvailabilityUnknown": 21
+  },
+  "deliveryAndState": {
+    "deliveryLabels": 21,
+    "deliveryBySourceKind": {
+      "IRIS_LISTING": 19,
+      "OWNER_EXISTING": 2
+    },
+    "stateKnown": 2,
+    "legalDeliveryCertified": 0,
+    "deliveryIsNotCommercialStateOrLegalAvailability": true
+  },
+  "coordinates": {
+    "verifiedCoordinatePairs": 0,
+    "unknownCoordinatePairs": 21,
+    "geocodingPerformed": false
+  },
+  "media": {
+    "projectsWithCover": 20,
+    "projectsWithLogo": 16,
+    "projectsWithDescriptiveCoverAlt": 20
+  },
+  "ownerPricePrecedence": [
+    {
+      "slug": "compania-1735",
+      "ownerPricesByCategory": {
+        "2 dormitorios": 4550
+      },
+      "externalIrisProjectFromUF": 4550.0,
+      "externalIrisExactListUF": 4550.0,
+      "externalIrisExactFinalUF": 3640.0,
+      "consumerPolicy": "OWNER_ONLY_FOR_PRICE_PREDICATES; all Iris prices remain informative for this project. External D/B without price remain separate.",
+      "dataValuesPreserved": true,
+      "consumerRuntimeNotRetestedHere": true
+    },
+    {
+      "slug": "nuevo-vivaceta",
+      "ownerPricesByCategory": {
+        "Estudio": 2050,
+        "1 dormitorio": 2190,
+        "2 dormitorios": 2600,
+        "3 dormitorios": 4280
+      },
+      "externalIrisProjectFromUF": 2050.0,
+      "externalIrisExactListUF": 2050.0,
+      "externalIrisExactFinalUF": 1791.7,
+      "consumerPolicy": "OWNER_ONLY_FOR_PRICE_PREDICATES; all Iris prices remain informative for this project. External D/B without price remain separate.",
+      "dataValuesPreserved": true,
+      "consumerRuntimeNotRetestedHere": true
+    }
+  ],
+  "limitations": {
+    "financialBaselineCompatibleProjects": 0,
+    "canonicalUsefulOrTotalRemainsUnknownInAll21": true,
+    "noNewAuditOrNetworkQueries": true,
+    "historical313Closed": 0
+  }
+}

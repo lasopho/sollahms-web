@@ -120,3 +120,7 @@ La aparición del nombre en el catálogo no acredita una ficha accesible. Aplica
 Para VergaraDomeyko/Vergara y Bordevivo/BordeVivo, las búsquedas nominales del18/11 terminaron sin coincidencias; no son fichas abiertas vacías ni demuestran retiro. Copias documentales anteriores no identifican sus locales. No repetir ni transferir datos de departamentos.
 
 En la extracción mínima del18/11se detectó que `.tag-hand-over` global incluía recomendaciones. Se corrigieron22cabeceras y se conservaron fechas del enlace propio del listado; ningún dato relacionado entra como entrega del candidato. La presenciaDOMde `.user-name` tampoco prueba autenticación: la comprobación estricta final no confirmó un control renderizado con texto. Los booleanos iniciales tienen ese alcance limitado, sin afirmar cierre de sesión. No hubo login solicitado ni ficha vacía; no se basó ninguna exclusión en ese indicador.
+
+## Referencias de ampliación21 —18/11/2026
+
+El precio final unitario puede diferir deldesde general sin constituir autorización de sustituir un precioowner. En NuevoVivaceta/Compañía1735 los preciosowner previos tienen prioridad; las filasIris conservanD/B propios y no prestan atributos. No interpretar la consulta como nueva confirmación de stock o vigencia. Normalizar sólo alias nuevos de región en la proyección, conservando el original. Casa/Departamento no acredita usoResidencial. La ausencia de coordenadas no permite generar pines por dirección aproximada.

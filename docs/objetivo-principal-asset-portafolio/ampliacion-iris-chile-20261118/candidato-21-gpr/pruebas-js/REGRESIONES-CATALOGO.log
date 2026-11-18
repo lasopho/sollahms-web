@@ -1,0 +1,36 @@
+200 combined filters: 155.7ms
+✔ no filters retain all projects, owner amounts, order and unknown data (21.44425ms)
+✔ categories intersect; selections within amenities use OR or explicit ALL (0.254167ms)
+✔ bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option (0.3095ms)
+✔ exact ranges are inclusive and invalid ranges never broaden results (0.159125ms)
+✔ project desde stays authoritative regardless of selected property or old typology prices (0.169083ms)
+✔ residential-only common spaces do not become local amenities; stage references remain separate (0.180875ms)
+✔ keywords include only registered features; sorting is deterministic with unknowns last (9.24375ms)
+✔ URL round trip is bounded, shareable, uses allowlists and excludes unrelated or private state (1.532084ms)
+✔ projection is complete without unit inventory, empty facets, generated absences or schema drift (3.673417ms)
+✔ current catalogue filtering stays responsive without network or mutation (156.309084ms)
+✔ a selected Bcome2D price never displays the financial baseline for Estudio (5.552584ms)
+✔ the original Bcome Estudio retains its compatible financial baseline (0.090542ms)
+✔ an equal amount never identifies a different typology as the same financial scenario (0.569084ms)
+✔ a source without a typology preserves its original amount without null/undefined mismatch (0.083292ms)
+✔ Plaza213 typology price cannot display the separate public313 baseline (0.144083ms)
+✔ AJ selected1D keeps its own price and hides its Estudio financial scenario (0.120833ms)
+✔ Ecasa ferroparque-2 keeps the original project financial baseline separate (1.937417ms)
+✔ Ecasa lomas-de-puyai-3 keeps the original project financial baseline separate (0.267666ms)
+✔ Ecasa terratolten-1 keeps the original project financial baseline separate (0.265292ms)
+✔ Ecasa reference stage remains compatible when its amount and typology are unchanged (0.171708ms)
+✔ an explicit incompatible source flag always suppresses the cached scenario (0.064291ms)
+✔ missing identity and unknown, zero or invalid amounts never authorize decoration (0.070417ms)
+✔ a compatible flag does not override a different amount or typology (0.05975ms)
+✔ a matching unpriced plan cannot display the unrelated published price (35.777125ms)
+✔ a displayed quote and facts share the same reference, without borrowing model areas (0.287792ms)
+✔ published records retain their existing price presentation (0.265458ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 287.889166
+

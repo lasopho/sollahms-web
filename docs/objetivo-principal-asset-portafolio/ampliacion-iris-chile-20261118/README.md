@@ -1,5 +1,7 @@
 # Propuesta de ampliación Iris Chile
 
+**Continuidad vigente,18/11/2026:** el propietario solicitó después preparar localmente los21proyectos, incluidos9GPR. El [candidato6cedd32](candidato-21-gpr/README.md) contiene21fichas y catálogo compuesto152, revisado y probado; sin primer push técnico/PR ni publicación. El contenido que sigue conserva el corte original de descubrimiento/propuesta, sus límites y fuentes. Los flags de autorización de `PROPUESTA-POR-LOTES.json` son históricos y no sustituyen el nuevo registro de candidato o las autorizaciones independientes pendientes.
+
 Corte: **18/11/2026**. Descubrimiento y comparación documentales, sin incorporación al catálogo. Las 158 entradas fueron abiertas individualmente mediante la interfaz oficial; cada ficha mostró título concordante, ubicación/dirección y contenido real.
 
 | Resultado de existencia | Entradas Iris |

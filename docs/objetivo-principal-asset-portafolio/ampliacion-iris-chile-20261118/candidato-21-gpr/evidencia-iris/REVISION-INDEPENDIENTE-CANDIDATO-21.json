@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-18T19:32:32.887423+00:00",
+  "kind": "REVISION_INDEPENDIENTE_ESTATICA_DE_CODIGO_PAGINAS_Y_PROCEDENCIA_DEL_CANDIDATO_LOCAL_21",
+  "dictamen": "APROBADO_CON_OBSERVACIONES",
+  "blockingCodeFindings": 0,
+  "checkout": "/private/tmp/sollahms-ampliacion-21-gpr-20261118",
+  "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "candidateCommit": "6cedd329879be1b716be9854d23e1b5538db2806",
+  "scope": "Lectura de nuevo adaptador, cuatro deltas JS frente a snapshots 875, prueba de comportamiento como documento, CSS, preparador y 21 HTML nuevos. Comprobación documental de atributos/procedencia y medios. No se ejecutaron pruebas, aplicación, derivadores, navegador, red ni Git durante esta revisión.",
+  "sourceReceipts": [
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-filtros-20261118/RESULTADO-IMPLEMENTACION-JS-CORTE-3594bb1b.json",
+      "sha256": "3594bb1b2d0565a1d1ca2840ae56900c4e399b3711016760d0e68bbc2f05ba30",
+      "bytes": 5552
+    },
+    {
+      "path": "/private/tmp/sollahms-fuentes-publicadas-875-20261118/RECIBO-REVISION-CODIGO-875.json",
+      "sha256": "9d106a1100ea084d42bbbcaa283f8ad2144fd956d72a611904cf6fc86668ee1e",
+      "bytes": 1473
+    },
+    {
+      "path": "/private/tmp/sollahms-fuentes-publicadas-875-20261118/RECIBO-FUENTES-875.json",
+      "sha256": "cac81f70cfa0198eee90f563da2748351e9d8397c7191777ab93209f2209b9cb",
+      "bytes": 2457
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/RAW-REFERENCIAS-UNITARIAS-21.json",
+      "sha256": "111d79541b487debd41a922d8f34d64edbd525b7b7d2af6862f88f25a4af2f07",
+      "bytes": 94533
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/RECURSOS-GRAFICOS-IRIS-21.json",
+      "sha256": "2d0d5a5d7b1bfd147804989e9690f327157db59ae924781bc0efab5a677e6121",
+      "bytes": 50059
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/LECTURA-PLANOS-21.json",
+      "sha256": "4e8c418c8de17e7b7832d16e92036af85905a66f2ace5b651951ae4c70490bed",
+      "bytes": 11513
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/LECTURA-VISUAL-PORTADAS-21.json",
+      "sha256": "35d66a6ef9e16c975542baec21070b0c629f410911a63f4ec58825acc8515b5f",
+      "bytes": 9582
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-qa/PRESERVACION-155-Y-131.json",
+      "sha256": "ba3cacf241925706e487f85ad77f5664ea19564a6d57913870e232c5d3d7a84c",
+      "bytes": 60193
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-qa/QA-CHROME.json",
+      "sha256": "6e186c22079e900ef27960b49aa4f09f880acb7a124215fb4d772e434de6b5fa",
+      "bytes": 12281
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-qa/FICHAS-HTTP-Y-CONTRATOS-FINAL.json",
+      "sha256": "1e2271ff6c590ebb683087d9f33e05157ad8f61a37d0c5d0bdb24ba968c8d9a7",
+      "bytes": 6738
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-filtros-20261118/RESULTADO-IMPLEMENTACION-JS.json",
+      "sha256": "7d83e5786984cb518212fe229d8beb325ba7fd4425145d3d605181e656017a13",
+      "bytes": 6341
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-filtros-20261118/PRUEBAS-COMPORTAMIENTO-CIERRE-19.log",
+      "sha256": "a79ce857486c7b65f44fd146e7dee23ab4e49492926430eeb765497efef7839c",
+      "bytes": 2023
+    }
+  ],
+  "findings": [
+    {
+      "id": "REVIEW-SCOPE-01",
+      "file": "assets/js/catalog-expansion.mjs",
+      "line": 158,
+      "severity": "OBSERVACION_RESUELTA",
+      "originalImpact": "La proyección facets.features añadía scope residencial fijo aun cuando el uso no estaba acreditado; podía presentar un alcance incorrecto a consumidores de metadatos.",
+      "correction": "Conserva scope project-general de la fuente y propertyTypeScope explícito. Validator exige project-general.",
+      "verifiedSHA256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+      "remainingBlocker": false
+    }
+  ],
+  "checks": [
+    {
+      "subject": "Fuente y guardas",
+      "result": "CUMPLE",
+      "evidence": "Dataset21 fijado por SHA 33ca3e27 y registro de contexto congelado. Fetch de mismo origen, sin redirección. Validadores conservan IDs aprobados, desconocidos y coordenadas null. La falla de fuente conserva 131 y genera aviso role=status/aria-live fuera de paneles de filtros.",
+      "files": [
+        "assets/js/catalog-expansion.mjs:60",
+        "assets/js/catalog-expansion.mjs:106",
+        "assets/js/catalog-expansion.mjs:112",
+        "assets/js/catalog.mjs:135"
+      ]
+    },
+    {
+      "subject": "Precio y atributos de una referencia",
+      "result": "CUMPLE",
+      "evidence": "Bloques from+tipo, perfil de cabecera, categorías owner y referencia exacta permanecen independientes. La misma referencia satisface precio/D/B/superficies/opciones activas. Internos no se transforma en útil/total/interior. Desconocidos activos fallan y los no consultados no excluyen por sí mismos.",
+      "files": [
+        "assets/js/catalog-expansion.mjs:123",
+        "assets/js/catalog-expansion.mjs:164",
+        "assets/js/catalog-expansion.mjs:180"
+      ]
+    },
+    {
+      "subject": "Prioridad de antecedentes owner",
+      "result": "CUMPLE",
+      "evidence": "Compañía 1735 conserva UF4550/2D y Nuevo Vivaceta cuatro categorías UF2050/2190/2600/4280. Los precios Iris de ambos quedan enmascarados para predicados y no sirven de fallback positivo; B2 de la unidad 137 no se presta a owner 4550. Perfiles sin precio siguen disponibles con su propio alcance.",
+      "files": [
+        "assets/js/catalog-expansion.mjs:129",
+        "assets/js/catalog-expansion.mjs:132",
+        "assets/js/catalog-expansion.mjs:133"
+      ]
+    },
+    {
+      "subject": "Tipo, uso y extras",
+      "result": "CUMPLE",
+      "evidence": "Casa/Departamento explícitos siguen siendo tipos. No acreditan el selector Uso: tipoActivo null, assetTypes vacío y guard negativo para assetType activo. El tipo de cabecera no pasa a la referencia exacta con propertyType null. Estado, entrega y equipamiento general permanecen informativos con su procedencia; no habilitan compra legal, stock, derechos privados, inclusión o disponibilidad de extras.",
+      "files": [
+        "assets/js/catalog-expansion.mjs:150",
+        "assets/js/catalog-expansion.mjs:156",
+        "assets/js/catalog-expansion.mjs:168"
+      ]
+    },
+    {
+      "subject": "Finanzas",
+      "result": "CUMPLE",
+      "evidence": "Los nuevos quedan financialBaselineCompatible:false. Inicialización y orden financiero sólo reciben proyectos sin el marcador de ampliación. El contenedor completo se oculta con resultados sólo nuevos o filtro de desarrollador nuevo sin resultados, y se restaura para públicos/mixtos. No se editan fórmulas ni módulos financieros.",
+      "files": [
+        "assets/js/catalog-expansion.mjs:187",
+        "assets/js/catalog-expansion.mjs:214",
+        "assets/js/catalog-expansion.mjs:215",
+        "assets/js/catalog.mjs:93",
+        "assets/js/catalog.mjs:139"
+      ]
+    },
+    {
+      "subject": "21 páginas y contacto",
+      "result": "CUMPLE",
+      "evidence": "Las 21 carecen de forms, tablas unitarias, project-request, advisory y scripts financieros/Metro. Contacto y guías apuntan a rutas limpias sin proyecto nuevo. Theme carga al final; logo/menú, B hero y recorrido conservan el sistema compartido. Las referencias tienen fuente/fecha y owner es principal en los dos proyectos correspondientes. Botánico no recibe portada inventada.",
+      "files": [
+        "scripts/prepare-iris-expansion-pages.py",
+        "assets/css/catalog-expansion.css"
+      ]
+    },
+    {
+      "subject": "Privacidad y procedencia",
+      "result": "CUMPLE",
+      "evidence": "JSON público tiene21 referencias con ID opaco, sin unitLabel/modelLabel/descripcion/modelLiteralPrefix. Sus atributos, ambos precios, fechas y surfaceEvidence coinciden con el RAW por proyecto. Hay 5 referencias owner separadas. Los 25 assets públicos coinciden en bytes con los originales descargados por CUA. No se publican los placeholders de plano como planos útiles."
+    },
+    {
+      "subject": "Universos y preservación",
+      "result": "CUMPLE_CON_RECIBO_GLOBAL_DE_PRESERVACION",
+      "evidence": "Datos fuente de131 proyectos y facetas conservan SHA originales. El recibo del agente principal acredita155/155 cuerpos SHA256 y Git coincidentes,131 HTML originales intactos, cero colisiones de los21 nuevos y sólo seis archivos originales permitidos cambiados; vercel sólo excluye deployments de la rama nueva. No se repite la auditoría ni la suite de131."
+    }
+  ],
+  "reportedQaFixesReviewedStatically": [
+    {
+      "reportedBy": "root QA",
+      "issue": "Contenedor capacity-search visible cuando sólo había proyectos nuevos.",
+      "status": "RESUELTO_POR_HELPER_Y_CONTENEDOR_COMPLETO",
+      "independentAppRerun": false
+    },
+    {
+      "reportedBy": "root QA",
+      "issue": "Inferencia de uso Residencial desde Casa/Departamento.",
+      "status": "RESUELTO_POR_GUARD_DE_USO_Y_FACETAS_SIN_CLASE",
+      "independentAppRerun": false
+    }
+  ],
+  "documentaryVerification": {
+    "publicProjects": 21,
+    "exactExternalReferences": 21,
+    "ownerReferences": 5,
+    "publicExactAttributesAndDatesMatchRaw": true,
+    "opaquePublicReferenceIds": true,
+    "unitAndModelLabelsExcludedFromPublicJson": true,
+    "canonicalUsefulTotalInteriorNullReferences": 21,
+    "noBedroomsZeroFromFiveEstudioLiterals": true,
+    "mediaAssetsMatchedOriginalBytes": 25,
+    "mainImages": 20,
+    "unknownMainImages": 1,
+    "htmlWithoutFormsOrUnitTables": 21,
+    "htmlWithoutForbiddenRuntimeScripts": 21,
+    "cleanContactAndGuideLinks": 21,
+    "themeLast": 21,
+    "originalProjectDataSHA256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+    "originalFacetDataSHA256": "bdfb1d2036ec379ea03d1ce524d83e1843da3f89719222cfc6fb5f4883381681",
+    "global155PreservationOwnedByRoot": true,
+    "global155ReceiptVerified": {
+      "source": {
+        "path": "/private/tmp/sollahms-ampliacion-21-qa/PRESERVACION-155-Y-131.json",
+        "sha256": "ba3cacf241925706e487f85ad77f5664ea19564a6d57913870e232c5d3d7a84c",
+        "bytes": 60193
+      },
+      "protected": 155,
+      "bodyHashesEqualInReceipt": 155,
+      "gitIdentitiesEqualInReceipt": 155,
+      "original131HtmlUnchanged": 131,
+      "onlyExistingFilesChanged": [
+        "assets/js/catalog-filter-controls.mjs",
+        "assets/js/catalog-filter-engine.mjs",
+        "assets/js/catalog-model.mjs",
+        "assets/js/catalog.mjs",
+        "proyectos.html",
+        "vercel.json"
+      ],
+      "vercelOnlyChange": {
+        "codex/ampliacion-21-proyectos-gpr-20261118": false
+      },
+      "candidate24aTouched": false,
+      "productionChanged": false,
+      "deploymentCreated": false,
+      "method": "Receipt read and internal equality/hash checked; no repeat rehash of155 source bodies by this reviewer."
+    }
+  },
+  "qaEvidenceReused": {
+    "jsReceipt": {
+      "sha256": "3594bb1b2d0565a1d1ca2840ae56900c4e399b3711016760d0e68bbc2f05ba30",
+      "distinctPassedBehavior": 19,
+      "distinctPassedAffectedRegressions": 26,
+      "distinctJSTotal": 45,
+      "targetedRerunsNotAddedAgain": true
+    },
+    "dataAgentTestsExcludedFromJsCount": 7,
+    "rootChromeAtReceipt": {
+      "source": {
+        "path": "/private/tmp/sollahms-ampliacion-21-qa/QA-CHROME.json",
+        "sha256": "6e186c22079e900ef27960b49aa4f09f880acb7a124215fb4d772e434de6b5fa",
+        "bytes": 12281
+      },
+      "countsByFamily": {
+        "commercial": {
+          "passed": 13,
+          "total": 13
+        },
+        "viewsResponsive": {
+          "passed": 20,
+          "total": 20
+        },
+        "fichesResponsive": {
+          "passed": 15,
+          "total": 15
+        },
+        "directedFlows": {
+          "passed": 4,
+          "total": 4
+        }
+      },
+      "screenshots": [
+        {
+          "path": "TARJETA-SIN-PRECIO-VINCULADO-320.jpg",
+          "sha256": "72e73f4827a71d3ce0c8bb04f7a70b449f6c389d53ed5da92ed38337d0407bb0",
+          "bytes": 36410
+        },
+        {
+          "path": "FICHA-GPR.jpg",
+          "sha256": "b4cd1fecc5b6c8bdd808720fc08e529cd827b64a2561244667893afc4683b655",
+          "bytes": 57237
+        },
+        {
+          "path": "CATALOGO-GPR.jpg",
+          "sha256": "13572e3cecb74490da32dd27399a262c4fca81e12bb9982c850d36562306050d",
+          "bytes": 49244
+        }
+      ],
+      "fourViewsFiveWidths": true,
+      "threeFichesFiveWidths": true,
+      "fallback503AndRestoration": "PASS",
+      "viewportOverrideReset": true,
+      "formsSubmitted": "Only existing local-only financial calculator with fictitious values; zero lead/contact forms or services submitted",
+      "finalState": "PASS; observed by root, receipts and hashes checked independently, no browser rerun."
+    },
+    "noIndependentAppTestsExecuted": true,
+    "historical84And16NotRepeatedOrAdded": true,
+    "newFicheHttpContracts": {
+      "source": {
+        "path": "/private/tmp/sollahms-ampliacion-21-qa/FICHAS-HTTP-Y-CONTRATOS-FINAL.json",
+        "sha256": "1e2271ff6c590ebb683087d9f33e05157ad8f61a37d0c5d0bdb24ba968c8d9a7",
+        "bytes": 6738
+      },
+      "passed": 21,
+      "total": 21,
+      "original131NotRetested": true,
+      "formsSubmitted": 0
+    },
+    "jsFinalClosure": {
+      "source": {
+        "path": "/private/tmp/sollahms-ampliacion-21-filtros-20261118/RESULTADO-IMPLEMENTACION-JS.json",
+        "sha256": "7d83e5786984cb518212fe229d8beb325ba7fd4425145d3d605181e656017a13",
+        "bytes": 6341
+      },
+      "finalBehaviorLog": {
+        "path": "/private/tmp/sollahms-ampliacion-21-filtros-20261118/PRUEBAS-COMPORTAMIENTO-CIERRE-19.log",
+        "sha256": "a79ce857486c7b65f44fd146e7dee23ab4e49492926430eeb765497efef7839c",
+        "bytes": 2023
+      },
+      "behaviorPassed": 19,
+      "behaviorDistinct": 19,
+      "affectedRegressionPassed": 26,
+      "affectedRegressionDistinct": 26,
+      "distinctJSTotal": 45,
+      "affectedRegressionsRerunAtClose": false,
+      "finalRunCount": 1,
+      "codeChangedDuringFinalRun": false
+    }
+  },
+  "limitations": [
+    "Dictamen sobre código/páginas/procedencia del corte local fijado. No certifica stock, vigencia comercial, legalidad de entrega ni todas las combinaciones posibles.",
+    "Cero útil/total/interior canónicos en las 21 referencias. Nueve imágenes de distribución sin rótulos y dos placeholders permanecen limitaciones; no se midieron ni sumaron áreas.",
+    "QA final,21 contratos HTTP y preservación155 se respaldan en los recibos del agente principal fijados aquí. La revisión comprueba sus hashes y coherencia, sin repetir navegación, auditorías o pruebas.",
+    "No autoriza primer push, PR, cambio de Draft, merge, deployment o publicación. Producción no se modifica mediante esta revisión."
+  ],
+  "operations": {
+    "applicationTestsExecuted": false,
+    "certifiedSuitesRepeated": false,
+    "codeOrTestEdits": false,
+    "browserOrNetworkOrGitOperations": false,
+    "AOrT2Edits": false,
+    "formsOrApiActions": false
+  },
+  "continuity": "Conservar este corte y los hashes, incluyendo el recibo JS3594 archivado y el cierre7d83. No repetir revisión, QA ni pruebas si los archivos no cambian. Preparar únicamente el siguiente paso autorizado; primer push, PR, merge, deployment y publicación mantienen autorizaciones independientes.",
+  "pinnedCandidateArtifacts": [
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/data/catalog-expansion-iris-20261118.json",
+      "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb",
+      "bytes": 127640
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/assets/css/catalog-expansion.css",
+      "sha256": "10367bf752527ce864d25120ac573e83fef1572c2187a79c2cb9ddfaaa291f33",
+      "bytes": 1926
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/scripts/prepare-iris-expansion-pages.py",
+      "sha256": "da7ec72f316aa935a12ae638bce581f76fb667efeb3d26c99b1340cf429a066b",
+      "bytes": 17384
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/scripts/prepare-catalog-expansion-data.py",
+      "sha256": "ec6bf51a099262292d35cd4ee1116debd2026d42a95c20a55988e4e7c2860109",
+      "bytes": 18377
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/tests/catalog-expansion-data.test.mjs",
+      "sha256": "215da6c0f15500a4b2bb27f6af5f649494abf5397ff2adb434ef5ac1eed9b527",
+      "bytes": 6847
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/proyectos.html",
+      "sha256": "e45c7bb5baea9cbe27f178cacc2f6ad24efec32a3a802d3464378a55fa80f91f",
+      "bytes": 47088
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/assets/js/catalog-expansion.mjs",
+      "sha256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+      "bytes": 23648
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/assets/js/catalog.mjs",
+      "sha256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "bytes": 17658
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/assets/js/catalog-model.mjs",
+      "sha256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "bytes": 16054
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/assets/js/catalog-filter-engine.mjs",
+      "sha256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "bytes": 21521
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/assets/js/catalog-filter-controls.mjs",
+      "sha256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632",
+      "bytes": 19237
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/tests/catalog-expansion-behavior.test.mjs",
+      "sha256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+      "bytes": 12594
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/alameda-4719.html",
+      "sha256": "19d9fc457bf09cb9778f06bcd50629052482dd53b35ea077b468a776fc7aba2b",
+      "bytes": 11183
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/compania-1735.html",
+      "sha256": "4e163a9f3ec119ed375298cbd3457e159557d9be6520328cccd8c0d33107f536",
+      "bytes": 10405
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/nuevo-vivaceta.html",
+      "sha256": "d1b99e48e9744ae8dad99d12093ce5fb2bfe2a6f009fd484bcc59bd0c958f1bb",
+      "bytes": 13236
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/condominio-altos-del-penon.html",
+      "sha256": "4dc8a2233cd1fa4bfa79e04110cc5779e0fc3528c67b0e7680e0e86e9a6dfd11",
+      "bytes": 11270
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/condominio-reserva-santa-clara.html",
+      "sha256": "f297fd93b755521588b7e6bc05a658533a166b232d9d313bd1b6c0e96e70678f",
+      "bytes": 10459
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/condominio-hacienda-santa-clara.html",
+      "sha256": "dde17b86547f0e40bc31602c3d597559088ac6619fb16476565c7654599a3e9e",
+      "bytes": 10497
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/condominio-plaza-nos.html",
+      "sha256": "a17b820f1786cc124edf58b907b4a9339b074ea2b101aa61a38eb5e3662689b5",
+      "bytes": 11576
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/condominio-sendero-santa-clara.html",
+      "sha256": "807417a14852f516bd05a37899112d29af586fd536887016aaec7a50f421e073",
+      "bytes": 12039
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/terrazas-del-mirador.html",
+      "sha256": "9a8fbc666baa73012db000a4a2b5f35639b5875781203990fb5a9d57deb29207",
+      "bytes": 10826
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/altos-del-mirador.html",
+      "sha256": "08191cc862799787118c1aa36970a0b75001530d26700d479549fb131955717c",
+      "bytes": 10783
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/condominio-hacienda-junquillar.html",
+      "sha256": "f73b221fd1fecafb164c5f524f855d0953ee8d500987bdefa733e52d5b66db0f",
+      "bytes": 11848
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/condominio-hacienda-volcanes.html",
+      "sha256": "c7587a52fea871083d463eed77a4c207ce98016fe3eaf475888b06688da4aaae",
+      "bytes": 10850
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/kiez.html",
+      "sha256": "6fdfa9ed2564900145c86513e7e8627c4e287162ccdcd4ec27101065500c7af1",
+      "bytes": 9561
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/centro-santa-ana.html",
+      "sha256": "65fd246c5f6922db17e83d81e1d7677c4dedc8ef882d1c9922f29d95d22ab559",
+      "bytes": 14516
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/edificio-ambar-urbano.html",
+      "sha256": "4833c309784819442a596c4765f6e962590c6d88ee49d25c62b5ef985367bba8",
+      "bytes": 9523
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/espacio-v.html",
+      "sha256": "8ec3bbfee718669d16c664e1a290ff1087bec1e9639db2553aa3829b6fe993cc",
+      "bytes": 10564
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/edificio-botanico.html",
+      "sha256": "e28774a42afec1a670682173c5d423bb3f50c6b058cc942e4b6cb79d2fa2ad41",
+      "bytes": 11155
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/balmaceda.html",
+      "sha256": "b93a10338c10c21620969c65427d67604aef9598f94efcedf08979135392480d",
+      "bytes": 13042
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/prat.html",
+      "sha256": "ff937da20b47565ae288ae7a43218e1f4a709ef2ac9be7f5ab8da7528ae295b8",
+      "bytes": 12561
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/vicuna-mackenna-capital.html",
+      "sha256": "3d9ccb3728abad72647c9e9410b2b9c3f9d4d82458da9dbe44ccd355043b662c",
+      "bytes": 13107
+    },
+    {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/mirador-capital.html",
+      "sha256": "edaf904020931972159b58eae2c117cd4c93d24eea240800b524e00e5f7d3abe",
+      "bytes": 11671
+    }
+  ],
+  "pinScope": "Artifacts include source/provenance and tests retained as documents; no pinned test or generator was executed by this review.",
+  "updatedAtUTC": "2026-11-18T19:46:26.569323+00:00",
+  "closure": "RECEIPTS_FINALES_DE_QA_Y_PRESERVACION_ANEXADOS_SIN_REPETIR_EXPLORACION_NI_PRUEBAS",
+  "candidateParentCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "commitBinding": {
+    "source": "Agente principal: commit local exacto, padre875,59 archivos (6 modificados+53 nuevos), árbol limpio. Sin cambios de contenido posteriores.",
+    "candidateArtifactPinsRechecked": 33,
+    "contentChangedSinceReview": false,
+    "GitRequeriedByReviewer": false,
+    "statusClaim": "Estado de commit/árbol comunicado por el agente principal; los33 hashes se comprobaron directamente sin nueva revisión ni pruebas."
+  }
+}

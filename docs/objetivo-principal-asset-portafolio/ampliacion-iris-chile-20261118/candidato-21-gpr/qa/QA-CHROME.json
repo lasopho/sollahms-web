@@ -1,0 +1,480 @@
+{
+  "recordedAtUTC": "2026-11-18T19:37:38.304479+00:00",
+  "method": "Chrome visible, CUA official UI. Observed final outcomes; screenshots below. No browser API outside CUA.",
+  "sourceSHA256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb",
+  "moduleSHA256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+  "localOrigin": "http://127.0.0.1:53251",
+  "failureOrigin": "http://127.0.0.1:53697",
+  "original131SuitesNotRepeated": true,
+  "commercialCases": [
+    {
+      "name": "GPR Los Lagos",
+      "query": "inmobiliaria=GPR&region=Los Lagos",
+      "observedResults": 2,
+      "expectedResults": 2,
+      "evidence": "Terrazas del Mirador y Hacienda Volcanes",
+      "passed": true
+    },
+    {
+      "name": "GPR Biobío",
+      "query": "inmobiliaria=GPR&region=Biobío",
+      "observedResults": 1,
+      "expectedResults": 1,
+      "evidence": "Hacienda Junquillar",
+      "passed": true
+    },
+    {
+      "name": "GPR casas",
+      "query": "inmobiliaria=GPR&tipo=casa",
+      "observedResults": 7,
+      "expectedResults": 7,
+      "evidence": "Siete casas y dos departamentos conservados",
+      "passed": true
+    },
+    {
+      "name": "Precio y D/B compatibles",
+      "query": "inmobiliaria=GPR&precio_min=2771&precio_max=2771&dormitorios=2&banos=2",
+      "observedResults": 1,
+      "expectedResults": 1,
+      "evidence": "Altos del Peñón misma referencia final UF2771/2D/2B",
+      "passed": true
+    },
+    {
+      "name": "Cabecera no presta D/B",
+      "query": "inmobiliaria=GPR&precio_min=3259&precio_max=3261&dormitorios=2&banos=2",
+      "observedResults": 0,
+      "expectedResults": 0,
+      "evidence": "No vincular desdeUF3260 a perfil unitario distinto",
+      "passed": true
+    },
+    {
+      "name": "Útil desconocida",
+      "query": "inmobiliaria=GPR&superficie=util&m2_min=1",
+      "observedResults": 0,
+      "expectedResults": 0,
+      "evidence": "Internos no convertido en útil",
+      "passed": true
+    },
+    {
+      "name": "Uso desconocido",
+      "query": "inmobiliaria=GPR&uso=Residencial",
+      "observedResults": 0,
+      "expectedResults": 0,
+      "evidence": "Opción activa y desconocido sin positivo",
+      "passed": true
+    },
+    {
+      "name": "Owner conserva precio",
+      "query": "q=Compañía 1735&precio_max=4000",
+      "observedResults": 0,
+      "expectedResults": 0,
+      "evidence": "Iris3640 no sustituye owner4550",
+      "passed": true
+    },
+    {
+      "name": "Owner no presta baños",
+      "query": "q=Compañía 1735&precio_min=4550&precio_max=4550&banos=2",
+      "observedResults": 0,
+      "expectedResults": 0,
+      "evidence": "Precio owner sin B acreditado",
+      "passed": true
+    },
+    {
+      "name": "D/B sin precio prestado",
+      "query": "q=Compañía 1735&dormitorios=2&banos=2",
+      "observedResults": 1,
+      "expectedResults": 1,
+      "evidence": "Sin precio del propietario vinculado a este perfil",
+      "passed": true
+    },
+    {
+      "name": "Estudio no es cero",
+      "query": "q=Alameda 4719&dormitorios=0",
+      "observedResults": 0,
+      "expectedResults": 0,
+      "evidence": "Literal Estudio no convertido en 0D",
+      "passed": true
+    },
+    {
+      "name": "Amenities de alcance propio",
+      "query": "inmobiliaria=GPR&amenity=piscina",
+      "observedResults": 2,
+      "expectedResults": 2,
+      "evidence": "Altos del Peñón y Sendero Santa Clara; cabecera general propia, sin D/B prestados",
+      "passed": true
+    },
+    {
+      "name": "Estacionamiento incluido desconocido",
+      "query": "inmobiliaria=GPR&estacionamiento=included",
+      "observedResults": 0,
+      "expectedResults": 0,
+      "evidence": "Mención de amenity no certifica inclusión",
+      "passed": true
+    }
+  ],
+  "viewResponsiveCases": [
+    {
+      "view": "cards",
+      "width": 320,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "cards",
+      "width": 390,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "cards",
+      "width": 768,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "cards",
+      "width": 1024,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "cards",
+      "width": 1440,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "list",
+      "width": 320,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "list",
+      "width": 390,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "list",
+      "width": 768,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "list",
+      "width": 1024,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "list",
+      "width": 1440,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "map",
+      "width": 320,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "map",
+      "width": 390,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "map",
+      "width": 768,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "map",
+      "width": 1024,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "map",
+      "width": 1440,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "split",
+      "width": 320,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "split",
+      "width": 390,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "split",
+      "width": 768,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "split",
+      "width": 1024,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    },
+    {
+      "view": "split",
+      "width": 1440,
+      "height": 900,
+      "gprResultCount": 9,
+      "overflow": false,
+      "inventedMapPins": 0,
+      "passed": true
+    }
+  ],
+  "ficheResponsiveCases": [
+    {
+      "slug": "condominio-altos-del-penon",
+      "width": 320,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "condominio-altos-del-penon",
+      "width": 390,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "condominio-altos-del-penon",
+      "width": 768,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "condominio-altos-del-penon",
+      "width": 1024,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "condominio-altos-del-penon",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "compania-1735",
+      "width": 320,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "compania-1735",
+      "width": 390,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "compania-1735",
+      "width": 768,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "compania-1735",
+      "width": 1024,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "compania-1735",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "edificio-botanico",
+      "width": 320,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "edificio-botanico",
+      "width": 390,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "edificio-botanico",
+      "width": 768,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "edificio-botanico",
+      "width": 1024,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    },
+    {
+      "slug": "edificio-botanico",
+      "width": 1440,
+      "horizontalOverflow": false,
+      "forms": 0,
+      "priceAttributionVisible": true,
+      "passed": true
+    }
+  ],
+  "directedFlows": [
+    {
+      "name": "Navigate catalogue to GPR fiche",
+      "result": "Altos del Peñón, exact H1, final externalUF2771,2D/2B,Internos50.5/T0, source18Nov, no form",
+      "passed": true
+    },
+    {
+      "name": "Expansion source503, persistence and recovery",
+      "result": "131 identities; role=status/aria-live=polite outside collapsibles; notice persisted after URL normalization and Don Pepe search1/131; normal source restored9/152 GPR without notice",
+      "passed": true
+    },
+    {
+      "name": "Mixed catalogue financial wrapper and price sorting",
+      "result": "152 total, price-asc active; visible preserved form; fictional local scenario evaluated131 original projects only, no error or new-project financial links; reset succeeded; no request POST",
+      "passed": true
+    },
+    {
+      "name": "Owner-unlinked price card320px",
+      "result": "One Compañía1735 DB profile, no owner price borrowed; width320 scroll305; full explicit label and external DB/Internos/terraza",
+      "passed": true
+    }
+  ],
+  "console": "No error/warn entries at mixed financial final check",
+  "viewportOverrideReset": true,
+  "formsSubmitted": "Only existing local-only financial calculator with fictitious values; zero lead/contact forms or services submitted",
+  "countsByFamily": {
+    "commercial": {
+      "passed": 13,
+      "total": 13
+    },
+    "viewsResponsive": {
+      "passed": 20,
+      "total": 20
+    },
+    "fichesResponsive": {
+      "passed": 15,
+      "total": 15
+    },
+    "directedFlows": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "notSummedWithNodeOrEarlierChecks": true,
+  "screenshots": [
+    {
+      "path": "TARJETA-SIN-PRECIO-VINCULADO-320.jpg",
+      "sha256": "72e73f4827a71d3ce0c8bb04f7a70b449f6c389d53ed5da92ed38337d0407bb0",
+      "bytes": 36410
+    },
+    {
+      "path": "FICHA-GPR.jpg",
+      "sha256": "b4cd1fecc5b6c8bdd808720fc08e529cd827b64a2561244667893afc4683b655",
+      "bytes": 57237
+    },
+    {
+      "path": "CATALOGO-GPR.jpg",
+      "sha256": "13572e3cecb74490da32dd27399a262c4fca81e12bb9982c850d36562306050d",
+      "bytes": 49244
+    }
+  ]
+}

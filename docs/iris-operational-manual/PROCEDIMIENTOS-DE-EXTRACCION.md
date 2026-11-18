@@ -109,3 +109,9 @@ Un0 inicial enAX puede cambiar a1 enDOM tras cargar, como ocurrió en Endémico 
 ## Descubrimiento de candidatos —18/11/2026
 
 Aplicar [VALIDACION-DE-EXISTENCIA.md](VALIDACION-DE-EXISTENCIA.md) antes de la comparación. No repetir el inventario158/158ni las fichas válidas sin nueva condición. Para datos mínimos de un candidato nuevo, comprobar título/URL del bloque actual, acotar selectores al contenedor principal y verificar visibilidad; nunca recopilar tarjetas relacionadas por una consulta global. Separar listado, cabecera y alcance de cada campo. La propuesta12+9del18/11 sigue documental; no autoriza nuevas fichas o catálogo.
+
+## Fila/modal y precio de referencia —18/11/2026
+
+Para una incorporación autorizada posterior al descubrimiento, reutilizar elID/URL válido y abrir una fila/modal propio. Conservar juntos proyecto, unidad/modelo, literal deD/B, precio lista y precio final, campo elegido y hora de observación. Separar precio desde de cabecera: no atribuirleD/B ni áreas de la fila. Internos/terraza sólo con sus rótulos; no convertir a útil/interior/total. Estudio sinDnumérico permanece desconocido. Revisar el plano observado antes de atribuir áreas: una distribución sin cuadro no acredita métricas.
+
+Recuperar porpageAssets únicamente portada/logo/plano observados del proyecto; conservar MIME y bytes originales, aunque la extensión delCDN difiera. Mantener placeholders como limitación, no como plano útil. ElJSON público usaIDopaco y campos permitidos, mientras la relación exacta yRAW quedan documentales. Ante antecedentesowner existentes, reutilizarlos y no sustituirlos por campañaIris; ninguna fecha de contexto equivale a vigencia nueva.

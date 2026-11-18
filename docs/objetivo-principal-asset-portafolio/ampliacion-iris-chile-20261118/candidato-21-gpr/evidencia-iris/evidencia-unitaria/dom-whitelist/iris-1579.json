@@ -1,0 +1,42 @@
+{
+  "kind": "DOM_WHITELIST_DE_UNA_FILA_Y_SU_MODAL_OBSERVADOS_EN_CHROME",
+  "irisProjectId": "1579",
+  "sourceURL": "https://iris.yapo.cl/proyecto/1579?operation=Venta",
+  "observedAtUTC": "2026-11-18T18:46:19.587Z",
+  "projectHeading": "Euro - Edificio Ambar Urbano",
+  "rowSelector": ".units-table-row (primera fila observada)",
+  "allowedColumnClasses": {
+    "unit": "units_table_col_0",
+    "listPrice": "units_table_col_3",
+    "finalPrice": "units_table_col_5",
+    "internalArea": "units_table_col_7",
+    "bedrooms": "units_table_col_11",
+    "bathrooms": "units_table_col_12"
+  },
+  "row": {
+    "unitLiteral": "Unidad 214",
+    "listPriceLiteral": "Precio de lista UF 2.983",
+    "finalPriceLiteral": "Precio final UF 2.893,51",
+    "internalAreaLiteral": "26.31 m²",
+    "bedroomsCellLiteral": "1",
+    "bathroomsCellLiteral": "1"
+  },
+  "modalAllowedLines": [
+    "Unidad 214 · Piso 2",
+    "26.31m² internos · 1.8m² terraza",
+    "1 dormitorio",
+    "1 baño"
+  ],
+  "modelLiteralPrefix": null,
+  "modelPrefixScope": "Rótulo literal de UI, NO_HOMOLOGADO; el resto mezclado con condiciones queda fuera de esta whitelist.",
+  "excludedFromCapture": [
+    "commission",
+    "broker",
+    "discountPercentage",
+    "bonusPie",
+    "paymentOrFinancingConditions",
+    "fullMixedDescription",
+    "otherUnits",
+    "stockCounters"
+  ]
+}

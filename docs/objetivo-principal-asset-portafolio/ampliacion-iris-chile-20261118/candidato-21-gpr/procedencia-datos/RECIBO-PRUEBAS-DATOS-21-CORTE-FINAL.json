@@ -1,0 +1,38 @@
+{
+  "kind": "FINAL_DATA_TEST_RECEIPT_AFTER_REGIONAL_NORMALIZATION",
+  "recordedAtUTC": "2026-11-18T19:37:22.699309+00:00",
+  "command": "node --test tests/catalog-expansion-data.test.mjs",
+  "workingDirectory": "/private/tmp/sollahms-ampliacion-21-gpr-20261118",
+  "exitCode": 0,
+  "passed": 7,
+  "failed": 0,
+  "sources": {
+    "data": {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/data/catalog-expansion-iris-20261118.json",
+      "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb"
+    },
+    "tests": {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/tests/catalog-expansion-data.test.mjs",
+      "sha256": "215da6c0f15500a4b2bb27f6af5f649494abf5397ff2adb434ef5ac1eed9b527"
+    },
+    "baseline": {
+      "path": "/private/tmp/sollahms-ampliacion-21-gpr-20261118/data/proyectos.json",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b"
+    }
+  },
+  "log": {
+    "path": "/private/tmp/sollahms-ampliacion-21-datos-20261118/PRUEBAS-DATOS-21-CORTE-FINAL.log",
+    "sha256": "b579b700c53a6e8100510a072d11dbdbfe5ad30edad37519c544729ef9a88c6f",
+    "bytes": 879
+  },
+  "coverage": {
+    "path": "/private/tmp/sollahms-ampliacion-21-datos-20261118/COBERTURA-DATOS-21-CORTE-FINAL.json",
+    "sha256": "936ef6f599f3fb19b9f223bdf6eb257e4b2cabfbda8d3f6089c9d6129177a9a6",
+    "bytes": 4877
+  },
+  "sourceFilesEdited": false,
+  "hashesUnchangedDuringCheck": true,
+  "oldAuditOr84NodeOrChromeSuitesRepeated": false,
+  "localDataTestsOnly": true,
+  "networkOrGitMutations": false
+}

@@ -1,0 +1,128 @@
+{
+  "createdAtUTC": "2026-11-18T19:20:57.178348+00:00",
+  "status": "JS_IMPLEMENTADO_QA_CHROME_DEL_AGENTE_PRINCIPAL_EN_CURSO",
+  "checkout": "/private/tmp/sollahms-ampliacion-21-gpr-20261118",
+  "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "sourceJSON": {
+    "path": "data/catalog-expansion-iris-20261118.json",
+    "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb"
+  },
+  "implementationFiles": [
+    {
+      "path": "assets/js/catalog-expansion.mjs",
+      "bytes": 23648,
+      "sha256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e"
+    },
+    {
+      "path": "assets/js/catalog.mjs",
+      "bytes": 17658,
+      "sha256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a"
+    },
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "bytes": 16054,
+      "sha256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82"
+    },
+    {
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "bytes": 21521,
+      "sha256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16"
+    },
+    {
+      "path": "assets/js/catalog-filter-controls.mjs",
+      "bytes": 19237,
+      "sha256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632"
+    },
+    {
+      "path": "tests/catalog-expansion-behavior.test.mjs",
+      "bytes": 12594,
+      "sha256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f"
+    }
+  ],
+  "counts": {
+    "originalIdentities": 131,
+    "newIdentities": 21,
+    "combinedIdentities": 152,
+    "newGPR": 9,
+    "exactExternalReferences": 21,
+    "ownerReferencesReused": 5,
+    "newOwnerConfirmations": 0
+  },
+  "tests": {
+    "behaviorDistinct": 19,
+    "behaviorPassed": 19,
+    "behaviorCommand": "node --test tests/catalog-expansion-behavior.test.mjs",
+    "behaviorLog": "PRUEBAS-COMPORTAMIENTO-FINAL.log",
+    "affectedRegressionDistinct": 26,
+    "affectedRegressionPassed": 26,
+    "regressionCommand": "node --test tests/catalog-filters.test.mjs tests/commercial-filter-presentation.test.mjs tests/catalog-financial-witness.test.mjs",
+    "regressionLog": "REGRESIONES-CATALOGO.log",
+    "distinctJSTests": 45,
+    "notARepeatedCertified84Suite": true,
+    "targetedRerunsNotAdded": {
+      "sourceDateLabel": {
+        "passed": 1,
+        "log": "PRUEBA-FECHA-PROCEDENCIA.log"
+      },
+      "financialContainerAndRestoration": {
+        "passed": 1,
+        "log": "PRUEBA-CONTENEDOR-FINANCIERO.log"
+      },
+      "unknownAssetUse": {
+        "passed": 1,
+        "log": "PRUEBA-USO-DESCONOCIDO-FINAL.log"
+      },
+      "generalAmenityScope": {
+        "passed": 1,
+        "log": "PRUEBA-ALCANCE-AMENITIES.log"
+      }
+    },
+    "dataAgentTestsExcludedFromThisCount": 7,
+    "syntaxCatalog": {
+      "command": "node --check assets/js/catalog.mjs",
+      "exitCode": 0
+    },
+    "behaviorEvidence": "18/18 en corte regional33ca; caso financiero ampliado y repetido1/1 tras ocultar contenedor completo; caso nuevo uso desconocido1/1 y repetido tras corregir scope general. Cada caso distinto se cuenta una sola vez.",
+    "initialExpectationCorrections": "La prueba nueva de uso asumió inicialmente9casasGPR; son7casas y2departamentos. Se corrigió sólo la expectativa. La salida inicial fallida se conserva; la prueba final es verde."
+  },
+  "behavior": {
+    "priceIrisClearlyExternal": true,
+    "ownerPolicyMasksAllExternalPricesForTwoProjects": true,
+    "ownerCompany4550DoesNotMatch4000Campaign": true,
+    "ownerPriceDoesNotBorrowExternalBathrooms": true,
+    "headerPriceAndTypeOnlyOwnProjectBlock": true,
+    "exactUnitTypeAndUseRemainUnknown": true,
+    "InternosNeverUsefulInteriorOrTotal": true,
+    "missingActiveFieldsFailWithoutExcludingInactiveQueries": true,
+    "financialCacheUniverse": 131,
+    "newProjectsFinancialCompatibility": false,
+    "newOnlyFinancialSectionHiddenAndRestoredInPublishedMixed": true,
+    "mapNewCoordinates": "unknown; existing registry yields pending21, no fabricated markers",
+    "fallbackSourceFailure": {
+      "identities": 131,
+      "message": "visible role=status aria-live=polite outside collapsible filters"
+    },
+    "regionCorrection": "Only new projection maps De los Lagos/Del Biobío to Los Lagos/Biobío, preserving source.originalRegion.",
+    "assetUse": "Desconocido en la ampliación: tipoActivo null, facets.assetTypes vacío y filtro de uso activo rechazado antes del motor común; tipo de propiedad no fabrica uso.",
+    "amenityProjectionScope": "project-general y propertyTypeScope explícito, sin scope residencial derivado."
+  },
+  "review": {
+    "independentStatic": "Sin bloqueantes; últimas correcciones de uso y scope general verificadas por bordevivo_archive. Recibo combinado final pendiente de hashes/HTML.",
+    "rootChrome": {
+      "commercialReportedPassed": 13,
+      "viewResponsiveReportedPassed": 20,
+      "scope": "Cuatro vistas por cinco anchos,9GPR constantes,sin pines inventados; fallback y cierre global pendientes del agente principal."
+    }
+  },
+  "preservation": {
+    "baselineProjectDataSHA256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+    "baselineFacetDataSHA256": "bdfb1d2036ec379ea03d1ce524d83e1843da3f89719222cfc6fb5f4883381681",
+    "mapModuleEdited": false,
+    "financialModulesEdited": false,
+    "functionsFormsCRMResendEdited": false,
+    "candidate24aEdited": false,
+    "gitMutationByThisAgent": false,
+    "global155Check": "Owned by root; not newly asserted here."
+  },
+  "updatedAtUTC": "2026-11-18T19:29:44.612080+00:00"
+}

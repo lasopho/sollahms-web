@@ -1,0 +1,2039 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-18",
+  "kind": "RAW_INTERNO_REFERENCIAS_UNITARIAS_IRIS_21_CON_WHITELIST",
+  "sourceProposal": {
+    "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/PROPUESTA-POR-LOTES.json",
+    "sha256": "b92427bca520de5a2d89dc53e89a9740a6881bad3a333b8d6ffd43d9a8a3379e"
+  },
+  "acquisition": {
+    "browser": "Chrome oficial mediante CUA y sesión autorizada existente",
+    "oneRowAndModalPerProject": true,
+    "GPRFirst": true,
+    "noExhaustiveInventory": true,
+    "noPrivateApiOrCredentials": true,
+    "noCommissionBrokerOrConditionsCaptured": true,
+    "noPDFDownloaded": true,
+    "noOwnerPricesRequestedOrOverwritten": true,
+    "noAppEdits": true
+  },
+  "summary": {
+    "projects": 21,
+    "exactUnitReferences": 21,
+    "bathroomsExplicit": 21,
+    "numericBedroomsExplicit": 16,
+    "literalEstudioWithoutNumericZero": 5,
+    "externalRowPriceReferences": 21,
+    "planImagesExported": 11,
+    "uniquePlanImageAssets": 10,
+    "usefulOrTotalPendingPlanLabelReview": false,
+    "stockCertified": 0,
+    "explicitUsefulOrTotalReferences": 0,
+    "realPlanImagesWithoutAreaLabels": 9,
+    "placeholderImages": 2,
+    "referencesWithoutSelectedVisiblePlan": 10,
+    "noNumericBedroomsInferredFromEstudio": true
+  },
+  "exactUnitReferences": [
+    {
+      "id": "iris:1556:unit:5_408B",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1556",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1556?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:44:27.131Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "5_408B",
+      "floorLabel": "4",
+      "modelLabel": null,
+      "modelLiteralPrefix": "Modelo B - 2D+2B",
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 3260.0,
+      "finalPriceUF": 2771.0,
+      "listPriceLiteral": "Precio de lista UF 3.260",
+      "finalPriceLiteral": "Precio final UF 2.771",
+      "bedroomsLiteral": "2",
+      "bathroomsLiteral": "2",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2771.0,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 50.5,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 50.5,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1556.json",
+        "sha256": "4e4ad16aab85bc284e83d6027d253e7cb5a8a32d0642482513cd842e4aefe4f5",
+        "bytes": 1371
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/7849d89a3bc87603e8be75df4701f0e5e708cb2b0f65c4fc4e222392b577f894.avif",
+        "sha256": "7849d89a3bc87603e8be75df4701f0e5e708cb2b0f65c4fc4e222392b577f894",
+        "bytes": 28618,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6ad8b9b502771_altos-del-penon-gpr-sanclara-depto-b-v04.jpg",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1556.json",
+          "sha256": "23beb958bfb9b5bda5b44d0d3c0de387ca1b4a162bc91d8f772fefc538cc6f7c",
+          "bytes": 504
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1556.png",
+          "sha256": "3406ebfabf846df106f09dbbdb9c899a97a45d101ecf0dd37042edb759c32789",
+          "bytes": 476357,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1557:unit:Sitio 15",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1557",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1557?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:44:51.971Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "Sitio 15",
+      "floorLabel": "1",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 4300.0,
+      "finalPriceUF": 3956.0,
+      "listPriceLiteral": "Precio de lista UF 4.300",
+      "finalPriceLiteral": "Precio final UF 3.956",
+      "bedroomsLiteral": "3",
+      "bathroomsLiteral": "3",
+      "projectPropertyTypeContext": {
+        "value": "casa",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 3956.0,
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 63.0,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 63.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1557.json",
+        "sha256": "a9ff44a0595393db9b5b531c4f49388d4c652c716fcf3117c9d584b861b94d17",
+        "bytes": 1359
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/4e8713cb7d05dc94e0769766019ca580e5d38c2f7ac6ac509726adf73a75bf8b.avif",
+        "sha256": "4e8713cb7d05dc94e0769766019ca580e5d38c2f7ac6ac509726adf73a75bf8b",
+        "bytes": 21403,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6ad8d37ae8d1c_reserva-santa-clara-plano-doca-63.jpg",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1557.json",
+          "sha256": "69f0566a07ad96f882ed54d0f99527e696d50ed8dbe0c68607b23164c599ee1d",
+          "bytes": 490
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1557.png",
+          "sha256": "a0b639713aaaacc7d42610ef335b26caffa9e61b6b63a26ed627feebea520aa1",
+          "bytes": 330049,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1558:unit:TH 02",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1558",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1558?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:44:54.323Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "TH 02",
+      "floorLabel": "1",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 3967.8,
+      "finalPriceUF": 3650.38,
+      "listPriceLiteral": "Precio de lista UF 3.967,8",
+      "finalPriceLiteral": "Precio final UF 3.650,38",
+      "bedroomsLiteral": "3",
+      "bathroomsLiteral": "3",
+      "projectPropertyTypeContext": {
+        "value": "casa",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 3650.38,
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 66.8,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 66.8,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1558.json",
+        "sha256": "af38506302ceff7bd90ba2024278dc9c12a92516bec16cc791986338ce6c8531",
+        "bytes": 1363
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/2d249d9b29d8a34074ba7adae2412f21eb2b8c1d32ac5ee259c0bb629aea10ea.avif",
+        "sha256": "2d249d9b29d8a34074ba7adae2412f21eb2b8c1d32ac5ee259c0bb629aea10ea",
+        "bytes": 15264,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6ada17a1082cc_hacienda-santa-clara-plano-townhouse-2.jpg",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1558.json",
+          "sha256": "9c729de5babef843542dc39fd60ebb479c3b4935190710aea0bb432a0b94c021",
+          "bytes": 500
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1558.png",
+          "sha256": "1b2dcb3d1444fb9d2e8a945af206ecb1ceadb23546fbd00a585bcdd694639769",
+          "bytes": 256520,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1559:unit:Sitio 7",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1559",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1559?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:44:56.246Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "Sitio 7",
+      "floorLabel": "1",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 3922.0,
+      "finalPriceUF": 3255.26,
+      "listPriceLiteral": "Precio de lista UF 3.922",
+      "finalPriceLiteral": "Precio final UF 3.255,26",
+      "bedroomsLiteral": "3",
+      "bathroomsLiteral": "2",
+      "projectPropertyTypeContext": {
+        "value": "casa",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 3255.26,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 56.75,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 56.75,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1559.json",
+        "sha256": "40a06dd7b6013915b169bd803f4babcde93227f14febf4da921fdaef8931379e",
+        "bytes": 1356
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:1560:unit:401 E2",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1560",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1560?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:44:58.783Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "401 E2",
+      "floorLabel": "4",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2682.0,
+      "finalPriceUF": 2682.0,
+      "listPriceLiteral": "Precio de lista UF 2.682",
+      "finalPriceLiteral": "Precio final UF 2.682",
+      "bedroomsLiteral": "2",
+      "bathroomsLiteral": "2",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2682.0,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 52.14,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 52.14,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1560.json",
+        "sha256": "f062e98091efaf5f28126cd53a9d9cbf628eed972121b98830c0ebb630a98171",
+        "bytes": 1361
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/0484b36409f8a93fb256174a1d04646e3d39022906dbfb67651ffda2a5cc7f9f.avif",
+        "sha256": "0484b36409f8a93fb256174a1d04646e3d39022906dbfb67651ffda2a5cc7f9f",
+        "bytes": 20397,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6adb9d999f6b2_sendero-santa-clara-plano-depto-b.jpg",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1560.json",
+          "sha256": "b5753e1afb291534e51194dd27296fa0c3b35f71dfa20f5f580e2fc945b05ff1",
+          "bytes": 490
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1560.png",
+          "sha256": "a23c9e1e7e927f61c895a19bcf434db6d3b0b7e1dfd0b73f051c850c8467750f",
+          "bytes": 352110,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1561:unit:Mz C - Casa 11",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1561",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1561?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:45:05.248Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "Mz C - Casa 11",
+      "floorLabel": "1",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 4700.0,
+      "finalPriceUF": 4324.0,
+      "listPriceLiteral": "Precio de lista UF 4.700",
+      "finalPriceLiteral": "Precio final UF 4.324",
+      "bedroomsLiteral": "3",
+      "bathroomsLiteral": "2",
+      "projectPropertyTypeContext": {
+        "value": "casa",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 4324.0,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 82.0,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 82.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1561.json",
+        "sha256": "4d74221c945279d4e4a8397fe9a8ba55ef4c5de8f798da113dc415b2c593d616",
+        "bytes": 1361
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/befb43424f021e5331d73285a46515efa526d1fdc8165666cf70aafbefd47124.avif",
+        "sha256": "befb43424f021e5331d73285a46515efa526d1fdc8165666cf70aafbefd47124",
+        "bytes": 15124,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6adba161b0da0_terrazas-del-mirador-plano-casa-80.jpg",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1561.json",
+          "sha256": "4cb484d919f9abc64d9f1c19973fa231df1c9ef528024967b73e001e34ba2112",
+          "bytes": 492
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1561.png",
+          "sha256": "f454adfe06d75bc96e612a95ea9683d9c5a92255aa4fd16d52e4f06764fadbd4",
+          "bytes": 237041,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1562:unit:Mz 21 Sitio 2",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1562",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1562?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:45:07.460Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "Mz 21 Sitio 2",
+      "floorLabel": "1",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2995.0,
+      "finalPriceUF": 2755.4,
+      "listPriceLiteral": "Precio de lista UF 2.995",
+      "finalPriceLiteral": "Precio final UF 2.755,4",
+      "bedroomsLiteral": "3",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "casa",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2755.4,
+        "bedrooms": 3,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 50.78,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 50.78,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1562.json",
+        "sha256": "952adf0ffc02b3221a2729b2f3c21af68d0b2fb109434b286eca4b2635b963e4",
+        "bytes": 1363
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/c1a4ed580535a86eb427fe9c193952984c091349a31880ba5745122e82592ba0.avif",
+        "sha256": "c1a4ed580535a86eb427fe9c193952984c091349a31880ba5745122e82592ba0",
+        "bytes": 15051,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6adba3d5902ba_altos-del-mirador-plano-mayu-51.jpg",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1562.json",
+          "sha256": "98ff29316ef42d47d1956cfc55547d8cb14a65e77733dc126747b2bc5671a358",
+          "bytes": 486
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1562.png",
+          "sha256": "9f043313cb97c0273218ad0099205820dc87340e1e7e11ba6fe3bf5dfae4ca71",
+          "bytes": 248848,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1563:unit:Casa 84",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1563",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1563?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:45:10.075Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "Casa 84",
+      "floorLabel": "1",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 3748.0,
+      "finalPriceUF": 3298.24,
+      "listPriceLiteral": "Precio de lista UF 3.748",
+      "finalPriceLiteral": "Precio final UF 3.298,24",
+      "bedroomsLiteral": "3",
+      "bathroomsLiteral": "2",
+      "projectPropertyTypeContext": {
+        "value": "casa",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 3298.24,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 58.7,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 58.7,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1563.json",
+        "sha256": "be920e991e3a71e1e79a470df2700d8076be664acd10a616517ec4ae201d5ba3",
+        "bytes": 1364
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/73e7f7be551b41c03bb99ec53a2116131790a07a1b75f727229a973512e52aff.avif",
+        "sha256": "73e7f7be551b41c03bb99ec53a2116131790a07a1b75f727229a973512e52aff",
+        "bytes": 22204,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6adf53fcdf9c4_hacienda-junquillar-plano-casa-58.jpg",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1563.json",
+          "sha256": "f71fa797f4fa08653732be65a0220ad15e1ce3b0be148ce333247d300170b936",
+          "bytes": 490
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1563.png",
+          "sha256": "a9c611c1ce5ac01e514712aa5a4a7b6cd0174edb3a9f75d61d1b72aa9888afdf",
+          "bytes": 312541,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1566:unit:Casa 70",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1566",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1566?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:45:12.292Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "Casa 70",
+      "floorLabel": "1",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 4700.0,
+      "finalPriceUF": 4324.0,
+      "listPriceLiteral": "Precio de lista UF 4.700",
+      "finalPriceLiteral": "Precio final UF 4.324",
+      "bedroomsLiteral": "3",
+      "bathroomsLiteral": "2",
+      "projectPropertyTypeContext": {
+        "value": "casa",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 4324.0,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 69.05,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 69.05,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1566.json",
+        "sha256": "e906f3444647f6960ce42c220afc11b67bf25e0a5ac90bc4d502d5ee1cf0b3e7",
+        "bytes": 1361
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:299:unit:2017",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "299",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/299?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:45:38.169Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "2017",
+      "floorLabel": "20",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2400.0,
+      "finalPriceUF": 2400.0,
+      "listPriceLiteral": "Precio de lista UF 2.400",
+      "finalPriceLiteral": "Precio final UF 2.400",
+      "bedroomsLiteral": "Estudio",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2400.0,
+        "bedrooms": null,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 25.11,
+        "terraceM2": 1.96
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 25.11,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 1.96,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-299.json",
+        "sha256": "3abf040ba9bc8bc7e2b189342512783d1103f6c470c6ce859a51e72ccccba156",
+        "bytes": 1326
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:315:unit:137",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "315",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/315?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:45:40.125Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "137",
+      "floorLabel": "1",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 4550.0,
+      "finalPriceUF": 3640.0,
+      "listPriceLiteral": "Precio de lista UF 4.550",
+      "finalPriceLiteral": "Precio final UF 3.640",
+      "bedroomsLiteral": "2",
+      "bathroomsLiteral": "2",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 3640.0,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 50.26,
+        "terraceM2": 10.1
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 50.26,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 10.1,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-315.json",
+        "sha256": "7d2612fd32bea7b656bc915e8c4cd37db8520142ed1f4b0c777719c4c657ded7",
+        "bytes": 1342
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:1549:unit:201-A",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1549",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1549?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:45:43.529Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "201-A",
+      "floorLabel": "2",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2050.0,
+      "finalPriceUF": 1791.7,
+      "listPriceLiteral": "Precio de lista UF 2.050",
+      "finalPriceLiteral": "Precio final UF 1.791,7",
+      "bedroomsLiteral": "Estudio",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 1791.7,
+        "bedrooms": null,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 23.74,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 23.74,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1549.json",
+        "sha256": "42d8b7d519a748a149672a46cf80d698789f20f0a1fee8381e0e7895059561d4",
+        "bytes": 1331
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/287fc37c8a0a006ef2b6695febd50e0ff0abfb79db58a4f1148ef472d17e0589.avif",
+        "sha256": "287fc37c8a0a006ef2b6695febd50e0ff0abfb79db58a4f1148ef472d17e0589",
+        "bytes": 6850,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6ad0d6ef67940_vista-vivaceta-modelo-e.png",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1549.json",
+          "sha256": "94d8b27c0c77918720c07949d0591bef8b6ec2c159680d5e39ee953df8d5493d",
+          "bytes": 470
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1549.png",
+          "sha256": "a035f8756de7235621a86f2495ef42efe8ea06c987863f58bc565165a5803c34",
+          "bytes": 92466,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1573:unit:208",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1573",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1573?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:45:58.947Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "208",
+      "floorLabel": "2",
+      "modelLabel": null,
+      "modelLiteralPrefix": "Modelo G1 - 1D+1B",
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 3173.0,
+      "finalPriceUF": 3014.35,
+      "listPriceLiteral": "Precio de lista UF 3.173",
+      "finalPriceLiteral": "Precio final UF 3.014,35",
+      "bedroomsLiteral": "1",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 3014.35,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 26.43,
+        "terraceM2": 4.29
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 26.43,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 4.29,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1573.json",
+        "sha256": "d975190357adc24a27ede7346cda27946abaa6f75812f198d3c1feee3d7c21ff",
+        "bytes": 1350
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:1575:unit:201",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1575",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1575?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:46:16.695Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "201",
+      "floorLabel": "2",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2576.5,
+      "finalPriceUF": 2190.0,
+      "listPriceLiteral": "Precio de lista UF 2.576,5",
+      "finalPriceLiteral": "Precio final UF 2.190",
+      "bedroomsLiteral": "Estudio",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2190.0,
+        "bedrooms": null,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 20.02,
+        "terraceM2": 0.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 20.02,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 0.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1575.json",
+        "sha256": "4d8133eb318d3697658f93f004f4ee72882d7331928d4e88c341e33b9b287c5c",
+        "bytes": 1333
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:1579:unit:214",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1579",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1579?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:46:19.587Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "214",
+      "floorLabel": "2",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2983.0,
+      "finalPriceUF": 2893.51,
+      "listPriceLiteral": "Precio de lista UF 2.983",
+      "finalPriceLiteral": "Precio final UF 2.893,51",
+      "bedroomsLiteral": "1",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2893.51,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 26.31,
+        "terraceM2": 1.8
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 26.31,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 1.8,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1579.json",
+        "sha256": "87df6b1f02e79e4ef685c9a78c290b425747e3637a6c8d088da29a05cc1f3fc5",
+        "bytes": 1350
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/3f111f9d79c5d8cb92f52f9a59845531f632d8fd43c29484c45463c1552a3c52.avif",
+        "sha256": "3f111f9d79c5d8cb92f52f9a59845531f632d8fd43c29484c45463c1552a3c52",
+        "bytes": 3775,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.62bf337c0227f_np-planes.png",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1579.json",
+          "sha256": "5e91e7bed3c3189bbfe344e59c03e24269d90ff8922c55f671acf163a6a0934d",
+          "bytes": 442
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLACEHOLDER_SIN_PLANO",
+        "actualPlan": false,
+        "publicPlanEligible": false,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1579.png",
+          "sha256": "3b1f4005bf90f21a1b4db08247b8d2639f29ea1dbaad1a64a191bdb759a46f3e",
+          "bytes": 50000,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: la imagen sólo indica que no hay plano cargado.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1582:unit:205",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1582",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1582?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:46:23.895Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "205",
+      "floorLabel": "2",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 3160.16,
+      "finalPriceUF": 3065.36,
+      "listPriceLiteral": "Precio de lista UF 3.160,16",
+      "finalPriceLiteral": "Precio final UF 3.065,36",
+      "bedroomsLiteral": "1",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 3065.36,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 28.3,
+        "terraceM2": 2.61
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 28.3,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 2.61,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1582.json",
+        "sha256": "febc15dff005da72ec136ba3fc4f04ec6cadc3aba78e09fd0695f9a7bf1a5d71",
+        "bytes": 1340
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/55b769a0ff5a386d2feb0581d08bf994a8276d70a570c3a29adab41ca2e4849a.avif",
+        "sha256": "55b769a0ff5a386d2feb0581d08bf994a8276d70a570c3a29adab41ca2e4849a",
+        "bytes": 17549,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.euro-espacio-v-1d-1b2cka.jpg",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1582.json",
+          "sha256": "266e6d02bc625cd883649a9dd4670a27378f8c7e7933bc04d2e6f7686bdfcdfb",
+          "bytes": 444
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+        "actualPlan": true,
+        "publicPlanEligible": true,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1582.png",
+          "sha256": "f4acb2b24f691dc4235e7553ae4d6fc8c44d31635c757ecdc12ca3a911db319f",
+          "bytes": 265714,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: el plano visible no contiene rótulos numéricos de útil/total.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1585:unit:1210",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1585",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1585?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:46:33.187Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "1210",
+      "floorLabel": "12",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2855.81,
+      "finalPriceUF": 2456.0,
+      "listPriceLiteral": "Precio de lista UF 2.855,81",
+      "finalPriceLiteral": "Precio final UF 2.456",
+      "bedroomsLiteral": "Estudio",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2456.0,
+        "bedrooms": null,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 24.83,
+        "terraceM2": 1.83
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 24.83,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 1.83,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1585.json",
+        "sha256": "015bfbd70d41595df3907ccbf769a93f9d7b44135369739f715d8546f3bcf708",
+        "bytes": 1344
+      },
+      "planEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/3f111f9d79c5d8cb92f52f9a59845531f632d8fd43c29484c45463c1552a3c52.avif",
+        "sha256": "3f111f9d79c5d8cb92f52f9a59845531f632d8fd43c29484c45463c1552a3c52",
+        "bytes": 3775,
+        "contentType": "image/avif",
+        "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.62bf337c0227f_np-planes.png",
+        "pageAssetsManifest": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1585.json",
+          "sha256": "0db5da04e925ff3d5b5261c4a18c3035488e3f5bf213ca4f82b2c16313d84061",
+          "bytes": 442
+        },
+        "selectedPlanCount": 1,
+        "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+        "visualReviewStatus": "PLACEHOLDER_SIN_PLANO",
+        "actualPlan": false,
+        "publicPlanEligible": false,
+        "unitNumberPrinted": false,
+        "modelPrinted": false,
+        "usefulLabelPrinted": false,
+        "totalLabelPrinted": false,
+        "inspectionPreview": {
+          "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/lectura-visual/iris-1585.png",
+          "sha256": "3b1f4005bf90f21a1b4db08247b8d2639f29ea1dbaad1a64a191bdb759a46f3e",
+          "bytes": 50000,
+          "kind": "decoded-copy-for-reading-original-unchanged"
+        }
+      },
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "DESCONOCIDOS: la imagen sólo indica que no hay plano cargado.",
+      "planAssociationLimit": "Mostrado por Iris en el modal de esta unidad, sin unidad ni modelo impresos en la imagen. No certifica equivalencia general, revisión, legal/as-built ni otras unidades."
+    },
+    {
+      "id": "iris:1586:unit:2821",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1586",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1586?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:46:36.384Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "2821",
+      "floorLabel": "28",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 3166.29,
+      "finalPriceUF": 3166.29,
+      "listPriceLiteral": "Precio de lista UF 3.166,29",
+      "finalPriceLiteral": "Precio final UF 3.166,29",
+      "bedroomsLiteral": "1",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 3166.29,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 32.78,
+        "terraceM2": 2.89
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 32.78,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 2.89,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1586.json",
+        "sha256": "5aeb3878c39100f52aed90d85d0f8ee80eb25b08235b8c717c1c0a734ac3c7a5",
+        "bytes": 1348
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:1588:unit:302",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1588",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1588?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:46:38.829Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "302",
+      "floorLabel": "3",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2807.81,
+      "finalPriceUF": 2807.81,
+      "listPriceLiteral": "Precio de lista UF 2.807,81",
+      "finalPriceLiteral": "Precio final UF 2.807,81",
+      "bedroomsLiteral": "Estudio",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2807.81,
+        "bedrooms": null,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 24.55,
+        "terraceM2": 3.5
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 24.55,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 3.5,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1588.json",
+        "sha256": "210f85c15a1a86f325b1583fe0a01f1fbd354a0199536f6bb0ac3598c9d9171b",
+        "bytes": 1325
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:1589:unit:604",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1589",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1589?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:46:40.918Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "604",
+      "floorLabel": "6",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 4771.92,
+      "finalPriceUF": 4771.92,
+      "listPriceLiteral": "Precio de lista UF 4.771,92",
+      "finalPriceLiteral": "Precio final UF 4.771,92",
+      "bedroomsLiteral": "2",
+      "bathroomsLiteral": "2",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 4771.92,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 44.0,
+        "terraceM2": 7.0
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 44.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 7.0,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1589.json",
+        "sha256": "d359e864f7ef2c89304562cf17894d023aa7a192a550b290adc5fcf66d1a8f2d",
+        "bytes": 1353
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    },
+    {
+      "id": "iris:1590:unit:408",
+      "idKind": "derived-from-observed-project-id-and-unit-label-not-upstream-database-id",
+      "irisProjectId": "1590",
+      "sourceKind": "IRIS_EXACT_UNIT",
+      "sourceURL": "https://iris.yapo.cl/proyecto/1590?operation=Venta",
+      "observedAtUTC": "2026-11-18T18:46:42.895Z",
+      "sourceDocumentDate": null,
+      "unitLabel": "408",
+      "floorLabel": "4",
+      "modelLabel": null,
+      "modelLiteralPrefix": null,
+      "modelHomologated": false,
+      "stock": null,
+      "commercialValidityConfirmed": false,
+      "isSollahmsOwnerPrice": false,
+      "priceKind": "finalPrice",
+      "priceSourceLabel": "Precio final",
+      "listPriceUF": 2994.03,
+      "finalPriceUF": 2994.03,
+      "listPriceLiteral": "Precio de lista UF 2.994,03",
+      "finalPriceLiteral": "Precio final UF 2.994,03",
+      "bedroomsLiteral": "1",
+      "bathroomsLiteral": "1",
+      "projectPropertyTypeContext": {
+        "value": "departamento",
+        "scope": "Cabecera general previamente documentada, no copiada como atributo de esta unidad por este recibo."
+      },
+      "attributes": {
+        "propertyType": null,
+        "priceUF": 2994.03,
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "usefulM2": null,
+        "totalM2": null,
+        "interiorM2": null,
+        "internalM2": 28.03,
+        "terraceM2": 2.66
+      },
+      "surfaceEvidence": {
+        "internalM2": {
+          "sourceLabel": "Internos",
+          "valueM2": 28.03,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "canonicalMapping": null
+        },
+        "terraceM2": {
+          "sourceLabel": "Terraza",
+          "valueM2": 2.66,
+          "unit": "m²",
+          "explicitlyPrinted": true,
+          "calculated": false,
+          "sourceSurface": "same unit modal",
+          "privateEntitlementConfirmed": false
+        }
+      },
+      "scope": "Sólo la fila observada y su modal identificado por la unidad indicada. Precio externo de Iris, no desde de proyecto ni cotización owner, sin stock o vigencia certificados. Internos no es interior/útil/total y no se suma a terraza. Sin equivalencias con otras unidades, torres, etapas o modelos.",
+      "domEvidence": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/dom-whitelist/iris-1590.json",
+        "sha256": "044cd35b0d4ba702bd136f29574b5f2fe3fc0b5c62d5dac4459f86a6d76a16f1",
+        "bytes": 1351
+      },
+      "planEvidence": null,
+      "financialBaselineCompatible": false,
+      "publicProjectionRestrictions": [
+        "No unitLabel, modelLabel, modelLiteralPrefix o descripción en JSON público.",
+        "Únicamente id opaco, atributos permitidos y fuente/fecha/alcance tras la proyección whitelist del autor."
+      ],
+      "usefulTotalStatus": "NO_ROTULADOS_EN_EL_MODAL_WHITELIST; sin plano visible seleccionado en ese corte."
+    }
+  ],
+  "planAssetsBySHA256": {
+    "7849d89a3bc87603e8be75df4701f0e5e708cb2b0f65c4fc4e222392b577f894": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/7849d89a3bc87603e8be75df4701f0e5e708cb2b0f65c4fc4e222392b577f894.avif",
+      "sha256": "7849d89a3bc87603e8be75df4701f0e5e708cb2b0f65c4fc4e222392b577f894",
+      "bytes": 28618,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6ad8b9b502771_altos-del-penon-gpr-sanclara-depto-b-v04.jpg",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1556.json",
+        "sha256": "23beb958bfb9b5bda5b44d0d3c0de387ca1b4a162bc91d8f772fefc538cc6f7c",
+        "bytes": 504
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    },
+    "4e8713cb7d05dc94e0769766019ca580e5d38c2f7ac6ac509726adf73a75bf8b": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/4e8713cb7d05dc94e0769766019ca580e5d38c2f7ac6ac509726adf73a75bf8b.avif",
+      "sha256": "4e8713cb7d05dc94e0769766019ca580e5d38c2f7ac6ac509726adf73a75bf8b",
+      "bytes": 21403,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6ad8d37ae8d1c_reserva-santa-clara-plano-doca-63.jpg",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1557.json",
+        "sha256": "69f0566a07ad96f882ed54d0f99527e696d50ed8dbe0c68607b23164c599ee1d",
+        "bytes": 490
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    },
+    "2d249d9b29d8a34074ba7adae2412f21eb2b8c1d32ac5ee259c0bb629aea10ea": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/2d249d9b29d8a34074ba7adae2412f21eb2b8c1d32ac5ee259c0bb629aea10ea.avif",
+      "sha256": "2d249d9b29d8a34074ba7adae2412f21eb2b8c1d32ac5ee259c0bb629aea10ea",
+      "bytes": 15264,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6ada17a1082cc_hacienda-santa-clara-plano-townhouse-2.jpg",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1558.json",
+        "sha256": "9c729de5babef843542dc39fd60ebb479c3b4935190710aea0bb432a0b94c021",
+        "bytes": 500
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    },
+    "0484b36409f8a93fb256174a1d04646e3d39022906dbfb67651ffda2a5cc7f9f": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/0484b36409f8a93fb256174a1d04646e3d39022906dbfb67651ffda2a5cc7f9f.avif",
+      "sha256": "0484b36409f8a93fb256174a1d04646e3d39022906dbfb67651ffda2a5cc7f9f",
+      "bytes": 20397,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6adb9d999f6b2_sendero-santa-clara-plano-depto-b.jpg",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1560.json",
+        "sha256": "b5753e1afb291534e51194dd27296fa0c3b35f71dfa20f5f580e2fc945b05ff1",
+        "bytes": 490
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    },
+    "befb43424f021e5331d73285a46515efa526d1fdc8165666cf70aafbefd47124": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/befb43424f021e5331d73285a46515efa526d1fdc8165666cf70aafbefd47124.avif",
+      "sha256": "befb43424f021e5331d73285a46515efa526d1fdc8165666cf70aafbefd47124",
+      "bytes": 15124,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6adba161b0da0_terrazas-del-mirador-plano-casa-80.jpg",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1561.json",
+        "sha256": "4cb484d919f9abc64d9f1c19973fa231df1c9ef528024967b73e001e34ba2112",
+        "bytes": 492
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    },
+    "c1a4ed580535a86eb427fe9c193952984c091349a31880ba5745122e82592ba0": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/c1a4ed580535a86eb427fe9c193952984c091349a31880ba5745122e82592ba0.avif",
+      "sha256": "c1a4ed580535a86eb427fe9c193952984c091349a31880ba5745122e82592ba0",
+      "bytes": 15051,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6adba3d5902ba_altos-del-mirador-plano-mayu-51.jpg",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1562.json",
+        "sha256": "98ff29316ef42d47d1956cfc55547d8cb14a65e77733dc126747b2bc5671a358",
+        "bytes": 486
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    },
+    "73e7f7be551b41c03bb99ec53a2116131790a07a1b75f727229a973512e52aff": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/73e7f7be551b41c03bb99ec53a2116131790a07a1b75f727229a973512e52aff.avif",
+      "sha256": "73e7f7be551b41c03bb99ec53a2116131790a07a1b75f727229a973512e52aff",
+      "bytes": 22204,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6adf53fcdf9c4_hacienda-junquillar-plano-casa-58.jpg",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1563.json",
+        "sha256": "f71fa797f4fa08653732be65a0220ad15e1ce3b0be148ce333247d300170b936",
+        "bytes": 490
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    },
+    "287fc37c8a0a006ef2b6695febd50e0ff0abfb79db58a4f1148ef472d17e0589": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/287fc37c8a0a006ef2b6695febd50e0ff0abfb79db58a4f1148ef472d17e0589.avif",
+      "sha256": "287fc37c8a0a006ef2b6695febd50e0ff0abfb79db58a4f1148ef472d17e0589",
+      "bytes": 6850,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.6ad0d6ef67940_vista-vivaceta-modelo-e.png",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1549.json",
+        "sha256": "94d8b27c0c77918720c07949d0591bef8b6ec2c159680d5e39ee953df8d5493d",
+        "bytes": 470
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    },
+    "3f111f9d79c5d8cb92f52f9a59845531f632d8fd43c29484c45463c1552a3c52": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/3f111f9d79c5d8cb92f52f9a59845531f632d8fd43c29484c45463c1552a3c52.avif",
+      "sha256": "3f111f9d79c5d8cb92f52f9a59845531f632d8fd43c29484c45463c1552a3c52",
+      "bytes": 3775,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.62bf337c0227f_np-planes.png",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1585.json",
+        "sha256": "0db5da04e925ff3d5b5261c4a18c3035488e3f5bf213ca4f82b2c16313d84061",
+        "bytes": 442
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLACEHOLDER_SIN_PLANO",
+      "actualPlan": false
+    },
+    "55b769a0ff5a386d2feb0581d08bf994a8276d70a570c3a29adab41ca2e4849a": {
+      "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/planos-originales/55b769a0ff5a386d2feb0581d08bf994a8276d70a570c3a29adab41ca2e4849a.avif",
+      "sha256": "55b769a0ff5a386d2feb0581d08bf994a8276d70a570c3a29adab41ca2e4849a",
+      "bytes": 17549,
+      "contentType": "image/avif",
+      "sourceURL": "https://cdn2.infocasas.com.uy/web/th.outside700x700.euro-espacio-v-1d-1b2cka.jpg",
+      "pageAssetsManifest": {
+        "path": "/private/tmp/sollahms-ampliacion-21-fichas-20261118/evidencia-unitaria/pageAssets/iris-1582.json",
+        "sha256": "266e6d02bc625cd883649a9dd4670a27378f8c7e7933bc04d2e6f7686bdfcdfb",
+        "bytes": 444
+      },
+      "selectedPlanCount": 1,
+      "scope": "Una imagen de plano visible en el modal de la unidad elegida; sin revisión de otros modelos ni garantía de unidad impresa/as-built.",
+      "visualReviewStatus": "PLANO_SIN_ROTULOS_DE_SUPERFICIE",
+      "actualPlan": true
+    }
+  },
+  "limits": [
+    "Los precios lista/final son los rótulos explícitos de la misma fila, no sustituyen precios owner ni el mínimo de cabecera.",
+    "No se guardaron condiciones, comisiones, brokers ni la descripción mezclada. No se infieren inclusiones o disponibilidad de su ausencia.",
+    "Estudio literal no produce cero dormitorios. Un modelo literal no se homologa por prefijo o nombre de archivo.",
+    "Las superficies útiles/totales permanecen null hasta una lectura expresa del plano visible y conservan su alcance por unidad.",
+    "Botánico y Ambar comparten una URL de imagen identificada por el portal como plano; debe verificarse visualmente antes de tratarla como plano real.",
+    "Lectura visual terminada: nueve imágenes de distribución sin rótulos útiles/totales y dos placeholders. No se promueve Internos a útil/total; cero útil/total confirmados en estas21 referencias acotadas."
+  ]
+}

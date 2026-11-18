@@ -1,0 +1,42 @@
+{
+  "kind": "DOM_WHITELIST_DE_UNA_FILA_Y_SU_MODAL_OBSERVADOS_EN_CHROME",
+  "irisProjectId": "1582",
+  "sourceURL": "https://iris.yapo.cl/proyecto/1582?operation=Venta",
+  "observedAtUTC": "2026-11-18T18:46:23.895Z",
+  "projectHeading": "Euro - Espacio V",
+  "rowSelector": ".units-table-row (primera fila observada)",
+  "allowedColumnClasses": {
+    "unit": "units_table_col_0",
+    "listPrice": "units_table_col_3",
+    "finalPrice": "units_table_col_5",
+    "internalArea": "units_table_col_7",
+    "bedrooms": "units_table_col_11",
+    "bathrooms": "units_table_col_12"
+  },
+  "row": {
+    "unitLiteral": "Unidad 205",
+    "listPriceLiteral": "Precio de lista UF 3.160,16",
+    "finalPriceLiteral": "Precio final UF 3.065,36",
+    "internalAreaLiteral": "28.3 m²",
+    "bedroomsCellLiteral": "1",
+    "bathroomsCellLiteral": "1"
+  },
+  "modalAllowedLines": [
+    "Unidad 205 · Piso 2",
+    "28.3m² internos · 2.61m² terraza",
+    "1 dormitorio",
+    "1 baño"
+  ],
+  "modelLiteralPrefix": null,
+  "modelPrefixScope": "Rótulo literal de UI, NO_HOMOLOGADO; el resto mezclado con condiciones queda fuera de esta whitelist.",
+  "excludedFromCapture": [
+    "commission",
+    "broker",
+    "discountPercentage",
+    "bonusPie",
+    "paymentOrFinancingConditions",
+    "fullMixedDescription",
+    "otherUnits",
+    "stockCounters"
+  ]
+}
