@@ -1,6 +1,7 @@
 import {defaults,FILTER_STORAGE,sanitizeState,readQuery,writeQuery,safePublicState,rangeIssue} from './catalog-filter-engine.mjs?v=20261029-stage-1';
 import {assetTypes,VIEW_KEY,SESSION_KEY} from './catalog-model.mjs?v=20261029-stage-1';
 import {AMENITY_KEY_MAP,AMENITY_LABELS} from './commercial-filter-data.mjs?v=20261117-local-1';
+import {hasCatalogExpansionMarker} from './catalog-expansion.mjs';
 const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
 const unique=values=>[...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'es-CL',{numeric:true}));
 const propertyLabels={departamento:'Departamento',casa:'Casa',terreno:'Terreno o parcela',local:'Local comercial',oficina:'Oficina',duplex:'Dúplex',estudio:'Estudio'};
@@ -19,7 +20,8 @@ export function facetOptions(projects,index,commercialRecords=[]){
   const types=unique([...facets.flatMap(f=>f.propertyTypes??[]),...facts.flatMap(f=>f.propertyTypes??[]),...variants.map(v=>v.propertyType)].map(propertyId));
   const years=unique([...facets.map(f=>f.delivery?.year),...facts.map(f=>f.delivery?.year)].filter(Boolean));
   const preparedFilters=Object.entries(AMENITY_KEY_MAP).filter(([,key])=>facts.some(f=>f.amenities?.[key]===true)).map(([id,key])=>({id,label:AMENITY_LABELS[key]??id,group:'amenities'}));
-  const filters=mergeOptions([...(index.filters??[]),...preparedFilters]).filter(row=>!decorativeFilters.has(row.id)&&!scopedSpaceFilters.has(row.id));
+  const filters=mergeOptions([...(index.filters??[]),...preparedFilters]).filter(row=>!decorativeFilters.has(row.id)&&!scopedSpaceFilters.has(row.id))
+    .map(row=>index.expansionCount?{...row,count:(row.count??0)+projects.filter(p=>hasCatalogExpansionMarker(p)&&p._facets?.features?.some(f=>f.id===row.id)).length}:row);
   const immediate=facets.some(f=>f.delivery?.immediate)||facts.some(f=>f.delivery?.category==='immediate');
   return {
     regions:unique(projects.map(p=>p.region)),communes:unique(projects.map(p=>p.comuna)),developers:unique(projects.map(p=>p.inmobiliaria)),
@@ -41,7 +43,8 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
   controls.evidenceMode.querySelector('[value="documentary"]')?.remove();
   if(documentaryEnabled)controls.evidenceMode.append(new Option('Revisión documental local · sin stock','documentary'));
   const advanced=document.getElementById('catalog-more'),panel=document.getElementById('catalog-options'),status=document.getElementById('filter-range-error');
-  const evidenceHelp=document.getElementById('evidence-mode-help'),publishedHelp=evidenceHelp.textContent;
+  const evidenceHelp=document.getElementById('evidence-mode-help'),publishedHelp=evidenceHelp.textContent+(index.expansionCount?' Los 21 proyectos nuevos identifican sus referencias Iris con fuente y fecha. Los precios externos no sustituyen precios Sollahms ni acreditan stock.':'');
+  if(index.expansionCount)controls.evidenceMode.querySelector('[value="published"]').textContent='Catálogo y referencias Iris';
   const groups={metroLines:(index.metro?.lines??[]).map(l=>({id:l.id,label:l.name})),purchaseModes:[{id:'blanco',label:'Compra en blanco'},{id:'verde',label:'Compra en verde'},{id:'inmediata',label:'Entrega inmediata'}].map(x=>({...x,count:projects.filter(p=>p._facets?.purchaseStage?.eligible&&p._facets.purchaseStage.mode===x.id).length})),amenities:options.filters.filter(x=>x.group==='amenities'),features:options.filters.filter(x=>x.group==='features'),developers:options.developers.map(id=>({id,label:id,count:projects.filter(p=>p.inmobiliaria===id).length})),typologies:options.typologies};
   const populate=(key,values,empty)=>{const c=controls[key];c.replaceChildren(...(empty!==null?[new Option(empty,'')]:[]),...values.map(v=>new Option(typeof v==='string'?v:v.label,typeof v==='string'?v:v.id)));};
   populate('metroStation',(index.metro?.stations??[]).map(s=>({id:s.id,label:s.name+' · '+s.lines.join('/')})).sort((a,b)=>a.label.localeCompare(b.label,'es')),'Cualquier estación');
@@ -58,7 +61,7 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
     if(!rows.length)host.closest('fieldset').hidden=true;
   }
   for(const key of ['propertyType','delivery','areaType'])labels[key]=new Map(options[key==='propertyType'?'propertyTypes':key==='delivery'?'deliveries':'areaTypes'].map(x=>[x.id,x.label]));
-  labels.evidenceMode=new Map([['published','Datos publicados'],['prepared','Referencias Leben · 16 nov 2026'],['documentary','Revisión documental local · sin stock']]);
+  labels.evidenceMode=new Map([['published',index.expansionCount?'Catálogo y referencias Iris':'Datos publicados'],['prepared','Referencias Leben · 16 nov 2026'],['documentary','Revisión documental local · sin stock']]);
   labels.parking=new Map([['additional','Costo adicional documentado'],['included','Incluido en la referencia'],['available','Disponibilidad confirmada']]);
   labels.storage=new Map([['additional','Costo adicional documentado'],['included','Incluida en la referencia'],['available','Disponibilidad confirmada']]);
   labels.bedrooms=new Map([['0','Estudio'],['1','1 dormitorio'],['2','2 dormitorios'],['3','3 dormitorios'],['4+','4 o más dormitorios']]);labels.bathrooms=new Map([['1','1 baño'],['2','2 baños'],['3+','3 o más baños']]);
@@ -71,7 +74,7 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
     host.hidden=!n;document.getElementById('catalog-filter-count').textContent=n?' ('+n+')':'';
     document.getElementById('purchase-stage-filter-note').hidden=!state.purchaseModes.length;
     const advancedCount=state.metroLines.length+(state.metroNetwork?1:0)+(state.metroStation?1:0)+state.purchaseModes.length+state.amenities.length+state.features.length+state.developers.length+state.typologies.length+['delivery','minArea','maxArea','state','assetType','parking','storage'].filter(k=>state[k]).length+(state.evidenceMode!=='published'?1:0);
-    const priceLegend=form.querySelector('.cf-price > legend');if(priceLegend)priceLegend.textContent=state.evidenceMode!=='published'?'Precio de referencia · UF':'Precio desde · UF';
+    const priceLegend=form.querySelector('.cf-price > legend');if(priceLegend)priceLegend.textContent=state.evidenceMode!=='published'||index.expansionCount?'Precio de referencia · UF':'Precio desde · UF';
     evidenceHelp.textContent=state.evidenceMode==='documentary'?'Revisión documental local: '+index.documentaryReferenceCount+' referencias conservadas con su fuente y alcance. Sólo se combinan atributos de una misma referencia. Los proyectos sin evidencia conservan únicamente su identidad; no se toman precios ni características del catálogo publicado. Las referencias no acreditan stock ni vigencia comercial.':state.evidenceMode==='prepared'?'Leben usa referencias revisadas al 16/11/2026; los otros proyectos conservan sus datos publicados. La fecha y el alcance se indican en los resultados de Leben. Las referencias no acreditan stock disponible.':publishedHelp;
     for(const count of form.querySelectorAll('.cf-option-count'))count.hidden=state.evidenceMode!=='published';
     document.getElementById('catalog-more-count').textContent=advancedCount?' ('+advancedCount+')':'';

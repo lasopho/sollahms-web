@@ -3,6 +3,7 @@ import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
 import {hasCatalogTypologyPrices,catalogTypologyOffer} from './catalog-typology-prices.mjs';
 import {usesEuroOwnerQuotes,euroOwnerQuoteOffer} from './catalog-euro-owner-quotes.mjs';
 import {matchNollagamOwnerQuotes,nollagamOwnerQuoteOffer,nollagamOwnerQuoteFacts,nollagamOwnerQuoteNote} from './catalog-nollagam-quote-consumer.mjs';
+import {hasCatalogExpansionMarker,catalogExpansionOffer,catalogExpansionPriceLabel,catalogExpansionNote,catalogExpansionFacts} from './catalog-expansion.mjs';
 // Public catalogue facts only. This module never changes source records.
 export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL');
 export const validPrice = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
@@ -56,6 +57,7 @@ function documentaryScopeLabel(scope){
   return identity.length?'Alcance: sólo '+identity.join(', '):null;
 }
 export function projectOffer(project,state={}) {
+  if(hasCatalogExpansionMarker(project))return catalogExpansionOffer(project,state)??{value:null,typology:null,expansion:true,financialBaselineCompatible:false};
   if(documentaryResult(project)||state.evidenceMode==='documentary'){
     const reference=documentaryReference(project),a=reference?.attributes??{},metadata=documentaryMetadata(project,reference);
     return {value:validPrice(a.priceUF)?a.priceUF:null,typology:null,documentary:true,referenceId:reference?.id??null,date:metadata.ownerPriceDate??null};
@@ -69,6 +71,7 @@ export function projectOffer(project,state={}) {
   return {value:validPrice(a.priceUF)?a.priceUF:null,typology:typology||null,prepared:true,date:project._commercial?.asOf,referenceId:reference?.id};
 }
 export function offerPriceLabel(project,state={}) {
+  if(hasCatalogExpansionMarker(project))return catalogExpansionPriceLabel(project,state);
   const offer=projectOffer(project,state);
   if(offer.documentary)return validPrice(offer.value)?'Referencia propietaria UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}):offer.referenceId?'Sin precio comercial para esta referencia':'Sin referencia documental en esta revisión';
   if(offer.euroOwnerQuote)return priceFromLabel(offer.value,offer.priceDecimals);
@@ -76,6 +79,7 @@ export function offerPriceLabel(project,state={}) {
   return validPrice(offer.value) ? 'Referencia UF '+offer.value.toLocaleString('es-CL',{maximumFractionDigits:2}) : 'Precio de esta referencia por confirmar';
 }
 export function commercialLayerNote(project,state={}) {
+  if(hasCatalogExpansionMarker(project))return catalogExpansionNote(project,state);
   if(documentaryResult(project)||state.evidenceMode==='documentary'){
     const reference=documentaryReference(project);
     if(!reference)return 'Revisión documental local · sólo identidad publicada; sin referencia recibida en esta capa';
@@ -122,6 +126,7 @@ export function filterAndSort(projects, filters={}) {
   return rows;
 }
 export function projectFacts(project, selectedType='',filterState={}) {
+  if(hasCatalogExpansionMarker(project))return catalogExpansionFacts(project,filterState);
   if(documentaryResult(project)||filterState.evidenceMode==='documentary'){
     const a=documentaryReference(project)?.attributes??{},facts=[];
     if(a.bedrooms!=null||a.bathrooms!=null)facts.push({label:'Tipología de la referencia',value:[a.bedrooms==null?null:a.bedrooms+'D',a.bathrooms==null?null:a.bathrooms+'B'].filter(Boolean).join(' / ')});

@@ -3,6 +3,7 @@ import {catalogReference} from './project-offers.mjs?v=20261029-euro-1';
 import {hasCatalogTypologyPrices,matchCatalogTypologyPrices,catalogTypologyOffer,catalogTypologyFeatureIds} from './catalog-typology-prices.mjs';
 import {usesEuroOwnerQuotes,matchEuroOwnerQuotes,euroOwnerQuoteOffer,euroOwnerQuoteFeatureIds} from './catalog-euro-owner-quotes.mjs';
 import {matchNollagamOwnerQuotes,nollagamOwnerQuoteOffer} from './catalog-nollagam-quote-consumer.mjs';
+import {hasCatalogExpansionMarker,isCatalogExpansionProject,matchCatalogExpansion,catalogExpansionOffer,catalogExpansionMatchedLabels} from './catalog-expansion.mjs';
 import {matchProjectFilters,queryFromCatalogState,normalizePropertyType,normalizeAmenityKey} from './commercial-filter-engine.mjs';
 /** Pure, bounded filtering of documented project facts. Unknown is never false. */
 export const fold=value=>String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es-CL');
@@ -97,7 +98,7 @@ const matchingPrice=match=>{
   const prices=match?.references?.map(reference=>reference.attributes?.priceUF).filter(value=>validNumber(value)&&value>0)??[];
   return prices.length?Math.min(...prices):null;
 };
-const resultPrice=(project,state)=>state.evidenceMode==='documentary'?matchingPrice(project._documentaryMatch):
+const resultPrice=(project,state)=>isCatalogExpansionProject(project)?catalogExpansionOffer(project,state)?.value:state.evidenceMode==='documentary'?matchingPrice(project._documentaryMatch):
   project._commercialMatch?matchingPrice(project._commercialMatch):matchNollagamOwnerQuotes(project,state)!==null?
     nollagamOwnerQuoteOffer(matchNollagamOwnerQuotes(project,state)).value:usesEuroOwnerQuotes(project,state)?
     euroOwnerQuoteOffer(project,state).value:hasCatalogTypologyPrices(project)?
@@ -139,6 +140,10 @@ export function advancedFilterAndSort(projects,input={}){
       if(!match.matches||!metroMatches(p,s)||!preparedPurchaseMatches(record,s))return [];
       const {_commercialMatch,...project}=p;
       return [{...project,_documentaryMatch:match}];
+    }
+    if(hasCatalogExpansionMarker(p)){
+      const match=matchCatalogExpansion(p,s);
+      return match?.matches&&metroMatches(p,s)?[{...p,_catalogExpansionMatch:match}]:[];
     }
     if(s.evidenceMode==='prepared'&&p._commercialStatus?.active===false)return [];
     if(s.evidenceMode==='prepared'&&p._commercial?.sourceLayer==='prepared'){
@@ -210,6 +215,7 @@ export function writeQuery(state,view='cards'){
 export function matchedLabels(project,state){
   const selected=new Set([...(state.amenities??[]),...(state.features??[])]);
   if(state.evidenceMode==='documentary'||project._documentaryMatch)return [];
+  if(hasCatalogExpansionMarker(project))return catalogExpansionMatchedLabels(project,state);
   if(matchNollagamOwnerQuotes(project,state)!==null)return [];
   if(usesEuroOwnerQuotes(project,state)){
     const actual=new Set(euroOwnerQuoteFeatureIds(project,state));
