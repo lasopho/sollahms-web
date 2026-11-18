@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "observedAtUTC": "2026-11-18 21:40:16 UTC",
+  "result": "VERIFICADO_SIN_PROMOCION",
+  "scope": "Lecturas oficiales de identidad, estado y asignación de aliases. No es repetición de QA de código, UI o runtime.",
+  "expected": {
+    "repository": "lasopho/sollahms-web",
+    "teamSlug": "lsandoval2-8260s-projects",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "reviewDeploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+    "reviewSourceSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+    "publishedDeploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "publishedSourceSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
+  },
+  "reviewDeployment": {
+    "id": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+    "name": "project-wrapp",
+    "url": "project-wrapp-kb7gmwe9d-lsandoval2-8260s-projects.vercel.app",
+    "project": {
+      "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "name": "project-wrapp",
+      "framework": null
+    },
+    "source": "cli",
+    "target": "production",
+    "state": "READY",
+    "readyState": "READY",
+    "createdAt": 1795037836209,
+    "ready": 1795037846835,
+    "meta": {
+      "githubCommitRef": "codex/footer-sin-frase-20261116",
+      "githubCommitSha": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+      "githubRepo": "sollahms-web",
+      "githubOrg": "lasopho"
+    },
+    "alias": [],
+    "aliasError": null
+  },
+  "publishedDeployment": {
+    "id": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "name": "project-wrapp",
+    "url": "project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app",
+    "project": {
+      "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "name": "project-wrapp",
+      "framework": null
+    },
+    "source": "cli",
+    "target": "production",
+    "state": "READY",
+    "readyState": "READY",
+    "createdAt": 1794966834862,
+    "ready": 1794966842466,
+    "meta": {
+      "githubCommitRef": "codex/footer-sin-frase-20261116",
+      "githubCommitSha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "githubRepo": "sollahms-web",
+      "githubOrg": "lasopho"
+    },
+    "alias": [],
+    "aliasError": null
+  },
+  "productiveAliases": [
+    {
+      "alias": "sollahms.cl",
+      "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794968090721
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794968090722
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794968090720
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794968090723
+    }
+  ],
+  "checks": {
+    "reviewIDExact": true,
+    "reviewProjectExact": true,
+    "reviewRepositoryExact": true,
+    "reviewSourceMetaExact": true,
+    "reviewTargetProduction": true,
+    "reviewReady": true,
+    "reviewAliasesEmpty": true,
+    "allFourProductiveAliasesRemainOn875": true,
+    "publishedSourceMetaExact": true,
+    "publishedReady": true
+  },
+  "evidenceAcquisition": {
+    "mechanism": "Vercel MCP autenticado, herramientas oficiales de sólo lectura",
+    "requests": [
+      {
+        "tool": "get_deployment",
+        "idOrUrl": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+        "withGitRepoInfo": "true",
+        "teamSlug": "lsandoval2-8260s-projects"
+      },
+      {
+        "tool": "get_deployment",
+        "idOrUrl": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "withGitRepoInfo": "true",
+        "teamSlug": "lsandoval2-8260s-projects"
+      },
+      {
+        "tool": "list_aliases",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "limit": 100,
+        "teamSlug": "lsandoval2-8260s-projects",
+        "scopeNote": "Primera página consultada; no se presenta como inventario completo de aliases históricos."
+      },
+      {
+        "tool": "get_alias",
+        "idOrAlias": "sollahms.cl",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "teamSlug": "lsandoval2-8260s-projects"
+      },
+      {
+        "tool": "get_alias",
+        "idOrAlias": "www.sollahms.cl",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "teamSlug": "lsandoval2-8260s-projects"
+      },
+      {
+        "tool": "get_alias",
+        "idOrAlias": "project-wrapp.vercel.app",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "teamSlug": "lsandoval2-8260s-projects"
+      },
+      {
+        "tool": "get_alias",
+        "idOrAlias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "teamSlug": "lsandoval2-8260s-projects"
+      }
+    ],
+    "persistedFields": "Whitelist de identidad, metadatos fuente, estado y asignación. Los cuerpos completos de alias no se guardaron en archivos.",
+    "sourceSHANote": "El deployment creado por CLI publica el SHA en meta.githubCommitSha; esta lectura no vuelve a certificar bytes del paquete ni presenta gitSource ausente como una vinculación Git adicional."
+  },
+  "limits": {
+    "promotionAuthorized": false,
+    "promotionPerformed": false,
+    "mutationToolsInvoked": false,
+    "runtimeFunctionsInvoked": false,
+    "shareLinksCreatedOrUsed": false,
+    "bypassSecretsCreatedOrUsed": false,
+    "authenticationConfigurationChanged": false,
+    "environmentVariablesReadOrChanged": false,
+    "DNSReadOrChanged": false,
+    "UIOrCertifiedQARerun": false,
+    "readinessDoesNotImplyPublicTraffic": true,
+    "rootOwnsNormalChromeValidation": true
+  },
+  "resultNote": "READY y target production corresponden al staging sin dominios. Los cuatro aliases productivos verificados siguen en la referencia 875; la promoción requiere una autorización independiente."
+}

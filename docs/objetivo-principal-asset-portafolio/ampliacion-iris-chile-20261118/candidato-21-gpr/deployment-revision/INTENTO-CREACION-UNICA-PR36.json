@@ -1,0 +1,66 @@
+{
+  "authorizationId": "AUTH-DEPLOYMENT-PR36-20261118-01",
+  "authorizationReply": "Autorizar deployment sin dominios",
+  "maximumNewDeployments": 1,
+  "attempt": 1,
+  "startedAtUTC": "2026-11-18T21:37:07.061086+00:00",
+  "status": "CLI_SUCCESS_VERIFY_DEPLOYMENT",
+  "sourceMerge": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+  "packageInventorySHA256": "d3d6692a7cf190d36d0cb173497c2b36775b7fa1a0f5c951c5a2a87c1b770558",
+  "cwd": "/private/tmp/sollahms-pr36-public-package-20261118/stage",
+  "argv": [
+    "node",
+    "/Users/luissandoval/.npm/_npx/624bc71218319a47/node_modules/vercel/dist/vc.js",
+    "deploy",
+    "--prebuilt",
+    "--environment",
+    "production",
+    "--skip-domain",
+    "--project",
+    "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "--scope",
+    "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "--non-interactive",
+    "--meta",
+    "githubCommitSha=d3fb474f08b81a965d2e0eac927adf88671968c0",
+    "--meta",
+    "githubCommitRef=codex/footer-sin-frase-20261116",
+    "--meta",
+    "githubOrg=lasopho",
+    "--meta",
+    "githubRepo=sollahms-web",
+    "--json"
+  ],
+  "noDomainsSSOEnvironmentOrBuildChanges": true,
+  "cliExitCode": 0,
+  "finishedAtUTC": "2026-11-18T21:37:27.771646+00:00",
+  "stdoutSHA256": "f4b4b7469473e999968a2f942f9cf7b44fe1617ab03e74e85c11603840a2ff2a",
+  "sanitizedCLIResult": [
+    {
+      "keys": [
+        "status",
+        "deployment",
+        "message",
+        "next"
+      ],
+      "status": "ok"
+    },
+    {
+      "keys": [
+        "id",
+        "url",
+        "productionUrl",
+        "inspectorUrl",
+        "readyState",
+        "target",
+        "deploymentApiUrl",
+        "buildMachine",
+        "deploymentProtection"
+      ],
+      "id": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+      "url": "https://project-wrapp-kb7gmwe9d-lsandoval2-8260s-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production"
+    }
+  ]
+}

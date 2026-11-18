@@ -1,6 +1,6 @@
 {
   "recordedAtUTC": "2026-11-18T19:43:00.414084+00:00",
-  "status": "MERGE_VERIFICADO_PAQUETE_LOCAL_VERIFICADO_SIN_DEPLOYMENT",
+  "status": "DEPLOYMENT_REVISION_READY_VERIFICADO_PENDIENTE_PROMOCION",
   "repository": "lasopho/sollahms-web",
   "branch": "codex/ampliacion-21-proyectos-gpr-20261118",
   "checkout": "/private/tmp/sollahms-ampliacion-21-gpr-20261118",
@@ -42,7 +42,7 @@
   "remoteHeadSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
   "pullRequest": "https://github.com/lasopho/sollahms-web/pull/36",
   "draft": false,
-  "deploymentsCreated": 0,
+  "deploymentsCreated": 1,
   "published": false,
   "automaticDeploymentsDisabledInSourceAndBase": true,
   "notAuthorized": [
@@ -79,9 +79,10 @@
   "authorizationsApplied": [
     "AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01",
     "AUTH-READY-PR36-20261118-01",
-    "AUTH-MERGE-PR36-20261118-01"
+    "AUTH-MERGE-PR36-20261118-01",
+    "AUTH-DEPLOYMENT-PR36-20261118-01"
   ],
-  "nextStep": "Request one independent protected review deployment without assigning production domains.",
+  "nextStep": "Prepare and request separate promotion/publication of the same verified deployment, without rebuild or a new deployment.",
   "mergePreparation": {
     "path": "ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-MERGE-PR36.json",
     "sha256": "002099fc5d4e93889cc335088804b43288735bbe5c158a6b1ae65f877add0020",
@@ -132,10 +133,33 @@
   "mergeTreeExactlyEqualsReviewedCandidate": true,
   "deploymentAuthorized": false,
   "publicationAuthorized": false,
+  "deploymentStatus": "READY",
+  "deploymentCreationAttempts": 1,
+  "deploymentCreationAuthorizedAndConsumed": true,
+  "remainingDeploymentCreationAuthorizations": 0,
+  "reviewDeployment": {
+    "id": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+    "url": "https://project-wrapp-kb7gmwe9d-lsandoval2-8260s-projects.vercel.app",
+    "catalogueURL": "https://project-wrapp-kb7gmwe9d-lsandoval2-8260s-projects.vercel.app/proyectos.html",
+    "readyState": "READY",
+    "target": "production",
+    "sourceMergeSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "outputFilesMatched": 1721,
+    "focusedChromeChecksPassed": 3,
+    "productiveAliasesAssigned": [],
+    "productiveAliasesRemainOn875": true,
+    "sourceSHAUsedExplicitMetadata": true,
+    "createdWithoutBuildOrGenerator": true,
+    "evidence": "ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/VERIFICACION-1721-DIGESTS-DEPLOYMENT-PR36.json",
+    "independentIdentityEvidence": "ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/VERIFICACION-INDEPENDIENTE-DEPLOYMENT.json",
+    "chromeEvidence": "ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/qa-chrome/QA-CHROME-DEPLOYMENT-PR36.json"
+  },
   "nextAuthorization": {
-    "id": "AUTH-DEPLOYMENT-PR36-20261118-01",
+    "id": "AUTH-PROMOTION-PR36-20261118-01",
     "status": "PREPARADA_PENDIENTE_PRESENTAR",
-    "step": "One review deployment only; no production domains or promotion",
+    "step": "Promote and publish this same verified deployment only",
     "questionAlreadyPresented": false
   }
 }
