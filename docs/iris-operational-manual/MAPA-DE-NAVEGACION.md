@@ -56,3 +56,7 @@ La instrucción vigente permite Euro y las demás inmobiliarias del universo131.
 Después de Enter, la URL y el tag de búsqueda pueden actualizarse antes que las tarjetas y el contador. Esperar el resultado definitivo por nombre antes de abrirlo. Caso real: Diagonal pasó del listado previo a1/1; Mapocho3521 terminó2/2, con /311 y /1149 separados. No repetir búsquedas completadas por ese estado transitorio.
 
 Fuente y punto activo: [registro nuevo de Iris](../objetivo-principal-asset-portafolio/REGISTRO-NUEVA-EVIDENCIA-IRIS.json) y [control global](../objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md).
+
+## Descubrimiento Chile — 18/11/2026
+
+En la sesión de exploración se seleccionó también **Usado** desde el filtro Estado. Con `country=7` y estados1/2/3/4 el catálogo mostró **158 de158 oportunidades** tras Cargar más, con158IDs/URLs únicos. El contador del listado no equivale a fichas válidas ni candidatos nuevos. Abrir y comprobar cada ficha según [validación de existencia](VALIDACION-DE-EXISTENCIA.md). Registrar sólo campos permitidos del proyecto, sin leer texto completo de tarjetas que concatene comisiones o intermediarios. La comparación con Sollahms y la validación individual son ejes separados.

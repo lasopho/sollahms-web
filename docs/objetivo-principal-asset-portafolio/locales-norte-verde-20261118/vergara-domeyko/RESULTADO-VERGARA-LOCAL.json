@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-18T12:45:43.454684+00:00",
+  "status": "SIN_TESTIGO_LOCAL_EN_FUENTES_EXISTENTES_ACOTADAS",
+  "projectSlug": "vergara-domeyko",
+  "requestedProduct": "Local comercial owner25/10; precio y dirección ya entregados, no se reabren.",
+  "sourceBindings": [
+    {
+      "path": "data/proyectos.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "pointer": "/62"
+    },
+    {
+      "path": "data/fichas-proyectos.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "980429461bc659829eaee6e0fd777a46b62262d88ff61389b38427e5ae6274e7",
+      "pointer": "/62"
+    },
+    {
+      "path": "data/catalog-facets.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "bdfb1d2036ec379ea03d1ce524d83e1843da3f89719222cfc6fb5f4883381681",
+      "pointer": "/projects/vergara-domeyko"
+    },
+    {
+      "path": "data/project-features.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "a21460b821f8b52605c7eb130af126458b3f657a55f704f6146c67115eaf2e62",
+      "pointer": "/projects/vergara-domeyko"
+    }
+  ],
+  "archivedHTML": {
+    "file": "vergara-domeyko-ARCHIVO-EXISTENTE.html",
+    "sha256": "5b424f83a51e47e0c8467b5828f52aef93ad992b7dccc2fd63e00bab9fca911f",
+    "bytes": 11859,
+    "kind": "Página histórica DERIVADA de Sollahms, no HTML oficial primario de Norte Verde.",
+    "sourceOfArchiveIndex": "docs/catalog-data-completeness-20261116/leben/evidencias/git-status-original-antes.txt:968",
+    "documentScope": "Estudio y1dormitorio, encabezadoResidencial; no aparece Local en el HTML completo.",
+    "bathroomAndAreaSummary": "Datos residenciales generales; no definen baño/superficies de ningúnLocal.",
+    "downloadedCurrentSource": false
+  },
+  "norteVerdeRegistry": {
+    "path": "docs/objetivo-principal-asset-portafolio/consulta-parque-panama-local-20261118/brochures-norte-verde-ARCHIVO-EXISTENTE.json",
+    "sha256": "8e7cb049bafc88c73057f71bc5810a792541baf3ea0ed2ce86fa5f31e092908f",
+    "scope": "Vergara está en baseline y excluded, con razón histórica Fuera de la lista definitiva autorizada; no contiene brochure/models propios de Vergara en projects. No modificar universo productivo actual por esa lista antigua."
+  },
+  "filterProjectionObserved": {
+    "propertyTypes": [
+      "local"
+    ],
+    "variants": [
+      {
+        "propertyType": "local",
+        "areas": {}
+      }
+    ],
+    "features": [],
+    "amenitiesScope": "Todos lositems compartidos estánfilterEligible=false conmotivoOferta sóloLocal; acceso/inclusiones noacreditados.",
+    "commercialOnly": true,
+    "sourceOrCodeChangeNecessaryFromThisFinding": false
+  },
+  "localFinding": {
+    "identifiableLocalPlanFound": false,
+    "unitOrModelLocalID": null,
+    "bathrooms": null,
+    "usefulM2": null,
+    "totalM2": null,
+    "priceOwnerUnchanged": true,
+    "currentOwnerPriceOrValidityConfirmedByThisRead": false,
+    "newLocalReferenceCreated": false,
+    "residentialFactsTransferred": false,
+    "stockRetirementOrLocalExistenceInferred": false,
+    "sourceDateOrCurrentInventoryClaimed": false,
+    "limit": "Revisión acotada de registros y archivo derivado existente; no prueba que no existan otras fuentes o que el Local esté agotado."
+  },
+  "operations": {
+    "networkRequests": 0,
+    "IrisQueries": 0,
+    "GitWrites": 0,
+    "applicationEdits": 0,
+    "originalDocumentWrites": 0,
+    "ownerQuestions": 0,
+    "testsOrBuilds": 0
+  },
+  "nextPossibleIndependentStep": "Si no consta otra consulta previa, Iris concreto por VergaraDomeyko orientado exclusivamente a Local; no repetir auditoría histórica ni pedir datos al propietario antes de esa fuente."
+}

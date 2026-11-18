@@ -43,17 +43,33 @@ Verne/NorteVerde/AvVidela810/Coquimbo: consulta real465, sólo202/piso2. Modal D
 
 ParquePanamá/Local: consultas Iris «Parque Panamá» y «Panama» con cero estable; selector oficial sóloEstudio/2D2B. Brochure archivado9páginas y6planos: sólo programas residenciales, ningún Local identificable. Baños/útil/total del Local permanecen desconocidos. Fuentes, original yhashes en `consulta-parque-panama-local-20261118/`; no repetir esas búsquedas ni prestar datos residenciales, inferir stock/retiro o reabrir direcciones. No se presentó otra pregunta al propietario.
 
-Servidor local de revisión vigente: `http://127.0.0.1:64257/proyectos.html?revision_documental=1&evidencia=documentary`, script archivado en `suplemento-documental-r018-20261118/qa/serve-overlay.py`. El servidor anterior63532 se detuvo; no reconstruir el candidato. Captura legible preferida: `qa/R018-TARJETA-VERIFICADA.jpg`.
+Los servidores locales anteriores64257/63532 no están activos; esas URLs son históricas. El script de revisión se conserva en `suplemento-documental-r018-20261118/qa/serve-overlay.py` y la captura en `qa/R018-TARJETA-VERIFICADA.jpg`. No reconstruir el candidato ni repetir QA porque se perdieron directorios temporales.
 
 Solicitud `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` YA presentada y pendiente para el primer push exacto24a11df y nuevo PR Draft contra875. No repetir la pregunta ni hacer push/PR sin respuesta. Si se autoriza, verificar primero HEAD/base/producción, mantener exclusiones, hacer push sin force y crear/verificar el PR realmente Draft; registrar su URL real. No ampliar a Ready/merge/deployment/publicación. Mientras tanto reutilizar fuentes disponibles para opciones comerciales pertinentes. Bordevivo/Vergara/ParquePanamá son ofertas ownerLocal: sus pendientes históricos de Estudios no justifican investigar más departamentos. No prestar amenities o baños residenciales a locales ni reabrir direcciones ya aclaradas.
+
+## Clasificación comercial y aceptación de los 131
+
+Leer `aceptacion-comercial-131-20261118/README.md` y sus índice/revisión, `estacionamiento-bodega-131-20261118/` y `RECUPERACION-OPERATIVA-20261118.json`, bajo `docs/objetivo-principal-asset-portafolio/`. Índice:131 identidades exactas, nueve estados históricos intactos,1700 testigos existentes/2806 localizadores.127 tienen expediente específico o referencia adicional y cuatro compartidos/publicados aquí; no son cuatro sin auditoría. Las19 referencias/18proyectos/113identidades de la capa local son otro alcance.
+
+Parking/bodega agrega dos clasificaciones documentales separadas, sin cerrar los313IDs. Diez declaraciones generales Leben, cinco menciones parciales de parking/tres de bodega y veinte cotizaciones con exclusión del precio conservan su alcance. Ninguna prueba inclusión o disponibilidad global; Sueciaextras separados. No convertir visitante/encomienda/maletas en estacionamiento/bodega privada. No se ejecutaron nuevas pruebas de aplicación; hashes candidatos intactos y155blobs protegidos idénticos875→24a, sin recertificar sus155cuerpos.
+
+VergaraDomeyko/Vergara y Bordevivo/BordeVivo: consultas UI nominales sin coincidencias. Archivos existentes sólo respaldan producto residencial; no completar locales. Ver `locales-norte-verde-20261118/`. No repetirlos sin nueva evidencia. FuentesMaestra/NorteVerde recuperadas byteexactas están en `fuentes-existentes-recuperadas-20261118/`; no son recepciones comerciales nuevas.
+
+## Ampliación paralela de proyectos chilenos
+
+Leer `INSTRUCCION-AMPLIACION-IRIS-CHILE-20261118.txt` y `docs/iris-operational-manual/VALIDACION-DE-EXISTENCIA.md`. Sólo descubrimiento, comparación con131/alias/retirados y propuesta por lotes; no alta de catálogo/fichas. El listado oficial Chile con cuatro estados mostró158/158 oportunidades y158IDs únicos; no son158candidatos y la validación/comparación individual sigue en ejecución.
+
+Cada entrada requiere abrir su ficha real por la interfaz, comprobar identidad y contenido. Si muestra «Ups, no encontramos…», comprobar filtros, sesión y carga; repetir una vez sólo ante fallo transitorio. Vacío persistente comprobado=`EXCLUIDO_IRIS_SIN_FICHA`, sin investigar atributos. Error técnico/acceso=`NO_VERIFICABLE_ERROR_TECNICO_O_ACCESO`. No afirmar inexistencia del desarrollo ni eliminar publicados. No repetir descartados sin evidencia nueva. Separar existencia de comparación: existente, posible duplicado, nuevo, vendido/no comercializable e insuficiente. Sólo ficha válida/identidad suficiente/sin duplicidad alimenta candidatos; precios desconocidos no descartan.
+
+Sólo Chile, sin comisiones ni intermediarios, sin planos/terminaciones en descubrimiento. Cabeceras/rangos no acreditan compatibilidad precio–modelo–área. PrecioIris es referenciaIris, no vigenteSollahms ni stock. No restaurar retirados o PatioBrasil. Continuar la línea131 en paralelo; preparar lotes concretos antes de pedir autorización para incorporar.
 
 ## Documentación, fuentes y límites
 
 Rama documental: `codex/auditoria-leben-20261116`.
 Checkout: `/private/tmp/sollahms-auditoria-leben-20261116`.
-Consultar HEAD local/remoto actual antes de cambios reales. Leer CONTROL-DE-AVANCE, ESTADO-PUBLICACION, INTERVENCIONES-PROPIETARIO, los registros citados y el manualIris. Sincronizar únicamente documentación autorizada. Aplicación sólo en el checkout técnico; no usar el checkout original con cambios ajenos para Git o aplicación. Los originales documentales disponibles se reutilizan mediante copias de lectura y hashes.
+Los checkouts se recuperaron desde e9/24a; el técnico es disperso de35 archivos y conserva diez candidatos/21originales exactos. No reconstruirlo ni ampliar el checkout para repetir QA. Consultar HEAD local/remoto actual antes de cambios reales. Leer CONTROL-DE-AVANCE, ESTADO-PUBLICACION, INTERVENCIONES-PROPIETARIO, los registros citados y el manualIris. Sincronizar únicamente documentación autorizada. Aplicación sólo en el checkout técnico; no usar el checkout original con cambios ajenos para Git o aplicación. Los originales documentales disponibles se reutilizan mediante copias de lectura y hashes.
 
-Baseline de publicación inmutable: `/private/tmp/sollahms-cotizaciones-mismo-origen-release-20261117`, pin `ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834`,1672 archivos. Nunca desplegar el paquete raw `/private/tmp/sollahms-pr33-release-20261117` en cuarentena. No ejecutar generadores o builds de producción.
+El antiguo baseline de publicación de1672 archivos, pin `ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834`, ya no está disponible en su directorio temporal. Se conserva su certificado histórico; no reconstruirlo para repetir QA. Nunca desplegar paquetes raw en cuarentena. No ejecutar generadores o builds de producción.
 
 Conservar precios owner existentes y fechas28/29Oct; las fuentes nuevas no renuevan vigencia. Mood1D1B UF3753,20 y2D2B UF4678,45 siguen sin asociación precio–plano: no repreguntar. Plaza213/C7 tiene vínculo propio; no extender a313/C6/C8. Leben454 referencias incluidas20 cotizaciones, dos adicionalesSuecia separados;313 IDs históricos intactos. Las proyecciones administrativas no son evidencia nueva. Own vendido se excluye sólo de preparado.
 

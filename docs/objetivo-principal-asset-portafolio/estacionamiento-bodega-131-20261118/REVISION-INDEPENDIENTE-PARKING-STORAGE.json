@@ -1,0 +1,1567 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-11-18T13:00:59.647066+00:00",
+  "dictamen": "APROBADO_CON_OBSERVACIONES",
+  "blockingFindings": [],
+  "method": "Lectura independiente de tres artefactos, código del derivador y fuentes Git conservadas; cotejo de hashes y localizadores sin ejecutar el derivador ni repetir pruebas de aplicación o consultas.",
+  "artifacts": [
+    {
+      "path": "CLASIFICACION-ESTACIONAMIENTO-BODEGA-131.json",
+      "sha256": "74dacc7ad347e57bd84cb24927a7ab60c09eec1a687df2668bfdc70a13ef8e53",
+      "bytes": 475196
+    },
+    {
+      "path": "RECIBO-FUENTES-Y-VALIDACION.json",
+      "sha256": "3589ef40754cded0273704e12c2cd2a4431c6c33d420d2c4191c6064b730455b",
+      "bytes": 6805
+    },
+    {
+      "path": "derivar-estacionamiento-bodega.py",
+      "sha256": "176208ef559d4f94b3caa230398fd13e01b047dd23f78a249779411e10cef390",
+      "bytes": 19838
+    }
+  ],
+  "universe": {
+    "sourceCommit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+    "exact131OrderAndSlugs": true,
+    "projectPointersAndIdentityMatching": 131,
+    "no137Universe": true
+  },
+  "sourceChecks": [
+    {
+      "path": "docs/objetivo-principal-asset-portafolio/INVENTARIO-DE-FUENTES.json",
+      "commit": "e9e256511987a638072b2ddca827df5acba68c3f",
+      "actualSHA256": "685901b43fcc05efb0ddb09d5ee7d26d1a8df103f44e09f510ebe98281d05e59",
+      "bytes": 98421,
+      "match": true
+    },
+    {
+      "path": "data/proyectos.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "bytes": 328016,
+      "match": true
+    },
+    {
+      "path": "data/project-features.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "a21460b821f8b52605c7eb130af126458b3f657a55f704f6146c67115eaf2e62",
+      "bytes": 760382,
+      "match": true
+    },
+    {
+      "path": "data/commercial-filter-evidence-leben.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "b9f87e764ecc9bf102c43287201d98f31fe3b34a5ba6e4e8829bc733a097ee36",
+      "bytes": 869981,
+      "match": true
+    },
+    {
+      "path": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+      "commit": "e9e256511987a638072b2ddca827df5acba68c3f",
+      "actualSHA256": "6cc68873fa171ffbc09b6dccbdf83b9b979ae1a6c7ae568a584a063784abafc6",
+      "bytes": 9235,
+      "match": true
+    },
+    {
+      "path": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/COM-F4-001-RESPUESTA-PROPIETARIO.md",
+      "commit": "e9e256511987a638072b2ddca827df5acba68c3f",
+      "actualSHA256": "e0dba3dcf5ff8698ab18d1a67a308ad513d7e3da0b065eda22bd5018278fac5d",
+      "bytes": 8454,
+      "match": true
+    },
+    {
+      "path": "docs/aj-urbana-20261030/owner-input.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "e237a5317a6784cba919e1e6c1cd7feb81a64bbb89eee1fd7a6e204971a634c5",
+      "bytes": 722,
+      "match": true
+    },
+    {
+      "path": "docs/aj-urbana-20261030/verification.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "e28408f197ba2b319fd8982cae6eb90068440a0673c049ea6d1e9a7afdf1afc2",
+      "bytes": 3859,
+      "match": true
+    },
+    {
+      "path": "docs/ecasa-commercial-20261030/owner-input.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "27ff8f73f32ea7c5edae743e95f21dc3eddbc168474f542c0257e2186019a8c8",
+      "bytes": 4187,
+      "match": true
+    },
+    {
+      "path": "docs/ecasa-commercial-20261030/verification.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "f8c0dcbe4cd016a9d3fba0c327793592bd4ec79da50a896dbd1225c1198ac141",
+      "bytes": 9734,
+      "match": true
+    },
+    {
+      "path": "docs/leon-commercial-20261030/owner-input.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "f88231e8fc0f67235a70315316eff291c9ad33035ae1e0ef27e4c85cf6aa26f7",
+      "bytes": 828,
+      "match": true
+    },
+    {
+      "path": "docs/leon-commercial-20261030/verification.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "2d46740ef9c0197f43d0a48efaebfe0a3c2ac4b71cc69d34c5fce7c172093fb4",
+      "bytes": 4054,
+      "match": true
+    },
+    {
+      "path": "docs/sento-commercial-20261030/owner-input.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "af373688774788cfe5b8b494bc777522ed52ff2a16b95ca01a194c8e95ce4c72",
+      "bytes": 1399,
+      "match": true
+    },
+    {
+      "path": "docs/sento-commercial-20261030/verification.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "actualSHA256": "17d3bb6f1f7070b076fa484b53d79e963c5894ba6993af61b1115ecc444ee529",
+      "bytes": 4073,
+      "match": true
+    }
+  ],
+  "locatorChecks": {
+    "resolved": 135,
+    "sourceCount": 14,
+    "filesAndScopeDatesRetained": true,
+    "details": [
+      {
+        "outputPath": "/projects/16/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P013",
+          "lineIncludingHeader": 14
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P011",
+          "lineIncludingHeader": 12
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/parking/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P012",
+          "lineIncludingHeader": 13
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/parking/inclusion/byPriceReference/2/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P013",
+          "lineIncludingHeader": 14
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P013",
+          "lineIncludingHeader": 14
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/8/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P013",
+          "lineIncludingHeader": 14
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P011",
+          "lineIncludingHeader": 12
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/storage/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P012",
+          "lineIncludingHeader": 13
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/storage/inclusion/byPriceReference/2/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P013",
+          "lineIncludingHeader": 14
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P013",
+          "lineIncludingHeader": 14
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/16/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/8/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/18/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/edificio-bezanilla/groups/0/items/3"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/20/parking/productMention/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/edificio-santa-maria/groups/0/items/0"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/20/storage/productMention/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/edificio-santa-maria/groups/0/items/1"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/22/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/edificio-teatinos-750/groups/0/items/9"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/23/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/edificio-vista-amunategui/groups/0/items/11"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/30/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/downtown-san-martin/groups/0/items/13"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/30/storage/excludedServiceMentions/1/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/downtown-san-martin/groups/0/items/15"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/30/storage/excludedServiceMentions/2/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/downtown-san-martin/groups/0/items/16"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/31/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/vista-morande/groups/0/items/10"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/48/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/3/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/48/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/edificio-baum/groups/0/items/9"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/48/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/3/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P018",
+          "lineIncludingHeader": 19
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P016",
+          "lineIncludingHeader": 17
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/parking/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P017",
+          "lineIncludingHeader": 18
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/parking/inclusion/byPriceReference/2/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P018",
+          "lineIncludingHeader": 19
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P018",
+          "lineIncludingHeader": 19
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/10/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P018",
+          "lineIncludingHeader": 19
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/inn-puerto-chico/groups/0/items/1"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P016",
+          "lineIncludingHeader": 17
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/storage/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P017",
+          "lineIncludingHeader": 18
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/storage/inclusion/byPriceReference/2/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P018",
+          "lineIncludingHeader": 19
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P018",
+          "lineIncludingHeader": 19
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/50/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/10/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P005",
+          "lineIncludingHeader": 6
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P005",
+          "lineIncludingHeader": 6
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P005",
+          "lineIncludingHeader": 6
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/parking/additionalCost/amounts/0/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/additionalCosts/0"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/parking/additionalCost/amounts/0/evidence/1",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-AD001",
+          "lineIncludingHeader": 22
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/4/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P005",
+          "lineIncludingHeader": 6
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P005",
+          "lineIncludingHeader": 6
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P005",
+          "lineIncludingHeader": 6
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/storage/additionalCost/amounts/0/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/additionalCosts/1"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/storage/additionalCost/amounts/0/evidence/1",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-AD002",
+          "lineIncludingHeader": 23
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/51/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/4/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P006",
+          "lineIncludingHeader": 7
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P006",
+          "lineIncludingHeader": 7
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P006",
+          "lineIncludingHeader": 7
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/5/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P006",
+          "lineIncludingHeader": 7
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/capitanes/groups/0/items/5"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P006",
+          "lineIncludingHeader": 7
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P006",
+          "lineIncludingHeader": 7
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/52/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/5/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/54/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P010",
+          "lineIncludingHeader": 11
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/54/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P010",
+          "lineIncludingHeader": 11
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/54/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P010",
+          "lineIncludingHeader": 11
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/54/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/7/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/54/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P010",
+          "lineIncludingHeader": 11
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/54/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P010",
+          "lineIncludingHeader": 11
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/54/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P010",
+          "lineIncludingHeader": 11
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/54/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/7/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P004",
+          "lineIncludingHeader": 5
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P003",
+          "lineIncludingHeader": 4
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/parking/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P004",
+          "lineIncludingHeader": 5
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P004",
+          "lineIncludingHeader": 5
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/1/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P004",
+          "lineIncludingHeader": 5
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/edificio-mood/groups/0/items/8"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P003",
+          "lineIncludingHeader": 4
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/storage/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P004",
+          "lineIncludingHeader": 5
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P004",
+          "lineIncludingHeader": 5
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/55/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/1/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P015",
+          "lineIncludingHeader": 16
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P014",
+          "lineIncludingHeader": 15
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/parking/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P015",
+          "lineIncludingHeader": 16
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P015",
+          "lineIncludingHeader": 16
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/9/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P015",
+          "lineIncludingHeader": 16
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P014",
+          "lineIncludingHeader": 15
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/storage/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P015",
+          "lineIncludingHeader": 16
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P015",
+          "lineIncludingHeader": 16
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/56/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/9/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/58/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/2/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/58/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/2/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P002",
+          "lineIncludingHeader": 3
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P001",
+          "lineIncludingHeader": 2
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/parking/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P002",
+          "lineIncludingHeader": 3
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P002",
+          "lineIncludingHeader": 3
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/0/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P002",
+          "lineIncludingHeader": 3
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P001",
+          "lineIncludingHeader": 2
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/storage/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P002",
+          "lineIncludingHeader": 3
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P002",
+          "lineIncludingHeader": 3
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/59/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/0/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P009",
+          "lineIncludingHeader": 10
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P007",
+          "lineIncludingHeader": 8
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/parking/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P008",
+          "lineIncludingHeader": 9
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/parking/inclusion/byPriceReference/2/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P009",
+          "lineIncludingHeader": 10
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P009",
+          "lineIncludingHeader": 10
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/6/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P009",
+          "lineIncludingHeader": 10
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/edificio-bold/groups/0/items/5"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P007",
+          "lineIncludingHeader": 8
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/storage/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P008",
+          "lineIncludingHeader": 9
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/storage/inclusion/byPriceReference/2/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P009",
+          "lineIncludingHeader": 10
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P009",
+          "lineIncludingHeader": 10
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/60/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/6/projectFacts/storage"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/65/parking/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/don-tomas/groups/0/items/9"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/66/parking/productMention/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/plaza-las-condes/groups/0/items/8"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/72/parking/productMention/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/don-rafael/groups/0/items/6"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/72/parking/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/don-rafael/groups/0/items/8"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/84/parking/productMention/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/alto-goycolea/groups/0/items/8"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/84/parking/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/alto-goycolea/groups/0/items/7"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/84/storage/productMention/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/alto-goycolea/groups/0/items/9"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/86/parking/productMention/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/barrio-zenteno/groups/0/items/4"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/86/storage/productMention/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/barrio-zenteno/groups/0/items/5"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/114/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/vista-bulnes/groups/0/items/1"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/126/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/own/groups/0/items/6"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/127/storage/excludedServiceMentions/0/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/monjitas-690/groups/1/items/7"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/127/storage/excludedServiceMentions/1/evidence/0",
+        "sourceFile": "data/project-features.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/monjitas-690/groups/1/items/8"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/parking/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P020",
+          "lineIncludingHeader": 21
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/parking/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P019",
+          "lineIncludingHeader": 20
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/parking/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P020",
+          "lineIncludingHeader": 21
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/parking/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P020",
+          "lineIncludingHeader": 21
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/parking/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/11/projectFacts/parking"
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/storage/productMention/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P020",
+          "lineIncludingHeader": 21
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/storage/inclusion/byPriceReference/0/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P019",
+          "lineIncludingHeader": 20
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/storage/inclusion/byPriceReference/1/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P020",
+          "lineIncludingHeader": 21
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/storage/additionalCost/generalOffer/evidence/0",
+        "sourceFile": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+        "locator": {
+          "kind": "csv-id",
+          "column": "id_precio_normalizado",
+          "id": "OWN4-P020",
+          "lineIncludingHeader": 21
+        },
+        "resolved": true
+      },
+      {
+        "outputPath": "/projects/130/storage/preparedProjection/evidence/0",
+        "sourceFile": "data/commercial-filter-evidence-leben.json",
+        "locator": {
+          "kind": "json-pointer",
+          "pointer": "/projects/11/projectFacts/storage"
+        },
+        "resolved": true
+      }
+    ]
+  },
+  "semanticChecks": {
+    "generalAdditionalDeclaredLebenProjects": 10,
+    "preparedUnknownSantoBAUM": true,
+    "genericParkingPartialProjects": [
+      "edificio-santa-maria",
+      "plaza-las-condes",
+      "don-rafael",
+      "alto-goycolea",
+      "barrio-zenteno"
+    ],
+    "genericStoragePartialProjects": [
+      "edificio-santa-maria",
+      "alto-goycolea",
+      "barrio-zenteno"
+    ],
+    "serviceAndVisitorMentionsExcluded": 19,
+    "quoteSpecificExclusionsPerConcept": 20,
+    "falseExtendedProjectWide": false,
+    "all131ExactAvailabilityUnknownPerConcept": true,
+    "includedPrivateOrAssignedProductNotInferred": true,
+    "SueciaAdditionalPricesSeparate": [
+      {
+        "id": "OWN4-AD001",
+        "concept": "parking",
+        "amountUF": 510
+      },
+      {
+        "id": "OWN4-AD002",
+        "concept": "storage",
+        "amountUF": 75
+      }
+    ],
+    "amountsNotAddedToPropertyPrice": true,
+    "sourceDateForQuoteConditions": "2026-11-16",
+    "newReceptionsFactsIDsOr313Closures": 0
+  },
+  "observations": [
+    "La revisión es documental y acotada a14archivos existentes; no demuestra disponibilidad, existencia/ausencia física o cobertura exhaustiva de todos los documentos del repositorio.",
+    "Las menciones generales5parking/3storage son parciales; los19servicios/visitas no prueban productos privados.",
+    "Las exclusionesfalse se respaldan por cada uno de20IDs de cotización; projectWideValue permanece null. La copia literal preparedProjection puede contener included:false, pero conserva su ámbito y notAnExactUnitAssignment; no debe consumirse como falseglobal.",
+    "Los ocho owner-input/verification JSON revisados sin mención son archivos conservados, no declaraciones de ausencia ni fuentes comerciales adicionales por sí mismos.",
+    "Confirmado se limita a declaraciones fechadas y alcances existentes, sin renovar vigencia; clasificación18Nov no es fecha de oferta."
+  ],
+  "operations": {
+    "derivationScriptExecuted": false,
+    "applicationTestsExecuted": 0,
+    "IrisOrNetworkRequests": 0,
+    "sourceFilesChanged": 0,
+    "AOrT2Edits": 0,
+    "onlyOutput": "REVISION-INDEPENDIENTE-PARKING-STORAGE.json"
+  }
+}

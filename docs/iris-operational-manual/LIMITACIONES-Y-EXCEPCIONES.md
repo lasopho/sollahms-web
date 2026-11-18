@@ -112,3 +112,9 @@ El buscador observado expone el campo como `textbox Username` con placeholder va
 Verne465/202 demuestra que títuloDepartamento/etiquetaEstudio y dirección correcta no bastan para certificar el producto: el plano del modal imprimeOficina1O+1B/oficina202. Conservar ambos lados; excluir la asociación residencial y no pedir otra vez la identidadowner ya resuelta. Un encabezado o extensión no valida por sí solo una fuente. La primera extracción residencial de root se conserva conerratum separado. Internos y útil/total no son comparables por diferencia numérica; tampoco se homologa su igualdad.
 
 Un403 de transferencia actual no prueba que el documento no exista. Antes de solicitarlo al propietario, seguir el índice archivado y reutilizar originales disponibles en lectura, conservando hash/versión. El PDF Irarrázaval local3.501.590B es distinto en tamaño al remoto reportado17.700.840B; no se afirmó equivalencia de versiones ni se reintentó403. Leer referencias normativas/metadatos como contexto, sin convertirlas en fecha de emisión.
+
+## Fichas residuales y ampliación — 18/11/2026
+
+La aparición del nombre en el catálogo no acredita una ficha accesible. Aplicar [VALIDACION-DE-EXISTENCIA.md](VALIDACION-DE-EXISTENCIA.md): vacío comprobado y error técnico/acceso se registran por separado, sin expediente extenso ni búsquedas de atributos para una ficha excluida. Una lectura durante carga puede mostrar vacío transitorio; comprobar estado final. No repetir descartados sin evidencia nueva ni usar una ausencia Iris para eliminar publicados.
+
+Para VergaraDomeyko/Vergara y Bordevivo/BordeVivo, las búsquedas nominales del18/11 terminaron sin coincidencias; no son fichas abiertas vacías ni demuestran retiro. Copias documentales anteriores no identifican sus locales. No repetir ni transferir datos de departamentos.

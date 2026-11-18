@@ -113,3 +113,9 @@ Irarrázaval nominal devolvió únicamente Euro 1578/1580; la variante 1970, cer
 Verne —18/11: búsqueda nominal mostró Norte Verde / Departamento / Coquimbo, enlace real465. Sólo modal202/piso2, «estudio»/«1 baño», pero plano «Oficina1O+1B», «oficinaNº202». Original exportado1vez; conflicto yerratum conservados en evidencias-verne-20261118. No completar datos residenciales ni crear referencia filtrable; no volver a pedir identidad/precio ya aclarados por propietario. Irarrázaval: brochure local existente15páginas y7renders, estudiosp10–11 sinBnum; pregunta única ya enviada yregistrada, no repetir.
 
 ParquePanamá/Local —18/11: dos búsquedas Iris con0 estable; web oficial ofrece en selector sóloEstudio/2D2B. Brochure local9páginas y6recortes archivados muestran programas residenciales, sinLocal identificable. No se prestaron baños/áreas/amenities, no se pidieron datosowner nuevos ni se reabrió dirección. Conservar consulta-parque-panama-local-20261118 y no repetir sin nueva evidencia.
+
+## Locales NorteVerde y listado Chile —18/11/2026
+
+VergaraDomeyko y varianteVergara: cero resultados cargados; Bordevivo y varianteBordeVivo: cero. Son búsquedas sin coincidencia, no validaciones de una ficha vacía. No se pidió autenticación, no se declaró stock/retiro ni se transfirieron datos residenciales. Evidencia: [CONSULTAS-IRIS-LOCALES.json](../objetivo-principal-asset-portafolio/locales-norte-verde-20261118/CONSULTAS-IRIS-LOCALES.json).
+
+Descubrimiento paralelo: listado oficial Chile, cuatro estados seleccionados; carga completa158/158 oportunidades,158URLs/IDs únicos. La validación de todas las fichas individuales y comparación con131/históricos está en ejecución. El indicador visual de usuario autenticado se registrará únicamente como booleano, sin datos de identidad o credenciales. Este conteo no es un conteo de candidatos. Seguir [regla de existencia](VALIDACION-DE-EXISTENCIA.md).

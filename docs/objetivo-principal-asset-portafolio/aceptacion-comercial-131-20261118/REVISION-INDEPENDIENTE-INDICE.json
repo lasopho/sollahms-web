@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-11-18T13:17:09.761172+00:00",
+  "dictamen": "APROBADO_CON_OBSERVACIONES",
+  "blockingFindings": [],
+  "index": {
+    "path": "/private/tmp/sollahms-aceptacion-131-20261118/INDICE-ACEPTACION-POR-PROYECTO.json",
+    "sha256": "4b9487d8964e35b15c3dd4c372d3edf7aa9b57f2c6c581b0d9aeeb309470cc4f",
+    "bytes": 2439453
+  },
+  "derivationScript": {
+    "path": "/private/tmp/sollahms-aceptacion-131-20261118/derivar-indice-aceptacion.py",
+    "sha256": "326621a98397a878f22af8024849c0803cec79b8f7419970eb32d192e7703d59",
+    "bytes": 29653,
+    "readOnlyReviewedNotExecuted": true
+  },
+  "method": "Lectura independiente del script y documentos locales; validación aritmética, de identidad, punterosJSON y hashes. Sin rederivar índice, auditoría primaria, red, Git, código de aplicación o pruebas Node/Chrome.",
+  "checks": {
+    "sourceFilesHashAndBytesMatching": 35,
+    "jsonPointersResolved": 2806,
+    "uniqueJSONPointerPairs": 2589,
+    "uniquePublishedIdentities": 131,
+    "sameSlugsAsPublished": true,
+    "historicalNineFieldsEqualPerProject": true,
+    "historicalNineFieldCountsEqual": true,
+    "specificRecordOrAdditionalReferenceProjects": 127,
+    "sharedEvidenceOnlyInThisIndexProjects": 4,
+    "sharedEvidenceOnlySlugs": [
+      "plaza-cervantes-b",
+      "pintor-cicarelli-iii",
+      "pintor-cicarelli-ii",
+      "own"
+    ],
+    "additionalLocalReferences": 19,
+    "additionalLocalReferenceProjects": 18,
+    "identityOnlyAdditionalLayerProjects": 113,
+    "identityOnlyIsNotUnaudited": true,
+    "existingQueryWitnessLocators": 1700,
+    "parkingStorageMatchingProjectPointers": 131,
+    "parkingStorageSHA256": "74dacc7ad347e57bd84cb24927a7ab60c09eec1a687df2668bfdc70a13ef8e53",
+    "globalStatusRetained": "NO_CERTIFICADO_GLOBALMENTE",
+    "perProjectGlobalStatusRetained": true,
+    "noNewOwnerQuestionFromUnknown": true
+  },
+  "resolvedReviewObservations": [
+    {
+      "id": "IDX-OBS-01",
+      "issue": "El primer corte no incluía la referencia local adicional como trazabilidad específica y contaba124/7.",
+      "resolution": "El corte final cuenta127/4; ReservaMayor, PlazaCervantes yNovo tienen fuente exacta adicional. Esconteo de antecedentes localizados, no de auditorías completas."
+    },
+    {
+      "id": "IDX-OBS-02",
+      "issue": "remainingWork genérico en131filas podía interpretarse como131auditorías nuevas obligatorias.",
+      "resolution": "Movido a conditionalNextAction con condición concreta yrequiredToReopenProject:false. Quedan18enlaces a una misma autorización ya abierta y una intervenciónowner ya abierta; no19bloqueos distintos."
+    },
+    {
+      "id": "IDX-OBS-03",
+      "issue": "El resumen R017 omitía observedOn aunqueobservedAtUTC era null.",
+      "resolution": "Conserva observedOn2026-11-17 separado deobservedAtUTC:null; no hora inventada ni fecha de registro prestada."
+    }
+  ],
+  "semanticFindings": {
+    "countMeaning": "127expedientes/refadicionales más4fuentes publicadas/compartidas aquí suman131; no afirman127auditorías primarias completadas ni4proyectos nunca auditados.113sóloidentidad en la capa adicional no son113sin auditoría.1700locators tampoco son1700unidades nuevas o stock.",
+    "witnesses": "Cada testigo remite al registro original y su propio contrato, con capas published/owner/documentary/prepared/local separadas. No se ejecutan ni inventan uniones deprecio/D/B/área entre registros.",
+    "Maestra": "Manifest recuperado contiene15registros deproyecto; README declara17PDF y14documentos distintos,85referencias deplanos/esquemas y83archivos únicos. Alcances torre/etapa, excepciones y precios vigentes separados; no presupone planes deLlacolénA desdeB.",
+    "NorteVerde": "Registro recuperado enumera18activos y conserva notes/withheld, incluido importeEstudioDual retenido y separaciónLocal/departamentos. No es recepción nueva ni precioIris/stock.",
+    "knownExceptions": "Mood,Verne,ParquePanamá,Irarrázaval,Own,Bordevivo yVergara permanecen restricciones explícitas; no generan auditorías o preguntas nuevas.",
+    "parkingStorage": "Puntero exacto de cadafila coincide en su slug yhash74d; overlay sigue independiente de los9campos históricos. No se volvió a derivar ni se duplicaron estados.",
+    "acceptance": "Índice apto para continuidad y conciliación de consultas concretas; por sí solo no certifica QAglobal, adopción comercial, publicación ni objetivo131terminado."
+  },
+  "sourcesVerified": [
+    {
+      "source": "data/proyectos.json",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "bytes": 328016,
+      "match": true
+    },
+    {
+      "source": "docs/objetivo-principal-asset-portafolio/CLASIFICACION-COMERCIAL-131.json",
+      "sha256": "d5ba5f973e3014996b106ee3ef20a663b25725a841c23a8450ee7aaaec37cddf",
+      "bytes": 1211014,
+      "match": true
+    },
+    {
+      "source": "docs/objetivo-principal-asset-portafolio/INVENTARIO-DE-FUENTES.json",
+      "sha256": "685901b43fcc05efb0ddb09d5ee7d26d1a8df103f44e09f510ebe98281d05e59",
+      "bytes": 98421,
+      "match": true
+    },
+    {
+      "source": "docs/objetivo-principal-asset-portafolio/CRITERIO-DE-ACEPTACION-Y-BLOQUEOS.json",
+      "sha256": "cb5b0a96330e1b1cfcdccd62cb036a8262551c73d68a346c6352ed8975c7479a",
+      "bytes": 112689,
+      "match": true
+    },
+    {
+      "source": "docs/objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md",
+      "sha256": "dd0df0bb899dcb01a1ef3aa1e95ebf8b291079d6879412ef860f26cba6d4d21a",
+      "bytes": 37564,
+      "match": true
+    },
+    {
+      "source": "docs/objetivo-principal-asset-portafolio/INTERVENCIONES-PROPIETARIO.json",
+      "sha256": "e20ee53399ec42489c03856e67192698f132fa4f31f99b2c52dfa5a76aeb5818",
+      "bytes": 19909,
+      "match": true
+    },
+    {
+      "source": "docs/objetivo-principal-asset-portafolio/CANDIDATO-SUPLEMENTO-DOCUMENTAL-LOCAL.json",
+      "sha256": "690ca71929a4401f23555a4d3073d02bbdd4f18efef5e51b570647d2fd2c97a9",
+      "bytes": 5358,
+      "match": true
+    },
+    {
+      "source": "docs/objetivo-principal-asset-portafolio/EURO-FUENTES-Y-ALCANCES.json",
+      "sha256": "6c7c0414aa74bd21f301ead025d5f762d19748be434b4e78caa78d6db353ff28",
+      "bytes": 526940,
+      "match": true
+    },
+    {
+      "source": "data/fichas-proyectos.json",
+      "sha256": "980429461bc659829eaee6e0fd777a46b62262d88ff61389b38427e5ae6274e7",
+      "bytes": 2153891,
+      "match": true
+    },
+    {
+      "source": "data/brochures-aj-urbana.json",
+      "sha256": "b23e5730201768f4be2d83eabdcfdbfa648d8b5906df188e7ae8de7ca42ac42c",
+      "bytes": 169473,
+      "match": true
+    },
+    {
+      "source": "data/brochures-ecasa.json",
+      "sha256": "fd37681006e965e83241dccd88b7b532dba5411733219dbdc152aef1e4f5017c",
+      "bytes": 283441,
+      "match": true
+    },
+    {
+      "source": "data/brochures-ingevec.json",
+      "sha256": "ce57d1e608aae4e11edd9c224fb7593c7aa2ae0604eddf5ba4f279be75a08c03",
+      "bytes": 393628,
+      "match": true
+    },
+    {
+      "source": "data/brochures-leben.json",
+      "sha256": "50c09c226450b1e8ed2432db3fa6e1f113d31b0b4084f7079a6c2f34463e9fc3",
+      "bytes": 240397,
+      "match": true
+    },
+    {
+      "source": "data/brochures-leon.json",
+      "sha256": "962ed948e818a6c27046657bea5835d54e1e885f88c14775b5567b1c6c3ec28d",
+      "bytes": 472586,
+      "match": true
+    },
+    {
+      "source": "data/brochures-sento.json",
+      "sha256": "3419ae21cf01d5210106d1ffd36e68c9a70525715996b31de963dcf208bee409",
+      "bytes": 204527,
+      "match": true
+    },
+    {
+      "source": "data/euro-brochures.json",
+      "sha256": "8b3d89e25127e62c9d5e99bdeb5cac86eb5b765bec160562b8029a26ba4a2334",
+      "bytes": 89098,
+      "match": true
+    },
+    {
+      "source": "data/nollagam-brochures.json",
+      "sha256": "0a216701b066d74334253434638cc41daa1d71fdf26e713c76f1ad175c73f7a4",
+      "bytes": 79355,
+      "match": true
+    },
+    {
+      "source": "data/crescer-brochures.json",
+      "sha256": "c64dbf4f4a4737843460038c42c8d317938eba31d82e76f16e9f2d4445283f5e",
+      "bytes": 167265,
+      "match": true
+    },
+    {
+      "source": "data/euro-commercial.json",
+      "sha256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+      "bytes": 8454,
+      "match": true
+    },
+    {
+      "source": "data/nollagam-commercial.json",
+      "sha256": "d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b",
+      "bytes": 8493,
+      "match": true
+    },
+    {
+      "source": "data/crescer-commercial.json",
+      "sha256": "486e812e03fee2559053e08c36e06e83538c84f13ec8e5219595a01dc05b5a2f",
+      "bytes": 3052,
+      "match": true
+    },
+    {
+      "source": "data/commercial-filter-evidence-leben.json",
+      "sha256": "b9f87e764ecc9bf102c43287201d98f31fe3b34a5ba6e4e8829bc733a097ee36",
+      "bytes": 869981,
+      "match": true
+    },
+    {
+      "source": "data/purchase-stage-verifications.json",
+      "sha256": "13a030f0551363d31c280182d76418bc8ad08919e58994e342002b6543817700",
+      "bytes": 1938,
+      "match": true
+    },
+    {
+      "source": "data/leon-plan-surfaces.json",
+      "sha256": "0c3465d7e6f2f623378c7e295c2e0f9cf72b586dd60a3c45b18a78985d3400dc",
+      "bytes": 341835,
+      "match": true
+    },
+    {
+      "source": "data/plaza-las-condes-verified.json",
+      "sha256": "5f8f31d51a6ff2730ddf83dec580c56294d1d21f6fbb40f22ee665f828b11788",
+      "bytes": 13343,
+      "match": true
+    },
+    {
+      "source": "data/sento-angamos.json",
+      "sha256": "97f818ecbccb0a8d37c7d8836d741d1d7963734d056ef8dc91dcae6d17a5e9b8",
+      "bytes": 59699,
+      "match": true
+    },
+    {
+      "source": "docs/maestra-brochures-20261025/manifest.json",
+      "sha256": "31a460df5cf9cf336ae54590b7e523cd6eecc839ac17566c11ebd2524781508a",
+      "bytes": 258355,
+      "match": true
+    },
+    {
+      "source": "docs/norte-verde-18-20261026/decision-register.json",
+      "sha256": "adf0f8fe267c29aa6bc07b3e4a7ecf9345d1f23a2bb45edd9a2bc5814d269478",
+      "bytes": 3134,
+      "match": true
+    },
+    {
+      "source": "docs/maestra-brochures-20261025/README.md",
+      "sha256": "622a98276b0411cc20ec93c7dda4f38f0fa659aed9c5c536c9bcf3ea6ae5cfd4",
+      "bytes": 9428,
+      "match": true
+    },
+    {
+      "source": "docs/norte-verde-18-20261026/README.md",
+      "sha256": "534d09182312dcf280ebc6c7d8ca0014345d0ecaa85a9d1b53ad0508e3daeea8",
+      "bytes": 6453,
+      "match": true
+    },
+    {
+      "source": "docs/catalog-data-completeness-20261116/leben/fase9-comercial-20261117/PROYECTOS-APTOS-BUSQUEDA-PARCIAL.json",
+      "sha256": "5fb3b13578a26b5bab725b980876591768d37405316c384855f9b9cc38fcd68a",
+      "bytes": 1214012,
+      "match": true
+    },
+    {
+      "source": "tests/fixtures/iris-documentary-15.json",
+      "sha256": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+      "bytes": 72292,
+      "match": true
+    },
+    {
+      "source": "tests/fixtures/iris-documentary-additions-2.json",
+      "sha256": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb",
+      "bytes": 19071,
+      "match": true
+    },
+    {
+      "source": "tests/fixtures/iris-documentary-r018-vicuna-1103.json",
+      "sha256": "41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d",
+      "bytes": 14243,
+      "match": true
+    },
+    {
+      "source": "tests/fixtures/plaza-213-reference.json",
+      "sha256": "94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865",
+      "bytes": 30261,
+      "match": true
+    }
+  ],
+  "observations": [
+    "Mantener límites de campos originales al reutilizar cualquier puntero; existencia de un expediente no demuestra vigencia/stock o correspondencia con otraoferta.",
+    "No interpretar ausencia deun atributo o expediente específico leído como tarea automática de investigación.",
+    "Las autorizaciones existentes no se amplían por este dictamen."
+  ],
+  "operations": {
+    "reviewFileCreated": "REVISION-INDEPENDIENTE-INDICE.json",
+    "indexModified": false,
+    "derivationScriptModified": false,
+    "appEdits": false,
+    "AOrT2Edits": false,
+    "GitWrites": false,
+    "networkRequests": 0,
+    "NodeTestsExecuted": 0,
+    "ChromeControlsExecuted": 0,
+    "generatorsOrDerivationExecuted": 0,
+    "newPrimaryData": 0,
+    "newOwnerQuestions": 0
+  }
+}

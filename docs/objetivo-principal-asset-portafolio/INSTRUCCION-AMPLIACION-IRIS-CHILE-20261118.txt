@@ -1,0 +1,178 @@
+# SOLLAHMS — AMPLIACIÓN DEL CATÁLOGO CON PROYECTOS CHILENOS DE IRIS
+
+## OBJETIVO
+
+Identificar proyectos inmobiliarios ubicados en Chile que estén disponibles en Iris y todavía no figuren en el Asset Portafolio de Sollahms.
+
+Preparar una propuesta de ampliación del catálogo sin reiniciar las auditorías anteriores y sin publicar proyectos automáticamente.
+
+Esta tarea forma parte del objetivo principal del Asset Portafolio, pero no debe bloquear la finalización del universo actual de 131 proyectos.
+
+Repositorio: lasopho/sollahms-web.
+
+## 1. REUTILIZAR EL TRABAJO EXISTENTE
+
+Consultar:
+
+- NEXT-PROMPT.md.
+- CONTROL-DE-AVANCE.md.
+- Inventario productivo vigente.
+- Matriz comercial de los 131 proyectos.
+- Manual operativo Iris.
+- Inventarios de proyectos ya recuperados.
+- Registros documentales de Leben, Euro, Nollagam y otras inmobiliarias.
+- Historial de proyectos excluidos o retirados.
+
+No repetir auditorías completas ni volver a descargar documentos ya procesados.
+
+## 2. INVENTARIO DE IRIS
+
+Utilizar la sesión oficial y autorizada de Iris.
+
+Identificar proyectos ubicados en Chile.
+
+Recuperar únicamente información inicial de descubrimiento:
+
+- Nombre del proyecto.
+- Inmobiliaria.
+- Región.
+- Comuna.
+- Dirección publicada.
+- Tipo de propiedad.
+- Estado comercial, cuando esté disponible.
+- Precio de referencia, cuando esté disponible.
+- URL o identificador oficial de Iris.
+
+No investigar planos, superficies o terminaciones detalladas durante el descubrimiento.
+
+No acceder a otros países.
+
+No extraer comisiones ni datos de intermediarios.
+
+## 3. AUTENTICACIÓN
+
+Si Iris solicita acceso:
+
+- Abrir Chrome oficial visible.
+- Permitir que el propietario ingrese sus credenciales personalmente.
+- Esperar su confirmación.
+- Reanudar desde el punto exacto donde quedó la exploración.
+
+Nunca leer, copiar o almacenar contraseñas, OTP, cookies o tokens.
+
+No utilizar endpoints privados ni eludir restricciones.
+
+## 4. COMPARACIÓN CON SOLLAHMS
+
+Comparar el inventario encontrado con los 131 proyectos vigentes.
+
+Utilizar:
+
+- Nombre normalizado.
+- Inmobiliaria.
+- Comuna.
+- Dirección.
+- Identificadores previamente registrados.
+
+Clasificar cada resultado como:
+
+- YA EXISTE EN SOLLAHMS.
+- POSIBLE DUPLICADO.
+- PROYECTO NUEVO.
+- PROYECTO VENDIDO O NO COMERCIALIZABLE.
+- INFORMACIÓN INSUFICIENTE.
+
+No considerar nuevo un proyecto solamente porque cambió su nombre comercial.
+
+No reincorporar proyectos retirados sin evaluación específica.
+
+Conservar la denominación y dirección actuales de Sollahms.
+
+## 5. EVALUACIÓN COMERCIAL MÍNIMA
+
+Para cada proyecto realmente nuevo, registrar los datos que estén disponibles:
+
+- Inmobiliaria.
+- Nombre.
+- Ubicación.
+- Tipo de propiedad.
+- Precio referencial en UF.
+- Dormitorios.
+- Baños.
+- Superficies.
+- Estado comercial.
+- Entrega.
+- Amenities relevantes.
+
+No exigir completar todos los campos.
+
+No presentar precios de Iris como precios vigentes confirmados por Sollahms.
+
+No inventar stock, disponibilidad ni condiciones comerciales.
+
+## 6. PRIORIZACIÓN
+
+Clasificar los proyectos nuevos según:
+
+1. Identidad y ubicación suficientemente verificadas.
+2. Información comercial aprovechable.
+3. Tipo de propiedad.
+4. Estado de comercialización.
+5. Disponibilidad de información para los filtros.
+6. Duplicidad con el catálogo existente.
+
+No descartar automáticamente un proyecto solo porque falte su precio.
+
+Conservarlo como candidato con precio desconocido.
+
+## 7. PROTECCIÓN
+
+No modificar los 131 proyectos productivos.
+
+No crear fichas públicas.
+
+No modificar precios, direcciones ni imágenes existentes.
+
+No incorporar proyectos automáticamente a producción.
+
+No modificar CRM360, AI Lab, Resend, formularios, funciones o módulos financieros.
+
+No generar deployments, publicar, fusionar PR ni modificar main sin autorización expresa.
+
+Realizar exclusivamente descubrimiento, comparación y preparación documental.
+
+## 8. ENTREGABLE
+
+Preparar un informe compacto con:
+
+- Total de proyectos chilenos identificados en Iris.
+- Proyectos que ya están en Sollahms.
+- Posibles duplicados.
+- Proyectos realmente nuevos.
+- Proyectos vendidos o descartados.
+- Proyectos candidatos para incorporar.
+- Información esencial disponible y faltante por candidato.
+
+Entregar una tabla de proyectos nuevos, agrupados por inmobiliaria y región.
+
+No crear otro informe de auditoría general.
+
+## 9. CONTINUIDAD AUTÓNOMA
+
+No detener el objetivo principal de los 131 proyectos para realizar esta exploración.
+
+Continuar ambas líneas de trabajo mediante tareas independientes y autorizadas.
+
+No pedir intervención al propietario salvo autenticación, información indispensable o autorización específica.
+
+Al completar el inventario, preparar una propuesta de incorporación por lotes.
+
+Solicitar autorización antes de modificar el catálogo o crear fichas.
+
+Actualizar NEXT-PROMPT.md con resultados reales y entregar el siguiente prompt completo.
+
+## RESULTADO ESPERADO
+
+Determinar cuántos proyectos inmobiliarios chilenos adicionales podríamos incorporar a Sollahms y cuáles tienen información suficiente para ser encontrados correctamente mediante los filtros.
+
+Ampliar la oferta comercial sin duplicar proyectos, inventar datos ni interrumpir la finalización del catálogo existente.

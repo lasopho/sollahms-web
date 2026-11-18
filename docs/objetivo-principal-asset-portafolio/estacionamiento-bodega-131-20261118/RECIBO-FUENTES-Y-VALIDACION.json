@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-18T12:56:08.383305+00:00",
+  "kind": "Recibo de reutilización y validación estructural; no nueva recepción comercial.",
+  "derivationScript": "derivar-estacionamiento-bodega.py",
+  "derivationScriptSHA256": "176208ef559d4f94b3caa230398fd13e01b047dd23f78a249779411e10cef390",
+  "output": {
+    "path": "CLASIFICACION-ESTACIONAMIENTO-BODEGA-131.json",
+    "bytes": 475196,
+    "sha256": "74dacc7ad347e57bd84cb24927a7ab60c09eec1a687df2668bfdc70a13ef8e53"
+  },
+  "sources": [
+    {
+      "path": "docs/objetivo-principal-asset-portafolio/INVENTARIO-DE-FUENTES.json",
+      "commit": "e9e256511987a638072b2ddca827df5acba68c3f",
+      "sha256": "685901b43fcc05efb0ddb09d5ee7d26d1a8df103f44e09f510ebe98281d05e59",
+      "bytes": 98421,
+      "role": "Existing source inventory/hash baseline; not a new commercial source."
+    },
+    {
+      "path": "data/proyectos.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "bytes": 328016,
+      "role": "Exact131 identity universe only; no published prices imported.",
+      "expectedInventorySHA256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b"
+    },
+    {
+      "path": "data/project-features.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "a21460b821f8b52605c7eb130af126458b3f657a55f704f6146c67115eaf2e62",
+      "bytes": 760382,
+      "role": "Existing authored mentions and their own scope/provenance.",
+      "expectedInventorySHA256": "a21460b821f8b52605c7eb130af126458b3f657a55f704f6146c67115eaf2e62"
+    },
+    {
+      "path": "data/commercial-filter-evidence-leben.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "b9f87e764ecc9bf102c43287201d98f31fe3b34a5ba6e4e8829bc733a097ee36",
+      "bytes": 869981,
+      "role": "Existing prepared12Leben;10general additional declarations,2unknown.",
+      "expectedInventorySHA256": "b9f87e764ecc9bf102c43287201d98f31fe3b34a5ba6e4e8829bc733a097ee36"
+    },
+    {
+      "path": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/PRECIOS-PROPIETARIO-LEBEN.csv",
+      "commit": "e9e256511987a638072b2ddca827df5acba68c3f",
+      "sha256": "6cc68873fa171ffbc09b6dccbdf83b9b979ae1a6c7ae568a584a063784abafc6",
+      "bytes": 9235,
+      "role": "Existing F049 quote exclusions and separate Suecia additional amounts."
+    },
+    {
+      "path": "docs/catalog-data-completeness-20261116/leben/fase4-20261116/COM-F4-001-RESPUESTA-PROPIETARIO.md",
+      "commit": "e9e256511987a638072b2ddca827df5acba68c3f",
+      "sha256": "e0dba3dcf5ff8698ab18d1a67a308ad513d7e3da0b065eda22bd5018278fac5d",
+      "bytes": 8454,
+      "role": "Existing owner communication16Nov; no new reception."
+    },
+    {
+      "path": "docs/aj-urbana-20261030/owner-input.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "e237a5317a6784cba919e1e6c1cd7feb81a64bbb89eee1fd7a6e204971a634c5",
+      "bytes": 722,
+      "role": "Bounded review of existing owner/verification JSON for parking/storage declarations.",
+      "expectedInventorySHA256": "e237a5317a6784cba919e1e6c1cd7feb81a64bbb89eee1fd7a6e204971a634c5"
+    },
+    {
+      "path": "docs/aj-urbana-20261030/verification.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "e28408f197ba2b319fd8982cae6eb90068440a0673c049ea6d1e9a7afdf1afc2",
+      "bytes": 3859,
+      "role": "Bounded review of existing owner/verification JSON for parking/storage declarations.",
+      "expectedInventorySHA256": "e28408f197ba2b319fd8982cae6eb90068440a0673c049ea6d1e9a7afdf1afc2"
+    },
+    {
+      "path": "docs/ecasa-commercial-20261030/owner-input.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "27ff8f73f32ea7c5edae743e95f21dc3eddbc168474f542c0257e2186019a8c8",
+      "bytes": 4187,
+      "role": "Bounded review of existing owner/verification JSON for parking/storage declarations.",
+      "expectedInventorySHA256": "27ff8f73f32ea7c5edae743e95f21dc3eddbc168474f542c0257e2186019a8c8"
+    },
+    {
+      "path": "docs/ecasa-commercial-20261030/verification.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "f8c0dcbe4cd016a9d3fba0c327793592bd4ec79da50a896dbd1225c1198ac141",
+      "bytes": 9734,
+      "role": "Bounded review of existing owner/verification JSON for parking/storage declarations.",
+      "expectedInventorySHA256": "f8c0dcbe4cd016a9d3fba0c327793592bd4ec79da50a896dbd1225c1198ac141"
+    },
+    {
+      "path": "docs/leon-commercial-20261030/owner-input.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "f88231e8fc0f67235a70315316eff291c9ad33035ae1e0ef27e4c85cf6aa26f7",
+      "bytes": 828,
+      "role": "Bounded review of existing owner/verification JSON for parking/storage declarations.",
+      "expectedInventorySHA256": "f88231e8fc0f67235a70315316eff291c9ad33035ae1e0ef27e4c85cf6aa26f7"
+    },
+    {
+      "path": "docs/leon-commercial-20261030/verification.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "2d46740ef9c0197f43d0a48efaebfe0a3c2ac4b71cc69d34c5fce7c172093fb4",
+      "bytes": 4054,
+      "role": "Bounded review of existing owner/verification JSON for parking/storage declarations.",
+      "expectedInventorySHA256": "2d46740ef9c0197f43d0a48efaebfe0a3c2ac4b71cc69d34c5fce7c172093fb4"
+    },
+    {
+      "path": "docs/sento-commercial-20261030/owner-input.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "af373688774788cfe5b8b494bc777522ed52ff2a16b95ca01a194c8e95ce4c72",
+      "bytes": 1399,
+      "role": "Bounded review of existing owner/verification JSON for parking/storage declarations.",
+      "expectedInventorySHA256": "af373688774788cfe5b8b494bc777522ed52ff2a16b95ca01a194c8e95ce4c72"
+    },
+    {
+      "path": "docs/sento-commercial-20261030/verification.json",
+      "commit": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+      "sha256": "17d3bb6f1f7070b076fa484b53d79e963c5894ba6993af61b1115ecc444ee529",
+      "bytes": 4073,
+      "role": "Bounded review of existing owner/verification JSON for parking/storage declarations.",
+      "expectedInventorySHA256": "17d3bb6f1f7070b076fa484b53d79e963c5894ba6993af61b1115ecc444ee529"
+    }
+  ],
+  "validation": {
+    "evidenceLocatorsResolved": 135,
+    "universeRows": 131,
+    "uniqueSlugs": 131,
+    "sourceFiles": 14,
+    "inheritedQuoteIds": 20,
+    "inheritedAdditionalIds": 2,
+    "newIdsAssigned": 0,
+    "unknownAvailabilityRowsPerConcept": 131,
+    "existingNineFieldsModified": 0,
+    "sourceHashesMatch": true
+  },
+  "applicationTestsExecuted": 0,
+  "newOwnerReceptions": 0,
+  "historical313Closed": 0
+}

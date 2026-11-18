@@ -1,5 +1,31 @@
 # Control del objetivo principal: Asset Portafolio
 
+Último corte operativo: **18/11/2026**. Objetivo global en ejecución. Producción verificada: `875bd80ddb650b376cb3dd53af4ffae066fcd48f`, deployment `dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr`. El suplemento local `24a11df1a62898a06b408a729bb20ce1b1de4e87` permanece sin push ni nuevo PR. Los permisos anteriores ejecutados no autorizan otra integración o publicación.
+
+## Estado actual de los 131
+
+El [índice de aceptación por proyecto](aceptacion-comercial-131-20261118/README.md) preserva las 131 identidades y los nueve estados históricos; relaciona 1.700 testigos existentes con 2.806 localizadores validados. 127 proyectos tienen aquí expediente específico o referencia adicional y cuatro fuentes compartidas/publicadas. Esto no clasifica cuatro como no auditados ni certifica globalmente los 131. La capa local adicional conserva 19 referencias de 18 proyectos y 113 identidades sin referencia adicional, sin confundirlas con proyectos sin revisión.
+
+El [overlay de estacionamiento y bodega](estacionamiento-bodega-131-20261118/CLASIFICACION-ESTACIONAMIENTO-BODEGA-131.json) añade dos campos separados, completando la clasificación documental de once atributos esenciales sin alterar los nueve estados históricos. Reutiliza diez declaraciones generales Leben de adicionales, menciones parciales y veinte cotizaciones que excluyen estacionamiento/bodega de su precio. No convierte esas exclusiones en ausencia física, ni los adicionales de Suecia en precio del inmueble; inclusión y disponibilidad globales siguen desconocidas para los 131. Ambas derivaciones tienen revisión independiente sin bloqueantes; no son recepciones, stock o cierres nuevos de los 313 IDs históricos.
+
+Vergara Domeyko/Local y Bordevivo/Local: búsquedas oficiales nominales y variantes sin resultados; archivos previos conservados no identifican los locales. No se prestaron atributos residenciales. Ver [consultas y archivos conservados](locales-norte-verde-20261118/CONSULTAS-IRIS-LOCALES.json). No repetir estas búsquedas ni Parque Panamá/Irarrázaval/Verne sin evidencia nueva.
+
+Se recuperaron los checkouts temporales desde sus commits, sin reconstruir el candidato: 35 archivos técnicos en checkout disperso, diez hashes candidatos y 21 originales coincidentes; 155 blobs protegidos idénticos entre 875 y24a. El certificado SHA256 de los 155 es histórico conservado, no una nueva recertificación de sus cuerpos. Las 438 entradas del manifiesto documental previo coincidieron. Los servidores y paquetes temporales antiguos ya no están disponibles. Ver [recuperación operativa](RECUPERACION-OPERATIVA-20261118.json). No se repitió Node/Chrome ni se generó build.
+
+## Intervenciones vigentes
+
+Sólo permanecen las dos solicitudes ya presentadas en [INTERVENCIONES-PROPIETARIO.json](INTERVENCIONES-PROPIETARIO.json): `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` y `OWNER-BATH-IRARR1970-20261118-01`. No se repreguntan ni se interpretan las instrucciones de continuidad como respuesta. Los desconocidos restringen exclusivamente sus predicados; no obligan a reconstruir inventarios completos ni terminaciones.
+
+## Ampliación documental paralela: Iris Chile
+
+Autorizado descubrimiento, comparación y propuesta, sin incorporar proyectos. El catálogo oficial mostró 158 de158 oportunidades con Chile y los cuatro estados seleccionados; 158 IDs/URLs únicos en el listado, todavía sujetos a la validación individual y comparación. No equivalen a158 proyectos nuevos o candidatos. La verificación de fichas y la comparación con los 131 y sus históricos están en ejecución.
+
+La [regla obligatoria de existencia](../iris-operational-manual/VALIDACION-DE-EXISTENCIA.md) exige ficha individual con identidad y contenido reales. Fichas vacías comprobadas quedan `EXCLUIDO_IRIS_SIN_FICHA`; errores técnicos o de acceso quedan no verificables. Ningún fallo externo da de baja a los 131 actuales. No se extraen comisiones/intermediarios, no se investigan planos durante descubrimiento y no se convierten precios Iris en precios Sollahms o stock. La incorporación futura requiere autorización independiente y no bloquea el universo actual.
+
+## Registro histórico de cortes anteriores
+
+Los apartados siguientes conservan decisiones y verificaciones de su fecha. Las referencias a producción9e, estados Draft/Ready o servidores en esos cortes son históricas; el estado vigente es el encabezado anterior y NEXT-PROMPT.md.
+
 Última actualización: 17/11/2026. **Objetivo en ejecución**: información comercial confiable y filtros funcionales para los 131 proyectos del universo productivo acordado. La revisión de un PR o la existencia de un dato publicado no completa este objetivo. Este control sustituye la necesidad de que el propietario dirija cada fase.
 
 ## Universo y revisión realizada
