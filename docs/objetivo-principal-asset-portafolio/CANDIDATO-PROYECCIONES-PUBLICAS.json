@@ -1,0 +1,128 @@
+{
+  "recordedAtUTC": "2026-11-18T00:47:46.727258+00:00",
+  "branch": "codex/proyecciones-publicas-cotizaciones-20261117",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "localCommit": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+  "baseBranch": "codex/footer-sin-frase-20261116",
+  "baseCommit": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+  "baseMeaning": "Authorized PR33merge, not the still-live production9e.",
+  "status": "CANDIDATO_LOCAL_REVISADO_SIN_PUSH_PR",
+  "fileCount": 8,
+  "files": [
+    {
+      "path": "assets/js/catalog-euro-owner-quotes.mjs",
+      "bytes": 11487,
+      "sha256": "81edb95704b0516005902c3fd786f8566f440a2f6b1cda8e7c5bb2806bb858d7"
+    },
+    {
+      "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "bytes": 8906,
+      "sha256": "b995850c613e305eb699b2a5f7cced8914f2b361e41b7fb5bb4c5d254f8114f1"
+    },
+    {
+      "path": "data/catalog-euro-owner-quotes.json",
+      "bytes": 4487,
+      "sha256": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272"
+    },
+    {
+      "path": "data/catalog-nollagam-owner-quotes.json",
+      "bytes": 1129,
+      "sha256": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee"
+    },
+    {
+      "path": "tests/catalog-euro-owner-quotes.test.mjs",
+      "bytes": 16127,
+      "sha256": "93c4498ebed8e75613406818958cce3189b9544db9319bb47a27338b2947ed64"
+    },
+    {
+      "path": "tests/catalog-nollagam-integration.test.mjs",
+      "bytes": 5256,
+      "sha256": "d34b3125628ada323e713b100543929a877861e6aae975884ebb967e939560c4"
+    },
+    {
+      "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+      "bytes": 19009,
+      "sha256": "565d061c9865cbafe31c9cdce91f583aaf20f6df5e52a1beea9047fb573b2316"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 3834,
+      "sha256": "466adf1e21f5960b832915594362515e485d0bd0c511cf1e95dd4c693ad1ecf7"
+    }
+  ],
+  "localWorkingTreeClean": true,
+  "remoteBranchExists": false,
+  "newPRCreated": false,
+  "automaticDeploymentsDisabledForSourceAndBase": true,
+  "reason": "Avoid publishing raw ownerJSON internal history/notes/screenshots. Publish only pinned minimal projections; originals retained untouched.",
+  "commercialValues": {
+    "Euro": 21,
+    "Nollagam": 17,
+    "NollagamUnknownPriceCategories": 5,
+    "DiagonalCurrentPrice": null,
+    "newPricesOrEvidence": 0,
+    "LebenHistoricalClosures": 0
+  },
+  "provenance": "Original source path/SHA and dates retained separately from public transport path/SHA; no rawfallback.",
+  "tests": {
+    "EuroSpecific": 49,
+    "NollagamConsumer": 19,
+    "NollagamIntegration": 23,
+    "newChromeFocused": 7,
+    "historical11283And23NotRepeated": true,
+    "doNotAddPriorSubsets": true
+  },
+  "preservation": {
+    "protectedFilesUnchanged": 155,
+    "originalSourcesUnchanged": 21,
+    "UIModelEngineMapFinanceUnchanged": true,
+    "sourceVerification": "correccion-proyecciones-publicas-20261117/PRESERVACION-RAIZ.json",
+    "releaseFichesUnchanged": 131,
+    "releaseFunctionFilesUnchanged": 57,
+    "releaseFunctionBundlesUnchanged": 7,
+    "releaseConfigurationAndPatio410Unchanged": true
+  },
+  "independentReadReview": "No blocking finding; strict fields/pins, exact owner values, no internal history/privateURLs, unchanged IDs/matching/unknowns.",
+  "publicPackage": {
+    "path": "/private/tmp/sollahms-proyecciones-publicas-release-20261117",
+    "status": "PREPARADO_LOCAL_PENDIENTE_AUTORIZACIONES",
+    "inventorySHA256": "31eee39b568fa35a32cbab1dfe1ace80ac8b1d1ac1486d0456f1e98cde6f9b19",
+    "totalFiles": 1672,
+    "staticFiles": 1614,
+    "functionFiles": 57,
+    "configurationFiles": 1,
+    "baselineUnchangedOutsideOverlay": 1657,
+    "runtimeJavaScriptFiles": 13,
+    "publicJSONFiles": 2,
+    "originalOwnerJSONFilesExcluded": true,
+    "sourceOnlyFichasExcluded": true,
+    "noNewDocsTestsFixturesIrisMedia": true,
+    "publicDependencyMissing": 0,
+    "browserRawSourceRequests": 0,
+    "browserNewPublicResponses": 200,
+    "browserRuntimeExceptions": 0,
+    "browserConsoleErrors": 0,
+    "staticFinancialScenariosNotCertified": true
+  },
+  "quarantinedPackage": "Never deploy/private/tmp/sollahms-pr33-release-20261117; it retains raw owner sources and is blocked.",
+  "production": {
+    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "unchanged": true
+  },
+  "remainingAuthorization": [
+    "First push of this new branch",
+    "Create a new PR in Draft",
+    "Ready/merge/deployment/promotion require separate future permissions"
+  ],
+  "global131ObjectiveComplete": false,
+  "preview": "http://127.0.0.1:8769/proyectos.html?q=Costanera&precio_min=5000&precio_max=5100&dormitorios=3",
+  "documentaryWhitespace": {
+    "files": [
+      "docs/objetivo-principal-asset-portafolio/correccion-proyecciones-publicas-20261117/CB-a-3082.patch",
+      "docs/objetivo-principal-asset-portafolio/correccion-proyecciones-publicas-20261117/euro/PRUEBAS-EURO-PROYECCION.log"
+    ],
+    "findings": 14,
+    "reason": "Exact Git patch context blank lines and original test harness failure output preserved byte-for-byte; source application diff check passed."
+  }
+}

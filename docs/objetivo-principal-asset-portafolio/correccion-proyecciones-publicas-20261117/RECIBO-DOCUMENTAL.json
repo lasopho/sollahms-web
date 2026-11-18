@@ -1,0 +1,246 @@
+{
+  "recordedAtUTC": "2026-11-18T00:27:15.412096+00:00",
+  "nature": "Archivo documental de evidencia existente; sin nueva ejecución de aplicación/pruebas ni nueva recepción comercial",
+  "source": {
+    "commit": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+    "uniqueParent": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+    "parentVerifiedFromGit": true,
+    "branch": "codex/proyecciones-publicas-cotizaciones-20261117",
+    "commitFileCount": 8,
+    "commitFiles": [
+      {
+        "path": "assets/js/catalog-euro-owner-quotes.mjs",
+        "status": "M",
+        "gitBlobSHA1": "7efd7ff2859fe95463d6af3b3c049055ebac9822",
+        "sha256": "81edb95704b0516005902c3fd786f8566f440a2f6b1cda8e7c5bb2806bb858d7",
+        "bytes": 11487
+      },
+      {
+        "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+        "status": "M",
+        "gitBlobSHA1": "23fd6e1b0e7741bb5662fc6491c323d0d57bed05",
+        "sha256": "b995850c613e305eb699b2a5f7cced8914f2b361e41b7fb5bb4c5d254f8114f1",
+        "bytes": 8906
+      },
+      {
+        "path": "data/catalog-euro-owner-quotes.json",
+        "status": "A",
+        "gitBlobSHA1": "5e0cc51e65c915c73210979214cc4af8ef5facea",
+        "sha256": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272",
+        "bytes": 4487
+      },
+      {
+        "path": "data/catalog-nollagam-owner-quotes.json",
+        "status": "A",
+        "gitBlobSHA1": "692c45748fd52a4b69061c4666f906292a8c0dc4",
+        "sha256": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee",
+        "bytes": 1129
+      },
+      {
+        "path": "tests/catalog-euro-owner-quotes.test.mjs",
+        "status": "M",
+        "gitBlobSHA1": "9c541acc56d6606240493a6942779e7ef7ec997d",
+        "sha256": "93c4498ebed8e75613406818958cce3189b9544db9319bb47a27338b2947ed64",
+        "bytes": 16127
+      },
+      {
+        "path": "tests/catalog-nollagam-integration.test.mjs",
+        "status": "M",
+        "gitBlobSHA1": "dce4e209f3f9b549d6971fcead476807bced8754",
+        "sha256": "d34b3125628ada323e713b100543929a877861e6aae975884ebb967e939560c4",
+        "bytes": 5256
+      },
+      {
+        "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+        "status": "M",
+        "gitBlobSHA1": "bdbf8095f2353d522e367c01db95416178b87e62",
+        "sha256": "565d061c9865cbafe31c9cdce91f583aaf20f6df5e52a1beea9047fb573b2316",
+        "bytes": 19009
+      },
+      {
+        "path": "vercel.json",
+        "status": "M",
+        "gitBlobSHA1": "68ccb1a3bf7697d98dc59ab171528a67033ed829",
+        "sha256": "466adf1e21f5960b832915594362515e485d0bd0c511cf1e95dd4c693ad1ecf7",
+        "bytes": 3834
+      }
+    ],
+    "patch": {
+      "path": "CB-a-3082.patch",
+      "sha256": "e1456154d47b47e2d22e66dc575a87aeb9b0750ba52b19fc59e7180e9661d96e",
+      "bytes": 37785
+    },
+    "sourceC56": "c56f199a0a6e0d9c15ca3d26969603e9f3d88919",
+    "sourceC56LocalRemotePreserved": "Reportado por raíz; sin operación remota en esta tarea"
+  },
+  "publicPins": {
+    "data/catalog-euro-owner-quotes.json": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272",
+    "data/catalog-nollagam-owner-quotes.json": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee"
+  },
+  "administrativeProjection": {
+    "newFacts": 0,
+    "newOwnerPrices": 0,
+    "Leben313Closures": 0,
+    "Euro": {
+      "projects": 12,
+      "pricedProjects": 11,
+      "prices": 21,
+      "diagonalPrices": 0
+    },
+    "Nollagam": {
+      "projects": 7,
+      "prices": 17,
+      "unknownCategories": 5
+    },
+    "originalDatesRetained": [
+      "2026-10-29",
+      "2026-10-28"
+    ],
+    "stockOrUnitCertified": false
+  },
+  "validationCuts": {
+    "Euro": {
+      "finalTests": 49,
+      "pass": 49,
+      "fail": 0,
+      "includesPrevious42": true,
+      "newCases": 7,
+      "log": "euro/PRUEBAS-EURO-PROYECCION-FINAL.log"
+    },
+    "NollagamConsumer": {
+      "finalTests": 19,
+      "pass": 19,
+      "fail": 0,
+      "includesRetargeted14": true,
+      "newCases": 5,
+      "log": "nollagam/consumer-projection-tests.log"
+    },
+    "NollagamIntegration": {
+      "finalTests": 23,
+      "pass": 23,
+      "fail": 0,
+      "executedBy": "root",
+      "log": "integracion/nollagam-public-projection-integration23.log"
+    },
+    "countPolicy": "Separados; no sumar49+42,19+14 ni112/83. No certificación comercial global131.",
+    "EuroPriorHarnessFailure": {
+      "tests": 49,
+      "pass": 48,
+      "fail": 1,
+      "log": "euro/PRUEBAS-EURO-PROYECCION.log",
+      "classification": "Error de orden esperado en una aserción nueva; no defecto de aplicación",
+      "cause": "Expected projects antes de projectionKind; orden alfabético correcto projectionKind antes de projects",
+      "preservedUnchanged": true
+    },
+    "testsExecutedByArchiver": false
+  },
+  "preservationCertificate": {
+    "path": "PRESERVACION-RAIZ.json",
+    "sha256": "6f98f21407e1318a57dfdf4d89ba241f1d2dd26dea4ef3fc729ea0a3320029d8",
+    "bytes": 1917,
+    "recordedByRootAtUTC": "2026-11-18T00:20:08.779063+00:00",
+    "protectedFilesVerifiedByRoot": 155,
+    "sourceFilesUnchangedVerifiedByRoot": 21,
+    "reusedWithoutBroadReaudit": true,
+    "eightCommitBlobsMatchRootReceipt": true,
+    "engineModelUIMapFinanceModulesUnchanged": true,
+    "configurationOnlyNewBranchDisabled": true
+  },
+  "review": {
+    "mode": "Independent source/code reading, not new execution",
+    "EuroReviewer": "documentary_contract_review",
+    "NollagamReviewer": "global_scope_inventory",
+    "rootReviewedBoth": true,
+    "blockingFindings": 0,
+    "authorDidNotApproveOwnNollagamImplementation": true
+  },
+  "statusAtRootPreservationCut": {
+    "PR33": "merged",
+    "PR33Merge": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+    "production": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "firstPushNewBranch": false,
+    "newPR": false,
+    "deployment": false,
+    "publication": false
+  },
+  "privateOriginalPolicy": {
+    "doNotPublish": [
+      "data/euro-commercial.json",
+      "data/nollagam-commercial.json"
+    ],
+    "oldRawOutput": "/private/tmp/sollahms-pr33-release-20261117/stage/.vercel/output",
+    "oldRawOutputStatus": "QUARANTINED_DO_NOT_DEPLOY; documentary restriction by root instruction",
+    "oldOutputModifiedByThisTask": false,
+    "documentaryFixturesExported": false
+  },
+  "notIncludedInThisDocumentaryCut": [
+    "New package receipt or verification",
+    "New Chrome controls/QA",
+    "Future PR/release/publication authorization"
+  ],
+  "copiedSources": [
+    {
+      "source": "/private/tmp/sollahms-euro-public-projection-correction/RECIBO-CORRECCION-PROYECCION-EURO.json",
+      "archivedPath": "euro/RECIBO-CORRECCION-PROYECCION-EURO.json",
+      "sha256": "aac0be2601db3c0fb29a90c2cd04f636aa2ce71261c4a92400e987a66c104440",
+      "bytes": 5640
+    },
+    {
+      "source": "/private/tmp/sollahms-euro-public-projection-correction/MANIFIESTO-SHA256.json",
+      "archivedPath": "euro/MANIFIESTO-SHA256.json",
+      "sha256": "221cad7d23de75be4ee8360208644af04898487d88f3982ae221e8777dab02a6",
+      "bytes": 2757
+    },
+    {
+      "source": "/private/tmp/sollahms-euro-public-projection-correction/ANTES.json",
+      "archivedPath": "euro/ANTES.json",
+      "sha256": "251ec2544e3658c83017da63cb0728060ce2a29dc1221bbf844a065c436780a7",
+      "bytes": 1298
+    },
+    {
+      "source": "/private/tmp/sollahms-euro-public-projection-correction/PRUEBAS-EURO-PROYECCION.log",
+      "archivedPath": "euro/PRUEBAS-EURO-PROYECCION.log",
+      "sha256": "6ba71819564706c62beece3796ba6bef44cda3666c55c3c59ac5cba018b9b484",
+      "bytes": 5409
+    },
+    {
+      "source": "/private/tmp/sollahms-euro-public-projection-correction/PRUEBAS-EURO-PROYECCION-FINAL.log",
+      "archivedPath": "euro/PRUEBAS-EURO-PROYECCION-FINAL.log",
+      "sha256": "ad76a66cd04e032db9d16e04b2fa9e39428b2d2aaafbe98594258ef00d432deb",
+      "bytes": 4191
+    },
+    {
+      "source": "/private/tmp/sollahms-nollagam-public-projection-20261117/PUBLIC-PROJECTION-RECEIPT.json",
+      "archivedPath": "nollagam/PUBLIC-PROJECTION-RECEIPT.json",
+      "sha256": "acc0c3763fa94c03905e101eb05d3be3c61043f516fff6c1a63ca8422bba6cf5",
+      "bytes": 6289
+    },
+    {
+      "source": "/private/tmp/sollahms-nollagam-public-projection-20261117/consumer-projection-tests.log",
+      "archivedPath": "nollagam/consumer-projection-tests.log",
+      "sha256": "839fd166e39b38f6e8d005749b91180583fb8d7a24dc89335003316556c329e5",
+      "bytes": 2175
+    },
+    {
+      "source": "/private/tmp/sollahms-nollagam-public-projection-integration23.log",
+      "archivedPath": "integracion/nollagam-public-projection-integration23.log",
+      "sha256": "e0ac93428277fa416506d8676150e3026a64f236b9d15d1e6189cb9a850bd9cd",
+      "bytes": 2209
+    },
+    {
+      "source": "/private/tmp/sollahms-public-projection-preservation.json",
+      "archivedPath": "PRESERVACION-RAIZ.json",
+      "sha256": "6f98f21407e1318a57dfdf4d89ba241f1d2dd26dea4ef3fc729ea0a3320029d8",
+      "bytes": 1917
+    }
+  ],
+  "manifest": "MANIFIESTO-ARCHIVOS.json",
+  "operations": {
+    "onlyThisAuditSubdirectoryWritten": true,
+    "runtimeOrTechnicalCheckoutEdits": false,
+    "testsOrBrowserOrNetwork": false,
+    "gitIndexCommitBranchPushPRWrites": false,
+    "CONTROL_NEXT_GlobalManifestModified": false,
+    "packageModified": false
+  }
+}

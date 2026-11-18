@@ -1,0 +1,965 @@
+{
+  "date": "2026-11-17",
+  "candidate": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+  "total": 7,
+  "passed": 7,
+  "checks": [
+    {
+      "id": "EURO-PUBLIC-PROJECTION-2D-3562",
+      "pass": true,
+      "state": {
+        "count": "1 de 131 proyectos",
+        "items": [
+          {
+            "slug": "edificio-don-pepe-154",
+            "text": "Don Pepe 154\n\nLa Florida · Región Metropolitana\n\nEuro\n\nVicente Valdés · L4 / L5 · 180 m en línea recta\n\nTipología del precio\n2 dormitorios\nEstado del proyecto\nEn blanco\nEntrega del proyecto\n1.er semestre 2028\n\nDesde UF 3.562\n\n2 dormitorios\n\nPrecio del propietario por tipología · 29/10/2026 · sin asignación a unidad o modelo · disponibilidad por confirmar; no acredita stock\n\nVer detalles"
+          }
+        ],
+        "notice": "",
+        "noticeHidden": true
+      }
+    },
+    {
+      "id": "NOLLAGAM-PUBLIC-PROJECTION-3D-5070",
+      "pass": true,
+      "state": {
+        "count": "1 de 131 proyectos",
+        "items": [
+          {
+            "slug": "costanera-coquimbo-a",
+            "text": "Costanera Coquimbo Edificio A\n\nCoquimbo · Coquimbo\n\nNollagam\n\nTipologías\n3 dormitorios\n\nDesde UF 5.070\n\n3 dormitorios\n\nReferencia del propietario · 28/10/2026 · Por tipología; no acredita unidad ni stock.\n\nVer detalles"
+          }
+        ],
+        "notice": "",
+        "noticeHidden": true
+      }
+    },
+    {
+      "id": "UNKNOWN-BATH-NOT-BORROWED",
+      "pass": true,
+      "state": {
+        "count": "0 de 131 proyectos",
+        "items": [],
+        "notice": "",
+        "noticeHidden": true
+      }
+    },
+    {
+      "id": "DIAGONAL-PENDING-NO-HISTORICAL-PRICE",
+      "pass": true,
+      "state": {
+        "count": "0 de 131 proyectos",
+        "items": [],
+        "notice": "",
+        "noticeHidden": true
+      }
+    },
+    {
+      "id": "DIAGONAL-RETAINED-WITHOUT-PRICE",
+      "pass": true,
+      "state": {
+        "count": "1 de 131 proyectos",
+        "items": [
+          {
+            "slug": "diagonal-vicuna",
+            "text": "Diagonal Vicuña\n\nSantiago · Región Metropolitana\n\nEuro\n\nÑuble · L5 / L6 · 370 m en línea recta\n\nTipologías\n1 dormitorio · 2 dormitorios\nEstado\nEn blanco\nEntrega\n1.er semestre 2027\n\nDesde: consultar precio\n\nVer detalles"
+          }
+        ],
+        "notice": "",
+        "noticeHidden": true
+      }
+    },
+    {
+      "id": "PUBLIC-PACKAGE-RETAINS-131",
+      "pass": true,
+      "state": {
+        "count": "131 proyectos",
+        "itemCount": 131,
+        "noticeHidden": true
+      }
+    },
+    {
+      "id": "ONLY-PUBLIC-QUOTE-ENDPOINTS-REQUESTED",
+      "pass": true,
+      "state": {
+        "responses": [
+          {
+            "method": "Network.responseReceived",
+            "url": "http://127.0.0.1:8769/data/catalog-nollagam-owner-quotes.json",
+            "status": 200
+          },
+          {
+            "method": "Network.responseReceived",
+            "url": "http://127.0.0.1:8769/data/catalog-euro-owner-quotes.json",
+            "status": 200
+          }
+        ],
+        "rawOwnerRequestCount": 0
+      }
+    }
+  ],
+  "networkScope": "Own localhost resource URL/status only; no headers/cookies/body/credentials captured",
+  "network": [
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/proyectos.html?q=Don+Pepe&precio_min=3562&precio_max=3562&dormitorios=2"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/proyectos.html?q=Don+Pepe&precio_min=3562&precio_max=3562&dormitorios=2",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/index.tailwind.css"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/index.tailwind.css",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/catalog.css?v=20261026-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/catalog.css?v=20261026-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/image-parallax.css?v=20261026-2"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/image-parallax.css?v=20261026-2",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/purchase-capacity.css?v=20261025-visual-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/purchase-capacity.css?v=20261025-visual-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/project-photos.css?v=20261025-visual-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/project-photos.css?v=20261025-visual-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/catalog-filters.css?v=20261117-commercial-local-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/catalog-filters.css?v=20261117-commercial-local-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/guide-navigation.css?v=20261029-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/guide-navigation.css?v=20261029-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/purchase-stage-entry.css?v=20261029-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/purchase-stage-entry.css?v=20261029-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/metro.css"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/metro.css",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/sollahms-theme.css?v=20261026-scroll-3"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/sollahms-theme.css?v=20261026-scroll-3",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/scroll-presence.js?v=20261026-3"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/scroll-presence.js?v=20261026-3",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/sollahms-brand.css?v=20261026-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/sollahms-brand.css?v=20261026-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/image-parallax.js?v=20261027-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/image-parallax.js?v=20261027-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/css/expertise-navigation.css"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/css/expertise-navigation.css",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/expertise-navigation.js"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/expertise-navigation.js",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/sollahms-logo.svg"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/sollahms-logo.svg",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog.mjs?v=20261030-metro-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog.mjs?v=20261030-metro-1",
+      "status": 304
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/commercial-filter-data.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/commercial-filter-data.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-financial-witness.mjs"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-euro-owner-quotes.mjs"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-nollagam-quote-consumer.mjs"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/documentary-local-review.mjs"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/metro-model.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/metro-model.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/project-offers.mjs?v=20261030-leon"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/project-offers.mjs?v=20261030-leon",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/commercial-context.mjs?v=20261029-euro-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/commercial-context.mjs?v=20261029-euro-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-model.mjs?v=20261029-euro-1"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-filter-controls.mjs?v=20261029-euro-1"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-filter-engine.mjs?v=20261029-euro-1"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/project-offers.mjs?v=20261029-euro-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/project-offers.mjs?v=20261029-euro-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-financial-witness.mjs",
+      "status": 304
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-model.mjs?v=20261029-euro-1",
+      "status": 304
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-typology-prices.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-nollagam-quote-consumer.mjs",
+      "status": 304
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-nollagam-owner-quotes.mjs"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/commercial-filter-engine.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-filter-controls.mjs?v=20261029-euro-1",
+      "status": 304
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-euro-owner-quotes.mjs",
+      "status": 304
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-filter-engine.mjs?v=20261029-stage-1"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-model.mjs?v=20261029-stage-1"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/commercial-filter-data.mjs?v=20261117-local-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/commercial-filter-data.mjs?v=20261117-local-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/documentary-local-review.mjs",
+      "status": 304
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/documentary-reference-data.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-typology-prices.mjs",
+      "status": 304
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-filter-engine.mjs?v=20261029-euro-1",
+      "status": 304
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-nollagam-owner-quotes.mjs",
+      "status": 304
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/commercial-filter-engine.mjs",
+      "status": 304
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-filter-engine.mjs?v=20261029-stage-1",
+      "status": 304
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/catalog-model.mjs?v=20261029-stage-1",
+      "status": 304
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/documentary-reference-data.mjs",
+      "status": 304
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/data/proyectos.json"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/data/proyectos.json",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/data/catalog-euro-owner-quotes.json"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/data/catalog-nollagam-owner-quotes.json"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/data/metro-network.json"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/data/project-metro.json"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/data/catalog-facets.json?v=20261029-euro-1"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/data/catalog-nollagam-owner-quotes.json",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/data/catalog-euro-owner-quotes.json",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/data/metro-network.json",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/data/project-metro.json",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/data/catalog-facets.json?v=20261029-euro-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/data/commercial-filter-evidence-leben.json"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/data/commercial-filter-evidence-leben.json",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/9c552b6f2606520cbc299e20.webp"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/9c552b6f2606520cbc299e20.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/purchase-capacity-ui.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/purchase-capacity-ui.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/purchase-capacity.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/purchase-capacity.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/clp-input.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/clp-input.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/mortgage-engine.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/mortgage-engine.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/mortgage-data.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/mortgage-data.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/official-uf.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/official-uf.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/project-finance.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/project-finance.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/js/mortgage-handoff.mjs"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/js/mortgage-handoff.mjs",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/data/hipotecario.json"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/data/hipotecario.json",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/api/uf"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/api/uf",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/api/uf"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/api/uf",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/08bb01c3207cbe3ecb615f03.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/08bb01c3207cbe3ecb615f03.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/676fc2eecb5ed846f804efab.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/5c2ae6021949b2898454ff9f.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/676fc2eecb5ed846f804efab.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/5c2ae6021949b2898454ff9f.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/832a7e3d8615ba05990702ae.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/832a7e3d8615ba05990702ae.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/api/uf"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/api/uf",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/distrito-centro/distrito-centro-hero.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/0193dd9df0925045a1dffd22.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/1d034536ee14681baff42f4c.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/brochures-20261025/bcome-01.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/85b1d16dcf8fa61cb488d1dc.webp"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/9b84c833907a7ce542de3e23.webp"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/distrito-centro/distrito-centro-hero.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/0193dd9df0925045a1dffd22.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/brochures-20261025/bcome-01.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/1d034536ee14681baff42f4c.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/85b1d16dcf8fa61cb488d1dc.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/propiedades/catalogo/9b84c833907a7ce542de3e23.webp",
+      "status": 200
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/favicon.ico"
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/favicon.ico",
+      "status": 404
+    },
+    {
+      "method": "Network.requestWillBeSent",
+      "url": "http://127.0.0.1:8769/api/uf"
+    },
+    {
+      "method": "Network.responseReceived",
+      "url": "http://127.0.0.1:8769/api/uf",
+      "status": 404
+    }
+  ],
+  "runtimeExceptions": 0,
+  "console": [],
+  "harnessObservations": [
+    {
+      "kind": "Ambiguous test query",
+      "input": "Diagonal",
+      "actual": "Three registered projects matched name/address; this does not establish a price for Diagonal Vicuña.",
+      "correction": "Use the registered full project title and check the target identity."
+    }
+  ],
+  "limits": [
+    "Focused loader/data privacy QA only; historical23Chrome/112Node/83regression suites not repeated.",
+    "Static preview does not run/api/uf or validate financial scenarios.",
+    "No forms submitted, deployment or publication."
+  ]
+}

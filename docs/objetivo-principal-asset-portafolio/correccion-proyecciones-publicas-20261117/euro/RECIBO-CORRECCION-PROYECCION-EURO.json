@@ -1,0 +1,142 @@
+{
+  "capturedAt": "2026-11-18T00:10:15.245636+00:00",
+  "purpose": "Corrección local del bloqueo de publicación: sustituir fetch de fuente privada por proyección pública mínima de cotizaciones Euro existentes.",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "startingCommit": "c56f199a0a6e0d9c15ca3d26969603e9f3d88919",
+  "ownerReportedMergeTarget": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+  "scope": {
+    "ownedFiles": [
+      {
+        "path": "assets/js/catalog-euro-owner-quotes.mjs",
+        "sha256": "81edb95704b0516005902c3fd786f8566f440a2f6b1cda8e7c5bb2806bb858d7",
+        "bytes": 11487
+      },
+      {
+        "path": "tests/catalog-euro-owner-quotes.test.mjs",
+        "sha256": "93c4498ebed8e75613406818958cce3189b9544db9319bb47a27338b2947ed64",
+        "bytes": 16127
+      },
+      {
+        "path": "data/catalog-euro-owner-quotes.json",
+        "sha256": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272",
+        "bytes": 4487
+      }
+    ],
+    "protectedSnapshot": [
+      {
+        "path": "data/euro-commercial.json",
+        "sha256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "bytes": 8454,
+        "beforeSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+        "unchangedSinceStart": true
+      },
+      {
+        "path": "assets/js/catalog-filter-engine.mjs",
+        "sha256": "e1fd353c756ff01a53862c548271456c11afe539d6cb823830909cb37b8f6f68",
+        "bytes": 21003,
+        "beforeSHA256": "e1fd353c756ff01a53862c548271456c11afe539d6cb823830909cb37b8f6f68",
+        "unchangedSinceStart": true
+      },
+      {
+        "path": "assets/js/catalog-model.mjs",
+        "sha256": "73a68e260e3fec0cff77a8d51a3d28099865a78bcca0a6c1dec9d0164d808700",
+        "bytes": 15468,
+        "beforeSHA256": "73a68e260e3fec0cff77a8d51a3d28099865a78bcca0a6c1dec9d0164d808700",
+        "unchangedSinceStart": true
+      },
+      {
+        "path": "assets/js/catalog.mjs",
+        "sha256": "6b974212b79c903402f8d58a1a4c6500bed63019ae7e10b6009fac2beb94a966",
+        "bytes": 15941,
+        "beforeSHA256": "6b974212b79c903402f8d58a1a4c6500bed63019ae7e10b6009fac2beb94a966",
+        "unchangedSinceStart": true
+      },
+      {
+        "path": "assets/js/catalog-map.mjs",
+        "sha256": "ac5b4e5cf082e887751b86f044d0777f2cc3bab898140e2f06a63b20d03ff9d5",
+        "bytes": 16860,
+        "beforeSHA256": "ac5b4e5cf082e887751b86f044d0777f2cc3bab898140e2f06a63b20d03ff9d5",
+        "unchangedSinceStart": true
+      }
+    ],
+    "gitWrites": false,
+    "push": false,
+    "PRMutations": false,
+    "deployment": false,
+    "packageGeneration": false,
+    "documentaryBranchEdits": false
+  },
+  "publicResource": {
+    "path": "data/catalog-euro-owner-quotes.json",
+    "sha256": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272",
+    "bytes": 4487,
+    "fetchPath": "/data/catalog-euro-owner-quotes.json",
+    "projectionKind": "catalog-euro-owner-quotes-v1",
+    "source": {
+      "type": "owner-supplied",
+      "date": "2026-10-29",
+      "originalPath": "data/euro-commercial.json",
+      "originalSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2"
+    },
+    "projects": 12,
+    "quotes": 21,
+    "permittedRootKeys": [
+      "schemaVersion",
+      "projectionKind",
+      "source",
+      "projects"
+    ],
+    "permittedSourceKeys": [
+      "type",
+      "date",
+      "originalPath",
+      "originalSHA256"
+    ],
+    "permittedProjectKeys": [
+      "developer",
+      "commune",
+      "region",
+      "prices",
+      "priceStrings",
+      "projectFromUF",
+      "priceScope"
+    ],
+    "strictProjectAndPriceKeys": true,
+    "hashVerifiedBeforeParse": true,
+    "excluded": "Historiales, notas, instrucciones, capturas, estados, entregas, URLs, medios y demás campos privados; Diagonal conserva null y cero referencias.",
+    "equivalence": "Los 21 valores y priceStrings, identidades y alcances coinciden exactamente con los campos permitidos del original privado pinneado; no hay cotizaciones nuevas."
+  },
+  "runtime": {
+    "rawFallback": false,
+    "rawFetch": false,
+    "sourcePath": "data/euro-commercial.json",
+    "sourceSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2",
+    "addedProvenanceFields": [
+      "publicSourcePath",
+      "publicSourceSHA256"
+    ],
+    "preserved": "IDs, WeakSets, matching, fecha, precio+D explícito, desconocidos, Local separado, no stock y modos de evidencia no cambian."
+  },
+  "tests": {
+    "command": "node --test tests/catalog-euro-owner-quotes.test.mjs",
+    "initialRun": {
+      "tests": 49,
+      "pass": 48,
+      "fail": 1,
+      "log": "PRUEBAS-EURO-PROYECCION.log",
+      "cause": "Una expectativa del orden alfabético de claves en la prueba nueva estaba invertida; se corrigió sólo esa expectativa."
+    },
+    "finalRun": {
+      "tests": 49,
+      "pass": 49,
+      "fail": 0,
+      "log": "PRUEBAS-EURO-PROYECCION-FINAL.log"
+    },
+    "newCases": 7,
+    "baselineCasesIncluded": 42,
+    "doubleCounted": false,
+    "negativeCases": "Payload privado original, notas root, capturas de source, historial de Diagonal, estado del proyecto y clave de precio no permitida son rechazados; no se reintenta endpoint privado.",
+    "certifiedLegacySuitesRepeated": false
+  },
+  "continuity": "Tres archivos liberados al root para revisión independiente y preparación posterior del paquete. El paquete futuro debe incluir únicamente el JSON público mínimo como recurso, excluyendo el original privado; sin autorización de deployment o publicación en esta tarea."
+}

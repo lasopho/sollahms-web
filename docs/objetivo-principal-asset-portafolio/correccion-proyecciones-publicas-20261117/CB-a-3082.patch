@@ -1,0 +1,699 @@
+diff --git a/assets/js/catalog-euro-owner-quotes.mjs b/assets/js/catalog-euro-owner-quotes.mjs
+index eba54fe7244d6b6424b3c8324d81fadbba7e437b..7efd7ff2859fe95463d6af3b3c049055ebac9822 100644
+--- a/assets/js/catalog-euro-owner-quotes.mjs
++++ b/assets/js/catalog-euro-owner-quotes.mjs
+@@ -1,8 +1,18 @@
+ import {matchProjectFilters,queryFromCatalogState,normalizeAmenityKey} from './commercial-filter-engine.mjs';
+ 
+-export const EURO_OWNER_SOURCE_PATH='/data/euro-commercial.json';
+-export const EURO_OWNER_SOURCE_SHA256='21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2';
++export const EURO_OWNER_SOURCE_PATH='/data/catalog-euro-owner-quotes.json';
++export const EURO_OWNER_SOURCE_SHA256='0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272';
++export const EURO_OWNER_ORIGINAL_SOURCE_PATH='data/euro-commercial.json';
++export const EURO_OWNER_ORIGINAL_SOURCE_SHA256='21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2';
+ const sourceDate='2026-10-29';
++const projectionKind='catalog-euro-owner-quotes-v1';
++const projectPriceKeys={
++  'mapocho-3521':['2','3'],'mapocho-3521-edificio-a':['2','3'],
++  'plaza-de-lourdes':['1','2','3'],'rosas-1444':['2'],'diagonal-vicuna':[],
++  'santa-elena-1670-mbi':['1','2'],'independencia-4745':['2','local'],
++  'froilan-roa-5731-torre-sur':['1','2'],'entre-vicunas':['1','2'],
++  'froilan-roa-5731-torre-norte':['1','2'],'edificio-don-pepe-154':['1','2'],
++  'guillermo-mann-1401':['2']};
+ const sources=new WeakSet(),contexts=new WeakSet(),matches=new WeakSet();
+ const priced=value=>typeof value==='number'&&Number.isFinite(value)&&value>0;
+ const present=value=>value!==''&&value!==null&&value!==undefined;
+@@ -10,17 +20,41 @@ const object=value=>value!==null&&typeof value==='object'&&!Array.isArray(value)
+ const privateIds=new Set(['terraza-privada','jardin-privado']);
+ const fail=message=>{throw new TypeError('Euro owner quotes: '+message);};
+ function freeze(value){if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
++const exactKeys=(value,keys)=>object(value)&&Object.keys(value).length===keys.length
++  &&keys.every(key=>Object.hasOwn(value,key));
++function validateProjection(evidence){
++  if(!exactKeys(evidence,['schemaVersion','projectionKind','source','projects'])
++    ||evidence.schemaVersion!==1||evidence.projectionKind!==projectionKind
++    ||!exactKeys(evidence.source,['type','date','originalPath','originalSHA256'])
++    ||evidence.source.type!=='owner-supplied'||evidence.source.date!==sourceDate
++    ||evidence.source.originalPath!==EURO_OWNER_ORIGINAL_SOURCE_PATH
++    ||evidence.source.originalSHA256!==EURO_OWNER_ORIGINAL_SOURCE_SHA256
++    ||!exactKeys(evidence.projects,Object.keys(projectPriceKeys)))fail('projection identity or fields');
++  for(const [slug,keys] of Object.entries(projectPriceKeys)){
++    const owner=evidence.projects[slug];
++    if(!exactKeys(owner,['developer','commune','region','prices','priceStrings','projectFromUF','priceScope'])
++      ||owner.developer!=='Euro'||typeof owner.commune!=='string'||!owner.commune.trim()
++      ||typeof owner.region!=='string'||!owner.region.trim()
++      ||owner.priceScope!=='typology; not a unit offer'
++      ||!exactKeys(owner.prices,keys)||!exactKeys(owner.priceStrings,keys)
++      ||owner.projectFromUF!==(keys.length?Math.min(...Object.values(owner.prices)):null)
++      ||keys.some(key=>!priced(owner.prices[key])||typeof owner.priceStrings[key]!=='string'
++        ||!/^\d+(?:\.\d{1,2})?$/.test(owner.priceStrings[key])
++        ||Number(owner.priceStrings[key])!==owner.prices[key]))fail('projection project or price fields');
++  }
++}
+ 
+-/** Verify the existing owner source, rather than the importer's derived fields. */
++/** Load only the pinned public projection; provenance retains the private original. */
+ export async function parseEuroOwnerSource(text){
+   if(typeof text!=='string'||text.length>1000000||!globalThis.crypto?.subtle)fail('invalid source transport');
+   const digest=await globalThis.crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));
+   const hash=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,'0')).join('');
+   if(hash!==EURO_OWNER_SOURCE_SHA256)fail('source SHA-256 mismatch');
+   const evidence=JSON.parse(text);
+-  if(evidence.schemaVersion!==1||evidence.source?.type!=='owner-supplied'
+-    ||evidence.source.date!==sourceDate||!object(evidence.projects))fail('source identity');
+-  const source=freeze({evidence,path:EURO_OWNER_SOURCE_PATH,sha256:hash,date:sourceDate});
++  validateProjection(evidence);
++  const source=freeze({evidence,path:EURO_OWNER_ORIGINAL_SOURCE_PATH,
++    sha256:EURO_OWNER_ORIGINAL_SOURCE_SHA256,publicPath:EURO_OWNER_SOURCE_PATH,
++    publicSHA256:hash,date:sourceDate});
+   sources.add(source);return source;
+ }
+ export async function loadEuroOwnerSource(fetchImpl=globalThis.fetch){
+@@ -60,8 +94,9 @@ function recordForSource(project,source){
+     if(!(project.preciosPorTipologia??[]).some(row=>row.tipologia===tableLabel&&row.precioDesdeUF===value))return null;
+     const local=key==='local';
+     references.push({id:project.slug+':owner-price:'+key,label:labelFor(key),
+-      sourceKind:'owner-euro-typology',sourceDate:source.date,sourcePath:'data/euro-commercial.json',
++      sourceKind:'owner-euro-typology',sourceDate:source.date,sourcePath:source.path,
+       sourcePointer:'/projects/'+project.slug+'/prices/'+key,sourceSHA256:source.sha256,
++      publicSourcePath:source.publicPath,publicSourceSHA256:source.publicSHA256,
+       scope:owner.priceScope,stock:null,availability:null,unit:null,model:null,notOffer:true,
+       priceDecimals:String(owner.priceStrings?.[key]??'').includes('.')?2:0,
+       attributes:{priceUF:value,bedrooms:local?null:Number(key),
+diff --git a/assets/js/catalog-nollagam-quote-consumer.mjs b/assets/js/catalog-nollagam-quote-consumer.mjs
+index b4dd1ce160039aab6f38d5c21a8aca594d01a433..23fd6e1b0e7741bb5662fc6491c323d0d57bed05 100644
+--- a/assets/js/catalog-nollagam-quote-consumer.mjs
++++ b/assets/js/catalog-nollagam-quote-consumer.mjs
+@@ -3,48 +3,82 @@ import {matchProjectFilters,queryFromCatalogState} from './commercial-filter-eng
+ import {metroMatches} from './metro-model.mjs';
+ 
+ export const NOLLAGAM_OWNER_SOURCE_SHA256='d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b';
+-const slugs=['edificio-liverpool','barrio-zenteno','alto-goycolea','edificio-santa-maria',
+-  'eleuterio-ramirez','costanera-coquimbo-a','costanera-coquimbo-b'];
++export const NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH='/data/catalog-nollagam-owner-quotes.json';
++export const NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256='12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee';
++const projectionKind='catalog-nollagam-owner-quotes';
++const sourceDate='2026-10-28';
++const priceSource='Tabla proporcionada por el propietario de Sollahms; prevalece sobre campañas del proveedor';
++const priceKeys=new Map([
++  ['edificio-liverpool',['2','3']],['barrio-zenteno',['1','2','3']],
++  ['alto-goycolea',['0','1','2']],['edificio-santa-maria',['1','2','3']],
++  ['eleuterio-ramirez',['2','3']],['costanera-coquimbo-a',['2','3']],['costanera-coquimbo-b',['2','3']],
++]);
++const slugs=[...priceKeys.keys()];
+ const knownSlugs=new Set(slugs),trustedContexts=new WeakSet();
+ const present=value=>value!==undefined&&value!==null&&value!=='';
+ const priced=value=>typeof value==='number'&&Number.isFinite(value)&&value>0;
+ const identityKeys=['slug','nombre','inmobiliaria','comuna','region','direccion'];
+ const failure=code=>{const error=new Error(code);error.code=code;throw error;};
++const exactKeys=(value,keys)=>value!==null&&typeof value==='object'&&!Array.isArray(value)
++  &&[Object.prototype,null].includes(Object.getPrototypeOf(value))
++  &&Reflect.ownKeys(value).length===keys.length&&Reflect.ownKeys(value).every(key=>keys.includes(key));
++
++/** Independent of the byte pin: a later pin cannot authorize extra raw fields. */
++export function validateNollagamOwnerQuoteProjection(source){
++  if(!exactKeys(source,['schemaVersion','projectionKind','originalSourcePath','originalSourceSHA256',
++    'checkedOn','priceSource','projects'])||source.schemaVersion!==1||source.projectionKind!==projectionKind
++    ||source.originalSourcePath!==NOLLAGAM_OWNER_SOURCE_PATH||source.originalSourceSHA256!==NOLLAGAM_OWNER_SOURCE_SHA256
++    ||source.checkedOn!==sourceDate||source.priceSource!==priceSource||!exactKeys(source.projects,slugs)){
++    failure('source-schema-invalid');
++  }
++  for(const [slug,keys] of priceKeys){
++    const project=source.projects[slug];
++    if(!exactKeys(project,['prices'])||!exactKeys(project.prices,keys)
++      ||!Object.values(project.prices).every(priced))failure('source-schema-invalid');
++  }
++  return source;
++}
+ 
+ export const isNollagamQuoteProject=project=>knownSlugs.has(project?.slug);
+ 
+ function unavailableContext(slug,reason='source-unavailable'){
+   return Object.freeze({status:'unavailable',slug,reason,record:null,
+-    source:Object.freeze({path:NOLLAGAM_OWNER_SOURCE_PATH,sha256:NOLLAGAM_OWNER_SOURCE_SHA256,date:null})});
++    source:Object.freeze({path:NOLLAGAM_OWNER_SOURCE_PATH,sha256:NOLLAGAM_OWNER_SOURCE_SHA256,date:null,
++      publicSourcePath:NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,publicSourceSHA256:NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256})});
+ }
+ function unavailableLayer(reason){
+   return Object.freeze({status:'unavailable',bySlug:Object.freeze(Object.fromEntries(
+     slugs.map(slug=>[slug,unavailableContext(slug,reason)])))});
+ }
+ 
+-/** Fetch only the existing owner JSON, verify its exact bytes, then normalize. */
++/** Fetch only the public allowlist projection; the original path is provenance. */
+ export async function loadNollagamOwnerQuoteContexts(publishedProjects,{fetchImpl=globalThis.fetch,cryptoImpl=globalThis.crypto}={}){
+   try{
+     if(typeof fetchImpl!=='function'||!cryptoImpl?.subtle?.digest)failure('loader-unavailable');
+-    const response=await fetchImpl('/'+NOLLAGAM_OWNER_SOURCE_PATH,
++    const response=await fetchImpl(NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,
+       {cache:'no-store',credentials:'omit',redirect:'error',signal:AbortSignal.timeout(10000)});
+     if(response?.ok!==true||response.redirected===true)failure('source-unavailable');
+     const bytes=new Uint8Array(await response.arrayBuffer());
+     if(!bytes.length||bytes.byteLength>100000)failure('source-size-invalid');
+     const digest=await cryptoImpl.subtle.digest('SHA-256',bytes);
+     const sha256=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,'0')).join('');
+-    if(sha256!==NOLLAGAM_OWNER_SOURCE_SHA256)failure('source-pin-mismatch');
+-    const source=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
++    if(sha256!==NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256)failure('source-pin-mismatch');
++    const source=validateNollagamOwnerQuoteProjection(JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes)));
+     const layer=createNollagamOwnerQuoteLayer(publishedProjects,source);
+     const bySlug={};
+-    for(const record of layer.records){
++    for(const normalized of layer.records){
++      const references=normalized.references.map(reference=>Object.freeze({...reference,
++        sourceSHA256:NOLLAGAM_OWNER_SOURCE_SHA256,publicSourcePath:NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,
++        publicSourceSHA256:sha256}));
++      const record=Object.freeze({...normalized,references:Object.freeze(references)});
+       const context=Object.freeze({status:'ready',slug:record.slug,record,
+-        source:Object.freeze({...layer.source,sha256})});
++        source:Object.freeze({...layer.source,sha256:NOLLAGAM_OWNER_SOURCE_SHA256,
++          publicSourcePath:NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,publicSourceSHA256:sha256})});
+       trustedContexts.add(context);bySlug[record.slug]=context;
+     }
+     return Object.freeze({status:'ready',bySlug:Object.freeze(bySlug)});
+   }catch(error){
+-    const code=['loader-unavailable','source-unavailable','source-size-invalid','source-pin-mismatch'].includes(error?.code)
++    const code=['loader-unavailable','source-unavailable','source-size-invalid','source-pin-mismatch','source-schema-invalid'].includes(error?.code)
+       ?error.code:'source-invalid';
+     return unavailableLayer(code);
+   }
+@@ -56,7 +90,9 @@ export function nollagamOwnerQuoteContext(project){
+   const context=Object.hasOwn(project,'_nollagamOwnerQuoteContext')?project._nollagamOwnerQuoteContext:null;
+   const record=context?.record;
+   if(context?.status==='ready'&&trustedContexts.has(context)&&context.slug===project.slug
+-    &&context.source?.sha256===NOLLAGAM_OWNER_SOURCE_SHA256&&record?.slug===project.slug
++    &&context.source?.sha256===NOLLAGAM_OWNER_SOURCE_SHA256
++    &&context.source.publicSourcePath===NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH
++    &&context.source.publicSourceSHA256===NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256&&record?.slug===project.slug
+     &&record.sourceLayer==='nollagam-owner-typology'&&record.sourceProject?.inmobiliaria==='Nollagam'
+     &&identityKeys.every(key=>(project[key]??null)===record.sourceProject[key]))return context;
+   return unavailableContext(project.slug,context?.status==='unavailable'?context.reason:'context-unavailable');
+diff --git a/data/catalog-euro-owner-quotes.json b/data/catalog-euro-owner-quotes.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..5e0cc51e65c915c73210979214cc4af8ef5facea
+--- /dev/null
++++ b/data/catalog-euro-owner-quotes.json
+@@ -0,0 +1,184 @@
++{
++  "schemaVersion": 1,
++  "projectionKind": "catalog-euro-owner-quotes-v1",
++  "source": {
++    "type": "owner-supplied",
++    "date": "2026-10-29",
++    "originalPath": "data/euro-commercial.json",
++    "originalSHA256": "21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2"
++  },
++  "projects": {
++    "mapocho-3521": {
++      "developer": "Euro",
++      "commune": "Quinta Normal",
++      "region": "Región Metropolitana",
++      "prices": {
++        "2": 3092.0,
++        "3": 3246.0
++      },
++      "priceStrings": {
++        "2": "3092",
++        "3": "3246"
++      },
++      "projectFromUF": 3092.0,
++      "priceScope": "typology; not a unit offer"
++    },
++    "mapocho-3521-edificio-a": {
++      "developer": "Euro",
++      "commune": "Quinta Normal",
++      "region": "Región Metropolitana",
++      "prices": {
++        "2": 3194.03,
++        "3": 3324.18
++      },
++      "priceStrings": {
++        "2": "3194.03",
++        "3": "3324.18"
++      },
++      "projectFromUF": 3194.03,
++      "priceScope": "typology; not a unit offer"
++    },
++    "plaza-de-lourdes": {
++      "developer": "Euro",
++      "commune": "Quinta Normal",
++      "region": "Región Metropolitana",
++      "prices": {
++        "1": 2647.0,
++        "2": 3199.0,
++        "3": 4276.0
++      },
++      "priceStrings": {
++        "1": "2647",
++        "2": "3199",
++        "3": "4276"
++      },
++      "projectFromUF": 2647.0,
++      "priceScope": "typology; not a unit offer"
++    },
++    "rosas-1444": {
++      "developer": "Euro",
++      "commune": "Santiago",
++      "region": "Región Metropolitana",
++      "prices": {
++        "2": 4141.63
++      },
++      "priceStrings": {
++        "2": "4141.63"
++      },
++      "projectFromUF": 4141.63,
++      "priceScope": "typology; not a unit offer"
++    },
++    "diagonal-vicuna": {
++      "developer": "Euro",
++      "commune": "Santiago",
++      "region": "Región Metropolitana",
++      "prices": {},
++      "priceStrings": {},
++      "projectFromUF": null,
++      "priceScope": "typology; not a unit offer"
++    },
++    "santa-elena-1670-mbi": {
++      "developer": "Euro",
++      "commune": "Santiago",
++      "region": "Región Metropolitana",
++      "prices": {
++        "1": 2920.0,
++        "2": 3024.0
++      },
++      "priceStrings": {
++        "1": "2920",
++        "2": "3024"
++      },
++      "projectFromUF": 2920.0,
++      "priceScope": "typology; not a unit offer"
++    },
++    "independencia-4745": {
++      "developer": "Euro",
++      "commune": "Conchalí",
++      "region": "Región Metropolitana",
++      "prices": {
++        "2": 3146.65,
++        "local": 8440.85
++      },
++      "priceStrings": {
++        "2": "3146.65",
++        "local": "8440.85"
++      },
++      "projectFromUF": 3146.65,
++      "priceScope": "typology; not a unit offer"
++    },
++    "froilan-roa-5731-torre-sur": {
++      "developer": "Euro",
++      "commune": "La Florida",
++      "region": "Región Metropolitana",
++      "prices": {
++        "1": 3216.0,
++        "2": 3294.0
++      },
++      "priceStrings": {
++        "1": "3216",
++        "2": "3294"
++      },
++      "projectFromUF": 3216.0,
++      "priceScope": "typology; not a unit offer"
++    },
++    "entre-vicunas": {
++      "developer": "Euro",
++      "commune": "La Florida",
++      "region": "Región Metropolitana",
++      "prices": {
++        "1": 3098.0,
++        "2": 3696.0
++      },
++      "priceStrings": {
++        "1": "3098",
++        "2": "3696"
++      },
++      "projectFromUF": 3098.0,
++      "priceScope": "typology; not a unit offer"
++    },
++    "froilan-roa-5731-torre-norte": {
++      "developer": "Euro",
++      "commune": "La Florida",
++      "region": "Región Metropolitana",
++      "prices": {
++        "1": 3145.0,
++        "2": 3414.0
++      },
++      "priceStrings": {
++        "1": "3145",
++        "2": "3414"
++      },
++      "projectFromUF": 3145.0,
++      "priceScope": "typology; not a unit offer"
++    },
++    "edificio-don-pepe-154": {
++      "developer": "Euro",
++      "commune": "La Florida",
++      "region": "Región Metropolitana",
++      "prices": {
++        "1": 3306.18,
++        "2": 3562.0
++      },
++      "priceStrings": {
++        "1": "3306.18",
++        "2": "3562"
++      },
++      "projectFromUF": 3306.18,
++      "priceScope": "typology; not a unit offer"
++    },
++    "guillermo-mann-1401": {
++      "developer": "Euro",
++      "commune": "Ñuñoa",
++      "region": "Región Metropolitana",
++      "prices": {
++        "2": 3998.31
++      },
++      "priceStrings": {
++        "2": "3998.31"
++      },
++      "projectFromUF": 3998.31,
++      "priceScope": "typology; not a unit offer"
++    }
++  }
++}
+diff --git a/data/catalog-nollagam-owner-quotes.json b/data/catalog-nollagam-owner-quotes.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..692c45748fd52a4b69061c4666f906292a8c0dc4
+--- /dev/null
++++ b/data/catalog-nollagam-owner-quotes.json
+@@ -0,0 +1,55 @@
++{
++  "schemaVersion": 1,
++  "projectionKind": "catalog-nollagam-owner-quotes",
++  "originalSourcePath": "data/nollagam-commercial.json",
++  "originalSourceSHA256": "d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b",
++  "checkedOn": "2026-10-28",
++  "priceSource": "Tabla proporcionada por el propietario de Sollahms; prevalece sobre campañas del proveedor",
++  "projects": {
++    "edificio-liverpool": {
++      "prices": {
++        "2": 4151,
++        "3": 4457
++      }
++    },
++    "barrio-zenteno": {
++      "prices": {
++        "1": 2784,
++        "2": 3202,
++        "3": 3508
++      }
++    },
++    "alto-goycolea": {
++      "prices": {
++        "0": 2264,
++        "1": 2601,
++        "2": 2886
++      }
++    },
++    "edificio-santa-maria": {
++      "prices": {
++        "1": 3090,
++        "2": 3355,
++        "3": 4029
++      }
++    },
++    "eleuterio-ramirez": {
++      "prices": {
++        "2": 3825,
++        "3": 4400
++      }
++    },
++    "costanera-coquimbo-a": {
++      "prices": {
++        "2": 4210,
++        "3": 5070
++      }
++    },
++    "costanera-coquimbo-b": {
++      "prices": {
++        "2": 3880,
++        "3": 5460
++      }
++    }
++  }
++}
+diff --git a/tests/catalog-euro-owner-quotes.test.mjs b/tests/catalog-euro-owner-quotes.test.mjs
+index 4d54f48497c8d0e0ddc86a20d83c446c482ae457..9c541acc56d6606240493a6942779e7ef7ec997d 100644
+--- a/tests/catalog-euro-owner-quotes.test.mjs
++++ b/tests/catalog-euro-owner-quotes.test.mjs
+@@ -1,14 +1,18 @@
+ import {test} from 'node:test';
+ import assert from 'node:assert/strict';
+ import {readFile} from 'node:fs/promises';
+-import {EURO_OWNER_SOURCE_PATH,EURO_OWNER_SOURCE_SHA256,parseEuroOwnerSource,loadEuroOwnerSource,
++import {createHash} from 'node:crypto';
++import {EURO_OWNER_SOURCE_PATH,EURO_OWNER_SOURCE_SHA256,EURO_OWNER_ORIGINAL_SOURCE_PATH,
++  EURO_OWNER_ORIGINAL_SOURCE_SHA256,parseEuroOwnerSource,loadEuroOwnerSource,
+   bindEuroOwnerQuotes,unavailableEuroOwnerQuotes,euroOwnerQuoteLoadFailed,usesEuroOwnerQuotes,
+   matchEuroOwnerQuotes,euroOwnerQuoteOffer} from '../assets/js/catalog-euro-owner-quotes.mjs';
+ import {advancedFilterAndSort,defaults,matchedLabels} from '../assets/js/catalog-filter-engine.mjs';
+ import {projectOffer,offerPriceLabel,projectFacts,commercialLayerNote} from '../assets/js/catalog-model.mjs';
+ 
+-const text=await readFile(new URL('../data/euro-commercial.json',import.meta.url),'utf8');
++const text=await readFile(new URL('../data/catalog-euro-owner-quotes.json',import.meta.url),'utf8');
+ const source=await parseEuroOwnerSource(text),owner=JSON.parse(text);
++const originalText=await readFile(new URL('../data/euro-commercial.json',import.meta.url),'utf8');
++const originalOwner=JSON.parse(originalText);
+ const catalogue=JSON.parse(await readFile(new URL('../data/proyectos.json',import.meta.url),'utf8'));
+ const facets=JSON.parse(await readFile(new URL('../data/catalog-facets.json',import.meta.url),'utf8'));
+ const original=catalogue.map(project=>({...project,_facets:facets.projects[project.slug]??{}}));
+@@ -31,7 +35,10 @@ for(const [slug,projectOwner] of Object.entries(owner.projects))for(const [key,p
+     assert.deepEqual(match.matchedReferenceIds,[slug+':owner-price:'+key]);
+     const reference=match.references[0];
+     assert.equal(reference.sourceDate,'2026-10-29');
+-    assert.equal(reference.sourceSHA256,EURO_OWNER_SOURCE_SHA256);
++    assert.equal(reference.sourcePath,EURO_OWNER_ORIGINAL_SOURCE_PATH);
++    assert.equal(reference.sourceSHA256,EURO_OWNER_ORIGINAL_SOURCE_SHA256);
++    assert.equal(reference.publicSourcePath,EURO_OWNER_SOURCE_PATH);
++    assert.equal(reference.publicSourceSHA256,EURO_OWNER_SOURCE_SHA256);
+     assert.equal(reference.attributes.priceUF,price);
+     assert.equal(reference.attributes.bathrooms,null);
+     assert.equal(reference.attributes.usefulM2,null);
+@@ -46,13 +53,56 @@ for(const [slug,projectOwner] of Object.entries(owner.projects))for(const [key,p
+ test('source transport is pinned before records can be constructed',async()=>{
+   const calls=[];
+   const loaded=await loadEuroOwnerSource(async(path,options)=>{calls.push({path,options});return {ok:true,text:async()=>text};});
+-  assert.equal(calls.length,1);assert.equal(calls[0].path,EURO_OWNER_SOURCE_PATH);
++  assert.equal(calls.length,1);assert.equal(calls[0].path,'/data/catalog-euro-owner-quotes.json');
+   assert.equal(calls[0].options.credentials,'omit');assert.equal(calls[0].options.redirect,'error');
+   assert.equal(bindEuroOwnerQuotes(original,loaded).length,131);
+   await assert.rejects(parseEuroOwnerSource(text+' '),/SHA-256 mismatch/);
+   assert.throws(()=>bindEuroOwnerQuotes(original,{...source}),/verified source required/);
+ });
+ 
++test('public projection contains exactly the original21 owner prices and permitted identity fields',()=>{
++  assert.equal(createHash('sha256').update(originalText).digest('hex'),EURO_OWNER_ORIGINAL_SOURCE_SHA256);
++  assert.equal(createHash('sha256').update(text).digest('hex'),EURO_OWNER_SOURCE_SHA256);
++  assert.deepEqual(Object.keys(owner).sort(),['projectionKind','projects','schemaVersion','source']);
++  assert.equal(owner.projectionKind,'catalog-euro-owner-quotes-v1');
++  assert.deepEqual(owner.source,{type:'owner-supplied',date:'2026-10-29',
++    originalPath:EURO_OWNER_ORIGINAL_SOURCE_PATH,originalSHA256:EURO_OWNER_ORIGINAL_SOURCE_SHA256});
++  assert.deepEqual(Object.keys(owner.projects),Object.keys(originalOwner.projects));
++  const fields=['developer','commune','region','prices','priceStrings','projectFromUF','priceScope'];
++  for(const [slug,project] of Object.entries(owner.projects)){
++    assert.deepEqual(Object.keys(project),fields);
++    assert.deepEqual(project,Object.fromEntries(fields.map(key=>[key,originalOwner.projects[slug][key]])));
++  }
++  assert.equal(Object.keys(owner.projects).length,12);
++  assert.equal(Object.values(owner.projects).reduce((count,project)=>count+Object.keys(project.prices).length,0),21);
++  assert.deepEqual(owner.projects['diagonal-vicuna'].prices,{});
++  assert.deepEqual(owner.projects['diagonal-vicuna'].priceStrings,{});
++  assert.equal(owner.projects['diagonal-vicuna'].projectFromUF,null);
++  assert.equal(JSON.stringify(owner).includes('inheritedPriceReview'),false);
++});
++
++test('raw owner payload is rejected without retrying the private original endpoint',async()=>{
++  const paths=[];
++  await assert.rejects(parseEuroOwnerSource(originalText),/SHA-256 mismatch/);
++  await assert.rejects(loadEuroOwnerSource(async path=>{
++    paths.push(path);return {ok:true,text:async()=>originalText};
++  }),/SHA-256 mismatch/);
++  assert.deepEqual(paths,['/data/catalog-euro-owner-quotes.json']);
++});
++
++for(const [scope,change] of [
++  ['root',projection=>{projection.notes='Private notes';}],
++  ['source',projection=>{projection.source.screenshots=['private.png'];}],
++  ['project history',projection=>{projection.projects['diagonal-vicuna'].inheritedPriceReview={priceUF:3184};}],
++  ['project state',projection=>{projection.projects['edificio-don-pepe-154'].state='Private state';}],
++  ['price key',projection=>{projection.projects['edificio-don-pepe-154'].prices['3']=3562;
++    projection.projects['edificio-don-pepe-154'].priceStrings['3']='3562';}]
++])test('public projection rejects unapproved '+scope+' fields before normalization',async()=>{
++  const before=JSON.stringify(owner),altered=structuredClone(owner);change(altered);
++  await assert.rejects(parseEuroOwnerSource(JSON.stringify(altered)),/SHA-256 mismatch/);
++  assert.equal(JSON.stringify(owner),before);
++});
++
+ test('Diagonal has no owner price and never acquires a historical campaign amount',()=>{
+   const project=bySlug.get('diagonal-vicuna');
+   assert.equal(project.precioDesdeUF,null);
+diff --git a/tests/catalog-nollagam-integration.test.mjs b/tests/catalog-nollagam-integration.test.mjs
+index c4f38ad3e33a5bb684b50da34f625399cd72f1de..dce4e209f3f9b549d6971fcead476807bced8754 100644
+--- a/tests/catalog-nollagam-integration.test.mjs
++++ b/tests/catalog-nollagam-integration.test.mjs
+@@ -8,7 +8,7 @@ import {projectOffer,projectFacts,commercialLayerNote} from '../assets/js/catalo
+ 
+ const catalogue=JSON.parse(readFileSync(new URL('../data/proyectos.json',import.meta.url)));
+ const facets=JSON.parse(readFileSync(new URL('../data/catalog-facets.json',import.meta.url)));
+-const ownerBytes=readFileSync(new URL('../data/nollagam-commercial.json',import.meta.url));
++const ownerBytes=readFileSync(new URL('../data/catalog-nollagam-owner-quotes.json',import.meta.url));
+ const owner=JSON.parse(ownerBytes);
+ const originals=catalogue.map(project=>({...project,_facets:facets.projects[project.slug]}));
+ const layer=await loadNollagamOwnerQuoteContexts(originals,{cryptoImpl:webcrypto,fetchImpl:async()=>({
+diff --git a/tests/catalog-nollagam-quote-consumer.test.mjs b/tests/catalog-nollagam-quote-consumer.test.mjs
+index a09c0eb095fbb35319781c53343b403a024baff3..bdbf8095f2353d522e367c01db95416178b87e62 100644
+--- a/tests/catalog-nollagam-quote-consumer.test.mjs
++++ b/tests/catalog-nollagam-quote-consumer.test.mjs
+@@ -4,11 +4,15 @@ import {readFileSync} from 'node:fs';
+ import {createHash,webcrypto} from 'node:crypto';
+ import {isNollagamQuoteProject,loadNollagamOwnerQuoteContexts,nollagamOwnerQuoteContext,
+   matchNollagamOwnerQuotes,nollagamOwnerQuoteWitness,nollagamOwnerQuoteOffer,
+-  nollagamOwnerQuoteFacts,nollagamOwnerQuoteNote,NOLLAGAM_OWNER_SOURCE_SHA256}
++  nollagamOwnerQuoteFacts,nollagamOwnerQuoteNote,NOLLAGAM_OWNER_SOURCE_SHA256,
++  NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256,validateNollagamOwnerQuoteProjection}
+   from '../assets/js/catalog-nollagam-quote-consumer.mjs';
+ 
+ const published=JSON.parse(readFileSync(new URL('../data/proyectos.json',import.meta.url),'utf8'));
+-const ownerBytes=readFileSync(new URL('../data/nollagam-commercial.json',import.meta.url));
++const ownerBytes=readFileSync(new URL('../data/catalog-nollagam-owner-quotes.json',import.meta.url));
++const projection=JSON.parse(ownerBytes);
++const originalBytes=readFileSync(new URL('../data/nollagam-commercial.json',import.meta.url));
++const original=JSON.parse(originalBytes);
+ const body=bytes=>bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength);
+ const sourceFetch=async()=>({ok:true,redirected:false,arrayBuffer:async()=>body(ownerBytes)});
+ const loaded=await loadNollagamOwnerQuoteContexts(published,{fetchImpl:sourceFetch,cryptoImpl:webcrypto});
+@@ -19,22 +23,110 @@ const evaluate=(project,state)=>{
+   assert.ok(result!==null);assert.deepEqual(result.issues,[]);return result;
+ };
+ 
+-test('loader verifies the real owner JSON pin and returns seven ready contexts with original dates',async()=>{
+-  assert.equal(createHash('sha256').update(ownerBytes).digest('hex'),NOLLAGAM_OWNER_SOURCE_SHA256);
++test('loader verifies the public projection pin and retains private-original provenance and dates',async()=>{
++  assert.equal(createHash('sha256').update(ownerBytes).digest('hex'),NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256);
+   const calls=[];
+   const result=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
+     fetchImpl:async(url,options)=>{calls.push({url,options});return sourceFetch();}});
+-  assert.equal(calls.length,1);assert.equal(calls[0].url,'/data/nollagam-commercial.json');
++  assert.equal(calls.length,1);assert.equal(calls[0].url,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
++  assert.equal(calls[0].url,'/data/catalog-nollagam-owner-quotes.json');
+   assert.equal(calls[0].options.cache,'no-store');assert.equal(calls[0].options.credentials,'omit');
+   assert.equal(calls[0].options.redirect,'error');assert.ok(calls[0].options.signal instanceof AbortSignal);
+   assert.equal(result.status,'ready');assert.equal(Object.keys(result.bySlug).length,7);
+   for(const [slug,context] of Object.entries(result.bySlug)){
+     assert.equal(context.status,'ready');assert.equal(context.slug,slug);
+     assert.equal(context.source.sha256,NOLLAGAM_OWNER_SOURCE_SHA256);assert.equal(context.source.date,'2026-10-28');
++    assert.equal(context.source.path,'data/nollagam-commercial.json');
++    assert.equal(context.source.publicSourcePath,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
++    assert.equal(context.source.publicSourceSHA256,NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256);
+     assert.equal(context.record.sourceProject.slug,slug);assert.ok(Object.isFrozen(context));
++    for(const reference of context.record.references){
++      assert.equal(reference.sourcePath,'data/nollagam-commercial.json');
++      assert.equal(reference.sourceSHA256,NOLLAGAM_OWNER_SOURCE_SHA256);
++      assert.equal(reference.publicSourcePath,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
++      assert.equal(reference.publicSourceSHA256,NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256);
++    }
+   }
+ });
+ 
++test('public allowlist preserves exactly the seventeen original owner amounts and no project descriptions or URLs',()=>{
++  assert.equal(createHash('sha256').update(originalBytes).digest('hex'),NOLLAGAM_OWNER_SOURCE_SHA256);
++  assert.equal(projection.originalSourceSHA256,NOLLAGAM_OWNER_SOURCE_SHA256);
++  assert.equal(projection.originalSourcePath,'data/nollagam-commercial.json');
++  assert.equal(projection.checkedOn,original.checkedOn);assert.equal(projection.priceSource,original.priceSource);
++  assert.deepEqual(Object.keys(projection.projects),Object.keys(original.projects));
++  assert.deepEqual(Object.keys(projection),['schemaVersion','projectionKind','originalSourcePath',
++    'originalSourceSHA256','checkedOn','priceSource','projects']);
++  let count=0;
++  for(const [slug,project] of Object.entries(projection.projects)){
++    assert.deepEqual(Object.keys(project),['prices']);
++    assert.deepEqual(project.prices,original.projects[slug].prices);count+=Object.keys(project.prices).length;
++  }
++  assert.equal(count,17);assert.doesNotMatch(ownerBytes.toString('utf8'),/https?:\/\//);
++  assert.equal(validateNollagamOwnerQuoteProjection(projection),projection);
++});
++
++test('strict public schema rejects raw payloads, history, screenshots and brochure URLs at every data level',()=>{
++  assert.throws(()=>validateNollagamOwnerQuoteProjection(original),/source-schema-invalid/);
++  for(const field of ['history','commercialHistory','notes','screenshots','brochureURL','sourceUrl']){
++    const root=structuredClone(projection);root[field]='https://private.invalid/document';
++    assert.throws(()=>validateNollagamOwnerQuoteProjection(root),/source-schema-invalid/);
++    const project=structuredClone(projection);project.projects['costanera-coquimbo-a'][field]='https://private.invalid/document';
++    assert.throws(()=>validateNollagamOwnerQuoteProjection(project),/source-schema-invalid/);
++    const prices=structuredClone(projection);prices.projects['costanera-coquimbo-a'].prices[field]='https://private.invalid/document';
++    assert.throws(()=>validateNollagamOwnerQuoteProjection(prices),/source-schema-invalid/);
++  }
++  const wrappedRaw=structuredClone(projection);wrappedRaw.projects=original.projects;
++  assert.throws(()=>validateNollagamOwnerQuoteProjection(wrappedRaw),/source-schema-invalid/);
++});
++
++test('strict projection identity and exact numeric price-key allowlists reject new facts or substituted source proof',()=>{
++  for(const change of [{schemaVersion:2},{projectionKind:'raw-owner-data'},
++    {originalSourcePath:'data/other-owner.json'},{originalSourceSHA256:'0'.repeat(64)},
++    {checkedOn:'2026-11-17'},{priceSource:'Provider campaign'}]){
++    assert.throws(()=>validateNollagamOwnerQuoteProjection({...projection,...change}),/source-schema-invalid/);
++  }
++  const unknown=structuredClone(projection);unknown.projects['foreign-project']={prices:{'2':4210}};
++  assert.throws(()=>validateNollagamOwnerQuoteProjection(unknown),/source-schema-invalid/);
++  for(const key of ['1','4','02','constructor']){
++    const changed=structuredClone(projection);changed.projects['costanera-coquimbo-a'].prices[key]=4210;
++    assert.throws(()=>validateNollagamOwnerQuoteProjection(changed),/source-schema-invalid/);
++  }
++  for(const value of [null,'4210',0,-1,NaN,Infinity]){
++    const changed=structuredClone(projection);changed.projects['costanera-coquimbo-a'].prices['2']=value;
++    assert.throws(()=>validateNollagamOwnerQuoteProjection(changed),/source-schema-invalid/);
++  }
++  const missing=structuredClone(projection);delete missing.projects['costanera-coquimbo-a'].prices['2'];
++  assert.throws(()=>validateNollagamOwnerQuoteProjection(missing),/source-schema-invalid/);
++  const hidden=structuredClone(projection);Object.defineProperty(hidden,'history',{value:'private',enumerable:false});
++  assert.throws(()=>validateNollagamOwnerQuoteProjection(hidden),/source-schema-invalid/);
++});
++
++test('schema rejection remains independent of a transport digest that is accepted by the pin guard',async()=>{
++  // Stub only the digest to exercise the schema gate independently. Production
++  // keeps the fixed public pin and default WebCrypto; no pin override is added.
++  const acceptedDigest={subtle:{digest:async()=>body(Buffer.from(NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256,'hex'))}};
++  for(const source of [original,{...projection,history:['not public']},
++    {...projection,projects:{...projection.projects,'costanera-coquimbo-a':original.projects['costanera-coquimbo-a']}}]){
++    let reads=0;const poisoned=[new Proxy({},{get(){reads++;throw Error('normalizer must not run');}})];
++    const bytes=Buffer.from(JSON.stringify(source));
++    const result=await loadNollagamOwnerQuoteContexts(poisoned,{cryptoImpl:acceptedDigest,
++      fetchImpl:async()=>({ok:true,arrayBuffer:async()=>body(bytes)})});
++    assert.equal(result.status,'unavailable');assert.equal(reads,0);
++    for(const context of Object.values(result.bySlug))assert.equal(context.reason,'source-schema-invalid');
++  }
++});
++
++test('failed public projection loading makes exactly one request and never falls back to the private original',async()=>{
++  const calls=[];
++  const result=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
++    fetchImpl:async url=>{calls.push(url);return {ok:false,status:404};}});
++  assert.deepEqual(calls,['/data/catalog-nollagam-owner-quotes.json']);
++  assert.equal(calls.includes('/data/nollagam-commercial.json'),false);assert.equal(result.status,'unavailable');
++  const project=attach('costanera-coquimbo-a',result);
++  assert.equal(evaluate(project,{bedrooms:'3',minPriceInput:'1'}).matches,false);
++});
++
+ test('Costanera A3D UF5070 survives the previously failing UF5000–5100 query',()=>{
+   const result=evaluate(attach('costanera-coquimbo-a'),{bedrooms:'3',minPriceInput:'5000',maxPriceInput:'5100'});
+   assert.equal(result.matches,true);assert.equal(result.references.length,1);
+diff --git a/vercel.json b/vercel.json
+index 9f017541500bd36dd78e3c9dd8e6a60fe85e2e7f..68ccb1a3bf7697d98dc59ab171528a67033ed829 100644
+--- a/vercel.json
++++ b/vercel.json
+@@ -77,7 +77,8 @@
+       "codex/entorno-obras-20261031": false,
+       "codex/whatsapp-produccion-20261108": false,
+       "codex/footer-whatsapp-20261112": false,
+-      "codex/referencias-documentales-131-20261117": false
++      "codex/referencias-documentales-131-20261117": false,
++      "codex/proyecciones-publicas-cotizaciones-20261117": false
+     }
+   }
+ }

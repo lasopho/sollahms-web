@@ -1,0 +1,131 @@
+{
+  "createdAtUTC": "2026-11-18T00:13:52.956743+00:00",
+  "task": "Nollagam public allowlist projection and pinned consumer; privacy correction before publication",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "integrationTargetReportedByRoot": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+  "changedFiles": [
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/catalog-nollagam-quote-consumer.mjs",
+      "sha256": "b995850c613e305eb699b2a5f7cced8914f2b361e41b7fb5bb4c5d254f8114f1",
+      "bytes": 8906,
+      "lines": 144
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-quote-consumer.test.mjs",
+      "sha256": "565d061c9865cbafe31c9cdce91f583aaf20f6df5e52a1beea9047fb573b2316",
+      "bytes": 19009,
+      "lines": 275
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/catalog-nollagam-owner-quotes.json",
+      "sha256": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee",
+      "bytes": 1129,
+      "lines": 55
+    }
+  ],
+  "publicSource": {
+    "runtimeURL": "/data/catalog-nollagam-owner-quotes.json",
+    "pinSHA256": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee",
+    "schemaVersion": 1,
+    "projectionKind": "catalog-nollagam-owner-quotes",
+    "rootKeys": [
+      "schemaVersion",
+      "projectionKind",
+      "originalSourcePath",
+      "originalSourceSHA256",
+      "checkedOn",
+      "priceSource",
+      "projects"
+    ],
+    "projects": 7,
+    "knownPrices": 17,
+    "unknownCategoriesRemainAbsentFromProjection": 5,
+    "projectKeys": [
+      "prices"
+    ],
+    "priceKeys": "Exact existing bedroom-key set per each of the seven slugs",
+    "ownerValuesIdenticalToOriginal": true,
+    "checkedOn": "2026-10-28",
+    "priceSource": "Tabla proporcionada por el propietario de Sollahms; prevalece sobre campañas del proveedor",
+    "privateNotesHistoryDescriptionsURLsScreenshotsIncluded": false
+  },
+  "originalSource": {
+    "file": {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/nollagam-commercial.json",
+      "sha256": "d3a2ae475efb7f070a8ca09e7d526cdf13d678ebbc002fd9f69019cf3ea5a27b",
+      "bytes": 8493,
+      "lines": 152
+    },
+    "readOnly": true,
+    "runtimeFetched": false,
+    "proofMeaning": "Original source attestation is retained in the allowlist resource; runtime verifies the public resource bytes and strict schema, not the private original"
+  },
+  "consumerContract": {
+    "runtimeFetch": "Only /data/catalog-nollagam-owner-quotes.json; no original/raw fallback",
+    "publicPinExport": "NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256",
+    "originalPinExport": "NOLLAGAM_OWNER_SOURCE_SHA256 retains the original d3a2ae…5a27b proof",
+    "metadata": "context.source.path/sha256 and reference.sourcePath/sourceSHA256 identify original source; publicSourcePath/publicSourceSHA256 identify fetched projection",
+    "validation": "Exact root/project/price-key allowlists and original kind/path/SHA/date/authority before unchanged normalizer; numbers strictly finite and positive",
+    "schemaGuardIndependentOfPin": "Exported pure validateNollagamOwnerQuoteProjection plus loader test with accepted test-only digest; no pin override added",
+    "sameBehavior": "Seven ready/unavailable contexts; explicit own-context guard; price-active published route only;17price+D refs and5unknown refs, no property/use/B/areas/extras/state/delivery/stock borrowing",
+    "existingFunctionSignaturesUnchanged": true,
+    "financialBaselineCompatible": false
+  },
+  "verification": {
+    "command": "node --test tests/catalog-nollagam-quote-consumer.test.mjs",
+    "log": {
+      "path": "/private/tmp/sollahms-nollagam-public-projection-20261117/consumer-projection-tests.log",
+      "sha256": "839fd166e39b38f6e8d005749b91180583fb8d7a24dc89335003316556c329e5",
+      "bytes": 2175,
+      "lines": 27
+    },
+    "tests": 19,
+    "pass": 19,
+    "fail": 0,
+    "skipped": 0,
+    "counting": "14 consumer cases retargeted to public projection plus5 new privacy/schema/no-raw-fallback cases; do not add previous14 to19",
+    "allSeventeenKnownValuesCheckedAgainstOriginal": true,
+    "fiveUnknownsPreserved": true,
+    "allValidNegativePriceAndMetricQueriesHaveNoIssues": true,
+    "noActualNetwork": "All loader fetches are stubs",
+    "legacy112or83Rerun": false,
+    "normalizer18Rerun": false,
+    "rootIntegration23Rerun": false
+  },
+  "preservedNormalizer": {
+    "module": {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/catalog-nollagam-owner-quotes.mjs",
+      "sha256": "da1dd0b56eb8e60204a42253a0f29f6a6aea90e9b880133a05460e376c4e09a8",
+      "bytes": 6837,
+      "lines": 103
+    },
+    "tests": {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-owner-quotes.test.mjs",
+      "sha256": "961f4a4406cf907d7ce2a7344e9d1ee76f347f0e22e02569de0dc4fe0ac18cba",
+      "bytes": 12826,
+      "lines": 197
+    },
+    "acceptedOriginalTests": 18,
+    "unchangedByHash": true
+  },
+  "integrationHandoff": {
+    "API": "loadNollagamOwnerQuoteContexts and existing match/offer/facts/note APIs unchanged",
+    "rootTestFixtureChange": "tests/catalog-nollagam-integration.test.mjs:11 must read data/catalog-nollagam-owner-quotes.json instead of data/nollagam-commercial.json; projects[slug].prices remains compatible",
+    "rootWillRunIntegrationTests": 23,
+    "futurePackageRequirement": "Include only the new public projection for this source; do not add original data/nollagam-commercial.json to the public artifact",
+    "noPackageTouched": true
+  },
+  "operations": {
+    "existingCodeFilesEdited": 2,
+    "newDataFiles": 1,
+    "normalizerOrOriginalDataEdited": false,
+    "engineModelCatalogMapFinancialOrDocsAEdited": false,
+    "gitWritesPushPRDeployment": false,
+    "IrisBrochuresInternetBuildGenerators": false
+  },
+  "limits": [
+    "No public publication or deployment performed.",
+    "Original checkedOn and authority are preserved; no renewed validity, stock, unit/model or price-to-area association is asserted.",
+    "Receipt is specific to this three-file privacy delta; it does not recertify all131 projects."
+  ]
+}

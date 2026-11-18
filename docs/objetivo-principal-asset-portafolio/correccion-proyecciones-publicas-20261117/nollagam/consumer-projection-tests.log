@@ -1,0 +1,27 @@
+✔ loader verifies the public projection pin and retains private-original provenance and dates (5.930709ms)
+✔ public allowlist preserves exactly the seventeen original owner amounts and no project descriptions or URLs (1.569542ms)
+✔ strict public schema rejects raw payloads, history, screenshots and brochure URLs at every data level (2.3125ms)
+✔ strict projection identity and exact numeric price-key allowlists reject new facts or substituted source proof (0.7705ms)
+✔ schema rejection remains independent of a transport digest that is accepted by the pin guard (1.004292ms)
+✔ failed public projection loading makes exactly one request and never falls back to the private original (0.704792ms)
+✔ Costanera A3D UF5070 survives the previously failing UF5000–5100 query (0.975167ms)
+✔ all seventeen existing owner prices match exact price+D without source coercion or model fields (2.206583ms)
+✔ the five unknown-price categories fail a valid active range and never acquire a project minimum (1.01325ms)
+✔ inactive price, unbound legacy projects and prepared/documentary modes delegate with null (0.31775ms)
+✔ price queries preserve known identity, name and exact published address predicates (0.431333ms)
+✔ unknown D, B, property/use, typed surfaces, private features, extras and amenities do not pass (0.654667ms)
+✔ state, delivery, purchase stage and unsupported unit/model/stock selectors are not silently removed (0.497166ms)
+✔ the witness is the lowest price among matching references only (0.17725ms)
+✔ projection shows only the matching typology, original owner date and explicit scope notice (0.173208ms)
+✔ pin mismatch is rejected before normalization and gives seven unavailable contexts (3.902834ms)
+✔ HTTP, fetch, crypto, redirect and identity-normalization failures never reactivate legacy prices (1.582458ms)
+✔ bound empty, crossed, copied and mismatched identities close the active-price route (0.177125ms)
+✔ loading, matching and projecting do not mutate published data or trusted records (1.882667ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 167.561542

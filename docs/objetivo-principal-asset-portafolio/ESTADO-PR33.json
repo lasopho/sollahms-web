@@ -131,8 +131,8 @@
     "No GitHub reviews or PR workflow runs found; no implicitCIapproval."
   ],
   "nextAction": {
-    "step": "Corregir localmente proyecciones públicas mínimas antes de proponer deployment",
-    "localCorrectionAuthorized": true,
+    "step": "Preparar solicitud de primer push nueva rama y nuevo PRDraft",
+    "authorization": "AUN_NO_SOLICITADA",
     "newPRDeploymentPublicationAuthorized": false
   },
   "latestArchiveWhitespace": {
@@ -214,16 +214,17 @@
     "localRawPackage": "/private/tmp/sollahms-pr33-release-20261117",
     "localRawPackageDeployable": false,
     "correction": "Create strict allowlisted public projections for Euro and Nollagam with exact existing values/dates and original private source hash; load only new URLs/pins. No raw fallback or changes to originals.",
-    "statusOfCorrection": "EN_IMPLEMENTACION_Y_QA_LOCAL",
+    "statusOfCorrection": "RESUELTO_EN_CANDIDATO_LOCAL_3082_NO_PUBLICADO",
     "newCommercialFacts": 0,
     "newOwnerPrices": 0,
-    "LebenClosures": 0
+    "LebenClosures": 0,
+    "currentCandidate": "CANDIDATO-PROYECCIONES-PUBLICAS.json"
   },
   "localPublicProjectionCorrection": {
     "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
     "branch": "codex/proyecciones-publicas-cotizaciones-20261117",
     "base": "cb3597102e63f02356cca00cd3612f9afc77afcb",
-    "status": "IMPLEMENTADA_LOCAL_EN_QA_SIN_PUSH_PR",
+    "status": "REVISADO_LOCAL_SIN_PUSH_PR",
     "filesExpected": 8,
     "originalSourcesUnchanged": true,
     "newCommercialEvidence": false,
@@ -238,6 +239,11 @@
       "data/catalog-nollagam-owner-quotes.json": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee"
     },
     "sourceBranchAutomaticDeploymentDisabledLocally": true,
-    "firstPushNewPRDeploymentPublicationAuthorized": false
+    "firstPushNewPRDeploymentPublicationAuthorized": false,
+    "localCommit": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+    "fileCount": 8,
+    "workingTreeClean": true,
+    "ChromeSpecificPassed": 7,
+    "correctedPublicPackagePrepared": true
   }
 }

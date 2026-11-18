@@ -1,0 +1,87 @@
+✔ mapocho-3521 uses its exact owner 2 price reference (14.875167ms)
+✔ mapocho-3521 uses its exact owner 3 price reference (1.023708ms)
+✔ mapocho-3521-edificio-a uses its exact owner 2 price reference (0.25275ms)
+✔ mapocho-3521-edificio-a uses its exact owner 3 price reference (0.222459ms)
+✔ plaza-de-lourdes uses its exact owner 1 price reference (0.769625ms)
+✔ plaza-de-lourdes uses its exact owner 2 price reference (0.717333ms)
+✔ plaza-de-lourdes uses its exact owner 3 price reference (0.755417ms)
+✔ rosas-1444 uses its exact owner 2 price reference (0.681541ms)
+✔ santa-elena-1670-mbi uses its exact owner 1 price reference (0.751375ms)
+✔ santa-elena-1670-mbi uses its exact owner 2 price reference (1.027792ms)
+✔ independencia-4745 uses its exact owner 2 price reference (0.545167ms)
+✔ independencia-4745 uses its exact owner local price reference (0.597084ms)
+✔ froilan-roa-5731-torre-sur uses its exact owner 1 price reference (0.148959ms)
+✔ froilan-roa-5731-torre-sur uses its exact owner 2 price reference (0.114541ms)
+✔ entre-vicunas uses its exact owner 1 price reference (0.533958ms)
+✔ entre-vicunas uses its exact owner 2 price reference (0.466541ms)
+✔ froilan-roa-5731-torre-norte uses its exact owner 1 price reference (0.118708ms)
+✔ froilan-roa-5731-torre-norte uses its exact owner 2 price reference (0.105625ms)
+✔ edificio-don-pepe-154 uses its exact owner 1 price reference (0.470542ms)
+✔ edificio-don-pepe-154 uses its exact owner 2 price reference (0.488291ms)
+✔ guillermo-mann-1401 uses its exact owner 2 price reference (0.666667ms)
+✔ source transport is pinned before records can be constructed (9.267875ms)
+✖ public projection contains exactly the original21 owner prices and permitted identity fields (2.722125ms)
+✔ raw owner payload is rejected without retrying the private original endpoint (1.518375ms)
+✔ public projection rejects unapproved root fields before normalization (0.432208ms)
+✔ public projection rejects unapproved source fields before normalization (0.301708ms)
+✔ public projection rejects unapproved project history fields before normalization (0.294417ms)
+✔ public projection rejects unapproved project state fields before normalization (0.297959ms)
+✔ public projection rejects unapproved price key fields before normalization (0.311292ms)
+✔ Diagonal has no owner price and never acquires a historical campaign amount (0.277417ms)
+✔ 1D and2D prices never cross between the existing DonPepe quotes (0.126375ms)
+✔ importer department and residential defaults are not quote evidence (0.138917ms)
+✔ bathrooms, generic surfaces and private spaces are not lent to a priced quote (0.52875ms)
+✔ unknown extras and residential amenities cannot complete an unknown-use quote (5.088417ms)
+✔ Independencia Local stays separate from residential categories and amenities (1.1395ms)
+✔ 2D projection uses only that price typology, its owner date and non-stock scope (46.469208ms)
+✔ price sorting uses the matching2D amount rather than the global minimum (5.209667ms)
+✔ a previous query witness is not reused after the selected bedroom changes (1.2465ms)
+✔ a forged matching result cannot substitute another quote or manufacture a local type (0.442416ms)
+✔ a legitimate matching result and its reference arrays are immutable (0.291583ms)
+✔ source transport failure does not revert owner Euro price queries to legacy matching (0.453458ms)
+✔ a mismatched published amount/date or registered identity closes only that context (0.225917ms)
+✔ source normalization and matching do not mutate original catalogue values (15.2815ms)
+✔ queries without price keep the previous model/facet route, even if source loading fails (25.573458ms)
+✔ prepared and documentary queries never consume the new published owner context (1.592959ms)
+✔ AJ Urbana keeps its previous commercial route (0.302209ms)
+✔ Sento keeps its previous commercial route (0.329333ms)
+✔ León keeps its previous commercial route (0.26525ms)
+✔ Ecasa keeps its previous commercial route (1.154542ms)
+ℹ tests 49
+ℹ suites 0
+ℹ pass 48
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 284.831916
+
+✖ failing tests:
+
+test at tests/catalog-euro-owner-quotes.test.mjs:63:1
+✖ public projection contains exactly the original21 owner prices and permitted identity fields (2.722125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'projectionKind',
+      'projects',
+  -   'projectionKind',
+      'schemaVersion',
+      'source'
+    ]
+  
+      at TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-euro-owner-quotes.test.mjs:66:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'projectionKind', 'projects', 'schemaVersion', 'source' ],
+    expected: [ 'projects', 'projectionKind', 'schemaVersion', 'source' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
