@@ -131,18 +131,11 @@
     "No GitHub reviews or PR workflow runs found; no implicitCIapproval."
   ],
   "nextAction": {
-    "step": "Promover únicamente el deployment corregido verificado, sin rebuild ni otrodeployment",
-    "authorization": "NO_SOLICITADA_AUN",
-    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
-    "sourceSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
-    "allowedProductionAliases": [
-      "sollahms.cl",
-      "www.sollahms.cl",
-      "sollhams.cl",
-      "project-wrapp.vercel.app"
-    ],
-    "promotionPublicationAuthorized": false,
-    "correctivePR": "https://github.com/lasopho/sollahms-web/pull/35"
+    "step": "Incorporar localmente dos referencias documentadas Novo109 y Endémico45, preservando fuentes y pins existentes",
+    "authorization": "DESARROLLO_LOCAL_AUTORIZADO_POR_OBJETIVO_GENERAL",
+    "publicChangesAuthorized": false,
+    "newBranchFirstPushPRDeploymentRequireSeparatePermission": true,
+    "newOwnerDataOrIrisLoginRequiredForTheseTwoReferences": false
   },
   "latestArchiveWhitespace": {
     "originalFiles": [
@@ -282,5 +275,10 @@
     "newDefect": "Own public JSON fetches omit same-origin authentication; both302 and ERR_FAILED, no pin mismatch or altered artifact.",
     "evidence": "deployment-pr34-20261117/REPRODUCCION-CARGA-PROTEGIDA.json",
     "financialScenariosCertified": false
+  },
+  "currentPublishedProduction": {
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "correctivePR": "https://github.com/lasopho/sollahms-web/pull/35"
   }
 }

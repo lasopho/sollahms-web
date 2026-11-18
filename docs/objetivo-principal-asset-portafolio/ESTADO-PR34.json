@@ -170,18 +170,11 @@
     "outputBytesUnchangedAfterMerge": true
   },
   "nextAction": {
-    "step": "Promover únicamente el deployment corregido verificado, sin rebuild ni otrodeployment",
-    "authorization": "NO_SOLICITADA_AUN",
-    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
-    "sourceSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
-    "allowedProductionAliases": [
-      "sollahms.cl",
-      "www.sollahms.cl",
-      "sollhams.cl",
-      "project-wrapp.vercel.app"
-    ],
-    "promotionPublicationAuthorized": false,
-    "correctivePR": "https://github.com/lasopho/sollahms-web/pull/35"
+    "step": "Incorporar localmente dos referencias documentadas Novo109 y Endémico45, preservando fuentes y pins existentes",
+    "authorization": "DESARROLLO_LOCAL_AUTORIZADO_POR_OBJETIVO_GENERAL",
+    "publicChangesAuthorized": false,
+    "newBranchFirstPushPRDeploymentRequireSeparatePermission": true,
+    "newOwnerDataOrIrisLoginRequiredForTheseTwoReferences": false
   },
   "global131ObjectiveComplete": false,
   "historicalLebenPendingIDsUnchanged": 313,
@@ -267,5 +260,10 @@
   },
   "supersededLocallyByCandidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
   "checkoutCurrentBranch": "codex/cotizaciones-mismo-origen-20261117",
-  "checkoutCurrentHEAD": "9700d65fed15ee56584987573f1493b1fb52c9a4"
+  "checkoutCurrentHEAD": "9700d65fed15ee56584987573f1493b1fb52c9a4",
+  "currentPublishedProduction": {
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "correctivePR": "https://github.com/lasopho/sollahms-web/pull/35"
+  }
 }

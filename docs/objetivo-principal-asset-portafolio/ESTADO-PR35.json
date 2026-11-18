@@ -1,6 +1,6 @@
 {
   "dateLocal": "2026-11-17",
-  "verifiedAtUTC": "2026-11-18T02:09:18.517452+00:00",
+  "verifiedAtUTC": "2026-11-18T02:33:28.877458+00:00",
   "repository": "lasopho/sollahms-web",
   "branch": "codex/cotizaciones-mismo-origen-20261117",
   "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
@@ -137,7 +137,7 @@
     "ReadyForReview": true,
     "merge": true,
     "deployment": true,
-    "promotionPublication": false,
+    "promotionPublication": true,
     "mainModified": false
   },
   "priorDefectiveDeployment": {
@@ -146,24 +146,19 @@
     "status": "READY_BLOQUEADO_PARA_PROMOCION"
   },
   "production": {
-    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
-    "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
-    "unchanged": true
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "unchanged": false,
+    "changedOnlyByAuthorizedPromotion": true
   },
   "mainSHA": "86e200ec191b38af355061e21bc0fc1e549cce3b",
   "localWorkingTreeClean": true,
   "nextAction": {
-    "step": "Promover únicamente el deployment corregido verificado, sin rebuild ni otrodeployment",
-    "authorization": "NO_SOLICITADA_AUN",
-    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
-    "sourceSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
-    "allowedProductionAliases": [
-      "sollahms.cl",
-      "www.sollahms.cl",
-      "sollhams.cl",
-      "project-wrapp.vercel.app"
-    ],
-    "promotionPublicationAuthorized": false
+    "step": "Incorporar localmente dos referencias documentadas Novo109 y Endémico45, preservando fuentes y pins existentes",
+    "authorization": "DESARROLLO_LOCAL_AUTORIZADO_POR_OBJETIVO_GENERAL",
+    "publicChangesAuthorized": false,
+    "newBranchFirstPushPRDeploymentRequireSeparatePermission": true,
+    "newOwnerDataOrIrisLoginRequiredForTheseTwoReferences": false
   },
   "global131ObjectiveComplete": false,
   "reviewDeployment": {
@@ -210,9 +205,9 @@
       "configurationAndPatio410": true
     },
     "observations": [
-      "Protected-sessionMetro warning remains; Metro code/data unchanged. Both current publicMetro resourcesHTTP200 and byte-identical; no fullMetroUI recertification.",
-      "Financial scenarios and broad responsive/view suites were not rerun; unchanged source accepted from historical certification.",
-      "Source dates do not certify current stock or validity; documentary Iris source remains loopback-only."
+      "Earlier textContent collection included the hidden metro-load-status template. Direct visibility checks show hidden=true and zero rendered rectangles in protected and public pages; no visibleMetro warning was observed. Original receipts retained and interpretation corrected in publicacion-pr35-20261117/CORRECCION-VISIBILIDAD-METRO.json.",
+      "Financial scenarios and broad responsive/view suites were not rerun; their prior certifications remain historical.",
+      "Source dates do not certify stock or current validity; Iris documentary data remains loopback-only."
     ],
     "productionBeforePromotion": {
       "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
@@ -224,9 +219,10 @@
         "project-wrapp.vercel.app"
       ]
     },
-    "promotionAuthorized": false,
+    "promotionAuthorized": true,
     "newDeploymentPermissionConsumed": true,
-    "global131ObjectiveComplete": false
+    "global131ObjectiveComplete": false,
+    "promoted": true
   },
   "finalDeploymentVerification": {
     "verdict": "APROBADO_CON_OBSERVACIONES_PARA_SOLICITAR_PROMOCION",
@@ -272,9 +268,9 @@
       "configurationAndPatio410": true
     },
     "observations": [
-      "Protected-sessionMetro warning remains; Metro code/data unchanged. Both current publicMetro resourcesHTTP200 and byte-identical; no fullMetroUI recertification.",
-      "Financial scenarios and broad responsive/view suites were not rerun; unchanged source accepted from historical certification.",
-      "Source dates do not certify current stock or validity; documentary Iris source remains loopback-only."
+      "Earlier textContent collection included the hidden metro-load-status template. Direct visibility checks show hidden=true and zero rendered rectangles in protected and public pages; no visibleMetro warning was observed. Original receipts retained and interpretation corrected in publicacion-pr35-20261117/CORRECCION-VISIBILIDAD-METRO.json.",
+      "Financial scenarios and broad responsive/view suites were not rerun; their prior certifications remain historical.",
+      "Source dates do not certify stock or current validity; Iris documentary data remains loopback-only."
     ],
     "productionBeforePromotion": {
       "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
@@ -286,8 +282,34 @@
         "project-wrapp.vercel.app"
       ]
     },
-    "promotionAuthorized": false,
+    "promotionAuthorized": true,
     "newDeploymentPermissionConsumed": true,
-    "global131ObjectiveComplete": false
+    "global131ObjectiveComplete": false,
+    "promoted": true
+  },
+  "publishedProduction": {
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "url": "https://sollahms.cl/proyectos.html",
+    "state": "READY",
+    "configuredDomains": [
+      "sollahms.cl",
+      "www.sollahms.cl",
+      "sollhams.cl",
+      "project-wrapp.vercel.app"
+    ],
+    "promotionAuthorizedExecutedVerified": true,
+    "newDeploymentsDuringPromotion": 0
+  },
+  "publicationVerification": {
+    "routes": "publicacion-pr35-20261117/PROMOCION-Y-DOMINIOS.json",
+    "anonymousHTTP": "publicacion-pr35-20261117/HTTP-PUBLICACION.json",
+    "Chrome": "publicacion-pr35-20261117/CHROME-PUBLICACION.json",
+    "defaultProjectsObserved": 131,
+    "EuroQuery": "DonPepe2D UF3562 =1/131",
+    "NollagamQuery": "CostaneraA3D UF5070 =1/131",
+    "sixPublicFilesMatchCertifiedSHA256": true,
+    "threeRawPrivateSourcesHEAD404": true,
+    "priorMetroObservationCorrected": "Earlier textContent collection included the hidden metro-load-status template. Direct visibility checks show hidden=true and zero rendered rectangles in protected and public pages; no visibleMetro warning was observed. Original receipts retained and interpretation corrected in publicacion-pr35-20261117/CORRECCION-VISIBILIDAD-METRO.json."
   }
 }

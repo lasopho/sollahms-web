@@ -1,53 +1,61 @@
 # Continuar autónomamente el Asset Portafolio de Sollahms
 
-Repositorio: lasopho/sollahms-web. Corte17/11/2026, America/Santiago. El objetivo de información comercial confiable y filtros funcionales para los131 proyectos sigue abierto. Continuar trabajo autorizado; no repetir auditorías ni certificaciones con los mismos hashes.
+Repositorio: lasopho/sollahms-web. Corte17/11/2026, America/Santiago. El objetivo principal de datos comerciales confiables y filtros para los131 proyectos sigue abierto. Continuar trabajo autorizado sin fases artificiales, auditorías repetidas o preguntas ya respondidas.
 
-## Punto actual
+## Producción publicada y verificada
 
-El deployment corregido está READY y verificado, todavía SIN PROMOCIÓN:
-- ID dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr.
-- URL https://project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app/proyectos.html.
-- SHA875bd80ddb650b376cb3dd53af4ffae066fcd48f.
-- Targetproduction, ceroaliases. Creado una sola vez con permiso AUTH-DEPLOYMENT-PR35-20261117-01, ya consumido. No volver a pedir ese permiso ni crear más deployments.
+Producción actual:875bd80ddb650b376cb3dd53af4ffae066fcd48f.
+Deployment:dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr, READY.
+https://sollahms.cl/proyectos.html
 
-Próximo paso externo: solicitar autorización independiente para promover ESTE MISMO deployment a sollahms.cl y sus alias existentes, sin rebuild ni otrodeployment y sin cambiar DNS, SSO o variables. La promoción/publicación aún no está autorizada. Leer PLAN-PROMOCION-PR35.json e INTERVENCIONES-PROPIETARIO.json antes de preguntar; si ya está presentada, no repetirla ni interpretar silencio como aprobación. La herramienta prevista es VercelMCP request_promote con deploymentId3m4, projectIdprj_URomRRU0MAy4etGKP5gWv3Qv4DGH yteamIdteam_A9VNIW2f2K1IJpd2pGdvDmEN.
+Primerpush/PR35Draft/Ready/merge, creación única de este deployment y promoción/publicación del mismoID fueron autorizados expresamente y ejecutados. No volver a solicitarlos. No quedan permisos de deployment o promoción disponibles para otra versión.
 
-Producción continúa9e8212264e0bac24f392d8340d6e55eabb17499a, deployment dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ. Los cuatrodominios sollahms.cl, www.sollahms.cl, sollhams.cl y project-wrapp.vercel.app siguen enGm75. Preservar redirects308 dewww/sollhams a sollahms.cl. Main86e200ec191b38af355061e21bc0fc1e549cce3b intacto. Verificar referencias y producción antes de cualquier acción real; reconciliar si aparecen cambios inesperados.
+Los cuatrodominios configurados sollahms.cl,www.sollahms.cl,sollhams.cl,project-wrapp.vercel.app apuntan3m4. Redirects308 dewww/sollhams a sollahms.cl preservados. El aliasestándar project-wrapp-lsandoval2-8260s-projects.vercel.app también apunta3m4 y existía desde29/04/2026; no se creó un nuevodominio. La promoción no generó build, otrodeployment, DNS, SSO o variables. Main86e200ec191b38af355061e21bc0fc1e549cce3b intacto.
 
-## Código y autorización ya ejecutada
+Publicación comprobada:131proyectos; DonPepe154,2D,UF3562; CostaneraCoquimboA,3D,UF5070, cadauno1/131. Seisarchivos públicosHTTP200 conSHA256certificado; tresfuentesraw privadasHEAD404. Conservados131fichas,155protegidos,21fuentesoriginales,dosproyecciones públicas,sietefunciones/config/PatioBrasil410. No se enviaron formularios o escenariosfinancieros.
 
-PR35 https://github.com/lasopho/sollahms-web/pull/35 está cerrado/merged. Primerpush, creaciónDraft, Ready, merge y deployment corregido tuvieron permisos expresos separados y se ejecutaron; no repetir esas solicitudes.
-- Rama destino codex/footer-sin-frase-20261116 apunta875bd80ddb650b376cb3dd53af4ffae066fcd48f.
-- Padres delmerge:36ef9d9baec37d92cdda8ac6acbcaf2cac959335 y9700d65fed15ee56584987573f1493b1fb52c9a4.
-- Árbol06ba531790509767eea856b703160d02cbf5fa65, idéntico al candidato9700.
-- Rama fuente codex/cotizaciones-mismo-origen-20261117 conserva9700d65fed15ee56584987573f1493b1fb52c9a4 local/remoto.
-- Checkout técnico /private/tmp/sollahms-referencias-documentales-131-20261117, árbollimpio.
-- Cincoarchivos: doscargadores, sus dostests y exclusiónfalse de deployments de la nueva rama. Origen/destino/main mantienen deployments automáticos desactivados.
+IMPORTANTE: se corrigió una interpretación de root. El texto deerrorMetro recolectado mediante textContent estaba en metro-load-status oculto(hidden=true,0rectángulos), tantoenprotectedcomoenpúblico. No era una alerta visible. Recibos originales conservados; erratum en publicacion-pr35-20261117/CORRECCION-VISIBILIDAD-METRO.json. AmbosrecursosMetro públicos también responden200conbytespreservados; no se repitióQA completo deMetro.
 
-Corrección: ambos fetch de las proyecciones públicas usan credentials:same-origin. El navegador gestiona su sesión normal sólo dentro del propio dominio; no se leen cookies o tokens, se añaden headers de credenciales ni se cambiaSSO. Se mantienen redirect:error, timeouts, SHA256pins, allowlists y ausencia de fallback a originales.
+## Trabajo local que continúa
 
-El deployment anterior dpl_B7PfYYNveGXD5pjns6sg6yAqMHL7@36ef permanece BLOQUEADO y NUNCA se promoverá. Su permiso de creación también está consumido. Allí se reprodujeron302/ERR_FAILED y0/131 enDonPepe2D UF3500–3600; el archivo original estaba correcto. La corrección9700 resolvió ese defecto en3m4.
+Se preparó una nueva rama exclusivamente local:
+- codex/suplemento-documental-131-20261117.
+- Checkout técnico:/private/tmp/sollahms-referencias-documentales-131-20261117.
+- Base/HEAD inicial:875bd80ddb650b376cb3dd53af4ffae066fcd48f.
+- vercel.json ya excluye deployments automáticos de esta rama. No hay push/PR/deployment nuevos autorizados.
 
-## Evidencia real y límites
+Incorporar al modo documental de revisión local dos referencias YA documentadas, sin volver a consultar Iris ni pedir datosowner:
+1.IRIS-131-R016,NovoCatedral109: baño1,Internos18,44,T1,9. Dormitorios/tipo/modelo desconocidos; Estudio no confirma0D.
+2.IRIS-131-R017,Endémico45: Casa4D3B,Internos160,T0explícita. Sin etapa/modelo/asociaciónD-Molle ni precioowner11343. Uso sigue desconocido si no está acreditado.
 
-- 1.672/1.672 digests SHA1 recibidos coinciden con el inventario local SHA1/SHA256, cotejados independientemente; cero faltantes/extras/diferentes y siete rutaslambda.
-- Paquete /private/tmp/sollahms-cotizaciones-mismo-origen-release-20261117, pin ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834. Son1614estáticos+57archivos de7funciones+config. Sólo dosJS difieren deB7;1670archivos,131fichas,config/410 y dosJSON públicos intactos.
-- Pruebas específicas: rojo2fallos esperados con omit, verde10/10cargadores. Revisión independiente aprobada; no suites generales repetidas.
-- Chrome real3/3enfocados: ambasfuentes públicas cargan200 sin redirección de autenticación; EuroDonPepe2D UF3562 yNollagamCostaneraA3D UF5070, cadauno1/131. Euroconditional304 válido también observado. Capturas sintruncamiento, cero excepciones, errores o warnings deconsola. CDPNetwork/Runtime desactivados.
-- No sumar esos subconjuntos a49Euro/19Nollagam/23integración/7Chrome anteriores ni aF10/F13. No se repitieron responsive, cuatrovistas o escenariosfinancieros.
-- Observación: entorno protegido conserva avisoMetro preexistente. Código/datos Metro9e→36ef iguales y ambosrecursos públicos actualesHTTP200 conbytes iguales alstage; no es una nueva certificación completa deMetroUI. Informar esa limitación en la solicitud de promoción.
-- 155protegidos,21originales,dosproyecciones,131fichas,sietefunciones y313IDs Leben intactos. No hay nuevas recepciones/precios/stock o cierreshistóricos.
+Resultado esperado:18referencias/17proyectos/114identidades sin referencia, dentro de los mismos131. Conservar Iris15 yPlaza213 originales con bytes/pins actuales; suplemento separado con pinpropio, rechazo de colisiones y cero fetchfuera del gate loopback+optin. Precio/stock/disponibilidad/útil/interior/total quedan desconocidos cuando no están respaldados. Internos nunca se homologa ni se suma para inventar total. T0 no se deduce de vacío.
 
-## Documentación y seguridad
+Resolver el detalle de esquema sin inventar una hora: Endémico tiene observedOn válido por día y recordedAtUTC separado, no observedAtUTC. Admitir precisión de día y mostrarla como tal; nunca usar la hora de registro como observación. Validar fechas de calendario y mantener las observacionesUTC existentes.
 
-Checkout documental /private/tmp/sollahms-auditoria-leben-20261116, rama codex/auditoria-leben-20261116. Consultar HEAD local/remoto actual. Leer docs/objetivo-principal-asset-portafolio/ESTADO-PR35.json, ESTADO-PUBLICACION.json, CANDIDATO-CARGA-MISMO-ORIGEN.json, INTERVENCIONES-PROPIETARIO.json, CONTROL-DE-AVANCE.md y PLAN-PROMOCION-PR35.json. Evidencia en deployment-pr35-20261117/, deployment-pr34-20261117/, correccion-carga-mismo-origen-20261117/ y preparacion-deployment-pr35/.
+La implementación está delegada a /root/global_scope_inventory, sólo archivosdocumentales de app/tests en esa rama; root conserva vercel.json y A. Consultar estado real antes de editar o repetir pruebas. Recibos en /private/tmp/sollahms-suplemento-documental-131-20261117/. Fuente eIDs en ACTUALIZACIONES-DOCUMENTALES-POR-REFERENCIA.json. No recontar esto como nuevas recepciones o cierresLeben.
 
-NUNCA desplegar /private/tmp/sollahms-pr33-release-20261117: paquete raw conhistorial interno, en cuarentena, nunca publicado. PaqueteB7 en /private/tmp/sollahms-proyecciones-publicas-release-20261117 también se conserva inmutable como evidencia, no para promoción.
+Pruebas acotadas necesarias: positivos respaldados, desconocidos excluidos con consultasválidas eissues:[], ceroexplícito, sin préstamos de precio/modelo/etapa, observaciónpor día frente registroUTC y gate/pins/collisiones. Revisar y comprobar localmente; no repetir suites generales. Antes de primerpush/nuevoPR/Ready/merge/deployment/publicación requerir sus autorizaciones independientes y preparar el resultado concreto revisable. Mientras haya trabajo local autorizado, continuar sin pedir que el propietario copie prompts.
 
-EuroJSON público pin0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272; Nollagam pin12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee. Conservan21Euro/17Nollagam y cincocategorías sinprecio; Diagonal Vicuña siguependiente. Fechas deowner no confirman stock o vigencia. Iris/documental permanece sólo local:16referencias/15proyectos; no se habilita públicamente al promover.
+## Referencias y documentación
 
-Plaza213/C7 conserva su vínculo exacto, sin extender a313/C6/C8. Novo109 yEndémico45 documentados aparte; Internos no se convierte en útil/interior/total. Mood1D1B UF3753,20 y2D2B UF4678,45 sin plano confirmado; no repreguntar. Leben454referencias incluidas20cotizaciones y dosadicionalesSuecia separados;313IDs intactos. Proyecciones administrativas no son evidencia nueva; Ownvendido fuera sólo de preparado. No repetir SantoL009/BAUML013/D03.
+Rama documental:codex/auditoria-leben-20261116.
+Checkout:/private/tmp/sollahms-auditoria-leben-20261116.
+Consultar HEADlocal/remoto actual. Leer docs/objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md, ESTADO-PUBLICACION.json, ESTADO-PR35.json, INTERVENCIONES-PROPIETARIO.json, ACTUALIZACIONES-DOCUMENTALES-POR-REFERENCIA.json y NEXT-PROMPT.md.
 
-No modificar fichas, precios/direcciones de origen, CRM360, AI Lab, Resend, formularios, finanzas, funciones, dominios, SSO o variables; no generadores, forcepush, main, PatioBrasil o seisregistros históricos. No usar el checkout original con cambios ajenos. Aplicación sólo en checkout técnico; ramaLeben documental.
+PR35 https://github.com/lasopho/sollahms-web/pull/35 está merged. Padres875:36ef/9700, árbol06ba531790509767eea856b703160d02cbf5fa65 idéntico al candidato9700. Destino codex/footer-sin-frase-20261116 apunta875. Fuente codex/cotizaciones-mismo-origen-20261117 conserva9700d65fed15ee56584987573f1493b1fb52c9a4 local/remoto; no reescribir historial ni tocar main.
 
-Si Iris requiere autenticación, Chrome oficial visible y acceso personal del propietario con OTP/CAPTCHA; nunca leer/guardar credenciales, cookies o tokens ni eludir seguridad. Para metadatosVercel conservar únicamente los campos necesarios: no volcar respuestas completas de aliases. Pausar sólo la dependencia que requiere intervención y continuar trabajo independiente. Actualizar resultados reales, sincronizar lo autorizado, verificar hashes/árboleslimpios y entregar siempre el siguiente prompt completo sin pedir al propietario que lo copie.
+Baseline publicado inmutable:/private/tmp/sollahms-cotizaciones-mismo-origen-release-20261117, pin ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834,1672archivos(1614estáticos+57archivos de7funciones+config).1672digestsSHA1recibidos coinciden coninventario localSHA1/SHA256 y revisiónindependiente. Sólo2JS difieren deB7.
+
+La corrección usa credentials:same-origin en dosfetch públicos fijos, manteniendo redirect:error,pins,allowlists,timeouts y ausencia de fallbackraw. Rojo2→verde10pruebas específicas;3Chrome protegidos enfocados y comprobaciones públicas posteriores. No sumar subconjuntos a49Euro/19Nollagam/23integración/7Chrome oF10/F13 históricos; responsive/cuatrovistas/finanzas no reejecutados.
+
+Evidencia en deployment-pr35-20261117/,publicacion-pr35-20261117/,correccion-carga-mismo-origen-20261117/. Gm75/9e queda como producciónprevia recuperable. B7@36ef no se promovió y nunca debe promoverse. NUNCA desplegar /private/tmp/sollahms-pr33-release-20261117, paquete raw en cuarentena que nunca llegó a producción.
+
+## Datos y límites permanentes
+
+EuroJSONpúblico pin0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272; Nollagam pin12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee. Conservan21Euro/17Nollagam y cinco categorías sinprecio; DiagonalVicuña pendiente. No son stock ni vigencia confirmada.
+
+Iris/documental sigue sólo local. Plaza213/C7 conserva vínculo exacto propio, sin extender a313/C6/C8. Mood1D1B UF3753,20 y2D2B UF4678,45 sin plano confirmado; no repreguntar. Leben454referencias incluidas20cotizaciones, dosadicionalesSuecia separados,313IDs intactos. Proyecciones administrativas no son evidencia nueva; Ownvendido fuera sólo de preparado. No repetir SantoL009/BAUML013/D03.
+
+No modificar fichas,precios/direcciones de origen,CRM360,AI Lab,Resend,formularios,finanzas,funciones,dominios,SSO ovariables; no generadores,forcepush,main,PatioBrasil o seisregistros históricos. No usar checkout original con cambios ajenos. Aplicación sólo en checkouttécnico y ramaLeben documental.
+
+Si Iris necesita autenticación, abrir Chromeoficialvisible y permitir acceso personal del propietario con OTP/CAPTCHA; nunca leer/guardar credenciales,cookies o tokens ni eludir seguridad. No volcar metadatos completos de aliasesVercel. Pausar sólo la dependencia que requiere intervención y continuar tareas independientes. Actualizar resultados reales, sincronizar únicamente lo autorizado, verificar hashes/árboles y entregar siempre el siguiente prompt completo.

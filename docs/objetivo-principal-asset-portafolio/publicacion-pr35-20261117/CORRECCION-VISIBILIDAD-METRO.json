@@ -1,0 +1,20 @@
+{
+  "previousInterpretation": "DOM textContent of all status nodes was mistaken for a visibleMetro warning",
+  "correctedFinding": "Static error element is hidden and has zero rendered rectangles in both public and protected pages; no visibleMetro error was observed",
+  "evidence": {
+    "public": {
+      "hidden": true,
+      "id": "metro-load-status",
+      "renderedRects": 0,
+      "text": "Los datos de Metro no pudieron cargar. Los demás filtros siguen disponibles."
+    },
+    "protected": {
+      "hidden": true,
+      "id": "metro-load-status",
+      "renderedRects": 0,
+      "text": "Los datos de Metro no pudieron cargar. Los demás filtros siguen disponibles."
+    }
+  },
+  "priorSourceReceiptsPreserved": true,
+  "fullMetroUIRecertified": false
+}

@@ -1,5 +1,5 @@
 {
-  "status": "PREPARADO_PARA_SOLICITAR_AUTORIZACION_PROMOCION",
+  "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
   "verifiedAtUTC": "2026-11-18T02:09:18.517452+00:00",
   "tool": "mcp__codex_apps__vercel_request_promote",
   "argumentsAfterAuthorization": {
@@ -23,7 +23,7 @@
   "rebuild": false,
   "newDeployments": false,
   "DNSOrSSOOrEnvironmentChanges": false,
-  "authorizationReceived": false,
+  "authorizationReceived": true,
   "doNotPromotePriorDefectiveB7": true,
   "verification": {
     "verdict": "APROBADO_CON_OBSERVACIONES_PARA_SOLICITAR_PROMOCION",
@@ -86,5 +86,9 @@
     "promotionAuthorized": false,
     "newDeploymentPermissionConsumed": true,
     "global131ObjectiveComplete": false
-  }
+  },
+  "authorizationId": "AUTH-PROMOTION-PR35-20261117-01",
+  "promotionVerifiedAtUTC": "2026-11-18T02:33:28.877458+00:00",
+  "verificationReceipt": "publicacion-pr35-20261117/PROMOCION-Y-DOMINIOS.json",
+  "priorMetroInterpretationCorrected": "Earlier textContent collection included the hidden metro-load-status template. Direct visibility checks show hidden=true and zero rendered rectangles in protected and public pages; no visibleMetro warning was observed. Original receipts retained and interpretation corrected in publicacion-pr35-20261117/CORRECCION-VISIBILIDAD-METRO.json."
 }
