@@ -58,3 +58,9 @@ El [recibo Chrome](qa/QA-CHROME.json) y las capturas fijan los resultados. El es
 Sólo se sincroniza esta documentación en la rama ya autorizada de Leben. La nueva rama técnica y el destino excluyen deployments automáticos. El [estado de referencias](qa/PRODUCCION-Y-REFERENCIAS.json) confirma producción READY en `875bd80`, sin deployments de la nueva rama. No se ha consumido permiso de primer push o nuevo PR para este candidato; se prepara una única solicitud concreta para el commit exacto. Ready, merge, deployment y publicación requieren permisos independientes.
 
 El [parche textual](IMPLEMENTACION-21-SIN-BINARIOS.patch), [mapa de originales](RECUPERACION-RECURSOS.json) y hashes permiten recuperar los 59 archivos si se pierde el checkout. No reconstruirlo ni repetir QA con hashes idénticos. El corte previo de propuesta se conserva sin modificar sus flags históricos de autorización. Continuidad vigente en el NEXT-PROMPT raíz.
+
+## Solicitud presentada y compatibilidad pendiente de integración
+
+La solicitud independiente `AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01` fue presentada una sola vez para el commit exacto y PR Draft. Sigue pendiente de respuesta; no se realizó push técnico. No repetirla ni usar las autorizaciones anteriores como respuesta.
+
+Se preparó una [comparación documental con 24a](COMPATIBILIDAD-24A-AMPLIACION-6CEDD32.json), sin merge, aplicación de parches o pruebas. Hay dos archivos compartidos: `catalog-model.mjs` tiene cambios en líneas disjuntas; `vercel.json` requiere conservar manualmente ambas exclusiones `false` en una integración futura. Mantener el cargador de las 19 referencias documentales sobre los 131 originales antes de añadir los 21, sin mezclarlos o habilitarlos como stock. Esta comprobación no autoriza integrar ninguno de los candidatos ni altera sus hashes.

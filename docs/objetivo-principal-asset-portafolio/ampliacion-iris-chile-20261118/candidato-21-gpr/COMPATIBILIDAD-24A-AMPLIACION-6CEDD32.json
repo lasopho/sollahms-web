@@ -1,0 +1,113 @@
+{
+  "createdAtUTC": "2026-11-18T19:48:10.814296+00:00",
+  "kind": "RECIBO_BREVE_COMPATIBILIDAD_ESTATICA_NO_INTEGRACION",
+  "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "supplementSHA": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+  "expansionSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
+  "method": "git diff --name-only y --unified=0 sobre objetos existentes y la misma base; comparación de rangos y lectura de los puntos de integración. Sin merge/apply/merge-tree/cherry-pick, sin reconstrucción, pruebas o consultas nuevas.",
+  "counts": {
+    "supplementChangedPaths": 10,
+    "expansionChangedPaths": 59,
+    "sharedPaths": 2,
+    "supplementOnlyPaths": 8,
+    "expansionOnlyPaths": 57
+  },
+  "sharedPaths": [
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "classification": "SOLO_ARCHIVO_HUNKS_DISJUNTOS_EN_BASE",
+      "supplementBaseHunks": [
+        {
+          "baseStart": 85,
+          "baseCount": 1,
+          "targetStart": 85,
+          "targetCount": 1
+        }
+      ],
+      "expansionBaseHunks": [
+        {
+          "baseStart": 5,
+          "baseCount": 0,
+          "targetStart": 6,
+          "targetCount": 1
+        },
+        {
+          "baseStart": 58,
+          "baseCount": 0,
+          "targetStart": 60,
+          "targetCount": 1
+        },
+        {
+          "baseStart": 71,
+          "baseCount": 0,
+          "targetStart": 74,
+          "targetCount": 1
+        },
+        {
+          "baseStart": 78,
+          "baseCount": 0,
+          "targetStart": 82,
+          "targetCount": 1
+        },
+        {
+          "baseStart": 124,
+          "baseCount": 0,
+          "targetStart": 129,
+          "targetCount": 1
+        }
+      ],
+      "supplementSharedDiffSHA256": "d99ca65d0a64ac268f561d02c7518365926c75b597a411abaebea0c14cf2a261",
+      "expansionSharedDiffSHA256": "03236cb4ef2d423e472cf97f46effd615697044d697a1954e04f8bdc1939927f",
+      "reconciliation": "Conservar imports y cuatro hooks de ampliación; aplicar además el fallback de fecha documentary observedAtUTC??observedOn de24a, sin reemplazar el archivo por una versión completa."
+    },
+    {
+      "path": "vercel.json",
+      "classification": "SOLAPE_DE_LINEA_BASE_82_CONCILIAR_UNION_DE_CLAVES",
+      "supplementBaseHunks": [
+        {
+          "baseStart": 82,
+          "baseCount": 1,
+          "targetStart": 82,
+          "targetCount": 2
+        }
+      ],
+      "expansionBaseHunks": [
+        {
+          "baseStart": 82,
+          "baseCount": 1,
+          "targetStart": 82,
+          "targetCount": 2
+        }
+      ],
+      "supplementSharedDiffSHA256": "a95285d904fa03bfce8eb8e03e91615e631d4bc044429ae1b300c701d3229bd4",
+      "expansionSharedDiffSHA256": "a4ffc63683da3baf8610ae206604559dc20437e60fa9b47429d05c1670bda9c5",
+      "reconciliation": "Conservar ambas exclusiones false y todas las anteriores; no reemplazar el objeto ni el archivo."
+    }
+  ],
+  "supplementOnlyPaths": [
+    "assets/js/commercial-filter-engine.mjs",
+    "assets/js/documentary-local-review.mjs",
+    "assets/js/documentary-reference-data.mjs",
+    "tests/documentary-local-review.test.mjs",
+    "tests/documentary-reference-additions.test.mjs",
+    "tests/documentary-reference-r018.test.mjs",
+    "tests/fixtures/iris-documentary-additions-2.json",
+    "tests/fixtures/iris-documentary-r018-vicuna-1103.json"
+  ],
+  "semanticRules": [
+    "Mantener íntegros fixtures, hashes, validadores y pruebas del suplemento:19referencias en18proyectos del universo131; no son stock ni cobertura de152.",
+    "Mantener loadLocalDocumentaryReview antes de appendCatalogExpansion: el primero valida/anota131, el segundo agrega21 con contexto propio. No mover el loader después de componer152.",
+    "La rama documentary se ejecuta antes que la ampliación: rechaza las21sin contrato documental131. Published/prepared conservan las rutas de ampliación y las reglas existentes, incluida la exclusiónOwnsóloenpreparado.",
+    "No mezclar referencias históricas documentary con precios/atributos de la ampliación, ni convertir los18precios externosIris del suplemento en precio comercial. Plaza213conserva su alcance propio.",
+    "Conservar ambas protecciones de uso desconocido:24a evita inferir uso en sourceKind documentary-reference-not-offer; ampliación guarda uso desconocido y falla ante filtroactivo antes del motor común. Una no sustituye a la otra.",
+    "data/proyectos.json y data/catalog-facets.json no figuran en ninguno de estos deltas: no sustituirlos ni regenerarlos al conciliar. Conservar sus identidades/posiciones/hash131.",
+    "La fecha observedOn de24a es día de observación, no fecha documental ni vigencia; no reemplazarla por recordedAtUTC."
+  ],
+  "conclusion": "No se ve bloqueo semántico en el orden actual. Hay un solape textual porlínea en vercel.json que requiere unir ambas claves false; catalog-model.mjs comparte archivo pero sus hunks son disjuntos. No se ha demostrado el resultado de un merge real, ni se autoriza o certifica integración.",
+  "independentReadCheck": {
+    "agent": "bordevivo_archive",
+    "result": "Confirmó separación131/152, orden del loader y ausencia de bloqueo actual por lectura estática; no ejecutó integración o pruebas."
+  },
+  "permissions": "Autorización24a pendiente; esta comprobación no permite aplicar, integrar, fusionar, publicar ni eludir permisos de push/PR/deployment.",
+  "nextStep": "Archivar recibo durante la espera de permisos. En una futura integración autorizada, volver a verificar SHAs y conciliar sólo los puntos indicados; preservar trazabilidad y ambos juegos de pruebas sin sumar resultados históricos."
+}
