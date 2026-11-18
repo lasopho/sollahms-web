@@ -236,6 +236,36 @@
       "executedLocalTime": "22:07:18 America/Santiago",
       "mergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
       "expectedHeadGuardUsed": true
+    },
+    {
+      "id": "AUTH-DEPLOYMENT-PR34-20261117-01",
+      "kind": "Crear un único deployment prebuilt de revisión sin dominios",
+      "status": "SOLICITADA_PENDIENTE_DE_RESPUESTA",
+      "recordedAtUTC": "2026-11-18T01:13:35.699903+00:00",
+      "repository": "lasopho/sollahms-web",
+      "sourceMergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+      "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+      "maximumNewDeployments": 1,
+      "inventorySHA256": "31eee39b568fa35a32cbab1dfe1ace80ac8b1d1ac1486d0456f1e98cde6f9b19",
+      "scope": [
+        "CLI oficial --prebuilt --environment production --skip-domain",
+        "Único deployment para revisión, sin dominios"
+      ],
+      "notAuthorized": [
+        "promoción",
+        "publicación",
+        "DNS",
+        "SSO",
+        "variables",
+        "build",
+        "main"
+      ],
+      "questionAlreadyPresented": true,
+      "doNotRepeatQuestion": true,
+      "newOwnerResponseReceived": false,
+      "pendingOwnerAction": "Responder la solicitud ya presentada; no crear deployment antes de respuesta expresa."
     }
   ],
   "otherPriorWaitsUnchanged": true

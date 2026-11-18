@@ -181,7 +181,7 @@
   },
   "promotionAuthorizationUsed": 1,
   "remainingPromotionAuthorizations": 0,
-  "nextAuthorizedWork": "PR34 fusionado en36ef; paquete corregido vinculado/verificado. Preparar permiso independiente para deployment de revisión sin dominios. No autoriza crear deployments ni promover.",
+  "nextAuthorizedWork": "Solicitud independiente de deployment PR34 ya presentada y pendiente. No repetirla ni crear deployment sin respuesta; promoción/publicación requerirá permiso propio posterior.",
   "pendingNextRelease": {
     "mergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
     "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34",
@@ -192,6 +192,9 @@
     "plan": "preparacion-deployment-pr34/PLAN-DEPLOYMENT-SIN-DOMINIOS.json",
     "mergeCertificate": "preparacion-deployment-pr34/MERGE-CERTIFICADO.json",
     "deploymentAuthorized": false,
-    "promotionAuthorized": false
+    "promotionAuthorized": false,
+    "authorization": "SOLICITADA_PENDIENTE_DE_RESPUESTA",
+    "interventionId": "AUTH-DEPLOYMENT-PR34-20261117-01",
+    "doNotRepeatQuestion": true
   }
 }
