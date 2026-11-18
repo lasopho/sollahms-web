@@ -13,7 +13,7 @@ La corrección está terminada y revisada localmente:
 - Rama nueva local: codex/proyecciones-publicas-cotizaciones-20261117.
 - Commit3082a859fd4b0600478a4b8a7d14cff16067853b, padre/basecb359710.
 - Ocho archivos, árbol limpio. Rama todavía sin push y sin PR nuevo.
-- Origen y destino excluyen deployments automáticos. Primer push y creación de otro PRDraft necesitan permiso independiente; consultar INTERVENCIONES-PROPIETARIO.json y no repetir una solicitud ya presentada o respondida.
+- Origen y destino excluyen deployments automáticos. La solicitud de primer push y nuevo PRDraft AUTH-PUSH-PR-PUBLIC-PROJECTIONS-20261117-01 ya fue presentada y está pendiente. Consultar INTERVENCIONES-PROPIETARIO.json; no repetirla ni proceder sin respuesta expresa.
 - La rama técnica anterior codex/referencias-documentales-131-20261117 conserva c56f199 local/remoto. No usar el checkout original con cambios ajenos.
 
 Documentación en /private/tmp/sollahms-auditoria-leben-20261116, rama codex/auditoria-leben-20261116; consultar HEAD local/remoto actual. Leer docs/objetivo-principal-asset-portafolio/CANDIDATO-PROYECCIONES-PUBLICAS.json, ESTADO-PR33.json, CONTROL-DE-AVANCE.md, INTERVENCIONES-PROPIETARIO.json, PR-DRAFT-PREPARADO-PROYECCIONES.md y correccion-proyecciones-publicas-20261117/. Allí están patch exacto, manifiestos, recibos y límites. No generar otra fase o informe redundante.
