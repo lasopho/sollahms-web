@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "status": "BLOQUEADO_PUBLICACION_RAW_OWNER",
+  "preparedLocally": true,
+  "deployable": false,
+  "output": "/private/tmp/sollahms-pr33-release-20261117/stage/.vercel/output",
+  "source": {
+    "baseCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "headCommit": "c56f199a0a6e0d9c15ca3d26969603e9f3d88919",
+    "expectedTree": "bd21bee08526c316597480a59ad311fdd68b45d1",
+    "runtimeJSOverlayCount": 13,
+    "trackedDiffPaths": 25
+  },
+  "baselineInventorySHA256": "0e7482726ee1c172988ee63e65db2ff87d0c5935a97637e59472e9e685e581f6",
+  "candidateInventorySHA256": "eb9445fe634554250850547a1b7a1fd184321503fdf1a5cae972be6b55e3f270",
+  "manifest": {
+    "path": "/private/tmp/sollahms-pr33-release-20261117/MANIFIESTO-CANDIDATO-PR33.json",
+    "bytes": 462843,
+    "sha256": "96fd9f4a19aeab5b7ccdabaae8674afe88627f9eb2624392b2536d837e1e19b2"
+  },
+  "counts": {
+    "files": 1672,
+    "staticFiles": 1614,
+    "functionFiles": 57,
+    "functionBundles": 7,
+    "configFiles": 1,
+    "JSOverlays": 13,
+    "rawOwnerJSONLocalOverlays": 2,
+    "replaced": 6,
+    "added": 9,
+    "baselineOutsideOverlayIdentical": 1657,
+    "fichesIdentical": 131,
+    "sourceProtectedCertificate": 155,
+    "protectedStaticPresentIdentical": 152,
+    "dependencyModulesRead": 27,
+    "dependencyChecks": 74,
+    "missingPublicDependencies": 0,
+    "excludedLoopbackFixtures": 2
+  },
+  "publicationBlock": {
+    "status": "BLOQUEADO_PUBLICACION_RAW_OWNER",
+    "deployable": false,
+    "reason": "New raw Euro endpoint would publish excluded internal price history; exact source pins establish custody, not public-safe eligibility. Both raw sources need explicit minimal public projections.",
+    "euroEvidence": {
+      "sourcePath": "data/euro-commercial.json",
+      "pointer": "/projects/diagonal-vicuna/inheritedPriceReview",
+      "valueUF": 3184,
+      "decision": "Excluded: the previous discounted developer price lacks explicit current Sollahms authorization; consult price until confirmed.",
+      "otherExcludedSourceFields": [
+        "/source/instruction",
+        "/source/screenshots",
+        "/source/overwritePolicy",
+        "/projects/*/confirmationNotes",
+        "/projects/*/stageConflict"
+      ]
+    },
+    "publishedComparison": {
+      "baselineCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "static/data/proyectos.json": {
+        "contains3184": false,
+        "diagonalPrecioDesdeUF": null,
+        "containsInheritedPriceReview": false
+      },
+      "static/data/fichas-proyectos.json": {
+        "present": false
+      },
+      "gitSourceOnlyFichas": {
+        "path": "data/fichas-proyectos.json",
+        "notInPublicOutput": true,
+        "historicalPointers": [
+          "/122/sourceEvidence/excerpt",
+          "/122/preEuroReview/updates/precioDesdeUF"
+        ],
+        "publicationAuthority": false
+      }
+    },
+    "minimalProposedContract": {
+      "Euro": {
+        "root": [
+          "schemaVersion",
+          "source.type",
+          "source.date",
+          "originalSourceSHA256",
+          "projects"
+        ],
+        "projectWhitelist": [
+          "developer",
+          "commune",
+          "region",
+          "prices",
+          "priceStrings",
+          "projectFromUF",
+          "priceScope"
+        ],
+        "excluded": [
+          "inheritedPriceReview",
+          "stageConflict",
+          "confirmationNotes",
+          "instruction",
+          "screenshots",
+          "overwritePolicy",
+          "description",
+          "brochure URLs"
+        ]
+      },
+      "Nollagam": {
+        "root": [
+          "checkedOn",
+          "priceSource",
+          "originalSourceSHA256",
+          "projects"
+        ],
+        "projectWhitelist": [
+          "prices"
+        ],
+        "identity": "Only registered published identity by slug; preserve seven exact source identities and published category literals.",
+        "excluded": [
+          "sources",
+          "description",
+          "detail",
+          "finishes",
+          "extraAmenities",
+          "sourceUrl",
+          "delivery",
+          "building"
+        ]
+      },
+      "referenceIdentity": "Keep existing stable IDs derived from registered slug and exact owner category; no units/models/stock/B/areas inferred.",
+      "futureRequiredChange": "Dedicated public projection paths and independent pins/validators. Preserve original private hashes and files; do not weaken old pin or edit source originals. Explicit local code authorization required before implementation."
+    }
+  },
+  "authorization": "Sólo preparación local bloqueada. Merge autorizado y ejecutado separadamente por root; deployment/publicación no autorizados.",
+  "limits": [
+    "BLOCKED: raw owner JSON resources are preserved only as local preparation evidence, not approved public endpoints.",
+    "This preparation does not authorize/perform merge, deployment or publication; root separately manages merge authorization.",
+    "Old-tab Cargando cause remains unconfirmed; certified fresh-tab23checks had no exceptions/console errors.",
+    "Static byte/resource review does not execute API UF, financial scenarios or third-party network services.",
+    "No global131commercial/stock certification or313closures.",
+    "Documentary fixtures and new Iris media are absent; public-host guard returns before fetch. Loopback documentary review cannot use this public package without separate nonpublic fixtures.",
+    "Original functional112/83/23 cohorts are reused for identical c56 source, not rerun or summed as unique cases."
+  ],
+  "operations": {
+    "builds": 0,
+    "generators": 0,
+    "vercelCLI": 0,
+    "networkRequests": 0,
+    "deployments": 0,
+    "merges": 0,
+    "gitWrites": 0,
+    "technicalSourceEdits": 0
+  },
+  "preparationCheckCorrection": "Initial assertion incorrectly required155source paths to exist as static files.152are static and identical;3data source-only paths are absent in approved public baseline and candidate. No baseline/source byte was changed.",
+  "rootReportedMerge": {
+    "commit": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+    "parents": [
+      "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "c56f199a0a6e0d9c15ca3d26969603e9f3d88919"
+    ],
+    "tree": "bd21bee08526c316597480a59ad311fdd68b45d1",
+    "provenance": "Root confirmed merge independently; this preparation performed no merge.",
+    "productionUnchangedAtRootCheck": {
+      "commit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "deployment": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ"
+    }
+  }
+}
