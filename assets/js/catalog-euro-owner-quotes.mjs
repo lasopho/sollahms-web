@@ -1,8 +1,18 @@
 import {matchProjectFilters,queryFromCatalogState,normalizeAmenityKey} from './commercial-filter-engine.mjs';
 
-export const EURO_OWNER_SOURCE_PATH='/data/euro-commercial.json';
-export const EURO_OWNER_SOURCE_SHA256='21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2';
+export const EURO_OWNER_SOURCE_PATH='/data/catalog-euro-owner-quotes.json';
+export const EURO_OWNER_SOURCE_SHA256='0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272';
+export const EURO_OWNER_ORIGINAL_SOURCE_PATH='data/euro-commercial.json';
+export const EURO_OWNER_ORIGINAL_SOURCE_SHA256='21f208654034769b7d4575b798cd6dfbede5b638080cc722512091d2010c4ef2';
 const sourceDate='2026-10-29';
+const projectionKind='catalog-euro-owner-quotes-v1';
+const projectPriceKeys={
+  'mapocho-3521':['2','3'],'mapocho-3521-edificio-a':['2','3'],
+  'plaza-de-lourdes':['1','2','3'],'rosas-1444':['2'],'diagonal-vicuna':[],
+  'santa-elena-1670-mbi':['1','2'],'independencia-4745':['2','local'],
+  'froilan-roa-5731-torre-sur':['1','2'],'entre-vicunas':['1','2'],
+  'froilan-roa-5731-torre-norte':['1','2'],'edificio-don-pepe-154':['1','2'],
+  'guillermo-mann-1401':['2']};
 const sources=new WeakSet(),contexts=new WeakSet(),matches=new WeakSet();
 const priced=value=>typeof value==='number'&&Number.isFinite(value)&&value>0;
 const present=value=>value!==''&&value!==null&&value!==undefined;
@@ -10,17 +20,41 @@ const object=value=>value!==null&&typeof value==='object'&&!Array.isArray(value)
 const privateIds=new Set(['terraza-privada','jardin-privado']);
 const fail=message=>{throw new TypeError('Euro owner quotes: '+message);};
 function freeze(value){if(value&&typeof value==='object'&&!Object.isFrozen(value)){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
+const exactKeys=(value,keys)=>object(value)&&Object.keys(value).length===keys.length
+  &&keys.every(key=>Object.hasOwn(value,key));
+function validateProjection(evidence){
+  if(!exactKeys(evidence,['schemaVersion','projectionKind','source','projects'])
+    ||evidence.schemaVersion!==1||evidence.projectionKind!==projectionKind
+    ||!exactKeys(evidence.source,['type','date','originalPath','originalSHA256'])
+    ||evidence.source.type!=='owner-supplied'||evidence.source.date!==sourceDate
+    ||evidence.source.originalPath!==EURO_OWNER_ORIGINAL_SOURCE_PATH
+    ||evidence.source.originalSHA256!==EURO_OWNER_ORIGINAL_SOURCE_SHA256
+    ||!exactKeys(evidence.projects,Object.keys(projectPriceKeys)))fail('projection identity or fields');
+  for(const [slug,keys] of Object.entries(projectPriceKeys)){
+    const owner=evidence.projects[slug];
+    if(!exactKeys(owner,['developer','commune','region','prices','priceStrings','projectFromUF','priceScope'])
+      ||owner.developer!=='Euro'||typeof owner.commune!=='string'||!owner.commune.trim()
+      ||typeof owner.region!=='string'||!owner.region.trim()
+      ||owner.priceScope!=='typology; not a unit offer'
+      ||!exactKeys(owner.prices,keys)||!exactKeys(owner.priceStrings,keys)
+      ||owner.projectFromUF!==(keys.length?Math.min(...Object.values(owner.prices)):null)
+      ||keys.some(key=>!priced(owner.prices[key])||typeof owner.priceStrings[key]!=='string'
+        ||!/^\d+(?:\.\d{1,2})?$/.test(owner.priceStrings[key])
+        ||Number(owner.priceStrings[key])!==owner.prices[key]))fail('projection project or price fields');
+  }
+}
 
-/** Verify the existing owner source, rather than the importer's derived fields. */
+/** Load only the pinned public projection; provenance retains the private original. */
 export async function parseEuroOwnerSource(text){
   if(typeof text!=='string'||text.length>1000000||!globalThis.crypto?.subtle)fail('invalid source transport');
   const digest=await globalThis.crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));
   const hash=[...new Uint8Array(digest)].map(value=>value.toString(16).padStart(2,'0')).join('');
   if(hash!==EURO_OWNER_SOURCE_SHA256)fail('source SHA-256 mismatch');
   const evidence=JSON.parse(text);
-  if(evidence.schemaVersion!==1||evidence.source?.type!=='owner-supplied'
-    ||evidence.source.date!==sourceDate||!object(evidence.projects))fail('source identity');
-  const source=freeze({evidence,path:EURO_OWNER_SOURCE_PATH,sha256:hash,date:sourceDate});
+  validateProjection(evidence);
+  const source=freeze({evidence,path:EURO_OWNER_ORIGINAL_SOURCE_PATH,
+    sha256:EURO_OWNER_ORIGINAL_SOURCE_SHA256,publicPath:EURO_OWNER_SOURCE_PATH,
+    publicSHA256:hash,date:sourceDate});
   sources.add(source);return source;
 }
 export async function loadEuroOwnerSource(fetchImpl=globalThis.fetch){
@@ -60,8 +94,9 @@ function recordForSource(project,source){
     if(!(project.preciosPorTipologia??[]).some(row=>row.tipologia===tableLabel&&row.precioDesdeUF===value))return null;
     const local=key==='local';
     references.push({id:project.slug+':owner-price:'+key,label:labelFor(key),
-      sourceKind:'owner-euro-typology',sourceDate:source.date,sourcePath:'data/euro-commercial.json',
+      sourceKind:'owner-euro-typology',sourceDate:source.date,sourcePath:source.path,
       sourcePointer:'/projects/'+project.slug+'/prices/'+key,sourceSHA256:source.sha256,
+      publicSourcePath:source.publicPath,publicSourceSHA256:source.publicSHA256,
       scope:owner.priceScope,stock:null,availability:null,unit:null,model:null,notOffer:true,
       priceDecimals:String(owner.priceStrings?.[key]??'').includes('.')?2:0,
       attributes:{priceUF:value,bedrooms:local?null:Number(key),

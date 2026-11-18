@@ -4,11 +4,15 @@ import {readFileSync} from 'node:fs';
 import {createHash,webcrypto} from 'node:crypto';
 import {isNollagamQuoteProject,loadNollagamOwnerQuoteContexts,nollagamOwnerQuoteContext,
   matchNollagamOwnerQuotes,nollagamOwnerQuoteWitness,nollagamOwnerQuoteOffer,
-  nollagamOwnerQuoteFacts,nollagamOwnerQuoteNote,NOLLAGAM_OWNER_SOURCE_SHA256}
+  nollagamOwnerQuoteFacts,nollagamOwnerQuoteNote,NOLLAGAM_OWNER_SOURCE_SHA256,
+  NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256,validateNollagamOwnerQuoteProjection}
   from '../assets/js/catalog-nollagam-quote-consumer.mjs';
 
 const published=JSON.parse(readFileSync(new URL('../data/proyectos.json',import.meta.url),'utf8'));
-const ownerBytes=readFileSync(new URL('../data/nollagam-commercial.json',import.meta.url));
+const ownerBytes=readFileSync(new URL('../data/catalog-nollagam-owner-quotes.json',import.meta.url));
+const projection=JSON.parse(ownerBytes);
+const originalBytes=readFileSync(new URL('../data/nollagam-commercial.json',import.meta.url));
+const original=JSON.parse(originalBytes);
 const body=bytes=>bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength);
 const sourceFetch=async()=>({ok:true,redirected:false,arrayBuffer:async()=>body(ownerBytes)});
 const loaded=await loadNollagamOwnerQuoteContexts(published,{fetchImpl:sourceFetch,cryptoImpl:webcrypto});
@@ -19,20 +23,108 @@ const evaluate=(project,state)=>{
   assert.ok(result!==null);assert.deepEqual(result.issues,[]);return result;
 };
 
-test('loader verifies the real owner JSON pin and returns seven ready contexts with original dates',async()=>{
-  assert.equal(createHash('sha256').update(ownerBytes).digest('hex'),NOLLAGAM_OWNER_SOURCE_SHA256);
+test('loader verifies the public projection pin and retains private-original provenance and dates',async()=>{
+  assert.equal(createHash('sha256').update(ownerBytes).digest('hex'),NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256);
   const calls=[];
   const result=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
     fetchImpl:async(url,options)=>{calls.push({url,options});return sourceFetch();}});
-  assert.equal(calls.length,1);assert.equal(calls[0].url,'/data/nollagam-commercial.json');
+  assert.equal(calls.length,1);assert.equal(calls[0].url,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
+  assert.equal(calls[0].url,'/data/catalog-nollagam-owner-quotes.json');
   assert.equal(calls[0].options.cache,'no-store');assert.equal(calls[0].options.credentials,'omit');
   assert.equal(calls[0].options.redirect,'error');assert.ok(calls[0].options.signal instanceof AbortSignal);
   assert.equal(result.status,'ready');assert.equal(Object.keys(result.bySlug).length,7);
   for(const [slug,context] of Object.entries(result.bySlug)){
     assert.equal(context.status,'ready');assert.equal(context.slug,slug);
     assert.equal(context.source.sha256,NOLLAGAM_OWNER_SOURCE_SHA256);assert.equal(context.source.date,'2026-10-28');
+    assert.equal(context.source.path,'data/nollagam-commercial.json');
+    assert.equal(context.source.publicSourcePath,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
+    assert.equal(context.source.publicSourceSHA256,NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256);
     assert.equal(context.record.sourceProject.slug,slug);assert.ok(Object.isFrozen(context));
+    for(const reference of context.record.references){
+      assert.equal(reference.sourcePath,'data/nollagam-commercial.json');
+      assert.equal(reference.sourceSHA256,NOLLAGAM_OWNER_SOURCE_SHA256);
+      assert.equal(reference.publicSourcePath,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
+      assert.equal(reference.publicSourceSHA256,NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256);
+    }
   }
+});
+
+test('public allowlist preserves exactly the seventeen original owner amounts and no project descriptions or URLs',()=>{
+  assert.equal(createHash('sha256').update(originalBytes).digest('hex'),NOLLAGAM_OWNER_SOURCE_SHA256);
+  assert.equal(projection.originalSourceSHA256,NOLLAGAM_OWNER_SOURCE_SHA256);
+  assert.equal(projection.originalSourcePath,'data/nollagam-commercial.json');
+  assert.equal(projection.checkedOn,original.checkedOn);assert.equal(projection.priceSource,original.priceSource);
+  assert.deepEqual(Object.keys(projection.projects),Object.keys(original.projects));
+  assert.deepEqual(Object.keys(projection),['schemaVersion','projectionKind','originalSourcePath',
+    'originalSourceSHA256','checkedOn','priceSource','projects']);
+  let count=0;
+  for(const [slug,project] of Object.entries(projection.projects)){
+    assert.deepEqual(Object.keys(project),['prices']);
+    assert.deepEqual(project.prices,original.projects[slug].prices);count+=Object.keys(project.prices).length;
+  }
+  assert.equal(count,17);assert.doesNotMatch(ownerBytes.toString('utf8'),/https?:\/\//);
+  assert.equal(validateNollagamOwnerQuoteProjection(projection),projection);
+});
+
+test('strict public schema rejects raw payloads, history, screenshots and brochure URLs at every data level',()=>{
+  assert.throws(()=>validateNollagamOwnerQuoteProjection(original),/source-schema-invalid/);
+  for(const field of ['history','commercialHistory','notes','screenshots','brochureURL','sourceUrl']){
+    const root=structuredClone(projection);root[field]='https://private.invalid/document';
+    assert.throws(()=>validateNollagamOwnerQuoteProjection(root),/source-schema-invalid/);
+    const project=structuredClone(projection);project.projects['costanera-coquimbo-a'][field]='https://private.invalid/document';
+    assert.throws(()=>validateNollagamOwnerQuoteProjection(project),/source-schema-invalid/);
+    const prices=structuredClone(projection);prices.projects['costanera-coquimbo-a'].prices[field]='https://private.invalid/document';
+    assert.throws(()=>validateNollagamOwnerQuoteProjection(prices),/source-schema-invalid/);
+  }
+  const wrappedRaw=structuredClone(projection);wrappedRaw.projects=original.projects;
+  assert.throws(()=>validateNollagamOwnerQuoteProjection(wrappedRaw),/source-schema-invalid/);
+});
+
+test('strict projection identity and exact numeric price-key allowlists reject new facts or substituted source proof',()=>{
+  for(const change of [{schemaVersion:2},{projectionKind:'raw-owner-data'},
+    {originalSourcePath:'data/other-owner.json'},{originalSourceSHA256:'0'.repeat(64)},
+    {checkedOn:'2026-11-17'},{priceSource:'Provider campaign'}]){
+    assert.throws(()=>validateNollagamOwnerQuoteProjection({...projection,...change}),/source-schema-invalid/);
+  }
+  const unknown=structuredClone(projection);unknown.projects['foreign-project']={prices:{'2':4210}};
+  assert.throws(()=>validateNollagamOwnerQuoteProjection(unknown),/source-schema-invalid/);
+  for(const key of ['1','4','02','constructor']){
+    const changed=structuredClone(projection);changed.projects['costanera-coquimbo-a'].prices[key]=4210;
+    assert.throws(()=>validateNollagamOwnerQuoteProjection(changed),/source-schema-invalid/);
+  }
+  for(const value of [null,'4210',0,-1,NaN,Infinity]){
+    const changed=structuredClone(projection);changed.projects['costanera-coquimbo-a'].prices['2']=value;
+    assert.throws(()=>validateNollagamOwnerQuoteProjection(changed),/source-schema-invalid/);
+  }
+  const missing=structuredClone(projection);delete missing.projects['costanera-coquimbo-a'].prices['2'];
+  assert.throws(()=>validateNollagamOwnerQuoteProjection(missing),/source-schema-invalid/);
+  const hidden=structuredClone(projection);Object.defineProperty(hidden,'history',{value:'private',enumerable:false});
+  assert.throws(()=>validateNollagamOwnerQuoteProjection(hidden),/source-schema-invalid/);
+});
+
+test('schema rejection remains independent of a transport digest that is accepted by the pin guard',async()=>{
+  // Stub only the digest to exercise the schema gate independently. Production
+  // keeps the fixed public pin and default WebCrypto; no pin override is added.
+  const acceptedDigest={subtle:{digest:async()=>body(Buffer.from(NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256,'hex'))}};
+  for(const source of [original,{...projection,history:['not public']},
+    {...projection,projects:{...projection.projects,'costanera-coquimbo-a':original.projects['costanera-coquimbo-a']}}]){
+    let reads=0;const poisoned=[new Proxy({},{get(){reads++;throw Error('normalizer must not run');}})];
+    const bytes=Buffer.from(JSON.stringify(source));
+    const result=await loadNollagamOwnerQuoteContexts(poisoned,{cryptoImpl:acceptedDigest,
+      fetchImpl:async()=>({ok:true,arrayBuffer:async()=>body(bytes)})});
+    assert.equal(result.status,'unavailable');assert.equal(reads,0);
+    for(const context of Object.values(result.bySlug))assert.equal(context.reason,'source-schema-invalid');
+  }
+});
+
+test('failed public projection loading makes exactly one request and never falls back to the private original',async()=>{
+  const calls=[];
+  const result=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
+    fetchImpl:async url=>{calls.push(url);return {ok:false,status:404};}});
+  assert.deepEqual(calls,['/data/catalog-nollagam-owner-quotes.json']);
+  assert.equal(calls.includes('/data/nollagam-commercial.json'),false);assert.equal(result.status,'unavailable');
+  const project=attach('costanera-coquimbo-a',result);
+  assert.equal(evaluate(project,{bedrooms:'3',minPriceInput:'1'}).matches,false);
 });
 
 test('Costanera A3D UF5070 survives the previously failing UF5000–5100 query',()=>{

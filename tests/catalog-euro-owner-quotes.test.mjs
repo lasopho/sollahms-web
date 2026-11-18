@@ -1,14 +1,18 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {EURO_OWNER_SOURCE_PATH,EURO_OWNER_SOURCE_SHA256,parseEuroOwnerSource,loadEuroOwnerSource,
+import {createHash} from 'node:crypto';
+import {EURO_OWNER_SOURCE_PATH,EURO_OWNER_SOURCE_SHA256,EURO_OWNER_ORIGINAL_SOURCE_PATH,
+  EURO_OWNER_ORIGINAL_SOURCE_SHA256,parseEuroOwnerSource,loadEuroOwnerSource,
   bindEuroOwnerQuotes,unavailableEuroOwnerQuotes,euroOwnerQuoteLoadFailed,usesEuroOwnerQuotes,
   matchEuroOwnerQuotes,euroOwnerQuoteOffer} from '../assets/js/catalog-euro-owner-quotes.mjs';
 import {advancedFilterAndSort,defaults,matchedLabels} from '../assets/js/catalog-filter-engine.mjs';
 import {projectOffer,offerPriceLabel,projectFacts,commercialLayerNote} from '../assets/js/catalog-model.mjs';
 
-const text=await readFile(new URL('../data/euro-commercial.json',import.meta.url),'utf8');
+const text=await readFile(new URL('../data/catalog-euro-owner-quotes.json',import.meta.url),'utf8');
 const source=await parseEuroOwnerSource(text),owner=JSON.parse(text);
+const originalText=await readFile(new URL('../data/euro-commercial.json',import.meta.url),'utf8');
+const originalOwner=JSON.parse(originalText);
 const catalogue=JSON.parse(await readFile(new URL('../data/proyectos.json',import.meta.url),'utf8'));
 const facets=JSON.parse(await readFile(new URL('../data/catalog-facets.json',import.meta.url),'utf8'));
 const original=catalogue.map(project=>({...project,_facets:facets.projects[project.slug]??{}}));
@@ -31,7 +35,10 @@ for(const [slug,projectOwner] of Object.entries(owner.projects))for(const [key,p
     assert.deepEqual(match.matchedReferenceIds,[slug+':owner-price:'+key]);
     const reference=match.references[0];
     assert.equal(reference.sourceDate,'2026-10-29');
-    assert.equal(reference.sourceSHA256,EURO_OWNER_SOURCE_SHA256);
+    assert.equal(reference.sourcePath,EURO_OWNER_ORIGINAL_SOURCE_PATH);
+    assert.equal(reference.sourceSHA256,EURO_OWNER_ORIGINAL_SOURCE_SHA256);
+    assert.equal(reference.publicSourcePath,EURO_OWNER_SOURCE_PATH);
+    assert.equal(reference.publicSourceSHA256,EURO_OWNER_SOURCE_SHA256);
     assert.equal(reference.attributes.priceUF,price);
     assert.equal(reference.attributes.bathrooms,null);
     assert.equal(reference.attributes.usefulM2,null);
@@ -46,11 +53,54 @@ for(const [slug,projectOwner] of Object.entries(owner.projects))for(const [key,p
 test('source transport is pinned before records can be constructed',async()=>{
   const calls=[];
   const loaded=await loadEuroOwnerSource(async(path,options)=>{calls.push({path,options});return {ok:true,text:async()=>text};});
-  assert.equal(calls.length,1);assert.equal(calls[0].path,EURO_OWNER_SOURCE_PATH);
+  assert.equal(calls.length,1);assert.equal(calls[0].path,'/data/catalog-euro-owner-quotes.json');
   assert.equal(calls[0].options.credentials,'omit');assert.equal(calls[0].options.redirect,'error');
   assert.equal(bindEuroOwnerQuotes(original,loaded).length,131);
   await assert.rejects(parseEuroOwnerSource(text+' '),/SHA-256 mismatch/);
   assert.throws(()=>bindEuroOwnerQuotes(original,{...source}),/verified source required/);
+});
+
+test('public projection contains exactly the original21 owner prices and permitted identity fields',()=>{
+  assert.equal(createHash('sha256').update(originalText).digest('hex'),EURO_OWNER_ORIGINAL_SOURCE_SHA256);
+  assert.equal(createHash('sha256').update(text).digest('hex'),EURO_OWNER_SOURCE_SHA256);
+  assert.deepEqual(Object.keys(owner).sort(),['projectionKind','projects','schemaVersion','source']);
+  assert.equal(owner.projectionKind,'catalog-euro-owner-quotes-v1');
+  assert.deepEqual(owner.source,{type:'owner-supplied',date:'2026-10-29',
+    originalPath:EURO_OWNER_ORIGINAL_SOURCE_PATH,originalSHA256:EURO_OWNER_ORIGINAL_SOURCE_SHA256});
+  assert.deepEqual(Object.keys(owner.projects),Object.keys(originalOwner.projects));
+  const fields=['developer','commune','region','prices','priceStrings','projectFromUF','priceScope'];
+  for(const [slug,project] of Object.entries(owner.projects)){
+    assert.deepEqual(Object.keys(project),fields);
+    assert.deepEqual(project,Object.fromEntries(fields.map(key=>[key,originalOwner.projects[slug][key]])));
+  }
+  assert.equal(Object.keys(owner.projects).length,12);
+  assert.equal(Object.values(owner.projects).reduce((count,project)=>count+Object.keys(project.prices).length,0),21);
+  assert.deepEqual(owner.projects['diagonal-vicuna'].prices,{});
+  assert.deepEqual(owner.projects['diagonal-vicuna'].priceStrings,{});
+  assert.equal(owner.projects['diagonal-vicuna'].projectFromUF,null);
+  assert.equal(JSON.stringify(owner).includes('inheritedPriceReview'),false);
+});
+
+test('raw owner payload is rejected without retrying the private original endpoint',async()=>{
+  const paths=[];
+  await assert.rejects(parseEuroOwnerSource(originalText),/SHA-256 mismatch/);
+  await assert.rejects(loadEuroOwnerSource(async path=>{
+    paths.push(path);return {ok:true,text:async()=>originalText};
+  }),/SHA-256 mismatch/);
+  assert.deepEqual(paths,['/data/catalog-euro-owner-quotes.json']);
+});
+
+for(const [scope,change] of [
+  ['root',projection=>{projection.notes='Private notes';}],
+  ['source',projection=>{projection.source.screenshots=['private.png'];}],
+  ['project history',projection=>{projection.projects['diagonal-vicuna'].inheritedPriceReview={priceUF:3184};}],
+  ['project state',projection=>{projection.projects['edificio-don-pepe-154'].state='Private state';}],
+  ['price key',projection=>{projection.projects['edificio-don-pepe-154'].prices['3']=3562;
+    projection.projects['edificio-don-pepe-154'].priceStrings['3']='3562';}]
+])test('public projection rejects unapproved '+scope+' fields before normalization',async()=>{
+  const before=JSON.stringify(owner),altered=structuredClone(owner);change(altered);
+  await assert.rejects(parseEuroOwnerSource(JSON.stringify(altered)),/SHA-256 mismatch/);
+  assert.equal(JSON.stringify(owner),before);
 });
 
 test('Diagonal has no owner price and never acquires a historical campaign amount',()=>{
