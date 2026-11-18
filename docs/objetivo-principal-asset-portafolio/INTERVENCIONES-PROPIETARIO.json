@@ -137,7 +137,7 @@
     {
       "id": "AUTH-PUSH-PR-PUBLIC-PROJECTIONS-20261117-01",
       "kind": "Primer push nueva rama y nuevo PRDraft para proyecciones públicas",
-      "status": "SOLICITADA_PENDIENTE_DE_RESPUESTA",
+      "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
       "recordedAtUTC": "2026-11-18T00:55:01.355510+00:00",
       "repository": "lasopho/sollahms-web",
       "branch": "codex/proyecciones-publicas-cotizaciones-20261117",
@@ -163,8 +163,79 @@
       "automaticDeploymentsDisabledForSourceAndBase": true,
       "questionAlreadyPresented": true,
       "doNotRepeatQuestion": true,
-      "newOwnerResponseReceived": false,
-      "pendingOwnerAction": "Autorizar push y PRDraft o conservar candidato local; esperar respuesta expresa."
+      "newOwnerResponseReceived": true,
+      "pendingOwnerAction": null,
+      "authorizationReply": "Autorizar push y PR Draft",
+      "responseRecordedAtUTC": "2026-11-18T01:03:32.654482+00:00",
+      "verifiedRemoteSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+      "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34",
+      "draft": true,
+      "createdAtUTC": "2026-11-18T01:00:20Z"
+    },
+    {
+      "id": "AUTH-READY-PR34-20261117-01",
+      "kind": "Autorización independiente para Ready for Review PR34",
+      "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
+      "recordedAtUTC": "2026-11-18T01:03:32.654482+00:00",
+      "repository": "lasopho/sollahms-web",
+      "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34",
+      "headSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+      "baseSHA": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+      "scope": [
+        "Cambiar únicamente PR34 de Draft a Ready for Review"
+      ],
+      "notAuthorized": [
+        "merge",
+        "deployment",
+        "publicación",
+        "promoción",
+        "dominios",
+        "SSO",
+        "variables"
+      ],
+      "questionAlreadyPresented": true,
+      "doNotRepeatQuestion": true,
+      "newOwnerResponseReceived": true,
+      "pendingOwnerAction": null,
+      "authorizationReply": "Autorizar Ready for Review",
+      "responseRecordedAtUTC": "2026-11-18T01:06:45.731415+00:00",
+      "executedAtUTC": "2026-11-18T01:04:46Z",
+      "draft": false
+    },
+    {
+      "id": "AUTH-MERGE-PR34-20261117-01",
+      "kind": "Autorización independiente merge commit PR34",
+      "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
+      "recordedAtUTC": "2026-11-18T01:06:45.731415+00:00",
+      "repository": "lasopho/sollahms-web",
+      "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34",
+      "headSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+      "targetBranch": "codex/footer-sin-frase-20261116",
+      "baseSHA": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+      "method": "merge",
+      "scope": [
+        "Merge commit sólo PR34 en la base indicada con guarda SHA exacto"
+      ],
+      "notAuthorized": [
+        "deployment",
+        "publicación",
+        "promoción",
+        "dominios",
+        "SSO",
+        "variables",
+        "main"
+      ],
+      "questionAlreadyPresented": true,
+      "doNotRepeatQuestion": true,
+      "newOwnerResponseReceived": true,
+      "pendingOwnerAction": null,
+      "authorizationReply": "Autorizar merge en la base indicada",
+      "responseRecordedAtUTC": "2026-11-18T01:11:24.254449+00:00",
+      "executedAtUTC": "2026-11-18T01:07:18Z",
+      "executedLocalDate": "2026-11-17",
+      "executedLocalTime": "22:07:18 America/Santiago",
+      "mergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+      "expectedHeadGuardUsed": true
     }
   ],
   "otherPriorWaitsUnchanged": true

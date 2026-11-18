@@ -6,7 +6,7 @@
   "baseBranch": "codex/footer-sin-frase-20261116",
   "baseCommit": "cb3597102e63f02356cca00cd3612f9afc77afcb",
   "baseMeaning": "Authorized PR33merge, not the still-live production9e.",
-  "status": "CANDIDATO_LOCAL_REVISADO_SIN_PUSH_PR",
+  "status": "PR34_FUSIONADO_NO_DESPLEGADO",
   "fileCount": 8,
   "files": [
     {
@@ -51,8 +51,8 @@
     }
   ],
   "localWorkingTreeClean": true,
-  "remoteBranchExists": false,
-  "newPRCreated": false,
+  "remoteBranchExists": true,
+  "newPRCreated": true,
   "automaticDeploymentsDisabledForSourceAndBase": true,
   "reason": "Avoid publishing raw ownerJSON internal history/notes/screenshots. Publish only pinned minimal projections; originals retained untouched.",
   "commercialValues": {
@@ -102,7 +102,14 @@
     "browserNewPublicResponses": 200,
     "browserRuntimeExceptions": 0,
     "browserConsoleErrors": 0,
-    "staticFinancialScenariosNotCertified": true
+    "staticFinancialScenariosNotCertified": true,
+    "sourceMergeCommit": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+    "mergeCertificate": {
+      "path": "preparacion-deployment-pr34/MERGE-CERTIFICADO.json",
+      "sha256": "a05f3c5c4f24ba6ed6bb40bf9f42431a1d907cd422c8910b12a8206b20035918"
+    },
+    "sourceTreeIdenticalToCertifiedCandidate": true,
+    "outputBytesUnchangedAfterMerge": true
   },
   "quarantinedPackage": "Never deploy/private/tmp/sollahms-pr33-release-20261117; it retains raw owner sources and is blocked.",
   "production": {
@@ -111,9 +118,8 @@
     "unchanged": true
   },
   "remainingAuthorization": [
-    "First push of this new branch",
-    "Create a new PR in Draft",
-    "Ready/merge/deployment/promotion require separate future permissions"
+    "Crear un deployment de revisión sin dominios",
+    "Promoción/publicación independiente posterior"
   ],
   "global131ObjectiveComplete": false,
   "preview": "http://127.0.0.1:8769/proyectos.html?q=Costanera&precio_min=5000&precio_max=5100&dormitorios=3",
@@ -127,8 +133,104 @@
   },
   "firstPushPRRequest": {
     "interventionId": "AUTH-PUSH-PR-PUBLIC-PROJECTIONS-20261117-01",
-    "status": "SOLICITADA_PENDIENTE_DE_RESPUESTA",
+    "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
     "alreadyPresented": true,
-    "doNotRepeat": true
+    "doNotRepeat": true,
+    "authorizationReply": "Autorizar push y PR Draft",
+    "remoteSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+    "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34"
+  },
+  "remoteSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+  "verifiedAtUTC": "2026-11-18T01:11:24.254449+00:00",
+  "pullRequest": {
+    "number": 34,
+    "url": "https://github.com/lasopho/sollahms-web/pull/34",
+    "state": "closed",
+    "draft": false,
+    "merged": true,
+    "headSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+    "baseBranch": "codex/footer-sin-frase-20261116",
+    "baseSHA": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+    "createdAtUTC": "2026-11-18T01:00:20Z",
+    "updatedAtUTC": "2026-11-18T01:04:46Z",
+    "mergedAtUTC": "2026-11-18T01:07:18Z",
+    "mergeCommitSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335"
+  },
+  "independentReview": {
+    "verdict": "APROBADO_CON_OBSERVACIONES",
+    "blockingFindings": 0,
+    "reviewerTask": "/root/global_scope_inventory",
+    "revalidatedAtUTC": "2026-11-18T01:03:32.654482+00:00",
+    "scope": "Lectura independiente del delta de ocho archivos; hashes 8/8, padre/merge-base CB, protegidos155 y originales21, configuración false. Sin repetir pruebas.",
+    "observations": [
+      "El paquete raw anterior sigue en cuarentena y nunca debe desplegarse.",
+      "Las cotizaciones fechadas no acreditan stock ni vigencia actual.",
+      "API UF y escenarios financieros fuera del QA estático.",
+      "GitHub no aporta reviews, status checks, check runs ni workflow runs PR; su ausencia no es aprobación."
+    ]
+  },
+  "GitHubEvidence": {
+    "reviews": 0,
+    "comments": 0,
+    "commitStatusChecks": 0,
+    "checkRuns": 0,
+    "pullRequestWorkflowRuns": 0,
+    "mergeable": true,
+    "noImplicitApproval": true
+  },
+  "nextAction": {
+    "step": "Deployment de revisión único, prebuilt production sin dominios",
+    "authorization": "NO_SOLICITADA_AUN",
+    "deploymentPublicationAuthorized": false,
+    "promotionRequiresSeparateAuthorization": true
+  },
+  "mergePreparation": {
+    "recordedAtUTC": "2026-11-18T01:06:45.731415+00:00",
+    "headSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+    "baseSHA": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+    "baseIsDirectParentAndMergeBase": true,
+    "candidateTree": "7cf85af3571dc90f6b425ad69a3b9700394dc471",
+    "expectedMergeTreeWithExactRefs": "7cf85af3571dc90f6b425ad69a3b9700394dc471",
+    "fileCount": 8,
+    "protectedFilesUnchanged": 155,
+    "originalSourceFilesUnchanged": 21,
+    "sourceTargetMainAutomaticDeploymentsDisabled": true,
+    "mergeable": true,
+    "workingTreeClean": true,
+    "GitHubReviews": 0,
+    "GitHubChecks": 0,
+    "GitHubPRWorkflowRuns": 0,
+    "noImplicitCIApproval": true,
+    "method": "merge",
+    "requireExactHeadGuard": true,
+    "mainModification": false,
+    "deploymentOrPublication": false,
+    "executed": true,
+    "authorization": "AUTORIZADO_EJECUTADO_VERIFICADO",
+    "interventionId": "AUTH-MERGE-PR34-20261117-01"
+  },
+  "readyTransition": {
+    "authorizationReply": "Autorizar Ready for Review",
+    "interventionId": "AUTH-READY-PR34-20261117-01",
+    "executedAtUTC": "2026-11-18T01:04:46Z",
+    "verifiedDraft": false,
+    "headAndBaseUnchanged": true
+  },
+  "mergeTransition": {
+    "authorizationReply": "Autorizar merge en la base indicada",
+    "interventionId": "AUTH-MERGE-PR34-20261117-01",
+    "executedAtUTC": "2026-11-18T01:07:18Z",
+    "executedLocalTime": "2026-11-17T22:07:18-03:00",
+    "method": "merge",
+    "expectedHeadGuardUsed": true,
+    "sha": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+    "parents": [
+      "cb3597102e63f02356cca00cd3612f9afc77afcb",
+      "3082a859fd4b0600478a4b8a7d14cff16067853b"
+    ],
+    "tree": "7cf85af3571dc90f6b425ad69a3b9700394dc471",
+    "treeEqualsCertifiedCandidate": true,
+    "sourceBranchPreserved": true,
+    "mainUnchanged": true
   }
 }

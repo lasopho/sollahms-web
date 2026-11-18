@@ -82,7 +82,7 @@
     "No alterar main,dominios,SSO,variables,fichas,precios oserviciosprotegidos.",
     "La clasificación131 y los16testigos no equivalen a objetivo global terminado."
   ],
-  "verifiedAtUTC": "2026-11-18T00:11:55.121288+00:00",
+  "verifiedAtUTC": "2026-11-18T01:11:24.254449+00:00",
   "corrections": {
     "publishedTypologyPrices": "cea57c8144d1e388203f0743f8b87fc88b5441ed",
     "receipt": "correccion-precios-tipologia-20261117/recibo-final34/sollahms-typology-prices-receipt.json",
@@ -131,10 +131,12 @@
     "No GitHub reviews or PR workflow runs found; no implicitCIapproval."
   ],
   "nextAction": {
-    "step": "Primer push rama proyecciones públicas y nuevo PRDraft",
-    "authorization": "SOLICITADA_PENDIENTE_DE_RESPUESTA",
-    "interventionId": "AUTH-PUSH-PR-PUBLIC-PROJECTIONS-20261117-01",
-    "newPRDeploymentPublicationAuthorized": false
+    "step": "Deployment de revisión único, prebuilt production sin dominios",
+    "authorization": "NO_SOLICITADA_AUN",
+    "deploymentPublicationAuthorized": false,
+    "promotionRequiresSeparateAuthorization": true,
+    "correctivePR": "https://github.com/lasopho/sollahms-web/pull/34",
+    "correctiveMergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335"
   },
   "latestArchiveWhitespace": {
     "originalFiles": [
@@ -215,7 +217,7 @@
     "localRawPackage": "/private/tmp/sollahms-pr33-release-20261117",
     "localRawPackageDeployable": false,
     "correction": "Create strict allowlisted public projections for Euro and Nollagam with exact existing values/dates and original private source hash; load only new URLs/pins. No raw fallback or changes to originals.",
-    "statusOfCorrection": "RESUELTO_EN_CANDIDATO_LOCAL_3082_NO_PUBLICADO",
+    "statusOfCorrection": "RESUELTO_EN_MERGE_PR34_NO_PUBLICADO",
     "newCommercialFacts": 0,
     "newOwnerPrices": 0,
     "LebenClosures": 0,
@@ -225,7 +227,7 @@
     "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
     "branch": "codex/proyecciones-publicas-cotizaciones-20261117",
     "base": "cb3597102e63f02356cca00cd3612f9afc77afcb",
-    "status": "REVISADO_LOCAL_SIN_PUSH_PR",
+    "status": "PR34_FUSIONADO_NO_DESPLEGADO",
     "filesExpected": 8,
     "originalSourcesUnchanged": true,
     "newCommercialEvidence": false,
@@ -240,11 +242,15 @@
       "data/catalog-nollagam-owner-quotes.json": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee"
     },
     "sourceBranchAutomaticDeploymentDisabledLocally": true,
-    "firstPushNewPRDeploymentPublicationAuthorized": false,
     "localCommit": "3082a859fd4b0600478a4b8a7d14cff16067853b",
     "fileCount": 8,
     "workingTreeClean": true,
     "ChromeSpecificPassed": 7,
-    "correctedPublicPackagePrepared": true
+    "correctedPublicPackagePrepared": true,
+    "remoteSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+    "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34",
+    "firstPushAndDraftPRExecuted": true,
+    "deploymentPublicationAuthorized": false,
+    "mergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335"
   }
 }

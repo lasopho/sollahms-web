@@ -12,4 +12,4 @@ Validación específica:
 
 Paquete local de1.672 archivos preparado por copia/verificación de bytes,sin build o generador. No contiene originales owner,docs,tests,fixtures o mediosIris nuevos. QA estático no ejecuta/api/uf ni certifica escenarios financieros.
 
-Ocho archivos respecto del merge cb359710. La única modificación de vercel.json excluye deployments automáticos de la rama nueva; destino tambiénfalse. Este entregable solicita únicamente primer push y nuevoPRDraft. No autoriza Ready,merge,deployment o publicación; producción continúa9e/Gm75.
+Ocho archivos respecto del merge cb359710. La única modificación de vercel.json excluye deployments automáticos de la rama nueva; destino tambiénfalse. El primer push exacto y el PR Draft fueron autorizados y ejecutados: [PR #34](https://github.com/lasopho/sollahms-web/pull/34), head3082 y baseCB. Ready fue autorizado y ejecutado posteriormente. El estado actual y la solicitud pendiente de merge se registran en ESTADO-PR34.json. No autoriza Ready,merge,deployment o publicación; producción continúa9e/Gm75.

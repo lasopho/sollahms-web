@@ -1,0 +1,236 @@
+{
+  "dateLocal": "2026-11-17",
+  "recordedAtUTC": "2026-11-18T01:03:32.654482+00:00",
+  "repository": "lasopho/sollahms-web",
+  "branch": "codex/proyecciones-publicas-cotizaciones-20261117",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "localAndRemoteSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+  "baseBranch": "codex/footer-sin-frase-20261116",
+  "baseSHA": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+  "pullRequest": {
+    "number": 34,
+    "url": "https://github.com/lasopho/sollahms-web/pull/34",
+    "state": "closed",
+    "draft": false,
+    "merged": true,
+    "headSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+    "baseBranch": "codex/footer-sin-frase-20261116",
+    "baseSHA": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+    "createdAtUTC": "2026-11-18T01:00:20Z",
+    "updatedAtUTC": "2026-11-18T01:04:46Z",
+    "mergedAtUTC": "2026-11-18T01:07:18Z",
+    "mergeCommitSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335"
+  },
+  "files": [
+    {
+      "path": "assets/js/catalog-euro-owner-quotes.mjs",
+      "bytes": 11487,
+      "sha256": "81edb95704b0516005902c3fd786f8566f440a2f6b1cda8e7c5bb2806bb858d7"
+    },
+    {
+      "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "bytes": 8906,
+      "sha256": "b995850c613e305eb699b2a5f7cced8914f2b361e41b7fb5bb4c5d254f8114f1"
+    },
+    {
+      "path": "data/catalog-euro-owner-quotes.json",
+      "bytes": 4487,
+      "sha256": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272"
+    },
+    {
+      "path": "data/catalog-nollagam-owner-quotes.json",
+      "bytes": 1129,
+      "sha256": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee"
+    },
+    {
+      "path": "tests/catalog-euro-owner-quotes.test.mjs",
+      "bytes": 16127,
+      "sha256": "93c4498ebed8e75613406818958cce3189b9544db9319bb47a27338b2947ed64"
+    },
+    {
+      "path": "tests/catalog-nollagam-integration.test.mjs",
+      "bytes": 5256,
+      "sha256": "d34b3125628ada323e713b100543929a877861e6aae975884ebb967e939560c4"
+    },
+    {
+      "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+      "bytes": 19009,
+      "sha256": "565d061c9865cbafe31c9cdce91f583aaf20f6df5e52a1beea9047fb573b2316"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 3834,
+      "sha256": "466adf1e21f5960b832915594362515e485d0bd0c511cf1e95dd4c693ad1ecf7"
+    }
+  ],
+  "fileCount": 8,
+  "commits": 1,
+  "localWorkingTreeClean": true,
+  "authorization": {
+    "interventionId": "AUTH-PUSH-PR-PUBLIC-PROJECTIONS-20261117-01",
+    "ownerReply": "Autorizar push y PR Draft",
+    "executed": true,
+    "scope": [
+      "Primer push exacto de esta rama",
+      "Crear PR Draft"
+    ]
+  },
+  "GitHubEvidence": {
+    "reviews": 0,
+    "comments": 0,
+    "commitStatusChecks": 0,
+    "checkRuns": 0,
+    "pullRequestWorkflowRuns": 0,
+    "mergeable": true,
+    "noImplicitApproval": true
+  },
+  "independentReview": {
+    "verdict": "APROBADO_CON_OBSERVACIONES",
+    "blockingFindings": 0,
+    "reviewerTask": "/root/global_scope_inventory",
+    "revalidatedAtUTC": "2026-11-18T01:03:32.654482+00:00",
+    "scope": "Lectura independiente del delta de ocho archivos; hashes 8/8, padre/merge-base CB, protegidos155 y originales21, configuración false. Sin repetir pruebas.",
+    "observations": [
+      "El paquete raw anterior sigue en cuarentena y nunca debe desplegarse.",
+      "Las cotizaciones fechadas no acreditan stock ni vigencia actual.",
+      "API UF y escenarios financieros fuera del QA estático.",
+      "GitHub no aporta reviews, status checks, check runs ni workflow runs PR; su ausencia no es aprobación."
+    ]
+  },
+  "tests": {
+    "EuroSpecific": 49,
+    "NollagamConsumer": 19,
+    "NollagamIntegration": 23,
+    "newChromeFocused": 7,
+    "historical11283And23NotRepeated": true,
+    "doNotAddPriorSubsets": true
+  },
+  "testsRepeatedThisTurn": false,
+  "preservation": {
+    "protectedFilesUnchanged": 155,
+    "originalSourcesUnchanged": 21,
+    "UIModelEngineMapFinanceUnchanged": true,
+    "sourceVerification": "correccion-proyecciones-publicas-20261117/PRESERVACION-RAIZ.json",
+    "releaseFichesUnchanged": 131,
+    "releaseFunctionFilesUnchanged": 57,
+    "releaseFunctionBundlesUnchanged": 7,
+    "releaseConfigurationAndPatio410Unchanged": true
+  },
+  "deploymentProtection": {
+    "sourceDeploymentEnabled": false,
+    "targetDeploymentEnabled": false,
+    "mainDeploymentEnabled": false
+  },
+  "production": {
+    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "state": "READY",
+    "target": "production",
+    "verifiedByHostname": "sollahms.cl",
+    "unchanged": true,
+    "newDeployments": 0
+  },
+  "mainSHA": "86e200ec191b38af355061e21bc0fc1e549cce3b",
+  "operations": {
+    "firstPush": true,
+    "draftPRCreated": true,
+    "ReadyForReview": true,
+    "merge": true,
+    "deployment": false,
+    "publication": false,
+    "forcePush": false,
+    "mainModified": false
+  },
+  "publicPackage": {
+    "path": "/private/tmp/sollahms-proyecciones-publicas-release-20261117",
+    "status": "PREPARADO_LOCAL_PENDIENTE_AUTORIZACIONES",
+    "inventorySHA256": "31eee39b568fa35a32cbab1dfe1ace80ac8b1d1ac1486d0456f1e98cde6f9b19",
+    "totalFiles": 1672,
+    "staticFiles": 1614,
+    "functionFiles": 57,
+    "configurationFiles": 1,
+    "baselineUnchangedOutsideOverlay": 1657,
+    "runtimeJavaScriptFiles": 13,
+    "publicJSONFiles": 2,
+    "originalOwnerJSONFilesExcluded": true,
+    "sourceOnlyFichasExcluded": true,
+    "noNewDocsTestsFixturesIrisMedia": true,
+    "publicDependencyMissing": 0,
+    "browserRawSourceRequests": 0,
+    "browserNewPublicResponses": 200,
+    "browserRuntimeExceptions": 0,
+    "browserConsoleErrors": 0,
+    "staticFinancialScenariosNotCertified": true,
+    "sourceMergeCommit": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+    "mergeCertificate": {
+      "path": "preparacion-deployment-pr34/MERGE-CERTIFICADO.json",
+      "sha256": "a05f3c5c4f24ba6ed6bb40bf9f42431a1d907cd422c8910b12a8206b20035918"
+    },
+    "sourceTreeIdenticalToCertifiedCandidate": true,
+    "outputBytesUnchangedAfterMerge": true
+  },
+  "nextAction": {
+    "step": "Deployment de revisión único, prebuilt production sin dominios",
+    "authorization": "NO_SOLICITADA_AUN",
+    "deploymentPublicationAuthorized": false,
+    "promotionRequiresSeparateAuthorization": true
+  },
+  "global131ObjectiveComplete": false,
+  "historicalLebenPendingIDsUnchanged": 313,
+  "priorPR33": {
+    "state": "merged",
+    "mergeSHA": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+    "noDeployment": true
+  },
+  "mergePreparation": {
+    "recordedAtUTC": "2026-11-18T01:06:45.731415+00:00",
+    "headSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
+    "baseSHA": "cb3597102e63f02356cca00cd3612f9afc77afcb",
+    "baseIsDirectParentAndMergeBase": true,
+    "candidateTree": "7cf85af3571dc90f6b425ad69a3b9700394dc471",
+    "expectedMergeTreeWithExactRefs": "7cf85af3571dc90f6b425ad69a3b9700394dc471",
+    "fileCount": 8,
+    "protectedFilesUnchanged": 155,
+    "originalSourceFilesUnchanged": 21,
+    "sourceTargetMainAutomaticDeploymentsDisabled": true,
+    "mergeable": true,
+    "workingTreeClean": true,
+    "GitHubReviews": 0,
+    "GitHubChecks": 0,
+    "GitHubPRWorkflowRuns": 0,
+    "noImplicitCIApproval": true,
+    "method": "merge",
+    "requireExactHeadGuard": true,
+    "mainModification": false,
+    "deploymentOrPublication": false,
+    "executed": true,
+    "authorization": "AUTORIZADO_EJECUTADO_VERIFICADO",
+    "interventionId": "AUTH-MERGE-PR34-20261117-01"
+  },
+  "verifiedAtUTC": "2026-11-18T01:11:24.254449+00:00",
+  "readyTransition": {
+    "authorizationReply": "Autorizar Ready for Review",
+    "interventionId": "AUTH-READY-PR34-20261117-01",
+    "executedAtUTC": "2026-11-18T01:04:46Z",
+    "verifiedDraft": false,
+    "headAndBaseUnchanged": true
+  },
+  "mergeTransition": {
+    "authorizationReply": "Autorizar merge en la base indicada",
+    "interventionId": "AUTH-MERGE-PR34-20261117-01",
+    "executedAtUTC": "2026-11-18T01:07:18Z",
+    "executedLocalTime": "2026-11-17T22:07:18-03:00",
+    "method": "merge",
+    "expectedHeadGuardUsed": true,
+    "sha": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+    "parents": [
+      "cb3597102e63f02356cca00cd3612f9afc77afcb",
+      "3082a859fd4b0600478a4b8a7d14cff16067853b"
+    ],
+    "tree": "7cf85af3571dc90f6b425ad69a3b9700394dc471",
+    "treeEqualsCertifiedCandidate": true,
+    "sourceBranchPreserved": true,
+    "mainUnchanged": true
+  },
+  "targetCurrentSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335"
+}
