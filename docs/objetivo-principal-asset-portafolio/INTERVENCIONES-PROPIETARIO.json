@@ -461,7 +461,16 @@
       "newOwnerResponseReceived": false,
       "pendingOwnerAction": "Autorizar push y PR Draft o mantener sólo local.",
       "technicalPushPerformed": false,
-      "PRCreated": false
+      "PRCreated": false,
+      "baseReferenceChangedByAuthorizedPR36Merge": {
+        "originalRequestedBaseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+        "currentTargetBranchSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+        "cause": "Owner-authorized PR36 merge",
+        "requiresReconciliationBeforeAnyExecution": true,
+        "keepOriginalCandidateFrozen": true,
+        "doesNotAuthorizeRebaseOrNewPush": true,
+        "doNotRepeatPendingQuestion": true
+      }
     },
     {
       "id": "AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01",
@@ -558,7 +567,7 @@
     {
       "id": "AUTH-MERGE-PR36-20261118-01",
       "kind": "Autorización independiente merge commit PR36",
-      "status": "PENDIENTE_RESPUESTA",
+      "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
       "preparedAtUTC": "2026-11-18T20:19:41.618712+00:00",
       "repository": "lasopho/sollahms-web",
       "pullRequest": "https://github.com/lasopho/sollahms-web/pull/36",
@@ -583,10 +592,10 @@
       ],
       "questionAlreadyPresented": true,
       "doNotRepeatAfterPresentation": true,
-      "newOwnerResponseReceived": false,
-      "pendingOwnerAction": "Autorizar merge en la base indicada o mantener Ready sin fusionar.",
-      "mergePerformed": false,
-      "mergeAuthorized": false,
+      "newOwnerResponseReceived": true,
+      "pendingOwnerAction": null,
+      "mergePerformed": true,
+      "mergeAuthorized": true,
       "candidateFiles": 59,
       "protectedGitIdentitiesPreserved": 155,
       "sourceAndBaseDeploymentsDisabled": true,
@@ -595,7 +604,69 @@
       "presentationRecordedAtUTC": "2026-11-18T20:23:02.187979+00:00",
       "doNotRepeatQuestion": true,
       "question": "¿Autorizas fusionar PR36 mediante merge commit en codex/footer-sin-frase-20261116, comprobando head6cedd32 y base875bd80 exactos? No incluye main, deployments ni publicación; 24a sigue separado.",
-      "inputToolAccepted": true
+      "inputToolAccepted": true,
+      "authorizationReply": "Autorizar merge en la base indicada",
+      "mergeCommitSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+      "mergeAtUTC": "2026-11-18T20:42:58Z",
+      "executionRecordedAtUTC": "2026-11-18T20:46:28.913983+00:00",
+      "operation": "mcp__codex_apps__github_merge_pull_request",
+      "apiMergeMethod": "merge",
+      "remainingMergeAuthorizations": 0,
+      "verifiedExpectedTree": "f2d22640e0876d788789b27f99e3e27587384056",
+      "deploymentAuthorized": false,
+      "publicationAuthorized": false
+    },
+    {
+      "id": "AUTH-DEPLOYMENT-PR36-20261118-01",
+      "kind": "Un único deployment de revisión sin dominios productivos",
+      "status": "PREPARADA_PENDIENTE_PRESENTAR",
+      "preparedAtUTC": "2026-11-18T21:21:37.978866+00:00",
+      "repository": "lasopho/sollahms-web",
+      "sourceMergeSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+      "sourceTree": "f2d22640e0876d788789b27f99e3e27587384056",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+      "stageRoot": "/private/tmp/sollahms-pr36-public-package-20261118/stage",
+      "prebuiltOutput": "/private/tmp/sollahms-pr36-public-package-20261118/stage/.vercel/output",
+      "packageFiles": 1721,
+      "packageBytes": 227584223,
+      "packageInventorySHA256": "d3d6692a7cf190d36d0cb173497c2b36775b7fa1a0f5c951c5a2a87c1b770558",
+      "packageManifestSHA256": "f0fa6e13c6d41f62325f0b7ab7487e5c6a7dbe445a0c3148e60cff2ac3862f5e",
+      "preparedResult": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/paquete-publico/CIERRE-PAQUETE-PUBLICO-21.json",
+      "maximumNewDeployments": 1,
+      "deploymentsCreated": 0,
+      "scope": [
+        "Crear sólo un deployment de revisión con el paquete prebuilt verificado",
+        "Entorno production con --skip-domain sin asignar dominios productivos",
+        "Verificar readiness, hashes y navegación protegida usando sesión personal normal"
+      ],
+      "officialCLI": "65.11.0",
+      "requiredFlags": [
+        "deploy",
+        "--prebuilt",
+        "--environment production",
+        "--skip-domain",
+        "--project explicit",
+        "--scope explicit",
+        "--non-interactive",
+        "--meta githubCommitSha=d3fb474f08b81a965d2e0eac927adf88671968c0"
+      ],
+      "notAuthorized": [
+        "promotion",
+        "publication",
+        "productionAliasAssignment",
+        "DNS",
+        "domains",
+        "SSO",
+        "environmentVariables",
+        "newBuilds",
+        "main",
+        "supplement24a"
+      ],
+      "questionAlreadyPresented": false,
+      "doNotRepeatAfterPresentation": true,
+      "newOwnerResponseReceived": false,
+      "pendingOwnerAction": "Autorizar deployment sin dominios o mantener paquete sólo local."
     }
   ],
   "otherPriorWaitsUnchanged": true

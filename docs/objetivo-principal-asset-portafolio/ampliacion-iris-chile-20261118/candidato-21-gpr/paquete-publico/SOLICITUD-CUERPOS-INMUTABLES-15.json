@@ -1,0 +1,188 @@
+{
+  "kind": "EXACT_IMMUTABLE_BODY_RECOVERY_REQUEST",
+  "recordedAtUTC": "2026-11-18T20:55:19.063819+00:00",
+  "sourceDeployment": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+  "sourceCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "targetCount": 15,
+  "uniqueFileIds": 14,
+  "frozenTree": {
+    "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/deployment-pr35-20261117/ARCHIVOS-RECIBIDOS-VERCEL.json",
+    "sha256": "175956a59d9289b33446a02398e352bd811dd86a48412c94f2f090e68c05a884"
+  },
+  "recipeEvidence": {
+    "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/publicacion-pr32/recover-frozen-baseline.py",
+    "sha256": "2d35d44ebdc53ba4ffd0a4926b60b175fb186f7fce32849c02f736d0fb5c9da6",
+    "meaning": "Offline evidence only: original source was successful official Vercel file GET, not JSON generation. Original recovered output and CLI body JSON are absent locally."
+  },
+  "reason": "The eight configs have no Git mapping. Seven more output targets reject raw Git875 bodies; immutable output bytes must be recovered, not reconstructed or replaced by newer sources. Fifteen targets share fourteen unique file IDs.",
+  "files": [
+    {
+      "target": "config.json",
+      "size": 3916,
+      "sha1": "04e9bcfbdaedafe692af92f3409844151fd82ab3",
+      "sha256": "ef32ad5c7a069d7de482a7a92f5022a0c852cd0b9b896a735a48bd12bae71f05",
+      "fileId": "04e9bcfbdaedafe692af92f3409844151fd82ab3",
+      "sourceTreePath": "src/.vercel/output/config.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/advisory.func/.vc-config.json",
+      "size": 287,
+      "sha1": "671a7f1348dc6bc9d258f4cb2a6b5fe75b11a1cb",
+      "sha256": "64f85b53b7e143b455cfc4044acacc9ee3f05c0378a057fb4169780d27e19a94",
+      "fileId": "671a7f1348dc6bc9d258f4cb2a6b5fe75b11a1cb",
+      "sourceTreePath": "src/.vercel/output/functions/api/advisory.func/.vc-config.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/booking-availability.func/.vc-config.json",
+      "size": 299,
+      "sha1": "7ee0fd4da34b48e89b0bcb2da6da3224b39c0526",
+      "sha256": "d511aeb866b96607f967a6eea3516103cfd70fb7a74dd4575ffebcef9a7192e6",
+      "fileId": "7ee0fd4da34b48e89b0bcb2da6da3224b39c0526",
+      "sourceTreePath": "src/.vercel/output/functions/api/booking-availability.func/.vc-config.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/booking-availability.func/api/booking-availability.mjs",
+      "size": 1420,
+      "sha1": "a80936043786ee358e936708b24cc7628397ef25",
+      "sha256": "c6098b5d9b31bb138b7f61fdf8a99ea8fc897973a079072ea082b3190cdd1af9",
+      "fileId": "a80936043786ee358e936708b24cc7628397ef25",
+      "sourceTreePath": "src/.vercel/output/functions/api/booking-availability.func/api/booking-availability.mjs",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/booking-create.func/.vc-config.json",
+      "size": 293,
+      "sha1": "e17d83ae077c5fed0f1e586f9b229c0603640b61",
+      "sha256": "fd3d1894ef08aa226a469e6b6eda7473950032fc223f1c6502d77e90e0b1be3d",
+      "fileId": "e17d83ae077c5fed0f1e586f9b229c0603640b61",
+      "sourceTreePath": "src/.vercel/output/functions/api/booking-create.func/.vc-config.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/booking-create.func/api/booking-create.mjs",
+      "size": 3926,
+      "sha1": "6d7db117ea672122dee21b662cb8b505944245f1",
+      "sha256": "87ae18ab7476539fc84fffadea4446e631771f06bc7b2fdb248befa81596ef12",
+      "fileId": "6d7db117ea672122dee21b662cb8b505944245f1",
+      "sourceTreePath": "src/.vercel/output/functions/api/booking-create.func/api/booking-create.mjs",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/collaboration.func/.vc-config.json",
+      "size": 270,
+      "sha1": "46d25385817cc15de1fa02a088764e965a958ce5",
+      "sha256": "8392205a4ae5052e71007eebdf90dc76625deb58cc873fbb07969c69a1d4e385",
+      "fileId": "46d25385817cc15de1fa02a088764e965a958ce5",
+      "sourceTreePath": "src/.vercel/output/functions/api/collaboration.func/.vc-config.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/contact.func/.vc-config.json",
+      "size": 286,
+      "sha1": "44486d27839ba051b613c82639495919d089ad2c",
+      "sha256": "fd7ca5d45b523dda9745ee6c6e519e9b1758765927e939085845f0425365cfef",
+      "fileId": "44486d27839ba051b613c82639495919d089ad2c",
+      "sourceTreePath": "src/.vercel/output/functions/api/contact.func/.vc-config.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/contact.func/api/contact.mjs",
+      "size": 16411,
+      "sha1": "81d368bb345db8d4b8c52a92697ba63a1a90b34d",
+      "sha256": "ce25910289e5850223156cd9f7224e6a391ea6056c95071fb8c789e04f2d8b36",
+      "fileId": "81d368bb345db8d4b8c52a92697ba63a1a90b34d",
+      "sourceTreePath": "src/.vercel/output/functions/api/contact.func/api/contact.mjs",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/orientation-contact.func/.vc-config.json",
+      "size": 298,
+      "sha1": "58f3fa97142543738f7433c25ebaec20c3be2773",
+      "sha256": "5f81e2c50a82980016573973e6b5d9ad1f9feda6926fa7b539db990462e39402",
+      "fileId": "58f3fa97142543738f7433c25ebaec20c3be2773",
+      "sourceTreePath": "src/.vercel/output/functions/api/orientation-contact.func/.vc-config.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/orientation-contact.func/api/contact.mjs",
+      "size": 16411,
+      "sha1": "81d368bb345db8d4b8c52a92697ba63a1a90b34d",
+      "sha256": "ce25910289e5850223156cd9f7224e6a391ea6056c95071fb8c789e04f2d8b36",
+      "fileId": "81d368bb345db8d4b8c52a92697ba63a1a90b34d",
+      "sourceTreePath": "src/.vercel/output/functions/api/orientation-contact.func/api/contact.mjs",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "functions/api/uf.func/.vc-config.json",
+      "size": 281,
+      "sha1": "a1a3505508e494004d5ace2e72781565e0ad5802",
+      "sha256": "117873731c39669df084132407cf929f5aac602d6be0d2473f44c647312b34ee",
+      "fileId": "a1a3505508e494004d5ace2e72781565e0ad5802",
+      "sourceTreePath": "src/.vercel/output/functions/api/uf.func/.vc-config.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "static/assets/js/urban-works-model.mjs",
+      "size": 4712,
+      "sha1": "19f123fd6042a2bd27db281ee25fdda69df3f73c",
+      "sha256": "b1ceea00e6c7133a3351e57f736f556422155fa2d59f3752149519b70d6256e1",
+      "fileId": "19f123fd6042a2bd27db281ee25fdda69df3f73c",
+      "sourceTreePath": "src/.vercel/output/static/assets/js/urban-works-model.mjs",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "static/comparador-hipotecario.html",
+      "size": 26962,
+      "sha1": "ccab2d25ec19638942cc5930e5c45f7399f18b0e",
+      "sha256": "00ac7e04a7ea50fe552500ff560efaa115a02daf89cc8272ebb520355811ae93",
+      "fileId": "ccab2d25ec19638942cc5930e5c45f7399f18b0e",
+      "sourceTreePath": "src/.vercel/output/static/comparador-hipotecario.html",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    },
+    {
+      "target": "static/data/urban-development.json",
+      "size": 240813,
+      "sha1": "4d0063b1b5f575ee0fcd205f5750c6da292346ad",
+      "sha256": "68d39f86fd2019b88cde1c815c006f3056f350ce4a08d2894e33e589c3e82740",
+      "fileId": "4d0063b1b5f575ee0fcd205f5750c6da292346ad",
+      "sourceTreePath": "src/.vercel/output/static/data/urban-development.json",
+      "localPath": null,
+      "bodyAvailableLocally": false,
+      "verification": "FROZEN_TREE_UID_MATCH_ONLY_NOT_BODY_VERIFICATION"
+    }
+  ],
+  "requiredGate": "Check body byte length, plain SHA-1 and SHA-256 for each target before any copy. Reject mismatch; no fallback/retry without a new condition.",
+  "appExecutionOrNetworkByThisTask": false,
+  "currentStageUntouchedByThisTask": true
+}

@@ -1,0 +1,15 @@
+# Paquete público local verificado del merge PR36
+
+Merge: `d3fb474f08b81a965d2e0eac927adf88671968c0`, árbol `f2d22640e0876d788789b27f99e3e27587384056`. Staging: `/private/tmp/sollahms-pr36-public-package-20261118/stage/.vercel/output`.
+
+Hay **1.721 archivos y 227.584.223 bytes**: 1.663 estáticos, 57 archivos de siete bundles de funciones y config.json. La base de 1.672 archivos se recuperó y cotejó con el inventario congelado `ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834`; se aplicaron únicamente 49 altas y cinco reemplazos públicos. Config y 57 archivos de funciones conservan sus bytes publicados. No se ejecutaron builds, generadores de aplicación o tests anteriores.
+
+El [cierre actual](CIERRE-PAQUETE-PUBLICO-21.json) acredita la verificación posterior al manifiesto; los flags false del manifiesto original f0fa pertenecen a su creación antes del cierre independiente y se conservan como evidencia. Inventario final `d3d6692a7cf190d36d0cb173497c2b36775b7fa1a0f5c951c5a2a87c1b770558`. [Cierre independiente](CIERRE-RECURSOS-PAQUETE-21.json): 100/100 destinos locales, cero faltantes/extras/symlinks y rutas nuevas atendidas por filesystem. [CLI oficial dry](VERIFICACION-CLI-DRY-PR36.json): 1.721 paths/tamaños/SHA1 exactos, cero uploads o deployments.
+
+Los cuerpos Git rechazados no reemplazaron versiones publicadas. 735 blobs se recuperaron de origin y 14 cuerpos únicos para 15 targets se copiaron por GET oficial del deployment inmutable875, con size/SHA1/SHA256 congelados. Las respuestas base64 truncadas del conector se descartaron. La CLI oficial 65.11.0 se ejecutó con el proyecto y equipo existentes verificados; no se extrajeron credenciales, cookies, tokens o variables.
+
+Las diferencias estáticas 875/Git recuperadas se analizaron de forma acotada: el par urban mantiene su contrato y no es importado por catálogo/mapa/21 fichas; el comparador conserva scripts y 26 controles y difiere en footer/CSS. No justifican repetir Chrome o las suites certificadas. Ver [semántica](DIFERENCIAS-SEMANTICAS-BASE875.json).
+
+El [índice original](INDICE-ARCHIVO-RECETA-PAQUETE-21.json) y el [mapeo de archivo](MAPEO-ARCHIVO-PAQUETE-PR36.json) conservan recetas, manifiestos y procedencia. Además se guardan sólo 14 pequeños cuerpos originales de excepciones en `originales-base875/`, para no depender otra vez de temporales o GETs; nunca se copian a static fuera de sus targets certificados. No se archivan los 220 MB completos ni respuestas base64. Las rutas absolutas originales se mantienen como evidencia; el mapeo identifica sus copias versionadas para recuperación.
+
+No se ha creado deployment ni publicado el merge. La creación de un único deployment de revisión requiere permiso independiente; usar CLI oficial `deploy --prebuilt --environment production --skip-domain --project prj_URomRRU0MAy4etGKP5gWv3Qv4DGH --scope team_A9VNIW2f2K1IJpd2pGdvDmEN --non-interactive`, con metadataSHA/ref del merge. No usar `--verify` (puede crear un secreto de bypass), `--temporary`, `--force`, nuevosenv, regiones o auto-link/create-project. La promoción del mismo deployment requerirá otra autorización. Producción sigue en 875.

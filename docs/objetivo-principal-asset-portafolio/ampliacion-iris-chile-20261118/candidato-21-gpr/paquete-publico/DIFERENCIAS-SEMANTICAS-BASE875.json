@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "kind": "COMPARACION_SEMANTICA_ACOTADA_DE_TRES_CUERPOS_CONGELADOS_875_FRENTE_A_GIT_875",
+  "recordedAtUTC": "2026-11-18T21:14:15.886706+00:00",
+  "purpose": "Identificar contratos diferentes en los insumos públicos exactos recuperados; no sustituirlos, corregirlos ni volver a ejecutar QA certificado.",
+  "sourceBinding": {
+    "publicBaselineCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "immutableDeployment": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "newMergeCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+    "packageManifest": {
+      "path": "/private/tmp/sollahms-pr36-public-package-20261118/MANIFIESTO-PAQUETE-PUBLICO-21.json",
+      "bytes": 470330,
+      "sha256": "f0fa6e13c6d41f62325f0b7ab7487e5c6a7dbe445a0c3148e60cff2ac3862f5e"
+    },
+    "sourceRecovery": {
+      "path": "/private/tmp/sollahms-pr36-public-package-20261118/RECUPERACION-OFICIAL-15-CUERPOS.json",
+      "bytes": 8309,
+      "sha256": "8ce3528d0c9e1f948c6cb844dee90e279427fd4bfcce92a9354f396744d542f1"
+    }
+  },
+  "method": {
+    "staticReadingOnly": true,
+    "JavaScriptExecuted": false,
+    "applicationTestsRun": false,
+    "productionBuildRun": false,
+    "applicationGeneratorsRun": false,
+    "sourceOrOutputEdited": false,
+    "networkOrBrowserUsed": false,
+    "rawGitRead": "Objetos locales existentes con GIT_NO_LAZY_FETCH=1; copias aisladas fuera del output."
+  },
+  "comparedBodies": {
+    "assets/js/urban-works-model.mjs": {
+      "frozenOutput": {
+        "path": "/private/tmp/sollahms-pr36-public-package-20261118/stage/.vercel/output/static/assets/js/urban-works-model.mjs",
+        "bytes": 4712,
+        "sha256": "b1ceea00e6c7133a3351e57f736f556422155fa2d59f3752149519b70d6256e1"
+      },
+      "rawGit875Body": {
+        "path": "/private/tmp/sollahms-pr36-public-package-20261118/comparacion-semantica-base875/git875/assets/js/urban-works-model.mjs",
+        "bytes": 5443,
+        "sha256": "10436e007e6e0a4935442bdc4e15bfbb267c4c8eba8051cd3c1c9b8e62fa38cc"
+      },
+      "rawGitCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "rawGitSourcePath": "assets/js/urban-works-model.mjs"
+    },
+    "data/urban-development.json": {
+      "frozenOutput": {
+        "path": "/private/tmp/sollahms-pr36-public-package-20261118/stage/.vercel/output/static/data/urban-development.json",
+        "bytes": 240813,
+        "sha256": "68d39f86fd2019b88cde1c815c006f3056f350ce4a08d2894e33e589c3e82740"
+      },
+      "rawGit875Body": {
+        "path": "/private/tmp/sollahms-pr36-public-package-20261118/comparacion-semantica-base875/git875/data/urban-development.json",
+        "bytes": 349630,
+        "sha256": "cf4dee8733ccc82b02301fc38b2f423dc86d81b6874d9970028ae51884657581"
+      },
+      "rawGitCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "rawGitSourcePath": "data/urban-development.json"
+    },
+    "comparador-hipotecario.html": {
+      "frozenOutput": {
+        "path": "/private/tmp/sollahms-pr36-public-package-20261118/stage/.vercel/output/static/comparador-hipotecario.html",
+        "bytes": 26962,
+        "sha256": "00ac7e04a7ea50fe552500ff560efaa115a02daf89cc8272ebb520355811ae93"
+      },
+      "rawGit875Body": {
+        "path": "/private/tmp/sollahms-pr36-public-package-20261118/comparacion-semantica-base875/git875/comparador-hipotecario.html",
+        "bytes": 24868,
+        "sha256": "e6d980bab1564bfe5d36a979f557fc726e6de18aa180b78ed044a192062d7f60"
+      },
+      "rawGitCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "rawGitSourcePath": "comparador-hipotecario.html"
+    }
+  },
+  "urbanModel": {
+    "exportsIdentical": true,
+    "exports": [
+      "STATES",
+      "statusLabel",
+      "haversine",
+      "segmentDistance",
+      "geometryDistance",
+      "safeSource",
+      "publicWorks",
+      "relationshipsFor",
+      "distanceLabel",
+      "loadUrbanData"
+    ],
+    "frozenBehavior": {
+      "geometryDistance": "Point, LineString, MultiLineString, Polygon y MultiPolygon; MultiPoint devuelve null por no tener rama admitida.",
+      "relationshipLocation": "Requiere address string no vacío y coincidencia exacta lat/lng/address/commune con la localización revisada."
+    },
+    "additionalBehaviorInRawGit": {
+      "geometryDistance": "Incluye rama MultiPoint: menor distancia a cada punto, sólo si todas las distancias son finitas.",
+      "relationshipLocation": "Permite address:null exclusivamente con locationVerifications coincidente, fecha anterior al corte y fuentes HTTPS; mantiene comparación exacta de localización."
+    },
+    "frozenPairConsistency": "El JSON congelado no contiene geometrías MultiPoint ni locationVerifications y mantiene Endémico y Reserva Mayor 2 en blockedProjectSlugs. Estas capacidades adicionales del Git no son necesarias para interpretar los registros congelados conservados."
+  },
+  "urbanData": {
+    "schemaVersionAndCutoffAndCoverageAndAttributionEqual": true,
+    "cutoff": "2026-10-31",
+    "frozenCounts": {
+      "works": 56,
+      "relationships": 74,
+      "relationshipProjectSlugs": 59,
+      "locationBlocked": 5
+    },
+    "rawGitCounts": {
+      "works": 61,
+      "relationships": 131,
+      "relationshipProjectSlugs": 90,
+      "locationBlocked": 3
+    },
+    "worksOnlyInRawGit": [
+      "carol-urzua-boxes-salud",
+      "cesfam-alessandri-nuevo-edificio",
+      "cesfam-felix-amesti-reposicion",
+      "cuatro-esquinas-etapa-1",
+      "hospital-nuble-imagenologia"
+    ],
+    "worksOnlyInFrozen": [],
+    "changedCommonWorks": [
+      {
+        "workId": "caleta-papudo",
+        "changedFields": [
+          "sources",
+          "statusDetail"
+        ]
+      },
+      {
+        "workId": "chinchorro-etapa2",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "cochrane-acceso-oriente",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "hospital-pichilemu",
+        "changedFields": [
+          "locationText",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "hospital-puerto-varas",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "mall-vivo-santiago-etapa-ii",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "informationDate",
+          "locationText",
+          "sources",
+          "statusDetail",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "metro-linea-8",
+        "changedFields": [
+          "accessReferences",
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "multifamily-cenco-florida",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "nueva-alameda-bandejon-santiago",
+        "changedFields": [
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "parque-costanera-puerto-varas",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "parque-el-trebol-independencia",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "parque-mapocho-rio",
+        "changedFields": [
+          "communes",
+          "description",
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "name",
+          "sources",
+          "statusDetail",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "parque-metropolitano-puerto-montt",
+        "changedFields": [
+          "sources",
+          "statusDetail",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "parque-san-joaquin-serena",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "plaza-artesanos-900",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "teleferico-bicentenario",
+        "changedFields": [
+          "communes",
+          "estimatedEnd",
+          "estimatedStart",
+          "informationDateBasis",
+          "sources",
+          "statusDetail",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "tunel-lo-ruiz",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "sources",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "uc-construccion-civil-ampliacion",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "uncertainties"
+        ]
+      },
+      {
+        "workId": "unab-r14",
+        "changedFields": [
+          "geometry",
+          "geometryLabel",
+          "geometryRole",
+          "geometrySource",
+          "locationText",
+          "sources",
+          "uncertainties"
+        ]
+      }
+    ],
+    "relationshipsOnlyInRawGit": 57,
+    "relationshipsOnlyInFrozen": 0,
+    "commonRelationshipsByteSemanticallyEqual": true,
+    "rawGitOnlyResearchKeys": [
+      "locationVerifications",
+      "supplementaryReview"
+    ],
+    "frozenBlockedProjectSlugs": [
+      "endemico",
+      "mapocho-3521-edificio-a",
+      "plaza-cervantes",
+      "reserva-mayor-2",
+      "vicuna-mackenna-7589"
+    ],
+    "rawGitBlockedProjectSlugs": [
+      "mapocho-3521-edificio-a",
+      "plaza-cervantes",
+      "vicuna-mackenna-7589"
+    ],
+    "interpretation": "Los dos archivos declaran el mismo corte pero contienen distintos estados documentales de entorno. Se conserva el menor conjunto exacto desplegado875; no se incorporan silenciosamente las cinco obras,57 relaciones ni verificaciones de coordenadas presentes sólo en Git. Los contadores de research describen entorno urbano histórico, no aceptación comercial ni el universo ampliado152."
+  },
+  "mortgageComparator": {
+    "onlyChangedRegions": "CSS inline id=comparator-footer-style y sustitución del footer por footer corporativo de tres columnas.",
+    "scriptTagsIdentical": true,
+    "inputSelectButtonFormTagsIdentical": true,
+    "controlTagCount": 26,
+    "financialFormulasChangedByTheseBodyDifferences": false,
+    "footerChanges": [
+      "Secciones y Legal en navegación con aria-labelledby.",
+      "Contacto por mailto y WhatsApp sin texto de mensaje prellenado.",
+      "Estilo responsive propio y focus-visible."
+    ],
+    "interpretation": "No hay diferencia en scripts, controles o cuerpo del cálculo hipotecario entre estos dos HTML; se preserva el footer público aprobado."
+  },
+  "integrationScope": {
+    "catalogAndMapEntryPathsRead": [
+      "assets/js/catalog.mjs",
+      "assets/js/catalog-model.mjs",
+      "assets/js/catalog-filter-controls.mjs",
+      "assets/js/catalog-filter-engine.mjs",
+      "assets/js/catalog-expansion.mjs",
+      "assets/js/catalog-map.mjs",
+      "proyectos.html"
+    ],
+    "urbanImportOrDataURLMentionsFoundInThosePaths": {
+      "assets/js/catalog.mjs": [],
+      "assets/js/catalog-model.mjs": [],
+      "assets/js/catalog-filter-controls.mjs": [],
+      "assets/js/catalog-filter-engine.mjs": [],
+      "assets/js/catalog-expansion.mjs": [],
+      "assets/js/catalog-map.mjs": [],
+      "proyectos.html": []
+    },
+    "actualUrbanModelConsumers": [
+      "assets/js/urban-works-page.mjs",
+      "assets/js/project-urban-works.mjs"
+    ],
+    "newHTMLCountReadForUrbanDependency": 21,
+    "newHTMLWithUrbanDependency": [],
+    "urbanDataLoaderScope": "Conserva carga directa de /data/proyectos.json (131), /data/project-locations.json y /data/urban-development.json; el delta21 no sustituye esas fuentes ni aporta relaciones urbanas nuevas.",
+    "catalogMapConcernFromTheseDifferences": "No se identifica por lectura una dependencia de catálogo/mapa hacia estos tres cuerpos diferentes; sí se confirma que QA sobre Git no certifica por sí sola el subsistema de entorno urbano desplegado.",
+    "newChromeRunRequiredByTheseThreeDifferences": false,
+    "reasonNoChromeRepetition": "Los dos cuerpos de entorno urbano forman una pareja congelada consistente, sin dependencia desde catálogo/mapa ni las21HTML nuevas; el comparador mantiene idénticos scripts y26controles. Se conservan bytes ya desplegados875 y las cinco sustituciones/49altas certificadas. Estas diferencias de origen no aportan una preocupación funcional nueva para los flujos modificados del candidato."
+  },
+  "outcome": "TRES_DIFERENCIAS_DOCUMENTADAS_SIN_CAMBIOS_DE_OUTPUT_NI_PRUEBAS_NUEVAS"
+}

@@ -1,6 +1,6 @@
 {
   "recordedAtUTC": "2026-11-18T19:43:00.414084+00:00",
-  "status": "PR_READY_FOR_REVIEW_VERIFICADO_SIN_MERGE",
+  "status": "MERGE_VERIFICADO_PAQUETE_LOCAL_VERIFICADO_SIN_DEPLOYMENT",
   "repository": "lasopho/sollahms-web",
   "branch": "codex/ampliacion-21-proyectos-gpr-20261118",
   "checkout": "/private/tmp/sollahms-ampliacion-21-gpr-20261118",
@@ -46,7 +46,6 @@
   "published": false,
   "automaticDeploymentsDisabledInSourceAndBase": true,
   "notAuthorized": [
-    "merge",
     "deployment",
     "promotion",
     "publication",
@@ -61,8 +60,8 @@
   "authorizationStatus": "AUTORIZADO_EJECUTADO_VERIFICADO",
   "compatibilityReadOnly": "ampliacion-iris-chile-20261118/candidato-21-gpr/COMPATIBILIDAD-24A-AMPLIACION-6CEDD32.json",
   "syncRecordedAtUTC": "2026-11-18T19:59:32.870227+00:00",
-  "githubState": "open",
-  "merged": false,
+  "githubState": "closed",
+  "merged": true,
   "mergeableAtVerification": true,
   "githubStatusCount": 0,
   "githubWorkflowRunCount": 0,
@@ -73,19 +72,20 @@
   "authorizationApplied": "AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01",
   "synchronizationEvidence": "ampliacion-iris-chile-20261118/candidato-21-gpr/SINCRONIZACION-PR36.json",
   "readyRequiresIndependentPermission": false,
-  "stateRecordedAtUTC": "2026-11-18T20:17:43.382578+00:00",
+  "stateRecordedAtUTC": "2026-11-18T20:46:28.913983+00:00",
   "readyAuthorizedAndExecuted": true,
   "readyAuthorizationConsumed": true,
   "readyAtUTC": "2026-11-18T20:15:04Z",
   "authorizationsApplied": [
     "AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01",
-    "AUTH-READY-PR36-20261118-01"
+    "AUTH-READY-PR36-20261118-01",
+    "AUTH-MERGE-PR36-20261118-01"
   ],
-  "nextStep": "Prepare a concrete merge authorization; do not merge without independent permission.",
+  "nextStep": "Request one independent protected review deployment without assigning production domains.",
   "mergePreparation": {
     "path": "ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-MERGE-PR36.json",
     "sha256": "002099fc5d4e93889cc335088804b43288735bbe5c158a6b1ae65f877add0020",
-    "status": "PREPARADO_PENDIENTE_AUTORIZACION",
+    "status": "AUTORIZADO_MERGE_EJECUTADO_VERIFICADO",
     "method": "merge_commit",
     "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
     "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
@@ -94,17 +94,10 @@
     "protected155GitIdentitiesPreserved": true,
     "noTestsRerun": true
   },
-  "nextAuthorization": {
-    "id": "AUTH-MERGE-PR36-20261118-01",
-    "status": "PENDIENTE_RESPUESTA",
-    "step": "Merge commit of PR36 into the exact target base",
-    "questionAlreadyPresented": true,
-    "doNotRepeatQuestion": true
-  },
   "publicPackagePreparation": {
     "path": "ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-PAQUETE-PUBLICO-21.json",
     "sha256": "94c36321cab93849174d133d2e696e697743c1d5ac6b5da0410efa2b2e50b144",
-    "status": "PREPARACION_DOCUMENTAL_NO_PAQUETE_CONSTRUIDO",
+    "status": "PAQUETE_LOCAL_VERIFICADO_LISTO_PARA_SOLICITAR_DEPLOYMENT_DE_REVISION",
     "newStaticFiles": 49,
     "replacedPublicFiles": 5,
     "excludedScriptsAndTests": 4,
@@ -112,9 +105,37 @@
     "historicalBaseFileCount": 1672,
     "projectedCountIfBaseUnchanged": 1721,
     "projectedCountIsNotCertification": true,
-    "packageConstructed": false,
-    "packageCertified": false,
-    "baseArtifactCurrentAvailabilityNotEstablished": true,
-    "nextRequirement": "After an authorized merge, recover/verify exact base inputs and close the public resource inventory without copying repo/docs/raw/owner/history."
+    "packageConstructed": true,
+    "packageCertified": true,
+    "baseArtifactCurrentAvailabilityNotEstablished": false,
+    "nextRequirement": "Owner permission for exactly one deployment using these unchanged prebuilt bytes, then protected URL verification. Promotion needs another permission.",
+    "certificationScope": "Local byte inventory, frozen preservation, independent resources and official CLI dry file set. Not live HTTP/deployment QA.",
+    "baseRecoveredAndVerified": true,
+    "actualOutputFiles": 1721,
+    "actualBytes": 227584223,
+    "staticFiles": 1663,
+    "functionFiles": 57,
+    "functionBundles": 7,
+    "actualInventorySHA256": "d3d6692a7cf190d36d0cb173497c2b36775b7fa1a0f5c951c5a2a87c1b770558",
+    "manifestSHA256": "f0fa6e13c6d41f62325f0b7ab7487e5c6a7dbe445a0c3148e60cff2ac3862f5e",
+    "stageRoot": "/private/tmp/sollahms-pr36-public-package-20261118/stage",
+    "prebuiltOutput": "/private/tmp/sollahms-pr36-public-package-20261118/stage/.vercel/output",
+    "currentClosure": "ampliacion-iris-chile-20261118/candidato-21-gpr/paquete-publico/CIERRE-PAQUETE-PUBLICO-21.json",
+    "independentResourceClosureSHA256": "8e33688c083be1d3ed69ee9a913d026684660ede81de85713f23c724030e34ad",
+    "officialCLIDryAll1721PathsSizesSHA1Match": true,
+    "newChromeRequiredForFrozenBaseDifferences": false
+  },
+  "mergeCommitSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+  "mergeAtUTC": "2026-11-18T20:42:58Z",
+  "targetBranchHeadSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+  "verifiedMergeTree": "f2d22640e0876d788789b27f99e3e27587384056",
+  "mergeTreeExactlyEqualsReviewedCandidate": true,
+  "deploymentAuthorized": false,
+  "publicationAuthorized": false,
+  "nextAuthorization": {
+    "id": "AUTH-DEPLOYMENT-PR36-20261118-01",
+    "status": "PREPARADA_PENDIENTE_PRESENTAR",
+    "step": "One review deployment only; no production domains or promotion",
+    "questionAlreadyPresented": false
   }
 }

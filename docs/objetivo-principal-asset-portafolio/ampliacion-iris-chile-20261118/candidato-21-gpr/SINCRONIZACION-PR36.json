@@ -204,13 +204,81 @@
   ],
   "currentPR": {
     "url": "https://github.com/lasopho/sollahms-web/pull/36",
-    "state": "open",
+    "state": "closed",
+    "merged": true,
     "draft": false,
-    "merged": false,
-    "mergeable": true,
     "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
-    "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
-    "changedFiles": 59,
-    "updatedAtUTC": "2026-11-18T20:15:04Z"
+    "originalBaseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "baseBranch": "codex/footer-sin-frase-20261116",
+    "mergeCommitSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+    "mergedAtUTC": "2026-11-18T20:42:58Z"
+  },
+  "authorizedMerge": {
+    "recordedAtUTC": "2026-11-18T20:46:28.731Z",
+    "authorization": {
+      "id": "AUTH-MERGE-PR36-20261118-01",
+      "reply": "Autorizar merge en la base indicada",
+      "remainingAuthorization": 0,
+      "scope": "Merge commit PR36 only into codex/footer-sin-frase-20261116, exact source6ced and base875"
+    },
+    "before": {
+      "recordedAtUTC": "2026-11-18T20:42:27.423Z",
+      "authorizationId": "AUTH-MERGE-PR36-20261118-01",
+      "reply": "Autorizar merge en la base indicada",
+      "pr": {
+        "url": "https://github.com/lasopho/sollahms-web/pull/36",
+        "state": "open",
+        "draft": false,
+        "merged": false,
+        "mergeable": true,
+        "head": "6cedd329879be1b716be9854d23e1b5538db2806",
+        "base": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+        "baseBranch": "codex/footer-sin-frase-20261116",
+        "files": 59
+      },
+      "production": {
+        "id": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "state": "READY",
+        "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
+      },
+      "refs": {
+        "refs/heads/codex/ampliacion-21-proyectos-gpr-20261118": "6cedd329879be1b716be9854d23e1b5538db2806",
+        "refs/heads/codex/auditoria-leben-20261116": "aa5c7fc60ece85cd719aa05b5734d2c65ec643e4",
+        "refs/heads/codex/footer-sin-frase-20261116": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+        "refs/heads/main": "86e200ec191b38af355061e21bc0fc1e549cce3b"
+      }
+    },
+    "operation": {
+      "tool": "mcp__codex_apps__github_merge_pull_request",
+      "mergeMethod": "merge",
+      "expectedHeadSHA": "6cedd329879be1b716be9854d23e1b5538db2806"
+    },
+    "result": {
+      "sha": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+      "merged": true,
+      "message": "Pull Request successfully merged"
+    },
+    "after": {
+      "url": "https://github.com/lasopho/sollahms-web/pull/36",
+      "state": "closed",
+      "merged": true,
+      "draft": false,
+      "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
+      "originalBaseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "baseBranch": "codex/footer-sin-frase-20261116",
+      "mergeCommitSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+      "mergedAtUTC": "2026-11-18T20:42:58Z"
+    },
+    "productionAfter": {
+      "id": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+      "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "state": "READY"
+    },
+    "localProof": "MERGE-VERIFICADO-LOCAL.json",
+    "noDeploymentOrPublicationAuthorized": true,
+    "mainUnchanged": "86e200ec191b38af355061e21bc0fc1e549cce3b",
+    "forcePush": false,
+    "rebase": false,
+    "squash": false
   }
 }

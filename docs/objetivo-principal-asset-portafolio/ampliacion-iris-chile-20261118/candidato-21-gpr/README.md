@@ -1,6 +1,6 @@
 # Candidato local: 21 proyectos y nueva inmobiliaria GPR
 
-Corte real: **18/11/2026**. La nueva instrucción del propietario autoriza preparar la ampliación local. Se incorporaron las **21 identidades de los dos lotes**, nueve GPR y doce de inmobiliarias presentes, en el commit `6cedd329879be1b716be9854d23e1b5538db2806`. El catálogo compuesto llega a **152 proyectos**; producción conserva sus 131. El primer push fue autorizado y ejecutado sin force; el [PR #36](https://github.com/lasopho/sollahms-web/pull/36) está abierto en **Ready for Review**, tras autorización independiente, con el mismo SHA exacto y los 59 archivos verificados. No hubo merge, deployment o publicación de este candidato.
+Corte real: **18/11/2026**. La nueva instrucción del propietario autoriza preparar la ampliación local. Se incorporaron las **21 identidades de los dos lotes**, nueve GPR y doce de inmobiliarias presentes, en el commit `6cedd329879be1b716be9854d23e1b5538db2806`. El catálogo compuesto llega a **152 proyectos**; producción conserva sus 131. El primer push fue autorizado y ejecutado sin force; el [PR #36](https://github.com/lasopho/sollahms-web/pull/36) fue **fusionado** mediante merge commit autorizado `d3fb474f08b81a965d2e0eac927adf88671968c0` en `codex/footer-sin-frase-20261116`. Sus padres son 875/6ced y el árbol coincide exactamente con el candidato revisado; 59 archivos verificados y 155 protegidos intactos. No hubo deployment o publicación de la ampliación.
 
 Rama: `codex/ampliacion-21-proyectos-gpr-20261118`. Checkout: `/private/tmp/sollahms-ampliacion-21-gpr-20261118`. Padre/base exacta: `875bd80ddb650b376cb3dd53af4ffae066fcd48f`, destino `codex/footer-sin-frase-20261116`. Árbol técnico limpio. Los 59 archivos del commit son seis modificaciones acotadas y 53 nuevos: 21 fichas, 25 recursos originales y siete archivos de datos, adaptación, CSS, preparación y pruebas. El [manifiesto](qa/MANIFIESTO-59-ARCHIVOS.json) enumera todos y fija sus SHA-256.
 
@@ -69,7 +69,7 @@ El permiso `AUTH-READY-PR36-20261118-01` fue respondido «Autorizar Ready for Re
 
 La [preparación de merge](PREPARACION-MERGE-PR36.json) comprueba sin ejecutar pruebas o fusionar: padre/base875, delta de 59 archivos,155identidadesGit protegidas sin cambios y ambas exclusionesfalse. La propuesta es únicamente merge commit de head6cedd32 en `codex/footer-sin-frase-20261116` base875. El suplemento24a sigue separado y no se incorpora; main y producción no son destino. Hace falta autorización independiente y refrescar referencias antes de ejecutarlo.
 
-La solicitud `AUTH-MERGE-PR36-20261118-01` fue presentada una sola vez para fusionar únicamente PR36 mediante merge commit en la base y SHA indicados. Sigue pendiente: PR36 permanece Ready y sin fusionar. No repetirla ni usar el permiso Ready para ejecutar merge, deployments o publicación.
+La solicitud `AUTH-MERGE-PR36-20261118-01` fue respondida «Autorizar merge en la base indicada» y ejecutada a las 20:42:58 UTC del 18/11. PR36 está cerrado/fusionado; [recibo](MERGE-EJECUTADO-PR36.json) y [prueba local](MERGE-VERIFICADO-LOCAL.json) fijan SHA, padres, árbol y preservación. No repetir este permiso ni interpretarlo como autorización de deployment o publicación. Producción sigue en 875; el paquete local se prepara por separado.
 
 ## Preparación independiente del paquete público
 
@@ -78,3 +78,9 @@ Se revisaron únicamente los manifiestos existentes de producción 875 y el delt
 Reutilizar la base congelada y su allowlist, sin copiar el repositorio, docs, RAW, archivos owner o historial interno. Conservar los siete bundles/57 archivos de funciones, configuración y proyecciones públicas mínimas Euro/Nollagam. Conservar recursos heredados protegidos no reincorpora sus proyectos al catálogo.
 
 **No se construyó ni certificó un paquete**. El número 1721 es sólo la suma 1672+49; no un inventario verificado de una carpeta desplegable. Los registros históricos indican que los cuerpos temporales antiguos no estaban disponibles; esta lectura no establece su disponibilidad actual. Después del merge autorizado se debe recuperar/verificar la base exacta y cerrar el inventario y recursos de los 21 proyectos antes de pedir permiso de deployment. No hubo builds, generadores, pruebas, red o despliegues durante esta preparación documental.
+
+## Cierre actual del paquete local
+
+La preparación anterior se completó después del merge. El [paquete local verificado](paquete-publico/README.md) contiene 1.721 archivos y 227.584.223 bytes, inventario `d3d6692a7cf190d36d0cb173497c2b36775b7fa1a0f5c951c5a2a87c1b770558`. Base de 1.672 archivos exacta, 49 altas/cinco reemplazos, 57 archivos de siete funciones y configuración intactos; 100/100 recursos y CLI oficial dry coincidentes. El cierre posterior explica los flags de creación del manifiesto original inmutable f0fa. No hubo builds/generadores, repetición de QA ni deployments.
+
+El paso siguiente requiere `AUTH-DEPLOYMENT-PR36-20261118-01`: como máximo un deployment de revisión con prebuilt, entorno production y --skip-domain. La promoción/publicación exige otro permiso. No asumir que merge autoriza crear ese deployment.
