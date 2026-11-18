@@ -689,7 +689,7 @@
     {
       "id": "AUTH-PROMOTION-PR36-20261118-01",
       "kind": "Promoción y publicación del deployment PR36 existente y verificado",
-      "status": "PENDIENTE_RESPUESTA",
+      "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
       "preparedAtUTC": "2026-11-18T21:51:37.179729+00:00",
       "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
       "sourceMergeSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
@@ -706,7 +706,7 @@
       "currentProductionDeployment": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
       "currentProductionSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
       "maximumPromotions": 1,
-      "promotionsExecuted": 0,
+      "promotionsExecuted": 1,
       "newDeploymentsAuthorized": 0,
       "scope": [
         "Promover/publicar únicamente este mismo deployment READY en los alias productivos existentes",
@@ -727,12 +727,33 @@
       "focusedChromeChecksPassed": 3,
       "questionAlreadyPresented": true,
       "doNotRepeatAfterPresentation": true,
-      "newOwnerResponseReceived": false,
-      "pendingOwnerAction": "Autorizar promoción y publicación o conservar sólo review.",
+      "newOwnerResponseReceived": true,
+      "pendingOwnerAction": null,
       "doNotRepeatQuestion": true,
       "presentationRecordedAtUTC": "2026-11-18T22:01:26.914227+00:00",
       "inputToolAccepted": true,
-      "question": "¿Autorizas promover y publicar el mismo deployment dpl_FkyZZgpki5HSpKMRJQFgJE451d3G (SHA d3fb474) en sollahms.cl y sus alias existentes? Está READY: coinciden sus 1.721 archivos y pasan los 3/3 controles Chrome específicos. Publicará los 21 proyectos nuevos, incluidos nueve GPR, conservando los 131 originales. No habrá rebuild, otro deployment ni cambios de DNS, SSO o variables. Tu protocolo exige autorización independiente para publicación; producción sigue en 875bd80 y el suplemento 24a11df permanece separado."
+      "question": "¿Autorizas promover y publicar el mismo deployment dpl_FkyZZgpki5HSpKMRJQFgJE451d3G (SHA d3fb474) en sollahms.cl y sus alias existentes? Está READY: coinciden sus 1.721 archivos y pasan los 3/3 controles Chrome específicos. Publicará los 21 proyectos nuevos, incluidos nueve GPR, conservando los 131 originales. No habrá rebuild, otro deployment ni cambios de DNS, SSO o variables. Tu protocolo exige autorización independiente para publicación; producción sigue en 875bd80 y el suplemento 24a11df permanece separado.",
+      "authorizationReply": "Autorizar promoción y publicación",
+      "authorizationRecordedAtUTC": "2026-11-18T22:13:53.270808+00:00",
+      "executionVerifiedAtUTC": "2026-11-18T22:17:56.763890+00:00",
+      "mutationAttempts": 1,
+      "remainingPromotionAuthorizations": 0,
+      "publicationVerified": true,
+      "productionSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+      "productionDeployment": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+      "verifiedExistingAliases": [
+        "sollahms.cl",
+        "www.sollahms.cl",
+        "sollhams.cl",
+        "project-wrapp.vercel.app",
+        "project-wrapp-lsandoval2-8260s-projects.vercel.app"
+      ],
+      "newDomainsCreated": 0,
+      "newDeploymentsCreatedDuringPromotion": 0,
+      "rebuild": false,
+      "publicProjects": 152,
+      "publicGPRProjects": 9,
+      "evidence": "ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/PROMOCION-PR36.json"
     }
   ],
   "otherPriorWaitsUnchanged": true

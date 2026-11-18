@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "kind": "VERIFICACION_INDEPENDIENTE_DE_PROMOCION_EXISTENTE_PR36",
+  "verifiedAtUTC": "2026-11-18T22:16:25.519Z",
+  "status": "CINCO_ALIAS_EXISTENTES_ASIGNADOS_A_FKY_READY_SOURCE_D3",
+  "authorizationId": "AUTH-PROMOTION-PR36-20261118-01",
+  "rootExecutedPromotion": true,
+  "reviewerExecutedPromotion": false,
+  "method": {
+    "service": "Vercel MCP",
+    "readOnlyTools": [
+      "get_alias ×5",
+      "get_deployment (identity)",
+      "list_project_domains"
+    ],
+    "scopeTeamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "aliasProjectionWhitelist": [
+      "name",
+      "id",
+      "deploymentId",
+      "projectId",
+      "redirect",
+      "createdAt"
+    ],
+    "privateAccessFieldsDiscarded": true,
+    "credentialsOrEnvironmentOrSSORead": false,
+    "runtimeFunctionsCalled": 0,
+    "formsSubmitted": 0,
+    "applicationTestsRepeated": 0,
+    "HTTPOrBrowserFlowsRunByReviewer": 0
+  },
+  "aliases": [
+    {
+      "host": "sollahms.cl",
+      "name": "sollahms.cl",
+      "id": "812eb4e5e682ab5b9442a0a30728269fac3db57dceb526b8e1020ada3aa72f0be35fc22a688abb91affbe5c108c32d0f2f0905b073620a3fbeca4780a7caaec5",
+      "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "createdAt": 1790309292830
+    },
+    {
+      "host": "www.sollahms.cl",
+      "name": "www.sollahms.cl",
+      "id": "d8c7d5a41173c7df42c3759ff14ca259a13ed3c63a1eac50aab88a27147a220cebbf4ff46f514e2261e3f033c6e794990174e4f987e74125c49216f769e0038a",
+      "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "createdAt": 1792966021159
+    },
+    {
+      "host": "sollhams.cl",
+      "name": "sollhams.cl",
+      "id": "9bb3b49f807ff8aa6453715f911331a058496ca90e9a1a20bf39badc1d5518ed344305a9553201905a41575c93338f85600787b275cf2011f5bc3f478f263f83",
+      "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "createdAt": 1778007732492
+    },
+    {
+      "host": "project-wrapp.vercel.app",
+      "name": "project-wrapp.vercel.app",
+      "id": "a54e58ed74b00bd6217a3a87e5013465ce03b4897f76f8d4488aa53336009ab44bc187de2aa6e757e202e7c57257bfcec19936765314bb851e67511d56f2b342",
+      "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "createdAt": 1777497563537
+    },
+    {
+      "host": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "name": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "id": "11dabcad7c95780c3cb7f99489db64a62a9a28338a107ab9dc1285147ce8211e8ff1aeb9cee91e6d5118c701bd043a53e79f91ff2a9d4c25eaf0d2457cefaa70",
+      "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "createdAt": 1777497563537
+    }
+  ],
+  "deployment": {
+    "id": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+    "projectId": null,
+    "teamId": null,
+    "readyState": "READY",
+    "url": "project-wrapp-kb7gmwe9d-lsandoval2-8260s-projects.vercel.app",
+    "createdAt": 1795037836209,
+    "meta": {
+      "githubCommitSha": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+      "githubCommitRef": "codex/footer-sin-frase-20261116",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    },
+    "responseObjectPath": "response.result.deployment"
+  },
+  "projectAndTeamIdentityBinding": {
+    "scopeTeamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "fiveAliasesAllProjectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "previousOfficialCLIIdentity": {
+      "path": "/private/tmp/sollahms-pr36-public-package-20261118/METADATOS-SELECCIONADOS-DEPLOYMENT-PR36.json",
+      "bytes": 788,
+      "sha256": "b0e5a93cc815a022c808d3d440b80613f654679252b38a184dcf4c355897bad2"
+    },
+    "note": "El objeto deployment proyectado por MCP no devuelve projectId/teamId; no se inventan. Se vincula el mismo ID inmutable con las cinco respuestas alias del proyecto, el scope explícito y el GET oficial CLI previo que sí confirmó proyecto/equipo."
+  },
+  "configuredProjectDomains": [
+    {
+      "name": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "createdAt": 1792966021083
+    },
+    {
+      "name": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "createdAt": 1790309292746
+    },
+    {
+      "name": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "createdAt": 1778007732416
+    },
+    {
+      "name": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "createdAt": 1777495937301
+    }
+  ],
+  "configuredDomainPagination": {
+    "count": 4,
+    "next": null,
+    "prev": 1792966021083
+  },
+  "allFiveAliasCreationTimesPredateDeployment": true,
+  "typoAliasCorrection": {
+    "name": "sollhams.cl",
+    "preexisting": true,
+    "newlyRegistered": false,
+    "priorProof": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/publicacion-pr35-20261117/PROMOCION-Y-DOMINIOS.json",
+      "bytes": 1849,
+      "sha256": "a30353b60ae7c72680171c6deca0d08a63c1adbb42ac539163e6c1aaa2e85439"
+    },
+    "explanation": "Estaba omitido en el resumen anterior de cuatro alias. Consta como dominio previo con redirect308; no es un alta nueva."
+  },
+  "preservation": {
+    "sameExistingDeploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+    "sourceMergeSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+    "frozenManifest": {
+      "path": "/private/tmp/sollahms-pr36-public-package-20261118/MANIFIESTO-PAQUETE-PUBLICO-21.json",
+      "bytes": 470330,
+      "sha256": "f0fa6e13c6d41f62325f0b7ab7487e5c6a7dbe445a0c3148e60cff2ac3862f5e"
+    },
+    "received1721UIDVerification": {
+      "path": "/private/tmp/sollahms-pr36-public-package-20261118/VERIFICACION-1721-DIGESTS-DEPLOYMENT-PR36.json",
+      "bytes": 3308,
+      "sha256": "4a5fc5512511cea74a2568e33f349ec7faeea6ca8f8276d0830e165cf502e9ca"
+    },
+    "functionFiles57And7BundlesAndConfigAlreadyMatched": true,
+    "fullFiletreeNotRepeatedBecauseSameImmutableDeployment": true,
+    "configuredDomainRegistryNamesUnchanged": true,
+    "redirectsWWWAndTypoPreserved308": true,
+    "previousProductionDeployment": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "previousProductionSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
+  },
+  "reviewerMutationCounts": {
+    "newDeployments": 0,
+    "newBuilds": 0,
+    "promotions": 0,
+    "domainCreations": 0,
+    "DNSorEnvironmentOrSSOChanges": 0
+  },
+  "scopeLimitations": [
+    "La verificación acredita asignaciones oficiales de cinco alias y READY/sourceD3, no sustituye el control HTTP/Chrome público dirigido de root.",
+    "Los desconocidos comerciales, el suplemento24a y las solicitudes independientes conservan su alcance; esta publicación no completa el objetivo global."
+  ],
+  "objectiveGlobalComplete": false
+}

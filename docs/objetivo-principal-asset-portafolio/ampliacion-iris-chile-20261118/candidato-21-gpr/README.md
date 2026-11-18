@@ -1,6 +1,6 @@
-# Candidato local: 21 proyectos y nueva inmobiliaria GPR
+# Ampliación publicada: 21 proyectos y nueva inmobiliaria GPR
 
-Corte real: **18/11/2026**. La nueva instrucción del propietario autoriza preparar la ampliación local. Se incorporaron las **21 identidades de los dos lotes**, nueve GPR y doce de inmobiliarias presentes, en el commit `6cedd329879be1b716be9854d23e1b5538db2806`. El catálogo compuesto llega a **152 proyectos**; producción conserva sus 131. El primer push fue autorizado y ejecutado sin force; el [PR #36](https://github.com/lasopho/sollahms-web/pull/36) fue **fusionado** mediante merge commit autorizado `d3fb474f08b81a965d2e0eac927adf88671968c0` en `codex/footer-sin-frase-20261116`. Sus padres son 875/6ced y el árbol coincide exactamente con el candidato revisado; 59 archivos verificados y 155 protegidos intactos. El deployment de revisión fue creado y verificado después con autorización independiente; producción aún conserva875.
+Corte real: **18/11/2026**. La nueva instrucción del propietario autoriza preparar la ampliación local. Se incorporaron las **21 identidades de los dos lotes**, nueve GPR y doce de inmobiliarias presentes, en el commit `6cedd329879be1b716be9854d23e1b5538db2806`. El catálogo público tiene **152 proyectos**, conservando las 131 identidades y fichas originales. El primer push fue autorizado y ejecutado sin force; el [PR #36](https://github.com/lasopho/sollahms-web/pull/36) fue **fusionado** mediante merge commit autorizado `d3fb474f08b81a965d2e0eac927adf88671968c0` en `codex/footer-sin-frase-20261116`. Sus padres son 875/6ced y el árbol coincide exactamente con el candidato revisado; 59 archivos verificados y 155 protegidos intactos. El deployment de revisión Fky fue creado y verificado después con autorización independiente; posteriormente se promovió y publicó ese mismo ID/sourceD3 con otro permiso expreso. Producción anterior875 se conserva como referencia, sin autorización de rollback.
 
 Rama: `codex/ampliacion-21-proyectos-gpr-20261118`. Checkout: `/private/tmp/sollahms-ampliacion-21-gpr-20261118`. Padre/base exacta: `875bd80ddb650b376cb3dd53af4ffae066fcd48f`, destino `codex/footer-sin-frase-20261116`. Árbol técnico limpio. Los 59 archivos del commit son seis modificaciones acotadas y 53 nuevos: 21 fichas, 25 recursos originales y siete archivos de datos, adaptación, CSS, preparación y pruebas. El [manifiesto](qa/MANIFIESTO-59-ARCHIVOS.json) enumera todos y fija sus SHA-256.
 
@@ -53,13 +53,13 @@ El [recibo Chrome](qa/QA-CHROME.json) y las capturas fijan los resultados. El es
 
 ![Ficha GPR local verificada](qa/FICHA-GPR.jpg)
 
-## Sincronización y siguiente operación
+## Historial de sincronización y operaciones autorizadas
 
 La rama de Leben sincroniza únicamente documentación; el primer push técnico se ejecutó con su autorización independiente. La nueva rama técnica y el destino excluyen deployments automáticos. El [estado de referencias previo al push](qa/PRODUCCION-Y-REFERENCIAS.json) confirma producción READY en `875bd80`, sin deployments de la nueva rama. La autorización `AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01` fue respondida expresamente «Autorizar push y PR Draft» y ejecutada. El [recibo de sincronización](SINCRONIZACION-PR36.json) confirma SHA remoto exacto, apertura de PR36 en Draft, no fusionado, con 59 archivos coincidentes, cero deployments de la rama y producción READY en875. GitHub no aporta checks/reviews; su ausencia no es aprobación. Ready, merge, deployment y publicación requieren permisos independientes.
 
 El [parche textual](IMPLEMENTACION-21-SIN-BINARIOS.patch), [mapa de originales](RECUPERACION-RECURSOS.json) y hashes permiten recuperar los 59 archivos si se pierde el checkout. No reconstruirlo ni repetir QA con hashes idénticos. El corte previo de propuesta se conserva sin modificar sus flags históricos de autorización. Continuidad vigente en el NEXT-PROMPT raíz.
 
-## Solicitud presentada y compatibilidad pendiente de integración
+## Historial de solicitudes y compatibilidad de 24a
 
 La solicitud independiente `AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01` fue presentada una sola vez para el commit exacto y PR Draft. La respuesta expresa autorizó ambos pasos; fueron ejecutados y verificados en el PR36 Draft. Esta solicitud está cerrada. Ready fue autorizado y ejecutado después, con su permiso independiente; merge, deployment y publicación siguen sin autorización. No repetirla ni usarla para otros pasos.
 
@@ -83,8 +83,14 @@ Reutilizar la base congelada y su allowlist, sin copiar el repositorio, docs, RA
 
 La preparación anterior se completó después del merge. El [paquete local verificado](paquete-publico/README.md) contiene 1.721 archivos y 227.584.223 bytes, inventario `d3d6692a7cf190d36d0cb173497c2b36775b7fa1a0f5c951c5a2a87c1b770558`. Base de 1.672 archivos exacta, 49 altas/cinco reemplazos, 57 archivos de siete funciones y configuración intactos; 100/100 recursos y CLI oficial dry coincidentes. El cierre posterior explica los flags de creación del manifiesto original inmutable f0fa. No hubo builds/generadores, repetición de QA ni deployments.
 
-El paso siguiente requiere `AUTH-DEPLOYMENT-PR36-20261118-01`: como máximo un deployment de revisión con prebuilt, entorno production y --skip-domain. La promoción/publicación exige otro permiso. No asumir que merge autoriza crear ese deployment.
+En ese corte se preparó `AUTH-DEPLOYMENT-PR36-20261118-01` para un máximo de un deployment de revisión prebuilt/production/skip-domain. Su respuesta y la promoción posterior quedaron ejecutadas, según el estado vigente al final. No reutilizar el permiso consumido.
 
-## Deployment de revisión actual
+## Deployment de revisión previo a la publicación
 
-[Deployment real verificado](deployment-revision/README.md): `dpl_FkyZZgpki5HSpKMRJQFgJE451d3G`, READY/sourceD3,1.721UIDcoincidentes y3/3Chrome aprobados. La autorización de creación fue ejecutada una sola vez y consumida. Los cuatro alias públicos siguen875; no hay promoción/publicación autorizada. El siguiente permiso preparado es `AUTH-PROMOTION-PR36-20261118-01`, únicamente para este mismo deployment sin rebuild, nuevos deployments o cambios de DNS/SSO/variables.
+[Deployment real verificado](deployment-revision/README.md): `dpl_FkyZZgpki5HSpKMRJQFgJE451d3G`, READY/sourceD3,1.721UID coincidentes y3/3Chrome aprobados. Creación única autorizada y consumida. La promoción/publicación del mismo deployment se autorizó posteriormente de forma independiente; los estados previos de las secciones anteriores conservan su contexto histórico y no son instrucciones vigentes.
+
+## Publicación verificada vigente
+
+La respuesta «Autorizar promoción y publicación» resolvió AUTH-PROMOTION-PR36-20261118-01. Se promovió una sola vez el mismoFky/sourceD3, sin rebuild ni otro deployment. [Recibo](deployment-revision/PROMOCION-PR36.json): cinco alias existentes asignados y redirects308 de www/sollhams.cl intactos; este último dominio era previo, omitido del resumen anterior de cuatro. [Chrome público](deployment-revision/publicacion/QA-PUBLICO-PR36.json):152 proyectos, filtroGPR9, sin alertas, overflow o consola warning/error; un flujo dirigido, sin repetir QA histórico. [Cinco recursos públicos](deployment-revision/publicacion/RECURSOS-PUBLICOS-PR36.json) HTTP200 con SHA256 exacto. Se preservan131 fichas,155protegidos,siete funciones y módulos financieros según los certificados existentes. El suplemento24a,1.993punteros y313IDs no se alteran; objetivo global abierto. No quedan permisos de promoción o creación pendientes paraPR36.
+
+![Catálogo público GPR](deployment-revision/publicacion/CATALOGO-GPR-PUBLICADO.jpg)

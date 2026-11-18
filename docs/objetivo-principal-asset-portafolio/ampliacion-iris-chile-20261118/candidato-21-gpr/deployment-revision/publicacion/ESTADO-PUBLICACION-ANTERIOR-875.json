@@ -1,0 +1,971 @@
+{
+  "date": "2026-11-17",
+  "status": "PUBLICADO_VERIFICADO_875BD80",
+  "sourceCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "artifact": {
+    "prepared": true,
+    "sourceCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "technicalSourceCommit": "9700d65fed15ee56584987573f1493b1fb52c9a4",
+    "baselineDeployment": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "baselineCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "candidateInventorySha256": "ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834",
+    "output": "/private/tmp/sollahms-cotizaciones-mismo-origen-release-20261117/stage/.vercel/output",
+    "files": 1672,
+    "staticFiles": 1614,
+    "functionFiles": 57,
+    "functionBundles": 7,
+    "configFiles": 1,
+    "projectFichesUnchanged": 131,
+    "protectedSourceHashesMatched": 155,
+    "originalSourcesMatched": 21,
+    "publicProjectionPinsUnchanged": 2,
+    "applicationBuilds": 0,
+    "generatorsExecuted": 0,
+    "manifest": "correccion-carga-mismo-origen-20261117/paquete/MANIFIESTO-CANDIDATO-MISMO-ORIGEN.json",
+    "scope": "Active frozen released artifact; operation authorization counters recorded separately."
+  },
+  "projectBindingVerifiedByOfficialCLI": true,
+  "resourceClosure": {
+    "passed": true,
+    "reusedFrom": "correccion-proyecciones-publicas-20261117/paquete-publico/MANIFIESTO-CANDIDATO-PUBLICO.json",
+    "modules": 27,
+    "literalChecks": [
+      {
+        "from": "assets/js/catalog-euro-owner-quotes.mjs",
+        "kind": "module-import",
+        "url": "./commercial-filter-engine.mjs",
+        "target": "assets/js/commercial-filter-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-euro-owner-quotes.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/catalog-euro-owner-quotes.json",
+        "target": "data/catalog-euro-owner-quotes.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-controls.mjs",
+        "kind": "module-import",
+        "url": "./catalog-filter-engine.mjs?v=20261029-stage-1",
+        "target": "assets/js/catalog-filter-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-controls.mjs",
+        "kind": "module-import",
+        "url": "./catalog-model.mjs?v=20261029-stage-1",
+        "target": "assets/js/catalog-model.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-controls.mjs",
+        "kind": "module-import",
+        "url": "./commercial-filter-data.mjs?v=20261117-local-1",
+        "target": "assets/js/commercial-filter-data.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-engine.mjs",
+        "kind": "module-import",
+        "url": "./metro-model.mjs",
+        "target": "assets/js/metro-model.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-engine.mjs",
+        "kind": "module-import",
+        "url": "./project-offers.mjs?v=20261029-euro-1",
+        "target": "assets/js/project-offers.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-engine.mjs",
+        "kind": "module-import",
+        "url": "./catalog-typology-prices.mjs",
+        "target": "assets/js/catalog-typology-prices.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-engine.mjs",
+        "kind": "module-import",
+        "url": "./catalog-euro-owner-quotes.mjs",
+        "target": "assets/js/catalog-euro-owner-quotes.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-engine.mjs",
+        "kind": "module-import",
+        "url": "./catalog-nollagam-quote-consumer.mjs",
+        "target": "assets/js/catalog-nollagam-quote-consumer.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-filter-engine.mjs",
+        "kind": "module-import",
+        "url": "./commercial-filter-engine.mjs",
+        "target": "assets/js/commercial-filter-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "module-import",
+        "url": "./project-offers.mjs?v=20261030-leon",
+        "target": "assets/js/project-offers.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "module-import",
+        "url": "./metro-model.mjs",
+        "target": "assets/js/metro-model.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "module-import",
+        "url": "./commercial-context.mjs?v=20261029-euro-1",
+        "target": "assets/js/commercial-context.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "module-import",
+        "url": "./catalog-filter-engine.mjs?v=20261029-euro-1",
+        "target": "assets/js/catalog-filter-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "module-import",
+        "url": "./catalog-model.mjs?v=20261029-euro-1",
+        "target": "assets/js/catalog-model.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "module-import",
+        "url": "./catalog-map-model.mjs",
+        "target": "assets/js/catalog-map-model.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "module-import",
+        "url": "./metro-map.mjs",
+        "target": "assets/js/metro-map.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "literal-local-resource",
+        "url": "/assets/css/catalog-map.css",
+        "target": "assets/css/catalog-map.css",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "literal-local-resource",
+        "url": "/assets/vendor/leaflet-1.9.4/leaflet.css",
+        "target": "assets/vendor/leaflet-1.9.4/leaflet.css",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "literal-local-resource",
+        "url": "/assets/vendor/leaflet-1.9.4/leaflet.js",
+        "target": "assets/vendor/leaflet-1.9.4/leaflet.js",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/map-provider.json",
+        "target": "data/map-provider.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-map.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/project-locations.json",
+        "target": "data/project-locations.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-model.mjs",
+        "kind": "module-import",
+        "url": "./catalog-filter-engine.mjs?v=20261029-euro-1",
+        "target": "assets/js/catalog-filter-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-model.mjs",
+        "kind": "module-import",
+        "url": "./project-offers.mjs?v=20261029-euro-1",
+        "target": "assets/js/project-offers.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-model.mjs",
+        "kind": "module-import",
+        "url": "./catalog-typology-prices.mjs",
+        "target": "assets/js/catalog-typology-prices.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-model.mjs",
+        "kind": "module-import",
+        "url": "./catalog-euro-owner-quotes.mjs",
+        "target": "assets/js/catalog-euro-owner-quotes.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-model.mjs",
+        "kind": "module-import",
+        "url": "./catalog-nollagam-quote-consumer.mjs",
+        "target": "assets/js/catalog-nollagam-quote-consumer.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-nollagam-quote-consumer.mjs",
+        "kind": "module-import",
+        "url": "./catalog-nollagam-owner-quotes.mjs",
+        "target": "assets/js/catalog-nollagam-owner-quotes.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-nollagam-quote-consumer.mjs",
+        "kind": "module-import",
+        "url": "./commercial-filter-engine.mjs",
+        "target": "assets/js/commercial-filter-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-nollagam-quote-consumer.mjs",
+        "kind": "module-import",
+        "url": "./metro-model.mjs",
+        "target": "assets/js/metro-model.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-nollagam-quote-consumer.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/catalog-nollagam-owner-quotes.json",
+        "target": "data/catalog-nollagam-owner-quotes.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog-typology-prices.mjs",
+        "kind": "module-import",
+        "url": "./commercial-filter-engine.mjs",
+        "target": "assets/js/commercial-filter-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./commercial-filter-data.mjs",
+        "target": "assets/js/commercial-filter-data.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./catalog-financial-witness.mjs",
+        "target": "assets/js/catalog-financial-witness.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./catalog-euro-owner-quotes.mjs",
+        "target": "assets/js/catalog-euro-owner-quotes.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./catalog-nollagam-quote-consumer.mjs",
+        "target": "assets/js/catalog-nollagam-quote-consumer.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./documentary-local-review.mjs",
+        "target": "assets/js/documentary-local-review.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./metro-model.mjs",
+        "target": "assets/js/metro-model.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./project-offers.mjs?v=20261030-leon",
+        "target": "assets/js/project-offers.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./commercial-context.mjs?v=20261029-euro-1",
+        "target": "assets/js/commercial-context.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./catalog-model.mjs?v=20261029-euro-1",
+        "target": "assets/js/catalog-model.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./catalog-filter-controls.mjs?v=20261029-euro-1",
+        "target": "assets/js/catalog-filter-controls.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./catalog-filter-engine.mjs?v=20261029-euro-1",
+        "target": "assets/js/catalog-filter-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "./catalog-map.mjs?v=20261029-euro-1",
+        "target": "assets/js/catalog-map.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "module-import",
+        "url": "/assets/js/purchase-capacity-ui.mjs",
+        "target": "assets/js/purchase-capacity-ui.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "literal-local-resource",
+        "url": "/assets/branding/sollahms-logo-light.svg",
+        "target": "assets/branding/sollahms-logo-light.svg",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "literal-local-resource",
+        "url": "/assets/js/purchase-capacity-ui.mjs",
+        "target": "assets/js/purchase-capacity-ui.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/catalog-facets.json?v=20261029-euro-1",
+        "target": "data/catalog-facets.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/metro-network.json",
+        "target": "data/metro-network.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/project-metro.json",
+        "target": "data/project-metro.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/catalog.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/proyectos.json",
+        "target": "data/proyectos.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/commercial-filter-engine.mjs",
+        "kind": "module-import",
+        "url": "./commercial-filter-data.mjs",
+        "target": "assets/js/commercial-filter-data.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/documentary-local-review.mjs",
+        "kind": "module-import",
+        "url": "./documentary-reference-data.mjs",
+        "target": "assets/js/documentary-reference-data.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/commercial-filter-data.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/commercial-filter-evidence-leben.json",
+        "target": "data/commercial-filter-evidence-leben.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/commercial-context.mjs",
+        "kind": "module-import",
+        "url": "./project-offers.mjs?v=20261029-euro-1",
+        "target": "assets/js/project-offers.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/metro-map.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/metro-future.json",
+        "target": "data/metro-future.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/metro-map.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/metro-geometries.json",
+        "target": "data/metro-geometries.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/metro-map.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/metro-network.json",
+        "target": "data/metro-network.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity-ui.mjs",
+        "kind": "module-import",
+        "url": "./purchase-capacity.mjs",
+        "target": "assets/js/purchase-capacity.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity-ui.mjs",
+        "kind": "module-import",
+        "url": "./clp-input.mjs",
+        "target": "assets/js/clp-input.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity-ui.mjs",
+        "kind": "module-import",
+        "url": "./mortgage-engine.mjs",
+        "target": "assets/js/mortgage-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity-ui.mjs",
+        "kind": "module-import",
+        "url": "./mortgage-data.mjs",
+        "target": "assets/js/mortgage-data.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity-ui.mjs",
+        "kind": "module-import",
+        "url": "./official-uf.mjs",
+        "target": "assets/js/official-uf.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity-ui.mjs",
+        "kind": "module-import",
+        "url": "./project-finance.mjs",
+        "target": "assets/js/project-finance.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity-ui.mjs",
+        "kind": "module-import",
+        "url": "./mortgage-handoff.mjs",
+        "target": "assets/js/mortgage-handoff.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity-ui.mjs",
+        "kind": "literal-local-resource",
+        "url": "/data/hipotecario.json",
+        "target": "data/hipotecario.json",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity.mjs",
+        "kind": "module-import",
+        "url": "./mortgage-engine.mjs",
+        "target": "assets/js/mortgage-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity.mjs",
+        "kind": "module-import",
+        "url": "./mortgage-data.mjs",
+        "target": "assets/js/mortgage-data.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/purchase-capacity.mjs",
+        "kind": "module-import",
+        "url": "./project-finance.mjs",
+        "target": "assets/js/project-finance.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/mortgage-data.mjs",
+        "kind": "module-import",
+        "url": "./mortgage-engine.mjs",
+        "target": "assets/js/mortgage-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/official-uf.mjs",
+        "kind": "module-import",
+        "url": "./mortgage-data.mjs",
+        "target": "assets/js/mortgage-data.mjs",
+        "present": true
+      },
+      {
+        "from": "assets/js/mortgage-handoff.mjs",
+        "kind": "module-import",
+        "url": "./mortgage-engine.mjs",
+        "target": "assets/js/mortgage-engine.mjs",
+        "present": true
+      },
+      {
+        "from": "pinned public owner loader",
+        "kind": "pinned-public-projection",
+        "target": "data/catalog-euro-owner-quotes.json",
+        "sha256": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272",
+        "present": true
+      },
+      {
+        "from": "pinned public owner loader",
+        "kind": "pinned-public-projection",
+        "target": "data/catalog-nollagam-owner-quotes.json",
+        "sha256": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee",
+        "present": true
+      }
+    ],
+    "missingPublicDependencies": [],
+    "reason": "Only two credential option values changed after that closure check; imports and runtime URLs remained identical. Loopback-only fixtures remain excluded from public output."
+  },
+  "production": {
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "state": "READY",
+    "url": "https://sollahms.cl",
+    "configuredDomains": [
+      "sollahms.cl",
+      "www.sollahms.cl",
+      "sollhams.cl",
+      "project-wrapp.vercel.app"
+    ],
+    "additionalExistingPlatformAlias": "project-wrapp-lsandoval2-8260s-projects.vercel.app"
+  },
+  "authorized": {
+    "firstPushPR35": true,
+    "draftPR35": true,
+    "ReadyPR35": true,
+    "mergePR35": true,
+    "oneCorrectedDeploymentCreation": true,
+    "promotionPublicationOfSameDeployment": true,
+    "futureOperations": false
+  },
+  "transportHistory": {
+    "firstRecoveryStoppedAt": "index.html HTTP308 hacia raíz",
+    "retainedVerifiedFiles": 1528,
+    "missingCompleted": 132,
+    "canonicalSourceObserved": "https://sollahms.cl/",
+    "finalBaselineVerifiedFiles": 1660,
+    "initialReceiptPreserved": true,
+    "localPython39DateParsingCorrectedBeforeAnyResumeIO": true
+  },
+  "constraints": [
+    "Main, registro de dominios, DNS, SSO, variables y servicios protegidos permanecen intactos; sólo se reasignaron aliases existentes mediante promoción autorizada.",
+    "No leer/guardar credenciales, cookies o tokens; el navegador y CLI usan su sesión normal. No volcar metadatos completos de aliases.",
+    "No repetir suites certificadas sin cambios o preocupaciones nuevas; verificaciones de transporte y entorno separadas.",
+    "Iris sigue limitado a revisión local; no adoptar sus precios como Sollahms, inferir stock o declarar completo el objetivo131."
+  ],
+  "deploymentAuthorization": "Respuesta expresa del propietario: Autorizar deployment sin dominios",
+  "authorizationScope": "PR35push/Draft/Ready/merge, un deployment corregido y su promoción/publicación tuvieron permisos expresos separados, ya ejecutados y consumidos. No autoriza nuevas acciones externas.",
+  "deployment": {
+    "id": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "url": "https://project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "sourceCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "productionURL": "https://sollahms.cl",
+    "aliases": [
+      "sollahms.cl",
+      "www.sollahms.cl",
+      "sollhams.cl",
+      "project-wrapp.vercel.app",
+      "project-wrapp-lsandoval2-8260s-projects.vercel.app"
+    ],
+    "receivedDigestFilesMatched": 1672,
+    "lambdaRoutes": 7
+  },
+  "verification": {
+    "sourceMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "receivedDigestFilesMatched": 1672,
+    "lambdaRoutes": 7,
+    "protectedFocusedChromeChecksPassed": 3,
+    "protectedFocusedConsoleErrors": 0,
+    "publishedProjectsRendered": 131,
+    "publicEuroPriceUF": 3562,
+    "publicNollagamPriceUF": 5070,
+    "anonymousPublicFilesSHA256Matched": 6,
+    "privateRawSourceHEAD404": 3,
+    "MetroVisibleFailureObserved": false,
+    "MetroPriorTextContentInterpretationCorrected": true,
+    "formsSubmitted": 0,
+    "scope": "Focused checks of the new protected-source defect and published routing; historical broad suites not rerun.",
+    "receipt": "publicacion-pr35-20261117/CHROME-PUBLICACION.json"
+  },
+  "deploymentCreationAuthorizationUsed": 1,
+  "remainingDeploymentCreationAuthorizations": 0,
+  "verifiedExistingDomains": [
+    {
+      "name": "www.sollahms.cl",
+      "redirect": "sollahms.cl",
+      "status": 308
+    },
+    {
+      "name": "sollahms.cl",
+      "redirect": null
+    },
+    {
+      "name": "sollhams.cl",
+      "redirect": "sollahms.cl",
+      "status": 308
+    },
+    {
+      "name": "project-wrapp.vercel.app",
+      "redirect": null
+    }
+  ],
+  "priorProduction": {
+    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "preserved": true
+  },
+  "executedPromotion": {
+    "authorizationId": "AUTH-PROMOTION-PR35-20261117-01",
+    "ownerReply": "Autorizar promoción y publicación",
+    "verifiedAtUTC": "2026-11-18T02:33:28.877458+00:00",
+    "tool": "mcp__codex_apps__vercel_request_promote",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "sourceCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "newDeploymentCreated": false,
+    "rebuild": false,
+    "configuredDomainRegistryUnchanged": true,
+    "DNSorSSOorEnvironmentChanges": false,
+    "receipt": "publicacion-pr35-20261117/PROMOCION-Y-DOMINIOS.json"
+  },
+  "publicationVerification": {
+    "anonymousHTTP6FilesSHA256Matched": true,
+    "privateSourceHEAD404": 3,
+    "ChromeDefaultProjects": 131,
+    "EuroFilteredPriceUF": 3562,
+    "NollagamFilteredPriceUF": 5070,
+    "receipt": "publicacion-pr35-20261117/CHROME-PUBLICACION.json",
+    "priorMetroInterpretationCorrected": "Earlier textContent collection included the hidden metro-load-status template. Direct visibility checks show hidden=true and zero rendered rectangles in protected and public pages; no visibleMetro warning was observed. Original receipts retained and interpretation corrected in publicacion-pr35-20261117/CORRECCION-VISIBILIDAD-METRO.json.",
+    "broadSuitesRepeated": false
+  },
+  "promotionAuthorizationUsed": 1,
+  "remainingPromotionAuthorizations": 0,
+  "nextAuthorizedWork": {
+    "step": "Procesar respuestas reales de las dos solicitudes ya presentadas y continuar sólo trabajos independientes con cambios o hallazgos nuevos. La vista comercial131 y análisis de combinaciones ya están consolidados; no repetirlos ni repetirIris158 o QA certificado.",
+    "authorization": "CONSOLIDACION_DOCUMENTAL_LOCAL_Y_SINCRONIZACION_EXISTENTE_AUTORIZADAS",
+    "publicChangesAuthorized": false,
+    "doNotRepeatCompletedNovoEndemicoOrIris158": true,
+    "technicalCandidateFrozenAt": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+    "pendingTechnicalPushPRRequest": "AUTH-PUSH-PR-SUPPLEMENT-20261118-01",
+    "pendingOwnerInformationRequest": "OWNER-BATH-IRARR1970-20261118-01"
+  },
+  "pendingNextRelease": {
+    "mergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+    "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34",
+    "status": "DEPLOYMENT_REVISION_READY_BLOQUEADO_PARA_PROMOCION",
+    "files": 1672,
+    "inventorySHA256": "31eee39b568fa35a32cbab1dfe1ace80ac8b1d1ac1486d0456f1e98cde6f9b19",
+    "package": "/private/tmp/sollahms-proyecciones-publicas-release-20261117",
+    "plan": "preparacion-deployment-pr34/PLAN-DEPLOYMENT-SIN-DOMINIOS.json",
+    "mergeCertificate": "preparacion-deployment-pr34/MERGE-CERTIFICADO.json",
+    "deploymentAuthorized": true,
+    "promotionAuthorized": false,
+    "authorization": "SOLICITADA_PENDIENTE_DE_RESPUESTA",
+    "interventionId": "AUTH-DEPLOYMENT-PR34-20261117-01",
+    "doNotRepeatQuestion": true,
+    "deployment": {
+      "id": "dpl_B7PfYYNveGXD5pjns6sg6yAqMHL7",
+      "url": "https://project-wrapp-8bwqnl4p5-lsandoval2-8260s-projects.vercel.app",
+      "sourceMergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+      "readyState": "READY",
+      "target": "production",
+      "aliases": [],
+      "createdAtUTC": "2026-11-18T01:18:07.076000+00:00",
+      "readyAtUTC": "2026-11-18T01:18:14.457000+00:00",
+      "authorizedDeploymentCount": 1,
+      "createdDeploymentCount": 1,
+      "remainingDeploymentCreationAuthorizations": 0,
+      "receivedDigestFilesMatched": 1672,
+      "missing": 0,
+      "extra": 0,
+      "differentDigestFiles": 0,
+      "lambdaRoutes": 7,
+      "productionDomainsUnchanged": true,
+      "applicationSmoke": "131 projects loaded; two quote-source authentication redirects, isolated query0/131",
+      "promotionStatus": "BLOQUEADO_PARA_PROMOCION",
+      "newDefect": "Own public JSON fetches omit same-origin authentication; both302 and ERR_FAILED, no pin mismatch or altered artifact.",
+      "evidence": "deployment-pr34-20261117/REPRODUCCION-CARGA-PROTEGIDA.json",
+      "financialScenariosCertified": false
+    },
+    "remainingDeploymentCreationAuthorizations": 0,
+    "nextLocalCandidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
+    "historicalOnly": true,
+    "neverPromote": true,
+    "supersededByPublishedSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
+  },
+  "correctedLocalRelease": {
+    "candidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
+    "sourceCommit": "9700d65fed15ee56584987573f1493b1fb52c9a4",
+    "publicPackage": {
+      "path": "/private/tmp/sollahms-cotizaciones-mismo-origen-release-20261117",
+      "status": "PREPARADO_LOCAL_PENDIENTE_AUTORIZACIONES",
+      "sourceCommit": "9700d65fed15ee56584987573f1493b1fb52c9a4",
+      "inventorySHA256": "ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834",
+      "fileCount": 1672,
+      "staticFiles": 1614,
+      "functionFiles": 57,
+      "functionBundles": 7,
+      "configFiles": 1,
+      "changedFromB7Files": [
+        "static/assets/js/catalog-euro-owner-quotes.mjs",
+        "static/assets/js/catalog-nollagam-quote-consumer.mjs"
+      ],
+      "identicalToB7Files": 1670,
+      "fichesUnchanged": 131,
+      "publicProjectionsUnchanged": true,
+      "configAndPatio410Unchanged": true,
+      "buildGeneratorsChromeOrDeploymentsExecuted": false,
+      "manifest": "correccion-carga-mismo-origen-20261117/paquete/MANIFIESTO-CANDIDATO-MISMO-ORIGEN.json",
+      "receipt": "correccion-carga-mismo-origen-20261117/paquete/RECIBO-PREPARACION-LOCAL.json",
+      "sourceMergeCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "mergeCertificate": "preparacion-deployment-pr35/MERGE-CERTIFICADO.json",
+      "treeCorrespondenceVerified": true,
+      "statusIsHistorical": true,
+      "currentTemporaryArtifactAvailable": false,
+      "currentAvailabilitySource": "RECUPERACION-OPERATIVA-20261118.json",
+      "doNotRebuildOrRepeatQA": true
+    },
+    "deploymentAuthorized": true,
+    "promotionAuthorized": true,
+    "sourceMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "pullRequest": "https://github.com/lasopho/sollahms-web/pull/35",
+    "status": "PUBLICADO_VERIFICADO",
+    "deployment": {
+      "verdict": "APROBADO_CON_OBSERVACIONES_PARA_SOLICITAR_PROMOCION",
+      "verifiedAtUTC": "2026-11-18T02:09:18.517452+00:00",
+      "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+      "url": "https://project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app",
+      "sourceMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "readyState": "READY",
+      "target": "production",
+      "aliases": [],
+      "receivedDigestsMatched": 1672,
+      "missing": 0,
+      "extra": 0,
+      "different": 0,
+      "digestType": "Remote SHA1 uid matched to certified local SHA1/SHA256 inventory",
+      "independentTransportReview": {
+        "reviewerTask": "/root/recuperacion_campo_ecasa",
+        "result": "PASA1672/1672;7lambda;no missing/extra/different",
+        "newTestsOrAPIsExecutedByReviewer": false
+      },
+      "lambdaRoutes": 7,
+      "focusedChrome": {
+        "passed": 3,
+        "checks": [
+          "Two pinned public sources load with normal same-origin session, no authentication redirects",
+          "EuroDonPepe2D UF3562 =1/131",
+          "NollagamCostaneraA3D UF5070 =1/131"
+        ],
+        "receipt": "deployment-pr35-20261117/CHROME-CORRECCION-PROTEGIDA.json",
+        "captureTruncated": false,
+        "unhandledExceptions": 0,
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "CDPNetworkRuntimeDisabled": true
+      },
+      "preservation": {
+        "fiches": 131,
+        "functionFiles": 57,
+        "functionBundles": 7,
+        "protectedSources": 155,
+        "originalSources": 21,
+        "publicProjectionPins": 2,
+        "configurationAndPatio410": true
+      },
+      "observations": [
+        "Protected-sessionMetro warning remains; Metro code/data unchanged. Both current publicMetro resourcesHTTP200 and byte-identical; no fullMetroUI recertification.",
+        "Financial scenarios and broad responsive/view suites were not rerun; unchanged source accepted from historical certification.",
+        "Source dates do not certify current stock or validity; documentary Iris source remains loopback-only."
+      ],
+      "productionBeforePromotion": {
+        "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+        "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+        "domains": [
+          "sollahms.cl",
+          "www.sollahms.cl",
+          "sollhams.cl",
+          "project-wrapp.vercel.app"
+        ]
+      },
+      "promotionAuthorized": false,
+      "newDeploymentPermissionConsumed": true,
+      "global131ObjectiveComplete": false
+    },
+    "remainingDeploymentCreationAuthorizations": 0,
+    "promoted": true
+  },
+  "releaseHistory": [
+    {
+      "sourceCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+      "artifact": {
+        "prepared": true,
+        "sourceCommit": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+        "technicalSourceCommit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+        "baselineDeployment": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+        "baselineInventorySha256": "aabc92d6a5c7c8d345d9a3cc7dd4f45a7fd11c8385c752ddf45e5a2d0f649549",
+        "candidateInventorySha256": "0e7482726ee1c172988ee63e65db2ff87d0c5935a97637e59472e9e685e581f6",
+        "output": "/private/tmp/sollahms-pr32-release-20261117/stage/.vercel/output",
+        "files": 1663,
+        "changedExisting": [
+          "static/assets/css/catalog-filters.css",
+          "static/assets/js/catalog-filter-controls.mjs",
+          "static/assets/js/catalog-filter-engine.mjs",
+          "static/assets/js/catalog-map.mjs",
+          "static/assets/js/catalog-model.mjs",
+          "static/assets/js/catalog.mjs",
+          "static/proyectos.html"
+        ],
+        "added": [
+          "static/assets/js/commercial-filter-data.mjs",
+          "static/assets/js/commercial-filter-engine.mjs",
+          "static/data/commercial-filter-evidence-leben.json"
+        ],
+        "baselineFilesIdentical": 1653,
+        "protectedSourceHashesMatched": 155,
+        "projectFichesUnchanged": 131,
+        "functionFilesUnchanged": 57,
+        "functionBundlesUnchanged": 7,
+        "configV3ByteIdentical": true,
+        "projectBinding": {
+          "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+          "orgId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+          "projectName": "project-wrapp"
+        },
+        "generatorsExecuted": 0,
+        "buildsExecuted": 0,
+        "deploymentsCreated": 0,
+        "promotions": 0,
+        "baselineBytesModified": false,
+        "scope": "Preparación local previa al deployment; sus contadores cero son históricos."
+      },
+      "executedPromotion": {
+        "tool": "mcp__codex_apps__vercel_request_promote",
+        "arguments": {
+          "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+          "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+          "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN"
+        },
+        "meaning": "Promoción autorizada del deployment existente a los cuatro alias existentes.",
+        "before": "READY, commit y dominio anterior comprobados antes de ejecutar.",
+        "after": "Cuatro alias completados; mismo ID y SHA, quince archivos públicos coincidentes, 131 proyectos sin errores de consola.",
+        "status": "EJECUTADA_Y_VERIFICADA",
+        "authorization": "Respuesta expresa del propietario: Autorizar promoción y publicación",
+        "receipt": "publicacion-pr32/PUBLICACION-CONFIRMADA.json",
+        "sameDeployment": true,
+        "additionalDeploymentCreated": false,
+        "rebuild": false
+      },
+      "scope": "Prior released9e snapshot retained before making875 current.",
+      "authorized": {
+        "ReadyPR32": true,
+        "mergePR32": true,
+        "deploymentCreation": true,
+        "promotionPublication": true
+      },
+      "authorizationScope": "Un deployment sin dominios y, después, una promoción/publicación del mismo ID, autorizados por separado y ya ejecutados. No autoriza operaciones futuras.",
+      "verification": {
+        "source": "publicacion-pr32/VERIFICACION-DEPLOYMENT.json",
+        "initialization": "publicacion-pr32/INICIALIZACION-DEPLOYMENT.json",
+        "projectsRendered": 131,
+        "preparedLebenSourceEnabled": true,
+        "visibleSourceFailureNotice": false,
+        "consoleErrors": 0,
+        "browserAuthenticationRequested": false,
+        "SSOOrProtectionChanged": false,
+        "formsSubmitted": 0,
+        "scope": "Integridad del paquete e inicialización en el nuevo host. Las suites F10/F13 siguen históricas; no se repitieron.",
+        "publishedModuleCacheControl": "public, max-age=0, must-revalidate",
+        "publishedModuleMIME": "application/javascript; charset=utf-8"
+      },
+      "resourceClosure": {
+        "passed": true,
+        "literalChecks": 61,
+        "modules": 20,
+        "missing": []
+      },
+      "constraints": [
+        "No modificar main,dominios,SSO,variables ni servicios protegidos.",
+        "No extraer ni almacenar credenciales; CLI usa su sesión normal. Si pide login, intervención personal del propietario.",
+        "No repetir pruebas certificadas idénticas; verificar sólo el empaquetado y el nuevo entorno.",
+        "Las15referencias externas nuevas siguen documentales. No se adoptan sus precios como Sollahms ni se cierra el objetivo131 con este paquete."
+      ]
+    }
+  ],
+  "historicalNextAuthorizedWork": {
+    "step": "Incorporar localmente dos referencias documentadas Novo109 y Endémico45, preservando fuentes y pins existentes",
+    "authorization": "DESARROLLO_LOCAL_AUTORIZADO_POR_OBJETIVO_GENERAL",
+    "publicChangesAuthorized": false,
+    "newBranchFirstPushPRDeploymentRequireSeparatePermission": true,
+    "newOwnerDataOrIrisLoginRequiredForTheseTwoReferences": false
+  },
+  "currentPendingIntegration": {
+    "candidateSHA": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+    "branch": "codex/suplemento-documental-131-20261117",
+    "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "status": "LOCAL_CERTIFICADO_PRIMER_PUSH_PR_DRAFT_PENDIENTES_DE_RESPUESTA",
+    "firstPushOrPRExecuted": false,
+    "readyMergeDeploymentPublicationAuthorized": false,
+    "requestId": "AUTH-PUSH-PR-SUPPLEMENT-20261118-01",
+    "doNotRepeatQuestion": true
+  },
+  "currentOperationalReconciliation": {
+    "recordedAtUTC": "2026-11-18T16:39:19.096634+00:00",
+    "meaning": "Se separan instrucciones vigentes de estados históricos para no repetir incorporación de Novo/Endémico ya terminada ni preparar/promoverB7. Sin operación externa nueva.",
+    "originalProductionAndAuthorizationHistoryPreserved": true,
+    "metroVisibilityErratum": "publicacion-pr35-20261117/CORRECCION-VISIBILIDAD-METRO.json"
+  },
+  "currentDocumentaryConsolidation": {
+    "fieldsView": "aceptacion-comercial-131-20261118/VISTA-COMERCIAL-POR-PROYECTO.json",
+    "combinationAnalysis": "aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json",
+    "newPrimaryEvidence": 0,
+    "newAppTests": 0,
+    "historical313Changed": false,
+    "productionChanged": false
+  }
+}

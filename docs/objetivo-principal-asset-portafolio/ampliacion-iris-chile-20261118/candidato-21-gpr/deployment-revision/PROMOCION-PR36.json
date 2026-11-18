@@ -1,0 +1,170 @@
+{
+  "authorizationId": "AUTH-PROMOTION-PR36-20261118-01",
+  "authorizationReply": "Autorizar promoción y publicación",
+  "recordedAtUTC": "2026-11-18T22:13:53.270808+00:00",
+  "status": "PUBLICADA_VERIFICADA",
+  "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+  "sourceSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "maximumPromotions": 1,
+  "mutationAttempts": 1,
+  "newDeployments": 0,
+  "rebuild": false,
+  "previousProduction": {
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr"
+  },
+  "expectedAliases": [
+    "sollahms.cl",
+    "www.sollahms.cl",
+    "project-wrapp.vercel.app",
+    "project-wrapp-lsandoval2-8260s-projects.vercel.app"
+  ],
+  "mutationStartedAtUTC": "2026-11-18T22:14:23.986640+00:00",
+  "operation": "mcp__codex_apps__vercel_request_promote",
+  "preflight": {
+    "checks": [
+      {
+        "chunk_id": "675ca1",
+        "wall_time_seconds": 9.5e-06,
+        "exit_code": 0,
+        "original_token_count": 11,
+        "output": "9c4a468a138a2ae0f297a1da70327eadb79ebd98\n"
+      },
+      {
+        "chunk_id": "e14afe",
+        "wall_time_seconds": 0.832143208,
+        "exit_code": 0,
+        "original_token_count": 80,
+        "output": "6cedd329879be1b716be9854d23e1b5538db2806\trefs/heads/codex/ampliacion-21-proyectos-gpr-20261118\n9c4a468a138a2ae0f297a1da70327eadb79ebd98\trefs/heads/codex/auditoria-leben-20261116\nd3fb474f08b81a965d2e0eac927adf88671968c0\trefs/heads/codex/footer-sin-frase-20261116\n86e200ec191b38af355061e21bc0fc1e549cce3b\trefs/heads/main\n"
+      },
+      {
+        "requested": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+        "id": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+        "url": "project-wrapp-kb7gmwe9d-lsandoval2-8260s-projects.vercel.app",
+        "readyState": "READY",
+        "target": "production",
+        "source": "cli",
+        "sha": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+        "branch": "codex/footer-sin-frase-20261116",
+        "aliases": []
+      },
+      {
+        "requested": "sollahms.cl",
+        "id": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "url": "project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app",
+        "readyState": "READY",
+        "target": "production",
+        "source": "cli",
+        "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+        "branch": "codex/footer-sin-frase-20261116",
+        "aliases": []
+      }
+    ],
+    "configuredDomains": [
+      {
+        "name": "www.sollahms.cl",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "verified": true
+      },
+      {
+        "name": "sollahms.cl",
+        "redirect": null,
+        "redirectStatusCode": null,
+        "verified": true
+      },
+      {
+        "name": "sollhams.cl",
+        "redirect": "sollahms.cl",
+        "redirectStatusCode": 308,
+        "verified": true
+      },
+      {
+        "name": "project-wrapp.vercel.app",
+        "redirect": null,
+        "verified": true
+      }
+    ],
+    "aliases": [
+      {
+        "name": "sollahms.cl",
+        "id": "812eb4e5e682ab5b9442a0a30728269fac3db57dceb526b8e1020ada3aa72f0be35fc22a688abb91affbe5c108c32d0f2f0905b073620a3fbeca4780a7caaec5",
+        "alias": "sollahms.cl",
+        "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "createdAt": 1790309292830
+      },
+      {
+        "name": "www.sollahms.cl",
+        "id": "d8c7d5a41173c7df42c3759ff14ca259a13ed3c63a1eac50aab88a27147a220cebbf4ff46f514e2261e3f033c6e794990174e4f987e74125c49216f769e0038a",
+        "alias": "www.sollahms.cl",
+        "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "createdAt": 1792966021159
+      },
+      {
+        "name": "sollhams.cl",
+        "id": "9bb3b49f807ff8aa6453715f911331a058496ca90e9a1a20bf39badc1d5518ed344305a9553201905a41575c93338f85600787b275cf2011f5bc3f478f263f83",
+        "alias": "sollhams.cl",
+        "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": "sollahms.cl",
+        "createdAt": 1778007732492
+      },
+      {
+        "name": "project-wrapp.vercel.app",
+        "id": "a54e58ed74b00bd6217a3a87e5013465ce03b4897f76f8d4488aa53336009ab44bc187de2aa6e757e202e7c57257bfcec19936765314bb851e67511d56f2b342",
+        "alias": "project-wrapp.vercel.app",
+        "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "createdAt": 1777497563537
+      },
+      {
+        "name": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+        "id": "11dabcad7c95780c3cb7f99489db64a62a9a28338a107ab9dc1285147ce8211e8ff1aeb9cee91e6d5118c701bd043a53e79f91ff2a9d4c25eaf0d2457cefaa70",
+        "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+        "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+        "redirect": null,
+        "createdAt": 1777497563537
+      }
+    ]
+  },
+  "postMutationIdentity": {
+    "id": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+    "url": "project-wrapp-kb7gmwe9d-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "sha": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+    "source": "cli",
+    "aliases": []
+  },
+  "toolResult": {
+    "isError": false,
+    "result": null
+  },
+  "mutationReturnedAtUTC": "2026-11-18T22:16:37.226372+00:00",
+  "promotionsExecuted": 1,
+  "verifiedAtUTC": "2026-11-18T22:17:56.763890+00:00",
+  "aliasesVerified": [
+    "sollahms.cl",
+    "www.sollahms.cl",
+    "sollhams.cl",
+    "project-wrapp.vercel.app",
+    "project-wrapp-lsandoval2-8260s-projects.vercel.app"
+  ],
+  "independentVerification": "publicacion/VERIFICACION-INDEPENDIENTE-PROMOCION-PR36.json",
+  "publicChrome": "publicacion/QA-PUBLICO-PR36.json",
+  "publicResources": "publicacion/RECURSOS-PUBLICOS-PR36.json",
+  "projectsRendered": 152,
+  "gprProjects": 9,
+  "preservedOriginalProjects": 131,
+  "remainingPromotionAuthorizations": 0,
+  "objectiveGlobalComplete": false
+}
