@@ -72,7 +72,7 @@
   "authorizationApplied": "AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01",
   "synchronizationEvidence": "ampliacion-iris-chile-20261118/candidato-21-gpr/SINCRONIZACION-PR36.json",
   "readyRequiresIndependentPermission": false,
-  "stateRecordedAtUTC": "2026-11-18T20:46:28.913983+00:00",
+  "stateRecordedAtUTC": "2026-11-18T22:01:26.914227+00:00",
   "readyAuthorizedAndExecuted": true,
   "readyAuthorizationConsumed": true,
   "readyAtUTC": "2026-11-18T20:15:04Z",
@@ -82,7 +82,7 @@
     "AUTH-MERGE-PR36-20261118-01",
     "AUTH-DEPLOYMENT-PR36-20261118-01"
   ],
-  "nextStep": "Prepare and request separate promotion/publication of the same verified deployment, without rebuild or a new deployment.",
+  "nextStep": "Wait for the already presented independent promotion/publication response; preserve this verified deployment, no new creation. Continue only independent authorized work with new evidence.",
   "mergePreparation": {
     "path": "ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-MERGE-PR36.json",
     "sha256": "002099fc5d4e93889cc335088804b43288735bbe5c158a6b1ae65f877add0020",
@@ -158,8 +158,10 @@
   },
   "nextAuthorization": {
     "id": "AUTH-PROMOTION-PR36-20261118-01",
-    "status": "PREPARADA_PENDIENTE_PRESENTAR",
+    "status": "PENDIENTE_RESPUESTA",
     "step": "Promote and publish this same verified deployment only",
-    "questionAlreadyPresented": false
+    "questionAlreadyPresented": true,
+    "presentationRecordedAtUTC": "2026-11-18T22:01:26.914227+00:00",
+    "doNotRepeatQuestion": true
   }
 }

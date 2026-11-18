@@ -689,14 +689,14 @@
     {
       "id": "AUTH-PROMOTION-PR36-20261118-01",
       "kind": "Promoción y publicación del deployment PR36 existente y verificado",
-      "status": "PREPARADA_PENDIENTE_PRESENTAR",
+      "status": "PENDIENTE_RESPUESTA",
       "preparedAtUTC": "2026-11-18T21:51:37.179729+00:00",
       "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
       "sourceMergeSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
       "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
       "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
       "reviewURL": "https://project-wrapp-kb7gmwe9d-lsandoval2-8260s-projects.vercel.app/proyectos.html",
-      "preparedResult": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/README.md",
+      "preparedResult": "https://github.com/lasopho/sollahms-web/blob/e07610285023361cccf3c683e79251d005a466fa/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/README.md",
       "expectedExistingAliases": [
         "sollahms.cl",
         "www.sollahms.cl",
@@ -725,10 +725,14 @@
       ],
       "remoteOutputFileUIDsMatched": 1721,
       "focusedChromeChecksPassed": 3,
-      "questionAlreadyPresented": false,
+      "questionAlreadyPresented": true,
       "doNotRepeatAfterPresentation": true,
       "newOwnerResponseReceived": false,
-      "pendingOwnerAction": "Autorizar promoción y publicación o conservar sólo review."
+      "pendingOwnerAction": "Autorizar promoción y publicación o conservar sólo review.",
+      "doNotRepeatQuestion": true,
+      "presentationRecordedAtUTC": "2026-11-18T22:01:26.914227+00:00",
+      "inputToolAccepted": true,
+      "question": "¿Autorizas promover y publicar el mismo deployment dpl_FkyZZgpki5HSpKMRJQFgJE451d3G (SHA d3fb474) en sollahms.cl y sus alias existentes? Está READY: coinciden sus 1.721 archivos y pasan los 3/3 controles Chrome específicos. Publicará los 21 proyectos nuevos, incluidos nueve GPR, conservando los 131 originales. No habrá rebuild, otro deployment ni cambios de DNS, SSO o variables. Tu protocolo exige autorización independiente para publicación; producción sigue en 875bd80 y el suplemento 24a11df permanece separado."
     }
   ],
   "otherPriorWaitsUnchanged": true
