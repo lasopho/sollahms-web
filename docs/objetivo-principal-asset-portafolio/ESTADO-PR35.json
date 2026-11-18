@@ -1,6 +1,6 @@
 {
   "dateLocal": "2026-11-17",
-  "verifiedAtUTC": "2026-11-18T01:49:03.161468+00:00",
+  "verifiedAtUTC": "2026-11-18T02:09:18.517452+00:00",
   "repository": "lasopho/sollahms-web",
   "branch": "codex/cotizaciones-mismo-origen-20261117",
   "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
@@ -75,10 +75,12 @@
     "expectedRedFailures": 2,
     "targetedLoaderTestsPassed": 10,
     "generalSuitesRepeated": false,
-    "realChromeOnCorrectionExecuted": false,
+    "realChromeOnCorrectionExecuted": true,
     "prior49Euro19Nollagam23Integration7ChromeAreHistoricalNotRerun": true,
     "receipt": "correccion-carga-mismo-origen-20261117/RECIBO-CORRECCION.json",
-    "receiptSHA256": "11666a33e033a8081933a71da6e7aa8563837213d738f00bc2fcee8f3f5578a2"
+    "receiptSHA256": "11666a33e033a8081933a71da6e7aa8563837213d738f00bc2fcee8f3f5578a2",
+    "newFocusedPostDeploymentChrome": 3,
+    "priorSubsetsNotSummed": true
   },
   "independentReview": {
     "verdict": "APROBADO_PARA_INTEGRACION_LOCAL",
@@ -134,7 +136,7 @@
     "draftPRCreated": true,
     "ReadyForReview": true,
     "merge": true,
-    "deployment": false,
+    "deployment": true,
     "promotionPublication": false,
     "mainModified": false
   },
@@ -151,10 +153,141 @@
   "mainSHA": "86e200ec191b38af355061e21bc0fc1e549cce3b",
   "localWorkingTreeClean": true,
   "nextAction": {
-    "step": "Un deployment nuevo de revisión del merge PR35, prebuilt production sin dominios",
+    "step": "Promover únicamente el deployment corregido verificado, sin rebuild ni otrodeployment",
     "authorization": "NO_SOLICITADA_AUN",
-    "maximumFutureDeployments": 1,
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "sourceSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "allowedProductionAliases": [
+      "sollahms.cl",
+      "www.sollahms.cl",
+      "sollhams.cl",
+      "project-wrapp.vercel.app"
+    ],
     "promotionPublicationAuthorized": false
   },
-  "global131ObjectiveComplete": false
+  "global131ObjectiveComplete": false,
+  "reviewDeployment": {
+    "verdict": "APROBADO_CON_OBSERVACIONES_PARA_SOLICITAR_PROMOCION",
+    "verifiedAtUTC": "2026-11-18T02:09:18.517452+00:00",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "url": "https://project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app",
+    "sourceMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "readyState": "READY",
+    "target": "production",
+    "aliases": [],
+    "receivedDigestsMatched": 1672,
+    "missing": 0,
+    "extra": 0,
+    "different": 0,
+    "digestType": "Remote SHA1 uid matched to certified local SHA1/SHA256 inventory",
+    "independentTransportReview": {
+      "reviewerTask": "/root/recuperacion_campo_ecasa",
+      "result": "PASA1672/1672;7lambda;no missing/extra/different",
+      "newTestsOrAPIsExecutedByReviewer": false
+    },
+    "lambdaRoutes": 7,
+    "focusedChrome": {
+      "passed": 3,
+      "checks": [
+        "Two pinned public sources load with normal same-origin session, no authentication redirects",
+        "EuroDonPepe2D UF3562 =1/131",
+        "NollagamCostaneraA3D UF5070 =1/131"
+      ],
+      "receipt": "deployment-pr35-20261117/CHROME-CORRECCION-PROTEGIDA.json",
+      "captureTruncated": false,
+      "unhandledExceptions": 0,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "CDPNetworkRuntimeDisabled": true
+    },
+    "preservation": {
+      "fiches": 131,
+      "functionFiles": 57,
+      "functionBundles": 7,
+      "protectedSources": 155,
+      "originalSources": 21,
+      "publicProjectionPins": 2,
+      "configurationAndPatio410": true
+    },
+    "observations": [
+      "Protected-sessionMetro warning remains; Metro code/data unchanged. Both current publicMetro resourcesHTTP200 and byte-identical; no fullMetroUI recertification.",
+      "Financial scenarios and broad responsive/view suites were not rerun; unchanged source accepted from historical certification.",
+      "Source dates do not certify current stock or validity; documentary Iris source remains loopback-only."
+    ],
+    "productionBeforePromotion": {
+      "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+      "domains": [
+        "sollahms.cl",
+        "www.sollahms.cl",
+        "sollhams.cl",
+        "project-wrapp.vercel.app"
+      ]
+    },
+    "promotionAuthorized": false,
+    "newDeploymentPermissionConsumed": true,
+    "global131ObjectiveComplete": false
+  },
+  "finalDeploymentVerification": {
+    "verdict": "APROBADO_CON_OBSERVACIONES_PARA_SOLICITAR_PROMOCION",
+    "verifiedAtUTC": "2026-11-18T02:09:18.517452+00:00",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "url": "https://project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app",
+    "sourceMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "readyState": "READY",
+    "target": "production",
+    "aliases": [],
+    "receivedDigestsMatched": 1672,
+    "missing": 0,
+    "extra": 0,
+    "different": 0,
+    "digestType": "Remote SHA1 uid matched to certified local SHA1/SHA256 inventory",
+    "independentTransportReview": {
+      "reviewerTask": "/root/recuperacion_campo_ecasa",
+      "result": "PASA1672/1672;7lambda;no missing/extra/different",
+      "newTestsOrAPIsExecutedByReviewer": false
+    },
+    "lambdaRoutes": 7,
+    "focusedChrome": {
+      "passed": 3,
+      "checks": [
+        "Two pinned public sources load with normal same-origin session, no authentication redirects",
+        "EuroDonPepe2D UF3562 =1/131",
+        "NollagamCostaneraA3D UF5070 =1/131"
+      ],
+      "receipt": "deployment-pr35-20261117/CHROME-CORRECCION-PROTEGIDA.json",
+      "captureTruncated": false,
+      "unhandledExceptions": 0,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "CDPNetworkRuntimeDisabled": true
+    },
+    "preservation": {
+      "fiches": 131,
+      "functionFiles": 57,
+      "functionBundles": 7,
+      "protectedSources": 155,
+      "originalSources": 21,
+      "publicProjectionPins": 2,
+      "configurationAndPatio410": true
+    },
+    "observations": [
+      "Protected-sessionMetro warning remains; Metro code/data unchanged. Both current publicMetro resourcesHTTP200 and byte-identical; no fullMetroUI recertification.",
+      "Financial scenarios and broad responsive/view suites were not rerun; unchanged source accepted from historical certification.",
+      "Source dates do not certify current stock or validity; documentary Iris source remains loopback-only."
+    ],
+    "productionBeforePromotion": {
+      "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+      "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+      "domains": [
+        "sollahms.cl",
+        "www.sollahms.cl",
+        "sollhams.cl",
+        "project-wrapp.vercel.app"
+      ]
+    },
+    "promotionAuthorized": false,
+    "newDeploymentPermissionConsumed": true,
+    "global131ObjectiveComplete": false
+  }
 }

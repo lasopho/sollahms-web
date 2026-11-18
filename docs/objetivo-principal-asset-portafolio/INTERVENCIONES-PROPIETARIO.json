@@ -356,6 +356,34 @@
       "mergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
       "method": "merge",
       "expectedHeadGuardUsed": true
+    },
+    {
+      "id": "AUTH-DEPLOYMENT-PR35-20261117-01",
+      "kind": "Un nuevo deployment de revisión corregido sin dominios",
+      "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
+      "recordedAtUTC": "2026-11-18T02:09:18.517452+00:00",
+      "authorizationReply": "Autorizar deployment sin dominios",
+      "sourceMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+      "deploymentURL": "https://project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app",
+      "maximumNewDeployments": 1,
+      "deploymentsCreated": 1,
+      "remainingDeploymentCreationAuthorizations": 0,
+      "questionAlreadyPresented": true,
+      "doNotRepeatQuestion": true,
+      "newOwnerResponseReceived": true,
+      "pendingOwnerAction": null,
+      "newAliases": 0,
+      "focusedChromeChecksPassed": 3,
+      "promotionAuthorized": false,
+      "notAuthorized": [
+        "promoción",
+        "publicación",
+        "SSO",
+        "variables",
+        "DNS",
+        "build"
+      ]
     }
   ],
   "otherPriorWaitsUnchanged": true

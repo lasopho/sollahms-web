@@ -170,12 +170,18 @@
     "outputBytesUnchangedAfterMerge": true
   },
   "nextAction": {
-    "step": "Un deployment nuevo de revisión del merge PR35, prebuilt production sin dominios",
+    "step": "Promover únicamente el deployment corregido verificado, sin rebuild ni otrodeployment",
     "authorization": "NO_SOLICITADA_AUN",
-    "maximumFutureDeployments": 1,
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "sourceSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "allowedProductionAliases": [
+      "sollahms.cl",
+      "www.sollahms.cl",
+      "sollhams.cl",
+      "project-wrapp.vercel.app"
+    ],
     "promotionPublicationAuthorized": false,
-    "correctivePR": "https://github.com/lasopho/sollahms-web/pull/35",
-    "correctiveMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
+    "correctivePR": "https://github.com/lasopho/sollahms-web/pull/35"
   },
   "global131ObjectiveComplete": false,
   "historicalLebenPendingIDsUnchanged": 313,

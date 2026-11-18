@@ -181,7 +181,7 @@
   },
   "promotionAuthorizationUsed": 1,
   "remainingPromotionAuthorizations": 0,
-  "nextAuthorizedWork": "PR35 push/Draft/Ready/merge autorizados y ejecutados en875bd80. Paquete corregido vinculado, preparar permiso independiente de un nuevo deployment de revisión sin dominios. No crear deployment ni promover sin sus permisos; B7 sigue bloqueado.",
+  "nextAuthorizedWork": "DeploymentPR35 autorizado ya creado/verificado3m4@875 sin dominios; preparar autorización independiente de promoción del mismo deployment. B7 nunca se promoverá; producción9e continúa intacta.",
   "pendingNextRelease": {
     "mergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
     "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34",
@@ -251,10 +251,73 @@
       "mergeCertificate": "preparacion-deployment-pr35/MERGE-CERTIFICADO.json",
       "treeCorrespondenceVerified": true
     },
-    "deploymentAuthorized": false,
+    "deploymentAuthorized": true,
     "promotionAuthorized": false,
     "sourceMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
     "pullRequest": "https://github.com/lasopho/sollahms-web/pull/35",
-    "status": "PR35_FUSIONADO_PAQUETE_PREPARADO_SIN_DEPLOYMENT_NUEVO"
+    "status": "DEPLOYMENT_CORREGIDO_READY_VERIFICADO_SIN_PROMOCION",
+    "deployment": {
+      "verdict": "APROBADO_CON_OBSERVACIONES_PARA_SOLICITAR_PROMOCION",
+      "verifiedAtUTC": "2026-11-18T02:09:18.517452+00:00",
+      "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+      "url": "https://project-wrapp-qtcdudl1x-lsandoval2-8260s-projects.vercel.app",
+      "sourceMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "readyState": "READY",
+      "target": "production",
+      "aliases": [],
+      "receivedDigestsMatched": 1672,
+      "missing": 0,
+      "extra": 0,
+      "different": 0,
+      "digestType": "Remote SHA1 uid matched to certified local SHA1/SHA256 inventory",
+      "independentTransportReview": {
+        "reviewerTask": "/root/recuperacion_campo_ecasa",
+        "result": "PASA1672/1672;7lambda;no missing/extra/different",
+        "newTestsOrAPIsExecutedByReviewer": false
+      },
+      "lambdaRoutes": 7,
+      "focusedChrome": {
+        "passed": 3,
+        "checks": [
+          "Two pinned public sources load with normal same-origin session, no authentication redirects",
+          "EuroDonPepe2D UF3562 =1/131",
+          "NollagamCostaneraA3D UF5070 =1/131"
+        ],
+        "receipt": "deployment-pr35-20261117/CHROME-CORRECCION-PROTEGIDA.json",
+        "captureTruncated": false,
+        "unhandledExceptions": 0,
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "CDPNetworkRuntimeDisabled": true
+      },
+      "preservation": {
+        "fiches": 131,
+        "functionFiles": 57,
+        "functionBundles": 7,
+        "protectedSources": 155,
+        "originalSources": 21,
+        "publicProjectionPins": 2,
+        "configurationAndPatio410": true
+      },
+      "observations": [
+        "Protected-sessionMetro warning remains; Metro code/data unchanged. Both current publicMetro resourcesHTTP200 and byte-identical; no fullMetroUI recertification.",
+        "Financial scenarios and broad responsive/view suites were not rerun; unchanged source accepted from historical certification.",
+        "Source dates do not certify current stock or validity; documentary Iris source remains loopback-only."
+      ],
+      "productionBeforePromotion": {
+        "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+        "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+        "domains": [
+          "sollahms.cl",
+          "www.sollahms.cl",
+          "sollhams.cl",
+          "project-wrapp.vercel.app"
+        ]
+      },
+      "promotionAuthorized": false,
+      "newDeploymentPermissionConsumed": true,
+      "global131ObjectiveComplete": false
+    },
+    "remainingDeploymentCreationAuthorizations": 0
   }
 }
