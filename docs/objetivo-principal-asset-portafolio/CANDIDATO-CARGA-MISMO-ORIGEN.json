@@ -1,6 +1,6 @@
 {
   "recordedAtUTC": "2026-11-18T01:36:26.272981+00:00",
-  "status": "CORRECCION_LOCAL_REVISADA_SIN_PUSH_PR",
+  "status": "PR35_FUSIONADO_SIN_DEPLOYMENT_CORREGIDO",
   "repository": "lasopho/sollahms-web",
   "branch": "codex/cotizaciones-mismo-origen-20261117",
   "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
@@ -9,8 +9,21 @@
   "baseBranch": "codex/footer-sin-frase-20261116",
   "tree": "06ba531790509767eea856b703160d02cbf5fa65",
   "workingTreeClean": true,
-  "remoteBranchExists": false,
-  "pullRequest": null,
+  "remoteBranchExists": true,
+  "pullRequest": {
+    "number": 35,
+    "url": "https://github.com/lasopho/sollahms-web/pull/35",
+    "state": "closed",
+    "draft": false,
+    "merged": true,
+    "headSHA": "9700d65fed15ee56584987573f1493b1fb52c9a4",
+    "baseBranch": "codex/footer-sin-frase-20261116",
+    "baseSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+    "createdAtUTC": "2026-11-18T01:42:57Z",
+    "readyAtUTC": "2026-11-18T01:44:47Z",
+    "mergedAtUTC": "2026-11-18T01:46:11Z",
+    "mergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
+  },
   "files": [
     {
       "path": "assets/js/catalog-euro-owner-quotes.mjs",
@@ -83,10 +96,10 @@
     "No SSO/protection/environment setting changes"
   ],
   "nextAction": {
-    "step": "Primer push de la corrección local de carga y nuevo PR Draft",
+    "step": "Un deployment nuevo de revisión del merge PR35, prebuilt production sin dominios",
     "authorization": "NO_SOLICITADA_AUN",
-    "candidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
-    "newDeploymentPromotionAuthorized": false
+    "maximumFutureDeployments": 1,
+    "promotionPublicationAuthorized": false
   },
   "production": {
     "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
@@ -114,7 +127,10 @@
     "configAndPatio410Unchanged": true,
     "buildGeneratorsChromeOrDeploymentsExecuted": false,
     "manifest": "correccion-carga-mismo-origen-20261117/paquete/MANIFIESTO-CANDIDATO-MISMO-ORIGEN.json",
-    "receipt": "correccion-carga-mismo-origen-20261117/paquete/RECIBO-PREPARACION-LOCAL.json"
+    "receipt": "correccion-carga-mismo-origen-20261117/paquete/RECIBO-PREPARACION-LOCAL.json",
+    "sourceMergeCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "mergeCertificate": "preparacion-deployment-pr35/MERGE-CERTIFICADO.json",
+    "treeCorrespondenceVerified": true
   },
   "goal131Complete": false,
   "documentaryWhitespace": {
@@ -124,5 +140,28 @@
       "correccion-carga-mismo-origen-20261117/ANTES-PRUEBAS-NUEVAS.log"
     ],
     "reason": "Two exact Git patch context lines and two original red-test output lines retained byte-for-byte; source application diff passed. Authored documentation must pass excluding only these preserved artifacts."
+  },
+  "remoteSHA": "9700d65fed15ee56584987573f1493b1fb52c9a4",
+  "verifiedAtUTC": "2026-11-18T01:49:03.161468+00:00",
+  "mergeTransition": {
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "parents": [
+      "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+      "9700d65fed15ee56584987573f1493b1fb52c9a4"
+    ],
+    "tree": "06ba531790509767eea856b703160d02cbf5fa65",
+    "treeEqualsCertifiedCandidate": true,
+    "method": "merge",
+    "expectedHeadGuardUsed": true,
+    "sourceBranchPreserved": true,
+    "committedAtUTC": "2026-11-18T01:46:10Z",
+    "mergedAtUTC": "2026-11-18T01:46:11Z"
+  },
+  "GitHubEvidence": {
+    "reviews": 0,
+    "commitStatusChecks": 0,
+    "checkRuns": 0,
+    "pullRequestWorkflowRuns": 0,
+    "noImplicitApproval": true
   }
 }

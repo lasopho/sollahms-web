@@ -17,23 +17,23 @@ La corrección LOCAL ya está terminada:
 - Rama codex/cotizaciones-mismo-origen-20261117.
 - Checkout /private/tmp/sollahms-referencias-documentales-131-20261117.
 - Commit9700d65fed15ee56584987573f1493b1fb52c9a4, padre36ef.
-- Cinco archivos y árbol limpio, todavía sin push ni PRnuevo.
+- Cinco archivos y árbol limpio. Push, PR35 Draft, Ready y merge autorizados expresamente y ejecutados; no repetir esos permisos.
 - Sólo cambia credentials:omit a same-origin en dos cargadores de rutas públicas relativas; sus dos tests y exclusiónfalse de la rama completan el delta.
 - Pins, allowlists, timeouts, redirect:error y rechazo sin fallback intactos. No hay lectura de credenciales ni cambios de seguridad.
 - Reproducción roja:2fallos esperados. Verde:10/10 pruebas específicas de carga. Revisión independiente APROBADO PARA INTEGRACIÓN LOCAL, sin bloqueantes. Falta comprobar la corrección en un futuro deployment protegido autorizado.
 - 155protegidos,21originales y dos proyecciones públicas intactos. Metro es preexistente por comparación literal de código/datos9e→36ef; no ampliar este delta ni afirmar nueva certificación dinámica de Metro.
 
-Preparar la sincronización de9700 y un nuevoPRDraft contra codex/footer-sin-frase-20261116@36ef, pero solicitar primero permiso independiente para el primerpush y creación del PR. No inventar número de PR. Ready, merge, deployment nuevo y promoción/publicación requieren sus permisos posteriores. Consultar INTERVENCIONES-PROPIETARIO.json antes de preguntar para no repetir solicitudes ya presentadas.
+PR35 https://github.com/lasopho/sollahms-web/pull/35 ya está cerrado/merged. Merge875bd80ddb650b376cb3dd53af4ffae066fcd48f, padres36ef/9700 y árbol06ba531790509767eea856b703160d02cbf5fa65 idéntico al candidato. Rama destino apunta875; fuente9700 conservada y main86 intacto. No hubo deployment porpush/PR/Ready/merge35. Cero checks/reviews consultados no equivale a aprobación. Próximo paso: solicitar permiso independiente para un único deployment NUEVO del paquete corregido, prebuiltproduction con skip-domain. Preparación exacta en preparacion-deployment-pr35/. Promoción/publicación exige permiso posterior propio. Consultar INTERVENCIONES-PROPIETARIO.json para no repetir preguntas.
 
 ## Documentación y pruebas
 
-Rama documental codex/auditoria-leben-20261116, checkout /private/tmp/sollahms-auditoria-leben-20261116. Consultar HEAD local/remoto actual. Leer docs/objetivo-principal-asset-portafolio/CANDIDATO-CARGA-MISMO-ORIGEN.json, ESTADO-PR34.json, ESTADO-PUBLICACION.json, INTERVENCIONES-PROPIETARIO.json y CONTROL-DE-AVANCE.md.
+Rama documental codex/auditoria-leben-20261116, checkout /private/tmp/sollahms-auditoria-leben-20261116. Consultar HEAD local/remoto actual. Leer docs/objetivo-principal-asset-portafolio/CANDIDATO-CARGA-MISMO-ORIGEN.json, ESTADO-PR35.json, ESTADO-PR34.json, ESTADO-PUBLICACION.json, INTERVENCIONES-PROPIETARIO.json y CONTROL-DE-AVANCE.md.
 
 Evidencia real del deployment y defecto: deployment-pr34-20261117/. Cotejo completo por CLI GET porque el conector devolvía listado parcial; no interpretar omisiones del listado como archivos faltantes. Sólo se conservaron dominios, deploymentIDs y redirects del cotejo de aliases; metadatos de acceso innecesarios no se usaron ni se incorporaron a los archivos.
 
 Corrección, logs rojo/verde, recibo y parche exacto: correccion-carga-mismo-origen-20261117/. Recibo SHA11666a33e033a8081933a71da6e7aa8563837213d738f00bc2fcee8f3f5578a2. No sumar los10selectivos a las49Euro/19Nollagam/23integración/7Chrome anteriores; esos resultados son históricos y no se reejecutaron para este defecto. No ejecutar suites generales ni generar builds.
 
-El paquete B7 /private/tmp/sollahms-proyecciones-publicas-release-20261117 permanece inmutable, inventario31eee39b568fa35a32cbab1dfe1ace80ac8b1d1ac1486d0456f1e98cde6f9b19. No promoverlo. El nuevo paquete /private/tmp/sollahms-cotizaciones-mismo-origen-release-20261117 está preparado localmente, inventario ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834. Tiene1672archivos: sólo los dos cargadores difieren deB7;1670idénticos,131fichas/57archivos de7funciones/config/410 y2JSON preservados. Sus recibos están en correccion-carga-mismo-origen-20261117/paquete/. No tuvo build, Chrome ni deployment. No alterar los recibos/QA originales.
+El paquete B7 /private/tmp/sollahms-proyecciones-publicas-release-20261117 permanece inmutable, inventario31eee39b568fa35a32cbab1dfe1ace80ac8b1d1ac1486d0456f1e98cde6f9b19. No promoverlo. El nuevo paquete /private/tmp/sollahms-cotizaciones-mismo-origen-release-20261117 está preparado y vinculado al merge875, inventario ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834. Tiene1672archivos: sólo los dos cargadores difieren deB7;1670idénticos,131fichas/57archivos de7funciones/config/410 y2JSON preservados. Sus recibos están en correccion-carga-mismo-origen-20261117/paquete/. No tuvo build, Chrome ni deployment. No alterar los recibos/QA originales.
 
 NUNCA desplegar /private/tmp/sollahms-pr33-release-20261117: conserva losJSONraw con historial interno y está en cuarentena. No llegó a producción.
 

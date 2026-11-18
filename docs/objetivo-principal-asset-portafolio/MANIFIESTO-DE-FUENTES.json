@@ -143,13 +143,13 @@
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/CANDIDATO-CARGA-MISMO-ORIGEN.json",
-      "sha256": "b1dc8bff9830911a7d40de7a9ce64b1bc63a179ce6812d9d92b7f5d5a888a043",
-      "bytes": 5354
+      "sha256": "36e70f65c64472ff9bd198e6d02f7bf5f74084fb6fb66563d41dde662382dc9b",
+      "bytes": 6802
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/CANDIDATO-PROYECCIONES-PUBLICAS.json",
-      "sha256": "e193dda57efa57686d04fcd836c2fdc48bc5be618a3f04b72763307c7394d513",
-      "bytes": 10827
+      "sha256": "8014838dc82c837d92d466fff3511f52f11139979ceafa329a419c0c28755943",
+      "bytes": 10967
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/CAPA-DOCUMENTAL-IRIS.json",
@@ -173,8 +173,8 @@
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md",
-      "sha256": "f75b854bad305566daf7f4f85e9f1843478210487efd61be12b3d9b76cb9abfa",
-      "bytes": 29725
+      "sha256": "4c5d984917922130828b03da939ffbe0cc1362ba5b929e31ef5609657d76089d",
+      "bytes": 30486
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/CRITERIO-DE-ACEPTACION-Y-BLOQUEOS.json",
@@ -188,18 +188,23 @@
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/ESTADO-PR33.json",
-      "sha256": "51c4483a32178473a9c17aaf26a191c6f6028baf936bac403dda98d972251a98",
-      "bytes": 13204
+      "sha256": "ea10bd658747bedc7700964a486b9c0077ce2f3003b4e1bdffe952fa572791d1",
+      "bytes": 13344
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/ESTADO-PR34.json",
-      "sha256": "55b611ab398a2a75fed799604f7e0b0ac29d94d51275c62ff9fef9672ea91fd2",
-      "bytes": 9895
+      "sha256": "4e99b408bfeb63578333ca995132212ff9ebac25be2dacfe11b20d498b5660fe",
+      "bytes": 10035
+    },
+    {
+      "path": "docs/objetivo-principal-asset-portafolio/ESTADO-PR35.json",
+      "sha256": "b040bddec303a7cce06d8576c320c6beca898da64e9645c25d371b7bfa57899b",
+      "bytes": 5956
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/ESTADO-PUBLICACION.json",
-      "sha256": "bc62d176661f1cacfd732c754b2e9fbfd98940666baff071f35c659ea0528347",
-      "bytes": 10840
+      "sha256": "df36868b5563e7a5cc0b0273e39483713c62e2285fa915da75eb3c5289825958",
+      "bytes": 11248
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/EURO-FUENTES-Y-ALCANCES.json",
@@ -213,8 +218,8 @@
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/INTERVENCIONES-PROPIETARIO.json",
-      "sha256": "826ad8f0a917922d1652cd9f9d6f9ce91b2c89777ef677cf3afed55519ca4724",
-      "bytes": 12116
+      "sha256": "4bf17755fc85aa34c50344d71d7528da9bc29c0d581a777d19f8faf1130b27ed",
+      "bytes": 15126
     },
     {
       "path": "docs/objetivo-principal-asset-portafolio/INVENTARIO-DE-FUENTES.json",
@@ -1712,6 +1717,16 @@
       "bytes": 1791
     },
     {
+      "path": "docs/objetivo-principal-asset-portafolio/preparacion-deployment-pr35/MERGE-CERTIFICADO.json",
+      "sha256": "40483010245e9a2234052510173274185c72fa0b5854ef227f7130f9d33d3502",
+      "bytes": 1769
+    },
+    {
+      "path": "docs/objetivo-principal-asset-portafolio/preparacion-deployment-pr35/PLAN-DEPLOYMENT-SIN-DOMINIOS.json",
+      "sha256": "c20012499fead60b378e999742de442b5634293501170498e0935dcdcb388693",
+      "bytes": 1713
+    },
+    {
       "path": "docs/objetivo-principal-asset-portafolio/preparacion-publicacion-pr33/MANIFIESTO-ARCHIVO.json",
       "sha256": "af96926fc3ba9c8cc996da4350b2cf707e28405b342c33ec53552f62d09902dd",
       "bytes": 535
@@ -1833,14 +1848,14 @@
     }
   ],
   "selfHashExcluded": true,
-  "cut": "DeploymentPR34 único autorizado B7READY/noaliases,1672digests verificados, producción9e intacta. Defecto real de sesión302 reproducido; B7bloqueado para promoción. Corrección local9700/5archivos,rojo2→verde10selectivos, revisión independiente aprobada; paquete local1672ded2 con sólo2JS diferentes. Nuevo primerpush/PR requiere permiso; no solicitado aún.155/21/2JSON/313IDs intactos.",
+  "cut": "PR35 push/Draft/Ready/merge autorizados y ejecutados en875, árbol9700idéntico. Paquete corregido1672ded2 preparado sin nuevo deployment; diez pruebas específicas/revisión local aprobadas, nuevaChrome protegida pendiente. B7READY/noaliases bloqueado para promoción; permiso anterior consumido. Producción9e/Gm75/main86 intactos,155/21/2JSON/313IDs sin cambios. Preparar nuevo permiso independiente de deployment sin dominios.",
   "runtimeUnchanged": true,
   "runtimeUnchangedMeaning": "La rama documental no modifica archivos de aplicación. Producción sí cambió mediante el deployment/promoción autorizados registrados en ESTADO-PUBLICACION.json.",
   "continuityFiles": [
     {
       "path": "NEXT-PROMPT.md",
-      "sha256": "a114a63b5b2486602f82f74247a78b73d74a75a4d563801877677c9e7326ec17",
-      "bytes": 7212
+      "sha256": "1938ced94f15f93c5d3d646237f266d88f8853543078619f57f2d2e9b7b0e1a4",
+      "bytes": 7601
     },
     {
       "path": "docs/iris-operational-manual/ESTRUCTURA-DE-FICHAS.md",
@@ -1878,5 +1893,5 @@
       "bytes": 9230
     }
   ],
-  "verifiedAtUTC": "2026-11-18T01:40:36.603340+00:00"
+  "verifiedAtUTC": "2026-11-18T01:49:03.161468+00:00"
 }

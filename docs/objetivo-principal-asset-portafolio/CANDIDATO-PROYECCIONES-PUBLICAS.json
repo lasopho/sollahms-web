@@ -179,10 +179,12 @@
     "noImplicitApproval": true
   },
   "nextAction": {
-    "step": "Primer push de la corrección local de carga y nuevo PR Draft",
+    "step": "Un deployment nuevo de revisión del merge PR35, prebuilt production sin dominios",
     "authorization": "NO_SOLICITADA_AUN",
-    "candidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
-    "newDeploymentPromotionAuthorized": false
+    "maximumFutureDeployments": 1,
+    "promotionPublicationAuthorized": false,
+    "correctivePR": "https://github.com/lasopho/sollahms-web/pull/35",
+    "correctiveMergeSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
   },
   "mergePreparation": {
     "recordedAtUTC": "2026-11-18T01:06:45.731415+00:00",
