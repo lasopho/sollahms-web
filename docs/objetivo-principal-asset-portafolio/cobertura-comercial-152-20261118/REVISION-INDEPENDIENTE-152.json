@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "kind": "REVISION_INDEPENDIENTE_DOCUMENTAL_DEL_CORTE_COMPUESTO_152",
+  "verifiedAtUTC": "2026-11-18T23:03:52.496707+00:00",
+  "verdict": "APROBADO_CON_OBSERVACIONES",
+  "blockingFindings": 0,
+  "concreteErrorsFound": [],
+  "method": {
+    "applicationModulesOrTestsExecuted": false,
+    "IrisOrBrowserOrNetworkUsed": false,
+    "productionQueried": false,
+    "sharedDocsOrOriginalMatricesEdited": false,
+    "GitMutations": false,
+    "dataOperation": "Cotejo independiente de conjuntos, estados, hashes y localizadores JSON; reconstrucción en memoria de tuplas de diccionarios según contrato estático leído, sin ejecutar el motor ni scripts de derivación."
+  },
+  "inputs": {
+    "ANALISIS-COMBINACIONES-152.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/ANALISIS-COMBINACIONES-152.json",
+      "bytes": 88694,
+      "sha256": "cc668b05c13936b710b48a27cb76ace92aca6dccf7d59275960996c78577157e"
+    },
+    "componer-indice-152.py": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/componer-indice-152.py",
+      "bytes": 4422,
+      "sha256": "2619fcd50d14f242d6845b8765cc97cf3ef5b7ac488ebc57305e76014ca38542"
+    },
+    "COBERTURA-21.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/COBERTURA-21.json",
+      "bytes": 304091,
+      "sha256": "00179bac9ca052d862bf2f156920f20a622e40bb047ab8d6b4b0758bd93f8231"
+    },
+    "ACEPTACION-FILTROS.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/ACEPTACION-FILTROS.json",
+      "bytes": 135926,
+      "sha256": "693e1590a7df8c1d9fd11061825948b4e0cbd54de19243847a0ab746e1b656ab"
+    },
+    "INDICE-COBERTURA-152.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/INDICE-COBERTURA-152.json",
+      "bytes": 624891,
+      "sha256": "2b33b3a483a812fe3971a5d9a15a034ef3b910d619b6f2c20cf4412304c63293"
+    },
+    "CONCILIACION-ALCANCES-131.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/CONCILIACION-ALCANCES-131.json",
+      "bytes": 27191,
+      "sha256": "918d5313f6aaf0fcd125d6926dc2e954459b7e2e320842729fe4ddc92a53901f"
+    },
+    "INFORME-DATOS-ESENCIALES-NO-RECUPERADOS.md": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/INFORME-DATOS-ESENCIALES-NO-RECUPERADOS.md",
+      "bytes": 28004,
+      "sha256": "d942bf41b6ee8a5995827328270d8035c4741fd7c6e461021c24519446a2a66e"
+    },
+    "CRITERIO-Y-PENDIENTES-131.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/CRITERIO-Y-PENDIENTES-131.json",
+      "bytes": 92870,
+      "sha256": "ddb83a773427bd6e3cd9dc6e5d93f93fa4b34d3ab5c5d1a8fc88c32844259201"
+    },
+    "derivar-cobertura-21.py": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/derivar-cobertura-21.py",
+      "bytes": 14103,
+      "sha256": "cc7cc7218a3744dba82ed7cfceda4c99422991f160443771c586ce304565f6ed"
+    },
+    "derivar-combinaciones-152.py": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/derivar-combinaciones-152.py",
+      "bytes": 5009,
+      "sha256": "0e832cefafea383dbf95a474ca56bbb076e796b692b9f8a00b54061761805d36"
+    }
+  },
+  "universe": {
+    "original131": 131,
+    "additional21": 21,
+    "intersection": 0,
+    "union": 152,
+    "fieldsPerProject": 11,
+    "fieldCells": 1672,
+    "states": {
+      "desconocido": 467,
+      "parcial": 1125,
+      "confirmado": 80
+    },
+    "eachOriginalStateAndReasonPreservedByPointer": true,
+    "tableRows": 152
+  },
+  "pointers": {
+    "INDICE-COBERTURA-152.json": {
+      "occurrencesResolved": 1827,
+      "uniqueSourcePointers": 1827,
+      "failures": 0
+    },
+    "COBERTURA-21.json": {
+      "occurrencesResolved": 616,
+      "uniqueSourcePointers": 306,
+      "failures": 0
+    },
+    "ANALISIS-COMBINACIONES-152.json": {
+      "occurrencesResolved": 243,
+      "uniqueSourcePointers": 175,
+      "failures": 0
+    }
+  },
+  "pinnedInputSources": [
+    {
+      "artifact": "INDICE-COBERTURA-152.json",
+      "sourceKey": "view131",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/VISTA-COMERCIAL-POR-PROYECTO.json",
+      "bytes": 1785614,
+      "sha256": "e415fa0e07956ba8ebc996c7168389a8df494553f3cb4cc5ffab018de3807231"
+    },
+    {
+      "artifact": "INDICE-COBERTURA-152.json",
+      "sourceKey": "view21",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/COBERTURA-21.json",
+      "bytes": 304091,
+      "sha256": "00179bac9ca052d862bf2f156920f20a622e40bb047ab8d6b4b0758bd93f8231"
+    },
+    {
+      "artifact": "INDICE-COBERTURA-152.json",
+      "sourceKey": "combinations131",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json",
+      "bytes": 520362,
+      "sha256": "69450fcaf615f0c96f4d29625b3734dc9dc96030b29dc5fec7e0f02fced29463"
+    },
+    {
+      "artifact": "COBERTURA-21.json",
+      "sourceKey": "expansionProjection21",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/PROYECCION-PUBLICA-21.json",
+      "bytes": 127640,
+      "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb"
+    },
+    {
+      "artifact": "COBERTURA-21.json",
+      "sourceKey": "expansionRaw21",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/evidencia-iris/RAW-REFERENCIAS-UNITARIAS-21.json",
+      "bytes": 94533,
+      "sha256": "111d79541b487debd41a922d8f34d64edbd525b7b7d2af6862f88f25a4af2f07"
+    },
+    {
+      "artifact": "COBERTURA-21.json",
+      "sourceKey": "expansionPlans21",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/evidencia-iris/LECTURA-PLANOS-21.json",
+      "bytes": 11513,
+      "sha256": "4e8c418c8de17e7b7832d16e92036af85905a66f2ace5b651951ae4c70490bed"
+    },
+    {
+      "artifact": "COBERTURA-21.json",
+      "sourceKey": "expansionIncorporated21",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/PROYECTOS-INCORPORADOS-CANDIDATO.json",
+      "bytes": 18429,
+      "sha256": "0bfde33f13c7ae4ef176396ddd1543161a036e1964dc4b741335c045e4c8e6a0"
+    },
+    {
+      "artifact": "COBERTURA-21.json",
+      "sourceKey": "proposal21",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/PROPUESTA-POR-LOTES.json",
+      "bytes": 77395,
+      "sha256": "b92427bca520de5a2d89dc53e89a9740a6881bad3a333b8d6ffd43d9a8a3379e"
+    },
+    {
+      "artifact": "ANALISIS-COMBINACIONES-152.json",
+      "sourceKey": "original131",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json",
+      "bytes": 520362,
+      "sha256": "69450fcaf615f0c96f4d29625b3734dc9dc96030b29dc5fec7e0f02fced29463"
+    },
+    {
+      "artifact": "ANALISIS-COMBINACIONES-152.json",
+      "sourceKey": "expansion21",
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/PROYECCION-PUBLICA-21.json",
+      "bytes": 127640,
+      "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb"
+    }
+  ],
+  "combinationReview": {
+    "families": 13,
+    "countsByAxis": {
+      "precio": 147,
+      "precio_D": 83,
+      "precio_D_B": 15,
+      "precio_util": 0,
+      "precio_total": 0,
+      "precio_D_B_util": 0,
+      "precio_D_B_total": 0,
+      "D_B": 89,
+      "D_B_util": 37,
+      "D_B_total": 53,
+      "B_util": 37,
+      "B_total": 53,
+      "precio_tipo": 125
+    },
+    "original131OnlyPublishedLayerAdded": true,
+    "preparedLebenAndLocal24aUnchangedNotAdded": true,
+    "scope": "Misma referencia estática; no consultas ejecutadas, stock o certificación cartesiana.",
+    "normalizationCode": {
+      "sourceSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+      "path": "assets/js/catalog-expansion.mjs",
+      "lines": "123-134",
+      "moduleSHA256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+      "readNotExecuted": true,
+      "idsAttributesAndOwnerMasksCompared": true
+    },
+    "ownerProjectsVerified": [
+      "compania-1735",
+      "nuevo-vivaceta"
+    ],
+    "ownerPriceNeverBorrowedIrisBathroomsOrAreas": true
+  },
+  "threeOtherScopeValues": {
+    "count": 3,
+    "entries": [
+      {
+        "slug": "edificio-baum",
+        "field": "precio",
+        "publishedAxis": "precio"
+      },
+      {
+        "slug": "edificio-santo",
+        "field": "precio",
+        "publishedAxis": "precio"
+      },
+      {
+        "slug": "inn-puerto-chico",
+        "field": "util",
+        "publishedAxis": "D_B_util"
+      }
+    ],
+    "historicalStatesUnchanged": true,
+    "notRepresentedAsNeverRecoveredOrOwnerRequests": true
+  },
+  "preservation": {
+    "view131SHA256": "e415fa0e07956ba8ebc996c7168389a8df494553f3cb4cc5ffab018de3807231",
+    "originalCombinationsSHA256": "69450fcaf615f0c96f4d29625b3734dc9dc96030b29dc5fec7e0f02fced29463",
+    "original1993LocatorsPreservedByByteExactView": true,
+    "historical313IdsNotClosedOrRewrittenByThisComposition": true,
+    "supplement24aHEAD": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+    "supplementTreeClean": true,
+    "supplementNotAddedToPublishedCombinations": true
+  },
+  "reportMeaningChecks": {
+    "unknown467IsNotOwnerQuestionCount": true,
+    "threeKnownOtherScopeValuesExplicit": true,
+    "oneTableForAll152": true,
+    "noNewOwnerRequest": true,
+    "onlyTwoPreviouslyPresentedRequestIds": true,
+    "globalObjectiveNotDeclaredComplete": true
+  },
+  "observations": [
+    "80confirmadas,1125parciales y467desconocidas son estados documentales en sus alcances; no conteo de modelos, unidades,stock o nuevas solicitudes.",
+    "TipologíaEstudio puede conservar estado parcial aunque Dnumérico sea desconocido; las5referencias se explicitan y no se convierten en0D.",
+    "Las13familias prueban presencia de testigos estáticos por capa; no se suman datos de referencias,tipos,modelos o etapas distintos.",
+    "Los tres valores publicados de otro alcance quedan como punteros adicionales; no alteran las matrices originales ni acreditan asociación a precioowner."
+  ],
+  "newIsolatedApplicationTestNecessary": false,
+  "proposedCorrections": []
+}

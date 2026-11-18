@@ -1,0 +1,3025 @@
+{
+  "schemaVersion": 1,
+  "kind": "REUTILIZACION_DOCUMENTAL_INDEPENDIENTE_DE_CRITERIOS_Y_PENDIENTES_131_PARA_CONSOLIDACION_152",
+  "recordedAtUTC": "2026-11-18T22:52:35.206112+00:00",
+  "scope": {
+    "originalProjects": 131,
+    "targetUniverse": 152,
+    "new21DerivedByOtherTask": true,
+    "documentaryViewNotFilterRun": true,
+    "newPrimaryEvidence": 0,
+    "newAudits": 0,
+    "IrisQueries": 0,
+    "applicationTestsExecuted": 0,
+    "applicationModulesExecuted": 0,
+    "newOwnerQuestions": 0,
+    "originalRepoDocumentsEdited": 0
+  },
+  "sources": {
+    "view": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/VISTA-COMERCIAL-POR-PROYECTO.json",
+      "absoluteReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/VISTA-COMERCIAL-POR-PROYECTO.json",
+      "bytes": 1785614,
+      "sha256": "e415fa0e07956ba8ebc996c7168389a8df494553f3cb4cc5ffab018de3807231"
+    },
+    "acceptanceIndex": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/INDICE-ACEPTACION-POR-PROYECTO.json",
+      "absoluteReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/INDICE-ACEPTACION-POR-PROYECTO.json",
+      "bytes": 2439453,
+      "sha256": "4b9487d8964e35b15c3dd4c372d3edf7aa9b57f2c6c581b0d9aeeb309470cc4f"
+    },
+    "parkingStorage": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/estacionamiento-bodega-131-20261118/CLASIFICACION-ESTACIONAMIENTO-BODEGA-131.json",
+      "absoluteReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/estacionamiento-bodega-131-20261118/CLASIFICACION-ESTACIONAMIENTO-BODEGA-131.json",
+      "bytes": 475196,
+      "sha256": "74dacc7ad347e57bd84cb24927a7ab60c09eec1a687df2668bfdc70a13ef8e53"
+    },
+    "combinations": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json",
+      "absoluteReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json",
+      "bytes": 520362,
+      "sha256": "69450fcaf615f0c96f4d29625b3734dc9dc96030b29dc5fec7e0f02fced29463"
+    },
+    "existingAcceptanceCriterion": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/CRITERIO-DE-ACEPTACION-Y-BLOQUEOS.json",
+      "absoluteReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/CRITERIO-DE-ACEPTACION-Y-BLOQUEOS.json",
+      "bytes": 112689,
+      "sha256": "cb5b0a96330e1b1cfcdccd62cb036a8262551c73d68a346c6352ed8975c7479a"
+    },
+    "expansion": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/PROYECCION-PUBLICA-21.json",
+      "absoluteReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/PROYECCION-PUBLICA-21.json",
+      "bytes": 127640,
+      "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb"
+    }
+  },
+  "criteriaForSingleEssentialDataReport": [
+    "El informe es una unión de dos universos disjuntos: vista documental131 conservada y proyección21 ya publicada. No reconstruir la matriz131, no promover sus capas locales al estado publicado.",
+    "Usar estados documentales por campo y alcance, con literal/fuente/fecha. Confirmado significa confirmado en la declaración histórica o referencia citada, no vigencia actual, todo el inventario o stock.",
+    "Parcial significa cobertura restringida y permite búsquedas parciales. No se convierte en desconocido para inflar pendientes ni se vuelve confirmado universal.",
+    "Desconocido significa sin valor reutilizable en este conjunto indexado y alcance; no ausencia física ni investigación primaria exhaustiva. Motivo y puntero bastan para registrar el límite; no abre automáticamente una solicitud al propietario.",
+    "La presencia de un atributo no acredita que su valor pueda combinarse con otro en una misma búsqueda. Informar asociaciones no acreditadas y contradicciones separadas de los valores faltantes.",
+    "Mantener precioUF, tipo, D, B y superficies unidos al mismo testigo admitido. Un resumen de proyecto no completa un precio por tipología; modelo, unidad, etapa y producto no se prestan.",
+    "Útil y total son métricas canónicas separadas. Internos, interior, terraza, patio/jardín, terreno y total departamento no se reinterpretan ni se suman para completar métricas desconocidas.",
+    "Estudio literal en una referencia Iris no es0D. Cero desconocidos documentales de dormitorios en131 no certifica que131 tengan dormitorios numéricos admitidos en cada referencia.",
+    "Estacionamiento/bodega tienen al menos cuatro componentes: mención de producto, inclusión en precio, disponibilidad/asignación exacta y costo adicional. Visitas/servicios no son producto privado; adicional no es incluido. No sumar estos componentes como campos independientes dentro de la tabla de11 sin explicitar otra métrica.",
+    "Precio de Iris es externo atribuido y fechado; el precio owner conserva prioridad y alcance. Ni los precios archivados ni las fechas de observación acreditan stock o vigencia actual.",
+    "Un filtro activo sobre un atributo desconocido no produce coincidencia positiva. Cuando ese filtro está inactivo, el desconocido no excluye por sí solo.",
+    "La publicación técnica deD3/Fky con152 no sustituye datos faltantes. El permiso/integración24a es un bloqueo de publicación de evidencia ya existente, no un dato comercial faltante.",
+    "El informe consolidado debe separar: desconocidos reales de valor, asociaciones no acreditadas, contradicciones, limitaciones de alcance, integración técnica pendiente y solicitud al propietario ya presentada. No crear preguntas duplicadas.",
+    "Los1179estados históricos y313IDs se conservan; los381desconocidos de la vista11 no son313pendientes, ofertas, unidades ni tareas a ejecutar."
+  ],
+  "original131Metrics": {
+    "viewCells": 1441,
+    "fieldsPerProject": 11,
+    "coverageStatesByField": {
+      "tipo_propiedad": {
+        "parcial": 117,
+        "confirmado": 12,
+        "desconocido": 2
+      },
+      "precio": {
+        "parcial": 114,
+        "confirmado": 10,
+        "desconocido": 7
+      },
+      "dormitorios": {
+        "parcial": 123,
+        "confirmado": 8
+      },
+      "banos": {
+        "parcial": 112,
+        "desconocido": 9,
+        "confirmado": 10
+      },
+      "util": {
+        "desconocido": 49,
+        "parcial": 80,
+        "confirmado": 2
+      },
+      "total": {
+        "desconocido": 40,
+        "parcial": 86,
+        "confirmado": 5
+      },
+      "entrega": {
+        "desconocido": 24,
+        "parcial": 95,
+        "confirmado": 12
+      },
+      "estado": {
+        "parcial": 116,
+        "confirmado": 10,
+        "desconocido": 5
+      },
+      "amenities": {
+        "parcial": 109,
+        "confirmado": 11,
+        "desconocido": 11
+      },
+      "estacionamiento": {
+        "desconocido": 116,
+        "parcial": 15
+      },
+      "bodega": {
+        "desconocido": 118,
+        "parcial": 13
+      }
+    },
+    "confirmedScopedCells": 80,
+    "partialScopedCells": 980,
+    "unknownCells": 381,
+    "projectsWithAtLeastOneUnknownField": 129,
+    "unknownSlugsByField": {
+      "tipo_propiedad": [
+        "parque-germania",
+        "own"
+      ],
+      "precio": [
+        "edificio-baum",
+        "edificio-santo",
+        "angamos",
+        "diagonal-vicuna",
+        "own",
+        "los-alerces",
+        "valle-los-ingleses-iii"
+      ],
+      "dormitorios": [],
+      "banos": [
+        "reserva-mayor-2",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "edificio-verne",
+        "vergara-domeyko",
+        "parque-panama",
+        "irarrazaval",
+        "bordevivo",
+        "vista-bulnes"
+      ],
+      "util": [
+        "distrito-centro",
+        "reserva-mayor-2",
+        "vista-llacolen-b",
+        "bcome",
+        "vista-llacolen-a",
+        "campus-llacolen",
+        "alto-buzeta",
+        "vistamar",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "edificio-indi",
+        "jardines-de-alvarado",
+        "edificio-santa-maria",
+        "plaza-cervantes-b",
+        "endemico",
+        "serrano-torre-a",
+        "plaza-cervantes",
+        "vista-costanera",
+        "vista-reloncavi",
+        "plaza-quilicura",
+        "mapocho-3521-edificio-a",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "edificio-baum",
+        "inn-puerto-chico",
+        "edificio-suecia",
+        "capitanes",
+        "edificio-argomedo",
+        "edificio-indigo",
+        "edificio-verne",
+        "edificio-santo",
+        "edificio-living-town",
+        "edificio-bold",
+        "vergara-domeyko",
+        "parque-panama",
+        "don-tomas",
+        "irarrazaval",
+        "don-rafael",
+        "pintor-cicarelli-iii",
+        "trinidad-iii",
+        "alto-goycolea",
+        "barrio-zenteno",
+        "novo-catedral",
+        "caceres",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "bordevivo",
+        "mirador-mapocho",
+        "own"
+      ],
+      "total": [
+        "distrito-centro",
+        "reserva-mayor-2",
+        "vista-llacolen-b",
+        "vista-llacolen-a",
+        "campus-llacolen",
+        "alto-buzeta",
+        "vistamar",
+        "edificio-indi",
+        "jardines-de-alvarado",
+        "plaza-cervantes-b",
+        "serrano-torre-a",
+        "plaza-cervantes",
+        "vista-costanera",
+        "vista-reloncavi",
+        "plaza-quilicura",
+        "mapocho-3521-edificio-a",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "edificio-baum",
+        "edificio-suecia",
+        "parque-germania",
+        "edificio-argomedo",
+        "edificio-indigo",
+        "edificio-verne",
+        "edificio-santo",
+        "edificio-living-town",
+        "vergara-domeyko",
+        "parque-panama",
+        "don-tomas",
+        "irarrazaval",
+        "don-rafael",
+        "pintor-cicarelli-iii",
+        "trinidad-iii",
+        "novo-catedral",
+        "caceres",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "bordevivo",
+        "mirador-mapocho",
+        "own"
+      ],
+      "entrega": [
+        "distrito-centro",
+        "reserva-mayor-2",
+        "vista-llacolen-b",
+        "vista-llacolen-a",
+        "campus-llacolen",
+        "vistamar",
+        "coronel-godoy",
+        "vivaceta",
+        "serrano-torre-a",
+        "plaza-cervantes",
+        "diagonal-paraguay",
+        "terrazzo",
+        "vima",
+        "los-lilenes",
+        "nueva-esmeralda",
+        "el-aromo",
+        "pintor-cicarelli-iii",
+        "vicuna-mackenna-7589",
+        "matta-016",
+        "abdon-cifuentes",
+        "don-ignacio",
+        "vicente-valdes",
+        "los-alerces",
+        "valle-los-ingleses-iii"
+      ],
+      "estado": [
+        "edificio-baum",
+        "edificio-santo",
+        "vicente-valdes",
+        "los-alerces",
+        "valle-los-ingleses-iii"
+      ],
+      "amenities": [
+        "plaza-cervantes",
+        "mapocho-3521-edificio-a",
+        "froilan-roa-5731-torre-norte",
+        "froilan-roa-5731-torre-sur",
+        "edificio-verne",
+        "irarrazaval",
+        "mirador-irarrazaval",
+        "jose-pedro-alessandri",
+        "vicente-valdes",
+        "marina-pacifico",
+        "nova-parque"
+      ],
+      "estacionamiento": [
+        "distrito-centro",
+        "reserva-mayor-2",
+        "vista-llacolen-b",
+        "bcome",
+        "vista-llacolen-a",
+        "campus-llacolen",
+        "nucleo-costanera",
+        "wayra",
+        "lamara",
+        "alto-buzeta",
+        "independencia-4745",
+        "vistamar",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "edificio-ecuador",
+        "coronel-godoy",
+        "vivaceta",
+        "edificio-bezanilla",
+        "jardines-de-alvarado",
+        "plaza-cervantes-b",
+        "edificio-teatinos-750",
+        "edificio-vista-amunategui",
+        "endemico",
+        "playa-penuelas",
+        "serrano-torre-a",
+        "plaza-cervantes",
+        "vista-costanera",
+        "vista-reloncavi",
+        "downtown-san-martin",
+        "vista-morande",
+        "edificio-don-pepe-154",
+        "plaza-de-lourdes",
+        "santa-elena-1670-mbi",
+        "plaza-quilicura",
+        "mapocho-3521-edificio-a",
+        "edificio-lira-622",
+        "edificio-dual-390-lto",
+        "entre-vicunas",
+        "lomas-de-puyai",
+        "ferroparque",
+        "froilan-roa-5731-torre-norte",
+        "rosas-1444",
+        "guillermo-mann-1401",
+        "froilan-roa-5731-torre-sur",
+        "edificio-san-francisco-1204",
+        "cumbres-de-penuelas",
+        "edificio-baum",
+        "diagonal-paraguay",
+        "parque-germania",
+        "edificio-verne",
+        "edificio-santo",
+        "domeyko-2055",
+        "vergara-domeyko",
+        "parque-panama",
+        "playa-serena",
+        "don-tomas",
+        "mapocho-3521",
+        "jofre-135",
+        "irarrazaval",
+        "parque-quinta",
+        "quintavista",
+        "terrazzo",
+        "vima",
+        "los-lilenes",
+        "nueva-esmeralda",
+        "el-aromo",
+        "espacio-victoria",
+        "terratolten",
+        "pintor-cicarelli-iii",
+        "trinidad-iii",
+        "edificio-liverpool",
+        "mirador-la-florida",
+        "eleuterio-ramirez",
+        "urban-la-florida",
+        "vicuna-mackenna-6896",
+        "vicuna-mackenna-7589",
+        "aires-la-florida-2",
+        "condominio-uruguay",
+        "enlace-mackenna",
+        "novo-catedral",
+        "carmen-marin",
+        "gregorio-de-la-fuente-a",
+        "matta-016",
+        "edificio-plaza-nova",
+        "condominio-parque-don-lautaro",
+        "caceres",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "edif-origen-atacama-3008",
+        "abdon-cifuentes",
+        "don-ignacio",
+        "tocornal",
+        "centenario-1",
+        "curico-77",
+        "san-ignacio",
+        "angamos",
+        "conecta-huechuraba",
+        "bordevivo",
+        "mirador-mapocho",
+        "alto-san-joaquin",
+        "vista-bulnes",
+        "jardines-de-ramon-cruz",
+        "vitro",
+        "mirador-irarrazaval",
+        "alto-irarrazaval",
+        "jose-pedro-alessandri",
+        "vicuna-mackenna-1432",
+        "vicente-valdes",
+        "diagonal-vicuna",
+        "vista-portugal",
+        "marina-pacifico",
+        "nova-parque",
+        "own",
+        "monjitas-690",
+        "los-alerces",
+        "valle-los-ingleses-iii"
+      ],
+      "bodega": [
+        "distrito-centro",
+        "reserva-mayor-2",
+        "vista-llacolen-b",
+        "bcome",
+        "vista-llacolen-a",
+        "campus-llacolen",
+        "nucleo-costanera",
+        "wayra",
+        "lamara",
+        "alto-buzeta",
+        "independencia-4745",
+        "vistamar",
+        "costanera-coquimbo-a",
+        "costanera-coquimbo-b",
+        "edificio-ecuador",
+        "coronel-godoy",
+        "vivaceta",
+        "edificio-bezanilla",
+        "jardines-de-alvarado",
+        "plaza-cervantes-b",
+        "edificio-teatinos-750",
+        "edificio-vista-amunategui",
+        "endemico",
+        "playa-penuelas",
+        "serrano-torre-a",
+        "plaza-cervantes",
+        "vista-costanera",
+        "vista-reloncavi",
+        "downtown-san-martin",
+        "vista-morande",
+        "edificio-don-pepe-154",
+        "plaza-de-lourdes",
+        "santa-elena-1670-mbi",
+        "plaza-quilicura",
+        "mapocho-3521-edificio-a",
+        "edificio-lira-622",
+        "edificio-dual-390-lto",
+        "entre-vicunas",
+        "lomas-de-puyai",
+        "ferroparque",
+        "froilan-roa-5731-torre-norte",
+        "rosas-1444",
+        "guillermo-mann-1401",
+        "froilan-roa-5731-torre-sur",
+        "edificio-san-francisco-1204",
+        "cumbres-de-penuelas",
+        "edificio-baum",
+        "diagonal-paraguay",
+        "parque-germania",
+        "edificio-verne",
+        "edificio-santo",
+        "domeyko-2055",
+        "vergara-domeyko",
+        "parque-panama",
+        "playa-serena",
+        "don-tomas",
+        "plaza-las-condes",
+        "mapocho-3521",
+        "jofre-135",
+        "irarrazaval",
+        "parque-quinta",
+        "quintavista",
+        "don-rafael",
+        "terrazzo",
+        "vima",
+        "los-lilenes",
+        "nueva-esmeralda",
+        "el-aromo",
+        "espacio-victoria",
+        "terratolten",
+        "pintor-cicarelli-iii",
+        "trinidad-iii",
+        "edificio-liverpool",
+        "mirador-la-florida",
+        "eleuterio-ramirez",
+        "urban-la-florida",
+        "vicuna-mackenna-6896",
+        "vicuna-mackenna-7589",
+        "aires-la-florida-2",
+        "condominio-uruguay",
+        "enlace-mackenna",
+        "novo-catedral",
+        "carmen-marin",
+        "gregorio-de-la-fuente-a",
+        "matta-016",
+        "edificio-plaza-nova",
+        "condominio-parque-don-lautaro",
+        "caceres",
+        "pintor-cicarelli-i",
+        "pintor-cicarelli-ii",
+        "edif-origen-atacama-3008",
+        "abdon-cifuentes",
+        "don-ignacio",
+        "tocornal",
+        "centenario-1",
+        "curico-77",
+        "san-ignacio",
+        "angamos",
+        "conecta-huechuraba",
+        "bordevivo",
+        "mirador-mapocho",
+        "alto-san-joaquin",
+        "vista-bulnes",
+        "jardines-de-ramon-cruz",
+        "vitro",
+        "mirador-irarrazaval",
+        "alto-irarrazaval",
+        "jose-pedro-alessandri",
+        "vicuna-mackenna-1432",
+        "vicente-valdes",
+        "diagonal-vicuna",
+        "vista-portugal",
+        "marina-pacifico",
+        "nova-parque",
+        "own",
+        "monjitas-690",
+        "los-alerces",
+        "valle-los-ingleses-iii"
+      ]
+    },
+    "numericBedroomCaveat": [
+      {
+        "slug": "irarrazaval",
+        "pointer": "/projectsBySlug/irarrazaval/fields/dormitorios",
+        "literal": "NO_ACREDITADO; se conserva tipología literal Estudio sin convertirla en0."
+      }
+    ],
+    "unknownIsNotPhysicalAbsenceOrNewOwnerRequest": true
+  },
+  "historicalPreservation": {
+    "nineFieldCells": 1179,
+    "counts": {
+      "tipo_propiedad": {
+        "parcial": 115,
+        "desconocido": 4,
+        "confirmado": 12
+      },
+      "precio": {
+        "parcial": 114,
+        "confirmado": 10,
+        "desconocido": 7
+      },
+      "dormitorios": {
+        "parcial": 122,
+        "desconocido": 1,
+        "confirmado": 8
+      },
+      "banos": {
+        "parcial": 108,
+        "desconocido": 13,
+        "confirmado": 10
+      },
+      "util": {
+        "desconocido": 50,
+        "parcial": 79,
+        "confirmado": 2
+      },
+      "total": {
+        "desconocido": 40,
+        "parcial": 86,
+        "confirmado": 5
+      },
+      "entrega": {
+        "desconocido": 24,
+        "parcial": 95,
+        "confirmado": 12
+      },
+      "estado": {
+        "parcial": 116,
+        "confirmado": 10,
+        "desconocido": 5
+      },
+      "amenities": {
+        "parcial": 109,
+        "confirmado": 11,
+        "desconocido": 11
+      }
+    },
+    "historicalUnknownNineFieldCells": 155,
+    "viewUnknownNineFieldCells": 147,
+    "eightAdditionalScopedObservations": [
+      {
+        "slug": "alto-buzeta",
+        "field": "tipo_propiedad",
+        "historicalState": "desconocido",
+        "viewState": "parcial",
+        "referenceIds": [
+          "IRIS-131-R004",
+          "IRIS-131-R005"
+        ],
+        "hasAssociationConflict": false
+      },
+      {
+        "slug": "plaza-cervantes",
+        "field": "tipo_propiedad",
+        "historicalState": "desconocido",
+        "viewState": "parcial",
+        "referenceIds": [
+          "IRIS-131-R003"
+        ],
+        "hasAssociationConflict": true
+      },
+      {
+        "slug": "plaza-cervantes",
+        "field": "dormitorios",
+        "historicalState": "desconocido",
+        "viewState": "parcial",
+        "referenceIds": [
+          "IRIS-131-R003"
+        ],
+        "hasAssociationConflict": true
+      },
+      {
+        "slug": "plaza-cervantes",
+        "field": "banos",
+        "historicalState": "desconocido",
+        "viewState": "parcial",
+        "referenceIds": [
+          "IRIS-131-R003"
+        ],
+        "hasAssociationConflict": true
+      },
+      {
+        "slug": "mapocho-3521-edificio-a",
+        "field": "banos",
+        "historicalState": "desconocido",
+        "viewState": "parcial",
+        "referenceIds": [
+          "IRIS-131-R002"
+        ],
+        "hasAssociationConflict": false
+      },
+      {
+        "slug": "plaza-las-condes",
+        "field": "util",
+        "historicalState": "desconocido",
+        "viewState": "parcial",
+        "referenceIds": [
+          "DOC-SENTO-PLC-U213-C7-OBS20261117"
+        ],
+        "hasAssociationConflict": false
+      },
+      {
+        "slug": "vicuna-mackenna-6896",
+        "field": "banos",
+        "historicalState": "desconocido",
+        "viewState": "parcial",
+        "referenceIds": [
+          "IRIS-131-R018"
+        ],
+        "hasAssociationConflict": false
+      },
+      {
+        "slug": "novo-catedral",
+        "field": "banos",
+        "historicalState": "desconocido",
+        "viewState": "parcial",
+        "referenceIds": [
+          "IRIS-131-R016"
+        ],
+        "hasAssociationConflict": false
+      }
+    ],
+    "historicalCellsChanged": 0,
+    "historicalPending313IdsChanged": 0,
+    "historicalPending313Closures": 0,
+    "coverageChangesAreNotClosures": true
+  },
+  "parkingStorageComponents": {
+    "source": "parkingStorage",
+    "pointer": "/summary",
+    "retainedSummary": {
+      "parking": {
+        "productMentionStates": {
+          "desconocido": 116,
+          "confirmado": 10,
+          "parcial": 5
+        },
+        "generalAdditionalOfferConfirmedProjects": 10,
+        "excludedPriceReferences": 20,
+        "confirmedIncludedTrueReferences": 0,
+        "projectWideInclusionUnknown": 131,
+        "exactAvailabilityUnknownProjects": 131,
+        "separateAmountReferences": 1,
+        "excludedServiceMentionItems": 3
+      },
+      "storage": {
+        "productMentionStates": {
+          "desconocido": 118,
+          "confirmado": 10,
+          "parcial": 3
+        },
+        "generalAdditionalOfferConfirmedProjects": 10,
+        "excludedPriceReferences": 20,
+        "confirmedIncludedTrueReferences": 0,
+        "projectWideInclusionUnknown": 131,
+        "exactAvailabilityUnknownProjects": 131,
+        "separateAmountReferences": 1,
+        "excludedServiceMentionItems": 16
+      }
+    },
+    "notProjectWideKnown": true,
+    "priorityMeaning": "Inclusion and exact availability absent globally; do not convert known general additional offers or20reference exclusions to global true/false."
+  },
+  "limitationReasonOccurrences": {
+    "ALCANCE_PARCIAL_DECLARADO": 944,
+    "RESUMEN_NO_ES_ASOCIACION": 272,
+    "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE": 381,
+    "INCLUSION_NO_DECLARADA_GLOBALMENTE": 262,
+    "DISPONIBILIDAD_NO_ASIGNADA": 262,
+    "OBSERVACION_REFERENCIAL_NO_OFERTA": 54,
+    "ROTULO_METRICO_DISTINTO": 30,
+    "MENCION_NO_ES_PRODUCTO_PRIVADO": 28,
+    "SERVICIO_O_VISITA_EXCLUIDO": 16,
+    "CONFLICTO_DE_ASOCIACION": 3,
+    "PRECIO_ADICIONAL_SEPARADO": 2,
+    "RELACION_ENTRE_HECHOS_NO_ACREDITADA": 3,
+    "CONTRADICCION_DECLARADA": 1,
+    "PRODUCTO_DISTINTO": 15
+  },
+  "limitationReasonDistinctProjects": {
+    "ALCANCE_PARCIAL_DECLARADO": 125,
+    "RESUMEN_NO_ES_ASOCIACION": 97,
+    "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE": 129,
+    "INCLUSION_NO_DECLARADA_GLOBALMENTE": 131,
+    "DISPONIBILIDAD_NO_ASIGNADA": 131,
+    "OBSERVACION_REFERENCIAL_NO_OFERTA": 18,
+    "ROTULO_METRICO_DISTINTO": 15,
+    "MENCION_NO_ES_PRODUCTO_PRIVADO": 15,
+    "SERVICIO_O_VISITA_EXCLUIDO": 16,
+    "CONFLICTO_DE_ASOCIACION": 1,
+    "PRECIO_ADICIONAL_SEPARADO": 1,
+    "RELACION_ENTRE_HECHOS_NO_ACREDITADA": 1,
+    "CONTRADICCION_DECLARADA": 1,
+    "PRODUCTO_DISTINTO": 3
+  },
+  "reasonDictionary": {
+    "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE": "Sin valor reutilizable rotulado en estos registros indexados. No afirma que el dato nunca exista ni que deba repetirse su investigación.",
+    "ALCANCE_PARCIAL_DECLARADO": "La evidencia sólo cubre los resúmenes, referencias, modelos o etapas declarados. No requiere completar todas las unidades para conservar consultas respaldadas.",
+    "RESUMEN_NO_ES_ASOCIACION": "Un valor o rango de resumen no acredita su relación con precio, modelo, unidad o etapa de otra referencia.",
+    "RELACION_ENTRE_HECHOS_NO_ACREDITADA": "Los hechos pueden estar documentados por separado; su relación conjunta no se deduce de similitud de precio, tipología, nombre o área.",
+    "ROTULO_METRICO_DISTINTO": "Internos, interior, útil, total y terraza permanecen separados. Un rótulo distinto no completa automáticamente la métrica pedida.",
+    "OBSERVACION_REFERENCIAL_NO_OFERTA": "Dato observado sólo en la referencia indicada. No es oferta, stock, adopción comercial ni confirmación general del proyecto.",
+    "CONFLICTO_DE_ASOCIACION": "El valor observado se conserva, pero la asociación de edificio, torre, modelo o plano está en conflicto; no habilita una combinación publicable automática.",
+    "PRODUCTO_DISTINTO": "La documentación de departamentos u otro producto no respalda automáticamente el Local, terreno, oficina o etapa de la oferta owner.",
+    "ANTECEDENTE_HISTORICO": "Fecha y alcance históricos de la propia fuente; no confirma vigencia comercial o stock actual.",
+    "CONTRADICCION_DECLARADA": "Existe contradicción declarada en el alcance indicado. No se resuelve seleccionando arbitrariamente una fuente.",
+    "INCLUSION_NO_DECLARADA_GLOBALMENTE": "No hay inclusión global acreditada. Las inclusiones o exclusiones expresas por precio permanecen restringidas a esas referencias.",
+    "DISPONIBILIDAD_NO_ASIGNADA": "No se acredita disponibilidad o asignación actual a una unidad/referencia exacta. No implica ausencia física del producto.",
+    "MENCION_NO_ES_PRODUCTO_PRIVADO": "Una mención general o una oferta adicional no acredita un espacio privado/asignado incluido en el precio.",
+    "SERVICIO_O_VISITA_EXCLUIDO": "La mención de visitas o servicios no es evidencia de un estacionamiento o bodega privados del inmueble.",
+    "PRECIO_ADICIONAL_SEPARADO": "Un importe adicional permanece separado del precio del inmueble; no se suma ni se asigna a otra unidad.",
+    "NO_APLICABLE_DECLARADO": "Se conserva únicamente el no aplicable declarado por la fuente; no se deriva de un desconocido."
+  },
+  "existingCombinations": {
+    "source": "combinations",
+    "pointer": "/summaries",
+    "summaries": {
+      "published875": {
+        "projectsWithAnyLayerReferences": 131,
+        "projectsWithPricedReferences": 126,
+        "supportedProjectCountsByAxis": {
+          "precio": 126,
+          "precio_D": 66,
+          "precio_D_B": 0,
+          "precio_util": 0,
+          "precio_total": 0,
+          "precio_D_B_util": 0,
+          "precio_D_B_total": 0,
+          "D_B": 73,
+          "D_B_util": 37,
+          "D_B_total": 53,
+          "B_util": 37,
+          "B_total": 53,
+          "precio_tipo": 106
+        },
+        "countsAreNotUniqueStockOrNewFacts": true
+      },
+      "preparedLeben": {
+        "projectsWithAnyLayerReferences": 12,
+        "projectsWithPricedReferences": 10,
+        "supportedProjectCountsByAxis": {
+          "precio": 10,
+          "precio_D": 10,
+          "precio_D_B": 5,
+          "precio_util": 0,
+          "precio_total": 0,
+          "precio_D_B_util": 0,
+          "precio_D_B_total": 0,
+          "D_B": 12,
+          "D_B_util": 2,
+          "D_B_total": 5,
+          "B_util": 2,
+          "B_total": 5,
+          "precio_tipo": 3
+        },
+        "countsAreNotUniqueStockOrNewFacts": true
+      },
+      "documentaryLocal24a": {
+        "projectsWithAnyLayerReferences": 18,
+        "projectsWithPricedReferences": 1,
+        "supportedProjectCountsByAxis": {
+          "precio": 1,
+          "precio_D": 1,
+          "precio_D_B": 1,
+          "precio_util": 1,
+          "precio_total": 1,
+          "precio_D_B_util": 1,
+          "precio_D_B_total": 1,
+          "D_B": 15,
+          "D_B_util": 1,
+          "D_B_total": 1,
+          "B_util": 2,
+          "B_total": 2,
+          "precio_tipo": 1
+        },
+        "countsAreNotUniqueStockOrNewFacts": true
+      }
+    },
+    "countsAreStaticExistencePerLayer": true,
+    "notRuntimeQueries": true,
+    "noLayerUnion": true
+  },
+  "prioritiesWithoutNewQuestions": [
+    {
+      "priority": 1,
+      "case": "Irarrázaval1970, baños delEstudio",
+      "classification": "OWNER_DATA_ALREADY_REQUESTED",
+      "requestId": "OWNER-BATH-IRARR1970-20261118-01",
+      "newQuestion": false,
+      "action": "Conservar desconocido y consultas parciales; no repetir brochure/Iris agotados."
+    },
+    {
+      "priority": 2,
+      "case": "Suplemento24a,19referencias/18proyectos",
+      "classification": "TECHNICAL_AUTHORIZATION_ALREADY_REQUESTED_NOT_MISSING_DATA",
+      "requestId": "AUTH-PUSH-PR-SUPPLEMENT-20261118-01",
+      "newQuestion": false,
+      "action": "Mantener congelado24a sin push; reconciliar baseD3 antes de cualquier ejecución autorizada."
+    },
+    {
+      "priority": 3,
+      "case": "Mood, precio y superficies",
+      "classification": "KNOWN_SEPARATELY_UNCONFIRMED_ASSOCIATION",
+      "newQuestion": false,
+      "action": "Conservar precios por tipología y planos por su alcance; precio+D/B sí, precio+superficie sólo con vínculo futuro acreditado."
+    },
+    {
+      "priority": 4,
+      "case": "Verne202 y productosLocal enParquePanamá/VergaraDomeyko/Bordevivo",
+      "classification": "PRODUCT_OR_SCOPE_CONFLICT_NOT_VALUE_TO_GUESS",
+      "newQuestion": false,
+      "action": "No transferir baños/áreas/amenities residenciales aLocal/oficina. Reutilizar excepciones y consultas agotadas, sin reabrirlas."
+    },
+    {
+      "priority": 5,
+      "case": "Útil/total y parking/bodega",
+      "classification": "EXPLICIT_UNKNOWNS_IN_EXISTING_SCOPES",
+      "newQuestion": false,
+      "action": "Documentar en el informe único porproyecto/campo y motivo; sólo procesar evidencia concreta nueva cuando exista, sin una nueva campaña general."
+    }
+  ],
+  "projectIndexOfRemainingUnknownsAndScopeLimits": [
+    {
+      "slug": "distrito-centro",
+      "name": "Distrito Centro",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/distrito-centro/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "reserva-mayor-2",
+      "name": "Reserva Mayor 2",
+      "developer": "Vesant",
+      "unknownFields": [
+        "banos",
+        "util",
+        "total",
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/reserva-mayor-2/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vista-llacolen-b",
+      "name": "Vista Llacolén B",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vista-llacolen-b/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "bcome",
+      "name": "Edificio B.Come — Concepción",
+      "developer": "León",
+      "unknownFields": [
+        "util",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/bcome/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vista-llacolen-a",
+      "name": "Vista Llacolén A",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vista-llacolen-a/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "campus-llacolen",
+      "name": "Campus Llacolén",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/campus-llacolen/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "nucleo-costanera",
+      "name": "Núcleo Costanera",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/nucleo-costanera/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "wayra",
+      "name": "Edificio Wayra",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/wayra/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "lamara",
+      "name": "Lamara",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/lamara/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "alto-buzeta",
+      "name": "Alto Buzeta",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/alto-buzeta/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/alto-buzeta/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/alto-buzeta/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "independencia-4745",
+      "name": "Independencia 4745",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/independencia-4745/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vistamar",
+      "name": "Vistamar",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vistamar/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "costanera-coquimbo-a",
+      "name": "Costanera Coquimbo Edificio A",
+      "developer": "Nollagam",
+      "unknownFields": [
+        "util",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/costanera-coquimbo-a/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "costanera-coquimbo-b",
+      "name": "Costanera Coquimbo Edificio B",
+      "developer": "Nollagam",
+      "unknownFields": [
+        "util",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/costanera-coquimbo-b/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-ecuador",
+      "name": "Ecuador",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-ecuador/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "coronel-godoy",
+      "name": "Edificio Coronel Godoy",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/coronel-godoy/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-indi",
+      "name": "Edificio Indi",
+      "developer": "Leben",
+      "unknownFields": [
+        "util",
+        "total"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-indi/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vivaceta",
+      "name": "Edificio Vivaceta",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vivaceta/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-bezanilla",
+      "name": "Bezanilla",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-bezanilla/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "jardines-de-alvarado",
+      "name": "Jardines de Alvarado",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/jardines-de-alvarado/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-santa-maria",
+      "name": "Edificio Santa María",
+      "developer": "Nollagam",
+      "unknownFields": [
+        "util"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-santa-maria/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "plaza-cervantes-b",
+      "name": "Plaza Cervantes - Torre B",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/plaza-cervantes-b/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-teatinos-750",
+      "name": "Edificio Teatinos 750",
+      "developer": "AJ Urbana",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-teatinos-750/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-vista-amunategui",
+      "name": "Edificio Vista Amunategui",
+      "developer": "AJ Urbana",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-vista-amunategui/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "endemico",
+      "name": "Endémico",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "util",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/endemico/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/endemico/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/endemico/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "playa-penuelas",
+      "name": "Playa Peñuelas",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/playa-penuelas/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "serrano-torre-a",
+      "name": "Serrano - Torre A",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/serrano-torre-a/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "plaza-cervantes",
+      "name": "Plaza Cervantes - Torre A",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "entrega",
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/plaza-cervantes/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "tipo_propiedad",
+          "reasonCodes": [
+            "OBSERVACION_REFERENCIAL_NO_OFERTA",
+            "CONFLICTO_DE_ASOCIACION"
+          ],
+          "sourcePointer": "/projectsBySlug/plaza-cervantes/fields/tipo_propiedad"
+        },
+        {
+          "field": "dormitorios",
+          "reasonCodes": [
+            "RESUMEN_NO_ES_ASOCIACION",
+            "OBSERVACION_REFERENCIAL_NO_OFERTA",
+            "CONFLICTO_DE_ASOCIACION"
+          ],
+          "sourcePointer": "/projectsBySlug/plaza-cervantes/fields/dormitorios"
+        },
+        {
+          "field": "banos",
+          "reasonCodes": [
+            "OBSERVACION_REFERENCIAL_NO_OFERTA",
+            "CONFLICTO_DE_ASOCIACION"
+          ],
+          "sourcePointer": "/projectsBySlug/plaza-cervantes/fields/banos"
+        },
+        {
+          "field": "util",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/plaza-cervantes/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/plaza-cervantes/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vista-costanera",
+      "name": "Vista Costanera",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vista-costanera/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vista-reloncavi",
+      "name": "Vista Reloncaví",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vista-reloncavi/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "downtown-san-martin",
+      "name": "Downtown San Martín",
+      "developer": "AJ Urbana",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/downtown-san-martin/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vista-morande",
+      "name": "Vista Morandé",
+      "developer": "AJ Urbana",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vista-morande/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-don-pepe-154",
+      "name": "Don Pepe 154",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-don-pepe-154/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "plaza-de-lourdes",
+      "name": "Plaza de Lourdes",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/plaza-de-lourdes/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "santa-elena-1670-mbi",
+      "name": "Santa Elena 1670",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/santa-elena-1670-mbi/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "plaza-quilicura",
+      "name": "Plaza Quilicura",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/plaza-quilicura/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "mapocho-3521-edificio-a",
+      "name": "Mapocho 3521 - Edificio A",
+      "developer": "Euro",
+      "unknownFields": [
+        "util",
+        "total",
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/mapocho-3521-edificio-a/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/mapocho-3521-edificio-a/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/mapocho-3521-edificio-a/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-lira-622",
+      "name": "Edificio Lira 622",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-lira-622/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-dual-390-lto",
+      "name": "Edificio Dual 390 LTO",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-dual-390-lto/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "entre-vicunas",
+      "name": "Entre Vicuñas",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/entre-vicunas/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "lomas-de-puyai",
+      "name": "Lomas de Puyai",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/lomas-de-puyai/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "ferroparque",
+      "name": "FerroParque",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/ferroparque/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "froilan-roa-5731-torre-norte",
+      "name": "Froilán Roa 5731 - Torre Norte",
+      "developer": "Euro",
+      "unknownFields": [
+        "banos",
+        "util",
+        "total",
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/froilan-roa-5731-torre-norte/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "rosas-1444",
+      "name": "Rosas 1444",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/rosas-1444/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "guillermo-mann-1401",
+      "name": "Guillermo Mann 1401",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/guillermo-mann-1401/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "froilan-roa-5731-torre-sur",
+      "name": "Froilán Roa 5731 - Torre Sur",
+      "developer": "Euro",
+      "unknownFields": [
+        "banos",
+        "util",
+        "total",
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/froilan-roa-5731-torre-sur/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-san-francisco-1204",
+      "name": "Edificio San Francisco 1204",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-san-francisco-1204/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "cumbres-de-penuelas",
+      "name": "Cumbres de Peñuelas",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/cumbres-de-penuelas/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-baum",
+      "name": "Edificio BAUM",
+      "developer": "Leben",
+      "unknownFields": [
+        "precio",
+        "util",
+        "total",
+        "estado",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-baum/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "diagonal-paraguay",
+      "name": "Diagonal Paraguay",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/diagonal-paraguay/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "name": "INN Puerto Chico",
+      "developer": "Leben",
+      "unknownFields": [
+        "util"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/inn-puerto-chico/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-suecia",
+      "name": "Edificio Suecia",
+      "developer": "Leben",
+      "unknownFields": [
+        "util",
+        "total"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-suecia/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "capitanes",
+      "name": "Capitanes",
+      "developer": "Leben",
+      "unknownFields": [
+        "util"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/capitanes/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "parque-germania",
+      "name": "Parque Germania",
+      "developer": "Leben",
+      "unknownFields": [
+        "tipo_propiedad",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/parque-germania/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-argomedo",
+      "name": "Edificio Argomedo",
+      "developer": "Leben",
+      "unknownFields": [
+        "util",
+        "total"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-argomedo/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-mood",
+      "name": "Edificio Mood",
+      "developer": "Leben",
+      "unknownFields": [],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-mood/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "precio",
+          "reasonCodes": [
+            "RELACION_ENTRE_HECHOS_NO_ACREDITADA"
+          ],
+          "sourcePointer": "/projectsBySlug/edificio-mood/fields/precio"
+        },
+        {
+          "field": "util",
+          "reasonCodes": [
+            "RELACION_ENTRE_HECHOS_NO_ACREDITADA"
+          ],
+          "sourcePointer": "/projectsBySlug/edificio-mood/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "RELACION_ENTRE_HECHOS_NO_ACREDITADA"
+          ],
+          "sourcePointer": "/projectsBySlug/edificio-mood/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-indigo",
+      "name": "Edificio Índigo",
+      "developer": "Leben",
+      "unknownFields": [
+        "util",
+        "total"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-indigo/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-verne",
+      "name": "Edificio Verne",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "banos",
+        "util",
+        "total",
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-verne/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "tipo_propiedad",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "CONTRADICCION_DECLARADA"
+          ],
+          "sourcePointer": "/projectsBySlug/edificio-verne/fields/tipo_propiedad"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-santo",
+      "name": "Edificio Santo",
+      "developer": "Leben",
+      "unknownFields": [
+        "precio",
+        "util",
+        "total",
+        "estado",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-santo/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-living-town",
+      "name": "Edificio Living Town",
+      "developer": "Leben",
+      "unknownFields": [
+        "util",
+        "total"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-living-town/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-bold",
+      "name": "Edificio Bold",
+      "developer": "Leben",
+      "unknownFields": [
+        "util"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-bold/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "domeyko-2055",
+      "name": "Domeyko 2055",
+      "developer": "Sento",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/domeyko-2055/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vergara-domeyko",
+      "name": "Vergara Domeyko",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "banos",
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vergara-domeyko/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "dormitorios",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vergara-domeyko/fields/dormitorios"
+        },
+        {
+          "field": "banos",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vergara-domeyko/fields/banos"
+        },
+        {
+          "field": "util",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vergara-domeyko/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vergara-domeyko/fields/total"
+        },
+        {
+          "field": "amenities",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vergara-domeyko/fields/amenities"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "parque-panama",
+      "name": "Parque Panamá",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "banos",
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/parque-panama/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "dormitorios",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/parque-panama/fields/dormitorios"
+        },
+        {
+          "field": "banos",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/parque-panama/fields/banos"
+        },
+        {
+          "field": "util",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/parque-panama/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/parque-panama/fields/total"
+        },
+        {
+          "field": "amenities",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/parque-panama/fields/amenities"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "playa-serena",
+      "name": "Playa Serena",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/playa-serena/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "don-tomas",
+      "name": "Don Tomás",
+      "developer": "Crescer",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/don-tomas/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "plaza-las-condes",
+      "name": "Plaza Las Condes",
+      "developer": "Sento",
+      "unknownFields": [
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/plaza-las-condes/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "mapocho-3521",
+      "name": "Mapocho 3521",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/mapocho-3521/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "jofre-135",
+      "name": "Jofré 157",
+      "developer": "Sento",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/jofre-135/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "irarrazaval",
+      "name": "Irarrázaval",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "banos",
+        "util",
+        "total",
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/irarrazaval/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": [
+        "OWNER-BATH-IRARR1970-20261118-01"
+      ]
+    },
+    {
+      "slug": "parque-quinta",
+      "name": "Parque Quinta",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/parque-quinta/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "quintavista",
+      "name": "Quintavista",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/quintavista/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "don-rafael",
+      "name": "Don Rafael",
+      "developer": "Crescer",
+      "unknownFields": [
+        "util",
+        "total",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/don-rafael/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "terrazzo",
+      "name": "Terrazzo",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/terrazzo/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vima",
+      "name": "VIMA",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vima/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "los-lilenes",
+      "name": "Los Lilenes",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/los-lilenes/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "nueva-esmeralda",
+      "name": "Nueva Esmeralda",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/nueva-esmeralda/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "el-aromo",
+      "name": "El Aromo",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/el-aromo/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "espacio-victoria",
+      "name": "Espacio Victoria",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/espacio-victoria/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "terratolten",
+      "name": "Terratoltén",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/terratolten/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "pintor-cicarelli-iii",
+      "name": "Pintor Cicarelli III",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/pintor-cicarelli-iii/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "trinidad-iii",
+      "name": "Trinidad III",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/trinidad-iii/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-liverpool",
+      "name": "Edificio Liverpool",
+      "developer": "Nollagam",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-liverpool/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "mirador-la-florida",
+      "name": "Mirador La Florida",
+      "developer": "Sento",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/mirador-la-florida/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "alto-goycolea",
+      "name": "Alto Goycolea",
+      "developer": "Nollagam",
+      "unknownFields": [
+        "util"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/alto-goycolea/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "eleuterio-ramirez",
+      "name": "Eleuterio Ramírez",
+      "developer": "Nollagam",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/eleuterio-ramirez/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "barrio-zenteno",
+      "name": "Barrio Zenteno",
+      "developer": "Nollagam",
+      "unknownFields": [
+        "util"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/barrio-zenteno/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "urban-la-florida",
+      "name": "Urban La Florida",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/urban-la-florida/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vicuna-mackenna-6896",
+      "name": "Vicuña Mackenna 6896",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vicuna-mackenna-6896/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vicuna-mackenna-7589",
+      "name": "Edificio Vicuña Mackenna 7589",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vicuna-mackenna-7589/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "aires-la-florida-2",
+      "name": "Aires La Florida 2",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/aires-la-florida-2/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "condominio-uruguay",
+      "name": "Condominio Uruguay",
+      "developer": "León",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/condominio-uruguay/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "enlace-mackenna",
+      "name": "Enlace Mackenna",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/enlace-mackenna/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "novo-catedral",
+      "name": "Novo Catedral",
+      "developer": "Sudamericana",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/novo-catedral/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/novo-catedral/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/novo-catedral/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "carmen-marin",
+      "name": "Carmen Marín",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/carmen-marin/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "gregorio-de-la-fuente-a",
+      "name": "Condominio Gregorio de la Fuente",
+      "developer": "León",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/gregorio-de-la-fuente-a/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "matta-016",
+      "name": "Matta 016",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/matta-016/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edificio-plaza-nova",
+      "name": "Edificio Plaza Nova",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edificio-plaza-nova/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "condominio-parque-don-lautaro",
+      "name": "Condominio Parque Don Lautaro",
+      "developer": "León",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/condominio-parque-don-lautaro/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "caceres",
+      "name": "Cáceres",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/caceres/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "pintor-cicarelli-i",
+      "name": "Pintor Cicarelli I",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/pintor-cicarelli-i/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "pintor-cicarelli-ii",
+      "name": "Pintor Cicarelli II",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/pintor-cicarelli-ii/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "edif-origen-atacama-3008",
+      "name": "Edificio Origen Atacama",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/edif-origen-atacama-3008/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "abdon-cifuentes",
+      "name": "Abdón Cifuentes",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/abdon-cifuentes/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "don-ignacio",
+      "name": "Don Ignacio",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "entrega",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/don-ignacio/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "tocornal",
+      "name": "Tocornal",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/tocornal/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "centenario-1",
+      "name": "Centenario 1",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/centenario-1/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "curico-77",
+      "name": "Curicó 77",
+      "developer": "Sento",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/curico-77/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "san-ignacio",
+      "name": "San Ignacio",
+      "developer": "Sento",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/san-ignacio/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "angamos",
+      "name": "Angamos 205",
+      "developer": "Sento",
+      "unknownFields": [
+        "precio",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/angamos/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "conecta-huechuraba",
+      "name": "Conecta Huechuraba",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/conecta-huechuraba/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "bordevivo",
+      "name": "Bordevivo",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "banos",
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/bordevivo/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "dormitorios",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/bordevivo/fields/dormitorios"
+        },
+        {
+          "field": "banos",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/bordevivo/fields/banos"
+        },
+        {
+          "field": "util",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/bordevivo/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "VALOR_NO_ESTRUCTURADO_EN_ESTE_CORTE",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/bordevivo/fields/total"
+        },
+        {
+          "field": "amenities",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "PRODUCTO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/bordevivo/fields/amenities"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "mirador-mapocho",
+      "name": "Mirador Mapocho",
+      "developer": "Maestra",
+      "unknownFields": [
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/mirador-mapocho/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "alto-san-joaquin",
+      "name": "Alto San Joaquín",
+      "developer": "Ecasa",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/alto-san-joaquin/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vista-bulnes",
+      "name": "Vista Bulnes",
+      "developer": "Norte Verde",
+      "unknownFields": [
+        "banos",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vista-bulnes/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "jardines-de-ramon-cruz",
+      "name": "Condominio Jardines de Ramón Cruz",
+      "developer": "León",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/jardines-de-ramon-cruz/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vitro",
+      "name": "Vitro",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vitro/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vitro/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vitro/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "mirador-irarrazaval",
+      "name": "Mirador Irarrázaval",
+      "developer": "Euro",
+      "unknownFields": [
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/mirador-irarrazaval/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/mirador-irarrazaval/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/mirador-irarrazaval/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "alto-irarrazaval",
+      "name": "Alto Irarrázaval",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/alto-irarrazaval/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/alto-irarrazaval/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/alto-irarrazaval/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "jose-pedro-alessandri",
+      "name": "José Pedro Alessandri",
+      "developer": "Euro",
+      "unknownFields": [
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/jose-pedro-alessandri/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/jose-pedro-alessandri/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/jose-pedro-alessandri/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vicuna-mackenna-1432",
+      "name": "Vicuña Mackenna 1432",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vicuna-mackenna-1432/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vicuna-mackenna-1432/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vicuna-mackenna-1432/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vicente-valdes",
+      "name": "Vicente Valdés",
+      "developer": "Euro",
+      "unknownFields": [
+        "entrega",
+        "estado",
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vicente-valdes/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vicente-valdes/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vicente-valdes/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "diagonal-vicuna",
+      "name": "Diagonal Vicuña",
+      "developer": "Euro",
+      "unknownFields": [
+        "precio",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/diagonal-vicuna/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/diagonal-vicuna/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/diagonal-vicuna/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "vista-portugal",
+      "name": "Vista Portugal",
+      "developer": "Euro",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/vista-portugal/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vista-portugal/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/vista-portugal/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "marina-pacifico",
+      "name": "Marina Pacífico",
+      "developer": "Euro",
+      "unknownFields": [
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/marina-pacifico/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/marina-pacifico/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "RESUMEN_NO_ES_ASOCIACION",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/marina-pacifico/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "nova-parque",
+      "name": "Nova Parque",
+      "developer": "Euro",
+      "unknownFields": [
+        "amenities",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/nova-parque/fields/",
+      "limitsNeedingScopeNotInventedValues": [
+        {
+          "field": "util",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/nova-parque/fields/util"
+        },
+        {
+          "field": "total",
+          "reasonCodes": [
+            "ALCANCE_PARCIAL_DECLARADO",
+            "ROTULO_METRICO_DISTINTO"
+          ],
+          "sourcePointer": "/projectsBySlug/nova-parque/fields/total"
+        }
+      ],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "own",
+      "name": "Own",
+      "developer": "Leben",
+      "unknownFields": [
+        "tipo_propiedad",
+        "precio",
+        "util",
+        "total",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/own/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "monjitas-690",
+      "name": "Monjitas 690",
+      "developer": "AJ Urbana",
+      "unknownFields": [
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/monjitas-690/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "los-alerces",
+      "name": "Los Alerces",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "precio",
+        "entrega",
+        "estado",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/los-alerces/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    },
+    {
+      "slug": "valle-los-ingleses-iii",
+      "name": "Valle Los Ingleses III",
+      "developer": "Ingevec",
+      "unknownFields": [
+        "precio",
+        "entrega",
+        "estado",
+        "estacionamiento",
+        "bodega"
+      ],
+      "unknownFieldsPointerPrefix": "/projectsBySlug/valle-los-ingleses-iii/fields/",
+      "limitsNeedingScopeNotInventedValues": [],
+      "existingOwnerInterventionIds": []
+    }
+  ],
+  "acceptanceBoundary": {
+    "all131Have11ClassifiedFields": true,
+    "noAllFieldsCompleteClaim": true,
+    "unknownsAllowed": true,
+    "allQueryCombinationsRuntimeCertifiedByThisArtifact": false,
+    "newFactsRecoveredByThisTask": 0,
+    "globalObjectiveComplete": false,
+    "futureParentIntegrationMayCloseDocumentationCriterionOnly": true
+  }
+}

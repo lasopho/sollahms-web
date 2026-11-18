@@ -1,0 +1,3044 @@
+{
+  "schemaVersion": 1,
+  "kind": "REUTILIZACION_DE_CERTIFICADOS_Y_CRITERIOS_DE_FILTROS_PARA_UNIVERSO_152",
+  "recordedAtUTC": "2026-11-18T22:56:17.820535+00:00",
+  "productionReference": {
+    "sourceMergeSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+    "sourceTree": "f2d22640e0876d788789b27f99e3e27587384056",
+    "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+    "identities": 152,
+    "originalIdentities": 131,
+    "newIdentities": 21,
+    "newGPR": 9,
+    "evidence": {
+      "source": "publication",
+      "pointer": "/production"
+    },
+    "freshProductionRequestMade": false
+  },
+  "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f",
+  "method": {
+    "onlyExistingArtifactsAndLocalImmutableGitObjectsRead": true,
+    "newAudits": 0,
+    "newIrisQueries": 0,
+    "applicationModulesExecuted": 0,
+    "testsExecuted": 0,
+    "browserOrHTTPRequests": 0,
+    "productionRequests": 0,
+    "GitWrites": 0,
+    "sharedDocumentationEdits": 0,
+    "supplement24aChanged": false,
+    "runtimeModulesSHA256ComparedWithPublishedOutputManifest": 13,
+    "testSourceFilesReadAsText": 10,
+    "protected155BodiesRehashed": 0,
+    "allEvidenceJSONPointersResolved": true
+  },
+  "conclusion": {
+    "status": "EVIDENCIA_EXISTENTE_REUTILIZABLE_SIN_DEFECTO_NUEVO_IDENTIFICADO",
+    "criteriaMapped": 15,
+    "newBlockingFindings": 0,
+    "newSpecificConcernRequiringReproduction": false,
+    "newIsolatedTestNecessary": false,
+    "decision": "Reutilizar los certificados correspondientes a cada delta y sus pins actuales. No repetir suites, QAresponsive o Iris porque esta consolidación no modifica código ni incorpora hechos nuevos.",
+    "notAnAssertionOfExhaustiveDataOrAllCartesianQueries": true,
+    "objectiveGlobalCompletedByThisArtifact": false
+  },
+  "criteria": [
+    {
+      "id": "precio_por_referencia",
+      "criterion": "Cada importe filtrado, mostrado y ordenado procede de la misma referencia admitida; cabecera desde y cotización owner no prestan D/B/áreas.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/catalog-filter-engine.mjs",
+        "assets/js/commercial-filter-engine.mjs",
+        "assets/js/catalog-typology-prices.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "typology34",
+          "pointer": "/verificationAfter"
+        },
+        {
+          "source": "PR33state",
+          "pointer": "/testsLatestDelta"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/3"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/4"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/7"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/8"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 57,
+          "testDeclaration": "precio y todos los atributos de opción necesitan una única referencia",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 21,
+          "testDeclaration": "regression: selecting Origen Local presents its own owner price, not Estudio",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 256,
+          "testDeclaration": "price and unknown bathrooms, surfaces, private features and inclusions cannot borrow model facets",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 34,
+          "testDeclaration": "project from-price and type share only their own project block, not rooms",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 48,
+          "testDeclaration": "a project without owner prices presents its exact external 2D/2B/UF2771 witness",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 59,
+          "testDeclaration": "owner UF4550 remains a separate 2D reference and never borrows the external two bathrooms",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "PublicadoD3: rutas originales131 conservadas;19nuevos sinowner usan importes Iris atribuidos,2conowner enmascaran precios Iris como predicados.",
+      "limitations": [],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "dormitorios",
+      "criterion": "D sólo numérico acreditado; rangos Iris no fabrican categorías intermedias ni Estudio se vuelve0D.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/catalog-typology-prices.mjs",
+        "assets/js/catalog-filter-engine.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/10"
+        },
+        {
+          "source": "typology34",
+          "pointer": "/outputContract"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 41,
+          "testDeclaration": "Iris header ranges and literal Estudio cannot manufacture a zero or a room category",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 71,
+          "testDeclaration": "Nuevo Vivaceta owner category does not borrow the external studio bathroom or Internos",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 153,
+          "testDeclaration": "Estudio zero-bedroom convention is restricted to the published owner enum",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "21 nuevos:16D numéricos;5Estudio Dnull. Convención0D sólo del enum owner ya existente, nunca del literal Iris.",
+      "limitations": [
+        "No se exige completar inventario de modelos para permitir consultas parciales."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "banos",
+      "criterion": "B sólo del testigo compatible; precio owner no adquiere B de una referencia Iris distinta.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/catalog-filter-engine.mjs",
+        "assets/js/commercial-filter-engine.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/8"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/9"
+        },
+        {
+          "source": "PR34chrome",
+          "pointer": "/checks/2"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 24,
+          "testDeclaration": "bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 57,
+          "testDeclaration": "precio y todos los atributos de opción necesitan una única referencia",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 48,
+          "testDeclaration": "a project without owner prices presents its exact external 2D/2B/UF2771 witness",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 59,
+          "testDeclaration": "owner UF4550 remains a separate 2D reference and never borrows the external two bathrooms",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 71,
+          "testDeclaration": "Nuevo Vivaceta owner category does not borrow the external studio bathroom or Internos",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "21 referencias Iris propias conB; precios owner mantienen Bdesconocido si no hay vínculo.",
+      "limitations": [
+        "Irarrázaval1970 sigue con su única solicitud previa; no se crea otra pregunta o bloqueo global."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "util_y_total",
+      "criterion": "La métrica se selecciona explícitamente; útil/total/interior/Internos/terraza/terreno no se homologan ni se suman.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-filter-controls.mjs",
+        "assets/js/catalog-filter-engine.mjs",
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/commercial-filter-engine.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F10browser",
+          "pointer": "/checks/7"
+        },
+        {
+          "source": "F10browser",
+          "pointer": "/checks/8"
+        },
+        {
+          "source": "F10browser",
+          "pointer": "/checks/9"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/5"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 84,
+          "testDeclaration": "superficie requiere métrica explícita y no convierte total, interior o terraza en útil",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 24,
+          "testDeclaration": "bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 78,
+          "testDeclaration": "canonical surface filters remain negative for all unlabelled Internos summaries",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "Útil/total delcatálogo original según perfiles admitidos;21nuevos sin rótulos canónicos mantienen útil/totalnull y fallan predicados activos.",
+      "limitations": [
+        "Los21no tienen testigo positivo útil/total; es limitación documental conocida, no defecto ni razón para inventar datos o repetir pruebas."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "region_comuna",
+      "criterion": "Selección geográfica y opciones conservan nombres canónicos; cambio de región limpia comuna incompatible.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-filter-controls.mjs",
+        "assets/js/catalog-filter-engine.mjs",
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/catalog-model.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F10browser",
+          "pointer": "/checks/13"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/0"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/1"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 95,
+          "testDeclaration": "región, comuna, estado, entrega y amenities se combinan sin completar datos desconocidos",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 17,
+          "testDeclaration": "categories intersect; selections within amenities use OR or explicit ALL",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 108,
+          "testDeclaration": "GPR and new geography come from the composed catalogue options, without synthetic areas",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 116,
+          "testDeclaration": "the existing Los Lagos region includes both new GPR projects without a duplicate option",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 123,
+          "testDeclaration": "the existing Biobío region includes Junquillar GPR without a duplicate option",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "152identidades compuestas; sólo tres registros nuevos normalizanDeLosLagos/DelBiobío conservando el literal de origen.",
+      "limitations": [
+        "Coordenadasnull no se geocodifican por suposición."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "entrega_estado",
+      "criterion": "Estado/entrega sólo con alcance acreditado; no se combinan estados o fechas de etapas distintas ni se infiere entrega por recepción.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/commercial-filter-engine.mjs",
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/catalog-filter-engine.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F10scenarios",
+          "pointer": "/regressions/names/5"
+        },
+        {
+          "source": "F10scenarios",
+          "pointer": "/regressions/names/6"
+        },
+        {
+          "source": "F13tests",
+          "pointer": "/executedAffectedRegressions/0"
+        },
+        {
+          "source": "typology34",
+          "pointer": "/files/3"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 95,
+          "testDeclaration": "región, comuna, estado, entrega y amenities se combinan sin completar datos desconocidos",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 105,
+          "testDeclaration": "estado y entrega de etapas distintas no se cruzan",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 101,
+          "testDeclaration": "unavailable stock, legal purchase stages and unit/model selectors stay negative",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "Motor común actual pinneado522008 enPR33; ampliación proyecta state/entrega enprojectFacts con procedencia propia. La prueba nueva incluye estadoowner confirmado y exclusión del no informado.",
+      "limitations": [
+        "No acredita habilitación legal, vigencia actual ni cumplimiento futuro de entrega; no se afirma prueba individual de cada fecha comercial."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "amenities",
+      "criterion": "AND/OR y etiquetas españolas conservan alcance del proyecto/producto/referencia; no prestar amenities residenciales a locales o uso desconocido.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/commercial-filter-engine.mjs",
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/catalog-typology-prices.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F13result",
+          "pointer": "/results/0"
+        },
+        {
+          "source": "F13result",
+          "pointer": "/results/1"
+        },
+        {
+          "source": "F13tests",
+          "pointer": "/additionalTargetedAcceptance"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/11"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/behavior/amenityProjectionScope"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 123,
+          "testDeclaration": "F12-01: el gimnasio de Indi no se presta al local OWN4-P011 por precio implícito",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 142,
+          "testDeclaration": "los amenities exigen uso conocido por referencia y respetan alcance universal/comercial/tipo",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 161,
+          "testDeclaration": "amenities y texto conservan AND/OR y un único testigo entre alcances distintos",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 172,
+          "testDeclaration": "F12-02: Living Town encuentra etiquetas públicas sin perder precio ni referencia",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 186,
+          "testDeclaration": "búsqueda española y aliases públicos sólo indexan amenities confirmados con alcance válido",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 206,
+          "testDeclaration": "Local-only range cannot borrow residential gym with or without an explicit type",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 214,
+          "testDeclaration": "amenities and features retain independent AND/OR groups on a single price witness",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 94,
+          "testDeclaration": "project amenities never lend residential use to a separately unknown unit reference",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 130,
+          "testDeclaration": "an explicit Casa label does not manufacture residential use for the GPR source",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "131rutas existentes+amenities generales propios de19nuevos; scope project-general y propertyTypeScope explícitos.",
+      "limitations": [
+        "Amenity no prueba inclusión, disponibilidad o derecho privado de estacionamiento/terraza/bodega."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "tipo_y_uso",
+      "criterion": "Casa/Departamento/Local y uso comercial/residencial se mantienen separados; tipo general no se presta a testigo distinto ni inventa uso.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/commercial-filter-engine.mjs",
+        "assets/js/catalog-typology-prices.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F13result",
+          "pointer": "/results/0"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/behavior/assetUse"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/2"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/6"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 74,
+          "testDeclaration": "desconocido no hereda Residencial y los productos mixtos conservan su referencia",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 208,
+          "testDeclaration": "una clasificación de proyecto no presta tipo a una cotización",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 253,
+          "testDeclaration": "regresión publicada: desconocido no pasa Residencial en un proyecto mixto",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 81,
+          "testDeclaration": "owner residential category is explicit use, but does not invent apartment property type",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 117,
+          "testDeclaration": "property words cannot be borrowed from another price reference or unknown-use project labels",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 34,
+          "testDeclaration": "project from-price and type share only their own project block, not rooms",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 130,
+          "testDeclaration": "an explicit Casa label does not manufacture residential use for the GPR source",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "GPR7casas/2departamentos; usoResidencial desconocido en21no pasa filtro activo. Se conservan productos mixtos originales.",
+      "limitations": [
+        "El título comercial no certifica uso legal ni sociedad del desarrollador."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "unknowns",
+      "criterion": "Atributo desconocido falla sólo cuando se activa su predicado; sin filtro no excluye identidad ni se convierte a cero/residencial.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/commercial-filter-engine.mjs",
+        "assets/js/catalog-filter-engine.mjs",
+        "assets/js/catalog-expansion.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F10browser",
+          "pointer": "/checks/11"
+        },
+        {
+          "source": "F10scenarios",
+          "pointer": "/regressions/names/2"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/behavior/missingActiveFieldsFailWithoutExcludingInactiveQueries"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/5"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/6"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/10"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 65,
+          "testDeclaration": "null, undefined, texto numérico y vacío no se convierten en cero",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 74,
+          "testDeclaration": "desconocido no hereda Residencial y los productos mixtos conservan su referencia",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 13,
+          "testDeclaration": "no filters retain all projects, owner amounts, order and unknown data",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 26,
+          "testDeclaration": "152 identities append without rewriting or reordering any existing project",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 78,
+          "testDeclaration": "canonical surface filters remain negative for all unlabelled Internos summaries",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 101,
+          "testDeclaration": "unavailable stock, legal purchase stages and unit/model selectors stay negative",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "152sin filtros;unknowns conservan consultas parciales.",
+      "limitations": [],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "combinaciones",
+      "criterion": "Categorías activas se intersectan sobre un mismo testigo; AND/OR de amenities respeta sus grupos; no unión entre capas, modelos, unidades o etapas.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-filter-engine.mjs",
+        "assets/js/commercial-filter-engine.mjs",
+        "assets/js/catalog-expansion.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F10scenarios",
+          "pointer": "/regressions/names/1"
+        },
+        {
+          "source": "F13tests",
+          "pointer": "/executedAffectedRegressions"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/3"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/4"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 17,
+          "testDeclaration": "categories intersect; selections within amenities use OR or explicit ALL",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 24,
+          "testDeclaration": "bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 57,
+          "testDeclaration": "precio y todos los atributos de opción necesitan una única referencia",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 105,
+          "testDeclaration": "estado y entrega de etapas distintas no se cruzan",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 161,
+          "testDeclaration": "amenities y texto conservan AND/OR y un único testigo entre alcances distintos",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 34,
+          "testDeclaration": "project from-price and type share only their own project block, not rooms",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 48,
+          "testDeclaration": "a project without owner prices presents its exact external 2D/2B/UF2771 witness",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 59,
+          "testDeclaration": "owner UF4550 remains a separate 2D reference and never borrows the external two bathrooms",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "Ejemplos positivos y negativos dirigidos del motor y de expansión; producto cartesiano completo no es el criterio de aceptación.",
+      "limitations": [
+        "No certifica todas las combinaciones posibles de152ni stock; la consolidación debe mostrar sólo testigos reales por capa.",
+        "24a y sus19referencias permanecen fuera de producción; no usarlas como prueba de filtros publicados."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "multivistas_responsive",
+      "criterion": "Tarjetas/listado/mapa/dividida comparten resultados; cinco anchos y coordenadas desconocidas permanecen sin pines.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog.mjs",
+        "assets/js/catalog-model.mjs",
+        "assets/js/catalog-map.mjs",
+        "assets/js/catalog-map-model.mjs",
+        "assets/js/catalog-expansion.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F10browser",
+          "pointer": "/checks/1"
+        },
+        {
+          "source": "F10browser",
+          "pointer": "/checks/5"
+        },
+        {
+          "source": "PR33chrome",
+          "pointer": "/views"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/viewResponsiveCases"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/ficheResponsiveCases"
+        },
+        {
+          "source": "protectedChrome",
+          "pointer": ""
+        },
+        {
+          "source": "publicChrome",
+          "pointer": ""
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 161,
+          "testDeclaration": "unknown coordinates remain pending; no fabricated map marker or Metro match",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "20controles =4vistas×5anchos (320/390/768/1024/1440);15controles de3fichas×5anchos y prueba pública dirigida152→GPR9.",
+      "limitations": [
+        "No se repite QA visual de131fichas intactas; preservación certificada existente."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "precio_orden_url",
+      "criterion": "El precio ordenado/presentado es el testigo actual; URL/chips/reset no reutilizan otra consulta.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-model.mjs",
+        "assets/js/catalog-filter-controls.mjs",
+        "assets/js/catalog-expansion.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F10browser",
+          "pointer": "/checks/6"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/directedFlows/2"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 35,
+          "testDeclaration": "exact ranges are inclusive and invalid ranges never broaden results",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 52,
+          "testDeclaration": "keywords include only registered features; sorting is deterministic with unknowns last",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-filters.test.mjs",
+          "line": 57,
+          "testDeclaration": "URL round trip is bounded, shareable, uses allowlists and excludes unrelated or private state",
+          "sourceSHA256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 310,
+          "testDeclaration": "price sorting and price label both use the selected Local reference",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 140,
+          "testDeclaration": "price sorting uses exactly the reference value selected for each displayed new result",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "Se conserva orden determinista y valores desconocidos al final; queryKey impide testigo previo.",
+      "limitations": [],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "fallback_y_fuentes",
+      "criterion": "Pin/carga inválidos cierran la capa afectada, conservan originales y aviso accesible persistente fuera de paneles.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog.mjs",
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/catalog-euro-owner-quotes.mjs",
+        "assets/js/catalog-nollagam-quote-consumer.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F13result",
+          "pointer": "/results/3"
+        },
+        {
+          "source": "PR35sameOrigin",
+          "pointer": "/tests/green"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/directedFlows/1"
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 167,
+          "testDeclaration": "pin and scope guard reject corrupt data rather than creating partial new-project positives",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 177,
+          "testDeclaration": "same-origin protected loading and an explicit failure preserve the original 131 fallback",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "F13preparado+PR35mismo-origen+PR36expansión503;sin fallback a raw/privado, sin reutilizar permiso o buscar cookies.",
+      "limitations": [
+        "Fracaso de fuente no prueba ausencia comercial del proyecto."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "estacionamiento_bodega",
+      "criterion": "Menciones generales y adicionales no prueban incluidos/disponibles; importes adicionales Suecia no se suman a vivienda.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/commercial-filter-engine.mjs",
+        "assets/js/catalog-expansion.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F10scenarios",
+          "pointer": "/regressions/names/0"
+        },
+        {
+          "source": "F10scenarios",
+          "pointer": "/regressions/names/8"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/commercialCases/12"
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/commercial-filter-engine.test.mjs",
+          "line": 198,
+          "testDeclaration": "oferta adicional de estacionamiento/bodega no significa incluido ni disponible",
+          "sourceSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-typology-prices.test.mjs",
+          "line": 354,
+          "testDeclaration": "no-table public prices and Suecia additional costs remain untouched",
+          "sourceSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        },
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 87,
+          "testDeclaration": "explicit terrace quantities do not establish private terrace rights or included extras",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "Mantener inclusión/disponibilidad desconocidas salvo respaldo del mismo alcance; filtrosactivos conservadores.",
+      "limitations": [],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    },
+    {
+      "id": "finanzas_y_preservacion",
+      "criterion": "Nuevos21no reciben escenarios financieros ni alteran7funciones,131fichas o155protegidos; fuente documento no se vuelve stock.",
+      "acceptanceStatus": "EVIDENCIA_EXISTENTE_REUTILIZABLE_CON_ALCANCE_EXPLICITO",
+      "runtimeSourcePaths": [
+        "assets/js/catalog-financial-witness.mjs",
+        "assets/js/catalog.mjs",
+        "assets/js/catalog-expansion.mjs",
+        "assets/js/catalog-map.mjs"
+      ],
+      "evidence": [
+        {
+          "source": "F13result",
+          "pointer": "/results/2"
+        },
+        {
+          "source": "PR33state",
+          "pointer": "/testsLatestDelta"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/directedFlows/2"
+        },
+        {
+          "source": "PR36preservation",
+          "pointer": ""
+        },
+        {
+          "source": "transport1721",
+          "pointer": ""
+        },
+        {
+          "source": "aliases",
+          "pointer": ""
+        }
+      ],
+      "testDeclarations": [
+        {
+          "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+          "sourcePath": "tests/catalog-expansion-behavior.test.mjs",
+          "line": 147,
+          "testDeclaration": "financial sorting only receives the registered cache universe and leaves new results unknown",
+          "sourceSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+          "note": "Declaración leída; resultado de ejecución reutilizado de los certificados citados, no ejecutado aquí."
+        }
+      ],
+      "applicability": "D3incluye152identidades; cálculos sólo131originales, fórmulas y funciones intactas. SourceFky/D3publicado verificado porrecibos existentes.",
+      "limitations": [
+        "Esta reutilización no completa por sí sola la aceptación de datos comerciales152 ni cierra313IDs."
+      ],
+      "newDefectFound": false,
+      "newIsolatedTestNeeded": false
+    }
+  ],
+  "currentFilePins": [
+    {
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "gitBlobOID": "2fbf8f00c6fba87d171b3277e9c63becaef2265d",
+      "bytes": 12911,
+      "sha256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "typology34",
+          "pointer": "/files/3"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/commercial-filter-data.mjs",
+      "gitBlobOID": "a9e51702e2b789e6c3ba124e2294807f30fea19b",
+      "bytes": 7925,
+      "sha256": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "F10candidate",
+          "pointer": "/files/6"
+        },
+        {
+          "source": "F13manifest",
+          "pointer": "/PRFiles/6"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "gitBlobOID": "55e71e8e5c3c83cbf914ac9dc8e4b1d6960a895c",
+      "bytes": 21521,
+      "sha256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR36js",
+          "pointer": "/implementationFiles/3"
+        },
+        {
+          "source": "PR36manifest",
+          "pointer": "/files/30"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-filter-controls.mjs",
+      "gitBlobOID": "fe7e4b87ca0a0703d0f8f914583f24fe8cb4b71f",
+      "bytes": 19237,
+      "sha256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR36js",
+          "pointer": "/implementationFiles/4"
+        },
+        {
+          "source": "PR36manifest",
+          "pointer": "/files/29"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "gitBlobOID": "fc277be30f63220b0bbbe8cb3044fa456bbb7e8e",
+      "bytes": 16054,
+      "sha256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR36js",
+          "pointer": "/implementationFiles/2"
+        },
+        {
+          "source": "PR36manifest",
+          "pointer": "/files/31"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-map.mjs",
+      "gitBlobOID": "d0a4ad2bb51b1ce66173012257850bc712a461bc",
+      "bytes": 16860,
+      "sha256": "ac5b4e5cf082e887751b86f044d0777f2cc3bab898140e2f06a63b20d03ff9d5",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR33manifest",
+          "pointer": "/changedFiles/3"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-map-model.mjs",
+      "gitBlobOID": "66ec5b119618ac2961fbb872295ff74a58bcbbe8",
+      "bytes": 1960,
+      "sha256": "b87606ce03319ced464486b73f1e1373a2a3b48a129317d29c55c1403718af88",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": []
+    },
+    {
+      "path": "assets/js/catalog.mjs",
+      "gitBlobOID": "1bce3eb9c899aeb6d82bcb2136cd7638f6cbe90e",
+      "bytes": 17658,
+      "sha256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR36js",
+          "pointer": "/implementationFiles/1"
+        },
+        {
+          "source": "PR36manifest",
+          "pointer": "/files/32"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-expansion.mjs",
+      "gitBlobOID": "2dd92dc0eb461b56355dad8c1d0b40acd831fe4a",
+      "bytes": 23648,
+      "sha256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR36js",
+          "pointer": "/implementationFiles/0"
+        },
+        {
+          "source": "PR36manifest",
+          "pointer": "/files/28"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-typology-prices.mjs",
+      "gitBlobOID": "e11edf05fab2445ef557b8a34ea97ea518ee2ff6",
+      "bytes": 8150,
+      "sha256": "992d9a0a2a3e5d92544c5872289fe7d14cc0de369a4615c30ea328832b17c1e7",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "typology34",
+          "pointer": "/files/0"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-euro-owner-quotes.mjs",
+      "gitBlobOID": "f62d9b6b71a0d8cd231eab4b2750328a0a7b1016",
+      "bytes": 11494,
+      "sha256": "da3e2ba49ef55cb294b8c2520d6920cf934fa6472b0470d00dee7c4df43a59d1",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR35sameOrigin",
+          "pointer": "/files/0"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "gitBlobOID": "ea202b360a5af459c98638d1b8844ba28f7d124d",
+      "bytes": 8913,
+      "sha256": "75c0501ca894ee7884a61af75a3fc751445464eed2f40656be2c73b279d19321",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR35sameOrigin",
+          "pointer": "/files/1"
+        }
+      ]
+    },
+    {
+      "path": "assets/js/catalog-financial-witness.mjs",
+      "gitBlobOID": "56047f3f689ed1b909419a1aabea52bfa2183933",
+      "bytes": 492,
+      "sha256": "59c806afd4dcc5b065eb9fd1f21cbf94824638a90453565d739c050d42830836",
+      "publicManifestMatches": true,
+      "matchingCertificateBindings": [
+        {
+          "source": "PR33manifest",
+          "pointer": "/changedFiles/2"
+        }
+      ]
+    },
+    {
+      "path": "tests/catalog-expansion-behavior.test.mjs",
+      "gitBlobOID": "b832519e6e57edf3fca54a69fcb1ce2e28f3fa42",
+      "bytes": 12594,
+      "sha256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 26,
+          "name": "152 identities append without rewriting or reordering any existing project"
+        },
+        {
+          "line": 34,
+          "name": "project from-price and type share only their own project block, not rooms"
+        },
+        {
+          "line": 41,
+          "name": "Iris header ranges and literal Estudio cannot manufacture a zero or a room category"
+        },
+        {
+          "line": 48,
+          "name": "a project without owner prices presents its exact external 2D/2B/UF2771 witness"
+        },
+        {
+          "line": 59,
+          "name": "owner UF4550 remains a separate 2D reference and never borrows the external two bathrooms"
+        },
+        {
+          "line": 71,
+          "name": "Nuevo Vivaceta owner category does not borrow the external studio bathroom or Internos"
+        },
+        {
+          "line": 78,
+          "name": "canonical surface filters remain negative for all unlabelled Internos summaries"
+        },
+        {
+          "line": 87,
+          "name": "explicit terrace quantities do not establish private terrace rights or included extras"
+        },
+        {
+          "line": 94,
+          "name": "project amenities never lend residential use to a separately unknown unit reference"
+        },
+        {
+          "line": 101,
+          "name": "unavailable stock, legal purchase stages and unit/model selectors stay negative"
+        },
+        {
+          "line": 108,
+          "name": "GPR and new geography come from the composed catalogue options, without synthetic areas"
+        },
+        {
+          "line": 116,
+          "name": "the existing Los Lagos region includes both new GPR projects without a duplicate option"
+        },
+        {
+          "line": 123,
+          "name": "the existing Biobío region includes Junquillar GPR without a duplicate option"
+        },
+        {
+          "line": 130,
+          "name": "an explicit Casa label does not manufacture residential use for the GPR source"
+        },
+        {
+          "line": 140,
+          "name": "price sorting uses exactly the reference value selected for each displayed new result"
+        },
+        {
+          "line": 147,
+          "name": "financial sorting only receives the registered cache universe and leaves new results unknown"
+        },
+        {
+          "line": 161,
+          "name": "unknown coordinates remain pending; no fabricated map marker or Metro match"
+        },
+        {
+          "line": 167,
+          "name": "pin and scope guard reject corrupt data rather than creating partial new-project positives"
+        },
+        {
+          "line": 177,
+          "name": "same-origin protected loading and an explicit failure preserve the original 131 fallback"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "PR36js",
+          "pointer": "/implementationFiles/5"
+        },
+        {
+          "source": "PR36manifest",
+          "pointer": "/files/55"
+        }
+      ]
+    },
+    {
+      "path": "tests/catalog-expansion-data.test.mjs",
+      "gitBlobOID": "07778273b492b46df31a7cd6b6d44c225e9f8d1a",
+      "bytes": 6847,
+      "sha256": "215da6c0f15500a4b2bb27f6af5f649494abf5397ff2adb434ef5ac1eed9b527",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 13,
+          "name": "the expansion adds 21 separate identities while preserving the exact 131 baseline"
+        },
+        {
+          "line": 23,
+          "name": "the public projection contains opaque references and no original unit, model or private archive fields"
+        },
+        {
+          "line": 41,
+          "name": "each external profile selects its own labelled final price and retains the separate list price"
+        },
+        {
+          "line": 55,
+          "name": "Compañía 1735 keeps the owner 2D price distinct from the external 2D/2B final price"
+        },
+        {
+          "line": 71,
+          "name": "Nuevo Vivaceta retains four owner categories without borrowing a studio reference bathroom or areas"
+        },
+        {
+          "line": 91,
+          "name": "undefined area labels and bedroom ranges never become typed values or intermediate categories"
+        },
+        {
+          "line": 110,
+          "name": "media, location and amenities preserve unknowns and use only existing taxonomy descriptors"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "PR36manifest",
+          "pointer": "/files/56"
+        }
+      ]
+    },
+    {
+      "path": "tests/catalog-filters.test.mjs",
+      "gitBlobOID": "c5742eb9784e0727464f74d10c96caa0dce9bf9b",
+      "bytes": 8288,
+      "sha256": "7c7fceb00d7e35497cf8996c82ad32dbf9164379b343ebdafb9a050eaf4d179e",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 13,
+          "name": "no filters retain all projects, owner amounts, order and unknown data"
+        },
+        {
+          "line": 17,
+          "name": "categories intersect; selections within amenities use OR or explicit ALL"
+        },
+        {
+          "line": 24,
+          "name": "bedrooms, bathrooms, private spaces and typed surfaces must fit one documented option"
+        },
+        {
+          "line": 35,
+          "name": "exact ranges are inclusive and invalid ranges never broaden results"
+        },
+        {
+          "line": 39,
+          "name": "project desde stays authoritative regardless of selected property or old typology prices"
+        },
+        {
+          "line": 45,
+          "name": "residential-only common spaces do not become local amenities; stage references remain separate"
+        },
+        {
+          "line": 52,
+          "name": "keywords include only registered features; sorting is deterministic with unknowns last"
+        },
+        {
+          "line": 57,
+          "name": "URL round trip is bounded, shareable, uses allowlists and excludes unrelated or private state"
+        },
+        {
+          "line": 66,
+          "name": "projection is complete without unit inventory, empty facets, generated absences or schema drift"
+        },
+        {
+          "line": 78,
+          "name": "current catalogue filtering stays responsive without network or mutation"
+        }
+      ],
+      "matchingCertificateBindings": []
+    },
+    {
+      "path": "tests/commercial-filter-engine.test.mjs",
+      "gitBlobOID": "50ef4d2f1485943c33b872f8891c05593a4a2924",
+      "bytes": 25123,
+      "sha256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 23,
+          "name": "F9: "
+        },
+        {
+          "line": 47,
+          "name": "F9: "
+        },
+        {
+          "line": 49,
+          "name": "454 referencias documentales y costes adicionales no son stock ni precios de inmueble"
+        },
+        {
+          "line": 57,
+          "name": "precio y todos los atributos de opción necesitan una única referencia"
+        },
+        {
+          "line": 65,
+          "name": "null, undefined, texto numérico y vacío no se convierten en cero"
+        },
+        {
+          "line": 74,
+          "name": "desconocido no hereda Residencial y los productos mixtos conservan su referencia"
+        },
+        {
+          "line": 84,
+          "name": "superficie requiere métrica explícita y no convierte total, interior o terraza en útil"
+        },
+        {
+          "line": 95,
+          "name": "región, comuna, estado, entrega y amenities se combinan sin completar datos desconocidos"
+        },
+        {
+          "line": 105,
+          "name": "estado y entrega de etapas distintas no se cruzan"
+        },
+        {
+          "line": 112,
+          "name": "terraza y jardín privados no son amenities comunes ni se prestan a locales"
+        },
+        {
+          "line": 123,
+          "name": "F12-01: el gimnasio de Indi no se presta al local OWN4-P011 por precio implícito"
+        },
+        {
+          "line": 142,
+          "name": "los amenities exigen uso conocido por referencia y respetan alcance universal/comercial/tipo"
+        },
+        {
+          "line": 161,
+          "name": "amenities y texto conservan AND/OR y un único testigo entre alcances distintos"
+        },
+        {
+          "line": 172,
+          "name": "F12-02: Living Town encuentra etiquetas públicas sin perder precio ni referencia"
+        },
+        {
+          "line": 186,
+          "name": "búsqueda española y aliases públicos sólo indexan amenities confirmados con alcance válido"
+        },
+        {
+          "line": 198,
+          "name": "oferta adicional de estacionamiento/bodega no significa incluido ni disponible"
+        },
+        {
+          "line": 208,
+          "name": "una clasificación de proyecto no presta tipo a una cotización"
+        },
+        {
+          "line": 214,
+          "name": "rangos inclusivos, opciones 4+/3+ y tipologías mantienen semántica de consulta"
+        },
+        {
+          "line": 221,
+          "name": "evaluación pura conserva registros, consultas y valores originales"
+        },
+        {
+          "line": 228,
+          "name": "wrapper usa evidencia sólo en modo preparado y conserva el registro publicado"
+        },
+        {
+          "line": 239,
+          "name": "Own sigue en la entrada y se excluye sólo de la oferta preparada"
+        },
+        {
+          "line": 245,
+          "name": "el modo preparado no hereda modalidad legal publicada de otra fecha"
+        },
+        {
+          "line": 253,
+          "name": "regresión publicada: desconocido no pasa Residencial en un proyecto mixto"
+        },
+        {
+          "line": 260,
+          "name": "regresión publicada: precio de oferta no toma baños/superficie de otro modelo"
+        },
+        {
+          "line": 269,
+          "name": "precio global conserva precio solo pero no inventa correspondencia con dormitorios"
+        },
+        {
+          "line": 276,
+          "name": "métrica explícita, modo de evidencia y extras sobreviven URL saneada"
+        },
+        {
+          "line": 292,
+          "name": "etiquetas preparadas provienen de hechos y referencias coincidentes"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "F13manifest",
+          "pointer": "/changedFiles/3"
+        },
+        {
+          "source": "F13manifest",
+          "pointer": "/PRFiles/12"
+        }
+      ]
+    },
+    {
+      "path": "tests/commercial-filter-presentation.test.mjs",
+      "gitBlobOID": "fefde0bb3ce4ded6424ee168f4a3e520b46d6ea3",
+      "bytes": 1712,
+      "sha256": "f22df0bd0ad53344c9e28e0ff453394adcf530537b32227f1f32445abd3a6324",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 8,
+          "name": "a matching unpriced plan cannot display the unrelated published price"
+        },
+        {
+          "line": 14,
+          "name": "a displayed quote and facts share the same reference, without borrowing model areas"
+        },
+        {
+          "line": 24,
+          "name": "published records retain their existing price presentation"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "F10candidate",
+          "pointer": "/files/13"
+        },
+        {
+          "source": "F13manifest",
+          "pointer": "/PRFiles/14"
+        }
+      ]
+    },
+    {
+      "path": "tests/catalog-financial-witness.test.mjs",
+      "gitBlobOID": "9d66c13836ec1296e28ff1782db3e7b65f99bb15",
+      "bytes": 5102,
+      "sha256": "1cf636287d1c9b9cfd9fd8bd89e976556f63dd513da8bb03eda594ffea3fc84a",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 13,
+          "name": "a selected Bcome2D price never displays the financial baseline for Estudio"
+        },
+        {
+          "line": 23,
+          "name": "the original Bcome Estudio retains its compatible financial baseline"
+        },
+        {
+          "line": 27,
+          "name": "an equal amount never identifies a different typology as the same financial scenario"
+        },
+        {
+          "line": 36,
+          "name": "a source without a typology preserves its original amount without null/undefined mismatch"
+        },
+        {
+          "line": 43,
+          "name": "Plaza213 typology price cannot display the separate public313 baseline"
+        },
+        {
+          "line": 51,
+          "name": "AJ selected1D keeps its own price and hides its Estudio financial scenario"
+        },
+        {
+          "line": 63,
+          "name": "Ecasa "
+        },
+        {
+          "line": 76,
+          "name": "Ecasa reference stage remains compatible when its amount and typology are unchanged"
+        },
+        {
+          "line": 84,
+          "name": "an explicit incompatible source flag always suppresses the cached scenario"
+        },
+        {
+          "line": 88,
+          "name": "missing identity and unknown, zero or invalid amounts never authorize decoration"
+        },
+        {
+          "line": 95,
+          "name": "a compatible flag does not override a different amount or typology"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "PR33manifest",
+          "pointer": "/changedFiles/9"
+        }
+      ]
+    },
+    {
+      "path": "tests/catalog-typology-prices.test.mjs",
+      "gitBlobOID": "7fd4f582a3728d5cb8abd934cae6eb4cd1ac9376",
+      "bytes": 23168,
+      "sha256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 21,
+          "name": "regression: selecting Origen Local presents its own owner price, not Estudio"
+        },
+        {
+          "line": 28,
+          "name": "regression: Origen Local in UF2600–2800 remains a match"
+        },
+        {
+          "line": 35,
+          "name": "regression: selecting commercial use presents and filters Origen Local"
+        },
+        {
+          "line": 43,
+          "name": "real Origen and Plaza Nova rows preserve exact owner dates, prices and category labels"
+        },
+        {
+          "line": 59,
+          "name": "Plaza Nova Local displays and filters UF6910.23, not the Estudio minimum"
+        },
+        {
+          "line": 69,
+          "name": "explicit bedrooms select that category and the same price witness, including tied Origen values"
+        },
+        {
+          "line": 81,
+          "name": "owner residential category is explicit use, but does not invent apartment property type"
+        },
+        {
+          "line": 90,
+          "name": "published universal project type preserves Vista Bulnes and Ecuador apartment prices"
+        },
+        {
+          "line": 105,
+          "name": "published property text keeps Vista Bulnes Departamento and Origen Local price witnesses"
+        },
+        {
+          "line": 117,
+          "name": "property words cannot be borrowed from another price reference or unknown-use project labels"
+        },
+        {
+          "line": 131,
+          "name": "canonical type text never adds bedroom counts or area values to the searchable quote"
+        },
+        {
+          "line": 136,
+          "name": "universal type context never completes a mixed, unknown-use, contradictory or explicit Local row"
+        },
+        {
+          "line": 153,
+          "name": "Estudio zero-bedroom convention is restricted to the published owner enum"
+        },
+        {
+          "line": 166,
+          "name": "a legacy table without explicit owner authority cannot replace the published project price"
+        },
+        {
+          "line": 176,
+          "name": "owner authority needs an explicit valid source date and no unresolved price status"
+        },
+        {
+          "line": 187,
+          "name": "every declared modern offer route takes precedence, including empty or null-priced offers"
+        },
+        {
+          "line": 198,
+          "name": "real pending Diagonal offers cannot be replaced by populated legacy typology rows"
+        },
+        {
+          "line": 206,
+          "name": "Local-only range cannot borrow residential gym with or without an explicit type"
+        },
+        {
+          "line": 214,
+          "name": "amenities and features retain independent AND/OR groups on a single price witness"
+        },
+        {
+          "line": 226,
+          "name": "residential gym can match a residential owner price, with only supported badges"
+        },
+        {
+          "line": 235,
+          "name": "unknown-use price remains usable alone and cannot acquire residential amenities or use"
+        },
+        {
+          "line": 245,
+          "name": "price-witness search keeps the registered identity/address without borrowing gym text"
+        },
+        {
+          "line": 256,
+          "name": "price and unknown bathrooms, surfaces, private features and inclusions cannot borrow model facets"
+        },
+        {
+          "line": 265,
+          "name": "an unpriced surface profile can still match without displaying an unrelated typology price"
+        },
+        {
+          "line": 273,
+          "name": "unpriced bathroom/model searches retain their documented residential amenity badge"
+        },
+        {
+          "line": 281,
+          "name": "null or nonnumeric row prices stay unknown and cannot borrow the global project minimum"
+        },
+        {
+          "line": 290,
+          "name": "no-selection defaults preserve the published global price and original row/project order"
+        },
+        {
+          "line": 301,
+          "name": "all 131 original default offers preserve the protected baseline value and typology without mutation"
+        },
+        {
+          "line": 310,
+          "name": "price sorting and price label both use the selected Local reference"
+        },
+        {
+          "line": 318,
+          "name": "financial card compatibility is false for a different row, including a tied amount with another label"
+        },
+        {
+          "line": 338,
+          "name": "AJ, Sento, Leon and each Ecasa stage keep their established commercialOffers policy"
+        },
+        {
+          "line": 347,
+          "name": "prepared and documentary source precedence never changes to the published table"
+        },
+        {
+          "line": 354,
+          "name": "no-table public prices and Suecia additional costs remain untouched"
+        },
+        {
+          "line": 360,
+          "name": "filtering and presentation never mutate published tables, facets or policy records"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "typology34",
+          "pointer": "/files/5"
+        }
+      ]
+    },
+    {
+      "path": "tests/catalog-euro-owner-quotes.test.mjs",
+      "gitBlobOID": "9d7f698bc128cb0bf84d4857fda4bb21eb6faaa6",
+      "bytes": 17320,
+      "sha256": "19ad523781e0e2d1d34ace374ced32a45c2d1d4d5aae6c694d9d2da8f176629b",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 53,
+          "name": "source transport is pinned before records can be constructed"
+        },
+        {
+          "line": 63,
+          "name": "same-origin authentication barrier serves only the pinned Euro public fixture"
+        },
+        {
+          "line": 86,
+          "name": "public projection contains exactly the original21 owner prices and permitted identity fields"
+        },
+        {
+          "line": 107,
+          "name": "raw owner payload is rejected without retrying the private original endpoint"
+        },
+        {
+          "line": 123,
+          "name": "public projection rejects unapproved "
+        },
+        {
+          "line": 129,
+          "name": "Diagonal has no owner price and never acquires a historical campaign amount"
+        },
+        {
+          "line": 138,
+          "name": "1D and2D prices never cross between the existing DonPepe quotes"
+        },
+        {
+          "line": 143,
+          "name": "importer department and residential defaults are not quote evidence"
+        },
+        {
+          "line": 150,
+          "name": "bathrooms, generic surfaces and private spaces are not lent to a priced quote"
+        },
+        {
+          "line": 158,
+          "name": "unknown extras and residential amenities cannot complete an unknown-use quote"
+        },
+        {
+          "line": 166,
+          "name": "Independencia Local stays separate from residential categories and amenities"
+        },
+        {
+          "line": 179,
+          "name": "2D projection uses only that price typology, its owner date and non-stock scope"
+        },
+        {
+          "line": 194,
+          "name": "price sorting uses the matching2D amount rather than the global minimum"
+        },
+        {
+          "line": 203,
+          "name": "a previous query witness is not reused after the selected bedroom changes"
+        },
+        {
+          "line": 209,
+          "name": "a forged matching result cannot substitute another quote or manufacture a local type"
+        },
+        {
+          "line": 222,
+          "name": "a legitimate matching result and its reference arrays are immutable"
+        },
+        {
+          "line": 234,
+          "name": "source transport failure does not revert owner Euro price queries to legacy matching"
+        },
+        {
+          "line": 243,
+          "name": "a mismatched published amount/date or registered identity closes only that context"
+        },
+        {
+          "line": 253,
+          "name": "source normalization and matching do not mutate original catalogue values"
+        },
+        {
+          "line": 261,
+          "name": "queries without price keep the previous model/facet route, even if source loading fails"
+        },
+        {
+          "line": 272,
+          "name": "prepared and documentary queries never consume the new published owner context"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "PR35sameOrigin",
+          "pointer": "/files/2"
+        }
+      ]
+    },
+    {
+      "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+      "gitBlobOID": "e929e182d5c1b84fa49c77d16d02468819a279ca",
+      "bytes": 20439,
+      "sha256": "23ac673fbdc24df22342ae4a0b92245ca4b85fbe84006b35d4d585032a3b4a6e",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 26,
+          "name": "loader verifies the public projection pin and retains private-original provenance and dates"
+        },
+        {
+          "line": 52,
+          "name": "same-origin authentication barrier serves only the pinned Nollagam public fixture"
+        },
+        {
+          "line": 78,
+          "name": "public allowlist preserves exactly the seventeen original owner amounts and no project descriptions or URLs"
+        },
+        {
+          "line": 95,
+          "name": "strict public schema rejects raw payloads, history, screenshots and brochure URLs at every data level"
+        },
+        {
+          "line": 109,
+          "name": "strict projection identity and exact numeric price-key allowlists reject new facts or substituted source proof"
+        },
+        {
+          "line": 131,
+          "name": "schema rejection remains independent of a transport digest that is accepted by the pin guard"
+        },
+        {
+          "line": 146,
+          "name": "failed public projection loading makes exactly one request and never falls back to the private original"
+        },
+        {
+          "line": 156,
+          "name": "Costanera A3D UF5070 survives the previously failing UF5000–5100 query"
+        },
+        {
+          "line": 164,
+          "name": "all seventeen existing owner prices match exact price+D without source coercion or model fields"
+        },
+        {
+          "line": 175,
+          "name": "the five unknown-price categories fail a valid active range and never acquire a project minimum"
+        },
+        {
+          "line": 186,
+          "name": "inactive price, unbound legacy projects and prepared/documentary modes delegate with null"
+        },
+        {
+          "line": 200,
+          "name": "price queries preserve known identity, name and exact published address predicates"
+        },
+        {
+          "line": 210,
+          "name": "unknown D, B, property/use, typed surfaces, private features, extras and amenities do not pass"
+        },
+        {
+          "line": 221,
+          "name": "state, delivery, purchase stage and unsupported unit/model/stock selectors are not silently removed"
+        },
+        {
+          "line": 230,
+          "name": "the witness is the lowest price among matching references only"
+        },
+        {
+          "line": 241,
+          "name": "projection shows only the matching typology, original owner date and explicit scope notice"
+        },
+        {
+          "line": 250,
+          "name": "pin mismatch is rejected before normalization and gives seven unavailable contexts"
+        },
+        {
+          "line": 261,
+          "name": "HTTP, fetch, crypto, redirect and identity-normalization failures never reactivate legacy prices"
+        },
+        {
+          "line": 281,
+          "name": "bound empty, crossed, copied and mismatched identities close the active-price route"
+        },
+        {
+          "line": 294,
+          "name": "loading, matching and projecting do not mutate published data or trusted records"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "PR35sameOrigin",
+          "pointer": "/files/3"
+        }
+      ]
+    },
+    {
+      "path": "tests/catalog-nollagam-integration.test.mjs",
+      "gitBlobOID": "dce4e209f3f9b549d6971fcead476807bced8754",
+      "bytes": 5256,
+      "sha256": "d34b3125628ada323e713b100543929a877861e6aae975884ebb967e939560c4",
+      "publicManifestMatches": null,
+      "testDeclarationsReadNotExecuted": [
+        {
+          "line": 23,
+          "name": "Nollagam application correlates "
+        },
+        {
+          "line": 36,
+          "name": "Nollagam never borrows bathroom, type, surface, amenities or extras for its price"
+        },
+        {
+          "line": 46,
+          "name": "Nollagam default identities and published prices remain unchanged when price is inactive"
+        },
+        {
+          "line": 58,
+          "name": "five unknown-price categories cannot borrow another category or the project minimum"
+        },
+        {
+          "line": 69,
+          "name": "price projection recomputes a changed query rather than borrowing a previous match"
+        },
+        {
+          "line": 77,
+          "name": "an attached failed owner source closes active price queries and retains inactive identities"
+        },
+        {
+          "line": 85,
+          "name": "price sorting uses selected3D quotes rather than project minima"
+        }
+      ],
+      "matchingCertificateBindings": [
+        {
+          "source": "PR34manifest",
+          "pointer": "/commitBlobs/5"
+        }
+      ]
+    }
+  ],
+  "historicalCertificatePinComparison": [
+    {
+      "source": "F10candidate",
+      "pointer": "/files/1",
+      "path": "assets/js/catalog-filter-controls.mjs",
+      "certificateSHA256": "114e1509dc5603deb8d6ee5ea21ffea1d733541ecd1ce9e3057e667420f2be2f",
+      "currentD3SHA256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F10candidate",
+      "pointer": "/files/2",
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "certificateSHA256": "9c99259fbc6af069cdcf82ada1a134d1b3d23199fda6cbd7a6324c2704e25120",
+      "currentD3SHA256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F10candidate",
+      "pointer": "/files/3",
+      "path": "assets/js/catalog-map.mjs",
+      "certificateSHA256": "d8d9063ea7f0245fefbbdda9e57238c24068c796d4ebde2c885f3dc1bc589e35",
+      "currentD3SHA256": "ac5b4e5cf082e887751b86f044d0777f2cc3bab898140e2f06a63b20d03ff9d5",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F10candidate",
+      "pointer": "/files/4",
+      "path": "assets/js/catalog-model.mjs",
+      "certificateSHA256": "9f7795cc902be3d0f4ffb90828e0296fc1652d8b758d54eee1b44bdf9528ea5e",
+      "currentD3SHA256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F10candidate",
+      "pointer": "/files/5",
+      "path": "assets/js/catalog.mjs",
+      "certificateSHA256": "2becc3b39f3d962ef740aa55e7ff3c5979d93347234629c3bea551b0328de700",
+      "currentD3SHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F10candidate",
+      "pointer": "/files/6",
+      "path": "assets/js/commercial-filter-data.mjs",
+      "certificateSHA256": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b",
+      "currentD3SHA256": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F10candidate",
+      "pointer": "/files/7",
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "certificateSHA256": "df6416a4da3c35be40020fb98bc655ef3aa5c18c44d82191eab8c1df26445050",
+      "currentD3SHA256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F10candidate",
+      "pointer": "/files/12",
+      "path": "tests/commercial-filter-engine.test.mjs",
+      "certificateSHA256": "6b3b4abf254194f6b99d8e886e6fb72d01f76543eee1b939296bd62ec261ea4b",
+      "currentD3SHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F10candidate",
+      "pointer": "/files/13",
+      "path": "tests/commercial-filter-presentation.test.mjs",
+      "certificateSHA256": "f22df0bd0ad53344c9e28e0ff453394adcf530537b32227f1f32445abd3a6324",
+      "currentD3SHA256": "f22df0bd0ad53344c9e28e0ff453394adcf530537b32227f1f32445abd3a6324",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/changedFiles/0",
+      "path": "assets/js/catalog.mjs",
+      "certificateSHA256": "28d6229a8fc4c9157f74953f07a1642f4b2431e82c58c85737a18f0d858b3603",
+      "currentD3SHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/changedFiles/1",
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "certificateSHA256": "d901354cd90bd9ca284b50fa56bf4ae5f2675674ac72b17b06ec3b249e44d9f4",
+      "currentD3SHA256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/changedFiles/3",
+      "path": "tests/commercial-filter-engine.test.mjs",
+      "certificateSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+      "currentD3SHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/1",
+      "path": "assets/js/catalog-filter-controls.mjs",
+      "certificateSHA256": "114e1509dc5603deb8d6ee5ea21ffea1d733541ecd1ce9e3057e667420f2be2f",
+      "currentD3SHA256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/2",
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "certificateSHA256": "9c99259fbc6af069cdcf82ada1a134d1b3d23199fda6cbd7a6324c2704e25120",
+      "currentD3SHA256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/3",
+      "path": "assets/js/catalog-map.mjs",
+      "certificateSHA256": "d8d9063ea7f0245fefbbdda9e57238c24068c796d4ebde2c885f3dc1bc589e35",
+      "currentD3SHA256": "ac5b4e5cf082e887751b86f044d0777f2cc3bab898140e2f06a63b20d03ff9d5",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/4",
+      "path": "assets/js/catalog-model.mjs",
+      "certificateSHA256": "9f7795cc902be3d0f4ffb90828e0296fc1652d8b758d54eee1b44bdf9528ea5e",
+      "currentD3SHA256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/5",
+      "path": "assets/js/catalog.mjs",
+      "certificateSHA256": "28d6229a8fc4c9157f74953f07a1642f4b2431e82c58c85737a18f0d858b3603",
+      "currentD3SHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/6",
+      "path": "assets/js/commercial-filter-data.mjs",
+      "certificateSHA256": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b",
+      "currentD3SHA256": "5ee85e36787a87552263c48b0fcef194475fb535402bda91c2f093d232abfa8b",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/7",
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "certificateSHA256": "d901354cd90bd9ca284b50fa56bf4ae5f2675674ac72b17b06ec3b249e44d9f4",
+      "currentD3SHA256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/12",
+      "path": "tests/commercial-filter-engine.test.mjs",
+      "certificateSHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+      "currentD3SHA256": "a921db427d6e1a5991918479a02ecf5d49fff6e08f1700df1e51c49465096393",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "F13manifest",
+      "pointer": "/PRFiles/14",
+      "path": "tests/commercial-filter-presentation.test.mjs",
+      "certificateSHA256": "f22df0bd0ad53344c9e28e0ff453394adcf530537b32227f1f32445abd3a6324",
+      "currentD3SHA256": "f22df0bd0ad53344c9e28e0ff453394adcf530537b32227f1f32445abd3a6324",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "typology34",
+      "pointer": "/files/0",
+      "path": "assets/js/catalog-typology-prices.mjs",
+      "certificateSHA256": "992d9a0a2a3e5d92544c5872289fe7d14cc0de369a4615c30ea328832b17c1e7",
+      "currentD3SHA256": "992d9a0a2a3e5d92544c5872289fe7d14cc0de369a4615c30ea328832b17c1e7",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "typology34",
+      "pointer": "/files/1",
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "certificateSHA256": "72abedbad869d6c2f11546a8465c93c8a8617847c3714a21fc081e78f49daff9",
+      "currentD3SHA256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "typology34",
+      "pointer": "/files/2",
+      "path": "assets/js/catalog-model.mjs",
+      "certificateSHA256": "42c1f052a1d69b0f1b9811852b510b8224f21bae8056fde62a2ae8521a6b088c",
+      "currentD3SHA256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "typology34",
+      "pointer": "/files/3",
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "certificateSHA256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+      "currentD3SHA256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "typology34",
+      "pointer": "/files/4",
+      "path": "assets/js/catalog.mjs",
+      "certificateSHA256": "d5d6b54eb9caf13bdc78529aa701e6ca907ce3af58422e4d7e5a2e3686eddd4d",
+      "currentD3SHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "typology34",
+      "pointer": "/files/5",
+      "path": "tests/catalog-typology-prices.test.mjs",
+      "certificateSHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+      "currentD3SHA256": "ff864e648ff3732554afb3ecb31fcb9fb3ca98024996fdf28c8c3ad3c408daa0",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/0",
+      "path": "assets/js/catalog-euro-owner-quotes.mjs",
+      "certificateSHA256": "50f25cb9194aedd9fc9408fe69cf864e552fdb816919e651cd54c89734a74199",
+      "currentD3SHA256": "da3e2ba49ef55cb294b8c2520d6920cf934fa6472b0470d00dee7c4df43a59d1",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/1",
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "certificateSHA256": "e1fd353c756ff01a53862c548271456c11afe539d6cb823830909cb37b8f6f68",
+      "currentD3SHA256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/2",
+      "path": "assets/js/catalog-financial-witness.mjs",
+      "certificateSHA256": "59c806afd4dcc5b065eb9fd1f21cbf94824638a90453565d739c050d42830836",
+      "currentD3SHA256": "59c806afd4dcc5b065eb9fd1f21cbf94824638a90453565d739c050d42830836",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/3",
+      "path": "assets/js/catalog-map.mjs",
+      "certificateSHA256": "ac5b4e5cf082e887751b86f044d0777f2cc3bab898140e2f06a63b20d03ff9d5",
+      "currentD3SHA256": "ac5b4e5cf082e887751b86f044d0777f2cc3bab898140e2f06a63b20d03ff9d5",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/4",
+      "path": "assets/js/catalog-model.mjs",
+      "certificateSHA256": "73a68e260e3fec0cff77a8d51a3d28099865a78bcca0a6c1dec9d0164d808700",
+      "currentD3SHA256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/6",
+      "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "certificateSHA256": "e55a0672835b445069a1bd3111e4fbeb46ae6c3ad8da34c3d64708cdba6000e4",
+      "currentD3SHA256": "75c0501ca894ee7884a61af75a3fc751445464eed2f40656be2c73b279d19321",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/7",
+      "path": "assets/js/catalog.mjs",
+      "certificateSHA256": "6b974212b79c903402f8d58a1a4c6500bed63019ae7e10b6009fac2beb94a966",
+      "currentD3SHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/8",
+      "path": "tests/catalog-euro-owner-quotes.test.mjs",
+      "certificateSHA256": "0509c14111af67d72c1a55ddc7541f7d6a004c5a7c143158c7e00074827bd766",
+      "currentD3SHA256": "19ad523781e0e2d1d34ace374ced32a45c2d1d4d5aae6c694d9d2da8f176629b",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/9",
+      "path": "tests/catalog-financial-witness.test.mjs",
+      "certificateSHA256": "1cf636287d1c9b9cfd9fd8bd89e976556f63dd513da8bb03eda594ffea3fc84a",
+      "currentD3SHA256": "1cf636287d1c9b9cfd9fd8bd89e976556f63dd513da8bb03eda594ffea3fc84a",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/10",
+      "path": "tests/catalog-nollagam-integration.test.mjs",
+      "certificateSHA256": "a976b217ae5b8ad6b94e554d8f7cc3ba60023505573de8bec90ac7b3b61dab10",
+      "currentD3SHA256": "d34b3125628ada323e713b100543929a877861e6aae975884ebb967e939560c4",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR33manifest",
+      "pointer": "/changedFiles/12",
+      "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+      "certificateSHA256": "9fecac022749ad3d702246fc1696829e7c1b74c654f1c8f2b258d7af6c0f1ad1",
+      "currentD3SHA256": "23ac673fbdc24df22342ae4a0b92245ca4b85fbe84006b35d4d585032a3b4a6e",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR34manifest",
+      "pointer": "/commitBlobs/0",
+      "path": "assets/js/catalog-euro-owner-quotes.mjs",
+      "certificateSHA256": "81edb95704b0516005902c3fd786f8566f440a2f6b1cda8e7c5bb2806bb858d7",
+      "currentD3SHA256": "da3e2ba49ef55cb294b8c2520d6920cf934fa6472b0470d00dee7c4df43a59d1",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR34manifest",
+      "pointer": "/commitBlobs/1",
+      "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "certificateSHA256": "b995850c613e305eb699b2a5f7cced8914f2b361e41b7fb5bb4c5d254f8114f1",
+      "currentD3SHA256": "75c0501ca894ee7884a61af75a3fc751445464eed2f40656be2c73b279d19321",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR34manifest",
+      "pointer": "/commitBlobs/4",
+      "path": "tests/catalog-euro-owner-quotes.test.mjs",
+      "certificateSHA256": "93c4498ebed8e75613406818958cce3189b9544db9319bb47a27338b2947ed64",
+      "currentD3SHA256": "19ad523781e0e2d1d34ace374ced32a45c2d1d4d5aae6c694d9d2da8f176629b",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR34manifest",
+      "pointer": "/commitBlobs/5",
+      "path": "tests/catalog-nollagam-integration.test.mjs",
+      "certificateSHA256": "d34b3125628ada323e713b100543929a877861e6aae975884ebb967e939560c4",
+      "currentD3SHA256": "d34b3125628ada323e713b100543929a877861e6aae975884ebb967e939560c4",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR34manifest",
+      "pointer": "/commitBlobs/6",
+      "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+      "certificateSHA256": "565d061c9865cbafe31c9cdce91f583aaf20f6df5e52a1beea9047fb573b2316",
+      "currentD3SHA256": "23ac673fbdc24df22342ae4a0b92245ca4b85fbe84006b35d4d585032a3b4a6e",
+      "currentPinMatches": false,
+      "interpretation": "CORTE_HISTORICO_SUPERADO_NO_SE_TRATA_COMO_EJECUCION_DEL_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR35sameOrigin",
+      "pointer": "/files/0",
+      "path": "assets/js/catalog-euro-owner-quotes.mjs",
+      "certificateSHA256": "da3e2ba49ef55cb294b8c2520d6920cf934fa6472b0470d00dee7c4df43a59d1",
+      "currentD3SHA256": "da3e2ba49ef55cb294b8c2520d6920cf934fa6472b0470d00dee7c4df43a59d1",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR35sameOrigin",
+      "pointer": "/files/1",
+      "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "certificateSHA256": "75c0501ca894ee7884a61af75a3fc751445464eed2f40656be2c73b279d19321",
+      "currentD3SHA256": "75c0501ca894ee7884a61af75a3fc751445464eed2f40656be2c73b279d19321",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR35sameOrigin",
+      "pointer": "/files/2",
+      "path": "tests/catalog-euro-owner-quotes.test.mjs",
+      "certificateSHA256": "19ad523781e0e2d1d34ace374ced32a45c2d1d4d5aae6c694d9d2da8f176629b",
+      "currentD3SHA256": "19ad523781e0e2d1d34ace374ced32a45c2d1d4d5aae6c694d9d2da8f176629b",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR35sameOrigin",
+      "pointer": "/files/3",
+      "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+      "certificateSHA256": "23ac673fbdc24df22342ae4a0b92245ca4b85fbe84006b35d4d585032a3b4a6e",
+      "currentD3SHA256": "23ac673fbdc24df22342ae4a0b92245ca4b85fbe84006b35d4d585032a3b4a6e",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36js",
+      "pointer": "/implementationFiles/0",
+      "path": "assets/js/catalog-expansion.mjs",
+      "certificateSHA256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+      "currentD3SHA256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36js",
+      "pointer": "/implementationFiles/1",
+      "path": "assets/js/catalog.mjs",
+      "certificateSHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentD3SHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36js",
+      "pointer": "/implementationFiles/2",
+      "path": "assets/js/catalog-model.mjs",
+      "certificateSHA256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "currentD3SHA256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36js",
+      "pointer": "/implementationFiles/3",
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "certificateSHA256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "currentD3SHA256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36js",
+      "pointer": "/implementationFiles/4",
+      "path": "assets/js/catalog-filter-controls.mjs",
+      "certificateSHA256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632",
+      "currentD3SHA256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36js",
+      "pointer": "/implementationFiles/5",
+      "path": "tests/catalog-expansion-behavior.test.mjs",
+      "certificateSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+      "currentD3SHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36manifest",
+      "pointer": "/files/28",
+      "path": "assets/js/catalog-expansion.mjs",
+      "certificateSHA256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+      "currentD3SHA256": "409690f12589efe33da64450437e4c27956950597442326b454f81610e75fc7e",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36manifest",
+      "pointer": "/files/29",
+      "path": "assets/js/catalog-filter-controls.mjs",
+      "certificateSHA256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632",
+      "currentD3SHA256": "01e89b436d0625722d72fb755f9240bcd1a6600851dc8200ebb9e23e19943632",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36manifest",
+      "pointer": "/files/30",
+      "path": "assets/js/catalog-filter-engine.mjs",
+      "certificateSHA256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "currentD3SHA256": "947156435430b22d8e702d2266c6e464562ff3aebae7849b6f95816becf28b16",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36manifest",
+      "pointer": "/files/31",
+      "path": "assets/js/catalog-model.mjs",
+      "certificateSHA256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "currentD3SHA256": "971bf2dc308cb8d8c0edd43e3f64699fb5206d77e92f46ac1c59dd4667081e82",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36manifest",
+      "pointer": "/files/32",
+      "path": "assets/js/catalog.mjs",
+      "certificateSHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentD3SHA256": "9ae28f4d6f13203f188711b03b42bf4cf77f32de293964d34e413668de14623a",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36manifest",
+      "pointer": "/files/55",
+      "path": "tests/catalog-expansion-behavior.test.mjs",
+      "certificateSHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+      "currentD3SHA256": "96ac8c3482a66e48aea48bd8f039592d008df3a815fb34aaea17d056f3552a7f",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    },
+    {
+      "source": "PR36manifest",
+      "pointer": "/files/56",
+      "path": "tests/catalog-expansion-data.test.mjs",
+      "certificateSHA256": "215da6c0f15500a4b2bb27f6af5f649494abf5397ff2adb434ef5ac1eed9b527",
+      "currentD3SHA256": "215da6c0f15500a4b2bb27f6af5f649494abf5397ff2adb434ef5ac1eed9b527",
+      "currentPinMatches": true,
+      "interpretation": "MISMO_ARCHIVO_ACTUAL"
+    }
+  ],
+  "transportAndPublicationBinding": {
+    "runtime13AllMatchFrozenManifest": true,
+    "publicManifest": {
+      "source": "publicManifest",
+      "pointer": "/inventorySHA256"
+    },
+    "fileTree1721": {
+      "source": "transport1721",
+      "pointer": ""
+    },
+    "fiveExistingAliasesSourceD3": {
+      "source": "aliases",
+      "pointer": ""
+    },
+    "public152GPR9": {
+      "source": "publicChrome",
+      "pointer": ""
+    },
+    "fivePublicStaticHashes": {
+      "source": "publicResources",
+      "pointer": ""
+    },
+    "threeFrozenNonmatchingGitBodiesAlreadyExplained": "urban-works-model,urban-development ycomparador no importados por catálogo/mapa/21fichas; no se repite aquella comparación. No afectan estos13módulos coincidentes."
+  },
+  "certificateGroupsReusedWithoutAddition": [
+    {
+      "group": "F10",
+      "node": 84,
+      "Chrome": 16,
+      "evidence": {
+        "source": "F10final",
+        "pointer": ""
+      },
+      "note": "Corteoriginal11ce; sus archivos cambiados no se presumen actuales por ese número."
+    },
+    {
+      "group": "F13",
+      "engine": 57,
+      "filters": 10,
+      "newChrome": 6,
+      "evidence": {
+        "source": "F13tests",
+        "pointer": ""
+      },
+      "note": "57+10sonsubconjuntos afectados; no sumarF10/6aliases a un total nuevo."
+    },
+    {
+      "group": "PR33",
+      "jointNode": 112,
+      "otherRelevantRegression": 83,
+      "Chrome": 23,
+      "evidence": {
+        "source": "PR33state",
+        "pointer": "/testsLatestDelta"
+      },
+      "note": "Incluye34tipologías/42Euro/23integración/13guard; no sumarotra vez sus componentes."
+    },
+    {
+      "group": "PR34",
+      "Euro": 49,
+      "Nollagam": 19,
+      "integration": 23,
+      "Chrome": 7,
+      "evidence": {
+        "source": "PR34result",
+        "pointer": "/Node"
+      },
+      "note": "Corrección de proyección pública; subpruebas anteriores no se suman."
+    },
+    {
+      "group": "PR35",
+      "selectedLoaderTests": 10,
+      "evidence": {
+        "source": "PR35sameOrigin",
+        "pointer": "/tests/green"
+      },
+      "note": "2regresionesnuevas+8cargadores seleccionados; no sumarred2/green10 como12."
+    },
+    {
+      "group": "PR36",
+      "distinctNode": 52,
+      "NodeComponents": [
+        7,
+        19,
+        26
+      ],
+      "chromeFamilies": {
+        "commercial": 13,
+        "viewsResponsive": 20,
+        "fichesResponsive": 15,
+        "directed": 4
+      },
+      "protectedChrome": 3,
+      "publicDirectedFlow": 1,
+      "evidence": [
+        {
+          "source": "PR36dataTests",
+          "pointer": ""
+        },
+        {
+          "source": "PR36js",
+          "pointer": "/tests"
+        },
+        {
+          "source": "PR36chrome",
+          "pointer": "/countsByFamily"
+        },
+        {
+          "source": "protectedChrome",
+          "pointer": ""
+        },
+        {
+          "source": "publicChrome",
+          "pointer": ""
+        }
+      ],
+      "note": "Los19fueron corrida final,26regresionesse conservaron; históricos y repeticionesdirigidas no sumadas. El flujo público es otro alcance, no una certificación cartesiana152."
+    }
+  ],
+  "knownDataLimitationsNotNewTestDefects": [
+    "Útil/total desconocidos en21nuevos;Internos yterraza tienen rótulos separados.",
+    "CincoEstudio IrisDnull y unidad/modelo no públicos; nodormitoriosintermedios inferidos.",
+    "OwnerNuevoVivaceta/Compañía1735 y sus5referencias no se vinculan a B/áreasIris; precedenciaowner certificada.",
+    "Estado/entrega/amenities generales no pruebanstock,vigencia,derechosprivados o habilitaciónlegal.",
+    "Coordenadas21desconocidas; sinpinesfabricados.",
+    "Suplemento24a/19refs18proyectos no está incluido enD3; QA de esa capa no certifica funcionalidad publicada.",
+    "La cobertura porproyecto152 requiere la consolidación de datos real preparada porroot; este artefacto es mapa de criterios y reutilización de pruebas.",
+    "313IDs históricos se conservan sin cierres por este trabajo."
+  ],
+  "sources": {
+    "F10final": {
+      "repositoryPath": "docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/VERIFICACION-FINAL.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/VERIFICACION-FINAL.json",
+      "bytes": 690,
+      "sha256": "6ce5bd96c166e313ca13bba3daa0324747fabdb370b6df8847b281247bb9be59",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "F10candidate": {
+      "repositoryPath": "docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/CANDIDATO-TECNICO.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/CANDIDATO-TECNICO.json",
+      "bytes": 2675,
+      "sha256": "4ae2e0b996e438b6c2b01241c21c8f9b815e84e79dbda5c61db2217e681cb046",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "F10scenarios": {
+      "repositoryPath": "docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/ESCENARIOS-EJECUTADOS.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/ESCENARIOS-EJECUTADOS.json",
+      "bytes": 28486,
+      "sha256": "fa95278038ae2a1ed48459139f3417d296b97a63a64ebbcbec75caaae8a282f5",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "F10browser": {
+      "repositoryPath": "docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/PRUEBAS-NAVEGADOR.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/PRUEBAS-NAVEGADOR.json",
+      "bytes": 7000,
+      "sha256": "e2b3cf5b4a0c1f7c1eb54f26e8c809fea128a8e6b5ca728e18cc8e5603c25bcf",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "F10coverage": {
+      "repositoryPath": "docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/COBERTURA-FUNCIONAL.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase10-filtros-20261117/COBERTURA-FUNCIONAL.json",
+      "bytes": 69208,
+      "sha256": "89679816b708a7e970a0ae5b6f8f70e6071f441cee65ebf4f2268c95567e8008",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "F13result": {
+      "repositoryPath": "docs/catalog-data-completeness-20261116/leben/fase13-correcciones-pr32-20261117/RESULTADO-F12-01-04.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase13-correcciones-pr32-20261117/RESULTADO-F12-01-04.json",
+      "bytes": 6175,
+      "sha256": "17083eea630bc0e6336c79f588f967cd4813a5b8232377ea6cc98f079b9cb360",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "F13tests": {
+      "repositoryPath": "docs/catalog-data-completeness-20261116/leben/fase13-correcciones-pr32-20261117/PRUEBAS-REGRESION-FASE13.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase13-correcciones-pr32-20261117/PRUEBAS-REGRESION-FASE13.json",
+      "bytes": 4384,
+      "sha256": "502b26fa34afe948e78a385449a2bd993be10324d9db3dd1c3220c76a06c0c81",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "F13manifest": {
+      "repositoryPath": "docs/catalog-data-completeness-20261116/leben/fase13-correcciones-pr32-20261117/MANIFIESTO-HASHES-FASE13.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/catalog-data-completeness-20261116/leben/fase13-correcciones-pr32-20261117/MANIFIESTO-HASHES-FASE13.json",
+      "bytes": 6541,
+      "sha256": "dd20e9b298288490f84ce51d6533ace784fb79af3342cd90437d167eba70de17",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR33state": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ESTADO-PR33.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ESTADO-PR33.json",
+      "bytes": 13578,
+      "sha256": "c70c388df0ce287f4b04489870b177264abddb4f970e431f209bc1c91215aa87",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "typology34": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/correccion-precios-tipologia-20261117/recibo-final34/sollahms-typology-prices-receipt.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/correccion-precios-tipologia-20261117/recibo-final34/sollahms-typology-prices-receipt.json",
+      "bytes": 18620,
+      "sha256": "10711c0c8959aa5e97301218e9bc4d76f5a4165f03cb1f0038041b813055b32a",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR33manifest": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/MANIFIESTO-13-ARCHIVOS-155-PROTEGIDOS-21-FUENTES.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/MANIFIESTO-13-ARCHIVOS-155-PROTEGIDOS-21-FUENTES.json",
+      "bytes": 63371,
+      "sha256": "e2dfdd0d202ededf371bf6aeb79956c0489c41e123399cc9db085c17eccd0562",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR33chrome": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/chrome/CHROME-OWNER-QUOTES.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/chrome/CHROME-OWNER-QUOTES.json",
+      "bytes": 17808,
+      "sha256": "c0bc540390bc2dca9fb880a52e19dd17f2e38ef42d15b8fa45c28b9dc85b6738",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR34result": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/correccion-proyecciones-publicas-20261117/RESULTADO-FINAL.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/correccion-proyecciones-publicas-20261117/RESULTADO-FINAL.json",
+      "bytes": 1408,
+      "sha256": "eb2491aea9aba87fca746abcaf8c55302db78a0fce4a2017ad91d2b1ee482338",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR34manifest": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/correccion-proyecciones-publicas-20261117/MANIFIESTO-ARCHIVOS.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/correccion-proyecciones-publicas-20261117/MANIFIESTO-ARCHIVOS.json",
+      "bytes": 8052,
+      "sha256": "7f16615be92ea9ab4b371b362e6eaad435a63f9bab873713b0c6df5e5002682f",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR34chrome": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/correccion-proyecciones-publicas-20261117/qa-chrome/CHROME-PUBLIC-PROJECTIONS.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/correccion-proyecciones-publicas-20261117/qa-chrome/CHROME-PUBLIC-PROJECTIONS.json",
+      "bytes": 30830,
+      "sha256": "ee0de966e48d4ca758975d0b580ce11e51295ea77324e4a66d379124762b06e6",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR35sameOrigin": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/correccion-carga-mismo-origen-20261117/RECIBO-CORRECCION.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/correccion-carga-mismo-origen-20261117/RECIBO-CORRECCION.json",
+      "bytes": 6289,
+      "sha256": "11666a33e033a8081933a71da6e7aa8563837213d738f00bc2fcee8f3f5578a2",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR36js": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/pruebas-js/RESULTADO-IMPLEMENTACION-JS.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/pruebas-js/RESULTADO-IMPLEMENTACION-JS.json",
+      "bytes": 6341,
+      "sha256": "7d83e5786984cb518212fe229d8beb325ba7fd4425145d3d605181e656017a13",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR36regressionLog": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/pruebas-js/REGRESIONES-CATALOGO.log",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/pruebas-js/REGRESIONES-CATALOGO.log",
+      "bytes": 2633,
+      "sha256": "83d0192ecaa662e941dbc90a3971c2c3401121d83a7f9a34d68ee669afc23dd0",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR36behaviorLog": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/pruebas-js/PRUEBAS-COMPORTAMIENTO-CIERRE-19.log",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/pruebas-js/PRUEBAS-COMPORTAMIENTO-CIERRE-19.log",
+      "bytes": 2023,
+      "sha256": "a79ce857486c7b65f44fd146e7dee23ab4e49492926430eeb765497efef7839c",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR36dataTests": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/procedencia-datos/RECIBO-PRUEBAS-DATOS-21-CORTE-FINAL.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/procedencia-datos/RECIBO-PRUEBAS-DATOS-21-CORTE-FINAL.json",
+      "bytes": 1565,
+      "sha256": "93339efb3b029866c7fcd1f2ed96d63a1114cb6a34b124cb0a1d5cefe5eed8a6",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR36dataLog": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/procedencia-datos/PRUEBAS-DATOS-21-CORTE-FINAL.log",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/procedencia-datos/PRUEBAS-DATOS-21-CORTE-FINAL.log",
+      "bytes": 879,
+      "sha256": "b579b700c53a6e8100510a072d11dbdbfe5ad30edad37519c544729ef9a88c6f",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR36chrome": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/qa/QA-CHROME.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/qa/QA-CHROME.json",
+      "bytes": 12281,
+      "sha256": "6e186c22079e900ef27960b49aa4f09f880acb7a124215fb4d772e434de6b5fa",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR36manifest": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/qa/MANIFIESTO-59-ARCHIVOS.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/qa/MANIFIESTO-59-ARCHIVOS.json",
+      "bytes": 12776,
+      "sha256": "aac3b3c1141efa2ac843a22628e41ce8f939cb3e98e92b163c7a29250112ab1d",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "PR36preservation": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/qa/PRESERVACION-155-Y-131.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/qa/PRESERVACION-155-Y-131.json",
+      "bytes": 60193,
+      "sha256": "ba3cacf241925706e487f85ad77f5664ea19564a6d57913870e232c5d3d7a84c",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "publicManifest": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/paquete-publico/MANIFIESTO-PAQUETE-PUBLICO-21.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/paquete-publico/MANIFIESTO-PAQUETE-PUBLICO-21.json",
+      "bytes": 470330,
+      "sha256": "f0fa6e13c6d41f62325f0b7ab7487e5c6a7dbe445a0c3148e60cff2ac3862f5e",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "transport1721": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/VERIFICACION-1721-DIGESTS-DEPLOYMENT-PR36.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/VERIFICACION-1721-DIGESTS-DEPLOYMENT-PR36.json",
+      "bytes": 3308,
+      "sha256": "4a5fc5512511cea74a2568e33f349ec7faeea6ca8f8276d0830e165cf502e9ca",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "protectedChrome": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/qa-chrome/QA-CHROME-DEPLOYMENT-PR36.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/qa-chrome/QA-CHROME-DEPLOYMENT-PR36.json",
+      "bytes": 5493,
+      "sha256": "93db801e0b8b6899b73d427b7c6724bc81532c1bc5ed17aa20d60f6d7cc35204",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "publicChrome": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/publicacion/QA-PUBLICO-PR36.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/publicacion/QA-PUBLICO-PR36.json",
+      "bytes": 1658,
+      "sha256": "77e67bb94d187e1f5fb59b3f0f95eaf568dfbd2a5cdbe1e1a6b135e18c720f5c",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "publicResources": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/publicacion/RECURSOS-PUBLICOS-PR36.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/publicacion/RECURSOS-PUBLICOS-PR36.json",
+      "bytes": 2174,
+      "sha256": "cc3ec47311e8bcbcb21c3f9eb689ed15a1f65bc5fc9db76db25a74dc4ffd9101",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "aliases": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/publicacion/VERIFICACION-INDEPENDIENTE-PROMOCION-PR36.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/publicacion/VERIFICACION-INDEPENDIENTE-PROMOCION-PR36.json",
+      "bytes": 7337,
+      "sha256": "c777fc50fd874d9c12b386885c6f45fb2317b604e439bdeb72c494b61b61cfbe",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    },
+    "publication": {
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ESTADO-PUBLICACION.json",
+      "originalReadPath": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ESTADO-PUBLICACION.json",
+      "bytes": 11093,
+      "sha256": "9be8945c4f6121cb0f16f0fe64ee5b6d66fa2316615d854f9371547eaac3ee63",
+      "documentaryHEADAtRead": "cfd6d7a622e2d4ec17afa2d9167a69a72e579d8f"
+    }
+  },
+  "sourcePinReceipt": {
+    "path": "/private/tmp/sollahms-cobertura-152-20261118/PINS-CRITERIOS-FILTROS.json",
+    "sha256": "814e536ed59e40afa26c4dd6806a93893fc46aa07e18333a3aea8c8a7a7532f7"
+  }
+}

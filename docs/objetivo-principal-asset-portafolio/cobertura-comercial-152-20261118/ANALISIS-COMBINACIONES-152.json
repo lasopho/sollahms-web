@@ -1,0 +1,2957 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-18",
+  "kind": "COMPOSICION_ESTATICA_DE_TESTIGOS_131_MAS_21_DISJUNTOS_NO_MOTOR",
+  "productionSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+  "universe": 152,
+  "axisDefinitions": {
+    "precio": [
+      "priceUF"
+    ],
+    "precio_D": [
+      "priceUF",
+      "bedrooms"
+    ],
+    "precio_D_B": [
+      "priceUF",
+      "bedrooms",
+      "bathrooms"
+    ],
+    "precio_util": [
+      "priceUF",
+      "usefulM2"
+    ],
+    "precio_total": [
+      "priceUF",
+      "totalM2"
+    ],
+    "precio_D_B_util": [
+      "priceUF",
+      "bedrooms",
+      "bathrooms",
+      "usefulM2"
+    ],
+    "precio_D_B_total": [
+      "priceUF",
+      "bedrooms",
+      "bathrooms",
+      "totalM2"
+    ],
+    "D_B": [
+      "bedrooms",
+      "bathrooms"
+    ],
+    "D_B_util": [
+      "bedrooms",
+      "bathrooms",
+      "usefulM2"
+    ],
+    "D_B_total": [
+      "bedrooms",
+      "bathrooms",
+      "totalM2"
+    ],
+    "B_util": [
+      "bathrooms",
+      "usefulM2"
+    ],
+    "B_total": [
+      "bathrooms",
+      "totalM2"
+    ],
+    "precio_tipo": [
+      "priceUF",
+      "propertyType"
+    ]
+  },
+  "sources": {
+    "original131": {
+      "path": "aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json",
+      "sha256": "69450fcaf615f0c96f4d29625b3734dc9dc96030b29dc5fec7e0f02fced29463",
+      "bytes": 520362,
+      "newEvidence": false
+    },
+    "expansion21": {
+      "path": "ampliacion-iris-chile-20261118/candidato-21-gpr/PROYECCION-PUBLICA-21.json",
+      "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb",
+      "bytes": 127640,
+      "newEvidence": false
+    }
+  },
+  "method": {
+    "original131ReusedWithoutRederivation": true,
+    "original131Layer": "published875",
+    "original131Pointer": "/projectsBySlug",
+    "expansionContract": "assets/js/catalog-expansion.mjs:123-135 (normalizedReferences), D3",
+    "onlyDisjointProjectCountsAdded": true,
+    "preparedOrLocalLayersNeverAdded": true,
+    "appModulesExecuted": 0,
+    "testsExecuted": 0,
+    "newFacts": 0,
+    "ownerPriceNeverJoinedWithIrisUnit": true,
+    "summaryTypeNeverJoinedToUnit": true,
+    "unknownMetricsNotCoerced": true,
+    "scope": "Existence of a same-reference tuple in the admitted static source; not executed searches, all numeric ranges, inventory or current validity."
+  },
+  "summaries": {
+    "original131": {
+      "precio": 126,
+      "precio_D": 66,
+      "precio_D_B": 0,
+      "precio_util": 0,
+      "precio_total": 0,
+      "precio_D_B_util": 0,
+      "precio_D_B_total": 0,
+      "D_B": 73,
+      "D_B_util": 37,
+      "D_B_total": 53,
+      "B_util": 37,
+      "B_total": 53,
+      "precio_tipo": 106
+    },
+    "publishedExpansion21": {
+      "precio": 21,
+      "precio_D": 17,
+      "precio_D_B": 15,
+      "precio_util": 0,
+      "precio_total": 0,
+      "precio_D_B_util": 0,
+      "precio_D_B_total": 0,
+      "D_B": 16,
+      "D_B_util": 0,
+      "D_B_total": 0,
+      "B_util": 0,
+      "B_total": 0,
+      "precio_tipo": 19
+    },
+    "publishedD3_152": {
+      "precio": 147,
+      "precio_D": 83,
+      "precio_D_B": 15,
+      "precio_util": 0,
+      "precio_total": 0,
+      "precio_D_B_util": 0,
+      "precio_D_B_total": 0,
+      "D_B": 89,
+      "D_B_util": 37,
+      "D_B_total": 53,
+      "B_util": 37,
+      "B_total": 53,
+      "precio_tipo": 125
+    },
+    "preparedLebenUnchangedAndNotAdded": {
+      "projectsWithAnyLayerReferences": 12,
+      "projectsWithPricedReferences": 10,
+      "supportedProjectCountsByAxis": {
+        "precio": 10,
+        "precio_D": 10,
+        "precio_D_B": 5,
+        "precio_util": 0,
+        "precio_total": 0,
+        "precio_D_B_util": 0,
+        "precio_D_B_total": 0,
+        "D_B": 12,
+        "D_B_util": 2,
+        "D_B_total": 5,
+        "B_util": 2,
+        "B_total": 5,
+        "precio_tipo": 3
+      },
+      "countsAreNotUniqueStockOrNewFacts": true
+    },
+    "local24aUnpublishedAndNotAdded": {
+      "projectsWithAnyLayerReferences": 18,
+      "projectsWithPricedReferences": 1,
+      "supportedProjectCountsByAxis": {
+        "precio": 1,
+        "precio_D": 1,
+        "precio_D_B": 1,
+        "precio_util": 1,
+        "precio_total": 1,
+        "precio_D_B_util": 1,
+        "precio_D_B_total": 1,
+        "D_B": 15,
+        "D_B_util": 1,
+        "D_B_total": 1,
+        "B_util": 2,
+        "B_total": 2,
+        "precio_tipo": 1
+      },
+      "countsAreNotUniqueStockOrNewFacts": true
+    }
+  },
+  "original131SourcePointers": {
+    "distrito-centro": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/distrito-centro/layers/published875"
+    },
+    "reserva-mayor-2": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/reserva-mayor-2/layers/published875"
+    },
+    "vista-llacolen-b": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vista-llacolen-b/layers/published875"
+    },
+    "bcome": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/bcome/layers/published875"
+    },
+    "vista-llacolen-a": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vista-llacolen-a/layers/published875"
+    },
+    "campus-llacolen": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/campus-llacolen/layers/published875"
+    },
+    "nucleo-costanera": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/nucleo-costanera/layers/published875"
+    },
+    "wayra": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/wayra/layers/published875"
+    },
+    "lamara": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/lamara/layers/published875"
+    },
+    "alto-buzeta": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/alto-buzeta/layers/published875"
+    },
+    "independencia-4745": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/independencia-4745/layers/published875"
+    },
+    "vistamar": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vistamar/layers/published875"
+    },
+    "costanera-coquimbo-a": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/costanera-coquimbo-a/layers/published875"
+    },
+    "costanera-coquimbo-b": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/costanera-coquimbo-b/layers/published875"
+    },
+    "edificio-ecuador": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-ecuador/layers/published875"
+    },
+    "coronel-godoy": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/coronel-godoy/layers/published875"
+    },
+    "edificio-indi": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-indi/layers/published875"
+    },
+    "vivaceta": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vivaceta/layers/published875"
+    },
+    "edificio-bezanilla": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-bezanilla/layers/published875"
+    },
+    "jardines-de-alvarado": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/jardines-de-alvarado/layers/published875"
+    },
+    "edificio-santa-maria": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-santa-maria/layers/published875"
+    },
+    "plaza-cervantes-b": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/plaza-cervantes-b/layers/published875"
+    },
+    "edificio-teatinos-750": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-teatinos-750/layers/published875"
+    },
+    "edificio-vista-amunategui": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-vista-amunategui/layers/published875"
+    },
+    "endemico": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/endemico/layers/published875"
+    },
+    "playa-penuelas": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/playa-penuelas/layers/published875"
+    },
+    "serrano-torre-a": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/serrano-torre-a/layers/published875"
+    },
+    "plaza-cervantes": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/plaza-cervantes/layers/published875"
+    },
+    "vista-costanera": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vista-costanera/layers/published875"
+    },
+    "vista-reloncavi": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vista-reloncavi/layers/published875"
+    },
+    "downtown-san-martin": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/downtown-san-martin/layers/published875"
+    },
+    "vista-morande": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vista-morande/layers/published875"
+    },
+    "edificio-don-pepe-154": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-don-pepe-154/layers/published875"
+    },
+    "plaza-de-lourdes": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/plaza-de-lourdes/layers/published875"
+    },
+    "santa-elena-1670-mbi": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/santa-elena-1670-mbi/layers/published875"
+    },
+    "plaza-quilicura": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/plaza-quilicura/layers/published875"
+    },
+    "mapocho-3521-edificio-a": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/mapocho-3521-edificio-a/layers/published875"
+    },
+    "edificio-lira-622": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-lira-622/layers/published875"
+    },
+    "edificio-dual-390-lto": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-dual-390-lto/layers/published875"
+    },
+    "entre-vicunas": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/entre-vicunas/layers/published875"
+    },
+    "lomas-de-puyai": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/lomas-de-puyai/layers/published875"
+    },
+    "ferroparque": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/ferroparque/layers/published875"
+    },
+    "froilan-roa-5731-torre-norte": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/froilan-roa-5731-torre-norte/layers/published875"
+    },
+    "rosas-1444": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/rosas-1444/layers/published875"
+    },
+    "guillermo-mann-1401": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/guillermo-mann-1401/layers/published875"
+    },
+    "froilan-roa-5731-torre-sur": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/froilan-roa-5731-torre-sur/layers/published875"
+    },
+    "edificio-san-francisco-1204": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-san-francisco-1204/layers/published875"
+    },
+    "cumbres-de-penuelas": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/cumbres-de-penuelas/layers/published875"
+    },
+    "edificio-baum": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-baum/layers/published875"
+    },
+    "diagonal-paraguay": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/diagonal-paraguay/layers/published875"
+    },
+    "inn-puerto-chico": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/inn-puerto-chico/layers/published875"
+    },
+    "edificio-suecia": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-suecia/layers/published875"
+    },
+    "capitanes": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/capitanes/layers/published875"
+    },
+    "parque-germania": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/parque-germania/layers/published875"
+    },
+    "edificio-argomedo": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-argomedo/layers/published875"
+    },
+    "edificio-mood": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-mood/layers/published875"
+    },
+    "edificio-indigo": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-indigo/layers/published875"
+    },
+    "edificio-verne": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-verne/layers/published875"
+    },
+    "edificio-santo": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-santo/layers/published875"
+    },
+    "edificio-living-town": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-living-town/layers/published875"
+    },
+    "edificio-bold": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-bold/layers/published875"
+    },
+    "domeyko-2055": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/domeyko-2055/layers/published875"
+    },
+    "vergara-domeyko": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vergara-domeyko/layers/published875"
+    },
+    "parque-panama": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/parque-panama/layers/published875"
+    },
+    "playa-serena": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/playa-serena/layers/published875"
+    },
+    "don-tomas": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/don-tomas/layers/published875"
+    },
+    "plaza-las-condes": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/plaza-las-condes/layers/published875"
+    },
+    "mapocho-3521": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/mapocho-3521/layers/published875"
+    },
+    "jofre-135": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/jofre-135/layers/published875"
+    },
+    "irarrazaval": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/irarrazaval/layers/published875"
+    },
+    "parque-quinta": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/parque-quinta/layers/published875"
+    },
+    "quintavista": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/quintavista/layers/published875"
+    },
+    "don-rafael": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/don-rafael/layers/published875"
+    },
+    "terrazzo": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/terrazzo/layers/published875"
+    },
+    "vima": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vima/layers/published875"
+    },
+    "los-lilenes": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/los-lilenes/layers/published875"
+    },
+    "nueva-esmeralda": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/nueva-esmeralda/layers/published875"
+    },
+    "el-aromo": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/el-aromo/layers/published875"
+    },
+    "espacio-victoria": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/espacio-victoria/layers/published875"
+    },
+    "terratolten": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/terratolten/layers/published875"
+    },
+    "pintor-cicarelli-iii": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/pintor-cicarelli-iii/layers/published875"
+    },
+    "trinidad-iii": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/trinidad-iii/layers/published875"
+    },
+    "edificio-liverpool": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-liverpool/layers/published875"
+    },
+    "mirador-la-florida": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/mirador-la-florida/layers/published875"
+    },
+    "alto-goycolea": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/alto-goycolea/layers/published875"
+    },
+    "eleuterio-ramirez": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/eleuterio-ramirez/layers/published875"
+    },
+    "barrio-zenteno": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/barrio-zenteno/layers/published875"
+    },
+    "urban-la-florida": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/urban-la-florida/layers/published875"
+    },
+    "vicuna-mackenna-6896": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vicuna-mackenna-6896/layers/published875"
+    },
+    "vicuna-mackenna-7589": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vicuna-mackenna-7589/layers/published875"
+    },
+    "aires-la-florida-2": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/aires-la-florida-2/layers/published875"
+    },
+    "condominio-uruguay": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/condominio-uruguay/layers/published875"
+    },
+    "enlace-mackenna": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/enlace-mackenna/layers/published875"
+    },
+    "novo-catedral": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/novo-catedral/layers/published875"
+    },
+    "carmen-marin": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/carmen-marin/layers/published875"
+    },
+    "gregorio-de-la-fuente-a": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/gregorio-de-la-fuente-a/layers/published875"
+    },
+    "matta-016": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/matta-016/layers/published875"
+    },
+    "edificio-plaza-nova": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-plaza-nova/layers/published875"
+    },
+    "condominio-parque-don-lautaro": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/condominio-parque-don-lautaro/layers/published875"
+    },
+    "caceres": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/caceres/layers/published875"
+    },
+    "pintor-cicarelli-i": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/pintor-cicarelli-i/layers/published875"
+    },
+    "pintor-cicarelli-ii": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/pintor-cicarelli-ii/layers/published875"
+    },
+    "edif-origen-atacama-3008": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edif-origen-atacama-3008/layers/published875"
+    },
+    "abdon-cifuentes": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/abdon-cifuentes/layers/published875"
+    },
+    "don-ignacio": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/don-ignacio/layers/published875"
+    },
+    "tocornal": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/tocornal/layers/published875"
+    },
+    "centenario-1": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/centenario-1/layers/published875"
+    },
+    "curico-77": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/curico-77/layers/published875"
+    },
+    "san-ignacio": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/san-ignacio/layers/published875"
+    },
+    "angamos": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/angamos/layers/published875"
+    },
+    "conecta-huechuraba": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/conecta-huechuraba/layers/published875"
+    },
+    "bordevivo": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/bordevivo/layers/published875"
+    },
+    "mirador-mapocho": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/mirador-mapocho/layers/published875"
+    },
+    "alto-san-joaquin": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/alto-san-joaquin/layers/published875"
+    },
+    "vista-bulnes": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vista-bulnes/layers/published875"
+    },
+    "jardines-de-ramon-cruz": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/jardines-de-ramon-cruz/layers/published875"
+    },
+    "vitro": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vitro/layers/published875"
+    },
+    "mirador-irarrazaval": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/mirador-irarrazaval/layers/published875"
+    },
+    "alto-irarrazaval": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/alto-irarrazaval/layers/published875"
+    },
+    "jose-pedro-alessandri": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/jose-pedro-alessandri/layers/published875"
+    },
+    "vicuna-mackenna-1432": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vicuna-mackenna-1432/layers/published875"
+    },
+    "vicente-valdes": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vicente-valdes/layers/published875"
+    },
+    "diagonal-vicuna": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/diagonal-vicuna/layers/published875"
+    },
+    "vista-portugal": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/vista-portugal/layers/published875"
+    },
+    "marina-pacifico": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/marina-pacifico/layers/published875"
+    },
+    "nova-parque": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/nova-parque/layers/published875"
+    },
+    "own": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/own/layers/published875"
+    },
+    "monjitas-690": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/monjitas-690/layers/published875"
+    },
+    "los-alerces": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/los-alerces/layers/published875"
+    },
+    "valle-los-ingleses-iii": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/valle-los-ingleses-iii/layers/published875"
+    },
+    "edificio-nordico": {
+      "source": "original131",
+      "pointer": "/projectsBySlug/edificio-nordico/layers/published875"
+    }
+  },
+  "expansion21BySlug": {
+    "alameda-4719": {
+      "name": "Alameda 4719",
+      "developer": "Euro",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:299",
+              "attributes": {
+                "priceUF": 2400.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/0/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-dbfbb28c8554626afd7009be",
+              "attributes": {
+                "priceUF": 2400.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/0/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:299",
+              "attributes": {
+                "priceUF": 2400.0,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/0/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_D",
+        "precio_D_B",
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "compania-1735": {
+      "name": "Compañía 1735",
+      "developer": "Sento",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "owner-category:315:2",
+              "attributes": {
+                "priceUF": 4550
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/1/ownerReferences/0"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "owner-category:315:2",
+              "attributes": {
+                "priceUF": 4550,
+                "bedrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/1/ownerReferences/0"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-bea8385cb810f021bec71e3e",
+              "attributes": {
+                "bedrooms": 2,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/1/exactUnitReferences/0"
+              },
+              "pricePolicy": "masked-by-owner"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_D_B",
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total",
+        "precio_tipo"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "nuevo-vivaceta": {
+      "name": "Nuevo Vivaceta",
+      "developer": "Ecasa",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 4,
+          "witnesses": [
+            {
+              "id": "owner-category:1549:0",
+              "attributes": {
+                "priceUF": 2050
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/2/ownerReferences/0"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            },
+            {
+              "id": "owner-category:1549:1",
+              "attributes": {
+                "priceUF": 2190
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/2/ownerReferences/1"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            },
+            {
+              "id": "owner-category:1549:2",
+              "attributes": {
+                "priceUF": 2600
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/2/ownerReferences/2"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            },
+            {
+              "id": "owner-category:1549:3",
+              "attributes": {
+                "priceUF": 4280
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/2/ownerReferences/3"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 3,
+          "witnesses": [
+            {
+              "id": "owner-category:1549:1",
+              "attributes": {
+                "priceUF": 2190,
+                "bedrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/2/ownerReferences/1"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            },
+            {
+              "id": "owner-category:1549:2",
+              "attributes": {
+                "priceUF": 2600,
+                "bedrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/2/ownerReferences/2"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            },
+            {
+              "id": "owner-category:1549:3",
+              "attributes": {
+                "priceUF": 4280,
+                "bedrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/2/ownerReferences/3"
+              },
+              "pricePolicy": "owner-existing-typology-no-model"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_D_B",
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total",
+        "precio_tipo"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "condominio-altos-del-penon": {
+      "name": "Condominio Altos del Peñón",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1556",
+              "attributes": {
+                "priceUF": 3260.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/3/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-6bc8c6088a649646ef5ad93e",
+              "attributes": {
+                "priceUF": 2771.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/3/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-6bc8c6088a649646ef5ad93e",
+              "attributes": {
+                "priceUF": 2771.0,
+                "bedrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/3/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-6bc8c6088a649646ef5ad93e",
+              "attributes": {
+                "priceUF": 2771.0,
+                "bedrooms": 2,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/3/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-6bc8c6088a649646ef5ad93e",
+              "attributes": {
+                "bedrooms": 2,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/3/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1556",
+              "attributes": {
+                "priceUF": 3260.0,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/3/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "condominio-reserva-santa-clara": {
+      "name": "Condominio Reserva Santa Clara",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1557",
+              "attributes": {
+                "priceUF": 4300.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/4/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-8426a6d56010f3714bf5b7b1",
+              "attributes": {
+                "priceUF": 3956.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/4/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-8426a6d56010f3714bf5b7b1",
+              "attributes": {
+                "priceUF": 3956.0,
+                "bedrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/4/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-8426a6d56010f3714bf5b7b1",
+              "attributes": {
+                "priceUF": 3956.0,
+                "bedrooms": 3,
+                "bathrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/4/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-8426a6d56010f3714bf5b7b1",
+              "attributes": {
+                "bedrooms": 3,
+                "bathrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/4/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1557",
+              "attributes": {
+                "priceUF": 4300.0,
+                "propertyType": "casa"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/4/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "condominio-hacienda-santa-clara": {
+      "name": "Condominio Hacienda Santa Clara",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1558",
+              "attributes": {
+                "priceUF": 3967.8
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/5/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-009b98fddd9aea32f3fa8bb6",
+              "attributes": {
+                "priceUF": 3650.38
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/5/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-009b98fddd9aea32f3fa8bb6",
+              "attributes": {
+                "priceUF": 3650.38,
+                "bedrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/5/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-009b98fddd9aea32f3fa8bb6",
+              "attributes": {
+                "priceUF": 3650.38,
+                "bedrooms": 3,
+                "bathrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/5/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-009b98fddd9aea32f3fa8bb6",
+              "attributes": {
+                "bedrooms": 3,
+                "bathrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/5/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1558",
+              "attributes": {
+                "priceUF": 3967.8,
+                "propertyType": "casa"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/5/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "condominio-plaza-nos": {
+      "name": "Condominio Plaza Nos",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1559",
+              "attributes": {
+                "priceUF": 3922.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/6/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-c0ba2f938a3f393dab644fc5",
+              "attributes": {
+                "priceUF": 3255.26
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/6/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-c0ba2f938a3f393dab644fc5",
+              "attributes": {
+                "priceUF": 3255.26,
+                "bedrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/6/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-c0ba2f938a3f393dab644fc5",
+              "attributes": {
+                "priceUF": 3255.26,
+                "bedrooms": 3,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/6/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-c0ba2f938a3f393dab644fc5",
+              "attributes": {
+                "bedrooms": 3,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/6/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1559",
+              "attributes": {
+                "priceUF": 3922.0,
+                "propertyType": "casa"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/6/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "condominio-sendero-santa-clara": {
+      "name": "Condominio Sendero Santa Clara",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1560",
+              "attributes": {
+                "priceUF": 2682.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/7/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-d86d91fb71d4ab62999a8371",
+              "attributes": {
+                "priceUF": 2682.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/7/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d86d91fb71d4ab62999a8371",
+              "attributes": {
+                "priceUF": 2682.0,
+                "bedrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/7/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d86d91fb71d4ab62999a8371",
+              "attributes": {
+                "priceUF": 2682.0,
+                "bedrooms": 2,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/7/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d86d91fb71d4ab62999a8371",
+              "attributes": {
+                "bedrooms": 2,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/7/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1560",
+              "attributes": {
+                "priceUF": 2682.0,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/7/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "terrazas-del-mirador": {
+      "name": "Terrazas del Mirador",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1561",
+              "attributes": {
+                "priceUF": 4700.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/8/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-5e8346564cd3a1f7bc23e057",
+              "attributes": {
+                "priceUF": 4324.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/8/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-5e8346564cd3a1f7bc23e057",
+              "attributes": {
+                "priceUF": 4324.0,
+                "bedrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/8/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-5e8346564cd3a1f7bc23e057",
+              "attributes": {
+                "priceUF": 4324.0,
+                "bedrooms": 3,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/8/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-5e8346564cd3a1f7bc23e057",
+              "attributes": {
+                "bedrooms": 3,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/8/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1561",
+              "attributes": {
+                "priceUF": 4700.0,
+                "propertyType": "casa"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/8/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "altos-del-mirador": {
+      "name": "Altos del Mirador",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1562",
+              "attributes": {
+                "priceUF": 2995.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/9/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-57ed38ed6b3905930e247d5b",
+              "attributes": {
+                "priceUF": 2755.4
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/9/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-57ed38ed6b3905930e247d5b",
+              "attributes": {
+                "priceUF": 2755.4,
+                "bedrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/9/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-57ed38ed6b3905930e247d5b",
+              "attributes": {
+                "priceUF": 2755.4,
+                "bedrooms": 3,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/9/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-57ed38ed6b3905930e247d5b",
+              "attributes": {
+                "bedrooms": 3,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/9/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1562",
+              "attributes": {
+                "priceUF": 2995.0,
+                "propertyType": "casa"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/9/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "condominio-hacienda-junquillar": {
+      "name": "Condominio Hacienda Junquillar",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1563",
+              "attributes": {
+                "priceUF": 3748.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/10/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-89cca284ed3b7d1f374fb9b1",
+              "attributes": {
+                "priceUF": 3298.24
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/10/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-89cca284ed3b7d1f374fb9b1",
+              "attributes": {
+                "priceUF": 3298.24,
+                "bedrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/10/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-89cca284ed3b7d1f374fb9b1",
+              "attributes": {
+                "priceUF": 3298.24,
+                "bedrooms": 3,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/10/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-89cca284ed3b7d1f374fb9b1",
+              "attributes": {
+                "bedrooms": 3,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/10/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1563",
+              "attributes": {
+                "priceUF": 3748.0,
+                "propertyType": "casa"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/10/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "condominio-hacienda-volcanes": {
+      "name": "Condominio Hacienda Volcanes",
+      "developer": "GPR",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1566",
+              "attributes": {
+                "priceUF": 4700.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/11/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-fe54e7ec616a4abca44ef88b",
+              "attributes": {
+                "priceUF": 4324.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/11/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-fe54e7ec616a4abca44ef88b",
+              "attributes": {
+                "priceUF": 4324.0,
+                "bedrooms": 3
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/11/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-fe54e7ec616a4abca44ef88b",
+              "attributes": {
+                "priceUF": 4324.0,
+                "bedrooms": 3,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/11/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-fe54e7ec616a4abca44ef88b",
+              "attributes": {
+                "bedrooms": 3,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/11/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1566",
+              "attributes": {
+                "priceUF": 4700.0,
+                "propertyType": "casa"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/11/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "kiez": {
+      "name": "Kiez",
+      "developer": "Leben",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1573",
+              "attributes": {
+                "priceUF": 2777.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/12/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-ea3bb2d0ebb700bc2fba27b3",
+              "attributes": {
+                "priceUF": 3014.35
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/12/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-ea3bb2d0ebb700bc2fba27b3",
+              "attributes": {
+                "priceUF": 3014.35,
+                "bedrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/12/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-ea3bb2d0ebb700bc2fba27b3",
+              "attributes": {
+                "priceUF": 3014.35,
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/12/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-ea3bb2d0ebb700bc2fba27b3",
+              "attributes": {
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/12/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1573",
+              "attributes": {
+                "priceUF": 2777.0,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/12/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "centro-santa-ana": {
+      "name": "Centro Santa Ana",
+      "developer": "AJ Urbana",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1575",
+              "attributes": {
+                "priceUF": 2576.5
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/13/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-6655e87b77e8d2e1f49281fc",
+              "attributes": {
+                "priceUF": 2190.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/13/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1575",
+              "attributes": {
+                "priceUF": 2576.5,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/13/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_D",
+        "precio_D_B",
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "edificio-ambar-urbano": {
+      "name": "Edificio Ambar Urbano",
+      "developer": "Euro",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1579",
+              "attributes": {
+                "priceUF": 2983.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/14/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-d54a3a55d027171ed7619af4",
+              "attributes": {
+                "priceUF": 2893.51
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/14/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d54a3a55d027171ed7619af4",
+              "attributes": {
+                "priceUF": 2893.51,
+                "bedrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/14/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d54a3a55d027171ed7619af4",
+              "attributes": {
+                "priceUF": 2893.51,
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/14/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d54a3a55d027171ed7619af4",
+              "attributes": {
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/14/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1579",
+              "attributes": {
+                "priceUF": 2983.0,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/14/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "espacio-v": {
+      "name": "Espacio V",
+      "developer": "Euro",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1582",
+              "attributes": {
+                "priceUF": 3160.16
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/15/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-9ec6470e6b33fe17b6060ddb",
+              "attributes": {
+                "priceUF": 3065.36
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/15/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-9ec6470e6b33fe17b6060ddb",
+              "attributes": {
+                "priceUF": 3065.36,
+                "bedrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/15/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-9ec6470e6b33fe17b6060ddb",
+              "attributes": {
+                "priceUF": 3065.36,
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/15/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-9ec6470e6b33fe17b6060ddb",
+              "attributes": {
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/15/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1582",
+              "attributes": {
+                "priceUF": 3160.16,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/15/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "edificio-botanico": {
+      "name": "Edificio Botánico",
+      "developer": "Norte Verde",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1585",
+              "attributes": {
+                "priceUF": 2855.81
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/16/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-f841802509968d1225015be7",
+              "attributes": {
+                "priceUF": 2456.0
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/16/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1585",
+              "attributes": {
+                "priceUF": 2855.81,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/16/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_D",
+        "precio_D_B",
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "balmaceda": {
+      "name": "Balmaceda",
+      "developer": "Ingevec",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1586",
+              "attributes": {
+                "priceUF": 3166.29
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/17/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-62de3483baba038bb009a2bf",
+              "attributes": {
+                "priceUF": 3166.29
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/17/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-62de3483baba038bb009a2bf",
+              "attributes": {
+                "priceUF": 3166.29,
+                "bedrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/17/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-62de3483baba038bb009a2bf",
+              "attributes": {
+                "priceUF": 3166.29,
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/17/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-62de3483baba038bb009a2bf",
+              "attributes": {
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/17/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1586",
+              "attributes": {
+                "priceUF": 3166.29,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/17/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "prat": {
+      "name": "Prat",
+      "developer": "Ingevec",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1588",
+              "attributes": {
+                "priceUF": 2807.81
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/18/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-b3f139613eadbbd83d1df0fc",
+              "attributes": {
+                "priceUF": 2807.81
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/18/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1588",
+              "attributes": {
+                "priceUF": 2807.81,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/18/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_D",
+        "precio_D_B",
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "vicuna-mackenna-capital": {
+      "name": "Vicuña Mackenna Capital",
+      "developer": "Ingevec",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1589",
+              "attributes": {
+                "priceUF": 4771.92
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/19/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-d3fdaa62e9a968ef9714911d",
+              "attributes": {
+                "priceUF": 4771.92
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/19/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d3fdaa62e9a968ef9714911d",
+              "attributes": {
+                "priceUF": 4771.92,
+                "bedrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/19/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d3fdaa62e9a968ef9714911d",
+              "attributes": {
+                "priceUF": 4771.92,
+                "bedrooms": 2,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/19/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-d3fdaa62e9a968ef9714911d",
+              "attributes": {
+                "bedrooms": 2,
+                "bathrooms": 2
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/19/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1589",
+              "attributes": {
+                "priceUF": 4771.92,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/19/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    },
+    "mirador-capital": {
+      "name": "Mirador Capital",
+      "developer": "Ingevec",
+      "combinations": {
+        "precio": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 2,
+          "witnesses": [
+            {
+              "id": "iris-from:1590",
+              "attributes": {
+                "priceUF": 2994.03
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/20/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            },
+            {
+              "id": "iris-ref-5db2cff637a03b00354d5f99",
+              "attributes": {
+                "priceUF": 2994.03
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/20/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-5db2cff637a03b00354d5f99",
+              "attributes": {
+                "priceUF": 2994.03,
+                "bedrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/20/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-5db2cff637a03b00354d5f99",
+              "attributes": {
+                "priceUF": 2994.03,
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/20/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "D_B": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-ref-5db2cff637a03b00354d5f99",
+              "attributes": {
+                "bedrooms": 1,
+                "bathrooms": 1
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/20/exactUnitReferences/0"
+              },
+              "pricePolicy": "external-exact-unit"
+            }
+          ]
+        },
+        "precio_tipo": {
+          "status": "TESTIGO_ESTATICO_MISMA_REFERENCIA_NO_STOCK",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "iris-from:1590",
+              "attributes": {
+                "priceUF": 2994.03,
+                "propertyType": "departamento"
+              },
+              "source": {
+                "source": "expansion21",
+                "pointer": "/projects/20/externalIris"
+              },
+              "pricePolicy": "external-project-from"
+            }
+          ]
+        }
+      },
+      "unsupportedAxes": [
+        "precio_util",
+        "precio_total",
+        "precio_D_B_util",
+        "precio_D_B_total",
+        "D_B_util",
+        "D_B_total",
+        "B_util",
+        "B_total"
+      ],
+      "preparedLeben": false,
+      "documentary24a": false
+    }
+  },
+  "limits": [
+    "Region, commune, delivery and state are project facts within their source scope; amenities additionally require compatible reference type/use.",
+    "A tuple does not establish every additional filter or joint range. Use the separately pinned existing acceptance certificates for engine behavior.",
+    "Missing active attributes fail closed; inactive unknown attributes do not remove otherwise supported results.",
+    "Prices and surface profiles in different references cannot be joined.",
+    "Iris prices remain external, and original local24a is not published."
+  ]
+}

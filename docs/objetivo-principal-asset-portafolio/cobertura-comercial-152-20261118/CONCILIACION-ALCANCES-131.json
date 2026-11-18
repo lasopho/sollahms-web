@@ -1,0 +1,712 @@
+{
+  "schemaVersion": 1,
+  "kind": "APENDICE_ACOTADO_CONCILIACION_DE_ALCANCES_131_SIN_REAUDITORIA",
+  "recordedAtUTC": "2026-11-18T22:58:06.449441+00:00",
+  "method": {
+    "readExistingViewsAndAnalysisOnly": true,
+    "newPrimaryEvidence": 0,
+    "IrisQueries": 0,
+    "applicationModulesExecuted": 0,
+    "applicationTests": 0,
+    "historicalStatesEdited": 0,
+    "newOwnerQuestions": 0,
+    "scope": "Cruce documental de unknowns porcampo enVISTA131 con ejes/testigos ya indexados enANALISIS131. No incluye una exploración devalores aislados no representados por estos ejes."
+  },
+  "sources": {
+    "view": {
+      "path": "docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/VISTA-COMERCIAL-POR-PROYECTO.json",
+      "sha256": "e415fa0e07956ba8ebc996c7168389a8df494553f3cb4cc5ffab018de3807231"
+    },
+    "analysis": {
+      "path": "docs/objetivo-principal-asset-portafolio/aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json",
+      "sha256": "69450fcaf615f0c96f4d29625b3734dc9dc96030b29dc5fec7e0f02fced29463",
+      "indexedPublishedLayerCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "indexedLocalLayerCommit": "24a11df1a62898a06b408a729bb20ce1b1de4e87"
+    }
+  },
+  "summary": {
+    "prioritizedFields": [
+      "tipo_propiedad",
+      "precio",
+      "dormitorios",
+      "banos",
+      "util",
+      "total"
+    ],
+    "historicalUnknownCellsInPrioritizedFields": 115,
+    "viewUnknownCellsInPrioritizedFields": 107,
+    "existingLocalObservationsAlreadyReflectedInView": 8,
+    "viewUnknownButPublishedValueWitnessExists": 3,
+    "remainingWithoutWitnessInTheseIndexedAxes": 104,
+    "all11ViewUnknownCount381IsNotUnrecoverableDataCount": true,
+    "noSafeGlobalSubtractBecauseOtherFieldsNotCoveredByTheseAxes": true,
+    "historical1179CellsUnchanged": true,
+    "historical313IdsUnchanged": true
+  },
+  "countsByPrioritizedField": {
+    "tipo_propiedad": {
+      "historicalUnknownCells": 4,
+      "viewUnknownCells": 2,
+      "viewUnknownWithPublishedWitnessInIndexedAxes": 0,
+      "viewUnknownWithOnlyOtherLayerWitness": 0,
+      "viewUnknownWithoutWitnessInTheseIndexedAxes": 2
+    },
+    "precio": {
+      "historicalUnknownCells": 7,
+      "viewUnknownCells": 7,
+      "viewUnknownWithPublishedWitnessInIndexedAxes": 2,
+      "viewUnknownWithOnlyOtherLayerWitness": 0,
+      "viewUnknownWithoutWitnessInTheseIndexedAxes": 5
+    },
+    "dormitorios": {
+      "historicalUnknownCells": 1,
+      "viewUnknownCells": 0,
+      "viewUnknownWithPublishedWitnessInIndexedAxes": 0,
+      "viewUnknownWithOnlyOtherLayerWitness": 0,
+      "viewUnknownWithoutWitnessInTheseIndexedAxes": 0
+    },
+    "banos": {
+      "historicalUnknownCells": 13,
+      "viewUnknownCells": 9,
+      "viewUnknownWithPublishedWitnessInIndexedAxes": 0,
+      "viewUnknownWithOnlyOtherLayerWitness": 0,
+      "viewUnknownWithoutWitnessInTheseIndexedAxes": 9
+    },
+    "util": {
+      "historicalUnknownCells": 50,
+      "viewUnknownCells": 49,
+      "viewUnknownWithPublishedWitnessInIndexedAxes": 1,
+      "viewUnknownWithOnlyOtherLayerWitness": 0,
+      "viewUnknownWithoutWitnessInTheseIndexedAxes": 48
+    },
+    "total": {
+      "historicalUnknownCells": 40,
+      "viewUnknownCells": 40,
+      "viewUnknownWithPublishedWitnessInIndexedAxes": 0,
+      "viewUnknownWithOnlyOtherLayerWitness": 0,
+      "viewUnknownWithoutWitnessInTheseIndexedAxes": 40
+    }
+  },
+  "viewUnknownWithExistingOtherScopeWitness": [
+    {
+      "slug": "edificio-baum",
+      "name": "Edificio BAUM",
+      "field": "precio",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageStateUnchanged": "desconocido",
+      "viewPointer": "/projectsBySlug/edificio-baum/fields/precio",
+      "existingWitnessSupport": [
+        {
+          "layer": "published875",
+          "axis": "precio",
+          "status": "TESTIGO_CONJUNTO_EN_CONTRATO",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "published-project-price",
+              "source": "data/proyectos.json",
+              "pointer": "/48/precioDesdeUF"
+            }
+          ],
+          "analysisPointer": "/projectsBySlug/edificio-baum/layers/published875/combinations/precio"
+        },
+        {
+          "layer": "published875",
+          "axis": "precio_tipo",
+          "status": "TESTIGO_CONJUNTO_EN_CONTRATO",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "published-project-price",
+              "source": "data/proyectos.json",
+              "pointer": "/48/precioDesdeUF"
+            }
+          ],
+          "analysisPointer": "/projectsBySlug/edificio-baum/layers/published875/combinations/precio_tipo"
+        }
+      ],
+      "reportClassification": "VALOR_EN_OTRO_ALCANCE_PUBLICADO_NO_DATO_NUNCA_RECUPERADO",
+      "noOriginalStateClosure": true,
+      "noPriceOrCrossReferenceBorrow": true
+    },
+    {
+      "slug": "edificio-santo",
+      "name": "Edificio Santo",
+      "field": "precio",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageStateUnchanged": "desconocido",
+      "viewPointer": "/projectsBySlug/edificio-santo/fields/precio",
+      "existingWitnessSupport": [
+        {
+          "layer": "published875",
+          "axis": "precio",
+          "status": "TESTIGO_CONJUNTO_EN_CONTRATO",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "published-project-price",
+              "source": "data/proyectos.json",
+              "pointer": "/58/precioDesdeUF"
+            }
+          ],
+          "analysisPointer": "/projectsBySlug/edificio-santo/layers/published875/combinations/precio"
+        },
+        {
+          "layer": "published875",
+          "axis": "precio_tipo",
+          "status": "TESTIGO_CONJUNTO_EN_CONTRATO",
+          "witnessCount": 1,
+          "witnesses": [
+            {
+              "id": "published-project-price",
+              "source": "data/proyectos.json",
+              "pointer": "/58/precioDesdeUF"
+            }
+          ],
+          "analysisPointer": "/projectsBySlug/edificio-santo/layers/published875/combinations/precio_tipo"
+        }
+      ],
+      "reportClassification": "VALOR_EN_OTRO_ALCANCE_PUBLICADO_NO_DATO_NUNCA_RECUPERADO",
+      "noOriginalStateClosure": true,
+      "noPriceOrCrossReferenceBorrow": true
+    },
+    {
+      "slug": "inn-puerto-chico",
+      "name": "INN Puerto Chico",
+      "field": "util",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageStateUnchanged": "desconocido",
+      "viewPointer": "/projectsBySlug/inn-puerto-chico/fields/util",
+      "existingWitnessSupport": [
+        {
+          "layer": "published875",
+          "axis": "D_B_util",
+          "status": "TESTIGO_CONJUNTO_EN_CONTRATO",
+          "witnessCount": 25,
+          "witnesses": [
+            {
+              "id": "published-model:0",
+              "source": "data/catalog-facets.json",
+              "pointer": "/projects/inn-puerto-chico/variants/0"
+            }
+          ],
+          "analysisPointer": "/projectsBySlug/inn-puerto-chico/layers/published875/combinations/D_B_util"
+        },
+        {
+          "layer": "published875",
+          "axis": "B_util",
+          "status": "TESTIGO_CONJUNTO_EN_CONTRATO",
+          "witnessCount": 25,
+          "witnesses": [
+            {
+              "id": "published-model:0",
+              "source": "data/catalog-facets.json",
+              "pointer": "/projects/inn-puerto-chico/variants/0"
+            }
+          ],
+          "analysisPointer": "/projectsBySlug/inn-puerto-chico/layers/published875/combinations/B_util"
+        }
+      ],
+      "reportClassification": "VALOR_EN_OTRO_ALCANCE_PUBLICADO_NO_DATO_NUNCA_RECUPERADO",
+      "noOriginalStateClosure": true,
+      "noPriceOrCrossReferenceBorrow": true
+    }
+  ],
+  "previouslyRecognizedHistoricalUnknownWithLocalObservation": [
+    {
+      "slug": "alto-buzeta",
+      "name": "Alto Buzeta",
+      "field": "tipo_propiedad",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageState": "parcial",
+      "viewPointer": "/projectsBySlug/alto-buzeta/fields/tipo_propiedad",
+      "additionalScopedValues": [
+        {
+          "referenceId": "IRIS-131-R004",
+          "attribute": "propertyType",
+          "state": "DOCUMENTADO_SOLO_EN_REFERENCIA_NO_OFERTA"
+        },
+        {
+          "referenceId": "IRIS-131-R005",
+          "attribute": "propertyType",
+          "state": "DOCUMENTADO_SOLO_EN_REFERENCIA_NO_OFERTA"
+        }
+      ],
+      "limitationReasonCodes": [
+        "OBSERVACION_REFERENCIAL_NO_OFERTA"
+      ],
+      "publishedBy24a": false,
+      "localReferences": [
+        {
+          "id": "IRIS-131-R004",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "storedAttribute": "departamento",
+          "predicateAttribute": "departamento",
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Útil/total no rotulados en las dos referencias inspeccionadas"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se recorrieron las once páginas de unidades ni se extrapolaron estas áreas a otras opciones"
+            }
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        },
+        {
+          "id": "IRIS-131-R005",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "storedAttribute": "departamento",
+          "predicateAttribute": "departamento",
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Útil/total no rotulados en las dos referencias inspeccionadas"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se recorrieron las once páginas de unidades ni se extrapolaron estas áreas a otras opciones"
+            }
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "plaza-cervantes",
+      "name": "Plaza Cervantes - Torre A",
+      "field": "tipo_propiedad",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageState": "parcial",
+      "viewPointer": "/projectsBySlug/plaza-cervantes/fields/tipo_propiedad",
+      "additionalScopedValues": [
+        {
+          "referenceId": "IRIS-131-R003",
+          "attribute": "propertyType",
+          "state": "PARCIAL_EN_REFERENCIA_CON_CONFLICTO_DE_ASOCIACION"
+        }
+      ],
+      "limitationReasonCodes": [
+        "OBSERVACION_REFERENCIAL_NO_OFERTA",
+        "CONFLICTO_DE_ASOCIACION"
+      ],
+      "publishedBy24a": false,
+      "localReferences": [
+        {
+          "id": "IRIS-131-R003",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "storedAttribute": "departamento",
+          "predicateAttribute": "departamento",
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Útil y total no rotulados en la referencia inspeccionada"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se certificó identidad uniforme Torre A de toda la ficha Iris1358"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se completaron otras tipologías/modelos de Torre A"
+            },
+            {
+              "kind": "building-scope-conflict",
+              "state": "contradictory",
+              "literal": "Conflicto explícito de alcance entre descripción general y referencia 909A; no asociar toda la ficha a Torre A ni tomar Torre B como equivalente",
+              "sourcePointer": "/projects/0/identity"
+            }
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "plaza-cervantes",
+      "name": "Plaza Cervantes - Torre A",
+      "field": "dormitorios",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageState": "parcial",
+      "viewPointer": "/projectsBySlug/plaza-cervantes/fields/dormitorios",
+      "additionalScopedValues": [
+        {
+          "referenceId": "IRIS-131-R003",
+          "attribute": "bedrooms",
+          "state": "PARCIAL_EN_REFERENCIA_CON_CONFLICTO_DE_ASOCIACION"
+        }
+      ],
+      "limitationReasonCodes": [
+        "RESUMEN_NO_ES_ASOCIACION",
+        "OBSERVACION_REFERENCIAL_NO_OFERTA",
+        "CONFLICTO_DE_ASOCIACION"
+      ],
+      "publishedBy24a": false,
+      "localReferences": [
+        {
+          "id": "IRIS-131-R003",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "storedAttribute": 2,
+          "predicateAttribute": 2,
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Útil y total no rotulados en la referencia inspeccionada"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se certificó identidad uniforme Torre A de toda la ficha Iris1358"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se completaron otras tipologías/modelos de Torre A"
+            },
+            {
+              "kind": "building-scope-conflict",
+              "state": "contradictory",
+              "literal": "Conflicto explícito de alcance entre descripción general y referencia 909A; no asociar toda la ficha a Torre A ni tomar Torre B como equivalente",
+              "sourcePointer": "/projects/0/identity"
+            }
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "plaza-cervantes",
+      "name": "Plaza Cervantes - Torre A",
+      "field": "banos",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageState": "parcial",
+      "viewPointer": "/projectsBySlug/plaza-cervantes/fields/banos",
+      "additionalScopedValues": [
+        {
+          "referenceId": "IRIS-131-R003",
+          "attribute": "bathrooms",
+          "state": "PARCIAL_EN_REFERENCIA_CON_CONFLICTO_DE_ASOCIACION"
+        }
+      ],
+      "limitationReasonCodes": [
+        "OBSERVACION_REFERENCIAL_NO_OFERTA",
+        "CONFLICTO_DE_ASOCIACION"
+      ],
+      "publishedBy24a": false,
+      "localReferences": [
+        {
+          "id": "IRIS-131-R003",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "storedAttribute": 1,
+          "predicateAttribute": 1,
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Útil y total no rotulados en la referencia inspeccionada"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se certificó identidad uniforme Torre A de toda la ficha Iris1358"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se completaron otras tipologías/modelos de Torre A"
+            },
+            {
+              "kind": "building-scope-conflict",
+              "state": "contradictory",
+              "literal": "Conflicto explícito de alcance entre descripción general y referencia 909A; no asociar toda la ficha a Torre A ni tomar Torre B como equivalente",
+              "sourcePointer": "/projects/0/identity"
+            }
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mapocho-3521-edificio-a",
+      "name": "Mapocho 3521 - Edificio A",
+      "field": "banos",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageState": "parcial",
+      "viewPointer": "/projectsBySlug/mapocho-3521-edificio-a/fields/banos",
+      "additionalScopedValues": [
+        {
+          "referenceId": "IRIS-131-R002",
+          "attribute": "bathrooms",
+          "state": "DOCUMENTADO_SOLO_EN_REFERENCIA_NO_OFERTA"
+        }
+      ],
+      "limitationReasonCodes": [
+        "OBSERVACION_REFERENCIAL_NO_OFERTA"
+      ],
+      "publishedBy24a": false,
+      "localReferences": [
+        {
+          "id": "IRIS-131-R002",
+          "scope": "Sólo referencia externa exacta; no precio Sollahms, no stock, no extrapolación.",
+          "storedAttribute": 1,
+          "predicateAttribute": 1,
+          "constraints": [
+            {
+              "kind": "plan-applicability",
+              "state": "unresolved",
+              "literal": "Unidad sin plano cargado; brochure histórico sigue unresolved-building."
+            }
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "vicuna-mackenna-6896",
+      "name": "Vicuña Mackenna 6896",
+      "field": "banos",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageState": "parcial",
+      "viewPointer": "/projectsBySlug/vicuna-mackenna-6896/fields/banos",
+      "additionalScopedValues": [
+        {
+          "referenceId": "IRIS-131-R018",
+          "attribute": "bathrooms",
+          "state": "DOCUMENTADO_SOLO_EN_REFERENCIA_NO_OFERTA"
+        }
+      ],
+      "limitationReasonCodes": [
+        "OBSERVACION_REFERENCIAL_NO_OFERTA"
+      ],
+      "publishedBy24a": false,
+      "localReferences": [
+        {
+          "id": "IRIS-131-R018",
+          "scope": "Sólo la unidad externa 1103/piso 11: plano comercial C2 mostrado por Iris en su modal, sin unidad impresa. Descripción C2(VM) separada; sin equivalencia general, certificación legal/as-built, stock, precio owner ni extensión a otras unidades.",
+          "storedAttribute": 1,
+          "predicateAttribute": 1,
+          "constraints": [
+            {
+              "kind": "unit-description",
+              "state": "literal-not-model-alias",
+              "literal": "C2(VM)"
+            },
+            {
+              "kind": "bedrooms",
+              "state": "unknown",
+              "literal": "Estudio literal no establece dormitorios numéricos cero."
+            },
+            {
+              "kind": "plan-association",
+              "state": "shown-in-unit-dialog",
+              "literal": "Plano comercial mostrado por Iris para1103; unidad no impresa. No certifica equivalencia general, revisión, fecha del plano ni condición legal/as-built."
+            },
+            {
+              "kind": "commercial-association",
+              "state": "unknown",
+              "literal": "Precio owner sin vínculo acreditado con1103/C2; precio Iris omitido del fixture."
+            },
+            {
+              "kind": "canonical-area-source",
+              "state": "explicitly-printed",
+              "literal": "Útil y total provienen de sus rótulos explícitos del plano, no del valor Internos ni de una suma."
+            }
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "novo-catedral",
+      "name": "Novo Catedral",
+      "field": "banos",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageState": "parcial",
+      "viewPointer": "/projectsBySlug/novo-catedral/fields/banos",
+      "additionalScopedValues": [
+        {
+          "referenceId": "IRIS-131-R016",
+          "attribute": "bathrooms",
+          "state": "DOCUMENTADO_SOLO_EN_REFERENCIA_NO_OFERTA"
+        }
+      ],
+      "limitationReasonCodes": [
+        "OBSERVACION_REFERENCIAL_NO_OFERTA"
+      ],
+      "publishedBy24a": false,
+      "localReferences": [
+        {
+          "id": "IRIS-131-R016",
+          "scope": "Sólo la unidad externa 109 observada; no oferta, inventario, precio Sollahms ni extrapolación al proyecto.",
+          "storedAttribute": 1,
+          "predicateAttribute": 1,
+          "constraints": [
+            {
+              "kind": "literal-typology",
+              "state": "numeric-bedrooms-unknown",
+              "literal": "La etiqueta estudio no confirma dormitorios numéricos cero ni tipo de propiedad; ambos permanecen null."
+            },
+            {
+              "kind": "unit-bathroom-scope",
+              "state": "exact-reference-only",
+              "literal": "El baño1 corresponde sólo a109; no se generaliza a todos los estudios ni al proyecto."
+            },
+            {
+              "kind": "plan-applicability",
+              "state": "unresolved",
+              "literal": "El gráfico vinculado al modal no acredita código de modelo, identidad impresa, útil o total; no se miden áreas desde el dibujo."
+            },
+            {
+              "kind": "metric-scope",
+              "state": "literal-only",
+              "literal": "Internos permanece internalM2; no se convierte en interior, útil o total, ni se suma a terraza para crear otra métrica."
+            },
+            {
+              "kind": "commercial-adoption",
+              "state": "not-authorized",
+              "literal": "Los importes externos no se copian ni autorizan como precio owner/Sollahms; no se vincula una cotización propietaria a esta unidad por coincidencias."
+            },
+            {
+              "kind": "unknown-use-and-entitlement",
+              "state": "unknown",
+              "literal": "El tipo de propiedad documentado no acredita uso, amenities, derechos privados, extras, entrega, stock o vigencia comercial."
+            }
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "plaza-las-condes",
+      "name": "Plaza Las Condes",
+      "field": "util",
+      "historicalStateUnchanged": "desconocido",
+      "viewCoverageState": "parcial",
+      "viewPointer": "/projectsBySlug/plaza-las-condes/fields/util",
+      "additionalScopedValues": [
+        {
+          "referenceId": "DOC-SENTO-PLC-U213-C7-OBS20261117",
+          "attribute": "usefulM2",
+          "state": "DOCUMENTADO_SOLO_EN_REFERENCIA_NO_OFERTA"
+        }
+      ],
+      "limitationReasonCodes": [
+        "OBSERVACION_REFERENCIAL_NO_OFERTA"
+      ],
+      "publishedBy24a": false,
+      "localReferences": [
+        {
+          "id": "DOC-SENTO-PLC-U213-C7-OBS20261117",
+          "scope": "Sólo unidad213/modeloC7; precio owner28/10 y superficies explícitas del plano; no inventario ni desde del proyecto",
+          "storedAttribute": 69.85,
+          "predicateAttribute": 69.85,
+          "constraints": [
+            "No extender a313/C6/C8 ni otras unidades.",
+            "Local review only; commercial validity and stock unconfirmed."
+          ],
+          "notFilterable": [
+            "internalM2",
+            "lotTotalM2",
+            "externalPriceMetadata",
+            "modelLabel",
+            "unitLabel"
+          ]
+        }
+      ]
+    }
+  ],
+  "priceScopeReconciliation": {
+    "viewUnknownPrices": 7,
+    "publishedPriceWitnessesWithinThose7": [
+      "edificio-baum",
+      "edificio-santo"
+    ],
+    "publishedLayerProjectsWithoutPriceWitness": [
+      "angamos",
+      "diagonal-vicuna",
+      "own",
+      "los-alerces",
+      "valle-los-ingleses-iii"
+    ],
+    "reportStatement": "BAUM ySanto no carecen de todo precio: el catálogo ya tiene precio enalcance publicado. La falta o limitación owner/preparada sigue separada. Losotros cinco no tienen testigoP enlacapa publicada indexada; no pedir precios deBAUM/Santo otra vez.",
+    "priceWitnessDoesNotCertifyCurrentOwnerQuoteOrStock": true
+  },
+  "INNUsefulScopeReconciliation": {
+    "slug": "inn-puerto-chico",
+    "viewState": "desconocido",
+    "publishedExistingAxes": [
+      "D_B_util",
+      "B_util"
+    ],
+    "publishedWitnessCount": 25,
+    "witnessSource": "data/catalog-facets.json",
+    "witnessPointer": "/projects/inn-puerto-chico/variants/0",
+    "reportStatement": "Existen superficies útiles enmodelos publicados indexados por elmotor; conservar su alcanceporvariante. Esto no resuelve documentos/unidadesLeben faltantes ni enlaza precio a esas áreas. No declarar ausencia total deútil enINN ni cerrar elestadohistórico."
+  },
+  "reportingRecommendations": [
+    "Conservar la tabla deestados históricos yvista documental exactamente con sus etiquetas. Añadir una columna/capa separada de testigo existente publicado o local, con ID,puntero y alcance.",
+    "No titular381 celdas deVISTA como datos nunca recuperados. Son unknowns deun corte yalcance documental, no uninventario exhaustivo deausencias en todoslos archivos publicados.",
+    "Eninformeúnico, registrar BAUM/Santo precio eINNútil bajo diferencias dealcance o dato existente pendiente deasociación, no dentrode una solicitud devalores inexistentes.",
+    "Las8observacioneslocales ya estaban contempladas porvista: no sumarlas denuevo comoavance. PlazaCervantes conserva conflictoTorreB/EdificioA y no habilita asociación automática.",
+    "Los5proyectos sinP publicado no equivalen a5preguntas nuevas: Ownvendido ylosotros casos conservan sus límites/antecedentes. Sólo se reutiliza la solicitudowner realmenteindispensable yaabierta.",
+    "Los104unknowns restantes enestos6campos carecen detestigo enlos ejesindexados. No afirmar ausencia deunvaloraislado que este análisis de combinaciones no representa.",
+    "No unir precio deproyecto conD/B/superficies devariantes distintas. Eltestigo útilINN no crea precio+útil; datos publicados ydoclocal24a permanecen separados.",
+    "No modificar estados originales, no reducir313, no repetirIris/pruebas ni pedir datos ya publicados. Incorporar nuevaevidencia sólo si es concreta y tiene alcance verificable."
+  ]
+}

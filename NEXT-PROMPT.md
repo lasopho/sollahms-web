@@ -1,6 +1,6 @@
 # Continuar el objetivo principal del Asset Portafolio de Sollahms
 
-Repositorio: `lasopho/sollahms-web`. Corte: 18/11/2026. Continuar sólo trabajo autorizado con evidencia nueva. No repetir auditorías, investigaciones agotadas, pruebas certificadas o informes sin novedades.
+Repositorio: `lasopho/sollahms-web`. Corte: 18/11/2026. Objetivo vigente: información comercial confiable y filtros funcionales para los **152 proyectos publicados**. Continuar sólo trabajo autorizado con evidencia nueva. No repetir auditorías, investigaciones agotadas, pruebas certificadas o informes sin novedades.
 
 ## Publicación vigente verificada
 
@@ -30,6 +30,16 @@ Rama `codex/auditoria-leben-20261116`, checkout `/private/tmp/sollahms-auditoria
 En deployment-revision/publicacion/ se conservan la verificación independiente de cinco alias, QA-PUBLICO-PR36.json y captura, cinco recursos estáticosHTTP200/SHA256 exactos y snapshot íntegro del estado productivo anterior875. El control Chrome público es un flujo dirigido nuevo:152 proyectos, filtroGPR9, sin alertas, overflow o consola warning/error. No es repetición ni suma de las suites históricas. La revisión protegida previa conserva3/3Chrome; el transporte1721/1721UID,57archivos/siete funciones yconfig coincide. Los155protegidos se conservan por los certificados existentes.
 
 Paquete local `/private/tmp/sollahms-pr36-public-package-20261118/stage/.vercel/output`:1.721archivos/227.584.223bytes,49altas estáticas/cinco reemplazos. Inventario `d3d6692a7cf190d36d0cb173497c2b36775b7fa1a0f5c951c5a2a87c1b770558`; manifiesto SHA256 `f0fa6e13c6d41f62325f0b7ab7487e5c6a7dbe445a0c3148e60cff2ac3862f5e`. Flagsfalse del manifiesto original son de su creación, anteriores al cierre verificado posterior. No reconstruir ni repetir QA con hashes iguales. Receta y14originales de excepciones875 archivados; no copiar repositorio/docs/RAW/owner/historial astatic.
+
+## Consolidación esencial de los 152 ya realizada
+
+Leer `docs/objetivo-principal-asset-portafolio/cobertura-comercial-152-20261118/`: el único `INFORME-DATOS-ESENCIALES-NO-RECUPERADOS.md`, `INDICE-COBERTURA-152.json`, `ACEPTACION-FILTROS.json`, `ANALISIS-COMBINACIONES-152.json` y manifiesto/revisión. No rehacer esta consolidación con las mismas entradas.
+
+Se enlazan las matrices de los 131 intactas y una vista documental de los 21 nuevos: 152 identidades disjuntas, once campos y 1.672 celdas (80 confirmadas en su alcance, 1.125 parciales y 467 desconocidas en las vistas). No son 467 preguntas o datos jamás recuperados. Tres casos tienen valor publicado en otro alcance: precio BAUM, precio Santo y útil INN, sin confirmación owner/vigencia o asociación precio–plano inventada. Cinco proyectos no tienen testigo de precio publicado: Angamos, Diagonal Vicuña, Own, Los Alerces y Valle Los Ingleses III. Las tipologías sin precio de otros proyectos siguen desconocidas aunque haya otra cotización con precio.
+
+Combinaciones estáticas D3: 147 con precio, 83 precio+D, 15 precio+D/B, ninguna precio+útil/total y 89 D/B. Sólo se suman las 131 y 21 identidades disjuntas; no capas Leben/24a ni stock. No son búsquedas, pruebas nuevas o validación cartesiana completa. El mapa de aceptación reutiliza 15 criterios y 13 módulos runtime con hashes coincidentes; no aparece defecto nuevo que justifique repetir pruebas. La producción y el QA previos siguen certificados. Sin nuevas consultas Iris, recepciones, hechos comerciales, preguntas, cierres de los 313 IDs o cambios de aplicación.
+
+Los faltantes y límites están consolidados por proyecto: mantener Internos/útil/total separados, Estudio sin 0D, tipo de cabecera frente al tipo desconocido de la unidad, amenities generales frente a descriptores habilitados y estacionamiento/bodega frente a inclusión/asignación/stock. No interpretar las 467 celdas como lista automática de consultas a Iris o al propietario. El objetivo global sigue abierto por la integración 24a y las respuestas pendientes; no generar otra auditoría vacía.
 
 ## Pendientes ya presentados
 
