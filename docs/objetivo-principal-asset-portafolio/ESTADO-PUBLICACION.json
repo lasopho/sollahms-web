@@ -685,11 +685,13 @@
   "promotionAuthorizationUsed": 1,
   "remainingPromotionAuthorizations": 0,
   "nextAuthorizedWork": {
-    "step": "Incorporar localmente dos referencias documentadas Novo109 y Endémico45, preservando fuentes y pins existentes",
-    "authorization": "DESARROLLO_LOCAL_AUTORIZADO_POR_OBJETIVO_GENERAL",
+    "step": "Procesar respuestas reales de las dos solicitudes ya presentadas y continuar sólo trabajos independientes con cambios o hallazgos nuevos. La vista comercial131 y análisis de combinaciones ya están consolidados; no repetirlos ni repetirIris158 o QA certificado.",
+    "authorization": "CONSOLIDACION_DOCUMENTAL_LOCAL_Y_SINCRONIZACION_EXISTENTE_AUTORIZADAS",
     "publicChangesAuthorized": false,
-    "newBranchFirstPushPRDeploymentRequireSeparatePermission": true,
-    "newOwnerDataOrIrisLoginRequiredForTheseTwoReferences": false
+    "doNotRepeatCompletedNovoEndemicoOrIris158": true,
+    "technicalCandidateFrozenAt": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+    "pendingTechnicalPushPRRequest": "AUTH-PUSH-PR-SUPPLEMENT-20261118-01",
+    "pendingOwnerInformationRequest": "OWNER-BATH-IRARR1970-20261118-01"
   },
   "pendingNextRelease": {
     "mergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
@@ -730,7 +732,10 @@
       "financialScenariosCertified": false
     },
     "remainingDeploymentCreationAuthorizations": 0,
-    "nextLocalCandidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json"
+    "nextLocalCandidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
+    "historicalOnly": true,
+    "neverPromote": true,
+    "supersededByPublishedSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
   },
   "correctedLocalRelease": {
     "candidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
@@ -758,7 +763,11 @@
       "receipt": "correccion-carga-mismo-origen-20261117/paquete/RECIBO-PREPARACION-LOCAL.json",
       "sourceMergeCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
       "mergeCertificate": "preparacion-deployment-pr35/MERGE-CERTIFICADO.json",
-      "treeCorrespondenceVerified": true
+      "treeCorrespondenceVerified": true,
+      "statusIsHistorical": true,
+      "currentTemporaryArtifactAvailable": false,
+      "currentAvailabilitySource": "RECUPERACION-OPERATIVA-20261118.json",
+      "doNotRebuildOrRepeatQA": true
     },
     "deploymentAuthorized": true,
     "promotionAuthorized": true,
@@ -927,5 +936,36 @@
         "Las15referencias externas nuevas siguen documentales. No se adoptan sus precios como Sollahms ni se cierra el objetivo131 con este paquete."
       ]
     }
-  ]
+  ],
+  "historicalNextAuthorizedWork": {
+    "step": "Incorporar localmente dos referencias documentadas Novo109 y Endémico45, preservando fuentes y pins existentes",
+    "authorization": "DESARROLLO_LOCAL_AUTORIZADO_POR_OBJETIVO_GENERAL",
+    "publicChangesAuthorized": false,
+    "newBranchFirstPushPRDeploymentRequireSeparatePermission": true,
+    "newOwnerDataOrIrisLoginRequiredForTheseTwoReferences": false
+  },
+  "currentPendingIntegration": {
+    "candidateSHA": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+    "branch": "codex/suplemento-documental-131-20261117",
+    "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "status": "LOCAL_CERTIFICADO_PRIMER_PUSH_PR_DRAFT_PENDIENTES_DE_RESPUESTA",
+    "firstPushOrPRExecuted": false,
+    "readyMergeDeploymentPublicationAuthorized": false,
+    "requestId": "AUTH-PUSH-PR-SUPPLEMENT-20261118-01",
+    "doNotRepeatQuestion": true
+  },
+  "currentOperationalReconciliation": {
+    "recordedAtUTC": "2026-11-18T16:39:19.096634+00:00",
+    "meaning": "Se separan instrucciones vigentes de estados históricos para no repetir incorporación de Novo/Endémico ya terminada ni preparar/promoverB7. Sin operación externa nueva.",
+    "originalProductionAndAuthorizationHistoryPreserved": true,
+    "metroVisibilityErratum": "publicacion-pr35-20261117/CORRECCION-VISIBILIDAD-METRO.json"
+  },
+  "currentDocumentaryConsolidation": {
+    "fieldsView": "aceptacion-comercial-131-20261118/VISTA-COMERCIAL-POR-PROYECTO.json",
+    "combinationAnalysis": "aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json",
+    "newPrimaryEvidence": 0,
+    "newAppTests": 0,
+    "historical313Changed": false,
+    "productionChanged": false
+  }
 }

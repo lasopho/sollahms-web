@@ -1,55 +1,71 @@
-# Continuar el Asset Portafolio de Sollahms
+# Continuar el objetivo principal de Sollahms
 
-Repositorio: `lasopho/sollahms-web`. Corte18/11/2026, America/Santiago. El objetivo global de los131 proyectos sigue abierto. Continuar tareas autorizadas ante hechos o respuestas nuevos; no repetir auditorías, preguntas, consultas agotadas, QA certificado o informes de continuidad sin cambios reales.
+Repositorio: `lasopho/sollahms-web`. Corte: 18/11/2026, America/Santiago. La consolidación documental de los 131 proyectos está realizada; el objetivo global sigue abierto. Continuar tareas autorizadas ante un cambio, hallazgo, antecedente o respuesta real. No repetir auditorías, búsquedas agotadas, pruebas certificadas o informes sin novedades.
 
-## Referencias y lectura
+## Referencias
 
-Producción: `875bd80ddb650b376cb3dd53af4ffae066fcd48f`, deployment READY `dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr`, https://sollahms.cl/proyectos.html. Cuatro alias ya publicados con permiso: sollahms.cl, www.sollahms.cl, sollhams.cl y project-wrapp.vercel.app; redirects308 conservados. PR35 merged. Destino `codex/footer-sin-frase-20261116`=875. Main `86e200ec191b38af355061e21bc0fc1e549cce3b` intacto. No reutilizar permisos ejecutados ni promover B7@36ef.
+Producción: `875bd80ddb650b376cb3dd53af4ffae066fcd48f`.
+Deployment READY: `dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr`.
+Sitio: https://sollahms.cl/proyectos.html
+Destino: `codex/footer-sin-frase-20261116`, en 875.
+Main intacto: `86e200ec191b38af355061e21bc0fc1e549cce3b`.
 
-Documentación: rama `codex/auditoria-leben-20261116`, checkout `/private/tmp/sollahms-auditoria-leben-20261116`; consultar HEAD local/remoto actual. Técnico: `codex/suplemento-documental-131-20261117`, checkout `/private/tmp/sollahms-referencias-documentales-131-20261117`, HEAD exacto `24a11df1a62898a06b408a729bb20ce1b1de4e87`, padre `0c03a9fcff32d606732a2af55a28295c869b2573`, base875. Sin primer push o PR del suplemento. Ambas ramas excluyen deployments automáticos.
+Documentación: `codex/auditoria-leben-20261116`, checkout `/private/tmp/sollahms-auditoria-leben-20261116`. Consultar HEAD local/remoto actuales y preservar avances posteriores.
 
-Leer bajo `docs/objetivo-principal-asset-portafolio/`: CONTROL-DE-AVANCE.md, ESTADO-PUBLICACION.json, INTERVENCIONES-PROPIETARIO.json, CANDIDATO-SUPLEMENTO-DOCUMENTAL-LOCAL.json, suplemento-documental-r018-20261118/, aceptacion-comercial-131-20261118/, estacionamiento-bodega-131-20261118/ y ampliacion-iris-chile-20261118/README.md. Consultar también manualIris y RECUPERACION-OPERATIVA-20261118.json. Las referencias de producción9e/servidores de cortes antiguos son históricas.
+Técnico: `codex/suplemento-documental-131-20261117`, checkout `/private/tmp/sollahms-referencias-documentales-131-20261117`, HEAD exacto `24a11df1a62898a06b408a729bb20ce1b1de4e87`, padre `0c03a9fcff32d606732a2af55a28295c869b2573`, base 875. Sigue local, sin primer push ni PR. Árbol limpio y candidato congelado. Las ramas documental, técnica y destino excluyen deployments automáticos. Verificar referencias antes de cambios reales; no usar el checkout original con cambios ajenos.
 
-## Dos intervenciones ya presentadas
+## Lectura obligatoria
 
-`AUTH-PUSH-PR-SUPPLEMENT-20261118-01`: autorización pendiente para primer push exacto24a y nuevo PRDraft contra875. No repetir pregunta ni interpretar continuidad como permiso. Ante respuesta expresa verificar HEAD/base/producción y exclusiones antes del push sin force; crear/verificar PR realmente Draft y registrar URL real. Ready/merge/deployment/publicación requieren permisos independientes.
+Bajo `docs/objetivo-principal-asset-portafolio/`, leer CONTROL-DE-AVANCE.md, INTERVENCIONES-PROPIETARIO.json, ESTADO-PUBLICACION.json, INVENTARIO-DE-FUENTES.json, MANIFIESTO-DE-FUENTES.json y CANDIDATO-SUPLEMENTO-DOCUMENTAL-LOCAL.json.
 
-`OWNER-BATH-IRARR1970-20261118-01`: baños del estudio comercial Irarrázaval1970, con alcance/fuente/fecha. Ya preguntado; no repetir precio, áreas o pregunta. Sin respuesta sigue desconocido y restringe sólo ese predicado. No se creó otra pregunta durante este corte.
+Leer `aceptacion-comercial-131-20261118/`: VISTA-COMERCIAL-POR-PROYECTO.json, ANALISIS-COMBINACIONES.json, REVISION-INDEPENDIENTE-CONSOLIDACION.json, RECIBO-LECTURA-CONTRATOS-875.json y el índice anterior. Consultar `suplemento-documental-r018-20261118/`, `estacionamiento-bodega-131-20261118/`, `ampliacion-iris-chile-20261118/` y el manual Iris cuando corresponda.
 
-## Estado comercial de los131
+## Consolidación completada
 
-Índice independiente:131 identidades, nueve estados históricos conservados,1700testigos existentes/2806localizadores;127 tienen aquí expediente específico o referencia adicional y cuatro fuentes compartidas/publicadas. No son cuatro sin auditoría ni certificación global de todas las combinaciones. Overlayparking/bodega agrega dos clasificaciones separadas: diez declaraciones generalesLeben, cinco menciones parcialesparking/tresbodega y veinte cotizaciones que excluyen adicionales de su precio. No significan ausencia física, inclusión o disponibilidad global. Sueciaextras separados.
+La vista contiene 131 slugs y once campos por proyecto, con 1.993 punteros válidos. Conserva los 1.179 estados históricos de nueve campos. Ocho atributos de seis proyectos tienen observaciones adicionales acotadas; tres de Plaza Cervantes 909A mantienen conflicto Torre B/Edificio A. No son confirmaciones comerciales de toda una torre, evidencia nueva o cierres de los313 IDs históricos.
 
-La capa local24a conserva19referencias/18proyectos/113identidades sin referencia adicional;113 no significa sin revisión. R016Novo109: baño1 eInternos18,44/Terraza1,9, sin0D inferido. R017Endémico45: Casa4D3B, Internos160/Terraza0, sin útil/total/uso/precio inferidos; día observado17Nov separado del registro sin inventar hora. R018NorteVerde/VicuñaMackenna6896/unidad1103/piso11: baño1; planoC2 mostrado en modal, sin unidad impresa, útildepto23,69/útilterraza0/total23,69m² enMunicipal yConstruido. No aplicarlo a otras unidades ni unir precioowner25Oct, Dnumérico, uso o stock. Internos es otra métrica. Cuatro fixtures independientes con hashes en el expediente, sin reescribir anteriores.
+Se separan valor desconocido, relación no acreditada, métrica distinta, contradicción, producto distinto e inclusión/disponibilidad no declaradas. La presencia de datos residenciales no acredita aplicación al producto ownerLocal. Un booleano de dato presente no es permiso de filtrado.
 
-24a tiene30Node distintos (28motor+5compatibilidad−3solapados) y9Chrome dirigidos, revisión independiente sin bloqueantes. Certificados0c03/F10/F13 históricos siguen con su alcance; no sumar subconjuntos ni repetir pruebas idénticas. Diez archivos candidatos y21fuentes originales conservaron hashes al recuperar;155blobs protegidos iguales875→24a, con certificadoSHA256 histórico conservado, sin rehash nuevo de155cuerpos.
+El análisis estático distingue trece familias y tres capas. Publicado 875: 126 proyectos con testigo de precio, 66 con precio+D, ninguno con un mismo testigo precio+D+B o precio+útil/total. Modelos publicados: 73 con D+B, 37 con D+B+útil y53 con D+B+total, sin préstamo de precio. Leben preparado:10 precio+D,5 precio+D+B,0 precio+superficie. Local 24a: Plaza 213/C7 es el único testigo con precio y áreas; R018 respalda baño+útil o baño+total sin precio/dormitorios. No sumar capas ni interpretar conteos como búsquedas ejecutadas, stock o todas las combinaciones cruzadas. Útil y total son alternativas explícitas de la UI.
 
-Desconocidos no producen positivos con el filtro activo ni excluyen por predicados inactivos. Precio/D/B/superficies deben compartir una referencia compatible. Mantener AND/OR, métricas útiles/totales explícitas, tipos y amenities por producto. No convertir Estudio en0D, desconocido en residencial/cero, encabezados/rangos en modelos o referencias en stock.
+Revisión independiente APROBADO CON OBSERVACIONES, cero bloqueantes. Cero consultas nuevas a Iris, módulos de aplicación ejecutados, suites repetidas o cambios de código. Seis contratos 875 leídos como texto desde objetos Git existentes, sin fetch o reconstrucción. Reutilizar artefactos, hashes y certificados; no rederivar las mismas entradas para repetir verificaciones.
 
-Mood conserva1D1B UF3753,20 y2D2B UF4678,45 sin vínculo precio–plano; no repreguntar. Verne465/202: UIEstudio frente planoOficina1O+1B; conservar conflicto, sin referencia residencial filtrable ni nueva consulta. Irarrázaval: búsquedas agotadas/PDF403; brochure local15páginas no rotula baños de estudios. ParquePanamáLocal, VergaraDomeykoLocal y BordevivoLocal: fuentes y búsquedas nominales agotadas no acreditan baños/áreas de locales; no prestar datos residenciales ni reabrir direcciones. Ver carpetas documentales del18/11. No repetir sin evidencia nueva.
+## Dos solicitudes pendientes ya presentadas
 
-Leben454referencias incluidas20cotizaciones, dos adicionalesSuecia separados;313IDs históricos intactos. Own vendido se excluye sólo de preparado. Las proyecciones administrativas no son recepción nueva. D-03, terminaciones y conflictos sin efecto en una consulta no bloquean búsquedas parciales.
+AUTH-PUSH-PR-SUPPLEMENT-20261118-01: permiso para primer push exacto 24a y nuevo PR Draft contra 875. No repetir pregunta ni interpretar continuidad como permiso. Ante respuesta expresa, verificar HEAD/base/producción y exclusiones, hacer push sin force, crear/verificar PR realmente Draft y registrar URL. Ready, merge, deployment y publicación requieren permisos independientes.
 
-## Ampliación Iris Chile ya investigada
+OWNER-BATH-IRARR1970-20261118-01: baños del estudio comercial de Irarrázaval 1970, con alcance/fuente/fecha. No repetir precio, áreas o pregunta. Sin respuesta, conservar desconocido y restringir sólo ese predicado; no bloquear el resto.
 
-Listado oficial Chile, cuatro estados seleccionados:158/158oportunidades y158IDs. Se abrieron158fichas reales:158válidas, cero vacías, cero errores finales. Un único reintento1374por carga transitoria, resuelto. No repetir el inventario sin nueva condición.
+ESTADO-PUBLICACION distingue el trabajo vigente de la antigua incorporación Novo/Endémico, ya terminada. B7@36ef es histórico y nunca debe promoverse. Publicación875 y permisos anteriores están ejecutados y consumidos; no autorizan otra versión.
 
-Comparación independiente sin bloqueantes:131IDs→121slugs actuales;21candidatos documentales nuevos; dos posibles duplicados1412LaCasonaBuin/1587Centenario2.0; dos insuficientes1297/1299ParqueMackennaTorres2/3sininmobiliariaexplícita; dos retirosSoll1341VespucioCapital/1468SerranoCapital, sin afirmar venta. Diez slugs actuales no aparecen en este listado; no darlos de baja.
+## Datos y reglas que deben conservarse
 
-Propuesta compacta en ampliacion-iris-chile-20261118/README.md y PROPUESTA-POR-LOTES.json: lote1de12nuevos de inmobiliarias presentes y lote2de9GPR;14departamentos/7casas, cuatroregiones. Son identidades comerciales candidatas, no21edificios certificados. No hay autorización de incorporación, nueva ficha, catálogo o precio. La exploración sólo autorizó descubrimiento/comparación/propuesta; no ampliar ese alcance automáticamente ni bloquear131por ella.
+El suplemento mantiene 19referencias en 18proyectos y 113identidades sin referencia adicional;113 no significa sin revisión. Reutilizar R016 Novo 109, R017 Endémico 45 y R018 Vicuña 6896/1103. El plano C2 de 1103 aporta baño 1, útil 23,69/terraza 0/total 23,69; no imprime unidad ni acredita precio, dormitorios, uso, stock o aplicabilidad a otras unidades. Internos permanece separado; no convertir Estudio literal de Iris en 0D. Conservar originales, cuatro fixtures y sus pins.
 
-Precios/rangos/D/amenitiesIris son resúmenes externos separados, no preciosSollahms, stock, útil/total o correspondencias precio–unidad. Baños no se exploraron en inventario. NuevoVivacetaECasa yCompañía1735Sento tienen antecedentesowner retenidos: reutilizar archivos existentes, no pedir precios de nuevo ni mezclarlos con IngevecVivaceta. Botánico tiene esquina yTerrazasMirador calle/conjunto sin número: no inventar direcciones o coordenadas.
+Mantener los 30Node distintos y 9 Chrome dirigidos de 24a, sin sumar subconjuntos o repetirlos con hashes iguales. Diez candidatos y 21 fuentes preservados;155blobs iguales875→24a, con certificado SHA256 histórico, sin nuevo rehash de 155cuerpos.
 
-Se corrigieron22cabeceras: `.tag-hand-over` global traía entregas de tarjetas relacionadas. Sólo usar etiquetas del enlace propio del listado; resto de campos comprobados dentro de `.detail-container .detail-content` yAmenities con visibilidad acotada. Los auth_ui iniciales sólo reflejaban presenciaDOM; la comprobación visual estricta final no confirmó autenticación ni prueba logout. No hubo login solicitado o exclusión basada en sesión no confirmada. Ver recibo, corrección y nota de autenticación.
+Precio y atributos deben compartir referencia compatible. Desconocido activo falla; atributo inactivo no excluye por sí mismo. No mezclar unidades, modelos o etapas; convertir desconocido en residencial/cero; homologar útil/total/terraza/Internos; prestar amenities residenciales a locales. Mantener AND/OR, etiquetas españolas y avisos de fuente fallida.
 
-Para nuevas entradas futuras: abrir ficha por enlace real, esperar carga, comprobar identidad/contenido. Ante «Ups, no encontramos…», comprobar filtros/sesión/carga; reintentar una sola vez sólo si hay indicio transitorio. Vacío persistente comprobado=`EXCLUIDO_IRIS_SIN_FICHA`; registrar únicamente nombre/inmobiliaria/IDURL/fecha/motivo/resultado y seguir, sin investigar atributos. Error técnico/acceso o autenticación sin confirmar cuando sea necesaria=NO_VERIFICABLE, no inexistencia. No eliminar publicados por ausenciaIris ni repetir descartados sin evidencia nueva.
+Mood conserva sus precios tipológicos sin vínculo precio–plano: no repreguntar. Verne465/202 mantiene conflicto UI Estudio/plano Oficina 1O+1B, sin referencia residencial filtrable. Irarrázaval, Parque Panamá Local, Vergara Domeyko Local y Bordevivo Local tienen investigaciones agotadas: no repetir Iris/403, prestar atributos residenciales o reabrir direcciones. Las 113identidades y cuatro expedientes compartidos no crean auditorías nuevas.
+
+Leben: 454 referencias, incluidas 20cotizaciones, y dos adicionales Suecia separados; no stock.313 IDs intactos. Proyecciones administrativas no son recepción nueva. Own vendido se excluye sólo de preparado. Parking/bodega separan producto, inclusión y disponibilidad; exclusión del precio no prueba ausencia física o disponibilidad global.
+
+## Ampliación Chile, sólo propuesta
+
+Iris: 158 IDs/158 fichas válidas, cero vacíos y errores finales; un reintento1374por carga transitoria, resuelto. No repetir inventario sin condición nueva.131 IDs corresponden a121slugs actuales;21 candidatos documentales:12 de inmobiliarias presentes y 9 GPR. Otros2 son posibles duplicados 1412/1587,2insuficientes 1297/1299 y2retiros Soll 1341/1468, sin afirmar venta. Diez slugs actuales no figuran en el listado; no darlos de baja. Ningún candidato está autorizado para incorporarse o crear ficha; no bloquear los 131 por la ampliación.
+
+Precios Iris, resúmenes de dormitorios, rangos y amenities son externos separados, no precios Sollahms, stock o perfiles compatibles. Reutilizar antecedentes owner retenidos de Nuevo Vivaceta ECasa y Compañía 1735 Sento sin pedir precios ni mezclarlos con Ingevec Vivaceta. No inventar números/coordenadas de Botánico o Terrazas Mirador.
+
+Las 22cabeceras se corrigieron porque .tag-hand-over global traía entregas de relacionados; sólo vale la entrega del enlace propio del listado. Los demás campos se acotaron a .detail-container .detail-content. Los auth_ui iniciales sólo reflejaban presencia DOM; la comprobación estricta final no confirmó sesión ni prueba logout. Recibo/nota armonizados; VALIDACION original intacta. No hubo login solicitado ni exclusiones por sesión no comprobada.
+
+Para entradas nuevas futuras: abrir enlace real, esperar carga y verificar identidad/contenido. Ante «Ups, no encontramos…», comprobar filtros/sesión/carga; un reintento sólo ante indicio transitorio. Vacío persistente comprobado=EXCLUIDO_IRIS_SIN_FICHA: registrar sólo nombre/inmobiliaria/IDURL/fecha/motivo/resultado y seguir sin investigar atributos. Error técnico/acceso o autenticación necesaria no comprobada=no verificable, no inexistencia. No repetir descartados sin nueva evidencia ni eliminar publicados por ausencia Iris.
 
 ## Continuidad y protección
 
-Checkouts recuperados desde commits: técnico disperso35archivos, no reconstruido. Servidores64257/63532 y antiguos paquetes temporales ya no están disponibles; conservar certificados, no reconstruir/repetir QA por ello. FuentesMaestra/NorteVerde recuperadas byteexactas son antecedentes existentes, no recepción nueva.
+El siguiente paso de integración 24a requiere la respuesta ya solicitada. Procesar automáticamente respuestas reales y continuar tareas independientes cuando existan. Sin cambios, conservar el control actualizado y no crear fases o informes repetitivos. El informe final del objetivo corresponde cuando se cumplan sus criterios e integraciones autorizadas, no por terminar esta consolidación.
 
-Sin nueva respuesta, mantener las dos intervenciones pendientes y la propuesta documental lista; no crear fases o informes repetitivos. Procesar automáticamente respuestas reales y continuar trabajo independiente autorizado. No exigir al propietario otro prompt para reanudar.
+Los checkouts fueron recuperados desde commits; técnico disperso de 35archivos. Servidores y paquetes temporales antiguos no están disponibles. No reconstruir aplicación o paquetes para repetir QA.
 
-Aplicación sólo en checkout técnico; no usar checkout original con cambios ajenos. Preservar131fichas,155protegidos,21originales, sietefunciones, precios/direcciones, CRM360,AI Lab,Resend,formularios,finanzas,Contacto,CentrodeOrientación,dominios,SSO,variables ymain. No restaurarPatioBrasil410 ni los seis históricos por omisión. No ejecutar generadores/builds, desplegar paquetes raw en cuarentena ni publicar otra versión sin permiso independiente.
+Preservar 131fichas,155 protegidos,21 originales, siete funciones, precios/direcciones, CRM360, AI Lab, Resend, formularios, finanzas, Contacto, Centro de Orientación, dominios, SSO, variables y main. No restaurar Patio Brasil410 o seis históricos. No ejecutar generadores/builds, paquetes raw en cuarentena, deployments o publicaciones sin permiso independiente. Aplicación sólo en checkout técnico; sincronizar únicamente documentación autorizada.
 
-Si una plataforma pide login, abrir Chromeoficialvisible y dejar correo/contraseña/OTP/CAPTCHA al propietario. Nunca leer/copiar/guardar credenciales,cookies,tokens, automatizarcontraseñas, eludir seguridad o cerrar sesión. No enviar chats/contactos/reservas/cotizaciones. Sólo Chile, sin comisiones/intermediarios/endpointsprivados. Sincronizar únicamente documentación autorizada; verificar hashes/árboles y referencias antes de cambios reales. Entregar siempre el siguiente prompt completo.
+Si pide login, Chrome oficial visible y acceso personal del propietario con OTP/CAPTCHA. Nunca leer/copiar/guardar credenciales, cookies o tokens, automatizar contraseñas, eludir seguridad o cerrar sesión. Sólo Chile, sin comisiones/intermediarios/endpointsprivados ni envío de chats/contactos/reservas/cotizaciones. Verificar referencias, hashes y árboles antes de cambios. Entregar siempre el siguiente prompt completo, sin pedir otro prompt para continuar trabajo autorizado.

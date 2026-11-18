@@ -32,7 +32,10 @@
     "selector": ".user-name",
     "condition": "Control de cuenta en encabezado presente, con rectángulo renderizado y texto no vacío. Se conserva sólo booleano; no identidad ni valores de autenticación.",
     "observed_authenticated_ui": false,
-    "owner_intervention_required": false
+    "owner_intervention_required": false,
+    "initial_record_semantics": "Los auth_ui:true iniciales de VALIDACION-FICHAS.json reflejan únicamente presencia del control .user-name en el DOM. No comprueban visibilidad ni texto y no acreditan sesión autenticada. Se conservan los registros originales sin reinterpretarlos como prueba de autenticación.",
+    "final_interpretation": "AUTENTICACION_NO_CONFIRMADA: la comprobación final estricta no encontró un indicador renderizado con texto no vacío. Esto no prueba logout ni sesión caducada.",
+    "scope": "Se abrieron 158 fichas reales, no hubo fichas vacías ni solicitud de login. No se abrió autenticación ni se repitió navegación para esta aclaración."
   },
   "filters_scope": {
     "listing": "Sólo Chile y los cuatro estados; búsqueda vacía; sin selección de tipo, precios, dormitorios, baños o amenities.",

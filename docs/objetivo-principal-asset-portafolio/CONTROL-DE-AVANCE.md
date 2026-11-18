@@ -12,6 +12,44 @@ Vergara Domeyko/Local y Bordevivo/Local: búsquedas oficiales nominales y varian
 
 Se recuperaron los checkouts temporales desde sus commits, sin reconstruir el candidato: 35 archivos técnicos en checkout disperso, diez hashes candidatos y 21 originales coincidentes; 155 blobs protegidos idénticos entre 875 y24a. El certificado SHA256 de los 155 es histórico conservado, no una nueva recertificación de sus cuerpos. Las 438 entradas del manifiesto documental previo coincidieron. Los servidores y paquetes temporales antiguos ya no están disponibles. Ver [recuperación operativa](RECUPERACION-OPERATIVA-20261118.json). No se repitió Node/Chrome ni se generó build.
 
+## Consolidación comercial vigente de los 131
+
+La [vista de once campos por proyecto](aceptacion-comercial-131-20261118/VISTA-COMERCIAL-POR-PROYECTO.json) integra estados históricos, observaciones adicionales y motivos de desconocido o de asociación no acreditada. Contiene 131 slugs y 1.993 punteros documentales válidos. Conserva los 1.179 estados de los nueve campos históricos; no descuenta ninguno de los 313 IDs pendientes. Es una consolidación de fuentes existentes, sin nueva auditoría o recepción comercial.
+
+Ocho atributos de seis proyectos tienen observaciones adicionales que no aparecían como conocidas en el corte histórico:
+
+| Proyecto y referencia | Atributos observados | Límite |
+| --- | --- | --- |
+| Alto Buzeta | Tipo de propiedad | Referencias inspeccionadas, sin extensión a todas las unidades. |
+| Plaza Cervantes 909A | Tipo, dormitorios y baños | Conflicto Torre B/Edificio A conservado; no confirma comercialmente toda la Torre A. |
+| Mapocho 3521, Edificio A | Baños | Referencia propia; no préstamo desde Mapocho genérico. |
+| Plaza Las Condes 213/C7 | Útil | Plano y asociación propios; no aplicable a 313/C6/C8. |
+| Vicuña Mackenna 6896/1103 | Baños | Sólo 1103; dormitorios y precio siguen sin acreditar en esa referencia. |
+| Novo Catedral 109 | Baños | Sólo 109; Estudio no se convierte en 0D. |
+
+El [análisis de combinaciones](aceptacion-comercial-131-20261118/ANALISIS-COMBINACIONES.json) identifica testigos existentes de trece familias de predicados. Los conteos son **estáticos, por proyecto y capa**: no son búsquedas ejecutadas, stock o certificación de todas las combinaciones cruzadas. No se suman entre capas. Útil y total son alternativas que el usuario debe seleccionar explícitamente.
+
+| Familia con un mismo testigo | Publicado 875 | Leben preparado | Documental local 24a |
+| --- | ---: | ---: | ---: |
+| Precio UF |126|10|1|
+| Precio+dormitorios |66|10|1|
+| Precio+dormitorios+baños |0|5|1|
+| Precio+útil |0|0|1|
+| Precio+total |0|0|1|
+| Dormitorios+baños |73|12|15|
+| Dormitorios+baños+útil |37|2|1|
+| Dormitorios+baños+total |53|5|1|
+
+La capa publicada contiene registros de distinto alcance para 131 proyectos; 126 tienen testigo de precio. Un cero en precio+baños o superficie significa que falta un mismo registro admitido que los vincule, aunque esos atributos puedan conocerse por separado. No autoriza prestar baños o áreas de otro modelo a una cotización. Las validaciones de carga/hash de Euro y Nollagam y sus avisos siguen vigentes, sin ejecutarse otra vez durante este análisis.
+
+Plaza 213/C7 es el único testigo local con precio y áreas: UF11.119 del propietario y cuadro útil 69,85/terraza 13,97/total 83,82 en su alcance propio. R018 respalda baño 1 con útil o total 23,69 de 1103, sin precio o dormitorios acreditados. La tabla no autoriza publicar las referencias, asignar stock o resolver la asociación de Plaza Cervantes.
+
+Los motivos de desconocido distinguen: valor no reutilizable o rotulado, relación precio–plano no acreditada, métrica distinta, contradicción, producto distinto e inclusión/disponibilidad no declaradas. En Bordevivo, Vergara y Parque Panamá, los datos residenciales no acreditan su aplicación al producto ownerLocal. La vista lo restringe también por campo: la presencia de un dato no es permiso de filtrado. Mood conserva cotizaciones y perfiles separados, sin otra pregunta. Estacionamiento y bodega separan producto, inclusión y disponibilidad; adicionales y exclusiones de precio no se vuelven afirmaciones globales.
+
+La [revisión independiente](aceptacion-comercial-131-20261118/REVISION-INDEPENDIENTE-CONSOLIDACION.json) terminó **APROBADO CON OBSERVACIONES**, sin bloqueantes. Se reutilizaron certificados y datos conservados: cero consultas nuevas a Iris, cero módulos de aplicación ejecutados, cero suites repetidas y cero cambios de código. Los seis módulos publicados se leyeron como texto desde objetos Git de 875 existentes; el [recibo](aceptacion-comercial-131-20261118/RECIBO-LECTURA-CONTRATOS-875.json) conserva hashes y commits. No se reconstruyó el candidato.
+
+Las rutas originales de lectura y los hashes permanecen en los artefactos; sus copias versionadas están en este directorio. No rederivarlos con las mismas entradas para repetir una certificación. La consolidación documental está realizada. El siguiente paso de integración 24a depende de la autorización ya presentada; los pasos externos posteriores mantienen permisos independientes. Baños de Irarrázaval restringe sólo su predicado. No se incorporaron los 21 candidatos nuevos.
+
 ## Intervenciones vigentes
 
 Sólo permanecen las dos solicitudes ya presentadas en [INTERVENCIONES-PROPIETARIO.json](INTERVENCIONES-PROPIETARIO.json): `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` y `OWNER-BATH-IRARR1970-20261118-01`. No se repreguntan ni se interpretan las instrucciones de continuidad como respuesta. Los desconocidos restringen exclusivamente sus predicados; no obligan a reconstruir inventarios completos ni terminaciones.

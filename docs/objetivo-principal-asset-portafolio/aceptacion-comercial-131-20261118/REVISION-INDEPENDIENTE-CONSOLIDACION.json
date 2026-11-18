@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-18T16:48:25.798837+00:00",
+  "dictamen": "APROBADO_CON_OBSERVACIONES",
+  "blockingFindings": 0,
+  "scope": "Revisión independiente documental de la vista de once campos y del análisis estático de combinaciones. Lectura de artefactos, derivación y punteros de cuatro referencias sensibles. Sin ejecutar los derivadores, el comparador Iris, aplicación, pruebas, generadores, UI, red o Git. Sin editar A/T2.",
+  "artifactsPinned": [
+    {
+      "file": "VISTA-COMERCIAL-POR-PROYECTO.json",
+      "sha256": "e415fa0e07956ba8ebc996c7168389a8df494553f3cb4cc5ffab018de3807231",
+      "bytes": 1785614
+    },
+    {
+      "file": "derivar-vista-comercial.py",
+      "sha256": "19480cd45c8df1fa54403cbf19733768e16f2af9f027f6c90caca737e4b8068c",
+      "bytes": 19289
+    },
+    {
+      "file": "ANALISIS-COMBINACIONES.json",
+      "sha256": "69450fcaf615f0c96f4d29625b3734dc9dc96030b29dc5fec7e0f02fced29463",
+      "bytes": 520362
+    },
+    {
+      "file": "derivar-analisis-combinaciones.py",
+      "sha256": "fee7a5614d9e3af2567401fa065de3a5385880b4a1ca4cc4ae68f2ea6ddf7fe3",
+      "bytes": 19168
+    }
+  ],
+  "structuralVerification": {
+    "projects": 131,
+    "sameSlugsAcrossViewAnalysisAcceptanceIndex": true,
+    "fieldsPerProject": 11,
+    "fieldKeys": [
+      "tipo_propiedad",
+      "precio",
+      "dormitorios",
+      "banos",
+      "util",
+      "total",
+      "entrega",
+      "estado",
+      "amenities",
+      "estacionamiento",
+      "bodega"
+    ],
+    "historicalStateCopiesChecked": 1179,
+    "historicalStatesUnchangedAgainstAcceptanceIndex": true,
+    "acceptanceIndexSHA256": "4b9487d8964e35b15c3dd4c372d3edf7aa9b57f2c6c581b0d9aeeb309470cc4f",
+    "additionalLocalReferences": 19,
+    "irisReferencesWithoutCommercialPrice": 18,
+    "ownerPriceReference": "DOC-SENTO-PLC-U213-C7-OBS20261117",
+    "scopedObservationsOnHistoricalUnknownFields": 8,
+    "projectsWithThoseObservations": 6,
+    "historical313Closed": 0,
+    "newFactsOrIdsCreatedByConsolidation": 0,
+    "newOwnerQuestionsCreated": 0,
+    "newDiscovery21Incorporated": false,
+    "globalCertificationStillPending": true,
+    "allReasonCodesResolve": true,
+    "coverageStateSummariesConsistent": true,
+    "combinationAnalysisHashLinkedExactly": true
+  },
+  "sampleVerification": [
+    {
+      "case": "IRIS-131-R003 / Plaza Cervantes",
+      "result": "CUMPLE",
+      "pointer": "/projectsBySlug/plaza-cervantes/localReferenceDetails/IRIS-131-R003",
+      "evidence": "Se preservan 2D/1B observados en 909A con PARCIAL_EN_REFERENCIA_CON_CONFLICTO_DE_ASOCIACION, building-scope-conflict y límite de agrupación de procedencia. La capa local admite sólo perfil DB, no precio, útil/total ni atribución comercial/global a Torre A o equivalencia con Torre B. Internos 36,9 no se transforma en útil/total."
+    },
+    {
+      "case": "IRIS-131-R016 / Novo Catedral109",
+      "result": "CUMPLE",
+      "pointer": "/projectsBySlug/novo-catedral/localReferenceDetails/IRIS-131-R016",
+      "evidence": "Baño 1 limitado a 109. Internos 18,44 y terraza 1,9 conservan rótulos propios; no útil/total, dormitorios numéricos 0 ni asociación de cotización."
+    },
+    {
+      "case": "IRIS-131-R018 / unidad 1103 C2",
+      "result": "CUMPLE",
+      "pointer": "/projectsBySlug/vicuna-mackenna-6896/localReferenceDetails/IRIS-131-R018",
+      "evidence": "Útil 23,69 y total 23,69 proceden de rótulos explícitos del plano, no de Internos ni suma. Sólo B+útil y B+total en la capa local; sin dormitorios o precio, con límite de modal 1103 sin unidad impresa ni equivalencia general C2(VM)."
+    },
+    {
+      "case": "Plaza213 / C7",
+      "result": "CUMPLE",
+      "pointer": "/projectsBySlug/plaza-las-condes/localReferenceDetails/DOC-SENTO-PLC-U213-C7-OBS20261117",
+      "evidence": "Único testigo con precio en la capa local 19: precio owner y 2D/2B, útil 69,85 y total 83,82 de 213/C7. La referencia conserva límites de unidad/modelo y no se convierte en oferta activa, inventario ni desde de proyecto."
+    },
+    {
+      "case": "Mood",
+      "result": "CUMPLE",
+      "pointer": "/projectsBySlug/edificio-mood/relationLimits",
+      "evidence": "Precios por tipología y perfiles de planos permanecen separados. Precio, útil y total señalan relación no acreditada. En preparado se admiten P+D/B y perfiles de superficie por su propio testigo, pero no precio+superficie. Sin nuevas preguntas sobre precios o unidad."
+    },
+    {
+      "case": "Local Bordevivo, Parque Panamá y Vergara Domeyko",
+      "result": "CUMPLE",
+      "pointerTemplate": "/projectsBySlug/{slug}/fields/{field}",
+      "evidence": "D/B, útil, total y amenities llevan PRODUCTO_DISTINTO y applicabilityToCurrentOwnerProduct:NO_ACREDITADA. Conservan estados históricos y precios/tipo owner; no heredan atributos de departamentos."
+    },
+    {
+      "case": "Estacionamiento y bodega",
+      "result": "CUMPLE",
+      "pointerTemplate": "/projectsBySlug/{slug}/fields/{estacionamiento|bodega}",
+      "evidence": "Exclusiones del precio sólo por OWN4-Pxxx. No se convierten en ausencia física ni en inclusión global: projectWideInclusion y exactAvailability permanecen null en esas referencias. Suecia conserva dos importes adicionales separados y sin suma al inmueble. Mención, derecho privado, inclusión, costo adicional y disponibilidad permanecen distintos."
+    },
+    {
+      "case": "Own / Irarrázaval / Verne 202",
+      "result": "CUMPLE",
+      "evidence": "Own se conserva en 131 y su exclusión corresponde sólo a oferta preparada. Irarrázaval mantiene la única intervención de baño ya abierta, sin inferir 0D del literal Estudio. Verne 202 conserva contradicción Estudio/Oficina aislada y exclusión residencial; no abre otra consulta."
+    }
+  ],
+  "sourcePointerSamplesIndependentlyChecked": [
+    {
+      "referenceId": "IRIS-131-R003",
+      "sourceSHA256": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+      "pointer": "/records/2/references/0"
+    },
+    {
+      "referenceId": "IRIS-131-R016",
+      "sourceSHA256": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb",
+      "pointer": "/records/0/references/0"
+    },
+    {
+      "referenceId": "IRIS-131-R018",
+      "sourceSHA256": "41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d",
+      "pointer": "/records/0/references/0"
+    },
+    {
+      "referenceId": "DOC-SENTO-PLC-U213-C7-OBS20261117",
+      "sourceSHA256": "94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865",
+      "pointer": "/record/references/0"
+    }
+  ],
+  "combinationVerification": {
+    "layers": [
+      "published875",
+      "preparedLeben",
+      "documentaryLocal24a"
+    ],
+    "familiesPerLayer": 13,
+    "supportedAndUnsupportedAxesPartitionCheckedForEveryProject": true,
+    "positiveAxesHaveWitnessExampleAndPositiveCount": true,
+    "summaryCountsMatchRows": true,
+    "anyReferenceProjectsByLayer": {
+      "published875": 131,
+      "preparedLeben": 12,
+      "documentaryLocal24a": 18
+    },
+    "pricedReferenceProjectsByLayer": {
+      "published875": 126,
+      "preparedLeben": 10,
+      "documentaryLocal24a": 1
+    },
+    "published": {
+      "price_D": 66,
+      "price_D_B": 0,
+      "price_useful": 0,
+      "price_total": 0,
+      "D_B": 73,
+      "D_B_useful": 37,
+      "D_B_total": 53
+    },
+    "preparedLeben": {
+      "scope": "Sólo overlay de 12 proyectos; el resto de la vista preparada puede usar la ruta publicada. No sumar capas.",
+      "price_D": 10,
+      "price_D_B": 5,
+      "price_useful": 0,
+      "price_total": 0
+    },
+    "documentaryLocal": {
+      "projects": 18,
+      "references": 19,
+      "priceReferenceProjects": 1,
+      "priceUsefulOrTotalOnlyProject": "plaza-las-condes",
+      "notPublished": true
+    },
+    "sameReferenceRequired": true,
+    "noLayerUnion": true,
+    "usefulAndTotalAreAlternativeExplicitUiMetrics": true,
+    "storedAttributesSeparatedFromPredicateAttributes": true,
+    "noncanonicalInteriorOrLotAreasNotPromoted": true
+  },
+  "resolvedObservation": {
+    "originalIssue": "El resumen publicado decía 126 proyectos con referencias, aunque referencesInScope incluía modelos/facetas en 131.",
+    "resolution": "Se distinguen projectsWithAnyLayerReferences 131/12/18 y projectsWithPricedReferences 126/10/1. Los ejes no cambiaron; se añadió la nota de overlay y fallback.",
+    "status": "RESUELTA"
+  },
+  "limits": [
+    "Los nueve estados históricos permanecen copiados; las ocho observaciones acotadas no cierran los 313 pendientes ni son evidencia recibida nueva.",
+    "unknownValueInIndexedScopes sólo deriva del estado histórico y la ausencia de observación adicional. False no certifica un valor numérico, aplicación al producto owner o combinación.",
+    "Presencia en archivo, evidencia, hecho owner retenido, capa preparada y uso publicado permanecen separados.",
+    "Este análisis describe 13 familias de predicados con testigo estático; no ejecuta búsquedas ni certifica todas las combinaciones cruzadas. Rangos, otros filtros activos y disponibilidad requieren sus alcances propios.",
+    "Los testigos, sus conteos y los 1700 localizadores no representan stock. Las capas no se suman. No se modifica producción 875 ni se autoriza publicación del suplemento 24a."
+  ],
+  "operations": {
+    "derivatorsOrComparatorExecuted": false,
+    "applicationOrTestsOrGeneratorsExecuted": false,
+    "newPrimaryQueries": false,
+    "browserNetworkGitActions": false,
+    "AOrT2Edited": false
+  },
+  "continuity": "Archivar estos pins y el recibo junto con la consolidación documental. Mantener únicamente las intervenciones existentes y las autorizaciones pendientes; no repetir auditorías por los desconocidos de esta vista."
+}
