@@ -12,6 +12,8 @@ Node: 52 casos distintos aprobados (7 datos + 19 de comportamiento + 26 regresio
 
 Las ramas origen/destino excluyen deployments automáticos. Primer push del commit 6cedd32 y PR Draft #36 autorizados expresamente, ejecutados y verificados: 59 archivos remotos coinciden. Ready for Review fue autorizado y ejecutado el 18/11 a las 20:15:04 UTC, sin cambio de SHA. Merge, deployment y publicación no están autorizados. GitHub no aporta checks/reviews; no se interpretan como aprobación. Ver [sincronización real](ampliacion-iris-chile-20261118/candidato-21-gpr/SINCRONIZACION-PR36.json). El catálogo público sigue en 131. La consolidación de 1.993 punteros y los 313 IDs históricos permanece intacta. La ampliación no resuelve ni sustituye el permiso 24a pendiente.
 
+Preparación independiente de publicación: [plan documental](ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-PAQUETE-PUBLICO-21.json) con 49 altas estáticas y cinco reemplazos; excluye scripts/pruebas y fuentes internas. No hay paquete construido o certificado; 1721 es sólo proyección aritmética. Tras el merge autorizado habrá que verificar los cuerpos base y cerrar recursos antes de solicitar deployment.
+
 ## Estado actual de los 131
 
 El [índice de aceptación por proyecto](aceptacion-comercial-131-20261118/README.md) preserva las 131 identidades y los nueve estados históricos; relaciona 1.700 testigos existentes con 2.806 localizadores validados. 127 proyectos tienen aquí expediente específico o referencia adicional y cuatro fuentes compartidas/publicadas. Esto no clasifica cuatro como no auditados ni certifica globalmente los 131. La capa local adicional conserva 19 referencias de 18 proyectos y 113 identidades sin referencia adicional, sin confundirlas con proyectos sin revisión.
@@ -62,7 +64,7 @@ Las rutas originales de lectura y los hashes permanecen en los artefactos; sus c
 
 ## Intervenciones vigentes
 
-Las dos solicitudes anteriores de [INTERVENCIONES-PROPIETARIO.json](INTERVENCIONES-PROPIETARIO.json), `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` y `OWNER-BATH-IRARR1970-20261118-01`, siguen sin respuesta y no se repreguntan. La solicitud de primer push/PRDraft de la ampliación fue autorizada y ejecutada en PR36. `AUTH-READY-PR36-20261118-01` fue autorizada, ejecutada y verificada; PR36 está Ready, sin merge. No repetir esta solicitud ni ampliar su alcance. Los pasos siguientes requieren permisos independientes y el estado real está en el mismo registro. Los desconocidos restringen exclusivamente sus predicados y no obligan a reconstruir inventarios completos ni terminaciones.
+Las dos solicitudes anteriores de [INTERVENCIONES-PROPIETARIO.json](INTERVENCIONES-PROPIETARIO.json), `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` y `OWNER-BATH-IRARR1970-20261118-01`, siguen sin respuesta y no se repreguntan. La solicitud de primer push/PRDraft de la ampliación fue autorizada y ejecutada en PR36. `AUTH-READY-PR36-20261118-01` fue autorizada, ejecutada y verificada; PR36 está Ready, sin merge. No repetir esta solicitud ni ampliar su alcance. `AUTH-MERGE-PR36-20261118-01` fue presentada una sola vez y espera respuesta; no ejecutar merge sin ese permiso. Los pasos siguientes requieren permisos independientes y el estado real está en el mismo registro. Los desconocidos restringen exclusivamente sus predicados y no obligan a reconstruir inventarios completos ni terminaciones.
 
 ## Descubrimiento inicial conservado: Iris Chile
 

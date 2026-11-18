@@ -558,7 +558,7 @@
     {
       "id": "AUTH-MERGE-PR36-20261118-01",
       "kind": "Autorización independiente merge commit PR36",
-      "status": "PREPARADA_PENDIENTE_PRESENTAR",
+      "status": "PENDIENTE_RESPUESTA",
       "preparedAtUTC": "2026-11-18T20:19:41.618712+00:00",
       "repository": "lasopho/sollahms-web",
       "pullRequest": "https://github.com/lasopho/sollahms-web/pull/36",
@@ -567,7 +567,7 @@
       "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
       "method": "merge_commit",
       "expectedTreeIfBaseUnchanged": "f2d22640e0876d788789b27f99e3e27587384056",
-      "preparedResult": "docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-MERGE-PR36.json",
+      "preparedResult": "https://github.com/lasopho/sollahms-web/blob/99bd49706968bd75317351a209110f41a0149221/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-MERGE-PR36.json",
       "scope": [
         "Fusionar únicamente PR36 mediante merge commit en la base indicada con SHA exactos"
       ],
@@ -581,7 +581,7 @@
         "environmentVariables",
         "supplement24a"
       ],
-      "questionAlreadyPresented": false,
+      "questionAlreadyPresented": true,
       "doNotRepeatAfterPresentation": true,
       "newOwnerResponseReceived": false,
       "pendingOwnerAction": "Autorizar merge en la base indicada o mantener Ready sin fusionar.",
@@ -591,7 +591,11 @@
       "protectedGitIdentitiesPreserved": 155,
       "sourceAndBaseDeploymentsDisabled": true,
       "independentReview": "APROBADO_CON_OBSERVACIONES",
-      "githubHasAdditionalChecksOrReviews": false
+      "githubHasAdditionalChecksOrReviews": false,
+      "presentationRecordedAtUTC": "2026-11-18T20:23:02.187979+00:00",
+      "doNotRepeatQuestion": true,
+      "question": "¿Autorizas fusionar PR36 mediante merge commit en codex/footer-sin-frase-20261116, comprobando head6cedd32 y base875bd80 exactos? No incluye main, deployments ni publicación; 24a sigue separado.",
+      "inputToolAccepted": true
     }
   ],
   "otherPriorWaitsUnchanged": true

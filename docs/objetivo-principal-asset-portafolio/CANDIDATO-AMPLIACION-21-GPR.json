@@ -85,7 +85,7 @@
   "mergePreparation": {
     "path": "ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-MERGE-PR36.json",
     "sha256": "002099fc5d4e93889cc335088804b43288735bbe5c158a6b1ae65f877add0020",
-    "status": "PREPARADO_SIN_AUTORIZACION",
+    "status": "PREPARADO_PENDIENTE_AUTORIZACION",
     "method": "merge_commit",
     "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
     "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
@@ -96,8 +96,25 @@
   },
   "nextAuthorization": {
     "id": "AUTH-MERGE-PR36-20261118-01",
-    "status": "PREPARADA_PENDIENTE_PRESENTAR",
+    "status": "PENDIENTE_RESPUESTA",
     "step": "Merge commit of PR36 into the exact target base",
-    "questionAlreadyPresented": false
+    "questionAlreadyPresented": true,
+    "doNotRepeatQuestion": true
+  },
+  "publicPackagePreparation": {
+    "path": "ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-PAQUETE-PUBLICO-21.json",
+    "sha256": "94c36321cab93849174d133d2e696e697743c1d5ac6b5da0410efa2b2e50b144",
+    "status": "PREPARACION_DOCUMENTAL_NO_PAQUETE_CONSTRUIDO",
+    "newStaticFiles": 49,
+    "replacedPublicFiles": 5,
+    "excludedScriptsAndTests": 4,
+    "sourceConfigNotStatic": "vercel.json",
+    "historicalBaseFileCount": 1672,
+    "projectedCountIfBaseUnchanged": 1721,
+    "projectedCountIsNotCertification": true,
+    "packageConstructed": false,
+    "packageCertified": false,
+    "baseArtifactCurrentAvailabilityNotEstablished": true,
+    "nextRequirement": "After an authorized merge, recover/verify exact base inputs and close the public resource inventory without copying repo/docs/raw/owner/history."
   }
 }
