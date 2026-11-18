@@ -30,7 +30,7 @@ test('loader verifies the public projection pin and retains private-original pro
     fetchImpl:async(url,options)=>{calls.push({url,options});return sourceFetch();}});
   assert.equal(calls.length,1);assert.equal(calls[0].url,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
   assert.equal(calls[0].url,'/data/catalog-nollagam-owner-quotes.json');
-  assert.equal(calls[0].options.cache,'no-store');assert.equal(calls[0].options.credentials,'omit');
+  assert.equal(calls[0].options.cache,'no-store');assert.equal(calls[0].options.credentials,'same-origin');
   assert.equal(calls[0].options.redirect,'error');assert.ok(calls[0].options.signal instanceof AbortSignal);
   assert.equal(result.status,'ready');assert.equal(Object.keys(result.bySlug).length,7);
   for(const [slug,context] of Object.entries(result.bySlug)){
@@ -46,6 +46,32 @@ test('loader verifies the public projection pin and retains private-original pro
       assert.equal(reference.publicSourcePath,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
       assert.equal(reference.publicSourceSHA256,NOLLAGAM_OWNER_PUBLIC_SOURCE_SHA256);
     }
+  }
+});
+
+test('same-origin authentication barrier serves only the pinned Nollagam public fixture',async()=>{
+  const calls=[];
+  const result=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
+    fetchImpl:async(url,options)=>{
+      calls.push({url,credentials:options.credentials,redirect:options.redirect});
+      if(options.credentials!=='same-origin')throw new TypeError('simulated authentication redirect blocked');
+      assert.equal(options.redirect,'error');assert.equal(Object.hasOwn(options,'headers'),false);
+      return sourceFetch();
+    }});
+  assert.deepEqual(calls,[{url:NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,credentials:'same-origin',redirect:'error'}]);
+  assert.equal(result.status,'ready');assert.equal(Object.keys(result.bySlug).length,7);
+  for(const respond of [
+    async()=>{throw new TypeError('simulated authentication redirect blocked');},
+    async()=>({ok:false,status:302}),
+  ]){
+    const paths=[];
+    const blocked=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
+      fetchImpl:async(url,options)=>{
+        paths.push(url);assert.equal(options.credentials,'same-origin');assert.equal(options.redirect,'error');
+        return respond();
+      }});
+    assert.deepEqual(paths,[NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH]);assert.equal(blocked.status,'unavailable');
+    for(const context of Object.values(blocked.bySlug))assert.equal(context.record,null);
   }
 });
 
