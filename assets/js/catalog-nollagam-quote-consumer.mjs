@@ -56,7 +56,7 @@ export async function loadNollagamOwnerQuoteContexts(publishedProjects,{fetchImp
   try{
     if(typeof fetchImpl!=='function'||!cryptoImpl?.subtle?.digest)failure('loader-unavailable');
     const response=await fetchImpl(NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,
-      {cache:'no-store',credentials:'omit',redirect:'error',signal:AbortSignal.timeout(10000)});
+      {cache:'no-store',credentials:'same-origin',redirect:'error',signal:AbortSignal.timeout(10000)});
     if(response?.ok!==true||response.redirected===true)failure('source-unavailable');
     const bytes=new Uint8Array(await response.arrayBuffer());
     if(!bytes.length||bytes.byteLength>100000)failure('source-size-invalid');

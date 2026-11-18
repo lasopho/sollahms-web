@@ -59,7 +59,7 @@ export async function parseEuroOwnerSource(text){
 }
 export async function loadEuroOwnerSource(fetchImpl=globalThis.fetch){
   if(typeof fetchImpl!=='function')fail('fetch unavailable');
-  const response=await fetchImpl(EURO_OWNER_SOURCE_PATH,{signal:AbortSignal.timeout(10000),credentials:'omit',redirect:'error'});
+  const response=await fetchImpl(EURO_OWNER_SOURCE_PATH,{signal:AbortSignal.timeout(10000),credentials:'same-origin',redirect:'error'});
   if(!response?.ok)fail('source unavailable');
   return parseEuroOwnerSource(await response.text());
 }

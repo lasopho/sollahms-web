@@ -54,10 +54,33 @@ test('source transport is pinned before records can be constructed',async()=>{
   const calls=[];
   const loaded=await loadEuroOwnerSource(async(path,options)=>{calls.push({path,options});return {ok:true,text:async()=>text};});
   assert.equal(calls.length,1);assert.equal(calls[0].path,'/data/catalog-euro-owner-quotes.json');
-  assert.equal(calls[0].options.credentials,'omit');assert.equal(calls[0].options.redirect,'error');
+  assert.equal(calls[0].options.credentials,'same-origin');assert.equal(calls[0].options.redirect,'error');
   assert.equal(bindEuroOwnerQuotes(original,loaded).length,131);
   await assert.rejects(parseEuroOwnerSource(text+' '),/SHA-256 mismatch/);
   assert.throws(()=>bindEuroOwnerQuotes(original,{...source}),/verified source required/);
+});
+
+test('same-origin authentication barrier serves only the pinned Euro public fixture',async()=>{
+  const calls=[];
+  const loaded=await loadEuroOwnerSource(async(path,options)=>{
+    calls.push({path,credentials:options.credentials,redirect:options.redirect});
+    if(options.credentials!=='same-origin')throw new TypeError('simulated authentication redirect blocked');
+    assert.equal(options.redirect,'error');assert.equal(Object.hasOwn(options,'headers'),false);
+    return {ok:true,text:async()=>text};
+  });
+  assert.deepEqual(calls,[{path:EURO_OWNER_SOURCE_PATH,credentials:'same-origin',redirect:'error'}]);
+  assert.equal(loaded.publicSHA256,EURO_OWNER_SOURCE_SHA256);
+  for(const respond of [
+    async()=>{throw new TypeError('simulated authentication redirect blocked');},
+    async()=>({ok:false,status:302}),
+  ]){
+    const paths=[];
+    await assert.rejects(loadEuroOwnerSource(async(path,options)=>{
+      paths.push(path);assert.equal(options.credentials,'same-origin');assert.equal(options.redirect,'error');
+      return respond();
+    }),/simulated authentication redirect blocked|source unavailable/);
+    assert.deepEqual(paths,[EURO_OWNER_SOURCE_PATH]);
+  }
 });
 
 test('public projection contains exactly the original21 owner prices and permitted identity fields',()=>{
