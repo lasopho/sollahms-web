@@ -1,0 +1,128 @@
+{
+  "checkedAt": "2026-11-16T15:56:09.358320+00:00",
+  "passed": true,
+  "deployment": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+  "outputInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+  "metadata": {
+    "id": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+    "url": "project-wrapp-4tb7ztjjc-lsandoval2-8260s-projects.vercel.app",
+    "name": "project-wrapp",
+    "readyState": "READY",
+    "target": "production",
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": null,
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "source": "cli",
+    "alias": [],
+    "meta": {
+      "githubCommitSha": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9",
+      "githubCommitRef": "codex/centro-auditoria-integral-20261116",
+      "candidateInventorySha256": "ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05",
+      "baselineDeployment": "dpl_B9HL4hR66iRc5vwzh3Ykk25vLe9w"
+    }
+  },
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "nodeVersion": "24.x",
+    "paused": null
+  },
+  "productionAliases": [
+    {
+      "host": "sollahms.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794842996857
+    },
+    {
+      "host": "www.sollahms.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794842996873
+    },
+    {
+      "host": "sollhams.cl",
+      "deploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794842996858
+    }
+  ],
+  "functions": [
+    "out/api/advisory",
+    "out/api/booking-availability",
+    "out/api/booking-create",
+    "out/api/collaboration",
+    "out/api/contact",
+    "out/api/orientation-contact",
+    "out/api/uf"
+  ],
+  "checks": [
+    {
+      "name": "deployment identity / project / team",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ready and intended environment",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prebuilt artifact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "SSO and disabled automatic deployment preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production unchanged: sollahms.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production unchanged: www.sollahms.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production unchanged: sollhams.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "complete remote inventory matches all 1660 paths and SHA1",
+      "passed": true,
+      "detail": {
+        "expected": 1660,
+        "actual": 1660,
+        "matching": 1660
+      }
+    },
+    {
+      "name": "seven functions registered unchanged",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "fullSourceFileCount": 1660,
+  "functionSourceFiles": 57,
+  "sizeLimitation": "Remote SHA1 content addresses bind the certified local SHA256 and size; explicit remote sizes checked when supplied.",
+  "formsSubmitted": 0,
+  "apiWrites": 0,
+  "promotions": 0
+}

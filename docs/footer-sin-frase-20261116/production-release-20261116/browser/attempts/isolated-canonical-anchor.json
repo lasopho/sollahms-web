@@ -1,0 +1,351 @@
+{
+  "startedAt": "2026-11-16T17:21:52.533Z",
+  "phase": "isolated",
+  "origin": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app",
+  "deployment": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+  "mode": "Authenticated real isolated Production responses via Vercel CLI; no local static fulfillment",
+  "baselineDeployment": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+  "candidateInventorySha256": "aabc92d6a5c7c8d345d9a3cc7dd4f45a7fd11c8385c752ddf45e5a2d0f649549",
+  "localCertificateSha256": "06bf13c1d44bfa50a71cc8fe9bb6b8e8e53ca03afb3b5211ae1fca5ed959734f",
+  "baselineChromeReplayed": false,
+  "widths": [
+    1440,
+    1024,
+    768,
+    390,
+    320
+  ],
+  "pages": [
+    "index.html",
+    "proyectos.html"
+  ],
+  "cases": [
+    {
+      "phase": "isolated",
+      "mode": "after",
+      "file": "index.html",
+      "width": 1440,
+      "passed": false,
+      "delivered": {
+        "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/",
+        "status": 200,
+        "htmlSha256": "500f2935db51b0c34460986ff2f78be499ef52dfe5e270967b4502489cd4b33d",
+        "footerSha256": "abc9c04ce63b15360be76f4bf765351f144d1a66c714c93d1a780d962a503ba6",
+        "footerBytesExactlyCertified": true,
+        "htmlBytes": 59169
+      },
+      "footer": {
+        "phraseCount": 0,
+        "text": "© 2026 Sollahms. Todos los derechos reservados. Asesoría e inversión inmobiliaria en Chile. contacto@sollahms.cl+56 9 4850 2440 Secciones Expertise Asset Portafolio Guía hipotecariaCuándo comprar Contacto Trabaja con nosotros Legal PrivacidadFuentes y respaldo documental",
+        "links": [
+          {
+            "href": "/",
+            "text": "Sollahms",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "mailto:contacto@sollahms.cl",
+            "text": "contacto@sollahms.cl",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.",
+            "text": "+56 9 4850 2440",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "#expertise",
+            "text": "Expertise",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "#portfolio",
+            "text": "Asset Portafolio",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "/guia-hipotecaria.html",
+            "text": "Guía hipotecaria",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "/cuando-comprar-propiedad.html",
+            "text": "Cuándo comprar",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "/contacto.html",
+            "text": "Contacto",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "/trabaja-con-nosotros.html",
+            "text": "Trabaja con nosotros",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "/privacidad.html",
+            "text": "Privacidad",
+            "target": null,
+            "rel": null
+          },
+          {
+            "href": "/fuentes-respaldo-documental.html",
+            "text": "Fuentes y respaldo documental",
+            "target": null,
+            "rel": null
+          }
+        ],
+        "logos": [
+          {
+            "src": "/assets/branding/sollahms-logo.svg",
+            "alt": "",
+            "width": "114",
+            "height": "22",
+            "loaded": true
+          }
+        ],
+        "overflow": [],
+        "emptyContainers": [],
+        "footerChildren": 1,
+        "footerFades": 0,
+        "rect": {
+          "width": 1440,
+          "height": 316
+        },
+        "grid": {
+          "left": 80,
+          "right": 1360,
+          "width": 1280
+        },
+        "style": {
+          "paddingTop": "64px",
+          "paddingBottom": "32px",
+          "background": "rgb(238, 243, 238)",
+          "fontFamily": "Inter, sans-serif"
+        },
+        "documentWidth": 1440,
+        "viewport": 1440,
+        "tailwindLoaded": true,
+        "fontsLoaded": "loaded",
+        "normalizedHash": "3069e7e098a202b9a63aa2d059aac382979987ac51f38e565218fbfb5a665491"
+      },
+      "heightRemoved": 112,
+      "error": {
+        "message": "Delivered footer destination failed https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/index.html\n\n308 !== 200\n",
+        "stack": "AssertionError [ERR_ASSERTION]: Delivered footer destination failed https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/index.html\n\n308 !== 200\n\n    at file:///private/tmp/sollahms-footer-review-20261116/docs/footer-sin-frase-20261116/production-release-20261116/browser/qa.mjs:98:11\n    at async validateTargets (file:///private/tmp/sollahms-footer-review-20261116/docs/footer-sin-frase-20261116/production-release-20261116/browser/qa.mjs:101:18)\n    at async file:///private/tmp/sollahms-footer-review-20261116/docs/footer-sin-frase-20261116/production-release-20261116/browser/qa.mjs:172:16"
+      }
+    }
+  ],
+  "pageErrors": [],
+  "failedResources": [],
+  "consoleErrors": [],
+  "expectedFixtureConsole": [],
+  "fontResources": [],
+  "administrativeToolbarSuppressed": [],
+  "blockedExternal": [],
+  "apiFixtures": [],
+  "blockedAPIs": [],
+  "blockedMutations": [],
+  "requests": [
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/project-photos.css?v=20261025-visual-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/index.tailwind.css",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/fonts/home/manrope-latin-variable.woff2",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/fonts/home/inter-latin-variable.woff2",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/home-seo.css?v=20261025-visual-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/advisory.css?v=20261026-required-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/image-parallax.css?v=20261026-2",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/guide-navigation.css?v=20261029-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/sollahms-brand.css?v=20261026-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/sollahms-theme.css?v=20261026-scroll-3",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/css/expertise-navigation.css",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/advisory.mjs?v=20261026-required-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/scroll-presence.js?v=20261026-3",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/image-parallax.js?v=20261027-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/expertise-navigation.js",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/branding/sollahms-logo.svg",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/commercial-fields.mjs",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/form-operation.mjs",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/rut-field.mjs?v=20261026-required-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/project-identity.mjs",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/commercial-context.mjs?v=20261029-euro-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/rut.mjs",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/js/project-offers.mjs?v=20261029-euro-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/assets/branding/favicon.svg?v=20261026-logo-1",
+      "status": 200,
+      "source": "authenticated deployment response"
+    }
+  ],
+  "targets": [
+    {
+      "url": "https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/",
+      "status": 200,
+      "bytes": 59169,
+      "sha256": "500f2935db51b0c34460986ff2f78be499ef52dfe5e270967b4502489cd4b33d",
+      "source": "authenticated exact deployment GET"
+    }
+  ],
+  "passed": false,
+  "failure": {
+    "message": "Delivered footer destination failed https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/index.html\n\n308 !== 200\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Delivered footer destination failed https://project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app/index.html\n\n308 !== 200\n\n    at file:///private/tmp/sollahms-footer-review-20261116/docs/footer-sin-frase-20261116/production-release-20261116/browser/qa.mjs:98:11\n    at async validateTargets (file:///private/tmp/sollahms-footer-review-20261116/docs/footer-sin-frase-20261116/production-release-20261116/browser/qa.mjs:101:18)\n    at async file:///private/tmp/sollahms-footer-review-20261116/docs/footer-sin-frase-20261116/production-release-20261116/browser/qa.mjs:172:16"
+  },
+  "finishedAt": "2026-11-16T17:22:28.735Z"
+}

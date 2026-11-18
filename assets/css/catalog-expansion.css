@@ -1,0 +1,18 @@
+/* New Iris projects only; shared palette and original fiches remain unchanged. */
+.catalog-expansion-source{display:block;margin-top:.35rem;font-size:.73rem;line-height:1.5;color:var(--s-muted);overflow-wrap:anywhere}
+.catalog-expansion-source a{color:var(--s-green);text-underline-offset:.2em}
+.catalog-expansion-note{font-size:.78rem;line-height:1.55;color:var(--s-muted)}
+.expansion-project .expansion-price-source{display:block;font-size:.76rem;line-height:1.5;color:var(--s-on-dark);margin-bottom:.35rem}
+.expansion-project .expansion-developer{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:1rem 0}
+.expansion-project .expansion-developer img{max-width:150px;max-height:64px;width:auto;height:auto;object-fit:contain}
+.expansion-project .expansion-scope{max-width:75ch;font-size:.86rem;line-height:1.7;color:var(--s-muted)}
+.expansion-project .expansion-ref-list{display:grid;gap:1rem;padding:0;list-style:none}
+.expansion-project .expansion-ref-list li{padding:1rem 0;border-bottom:1px solid var(--s-line)}
+.expansion-project .expansion-ref-list p{margin:.35rem 0;font-size:.84rem;line-height:1.65}
+.expansion-project .expansion-source-list{padding-left:1.2rem;line-height:1.8;font-size:.9rem}
+.expansion-project .expansion-location{font-style:normal;font-size:1.05rem;line-height:1.8}
+.expansion-project .expansion-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.expansion-project .expansion-unknown{color:var(--s-muted)}
+.expansion-project .ci-no-image{min-height:220px;background:var(--s-soft);border:1px solid var(--s-line);justify-content:center;text-align:center}
+.expansion-project .expansion-source-link{overflow-wrap:anywhere;text-underline-offset:.2em}
+@media(max-width:680px){.expansion-project .expansion-actions{align-items:stretch;flex-direction:column}.expansion-project .expansion-actions .button{text-align:center}.expansion-project .pj-content{padding-inline:24px}}

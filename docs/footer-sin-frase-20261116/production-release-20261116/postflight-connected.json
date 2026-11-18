@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Final connected read-only postflight after authorized footer production promotion",
+  "checkedAtUtc": "2026-11-16T17:32:39.982Z",
+  "mutationsPerformed": false,
+  "sourceTools": [
+    "Vercel connected get_project/get_deployment/list_project_domains/list_aliases/list_deployments",
+    "GitHub connected fetch git/ref/heads and pull request"
+  ],
+  "expected": {
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "promotedDeploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+    "previousDeploymentId": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+    "authorizedSourceHead": "b761ddeaea2fa526870e6af25658046e31b571d7",
+    "branch": "codex/footer-sin-frase-20261116",
+    "pullRequest": 31
+  },
+  "project": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "nodeVersion": "24.x",
+    "latestDeployment": {
+      "id": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+      "url": "project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app",
+      "createdAt": 1794849686265,
+      "readyState": "READY",
+      "target": "production"
+    },
+    "ssoProtection": {
+      "enabled": true,
+      "deploymentType": "all_except_custom_domains"
+    },
+    "passwordProtection": {
+      "enabled": false,
+      "deploymentType": null
+    },
+    "trustedIps": {
+      "enabled": false,
+      "deploymentType": null,
+      "addresses": [],
+      "protectionMode": null
+    }
+  },
+  "production": {
+    "id": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+    "url": "project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "state": "READY",
+    "readyState": "READY",
+    "target": "production",
+    "createdAt": 1794849686265,
+    "source": "cli",
+    "githubCommitRef": "codex/footer-sin-frase-20261116",
+    "githubCommitSha": "b761ddeaea2fa526870e6af25658046e31b571d7"
+  },
+  "candidate": {
+    "id": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+    "url": "project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "state": "READY",
+    "readyState": "READY",
+    "target": "production",
+    "createdAt": 1794849686265,
+    "source": "cli",
+    "githubCommitRef": "codex/footer-sin-frase-20261116",
+    "githubCommitSha": "b761ddeaea2fa526870e6af25658046e31b571d7"
+  },
+  "defaultVercelDomain": {
+    "hostname": "project-wrapp.vercel.app",
+    "resolvedBy": "get_deployment(hostname); omitted by list_aliases but registered as a project domain",
+    "deployment": {
+      "id": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+      "url": "project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "state": "READY",
+      "readyState": "READY",
+      "target": "production",
+      "createdAt": 1794849686265,
+      "source": "cli",
+      "githubCommitRef": "codex/footer-sin-frase-20261116",
+      "githubCommitSha": "b761ddeaea2fa526870e6af25658046e31b571d7"
+    }
+  },
+  "domains": [
+    {
+      "name": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308
+    },
+    {
+      "name": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": null,
+      "redirectStatusCode": null
+    },
+    {
+      "name": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308
+    },
+    {
+      "name": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": null,
+      "redirectStatusCode": null
+    }
+  ],
+  "customAliases": [
+    {
+      "alias": "www.sollahms.cl",
+      "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794849978248
+    },
+    {
+      "alias": "sollahms.cl",
+      "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1794849978266
+    },
+    {
+      "alias": "sollhams.cl",
+      "deploymentId": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1794849978245
+    }
+  ],
+  "github": {
+    "head": {
+      "ref": "refs/heads/codex/footer-sin-frase-20261116",
+      "sha": "b761ddeaea2fa526870e6af25658046e31b571d7"
+    },
+    "pullRequest": {
+      "number": 31,
+      "url": "https://github.com/lasopho/sollahms-web/pull/31",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "mergedAt": null,
+      "autoMerge": null,
+      "head": {
+        "ref": "codex/footer-sin-frase-20261116",
+        "sha": "b761ddeaea2fa526870e6af25658046e31b571d7"
+      },
+      "base": {
+        "ref": "codex/centro-auditoria-integral-20261116",
+        "sha": "67a57b142dd2170c678e75c4c425aabd16579339"
+      }
+    }
+  },
+  "productionConcurrency": {
+    "queriedSinceEpochMs": 1794842728953,
+    "baselineIncludedByApi": true,
+    "newProductionCount": 1,
+    "newProductionIds": [
+      "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu"
+    ],
+    "pagination": {
+      "count": 2,
+      "prev": 1794849686265
+    },
+    "recentProduction": [
+      {
+        "id": "dpl_9b2Fp33LqsL5NuB2p7JLdxx9t9gu",
+        "url": "project-wrapp-fzatwpfta-lsandoval2-8260s-projects.vercel.app",
+        "state": "READY",
+        "target": "production",
+        "createdAt": 1794849686265,
+        "githubCommitRef": "codex/footer-sin-frase-20261116",
+        "githubCommitSha": "b761ddeaea2fa526870e6af25658046e31b571d7",
+        "isRollbackCandidate": true
+      },
+      {
+        "id": "dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR",
+        "url": "project-wrapp-4tb7ztjjc-lsandoval2-8260s-projects.vercel.app",
+        "state": "READY",
+        "target": "production",
+        "createdAt": 1794842728953,
+        "githubCommitRef": "codex/centro-auditoria-integral-20261116",
+        "githubCommitSha": "42ee1d1b9b4794af5be1a3b81be5efe8cfd3dcb9",
+        "isRollbackCandidate": true
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "correct_project_and_team",
+      "passed": true
+    },
+    {
+      "name": "production_is_promoted_candidate",
+      "passed": true
+    },
+    {
+      "name": "same_candidate_ready_production",
+      "passed": true
+    },
+    {
+      "name": "exact_authorized_source_metadata",
+      "passed": true
+    },
+    {
+      "name": "project_latest_is_same_candidate",
+      "passed": true
+    },
+    {
+      "name": "all_three_custom_aliases_use_candidate",
+      "passed": true
+    },
+    {
+      "name": "canonical_domain_has_no_redirect",
+      "passed": true
+    },
+    {
+      "name": "www_308_preserved",
+      "passed": true
+    },
+    {
+      "name": "alternate_domain_308_preserved",
+      "passed": true
+    },
+    {
+      "name": "default_vercel_domain_uses_candidate",
+      "passed": true
+    },
+    {
+      "name": "four_registered_domains_preserved_verified",
+      "passed": true
+    },
+    {
+      "name": "sso_all_except_custom_domains_preserved",
+      "passed": true
+    },
+    {
+      "name": "remote_head_unchanged",
+      "passed": true
+    },
+    {
+      "name": "pr31_open_draft_unmerged_no_automerge",
+      "passed": true
+    },
+    {
+      "name": "only_one_new_production_since_baseline",
+      "passed": true
+    },
+    {
+      "name": "production_window_not_truncated",
+      "passed": true
+    },
+    {
+      "name": "previous_production_retained",
+      "passed": true
+    }
+  ],
+  "status": "PASS",
+  "passed": true
+}

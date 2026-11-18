@@ -47,10 +47,11 @@
 <meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v3.png">
 <meta name="twitter:image:alt" content="Sollahms — información y asesoría inmobiliaria">
 <link rel="stylesheet" href="/assets/css/project-photos.css?v=20261025-visual-1">
-<link rel="stylesheet" href="/assets/css/catalog-filters.css?v=20261029-filters-1">
+<link rel="stylesheet" href="/assets/css/catalog-filters.css?v=20261117-commercial-local-1">
 <link rel="stylesheet" href="/assets/css/guide-navigation.css?v=20261029-1">
 <link rel="stylesheet" href="/assets/css/purchase-stage-entry.css?v=20261029-1">
-<link rel="stylesheet" href="/assets/css/metro.css"><link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
+<link rel="stylesheet" href="/assets/css/metro.css"><link rel="stylesheet" href="/assets/css/catalog-expansion.css?v=20261118-1">
+<link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
 <script src="/assets/js/scroll-presence.js?v=20261026-3" defer></script>
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
 <script src="/assets/js/image-parallax.js?v=20261027-1" defer></script>
@@ -137,11 +138,12 @@
       <div><label for="property-type">Tipo de propiedad</label><select id="property-type" class="catalog-control" disabled><option value="">Todas</option></select></div>
       <div><label for="bedrooms">Dormitorios</label><select id="bedrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
       <fieldset class="cf-price"><legend>Precio desde · UF</legend><div class="cf-range"><div><label for="min-price">Mínimo UF</label><input id="min-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin mínimo" disabled></div><div><label for="max-price">Máximo UF</label><input id="max-price" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin máximo" disabled></div></div></fieldset>
-      <div><label for="delivery">Entrega</label><select id="delivery" class="catalog-control" disabled><option value="">Cualquier entrega</option></select></div>
+      <div><label for="bathrooms">Baños</label><select id="bathrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
     </div>
-    <p class="cf-hint">El rango usa el precio desde del proyecto o de la tipología, etapa o producto seleccionado cuando tiene un valor autorizado. Confirma el valor y la disponibilidad al cotizar.</p>
+    <p class="cf-hint">Precio, dormitorios, baños y superficie se combinan sólo cuando pertenecen a una misma referencia documentada. Confirma el valor y la disponibilidad al cotizar.</p>
     <details class="catalog-more cf-advanced" id="catalog-more">
       <summary>Más filtros<span id="catalog-more-count"></span></summary>
+      <fieldset class="cf-group cf-evidence"><legend>Datos para esta consulta</legend><label for="evidence-mode">Fuente de referencias</label><select id="evidence-mode" class="catalog-control" aria-describedby="evidence-mode-help" disabled><option value="published">Datos publicados</option><option value="prepared">Referencias Leben · 16 nov 2026</option></select><p id="evidence-mode-help" class="cf-hint">Consulta los datos del catálogo publicado. Puedes seleccionar las referencias Leben revisadas al 16/11/2026 para explorar sus antecedentes documentados. Las referencias no acreditan stock disponible.</p></fieldset>
 <fieldset id="metro-filter-section" class="metro-filters" data-scroll-static><legend>Cercanía al Metro</legend>
 <p class="metro-note">Región Metropolitana · Distancia geográfica en línea recta. No representa metros ni minutos caminando.</p>
 <div class="metro-filter-grid">
@@ -156,24 +158,24 @@
 <details class="metro-sources"><summary>Fuentes, alcance y red futura</summary><p>126 ubicaciones de estaciones, con combinaciones agrupadas, en 7 líneas. Nombres y operación contrastados con Metro el 30/10/2026; coordenadas y trazados: OpenStreetMap (ODbL). Los puntos no identifican accesos peatonales.</p><p>L7 y L9: obras confirmadas. L8: proyecto con RCA favorable. Sus estaciones y recorridos futuros todavía no se filtran ni se dibujan porque falta validar geometrías y accesos.</p><p><a href="https://www.metro.cl/" target="_blank" rel="noopener">Metro de Santiago</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap · ODbL</a> · <a href="/data/metro-network.json">Datos de estaciones</a> · <a href="/data/metro-geometries.json">Trazados ODbL</a></p></details>
 </fieldset><p id="metro-load-status" role="status" hidden>Los datos de Metro no pudieron cargar. Los demás filtros siguen disponibles.</p>
       <p class="cf-hint">Mostramos coincidencias documentadas. Un dato sin informar no significa que el proyecto no tenga esa característica.</p>
-      <p id="advanced-data-status" class="cf-hint" hidden></p>
       <div class="cf-groups"><fieldset class="cf-group"><legend>Modalidad de compra revisada</legend><p class="cf-hint">Coincidir con cualquiera de las seleccionadas. Los proyectos con información pendiente quedan fuera de este filtro.</p><div id="filter-purchaseModes" class="cf-choices"></div></fieldset>
         <fieldset class="cf-group"><legend>Distribución y superficies</legend><div class="cf-distribution">
-          <div><label for="bathrooms">Baños</label><select id="bathrooms" class="catalog-control" disabled><option value="">Cualquiera</option></select></div>
-          <div><label for="area-type">Tipo de superficie</label><select id="area-type" class="catalog-control" disabled><option value="util">Útil</option></select></div>
+          <div class="cf-metric"><label for="area-type">Métrica de superficie</label><select id="area-type" class="catalog-control" aria-describedby="surface-metric-help" disabled><option value="">Elige útil o total</option></select></div>
           <div><label for="min-area">Superficie mínima · m²</label><input id="min-area" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin mínimo" disabled></div>
           <div><label for="max-area">Superficie máxima · m²</label><input id="max-area" type="number" min="0" step="0.01" inputmode="decimal" class="catalog-control" placeholder="Sin máximo" disabled></div>
-        </div><p class="cf-hint">Dormitorios, baños y superficie deben coincidir en un mismo modelo documentado. Las superficies útiles, interiores, totales y de terreno se comparan por separado.</p></fieldset>
+        </div><p id="surface-metric-help" class="cf-hint">Elige útil o total antes de aplicar un rango. Interior, terraza, patio y terreno son métricas distintas y no se convierten. La superficie debe estar en la misma referencia que los demás filtros seleccionados.</p></fieldset>
         <fieldset class="cf-group"><legend>Tipologías documentadas</legend><p class="cf-hint">Coincidir con cualquiera de las seleccionadas.</p><div id="filter-typologies" class="cf-choices"></div></fieldset>
         <fieldset class="cf-group"><legend>Amenities y espacios comunes</legend><p class="cf-hint">Por defecto, coincide con cualquiera de las seleccionadas.</p><label class="cf-all"><input id="amenities-all" type="checkbox" disabled> Debe incluir todas</label><div id="filter-amenities" class="cf-choices"></div></fieldset>
         <fieldset class="cf-group"><legend>Características de la vivienda</legend><p class="cf-hint">Por defecto, coincide con cualquiera de las seleccionadas.</p><label class="cf-all"><input id="features-all" type="checkbox" disabled> Debe incluir todas</label><div id="filter-features" class="cf-choices"></div></fieldset>
-        <fieldset class="cf-group"><legend>Estado comercial y uso</legend><div class="cf-distribution"><div><label for="state">Estado comercial</label><select id="state" class="catalog-control" disabled><option value="">Todos</option></select></div><div><label for="asset-type">Tipo de activo</label><select id="asset-type" class="catalog-control" disabled><option value="">Todos</option></select></div></div><p class="cf-hint">El estado comercial es distinto del año de entrega.</p></fieldset>
+        <fieldset class="cf-group"><legend>Estado comercial, entrega y uso</legend><div class="cf-distribution"><div><label for="delivery">Entrega</label><select id="delivery" class="catalog-control" disabled><option value="">Cualquier entrega</option></select></div><div><label for="state">Estado comercial</label><select id="state" class="catalog-control" disabled><option value="">Todos</option></select></div><div><label for="asset-type">Tipo de activo</label><select id="asset-type" class="catalog-control" disabled><option value="">Todos</option></select></div></div><p class="cf-hint">El estado comercial es distinto del año de entrega.</p></fieldset>
+        <fieldset class="cf-group"><legend>Estacionamiento y bodega</legend><div class="cf-distribution cf-additional"><div><label for="parking">Estacionamiento</label><select id="parking" class="catalog-control" aria-describedby="additional-spaces-help" disabled><option value="">Sin filtro</option><option value="additional">Costo adicional documentado</option><option value="included">Incluido en la referencia</option><option value="available">Disponibilidad confirmada</option></select></div><div><label for="storage">Bodega</label><select id="storage" class="catalog-control" aria-describedby="additional-spaces-help" disabled><option value="">Sin filtro</option><option value="additional">Costo adicional documentado</option><option value="included">Incluida en la referencia</option><option value="available">Disponibilidad confirmada</option></select></div></div><p id="additional-spaces-help" class="cf-hint">Un costo adicional general no acredita inclusión en el precio ni disponibilidad de una unidad. Cada condición requiere respaldo con ese alcance.</p></fieldset>
         <fieldset class="cf-group"><legend>Inmobiliarias</legend><p class="cf-hint">Puedes elegir más de una.</p><div id="filter-developers" class="cf-choices"></div></fieldset>
       </div>
       <div class="cf-panel-actions"><button type="button" class="cf-results-button" data-show-results disabled>Ver proyectos</button></div>
     </details>
     <div class="cf-mobile-results"><button type="button" class="cf-results-button" data-show-results disabled>Ver proyectos</button></div>
   </details>
+  <p id="advanced-data-status" class="cf-hint" role="status" aria-live="polite" hidden></p>
   <p id="purchase-stage-filter-note" class="cf-hint" hidden>Resultados según etapa documentada. Para entrega inmediata se exige además una oferta comercial activa revisada el 29/10/2026; se excluyen recepciones pendientes y disponibilidades sin confirmar. Confirma la unidad, su habilitación legal y el plazo al cotizar. <a href="/cuando-comprar-propiedad.html#verificar-etapa">Cómo revisamos la etapa</a>.</p><div class="catalog-filter-actions"><button id="clear-filters" type="button" class="catalog-text-button" disabled>Limpiar filtros</button><p id="filter-range-error" class="cf-range-error" role="status" tabindex="-1" hidden></p></div>
   <div id="applied-filters" class="catalog-applied" aria-label="Filtros aplicados" hidden></div>
 </form>
@@ -345,6 +347,29 @@
     <li><a href="/los-alerces.html">Los Alerces</a> — <span>Desde: consultar precio</span></li>
     <li><a href="/valle-los-ingleses-iii.html">Valle Los Ingleses III</a> — <span>Desde: consultar precio</span></li>
     <li><a href="/edificio-nordico.html">Edificio Nórdico</a> — <span>Desde UF 4.746</span></li>
+<!--IRIS_EXPANSION_DIRECTORY_START-->
+    <li><a href="/alameda-4719.html">Alameda 4719</a> — <span>Euro · Estación Central</span></li>
+    <li><a href="/compania-1735.html">Compañía 1735</a> — <span>Sento · Santiago</span></li>
+    <li><a href="/nuevo-vivaceta.html">Nuevo Vivaceta</a> — <span>Ecasa · Conchalí</span></li>
+    <li><a href="/condominio-altos-del-penon.html">Condominio Altos del Peñón</a> — <span>GPR · Puente Alto</span></li>
+    <li><a href="/condominio-reserva-santa-clara.html">Condominio Reserva Santa Clara</a> — <span>GPR · Coquimbo</span></li>
+    <li><a href="/condominio-hacienda-santa-clara.html">Condominio Hacienda Santa Clara</a> — <span>GPR · Coquimbo</span></li>
+    <li><a href="/condominio-plaza-nos.html">Condominio Plaza Nos</a> — <span>GPR · San Bernardo</span></li>
+    <li><a href="/condominio-sendero-santa-clara.html">Condominio Sendero Santa Clara</a> — <span>GPR · Coquimbo</span></li>
+    <li><a href="/terrazas-del-mirador.html">Terrazas del Mirador</a> — <span>GPR · Puerto Varas</span></li>
+    <li><a href="/altos-del-mirador.html">Altos del Mirador</a> — <span>GPR · Coquimbo</span></li>
+    <li><a href="/condominio-hacienda-junquillar.html">Condominio Hacienda Junquillar</a> — <span>GPR · San Pedro de la Paz</span></li>
+    <li><a href="/condominio-hacienda-volcanes.html">Condominio Hacienda Volcanes</a> — <span>GPR · Puerto Montt</span></li>
+    <li><a href="/kiez.html">Kiez</a> — <span>Leben · Santiago</span></li>
+    <li><a href="/centro-santa-ana.html">Centro Santa Ana</a> — <span>AJ Urbana · Santiago</span></li>
+    <li><a href="/edificio-ambar-urbano.html">Edificio Ambar Urbano</a> — <span>Euro · Santiago</span></li>
+    <li><a href="/espacio-v.html">Espacio V</a> — <span>Euro · Ñuñoa</span></li>
+    <li><a href="/edificio-botanico.html">Edificio Botánico</a> — <span>Norte Verde · Santiago</span></li>
+    <li><a href="/balmaceda.html">Balmaceda</a> — <span>Ingevec · Santiago</span></li>
+    <li><a href="/prat.html">Prat</a> — <span>Ingevec · Santiago</span></li>
+    <li><a href="/vicuna-mackenna-capital.html">Vicuña Mackenna Capital</a> — <span>Ingevec · Santiago</span></li>
+    <li><a href="/mirador-capital.html">Mirador Capital</a> — <span>Ingevec · La Florida</span></li>
+<!--IRIS_EXPANSION_DIRECTORY_END-->
 </ul>
 </details>
 <!--CATALOG_DIRECTORY_END-->
@@ -375,9 +400,6 @@
 <li><a class="text-slate-500 hover:text-emerald-700 transition-colors font-['Inter'] text-sm tracking-wide" href="/privacidad.html">Privacidad</a></li>
 </ul>
 </div>
-</div>
-<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-slate-200">
-<p class="text-[10px] text-slate-400 font-mono tracking-widest text-center">PRECISION • TRANSPARENCY • STRATEGY</p>
 </div>
 </footer>
 <script type="module" src="/assets/js/catalog.mjs?v=20261030-metro-1"></script>

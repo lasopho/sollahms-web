@@ -32,7 +32,10 @@ ck(catalogReference(run(combination)[0],combination).value===3855,'card shows se
 ck(run({...combination,bedrooms:'0',maxPriceInput:'3000'}).map(x=>x.slug).join()==='bcome','studio <=3000');
 ck(run({...combination,bedrooms:'3'}).length===0,'no nonexistent 3D');
 ck(run({...combination,bedrooms:'1',maxPriceInput:'3000'}).length===0,'no studio price for 1D');
-ck(run({...combination,bathrooms:'2',areaType:'total',minArea:'50',maxArea:'58'}).length===1,'coherent 2D 2B total');
+// F10: the owner 2D price does not identify the brochure model's baths/area.
+ck(run({...combination,bathrooms:'2',areaType:'total',minArea:'50',maxArea:'58'}).length===0,'price does not borrow model baths and total');
+const {maxPriceInput:unlinkedPrice,...withoutPrice}=combination;
+ck(run({...withoutPrice,bathrooms:'2',areaType:'total',minArea:'50',maxArea:'58'}).length===1,'coherent 2D 2B total without an unlinked price');
 ck(run({...combination,bathrooms:'3'}).length===0,'unknown bathroom excluded');
 ck(run({developers:['León'],bedrooms:'1',maxPriceInput:'10000'}).every(x=>!['condominio-uruguay','jardines-de-ramon-cruz'].includes(x.slug)),'documented 1D without price fails price search');
 ck(run({developers:['León'],purchaseModes:['blanco']}).map(x=>x.slug).join()==='condominio-parque-don-lautaro','blanco guide');

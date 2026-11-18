@@ -4,6 +4,10 @@
 .cf-options>summary{display:none}
 .cf-primary{grid-template-columns:repeat(4,minmax(0,1fr));align-items:end}
 .cf-price{grid-column:span 2;border:0;padding:0;margin:0;min-width:0}
+.cf-evidence{margin-bottom:1.25rem;max-width:44rem}
+.cf-evidence>.catalog-control{max-width:28rem}
+.cf-metric{grid-column:1/-1}
+.catalog-explore .catalog-control{min-width:0;max-width:100%}
 .cf-price legend{font-size:.8rem;font-weight:600;margin-bottom:.45rem}
 .cf-range,.cf-distribution{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
 .cf-price label{font-size:.72rem;font-weight:400;color:var(--s-muted)}
@@ -38,4 +42,5 @@
  .cf-panel-actions{position:sticky;bottom:0;background:var(--s-white);padding:.8rem 0;border-top:1px solid var(--s-line);z-index:4}
  .cf-hint{font-size:.75rem}.catalog-explore .cf-choice{font-size:.78rem}.catalog-explore .cf-all{font-size:.82rem}
 }
+@media(max-width:479px){.cf-additional{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.cf-options *{scroll-behavior:auto}}

@@ -1,0 +1,284 @@
+# SOLLAHMS — PUBLICACIÓN PRODUCTIVA DE ELIMINACIÓN GLOBAL DE FRASE EN PIES DE PÁGINA
+
+## 1. AUTORIZACIÓN EXPRESA
+
+Autorizo publicar en producción exclusivamente la eliminación de la frase:
+
+`PRECISION • TRANSPARENCY • STRATEGY`
+
+de los dos pies de página activos donde fue encontrada:
+
+- Portada: `index.html`.
+- Asset Portafolio: `proyectos.html`.
+
+Autorizo:
+
+- Recuperar y verificar el artefacto certificado.
+- Crear un único deployment de Production aislado.
+- Verificar íntegramente el deployment antes de asignar dominios.
+- Promover exactamente el mismo deployment verificado.
+- Mantener los dominios y redirecciones existentes.
+- Realizar QA público posterior.
+- Actualizar documentación y evidencias.
+
+Esta autorización no permite modificar otros contenidos del sitio.
+
+## 2. IDENTIFICACIÓN
+
+Repositorio: `lasopho/sollahms-web`.
+
+Rama:
+`codex/footer-sin-frase-20261116`
+
+PR:
+https://github.com/lasopho/sollahms-web/pull/31
+
+Estado esperado: abierto en Draft, sin merge.
+
+Commit de implementación:
+`d4d67bc298bbb8e78e7ba91867b49c1e4fd09772`
+
+Preview:
+https://project-wrapp-b4lw8u26z-lsandoval2-8260s-projects.vercel.app/
+
+Deployment Preview:
+`dpl_8Jtg46E1zuPUUd1fhEdcKTu6GUAF`
+
+Producción vigente de referencia:
+`dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR`
+
+Proyecto Vercel:
+`project-wrapp`
+
+ID:
+`prj_URomRRU0MAy4etGKP5gWv3Qv4DGH`
+
+Equipo:
+`team_A9VNIW2f2K1IJpd2pGdvDmEN`
+
+## 3. DOCUMENTACIÓN OBLIGATORIA
+
+Leer:
+
+- `AGENTS.md`
+- `NEXT-PROMPT.md`
+- `docs/footer-sin-frase-20261116/INFORME-AUDITORIA.md`
+- `docs/footer-sin-frase-20261116/INFORME-CIERRE.md`
+- `docs/footer-sin-frase-20261116/SIGUIENTE-PROMPT.md`
+- `docs/footer-sin-frase-20261116/candidate-manifest.json`
+- `docs/footer-sin-frase-20261116/source-preservation.json`
+- `docs/footer-sin-frase-20261116/verification/preview-summary.json`
+
+Utilizar los manifiestos y recibos originales como fuente de verdad.
+
+## 4. PREFLIGHT
+
+Antes de cualquier operación:
+
+1. Consultar HEAD remoto de la rama.
+2. Consultar estado del PR #31.
+3. Consultar el deployment productivo actual.
+4. Verificar todos los dominios y aliases.
+5. Confirmar que siguen asociados a `dpl_HWsHLascmRPtGsgJZ8BbGZ5fX4VR`.
+6. Confirmar configuración SSO.
+7. Comprobar que no existen publicaciones simultáneas.
+8. Verificar que el artefacto certificado continúa disponible.
+
+Si existen cambios productivos posteriores, detenerse y conciliar antes de utilizar el candidato.
+
+No sobrescribir modificaciones de otras tareas.
+
+## 5. INTEGRIDAD DEL ARTEFACTO
+
+Inventario base:
+
+`ad66cd90d194f7990f48405283b6282704cb959ae677cbf166c04bd135b82a05`
+
+Inventario candidato:
+
+`aabc92d6a5c7c8d345d9a3cc7dd4f45a7fd11c8385c752ddf45e5a2d0f649549`
+
+El candidato debe conservar:
+
+- 1.660 archivos totales.
+- Dos archivos HTML modificados.
+- 1.658 archivos idénticos.
+- 131 fichas intactas.
+- 66 cambios anteriores de eliminación de recorridos.
+- Siete funciones y 57 archivos de funciones.
+- Configuración Build Output API v3.
+
+Los únicos cambios runtime permitidos son:
+
+- `static/index.html`
+- `static/proyectos.html`
+
+No introducir nuevos cambios.
+
+No ejecutar generadores históricos, builders ni procesos generales de reconstrucción.
+
+Si falta el artefacto temporal, recuperar exactamente los mismos bytes autenticados de la Preview y verificar las 1.660 rutas, tamaños y hashes.
+
+No reconstruir desde `main`.
+
+## 6. PREPARACIÓN DE PRODUCTION
+
+Preparar el artefacto aislado utilizando:
+
+`.vercel/footer-sin-frase-20261116/stage/.vercel/output`
+
+Verificar:
+
+- `config.json`.
+- Directorio `static`.
+- Directorio `functions`.
+- Siete bundles.
+- Hashes y tamaños.
+- Coincidencia completa del manifiesto candidato.
+
+Utilizar Node y Vercel CLI compatibles con las versiones verificadas en el informe.
+
+No modificar credenciales, variables, SSO ni configuraciones globales.
+
+## 7. CREACIÓN DE PRODUCTION AISLADO
+
+Crear un único deployment de Production sin asignación automática de dominios.
+
+Utilizar Build Output API mediante:
+
+`vercel deploy --prebuilt --environment=production --skip-domain`
+
+Especificar proyecto y equipo.
+
+No utilizar `--prod` como sustituto de la secuencia de verificación.
+
+No promover directamente la Preview.
+
+Esperar READY y registrar:
+
+- ID.
+- URL.
+- SHA.
+- Inventario.
+- Target Production.
+- Fecha y hora.
+- Logs sin secretos.
+
+## 8. GATE DE VERIFICACIÓN PREVIO
+
+Antes de asignar dominios comprobar:
+
+1. Los 1.660 archivos esperados.
+2. Los dos únicos cambios aprobados.
+3. Los 1.658 archivos idénticos.
+4. Las siete funciones registradas.
+5. Las 131 fichas preservadas.
+6. Contacto y Centro de Orientación intactos.
+7. Configuración y protección SSO.
+8. Ausencia de la frase en portada y Asset Portafolio.
+9. Ausencia de contenedores vacíos y separadores residuales.
+10. Correcta visualización en 1440, 1024, 768, 390 y 320 px.
+11. Enlaces y recursos funcionales.
+12. Ausencia de errores JavaScript y recursos propios fallidos.
+
+No aceptar READY como única prueba de funcionamiento.
+
+Si cualquier control falla, detener la publicación y documentar la incidencia.
+
+## 9. PROMOCIÓN
+
+Solamente si el Production aislado supera todos los controles:
+
+- Reconsultar los aliases inmediatamente antes de promover.
+- Confirmar que no hubo publicaciones concurrentes.
+- Promover exactamente el mismo ID verificado.
+- No reconstruir.
+- No modificar su contenido.
+- Mantener las redirecciones existentes.
+- Conservar el deployment anterior como referencia de recuperación.
+
+No fusionar PR #31 como requisito de promoción.
+
+Mantener PR #31 abierto en Draft.
+
+## 10. QA PÚBLICO POSTERIOR
+
+Comprobar:
+
+- `https://sollahms.cl/`
+- `https://sollahms.cl/proyectos.html`
+- `https://www.sollahms.cl/`
+- `https://www.sollahms.cl/proyectos.html`
+
+Verificar:
+
+- Ausencia completa de la frase.
+- Pie corporativo correctamente alineado.
+- Ausencia de espacios vacíos.
+- Logotipo y descripción conservados.
+- Correo y WhatsApp conservados.
+- Enlaces legales y navegación.
+- Cinco anchos responsive.
+- Funcionamiento de recursos.
+- Integridad de las 131 fichas.
+- Siete funciones preservadas.
+- TLS y redirecciones.
+
+No enviar formularios, mensajes ni operaciones comerciales.
+
+## 11. PROTECCIÓN DEL RESTO DEL ECOSISTEMA
+
+Mantener intactos:
+
+- Eliminación de recorridos virtuales.
+- Contacto publicado.
+- Centro de Orientación publicado.
+- Las 131 fichas.
+- CRM 360.
+- Sollahms AI Lab.
+- Siete funciones.
+- Resend.
+- Datos comerciales.
+- SEO y GEO.
+- Configuraciones de seguridad.
+
+No sustituir textos por otro eslogan.
+
+No realizar cambios adicionales en otros pies.
+
+## 12. DOCUMENTACIÓN Y CIERRE
+
+Actualizar:
+
+- `docs/footer-sin-frase-20261116/INFORME-CIERRE.md`
+- `docs/footer-sin-frase-20261116/SIGUIENTE-PROMPT.md`
+- `NEXT-PROMPT.md`
+
+Registrar:
+
+- Autorización.
+- Deployment creado.
+- Deployment promovido.
+- SHA e inventario.
+- Fecha y hora America/Santiago.
+- Dominios asignados.
+- Redirecciones.
+- QA público.
+- Capturas.
+- Hashes.
+- Estado del PR.
+- Deployment anterior de recuperación.
+
+Sincronizar la documentación con GitHub.
+
+Mantener el checkout independiente y limpio.
+
+## RESULTADO ESPERADO
+
+La frase «PRECISION • TRANSPARENCY • STRATEGY» debe desaparecer definitivamente de la portada y Asset Portafolio de Sollahms.
+
+Todos los demás contenidos y funcionalidades deben permanecer intactos.
+
+La publicación se considerará completada únicamente cuando el mismo Production verificado esté asignado a los dominios públicos y supere el QA posterior.
+
+No declarar éxito anticipadamente.
