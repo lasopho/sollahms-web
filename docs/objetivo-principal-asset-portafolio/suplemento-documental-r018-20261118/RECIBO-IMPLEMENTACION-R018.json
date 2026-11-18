@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "capturedAtUTC": "2026-11-18T04:09:19.634445+00:00",
+  "status": "IMPLEMENTADO_LOCAL_SIN_COMMIT_PUSH_PR_DEPLOYMENT",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "baseCommit": "0c03a9fcff32d606732a2af55a28295c869b2573",
+  "branch": "codex/suplemento-documental-131-20261117",
+  "scope": {
+    "files": [
+      {
+        "path": "assets/js/documentary-reference-data.mjs",
+        "bytes": 19278,
+        "sha256": "e285eefbb29855391da2bd783f3f52dec3945d2c8259202e43c205b3d1daa752",
+        "baseSHA256": "346bc5d820d356446651965640b7250bccd0e84a76363db16efc34d1afd0428e",
+        "newFile": false
+      },
+      {
+        "path": "assets/js/documentary-local-review.mjs",
+        "bytes": 11277,
+        "sha256": "6bfd0727c13cd5353bc708a580d30eda66acd2c44c22e03a775367050c488a9a",
+        "baseSHA256": "2dabacdf40449e3128b02e3310b9dc146f9711457454af2886b48d067ac064da",
+        "newFile": false
+      },
+      {
+        "path": "tests/documentary-local-review.test.mjs",
+        "bytes": 17557,
+        "sha256": "5d77f7e294330be02799732a4cbc21825d6ceba9fca76bbe171ba9cada748c52",
+        "baseSHA256": "ca4a2dfd68bd6019dffbc71d65df9a6acb7dc32beec397dee37e1f733a915ca8",
+        "newFile": false
+      },
+      {
+        "path": "tests/documentary-reference-additions.test.mjs",
+        "bytes": 9400,
+        "sha256": "b4d740ebb41eb811345288b2005c4d675fb9a683597e4b129f8ef027f45a6b2f",
+        "baseSHA256": "f36e96afcc8385027de7ab7b9171ba4d982ffcbd0aedae0520e81bcd8fd07aef",
+        "newFile": false
+      },
+      {
+        "path": "tests/documentary-reference-r018.test.mjs",
+        "bytes": 11790,
+        "sha256": "e149bf59ac14fdbfdf52ce6644952e5a8b08226bf2ea56dbca737a8b92eff8f8",
+        "baseSHA256": null,
+        "newFile": true
+      },
+      {
+        "path": "tests/fixtures/iris-documentary-r018-vicuna-1103.json",
+        "bytes": 14243,
+        "sha256": "41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d",
+        "baseSHA256": null,
+        "newFile": true
+      }
+    ],
+    "runtimeFiles": 2,
+    "testAndFixtureFiles": 4,
+    "gitWrites": false,
+    "sourceDataEdits": false,
+    "serversStarted": false,
+    "externalOperations": false
+  },
+  "source": {
+    "id": "IRIS-131-R018",
+    "normalizationSHA256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
+    "registrySHA256": "08c4002ac63eb77b1af8ac4ce211517dad635954fb5215a2322fd96ba31c5eb9",
+    "primaryPins": [
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REGISTRO-R018.json",
+        "sha256": "08c4002ac63eb77b1af8ac4ce211517dad635954fb5215a2322fd96ba31c5eb9",
+        "hashAndBytesMatch": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REFERENCIA-UNIDAD-1103.json",
+        "sha256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
+        "hashAndBytesMatch": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/PLANO-C2-ORIGINAL.avif",
+        "sha256": "472689a66828bb0618a3110ef5c572101c5a02c9414bdbb30f5cf11e134a9791",
+        "hashAndBytesMatch": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-VISIBLE.jpg",
+        "sha256": "f565d64baa7eeb47cb4d6c086ad5f67bfd2ef5e72e4fb07d2e0ce83bd1dd90d0",
+        "hashAndBytesMatch": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-OBSERVACION.json",
+        "sha256": "1b8e41db3e1c88c5dce3b9e5294fe26baa2a4043e9936660f347af3d69507c8c",
+        "hashAndBytesMatch": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-TEXTO.txt",
+        "sha256": "202662d9c6adfda694f9b13bcf85e96bfd8ae71ff57e76aefd8889b3baf8f1bb",
+        "hashAndBytesMatch": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/EXPORTACION-PLANO-C2.json",
+        "sha256": "5f6f15373738ae3e431c4767440b654f9f659712ad00ab8ebbbd207f2f48da1a",
+        "hashAndBytesMatch": true
+      }
+    ],
+    "newOwnerDocumentsReceived": 0,
+    "newReferenceWasAlreadyArchivedBeforeImplementation": true
+  },
+  "fixture": {
+    "path": "tests/fixtures/iris-documentary-r018-vicuna-1103.json",
+    "sha256": "41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d",
+    "originalThreeFixtures": {
+      "iris-documentary-15.json": {
+        "sha256": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+        "byteIdenticalBase": true
+      },
+      "plaza-213-reference.json": {
+        "sha256": "94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865",
+        "byteIdenticalBase": true
+      },
+      "iris-documentary-additions-2.json": {
+        "sha256": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb",
+        "byteIdenticalBase": true
+      }
+    },
+    "externalPriceMetadataAbsent": true
+  },
+  "facts": {
+    "unit": "1103",
+    "floor": "11",
+    "modelLabel": "C2",
+    "modelScope": "Plano comercial mostrado por Iris en modal1103; unidad no impresa. Descripción C2(VM) separada, sin equivalencia general, condición legal/as-built, fecha/revisión ni otras unidades.",
+    "literalTypology": "estudio",
+    "propertyType": "departamento",
+    "bedrooms": null,
+    "assetUse": null,
+    "bathrooms": 1,
+    "internalM2": 23.69,
+    "usefulM2": 23.69,
+    "totalM2": 23.69,
+    "terraceM2": 0,
+    "interiorM2": null,
+    "landM2": null,
+    "priceUF": null,
+    "stock": null
+  },
+  "contract": {
+    "canonicalFields": "Cada útil/total no nulo exige su propia entrada explicitPlanMetrics: rótulo literal, valor, Municipal/Construido iguales sin sumar, m², AVIF/captura/normalización ligados por hash+referenceIds, pointers exactos y alcance de proyecto/unidad/modelo/modal. No se derivan de Internos.",
+    "oldNullRequirements": "Los antiguos rechazos sin evidencia permanecen, incluido término unadmitted. Sin prueba propia no se adopta útil/total aunque los números coincidan.",
+    "metadata": "La procedencia queda fuera del engine y de búsqueda libre; unidad/modelo no se convierten en hechos buscables. Metadata Iris antigua conserva su contrato; ausencia externa se admite sólo para variante documental de plano con evidencia explícita validada.",
+    "loader": "Loopback y único opt-in antes del fetch; cuatro pins independientes, carga atómica y guardas contra sustitución por slug/ID.",
+    "counts": {
+      "references": 19,
+      "projectsWithReferences": 18,
+      "identityOnly": 113,
+      "registeredIdentities": 131
+    },
+    "historicalLebenPendingIDsUnchanged": 313
+  },
+  "tests": {
+    "command": "node --test --test-name-pattern=R018|reviewed fixture bytes|loader preserves earlier tests/documentary-reference-r018.test.mjs tests/documentary-local-review.test.mjs tests/documentary-reference-additions.test.mjs",
+    "initialDevelopmentAttempt": {
+      "executed": 28,
+      "pass": 18,
+      "fail": 10,
+      "log": {
+        "path": "/private/tmp/sollahms-r018-local-20261118/PRUEBAS-DELTA-R018.log",
+        "bytes": 11427,
+        "sha256": "b0d197bbc55d2a273aebcba18e9aced6ed550cce6c8acba863b24f700cfccb69"
+      },
+      "cause": "Nuevo fixture omitía metricPolicy, obligatorio en el contrato documental. Corregido añadiéndolo y repinneando sólo el nuevo fixture. No es rojo funcional de producción."
+    },
+    "deltaBeforeErrorMessageCompatibility": {
+      "executed": 28,
+      "pass": 28,
+      "fail": 0,
+      "newR018Cases": 26,
+      "selectedExisting": 2,
+      "log": {
+        "path": "/private/tmp/sollahms-r018-local-20261118/PRUEBAS-DELTA-R018-FINAL.log",
+        "bytes": 2575,
+        "sha256": "07f94798b0df7aa2e638433694227c0839abce91530a2c6bbaedbbc0a625a2eb"
+      }
+    },
+    "finalErrorCompatibilityDelta": {
+      "executed": 5,
+      "pass": 5,
+      "fail": 0,
+      "command": "node --test --test-name-pattern=each canonical field|rejects missing metadata|canonical exception|borrowed useful area|calculated total tests/documentary-reference-r018.test.mjs tests/documentary-reference-data.test.mjs",
+      "log": {
+        "path": "/private/tmp/sollahms-r018-local-20261118/PRUEBAS-COMPATIBILIDAD-ERRORES.log",
+        "bytes": 577,
+        "sha256": "ec4e04f30aaf84d9d701317ddc855d3f290f07185698b4d25bab5af9f93e28e0"
+      },
+      "change": "Conservado término unadmitted en rechazo temprano; no se cambiaron las pruebas antiguas."
+    },
+    "overlappingCases": 3,
+    "uniqueCasesExecuted": 30,
+    "noCertifiedGeneralSuitesRepeated": true,
+    "negativeQueriesAssertIssuesEmpty": true,
+    "ChromeExecutedByThisAgent": 0,
+    "rootChromeQA": "Pendiente de root; overlay informado por root en127.0.0.1:64257."
+  },
+  "independentReview": {
+    "reviewerTask": "/root/recuperacion_campo_ecasa/r018_contract_checks",
+    "allSixFilesRead": true,
+    "result": "Sin bloqueo concreto adicional tras conservar mensaje de rechazo antiguo.",
+    "reviewerDidNotEditOrRunTests": true
+  },
+  "preservation": {
+    "protectedAndOriginalCertificate": {
+      "path": "/private/tmp/sollahms-r018-local-20261118/INTEGRIDAD-155-21-3.json",
+      "bytes": 53056,
+      "sha256": "ec60a4351de80e96df26d4e7fb3cdfb875822fd859f182e0056ea73d56a614be"
+    },
+    "applicationModelCorePublishedAndPreparedUnedited": true,
+    "originalThreeFixtureBytesUnchanged": true,
+    "normalizationAndRegistryBytesUnchanged": true,
+    "gitDiffCheck": "Limpio"
+  },
+  "limits": [
+    "Sólo revisión local con opt-in; nuevo fixture excluido de cualquier paquete público.",
+    "Sin adopción de precio Iris/owner, stock, disponibilidad, asociación comercial o inventario.",
+    "La asociación C2 procede del modal, no de un número1103 impreso en plano.",
+    "No se publica, crea PR/deployment, ejecuta build/generador ni se cierra el objetivo131 o los313IDs históricos."
+  ]
+}

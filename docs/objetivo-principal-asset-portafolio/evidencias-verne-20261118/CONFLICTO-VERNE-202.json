@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "IRIS-131-C-VERNE-202-20261118",
+  "status": "CONTRADICTORIO_TIPOLOGIA_NO_APLICAR_A_RESIDENCIAL",
+  "recordedAtUTC": "2026-11-18T04:17:14.099858+00:00",
+  "sourceURL": "https://iris.yapo.cl/proyecto/465?operation=Venta",
+  "discovery": {
+    "term": "Verne",
+    "url": "https://iris.yapo.cl/proyectos?country=7&state=1%2C2%2C3&order=promos%2Cpopularity&search=Verne",
+    "realResultHref": "/proyecto/465?operation=Venta",
+    "realLinksOnly": true,
+    "openedUnits": 1
+  },
+  "identity": {
+    "sourceHeading": "Norte Verde - Edificio Verne",
+    "address": "Av. Videla 810",
+    "commune": "Coquimbo",
+    "publishedSlug": "edificio-verne",
+    "ownerScopeAlreadyDeclared": "Residencial Estudio; no reabrir aclaración de identidad ni precio."
+  },
+  "scope": {
+    "unit": "202",
+    "floor": "2",
+    "version": null,
+    "sourceDocumentDate": null,
+    "otherUnitsCovered": false
+  },
+  "sides": {
+    "IrisUI": {
+      "headingPropertyType": "Departamento",
+      "typologyLiteral": "estudio",
+      "bathroomsLiteral": "1 baño",
+      "descriptionLiteral": "2(VN) Oferta Pizarra",
+      "rawAreas": [
+        {
+          "label": "internos",
+          "valueM2": 21.51
+        },
+        {
+          "label": "terraza",
+          "valueM2": 0
+        }
+      ]
+    },
+    "planShownInSameModal": {
+      "titleLiteral": "Oficina 1O+1B",
+      "unitLiteral": "oficina Nº 202",
+      "columns": {
+        "Municipal": {
+          "Útil depto": 21,
+          "Útil terraza": 0,
+          "Total": 21
+        },
+        "Construido": {
+          "Útil depto": 21,
+          "Útil terraza": 0,
+          "Total": 21
+        }
+      },
+      "unit": "m²",
+      "sourceFile": "PLANO-OFICINA-202-ORIGINAL.avif"
+    }
+  },
+  "finding": "El tipo de producto del modal y el plano son contradictorios. Un baño explícito de esa oficina no acredita el baño del estudio residencial ofrecido por Sollahms. No se decide arbitrariamente qué lado es erróneo.",
+  "erratum": {
+    "originalPreserved": "UNIDAD-202-OBSERVACION.json",
+    "field": "scope",
+    "originalText": "Una unidad residencial exacta202,piso2. No VerneOficinas, no stock ni vinculación con precioowner.",
+    "correction": "Clasificación residencial prematura de root, no respaldada tras revisar la imagen. La unidad202 tiene tipología en conflicto; no se certifica producto residencial.",
+    "originalSHA256": "ebad38826af317210c9515e9f24ad7e5bfad0ea56b52a5bb760742d311ac0c9d",
+    "originalModified": false
+  },
+  "metricLimit": "Internos21.51 y útil/total21 son rótulos diferentes: la diferencia no prueba error numérico ni autoriza convertirlos. No se traslada ninguna superficie al residencial.",
+  "application": {
+    "eligibleDocumentaryReferenceCreated": false,
+    "acceptedReferenceId": null,
+    "residentialBathrooms": null,
+    "residentialUsefulM2": null,
+    "residentialTotalM2": null,
+    "priceUF": null,
+    "stock": null,
+    "ownerPriceAssociation": false,
+    "publishedFieldsChanged": 0,
+    "candidate24a11dfChanged": false,
+    "acceptedCorpusReferences": 19,
+    "acceptedCorpusProjects": 18,
+    "LebenOriginal313Closed": 0
+  },
+  "custody": {
+    "originalPlanSHA256": "70b2a77486fc75a6cf1517c370c6db7b93861270acb492f1f3922b0a10f6c746",
+    "screenshotSHA256": "7800db28841927eb4174e58c4a01e458e32bb5fb85a920f7a915b08e50a84638",
+    "exportRequests": 1,
+    "exportSuccesses": 1,
+    "exportFailures": 0,
+    "retries": 0,
+    "messagesFormsReservationsSent": 0,
+    "credentialsCookiesTokensReadOrSaved": false,
+    "authenticationRequested": false,
+    "authenticationClaimed": false
+  },
+  "review": "Lectura independiente de captura/texto/original coincide: conservar conflicto, cero incorporación residencial.",
+  "nextCondition": "Sólo documento o declaración que respalde baños de un estudio residencial con alcance propio; no volver a consultar202 o prestar datos de oficinas."
+}

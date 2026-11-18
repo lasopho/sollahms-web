@@ -1,0 +1,136 @@
+{
+  "recordedAtUTC": "2026-11-18T03:37:43.596720+00:00",
+  "clientCutDate": "2026-11-18",
+  "status": "CANDIDATO_LOCAL_VERIFICADO_SIN_PUSH_PR",
+  "branch": "codex/suplemento-documental-131-20261117",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "localCommit": "0c03a9fcff32d606732a2af55a28295c869b2573",
+  "parentAndProductionBase": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "workingTreeClean": true,
+  "remoteBranchPushedByThisSession": false,
+  "pullRequest": null,
+  "files": [
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "bytes": 15489,
+      "sha256": "513e011a6577d785fd85c5e3ba5e506ef29aa4cc86ea20d533c9af5dc9c1a0fc"
+    },
+    {
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "bytes": 12984,
+      "sha256": "74483443344cd1bc1e9a590a38028a8355368a52e1a085e9705af434eb047741"
+    },
+    {
+      "path": "assets/js/documentary-local-review.mjs",
+      "bytes": 10633,
+      "sha256": "2dabacdf40449e3128b02e3310b9dc146f9711457454af2886b48d067ac064da"
+    },
+    {
+      "path": "assets/js/documentary-reference-data.mjs",
+      "bytes": 15247,
+      "sha256": "346bc5d820d356446651965640b7250bccd0e84a76363db16efc34d1afd0428e"
+    },
+    {
+      "path": "tests/documentary-local-review.test.mjs",
+      "bytes": 17288,
+      "sha256": "ca4a2dfd68bd6019dffbc71d65df9a6acb7dc32beec397dee37e1f733a915ca8"
+    },
+    {
+      "path": "tests/documentary-reference-additions.test.mjs",
+      "bytes": 9281,
+      "sha256": "f36e96afcc8385027de7ab7b9171ba4d982ffcbd0aedae0520e81bcd8fd07aef"
+    },
+    {
+      "path": "tests/fixtures/iris-documentary-additions-2.json",
+      "bytes": 19071,
+      "sha256": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 3948,
+      "sha256": "76495dc3b619a4e7cb2660f6b600e5ff97cc3d370aca32e5692617e6ed9bdfc9"
+    }
+  ],
+  "fileCount": 8,
+  "references": {
+    "before": 16,
+    "after": 18,
+    "projectsBefore": 15,
+    "projectsAfter": 17,
+    "identityOnlyAfter": 114,
+    "identityUniverse": 131,
+    "newRuntimeIDsAlreadyRegistered": [
+      "IRIS-131-R016",
+      "IRIS-131-R017"
+    ],
+    "newSourceFactsReceived": 0,
+    "historicalLebenClosures": 0
+  },
+  "facts": {
+    "novo-catedral109": {
+      "bedrooms": null,
+      "propertyType": null,
+      "bathrooms": 1,
+      "internalM2": 18.44,
+      "terraceM2": 1.9,
+      "priceUF": null,
+      "usefulM2": null,
+      "interiorM2": null,
+      "totalM2": null
+    },
+    "endemico45": {
+      "propertyType": "casa",
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "internalM2": 160,
+      "terraceM2": 0,
+      "assetUse": null,
+      "priceUF": null,
+      "model": null,
+      "stage": null,
+      "usefulM2": null,
+      "interiorM2": null,
+      "totalM2": null
+    }
+  },
+  "sourcePins": {
+    "iris15": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+    "plaza213": "94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865",
+    "additions2": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb"
+  },
+  "datePolicy": "observedOn calendar day may accompany null observedAtUTC; recordedAtUTC remains separate and is not used as observation. Display the source observedOn day (17Nov); never substitute recordedAtUTC.",
+  "coreGuard": "No residential-use inference from propertyType for documentary-reference-not-offer marker only; explicit assetType retained and existing published/prepared routes unchanged.",
+  "tests": {
+    "redExpectedFailure": 1,
+    "targetedNodePassed": 15,
+    "newCasesIncluded": 8,
+    "existingSelectedIncluded": 7,
+    "localChromePassed": 8,
+    "noSubsetSummation": true,
+    "broadSuitesRepeated": false,
+    "receipt": "suplemento-documental-local-20261118/RECIBO-SUPLEMENTO.json",
+    "receiptSHA256": "f2bc91bffed606af98b1ee4bd9a07fcbc676b3cd95c4ae838908f69dc576f8ce",
+    "ChromeReceipt": "suplemento-documental-local-20261118/qa/CHROME-SUPLEMENTO.json",
+    "financialScenariosNotTested": true,
+    "localUFEndpointNotEmulated": true
+  },
+  "independentReview": {
+    "reviewerTask": "/root/recuperacion_campo_ecasa",
+    "verdict": "APROBADO_PARA_REVISION_LOCAL",
+    "blockingFindings": 0,
+    "protected155Matched": true,
+    "originalSources21Matched": true,
+    "original15AndPlazaPinsRetained": true,
+    "newSourcePointersResolved": true,
+    "negativeQueriesHaveNoIssues": true,
+    "reviewerDidNotRunTestsOrAPIs": true
+  },
+  "scope": "Loopback with explicit opt-in only. Supplement fixture must remain excluded from any public release artifact. Not stock, current offers or price-surface associations.",
+  "automaticDeploymentsDisabledForSourceAndBase": true,
+  "newPushPRDeploymentPublicationAuthorized": false,
+  "productionUnchanged": {
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr"
+  },
+  "nextAuthorizedWork": "Continue essential-data research from existing queue, starting VicuñaMackenna6896 bathroom count for studio; do not repeat prices/surface ranges or completed inquiries. Firstpush/newPR require separate future permission."
+}

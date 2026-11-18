@@ -1,0 +1,788 @@
+diff --git a/assets/js/documentary-local-review.mjs b/assets/js/documentary-local-review.mjs
+index 41494cd4ccafdb45526d6b0ebf6c4acaf0eeeefe..41f72f22dadb56d01edd99070051a523444aa939 100644
+--- a/assets/js/documentary-local-review.mjs
++++ b/assets/js/documentary-local-review.mjs
+@@ -5,6 +5,7 @@ import {createDocumentaryReferenceLayer,DOCUMENTARY_REVIEW_MODE} from './documen
+ const irisSource={url:'/tests/fixtures/iris-documentary-15.json',sha256:'3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71'};
+ const plazaSource={url:'/tests/fixtures/plaza-213-reference.json',sha256:'94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865'};
+ const additionsSource={url:'/tests/fixtures/iris-documentary-additions-2.json',sha256:'a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb'};
++const r018Source={url:'/tests/fixtures/iris-documentary-r018-vicuna-1103.json',sha256:'41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d'};
+ const plazaId='DOC-SENTO-PLC-U213-C7-OBS20261117';
+ const clone=value=>JSON.parse(JSON.stringify(value));
+ const require=(condition,message)=>{if(!condition)throw new TypeError('Local documentary review: '+message);};
+@@ -88,11 +89,27 @@ const identityRecord=project=>({slug:project.slug,name:project.nombre,
+ function irisMetadata(reference,inputSHA256){
+   const keys=['id','sourceKind','sourceId','sourceURL','sourceFile','sourceSHA256','sourcePointer',
+     'sourceRegistryPointer','sourceDocumentDate','sourceDate','dateKind','observedAtUTC','observedOn','recordedAtUTC','scope',
+-    'unitLabel','modelLabel','modelCodePolicy','sourceMetrics','sourceFieldPointers','constraints','unknownPolicy'];
++    'unitLabel','modelLabel','modelCodePolicy','sourceMetrics','sourceFieldPointers','explicitPlanMetrics','constraints','unknownPolicy'];
+   return {...Object.fromEntries(keys.filter(key=>Object.hasOwn(reference,key)).map(key=>[key,clone(reference[key])])),
+     sourceLabel:'Iris · referencia documental',inputSHA256};
+ }
+ 
++/** Merge verified local layers without allowing a slug or ID to replace another. */
++export function mergeLocalDocumentaryLayers(layers){
++  const records=new Map(),metadata={};
++  for(const [layer,source] of layers){
++    for(const record of layer.records){
++      require(!records.has(record.slug),'documentary source overlap requires explicit reconciliation');
++      records.set(record.slug,record);
++    }
++    for(const [id,reference] of Object.entries(layer.documentary.byReferenceId)){
++      require(!Object.hasOwn(metadata,id),'documentary reference ID overlap requires explicit reconciliation');
++      metadata[id]=irisMetadata(reference,source.sha256);
++    }
++  }
++  return {records,metadata};
++}
++
+ /** Explicit loopback consumer. Returns null before fetching outside its gate. */
+ export async function loadLocalDocumentaryReview(projects,{location,fetchImpl=globalThis.fetch}={}){
+   if(!enabled(location))return null;
+@@ -107,17 +124,10 @@ export async function loadLocalDocumentaryReview(projects,{location,fetchImpl=gl
+   const additionsText=await fetchPinned(additionsSource,fetchImpl);
+   const additions=await createDocumentaryReferenceLayer(projects,additionsText,{mode:DOCUMENTARY_REVIEW_MODE,
+     sourceGuard:{sha256:additionsSource.sha256}});
+-  const records=new Map(),metadata={};
+-  for(const [layer,source] of [[iris,irisSource],[additions,additionsSource]]){
+-    for(const record of layer.records){
+-      require(!records.has(record.slug),'documentary source overlap requires explicit reconciliation');
+-      records.set(record.slug,record);
+-    }
+-    for(const [id,reference] of Object.entries(layer.documentary.byReferenceId)){
+-      require(!Object.hasOwn(metadata,id),'documentary reference ID overlap requires explicit reconciliation');
+-      metadata[id]=irisMetadata(reference,source.sha256);
+-    }
+-  }
++  const r018Text=await fetchPinned(r018Source,fetchImpl);
++  const r018=await createDocumentaryReferenceLayer(projects,r018Text,{mode:DOCUMENTARY_REVIEW_MODE,
++    sourceGuard:{sha256:r018Source.sha256}});
++  const {records,metadata}=mergeLocalDocumentaryLayers([[iris,irisSource],[additions,additionsSource],[r018,r018Source]]);
+   require(!records.has(plaza.record.slug),'documentary source overlap requires explicit reconciliation');
+   require(!Object.hasOwn(metadata,plazaId),'documentary reference ID overlap requires explicit reconciliation');
+   records.set(plaza.record.slug,freeze({...clone(plaza.record),notOffer:true,commercialAdoptionAllowed:false}));
+@@ -139,6 +149,6 @@ export async function loadLocalDocumentaryReview(projects,{location,fetchImpl=gl
+   const referenceCount=[...records.values()].reduce((count,record)=>count+record.references.length,0);
+   return {projects:reviewed,index:freeze({documentaryReviewEnabled:true,documentaryReferenceCount:referenceCount,
+     documentaryProjectCount:records.size,documentaryIdentityCount:projects.length,
+-    documentarySources:[irisSource,plazaSource,additionsSource].map(source=>({...source})),
++    documentarySources:[irisSource,plazaSource,additionsSource,r018Source].map(source=>({...source})),
+     documentaryUsage:'local-review',documentaryStockCertified:false})};
+ }
+diff --git a/assets/js/documentary-reference-data.mjs b/assets/js/documentary-reference-data.mjs
+index 2bee18db6eaedcb056d6454cefe04e9180805372..bb2fabd1196933c63db8f7e4f6e5db86d31565ea 100644
+--- a/assets/js/documentary-reference-data.mjs
++++ b/assets/js/documentary-reference-data.mjs
+@@ -23,7 +23,7 @@ const referenceKeys = ['id', 'sourceKind', 'notOffer', 'commercialAdoptionAllowe
+   'sourceId', 'sourceURL', 'sourceFile', 'sourceSHA256', 'sourcePointer', 'sourceRegistryPointer',
+   'sourceDocumentDate', 'sourceDate', 'dateKind', 'observedAtUTC', 'observedOn', 'recordedAtUTC', 'scope', 'unitLabel',
+   'modelLabel', 'literalDescription', 'modelCodePolicy', 'attributes', 'sourceMetrics',
+-  'sourceFieldPointers', 'externalPriceMetadata', 'constraints', 'unknownPolicy'];
++  'sourceFieldPointers', 'explicitPlanMetrics', 'externalPriceMetadata', 'constraints', 'unknownPolicy'];
+ const nullableOnly = ['priceUF', 'usefulM2', 'totalM2', 'interiorM2', 'landM2', 'gardenM2',
+   'privateTerrace', 'privateGarden', 'parkingIncluded', 'parkingAvailable',
+   'storageIncluded', 'storageAvailable', 'state', 'delivery'];
+@@ -34,12 +34,59 @@ const metricRules = {
+   terraceM2: { label: 'terraza' },
+   lotTotalM2: { label: 'totales', mapping: 'canonicalResidentialTotalMapping' },
+ };
++const planMetricLabels = { usefulM2: 'Superficie útil depto', totalM2: 'Superficie total' };
+ 
+ function keys(value, allowed, label) {
+   require(object(value) && Object.keys(value).every(key => allowed.includes(key)),
+     'unauthorized field in ' + label);
+ }
+ 
++function exactKeys(value, expected, label) {
++  keys(value, expected, label);
++  require(Object.keys(value).length === expected.length, 'missing field in ' + label);
++}
++
++function planMetric(reference, evidence, projectSlug, key, value) {
++  const metric = reference.explicitPlanMetrics?.[key];
++  exactKeys(metric, ['sourceLabel', 'valueM2', 'unit', 'sourceFile', 'sourceSHA256',
++    'evidenceFile', 'evidenceSHA256', 'normalizedSourceFile', 'normalizedSourceSHA256',
++    'columns', 'scope', 'explicitlyPrinted', 'calculated', 'convertedFromInternal',
++    'sourceDocumentDate', 'revision'], 'explicit plan metric');
++  require(reference.attributes.propertyType === 'departamento'
++    && number(value) && value > 0 && metric.valueM2 === value
++    && metric.sourceLabel === planMetricLabels[key] && metric.unit === 'm²'
++    && metric.explicitlyPrinted === true && metric.calculated === false
++    && metric.convertedFromInternal === false && metric.sourceDocumentDate === null
++    && metric.revision === null, 'unsupported explicit plan metric');
++  for (const [fileKey, hashKey] of [['sourceFile', 'sourceSHA256'], ['evidenceFile', 'evidenceSHA256'],
++    ['normalizedSourceFile', 'normalizedSourceSHA256']]) {
++    const file = metric[fileKey], source = evidence.sourcePrimaryManifest[file];
++    require(text(file) && own(evidence.sourcePrimaryManifest, file) && object(source)
++      && hash(metric[hashKey]) && source.sha256 === metric[hashKey]
++      && Array.isArray(source.referenceIds) && source.referenceIds.includes(reference.id),
++    'explicit plan metric source binding mismatch');
++  }
++  require(metric.sourceFile !== metric.evidenceFile && metric.sourceFile.endsWith('.avif')
++    && metric.evidenceFile.endsWith('.jpg') && metric.normalizedSourceFile === reference.sourceFile
++    && metric.normalizedSourceSHA256 === reference.sourceSHA256,
++  'explicit plan metric source roles mismatch');
++  exactKeys(metric.columns, ['Municipal', 'Construido'], 'explicit plan columns');
++  for (const column of ['Municipal', 'Construido']) {
++    const entry = metric.columns[column];
++    exactKeys(entry, ['valueM2', 'sourcePointer'], 'explicit plan column');
++    const path = '/fieldsAndSources/planSurfaces/columns/' + column + '/' + metric.sourceLabel;
++    require(entry.valueM2 === value && entry.sourcePointer === path,
++      'explicit plan column value or label mismatch');
++  }
++  exactKeys(metric.scope, ['projectSlug', 'unitLabel', 'modelLabel', 'association',
++    'unitPrintedOnPlan', 'otherUnitsCovered'], 'explicit plan scope');
++  require(metric.scope.projectSlug === projectSlug && text(reference.unitLabel)
++    && metric.scope.unitLabel === reference.unitLabel && text(reference.modelLabel)
++    && metric.scope.modelLabel === reference.modelLabel
++    && metric.scope.association === 'shown-in-unit-dialog' && metric.scope.unitPrintedOnPlan === false
++    && metric.scope.otherUnitsCovered === false, 'explicit plan reference scope mismatch');
++}
++
+ function date(value) {
+   if (value === null) return true;
+   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}(?:T.*)?$/.test(value)) return false;
+@@ -84,11 +131,12 @@ async function sourceJSON(sourceText, options) {
+   return { evidence, sha256: actual };
+ }
+ 
+-function attributes(reference) {
++function attributes(reference, evidence, projectSlug) {
+   const input = reference.attributes;
+   keys(input, attributeKeys, 'reference attributes');
+   require(own(input, 'priceUF') && input.priceUF === null, 'commercial priceUF must be null');
+   for (const key of nullableOnly) {
++    if (own(planMetricLabels, key)) continue;
+     require(!own(input, key) || input[key] === null, 'unadmitted commercial/metric field: ' + key);
+   }
+   require(input.propertyType === null || properties.has(input.propertyType),
+@@ -100,6 +148,16 @@ function attributes(reference) {
+     }
+   }
+   const output = Object.fromEntries(attributeKeys.map(key => [key, input[key] ?? null]));
++  if (own(reference, 'explicitPlanMetrics')) {
++    keys(reference.explicitPlanMetrics, Object.keys(planMetricLabels), 'explicit plan fields');
++  }
++  for (const key of Object.keys(planMetricLabels)) {
++    if (output[key] !== null) {
++      require(own(reference.explicitPlanMetrics ?? {}, key), 'unadmitted explicit plan metric: ' + key);
++      planMetric(reference, evidence, projectSlug, key, output[key]);
++    }
++    else require(!own(reference.explicitPlanMetrics ?? {}, key), 'unexpected explicit plan metric');
++  }
+   require(output.lotTotalM2 === null || output.propertyType === 'terreno',
+     'lot total requires an explicit terreno reference');
+   require(Array.isArray(reference.sourceMetrics), 'source metrics are required');
+@@ -123,7 +181,7 @@ function attributes(reference) {
+   return output;
+ }
+ 
+-function sourceReference(reference, evidence, ids) {
++function sourceReference(reference, evidence, ids, projectSlug) {
+   keys(reference, referenceKeys, 'reference');
+   require(text(reference.id) && /^[A-Za-z0-9][A-Za-z0-9:._-]*$/.test(reference.id)
+     && !ids.has(reference.id), 'invalid or duplicate reference ID');
+@@ -150,8 +208,14 @@ function sourceReference(reference, evidence, ids) {
+   }
+   require(Array.isArray(reference.constraints) && object(reference.sourceFieldPointers)
+     && Object.values(reference.sourceFieldPointers).every(pointer), 'documentary constraints/pointers are required');
++  const normalizedAttributes = attributes(reference, evidence, projectSlug);
+   const external = reference.externalPriceMetadata;
+-  keys(external, ['use', 'source', 'listUF', 'finalUF', 'sourceDocumentDate',
++  if (!own(reference, 'externalPriceMetadata')) {
++    require(reference.sourceKind === 'IRIS_EXTERNAL_PLAN_DOCUMENTARY_NOT_OFFER'
++      && Object.keys(reference.explicitPlanMetrics ?? {}).length > 0,
++    'external metadata omission requires explicit plan evidence');
++  } else {
++    keys(external, ['use', 'source', 'listUF', 'finalUF', 'sourceDocumentDate',
+     'observedAtUTC', 'observedOn', 'notOwnerAuthorization'], 'external price metadata');
+   require(external.use === 'provenance_only_not_for_offering_or_commercial_filter'
+     && external.notOwnerAuthorization === true, 'external price must remain documentary metadata');
+@@ -162,10 +226,11 @@ function sourceReference(reference, evidence, ids) {
+   require(external.observedAtUTC === reference.observedAtUTC
+     && (external.observedOn ?? null) === (reference.observedOn ?? null) && date(external.sourceDocumentDate),
+     'external price date mismatch');
++  }
+   return {
+     id: reference.id, sourceKind: 'documentary-reference-not-offer',
+     notOffer: true, commercialAdoptionAllowed: false, stock: null,
+-    attributes: attributes(reference),
++    attributes: normalizedAttributes,
+   };
+ }
+ 
+@@ -225,7 +290,7 @@ export async function createDocumentaryReferenceLayer(publishedProjects, sourceT
+     'identity context binding mismatch');
+     require(Array.isArray(input.references) && input.references.length > 0, 'documentary references are required');
+     const references = input.references.map(reference => {
+-      const engineReference = sourceReference(reference, evidence, ids);
++      const engineReference = sourceReference(reference, evidence, ids, input.slug);
+       byReferenceId[reference.id] = clone(reference);
+       return engineReference;
+     });
+diff --git a/tests/documentary-local-review.test.mjs b/tests/documentary-local-review.test.mjs
+index e9c05da9bab2053e36a519b223c9eb8c502b572b..cbe1980d41ea217f3b10c8b719c7c9581844f63c 100644
+--- a/tests/documentary-local-review.test.mjs
++++ b/tests/documentary-local-review.test.mjs
+@@ -12,14 +12,17 @@ const facets=JSON.parse(read('../data/catalog-facets.json'));
+ const irisText=read('./fixtures/iris-documentary-15.json');
+ const plazaText=read('./fixtures/plaza-213-reference.json');
+ const additionsText=read('./fixtures/iris-documentary-additions-2.json');
++const r018Text=read('./fixtures/iris-documentary-r018-vicuna-1103.json');
+ const plaza=JSON.parse(plazaText),iris=JSON.parse(irisText);
+ const pins={
+   '/tests/fixtures/iris-documentary-15.json':'3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71',
+   '/tests/fixtures/plaza-213-reference.json':'94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865',
+   '/tests/fixtures/iris-documentary-additions-2.json':'a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb',
++  '/tests/fixtures/iris-documentary-r018-vicuna-1103.json':'41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d',
+ };
+ const texts={'/tests/fixtures/iris-documentary-15.json':irisText,'/tests/fixtures/plaza-213-reference.json':plazaText,
+-  '/tests/fixtures/iris-documentary-additions-2.json':additionsText};
++  '/tests/fixtures/iris-documentary-additions-2.json':additionsText,
++  '/tests/fixtures/iris-documentary-r018-vicuna-1103.json':r018Text};
+ const location=new URL('http://localhost/proyectos.html?revision_documental=1');
+ const calls=[];
+ const fetchImpl=async(url,options)=>{calls.push({url,options});assert.ok(Object.hasOwn(texts,url));return{ok:true,text:async()=>texts[url]};};
+@@ -36,13 +39,13 @@ const assertValidState=state=>{
+ 
+ test('reviewed fixture bytes, local-only requests and stable identity counts',()=>{
+   for(const [url,text] of Object.entries(texts))assert.equal(createHash('sha256').update(text).digest('hex'),pins[url]);
+-  assert.equal(calls.length,3);
++  assert.equal(calls.length,4);
+   calls.forEach(({url,options})=>{assert.ok(url.startsWith('/tests/fixtures/'));assert.deepEqual(options,{cache:'no-store',credentials:'omit',redirect:'error'});});
+   assert.equal(loaded.index.documentaryReviewEnabled,true);
+-  assert.equal(loaded.index.documentaryReferenceCount,18);
+-  assert.equal(loaded.index.documentaryProjectCount,17);
++  assert.equal(loaded.index.documentaryReferenceCount,19);
++  assert.equal(loaded.index.documentaryProjectCount,18);
+   assert.equal(loaded.projects.length,131);
+-  assert.equal(loaded.projects.filter(project=>!project._documentaryRecord.references.length).length,114);
++  assert.equal(loaded.projects.filter(project=>!project._documentaryRecord.references.length).length,113);
+   assert.deepEqual(loaded.projects.map(project=>project.slug),published.map(project=>project.slug));
+ });
+ 
+@@ -58,10 +61,10 @@ test('fetch gate rejects production, non-loopback, inactive and duplicate flags
+   assert.equal(calls,0);
+ });
+ 
+-test('each supported loopback host explicitly admits all three pinned fixtures',async()=>{
++test('each supported loopback host explicitly admits all four pinned fixtures',async()=>{
+   for(const host of ['localhost','127.0.0.1','[::1]']){
+     const result=await loadLocalDocumentaryReview(published,{location:new URL('http://'+host+'/?revision_documental=1'),fetchImpl});
+-    assert.equal(result.index.documentaryReferenceCount,18);
++    assert.equal(result.index.documentaryReferenceCount,19);
+   }
+ });
+ 
+diff --git a/tests/documentary-reference-additions.test.mjs b/tests/documentary-reference-additions.test.mjs
+index 964a2b6c0bd13293b40dccd6c2ee0d1c13bba5ef..1f29107e819a5d4c6f2f2fa5d4209b4537376926 100644
+--- a/tests/documentary-reference-additions.test.mjs
++++ b/tests/documentary-reference-additions.test.mjs
+@@ -17,6 +17,7 @@ const texts={
+   '/tests/fixtures/iris-documentary-15.json':read('./fixtures/iris-documentary-15.json'),
+   '/tests/fixtures/plaza-213-reference.json':read('./fixtures/plaza-213-reference.json'),
+   '/tests/fixtures/iris-documentary-additions-2.json':additionText,
++  '/tests/fixtures/iris-documentary-r018-vicuna-1103.json':read('./fixtures/iris-documentary-r018-vicuna-1103.json'),
+ };
+ const location=new URL('http://localhost/proyectos.html?revision_documental=1');
+ const admit=async(input=addition)=>{
+@@ -122,11 +123,11 @@ test('date guards reject invalid days, missing observations and mismatched preci
+   await assert.rejects(admit(changed),/date/);
+ });
+ 
+-test('loader preserves original16 witnesses while adding two sources with their own pin',async()=>{
++test('loader preserves earlier witnesses and distinct source pins in the expanded review',async()=>{
+   const loaded=await review();
+-  assert.equal(loaded.projects.length,131);assert.equal(loaded.index.documentaryReferenceCount,18);
+-  assert.equal(loaded.index.documentaryProjectCount,17);
+-  assert.equal(loaded.projects.filter(project=>!project._documentaryRecord.references.length).length,114);
++  assert.equal(loaded.projects.length,131);assert.equal(loaded.index.documentaryReferenceCount,19);
++  assert.equal(loaded.index.documentaryProjectCount,18);
++  assert.equal(loaded.projects.filter(project=>!project._documentaryRecord.references.length).length,113);
+   const pin=loaded.index.documentarySources.find(source=>source.url.endsWith('iris-documentary-additions-2.json')).sha256;
+   assert.equal(pin,digest(additionText));
+   for(const project of loaded.projects.filter(project=>['novo-catedral','endemico'].includes(project.slug))){
+diff --git a/tests/documentary-reference-r018.test.mjs b/tests/documentary-reference-r018.test.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..e46452fb2fa27e0378bbb7d7c32a604626745d59
+--- /dev/null
++++ b/tests/documentary-reference-r018.test.mjs
+@@ -0,0 +1,176 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {readFileSync} from 'node:fs';
++import {createHash} from 'node:crypto';
++import {createDocumentaryReferenceLayer,DOCUMENTARY_REVIEW_MODE} from '../assets/js/documentary-reference-data.mjs';
++import {loadLocalDocumentaryReview,mergeLocalDocumentaryLayers} from '../assets/js/documentary-local-review.mjs';
++import {matchProjectFilters,queryFromCatalogState} from '../assets/js/commercial-filter-engine.mjs';
++import {advancedFilterAndSort,defaults} from '../assets/js/catalog-filter-engine.mjs';
++import {projectFacts,projectOffer,commercialLayerNote} from '../assets/js/catalog-model.mjs';
++
++const read=path=>readFileSync(new URL(path,import.meta.url),'utf8');
++const digest=text=>createHash('sha256').update(text).digest('hex');
++const path='/tests/fixtures/iris-documentary-r018-vicuna-1103.json';
++const text=read('./fixtures/iris-documentary-r018-vicuna-1103.json'),fixture=JSON.parse(text);
++const pin='41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d';
++const published=JSON.parse(read('../data/proyectos.json'));
++const oldPins={
++  '/tests/fixtures/iris-documentary-15.json':'3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71',
++  '/tests/fixtures/plaza-213-reference.json':'94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865',
++  '/tests/fixtures/iris-documentary-additions-2.json':'a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb',
++};
++const texts=Object.fromEntries(Object.keys(oldPins).map(url=>[url,read('.'+url.replace('/tests',''))]));
++texts[path]=text;
++const location=new URL('http://127.0.0.1/proyectos.html?revision_documental=1');
++const admit=async(input=fixture)=>{
++  const bytes=JSON.stringify(input);
++  return createDocumentaryReferenceLayer(published,bytes,{mode:DOCUMENTARY_REVIEW_MODE,sourceGuard:{sha256:digest(bytes)}});
++};
++const state=patch=>({...defaults(),evidenceMode:'documentary',...patch});
++const evaluate=(record,patch)=>{
++  const result=matchProjectFilters(record,queryFromCatalogState(state(patch)));
++  assert.deepEqual(result.issues,[]);return result;
++};
++const review=fetchImpl=>loadLocalDocumentaryReview(published,{location,
++  fetchImpl:fetchImpl??(async url=>({ok:true,text:async()=>texts[url]}))});
++
++test('R018 fixed pin retains exact source facts with separate plan evidence and no external price metadata',async()=>{
++  assert.equal(digest(text),pin);
++  const input=fixture.records[0].references[0];
++  assert.equal(input.sourceSHA256,'9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663');
++  assert.equal(Object.hasOwn(input,'externalPriceMetadata'),false);
++  assert.equal(text.includes('3.357'),false);assert.equal(text.includes('3357'),false);
++  const layer=await admit(),reference=layer.records[0].references[0];
++  assert.equal(reference.id,'IRIS-131-R018');assert.equal(reference.stock,null);
++  assert.equal(reference.attributes.propertyType,'departamento');assert.equal(reference.attributes.bathrooms,1);
++  assert.equal(reference.attributes.bedrooms,null);assert.equal(reference.attributes.assetType??null,null);
++  for(const metric of ['internalM2','usefulM2','totalM2'])assert.equal(reference.attributes[metric],23.69);
++  assert.equal(reference.attributes.terraceM2,0);
++  for(const key of ['priceUF','interiorM2','landM2','privateTerrace','privateGarden'])assert.equal(reference.attributes[key],null);
++  assert.equal(reference.explicitPlanMetrics,undefined);assert.equal(reference.modelLabel,undefined);
++});
++
++test('R018 useful and total23.69 independently match the same one-bathroom reference',async()=>{
++  const record=(await admit()).records[0];
++  for(const areaType of ['util','total']){
++    assert.deepEqual(evaluate(record,{propertyType:'departamento',bathrooms:'1',areaType,minArea:'23.69',maxArea:'23.69'}).matchedReferenceIds,['IRIS-131-R018']);
++    for(const bound of ['23.68','23.70'])assert.equal(evaluate(record,{areaType,minArea:bound,maxArea:bound}).matches,false);
++  }
++  assert.equal(evaluate(record,{areaType:'terraza',minArea:'0',maxArea:'0'}).matches,true);
++});
++
++test('R018 valid active unknown-price, room, use and interior predicates stay negative',async()=>{
++  const record=(await admit()).records[0];
++  assert.equal(evaluate(record,{}).matches,true);
++  for(const patch of [{bedrooms:'0'},{bedrooms:'1'},{assetType:'Residencial'},
++    {minPriceInput:'1',maxPriceInput:'100000',areaType:'util',minArea:'23.69',maxArea:'23.69'},
++    {areaType:'interior',minArea:'0',maxArea:'100000'},{areaType:'terreno',minArea:'0',maxArea:'100000'},
++    {features:['terraza-privada']},{search:'1103'},{search:'C2'},{typologies:['estudio']}]){
++    assert.equal(evaluate(record,patch).matches,false,JSON.stringify(patch));
++  }
++});
++
++test('R018 each canonical field requires its own metadata even when all source numbers happen to agree',async()=>{
++  for(const key of ['usefulM2','totalM2']){
++    const changed=structuredClone(fixture);delete changed.records[0].references[0].explicitPlanMetrics[key];
++    await assert.rejects(admit(changed),/plan metric/);
++    const other=key==='usefulM2'?'totalM2':'usefulM2',partial=structuredClone(fixture);
++    partial.records[0].references[0].attributes[other]=null;
++    delete partial.records[0].references[0].explicitPlanMetrics[other];
++    const record=(await admit(partial)).records[0];
++    assert.equal(evaluate(record,{areaType:key==='usefulM2'?'util':'total',minArea:'23.69'}).matches,true);
++  }
++});
++
++test('R018 explicit plan values do not derive from Internos or a sum',async()=>{
++  const changed=structuredClone(fixture),reference=changed.records[0].references[0];
++  reference.attributes.internalM2=99;reference.sourceMetrics[0].valueM2=99;
++  const record=(await admit(changed)).records[0];
++  assert.equal(record.references[0].attributes.internalM2,99);
++  for(const areaType of ['util','total'])assert.equal(evaluate(record,{areaType,minArea:'23.69',maxArea:'23.69'}).matches,true);
++});
++
++for(const [name,mutate] of [
++  ['wrong useful label',r=>{r.explicitPlanMetrics.usefulM2.sourceLabel='internos';}],
++  ['swapped total label',r=>{r.explicitPlanMetrics.totalM2.sourceLabel='Superficie útil depto';}],
++  ['missing metadata',r=>{delete r.explicitPlanMetrics;}],
++  ['wrong AVIF pin',r=>{r.explicitPlanMetrics.usefulM2.sourceSHA256='0'.repeat(64);}],
++  ['wrong screenshot pin',r=>{r.explicitPlanMetrics.totalM2.evidenceSHA256='0'.repeat(64);}],
++  ['wrong source reference binding',(_r,f)=>{f.sourcePrimaryManifest[_r.explicitPlanMetrics.usefulM2.sourceFile].referenceIds=[];}],
++  ['missing column',r=>{delete r.explicitPlanMetrics.usefulM2.columns.Municipal;}],
++  ['different columns',r=>{r.explicitPlanMetrics.totalM2.columns.Construido.valueM2=25;}],
++  ['wrong column pointer',r=>{r.explicitPlanMetrics.usefulM2.columns.Municipal.sourcePointer='/attributes/internalM2';}],
++  ['wrong unit',r=>{r.explicitPlanMetrics.usefulM2.scope.unitLabel='1104';}],
++  ['wrong model',r=>{r.explicitPlanMetrics.totalM2.scope.modelLabel='C2(VM)';}],
++  ['unit printed claim',r=>{r.explicitPlanMetrics.usefulM2.scope.unitPrintedOnPlan=true;}],
++  ['calculated area',r=>{r.explicitPlanMetrics.totalM2.calculated=true;}],
++  ['converted Internos',r=>{r.explicitPlanMetrics.usefulM2.convertedFromInternal=true;}],
++  ['invented plan date',r=>{r.explicitPlanMetrics.totalM2.sourceDocumentDate='2026-11-18';}],
++  ['new interior field',r=>{r.attributes.interiorM2=23.69;}],
++])test('R018 rejects '+name+' independently of fixture pin',async()=>{
++  const changed=structuredClone(fixture);mutate(changed.records[0].references[0],changed);
++  await assert.rejects(admit(changed),TypeError);
++});
++
++test('R018 local loader keeps all131 identities and the earlier18 witnesses unchanged',async()=>{
++  const calls=[],loaded=await review(async(url,options)=>{
++    calls.push(url);assert.deepEqual(options,{cache:'no-store',credentials:'omit',redirect:'error'});
++    return {ok:true,text:async()=>texts[url]};
++  });
++  assert.deepEqual(calls,[...Object.keys(oldPins),path]);
++  assert.equal(loaded.index.documentaryReferenceCount,19);assert.equal(loaded.index.documentaryProjectCount,18);
++  assert.equal(loaded.projects.filter(p=>!p._documentaryRecord.references.length).length,113);
++  assert.deepEqual(loaded.projects.map(p=>p.slug),published.map(p=>p.slug));
++  for(const [url,hash] of Object.entries(oldPins)){
++    assert.equal(digest(texts[url]),hash);
++    if(url.includes('plaza-')){
++      const fixture=JSON.parse(texts[url]);
++      assert.deepEqual(loaded.projects.find(p=>p.slug==='plaza-las-condes')._documentaryRecord.references,fixture.record.references);
++    }else{
++      const original=await createDocumentaryReferenceLayer(published,texts[url],{mode:DOCUMENTARY_REVIEW_MODE,sourceGuard:{sha256:hash}});
++      for(const record of original.records)assert.deepEqual(loaded.projects.find(p=>p.slug===record.slug)._documentaryRecord,record);
++    }
++  }
++});
++
++test('R018 presentation keeps model association, plan metrics and observation date without a commercial price',async()=>{
++  const loaded=await review(),input=state({search:'Vicuña Mackenna 6896',bathrooms:'1',areaType:'util',minArea:'23.69',maxArea:'23.69'});
++  const rows=advancedFilterAndSort(loaded.projects,input);assert.equal(rows.length,1);
++  assert.deepEqual(rows[0]._documentaryMatch.issues,[]);
++  const facts=projectFacts(rows[0],'',input);
++  for(const label of ['Superficie útil','Superficie total','Superficie de terraza','Internos (rótulo de la fuente)'])assert.ok(facts.some(f=>f.label===label));
++  assert.ok(facts.some(f=>f.label==='Tipología de la referencia'&&f.value==='1B'));
++  const note=commercialLayerNote(rows[0],input);
++  assert.match(note,/Unidad 1103 · Modelo C2/);assert.match(note,/sin unidad impresa/);assert.match(note,/C2\(VM\) separada/);
++  assert.match(note,/18\/11\/2026/);assert.equal(projectOffer(rows[0],input).value,null);
++  const metadata=rows[0]._documentaryMetadata.byReferenceId['IRIS-131-R018'];
++  assert.equal(metadata.inputSHA256,pin);assert.deepEqual(metadata.explicitPlanMetrics,fixture.records[0].references[0].explicitPlanMetrics);
++  assert.equal(metadata.externalPriceMetadata,undefined);
++});
++
++test('R018 four-source loading stays gated and rejects pin or fetch failure atomically',async()=>{
++  let calls=0;
++  for(const url of ['https://sollahms.cl/?revision_documental=1','http://localhost/','http://localhost/?revision_documental=1&revision_documental=1']){
++    assert.equal(await loadLocalDocumentaryReview(null,{location:new URL(url),fetchImpl:()=>{calls++;}}),null);
++  }
++  assert.equal(calls,0);
++  await assert.rejects(review(async url=>({ok:true,text:async()=>texts[url]+(url===path?' ':'')})),/SHA-256 mismatch/);
++  await assert.rejects(review(async url=>url===path?{ok:false}:{ok:true,text:async()=>texts[url]}),/source fetch failed/);
++});
++
++test('R018 merge rejects source slug and reference ID collisions rather than replacing evidence',async()=>{
++  const layer=await admit(),source={sha256:pin};
++  assert.throws(()=>mergeLocalDocumentaryLayers([[layer,source],[layer,source]]),/source overlap/);
++  const differentSlug={...layer,records:layer.records.map(r=>({...r,slug:'other-project'}))};
++  assert.throws(()=>mergeLocalDocumentaryLayers([[layer,source],[differentSlug,source]]),/reference ID overlap/);
++});
++
++test('R018 canonical exception does not admit useful or total values into old fixtures without explicit proof',async()=>{
++  for(const url of Object.keys(oldPins).filter(url=>!url.includes('plaza-'))){
++    for(const key of ['usefulM2','totalM2']){
++      const changed=JSON.parse(texts[url]);changed.records[0].references[0].attributes[key]=23.69;
++      const bytes=JSON.stringify(changed);
++      await assert.rejects(createDocumentaryReferenceLayer(published,bytes,{mode:DOCUMENTARY_REVIEW_MODE,sourceGuard:{sha256:digest(bytes)}}),/plan metric/);
++    }
++  }
++});
+diff --git a/tests/fixtures/iris-documentary-r018-vicuna-1103.json b/tests/fixtures/iris-documentary-r018-vicuna-1103.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..fa64ffe700c019813eed8339e3bfea4dcf87b8bc
+--- /dev/null
++++ b/tests/fixtures/iris-documentary-r018-vicuna-1103.json
+@@ -0,0 +1,296 @@
++{
++  "schemaVersion": 1,
++  "kind": "Una referencia real nueva de Iris, separada de los tres fixtures anteriores. Sólo revisión local.",
++  "layer": "documentary-local-only-not-offer",
++  "notOffer": true,
++  "commercialAdoptionAllowed": false,
++  "publicConsumption": false,
++  "sourceRegistry": {
++    "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REGISTRO-R018.json",
++    "repositoryPath": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REGISTRO-R018.json",
++    "sha256": "08c4002ac63eb77b1af8ac4ce211517dad635954fb5215a2322fd96ba31c5eb9",
++    "bytes": 1162,
++    "exactReferences": 1
++  },
++  "sourcePrimaryManifest": {
++    "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REGISTRO-R018.json": {
++      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REGISTRO-R018.json",
++      "sha256": "08c4002ac63eb77b1af8ac4ce211517dad635954fb5215a2322fd96ba31c5eb9",
++      "bytes": 1162,
++      "referenceIds": [
++        "IRIS-131-R018"
++      ]
++    },
++    "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REFERENCIA-UNIDAD-1103.json": {
++      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REFERENCIA-UNIDAD-1103.json",
++      "sha256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
++      "bytes": 4367,
++      "referenceIds": [
++        "IRIS-131-R018"
++      ]
++    },
++    "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/PLANO-C2-ORIGINAL.avif": {
++      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/PLANO-C2-ORIGINAL.avif",
++      "sha256": "472689a66828bb0618a3110ef5c572101c5a02c9414bdbb30f5cf11e134a9791",
++      "bytes": 14164,
++      "referenceIds": [
++        "IRIS-131-R018"
++      ]
++    },
++    "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-VISIBLE.jpg": {
++      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-VISIBLE.jpg",
++      "sha256": "f565d64baa7eeb47cb4d6c086ad5f67bfd2ef5e72e4fb07d2e0ce83bd1dd90d0",
++      "bytes": 54917,
++      "referenceIds": [
++        "IRIS-131-R018"
++      ]
++    },
++    "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-OBSERVACION.json": {
++      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-OBSERVACION.json",
++      "sha256": "1b8e41db3e1c88c5dce3b9e5294fe26baa2a4043e9936660f347af3d69507c8c",
++      "bytes": 844,
++      "referenceIds": [
++        "IRIS-131-R018"
++      ]
++    },
++    "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-TEXTO.txt": {
++      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-TEXTO.txt",
++      "sha256": "202662d9c6adfda694f9b13bcf85e96bfd8ae71ff57e76aefd8889b3baf8f1bb",
++      "bytes": 227,
++      "referenceIds": [
++        "IRIS-131-R018"
++      ]
++    },
++    "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/EXPORTACION-PLANO-C2.json": {
++      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/EXPORTACION-PLANO-C2.json",
++      "sha256": "5f6f15373738ae3e431c4767440b654f9f659712ad00ab8ebbbd207f2f48da1a",
++      "bytes": 536,
++      "referenceIds": [
++        "IRIS-131-R018"
++      ]
++    }
++  },
++  "identityContext": {
++    "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/proyectos.json",
++    "repositoryPath": "data/proyectos.json",
++    "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
++    "use": "Published identity only; no prices/state/delivery/amenities copied."
++  },
++  "pricePolicy": {
++    "priceUF": null,
++    "allReferencesCommercialPriceNull": true,
++    "externalPrices": "Not included, including external price metadata; no owner adoption or unit-price association."
++  },
++  "records": [
++    {
++      "slug": "vicuna-mackenna-6896",
++      "name": "Vicuña Mackenna 6896",
++      "sourceLayer": "documentary-local-only-not-offer",
++      "notOffer": true,
++      "commercialAdoptionAllowed": false,
++      "sourceProject": {
++        "slug": "vicuna-mackenna-6896",
++        "nombre": "Vicuña Mackenna 6896",
++        "inmobiliaria": "Norte Verde",
++        "comuna": "La Florida",
++        "region": "Región Metropolitana"
++      },
++      "projectFacts": {
++        "region": "Región Metropolitana",
++        "commune": "La Florida",
++        "developer": "Norte Verde"
++      },
++      "projectIdentityContext": {
++        "source": "data/proyectos.json",
++        "pointer": "/88",
++        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
++        "contextOnly": true
++      },
++      "references": [
++        {
++          "id": "IRIS-131-R018",
++          "sourceKind": "IRIS_EXTERNAL_PLAN_DOCUMENTARY_NOT_OFFER",
++          "notOffer": true,
++          "commercialAdoptionAllowed": false,
++          "stock": null,
++          "sourceId": "https://iris.yapo.cl/proyecto/624?operation=Venta",
++          "sourceURL": "https://iris.yapo.cl/proyecto/624?operation=Venta",
++          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REFERENCIA-UNIDAD-1103.json",
++          "sourceSHA256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
++          "sourcePointer": "",
++          "sourceRegistryPointer": "/references/0",
++          "sourceDocumentDate": null,
++          "sourceDate": null,
++          "dateKind": "observation-only",
++          "observedAtUTC": "2026-11-18T03:52:22Z",
++          "scope": "Sólo la unidad externa 1103/piso 11: plano comercial C2 mostrado por Iris en su modal, sin unidad impresa. Descripción C2(VM) separada; sin equivalencia general, certificación legal/as-built, stock, precio owner ni extensión a otras unidades.",
++          "unitLabel": "1103",
++          "modelLabel": "C2",
++          "literalDescription": "estudio",
++          "modelCodePolicy": "Sólo rótulo del plano mostrado/enlazado por Iris al modal 1103; no certifica equivalencia general con C2(VM).",
++          "attributes": {
++            "priceUF": null,
++            "propertyType": "departamento",
++            "bedrooms": null,
++            "bathrooms": 1,
++            "usefulM2": 23.69,
++            "totalM2": 23.69,
++            "interiorM2": null,
++            "internalM2": 23.69,
++            "terraceM2": 0,
++            "lotTotalM2": null,
++            "landM2": null,
++            "gardenM2": null,
++            "privateTerrace": null,
++            "privateGarden": null,
++            "parkingIncluded": null,
++            "parkingAvailable": null,
++            "storageIncluded": null,
++            "storageAvailable": null,
++            "state": null,
++            "delivery": null
++          },
++          "sourceMetrics": [
++            {
++              "sourceLabel": "internos",
++              "valueM2": 23.69,
++              "storedKey": "internalM2",
++              "canonicalInteriorUsefulTotalMapping": null
++            },
++            {
++              "sourceLabel": "terraza",
++              "valueM2": 0,
++              "storedKey": "terraceM2",
++              "scope": "Cero explícito del mismo modal1103; no ausencia física ni derecho privado."
++            }
++          ],
++          "sourceFieldPointers": {
++            "unitPointer": "/scope/unit",
++            "floorPointer": "/scope/floor",
++            "literalTypologyPointer": "/scope/literalTypology",
++            "unitDescriptionPointer": "/scope/UIdescription",
++            "modelPointer": "/scope/modelLabel",
++            "bedroomsPointer": "/scope/bedroomsNumeric",
++            "bathroomsPointer": "/attributes/bathrooms",
++            "internalM2Pointer": "/attributes/internalM2",
++            "terraceM2Pointer": "/attributes/terraceM2",
++            "observedAtUTCPointer": "/observedAtUTC"
++          },
++          "explicitPlanMetrics": {
++            "usefulM2": {
++              "sourceLabel": "Superficie útil depto",
++              "valueM2": 23.69,
++              "unit": "m²",
++              "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/PLANO-C2-ORIGINAL.avif",
++              "sourceSHA256": "472689a66828bb0618a3110ef5c572101c5a02c9414bdbb30f5cf11e134a9791",
++              "evidenceFile": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-VISIBLE.jpg",
++              "evidenceSHA256": "f565d64baa7eeb47cb4d6c086ad5f67bfd2ef5e72e4fb07d2e0ce83bd1dd90d0",
++              "normalizedSourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REFERENCIA-UNIDAD-1103.json",
++              "normalizedSourceSHA256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
++              "columns": {
++                "Municipal": {
++                  "valueM2": 23.69,
++                  "sourcePointer": "/fieldsAndSources/planSurfaces/columns/Municipal/Superficie útil depto"
++                },
++                "Construido": {
++                  "valueM2": 23.69,
++                  "sourcePointer": "/fieldsAndSources/planSurfaces/columns/Construido/Superficie útil depto"
++                }
++              },
++              "scope": {
++                "projectSlug": "vicuna-mackenna-6896",
++                "unitLabel": "1103",
++                "modelLabel": "C2",
++                "association": "shown-in-unit-dialog",
++                "unitPrintedOnPlan": false,
++                "otherUnitsCovered": false
++              },
++              "explicitlyPrinted": true,
++              "calculated": false,
++              "convertedFromInternal": false,
++              "sourceDocumentDate": null,
++              "revision": null
++            },
++            "totalM2": {
++              "sourceLabel": "Superficie total",
++              "valueM2": 23.69,
++              "unit": "m²",
++              "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/PLANO-C2-ORIGINAL.avif",
++              "sourceSHA256": "472689a66828bb0618a3110ef5c572101c5a02c9414bdbb30f5cf11e134a9791",
++              "evidenceFile": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-VISIBLE.jpg",
++              "evidenceSHA256": "f565d64baa7eeb47cb4d6c086ad5f67bfd2ef5e72e4fb07d2e0ce83bd1dd90d0",
++              "normalizedSourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REFERENCIA-UNIDAD-1103.json",
++              "normalizedSourceSHA256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
++              "columns": {
++                "Municipal": {
++                  "valueM2": 23.69,
++                  "sourcePointer": "/fieldsAndSources/planSurfaces/columns/Municipal/Superficie total"
++                },
++                "Construido": {
++                  "valueM2": 23.69,
++                  "sourcePointer": "/fieldsAndSources/planSurfaces/columns/Construido/Superficie total"
++                }
++              },
++              "scope": {
++                "projectSlug": "vicuna-mackenna-6896",
++                "unitLabel": "1103",
++                "modelLabel": "C2",
++                "association": "shown-in-unit-dialog",
++                "unitPrintedOnPlan": false,
++                "otherUnitsCovered": false
++              },
++              "explicitlyPrinted": true,
++              "calculated": false,
++              "convertedFromInternal": false,
++              "sourceDocumentDate": null,
++              "revision": null
++            }
++          },
++          "constraints": [
++            {
++              "kind": "unit-description",
++              "state": "literal-not-model-alias",
++              "literal": "C2(VM)"
++            },
++            {
++              "kind": "bedrooms",
++              "state": "unknown",
++              "literal": "Estudio literal no establece dormitorios numéricos cero."
++            },
++            {
++              "kind": "plan-association",
++              "state": "shown-in-unit-dialog",
++              "literal": "Plano comercial mostrado por Iris para1103; unidad no impresa. No certifica equivalencia general, revisión, fecha del plano ni condición legal/as-built."
++            },
++            {
++              "kind": "commercial-association",
++              "state": "unknown",
++              "literal": "Precio owner sin vínculo acreditado con1103/C2; precio Iris omitido del fixture."
++            },
++            {
++              "kind": "canonical-area-source",
++              "state": "explicitly-printed",
++              "literal": "Útil y total provienen de sus rótulos explícitos del plano, no del valor Internos ni de una suma."
++            }
++          ],
++          "unknownPolicy": "Null conserva desconocimiento. T0 es explícito para1103. No0D, usoResidencial, precio comercial, modelo global, etapa ni stock inferidos."
++        }
++      ],
++      "bindingLimit": "Plano C2 observado dentro de modal1103; sin unidad impresa, equivalencia C2(VM), certificación legal/as-built ni correspondencia owner."
++    }
++  ],
++  "counts": {
++    "records": 1,
++    "references": 1,
++    "newOwnerPrices": 0,
++    "newPriceAreaJoins": 0,
++    "LebenOriginal313Closures": 0
++  },
++  "metricPolicy": {
++    "internalM2": "Literal Internos only; no useful/interior/total alias.",
++    "usefulM2": "Requires its own explicit plan field, source hashes, columns and exact reference scope.",
++    "totalM2": "Requires its own explicit plan field; never computed as a sum.",
++    "terraceM2": "Explicit zero from the same modal; no physical-absence/private-right inference.",
++    "planColumns": "Municipal and Construido printed separately and equal; do not add them."
++  }
++}

@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-11-18T02:59:09.278817+00:00",
+  "status": "SUPLEMENTO_LOCAL_VERIFICADO_SIN_COMMIT_PUSH_PR_DEPLOY",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "branch": "codex/suplemento-documental-131-20261117",
+  "baseCommit": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "scope": {
+    "agentOwnedFiles": 7,
+    "runtimeFiles": 4,
+    "testAndFixtureFiles": 3,
+    "rootOwnedVercelexclusionNotEdited": true,
+    "totalObservedDeltaPaths": 8
+  },
+  "files": [
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "bytes": 15489,
+      "sha256": "513e011a6577d785fd85c5e3ba5e506ef29aa4cc86ea20d533c9af5dc9c1a0fc",
+      "baseSHA256": "73a68e260e3fec0cff77a8d51a3d28099865a78bcca0a6c1dec9d0164d808700",
+      "newFile": false
+    },
+    {
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "bytes": 12984,
+      "sha256": "74483443344cd1bc1e9a590a38028a8355368a52e1a085e9705af434eb047741",
+      "baseSHA256": "522008af6925b67c73a7bdd5051eb16a0e36f06459579a43ec28253089642eb5",
+      "newFile": false
+    },
+    {
+      "path": "assets/js/documentary-local-review.mjs",
+      "bytes": 10633,
+      "sha256": "2dabacdf40449e3128b02e3310b9dc146f9711457454af2886b48d067ac064da",
+      "baseSHA256": "d84547550fc0affad101f3c353b1c0cb795378fae87f67ee0322af70318ff034",
+      "newFile": false
+    },
+    {
+      "path": "assets/js/documentary-reference-data.mjs",
+      "bytes": 15247,
+      "sha256": "346bc5d820d356446651965640b7250bccd0e84a76363db16efc34d1afd0428e",
+      "baseSHA256": "39b115f64a02ea1106bd3f320cb8ac87670658267324b30cd093d93deca2ad3a",
+      "newFile": false
+    },
+    {
+      "path": "tests/documentary-local-review.test.mjs",
+      "bytes": 17288,
+      "sha256": "ca4a2dfd68bd6019dffbc71d65df9a6acb7dc32beec397dee37e1f733a915ca8",
+      "baseSHA256": "d07cefa6481f49887e19b5b826ad1a3f3c72404b4dc1d8c60f0b88349aa5ea39",
+      "newFile": false
+    },
+    {
+      "path": "tests/documentary-reference-additions.test.mjs",
+      "bytes": 9281,
+      "sha256": "f36e96afcc8385027de7ab7b9171ba4d982ffcbd0aedae0520e81bcd8fd07aef",
+      "baseSHA256": null,
+      "newFile": true
+    },
+    {
+      "path": "tests/fixtures/iris-documentary-additions-2.json",
+      "bytes": 19071,
+      "sha256": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb",
+      "baseSHA256": null,
+      "newFile": true
+    }
+  ],
+  "fixture": {
+    "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/fixtures/iris-documentary-additions-2.json",
+    "sha256": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb",
+    "bytes": 19071,
+    "sourcePrimaryManifest": {
+      "docs/objetivo-principal-asset-portafolio/ACTUALIZACIONES-DOCUMENTALES-POR-REFERENCIA.json": {
+        "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ACTUALIZACIONES-DOCUMENTALES-POR-REFERENCIA.json",
+        "sha256": "f6e2cdbd0c4da9ad8d21b9893f35c4f6a936b6c696df8544e05d5b6bf564311b",
+        "bytes": 3456,
+        "referenceIds": [
+          "IRIS-131-R016",
+          "IRIS-131-R017"
+        ],
+        "role": "Registro existente de IDs y relaciones; no nueva recepción comercial."
+      },
+      "docs/objetivo-principal-asset-portafolio/evidencias-novo-catedral-20261117/REFERENCIA-NOVO-CATEDRAL-109.json": {
+        "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-novo-catedral-20261117/REFERENCIA-NOVO-CATEDRAL-109.json",
+        "sha256": "2ce0e23f7ef7475147586bcfcb79eca7e34f77764f1d6a1ee2bcdfe1925ca037",
+        "bytes": 5285,
+        "referenceIds": [
+          "IRIS-131-R016"
+        ],
+        "role": "Fuente semántica de la referencia exacta109."
+      },
+      "docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/REFERENCIA-DOCUMENTAL-UNIDAD45.json": {
+        "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/REFERENCIA-DOCUMENTAL-UNIDAD45.json",
+        "sha256": "8b6910d16e0ddf712634cc5021967752aab805bf3eabd0f175e0ac967ce56ed1",
+        "bytes": 4453,
+        "referenceIds": [
+          "IRIS-131-R017"
+        ],
+        "role": "Fuente semántica detallada de la referencia exacta45."
+      },
+      "docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/RECIBO-CONSULTA-ENDEMICO.json": {
+        "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/RECIBO-CONSULTA-ENDEMICO.json",
+        "sha256": "48327b16b54d571ed3a354d50561f525f26bcef2029f59d082d67fc358e9729a",
+        "bytes": 4590,
+        "referenceIds": [
+          "IRIS-131-R017"
+        ],
+        "role": "Recibo citado por el registro en /references/1; vincula la consulta existente con el detalle45."
+      }
+    },
+    "sourceRegistry": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ACTUALIZACIONES-DOCUMENTALES-POR-REFERENCIA.json",
+      "repositoryPath": "docs/objetivo-principal-asset-portafolio/ACTUALIZACIONES-DOCUMENTALES-POR-REFERENCIA.json",
+      "sha256": "f6e2cdbd0c4da9ad8d21b9893f35c4f6a936b6c696df8544e05d5b6bf564311b",
+      "bytes": 3456,
+      "exactReferences": 2,
+      "referenceSourceBindings": {
+        "IRIS-131-R016": {
+          "sourceRegistryPointer": "/references/0",
+          "registrySourceFile": "evidencias-novo-catedral-20261117/REFERENCIA-NOVO-CATEDRAL-109.json",
+          "registrySourceSHA256": "2ce0e23f7ef7475147586bcfcb79eca7e34f77764f1d6a1ee2bcdfe1925ca037",
+          "normalizedSourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-novo-catedral-20261117/REFERENCIA-NOVO-CATEDRAL-109.json",
+          "normalizedSourceSHA256": "2ce0e23f7ef7475147586bcfcb79eca7e34f77764f1d6a1ee2bcdfe1925ca037"
+        },
+        "IRIS-131-R017": {
+          "sourceRegistryPointer": "/references/1",
+          "registrySourceFile": "evidencias-endemico-20261117/RECIBO-CONSULTA-ENDEMICO.json",
+          "registrySourceSHA256": "48327b16b54d571ed3a354d50561f525f26bcef2029f59d082d67fc358e9729a",
+          "normalizedSourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/REFERENCIA-DOCUMENTAL-UNIDAD45.json",
+          "normalizedSourceSHA256": "8b6910d16e0ddf712634cc5021967752aab805bf3eabd0f175e0ac967ce56ed1",
+          "consultationReceiptSourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-endemico-20261117/RECIBO-CONSULTA-ENDEMICO.json",
+          "consultationReceiptSourceSHA256": "48327b16b54d571ed3a354d50561f525f26bcef2029f59d082d67fc358e9729a"
+        }
+      }
+    },
+    "sourceFilesSHABytesVerified": 4,
+    "sourcePointersResolved": 22,
+    "identitySHA256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+    "IDs": [
+      "IRIS-131-R016",
+      "IRIS-131-R017"
+    ]
+  },
+  "facts": {
+    "Novo109": {
+      "bedrooms": null,
+      "propertyType": null,
+      "bathrooms": 1,
+      "internalM2": 18.44,
+      "terraceM2": 1.9,
+      "studioIsNotNumeric0": true
+    },
+    "Endemico45": {
+      "propertyType": "casa",
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "internalM2": 160,
+      "terraceM2": 0,
+      "assetUseUnknown": true,
+      "stage": null,
+      "model": null,
+      "noDMolleOrOwnerPriceAssociation": true
+    },
+    "both": {
+      "priceUF": null,
+      "stock": null,
+      "availability": "unknown",
+      "usefulM2": null,
+      "totalM2": null,
+      "interiorM2": null,
+      "externalUFNotImported": true
+    }
+  },
+  "dates": {
+    "NovoObservedAtUTC": "2026-11-17T20:54:01.723Z",
+    "EndemicoObservedAtUTC": null,
+    "EndemicoObservedOn": "2026-11-17",
+    "EndemicoRecordedAtUTC": "2026-11-17T21:06:11.270281+00:00",
+    "sourceDatesRemainNull": true,
+    "recordedAtNeverSubstitutesObservation": true
+  },
+  "loader": {
+    "loopbackFlagGateBeforeFetch": true,
+    "sourcesPinnedIndividually": 3,
+    "references": 18,
+    "projectsWithReferences": 17,
+    "identityOnlyProjects": 114,
+    "catalogueIdentities": 131,
+    "sourcePinEachMetadata": true,
+    "sourceCollisionsRejected": true,
+    "failedSource": "throws; existing catalogue warning/fallback policy unchanged",
+    "externalPricesAndRawDialogNotSearchableOrPresented": true
+  },
+  "coreGuard": {
+    "marker": "documentary-reference-not-offer",
+    "change": "Do not derive asset use from property type for this exact documentary marker; explicit assetType and all other source kinds retain behavior.",
+    "redReproducedFromRealEndemicoReference": true,
+    "CasaPredicateStillSupported": true
+  },
+  "tests": {
+    "red": {
+      "executed": 1,
+      "expectedFailed": 1,
+      "log": {
+        "path": "/private/tmp/sollahms-suplemento-documental-131-20261117/ANTES-USO-DOCUMENTAL.log",
+        "bytes": 892,
+        "sha256": "90bb1c83138e5c0e1165484484b1616a039059fae01a9f7564b25e22ffc5b1eb"
+      },
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=documentary property does not infer unrecorded asset use",
+        "tests/documentary-reference-additions.test.mjs"
+      ]
+    },
+    "green": {
+      "executed": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "newTests": 8,
+      "existingSelected": 7,
+      "log": {
+        "path": "/private/tmp/sollahms-suplemento-documental-131-20261117/RESULTADO-DELTA-LOCAL.log",
+        "bytes": 1605,
+        "sha256": "350f3804102d68a6ad78610bb029ef4d209453b27f6a9171f4a421958845cef0"
+      },
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=supplement|two new documentary|documentary property|valid active price|day-only observation|date guards|loader preserves original16|reviewed fixture bytes|fetch gate rejects|each supported loopback|fetch and each pin|loading does not mutate|no predicates keeps all 131|documentary additions leave normal",
+        "tests/documentary-reference-additions.test.mjs",
+        "tests/documentary-local-review.test.mjs"
+      ]
+    },
+    "validNegativeQueries": "Every predicate evaluation asserts issues:[]; unknown exclusions are not invalid-query results.",
+    "coverage": [
+      "Two exact room/terrace positives including explicit0",
+      "Novo0D/typeEstudio excluded",
+      "Active price/useful/interior/total/land unknowns excluded",
+      "No price11343/model/rooms/terrace borrowing",
+      "Day/recording distinction, invalid days and mirrored precision",
+      "Three source pins and outside-gate zero requests",
+      "18refs/17projects/114identity-only; all131 preserved",
+      "Original16 records and normal published/prepared results preserved"
+    ],
+    "countPolicy": "Red1 overlaps green15; do not sum as16unique. No general certified suites repeated.",
+    "newChrome": 0
+  },
+  "preservation": {
+    "oldFixturePinsExact": {
+      "tests/fixtures/iris-documentary-15.json": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+      "tests/fixtures/plaza-213-reference.json": "94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865"
+    },
+    "protected155SourceCertificateReused": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/correcciones-cotizaciones-existentes-20261117/MANIFIESTO-13-ARCHIVOS-155-PROTEGIDOS-21-FUENTES.json",
+      "bytes": 63371,
+      "sha256": "e2dfdd0d202ededf371bf6aeb79956c0489c41e123399cc9db085c17eccd0562"
+    },
+    "original21SourceCertificateReused": true,
+    "protectedOrOriginalPathsInDelta": [],
+    "dataProyectosFichasPricesFunctionsFinanceHTMLChanged": false,
+    "originalRecordsAndPricesUnchanged": true,
+    "Leben313Closures": 0
+  },
+  "independentReview": {
+    "reviewer": "documentary_contract_review",
+    "authoredFixtureOnly": true,
+    "reviewedOtherSixFilesReadOnly": true,
+    "result": "No blocking finding",
+    "testsExecutedByReviewer": 0,
+    "fixtureReviewedIndependentlyHere": "Four source hashes/bytes,22pointers, exact source values/dates and all source IDs verified by parent agent."
+  },
+  "limits": [
+    "Local loopback review only; fixture is not public data and must stay outside public release packaging.",
+    "No stock, current commercial validity or unit-price association established.",
+    "Internos remains its own documentary metric; no canonical Interior/useful/total conversion.",
+    "Endemico has no real plan for45; no numbered stage or D-Molle association.",
+    "Recorded timestamp is not an observation timestamp.",
+    "No new Iris/Internet/contact/owner query or re-audit.",
+    "No global131certification or historical313closure."
+  ],
+  "operations": {
+    "sourceEdits": 7,
+    "auditEdits": 0,
+    "newIrisQueries": 0,
+    "networkRequests": 0,
+    "newExports": 0,
+    "ChromeActions": 0,
+    "builds": 0,
+    "generators": 0,
+    "gitWrites": 0,
+    "commits": 0,
+    "pushes": 0,
+    "PRMutations": 0,
+    "deployments": 0,
+    "promotions": 0
+  }
+}

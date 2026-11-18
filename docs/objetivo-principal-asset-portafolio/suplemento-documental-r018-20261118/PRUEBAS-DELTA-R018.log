@@ -1,0 +1,147 @@
+<anonymous_script>:1
+undefined
+^
+
+SyntaxError: "undefined" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+    at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+    at async loadLocalDocumentaryReview (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-local-review.mjs:128:14)
+    at async file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-local-review.test.mjs:29:14
+
+Node.js v24.22.1
+✖ tests/documentary-local-review.test.mjs (94.756209ms)
+✖ loader preserves earlier witnesses and distinct source pins in the expanded review (11.169917ms)
+✖ R018 fixed pin retains exact source facts with separate plan evidence and no external price metadata (8.850584ms)
+✖ R018 useful and total23.69 independently match the same one-bathroom reference (1.736834ms)
+✖ R018 valid active unknown-price, room, use and interior predicates stay negative (1.028333ms)
+✖ R018 each canonical field requires its own metadata even when all source numbers happen to agree (2.50225ms)
+✖ R018 explicit plan values do not derive from Internos or a sum (1.463041ms)
+✔ R018 rejects wrong useful label independently of fixture pin (0.583667ms)
+✔ R018 rejects swapped total label independently of fixture pin (0.499125ms)
+✔ R018 rejects missing metadata independently of fixture pin (0.445416ms)
+✔ R018 rejects wrong AVIF pin independently of fixture pin (0.44ms)
+✔ R018 rejects wrong screenshot pin independently of fixture pin (0.445083ms)
+✔ R018 rejects wrong source reference binding independently of fixture pin (0.368792ms)
+✔ R018 rejects missing column independently of fixture pin (0.360375ms)
+✔ R018 rejects different columns independently of fixture pin (0.346625ms)
+✔ R018 rejects wrong column pointer independently of fixture pin (0.327125ms)
+✔ R018 rejects wrong unit independently of fixture pin (0.324083ms)
+✔ R018 rejects wrong model independently of fixture pin (0.823833ms)
+✔ R018 rejects unit printed claim independently of fixture pin (0.42625ms)
+✔ R018 rejects calculated area independently of fixture pin (0.389959ms)
+✔ R018 rejects converted Internos independently of fixture pin (0.327792ms)
+✔ R018 rejects invented plan date independently of fixture pin (0.318542ms)
+✔ R018 rejects new interior field independently of fixture pin (0.284958ms)
+✖ R018 local loader keeps all131 identities and the earlier18 witnesses unchanged (3.433375ms)
+✖ R018 presentation keeps model association, plan metrics and observation date without a commercial price (1.901958ms)
+✔ R018 four-source loading stays gated and rejects pin or fetch failure atomically (3.308042ms)
+✖ R018 merge rejects source slug and reference ID collisions rather than replacing evidence (0.407625ms)
+✔ R018 canonical exception does not admit useful or total values into old fixtures without explicit proof (1.633209ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 18
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 129.622042
+
+✖ failing tests:
+
+test at tests/documentary-local-review.test.mjs:1:1
+✖ tests/documentary-local-review.test.mjs (94.756209ms)
+  'test failed'
+
+test at tests/documentary-reference-additions.test.mjs:126:1
+✖ loader preserves earlier witnesses and distinct source pins in the expanded review (11.169917ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async loadLocalDocumentaryReview (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-local-review.mjs:128:14)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-additions.test.mjs:127:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/documentary-reference-r018.test.mjs:37:1
+✖ R018 fixed pin retains exact source facts with separate plan evidence and no external price metadata (8.850584ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-r018.test.mjs:43:15)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/documentary-reference-r018.test.mjs:53:1
+✖ R018 useful and total23.69 independently match the same one-bathroom reference (1.736834ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-r018.test.mjs:54:17)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentary-reference-r018.test.mjs:62:1
+✖ R018 valid active unknown-price, room, use and interior predicates stay negative (1.028333ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-r018.test.mjs:63:17)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentary-reference-r018.test.mjs:73:1
+✖ R018 each canonical field requires its own metadata even when all source numbers happen to agree (2.50225ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-r018.test.mjs:80:19)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentary-reference-r018.test.mjs:85:1
+✖ R018 explicit plan values do not derive from Internos or a sum (1.463041ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-r018.test.mjs:88:17)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentary-reference-r018.test.mjs:115:1
+✖ R018 local loader keeps all131 identities and the earlier18 witnesses unchanged (3.433375ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async loadLocalDocumentaryReview (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-local-review.mjs:128:14)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-r018.test.mjs:116:25)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentary-reference-r018.test.mjs:136:1
+✖ R018 presentation keeps model association, plan metrics and observation date without a commercial price (1.901958ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async loadLocalDocumentaryReview (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-local-review.mjs:128:14)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-r018.test.mjs:137:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/documentary-reference-r018.test.mjs:161:1
+✖ R018 merge rejects source slug and reference ID collisions rather than replacing evidence (0.407625ms)
+  SyntaxError [Error]: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at clone (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:14:29)
+      at createDocumentaryReferenceLayer (file:///private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/documentary-reference-data.mjs:317:21)
+      at async TestContext.<anonymous> (file:///private/tmp/sollahms-referencias-documentales-131-20261117/tests/documentary-reference-r018.test.mjs:162:15)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

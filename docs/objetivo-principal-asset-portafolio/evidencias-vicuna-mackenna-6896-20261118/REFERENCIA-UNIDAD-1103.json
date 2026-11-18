@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "IRIS-131-R018",
+  "date": "2026-11-18",
+  "observedAtUTC": "2026-11-18T03:52:22Z",
+  "nature": "Nueva referencia documental externa observada; no recepción del propietario, oferta ni stock.",
+  "project": {
+    "slug": "vicuna-mackenna-6896",
+    "name": "Vicuña Mackenna 6896",
+    "developer": "Norte Verde",
+    "address": "Vicuña Mackenna 6896",
+    "commune": "La Florida",
+    "region": "Región Metropolitana",
+    "sourceHeading": "Norte Verde - Vicuña Mackenna 6896",
+    "identityVerified": true
+  },
+  "discovery": {
+    "searchTerm": "Vicuña Mackenna 6896",
+    "searchURL": "https://iris.yapo.cl/proyectos?country=7&state=1%2C2%2C3&order=promos%2Cpopularity&search=Vicu%C3%B1a+Mackenna+6896",
+    "realResultHref": "/proyecto/624?operation=Venta",
+    "sourceURL": "https://iris.yapo.cl/proyecto/624?operation=Venta",
+    "idsGuessed": false
+  },
+  "scope": {
+    "unit": "1103",
+    "floor": "11",
+    "literalTypology": "estudio",
+    "bedroomsNumeric": null,
+    "planPrintedLabel": "Depto tipo C2",
+    "UIdescription": "C2(VM)",
+    "modelLabel": "C2",
+    "modelLabelMeaning": "Sólo rótulo del plano mostrado/enlazado por Iris al modal 1103; no certifica equivalencia general con C2(VM).",
+    "unitPrintedOnPlan": false,
+    "sourceDocumentDate": null,
+    "revision": null,
+    "otherUnitsCovered": false
+  },
+  "attributes": {
+    "propertyType": "departamento",
+    "assetType": null,
+    "bedrooms": null,
+    "bathrooms": 1,
+    "internalM2": 23.69,
+    "usefulM2": 23.69,
+    "terraceM2": 0,
+    "totalM2": 23.69,
+    "interiorM2": null,
+    "landM2": null,
+    "priceUF": null,
+    "stock": null,
+    "availability": null,
+    "state": null,
+    "delivery": null
+  },
+  "fieldsAndSources": {
+    "bathrooms": {
+      "literal": "1 baño",
+      "source": "UNIDAD-1103-TEXTO.txt",
+      "scope": "Modal exacto1103/piso11; no todos los estudios."
+    },
+    "internalM2": {
+      "literalLabel": "internos",
+      "literalValue": "23.69m²",
+      "source": "UNIDAD-1103-TEXTO.txt",
+      "canonicalMapping": null
+    },
+    "planSurfaces": {
+      "source": "UNIDAD-1103-VISIBLE.jpg",
+      "original": "PLANO-C2-ORIGINAL.avif",
+      "page": null,
+      "section": "Plano Depto tipo C2, cuadro Municipal/Construido",
+      "columns": {
+        "Municipal": {
+          "Superficie útil depto": 23.69,
+          "Superficie útil terraza": 0,
+          "Superficie total": 23.69
+        },
+        "Construido": {
+          "Superficie útil depto": 23.69,
+          "Superficie útil terraza": 0,
+          "Superficie total": 23.69
+        }
+      },
+      "units": "m²",
+      "readFromLegibleRenderedImage": true,
+      "derivedBySumOrAlias": false,
+      "terraceZeroExplicit": true
+    }
+  },
+  "commercialLimits": [
+    "El precio Iris visible queda sólo en evidencia original, no se incorpora al campo comercial.",
+    "Sin correspondencia acreditada con precio Sollahms25/10, unidad/modelo de cotización o vigencia.",
+    "No convertir estudio en0D.",
+    "Internos se conserva separado de útil/interior/total; útil y total vienen del cuadro explícito, no de su igualdad numérica.",
+    "No extender el plano a otras unidades ni afirmar stock disponible.",
+    "Aplicación pública, fichas y precios originales intactos."
+  ],
+  "custody": {
+    "originalPlanSHA256": "472689a66828bb0618a3110ef5c572101c5a02c9414bdbb30f5cf11e134a9791",
+    "screenshotSHA256": "f565d64baa7eeb47cb4d6c086ad5f67bfd2ef5e72e4fb07d2e0ce83bd1dd90d0",
+    "observationSHA256": "1b8e41db3e1c88c5dce3b9e5294fe26baa2a4043e9936660f347af3d69507c8c",
+    "textSHA256": "202662d9c6adfda694f9b13bcf85e96bfd8ae71ff57e76aefd8889b3baf8f1bb",
+    "originalContentType": "image/avif",
+    "exportRequests": 1,
+    "exportSuccesses": 1,
+    "exportFailures": 0,
+    "retries": 0,
+    "originalModified": false,
+    "credentialsCookiesTokensReadOrSaved": false,
+    "authenticationRequested": false,
+    "authenticationClaimed": false,
+    "messagesReservationsContactFormsSent": 0
+  },
+  "validation": {
+    "rootAndIndependentScreenshotReview": true,
+    "reviewConclusion": "Identidad, baño1 y tabla de plano legibles; asociación sólo por modal, sin unidad impresa en plano.",
+    "publishedFieldsChanged": 0,
+    "ownerDocumentsReceived": 0,
+    "LebenOriginal313Closed": 0,
+    "appConsumedAtReceipt": false
+  }
+}

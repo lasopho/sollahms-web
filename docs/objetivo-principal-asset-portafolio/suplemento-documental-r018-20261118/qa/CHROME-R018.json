@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "verifiedAtUTC": "2026-11-18T04:11:13.261Z",
+  "scope": "Sólo delta R018; no build, pruebas generales, responsive/cuatro vistas ni publicación. F10/F13/otros cortes históricos no repetidos ni sumados.",
+  "host": "127.0.0.1:64257",
+  "checks": [
+    {
+      "id": "R018-C01",
+      "case": "Baño1 en referencia1103; útil/total/terraza/Internos distintos y sinprecio",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html?q=Vicu%C3%B1a+Mackenna+6896&banos=1&evidencia=documentary&revision_documental=1",
+        "statuses": [
+          "1 de 131 proyectos"
+        ],
+        "articles": [
+          {
+            "label": null,
+            "text": "Vicuña Mackenna 6896\n\nLa Florida · Región Metropolitana\n\nNorte Verde\n\nBellavista de La Florida · L5 · 450 m en línea recta\n\nTipología de la referencia\n1B\nSuperficie útil\n23,69 m²\nSuperficie total\n23,69 m²\nSuperficie de terraza\n0 m²\nInternos (rótulo de la fuente)\n23,69 m²\n\nSin precio comercial para esta referencia\n\nReferencia documental · Unidad 1103 · Modelo C2 · Fuente Iris · Consultada · 18/11/2026 · Sólo la unidad externa 1103/piso 11: plano comercial C2 mostrado por Iris en su modal, sin unidad impresa. Descripción C2(VM) separada; sin equivalencia general, certificación legal/as-built, stock, precio owner ni extensión a otras unidades. · Disponibilidad y vigencia por confirmar; no acredita stock\n\nVer ficha publicada"
+          }
+        ],
+        "source": [
+          "Revisión documental local · sin stock"
+        ],
+        "visibleAlerts": []
+      }
+    },
+    {
+      "id": "R018-C02",
+      "case": "Baño1+útil23.69 exactos misma1103",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html?q=Vicu%C3%B1a+Mackenna+6896&banos=1&superficie=util&m2_min=23.69&m2_max=23.69&evidencia=documentary&revision_documental=1",
+        "statuses": [
+          "1 de 131 proyectos"
+        ],
+        "articles": [
+          {
+            "label": null,
+            "text": "Vicuña Mackenna 6896\n\nLa Florida · Región Metropolitana\n\nNorte Verde\n\nBellavista de La Florida · L5 · 450 m en línea recta\n\nTipología de la referencia\n1B\nSuperficie útil\n23,69 m²\nSuperficie total\n23,69 m²\nSuperficie de terraza\n0 m²\nInternos (rótulo de la fuente)\n23,69 m²\n\nSin precio comercial para esta referencia\n\nReferencia documental · Unidad 1103 · Modelo C2 · Fuente Iris · Consultada · 18/11/2026 · Sólo la unidad externa 1103/piso 11: plano comercial C2 mostrado por Iris en su modal, sin unidad impresa. Descripción C2(VM) separada; sin equivalencia general, certificación legal/as-built, stock, precio owner ni extensión a otras unidades. · Disponibilidad y vigencia por confirmar; no acredita stock\n\nVer ficha publicada"
+          }
+        ],
+        "source": [
+          "Revisión documental local · sin stock"
+        ],
+        "visibleAlerts": []
+      }
+    },
+    {
+      "id": "R018-C03",
+      "case": "Baño1+total23.69 explícito misma1103",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html?q=Vicu%C3%B1a+Mackenna+6896&banos=1&superficie=total&m2_min=23.69&m2_max=23.69&evidencia=documentary&revision_documental=1",
+        "statuses": [
+          "1 de 131 proyectos"
+        ],
+        "articles": [
+          {
+            "label": null,
+            "text": "Vicuña Mackenna 6896\n\nLa Florida · Región Metropolitana\n\nNorte Verde\n\nBellavista de La Florida · L5 · 450 m en línea recta\n\nTipología de la referencia\n1B\nSuperficie útil\n23,69 m²\nSuperficie total\n23,69 m²\nSuperficie de terraza\n0 m²\nInternos (rótulo de la fuente)\n23,69 m²\n\nSin precio comercial para esta referencia\n\nReferencia documental · Unidad 1103 · Modelo C2 · Fuente Iris · Consultada · 18/11/2026 · Sólo la unidad externa 1103/piso 11: plano comercial C2 mostrado por Iris en su modal, sin unidad impresa. Descripción C2(VM) separada; sin equivalencia general, certificación legal/as-built, stock, precio owner ni extensión a otras unidades. · Disponibilidad y vigencia por confirmar; no acredita stock\n\nVer ficha publicada"
+          }
+        ],
+        "source": [
+          "Revisión documental local · sin stock"
+        ],
+        "visibleAlerts": []
+      }
+    },
+    {
+      "id": "R018-C04",
+      "case": "PrecioIris visible no se presta al cruce precio+área",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html?q=Vicu%C3%B1a+Mackenna+6896&precio_min=3357.14&precio_max=3357.14&banos=1&superficie=total&m2_min=23.69&m2_max=23.69&evidencia=documentary&revision_documental=1",
+        "statuses": [
+          "0 de 131 proyectos",
+          "No encontramos coincidencias documentadas con esta combinación. Puedes quitar una característica, ampliar el rango o modificar la ubicación."
+        ],
+        "articles": [],
+        "source": [
+          "Revisión documental local · sin stock"
+        ],
+        "visibleAlerts": []
+      }
+    },
+    {
+      "id": "R018-C05",
+      "case": "Estudio literal no se transforma en0D",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html?q=Vicu%C3%B1a+Mackenna+6896&dormitorios=0&banos=1&superficie=total&m2_min=23.69&m2_max=23.69&evidencia=documentary&revision_documental=1",
+        "statuses": [
+          "0 de 131 proyectos",
+          "No encontramos coincidencias documentadas con esta combinación. Puedes quitar una característica, ampliar el rango o modificar la ubicación."
+        ],
+        "articles": [],
+        "source": [
+          "Revisión documental local · sin stock"
+        ],
+        "visibleAlerts": []
+      }
+    },
+    {
+      "id": "R018-C06",
+      "case": "Departamento no acredita usoResidencial",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html?q=Vicu%C3%B1a+Mackenna+6896&banos=1&superficie=total&m2_min=23.69&m2_max=23.69&uso=Residencial&evidencia=documentary&revision_documental=1",
+        "statuses": [
+          "0 de 131 proyectos",
+          "No encontramos coincidencias documentadas con esta combinación. Puedes quitar una característica, ampliar el rango o modificar la ubicación."
+        ],
+        "articles": [],
+        "source": [
+          "Revisión documental local · sin stock"
+        ],
+        "visibleAlerts": []
+      }
+    },
+    {
+      "id": "R018-C07",
+      "case": "Total23.70 no coincide con23.69; rango válido",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html?q=Vicu%C3%B1a+Mackenna+6896&banos=1&superficie=total&m2_min=23.70&m2_max=23.70&evidencia=documentary&revision_documental=1",
+        "statuses": [
+          "0 de 131 proyectos",
+          "No encontramos coincidencias documentadas con esta combinación. Puedes quitar una característica, ampliar el rango o modificar la ubicación."
+        ],
+        "articles": [],
+        "source": [
+          "Revisión documental local · sin stock"
+        ],
+        "visibleAlerts": []
+      }
+    },
+    {
+      "id": "R018-C08",
+      "case": "Sin opt-in se mantienen publicados131 y ninguna opción documental",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html",
+        "statuses": [
+          "131 proyectos"
+        ],
+        "articles": 131,
+        "sourceOptions": [
+          "Datos publicados"
+        ]
+      }
+    },
+    {
+      "id": "R018-C09",
+      "case": "Sin atributosactivos conserva131 identidades y declara19referencias sinstock",
+      "pass": true,
+      "observed": {
+        "url": "http://127.0.0.1:64257/proyectos.html?evidencia=documentary&revision_documental=1",
+        "statuses": [
+          "131 proyectos"
+        ],
+        "articleCount": 131,
+        "help": [
+          "Revisión documental local: 19 referencias conservadas con su fuente y alcance. Sólo se combinan atributos de una misma referencia. Los proyectos sin evidencia conservan únicamente su identidad; no se toman precios ni características del catálogo publicado. Las referencias no acreditan stock ni vigencia comercial."
+        ],
+        "source": [
+          "Revisión documental local · sin stock"
+        ]
+      }
+    }
+  ],
+  "passed": 9,
+  "total": 9,
+  "sourceCount": 4,
+  "documentaryReferenceCount": 19,
+  "documentaryProjectCount": 18,
+  "identityCount": 131,
+  "identityOnlyCount": 113,
+  "priceOrStockAdopted": false,
+  "visibleDOMOnly": true,
+  "priorChrome8NotAddedAsUnique": true
+}

@@ -98,3 +98,17 @@ El plano C7/213 respalda útil69,85/terraza13,97/total83,82 como declaración gr
 ## Nuevo alcance unitario, sin cierres artificiales —17/11/2026
 
 Novo109 aporta baño1 sólo a esa referencia; Estudio literal no completa dormitorios numéricos. Endémico45 aporta4D3B eInternos160/Terraza0, pero no útil/total. La coincidencia160 con Total del brochureD-Molle no prueba identidad o métrica. VistaBulnes conserva baño desconocido:0 observado, estabilidad no certificada. No reabrir estas consultas sin evidencia/condición nueva; no pedir un inventario al propietario.
+
+## Precisión de observación y registro —18/11/2026
+
+Una referencia puede conservar sólo el día observado (`observedOn`) y carecer de hora verificable (`observedAtUTC:null`). El registro posterior (`recordedAtUTC`) no sustituye esa observación: Endémico45 conserva17/11 observado aunque se registró enUTC después. El suplemento local admite día de calendario válido y muestra ese día sin inventar medianoche u otra hora. Los originales conservan sus timestamps o ausencias. Esta mejora de recepción no representa navegaciónIris nueva ni cambia la vigencia comercial. Novo109 mantiene Estudio literal sin0D; Casa45 no acredita automáticamente usoResidencial.
+
+## Resultados diferidos, enlaces y planos — 18/11/2026
+
+El buscador observado expone el campo como `textbox Username` con placeholder vacío; no es el formulario de acceso. Se identifica por contexto de catálogo y tags. Después de Enter, el tag puede cambiar antes que las tarjetas: confirmar el resultado una vez cargado, sin interpretar la primera instantánea como final. Los enlaces de ficha pueden abrir otra pestaña; localizarla mediante su URL real. El modal 1103 de Iris 624 vincula un plano C2 sin unidad impresa: registrar «plano mostrado por Iris para 1103», no aplicabilidad universal. Útil y total sólo se incorporan por sus rótulos gráficos explícitos; Internos continúa separado.
+
+## Tipología del portal frente al plano —18/11/2026
+
+Verne465/202 demuestra que títuloDepartamento/etiquetaEstudio y dirección correcta no bastan para certificar el producto: el plano del modal imprimeOficina1O+1B/oficina202. Conservar ambos lados; excluir la asociación residencial y no pedir otra vez la identidadowner ya resuelta. Un encabezado o extensión no valida por sí solo una fuente. La primera extracción residencial de root se conserva conerratum separado. Internos y útil/total no son comparables por diferencia numérica; tampoco se homologa su igualdad.
+
+Un403 de transferencia actual no prueba que el documento no exista. Antes de solicitarlo al propietario, seguir el índice archivado y reutilizar originales disponibles en lectura, conservando hash/versión. El PDF Irarrázaval local3.501.590B es distinto en tamaño al remoto reportado17.700.840B; no se afirmó equivalencia de versiones ni se reintentó403. Leer referencias normativas/metadatos como contexto, sin convertirlas en fecha de emisión.

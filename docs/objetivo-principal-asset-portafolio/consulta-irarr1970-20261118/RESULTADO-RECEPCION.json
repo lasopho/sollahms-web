@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-18T04:00:03.306452+00:00",
+  "status": "NO_RECIBIDO_ORIGEN_RECHAZO_403_NO_REINTENTAR",
+  "projectSlug": "irarrazaval",
+  "identityAddress": "Irarrázaval1970,Ñuñoa",
+  "registeredPrimaryURL": "https://norte-verde.cl/wp-content/uploads/2026/01/IRARRAZAVAL_BROCHURE.pdf",
+  "existingSourceReview": {
+    "path": "data/fichas-proyectos.json",
+    "pointer": "/69",
+    "checkedAt": "2026-10-09",
+    "knownScope": "Identity/address in brochure; not an explicit current bathroom count. Legacy tour panorama identity unresolved; not reused."
+  },
+  "existingLocalOriginalFound": false,
+  "priorIrisRootReported": "Stable Irarrázaval search returned only Euro1578/1580;1970 returned0. No result opened; do not transfer Euro IDs.",
+  "attempts": [
+    {
+      "transport": "web reader",
+      "result": "Tool content-size limit17700840B, not404 and not evidence of no document."
+    },
+    {
+      "transport": "default sandbox binary GET",
+      "result": {
+        "type": "URLError",
+        "message": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+      }
+    },
+    {
+      "transport": "single root-authorized require_escalated binary GET",
+      "conditionChange": "Network outside default sandbox explicitly authorized by root. Same primary URL, no server restriction bypass.",
+      "result": {
+        "type": "HTTPError",
+        "message": "HTTP Error 403: Forbidden"
+      }
+    }
+  ],
+  "originalPDFReceived": false,
+  "originalPDFSHA256": null,
+  "pagesRead": 0,
+  "bathroomsExtracted": null,
+  "bathroomsCurrentStatus": "desconocido; this reception failed, not evidence that the brochure lacks explicit labels",
+  "bathroomsCountedFromFixtures": false,
+  "retryPerformedAfter403": false,
+  "continuationCondition": "Actual original PDF becomes locally available through a new legitimate reception; no repeated origin requests under current403.",
+  "files": [
+    {
+      "path": "/private/tmp/sollahms-irarr1970-recepcion-20261118/RECIBO-TRANSFERENCIA.json",
+      "bytes": 652,
+      "sha256": "fa35dabba6b81a052665f0cb6973b5905f54fb56811d05291e007dbfc4db9026"
+    },
+    {
+      "path": "/private/tmp/sollahms-irarr1970-recepcion-20261118/RECIBO-TRANSFERENCIA-RED-AUTORIZADA.json",
+      "bytes": 564,
+      "sha256": "72593f2666289a7bf6cbe7d9a247536f9a152d3eef5dde352f7fe982a5302352"
+    }
+  ],
+  "limits": [
+    "No PDF original or page contents received, so no model, bathroom or area fact was extracted.",
+    "No bathroom inference from drawn artifacts or title.",
+    "Do not characterize the PDF as nonexistent or remove the registered source.",
+    "No code/A edits, Iris queries, stock inference or owner price request."
+  ],
+  "operations": {
+    "applicationEdits": 0,
+    "auditEdits": 0,
+    "IrisQueries": 0,
+    "cookiesTokensCredentialsUsed": false,
+    "tests": 0,
+    "builds": 0,
+    "gitWrites": 0,
+    "deployments": 0
+  },
+  "nonCircular": "This receipt lists only the two preserved transfer receipts, not itself."
+}

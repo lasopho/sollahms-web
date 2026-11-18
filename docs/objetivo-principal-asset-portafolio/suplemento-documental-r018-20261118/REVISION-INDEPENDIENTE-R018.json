@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-11-18T04:13:51.569142+00:00",
+  "dictamen": "APROBADO_CON_OBSERVACIONES",
+  "blockingFindings": [],
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "baseCommit": "0c03a9fcff32d606732a2af55a28295c869b2573",
+  "authorReceipt": {
+    "path": "/private/tmp/sollahms-r018-local-20261118/RECIBO-IMPLEMENTACION-R018.json",
+    "bytes": 10140,
+    "sha256": "af6f729e406b426e9dacbe3a6ec792504cc04596984305abef8e8f5909d88a4e"
+  },
+  "authorManifest": {
+    "path": "/private/tmp/sollahms-r018-local-20261118/MANIFIESTO-R018.json",
+    "bytes": 2959,
+    "sha256": "332a48a717485c5505fc1acdd87dd4a74d78fa55f3a22e856bd8f1e3f157d975"
+  },
+  "method": "Independent source/code/diff/log/hash reading; no application tests or browser actions repeated. Only this result file written.",
+  "scope": {
+    "files": 6,
+    "runtimeModules": 2,
+    "testAndFixtureFiles": 4,
+    "candidateHashesMatching": 6,
+    "candidateFiles": [
+      {
+        "path": "assets/js/documentary-reference-data.mjs",
+        "bytes": 19278,
+        "sha256": "e285eefbb29855391da2bd783f3f52dec3945d2c8259202e43c205b3d1daa752",
+        "matchesAuthor": true
+      },
+      {
+        "path": "assets/js/documentary-local-review.mjs",
+        "bytes": 11277,
+        "sha256": "6bfd0727c13cd5353bc708a580d30eda66acd2c44c22e03a775367050c488a9a",
+        "matchesAuthor": true
+      },
+      {
+        "path": "tests/documentary-local-review.test.mjs",
+        "bytes": 17557,
+        "sha256": "5d77f7e294330be02799732a4cbc21825d6ceba9fca76bbe171ba9cada748c52",
+        "matchesAuthor": true
+      },
+      {
+        "path": "tests/documentary-reference-additions.test.mjs",
+        "bytes": 9400,
+        "sha256": "b4d740ebb41eb811345288b2005c4d675fb9a683597e4b129f8ef027f45a6b2f",
+        "matchesAuthor": true
+      },
+      {
+        "path": "tests/documentary-reference-r018.test.mjs",
+        "bytes": 11790,
+        "sha256": "e149bf59ac14fdbfdf52ce6644952e5a8b08226bf2ea56dbca737a8b92eff8f8",
+        "matchesAuthor": true
+      },
+      {
+        "path": "tests/fixtures/iris-documentary-r018-vicuna-1103.json",
+        "bytes": 14243,
+        "sha256": "41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d",
+        "matchesAuthor": true
+      }
+    ]
+  },
+  "sourceVerification": {
+    "fixtureSHA256": "41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d",
+    "normalizationSHA256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
+    "registrySHA256": "08c4002ac63eb77b1af8ac4ce211517dad635954fb5215a2322fd96ba31c5eb9",
+    "primarySourcesMatching": 7,
+    "sources": [
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REGISTRO-R018.json",
+        "bytes": 1162,
+        "sha256": "08c4002ac63eb77b1af8ac4ce211517dad635954fb5215a2322fd96ba31c5eb9",
+        "match": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/REFERENCIA-UNIDAD-1103.json",
+        "bytes": 4367,
+        "sha256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
+        "match": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/PLANO-C2-ORIGINAL.avif",
+        "bytes": 14164,
+        "sha256": "472689a66828bb0618a3110ef5c572101c5a02c9414bdbb30f5cf11e134a9791",
+        "match": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-VISIBLE.jpg",
+        "bytes": 54917,
+        "sha256": "f565d64baa7eeb47cb4d6c086ad5f67bfd2ef5e72e4fb07d2e0ce83bd1dd90d0",
+        "match": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-OBSERVACION.json",
+        "bytes": 844,
+        "sha256": "1b8e41db3e1c88c5dce3b9e5294fe26baa2a4043e9936660f347af3d69507c8c",
+        "match": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/UNIDAD-1103-TEXTO.txt",
+        "bytes": 227,
+        "sha256": "202662d9c6adfda694f9b13bcf85e96bfd8ae71ff57e76aefd8889b3baf8f1bb",
+        "match": true
+      },
+      {
+        "path": "docs/objetivo-principal-asset-portafolio/evidencias-vicuna-mackenna-6896-20261118/EXPORTACION-PLANO-C2.json",
+        "bytes": 536,
+        "sha256": "5f6f15373738ae3e431c4767440b654f9f659712ad00ab8ebbbd207f2f48da1a",
+        "match": true
+      }
+    ],
+    "fieldAndColumnPointersResolved": 14,
+    "registryPointersResolved": 1,
+    "rootSourcePointerResolved": true,
+    "identityPointer": "/88",
+    "identitySHA256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+    "visualReview": "Existing unit1103 screenshot viewed locally; explicit useful/terrace/total labels and both columns legible."
+  },
+  "findings": {
+    "canonicalAreasFailClosed": "Only usefulM2/totalM2 receive explicit-plan exceptions; each needs its own exact label, unit, number, source roles/hashes/reference binding, both Municipal/Construido columns and same project/unit/model scope. Missing/contradictory proof throws. Interior remains unadmitted.",
+    "noInternosAlias": "Separate sourceMetrics entry retains Internos; useful and total values are independently supported by their printed plan labels, not aliasing or summation.",
+    "unitAssociation": "Unit1103/floor11 is the observed Iris modal. Plan labelC2 and UI descriptionC2(VM) remain distinct; unitPrintedOnPlan=false and no general equivalence/as-built claim.",
+    "noPriceJoin": "priceUF=null, no external UF metadata, no owner-unit/model price correspondence. Price-active valid queries remain excluded.",
+    "unknowns": "Bedrooms remain null; no Estudio→0D, inferred Residencial use, stock, private-space absence, state/delivery or plan issue/revision date.",
+    "gateAndTransport": "Loopback HTTP(S)+exact one revision_documental=1 checked before all four fixed-fixture fetches. Each has its own independent pin; failure throws without partially adopting documentary records.",
+    "merging": "Slug and reference ID collisions rejected; metadata carries each source pin; original18 witnesses retained and131 public identities remain.",
+    "counts": {
+      "documentaryReferences": 19,
+      "projectsWithReferences": 18,
+      "identityOnly": 113,
+      "publicIdentities": 131
+    }
+  },
+  "testsReadNotExecuted": {
+    "authorFinal28": {
+      "path": "/private/tmp/sollahms-r018-local-20261118/PRUEBAS-DELTA-R018-FINAL.log",
+      "bytes": 2575,
+      "sha256": "07f94798b0df7aa2e638433694227c0839abce91530a2c6bbaedbbc0a625a2eb"
+    },
+    "compatibility5": {
+      "path": "/private/tmp/sollahms-r018-local-20261118/PRUEBAS-COMPATIBILIDAD-ERRORES.log",
+      "bytes": 577,
+      "sha256": "ec4e04f30aaf84d9d701317ddc855d3f290f07185698b4d25bab5af9f93e28e0"
+    },
+    "reportedFinalPassed": 28,
+    "reportedCompatibilityPassed": 5,
+    "initialRun": "18/28 was a fixture missing metricPolicy, not reproduction of a previous application defect.",
+    "countPolicy": "Compatibility5 overlaps final28; not33unique cases. No suites repeated by reviewer.",
+    "rootChromeArtifact": {
+      "path": "/private/tmp/sollahms-r018-local-20261118/qa/CHROME-R018.json",
+      "bytes": 8655,
+      "sha256": "64d1f09a4a6717c70175c995b04de5a516bf9fd3258016ae3fa9305c2580ae86"
+    },
+    "rootChromeStatus": "Root reported9/9; artifact referenced only, no browser actions or independent reexecution."
+  },
+  "preservation": {
+    "certificate": {
+      "path": "/private/tmp/sollahms-r018-local-20261118/INTEGRIDAD-155-21-3.json",
+      "bytes": 53056,
+      "sha256": "ec60a4351de80e96df26d4e7fb3cdfb875822fd859f182e0056ea73d56a614be"
+    },
+    "protected155": 155,
+    "originalSources21": 21,
+    "earlierFixtures3": {
+      "tests/fixtures/iris-documentary-15.json": "3706bac50a2aa70a6d6cb8483f8f13a62615d6f2ce461b82dfe1774601794b71",
+      "tests/fixtures/plaza-213-reference.json": "94c2ebc3e78c68e29addec501cbd329cec3b7619f78f164b11f8870739e7d865",
+      "tests/fixtures/iris-documentary-additions-2.json": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb"
+    },
+    "allOutsideDelta": true,
+    "sourceOrApplicationEditsByReviewer": 0
+  },
+  "observations": [
+    "Canonical facts are the printed commercial plan shown in a specific Iris unit modal; no independently printed unit number, legal/as-built measurement or current availability certification.",
+    "Both printed measurement columns agree in this reference; differing columns would be rejected by this contract.",
+    "Plan issue date and revision remain null; observedAtUTC is2026-11-18T03:52:22Z.",
+    "Only local loopback review is implemented. No global131certification,313closure or publication authority is implied.",
+    "Reviewed final adapter/loader hashes are those in the author receipt; the earlier error-message compatibility change is included."
+  ],
+  "operations": {
+    "newFiles": [
+      "REVISION-INDEPENDIENTE-R018.json"
+    ],
+    "testsExecuted": 0,
+    "ChromeActions": 0,
+    "IrisQueries": 0,
+    "networkRequests": 0,
+    "applicationEdits": 0,
+    "auditEdits": 0,
+    "gitWrites": 0,
+    "PRMutations": 0,
+    "deployments": 0
+  }
+}

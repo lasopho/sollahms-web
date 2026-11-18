@@ -103,3 +103,11 @@ Ficha real [Iris269](https://iris.yapo.cl/proyecto/269), Sento, Avenida Las Cond
 ## Consultas focalizadas posteriores al PR33 —17/11/2026
 
 Novo Catedral, Sudamericana/Catedral1743: enlace real Iris1428, única unidad109,1baño explícito. Estudio queda como literal, sin dormitorio numérico asumido; Internos18,44/Terraza1,9 no son útil/total. Endémico, Ecasa/Pichilemu: enlace real1372, única unidad45,4D/3B,Internos160/Terraza0expresa; útil sigue desconocida y plano es placeholder. No transferir total160 de D-Molle a45. Vista Bulnes: dos consultas visibles Vista Bulnes/Bulnes con0 observado enDOM/captura, sin estabilidad certificada y sin referencia/facto nuevo. No concluir retiro o stock. Evidencias y límites en ACTUALIZACIONES-DOCUMENTALES-POR-REFERENCIA.json delcontrol principal. CandidatoPR33/pins/precios/313IDs intactos.
+
+## Vicuña Mackenna 6896 y desambiguación Irarrázaval — 18/11/2026
+
+La búsqueda exacta de Vicuña Mackenna 6896 mostró un resultado, Norte Verde / La Florida. El enlace real abrió otra pestaña: `/proyecto/624?operation=Venta`. Se abrió sólo la fila 1103: piso 11, Estudio literal y 1 baño. El plano C2 enlazado en ese modal imprime útil departamento 23,69, útil terraza 0 y total 23,69 m² (Municipal y Construido). No imprime la unidad; conservar ese límite, descripción C2(VM) separada, fecha/revisión desconocidas y ningún vínculo con precio owner. Referencia real R018; original AVIF exportado una vez, sin reintentos. Evidencias: `evidencias-vicuna-mackenna-6896-20261118/`.
+
+Irarrázaval nominal devolvió únicamente Euro 1578/1580; la variante 1970, cero tras carga estable. No se abrieron proyectos distintos ni se dedujo estado comercial. Consulta conservada en `consulta-irarr1970-20261118/`; se continúa con fuente oficial ya registrada. No hubo autenticación solicitada, chats, reservas o formularios.
+
+Verne —18/11: búsqueda nominal mostró Norte Verde / Departamento / Coquimbo, enlace real465. Sólo modal202/piso2, «estudio»/«1 baño», pero plano «Oficina1O+1B», «oficinaNº202». Original exportado1vez; conflicto yerratum conservados en evidencias-verne-20261118. No completar datos residenciales ni crear referencia filtrable; no volver a pedir identidad/precio ya aclarados por propietario. Irarrázaval: brochure local existente15páginas y7renders, estudiosp10–11 sinBnum; pregunta única ya enviada yregistrada, no repetir.

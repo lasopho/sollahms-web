@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-11-18",
+  "status": "CANDIDATO_LOCAL_REVISADO_SIN_PUSH_PR_DEPLOYMENT",
+  "branch": "codex/suplemento-documental-131-20261117",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "headSHA": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+  "parentSHA": "0c03a9fcff32d606732a2af55a28295c869b2573",
+  "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+  "baseBranch": "codex/footer-sin-frase-20261116",
+  "sourceBranchRemote": null,
+  "cleanWorkingTree": true,
+  "fileCount": 10,
+  "files": [
+    {
+      "path": "assets/js/catalog-model.mjs",
+      "bytes": 15489,
+      "sha256": "513e011a6577d785fd85c5e3ba5e506ef29aa4cc86ea20d533c9af5dc9c1a0fc"
+    },
+    {
+      "path": "assets/js/commercial-filter-engine.mjs",
+      "bytes": 12984,
+      "sha256": "74483443344cd1bc1e9a590a38028a8355368a52e1a085e9705af434eb047741"
+    },
+    {
+      "path": "assets/js/documentary-local-review.mjs",
+      "bytes": 11277,
+      "sha256": "6bfd0727c13cd5353bc708a580d30eda66acd2c44c22e03a775367050c488a9a"
+    },
+    {
+      "path": "assets/js/documentary-reference-data.mjs",
+      "bytes": 19278,
+      "sha256": "e285eefbb29855391da2bd783f3f52dec3945d2c8259202e43c205b3d1daa752"
+    },
+    {
+      "path": "tests/documentary-local-review.test.mjs",
+      "bytes": 17557,
+      "sha256": "5d77f7e294330be02799732a4cbc21825d6ceba9fca76bbe171ba9cada748c52"
+    },
+    {
+      "path": "tests/documentary-reference-additions.test.mjs",
+      "bytes": 9400,
+      "sha256": "b4d740ebb41eb811345288b2005c4d675fb9a683597e4b129f8ef027f45a6b2f"
+    },
+    {
+      "path": "tests/documentary-reference-r018.test.mjs",
+      "bytes": 11790,
+      "sha256": "e149bf59ac14fdbfdf52ce6644952e5a8b08226bf2ea56dbca737a8b92eff8f8"
+    },
+    {
+      "path": "tests/fixtures/iris-documentary-additions-2.json",
+      "bytes": 19071,
+      "sha256": "a0ad2ce101677f934ab96e9e38a888b1caf6153bd2800d913a23c87e8a993afb"
+    },
+    {
+      "path": "tests/fixtures/iris-documentary-r018-vicuna-1103.json",
+      "bytes": 14243,
+      "sha256": "41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 3948,
+      "sha256": "76495dc3b619a4e7cb2660f6b600e5ff97cc3d370aca32e5692617e6ed9bdfc9"
+    }
+  ],
+  "counts": {
+    "references": 19,
+    "projectsWithReferences": 18,
+    "identityOnly": 113,
+    "identities": 131,
+    "newAcceptedExternalReferencesAfter0c03": 1,
+    "newOwnerDocuments": 0,
+    "newOwnerPrices": 0,
+    "newStockFacts": 0,
+    "LebenOriginal313Closed": 0
+  },
+  "deltaSource": {
+    "id": "IRIS-131-R018",
+    "unit": "1103",
+    "project": "vicuna-mackenna-6896",
+    "normalizationSHA256": "9bf370a9bbb4015194c330e451281e70dbc5661270c8b2ad2989fd3d1fa0a663",
+    "fixtureSHA256": "41a6992d24872bbca5bcfd9930f52ca36deffc36aad84821b4c359e2093ba59d"
+  },
+  "scope": [
+    "Reutiliza R016 Novo109 y R017 Endémico45 ya documentadas.",
+    "Añade R018 baño1/útil23.69/total23.69/terraza0 explícitos sólo planoC2 mostrado por Iris para1103, sin unidad impresa ni equivalencia general con C2(VM).",
+    "Internos se conserva separado. Precio, stock, dormitorios numéricos y uso no se inventan.",
+    "Cuatro fixtures fijados por hash; sólo loopback+optin antes de fetch; rechaza colisiones.",
+    "Verne465/202 queda documental contradictorio, fuera del candidato y sin nuevo cierre residencial."
+  ],
+  "validation": {
+    "NodeR018": {
+      "mainPassed": 28,
+      "mainTotal": 28,
+      "compatibilityPassed": 5,
+      "compatibilityTotal": 5,
+      "overlap": 3,
+      "distinctExecuted": 30,
+      "not33Unique": true,
+      "initialSetupFailureNotFunctionalRed": true
+    },
+    "ChromeR018": {
+      "passed": 9,
+      "total": 9,
+      "scope": "Controles dirigidos; no responsive/cuatro vistas ni pruebas generales."
+    },
+    "prior0c03": {
+      "nodePassed": 15,
+      "chromePassed": 8,
+      "historicalOnlyNotRepeatedOrAdded": true
+    },
+    "independentReview": "APROBADO_CON_OBSERVACIONES",
+    "blockingFindings": 0,
+    "protectedMatching": 155,
+    "originalSourcesMatching": 21,
+    "earlierFixturePinsMatching": 3
+  },
+  "evidenceFolder": "suplemento-documental-r018-20261118",
+  "historicalCut0c03": "suplemento-documental-local-20261118/CANDIDATO-CORTE-0c03.json",
+  "deploymentExclusion": {
+    "sourceBranch": false,
+    "baseBranch": false,
+    "source": "vercel.json git.deploymentEnabled"
+  },
+  "remainingAuthorization": {
+    "firstTechnicalPush": false,
+    "newDraftPR": false,
+    "ready": false,
+    "merge": false,
+    "deployment": false,
+    "publication": false
+  },
+  "production": {
+    "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "deploymentId": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+    "unchangedByCandidate": true
+  },
+  "nextStep": "Solicitar sólo primer push de esta rama exacta y PR Draft si se decide sincronizar el candidato. Continuar investigación documental independiente sin repetir consultas."
+}
