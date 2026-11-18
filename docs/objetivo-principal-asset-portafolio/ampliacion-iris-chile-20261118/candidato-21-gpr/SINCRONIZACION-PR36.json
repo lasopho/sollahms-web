@@ -150,5 +150,67 @@
     "mismatches": 0,
     "codeEdits": 0,
     "testsRerun": 0
+  },
+  "prSnapshotScope": "Initial Draft creation, before the separately authorized Ready transition",
+  "authorizedStateTransitions": [
+    {
+      "recordedAtUTC": "2026-11-18T20:16:30.446Z",
+      "authorization": {
+        "id": "AUTH-READY-PR36-20261118-01",
+        "reply": "Autorizar Ready for Review",
+        "scope": "Only PR36 Draft to Ready for Review",
+        "remainingAuthorization": 0
+      },
+      "operation": "mcp__codex_apps__github_mark_pull_request_ready_for_review",
+      "before": {
+        "state": "open",
+        "draft": true,
+        "merged": false,
+        "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
+        "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
+      },
+      "after": {
+        "url": "https://github.com/lasopho/sollahms-web/pull/36",
+        "state": "open",
+        "draft": false,
+        "merged": false,
+        "mergeable": true,
+        "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
+        "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+        "changedFiles": 59,
+        "updatedAtUTC": "2026-11-18T20:15:04Z"
+      },
+      "github": {
+        "statuses": [],
+        "workflowRuns": [],
+        "reviews": [],
+        "comments": [],
+        "absenceIsNotApproval": true
+      },
+      "productionBefore": {
+        "checkedAtUTC": "2026-11-18T20:14:53.940Z",
+        "id": "dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr",
+        "state": "READY",
+        "sha": "875bd80ddb650b376cb3dd53af4ffae066fcd48f"
+      },
+      "technicalBranchDeploymentCount": 0,
+      "sourceAndBaseAutomaticDeploymentsDisabled": true,
+      "codeEdits": 0,
+      "testsRerun": 0,
+      "mergeExecuted": false,
+      "deploymentActions": 0,
+      "publicationActions": 0
+    }
+  ],
+  "currentPR": {
+    "url": "https://github.com/lasopho/sollahms-web/pull/36",
+    "state": "open",
+    "draft": false,
+    "merged": false,
+    "mergeable": true,
+    "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
+    "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "changedFiles": 59,
+    "updatedAtUTC": "2026-11-18T20:15:04Z"
   }
 }

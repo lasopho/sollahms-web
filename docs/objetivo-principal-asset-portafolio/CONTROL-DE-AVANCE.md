@@ -1,6 +1,6 @@
 # Control del objetivo principal: Asset Portafolio
 
-Último corte operativo: **18/11/2026**. Objetivo global en ejecución, ahora con ampliación local expresamente solicitada: los 131 originales más 21 proyectos nuevos, nueve GPR. Candidato local `6cedd329879be1b716be9854d23e1b5538db2806`, 152 identidades compuestas; [PR #36](https://github.com/lasopho/sollahms-web/pull/36) abierto en Draft con SHA remoto exacto. Producción verificada conserva 131 en `875bd80ddb650b376cb3dd53af4ffae066fcd48f`, deployment `dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr`. El suplemento local `24a11df1a62898a06b408a729bb20ce1b1de4e87` permanece intacto, sin push ni nuevo PR. Los permisos anteriores ejecutados no autorizan otra integración o publicación.
+Último corte operativo: **18/11/2026**. Objetivo global en ejecución, ahora con ampliación local expresamente solicitada: los 131 originales más 21 proyectos nuevos, nueve GPR. Candidato local `6cedd329879be1b716be9854d23e1b5538db2806`, 152 identidades compuestas; [PR #36](https://github.com/lasopho/sollahms-web/pull/36) abierto en Ready for Review, tras autorización independiente, con SHA remoto exacto. Producción verificada conserva 131 en `875bd80ddb650b376cb3dd53af4ffae066fcd48f`, deployment `dpl_3m4WNrEAtGDgLm6nUMrqxkLsyTcr`. El suplemento local `24a11df1a62898a06b408a729bb20ce1b1de4e87` permanece intacto, sin push ni nuevo PR. Los permisos anteriores ejecutados no autorizan otra integración o publicación.
 
 ## Ampliación local de 21 proyectos y GPR
 
@@ -10,7 +10,7 @@ GPR tiene nueve registros nuevos y opción de inmobiliaria: siete casas y dos de
 
 Node: 52 casos distintos aprobados (7 datos + 19 de comportamiento + 26 regresiones afectadas); Chrome: 13 casos comerciales, 20 controles de vistas, 15 de fichas responsive y cuatro flujos dirigidos; HTTP 21/21. Revisión independiente **APROBADO CON OBSERVACIONES**, cero bloqueantes. Los 155 cuerpos protegidos conservaron sus SHA-256 certificados, incluidas 131 fichas originales. Datos publicados, siete funciones y módulos financieros intactos; el cálculo financiero continúa evaluando sólo los 131originales. Fallo de la fuente nueva restaura 131 con aviso persistente accesible.
 
-Las ramas origen/destino excluyen deployments automáticos. Primer push del commit 6cedd32 y PR Draft #36 autorizados expresamente, ejecutados y verificados: 59 archivos remotos coinciden. No se autoriza Ready, merge, deployment o publicación. GitHub no aporta checks/reviews; no se interpretan como aprobación. Ver [sincronización real](ampliacion-iris-chile-20261118/candidato-21-gpr/SINCRONIZACION-PR36.json). El catálogo público sigue en 131. La consolidación de 1.993 punteros y los 313 IDs históricos permanece intacta. La ampliación no resuelve ni sustituye el permiso 24a pendiente.
+Las ramas origen/destino excluyen deployments automáticos. Primer push del commit 6cedd32 y PR Draft #36 autorizados expresamente, ejecutados y verificados: 59 archivos remotos coinciden. Ready for Review fue autorizado y ejecutado el 18/11 a las 20:15:04 UTC, sin cambio de SHA. Merge, deployment y publicación no están autorizados. GitHub no aporta checks/reviews; no se interpretan como aprobación. Ver [sincronización real](ampliacion-iris-chile-20261118/candidato-21-gpr/SINCRONIZACION-PR36.json). El catálogo público sigue en 131. La consolidación de 1.993 punteros y los 313 IDs históricos permanece intacta. La ampliación no resuelve ni sustituye el permiso 24a pendiente.
 
 ## Estado actual de los 131
 
@@ -62,7 +62,7 @@ Las rutas originales de lectura y los hashes permanecen en los artefactos; sus c
 
 ## Intervenciones vigentes
 
-Las dos solicitudes anteriores de [INTERVENCIONES-PROPIETARIO.json](INTERVENCIONES-PROPIETARIO.json), `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` y `OWNER-BATH-IRARR1970-20261118-01`, siguen sin respuesta y no se repreguntan. La solicitud de primer push/PRDraft de la ampliación fue autorizada y ejecutada en PR36. `AUTH-READY-PR36-20261118-01` fue presentada y espera respuesta para cambiar únicamente a Ready for Review; no repetirla. Los pasos siguientes requieren permisos independientes y el estado real está en el mismo registro. Los desconocidos restringen exclusivamente sus predicados y no obligan a reconstruir inventarios completos ni terminaciones.
+Las dos solicitudes anteriores de [INTERVENCIONES-PROPIETARIO.json](INTERVENCIONES-PROPIETARIO.json), `AUTH-PUSH-PR-SUPPLEMENT-20261118-01` y `OWNER-BATH-IRARR1970-20261118-01`, siguen sin respuesta y no se repreguntan. La solicitud de primer push/PRDraft de la ampliación fue autorizada y ejecutada en PR36. `AUTH-READY-PR36-20261118-01` fue autorizada, ejecutada y verificada; PR36 está Ready, sin merge. No repetir esta solicitud ni ampliar su alcance. Los pasos siguientes requieren permisos independientes y el estado real está en el mismo registro. Los desconocidos restringen exclusivamente sus predicados y no obligan a reconstruir inventarios completos ni terminaciones.
 
 ## Descubrimiento inicial conservado: Iris Chile
 

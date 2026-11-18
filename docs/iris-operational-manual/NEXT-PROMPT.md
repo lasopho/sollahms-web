@@ -1,6 +1,6 @@
 # Continuidad operativa Iris
 
-Corte18/11/2026. Seguir [NEXT-PROMPT raíz](../../NEXT-PROMPT.md), [control](../objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md) y [candidato21/GPR](../objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/README.md). Candidato6cedd32 sincronizado en PR36 abierto/Draft, con152identidades preparadas; producción875 conserva131. Primerpush/PRDraft autorizados y verificados; Ready espera autorización independiente ya presentada. Suplemento24a y bañoIrarr1970 mantienen solicitudes previas sin repetirlas.
+Corte18/11/2026. Seguir [NEXT-PROMPT raíz](../../NEXT-PROMPT.md), [control](../objetivo-principal-asset-portafolio/CONTROL-DE-AVANCE.md) y [candidato21/GPR](../objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/README.md). Candidato6cedd32 sincronizado en PR36 abierto/Ready for Review, con152identidades preparadas; producción875 conserva131. Primerpush/PRDraft autorizados y verificados; Ready fue autorizado y ejecutado; merge requiere otro permiso independiente. Suplemento24a y bañoIrarr1970 mantienen solicitudes previas sin repetirlas.
 
 No repetir descubrimiento158fichas ni extracción21filas/modales/medios con las mismas entradas. Reutilizar RAW,DOMlimitados,originales,lecturas deplanos y hashes. Son referencias externas sin stock o precioSoll; útil/total desconocidos. CincoEstudio no son0D, Internos no es útil; final/lista ydesde separados. Preciosowner existentes conservan prioridad sin nueva pregunta.
 

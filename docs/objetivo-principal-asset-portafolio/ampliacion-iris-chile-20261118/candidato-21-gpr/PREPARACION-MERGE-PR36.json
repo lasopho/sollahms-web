@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "READ_ONLY_PREPARATION_FOR_SEPARATE_PR36_MERGE_AUTHORIZATION",
+  "preparedAtUTC": "2026-11-18T20:16:48.310724+00:00",
+  "repository": "lasopho/sollahms-web",
+  "pullRequest": "https://github.com/lasopho/sollahms-web/pull/36",
+  "result": "PREPARED_FOR_OWNER_MERGE_DECISION",
+  "authorization": {
+    "readyForReviewAuthorizedByOwner": true,
+    "readyStateMutationHandledByRoot": true,
+    "readyStateNotQueriedByThisReceipt": true,
+    "mergeAuthorized": false,
+    "mergePerformed": false,
+    "pushOrDeploymentOrPublicationPerformed": false
+  },
+  "mergeProposal": {
+    "method": "merge_commit",
+    "onlyTargetBranch": "codex/footer-sin-frase-20261116",
+    "expectedHeadSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
+    "expectedBaseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "expectedParentsIfAuthorizedAndUnchanged": [
+      "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+      "6cedd329879be1b716be9854d23e1b5538db2806"
+    ],
+    "expectedTreeIfBaseUnchanged": "f2d22640e0876d788789b27f99e3e27587384056",
+    "mainIsNotTarget": true,
+    "requiresIndependentOwnerMergeAuthorization": true,
+    "requiresFreshRemoteHeadAndBaseCheckBeforeExecution": true
+  },
+  "checks": {
+    "headExact": true,
+    "sourceBranchExact": true,
+    "baseCertificatesExact": true,
+    "headDirectParentBase": true,
+    "mergeBaseExact": true,
+    "candidateTreeClean": true,
+    "committedDeltaExactly59": true,
+    "protected155GitIdentitiesPreserved": true,
+    "noProtectedPathInDelta": true,
+    "sourceDeploymentExcluded": true,
+    "destinationDeploymentExcludedInHeadAndBase": true,
+    "vercelOnlyAddsSourceBranchFalse": true,
+    "supplement24aExactAndClean": true,
+    "supplement24aNotIncludedInHead": true,
+    "supplementAndExpansionCommonBase875": true
+  },
+  "candidateDelta": {
+    "count": 59,
+    "manifestPathsExactlyMatch": true,
+    "protectedPathsChanged": []
+  },
+  "protectedVerification": {
+    "count": 155,
+    "method": "Compare certified Git blob IDs and modes in immutable base875 and exact head6ced; bodies were not rehashed.",
+    "mismatches": []
+  },
+  "deploymentExclusion": {
+    "sourceBranch": "codex/ampliacion-21-proyectos-gpr-20261118",
+    "sourceFlag": false,
+    "targetBranch": "codex/footer-sin-frase-20261116",
+    "targetFlagInHead": false,
+    "targetFlagInBase": false,
+    "onlyVercelChangeNewSourceFalse": true,
+    "noDeploymentCreatedByThisPreparation": true
+  },
+  "supplement24a": {
+    "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+    "head": "24a11df1a62898a06b408a729bb20ce1b1de4e87",
+    "branch": "codex/suplemento-documental-131-20261117",
+    "clean": true,
+    "ancestorOfExpansion": false,
+    "commonBase": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "scope": "Separate candidate and authorization; this merge proposal does not include its 19 references."
+  },
+  "reusedCertificates": [
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/qa/MANIFIESTO-59-ARCHIVOS.json",
+      "sha256": "aac3b3c1141efa2ac843a22628e41ce8f939cb3e98e92b163c7a29250112ab1d"
+    },
+    {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/ampliacion-iris-chile-20261118/candidato-21-gpr/qa/PRESERVACION-155-Y-131.json",
+      "sha256": "ba3cacf241925706e487f85ad77f5664ea19564a6d57913870e232c5d3d7a84c"
+    }
+  ],
+  "previousBodyHashVerificationReused": {
+    "candidateHashes": 59,
+    "protectedBodies": 155,
+    "newBodyHashRuns": 0
+  },
+  "operations": {
+    "applicationTestsRun": 0,
+    "technicalFilesEdited": 0,
+    "networkOrAPIRequests": 0,
+    "gitMutations": 0,
+    "mergeOrApplyOrPush": 0,
+    "documentationSynchronization": 0,
+    "onlyFileWritten": "/private/tmp/sollahms-ampliacion-21-pr36/PREPARACION-MERGE-PR36.json"
+  },
+  "limits": "This receipt uses local immutable objects and existing certificates. Root separately checks GitHub state, fresh remotes, production and workflow scope; no merge or publication is authorized by this document."
+}

@@ -1,6 +1,6 @@
 {
   "recordedAtUTC": "2026-11-18T19:43:00.414084+00:00",
-  "status": "PR_DRAFT_CREADO_VERIFICADO",
+  "status": "PR_READY_FOR_REVIEW_VERIFICADO_SIN_MERGE",
   "repository": "lasopho/sollahms-web",
   "branch": "codex/ampliacion-21-proyectos-gpr-20261118",
   "checkout": "/private/tmp/sollahms-ampliacion-21-gpr-20261118",
@@ -41,12 +41,11 @@
   "firstTechnicalPush": true,
   "remoteHeadSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
   "pullRequest": "https://github.com/lasopho/sollahms-web/pull/36",
-  "draft": true,
+  "draft": false,
   "deploymentsCreated": 0,
   "published": false,
   "automaticDeploymentsDisabledInSourceAndBase": true,
   "notAuthorized": [
-    "Ready",
     "merge",
     "deployment",
     "promotion",
@@ -73,12 +72,32 @@
   "actualPRFilenamesMatched": 59,
   "authorizationApplied": "AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01",
   "synchronizationEvidence": "ampliacion-iris-chile-20261118/candidato-21-gpr/SINCRONIZACION-PR36.json",
-  "readyRequiresIndependentPermission": true,
+  "readyRequiresIndependentPermission": false,
+  "stateRecordedAtUTC": "2026-11-18T20:17:43.382578+00:00",
+  "readyAuthorizedAndExecuted": true,
+  "readyAuthorizationConsumed": true,
+  "readyAtUTC": "2026-11-18T20:15:04Z",
+  "authorizationsApplied": [
+    "AUTH-PUSH-PR-EXPANSION-21-GPR-20261118-01",
+    "AUTH-READY-PR36-20261118-01"
+  ],
+  "nextStep": "Prepare a concrete merge authorization; do not merge without independent permission.",
+  "mergePreparation": {
+    "path": "ampliacion-iris-chile-20261118/candidato-21-gpr/PREPARACION-MERGE-PR36.json",
+    "sha256": "002099fc5d4e93889cc335088804b43288735bbe5c158a6b1ae65f877add0020",
+    "status": "PREPARADO_SIN_AUTORIZACION",
+    "method": "merge_commit",
+    "headSHA": "6cedd329879be1b716be9854d23e1b5538db2806",
+    "baseSHA": "875bd80ddb650b376cb3dd53af4ffae066fcd48f",
+    "expectedTree": "f2d22640e0876d788789b27f99e3e27587384056",
+    "scope": "Only PR36 into codex/footer-sin-frase-20261116",
+    "protected155GitIdentitiesPreserved": true,
+    "noTestsRerun": true
+  },
   "nextAuthorization": {
-    "id": "AUTH-READY-PR36-20261118-01",
-    "status": "PENDIENTE_RESPUESTA",
-    "step": "Ready for Review only",
-    "questionAlreadyPresented": true,
-    "doNotRepeatQuestion": true
+    "id": "AUTH-MERGE-PR36-20261118-01",
+    "status": "PREPARADA_PENDIENTE_PRESENTAR",
+    "step": "Merge commit of PR36 into the exact target base",
+    "questionAlreadyPresented": false
   }
 }
