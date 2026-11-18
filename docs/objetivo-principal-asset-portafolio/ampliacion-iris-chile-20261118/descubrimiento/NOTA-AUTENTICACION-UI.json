@@ -1,0 +1,11 @@
+{
+  "recordedAtUTC": "2026-11-18T13:45:42.173117+00:00",
+  "kind": "ACLARACION_DE_ALCANCE_UI_NO_ESTADO_DE_SESION",
+  "sourceReceipt": "RECIBO-NAVEGACION.json",
+  "sourceReceiptSHA256": "b573bf726403c914c23d26f1e26e1f48a7cd4209aa8621cbcb6026b5abf62264",
+  "initialRecordBooleanMeaning": "Los auth_ui:true iniciales reflejaron presencia del control .user-name, no una comprobación estricta de visibilidad y texto. No acreditan sesión autenticada.",
+  "finalStrictCheck": "La comprobación final exigió control renderizado con texto no vacío y no confirmó el indicador. No se afirma cierre de sesión ni falta de permisos.",
+  "outcome": "158 fichas reales válidas; ningún mensaje final de ausencia o login solicitado; no se emitieron exclusiones por ficha vacía. No se requirió intervención para acceso.",
+  "futureRule": "Si una pantalla vacía requiere verificar autenticación y no se puede confirmar, conservar como no verificable de acceso, no EXCLUIDO_IRIS_SIN_FICHA. Si se solicita login, acceso personal del propietario en Chrome visible, sin leer credenciales.",
+  "originalValidationAndReceiptUnmodified": true
+}

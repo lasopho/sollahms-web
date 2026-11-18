@@ -105,3 +105,7 @@ Los rasgos comunes del proyecto se distinguen de jardín/terraza privados de una
 ## Resultados asíncronos y reemplazos —17/11/2026
 
 Un0 inicial enAX puede cambiar a1 enDOM tras cargar, como ocurrió en Endémico sin una segunda búsqueda. Esperar el estado de carga y contrastar la misma consulta en una lectura fresca; no repetir el término por un cero transitorio. Conservar fecha y límites de la observación; un0 capturado no certifica ausencia estable, retirada o stock. Si el modal abre automáticamente TourVirtual/about:blank, no interactuar con recorridos; pasar directamente a Plano y conservar el límite. Unidad sin plano cargado/Disponible próximamente es un reemplazo: no exportarlo ni usarlo como modelo o cuadro de superficies.
+
+## Descubrimiento de candidatos —18/11/2026
+
+Aplicar [VALIDACION-DE-EXISTENCIA.md](VALIDACION-DE-EXISTENCIA.md) antes de la comparación. No repetir el inventario158/158ni las fichas válidas sin nueva condición. Para datos mínimos de un candidato nuevo, comprobar título/URL del bloque actual, acotar selectores al contenedor principal y verificar visibilidad; nunca recopilar tarjetas relacionadas por una consulta global. Separar listado, cabecera y alcance de cada campo. La propuesta12+9del18/11 sigue documental; no autoriza nuevas fichas o catálogo.

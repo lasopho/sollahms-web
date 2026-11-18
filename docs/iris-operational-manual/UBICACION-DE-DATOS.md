@@ -61,3 +61,9 @@ El texto accesible puede juntar Unidad235 mientras que el DOM contiene Unidad y2
 ## Plano explícito en modal: Plaza Las Condes213 —17/11/2026
 
 En Iris269, abrir la fila213 y comprobar proyecto/dirección, Unidad213, piso2 y MODELO C7. La tabla y el modal dicen Internos; ese rótulo solo no acredita útil. La imagen del mismo modal sí imprime DEPARTAMENTO TIPO C7,213|2D+2B y tres métricas independientes: SUP. ÚTIL69,85, SUP. TERRAZA13,97 y SUP. TOTAL83,82m². Conservar cada fuente y su rótulo sin convertir conceptos ni calcular sumas. Publicado el17/11/2026 se refiere a la ficha; no fecha el plano. El precio owner se conserva con su fuente/fecha28/10.
+
+## Cabeceras de descubrimiento Chile —18/11/2026
+
+La identidad se comprobó en `h1.title`, `.property-address` y `.property-hood` de la ficha real. Un prefijo explícito de inmobiliaria en el título es atribución publicada, no confirmación societaria. No inventar la inmobiliaria si no aparece:1297/1299conservan esa limitación.
+
+Precio, resumen de dormitorios y rango general se leyeron dentro de `.detail-container .detail-content` mediante `.property-price`, `.property-bedroom span` y `.property-meters span`. No son un modelo ni una correspondencia precio–área; baños no se consultaron en unidades. La secciónAmenities se limitó al contenedor principal y etiquetas renderizadas dentro de sus límites, sin expandir filas recortadas. Los rótulos generales no prueban inclusión o disponibilidad de estacionamiento/bodega. Entrega procede del enlace propio del listado: las etiquetas `.tag-hand-over` globales de la ficha pertenecían a relacionados en los22casos comprobados.

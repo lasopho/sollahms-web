@@ -60,3 +60,5 @@ Fuente y punto activo: [registro nuevo de Iris](../objetivo-principal-asset-port
 ## Descubrimiento Chile — 18/11/2026
 
 En la sesión de exploración se seleccionó también **Usado** desde el filtro Estado. Con `country=7` y estados1/2/3/4 el catálogo mostró **158 de158 oportunidades** tras Cargar más, con158IDs/URLs únicos. El contador del listado no equivale a fichas válidas ni candidatos nuevos. Abrir y comprobar cada ficha según [validación de existencia](VALIDACION-DE-EXISTENCIA.md). Registrar sólo campos permitidos del proyecto, sin leer texto completo de tarjetas que concatene comisiones o intermediarios. La comparación con Sollahms y la validación individual son ejes separados.
+
+La validación final del18/11 comprobó158fichas reales, sin exclusiones ni errores finales. Para cabeceras mínimas, delimitar `.detail-container .detail-content`. Un selector global puede incluir recomendaciones: `.tag-hand-over` no estaba dentro del bloque principal en22/22casos; su entrega válida procede del enlace propio del listado, no de esas tarjetas relacionadas.

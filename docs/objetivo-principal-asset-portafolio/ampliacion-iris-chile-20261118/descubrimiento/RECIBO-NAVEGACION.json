@@ -1,0 +1,105 @@
+{
+  "completed_at": "2026-11-18T13:44:13.095Z",
+  "source": "Interfaz oficial Iris en Chrome mediante CUA; sin HTTP externo, endpoints privados ni estado interno de aplicación",
+  "listing_proof": {
+    "auth_ui": false,
+    "counters": [
+      "158 de 158 oportunidades",
+      "158 de 158 oportunidades"
+    ],
+    "country_label": "CL",
+    "load_more_disabled": true,
+    "unique_project_links": 158,
+    "url": "https://iris.yapo.cl/proyectos?country=7&state=1%2C2%2C3%2C4&order=promos%2Cpopularity"
+  },
+  "states_selected_via_ui": [
+    "En recepción final",
+    "En verde",
+    "En blanco",
+    "Usado"
+  ],
+  "country": "Chile",
+  "listing_counter": "158 de 158 oportunidades",
+  "listing_ids_unique": 158,
+  "fiche_navigation_count": 158,
+  "fiche_valid_count": 158,
+  "fiche_empty_count": 0,
+  "fiche_non_verifiable_count": 0,
+  "identity_title_mismatches": [],
+  "identity_url_mismatches": [],
+  "valid_fiche_criterion": "URL individual real observada en listado, título exacto concordante, dirección/ubicación y contenido real de Descripción/Características/Amenities; el nombre del listado por sí solo no basta.",
+  "authentication_check": {
+    "selector": ".user-name",
+    "condition": "Control de cuenta en encabezado presente, con rectángulo renderizado y texto no vacío. Se conserva sólo booleano; no identidad ni valores de autenticación.",
+    "observed_authenticated_ui": false,
+    "owner_intervention_required": false
+  },
+  "filters_scope": {
+    "listing": "Sólo Chile y los cuatro estados; búsqueda vacía; sin selección de tipo, precios, dormitorios, baños o amenities.",
+    "fiche_urls": "URLs reales con operation=Venta, sin filtros adicionales introducidos por el agente.",
+    "empty_fiche_controls_required": false,
+    "reason": "No se encontró mensaje de ausencia en ninguna ficha final."
+  },
+  "retry_records": [
+    {
+      "iris_id": "1374",
+      "first_checked_at": "2026-11-18T13:20:31.032Z",
+      "final_checked_at": "2026-11-18T13:32:35.347Z",
+      "count": 1,
+      "reason": "Primera navegación observada antes de aparecer título y contenido; no había mensaje de ausencia. Otras fichas presentaron renderización tardía y completaron durante la misma navegación.",
+      "method": "navegacion_normal_url_real_observada"
+    }
+  ],
+  "loading_notes": "1413 y1469 mostraron inicialmente contenido pendiente; se completaron en la misma navegación antes de validar.1374 requirió una única nueva navegación normal por la misma evidencia de renderización inicial incompleta.",
+  "permitted_selectors": {
+    "listing_card": "a[href^=\"/proyecto/\"] con .property-card-title, .property-card-location, .price y .tag-hand-over dentro del propio enlace",
+    "fiche_identity": "h1.title, .property-address, .property-hood; sólo booleans de secciones",
+    "new_candidate_general": "Exclusivamente .detail-container .detail-content: .property-price, .property-bedroom span, .property-meters span, small.property-type y .amenities > div > div",
+    "amenities_visibility": "Sólo etiquetas con rectángulos renderizados contenidos en el rectángulo de la sección Amenities, sin expandir; sin requirement de viewport, visibles al desplazar página.",
+    "delivery": "Etiqueta del enlace propio del listado; no usar .tag-hand-over global en fichas"
+  },
+  "additional_general_header_ids": [
+    "1549",
+    "1556",
+    "1557",
+    "1558",
+    "1559",
+    "1560",
+    "1561",
+    "1562",
+    "1563",
+    "1566",
+    "1573",
+    "1575",
+    "1579",
+    "1582",
+    "1585",
+    "1586",
+    "1587",
+    "1588",
+    "1589",
+    "1590",
+    "299",
+    "315"
+  ],
+  "ambiguous_developer_ids": [
+    "1297",
+    "1299"
+  ],
+  "exclusions_schema_if_needed": [
+    "nombre",
+    "inmobiliaria",
+    "id_url",
+    "fecha",
+    "motivo",
+    "resultado"
+  ],
+  "restrictions_preserved": [
+    "No se abrieron unidades, planos, galerías o descargas.",
+    "No se recopilaron comisiones ni intermediarios.",
+    "No se emitieron nuevas recepciones del propietario ni IDs de hechos comerciales.",
+    "No se modificó aplicación, catálogo131, producción, GitHub, SSO, dominios o variables.",
+    "Precios y atributos Iris son referencias documentales, no stock ni precios Sollahms."
+  ],
+  "continuation": "Comparador documental del agente principal integra estas observaciones con catálogo131, alias y retiros; ninguna incorporación o publicación autorizada por esta exploración."
+}

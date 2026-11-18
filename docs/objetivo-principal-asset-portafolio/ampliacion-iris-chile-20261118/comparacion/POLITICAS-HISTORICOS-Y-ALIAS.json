@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-18T13:26:20.585710+00:00",
+  "kind": "POLITICA_LOCAL_DE_COMPARACION_HISTORICOS_Y_ALIAS_EXISTENTES_NO_DATOS_COMERCIALES_NUEVOS",
+  "scope": "Ayuda documental al comparador Iris Chile. No autoriza altas, retiros, interpretación de stock ni adopción de atributos comerciales. Sin navegación, cambios de catálogo ni verificación HTTP nueva.",
+  "universes": {
+    "current": 131,
+    "historicalDocumentary": 137,
+    "historicalMatrix": 131,
+    "source": {
+      "path": "docs/objetivo-principal-asset-portafolio/INVENTARIO-DE-FUENTES.json",
+      "sha256": "685901b43fcc05efb0ddb09d5ee7d26d1a8df103f44e09f510ebe98281d05e59",
+      "pointers": [
+        "/universos/historico",
+        "/universos/documental_137"
+      ]
+    },
+    "sixExtraRelativeToCurrent131": [
+      "atelier-prat-oficinas",
+      "box-santiago",
+      "corrientes-oficinas",
+      "la-casona-de-buin",
+      "patio-brasil",
+      "urbano-centro"
+    ],
+    "sixAddedRelativeToHistorical131": [
+      "atelier-prat-oficinas",
+      "box-santiago",
+      "corrientes-oficinas",
+      "la-casona-de-buin",
+      "urbano-centro",
+      "vergara-domeyko"
+    ],
+    "importantDistinction": "Vergara Domeyko pertenece al universo actual de 131 y no es uno de los seis registros exclusivos del catálogo histórico de 137 frente al actual. Patio Brasil pertenece a la matriz histórica de 131 y al catálogo histórico de 137; su retiro del catálogo público tiene evidencia independiente."
+  },
+  "historicalOutsideCurrentRecords": [
+    {
+      "slug": "atelier-prat-oficinas",
+      "name": "Edificio Atelier Prat Oficinas",
+      "developer": "Norte Verde",
+      "historicalSource": {
+        "source": "data/proyectos.json (rama documental histórica137)",
+        "localPath": "/private/tmp/sollahms-auditoria-leben-20261116/data/proyectos.json",
+        "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494",
+        "pointer": "/131"
+      },
+      "currentStatus": "FUERA_DEL_UNIVERSO_131",
+      "doNotInferSold": true,
+      "doNotReintroduceFromPortalAlone": true,
+      "separateExplicitRemovalEvidence": {
+        "source": "docs/objetivo-principal-asset-portafolio/fuentes-existentes-recuperadas-20261118/docs/norte-verde-18-20261026/decision-register.json",
+        "sha256": "adf0f8fe267c29aa6bc07b3e4a7ecf9345d1f23a2bb45edd9a2bc5814d269478",
+        "pointer": "/retired/0",
+        "httpStatusPointer": "/retiredHttpStatus",
+        "httpStatus": 404,
+        "policy": "Retiro público explícito previo de Norte Verde, registrado en el expediente de 2026-10-26; no inferido de la ausencia en el universo actual. No demuestra venta ni estado comercial actual fuera de Sollahms."
+      }
+    },
+    {
+      "slug": "box-santiago",
+      "name": "BOX Santiago",
+      "developer": "León",
+      "historicalSource": {
+        "source": "data/proyectos.json (rama documental histórica137)",
+        "localPath": "/private/tmp/sollahms-auditoria-leben-20261116/data/proyectos.json",
+        "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494",
+        "pointer": "/133"
+      },
+      "currentStatus": "FUERA_DEL_UNIVERSO_131",
+      "doNotInferSold": true,
+      "doNotReintroduceFromPortalAlone": true,
+      "retirementOrStockState": "NO_DEDUCIDO_DE_AUSENCIA_EN_131"
+    },
+    {
+      "slug": "corrientes-oficinas",
+      "name": "Edificio Corrientes Oficinas",
+      "developer": "Norte Verde",
+      "historicalSource": {
+        "source": "data/proyectos.json (rama documental histórica137)",
+        "localPath": "/private/tmp/sollahms-auditoria-leben-20261116/data/proyectos.json",
+        "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494",
+        "pointer": "/132"
+      },
+      "currentStatus": "FUERA_DEL_UNIVERSO_131",
+      "doNotInferSold": true,
+      "doNotReintroduceFromPortalAlone": true,
+      "separateExplicitRemovalEvidence": {
+        "source": "docs/objetivo-principal-asset-portafolio/fuentes-existentes-recuperadas-20261118/docs/norte-verde-18-20261026/decision-register.json",
+        "sha256": "adf0f8fe267c29aa6bc07b3e4a7ecf9345d1f23a2bb45edd9a2bc5814d269478",
+        "pointer": "/retired/1",
+        "httpStatusPointer": "/retiredHttpStatus",
+        "httpStatus": 404,
+        "policy": "Retiro público explícito previo de Norte Verde, registrado en el expediente de 2026-10-26; no inferido de la ausencia en el universo actual. No demuestra venta ni estado comercial actual fuera de Sollahms."
+      }
+    },
+    {
+      "slug": "la-casona-de-buin",
+      "name": "La Casona de Buin",
+      "developer": "León",
+      "historicalSource": {
+        "source": "data/proyectos.json (rama documental histórica137)",
+        "localPath": "/private/tmp/sollahms-auditoria-leben-20261116/data/proyectos.json",
+        "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494",
+        "pointer": "/116"
+      },
+      "currentStatus": "FUERA_DEL_UNIVERSO_131",
+      "doNotInferSold": true,
+      "doNotReintroduceFromPortalAlone": true,
+      "retirementOrStockState": "NO_DEDUCIDO_DE_AUSENCIA_EN_131"
+    },
+    {
+      "slug": "patio-brasil",
+      "name": "Patio Brasil",
+      "developer": "Sudamericana",
+      "historicalSource": {
+        "source": "data/proyectos.json (rama documental histórica137)",
+        "localPath": "/private/tmp/sollahms-auditoria-leben-20261116/data/proyectos.json",
+        "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494",
+        "pointer": "/130"
+      },
+      "currentStatus": "FUERA_DEL_UNIVERSO_131",
+      "doNotInferSold": true,
+      "doNotReintroduceFromPortalAlone": true,
+      "separateExplicitRemovalEvidence": {
+        "source": "AGENTS.md",
+        "localPath": "/private/tmp/sollahms-referencias-documentales-131-20261117/AGENTS.md",
+        "sha256": "4aa1fae6ab5e93f0ac3b8c79c26ac6920469220723b474f97e939015a1d0e2b8",
+        "heading": "Patio Brasil public retirement (2026-10-28)",
+        "line": 64,
+        "policy": "Retiro expreso del propietario. Conservar HTTP 410 en las rutas y variantes documentadas. No restaurar fila, tarjeta, pin del mapa, contexto de formularios, sitemap ni ficha desde los archivos históricos. Retiro público no equivale a stock vendido."
+      }
+    },
+    {
+      "slug": "urbano-centro",
+      "name": "Urbano Centro",
+      "developer": "León",
+      "historicalSource": {
+        "source": "data/proyectos.json (rama documental histórica137)",
+        "localPath": "/private/tmp/sollahms-auditoria-leben-20261116/data/proyectos.json",
+        "sha256": "8003ef42bd0abca996595b5cb937087dae3639d01d001723dfc69c42b0c19494",
+        "pointer": "/117"
+      },
+      "currentStatus": "FUERA_DEL_UNIVERSO_131",
+      "doNotInferSold": true,
+      "doNotReintroduceFromPortalAlone": true,
+      "retirementOrStockState": "NO_DEDUCIDO_DE_AUSENCIA_EN_131"
+    }
+  ],
+  "stageNameVariants": [
+    {
+      "observedNameVariant": "Alto San Joaquín 2",
+      "stageSlug": "alto-san-joaquin-2",
+      "canonicalExisting131Slug": "alto-san-joaquin",
+      "source": "data/proyectos.json (catálogo productivo131)",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "pointer": "/113/etapasComerciales/1",
+      "stageLiteral": 2,
+      "stageIdentityDeclaredInExistingRecord": true,
+      "stageRecordStatus": "stage_documentation_pending",
+      "referenceStageOfParent": "alto-san-joaquin",
+      "policy": "El registro existente identifica una etapa de un proyecto actual; no crear automáticamente otra ficha. Conservar la etapa en cada referencia. No trasladar planos, amenities, medidas, precios ni stock desde la etapa de referencia u otra etapa. stage_documentation_pending no elimina la identidad registrada ni confirma atributos faltantes.",
+      "localPath": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/proyectos.json"
+    },
+    {
+      "observedNameVariant": "Núcleo Costanera 2",
+      "stageSlug": "nucleo-costanera-2",
+      "canonicalExisting131Slug": "nucleo-costanera",
+      "source": "data/proyectos.json (catálogo productivo131)",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "pointer": "/6/etapasComerciales/1",
+      "stageLiteral": 2,
+      "stageIdentityDeclaredInExistingRecord": true,
+      "stageRecordStatus": "stage_documentation_pending",
+      "referenceStageOfParent": "nucleo-costanera",
+      "policy": "El registro existente identifica una etapa de un proyecto actual; no crear automáticamente otra ficha. Conservar la etapa en cada referencia. No trasladar planos, amenities, medidas, precios ni stock desde la etapa de referencia u otra etapa. stage_documentation_pending no elimina la identidad registrada ni confirma atributos faltantes.",
+      "localPath": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/proyectos.json"
+    },
+    {
+      "observedNameVariant": "Terratoltén 2",
+      "stageSlug": "terratolten-2",
+      "canonicalExisting131Slug": "terratolten",
+      "source": "data/proyectos.json (catálogo productivo131)",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "pointer": "/79/etapasComerciales/1",
+      "stageLiteral": 2,
+      "stageIdentityDeclaredInExistingRecord": true,
+      "stageRecordStatus": "stage_documentation_pending",
+      "referenceStageOfParent": "terratolten-3",
+      "policy": "El registro existente identifica una etapa de un proyecto actual; no crear automáticamente otra ficha. Conservar la etapa en cada referencia. No trasladar planos, amenities, medidas, precios ni stock desde la etapa de referencia u otra etapa. stage_documentation_pending no elimina la identidad registrada ni confirma atributos faltantes.",
+      "localPath": "/private/tmp/sollahms-referencias-documentales-131-20261117/data/proyectos.json",
+      "literalLegacyProjectMatrixSlug": "terratolten-1",
+      "legacySlugScope": "Valor literal del campo proyectoMatrizSlug en la etapa. No reemplaza el slug superior actual terratolten ni acredita equivalencias con otras etapas."
+    }
+  ],
+  "MiradorMapochoB": {
+    "observedNameVariant": "Mirador Mapocho B",
+    "canonicalExisting131Slug": "mirador-mapocho",
+    "canonicalIdentity": {
+      "source": "data/proyectos.json (catálogo131)",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "pointer": "/112"
+    },
+    "evidence": {
+      "source": "docs/objetivo-principal-asset-portafolio/fuentes-existentes-recuperadas-20261118/docs/maestra-brochures-20261025/manifest.json",
+      "sha256": "31a460df5cf9cf336ae54590b7e523cd6eecc839ac17566c11ebd2524781508a",
+      "pointers": [
+        "/documents/6/file_name",
+        "/documents/6/sha256",
+        "/documents/7/file_name",
+        "/documents/7/sha256",
+        "/projects/mirador-mapocho"
+      ],
+      "originalDocumentSHA256": "b7036904e8b3854b17379c1b5d9b57035fa31274980ed95da1270d409bcc60f5",
+      "sameBytesForNamedOriginalAndB": true,
+      "policySource": {
+        "path": "docs/objetivo-principal-asset-portafolio/fuentes-existentes-recuperadas-20261118/docs/maestra-brochures-20261025/README.md",
+        "sha256": "622a98276b0411cc20ec93c7dda4f38f0fa659aed9c5c536c9bcf3ea6ae5cfd4",
+        "section": "Duplicados exactos",
+        "paragraphMeaning": "Los originales Mirador Mapocho y Mirador Mapocho B son idénticos y describen el conjunto A/B. No asignan modelos de departamentos a una torre concreta."
+      }
+    },
+    "classification": "VARIANTE_DOCUMENTAL_DEL_CONJUNTO_EXISTENTE_NO_ETAPA_COMERCIAL_B_ACREDITADA",
+    "matchedCommercialStage": null,
+    "policy": "La ausencia de un slug o ficha B no basta para declarar un proyecto nuevo. Para comparar con Iris se debe verificar la identidad Maestra, el conjunto y la ubicación. Conservar B como contexto documental, sin inferir una equivalencia de unidad, plano o precio. No trasladar hechos entre torres ni deducir estado comercial de las letras."
+  },
+  "PatioBrasilPreservationCurrentCut": {
+    "source": "docs/objetivo-principal-asset-portafolio/ESTADO-PUBLICACION.json",
+    "sha256": "d7e63f63906215223a047f8002d8e929372b8688f71ec6441c893fafbdfaa5b2",
+    "pointers": [
+      "/correctedLocalRelease/publicPackage/configAndPatio410Unchanged",
+      "/correctedLocalRelease/deployment/preservation/configurationAndPatio410"
+    ],
+    "meaning": "El expediente del paquete de publicación 875bd80 registra la preservación de configuración y HTTP 410 de Patio Brasil. Este memo no repite la comprobación HTTP."
+  },
+  "rules": [
+    "La ausencia de un slug o ficha en el universo de 131 no demuestra que el proyecto sea nuevo, vendido, retirado o inexistente.",
+    "Un registro de Iris ajeno al universo se conserva para comparación, sin incorporarlo automáticamente al catálogo.",
+    "Un retiro público de Sollahms requiere evidencia expresa de autorización y configuración o expediente de publicación. No equivale a AGOTADO ni a stock de un portal.",
+    "Los alias y las etapas documentadas ayudan a reconocer el contexto. No autorizan mezclar unidades, torres, etapas, modelos, superficies ni precios."
+  ],
+  "operations": {
+    "networkRequests": 0,
+    "GitOperations": 0,
+    "appOrUIActions": 0,
+    "AOrT2Edits": 0,
+    "newCommercialFactsOrIDs": 0,
+    "newOwnerQuestions": 0,
+    "commercialFieldsChanged": 0
+  }
+}

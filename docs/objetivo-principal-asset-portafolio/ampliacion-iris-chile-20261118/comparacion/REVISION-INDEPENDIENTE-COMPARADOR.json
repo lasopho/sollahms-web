@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-18T13:49:12.943849+00:00",
+  "reviewType": "REVISION_INDEPENDIENTE_ESTATICA_Y_DOCUMENTAL_DEL_COMPARADOR",
+  "dictamen": "APROBADO_CON_OBSERVACIONES",
+  "blockingFindings": 0,
+  "scope": "Lectura de la lógica del comparador, de sus salidas finales y de las entradas preservadas necesarias para comprobar los casos señalados. No se ejecutó el comparador, la aplicación, pruebas ni generadores. No se repitió la auditoría de los 131 proyectos.",
+  "artifactsPinned": [
+    {
+      "path": "/private/tmp/sollahms-comparacion-iris-chile-20261118/comparar-iris-chile.py",
+      "sha256": "86be0ac2640295669a6827f5380ad9b2a85c683e25fbca51518f8c1e4d4046ad",
+      "bytes": 26489
+    },
+    {
+      "path": "/private/tmp/sollahms-comparacion-iris-chile-20261118/COMPARACION-IRIS-CHILE.json",
+      "sha256": "bcdd339186b91d36f7fb6142475e022914df8ed929e077845782e8cede8adc1f",
+      "bytes": 367369
+    },
+    {
+      "path": "/private/tmp/sollahms-comparacion-iris-chile-20261118/REVISIONES-MINIMAS-PARA-FICHAS.json",
+      "sha256": "1e51c55965b20e15e02d883f012d45f245ef165790b5e1f79cf8a2399ecf05ec",
+      "bytes": 4381
+    }
+  ],
+  "checks": [
+    {
+      "criterion": "Ejes de comparación y validación de ficha separados",
+      "result": "CUMPLE",
+      "scriptLines": [
+        115,
+        132,
+        218,
+        222,
+        256,
+        257
+      ],
+      "evidence": "La correspondencia existente puede conservarse como identidad documental mientras ficheValidation registra por separado el estado de ficha. Los candidatos nuevos requieren usable, identidad mínima y corte de validación completo."
+    },
+    {
+      "criterion": "Atribución del encabezado oficial sin certificar sociedad",
+      "result": "CUMPLE",
+      "scriptLines": [
+        124,
+        132,
+        221
+      ],
+      "evidence": "El prefijo se identifica como official_heading_prefix y cada registro mantiene corporateIdentityNotCertified:true. No se equipara automáticamente una marca con una razón social."
+    },
+    {
+      "criterion": "Prioridad de ID, nombre exacto y etapa documentada sobre dirección",
+      "result": "CUMPLE",
+      "scriptLines": [
+        134,
+        160
+      ],
+      "evidence": "El fallback de dirección sólo se considera cuando no hubo correspondencia por ID, identidad exacta o alias documentado. No usa similitud para confirmar identidad; exige nombre normalizado idéntico o sólo la adición del número de la propia dirección a un nombre sin números, además de dirección, desarrollador y comuna."
+    },
+    {
+      "criterion": "Conservar discriminadores de torre, orientación, etapa y numeración",
+      "result": "CUMPLE",
+      "scriptLines": [
+        148,
+        160,
+        199,
+        204
+      ],
+      "evidence": "A/B, Norte/Sur e II/III diferentes no pasan la igualdad normalizada. Centenario 2.0 ID1587 conserva una sugerencia hacia centenario-1 sin convertirse en identidad ni nuevo automático."
+    },
+    {
+      "criterion": "Mirador Mapocho B conserva alcance del conjunto documental",
+      "result": "CUMPLE",
+      "scriptLines": [
+        89,
+        95,
+        139,
+        141
+      ],
+      "recordId": "1413",
+      "evidence": "El alias apunta al conjunto mirador-mapocho. scopeLimits conserva PDF idéntico y la prohibición de asignar modelos a torre o unir ofertas de IDs1353/1413. No crea una etapa comercial B acreditada."
+    },
+    {
+      "criterion": "Históricos y retiros expresos no equivalen a vendido",
+      "result": "CUMPLE",
+      "scriptLines": [
+        96,
+        98,
+        161,
+        174,
+        195,
+        200
+      ],
+      "evidence": "Los seis registros históricos fuera del universo actual no se retiran por omisión. Patio Brasil conserva el retiro expreso y la política410; Atelier/Corrientes dependen del registro previo de retirada. Vespucio y Serrano Capital llevan retiro del alcance Sollahms, con explicación expresa de que no acredita agotado, terminado ni descontinuado."
+    },
+    {
+      "criterion": "Alta nueva condicionada a ficha válida, identidad suficiente y ausencia de ambigüedad conocida",
+      "result": "CUMPLE_EN_EL_CORTE_REVISADO",
+      "scriptLines": [
+        130,
+        132,
+        199,
+        206,
+        232,
+        243
+      ],
+      "evidence": "Los 21 registros con newCandidateEligible:true tienen ficha utilizable, corte completo, identidad mínima y ningún slug existente, histórico o sugerencia de dirección. Una dirección compartida entre candidatos reclasifica a posible duplicado y actualiza certeza y acción."
+    },
+    {
+      "criterion": "Sin uniones comerciales por precios, stock, superficies ni general_header",
+      "result": "CUMPLE",
+      "scriptLines": [
+        81,
+        87,
+        207,
+        223
+      ],
+      "evidence": "La lógica de identidad utiliza nombres, ID, desarrollador, comuna, dirección y alias acotados. Cada fila conserva commercialAdoptionAuthorized:false, stockCertified:false, ownerPricesChanged:false y generalHeaderNotUsedForCommercialJoins:true. No convierte la cabecera general en una referencia comercial."
+    },
+    {
+      "criterion": "Salidas finales y entradas preservadas coherentes",
+      "result": "CUMPLE",
+      "evidence": "Se comprobaron SHA y tamaños de tres artefactos finales y dos entradas preservadas, unicidad de los 158 IDs, conteos por categoría, cuatro revisiones mínimas y condiciones de los candidatos nuevos. No se volvieron a recorrer los 131 proyectos fuente ni los 516 punteros completos."
+    }
+  ],
+  "resolvedObservations": [
+    {
+      "issue": "El fallback de dirección podía usar similitud>=0,9 para confirmar nombres con discriminadores diferentes.",
+      "status": "RESUELTA",
+      "verifiedScriptLines": [
+        148,
+        160
+      ],
+      "fix": "La similitud quedó excluida de la confirmación positiva; variantes diferentes permanecen sugerencias."
+    },
+    {
+      "issue": "La reclasificación de varios candidatos con una dirección conservaba certeza y acción de candidato nuevo.",
+      "status": "RESUELTA",
+      "verifiedScriptLines": [
+        237,
+        243
+      ],
+      "fix": "Se actualizan classification, newCandidateEligible, minimumReviewNeeded, certainty y nextAction de forma coherente."
+    }
+  ],
+  "observations": [
+    "131 IDs clasificados como existentes representan 121 slugs actuales; no son 131 edificios distintos ni una certificación comercial completa de los 131 proyectos.",
+    "Los 21 nuevos son candidatos documentales de comparación. No están incorporados ni autorizados para publicación y no acreditan stock, precios ni superficies.",
+    "La etiqueta PROYECTO VENDIDO O NO COMERCIALIZABLE agrupa dos retiros expresos del alcance Sollahms en este corte. Los motivos y la certeza no afirman venta.",
+    "La comparación conserva diez slugs actuales sin correspondencia fuerte en este corte filtrado. Esa ausencia no prueba vendido, no auditado ni inexistente.",
+    "Se preservan ocho productos casa explícitos en el listado: uno existente (Endemico ID1372) y siete candidatos GPR. No se transforman en departamento.",
+    "27 fuentes y 516 punteros resueltos son metadatos del comparador. Esta revisión acotada verifica las decisiones indicadas y los artefactos finales; no repite toda la auditoría documental."
+  ],
+  "verifiedFinalCut": {
+    "observedIds": 158,
+    "validationRecords": 158,
+    "listingComplete": true,
+    "validationComplete": true,
+    "classificationCounts": {
+      "YA EXISTE EN SOLLAHMS": 131,
+      "INFORMACIÓN INSUFICIENTE": 2,
+      "PROYECTO VENDIDO O NO COMERCIALIZABLE": 2,
+      "POSIBLE DUPLICADO": 2,
+      "PROYECTO NUEVO": 21
+    },
+    "existingObservedIds": 131,
+    "existingCanonicalSlugs": 121,
+    "newDocumentaryCandidates": 21,
+    "minimumReviewIds": [
+      "1297",
+      "1299",
+      "1412",
+      "1587"
+    ],
+    "explicitCasaProducts": {
+      "total": 8,
+      "existing": 1,
+      "newCandidates": 7
+    },
+    "sourceCountReportedByComparator": 27,
+    "resolvedPointersReportedByComparator": 516,
+    "preservedInputHashes": [
+      {
+        "path": "/private/tmp/sollahms-comparacion-iris-chile-20261118/inputs/LISTADO-OBSERVADO-9994c5ae3b04e56f601c8d90f6a5260d4383c91d987a90db29fe216a8908fea1.json",
+        "sha256": "9994c5ae3b04e56f601c8d90f6a5260d4383c91d987a90db29fe216a8908fea1",
+        "bytes": 53047
+      },
+      {
+        "path": "/private/tmp/sollahms-comparacion-iris-chile-20261118/inputs/VALIDACION-FICHAS-dda4c80c9377a62e65dd687277610c2099723e1c4371dc4e0586b8715a3181d1.json",
+        "sha256": "dda4c80c9377a62e65dd687277610c2099723e1c4371dc4e0586b8715a3181d1",
+        "bytes": 255220
+      }
+    ],
+    "historical313Closed": 0
+  },
+  "operations": {
+    "comparatorExecutedByReviewer": false,
+    "applicationOrTestExecution": false,
+    "networkGitOrUI": false,
+    "sourceCatalogueOrScriptEdited": false,
+    "newCommercialFactsOrIDs": false,
+    "newOwnerQuestions": false
+  },
+  "continuity": "Conservar este corte y sus hashes. Atender sólo las cuatro identidades mínimas ya señaladas o un hallazgo concreto nuevo; no reabrir unidades de los 131 IDs existentes ni repetir la auditoría general."
+}
