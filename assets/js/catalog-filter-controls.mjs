@@ -15,7 +15,7 @@ const captions={metroNetwork:'Red Metro',metroLines:'Línea Metro',metroStation:
 export function facetOptions(projects,index,commercialRecords=[]){
   const facets=projects.flatMap(p=>p._facets?.stages?Object.values(p._facets.stages):[p._facets??{}]);
   const prepared=commercialRows(projects,commercialRecords),facts=prepared.map(row=>row.projectFacts??{});
-  const variants=prepared.flatMap(row=>(row.references??[]).map(ref=>ref.attributes??{}));
+  const variants=[...prepared,...(index.documentaryReviewEnabled?projects.map(p=>p._documentaryRecord).filter(Boolean):[])].flatMap(row=>(row.references??[]).map(ref=>ref.attributes??{}));
   const types=unique([...facets.flatMap(f=>f.propertyTypes??[]),...facts.flatMap(f=>f.propertyTypes??[]),...variants.map(v=>v.propertyType)].map(propertyId));
   const years=unique([...facets.map(f=>f.delivery?.year),...facts.map(f=>f.delivery?.year)].filter(Boolean));
   const preparedFilters=Object.entries(AMENITY_KEY_MAP).filter(([,key])=>facts.some(f=>f.amenities?.[key]===true)).map(([id,key])=>({id,label:AMENITY_LABELS[key]??id,group:'amenities'}));
@@ -29,7 +29,7 @@ export function facetOptions(projects,index,commercialRecords=[]){
     areaTypes:[{id:'util',label:'Útil'},{id:'total',label:'Total'}],
     deliveries:[...(immediate?[{id:'inmediata',label:'Entrega inmediata'}]:[]),...years.map(year=>({id:String(year),label:String(year)}))],
     metroLines:(index.metro?.lines??[]).map(l=>l.id),metroStations:(index.metro?.stations??[]).map(s=>s.id),walkingAvailable:!!index.metro?.walkingAvailable,
-    filters,typologies:index.typologies??[]
+    filters,typologies:index.typologies??[],documentaryReviewEnabled:index.documentaryReviewEnabled===true
   };
 }
 export function createFilterControls({projects,index,commercialRecords=[],onChange,getView,setView}){
@@ -37,6 +37,9 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
   const options=facetOptions(projects,index,commercialRecords),checks={},labels={};let state=defaults(),timer,ready=false;
   const preparedUnavailable=index.preparedUnavailable===true||!commercialRows(projects,commercialRecords).length;
   controls.evidenceMode.querySelector('[value="prepared"]').disabled=preparedUnavailable;
+  const documentaryEnabled=index.documentaryReviewEnabled===true;
+  controls.evidenceMode.querySelector('[value="documentary"]')?.remove();
+  if(documentaryEnabled)controls.evidenceMode.append(new Option('Revisión documental local · sin stock','documentary'));
   const advanced=document.getElementById('catalog-more'),panel=document.getElementById('catalog-options'),status=document.getElementById('filter-range-error');
   const evidenceHelp=document.getElementById('evidence-mode-help'),publishedHelp=evidenceHelp.textContent;
   const groups={metroLines:(index.metro?.lines??[]).map(l=>({id:l.id,label:l.name})),purchaseModes:[{id:'blanco',label:'Compra en blanco'},{id:'verde',label:'Compra en verde'},{id:'inmediata',label:'Entrega inmediata'}].map(x=>({...x,count:projects.filter(p=>p._facets?.purchaseStage?.eligible&&p._facets.purchaseStage.mode===x.id).length})),amenities:options.filters.filter(x=>x.group==='amenities'),features:options.filters.filter(x=>x.group==='features'),developers:options.developers.map(id=>({id,label:id,count:projects.filter(p=>p.inmobiliaria===id).length})),typologies:options.typologies};
@@ -44,7 +47,7 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
   populate('metroStation',(index.metro?.stations??[]).map(s=>({id:s.id,label:s.name+' · '+s.lines.join('/')})).sort((a,b)=>a.label.localeCompare(b.label,'es')),'Cualquier estación');
   labels.metroStation=new Map((index.metro?.stations??[]).map(s=>[s.id,s.name]));labels.metroNetwork=new Map([['current','Actual'],['future','Futura']]);
   populate('region',options.regions,'Todas');populate('commune',options.communes,'Todas');populate('propertyType',options.propertyTypes,'Todas');populate('delivery',options.deliveries,'Cualquier entrega');populate('state',options.states,'Todos');populate('assetType',options.assetTypes,'Todos');populate('areaType',options.areaTypes,'Elige útil o total');
-  const variants=[...projects.flatMap(p=>p._facets?.stages?Object.values(p._facets.stages).flatMap(s=>s.variants??[]):p._facets?.variants??[]),...commercialRows(projects,commercialRecords).flatMap(row=>(row.references??[]).map(ref=>ref.attributes??{}))];
+  const variants=[...projects.flatMap(p=>p._facets?.stages?Object.values(p._facets.stages).flatMap(s=>s.variants??[]):p._facets?.variants??[]),...[...commercialRows(projects,commercialRecords),...(documentaryEnabled?projects.map(p=>p._documentaryRecord).filter(Boolean):[])].flatMap(row=>(row.references??[]).map(ref=>ref.attributes??{}))];
   populate('bedrooms',[{id:'0',label:'Estudio'},{id:'1',label:'1 dormitorio'},{id:'2',label:'2 dormitorios'},{id:'3',label:'3 dormitorios'},{id:'4+',label:'4 o más'}].filter(o=>variants.some(v=>Number.isInteger(v.bedrooms)&&(o.id==='4+'?v.bedrooms>=4:v.bedrooms===Number(o.id)))),'Cualquiera');
   populate('bathrooms',[{id:'1',label:'1 baño'},{id:'2',label:'2 baños'},{id:'3+',label:'3 o más'}].filter(o=>variants.some(v=>Number.isInteger(v.bathrooms)&&(o.id==='3+'?v.bathrooms>=3:v.bathrooms===Number(o.id)))),'Cualquiera');
   for(const [key,rows] of Object.entries(groups)){
@@ -55,22 +58,22 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
     if(!rows.length)host.closest('fieldset').hidden=true;
   }
   for(const key of ['propertyType','delivery','areaType'])labels[key]=new Map(options[key==='propertyType'?'propertyTypes':key==='delivery'?'deliveries':'areaTypes'].map(x=>[x.id,x.label]));
-  labels.evidenceMode=new Map([['published','Datos publicados'],['prepared','Referencias Leben · 16 nov 2026']]);
+  labels.evidenceMode=new Map([['published','Datos publicados'],['prepared','Referencias Leben · 16 nov 2026'],['documentary','Revisión documental local · sin stock']]);
   labels.parking=new Map([['additional','Costo adicional documentado'],['included','Incluido en la referencia'],['available','Disponibilidad confirmada']]);
   labels.storage=new Map([['additional','Costo adicional documentado'],['included','Incluida en la referencia'],['available','Disponibilidad confirmada']]);
   labels.bedrooms=new Map([['0','Estudio'],['1','1 dormitorio'],['2','2 dormitorios'],['3','3 dormitorios'],['4+','4 o más dormitorios']]);labels.bathrooms=new Map([['1','1 baño'],['2','2 baños'],['3+','3 o más baños']]);
   function communes(){const allowed=unique(projects.filter(p=>!state.region||p.region===state.region).map(p=>p.comuna));populate('commune',allowed,'Todas');if(state.commune&&!allowed.includes(state.commune))state.commune='';controls.commune.value=state.commune;}
   function writeControls(){for(const [key,c] of Object.entries(controls))c.value=state[key];communes();for(const key of arrayFields)for(const c of checks[key])c.checked=state[key].includes(c.value);document.getElementById('amenities-all').checked=state.amenitiesAll;document.getElementById('features-all').checked=state.featuresAll;}
-  function readControls(){for(const [key,c] of Object.entries(controls))state[key]=c.type==='number'&&c.validity.badInput?'invalid':c.value;if(preparedUnavailable)state.evidenceMode=controls.evidenceMode.value='published';for(const key of arrayFields)state[key]=checks[key].filter(c=>c.checked).map(c=>c.value);state.amenitiesAll=document.getElementById('amenities-all').checked;state.featuresAll=document.getElementById('features-all').checked;}
-  function remember(){const safe=safePublicState(state,projects),query=writeQuery(safe,getView());try{const next=history.state&&typeof history.state==='object'?{...history.state}:{};next[FILTER_STORAGE]=safe;next[VIEW_KEY]=getView();history.replaceState(next,'',location.pathname+(query?'?'+query:'')+location.hash);sessionStorage.setItem(FILTER_STORAGE,JSON.stringify(safe));localStorage.setItem(VIEW_KEY,getView());}catch{}}
+  function readControls(){for(const [key,c] of Object.entries(controls))state[key]=c.type==='number'&&c.validity.badInput?'invalid':c.value;if(preparedUnavailable&&state.evidenceMode==='prepared'||!documentaryEnabled&&state.evidenceMode==='documentary')state.evidenceMode=controls.evidenceMode.value='published';for(const key of arrayFields)state[key]=checks[key].filter(c=>c.checked).map(c=>c.value);state.amenitiesAll=document.getElementById('amenities-all').checked;state.featuresAll=document.getElementById('features-all').checked;}
+  function remember(){const safe=safePublicState(state,projects),params=new URLSearchParams(writeQuery(safe,getView()));if(documentaryEnabled)params.set('revision_documental','1');const query=params.toString();try{const next=history.state&&typeof history.state==='object'?{...history.state}:{};next[FILTER_STORAGE]=safe;next[VIEW_KEY]=getView();history.replaceState(next,'',location.pathname+(query?'?'+query:'')+location.hash);sessionStorage.setItem(FILTER_STORAGE,JSON.stringify(safe));localStorage.setItem(VIEW_KEY,getView());}catch{}}
   function chips(){document.getElementById('metro-filter-section').hidden=!index.metro||(!!state.region&&!/Metropolitana/i.test(state.region)&&!state.metroNetwork&&!state.metroStation&&!state.metroLines.length);const host=document.getElementById('applied-filters');host.replaceChildren();let n=0;
-    for(const [key,caption] of Object.entries(captions)){const metroActive=!!(state.metroNetwork||state.metroLines.length||state.metroStation);const selected=key==='metroDistance'&&!metroActive||key==='evidenceMode'&&state.evidenceMode!=='prepared'?[]:arrayFields.includes(key)?state[key]:state[key]?[state[key]]:[];for(const value of selected){let label=labels[key]?.get(value)??value;if(key==='minArea'||key==='maxArea')label+=' ('+(labels.areaType.get(state.areaType)??'elige métrica')+')';const button=el('button',caption+': '+label+' ×','catalog-filter-tag');button.type='button';button.setAttribute('aria-label','Quitar filtro '+caption+': '+label);button.addEventListener('click',()=>{if(arrayFields.includes(key))state[key]=state[key].filter(x=>x!==value);else state[key]=key==='metroDistance'?'1000':key==='evidenceMode'?'published':'';writeControls();update();document.getElementById('project-count').focus({preventScroll:true});});host.append(button);n++;}}
+    for(const [key,caption] of Object.entries(captions)){const metroActive=!!(state.metroNetwork||state.metroLines.length||state.metroStation);const selected=key==='metroDistance'&&!metroActive||key==='evidenceMode'&&state.evidenceMode==='published'?[]:arrayFields.includes(key)?state[key]:state[key]?[state[key]]:[];for(const value of selected){let label=labels[key]?.get(value)??value;if(key==='minArea'||key==='maxArea')label+=' ('+(labels.areaType.get(state.areaType)??'elige métrica')+')';const button=el('button',caption+': '+label+' ×','catalog-filter-tag');button.type='button';button.setAttribute('aria-label','Quitar filtro '+caption+': '+label);button.addEventListener('click',()=>{if(arrayFields.includes(key))state[key]=state[key].filter(x=>x!==value);else state[key]=key==='metroDistance'?'1000':key==='evidenceMode'?'published':'';writeControls();update();document.getElementById('project-count').focus({preventScroll:true});});host.append(button);n++;}}
     host.hidden=!n;document.getElementById('catalog-filter-count').textContent=n?' ('+n+')':'';
     document.getElementById('purchase-stage-filter-note').hidden=!state.purchaseModes.length;
-    const advancedCount=state.metroLines.length+(state.metroNetwork?1:0)+(state.metroStation?1:0)+state.purchaseModes.length+state.amenities.length+state.features.length+state.developers.length+state.typologies.length+['delivery','minArea','maxArea','state','assetType','parking','storage'].filter(k=>state[k]).length+(state.evidenceMode==='prepared'?1:0);
-    const priceLegend=form.querySelector('.cf-price > legend');if(priceLegend)priceLegend.textContent=state.evidenceMode==='prepared'?'Precio de referencia · UF':'Precio desde · UF';
-    evidenceHelp.textContent=state.evidenceMode==='prepared'?'Leben usa referencias revisadas al 16/11/2026; los otros proyectos conservan sus datos publicados. La fecha y el alcance se indican en los resultados de Leben. Las referencias no acreditan stock disponible.':publishedHelp;
-    for(const count of form.querySelectorAll('.cf-option-count'))count.hidden=state.evidenceMode==='prepared';
+    const advancedCount=state.metroLines.length+(state.metroNetwork?1:0)+(state.metroStation?1:0)+state.purchaseModes.length+state.amenities.length+state.features.length+state.developers.length+state.typologies.length+['delivery','minArea','maxArea','state','assetType','parking','storage'].filter(k=>state[k]).length+(state.evidenceMode!=='published'?1:0);
+    const priceLegend=form.querySelector('.cf-price > legend');if(priceLegend)priceLegend.textContent=state.evidenceMode!=='published'?'Precio de referencia · UF':'Precio desde · UF';
+    evidenceHelp.textContent=state.evidenceMode==='documentary'?'Revisión documental local: '+index.documentaryReferenceCount+' referencias conservadas con su fuente y alcance. Sólo se combinan atributos de una misma referencia. Los proyectos sin evidencia conservan únicamente su identidad; no se toman precios ni características del catálogo publicado. Las referencias no acreditan stock ni vigencia comercial.':state.evidenceMode==='prepared'?'Leben usa referencias revisadas al 16/11/2026; los otros proyectos conservan sus datos publicados. La fecha y el alcance se indican en los resultados de Leben. Las referencias no acreditan stock disponible.':publishedHelp;
+    for(const count of form.querySelectorAll('.cf-option-count'))count.hidden=state.evidenceMode!=='published';
     document.getElementById('catalog-more-count').textContent=advancedCount?' ('+advancedCount+')':'';
   }
   function update(){clearTimeout(timer);readControls();const metroHost=document.getElementById('metro-filter-section');metroHost.hidden=!!state.region&&!/Metropolitana/i.test(state.region)&&!state.metroNetwork&&!state.metroStation&&!state.metroLines.length;const issue=rangeIssue(state);status.textContent=issue;status.hidden=!issue;chips();remember();if(ready)onChange();}
@@ -83,10 +86,10 @@ export function createFilterControls({projects,index,commercialRecords=[],onChan
     // Restore only metrics that the current controls can display. Keep bounds
     // intact so an unsupported legacy metric asks for an explicit selection.
     if(!options.areaTypes.some(option=>option.id===state.areaType))state.areaType='';
-    if(preparedUnavailable)state.evidenceMode='published';writeControls();
+    if(index.documentaryUnavailable||preparedUnavailable&&state.evidenceMode==='prepared')state.evidenceMode='published';writeControls();
     const issue=rangeIssue(state);status.textContent=issue;status.hidden=!issue;
     let view=query.view;try{view??=history.state?.[VIEW_KEY]??localStorage.getItem(VIEW_KEY);}catch{}if(['cards','list','map','split'].includes(view))setView(view);
-    if(state.metroNetwork||state.metroLines.length||state.metroStation||state.purchaseModes.length||state.amenities.length||state.features.length||state.developers.length||state.delivery||state.minArea||state.maxArea||state.typologies.length||state.parking||state.storage||state.evidenceMode==='prepared')advanced.open=true;
+    if(state.metroNetwork||state.metroLines.length||state.metroStation||state.purchaseModes.length||state.amenities.length||state.features.length||state.developers.length||state.delivery||state.minArea||state.maxArea||state.typologies.length||state.parking||state.storage||state.evidenceMode!=='published')advanced.open=true;
   }
   function clear(){state=defaults();writeControls();advanced.open=false;update();controls.search.focus({preventScroll:true});}
   form.addEventListener('submit',e=>{e.preventDefault();update();showResults();});

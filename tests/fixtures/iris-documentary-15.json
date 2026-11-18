@@ -1,0 +1,1782 @@
+{
+  "schemaVersion": 1,
+  "kind": "isolated documentary evidence, explicitly not offers",
+  "layer": "documentary-local-only-not-offer",
+  "notOffer": true,
+  "commercialAdoptionAllowed": false,
+  "publicConsumption": false,
+  "asOf": "2026-11-17",
+  "dateKind": "observation snapshot, not source publication date",
+  "consumerCompatibility": "records accepted by matchProjectFilters only; not an input to the Leben-specific loadCommercialEvidence/buildCommercialRecords factory",
+  "sourceRegistry": {
+    "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/REGISTRO-NUEVA-EVIDENCIA-IRIS.json",
+    "repositoryPath": "docs/objetivo-principal-asset-portafolio/REGISTRO-NUEVA-EVIDENCIA-IRIS.json",
+    "commit": "db52a948b5248b8d704d1ae4b9a26fce0f8d59fd",
+    "sha256": "89bbd82cee7375e648437d1e6db77aa993e30cd912508dec85de9e1c6cf5ba4e",
+    "rawFilesCount": 101,
+    "exactReferences": 15,
+    "ownerDocumentsReceived": 0
+  },
+  "sourcePrimaryManifest": {
+    "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/consultas-root/diagonal-vicuna-unidad-235.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/consultas-root/diagonal-vicuna-unidad-235.json",
+      "sha256": "a45f7859e02aca4f012f6be7d9b8e6f5de09a4a96b6561f4af45451006fb2e2c",
+      "bytes": 4020
+    },
+    "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/consultas-root/mapocho-a-unidad-1010.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/consultas-root/mapocho-a-unidad-1010.json",
+      "sha256": "eb43bcea2202e2eefcbb1865d0639ce15c0d7e9b8b79a8a7d86696ecd666d133",
+      "bytes": 3550
+    },
+    "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Maestra-Vesant/RESULTADO.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Maestra-Vesant/RESULTADO.json",
+      "sha256": "0f860f5ae2a24f22a41ae3037438a26945cba8c5989814ac7d9357a9f4ce08f0",
+      "bytes": 15918
+    },
+    "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json": {
+      "path": "/private/tmp/sollahms-auditoria-leben-20261116/docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+      "sha256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+      "bytes": 36941
+    }
+  },
+  "identityContext": {
+    "path": "/private/tmp/sollahms-filtros-comerciales-fase10-20261117/data/proyectos.json",
+    "technicalCommit": "165f918aba402a0eb3313c85e144af2b4a7e8651",
+    "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+    "use": "identity context only; no commercial facts copied"
+  },
+  "metricPolicy": {
+    "internalM2": "Literal Internos; not normalized to interiorM2, usefulM2 or totalM2. Current engine has no Internos predicate; retain as documentary metric only.",
+    "interiorM2": "Null for all references because source does not explicitly label Interior.",
+    "terraceM2": "Literal terrace quantity from the same exact reference; no privateTerrace inference.",
+    "lotTotalM2": "Literal total of lot3b; separate from residential totalM2 and from landM2 until an explicit mapping is admitted.",
+    "usefulM2": "Null for all references.",
+    "totalM2": "Null for all references, including lot3b."
+  },
+  "pricePolicy": {
+    "priceUF": null,
+    "allReferencesCommercialPriceNull": true,
+    "externalPrices": "Metadata only, never copied to priceUF, sourceProject, projectFacts, card text or offer context.",
+    "ownerAndPublished": "Unchanged; this file is not consumed by the app or a public mode."
+  },
+  "unknownAndScopePolicy": [
+    "No factory false. Unknown fields are null; project facts do not lend type/price/area to a reference.",
+    "All option predicates must match one exact reference.",
+    "No plan, tower, brochure applicability, private garden/terrace, stock or legal delivery inferred.",
+    "Existing conflicts and textual descriptions are retained as constraints; no canonical model ID invented."
+  ],
+  "records": [
+    {
+      "slug": "diagonal-vicuna",
+      "name": "Euro - Diagonal Vicuña",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Diagonal Vicuña",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Santiago",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/122",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R001",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1104?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1104?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/consultas-root/diagonal-vicuna-unidad-235.json",
+          "sourceSHA256": "a45f7859e02aca4f012f6be7d9b8e6f5de09a4a96b6561f4af45451006fb2e2c",
+          "sourcePointer": "/unit235Dialog",
+          "sourceRegistryPointer": "/references/0",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:44:12.252Z",
+          "scope": "Sólo referencia externa exacta; no precio Sollahms, no stock, no extrapolación.",
+          "unitLabel": "235",
+          "modelLabel": null,
+          "literalDescription": "1D+1B (2C / Ka)",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 28.68,
+            "terraceM2": 2.08,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 28.68,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 2.08,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "propertyTypePointer": "/projectHeader",
+            "unitPointer": "/unit235Dialog",
+            "priceTablePointer": "/unit235List"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 3061.9,
+            "finalUF": 3000.66,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:44:12.252Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "plan-applicability",
+              "state": "unresolved",
+              "literal": "No acreditada: plano visible rotula 435 al 1635, Torre B; no se aplica a235."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "mapocho-3521-edificio-a",
+      "name": "Euro - Mapocho 3521 - Edificio A",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Mapocho 3521 - Edificio A",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Quinta Normal",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/36",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R002",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1149?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1149?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/consultas-root/mapocho-a-unidad-1010.json",
+          "sourceSHA256": "eb43bcea2202e2eefcbb1865d0639ce15c0d7e9b8b79a8a7d86696ecd666d133",
+          "sourcePointer": "/unit1010Dialog",
+          "sourceRegistryPointer": "/references/1",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:51:46.881Z",
+          "scope": "Sólo referencia externa exacta; no precio Sollahms, no stock, no extrapolación.",
+          "unitLabel": "1010",
+          "modelLabel": null,
+          "literalDescription": "2D + 1B (3C/Ka)",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 38.3,
+            "terraceM2": 2.5,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 38.3,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 2.5,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "propertyTypePointer": "/projectHeader",
+            "unitPointer": "/unit1010Dialog",
+            "priceTablePointer": "/unit1010List"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 3133.26,
+            "finalUF": 2569.27,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:51:46.881Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "plan-applicability",
+              "state": "unresolved",
+              "literal": "Unidad sin plano cargado; brochure histórico sigue unresolved-building."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "plaza-cervantes",
+      "name": "Maestra - Plaza Cervantes",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Maestra - Plaza Cervantes",
+        "inmobiliaria": "Maestra"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "La Cisterna",
+        "developer": "Maestra"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/27",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R003",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1358?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1358?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Maestra-Vesant/RESULTADO.json",
+          "sourceSHA256": "0f860f5ae2a24f22a41ae3037438a26945cba8c5989814ac7d9357a9f4ce08f0",
+          "sourcePointer": "/projects/0/references/0",
+          "sourceRegistryPointer": "/references/2",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:47:12.746Z",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "unitLabel": "Unidad 909A · Piso 9",
+          "modelLabel": null,
+          "literalDescription": "Edificio A",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 36.9,
+            "terraceM2": 2.24,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 36.9,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 2.24,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/projects/0/references/0",
+            "propertyTypePointer": "/projects/0/references/0/propertyTypeLiteralAtProject",
+            "identityPointer": "/projects/0/identity"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 2483,
+            "finalUF": 2190,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:47:12.746Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Útil y total no rotulados en la referencia inspeccionada"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se certificó identidad uniforme Torre A de toda la ficha Iris1358"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se completaron otras tipologías/modelos de Torre A"
+            },
+            {
+              "kind": "building-scope-conflict",
+              "state": "contradictory",
+              "literal": "Conflicto explícito de alcance entre descripción general y referencia 909A; no asociar toda la ficha a Torre A ni tomar Torre B como equivalente",
+              "sourcePointer": "/projects/0/identity"
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "alto-buzeta",
+      "name": "Maestra - Alto Buzeta",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Maestra - Alto Buzeta",
+        "inmobiliaria": "Maestra"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Cerrillos",
+        "developer": "Maestra"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/9",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R004",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1342?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1342?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Maestra-Vesant/RESULTADO.json",
+          "sourceSHA256": "0f860f5ae2a24f22a41ae3037438a26945cba8c5989814ac7d9357a9f4ce08f0",
+          "sourcePointer": "/projects/1/references/0",
+          "sourceRegistryPointer": "/references/3",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:47:53.147Z",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "unitLabel": "Unidad 1220 · Piso 12",
+          "modelLabel": null,
+          "literalDescription": "Edificio A 1D1B",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 31.35,
+            "terraceM2": 2.84,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 31.35,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 2.84,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/projects/1/references/0",
+            "propertyTypePointer": "/projects/1/propertyTypeLiteralAtProject",
+            "identityPointer": "/projects/1/identity"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 2343,
+            "finalUF": 2108.7,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:47:53.147Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Útil/total no rotulados en las dos referencias inspeccionadas"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se recorrieron las once páginas de unidades ni se extrapolaron estas áreas a otras opciones"
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        },
+        {
+          "id": "IRIS-131-R005",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1342?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1342?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Maestra-Vesant/RESULTADO.json",
+          "sourceSHA256": "0f860f5ae2a24f22a41ae3037438a26945cba8c5989814ac7d9357a9f4ce08f0",
+          "sourcePointer": "/projects/1/references/1",
+          "sourceRegistryPointer": "/references/4",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:48:06.958Z",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "unitLabel": "Unidad 212 · Piso 2",
+          "modelLabel": null,
+          "literalDescription": "2D1B",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 37,
+            "terraceM2": 2,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 37,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 2,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/projects/1/references/1",
+            "propertyTypePointer": "/projects/1/propertyTypeLiteralAtProject",
+            "identityPointer": "/projects/1/identity"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 2498,
+            "finalUF": 2248.2,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:48:06.958Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Útil/total no rotulados en las dos referencias inspeccionadas"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No se recorrieron las once páginas de unidades ni se extrapolaron estas áreas a otras opciones"
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "reserva-mayor-2",
+      "name": "Vesant - Reserva Mayor 2",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Vesant - Reserva Mayor 2",
+        "inmobiliaria": "Vesant"
+      },
+      "projectFacts": {
+        "region": "Biobío",
+        "commune": "Concepción",
+        "developer": "Vesant"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/1",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R006",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1308?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1308?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Maestra-Vesant/RESULTADO.json",
+          "sourceSHA256": "0f860f5ae2a24f22a41ae3037438a26945cba8c5989814ac7d9357a9f4ce08f0",
+          "sourcePointer": "/projects/2/references/0",
+          "sourceRegistryPointer": "/references/5",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:48:30.584Z",
+          "scope": "Referencia externa exacta. Plaza conserva conflicto general TorreB frente a descripción EdificioA; total de Reserva es del lote.",
+          "unitLabel": "Lote 3b ·",
+          "modelLabel": null,
+          "literalDescription": "Energia electrica Aerea con medidor individual, Puntera, Cerco, Rol individual",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "terreno",
+            "bedrooms": null,
+            "bathrooms": null,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": null,
+            "terraceM2": null,
+            "lotTotalM2": 1500,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "totales",
+              "subject": "lote",
+              "valueM2": 1500,
+              "storedKey": "lotTotalM2",
+              "canonicalResidentialTotalMapping": null
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/projects/2/references/0",
+            "propertyTypePointer": "/projects/2/propertyTypeLiteralAtProject",
+            "identityPointer": "/projects/2/identity"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 2450,
+            "finalUF": 2450,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:48:30.584Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No aparecen baños ni dormitorios en ficha/lote inspeccionado: conservar desconocidos, no cero ni no_aplicable"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "El total corresponde al lote; no etiquetar como superficie útil o total de vivienda"
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Entrega Inmediata es declaración comercial Iris; no resuelve habilitación legal ni sustituye contradicción histórica Q1/Q4 por inferencia"
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "vitro",
+      "name": "Euro - Edificio Vitro",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Edificio Vitro",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Ñuñoa",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/116",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R007",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1577?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1577?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/0/reference",
+          "sourceRegistryPointer": "/references/6",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:47:45.948Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "218",
+          "modelLabel": null,
+          "literalDescription": "1D + 1B",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 32.35,
+            "terraceM2": 4.3,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 32.35,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 4.3,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/0/reference",
+            "propertyTypePointer": "/observations/0/reference/propertyType",
+            "identityPointer": "/observations/0"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 3100.6,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:47:45.948Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Internos no equivale a útil; total no informado."
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Sólo la Unidad 218; no generalizar a otras unidades."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "nova-parque",
+      "name": "Euro - Nova Parque",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Nova Parque",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "San Joaquín",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/125",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R008",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1576?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1576?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/1/reference",
+          "sourceRegistryPointer": "/references/7",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:48:33.849Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "114 O",
+          "modelLabel": null,
+          "literalDescription": "1D + 1B (2c+ka) - Torre Oriente",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 28.61,
+            "terraceM2": 1.82,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 28.61,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 1.82,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/1/reference",
+            "propertyTypePointer": "/observations/1/reference/propertyType",
+            "identityPointer": "/observations/1"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 2868.32,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:48:33.849Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-discrepancy",
+              "state": "unresolved",
+              "raw": {
+                "field": "project-bedroom-range",
+                "existing": "1 dormitorio",
+                "iris": "1 a 2 dormitorios",
+                "resolution": "retain separate external observation; no public edit"
+              }
+            },
+            {
+              "kind": "source-discrepancy",
+              "state": "unresolved",
+              "raw": {
+                "field": "delivery",
+                "existing": "2do semestre 2028",
+                "iris": "1er semestre 2028",
+                "resolution": "unresolved dated-source discrepancy; no public edit"
+              }
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No equiparar internos con útil ni inferir total."
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No asociar los antiguos escalares29/30 a esta unidad."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "mirador-irarrazaval",
+      "name": "Euro - Mirador Irarrazaval",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Mirador Irarrazaval",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Ñuñoa",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/117",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R009",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1578?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1578?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/2/reference",
+          "sourceRegistryPointer": "/references/8",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:49:30.563Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "709",
+          "modelLabel": null,
+          "literalDescription": "1D+1B (2C / Ka)",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 32.57,
+            "terraceM2": 2.64,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 32.57,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 2.64,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/2/reference",
+            "propertyTypePointer": "/observations/2/reference/propertyType",
+            "identityPointer": "/observations/2"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 4020.09,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:49:30.563Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-discrepancy",
+              "state": "unresolved",
+              "raw": {
+                "field": "delivery",
+                "existing": "1er semestre 2028",
+                "iris": "1er semestre 2029",
+                "resolution": "separate external observation; no public edit"
+              }
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Internos no equivale a útil; no total inferred."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "alto-irarrazaval",
+      "name": "Euro - Alto Irarrazaval",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Alto Irarrazaval",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Ñuñoa",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/118",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R010",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1580?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1580?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/3/reference",
+          "sourceRegistryPointer": "/references/9",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:50:05.013Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "215",
+          "modelLabel": null,
+          "literalDescription": "1D+1B(2c)+ka",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 30.64,
+            "terraceM2": 4.46,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 30.64,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 4.46,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/3/reference",
+            "propertyTypePointer": "/observations/3/reference/propertyType",
+            "identityPointer": "/observations/3"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 4175.67,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:50:05.013Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No equivaler internos a útil ni sumar terraza como total."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "jose-pedro-alessandri",
+      "name": "Euro - José Pedro Alessandri 1498",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - José Pedro Alessandri 1498",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Ñuñoa",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/119",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R011",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1583?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1583?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/4/reference",
+          "sourceRegistryPointer": "/references/10",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:50:45.596Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "213",
+          "modelLabel": null,
+          "literalDescription": "1D (2c) + 1B + ka",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 30,
+            "terraceM2": 4.2,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 30,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 4.2,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/4/reference",
+            "propertyTypePointer": "/observations/4/reference/propertyType",
+            "identityPointer": "/observations/4"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 3728.05,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:50:45.596Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-discrepancy",
+              "state": "unresolved",
+              "raw": {
+                "field": "project-bedroom-range",
+                "existing": "1 a 3 dormitorios",
+                "iris": "1 a 2 dormitorios",
+                "resolution": "different source/current listing scope; no exclusion or public edit"
+              }
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Internos/terraza sólo para esta unidad, útil/total null."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "vicuna-mackenna-1432",
+      "name": "Euro - Vicuña Mackena 1432",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Vicuña Mackena 1432",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Ñuñoa",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/120",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R012",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/374?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/374?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/5/reference",
+          "sourceRegistryPointer": "/references/11",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:52:01.345Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "2510N",
+          "modelLabel": null,
+          "literalDescription": "1D+1B (2C / Ka)",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 32.2,
+            "terraceM2": 0,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 32.2,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 0,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/5/reference",
+            "propertyTypePointer": "/observations/5/reference/propertyType",
+            "identityPointer": "/observations/5"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 3452.7,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:52:01.345Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Iris title spells Mackena; address spells Mackenna, both1432 Ñuñoa."
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Full-name search returned general catalog; exact number1432 returned one result."
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No tower inferred from unit suffixN."
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Terraza0 is explicitly printed; useful and total remain null."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "vicente-valdes",
+      "name": "Euro - Vicente Valdés",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Vicente Valdés",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "La Florida",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/121",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R013",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1581?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1581?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/6/reference",
+          "sourceRegistryPointer": "/references/12",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:52:34.773Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "1103",
+          "modelLabel": null,
+          "literalDescription": "1D + 1B (2c+ka)",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 30.7,
+            "terraceM2": 2.55,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 30.7,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 2.55,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/6/reference",
+            "propertyTypePointer": "/observations/6/reference/propertyType",
+            "identityPointer": "/observations/6"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 3249,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:52:34.773Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Iris informa entrega1er semestre2029; publicado existente mantiene entrega null. Nueva observación externa, no actualización autorizada."
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Internos y terraza preservados literalmente, útil/total null."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "vista-portugal",
+      "name": "Euro - Vista Portugal",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Vista Portugal",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Región Metropolitana",
+        "commune": "Santiago",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/123",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R014",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1574?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1574?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/7/reference",
+          "sourceRegistryPointer": "/references/13",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:53:16.509Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "218",
+          "modelLabel": null,
+          "literalDescription": "1D+1B (2C / K)",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 1,
+            "bathrooms": 1,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 30.4,
+            "terraceM2": 0,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 30.4,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 0,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/7/reference",
+            "propertyTypePointer": "/observations/7/reference/propertyType",
+            "identityPointer": "/observations/7"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 2829.82,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:53:16.509Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-discrepancy",
+              "state": "unresolved",
+              "raw": {
+                "field": "project-bedroom-range",
+                "existing": "1 a 2 dormitorios",
+                "iris": "Estudio a 2 dormitorios",
+                "resolution": "project summary only; no estudio unit inferred or public edit"
+              }
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Proyecto Iris menciona acceso también por Cuevas758; no mover dirección/mapa existente."
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No equivaler internos con útil; terraza0 explícita y total null."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    },
+    {
+      "slug": "marina-pacifico",
+      "name": "Euro - Marina Pacífico",
+      "sourceLayer": "documentary-local-only-not-offer",
+      "notOffer": true,
+      "commercialAdoptionAllowed": false,
+      "sourceProject": {
+        "nombre": "Euro - Marina Pacífico",
+        "inmobiliaria": "Euro"
+      },
+      "projectFacts": {
+        "region": "Coquimbo",
+        "commune": "Coquimbo",
+        "developer": "Euro"
+      },
+      "projectIdentityContext": {
+        "source": "data/proyectos.json",
+        "pointer": "/124",
+        "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+        "contextOnly": true,
+        "noPricesStateDeliveryOrAmenitiesCopied": true
+      },
+      "references": [
+        {
+          "id": "IRIS-131-R015",
+          "sourceKind": "IRIS_EXTERNAL_DOCUMENTARY_NOT_OFFER",
+          "notOffer": true,
+          "commercialAdoptionAllowed": false,
+          "stock": null,
+          "sourceId": "https://iris.yapo.cl/proyecto/1584?operation=Venta",
+          "sourceURL": "https://iris.yapo.cl/proyecto/1584?operation=Venta",
+          "sourceFile": "docs/objetivo-principal-asset-portafolio/evidencias-iris-20261117/Euro9/RESULTADOS-EURO9-IRIS.json",
+          "sourceSHA256": "5b1a872a9f26bbf78e7c7eace2e7abff16f5aaa69d4e0eff50b9797fb7073979",
+          "sourcePointer": "/observations/8/reference",
+          "sourceRegistryPointer": "/references/14",
+          "sourceDocumentDate": null,
+          "sourceDate": null,
+          "dateKind": "observation-only",
+          "observedAtUTC": "2026-11-17T17:54:19.225Z",
+          "scope": "Sólo referencia externa exacta; útil/total sin acreditar. Fechas/estado y precios externos no sustituyen declaraciones owner.",
+          "unitLabel": "2415",
+          "modelLabel": null,
+          "literalDescription": "2D+2B(4c)+Kc+t",
+          "modelCodePolicy": "Preserve raw description; no commercial model ID inferred.",
+          "attributes": {
+            "priceUF": null,
+            "propertyType": "departamento",
+            "bedrooms": 2,
+            "bathrooms": 2,
+            "usefulM2": null,
+            "totalM2": null,
+            "interiorM2": null,
+            "internalM2": 51.89,
+            "terraceM2": 3.72,
+            "lotTotalM2": null,
+            "landM2": null,
+            "gardenM2": null,
+            "privateTerrace": null,
+            "privateGarden": null,
+            "parkingIncluded": null,
+            "parkingAvailable": null,
+            "storageIncluded": null,
+            "storageAvailable": null,
+            "state": null,
+            "delivery": null
+          },
+          "sourceMetrics": [
+            {
+              "sourceLabel": "Internos",
+              "valueM2": 51.89,
+              "storedKey": "internalM2",
+              "canonicalInteriorUsefulTotalMapping": null
+            },
+            {
+              "sourceLabel": "Terraza",
+              "valueM2": 3.72,
+              "storedKey": "terraceM2",
+              "scope": "same exact reference; private ownership not inferred"
+            }
+          ],
+          "sourceFieldPointers": {
+            "unitPointer": "/observations/8/reference",
+            "propertyTypePointer": "/observations/8/reference/propertyType",
+            "identityPointer": "/observations/8"
+          },
+          "externalPriceMetadata": {
+            "use": "provenance_only_not_for_offering_or_commercial_filter",
+            "source": "Iris externo",
+            "listUF": 4121,
+            "finalUF": null,
+            "sourceDocumentDate": null,
+            "observedAtUTC": "2026-11-17T17:54:19.225Z",
+            "notOwnerAuthorization": true
+          },
+          "constraints": [
+            {
+              "kind": "source-discrepancy",
+              "state": "unresolved",
+              "raw": {
+                "field": "project-bedroom-range",
+                "existing": "1 a 3 dormitorios",
+                "iris": "2 a 3 dormitorios",
+                "resolution": "available listing scope is different; do not delete previously documented1D"
+              }
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "Published old officialURL uses mirador-pacifico; Iris itself names MarinaPacífico and matchesEuro/address5121Coquimbo."
+            },
+            {
+              "kind": "source-limit",
+              "state": "unknown",
+              "literal": "No copy to otherproject/units; internos not useful, no total sum."
+            }
+          ],
+          "unknownPolicy": "Null means unknown, not zero, no applicability claim and no physical absence."
+        }
+      ],
+      "bindingLimit": "The public slug groups documentary provenance only; no building/PDF association or common offer entitlement is created."
+    }
+  ],
+  "counts": {
+    "records": 14,
+    "references": 15,
+    "residentialReferencesWithDB": 14,
+    "lotReferences": 1,
+    "commercialPrices": 0,
+    "usefulValues": 0,
+    "residentialTotalValues": 0,
+    "canonicalInteriorValues": 0
+  },
+  "operationalScope": {
+    "createdOnlyUnderTmp": true,
+    "applicationChanges": false,
+    "technicalCheckoutChanges": false,
+    "publicUIModeAdded": false,
+    "PRorPrebuiltChanged": false
+  }
+}

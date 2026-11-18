@@ -12,6 +12,12 @@ const values=value=>Array.isArray(value)?value:present(value)?[value]:[];
 const selected=(actual,wanted,all=false)=>!wanted.length||(all?wanted.every(x=>actual.includes(x)):wanted.some(x=>actual.includes(x)));
 const propertyAliases={departamento:'departamento',departamentos:'departamento',depto:'departamento',casa:'casa',casas:'casa',duplex:'duplex',estudio:'estudio',local:'local','local comercial':'local',oficina:'oficina',terreno:'terreno',terrenos:'terreno'};
 export const normalizePropertyType=value=>propertyAliases[fold(value)]??null;
+const propertyTerms=new Map([
+  ['departamento',['departamento','departamentos']],['casa',['casa','casas']],
+  ['duplex',['dúplex','duplex']],['estudio',['estudio','estudios']],
+  ['local',['local comercial','locales comerciales']],['oficina',['oficina','oficinas']],
+  ['terreno',['terreno','terrenos']],
+]);
 const assetAliases={residencial:'Residencial',comercial:'Comercial',terreno:'Terreno',mixto:'Mixto'};
 export const normalizeAssetType=value=>assetAliases[fold(value)]??null;
 const assetOf=property=>['departamento','casa','duplex','estudio'].includes(property)?'Residencial':['local','oficina'].includes(property)?'Comercial':property==='terreno'?'Terreno':null;
@@ -166,12 +172,13 @@ export function matchProjectFilters(record,query={}){
   if(present(query.assetType)&&!normalizeAssetType(query.assetType))return result;
   if(normalizeAssetType(query.assetType)==='Mixto'&&!values(facts.assetTypes).some(value=>normalizeAssetType(value)==='Mixto'))return result;
   const words=fold(query.text).split(/\s+/).filter(Boolean).slice(0,30);
-  const projectTerms=[project.nombre,record.name,record.slug,facts.region,facts.commune,facts.developer,...featureKeys(facts)];
+  const projectTerms=[project.nombre,project.direccion,record.name,record.slug,facts.region,facts.commune,facts.developer,...featureKeys(facts)];
   const matchesReference=reference=>{
     if(!referenceMatches(reference,query,facts))return false;
     const amenities=eligibleAmenities(reference,facts);
     if(!selected(amenities,values(query.amenities).map(amenityKey),query.amenitiesAll))return false;
-    const haystack=fold([...projectTerms,...amenities.map(key=>amenityTerms[key]??key)].filter(Boolean).join(' '));
+    const typeTerms=propertyTerms.get(normalizePropertyType(reference.attributes?.propertyType))??[];
+    const haystack=fold([...projectTerms,...typeTerms,...amenities.map(key=>amenityTerms[key]??key)].filter(Boolean).join(' '));
     return words.every(word=>haystack.includes(word));
   };
   const references=(record.references??[]).filter(matchesReference);

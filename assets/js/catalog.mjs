@@ -1,4 +1,8 @@
 import {loadCommercialEvidence,buildCommercialProjects} from './commercial-filter-data.mjs';
+import {financialReferenceCompatible} from './catalog-financial-witness.mjs';
+import {loadEuroOwnerSource,bindEuroOwnerQuotes,unavailableEuroOwnerQuotes,euroOwnerQuoteLoadFailed} from './catalog-euro-owner-quotes.mjs';
+import {loadNollagamOwnerQuoteContexts} from './catalog-nollagam-quote-consumer.mjs';
+import {loadLocalDocumentaryReview} from './documentary-local-review.mjs';
 import {metroSummary} from './metro-model.mjs';
 import {leonCatalogOfferId} from './project-offers.mjs?v=20261030-leon';
 import {publicOrigin} from './commercial-context.mjs?v=20261029-euro-1';
@@ -51,7 +55,7 @@ function card(project){
   identity.append(title,element('p',[project.comuna,project.region].filter(Boolean).join(' · '),'catalog-location'));
   if(project.inmobiliaria)identity.append(element('p',project.inmobiliaria,'catalog-builder'));
   summary.append(identity);const metro=metroSummary(project,values());if(metro){const line=element('p',metro.station+' · '+metro.lines+' · '+metro.distance,'catalog-metro-summary');line.title=metro.note;summary.append(line);}
-  const facts=projectFacts(project,controls.assetType.value||(values().propertyType==='local'?'Comercial':''));
+  const facts=projectFacts(project,controls.assetType.value||(values().propertyType==='local'?'Comercial':''),values());
   if(facts.length){const dl=element('dl',undefined,'catalog-facts');for(const fact of facts){const row=element('div');row.append(element('dt',fact.label),element('dd',fact.value));dl.append(row);}summary.append(dl);}
   const matches=matchedLabels(project,values());
   if(matches.length){const badges=element('ul',undefined,'cf-match-list');badges.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))badges.append(element('li',label));if(matches.length>3)badges.append(element('li','+'+(matches.length-3)+' coincidencias'));summary.append(badges);}
@@ -63,14 +67,15 @@ function card(project){
     price.append(element('p',offerPriceLabel(project,values()),'catalog-price-value'));
     if(offer.typology)price.append(element('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));
   }else price.append(element('p',offerPriceLabel(project,values()),'catalog-price-unavailable'));
-  if(commercialLayerNote(project))price.append(element('p',commercialLayerNote(project),'catalog-price-type'));
+  if(commercialLayerNote(project,values()))price.append(element('p',commercialLayerNote(project,values()),'catalog-price-type'));
   actions.append(price);
   if(typeof project.detalleUrl==='string'&&/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl)){
-    const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(project.inmobiliaria)&&/^[012]$/.test(current.bedrooms)&&project.commercialOffers?.some(o=>o.id===current.bedrooms+'d')?'&oferta='+current.bedrooms+'d':'')+(leonCatalogOfferId(project,current)?'&oferta='+leonCatalogOfferId(project,current):'')+(project._ecasaStageNumber?'#etapa-'+project._ecasaStageNumber:'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
+    const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local'||offer.euroOwnerQuote&&offer.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(project.inmobiliaria)&&/^[012]$/.test(current.bedrooms)&&project.commercialOffers?.some(o=>o.id===current.bedrooms+'d')?'&oferta='+current.bedrooms+'d':'')+(leonCatalogOfferId(project,current)?'&oferta='+leonCatalogOfferId(project,current):'')+(project._ecasaStageNumber?'#etapa-'+project._ecasaStageNumber:'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
+    if(current.evidenceMode==='documentary'){link.textContent='Ver ficha publicada';link.href=project.detalleUrl+'?origen='+source;link.setAttribute('aria-label','Ver ficha publicada de '+project.nombre);}
   }
   if(view==='split'){const b=element('button','Ubicar en mapa','catalog-text-button');b.type='button';b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('catalog-list-selection',{detail:{slug:project.slug}})));actions.append(b);}
   body.append(actions);article.append(body);
-  if(values().evidenceMode!=='prepared'&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
+  if(values().evidenceMode==='published'&&financialReferenceCompatible(projects.find(original=>original.slug===project.slug),offer)&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
   const financial=body.querySelector('.capacity-result');
   if(financial){
     // Review dates remain in the source data; the financial scenario keeps all amounts/conditions.
@@ -82,11 +87,11 @@ function card(project){
 }
 function render(){
   const sorted=filterAndSort(projects,values());
-  const prepared=values().evidenceMode==='prepared';
-  $('capacity-toggle').hidden=prepared;
-  $('capacity-summary').hidden=prepared;
-  if(prepared){$('capacity-form').hidden=true;$('capacity-toggle').setAttribute('aria-expanded','false');}
-  if(!prepared&&controls.sortOrder.value==='original')capacitySearch?.sortProjects(sorted);
+  const referenceMode=values().evidenceMode!=='published';
+  $('capacity-toggle').hidden=referenceMode;
+  $('capacity-summary').hidden=referenceMode;
+  if(referenceMode){$('capacity-form').hidden=true;$('capacity-toggle').setAttribute('aria-expanded','false');}
+  if(!referenceMode&&controls.sortOrder.value==='original')capacitySearch?.sortProjects(sorted);
   mapResults=sorted;
   if((view==='map'||view==='split')){grid.replaceChildren(...(view==='split'?sorted.map(card):[]));if(mapInstance)mapInstance.update(sorted,{assetType:controls.assetType.value,filters:values()});else ensureMap();}
   else grid.replaceChildren(...sorted.map(card));
@@ -100,6 +105,8 @@ async function load(){
     const response=await fetch('/data/proyectos.json',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('catalogue unavailable');
     const data=await response.json();if(!Array.isArray(data)||new Set(data.map(p=>p.slug)).size!==data.length)throw Error('catalogue identity');
     data.forEach(project=>{if(!project||typeof project.slug!=='string'||typeof project.nombre!=='string'||!/^\/[a-z0-9-]+\.html$/.test(project.detalleUrl))throw Error('catalogue identity');});
+    const euroOwnerSource=loadEuroOwnerSource().then(source=>({source}),()=>({unavailable:true}));
+    const nollagamOwnerContexts=loadNollagamOwnerQuoteContexts(data);
     const metroData=Promise.all(['/data/metro-network.json','/data/project-metro.json'].map(async u=>{const r=await fetch(u,{signal:AbortSignal.timeout(6000)});if(!r.ok)throw Error('metro');return r.json();})).catch(()=>null);
     let index={projects:{},filters:[],typologies:[]};
     try{const response=await fetch('/data/catalog-facets.json?v=20261029-euro-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
@@ -108,10 +115,19 @@ async function load(){
     projects=data.map(p=>({...p,_metro:index.metroProjects?.[p.slug],_facets:index.projects[p.slug]??{assetTypes:p.tiposActivos??[p.tipoActivo].filter(Boolean),states:[p.estado].filter(Boolean)}}));
     try{projects=buildCommercialProjects(projects,await loadCommercialEvidence(),index);}
     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Las referencias Leben no pudieron cargar. Se muestran los datos publicados.';index.preparedUnavailable=true;}
+    const euroOwner=await euroOwnerSource;
+    try{projects=euroOwner.source?bindEuroOwnerQuotes(projects,euroOwner.source):unavailableEuroOwnerQuotes(projects);}
+    catch{projects=unavailableEuroOwnerQuotes(projects);}
+    if(projects.some(euroOwnerQuoteLoadFailed)){const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'Las cotizaciones Euro por tipología no pudieron validarse. Sus consultas con precio quedan limitadas; las consultas sin precio siguen disponibles.';}
+    const nollagamOwner=await nollagamOwnerContexts;
+    projects=projects.map(project=>nollagamOwner.bySlug[project.slug]?{...project,_nollagamOwnerQuoteContext:nollagamOwner.bySlug[project.slug]}:project);
+    if(nollagamOwner.status!=='ready'){const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'Las referencias Nollagam por tipología no pudieron validarse. Sus consultas con precio quedan limitadas; las consultas sin precio siguen disponibles.';}
+    try{const localReview=await loadLocalDocumentaryReview(projects,{location,fetchImpl:fetch});if(localReview){projects=localReview.projects;Object.assign(index,localReview.index);}}
+    catch{const note=$('advanced-data-status');note.hidden=false;note.textContent+=(note.textContent?' ':'')+'La revisión documental local no pudo cargar. Se muestran los datos publicados; la fuente documental no está disponible.';index.documentaryReviewEnabled=false;index.documentaryUnavailable=true;}
     filterControls=createFilterControls({projects,index,onChange:render,getView:()=>view,setView:next=>{view=next;applyView();}});applyView();render();
     $('catalog-static-directory').hidden=true;
     viewButtons.forEach(c=>c.disabled=false);
-    import('/assets/js/purchase-capacity-ui.mjs').then(({initializeCapacitySearch})=>{capacitySearch=initializeCapacitySearch({projects,onChange:render});$('capacity-toggle').disabled=false;$('capacity-toggle').hidden=values().evidenceMode==='prepared';}).catch(()=>{$('capacity-summary').textContent='El buscador financiero no pudo cargar. Puedes seguir utilizando los filtros del catálogo.';});
+    import('/assets/js/purchase-capacity-ui.mjs').then(({initializeCapacitySearch})=>{capacitySearch=initializeCapacitySearch({projects,onChange:render});$('capacity-toggle').disabled=false;$('capacity-toggle').hidden=values().evidenceMode!=='published';}).catch(()=>{$('capacity-summary').textContent='El buscador financiero no pudo cargar. Puedes seguir utilizando los filtros del catálogo.';});
   }catch(error){
     grid.replaceChildren();count.textContent='';$('catalog-feedback').hidden=false;$('empty-reset').hidden=true;
     message.textContent=['TimeoutError','AbortError'].includes(error.name)?'La carga tardó demasiado. Puedes explorar las fichas en el directorio siguiente.':'No pudimos cargar el catálogo. Puedes explorar las fichas en el directorio siguiente.';
