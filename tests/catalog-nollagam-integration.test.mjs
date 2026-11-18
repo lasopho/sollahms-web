@@ -8,7 +8,7 @@ import {projectOffer,projectFacts,commercialLayerNote} from '../assets/js/catalo
 
 const catalogue=JSON.parse(readFileSync(new URL('../data/proyectos.json',import.meta.url)));
 const facets=JSON.parse(readFileSync(new URL('../data/catalog-facets.json',import.meta.url)));
-const ownerBytes=readFileSync(new URL('../data/nollagam-commercial.json',import.meta.url));
+const ownerBytes=readFileSync(new URL('../data/catalog-nollagam-owner-quotes.json',import.meta.url));
 const owner=JSON.parse(ownerBytes);
 const originals=catalogue.map(project=>({...project,_facets:facets.projects[project.slug]}));
 const layer=await loadNollagamOwnerQuoteContexts(originals,{cryptoImpl:webcrypto,fetchImpl:async()=>({
