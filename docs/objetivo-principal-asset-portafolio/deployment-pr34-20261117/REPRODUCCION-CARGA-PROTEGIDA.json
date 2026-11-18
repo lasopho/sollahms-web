@@ -1,0 +1,37 @@
+{
+  "deploymentId": "dpl_B7PfYYNveGXD5pjns6sg6yAqMHL7",
+  "sourceMerge": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+  "focusedURL": "https://project-wrapp-8bwqnl4p5-lsandoval2-8260s-projects.vercel.app/proyectos.html?q=Don%20Pepe&precio_min=3500&precio_max=3600&dormitorios=2",
+  "expected": "Don Pepe2D UF3562 from certified existing quote",
+  "observed": "0 de131 with both quote-source warnings",
+  "sameOriginSourceResponses": [
+    {
+      "path": "/data/catalog-euro-owner-quotes.json",
+      "status": 302
+    },
+    {
+      "path": "/data/catalog-nollagam-owner-quotes.json",
+      "status": 302
+    }
+  ],
+  "sameOriginSourceFailures": [
+    {
+      "path": "/data/catalog-euro-owner-quotes.json",
+      "error": "net::ERR_FAILED",
+      "blockedReason": null
+    },
+    {
+      "path": "/data/catalog-nollagam-owner-quotes.json",
+      "error": "net::ERR_FAILED",
+      "blockedReason": null
+    }
+  ],
+  "focusedCaptureTruncated": false,
+  "firstUnfocusedCaptureTruncated": true,
+  "firstCaptureNotUsedToClaimNoNetworkFailures": true,
+  "normalBrowserNavigationToEuroJSONVisible": true,
+  "headerOrCookieOrTokenFieldsNotInspectedOrExported": true,
+  "CDPNetworkRuntimeDisabled": true,
+  "promotionBlocked": true,
+  "financialScenariosNotTested": true
+}

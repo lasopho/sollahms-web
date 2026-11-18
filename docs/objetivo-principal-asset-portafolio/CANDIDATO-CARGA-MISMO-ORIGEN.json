@@ -1,0 +1,128 @@
+{
+  "recordedAtUTC": "2026-11-18T01:36:26.272981+00:00",
+  "status": "CORRECCION_LOCAL_REVISADA_SIN_PUSH_PR",
+  "repository": "lasopho/sollahms-web",
+  "branch": "codex/cotizaciones-mismo-origen-20261117",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "localCommit": "9700d65fed15ee56584987573f1493b1fb52c9a4",
+  "parentAndBaseCommit": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+  "baseBranch": "codex/footer-sin-frase-20261116",
+  "tree": "06ba531790509767eea856b703160d02cbf5fa65",
+  "workingTreeClean": true,
+  "remoteBranchExists": false,
+  "pullRequest": null,
+  "files": [
+    {
+      "path": "assets/js/catalog-euro-owner-quotes.mjs",
+      "bytes": 11494,
+      "sha256": "da3e2ba49ef55cb294b8c2520d6920cf934fa6472b0470d00dee7c4df43a59d1"
+    },
+    {
+      "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "bytes": 8913,
+      "sha256": "75c0501ca894ee7884a61af75a3fc751445464eed2f40656be2c73b279d19321"
+    },
+    {
+      "path": "tests/catalog-euro-owner-quotes.test.mjs",
+      "bytes": 17320,
+      "sha256": "19ad523781e0e2d1d34ace374ced32a45c2d1d4d5aae6c694d9d2da8f176629b"
+    },
+    {
+      "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+      "bytes": 20439,
+      "sha256": "23ac673fbdc24df22342ae4a0b92245ca4b85fbe84006b35d4d585032a3b4a6e"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 3891,
+      "sha256": "37e8a35f593044a41d0c7102f950f2ad498cb3eb443c03df2fe8da413fcd2938"
+    }
+  ],
+  "fileCount": 5,
+  "runtimeChangedFiles": 2,
+  "runtimeChange": "credentials:omit to same-origin only in two fixed relative public JSON requests; browser-managed same-origin session, no credential extraction.",
+  "automaticDeploymentsDisabledForSourceAndBase": true,
+  "sourcePublicProjectionsUnchanged": {
+    "data/catalog-euro-owner-quotes.json": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272",
+    "data/catalog-nollagam-owner-quotes.json": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee"
+  },
+  "preservation": {
+    "protectedFilesUnchanged": 155,
+    "originalSourcesUnchanged": 21,
+    "EuroExistingPrices": 21,
+    "NollagamExistingPrices": 17,
+    "newCommercialEvidence": 0,
+    "LebenHistoricalClosures": 0,
+    "mainProductionDomainsSSOEnvironmentUnchanged": true
+  },
+  "regression": {
+    "expectedRedFailures": 2,
+    "targetedLoaderTestsPassed": 10,
+    "generalSuitesRepeated": false,
+    "realChromeOnCorrectionExecuted": false,
+    "prior49Euro19Nollagam23Integration7ChromeAreHistoricalNotRerun": true,
+    "receipt": "correccion-carga-mismo-origen-20261117/RECIBO-CORRECCION.json",
+    "receiptSHA256": "11666a33e033a8081933a71da6e7aa8563837213d738f00bc2fcee8f3f5578a2"
+  },
+  "independentReview": {
+    "verdict": "APROBADO_PARA_INTEGRACION_LOCAL",
+    "blockingFindings": 0,
+    "reviewerTask": "/root/recuperacion_campo_ecasa",
+    "limits": [
+      "Correction not yet verified in a new real protected deployment.",
+      "CurrentB7 retains old36ef source and must not be promoted.",
+      "Metro warning is preexisting by literal code/data comparison9e-to36ef, not a dynamic production certification."
+    ]
+  },
+  "securityPreserved": [
+    "Fixed same-origin public paths only",
+    "redirect:error preserved",
+    "SHA256 pins and schema allowlists preserved",
+    "No raw fallback",
+    "No custom credential headers or credential/cookie/token extraction",
+    "No SSO/protection/environment setting changes"
+  ],
+  "nextAction": {
+    "step": "Primer push de la corrección local de carga y nuevo PR Draft",
+    "authorization": "NO_SOLICITADA_AUN",
+    "candidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
+    "newDeploymentPromotionAuthorized": false
+  },
+  "production": {
+    "sha": "9e8212264e0bac24f392d8340d6e55eabb17499a",
+    "deploymentId": "dpl_Gm75zZeuxYTqfnrJdHcKREqoQUUQ",
+    "unchanged": true
+  },
+  "newDeploymentAuthorizationsRemaining": 0,
+  "publicPackage": {
+    "path": "/private/tmp/sollahms-cotizaciones-mismo-origen-release-20261117",
+    "status": "PREPARADO_LOCAL_PENDIENTE_AUTORIZACIONES",
+    "sourceCommit": "9700d65fed15ee56584987573f1493b1fb52c9a4",
+    "inventorySHA256": "ded2e412ecdca2087562c8fdb44533073dc6b740430089eba341804d6d382834",
+    "fileCount": 1672,
+    "staticFiles": 1614,
+    "functionFiles": 57,
+    "functionBundles": 7,
+    "configFiles": 1,
+    "changedFromB7Files": [
+      "static/assets/js/catalog-euro-owner-quotes.mjs",
+      "static/assets/js/catalog-nollagam-quote-consumer.mjs"
+    ],
+    "identicalToB7Files": 1670,
+    "fichesUnchanged": 131,
+    "publicProjectionsUnchanged": true,
+    "configAndPatio410Unchanged": true,
+    "buildGeneratorsChromeOrDeploymentsExecuted": false,
+    "manifest": "correccion-carga-mismo-origen-20261117/paquete/MANIFIESTO-CANDIDATO-MISMO-ORIGEN.json",
+    "receipt": "correccion-carga-mismo-origen-20261117/paquete/RECIBO-PREPARACION-LOCAL.json"
+  },
+  "goal131Complete": false,
+  "documentaryWhitespace": {
+    "findings": 4,
+    "files": [
+      "correccion-carga-mismo-origen-20261117/36ef-a-9700.patch",
+      "correccion-carga-mismo-origen-20261117/ANTES-PRUEBAS-NUEVAS.log"
+    ],
+    "reason": "Two exact Git patch context lines and two original red-test output lines retained byte-for-byte; source application diff passed. Authored documentation must pass excluding only these preserved artifacts."
+  }
+}

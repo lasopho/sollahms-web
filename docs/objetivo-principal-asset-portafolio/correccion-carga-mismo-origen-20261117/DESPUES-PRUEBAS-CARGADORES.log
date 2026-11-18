@@ -1,0 +1,18 @@
+✔ source transport is pinned before records can be constructed (6.487333ms)
+✔ same-origin authentication barrier serves only the pinned Euro public fixture (2.401ms)
+✔ raw owner payload is rejected without retrying the private original endpoint (0.710375ms)
+✔ source transport failure does not revert owner Euro price queries to legacy matching (3.644167ms)
+✔ loader verifies the public projection pin and retains private-original provenance and dates (5.068541ms)
+✔ same-origin authentication barrier serves only the pinned Nollagam public fixture (3.38725ms)
+✔ schema rejection remains independent of a transport digest that is accepted by the pin guard (1.464791ms)
+✔ failed public projection loading makes exactly one request and never falls back to the private original (0.712125ms)
+✔ pin mismatch is rejected before normalization and gives seven unavailable contexts (1.108834ms)
+✔ HTTP, fetch, crypto, redirect and identity-normalization failures never reactivate legacy prices (3.07625ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 147.844583

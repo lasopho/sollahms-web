@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-11-18T01:33:21.521141+00:00",
+  "status": "CORRECCION_LOCAL_VERIFICADA_SIN_COMMIT_PUSH_PR_DEPLOY",
+  "checkout": "/private/tmp/sollahms-referencias-documentales-131-20261117",
+  "branch": "codex/cotizaciones-mismo-origen-20261117",
+  "baseCommit": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+  "problem": {
+    "rootObservedDeployment": "dpl_B7PfYYNveGXD5pjns6sg6yAqMHL7",
+    "rootReportedEvidence": "Both public JSON requests received302 and ERR_FAILED while normal authenticated navigation returned the Euro projection. Root observed CDP URL/status only, without reading cookies/headers/tokens. Not reobserved by this agent.",
+    "cause": "Explicit omit suppresses same-origin authentication; redirect:error rejects the login redirect."
+  },
+  "change": {
+    "ownedFiles": [
+      "assets/js/catalog-euro-owner-quotes.mjs",
+      "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "tests/catalog-euro-owner-quotes.test.mjs",
+      "tests/catalog-nollagam-quote-consumer.test.mjs"
+    ],
+    "runtime": "Exactly one credentials omit→same-origin replacement per loader; all other runtime bytes identical to base.",
+    "redirectPolicy": "error unchanged",
+    "URLs": "Relative public projection URLs unchanged",
+    "pinsSchemasPricesDatesIDsMatchingUnknowns": "Unchanged",
+    "rawFallback": "Absent, unchanged",
+    "rootOwnedFileObservedOutsideAgentScope": "vercel.json, changed by root; not edited by this agent."
+  },
+  "files": [
+    {
+      "path": "assets/js/catalog-euro-owner-quotes.mjs",
+      "beforeBytes": 11487,
+      "beforeSHA256": "81edb95704b0516005902c3fd786f8566f440a2f6b1cda8e7c5bb2806bb858d7",
+      "bytes": 11494,
+      "sha256": "da3e2ba49ef55cb294b8c2520d6920cf934fa6472b0470d00dee7c4df43a59d1"
+    },
+    {
+      "path": "assets/js/catalog-nollagam-quote-consumer.mjs",
+      "beforeBytes": 8906,
+      "beforeSHA256": "b995850c613e305eb699b2a5f7cced8914f2b361e41b7fb5bb4c5d254f8114f1",
+      "bytes": 8913,
+      "sha256": "75c0501ca894ee7884a61af75a3fc751445464eed2f40656be2c73b279d19321"
+    },
+    {
+      "path": "tests/catalog-euro-owner-quotes.test.mjs",
+      "beforeBytes": 16127,
+      "beforeSHA256": "93c4498ebed8e75613406818958cce3189b9544db9319bb47a27338b2947ed64",
+      "bytes": 17320,
+      "sha256": "19ad523781e0e2d1d34ace374ced32a45c2d1d4d5aae6c694d9d2da8f176629b"
+    },
+    {
+      "path": "tests/catalog-nollagam-quote-consumer.test.mjs",
+      "beforeBytes": 19009,
+      "beforeSHA256": "565d061c9865cbafe31c9cdce91f583aaf20f6df5e52a1beea9047fb573b2316",
+      "bytes": 20439,
+      "sha256": "23ac673fbdc24df22342ae4a0b92245ca4b85fbe84006b35d4d585032a3b4a6e"
+    }
+  ],
+  "beforeReceipt": {
+    "path": "/private/tmp/sollahms-pr34-same-origin-fix-20261117/RECIBO-ANTES.json",
+    "bytes": 1651,
+    "sha256": "08a065f789e89b2afeb9e4fd3bcc145050c7b8ecb19462b0bb580c339a81d6cf"
+  },
+  "tests": {
+    "red": {
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=same-origin authentication barrier",
+        "tests/catalog-euro-owner-quotes.test.mjs",
+        "tests/catalog-nollagam-quote-consumer.test.mjs"
+      ],
+      "exitCode": 1,
+      "executed": 2,
+      "passed": 0,
+      "failedExpected": 2,
+      "log": {
+        "path": "/private/tmp/sollahms-pr34-same-origin-fix-20261117/ANTES-PRUEBAS-NUEVAS.log",
+        "bytes": 2297,
+        "sha256": "553499ea4ebc45fe7a304be53f16149ea479d6e31a75a7225eb713c3da4c0473"
+      }
+    },
+    "green": {
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=same-origin authentication barrier|source transport is pinned|raw owner payload is rejected|source transport failure|loader verifies the public projection pin|schema rejection remains independent|failed public projection loading|pin mismatch is rejected|HTTP, fetch, crypto, redirect",
+        "tests/catalog-euro-owner-quotes.test.mjs",
+        "tests/catalog-nollagam-quote-consumer.test.mjs"
+      ],
+      "exitCode": 0,
+      "executed": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "EuroSelected": 4,
+      "NollagamSelected": 6,
+      "newRegressions": 2,
+      "existingSelectedLoaderChecks": 8,
+      "log": {
+        "path": "/private/tmp/sollahms-pr34-same-origin-fix-20261117/DESPUES-PRUEBAS-CARGADORES.log",
+        "bytes": 1134,
+        "sha256": "92d12530c444eb24af6bdb51df255f3aad2946a5a3a0b32ef09c3157bba63bba"
+      }
+    },
+    "countPolicy": "Red2 and green10 overlap. No total12 unique claim; no complete suites49/19/23 or112/83/23 repeated.",
+    "authenticationSimulation": "Only same-origin mode receives pinned public fixture; TypeError/302 block with one public request and no raw fallback. No real cookie/token/header/session access.",
+    "diffCheck": "Passed only four owned files"
+  },
+  "publicProjectionPinsUnchanged": {
+    "data/catalog-euro-owner-quotes.json": "0e8df1048d5ed5e1c6e2e3fff764d9fd6a4bb8ba78a73dcfc77b6ea108eb2272",
+    "data/catalog-nollagam-owner-quotes.json": "12412065e8aa418b148795ca1af2cf5edbdd67a583de0f2569256cd953051eee"
+  },
+  "independentReadReview": {
+    "reviewer": "documentary_contract_review",
+    "result": "No blocking finding; runtime delta exactly mode replacement; new regressions meaningful; no auth data read.",
+    "testsExecutedByReviewer": 0
+  },
+  "references": [
+    "https://vercel.com/docs/deployment-protection",
+    "https://vercel.com/docs/deployment-protection/methods-to-protect-deployments/vercel-authentication"
+  ],
+  "limits": [
+    "This simulated-barrier verification is not a new Vercel authentication-session or deployment certification.",
+    "The immutable deployed artifact and prepared package are not changed by this local fix.",
+    "No new price, validity, unit/stock or global131 certification.",
+    "Root owns subsequent configuration, commit/release preparation and any external action."
+  ],
+  "operations": {
+    "applicationFilesEdited": 4,
+    "otherApplicationFilesEdited": 0,
+    "auditWrites": 0,
+    "stageWrites": 0,
+    "builds": 0,
+    "generators": 0,
+    "chromeActions": 0,
+    "realNetworkRequests": 0,
+    "authCookiesHeadersTokensRead": false,
+    "gitWrites": 0,
+    "commits": 0,
+    "pushes": 0,
+    "PRMutations": 0,
+    "deployments": 0,
+    "promotions": 0
+  }
+}

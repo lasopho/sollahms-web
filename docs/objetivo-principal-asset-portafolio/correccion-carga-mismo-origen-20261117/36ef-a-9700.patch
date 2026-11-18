@@ -1,0 +1,127 @@
+diff --git a/assets/js/catalog-euro-owner-quotes.mjs b/assets/js/catalog-euro-owner-quotes.mjs
+index 7efd7ff2859fe95463d6af3b3c049055ebac9822..f62d9b6b71a0d8cd231eab4b2750328a0a7b1016 100644
+--- a/assets/js/catalog-euro-owner-quotes.mjs
++++ b/assets/js/catalog-euro-owner-quotes.mjs
+@@ -59,7 +59,7 @@ export async function parseEuroOwnerSource(text){
+ }
+ export async function loadEuroOwnerSource(fetchImpl=globalThis.fetch){
+   if(typeof fetchImpl!=='function')fail('fetch unavailable');
+-  const response=await fetchImpl(EURO_OWNER_SOURCE_PATH,{signal:AbortSignal.timeout(10000),credentials:'omit',redirect:'error'});
++  const response=await fetchImpl(EURO_OWNER_SOURCE_PATH,{signal:AbortSignal.timeout(10000),credentials:'same-origin',redirect:'error'});
+   if(!response?.ok)fail('source unavailable');
+   return parseEuroOwnerSource(await response.text());
+ }
+diff --git a/assets/js/catalog-nollagam-quote-consumer.mjs b/assets/js/catalog-nollagam-quote-consumer.mjs
+index 23fd6e1b0e7741bb5662fc6491c323d0d57bed05..ea202b360a5af459c98638d1b8844ba28f7d124d 100644
+--- a/assets/js/catalog-nollagam-quote-consumer.mjs
++++ b/assets/js/catalog-nollagam-quote-consumer.mjs
+@@ -56,7 +56,7 @@ export async function loadNollagamOwnerQuoteContexts(publishedProjects,{fetchImp
+   try{
+     if(typeof fetchImpl!=='function'||!cryptoImpl?.subtle?.digest)failure('loader-unavailable');
+     const response=await fetchImpl(NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,
+-      {cache:'no-store',credentials:'omit',redirect:'error',signal:AbortSignal.timeout(10000)});
++      {cache:'no-store',credentials:'same-origin',redirect:'error',signal:AbortSignal.timeout(10000)});
+     if(response?.ok!==true||response.redirected===true)failure('source-unavailable');
+     const bytes=new Uint8Array(await response.arrayBuffer());
+     if(!bytes.length||bytes.byteLength>100000)failure('source-size-invalid');
+diff --git a/tests/catalog-euro-owner-quotes.test.mjs b/tests/catalog-euro-owner-quotes.test.mjs
+index 9c541acc56d6606240493a6942779e7ef7ec997d..9d7f698bc128cb0bf84d4857fda4bb21eb6faaa6 100644
+--- a/tests/catalog-euro-owner-quotes.test.mjs
++++ b/tests/catalog-euro-owner-quotes.test.mjs
+@@ -54,12 +54,35 @@ test('source transport is pinned before records can be constructed',async()=>{
+   const calls=[];
+   const loaded=await loadEuroOwnerSource(async(path,options)=>{calls.push({path,options});return {ok:true,text:async()=>text};});
+   assert.equal(calls.length,1);assert.equal(calls[0].path,'/data/catalog-euro-owner-quotes.json');
+-  assert.equal(calls[0].options.credentials,'omit');assert.equal(calls[0].options.redirect,'error');
++  assert.equal(calls[0].options.credentials,'same-origin');assert.equal(calls[0].options.redirect,'error');
+   assert.equal(bindEuroOwnerQuotes(original,loaded).length,131);
+   await assert.rejects(parseEuroOwnerSource(text+' '),/SHA-256 mismatch/);
+   assert.throws(()=>bindEuroOwnerQuotes(original,{...source}),/verified source required/);
+ });
+ 
++test('same-origin authentication barrier serves only the pinned Euro public fixture',async()=>{
++  const calls=[];
++  const loaded=await loadEuroOwnerSource(async(path,options)=>{
++    calls.push({path,credentials:options.credentials,redirect:options.redirect});
++    if(options.credentials!=='same-origin')throw new TypeError('simulated authentication redirect blocked');
++    assert.equal(options.redirect,'error');assert.equal(Object.hasOwn(options,'headers'),false);
++    return {ok:true,text:async()=>text};
++  });
++  assert.deepEqual(calls,[{path:EURO_OWNER_SOURCE_PATH,credentials:'same-origin',redirect:'error'}]);
++  assert.equal(loaded.publicSHA256,EURO_OWNER_SOURCE_SHA256);
++  for(const respond of [
++    async()=>{throw new TypeError('simulated authentication redirect blocked');},
++    async()=>({ok:false,status:302}),
++  ]){
++    const paths=[];
++    await assert.rejects(loadEuroOwnerSource(async(path,options)=>{
++      paths.push(path);assert.equal(options.credentials,'same-origin');assert.equal(options.redirect,'error');
++      return respond();
++    }),/simulated authentication redirect blocked|source unavailable/);
++    assert.deepEqual(paths,[EURO_OWNER_SOURCE_PATH]);
++  }
++});
++
+ test('public projection contains exactly the original21 owner prices and permitted identity fields',()=>{
+   assert.equal(createHash('sha256').update(originalText).digest('hex'),EURO_OWNER_ORIGINAL_SOURCE_SHA256);
+   assert.equal(createHash('sha256').update(text).digest('hex'),EURO_OWNER_SOURCE_SHA256);
+diff --git a/tests/catalog-nollagam-quote-consumer.test.mjs b/tests/catalog-nollagam-quote-consumer.test.mjs
+index bdbf8095f2353d522e367c01db95416178b87e62..e929e182d5c1b84fa49c77d16d02468819a279ca 100644
+--- a/tests/catalog-nollagam-quote-consumer.test.mjs
++++ b/tests/catalog-nollagam-quote-consumer.test.mjs
+@@ -30,7 +30,7 @@ test('loader verifies the public projection pin and retains private-original pro
+     fetchImpl:async(url,options)=>{calls.push({url,options});return sourceFetch();}});
+   assert.equal(calls.length,1);assert.equal(calls[0].url,NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH);
+   assert.equal(calls[0].url,'/data/catalog-nollagam-owner-quotes.json');
+-  assert.equal(calls[0].options.cache,'no-store');assert.equal(calls[0].options.credentials,'omit');
++  assert.equal(calls[0].options.cache,'no-store');assert.equal(calls[0].options.credentials,'same-origin');
+   assert.equal(calls[0].options.redirect,'error');assert.ok(calls[0].options.signal instanceof AbortSignal);
+   assert.equal(result.status,'ready');assert.equal(Object.keys(result.bySlug).length,7);
+   for(const [slug,context] of Object.entries(result.bySlug)){
+@@ -49,6 +49,32 @@ test('loader verifies the public projection pin and retains private-original pro
+   }
+ });
+ 
++test('same-origin authentication barrier serves only the pinned Nollagam public fixture',async()=>{
++  const calls=[];
++  const result=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
++    fetchImpl:async(url,options)=>{
++      calls.push({url,credentials:options.credentials,redirect:options.redirect});
++      if(options.credentials!=='same-origin')throw new TypeError('simulated authentication redirect blocked');
++      assert.equal(options.redirect,'error');assert.equal(Object.hasOwn(options,'headers'),false);
++      return sourceFetch();
++    }});
++  assert.deepEqual(calls,[{url:NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH,credentials:'same-origin',redirect:'error'}]);
++  assert.equal(result.status,'ready');assert.equal(Object.keys(result.bySlug).length,7);
++  for(const respond of [
++    async()=>{throw new TypeError('simulated authentication redirect blocked');},
++    async()=>({ok:false,status:302}),
++  ]){
++    const paths=[];
++    const blocked=await loadNollagamOwnerQuoteContexts(published,{cryptoImpl:webcrypto,
++      fetchImpl:async(url,options)=>{
++        paths.push(url);assert.equal(options.credentials,'same-origin');assert.equal(options.redirect,'error');
++        return respond();
++      }});
++    assert.deepEqual(paths,[NOLLAGAM_OWNER_PUBLIC_SOURCE_PATH]);assert.equal(blocked.status,'unavailable');
++    for(const context of Object.values(blocked.bySlug))assert.equal(context.record,null);
++  }
++});
++
+ test('public allowlist preserves exactly the seventeen original owner amounts and no project descriptions or URLs',()=>{
+   assert.equal(createHash('sha256').update(originalBytes).digest('hex'),NOLLAGAM_OWNER_SOURCE_SHA256);
+   assert.equal(projection.originalSourceSHA256,NOLLAGAM_OWNER_SOURCE_SHA256);
+diff --git a/vercel.json b/vercel.json
+index 68ccb1a3bf7697d98dc59ab171528a67033ed829..a67c8775183d4ce5d70b22d0d31a1076262d1f8e 100644
+--- a/vercel.json
++++ b/vercel.json
+@@ -78,7 +78,8 @@
+       "codex/whatsapp-produccion-20261108": false,
+       "codex/footer-whatsapp-20261112": false,
+       "codex/referencias-documentales-131-20261117": false,
+-      "codex/proyecciones-publicas-cotizaciones-20261117": false
++      "codex/proyecciones-publicas-cotizaciones-20261117": false,
++      "codex/cotizaciones-mismo-origen-20261117": false
+     }
+   }
+ }

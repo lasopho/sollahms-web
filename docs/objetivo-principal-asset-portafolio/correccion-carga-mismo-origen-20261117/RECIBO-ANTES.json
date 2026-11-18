@@ -1,0 +1,42 @@
+{
+  "createdAtUTC": "2026-11-18T01:30:29.460604+00:00",
+  "phase": "New regressions against unchanged omit loaders",
+  "sourceBase": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+  "command": [
+    "node",
+    "--test",
+    "--test-name-pattern=same-origin authentication barrier",
+    "tests/catalog-euro-owner-quotes.test.mjs",
+    "tests/catalog-nollagam-quote-consumer.test.mjs"
+  ],
+  "exitCode": 1,
+  "log": {
+    "path": "/private/tmp/sollahms-pr34-same-origin-fix-20261117/ANTES-PRUEBAS-NUEVAS.log",
+    "bytes": 2297,
+    "sha256": "553499ea4ebc45fe7a304be53f16149ea479d6e31a75a7225eb713c3da4c0473"
+  },
+  "files": [
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/catalog-euro-owner-quotes.mjs",
+      "bytes": 11487,
+      "sha256": "81edb95704b0516005902c3fd786f8566f440a2f6b1cda8e7c5bb2806bb858d7"
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/assets/js/catalog-nollagam-quote-consumer.mjs",
+      "bytes": 8906,
+      "sha256": "b995850c613e305eb699b2a5f7cced8914f2b361e41b7fb5bb4c5d254f8114f1"
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-euro-owner-quotes.test.mjs",
+      "bytes": 17313,
+      "sha256": "08fe3c5dab80be82cc743863ad05965e568e7930b30fdc88f29c985a478a6415"
+    },
+    {
+      "path": "/private/tmp/sollahms-referencias-documentales-131-20261117/tests/catalog-nollagam-quote-consumer.test.mjs",
+      "bytes": 20432,
+      "sha256": "1d66f1df98ae25fe1f32df3f5107026ecfe82d7238e001dd54c2ea5333eb2ae3"
+    }
+  ],
+  "realCookiesTokensCredentialsRead": false,
+  "networkRequests": 0
+}

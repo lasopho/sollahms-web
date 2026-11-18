@@ -136,7 +136,7 @@
     "draftPRCreated": true,
     "ReadyForReview": true,
     "merge": true,
-    "deployment": false,
+    "deployment": true,
     "publication": false,
     "forcePush": false,
     "mainModified": false
@@ -170,12 +170,10 @@
     "outputBytesUnchangedAfterMerge": true
   },
   "nextAction": {
-    "step": "Deployment de revisión único, prebuilt production sin dominios",
-    "authorization": "SOLICITADA_PENDIENTE_DE_RESPUESTA",
-    "deploymentPublicationAuthorized": false,
-    "promotionRequiresSeparateAuthorization": true,
-    "interventionId": "AUTH-DEPLOYMENT-PR34-20261117-01",
-    "doNotRepeatQuestion": true
+    "step": "Primer push de la corrección local de carga y nuevo PR Draft",
+    "authorization": "NO_SOLICITADA_AUN",
+    "candidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
+    "newDeploymentPromotionAuthorized": false
   },
   "global131ObjectiveComplete": false,
   "historicalLebenPendingIDsUnchanged": 313,
@@ -209,7 +207,7 @@
     "authorization": "AUTORIZADO_EJECUTADO_VERIFICADO",
     "interventionId": "AUTH-MERGE-PR34-20261117-01"
   },
-  "verifiedAtUTC": "2026-11-18T01:11:24.254449+00:00",
+  "verifiedAtUTC": "2026-11-18T01:36:26.272981+00:00",
   "readyTransition": {
     "authorizationReply": "Autorizar Ready for Review",
     "interventionId": "AUTH-READY-PR34-20261117-01",
@@ -234,5 +232,32 @@
     "sourceBranchPreserved": true,
     "mainUnchanged": true
   },
-  "targetCurrentSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335"
+  "targetCurrentSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+  "reviewDeployment": {
+    "id": "dpl_B7PfYYNveGXD5pjns6sg6yAqMHL7",
+    "url": "https://project-wrapp-8bwqnl4p5-lsandoval2-8260s-projects.vercel.app",
+    "sourceMergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+    "readyState": "READY",
+    "target": "production",
+    "aliases": [],
+    "createdAtUTC": "2026-11-18T01:18:07.076000+00:00",
+    "readyAtUTC": "2026-11-18T01:18:14.457000+00:00",
+    "authorizedDeploymentCount": 1,
+    "createdDeploymentCount": 1,
+    "remainingDeploymentCreationAuthorizations": 0,
+    "receivedDigestFilesMatched": 1672,
+    "missing": 0,
+    "extra": 0,
+    "differentDigestFiles": 0,
+    "lambdaRoutes": 7,
+    "productionDomainsUnchanged": true,
+    "applicationSmoke": "131 projects loaded; two quote-source authentication redirects, isolated query0/131",
+    "promotionStatus": "BLOQUEADO_PARA_PROMOCION",
+    "newDefect": "Own public JSON fetches omit same-origin authentication; both302 and ERR_FAILED, no pin mismatch or altered artifact.",
+    "evidence": "deployment-pr34-20261117/REPRODUCCION-CARGA-PROTEGIDA.json",
+    "financialScenariosCertified": false
+  },
+  "supersededLocallyByCandidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
+  "checkoutCurrentBranch": "codex/cotizaciones-mismo-origen-20261117",
+  "checkoutCurrentHEAD": "9700d65fed15ee56584987573f1493b1fb52c9a4"
 }

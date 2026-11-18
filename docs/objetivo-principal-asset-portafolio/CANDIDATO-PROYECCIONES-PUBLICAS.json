@@ -6,7 +6,7 @@
   "baseBranch": "codex/footer-sin-frase-20261116",
   "baseCommit": "cb3597102e63f02356cca00cd3612f9afc77afcb",
   "baseMeaning": "Authorized PR33merge, not the still-live production9e.",
-  "status": "PR34_FUSIONADO_NO_DESPLEGADO",
+  "status": "PR34_DESPLEGADO_REVISION_BLOQUEADO_PARA_PROMOCION",
   "fileCount": 8,
   "files": [
     {
@@ -118,8 +118,8 @@
     "unchanged": true
   },
   "remainingAuthorization": [
-    "Crear un deployment de revisión sin dominios",
-    "Promoción/publicación independiente posterior"
+    "Primer push y nuevo PR Draft de la corrección local",
+    "Ready, merge, deployment nuevo y promoción con permisos independientes posteriores"
   ],
   "global131ObjectiveComplete": false,
   "preview": "http://127.0.0.1:8769/proyectos.html?q=Costanera&precio_min=5000&precio_max=5100&dormitorios=3",
@@ -141,7 +141,7 @@
     "pullRequest": "https://github.com/lasopho/sollahms-web/pull/34"
   },
   "remoteSHA": "3082a859fd4b0600478a4b8a7d14cff16067853b",
-  "verifiedAtUTC": "2026-11-18T01:11:24.254449+00:00",
+  "verifiedAtUTC": "2026-11-18T01:36:26.272981+00:00",
   "pullRequest": {
     "number": 34,
     "url": "https://github.com/lasopho/sollahms-web/pull/34",
@@ -179,12 +179,10 @@
     "noImplicitApproval": true
   },
   "nextAction": {
-    "step": "Deployment de revisión único, prebuilt production sin dominios",
-    "authorization": "SOLICITADA_PENDIENTE_DE_RESPUESTA",
-    "deploymentPublicationAuthorized": false,
-    "promotionRequiresSeparateAuthorization": true,
-    "interventionId": "AUTH-DEPLOYMENT-PR34-20261117-01",
-    "doNotRepeatQuestion": true
+    "step": "Primer push de la corrección local de carga y nuevo PR Draft",
+    "authorization": "NO_SOLICITADA_AUN",
+    "candidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json",
+    "newDeploymentPromotionAuthorized": false
   },
   "mergePreparation": {
     "recordedAtUTC": "2026-11-18T01:06:45.731415+00:00",
@@ -234,5 +232,30 @@
     "treeEqualsCertifiedCandidate": true,
     "sourceBranchPreserved": true,
     "mainUnchanged": true
-  }
+  },
+  "reviewDeployment": {
+    "id": "dpl_B7PfYYNveGXD5pjns6sg6yAqMHL7",
+    "url": "https://project-wrapp-8bwqnl4p5-lsandoval2-8260s-projects.vercel.app",
+    "sourceMergeSHA": "36ef9d9baec37d92cdda8ac6acbcaf2cac959335",
+    "readyState": "READY",
+    "target": "production",
+    "aliases": [],
+    "createdAtUTC": "2026-11-18T01:18:07.076000+00:00",
+    "readyAtUTC": "2026-11-18T01:18:14.457000+00:00",
+    "authorizedDeploymentCount": 1,
+    "createdDeploymentCount": 1,
+    "remainingDeploymentCreationAuthorizations": 0,
+    "receivedDigestFilesMatched": 1672,
+    "missing": 0,
+    "extra": 0,
+    "differentDigestFiles": 0,
+    "lambdaRoutes": 7,
+    "productionDomainsUnchanged": true,
+    "applicationSmoke": "131 projects loaded; two quote-source authentication redirects, isolated query0/131",
+    "promotionStatus": "BLOQUEADO_PARA_PROMOCION",
+    "newDefect": "Own public JSON fetches omit same-origin authentication; both302 and ERR_FAILED, no pin mismatch or altered artifact.",
+    "evidence": "deployment-pr34-20261117/REPRODUCCION-CARGA-PROTEGIDA.json",
+    "financialScenariosCertified": false
+  },
+  "supersededLocallyByCandidate": "CANDIDATO-CARGA-MISMO-ORIGEN.json"
 }
