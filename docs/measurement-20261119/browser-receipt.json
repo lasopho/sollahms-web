@@ -1,0 +1,128 @@
+{
+  "createdAt": "2026-11-19T15:06:00.867Z",
+  "mode": "isolated local browser, no real provider/API requests",
+  "browser": "159.0.8154.13",
+  "framework": "Playwright (installed runtime; Puppeteer unavailable)",
+  "sourceStatic": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-measurement-private/candidate-v2/.vercel/output/static",
+  "configShipped": {
+    "enabled": false,
+    "analyticsEnabled": false,
+    "replayEnabled": false,
+    "blankIds": true
+  },
+  "runtimeSha256": "d91b6c40c2f34fb433d71ce6d9837ea30fffaa1197ccf8fd925b255835cea550",
+  "checks": [
+    {
+      "name": "disabled UI / no overflow 1440",
+      "passed": true,
+      "viewport": 1440,
+      "providerRequests": 0,
+      "pageErrors": []
+    },
+    {
+      "name": "disabled UI / no overflow 390",
+      "passed": true,
+      "viewport": 390,
+      "providerRequests": 0,
+      "pageErrors": []
+    },
+    {
+      "name": "disabled UI / no overflow 320",
+      "passed": true,
+      "viewport": 320,
+      "providerRequests": 0,
+      "pageErrors": []
+    },
+    {
+      "name": "ready, unanswered and rejection load no SDK",
+      "passed": true,
+      "providerRequests": 0
+    },
+    {
+      "name": "independent unchecked UI: Analytics only and sanitized page_view",
+      "passed": true,
+      "providerRequests": 1,
+      "pageViews": 1
+    },
+    {
+      "name": "Replay only, root masked before SDK; withdrawal reloads and prevents restart",
+      "passed": true,
+      "providerRequests": 1,
+      "reloaded": true
+    },
+    {
+      "name": "Clarity forbidden on financial tool /comparador-hipotecario.html",
+      "passed": true,
+      "providerRequests": 1,
+      "clarityRequests": 0
+    },
+    {
+      "name": "Clarity forbidden on financial tool /guia-hipotecaria.html",
+      "passed": true,
+      "providerRequests": 1,
+      "clarityRequests": 0
+    },
+    {
+      "name": "Clarity forbidden on financial tool /cuando-comprar-propiedad.html",
+      "passed": true,
+      "providerRequests": 1,
+      "clarityRequests": 0
+    },
+    {
+      "name": "Clarity forbidden on financial tool /centro-orientacion.html",
+      "passed": true,
+      "providerRequests": 1,
+      "clarityRequests": 0
+    },
+    {
+      "name": "Clarity forbidden on financial tool /beneficios-tributarios-inmobiliarios.html",
+      "passed": true,
+      "providerRequests": 1,
+      "clarityRequests": 0
+    },
+    {
+      "name": "Preview guard returns before config fetch and UI mount",
+      "passed": true,
+      "configRequests": 0,
+      "providerRequests": 0
+    },
+    {
+      "name": "rejecting analytics leaves real advisory controller functional with local accepted API",
+      "passed": true,
+      "mockApiRequests": 1,
+      "providerRequests": 0,
+      "syntheticAcknowledgementOnly": true
+    },
+    {
+      "name": "unconfirmed advisory response produces no accepted event",
+      "passed": true,
+      "mockApiRequests": 1,
+      "acceptedEvents": 0
+    },
+    {
+      "name": "real orientation controller emits only local accepted acknowledgement",
+      "passed": true,
+      "mockApiRequests": 1,
+      "acceptedEvents": 1
+    },
+    {
+      "name": "real collaboration controller emits only local accepted acknowledgement",
+      "passed": true,
+      "mockApiRequests": 1,
+      "acceptedEvents": 1
+    }
+  ],
+  "screenshots": [
+    "browser-disabled-390.png"
+  ],
+  "limitations": [
+    "Provider SDK bodies are local inert mocks; does not certify provider collection/redaction, account settings, CSP headers, delivery, CRM receipt or qualified leads.",
+    "Form inputs are synthetic; local API fixtures never send mail or persist leads.",
+    "Reload is tested as browser navigation, not as proof that a real SDK cannot send a final unload request."
+  ],
+  "passed": true,
+  "summary": {
+    "passed": 16,
+    "total": 16
+  }
+}

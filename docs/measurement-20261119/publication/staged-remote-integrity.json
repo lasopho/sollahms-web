@@ -1,0 +1,136 @@
+{
+  "observedAt": "2026-11-19T14:04:17.856487-03:00",
+  "timezone": "America/Santiago",
+  "deployment": {
+    "id": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
+    "url": "project-wrapp-qjbb3prid-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795107618433,
+    "gitMetadata": {
+      "githubCommitSha": "b56fa12771a824dd8a4d581dc0c9c81e0938f71a",
+      "githubCommitRef": "codex/medicion-seo-geo-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    }
+  },
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "environmentClassification": {
+    "environment": "production",
+    "apiTarget": "production",
+    "basis": "Root explicitly staged Production with --skip-domain; API target production, no productionUrl, and both live domains remain on the previous deployment. No environment values retained."
+  },
+  "environmentNamesTargets": [
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "environmentMetadataMethod": "Key/target/type metadata selected from project GET; no decryption or environment-value request.",
+  "candidateInventorySHA256": "e12408412891bcf181380717ceecf56fc97067f0ff06a7aba25d26f95f12bc72",
+  "expectedFiles": 1727,
+  "receivedFiles": 1727,
+  "matchingSHA1UIDs": 1727,
+  "missing": [],
+  "extra": [],
+  "changed": [],
+  "functionFilesMatched": 57,
+  "functionBundlesMatched": 7,
+  "configurationMatched": true,
+  "productionBaselineComparison": {
+    "deploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+    "functionFilesCompared": 57,
+    "functionDifferences": [],
+    "configSameAsCertifiedProduction": true
+  },
+  "lambdaRoutes": [
+    {
+      "path": "out/api/advisory",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-84556214328b54d9ed403dbd2136545f54"
+    },
+    {
+      "path": "out/api/booking-availability",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-7e8715e1957d79c0b40876e9c2b8a253f2"
+    },
+    {
+      "path": "out/api/booking-create",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-37715283d1d34dff9c560af2735558a923"
+    },
+    {
+      "path": "out/api/collaboration",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-44c8ff303a8fd95ed1bca65cdaeb9392bd"
+    },
+    {
+      "path": "out/api/contact",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-9d6655d8ca19ab464ce29ada38194f7297"
+    },
+    {
+      "path": "out/api/orientation-contact",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-89861c02c242d42421b2c208e3d0258e7a"
+    },
+    {
+      "path": "out/api/uf",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-a3802e60162e7c7c2eb781e7e82a8b48d1"
+    }
+  ],
+  "directoryNodesNotFiles": 115,
+  "sizeMismatches": [],
+  "remoteFileSizesComparedWherePresent": 0,
+  "completeOfficialTreeSHA256": "5ae70a4b0cb61477012dbe220a7054cf15e8792853fecc9acf36b1464d541dca",
+  "method": "Complete official authenticated Vercel files GET; every leaf UID compared to pinned local SHA1. No file-content downloads.",
+  "fileContentDownloadsForInventory": 0,
+  "HTTPChecksRepeated": 0,
+  "mutations": 0,
+  "passed": true
+}

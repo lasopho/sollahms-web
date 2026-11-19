@@ -36,6 +36,7 @@ for(const form of document.querySelectorAll('[data-collaboration-form]')) {
       if(result.ok!==true||result.providerAccepted!==true||result.deliveryConfirmed!==false)throw Error('No pudimos confirmar el envío. Reintenta sin cambiar los datos o escribe a contacto@sollahms.cl.');
       completed=true;operation.complete();
       show('Solicitud aceptada para envío a Sollahms. Este aviso confirma la aceptación por el servicio de envío; no confirma la entrega al buzón. '+(kind==='inmobiliaria'?'No incorpora proyectos al catálogo ni constituye un acuerdo comercial.':'No garantiza una entrevista ni contratación.'),'success');
+      try { window.dispatchEvent(new CustomEvent('sollahms:measurement',{detail:{name:'contact_request_accepted',parameters:{form_kind:kind==='inmobiliaria'?'collaboration_company':'collaboration_person',acceptance_kind:'provider_accepted'}}})); } catch { /* Optional measurement never changes the contact outcome. */ }
     }catch(e){operation.uncertain();show(['TypeError','TimeoutError','SyntaxError','AbortError'].includes(e.name)?'No pudimos confirmar el envío. Tus datos siguen aquí. Reintenta sin cambiarlos o escribe a contacto@sollahms.cl.':e.message);}
     finally{sending=false;form.removeAttribute('aria-busy');fields.disabled=completed;button.disabled=completed;button.textContent=completed?'Aceptada para envío':label;if(focusField){focusField.closest('details')?.setAttribute('open','');focusCommercialField(focusField);}else status.focus();}
   });

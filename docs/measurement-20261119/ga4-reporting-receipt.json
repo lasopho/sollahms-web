@@ -1,0 +1,138 @@
+{
+  "capturedAt": "2026-11-19T15:36:32.115Z",
+  "propertyId": "565158660",
+  "measurementId": "G-LTFBQKVNY2",
+  "webStreamId": "16375742230",
+  "customDimensions": [
+    {
+      "parameterName": "acceptance_kind",
+      "displayName": "acceptance_kind",
+      "description": "Tipo de aceptación confirmada por la aplicación; categoría técnica sin identificar a la persona.",
+      "scope": "EVENT",
+      "disallowAdsPersonalization": false
+    },
+    {
+      "parameterName": "source_group",
+      "displayName": "source_group",
+      "description": "Grupo de origen normalizado de la interacción; valores cerrados y sin datos personales.",
+      "scope": "EVENT",
+      "disallowAdsPersonalization": false
+    },
+    {
+      "parameterName": "placement",
+      "displayName": "placement",
+      "description": "Ubicación funcional de la interacción en la página; valores cerrados y sin datos personales.",
+      "scope": "EVENT",
+      "disallowAdsPersonalization": false
+    },
+    {
+      "parameterName": "form_kind",
+      "displayName": "form_kind",
+      "description": "Tipo de formulario corporativo; categoría cerrada sin contenido introducido por el usuario.",
+      "scope": "EVENT",
+      "disallowAdsPersonalization": false
+    },
+    {
+      "parameterName": "tool_kind",
+      "displayName": "tool_kind",
+      "description": "Tipo de herramienta corporativa utilizada; categoría normalizada sin datos de la consulta.",
+      "scope": "EVENT",
+      "disallowAdsPersonalization": false
+    },
+    {
+      "parameterName": "cta_kind",
+      "displayName": "cta_kind",
+      "description": "Tipo de llamada a la acción corporativa; valores normalizados sin texto libre.",
+      "scope": "EVENT",
+      "disallowAdsPersonalization": false
+    }
+  ],
+  "keyEvent": {
+    "name": "contact_request_accepted",
+    "enabled": true,
+    "creationMethod": "with code; no derived page_view matching rule",
+    "countingMethod": "ONCE_PER_EVENT",
+    "defaultValue": null,
+    "nonPersonalizedAds": true,
+    "nonPersonalizedAdsEvidence": "Event action menu now offers Desmarcar como ANP",
+    "meaning": "Application accepted a contact request; not a qualified lead, purchase, sale or confirmed appointment"
+  },
+  "existingPurchaseEvent": "unchanged",
+  "customMetricsCreated": 0,
+  "apiVerification": {
+    "status": "ok",
+    "keyEventCount": 2,
+    "customDimensionCount": 6,
+    "defaultValueAbsent": true
+  },
+  "dimensionAdsExclusionNote": "Dimension-level disallowAdsPersonalization remains false as created; the whole property has personalized ads disabled in all 307 regions and contact event is marked ANP.",
+  "siteScriptsInstalled": 0,
+  "productionChanged": false,
+  "legalAgreementsAccepted": false,
+  "adIntegrationsAdded": false,
+  "implementationRequired": "Site candidate must send only closed parameter values, no PII, and emit contact_request_accepted only after an application acceptance response with consent granted.",
+  "independentAdminVerification": {
+    "status": "ok",
+    "customDefinitions": {
+      "dimensions": [
+        {
+          "parameterName": "acceptance_kind",
+          "displayName": "acceptance_kind",
+          "description": "Tipo de aceptación confirmada por la aplicación; categoría técnica sin identificar a la persona.",
+          "scope": "EVENT",
+          "disallowAdsPersonalization": false
+        },
+        {
+          "parameterName": "source_group",
+          "displayName": "source_group",
+          "description": "Grupo de origen normalizado de la interacción; valores cerrados y sin datos personales.",
+          "scope": "EVENT",
+          "disallowAdsPersonalization": false
+        },
+        {
+          "parameterName": "placement",
+          "displayName": "placement",
+          "description": "Ubicación funcional de la interacción en la página; valores cerrados y sin datos personales.",
+          "scope": "EVENT",
+          "disallowAdsPersonalization": false
+        },
+        {
+          "parameterName": "form_kind",
+          "displayName": "form_kind",
+          "description": "Tipo de formulario corporativo; categoría cerrada sin contenido introducido por el usuario.",
+          "scope": "EVENT",
+          "disallowAdsPersonalization": false
+        },
+        {
+          "parameterName": "tool_kind",
+          "displayName": "tool_kind",
+          "description": "Tipo de herramienta corporativa utilizada; categoría normalizada sin datos de la consulta.",
+          "scope": "EVENT",
+          "disallowAdsPersonalization": false
+        },
+        {
+          "parameterName": "cta_kind",
+          "displayName": "cta_kind",
+          "description": "Tipo de llamada a la acción corporativa; valores normalizados sin texto libre.",
+          "scope": "EVENT",
+          "disallowAdsPersonalization": false
+        }
+      ],
+      "metrics": []
+    },
+    "keyEvents": [
+      {
+        "eventName": "purchase",
+        "createTime": "2026-11-19T15:13:00.137803Z",
+        "countingMethod": "ONCE_PER_EVENT"
+      },
+      {
+        "eventName": "contact_request_accepted",
+        "createTime": "2026-11-19T15:34:05.250209Z",
+        "deletable": true,
+        "custom": true,
+        "countingMethod": "ONCE_PER_EVENT"
+      }
+    ]
+  }
+}

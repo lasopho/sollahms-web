@@ -1,0 +1,111 @@
+{
+  "observedAtUTC": "2026-11-19T17:07:02.503890+00:00",
+  "phase": "independent_pre_promotion_receipt_review",
+  "status": "passed",
+  "recommendation": "promote_only_the_exact_validated_Production_id_after_final_unchanged_production_recheck",
+  "validatedDeploymentId": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
+  "promotionMustUseSameDeploymentId": true,
+  "rebuildOrPreviewPromotionAllowed": false,
+  "runtimeCommit": "b56fa12771a824dd8a4d581dc0c9c81e0938f71a",
+  "initialApprovedRuntimeCommit": "f914590010cf0b4ac930c41a59b648da3be1ab31",
+  "inventorySHA256": "e12408412891bcf181380717ceecf56fc97067f0ff06a7aba25d26f95f12bc72",
+  "rollbackTargetIfNoInterveningRelease": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+  "blockers": [],
+  "verified": {
+    "productionReadyAndSourceMatch": true,
+    "remoteLeafUIDsMatched": 1727,
+    "missingExtraOrChangedFiles": 0,
+    "functionBundlesMatched": 7,
+    "functionFilesMatched": 57,
+    "runtimeConfigMatched": true,
+    "httpChecks": 14,
+    "assetChecks": 4,
+    "technicalHostnameAnonymousStatus": 302,
+    "productionBothAliasesRemain86B": true,
+    "wwwRedirect308Preserved": true,
+    "settingsUnchanged": true,
+    "ssoPreserved": true,
+    "autoAssignCustomDomains": false,
+    "environment": "production",
+    "environmentMetadataRowsCompared": 7,
+    "environmentNamesTargetsAndTypesUnchanged": true,
+    "environmentValuesReadOrCompared": false,
+    "gtmPublishedVersion": 2,
+    "freshSdkPrivacyAndAllowlistedEventsPass": true,
+    "cookiePolicyMatchesMeasuredFixedGaAndRenewingSessionCookie": true,
+    "simulatedReleaseRecoveryChecksReused": 10,
+    "productionRuntimeMocksPass": true,
+    "realFormOrMeasurementBeaconsSentByTests": 0
+  },
+  "finalProductionRecheckRequired": {
+    "expectedCurrentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+    "bothAliasesAndWww308": true,
+    "sameSettingsSsoAutoAssignFalse": true,
+    "ifChanged": "Stop promotion, reconcile current Production and revalidate the candidate."
+  },
+  "evidence": [
+    {
+      "file": "authorization.json",
+      "sha256": "ad07038caaa230fd05fd25e0e9e06d72fb943ffe9f1867463e7ecf5060d54411"
+    },
+    {
+      "file": "staged-deployment.json",
+      "sha256": "99dc7387820712fc55c1e16012f62d9d3caa87ebbb8827fb9157fd855644c728"
+    },
+    {
+      "file": "staged-remote-integrity.json",
+      "sha256": "2d5a18f6762f8cc2281d316e41ec8cd5df7adaa433bc9d316894029ef5012d43"
+    },
+    {
+      "file": "production-staged-recheck.json",
+      "sha256": "f16ae72889d82ecbec959ec79e19ab80a0ad9c4a2967cc0a44b2b5e09855935c"
+    },
+    {
+      "file": "staged-http-verification.json",
+      "sha256": "33e54b89adf8639d9ccfd4e21d61c4b58b7aaa21fea3ce5f35a55ed5932a8f22"
+    },
+    {
+      "file": "staged-assets-verification.json",
+      "sha256": "20e6625fc4d8fbee0c4fff8df04cae30aa80109421f41ca5ff114602db638709"
+    },
+    {
+      "file": "staged-protection-verification.json",
+      "sha256": "f30ad9b66d5ca9d5f8df373c6c81fb916550c6472a9d1d337fe699f14b78c4b1"
+    },
+    {
+      "file": "sdk-fresh-verification.json",
+      "sha256": "8fd95753249e0016ea93bd04702f52ea07ef5333ff945c6033bd59093b61a034"
+    },
+    {
+      "file": "gtm-publication.json",
+      "sha256": "4b98e1bcedfba7103261a4b0b08aacc1bdab1b7b18d8a903a89170284082d14a"
+    },
+    {
+      "file": "privacy-delta-peer-review.json",
+      "sha256": "6f5bc6892793bf1eb171ed21c020edd822f05ba85be3217baa8ab4bef1c24bd3"
+    },
+    {
+      "file": "production-runtime-mocks.json",
+      "sha256": "c3f73f1ce5f781d3d6fd2a40d103ac543d6d1fd234fc58843faa11c56e366150"
+    },
+    {
+      "file": "recovery-readiness.json",
+      "sha256": "22bb5734b3d2805ef00ffbc620f7b810c45808046ab1c9615190a5fb4088b787"
+    }
+  ],
+  "historicalSimulation": {
+    "file": "../release-simulation.json",
+    "checks": 10,
+    "rerun": false,
+    "boundary": "Offline mechanism rehearsal used a fictional staged ID and earlier inventory; current inventory/source are separately bound above by the privacy delta and full staged remote comparison."
+  },
+  "limitations": [
+    "Remote whole-artifact integrity uses all 1727 content-addressed SHA1 UIDs; selective HTTP checks additionally match exact SHA256 bytes. Remote API did not expose leaf sizes; no claim of downloading/re-hashing every remote file.",
+    "Environment comparison covers names, targets and types only. No values were read, compared or modified.",
+    "SDK verification is a finite controlled sample with collection blocked; real analytics receipt, qualified leads and search/ranking effects remain unmeasured.",
+    "Read-only OWNER/rollback-candidate checks and the local simulation do not execute a live rollback or guarantee a future mutation permission."
+  ],
+  "newNetworkRequestsByThisReview": 0,
+  "newSdkTestsByThisReview": 0,
+  "platformMutationsByThisReview": 0
+}

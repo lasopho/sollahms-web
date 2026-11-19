@@ -1,0 +1,55 @@
+{
+  "createdAt": "2026-11-19T15:12:15.588Z",
+  "mode": "isolated local browser, no real provider/API requests",
+  "browser": "159.0.8154.13",
+  "framework": "Playwright (installed runtime; Puppeteer unavailable)",
+  "sourceStatic": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-measurement-private/candidate-v3/.vercel/output/static",
+  "configShipped": {
+    "enabled": false,
+    "analyticsEnabled": false,
+    "replayEnabled": false,
+    "blankIds": true
+  },
+  "runtimeSha256": "579f798149433ed7e14b199c8f8bb7cd63f2f1e253ce2d7bfe2a0d14338a8dfc",
+  "checks": [
+    {
+      "name": "Entorno blocks replay before and after its real filter changes URL",
+      "passed": true,
+      "providerRequests": 0,
+      "urlParametersObserved": [
+        "region"
+      ],
+      "realUrbanFilterOperated": true
+    },
+    {
+      "name": "trusted tool input emits one fixed kind; programmatic events and raw values are excluded",
+      "passed": true,
+      "trustedKeyboardUsed": true,
+      "programmaticEvents": 0,
+      "toolEvents": 1,
+      "toolKind": "mortgage_guide",
+      "rawValuesSerialized": false
+    },
+    {
+      "name": "standalone mortgage guide still calculates with analytics rejected",
+      "passed": true,
+      "calculated": true,
+      "providerRequests": 0,
+      "analyticsRejected": true
+    }
+  ],
+  "screenshots": [],
+  "limitations": [
+    "Provider SDK bodies are local inert mocks; does not certify provider collection/redaction, account settings, CSP headers, delivery, CRM receipt or qualified leads.",
+    "Form inputs are synthetic; local API fixtures never send mail or persist leads.",
+    "Reload is tested as browser navigation, not as proof that a real SDK cannot send a final unload request."
+  ],
+  "supplements": "browser-receipt.json",
+  "supplementNote": "Only changed behavior tested on v3; earlier 16 checks remain explicitly identified with v2 SHA and were not rerun.",
+  "configSha256": "bf2684c8e6e2b0e90bb0a01d3eeecddbde6fc49619ddb38d813d5ba220b1993d",
+  "passed": true,
+  "summary": {
+    "passed": 3,
+    "total": 3
+  }
+}

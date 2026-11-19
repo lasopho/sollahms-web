@@ -1,0 +1,119 @@
+{
+  "recordedAtUTC": "2026-11-19T16:02:01.741351+00:00",
+  "mode": "offline in-memory simulation only",
+  "productionChanged": false,
+  "releaseAuthorizedBySimulation": false,
+  "networkRequests": 0,
+  "deploymentCliCommands": 0,
+  "realPromotions": 0,
+  "realRollbacks": 0,
+  "networkGuard": "socket/socket.create_connection disabled; no HTTP or subprocess client used",
+  "inputEvidence": {
+    "artifactProof": "artifact-proof.json",
+    "baseDeployment": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+    "baseInventorySHA256": "c4b1a07527291aa020ebef549aa32f0bb2f2858f9f55312482584f333b14319b",
+    "candidateInventorySHA256": "0348f6339b2fe315afb94076abdcca7cc0791a663c5fe639457ec5791040c1fe",
+    "baseFiles": 1723,
+    "candidateFiles": 1727,
+    "changedFiles": 17,
+    "addedFiles": 4,
+    "removedFiles": 0,
+    "unchangedFiles": 1706,
+    "fullArtifactsRehashedLocally": true,
+    "platformSnapshotAt": "2026-11-19T12:52:41.414270-03:00"
+  },
+  "readinessBoundary": "Staged READY is a fictional simulation fixture. Recovery 86B READY was reported by the parent read-only check at 12:56 America/Santiago; not re-queried by this script. Real actions require fresh provider verification.",
+  "preserved": {
+    "functions": 7,
+    "functionFiles": 57,
+    "runtimeConfigByteIdentical": true,
+    "apex": "sollahms.cl",
+    "wwwRedirect": {
+      "to": "sollahms.cl",
+      "status": 308
+    },
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoAssignCustomDomains": false,
+    "allSettingsComparedExactly": true
+  },
+  "passed": true,
+  "checks": [
+    {
+      "name": "Promote exact validated ID in memory",
+      "passed": true,
+      "validatedId": "SIMULATED_STAGED_VALIDATED_MEASUREMENT_ID",
+      "promotedId": "SIMULATED_STAGED_VALIDATED_MEASUREMENT_ID",
+      "bothAliasesUseSameId": true
+    },
+    {
+      "name": "Rollback in memory restores pinned 86B bytes and routing",
+      "passed": true,
+      "recoveryId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+      "restoredFiles": 1723,
+      "settingsAndRoutingRestored": true
+    },
+    {
+      "name": "Different promotion ID",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "stateUnchangedByOperation": true,
+      "reason": "Promotion ID must equal the exact validated staged ID"
+    },
+    {
+      "name": "Inventory changed after validation",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "stateUnchangedByOperation": true,
+      "reason": "Pinned candidate inventory changed after validation"
+    },
+    {
+      "name": "Function bytes changed despite intact inventory certificate",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "stateUnchangedByOperation": true,
+      "reason": "Function or runtime config bytes differ from Production"
+    },
+    {
+      "name": "Production aliases advanced since snapshot",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "stateUnchangedByOperation": true,
+      "reason": "Production alias advanced; refresh baseline and revalidate"
+    },
+    {
+      "name": "Platform autoAssign setting advanced",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "stateUnchangedByOperation": true,
+      "reason": "Platform settings advanced; do not overwrite them"
+    },
+    {
+      "name": "www redirect changed",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "stateUnchangedByOperation": true,
+      "reason": "Canonical/www 308 routing contract differs"
+    },
+    {
+      "name": "Staged environment differs",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "stateUnchangedByOperation": true,
+      "reason": "Staged readiness/environment/domain isolation differs"
+    },
+    {
+      "name": "Rollback refuses to overwrite a later production deployment",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "stateUnchangedByOperation": true,
+      "reason": "Production alias advanced; refresh baseline and revalidate"
+    }
+  ],
+  "limitations": [
+    "This demonstrates local guard behavior, not Vercel API behavior, recovery eligibility or publication authority.",
+    "Compare-and-swap is modeled in memory; a real control plane can change between read and mutation and needs immediate revalidation.",
+    "No alias, environment, project setting or runtime file was modified."
+  ]
+}

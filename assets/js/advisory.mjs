@@ -61,6 +61,7 @@ if (form) {
       }
       if(result.ok!==true||result.providerAccepted!==true||result.deliveryConfirmed!==false)throw Error('No pudimos confirmar el envío. Reintenta sin cambiar los datos o escribe a contacto@sollahms.cl.');
       completed=true;operation.complete();form.reset();show('Solicitud aceptada para envío a Sollahms. Usaremos tus datos de contacto para conocer tu objetivo y coordinar el siguiente paso. Este aviso no confirma entrega al buzón ni una cita.','success');status.focus();
+      try { window.dispatchEvent(new CustomEvent('sollahms:measurement',{detail:{name:'contact_request_accepted',parameters:{form_kind:'advisory',acceptance_kind:'provider_accepted'}}})); } catch { /* Optional measurement never changes the contact outcome. */ }
     }catch(error){operation.uncertain();show(['TypeError','TimeoutError','SyntaxError'].includes(error.name)?'No pudimos confirmar el envío. Tus datos siguen aquí. Reintenta sin cambiarlos o escribe a contacto@sollahms.cl.':error.message);status.focus();}
     finally{sending=false;form.removeAttribute('aria-busy');fields.disabled=completed;button.disabled=completed;button.textContent=completed?'Solicitud enviada':'Solicitar asesoría';}
   });

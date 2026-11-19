@@ -1,0 +1,741 @@
+{
+  "observedAtUTC": "2026-11-19T15:59:24.566278+00:00",
+  "status": "passed_exact_candidate_release_with_cached_real_sdks",
+  "historicalFailurePreserved": "sdk-smoke-receipt.json",
+  "artifactStaticRoot": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-measurement-private/candidate-release/.vercel/output/static",
+  "moduleSHA256": "15388b73d792cb2796bdefc5807826793922bc9760a8bdefda7be0411503ed89",
+  "configSHA256": "302c12004cdd37b76fa5fb91889a04dbe7b9ed95cfc0cac8697530ad15e39902",
+  "scope": {
+    "analyticsCorporatePaths": 12,
+    "replayCorporatePaths": 6,
+    "excludedFichesCatalogueAndDocumentaryUntouched": true
+  },
+  "network": {
+    "browserExperimentsProviderGETs": 0,
+    "measurementBeaconsSent": 0,
+    "contactsSent": 0,
+    "privateCacheAcquisitionPublicScriptGETsThisInvestigation": 3,
+    "originalHistoricalSmokePublicSDKGETs": 1,
+    "collectRequestsLocallyFulfilled204": true,
+    "redirectsFollowed": 0
+  },
+  "rootCause": {
+    "verifiedSDKResourceTags": [
+      {
+        "index": 0,
+        "function": "__ogt_auto_events",
+        "priority": 16,
+        "vtp_enableOutboundClick": true,
+        "vtp_enableScroll": true,
+        "vtp_enableDownload": true,
+        "vtp_enableHistoryEvents": true,
+        "vtp_enableForm": true,
+        "vtp_enableVideo": true,
+        "vtp_enableInPageEventsHidden": false,
+        "vtp_hidePageViewToggle": true,
+        "tag_id": 6
+      },
+      {
+        "index": 1,
+        "function": "__ogt_1p_data_v2",
+        "priority": 6,
+        "vtp_isAutoEnabled": true,
+        "vtp_isManualEnabled": false,
+        "vtp_autoPhoneEnabled": true,
+        "vtp_autoCollectExclusionSelectors": [
+          "list",
+          [
+            "map",
+            "exclusionSelector",
+            ""
+          ]
+        ],
+        "vtp_isEnabled": true,
+        "vtp_autoAddressEnabled": true,
+        "vtp_autoEmailEnabled": true,
+        "vtp_isAutoCollectPiiEnabledFlag": true,
+        "tag_id": 8
+      },
+      {
+        "index": 7,
+        "function": "__dest_ga",
+        "vtp_destinationId": "G-LTFBQKVNY2",
+        "vtp_ignoreDupeGtagConfigCalls": true,
+        "vtp_enableVariablesInDestinationId": true,
+        "tag_id": 1
+      },
+      {
+        "index": 8,
+        "function": "__gct",
+        "vtp_trackingId": "G-LTFBQKVNY2",
+        "vtp_sessionDuration": 0,
+        "tag_id": 4
+      }
+    ],
+    "predicates": [
+      {
+        "function": "_eq",
+        "arg0": [
+          "macro",
+          0
+        ],
+        "arg1": "gtm.init"
+      },
+      {
+        "function": "_eq",
+        "arg0": [
+          "macro",
+          0
+        ],
+        "arg1": "gtm.js"
+      }
+    ],
+    "rules": [
+      [
+        [
+          "if",
+          0
+        ],
+        [
+          "add",
+          7,
+          0,
+          1,
+          9,
+          6,
+          5,
+          4,
+          3,
+          2
+        ]
+      ],
+      [
+        [
+          "if",
+          1
+        ],
+        [
+          "add",
+          8
+        ]
+      ]
+    ],
+    "interpretation": "The SDK initializes the linked destination through gtm.init and registers it through __gct at gtm.js, with ignoreDupeGtagConfigCalls=true. Per-target config alone did not govern the first automatic page_view in the downloaded build. Global set before initialization governed it. This interpretation combines resource configuration and controlled differential experiments; it is not a claim about every future SDK build."
+  },
+  "controlledVariants": [
+    {
+      "name": "baseline",
+      "dirtyURLAndReferrer": true,
+      "pageViews": 2,
+      "allLocationsClean": false,
+      "syntheticMarkersDetected": true
+    },
+    {
+      "name": "baseline",
+      "dirtyURLAndReferrer": false,
+      "pageViews": 2,
+      "allLocationsClean": true,
+      "syntheticMarkersDetected": false
+    },
+    {
+      "name": "global-set-before-js",
+      "dirtyURLAndReferrer": true,
+      "pageViews": 1,
+      "allLocationsClean": true,
+      "syntheticMarkersDetected": false
+    },
+    {
+      "name": "global-set-before-js",
+      "dirtyURLAndReferrer": false,
+      "pageViews": 1,
+      "allLocationsClean": true,
+      "syntheticMarkersDetected": false
+    },
+    {
+      "name": "global-set-before-consent",
+      "dirtyURLAndReferrer": true,
+      "pageViews": 1,
+      "allLocationsClean": true,
+      "syntheticMarkersDetected": false
+    },
+    {
+      "name": "global-set-before-consent",
+      "dirtyURLAndReferrer": false,
+      "pageViews": 1,
+      "allLocationsClean": true,
+      "syntheticMarkersDetected": false
+    },
+    {
+      "name": "config-before-js",
+      "dirtyURLAndReferrer": true,
+      "pageViews": 2,
+      "allLocationsClean": false,
+      "syntheticMarkersDetected": true
+    },
+    {
+      "name": "config-before-js",
+      "dirtyURLAndReferrer": false,
+      "pageViews": 2,
+      "allLocationsClean": true,
+      "syntheticMarkersDetected": false
+    },
+    {
+      "name": "global-set-no-config",
+      "dirtyURLAndReferrer": true,
+      "pageViews": 1,
+      "allLocationsClean": true,
+      "syntheticMarkersDetected": false
+    },
+    {
+      "name": "global-set-no-config",
+      "dirtyURLAndReferrer": false,
+      "pageViews": 1,
+      "allLocationsClean": true,
+      "syntheticMarkersDetected": false
+    }
+  ],
+  "minimalCorrectionAppliedByRoot": "All existing tagSettings (send_page_view=false, canonical location, safe referrer, campaign blanks, privacy and cookie settings) are set globally after default denied and before grant/js/SDK, then reused by legacy target config. GA cookies additionally request SameSite=Lax;Secure.",
+  "googleExactArtifactResults": [
+    {
+      "name": "candidate-release",
+      "dirty": true,
+      "requests": [],
+      "events": [
+        {
+          "en": "page_view",
+          "dl": "https://sollahms.cl/contacto.html",
+          "dr": "https://chatgpt.com",
+          "keys": [
+            "_ee",
+            "_fv",
+            "_geo",
+            "_nsi",
+            "_p",
+            "_rdi",
+            "_s",
+            "_ss",
+            "_tu",
+            "cc",
+            "ci",
+            "cid",
+            "ck",
+            "cm",
+            "cn",
+            "cs",
+            "dl",
+            "dma",
+            "dma_cps",
+            "dr",
+            "dt",
+            "en",
+            "ep.source_group",
+            "frm",
+            "gcd",
+            "gcs",
+            "gtm",
+            "ngs",
+            "npa",
+            "pscdl",
+            "rcb",
+            "sct",
+            "seg",
+            "sid",
+            "tag_exp",
+            "tfd",
+            "tid",
+            "ul",
+            "v"
+          ],
+          "markers": [],
+          "hashedIdentityMarkers": [],
+          "identityParameterKeys": []
+        },
+        {
+          "en": "form_start",
+          "dl": "https://sollahms.cl/contacto.html",
+          "dr": "https://chatgpt.com",
+          "keys": [
+            "_ee",
+            "_et",
+            "_eu",
+            "_geo",
+            "_p",
+            "_rdi",
+            "_s",
+            "_tu",
+            "cc",
+            "ci",
+            "cid",
+            "ck",
+            "cm",
+            "cn",
+            "cs",
+            "dl",
+            "dma",
+            "dma_cps",
+            "dr",
+            "dt",
+            "en",
+            "ep.form_kind",
+            "ep.source_group",
+            "frm",
+            "gcd",
+            "gcs",
+            "gtm",
+            "ngs",
+            "npa",
+            "pscdl",
+            "rcb",
+            "sct",
+            "seg",
+            "sid",
+            "tag_exp",
+            "tfd",
+            "tid",
+            "ul",
+            "v"
+          ],
+          "markers": [],
+          "hashedIdentityMarkers": [],
+          "identityParameterKeys": []
+        },
+        {
+          "en": "contact_request_accepted",
+          "dl": "https://sollahms.cl/contacto.html",
+          "dr": "https://chatgpt.com",
+          "keys": [
+            "_c",
+            "_ee",
+            "_et",
+            "_eu",
+            "_geo",
+            "_p",
+            "_rdi",
+            "_s",
+            "_tu",
+            "cc",
+            "ci",
+            "cid",
+            "ck",
+            "cm",
+            "cn",
+            "cs",
+            "dl",
+            "dma",
+            "dma_cps",
+            "dr",
+            "dt",
+            "en",
+            "ep.acceptance_kind",
+            "ep.form_kind",
+            "ep.source_group",
+            "frm",
+            "gcd",
+            "gcs",
+            "gtm",
+            "ngs",
+            "npa",
+            "pscdl",
+            "rcb",
+            "sct",
+            "seg",
+            "sid",
+            "tag_exp",
+            "tfd",
+            "tid",
+            "ul",
+            "v"
+          ],
+          "markers": [],
+          "hashedIdentityMarkers": [],
+          "identityParameterKeys": []
+        }
+      ],
+      "errors": [],
+      "cachedSDKLoads": 1,
+      "beforeConsent": {
+        "cachedSDKLoads": 0,
+        "cookies": [],
+        "events": 0
+      },
+      "cookies": [
+        {
+          "name": "_ga_LTFBQKVNY2",
+          "domain": "sollahms.cl",
+          "path": "/",
+          "expires": 1800287839,
+          "remainingSeconds": 5183997,
+          "sameSite": "Lax",
+          "secure": true
+        },
+        {
+          "name": "_ga",
+          "domain": "sollahms.cl",
+          "path": "/",
+          "expires": 1800287839,
+          "remainingSeconds": 5183997,
+          "sameSite": "Lax",
+          "secure": true
+        }
+      ],
+      "initialEvents": 1,
+      "pageCloseEvents": [],
+      "pageViews": 1,
+      "rawMarkers": [],
+      "allLocationsClean": true,
+      "allReferrersClean": true,
+      "identityDataDetected": false,
+      "cookieLifetime60Days": true
+    },
+    {
+      "name": "candidate-release",
+      "dirty": false,
+      "requests": [],
+      "events": [
+        {
+          "en": "page_view",
+          "dl": "https://sollahms.cl/contacto.html",
+          "dr": "https://www.google.com",
+          "keys": [
+            "_ee",
+            "_fv",
+            "_geo",
+            "_nsi",
+            "_p",
+            "_rdi",
+            "_s",
+            "_ss",
+            "_tu",
+            "cc",
+            "ci",
+            "cid",
+            "ck",
+            "cm",
+            "cn",
+            "cs",
+            "dl",
+            "dma",
+            "dma_cps",
+            "dr",
+            "dt",
+            "en",
+            "ep.source_group",
+            "frm",
+            "gcd",
+            "gcs",
+            "gtm",
+            "lps",
+            "ngs",
+            "npa",
+            "pscdl",
+            "rcb",
+            "sct",
+            "seg",
+            "sid",
+            "tag_exp",
+            "tfd",
+            "tid",
+            "ul",
+            "v"
+          ],
+          "markers": [],
+          "hashedIdentityMarkers": [],
+          "identityParameterKeys": []
+        },
+        {
+          "en": "form_start",
+          "dl": "https://sollahms.cl/contacto.html",
+          "dr": "https://www.google.com",
+          "keys": [
+            "_ee",
+            "_et",
+            "_eu",
+            "_geo",
+            "_p",
+            "_rdi",
+            "_s",
+            "_tu",
+            "cc",
+            "ci",
+            "cid",
+            "ck",
+            "cm",
+            "cn",
+            "cs",
+            "dl",
+            "dma",
+            "dma_cps",
+            "dr",
+            "dt",
+            "en",
+            "ep.form_kind",
+            "ep.source_group",
+            "frm",
+            "gcd",
+            "gcs",
+            "gtm",
+            "lps",
+            "ngs",
+            "npa",
+            "pscdl",
+            "rcb",
+            "sct",
+            "seg",
+            "sid",
+            "tag_exp",
+            "tfd",
+            "tid",
+            "ul",
+            "v"
+          ],
+          "markers": [],
+          "hashedIdentityMarkers": [],
+          "identityParameterKeys": []
+        },
+        {
+          "en": "contact_request_accepted",
+          "dl": "https://sollahms.cl/contacto.html",
+          "dr": "https://www.google.com",
+          "keys": [
+            "_c",
+            "_ee",
+            "_et",
+            "_eu",
+            "_geo",
+            "_p",
+            "_rdi",
+            "_s",
+            "_tu",
+            "cc",
+            "ci",
+            "cid",
+            "ck",
+            "cm",
+            "cn",
+            "cs",
+            "dl",
+            "dma",
+            "dma_cps",
+            "dr",
+            "dt",
+            "en",
+            "ep.acceptance_kind",
+            "ep.form_kind",
+            "ep.source_group",
+            "frm",
+            "gcd",
+            "gcs",
+            "gtm",
+            "lps",
+            "ngs",
+            "npa",
+            "pscdl",
+            "rcb",
+            "sct",
+            "seg",
+            "sid",
+            "tag_exp",
+            "tfd",
+            "tid",
+            "ul",
+            "v"
+          ],
+          "markers": [],
+          "hashedIdentityMarkers": [],
+          "identityParameterKeys": []
+        }
+      ],
+      "errors": [],
+      "cachedSDKLoads": 1,
+      "beforeConsent": {
+        "cachedSDKLoads": 0,
+        "cookies": [],
+        "events": 0
+      },
+      "cookies": [
+        {
+          "name": "_ga_LTFBQKVNY2",
+          "domain": "sollahms.cl",
+          "path": "/",
+          "expires": 1800287853,
+          "remainingSeconds": 5183997,
+          "sameSite": "Lax",
+          "secure": true
+        },
+        {
+          "name": "_ga",
+          "domain": "sollahms.cl",
+          "path": "/",
+          "expires": 1800287853,
+          "remainingSeconds": 5183997,
+          "sameSite": "Lax",
+          "secure": true
+        }
+      ],
+      "initialEvents": 1,
+      "pageCloseEvents": [],
+      "pageViews": 1,
+      "rawMarkers": [],
+      "allLocationsClean": true,
+      "allReferrersClean": true,
+      "identityDataDetected": false,
+      "cookieLifetime60Days": true
+    }
+  ],
+  "defaultAndRejection": {
+    "exactReleaseBeforeConsent": {
+      "sdkLoads": 0,
+      "collect": 0,
+      "cookies": []
+    },
+    "exactReleaseAfterRejection": {
+      "sdkLoads": 0,
+      "collect": 0,
+      "cookies": []
+    },
+    "dirtyAndCleanPriorCorrectionCases": [
+      {
+        "name": "default-no-consent",
+        "dirty": true,
+        "sdkLoads": 0,
+        "events": 0,
+        "cookies": []
+      },
+      {
+        "name": "default-no-consent",
+        "dirty": false,
+        "sdkLoads": 0,
+        "events": 0,
+        "cookies": []
+      },
+      {
+        "name": "rejected",
+        "dirty": true,
+        "sdkLoads": 0,
+        "events": 0,
+        "cookies": []
+      },
+      {
+        "name": "rejected",
+        "dirty": false,
+        "sdkLoads": 0,
+        "events": 0,
+        "cookies": []
+      }
+    ]
+  },
+  "clarityExactArtifactResult": {
+    "observedAtUTC": "2026-11-19T15:57:22.008Z",
+    "artifactStaticRoot": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-measurement-private/candidate-release/.vercel/output/static",
+    "moduleSHA256": "15388b73d792cb2796bdefc5807826793922bc9760a8bdefda7be0411503ed89",
+    "configSHA256": "302c12004cdd37b76fa5fb91889a04dbe7b9ed95cfc0cac8697530ad15e39902",
+    "tagSHA256": "4325f97db68d95c50c6b64deddc3e92e4565d305b01aa8e655c640e849e5bfbf",
+    "sdkSHA256": "f28e8fd7f52fbdfcf8180629072d97ce90ed2dba356b092ffae48d8a6b107a99",
+    "providerRequests": 0,
+    "beaconsSent": 0,
+    "contactsSent": 0,
+    "cachedScriptLoads": [
+      "https://www.clarity.ms/tag/zg5i98wnxm",
+      "https://scripts.clarity.ms/0.8.80-beta/clarity.js"
+    ],
+    "blocked": [],
+    "collections": [
+      {
+        "method": "POST",
+        "host": "j.clarity.ms",
+        "path": "/collect",
+        "bytes": 1505,
+        "encoding": "gzip",
+        "markerMatches": [],
+        "action": "locally_fulfilled204_not_sent"
+      },
+      {
+        "method": "POST",
+        "host": "j.clarity.ms",
+        "path": "/collect",
+        "bytes": 260,
+        "encoding": "gzip",
+        "markerMatches": [],
+        "action": "locally_fulfilled204_not_sent"
+      }
+    ],
+    "errors": [],
+    "beforeConsent": {
+      "sdkLoads": 0,
+      "collect": 0,
+      "cookies": []
+    },
+    "afterRejection": {
+      "sdkLoads": 0,
+      "collect": 0,
+      "cookies": []
+    },
+    "state": {
+      "version": "0.8.80-beta",
+      "mask": "True",
+      "metadataConsent": [
+        {
+          "analytics_Storage": "granted",
+          "ad_Storage": "denied"
+        }
+      ],
+      "status": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": true,
+        "analyticsActive": false,
+        "replayStarted": true,
+        "replayUrlAllowed": true,
+        "stopped": false
+      }
+    },
+    "cookies": [
+      {
+        "name": "_clck",
+        "domain": ".sollahms.cl",
+        "path": "/",
+        "expires": 1826639844,
+        "secure": false,
+        "sameSite": "Lax"
+      },
+      {
+        "name": "_clsk",
+        "domain": ".sollahms.cl",
+        "path": "/",
+        "expires": 1795190244,
+        "secure": false,
+        "sameSite": "Lax"
+      }
+    ],
+    "status": "passed_cached_clarity_sdk"
+  },
+  "sources": [
+    {
+      "url": "https://developers.google.com/tag-platform/security/guides/privacy",
+      "supports": "Global gtag set send_page_view=false is the current documented way to disable default pageview."
+    },
+    {
+      "url": "https://developers.google.com/analytics/devguides/collection/ga4/reference/config",
+      "supports": "Global settings for page_location, page_referrer, cookie expiry/domain/update/flags and privacy parameters."
+    },
+    {
+      "url": "https://developers.google.com/tag-platform/gtagjs/reference",
+      "supports": "Global set applies to subsequent events, event/config precedence; config deprecated but existing compatibility maintained."
+    },
+    {
+      "url": "https://support.google.com/analytics/answer/12131703",
+      "supports": "Tag-level automatic detection and user-provided capabilities are separate settings; all detection defaults on; pageview cannot be disabled in that UI."
+    }
+  ],
+  "limits": [
+    "All customer-like values are synthetic and no user profile/account cookies were used.",
+    "Finite isolated harness tests of exact module/config bytes; production delivery, real data receipt and business conversion are not proved.",
+    "SDK auto-detection and user-provided capability flags remained true in the cached SDK. No additional GA4 form_submit/outbound/scroll/history/download or user_data payload was observed in this sample with the stream EM disabled. This does not claim those global flags are off; UI draft changes were not part of the cached build.",
+    "No extra event was observed on page close in the isolated sample; future SDK/event behavior still requires controlled validation when settings change.",
+    "Clarity masking and decoded gzip samples contained no synthetic input/text markers; this does not establish absolute anonymization.",
+    "Clarity SDK cookies observed have provider defaults: domain .sollahms.cl, SameSite Lax, Secure=false, _clck about one year and _clsk about one day; GA cookies are host-only Secure, SameSite Lax and 60 days.",
+    "No runtime edit was made by the investigating subagent; correction was applied by the root agent."
+  ]
+}
