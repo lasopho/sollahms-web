@@ -1,0 +1,129 @@
+{
+  "observedAt": "2026-11-19T16:56:28.075006-03:00",
+  "timezone": "America/Santiago",
+  "phase": "after",
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795118171782,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795118171782,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    }
+  ],
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoAssignCustomDomains": false,
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "buildCommand": null,
+    "outputDirectory": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "framework": null,
+    "nodeVersion": "24.x",
+    "repository": {
+      "org": "lasopho",
+      "repo": "sollahms-web",
+      "productionBranch": "main"
+    }
+  },
+  "environmentMetadata": [
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "environmentValuesReadOrStored": false,
+  "mutations": 0,
+  "deployment": {
+    "url": "project-wrapp-bn2zcsjwy-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795117979620,
+    "ready": 1795117987673,
+    "productionUrl": null,
+    "isRollbackCandidate": null,
+    "alias": [],
+    "id": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+    "meta": {
+      "githubCommitSha": "d7ad0795a561a9b69999b421fd9eef519adfee26",
+      "githubCommitRef": "codex/cobertura-asesoria-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    }
+  },
+  "projectSettingsUnchanged": true,
+  "environmentMetadataUnchanged": true,
+  "t0AmericaSantiago": "2026-11-19T16:56:11.782000-03:00",
+  "t0UTC": "2026-11-19T19:56:11.782000+00:00",
+  "passed": true
+}

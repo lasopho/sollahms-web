@@ -15,8 +15,8 @@
   "legacy_plans_status": "historical_not_for_new_executions",
   "project_fiche_handoffs_allowed": false,
   "inventory_confirmation_required_for_seo": false,
-  "production_record": "../service-coverage-20261119/production-before.json",
-  "production_deployment_id": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+  "production_record": "../service-coverage-20261119/publication.json",
+  "production_deployment_id": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
   "production_inferred_from_main": false,
   "candidate_status": "published_and_verified",
   "historical_seo_publication": {
@@ -29,9 +29,9 @@
   },
   "historical_scope": "scope-v2.json",
   "scope_comparison_rule": "Reimport original page-level or exact-native-filter data with identical v3 URLs; v2 domain totals include catalogue and cannot measure v3 impact.",
-  "publication_t0": "2026-11-19T15:50:03.998-03:00",
+  "publication_t0": "2026-11-19T16:56:11.782000-03:00",
   "publication_timezone": "America/Santiago",
-  "publication_authorized_commit": "f914590010cf0b4ac930c41a59b648da3be1ab31",
+  "publication_authorized_commit": "d7ad0795a561a9b69999b421fd9eef519adfee26",
   "current_gsc_measurement": "runs/2026-11-19-weekly-comparison/google-comparison.json",
   "current_indexation_record": "runs/2026-11-19-gsc-connected/index-status.json",
   "google_search_console": {
@@ -59,7 +59,7 @@
     "publicationApprovalGrantedByThisInstruction": false
   },
   "current_bing_measurement": "runs/2026-11-19-weekly-comparison/bing-comparison.json",
-  "current_chatgpt_observation": "runs/2026-11-19-weekly-comparison/chatgpt-observation.json",
+  "current_chatgpt_observation": "../service-coverage-20261119/chatgpt-observation.json",
   "measurement_integration": {
     "status": "published_and_verified_consent_gated",
     "candidate_branch": "codex/medicion-seo-geo-20261119",
@@ -84,7 +84,9 @@
     "realEventReceptionVerified": false,
     "qualifiedLeadsVerified": false,
     "publicConsentAndWithdrawalVerified": true,
-    "publicConsentVerification": "../measurement-20261119/publication/public-consent-verification.json"
+    "publicConsentVerification": "../measurement-20261119/publication/public-consent-verification.json",
+    "currentProductionDeploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+    "preservedByCoverageRelease": true
   },
   "comparison_rule": {
     "before": [
@@ -108,22 +110,35 @@
     "authorized_commit": "df78d77f31c8da946623e586634998e151ed237e",
     "description": "Four corporate improvements published07:54; preserved by the later measurement/appearance release"
   },
-  "publication_executed_commit": "db45afc2518b354bb14b108172d75d3aacb8d643",
+  "publication_executed_commit": "d7ad0795a561a9b69999b421fd9eef519adfee26",
   "publication_execution_precision": "../measurement-20261119/publication/privacy-clarification.json",
-  "latest_public_technical_verification": "../measurement-20261119/publication/public-http-verification.json",
+  "latest_public_technical_verification": "../service-coverage-20261119/public-http-verification.json",
   "previous_measurement_publication": {
     "production_record": "../measurement-20261119/publication/publication.json",
     "production_deployment_id": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
     "publication_t0": "2026-11-19T14:07:21.935-03:00"
   },
   "service_coverage_release": {
-    "status": "authorized_candidate_staged_pending",
-    "record": "../service-coverage-20261119/README.md",
+    "status": "published_and_verified",
+    "record": "../service-coverage-20261119/publication.json",
     "regions": 10,
     "communes": 34,
     "publicModeMention": false,
     "scopeChanged": false,
     "productionApprovalGranted": true,
-    "publicationEffectMeasured": false
-  }
+    "publicationEffectMeasured": false,
+    "sourceCommit": "d7ad0795a561a9b69999b421fd9eef519adfee26",
+    "deploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+    "publicationT0": "2026-11-19T16:56:11.782000-03:00",
+    "postPublicationChatGPTObservation": "../service-coverage-20261119/chatgpt-observation.json",
+    "chatGPTMentionObserved": false,
+    "chatGPTOwnLinkObserved": false
+  },
+  "previous_contact_integration_publication": {
+    "deploymentId": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+    "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
+    "t0": "2026-11-19T15:50:03.998-03:00"
+  },
+  "current_change_followup": "../service-coverage-20261119/README.md",
+  "previous_chatgpt_observation": "runs/2026-11-19-weekly-comparison/chatgpt-observation.json"
 }

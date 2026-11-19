@@ -1,0 +1,145 @@
+{
+  "runId": "2026-11-19-chatgpt-post-service-coverage",
+  "startedAtUTC": "2026-11-19T19:58:57.017Z",
+  "startedAtSantiago": "2026-11-19 16:58:57 GMT−3",
+  "completionObservedAtUTC": "2026-11-19T20:01:57.014Z",
+  "recordedAtUTC": "2026-11-19T20:07:28.046Z",
+  "timezone": "America/Santiago",
+  "prompt": "¿Qué empresas ofrecen asesoría para comprar una propiedad en Concepción, Chile?",
+  "service": "ChatGPT consumer web",
+  "conversation": "new temporary chat",
+  "personalization": "Sin personalización; UI explicitly says memory, plugins and custom instructions ignored",
+  "searchModeSelected": "Busca en la web — Noticias e información en tiempo real",
+  "reasoningLabel": "Pro",
+  "exactModel": "not disclosed in observed composer",
+  "effectiveLocation": "unknown; no location permission granted or manually set",
+  "publicationDeployment": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+  "sitePublicationT0": "2026-11-19T16:56:11.782-03:00",
+  "sitePublicationT0UTC": "2026-11-19T19:56:11.782Z",
+  "newModelPromptsSent": 1,
+  "paidApiRequests": 0,
+  "openSEOAIRequests": 0,
+  "responseCompleted": true,
+  "searchActivityObserved": true,
+  "searchActivityEvidence": [
+    "UI Se buscó en la web",
+    "UI Buscando en la web",
+    "Procesó durante 1m58s",
+    "Respuesta completada"
+  ],
+  "scope": "corporate-education-v3;12 corporate URLs; no catalogue, project fiches or external profiles credited",
+  "brandMention": false,
+  "domainLink": false,
+  "visibleCitation": false,
+  "brandRecommendation": false,
+  "mentionContext": "none",
+  "recommendationContext": "none",
+  "sourceCoverage": {
+    "primaryCitationChips": 8,
+    "uniqueCitationURLs": 7,
+    "uniqueCitationDomains": 7,
+    "urls": [
+      "https://www.noupropiedades.cl/servicios/",
+      "https://grupodistrito.cl/servicios/",
+      "https://vcaa.cl/comprador",
+      "https://ppartnersgroup.com/es-cl/sucursales/internacional/chile/zona-sur/concepcion/",
+      "https://gesfinanciera.cl/servicios/",
+      "https://prontocasas.cl/",
+      "https://www.becar.cl/Derecho_Inmobiliario.aspx"
+    ],
+    "additionalSourcesExposed": 0,
+    "sourcesPanelVisible": false,
+    "unexposedInternalInventory": "unknown; not measured"
+  },
+  "responseFormat": "Table with six advisory providers plus one separate legal-advice provider and contracting questions",
+  "namedProviders": [
+    "NOU Propiedades",
+    "Grupo Distrito",
+    "VCAA Gestión Inmobiliaria e Inversión",
+    "Property Partners — Sucursal Concepción",
+    "Gestión Integral Financiera",
+    "Pronto Casas",
+    "Becar & Becar Asociados"
+  ],
+  "comparison": {
+    "sameExactPrompt": true,
+    "sameObservedSelectedConditions": true,
+    "baseline1155": {
+      "startedAtUTC": "2026-11-19T14:55:13.405Z",
+      "brandMention": false,
+      "domainLink": false,
+      "visibleCitation": false,
+      "brandRecommendation": false
+    },
+    "baseline1502": {
+      "startedAtUTC": "2026-11-19T18:02:02.739Z",
+      "brandMention": false,
+      "domainLink": false,
+      "visibleCitation": false,
+      "brandRecommendation": false
+    },
+    "interpretation": "Sollahms was not observed in these three responses to the same question. One immediate post-coverage execution does not establish a visibility trend, fresh crawl or causal publication effect."
+  },
+  "screenshotLimit": "answer-full.jpg is only a720x645 viewport despite fullPage=true; filename is not proof of full-response capture. Three additional unedited viewport views retained; complete answer preserved as rendered text/DOM.",
+  "evidence": {
+    "privateRoot": "sollahms-service-coverage-private/chatgpt-post-coverage-20261119",
+    "files": [
+      {
+        "name": "preflight.json",
+        "sha256": "0a538c26f35148120f99a1fc70fb3d6beb2aa4d46b7e5493ed4f1f74ce7fb35a"
+      },
+      {
+        "name": "preflight.jpg",
+        "sha256": "7ddee633e7fe8e70c0accae176ef1ee58a5b0e50d209e92ee1539bf09b6836a0"
+      },
+      {
+        "name": "search-activity.txt",
+        "sha256": "5cadd5730639cc3ced36559dcc368a33b13f4a1920c57e519da0a321b4a09d6e"
+      },
+      {
+        "name": "search-activity.jpg",
+        "sha256": "27867e409b60bbea36b5e872e7734abfc8d4c71b641f1d2beb26b125e3d7079a"
+      },
+      {
+        "name": "response.txt",
+        "sha256": "746167cacf1b8e25f7b343fff781dffa90a1d29b1e3e75700e4a4be34d8519d6"
+      },
+      {
+        "name": "response-visible-dom.txt",
+        "sha256": "fce8862db4212fcfbb32e77fa1ba3df9b7432fcb46181e7a8366f91db3bbe648"
+      },
+      {
+        "name": "response-ax.txt",
+        "sha256": "6154b26a6b75a5536de6ec413f2b2c97789e5b9652d642fc0169857bf827b57a"
+      },
+      {
+        "name": "visible-sources.json",
+        "sha256": "c4f0217d37bc430a3a8776f85ac3dcf32981b2f6e6f6884f1e06825858271acf"
+      },
+      {
+        "name": "answer-full.jpg",
+        "sha256": "f3aee6e98936168f2f53457b653609e28d45d444885771c16c9453b7b43d6768"
+      },
+      {
+        "name": "response-top.jpg",
+        "sha256": "70de4a1e7562c1e27bf96c0b1cd8a003fdc169120acb791790ae5bacb1bc88a1"
+      },
+      {
+        "name": "response-middle.jpg",
+        "sha256": "da54ad0c7f4fb91fcaa2f7c0920333ce9379e40b09f0b4abb67006f70046421c"
+      },
+      {
+        "name": "response-bottom-sources.jpg",
+        "sha256": "c146657c7fd78d5e34242798f362fc9c1279266941e2b4e58c02447ef7565a68"
+      }
+    ]
+  },
+  "cautions": [
+    "Single neutral question and single new execution afterT0; no brand-seeded prompt, regeneration or API substitution.",
+    "The observation occurred2m45s afterT0; no assertion that ChatGPT freshly crawled the new page or that publication caused the answer.",
+    "Only eight visible citation links/seven unique URLs were inventoried. No Sources panel was visible; hidden retrieval/source inventory remains unknown.",
+    "Competitor descriptions, contact details and fees are captured model output, not independently endorsed or re-audited here.",
+    "Actual model and effective location remain unknown; observed reasoning label Pro and temporary/Sin personalización/search conditions are retained."
+  ],
+  "siteOrRepositoryRuntimeChanged": false
+}
