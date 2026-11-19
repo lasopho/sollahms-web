@@ -1,6 +1,6 @@
 import {validateCommercialFields, normalizedCommercialFields, focusCommercialField} from './commercial-fields.mjs';
 import { createFormOperation } from './form-operation.mjs';
-import { resolveProjectIdentity } from './project-identity.mjs';
+import { resolveAdvisoryProject } from './advisory-project-context.mjs?v=20261119-1';
 import { bindRutField } from './rut-field.mjs?v=20261026-required-1';
 import {adviceContext} from './commercial-context.mjs?v=20261029-euro-1';
 
@@ -23,7 +23,7 @@ if (form) {
       if(query.getAll('proyecto').length!==1||query.getAll('etapa').length>1)throw Error();
       const response=await fetch('/data/proyectos.json',{signal:AbortSignal.timeout(10000)});
       if(!response.ok)throw Error();
-      project=resolveProjectIdentity(await response.json(),query.get('proyecto'),query.get('etapa'));
+      project=await resolveAdvisoryProject(await response.json(),query.get('proyecto'),query.get('etapa'));
       if(!project)throw Error();
       const label=document.getElementById('advisory-project-context');label.textContent='Tu consulta sobre '+project.nombre;label.hidden=false;
       document.querySelectorAll('a[href="/agenda-asesoria.html"],a[href="/contacto.html"]').forEach(a=>{a.href+=project.contextQuery;});
