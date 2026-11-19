@@ -12,8 +12,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_DEPLOYMENT = 'dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr'
-BASE_MANIFEST_SHA256 = 'cfe487b63024752090ceb80e16c2e26259a2913beeaa8249b9fa9a2ee313d14c'
+BASE_DEPLOYMENT = 'dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV'
+BASE_MANIFEST_SHA256 = '76656dc4d9415edc7bdd32118b920053686f9f6c98f61035081f4e7f0284126f'
 PAGES = ('centro-orientacion.html', 'entorno-desarrollo-urbano.html',
          'inversion-inmobiliaria-empresas.html')
 OVERLAYS = PAGES + ('sitemap.xml',)
