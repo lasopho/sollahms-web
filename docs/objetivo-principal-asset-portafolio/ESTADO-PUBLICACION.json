@@ -1,35 +1,31 @@
 {
   "date": "2026-11-19",
-  "verifiedAtUTC": "2026-11-19T08:18:53.935146+00:00",
-  "status": "PUBLICADO_VERIFICADO_49312FD",
-  "sourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
+  "verifiedAtUTC": "2026-11-19T10:32:30.247273+00:00",
+  "status": "PUBLICADO_VERIFICADO_MAPA_152_0A0B7C70",
+  "sourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
   "artifact": {
-    "sourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
-    "technicalSourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
-    "sourceTree": "2c13b55661d54e1fae5bb83d87bfe1ef7a67e36d",
-    "output": "/private/tmp/sollahms-fichas-iris-release-20261119/stage/.vercel/output",
-    "files": 1721,
-    "bytes": 227566261,
-    "staticFiles": 1663,
+    "sourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+    "technicalSourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+    "output": "/private/tmp/sollahms-mapa-21-20261119/release/stage/.vercel/output",
+    "files": 1723,
+    "bytes": 227612714,
+    "staticFiles": 1665,
     "functionFiles": 57,
     "functionBundles": 7,
     "configFiles": 1,
     "newProjects": 0,
-    "newGPRProjects": 0,
-    "existingProjectFichesUnchanged": 131,
+    "existingProjectFichesUnchanged": 152,
     "protectedSourceHashesMatched": 155,
-    "candidateInventorySha256": "c3ed5ef73ecc9cbad23732970b3e5bb54f8df1c92b6027fe3fac3848e7e2bd04",
-    "manifest": "fichas-sin-citas-iris-20261119/MANIFIESTO-CANDIDATO-SIN-CITAS-IRIS.json",
-    "resourceClosure": "ampliacion-iris-chile-20261118/candidato-21-gpr/paquete-publico/CIERRE-PAQUETE-PUBLICO-21.json",
+    "candidateInventorySha256": "04c4755b020c571d5b2aec2e3e58e271554372b0811c7d4b185f883a843bf5dc",
+    "manifest": "mapa-filtros-152-20261119/MANIFIESTO-PAQUETE-MAPA.json",
+    "manifestSHA256": "76656dc4d9415edc7bdd32118b920053686f9f6c98f61035081f4e7f0284126f",
     "applicationBuilds": 0,
     "generatorsExecuted": 0,
-    "scope": "Existing Fky output with only21 fiche HTML replaced. Data/modules/functions/config unchanged.",
-    "manifestSHA256": "cfe487b63024752090ceb80e16c2e26259a2913beeaa8249b9fa9a2ee313d14c",
-    "resourceClosureReusedBecauseInternalResourcesUnchanged": true
+    "scope": "Frozen493 output with two runtime JS replaced and two public resources added; all fiches/data/functions/config preserved."
   },
   "production": {
-    "commit": "49312fd708ccd9e319511432e4b657788f5734f9",
-    "deploymentId": "dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr",
+    "commit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+    "deploymentId": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
     "url": "https://sollahms.cl/proyectos.html",
     "projects": 152,
     "originalProjects": 131,
@@ -43,57 +39,72 @@
       "project-wrapp-lsandoval2-8260s-projects.vercel.app"
     ],
     "readyState": "READY",
-    "sourceBranch": "codex/fichas-sin-citas-iris-20261119"
+    "sourceBranch": "codex/mapa-filtros-21-proyectos-20261119"
   },
   "authorized": {
-    "specificOwnerPresentationChangeAndPublication": true,
+    "specificOwnerMapAndFilterSynchronizationAndPublication": true,
     "authorizationsConsumed": true,
     "futureOperationsAuthorized": false
   },
   "deployment": {
-    "id": "dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr",
-    "url": "https://project-wrapp-laof4oidn-lsandoval2-8260s-projects.vercel.app",
+    "id": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+    "url": "https://project-wrapp-iev6fe1ip-lsandoval2-8260s-projects.vercel.app",
     "readyState": "READY",
     "target": "production",
-    "sourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
+    "sourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
     "createdOnceBeforePromotion": true,
-    "remoteDigestsMatched": 1721
+    "remoteDigestsMatched": 1723
   },
   "executedPromotion": {
-    "authorizationId": "AUTH-FICHAS-SIN-CITAS-IRIS-PUBLICACION-20261119-01",
-    "authorization": "Direct owner instruction to finish and publish this change autonomously",
+    "authorizationId": "AUTH-MAPA-FILTROS-152-PUBLICACION-20261119-01",
+    "authorization": "Direct owner instruction to synchronize map/filters and finish publication autonomously",
     "operation": "mcp__codex_apps__vercel_request_promote",
     "mutationAttempts": 1,
     "executed": true,
     "sameDeployment": true,
     "newDeploymentsDuringPromotion": 0,
     "rebuild": false,
-    "receipt": "fichas-sin-citas-iris-20261119/PUBLICACION-SIN-CITAS-IRIS.json"
+    "receipt": "mapa-filtros-152-20261119/PROMOCION-MAPA.json"
   },
   "publicationVerification": {
     "existingAliasesMatched": 5,
-    "publicFichesHTTPAndSHA256Matched": 21,
-    "publicFichesWithVisibleIrisYapoOrExternalLinks": 0,
-    "unchangedCatalogResourcesHTTPAndSHA256Matched": 3,
     "catalogIdentities": 152,
-    "sourceDataOriginal131Identities": 131,
-    "sourceDataExpansionIdentities": 21,
-    "unchangedOriginal131Fiches": 131,
-    "unchangedOutputFiles": 1700,
+    "mapIdentitiesLocated": 152,
+    "newProjectPoints": 21,
+    "pendingNewProjectCoordinates": 0,
+    "newMetropolitanProjectsWithGeographicMetro": 14,
+    "original131FichesUnchanged": true,
+    "all152FichesUnchanged": true,
+    "originalMetroProjectContextsPreserved": 100,
+    "reviewedStationsPreserved": 126,
+    "protectedSourceHashesMatched": 155,
+    "unchangedOutputFiles": 1719,
+    "remoteUIDsMatched": 1723,
+    "httpResourcesHashesMatched": 12,
+    "NodeNewDistinctCases": 18,
+    "ChromeLocalChecks": 15,
+    "ChromeProductionChecks": 13,
+    "responsiveWidths": [
+      390,
+      1440
+    ],
+    "catalogViews": 4,
+    "historicalSuitesRepeated": false,
     "functionBundlesPreserved": 7,
     "functionFilesPreserved": 57,
     "configurationPreserved": true,
     "formsSubmitted": 0,
-    "newBrowserQAClaimed": false,
-    "historicalFilterAndResponsiveSuitesReused": true,
-    "independentSourceReview": "fichas-sin-citas-iris-20261119/REVISION-INDEPENDIENTE.json",
-    "httpEvidence": "fichas-sin-citas-iris-20261119/PUBLICACION-HTTP-VERIFICADA.json",
-    "aliasEvidence": "fichas-sin-citas-iris-20261119/ALIAS-Y-PROMOCION-VERIFICADOS.json"
+    "financialRecertificationClaimed": false,
+    "independentReview": "mapa-filtros-152-20261119/REVISION-INDEPENDIENTE-GEO-METRO.json",
+    "releaseReview": "mapa-filtros-152-20261119/REVISION-INDEPENDIENTE-RELEASE-MAPA.json",
+    "httpEvidence": "mapa-filtros-152-20261119/PUBLICACION-HTTP-MAPA.json",
+    "browserEvidence": "mapa-filtros-152-20261119/QA-CHROME-PRODUCCION.json",
+    "aliasEvidence": "mapa-filtros-152-20261119/ALIAS-PUBLICADOS-MAPA.json"
   },
   "priorProduction": {
-    "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
-    "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
-    "snapshot": "fichas-sin-citas-iris-20261119/ESTADO-PUBLICACION-ANTERIOR-D3.json",
+    "sourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
+    "deploymentId": "dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr",
+    "snapshot": "mapa-filtros-152-20261119/ESTADO-PUBLICACION-ANTERIOR-493.json",
     "rollbackAuthorized": false
   },
   "releaseHistory": [
@@ -203,6 +214,11 @@
       "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
       "deploymentId": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
       "snapshot": "fichas-sin-citas-iris-20261119/ESTADO-PUBLICACION-ANTERIOR-D3.json"
+    },
+    {
+      "sourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
+      "deploymentId": "dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr",
+      "snapshot": "mapa-filtros-152-20261119/ESTADO-PUBLICACION-ANTERIOR-493.json"
     }
   ],
   "deploymentCreationAuthorizationUsed": true,
@@ -238,7 +254,7 @@
     "Do not repeat certified audits or tests with identical inputs."
   ],
   "globalObjectiveComplete": false,
-  "nextAuthorizedWork": "Only independent work with new evidence within existing scope; two already presented owner requests remain pending without repetition.",
+  "nextAuthorizedWork": "Map synchronization specifically completed/published. Continue only new independent work within existing authorization; supplement24a and Irarrázaval requests remain pending without repetition.",
   "currentEssentialCoverage152": {
     "date": "2026-11-18",
     "index": "cobertura-comercial-152-20261118/INDICE-COBERTURA-152.json",
@@ -260,5 +276,18 @@
     "productionChanged": false,
     "objectiveGlobalComplete": false,
     "unchangedDataAndFilterSourcesAfterCitationRemoval": true
+  },
+  "currentMapCoverage152": {
+    "reviewedOn": "2026-11-19",
+    "projects": 152,
+    "located": 152,
+    "pendingCoordinates": 0,
+    "originalLocationsPreserved": 131,
+    "newVerifiedRepresentativePoints": 21,
+    "newRMGeographicMetro": 14,
+    "exactEntrancesCertified": false,
+    "walkingOrFutureRoutes": false,
+    "sourceGeographySHA256": "d2d6e8b196063797a262c5f7796d12c6e88c1755cee137f44502495916acf90e",
+    "commercialSourceGuardNotModified": true
   }
 }

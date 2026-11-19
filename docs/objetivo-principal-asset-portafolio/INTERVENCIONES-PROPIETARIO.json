@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-17",
+  "date": "2026-11-19",
   "questions": [
     {
       "id": "OWNER-SCOPE-MOOD-20261117-01",
@@ -806,6 +806,39 @@
       "existingAliasesVerified": 5,
       "verifiedAtUTC": "2026-11-19T08:18:53.935146+00:00",
       "remainingCreationOrPromotionAuthorizations": 0
+    },
+    {
+      "id": "AUTH-MAPA-FILTROS-152-PUBLICACION-20261119-01",
+      "kind": "Instrucción directa específica de sincronización y publicación autónoma",
+      "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
+      "ownerInstruction": "sincronizar con mapa y filtros avanzar hasta terminar y publicar en forma autonoma, no parar entre fases",
+      "authorizedByDirectOwnerInstruction": true,
+      "questionAlreadyPresented": false,
+      "pendingOwnerAction": null,
+      "doNotRequestRepeatedApproval": true,
+      "scope": "Synchronize verified21 project locations with shared152 catalog/map/Metro filters and publish this scoped change.",
+      "technicalSHA": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+      "sourceBranch": "codex/mapa-filtros-21-proyectos-20261119",
+      "deploymentId": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+      "deploymentAttempts": 1,
+      "promotionAttempts": 1,
+      "mapIdentitiesVerified": 152,
+      "existingAliasesVerified": 5,
+      "NodeDirectedTests": 18,
+      "ChromeLocalChecks": 15,
+      "ChromePublicChecks": 13,
+      "verifiedAtUTC": "2026-11-19T10:32:30.247273+00:00",
+      "remainingCreationOrPromotionAuthorizations": 0,
+      "notAuthorized": [
+        "main",
+        "unrelatedCommercialChanges",
+        "supplement24a",
+        "ReadyOrMergeOtherPRs",
+        "DNS",
+        "SSO",
+        "environmentVariables"
+      ],
+      "evidence": "mapa-filtros-152-20261119/PROMOCION-MAPA.json"
     }
   ],
   "otherPriorWaitsUnchanged": true

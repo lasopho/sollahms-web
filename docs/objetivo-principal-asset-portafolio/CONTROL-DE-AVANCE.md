@@ -1,6 +1,15 @@
 # Control del objetivo principal: Asset Portafolio
 
-Último corte operativo: **19/11/2026**. Objetivo global para los 152 proyectos publicados en ejecución. El cambio específico de citas/enlaces Iris de las fichas fue completado y publicado por instrucción directa del propietario. Producción actual: `49312fd708ccd9e319511432e4b657788f5734f9`, deployment `dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr`, READY, cinco alias existentes verificados. Se conservan los 152 proyectos, las 131 fichas originales, datos y filtros. Main permanece intacto. La rama footer sigue D3; las nuevas integraciones deben partir de la producción actual o reconciliarla para no restaurar citas. El suplemento24a y la pregunta de baños siguen pendientes sin repreguntar.
+Último corte operativo: **19/11/2026**. Mapa y filtros sincronizados y publicados para los152 proyectos por instrucción directa del propietario. Producción `0a0b7c70c7de8f5db8b122ae8a4d6664773180ba`, deployment `dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV`, READY, cinco alias existentes verificados. Los21nuevos puntos completan152ubicaciones;14nuevosRM participan en el filtroMetro geográfico. Se conservan152fichas,155protegidos,precios,direcciones,fuentes comerciales y siete funciones. Main sigue86e200ec; footer sigueD3 y debe reconciliarse con producción actual antes de cualquier integración. Suplemento24a y bañosIrarrázaval siguen pendientes sin repreguntar.
+
+## Mapa y filtros sincronizados — publicado
+
+[Recibo consolidado](mapa-filtros-152-20261119/README.md):18/18Node dirigidas,15/15Chrome local y13/13Chrome público, cuatro vistas y1440/390px.152/152ubicados, GPR9 yregiónLosLagos2; precio1D1B conserva la misma referencia, útil desconocido no coincide. Metro usa puntos y red revisados en línea recta, sin caminatas ni futura. Se corrigió en rojo/verde el aviso falso y botón ausente de los21en vista dividida. Fallas503/hash dejan los21pendientes y mantienen152identidades/131puntos con aviso accesible. No se repiten pruebas históricas ni investigaciónIris.
+
+Fuentes específicas verificadas para21puntos; se descartan cámaras de mapas, centroides e interpolaciones. Reserva distingue públicamente2001proyecto/1855sala; Hacienda2001mapa/1847brochure; Sento1735 yVM1439 se conservan sin equivalencia con1703/1441. Puntos representativos, sin certificación de entradas. Nuevas coordenadas en JSON independiente pinneado; el guardnull de la fuente comercial histórica sigue intacto.
+
+Paquete1723archivos/227612714bytes: dosJS reemplazados, dosaltas,1719preservados; todoslos152HTML y57archivosdesietefunciones/config exactos. UID1723/1723 yHTTP12/12 coinciden; cero erroresJS en Chrome público. Revisión independiente aprobada con observaciones de precisión y cero bloqueantes. Rama `codex/mapa-filtros-21-proyectos-20261119` sincronizada en `0a0b7c70c7de8f5db8b122ae8a4d6664773180ba`, desplieguesautomáticosfalse, sinPR/merge ni cambio a main/footer. Una creación sin dominios y una promoción del mismoID, ya verificadas. DNS,SSO,variables,formularios,CRM360,AILab,Resend yfinanzas intactos. Cambio de citas anterior conservado. La instrucción específica no responde24a/baños ni autoriza nuevas publicaciones. El objetivo global conserva su cobertura esencial y pendientes previos.
+
 
 ## Citas y enlaces Iris retirados de las fichas
 
