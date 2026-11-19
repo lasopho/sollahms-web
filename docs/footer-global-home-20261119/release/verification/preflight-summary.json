@@ -1,0 +1,402 @@
+{
+  "phase": "preflight",
+  "startedAtUtc": "2026-11-19T20:27:14.107167+00:00",
+  "checkedAtUtc": "2026-11-19T20:27:17.865999+00:00",
+  "timezone": "America/Santiago",
+  "mutations": 0,
+  "apiMethods": [
+    "GET"
+  ],
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "live": false,
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "passwordProtection": null,
+    "trustedIps": null,
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "buildCommand": null,
+    "outputDirectory": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "framework": null,
+    "nodeVersion": "24.x",
+    "repository": {
+      "org": "lasopho",
+      "repo": "sollahms-web",
+      "productionBranch": "main"
+    }
+  },
+  "environmentMetadata": [
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "requestedEnvironmentDecryption": false,
+  "environmentValuesStored": false,
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795118171782,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795118171782,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    },
+    {
+      "alias": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795118171779,
+      "createdAt": 1778007732492,
+      "deploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795118171778,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795118171781,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    }
+  ],
+  "domains": [
+    {
+      "name": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": null,
+      "redirectStatusCode": null,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1777495937301
+    },
+    {
+      "name": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": null,
+      "redirectStatusCode": null,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1790309292746
+    },
+    {
+      "name": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1778007732416
+    },
+    {
+      "name": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1792966021083
+    }
+  ],
+  "deployment": {
+    "id": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+    "url": "project-wrapp-bn2zcsjwy-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "state": null,
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795117979620,
+    "created": null,
+    "ready": 1795117987673,
+    "productionUrl": null,
+    "isRollbackCandidate": null,
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": null,
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "meta": {
+      "githubCommitSha": "d7ad0795a561a9b69999b421fd9eef519adfee26",
+      "githubCommitRef": "codex/cobertura-asesoria-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web",
+      "candidateInventorySHA256": null,
+      "baselineDeployment": null
+    }
+  },
+  "baseline": {
+    "id": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+    "url": "project-wrapp-bn2zcsjwy-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "state": null,
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795117979620,
+    "created": null,
+    "ready": 1795117987673,
+    "productionUrl": null,
+    "isRollbackCandidate": null,
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": null,
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "meta": {
+      "githubCommitSha": "d7ad0795a561a9b69999b421fd9eef519adfee26",
+      "githubCommitRef": "codex/cobertura-asesoria-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web",
+      "candidateInventorySHA256": null,
+      "baselineDeployment": null
+    }
+  },
+  "candidateInventorySHA256": "f11c8fc8f816db5bf104866fc4f8bc439917674a0d210de90edc3cef3733ce1e",
+  "recentProduction": [
+    {
+      "id": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+      "url": "project-wrapp-bn2zcsjwy-lsandoval2-8260s-projects.vercel.app",
+      "readyState": "READY",
+      "state": "READY",
+      "target": "production",
+      "source": "cli",
+      "createdAt": 1795117979620,
+      "created": 1795117979620,
+      "ready": 1795117987673,
+      "productionUrl": null,
+      "isRollbackCandidate": true,
+      "prebuilt": true,
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": null,
+      "ownerId": null,
+      "meta": {
+        "githubCommitSha": "d7ad0795a561a9b69999b421fd9eef519adfee26",
+        "githubCommitRef": "codex/cobertura-asesoria-20261119",
+        "githubOrg": "lasopho",
+        "githubRepo": "sollahms-web",
+        "candidateInventorySHA256": null,
+        "baselineDeployment": null
+      }
+    }
+  ],
+  "productionWindowSinceEpochMs": 1795117979620,
+  "checks": [
+    {
+      "name": "project_and_owner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "SSO_and_manual_domain_assignment",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "automatic_previews_disabled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "live_flag_not_enabled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "repository_binding",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deployment_identity_ready_production_prebuilt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "four_existing_domains_verified",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_five_aliases_on_expected_deployment",
+      "passed": true,
+      "detail": {
+        "expectedDeployment": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+      }
+    },
+    {
+      "name": "redirect_preserved_sollahms.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "redirect_preserved_www.sollahms.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "redirect_preserved_sollhams.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "redirect_preserved_project-wrapp.vercel.app",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "redirect_preserved_project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production_window_complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "published_baseline_source_commit_and_branch",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "remote_baseline_HEAD_reconciled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no_concurrent_new_production",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "complete_remote_inventory_and_content_addresses",
+      "passed": true,
+      "detail": {
+        "expected": 1728,
+        "actual": 1728,
+        "matched": 1728,
+        "missing": [],
+        "extra": [],
+        "unexpected": []
+      }
+    },
+    {
+      "name": "seven_registered_functions",
+      "passed": true,
+      "detail": {
+        "paths": [
+          "out/api/advisory",
+          "out/api/booking-availability",
+          "out/api/booking-create",
+          "out/api/collaboration",
+          "out/api/contact",
+          "out/api/orientation-contact",
+          "out/api/uf"
+        ]
+      }
+    },
+    {
+      "name": "57_function_source_files_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "config_v3_source_identity",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "remoteBaselineHead": "9f43dc0a20dbd8711609ea4e5461eb0aaab8c142",
+  "fullInventory": {
+    "expected": 1728,
+    "matched": 1728,
+    "functionFiles": 57,
+    "functionBundles": 7,
+    "configurationMatched": true,
+    "inventorySHA256": "f11c8fc8f816db5bf104866fc4f8bc439917674a0d210de90edc3cef3733ce1e",
+    "sizeEvidence": "Remote sizes checked where supplied; UID SHA1 binds the locally certified SHA256 and byte count"
+  },
+  "passed": true,
+  "status": "PASS",
+  "finishedAtUtc": "2026-11-19T20:27:18.871348+00:00"
+}

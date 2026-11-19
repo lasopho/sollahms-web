@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "status": "published_verified_qa_closed",
+  "passed": true,
+  "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+  "sourceCommit": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+  "branch": "codex/footer-global-home-20261119",
+  "baselineDeployment": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+  "baselineSourceCommit": "d7ad0795a561a9b69999b421fd9eef519adfee26",
+  "baselineSourceHead": "9f43dc0a20dbd8711609ea4e5461eb0aaab8c142",
+  "baselineInventorySHA256": "f11c8fc8f816db5bf104866fc4f8bc439917674a0d210de90edc3cef3733ce1e",
+  "candidateInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+  "aliasAssignedAtUtc": "2026-11-19T20:58:29.425000+00:00",
+  "aliasAssignedAtAmericaSantiago": "2026-11-19T17:58:29.425000-03:00",
+  "qaClosedAtUtc": "2026-11-19T21:04:27.261402+00:00",
+  "qaClosedAtAmericaSantiago": "2026-11-19T18:04:27.261402-03:00",
+  "timeDistinction": "Assignment time comes from the apex alias; closure time follows all passing public QA and the final connected native read.",
+  "publicationMethod": "One complete certified prebuilt Production with --skip-domain, then promotion of the same verified ID; no rebuild",
+  "newProductionDeployments": 1,
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795121909425,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795121909430,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    },
+    {
+      "alias": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795121909431,
+      "createdAt": 1778007732492,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795121909441,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795121909428,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    }
+  ],
+  "previousProductionRetainedForRollback": true,
+  "runtime": {
+    "files": 1729,
+    "htmlPagesChanged": 168,
+    "projectFiches": 152,
+    "projectContentOutsideFooterAndAddedCssLinkPreserved": true,
+    "wholeFicheBytesUnchanged": false,
+    "identicalExistingNonHtmlFiles": 1560,
+    "addedFiles": [
+      "static/assets/css/corporate-footer.css"
+    ],
+    "functionBundles": 7,
+    "functionFilesByteIdentical": 57,
+    "dataAndExistingAssetsByteIdentical": true,
+    "configV3ByteIdentical": true,
+    "robotsAndSitemapByteIdentical": true,
+    "footerTemplateSHA256": "75a349c9282f93d61a774ed67ac235c89a49146fdcb9d5142004e8609a6da8ab",
+    "buildersOrLegacyGeneratorsExecuted": 0,
+    "baselineArtifactModified": false
+  },
+  "responsiveAdjustment": {
+    "scope": "Only #sollahms-corporate-footer at viewport widths <=1023px",
+    "property": "padding-bottom:80px; desktop >=1024px remains32px",
+    "differenceFromOriginalHomepage": "An additional48px bottom safe area at768/390/320 in the required QA matrix; content/grid/type/link geometry unchanged.",
+    "reason": "The existing consent launcher overlapped WhatsApp at768px and the last legal link at390/320px when the page was fully scrolled to the bottom. The footer safe area makes these links clickable without changing or hiding the consent launcher.",
+    "appliedIdenticallyToAll168Pages": true,
+    "consentWidgetCssJavaScriptConfigurationChanged": false
+  },
+  "qa": {
+    "browser": {
+      "local": {
+        "mode": "local",
+        "passed": true,
+        "cases": 840,
+        "pages": 168,
+        "widths": [
+          1440,
+          1024,
+          768,
+          390,
+          320
+        ],
+        "screenshots": 840,
+        "finishedAtUtc": "2026-11-19T20:48:42.260000+00:00",
+        "consentRejectCases": 12,
+        "optionalSDKRequests": 0,
+        "commercialSubmits": 0,
+        "mapIframeFixtures": 117,
+        "api503Fixtures": 4,
+        "uf503Fixtures": 4,
+        "motionCases": 5,
+        "preexistingOutsideFooterOverflow": [],
+        "networkResources": 0
+      },
+      "isolated": {
+        "mode": "isolated",
+        "passed": true,
+        "cases": 840,
+        "pages": 168,
+        "widths": [
+          1440,
+          1024,
+          768,
+          390,
+          320
+        ],
+        "screenshots": 840,
+        "finishedAtUtc": "2026-11-19T20:57:33.036000+00:00",
+        "consentRejectCases": 0,
+        "optionalSDKRequests": 0,
+        "commercialSubmits": 0,
+        "mapIframeFixtures": 117,
+        "api503Fixtures": 4,
+        "uf503Fixtures": 4,
+        "motionCases": 5,
+        "preexistingOutsideFooterOverflow": [],
+        "networkResources": 820
+      },
+      "public": {
+        "mode": "public",
+        "passed": true,
+        "cases": 840,
+        "pages": 168,
+        "widths": [
+          1440,
+          1024,
+          768,
+          390,
+          320
+        ],
+        "screenshots": 840,
+        "finishedAtUtc": "2026-11-19T21:02:56.971000+00:00",
+        "consentRejectCases": 12,
+        "optionalSDKRequests": 0,
+        "commercialSubmits": 0,
+        "mapIframeFixtures": 117,
+        "api503Fixtures": 4,
+        "uf503Fixtures": 4,
+        "motionCases": 5,
+        "preexistingOutsideFooterOverflow": [],
+        "networkResources": 822
+      }
+    },
+    "http": {
+      "isolated": {
+        "mode": "isolated",
+        "passed": true,
+        "finishedAtUtc": "2026-11-19T20:51:03.394516+00:00",
+        "summary": {
+          "plannedRequests": 172,
+          "completedRequests": 172,
+          "passedRequests": 172,
+          "htmlPages": 168,
+          "htmlPassed": 168,
+          "htmlPagesVerified": 168,
+          "sourceBytesExact": 168,
+          "exactToolbarSuffixOnly": 0,
+          "outsideFooterExact": 168,
+          "mainExact": 168,
+          "assetRequests": 3,
+          "redirectRequests": 1,
+          "tlsVerifiedRequests": 172,
+          "footerDestinations": 11,
+          "networkConcurrencyLimit": 4
+        },
+        "methods": [
+          "GET"
+        ],
+        "sourceComparison": "Exact candidate bytes or only the verified deployment-specific administrative toolbar suffix"
+      },
+      "public": {
+        "mode": "public",
+        "passed": true,
+        "finishedAtUtc": "2026-11-19T20:59:23.606158+00:00",
+        "summary": {
+          "plannedRequests": 174,
+          "completedRequests": 174,
+          "passedRequests": 174,
+          "htmlPages": 168,
+          "htmlPassed": 168,
+          "htmlPagesVerified": 168,
+          "sourceBytesExact": 168,
+          "exactToolbarSuffixOnly": 0,
+          "outsideFooterExact": 168,
+          "mainExact": 168,
+          "assetRequests": 3,
+          "redirectRequests": 3,
+          "tlsVerifiedRequests": 174,
+          "footerDestinations": 11,
+          "networkConcurrencyLimit": 4
+        },
+        "methods": [
+          "GET"
+        ],
+        "sourceComparison": "Exact candidate bytes or only the verified deployment-specific administrative toolbar suffix"
+      }
+    },
+    "browserCasesTotal": 2520,
+    "verifiedScreenshots": 2520,
+    "nativePostpromotionChecks": 29,
+    "nativeRemoteFilesMatched": 1729,
+    "allFooterDestinationsValidated": 11,
+    "commercialSubmits": 0,
+    "messagesSent": 0,
+    "motionScope": "Footer static and no ancestor fade: all 840 cases in each phase. Main-content motion/reduced motion: homepage sample at five widths only; other pages preserved by unchanged source bytes/scripts/CSS, not a new global motion test.",
+    "externalMapProvidersVerified": false,
+    "maps": "Explicit nonnetworking iframe fixtures; original markup and source kept",
+    "uf": "Explicit API HTTP503 fixtures; no real UF lookup or new value certified",
+    "consent": "Twelve fresh reject-all cases in local and public QA; no optional SDK scripts/requests or POST. Protected-host QA has no canonical-origin consent activation."
+  },
+  "preservation": {
+    "SEO_SCOPE": "corporate-education-v3 / 12 URLs unchanged",
+    "analyticsScopeURLs": 12,
+    "seoRegistryByteIdentical": true,
+    "GA4AndClarityConfigurationByteIdentical": true,
+    "consentImplementationByteIdentical": true,
+    "trainingPreferencesUnchanged": true,
+    "projectSettingsAndEnvironmentMetadataUnchanged": true
+  },
+  "searchAndBusinessEvidence": {
+    "Google": "No new crawling, indexing, ranking or result effect measured for this presentation change",
+    "OpenAIChatGPTSearch": "No AI query, mention, citation, link or recommendation measurement performed",
+    "BingMicrosoftCopilot": "No Bing or Copilot result effect measured",
+    "commercialResultAttributed": false
+  },
+  "pullRequest": {
+    "number": 40,
+    "url": "https://github.com/lasopho/sollahms-web/pull/40",
+    "draft": true,
+    "state": "open",
+    "merged": false,
+    "head": {
+      "ref": "codex/footer-global-home-20261119",
+      "sha": "e866ce7ac0d7b6df968ecd011fa78d6aec335828"
+    }
+  },
+  "merges": 0,
+  "gitMutationsByFinalizer": 0,
+  "networkCallsByFinalizer": 0,
+  "sourceAllowlistManifest": "source-preservation.json",
+  "evidenceManifest": "closure-manifest.json",
+  "historicalNextPrompt": {
+    "path": "docs/footer-global-home-20261119/history/NEXT-PROMPT-before-global-footer-20261119.md",
+    "bytes": 3189,
+    "sha256": "1dc7e924684f5fe9f8f9bc353bd0c0f991a7f7db16718c0599b8be1bac193866"
+  },
+  "observedLocalHeadAtClosure": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+  "documentationCommitRule": "A final documentation-only commit may follow the deployed source commit; it does not require another deployment",
+  "rootFinalDocumentationTasks": [
+    "Generate final SHA256SUMS after all documents are closed",
+    "Commit and push documentation only; keep the PR Draft and do not merge"
+  ]
+}

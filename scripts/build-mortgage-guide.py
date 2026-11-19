@@ -7,6 +7,7 @@ from guide_navigation import apply_guide_navigation
 from commercial_origin import apply_origin_links
 from mortgage_guide_references import render_references
 from purchase_stage_links import guide_card, with_css, apply_stage_footer
+from corporate_footer import apply_corporate_footer
 ROOT=Path(__file__).resolve().parents[1]
 d=json.loads((ROOT/'data/mortgage-guide-content.json').read_text())
 def prose(rows):return ''.join('<p>'+e(p)+'</p>' for p in rows)
@@ -41,5 +42,5 @@ page=head+header+menu+'''<main id="contenido-principal" data-mortgage-guide>
 <section class="gh-section"><div class="gh-wrap"><div class="gh-next"><div><p class="gh-kicker">TU SIGUIENTE PASO</p><h2>Conecta lo aprendido con tu búsqueda.</h2><p>Explora el catálogo o conversa con nosotros sobre tu objetivo. Para solicitar asesoría usarás el formulario habitual, con consentimiento antes de enviar tus datos.</p><p class="gh-help">Puedes usar toda la guía sin completar un formulario. Tus escenarios no se adjuntan a la solicitud.</p><p>¿Quieres contrastar los supuestos de tu simulación? Abre el <a href="/comparador-hipotecario.html">comparador hipotecario</a> y revisa la fuente y la vigencia de las referencias disponibles.</p></div><div class="gh-actions"><a class="gh-button" href="/proyectos.html">Explorar proyectos</a><a class="gh-button gh-button-secondary" data-guide-advice href="/contacto.html?origen=guia-hipotecaria#solicitar-asesoria">Solicitar asesoría hipotecaria</a></div></div></div></section>'''+guide_card()+render_references(d)+'''</main>'''+footer+'''<script type="module" src="/assets/js/mortgage-guide.mjs?v=20261029-euro-1"></script></body></html>'''
 page=apply_stage_footer(with_css(apply_guide_navigation(page)))
 page=re.sub(r'(<a data-guide-nav=""[^>]+href="/guia-hipotecaria.html")',r'\1 aria-current="page"',page)
-(ROOT/'guia-hipotecaria.html').write_text(apply_corporate_seo(apply_origin_links(page,'guia-hipotecaria'), 'guia-hipotecaria.html'))
+(ROOT/'guia-hipotecaria.html').write_text(apply_corporate_footer(apply_corporate_seo(apply_origin_links(page,'guia-hipotecaria'), 'guia-hipotecaria.html')))
 print('Generated guide:',len(page.encode()),'bytes')

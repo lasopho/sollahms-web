@@ -20,6 +20,7 @@ from project_navigation import apply_navigation
 from project_amenities import apply_amenities
 from guide_navigation import apply_guide_navigation
 from purchase_stage_links import apply_stage_project
+from corporate_footer import apply_corporate_footer
 
 CSS = '/assets/css/project-header-b.css?v=20261026-b-1'
 LABELS = {
@@ -121,6 +122,6 @@ def _finalize_project(page, project):
     page = apply_sento(page, project)
     from leon_commercial import apply_leon
     page = apply_leon(page, project)
-    return apply_stage_project(apply_guide_navigation(apply_image_label_policy(apply_navigation(apply_amenities(page, project), project)), project), project)
+    return apply_corporate_footer(apply_stage_project(apply_guide_navigation(apply_image_label_policy(apply_navigation(apply_amenities(page, project), project)), project), project))
 
 
