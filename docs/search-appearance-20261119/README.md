@@ -30,6 +30,8 @@ La base productiva se comprobó otra vez: `dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH`, si
 
 La aprobación anterior se limitó a `df78d77f31c8da946623e586634998e151ed237e`. Este cambio adicional requiere aprobación final del candidato concreto según el encargo original. La preview será privada, protegida por SSO y noindex; no se promueve directamente.
 
+La instrucción de mantener el estudio como referencia permanente y alinear el trabajo con Google, OpenAI y Bing/Microsoft **no constituye aprobación para publicar el PR #38**. Este registro solo precisa su alcance y sus límites; no cambia el candidato ni su estado privado.
+
 Para publicar, revalidar primero producción y conservar cualquier publicación posterior; crear un nuevo deployment **Production con --prebuilt --skip-domain**, verificar todo el inventario, siete funciones, entorno y HTTP y promover ese mismo ID validado, conservando ajustes/SSO/dominios/integraciones. La ruta de reversión preferente será el deployment productivo inmediatamente anterior, comprobado nuevamente antes de actuar. No ejecutar generadores históricos ni reconstruir desde main.
 
 Después de una publicación aprobada: comprobar ambos alias, bytes exactos de portada/PNG/SVG, canonical, robots y sitemap sin modificaciones; registrar T0 en America/Santiago. Solo entonces solicitar nuevo rastreo de la portada pública por Search Console y comprobar su lastCrawlTime posterior a T0. La integración actual permite inspección, pero no enviar esa solicitud: debe hacerse en la interfaz de Search Console si no se dispone de otra capacidad autorizada. No se ha enviado ninguna.
@@ -41,6 +43,30 @@ Repetir una muestra equivalente de Google Chile/es/escritorio, separando consult
 - [Google: favicon en resultados](https://developers.google.com/search/docs/appearance/favicon-in-search). PNG figura entre los formatos admitidos; la aparición no está garantizada y requiere un nuevo rastreo/procesamiento.
 - [Google: enlaces de título](https://developers.google.com/search/docs/appearance/title-link?hl=es). Google considera varias señales, incluido og:title; no permite fijar manualmente el título final.
 - [Google: solicitud de nuevo rastreo](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=es). Una solicitud no garantiza ni acelera por repetición la indexación.
+
+## Aporte del PR #38 por plataforma
+
+El [estudio del 25/10](../home-seo-20261025/research-and-decisions.md), su [ampliación del 29/10](../seo-corporate-20261029/README.md), la [estrategia activa v3](../seo-measurement/STRATEGY-v3.md) y el [alcance v3](../seo-measurement/SCOPE-v3.md) son la referencia de esta matriz. La alineación de metadatos reduce contradicciones entre señales ya existentes; el HTML visible, las respuestas educativas y la identidad corporativa permanecen iguales.
+
+| Plataforma | Aporte concreto del candidato | Qué no está demostrado |
+|---|---|---|
+| Google Search y funciones de IA de Google | Alinea título/descripciones sociales y `WebPage.description` con el título/meta principales correctos. Añade una alternativa PNG del favicon oficial, formato documentado para Google y compatible con navegadores. | PR #38 no está publicado. No hay nuevo rastreo, cambio visual de favicon/título/snippet/sitelinks, mejora de posición ni aparición/cita generativa atribuible al candidato. |
+| OpenAI / ChatGPT Search | Conserva HTML accesible, nombre oficial y relaciones de entidad; alinea las señales descriptivas de la portada. El permiso existente de OAI-SearchBot y las preferencias de GPTBot no cambian. | No se demuestra que ChatGPT Search utilice estos tags para seleccionar o citar la página. El PNG no acredita soporte, requisito ni beneficio de OpenAI. No hay mención, enlace, cita o recomendación directa medida por este PR. |
+| Bing / Microsoft / Copilot | Conserva contenido, enlaces e identidad; presenta descripciones coherentes sin cambiar rastreo o funcionalidades. | El PNG no acredita un requisito o beneficio de Bing/Copilot. No se obtuvieron para este candidato informes nativos de Bing AI Performance ni pruebas directas comparables de citas o recomendaciones de Copilot. |
+
+La compatibilidad del PNG documentada para Google y navegadores no se extrapola a OpenAI o Bing/Microsoft. La coherencia semántica común tampoco garantiza aparición en ChatGPT, Copilot ni otras respuestas con IA.
+
+| Estado | Evidencia conservada y límite |
+|---|---|
+| Cambios de código | Dos diferencias runtime del PR #38 verificadas en preview privada: portada y nuevo PNG. |
+| Publicación | PR #37 publicado; PR #38 pendiente de aprobación. La preview no equivale a producción. |
+| Indexación de Google | Último snapshot GSC: 10 de 12 URL indexadas; rastreos anteriores al 19/11. No acredita procesamiento del PR #38 ni respuesta de otro motor. |
+| Informes nativos de IA | Disponibilidad, controles efectivos y datos de la propiedad en informes generativos de Google y Bing AI Performance siguen sin comprobarse con estas evidencias. |
+| Citas directas de IA | Sin muestra directa comparable de ChatGPT Search o Copilot atribuible al candidato. Una búsqueda general, metadatos válidos o HTTP 200 no sustituyen esa medición. |
+
+Se reutilizan las fuentes técnicas ya contrastadas por los estudios: [Google: funciones de IA](https://developers.google.com/search/docs/appearance/ai-features), [Organization](https://developers.google.com/search/docs/appearance/structured-data/organization), [OpenAI: bots](https://developers.openai.com/api/docs/bots), [Bing: directrices](https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a) y [Microsoft: AI Performance](https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/). Sus guías respaldan el enfoque, no prueban presencia de Sollahms. Esta precisión documental no ejecuta nuevas consultas, rastreos o pruebas de IA.
+
+Pendientes reales: decidir expresamente si se publica el mantenimiento opcional del PR #38; comprobar informes y controles nativos con acceso disponible; ejecutar el protocolo directo existente por superficie; y separar los resultados de cualquier publicación de la línea base previa. Todo avance conserva las exclusiones v3 y las preferencias de entrenamiento.
 
 ## Candidato concreto para revisar
 

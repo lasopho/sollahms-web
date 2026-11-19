@@ -4,7 +4,7 @@
   "scope_registry": "scope-v3.json",
   "latest_report": "runs/2026-11-19-gsc-connected/report.md",
   "segmentation_guide": "SCOPE-v3.md",
-  "strategy": "SCOPE-v3.md",
+  "strategy": "STRATEGY-v3.md",
   "ai_protocol": "AI-PROTOCOL-v2.md",
   "ai_protocol_note": "Reuse methodological rules; every new observation declares scope v3. Historical v2 plans and their catalogue coverage remain historical.",
   "current_followup": "runs/2026-11-19-corporate-improvements/measurement-plan.json",
@@ -42,5 +42,20 @@
     "nativeTimezone": "America/Los_Angeles",
     "geography": "all countries and devices in first measurement; not Chile-only",
     "currentReleaseImpactMeasured": false
+  },
+  "foundational_studies": [
+    "../home-seo-20261025/research-and-decisions.md",
+    "../seo-corporate-20261029/README.md"
+  ],
+  "platforms_required": [
+    "Google",
+    "OpenAI / ChatGPT Search",
+    "Bing / Microsoft Copilot"
+  ],
+  "strategy_continuity": {
+    "ownerInstructionDate": "2026-11-19",
+    "requiredInFutureConversations": true,
+    "rule": "Start from the existing studies and current evidence; map each proposal to its objective, observed problem and verification separately for all three platforms.",
+    "publicationApprovalGrantedByThisInstruction": false
   }
 }

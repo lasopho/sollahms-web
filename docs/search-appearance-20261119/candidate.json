@@ -85,5 +85,158 @@
   "pullRequest": "https://github.com/lasopho/sollahms-web/pull/38",
   "strategicPriority": "Optional presentation maintenance; indexation followup and real SEO/GEO measurement take priority.",
   "originalSocialMetadataDecision": "25 October study deliberately preserved OpenGraph/Twitter; alignment is a new bounded proposal, not an original strategic requirement.",
-  "alignmentReview": "alignment-review.md"
+  "alignmentReview": "alignment-review.md",
+  "publicationAuthorization": {
+    "grantedForThisCandidate": false,
+    "latestInstructionScope": "Conservar el estudio SEO/GEO como referencia permanente para Sollahms y alinear explícitamente Google, OpenAI y Bing/Microsoft. Esa instrucción no aprueba producción del PR #38.",
+    "requiredBeforeProduction": "Aprobación expresa del candidato concreto, revalidación de producción y conservación de cambios posteriores.",
+    "documentationOnlyUpdate": true
+  },
+  "platformAlignment": {
+    "studyReferences": [
+      "../home-seo-20261025/research-and-decisions.md",
+      "../seo-corporate-20261029/README.md",
+      "../seo-measurement/STRATEGY-v2.md",
+      "../seo-measurement/STRATEGY-v3.md",
+      "../seo-measurement/SCOPE-v3.md"
+    ],
+    "commonSemanticScope": "Alinear señales descriptivas de la portada con el título/meta correctos ya existentes. Body, respuestas educativas y Organization/WebSite/Service permanecen iguales; no se añaden afirmaciones, credenciales ni variantes de marca.",
+    "pngScope": "Alternativa de favicon en formato documentado para Google y compatible con navegadores. No se infiere soporte, requisito, ventaja o aparición en OpenAI o Bing/Microsoft.",
+    "platforms": [
+      {
+        "platform": "Google Search y funciones de IA de Google",
+        "contribution": [
+          "Coherencia entre título/meta principales, Open Graph/Twitter y WebPage.description.",
+          "PNG exacto del favicon oficial como formato documentado para Google; SVG conservado."
+        ],
+        "verifiedEvidence": [
+          "Inventario, hashes y metadatos locales del candidato.",
+          "Preview privada y recursos HTTP exactos; no constituye publicación."
+        ],
+        "notDemonstrated": [
+          "Nuevo rastreo o procesamiento del candidato.",
+          "Cambio visible de título, snippet, favicon o sitelinks.",
+          "Mejora de posicionamiento o aparición/cita generativa atribuible."
+        ],
+        "nativeAIReportMeasured": false,
+        "directAICitationMeasured": false,
+        "pngFormatDocumentedForGoogle": true
+      },
+      {
+        "platform": "OpenAI / ChatGPT Search",
+        "contribution": [
+          "Consistencia descriptiva de la portada; HTML accesible e identidad verificada conservados.",
+          "OAI-SearchBot y preferencias existentes de GPTBot sin cambios."
+        ],
+        "verifiedEvidence": [
+          "Preservación del HTML visible, relaciones de entidad y controles existentes.",
+          "Distinción entre búsqueda y entrenamiento documentada por el estudio."
+        ],
+        "notDemonstrated": [
+          "Uso específico de Open Graph o favicon por ChatGPT Search.",
+          "Requisito o beneficio del PNG para OpenAI.",
+          "Mención, enlace, cita o recomendación directa comparable del candidato."
+        ],
+        "directAICitationMeasured": false,
+        "pngSupportOrRequirementInferred": false
+      },
+      {
+        "platform": "Bing / Microsoft / Copilot",
+        "contribution": [
+          "Descripciones coherentes y estructura, enlaces, contenido e identidad conservados.",
+          "Robots y funcionalidades existentes sin cambios; no se añade un mecanismo específico de Copilot."
+        ],
+        "verifiedEvidence": [
+          "Preservación técnica del candidato.",
+          "Directrices de Bing y AI Performance ya identificadas en el estudio."
+        ],
+        "notDemonstrated": [
+          "Requisito o beneficio del PNG para Bing/Copilot.",
+          "Datos de Sollahms en un informe nativo de Bing AI Performance atribuibles al candidato.",
+          "Mención, enlace, cita o recomendación directa comparable de Copilot."
+        ],
+        "nativeAIReportMeasured": false,
+        "directAICitationMeasured": false,
+        "pngSupportOrRequirementInferred": false
+      }
+    ],
+    "sharedLimits": [
+      "La coherencia semántica no garantiza selección o cita en ChatGPT, Copilot ni otras respuestas con IA.",
+      "PNG, metadatos válidos, HTTP 200 y búsqueda general no sustituyen informes nativos ni pruebas directas por superficie.",
+      "La indexación GSC solo acredita el estado registrado por Google, no Bing ni una respuesta de un asistente."
+    ],
+    "pending": [
+      "Decisión expresa sobre publicación del mantenimiento opcional PR #38.",
+      "Comprobar controles efectivos, acceso y datos de informes generativos de Google y Bing AI Performance cuando estén disponibles.",
+      "Ejecutar el protocolo directo existente con preguntas, condiciones y evidencia comparables por superficie.",
+      "Seguir indexación y separar las líneas base anteriores del efecto de una publicación posterior autorizada."
+    ],
+    "studySourcesReused": [
+      {
+        "platform": "Google",
+        "url": "https://developers.google.com/search/docs/appearance/ai-features",
+        "study": "25/10: fundamentos de rastreo, contenido textual, enlaces y datos coherentes; sin archivos especiales de IA."
+      },
+      {
+        "platform": "Google",
+        "url": "https://developers.google.com/search/docs/appearance/structured-data/organization",
+        "study": "25/10 y 29/10: identidad y datos reales; sin credenciales o relaciones inventadas."
+      },
+      {
+        "platform": "OpenAI",
+        "url": "https://developers.openai.com/api/docs/bots",
+        "study": "25/10 y 29/10: OAI-SearchBot para búsqueda y GPTBot para entrenamiento son controles distintos."
+      },
+      {
+        "platform": "Bing / Microsoft",
+        "url": "https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a",
+        "study": "25/10: descubrimiento, indexación y contenido como fuente."
+      },
+      {
+        "platform": "Bing / Microsoft",
+        "url": "https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/",
+        "study": "25/10 y 29/10: citas como métrica separada; no equivalen a ranking o importancia."
+      }
+    ],
+    "newCrawlsForThisDocumentationUpdate": 0,
+    "newWebResearchForThisDocumentationUpdate": 0,
+    "activeStrategy": "../seo-measurement/STRATEGY-v3.md"
+  },
+  "evidenceStates": {
+    "code": {
+      "status": "implemented_in_verified_private_preview",
+      "runtimeSourceCommit": "942cc6401de9092a4cd37c55bdb0cc57e79ce3e6",
+      "runtimeDelta": [
+        "static/index.html",
+        "static/assets/branding/favicon.png"
+      ]
+    },
+    "publication": {
+      "PR37": "published",
+      "PR38": "not_published_awaiting_explicit_approval",
+      "previewIsProduction": false
+    },
+    "gscIndexation": {
+      "status": "existing_snapshot_only",
+      "source": "../seo-measurement/runs/2026-11-19-gsc-connected/index-status.json",
+      "indexed": 10,
+      "includedURLs": 12,
+      "allRecordedCrawlsBefore19NovemberPublication": true,
+      "provesPR38Processing": false,
+      "provesBingIndexation": false
+    },
+    "nativeAIReports": {
+      "GoogleGenerative": "property_controls_availability_and_results_not_verified_by_this_candidate",
+      "BingAIPerformance": "no_property_results_measured_for_this_candidate"
+    },
+    "directAICitations": {
+      "ChatGPTSearch": "not_measured_for_this_candidate",
+      "Copilot": "not_measured_for_this_candidate",
+      "mentionLinkCitationRecommendationSeparate": true
+    },
+    "attributedImpact": {
+      "PR38": "not_demonstrated",
+      "missingEvidenceIsNotZero": true
+    }
+  }
 }
