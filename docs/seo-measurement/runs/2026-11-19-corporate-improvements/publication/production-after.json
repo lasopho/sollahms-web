@@ -1,0 +1,123 @@
+{
+  "observedAt": "2026-11-19T07:55:14.698617-03:00",
+  "timezone": "America/Santiago",
+  "method": "Independent authenticated official GETs after the root executed one authorized promotion. Selected identifiers, timestamps and settings only; no environment values or bypass identifiers accessed.",
+  "publicationT0": {
+    "primarySource": "Vercel alias provider updatedAt from authenticated GET /v4/aliases/sollahms.cl",
+    "providerTimestampMilliseconds": 1795085642653,
+    "utc": "2026-11-19T10:54:02.653000+00:00",
+    "americaSantiago": "2026-11-19T07:54:02.653000-03:00",
+    "meaning": "Time recorded by Vercel for updating the production apex alias. Search crawling, indexing and visibility have not been measured at this timestamp."
+  },
+  "expectedDeploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+  "currentProduction": {
+    "id": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+    "url": "project-wrapp-9zpf0ls5h-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795085201541,
+    "isRollbackCandidate": null,
+    "softDeleted": null,
+    "deletedAt": null,
+    "gitMetadata": {
+      "githubCommitSha": "df78d77f31c8da946623e586634998e151ed237e",
+      "githubCommitRef": "codex/seo-geo-corporativo-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    }
+  },
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "deploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795085642653,
+      "updatedAtUTC": "2026-11-19T10:54:02.653000+00:00",
+      "updatedAtAmericaSantiago": "2026-11-19T07:54:02.653000-03:00"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "deploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795085642657,
+      "updatedAtUTC": "2026-11-19T10:54:02.657000+00:00",
+      "updatedAtAmericaSantiago": "2026-11-19T07:54:02.657000-03:00"
+    }
+  ],
+  "bothAliasesMatchPromotedDeployment": true,
+  "sourceCommitMatchesAuthorizedCandidate": true,
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "repository": {
+      "owner": "lasopho",
+      "name": "sollahms-web",
+      "productionBranch": "main"
+    },
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "autoAssignCustomDomains": false,
+    "buildCommandOverride": null,
+    "outputDirectoryOverride": null,
+    "installCommandOverride": null,
+    "rootDirectoryOverride": null
+  },
+  "projectSettingsUnchanged": true,
+  "settingsChanges": {},
+  "autoAssignCustomDomainsRemainsFalse": true,
+  "configurationRestorationPatchRequired": false,
+  "rollbackReadAvailable": true,
+  "previousProductionRecovery": {
+    "deploymentId": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+    "candidate": {
+      "id": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+      "url": "project-wrapp-iev6fe1ip-lsandoval2-8260s-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production",
+      "source": "cli",
+      "createdAt": 1795083950805,
+      "isRollbackCandidate": true,
+      "softDeleted": null,
+      "deletedAt": null,
+      "gitMetadata": {
+        "githubCommitSha": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+        "githubCommitRef": "codex/mapa-filtros-21-proyectos-20261119",
+        "githubOrg": "lasopho",
+        "githubRepo": "sollahms-web"
+      }
+    },
+    "readOnlyRecoveryAvailable": true,
+    "rollbackExecuted": false,
+    "writeOperationNotRehearsed": true,
+    "ownerEvidenceReused": "recovery-readiness.json"
+  },
+  "remoteArtifactProofReused": {
+    "file": "staged-remote-integrity.json",
+    "sameImmutableDeploymentId": true,
+    "matchingSHA1UIDs": 1723,
+    "functionFilesMatched": 57,
+    "functionBundlesMatched": 7,
+    "configurationMatched": true,
+    "valid": true,
+    "fileTreeNotFetchedAgain": true
+  },
+  "testsNotRepeated": [
+    "Nine certified local Preview runtime mocks",
+    "Full 1723-file remote UID comparison of the same immutable deployment"
+  ],
+  "mutationsByThisVerification": 0,
+  "providerWrites": 0,
+  "formsSubmitted": 0,
+  "passed": true
+}

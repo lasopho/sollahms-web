@@ -1,0 +1,135 @@
+{
+  "observedAt": "2026-11-19T07:51:45.912061-03:00",
+  "timezone": "America/Santiago",
+  "reviewer": "Independent evidence and scope reviewer",
+  "authorizedCandidateSHA": "df78d77f31c8da946623e586634998e151ed237e",
+  "authorizationBasis": "Publication owner reports direct user authorization of PR37 and this exact SHA; reviewer did not request additional authorization.",
+  "stagedDeployment": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+  "baselineProduction": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+  "artifactReview": "PASS",
+  "artifactBlockers": [],
+  "recommendation": "Publication verified. No unresolved technical blocker remains in the reviewed evidence; retain the prior Production deployment for recovery and continue the documented search measurement follow-up.",
+  "promotionMethodPending": false,
+  "promotionConstraint": "Existing manual domain assignment must remain false. A default promote path that reenables automatic assignment is outside scope. Do not mutate then repair that setting as a substitute for preserving it.",
+  "findings": [
+    "1723 local SHA1/SHA256 entries match the pinned authorized inventory; the later production map release is preserved.",
+    "Exactly three included HTML files and the single authorized sitemap addition differ; 1719 other files, all 152 fiches, catalogue, map, documentary center, functions and configuration remain identical.",
+    "Staged deployment is READY with target production, exact authorized SHA metadata and 1723 matching remote file UIDs, including 57 files across seven functions.",
+    "Fourteen staged HTTP checks pass: twelve corporate HTML pages, robots and sitemap match candidate bytes; canonicals use the public domain and staged noindex headers remain present.",
+    "Seventeen local production-environment handler checks pass using only injected memory providers. There are no real messages, CRM records or reservations.",
+    "Last recorded aliases still serve the captured prior production deployment; project settings and SSO protection remain unchanged.",
+    "Prior production is retained READY and listed as a rollback candidate. Current owner membership is verified; rollback execution was not rehearsed."
+  ],
+  "requiredAfterPromotion": [
+    "Verify both aliases point to the same staged ID and retain the www-to-apex redirect.",
+    "Verify four public follow-up URLs, robots and sitemap against candidate bytes, and ensure the custom production domain has no noindex header.",
+    "Verify manual domain assignment, SSO, deployment rules and project configuration remain as captured; record actual activation T0."
+  ],
+  "limits": [
+    "Review reused the recorded checks and read their verification scripts; no tests or remote requests were repeated.",
+    "Injected local providers do not certify live email delivery, CRM availability, actual remote environment variable values or current UF delivery.",
+    "HTTP and sitemap validity do not prove search-engine crawling, index inclusion, rankings or AI citations.",
+    "Any production publication after the recorded alias check requires preservation/reconciliation before promotion."
+  ],
+  "reviewedEvidence": [
+    {
+      "path": "local-revalidation.json",
+      "sha256": "60220b208905caced14fd49c89f2cc70404ec683e29bc45d541ac4a21b0cc0e2"
+    },
+    {
+      "path": "production-before-recheck.json",
+      "sha256": "250e1ec5639ec75a26f2745d9933de0d50d0a2c47fae36a08bc995892c4d143b"
+    },
+    {
+      "path": "production-runtime-mocks.json",
+      "sha256": "8233089e15357e6eccf836a663b8e21d90a295ba06c9d430da631737fc94b3c4"
+    },
+    {
+      "path": "production-staged-recheck.json",
+      "sha256": "bcd7eb1cdce355a48f2f9d58c1d407a56183a98b2719724479641fb9e028271a"
+    },
+    {
+      "path": "recovery-readiness.json",
+      "sha256": "40773c75d3ada3aa616b090a27f22240e03b830989dd157a82621c9c12f274fb"
+    },
+    {
+      "path": "staged-remote-integrity.json",
+      "sha256": "c611970e5d5dbf9b64328d21df7cb2be178f3a7b31648eb3be41ff55b582db87"
+    },
+    {
+      "path": "staged-http-verification.json",
+      "sha256": "3d88a76ff58585f286e4c10b2bacea2fa03632aa236422646b451f389a2925e6"
+    }
+  ],
+  "applicationEdits": 0,
+  "remoteRequests": 0,
+  "remoteMutations": 0,
+  "repeatedTests": 0,
+  "commits": 0,
+  "prePromotionRecommendation": {
+    "observedAt": "2026-11-19T07:51:45.912061-03:00",
+    "recommendation": "Promote this same verified Production deployment once the publication owner confirms an official promotion method that preserves autoAssignCustomDomains=false, then rechecks current aliases immediately before mutation.",
+    "promotionMethodPending": true,
+    "resolution": "Same immutable staged Production deployment was promoted once via official request_promote. Independent post reads show autoAssignCustomDomains remained false and all project settings unchanged; no restoration PATCH occurred."
+  },
+  "postPublicationReview": {
+    "observedAt": "2026-11-19T07:57:10.584126-03:00",
+    "status": "PASS",
+    "sameImmutableDeploymentPromoted": true,
+    "deploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+    "authorizedCommitMatches": true,
+    "promotionAttempts": 1,
+    "productionAliasesVerified": true,
+    "wwwRedirectPreserved": true,
+    "publicationT0": {
+      "primarySource": "Vercel alias provider updatedAt from authenticated GET /v4/aliases/sollahms.cl",
+      "providerTimestampMilliseconds": 1795085642653,
+      "utc": "2026-11-19T10:54:02.653000+00:00",
+      "americaSantiago": "2026-11-19T07:54:02.653000-03:00",
+      "meaning": "Time recorded by Vercel for updating the production apex alias. Search crawling, indexing and visibility have not been measured at this timestamp."
+    },
+    "publicHTTPChecksPassed": 6,
+    "publicHTTPChecksFailed": 0,
+    "fourFollowupPagesMatchCandidateExactly": true,
+    "productionNoindexAbsentInHeadersAndHTML": true,
+    "robotsAndSitemapMatchCandidateExactly": true,
+    "projectSettingsBeforeAndAfterIdentical": true,
+    "autoAssignCustomDomainsStillFalse": true,
+    "configurationRestorationPatchRequired": false,
+    "configurationWritesAfterPromotion": 0,
+    "priorProductionRecoveryTarget": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+    "priorProductionRetainedReadyAndEligible": true,
+    "rollbackExecuted": false,
+    "blockingFindings": [],
+    "originalConfigurationConditionResolved": true,
+    "reviewMethod": "Read the existing final alias/settings, promotion operation and six public HTTP verification receipts; no requests or tests repeated.",
+    "applicationEdits": 0,
+    "remoteRequests": 0,
+    "remoteMutations": 0,
+    "repeatedTests": 0,
+    "commits": 0
+  },
+  "postPublicationEvidence": [
+    {
+      "path": "immediately-before-promotion.json",
+      "sha256": "48acb4fffa926e592c15873becfe95af346f5d76c84e16a345d7cd0ea3a57135"
+    },
+    {
+      "path": "promotion-config-review.json",
+      "sha256": "3ad36ea3aa489ac30c635522a774479a7d78ee7a71c492dd5af8356cd3ea72fa"
+    },
+    {
+      "path": "promotion-operation.json",
+      "sha256": "7d520108ccfb5d24a32b36322a973694e59b2c5104f287d48059dc613ed7b706"
+    },
+    {
+      "path": "production-after.json",
+      "sha256": "ac652f223e3fcad16613217d9bd8d24c8601414909dccd5f0931b51d1ce87cc2"
+    },
+    {
+      "path": "public-http-verification.json",
+      "sha256": "b265e045f39be6cd1dea60b03dc0d883483d7a4015748d14567636e8fccc3281"
+    }
+  ],
+  "remainingMeasurementLimit": "Publication and public indexability are verified. Search-engine crawling, index inclusion, rankings, traffic changes and AI citations remain unmeasured until valid subsequent observations are available."
+}

@@ -1,6 +1,6 @@
 # Sollahms — revisión y mejoras corporativas, 19/11/2026
 
-Revisión registrada en America/Santiago. Las mejoras están implementadas y verificadas localmente y en la preview privada; la publicación productiva requiere aprobación final. El candidato usa el artefacto real que sirve `sollahms.cl`, no el `main` histórico.
+Revisión registrada en America/Santiago. Las mejoras están **publicadas y verificadas en producción** desde el **19/11/2026 07:54:02.653 America/Santiago**. Se publicó el SHA autorizado `df78d77f31c8da946623e586634998e151ed237e` en `dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH`. [Registro y evidencias de publicación](publication/publication.json). El candidato usa el artefacto real que sirve `sollahms.cl`, no el `main` histórico.
 
 ## Avance comprobado
 
@@ -11,7 +11,7 @@ El sitio ya contaba con títulos, descripciones y canonicals únicos, un H1 por 
 | Estado | Evidencia disponible |
 |---|---|
 | Implementado | Cuatro archivos desplegables corregidos; ver tabla siguiente |
-| Publicado | Producción inicial y publicaciones anteriores verificadas. Este candidato sigue sin publicar |
+| Publicado | Producción inicial, publicaciones anteriores y candidato actual verificados. El candidato fue publicado con aprobación expresa |
 | Rastreo/indexación del motor | No medidos; HTTP 200 y robots permisivo no prueban indexación |
 | Visibilidad pública | Cinco consultas exactas de marca y cinco de servicios registradas; sin enlace a sollahms.cl en esas muestras. No son ranking fijo de Google/Bing ni prueba de ausencia de indexación |
 | Menciones, enlaces o citas IA directas | No medidos. La búsqueda web no sustituye ChatGPT Search |
@@ -58,11 +58,11 @@ El [candidato verificado](candidate.json) corresponde al código `e1f75f0c95c1d0
 
 La [última lectura productiva](production-final-recheck.json), **19/11/2026 07:40:23 America/Santiago**, mantiene ambos dominios en `dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV` y todos los ajustes previos. El primer intento de preview queda documentado como histórico; no es el candidato final.
 
-[Procedimiento para una publicación posteriormente autorizada](PUBLICACION.md). Ningún merge del PR, promoción productiva o cambio de dominios se realizó en esta fase.
+[Procedimiento para una publicación posteriormente autorizada](PUBLICACION.md). La aprobación posterior del titular autorizó la publicación. Se creó Production sin dominios y se promovió **el mismo ID validado**, sin reconstrucción. Ambos alias públicos sirven ese ID; los siete Functions, configuración, SSO y reglas automáticas permanecen intactos. No se fusionó el PR ni se modificó main. [Verificación independiente final](publication/production-after.json).
 
 ## Pendientes y seguimiento
 
-Solo quedan obtener datos de motores/IA con procedencia, aprobar/publicar el candidato y observar resultados posteriores. Los límites de fuentes/fuentes tipográficas de la QA local están indicados en el informe de navegador; no se amplía el alcance para corregir comportamientos anteriores.
+Solo quedan obtener datos de motores/IA con procedencia y observar resultados posteriores. La publicación y su validación técnica están completas. Los límites de fuentes/fuentes tipográficas de la QA local están indicados en el informe de navegador; no se amplía el alcance para corregir comportamientos anteriores.
 
 [Plan reproducible](measurement-plan.json): `Sollams` a secas prioritaria, seguida por Sollahms, Solams, Solamp y Solamps por separado; cinco consultas de servicios idénticas a las observadas. Mantener herramienta, hora, país y contexto geográfico disponible. Distinguir mención, enlace y uso como fuente. Concepción, Chillán y Puerto Montt están respaldadas como ubicaciones publicadas, sin implicar oficinas; San Pedro de la Paz y Los Ángeles quedan pendientes de cobertura verificable.
 

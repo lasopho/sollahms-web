@@ -1,0 +1,190 @@
+{
+  "status": "PASS",
+  "observedAt": "2026-11-19T07:48:04-03:00",
+  "observedAtUTC": "2026-11-19T10:48:04.713Z",
+  "timezone": "America/Santiago",
+  "authorizedSHA": "df78d77f31c8da946623e586634998e151ed237e",
+  "method": "Imported exact certified function modules; injected production environment and exclusively in-memory provider functions. Global fetch fails closed. No actual credentials read.",
+  "artifact": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-seo-geo-private/candidate-current/.vercel/output",
+  "results": [
+    {
+      "test": "Production contact/resend reaches mocked acceptance",
+      "status": 200,
+      "expected": {
+        "ok": true,
+        "providerAccepted": true,
+        "deliveryConfirmed": false
+      },
+      "passed": true
+    },
+    {
+      "test": "Production contact/crm reaches mocked persistence",
+      "status": 200,
+      "expected": {
+        "ok": true,
+        "persisted": true
+      },
+      "passed": true
+    },
+    {
+      "test": "Production orientation/resend reaches mocked acceptance",
+      "status": 200,
+      "expected": {
+        "ok": true,
+        "providerAccepted": true,
+        "deliveryConfirmed": false
+      },
+      "passed": true
+    },
+    {
+      "test": "Production orientation/crm reaches mocked persistence",
+      "status": 200,
+      "expected": {
+        "ok": true,
+        "persisted": true
+      },
+      "passed": true
+    },
+    {
+      "test": "Production advisory/resend reaches mocked acceptance",
+      "status": 200,
+      "expected": {
+        "ok": true,
+        "providerAccepted": true,
+        "deliveryConfirmed": false
+      },
+      "passed": true
+    },
+    {
+      "test": "Production collaboration/persona reaches mocked acceptance",
+      "status": 200,
+      "expected": {
+        "ok": true,
+        "providerAccepted": true,
+        "deliveryConfirmed": false
+      },
+      "passed": true
+    },
+    {
+      "test": "Production collaboration/inmobiliaria reaches mocked acceptance",
+      "status": 200,
+      "expected": {
+        "ok": true,
+        "providerAccepted": true,
+        "deliveryConfirmed": false
+      },
+      "passed": true
+    },
+    {
+      "test": "Production contact rejects missing consent",
+      "status": 400,
+      "expected": {
+        "code": "consent_required"
+      },
+      "passed": true
+    },
+    {
+      "test": "Production contact rejects foreign Origin",
+      "status": 403,
+      "expected": {},
+      "passed": true
+    },
+    {
+      "test": "Production advisory fails closed on unconfigured channel",
+      "status": 503,
+      "expected": {
+        "code": "contact_configuration_unavailable"
+      },
+      "passed": true
+    },
+    {
+      "test": "Production booking-create actual default remains request-only (GET)",
+      "status": 503,
+      "expected": {
+        "ok": false,
+        "code": "booking_not_certified",
+        "mode": "request-only"
+      },
+      "passed": true
+    },
+    {
+      "test": "Production booking-create actual default remains request-only (POST)",
+      "status": 503,
+      "expected": {
+        "ok": false,
+        "code": "booking_not_certified",
+        "mode": "request-only"
+      },
+      "passed": true
+    },
+    {
+      "test": "Production booking-availability actual default remains request-only (GET)",
+      "status": 503,
+      "expected": {
+        "ok": false,
+        "code": "booking_not_certified",
+        "mode": "request-only"
+      },
+      "passed": true
+    },
+    {
+      "test": "Production booking-availability actual default remains request-only (POST)",
+      "status": 503,
+      "expected": {
+        "ok": false,
+        "code": "booking_not_certified",
+        "mode": "request-only"
+      },
+      "passed": true
+    },
+    {
+      "test": "Production UF handler accepts current fixture and no preview guard",
+      "status": 200,
+      "expected": {
+        "uf": {
+          "date": "2026-11-19",
+          "valueClp": 41000,
+          "source": {
+            "url": "https://www.sii.cl/valores_y_fechas/uf/uf2026.htm",
+            "title": "Synthetic fixture, not a live UF measurement",
+            "verifiedAt": "2026-11-19"
+          }
+        }
+      },
+      "passed": true
+    },
+    {
+      "test": "Production UF handler rejects stale fixture",
+      "status": 503,
+      "expected": {
+        "code": "uf_unavailable"
+      },
+      "passed": true
+    },
+    {
+      "test": "Production UF handler rejects mutation",
+      "status": 405,
+      "expected": {},
+      "passed": true
+    }
+  ],
+  "tests": 17,
+  "simulatedEnvironment": "production",
+  "mockMailCalls": 5,
+  "mockCrmCalls": 2,
+  "ufFixtureCalls": 2,
+  "syntheticKeyReads": 8,
+  "realCredentialReads": 0,
+  "blockedNetworkAttempts": 0,
+  "remoteRequests": 0,
+  "realProviderCalls": 0,
+  "realFormSubmissions": 0,
+  "realCrmRecords": 0,
+  "realReservations": 0,
+  "bookingProviderCalls": 0,
+  "filesUnchanged": 1723,
+  "entireArtifactUnchanged": true,
+  "productionRoutesDoNotRetainPreviewGuard": true,
+  "actualBookingDefaultsRemainRequestOnly": true,
+  "limitation": "Local injected-provider verification; does not certify remote environment variable values, provider delivery, CRM availability or live UF. Booking factory remains historical and is not the exported production handler."
+}
