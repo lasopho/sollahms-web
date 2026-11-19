@@ -4,7 +4,8 @@ import {createHash} from 'node:crypto';
 const require = createRequire(import.meta.url);
 const {chromium} = require('/Users/luissandoval/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const cacheDir = '/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-measurement-private/sdk-cache';
-const sdk = await readFile(cacheDir + '/gtag-G-LTFBQKVNY2.js');
+const sdkPath = process.env.SDK_GOOGLE_CACHE_PATH || cacheDir + '/gtag-G-LTFBQKVNY2.js';
+const sdk = await readFile(sdkPath);
 const staticRoot = process.env.SDK_STATIC_ROOT;
 const original = await readFile(staticRoot ? staticRoot + '/assets/js/site-measurement.mjs' : new URL('../assets/js/site-measurement.mjs', import.meta.url), 'utf8');
 const config = await readFile(staticRoot ? staticRoot + '/data/site-measurement.json' : new URL('../data/site-measurement.json', import.meta.url));
@@ -28,12 +29,16 @@ const markers = ['SDK_PRIVATE_MESSAGE', '1000005-K', '7000000', 'private-convers
 const hashedMarkers = ['qa-sdk@example.invalid', '1000005-K', '+56900000000'].map(value => sha(value.trim().toLowerCase()));
 const report = {observedAtUTC:new Date().toISOString(), originalModuleSHA256:sha(original), sdkSHA256:sha(sdk), sdkBytes:sdk.length,
   staticRoot:staticRoot || null, configSHA256:sha(config),
+  sdkCachePath:sdkPath,
   policy:'Cached SDK only; every browser request fulfilled locally or aborted. No route.fetch, no provider request, no collect sent.', beaconsSent:0, providerGETs:0, variants:[]};
 const browser = await chromium.launch({headless:true, executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args:['--disable-background-networking','--disable-sync','--no-first-run']});
 try {
  for (const [name, moduleText] of variants) for (const dirty of [true, false]) {
   const context = await browser.newContext({serviceWorkers:'block'});
   const result = {name, dirty, requests:[], events:[], errors:[], cachedSDKLoads:0};
+  let eventSink = result.events;
+  const cookieSnapshot = async () => (await context.cookies()).map(cookie=>({name:cookie.name,domain:cookie.domain,path:cookie.path,
+    expires:cookie.expires,remainingSeconds:Math.round(cookie.expires-Date.now()/1000),sameSite:cookie.sameSite,secure:cookie.secure}));
   await context.route('**/*', async route => {
    const request=route.request(), url=new URL(request.url());
    if(url.origin==='https://sollahms.cl'&&request.method()==='GET') {
@@ -46,7 +51,7 @@ try {
     for(const line of request.postData()?.split('\n') || ['']) {
      const params=new URLSearchParams(url.search); for(const [key,value] of new URLSearchParams(line)) params.set(key,value);
      const text=[...params].map(([key,value])=>key+'='+value).join('&');
-     result.events.push({en:params.get('en'),dl:params.get('dl'),dr:params.get('dr'),keys:[...new Set(params.keys())].sort(),markers:markers.filter(marker=>text.includes(marker)),
+     eventSink.push({en:params.get('en'),dl:params.get('dl'),dr:params.get('dr'),keys:[...new Set(params.keys())].sort(),markers:markers.filter(marker=>text.includes(marker)),
        hashedIdentityMarkers:hashedMarkers.filter(marker=>text.includes(marker)), identityParameterKeys:[...params.keys()].filter(key=>/^(?:em$|ph$|user_data|sha256|up\.|upn\.|ep\.user_data)/.test(key))});
     }
     return route.fulfill({status:204,body:''});
@@ -60,8 +65,7 @@ try {
   result.beforeConsent={cachedSDKLoads:result.cachedSDKLoads,cookies:(await context.cookies()).map(cookie=>cookie.name),events:result.events.length};
   if(name!=='default-no-consent') await page.evaluate(accepted=>window.SollahmsMeasurement.choose({analytics:accepted,replay:false}),name!=='rejected');
   await page.waitForTimeout(2500);
-  result.cookies=(await context.cookies()).map(cookie=>({name:cookie.name,domain:cookie.domain,path:cookie.path,
-    expires:cookie.expires,remainingSeconds:Math.round(cookie.expires-Date.now()/1000),sameSite:cookie.sameSite,secure:cookie.secure}));
+  result.cookies=await cookieSnapshot();
   result.initialEvents=result.events.length;
   await page.locator('input[type=email]').fill('qa-sdk@example.invalid'); await page.locator('button').filter({hasText:'Submit'}).click();
   await page.locator('#external').click();
@@ -70,6 +74,9 @@ try {
   await page.waitForTimeout(3000);
   if(['candidate-verified','candidate-release'].includes(name)) await page.waitForTimeout(6000);
   await page.waitForTimeout(1000);
+  result.cookiesAfterActivity=await cookieSnapshot();
+  result.cookieExpiryUnchangedAfterActivity=result.cookies.filter(cookie=>cookie.name.startsWith('_ga')).every(cookie=>
+    result.cookiesAfterActivity.some(current=>current.name===cookie.name&&current.domain===cookie.domain&&current.expires===cookie.expires));
   const beforeClose=result.events.length;
   await page.close({runBeforeUnload:true});await new Promise(resolve=>setTimeout(resolve,1000));
   result.pageCloseEvents=result.events.slice(beforeClose).map(event=>event.en);
@@ -79,6 +86,17 @@ try {
   result.allReferrersClean=result.events.every(event=>event.dr===(dirty?'https://chatgpt.com':'https://www.google.com'));
   result.identityDataDetected=result.events.some(event=>event.hashedIdentityMarkers.length||event.identityParameterKeys.length);
   result.cookieLifetime60Days=result.cookies.filter(cookie=>cookie.name.startsWith('_ga')).every(cookie=>cookie.remainingSeconds>=5183900&&cookie.remainingSeconds<=5184000);
+  if(process.env.SDK_VERIFY_COOKIE_REVISIT==='1'&&!['default-no-consent','rejected'].includes(name)) {
+    eventSink=[];
+    const revisit=await context.newPage();await revisit.goto('https://sollahms.cl/contacto.html',{waitUntil:'domcontentloaded',referer:'https://sollahms.cl/contacto.html'});
+    await revisit.waitForFunction(()=>!!window.SollahmsMeasurement);await revisit.waitForTimeout(7500);
+    const after=await cookieSnapshot();
+    result.cookieRevisit={cookies:after,events:eventSink,pageViews:eventSink.filter(event=>event.en==='page_view').length,
+      expiryUnchanged:result.cookies.filter(cookie=>cookie.name.startsWith('_ga')).every(cookie=>after.some(current=>current.name===cookie.name&&current.domain===cookie.domain&&current.expires===cookie.expires)),
+      allLocationsClean:eventSink.every(event=>event.dl==='https://sollahms.cl/contacto.html'),allReferrersClean:eventSink.every(event=>event.dr==='https://sollahms.cl')};
+    await revisit.close({runBeforeUnload:true});await new Promise(resolve=>setTimeout(resolve,500));
+  }
+  result.onlyAllowedEvents=[...result.events,...(result.cookieRevisit?.events||[])].every(event=>['page_view','form_start','contact_request_accepted'].includes(event.en));
   report.variants.push(result); await context.close();
   console.log(JSON.stringify({name,dirty,events:result.events.map(event=>event.en),pageViews:result.pageViews,rawMarkers:result.rawMarkers,allLocationsClean:result.allLocationsClean}));
  }

@@ -1,0 +1,85 @@
+{
+  "observedAtUTC": "2026-11-19T16:40:59.587280+00:00",
+  "status": "read_only_preflight_passed",
+  "recoveryDeploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+  "readyState": "READY",
+  "target": "production",
+  "sourceCommit": "df78d77f31c8da946623e586634998e151ed237e",
+  "sameProject": true,
+  "deletedAt": null,
+  "softDeleted": null,
+  "rollbackCandidateListing": {
+    "matched": true,
+    "isRollbackCandidate": true
+  },
+  "authenticatedTeamMembership": {
+    "role": "OWNER",
+    "confirmed": true,
+    "matchedAuthenticatedCliUser": true
+  },
+  "productionAliasSnapshotAt": "2026-11-19T13:30:03.611424-03:00",
+  "bothAliasesStillBaseInParentSnapshot": true,
+  "wwwRedirect": {
+    "to": "sollahms.cl",
+    "status": 308
+  },
+  "autoAssignCustomDomains": false,
+  "ssoProtection": {
+    "deploymentType": "all_except_custom_domains"
+  },
+  "projectRollbackIntrospectionSucceeded": true,
+  "cli": {
+    "version": "65.16.0",
+    "rollbackHelpRead": true,
+    "installedSupportCode": "@vercel/cli-support/dist/commands-core.js",
+    "writeEndpointObservedButNotCalled": "POST /v9/projects/{projectId}/rollback/{deploymentId}",
+    "statusReadEndpointObserved": "GET /v9/projects/{projectId}/rollback/aliases?failedOnly=true&limit=20",
+    "commandNotExecuted": "vercel rollback <previous-production-id-or-url> --scope <team>"
+  },
+  "officialSources": [
+    "https://vercel.com/docs/cli/rollback",
+    "https://vercel.com/docs/deployments/rollback-production-deployment"
+  ],
+  "mechanism": "Instant routing change to the immediately previous production deployment without rebuilding; preserve/recheck auto-assignment, SSO, aliases and bytes.",
+  "eligibilityBoundary": "86B is current Production in the parent snapshot and would become the immediately previous Production if this approved candidate is promoted with no intervening release. Recheck immediately before promotion/rollback.",
+  "permissionBoundary": "Confirmed OWNER membership and successful read-only candidate introspection do not execute or guarantee an action-specific rollback write; no live rehearsal was performed.",
+  "readOnlyCalls": [
+    {
+      "method": "GET",
+      "endpointKind": "/v13/deployments/dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+      "exitCode": 0,
+      "observedAtUTC": "2026-11-19T16:40:56.179317+00:00"
+    },
+    {
+      "method": "GET",
+      "endpointKind": "/v9/projects/{projectId}",
+      "exitCode": 0,
+      "observedAtUTC": "2026-11-19T16:40:56.970809+00:00"
+    },
+    {
+      "method": "GET",
+      "endpointKind": "/v6/deployments",
+      "exitCode": 0,
+      "observedAtUTC": "2026-11-19T16:40:57.946289+00:00"
+    },
+    {
+      "method": "GET",
+      "endpointKind": "/v2/user",
+      "exitCode": 0,
+      "observedAtUTC": "2026-11-19T16:40:58.768113+00:00"
+    },
+    {
+      "method": "GET",
+      "endpointKind": "/v2/teams/{teamId}/members",
+      "exitCode": 0,
+      "observedAtUTC": "2026-11-19T16:40:59.586432+00:00"
+    }
+  ],
+  "methods": [
+    "GET"
+  ],
+  "mutations": 0,
+  "rollbackExecuted": false,
+  "secretsOrPersonalAccountDataStored": false,
+  "simulationReused": "../release-simulation.json"
+}

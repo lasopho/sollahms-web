@@ -1,20 +1,20 @@
 {
-  "status": "private_candidate_verified_pending_specific_publication_approval",
+  "status": "published_and_verified",
   "repository": "lasopho/sollahms-web",
   "branch": "codex/medicion-seo-geo-20261119",
-  "runtimeCommit": "f914590010cf0b4ac930c41a59b648da3be1ab31",
+  "runtimeCommit": "b56fa12771a824dd8a4d581dc0c9c81e0938f71a",
   "sourceBaseCommit": "192f7cabb1f1a0a4e27ad044d58b895d35d06f33",
   "inheritsPendingAppearancePR": "https://github.com/lasopho/sollahms-web/pull/38",
   "baselineProductionDeployment": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
   "baselinePublishedCommit": "df78d77f31c8da946623e586634998e151ed237e",
-  "productionPublicationAuthorized": false,
-  "productionChanged": false,
+  "productionPublicationAuthorized": true,
+  "productionChanged": true,
   "strategy": "../seo-measurement/STRATEGY-v3.md",
   "comparison": "../seo-measurement/runs/2026-11-19-weekly-comparison/report.md",
   "artifact": {
     "format": "complete Vercel Build Output prebuilt",
     "baselineInventorySHA256": "c4b1a07527291aa020ebef549aa32f0bb2f2858f9f55312482584f333b14319b",
-    "inventorySHA256": "0348f6339b2fe315afb94076abdcca7cc0791a663c5fe639457ec5791040c1fe",
+    "inventorySHA256": "e12408412891bcf181380717ceecf56fc97067f0ff06a7aba25d26f95f12bc72",
     "files": 1727,
     "unchangedFiles": 1706,
     "modifiedFiles": 17,
@@ -49,13 +49,16 @@
   "tagManagerDraft": {
     "containerId": "GTM-KTXQ2V7B",
     "workspaceChanges": 3,
-    "published": false,
+    "published": true,
     "intendedChanges": [
       "six automatic event detectors OFF",
       "first-party data capabilities/automatic identity detection OFF",
       "cookie override 2 months from first visit"
     ],
-    "requiresApprovedPublicationThenFreshSdkInterceptedValidationBeforeSiteStaging": true
+    "requiresApprovedPublicationThenFreshSdkInterceptedValidationBeforeSiteStaging": true,
+    "publishedVersion": 2,
+    "publicationReceipt": "publication/gtm-publication.json",
+    "freshSdkVerification": "publication/sdk-fresh-verification.json"
   },
   "verification": {
     "unitTestsPassed": 20,
@@ -73,7 +76,11 @@
     "remoteFunctionsPreserved": 7,
     "remoteFunctionFilesPreserved": 57,
     "remoteIntegrityReceipt": "preview-remote-integrity.json",
-    "productionAfterPreviewReceipt": "production-after-preview.json"
+    "productionAfterPreviewReceipt": "production-after-preview.json",
+    "publicHTTPPassed": 14,
+    "publicAssetsPassed": 4,
+    "publicConsentAndWithdrawalPassed": true,
+    "publicConsentReceipt": "publication/public-consent-verification.json"
   },
   "productionProcedure": "PUBLICACION.md",
   "rollbackTargetIfNoInterveningRelease": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
@@ -84,5 +91,31 @@
     "Bing absent page rows unknown; no native twelve-page totals",
     "Account setup/preview does not prove ranking growth, real event receipt or qualified leads"
   ],
-  "pullRequest": "https://github.com/lasopho/sollahms-web/pull/39"
+  "pullRequest": "https://github.com/lasopho/sollahms-web/pull/39",
+  "authorizationRecord": "publication/authorization.json",
+  "initialApprovedRuntimeCommit": "f914590010cf0b4ac930c41a59b648da3be1ab31",
+  "privacyClarification": "publication/privacy-clarification.json",
+  "approvedArtifactBeforeClarificationSHA256": "0348f6339b2fe315afb94076abdcca7cc0791a663c5fe639457ec5791040c1fe",
+  "publicationArtifactProof": "publication/artifact-proof.json",
+  "stagedProduction": {
+    "recordedAt": "2026-11-19T14:04:20.765743-03:00",
+    "timezone": "America/Santiago",
+    "id": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
+    "url": "https://project-wrapp-qjbb3prid-lsandoval2-8260s-projects.vercel.app",
+    "target": "production",
+    "environment": "production",
+    "readyState": "READY",
+    "productionUrlAtCreation": null,
+    "createdUsingPrebuiltAndSkipDomain": true,
+    "runtimeCommit": "b56fa12771a824dd8a4d581dc0c9c81e0938f71a",
+    "originalApprovedCommit": "f914590010cf0b4ac930c41a59b648da3be1ab31",
+    "artifactInventorySHA256": "e12408412891bcf181380717ceecf56fc97067f0ff06a7aba25d26f95f12bc72",
+    "files": 1727,
+    "source": "Vercel CLI65.16.0 structured successful response",
+    "secretsStored": false,
+    "promoted": true
+  },
+  "productionDeploymentId": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
+  "publicationT0": "2026-11-19T14:07:21.935-03:00",
+  "publicationRecord": "publication/publication.json"
 }

@@ -1,6 +1,6 @@
-# Publicación del candidato de medición — pendiente de aprobación
+# Procedimiento de publicación — ejecutado el 19/11/2026
 
-Este plan no ejecuta una publicación. El permiso original de PR37/SHA `df78d77f31c8da946623e586634998e151ed237e` no cubre automáticamente este nuevo candidato, el candidato de apariencia heredado de PR38 ni el borrador del contenedor Google Tag Manager.
+Registro de ejecución: [publication/publication.json](publication/publication.json), T0 14:07:21.935 America/Santiago, Production Dbd8. El titular autorizó la publicación; el procedimiento siguiente conserva las condiciones verificadas. El permiso original de PR37/SHA `df78d77f31c8da946623e586634998e151ed237e` no cubre automáticamente este nuevo candidato, el candidato de apariencia heredado de PR38 ni el borrador del contenedor Google Tag Manager.
 
 ## Resultado que se revisa
 
@@ -13,7 +13,7 @@ La apariencia pendiente de PR38 forma parte explícita de este candidato: cohere
 1. Leer `candidate.json`, `artifact-proof.json`, recibos del SDK/navegador y del borrador GTM. Confirmar autorización del candidato concreto y los ajustes de GTM que se describen allí.
 2. Comprobar otra vez ambos alias, deployment activo, configuración automática, SSO, dominios, integraciones y nombres/targets del entorno sin extraer valores secretos. Referencia comprobada: `dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH`, `autoAssignCustomDomains:false`, SSO `all_except_custom_domains`, producción en main. Si ha habido una publicación posterior, recuperar íntegramente ese artefacto, reaplicar sólo el overlay revisado y repetir preservación y pruebas.
 3. Conservar como reversión el deployment de producción inmediatamente anterior, READY y accesible para la cuenta actual. Revalidar el mecanismo oficial y su elegibilidad sin ejecutar un rollback de ensayo contra tráfico real. La simulación local y una lectura no acreditan el permiso efectivo de una futura escritura.
-4. Tras la aprobación, publicar únicamente los cambios revisados del contenedor `GTM-KTXQ2V7B`. No añadir etiquetas Ads, destinos ni integraciones. Descargar su SDK público vigente y repetir en un contexto aislado la prueba de red interceptada: cero descargas/eventos antes del permiso o con rechazo; exactamente un page_view tras aceptación; todos los eventos con URL/referrer saneados y sin datos personales o financieros; sin eventos automáticos ajenos al contrato; cookies host-only, Secure, máximo 60 días y sin renovación. Los beacons se cumplen localmente y no se envían. Si difiere, detener antes del despliegue del sitio, corregir y volver a revisar el candidato.
+4. Tras la aprobación, publicar únicamente los cambios revisados del contenedor `GTM-KTXQ2V7B`. No añadir etiquetas Ads, destinos ni integraciones. Descargar su SDK público vigente y repetir en un contexto aislado la prueba de red interceptada: cero descargas/eventos antes del permiso o con rechazo; exactamente un page_view tras aceptación; todos los eventos con URL/referrer saneados y sin datos personales o financieros; sin eventos automáticos ajenos al contrato; cookies host-only, Secure y máximo 60 días por escritura; vencimiento fijo de _ga y actualización posible de la cookie de estado de sesión _ga_…, descrita expresamente en la política. Los beacons se cumplen localmente y no se envían. Si difiere, detener antes del despliegue del sitio, corregir y volver a revisar el candidato.
 
 ## Artefacto y promoción
 

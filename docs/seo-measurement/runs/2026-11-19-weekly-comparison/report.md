@@ -12,26 +12,31 @@ Se aplica STRATEGY-v3 y el estudio existente. Objetivo confirmado: solicitudes d
 
 1. Mantener el estudio y alcance positivo de doce páginas como referencia.
 2. Conservar las tres mediciones con fechas, filtros, versiones y límites.
-3. Configurar GA4 y Clarity propios y preparar código/consentimiento/política en candidato privado.
+3. GA4 y Clarity propios configurados; integración, consentimiento y política publicados.
 4. Medir CTA, uso de herramientas, inicio de formulario y acuse válido; separar recepción, calificación y venta reales.
-5. Publicar solo el candidato concreto aprobado, registrar T0 y usar señales comparables para cada siguiente cambio gradual.
+5. Publicación autorizada comprobada con T0; usar señales posteriores y periodos comparables para cada siguiente cambio gradual.
 
-GA4 y Clarity no reconstruyen navegación anterior a su instalación. Antes de aprobar/publicar la integración no hay datos internos nuevos del sitio atribuibles a este trabajo. El frontend no demuestra entrega al buzón ni lead calificado.
+GA4 y Clarity no reconstruyen navegación anterior a su instalación. La publicación no prueba por sí sola que ya existan sesiones o solicitudes nuevas registradas; el frontend tampoco demuestra entrega al buzón ni lead calificado. Todas las cifras de buscadores y la observación de ChatGPT de este informe son anteriores al T0 de medición.
 
-## Estado del candidato de medición
+## Medición publicada y privacidad comprobada
 
-Las cuentas propias están configuradas; el candidato no se ha publicado. El [ensayo corregido](../../../measurement-20261119/sdk-correction-receipt.json) acredita PASS del artefacto exacto, módulo 15388b73, con SDK reales en caché: una vista de página con direcciones limitadas, cookies de GA4 Secure, SameSite=Lax y 60 días, y ninguna marca sintética en el contenido Clarity interceptado. Los 60 días no describen las cookies de Clarity. Cero beacons y contactos enviados. El fallo inicial se conserva como historia.
+GTM-KTXQ2V7B **versión 2 publicada** el 19/11/2026 a las 13:42:37 de Santiago con los tres ajustes aprobados: seis detectores automáticos OFF, datos propios OFF y override de cookies de Analytics. [Recibo GTM](../../../measurement-20261119/publication/gtm-publication.json).
 
-Quedan tres ajustes de privacidad en [borrador GTM sin publicar](../../../measurement-20261119/gtm-privacy-draft-receipt.json). Después de publicar el borrador concreto aprobado, obtener un SDK nuevo y repetir la prueba interceptada antes de preparar la publicación del sitio. Este prerrequisito futuro no invalida el PASS actual; comprueba la nueva configuración remota. Los controles del panel y las pruebas con mocks no sustituyen estos ensayos.
+El [ensayo con SDK fresco Google f076](../../../measurement-20261119/publication/sdk-fresh-verification.json), posterior a GTM v2, acredita PASS del módulo exacto 15388b73 y su configuración 302c1200: una vista por documento, direcciones limitadas, eventos permitidos y ninguna marca sintética en el contenido Clarity interceptado. Cero beacons y contactos enviados. El fallo inicial y el ensayo en caché se conservan como historia.
 
-## Candidato privado comprobado
+Las cookies de GA4 son Secure y SameSite=Lax, con máximo de 60 días en cada escritura. `_ga` mantiene su caducidad inicial; `_ga_LTFBQKVNY2`, de estado de sesión, puede actualizarla con actividad o una nueva página. No se afirma que todas tengan caducidad fija. Las cookies de Clarity mantienen sus duraciones de un año y un día y el atributo Secure=false observado; el límite de GA4 no se les aplica. La [precisión de privacidad](../../../measurement-20261119/publication/privacy-clarification.json) documenta ese comportamiento sin cambiar finalidades, categorías de datos ni código.
 
-[PR #39](https://github.com/lasopho/sollahms-web/pull/39), fuente `f914590010cf0b4ac930c41a59b648da3be1ab31`. Preview `dpl_HS99vSe1dgeQrqzyXLYtiNoEtCvz`, READY y protegida: [abrir candidato](https://project-wrapp-7ukmzmy6h-lsandoval2-8260s-projects.vercel.app).
+## Publicación completada
 
-- Inventario remoto: 1727/1727 UID SHA1 iguales al inventario local sellado; 57 archivos de siete funciones y configuración coincidentes. [Recibo remoto](../../../measurement-20261119/preview-remote-integrity.json).
-- HTTP de la tarea principal: 14/14 páginas corporativas, robots y sitemap; 4/4 recursos nuevos. Anónimo redirige a autenticación. No se enviaron formularios ni beacons reales.
-- SDK real en caché: PASS del módulo exacto 15388b73, con el fallo inicial conservado como antecedente. La futura publicación del borrador GTM exige SDK nuevo y nueva comprobación interceptada antes de preparar la publicación del sitio.
-- Producción: ambos dominios siguen en `dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH`, fuente df78d77f y ajustes del proyecto sin cambios. [Comprobación de producción](../../../measurement-20261119/production-after-preview.json).
+**T0: 2026-11-19 14:07:21.935 America/Santiago**, según updatedAt del alias principal. [Registro de publicación](../../../measurement-20261119/publication/publication.json).
+
+[PR #39](https://github.com/lasopho/sollahms-web/pull/39), base aprobada `f914590010cf0b4ac930c41a59b648da3be1ab31` incluida la apariencia de PR #38. Fuente de ejecución `b56fa12771a824dd8a4d581dc0c9c81e0938f71a`: sólo añade la precisión necesaria en un párrafo de privacidad respecto de la base aprobada; módulo 15388b73 y configuración 302c1200 permanecen iguales.
+
+- Se promovió el mismo Production ID preparado y validado: `dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC`, sin reconstrucción.
+- Inventario remoto: 1727/1727 UID SHA1 coinciden con el inventario e124; 57 archivos de siete funciones y configuración conservan la base certificada. [Recibo remoto](../../../measurement-20261119/publication/staged-remote-integrity.json).
+- HTTP público de la tarea principal: 14/14 páginas corporativas, robots y sitemap; 4/4 recursos. No se enviaron formularios ni beacons reales en las verificaciones.
+- Ambos aliases apuntan a Dbd8; www conserva 308 al dominio principal. Ajustes del proyecto y protección sin cambios; autoAssignCustomDomains permanece false.
+- La publicación es un resultado técnico. Todavía no acredita sesiones recibidas, solicitudes calificadas, ventas ni un efecto posterior sobre las métricas históricas de Google, Bing o ChatGPT Search.
 
 ## Evidencia
 
