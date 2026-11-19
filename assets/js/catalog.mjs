@@ -4,6 +4,7 @@ import {loadEuroOwnerSource,bindEuroOwnerQuotes,unavailableEuroOwnerQuotes,euroO
 import {loadNollagamOwnerQuoteContexts} from './catalog-nollagam-quote-consumer.mjs';
 import {loadLocalDocumentaryReview} from './documentary-local-review.mjs';
 import {loadCatalogExpansion,appendCatalogExpansion,hasCatalogExpansionMarker,catalogExpansionSourceLabel,publishedFinancialProjects,onlyExpansionResults,sortWithPublishedFinancials,CATALOG_EXPANSION_FAILURE} from './catalog-expansion.mjs';
+import {loadExpansionLocations,bindExpansionLocations,hasVerifiedExpansionLocation,EXPANSION_LOCATIONS_FAILURE} from './catalog-expansion-locations.mjs';
 import {metroSummary} from './metro-model.mjs';
 import {leonCatalogOfferId} from './project-offers.mjs?v=20261030-leon';
 import {publicOrigin} from './commercial-context.mjs?v=20261029-euro-1';
@@ -15,7 +16,7 @@ const $=id=>document.getElementById(id);
 const controls={assetType:$('asset-type'),sortOrder:$('sort-order')};
 const grid=$('project-grid'),count=$('project-count'),message=$('catalog-message');
 const viewButtons=[...document.querySelectorAll('[data-catalog-view]')];
-let projects=[],capacitySearch=null,view='cards',mapInstance=null,mapPromise=null,mapResults=[],filterControls=null;
+let projects=[],capacitySearch=null,view='cards',mapInstance=null,mapPromise=null,mapResults=[],filterControls=null,expansionLocations=null;
 const mapHost=$('catalog-map');
 const element=(tag,text,classes)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(classes)e.className=classes;return e;};
 const values=()=>filterControls?.values()??defaults();
@@ -24,7 +25,7 @@ function ensureMap(){
   if(mapInstance){mapInstance.show();mapInstance.update(mapResults,{assetType:controls.assetType.value,filters:values()});return;}
   if(mapPromise)return;
   mapHost.setAttribute('aria-busy','true');mapHost.replaceChildren(element('p','Cargando mapa…','catalog-map-status'));
-  mapPromise=import('./catalog-map.mjs?v=20261029-euro-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost,origin:entryOrigin})).then(instance=>{
+  mapPromise=import('./catalog-map.mjs?v=20261029-euro-1').then(({createCatalogMap})=>createCatalogMap({host:mapHost,origin:entryOrigin,additionalLocations:expansionLocations})).then(instance=>{
     mapInstance=instance;if((view==='map'||view==='split')){instance.show();instance.update(mapResults,{assetType:controls.assetType.value,filters:values()});}else instance.hide();
   }).catch(error=>{
     mapHost.setAttribute('aria-busy','false');const note=element('p','El mapa no pudo cargar. Puedes seguir explorando todos los resultados en Tarjetas o Listado.');note.setAttribute('role','status');
@@ -75,7 +76,7 @@ function card(project){
     const link=element('a','Ver detalles','catalog-details-link');const current=values(),base=defaults(),filtered=Object.keys(base).some(k=>k!=='version'&&JSON.stringify(current[k])!==JSON.stringify(base[k]));const source=entryOrigin??(filtered?'buscador':'catalogo');link.href=project.detalleUrl+'?origen='+source+(project.catalogPricePolicy==='by-product'&&(current.assetType==='Comercial'||current.propertyType==='local'||offer.euroOwnerQuote&&offer.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(project.inmobiliaria)&&/^[012]$/.test(current.bedrooms)&&project.commercialOffers?.some(o=>o.id===current.bedrooms+'d')?'&oferta='+current.bedrooms+'d':'')+(leonCatalogOfferId(project,current)?'&oferta='+leonCatalogOfferId(project,current):'')+(project._ecasaStageNumber?'#etapa-'+project._ecasaStageNumber:'');link.setAttribute('aria-label','Ver detalles de '+project.nombre);actions.append(link);
     if(current.evidenceMode==='documentary'){link.textContent='Ver ficha publicada';link.href=project.detalleUrl+'?origen='+source;link.setAttribute('aria-label','Ver ficha publicada de '+project.nombre);}
   }
-  if(view==='split'&&hasCatalogExpansionMarker(project))actions.append(element('span','Coordenadas por verificar','catalog-expansion-note'));
+  if(view==='split'&&hasCatalogExpansionMarker(project)&&!hasVerifiedExpansionLocation(project,expansionLocations))actions.append(element('span','Coordenadas por verificar','catalog-expansion-note'));
   else if(view==='split'){const b=element('button','Ubicar en mapa','catalog-text-button');b.type='button';b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('catalog-list-selection',{detail:{slug:project.slug}})));actions.append(b);}
   body.append(actions);article.append(body);
   if(values().evidenceMode==='published'&&financialReferenceCompatible(projects.find(original=>original.slug===project.slug),offer)&&!(project.preciosPorTipologia&&(controls.assetType.value==='Comercial'||values().propertyType==='local')))capacitySearch?.decorateCard(article,project);
@@ -113,11 +114,12 @@ async function load(){
     const euroOwnerSource=loadEuroOwnerSource().then(source=>({source}),()=>({unavailable:true}));
     const nollagamOwnerContexts=loadNollagamOwnerQuoteContexts(data);
     const expansionSource=loadCatalogExpansion().then(source=>({source}),()=>({unavailable:true}));
-    const metroData=Promise.all(['/data/metro-network.json','/data/project-metro.json'].map(async u=>{const r=await fetch(u,{signal:AbortSignal.timeout(6000)});if(!r.ok)throw Error('metro');return r.json();})).catch(()=>null);
+    const expansionLocationSource=loadExpansionLocations().then(source=>({source}),()=>({unavailable:true}));
+    const metroData=Promise.all(['/data/metro-network.json','/data/project-metro.json'].map(async u=>{const r=await fetch(u,{signal:AbortSignal.timeout(6000)});if(!r.ok)throw Error('metro');const text=await r.text();return {data:JSON.parse(text),text};})).catch(()=>null);
     let index={projects:{},filters:[],typologies:[]};
     try{const response=await fetch('/data/catalog-facets.json?v=20261029-euro-1',{signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('facets unavailable');index=await response.json();if(index.schemaVersion!==1||!index.projects)throw Error('facets schema');}
     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Los filtros por características no pudieron cargar. Puedes seguir buscando por ubicación, nombre y precio.';}
-    try{const [network,connections]=await metroData;if(network.schemaVersion!==1||connections.schemaVersion!==1)throw Error('metro schema');index.metro=network;index.metroProjects=connections.projects;}catch{document.getElementById('metro-filter-section').hidden=true;document.getElementById('metro-load-status').hidden=false;}
+    try{const [networkSource,connectionsSource]=await metroData,network=networkSource.data,connections=connectionsSource.data;if(network.schemaVersion!==1||connections.schemaVersion!==1)throw Error('metro schema');index.metro=network;index.metroProjects=connections.projects;index.metroSourceText=networkSource.text;}catch{document.getElementById('metro-filter-section').hidden=true;document.getElementById('metro-load-status').hidden=false;}
     projects=data.map(p=>({...p,_metro:index.metroProjects?.[p.slug],_facets:index.projects[p.slug]??{assetTypes:p.tiposActivos??[p.tipoActivo].filter(Boolean),states:[p.estado].filter(Boolean)}}));
     try{projects=buildCommercialProjects(projects,await loadCommercialEvidence(),index);}
     catch{const note=$('advanced-data-status');note.hidden=false;note.textContent='Las referencias Leben no pudieron cargar. Se muestran los datos publicados.';index.preparedUnavailable=true;}
@@ -133,6 +135,10 @@ async function load(){
     const expansion=await expansionSource;
     try{if(!expansion.source)throw Error('expansion unavailable');projects=appendCatalogExpansion(projects,expansion.source);index.expansionCount=21;}
     catch{let note=$('catalog-expansion-status');if(!note){note=element('p',undefined,'catalog-expansion-note');note.id='catalog-expansion-status';note.setAttribute('role','status');note.setAttribute('aria-live','polite');count.parentElement.insertBefore(note,count);}note.hidden=false;note.textContent=CATALOG_EXPANSION_FAILURE;index.expansionUnavailable=true;}
+    if(index.expansionCount===21){
+      try{const source=await expansionLocationSource;if(!source.source)throw Error('locations unavailable');const geography=await bindExpansionLocations(projects,source.source,{networkText:index.metroSourceText});projects=geography.projects;expansionLocations=geography.locations;}
+      catch{const note=element('p',EXPANSION_LOCATIONS_FAILURE,'catalog-expansion-note');note.id='catalog-expansion-location-status';note.setAttribute('role','status');note.setAttribute('aria-live','polite');count.parentElement.insertBefore(note,count);}
+    }
     filterControls=createFilterControls({projects,index,onChange:render,getView:()=>view,setView:next=>{view=next;applyView();}});applyView();render();
     $('catalog-static-directory').hidden=true;
     viewButtons.forEach(c=>c.disabled=false);
