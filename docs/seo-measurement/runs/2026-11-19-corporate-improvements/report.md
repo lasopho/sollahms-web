@@ -1,6 +1,6 @@
 # Sollahms — revisión y mejoras corporativas, 19/11/2026
 
-Revisión registrada en America/Santiago. Las mejoras están implementadas y verificadas localmente; la publicación productiva requiere aprobación final. El candidato usa el artefacto real que sirve `sollahms.cl`, no el `main` histórico.
+Revisión registrada en America/Santiago. Las mejoras están implementadas y verificadas localmente y en la preview privada; la publicación productiva requiere aprobación final. El candidato usa el artefacto real que sirve `sollahms.cl`, no el `main` histórico.
 
 ## Avance comprobado
 
@@ -52,7 +52,13 @@ El procedimiento vigente utiliza el **Build Output API certificado**, preserva l
 
 La configuración consultada mantiene Production Branch `main`, `autoAssignCustomDomains:false`, auto-deploy Git existente y SSO `all_except_custom_domains`. Subir esta rama puede generar una Preview Git; no publica producción. La preview manual debe usar `vercel deploy --prebuilt --environment preview` con el proyecto/equipo verificados. Las funciones ya bloquean escrituras en Preview; la reserva conserva `booking_not_certified`.
 
-El recibo remoto, SHA y PR se incorporan en `candidate.json` al verificarlos. Ningún merge, promoción o cambio de dominios está autorizado en esta fase.
+El [candidato verificado](candidate.json) corresponde al código `e1f75f0c95c1d0cba78c2c8c35737835ce395d28`, [PR #37 en borrador](https://github.com/lasopho/sollahms-web/pull/37), base `codex/mapa-filtros-21-proyectos-20261119`. [Preview privada final](https://project-wrapp-dzbpzd5yt-lsandoval2-8260s-projects.vercel.app), deployment `dpl_FnrDxhrH6BMbB93MntwFyFk8zyKN`, READY. Los commits posteriores al código incorporan únicamente esta evidencia.
+
+**Verificación remota final:** [1.723/1.723 UID SHA-1 exactos](preview-remote-integrity.json), siete funciones y configuración coincidentes. [14/14 GET autenticados](preview-http-verification.json) de las 12 corporativas, robots y sitemap coinciden con el candidato; solo se retira para comparar el script exacto del toolbar que Vercel añade a la preview, conservando por separado ambos hashes. Los HTML entregan `X-Robots-Tag: noindex`. Un GET sin autenticar redirige 302 al acceso de Vercel, sin abrir el sitio. No se modificó SSO.
+
+La [última lectura productiva](production-final-recheck.json), **19/11/2026 07:40:23 America/Santiago**, mantiene ambos dominios en `dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV` y todos los ajustes previos. El primer intento de preview queda documentado como histórico; no es el candidato final.
+
+[Procedimiento para una publicación posteriormente autorizada](PUBLICACION.md). Ningún merge del PR, promoción productiva o cambio de dominios se realizó en esta fase.
 
 ## Pendientes y seguimiento
 
