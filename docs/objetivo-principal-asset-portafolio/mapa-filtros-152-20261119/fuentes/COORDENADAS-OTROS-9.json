@@ -1,0 +1,585 @@
+{
+  "schemaVersion": 1,
+  "kind": "VERIFICACION_GEOGRAFICA_ACOTADA_NUEVOS_9_NO_GPR_SIN_EDICION_APP",
+  "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+  "sourceApplication": {
+    "checkout": "/private/tmp/sollahms-fichas-sin-citas-iris-20261119",
+    "headSHA": "49312fd708ccd9e319511432e4b657788f5734f9",
+    "dataPath": "data/catalog-expansion-iris-20261118.json",
+    "dataSHA256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb"
+  },
+  "policy": [
+    "No city/street/neighbourhood centroids, no address interpolation, no closest-point guess.",
+    "Primary identity and published address remain unchanged. A map target is referential to the exact address, not an entrance, boundary, stock or price certification.",
+    "No application edits, deployment, DNS, SSO, forms, authentication, stored credentials or private APIs.",
+    "Official developer public map embeds and exact-address geographic entities distinguish markers from camera center.",
+    "Google public place embed key found inBotánicoHTML was not reused.",
+    "Nominatim was operated sequentially by one agent, withlocalcache and>=1s; never integrated intoapp."
+  ],
+  "summary": {
+    "projects": 9,
+    "verifiedSpecificAddressPoints": 8,
+    "pendingNumberingConflict": 1,
+    "existing131Modified": 0,
+    "applicationChanges": 0,
+    "deploymentsCreated": 0
+  },
+  "projects": [
+    {
+      "slug": "kiez",
+      "projectName": "Kiez",
+      "developer": "Leben",
+      "publishedAddressUnchanged": "Claudio Gay 2040",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1573?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:31:16.471Z",
+        "sourceProjectTitle": "Leben - Kiez",
+        "sourcePointer": "/projects/12/identity",
+        "country": "Chile"
+      },
+      "status": "VERIFICADO_PUNTO_DIRECCION_ESPECIFICA",
+      "coordinates": {
+        "latitude": -33.455078,
+        "longitude": -70.66336869999999
+      },
+      "precision": "project-specific address marker; not an entrance/parcel-boundary survey",
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "geographicSource": {
+        "kind": "GOOGLE_MAPS_PUBLIC_EXACT_ADDRESS_TARGET_ENTITY",
+        "url": "https://maps.google.com/maps?q=Claudio+Gay+2040%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+        "status": 200,
+        "responseSHA256": "ac660f1515ba599b2eb3274da362e21eaeb170154232b5f8b7c1ddb7687f1965",
+        "entity": {
+          "placeIdHex": "0x9662c50389923e69:0x8ef505ec21e8d45c",
+          "label": "Claudio Gay 2040, 8320000 Santiago, Región Metropolitana",
+          "latitude": -33.455078,
+          "longitude": -70.66336869999999
+        },
+        "extraction": "initEmbed exact target entity [place-id,label,[lat,lon]], not camera center. No API key/auth/private endpoint.",
+        "noPrivateAPIOrKeyUsed": true
+      },
+      "matchingChecks": {
+        "exactPublishedAddressQuery": true,
+        "markerReturnedSameNumberAndStreet": true,
+        "communeConsistent": true,
+        "notStreetOrCityCentroid": true,
+        "coordinateNotCameraCenter": true
+      },
+      "primarySource": {
+        "kind": "OFFICIAL_DEVELOPER_COMPANY_POST_INDEXED_PUBLICLY_PLUS_ARCHIVED_IRIS",
+        "url": "https://cl.linkedin.com/company/inmobiliarialeben",
+        "identityExcerpt": "Kiez, ubicado en Claudio Gay 2040, en pleno corazón del barrio universitario.",
+        "sourceObservation": "Official developer LinkedIn company result indexed via web search2026-11-19; no authentication attempted.",
+        "developerProjectURL": "https://kiez.ileben.cl/",
+        "developerProjectReadLimit": "Python TLS protocol error; systemcurl normal certificate check returned403; no repeated bypass."
+      },
+      "precisionLimitation": "Google target is an exact street-number address, not a claimed entrance survey or new building geometry. OSM legacy POI MagicHouse at2040 is retained only as conflict context, not used as project-name evidence.",
+      "rejectedOrLimitedOSMCheck": {
+        "url": "https://nominatim.openstreetmap.org/search?q=Claudio+Gay+2040%2C+Santiago%2C+Chile&format=jsonv2&addressdetails=1&limit=3&countrycodes=cl",
+        "outcome": "Legacy kindergartenMagicHouse house2040; not accepted as current project identity."
+      }
+    },
+    {
+      "slug": "centro-santa-ana",
+      "projectName": "Centro Santa Ana",
+      "developer": "AJ Urbana",
+      "publishedAddressUnchanged": "San Martín 678",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1575?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:31:22.741Z",
+        "sourceProjectTitle": "AJ Urbana - Centro Santa Ana",
+        "sourcePointer": "/projects/13/identity",
+        "country": "Chile"
+      },
+      "status": "VERIFICADO_PUNTO_DIRECCION_ESPECIFICA",
+      "coordinates": {
+        "latitude": -33.436047987036595,
+        "longitude": -70.65852984928345
+      },
+      "precision": "project-specific address marker; not an entrance/parcel-boundary survey",
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "primarySource": {
+        "kind": "DEVELOPER_PROJECT_MICROSITE_PROPERTY_PAGE",
+        "url": "https://www.centrosantaana.cl/properties/1d1b",
+        "status": 200,
+        "responseSHA256": "f8cc7b80dbfd4173d90c8acf9a572f7bf55850ae8ca9cefd03796025485ff103",
+        "savedOriginal": "/private/tmp/sollahms-mapa-21-20261119/centro-santa-ana-property.html",
+        "identityExcerpt": "1D1B — San Martin 678 Centro Santa Ana.",
+        "explicitMapCoordinateLiteral": "-33.436047987036595, -70.65852984928345",
+        "embeddedMapURL": "https://maps.google.com/maps?q=-33.436047987036595%2C%20-70.65852984928345&z=15&output=embed",
+        "locationContext": "Ubicación section; identical coordinate literal occurs in page property data."
+      },
+      "geographicSource": {
+        "kind": "EXPLICIT_DEVELOPER_MAP_Q_COORDINATES",
+        "url": "https://maps.google.com/maps?q=-33.436047987036595%2C%20-70.65852984928345&z=15&output=embed",
+        "latitudeLongitudeExplicit": true,
+        "noCameraCenterInference": true
+      },
+      "matchingChecks": {
+        "projectNameOnPrimaryPage": true,
+        "addressNumberExact": true,
+        "communeConsistent": true,
+        "coordinateLiteralInsidePropertyLocationSection": true
+      }
+    },
+    {
+      "slug": "edificio-ambar-urbano",
+      "projectName": "Edificio Ambar Urbano",
+      "developer": "Euro",
+      "publishedAddressUnchanged": "San Pablo 1263",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1579?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:31:38.217Z",
+        "sourceProjectTitle": "Euro - Edificio Ambar Urbano",
+        "sourcePointer": "/projects/14/identity",
+        "country": "Chile"
+      },
+      "status": "VERIFICADO_PUNTO_DIRECCION_ESPECIFICA",
+      "coordinates": {
+        "latitude": -33.4342759,
+        "longitude": -70.6553717
+      },
+      "precision": "project-specific address marker; not an entrance/parcel-boundary survey",
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "geographicSource": {
+        "kind": "GOOGLE_MAPS_PUBLIC_EXACT_ADDRESS_TARGET_ENTITY",
+        "url": "https://maps.google.com/maps?q=San+Pablo+1263%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+        "status": 200,
+        "responseSHA256": "dc1c2ccc1c8b65b7d40650e30bf06e68fbe5362c0cae50a9f8fd2a26e8d92ad8",
+        "entity": {
+          "placeIdHex": "0x9662c5bae9175f3d:0xcea6d700576ca503",
+          "label": "San Pablo 1263, 8340150 Santiago, Región Metropolitana",
+          "latitude": -33.4342759,
+          "longitude": -70.6553717
+        },
+        "extraction": "initEmbed exact target entity [place-id,label,[lat,lon]], not camera center. No API key/auth/private endpoint.",
+        "noPrivateAPIOrKeyUsed": true
+      },
+      "matchingChecks": {
+        "exactPublishedAddressQuery": true,
+        "markerReturnedSameNumberAndStreet": true,
+        "communeConsistent": true,
+        "notStreetOrCityCentroid": true,
+        "coordinateNotCameraCenter": true
+      },
+      "primarySource": {
+        "kind": "DEVELOPER_OFFICIAL_STOREFRONT_PUBLIC_INDEX_PLUS_ARCHIVED_IRIS",
+        "url": "https://www.portalinmobiliario.com/tienda-oficial/_Tienda_euro-inmobiliaria",
+        "identityExcerpt": "Edificio Ambar - Euro — San Pablo 1263, Santiago.",
+        "developerPublicationHost": "Portalinmobiliario official Euro store, not a third-party broker page",
+        "sourceObservation": "Official store indexed in web search2026-11-19; direct webopen returned403; no access bypass."
+      },
+      "rejectedOrLimitedOSMCheck": {
+        "url": "https://nominatim.openstreetmap.org/search?q=San+Pablo+1263%2C+Santiago%2C+Chile&format=jsonv2&addressdetails=1&limit=3&countrycodes=cl",
+        "outcome": "Rejected: resultway112504706 is addr:interpolation odd between1215 and1301; not a building point."
+      }
+    },
+    {
+      "slug": "espacio-v",
+      "projectName": "Espacio V",
+      "developer": "Euro",
+      "publishedAddressUnchanged": "Zañartu 1370",
+      "commune": "Ñuñoa",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1582?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:31:45.230Z",
+        "sourceProjectTitle": "Euro - Espacio V",
+        "sourcePointer": "/projects/15/identity",
+        "country": "Chile"
+      },
+      "status": "VERIFICADO_PUNTO_DIRECCION_ESPECIFICA",
+      "coordinates": {
+        "latitude": -33.4729796,
+        "longitude": -70.618512
+      },
+      "precision": "project-specific address marker; not an entrance/parcel-boundary survey",
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "geographicSource": {
+        "kind": "GOOGLE_MAPS_PUBLIC_EXACT_ADDRESS_TARGET_ENTITY",
+        "url": "https://maps.google.com/maps?q=Za%C3%B1artu+1370%2C+%C3%91u%C3%B1oa%2C+Chile&z=17&hl=es&output=embed",
+        "status": 200,
+        "responseSHA256": "c5674586d0a5c5f001d0e6a84621d5a70d17a7f32a266c3bac4e732e2898a768",
+        "entity": {
+          "placeIdHex": "0x9662cff77e3366ab:0xfd8feec413567f1b",
+          "label": "Zañartu 1370, 7780272 Ñuñoa, Región Metropolitana",
+          "latitude": -33.4729796,
+          "longitude": -70.618512
+        },
+        "extraction": "initEmbed exact target entity [place-id,label,[lat,lon]], not camera center. No API key/auth/private endpoint.",
+        "noPrivateAPIOrKeyUsed": true
+      },
+      "matchingChecks": {
+        "exactPublishedAddressQuery": true,
+        "markerReturnedSameNumberAndStreet": true,
+        "communeConsistent": true,
+        "notStreetOrCityCentroid": true,
+        "coordinateNotCameraCenter": true
+      },
+      "primarySource": {
+        "kind": "DEVELOPER_OFFICIAL_STOREFRONT_PUBLIC_INDEX_PLUS_ARCHIVED_IRIS",
+        "url": "https://www.portalinmobiliario.com/tienda-oficial/_Tienda_euro-inmobiliaria",
+        "identityExcerpt": "Edificio V - Euro — Zañartu 1370, Ñuñoa.",
+        "developerPublicationHost": "Portalinmobiliario official Euro store, not a third-party broker page",
+        "sourceObservation": "Official store indexed in web search2026-11-19; direct webopen returned403; no access bypass."
+      },
+      "additionalIdentitySource": {
+        "kind": "EURO_LAUNCH_LANDING",
+        "url": "https://landing.euroinmobiliaria.cl/lanzamientoespaciov",
+        "responseSHA256": "b42498657bfcea3f010102bf158c743b41f2fe54fc667e02df78e95e457c35de",
+        "identityExcerpt": "Descubre primero Espacio V",
+        "scope": "Name/brand only; does not independently print the address. Archived Iris1582 and Euro official store provide address."
+      },
+      "rejectedOrLimitedOSMCheck": {
+        "url": "https://nominatim.openstreetmap.org/search?q=Za%C3%B1artu+1370%2C+%C3%91u%C3%B1oa%2C+Chile&format=jsonv2&addressdetails=1&limit=3&countrycodes=cl",
+        "outcome": "Rejected neighbourhood and street centroids with no house_number1370."
+      }
+    },
+    {
+      "slug": "edificio-botanico",
+      "projectName": "Edificio Botánico",
+      "developer": "Norte Verde",
+      "publishedAddressUnchanged": "Claudio Gay esquina Manuel Rodríguez",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1585?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:31:51.205Z",
+        "sourceProjectTitle": "Norte Verde - Edificio Botánico",
+        "sourcePointer": "/projects/16/identity",
+        "country": "Chile"
+      },
+      "status": "VERIFICADO_PUNTO_DIRECCION_ESPECIFICA",
+      "coordinates": {
+        "latitude": -33.4541767,
+        "longitude": -70.6588767
+      },
+      "precision": "project-specific address marker; not an entrance/parcel-boundary survey",
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "geographicSource": {
+        "kind": "GOOGLE_MAPS_PUBLIC_EXACT_ADDRESS_TARGET_ENTITY",
+        "url": "https://maps.google.com/maps?q=Claudio+Gay+1722%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+        "status": 200,
+        "responseSHA256": "80c65dd48526095a2a035470ec0155f2688c7e1adb5eaea085e51fec1fdc7afa",
+        "entity": {
+          "placeIdHex": "0x9662c505be26889f:0xbdbac50c3a5a70e6",
+          "label": "Claudio Gay 1722, 8370257 Santiago, Región Metropolitana",
+          "latitude": -33.4541767,
+          "longitude": -70.6588767
+        },
+        "extraction": "initEmbed exact target entity [place-id,label,[lat,lon]], not camera center. No API key/auth/private endpoint.",
+        "noPrivateAPIOrKeyUsed": true
+      },
+      "matchingChecks": {
+        "exactPublishedAddressQuery": true,
+        "markerReturnedSameNumberAndStreet": true,
+        "communeConsistent": true,
+        "notStreetOrCityCentroid": true,
+        "coordinateNotCameraCenter": true
+      },
+      "primarySource": {
+        "kind": "DEVELOPER_PROJECT_PAGE",
+        "url": "https://norte-verde.cl/proyecto/botanico/",
+        "status": 200,
+        "responseSHA256": "1775e4469423355efc84c78b8f7c22ff25a3f31f0d4a218b7282975d86ea27b3",
+        "savedOriginal": "/private/tmp/sollahms-mapa-21-20261119/edificio-botanico.html",
+        "identityExcerpt": "Claudio Gay 1722, Santiago Centro.",
+        "identityBridgeExcerpt": "Ubicado estratégicamente en la esquina entre la calle Claudio Gay y Avenida Manuel Rodríguez.",
+        "primaryEmbeddedMapQuery": "Claudio Gay 1722, Santiago Centro, Santiago, Chile",
+        "sourceContainsPublicEmbedKeyNotReused": true
+      },
+      "addressBridge": "Published corner address is explicitly described by the same developer page that prints number1722; no public address text change.",
+      "rejectedOrLimitedOSMCheck": {
+        "url": "https://nominatim.openstreetmap.org/search?q=Claudio+Gay+1722%2C+Santiago%2C+Chile&format=jsonv2&addressdetails=1&limit=3&countrycodes=cl",
+        "outcome": "Rejected street centroid: no house_number1722."
+      }
+    },
+    {
+      "slug": "balmaceda",
+      "projectName": "Balmaceda",
+      "developer": "Ingevec",
+      "publishedAddressUnchanged": "Av. Presidente Balmaceda 2020",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1586?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:31:54.682Z",
+        "sourceProjectTitle": "Ingevec - Balmaceda",
+        "sourcePointer": "/projects/17/identity",
+        "country": "Chile"
+      },
+      "status": "VERIFICADO_PUNTO_DIRECCION_ESPECIFICA",
+      "coordinates": {
+        "latitude": -33.4304545,
+        "longitude": -70.665705
+      },
+      "precision": "project-specific address marker; not an entrance/parcel-boundary survey",
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "primarySource": {
+        "kind": "DEVELOPER_PROJECT_PAGE_WITH_MAP",
+        "url": "https://ingevecinmobiliaria.cl/proyecto-balmaceda",
+        "status": 200,
+        "responseSHA256": "f0d34f0350cb1e4bc0901fd7b8dfdbfbad9ec91c3ce4120278d3b76da8316abe",
+        "savedOriginal": "/private/tmp/sollahms-mapa-21-20261119/balmaceda.html",
+        "title": "Edificio Balmaceda",
+        "identityExcerpt": "Edificio Balmaceda — Av. Presidente Balmaceda 2020, Santiago.",
+        "embeddedMapURL": "https://maps.google.com/maps?q=Av.%20Presidente%20Balmaceda%202020%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana&z=16&hl=es&output=embed"
+      },
+      "geographicSource": {
+        "kind": "GOOGLE_MAPS_PUBLIC_EMBED_TARGET_ENTITY",
+        "url": "https://maps.google.com/maps?q=Av.%20Presidente%20Balmaceda%202020%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana&z=16&hl=es&output=embed",
+        "status": 200,
+        "responseSHA256": "4356f6812a2853a438e3ccdfb5a683eb7fef0c8cc51643a8fa2aa33c38bb03dc",
+        "entity": {
+          "placeIdHex": "0x9662c5b45b64cd3b:0x6c275eebc59ca10b",
+          "label": "Av. Pdte. Balmaceda 2020, 8340022 Santiago, Región Metropolitana",
+          "latitude": -33.4304545,
+          "longitude": -70.665705
+        },
+        "extraction": "Target entity under initEmbed [place-id,address,[lat,lon]]. Camera coordinates ignored.",
+        "noPrivateAPIOrKeyUsed": true
+      },
+      "matchingChecks": {
+        "projectNameOnPrimaryPage": true,
+        "addressNumberExact": true,
+        "communeConsistent": true,
+        "markerEntityContainsExactAddress": true,
+        "latitudeLongitudeAreTargetNotCamera": true
+      }
+    },
+    {
+      "slug": "prat",
+      "projectName": "Prat",
+      "developer": "Ingevec",
+      "publishedAddressUnchanged": "Arturo Prat 347",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1588?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:31:59.727Z",
+        "sourceProjectTitle": "Ingevec - Prat",
+        "sourcePointer": "/projects/18/identity",
+        "country": "Chile"
+      },
+      "status": "VERIFICADO_PUNTO_DIRECCION_ESPECIFICA",
+      "coordinates": {
+        "latitude": -33.4497195,
+        "longitude": -70.64960889999999
+      },
+      "precision": "project-specific address marker; not an entrance/parcel-boundary survey",
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "primarySource": {
+        "kind": "DEVELOPER_PROJECT_PAGE_WITH_MAP",
+        "url": "https://ingevecinmobiliaria.cl/proyecto-prat",
+        "status": 200,
+        "responseSHA256": "16be4e01d232f8f25e9284a4ae06617ed56db0afabcb59d87f14a3f364e22350",
+        "savedOriginal": "/private/tmp/sollahms-mapa-21-20261119/prat.html",
+        "title": "Edificio Prat",
+        "identityExcerpt": "Edificio Prat — Arturo Prat 347, Santiago.",
+        "embeddedMapURL": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3087.3566176772197!2d-70.65069501262914!3d-33.44997344739736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c50bbe038b13%3A0xb49a46e1321cf784!2sArturo%20Prat%20347%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1780332661879!5m2!1ses-419!2scl"
+      },
+      "geographicSource": {
+        "kind": "GOOGLE_MAPS_PUBLIC_EMBED_TARGET_ENTITY",
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3087.3566176772197!2d-70.65069501262914!3d-33.44997344739736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c50bbe038b13%3A0xb49a46e1321cf784!2sArturo%20Prat%20347%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1780332661879!5m2!1ses-419!2scl",
+        "status": 200,
+        "responseSHA256": "fa11b76e4aec0265b37a5ce463ae2aaecf87f346974231333aa1632aa61b103a",
+        "entity": {
+          "placeIdHex": "0x9662c50bbe038b13:0xb49a46e1321cf784",
+          "label": "Arturo Prat 347, Santiago, Región Metropolitana",
+          "latitude": -33.4497195,
+          "longitude": -70.64960889999999
+        },
+        "extraction": "Target entity under initEmbed [place-id,address,[lat,lon]]. Camera coordinates ignored.",
+        "noPrivateAPIOrKeyUsed": true
+      },
+      "matchingChecks": {
+        "projectNameOnPrimaryPage": true,
+        "addressNumberExact": true,
+        "communeConsistent": true,
+        "markerEntityContainsExactAddress": true,
+        "latitudeLongitudeAreTargetNotCamera": true
+      }
+    },
+    {
+      "slug": "vicuna-mackenna-capital",
+      "projectName": "Vicuña Mackenna Capital",
+      "developer": "Ingevec",
+      "publishedAddressUnchanged": "Av. Vicuña Mackenna 1439",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1589?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:32:01.641Z",
+        "sourceProjectTitle": "Ingevec - Vicuña Mackenna Capital",
+        "sourcePointer": "/projects/19/identity",
+        "country": "Chile"
+      },
+      "status": "PENDIENTE_CONFLICTO_NUMERACION_FUENTE_PRIMARIA",
+      "coordinates": null,
+      "precision": null,
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "reason": "Archived Iris/public address1439 conflicts with current official Ingevec project page/map1441. No primary explicit bridge proving both numbers same project entrance/parcel was found. Do not choose by45m proximity.",
+      "primarySource": {
+        "kind": "DEVELOPER_PROJECT_PAGE",
+        "url": "https://ingevecinmobiliaria.cl/proyecto-vicunacapital",
+        "responseSHA256": "996619dabad579aa06c5a864fd5da9bbdddb1de88dfe1d2606f7750577e541df",
+        "identityExcerpt": "Edificio Vicuña Capital — Av. Vicuña Mackenna 1441, Santiago.",
+        "embeddedMapAddress": "Av. Vicuña Mackenna1441,Santiago"
+      },
+      "numberingCandidatesNotApproved": [
+        {
+          "sourceURL": "https://maps.google.com/maps?q=Av.+Vicu%C3%B1a+Mackenna+1439%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+          "query": "Av. Vicuña Mackenna 1439, Santiago, Chile",
+          "responseSHA256": "7c5b0909deea0ee1c0d363771fb88595542efdf321d1286a969a04e903aa12d6",
+          "entity": {
+            "placeIdHex": "0x9662c567263a4c11:0x1cb791598c3dfa54",
+            "label": "Av. Vicuña Mackenna 1439, 8360170 Santiago, Región Metropolitana",
+            "latitude": -33.4613394,
+            "longitude": -70.6284896
+          }
+        },
+        {
+          "sourceURL": "https://maps.google.com/maps?q=Av.+Vicu%C3%B1a+Mackenna+1441%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+          "query": "Av. Vicuña Mackenna 1441, Santiago, Chile",
+          "responseSHA256": "6c0111ed6a86411c6fc4437d85a99c3c28c5d5fdec0be5ea2ffd28f99b081901",
+          "entity": {
+            "placeIdHex": "0x9662c56728a96cad:0x4d66951c33afbaf8",
+            "label": "Av. Vicuña Mackenna 1441, 8360170 Santiago, Región Metropolitana",
+            "latitude": -33.4617231,
+            "longitude": -70.6283481
+          }
+        }
+      ],
+      "nextRequiredEvidence": "A primary explicit relation between archived1439 and official1441, or owner clarification; do not alter published address or substitute1441 silently."
+    },
+    {
+      "slug": "mirador-capital",
+      "projectName": "Mirador Capital",
+      "developer": "Ingevec",
+      "publishedAddressUnchanged": "Av. Vicuña Mackenna Oriente 6197",
+      "commune": "La Florida",
+      "region": "Metropolitana",
+      "verifiedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+      "identityProvenance": {
+        "sourceURL": "https://iris.yapo.cl/proyecto/1590?operation=Venta",
+        "observedAtUTC": "2026-11-18T13:32:03.118Z",
+        "sourceProjectTitle": "Ingevec - Mirador Capital",
+        "sourcePointer": "/projects/20/identity",
+        "country": "Chile"
+      },
+      "status": "VERIFICADO_PUNTO_DIRECCION_ESPECIFICA",
+      "coordinates": {
+        "latitude": -33.5125531,
+        "longitude": -70.60739819999999
+      },
+      "precision": "project-specific address marker; not an entrance/parcel-boundary survey",
+      "publicPinIsNotStockOrPriceEvidence": true,
+      "noPublishedAddressChanged": true,
+      "appOrDeploymentEdited": false,
+      "primarySource": {
+        "kind": "DEVELOPER_PROJECT_PAGE_WITH_MAP",
+        "url": "https://ingevecinmobiliaria.cl/proyecto-miradorcapital",
+        "status": 200,
+        "responseSHA256": "4d10bf77778888c4ca05fce03cf4ec07370e3d97e41de03bbbf9821595c8d907",
+        "savedOriginal": "/private/tmp/sollahms-mapa-21-20261119/mirador-capital.html",
+        "title": "Edificio Mirador Capital",
+        "identityExcerpt": "Edificio Mirador Capital — Av. Vicuña Mackenna Ote. 6197, La Florida.",
+        "embeddedMapURL": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.570380401326!2d-70.60997312488803!3d-33.51255307336487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d06fa4fafcc7%3A0x919dbc530b8968cc!2sAv.%20Vicu%C3%B1a%20Mackenna%20Ote.%206197%2C%208260021%20Santiago%2C%20La%20Florida%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1790946102390!5m2!1ses-419!2scl"
+      },
+      "geographicSource": {
+        "kind": "GOOGLE_MAPS_PUBLIC_EMBED_TARGET_ENTITY",
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.570380401326!2d-70.60997312488803!3d-33.51255307336487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d06fa4fafcc7%3A0x919dbc530b8968cc!2sAv.%20Vicu%C3%B1a%20Mackenna%20Ote.%206197%2C%208260021%20Santiago%2C%20La%20Florida%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1790946102390!5m2!1ses-419!2scl",
+        "status": 200,
+        "responseSHA256": "505686513d9f973fd374ad716d82691e2ac72b3fa34ffd2b241039c1de5e0a8e",
+        "entity": {
+          "placeIdHex": "0x9662d06fa4fafcc7:0x919dbc530b8968cc",
+          "label": "Av. Vicuña Mackenna Ote. 6197, 8260021 Santiago, La Florida, Región Metropolitana",
+          "latitude": -33.5125531,
+          "longitude": -70.60739819999999
+        },
+        "extraction": "Target entity under initEmbed [place-id,address,[lat,lon]]. Camera coordinates ignored.",
+        "noPrivateAPIOrKeyUsed": true
+      },
+      "matchingChecks": {
+        "projectNameOnPrimaryPage": true,
+        "addressNumberExact": true,
+        "communeConsistent": true,
+        "markerEntityContainsExactAddress": true,
+        "latitudeLongitudeAreTargetNotCamera": true
+      }
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/EXTRACCION-HTML-OTROS-9.json",
+      "sha256": "8f979cf4d8583ea3b2fa24c51ba4c41725d62ab9e598d2fde38db97cc718d026",
+      "bytes": 8881
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/EXTRACCION-HTML-OTROS-9-SEGUNDA.json",
+      "sha256": "4585e7faf3d3b8b6e63dfae7ba170104ad19543dac42695d964b7f9ce515d3ae",
+      "bytes": 5044,
+      "publicEmbedKeyRedactedNotUsed": true
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/EXTRACCION-EMBEDS-INGEVEC.json",
+      "sha256": "24dfaa335d4ded5f14418d86a39134cffa7978964fe8b957bcb69d68d2768dd8",
+      "bytes": 2015
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/GOOGLE-DIRECCIONES-EXACTAS-OTROS-9.json",
+      "sha256": "3dbccc280acf1bf2e13979f26907bc08370f5a240c15f7a279e53e886f9557b9",
+      "bytes": 3237
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/VICUNA-1439-1441-CONTRASTE-GEOGRAFICO.json",
+      "sha256": "4293b5deff1d1856d9571b5e7e719ea583743f20aeccd272747ccfac01fc2c30",
+      "bytes": 1348
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/OSM-CONSULTAS-EXACTAS-OTROS-9.json",
+      "sha256": "06295a23f219241bdce423b8d17b41c77d75b02199455584ec5ebd033612a6fd",
+      "bytes": 12475
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/OSM-WAY-112504706-AMBAR.json",
+      "sha256": "ade9633a3524c2f86f532c8117215c5eda1dd2a42ccef3a7658f951db277dc52",
+      "bytes": 1341
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/OSM-CONTRASTE-ROOT-3.json",
+      "sha256": "35bcc15ee7ebab8a94f06e31fbbe70df2b58fc0d876594df5d96678982e05c09",
+      "bytes": 7178
+    }
+  ]
+}

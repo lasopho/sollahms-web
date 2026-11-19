@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "kind": "REVISION_INDEPENDIENTE_READ_ONLY_RELEASE_MAPA_ANTES_PROMOCION",
+  "reviewedAtUTC": "2026-11-19T10:29:47.813767+00:00",
+  "verdict": "APROBADO_CON_OBSERVACIONES",
+  "blockingFindings": 0,
+  "sourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+  "baseSourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
+  "deploymentId": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+  "readyState": "READY",
+  "target": "production",
+  "aliasesAtRecordedMetadata": [],
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "localCheckoutClean": true,
+  "packageFiles": 1723,
+  "bytes": 227612714,
+  "remoteFileUIDsMatched": 1723,
+  "localFileSHA256SHA1AndSizeMatched": 1723,
+  "preservedBaseFiles": 1719,
+  "added": [
+    "static/assets/js/catalog-expansion-locations.mjs",
+    "static/data/catalog-expansion-locations-20261119.json"
+  ],
+  "changed": [
+    "static/assets/js/catalog-map.mjs",
+    "static/assets/js/catalog.mjs"
+  ],
+  "removed": [],
+  "runtimePinsMatchedCheckout": [
+    {
+      "path": "assets/js/catalog.mjs",
+      "sha256": "b95b8d340132efa7fb470eb14eb76badd0baae04afaf9e3851eb166280670256",
+      "packageMatchesCheckout": true
+    },
+    {
+      "path": "assets/js/catalog-map.mjs",
+      "sha256": "0d2d514a35be8f05b6d2022133e3f83b1c404d8c99e74d40725e4c07c92c1845",
+      "packageMatchesCheckout": true
+    },
+    {
+      "path": "assets/js/catalog-expansion-locations.mjs",
+      "sha256": "637cdfb77904c0805782c25259cbe6934e6a6cb63fc90a58bb52bc276b929c92",
+      "packageMatchesCheckout": true
+    },
+    {
+      "path": "data/catalog-expansion-locations-20261119.json",
+      "sha256": "d2d6e8b196063797a262c5f7796d12c6e88c1755cee137f44502495916acf90e",
+      "packageMatchesCheckout": true
+    }
+  ],
+  "protectedSourceFilesGitBlobsSHA256Matched": 155,
+  "protectedSourceGitObjectsIdenticalBaseToHead": 155,
+  "sparseCheckoutBodiesNotRequired": true,
+  "all152FichesByteExact": true,
+  "original131FichesByteExact": true,
+  "functionFilesByteExact": 57,
+  "functionBundlesAndLambdaNodes": 7,
+  "configurationByteExact": true,
+  "inventorySHA256": "04c4755b020c571d5b2aec2e3e58e271554372b0811c7d4b185f883a843bf5dc",
+  "evidence": [
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/release/MANIFIESTO-PAQUETE-MAPA.json",
+      "bytes": 443655,
+      "sha256": "76656dc4d9415edc7bdd32118b920053686f9f6c98f61035081f4e7f0284126f"
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/release/VERIFICACION-1723-UIDS-MAPA.json",
+      "bytes": 2843,
+      "sha256": "18725853946a770c7540aef005a5437d8996efd99cb39c3d056246baa2cb31cd"
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/release/ARCHIVOS-RECIBIDOS-VERCEL-MAPA.json",
+      "bytes": 198675,
+      "sha256": "aa4a0832dcfdf7070f37477db58ce95f68dafd7e8d03a6537a330344e9bc5ff2"
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/release/METADATOS-DEPLOYMENT-MAPA.json",
+      "bytes": 515,
+      "sha256": "29da0fa09a7f18aebaae97c07adceb0d8e7ecb454867f8d85e71dce58487da39"
+    },
+    {
+      "path": "/private/tmp/sollahms-fichas-iris-release-20261119/MANIFIESTO-CANDIDATO-SIN-CITAS-IRIS.json",
+      "bytes": 447588,
+      "sha256": "cfe487b63024752090ceb80e16c2e26259a2913beeaa8249b9fa9a2ee313d14c"
+    },
+    {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/PRESERVACION-MAPA-152.json",
+      "bytes": 21638,
+      "sha256": "7cb55357ee5d76ab12a00b7837b8d56de022c2f98aa9b05332924c263b28d8e9"
+    }
+  ],
+  "scopeLimits": [
+    "Verificación de integridad del paquete existente, sin nueva ejecución de Node, Chrome o funciones.",
+    "Los puntos mantienen alcance representativo y las notas de numeraciones distintas del dictamen previo.",
+    "El estado READY y aliases corresponde al recibo de metadatos leído; root refresca el estado vivo y verifica promoción/dominio público.",
+    "No ejecuté promoción, despliegue, cambio de alias, dominios, SSO o variables."
+  ],
+  "operations": {
+    "applicationTests": 0,
+    "chromeRuns": 0,
+    "functionsCalled": 0,
+    "formsSubmitted": 0,
+    "deploymentsCreated": 0,
+    "promotionsExecuted": 0,
+    "applicationChanges": 0,
+    "credentialsRead": false
+  },
+  "globalObjectiveComplete": false
+}

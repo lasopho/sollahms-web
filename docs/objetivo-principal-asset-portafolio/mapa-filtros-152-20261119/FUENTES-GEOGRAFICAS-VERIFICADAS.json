@@ -1,0 +1,1922 @@
+{
+  "schemaVersion": 1,
+  "kind": "SINGLE_DOCUMENTARY_INDEX_VERIFIED_GEOGRAPHIC_SOURCES_21",
+  "date": "2026-11-19",
+  "compiledAtUTC": "2026-11-19T10:27:39.311302+00:00",
+  "baselineProductionBeforeMapChange": "49312fd708ccd9e319511432e4b657788f5734f9",
+  "sourceCommercialCatalog": {
+    "path": "data/catalog-expansion-iris-20261118.json",
+    "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb",
+    "purpose": "Existing21 identity/address scope only; no new stock or price claims."
+  },
+  "finalGeographyOverlay": {
+    "path": "data/catalog-expansion-locations-20261119.json",
+    "sha256": "d2d6e8b196063797a262c5f7796d12c6e88c1755cee137f44502495916acf90e",
+    "projects": 21
+  },
+  "scope": "One index reusing existing exact geographic evidence and final distinct-address-context decisions. No new discovery, source fetch, commercial fact, app edit or independent browser certification.",
+  "claimDictionary": {
+    "primaryIdentityAddress": "A developer or public authority record may establish project identity/address without its coordinates being adopted.",
+    "selectedAddressMarker": "A selected exact-number GoogleMaps address entity is distinct from initial camera coordinates; identity comes from separate source when the marker only names an address.",
+    "officialProjectReference": "A project-specific official map can supply a representative reference. Hacienda andReserva retain distinct site/published/sales-office contexts and do not certify common entrances.",
+    "buildingFeature": "An exact-address mapped apartment building feature is allowed as a representative point; street/neighbourhood/city or interpolation results are rejected.",
+    "noCommercialInference": "Coordinates, source accessibility, map labels and date do not certify stock, price, delivery or unit applicability."
+  },
+  "sourceArtifacts": {
+    "COORDENADAS-GPR.json": {
+      "file": "COORDENADAS-GPR.json",
+      "sha256": "8fd9ae1186d399fd15136ca15e5377441da53c9814d56250bffab7d8dcb0deb8",
+      "bytes": 30834,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "COORDENADAS-OTROS-9.json": {
+      "file": "COORDENADAS-OTROS-9.json",
+      "sha256": "df49f70bfd00fa3407f064c7560bcde0150e6aa7853080204ef503d266e1e763",
+      "bytes": 29345,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "COORDENADAS-ECASA.json": {
+      "file": "COORDENADAS-ECASA.json",
+      "sha256": "acd6728cc5f1f225fe6cc3be5d45c79d310bbfde9a6c7fd402e907d0f8be6ed6",
+      "bytes": 1077,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "COORDENADAS-ALAMEDA.json": {
+      "file": "COORDENADAS-ALAMEDA.json",
+      "sha256": "c5444e941cf550950c6475d04f624dac7a37e5165866bb7a79107ae49f06423e",
+      "bytes": 2157,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "SENTO-1735-MARCADOR-DIRECCION.json": {
+      "file": "SENTO-1735-MARCADOR-DIRECCION.json",
+      "sha256": "9619687d4ce3dba503bf1a81f34acb18aeeb7ca058ce0d670370d505ae8b220b",
+      "bytes": 914,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "SENTO-DIRECCION-1735-COTIZADOR-EXTRACTO.json": {
+      "file": "SENTO-DIRECCION-1735-COTIZADOR-EXTRACTO.json",
+      "sha256": "2918e892a123912ecfae5eb985870ab7b0fe80141170306c3b218cddf847d787",
+      "bytes": 619,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "OSM-CONTRASTE-ROOT-3.json": {
+      "file": "OSM-CONTRASTE-ROOT-3.json",
+      "sha256": "35bcc15ee7ebab8a94f06e31fbbe70df2b58fc0d876594df5d96678982e05c09",
+      "bytes": 7178,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-altos-del-penon-official-extract.json": {
+      "file": "condominio-altos-del-penon-official-extract.json",
+      "sha256": "305e8c55a9c4d988e9368d3a6c76343c26d50ecc457dad2c509414f73a00d539",
+      "bytes": 1627,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-altos-del-penon-google-map-extract.json": {
+      "file": "condominio-altos-del-penon-google-map-extract.json",
+      "sha256": "d072be337585869aa0bd6128607f498da902ea5d78faa44612d2c79faea4b08f",
+      "bytes": 1375,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-reserva-santa-clara-official-extract.json": {
+      "file": "condominio-reserva-santa-clara-official-extract.json",
+      "sha256": "50a76d668414e7f4d05037181ae2d9cea76eece9fdeb1a4d8aba72d9dc3b5909",
+      "bytes": 1490,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-reserva-santa-clara-google-map-extract.json": {
+      "file": "condominio-reserva-santa-clara-google-map-extract.json",
+      "sha256": "dbe9a2f37f4cba959e5c97a8f3655ac14bb3ba088f3e2c8152ec319798983f52",
+      "bytes": 1538,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "DICTAMEN-ALCANCE-DOS-GPR.json": {
+      "file": "DICTAMEN-ALCANCE-DOS-GPR.json",
+      "sha256": "d24e827674f7181a60baa0fb5164ce51c60bd76ad18ab8661ce87368de29450a",
+      "bytes": 4030,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "REVISION-ALCANCE-GPR-FINAL.json": {
+      "file": "REVISION-ALCANCE-GPR-FINAL.json",
+      "sha256": "bbc7fdfb53705f774672d8fd3e9303559cafbda30ef9729bf78c37ac5f302c5f",
+      "bytes": 5968,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "GPR-CONFLICTOS-NUMERACION-SOPORTE.json": {
+      "file": "GPR-CONFLICTOS-NUMERACION-SOPORTE.json",
+      "sha256": "606ca9afb651383011238cafffd54047602b92516d7ede7029b418e7a49f53b8",
+      "bytes": 1257,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-hacienda-santa-clara-official-extract.json": {
+      "file": "condominio-hacienda-santa-clara-official-extract.json",
+      "sha256": "aace0b3e52da979064fe7fcb58a889635ea0e90cdeb01c94dd29bfd8e524b318",
+      "bytes": 1531,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "GPR-HACIENDA-DIRECCION-PRIMARIA.pdf": {
+      "file": "GPR-HACIENDA-DIRECCION-PRIMARIA.pdf",
+      "sha256": "5593c0a9493c775cb5e05f1fbcbdfa5e4c3cb526eee1ffb701c2131dc8506ea4",
+      "bytes": 1333142,
+      "includeWithDocumentaryEvidence": false,
+      "format": "public-PDF-hash-only",
+      "rawHTML": false
+    },
+    "condominio-plaza-nos-official-extract.json": {
+      "file": "condominio-plaza-nos-official-extract.json",
+      "sha256": "00ea0ea3f73f252daf44b623d1f164d482f91226a5000af7b1367b43d2258404",
+      "bytes": 1711,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-plaza-nos-google-map-extract.json": {
+      "file": "condominio-plaza-nos-google-map-extract.json",
+      "sha256": "59614ce06021042fb218e231e12c07ccb22675c69a7ac8348c084b3bc161c1fa",
+      "bytes": 1356,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-sendero-santa-clara-official-extract.json": {
+      "file": "condominio-sendero-santa-clara-official-extract.json",
+      "sha256": "28c8a42eae9ea1d12fdb4a88156b5db5af7420a56e39fccbfdaeafc695fdc46f",
+      "bytes": 1608,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-sendero-santa-clara-google-map-extract.json": {
+      "file": "condominio-sendero-santa-clara-google-map-extract.json",
+      "sha256": "075773e21613f7be379f87b991cd3c2d1e7fc80f5c84821830f0607bf138e0f0",
+      "bytes": 1284,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "terrazas-del-mirador-official-extract.json": {
+      "file": "terrazas-del-mirador-official-extract.json",
+      "sha256": "296951ff3b7828f8dac91647ce39edf847d2814655f561280469e3fa0284335b",
+      "bytes": 1523,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "terrazas-del-mirador-google-map-extract.json": {
+      "file": "terrazas-del-mirador-google-map-extract.json",
+      "sha256": "dbf914d524bbadf486b1ba3996ccb509c190763fca4b67ee27fd5874c78c5b1e",
+      "bytes": 1542,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "altos-del-mirador-official-extract.json": {
+      "file": "altos-del-mirador-official-extract.json",
+      "sha256": "98ef1405db3aa98e5642d9192e6e45df93517f93e7dc02d2a73435d17cde2aa8",
+      "bytes": 1500,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "altos-del-mirador-google-map-extract.json": {
+      "file": "altos-del-mirador-google-map-extract.json",
+      "sha256": "7f0b997beec4ccff4217c15e40d3e8d421b9ebc248b928bfd35fa5c9aaa9bdf4",
+      "bytes": 1161,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-hacienda-junquillar-official-extract.json": {
+      "file": "condominio-hacienda-junquillar-official-extract.json",
+      "sha256": "97c2483964e8f1984a6d87479d1a05855b408e5f0294ca9ff500e14906fe2250",
+      "bytes": 1755,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-hacienda-junquillar-google-map-extract.json": {
+      "file": "condominio-hacienda-junquillar-google-map-extract.json",
+      "sha256": "44bb6ee5b141124aa9588cba3562c9f1aa5ccc0c602860d5b8015626a2495a22",
+      "bytes": 1535,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-hacienda-volcanes-official-extract.json": {
+      "file": "condominio-hacienda-volcanes-official-extract.json",
+      "sha256": "8ecfba0dc6fcd0de52b46d36d4375a36e12d5e32e1fca9c092decaf4b6039ed1",
+      "bytes": 1711,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "condominio-hacienda-volcanes-google-map-extract.json": {
+      "file": "condominio-hacienda-volcanes-google-map-extract.json",
+      "sha256": "bb268752ff268ca89c86b2b710023ad99816c8175c633f8e99bf801879ee450c",
+      "bytes": 1300,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "EXTRACCION-EMBEDS-INGEVEC.json": {
+      "file": "EXTRACCION-EMBEDS-INGEVEC.json",
+      "sha256": "24dfaa335d4ded5f14418d86a39134cffa7978964fe8b957bcb69d68d2768dd8",
+      "bytes": 2015,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    },
+    "VICUNA-1439-1441-CONTRASTE-GEOGRAFICO.json": {
+      "file": "VICUNA-1439-1441-CONTRASTE-GEOGRAFICO.json",
+      "sha256": "4293b5deff1d1856d9571b5e7e719ea583743f20aeccd272747ccfac01fc2c30",
+      "bytes": 1348,
+      "includeWithDocumentaryEvidence": true,
+      "format": "whitelisted-JSON-extract",
+      "rawHTML": false
+    }
+  },
+  "projects": [
+    {
+      "slug": "alameda-4719",
+      "projectName": "Alameda 4719",
+      "developer": "Euro",
+      "projectId": "299",
+      "publishedAddressUnchanged": "Alameda 4719",
+      "commune": "Estación Central",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.4556145,
+        "lng": -70.7004141,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "verified-building-poi",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "4719, Avenida Libertador Bernardo O'Higgins, Estación Central",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/alameda-4719",
+      "evidence": [
+        {
+          "url": "https://www.openstreetmap.org/way/1433897847",
+          "role": "exact-address-apartment-building-geographic-feature",
+          "observedAtUTC": "2026-11-19T10:01:41.748563+00:00",
+          "sourceBodySHA256": null,
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "osm_type": "way",
+            "osm_id": 1433897847,
+            "lat": "-33.4556145",
+            "lon": "-70.7004141",
+            "category": "building",
+            "type": "apartments",
+            "address": {
+              "house_number": "4719",
+              "road": "Avenida Libertador Bernardo O'Higgins",
+              "neighbourhood": "Villa Las Mercedes",
+              "suburb": "Estación Central",
+              "city": "Santiago",
+              "county": "Provincia de Santiago",
+              "state": "Región Metropolitana de Santiago",
+              "ISO3166-2-lvl4": "CL-RM",
+              "postcode": "8320000",
+              "country": "Chile",
+              "country_code": "cl"
+            }
+          },
+          "extract": {
+            "artifact": "OSM-CONTRASTE-ROOT-3.json",
+            "pointer": "/queries/2/results/0"
+          },
+          "scope": "OSM building/apartments feature with house4719 and matching road/commune. Representative feature point, not street/city centroid and not entrance survey."
+        },
+        {
+          "url": "https://snifa.sma.gob.cl/UnidadFiscalizable/Ficha/15386",
+          "role": "primary-government-project-identity-address-only",
+          "observedAtUTC": "2026-11-19T10:01:18.196267+00:00",
+          "sourceBodySHA256": "f7722ff55d8e09ca7dd8f550f51caa6bc29becfb836a806f1c5b8c69d6372c51",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "facilityId": 15386,
+            "facilityName": "INMOBILIARIO EDIFICIO ALAMEDA 4719 - ESTACION CENTRAL",
+            "commune": "Estación Central"
+          },
+          "extract": {
+            "artifact": "COORDENADAS-ALAMEDA.json",
+            "pointer": "/rejectedAlternative/source"
+          },
+          "scope": "Confirms project identity/address context. Its different geographic marker is explicitly not adopted."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://snifa.sma.gob.cl/UnidadFiscalizable/Ficha/15386",
+          "coordinates": {
+            "lat": -33.4590774,
+            "lng": -70.6990045
+          },
+          "reason": "Official facility marker differs about407m from a mapped apartment building with exact4719/road/commune. Not adopted for geography; preserved as an unresolved source discrepancy.",
+          "coordinatesAdopted": false,
+          "extract": {
+            "artifact": "COORDENADAS-ALAMEDA.json",
+            "pointer": "/rejectedAlternative"
+          }
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "compania-1735",
+      "projectName": "Compañía 1735",
+      "developer": "Sento",
+      "projectId": "315",
+      "publishedAddressUnchanged": "Compañia de Jesus 1735",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.4392391,
+        "lng": -70.6613788,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Compañia de Jesus 1735",
+      "siteAddress": null,
+      "publicScopeNote": "Punto referencial de la dirección publicada 1735. La numeración 1703 del sitio del desarrollador se conserva como antecedente distinto; confirma el acceso.",
+      "finalOverlayPointer": "/locations/compania-1735",
+      "evidence": [
+        {
+          "url": "https://sento.cl/cotizador-full/?pr=23",
+          "role": "primary-developer-explicit-address-label",
+          "observedAtUTC": "2026-11-19",
+          "sourceBodySHA256": "3444c25d5dc1310b13473925f75d61eb5525b1292e9b81ac1b7a76f3486506f3",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "label": "Dirección",
+            "value": "Compañía 1735",
+            "selector": "div.block-gris h5 + p"
+          },
+          "extract": {
+            "artifact": "SENTO-DIRECCION-1735-COTIZADOR-EXTRACTO.json",
+            "pointer": ""
+          },
+          "scope": "This is a literal Dirección label followed byCompañía1735 in cotizadorpr23, not just a menu or image name."
+        },
+        {
+          "url": "https://www.google.com/maps?output=embed&q=Compa%C3%B1%C3%ADa%20de%20Jes%C3%BAs%201735%2C%20Santiago%2C%20Chile",
+          "role": "selected-native-address-feature-for-published1735",
+          "observedAtUTC": "2026-11-19T10:08:28.435334+00:00",
+          "sourceBodySHA256": "8489699b6780846fbf8ad8546975bd03af2ef75769772328fd4ef2607695c378",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "entityId": "0x9662c5ae5ce048c9:0x4c0a38809e7a98b9",
+            "entityLabel": "Compañía de Jesus 1735, 8340364 Santiago, Región Metropolitana",
+            "selectedLatitude": -33.4392391,
+            "selectedLongitude": -70.6613788,
+            "markerExcerpt": "[[\"0x9662c5ae5ce048c9:0x4c0a38809e7a98b9\",\"Compañía de Jesus 1735, 8340364 Santiago, Región Metropolitana\",[-33.4392391,-70.66137879999999]],\"Compañía de Jesus 1735\",[\"8340364 Santiago\",\"Región Metropolitana\"],null,null,null,null,null,null,null,null,null,null,\"Compañía de Jesus 1735, 8340364 Santiago, Región Metropolitana\",null,null,null"
+          },
+          "extract": {
+            "artifact": "SENTO-1735-MARCADOR-DIRECCION.json",
+            "pointer": ""
+          },
+          "scope": "Exact1735 selected address feature; not camera. Separate1703 developer-page material is not used to infer common access."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://sento.cl/proyectos/sento-compania-1703/",
+          "reason": "Other developer page/menu uses1703; it is retained as a distinct numbering context, not used to replace1735 or declare entrance equivalence.",
+          "coordinatesAdopted": false
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "nuevo-vivaceta",
+      "projectName": "Nuevo Vivaceta",
+      "developer": "Ecasa",
+      "projectId": "1549",
+      "publishedAddressUnchanged": "Av. Fermín Vivaceta 3750",
+      "commune": "Conchalí",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.395196,
+        "lng": -70.676138,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Ubicación del proyecto:  Av. Fermín Vivaceta 3750",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/nuevo-vivaceta",
+      "evidence": [
+        {
+          "url": "https://ecasa.cl/proyectos",
+          "role": "primary-developer-declared-project-marker",
+          "observedAtUTC": "2026-11-19T10:01:18.194948+00:00",
+          "sourceBodySHA256": "66c8cec15808d8e9d0f895f02ac890439984e5073fb5fd226057dc7862eb7f16",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "sourceProjectId": 20,
+            "sourceProjectName": "Vista Vivaceta",
+            "sourceRoute": "vista-vivaceta",
+            "addressLiteral": "Ubicación del proyecto:  Av. Fermín Vivaceta 3750",
+            "coordinateFields": [
+              "latitud",
+              "longitud"
+            ],
+            "latitude": -33.395196,
+            "longitude": -70.676138
+          },
+          "extract": {
+            "artifact": "COORDENADAS-ECASA.json",
+            "pointer": "/provenance"
+          },
+          "scope": "ECasa source namesVistaVivaceta/id20 and3750, same developer/address/commune as the existing record. The source stage/name is not used to update commercial data."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "condominio-altos-del-penon",
+      "projectName": "Condominio Altos del Peñón",
+      "developer": "GPR",
+      "projectId": "1556",
+      "publishedAddressUnchanged": "Av. Troncal Las Torres 2138",
+      "commune": "Puente Alto",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.6025508,
+        "lng": -70.5433565,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Av. Troncal las Torres 2.138",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/condominio-altos-del-penon",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/condominio-altos-del-penon-departamentos/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:55.283240+00:00",
+          "sourceBodySHA256": "a345bbbef529964fc97634dbbdc8995ff253016fcb817285a7daf66fdfec72aa",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "CONDOMINIO ALTOS DEL PEÑON",
+            "addressLiteral": "Av. Troncal las Torres 2.138"
+          },
+          "extract": {
+            "artifact": "condominio-altos-del-penon-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.2380335354655!2d-70.54593142457584!3d-33.60254630531705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d66215d9d943%3A0xecfbcdf4f43cb351!2sAv.%20Troncal%20las%20Torres%202138%2C%20Puente%20Alto%2C%20Regi%C3%B3n%20Metropolitana!5e1!3m2!1ses-419!2scl!4v1787158195731!5m2!1ses-419!2scl",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:56:42.228156+00:00",
+          "sourceBodySHA256": "148e06d7d430ab8b6435ac4059ee1a2fdcb96a7ede7da50d9cfaa05b766c1696",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.6025508,
+            "selectedLongitude": -70.5433565,
+            "selectedFeatureExcerpt": "0000038146973],null,1,[[\"0x9662d66215d9d943:0xecfbcdf4f43cb351\",\"Av. Troncal las Torres 2138, Puente Alto, Región Metropolitana\",[-33.6025508,-70.5433565]],\"Av. Troncal las Torres 2138\",[\"Puente Alto\",\"Región Metropolitana\"],null,null,null,null,null,null,null,null,null,null,\"Av. Tro",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "condominio-altos-del-penon-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/0"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "condominio-reserva-santa-clara",
+      "projectName": "Condominio Reserva Santa Clara",
+      "developer": "GPR",
+      "projectId": "1557",
+      "publishedAddressUnchanged": "Av. Waldo Alcalde 1855",
+      "commune": "Coquimbo",
+      "region": "Coquimbo",
+      "coordinate": {
+        "lat": -29.9765,
+        "lng": -71.2403333,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-reference",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "published-sales-office",
+      "sourceAddress": "Calle Waldo Alcalde N° 2001, Coquimbo",
+      "siteAddress": "Calle Waldo Alcalde N° 2001, Coquimbo",
+      "publicScopeNote": "Punto referencial del mapa oficial del proyecto. El número 1855 corresponde a la sala de ventas publicada; no se certifica un acceso común.",
+      "finalOverlayPointer": "/locations/condominio-reserva-santa-clara",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/condominio-reserva-santa-clara-casas/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:55.337748+00:00",
+          "sourceBodySHA256": "c649fd0cb3a5e5aca5d0adb063d4f48f70de02fa064e62e9d9d5488ed408715b",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "CONDOMINIO RESERVA SANTA CLARA",
+            "addressLiteral": "Calle Waldo Alcalde N° 2001, Coquimbo"
+          },
+          "extract": {
+            "artifact": "condominio-reserva-santa-clara-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6912.204661395092!2d-71.240338!3d-29.976489000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU4JzM1LjQiUyA3McKwMTQnMjUuMiJX!5e0!3m2!1ses!2sus!4v1757827096109!5m2!1ses!2sus",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:57:13.641963+00:00",
+          "sourceBodySHA256": "ffa8e958634208988ad0d7f4fcc5d0a4da80a5e57859244cd53141e095108835",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -29.9765,
+            "selectedLongitude": -71.2403333,
+            "selectedFeatureExcerpt": "rJOJ2QY\",null,null,null,[[[6912.204661395092,-71.24033799999999,-29.976489],null,null,13.10000038146973],null,0,[[null,\"29°58'35.4\\\"S 71°14'25.2\\\"W\",[-29.9765,-71.2403333]],\"29°58'35.4\\\"S 71°14'25.2\\\"W\",[\"-29.976500, -71.240333\"],null,null,null,null,null,null,null,null,null,null,\"2QF5+CV3 ",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "condominio-reserva-santa-clara-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/1"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        },
+        {
+          "role": "address-context-and-public-label-resolution",
+          "extract": {
+            "artifact": "REVISION-ALCANCE-GPR-FINAL.json",
+            "pointer": ""
+          },
+          "scope": "Hacienda and Reserva contexts remain distinct; public labels fulfill conditional acceptance. No common entrance or number equivalence."
+        },
+        {
+          "url": "https://gpr.cl/inmobiliaria/wp-content/uploads/2025/09/folleto_haciendasantaclara_20250730.pdf",
+          "role": "primary-brochure-labels-published1855-as-sales-office",
+          "observedAtUTC": "2026-11-19",
+          "sourceBodySHA256": null,
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectName": "Condominio Reserva Santa Clara",
+            "addressLabel": "SALA DE VENTA",
+            "addressLiteral": "Avda.WaldoAlcalde#1855,Coquimbo"
+          },
+          "extract": {
+            "artifact": "GPR-CONFLICTOS-NUMERACION-SOPORTE.json",
+            "pointer": "/records/1"
+          },
+          "scope": "Indexed primary PDF excerpt; source file name saysHacienda but visible project isReserva. No claim that sales office is project entrance or that two numbers are equivalent."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "condominio-hacienda-santa-clara",
+      "projectName": "Condominio Hacienda Santa Clara",
+      "developer": "GPR",
+      "projectId": "1558",
+      "publishedAddressUnchanged": "Calle Waldo Alcalde 1847",
+      "commune": "Coquimbo",
+      "region": "Coquimbo",
+      "coordinate": {
+        "lat": -29.9765,
+        "lng": -71.2403333,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-location",
+      "sourceAddress": "Calle Waldo Alcalde N° 2001, Coquimbo",
+      "siteAddress": "Calle Waldo Alcalde N° 2001, Coquimbo",
+      "publicScopeNote": "Punto referencial del mapa oficial del proyecto. Las numeraciones 1847 del brochure y 2001 del sitio se conservan con sus respectivos alcances; no se certifica un acceso común.",
+      "finalOverlayPointer": "/locations/condominio-hacienda-santa-clara",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/condominio-hacienda-santa-clara-casas/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:53.719327+00:00",
+          "sourceBodySHA256": "ef29eaa4b34b6ed5a99b4bb0054d1f1542d4d12bb1cdb943a67b101f8e8694d8",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "CONDOMINIO HACIENDA SANTA CLARA",
+            "addressLiteral": "Calle Waldo Alcalde N° 2001, Coquimbo"
+          },
+          "extract": {
+            "artifact": "condominio-hacienda-santa-clara-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6912.204661395092!2d-71.240338!3d-29.976489000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU4JzM1LjQiUyA3McKwMTQnMjUuMiJX!5e0!3m2!1ses!2sus!4v1757827096109!5m2!1ses!2sus",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:57:13.641963+00:00",
+          "sourceBodySHA256": "ffa8e958634208988ad0d7f4fcc5d0a4da80a5e57859244cd53141e095108835",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -29.9765,
+            "selectedLongitude": -71.2403333,
+            "selectedFeatureExcerpt": "rJOJ2QY\",null,null,null,[[[6912.204661395092,-71.24033799999999,-29.976489],null,null,13.10000038146973],null,0,[[null,\"29°58'35.4\\\"S 71°14'25.2\\\"W\",[-29.9765,-71.2403333]],\"29°58'35.4\\\"S 71°14'25.2\\\"W\",[\"-29.976500, -71.240333\"],null,null,null,null,null,null,null,null,null,null,\"2QF5+CV3 ",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "condominio-reserva-santa-clara-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted.",
+          "actualEmbedURLInThisProjectFiche": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6912.204661395092!2d-71.240338!3d-29.976489000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU4JzM1LjQiUyA3McKwMTQnMjUuMiJX!5e0!3m2!1ses!2sus!4v1757877095914!5m2!1ses!2sus",
+          "sharedCoordinateQueryReuse": "The selectedDMS marker response was read from the Reserva timestamp variant. Hacienda official iframe has the same explicitDMS point and differs in4v timestamp; no claim of shared entrance or equivalent address."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/2"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        },
+        {
+          "role": "address-context-and-public-label-resolution",
+          "extract": {
+            "artifact": "REVISION-ALCANCE-GPR-FINAL.json",
+            "pointer": ""
+          },
+          "scope": "Hacienda and Reserva contexts remain distinct; public labels fulfill conditional acceptance. No common entrance or number equivalence."
+        },
+        {
+          "url": "https://gpr.cl/inmobiliaria/wp-content/uploads/2025/09/folleto_haciendasantaclara_20240127.pdf",
+          "role": "primary-brochure-supports-published-project-address1847",
+          "observedAtUTC": "2026-11-19",
+          "sourceBodySHA256": "5593c0a9493c775cb5e05f1fbcbdfa5e4c3cb526eee1ffb701c2131dc8506ea4",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "pageZeroBased": 0,
+            "projectName": "Condominio Hacienda Santa Clara",
+            "addressLiteral": "Calle Waldo Alcalde1847, Camino San Ramón, Coquimbo"
+          },
+          "scope": "Confirms named project and published1847. Does not equate1847 with2001 or1855; not a numeric pin source.",
+          "localPublicPDFHashOnly": "GPR-HACIENDA-DIRECCION-PRIMARIA.pdf"
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "condominio-plaza-nos",
+      "projectName": "Condominio Plaza Nos",
+      "developer": "GPR",
+      "projectId": "1559",
+      "publishedAddressUnchanged": "Av. Portales 3264",
+      "commune": "San Bernardo",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.6284039,
+        "lng": -70.7031373,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Av. Portales 3264, San Bernardo",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/condominio-plaza-nos",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/condominio-plaza-nos-casas/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:53.692649+00:00",
+          "sourceBodySHA256": "f4c6f0eb5495bba0022b5b4aa422643851ee3e863e94075a032eeebfae8a7fbf",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "CONDOMINIO PLAZA NOS - CASAS",
+            "addressLiteral": "Av. Portales 3264, San Bernardo"
+          },
+          "extract": {
+            "artifact": "condominio-plaza-nos-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12044.290541653218!2d-70.71359433450681!3d-33.62876414433291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d8d8799ba5b7%3A0xd21ee1149a7e62d4!2sAv.%20Portales%203264%2C%20San%20Bernardo%2C%20Regi%C3%B3n%20Metropolitana!5e1!3m2!1ses-419!2scl!4v1782832253448!5m2!1ses-419!2scl",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:56:42.221204+00:00",
+          "sourceBodySHA256": "eb4763da9bc3f5b818e4d1f9c185a184740ef3c3abae01da4134292e38c6cf2d",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.6284039,
+            "selectedLongitude": -70.7031373,
+            "selectedFeatureExcerpt": "null,13.10000038146973],null,1,[[\"0x9662d8d8799ba5b7:0xd21ee1149a7e62d4\",\"Av. Portales 3264, San Bernardo, Región Metropolitana\",[-33.6284039,-70.70313729999999]],\"Av. Portales 3264\",[\"San Bernardo\",\"Región Metropolitana\"],null,null,null,null,null,null,null,null,null,null,\"Av. Portales 326",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "condominio-plaza-nos-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/3"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6644.0329361722615!2d-70.704257!3d-33.630815!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d8d9cf16b065%3A0xccade013cfdf7bf7!2sAv.%20Portales%202981%2C%20San%20Bernardo%2C%20Regi%C3%B3n%20Metropolitana%2C%20Chile!5e0!3m2!1ses!2sus!4v1757903104699!5m2!1ses!2sus",
+          "reason": "Alternative official iframe identifiesPortales2981, not published3264; rejected for marker selection.",
+          "coordinatesAdopted": false,
+          "extract": {
+            "artifact": "condominio-plaza-nos-official-extract.json",
+            "pointer": "/iframes/1"
+          }
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "condominio-sendero-santa-clara",
+      "projectName": "Condominio Sendero Santa Clara",
+      "developer": "GPR",
+      "projectId": "1560",
+      "publishedAddressUnchanged": "Av. Waldo Alcalde 2001",
+      "commune": "Coquimbo",
+      "region": "Coquimbo",
+      "coordinate": {
+        "lat": -29.9762684,
+        "lng": -71.2409852,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Waldo Alcade 2001, Coquimbo",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/condominio-sendero-santa-clara",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/condominio-senderos-santa-clara-departamentos/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:56.461704+00:00",
+          "sourceBodySHA256": "488cdd3f07d344edcb83389936f7b7148cbea1daf6a5d6da05a700e62461ca35",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "CONDOMINIO SENDEROS SANTA CLARA",
+            "addressLiteral": "Waldo Alcade 2001, Coquimbo"
+          },
+          "extract": {
+            "artifact": "condominio-sendero-santa-clara-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.5996049279292!2d-71.24356012475141!3d-29.976263728117512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691cb9754e3b90b%3A0xa255d2646dbb7f99!2sAv.%20Waldo%20Alcalde%202001%2C%20Coquimbo!5e1!3m2!1ses-419!2scl!4v1787583680674!5m2!1ses-419!2scl",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:56:42.356692+00:00",
+          "sourceBodySHA256": "ace0d75700edab59d7ec6172d237d17bd04535a950726bec56174165484ef513",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -29.9762684,
+            "selectedLongitude": -71.2409852,
+            "selectedFeatureExcerpt": "-29.9762684],[0,0,0],null,13.10000038146973],null,1,[[\"0x9691cb9754e3b90b:0xa255d2646dbb7f99\",\"Av. Waldo Alcalde 2001, Coquimbo\",[-29.9762684,-71.2409852]],\"Av. Waldo Alcalde 2001\",[\"Coquimbo\"],null,null,null,null,null,null,null,null,null,null,\"Av. Waldo Alcalde 2001, Coquimbo\",null",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "condominio-sendero-santa-clara-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/4"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6912.204661395092!2d-71.240338!3d-29.976489000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU4JzM1LjQiUyA3McKwMTQnMjUuMiJX!5e0!3m2!1ses!2sus!4v1757877095914!5m2!1ses!2sus",
+          "reason": "Shared coordinate-only SantaClara iframe was not used instead of exact2001 selected address feature.",
+          "coordinatesAdopted": false,
+          "extract": {
+            "artifact": "condominio-sendero-santa-clara-official-extract.json",
+            "pointer": "/iframes/1"
+          }
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "terrazas-del-mirador",
+      "projectName": "Terrazas del Mirador",
+      "developer": "GPR",
+      "projectId": "1561",
+      "publishedAddressUnchanged": "Los Tulipanes, Terrazas Mirador de Puerto Varas",
+      "commune": "Puerto Varas",
+      "region": "Los Lagos",
+      "coordinate": {
+        "lat": -41.3440278,
+        "lng": -72.94986109999999,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Los Tulipanes manzana B casa 10",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/terrazas-del-mirador",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/terrazas-del-mirador-casas/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:55.683561+00:00",
+          "sourceBodySHA256": "5542379ef07eac0db9a26ce28ae7a37b601891b11f90f2b232827242b04bc860",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "TERRAZAS DEL MIRADOR",
+            "addressLiteral": "Los Tulipanes manzana B casa 10"
+          },
+          "extract": {
+            "artifact": "terrazas-del-mirador-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d5990.765933163432!2d-72.949863!3d-41.344029!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDIwJzM4LjUiUyA3MsKwNTYnNTkuNSJX!5e0!3m2!1ses!2sus!4v1756097456256!5m2!1ses!2sus",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:57:13.646094+00:00",
+          "sourceBodySHA256": "99302861b5ea749223670487a1188644a63db4c1eb2f0e1c3b566ba40ba3f17a",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -41.3440278,
+            "selectedLongitude": -72.94986109999999,
+            "selectedFeatureExcerpt": "Pq6LrAQ\",null,null,null,[[[5990.765933163432,-72.94986299999999,-41.344029],null,null,13.10000038146973],null,0,[[null,\"41°20'38.5\\\"S 72°56'59.5\\\"W\",[-41.3440278,-72.94986109999999]],\"41°20'38.5\\\"S 72°56'59.5\\\"W\",[\"-41.344028, -72.949861\"],null,null,null,null,null,null,null,null,null,null,\"M342+93J ",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "terrazas-del-mirador-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/5"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "altos-del-mirador",
+      "projectName": "Altos del Mirador",
+      "developer": "GPR",
+      "projectId": "1562",
+      "publishedAddressUnchanged": "Glorias Navales 100",
+      "commune": "Coquimbo",
+      "region": "Coquimbo",
+      "coordinate": {
+        "lat": -29.9854438,
+        "lng": -71.3198932,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Glorias Navales N° 100, Coquimbo",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/altos-del-mirador",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/altos-del-mirador-casas/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:56.623909+00:00",
+          "sourceBodySHA256": "87b7dbc1ec19e9530929aa04d1a65e6c2568b7a614f812f89fab5fe39334e9b8",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "ALTOS DEL MIRADOR",
+            "addressLiteral": "Glorias Navales N° 100, Coquimbo"
+          },
+          "extract": {
+            "artifact": "altos-del-mirador-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6911.367598681161!2d-71.321871!3d-29.988516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691c931e3954f55%3A0x182361ddb161454!2sAltos%20Del%20Mirador!5e0!3m2!1ses!2sus!4v1757475259774!5m2!1ses!2sus",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:56:42.573513+00:00",
+          "sourceBodySHA256": "d3f4cb3d9a332bb4d9b1bac3dfc20072f6b51d3d995af26f55b7e034a11ad6d6",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -29.9854438,
+            "selectedLongitude": -71.3198932,
+            "selectedFeatureExcerpt": "3.10000038146973],null,0,[[\"0x9691c931e3954f55:0x182361ddb161454\",\"Altos Del Mirador - Glorias Navales, 1793994 Coquimbo, Chile\",[-29.9854438,-71.3198932],\"108708842867922004\"],\"Altos Del Mirador\",[\"Glorias Navales\",\"1793994 Coquimbo\",\"Chile\"],4.5,\"150 reseñas\",null,null,null,null,n",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "altos-del-mirador-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/6"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "condominio-hacienda-junquillar",
+      "projectName": "Condominio Hacienda Junquillar",
+      "developer": "GPR",
+      "projectId": "1563",
+      "publishedAddressUnchanged": "Av. Laguna Junquillar 105",
+      "commune": "San Pedro de la Paz",
+      "region": "Biobío",
+      "coordinate": {
+        "lat": -36.9051111,
+        "lng": -73.1426389,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Av . Laguna Junquillar 105 San Pedro de la Paz",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/condominio-hacienda-junquillar",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/condominio-hacienda-junquillar-casas/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:56.620859+00:00",
+          "sourceBodySHA256": "cd384b2d921ae9ab1cd9db6e9e9e92d7b9c026d37e73008f5c926ce418357453",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "CONDOMINIO HACIENDA JUNQUILLAR",
+            "addressLiteral": "Av . Laguna Junquillar 105 San Pedro de la Paz"
+          },
+          "extract": {
+            "artifact": "condominio-hacienda-junquillar-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6380.765589106543!2d-73.142639!3d-36.905111!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDU0JzE4LjQiUyA3M8KwMDgnMzMuNSJX!5e0!3m2!1ses!2sus!4v1757909334575!5m2!1ses!2sus",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:57:13.644273+00:00",
+          "sourceBodySHA256": "9d5a45a48e7840e077624946d00cedf421f570c22f315d0326029c62b2c3f24c",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -36.9051111,
+            "selectedLongitude": -73.1426389,
+            "selectedFeatureExcerpt": "Feaw5OUPzsKGoQk\",null,null,null,[[[6380.765589106543,-73.142639,-36.905111],null,null,13.10000038146973],null,0,[[null,\"36°54'18.4\\\"S 73°08'33.5\\\"W\",[-36.9051111,-73.14263889999999]],\"36°54'18.4\\\"S 73°08'33.5\\\"W\",[\"-36.905111, -73.142639\"],null,null,null,null,null,null,null,null,null,null,\"3VV4+XW5 ",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "condominio-hacienda-junquillar-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/7"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "condominio-hacienda-volcanes",
+      "projectName": "Condominio Hacienda Volcanes",
+      "developer": "GPR",
+      "projectId": "1566",
+      "publishedAddressUnchanged": "Volcán Michimavida 360",
+      "commune": "Puerto Montt",
+      "region": "Los Lagos",
+      "coordinate": {
+        "lat": -41.454618,
+        "lng": -72.9110267,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Calle Volcán Michimavida 360, Valle Volcanes, Puerto Montt.",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/condominio-hacienda-volcanes",
+      "evidence": [
+        {
+          "url": "https://gpr.cl/inmobiliaria/condominio-hacienda-volcanes-casas/",
+          "role": "primary-developer-project-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T09:55:57.522593+00:00",
+          "sourceBodySHA256": "06a453f4d61c3fa88e4881dff6bb875390317b0277493b595cba4af38a972d82",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "projectHeading": "CONDOMINIO HACIENDA VOLCANES",
+            "addressLiteral": "Calle Volcán Michimavida 360, Valle Volcanes, Puerto Montt."
+          },
+          "extract": {
+            "artifact": "condominio-hacienda-volcanes-official-extract.json",
+            "pointer": ""
+          },
+          "scope": "This page names the project and displays its address context; the numeric point is established separately by its selected map feature."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5980.66151577508!2d-72.910828!3d-41.453741!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96183a8f5e2b5bc9%3A0xf95cde22b41437cd!2sVolc%C3%A1n%20Michimavida%20360%2C%205504944%20Puerto%20Montt%2C%20Los%20Lagos%2C%20Chile!5e0!3m2!1ses!2sus!4v1757393721451!5m2!1ses!2sus",
+          "role": "selected-feature-from-officially-embedded-public-map",
+          "observedAtUTC": "2026-11-19T09:56:42.425578+00:00",
+          "sourceBodySHA256": "304d7b75f81f516e8bd75cf943e52393715e8c31cd32c5cd19a56c8e59da4400",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -41.454618,
+            "selectedLongitude": -72.9110267,
+            "selectedFeatureExcerpt": "0000038146973],null,0,[[\"0x96183a8f5e2b5bc9:0xf95cde22b41437cd\",\"Volcán Michimavida 360, 5504944 Puerto Montt, Los Lagos, Chile\",[-41.454618,-72.91102669999999]],\"Volcán Michimavida 360\",[\"5504944 Puerto Montt\",\"Los Lagos\",\"Chile\"],null,null,null,null,null,null,null,null,null,\"Edificio mu",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "condominio-hacienda-volcanes-google-map-extract.json",
+            "pointer": "/coordinatePairs/0"
+          },
+          "scope": "The feature marker is used; initial2d/3d camera coordinates are not adopted."
+        },
+        {
+          "role": "archived-geographic-research-receipt",
+          "extract": {
+            "artifact": "COORDENADAS-GPR.json",
+            "pointer": "/projects/8"
+          },
+          "scope": "Earlier7+2decision preserved as history; final context resolution is in the final overlay and independent scope review."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "kiez",
+      "projectName": "Kiez",
+      "developer": "Leben",
+      "projectId": "1573",
+      "publishedAddressUnchanged": "Claudio Gay 2040",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.455078,
+        "lng": -70.66336869999999,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Claudio Gay 2040",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/kiez",
+      "evidence": [
+        {
+          "url": "https://cl.linkedin.com/company/inmobiliarialeben",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": null,
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Kiez, ubicado en Claudio Gay 2040, en pleno corazón del barrio universitario.",
+            "addressBridge": null
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/0/primarySource"
+          },
+          "scope": "Official developer LinkedIn company result indexed via web search2026-11-19; no authentication attempted."
+        },
+        {
+          "url": "https://maps.google.com/maps?q=Claudio+Gay+2040%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+          "role": "explicit-developer-coordinate-or-selected-native-address-marker",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "ac660f1515ba599b2eb3274da362e21eaeb170154232b5f8b7c1ddb7687f1965",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.455078,
+            "selectedLongitude": -70.66336869999999,
+            "entity": {
+              "placeIdHex": "0x9662c50389923e69:0x8ef505ec21e8d45c",
+              "label": "Claudio Gay 2040, 8320000 Santiago, Región Metropolitana",
+              "latitude": -33.455078,
+              "longitude": -70.66336869999999
+            },
+            "explicitCoordinateLiteral": null,
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/0/geographicSource"
+          },
+          "scope": "initEmbed exact target entity [place-id,label,[lat,lon]], not camera center. No API key/auth/private endpoint."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://nominatim.openstreetmap.org/search?q=Claudio+Gay+2040%2C+Santiago%2C+Chile&format=jsonv2&addressdetails=1&limit=3&countrycodes=cl",
+          "reason": "Legacy kindergartenMagicHouse house2040; not accepted as current project identity.",
+          "coordinatesAdopted": false,
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/0/rejectedOrLimitedOSMCheck"
+          }
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "centro-santa-ana",
+      "projectName": "Centro Santa Ana",
+      "developer": "AJ Urbana",
+      "projectId": "1575",
+      "publishedAddressUnchanged": "San Martín 678",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.436047987036595,
+        "lng": -70.65852984928345,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "official-project-marker",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "San Martín 678",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/centro-santa-ana",
+      "evidence": [
+        {
+          "url": "https://www.centrosantaana.cl/properties/1d1b",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "f8cc7b80dbfd4173d90c8acf9a572f7bf55850ae8ca9cefd03796025485ff103",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "1D1B — San Martin 678 Centro Santa Ana.",
+            "addressBridge": null
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/1/primarySource"
+          },
+          "scope": "Source identity/address is distinct from the coordinate marker. Existing research reused; no new page fetch."
+        },
+        {
+          "url": "https://maps.google.com/maps?q=-33.436047987036595%2C%20-70.65852984928345&z=15&output=embed",
+          "role": "explicit-developer-coordinate-or-selected-native-address-marker",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": null,
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.436047987036595,
+            "selectedLongitude": -70.65852984928345,
+            "entity": null,
+            "explicitCoordinateLiteral": "-33.436047987036595, -70.65852984928345",
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/1/geographicSource"
+          },
+          "scope": "Explicit coordinate literal from primary property-location section; not inferred camera or measured pixel position."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "edificio-ambar-urbano",
+      "projectName": "Edificio Ambar Urbano",
+      "developer": "Euro",
+      "projectId": "1579",
+      "publishedAddressUnchanged": "San Pablo 1263",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.4342759,
+        "lng": -70.6553717,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "San Pablo 1263",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/edificio-ambar-urbano",
+      "evidence": [
+        {
+          "url": "https://www.portalinmobiliario.com/tienda-oficial/_Tienda_euro-inmobiliaria",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": null,
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Edificio Ambar - Euro — San Pablo 1263, Santiago.",
+            "addressBridge": null
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/2/primarySource"
+          },
+          "scope": "Official store indexed in web search2026-11-19; direct webopen returned403; no access bypass."
+        },
+        {
+          "url": "https://maps.google.com/maps?q=San+Pablo+1263%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+          "role": "explicit-developer-coordinate-or-selected-native-address-marker",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "dc1c2ccc1c8b65b7d40650e30bf06e68fbe5362c0cae50a9f8fd2a26e8d92ad8",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.4342759,
+            "selectedLongitude": -70.6553717,
+            "entity": {
+              "placeIdHex": "0x9662c5bae9175f3d:0xcea6d700576ca503",
+              "label": "San Pablo 1263, 8340150 Santiago, Región Metropolitana",
+              "latitude": -33.4342759,
+              "longitude": -70.6553717
+            },
+            "explicitCoordinateLiteral": null,
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/2/geographicSource"
+          },
+          "scope": "initEmbed exact target entity [place-id,label,[lat,lon]], not camera center. No API key/auth/private endpoint."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://nominatim.openstreetmap.org/search?q=San+Pablo+1263%2C+Santiago%2C+Chile&format=jsonv2&addressdetails=1&limit=3&countrycodes=cl",
+          "reason": "Rejected: resultway112504706 is addr:interpolation odd between1215 and1301; not a building point.",
+          "coordinatesAdopted": false,
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/2/rejectedOrLimitedOSMCheck"
+          }
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "espacio-v",
+      "projectName": "Espacio V",
+      "developer": "Euro",
+      "projectId": "1582",
+      "publishedAddressUnchanged": "Zañartu 1370",
+      "commune": "Ñuñoa",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.4729796,
+        "lng": -70.618512,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Zañartu 1370",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/espacio-v",
+      "evidence": [
+        {
+          "url": "https://www.portalinmobiliario.com/tienda-oficial/_Tienda_euro-inmobiliaria",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": null,
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Edificio V - Euro — Zañartu 1370, Ñuñoa.",
+            "addressBridge": null
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/3/primarySource"
+          },
+          "scope": "Official store indexed in web search2026-11-19; direct webopen returned403; no access bypass."
+        },
+        {
+          "url": "https://maps.google.com/maps?q=Za%C3%B1artu+1370%2C+%C3%91u%C3%B1oa%2C+Chile&z=17&hl=es&output=embed",
+          "role": "explicit-developer-coordinate-or-selected-native-address-marker",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "c5674586d0a5c5f001d0e6a84621d5a70d17a7f32a266c3bac4e732e2898a768",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.4729796,
+            "selectedLongitude": -70.618512,
+            "entity": {
+              "placeIdHex": "0x9662cff77e3366ab:0xfd8feec413567f1b",
+              "label": "Zañartu 1370, 7780272 Ñuñoa, Región Metropolitana",
+              "latitude": -33.4729796,
+              "longitude": -70.618512
+            },
+            "explicitCoordinateLiteral": null,
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/3/geographicSource"
+          },
+          "scope": "initEmbed exact target entity [place-id,label,[lat,lon]], not camera center. No API key/auth/private endpoint."
+        },
+        {
+          "url": "https://landing.euroinmobiliaria.cl/lanzamientoespaciov",
+          "role": "additional-primary-name-brand-only",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "b42498657bfcea3f010102bf158c743b41f2fe54fc667e02df78e95e457c35de",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Descubre primero Espacio V"
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/3/additionalIdentitySource"
+          },
+          "scope": "Name/brand only; does not independently print the address. Archived Iris1582 and Euro official store provide address."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://nominatim.openstreetmap.org/search?q=Za%C3%B1artu+1370%2C+%C3%91u%C3%B1oa%2C+Chile&format=jsonv2&addressdetails=1&limit=3&countrycodes=cl",
+          "reason": "Rejected neighbourhood and street centroids with no house_number1370.",
+          "coordinatesAdopted": false,
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/3/rejectedOrLimitedOSMCheck"
+          }
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "edificio-botanico",
+      "projectName": "Edificio Botánico",
+      "developer": "Norte Verde",
+      "projectId": "1585",
+      "publishedAddressUnchanged": "Claudio Gay esquina Manuel Rodríguez",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.4541767,
+        "lng": -70.6588767,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Claudio Gay 1722, Santiago",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/edificio-botanico",
+      "evidence": [
+        {
+          "url": "https://norte-verde.cl/proyecto/botanico/",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "1775e4469423355efc84c78b8f7c22ff25a3f31f0d4a218b7282975d86ea27b3",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Claudio Gay 1722, Santiago Centro.",
+            "addressBridge": "Ubicado estratégicamente en la esquina entre la calle Claudio Gay y Avenida Manuel Rodríguez."
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/4/primarySource"
+          },
+          "scope": "Source identity/address is distinct from the coordinate marker. Existing research reused; no new page fetch."
+        },
+        {
+          "url": "https://maps.google.com/maps?q=Claudio+Gay+1722%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+          "role": "explicit-developer-coordinate-or-selected-native-address-marker",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "80c65dd48526095a2a035470ec0155f2688c7e1adb5eaea085e51fec1fdc7afa",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.4541767,
+            "selectedLongitude": -70.6588767,
+            "entity": {
+              "placeIdHex": "0x9662c505be26889f:0xbdbac50c3a5a70e6",
+              "label": "Claudio Gay 1722, 8370257 Santiago, Región Metropolitana",
+              "latitude": -33.4541767,
+              "longitude": -70.6588767
+            },
+            "explicitCoordinateLiteral": null,
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/4/geographicSource"
+          },
+          "scope": "initEmbed exact target entity [place-id,label,[lat,lon]], not camera center. No API key/auth/private endpoint."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://nominatim.openstreetmap.org/search?q=Claudio+Gay+1722%2C+Santiago%2C+Chile&format=jsonv2&addressdetails=1&limit=3&countrycodes=cl",
+          "reason": "Rejected street centroid: no house_number1722.",
+          "coordinatesAdopted": false,
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/4/rejectedOrLimitedOSMCheck"
+          }
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "balmaceda",
+      "projectName": "Balmaceda",
+      "developer": "Ingevec",
+      "projectId": "1586",
+      "publishedAddressUnchanged": "Av. Presidente Balmaceda 2020",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.4304545,
+        "lng": -70.665705,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Av. Presidente Balmaceda 2020",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/balmaceda",
+      "evidence": [
+        {
+          "url": "https://ingevecinmobiliaria.cl/proyecto-balmaceda",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "f0d34f0350cb1e4bc0901fd7b8dfdbfbad9ec91c3ce4120278d3b76da8316abe",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Edificio Balmaceda — Av. Presidente Balmaceda 2020, Santiago.",
+            "addressBridge": null
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/5/primarySource"
+          },
+          "scope": "Source identity/address is distinct from the coordinate marker. Existing research reused; no new page fetch."
+        },
+        {
+          "url": "https://maps.google.com/maps?q=Av.%20Presidente%20Balmaceda%202020%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana&z=16&hl=es&output=embed",
+          "role": "explicit-developer-coordinate-or-selected-native-address-marker",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "4356f6812a2853a438e3ccdfb5a683eb7fef0c8cc51643a8fa2aa33c38bb03dc",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.4304545,
+            "selectedLongitude": -70.665705,
+            "entity": {
+              "placeIdHex": "0x9662c5b45b64cd3b:0x6c275eebc59ca10b",
+              "label": "Av. Pdte. Balmaceda 2020, 8340022 Santiago, Región Metropolitana",
+              "latitude": -33.4304545,
+              "longitude": -70.665705
+            },
+            "explicitCoordinateLiteral": null,
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/5/geographicSource"
+          },
+          "scope": "Target entity under initEmbed [place-id,address,[lat,lon]]. Camera coordinates ignored."
+        },
+        {
+          "role": "bounded-original-target-feature-excerpt",
+          "extract": {
+            "artifact": "EXTRACCION-EMBEDS-INGEVEC.json",
+            "pointer": "/0"
+          },
+          "scope": "Plain selected-coordinate context and response digest, without raw HTML."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "prat",
+      "projectName": "Prat",
+      "developer": "Ingevec",
+      "projectId": "1588",
+      "publishedAddressUnchanged": "Arturo Prat 347",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.4497195,
+        "lng": -70.64960889999999,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Arturo Prat 347",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/prat",
+      "evidence": [
+        {
+          "url": "https://ingevecinmobiliaria.cl/proyecto-prat",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "16be4e01d232f8f25e9284a4ae06617ed56db0afabcb59d87f14a3f364e22350",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Edificio Prat — Arturo Prat 347, Santiago.",
+            "addressBridge": null
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/6/primarySource"
+          },
+          "scope": "Source identity/address is distinct from the coordinate marker. Existing research reused; no new page fetch."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3087.3566176772197!2d-70.65069501262914!3d-33.44997344739736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c50bbe038b13%3A0xb49a46e1321cf784!2sArturo%20Prat%20347%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1780332661879!5m2!1ses-419!2scl",
+          "role": "explicit-developer-coordinate-or-selected-native-address-marker",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "fa11b76e4aec0265b37a5ce463ae2aaecf87f346974231333aa1632aa61b103a",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.4497195,
+            "selectedLongitude": -70.64960889999999,
+            "entity": {
+              "placeIdHex": "0x9662c50bbe038b13:0xb49a46e1321cf784",
+              "label": "Arturo Prat 347, Santiago, Región Metropolitana",
+              "latitude": -33.4497195,
+              "longitude": -70.64960889999999
+            },
+            "explicitCoordinateLiteral": null,
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/6/geographicSource"
+          },
+          "scope": "Target entity under initEmbed [place-id,address,[lat,lon]]. Camera coordinates ignored."
+        },
+        {
+          "role": "bounded-original-target-feature-excerpt",
+          "extract": {
+            "artifact": "EXTRACCION-EMBEDS-INGEVEC.json",
+            "pointer": "/1"
+          },
+          "scope": "Plain selected-coordinate context and response digest, without raw HTML."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "vicuna-mackenna-capital",
+      "projectName": "Vicuña Mackenna Capital",
+      "developer": "Ingevec",
+      "projectId": "1589",
+      "publishedAddressUnchanged": "Av. Vicuña Mackenna 1439",
+      "commune": "Santiago",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.4613394,
+        "lng": -70.6284896,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Av. Vicuña Mackenna 1439",
+      "siteAddress": null,
+      "publicScopeNote": "Punto referencial de la dirección publicada 1439. El acceso se confirma con la inmobiliaria; no se equipara a la numeración 1441 de otros antecedentes.",
+      "finalOverlayPointer": "/locations/vicuna-mackenna-capital",
+      "evidence": [
+        {
+          "url": "https://ingevecinmobiliaria.cl/proyecto-vicunacapital",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "996619dabad579aa06c5a864fd5da9bbdddb1de88dfe1d2606f7750577e541df",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Edificio Vicuña Capital — Av. Vicuña Mackenna 1441, Santiago.",
+            "addressBridge": null
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/7/primarySource"
+          },
+          "scope": "Source identity/address is distinct from the coordinate marker. Existing research reused; no new page fetch."
+        },
+        {
+          "url": "https://maps.google.com/maps?q=Av.+Vicu%C3%B1a+Mackenna+1439%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+          "role": "selected-native-address-feature-for-published1439",
+          "observedAtUTC": "2026-11-19T10:03:32.604394+00:00",
+          "sourceBodySHA256": "7c5b0909deea0ee1c0d363771fb88595542efdf321d1286a969a04e903aa12d6",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "entity": {
+              "placeIdHex": "0x9662c567263a4c11:0x1cb791598c3dfa54",
+              "label": "Av. Vicuña Mackenna 1439, 8360170 Santiago, Región Metropolitana",
+              "latitude": -33.4613394,
+              "longitude": -70.6284896
+            },
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "VICUNA-1439-1441-CONTRASTE-GEOGRAFICO.json",
+            "pointer": "/results/0"
+          },
+          "scope": "Published1439 is preserved. Official Ingevec1441 remains a distinct address; no selection by proximity or presumed common entrance."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [
+        {
+          "sourceURL": "https://maps.google.com/maps?q=Av.+Vicu%C3%B1a+Mackenna+1441%2C+Santiago%2C+Chile&z=17&hl=es&output=embed",
+          "entity": {
+            "placeIdHex": "0x9662c56728a96cad:0x4d66951c33afbaf8",
+            "label": "Av. Vicuña Mackenna 1441, 8360170 Santiago, Región Metropolitana",
+            "latitude": -33.4617231,
+            "longitude": -70.6283481
+          },
+          "sourceBodySHA256": "6c0111ed6a86411c6fc4437d85a99c3c28c5d5fdec0be5ea2ffd28f99b081901",
+          "reason": "1441 is not adopted for the published1439 marker; no numeric/address equivalence is asserted.",
+          "extract": {
+            "artifact": "VICUNA-1439-1441-CONTRASTE-GEOGRAFICO.json",
+            "pointer": "/results/1"
+          },
+          "coordinatesAdopted": false
+        }
+      ],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    },
+    {
+      "slug": "mirador-capital",
+      "projectName": "Mirador Capital",
+      "developer": "Ingevec",
+      "projectId": "1590",
+      "publishedAddressUnchanged": "Av. Vicuña Mackenna Oriente 6197",
+      "commune": "La Florida",
+      "region": "Metropolitana",
+      "coordinate": {
+        "lat": -33.5125531,
+        "lng": -70.60739819999999,
+        "crs": "WGS84 decimal degrees"
+      },
+      "checkedOn": "2026-11-19",
+      "finalGeometryRole": "selected-address-entity",
+      "precision": "representative-project-point",
+      "exactEntranceCertified": false,
+      "numbersOrEntrancesDeclaredEquivalent": false,
+      "publishedAddressContext": "project-published-address",
+      "sourceAddress": "Av. Vicuña Mackenna Oriente 6197",
+      "siteAddress": null,
+      "publicScopeNote": null,
+      "finalOverlayPointer": "/locations/mirador-capital",
+      "evidence": [
+        {
+          "url": "https://ingevecinmobiliaria.cl/proyecto-miradorcapital",
+          "role": "primary-developer-identity-and-address-context",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "4d10bf77778888c4ca05fce03cf4ec07370e3d97e41de03bbbf9821595c8d907",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "identityExcerpt": "Edificio Mirador Capital — Av. Vicuña Mackenna Ote. 6197, La Florida.",
+            "addressBridge": null
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/8/primarySource"
+          },
+          "scope": "Source identity/address is distinct from the coordinate marker. Existing research reused; no new page fetch."
+        },
+        {
+          "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.570380401326!2d-70.60997312488803!3d-33.51255307336487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d06fa4fafcc7%3A0x919dbc530b8968cc!2sAv.%20Vicu%C3%B1a%20Mackenna%20Ote.%206197%2C%208260021%20Santiago%2C%20La%20Florida%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1790946102390!5m2!1ses-419!2scl",
+          "role": "explicit-developer-coordinate-or-selected-native-address-marker",
+          "observedAtUTC": "2026-11-19T10:05:04.399431+00:00",
+          "sourceBodySHA256": "505686513d9f973fd374ad716d82691e2ac72b3fa34ffd2b241039c1de5e0a8e",
+          "sourceBodyNotIncluded": true,
+          "exactEvidence": {
+            "selectedLatitude": -33.5125531,
+            "selectedLongitude": -70.60739819999999,
+            "entity": {
+              "placeIdHex": "0x9662d06fa4fafcc7:0x919dbc530b8968cc",
+              "label": "Av. Vicuña Mackenna Ote. 6197, 8260021 Santiago, La Florida, Región Metropolitana",
+              "latitude": -33.5125531,
+              "longitude": -70.60739819999999
+            },
+            "explicitCoordinateLiteral": null,
+            "notCameraCenter": true
+          },
+          "extract": {
+            "artifact": "COORDENADAS-OTROS-9.json",
+            "pointer": "/projects/8/geographicSource"
+          },
+          "scope": "Target entity under initEmbed [place-id,address,[lat,lon]]. Camera coordinates ignored."
+        },
+        {
+          "role": "bounded-original-target-feature-excerpt",
+          "extract": {
+            "artifact": "EXTRACCION-EMBEDS-INGEVEC.json",
+            "pointer": "/2"
+          },
+          "scope": "Plain selected-coordinate context and response digest, without raw HTML."
+        }
+      ],
+      "rejectedOrLimitedAlternatives": [],
+      "notStockPriceOrUnitAvailabilityEvidence": true,
+      "commercialAttributesChanged": false
+    }
+  ],
+  "validation": {
+    "projects": 21,
+    "uniqueSlugs": 21,
+    "JSONPointersResolved": 86,
+    "allPointersResolve": true,
+    "allCoordinatesMatchFinalOverlay": true,
+    "allSourcesUseHTTPSWithoutCredentialParameters": true,
+    "newNetworkRequests": 0,
+    "rawHTMLIncluded": false,
+    "keysNoncesCookiesTokensOrFormsIncluded": false,
+    "personalTemporaryFilesIncluded": false,
+    "applicationEdited": false,
+    "publicationOrDeploymentExecuted": false
+  },
+  "documentationCopyPolicy": {
+    "allowlist": "Copy only sourceArtifacts entries with includeWithDocumentaryEvidence=true; their exact hashes/bytes are recorded. RawHTML files and application/runtime/package directories are not evidence inputs to copy.",
+    "pdf": "The public Hacienda PDF is listed by digest only; full body need not be copied.",
+    "history": "COORDENADAS-GPR andOTROS are research-time receipts with earlier pending states. Final overlay plus scoped decisions/UI review resolve them; do not rewrite their historical statuses."
+  }
+}

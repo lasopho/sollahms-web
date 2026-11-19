@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-19",
+  "kind": "INDEPENDENT_GEOGRAPHIC_SCOPE_DECISION_TWO_GPR_PROJECTS",
+  "recordedAtUTC": "2026-11-19T10:09:36.193137+00:00",
+  "policy": "Only verified-source project markers corresponding to current project identity,address context andcommune. Representative point is not an entrance, lot centroid invented by agent, or authorization to equate numbers or sales office with project.",
+  "haciendaSantaClara": {
+    "verdict": "ACEPTABLE_COMO_PUNTO_REPRESENTATIVO_CON_RESPALDO_COMPLEMENTARIO",
+    "reason": "The primary brochure identifies the same named project at published1847; its dedicated official project webpage embeds this marker. Together they establish project identity/address context/commune without asserting that1847,1855 and2001 are equivalent or that the marker is an exact entrance.",
+    "requiredProvenance": {
+      "geometryRole": "official-project-marker",
+      "precision": "representative-project-location",
+      "publishedAddress": "Calle Waldo Alcalde 1847",
+      "sourceAddress": "Calle Waldo Alcalde N°2001, Coquimbo",
+      "publishedAddressProof": "GPR brochure folleto_haciendasantaclara_20240127.pdf explicitly identifies HaciendaSantaClara/1847",
+      "projectMarkerProof": "Dedicated official HaciendaSantaClara project page Ubicación embed, selected DMS marker -29.9765,-71.2403333, not camera2d/3d",
+      "sameNamedProjectAndCommuneVerified": true,
+      "publishedAddressSupportedByPrimaryProjectBrochure": true,
+      "sourceAddressEqualsPublishedNumber": false,
+      "markerAtExactPublishedEntranceCertified": false,
+      "salesOfficeEqualsProject": false,
+      "doNotClaimNumbersEquivalent": true,
+      "note": "Punto representativo del proyecto según su mapa oficial. La ficha y el brochure usan numeraciones distintas; no se certifica acceso exacto ni equivalencia entre1847,1855 y2001."
+    }
+  },
+  "reservaSantaClara": {
+    "verdict": "NO_CERRAR_MATCHING_ADDRESS_CON_METADATA_OCULTA_SOLAMENTE",
+    "reason": "Published1855 is explicitly a sales-office address in the primary brochure. The official project-location page says2001 and selects a generic coordinate marker. Hidden metadata cannot make a pin2001 correspond to displayed1855 or prove it is not the sales office. The generic access-may-vary notice does not explain this distinction.",
+    "currentEvidenceSupports": {
+      "geometryRole": "official-project-marker-by-placement-in-project-location-section",
+      "sourceAddress": "Calle Waldo Alcalde N°2001, Coquimbo",
+      "publishedAddress": "Av.WaldoAlcalde1855",
+      "publishedAddressContext": "sales-office",
+      "sameNamedProjectAndCommuneVerified": true,
+      "sameExactPublishedAddressVerified": null,
+      "notSalesOfficeCertified": false,
+      "numbersEquivalent": false
+    },
+    "acceptablePaths": [
+      {
+        "path": "Additional primary geographic/address evidence",
+        "needed": "Developer or municipal primary source links published1855 to the actual ReservaSantaClara project site or a verified named POI/polygon with that exactnumber; alternatively a primary source establishes the intended project location and a separately authorized correction of the public address."
+      },
+      {
+        "path": "Explicit public separation of roles while preserving number",
+        "needed": "If scope includes this presentation correction, show the address1855 explicitly as commercial/sales-office address and the point as official project-location reference2001. Do not set sameProjectAddress=true or notSalesOffice=true. Keep exact published-address-to-pin relation unknown, avoid a silent metadata-only exception to current address validation."
+      }
+    ]
+  },
+  "googleExactNumberChecks": {
+    "1847": "NO_NATIVE_POI_COORDINATE_EVIDENCE_IN_PUBLIC_HTML",
+    "1855": "NO_NATIVE_POI_COORDINATE_EVIDENCE_IN_PUBLIC_HTML",
+    "coordinatesAdopted": false,
+    "closestPointSelection": false
+  },
+  "archiveCriteriaChanged": false,
+  "publicAddressesChanged": false,
+  "applicationChanged": false
+}

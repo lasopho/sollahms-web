@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "IMPLEMENTACION_GEO_Y_METRO_21_CON_REGISTROS_ORIGINALES_INTACTOS",
+  "recordedAtUTC": "2026-11-19T10:22:10.209757+00:00",
+  "baseCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
+  "checkout": "/private/tmp/sollahms-mapa-filtros-21-20261119",
+  "ownedFiles": [
+    {
+      "path": "assets/js/catalog.mjs",
+      "bytes": 18783,
+      "sha256": "b95b8d340132efa7fb470eb14eb76badd0baae04afaf9e3851eb166280670256"
+    },
+    {
+      "path": "assets/js/catalog-map.mjs",
+      "bytes": 17237,
+      "sha256": "0d2d514a35be8f05b6d2022133e3f83b1c404d8c99e74d40725e4c07c92c1845"
+    },
+    {
+      "path": "assets/js/catalog-expansion-locations.mjs",
+      "bytes": 11563,
+      "sha256": "637cdfb77904c0805782c25259cbe6934e6a6cb63fc90a58bb52bc276b929c92"
+    },
+    {
+      "path": "data/catalog-expansion-locations-20261119.json",
+      "bytes": 33388,
+      "sha256": "d2d6e8b196063797a262c5f7796d12c6e88c1755cee137f44502495916acf90e"
+    },
+    {
+      "path": "tests/catalog-expansion-locations.test.mjs",
+      "bytes": 17122,
+      "sha256": "58ae216186e2aa038297daa9d1c42f22266d4f0fc7785148ab5221ea47f48a4e"
+    }
+  ],
+  "geo": {
+    "sourceSHA256": "d2d6e8b196063797a262c5f7796d12c6e88c1755cee137f44502495916acf90e",
+    "reviewedPoints": 21,
+    "roles": {
+      "verified-building-poi": 1,
+      "verified-address-marker": 9,
+      "official-project-marker": 10,
+      "official-project-reference": 1
+    },
+    "regionalMetropolitanaPoints": 14,
+    "extraRegistrySeparateFromOriginal131": true
+  },
+  "tests": {
+    "command": "node --test tests/catalog-expansion-locations.test.mjs",
+    "distinct": 18,
+    "passed": 18,
+    "failed": 0,
+    "log": {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/PRUEBAS-GEO-CORRECCION-SPLIT-FINAL.log",
+      "sha256": "67cc555ec41dafe0f5694beb386abe85e20c294c2678b17ee15fa7be7dd6ac4c"
+    },
+    "prior16ImplementationRunNotAdded": true,
+    "historicSuitesNotRepeated": true,
+    "prior16And17RunsNotAdded": true
+  },
+  "preservationSHA256": {
+    "data/catalog-expansion-iris-20261118.json": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb",
+    "data/project-locations.json": "e15ac90bc84227a5cff148c17ed7737ac247e8cae60a38652e5e603dd27fdd6d",
+    "data/project-metro.json": "1a68aafcae7e2ac7097ab24de8828a2e6029c9e25cfbfc3367c36440e3592f49",
+    "data/metro-network.json": "bb40e98c6f5530c657ea2ba7e9651d980f21a94b08dea57315a107fe5d477ce7",
+    "data/proyectos.json": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b"
+  },
+  "changesInTrackedFiles": [
+    "assets/js/catalog-map.mjs",
+    "assets/js/catalog.mjs"
+  ],
+  "architecture": {
+    "commercialSourceAndLocationNullGuardUnchanged": true,
+    "metroNetworkFetchedOnceAsTextAndJSON": true,
+    "newMetroProjectionInMemoryFromPinnedReviewedStations": true,
+    "walkingOrFutureGeometryCreated": false,
+    "mapConsumesSharedFilteredOrderedResults": true,
+    "original131LocationsAnd100MetroProjectRecordsByteExact": true,
+    "sameProjectAddressDoesNotMeanSameEntrance": true,
+    "ReservaDifferentAddressContextsDisclosed": true,
+    "HaciendaDifferentAddressContextsDisclosed": true
+  },
+  "patch": {
+    "path": "/private/tmp/sollahms-mapa-21-20261119/PROPUESTA-INTEGRACION.patch",
+    "sha256": "e0420ef8c0487df8cd9fb6830a197b7f3c2c1c30bfc2f4648b1d950a8be2b908"
+  },
+  "GitMutations": 0,
+  "deploymentsOrPromotions": 0,
+  "sourceDataOriginal21CommercialFactsChanged": false,
+  "newIndependentFindingResolved": {
+    "trigger": "Split card hardcoded every expansion as coordinate-pending even with admitted geography.",
+    "correction": "Pending notice only when a validated current project has no admitted point; existing split locate button now applies to a verified new point.",
+    "guard": "hasVerifiedExpansionLocation requires registered locations and unchanged verified project identity.",
+    "newTargetedCase": "split-view locate eligibility distinguishes admitted points from pending, forged or stale identities",
+    "rootDOMReproductionPendingInThisReceipt": true
+  }
+}

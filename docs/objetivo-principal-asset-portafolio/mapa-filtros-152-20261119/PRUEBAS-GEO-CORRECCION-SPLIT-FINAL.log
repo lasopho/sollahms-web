@@ -1,0 +1,26 @@
+✔ the final public geography is hash-pinned, admits its 21 reviewed points and preserves source registries (10.39375ms)
+✔ zero verified additions preserve all 152 identities and every original location/Metro object (2.155042ms)
+✔ all 21 admitted points become selectable without changing the commercial coordinate guard (2.165583ms)
+✔ partial geography leaves only its unsupported points pending and keeps inactive unknowns (11.474375ms)
+✔ split-view locate eligibility distinguishes admitted points from pending, forged or stale identities (4.874334ms)
+✔ transport hash and redirected/unavailable loads cannot admit geographic facts (0.980584ms)
+✔ wrong slug, ID or published identity fails closed without any partial registry (0.676083ms)
+✔ swapped coordinates, nonnumeric values and points outside Chile fail closed (1.544875ms)
+✔ street centres, sales offices and absent primary identity proofs are rejected (0.715459ms)
+✔ a different source address requires an explicit same-project primary proof (1.335834ms)
+✔ selected address entities need the exact source house number/street/commune and cannot be camera centres (0.721334ms)
+✔ Reserva distinguishes project reference2001 from published sales office1855 without certifying either access (1.995375ms)
+✔ Hacienda retains published1847 separately from the official map reference2001 (1.452625ms)
+✔ forged geography cannot override any old registry row (0.739209ms)
+✔ a station-source hash mismatch preserves valid map points but grants no new Metro match (0.828583ms)
+✔ new Metro badges and radius use the reviewed station point, never a walking route or future geometry (10.427959ms)
+✔ map rows keep the exact filtered and ordered subset rather than all 152 registry points (3.683084ms)
+✔ new slug selection and Metro URL round-trip preserve current filters and cannot enable walking (15.625708ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 151.149333

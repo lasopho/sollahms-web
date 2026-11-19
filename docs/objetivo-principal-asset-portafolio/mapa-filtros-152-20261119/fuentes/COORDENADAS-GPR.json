@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 1,
+  "kind": "GPR_NINE_EXISTING_PROJECTS_PRIMARY_SOURCE_COORDINATE_EVIDENCE",
+  "date": "2026-11-19",
+  "recordedAtUTC": "2026-11-19T09:58:47.989871+00:00",
+  "baselineCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
+  "universe": 9,
+  "method": "Reutilización acotada deGit493 ybúsqueda de coordenadas en fichas oficiales GPR. GETpúblico de iframeGoogleMaps directamente enlazado. Se extrae el marcador seleccionado; nunca latlon cámara ni geocodificador.",
+  "archivedIrisGeoSearch": {
+    "gitSource": "HEAD documental en /private/tmp/sollahms-documentacion-iris-20261119",
+    "pathScope": "candidato-21-gpr/evidencia-iris/**/*.json",
+    "matches": 0,
+    "pattern": "latitude|longitude|latitud|longitud|maps.google|google.com/maps|maps.app.goo",
+    "noNewIrisAuthenticationOrPrivateAPI": true
+  },
+  "sourceDiscovery": {
+    "url": "https://gpr.cl/inmobiliaria/todos/",
+    "extract": "gpr-todos-extract.json",
+    "scope": "Sólo enlaces de los9 proyectos existentes; otros enlaces no se incorporan."
+  },
+  "summary": {
+    "verifiedRepresentativeMarkers": 7,
+    "pendingAddressScope": 2,
+    "noMapAvailable": 0,
+    "newProjects": 0,
+    "publicAddressesChanged": 0,
+    "applicationFilesChanged": 0
+  },
+  "projects": [
+    {
+      "slug": "condominio-altos-del-penon",
+      "name": "Condominio Altos del Peñón",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Av. Troncal Las Torres 2138",
+      "commune": "Puente Alto",
+      "region": "Metropolitana",
+      "status": "VERIFICADO_PIN_OFICIAL_PROYECTO",
+      "eligibleForRepresentativeProjectMarker": true,
+      "coordinates": {
+        "latitude": -33.6025508,
+        "longitude": -70.5433565,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "Av. Troncal las Torres 2138",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "candidatePinNotAdopted": null,
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/condominio-altos-del-penon-departamentos/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/condominio-altos-del-penon-deptos/",
+        "observedAtUTC": "2026-11-19T09:55:55.283240+00:00",
+        "bodySHA256": "a345bbbef529964fc97634dbbdc8995ff253016fcb817285a7daf66fdfec72aa",
+        "bodyBytes": 198374,
+        "identityHeading": "CONDOMINIO ALTOS DEL PEÑON",
+        "addressQuote": "Av. Troncal las Torres 2.138",
+        "quoteWords": 5,
+        "rawExtract": "condominio-altos-del-penon-official-extract.json",
+        "rawExtractSHA256": "305e8c55a9c4d988e9368d3a6c76343c26d50ecc457dad2c509414f73a00d539"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.2380335354655!2d-70.54593142457584!3d-33.60254630531705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d66215d9d943%3A0xecfbcdf4f43cb351!2sAv.%20Troncal%20las%20Torres%202138%2C%20Puente%20Alto%2C%20Regi%C3%B3n%20Metropolitana!5e1!3m2!1ses-419!2scl!4v1787158195731!5m2!1ses-419!2scl",
+        "observedAtUTC": "2026-11-19T09:56:42.228156+00:00",
+        "bodySHA256": "148e06d7d430ab8b6435ac4059ee1a2fdcb96a7ede7da50d9cfaa05b766c1696",
+        "bodyBytes": 2406,
+        "markerContextExcerpt": "0000038146973],null,1,[[\"0x9662d66215d9d943:0xecfbcdf4f43cb351\",\"Av. Troncal las Torres 2138, Puente Alto, Región Metropolitana\",[-33.6025508,-70.5433565]],\"Av. Troncal las Torres 2138\",[\"Puente Alto\",\"Región Metropolitana\"],null,null,null,null,null,null,null,null,null,null,\"Av. Tro",
+        "rawExtract": "condominio-altos-del-penon-google-map-extract.json",
+        "rawExtractSHA256": "d072be337585869aa0bd6128607f498da902ea5d78faa44612d2c79faea4b08f",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false
+      },
+      "conflicts": [],
+      "limitations": [
+        "Se usa feature de dirección exacta2138 del primer mapa. El segundo iframe publica otro punto coordenado del conjunto; no se presenta ninguno como acceso exacto. El centro2d/3d del primeriframe difiere del marcador y se descarta."
+      ],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    },
+    {
+      "slug": "condominio-reserva-santa-clara",
+      "name": "Condominio Reserva Santa Clara",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Av. Waldo Alcalde 1855",
+      "commune": "Coquimbo",
+      "region": "Coquimbo",
+      "status": "PIN_OFICIAL_DOCUMENTADO_DIRECCION_EN_CONFLICTO",
+      "eligibleForRepresentativeProjectMarker": false,
+      "coordinates": null,
+      "candidatePinNotAdopted": {
+        "latitude": -29.9765,
+        "longitude": -71.2403333,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "29°58'35.4",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/condominio-reserva-santa-clara-casas/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/reserva-santa-clara-casas/",
+        "observedAtUTC": "2026-11-19T09:55:55.337748+00:00",
+        "bodySHA256": "c649fd0cb3a5e5aca5d0adb063d4f48f70de02fa064e62e9d9d5488ed408715b",
+        "bodyBytes": 201359,
+        "identityHeading": "CONDOMINIO RESERVA SANTA CLARA",
+        "addressQuote": "Calle Waldo Alcalde N° 2001, Coquimbo",
+        "quoteWords": 6,
+        "rawExtract": "condominio-reserva-santa-clara-official-extract.json",
+        "rawExtractSHA256": "50a76d668414e7f4d05037181ae2d9cea76eece9fdeb1a4d8aba72d9dc3b5909"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6912.204661395092!2d-71.240338!3d-29.976489000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU4JzM1LjQiUyA3McKwMTQnMjUuMiJX!5e0!3m2!1ses!2sus!4v1757827096109!5m2!1ses!2sus",
+        "observedAtUTC": "2026-11-19T09:57:13.641963+00:00",
+        "bodySHA256": "ffa8e958634208988ad0d7f4fcc5d0a4da80a5e57859244cd53141e095108835",
+        "bodyBytes": 2292,
+        "markerContextExcerpt": "rJOJ2QY\",null,null,null,[[[6912.204661395092,-71.24033799999999,-29.976489],null,null,13.10000038146973],null,0,[[null,\"29°58'35.4\\\"S 71°14'25.2\\\"W\",[-29.9765,-71.2403333]],\"29°58'35.4\\\"S 71°14'25.2\\\"W\",[\"-29.976500, -71.240333\"],null,null,null,null,null,null,null,null,null,null,\"2QF5+CV3 ",
+        "rawExtract": "condominio-reserva-santa-clara-google-map-extract.json",
+        "rawExtractSHA256": "dbe9a2f37f4cba959e5c97a8f3655ac14bb3ba088f3e2c8152ec319798983f52",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false
+      },
+      "conflicts": [
+        {
+          "publishedSollahmsAddress": "Av. Waldo Alcalde 1855",
+          "officialHeaderAddress": "Calle Waldo Alcalde N° 2001, Coquimbo",
+          "officialSalesOfficeAddress": "Calle Waldo Alcalde N° 1855 Coquimbo",
+          "scope": "El mapa de coordenadas genéricas se repite en las fichas oficiales de Reserva/Hacienda/Senderos. No acredita por sí solo la numeración exacta del proyecto publicado."
+        }
+      ],
+      "limitations": [
+        "No seleccionar 1847,1855 o2001 ni equiparar sala de ventas con proyecto sin respaldo adicional; conservar dirección pública original."
+      ],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    },
+    {
+      "slug": "condominio-hacienda-santa-clara",
+      "name": "Condominio Hacienda Santa Clara",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Calle Waldo Alcalde 1847",
+      "commune": "Coquimbo",
+      "region": "Coquimbo",
+      "status": "PIN_OFICIAL_DOCUMENTADO_DIRECCION_EN_CONFLICTO",
+      "eligibleForRepresentativeProjectMarker": false,
+      "coordinates": null,
+      "candidatePinNotAdopted": {
+        "latitude": -29.9765,
+        "longitude": -71.2403333,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "29°58'35.4",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/condominio-hacienda-santa-clara-casas/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/condominio-hacienda-santa-clara-casas/",
+        "observedAtUTC": "2026-11-19T09:55:53.719327+00:00",
+        "bodySHA256": "ef29eaa4b34b6ed5a99b4bb0054d1f1542d4d12bb1cdb943a67b101f8e8694d8",
+        "bodyBytes": 197014,
+        "identityHeading": "CONDOMINIO HACIENDA SANTA CLARA",
+        "addressQuote": "Calle Waldo Alcalde N° 2001, Coquimbo",
+        "quoteWords": 6,
+        "rawExtract": "condominio-hacienda-santa-clara-official-extract.json",
+        "rawExtractSHA256": "aace0b3e52da979064fe7fcb58a889635ea0e90cdeb01c94dd29bfd8e524b318"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6912.204661395092!2d-71.240338!3d-29.976489000000004!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU4JzM1LjQiUyA3McKwMTQnMjUuMiJX!5e0!3m2!1ses!2sus!4v1757827096109!5m2!1ses!2sus",
+        "observedAtUTC": "2026-11-19T09:57:13.641963+00:00",
+        "bodySHA256": "ffa8e958634208988ad0d7f4fcc5d0a4da80a5e57859244cd53141e095108835",
+        "bodyBytes": 2292,
+        "markerContextExcerpt": "rJOJ2QY\",null,null,null,[[[6912.204661395092,-71.24033799999999,-29.976489],null,null,13.10000038146973],null,0,[[null,\"29°58'35.4\\\"S 71°14'25.2\\\"W\",[-29.9765,-71.2403333]],\"29°58'35.4\\\"S 71°14'25.2\\\"W\",[\"-29.976500, -71.240333\"],null,null,null,null,null,null,null,null,null,null,\"2QF5+CV3 ",
+        "rawExtract": "condominio-reserva-santa-clara-google-map-extract.json",
+        "rawExtractSHA256": "dbe9a2f37f4cba959e5c97a8f3655ac14bb3ba088f3e2c8152ec319798983f52",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false,
+        "mapReuseNote": "La URL de coordenadas compartida en esta ficha sólo difiere en timestamp4v de la deReserva; el extractGoogle corresponde al mismo parDMS ypin. No crea equivalencia de direcciones."
+      },
+      "conflicts": [
+        {
+          "publishedSollahmsAddress": "Calle Waldo Alcalde 1847",
+          "officialHeaderAddress": "Calle Waldo Alcalde N° 2001, Coquimbo",
+          "officialSalesOfficeAddress": "Calle Waldo Alcalde N° 1855 Coquimbo",
+          "scope": "El mapa de coordenadas genéricas se repite en las fichas oficiales de Reserva/Hacienda/Senderos. No acredita por sí solo la numeración exacta del proyecto publicado."
+        }
+      ],
+      "limitations": [
+        "No seleccionar 1847,1855 o2001 ni equiparar sala de ventas con proyecto sin respaldo adicional; conservar dirección pública original."
+      ],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    },
+    {
+      "slug": "condominio-plaza-nos",
+      "name": "Condominio Plaza Nos",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Av. Portales 3264",
+      "commune": "San Bernardo",
+      "region": "Metropolitana",
+      "status": "VERIFICADO_PIN_OFICIAL_PROYECTO",
+      "eligibleForRepresentativeProjectMarker": true,
+      "coordinates": {
+        "latitude": -33.6284039,
+        "longitude": -70.7031373,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "Av. Portales 3264",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "candidatePinNotAdopted": null,
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/condominio-plaza-nos-casas/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/condominio-plaza-nos-casas/",
+        "observedAtUTC": "2026-11-19T09:55:53.692649+00:00",
+        "bodySHA256": "f4c6f0eb5495bba0022b5b4aa422643851ee3e863e94075a032eeebfae8a7fbf",
+        "bodyBytes": 199599,
+        "identityHeading": "CONDOMINIO PLAZA NOS - CASAS",
+        "addressQuote": "Av. Portales 3264, San Bernardo",
+        "quoteWords": 5,
+        "rawExtract": "condominio-plaza-nos-official-extract.json",
+        "rawExtractSHA256": "00ea0ea3f73f252daf44b623d1f164d482f91226a5000af7b1367b43d2258404"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12044.290541653218!2d-70.71359433450681!3d-33.62876414433291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d8d8799ba5b7%3A0xd21ee1149a7e62d4!2sAv.%20Portales%203264%2C%20San%20Bernardo%2C%20Regi%C3%B3n%20Metropolitana!5e1!3m2!1ses-419!2scl!4v1782832253448!5m2!1ses-419!2scl",
+        "observedAtUTC": "2026-11-19T09:56:42.221204+00:00",
+        "bodySHA256": "eb4763da9bc3f5b818e4d1f9c185a184740ef3c3abae01da4134292e38c6cf2d",
+        "bodyBytes": 2393,
+        "markerContextExcerpt": "null,13.10000038146973],null,1,[[\"0x9662d8d8799ba5b7:0xd21ee1149a7e62d4\",\"Av. Portales 3264, San Bernardo, Región Metropolitana\",[-33.6284039,-70.70313729999999]],\"Av. Portales 3264\",[\"San Bernardo\",\"Región Metropolitana\"],null,null,null,null,null,null,null,null,null,null,\"Av. Portales 326",
+        "rawExtract": "condominio-plaza-nos-google-map-extract.json",
+        "rawExtractSHA256": "59614ce06021042fb218e231e12c07ccb22675c69a7ac8348c084b3bc161c1fa",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false
+      },
+      "conflicts": [],
+      "limitations": [
+        "Se usa el primer mapa con feature exacta Av. Portales3264. El segundo iframe identificaPortales2981 y se descarta por dirección distinta."
+      ],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    },
+    {
+      "slug": "condominio-sendero-santa-clara",
+      "name": "Condominio Sendero Santa Clara",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Av. Waldo Alcalde 2001",
+      "commune": "Coquimbo",
+      "region": "Coquimbo",
+      "status": "VERIFICADO_PIN_OFICIAL_PROYECTO",
+      "eligibleForRepresentativeProjectMarker": true,
+      "coordinates": {
+        "latitude": -29.9762684,
+        "longitude": -71.2409852,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "Av. Waldo Alcalde 2001",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "candidatePinNotAdopted": null,
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/condominio-senderos-santa-clara-departamentos/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/condominio-senderos-santa-clara-deptos/",
+        "observedAtUTC": "2026-11-19T09:55:56.461704+00:00",
+        "bodySHA256": "488cdd3f07d344edcb83389936f7b7148cbea1daf6a5d6da05a700e62461ca35",
+        "bodyBytes": 198322,
+        "identityHeading": "CONDOMINIO SENDEROS SANTA CLARA",
+        "addressQuote": "Waldo Alcade 2001, Coquimbo",
+        "quoteWords": 4,
+        "rawExtract": "condominio-sendero-santa-clara-official-extract.json",
+        "rawExtractSHA256": "28c8a42eae9ea1d12fdb4a88156b5db5af7420a56e39fccbfdaeafc695fdc46f"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.5996049279292!2d-71.24356012475141!3d-29.976263728117512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691cb9754e3b90b%3A0xa255d2646dbb7f99!2sAv.%20Waldo%20Alcalde%202001%2C%20Coquimbo!5e1!3m2!1ses-419!2scl!4v1787583680674!5m2!1ses-419!2scl",
+        "observedAtUTC": "2026-11-19T09:56:42.356692+00:00",
+        "bodySHA256": "ace0d75700edab59d7ec6172d237d17bd04535a950726bec56174165484ef513",
+        "bodyBytes": 2406,
+        "markerContextExcerpt": "-29.9762684],[0,0,0],null,13.10000038146973],null,1,[[\"0x9691cb9754e3b90b:0xa255d2646dbb7f99\",\"Av. Waldo Alcalde 2001, Coquimbo\",[-29.9762684,-71.2409852]],\"Av. Waldo Alcalde 2001\",[\"Coquimbo\"],null,null,null,null,null,null,null,null,null,null,\"Av. Waldo Alcalde 2001, Coquimbo\",null",
+        "rawExtract": "condominio-sendero-santa-clara-google-map-extract.json",
+        "rawExtractSHA256": "075773e21613f7be379f87b991cd3c2d1e7fc80f5c84821830f0607bf138e0f0",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false
+      },
+      "conflicts": [],
+      "limitations": [
+        "Se usa el primer mapa oficial con feature exacta Av. Waldo Alcalde2001. El segundo iframe usa el pin genérico compartido de Santa Clara y no se adopta."
+      ],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    },
+    {
+      "slug": "terrazas-del-mirador",
+      "name": "Terrazas del Mirador",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Los Tulipanes, Terrazas Mirador de Puerto Varas",
+      "commune": "Puerto Varas",
+      "region": "Los Lagos",
+      "status": "VERIFICADO_PIN_OFICIAL_PROYECTO",
+      "eligibleForRepresentativeProjectMarker": true,
+      "coordinates": {
+        "latitude": -41.3440278,
+        "longitude": -72.94986109999999,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "41°20'38.5",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "candidatePinNotAdopted": null,
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/terrazas-del-mirador-casas/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/terrazas-del-mirador/",
+        "observedAtUTC": "2026-11-19T09:55:55.683561+00:00",
+        "bodySHA256": "5542379ef07eac0db9a26ce28ae7a37b601891b11f90f2b232827242b04bc860",
+        "bodyBytes": 178529,
+        "identityHeading": "TERRAZAS DEL MIRADOR",
+        "addressQuote": "Los Tulipanes manzana B casa 10",
+        "quoteWords": 6,
+        "rawExtract": "terrazas-del-mirador-official-extract.json",
+        "rawExtractSHA256": "296951ff3b7828f8dac91647ce39edf847d2814655f561280469e3fa0284335b"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d5990.765933163432!2d-72.949863!3d-41.344029!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDIwJzM4LjUiUyA3MsKwNTYnNTkuNSJX!5e0!3m2!1ses!2sus!4v1756097456256!5m2!1ses!2sus",
+        "observedAtUTC": "2026-11-19T09:57:13.646094+00:00",
+        "bodySHA256": "99302861b5ea749223670487a1188644a63db4c1eb2f0e1c3b566ba40ba3f17a",
+        "bodyBytes": 2309,
+        "markerContextExcerpt": "Pq6LrAQ\",null,null,null,[[[5990.765933163432,-72.94986299999999,-41.344029],null,null,13.10000038146973],null,0,[[null,\"41°20'38.5\\\"S 72°56'59.5\\\"W\",[-41.3440278,-72.94986109999999]],\"41°20'38.5\\\"S 72°56'59.5\\\"W\",[\"-41.344028, -72.949861\"],null,null,null,null,null,null,null,null,null,null,\"M342+93J ",
+        "rawExtract": "terrazas-del-mirador-google-map-extract.json",
+        "rawExtractSHA256": "dbf914d524bbadf486b1ba3996ccb509c190763fca4b67ee27fd5874c78c5b1e",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false
+      },
+      "conflicts": [],
+      "limitations": [
+        "El mapa oficial consulta un parDMS explícito. Se usa el marcador seleccionado devuelto en la página pública del embed, no el centro de cámara; la ficha oficial vincula ese pin con su nombre y dirección."
+      ],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    },
+    {
+      "slug": "altos-del-mirador",
+      "name": "Altos del Mirador",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Glorias Navales 100",
+      "commune": "Coquimbo",
+      "region": "Coquimbo",
+      "status": "VERIFICADO_PIN_OFICIAL_PROYECTO",
+      "eligibleForRepresentativeProjectMarker": true,
+      "coordinates": {
+        "latitude": -29.9854438,
+        "longitude": -71.3198932,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "Altos Del Mirador",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "candidatePinNotAdopted": null,
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/altos-del-mirador-casas/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/altos-del-mirador-casas/",
+        "observedAtUTC": "2026-11-19T09:55:56.623909+00:00",
+        "bodySHA256": "87b7dbc1ec19e9530929aa04d1a65e6c2568b7a614f812f89fab5fe39334e9b8",
+        "bodyBytes": 210248,
+        "identityHeading": "ALTOS DEL MIRADOR",
+        "addressQuote": "Glorias Navales N° 100, Coquimbo",
+        "quoteWords": 5,
+        "rawExtract": "altos-del-mirador-official-extract.json",
+        "rawExtractSHA256": "98ef1405db3aa98e5642d9192e6e45df93517f93e7dc02d2a73435d17cde2aa8"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6911.367598681161!2d-71.321871!3d-29.988516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691c931e3954f55%3A0x182361ddb161454!2sAltos%20Del%20Mirador!5e0!3m2!1ses!2sus!4v1757475259774!5m2!1ses!2sus",
+        "observedAtUTC": "2026-11-19T09:56:42.573513+00:00",
+        "bodySHA256": "d3f4cb3d9a332bb4d9b1bac3dfc20072f6b51d3d995af26f55b7e034a11ad6d6",
+        "bodyBytes": 2517,
+        "markerContextExcerpt": "3.10000038146973],null,0,[[\"0x9691c931e3954f55:0x182361ddb161454\",\"Altos Del Mirador - Glorias Navales, 1793994 Coquimbo, Chile\",[-29.9854438,-71.3198932],\"108708842867922004\"],\"Altos Del Mirador\",[\"Glorias Navales\",\"1793994 Coquimbo\",\"Chile\"],4.5,\"150 reseñas\",null,null,null,null,n",
+        "rawExtract": "altos-del-mirador-google-map-extract.json",
+        "rawExtractSHA256": "7f0b997beec4ccff4217c15e40d3e8d421b9ebc248b928bfd35fa5c9aaa9bdf4",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false
+      },
+      "conflicts": [],
+      "limitations": [
+        "Feature nombradaAltosDelMirador enGloriasNavales/Coquimbo; el número100 procede de la ficha oficial. Punto representativo del proyecto, no acceso o lote individual."
+      ],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    },
+    {
+      "slug": "condominio-hacienda-junquillar",
+      "name": "Condominio Hacienda Junquillar",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Av. Laguna Junquillar 105",
+      "commune": "San Pedro de la Paz",
+      "region": "Biobío",
+      "status": "VERIFICADO_PIN_OFICIAL_PROYECTO",
+      "eligibleForRepresentativeProjectMarker": true,
+      "coordinates": {
+        "latitude": -36.9051111,
+        "longitude": -73.1426389,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "36°54'18.4",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "candidatePinNotAdopted": null,
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/condominio-hacienda-junquillar-casas/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/condominio-hacienda-junquillar-casas/",
+        "observedAtUTC": "2026-11-19T09:55:56.620859+00:00",
+        "bodySHA256": "cd384b2d921ae9ab1cd9db6e9e9e92d7b9c026d37e73008f5c926ce418357453",
+        "bodyBytes": 211468,
+        "identityHeading": "CONDOMINIO HACIENDA JUNQUILLAR",
+        "addressQuote": "Av . Laguna Junquillar 105 San Pedro de la Paz",
+        "quoteWords": 10,
+        "rawExtract": "condominio-hacienda-junquillar-official-extract.json",
+        "rawExtractSHA256": "97c2483964e8f1984a6d87479d1a05855b408e5f0294ca9ff500e14906fe2250"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d6380.765589106543!2d-73.142639!3d-36.905111!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDU0JzE4LjQiUyA3M8KwMDgnMzMuNSJX!5e0!3m2!1ses!2sus!4v1757909334575!5m2!1ses!2sus",
+        "observedAtUTC": "2026-11-19T09:57:13.644273+00:00",
+        "bodySHA256": "9d5a45a48e7840e077624946d00cedf421f570c22f315d0326029c62b2c3f24c",
+        "bodyBytes": 2317,
+        "markerContextExcerpt": "Feaw5OUPzsKGoQk\",null,null,null,[[[6380.765589106543,-73.142639,-36.905111],null,null,13.10000038146973],null,0,[[null,\"36°54'18.4\\\"S 73°08'33.5\\\"W\",[-36.9051111,-73.14263889999999]],\"36°54'18.4\\\"S 73°08'33.5\\\"W\",[\"-36.905111, -73.142639\"],null,null,null,null,null,null,null,null,null,null,\"3VV4+XW5 ",
+        "rawExtract": "condominio-hacienda-junquillar-google-map-extract.json",
+        "rawExtractSHA256": "44bb6ee5b141124aa9588cba3562c9f1aa5ccc0c602860d5b8015626a2495a22",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false
+      },
+      "conflicts": [],
+      "limitations": [
+        "El mapa oficial consulta un parDMS explícito. Se usa el marcador seleccionado devuelto en la página pública del embed, no el centro de cámara; la ficha oficial vincula ese pin con su nombre y dirección."
+      ],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    },
+    {
+      "slug": "condominio-hacienda-volcanes",
+      "name": "Condominio Hacienda Volcanes",
+      "developer": "GPR",
+      "publishedAddressUnchanged": "Volcán Michimavida 360",
+      "commune": "Puerto Montt",
+      "region": "Los Lagos",
+      "status": "VERIFICADO_PIN_OFICIAL_PROYECTO",
+      "eligibleForRepresentativeProjectMarker": true,
+      "coordinates": {
+        "latitude": -41.454618,
+        "longitude": -72.9110267,
+        "unit": "decimal degrees WGS84",
+        "kind": "selected-map-feature-marker-not-camera",
+        "sourceLabel": "Volcán Michimavida 360",
+        "scope": "Punto representativo publicado en el mapa de la ficha oficial del proyecto; no certifica acceso exacto, unidad o deslinde."
+      },
+      "candidatePinNotAdopted": null,
+      "source": {
+        "kind": "official-developer-project-fiche-and-linked-public-map",
+        "url": "https://gpr.cl/inmobiliaria/condominio-hacienda-volcanes-casas/",
+        "requestedURL": "https://gpr.cl/inmobiliaria/condominio-hacienda-volcanes/",
+        "observedAtUTC": "2026-11-19T09:55:57.522593+00:00",
+        "bodySHA256": "06a453f4d61c3fa88e4881dff6bb875390317b0277493b595cba4af38a972d82",
+        "bodyBytes": 193401,
+        "identityHeading": "CONDOMINIO HACIENDA VOLCANES",
+        "addressQuote": "Calle Volcán Michimavida 360, Valle Volcanes, Puerto Montt.",
+        "quoteWords": 8,
+        "rawExtract": "condominio-hacienda-volcanes-official-extract.json",
+        "rawExtractSHA256": "8ecfba0dc6fcd0de52b46d36d4375a36e12d5e32e1fca9c092decaf4b6039ed1"
+      },
+      "linkedMap": {
+        "url": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5980.66151577508!2d-72.910828!3d-41.453741!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96183a8f5e2b5bc9%3A0xf95cde22b41437cd!2sVolc%C3%A1n%20Michimavida%20360%2C%205504944%20Puerto%20Montt%2C%20Los%20Lagos%2C%20Chile!5e0!3m2!1ses!2sus!4v1757393721451!5m2!1ses!2sus",
+        "observedAtUTC": "2026-11-19T09:56:42.425578+00:00",
+        "bodySHA256": "304d7b75f81f516e8bd75cf943e52393715e8c31cd32c5cd19a56c8e59da4400",
+        "bodyBytes": 2391,
+        "markerContextExcerpt": "0000038146973],null,0,[[\"0x96183a8f5e2b5bc9:0xf95cde22b41437cd\",\"Volcán Michimavida 360, 5504944 Puerto Montt, Los Lagos, Chile\",[-41.454618,-72.91102669999999]],\"Volcán Michimavida 360\",[\"5504944 Puerto Montt\",\"Los Lagos\",\"Chile\"],null,null,null,null,null,null,null,null,null,\"Edificio mu",
+        "rawExtract": "condominio-hacienda-volcanes-google-map-extract.json",
+        "rawExtractSHA256": "bb268752ff268ca89c86b2b710023ad99816c8175c633f8e99bf801879ee450c",
+        "readViaOfficialEmbedding": true,
+        "privateAPIUsed": false
+      },
+      "conflicts": [],
+      "limitations": [],
+      "precision": {
+        "type": "official-selected-project-or-address-marker",
+        "notGeocodedByAgent": true,
+        "notCityOrStreetCenter": true,
+        "notSurveyedOrEntranceCertified": true
+      },
+      "noCommercialAttributesRecovered": true
+    }
+  ],
+  "operations": {
+    "publicPrimaryHTTPGetOnly": true,
+    "browserUsed": false,
+    "credentialsCookiesTokensReadOrStored": false,
+    "privateAPIs": false,
+    "geocoderOrApproximateCenters": false,
+    "applicationEdits": false,
+    "deployments": 0,
+    "publication": false
+  },
+  "continuity": "Root may review representative-project scope and pending address conflicts before integration. Do not silently replace public addresses or mark unresolved1847/1855/2001 as exact-access matches."
+}

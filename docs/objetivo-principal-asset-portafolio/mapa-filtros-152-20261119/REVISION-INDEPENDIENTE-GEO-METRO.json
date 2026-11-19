@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "kind": "REVISION_INDEPENDIENTE_READ_ONLY_GEO_METRO_Y_ALCANCES_NO_GPR",
+  "reviewedAtUTC": "2026-11-19T10:24:21.447969+00:00",
+  "verdict": "APROBADO_CON_OBSERVACIONES",
+  "blockingFindings": 0,
+  "baseCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
+  "checkout": "/private/tmp/sollahms-mapa-filtros-21-20261119",
+  "ownedFilesVerified": [
+    {
+      "path": "assets/js/catalog.mjs",
+      "sha256": "b95b8d340132efa7fb470eb14eb76badd0baae04afaf9e3851eb166280670256",
+      "bytes": 18783
+    },
+    {
+      "path": "assets/js/catalog-map.mjs",
+      "sha256": "0d2d514a35be8f05b6d2022133e3f83b1c404d8c99e74d40725e4c07c92c1845",
+      "bytes": 17237
+    },
+    {
+      "path": "assets/js/catalog-expansion-locations.mjs",
+      "sha256": "637cdfb77904c0805782c25259cbe6934e6a6cb63fc90a58bb52bc276b929c92",
+      "bytes": 11563
+    },
+    {
+      "path": "data/catalog-expansion-locations-20261119.json",
+      "sha256": "d2d6e8b196063797a262c5f7796d12c6e88c1755cee137f44502495916acf90e",
+      "bytes": 33388
+    },
+    {
+      "path": "tests/catalog-expansion-locations.test.mjs",
+      "sha256": "58ae216186e2aa038297daa9d1c42f22266d4f0fc7785148ab5221ea47f48a4e",
+      "bytes": 17122
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "9310062b514dd2a65dd2b579c2a5d647cd1d51eb94358749898c2db8a6759d75",
+      "bytes": 4060
+    }
+  ],
+  "implementationReceipt": {
+    "path": "/private/tmp/sollahms-mapa-21-20261119/IMPLEMENTACION-MAPA-FILTROS-21.json",
+    "sha256": "7cdaa0cfed988163130064187660c2f05c89aaf538e2a6c1df8cdadf1d88bb5d"
+  },
+  "preservation": [
+    {
+      "path": "data/catalog-expansion-iris-20261118.json",
+      "sha256": "33ca3e27f847eca939e8ce3ce9032328a9288c1ff38ed12cf4cd6eddbe3401bb",
+      "matched": true
+    },
+    {
+      "path": "data/project-locations.json",
+      "sha256": "e15ac90bc84227a5cff148c17ed7737ac247e8cae60a38652e5e603dd27fdd6d",
+      "matched": true
+    },
+    {
+      "path": "data/project-metro.json",
+      "sha256": "1a68aafcae7e2ac7097ab24de8828a2e6029c9e25cfbfc3367c36440e3592f49",
+      "matched": true
+    },
+    {
+      "path": "data/metro-network.json",
+      "sha256": "bb40e98c6f5530c657ea2ba7e9651d980f21a94b08dea57315a107fe5d477ce7",
+      "matched": true
+    },
+    {
+      "path": "data/proyectos.json",
+      "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b",
+      "matched": true
+    }
+  ],
+  "readOnlyMethod": {
+    "newIrisQueries": 0,
+    "newWebQueriesDuringThisReview": 0,
+    "applicationModulesExecuted": 0,
+    "newTestsExecutedByReviewer": 0,
+    "applicationFilesEdited": 0,
+    "ownerQuestionsCreated": 0,
+    "deploymentsOrPublications": 0
+  },
+  "testEvidenceAcceptedNotRepeated": {
+    "command": "node --test tests/catalog-expansion-locations.test.mjs",
+    "distinct": 18,
+    "passed": 18,
+    "failed": 0,
+    "log": {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/PRUEBAS-GEO-CORRECCION-SPLIT-FINAL.log",
+      "sha256": "67cc555ec41dafe0f5694beb386abe85e20c294c2678b17ee15fa7be7dd6ac4c"
+    },
+    "prior16ImplementationRunNotAdded": true,
+    "historicSuitesNotRepeated": true,
+    "prior16And17RunsNotAdded": true
+  },
+  "checks": [
+    {
+      "id": "GEO-R01",
+      "status": "PASS",
+      "finding": "El overlay final y la constante de transporte coinciden en D2. Los hashes de la red bb40 y del catálogo comercial 33ca se conservan."
+    },
+    {
+      "id": "GEO-R02",
+      "status": "PASS",
+      "finding": "Los 21 slugs, IDs, direcciones, comunas y regiones coinciden con el catálogo comercial. Ninguno colisiona con las 131 ubicaciones originales."
+    },
+    {
+      "id": "GEO-R03",
+      "status": "PASS",
+      "finding": "Los 12 puntos no GPR mantienen alcance de proyecto o dirección específica y precisión representativa. No certifican una entrada, parcela, stock o disponibilidad."
+    },
+    {
+      "id": "GEO-R04",
+      "status": "PASS_WITH_OBSERVATION",
+      "finding": "Vicuña1439 usa la entidad geográfica1439 y conserva1441 como antecedente distinto. Compañía1735 conserva1703 por separado. Las notas públicas evitan afirmar equivalencia de accesos. Botánico1722 tiene un puente primario explícito con la esquina publicada."
+    },
+    {
+      "id": "GEO-R05",
+      "status": "PASS",
+      "finding": "Alameda usa el edificio OSM4719 con dirección exacta; el punto SNIFA discrepante a407m se descartó. ECasa3750 coincide con el edificio OSM a4m. Se descartaron centroides de calles/barrios e interpolación de direcciones."
+    },
+    {
+      "id": "GEO-R06",
+      "status": "PASS",
+      "finding": "Los WeakSet de transporte y registro impiden fusionar geografía arbitraria. El esquema exige hashes y21 identidades. Una fuente inválida no genera pines parcialmente aceptados."
+    },
+    {
+      "id": "GEO-R07",
+      "status": "PASS",
+      "finding": "El merge rechaza colisiones, conserva los objetos originales y deja intactos los cinco registros de datos protegidos leídos."
+    },
+    {
+      "id": "GEO-R08",
+      "status": "PASS",
+      "finding": "Metro sólo deriva de126 estaciones operativas pinneadas para los14 proyectos metropolitanos. Usa distancia geográfica Haversine y route:null; no crea trayectos caminando ni geometrías futuras. No hace geocodificación o consultas de proveedor durante el uso de la aplicación."
+    },
+    {
+      "id": "GEO-R09",
+      "status": "PASS",
+      "finding": "Un hash de red inválido conserva los puntos de mapa válidos y no admite nuevas coincidencias Metro. Los proyectos originales mantienen su contexto previo."
+    },
+    {
+      "id": "GEO-R10",
+      "status": "PASS",
+      "finding": "El mapa recibe el mismo subconjunto filtrado y ordenado del catálogo. No agrega todas las ubicaciones independientemente de los resultados."
+    },
+    {
+      "id": "GEO-R11",
+      "status": "PASS_RESOLVED",
+      "finding": "El defecto de vista dividida quedó corregido: el aviso pendiente aparece sólo sin un punto admitido; los puntos válidos reutilizan el botón Ubicar en mapa. El helper comprueba WeakSet e identidad actual, además del slug.",
+      "file": "assets/js/catalog.mjs",
+      "line": 79
+    },
+    {
+      "id": "GEO-R12",
+      "status": "PASS",
+      "finding": "La geografía no completa precios, dormitorios, baños, superficies, amenities, stock o datos financieros. Fuente21, catálogo131, ubicaciones, conexiones Metro y estaciones conservan sus hashes."
+    },
+    {
+      "id": "GEO-R13",
+      "status": "PASS",
+      "finding": "El fallo de geografía conserva152 fichas y un aviso persistente role=status/aria-live fuera de paneles. El mapa mantiene las131 ubicaciones originales y no admite positivos geográficos de datos sin validar."
+    },
+    {
+      "id": "GEO-R14",
+      "status": "PASS",
+      "finding": "Vercel añade únicamente deploymentEnabled=false para la rama técnica de mapa; conserva la exclusión del destino y toda la configuración restante.",
+      "file": "vercel.json",
+      "line": 85
+    }
+  ],
+  "resolvedBeforeFinalCut": [
+    {
+      "finding": "Pin de transporte temporal470 frente al overlayD2.",
+      "disposition": "Era coordinación conocida durante la integración. El corte finalD2 coincide; no queda un defecto persistente."
+    },
+    {
+      "finding": "La vista dividida mostraba Coordenadas por verificar y suprimía Ubicar en mapa para los21 puntos válidos.",
+      "disposition": "Corregido en el corte final. El implementador añadió una prueba específica; se aceptan18/18 Node sin repetirlos. Root documentó la reproducción roja y el control Chrome verde del botón Kiez."
+    }
+  ],
+  "observations": [
+    "Los puntos son representativos: no certifican entradas, recorridos caminando, límites de parcela, stock o disponibilidad.",
+    "VM1439/1441 y Sento1735/1703 permanecen distintos. El marcador de la dirección publicada no cambia el texto comercial ni prueba un acceso común.",
+    "Botánico source1722 se respalda mediante la misma página primaria que describe la esquina Claudio Gay/Manuel Rodríguez; la dirección publicada no cambia.",
+    "Se acepta el QA local dirigido de root,15/15. Su observación localUFNotEmulated=1 no implica una nueva validación financiera: los módulos financieros permanecen fuera del delta.",
+    "La verificación de un deployment y de la publicación real corresponde a root. Este dictamen no las sustituye ni amplía las autorizaciones existentes."
+  ],
+  "original131PreservedByDataHashes": true,
+  "commercialSource21Unchanged": true,
+  "historical313Closures": 0,
+  "globalObjectiveComplete": false,
+  "vercelExclusionOnly": {
+    "sourceBranch": "codex/mapa-filtros-21-proyectos-20261119",
+    "sourceDeploymentEnabled": false,
+    "targetBranch": "codex/footer-sin-frase-20261116",
+    "targetDeploymentEnabled": false,
+    "onlyAddedOneFalseBranchEntry": true,
+    "noEnvironmentDomainOrFunctionConfigurationChanged": true
+  },
+  "localChromeEvidenceAcceptedNotRepeated": {
+    "checks": 15,
+    "passed": 15,
+    "evidence": {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/QA-CHROME-LOCAL.json",
+      "sha256": "71d00ca78c7b2fd59e8dd9574217e393eaf946f81502b37fecac5766614cbb0d"
+    },
+    "specificRedReproduction": {
+      "path": "/private/tmp/sollahms-mapa-21-20261119/REPRODUCCION-SPLIT-ROJO.json",
+      "sha256": "48716e1025ef959429a8ee87fee547c42a12cab1b4a10e9aab047061f58c6a3f"
+    },
+    "containsNewSplitButtonAndFailure503TamperChecks": true,
+    "notFinancialRecertification": true
+  },
+  "originalMetroProjectRecordsUnchanged": 100
+}
