@@ -4,6 +4,7 @@ import {publicOrigin} from './commercial-context.mjs?v=20261029-euro-1';
 import {matchedLabels,defaults} from './catalog-filter-engine.mjs?v=20261029-euro-1';
 import {priceFromLabel,offerPriceLabel,commercialLayerNote,projectOffer as selectedOffer,projectFacts,validPrice} from './catalog-model.mjs?v=20261029-euro-1';
 import {locateProjects,locationGroups,clusterLocations,validMapState,MAP_STATE_KEY} from './catalog-map-model.mjs';
+import {mergeExpansionLocations,expansionLocationLabels} from './catalog-expansion-locations.mjs';
 const el=(tag,text,classes)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(classes)node.className=classes;return node;};
 const price=value=>new Intl.NumberFormat('es-CL',{maximumFractionDigits:2,minimumFractionDigits:Number.isInteger(value)?0:2}).format(value);
 const json=async url=>{const r=await fetch(url,{signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error('map-resource');return r.json();};
@@ -26,8 +27,9 @@ async function styles(url,id){
     const theme=document.querySelector('link[href*="sollahms-theme.css"]');document.head.insertBefore(link,theme);
   });
 }
-export async function createCatalogMap({host,onAlternative,origin=null}){
-  const [L,registry,provider]=await Promise.all([leaflet(),json('/data/project-locations.json'),json('/data/map-provider.json'),styles('/assets/vendor/leaflet-1.9.4/leaflet.css','catalog-leaflet-style'),styles('/assets/css/catalog-map.css','catalog-map-style')]);
+export async function createCatalogMap({host,onAlternative,origin=null,additionalLocations=null}){
+  const [L,baseRegistry,provider]=await Promise.all([leaflet(),json('/data/project-locations.json'),json('/data/map-provider.json'),styles('/assets/vendor/leaflet-1.9.4/leaflet.css','catalog-leaflet-style'),styles('/assets/css/catalog-map.css','catalog-map-style')]);
+  const registry=mergeExpansionLocations(baseRegistry,additionalLocations);
   if(!registry.locations||!/^https:\/\/tile\.openstreetmap\.org\/\{z\}\/\{x\}\/\{y\}\.png$/.test(provider.tileUrl))throw Error('map-config');
   host.replaceChildren();host.setAttribute('aria-busy','false');
   const toolbar=el('div',undefined,'catalog-map-toolbar'),status=el('p',undefined,'catalog-map-status');status.id='map-result-status';status.setAttribute('role','status');
@@ -73,7 +75,7 @@ export async function createCatalogMap({host,onAlternative,origin=null}){
     const offer=selectedOffer(p,filterState),amount=el('p',offerPriceLabel(p,filterState),'catalog-price-value');
     const link=el('a','Ver ficha','catalog-details-link');link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(location.search,'buscador'))+(p.catalogPricePolicy==='by-product'&&(type==='Comercial'||filterState.propertyType==='local'||offer.euroOwnerQuote&&offer.propertyType==='local')?'&oferta=local':'')+(['AJ Urbana','Sento'].includes(p.inmobiliaria)&&/^[012]$/.test(filterState.bedrooms)&&p.commercialOffers?.some(o=>o.id===filterState.bedrooms+'d')?'&oferta='+filterState.bedrooms+'d':'')+(leonCatalogOfferId(p,filterState)?'&oferta='+leonCatalogOfferId(p,filterState):'')+(p._ecasaStageNumber?'#etapa-'+p._ecasaStageNumber:'');link.setAttribute('aria-label','Ver ficha de '+p.nombre);
     if(filterState.evidenceMode==='documentary'){link.textContent='Ver ficha publicada';link.href=p.detalleUrl+'?origen='+(origin??publicOrigin(globalThis.location.search,'buscador'));link.setAttribute('aria-label','Ver ficha publicada de '+p.nombre);}
-    detail.append(figure,title,location);const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(commercialLayerNote(p,filterState))detail.append(el('p',commercialLayerNote(p,filterState),'catalog-price-type'));if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));const metro=metroSummary(p,filterState);if(metro)detail.append(el('p',metro.station+' · '+metro.lines+' · '+metro.distance,'catalog-metro-summary'));detail.append(link);
+    detail.append(figure,title,location);const contextLabels=expansionLocationLabels(p,row.location);if(contextLabels.length){for(const label of contextLabels)detail.append(el('p',label,'catalog-location'));}else{const address=p.direccion||row.location.siteAddress;if(address)detail.append(el('p',address+(row.location.siteAddress?' · conjunto':''),'catalog-location'));}if(row.location.publicNote)detail.append(el('p',row.location.publicNote,'catalog-location'));detail.append(facts,amount);if(commercialLayerNote(p,filterState))detail.append(el('p',commercialLayerNote(p,filterState),'catalog-price-type'));if(offer.typology)detail.append(el('p',offer.typology==='Local'?'Local comercial':offer.typology,'catalog-price-type'));const metro=metroSummary(p,filterState);if(metro)detail.append(el('p',metro.station+' · '+metro.lines+' · '+metro.distance,'catalog-metro-summary'));detail.append(link);
     const matches=matchedLabels(p,filterState);if(matches.length){const list=el('ul',undefined,'cf-match-list');list.setAttribute('aria-label','Coincidencias verificadas');for(const label of matches.slice(0,3))list.append(el('li',label));detail.append(list);}
     if(reveal){map.setView([row.location.lat,row.location.lng],Math.max(15,map.getZoom()),{animate:false});}
     redraw();remember();
