@@ -41,3 +41,14 @@ Repetir una muestra equivalente de Google Chile/es/escritorio, separando consult
 - [Google: favicon en resultados](https://developers.google.com/search/docs/appearance/favicon-in-search). PNG figura entre los formatos admitidos; la aparición no está garantizada y requiere un nuevo rastreo/procesamiento.
 - [Google: enlaces de título](https://developers.google.com/search/docs/appearance/title-link?hl=es). Google considera varias señales, incluido og:title; no permite fijar manualmente el título final.
 - [Google: solicitud de nuevo rastreo](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl?hl=es). Una solicitud no garantiza ni acelera por repetición la indexación.
+
+## Candidato concreto para revisar
+
+- [PR #38](https://github.com/lasopho/sollahms-web/pull/38), apilado sobre la rama del PR #37 para aislar esta mejora adicional.
+- Fuente de runtime: `942cc6401de9092a4cd37c55bdb0cc57e79ce3e6`. Las evidencias de despliegue se agregan después como documentación, sin cambiar runtime.
+- [Preview privada](https://project-wrapp-mdt3f6mav-lsandoval2-8260s-projects.vercel.app), ID `dpl_J9eJCCKtDDuT5SL5PMtd8q6e1BqL`, entorno preview, READY, SSO.
+- [Inventario remoto](preview-remote-integrity.json): 1724 de 1724 UID SHA1 coinciden, siete funciones/57 archivos y configuración idénticos al artefacto esperado.
+- [HTTP](preview-http-verification.json): 12 páginas corporativas + robots + sitemap exactos; HTML noindex; acceso anónimo redirige al SSO de Vercel.
+- [Ficha del candidato](candidate.json). La producción actual no se ha modificado y la aprobación de publicación está pendiente.
+
+[Los dos recursos de icono](preview-assets-http.json) responden HTTP 200 con tipo correcto y bytes exactos. La [comprobación posterior](production-after-preview.json) confirma ambos alias en el deployment previo, SHA autorizado y todos los ajustes productivos/SSO idénticos. Cero cambios productivos, envíos reales o solicitudes de indexación.
