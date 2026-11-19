@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Filtros SEO/GEO offline v2; conserva importaciones y observaciones originales.
+"""Filtros SEO/GEO offline v2/v3; conserva importaciones y observaciones originales.
 
 El registro es una lista positiva exacta. Solo se retiran fragmentos al clasificar
 URL; cualquier query, alias de host, esquema o ruta desconocida queda fuera.
@@ -22,6 +22,17 @@ _spec.loader.exec_module(legacy)
 SCOPE_FILTER_ID = 'seo_measurement_scope_id'
 SCOPE_FILTER_HASH = 'seo_measurement_scope_sha256'
 CONTEXTS = {'corporate', 'project_only', 'none', 'unclear'}
+BASE_URL_FIELDS = (('included_urls', 'included'),
+                   ('excluded_project_urls', 'excluded_project'),
+                   ('technical_noncontent_urls', 'technical_noncontent'))
+
+
+def scope_url_fields(scope):
+    """La categoría estratégica nueva no cambia la interpretación histórica v2."""
+    fields = list(BASE_URL_FIELDS)
+    if scope.get('scope_version') == 3 and 'excluded_strategy_urls' in scope:
+        fields.append(('excluded_strategy_urls', 'excluded_strategy'))
+    return fields
 
 
 def canonical_candidate(value):
@@ -37,10 +48,10 @@ def canonical_candidate(value):
 def load_scope(path):
     raw = Path(path).read_bytes()
     scope = json.loads(raw)
-    if scope.get('scope_version') != 2 or not isinstance(scope.get('scope_id'), str) or not scope['scope_id']:
-        legacy.fail('Registro de alcance v2 inválido')
+    if scope.get('scope_version') not in (2, 3) or not isinstance(scope.get('scope_id'), str) or not scope['scope_id']:
+        legacy.fail('Registro de alcance v2/v3 inválido')
     seen = set()
-    for field in ('included_urls', 'excluded_project_urls', 'technical_noncontent_urls'):
+    for field, _ in scope_url_fields(scope):
         urls = scope.get(field)
         if not isinstance(urls, list) or len(urls) != len(set(urls)):
             legacy.fail('Lista de URL ausente o duplicada: ' + field)
@@ -59,9 +70,7 @@ def scope_label(scope, sha):
 
 def classify(url, scope):
     candidate = canonical_candidate(url)
-    for field, category in (('included_urls', 'included'),
-                            ('excluded_project_urls', 'excluded_project'),
-                            ('technical_noncontent_urls', 'technical_noncontent')):
+    for field, category in scope_url_fields(scope):
         if candidate is not None and candidate in scope[field]:
             return category
     return 'unknown'
@@ -92,7 +101,8 @@ def segment(input_path, scope_path):
         legacy.fail('Segmentar solo tablas por página o estados de indexación; nunca sumar páginas como serie diaria')
     result = {k: copy.deepcopy(record[k]) for k in
               ('schema_version', 'kind', 'manifest', 'csv_sha256', 'manifest_sha256', 'warnings', 'note') if k in record}
-    counts = {k: 0 for k in ('included', 'excluded_project', 'technical_noncontent', 'unknown')}
+    counts = {category: 0 for _, category in scope_url_fields(scope)}
+    counts['unknown'] = 0
     selected, unknown = [], set()
     for row in record['rows']:
         category = classify(row[field], scope)

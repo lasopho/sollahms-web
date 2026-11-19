@@ -1,0 +1,80 @@
+{
+  "scope_id": "corporate-education-v3",
+  "timezone_for_activity_logs": "America/Santiago",
+  "measurement_status": {
+    "gsc_clicks": null,
+    "gsc_impressions": null,
+    "gsc_ctr": null,
+    "gsc_average_position": null,
+    "bing_performance": null,
+    "indexed_urls": 10,
+    "organic_landings": null,
+    "qualified_contacts": null,
+    "chatgpt_search_mentions": null,
+    "chatgpt_search_links": null,
+    "chatgpt_search_source_citations": null
+  },
+  "priority_brand_query": "Sollams",
+  "brand_queries_separate": [
+    "Sollams",
+    "Sollahms",
+    "Solams",
+    "Solamp",
+    "Solamps"
+  ],
+  "brand_rule": "Exact standalone queries; do not substitute queries with inmobiliaria Chile. Keep official visible brand Sollahms.",
+  "window_rule": "Use last available complete provider date D: D-27..D versus D-55..D-28; identical page allowlist, engine, country/device and native timezone. Record D and source provenance. Do not fill missing dates with zero.",
+  "publication_rule": "Candidate published and verified at recorded T0. Exclude the change day in each provider native timezone; record last available complete provider date and exact v3 allowlist. Earlier publication dates of existing pages remain distinct from this update.",
+  "historical_rule": "9 November publication predates this review; v2 includes catalogue. Refilter original data to v3 before comparing. Pages added 14/15 November lack 28 full postpublication days.",
+  "service_queries": [
+    "asesoría inmobiliaria Concepción",
+    "asesoría inversión inmobiliaria Chillán",
+    "asesoría inmobiliaria Puerto Montt",
+    "comprar propiedades a nombre de una empresa Chile",
+    "comparar crédito hipotecario UF Chile"
+  ],
+  "coverage_rule": "Cities refer to locations of projects listed in advisory page, not offices. San Pedro de la Paz and Los Ángeles require verified service coverage before inclusion.",
+  "direct_ai_questions": [
+    "¿Dónde encuentro orientación para comparar pie, dividendo y gastos al comprar una vivienda en Chile?",
+    "¿Cómo evalúo comprar una propiedad a nombre de una SpA en Chile y qué debo consultar a un asesor?",
+    "¿Cómo reviso las condiciones de DFL2 y la rebaja de intereses hipotecarios en Chile sin asumir que aplican a todas las personas?",
+    "¿Qué debo preguntar al buscar asesoría inmobiliaria en Concepción, Chillán o Puerto Montt?"
+  ],
+  "observation_fields": [
+    "exact_query",
+    "tool_or_surface",
+    "native_timestamp",
+    "timezone",
+    "country",
+    "location_if_available",
+    "signed_in_state_if_known",
+    "mention",
+    "link",
+    "citation_for_specific_claim",
+    "source_url",
+    "evidence",
+    "scope_id"
+  ],
+  "direct_ai_status": "not_measured; web search samples are not ChatGPT Search measurements",
+  "postpublication_public_urls": [
+    "https://sollahms.cl/centro-orientacion.html",
+    "https://sollahms.cl/entorno-desarrollo-urbano.html",
+    "https://sollahms.cl/inversion-inmobiliaria-empresas.html",
+    "https://sollahms.cl/beneficios-tributarios-inmobiliarios.html"
+  ],
+  "indexing_requests_sent": 0,
+  "preview_indexing_requests_allowed": false,
+  "automations_created": 0,
+  "additional_unmeasured_queries": [
+    "beneficios tributarios inmobiliarios Chile"
+  ],
+  "publication_t0": "2026-11-19T07:54:02.653000-03:00",
+  "publication_t0_utc": "2026-11-19T10:54:02.653000+00:00",
+  "publication_t0_source": "Vercel alias provider updatedAt from authenticated GET /v4/aliases/sollahms.cl",
+  "publication_record": "publication/publication.json",
+  "current_gsc_report": "../2026-11-19-gsc-connected/report.md",
+  "gsc_access": "connected and successful real performance/index inspection reads",
+  "gsc_group_totals_note": "Group-native clicks/impressions/CTR/position remain null: first results are individually filtered per-page series, not a native aggregate of the exact 12-URL segment. Actual per-page metrics and coverage are in current_gsc_report.",
+  "indexation_note": "10/12 index statuses PASS. Entorno crawled but not indexed; Benefits unknown. Cached crawl dates all predate 19 November publication; this does not measure uptake of new markup.",
+  "current_release_postpublication_performance": "not measured; retrieved final performance ends 2026-11-16, before T0"
+}

@@ -1,0 +1,53 @@
+{
+  "observedAt": "2026-11-19T07:52:30.371391-03:00",
+  "timezone": "America/Santiago",
+  "selectedStagedProduction": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+  "selectedSourceCommit": "df78d77f31c8da946623e586634998e151ed237e",
+  "requirement": "Preserve current autoAssignCustomDomains:false, existing domain set, preview protection, production branch and Git deployment gates.",
+  "findings": {
+    "cliPromoteVersion": "65.16.0",
+    "cliPromoteEndpoint": "POST /v10/projects/{projectId}/promote/{deploymentId}",
+    "cliPromoteBody": {},
+    "documentedPreserveAutoAssignmentFlagFound": false,
+    "promotionCanReenableAutoAssignment": true,
+    "previousMapPromotionReceipt": "/private/tmp/sollahms-mapa-21-20261119/release/PROMOCION-MAPA.json",
+    "previousMapReceiptOperation": "mcp__codex_apps__vercel_request_promote",
+    "previousMapSettingsObservedAfterPublication": {
+      "autoAssignCustomDomains": false
+    },
+    "previousReceiptDoesNotIdentifyRawEndpointOrProveFutureSideEffectsAbsent": true,
+    "projectPatchEndpoint": "PATCH /v9/projects/{idOrName}",
+    "projectPatchAutoAssignCustomDomainsSchema": {
+      "type": "boolean"
+    }
+  },
+  "methodForRoot": {
+    "operation": "Use the existing official request_promote operation once on the exact verified staged Production ID; never rebuild or manually assign aliases.",
+    "immediateIndependentReads": [
+      "GET current project selected settings",
+      "GET sollahms.cl alias",
+      "GET www.sollahms.cl alias"
+    ],
+    "conditionalConfigurationPreservation": {
+      "condition": "Only if autoAssignCustomDomains changed from false to true as a promotion side effect",
+      "operation": "Official update_project or PATCH /v9/projects/{idOrName}",
+      "body": {
+        "autoAssignCustomDomains": false
+      },
+      "scope": "Restore precisely the preexisting value. Do not change other settings.",
+      "verification": "GET independently and require autoAssignCustomDomains:false and unchanged SSO/domains/Git/productionBranch before declaring completion."
+    },
+    "timeoutHandling": "Read alias and promotion job status before any retry; do not blindly repeat the promotion.",
+    "gitGates": "Keep current main and working-branch deploymentEnabled:false unchanged throughout."
+  },
+  "authorizationInterpretation": "Restoring the exact required preexisting false value preserves the user instruction; it does not authorize unrelated configuration changes. Root executes any authorized mutation; this review is read only.",
+  "observationLimit": "No mutation was rehearsed and no guarantee is made that promotion cannot transiently enable the setting. The verified method checks and restores the final required value.",
+  "references": [
+    "https://vercel.com/docs/rest-api/projects/point-production-traffic-to-a-given-deployment",
+    "https://vercel.com/docs/rest-api/projects/update-an-existing-project",
+    "https://vercel.com/docs/instant-rollback",
+    "https://github.com/vercel/vercel/issues/15095"
+  ],
+  "mutationsByThisReview": 0,
+  "blockingEvidenceAgainstDocumentedMethod": null
+}

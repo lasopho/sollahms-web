@@ -3,6 +3,19 @@
   "scope": "Corporate and educational pages only; catalogue, fiches and commercial data excluded.",
   "pages": {
     "index.html": {"type": "WebPage"},
+    "centro-orientacion.html": {
+      "type": "WebPage",
+      "topics": ["Orientación para comprar una vivienda en Chile", "Presupuesto, financiamiento y proceso de compra"],
+      "related": ["/guia-hipotecaria.html", "/comparador-hipotecario.html", "/agenda-asesoria.html"]
+    },
+    "entorno-desarrollo-urbano.html": {
+      "type": "WebPage",
+      "socialImage": "https://sollahms.cl/assets/branding/og-sollahms.png",
+      "socialImageWidth": "1200",
+      "socialImageHeight": "630",
+      "topics": ["Obras e infraestructura urbana en Chile", "Estado y fuentes de obras públicas"],
+      "related": ["/centro-orientacion.html", "/contacto.html"]
+    },
     "contacto.html": {
       "type": "ContactPage", "fragment": "#contact",
       "description": "Contacta a Sollahms para consultar por una propiedad o recibir orientación inmobiliaria en Chile. Cuéntanos tu interés y coordinaremos el siguiente paso.",

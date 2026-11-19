@@ -1,4 +1,18 @@
-# Medición SEO y GEO de Sollahms — continuidad vigente
+# Medición SEO y GEO de Sollahms — revisión vigente 19/11/2026
+
+**Search Console conectado y leído el 19/11/2026:** [primera medición real](runs/2026-11-19-gsc-connected/report.md), con datos por página, límites de cobertura y diez URL indexadas. GA4 no es necesario para esta comparación. El efecto de la publicación del 19/11 aún no tiene periodo posterior medible.
+
+La [política activa](active-policy.json) utiliza [el alcance v3 de 12 páginas](SCOPE-v3.md). Excluye catálogo/Asset Portafolio, todas las fichas y el Centro documental de optimización y campañas, conservando su acceso, contenido y funcionamiento.
+
+El [informe actual](runs/2026-11-19-corporate-improvements/report.md) distingue código, producción, rastreo/indexación, búsquedas y citas IA. La producción actual se verifica por alias y artefacto, nunca desde `main`. Las mejoras de esta revisión se publicaron y verificaron el **19/11/2026 07:54:02.653 America/Santiago**. [Registro de publicación](runs/2026-11-19-corporate-improvements/publication/publication.json). La publicación no acredita por sí sola indexación ni resultados SEO/GEO.
+
+El [seguimiento actual](runs/2026-11-19-corporate-improvements/measurement-plan.json) mantiene `Sollams` a secas como consulta prioritaria, las otras cuatro marcas separadas y métricas no medidas como `null`. `seo_scope.py` admite v2/v3; usar `--scope docs/seo-measurement/scope-v3.json` para trabajo nuevo. No reutilizar totales v2 que incluían el catálogo como resultados v3.
+
+Los registros y planes que siguen documentan la revisión histórica del 9/11 y sus condiciones de entonces. Sus IDs productivos, conteos y pendientes no representan por sí solos el estado actual.
+
+---
+
+# Referencia histórica v2 — 9/11/2026
 
 **Política activa:** [active-policy.json](active-policy.json), alcance `corporate-education-v2`.
 **Último informe:** [T0 post-publicación — 9/11/2026](runs/2026-11-09-post-publication-t0/report.md).

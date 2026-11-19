@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "observedAt": "2026-11-19T07:47:09-03:00",
+  "timezone": "America/Santiago",
+  "authorizedSHA": "df78d77f31c8da946623e586634998e151ed237e",
+  "runtimeSourceSHA": "e1f75f0c95c1d0cba78c2c8c35737835ce395d28",
+  "branch": "codex/seo-geo-corporativo-20261119",
+  "workingTreeCleanBeforeEvidence": true,
+  "inventorySHA256": "c4b1a07527291aa020ebef549aa32f0bb2f2858f9f55312482584f333b14319b",
+  "inventoryHashMatchesAuthorized": true,
+  "artifact": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-seo-geo-private/candidate-current/.vercel/output",
+  "filesVerified": 1723,
+  "inventoryMatchesAllBytesSHA1SHA256": true,
+  "symlinks": [],
+  "sourceEquivalence": {
+    "centro-orientacion.html": {
+      "matches_authorized_commit": true,
+      "matches_working_source": true,
+      "bytes": 30641,
+      "sha256": "03597eb3b305a26e0e568df2a1eb4fb14531c074dd3023e958e0778f8972b8b9"
+    },
+    "entorno-desarrollo-urbano.html": {
+      "matches_authorized_commit": true,
+      "matches_working_source": true,
+      "bytes": 11644,
+      "sha256": "e8e60cbaa37a4837058e48a412f8063dae6e46db43a7f535770a0e6a92e4072a"
+    },
+    "inversion-inmobiliaria-empresas.html": {
+      "matches_authorized_commit": true,
+      "matches_working_source": true,
+      "bytes": 32772,
+      "sha256": "2a6c3ddd4216786d7a9678b6e9382fb8fb604e99ae92173ffded0ffe6d26f120"
+    },
+    "sitemap.xml": {
+      "matches_authorized_commit": true,
+      "matches_working_source": true,
+      "bytes": 10043,
+      "sha256": "8fc9dc75bd91cdbc9edc2cad43bcfa7c1371dc4be000ac2c1837afd00c20a6e0"
+    }
+  },
+  "authorizedTipVsRuntimeChangedFiles": [
+    "docs/seo-measurement/runs/2026-11-19-corporate-improvements/PUBLICACION.md",
+    "docs/seo-measurement/runs/2026-11-19-corporate-improvements/candidate.json",
+    "docs/seo-measurement/runs/2026-11-19-corporate-improvements/preview-http-verification.json",
+    "docs/seo-measurement/runs/2026-11-19-corporate-improvements/preview-remote-integrity.json",
+    "docs/seo-measurement/runs/2026-11-19-corporate-improvements/production-final-recheck.json",
+    "docs/seo-measurement/runs/2026-11-19-corporate-improvements/report.md",
+    "docs/seo-measurement/runs/2026-11-19-corporate-improvements/source-equivalence.json"
+  ],
+  "tipVsRuntimeDocumentationOnly": true,
+  "baselineDeployment": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+  "baselineManifestSHA256": "76656dc4d9415edc7bdd32118b920053686f9f6c98f61035081f4e7f0284126f",
+  "runtimeDelta": {
+    "changedFiles": [
+      "static/centro-orientacion.html",
+      "static/entorno-desarrollo-urbano.html",
+      "static/inversion-inmobiliaria-empresas.html",
+      "static/sitemap.xml"
+    ],
+    "unchangedFiles": 1719,
+    "added": [],
+    "removed": []
+  },
+  "preservation": {
+    "allHTMLExceptThreeAuthorizedPagesUnchanged": true,
+    "projectCatalogueUnchanged": true,
+    "documentaryCenterUnchanged": true,
+    "allOtherStaticFilesExceptAuthorizedSitemapUnchanged": true,
+    "functionFiles": 57,
+    "functionBundles": [
+      "advisory.func",
+      "booking-availability.func",
+      "booking-create.func",
+      "collaboration.func",
+      "contact.func",
+      "orientation-contact.func",
+      "uf.func"
+    ],
+    "allFunctionsByteIdentical": true,
+    "configurationByteIdentical": true
+  },
+  "reusedQA": {
+    "path": "../browser/report.json",
+    "sha256": "651d013e201a86de3ec6dc701e57f3445af661ac6fe92474390604e8be6f45b6",
+    "status": "PASS",
+    "flows": 36,
+    "widths": [
+      1440,
+      390,
+      320
+    ],
+    "reason": "The only later runtime changes preserved the separate production map release; the three authorized corporate HTML overlays and all function bundles remain exactly certified.",
+    "newChangesToThreeReviewedCorporatePagesOrFunctionBundlesSinceQA": false
+  },
+  "remoteRequests": 0,
+  "providerCalls": 0,
+  "applicationEdits": 0,
+  "commits": 0,
+  "limitation": "Local revalidation only. Deployment and current aliases must be checked separately by the publication owner."
+}

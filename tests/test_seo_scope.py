@@ -101,6 +101,108 @@ class ScopeTests(unittest.TestCase):
             with self.subTest(change=change), self.assertRaises(ValueError):
                 s.load_scope(self.write_json('bad-scope.json', candidate))
 
+    def test_v3_registry_tracks_twelve_corporate_pages_and_current_fiche_identities(self):
+        repo = Path(__file__).resolve().parents[1]
+        current, _ = s.load_scope(repo / 'docs/seo-measurement/scope-v3.json')
+        historical, _ = s.load_scope(repo / 'docs/seo-measurement/scope-v2.json')
+        catalogue = 'https://sollahms.cl/proyectos.html'
+        company = 'https://sollahms.cl/inversion-inmobiliaria-empresas.html'
+        tax = 'https://sollahms.cl/beneficios-tributarios-inmobiliarios.html'
+        self.assertEqual(len(current['included_urls']), 12)
+        self.assertEqual(set(current['included_urls']),
+                         (set(historical['included_urls']) - {catalogue}) | {company, tax})
+        for url in (company, tax):
+            self.assertEqual(s.classify(url, current), 'included')
+        self.assertEqual(s.classify(catalogue, historical), 'included')
+        self.assertEqual(s.classify(catalogue, current), 'excluded_strategy')
+        self.assertEqual(s.classify('https://sollahms.cl/fuentes-respaldo-documental.html', current),
+                         'excluded_strategy')
+        base = json.loads((repo / 'data/proyectos.json').read_text())
+        extension = json.loads((repo / 'data/catalog-expansion-iris-20261118.json').read_text())
+        expected = {'https://sollahms.cl' + row['detalleUrl'] for row in base}
+        expected.update('https://sollahms.cl/' + row['slug'] + '.html' for row in extension['projects'])
+        self.assertEqual(set(current['excluded_project_urls']), expected)
+        self.assertFalse(expected & set(current['included_urls']))
+
+    def test_v3_strategic_exclusions_and_aliases_cannot_enter_positive_scope(self):
+        repo = Path(__file__).resolve().parents[1]
+        current, _ = s.load_scope(repo / 'docs/seo-measurement/scope-v3.json')
+        for path in ('proyectos.html', 'fuentes-respaldo-documental.html'):
+            canonical = 'https://sollahms.cl/' + path
+            self.assertEqual(s.classify(canonical + '#consulta', current), 'excluded_strategy')
+            for url in (canonical + '?origen=seo', canonical.replace('https:', 'http:'),
+                        canonical.replace('sollahms.cl', 'www.sollahms.cl'),
+                        canonical.removesuffix('.html'), canonical + '/'):
+                with self.subTest(url=url):
+                    self.assertEqual(s.classify(url, current), 'unknown')
+        for url in ('https://sollahms.cl/index.html', 'https://sollahms.cl/asset-portafolio',
+                    self.included + '?origen=seo', 'https://sollahms.cl/futura-ficha.html'):
+            with self.subTest(url=url):
+                self.assertNotEqual(s.classify(url, current), 'included')
+
+    def test_v3_segment_counts_strategic_exclusions_without_exposing_their_metrics(self):
+        excluded = ['https://sollahms.cl/proyectos.html',
+                    'https://sollahms.cl/fuentes-respaldo-documental.html']
+        scope = dict(self.scope, scope_id='corporate-education-v3', scope_version=3,
+                     excluded_strategy_urls=excluded)
+        scope_path = self.write_json('scope-v3.json', scope)
+        urls = [self.included, *excluded, self.project, 'https://sollahms.cl/404.html',
+                self.included + '?utm_source=test']
+        rows = [dict(dimension_value=url, clicks=10, impressions=100, ctr=.1, position=2)
+                for url in urls]
+        source = self.write_json('pages-v3.json', self.record('page', rows))
+        before = source.read_bytes()
+        result = s.segment(source, scope_path)
+        self.assertEqual([row['dimension_value'] for row in result['rows']], [self.included])
+        self.assertEqual(result['selection']['row_counts'],
+                         dict(included=1, excluded_project=1, technical_noncontent=1,
+                              excluded_strategy=2, unknown=1))
+        self.assertEqual(source.read_bytes(), before)
+        self.assertFalse(result['selection']['native_scoped_total'])
+        for url in excluded + [self.project]:
+            self.assertNotIn(url, json.dumps(result))
+
+    def test_v3_strategy_list_is_optional_but_validated_when_present(self):
+        scope = dict(self.scope, scope_id='corporate-education-v3', scope_version=3)
+        loaded, _ = s.load_scope(self.write_json('minimal-v3.json', scope))
+        self.assertEqual(s.classify(self.included, loaded), 'included')
+        url = 'https://sollahms.cl/proyectos.html'
+        for value in (None, 'not-a-list', [url, url], [self.included], [self.project],
+                      ['https://sollahms.cl/404.html'], [url + '?x=1'], [url + '#x']):
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                s.load_scope(self.write_json('bad-v3.json', dict(scope, excluded_strategy_urls=value)))
+
+    def test_v3_ai_catalogue_and_documentary_citations_receive_no_corporate_credit(self):
+        self.scope.update(scope_id='corporate-education-v3', scope_version=3,
+                          excluded_strategy_urls=['https://sollahms.cl/proyectos.html',
+                                                  'https://sollahms.cl/fuentes-respaldo-documental.html'])
+        self.scope_path = self.write_json('scope-v3.json', self.scope)
+        references = ' | '.join(self.scope['excluded_strategy_urls'])
+        path = self.ai_csv([self.observation(linked_urls=references, cited_urls=references)])
+        group = s.ai_summary(path, self.scope_path)['groups'][0]
+        self.assertEqual(group['rates']['link'], 0)
+        self.assertEqual(group['rates']['citation'], 0)
+        self.assertEqual(group['unknown_reference_runs'], dict(link=0, citation=0))
+        path = self.ai_csv([self.observation(linked_urls=references + ' | ' + self.included,
+                                            cited_urls=self.included + '#fuentes')])
+        group = s.ai_summary(path, self.scope_path)['groups'][0]
+        self.assertEqual(group['rates']['link'], 1)
+        self.assertEqual(group['rates']['citation'], 1)
+
+    def test_historical_scope_and_ai_plans_keep_their_original_bytes(self):
+        repo = Path(__file__).resolve().parents[1]
+        expected = {
+            'docs/seo-measurement/scope-v2.json':
+                'e64a231c622a5f6dc8ae7b09dbf2a4c3f83e1f44d139e75b4e1a4d08492a592b',
+            'docs/seo-measurement/ai-test-plan.csv':
+                '1b01bd48669310b4f75d96b40cb0edc7929bde33bb67b6812e69303dc9c73b79',
+            'docs/seo-measurement/ai-test-plan-v2.csv':
+                'af7a2606153bcde4caebc3ed47f50a3cf06ce95cf336987b9f8455f93d66da94',
+        }
+        for path, digest in expected.items():
+            with self.subTest(path=path):
+                self.assertEqual(s.legacy.digest((repo / path).read_bytes()), digest)
+
     def test_binding_requires_exact_reviewed_proof_and_hash(self):
         source = self.write_json('daily.json', self.record())
         before = source.read_bytes()

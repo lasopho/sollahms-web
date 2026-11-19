@@ -1,0 +1,32 @@
+{
+  "reviewedAt": "2026-11-19",
+  "timezone": "America/Santiago",
+  "productionRobotsChanged": false,
+  "preferencesPreserved": true,
+  "productionRobotsSHA256": "530066fb3c652698511499f3d7aa60c5b1142bd1de5b47f05862983d5c9b6bba",
+  "findings": [
+    "robots.txt allows general search crawling and explicitly OAI-SearchBot; no demonstrated robots barrier for the included pages.",
+    "OAI-SearchBot search and GPTBot training preferences are independent. Existing training directives remain untouched.",
+    "A successful HTTP response and parseable markup do not demonstrate a crawler visit, index inclusion or AI citation.",
+    "Preview remains subject to Vercel Authentication; never submit preview URLs for indexation."
+  ],
+  "sources": [
+    {
+      "title": "OpenAI crawler documentation",
+      "url": "https://developers.openai.com/api/docs/bots",
+      "supports": "Independent search and training controls; OAI-SearchBot search role."
+    },
+    {
+      "title": "Google crawler overview",
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/overview-google-crawlers",
+      "supports": "Common automatic crawlers respect robots.txt; access alone is not ranking evidence."
+    },
+    {
+      "title": "Google common crawlers",
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "supports": "Crawler tokens and product-specific controls."
+    }
+  ],
+  "firewallCrawlerIPVerification": "not_measured; no claim that an authenticated bot IP visited",
+  "indexingRequests": 0
+}
