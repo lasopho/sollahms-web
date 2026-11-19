@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "kind": "node-test-execution-receipt",
+  "generatedAtUTC": "2026-11-19T18:44:48.246462+00:00",
+  "workingDirectory": "/private/tmp/sollahms-contacto-asesoria-152-20261119",
+  "headAtReceipt": "b56fa12771a824dd8a4d581dc0c9c81e0938f71a",
+  "evidenceBasis": "Actual exec_command tool results from this subagent run. Tests were not rerun to produce this receipt.",
+  "stdoutLogFilesSaved": false,
+  "limitation": "No raw stdout files were saved during execution. This receipt transcribes the observed command, exit code and test summary only. File hashes were computed when generating this receipt, not recorded at execution time.",
+  "commandCount": 2,
+  "commands": [
+    {
+      "command": "node --test tests/advisory-expansion-context.test.mjs",
+      "exitCode": 0,
+      "tests": 9,
+      "suites": 0,
+      "passed": 9,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "reportedDurationMs": 316.048166
+    },
+    {
+      "command": "node --test tests/required-commercial-fields.test.mjs tests/commercial-rut.test.mjs tests/project-request.test.mjs",
+      "exitCode": 0,
+      "tests": 22,
+      "suites": 0,
+      "passed": 22,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "reportedDurationMs": 203.349458
+    }
+  ],
+  "totals": {
+    "tests": 31,
+    "passed": 31,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "filesAtReceipt": [
+    {
+      "path": "assets/js/advisory-project-context.mjs",
+      "bytes": 1398,
+      "sha256": "2cacd4723a3520366c7cb5f5811a4ca3f477acab7a90c7976e4efef92b506986"
+    },
+    {
+      "path": "assets/js/advisory.mjs",
+      "bytes": 6124,
+      "sha256": "77f1642317245beaaa7b455d0a1800e82411bff45397cff11343f6c9f01aa5e7"
+    },
+    {
+      "path": "data/advisory-projects.json",
+      "bytes": 6797,
+      "sha256": "19225cd84f6dce5319ab6dfd4830a1fc441a50d15b58a238143da43dd077fdbf"
+    },
+    {
+      "path": "tests/advisory-expansion-context.test.mjs",
+      "bytes": 17555,
+      "sha256": "342eb97f7cfe201b1ea3b6964726908d32a484022b4d2c27b927780a973856f9"
+    }
+  ],
+  "transport": "Injected in-memory mocks only. No real form submission, provider request, email delivery or booking. Synthetic API responses acknowledge simulated provider acceptance and explicitly do not confirm delivery.",
+  "scope": "Subagent-owned Node tests only. Browser QA performed by root is not included in these counts."
+}

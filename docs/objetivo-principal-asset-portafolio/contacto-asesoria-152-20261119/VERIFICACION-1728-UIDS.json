@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "VERIFICACION_UIDS_DEPLOYMENT_CONTACTO_ASESORIA_152",
+  "verifiedAtUTC": "2026-11-19T18:47:56.718937+00:00",
+  "verdict": "APROBADO",
+  "deploymentId": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+  "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
+  "readyState": "READY",
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "manifest": {
+    "path": "/private/tmp/sollahms-contacto-152-20261119/release/MANIFIESTO-PAQUETE.json",
+    "bytes": 446005,
+    "sha256": "dcfeb3a4f6a5d0e903a3b9181aaa1585e08335cbf0f4e2464c537060e2e37dab"
+  },
+  "candidateInventorySHA256": "ec72f06ecab6f732199b761dfa63b6c08c3f4baf632e4ad0ecc8901bd520a04a",
+  "fullOfficialFileTree": {
+    "path": "/private/tmp/sollahms-contacto-152-20261119/release/ARCHIVOS-RECIBIDOS-VERCEL.json",
+    "bytes": 199215,
+    "sha256": "a6856e07add8a07559a8f74f698e7f33430f3e43b118ad3259da3ca56c036af9"
+  },
+  "selectedMetadata": {
+    "path": "/private/tmp/sollahms-contacto-152-20261119/release/METADATOS-DEPLOYMENT.json",
+    "bytes": 511,
+    "sha256": "6de89852f72c13cfd703720c54ca57934485f56a56dc4c5fd2399ef48e1ecef2"
+  },
+  "expectedFiles": 1728,
+  "receivedFiles": 1728,
+  "matchingSHA1UIDs": 1728,
+  "missing": [],
+  "extra": [],
+  "changed": [],
+  "functionFilesMatched": 57,
+  "functionBundlesMatched": 7,
+  "configurationMatched": true,
+  "lambdaRoutes": [
+    {
+      "path": "out/api/advisory",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-1ae082544e9a5c66579f92c3659659e23b"
+    },
+    {
+      "path": "out/api/booking-availability",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-c381d3be5b4a1079e54ad1ea653184f888"
+    },
+    {
+      "path": "out/api/booking-create",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-2b4cc8307ed835cdf571554b625b70fff2"
+    },
+    {
+      "path": "out/api/collaboration",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-e1655594f34e9e9171f8c32c82bca2aad2"
+    },
+    {
+      "path": "out/api/contact",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-f0e92306f30dc812cb49d76877cf19f36a"
+    },
+    {
+      "path": "out/api/orientation-contact",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-960c59ae06ccda4db0ce6c61d414a6f738"
+    },
+    {
+      "path": "out/api/uf",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-9c500da2761ab0465afcbe45b065ffac6a"
+    }
+  ],
+  "directoryNodesNotFiles": 115,
+  "lambdaNodesNotFiles": 7,
+  "remoteFileSizesComparedWherePresent": 0,
+  "sizeMismatches": [],
+  "method": "Official complete file tree UID raw SHA1 compared with pinned local candidate inventory; source metadata explicit. No body downloads or application/function execution.",
+  "applicationTestsRun": 0,
+  "runtimeFunctionsCalled": 0,
+  "formsSubmitted": 0,
+  "deploymentMutations": 0,
+  "promotionOrAliasOrDomainMutations": 0,
+  "credentialsOrEnvironmentOrSSORead": false
+}

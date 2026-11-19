@@ -1,31 +1,34 @@
 {
   "date": "2026-11-19",
-  "verifiedAtUTC": "2026-11-19T10:32:30.247273+00:00",
-  "status": "PUBLICADO_VERIFICADO_MAPA_152_0A0B7C70",
-  "sourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+  "verifiedAtUTC": "2026-11-19T18:54:20.195026+00:00",
+  "status": "PUBLICADO_VERIFICADO_CONTACTO_ASESORIA_152",
+  "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
   "artifact": {
-    "sourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
-    "technicalSourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
-    "output": "/private/tmp/sollahms-mapa-21-20261119/release/stage/.vercel/output",
-    "files": 1723,
-    "bytes": 227612714,
-    "staticFiles": 1665,
+    "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
+    "technicalSourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
+    "output": "/private/tmp/sollahms-contacto-152-20261119/release/stage/.vercel/output",
+    "files": 1728,
+    "bytes": 227673930,
+    "staticFiles": 1670,
     "functionFiles": 57,
     "functionBundles": 7,
     "configFiles": 1,
     "newProjects": 0,
-    "existingProjectFichesUnchanged": 152,
-    "protectedSourceHashesMatched": 155,
-    "candidateInventorySha256": "04c4755b020c571d5b2aec2e3e58e271554372b0811c7d4b185f883a843bf5dc",
-    "manifest": "mapa-filtros-152-20261119/MANIFIESTO-PAQUETE-MAPA.json",
-    "manifestSHA256": "76656dc4d9415edc7bdd32118b920053686f9f6c98f61035081f4e7f0284126f",
+    "existingOriginal131FichesUnchanged": 131,
+    "new21FichesChangedOnlyContactLinks": true,
+    "changedExistingFiles": 25,
+    "addedFiles": 1,
+    "unchangedOutputFiles": 1702,
+    "candidateInventorySha256": "ec72f06ecab6f732199b761dfa63b6c08c3f4baf632e4ad0ecc8901bd520a04a",
+    "manifest": "contacto-asesoria-152-20261119/MANIFIESTO-PAQUETE.json",
+    "manifestSHA256": "dcfeb3a4f6a5d0e903a3b9181aaa1585e08335cbf0f4e2464c537060e2e37dab",
     "applicationBuilds": 0,
     "generatorsExecuted": 0,
-    "scope": "Frozen493 output with two runtime JS replaced and two public resources added; all fiches/data/functions/config preserved."
+    "scope": "Frozen B56 final public output with only requested contact integration; executable functions/code/provider/config unchanged, sole function data whitelist updated."
   },
   "production": {
-    "commit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
-    "deploymentId": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+    "commit": "db45afc2518b354bb14b108172d75d3aacb8d643",
+    "deploymentId": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
     "url": "https://sollahms.cl/proyectos.html",
     "projects": 152,
     "originalProjects": 131,
@@ -39,72 +42,78 @@
       "project-wrapp-lsandoval2-8260s-projects.vercel.app"
     ],
     "readyState": "READY",
-    "sourceBranch": "codex/mapa-filtros-21-proyectos-20261119"
+    "sourceBranch": "codex/contacto-asesoria-152-20261119"
   },
   "authorized": {
-    "specificOwnerMapAndFilterSynchronizationAndPublication": true,
+    "specificOwnerContactAdvisoryIntegrationAndPublication": true,
     "authorizationsConsumed": true,
     "futureOperationsAuthorized": false
   },
   "deployment": {
-    "id": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
-    "url": "https://project-wrapp-iev6fe1ip-lsandoval2-8260s-projects.vercel.app",
+    "id": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+    "url": "https://project-wrapp-pgsse4pjm-lsandoval2-8260s-projects.vercel.app",
     "readyState": "READY",
     "target": "production",
-    "sourceCommit": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+    "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
     "createdOnceBeforePromotion": true,
-    "remoteDigestsMatched": 1723
+    "remoteDigestsMatched": 1728
   },
   "executedPromotion": {
-    "authorizationId": "AUTH-MAPA-FILTROS-152-PUBLICACION-20261119-01",
-    "authorization": "Direct owner instruction to synchronize map/filters and finish publication autonomously",
+    "authorizationId": "AUTH-CONTACTO-ASESORIA-152-PUBLICACION-20261119-01",
+    "authorization": "Direct owner instruction to incorporate new projects/cities and finish autonomously only once published",
     "operation": "mcp__codex_apps__vercel_request_promote",
     "mutationAttempts": 1,
     "executed": true,
     "sameDeployment": true,
     "newDeploymentsDuringPromotion": 0,
     "rebuild": false,
-    "receipt": "mapa-filtros-152-20261119/PROMOCION-MAPA.json"
+    "receipt": "contacto-asesoria-152-20261119/PROMOCION.json"
   },
   "publicationVerification": {
     "existingAliasesMatched": 5,
-    "catalogIdentities": 152,
-    "mapIdentitiesLocated": 152,
-    "newProjectPoints": 21,
-    "pendingNewProjectCoordinates": 0,
-    "newMetropolitanProjectsWithGeographicMetro": 14,
+    "catalogIdentitiesPreserved": 152,
     "original131FichesUnchanged": true,
-    "all152FichesUnchanged": true,
-    "originalMetroProjectContextsPreserved": 100,
-    "reviewedStationsPreserved": 126,
-    "protectedSourceHashesMatched": 155,
-    "unchangedOutputFiles": 1719,
-    "remoteUIDsMatched": 1723,
-    "httpResourcesHashesMatched": 12,
-    "NodeNewDistinctCases": 18,
-    "ChromeLocalChecks": 15,
-    "ChromeProductionChecks": 13,
+    "new21FichesChangedOnly63ContactLinks": true,
+    "contactAndAdvisoryTerritorialCommunes": 34,
+    "newCommunesAdded": [
+      "Puente Alto",
+      "San Pedro de la Paz"
+    ],
+    "newProjectContextsResolvedOnBothPages": 21,
+    "publicContextPageCases": 42,
+    "legacyContextAliasesPreserved": 8,
+    "serverWhitelistEntries": 160,
+    "serverWhitelistStaticHTTPStatus": 404,
+    "unchangedOutputFiles": 1702,
+    "remoteUIDsMatched": 1728,
+    "httpResourcesHashesMatched": 34,
+    "NodeNewCases": 9,
+    "NodeAffectedRegressions": 22,
+    "ChromeLocalChecks": 9,
+    "ChromeProductionChecks": 7,
     "responsiveWidths": [
       390,
       1440
     ],
-    "catalogViews": 4,
-    "historicalSuitesRepeated": false,
-    "functionBundlesPreserved": 7,
-    "functionFilesPreserved": 57,
-    "configurationPreserved": true,
-    "formsSubmitted": 0,
-    "financialRecertificationClaimed": false,
-    "independentReview": "mapa-filtros-152-20261119/REVISION-INDEPENDIENTE-GEO-METRO.json",
-    "releaseReview": "mapa-filtros-152-20261119/REVISION-INDEPENDIENTE-RELEASE-MAPA.json",
-    "httpEvidence": "mapa-filtros-152-20261119/PUBLICACION-HTTP-MAPA.json",
-    "browserEvidence": "mapa-filtros-152-20261119/QA-CHROME-PRODUCCION.json",
-    "aliasEvidence": "mapa-filtros-152-20261119/ALIAS-PUBLICADOS-MAPA.json"
+    "functionBundles": 7,
+    "functionFilesPreservedByteExact": 56,
+    "onlyFunctionDataFileChanged": "functions/api/advisory.func/data/advisory-projects.json",
+    "functionExecutableCodeAndConfigurationPreserved": true,
+    "measurementConsentCatalogAndMapPreserved": true,
+    "realFormsSent": 0,
+    "realEmailsOrReservationsSent": 0,
+    "analyticsOrReplayRequestsDuringQA": 0,
+    "realProviderAcceptanceOrDeliveryClaimed": false,
+    "independentReview": "contacto-asesoria-152-20261119/independent-package-review.json",
+    "remoteReview": "contacto-asesoria-152-20261119/independent-remote-review.json",
+    "httpEvidence": "contacto-asesoria-152-20261119/PUBLICACION-HTTP.json",
+    "browserEvidence": "contacto-asesoria-152-20261119/QA-CHROME-PRODUCCION.json",
+    "aliasEvidence": "contacto-asesoria-152-20261119/ALIAS-PUBLICADOS.json"
   },
   "priorProduction": {
-    "sourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
-    "deploymentId": "dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr",
-    "snapshot": "mapa-filtros-152-20261119/ESTADO-PUBLICACION-ANTERIOR-493.json",
+    "sourceCommit": "b56fa12771a824dd8a4d581dc0c9c81e0938f71a",
+    "deploymentId": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
+    "snapshot": "contacto-asesoria-152-20261119/PUBLICACION-ANTERIOR-LIVE-B56.json",
     "rollbackAuthorized": false
   },
   "releaseHistory": [
@@ -219,6 +228,12 @@
       "sourceCommit": "49312fd708ccd9e319511432e4b657788f5734f9",
       "deploymentId": "dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr",
       "snapshot": "mapa-filtros-152-20261119/ESTADO-PUBLICACION-ANTERIOR-493.json"
+    },
+    {
+      "sourceCommit": "b56fa12771a824dd8a4d581dc0c9c81e0938f71a",
+      "deploymentId": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
+      "snapshot": "contacto-asesoria-152-20261119/PUBLICACION-ANTERIOR-LIVE-B56.json",
+      "note": "Intervening publication recovered from current control-plane/owner strategy records; previous root control still recorded0a historically."
     }
   ],
   "deploymentCreationAuthorizationUsed": true,
@@ -254,7 +269,7 @@
     "Do not repeat certified audits or tests with identical inputs."
   ],
   "globalObjectiveComplete": false,
-  "nextAuthorizedWork": "Map synchronization specifically completed/published. Continue only new independent work within existing authorization; supplement24a and Irarrázaval requests remain pending without repetition.",
+  "nextAuthorizedWork": "Requested Contacto/Asesoria integration completed and published. Continue only new independent authorized work; supplement24a and Irarrázaval remain pending without repetition.",
   "currentEssentialCoverage152": {
     "date": "2026-11-18",
     "index": "cobertura-comercial-152-20261118/INDICE-COBERTURA-152.json",
@@ -289,5 +304,17 @@
     "walkingOrFutureRoutes": false,
     "sourceGeographySHA256": "d2d6e8b196063797a262c5f7796d12c6e88c1755cee137f44502495916acf90e",
     "commercialSourceGuardNotModified": true
+  },
+  "currentContactAdvisoryCoverage": {
+    "checkedOn": "2026-11-19",
+    "projects": 152,
+    "newProjectsAdmitted": 21,
+    "communesOnBothPages": 34,
+    "newCommercialHrefContexts": 63,
+    "identityOnly": true,
+    "formsAndProvidersChanged": false,
+    "serverWhitelistDataExpanded": true,
+    "sourceDataWithPricesOrStockChanged": false,
+    "sourceCommercialReferencesUnchanged": true
   }
 }

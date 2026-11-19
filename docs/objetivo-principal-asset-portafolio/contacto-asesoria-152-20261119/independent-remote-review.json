@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "kind": "INDEPENDENT_REVIEW_CONTACTO_ASESORIA_REMOTE_UIDS",
+  "observedAtUTC": "2026-11-19T18:49:16.334909+00:00",
+  "verdict": "PASS",
+  "deploymentId": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+  "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
+  "target": "production",
+  "state": "READY",
+  "aliasesInSuppliedMetadata": [],
+  "checks": [
+    {
+      "name": "complete official file tree exact 1728 SHA1 UID matches",
+      "passed": true,
+      "details": {
+        "expected": 1728,
+        "received": 1728,
+        "matching": 1728,
+        "missing": [],
+        "extra": [],
+        "changed": [],
+        "unexpected": []
+      }
+    },
+    {
+      "name": "UID receipt pins three exact evidence files",
+      "passed": true
+    },
+    {
+      "name": "manifest unchanged from independent package approval",
+      "passed": true
+    },
+    {
+      "name": "UID receipt counts and result independently reproduced",
+      "passed": true
+    },
+    {
+      "name": "deployment metadata exact ID project team commit READY production CLI",
+      "passed": true
+    },
+    {
+      "name": "deployment metadata repository branch and no aliases",
+      "passed": true
+    },
+    {
+      "name": "all 57 function source UID files and runtime config match",
+      "passed": true
+    },
+    {
+      "name": "seven expected compiled lambda route nodes",
+      "passed": true
+    },
+    {
+      "name": "directory nodes treated separately from files",
+      "passed": true
+    },
+    {
+      "name": "all 26 overlay files match published source commit",
+      "passed": true,
+      "details": [
+        {
+          "source": "data/advisory-projects.json",
+          "artifact": "functions/api/advisory.func/data/advisory-projects.json",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "agenda-asesoria.html",
+          "artifact": "static/agenda-asesoria.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "alameda-4719.html",
+          "artifact": "static/alameda-4719.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "altos-del-mirador.html",
+          "artifact": "static/altos-del-mirador.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "assets/js/advisory.mjs",
+          "artifact": "static/assets/js/advisory.mjs",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "balmaceda.html",
+          "artifact": "static/balmaceda.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "centro-santa-ana.html",
+          "artifact": "static/centro-santa-ana.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "compania-1735.html",
+          "artifact": "static/compania-1735.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "condominio-altos-del-penon.html",
+          "artifact": "static/condominio-altos-del-penon.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "condominio-hacienda-junquillar.html",
+          "artifact": "static/condominio-hacienda-junquillar.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "condominio-hacienda-santa-clara.html",
+          "artifact": "static/condominio-hacienda-santa-clara.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "condominio-hacienda-volcanes.html",
+          "artifact": "static/condominio-hacienda-volcanes.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "condominio-plaza-nos.html",
+          "artifact": "static/condominio-plaza-nos.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "condominio-reserva-santa-clara.html",
+          "artifact": "static/condominio-reserva-santa-clara.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "condominio-sendero-santa-clara.html",
+          "artifact": "static/condominio-sendero-santa-clara.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "contacto.html",
+          "artifact": "static/contacto.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "edificio-ambar-urbano.html",
+          "artifact": "static/edificio-ambar-urbano.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "edificio-botanico.html",
+          "artifact": "static/edificio-botanico.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "espacio-v.html",
+          "artifact": "static/espacio-v.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "kiez.html",
+          "artifact": "static/kiez.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "mirador-capital.html",
+          "artifact": "static/mirador-capital.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "nuevo-vivaceta.html",
+          "artifact": "static/nuevo-vivaceta.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "prat.html",
+          "artifact": "static/prat.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "terrazas-del-mirador.html",
+          "artifact": "static/terrazas-del-mirador.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "vicuna-mackenna-capital.html",
+          "artifact": "static/vicuna-mackenna-capital.html",
+          "sha256Matches": true,
+          "bytesMatch": true
+        },
+        {
+          "source": "assets/js/advisory-project-context.mjs",
+          "artifact": "static/assets/js/advisory-project-context.mjs",
+          "sha256Matches": true,
+          "bytesMatch": true
+        }
+      ]
+    },
+    {
+      "name": "receipt evidence unchanged throughout review",
+      "passed": true
+    }
+  ],
+  "findings": [],
+  "evidenceHashes": {
+    "ARCHIVOS-RECIBIDOS-VERCEL.json": {
+      "bytes": 199215,
+      "sha256": "a6856e07add8a07559a8f74f698e7f33430f3e43b118ad3259da3ca56c036af9"
+    },
+    "VERIFICACION-1728-UIDS.json": {
+      "bytes": 2842,
+      "sha256": "8fcf28e0649cbd9673ea514cef9f678494c134526bf87ac333b6c50bdefb0b9e"
+    },
+    "METADATOS-DEPLOYMENT.json": {
+      "bytes": 511,
+      "sha256": "6de89852f72c13cfd703720c54ca57934485f56a56dc4c5fd2399ef48e1ecef2"
+    },
+    "MANIFIESTO-PAQUETE.json": {
+      "bytes": 446005,
+      "sha256": "dcfeb3a4f6a5d0e903a3b9181aaa1585e08335cbf0f4e2464c537060e2e37dab"
+    }
+  },
+  "expectedFiles": 1728,
+  "matchingSHA1UIDs": 1728,
+  "functionFilesMatched": 57,
+  "compiledLambdaRoutesMatched": 7,
+  "priorPackageReview": "/private/tmp/sollahms-contacto-152-20261119/independent-package-review.json",
+  "limitations": [
+    "Read-only verification of supplied official remote evidence; no fresh network requests.",
+    "Current production aliases must be rechecked by the release owner immediately before promotion.",
+    "No application tests, real function calls, contact submissions, environment/credential reads, deployment or alias changes executed."
+  ],
+  "networkRequests": 0,
+  "applicationTestsRun": 0,
+  "runtimeFunctionsCalled": 0,
+  "mutations": [
+    "Only this scratch JSON receipt"
+  ]
+}

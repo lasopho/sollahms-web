@@ -1,0 +1,544 @@
+{
+  "observedAtUTC": "2026-11-19T18:43:06.179414+00:00",
+  "reviewer": "independent contacto_release_base subagent",
+  "status": "PASS",
+  "sourceCheckout": "/private/tmp/sollahms-contacto-asesoria-152-20261119",
+  "sourceHEAD": "b56fa12771a824dd8a4d581dc0c9c81e0938f71a",
+  "baseDeployment": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
+  "baseInventorySHA256": "e12408412891bcf181380717ceecf56fc97067f0ff06a7aba25d26f95f12bc72",
+  "candidateOutput": "/private/tmp/sollahms-contacto-152-20261119/release/stage/.vercel/output",
+  "candidateManifest": "/private/tmp/sollahms-contacto-152-20261119/release/MANIFIESTO-PAQUETE.json",
+  "candidateManifestSHA256": "dcfeb3a4f6a5d0e903a3b9181aaa1585e08335cbf0f4e2464c537060e2e37dab",
+  "declaredInventorySHA256": "ec72f06ecab6f732199b761dfa63b6c08c3f4baf632e4ad0ecc8901bd520a04a",
+  "rehashFiles": 1728,
+  "filesChanged": 25,
+  "filesAdded": [
+    "static/assets/js/advisory-project-context.mjs"
+  ],
+  "filesRemoved": [],
+  "checks": [
+    {
+      "name": "manifest actual bytes and unique paths",
+      "passed": true
+    },
+    {
+      "name": "base output is certified 1727/e124 package",
+      "passed": true
+    },
+    {
+      "name": "exact delta 25 changed one helper added zero removed",
+      "passed": true
+    },
+    {
+      "name": "manifest count and bytes",
+      "passed": true
+    },
+    {
+      "name": "131 original fiche HTML byte identity",
+      "passed": true
+    },
+    {
+      "name": "21 expansion fiches only 63 intended href values",
+      "passed": true,
+      "details": [
+        {
+          "slug": "alameda-4719",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "compania-1735",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "nuevo-vivaceta",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "condominio-altos-del-penon",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "condominio-reserva-santa-clara",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "condominio-hacienda-santa-clara",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "condominio-plaza-nos",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "condominio-sendero-santa-clara",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "terrazas-del-mirador",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "altos-del-mirador",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "condominio-hacienda-junquillar",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "condominio-hacienda-volcanes",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "kiez",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "centro-santa-ana",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "edificio-ambar-urbano",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "espacio-v",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "edificio-botanico",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "balmaceda",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "prat",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "vicuna-mackenna-capital",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        },
+        {
+          "slug": "mirador-capital",
+          "onlyThreeScopedHrefChanges": true,
+          "changedAnchors": 3
+        }
+      ]
+    },
+    {
+      "name": "changed paths equal independent scope allowlist",
+      "passed": true
+    },
+    {
+      "name": "seven functions 56 protected files all API libs config identical",
+      "passed": true
+    },
+    {
+      "name": "whitelist 139 to160 exact 21 names existing untouched",
+      "passed": true
+    },
+    {
+      "name": "no public static advisory whitelist introduced",
+      "passed": true
+    },
+    {
+      "name": "candidate overlay matches source",
+      "passed": true
+    },
+    {
+      "name": "contact only adds existing coverage CSS and bounded coverage section",
+      "passed": true
+    },
+    {
+      "name": "agenda only adds two missing cities",
+      "passed": true
+    },
+    {
+      "name": "34 real cities in coverage section both pages",
+      "passed": true,
+      "details": {
+        "expectedCities": [
+          "Arica",
+          "Cerrillos",
+          "Chillán",
+          "Concepción",
+          "Conchalí",
+          "Coquimbo",
+          "Estación Central",
+          "Huechuraba",
+          "Independencia",
+          "La Cisterna",
+          "La Florida",
+          "La Serena",
+          "Las Condes",
+          "Macul",
+          "Papudo",
+          "Peñalolén",
+          "Pichilemu",
+          "Providencia",
+          "Puente Alto",
+          "Puerto Montt",
+          "Puerto Varas",
+          "Quilicura",
+          "Quinta Normal",
+          "Rancagua",
+          "Renca",
+          "San Bernardo",
+          "San Joaquín",
+          "San Pedro de la Paz",
+          "Santiago (comuna)",
+          "Temuco",
+          "Valdivia",
+          "Valparaíso",
+          "Villarrica",
+          "Ñuñoa"
+        ],
+        "contact": [
+          [
+            "Arica y Parinacota",
+            "Arica"
+          ],
+          [
+            "Coquimbo",
+            "Coquimbo"
+          ],
+          [
+            "Coquimbo",
+            "La Serena"
+          ],
+          [
+            "Valparaíso",
+            "Papudo"
+          ],
+          [
+            "Valparaíso",
+            "Valparaíso"
+          ],
+          [
+            "Región Metropolitana",
+            "Cerrillos"
+          ],
+          [
+            "Región Metropolitana",
+            "Conchalí"
+          ],
+          [
+            "Región Metropolitana",
+            "Estación Central"
+          ],
+          [
+            "Región Metropolitana",
+            "Huechuraba"
+          ],
+          [
+            "Región Metropolitana",
+            "Independencia"
+          ],
+          [
+            "Región Metropolitana",
+            "La Cisterna"
+          ],
+          [
+            "Región Metropolitana",
+            "La Florida"
+          ],
+          [
+            "Región Metropolitana",
+            "Las Condes"
+          ],
+          [
+            "Región Metropolitana",
+            "Macul"
+          ],
+          [
+            "Región Metropolitana",
+            "Ñuñoa"
+          ],
+          [
+            "Región Metropolitana",
+            "Peñalolén"
+          ],
+          [
+            "Región Metropolitana",
+            "Providencia"
+          ],
+          [
+            "Región Metropolitana",
+            "Puente Alto"
+          ],
+          [
+            "Región Metropolitana",
+            "Quilicura"
+          ],
+          [
+            "Región Metropolitana",
+            "Quinta Normal"
+          ],
+          [
+            "Región Metropolitana",
+            "Renca"
+          ],
+          [
+            "Región Metropolitana",
+            "San Bernardo"
+          ],
+          [
+            "Región Metropolitana",
+            "San Joaquín"
+          ],
+          [
+            "Región Metropolitana",
+            "Santiago (comuna)"
+          ],
+          [
+            "O'Higgins",
+            "Pichilemu"
+          ],
+          [
+            "O'Higgins",
+            "Rancagua"
+          ],
+          [
+            "Ñuble",
+            "Chillán"
+          ],
+          [
+            "Biobío",
+            "Concepción"
+          ],
+          [
+            "Biobío",
+            "San Pedro de la Paz"
+          ],
+          [
+            "La Araucanía",
+            "Temuco"
+          ],
+          [
+            "La Araucanía",
+            "Villarrica"
+          ],
+          [
+            "Los Ríos",
+            "Valdivia"
+          ],
+          [
+            "Los Lagos",
+            "Puerto Montt"
+          ],
+          [
+            "Los Lagos",
+            "Puerto Varas"
+          ]
+        ],
+        "agenda": [
+          [
+            "Arica y Parinacota",
+            "Arica"
+          ],
+          [
+            "Coquimbo",
+            "Coquimbo"
+          ],
+          [
+            "Coquimbo",
+            "La Serena"
+          ],
+          [
+            "Valparaíso",
+            "Papudo"
+          ],
+          [
+            "Valparaíso",
+            "Valparaíso"
+          ],
+          [
+            "Región Metropolitana",
+            "Cerrillos"
+          ],
+          [
+            "Región Metropolitana",
+            "Conchalí"
+          ],
+          [
+            "Región Metropolitana",
+            "Estación Central"
+          ],
+          [
+            "Región Metropolitana",
+            "Huechuraba"
+          ],
+          [
+            "Región Metropolitana",
+            "Independencia"
+          ],
+          [
+            "Región Metropolitana",
+            "La Cisterna"
+          ],
+          [
+            "Región Metropolitana",
+            "La Florida"
+          ],
+          [
+            "Región Metropolitana",
+            "Las Condes"
+          ],
+          [
+            "Región Metropolitana",
+            "Macul"
+          ],
+          [
+            "Región Metropolitana",
+            "Ñuñoa"
+          ],
+          [
+            "Región Metropolitana",
+            "Peñalolén"
+          ],
+          [
+            "Región Metropolitana",
+            "Providencia"
+          ],
+          [
+            "Región Metropolitana",
+            "Puente Alto"
+          ],
+          [
+            "Región Metropolitana",
+            "Quilicura"
+          ],
+          [
+            "Región Metropolitana",
+            "Quinta Normal"
+          ],
+          [
+            "Región Metropolitana",
+            "Renca"
+          ],
+          [
+            "Región Metropolitana",
+            "San Bernardo"
+          ],
+          [
+            "Región Metropolitana",
+            "San Joaquín"
+          ],
+          [
+            "Región Metropolitana",
+            "Santiago (comuna)"
+          ],
+          [
+            "O'Higgins",
+            "Pichilemu"
+          ],
+          [
+            "O'Higgins",
+            "Rancagua"
+          ],
+          [
+            "Ñuble",
+            "Chillán"
+          ],
+          [
+            "Biobío",
+            "Concepción"
+          ],
+          [
+            "Biobío",
+            "San Pedro de la Paz"
+          ],
+          [
+            "La Araucanía",
+            "Temuco"
+          ],
+          [
+            "La Araucanía",
+            "Villarrica"
+          ],
+          [
+            "Los Ríos",
+            "Valdivia"
+          ],
+          [
+            "Los Lagos",
+            "Puerto Montt"
+          ],
+          [
+            "Los Lagos",
+            "Puerto Varas"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "advisory changes only resolver import invocation preserving measurement and form flow",
+      "passed": true
+    },
+    {
+      "name": "privacy consent robots SEO catalogue map and pinned source bytes preserved",
+      "passed": true
+    },
+    {
+      "name": "expansion source has existing transport SHA pin",
+      "passed": true
+    },
+    {
+      "name": "helper uses existing pinned validation and identity-only projection",
+      "passed": true
+    },
+    {
+      "name": "manifest and stage stable during independent read",
+      "passed": true
+    },
+    {
+      "name": "source checkout pinned runtime HEAD",
+      "passed": true
+    }
+  ],
+  "findings": [],
+  "productionConcurrency": {
+    "method": "Fresh official Vercel get_alias read for apex and www during this review",
+    "bothDeploymentIds": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
+    "wwwRedirect": "sollahms.cl",
+    "wwwRedirectStatusCode": 308,
+    "concurrentProductionChangeDetected": false,
+    "limits": "Snapshot only; root must recheck aliases immediately before promotion. No environment values retained."
+  },
+  "testExecution": {
+    "rerun": false,
+    "knownOtherAgentReceipt": "9 new tests and 22 regressions already run per parent instruction",
+    "reviewMethod": "Read-only source inspection and independent all-file byte/manifest/scope comparisons; not test rerun"
+  },
+  "limits": [
+    "No deployment/promotion performed by reviewer.",
+    "Remote UID verification of the new candidate remains for its future staged deployment.",
+    "No assertion of provider delivery, real lead receipt, ranking/indexation or AI citations."
+  ],
+  "mutations": [
+    "Only this scratch review JSON receipt"
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "dateUTC": "2026-11-19T18:44:25.824Z",
+  "base": "http://127.0.0.1:8769",
+  "checks": 9,
+  "passed": 9,
+  "results": [
+    {
+      "label": "Both Contacto and Asesoria list exactly34 published communes including PuenteAlto and SanPedro",
+      "status": "PASS",
+      "evidence": [
+        {
+          "page": "contacto.html",
+          "communes": 34,
+          "contextHidden": true
+        },
+        {
+          "page": "agenda-asesoria.html",
+          "communes": 34,
+          "contextHidden": true
+        }
+      ]
+    },
+    {
+      "label": "All21 project contexts resolve on both pages and handoff keeps their slug",
+      "status": "PASS",
+      "evidence": {
+        "pages": 42,
+        "distinctProjects": 21
+      }
+    },
+    {
+      "label": "All63 commercial fiche links preserve identity without changing generic navigation",
+      "status": "PASS",
+      "evidence": {
+        "fiches": 21,
+        "commercialLinks": 63
+      }
+    },
+    {
+      "label": "Existing multi-stage context is preserved",
+      "status": "PASS",
+      "evidence": {
+        "stage": "terratolten-3",
+        "pages": 2
+      }
+    },
+    {
+      "label": "Unknown retired duplicate or invented-stage contexts fail closed",
+      "status": "PASS",
+      "evidence": {
+        "rejectedContexts": 5
+      }
+    },
+    {
+      "label": "Local mock submission carries new project identity on both pages and acknowledges no delivery",
+      "status": "PASS",
+      "evidence": [
+        {
+          "page": "contacto.html",
+          "project": "condominio-altos-del-penon",
+          "request": "asesoria",
+          "keys": [
+            "consent",
+            "correo",
+            "mensaje",
+            "nombre",
+            "objetivo",
+            "proyecto",
+            "rut",
+            "solicitud",
+            "startedAt",
+            "telefono",
+            "website"
+          ],
+          "operationKeyPresent": true
+        },
+        {
+          "page": "agenda-asesoria.html",
+          "project": "condominio-hacienda-junquillar",
+          "request": "asesoria",
+          "keys": [
+            "consent",
+            "correo",
+            "mensaje",
+            "nombre",
+            "objetivo",
+            "proyecto",
+            "rut",
+            "solicitud",
+            "startedAt",
+            "telefono",
+            "website"
+          ],
+          "operationKeyPresent": true
+        }
+      ]
+    },
+    {
+      "label": "Expansion unavailable blocks new context while generic and existing consultations work",
+      "status": "PASS",
+      "evidence": {
+        "new": "blocked",
+        "original": "works",
+        "general": "works"
+      }
+    },
+    {
+      "label": "Both pages fit desktop and mobile with four required identity fields and consent controls",
+      "status": "PASS",
+      "evidence": [
+        {
+          "page": "contacto.html",
+          "width": 1440,
+          "document": 1440
+        },
+        {
+          "page": "agenda-asesoria.html",
+          "width": 1440,
+          "document": 1440
+        },
+        {
+          "page": "contacto.html",
+          "width": 390,
+          "document": 390
+        },
+        {
+          "page": "agenda-asesoria.html",
+          "width": 390,
+          "document": 390
+        }
+      ]
+    },
+    {
+      "label": "No JavaScript errors or analytics/replay requests and no real submissions",
+      "status": "PASS",
+      "evidence": {
+        "errors": [],
+        "externalRequests": [],
+        "realSubmissions": 0,
+        "mockSubmissions": 2
+      }
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "realFormsSent": 0,
+  "personalSessionUsed": false
+}
