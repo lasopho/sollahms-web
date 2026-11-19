@@ -1,0 +1,74 @@
+{
+  "observedAt": "2026-11-19T09:26:48.884705-03:00",
+  "timezone": "America/Santiago",
+  "deployment": {
+    "id": "dpl_J9eJCCKtDDuT5SL5PMtd8q6e1BqL",
+    "url": "project-wrapp-mdt3f6mav-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": null,
+    "source": "cli",
+    "createdAt": 1795091074084,
+    "gitMetadata": {
+      "githubCommitSha": "942cc6401de9092a4cd37c55bdb0cc57e79ce3e6",
+      "githubCommitRef": "codex/seo-apariencia-google-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    }
+  },
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "environmentClassification": {
+    "environment": "preview",
+    "apiTarget": null,
+    "basis": "Explicit preview creation recorded by root; API target null confirms non-production deployment. Environment variable values are not queried."
+  },
+  "candidateInventorySHA256": "57f6cd7cea444269b8eeffa08407b9162c08dc952e31d3759e8a7ce8639b14eb",
+  "expectedFiles": 1724,
+  "receivedFiles": 1724,
+  "matchingSHA1UIDs": 1724,
+  "missing": [],
+  "extra": [],
+  "changed": [],
+  "functionFilesMatched": 57,
+  "functionBundlesMatched": 7,
+  "configurationMatched": true,
+  "lambdaRoutes": [
+    {
+      "path": "out/api/advisory",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-c414b052589a85c9b3d9b197c6c8665c37"
+    },
+    {
+      "path": "out/api/booking-availability",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-ceb042fdd49e2da8aa18c32410be93daad"
+    },
+    {
+      "path": "out/api/booking-create",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-17f3e2a3764dc71c99a731f743be5e5413"
+    },
+    {
+      "path": "out/api/collaboration",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-51222bb465b8d5df9a41c64db30a8437bc"
+    },
+    {
+      "path": "out/api/contact",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-e8c4d249d05a9c74dfea8ddb3b898635d0"
+    },
+    {
+      "path": "out/api/orientation-contact",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-47938e891ed77eca3c234b26ddb32990d6"
+    },
+    {
+      "path": "out/api/uf",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-ba772d616a552722825dd84b82d01b310a"
+    }
+  ],
+  "directoryNodesNotFiles": 115,
+  "sizeMismatches": [],
+  "remoteFileSizesComparedWherePresent": 0,
+  "completeOfficialTreeSHA256": "28c81801dfc4ea8bc22744084e8ab1839f52671dbdf9158e5a80da12cbd36b9e",
+  "method": "Official authenticated complete Vercel file-tree GET. Every raw file SHA1 UID compared against pinned local candidate inventory; no file-content downloads for this comparison.",
+  "fileContentDownloadsForInventory": 0,
+  "applicationTestsRepeated": 0,
+  "mutations": 0,
+  "passed": true
+}

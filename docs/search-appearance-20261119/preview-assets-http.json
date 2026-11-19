@@ -1,0 +1,49 @@
+{
+  "observedAt": "2026-11-19T09:28:25.728300-03:00",
+  "timezone": "America/Santiago",
+  "deploymentId": "dpl_J9eJCCKtDDuT5SL5PMtd8q6e1BqL",
+  "method": "Two authenticated vercel curl GETs using existing CLI authentication; response bodies and unfiltered headers kept only in temporary files that are removed. Only whitelisted headers and hashes retained.",
+  "requests": [
+    {
+      "url": "https://project-wrapp-mdt3f6mav-lsandoval2-8260s-projects.vercel.app/assets/branding/favicon.png",
+      "method": "GET",
+      "observedAt": "2026-11-19T09:28:24.166249-03:00",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "image/png",
+        "x-robots-tag": "noindex",
+        "content-length": "11598"
+      },
+      "bytes": 11598,
+      "sha256": "0c37414652663cb79412c3e12b08596ccd2fcd55f04351be60e52bbba550f0bf",
+      "expectedSHA256": "0c37414652663cb79412c3e12b08596ccd2fcd55f04351be60e52bbba550f0bf",
+      "matchesCandidateBytes": true,
+      "expectedContentType": "image/png",
+      "contentTypeMatches": true,
+      "passed": true
+    },
+    {
+      "url": "https://project-wrapp-mdt3f6mav-lsandoval2-8260s-projects.vercel.app/assets/branding/favicon.svg",
+      "method": "GET",
+      "observedAt": "2026-11-19T09:28:25.728017-03:00",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "image/svg+xml",
+        "x-robots-tag": "noindex",
+        "content-length": "1035"
+      },
+      "bytes": 1035,
+      "sha256": "90b680bf27eadf3f94634fb47b224a79238a2de2d2fbb819e52af5bbecc2d860",
+      "expectedSHA256": "90b680bf27eadf3f94634fb47b224a79238a2de2d2fbb819e52af5bbecc2d860",
+      "matchesCandidateBytes": true,
+      "expectedContentType": "image/svg+xml",
+      "contentTypeMatches": true,
+      "passed": true
+    }
+  ],
+  "realProviderWrites": 0,
+  "mutations": 0,
+  "passed": true
+}
