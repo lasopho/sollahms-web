@@ -8,7 +8,12 @@ sys.path.insert(0,str(ROOT/'scripts'))
 from corporate_seo import apply_corporate_seo
 baseline_temp=tempfile.TemporaryDirectory()
 BASE=Path(baseline_temp.name)
-PAGES=list(json.loads((ROOT/'data/corporate-seo.json').read_text())['pages'])
+# This historical contract is tied to the eight pages in the October artifact.
+# Later allowlisted pages are verified against current production by
+# scripts/verify-corporate-seo-review.py; they do not exist in this fixture.
+PAGES=['index.html','contacto.html','agenda-asesoria.html','guia-hipotecaria.html',
+       'comparador-hipotecario.html','cuando-comprar-propiedad.html',
+       'trabaja-con-nosotros.html','privacidad.html']
 checks=[];errors=[]
 def check(name,condition):
  checks.append({'check':name,'passed':bool(condition)})

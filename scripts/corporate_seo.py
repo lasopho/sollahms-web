@@ -52,9 +52,14 @@ def apply_corporate_seo(html, filename):
     # missing guide tags and align changed titles/descriptions without new media.
     social = {'og:site_name': 'Sollahms', 'og:image:alt': 'Sollahms — información y asesoría inmobiliaria',
               'twitter:card': 'summary_large_image', 'twitter:image:alt': 'Sollahms — información y asesoría inmobiliaria'}
-    image = metadata['og:image']
+    image = metadata.get('og:image') or page['socialImage']
+    social.update({'og:type': 'website', 'og:locale': 'es_CL',
+                   'og:url': url, 'og:title': title, 'og:description': description,
+                   'og:image': image})
     social.update({'twitter:image': image, 'twitter:title': title, 'twitter:description': description,
-                   'og:image:secure_url': image, 'og:image:type': 'image/png', 'og:image:width': '1254', 'og:image:height': '1254'})
+                   'og:image:secure_url': image, 'og:image:type': 'image/png',
+                   'og:image:width': metadata.get('og:image:width') or page.get('socialImageWidth', '1254'),
+                   'og:image:height': metadata.get('og:image:height') or page.get('socialImageHeight', '1254')})
     if page.get('title'):
         social['og:title'] = title
     if page.get('description'):

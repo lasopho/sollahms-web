@@ -1,0 +1,74 @@
+{
+  "observedAt": "2026-11-19T07:25:25.141000-03:00",
+  "timezone": "America/Santiago",
+  "method": "Local runtime mocks using exact certified deployed function bundles; global fetch and injected providers fail on invocation.",
+  "artifact": "/private/tmp/sollahms-fichas-iris-release-20261119/stage/.vercel/output",
+  "results": [
+    {
+      "test": "contact/resend",
+      "status": 503,
+      "code": "preview_read_only",
+      "passed": true
+    },
+    {
+      "test": "contact/crm",
+      "status": 503,
+      "code": "preview_read_only",
+      "passed": true
+    },
+    {
+      "test": "orientation-contact",
+      "status": 503,
+      "code": "preview_read_only",
+      "passed": true
+    },
+    {
+      "test": "advisory",
+      "status": 503,
+      "code": "preview_read_only",
+      "passed": true
+    },
+    {
+      "test": "collaboration/persona",
+      "status": 503,
+      "code": "preview_read_only",
+      "passed": true
+    },
+    {
+      "test": "collaboration/inmobiliaria",
+      "status": 503,
+      "code": "preview_read_only",
+      "passed": true
+    },
+    {
+      "test": "booking-create/current-default",
+      "status": 503,
+      "code": "booking_not_certified",
+      "passed": true
+    },
+    {
+      "test": "booking-create/legacy-factory-preview",
+      "status": 503,
+      "code": "preview_read_only",
+      "passed": true
+    },
+    {
+      "test": "booking-availability/current-default",
+      "status": 503,
+      "code": "booking_not_certified",
+      "passed": true
+    }
+  ],
+  "tests": 9,
+  "passed": true,
+  "providerCalls": 0,
+  "secretReads": 0,
+  "remoteRequests": 0,
+  "realFormSubmissions": 0,
+  "realReservations": 0,
+  "functionFiles": 57,
+  "functionsUnchanged": true,
+  "configurationUnchanged": true,
+  "limitation": "Verifies application runtime guard and current request-only booking policy locally. Preview authentication and remote runtime environment are checked separately.",
+  "observedAtUTC": "2026-11-19T10:25:25.141Z"
+}

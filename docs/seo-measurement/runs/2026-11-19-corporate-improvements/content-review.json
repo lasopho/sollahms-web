@@ -1,0 +1,67 @@
+{
+  "reviewed_at": "2026-11-19T07:21:35-03:00",
+  "timezone": "America/Santiago",
+  "review_scope": "Targeted editorial review of four included educational pages, compared with the currently deployed immutable artifact. Not a comprehensive tax or financial certification.",
+  "production_deployment_id": "dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr",
+  "production_source_sha": "49312fd708ccd9e319511432e4b657788f5734f9",
+  "baseline_html_matches": {
+    "guia-hipotecaria.html": true,
+    "cuando-comprar-propiedad.html": true,
+    "beneficios-tributarios-inmobiliarios.html": true
+  },
+  "changed_page": "https://sollahms.cl/inversion-inmobiliaria-empresas.html",
+  "finding": "The hero advisory link leads to a disabled enterprise form. The section only directs users to the footer WhatsApp and offers no direct link to the active contact form.",
+  "correction": "Added one contextual link to the existing /contacto.html#solicitar-asesoria and clarified which form is disabled. Existing enterprise fields remain disabled; no submission or integration is activated.",
+  "reason_no_origin_query": "No enterprise origin was verified as recognized by the current contact attribution flow, so the link uses no new query parameter.",
+  "verification": {
+    "one_new_contact_anchor": true,
+    "destination_anchor_exists": true,
+    "disabled_fieldset_byte_identical": true,
+    "scripts_byte_identical": true,
+    "whatsapp_links_and_messages_byte_identical": true,
+    "documentary_links_preserved": true,
+    "only_notice_and_link_changed": true,
+    "real_submissions": 0,
+    "existing_enterprise_tests": {
+      "command": "node --test tests/inversion-empresas.test.mjs tests/inversion-empresas-controller.test.mjs",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "financial_review": {
+    "decision": "Retained existing financial and tax copy. No dates of substantive financial review were advanced.",
+    "confirmed_samples": [
+      {
+        "page": "guia-hipotecaria.html",
+        "topic": "Subsidy programme price ceiling, maximum places and deadline",
+        "source": "https://www.minvu.gob.cl/fogaes/",
+        "observation": "Official MINVU page supports 6,000 UF, 80,000 places and 31 May 2028, with availability and participating-entity requirements. Existing copy preserves these limits."
+      },
+      {
+        "page": "inversion-inmobiliaria-empresas.html",
+        "topic": "Corporate rental income from DFL2 housing",
+        "source": "https://www.sii.cl/preguntas_frecuentes/declaracion_renta/001_140_3480.htm",
+        "source_updated": "2026-03-26",
+        "observation": "SII confirms corporate rental income does not receive the personal DFL2 rental exemption. Existing copy distinguishes the later optional regime and does not promise approval."
+      },
+      {
+        "page": "beneficios-tributarios-inmobiliarios.html",
+        "topic": "Future special VAT refund procedure",
+        "source": "https://www.sii.cl/noticias/2026/301026noti01smn.htm",
+        "observation": "SII announcement confirms Resolution 146/2026 and effective date 1 December 2026. Existing page correctly isolates this future procedure from current recommendations."
+      },
+      {
+        "page": "beneficios-tributarios-inmobiliarios.html",
+        "topic": "Status of administrative instructions",
+        "source": "https://www.sii.cl/noticias/2026/051126noti02pcr.htm",
+        "observation": "This official announcement describes draft circulars in consultation. It does not itself establish final publication or operational availability after consultation. No draft was treated as final instructions."
+      }
+    ],
+    "limitations": [
+      "BCN standard page for Law 21.836 returned only the JavaScript compatibility notice; MINVU supplied the readable official confirmation.",
+      "The targeted search did not establish publication of final SII circulars after consultation ended. No absence claim or new benefit eligibility is inferred.",
+      "Commercial availability and individual legal or tax treatment require operation-specific documents; existing caveats remain."
+    ]
+  }
+}
