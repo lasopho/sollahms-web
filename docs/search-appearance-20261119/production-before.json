@@ -1,0 +1,128 @@
+{
+  "observedAt": "2026-11-19T09:23:03.875097-03:00",
+  "timezone": "America/Santiago",
+  "scope": "Read-only fresh production baseline for a new search-appearance private candidate. No production publication authorized or executed by this verification.",
+  "method": "Official authenticated Vercel GETs; selected identifiers and settings only. No environment variable values, credentials or bypass identifiers accessed or saved.",
+  "expectedProductionDeploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+  "expectedProductionSourceCommit": "df78d77f31c8da946623e586634998e151ed237e",
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "deploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795085642653,
+      "updatedAtAmericaSantiago": "2026-11-19T07:54:02.653000-03:00"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "deploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795085642657,
+      "updatedAtAmericaSantiago": "2026-11-19T07:54:02.657000-03:00"
+    }
+  ],
+  "currentProduction": {
+    "id": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+    "url": "project-wrapp-9zpf0ls5h-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795085201541,
+    "isRollbackCandidate": null,
+    "gitMetadata": {
+      "githubCommitSha": "df78d77f31c8da946623e586634998e151ed237e",
+      "githubCommitRef": "codex/seo-geo-corporativo-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    }
+  },
+  "projectProductionTarget": {
+    "id": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+    "url": "project-wrapp-9zpf0ls5h-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "source": null,
+    "createdAt": 1795085201541,
+    "isRollbackCandidate": null,
+    "gitMetadata": {
+      "githubCommitSha": "df78d77f31c8da946623e586634998e151ed237e",
+      "githubCommitRef": "codex/seo-geo-corporativo-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    }
+  },
+  "bothAliasesUnchanged": true,
+  "productionSourceCommitUnchanged": true,
+  "projectSettings": {
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "repository": {
+      "owner": "lasopho",
+      "name": "sollahms-web",
+      "productionBranch": "main"
+    },
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "autoAssignCustomDomains": false,
+    "buildCommandOverride": null,
+    "outputDirectoryOverride": null,
+    "installCommandOverride": null,
+    "rootDirectoryOverride": null
+  },
+  "autoAssignCustomDomainsRemainsFalse": true,
+  "previewProtectionPreserved": true,
+  "newerProductionDeploymentRecords": [],
+  "noNewerProductionDeploymentRecords": true,
+  "previousProductionRecovery": {
+    "deploymentId": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+    "candidate": {
+      "id": "dpl_8MyM5t9vQukSLaBkNRq4sTzGsSPV",
+      "url": "project-wrapp-iev6fe1ip-lsandoval2-8260s-projects.vercel.app",
+      "readyState": "READY",
+      "target": "production",
+      "source": "cli",
+      "createdAt": 1795083950805,
+      "isRollbackCandidate": true,
+      "gitMetadata": {
+        "githubCommitSha": "0a0b7c70c7de8f5db8b122ae8a4d6664773180ba",
+        "githubCommitRef": "codex/mapa-filtros-21-proyectos-20261119",
+        "githubOrg": "lasopho",
+        "githubRepo": "sollahms-web"
+      }
+    },
+    "readOnlyRecoveryAvailable": true,
+    "rollbackInfoGETSucceeded": true,
+    "rollbackExecuted": false
+  },
+  "functionAndArtifactEvidenceReused": {
+    "file": "/private/tmp/sollahms-seo-geo-20261119/docs/seo-measurement/runs/2026-11-19-corporate-improvements/publication/staged-remote-integrity.json",
+    "fileSHA256": "c611970e5d5dbf9b64328d21df7cb2be178f3a7b31648eb3be41ff55b582db87",
+    "sameImmutableDeploymentId": true,
+    "remoteFilesMatched": 1723,
+    "functionFilesMatched": 57,
+    "functionBundlesMatched": 7,
+    "configurationMatched": true,
+    "valid": true,
+    "reason": "The currently aliased deployment is the identical immutable ID whose full 1723-file output and seven functions were already certified. No repeated application tests or file-tree downloads are necessary."
+  },
+  "mutations": {
+    "productionDeployments": 0,
+    "promotions": 0,
+    "rollbacks": 0,
+    "aliases": 0,
+    "settings": 0,
+    "providerWrites": 0,
+    "formsSubmitted": 0
+  },
+  "passed": true
+}

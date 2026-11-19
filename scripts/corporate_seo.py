@@ -30,11 +30,57 @@ def meta_pattern(attr, key):
     return r'<meta\b(?=[^>]*\b' + attr + r'="' + re.escape(key) + r'")[^>]*>'
 
 
+def align_homepage_graph(html, title, description):
+    """Keep the existing identity graph; align only its own WebPage label."""
+    found = 0
+
+    def align(match):
+        nonlocal found
+        payload = json.loads(match[1])
+        nodes = payload.get('@graph', [])
+        changed = False
+        for node in nodes:
+            if node.get('@id') == ORIGIN + '/#webpage' and node.get('@type') == 'WebPage':
+                found += 1
+                if node.get('name') != title or node.get('description') != description:
+                    node['name'] = title
+                    node['description'] = description
+                    changed = True
+        if not changed:
+            return match[0]
+        return '<script type="application/ld+json">\n' + json.dumps(payload, ensure_ascii=False, indent=2) + '\n</script>'
+
+    result = re.sub(r'<script type="application/ld\+json">(.*?)</script>', align, html, flags=re.S)
+    if found != 1:
+        raise ValueError('Expected exactly one existing homepage WebPage identity')
+    return result
+
+
+def add_homepage_png_favicon(html, href):
+    """Add one raster alternative before the approved, unchanged SVG icon."""
+    svg_pattern = r'<link\b(?=[^>]*\brel="icon")(?=[^>]*\bhref="/assets/branding/favicon\.svg(?:\?[^"]*)?")[^>]*>'
+    svg_matches = list(re.finditer(svg_pattern, html))
+    if len(svg_matches) != 1:
+        raise ValueError('Expected exactly one existing homepage SVG favicon')
+    png_pattern = r'<link\b(?=[^>]*\brel="icon")(?=[^>]*\bhref="' + re.escape(href) + r'")[^>]*>'
+    png_matches = list(re.finditer(png_pattern, html))
+    if len(png_matches) > 1:
+        raise ValueError('Duplicate homepage PNG favicon')
+    tag = '<link rel="icon" type="image/png" sizes="512x512" href="' + escape(href, quote=True) + '">'
+    if png_matches:
+        if png_matches[0].start() > svg_matches[0].start():
+            raise ValueError('Homepage PNG favicon must precede the existing SVG')
+        return re.sub(png_pattern, lambda _: tag, html, count=1)
+    position = svg_matches[0].start()
+    return html[:position] + tag + '\n' + html[position:]
+
+
 def apply_corporate_seo(html, filename):
     config = json.loads(CONFIG.read_text())
     if filename not in config['pages']:
         raise ValueError('Page outside the corporate SEO allowlist: ' + filename)
     page = config['pages'][filename]
+    align_homepage = filename == 'index.html' and page.get('alignHomepageMetadata', False)
     metadata = Metadata(html).values
     if filename == 'comparador-hipotecario.html' and 'id="corporate-seo-layout"' not in html:
         html = html.replace('</head>', '<style id="corporate-seo-layout">\n.footer-inner > div { flex-wrap: wrap; min-width: 0; max-width: 100%; }\n</style>\n</head>', 1)
@@ -70,7 +116,8 @@ def apply_corporate_seo(html, filename):
         pattern = meta_pattern(attr, key)
         tag = '<meta ' + attr + '="' + key + '" content="' + escape(value, quote=True) + '">'
         if re.search(pattern, html):
-            if key in ('og:title', 'twitter:title') and page.get('title') or key in ('og:description', 'twitter:description') and page.get('description'):
+            if (key in ('og:title', 'twitter:title') and (page.get('title') or align_homepage)
+                    or key in ('og:description', 'twitter:description') and (page.get('description') or align_homepage)):
                 html = re.sub(pattern, tag, html, count=1)
         else:
             additions.append(tag)
@@ -78,6 +125,10 @@ def apply_corporate_seo(html, filename):
 
     if filename == 'index.html':
         # The homepage is the authoritative Organization/WebSite/Service graph.
+        if align_homepage:
+            html = align_homepage_graph(html, title, description)
+        if page.get('faviconPng'):
+            html = add_homepage_png_favicon(html, page['faviconPng'])
         return html
     entity = {'@type': page['type'], '@id': url + page.get('fragment', '#webpage'),
               'url': url, 'name': title, 'description': description, 'inLanguage': 'es-CL',
