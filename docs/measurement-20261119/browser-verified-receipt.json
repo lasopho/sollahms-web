@@ -1,0 +1,102 @@
+{
+  "createdAt": "2026-11-19T15:55:18.157Z",
+  "mode": "isolated local browser, no real provider/API requests",
+  "browser": "159.0.8154.13",
+  "framework": "Playwright (installed runtime; Puppeteer unavailable)",
+  "sourceStatic": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-measurement-private/candidate-verified/.vercel/output/static",
+  "configShipped": {
+    "enabled": true,
+    "analyticsEnabled": true,
+    "replayEnabled": true,
+    "blankIds": false
+  },
+  "runtimeSha256": "41a87d79fddb3fc59b5892df7c42c913acefd4a60f72d4becf844ecb4e70bd22",
+  "checks": [
+    {
+      "name": "enabled actual configuration banner/dialog 1440",
+      "passed": true,
+      "viewport": 1440,
+      "providerRequests": 0,
+      "cookies": 0,
+      "unpremarkedIndependentOptions": true
+    },
+    {
+      "name": "enabled actual configuration banner/dialog 390",
+      "passed": true,
+      "viewport": 390,
+      "providerRequests": 0,
+      "cookies": 0,
+      "unpremarkedIndependentOptions": true
+    },
+    {
+      "name": "enabled actual configuration banner/dialog 320",
+      "passed": true,
+      "viewport": 320,
+      "providerRequests": 0,
+      "cookies": 0,
+      "unpremarkedIndependentOptions": true
+    },
+    {
+      "name": "reject actual enabled providers creates no SDK or provider cookies",
+      "passed": true,
+      "providerRequests": 0,
+      "cookies": 0
+    },
+    {
+      "name": "select Analytics only uses correct actual public measurement ID with local SDK mock",
+      "passed": true,
+      "providerRequests": 1,
+      "provider": "ga4",
+      "actualPublicTagIdVerified": true,
+      "globalSettingsBeforeGrantAndJs": true,
+      "globalAndDestinationSettingsIdentical": true
+    },
+    {
+      "name": "select Replay only uses correct actual public project ID with local SDK mock",
+      "passed": true,
+      "providerRequests": 1,
+      "provider": "clarity",
+      "actualPublicTagIdVerified": true
+    },
+    {
+      "name": "accept both actual IDs then withdraw: removes synthetic cookies and reloads without restarting SDK",
+      "passed": true,
+      "mockSdkRequests": 2,
+      "syntheticCookiesDeleted": true,
+      "reloaded": true,
+      "providerRestarts": 0
+    },
+    {
+      "name": "actual enabled configuration remains unreachable from Preview guard",
+      "passed": true,
+      "configRequests": 0,
+      "providerRequests": 0,
+      "cookies": 0
+    }
+  ],
+  "screenshots": [
+    "browser-verified-banner-390.png",
+    "browser-verified-dialog-320.png"
+  ],
+  "limitations": [
+    "Provider SDK bodies are local nonnetworking mocks; the configured revocation case creates synthetic first-party cookies. Does not certify provider collection/redaction, account settings, CSP headers, delivery, CRM receipt or qualified leads.",
+    "Form inputs are synthetic; local API fixtures never send mail or persist leads.",
+    "Reload is tested as browser navigation, not as proof that a real SDK cannot send a final unload request."
+  ],
+  "supplements": [
+    "browser-receipt.json",
+    "browser-supplement-receipt.json",
+    "browser-configured-receipt.json"
+  ],
+  "supplementNote": "Only final enabled configuration/UI/provider selection/revocation/Preview gates retested. Earlier v2/v3 receipts retain their own runtime/config state. Regression rerun after adding global settings before grant/js/SDK; real SDK evaluation remains separate.",
+  "configSha256": "302c12004cdd37b76fa5fb91889a04dbe7b9ed95cfc0cac8697530ad15e39902",
+  "publicTagIds": {
+    "analytics": "G-LTFBQKVNY2",
+    "replay": "zg5i98wnxm"
+  },
+  "passed": true,
+  "summary": {
+    "passed": 8,
+    "total": 8
+  }
+}

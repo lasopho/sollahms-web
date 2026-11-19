@@ -2,6 +2,8 @@
 
 For every Sollahms SEO/GEO, search-visibility or related-publication question in this or a future chat, start with `docs/seo-measurement/STRATEGY-v3.md`, the 25/29 October studies it links, `active-policy.json`, and the latest evidence. Reuse that study; explain each proposal's objective, observed problem, study criterion and verification. Evaluate **Google, OpenAI/ChatGPT Search and Bing/Microsoft Copilot separately**. A Google-specific change does not establish a benefit elsewhere. Keep implementation, publication, indexation, search appearance, AI citations and business results distinct; missing evidence stays unknown. Preserve scope/exclusions and training preferences. Update obsolete guidance only from current primary sources and record why. This continuity instruction does not approve production or merging.
 
+For the optional measurement pilot, preserve the consent gates and exact scope in `docs/measurement-20261119/README.md` and `data/site-measurement.json`. Regenerated corporate HTML uses `scripts/site_measurement.py` after page authoring; never apply it to excluded pages or load SDKs in Preview. Account setup does not approve site publication.
+
 # Permanent SEO/GEO strategic scope (2026-11-08)
 
 The owner's current instruction permanently excludes **all individual real-estate project fichas** from SEO/GEO strategy, opportunity selection, content optimization, prioritization and AI-search result evaluation. This includes the eight historical candidates, future fichas, aliases and retired project routes. Preserve their functionality and technical access: do not delete, noindex, edit or otherwise harm them to implement this exclusion.

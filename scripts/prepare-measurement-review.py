@@ -71,6 +71,11 @@ def main():
     changed = {key for key in before.keys() & after.keys() if before[key] != after[key]}
     if added != ADDED or removed or changed != CHANGED:
         raise ValueError('Unexpected artifact delta: ' + str((added, removed, changed)))
+    sitemap_before = (baseline / 'static/sitemap.xml').read_bytes()
+    privacy_old = b'<url><loc>https://sollahms.cl/privacidad.html</loc><lastmod>2026-10-25</lastmod></url>'
+    privacy_new = privacy_old.replace(b'2026-10-25', b'2026-11-19')
+    if sitemap_before.count(privacy_old) != 1 or (target / 'static/sitemap.xml').read_bytes() != sitemap_before.replace(privacy_old, privacy_new, 1):
+        raise ValueError('Sitemap must preserve all entries except the real privacy modification date')
     manifest_bytes = (json.dumps({'productionBaseDeployment': BASE_DEPLOYMENT, 'files': after},
                                  sort_keys=True, indent=2) + '\n').encode()
     manifest_path = output.parent / (output.name + '-inventory.json')
@@ -88,7 +93,8 @@ def main():
         'removed': [], 'unchangedFiles': len(before) - len(changed),
         'allSevenFunctionsAndConfigByteIdentical': True,
         'catalogue152FichesDocumentaryCenterByteIdentical': True,
-        'robotsSitemapCommercialDataAndIntegrationsByteIdentical': True,
+        'robotsCommercialDataAndIntegrationFilesByteIdentical': True,
+        'sitemapOnlyPrivacyLastmodChangedAllURLsAndExcludedEntriesPreserved': True,
         'appearancePR38DependencyRequiresApproval': True,
         'measurementConfiguration': config,
         'productionDeploymentPerformed': False, 'realProviderCalls': 0,

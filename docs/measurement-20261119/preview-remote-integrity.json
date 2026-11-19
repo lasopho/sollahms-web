@@ -1,0 +1,136 @@
+{
+  "observedAt": "2026-11-19T13:04:30.392849-03:00",
+  "timezone": "America/Santiago",
+  "deployment": {
+    "id": "dpl_HS99vSe1dgeQrqzyXLYtiNoEtCvz",
+    "url": "project-wrapp-7ukmzmy6h-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": null,
+    "source": "cli",
+    "createdAt": 1795103976638,
+    "gitMetadata": {
+      "githubCommitSha": "f914590010cf0b4ac930c41a59b648da3be1ab31",
+      "githubCommitRef": "codex/medicion-seo-geo-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    }
+  },
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "environmentClassification": {
+    "environment": "preview",
+    "apiTarget": null,
+    "basis": "Root explicitly created Preview; target null confirms non-production. No environment values retained."
+  },
+  "environmentNamesTargets": [
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "environmentMetadataMethod": "Key/target/type metadata selected from project GET; no decryption or environment-value request.",
+  "candidateInventorySHA256": "0348f6339b2fe315afb94076abdcca7cc0791a663c5fe639457ec5791040c1fe",
+  "expectedFiles": 1727,
+  "receivedFiles": 1727,
+  "matchingSHA1UIDs": 1727,
+  "missing": [],
+  "extra": [],
+  "changed": [],
+  "functionFilesMatched": 57,
+  "functionBundlesMatched": 7,
+  "configurationMatched": true,
+  "productionBaselineComparison": {
+    "deploymentId": "dpl_86Bv4RiDeSNxuRarAqn8kkyN4rrH",
+    "functionFilesCompared": 57,
+    "functionDifferences": [],
+    "configSameAsCertifiedProduction": true
+  },
+  "lambdaRoutes": [
+    {
+      "path": "out/api/advisory",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-2c6abd8c92121c24af9f1559f268926d83"
+    },
+    {
+      "path": "out/api/booking-availability",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-9506976356992f406944883e26aecf47e8"
+    },
+    {
+      "path": "out/api/booking-create",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-eb7ea7ce667dbdf050d120a76562a7b4da"
+    },
+    {
+      "path": "out/api/collaboration",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-a1411f5a31d7ee54f9daa3baf23be1a1c1"
+    },
+    {
+      "path": "out/api/contact",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-4d6b1fe6ffefa6220db4052140b6d0db4b"
+    },
+    {
+      "path": "out/api/orientation-contact",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-cb846f91a02b90b8fabd539b4ca5b3840a"
+    },
+    {
+      "path": "out/api/uf",
+      "uid": "team_A9VNIW2f2K1IJpd2pGdvDmEN-0ca4f5524dc76157c4b16c52dd860a1c1d"
+    }
+  ],
+  "directoryNodesNotFiles": 115,
+  "sizeMismatches": [],
+  "remoteFileSizesComparedWherePresent": 0,
+  "completeOfficialTreeSHA256": "e29a83573f3ce8889311f15c11d265539c01a0061f2aea2a87b2d953f3c1e7ce",
+  "method": "Complete official authenticated Vercel files GET; every leaf UID compared to pinned local SHA1. No file-content downloads.",
+  "fileContentDownloadsForInventory": 0,
+  "HTTPChecksRepeated": 0,
+  "mutations": 0,
+  "passed": true
+}

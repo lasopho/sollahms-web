@@ -1,0 +1,97 @@
+{
+  "capturedAt": "2026-11-19T15:20:19.341Z",
+  "finalVerifiedAt": "2026-11-19T15:25:44.225Z",
+  "source": "Authenticated existing Google Analytics web UI; stabilized states after backend saves",
+  "propertyId": "565158660",
+  "measurementId": "G-LTFBQKVNY2",
+  "webStreamId": "16375742230",
+  "propertyName": "Sollahms — sitio corporativo",
+  "country": "Chile",
+  "timezone": "America/Santiago",
+  "currency": "CLP",
+  "streamURL": "https://sollahms.cl",
+  "enhancedMeasurement": false,
+  "enhancedMeasurementVerification": "Global switch OFF after confirmed Desactivar; standard page views remain eligible",
+  "googleSignals": false,
+  "userProvidedData": false,
+  "userIdImplementation": "not added by this task; no User-ID sent",
+  "adsPersonalization": false,
+  "adsPersonalizationAllowedRegions": 0,
+  "adsPersonalizationTotalRegions": 307,
+  "granularLocationDevice": false,
+  "eventRetentionMonths": 2,
+  "userRetentionMonths": 2,
+  "resetOnNewActivity": false,
+  "retentionApplicationNotice": "UI says changes can take 24 hours; most aggregate standard reports unaffected",
+  "accountDataSharing": {
+    "googleProductsServices": false,
+    "modelContributionsBusinessInsights": false,
+    "technicalSupport": false,
+    "businessRecommendations": false
+  },
+  "accountSharingReopenedPersisted": true,
+  "collectionStatus": "No data yet; site collection not activated per UI",
+  "connectedSiteTags": 0,
+  "scriptsInstalled": 0,
+  "tagManagerPublished": false,
+  "productionChanged": false,
+  "legalAgreementsAcceptedByAgent": false,
+  "reportingDefinitions": {
+    "file": "ga4-reporting-receipt.json",
+    "customDimensionCount": 6,
+    "eventScope": true,
+    "keyEvent": "contact_request_accepted",
+    "keyEventDefaultValue": null,
+    "keyEventCountingMethod": "ONCE_PER_EVENT",
+    "keyEventNonPersonalizedAds": true,
+    "purchaseUnchanged": true
+  },
+  "independentAdminVerification": {
+    "status": "ok",
+    "webStreams": [
+      {
+        "streamId": "16375742230",
+        "displayName": "sollahms",
+        "measurementId": "G-LTFBQKVNY2",
+        "defaultUri": "https://sollahms.cl",
+        "createTime": "2026-11-19T15:13:00.137Z",
+        "updateTime": "2026-11-19T15:15:37.162Z",
+        "enhancedMeasurement": {
+          "streamEnabled": false,
+          "scrollsEnabled": true,
+          "outboundClicksEnabled": true,
+          "siteSearchEnabled": true,
+          "videoEngagementEnabled": true,
+          "fileDownloadsEnabled": true,
+          "pageChangesEnabled": true,
+          "formInteractionsEnabled": true,
+          "searchQueryParameter": "q,s,search,query,keyword",
+          "uriQueryParameter": ""
+        }
+      }
+    ],
+    "summary": {
+      "dataStreamCount": 1,
+      "webStreamCount": 1,
+      "keyEventCount": 2,
+      "customDimensionCount": 6,
+      "customMetricCount": 0,
+      "issueCount": 2
+    }
+  },
+  "subsequentRuntimeCompatibilityEvidence": "sdk-correction-receipt.json: exact candidate-release PASS with downloaded real SDKs and intercepted beacons; does not verify the future unpublished GTM draft or real receipt.",
+  "initialSdkCompatibilityVerified": false,
+  "initialSdkCompatibilityNote": "Historical pre-correction SDK test: extra page_view and raw URL/referrer; superseded by sdk-correction-receipt.json. No beacons sent.",
+  "currentCandidateSdkCompatibility": {
+    "passed": true,
+    "receipt": "sdk-correction-receipt.json",
+    "scope": "Exact candidate-release module/config bytes with cached real SDK and all beacons intercepted. Not the unpublished GTM draft, real event receipt or future SDK versions."
+  },
+  "sdkCompatibilityVerified": true,
+  "sdkCompatibilityScope": "PASS exact candidate-release module 15388b73d792cb2796bdefc5807826793922bc9760a8bdefda7be0411503ed89 with cached real SDKs and all collection blocked; not a production collection receipt.",
+  "sdkCompatibilityReceipt": "sdk-correction-receipt.json",
+  "sdkCompatibilityNote": "Initial failure remains in sdk-smoke-receipt.json. Global pre-init correction passed exact-artifact tests. The unsubmitted three-setting GTM privacy draft requires a fresh SDK GET and intercepted retest after its approved publication, before staging the site for publication.",
+  "gtmPrivacyDraftReceipt": "gtm-privacy-draft-receipt.json",
+  "gtmPrivacyDraftPublished": false,
+  "freshSDKAfterGTMPublishRetestRequired": true
+}

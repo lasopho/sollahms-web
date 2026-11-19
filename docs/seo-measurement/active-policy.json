@@ -2,7 +2,7 @@
   "scope_id": "corporate-education-v3",
   "scope_version": 3,
   "scope_registry": "scope-v3.json",
-  "latest_report": "runs/2026-11-19-gsc-connected/report.md",
+  "latest_report": "runs/2026-11-19-weekly-comparison/report.md",
   "segmentation_guide": "SCOPE-v3.md",
   "strategy": "STRATEGY-v3.md",
   "ai_protocol": "AI-PROTOCOL-v2.md",
@@ -32,7 +32,7 @@
   "publication_t0": "2026-11-19T07:54:02.653000-03:00",
   "publication_timezone": "America/Santiago",
   "publication_authorized_commit": "df78d77f31c8da946623e586634998e151ed237e",
-  "current_gsc_measurement": "runs/2026-11-19-gsc-connected/performance-summary.json",
+  "current_gsc_measurement": "runs/2026-11-19-weekly-comparison/google-comparison.json",
   "current_indexation_record": "runs/2026-11-19-gsc-connected/index-status.json",
   "google_search_console": {
     "connected": true,
@@ -57,5 +57,38 @@
     "requiredInFutureConversations": true,
     "rule": "Start from the existing studies and current evidence; map each proposal to its objective, observed problem and verification separately for all three platforms.",
     "publicationApprovalGrantedByThisInstruction": false
+  },
+  "current_bing_measurement": "runs/2026-11-19-weekly-comparison/bing-comparison.json",
+  "current_chatgpt_observation": "runs/2026-11-19-weekly-comparison/chatgpt-observation.json",
+  "measurement_integration": {
+    "status": "configured_private_candidate_verified_not_published",
+    "candidate_branch": "codex/medicion-seo-geo-20261119",
+    "record": "../measurement-20261119/README.md",
+    "googleAnalyticsMeasurementId": "G-LTFBQKVNY2",
+    "clarityProjectId": "zg5i98wnxm",
+    "analyticsScopeURLs": 12,
+    "replayScopeURLs": 6,
+    "purpose": "consented website use and request-acceptance; not search ranking, indexing or qualified-lead proof",
+    "productionApprovalPending": true,
+    "candidate_commit": "f914590010cf0b4ac930c41a59b648da3be1ab31",
+    "pull_request": "https://github.com/lasopho/sollahms-web/pull/39",
+    "candidate_record": "../measurement-20261119/candidate.json",
+    "preview_deployment": "dpl_HS99vSe1dgeQrqzyXLYtiNoEtCvz",
+    "googleTagManagerDraftPublished": false
+  },
+  "comparison_rule": {
+    "before": [
+      "2026-11-02",
+      "2026-11-08"
+    ],
+    "after": [
+      "2026-11-11",
+      "2026-11-17"
+    ],
+    "googleComparableURLs": 10,
+    "newURLsSeparate": 2,
+    "absentBingRows": "unknown_not_zero",
+    "chatgptHistoricalReference": "narrated_12Nov_original_not_recovered",
+    "causalEffectOf19NovPublicationMeasured": false
   }
 }

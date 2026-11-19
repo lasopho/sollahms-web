@@ -1,0 +1,82 @@
+{
+  "capturedAt": "2026-11-19T15:54:50.835Z",
+  "containerId": "GTM-KTXQ2V7B",
+  "destinationId": "G-LTFBQKVNY2",
+  "workspaceChangesBefore": 0,
+  "published": false,
+  "autoEventsBefore": {
+    "history": true,
+    "scroll": true,
+    "outbound": true,
+    "form": true,
+    "video": true,
+    "download": true
+  },
+  "autoEventsAfter": {
+    "history": false,
+    "scroll": false,
+    "outbound": false,
+    "form": false,
+    "video": false,
+    "download": false
+  },
+  "userProvidedBefore": {
+    "allow": true,
+    "automatic": true,
+    "email": true,
+    "phone": true,
+    "nameAddress": true,
+    "cssOrJsSelectors": false
+  },
+  "userProvidedAfter": {
+    "allow": false,
+    "automatic": false,
+    "email": false,
+    "phone": false,
+    "nameAddress": false,
+    "cssOrJsSelectors": false
+  },
+  "cookiesBefore": {
+    "overrideEnabled": false,
+    "defaultExpirationUI": "24 meses",
+    "defaultUpdateUI": "visita más reciente"
+  },
+  "cookiesAfter": {
+    "overrideEnabled": true,
+    "expirationUI": "2 meses",
+    "updateUI": "primera visita",
+    "exactSecondsExposed": false,
+    "candidateMustIndependentlyVerifyMaxDays": 60
+  },
+  "workspaceChangesAfter": 3,
+  "pendingChanges": [
+    {
+      "change": "Añadido",
+      "name": "Anular la configuración de cookies",
+      "type": "Ajuste"
+    },
+    {
+      "change": "Modificado",
+      "name": "Gestionar detección automática de eventos",
+      "type": "Ajuste"
+    },
+    {
+      "change": "Modificado",
+      "name": "Permitir funciones de datos proporcionados por los usuarios",
+      "type": "Ajuste"
+    }
+  ],
+  "lastUpdatedAt": "2026-11-19T15:58:27.258Z",
+  "publishedBaselineEvidence": "Initial current workspace had zero pending changes and UI controls ON/defaults. Published SDK was not downloaded by this subtask; root separately observed matching internal flags.",
+  "draftStatus": "Saved workspace only; Enviar not clicked; not effective in published SDK yet",
+  "siteProductionChanged": false,
+  "noContractsAccepted": true,
+  "requiredNextSteps": [
+    "Review and approve this exact three-setting draft with the site candidate.",
+    "Publish the approved GTM draft before a new clean SDK GET.",
+    "Repeat intercepted real-SDK verification with all beacons blocked: one page_view, clean URL/referrer, only allowed events/parameters, no automatic first-party data, max 60-day fixed cookie.",
+    "Only after PASS, stage and review/promote the approved site candidate."
+  ],
+  "screenshot": "gtm-three-privacy-drafts-unpublished.png",
+  "screenshotStorage": "Private setup evidence only; not included in repository"
+}

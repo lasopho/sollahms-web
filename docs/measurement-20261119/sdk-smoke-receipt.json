@@ -1,0 +1,267 @@
+{
+  "observedAtUTC": "2026-11-19T15:44:54.318Z",
+  "status": "failed_real_sdk_sensitive_url_and_duplicate_page_view",
+  "artifactStaticRoot": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-measurement-private/candidate-final/.vercel/output/static",
+  "moduleSHA256": "579f798149433ed7e14b199c8f8bb7cd63f2f1e253ce2d7bfe2a0d14338a8dfc",
+  "configSHA256": "302c12004cdd37b76fa5fb91889a04dbe7b9ed95cfc0cac8697530ad15e39902",
+  "profile": "new ephemeral Playwright contexts, no user profile",
+  "policy": "Default abort. Only exact public SDK GET allowlist can reach network; route.fetch maxRedirects=0. All collect/beacon/API/POST blocked or locally fulfilled204.",
+  "providerScriptGETs": [
+    {
+      "scenario": "google-opt-in",
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-LTFBQKVNY2",
+      "method": "GET",
+      "maxRedirects": 0,
+      "status": 200,
+      "bytes": 480686,
+      "sha256": "4844ad403d79ca5170a9b79ce356f5ff530431d7dec30517a54d05640aecea1f"
+    }
+  ],
+  "blockedRequests": [],
+  "measurementsIntercepted": [
+    {
+      "scenario": "google-opt-in",
+      "method": "POST",
+      "host": "www.google-analytics.com",
+      "path": "/g/collect",
+      "event": "page_view",
+      "parameterKeys": [
+        "_eu",
+        "_fv",
+        "_geo",
+        "_nsi",
+        "_p",
+        "_rdi",
+        "_s",
+        "_ss",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "ul",
+        "v"
+      ],
+      "parameters": {
+        "tid": "G-LTFBQKVNY2",
+        "gcs": "G101",
+        "gcd": "13q3r3q3q5l1",
+        "npa": "1",
+        "dl": "https://sollahms.cl/contacto.html?correo=(redacted)&rut=1000005-K&mensaje=QA_SDK_SYNTHETIC&income=7000000",
+        "dr": "https://chatgpt.com/c/qa-sdk-conversation?mensaje=QA_SDK_SYNTHETIC",
+        "dt": "",
+        "en": "page_view"
+      },
+      "bodyBytes": 0,
+      "action": "locally_fulfilled204_not_sent"
+    },
+    {
+      "scenario": "google-opt-in",
+      "method": "POST",
+      "host": "www.google-analytics.com",
+      "path": "/g/collect",
+      "event": "page_view",
+      "parameterKeys": [
+        "_ee",
+        "_et",
+        "_eu",
+        "_geo",
+        "_p",
+        "_rdi",
+        "_s",
+        "_tu",
+        "cid",
+        "dl",
+        "dma",
+        "dma_cps",
+        "dr",
+        "dt",
+        "en",
+        "ep.source_group",
+        "frm",
+        "gcd",
+        "gcs",
+        "gtm",
+        "ngs",
+        "npa",
+        "pscdl",
+        "rcb",
+        "sct",
+        "seg",
+        "sid",
+        "tag_exp",
+        "tfd",
+        "tid",
+        "ul",
+        "v"
+      ],
+      "parameters": {
+        "tid": "G-LTFBQKVNY2",
+        "gcs": "G101",
+        "gcd": "13q3r3q3q5l1",
+        "npa": "1",
+        "dl": "https://sollahms.cl/contacto.html",
+        "dr": "https://chatgpt.com",
+        "dt": "contacto",
+        "en": "page_view",
+        "ep.source_group": "chatgpt"
+      },
+      "bodyBytes": 0,
+      "action": "locally_fulfilled204_not_sent"
+    }
+  ],
+  "beaconsSent": 0,
+  "contactsSent": 0,
+  "violations": [
+    {
+      "scenario": "google-opt-in",
+      "kind": "synthetic_sensitive_marker_in_measurement",
+      "marker": "1000005-K"
+    },
+    {
+      "scenario": "google-opt-in",
+      "kind": "synthetic_sensitive_marker_in_measurement",
+      "marker": "QA_SDK_SYNTHETIC"
+    },
+    {
+      "scenario": "google-opt-in",
+      "kind": "synthetic_sensitive_marker_in_measurement",
+      "marker": "7000000"
+    },
+    {
+      "scenario": "google-opt-in",
+      "kind": "synthetic_sensitive_marker_in_measurement",
+      "marker": "qa-sdk-conversation"
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "default-no-consent",
+      "preConsentScriptGETs": 0,
+      "scriptGETs": 0,
+      "measurementRequestsIntercepted": 0,
+      "pageViewCount": 0,
+      "state": {
+        "status": {
+          "enabled": true,
+          "analyticsReady": true,
+          "replayReady": true,
+          "analyticsConsented": false,
+          "replayConsented": false,
+          "analyticsActive": false,
+          "replayStarted": false,
+          "replayUrlAllowed": true,
+          "stopped": false
+        },
+        "gtagType": "undefined",
+        "googleTagManagerPresent": false,
+        "rootMask": null,
+        "clarityType": "undefined",
+        "consentCommands": []
+      },
+      "pageErrors": []
+    },
+    {
+      "name": "rejected",
+      "preConsentScriptGETs": 0,
+      "scriptGETs": 0,
+      "measurementRequestsIntercepted": 0,
+      "pageViewCount": 0,
+      "state": {
+        "status": {
+          "enabled": true,
+          "analyticsReady": true,
+          "replayReady": true,
+          "analyticsConsented": false,
+          "replayConsented": false,
+          "analyticsActive": false,
+          "replayStarted": false,
+          "replayUrlAllowed": true,
+          "stopped": false
+        },
+        "gtagType": "undefined",
+        "googleTagManagerPresent": false,
+        "rootMask": null,
+        "clarityType": "undefined",
+        "consentCommands": []
+      },
+      "pageErrors": []
+    },
+    {
+      "name": "google-opt-in",
+      "preConsentScriptGETs": 0,
+      "scriptGETs": 1,
+      "measurementRequestsIntercepted": 2,
+      "pageViewCount": 2,
+      "state": {
+        "status": {
+          "enabled": true,
+          "analyticsReady": true,
+          "replayReady": true,
+          "analyticsConsented": true,
+          "replayConsented": false,
+          "analyticsActive": true,
+          "replayStarted": false,
+          "replayUrlAllowed": false,
+          "stopped": false
+        },
+        "gtagType": "function",
+        "googleTagManagerPresent": true,
+        "rootMask": null,
+        "clarityType": "undefined",
+        "consentCommands": [
+          [
+            "consent",
+            "default",
+            {
+              "analytics_storage": "denied",
+              "ad_storage": "denied",
+              "ad_user_data": "denied",
+              "ad_personalization": "denied"
+            }
+          ],
+          [
+            "consent",
+            "update",
+            {
+              "analytics_storage": "granted",
+              "ad_storage": "denied",
+              "ad_user_data": "denied",
+              "ad_personalization": "denied"
+            }
+          ]
+        ]
+      },
+      "pageErrors": [],
+      "exactlyOnePageView": false,
+      "cleanPageLocation": false,
+      "cleanReferrer": false,
+      "noDuplicateAutomaticPageView": false
+    }
+  ],
+  "harness": "Minimal locally fulfilled corporate HTML; exact certified candidate module/config bytes; all customer-like inputs are synthetic. Not an end-to-end form test.",
+  "findings": [
+    "SDK GET succeeded; this is a measured runtime failure, not a network-blocked result.",
+    "The first automatic page_view contained raw synthetic RUT/message/finance URL parameters and conversation referrer; the second explicit page_view was sanitized.",
+    "Default and rejection caused no provider SDK GET or collection request.",
+    "Clarity optional scenario was not run after the Google failure.",
+    "All collection requests were locally fulfilled204; zero measurement beacons and zero contacts were sent. One public SDK GET reached Google."
+  ]
+}

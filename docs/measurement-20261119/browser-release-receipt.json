@@ -1,0 +1,44 @@
+{
+  "createdAt": "2026-11-19T15:56:56.119Z",
+  "mode": "isolated local browser, no real provider/API requests",
+  "browser": "159.0.8154.13",
+  "framework": "Playwright (installed runtime; Puppeteer unavailable)",
+  "sourceStatic": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-measurement-private/candidate-release/.vercel/output/static",
+  "configShipped": {
+    "enabled": true,
+    "analyticsEnabled": true,
+    "replayEnabled": true,
+    "blankIds": false
+  },
+  "runtimeSha256": "15388b73d792cb2796bdefc5807826793922bc9760a8bdefda7be0411503ed89",
+  "checks": [
+    {
+      "name": "release consent gate, actual GA4 ID, global/destination Secure flags and withdrawal",
+      "passed": true,
+      "preConsentSdkRequests": 0,
+      "preConsentCookies": 0,
+      "mockSdkRequests": 1,
+      "correctPublicId": true,
+      "globalSettingsBeforeGrantAndJs": true,
+      "globalAndDestinationSettingsIdentical": true,
+      "cookieFlags": "SameSite=Lax;Secure",
+      "reloadedWithoutRestart": true
+    }
+  ],
+  "screenshots": [],
+  "limitations": [
+    "Provider SDK bodies are local nonnetworking mocks; the configured revocation case creates synthetic first-party cookies. Does not certify provider collection/redaction, account settings, CSP headers, delivery, CRM receipt or qualified leads.",
+    "Form inputs are synthetic; local API fixtures never send mail or persist leads.",
+    "Reload is tested as browser navigation, not as proof that a real SDK cannot send a final unload request."
+  ],
+  "supplements": [
+    "browser-verified-receipt.json"
+  ],
+  "supplementNote": "One focused smoke after adding SameSite=Lax;Secure; prior eight browser cases and unit checks retain separate receipts. Mock does not certify actual provider cookie creation or runtime SDK behavior.",
+  "configSha256": "302c12004cdd37b76fa5fb91889a04dbe7b9ed95cfc0cac8697530ad15e39902",
+  "passed": true,
+  "summary": {
+    "passed": 1,
+    "total": 1
+  }
+}

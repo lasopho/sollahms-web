@@ -21,6 +21,14 @@ Si falta una referencia en la rama abierta, recuperarla desde el repositorio o e
 - Conservar enlaces, HTML comprensible, canonicals, descubrimiento e indexabilidad. Los datos estructurados representan contenido real y complementan el trabajo editorial.
 - Medir resultados reales y elegir mejoras acotadas por problemas u oportunidades comprobados. No convertir un ajuste de presentación en evidencia de crecimiento o citas.
 
+## Objetivo comercial y ciclo de mejora, confirmado el 19/11/2026
+
+El objetivo del titular es conseguir solicitudes pertinentes desde la web y mejorar de forma paulatina. La secuencia de comprobación es visibilidad por plataforma → visitas consentidas → uso de herramientas/contacto → solicitud aceptada por el proveedor o CRM → contacto recibido y cualificado → resultado comercial. Cada etapa necesita su evidencia; un acuse técnico no acredita entrega, cualificación ni venta. Las postulaciones/colaboraciones se mantienen separadas de potenciales compradores.
+
+El titular aportó [SEO Austral](https://seoaustral.com/) como ejemplo del tipo de servicio buscado: diagnóstico, priorización, ejecución y seguimiento de tráfico y negocio. Es una referencia incorporada el 19/11, **no parte retrospectiva del estudio de octubre**. No se trasladan sus promesas ni porcentajes a Sollahms. La aplicación propia conserva el estudio de identidad, contenido útil y recorrido educativo, y añade un registro de cambios y comparaciones con periodos explícitos.
+
+La [comparación del 19/11](runs/2026-11-19-weekly-comparison/report.md) recupera GSC, Bing Webmaster Tools y una prueba real de ChatGPT Search, con límites diferentes. GA4 y Clarity se preparan como [candidato de medición con consentimiento](../measurement-20261119/README.md): ayudan a comprobar uso y fricción dentro del sitio; no mejoran ni certifican posiciones, indexación o citas por sí solos. Primero establecer esta base; elegir después un cambio editorial por problema observado y repetir la misma medición. La incertidumbre de una muestra pequeña no justifica cambios masivos ni promesas de primer puesto.
+
 ## Evaluación por plataforma
 
 | Plataforma | Qué revisar | Evidencia de resultados |
