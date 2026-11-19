@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
-import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,readdir,rename} from 'node:fs/promises';
 import {resolve,join,extname} from 'node:path';
 import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
@@ -16,9 +16,11 @@ const widths=[1440,1024,768,390,320],HEIGHT=1000,hash=data=>createHash('sha256')
 const mime={'.html':'text/html','.mjs':'text/javascript','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.woff':'font/woff','.ico':'image/x-icon'};
 const apiFixture={status:503,contentType:'application/json',body:'{"code":"footer_qa_read_only","fixture":true}'};
 const rawCache=new Map(),fontCache=new Map(),networkCache=new Map();
-const report={startedAt:new Date().toISOString(),mode,origin,deployment,staticRoot,baselineStatic:BASELINE,captureBaseline,widths,height:HEIGHT,cases:[],pageErrors:[],ownResourceFailures:[],unexpectedConsole:[],expectedFixtureConsole:[],blockedMutations:[],unexpectedExternal:[],blockedMetrics:[],mapFixtures:[],apiFixtures:[],fontResources:[],networkResources:[],consent:[],preexistingOutsideFooterOverflow:[],motion:[],templateComparisons:[],screenshots:[],passed:false};
+const report={startedAt:new Date().toISOString(),mode,origin,deployment,staticRoot,baselineStatic:BASELINE,captureBaseline,widths,height:HEIGHT,cases:[],pageErrors:[],ownResourceFailures:[],unexpectedConsole:[],expectedFixtureConsole:[],expectedStatusConsole:[],blockedMutations:[],unexpectedExternal:[],blockedMetrics:[],mapFixtures:[],apiFixtures:[],fontResources:[],networkResources:[],consent:[],preexistingOutsideFooterOverflow:[],motion:[],templateComparisons:[],screenshots:[],passed:false};
 await mkdir(captureBaseline?QA:out,{recursive:true});
 if(!captureBaseline){try{const previous=JSON.parse(await readFile(join(out,'results.json'),'utf8'));if(!previous.passed){await mkdir(join(out,'attempts'),{recursive:true});await writeFile(join(out,'attempts','failed-'+Date.now()+'.json'),JSON.stringify(previous,null,2)+'\n');}}catch(error){if(error.code!=='ENOENT')throw error;}}
+let saveQueue=Promise.resolve();
+function saveReport(){const body=JSON.stringify(report,null,2)+'\n';saveQueue=saveQueue.then(async()=>{const temporary=join(out,'results.pending.json');await writeFile(temporary,body);await rename(temporary,join(out,'results.json'));});return saveQueue;}
 let browser,context,manifest;
 const ownNetworkSemaphore={active:0,waiters:[]};
 async function acquire(){while(ownNetworkSemaphore.active>=4)await new Promise(r=>ownNetworkSemaphore.waiters.push(r));ownNetworkSemaphore.active++;}
@@ -117,7 +119,7 @@ async function attach(page,file){
  page.on('pageerror',e=>report.pageErrors.push({file,message:e.message}));
  page.on('requestfailed',r=>{const u=new URL(r.url());if(u.origin===origin&&!u.pathname.startsWith('/api/'))report.ownResourceFailures.push({file,url:u.pathname,error:r.failure()?.errorText});});
  page.on('response',r=>{const u=new URL(r.url());if(r.status()>=400&&u.origin===origin&&!u.pathname.startsWith('/api/')&&!['/404.html','/410.html','/patio-brasil','/__footer-global-not-found-20261119__'].includes(u.pathname))report.ownResourceFailures.push({file,url:u.pathname,status:r.status()});});
- page.on('console',m=>{if(m.type()!=='error')return;const entry={file,message:m.text(),url:m.location().url};if(entry.url&&new URL(entry.url).pathname.startsWith('/api/')&&entry.message.includes('503'))report.expectedFixtureConsole.push(entry);else report.unexpectedConsole.push(entry);});
+ page.on('console',m=>{if(m.type()!=='error')return;const entry={file,message:m.text(),url:m.location().url};if(entry.url&&new URL(entry.url).pathname.startsWith('/api/')&&entry.message.includes('503'))report.expectedFixtureConsole.push(entry);else if((entry.url===origin+'/__footer-global-not-found-20261119__'&&entry.message.includes('404'))||(entry.url===origin+'/patio-brasil'&&entry.message.includes('410')))report.expectedStatusConsole.push(entry);else report.unexpectedConsole.push(entry);});
 }
 const footerPattern=/<footer\b[^>]*>[\s\S]*?<\/footer>/g;
 function replaceFooter(body){return body.replace(footerPattern,'').replace(/<link\b[^>]*href=["']\/assets\/css\/corporate-footer\.css(?:\?[^"']*)?["'][^>]*>\n?/gi,'');}
@@ -150,11 +152,11 @@ async function checkLinks(page,file){
 async function motionSample(page,file){
  if(!await page.locator('script[src*="scroll-presence.js"]').count())return {file,notApplicable:'Page has no preexisting scroll helper'};
  await page.emulateMedia({reducedMotion:'no-preference'});await page.evaluate(()=>dispatchEvent(new Event('resize')));await page.waitForTimeout(100);
- const selector=await page.locator('main .catalog-card.s-scroll-presence').count()?'main .catalog-card.s-scroll-presence':'main .s-scroll-presence';
+ const selector='main .s-scroll-presence:is(.catalog-card,.ci-identity,.ci-details,figure,.amenity-list,.journey,details:not([open]),.home-seo-steps>li,.spec-grid>div)';
  const candidates=await page.locator(selector).evaluateAll(nodes=>nodes.map((e,index)=>{const r=e.getBoundingClientRect();return {index,top:r.top+scrollY,height:r.height};}).filter(x=>x.top>700&&x.top<document.documentElement.scrollHeight-900&&x.height>5&&x.height<800));
  if(!candidates.length)return {file,notApplicable:'No preexisting editorial fade group with independently positionable geometry; footer opacity tested separately'};
  const probe=await page.locator(selector).nth(candidates[Math.floor(candidates.length/2)].index).elementHandle();
- async function sample(edge){for(let i=0;i<5;i++){await probe.evaluate((e,edge)=>{const r=e.getBoundingClientRect(),inset=Math.max(0,...[...document.querySelectorAll('header,nav')].filter(n=>['fixed','sticky'].includes(getComputedStyle(n).position)).map(n=>n.getBoundingClientRect()).filter(r=>r.top<=1&&r.height<innerHeight/2).map(r=>r.bottom));scrollTo({top:scrollY+(edge?r.bottom:r.top+r.height/2)-(edge?inset+20:innerHeight/2),behavior:'instant'});},edge);await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));const opacity=await probe.evaluate(e=>Number(getComputedStyle(e).opacity));if(edge?opacity<.9:opacity>.95)return opacity;await page.waitForTimeout(100);}throw Error('Existing editorial motion did not settle: '+file);}
+ async function sample(edge){for(let i=0;i<5;i++){await probe.evaluate((e,edge)=>{const r=e.getBoundingClientRect(),inset=Math.max(0,...[...document.querySelectorAll('header,nav')].filter(n=>['fixed','sticky'].includes(getComputedStyle(n).position)).map(n=>n.getBoundingClientRect()).filter(r=>r.top<=1&&r.height<innerHeight/2).map(r=>r.bottom));scrollTo({top:scrollY+(edge?r.bottom:r.top+r.height/2)-(edge?inset+20:innerHeight/2),behavior:'instant'});},edge);await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));const opacity=await probe.evaluate(e=>Number(getComputedStyle(e).opacity));if(edge?opacity<.9:opacity>.95)return opacity;await page.waitForTimeout(100);}throw Error('Existing editorial motion did not settle: '+file+' '+JSON.stringify(await probe.evaluate(e=>({cls:e.className,tag:e.tagName,rect:e.getBoundingClientRect().toJSON(),opacity:getComputedStyle(e).opacity,presence:e.style.getPropertyValue('--s-presence'),open:e.hasAttribute('open')}))));}
  const reading=await sample(false),edge=await sample(true);assert(reading>.95&&edge<.9&&edge<reading);assert.equal(await page.locator('footer .s-scroll-presence').count(),0);await page.emulateMedia({reducedMotion:'reduce'});await page.evaluate(()=>dispatchEvent(new Event('resize')));await page.waitForFunction(()=>matchMedia('(prefers-reduced-motion: reduce)').matches&&document.querySelectorAll('.s-scroll-presence').length===0,{},{timeout:5000});await page.emulateMedia({reducedMotion:'no-preference'});await page.evaluate(()=>dispatchEvent(new Event('resize')));await probe.dispose();return {file,readingOpacity:reading,edgeOpacity:edge,reducedMotionVisible:true,footerStatic:true};
 }
 async function runMatrix(){
@@ -166,9 +168,10 @@ async function runMatrix(){
  const files=smoke?[...new Set(['index.html','edificio-bold.html','404.html','410.html',...familyExamples.values()])]:['index.html',...all.filter(f=>f!=='index.html')];report.expectedCases=files.length*5;report.selectedPages=files;report.previousFooterFamilies=familyExamples.size;
  const preservation={};for(const file of all){const before=(await readCached(join(BASELINE,file))).toString(),after=(await readCached(join(staticRoot,file))).toString();assert.equal((before.match(footerPattern)||[]).length,1);assert.equal((after.match(footerPattern)||[]).length,1);assert.equal(replaceFooter(after),replaceFooter(before),'Content outside footer changed: '+file);const mainBefore=before.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0]||null,mainAfter=after.match(/<main\b[^>]*>[\s\S]*?<\/main>/i)?.[0]||null;assert.equal(mainAfter,mainBefore);preservation[file]={outsideFooterSHA256:hash(replaceFooter(before)),mainSHA256:mainBefore?hash(mainBefore):null,mainByteIdentical:true,outsideFooterByteIdentical:true};}
  report.sourcePreservation={pages:168,outsideFooterByteIdentical:true,mainByteIdentical:true};
+ report.existingMotionResources=[];for(const path of ['assets/js/scroll-presence.js','assets/css/sollahms-theme.css','assets/js/image-parallax.js','assets/css/image-parallax.css']){const actual=hash(await readCached(join(staticRoot,path))),expected=hash(await readCached(join(BASELINE,path)));assert.equal(actual,expected,'Existing motion resource changed');report.existingMotionResources.push({path,sha256:actual,byteIdenticalToBaseline:true});}report.existingMotionPreservedByHashes=true;report.motionScope='Homepage reading/edge/reduced-motion at five widths; footer and ancestor opacity checked in every case; other main content and existing motion resources preserved by exact hashes, without new behavioral claims.';
  const references=new Map(),families=new Set();
  await mkdir(join(out,'footers'),{recursive:true});
- for(const file of files){
+ async function runPage(file){
   const source=await readCached(join(staticRoot,file)),before=await readCached(join(BASELINE,file)),family=(before.toString().match(/<footer\b[^>]*>/)||[])[0]||'unknown';
   const pageContext=origin==='https://sollahms.cl'&&source.toString().includes('site-measurement.mjs')?await makeContext():context;const page=await pageContext.newPage();await attach(page,file);const response=await page.goto(origin+(file==='index.html'?'/':file==='404.html'?'/__footer-global-not-found-20261119__':file==='410.html'?'/patio-brasil':'/'+file),{waitUntil:'networkidle',timeout:120000});assert.equal(response.status(),file==='404.html'?404:file==='410.html'?410:200);await rejectOptional(page,file);
   for(const width of widths){
@@ -187,9 +190,16 @@ async function runMatrix(){
    }catch(error){row.error={message:error.message,stack:error.stack};if(!diagnose)throw error;}
    finally{report.cases.push(row);}
   }
-  if(!families.has(family)){families.add(family);for(const width of widths){await settleFooter(page,width);report.motion.push({width,family,...await motionSample(page,file)});}}
-  await page.waitForLoadState('networkidle',{timeout:30000});await page.close();if(pageContext!==context)await pageContext.close();await writeFile(join(out,'results.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({file,cases:report.cases.length,passed:report.cases.filter(x=>x.passed).length}));
+  if(file==='index.html'){for(const width of widths){await settleFooter(page,width);report.motion.push({width,family,...await motionSample(page,file)});}}
+  await page.waitForLoadState('networkidle',{timeout:30000});await page.close();if(pageContext!==context)await pageContext.close();await saveReport();console.log(JSON.stringify({file,cases:report.cases.length,passed:report.cases.filter(x=>x.passed).length}));
  }
+ // The homepage establishes immutable reference snapshots before independent pages run.
+ await runPage(files[0]);
+ const workers=Number(opt('--workers',mode==='local'?'1':'3'));assert(Number.isInteger(workers)&&workers>=1&&workers<=3);report.pageConcurrency=workers;report.httpMaxConcurrency=4;
+ let next=1,firstError=null;
+ await Promise.all(Array.from({length:workers},async()=>{while(next<files.length&&!firstError){const file=files[next++];try{await runPage(file);}catch(error){firstError??=error;}}}));
+ if(firstError)throw firstError;
+ assert.equal(new Set(report.cases.map(c=>c.file+' '+c.width)).size,report.expectedCases,'Every page and viewport must be covered exactly once');
  assert.equal(report.cases.length,report.expectedCases);assert(report.cases.every(c=>c.passed));assert.deepEqual(report.pageErrors,[]);assert.deepEqual(report.ownResourceFailures,[]);assert.deepEqual(report.unexpectedConsole,[]);assert.deepEqual(report.blockedMutations,[]);assert.deepEqual(report.blockedMetrics,[]);assert.deepEqual(report.unexpectedExternal,[]);report.passed=true;
 }
 
@@ -205,4 +215,4 @@ try{
   await writeFile(join(QA,'baseline-home.json'),JSON.stringify(baseline,null,2)+'\n');report.passed=true;await page.close();
  }else await runMatrix();
 }catch(error){report.failure={message:error.message,stack:error.stack};process.exitCode=1;console.error(error.message);}
-finally{await context?.close();await browser?.close();report.finishedAt=new Date().toISOString();if(!captureBaseline)await writeFile(join(out,'results.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:report.passed,captureBaseline,cases:report.cases.length}));}
+finally{await context?.close();await browser?.close();report.finishedAt=new Date().toISOString();if(!captureBaseline)await saveReport();console.log(JSON.stringify({passed:report.passed,captureBaseline,cases:report.cases.length}));}
