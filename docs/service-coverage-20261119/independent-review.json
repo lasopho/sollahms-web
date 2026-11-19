@@ -1,0 +1,74 @@
+{
+  "observedAtUTC": "2026-11-19T19:46:37.589675+00:00",
+  "status": "passed_local_copy_candidate_review",
+  "baselineProductionDeployment": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+  "baselineSourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
+  "baselinePublicPagesObservedAtUTC": "2026-11-19T19:35:31.661249+00:00",
+  "coverageEvidenceSHA256": "54a7759f4a740fb7d74f1b014aa2b4bdf993df4dac9b444a5955381d48a7f335",
+  "coverageCounts": {
+    "regions": 10,
+    "communes": 34,
+    "metropolitanCommunes": 19
+  },
+  "ownerConfirmedCommuneNamesAndOrderPreserved": true,
+  "regionLabelNormalization": "Only typographic/ASCII apostrophe equivalence for O’Higgins; existing HTML list bytes unchanged.",
+  "changedRuntimeSourceFiles": [
+    "agenda-asesoria.html",
+    "contacto.html",
+    "index.html"
+  ],
+  "pages": [
+    {
+      "file": "index.html",
+      "beforeSHA256": "f74d78f4ab4a8a201928538e9c2128914ea7b05031523b0c23038679bf85d802",
+      "afterSHA256": "ad724ea48d24581c59bafcfb9d6ab4dec6cf6c862913fc51ba676fe9695563d4",
+      "headSchemaScriptsFormsStylesHeaderFooterAndIdsPreserved": true,
+      "singleExistingCoverageBlock": false,
+      "publicCopyOmitsModalityAndOfficeClaims": true
+    },
+    {
+      "file": "agenda-asesoria.html",
+      "beforeSHA256": "ae6f30ef1540cc1145226128e826c947dfcc5c08f69f237cb4d14efbca31c0d1",
+      "afterSHA256": "4719705661125e1b02dbe78523e3a1ca0efbe39fd95d46fc6db6d12456ee44ec",
+      "headSchemaScriptsFormsStylesHeaderFooterAndIdsPreserved": true,
+      "singleExistingCoverageBlock": true,
+      "publicCopyOmitsModalityAndOfficeClaims": true
+    },
+    {
+      "file": "contacto.html",
+      "beforeSHA256": "f4d820e68772b2477c9b581d9a99fa551de31e19189e58830cff5455662ce8c9",
+      "afterSHA256": "4b6f961bf9622d25e1db44c2965427fe2eb9c37931c0782f7d1f2da6088e2212",
+      "headSchemaScriptsFormsStylesHeaderFooterAndIdsPreserved": true,
+      "singleExistingCoverageBlock": true,
+      "publicCopyOmitsModalityAndOfficeClaims": true
+    }
+  ],
+  "noSchemaOrMetadataChanges": true,
+  "noFormControlConsentOrTransportChanges": true,
+  "privacyAndMeasurementAssetsByteIdentical": true,
+  "robotsAndSitemapByteIdentical": true,
+  "scopeRegistryByteIdentical": true,
+  "corporateURLsRemain12": true,
+  "noNewCityURLs": true,
+  "newHomepageLink": "/agenda-asesoria.html",
+  "existingRegionListsByteIdenticalAndNotDuplicated": true,
+  "catalogueLinkAndPriceAvailabilityQualificationPreserved": true,
+  "vercelConfigOnlyNewBranchDeploymentFalse": true,
+  "pendingResponsibleEvidencePreservedInStrategy": true,
+  "privateOperationalNoteNotCopiedToPublicRegistry": true,
+  "blockers": [],
+  "recommendation": "Candidate copy matches owner confirmation and the requested omission of modality. Proceed with authorized packaging/staging verification.",
+  "networkRequests": 0,
+  "providerCalls": 0,
+  "formsSubmitted": 0,
+  "platformMutations": 0,
+  "filesWrittenByReviewer": [
+    "docs/service-coverage-20261119/independent-review.json"
+  ],
+  "limits": [
+    "Source/copy verification uses the supplied E4T public snapshot and db45 commit, not a new production-state request.",
+    "Packaged artifact preservation, exact staged deployment identity and promotion/public verification remain separate release checks.",
+    "Coverage confirmation does not establish offices, professional credentials, indexation, AI mentions/citations, ranking or commercial results.",
+    "Publication-time policy pointers still need the planned refresh; they were not used to infer the E4T baseline."
+  ]
+}

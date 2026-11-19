@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "SERVICE_COVERAGE_RECOVERY_PREFLIGHT",
+  "observedAtUTC": "2026-11-19T19:49:56.689843+00:00",
+  "observedAtChile": "2026-11-19T16:49:56.689843-03:00",
+  "status": "READ_ONLY_PREFLIGHT_PASSED",
+  "recoveryDeployment": {
+    "id": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+    "url": "project-wrapp-pgsse4pjm-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "isRollbackCandidate": true,
+    "createdAt": 1795114012623,
+    "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643"
+  },
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "authenticatedTeamMembership": {
+    "role": "OWNER",
+    "confirmed": true,
+    "matchedAuthenticatedUser": true,
+    "personalAccountDataStored": false
+  },
+  "projectRollbackIntrospectionSucceeded": true,
+  "currentProductionAndSettingsReference": {
+    "path": "/private/tmp/sollahms-cobertura-asesoria-20261119/docs/service-coverage-20261119/production-before.json",
+    "sha256": "a95831f8802dedcb86fcf5c56356298a2753689306e7901053963e901fefc49c"
+  },
+  "currentProductionAndSettingsReadBy": "parent preflight; not repeated by this subtask",
+  "artifact": {
+    "outputPath": "/private/tmp/sollahms-contacto-152-20261119/release/stage/.vercel/output",
+    "files": 1728,
+    "bytes": 227673930,
+    "localSHA256AndSHA1Matches": 1728,
+    "missing": [],
+    "extra": [],
+    "mismatched": [],
+    "inventorySHA256": "ec72f06ecab6f732199b761dfa63b6c08c3f4baf632e4ad0ecc8901bd520a04a",
+    "manifest": {
+      "path": "/private/tmp/sollahms-contacto-152-20261119/release/MANIFIESTO-PAQUETE.json",
+      "sha256": "dcfeb3a4f6a5d0e903a3b9181aaa1585e08335cbf0f4e2464c537060e2e37dab"
+    },
+    "immutableRemoteCertification": {
+      "path": "/private/tmp/sollahms-contacto-152-20261119/release/VERIFICACION-1728-UIDS.json",
+      "sha256": "8fcf28e0649cbd9673ea514cef9f678494c134526bf87ac333b6c50bdefb0b9e"
+    },
+    "remoteSHA1UIDMatches": 1728,
+    "functionBundles": 7,
+    "functionFiles": 57,
+    "configSHA256": "ef32ad5c7a069d7de482a7a92f5022a0c852cd0b9b896a735a48bd12bae71f05",
+    "importantPreservation": "Use complete E4T artifact. Relative to b56 the 152-project whitelist functions/api/advisory.func/data/advisory-projects.json changed; 56 other function files are unchanged. Preserve all 57 current E4T function files."
+  },
+  "recoveryProcedure": {
+    "existingMechanism": "Vercel instant rollback to this exact previous Production deployment ID, without rebuilding. The same E4T ID is already READY and isRollbackCandidate=true.",
+    "cliCommandNotExecuted": "vercel rollback dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp --scope team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "writeEndpointObservedInExistingInstalledCLISupportButNotCalled": "POST /v9/projects/{projectId}/rollback/{deploymentId}",
+    "statusReadEndpoint": "GET /v9/projects/{projectId}/rollback/aliases?failedOnly=true&limit=20",
+    "requiredRecheck": "Immediately before any reversal, recheck current apex/www, E4T candidacy, source identity and no intervening Production. Afterwards verify both aliases, public bytes and preserve autoAssignCustomDomains=false plus existing SSO/settings.",
+    "permissionBoundary": "Confirmed OWNER and successful GETs establish read-only readiness; no action-specific rollback write or live rehearsal was performed.",
+    "eligibilityBoundary": "E4T is current Production in the parent snapshot and would become immediately previous Production if the approved coverage candidate alone is promoted.",
+    "officialDocumentation": [
+      "https://vercel.com/docs/cli/rollback",
+      "https://vercel.com/docs/deployments/rollback-production-deployment"
+    ]
+  },
+  "reusableCurrentReleaseScripts": {
+    "preparar-paquete.py": "/private/tmp/sollahms-contacto-152-20261119/preparar-paquete.py",
+    "crear-deployment.py": "/private/tmp/sollahms-contacto-152-20261119/crear-deployment.py",
+    "verificar-deployment.py": "/private/tmp/sollahms-contacto-152-20261119/verificar-deployment.py",
+    "verificar-http.py": "/private/tmp/sollahms-contacto-152-20261119/verificar-http.py"
+  },
+  "readOnlyEvidence": {
+    "nativeGETs": "Authenticated user plus confirmed OWNER team membership; no identity persisted.",
+    "cliGETs": [
+      "/v9/projects/{projectId}?rollbackInfo=true",
+      "/v6/deployments?projectId={projectId}&rollbackCandidate=true&limit=20"
+    ],
+    "mcpCandidateList": "403 forbidden; official CLI GET succeeded using existing session.",
+    "rawProviderResponsesStored": false,
+    "environmentValueEndpointsCalled": false
+  },
+  "applicationTestsRun": 0,
+  "formsSubmitted": 0,
+  "functionsInvoked": 0,
+  "deploymentOrRoutingMutations": 0,
+  "rollbackExecuted": false,
+  "secretsOrPersonalAccountDataStored": false
+}

@@ -13,6 +13,10 @@ El estudio empleó guías técnicas de Google, OpenAI y Bing; ejemplos editorial
 
 Si falta una referencia en la rama abierta, recuperarla desde el repositorio o el contexto compartido autorizado antes de sustituirla por recomendaciones genéricas. Usar las copias anteriores como antecedentes, no como producción actual. Contrastar guías oficiales vigentes y documentar un cambio si supera una decisión histórica; el estudio no obliga a conservar información desactualizada.
 
+## Cobertura de asesoría confirmada el 19/11/2026
+
+El titular confirmó asesoría inmobiliaria en las **34 comunas de 10 regiones** de [este registro](service-coverage-20261119.json). Su última preferencia editorial es describir únicamente «asesoría inmobiliaria en estas comunas», sin incorporar modalidad presencial/a distancia. La modalidad no se trata como requisito SEO. La confirmación no acredita oficinas ni sucursales. Siguen pendientes el respaldo de identidad, función y antecedentes del responsable. Se mantienen las 12 URL v3 y sus exclusiones; la cobertura del servicio no sustituye las ubicaciones del inventario de proyectos. Es un hecho y una preferencia confirmados, no una publicación ni una mejora de posiciones o citas.
+
 ## Prioridades comunes
 
 - Explicar con precisión quién es Sollahms, a quién acompaña, qué servicio ofrece y cómo consultar. Incorporar identidad, cobertura y credenciales solo con respaldo.
@@ -27,7 +31,7 @@ El objetivo del titular es conseguir solicitudes pertinentes desde la web y mejo
 
 El titular aportó [SEO Austral](https://seoaustral.com/) como ejemplo del tipo de servicio buscado: diagnóstico, priorización, ejecución y seguimiento de tráfico y negocio. Es una referencia incorporada el 19/11, **no parte retrospectiva del estudio de octubre**. No se trasladan sus promesas ni porcentajes a Sollahms. La aplicación propia conserva el estudio de identidad, contenido útil y recorrido educativo, y añade un registro de cambios y comparaciones con periodos explícitos.
 
-La [comparación del 19/11](runs/2026-11-19-weekly-comparison/report.md) recupera GSC, Bing Webmaster Tools y una prueba real de ChatGPT Search, con límites diferentes. GA4 y Clarity se preparan como [candidato de medición con consentimiento](../measurement-20261119/README.md): ayudan a comprobar uso y fricción dentro del sitio; no mejoran ni certifican posiciones, indexación o citas por sí solos. Primero establecer esta base; elegir después un cambio editorial por problema observado y repetir la misma medición. La incertidumbre de una muestra pequeña no justifica cambios masivos ni promesas de primer puesto.
+La [comparación del 19/11](runs/2026-11-19-weekly-comparison/report.md) recupera GSC, Bing Webmaster Tools y una prueba real de ChatGPT Search, con límites diferentes. GA4 y Clarity quedaron publicados el 19/11 a las 14:07:21.935 America/Santiago como [medición con consentimiento](../measurement-20261119/README.md): ayudan a comprobar uso y fricción dentro del sitio; no mejoran ni certifican posiciones, indexación o citas por sí solos. Primero establecer esta base; elegir después un cambio editorial por problema observado y repetir la misma medición. La incertidumbre de una muestra pequeña no justifica cambios masivos ni promesas de primer puesto.
 
 ## Evaluación por plataforma
 

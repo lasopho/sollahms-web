@@ -1,0 +1,124 @@
+{
+  "observedAt": "2026-11-19T16:48:16.843328-03:00",
+  "timezone": "America/Santiago",
+  "phase": "before",
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795114203998,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795114204004,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp"
+    }
+  ],
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoAssignCustomDomains": false,
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "buildCommand": null,
+    "outputDirectory": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "framework": null,
+    "nodeVersion": "24.x",
+    "repository": {
+      "org": "lasopho",
+      "repo": "sollahms-web",
+      "productionBranch": "main"
+    }
+  },
+  "environmentMetadata": [
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "environmentValuesReadOrStored": false,
+  "mutations": 0,
+  "deployment": {
+    "url": "project-wrapp-pgsse4pjm-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795114012623,
+    "ready": 1795114019666,
+    "productionUrl": null,
+    "isRollbackCandidate": null,
+    "id": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+    "meta": {
+      "githubCommitSha": "db45afc2518b354bb14b108172d75d3aacb8d643",
+      "githubCommitRef": "codex/contacto-asesoria-152-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web"
+    }
+  },
+  "passed": true
+}

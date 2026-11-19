@@ -21,7 +21,7 @@ Las consultas siguientes expresan intención editorial, no volumen, posiciones n
 
 La marca oficial sigue siendo **Sollahms**. `Sollams` a secas es la consulta prioritaria de seguimiento y se mide separada de `Sollahms`, `Solams`, `Solamp` y `Solamps`. Las variantes no se añaden artificialmente a metadatos, contenido público o datos estructurados. En esta tabla se documentan únicamente como instrucciones de medición.
 
-La lista visible de Asesoría respalda Concepción, Chillán y Puerto Montt como ubicaciones de proyectos publicados. No implica oficinas o atención presencial. San Pedro de la Paz y Los Ángeles no se incorporan como cobertura comprobada por esta revisión.
+La revisión inicial distinguió las ubicaciones de proyectos de la cobertura del servicio. Posteriormente, el 19/11/2026, el titular confirmó asesoría en las 34 comunas de 10 regiones del [registro de cobertura](service-coverage-20261119.json), incluidas Concepción y San Pedro de la Paz. La última preferencia editorial es omitir la modalidad de atención en el texto público. Esto no acredita oficinas o sucursales, no incorpora Los Ángeles y no altera las 12 URL del alcance ni el inventario de proyectos.
 
 ## Exclusiones y conservación
 

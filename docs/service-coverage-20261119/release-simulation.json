@@ -1,0 +1,72 @@
+{
+  "recordedAtUTC": "2026-11-19T19:49:34.963539+00:00",
+  "mode": "offline model simulation, network disabled by imported harness",
+  "baseline": "dpl_E4TaPn7ZkLDZ7u93FSMvd9oHsxAp",
+  "baselineFiles": 1728,
+  "candidateFiles": 1728,
+  "functionFilesUnchanged": 57,
+  "checks": [
+    {
+      "name": "Promote the identical validated Production ID in memory",
+      "passed": true
+    },
+    {
+      "name": "Rollback restores all1728 E4 files and routing in memory",
+      "passed": true
+    },
+    {
+      "name": "Wrong promotion ID",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "reason": "Promotion ID must equal the exact validated staged ID"
+    },
+    {
+      "name": "Modified inventory",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "reason": "Pinned candidate inventory changed after validation"
+    },
+    {
+      "name": "Modified function",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "reason": "Function or runtime config bytes differ from Production"
+    },
+    {
+      "name": "Concurrent publication",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "reason": "Production alias advanced; refresh baseline and revalidate"
+    },
+    {
+      "name": "Changed automatic assignment",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "reason": "Platform settings advanced; do not overwrite them"
+    },
+    {
+      "name": "Changed www redirect",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "reason": "Canonical/www 308 routing contract differs"
+    },
+    {
+      "name": "Preview substituted for Production",
+      "passed": true,
+      "refusedBeforeCommit": true,
+      "reason": "Staged readiness/environment/domain isolation differs"
+    },
+    {
+      "name": "Rollback refuses to overwrite later publication",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "realPromotions": 0,
+  "realRollbacks": 0,
+  "providerRequests": 0,
+  "networkRequests": 0,
+  "limitations": [
+    "Models local gates, not Vercel control-plane atomicity or effective permission to execute a future rollback. Fresh eligibility and immediate alias checks remain required."
+  ]
+}
