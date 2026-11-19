@@ -52,3 +52,7 @@ Repetir una muestra equivalente de Google Chile/es/escritorio, separando consult
 - [Ficha del candidato](candidate.json). La producción actual no se ha modificado y la aprobación de publicación está pendiente.
 
 [Los dos recursos de icono](preview-assets-http.json) responden HTTP 200 con tipo correcto y bytes exactos. La [comprobación posterior](production-after-preview.json) confirma ambos alias en el deployment previo, SHA autorizado y todos los ajustes productivos/SSO idénticos. Cero cambios productivos, envíos reales o solicitudes de indexación.
+
+## Prioridad tras contrastar el estudio anterior
+
+La [revisión de alineación estratégica](alignment-review.md) documenta el vínculo con los estudios del 25/29 de octubre y las brechas de medición. Este candidato es **mantenimiento opcional de presentación**, con beneficio de posicionamiento no demostrado. El estudio original preservó deliberadamente las etiquetas sociales; su alineación actual es una propuesta nueva. Las prioridades actuales son seguimiento de indexación, controles/informes de IA y medición directa repetible de GEO. Esta revisión no autoriza producción.
