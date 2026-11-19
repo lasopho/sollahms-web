@@ -1,5 +1,7 @@
 # Medición SEO y GEO de Sollahms — revisión vigente 19/11/2026
 
+**Search Console conectado y leído el 19/11/2026:** [primera medición real](runs/2026-11-19-gsc-connected/report.md), con datos por página, límites de cobertura y diez URL indexadas. GA4 no es necesario para esta comparación. El efecto de la publicación del 19/11 aún no tiene periodo posterior medible.
+
 La [política activa](active-policy.json) utiliza [el alcance v3 de 12 páginas](SCOPE-v3.md). Excluye catálogo/Asset Portafolio, todas las fichas y el Centro documental de optimización y campañas, conservando su acceso, contenido y funcionamiento.
 
 El [informe actual](runs/2026-11-19-corporate-improvements/report.md) distingue código, producción, rastreo/indexación, búsquedas y citas IA. La producción actual se verifica por alias y artefacto, nunca desde `main`. Las mejoras de esta revisión se publicaron y verificaron el **19/11/2026 07:54:02.653 America/Santiago**. [Registro de publicación](runs/2026-11-19-corporate-improvements/publication/publication.json). La publicación no acredita por sí sola indexación ni resultados SEO/GEO.
